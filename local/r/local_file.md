@@ -1,3 +1,9 @@
+---
+layout: resource
+tags:
+  - resource
+---
+
 # local_file
 
 [back](../local.md)
