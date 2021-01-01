@@ -1,0 +1,228 @@
+# vsphere_host_port_group
+
+[back](../vsphere.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```hcl
+terraform {
+  required_providers {
+    vsphere = ">= 1.24.3"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```hcl
+module "vsphere_host_port_group" {
+  source = "./modules/vsphere/r/vsphere_host_port_group"
+
+  # active_nics - (optional) is a type of list of string
+  active_nics = []
+  # allow_forged_transmits - (optional) is a type of bool
+  allow_forged_transmits = null
+  # allow_mac_changes - (optional) is a type of bool
+  allow_mac_changes = null
+  # allow_promiscuous - (optional) is a type of bool
+  allow_promiscuous = null
+  # check_beacon - (optional) is a type of bool
+  check_beacon = null
+  # failback - (optional) is a type of bool
+  failback = null
+  # host_system_id - (required) is a type of string
+  host_system_id = null
+  # name - (required) is a type of string
+  name = null
+  # notify_switches - (optional) is a type of bool
+  notify_switches = null
+  # shaping_average_bandwidth - (optional) is a type of number
+  shaping_average_bandwidth = null
+  # shaping_burst_size - (optional) is a type of number
+  shaping_burst_size = null
+  # shaping_enabled - (optional) is a type of bool
+  shaping_enabled = null
+  # shaping_peak_bandwidth - (optional) is a type of number
+  shaping_peak_bandwidth = null
+  # standby_nics - (optional) is a type of list of string
+  standby_nics = []
+  # teaming_policy - (optional) is a type of string
+  teaming_policy = null
+  # virtual_switch_name - (required) is a type of string
+  virtual_switch_name = null
+  # vlan_id - (optional) is a type of number
+  vlan_id = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```hcl
+variable "active_nics" {
+  description = "(optional) - List of active network adapters used for load balancing."
+  type        = list(string)
+  default     = null
+}
+
+variable "allow_forged_transmits" {
+  description = "(optional) - Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own."
+  type        = bool
+  default     = null
+}
+
+variable "allow_mac_changes" {
+  description = "(optional) - Controls whether or not the Media Access Control (MAC) address can be changed."
+  type        = bool
+  default     = null
+}
+
+variable "allow_promiscuous" {
+  description = "(optional) - Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port."
+  type        = bool
+  default     = null
+}
+
+variable "check_beacon" {
+  description = "(optional) - Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only."
+  type        = bool
+  default     = null
+}
+
+variable "failback" {
+  description = "(optional) - If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up."
+  type        = bool
+  default     = null
+}
+
+variable "host_system_id" {
+  description = "(required) - The managed object ID of the host to set the virtual switch up on."
+  type        = string
+}
+
+variable "name" {
+  description = "(required) - The name of the port group."
+  type        = string
+}
+
+variable "notify_switches" {
+  description = "(optional) - If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates."
+  type        = bool
+  default     = null
+}
+
+variable "shaping_average_bandwidth" {
+  description = "(optional) - The average bandwidth in bits per second if traffic shaping is enabled."
+  type        = number
+  default     = null
+}
+
+variable "shaping_burst_size" {
+  description = "(optional) - The maximum burst size allowed in bytes if traffic shaping is enabled."
+  type        = number
+  default     = null
+}
+
+variable "shaping_enabled" {
+  description = "(optional) - Enable traffic shaping on this virtual switch or port group."
+  type        = bool
+  default     = null
+}
+
+variable "shaping_peak_bandwidth" {
+  description = "(optional) - The peak bandwidth during bursts in bits per second if traffic shaping is enabled."
+  type        = number
+  default     = null
+}
+
+variable "standby_nics" {
+  description = "(optional) - List of standby network adapters used for failover."
+  type        = list(string)
+  default     = null
+}
+
+variable "teaming_policy" {
+  description = "(optional) - The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit."
+  type        = string
+  default     = null
+}
+
+variable "virtual_switch_name" {
+  description = "(required) - The name of the virtual switch to bind this port group to."
+  type        = string
+}
+
+variable "vlan_id" {
+  description = "(optional) - The VLAN ID/trunk mode for this port group. An ID of 0 denotes no tagging, an ID of 1-4094 tags with the specific ID, and an ID of 4095 enables trunk mode, allowing the guest to manage its own tagging."
+  type        = number
+  default     = null
+}
+```
+
+[top](#index)
+
+### Resource
+
+```hcl
+resource "vsphere_host_port_group" "this" {
+  active_nics               = var.active_nics
+  allow_forged_transmits    = var.allow_forged_transmits
+  allow_mac_changes         = var.allow_mac_changes
+  allow_promiscuous         = var.allow_promiscuous
+  check_beacon              = var.check_beacon
+  failback                  = var.failback
+  host_system_id            = var.host_system_id
+  name                      = var.name
+  notify_switches           = var.notify_switches
+  shaping_average_bandwidth = var.shaping_average_bandwidth
+  shaping_burst_size        = var.shaping_burst_size
+  shaping_enabled           = var.shaping_enabled
+  shaping_peak_bandwidth    = var.shaping_peak_bandwidth
+  standby_nics              = var.standby_nics
+  teaming_policy            = var.teaming_policy
+  virtual_switch_name       = var.virtual_switch_name
+  vlan_id                   = var.vlan_id
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```hcl
+output "computed_policy" {
+  description = "returns a map of string"
+  value       = vsphere_host_port_group.this.computed_policy
+}
+
+output "id" {
+  description = "returns a string"
+  value       = vsphere_host_port_group.this.id
+}
+
+output "key" {
+  description = "returns a string"
+  value       = vsphere_host_port_group.this.key
+}
+
+output "ports" {
+  description = "returns a list of object"
+  value       = vsphere_host_port_group.this.ports
+}
+
+output "this" {
+  value = vsphere_host_port_group.this
+}
+```
+
+[top](#index)
