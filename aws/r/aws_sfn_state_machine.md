@@ -1,0 +1,94 @@
+# aws_sfn_state_machine
+[back](../aws.md)
+### Index
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+### Terraform
+```hcl
+terraform {
+  required_providers {
+    aws = ">= 3.22.0"
+  }
+}
+```
+[top](#index)
+### Example Usage
+```hcl
+module "aws_sfn_state_machine" {
+  source = "./modules/aws/r/aws_sfn_state_machine"
+
+  # definition - (required) is a type of string
+  definition = null
+  # name - (required) is a type of string
+  name = null
+  # role_arn - (required) is a type of string
+  role_arn = null
+  # tags - (optional) is a type of map of string
+  tags = {}
+}
+```
+[top](#index)
+### Variables
+```hcl
+variable "definition" {
+  description = "(required)"
+  type        = string
+}
+
+variable "name" {
+  description = "(required)"
+  type        = string
+}
+
+variable "role_arn" {
+  description = "(required)"
+  type        = string
+}
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+```
+[top](#index)
+
+### Resource
+```hcl
+resource "aws_sfn_state_machine" "this" {
+  definition = var.definition
+  name       = var.name
+  role_arn   = var.role_arn
+  tags       = var.tags
+}
+```
+[top](#index)
+### Outputs
+```hcl
+output "arn" {
+  description = "returns a string"
+  value       = aws_sfn_state_machine.this.arn
+}
+
+output "creation_date" {
+  description = "returns a string"
+  value       = aws_sfn_state_machine.this.creation_date
+}
+
+output "id" {
+  description = "returns a string"
+  value       = aws_sfn_state_machine.this.id
+}
+
+output "status" {
+  description = "returns a string"
+  value       = aws_sfn_state_machine.this.status
+}
+
+output "this" {
+  value = aws_sfn_state_machine.this
+}
+```
+[top](#index)
