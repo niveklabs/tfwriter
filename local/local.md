@@ -1,4 +1,4 @@
-# local Provider
+# local
 
 [back](../)
 
