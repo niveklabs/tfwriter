@@ -1,4 +1,4 @@
-# github Provider
+# github
 
 [back](../)
 
