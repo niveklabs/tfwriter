@@ -12,10 +12,10 @@ provider "local" {
 ```
 [top](#index)
 ### Resources
-- [local_file](r/local%5Ffile.md)
+- [local_file](./r/local_file.md)
 
 [top](#index)
 ### Datasources
-- [local_file](d/local%5Ffile.md)
+- [local_file](./d/local_file.md)
 
 [top](#index)
