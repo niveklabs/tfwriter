@@ -1,5 +1,5 @@
 # AWS Provider
-[back](../index.md)
+[back](../)
 ### Index
 - [Example Usage](#example-usage)
 - [Resources](#resources)
