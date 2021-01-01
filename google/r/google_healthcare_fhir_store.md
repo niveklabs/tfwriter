@@ -6,7 +6,7 @@
 
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Datasource](#datasource)
+- [Resource](#resource)
 - [Outputs](#outputs)
 
 ### Terraform
