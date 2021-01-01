@@ -1,0 +1,94 @@
+# google_iam_testable_permissions
+
+[back](../google.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Datasource](#datasource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```hcl
+terraform {
+  required_providers {
+    google = ">= 3.51.0"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```hcl
+module "google_iam_testable_permissions" {
+  source = "./modules/google/d/google_iam_testable_permissions"
+
+  # custom_support_level - (optional) is a type of string
+  custom_support_level = null
+  # full_resource_name - (required) is a type of string
+  full_resource_name = null
+  # stages - (optional) is a type of list of string
+  stages = []
+}
+```
+
+[top](#index)
+
+### Variables
+
+```hcl
+variable "custom_support_level" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "full_resource_name" {
+  description = "(required)"
+  type        = string
+}
+
+variable "stages" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+```
+
+[top](#index)
+
+### Datasource
+
+```hcl
+data "google_iam_testable_permissions" "this" {
+  custom_support_level = var.custom_support_level
+  full_resource_name   = var.full_resource_name
+  stages               = var.stages
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```hcl
+output "id" {
+  description = "returns a string"
+  value       = data.google_iam_testable_permissions.this.id
+}
+
+output "permissions" {
+  description = "returns a list of object"
+  value       = data.google_iam_testable_permissions.this.permissions
+}
+
+output "this" {
+  value = google_iam_testable_permissions.this
+}
+```
+
+[top](#index)
