@@ -1,5 +1,3 @@
-Terraform HCL code generator.
-
 - [AWS](aws/aws.md) (v3.22.0)
 - [GitHub](github/github.md) (v4.1.0)
 - [Google](google/google.md) (v3.51.0)
