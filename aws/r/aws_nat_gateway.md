@@ -1,11 +1,16 @@
 # aws_nat_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_nat_gateway" {
   source = "./modules/aws/r/aws_nat_gateway"
@@ -27,8 +35,11 @@ module "aws_nat_gateway" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allocation_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_nat_gateway" "this" {
   allocation_id = var.allocation_id
@@ -56,8 +69,11 @@ resource "aws_nat_gateway" "this" {
   tags          = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -83,4 +99,5 @@ output "this" {
   value = aws_nat_gateway.this
 }
 ```
+
 [top](#index)

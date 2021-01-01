@@ -1,11 +1,16 @@
 # aws_lambda_function_event_invoke_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_function_event_invoke_config" {
   source = "./modules/aws/r/aws_lambda_function_event_invoke_config"
@@ -38,8 +46,11 @@ module "aws_lambda_function_event_invoke_config" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "function_name" {
   description = "(required)"
@@ -83,9 +94,11 @@ variable "destination_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_function_event_invoke_config" "this" {
   function_name                = var.function_name
@@ -116,8 +129,11 @@ resource "aws_lambda_function_event_invoke_config" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -128,4 +144,5 @@ output "this" {
   value = aws_lambda_function_event_invoke_config.this
 }
 ```
+
 [top](#index)

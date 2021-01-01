@@ -1,11 +1,16 @@
 # aws_transfer_server
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_transfer_server" {
   source = "./modules/aws/d/aws_transfer_server"
@@ -23,24 +31,32 @@ module "aws_transfer_server" {
   server_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "server_id" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_transfer_server" "this" {
   server_id = var.server_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_transfer_server.this
 }
 ```
+
 [top](#index)

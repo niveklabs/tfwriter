@@ -1,11 +1,16 @@
 # aws_apigatewayv2_domain_name
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_domain_name" {
   source = "./modules/aws/r/aws_apigatewayv2_domain_name"
@@ -42,8 +50,11 @@ module "aws_apigatewayv2_domain_name" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain_name" {
   description = "(required)"
@@ -90,9 +101,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_domain_name" "this" {
   domain_name = var.domain_name
@@ -124,8 +137,11 @@ resource "aws_apigatewayv2_domain_name" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "api_mapping_selection_expression" {
   description = "returns a string"
@@ -146,4 +162,5 @@ output "this" {
   value = aws_apigatewayv2_domain_name.this
 }
 ```
+
 [top](#index)

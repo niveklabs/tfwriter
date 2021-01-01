@@ -1,11 +1,16 @@
 # aws_elasticache_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_cluster" {
   source = "./modules/aws/d/aws_elasticache_cluster"
@@ -25,8 +33,11 @@ module "aws_elasticache_cluster" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_id" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_elasticache_cluster" "this" {
   cluster_id = var.cluster_id
   tags       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -160,4 +176,5 @@ output "this" {
   value = aws_elasticache_cluster.this
 }
 ```
+
 [top](#index)

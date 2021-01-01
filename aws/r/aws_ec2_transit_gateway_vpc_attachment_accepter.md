@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_vpc_attachment_accepter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_vpc_attachment_accepter" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_vpc_attachment_accepter"
@@ -29,8 +37,11 @@ module "aws_ec2_transit_gateway_vpc_attachment_accepter" {
   transit_gateway_default_route_table_propagation = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "transit_gateway_default_route_table_propagation" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "this" {
   tags                                            = var.tags
@@ -66,8 +79,11 @@ resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "this" {
   transit_gateway_default_route_table_propagation = var.transit_gateway_default_route_table_propagation
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "appliance_mode_support" {
   description = "returns a string"
@@ -113,4 +129,5 @@ output "this" {
   value = aws_ec2_transit_gateway_vpc_attachment_accepter.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_organizations_organizational_units
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_organizations_organizational_units" {
   source = "./modules/aws/d/aws_organizations_organizational_units"
@@ -23,24 +31,32 @@ module "aws_organizations_organizational_units" {
   parent_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "parent_id" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_organizations_organizational_units" "this" {
   parent_id = var.parent_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "children" {
   description = "returns a list of object"
@@ -56,4 +72,5 @@ output "this" {
   value = aws_organizations_organizational_units.this
 }
 ```
+
 [top](#index)

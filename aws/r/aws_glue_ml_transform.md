@@ -1,11 +1,16 @@
 # aws_glue_ml_transform
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_ml_transform" {
   source = "./modules/aws/r/aws_glue_ml_transform"
@@ -58,8 +66,11 @@ module "aws_glue_ml_transform" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -148,9 +159,11 @@ variable "parameters" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_ml_transform" "this" {
   description       = var.description
@@ -194,8 +207,11 @@ resource "aws_glue_ml_transform" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -231,4 +247,5 @@ output "this" {
   value = aws_glue_ml_transform.this
 }
 ```
+
 [top](#index)

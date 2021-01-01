@@ -1,11 +1,16 @@
 # aws_storagegateway_cache
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_cache" {
   source = "./modules/aws/r/aws_storagegateway_cache"
@@ -25,8 +33,11 @@ module "aws_storagegateway_cache" {
   gateway_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "disk_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "gateway_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_cache" "this" {
   disk_id     = var.disk_id
   gateway_arn = var.gateway_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_storagegateway_cache.this
 }
 ```
+
 [top](#index)

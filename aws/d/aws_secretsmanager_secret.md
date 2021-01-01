@@ -1,11 +1,16 @@
 # aws_secretsmanager_secret
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_secretsmanager_secret" {
   source = "./modules/aws/d/aws_secretsmanager_secret"
@@ -25,8 +33,11 @@ module "aws_secretsmanager_secret" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(optional)"
@@ -40,17 +51,22 @@ variable "name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_secretsmanager_secret" "this" {
   arn  = var.arn
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -106,4 +122,5 @@ output "this" {
   value = aws_secretsmanager_secret.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_quicksight_user
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_quicksight_user" {
   source = "./modules/aws/r/aws_quicksight_user"
@@ -37,8 +45,11 @@ module "aws_quicksight_user" {
   user_role = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "aws_account_id" {
   description = "(optional)"
@@ -85,9 +96,11 @@ variable "user_role" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_quicksight_user" "this" {
   aws_account_id = var.aws_account_id
@@ -100,8 +113,11 @@ resource "aws_quicksight_user" "this" {
   user_role      = var.user_role
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_quicksight_user.this
 }
 ```
+
 [top](#index)

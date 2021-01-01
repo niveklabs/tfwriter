@@ -1,11 +1,16 @@
 # aws_ecs_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_cluster" {
   source = "./modules/aws/r/aws_ecs_cluster"
@@ -38,8 +46,11 @@ module "aws_ecs_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "capacity_providers" {
   description = "(optional)"
@@ -81,9 +92,11 @@ variable "setting" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ecs_cluster" "this" {
   capacity_providers = var.capacity_providers
@@ -109,8 +122,11 @@ resource "aws_ecs_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -126,4 +142,5 @@ output "this" {
   value = aws_ecs_cluster.this
 }
 ```
+
 [top](#index)

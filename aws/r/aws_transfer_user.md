@@ -1,11 +1,16 @@
 # aws_transfer_user
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_transfer_user" {
   source = "./modules/aws/r/aws_transfer_user"
@@ -40,8 +48,11 @@ module "aws_transfer_user" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "home_directory" {
   description = "(optional)"
@@ -93,9 +104,11 @@ variable "home_directory_mappings" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_transfer_user" "this" {
   home_directory      = var.home_directory
@@ -116,8 +129,11 @@ resource "aws_transfer_user" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -133,4 +149,5 @@ output "this" {
   value = aws_transfer_user.this
 }
 ```
+
 [top](#index)

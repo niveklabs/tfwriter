@@ -1,11 +1,16 @@
 # aws_ec2_client_vpn_authorization_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_client_vpn_authorization_rule" {
   source = "./modules/aws/r/aws_ec2_client_vpn_authorization_rule"
@@ -31,8 +39,11 @@ module "aws_ec2_client_vpn_authorization_rule" {
   target_network_cidr = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "access_group_id" {
   description = "(optional)"
@@ -62,9 +73,11 @@ variable "target_network_cidr" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_client_vpn_authorization_rule" "this" {
   access_group_id        = var.access_group_id
@@ -74,8 +87,11 @@ resource "aws_ec2_client_vpn_authorization_rule" "this" {
   target_network_cidr    = var.target_network_cidr
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_ec2_client_vpn_authorization_rule.this
 }
 ```
+
 [top](#index)

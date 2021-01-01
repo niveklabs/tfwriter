@@ -1,11 +1,16 @@
 # aws_iot_policy_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_policy_attachment" {
   source = "./modules/aws/r/aws_iot_policy_attachment"
@@ -25,8 +33,11 @@ module "aws_iot_policy_attachment" {
   target = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "policy" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "target" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iot_policy_attachment" "this" {
   policy = var.policy
   target = var.target
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_iot_policy_attachment.this
 }
 ```
+
 [top](#index)

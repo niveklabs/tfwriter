@@ -1,11 +1,16 @@
 # aws_service_discovery_service
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_service_discovery_service" {
   source = "./modules/aws/r/aws_service_discovery_service"
@@ -48,8 +56,11 @@ module "aws_service_discovery_service" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -113,9 +124,11 @@ variable "health_check_custom_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_service_discovery_service" "this" {
   description  = var.description
@@ -158,8 +171,11 @@ resource "aws_service_discovery_service" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -180,4 +196,5 @@ output "this" {
   value = aws_service_discovery_service.this
 }
 ```
+
 [top](#index)

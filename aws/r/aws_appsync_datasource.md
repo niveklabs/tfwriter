@@ -1,11 +1,16 @@
 # aws_appsync_datasource
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appsync_datasource" {
   source = "./modules/aws/r/aws_appsync_datasource"
@@ -50,8 +58,11 @@ module "aws_appsync_datasource" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -123,9 +134,11 @@ variable "lambda_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appsync_datasource" "this" {
   api_id           = var.api_id
@@ -167,8 +180,11 @@ resource "aws_appsync_datasource" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -184,4 +200,5 @@ output "this" {
   value = aws_appsync_datasource.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_s3_bucket
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket" {
   source = "./modules/aws/r/aws_s3_bucket"
@@ -150,8 +158,11 @@ module "aws_s3_bucket" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "acceleration_status" {
   description = "(optional)"
@@ -412,9 +423,11 @@ variable "website" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket" "this" {
   acceleration_status = var.acceleration_status
@@ -629,8 +642,11 @@ resource "aws_s3_bucket" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "acceleration_status" {
   description = "returns a string"
@@ -691,4 +707,5 @@ output "this" {
   value = aws_s3_bucket.this
 }
 ```
+
 [top](#index)

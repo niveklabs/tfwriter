@@ -1,11 +1,16 @@
 # aws_cloudwatch_log_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_log_group" {
   source = "./modules/aws/r/aws_cloudwatch_log_group"
@@ -31,8 +39,11 @@ module "aws_cloudwatch_log_group" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "kms_key_id" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_log_group" "this" {
   kms_key_id        = var.kms_key_id
@@ -76,8 +89,11 @@ resource "aws_cloudwatch_log_group" "this" {
   tags              = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_cloudwatch_log_group.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway" {
   source = "./modules/aws/d/aws_ec2_transit_gateway"
@@ -28,8 +36,11 @@ module "aws_ec2_transit_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_transit_gateway" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_ec2_transit_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "amazon_side_asn" {
   description = "returns a number"
@@ -137,4 +153,5 @@ output "this" {
   value = aws_ec2_transit_gateway.this
 }
 ```
+
 [top](#index)

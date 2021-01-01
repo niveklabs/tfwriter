@@ -1,11 +1,16 @@
 # aws_pinpoint_gcm_channel
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_gcm_channel" {
   source = "./modules/aws/r/aws_pinpoint_gcm_channel"
@@ -27,8 +35,11 @@ module "aws_pinpoint_gcm_channel" {
   enabled = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_key" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "enabled" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_gcm_channel" "this" {
   api_key        = var.api_key
@@ -56,8 +69,11 @@ resource "aws_pinpoint_gcm_channel" "this" {
   enabled        = var.enabled
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_pinpoint_gcm_channel.this
 }
 ```
+
 [top](#index)

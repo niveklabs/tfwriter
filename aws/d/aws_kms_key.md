@@ -1,11 +1,16 @@
 # aws_kms_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_key" {
   source = "./modules/aws/d/aws_kms_key"
@@ -25,8 +33,11 @@ module "aws_kms_key" {
   key_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "grant_tokens" {
   description = "(optional)"
@@ -39,17 +50,22 @@ variable "key_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_kms_key" "this" {
   grant_tokens = var.grant_tokens
   key_id       = var.key_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -125,4 +141,5 @@ output "this" {
   value = aws_kms_key.this
 }
 ```
+
 [top](#index)

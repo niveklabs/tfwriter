@@ -1,11 +1,16 @@
 # aws_outposts_outpost_instance_type
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_outposts_outpost_instance_type" {
   source = "./modules/aws/d/aws_outposts_outpost_instance_type"
@@ -27,8 +35,11 @@ module "aws_outposts_outpost_instance_type" {
   preferred_instance_types = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "preferred_instance_types" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_outposts_outpost_instance_type" "this" {
   arn                      = var.arn
@@ -57,8 +70,11 @@ data "aws_outposts_outpost_instance_type" "this" {
   preferred_instance_types = var.preferred_instance_types
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_outposts_outpost_instance_type.this
 }
 ```
+
 [top](#index)

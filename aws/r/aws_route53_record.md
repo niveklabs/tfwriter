@@ -1,11 +1,16 @@
 # aws_route53_record
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_record" {
   source = "./modules/aws/r/aws_route53_record"
@@ -63,8 +71,11 @@ module "aws_route53_record" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_overwrite" {
   description = "(optional)"
@@ -171,9 +182,11 @@ variable "weighted_routing_policy" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_record" "this" {
   allow_overwrite                  = var.allow_overwrite
@@ -227,8 +240,11 @@ resource "aws_route53_record" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allow_overwrite" {
   description = "returns a bool"
@@ -249,4 +265,5 @@ output "this" {
   value = aws_route53_record.this
 }
 ```
+
 [top](#index)

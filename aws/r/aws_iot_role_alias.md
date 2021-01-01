@@ -1,11 +1,16 @@
 # aws_iot_role_alias
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_role_alias" {
   source = "./modules/aws/r/aws_iot_role_alias"
@@ -27,8 +35,11 @@ module "aws_iot_role_alias" {
   role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "alias" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "role_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iot_role_alias" "this" {
   alias               = var.alias
@@ -56,8 +69,11 @@ resource "aws_iot_role_alias" "this" {
   role_arn            = var.role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_iot_role_alias.this
 }
 ```
+
 [top](#index)

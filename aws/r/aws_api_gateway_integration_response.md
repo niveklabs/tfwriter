@@ -1,11 +1,16 @@
 # aws_api_gateway_integration_response
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_integration_response" {
   source = "./modules/aws/r/aws_api_gateway_integration_response"
@@ -37,8 +45,11 @@ module "aws_api_gateway_integration_response" {
   status_code = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content_handling" {
   description = "(optional)"
@@ -84,9 +95,11 @@ variable "status_code" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_integration_response" "this" {
   content_handling    = var.content_handling
@@ -99,8 +112,11 @@ resource "aws_api_gateway_integration_response" "this" {
   status_code         = var.status_code
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -111,4 +127,5 @@ output "this" {
   value = aws_api_gateway_integration_response.this
 }
 ```
+
 [top](#index)

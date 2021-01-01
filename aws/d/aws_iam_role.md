@@ -1,11 +1,16 @@
 # aws_iam_role
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_role" {
   source = "./modules/aws/d/aws_iam_role"
@@ -25,8 +33,11 @@ module "aws_iam_role" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_iam_role" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -105,4 +121,5 @@ output "this" {
   value = aws_iam_role.this
 }
 ```
+
 [top](#index)

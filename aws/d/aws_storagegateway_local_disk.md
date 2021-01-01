@@ -1,11 +1,16 @@
 # aws_storagegateway_local_disk
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_local_disk" {
   source = "./modules/aws/d/aws_storagegateway_local_disk"
@@ -27,8 +35,11 @@ module "aws_storagegateway_local_disk" {
   gateway_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "disk_node" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "gateway_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_storagegateway_local_disk" "this" {
   disk_node   = var.disk_node
@@ -57,8 +70,11 @@ data "aws_storagegateway_local_disk" "this" {
   gateway_arn = var.gateway_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "disk_id" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_storagegateway_local_disk.this
 }
 ```
+
 [top](#index)

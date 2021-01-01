@@ -1,11 +1,16 @@
 # aws_s3_bucket_objects
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_objects" {
   source = "./modules/aws/d/aws_s3_bucket_objects"
@@ -35,8 +43,11 @@ module "aws_s3_bucket_objects" {
   start_after = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -79,9 +90,11 @@ variable "start_after" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_s3_bucket_objects" "this" {
   bucket        = var.bucket
@@ -93,8 +106,11 @@ data "aws_s3_bucket_objects" "this" {
   start_after   = var.start_after
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "common_prefixes" {
   description = "returns a list of string"
@@ -120,4 +136,5 @@ output "this" {
   value = aws_s3_bucket_objects.this
 }
 ```
+
 [top](#index)

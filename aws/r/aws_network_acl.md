@@ -1,11 +1,16 @@
 # aws_network_acl
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_network_acl" {
   source = "./modules/aws/r/aws_network_acl"
@@ -51,8 +59,11 @@ module "aws_network_acl" {
   vpc_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "egress" {
   description = "(optional)"
@@ -107,9 +118,11 @@ variable "vpc_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_network_acl" "this" {
   egress     = var.egress
@@ -119,8 +132,11 @@ resource "aws_network_acl" "this" {
   vpc_id     = var.vpc_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -156,4 +172,5 @@ output "this" {
   value = aws_network_acl.this
 }
 ```
+
 [top](#index)

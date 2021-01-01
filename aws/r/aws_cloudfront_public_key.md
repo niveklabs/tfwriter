@@ -1,11 +1,16 @@
 # aws_cloudfront_public_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudfront_public_key" {
   source = "./modules/aws/r/aws_cloudfront_public_key"
@@ -29,8 +37,11 @@ module "aws_cloudfront_public_key" {
   name_prefix = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "comment" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "name_prefix" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudfront_public_key" "this" {
   comment     = var.comment
@@ -66,8 +79,11 @@ resource "aws_cloudfront_public_key" "this" {
   name_prefix = var.name_prefix
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "caller_reference" {
   description = "returns a string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_cloudfront_public_key.this
 }
 ```
+
 [top](#index)

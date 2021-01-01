@@ -1,11 +1,16 @@
 # aws_lambda_layer_version
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_layer_version" {
   source = "./modules/aws/r/aws_lambda_layer_version"
@@ -39,8 +47,11 @@ module "aws_lambda_layer_version" {
   source_code_hash = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "compatible_runtimes" {
   description = "(optional)"
@@ -95,9 +106,11 @@ variable "source_code_hash" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_layer_version" "this" {
   compatible_runtimes = var.compatible_runtimes
@@ -111,8 +124,11 @@ resource "aws_lambda_layer_version" "this" {
   source_code_hash    = var.source_code_hash
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -163,4 +179,5 @@ output "this" {
   value = aws_lambda_layer_version.this
 }
 ```
+
 [top](#index)

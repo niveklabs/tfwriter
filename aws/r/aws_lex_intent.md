@@ -1,11 +1,16 @@
 # aws_lex_intent
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lex_intent" {
   source = "./modules/aws/r/aws_lex_intent"
@@ -118,8 +126,11 @@ module "aws_lex_intent" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "create_version" {
   description = "(optional)"
@@ -304,9 +315,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lex_intent" "this" {
   create_version          = var.create_version
@@ -477,8 +490,11 @@ resource "aws_lex_intent" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -514,4 +530,5 @@ output "this" {
   value = aws_lex_intent.this
 }
 ```
+
 [top](#index)

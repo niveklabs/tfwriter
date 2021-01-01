@@ -1,11 +1,16 @@
 # aws_glue_workflow
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_workflow" {
   source = "./modules/aws/r/aws_glue_workflow"
@@ -31,8 +39,11 @@ module "aws_glue_workflow" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_run_properties" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_workflow" "this" {
   default_run_properties = var.default_run_properties
@@ -76,8 +89,11 @@ resource "aws_glue_workflow" "this" {
   tags                   = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -93,4 +109,5 @@ output "this" {
   value = aws_glue_workflow.this
 }
 ```
+
 [top](#index)

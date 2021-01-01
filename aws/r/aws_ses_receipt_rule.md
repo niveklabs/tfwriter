@@ -1,11 +1,16 @@
 # aws_ses_receipt_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_receipt_rule" {
   source = "./modules/aws/r/aws_ses_receipt_rule"
@@ -82,8 +90,11 @@ module "aws_ses_receipt_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "after" {
   description = "(optional)"
@@ -214,9 +225,11 @@ variable "workmail_action" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_receipt_rule" "this" {
   after         = var.after
@@ -297,8 +310,11 @@ resource "aws_ses_receipt_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "enabled" {
   description = "returns a bool"
@@ -324,4 +340,5 @@ output "this" {
   value = aws_ses_receipt_rule.this
 }
 ```
+
 [top](#index)

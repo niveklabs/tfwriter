@@ -1,11 +1,16 @@
 # aws_regions
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_regions" {
   source = "./modules/aws/d/aws_regions"
@@ -28,8 +36,11 @@ module "aws_regions" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "all_regions" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_regions" "this" {
   all_regions = var.all_regions
@@ -65,8 +78,11 @@ data "aws_regions" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -82,4 +98,5 @@ output "this" {
   value = aws_regions.this
 }
 ```
+
 [top](#index)

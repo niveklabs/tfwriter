@@ -1,11 +1,16 @@
 # aws_cloudwatch_event_permission
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_event_permission" {
   source = "./modules/aws/r/aws_cloudwatch_event_permission"
@@ -35,8 +43,11 @@ module "aws_cloudwatch_event_permission" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "action" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "condition" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_event_permission" "this" {
   action         = var.action
@@ -93,8 +106,11 @@ resource "aws_cloudwatch_event_permission" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -105,4 +121,5 @@ output "this" {
   value = aws_cloudwatch_event_permission.this
 }
 ```
+
 [top](#index)

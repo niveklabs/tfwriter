@@ -1,11 +1,16 @@
 # aws_codestarnotifications_notification_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codestarnotifications_notification_rule" {
   source = "./modules/aws/r/aws_codestarnotifications_notification_rule"
@@ -39,8 +47,11 @@ module "aws_codestarnotifications_notification_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "detail_type" {
   description = "(required)"
@@ -86,9 +97,11 @@ variable "target" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codestarnotifications_notification_rule" "this" {
   detail_type    = var.detail_type
@@ -108,8 +121,11 @@ resource "aws_codestarnotifications_notification_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -125,4 +141,5 @@ output "this" {
   value = aws_codestarnotifications_notification_rule.this
 }
 ```
+
 [top](#index)

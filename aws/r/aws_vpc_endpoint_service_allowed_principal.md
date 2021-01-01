@@ -1,11 +1,16 @@
 # aws_vpc_endpoint_service_allowed_principal
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_endpoint_service_allowed_principal" {
   source = "./modules/aws/r/aws_vpc_endpoint_service_allowed_principal"
@@ -25,8 +33,11 @@ module "aws_vpc_endpoint_service_allowed_principal" {
   vpc_endpoint_service_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "principal_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "vpc_endpoint_service_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_endpoint_service_allowed_principal" "this" {
   principal_arn           = var.principal_arn
   vpc_endpoint_service_id = var.vpc_endpoint_service_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_vpc_endpoint_service_allowed_principal.this
 }
 ```
+
 [top](#index)

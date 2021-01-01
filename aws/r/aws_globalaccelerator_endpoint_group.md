@@ -1,11 +1,16 @@
 # aws_globalaccelerator_endpoint_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_globalaccelerator_endpoint_group" {
   source = "./modules/aws/r/aws_globalaccelerator_endpoint_group"
@@ -48,8 +56,11 @@ module "aws_globalaccelerator_endpoint_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "endpoint_group_region" {
   description = "(optional)"
@@ -121,9 +132,11 @@ variable "port_override" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_globalaccelerator_endpoint_group" "this" {
   endpoint_group_region         = var.endpoint_group_region
@@ -154,8 +167,11 @@ resource "aws_globalaccelerator_endpoint_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -186,4 +202,5 @@ output "this" {
   value = aws_globalaccelerator_endpoint_group.this
 }
 ```
+
 [top](#index)

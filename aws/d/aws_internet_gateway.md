@@ -1,11 +1,16 @@
 # aws_internet_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_internet_gateway" {
   source = "./modules/aws/d/aws_internet_gateway"
@@ -30,8 +38,11 @@ module "aws_internet_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "internet_gateway_id" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_internet_gateway" "this" {
   internet_gateway_id = var.internet_gateway_id
@@ -74,8 +87,11 @@ data "aws_internet_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -111,4 +127,5 @@ output "this" {
   value = aws_internet_gateway.this
 }
 ```
+
 [top](#index)

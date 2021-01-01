@@ -1,11 +1,16 @@
 # aws_elastic_beanstalk_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastic_beanstalk_application" {
   source = "./modules/aws/d/aws_elastic_beanstalk_application"
@@ -23,24 +31,32 @@ module "aws_elastic_beanstalk_application" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_elastic_beanstalk_application" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "appversion_lifecycle" {
   description = "returns a list of object"
@@ -66,4 +82,5 @@ output "this" {
   value = aws_elastic_beanstalk_application.this
 }
 ```
+
 [top](#index)

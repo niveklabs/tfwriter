@@ -1,11 +1,16 @@
 # aws_wafv2_ip_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafv2_ip_set" {
   source = "./modules/aws/r/aws_wafv2_ip_set"
@@ -33,8 +41,11 @@ module "aws_wafv2_ip_set" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "addresses" {
   description = "(optional)"
@@ -69,9 +80,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafv2_ip_set" "this" {
   addresses          = var.addresses
@@ -82,8 +95,11 @@ resource "aws_wafv2_ip_set" "this" {
   tags               = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -104,4 +120,5 @@ output "this" {
   value = aws_wafv2_ip_set.this
 }
 ```
+
 [top](#index)

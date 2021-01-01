@@ -1,11 +1,16 @@
 # aws_emr_instance_fleet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_emr_instance_fleet" {
   source = "./modules/aws/r/aws_emr_instance_fleet"
@@ -58,8 +66,11 @@ module "aws_emr_instance_fleet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_id" {
   description = "(required)"
@@ -133,9 +144,11 @@ variable "launch_specifications" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_emr_instance_fleet" "this" {
   cluster_id                = var.cluster_id
@@ -198,8 +211,11 @@ resource "aws_emr_instance_fleet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -220,4 +236,5 @@ output "this" {
   value = aws_emr_instance_fleet.this
 }
 ```
+
 [top](#index)

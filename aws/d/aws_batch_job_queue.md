@@ -1,11 +1,16 @@
 # aws_batch_job_queue
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_batch_job_queue" {
   source = "./modules/aws/d/aws_batch_job_queue"
@@ -25,8 +33,11 @@ module "aws_batch_job_queue" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_batch_job_queue" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -95,4 +111,5 @@ output "this" {
   value = aws_batch_job_queue.this
 }
 ```
+
 [top](#index)

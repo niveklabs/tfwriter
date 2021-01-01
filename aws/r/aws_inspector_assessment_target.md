@@ -1,11 +1,16 @@
 # aws_inspector_assessment_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_inspector_assessment_target" {
   source = "./modules/aws/r/aws_inspector_assessment_target"
@@ -25,8 +33,11 @@ module "aws_inspector_assessment_target" {
   resource_group_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "resource_group_arn" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_inspector_assessment_target" "this" {
   name               = var.name
   resource_group_arn = var.resource_group_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -65,4 +81,5 @@ output "this" {
   value = aws_inspector_assessment_target.this
 }
 ```
+
 [top](#index)

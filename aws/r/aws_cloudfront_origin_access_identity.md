@@ -1,11 +1,16 @@
 # aws_cloudfront_origin_access_identity
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudfront_origin_access_identity" {
   source = "./modules/aws/r/aws_cloudfront_origin_access_identity"
@@ -23,8 +31,11 @@ module "aws_cloudfront_origin_access_identity" {
   comment = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "comment" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "comment" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudfront_origin_access_identity" "this" {
   comment = var.comment
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "caller_reference" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_cloudfront_origin_access_identity.this
 }
 ```
+
 [top](#index)

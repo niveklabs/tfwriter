@@ -1,11 +1,16 @@
 # aws_lb
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb" {
   source = "./modules/aws/r/aws_lb"
@@ -68,8 +76,11 @@ module "aws_lb" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "customer_owned_ipv4_pool" {
   description = "(optional)"
@@ -192,9 +203,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb" "this" {
   customer_owned_ipv4_pool         = var.customer_owned_ipv4_pool
@@ -241,8 +254,11 @@ resource "aws_lb" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -303,4 +319,5 @@ output "this" {
   value = aws_lb.this
 }
 ```
+
 [top](#index)

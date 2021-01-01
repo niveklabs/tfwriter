@@ -1,11 +1,16 @@
 # aws_lb_ssl_negotiation_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_ssl_negotiation_policy" {
   source = "./modules/aws/r/aws_lb_ssl_negotiation_policy"
@@ -32,8 +40,11 @@ module "aws_lb_ssl_negotiation_policy" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "lb_port" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "attribute" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb_ssl_negotiation_policy" "this" {
   lb_port       = var.lb_port
@@ -80,8 +93,11 @@ resource "aws_lb_ssl_negotiation_policy" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_lb_ssl_negotiation_policy.this
 }
 ```
+
 [top](#index)

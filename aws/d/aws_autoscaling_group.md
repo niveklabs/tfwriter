@@ -1,11 +1,16 @@
 # aws_autoscaling_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_group" {
   source = "./modules/aws/d/aws_autoscaling_group"
@@ -23,24 +31,32 @@ module "aws_autoscaling_group" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_autoscaling_group" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -141,4 +157,5 @@ output "this" {
   value = aws_autoscaling_group.this
 }
 ```
+
 [top](#index)

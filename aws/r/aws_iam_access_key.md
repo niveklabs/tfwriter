@@ -1,11 +1,16 @@
 # aws_iam_access_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_access_key" {
   source = "./modules/aws/r/aws_iam_access_key"
@@ -27,8 +35,11 @@ module "aws_iam_access_key" {
   user = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "pgp_key" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "user" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_access_key" "this" {
   pgp_key = var.pgp_key
@@ -57,8 +70,11 @@ resource "aws_iam_access_key" "this" {
   user    = var.user
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "encrypted_secret" {
   description = "returns a string"
@@ -96,4 +112,5 @@ output "this" {
   value = aws_iam_access_key.this
 }
 ```
+
 [top](#index)

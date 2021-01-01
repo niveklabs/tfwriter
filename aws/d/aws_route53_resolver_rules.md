@@ -1,11 +1,16 @@
 # aws_route53_resolver_rules
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_rules" {
   source = "./modules/aws/d/aws_route53_resolver_rules"
@@ -29,8 +37,11 @@ module "aws_route53_resolver_rules" {
   share_status = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "owner_id" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "share_status" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_route53_resolver_rules" "this" {
   owner_id             = var.owner_id
@@ -67,8 +80,11 @@ data "aws_route53_resolver_rules" "this" {
   share_status         = var.share_status
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_route53_resolver_rules.this
 }
 ```
+
 [top](#index)

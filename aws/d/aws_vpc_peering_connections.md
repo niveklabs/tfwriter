@@ -1,11 +1,16 @@
 # aws_vpc_peering_connections
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_peering_connections" {
   source = "./modules/aws/d/aws_vpc_peering_connections"
@@ -28,8 +36,11 @@ module "aws_vpc_peering_connections" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_vpc_peering_connections" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_vpc_peering_connections" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_vpc_peering_connections.this
 }
 ```
+
 [top](#index)

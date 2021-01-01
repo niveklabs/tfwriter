@@ -1,11 +1,16 @@
 # aws_codebuild_webhook
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codebuild_webhook" {
   source = "./modules/aws/r/aws_codebuild_webhook"
@@ -33,8 +41,11 @@ module "aws_codebuild_webhook" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "branch_filter" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "filter_group" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codebuild_webhook" "this" {
   branch_filter = var.branch_filter
@@ -89,8 +102,11 @@ resource "aws_codebuild_webhook" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_codebuild_webhook.this
 }
 ```
+
 [top](#index)

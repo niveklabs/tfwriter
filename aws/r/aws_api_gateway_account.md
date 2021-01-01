@@ -1,11 +1,16 @@
 # aws_api_gateway_account
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_account" {
   source = "./modules/aws/r/aws_api_gateway_account"
@@ -23,8 +31,11 @@ module "aws_api_gateway_account" {
   cloudwatch_role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cloudwatch_role_arn" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "cloudwatch_role_arn" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_account" "this" {
   cloudwatch_role_arn = var.cloudwatch_role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_api_gateway_account.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_lambda_alias
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_alias" {
   source = "./modules/aws/d/aws_lambda_alias"
@@ -25,8 +33,11 @@ module "aws_lambda_alias" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "function_name" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lambda_alias" "this" {
   function_name = var.function_name
   name          = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_lambda_alias.this
 }
 ```
+
 [top](#index)

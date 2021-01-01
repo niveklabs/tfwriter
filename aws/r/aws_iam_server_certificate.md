@@ -1,11 +1,16 @@
 # aws_iam_server_certificate
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_server_certificate" {
   source = "./modules/aws/r/aws_iam_server_certificate"
@@ -35,8 +43,11 @@ module "aws_iam_server_certificate" {
   private_key = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(optional)"
@@ -78,9 +89,11 @@ variable "private_key" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_server_certificate" "this" {
   arn               = var.arn
@@ -92,8 +105,11 @@ resource "aws_iam_server_certificate" "this" {
   private_key       = var.private_key
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -114,4 +130,5 @@ output "this" {
   value = aws_iam_server_certificate.this
 }
 ```
+
 [top](#index)

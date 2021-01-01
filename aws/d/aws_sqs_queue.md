@@ -1,11 +1,16 @@
 # aws_sqs_queue
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sqs_queue" {
   source = "./modules/aws/d/aws_sqs_queue"
@@ -25,8 +33,11 @@ module "aws_sqs_queue" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_sqs_queue" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -75,4 +91,5 @@ output "this" {
   value = aws_sqs_queue.this
 }
 ```
+
 [top](#index)

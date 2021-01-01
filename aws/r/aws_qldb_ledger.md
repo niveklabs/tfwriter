@@ -1,11 +1,16 @@
 # aws_qldb_ledger
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_qldb_ledger" {
   source = "./modules/aws/r/aws_qldb_ledger"
@@ -27,8 +35,11 @@ module "aws_qldb_ledger" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "deletion_protection" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_qldb_ledger" "this" {
   deletion_protection = var.deletion_protection
@@ -58,8 +71,11 @@ resource "aws_qldb_ledger" "this" {
   tags                = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -80,4 +96,5 @@ output "this" {
   value = aws_qldb_ledger.this
 }
 ```
+
 [top](#index)

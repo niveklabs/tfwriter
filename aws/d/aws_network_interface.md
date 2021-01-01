@@ -1,11 +1,16 @@
 # aws_network_interface
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_network_interface" {
   source = "./modules/aws/d/aws_network_interface"
@@ -28,8 +36,11 @@ module "aws_network_interface" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_network_interface" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_network_interface" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "association" {
   description = "returns a list of object"
@@ -162,4 +178,5 @@ output "this" {
   value = aws_network_interface.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_worklink_website_certificate_authority_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_worklink_website_certificate_authority_association" {
   source = "./modules/aws/r/aws_worklink_website_certificate_authority_association"
@@ -27,8 +35,11 @@ module "aws_worklink_website_certificate_authority_association" {
   fleet_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "fleet_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_worklink_website_certificate_authority_association" "this" {
   certificate  = var.certificate
@@ -56,8 +69,11 @@ resource "aws_worklink_website_certificate_authority_association" "this" {
   fleet_arn    = var.fleet_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_worklink_website_certificate_authority_association.this
 }
 ```
+
 [top](#index)

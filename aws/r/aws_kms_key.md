@@ -1,11 +1,16 @@
 # aws_kms_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_key" {
   source = "./modules/aws/r/aws_kms_key"
@@ -37,8 +45,11 @@ module "aws_kms_key" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "customer_master_key_spec" {
   description = "(optional)"
@@ -88,9 +99,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kms_key" "this" {
   customer_master_key_spec = var.customer_master_key_spec
@@ -103,8 +116,11 @@ resource "aws_kms_key" "this" {
   tags                     = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -135,4 +151,5 @@ output "this" {
   value = aws_kms_key.this
 }
 ```
+
 [top](#index)

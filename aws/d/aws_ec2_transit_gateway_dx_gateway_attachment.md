@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_dx_gateway_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_dx_gateway_attachment" {
   source = "./modules/aws/d/aws_ec2_transit_gateway_dx_gateway_attachment"
@@ -32,8 +40,11 @@ module "aws_ec2_transit_gateway_dx_gateway_attachment" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "dx_gateway_id" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_transit_gateway_dx_gateway_attachment" "this" {
   dx_gateway_id      = var.dx_gateway_id
@@ -83,8 +96,11 @@ data "aws_ec2_transit_gateway_dx_gateway_attachment" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -100,4 +116,5 @@ output "this" {
   value = aws_ec2_transit_gateway_dx_gateway_attachment.this
 }
 ```
+
 [top](#index)

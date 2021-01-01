@@ -1,11 +1,16 @@
 # aws_macie_s3_bucket_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_macie_s3_bucket_association" {
   source = "./modules/aws/r/aws_macie_s3_bucket_association"
@@ -32,8 +40,11 @@ module "aws_macie_s3_bucket_association" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket_name" {
   description = "(required)"
@@ -63,9 +74,11 @@ variable "classification_type" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_macie_s3_bucket_association" "this" {
   bucket_name       = var.bucket_name
@@ -82,8 +95,11 @@ resource "aws_macie_s3_bucket_association" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -94,4 +110,5 @@ output "this" {
   value = aws_macie_s3_bucket_association.this
 }
 ```
+
 [top](#index)

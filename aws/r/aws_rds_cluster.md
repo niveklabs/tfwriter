@@ -1,11 +1,16 @@
 # aws_rds_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_rds_cluster" {
   source = "./modules/aws/r/aws_rds_cluster"
@@ -120,8 +128,11 @@ module "aws_rds_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_major_version_upgrade" {
   description = "(optional)"
@@ -386,9 +397,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_rds_cluster" "this" {
   allow_major_version_upgrade         = var.allow_major_version_upgrade
@@ -470,8 +483,11 @@ resource "aws_rds_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "apply_immediately" {
   description = "returns a bool"
@@ -587,4 +603,5 @@ output "this" {
   value = aws_rds_cluster.this
 }
 ```
+
 [top](#index)

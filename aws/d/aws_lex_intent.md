@@ -1,11 +1,16 @@
 # aws_lex_intent
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lex_intent" {
   source = "./modules/aws/d/aws_lex_intent"
@@ -25,8 +33,11 @@ module "aws_lex_intent" {
   version = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "version" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lex_intent" "this" {
   name    = var.name
   version = var.version
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -90,4 +106,5 @@ output "this" {
   value = aws_lex_intent.this
 }
 ```
+
 [top](#index)

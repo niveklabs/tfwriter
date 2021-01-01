@@ -1,11 +1,16 @@
 # aws_glue_dev_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_dev_endpoint" {
   source = "./modules/aws/r/aws_glue_dev_endpoint"
@@ -51,8 +59,11 @@ module "aws_glue_dev_endpoint" {
   worker_type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arguments" {
   description = "(optional)"
@@ -142,9 +153,11 @@ variable "worker_type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_dev_endpoint" "this" {
   arguments                 = var.arguments
@@ -164,8 +177,11 @@ resource "aws_glue_dev_endpoint" "this" {
   worker_type               = var.worker_type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -221,4 +237,5 @@ output "this" {
   value = aws_glue_dev_endpoint.this
 }
 ```
+
 [top](#index)

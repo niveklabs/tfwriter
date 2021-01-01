@@ -1,11 +1,16 @@
 # aws_network_interface
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_network_interface" {
   source = "./modules/aws/r/aws_network_interface"
@@ -47,8 +55,11 @@ module "aws_network_interface" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -121,9 +132,11 @@ variable "attachment" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_network_interface" "this" {
   description        = var.description
@@ -147,8 +160,11 @@ resource "aws_network_interface" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -204,4 +220,5 @@ output "this" {
   value = aws_network_interface.this
 }
 ```
+
 [top](#index)

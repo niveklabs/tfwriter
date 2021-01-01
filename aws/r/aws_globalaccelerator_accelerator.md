@@ -1,11 +1,16 @@
 # aws_globalaccelerator_accelerator
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_globalaccelerator_accelerator" {
   source = "./modules/aws/r/aws_globalaccelerator_accelerator"
@@ -35,8 +43,11 @@ module "aws_globalaccelerator_accelerator" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enabled" {
   description = "(optional)"
@@ -73,9 +84,11 @@ variable "attributes" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_globalaccelerator_accelerator" "this" {
   enabled         = var.enabled
@@ -94,8 +107,11 @@ resource "aws_globalaccelerator_accelerator" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "dns_name" {
   description = "returns a string"
@@ -121,4 +137,5 @@ output "this" {
   value = aws_globalaccelerator_accelerator.this
 }
 ```
+
 [top](#index)

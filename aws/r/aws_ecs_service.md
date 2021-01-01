@@ -1,11 +1,16 @@
 # aws_ecs_service
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_service" {
   source = "./modules/aws/r/aws_ecs_service"
@@ -97,8 +105,11 @@ module "aws_ecs_service" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster" {
   description = "(optional)"
@@ -287,9 +298,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ecs_service" "this" {
   cluster                            = var.cluster
@@ -379,8 +392,11 @@ resource "aws_ecs_service" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "cluster" {
   description = "returns a string"
@@ -411,4 +427,5 @@ output "this" {
   value = aws_ecs_service.this
 }
 ```
+
 [top](#index)

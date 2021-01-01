@@ -1,11 +1,16 @@
 # aws_opsworks_rails_app_layer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_rails_app_layer" {
   source = "./modules/aws/r/aws_opsworks_rails_app_layer"
@@ -83,8 +91,11 @@ module "aws_opsworks_rails_app_layer" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "app_server" {
   description = "(optional)"
@@ -257,9 +268,11 @@ variable "ebs_volume" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_rails_app_layer" "this" {
   app_server                  = var.app_server
@@ -304,8 +317,11 @@ resource "aws_opsworks_rails_app_layer" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -321,4 +337,5 @@ output "this" {
   value = aws_opsworks_rails_app_layer.this
 }
 ```
+
 [top](#index)

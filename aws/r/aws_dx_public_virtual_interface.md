@@ -1,11 +1,16 @@
 # aws_dx_public_virtual_interface
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_public_virtual_interface" {
   source = "./modules/aws/r/aws_dx_public_virtual_interface"
@@ -46,8 +54,11 @@ module "aws_dx_public_virtual_interface" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "address_family" {
   description = "(required)"
@@ -114,9 +125,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_public_virtual_interface" "this" {
   address_family        = var.address_family
@@ -140,8 +153,11 @@ resource "aws_dx_public_virtual_interface" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "amazon_address" {
   description = "returns a string"
@@ -182,4 +198,5 @@ output "this" {
   value = aws_dx_public_virtual_interface.this
 }
 ```
+
 [top](#index)

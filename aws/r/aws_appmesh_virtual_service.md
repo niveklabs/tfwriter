@@ -1,11 +1,16 @@
 # aws_appmesh_virtual_service
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appmesh_virtual_service" {
   source = "./modules/aws/r/aws_appmesh_virtual_service"
@@ -40,8 +48,11 @@ module "aws_appmesh_virtual_service" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "mesh_name" {
   description = "(required)"
@@ -87,9 +98,11 @@ variable "spec" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appmesh_virtual_service" "this" {
   mesh_name  = var.mesh_name
@@ -127,8 +140,11 @@ resource "aws_appmesh_virtual_service" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -164,4 +180,5 @@ output "this" {
   value = aws_appmesh_virtual_service.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_apigatewayv2_deployment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_deployment" {
   source = "./modules/aws/r/aws_apigatewayv2_deployment"
@@ -27,8 +35,11 @@ module "aws_apigatewayv2_deployment" {
   triggers = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "triggers" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_deployment" "this" {
   api_id      = var.api_id
@@ -57,8 +70,11 @@ resource "aws_apigatewayv2_deployment" "this" {
   triggers    = var.triggers
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "auto_deployed" {
   description = "returns a bool"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_apigatewayv2_deployment.this
 }
 ```
+
 [top](#index)

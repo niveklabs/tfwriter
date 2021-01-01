@@ -1,11 +1,16 @@
 # aws_lb_listener_certificate
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_listener_certificate" {
   source = "./modules/aws/r/aws_lb_listener_certificate"
@@ -25,8 +33,11 @@ module "aws_lb_listener_certificate" {
   listener_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "listener_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb_listener_certificate" "this" {
   certificate_arn = var.certificate_arn
   listener_arn    = var.listener_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_lb_listener_certificate.this
 }
 ```
+
 [top](#index)

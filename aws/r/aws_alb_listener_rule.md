@@ -1,11 +1,16 @@
 # aws_alb_listener_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_alb_listener_rule" {
   source = "./modules/aws/r/aws_alb_listener_rule"
@@ -100,8 +108,11 @@ module "aws_alb_listener_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "listener_arn" {
   description = "(required)"
@@ -225,9 +236,11 @@ variable "condition" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_alb_listener_rule" "this" {
   listener_arn = var.listener_arn
@@ -371,8 +384,11 @@ resource "aws_alb_listener_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -393,4 +409,5 @@ output "this" {
   value = aws_alb_listener_rule.this
 }
 ```
+
 [top](#index)

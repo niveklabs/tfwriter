@@ -1,11 +1,16 @@
 # aws_guardduty_organization_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_organization_configuration" {
   source = "./modules/aws/r/aws_guardduty_organization_configuration"
@@ -25,8 +33,11 @@ module "aws_guardduty_organization_configuration" {
   detector_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "auto_enable" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "detector_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_organization_configuration" "this" {
   auto_enable = var.auto_enable
   detector_id = var.detector_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_guardduty_organization_configuration.this
 }
 ```
+
 [top](#index)

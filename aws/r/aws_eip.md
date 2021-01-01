@@ -1,11 +1,16 @@
 # aws_eip
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eip" {
   source = "./modules/aws/r/aws_eip"
@@ -43,8 +51,11 @@ module "aws_eip" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "associate_with_private_ip" {
   description = "(optional)"
@@ -106,9 +117,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_eip" "this" {
   associate_with_private_ip = var.associate_with_private_ip
@@ -131,8 +144,11 @@ resource "aws_eip" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allocation_id" {
   description = "returns a string"
@@ -213,4 +229,5 @@ output "this" {
   value = aws_eip.this
 }
 ```
+
 [top](#index)

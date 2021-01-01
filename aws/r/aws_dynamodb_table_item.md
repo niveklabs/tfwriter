@@ -1,11 +1,16 @@
 # aws_dynamodb_table_item
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dynamodb_table_item" {
   source = "./modules/aws/r/aws_dynamodb_table_item"
@@ -29,8 +37,11 @@ module "aws_dynamodb_table_item" {
   table_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "hash_key" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "table_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dynamodb_table_item" "this" {
   hash_key   = var.hash_key
@@ -64,8 +77,11 @@ resource "aws_dynamodb_table_item" "this" {
   table_name = var.table_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_dynamodb_table_item.this
 }
 ```
+
 [top](#index)

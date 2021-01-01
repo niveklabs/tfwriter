@@ -1,11 +1,16 @@
 # aws_acmpca_certificate_authority
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_acmpca_certificate_authority" {
   source = "./modules/aws/r/aws_acmpca_certificate_authority"
@@ -62,8 +70,11 @@ module "aws_acmpca_certificate_authority" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enabled" {
   description = "(optional)"
@@ -143,9 +154,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_acmpca_certificate_authority" "this" {
   enabled                         = var.enabled
@@ -207,8 +220,11 @@ resource "aws_acmpca_certificate_authority" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -259,4 +275,5 @@ output "this" {
   value = aws_acmpca_certificate_authority.this
 }
 ```
+
 [top](#index)

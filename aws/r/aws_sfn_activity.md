@@ -1,11 +1,16 @@
 # aws_sfn_activity
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sfn_activity" {
   source = "./modules/aws/r/aws_sfn_activity"
@@ -25,8 +33,11 @@ module "aws_sfn_activity" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sfn_activity" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "creation_date" {
   description = "returns a string"
@@ -65,4 +81,5 @@ output "this" {
   value = aws_sfn_activity.this
 }
 ```
+
 [top](#index)

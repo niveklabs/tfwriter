@@ -1,11 +1,16 @@
 # aws_db_event_categories
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_event_categories" {
   source = "./modules/aws/d/aws_db_event_categories"
@@ -23,8 +31,11 @@ module "aws_db_event_categories" {
   source_type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "source_type" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "source_type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_db_event_categories" "this" {
   source_type = var.source_type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "event_categories" {
   description = "returns a set of string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_db_event_categories.this
 }
 ```
+
 [top](#index)

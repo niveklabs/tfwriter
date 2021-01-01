@@ -1,11 +1,16 @@
 # aws_ssm_parameter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_parameter" {
   source = "./modules/aws/d/aws_ssm_parameter"
@@ -25,8 +33,11 @@ module "aws_ssm_parameter" {
   with_decryption = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "with_decryption" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ssm_parameter" "this" {
   name            = var.name
   with_decryption = var.with_decryption
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_ssm_parameter.this
 }
 ```
+
 [top](#index)

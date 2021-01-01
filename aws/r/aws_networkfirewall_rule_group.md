@@ -1,11 +1,16 @@
 # aws_networkfirewall_rule_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_networkfirewall_rule_group" {
   source = "./modules/aws/r/aws_networkfirewall_rule_group"
@@ -112,8 +120,11 @@ module "aws_networkfirewall_rule_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "capacity" {
   description = "(required)"
@@ -279,9 +290,11 @@ variable "rule_group" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_networkfirewall_rule_group" "this" {
   capacity    = var.capacity
@@ -480,8 +493,11 @@ resource "aws_networkfirewall_rule_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -502,4 +518,5 @@ output "this" {
   value = aws_networkfirewall_rule_group.this
 }
 ```
+
 [top](#index)

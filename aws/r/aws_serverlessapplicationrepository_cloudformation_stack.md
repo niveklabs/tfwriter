@@ -1,11 +1,16 @@
 # aws_serverlessapplicationrepository_cloudformation_stack
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_serverlessapplicationrepository_cloudformation_stack" {
   source = "./modules/aws/r/aws_serverlessapplicationrepository_cloudformation_stack"
@@ -39,8 +47,11 @@ module "aws_serverlessapplicationrepository_cloudformation_stack" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -87,9 +98,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_serverlessapplicationrepository_cloudformation_stack" "this" {
   application_id   = var.application_id
@@ -110,8 +123,11 @@ resource "aws_serverlessapplicationrepository_cloudformation_stack" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -137,4 +153,5 @@ output "this" {
   value = aws_serverlessapplicationrepository_cloudformation_stack.this
 }
 ```
+
 [top](#index)

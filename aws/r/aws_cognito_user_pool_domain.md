@@ -1,11 +1,16 @@
 # aws_cognito_user_pool_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_user_pool_domain" {
   source = "./modules/aws/r/aws_cognito_user_pool_domain"
@@ -27,8 +35,11 @@ module "aws_cognito_user_pool_domain" {
   user_pool_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "user_pool_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_user_pool_domain" "this" {
   certificate_arn = var.certificate_arn
@@ -56,8 +69,11 @@ resource "aws_cognito_user_pool_domain" "this" {
   user_pool_id    = var.user_pool_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "aws_account_id" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_cognito_user_pool_domain.this
 }
 ```
+
 [top](#index)

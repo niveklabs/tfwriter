@@ -1,11 +1,16 @@
 # aws_glacier_vault_lock
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glacier_vault_lock" {
   source = "./modules/aws/r/aws_glacier_vault_lock"
@@ -29,8 +37,11 @@ module "aws_glacier_vault_lock" {
   vault_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "complete_lock" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "vault_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glacier_vault_lock" "this" {
   complete_lock         = var.complete_lock
@@ -64,8 +77,11 @@ resource "aws_glacier_vault_lock" "this" {
   vault_name            = var.vault_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_glacier_vault_lock.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_eks_fargate_profile
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eks_fargate_profile" {
   source = "./modules/aws/r/aws_eks_fargate_profile"
@@ -41,8 +49,11 @@ module "aws_eks_fargate_profile" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_name" {
   description = "(required)"
@@ -92,9 +103,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_eks_fargate_profile" "this" {
   cluster_name           = var.cluster_name
@@ -121,8 +134,11 @@ resource "aws_eks_fargate_profile" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -143,4 +159,5 @@ output "this" {
   value = aws_eks_fargate_profile.this
 }
 ```
+
 [top](#index)

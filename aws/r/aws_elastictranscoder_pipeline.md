@@ -1,11 +1,16 @@
 # aws_elastictranscoder_pipeline
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastictranscoder_pipeline" {
   source = "./modules/aws/r/aws_elastictranscoder_pipeline"
@@ -60,8 +68,11 @@ module "aws_elastictranscoder_pipeline" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "aws_kms_key_arn" {
   description = "(optional)"
@@ -150,9 +161,11 @@ variable "thumbnail_config_permissions" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elastictranscoder_pipeline" "this" {
   aws_kms_key_arn = var.aws_kms_key_arn
@@ -207,8 +220,11 @@ resource "aws_elastictranscoder_pipeline" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -234,4 +250,5 @@ output "this" {
   value = aws_elastictranscoder_pipeline.this
 }
 ```
+
 [top](#index)

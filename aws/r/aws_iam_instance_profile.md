@@ -1,11 +1,16 @@
 # aws_iam_instance_profile
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_instance_profile" {
   source = "./modules/aws/r/aws_iam_instance_profile"
@@ -29,8 +37,11 @@ module "aws_iam_instance_profile" {
   role = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "role" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_instance_profile" "this" {
   name        = var.name
@@ -67,8 +80,11 @@ resource "aws_iam_instance_profile" "this" {
   role        = var.role
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -99,4 +115,5 @@ output "this" {
   value = aws_iam_instance_profile.this
 }
 ```
+
 [top](#index)

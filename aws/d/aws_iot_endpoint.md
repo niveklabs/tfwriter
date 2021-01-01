@@ -1,11 +1,16 @@
 # aws_iot_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_endpoint" {
   source = "./modules/aws/d/aws_iot_endpoint"
@@ -23,8 +31,11 @@ module "aws_iot_endpoint" {
   endpoint_type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "endpoint_type" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "endpoint_type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_iot_endpoint" "this" {
   endpoint_type = var.endpoint_type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "endpoint_address" {
   description = "returns a string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_iot_endpoint.this
 }
 ```
+
 [top](#index)

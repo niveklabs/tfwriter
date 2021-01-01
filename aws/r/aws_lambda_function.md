@@ -1,11 +1,16 @@
 # aws_lambda_function
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_function" {
   source = "./modules/aws/r/aws_lambda_function"
@@ -94,8 +102,11 @@ module "aws_lambda_function" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "code_signing_config_arn" {
   description = "(optional)"
@@ -290,9 +301,11 @@ variable "vpc_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_function" "this" {
   code_signing_config_arn        = var.code_signing_config_arn
@@ -371,8 +384,11 @@ resource "aws_lambda_function" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -428,4 +444,5 @@ output "this" {
   value = aws_lambda_function.this
 }
 ```
+
 [top](#index)

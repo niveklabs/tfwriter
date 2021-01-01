@@ -1,11 +1,16 @@
 # aws_lb_cookie_stickiness_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_cookie_stickiness_policy" {
   source = "./modules/aws/r/aws_lb_cookie_stickiness_policy"
@@ -29,8 +37,11 @@ module "aws_lb_cookie_stickiness_policy" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cookie_expiration_period" {
   description = "(optional)"
@@ -53,9 +64,11 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb_cookie_stickiness_policy" "this" {
   cookie_expiration_period = var.cookie_expiration_period
@@ -64,8 +77,11 @@ resource "aws_lb_cookie_stickiness_policy" "this" {
   name                     = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_lb_cookie_stickiness_policy.this
 }
 ```
+
 [top](#index)

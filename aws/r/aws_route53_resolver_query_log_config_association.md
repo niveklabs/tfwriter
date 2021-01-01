@@ -1,11 +1,16 @@
 # aws_route53_resolver_query_log_config_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_query_log_config_association" {
   source = "./modules/aws/r/aws_route53_resolver_query_log_config_association"
@@ -25,8 +33,11 @@ module "aws_route53_resolver_query_log_config_association" {
   resource_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "resolver_query_log_config_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "resource_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_resolver_query_log_config_association" "this" {
   resolver_query_log_config_id = var.resolver_query_log_config_id
   resource_id                  = var.resource_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_route53_resolver_query_log_config_association.this
 }
 ```
+
 [top](#index)

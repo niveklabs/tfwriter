@@ -1,11 +1,16 @@
 # aws_arn
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_arn" {
   source = "./modules/aws/d/aws_arn"
@@ -23,24 +31,32 @@ module "aws_arn" {
   arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_arn" "this" {
   arn = var.arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_arn.this
 }
 ```
+
 [top](#index)

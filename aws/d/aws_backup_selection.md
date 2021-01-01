@@ -1,11 +1,16 @@
 # aws_backup_selection
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_backup_selection" {
   source = "./modules/aws/d/aws_backup_selection"
@@ -25,8 +33,11 @@ module "aws_backup_selection" {
   selection_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "plan_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "selection_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_backup_selection" "this" {
   plan_id      = var.plan_id
   selection_id = var.selection_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "iam_role_arn" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_backup_selection.this
 }
 ```
+
 [top](#index)

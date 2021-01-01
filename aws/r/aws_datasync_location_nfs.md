@@ -1,11 +1,16 @@
 # aws_datasync_location_nfs
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_location_nfs" {
   source = "./modules/aws/r/aws_datasync_location_nfs"
@@ -31,8 +39,11 @@ module "aws_datasync_location_nfs" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "server_hostname" {
   description = "(required)"
@@ -59,9 +70,11 @@ variable "on_prem_config" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_location_nfs" "this" {
   server_hostname = var.server_hostname
@@ -77,8 +90,11 @@ resource "aws_datasync_location_nfs" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -99,4 +115,5 @@ output "this" {
   value = aws_datasync_location_nfs.this
 }
 ```
+
 [top](#index)

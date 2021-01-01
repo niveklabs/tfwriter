@@ -1,11 +1,16 @@
 # aws_datasync_agent
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_agent" {
   source = "./modules/aws/r/aws_datasync_agent"
@@ -33,8 +41,11 @@ module "aws_datasync_agent" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "activation_key" {
   description = "(optional)"
@@ -70,9 +81,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_agent" "this" {
   activation_key = var.activation_key
@@ -89,8 +102,11 @@ resource "aws_datasync_agent" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "activation_key" {
   description = "returns a string"
@@ -116,4 +132,5 @@ output "this" {
   value = aws_datasync_agent.this
 }
 ```
+
 [top](#index)

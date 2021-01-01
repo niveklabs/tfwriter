@@ -1,11 +1,16 @@
 # aws_ram_resource_share
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ram_resource_share" {
   source = "./modules/aws/r/aws_ram_resource_share"
@@ -32,8 +40,11 @@ module "aws_ram_resource_share" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_external_principals" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ram_resource_share" "this" {
   allow_external_principals = var.allow_external_principals
@@ -82,8 +95,11 @@ resource "aws_ram_resource_share" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -99,4 +115,5 @@ output "this" {
   value = aws_ram_resource_share.this
 }
 ```
+
 [top](#index)

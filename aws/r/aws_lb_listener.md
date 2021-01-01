@@ -1,11 +1,16 @@
 # aws_lb_listener
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_listener" {
   source = "./modules/aws/r/aws_lb_listener"
@@ -87,8 +95,11 @@ module "aws_lb_listener" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(optional)"
@@ -200,9 +211,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb_listener" "this" {
   certificate_arn   = var.certificate_arn
@@ -305,8 +318,11 @@ resource "aws_lb_listener" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -332,4 +348,5 @@ output "this" {
   value = aws_lb_listener.this
 }
 ```
+
 [top](#index)

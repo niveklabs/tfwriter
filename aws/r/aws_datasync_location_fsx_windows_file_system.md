@@ -1,11 +1,16 @@
 # aws_datasync_location_fsx_windows_file_system
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_location_fsx_windows_file_system" {
   source = "./modules/aws/r/aws_datasync_location_fsx_windows_file_system"
@@ -35,8 +43,11 @@ module "aws_datasync_location_fsx_windows_file_system" {
   user = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(optional)"
@@ -76,9 +87,11 @@ variable "user" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_location_fsx_windows_file_system" "this" {
   domain              = var.domain
@@ -90,8 +103,11 @@ resource "aws_datasync_location_fsx_windows_file_system" "this" {
   user                = var.user
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_datasync_location_fsx_windows_file_system.this
 }
 ```
+
 [top](#index)

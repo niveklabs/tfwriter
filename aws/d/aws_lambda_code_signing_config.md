@@ -1,11 +1,16 @@
 # aws_lambda_code_signing_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_code_signing_config" {
   source = "./modules/aws/d/aws_lambda_code_signing_config"
@@ -23,24 +31,32 @@ module "aws_lambda_code_signing_config" {
   arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lambda_code_signing_config" "this" {
   arn = var.arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allowed_publishers" {
   description = "returns a list of object"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_lambda_code_signing_config.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_dx_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_gateway" {
   source = "./modules/aws/d/aws_dx_gateway"
@@ -23,24 +31,32 @@ module "aws_dx_gateway" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_dx_gateway" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "amazon_side_asn" {
   description = "returns a string"
@@ -61,4 +77,5 @@ output "this" {
   value = aws_dx_gateway.this
 }
 ```
+
 [top](#index)

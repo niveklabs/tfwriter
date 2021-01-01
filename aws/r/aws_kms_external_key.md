@@ -1,11 +1,16 @@
 # aws_kms_external_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_external_key" {
   source = "./modules/aws/r/aws_kms_external_key"
@@ -35,8 +43,11 @@ module "aws_kms_external_key" {
   valid_to = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "deletion_window_in_days" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "valid_to" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kms_external_key" "this" {
   deletion_window_in_days = var.deletion_window_in_days
@@ -94,8 +107,11 @@ resource "aws_kms_external_key" "this" {
   valid_to                = var.valid_to
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -136,4 +152,5 @@ output "this" {
   value = aws_kms_external_key.this
 }
 ```
+
 [top](#index)

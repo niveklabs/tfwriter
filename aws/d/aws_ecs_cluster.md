@@ -1,11 +1,16 @@
 # aws_ecs_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_cluster" {
   source = "./modules/aws/d/aws_ecs_cluster"
@@ -23,24 +31,32 @@ module "aws_ecs_cluster" {
   cluster_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ecs_cluster" "this" {
   cluster_name = var.cluster_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_ecs_cluster.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_iam_account_alias
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,27 +18,38 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_account_alias" {
   source = "./modules/aws/d/aws_iam_account_alias"
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_iam_account_alias" "this" {
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_alias" {
   description = "returns a string"
@@ -49,4 +65,5 @@ output "this" {
   value = aws_iam_account_alias.this
 }
 ```
+
 [top](#index)

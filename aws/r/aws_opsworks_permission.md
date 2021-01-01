@@ -1,11 +1,16 @@
 # aws_opsworks_permission
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_permission" {
   source = "./modules/aws/r/aws_opsworks_permission"
@@ -31,8 +39,11 @@ module "aws_opsworks_permission" {
   user_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_ssh" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "user_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_permission" "this" {
   allow_ssh  = var.allow_ssh
@@ -75,8 +88,11 @@ resource "aws_opsworks_permission" "this" {
   user_arn   = var.user_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allow_ssh" {
   description = "returns a bool"
@@ -107,4 +123,5 @@ output "this" {
   value = aws_opsworks_permission.this
 }
 ```
+
 [top](#index)

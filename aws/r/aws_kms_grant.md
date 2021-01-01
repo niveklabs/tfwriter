@@ -1,11 +1,16 @@
 # aws_kms_grant
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_grant" {
   source = "./modules/aws/r/aws_kms_grant"
@@ -40,8 +48,11 @@ module "aws_kms_grant" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "grant_creation_tokens" {
   description = "(optional)"
@@ -93,9 +104,11 @@ variable "constraints" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kms_grant" "this" {
   grant_creation_tokens = var.grant_creation_tokens
@@ -116,8 +129,11 @@ resource "aws_kms_grant" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "grant_id" {
   description = "returns a string"
@@ -138,4 +154,5 @@ output "this" {
   value = aws_kms_grant.this
 }
 ```
+
 [top](#index)

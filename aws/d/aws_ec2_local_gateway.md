@@ -1,11 +1,16 @@
 # aws_ec2_local_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_local_gateway" {
   source = "./modules/aws/d/aws_ec2_local_gateway"
@@ -30,8 +38,11 @@ module "aws_ec2_local_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "state" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_local_gateway" "this" {
   state = var.state
@@ -74,8 +87,11 @@ data "aws_ec2_local_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -106,4 +122,5 @@ output "this" {
   value = aws_ec2_local_gateway.this
 }
 ```
+
 [top](#index)

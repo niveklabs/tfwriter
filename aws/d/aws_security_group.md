@@ -1,11 +1,16 @@
 # aws_security_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_security_group" {
   source = "./modules/aws/d/aws_security_group"
@@ -32,8 +40,11 @@ module "aws_security_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_security_group" "this" {
   name   = var.name
@@ -83,8 +96,11 @@ data "aws_security_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -120,4 +136,5 @@ output "this" {
   value = aws_security_group.this
 }
 ```
+
 [top](#index)

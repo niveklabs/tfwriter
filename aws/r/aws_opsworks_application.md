@@ -1,11 +1,16 @@
 # aws_opsworks_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_application" {
   source = "./modules/aws/r/aws_opsworks_application"
@@ -70,8 +78,11 @@ module "aws_opsworks_application" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "auto_bundle_on_deploy" {
   description = "(optional)"
@@ -193,9 +204,11 @@ variable "ssl_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_application" "this" {
   auto_bundle_on_deploy     = var.auto_bundle_on_deploy
@@ -245,8 +258,11 @@ resource "aws_opsworks_application" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -262,4 +278,5 @@ output "this" {
   value = aws_opsworks_application.this
 }
 ```
+
 [top](#index)

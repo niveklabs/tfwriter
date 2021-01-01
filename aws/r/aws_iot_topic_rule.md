@@ -1,11 +1,16 @@
 # aws_iot_topic_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_topic_rule" {
   source = "./modules/aws/r/aws_iot_topic_rule"
@@ -223,8 +231,11 @@ module "aws_iot_topic_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -578,9 +589,11 @@ variable "step_functions" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iot_topic_rule" "this" {
   description = var.description
@@ -901,8 +914,11 @@ resource "aws_iot_topic_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -918,4 +934,5 @@ output "this" {
   value = aws_iot_topic_rule.this
 }
 ```
+
 [top](#index)

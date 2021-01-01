@@ -1,11 +1,16 @@
 # aws_wafv2_web_acl_logging_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafv2_web_acl_logging_configuration" {
   source = "./modules/aws/r/aws_wafv2_web_acl_logging_configuration"
@@ -49,8 +57,11 @@ module "aws_wafv2_web_acl_logging_configuration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "log_destination_configs" {
   description = "(required) - AWS Kinesis Firehose Delivery Stream ARNs"
@@ -106,9 +117,11 @@ variable "redacted_fields" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafv2_web_acl_logging_configuration" "this" {
   log_destination_configs = var.log_destination_configs
@@ -167,8 +180,11 @@ resource "aws_wafv2_web_acl_logging_configuration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -179,4 +195,5 @@ output "this" {
   value = aws_wafv2_web_acl_logging_configuration.this
 }
 ```
+
 [top](#index)

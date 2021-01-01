@@ -1,11 +1,16 @@
 # aws_wafregional_rate_based_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafregional_rate_based_rule" {
   source = "./modules/aws/r/aws_wafregional_rate_based_rule"
@@ -37,8 +45,11 @@ module "aws_wafregional_rate_based_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "metric_name" {
   description = "(required)"
@@ -78,9 +89,11 @@ variable "predicate" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafregional_rate_based_rule" "this" {
   metric_name = var.metric_name
@@ -100,8 +113,11 @@ resource "aws_wafregional_rate_based_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_wafregional_rate_based_rule.this
 }
 ```
+
 [top](#index)

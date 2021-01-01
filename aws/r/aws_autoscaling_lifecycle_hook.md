@@ -1,11 +1,16 @@
 # aws_autoscaling_lifecycle_hook
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_lifecycle_hook" {
   source = "./modules/aws/r/aws_autoscaling_lifecycle_hook"
@@ -37,8 +45,11 @@ module "aws_autoscaling_lifecycle_hook" {
   role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "autoscaling_group_name" {
   description = "(required)"
@@ -85,9 +96,11 @@ variable "role_arn" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_autoscaling_lifecycle_hook" "this" {
   autoscaling_group_name  = var.autoscaling_group_name
@@ -100,8 +113,11 @@ resource "aws_autoscaling_lifecycle_hook" "this" {
   role_arn                = var.role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "default_result" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_autoscaling_lifecycle_hook.this
 }
 ```
+
 [top](#index)

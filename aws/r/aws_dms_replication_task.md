@@ -1,11 +1,16 @@
 # aws_dms_replication_task
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dms_replication_task" {
   source = "./modules/aws/r/aws_dms_replication_task"
@@ -39,8 +47,11 @@ module "aws_dms_replication_task" {
   target_endpoint_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cdc_start_time" {
   description = "(optional)"
@@ -90,9 +101,11 @@ variable "target_endpoint_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dms_replication_task" "this" {
   cdc_start_time            = var.cdc_start_time
@@ -106,8 +119,11 @@ resource "aws_dms_replication_task" "this" {
   target_endpoint_arn       = var.target_endpoint_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -123,4 +139,5 @@ output "this" {
   value = aws_dms_replication_task.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_iot_thing_type
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_thing_type" {
   source = "./modules/aws/r/aws_iot_thing_type"
@@ -30,8 +38,11 @@ module "aws_iot_thing_type" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "deprecated" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "properties" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iot_thing_type" "this" {
   deprecated = var.deprecated
@@ -73,8 +86,11 @@ resource "aws_iot_thing_type" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -90,4 +106,5 @@ output "this" {
   value = aws_iot_thing_type.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ip_ranges
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ip_ranges" {
   source = "./modules/aws/d/aws_ip_ranges"
@@ -27,8 +35,11 @@ module "aws_ip_ranges" {
   url = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "regions" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "url" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ip_ranges" "this" {
   regions  = var.regions
@@ -57,8 +70,11 @@ data "aws_ip_ranges" "this" {
   url      = var.url
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "cidr_blocks" {
   description = "returns a list of string"
@@ -89,4 +105,5 @@ output "this" {
   value = aws_ip_ranges.this
 }
 ```
+
 [top](#index)

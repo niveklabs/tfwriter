@@ -1,11 +1,16 @@
 # aws_iot_thing
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iot_thing" {
   source = "./modules/aws/r/aws_iot_thing"
@@ -27,8 +35,11 @@ module "aws_iot_thing" {
   thing_type_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "attributes" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "thing_type_name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iot_thing" "this" {
   attributes      = var.attributes
@@ -57,8 +70,11 @@ resource "aws_iot_thing" "this" {
   thing_type_name = var.thing_type_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_iot_thing.this
 }
 ```
+
 [top](#index)

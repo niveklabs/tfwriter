@@ -1,11 +1,16 @@
 # aws_pinpoint_app
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_app" {
   source = "./modules/aws/r/aws_pinpoint_app"
@@ -45,8 +53,11 @@ module "aws_pinpoint_app" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -102,9 +113,11 @@ variable "quiet_time" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_app" "this" {
   name        = var.name
@@ -140,8 +153,11 @@ resource "aws_pinpoint_app" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "application_id" {
   description = "returns a string"
@@ -167,4 +183,5 @@ output "this" {
   value = aws_pinpoint_app.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_glue_schema
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_schema" {
   source = "./modules/aws/r/aws_glue_schema"
@@ -35,8 +43,11 @@ module "aws_glue_schema" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "compatibility" {
   description = "(required)"
@@ -76,9 +87,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_schema" "this" {
   compatibility     = var.compatibility
@@ -90,8 +103,11 @@ resource "aws_glue_schema" "this" {
   tags              = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -132,4 +148,5 @@ output "this" {
   value = aws_glue_schema.this
 }
 ```
+
 [top](#index)

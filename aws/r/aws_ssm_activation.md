@@ -1,11 +1,16 @@
 # aws_ssm_activation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_activation" {
   source = "./modules/aws/r/aws_ssm_activation"
@@ -33,8 +41,11 @@ module "aws_ssm_activation" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -71,9 +82,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_activation" "this" {
   description        = var.description
@@ -84,8 +97,11 @@ resource "aws_ssm_activation" "this" {
   tags               = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "activation_code" {
   description = "returns a string"
@@ -116,4 +132,5 @@ output "this" {
   value = aws_ssm_activation.this
 }
 ```
+
 [top](#index)

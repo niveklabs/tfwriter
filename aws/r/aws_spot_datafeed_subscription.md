@@ -1,11 +1,16 @@
 # aws_spot_datafeed_subscription
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_spot_datafeed_subscription" {
   source = "./modules/aws/r/aws_spot_datafeed_subscription"
@@ -25,8 +33,11 @@ module "aws_spot_datafeed_subscription" {
   prefix = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "prefix" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_spot_datafeed_subscription" "this" {
   bucket = var.bucket
   prefix = var.prefix
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -60,4 +76,5 @@ output "this" {
   value = aws_spot_datafeed_subscription.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_appsync_function
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appsync_function" {
   source = "./modules/aws/r/aws_appsync_function"
@@ -35,8 +43,11 @@ module "aws_appsync_function" {
   response_mapping_template = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -75,9 +86,11 @@ variable "response_mapping_template" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appsync_function" "this" {
   api_id                    = var.api_id
@@ -89,8 +102,11 @@ resource "aws_appsync_function" "this" {
   response_mapping_template = var.response_mapping_template
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -111,4 +127,5 @@ output "this" {
   value = aws_appsync_function.this
 }
 ```
+
 [top](#index)

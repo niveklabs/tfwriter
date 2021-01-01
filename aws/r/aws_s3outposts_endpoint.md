@@ -1,11 +1,16 @@
 # aws_s3outposts_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3outposts_endpoint" {
   source = "./modules/aws/r/aws_s3outposts_endpoint"
@@ -27,8 +35,11 @@ module "aws_s3outposts_endpoint" {
   subnet_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "outpost_id" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "subnet_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3outposts_endpoint" "this" {
   outpost_id        = var.outpost_id
@@ -55,8 +68,11 @@ resource "aws_s3outposts_endpoint" "this" {
   subnet_id         = var.subnet_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_s3outposts_endpoint.this
 }
 ```
+
 [top](#index)

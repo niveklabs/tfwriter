@@ -1,11 +1,16 @@
 # aws_ses_domain_identity
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_domain_identity" {
   source = "./modules/aws/r/aws_ses_domain_identity"
@@ -23,24 +31,32 @@ module "aws_ses_domain_identity" {
   domain = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_domain_identity" "this" {
   domain = var.domain
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -61,4 +77,5 @@ output "this" {
   value = aws_ses_domain_identity.this
 }
 ```
+
 [top](#index)

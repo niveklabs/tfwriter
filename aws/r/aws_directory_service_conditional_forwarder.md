@@ -1,11 +1,16 @@
 # aws_directory_service_conditional_forwarder
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_directory_service_conditional_forwarder" {
   source = "./modules/aws/r/aws_directory_service_conditional_forwarder"
@@ -27,8 +35,11 @@ module "aws_directory_service_conditional_forwarder" {
   remote_domain_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "directory_id" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "remote_domain_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_directory_service_conditional_forwarder" "this" {
   directory_id       = var.directory_id
@@ -55,8 +68,11 @@ resource "aws_directory_service_conditional_forwarder" "this" {
   remote_domain_name = var.remote_domain_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_directory_service_conditional_forwarder.this
 }
 ```
+
 [top](#index)

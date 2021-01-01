@@ -1,11 +1,16 @@
 # aws_sqs_queue_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sqs_queue_policy" {
   source = "./modules/aws/r/aws_sqs_queue_policy"
@@ -25,8 +33,11 @@ module "aws_sqs_queue_policy" {
   queue_url = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "policy" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "queue_url" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sqs_queue_policy" "this" {
   policy    = var.policy
   queue_url = var.queue_url
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_sqs_queue_policy.this
 }
 ```
+
 [top](#index)

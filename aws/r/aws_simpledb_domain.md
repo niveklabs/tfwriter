@@ -1,11 +1,16 @@
 # aws_simpledb_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_simpledb_domain" {
   source = "./modules/aws/r/aws_simpledb_domain"
@@ -23,24 +31,32 @@ module "aws_simpledb_domain" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_simpledb_domain" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -51,4 +67,5 @@ output "this" {
   value = aws_simpledb_domain.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_securityhub_action_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_securityhub_action_target" {
   source = "./modules/aws/r/aws_securityhub_action_target"
@@ -27,8 +35,11 @@ module "aws_securityhub_action_target" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_securityhub_action_target" "this" {
   description = var.description
@@ -55,8 +68,11 @@ resource "aws_securityhub_action_target" "this" {
   name        = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_securityhub_action_target.this
 }
 ```
+
 [top](#index)

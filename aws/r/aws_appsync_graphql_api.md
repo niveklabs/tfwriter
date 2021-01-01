@@ -1,11 +1,16 @@
 # aws_appsync_graphql_api
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appsync_graphql_api" {
   source = "./modules/aws/r/aws_appsync_graphql_api"
@@ -66,8 +74,11 @@ module "aws_appsync_graphql_api" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "authentication_type" {
   description = "(required)"
@@ -160,9 +171,11 @@ variable "user_pool_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appsync_graphql_api" "this" {
   authentication_type = var.authentication_type
@@ -229,8 +242,11 @@ resource "aws_appsync_graphql_api" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -251,4 +267,5 @@ output "this" {
   value = aws_appsync_graphql_api.this
 }
 ```
+
 [top](#index)

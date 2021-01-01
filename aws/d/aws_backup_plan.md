@@ -1,11 +1,16 @@
 # aws_backup_plan
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_backup_plan" {
   source = "./modules/aws/d/aws_backup_plan"
@@ -25,8 +33,11 @@ module "aws_backup_plan" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "plan_id" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_backup_plan" "this" {
   plan_id = var.plan_id
   tags    = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -80,4 +96,5 @@ output "this" {
   value = aws_backup_plan.this
 }
 ```
+
 [top](#index)

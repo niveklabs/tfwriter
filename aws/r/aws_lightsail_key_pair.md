@@ -1,11 +1,16 @@
 # aws_lightsail_key_pair
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lightsail_key_pair" {
   source = "./modules/aws/r/aws_lightsail_key_pair"
@@ -29,8 +37,11 @@ module "aws_lightsail_key_pair" {
   public_key = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "public_key" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lightsail_key_pair" "this" {
   name        = var.name
@@ -67,8 +80,11 @@ resource "aws_lightsail_key_pair" "this" {
   public_key  = var.public_key
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -114,4 +130,5 @@ output "this" {
   value = aws_lightsail_key_pair.this
 }
 ```
+
 [top](#index)

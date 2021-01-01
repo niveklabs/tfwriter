@@ -1,11 +1,16 @@
 # aws_kinesis_analytics_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kinesis_analytics_application" {
   source = "./modules/aws/r/aws_kinesis_analytics_application"
@@ -131,8 +139,11 @@ module "aws_kinesis_analytics_application" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "code" {
   description = "(optional)"
@@ -329,9 +340,11 @@ variable "reference_data_sources" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kinesis_analytics_application" "this" {
   code        = var.code
@@ -543,8 +556,11 @@ resource "aws_kinesis_analytics_application" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -580,4 +596,5 @@ output "this" {
   value = aws_kinesis_analytics_application.this
 }
 ```
+
 [top](#index)

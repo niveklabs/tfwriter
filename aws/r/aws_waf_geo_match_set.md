@@ -1,11 +1,16 @@
 # aws_waf_geo_match_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_waf_geo_match_set" {
   source = "./modules/aws/r/aws_waf_geo_match_set"
@@ -28,8 +36,11 @@ module "aws_waf_geo_match_set" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "geo_match_constraint" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_waf_geo_match_set" "this" {
   name = var.name
@@ -64,8 +77,11 @@ resource "aws_waf_geo_match_set" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_waf_geo_match_set.this
 }
 ```
+
 [top](#index)

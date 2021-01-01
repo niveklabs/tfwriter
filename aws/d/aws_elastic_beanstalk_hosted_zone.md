@@ -1,11 +1,16 @@
 # aws_elastic_beanstalk_hosted_zone
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastic_beanstalk_hosted_zone" {
   source = "./modules/aws/d/aws_elastic_beanstalk_hosted_zone"
@@ -23,8 +31,11 @@ module "aws_elastic_beanstalk_hosted_zone" {
   region = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "region" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "region" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_elastic_beanstalk_hosted_zone" "this" {
   region = var.region
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -52,4 +68,5 @@ output "this" {
   value = aws_elastic_beanstalk_hosted_zone.this
 }
 ```
+
 [top](#index)

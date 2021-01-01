@@ -1,11 +1,16 @@
 # aws_storagegateway_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_gateway" {
   source = "./modules/aws/r/aws_storagegateway_gateway"
@@ -63,8 +71,11 @@ module "aws_storagegateway_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "activation_key" {
   description = "(optional)"
@@ -174,9 +185,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_gateway" "this" {
   activation_key                              = var.activation_key
@@ -215,8 +228,11 @@ resource "aws_storagegateway_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "activation_key" {
   description = "returns a string"
@@ -272,4 +288,5 @@ output "this" {
   value = aws_storagegateway_gateway.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ami_ids
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ami_ids" {
   source = "./modules/aws/d/aws_ami_ids"
@@ -34,8 +42,11 @@ module "aws_ami_ids" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "executable_users" {
   description = "(optional)"
@@ -71,9 +82,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ami_ids" "this" {
   executable_users = var.executable_users
@@ -91,8 +104,11 @@ data "aws_ami_ids" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -108,4 +124,5 @@ output "this" {
   value = aws_ami_ids.this
 }
 ```
+
 [top](#index)

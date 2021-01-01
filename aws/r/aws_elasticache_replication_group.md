@@ -1,11 +1,16 @@
 # aws_elasticache_replication_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_replication_group" {
   source = "./modules/aws/r/aws_elasticache_replication_group"
@@ -84,8 +92,11 @@ module "aws_elasticache_replication_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "apply_immediately" {
   description = "(optional)"
@@ -264,9 +275,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elasticache_replication_group" "this" {
   apply_immediately             = var.apply_immediately
@@ -315,8 +328,11 @@ resource "aws_elasticache_replication_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "apply_immediately" {
   description = "returns a bool"
@@ -392,4 +408,5 @@ output "this" {
   value = aws_elasticache_replication_group.this
 }
 ```
+
 [top](#index)

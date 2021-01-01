@@ -1,11 +1,16 @@
 # aws_s3_bucket_ownership_controls
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_ownership_controls" {
   source = "./modules/aws/r/aws_s3_bucket_ownership_controls"
@@ -27,8 +35,11 @@ module "aws_s3_bucket_ownership_controls" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -44,9 +55,11 @@ variable "rule" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_ownership_controls" "this" {
   bucket = var.bucket
@@ -60,8 +73,11 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_s3_bucket_ownership_controls.this
 }
 ```
+
 [top](#index)

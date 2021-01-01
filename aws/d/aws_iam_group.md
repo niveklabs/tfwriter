@@ -1,11 +1,16 @@
 # aws_iam_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_group" {
   source = "./modules/aws/d/aws_iam_group"
@@ -23,24 +31,32 @@ module "aws_iam_group" {
   group_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "group_name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_iam_group" "this" {
   group_name = var.group_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -71,4 +87,5 @@ output "this" {
   value = aws_iam_group.this
 }
 ```
+
 [top](#index)

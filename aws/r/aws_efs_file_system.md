@@ -1,11 +1,16 @@
 # aws_efs_file_system
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_efs_file_system" {
   source = "./modules/aws/r/aws_efs_file_system"
@@ -39,8 +47,11 @@ module "aws_efs_file_system" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "creation_token" {
   description = "(optional)"
@@ -94,9 +105,11 @@ variable "lifecycle_policy" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_efs_file_system" "this" {
   creation_token                  = var.creation_token
@@ -116,8 +129,11 @@ resource "aws_efs_file_system" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -158,4 +174,5 @@ output "this" {
   value = aws_efs_file_system.this
 }
 ```
+
 [top](#index)

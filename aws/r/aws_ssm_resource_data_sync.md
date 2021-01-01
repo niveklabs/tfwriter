@@ -1,11 +1,16 @@
 # aws_ssm_resource_data_sync
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_resource_data_sync" {
   source = "./modules/aws/r/aws_ssm_resource_data_sync"
@@ -31,8 +39,11 @@ module "aws_ssm_resource_data_sync" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "s3_destination" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_resource_data_sync" "this" {
   name = var.name
@@ -72,8 +85,11 @@ resource "aws_ssm_resource_data_sync" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_ssm_resource_data_sync.this
 }
 ```
+
 [top](#index)

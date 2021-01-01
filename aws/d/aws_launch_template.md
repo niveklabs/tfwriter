@@ -1,11 +1,16 @@
 # aws_launch_template
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_launch_template" {
   source = "./modules/aws/d/aws_launch_template"
@@ -30,8 +38,11 @@ module "aws_launch_template" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_launch_template" "this" {
   name = var.name
@@ -74,8 +87,11 @@ data "aws_launch_template" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -226,4 +242,5 @@ output "this" {
   value = aws_launch_template.this
 }
 ```
+
 [top](#index)

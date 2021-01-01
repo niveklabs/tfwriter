@@ -1,11 +1,16 @@
 # aws_sagemaker_notebook_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sagemaker_notebook_instance" {
   source = "./modules/aws/r/aws_sagemaker_notebook_instance"
@@ -47,8 +55,11 @@ module "aws_sagemaker_notebook_instance" {
   volume_size = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "additional_code_repositories" {
   description = "(optional)"
@@ -125,9 +136,11 @@ variable "volume_size" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sagemaker_notebook_instance" "this" {
   additional_code_repositories = var.additional_code_repositories
@@ -145,8 +158,11 @@ resource "aws_sagemaker_notebook_instance" "this" {
   volume_size                  = var.volume_size
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -177,4 +193,5 @@ output "this" {
   value = aws_sagemaker_notebook_instance.this
 }
 ```
+
 [top](#index)

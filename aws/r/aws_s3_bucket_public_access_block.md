@@ -1,11 +1,16 @@
 # aws_s3_bucket_public_access_block
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_public_access_block" {
   source = "./modules/aws/r/aws_s3_bucket_public_access_block"
@@ -31,8 +39,11 @@ module "aws_s3_bucket_public_access_block" {
   restrict_public_buckets = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "block_public_acls" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "restrict_public_buckets" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_public_access_block" "this" {
   block_public_acls       = var.block_public_acls
@@ -75,8 +88,11 @@ resource "aws_s3_bucket_public_access_block" "this" {
   restrict_public_buckets = var.restrict_public_buckets
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_s3_bucket_public_access_block.this
 }
 ```
+
 [top](#index)

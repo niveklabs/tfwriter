@@ -1,11 +1,16 @@
 # aws_sns_topic
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sns_topic" {
   source = "./modules/aws/r/aws_sns_topic"
@@ -59,8 +67,11 @@ module "aws_sns_topic" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_failure_feedback_role_arn" {
   description = "(optional)"
@@ -176,9 +187,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sns_topic" "this" {
   application_failure_feedback_role_arn    = var.application_failure_feedback_role_arn
@@ -202,8 +215,11 @@ resource "aws_sns_topic" "this" {
   tags                                     = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -229,4 +245,5 @@ output "this" {
   value = aws_sns_topic.this
 }
 ```
+
 [top](#index)

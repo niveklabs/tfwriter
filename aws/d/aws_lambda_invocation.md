@@ -1,11 +1,16 @@
 # aws_lambda_invocation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_invocation" {
   source = "./modules/aws/d/aws_lambda_invocation"
@@ -27,8 +35,11 @@ module "aws_lambda_invocation" {
   qualifier = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "function_name" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "qualifier" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lambda_invocation" "this" {
   function_name = var.function_name
@@ -56,8 +69,11 @@ data "aws_lambda_invocation" "this" {
   qualifier     = var.qualifier
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_lambda_invocation.this
 }
 ```
+
 [top](#index)

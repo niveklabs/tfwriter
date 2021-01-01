@@ -1,11 +1,16 @@
 # aws_elasticsearch_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticsearch_domain" {
   source = "./modules/aws/r/aws_elasticsearch_domain"
@@ -105,8 +113,11 @@ module "aws_elasticsearch_domain" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "access_policies" {
   description = "(optional)"
@@ -281,9 +292,11 @@ variable "vpc_options" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elasticsearch_domain" "this" {
   access_policies       = var.access_policies
@@ -409,8 +422,11 @@ resource "aws_elasticsearch_domain" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "access_policies" {
   description = "returns a string"
@@ -451,4 +467,5 @@ output "this" {
   value = aws_elasticsearch_domain.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_eks_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eks_cluster" {
   source = "./modules/aws/r/aws_eks_cluster"
@@ -58,8 +66,11 @@ module "aws_eks_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enabled_cluster_log_types" {
   description = "(optional)"
@@ -141,9 +152,11 @@ variable "vpc_config" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_eks_cluster" "this" {
   enabled_cluster_log_types = var.enabled_cluster_log_types
@@ -196,8 +209,11 @@ resource "aws_eks_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -248,4 +264,5 @@ output "this" {
   value = aws_eks_cluster.this
 }
 ```
+
 [top](#index)

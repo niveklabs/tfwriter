@@ -1,11 +1,16 @@
 # aws_ec2_availability_zone_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_availability_zone_group" {
   source = "./modules/aws/r/aws_ec2_availability_zone_group"
@@ -25,8 +33,11 @@ module "aws_ec2_availability_zone_group" {
   opt_in_status = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "group_name" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "opt_in_status" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_availability_zone_group" "this" {
   group_name    = var.group_name
   opt_in_status = var.opt_in_status
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_ec2_availability_zone_group.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_glue_security_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_security_configuration" {
   source = "./modules/aws/r/aws_glue_security_configuration"
@@ -38,8 +46,11 @@ module "aws_glue_security_configuration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -72,9 +83,11 @@ variable "encryption_configuration" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_security_configuration" "this" {
   name = var.name
@@ -112,8 +125,11 @@ resource "aws_glue_security_configuration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -124,4 +140,5 @@ output "this" {
   value = aws_glue_security_configuration.this
 }
 ```
+
 [top](#index)

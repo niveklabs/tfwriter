@@ -1,11 +1,16 @@
 # aws_placement_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_placement_group" {
   source = "./modules/aws/r/aws_placement_group"
@@ -27,8 +35,11 @@ module "aws_placement_group" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_placement_group" "this" {
   name     = var.name
@@ -56,8 +69,11 @@ resource "aws_placement_group" "this" {
   tags     = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -78,4 +94,5 @@ output "this" {
   value = aws_placement_group.this
 }
 ```
+
 [top](#index)

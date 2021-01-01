@@ -1,11 +1,16 @@
 # aws_gamelift_alias
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_gamelift_alias" {
   source = "./modules/aws/r/aws_gamelift_alias"
@@ -33,8 +41,11 @@ module "aws_gamelift_alias" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "routing_strategy" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_gamelift_alias" "this" {
   description = var.description
@@ -84,8 +97,11 @@ resource "aws_gamelift_alias" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -101,4 +117,5 @@ output "this" {
   value = aws_gamelift_alias.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_vpc_dhcp_options
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_dhcp_options" {
   source = "./modules/aws/r/aws_vpc_dhcp_options"
@@ -33,8 +41,11 @@ module "aws_vpc_dhcp_options" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain_name" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_dhcp_options" "this" {
   domain_name          = var.domain_name
@@ -85,8 +98,11 @@ resource "aws_vpc_dhcp_options" "this" {
   tags                 = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -107,4 +123,5 @@ output "this" {
   value = aws_vpc_dhcp_options.this
 }
 ```
+
 [top](#index)

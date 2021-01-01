@@ -1,11 +1,16 @@
 # aws_storagegateway_cached_iscsi_volume
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_cached_iscsi_volume" {
   source = "./modules/aws/r/aws_storagegateway_cached_iscsi_volume"
@@ -39,8 +47,11 @@ module "aws_storagegateway_cached_iscsi_volume" {
   volume_size_in_bytes = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "gateway_arn" {
   description = "(required)"
@@ -92,9 +103,11 @@ variable "volume_size_in_bytes" {
   type        = number
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_cached_iscsi_volume" "this" {
   gateway_arn          = var.gateway_arn
@@ -108,8 +121,11 @@ resource "aws_storagegateway_cached_iscsi_volume" "this" {
   volume_size_in_bytes = var.volume_size_in_bytes
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -155,4 +171,5 @@ output "this" {
   value = aws_storagegateway_cached_iscsi_volume.this
 }
 ```
+
 [top](#index)

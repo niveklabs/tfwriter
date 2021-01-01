@@ -1,11 +1,16 @@
 # aws_ebs_snapshot_copy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ebs_snapshot_copy" {
   source = "./modules/aws/r/aws_ebs_snapshot_copy"
@@ -33,8 +41,11 @@ module "aws_ebs_snapshot_copy" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -70,9 +81,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ebs_snapshot_copy" "this" {
   description        = var.description
@@ -83,8 +96,11 @@ resource "aws_ebs_snapshot_copy" "this" {
   tags               = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -125,4 +141,5 @@ output "this" {
   value = aws_ebs_snapshot_copy.this
 }
 ```
+
 [top](#index)

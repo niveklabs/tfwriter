@@ -1,11 +1,16 @@
 # aws_codeartifact_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codeartifact_domain" {
   source = "./modules/aws/r/aws_codeartifact_domain"
@@ -27,8 +35,11 @@ module "aws_codeartifact_domain" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codeartifact_domain" "this" {
   domain         = var.domain
@@ -56,8 +69,11 @@ resource "aws_codeartifact_domain" "this" {
   tags           = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -93,4 +109,5 @@ output "this" {
   value = aws_codeartifact_domain.this
 }
 ```
+
 [top](#index)

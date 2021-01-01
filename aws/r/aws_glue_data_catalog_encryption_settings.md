@@ -1,11 +1,16 @@
 # aws_glue_data_catalog_encryption_settings
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_data_catalog_encryption_settings" {
   source = "./modules/aws/r/aws_glue_data_catalog_encryption_settings"
@@ -34,8 +42,11 @@ module "aws_glue_data_catalog_encryption_settings" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "catalog_id" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "data_catalog_encryption_settings" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_data_catalog_encryption_settings" "this" {
   catalog_id = var.catalog_id
@@ -95,8 +108,11 @@ resource "aws_glue_data_catalog_encryption_settings" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "catalog_id" {
   description = "returns a string"
@@ -112,4 +128,5 @@ output "this" {
   value = aws_glue_data_catalog_encryption_settings.this
 }
 ```
+
 [top](#index)

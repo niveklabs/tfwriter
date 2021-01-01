@@ -1,11 +1,16 @@
 # aws_wafregional_regex_pattern_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafregional_regex_pattern_set" {
   source = "./modules/aws/r/aws_wafregional_regex_pattern_set"
@@ -25,8 +33,11 @@ module "aws_wafregional_regex_pattern_set" {
   regex_pattern_strings = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "regex_pattern_strings" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafregional_regex_pattern_set" "this" {
   name                  = var.name
   regex_pattern_strings = var.regex_pattern_strings
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -60,4 +76,5 @@ output "this" {
   value = aws_wafregional_regex_pattern_set.this
 }
 ```
+
 [top](#index)

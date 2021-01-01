@@ -1,11 +1,16 @@
 # aws_fsx_windows_file_system
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_fsx_windows_file_system" {
   source = "./modules/aws/r/aws_fsx_windows_file_system"
@@ -66,8 +74,11 @@ module "aws_fsx_windows_file_system" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "active_directory_id" {
   description = "(optional)"
@@ -183,9 +194,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_fsx_windows_file_system" "this" {
   active_directory_id               = var.active_directory_id
@@ -227,8 +240,11 @@ resource "aws_fsx_windows_file_system" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -294,4 +310,5 @@ output "this" {
   value = aws_fsx_windows_file_system.this
 }
 ```
+
 [top](#index)

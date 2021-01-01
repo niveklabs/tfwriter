@@ -1,11 +1,16 @@
 # aws_vpn_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpn_gateway" {
   source = "./modules/aws/d/aws_vpn_gateway"
@@ -36,8 +44,11 @@ module "aws_vpn_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "amazon_side_asn" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_vpn_gateway" "this" {
   amazon_side_asn   = var.amazon_side_asn
@@ -101,8 +114,11 @@ data "aws_vpn_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "amazon_side_asn" {
   description = "returns a string"
@@ -143,4 +159,5 @@ output "this" {
   value = aws_vpn_gateway.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_vpc_endpoint_connection_notification
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_endpoint_connection_notification" {
   source = "./modules/aws/r/aws_vpc_endpoint_connection_notification"
@@ -29,8 +37,11 @@ module "aws_vpc_endpoint_connection_notification" {
   vpc_endpoint_service_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "connection_events" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "vpc_endpoint_service_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_endpoint_connection_notification" "this" {
   connection_events           = var.connection_events
@@ -65,8 +78,11 @@ resource "aws_vpc_endpoint_connection_notification" "this" {
   vpc_endpoint_service_id     = var.vpc_endpoint_service_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_vpc_endpoint_connection_notification.this
 }
 ```
+
 [top](#index)

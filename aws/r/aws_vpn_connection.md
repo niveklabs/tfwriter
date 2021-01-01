@@ -1,11 +1,16 @@
 # aws_vpn_connection
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpn_connection" {
   source = "./modules/aws/r/aws_vpn_connection"
@@ -117,8 +125,11 @@ module "aws_vpn_connection" {
   vpn_gateway_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "customer_gateway_id" {
   description = "(required)"
@@ -406,9 +417,11 @@ variable "vpn_gateway_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpn_connection" "this" {
   customer_gateway_id                  = var.customer_gateway_id
@@ -461,8 +474,11 @@ resource "aws_vpn_connection" "this" {
   vpn_gateway_id                       = var.vpn_gateway_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -615,4 +631,5 @@ output "this" {
   value = aws_vpn_connection.this
 }
 ```
+
 [top](#index)

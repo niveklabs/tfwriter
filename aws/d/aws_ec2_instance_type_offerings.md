@@ -1,11 +1,16 @@
 # aws_ec2_instance_type_offerings
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_instance_type_offerings" {
   source = "./modules/aws/d/aws_ec2_instance_type_offerings"
@@ -28,8 +36,11 @@ module "aws_ec2_instance_type_offerings" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "location_type" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_instance_type_offerings" "this" {
   location_type = var.location_type
@@ -65,8 +78,11 @@ data "aws_ec2_instance_type_offerings" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -82,4 +98,5 @@ output "this" {
   value = aws_ec2_instance_type_offerings.this
 }
 ```
+
 [top](#index)

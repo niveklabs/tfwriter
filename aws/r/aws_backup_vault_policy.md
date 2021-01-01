@@ -1,11 +1,16 @@
 # aws_backup_vault_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_backup_vault_policy" {
   source = "./modules/aws/r/aws_backup_vault_policy"
@@ -25,8 +33,11 @@ module "aws_backup_vault_policy" {
   policy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "backup_vault_name" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "policy" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_backup_vault_policy" "this" {
   backup_vault_name = var.backup_vault_name
   policy            = var.policy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "backup_vault_arn" {
   description = "returns a string"
@@ -64,4 +80,5 @@ output "this" {
   value = aws_backup_vault_policy.this
 }
 ```
+
 [top](#index)

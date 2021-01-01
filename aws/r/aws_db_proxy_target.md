@@ -1,11 +1,16 @@
 # aws_db_proxy_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_proxy_target" {
   source = "./modules/aws/r/aws_db_proxy_target"
@@ -29,8 +37,11 @@ module "aws_db_proxy_target" {
   target_group_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_cluster_identifier" {
   description = "(optional)"
@@ -54,9 +65,11 @@ variable "target_group_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_db_proxy_target" "this" {
   db_cluster_identifier  = var.db_cluster_identifier
@@ -65,8 +78,11 @@ resource "aws_db_proxy_target" "this" {
   target_group_name      = var.target_group_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "endpoint" {
   description = "returns a string"
@@ -107,4 +123,5 @@ output "this" {
   value = aws_db_proxy_target.this
 }
 ```
+
 [top](#index)

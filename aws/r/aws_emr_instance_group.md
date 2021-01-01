@@ -1,11 +1,16 @@
 # aws_emr_instance_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_emr_instance_group" {
   source = "./modules/aws/r/aws_emr_instance_group"
@@ -44,8 +52,11 @@ module "aws_emr_instance_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "autoscaling_policy" {
   description = "(optional)"
@@ -106,9 +117,11 @@ variable "ebs_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_emr_instance_group" "this" {
   autoscaling_policy  = var.autoscaling_policy
@@ -132,8 +145,11 @@ resource "aws_emr_instance_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -154,4 +170,5 @@ output "this" {
   value = aws_emr_instance_group.this
 }
 ```
+
 [top](#index)

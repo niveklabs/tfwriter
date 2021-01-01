@@ -1,11 +1,16 @@
 # aws_wafv2_web_acl
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafv2_web_acl" {
   source = "./modules/aws/r/aws_wafv2_web_acl"
@@ -9047,8 +9055,11 @@ module "aws_wafv2_web_acl" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -24070,9 +24081,11 @@ variable "visibility_config" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafv2_web_acl" "this" {
   description = var.description
@@ -44452,8 +44465,11 @@ resource "aws_wafv2_web_acl" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -44479,4 +44495,5 @@ output "this" {
   value = aws_wafv2_web_acl.this
 }
 ```
+
 [top](#index)

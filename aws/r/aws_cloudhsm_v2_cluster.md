@@ -1,11 +1,16 @@
 # aws_cloudhsm_v2_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudhsm_v2_cluster" {
   source = "./modules/aws/r/aws_cloudhsm_v2_cluster"
@@ -35,8 +43,11 @@ module "aws_cloudhsm_v2_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "hsm_type" {
   description = "(required)"
@@ -72,9 +83,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudhsm_v2_cluster" "this" {
   hsm_type                 = var.hsm_type
@@ -93,8 +106,11 @@ resource "aws_cloudhsm_v2_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "cluster_certificates" {
   description = "returns a list of object"
@@ -130,4 +146,5 @@ output "this" {
   value = aws_cloudhsm_v2_cluster.this
 }
 ```
+
 [top](#index)

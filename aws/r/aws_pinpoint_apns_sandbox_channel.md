@@ -1,11 +1,16 @@
 # aws_pinpoint_apns_sandbox_channel
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_apns_sandbox_channel" {
   source = "./modules/aws/r/aws_pinpoint_apns_sandbox_channel"
@@ -39,8 +47,11 @@ module "aws_pinpoint_apns_sandbox_channel" {
   token_key_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -95,9 +106,11 @@ variable "token_key_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_apns_sandbox_channel" "this" {
   application_id                = var.application_id
@@ -111,8 +124,11 @@ resource "aws_pinpoint_apns_sandbox_channel" "this" {
   token_key_id                  = var.token_key_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -123,4 +139,5 @@ output "this" {
   value = aws_pinpoint_apns_sandbox_channel.this
 }
 ```
+
 [top](#index)

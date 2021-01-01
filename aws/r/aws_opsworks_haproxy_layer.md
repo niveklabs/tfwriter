@@ -1,11 +1,16 @@
 # aws_opsworks_haproxy_layer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_haproxy_layer" {
   source = "./modules/aws/r/aws_opsworks_haproxy_layer"
@@ -83,8 +91,11 @@ module "aws_opsworks_haproxy_layer" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "auto_assign_elastic_ips" {
   description = "(optional)"
@@ -256,9 +267,11 @@ variable "ebs_volume" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_haproxy_layer" "this" {
   auto_assign_elastic_ips     = var.auto_assign_elastic_ips
@@ -303,8 +316,11 @@ resource "aws_opsworks_haproxy_layer" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -320,4 +336,5 @@ output "this" {
   value = aws_opsworks_haproxy_layer.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_opsworks_user_profile
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_user_profile" {
   source = "./modules/aws/r/aws_opsworks_user_profile"
@@ -29,8 +37,11 @@ module "aws_opsworks_user_profile" {
   user_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_self_management" {
   description = "(optional)"
@@ -54,9 +65,11 @@ variable "user_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_user_profile" "this" {
   allow_self_management = var.allow_self_management
@@ -65,8 +78,11 @@ resource "aws_opsworks_user_profile" "this" {
   user_arn              = var.user_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_opsworks_user_profile.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_wafregional_web_acl_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafregional_web_acl_association" {
   source = "./modules/aws/r/aws_wafregional_web_acl_association"
@@ -25,8 +33,11 @@ module "aws_wafregional_web_acl_association" {
   web_acl_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "resource_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "web_acl_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafregional_web_acl_association" "this" {
   resource_arn = var.resource_arn
   web_acl_id   = var.web_acl_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_wafregional_web_acl_association.this
 }
 ```
+
 [top](#index)

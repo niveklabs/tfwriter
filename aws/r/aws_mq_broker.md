@@ -1,11 +1,16 @@
 # aws_mq_broker
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_mq_broker" {
   source = "./modules/aws/r/aws_mq_broker"
@@ -71,8 +79,11 @@ module "aws_mq_broker" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "apply_immediately" {
   description = "(optional)"
@@ -192,9 +203,11 @@ variable "user" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_mq_broker" "this" {
   apply_immediately          = var.apply_immediately
@@ -254,8 +267,11 @@ resource "aws_mq_broker" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -281,4 +297,5 @@ output "this" {
   value = aws_mq_broker.this
 }
 ```
+
 [top](#index)

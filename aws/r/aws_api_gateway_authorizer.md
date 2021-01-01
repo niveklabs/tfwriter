@@ -1,11 +1,16 @@
 # aws_api_gateway_authorizer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_authorizer" {
   source = "./modules/aws/r/aws_api_gateway_authorizer"
@@ -39,8 +47,11 @@ module "aws_api_gateway_authorizer" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "authorizer_credentials" {
   description = "(optional)"
@@ -94,9 +105,11 @@ variable "type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_authorizer" "this" {
   authorizer_credentials           = var.authorizer_credentials
@@ -110,8 +123,11 @@ resource "aws_api_gateway_authorizer" "this" {
   type                             = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_api_gateway_authorizer.this
 }
 ```
+
 [top](#index)

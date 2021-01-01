@@ -1,11 +1,16 @@
 # aws_api_gateway_rest_api
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_rest_api" {
   source = "./modules/aws/r/aws_api_gateway_rest_api"
@@ -42,8 +50,11 @@ module "aws_api_gateway_rest_api" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_key_source" {
   description = "(optional)"
@@ -103,9 +114,11 @@ variable "endpoint_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_rest_api" "this" {
   api_key_source           = var.api_key_source
@@ -127,8 +140,11 @@ resource "aws_api_gateway_rest_api" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -164,4 +180,5 @@ output "this" {
   value = aws_api_gateway_rest_api.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_caller_identity
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,27 +18,38 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_caller_identity" {
   source = "./modules/aws/d/aws_caller_identity"
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_caller_identity" "this" {
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_caller_identity.this
 }
 ```
+
 [top](#index)

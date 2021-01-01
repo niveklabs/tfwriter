@@ -1,11 +1,16 @@
 # aws_ses_configuration_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_configuration_set" {
   source = "./modules/aws/r/aws_ses_configuration_set"
@@ -23,24 +31,32 @@ module "aws_ses_configuration_set" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_configuration_set" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -51,4 +67,5 @@ output "this" {
   value = aws_ses_configuration_set.this
 }
 ```
+
 [top](#index)

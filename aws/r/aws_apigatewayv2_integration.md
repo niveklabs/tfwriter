@@ -1,11 +1,16 @@
 # aws_apigatewayv2_integration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_integration" {
   source = "./modules/aws/r/aws_apigatewayv2_integration"
@@ -57,8 +65,11 @@ module "aws_apigatewayv2_integration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -164,9 +175,11 @@ variable "tls_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_integration" "this" {
   api_id                        = var.api_id
@@ -195,8 +208,11 @@ resource "aws_apigatewayv2_integration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -217,4 +233,5 @@ output "this" {
   value = aws_apigatewayv2_integration.this
 }
 ```
+
 [top](#index)

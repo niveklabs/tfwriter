@@ -1,11 +1,16 @@
 # aws_apigatewayv2_integration_response
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_integration_response" {
   source = "./modules/aws/r/aws_apigatewayv2_integration_response"
@@ -33,8 +41,11 @@ module "aws_apigatewayv2_integration_response" {
   template_selection_expression = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -69,9 +80,11 @@ variable "template_selection_expression" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_integration_response" "this" {
   api_id                        = var.api_id
@@ -82,8 +95,11 @@ resource "aws_apigatewayv2_integration_response" "this" {
   template_selection_expression = var.template_selection_expression
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -94,4 +110,5 @@ output "this" {
   value = aws_apigatewayv2_integration_response.this
 }
 ```
+
 [top](#index)

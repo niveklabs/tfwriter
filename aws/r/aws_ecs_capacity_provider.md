@@ -1,11 +1,16 @@
 # aws_ecs_capacity_provider
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_capacity_provider" {
   source = "./modules/aws/r/aws_ecs_capacity_provider"
@@ -36,8 +44,11 @@ module "aws_ecs_capacity_provider" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -68,9 +79,11 @@ variable "auto_scaling_group_provider" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ecs_capacity_provider" "this" {
   name = var.name
@@ -97,8 +110,11 @@ resource "aws_ecs_capacity_provider" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -114,4 +130,5 @@ output "this" {
   value = aws_ecs_capacity_provider.this
 }
 ```
+
 [top](#index)

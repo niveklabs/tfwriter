@@ -1,11 +1,16 @@
 # aws_xray_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_xray_group" {
   source = "./modules/aws/r/aws_xray_group"
@@ -27,8 +35,11 @@ module "aws_xray_group" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "filter_expression" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_xray_group" "this" {
   filter_expression = var.filter_expression
@@ -56,8 +69,11 @@ resource "aws_xray_group" "this" {
   tags              = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_xray_group.this
 }
 ```
+
 [top](#index)

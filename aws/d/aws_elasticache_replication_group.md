@@ -1,11 +1,16 @@
 # aws_elasticache_replication_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_replication_group" {
   source = "./modules/aws/d/aws_elasticache_replication_group"
@@ -23,24 +31,32 @@ module "aws_elasticache_replication_group" {
   replication_group_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "replication_group_id" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_elasticache_replication_group" "this" {
   replication_group_id = var.replication_group_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "auth_token_enabled" {
   description = "returns a bool"
@@ -106,4 +122,5 @@ output "this" {
   value = aws_elasticache_replication_group.this
 }
 ```
+
 [top](#index)

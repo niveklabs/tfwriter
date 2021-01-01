@@ -1,11 +1,16 @@
 # aws_snapshot_create_volume_permission
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_snapshot_create_volume_permission" {
   source = "./modules/aws/r/aws_snapshot_create_volume_permission"
@@ -25,8 +33,11 @@ module "aws_snapshot_create_volume_permission" {
   snapshot_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "snapshot_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_snapshot_create_volume_permission" "this" {
   account_id  = var.account_id
   snapshot_id = var.snapshot_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_snapshot_create_volume_permission.this
 }
 ```
+
 [top](#index)

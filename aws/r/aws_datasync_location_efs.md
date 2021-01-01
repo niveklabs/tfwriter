@@ -1,11 +1,16 @@
 # aws_datasync_location_efs
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_location_efs" {
   source = "./modules/aws/r/aws_datasync_location_efs"
@@ -32,8 +40,11 @@ module "aws_datasync_location_efs" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "efs_file_system_arn" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "ec2_config" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_location_efs" "this" {
   efs_file_system_arn = var.efs_file_system_arn
@@ -81,8 +94,11 @@ resource "aws_datasync_location_efs" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -103,4 +119,5 @@ output "this" {
   value = aws_datasync_location_efs.this
 }
 ```
+
 [top](#index)

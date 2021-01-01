@@ -1,11 +1,16 @@
 # aws_autoscalingplans_scaling_plan
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscalingplans_scaling_plan" {
   source = "./modules/aws/r/aws_autoscalingplans_scaling_plan"
@@ -74,8 +82,11 @@ module "aws_autoscalingplans_scaling_plan" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -155,9 +166,11 @@ variable "scaling_instruction" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_autoscalingplans_scaling_plan" "this" {
   name = var.name
@@ -248,8 +261,11 @@ resource "aws_autoscalingplans_scaling_plan" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -265,4 +281,5 @@ output "this" {
   value = aws_autoscalingplans_scaling_plan.this
 }
 ```
+
 [top](#index)

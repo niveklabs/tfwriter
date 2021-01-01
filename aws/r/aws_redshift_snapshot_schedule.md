@@ -1,11 +1,16 @@
 # aws_redshift_snapshot_schedule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_snapshot_schedule" {
   source = "./modules/aws/r/aws_redshift_snapshot_schedule"
@@ -33,8 +41,11 @@ module "aws_redshift_snapshot_schedule" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "definitions" {
   description = "(required)"
@@ -71,9 +82,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_redshift_snapshot_schedule" "this" {
   definitions       = var.definitions
@@ -84,8 +97,11 @@ resource "aws_redshift_snapshot_schedule" "this" {
   tags              = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -111,4 +127,5 @@ output "this" {
   value = aws_redshift_snapshot_schedule.this
 }
 ```
+
 [top](#index)

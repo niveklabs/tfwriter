@@ -1,11 +1,16 @@
 # aws_db_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_instance" {
   source = "./modules/aws/r/aws_db_instance"
@@ -142,8 +150,11 @@ module "aws_db_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allocated_storage" {
   description = "(optional)"
@@ -483,9 +494,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_db_instance" "this" {
   allocated_storage                     = var.allocated_storage
@@ -571,8 +584,11 @@ resource "aws_db_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "address" {
   description = "returns a string"
@@ -758,4 +774,5 @@ output "this" {
   value = aws_db_instance.this
 }
 ```
+
 [top](#index)

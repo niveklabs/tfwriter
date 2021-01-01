@@ -1,11 +1,16 @@
 # aws_ses_identity_notification_topic
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_identity_notification_topic" {
   source = "./modules/aws/r/aws_ses_identity_notification_topic"
@@ -29,8 +37,11 @@ module "aws_ses_identity_notification_topic" {
   topic_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "identity" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "topic_arn" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_identity_notification_topic" "this" {
   identity                 = var.identity
@@ -65,8 +78,11 @@ resource "aws_ses_identity_notification_topic" "this" {
   topic_arn                = var.topic_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_ses_identity_notification_topic.this
 }
 ```
+
 [top](#index)

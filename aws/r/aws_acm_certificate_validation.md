@@ -1,11 +1,16 @@
 # aws_acm_certificate_validation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_acm_certificate_validation" {
   source = "./modules/aws/r/aws_acm_certificate_validation"
@@ -29,8 +37,11 @@ module "aws_acm_certificate_validation" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_acm_certificate_validation" "this" {
   certificate_arn         = var.certificate_arn
@@ -70,8 +83,11 @@ resource "aws_acm_certificate_validation" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -82,4 +98,5 @@ output "this" {
   value = aws_acm_certificate_validation.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_vpc
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc" {
   source = "./modules/aws/r/aws_vpc"
@@ -37,8 +45,11 @@ module "aws_vpc" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "assign_generated_ipv6_cidr_block" {
   description = "(optional)"
@@ -87,9 +98,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc" "this" {
   assign_generated_ipv6_cidr_block = var.assign_generated_ipv6_cidr_block
@@ -102,8 +115,11 @@ resource "aws_vpc" "this" {
   tags                             = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -174,4 +190,5 @@ output "this" {
   value = aws_vpc.this
 }
 ```
+
 [top](#index)

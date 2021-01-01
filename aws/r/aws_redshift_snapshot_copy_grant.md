@@ -1,11 +1,16 @@
 # aws_redshift_snapshot_copy_grant
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_snapshot_copy_grant" {
   source = "./modules/aws/r/aws_redshift_snapshot_copy_grant"
@@ -27,8 +35,11 @@ module "aws_redshift_snapshot_copy_grant" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "kms_key_id" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_redshift_snapshot_copy_grant" "this" {
   kms_key_id               = var.kms_key_id
@@ -57,8 +70,11 @@ resource "aws_redshift_snapshot_copy_grant" "this" {
   tags                     = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_redshift_snapshot_copy_grant.this
 }
 ```
+
 [top](#index)

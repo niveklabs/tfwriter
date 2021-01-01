@@ -1,11 +1,16 @@
 # aws_outposts_outpost
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_outposts_outpost" {
   source = "./modules/aws/d/aws_outposts_outpost"
@@ -25,8 +33,11 @@ module "aws_outposts_outpost" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(optional)"
@@ -40,17 +51,22 @@ variable "name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_outposts_outpost" "this" {
   arn  = var.arn
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -96,4 +112,5 @@ output "this" {
   value = aws_outposts_outpost.this
 }
 ```
+
 [top](#index)

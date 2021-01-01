@@ -1,11 +1,16 @@
 # aws_dynamodb_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dynamodb_table" {
   source = "./modules/aws/d/aws_dynamodb_table"
@@ -30,8 +38,11 @@ module "aws_dynamodb_table" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -55,9 +66,11 @@ variable "server_side_encryption" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_dynamodb_table" "this" {
   name = var.name
@@ -71,8 +84,11 @@ data "aws_dynamodb_table" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -168,4 +184,5 @@ output "this" {
   value = aws_dynamodb_table.this
 }
 ```
+
 [top](#index)

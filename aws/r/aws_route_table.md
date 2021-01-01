@@ -1,11 +1,16 @@
 # aws_route_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route_table" {
   source = "./modules/aws/r/aws_route_table"
@@ -41,8 +49,11 @@ module "aws_route_table" {
   vpc_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "propagating_vgws" {
   description = "(optional)"
@@ -81,9 +92,11 @@ variable "vpc_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route_table" "this" {
   propagating_vgws = var.propagating_vgws
@@ -92,8 +105,11 @@ resource "aws_route_table" "this" {
   vpc_id           = var.vpc_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -119,4 +135,5 @@ output "this" {
   value = aws_route_table.this
 }
 ```
+
 [top](#index)

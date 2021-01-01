@@ -1,11 +1,16 @@
 # aws_route_table_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route_table_association" {
   source = "./modules/aws/r/aws_route_table_association"
@@ -27,8 +35,11 @@ module "aws_route_table_association" {
   subnet_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "gateway_id" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "subnet_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route_table_association" "this" {
   gateway_id     = var.gateway_id
@@ -57,8 +70,11 @@ resource "aws_route_table_association" "this" {
   subnet_id      = var.subnet_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -69,4 +85,5 @@ output "this" {
   value = aws_route_table_association.this
 }
 ```
+
 [top](#index)

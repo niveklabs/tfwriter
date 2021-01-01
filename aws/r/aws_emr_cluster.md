@@ -1,11 +1,16 @@
 # aws_emr_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_emr_cluster" {
   source = "./modules/aws/r/aws_emr_cluster"
@@ -194,8 +202,11 @@ module "aws_emr_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "additional_info" {
   description = "(optional)"
@@ -517,9 +528,11 @@ variable "master_instance_group" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_emr_cluster" "this" {
   additional_info                   = var.additional_info
@@ -747,8 +760,11 @@ resource "aws_emr_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -794,4 +810,5 @@ output "this" {
   value = aws_emr_cluster.this
 }
 ```
+
 [top](#index)

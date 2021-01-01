@@ -1,11 +1,16 @@
 # aws_lambda_provisioned_concurrency_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_provisioned_concurrency_config" {
   source = "./modules/aws/r/aws_lambda_provisioned_concurrency_config"
@@ -32,8 +40,11 @@ module "aws_lambda_provisioned_concurrency_config" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "function_name" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_provisioned_concurrency_config" "this" {
   function_name                     = var.function_name
@@ -80,8 +93,11 @@ resource "aws_lambda_provisioned_concurrency_config" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_lambda_provisioned_concurrency_config.this
 }
 ```
+
 [top](#index)

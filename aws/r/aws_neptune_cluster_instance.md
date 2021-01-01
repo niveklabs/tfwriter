@@ -1,11 +1,16 @@
 # aws_neptune_cluster_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_neptune_cluster_instance" {
   source = "./modules/aws/r/aws_neptune_cluster_instance"
@@ -61,8 +69,11 @@ module "aws_neptune_cluster_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "apply_immediately" {
   description = "(optional)"
@@ -176,9 +187,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_neptune_cluster_instance" "this" {
   apply_immediately            = var.apply_immediately
@@ -210,8 +223,11 @@ resource "aws_neptune_cluster_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "address" {
   description = "returns a string"
@@ -297,4 +313,5 @@ output "this" {
   value = aws_neptune_cluster_instance.this
 }
 ```
+
 [top](#index)

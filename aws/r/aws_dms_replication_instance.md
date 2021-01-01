@@ -1,11 +1,16 @@
 # aws_dms_replication_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dms_replication_instance" {
   source = "./modules/aws/r/aws_dms_replication_instance"
@@ -57,8 +65,11 @@ module "aws_dms_replication_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allocated_storage" {
   description = "(optional)"
@@ -160,9 +171,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dms_replication_instance" "this" {
   allocated_storage            = var.allocated_storage
@@ -192,8 +205,11 @@ resource "aws_dms_replication_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allocated_storage" {
   description = "returns a number"
@@ -269,4 +285,5 @@ output "this" {
   value = aws_dms_replication_instance.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_lambda_permission
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_permission" {
   source = "./modules/aws/r/aws_lambda_permission"
@@ -39,8 +47,11 @@ module "aws_lambda_permission" {
   statement_id_prefix = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "action" {
   description = "(required)"
@@ -93,9 +104,11 @@ variable "statement_id_prefix" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_permission" "this" {
   action              = var.action
@@ -109,8 +122,11 @@ resource "aws_lambda_permission" "this" {
   statement_id_prefix = var.statement_id_prefix
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -126,4 +142,5 @@ output "this" {
   value = aws_lambda_permission.this
 }
 ```
+
 [top](#index)

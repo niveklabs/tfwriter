@@ -1,11 +1,16 @@
 # aws_guardduty_filter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_filter" {
   source = "./modules/aws/r/aws_guardduty_filter"
@@ -45,8 +53,11 @@ module "aws_guardduty_filter" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "action" {
   description = "(required)"
@@ -99,9 +110,11 @@ variable "finding_criteria" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_filter" "this" {
   action      = var.action
@@ -133,8 +146,11 @@ resource "aws_guardduty_filter" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -150,4 +166,5 @@ output "this" {
   value = aws_guardduty_filter.this
 }
 ```
+
 [top](#index)

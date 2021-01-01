@@ -1,11 +1,16 @@
 # aws_cognito_user_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_user_group" {
   source = "./modules/aws/r/aws_cognito_user_group"
@@ -31,8 +39,11 @@ module "aws_cognito_user_group" {
   user_pool_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -62,9 +73,11 @@ variable "user_pool_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_user_group" "this" {
   description  = var.description
@@ -74,8 +87,11 @@ resource "aws_cognito_user_group" "this" {
   user_pool_id = var.user_pool_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_cognito_user_group.this
 }
 ```
+
 [top](#index)

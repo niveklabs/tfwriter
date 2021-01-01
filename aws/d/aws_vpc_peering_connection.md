@@ -1,11 +1,16 @@
 # aws_vpc_peering_connection
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_peering_connection" {
   source = "./modules/aws/d/aws_vpc_peering_connection"
@@ -46,8 +54,11 @@ module "aws_vpc_peering_connection" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cidr_block" {
   description = "(optional)"
@@ -120,9 +131,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_vpc_peering_connection" "this" {
   cidr_block      = var.cidr_block
@@ -146,8 +159,11 @@ data "aws_vpc_peering_connection" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "accepter" {
   description = "returns a map of bool"
@@ -218,4 +234,5 @@ output "this" {
   value = aws_vpc_peering_connection.this
 }
 ```
+
 [top](#index)

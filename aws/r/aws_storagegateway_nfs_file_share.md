@@ -1,11 +1,16 @@
 # aws_storagegateway_nfs_file_share
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_nfs_file_share" {
   source = "./modules/aws/r/aws_storagegateway_nfs_file_share"
@@ -68,8 +76,11 @@ module "aws_storagegateway_nfs_file_share" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "client_list" {
   description = "(required)"
@@ -192,9 +203,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_nfs_file_share" "this" {
   client_list             = var.client_list
@@ -241,8 +254,11 @@ resource "aws_storagegateway_nfs_file_share" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -273,4 +289,5 @@ output "this" {
   value = aws_storagegateway_nfs_file_share.this
 }
 ```
+
 [top](#index)

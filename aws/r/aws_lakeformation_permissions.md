@@ -1,11 +1,16 @@
 # aws_lakeformation_permissions
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lakeformation_permissions" {
   source = "./modules/aws/r/aws_lakeformation_permissions"
@@ -56,8 +64,11 @@ module "aws_lakeformation_permissions" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "catalog_id" {
   description = "(optional)"
@@ -136,9 +147,11 @@ variable "table_with_columns" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lakeformation_permissions" "this" {
   catalog_id                    = var.catalog_id
@@ -186,8 +199,11 @@ resource "aws_lakeformation_permissions" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -203,4 +219,5 @@ output "this" {
   value = aws_lakeformation_permissions.this
 }
 ```
+
 [top](#index)

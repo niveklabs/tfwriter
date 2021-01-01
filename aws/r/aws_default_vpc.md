@@ -1,11 +1,16 @@
 # aws_default_vpc
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_default_vpc" {
   source = "./modules/aws/r/aws_default_vpc"
@@ -31,8 +39,11 @@ module "aws_default_vpc" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enable_classiclink" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_default_vpc" "this" {
   enable_classiclink             = var.enable_classiclink
@@ -76,8 +89,11 @@ resource "aws_default_vpc" "this" {
   tags                           = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -163,4 +179,5 @@ output "this" {
   value = aws_default_vpc.this
 }
 ```
+
 [top](#index)

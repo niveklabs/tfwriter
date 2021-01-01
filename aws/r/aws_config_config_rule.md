@@ -1,11 +1,16 @@
 # aws_config_config_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_config_config_rule" {
   source = [{
@@ -47,8 +55,11 @@ module "aws_config_config_rule" {
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -109,9 +120,11 @@ variable "source" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_config_config_rule" "this" {
   description                 = var.description
@@ -150,8 +163,11 @@ resource "aws_config_config_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -172,4 +188,5 @@ output "this" {
   value = aws_config_config_rule.this
 }
 ```
+
 [top](#index)

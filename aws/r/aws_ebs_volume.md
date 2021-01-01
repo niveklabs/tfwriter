@@ -1,11 +1,16 @@
 # aws_ebs_volume
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ebs_volume" {
   source = "./modules/aws/r/aws_ebs_volume"
@@ -41,8 +49,11 @@ module "aws_ebs_volume" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone" {
   description = "(required)"
@@ -103,9 +114,11 @@ variable "type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ebs_volume" "this" {
   availability_zone    = var.availability_zone
@@ -120,8 +133,11 @@ resource "aws_ebs_volume" "this" {
   type                 = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -167,4 +183,5 @@ output "this" {
   value = aws_ebs_volume.this
 }
 ```
+
 [top](#index)

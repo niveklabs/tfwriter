@@ -1,11 +1,16 @@
 # aws_workspaces_workspace
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_workspaces_workspace" {
   source = "./modules/aws/r/aws_workspaces_workspace"
@@ -49,8 +57,11 @@ module "aws_workspaces_workspace" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bundle_id" {
   description = "(required)"
@@ -117,9 +128,11 @@ variable "workspace_properties" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_workspaces_workspace" "this" {
   bundle_id                      = var.bundle_id
@@ -152,8 +165,11 @@ resource "aws_workspaces_workspace" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "computer_name" {
   description = "returns a string"
@@ -179,4 +195,5 @@ output "this" {
   value = aws_workspaces_workspace.this
 }
 ```
+
 [top](#index)

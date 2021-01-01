@@ -1,11 +1,16 @@
 # aws_config_aggregate_authorization
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_config_aggregate_authorization" {
   source = "./modules/aws/r/aws_config_aggregate_authorization"
@@ -27,8 +35,11 @@ module "aws_config_aggregate_authorization" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_config_aggregate_authorization" "this" {
   account_id = var.account_id
@@ -56,8 +69,11 @@ resource "aws_config_aggregate_authorization" "this" {
   tags       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_config_aggregate_authorization.this
 }
 ```
+
 [top](#index)

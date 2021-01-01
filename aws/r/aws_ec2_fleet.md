@@ -1,11 +1,16 @@
 # aws_ec2_fleet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_fleet" {
   source = "./modules/aws/r/aws_ec2_fleet"
@@ -77,8 +85,11 @@ module "aws_ec2_fleet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "excess_capacity_termination_policy" {
   description = "(optional)"
@@ -196,9 +207,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_fleet" "this" {
   excess_capacity_termination_policy  = var.excess_capacity_termination_policy
@@ -288,8 +301,11 @@ resource "aws_ec2_fleet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -300,4 +316,5 @@ output "this" {
   value = aws_ec2_fleet.this
 }
 ```
+
 [top](#index)

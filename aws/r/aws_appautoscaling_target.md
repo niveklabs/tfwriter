@@ -1,11 +1,16 @@
 # aws_appautoscaling_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appautoscaling_target" {
   source = "./modules/aws/r/aws_appautoscaling_target"
@@ -33,8 +41,11 @@ module "aws_appautoscaling_target" {
   service_namespace = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "max_capacity" {
   description = "(required)"
@@ -67,9 +78,11 @@ variable "service_namespace" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appautoscaling_target" "this" {
   max_capacity       = var.max_capacity
@@ -80,8 +93,11 @@ resource "aws_appautoscaling_target" "this" {
   service_namespace  = var.service_namespace
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_appautoscaling_target.this
 }
 ```
+
 [top](#index)

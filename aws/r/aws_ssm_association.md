@@ -1,11 +1,16 @@
 # aws_ssm_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_association" {
   source = "./modules/aws/r/aws_ssm_association"
@@ -51,8 +59,11 @@ module "aws_ssm_association" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "association_name" {
   description = "(optional)"
@@ -135,9 +146,11 @@ variable "targets" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_association" "this" {
   association_name                 = var.association_name
@@ -169,8 +182,11 @@ resource "aws_ssm_association" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "association_id" {
   description = "returns a string"
@@ -196,4 +212,5 @@ output "this" {
   value = aws_ssm_association.this
 }
 ```
+
 [top](#index)

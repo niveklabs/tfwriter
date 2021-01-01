@@ -1,11 +1,16 @@
 # aws_cognito_user_pool
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_user_pool" {
   source = "./modules/aws/r/aws_cognito_user_pool"
@@ -133,8 +141,11 @@ module "aws_cognito_user_pool" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "alias_attributes" {
   description = "(optional)"
@@ -367,9 +378,11 @@ variable "verification_message_template" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_user_pool" "this" {
   alias_attributes           = var.alias_attributes
@@ -532,8 +545,11 @@ resource "aws_cognito_user_pool" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -579,4 +595,5 @@ output "this" {
   value = aws_cognito_user_pool.this
 }
 ```
+
 [top](#index)

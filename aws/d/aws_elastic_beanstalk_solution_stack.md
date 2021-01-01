@@ -1,11 +1,16 @@
 # aws_elastic_beanstalk_solution_stack
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastic_beanstalk_solution_stack" {
   source = "./modules/aws/d/aws_elastic_beanstalk_solution_stack"
@@ -25,8 +33,11 @@ module "aws_elastic_beanstalk_solution_stack" {
   name_regex = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "most_recent" {
   description = "(optional)"
@@ -39,17 +50,22 @@ variable "name_regex" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_elastic_beanstalk_solution_stack" "this" {
   most_recent = var.most_recent
   name_regex  = var.name_regex
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -65,4 +81,5 @@ output "this" {
   value = aws_elastic_beanstalk_solution_stack.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_apigatewayv2_authorizer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_authorizer" {
   source = "./modules/aws/r/aws_apigatewayv2_authorizer"
@@ -44,8 +52,11 @@ module "aws_apigatewayv2_authorizer" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -109,9 +120,11 @@ variable "jwt_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_authorizer" "this" {
   api_id                            = var.api_id
@@ -134,8 +147,11 @@ resource "aws_apigatewayv2_authorizer" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "authorizer_result_ttl_in_seconds" {
   description = "returns a number"
@@ -151,4 +167,5 @@ output "this" {
   value = aws_apigatewayv2_authorizer.this
 }
 ```
+
 [top](#index)

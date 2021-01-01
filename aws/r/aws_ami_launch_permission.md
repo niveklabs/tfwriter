@@ -1,11 +1,16 @@
 # aws_ami_launch_permission
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ami_launch_permission" {
   source = "./modules/aws/r/aws_ami_launch_permission"
@@ -25,8 +33,11 @@ module "aws_ami_launch_permission" {
   image_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "image_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ami_launch_permission" "this" {
   account_id = var.account_id
   image_id   = var.image_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_ami_launch_permission.this
 }
 ```
+
 [top](#index)

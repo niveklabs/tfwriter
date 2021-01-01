@@ -1,11 +1,16 @@
 # aws_ses_template
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_template" {
   source = "./modules/aws/r/aws_ses_template"
@@ -29,8 +37,11 @@ module "aws_ses_template" {
   text = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "html" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "text" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_template" "this" {
   html    = var.html
@@ -66,8 +79,11 @@ resource "aws_ses_template" "this" {
   text    = var.text
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -78,4 +94,5 @@ output "this" {
   value = aws_ses_template.this
 }
 ```
+
 [top](#index)

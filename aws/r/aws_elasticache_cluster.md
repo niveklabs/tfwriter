@@ -1,11 +1,16 @@
 # aws_elasticache_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_cluster" {
   source = "./modules/aws/r/aws_elasticache_cluster"
@@ -65,8 +73,11 @@ module "aws_elasticache_cluster" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "apply_immediately" {
   description = "(optional)"
@@ -199,9 +210,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elasticache_cluster" "this" {
   apply_immediately            = var.apply_immediately
@@ -228,8 +241,11 @@ resource "aws_elasticache_cluster" "this" {
   tags                         = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "apply_immediately" {
   description = "returns a bool"
@@ -335,4 +351,5 @@ output "this" {
   value = aws_elasticache_cluster.this
 }
 ```
+
 [top](#index)

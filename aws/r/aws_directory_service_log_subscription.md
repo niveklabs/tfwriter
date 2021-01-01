@@ -1,11 +1,16 @@
 # aws_directory_service_log_subscription
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_directory_service_log_subscription" {
   source = "./modules/aws/r/aws_directory_service_log_subscription"
@@ -25,8 +33,11 @@ module "aws_directory_service_log_subscription" {
   log_group_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "directory_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "log_group_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_directory_service_log_subscription" "this" {
   directory_id   = var.directory_id
   log_group_name = var.log_group_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_directory_service_log_subscription.this
 }
 ```
+
 [top](#index)

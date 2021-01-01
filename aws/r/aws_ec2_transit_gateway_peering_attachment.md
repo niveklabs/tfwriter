@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_peering_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_peering_attachment" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_peering_attachment"
@@ -31,8 +39,11 @@ module "aws_ec2_transit_gateway_peering_attachment" {
   transit_gateway_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "peer_account_id" {
   description = "(optional)"
@@ -61,9 +72,11 @@ variable "transit_gateway_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway_peering_attachment" "this" {
   peer_account_id         = var.peer_account_id
@@ -73,8 +86,11 @@ resource "aws_ec2_transit_gateway_peering_attachment" "this" {
   transit_gateway_id      = var.transit_gateway_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -90,4 +106,5 @@ output "this" {
   value = aws_ec2_transit_gateway_peering_attachment.this
 }
 ```
+
 [top](#index)

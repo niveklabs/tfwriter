@@ -1,11 +1,16 @@
 # aws_lex_slot_type
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lex_slot_type" {
   source = "./modules/aws/r/aws_lex_slot_type"
@@ -40,8 +48,11 @@ module "aws_lex_slot_type" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "create_version" {
   description = "(optional)"
@@ -88,9 +99,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lex_slot_type" "this" {
   create_version           = var.create_version
@@ -117,8 +130,11 @@ resource "aws_lex_slot_type" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "checksum" {
   description = "returns a string"
@@ -149,4 +165,5 @@ output "this" {
   value = aws_lex_slot_type.this
 }
 ```
+
 [top](#index)

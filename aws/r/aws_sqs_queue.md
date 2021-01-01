@@ -1,11 +1,16 @@
 # aws_sqs_queue
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sqs_queue" {
   source = "./modules/aws/r/aws_sqs_queue"
@@ -49,8 +57,11 @@ module "aws_sqs_queue" {
   visibility_timeout_seconds = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content_based_deduplication" {
   description = "(optional)"
@@ -136,9 +147,11 @@ variable "visibility_timeout_seconds" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sqs_queue" "this" {
   content_based_deduplication       = var.content_based_deduplication
@@ -157,8 +170,11 @@ resource "aws_sqs_queue" "this" {
   visibility_timeout_seconds        = var.visibility_timeout_seconds
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -189,4 +205,5 @@ output "this" {
   value = aws_sqs_queue.this
 }
 ```
+
 [top](#index)

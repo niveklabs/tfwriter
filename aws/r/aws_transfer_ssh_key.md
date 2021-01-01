@@ -1,11 +1,16 @@
 # aws_transfer_ssh_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_transfer_ssh_key" {
   source = "./modules/aws/r/aws_transfer_ssh_key"
@@ -27,8 +35,11 @@ module "aws_transfer_ssh_key" {
   user_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "body" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "user_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_transfer_ssh_key" "this" {
   body      = var.body
@@ -55,8 +68,11 @@ resource "aws_transfer_ssh_key" "this" {
   user_name = var.user_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_transfer_ssh_key.this
 }
 ```
+
 [top](#index)

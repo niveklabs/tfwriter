@@ -1,11 +1,16 @@
 # aws_cloudformation_stack
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudformation_stack" {
   source = "./modules/aws/r/aws_cloudformation_stack"
@@ -53,8 +61,11 @@ module "aws_cloudformation_stack" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "capabilities" {
   description = "(optional)"
@@ -145,9 +156,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudformation_stack" "this" {
   capabilities       = var.capabilities
@@ -175,8 +188,11 @@ resource "aws_cloudformation_stack" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -207,4 +223,5 @@ output "this" {
   value = aws_cloudformation_stack.this
 }
 ```
+
 [top](#index)

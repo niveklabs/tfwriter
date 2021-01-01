@@ -1,11 +1,16 @@
 # aws_customer_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_customer_gateway" {
   source = "./modules/aws/r/aws_customer_gateway"
@@ -29,8 +37,11 @@ module "aws_customer_gateway" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bgp_asn" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "type" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_customer_gateway" "this" {
   bgp_asn    = var.bgp_asn
@@ -64,8 +77,11 @@ resource "aws_customer_gateway" "this" {
   type       = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_customer_gateway.this
 }
 ```
+
 [top](#index)

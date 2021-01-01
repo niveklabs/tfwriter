@@ -1,11 +1,16 @@
 # aws_acmpca_certificate_authority
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_acmpca_certificate_authority" {
   source = "./modules/aws/d/aws_acmpca_certificate_authority"
@@ -34,8 +42,11 @@ module "aws_acmpca_certificate_authority" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
@@ -65,9 +76,11 @@ variable "revocation_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_acmpca_certificate_authority" "this" {
   arn  = var.arn
@@ -88,8 +101,11 @@ data "aws_acmpca_certificate_authority" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "certificate" {
   description = "returns a string"
@@ -145,4 +161,5 @@ output "this" {
   value = aws_acmpca_certificate_authority.this
 }
 ```
+
 [top](#index)

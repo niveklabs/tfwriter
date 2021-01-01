@@ -1,11 +1,16 @@
 # aws_pricing_product
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pricing_product" {
   source = "./modules/aws/d/aws_pricing_product"
@@ -28,8 +36,11 @@ module "aws_pricing_product" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "service_code" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "filters" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_pricing_product" "this" {
   service_code = var.service_code
@@ -63,8 +76,11 @@ data "aws_pricing_product" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -80,4 +96,5 @@ output "this" {
   value = aws_pricing_product.this
 }
 ```
+
 [top](#index)

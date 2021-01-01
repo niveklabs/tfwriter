@@ -1,11 +1,16 @@
 # aws_gamelift_game_session_queue
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_gamelift_game_session_queue" {
   source = "./modules/aws/r/aws_gamelift_game_session_queue"
@@ -34,8 +42,11 @@ module "aws_gamelift_game_session_queue" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destinations" {
   description = "(optional)"
@@ -71,9 +82,11 @@ variable "player_latency_policy" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_gamelift_game_session_queue" "this" {
   destinations       = var.destinations
@@ -91,8 +104,11 @@ resource "aws_gamelift_game_session_queue" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -108,4 +124,5 @@ output "this" {
   value = aws_gamelift_game_session_queue.this
 }
 ```
+
 [top](#index)

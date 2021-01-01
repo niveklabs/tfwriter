@@ -1,11 +1,16 @@
 # aws_subnet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_subnet" {
   source = "./modules/aws/r/aws_subnet"
@@ -44,8 +52,11 @@ module "aws_subnet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "assign_ipv6_address_on_creation" {
   description = "(optional)"
@@ -110,9 +121,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_subnet" "this" {
   assign_ipv6_address_on_creation = var.assign_ipv6_address_on_creation
@@ -135,8 +148,11 @@ resource "aws_subnet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -172,4 +188,5 @@ output "this" {
   value = aws_subnet.this
 }
 ```
+
 [top](#index)

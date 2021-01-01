@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_route_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_route_table" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_route_table"
@@ -25,8 +33,11 @@ module "aws_ec2_transit_gateway_route_table" {
   transit_gateway_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -39,17 +50,22 @@ variable "transit_gateway_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway_route_table" "this" {
   tags               = var.tags
   transit_gateway_id = var.transit_gateway_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -75,4 +91,5 @@ output "this" {
   value = aws_ec2_transit_gateway_route_table.this
 }
 ```
+
 [top](#index)

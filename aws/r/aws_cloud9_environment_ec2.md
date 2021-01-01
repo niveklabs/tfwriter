@@ -1,11 +1,16 @@
 # aws_cloud9_environment_ec2
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloud9_environment_ec2" {
   source = "./modules/aws/r/aws_cloud9_environment_ec2"
@@ -35,8 +43,11 @@ module "aws_cloud9_environment_ec2" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "automatic_stop_time_minutes" {
   description = "(optional)"
@@ -78,9 +89,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloud9_environment_ec2" "this" {
   automatic_stop_time_minutes = var.automatic_stop_time_minutes
@@ -92,8 +105,11 @@ resource "aws_cloud9_environment_ec2" "this" {
   tags                        = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -119,4 +135,5 @@ output "this" {
   value = aws_cloud9_environment_ec2.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_s3control_bucket
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3control_bucket" {
   source = "./modules/aws/r/aws_s3control_bucket"
@@ -27,8 +35,11 @@ module "aws_s3control_bucket" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3control_bucket" "this" {
   bucket     = var.bucket
@@ -56,8 +69,11 @@ resource "aws_s3control_bucket" "this" {
   tags       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -83,4 +99,5 @@ output "this" {
   value = aws_s3control_bucket.this
 }
 ```
+
 [top](#index)

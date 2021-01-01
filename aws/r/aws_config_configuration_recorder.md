@@ -1,11 +1,16 @@
 # aws_config_configuration_recorder
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_config_configuration_recorder" {
   source = "./modules/aws/r/aws_config_configuration_recorder"
@@ -31,8 +39,11 @@ module "aws_config_configuration_recorder" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -57,9 +68,11 @@ variable "recording_group" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_config_configuration_recorder" "this" {
   name     = var.name
@@ -76,8 +89,11 @@ resource "aws_config_configuration_recorder" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_config_configuration_recorder.this
 }
 ```
+
 [top](#index)

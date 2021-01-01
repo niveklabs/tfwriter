@@ -1,11 +1,16 @@
 # aws_api_gateway_api_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_api_key" {
   source = "./modules/aws/d/aws_api_gateway_api_key"
@@ -23,8 +31,11 @@ module "aws_api_gateway_api_key" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_api_gateway_api_key" "this" {
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "created_date" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_api_gateway_api_key.this
 }
 ```
+
 [top](#index)

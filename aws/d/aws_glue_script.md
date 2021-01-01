@@ -1,11 +1,16 @@
 # aws_glue_script
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_script" {
   source = "./modules/aws/d/aws_glue_script"
@@ -40,8 +48,11 @@ module "aws_glue_script" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "language" {
   description = "(optional)"
@@ -78,9 +89,11 @@ variable "dag_node" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_glue_script" "this" {
   language = var.language
@@ -115,8 +128,11 @@ data "aws_glue_script" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -137,4 +153,5 @@ output "this" {
   value = aws_glue_script.this
 }
 ```
+
 [top](#index)

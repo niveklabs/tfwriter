@@ -1,11 +1,16 @@
 # aws_dynamodb_global_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dynamodb_global_table" {
   source = "./modules/aws/r/aws_dynamodb_global_table"
@@ -33,8 +41,11 @@ module "aws_dynamodb_global_table" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dynamodb_global_table" "this" {
   name = var.name
@@ -87,8 +100,11 @@ resource "aws_dynamodb_global_table" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -104,4 +120,5 @@ output "this" {
   value = aws_dynamodb_global_table.this
 }
 ```
+
 [top](#index)

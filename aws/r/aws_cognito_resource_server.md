@@ -1,11 +1,16 @@
 # aws_cognito_resource_server
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_resource_server" {
   source = "./modules/aws/r/aws_cognito_resource_server"
@@ -32,8 +40,11 @@ module "aws_cognito_resource_server" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "identifier" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "scope" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_resource_server" "this" {
   identifier   = var.identifier
@@ -80,8 +93,11 @@ resource "aws_cognito_resource_server" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_cognito_resource_server.this
 }
 ```
+
 [top](#index)

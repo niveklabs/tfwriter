@@ -1,11 +1,16 @@
 # aws_ses_receipt_filter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_receipt_filter" {
   source = "./modules/aws/r/aws_ses_receipt_filter"
@@ -27,8 +35,11 @@ module "aws_ses_receipt_filter" {
   policy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cidr" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "policy" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_receipt_filter" "this" {
   cidr   = var.cidr
@@ -55,8 +68,11 @@ resource "aws_ses_receipt_filter" "this" {
   policy = var.policy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_ses_receipt_filter.this
 }
 ```
+
 [top](#index)

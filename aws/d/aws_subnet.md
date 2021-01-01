@@ -1,11 +1,16 @@
 # aws_subnet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_subnet" {
   source = "./modules/aws/d/aws_subnet"
@@ -42,8 +50,11 @@ module "aws_subnet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone" {
   description = "(optional)"
@@ -104,9 +115,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_subnet" "this" {
   availability_zone    = var.availability_zone
@@ -128,8 +141,11 @@ data "aws_subnet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -210,4 +226,5 @@ output "this" {
   value = aws_subnet.this
 }
 ```
+
 [top](#index)

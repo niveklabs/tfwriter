@@ -1,11 +1,16 @@
 # aws_eip_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eip_association" {
   source = "./modules/aws/r/aws_eip_association"
@@ -33,8 +41,11 @@ module "aws_eip_association" {
   public_ip = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allocation_id" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "public_ip" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_eip_association" "this" {
   allocation_id        = var.allocation_id
@@ -85,8 +98,11 @@ resource "aws_eip_association" "this" {
   public_ip            = var.public_ip
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allocation_id" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_eip_association.this
 }
 ```
+
 [top](#index)

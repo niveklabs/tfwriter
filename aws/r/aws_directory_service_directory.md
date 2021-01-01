@@ -1,11 +1,16 @@
 # aws_directory_service_directory
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_directory_service_directory" {
   source = "./modules/aws/r/aws_directory_service_directory"
@@ -56,8 +64,11 @@ module "aws_directory_service_directory" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "alias" {
   description = "(optional)"
@@ -144,9 +155,11 @@ variable "vpc_settings" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_directory_service_directory" "this" {
   alias       = var.alias
@@ -180,8 +193,11 @@ resource "aws_directory_service_directory" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "access_url" {
   description = "returns a string"
@@ -227,4 +243,5 @@ output "this" {
   value = aws_directory_service_directory.this
 }
 ```
+
 [top](#index)

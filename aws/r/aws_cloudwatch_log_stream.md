@@ -1,11 +1,16 @@
 # aws_cloudwatch_log_stream
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_log_stream" {
   source = "./modules/aws/r/aws_cloudwatch_log_stream"
@@ -25,8 +33,11 @@ module "aws_cloudwatch_log_stream" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "log_group_name" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_log_stream" "this" {
   log_group_name = var.log_group_name
   name           = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -64,4 +80,5 @@ output "this" {
   value = aws_cloudwatch_log_stream.this
 }
 ```
+
 [top](#index)

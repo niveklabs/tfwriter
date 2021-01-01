@@ -1,11 +1,16 @@
 # aws_lex_bot
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lex_bot" {
   source = "./modules/aws/r/aws_lex_bot"
@@ -73,8 +81,11 @@ module "aws_lex_bot" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "child_directed" {
   description = "(required)"
@@ -196,9 +207,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lex_bot" "this" {
   child_directed                  = var.child_directed
@@ -267,8 +280,11 @@ resource "aws_lex_bot" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -319,4 +335,5 @@ output "this" {
   value = aws_lex_bot.this
 }
 ```
+
 [top](#index)

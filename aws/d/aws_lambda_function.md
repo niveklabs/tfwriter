@@ -1,11 +1,16 @@
 # aws_lambda_function
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_function" {
   source = "./modules/aws/d/aws_lambda_function"
@@ -27,8 +35,11 @@ module "aws_lambda_function" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "function_name" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lambda_function" "this" {
   function_name = var.function_name
@@ -57,8 +70,11 @@ data "aws_lambda_function" "this" {
   tags          = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -194,4 +210,5 @@ output "this" {
   value = aws_lambda_function.this
 }
 ```
+
 [top](#index)

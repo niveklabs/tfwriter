@@ -1,11 +1,16 @@
 # aws_dx_lag
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_lag" {
   source = "./modules/aws/r/aws_dx_lag"
@@ -31,8 +39,11 @@ module "aws_dx_lag" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "connections_bandwidth" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_lag" "this" {
   connections_bandwidth = var.connections_bandwidth
@@ -73,8 +86,11 @@ resource "aws_dx_lag" "this" {
   tags                  = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -100,4 +116,5 @@ output "this" {
   value = aws_dx_lag.this
 }
 ```
+
 [top](#index)

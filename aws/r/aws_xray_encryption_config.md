@@ -1,11 +1,16 @@
 # aws_xray_encryption_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_xray_encryption_config" {
   source = "./modules/aws/r/aws_xray_encryption_config"
@@ -25,8 +33,11 @@ module "aws_xray_encryption_config" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "key_id" {
   description = "(optional)"
@@ -39,17 +50,22 @@ variable "type" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_xray_encryption_config" "this" {
   key_id = var.key_id
   type   = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -60,4 +76,5 @@ output "this" {
   value = aws_xray_encryption_config.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ecs_task_definition
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_task_definition" {
   source = "./modules/aws/d/aws_ecs_task_definition"
@@ -23,24 +31,32 @@ module "aws_ecs_task_definition" {
   task_definition = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "task_definition" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ecs_task_definition" "this" {
   task_definition = var.task_definition
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "family" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_ecs_task_definition.this
 }
 ```
+
 [top](#index)

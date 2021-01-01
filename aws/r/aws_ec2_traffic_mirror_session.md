@@ -1,11 +1,16 @@
 # aws_ec2_traffic_mirror_session
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_traffic_mirror_session" {
   source = "./modules/aws/r/aws_ec2_traffic_mirror_session"
@@ -37,8 +45,11 @@ module "aws_ec2_traffic_mirror_session" {
   virtual_network_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -84,9 +95,11 @@ variable "virtual_network_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_traffic_mirror_session" "this" {
   description              = var.description
@@ -99,8 +112,11 @@ resource "aws_ec2_traffic_mirror_session" "this" {
   virtual_network_id       = var.virtual_network_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -121,4 +137,5 @@ output "this" {
   value = aws_ec2_traffic_mirror_session.this
 }
 ```
+
 [top](#index)

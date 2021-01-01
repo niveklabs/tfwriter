@@ -1,11 +1,16 @@
 # aws_ec2_traffic_mirror_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_traffic_mirror_target" {
   source = "./modules/aws/r/aws_ec2_traffic_mirror_target"
@@ -29,8 +37,11 @@ module "aws_ec2_traffic_mirror_target" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_traffic_mirror_target" "this" {
   description               = var.description
@@ -67,8 +80,11 @@ resource "aws_ec2_traffic_mirror_target" "this" {
   tags                      = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_ec2_traffic_mirror_target.this
 }
 ```
+
 [top](#index)

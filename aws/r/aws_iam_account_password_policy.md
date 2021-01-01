@@ -1,11 +1,16 @@
 # aws_iam_account_password_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_account_password_policy" {
   source = "./modules/aws/r/aws_iam_account_password_policy"
@@ -39,8 +47,11 @@ module "aws_iam_account_password_policy" {
   require_uppercase_characters = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_users_to_change_password" {
   description = "(optional)"
@@ -96,9 +107,11 @@ variable "require_uppercase_characters" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_account_password_policy" "this" {
   allow_users_to_change_password = var.allow_users_to_change_password
@@ -112,8 +125,11 @@ resource "aws_iam_account_password_policy" "this" {
   require_uppercase_characters   = var.require_uppercase_characters
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "expire_passwords" {
   description = "returns a bool"
@@ -164,4 +180,5 @@ output "this" {
   value = aws_iam_account_password_policy.this
 }
 ```
+
 [top](#index)

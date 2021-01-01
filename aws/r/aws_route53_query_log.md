@@ -1,11 +1,16 @@
 # aws_route53_query_log
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_query_log" {
   source = "./modules/aws/r/aws_route53_query_log"
@@ -25,8 +33,11 @@ module "aws_route53_query_log" {
   zone_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cloudwatch_log_group_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "zone_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_query_log" "this" {
   cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
   zone_id                  = var.zone_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_route53_query_log.this
 }
 ```
+
 [top](#index)

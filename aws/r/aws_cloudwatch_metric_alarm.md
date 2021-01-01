@@ -1,11 +1,16 @@
 # aws_cloudwatch_metric_alarm
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_metric_alarm" {
   source = "./modules/aws/r/aws_cloudwatch_metric_alarm"
@@ -78,8 +86,11 @@ module "aws_cloudwatch_metric_alarm" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "actions_enabled" {
   description = "(optional)"
@@ -227,9 +238,11 @@ variable "metric_query" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_metric_alarm" "this" {
   actions_enabled                       = var.actions_enabled
@@ -279,8 +292,11 @@ resource "aws_cloudwatch_metric_alarm" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -301,4 +317,5 @@ output "this" {
   value = aws_cloudwatch_metric_alarm.this
 }
 ```
+
 [top](#index)

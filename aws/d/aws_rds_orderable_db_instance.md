@@ -1,11 +1,16 @@
 # aws_rds_orderable_db_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_rds_orderable_db_instance" {
   source = "./modules/aws/d/aws_rds_orderable_db_instance"
@@ -55,8 +63,11 @@ module "aws_rds_orderable_db_instance" {
   vpc = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone_group" {
   description = "(optional)"
@@ -159,9 +170,11 @@ variable "vpc" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_rds_orderable_db_instance" "this" {
   availability_zone_group              = var.availability_zone_group
@@ -183,8 +196,11 @@ data "aws_rds_orderable_db_instance" "this" {
   vpc                                  = var.vpc
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "availability_zone_group" {
   description = "returns a string"
@@ -320,4 +336,5 @@ output "this" {
   value = aws_rds_orderable_db_instance.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_db_instance_role_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_instance_role_association" {
   source = "./modules/aws/r/aws_db_instance_role_association"
@@ -27,8 +35,11 @@ module "aws_db_instance_role_association" {
   role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_instance_identifier" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "role_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_db_instance_role_association" "this" {
   db_instance_identifier = var.db_instance_identifier
@@ -55,8 +68,11 @@ resource "aws_db_instance_role_association" "this" {
   role_arn               = var.role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_db_instance_role_association.this
 }
 ```
+
 [top](#index)

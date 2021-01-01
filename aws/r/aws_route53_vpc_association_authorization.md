@@ -1,11 +1,16 @@
 # aws_route53_vpc_association_authorization
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_vpc_association_authorization" {
   source = "./modules/aws/r/aws_route53_vpc_association_authorization"
@@ -27,8 +35,11 @@ module "aws_route53_vpc_association_authorization" {
   zone_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "vpc_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "zone_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_vpc_association_authorization" "this" {
   vpc_id     = var.vpc_id
@@ -56,8 +69,11 @@ resource "aws_route53_vpc_association_authorization" "this" {
   zone_id    = var.zone_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_route53_vpc_association_authorization.this
 }
 ```
+
 [top](#index)

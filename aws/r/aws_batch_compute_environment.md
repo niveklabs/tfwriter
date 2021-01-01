@@ -1,11 +1,16 @@
 # aws_batch_compute_environment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_batch_compute_environment" {
   source = "./modules/aws/r/aws_batch_compute_environment"
@@ -55,8 +63,11 @@ module "aws_batch_compute_environment" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "compute_environment_name" {
   description = "(optional)"
@@ -122,9 +133,11 @@ variable "compute_resources" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_batch_compute_environment" "this" {
   compute_environment_name        = var.compute_environment_name
@@ -166,8 +179,11 @@ resource "aws_batch_compute_environment" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -203,4 +219,5 @@ output "this" {
   value = aws_batch_compute_environment.this
 }
 ```
+
 [top](#index)

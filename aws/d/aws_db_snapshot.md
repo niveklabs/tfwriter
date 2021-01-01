@@ -1,11 +1,16 @@
 # aws_db_snapshot
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_snapshot" {
   source = "./modules/aws/d/aws_db_snapshot"
@@ -33,8 +41,11 @@ module "aws_db_snapshot" {
   snapshot_type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_instance_identifier" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "snapshot_type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_db_snapshot" "this" {
   db_instance_identifier = var.db_instance_identifier
@@ -85,8 +98,11 @@ data "aws_db_snapshot" "this" {
   snapshot_type          = var.snapshot_type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allocated_storage" {
   description = "returns a number"
@@ -182,4 +198,5 @@ output "this" {
   value = aws_db_snapshot.this
 }
 ```
+
 [top](#index)

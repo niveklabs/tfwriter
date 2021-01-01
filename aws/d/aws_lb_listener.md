@@ -1,11 +1,16 @@
 # aws_lb_listener
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_listener" {
   source = "./modules/aws/d/aws_lb_listener"
@@ -27,8 +35,11 @@ module "aws_lb_listener" {
   port = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "port" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lb_listener" "this" {
   arn               = var.arn
@@ -58,8 +71,11 @@ data "aws_lb_listener" "this" {
   port              = var.port
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -105,4 +121,5 @@ output "this" {
   value = aws_lb_listener.this
 }
 ```
+
 [top](#index)

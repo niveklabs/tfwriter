@@ -1,11 +1,16 @@
 # aws_kms_ciphertext
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_ciphertext" {
   source = "./modules/aws/r/aws_kms_ciphertext"
@@ -27,8 +35,11 @@ module "aws_kms_ciphertext" {
   plaintext = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "context" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "plaintext" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kms_ciphertext" "this" {
   context   = var.context
@@ -56,8 +69,11 @@ resource "aws_kms_ciphertext" "this" {
   plaintext = var.plaintext
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "ciphertext_blob" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_kms_ciphertext.this
 }
 ```
+
 [top](#index)

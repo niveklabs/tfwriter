@@ -1,11 +1,16 @@
 # aws_autoscaling_groups
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_groups" {
   source = "./modules/aws/d/aws_autoscaling_groups"
@@ -26,8 +34,11 @@ module "aws_autoscaling_groups" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "filter" {
   description = "nested mode: NestingSet, min items: 0, max items: 0"
@@ -40,9 +51,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_autoscaling_groups" "this" {
 
@@ -56,8 +69,11 @@ data "aws_autoscaling_groups" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arns" {
   description = "returns a list of string"
@@ -78,4 +94,5 @@ output "this" {
   value = aws_autoscaling_groups.this
 }
 ```
+
 [top](#index)

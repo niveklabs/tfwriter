@@ -1,11 +1,16 @@
 # aws_appautoscaling_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appautoscaling_policy" {
   source = "./modules/aws/r/aws_appautoscaling_policy"
@@ -64,8 +72,11 @@ module "aws_appautoscaling_policy" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -146,9 +157,11 @@ variable "target_tracking_scaling_policy_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appautoscaling_policy" "this" {
   name               = var.name
@@ -217,8 +230,11 @@ resource "aws_appautoscaling_policy" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -234,4 +250,5 @@ output "this" {
   value = aws_appautoscaling_policy.this
 }
 ```
+
 [top](#index)

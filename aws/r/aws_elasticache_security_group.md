@@ -1,11 +1,16 @@
 # aws_elasticache_security_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_security_group" {
   source = "./modules/aws/r/aws_elasticache_security_group"
@@ -27,8 +35,11 @@ module "aws_elasticache_security_group" {
   security_group_names = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "security_group_names" {
   type        = set(string)
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elasticache_security_group" "this" {
   description          = var.description
@@ -56,8 +69,11 @@ resource "aws_elasticache_security_group" "this" {
   security_group_names = var.security_group_names
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_elasticache_security_group.this
 }
 ```
+
 [top](#index)

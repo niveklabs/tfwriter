@@ -1,11 +1,16 @@
 # aws_kinesisanalyticsv2_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kinesisanalyticsv2_application" {
   source = "./modules/aws/r/aws_kinesisanalyticsv2_application"
@@ -172,8 +180,11 @@ module "aws_kinesisanalyticsv2_application" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -431,9 +442,11 @@ variable "cloudwatch_logging_options" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kinesisanalyticsv2_application" "this" {
   description            = var.description
@@ -745,8 +758,11 @@ resource "aws_kinesisanalyticsv2_application" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -782,4 +798,5 @@ output "this" {
   value = aws_kinesisanalyticsv2_application.this
 }
 ```
+
 [top](#index)

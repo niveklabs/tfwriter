@@ -1,11 +1,16 @@
 # aws_api_gateway_rest_api_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_rest_api_policy" {
   source = "./modules/aws/r/aws_api_gateway_rest_api_policy"
@@ -25,8 +33,11 @@ module "aws_api_gateway_rest_api_policy" {
   rest_api_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "policy" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "rest_api_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_rest_api_policy" "this" {
   policy      = var.policy
   rest_api_id = var.rest_api_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_api_gateway_rest_api_policy.this
 }
 ```
+
 [top](#index)

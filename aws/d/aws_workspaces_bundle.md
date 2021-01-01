@@ -1,11 +1,16 @@
 # aws_workspaces_bundle
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_workspaces_bundle" {
   source = "./modules/aws/d/aws_workspaces_bundle"
@@ -27,8 +35,11 @@ module "aws_workspaces_bundle" {
   owner = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bundle_id" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "owner" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_workspaces_bundle" "this" {
   bundle_id = var.bundle_id
@@ -58,8 +71,11 @@ data "aws_workspaces_bundle" "this" {
   owner     = var.owner
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "compute_type" {
   description = "returns a list of object"
@@ -90,4 +106,5 @@ output "this" {
   value = aws_workspaces_bundle.this
 }
 ```
+
 [top](#index)

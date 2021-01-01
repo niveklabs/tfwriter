@@ -1,11 +1,16 @@
 # aws_organizations_organization
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,27 +18,38 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_organizations_organization" {
   source = "./modules/aws/d/aws_organizations_organization"
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_organizations_organization" "this" {
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "accounts" {
   description = "returns a list of object"
@@ -94,4 +110,5 @@ output "this" {
   value = aws_organizations_organization.this
 }
 ```
+
 [top](#index)

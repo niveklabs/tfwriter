@@ -1,11 +1,16 @@
 # aws_sns_platform_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sns_platform_application" {
   source = "./modules/aws/r/aws_sns_platform_application"
@@ -43,8 +51,11 @@ module "aws_sns_platform_application" {
   success_feedback_sample_rate = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "event_delivery_failure_topic_arn" {
   description = "(optional)"
@@ -109,9 +120,11 @@ variable "success_feedback_sample_rate" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sns_platform_application" "this" {
   event_delivery_failure_topic_arn = var.event_delivery_failure_topic_arn
@@ -127,8 +140,11 @@ resource "aws_sns_platform_application" "this" {
   success_feedback_sample_rate     = var.success_feedback_sample_rate
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -144,4 +160,5 @@ output "this" {
   value = aws_sns_platform_application.this
 }
 ```
+
 [top](#index)

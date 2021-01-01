@@ -1,11 +1,16 @@
 # aws_codebuild_project
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codebuild_project" {
   source = [{
@@ -138,8 +146,11 @@ module "aws_codebuild_project" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "badge_enabled" {
   description = "(optional)"
@@ -354,9 +365,11 @@ variable "vpc_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codebuild_project" "this" {
   badge_enabled  = var.badge_enabled
@@ -531,8 +544,11 @@ resource "aws_codebuild_project" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -563,4 +579,5 @@ output "this" {
   value = aws_codebuild_project.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_gamelift_fleet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_gamelift_fleet" {
   source = "./modules/aws/r/aws_gamelift_fleet"
@@ -66,8 +74,11 @@ module "aws_gamelift_fleet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "build_id" {
   description = "(required)"
@@ -173,9 +184,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_gamelift_fleet" "this" {
   build_id                           = var.build_id
@@ -234,8 +247,11 @@ resource "aws_gamelift_fleet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -266,4 +282,5 @@ output "this" {
   value = aws_gamelift_fleet.this
 }
 ```
+
 [top](#index)

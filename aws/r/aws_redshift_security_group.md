@@ -1,11 +1,16 @@
 # aws_redshift_security_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_security_group" {
   source = "./modules/aws/r/aws_redshift_security_group"
@@ -31,8 +39,11 @@ module "aws_redshift_security_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "ingress" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_redshift_security_group" "this" {
   description = var.description
@@ -75,8 +88,11 @@ resource "aws_redshift_security_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_redshift_security_group.this
 }
 ```
+
 [top](#index)

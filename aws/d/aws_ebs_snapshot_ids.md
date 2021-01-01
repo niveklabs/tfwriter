@@ -1,11 +1,16 @@
 # aws_ebs_snapshot_ids
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ebs_snapshot_ids" {
   source = "./modules/aws/d/aws_ebs_snapshot_ids"
@@ -30,8 +38,11 @@ module "aws_ebs_snapshot_ids" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "owners" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ebs_snapshot_ids" "this" {
   owners                 = var.owners
@@ -74,8 +87,11 @@ data "aws_ebs_snapshot_ids" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -91,4 +107,5 @@ output "this" {
   value = aws_ebs_snapshot_ids.this
 }
 ```
+
 [top](#index)

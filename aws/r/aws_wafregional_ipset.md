@@ -1,11 +1,16 @@
 # aws_wafregional_ipset
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafregional_ipset" {
   source = "./modules/aws/r/aws_wafregional_ipset"
@@ -28,8 +36,11 @@ module "aws_wafregional_ipset" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "ip_set_descriptor" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafregional_ipset" "this" {
   name = var.name
@@ -64,8 +77,11 @@ resource "aws_wafregional_ipset" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_wafregional_ipset.this
 }
 ```
+
 [top](#index)

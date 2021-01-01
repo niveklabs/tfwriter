@@ -1,11 +1,16 @@
 # aws_organizations_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_organizations_policy" {
   source = "./modules/aws/r/aws_organizations_policy"
@@ -31,8 +39,11 @@ module "aws_organizations_policy" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_organizations_policy" "this" {
   content     = var.content
@@ -74,8 +87,11 @@ resource "aws_organizations_policy" "this" {
   type        = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -91,4 +107,5 @@ output "this" {
   value = aws_organizations_policy.this
 }
 ```
+
 [top](#index)

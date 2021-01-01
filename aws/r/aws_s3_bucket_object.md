@@ -1,11 +1,16 @@
 # aws_s3_bucket_object
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_object" {
   source = null
@@ -64,8 +72,11 @@ module "aws_s3_bucket_object" {
   website_redirect = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "acl" {
   description = "(optional)"
@@ -197,9 +208,11 @@ variable "website_redirect" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_object" "this" {
   acl                           = var.acl
@@ -226,8 +239,11 @@ resource "aws_s3_bucket_object" "this" {
   website_redirect              = var.website_redirect
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "content_type" {
   description = "returns a string"
@@ -268,4 +284,5 @@ output "this" {
   value = aws_s3_bucket_object.this
 }
 ```
+
 [top](#index)

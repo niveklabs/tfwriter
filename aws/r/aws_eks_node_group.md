@@ -1,11 +1,16 @@
 # aws_eks_node_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eks_node_group" {
   source = "./modules/aws/r/aws_eks_node_group"
@@ -70,8 +78,11 @@ module "aws_eks_node_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "ami_type" {
   description = "(optional)"
@@ -193,9 +204,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_eks_node_group" "this" {
   ami_type             = var.ami_type
@@ -249,8 +262,11 @@ resource "aws_eks_node_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "ami_type" {
   description = "returns a string"
@@ -306,4 +322,5 @@ output "this" {
   value = aws_eks_node_group.this
 }
 ```
+
 [top](#index)

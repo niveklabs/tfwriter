@@ -1,11 +1,16 @@
 # aws_workspaces_directory
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_workspaces_directory" {
   source = "./modules/aws/r/aws_workspaces_directory"
@@ -45,8 +53,11 @@ module "aws_workspaces_directory" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "directory_id" {
   description = "(required)"
@@ -99,9 +110,11 @@ variable "workspace_creation_properties" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_workspaces_directory" "this" {
   directory_id = var.directory_id
@@ -133,8 +146,11 @@ resource "aws_workspaces_directory" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "alias" {
   description = "returns a string"
@@ -195,4 +211,5 @@ output "this" {
   value = aws_workspaces_directory.this
 }
 ```
+
 [top](#index)

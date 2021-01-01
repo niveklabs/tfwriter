@@ -1,11 +1,16 @@
 # aws_partition
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,27 +18,38 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_partition" {
   source = "./modules/aws/d/aws_partition"
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_partition" "this" {
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "dns_suffix" {
   description = "returns a string"
@@ -54,4 +70,5 @@ output "this" {
   value = aws_partition.this
 }
 ```
+
 [top](#index)

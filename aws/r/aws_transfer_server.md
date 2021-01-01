@@ -1,11 +1,16 @@
 # aws_transfer_server
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_transfer_server" {
   source = "./modules/aws/r/aws_transfer_server"
@@ -44,8 +52,11 @@ module "aws_transfer_server" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "endpoint_type" {
   description = "(optional)"
@@ -108,9 +119,11 @@ variable "endpoint_details" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_transfer_server" "this" {
   endpoint_type          = var.endpoint_type
@@ -134,8 +147,11 @@ resource "aws_transfer_server" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -161,4 +177,5 @@ output "this" {
   value = aws_transfer_server.this
 }
 ```
+
 [top](#index)

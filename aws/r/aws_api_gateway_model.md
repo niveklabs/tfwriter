@@ -1,11 +1,16 @@
 # aws_api_gateway_model
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_model" {
   source = "./modules/aws/r/aws_api_gateway_model"
@@ -31,8 +39,11 @@ module "aws_api_gateway_model" {
   schema = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content_type" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "schema" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_model" "this" {
   content_type = var.content_type
@@ -73,8 +86,11 @@ resource "aws_api_gateway_model" "this" {
   schema       = var.schema
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -85,4 +101,5 @@ output "this" {
   value = aws_api_gateway_model.this
 }
 ```
+
 [top](#index)

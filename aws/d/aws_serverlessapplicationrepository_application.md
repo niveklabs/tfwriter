@@ -1,11 +1,16 @@
 # aws_serverlessapplicationrepository_application
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_serverlessapplicationrepository_application" {
   source = "./modules/aws/d/aws_serverlessapplicationrepository_application"
@@ -25,8 +33,11 @@ module "aws_serverlessapplicationrepository_application" {
   semantic_version = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "semantic_version" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_serverlessapplicationrepository_application" "this" {
   application_id   = var.application_id
   semantic_version = var.semantic_version
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -85,4 +101,5 @@ output "this" {
   value = aws_serverlessapplicationrepository_application.this
 }
 ```
+
 [top](#index)

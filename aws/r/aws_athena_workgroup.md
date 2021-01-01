@@ -1,11 +1,16 @@
 # aws_athena_workgroup
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_athena_workgroup" {
   source = "./modules/aws/r/aws_athena_workgroup"
@@ -44,8 +52,11 @@ module "aws_athena_workgroup" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -99,9 +110,11 @@ variable "configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_athena_workgroup" "this" {
   description   = var.description
@@ -138,8 +151,11 @@ resource "aws_athena_workgroup" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -155,4 +171,5 @@ output "this" {
   value = aws_athena_workgroup.this
 }
 ```
+
 [top](#index)

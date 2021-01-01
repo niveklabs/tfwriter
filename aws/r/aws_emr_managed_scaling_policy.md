@@ -1,11 +1,16 @@
 # aws_emr_managed_scaling_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_emr_managed_scaling_policy" {
   source = "./modules/aws/r/aws_emr_managed_scaling_policy"
@@ -31,8 +39,11 @@ module "aws_emr_managed_scaling_policy" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_id" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "compute_limits" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_emr_managed_scaling_policy" "this" {
   cluster_id = var.cluster_id
@@ -72,8 +85,11 @@ resource "aws_emr_managed_scaling_policy" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_emr_managed_scaling_policy.this
 }
 ```
+
 [top](#index)

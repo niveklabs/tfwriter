@@ -1,11 +1,16 @@
 # aws_networkfirewall_resource_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_networkfirewall_resource_policy" {
   source = "./modules/aws/r/aws_networkfirewall_resource_policy"
@@ -25,8 +33,11 @@ module "aws_networkfirewall_resource_policy" {
   resource_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "policy" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "resource_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_networkfirewall_resource_policy" "this" {
   policy       = var.policy
   resource_arn = var.resource_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_networkfirewall_resource_policy.this
 }
 ```
+
 [top](#index)

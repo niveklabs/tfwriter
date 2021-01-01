@@ -1,11 +1,16 @@
 # aws_lakeformation_resource
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lakeformation_resource" {
   source = "./modules/aws/d/aws_lakeformation_resource"
@@ -23,24 +31,32 @@ module "aws_lakeformation_resource" {
   arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lakeformation_resource" "this" {
   arn = var.arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -61,4 +77,5 @@ output "this" {
   value = aws_lakeformation_resource.this
 }
 ```
+
 [top](#index)

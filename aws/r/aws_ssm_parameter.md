@@ -1,11 +1,16 @@
 # aws_ssm_parameter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_parameter" {
   source = "./modules/aws/r/aws_ssm_parameter"
@@ -43,8 +51,11 @@ module "aws_ssm_parameter" {
   value = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allowed_pattern" {
   description = "(optional)"
@@ -109,9 +120,11 @@ variable "value" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_parameter" "this" {
   allowed_pattern = var.allowed_pattern
@@ -127,8 +140,11 @@ resource "aws_ssm_parameter" "this" {
   value           = var.value
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -159,4 +175,5 @@ output "this" {
   value = aws_ssm_parameter.this
 }
 ```
+
 [top](#index)

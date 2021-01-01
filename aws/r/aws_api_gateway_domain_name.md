@@ -1,11 +1,16 @@
 # aws_api_gateway_domain_name
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_domain_name" {
   source = "./modules/aws/r/aws_api_gateway_domain_name"
@@ -45,8 +53,11 @@ module "aws_api_gateway_domain_name" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(optional)"
@@ -117,9 +128,11 @@ variable "endpoint_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_domain_name" "this" {
   certificate_arn           = var.certificate_arn
@@ -142,8 +155,11 @@ resource "aws_api_gateway_domain_name" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -189,4 +205,5 @@ output "this" {
   value = aws_api_gateway_domain_name.this
 }
 ```
+
 [top](#index)

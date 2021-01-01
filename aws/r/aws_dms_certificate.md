@@ -1,11 +1,16 @@
 # aws_dms_certificate
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dms_certificate" {
   source = "./modules/aws/r/aws_dms_certificate"
@@ -27,8 +35,11 @@ module "aws_dms_certificate" {
   certificate_wallet = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_id" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "certificate_wallet" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dms_certificate" "this" {
   certificate_id     = var.certificate_id
@@ -57,8 +70,11 @@ resource "aws_dms_certificate" "this" {
   certificate_wallet = var.certificate_wallet
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "certificate_arn" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_dms_certificate.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_route53_zone
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_zone" {
   source = "./modules/aws/r/aws_route53_zone"
@@ -36,8 +44,11 @@ module "aws_route53_zone" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "comment" {
   description = "(optional)"
@@ -79,9 +90,11 @@ variable "vpc" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_zone" "this" {
   comment           = var.comment
@@ -100,8 +113,11 @@ resource "aws_route53_zone" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_route53_zone.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_elb_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elb_attachment" {
   source = "./modules/aws/r/aws_elb_attachment"
@@ -25,8 +33,11 @@ module "aws_elb_attachment" {
   instance = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "elb" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "instance" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elb_attachment" "this" {
   elb      = var.elb
   instance = var.instance
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_elb_attachment.this
 }
 ```
+
 [top](#index)

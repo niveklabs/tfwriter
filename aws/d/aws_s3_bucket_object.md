@@ -1,11 +1,16 @@
 # aws_s3_bucket_object
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_object" {
   source = "./modules/aws/d/aws_s3_bucket_object"
@@ -31,8 +39,11 @@ module "aws_s3_bucket_object" {
   version_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "version_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_s3_bucket_object" "this" {
   bucket     = var.bucket
@@ -74,8 +87,11 @@ data "aws_s3_bucket_object" "this" {
   version_id = var.version_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "body" {
   description = "returns a string"
@@ -191,4 +207,5 @@ output "this" {
   value = aws_s3_bucket_object.this
 }
 ```
+
 [top](#index)

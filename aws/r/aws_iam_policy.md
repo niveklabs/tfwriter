@@ -1,11 +1,16 @@
 # aws_iam_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_policy" {
   source = "./modules/aws/r/aws_iam_policy"
@@ -31,8 +39,11 @@ module "aws_iam_policy" {
   policy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "policy" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_policy" "this" {
   description = var.description
@@ -75,8 +88,11 @@ resource "aws_iam_policy" "this" {
   policy      = var.policy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_iam_policy.this
 }
 ```
+
 [top](#index)

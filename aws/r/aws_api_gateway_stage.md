@@ -1,11 +1,16 @@
 # aws_api_gateway_stage
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_stage" {
   source = "./modules/aws/r/aws_api_gateway_stage"
@@ -48,8 +56,11 @@ module "aws_api_gateway_stage" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cache_cluster_enabled" {
   description = "(optional)"
@@ -125,9 +136,11 @@ variable "access_log_settings" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_stage" "this" {
   cache_cluster_enabled = var.cache_cluster_enabled
@@ -152,8 +165,11 @@ resource "aws_api_gateway_stage" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -179,4 +195,5 @@ output "this" {
   value = aws_api_gateway_stage.this
 }
 ```
+
 [top](#index)

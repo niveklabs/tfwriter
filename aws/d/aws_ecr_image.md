@@ -1,11 +1,16 @@
 # aws_ecr_image
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecr_image" {
   source = "./modules/aws/d/aws_ecr_image"
@@ -29,8 +37,11 @@ module "aws_ecr_image" {
   repository_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "image_digest" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "repository_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ecr_image" "this" {
   image_digest    = var.image_digest
@@ -66,8 +79,11 @@ data "aws_ecr_image" "this" {
   repository_name = var.repository_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -103,4 +119,5 @@ output "this" {
   value = aws_ecr_image.this
 }
 ```
+
 [top](#index)

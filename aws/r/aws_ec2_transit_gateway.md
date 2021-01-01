@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway" {
   source = "./modules/aws/r/aws_ec2_transit_gateway"
@@ -37,8 +45,11 @@ module "aws_ec2_transit_gateway" {
   vpn_ecmp_support = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "amazon_side_asn" {
   description = "(optional)"
@@ -88,9 +99,11 @@ variable "vpn_ecmp_support" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway" "this" {
   amazon_side_asn                 = var.amazon_side_asn
@@ -103,8 +116,11 @@ resource "aws_ec2_transit_gateway" "this" {
   vpn_ecmp_support                = var.vpn_ecmp_support
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -135,4 +151,5 @@ output "this" {
   value = aws_ec2_transit_gateway.this
 }
 ```
+
 [top](#index)

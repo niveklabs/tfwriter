@@ -1,11 +1,16 @@
 # aws_iam_group_policy_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_group_policy_attachment" {
   source = "./modules/aws/r/aws_iam_group_policy_attachment"
@@ -25,8 +33,11 @@ module "aws_iam_group_policy_attachment" {
   policy_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "group" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "policy_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_group_policy_attachment" "this" {
   group      = var.group
   policy_arn = var.policy_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_iam_group_policy_attachment.this
 }
 ```
+
 [top](#index)

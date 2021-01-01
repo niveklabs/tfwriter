@@ -1,11 +1,16 @@
 # aws_datasync_location_smb
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_location_smb" {
   source = "./modules/aws/r/aws_datasync_location_smb"
@@ -39,8 +47,11 @@ module "aws_datasync_location_smb" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "agent_arns" {
   description = "(required)"
@@ -89,9 +100,11 @@ variable "mount_options" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_location_smb" "this" {
   agent_arns      = var.agent_arns
@@ -111,8 +124,11 @@ resource "aws_datasync_location_smb" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -138,4 +154,5 @@ output "this" {
   value = aws_datasync_location_smb.this
 }
 ```
+
 [top](#index)

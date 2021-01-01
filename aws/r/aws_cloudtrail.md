@@ -1,11 +1,16 @@
 # aws_cloudtrail
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudtrail" {
   source = "./modules/aws/r/aws_cloudtrail"
@@ -60,8 +68,11 @@ module "aws_cloudtrail" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cloud_watch_logs_group_arn" {
   description = "(optional)"
@@ -166,9 +177,11 @@ variable "insight_selector" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudtrail" "this" {
   cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
@@ -211,8 +224,11 @@ resource "aws_cloudtrail" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -233,4 +249,5 @@ output "this" {
   value = aws_cloudtrail.this
 }
 ```
+
 [top](#index)

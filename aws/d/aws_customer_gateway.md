@@ -1,11 +1,16 @@
 # aws_customer_gateway
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_customer_gateway" {
   source = "./modules/aws/d/aws_customer_gateway"
@@ -28,8 +36,11 @@ module "aws_customer_gateway" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_customer_gateway" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_customer_gateway" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -102,4 +118,5 @@ output "this" {
   value = aws_customer_gateway.this
 }
 ```
+
 [top](#index)

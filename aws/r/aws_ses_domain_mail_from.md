@@ -1,11 +1,16 @@
 # aws_ses_domain_mail_from
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_domain_mail_from" {
   source = "./modules/aws/r/aws_ses_domain_mail_from"
@@ -27,8 +35,11 @@ module "aws_ses_domain_mail_from" {
   mail_from_domain = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "behavior_on_mx_failure" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "mail_from_domain" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_domain_mail_from" "this" {
   behavior_on_mx_failure = var.behavior_on_mx_failure
@@ -56,8 +69,11 @@ resource "aws_ses_domain_mail_from" "this" {
   mail_from_domain       = var.mail_from_domain
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_ses_domain_mail_from.this
 }
 ```
+
 [top](#index)

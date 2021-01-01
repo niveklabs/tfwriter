@@ -1,11 +1,16 @@
 # aws_autoscaling_notification
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_notification" {
   source = "./modules/aws/r/aws_autoscaling_notification"
@@ -27,8 +35,11 @@ module "aws_autoscaling_notification" {
   topic_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "group_names" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "topic_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_autoscaling_notification" "this" {
   group_names   = var.group_names
@@ -55,8 +68,11 @@ resource "aws_autoscaling_notification" "this" {
   topic_arn     = var.topic_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_autoscaling_notification.this
 }
 ```
+
 [top](#index)

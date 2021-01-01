@@ -1,11 +1,16 @@
 # aws_outposts_site
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_outposts_site" {
   source = "./modules/aws/d/aws_outposts_site"
@@ -23,8 +31,11 @@ module "aws_outposts_site" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_outposts_site" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_outposts_site.this
 }
 ```
+
 [top](#index)

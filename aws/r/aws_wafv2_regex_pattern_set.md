@@ -1,11 +1,16 @@
 # aws_wafv2_regex_pattern_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_wafv2_regex_pattern_set" {
   source = "./modules/aws/r/aws_wafv2_regex_pattern_set"
@@ -33,8 +41,11 @@ module "aws_wafv2_regex_pattern_set" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -68,9 +79,11 @@ variable "regular_expression" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_wafv2_regex_pattern_set" "this" {
   description = var.description
@@ -87,8 +100,11 @@ resource "aws_wafv2_regex_pattern_set" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -109,4 +125,5 @@ output "this" {
   value = aws_wafv2_regex_pattern_set.this
 }
 ```
+
 [top](#index)

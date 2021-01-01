@@ -1,11 +1,16 @@
 # aws_codeartifact_repository_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codeartifact_repository_endpoint" {
   source = "./modules/aws/d/aws_codeartifact_repository_endpoint"
@@ -29,8 +37,11 @@ module "aws_codeartifact_repository_endpoint" {
   repository = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "repository" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_codeartifact_repository_endpoint" "this" {
   domain       = var.domain
@@ -64,8 +77,11 @@ data "aws_codeartifact_repository_endpoint" "this" {
   repository   = var.repository
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "domain_owner" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_codeartifact_repository_endpoint.this
 }
 ```
+
 [top](#index)

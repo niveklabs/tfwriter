@@ -1,11 +1,16 @@
 # aws_db_cluster_snapshot
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_cluster_snapshot" {
   source = "./modules/aws/r/aws_db_cluster_snapshot"
@@ -31,8 +39,11 @@ module "aws_db_cluster_snapshot" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_cluster_identifier" {
   description = "(required)"
@@ -60,9 +71,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_db_cluster_snapshot" "this" {
   db_cluster_identifier          = var.db_cluster_identifier
@@ -78,8 +91,11 @@ resource "aws_db_cluster_snapshot" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allocated_storage" {
   description = "returns a number"
@@ -155,4 +171,5 @@ output "this" {
   value = aws_db_cluster_snapshot.this
 }
 ```
+
 [top](#index)

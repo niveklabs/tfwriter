@@ -1,11 +1,16 @@
 # aws_availability_zones
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_availability_zones" {
   source = "./modules/aws/d/aws_availability_zones"
@@ -34,8 +42,11 @@ module "aws_availability_zones" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "all_availability_zones" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_availability_zones" "this" {
   all_availability_zones = var.all_availability_zones
@@ -92,8 +105,11 @@ data "aws_availability_zones" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "group_names" {
   description = "returns a set of string"
@@ -119,4 +135,5 @@ output "this" {
   value = aws_availability_zones.this
 }
 ```
+
 [top](#index)

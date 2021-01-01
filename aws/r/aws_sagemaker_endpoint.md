@@ -1,11 +1,16 @@
 # aws_sagemaker_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sagemaker_endpoint" {
   source = "./modules/aws/r/aws_sagemaker_endpoint"
@@ -27,8 +35,11 @@ module "aws_sagemaker_endpoint" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "endpoint_config_name" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sagemaker_endpoint" "this" {
   endpoint_config_name = var.endpoint_config_name
@@ -57,8 +70,11 @@ resource "aws_sagemaker_endpoint" "this" {
   tags                 = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_sagemaker_endpoint.this
 }
 ```
+
 [top](#index)

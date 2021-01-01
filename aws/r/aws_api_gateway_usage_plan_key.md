@@ -1,11 +1,16 @@
 # aws_api_gateway_usage_plan_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_usage_plan_key" {
   source = "./modules/aws/r/aws_api_gateway_usage_plan_key"
@@ -27,8 +35,11 @@ module "aws_api_gateway_usage_plan_key" {
   usage_plan_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "key_id" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "usage_plan_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_usage_plan_key" "this" {
   key_id        = var.key_id
@@ -55,8 +68,11 @@ resource "aws_api_gateway_usage_plan_key" "this" {
   usage_plan_id = var.usage_plan_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_api_gateway_usage_plan_key.this
 }
 ```
+
 [top](#index)

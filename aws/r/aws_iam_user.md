@@ -1,11 +1,16 @@
 # aws_iam_user
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_user" {
   source = "./modules/aws/r/aws_iam_user"
@@ -31,8 +39,11 @@ module "aws_iam_user" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "force_destroy" {
   description = "(optional) - Delete user even if it has non-Terraform-managed IAM access keys, login profile or MFA devices"
@@ -63,9 +74,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_user" "this" {
   force_destroy        = var.force_destroy
@@ -75,8 +88,11 @@ resource "aws_iam_user" "this" {
   tags                 = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_iam_user.this
 }
 ```
+
 [top](#index)

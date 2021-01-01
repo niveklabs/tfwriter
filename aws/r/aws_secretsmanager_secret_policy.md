@@ -1,11 +1,16 @@
 # aws_secretsmanager_secret_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_secretsmanager_secret_policy" {
   source = "./modules/aws/r/aws_secretsmanager_secret_policy"
@@ -27,8 +35,11 @@ module "aws_secretsmanager_secret_policy" {
   secret_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "block_public_policy" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "secret_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_secretsmanager_secret_policy" "this" {
   block_public_policy = var.block_public_policy
@@ -56,8 +69,11 @@ resource "aws_secretsmanager_secret_policy" "this" {
   secret_arn          = var.secret_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_secretsmanager_secret_policy.this
 }
 ```
+
 [top](#index)

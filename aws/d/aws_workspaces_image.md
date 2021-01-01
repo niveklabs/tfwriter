@@ -1,11 +1,16 @@
 # aws_workspaces_image
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_workspaces_image" {
   source = "./modules/aws/d/aws_workspaces_image"
@@ -23,24 +31,32 @@ module "aws_workspaces_image" {
   image_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "image_id" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_workspaces_image" "this" {
   image_id = var.image_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "description" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_workspaces_image.this
 }
 ```
+
 [top](#index)

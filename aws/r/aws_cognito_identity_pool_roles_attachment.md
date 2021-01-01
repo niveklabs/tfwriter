@@ -1,11 +1,16 @@
 # aws_cognito_identity_pool_roles_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_identity_pool_roles_attachment" {
   source = "./modules/aws/r/aws_cognito_identity_pool_roles_attachment"
@@ -37,8 +45,11 @@ module "aws_cognito_identity_pool_roles_attachment" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "identity_pool_id" {
   description = "(required)"
@@ -70,9 +81,11 @@ variable "role_mapping" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_identity_pool_roles_attachment" "this" {
   identity_pool_id = var.identity_pool_id
@@ -100,8 +113,11 @@ resource "aws_cognito_identity_pool_roles_attachment" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -112,4 +128,5 @@ output "this" {
   value = aws_cognito_identity_pool_roles_attachment.this
 }
 ```
+
 [top](#index)

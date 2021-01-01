@@ -1,11 +1,16 @@
 # aws_opsworks_stack
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_stack" {
   source = "./modules/aws/r/aws_opsworks_stack"
@@ -72,8 +80,11 @@ module "aws_opsworks_stack" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "agent_version" {
   description = "(optional)"
@@ -212,9 +223,11 @@ variable "custom_cookbooks_source" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_stack" "this" {
   agent_version                 = var.agent_version
@@ -253,8 +266,11 @@ resource "aws_opsworks_stack" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "agent_version" {
   description = "returns a string"
@@ -295,4 +311,5 @@ output "this" {
   value = aws_opsworks_stack.this
 }
 ```
+
 [top](#index)

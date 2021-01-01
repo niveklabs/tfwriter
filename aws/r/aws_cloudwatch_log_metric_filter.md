@@ -1,11 +1,16 @@
 # aws_cloudwatch_log_metric_filter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_log_metric_filter" {
   source = "./modules/aws/r/aws_cloudwatch_log_metric_filter"
@@ -34,8 +42,11 @@ module "aws_cloudwatch_log_metric_filter" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "log_group_name" {
   description = "(required)"
@@ -64,9 +75,11 @@ variable "metric_transformation" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_log_metric_filter" "this" {
   log_group_name = var.log_group_name
@@ -85,8 +98,11 @@ resource "aws_cloudwatch_log_metric_filter" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_cloudwatch_log_metric_filter.this
 }
 ```
+
 [top](#index)

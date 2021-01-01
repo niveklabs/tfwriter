@@ -1,11 +1,16 @@
 # aws_vpc_endpoint_subnet_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_endpoint_subnet_association" {
   source = "./modules/aws/r/aws_vpc_endpoint_subnet_association"
@@ -30,8 +38,11 @@ module "aws_vpc_endpoint_subnet_association" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "subnet_id" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_endpoint_subnet_association" "this" {
   subnet_id       = var.subnet_id
@@ -72,8 +85,11 @@ resource "aws_vpc_endpoint_subnet_association" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_vpc_endpoint_subnet_association.this
 }
 ```
+
 [top](#index)

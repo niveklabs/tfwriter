@@ -1,11 +1,16 @@
 # aws_cognito_identity_pool
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_identity_pool" {
   source = "./modules/aws/r/aws_cognito_identity_pool"
@@ -41,8 +49,11 @@ module "aws_cognito_identity_pool" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_unauthenticated_identities" {
   description = "(optional)"
@@ -97,9 +108,11 @@ variable "cognito_identity_providers" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_identity_pool" "this" {
   allow_unauthenticated_identities = var.allow_unauthenticated_identities
@@ -121,8 +134,11 @@ resource "aws_cognito_identity_pool" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -138,4 +154,5 @@ output "this" {
   value = aws_cognito_identity_pool.this
 }
 ```
+
 [top](#index)

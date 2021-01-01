@@ -1,11 +1,16 @@
 # aws_ses_identity_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_identity_policy" {
   source = "./modules/aws/r/aws_ses_identity_policy"
@@ -27,8 +35,11 @@ module "aws_ses_identity_policy" {
   policy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "identity" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "policy" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_identity_policy" "this" {
   identity = var.identity
@@ -55,8 +68,11 @@ resource "aws_ses_identity_policy" "this" {
   policy   = var.policy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_ses_identity_policy.this
 }
 ```
+
 [top](#index)

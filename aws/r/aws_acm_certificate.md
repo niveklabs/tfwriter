@@ -1,11 +1,16 @@
 # aws_acm_certificate
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_acm_certificate" {
   source = "./modules/aws/r/aws_acm_certificate"
@@ -41,8 +49,11 @@ module "aws_acm_certificate" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_authority_arn" {
   description = "(optional)"
@@ -102,9 +113,11 @@ variable "options" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_acm_certificate" "this" {
   certificate_authority_arn = var.certificate_authority_arn
@@ -125,8 +138,11 @@ resource "aws_acm_certificate" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -172,4 +188,5 @@ output "this" {
   value = aws_acm_certificate.this
 }
 ```
+
 [top](#index)

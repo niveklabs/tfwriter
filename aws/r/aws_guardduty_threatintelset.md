@@ -1,11 +1,16 @@
 # aws_guardduty_threatintelset
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_threatintelset" {
   source = "./modules/aws/r/aws_guardduty_threatintelset"
@@ -33,8 +41,11 @@ module "aws_guardduty_threatintelset" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "activate" {
   description = "(required)"
@@ -67,9 +78,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_threatintelset" "this" {
   activate    = var.activate
@@ -80,8 +93,11 @@ resource "aws_guardduty_threatintelset" "this" {
   tags        = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_guardduty_threatintelset.this
 }
 ```
+
 [top](#index)

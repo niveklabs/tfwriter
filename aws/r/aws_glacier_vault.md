@@ -1,11 +1,16 @@
 # aws_glacier_vault
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glacier_vault" {
   source = "./modules/aws/r/aws_glacier_vault"
@@ -32,8 +40,11 @@ module "aws_glacier_vault" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "access_policy" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "notification" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glacier_vault" "this" {
   access_policy = var.access_policy
@@ -82,8 +95,11 @@ resource "aws_glacier_vault" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -104,4 +120,5 @@ output "this" {
   value = aws_glacier_vault.this
 }
 ```
+
 [top](#index)

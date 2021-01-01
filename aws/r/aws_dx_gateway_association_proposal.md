@@ -1,11 +1,16 @@
 # aws_dx_gateway_association_proposal
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_gateway_association_proposal" {
   source = "./modules/aws/r/aws_dx_gateway_association_proposal"
@@ -29,8 +37,11 @@ module "aws_dx_gateway_association_proposal" {
   dx_gateway_owner_account_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allowed_prefixes" {
   description = "(optional)"
@@ -53,9 +64,11 @@ variable "dx_gateway_owner_account_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_gateway_association_proposal" "this" {
   allowed_prefixes            = var.allowed_prefixes
@@ -64,8 +77,11 @@ resource "aws_dx_gateway_association_proposal" "this" {
   dx_gateway_owner_account_id = var.dx_gateway_owner_account_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allowed_prefixes" {
   description = "returns a set of string"
@@ -91,4 +107,5 @@ output "this" {
   value = aws_dx_gateway_association_proposal.this
 }
 ```
+
 [top](#index)

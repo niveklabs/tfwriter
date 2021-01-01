@@ -1,11 +1,16 @@
 # aws_api_gateway_method_settings
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_method_settings" {
   source = "./modules/aws/r/aws_api_gateway_method_settings"
@@ -40,8 +48,11 @@ module "aws_api_gateway_method_settings" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "method_path" {
   description = "(required)"
@@ -76,9 +87,11 @@ variable "settings" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_method_settings" "this" {
   method_path = var.method_path
@@ -103,8 +116,11 @@ resource "aws_api_gateway_method_settings" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -115,4 +131,5 @@ output "this" {
   value = aws_api_gateway_method_settings.this
 }
 ```
+
 [top](#index)

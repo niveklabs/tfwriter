@@ -1,11 +1,16 @@
 # aws_storagegateway_smb_file_share
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_smb_file_share" {
   source = "./modules/aws/r/aws_storagegateway_smb_file_share"
@@ -73,8 +81,11 @@ module "aws_storagegateway_smb_file_share" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "access_based_enumeration" {
   description = "(optional)"
@@ -221,9 +232,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_smb_file_share" "this" {
   access_based_enumeration = var.access_based_enumeration
@@ -266,8 +279,11 @@ resource "aws_storagegateway_smb_file_share" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -298,4 +314,5 @@ output "this" {
   value = aws_storagegateway_smb_file_share.this
 }
 ```
+
 [top](#index)

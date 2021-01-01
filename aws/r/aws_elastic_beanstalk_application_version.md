@@ -1,11 +1,16 @@
 # aws_elastic_beanstalk_application_version
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastic_beanstalk_application_version" {
   source = "./modules/aws/r/aws_elastic_beanstalk_application_version"
@@ -35,8 +43,11 @@ module "aws_elastic_beanstalk_application_version" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application" {
   description = "(required)"
@@ -76,9 +87,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elastic_beanstalk_application_version" "this" {
   application  = var.application
@@ -90,8 +103,11 @@ resource "aws_elastic_beanstalk_application_version" "this" {
   tags         = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -107,4 +123,5 @@ output "this" {
   value = aws_elastic_beanstalk_application_version.this
 }
 ```
+
 [top](#index)

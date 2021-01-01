@@ -1,11 +1,16 @@
 # aws_codecommit_trigger
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codecommit_trigger" {
   source = "./modules/aws/r/aws_codecommit_trigger"
@@ -31,8 +39,11 @@ module "aws_codecommit_trigger" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "repository_name" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "trigger" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codecommit_trigger" "this" {
   repository_name = var.repository_name
@@ -72,8 +85,11 @@ resource "aws_codecommit_trigger" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "configuration_id" {
   description = "returns a string"
@@ -89,4 +105,5 @@ output "this" {
   value = aws_codecommit_trigger.this
 }
 ```
+
 [top](#index)

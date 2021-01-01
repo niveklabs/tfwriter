@@ -1,11 +1,16 @@
 # aws_ecr_authorization_token
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecr_authorization_token" {
   source = "./modules/aws/d/aws_ecr_authorization_token"
@@ -23,8 +31,11 @@ module "aws_ecr_authorization_token" {
   registry_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "registry_id" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "registry_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ecr_authorization_token" "this" {
   registry_id = var.registry_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "authorization_token" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_ecr_authorization_token.this
 }
 ```
+
 [top](#index)

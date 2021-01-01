@@ -1,11 +1,16 @@
 # aws_guardduty_detector
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_detector" {
   source = "./modules/aws/r/aws_guardduty_detector"
@@ -27,8 +35,11 @@ module "aws_guardduty_detector" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enable" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_detector" "this" {
   enable                       = var.enable
@@ -58,8 +71,11 @@ resource "aws_guardduty_detector" "this" {
   tags                         = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -85,4 +101,5 @@ output "this" {
   value = aws_guardduty_detector.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_worklink_fleet
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_worklink_fleet" {
   source = "./modules/aws/r/aws_worklink_fleet"
@@ -42,8 +50,11 @@ module "aws_worklink_fleet" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "audit_stream_arn" {
   description = "(optional)"
@@ -97,9 +108,11 @@ variable "network" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_worklink_fleet" "this" {
   audit_stream_arn               = var.audit_stream_arn
@@ -127,8 +140,11 @@ resource "aws_worklink_fleet" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -159,4 +175,5 @@ output "this" {
   value = aws_worklink_fleet.this
 }
 ```
+
 [top](#index)

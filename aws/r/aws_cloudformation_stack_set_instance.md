@@ -1,11 +1,16 @@
 # aws_cloudformation_stack_set_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudformation_stack_set_instance" {
   source = "./modules/aws/r/aws_cloudformation_stack_set_instance"
@@ -37,8 +45,11 @@ module "aws_cloudformation_stack_set_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(optional)"
@@ -81,9 +92,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudformation_stack_set_instance" "this" {
   account_id          = var.account_id
@@ -103,8 +116,11 @@ resource "aws_cloudformation_stack_set_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -130,4 +146,5 @@ output "this" {
   value = aws_cloudformation_stack_set_instance.this
 }
 ```
+
 [top](#index)

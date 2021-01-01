@@ -1,11 +1,16 @@
 # aws_lakeformation_data_lake_settings
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lakeformation_data_lake_settings" {
   source = "./modules/aws/r/aws_lakeformation_data_lake_settings"
@@ -37,8 +45,11 @@ module "aws_lakeformation_data_lake_settings" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "admins" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "create_table_default_permissions" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lakeformation_data_lake_settings" "this" {
   admins                  = var.admins
@@ -107,8 +120,11 @@ resource "aws_lakeformation_data_lake_settings" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "admins" {
   description = "returns a list of string"
@@ -129,4 +145,5 @@ output "this" {
   value = aws_lakeformation_data_lake_settings.this
 }
 ```
+
 [top](#index)

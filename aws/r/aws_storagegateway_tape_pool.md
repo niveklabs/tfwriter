@@ -1,11 +1,16 @@
 # aws_storagegateway_tape_pool
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_storagegateway_tape_pool" {
   source = "./modules/aws/r/aws_storagegateway_tape_pool"
@@ -31,8 +39,11 @@ module "aws_storagegateway_tape_pool" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "pool_name" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_storagegateway_tape_pool" "this" {
   pool_name                   = var.pool_name
@@ -74,8 +87,11 @@ resource "aws_storagegateway_tape_pool" "this" {
   tags                        = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -91,4 +107,5 @@ output "this" {
   value = aws_storagegateway_tape_pool.this
 }
 ```
+
 [top](#index)

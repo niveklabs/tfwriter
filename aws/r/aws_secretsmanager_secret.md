@@ -1,11 +1,16 @@
 # aws_secretsmanager_secret
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_secretsmanager_secret" {
   source = "./modules/aws/r/aws_secretsmanager_secret"
@@ -41,8 +49,11 @@ module "aws_secretsmanager_secret" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -102,9 +113,11 @@ variable "rotation_rules" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_secretsmanager_secret" "this" {
   description             = var.description
@@ -125,8 +138,11 @@ resource "aws_secretsmanager_secret" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -167,4 +183,5 @@ output "this" {
   value = aws_secretsmanager_secret.this
 }
 ```
+
 [top](#index)

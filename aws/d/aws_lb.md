@@ -1,11 +1,16 @@
 # aws_lb
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb" {
   source = "./modules/aws/d/aws_lb"
@@ -27,8 +35,11 @@ module "aws_lb" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lb" "this" {
   arn  = var.arn
@@ -58,8 +71,11 @@ data "aws_lb" "this" {
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "access_logs" {
   description = "returns a list of object"
@@ -165,4 +181,5 @@ output "this" {
   value = aws_lb.this
 }
 ```
+
 [top](#index)

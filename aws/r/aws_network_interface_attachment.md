@@ -1,11 +1,16 @@
 # aws_network_interface_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_network_interface_attachment" {
   source = "./modules/aws/r/aws_network_interface_attachment"
@@ -27,8 +35,11 @@ module "aws_network_interface_attachment" {
   network_interface_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "device_index" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "network_interface_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_network_interface_attachment" "this" {
   device_index         = var.device_index
@@ -55,8 +68,11 @@ resource "aws_network_interface_attachment" "this" {
   network_interface_id = var.network_interface_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "attachment_id" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_network_interface_attachment.this
 }
 ```
+
 [top](#index)

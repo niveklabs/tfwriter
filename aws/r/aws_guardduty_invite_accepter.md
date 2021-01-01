@@ -1,11 +1,16 @@
 # aws_guardduty_invite_accepter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_invite_accepter" {
   source = "./modules/aws/r/aws_guardduty_invite_accepter"
@@ -29,8 +37,11 @@ module "aws_guardduty_invite_accepter" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "detector_id" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_invite_accepter" "this" {
   detector_id       = var.detector_id
@@ -69,8 +82,11 @@ resource "aws_guardduty_invite_accepter" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_guardduty_invite_accepter.this
 }
 ```
+
 [top](#index)

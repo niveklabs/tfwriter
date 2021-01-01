@@ -1,11 +1,16 @@
 # aws_codedeploy_app
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codedeploy_app" {
   source = "./modules/aws/r/aws_codedeploy_app"
@@ -27,8 +35,11 @@ module "aws_codedeploy_app" {
   unique_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "compute_platform" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "unique_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codedeploy_app" "this" {
   compute_platform = var.compute_platform
@@ -57,8 +70,11 @@ resource "aws_codedeploy_app" "this" {
   unique_id        = var.unique_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_codedeploy_app.this
 }
 ```
+
 [top](#index)

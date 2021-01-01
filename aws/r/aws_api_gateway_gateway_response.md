@@ -1,11 +1,16 @@
 # aws_api_gateway_gateway_response
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_gateway_response" {
   source = "./modules/aws/r/aws_api_gateway_gateway_response"
@@ -31,8 +39,11 @@ module "aws_api_gateway_gateway_response" {
   status_code = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "response_parameters" {
   description = "(optional)"
@@ -62,9 +73,11 @@ variable "status_code" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_gateway_response" "this" {
   response_parameters = var.response_parameters
@@ -74,8 +87,11 @@ resource "aws_api_gateway_gateway_response" "this" {
   status_code         = var.status_code
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_api_gateway_gateway_response.this
 }
 ```
+
 [top](#index)

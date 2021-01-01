@@ -1,11 +1,16 @@
 # aws_app_cookie_stickiness_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_app_cookie_stickiness_policy" {
   source = "./modules/aws/r/aws_app_cookie_stickiness_policy"
@@ -29,8 +37,11 @@ module "aws_app_cookie_stickiness_policy" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cookie_name" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_app_cookie_stickiness_policy" "this" {
   cookie_name   = var.cookie_name
@@ -63,8 +76,11 @@ resource "aws_app_cookie_stickiness_policy" "this" {
   name          = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -75,4 +91,5 @@ output "this" {
   value = aws_app_cookie_stickiness_policy.this
 }
 ```
+
 [top](#index)

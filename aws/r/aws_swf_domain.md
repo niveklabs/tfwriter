@@ -1,11 +1,16 @@
 # aws_swf_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_swf_domain" {
   source = "./modules/aws/r/aws_swf_domain"
@@ -31,8 +39,11 @@ module "aws_swf_domain" {
   workflow_execution_retention_period_in_days = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "workflow_execution_retention_period_in_days" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_swf_domain" "this" {
   description                                 = var.description
@@ -75,8 +88,11 @@ resource "aws_swf_domain" "this" {
   workflow_execution_retention_period_in_days = var.workflow_execution_retention_period_in_days
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_swf_domain.this
 }
 ```
+
 [top](#index)

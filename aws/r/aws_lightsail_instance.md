@@ -1,11 +1,16 @@
 # aws_lightsail_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lightsail_instance" {
   source = "./modules/aws/r/aws_lightsail_instance"
@@ -35,8 +43,11 @@ module "aws_lightsail_instance" {
   user_data = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone" {
   description = "(required)"
@@ -76,9 +87,11 @@ variable "user_data" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lightsail_instance" "this" {
   availability_zone = var.availability_zone
@@ -90,8 +103,11 @@ resource "aws_lightsail_instance" "this" {
   user_data         = var.user_data
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -147,4 +163,5 @@ output "this" {
   value = aws_lightsail_instance.this
 }
 ```
+
 [top](#index)

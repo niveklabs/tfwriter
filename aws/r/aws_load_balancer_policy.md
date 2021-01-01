@@ -1,11 +1,16 @@
 # aws_load_balancer_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_load_balancer_policy" {
   source = "./modules/aws/r/aws_load_balancer_policy"
@@ -32,8 +40,11 @@ module "aws_load_balancer_policy" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "load_balancer_name" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "policy_attribute" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_load_balancer_policy" "this" {
   load_balancer_name = var.load_balancer_name
@@ -80,8 +93,11 @@ resource "aws_load_balancer_policy" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_load_balancer_policy.this
 }
 ```
+
 [top](#index)

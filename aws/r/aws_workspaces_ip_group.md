@@ -1,11 +1,16 @@
 # aws_workspaces_ip_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_workspaces_ip_group" {
   source = "./modules/aws/r/aws_workspaces_ip_group"
@@ -32,8 +40,11 @@ module "aws_workspaces_ip_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -63,9 +74,11 @@ variable "rules" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_workspaces_ip_group" "this" {
   description = var.description
@@ -82,8 +95,11 @@ resource "aws_workspaces_ip_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -94,4 +110,5 @@ output "this" {
   value = aws_workspaces_ip_group.this
 }
 ```
+
 [top](#index)

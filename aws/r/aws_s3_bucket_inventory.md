@@ -1,11 +1,16 @@
 # aws_s3_bucket_inventory
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_inventory" {
   source = "./modules/aws/r/aws_s3_bucket_inventory"
@@ -56,8 +64,11 @@ module "aws_s3_bucket_inventory" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -135,9 +146,11 @@ variable "schedule" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_inventory" "this" {
   bucket                   = var.bucket
@@ -200,8 +213,11 @@ resource "aws_s3_bucket_inventory" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -212,4 +228,5 @@ output "this" {
   value = aws_s3_bucket_inventory.this
 }
 ```
+
 [top](#index)

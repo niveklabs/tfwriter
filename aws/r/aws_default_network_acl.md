@@ -1,11 +1,16 @@
 # aws_default_network_acl
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_default_network_acl" {
   source = "./modules/aws/r/aws_default_network_acl"
@@ -51,8 +59,11 @@ module "aws_default_network_acl" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_network_acl_id" {
   description = "(required)"
@@ -107,9 +118,11 @@ variable "ingress" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_default_network_acl" "this" {
   default_network_acl_id = var.default_network_acl_id
@@ -148,8 +161,11 @@ resource "aws_default_network_acl" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -175,4 +191,5 @@ output "this" {
   value = aws_default_network_acl.this
 }
 ```
+
 [top](#index)

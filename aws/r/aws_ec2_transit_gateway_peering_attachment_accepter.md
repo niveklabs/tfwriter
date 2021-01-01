@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_peering_attachment_accepter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_peering_attachment_accepter" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_peering_attachment_accepter"
@@ -25,8 +33,11 @@ module "aws_ec2_transit_gateway_peering_attachment_accepter" {
   transit_gateway_attachment_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -39,17 +50,22 @@ variable "transit_gateway_attachment_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway_peering_attachment_accepter" "this" {
   tags                          = var.tags
   transit_gateway_attachment_id = var.transit_gateway_attachment_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -80,4 +96,5 @@ output "this" {
   value = aws_ec2_transit_gateway_peering_attachment_accepter.this
 }
 ```
+
 [top](#index)

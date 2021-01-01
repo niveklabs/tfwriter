@@ -1,11 +1,16 @@
 # aws_kinesis_video_stream
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kinesis_video_stream" {
   source = "./modules/aws/r/aws_kinesis_video_stream"
@@ -39,8 +47,11 @@ module "aws_kinesis_video_stream" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "data_retention_in_hours" {
   description = "(optional)"
@@ -89,9 +100,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kinesis_video_stream" "this" {
   data_retention_in_hours = var.data_retention_in_hours
@@ -112,8 +125,11 @@ resource "aws_kinesis_video_stream" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -144,4 +160,5 @@ output "this" {
   value = aws_kinesis_video_stream.this
 }
 ```
+
 [top](#index)

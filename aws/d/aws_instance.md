@@ -1,11 +1,16 @@
 # aws_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_instance" {
   source = "./modules/aws/d/aws_instance"
@@ -36,8 +44,11 @@ module "aws_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "get_password_data" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_instance" "this" {
   get_password_data = var.get_password_data
@@ -101,8 +114,11 @@ data "aws_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "ami" {
   description = "returns a string"
@@ -293,4 +309,5 @@ output "this" {
   value = aws_instance.this
 }
 ```
+
 [top](#index)

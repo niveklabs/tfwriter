@@ -1,11 +1,16 @@
 # aws_key_pair
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_key_pair" {
   source = "./modules/aws/r/aws_key_pair"
@@ -29,8 +37,11 @@ module "aws_key_pair" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "key_name" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_key_pair" "this" {
   key_name        = var.key_name
@@ -66,8 +79,11 @@ resource "aws_key_pair" "this" {
   tags            = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_key_pair.this
 }
 ```
+
 [top](#index)

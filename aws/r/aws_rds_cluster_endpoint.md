@@ -1,11 +1,16 @@
 # aws_rds_cluster_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_rds_cluster_endpoint" {
   source = "./modules/aws/r/aws_rds_cluster_endpoint"
@@ -33,8 +41,11 @@ module "aws_rds_cluster_endpoint" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_endpoint_identifier" {
   description = "(required)"
@@ -69,9 +80,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_rds_cluster_endpoint" "this" {
   cluster_endpoint_identifier = var.cluster_endpoint_identifier
@@ -82,8 +95,11 @@ resource "aws_rds_cluster_endpoint" "this" {
   tags                        = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -104,4 +120,5 @@ output "this" {
   value = aws_rds_cluster_endpoint.this
 }
 ```
+
 [top](#index)

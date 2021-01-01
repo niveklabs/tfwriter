@@ -1,11 +1,16 @@
 # aws_datasync_task
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_task" {
   source = "./modules/aws/r/aws_datasync_task"
@@ -47,8 +55,11 @@ module "aws_datasync_task" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cloudwatch_log_group_arn" {
   description = "(optional)"
@@ -106,9 +117,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_task" "this" {
   cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
@@ -141,8 +154,11 @@ resource "aws_datasync_task" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -158,4 +174,5 @@ output "this" {
   value = aws_datasync_task.this
 }
 ```
+
 [top](#index)

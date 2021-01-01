@@ -1,11 +1,16 @@
 # aws_budgets_budget
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_budgets_budget" {
   source = "./modules/aws/r/aws_budgets_budget"
@@ -64,8 +72,11 @@ module "aws_budgets_budget" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(optional)"
@@ -157,9 +168,11 @@ variable "notification" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_budgets_budget" "this" {
   account_id        = var.account_id
@@ -204,8 +217,11 @@ resource "aws_budgets_budget" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -236,4 +252,5 @@ output "this" {
   value = aws_budgets_budget.this
 }
 ```
+
 [top](#index)

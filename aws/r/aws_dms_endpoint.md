@@ -1,11 +1,16 @@
 # aws_dms_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dms_endpoint" {
   source = "./modules/aws/r/aws_dms_endpoint"
@@ -86,8 +94,11 @@ module "aws_dms_endpoint" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "certificate_arn" {
   description = "(optional)"
@@ -237,9 +248,11 @@ variable "s3_settings" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dms_endpoint" "this" {
   certificate_arn             = var.certificate_arn
@@ -311,8 +324,11 @@ resource "aws_dms_endpoint" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "certificate_arn" {
   description = "returns a string"
@@ -348,4 +364,5 @@ output "this" {
   value = aws_dms_endpoint.this
 }
 ```
+
 [top](#index)

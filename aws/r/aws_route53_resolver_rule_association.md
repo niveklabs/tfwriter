@@ -1,11 +1,16 @@
 # aws_route53_resolver_rule_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_rule_association" {
   source = "./modules/aws/r/aws_route53_resolver_rule_association"
@@ -32,8 +40,11 @@ module "aws_route53_resolver_rule_association" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -62,9 +73,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_resolver_rule_association" "this" {
   name             = var.name
@@ -81,8 +94,11 @@ resource "aws_route53_resolver_rule_association" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -93,4 +109,5 @@ output "this" {
   value = aws_route53_resolver_rule_association.this
 }
 ```
+
 [top](#index)

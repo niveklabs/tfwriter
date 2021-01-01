@@ -1,11 +1,16 @@
 # aws_ec2_managed_prefix_list
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_managed_prefix_list" {
   source = "./modules/aws/r/aws_ec2_managed_prefix_list"
@@ -34,8 +42,11 @@ module "aws_ec2_managed_prefix_list" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "address_family" {
   description = "(required)"
@@ -69,9 +80,11 @@ variable "entry" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_managed_prefix_list" "this" {
   address_family = var.address_family
@@ -89,8 +102,11 @@ resource "aws_ec2_managed_prefix_list" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -116,4 +132,5 @@ output "this" {
   value = aws_ec2_managed_prefix_list.this
 }
 ```
+
 [top](#index)

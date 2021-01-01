@@ -1,11 +1,16 @@
 # aws_rds_certificate
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_rds_certificate" {
   source = "./modules/aws/d/aws_rds_certificate"
@@ -23,8 +31,11 @@ module "aws_rds_certificate" {
   latest_valid_till = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "latest_valid_till" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "latest_valid_till" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_rds_certificate" "this" {
   latest_valid_till = var.latest_valid_till
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_rds_certificate.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_waf_web_acl
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_waf_web_acl" {
   source = "./modules/aws/r/aws_waf_web_acl"
@@ -53,8 +61,11 @@ module "aws_waf_web_acl" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "metric_name" {
   description = "(required)"
@@ -123,9 +134,11 @@ variable "rules" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_waf_web_acl" "this" {
   metric_name = var.metric_name
@@ -188,8 +201,11 @@ resource "aws_waf_web_acl" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -205,4 +221,5 @@ output "this" {
   value = aws_waf_web_acl.this
 }
 ```
+
 [top](#index)

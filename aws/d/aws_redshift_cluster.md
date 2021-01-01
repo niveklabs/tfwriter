@@ -1,11 +1,16 @@
 # aws_redshift_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_cluster" {
   source = "./modules/aws/d/aws_redshift_cluster"
@@ -25,8 +33,11 @@ module "aws_redshift_cluster" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_identifier" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_redshift_cluster" "this" {
   cluster_identifier = var.cluster_identifier
   tags               = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allow_version_upgrade" {
   description = "returns a bool"
@@ -200,4 +216,5 @@ output "this" {
   value = aws_redshift_cluster.this
 }
 ```
+
 [top](#index)

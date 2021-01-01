@@ -1,11 +1,16 @@
 # aws_vpc_peering_connection_accepter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_peering_connection_accepter" {
   source = "./modules/aws/r/aws_vpc_peering_connection_accepter"
@@ -39,8 +47,11 @@ module "aws_vpc_peering_connection_accepter" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "auto_accept" {
   description = "(optional)"
@@ -83,9 +94,11 @@ variable "requester" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_peering_connection_accepter" "this" {
   auto_accept               = var.auto_accept
@@ -112,8 +125,11 @@ resource "aws_vpc_peering_connection_accepter" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "accept_status" {
   description = "returns a string"
@@ -149,4 +165,5 @@ output "this" {
   value = aws_vpc_peering_connection_accepter.this
 }
 ```
+
 [top](#index)

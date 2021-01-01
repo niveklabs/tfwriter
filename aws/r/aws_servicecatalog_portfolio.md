@@ -1,11 +1,16 @@
 # aws_servicecatalog_portfolio
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_servicecatalog_portfolio" {
   source = "./modules/aws/r/aws_servicecatalog_portfolio"
@@ -35,8 +43,11 @@ module "aws_servicecatalog_portfolio" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -73,9 +84,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_servicecatalog_portfolio" "this" {
   description   = var.description
@@ -94,8 +107,11 @@ resource "aws_servicecatalog_portfolio" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -121,4 +137,5 @@ output "this" {
   value = aws_servicecatalog_portfolio.this
 }
 ```
+
 [top](#index)

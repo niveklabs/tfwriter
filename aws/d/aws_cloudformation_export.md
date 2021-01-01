@@ -1,11 +1,16 @@
 # aws_cloudformation_export
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudformation_export" {
   source = "./modules/aws/d/aws_cloudformation_export"
@@ -23,24 +31,32 @@ module "aws_cloudformation_export" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_cloudformation_export" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "exporting_stack_id" {
   description = "returns a string"
@@ -61,4 +77,5 @@ output "this" {
   value = aws_cloudformation_export.this
 }
 ```
+
 [top](#index)

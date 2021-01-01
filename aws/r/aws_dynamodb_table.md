@@ -1,11 +1,16 @@
 # aws_dynamodb_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dynamodb_table" {
   source = "./modules/aws/r/aws_dynamodb_table"
@@ -85,8 +93,11 @@ module "aws_dynamodb_table" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "billing_mode" {
   description = "(optional)"
@@ -233,9 +244,11 @@ variable "ttl" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dynamodb_table" "this" {
   billing_mode     = var.billing_mode
@@ -320,8 +333,11 @@ resource "aws_dynamodb_table" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -352,4 +368,5 @@ output "this" {
   value = aws_dynamodb_table.this
 }
 ```
+
 [top](#index)

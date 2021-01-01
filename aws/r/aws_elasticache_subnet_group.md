@@ -1,11 +1,16 @@
 # aws_elasticache_subnet_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elasticache_subnet_group" {
   source = "./modules/aws/r/aws_elasticache_subnet_group"
@@ -27,8 +35,11 @@ module "aws_elasticache_subnet_group" {
   subnet_ids = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "subnet_ids" {
   type        = set(string)
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elasticache_subnet_group" "this" {
   description = var.description
@@ -56,8 +69,11 @@ resource "aws_elasticache_subnet_group" "this" {
   subnet_ids  = var.subnet_ids
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_elasticache_subnet_group.this
 }
 ```
+
 [top](#index)

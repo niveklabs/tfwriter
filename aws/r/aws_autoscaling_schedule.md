@@ -1,11 +1,16 @@
 # aws_autoscaling_schedule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_schedule" {
   source = "./modules/aws/r/aws_autoscaling_schedule"
@@ -37,8 +45,11 @@ module "aws_autoscaling_schedule" {
   start_time = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "autoscaling_group_name" {
   description = "(required)"
@@ -86,9 +97,11 @@ variable "start_time" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_autoscaling_schedule" "this" {
   autoscaling_group_name = var.autoscaling_group_name
@@ -101,8 +114,11 @@ resource "aws_autoscaling_schedule" "this" {
   start_time             = var.start_time
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -148,4 +164,5 @@ output "this" {
   value = aws_autoscaling_schedule.this
 }
 ```
+
 [top](#index)

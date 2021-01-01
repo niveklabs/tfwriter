@@ -1,11 +1,16 @@
 # aws_api_gateway_rest_api
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_rest_api" {
   source = "./modules/aws/d/aws_api_gateway_rest_api"
@@ -25,8 +33,11 @@ module "aws_api_gateway_rest_api" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_api_gateway_rest_api" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "api_key_source" {
   description = "returns a string"
@@ -110,4 +126,5 @@ output "this" {
   value = aws_api_gateway_rest_api.this
 }
 ```
+
 [top](#index)

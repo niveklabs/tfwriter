@@ -1,11 +1,16 @@
 # aws_ebs_volumes
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ebs_volumes" {
   source = "./modules/aws/d/aws_ebs_volumes"
@@ -28,8 +36,11 @@ module "aws_ebs_volumes" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ebs_volumes" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_ebs_volumes" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -82,4 +98,5 @@ output "this" {
   value = aws_ebs_volumes.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_eip
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_eip" {
   source = "./modules/aws/d/aws_eip"
@@ -30,8 +38,11 @@ module "aws_eip" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "public_ip" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_eip" "this" {
   public_ip = var.public_ip
@@ -74,8 +87,11 @@ data "aws_eip" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "association_id" {
   description = "returns a string"
@@ -156,4 +172,5 @@ output "this" {
   value = aws_eip.this
 }
 ```
+
 [top](#index)

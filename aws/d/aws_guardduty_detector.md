@@ -1,11 +1,16 @@
 # aws_guardduty_detector
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,27 +18,38 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_detector" {
   source = "./modules/aws/d/aws_guardduty_detector"
 
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_guardduty_detector" "this" {
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "finding_publishing_frequency" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_guardduty_detector.this
 }
 ```
+
 [top](#index)

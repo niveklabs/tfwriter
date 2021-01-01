@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_route_table_propagation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_route_table_propagation" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_route_table_propagation"
@@ -25,8 +33,11 @@ module "aws_ec2_transit_gateway_route_table_propagation" {
   transit_gateway_route_table_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "transit_gateway_attachment_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "transit_gateway_route_table_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_transit_gateway_route_table_propagation" "this" {
   transit_gateway_attachment_id  = var.transit_gateway_attachment_id
   transit_gateway_route_table_id = var.transit_gateway_route_table_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -69,4 +85,5 @@ output "this" {
   value = aws_ec2_transit_gateway_route_table_propagation.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ecs_service
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecs_service" {
   source = "./modules/aws/d/aws_ecs_service"
@@ -25,8 +33,11 @@ module "aws_ecs_service" {
   service_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "service_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ecs_service" "this" {
   cluster_arn  = var.cluster_arn
   service_name = var.service_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_ecs_service.this
 }
 ```
+
 [top](#index)

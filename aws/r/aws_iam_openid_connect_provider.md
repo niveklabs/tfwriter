@@ -1,11 +1,16 @@
 # aws_iam_openid_connect_provider
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_openid_connect_provider" {
   source = "./modules/aws/r/aws_iam_openid_connect_provider"
@@ -27,8 +35,11 @@ module "aws_iam_openid_connect_provider" {
   url = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "client_id_list" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "url" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_openid_connect_provider" "this" {
   client_id_list  = var.client_id_list
@@ -55,8 +68,11 @@ resource "aws_iam_openid_connect_provider" "this" {
   url             = var.url
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_iam_openid_connect_provider.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_vpc_endpoint_service
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_endpoint_service" {
   source = "./modules/aws/r/aws_vpc_endpoint_service"
@@ -31,8 +39,11 @@ module "aws_vpc_endpoint_service" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "acceptance_required" {
   description = "(required)"
@@ -63,9 +74,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_endpoint_service" "this" {
   acceptance_required        = var.acceptance_required
@@ -75,8 +88,11 @@ resource "aws_vpc_endpoint_service" "this" {
   tags                       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allowed_principals" {
   description = "returns a set of string"
@@ -132,4 +148,5 @@ output "this" {
   value = aws_vpc_endpoint_service.this
 }
 ```
+
 [top](#index)

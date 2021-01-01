@@ -1,11 +1,16 @@
 # aws_rds_global_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_rds_global_cluster" {
   source = "./modules/aws/r/aws_rds_global_cluster"
@@ -37,8 +45,11 @@ module "aws_rds_global_cluster" {
   storage_encrypted = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "database_name" {
   description = "(optional)"
@@ -87,9 +98,11 @@ variable "storage_encrypted" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_rds_global_cluster" "this" {
   database_name                = var.database_name
@@ -102,8 +115,11 @@ resource "aws_rds_global_cluster" "this" {
   storage_encrypted            = var.storage_encrypted
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -149,4 +165,5 @@ output "this" {
   value = aws_rds_global_cluster.this
 }
 ```
+
 [top](#index)

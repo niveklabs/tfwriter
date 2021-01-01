@@ -1,11 +1,16 @@
 # aws_cloudfront_distribution
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudfront_distribution" {
   source = "./modules/aws/r/aws_cloudfront_distribution"
@@ -159,8 +167,11 @@ module "aws_cloudfront_distribution" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "aliases" {
   description = "(optional)"
@@ -411,9 +422,11 @@ variable "viewer_certificate" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
   aliases             = var.aliases
@@ -625,8 +638,11 @@ resource "aws_cloudfront_distribution" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -682,4 +698,5 @@ output "this" {
   value = aws_cloudfront_distribution.this
 }
 ```
+
 [top](#index)

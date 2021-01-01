@@ -1,11 +1,16 @@
 # aws_lb_target_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lb_target_group" {
   source = "./modules/aws/r/aws_lb_target_group"
@@ -63,8 +71,11 @@ module "aws_lb_target_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "deregistration_delay" {
   description = "(optional)"
@@ -168,9 +179,11 @@ variable "stickiness" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lb_target_group" "this" {
   deregistration_delay               = var.deregistration_delay
@@ -212,8 +225,11 @@ resource "aws_lb_target_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -244,4 +260,5 @@ output "this" {
   value = aws_lb_target_group.this
 }
 ```
+
 [top](#index)

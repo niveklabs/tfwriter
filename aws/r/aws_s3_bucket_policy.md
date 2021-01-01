@@ -1,11 +1,16 @@
 # aws_s3_bucket_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_policy" {
   source = "./modules/aws/r/aws_s3_bucket_policy"
@@ -25,8 +33,11 @@ module "aws_s3_bucket_policy" {
   policy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "policy" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_policy" "this" {
   bucket = var.bucket
   policy = var.policy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_s3_bucket_policy.this
 }
 ```
+
 [top](#index)

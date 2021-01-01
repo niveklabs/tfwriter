@@ -1,11 +1,16 @@
 # aws_ec2_local_gateway_route
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_local_gateway_route" {
   source = "./modules/aws/r/aws_ec2_local_gateway_route"
@@ -27,8 +35,11 @@ module "aws_ec2_local_gateway_route" {
   local_gateway_virtual_interface_group_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destination_cidr_block" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "local_gateway_virtual_interface_group_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_local_gateway_route" "this" {
   destination_cidr_block                   = var.destination_cidr_block
@@ -55,8 +68,11 @@ resource "aws_ec2_local_gateway_route" "this" {
   local_gateway_virtual_interface_group_id = var.local_gateway_virtual_interface_group_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_ec2_local_gateway_route.this
 }
 ```
+
 [top](#index)

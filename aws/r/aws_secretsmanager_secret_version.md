@@ -1,11 +1,16 @@
 # aws_secretsmanager_secret_version
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_secretsmanager_secret_version" {
   source = "./modules/aws/r/aws_secretsmanager_secret_version"
@@ -29,8 +37,11 @@ module "aws_secretsmanager_secret_version" {
   version_stages = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "secret_binary" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "version_stages" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_secretsmanager_secret_version" "this" {
   secret_binary  = var.secret_binary
@@ -66,8 +79,11 @@ resource "aws_secretsmanager_secret_version" "this" {
   version_stages = var.version_stages
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -93,4 +109,5 @@ output "this" {
   value = aws_secretsmanager_secret_version.this
 }
 ```
+
 [top](#index)

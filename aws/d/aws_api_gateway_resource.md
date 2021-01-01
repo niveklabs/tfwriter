@@ -1,11 +1,16 @@
 # aws_api_gateway_resource
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_resource" {
   source = "./modules/aws/d/aws_api_gateway_resource"
@@ -25,8 +33,11 @@ module "aws_api_gateway_resource" {
   rest_api_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "path" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "rest_api_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_api_gateway_resource" "this" {
   path        = var.path
   rest_api_id = var.rest_api_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -69,4 +85,5 @@ output "this" {
   value = aws_api_gateway_resource.this
 }
 ```
+
 [top](#index)

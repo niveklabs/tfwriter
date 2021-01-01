@@ -1,11 +1,16 @@
 # aws_ec2_tag
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_tag" {
   source = "./modules/aws/r/aws_ec2_tag"
@@ -27,8 +35,11 @@ module "aws_ec2_tag" {
   value = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "key" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "value" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_tag" "this" {
   key         = var.key
@@ -55,8 +68,11 @@ resource "aws_ec2_tag" "this" {
   value       = var.value
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_ec2_tag.this
 }
 ```
+
 [top](#index)

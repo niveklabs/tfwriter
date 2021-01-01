@@ -1,11 +1,16 @@
 # aws_cloudformation_stack
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudformation_stack" {
   source = "./modules/aws/d/aws_cloudformation_stack"
@@ -25,8 +33,11 @@ module "aws_cloudformation_stack" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_cloudformation_stack" "this" {
   name = var.name
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "capabilities" {
   description = "returns a set of string"
@@ -110,4 +126,5 @@ output "this" {
   value = aws_cloudformation_stack.this
 }
 ```
+
 [top](#index)

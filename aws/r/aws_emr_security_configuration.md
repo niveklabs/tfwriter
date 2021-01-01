@@ -1,11 +1,16 @@
 # aws_emr_security_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_emr_security_configuration" {
   source = "./modules/aws/r/aws_emr_security_configuration"
@@ -27,8 +35,11 @@ module "aws_emr_security_configuration" {
   name_prefix = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "configuration" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "name_prefix" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_emr_security_configuration" "this" {
   configuration = var.configuration
@@ -57,8 +70,11 @@ resource "aws_emr_security_configuration" "this" {
   name_prefix   = var.name_prefix
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "creation_date" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_emr_security_configuration.this
 }
 ```
+
 [top](#index)

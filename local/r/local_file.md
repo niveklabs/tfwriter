@@ -1,11 +1,16 @@
 # local_file
+
 [back](../local.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "local_file" {
   source = null
@@ -34,8 +42,11 @@ module "local_file" {
   # source - (optional) is a type of string
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content" {
   description = "(optional)"
@@ -78,9 +89,11 @@ variable "source" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "local_file" "this" {
   content              = var.content
@@ -92,8 +105,11 @@ resource "local_file" "this" {
   source               = var.source
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -104,4 +120,5 @@ output "this" {
   value = local_file.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_route53_resolver_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_endpoint" {
   source = "./modules/aws/r/aws_route53_resolver_endpoint"
@@ -41,8 +49,11 @@ module "aws_route53_resolver_endpoint" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "direction" {
   description = "(required)"
@@ -89,9 +100,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_resolver_endpoint" "this" {
   direction          = var.direction
@@ -118,8 +131,11 @@ resource "aws_route53_resolver_endpoint" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -140,4 +156,5 @@ output "this" {
   value = aws_route53_resolver_endpoint.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_lakeformation_data_lake_settings
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lakeformation_data_lake_settings" {
   source = "./modules/aws/d/aws_lakeformation_data_lake_settings"
@@ -23,8 +31,11 @@ module "aws_lakeformation_data_lake_settings" {
   catalog_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "catalog_id" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "catalog_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_lakeformation_data_lake_settings" "this" {
   catalog_id = var.catalog_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "admins" {
   description = "returns a list of string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_lakeformation_data_lake_settings.this
 }
 ```
+
 [top](#index)

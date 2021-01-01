@@ -1,11 +1,16 @@
 # aws_proxy_protocol_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_proxy_protocol_policy" {
   source = "./modules/aws/r/aws_proxy_protocol_policy"
@@ -25,8 +33,11 @@ module "aws_proxy_protocol_policy" {
   load_balancer = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "instance_ports" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "load_balancer" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_proxy_protocol_policy" "this" {
   instance_ports = var.instance_ports
   load_balancer  = var.load_balancer
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_proxy_protocol_policy.this
 }
 ```
+
 [top](#index)

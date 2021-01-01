@@ -1,11 +1,16 @@
 # aws_dx_gateway_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_gateway_association" {
   source = "./modules/aws/r/aws_dx_gateway_association"
@@ -37,8 +45,11 @@ module "aws_dx_gateway_association" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allowed_prefixes" {
   description = "(optional)"
@@ -81,9 +92,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_gateway_association" "this" {
   allowed_prefixes                    = var.allowed_prefixes
@@ -103,8 +116,11 @@ resource "aws_dx_gateway_association" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "allowed_prefixes" {
   description = "returns a set of string"
@@ -145,4 +161,5 @@ output "this" {
   value = aws_dx_gateway_association.this
 }
 ```
+
 [top](#index)

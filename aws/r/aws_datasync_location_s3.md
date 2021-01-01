@@ -1,11 +1,16 @@
 # aws_datasync_location_s3
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_datasync_location_s3" {
   source = "./modules/aws/r/aws_datasync_location_s3"
@@ -31,8 +39,11 @@ module "aws_datasync_location_s3" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "s3_bucket_arn" {
   description = "(required)"
@@ -59,9 +70,11 @@ variable "s3_config" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_datasync_location_s3" "this" {
   s3_bucket_arn = var.s3_bucket_arn
@@ -77,8 +90,11 @@ resource "aws_datasync_location_s3" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -99,4 +115,5 @@ output "this" {
   value = aws_datasync_location_s3.this
 }
 ```
+
 [top](#index)

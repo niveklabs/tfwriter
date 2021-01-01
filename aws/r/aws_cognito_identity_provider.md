@@ -1,11 +1,16 @@
 # aws_cognito_identity_provider
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_identity_provider" {
   source = "./modules/aws/r/aws_cognito_identity_provider"
@@ -33,8 +41,11 @@ module "aws_cognito_identity_provider" {
   user_pool_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "attribute_mapping" {
   description = "(optional)"
@@ -68,9 +79,11 @@ variable "user_pool_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_identity_provider" "this" {
   attribute_mapping = var.attribute_mapping
@@ -81,8 +94,11 @@ resource "aws_cognito_identity_provider" "this" {
   user_pool_id      = var.user_pool_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "attribute_mapping" {
   description = "returns a map of string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_cognito_identity_provider.this
 }
 ```
+
 [top](#index)

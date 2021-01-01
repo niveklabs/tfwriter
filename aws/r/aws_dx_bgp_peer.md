@@ -1,11 +1,16 @@
 # aws_dx_bgp_peer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_bgp_peer" {
   source = "./modules/aws/r/aws_dx_bgp_peer"
@@ -38,8 +46,11 @@ module "aws_dx_bgp_peer" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "address_family" {
   description = "(required)"
@@ -85,9 +96,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_bgp_peer" "this" {
   address_family       = var.address_family
@@ -107,8 +120,11 @@ resource "aws_dx_bgp_peer" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "amazon_address" {
   description = "returns a string"
@@ -149,4 +165,5 @@ output "this" {
   value = aws_dx_bgp_peer.this
 }
 ```
+
 [top](#index)

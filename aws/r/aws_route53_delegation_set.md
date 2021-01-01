@@ -1,11 +1,16 @@
 # aws_route53_delegation_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_delegation_set" {
   source = "./modules/aws/r/aws_route53_delegation_set"
@@ -23,8 +31,11 @@ module "aws_route53_delegation_set" {
   reference_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "reference_name" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "reference_name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_delegation_set" "this" {
   reference_name = var.reference_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_route53_delegation_set.this
 }
 ```
+
 [top](#index)

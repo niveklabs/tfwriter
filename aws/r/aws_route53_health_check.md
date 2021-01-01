@@ -1,11 +1,16 @@
 # aws_route53_health_check
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_health_check" {
   source = "./modules/aws/r/aws_route53_health_check"
@@ -61,8 +69,11 @@ module "aws_route53_health_check" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "child_health_threshold" {
   description = "(optional)"
@@ -183,9 +194,11 @@ variable "type" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_health_check" "this" {
   child_health_threshold          = var.child_health_threshold
@@ -210,8 +223,11 @@ resource "aws_route53_health_check" "this" {
   type                            = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "enable_sni" {
   description = "returns a bool"
@@ -227,4 +243,5 @@ output "this" {
   value = aws_route53_health_check.this
 }
 ```
+
 [top](#index)

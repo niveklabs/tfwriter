@@ -1,11 +1,16 @@
 # aws_imagebuilder_infrastructure_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_imagebuilder_infrastructure_configuration" {
   source = "./modules/aws/r/aws_imagebuilder_infrastructure_configuration"
@@ -50,8 +58,11 @@ module "aws_imagebuilder_infrastructure_configuration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -132,9 +143,11 @@ variable "logging" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_imagebuilder_infrastructure_configuration" "this" {
   description                   = var.description
@@ -166,8 +179,11 @@ resource "aws_imagebuilder_infrastructure_configuration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -193,4 +209,5 @@ output "this" {
   value = aws_imagebuilder_infrastructure_configuration.this
 }
 ```
+
 [top](#index)

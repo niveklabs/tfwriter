@@ -1,11 +1,16 @@
 # aws_ec2_capacity_reservation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_capacity_reservation" {
   source = "./modules/aws/r/aws_ec2_capacity_reservation"
@@ -43,8 +51,11 @@ module "aws_ec2_capacity_reservation" {
   tenancy = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone" {
   description = "(required)"
@@ -108,9 +119,11 @@ variable "tenancy" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_capacity_reservation" "this" {
   availability_zone       = var.availability_zone
@@ -126,8 +139,11 @@ resource "aws_ec2_capacity_reservation" "this" {
   tenancy                 = var.tenancy
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -143,4 +159,5 @@ output "this" {
   value = aws_ec2_capacity_reservation.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_redshift_event_subscription
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_event_subscription" {
   source = "./modules/aws/r/aws_redshift_event_subscription"
@@ -43,8 +51,11 @@ module "aws_redshift_event_subscription" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enabled" {
   description = "(optional)"
@@ -104,9 +115,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_redshift_event_subscription" "this" {
   enabled          = var.enabled
@@ -129,8 +142,11 @@ resource "aws_redshift_event_subscription" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -156,4 +172,5 @@ output "this" {
   value = aws_redshift_event_subscription.this
 }
 ```
+
 [top](#index)

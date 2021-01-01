@@ -1,11 +1,16 @@
 # aws_route_table
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route_table" {
   source = "./modules/aws/d/aws_route_table"
@@ -36,8 +44,11 @@ module "aws_route_table" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "gateway_id" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_route_table" "this" {
   gateway_id     = var.gateway_id
@@ -101,8 +114,11 @@ data "aws_route_table" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "associations" {
   description = "returns a list of object"
@@ -153,4 +169,5 @@ output "this" {
   value = aws_route_table.this
 }
 ```
+
 [top](#index)

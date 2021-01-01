@@ -1,11 +1,16 @@
 # aws_sns_topic_subscription
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sns_topic_subscription" {
   source = "./modules/aws/r/aws_sns_topic_subscription"
@@ -37,8 +45,11 @@ module "aws_sns_topic_subscription" {
   topic_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "confirmation_timeout_in_minutes" {
   description = "(optional)"
@@ -85,9 +96,11 @@ variable "topic_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sns_topic_subscription" "this" {
   confirmation_timeout_in_minutes = var.confirmation_timeout_in_minutes
@@ -100,8 +113,11 @@ resource "aws_sns_topic_subscription" "this" {
   topic_arn                       = var.topic_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_sns_topic_subscription.this
 }
 ```
+
 [top](#index)

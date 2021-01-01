@@ -1,11 +1,16 @@
 # aws_lambda_event_source_mapping
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_event_source_mapping" {
   source = "./modules/aws/r/aws_lambda_event_source_mapping"
@@ -49,8 +57,11 @@ module "aws_lambda_event_source_mapping" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "batch_size" {
   description = "(optional)"
@@ -130,9 +141,11 @@ variable "destination_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_event_source_mapping" "this" {
   batch_size                         = var.batch_size
@@ -163,8 +176,11 @@ resource "aws_lambda_event_source_mapping" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "function_arn" {
   description = "returns a string"
@@ -220,4 +236,5 @@ output "this" {
   value = aws_lambda_event_source_mapping.this
 }
 ```
+
 [top](#index)

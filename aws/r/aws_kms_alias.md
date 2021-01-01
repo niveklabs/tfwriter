@@ -1,11 +1,16 @@
 # aws_kms_alias
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_alias" {
   source = "./modules/aws/r/aws_kms_alias"
@@ -27,8 +35,11 @@ module "aws_kms_alias" {
   target_key_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "target_key_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_kms_alias" "this" {
   name          = var.name
@@ -57,8 +70,11 @@ resource "aws_kms_alias" "this" {
   target_key_id = var.target_key_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_kms_alias.this
 }
 ```
+
 [top](#index)

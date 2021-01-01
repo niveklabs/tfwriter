@@ -1,11 +1,16 @@
 # aws_ses_event_destination
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_event_destination" {
   source = "./modules/aws/r/aws_ses_event_destination"
@@ -44,8 +52,11 @@ module "aws_ses_event_destination" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "configuration_set_name" {
   description = "(required)"
@@ -101,9 +112,11 @@ variable "sns_destination" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_event_destination" "this" {
   configuration_set_name = var.configuration_set_name
@@ -137,8 +150,11 @@ resource "aws_ses_event_destination" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -149,4 +165,5 @@ output "this" {
   value = aws_ses_event_destination.this
 }
 ```
+
 [top](#index)

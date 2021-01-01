@@ -1,11 +1,16 @@
 # aws_media_convert_queue
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_media_convert_queue" {
   source = "./modules/aws/r/aws_media_convert_queue"
@@ -37,8 +45,11 @@ module "aws_media_convert_queue" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -81,9 +92,11 @@ variable "reservation_plan_settings" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_media_convert_queue" "this" {
   description  = var.description
@@ -103,8 +116,11 @@ resource "aws_media_convert_queue" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -120,4 +136,5 @@ output "this" {
   value = aws_media_convert_queue.this
 }
 ```
+
 [top](#index)

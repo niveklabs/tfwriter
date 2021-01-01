@@ -1,11 +1,16 @@
 # aws_pinpoint_event_stream
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_event_stream" {
   source = "./modules/aws/r/aws_pinpoint_event_stream"
@@ -27,8 +35,11 @@ module "aws_pinpoint_event_stream" {
   role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "role_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_event_stream" "this" {
   application_id         = var.application_id
@@ -55,8 +68,11 @@ resource "aws_pinpoint_event_stream" "this" {
   role_arn               = var.role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_pinpoint_event_stream.this
 }
 ```
+
 [top](#index)

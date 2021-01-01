@@ -1,11 +1,16 @@
 # aws_cloudfront_distribution
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudfront_distribution" {
   source = "./modules/aws/d/aws_cloudfront_distribution"
@@ -23,8 +31,11 @@ module "aws_cloudfront_distribution" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_cloudfront_distribution" "this" {
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_cloudfront_distribution.this
 }
 ```
+
 [top](#index)

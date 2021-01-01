@@ -1,11 +1,16 @@
 # aws_sagemaker_model
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sagemaker_model" {
   source = "./modules/aws/r/aws_sagemaker_model"
@@ -56,8 +64,11 @@ module "aws_sagemaker_model" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "enable_network_isolation" {
   description = "(optional)"
@@ -131,9 +142,11 @@ variable "vpc_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sagemaker_model" "this" {
   enable_network_isolation = var.enable_network_isolation
@@ -189,8 +202,11 @@ resource "aws_sagemaker_model" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -211,4 +227,5 @@ output "this" {
   value = aws_sagemaker_model.this
 }
 ```
+
 [top](#index)

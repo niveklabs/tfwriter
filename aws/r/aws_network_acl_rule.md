@@ -1,11 +1,16 @@
 # aws_network_acl_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_network_acl_rule" {
   source = "./modules/aws/r/aws_network_acl_rule"
@@ -43,8 +51,11 @@ module "aws_network_acl_rule" {
   to_port = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cidr_block" {
   description = "(optional)"
@@ -108,9 +119,11 @@ variable "to_port" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_network_acl_rule" "this" {
   cidr_block      = var.cidr_block
@@ -126,8 +139,11 @@ resource "aws_network_acl_rule" "this" {
   to_port         = var.to_port
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -138,4 +154,5 @@ output "this" {
   value = aws_network_acl_rule.this
 }
 ```
+
 [top](#index)

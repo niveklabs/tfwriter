@@ -1,11 +1,16 @@
 # aws_glue_crawler
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_glue_crawler" {
   source = "./modules/aws/r/aws_glue_crawler"
@@ -75,8 +83,11 @@ module "aws_glue_crawler" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "classifiers" {
   description = "(optional)"
@@ -205,9 +216,11 @@ variable "schema_change_policy" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_glue_crawler" "this" {
   classifiers            = var.classifiers
@@ -275,8 +288,11 @@ resource "aws_glue_crawler" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -292,4 +308,5 @@ output "this" {
   value = aws_glue_crawler.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_iam_user_login_profile
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_user_login_profile" {
   source = "./modules/aws/r/aws_iam_user_login_profile"
@@ -29,8 +37,11 @@ module "aws_iam_user_login_profile" {
   user = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "password_length" {
   description = "(optional)"
@@ -54,9 +65,11 @@ variable "user" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_user_login_profile" "this" {
   password_length         = var.password_length
@@ -65,8 +78,11 @@ resource "aws_iam_user_login_profile" "this" {
   user                    = var.user
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "encrypted_password" {
   description = "returns a string"
@@ -87,4 +103,5 @@ output "this" {
   value = aws_iam_user_login_profile.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_config_configuration_aggregator
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_config_configuration_aggregator" {
   source = "./modules/aws/r/aws_config_configuration_aggregator"
@@ -37,8 +45,11 @@ module "aws_config_configuration_aggregator" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -75,9 +86,11 @@ variable "organization_aggregation_source" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_config_configuration_aggregator" "this" {
   name = var.name
@@ -103,8 +116,11 @@ resource "aws_config_configuration_aggregator" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -120,4 +136,5 @@ output "this" {
   value = aws_config_configuration_aggregator.this
 }
 ```
+
 [top](#index)

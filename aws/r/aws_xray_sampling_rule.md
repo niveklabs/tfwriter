@@ -1,11 +1,16 @@
 # aws_xray_sampling_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_xray_sampling_rule" {
   source = "./modules/aws/r/aws_xray_sampling_rule"
@@ -47,8 +55,11 @@ module "aws_xray_sampling_rule" {
   version = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "attributes" {
   description = "(optional)"
@@ -118,9 +129,11 @@ variable "version" {
   type        = number
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_xray_sampling_rule" "this" {
   attributes     = var.attributes
@@ -138,8 +151,11 @@ resource "aws_xray_sampling_rule" "this" {
   version        = var.version
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -155,4 +171,5 @@ output "this" {
   value = aws_xray_sampling_rule.this
 }
 ```
+
 [top](#index)

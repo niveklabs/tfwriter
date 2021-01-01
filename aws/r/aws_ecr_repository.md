@@ -1,11 +1,16 @@
 # aws_ecr_repository
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ecr_repository" {
   source = "./modules/aws/r/aws_ecr_repository"
@@ -40,8 +48,11 @@ module "aws_ecr_repository" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "image_tag_mutability" {
   description = "(optional)"
@@ -91,9 +102,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ecr_repository" "this" {
   image_tag_mutability = var.image_tag_mutability
@@ -124,8 +137,11 @@ resource "aws_ecr_repository" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -151,4 +167,5 @@ output "this" {
   value = aws_ecr_repository.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_codedeploy_deployment_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codedeploy_deployment_config" {
   source = "./modules/aws/r/aws_codedeploy_deployment_config"
@@ -42,8 +50,11 @@ module "aws_codedeploy_deployment_config" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "compute_platform" {
   description = "(optional)"
@@ -89,9 +100,11 @@ variable "traffic_routing_config" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codedeploy_deployment_config" "this" {
   compute_platform       = var.compute_platform
@@ -131,8 +144,11 @@ resource "aws_codedeploy_deployment_config" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "deployment_config_id" {
   description = "returns a string"
@@ -148,4 +164,5 @@ output "this" {
   value = aws_codedeploy_deployment_config.this
 }
 ```
+
 [top](#index)

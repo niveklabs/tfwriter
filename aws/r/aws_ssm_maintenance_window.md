@@ -1,11 +1,16 @@
 # aws_ssm_maintenance_window
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_maintenance_window" {
   source = "./modules/aws/r/aws_ssm_maintenance_window"
@@ -45,8 +53,11 @@ module "aws_ssm_maintenance_window" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_unassociated_targets" {
   description = "(optional)"
@@ -116,9 +127,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_maintenance_window" "this" {
   allow_unassociated_targets = var.allow_unassociated_targets
@@ -135,8 +148,11 @@ resource "aws_ssm_maintenance_window" "this" {
   tags                       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -147,4 +163,5 @@ output "this" {
   value = aws_ssm_maintenance_window.this
 }
 ```
+
 [top](#index)

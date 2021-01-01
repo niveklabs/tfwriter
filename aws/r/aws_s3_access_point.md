@@ -1,11 +1,16 @@
 # aws_s3_access_point
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_access_point" {
   source = "./modules/aws/r/aws_s3_access_point"
@@ -40,8 +48,11 @@ module "aws_s3_access_point" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(optional)"
@@ -88,9 +99,11 @@ variable "vpc_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_access_point" "this" {
   account_id = var.account_id
@@ -117,8 +130,11 @@ resource "aws_s3_access_point" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -154,4 +170,5 @@ output "this" {
   value = aws_s3_access_point.this
 }
 ```
+
 [top](#index)

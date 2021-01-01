@@ -1,11 +1,16 @@
 # aws_networkfirewall_logging_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_networkfirewall_logging_configuration" {
   source = "./modules/aws/r/aws_networkfirewall_logging_configuration"
@@ -31,8 +39,11 @@ module "aws_networkfirewall_logging_configuration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "firewall_arn" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "logging_configuration" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_networkfirewall_logging_configuration" "this" {
   firewall_arn = var.firewall_arn
@@ -79,8 +92,11 @@ resource "aws_networkfirewall_logging_configuration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -91,4 +107,5 @@ output "this" {
   value = aws_networkfirewall_logging_configuration.this
 }
 ```
+
 [top](#index)

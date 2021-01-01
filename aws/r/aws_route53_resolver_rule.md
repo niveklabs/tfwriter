@@ -1,11 +1,16 @@
 # aws_route53_resolver_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_rule" {
   source = "./modules/aws/r/aws_route53_resolver_rule"
@@ -42,8 +50,11 @@ module "aws_route53_resolver_rule" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain_name" {
   description = "(required)"
@@ -96,9 +107,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_resolver_rule" "this" {
   domain_name          = var.domain_name
@@ -126,8 +139,11 @@ resource "aws_route53_resolver_rule" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -153,4 +169,5 @@ output "this" {
   value = aws_route53_resolver_rule.this
 }
 ```
+
 [top](#index)

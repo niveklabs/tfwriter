@@ -1,11 +1,16 @@
 # aws_region
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_region" {
   source = "./modules/aws/d/aws_region"
@@ -25,8 +33,11 @@ module "aws_region" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "endpoint" {
   description = "(optional)"
@@ -40,17 +51,22 @@ variable "name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_region" "this" {
   endpoint = var.endpoint
   name     = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "description" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_region.this
 }
 ```
+
 [top](#index)

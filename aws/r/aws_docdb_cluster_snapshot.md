@@ -1,11 +1,16 @@
 # aws_docdb_cluster_snapshot
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_docdb_cluster_snapshot" {
   source = "./modules/aws/r/aws_docdb_cluster_snapshot"
@@ -29,8 +37,11 @@ module "aws_docdb_cluster_snapshot" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_cluster_identifier" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_docdb_cluster_snapshot" "this" {
   db_cluster_identifier          = var.db_cluster_identifier
@@ -69,8 +82,11 @@ resource "aws_docdb_cluster_snapshot" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "availability_zones" {
   description = "returns a list of string"
@@ -136,4 +152,5 @@ output "this" {
   value = aws_docdb_cluster_snapshot.this
 }
 ```
+
 [top](#index)

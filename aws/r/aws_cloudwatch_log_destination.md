@@ -1,11 +1,16 @@
 # aws_cloudwatch_log_destination
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_log_destination" {
   source = "./modules/aws/r/aws_cloudwatch_log_destination"
@@ -27,8 +35,11 @@ module "aws_cloudwatch_log_destination" {
   target_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "target_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_log_destination" "this" {
   name       = var.name
@@ -55,8 +68,11 @@ resource "aws_cloudwatch_log_destination" "this" {
   target_arn = var.target_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_cloudwatch_log_destination.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_globalaccelerator_listener
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_globalaccelerator_listener" {
   source = "./modules/aws/r/aws_globalaccelerator_listener"
@@ -32,8 +40,11 @@ module "aws_globalaccelerator_listener" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "accelerator_arn" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "port_range" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_globalaccelerator_listener" "this" {
   accelerator_arn = var.accelerator_arn
@@ -80,8 +93,11 @@ resource "aws_globalaccelerator_listener" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_globalaccelerator_listener.this
 }
 ```
+
 [top](#index)

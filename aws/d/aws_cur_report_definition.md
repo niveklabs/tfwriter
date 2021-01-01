@@ -1,11 +1,16 @@
 # aws_cur_report_definition
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cur_report_definition" {
   source = "./modules/aws/d/aws_cur_report_definition"
@@ -23,24 +31,32 @@ module "aws_cur_report_definition" {
   report_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "report_name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_cur_report_definition" "this" {
   report_name = var.report_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "additional_artifacts" {
   description = "returns a set of string"
@@ -101,4 +117,5 @@ output "this" {
   value = aws_cur_report_definition.this
 }
 ```
+
 [top](#index)

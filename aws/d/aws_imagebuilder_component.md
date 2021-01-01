@@ -1,11 +1,16 @@
 # aws_imagebuilder_component
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_imagebuilder_component" {
   source = "./modules/aws/d/aws_imagebuilder_component"
@@ -25,8 +33,11 @@ module "aws_imagebuilder_component" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_imagebuilder_component" "this" {
   arn  = var.arn
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "change_description" {
   description = "returns a string"
@@ -125,4 +141,5 @@ output "this" {
   value = aws_imagebuilder_component.this
 }
 ```
+
 [top](#index)

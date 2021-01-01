@@ -1,11 +1,16 @@
 # aws_redshift_service_account
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_service_account" {
   source = "./modules/aws/d/aws_redshift_service_account"
@@ -23,8 +31,11 @@ module "aws_redshift_service_account" {
   region = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "region" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "region" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_redshift_service_account" "this" {
   region = var.region
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_redshift_service_account.this
 }
 ```
+
 [top](#index)

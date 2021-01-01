@@ -1,11 +1,16 @@
 # aws_codecommit_repository
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codecommit_repository" {
   source = "./modules/aws/r/aws_codecommit_repository"
@@ -29,8 +37,11 @@ module "aws_codecommit_repository" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_branch" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codecommit_repository" "this" {
   default_branch  = var.default_branch
@@ -66,8 +79,11 @@ resource "aws_codecommit_repository" "this" {
   tags            = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_codecommit_repository.this
 }
 ```
+
 [top](#index)

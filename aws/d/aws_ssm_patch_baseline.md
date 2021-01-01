@@ -1,11 +1,16 @@
 # aws_ssm_patch_baseline
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_patch_baseline" {
   source = "./modules/aws/d/aws_ssm_patch_baseline"
@@ -29,8 +37,11 @@ module "aws_ssm_patch_baseline" {
   owner = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_baseline" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "owner" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ssm_patch_baseline" "this" {
   default_baseline = var.default_baseline
@@ -66,8 +79,11 @@ data "aws_ssm_patch_baseline" "this" {
   owner            = var.owner
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "description" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_ssm_patch_baseline.this
 }
 ```
+
 [top](#index)

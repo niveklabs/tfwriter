@@ -1,11 +1,16 @@
 # aws_default_security_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_default_security_group" {
   source = "./modules/aws/r/aws_default_security_group"
@@ -51,8 +59,11 @@ module "aws_default_security_group" {
   vpc_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "egress" {
   description = "(optional)"
@@ -108,9 +119,11 @@ variable "vpc_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_default_security_group" "this" {
   egress                 = var.egress
@@ -120,8 +133,11 @@ resource "aws_default_security_group" "this" {
   vpc_id                 = var.vpc_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -167,4 +183,5 @@ output "this" {
   value = aws_default_security_group.this
 }
 ```
+
 [top](#index)

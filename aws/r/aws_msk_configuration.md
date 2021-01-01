@@ -1,11 +1,16 @@
 # aws_msk_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_msk_configuration" {
   source = "./modules/aws/r/aws_msk_configuration"
@@ -29,8 +37,11 @@ module "aws_msk_configuration" {
   server_properties = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -53,9 +64,11 @@ variable "server_properties" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_msk_configuration" "this" {
   description       = var.description
@@ -64,8 +77,11 @@ resource "aws_msk_configuration" "this" {
   server_properties = var.server_properties
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_msk_configuration.this
 }
 ```
+
 [top](#index)

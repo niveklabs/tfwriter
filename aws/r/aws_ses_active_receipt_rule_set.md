@@ -1,11 +1,16 @@
 # aws_ses_active_receipt_rule_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ses_active_receipt_rule_set" {
   source = "./modules/aws/r/aws_ses_active_receipt_rule_set"
@@ -23,24 +31,32 @@ module "aws_ses_active_receipt_rule_set" {
   rule_set_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "rule_set_name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ses_active_receipt_rule_set" "this" {
   rule_set_name = var.rule_set_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -51,4 +67,5 @@ output "this" {
   value = aws_ses_active_receipt_rule_set.this
 }
 ```
+
 [top](#index)

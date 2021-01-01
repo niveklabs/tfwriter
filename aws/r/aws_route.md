@@ -1,11 +1,16 @@
 # aws_route
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route" {
   source = "./modules/aws/r/aws_route"
@@ -50,8 +58,11 @@ module "aws_route" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destination_cidr_block" {
   description = "(optional)"
@@ -135,9 +146,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route" "this" {
   destination_cidr_block      = var.destination_cidr_block
@@ -163,8 +176,11 @@ resource "aws_route" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "destination_prefix_list_id" {
   description = "returns a string"
@@ -225,4 +241,5 @@ output "this" {
   value = aws_route.this
 }
 ```
+
 [top](#index)

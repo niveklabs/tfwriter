@@ -1,11 +1,16 @@
 # aws_ebs_snapshot
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ebs_snapshot" {
   source = "./modules/aws/d/aws_ebs_snapshot"
@@ -36,8 +44,11 @@ module "aws_ebs_snapshot" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "most_recent" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ebs_snapshot" "this" {
   most_recent            = var.most_recent
@@ -101,8 +114,11 @@ data "aws_ebs_snapshot" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -173,4 +189,5 @@ output "this" {
   value = aws_ebs_snapshot.this
 }
 ```
+
 [top](#index)

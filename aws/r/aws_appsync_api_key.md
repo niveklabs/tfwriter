@@ -1,11 +1,16 @@
 # aws_appsync_api_key
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appsync_api_key" {
   source = "./modules/aws/r/aws_appsync_api_key"
@@ -27,8 +35,11 @@ module "aws_appsync_api_key" {
   expires = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "expires" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appsync_api_key" "this" {
   api_id      = var.api_id
@@ -57,8 +70,11 @@ resource "aws_appsync_api_key" "this" {
   expires     = var.expires
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -75,4 +91,5 @@ output "this" {
   value = aws_appsync_api_key.this
 }
 ```
+
 [top](#index)

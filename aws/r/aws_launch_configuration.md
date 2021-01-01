@@ -1,11 +1,16 @@
 # aws_launch_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_launch_configuration" {
   source = "./modules/aws/r/aws_launch_configuration"
@@ -83,8 +91,11 @@ module "aws_launch_configuration" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "associate_public_ip_address" {
   description = "(optional)"
@@ -234,9 +245,11 @@ variable "root_block_device" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_launch_configuration" "this" {
   associate_public_ip_address      = var.associate_public_ip_address
@@ -300,8 +313,11 @@ resource "aws_launch_configuration" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -332,4 +348,5 @@ output "this" {
   value = aws_launch_configuration.this
 }
 ```
+
 [top](#index)

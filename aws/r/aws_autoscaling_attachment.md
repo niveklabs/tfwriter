@@ -1,11 +1,16 @@
 # aws_autoscaling_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_autoscaling_attachment" {
   source = "./modules/aws/r/aws_autoscaling_attachment"
@@ -27,8 +35,11 @@ module "aws_autoscaling_attachment" {
   elb = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "alb_target_group_arn" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "elb" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_autoscaling_attachment" "this" {
   alb_target_group_arn   = var.alb_target_group_arn
@@ -57,8 +70,11 @@ resource "aws_autoscaling_attachment" "this" {
   elb                    = var.elb
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -69,4 +85,5 @@ output "this" {
   value = aws_autoscaling_attachment.this
 }
 ```
+
 [top](#index)

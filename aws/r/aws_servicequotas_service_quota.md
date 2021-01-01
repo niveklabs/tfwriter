@@ -1,11 +1,16 @@
 # aws_servicequotas_service_quota
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_servicequotas_service_quota" {
   source = "./modules/aws/r/aws_servicequotas_service_quota"
@@ -27,8 +35,11 @@ module "aws_servicequotas_service_quota" {
   value = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "quota_code" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "value" {
   type        = number
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_servicequotas_service_quota" "this" {
   quota_code   = var.quota_code
@@ -55,8 +68,11 @@ resource "aws_servicequotas_service_quota" "this" {
   value        = var.value
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "adjustable" {
   description = "returns a bool"
@@ -102,4 +118,5 @@ output "this" {
   value = aws_servicequotas_service_quota.this
 }
 ```
+
 [top](#index)

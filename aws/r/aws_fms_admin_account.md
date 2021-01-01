@@ -1,11 +1,16 @@
 # aws_fms_admin_account
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_fms_admin_account" {
   source = "./modules/aws/r/aws_fms_admin_account"
@@ -23,8 +31,11 @@ module "aws_fms_admin_account" {
   account_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(optional)"
@@ -32,16 +43,21 @@ variable "account_id" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_fms_admin_account" "this" {
   account_id = var.account_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "account_id" {
   description = "returns a string"
@@ -57,4 +73,5 @@ output "this" {
   value = aws_fms_admin_account.this
 }
 ```
+
 [top](#index)

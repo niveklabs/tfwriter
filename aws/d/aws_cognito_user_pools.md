@@ -1,11 +1,16 @@
 # aws_cognito_user_pools
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_user_pools" {
   source = "./modules/aws/d/aws_cognito_user_pools"
@@ -23,24 +31,32 @@ module "aws_cognito_user_pools" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_cognito_user_pools" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arns" {
   description = "returns a set of string"
@@ -61,4 +77,5 @@ output "this" {
   value = aws_cognito_user_pools.this
 }
 ```
+
 [top](#index)

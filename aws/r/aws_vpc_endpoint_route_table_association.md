@@ -1,11 +1,16 @@
 # aws_vpc_endpoint_route_table_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc_endpoint_route_table_association" {
   source = "./modules/aws/r/aws_vpc_endpoint_route_table_association"
@@ -25,8 +33,11 @@ module "aws_vpc_endpoint_route_table_association" {
   vpc_endpoint_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "route_table_id" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "vpc_endpoint_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpc_endpoint_route_table_association" "this" {
   route_table_id  = var.route_table_id
   vpc_endpoint_id = var.vpc_endpoint_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_vpc_endpoint_route_table_association.this
 }
 ```
+
 [top](#index)

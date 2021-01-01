@@ -1,11 +1,16 @@
 # aws_spot_fleet_request
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_spot_fleet_request" {
   source = "./modules/aws/r/aws_spot_fleet_request"
@@ -124,8 +132,11 @@ module "aws_spot_fleet_request" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allocation_strategy" {
   description = "(optional)"
@@ -328,9 +339,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_spot_fleet_request" "this" {
   allocation_strategy                 = var.allocation_strategy
@@ -462,8 +475,11 @@ resource "aws_spot_fleet_request" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "client_token" {
   description = "returns a string"
@@ -494,4 +510,5 @@ output "this" {
   value = aws_spot_fleet_request.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_accessanalyzer_analyzer
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_accessanalyzer_analyzer" {
   source = "./modules/aws/r/aws_accessanalyzer_analyzer"
@@ -27,8 +35,11 @@ module "aws_accessanalyzer_analyzer" {
   type = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "analyzer_name" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "type" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_accessanalyzer_analyzer" "this" {
   analyzer_name = var.analyzer_name
@@ -57,8 +70,11 @@ resource "aws_accessanalyzer_analyzer" "this" {
   type          = var.type
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -74,4 +90,5 @@ output "this" {
   value = aws_accessanalyzer_analyzer.this
 }
 ```
+
 [top](#index)

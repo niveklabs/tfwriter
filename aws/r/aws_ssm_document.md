@@ -1,11 +1,16 @@
 # aws_ssm_document
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_document" {
   source = "./modules/aws/r/aws_ssm_document"
@@ -41,8 +49,11 @@ module "aws_ssm_document" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "content" {
   description = "(required)"
@@ -95,9 +106,11 @@ variable "attachments_source" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ssm_document" "this" {
   content         = var.content
@@ -119,8 +132,11 @@ resource "aws_ssm_document" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -196,4 +212,5 @@ output "this" {
   value = aws_ssm_document.this
 }
 ```
+
 [top](#index)

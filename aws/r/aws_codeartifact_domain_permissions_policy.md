@@ -1,11 +1,16 @@
 # aws_codeartifact_domain_permissions_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codeartifact_domain_permissions_policy" {
   source = "./modules/aws/r/aws_codeartifact_domain_permissions_policy"
@@ -29,8 +37,11 @@ module "aws_codeartifact_domain_permissions_policy" {
   policy_revision = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "policy_revision" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codeartifact_domain_permissions_policy" "this" {
   domain          = var.domain
@@ -65,8 +78,11 @@ resource "aws_codeartifact_domain_permissions_policy" "this" {
   policy_revision = var.policy_revision
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "domain_owner" {
   description = "returns a string"
@@ -92,4 +108,5 @@ output "this" {
   value = aws_codeartifact_domain_permissions_policy.this
 }
 ```
+
 [top](#index)

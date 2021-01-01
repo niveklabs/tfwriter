@@ -1,11 +1,16 @@
 # aws_lambda_code_signing_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lambda_code_signing_config" {
   source = "./modules/aws/r/aws_lambda_code_signing_config"
@@ -31,8 +39,11 @@ module "aws_lambda_code_signing_config" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -59,9 +70,11 @@ variable "policies" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lambda_code_signing_config" "this" {
   description = var.description
@@ -82,8 +95,11 @@ resource "aws_lambda_code_signing_config" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -109,4 +125,5 @@ output "this" {
   value = aws_lambda_code_signing_config.this
 }
 ```
+
 [top](#index)

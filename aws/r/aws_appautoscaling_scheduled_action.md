@@ -1,11 +1,16 @@
 # aws_appautoscaling_scheduled_action
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_appautoscaling_scheduled_action" {
   source = "./modules/aws/r/aws_appautoscaling_scheduled_action"
@@ -40,8 +48,11 @@ module "aws_appautoscaling_scheduled_action" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "end_time" {
   description = "(optional)"
@@ -93,9 +104,11 @@ variable "scalable_target_action" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_appautoscaling_scheduled_action" "this" {
   end_time           = var.end_time
@@ -116,8 +129,11 @@ resource "aws_appautoscaling_scheduled_action" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -133,4 +149,5 @@ output "this" {
   value = aws_appautoscaling_scheduled_action.this
 }
 ```
+
 [top](#index)

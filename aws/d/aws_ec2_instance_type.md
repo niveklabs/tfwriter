@@ -1,11 +1,16 @@
 # aws_ec2_instance_type
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_instance_type" {
   source = "./modules/aws/d/aws_ec2_instance_type"
@@ -63,8 +71,11 @@ module "aws_ec2_instance_type" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_cores" {
   description = "(optional)"
@@ -163,9 +174,11 @@ variable "instance_disks" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_instance_type" "this" {
   default_cores                        = var.default_cores
@@ -203,8 +216,11 @@ data "aws_ec2_instance_type" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "auto_recovery_supported" {
   description = "returns a bool"
@@ -415,4 +431,5 @@ output "this" {
   value = aws_ec2_instance_type.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_redshift_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_cluster" {
   source = "./modules/aws/r/aws_redshift_cluster"
@@ -103,8 +111,11 @@ module "aws_redshift_cluster" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allow_version_upgrade" {
   description = "(optional)"
@@ -332,9 +343,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_redshift_cluster" "this" {
   allow_version_upgrade               = var.allow_version_upgrade
@@ -399,8 +412,11 @@ resource "aws_redshift_cluster" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -491,4 +507,5 @@ output "this" {
   value = aws_redshift_cluster.this
 }
 ```
+
 [top](#index)

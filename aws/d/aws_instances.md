@@ -1,11 +1,16 @@
 # aws_instances
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_instances" {
   source = "./modules/aws/d/aws_instances"
@@ -30,8 +38,11 @@ module "aws_instances" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "instance_state_names" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_instances" "this" {
   instance_state_names = var.instance_state_names
@@ -74,8 +87,11 @@ data "aws_instances" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -106,4 +122,5 @@ output "this" {
   value = aws_instances.this
 }
 ```
+
 [top](#index)

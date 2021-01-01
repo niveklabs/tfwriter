@@ -1,11 +1,16 @@
 # aws_route53_resolver_rule
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_rule" {
   source = "./modules/aws/d/aws_route53_resolver_rule"
@@ -33,8 +41,11 @@ module "aws_route53_resolver_rule" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain_name" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_route53_resolver_rule" "this" {
   domain_name          = var.domain_name
@@ -85,8 +98,11 @@ data "aws_route53_resolver_rule" "this" {
   tags                 = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -142,4 +158,5 @@ output "this" {
   value = aws_route53_resolver_rule.this
 }
 ```
+
 [top](#index)

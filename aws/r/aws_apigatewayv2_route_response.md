@@ -1,11 +1,16 @@
 # aws_apigatewayv2_route_response
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_route_response" {
   source = "./modules/aws/r/aws_apigatewayv2_route_response"
@@ -31,8 +39,11 @@ module "aws_apigatewayv2_route_response" {
   route_response_key = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_id" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "route_response_key" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_route_response" "this" {
   api_id                     = var.api_id
@@ -73,8 +86,11 @@ resource "aws_apigatewayv2_route_response" "this" {
   route_response_key         = var.route_response_key
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -85,4 +101,5 @@ output "this" {
   value = aws_apigatewayv2_route_response.this
 }
 ```
+
 [top](#index)

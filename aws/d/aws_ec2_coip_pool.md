@@ -1,11 +1,16 @@
 # aws_ec2_coip_pool
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_coip_pool" {
   source = "./modules/aws/d/aws_ec2_coip_pool"
@@ -32,8 +40,11 @@ module "aws_ec2_coip_pool" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "local_gateway_route_table_id" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_coip_pool" "this" {
   local_gateway_route_table_id = var.local_gateway_route_table_id
@@ -83,8 +96,11 @@ data "aws_ec2_coip_pool" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -115,4 +131,5 @@ output "this" {
   value = aws_ec2_coip_pool.this
 }
 ```
+
 [top](#index)

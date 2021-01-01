@@ -1,11 +1,16 @@
 # aws_cloudwatch_event_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_event_target" {
   source = "./modules/aws/r/aws_cloudwatch_event_target"
@@ -73,8 +81,11 @@ module "aws_cloudwatch_event_target" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
@@ -192,9 +203,11 @@ variable "sqs_target" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_event_target" "this" {
   arn            = var.arn
@@ -268,8 +281,11 @@ resource "aws_cloudwatch_event_target" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -285,4 +301,5 @@ output "this" {
   value = aws_cloudwatch_event_target.this
 }
 ```
+
 [top](#index)

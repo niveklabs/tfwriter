@@ -1,11 +1,16 @@
 # aws_organizations_account
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_organizations_account" {
   source = "./modules/aws/r/aws_organizations_account"
@@ -33,8 +41,11 @@ module "aws_organizations_account" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "email" {
   description = "(required)"
@@ -70,9 +81,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_organizations_account" "this" {
   email                      = var.email
@@ -83,8 +96,11 @@ resource "aws_organizations_account" "this" {
   tags                       = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -120,4 +136,5 @@ output "this" {
   value = aws_organizations_account.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_cur_report_definition
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cur_report_definition" {
   source = "./modules/aws/r/aws_cur_report_definition"
@@ -43,8 +51,11 @@ module "aws_cur_report_definition" {
   time_unit = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "additional_artifacts" {
   description = "(optional)"
@@ -105,9 +116,11 @@ variable "time_unit" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cur_report_definition" "this" {
   additional_artifacts       = var.additional_artifacts
@@ -123,8 +136,11 @@ resource "aws_cur_report_definition" "this" {
   time_unit                  = var.time_unit
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -135,4 +151,5 @@ output "this" {
   value = aws_cur_report_definition.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_codebuild_source_credential
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codebuild_source_credential" {
   source = "./modules/aws/r/aws_codebuild_source_credential"
@@ -29,8 +37,11 @@ module "aws_codebuild_source_credential" {
   user_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "auth_type" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "user_name" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codebuild_source_credential" "this" {
   auth_type   = var.auth_type
@@ -64,8 +77,11 @@ resource "aws_codebuild_source_credential" "this" {
   user_name   = var.user_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -81,4 +97,5 @@ output "this" {
   value = aws_codebuild_source_credential.this
 }
 ```
+
 [top](#index)

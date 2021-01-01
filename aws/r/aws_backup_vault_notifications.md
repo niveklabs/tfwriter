@@ -1,11 +1,16 @@
 # aws_backup_vault_notifications
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_backup_vault_notifications" {
   source = "./modules/aws/r/aws_backup_vault_notifications"
@@ -27,8 +35,11 @@ module "aws_backup_vault_notifications" {
   sns_topic_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "backup_vault_events" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "sns_topic_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_backup_vault_notifications" "this" {
   backup_vault_events = var.backup_vault_events
@@ -55,8 +68,11 @@ resource "aws_backup_vault_notifications" "this" {
   sns_topic_arn       = var.sns_topic_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "backup_vault_arn" {
   description = "returns a string"
@@ -72,4 +88,5 @@ output "this" {
   value = aws_backup_vault_notifications.this
 }
 ```
+
 [top](#index)

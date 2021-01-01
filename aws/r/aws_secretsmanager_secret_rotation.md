@@ -1,11 +1,16 @@
 # aws_secretsmanager_secret_rotation
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_secretsmanager_secret_rotation" {
   source = "./modules/aws/r/aws_secretsmanager_secret_rotation"
@@ -31,8 +39,11 @@ module "aws_secretsmanager_secret_rotation" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "rotation_lambda_arn" {
   description = "(required)"
@@ -59,9 +70,11 @@ variable "rotation_rules" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_secretsmanager_secret_rotation" "this" {
   rotation_lambda_arn = var.rotation_lambda_arn
@@ -77,8 +90,11 @@ resource "aws_secretsmanager_secret_rotation" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -94,4 +110,5 @@ output "this" {
   value = aws_secretsmanager_secret_rotation.this
 }
 ```
+
 [top](#index)

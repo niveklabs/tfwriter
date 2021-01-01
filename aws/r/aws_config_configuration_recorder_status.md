@@ -1,11 +1,16 @@
 # aws_config_configuration_recorder_status
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_config_configuration_recorder_status" {
   source = "./modules/aws/r/aws_config_configuration_recorder_status"
@@ -25,8 +33,11 @@ module "aws_config_configuration_recorder_status" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "is_enabled" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_config_configuration_recorder_status" "this" {
   is_enabled = var.is_enabled
   name       = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_config_configuration_recorder_status.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_db_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_db_instance" {
   source = "./modules/aws/d/aws_db_instance"
@@ -25,8 +33,11 @@ module "aws_db_instance" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_instance_identifier" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_db_instance" "this" {
   db_instance_identifier = var.db_instance_identifier
   tags                   = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "address" {
   description = "returns a string"
@@ -250,4 +266,5 @@ output "this" {
   value = aws_db_instance.this
 }
 ```
+
 [top](#index)

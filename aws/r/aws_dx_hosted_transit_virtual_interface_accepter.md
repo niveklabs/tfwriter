@@ -1,11 +1,16 @@
 # aws_dx_hosted_transit_virtual_interface_accepter
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dx_hosted_transit_virtual_interface_accepter" {
   source = "./modules/aws/r/aws_dx_hosted_transit_virtual_interface_accepter"
@@ -32,8 +40,11 @@ module "aws_dx_hosted_transit_virtual_interface_accepter" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "dx_gateway_id" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dx_hosted_transit_virtual_interface_accepter" "this" {
   dx_gateway_id        = var.dx_gateway_id
@@ -81,8 +94,11 @@ resource "aws_dx_hosted_transit_virtual_interface_accepter" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -98,4 +114,5 @@ output "this" {
   value = aws_dx_hosted_transit_virtual_interface_accepter.this
 }
 ```
+
 [top](#index)

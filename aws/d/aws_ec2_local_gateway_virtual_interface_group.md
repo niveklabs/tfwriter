@@ -1,11 +1,16 @@
 # aws_ec2_local_gateway_virtual_interface_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_local_gateway_virtual_interface_group" {
   source = "./modules/aws/d/aws_ec2_local_gateway_virtual_interface_group"
@@ -30,8 +38,11 @@ module "aws_ec2_local_gateway_virtual_interface_group" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "local_gateway_id" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_local_gateway_virtual_interface_group" "this" {
   local_gateway_id = var.local_gateway_id
@@ -74,8 +87,11 @@ data "aws_ec2_local_gateway_virtual_interface_group" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -101,4 +117,5 @@ output "this" {
   value = aws_ec2_local_gateway_virtual_interface_group.this
 }
 ```
+
 [top](#index)

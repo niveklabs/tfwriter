@@ -1,11 +1,16 @@
 # aws_ec2_client_vpn_network_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_client_vpn_network_association" {
   source = "./modules/aws/r/aws_ec2_client_vpn_network_association"
@@ -27,8 +35,11 @@ module "aws_ec2_client_vpn_network_association" {
   subnet_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "client_vpn_endpoint_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "subnet_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_client_vpn_network_association" "this" {
   client_vpn_endpoint_id = var.client_vpn_endpoint_id
@@ -56,8 +69,11 @@ resource "aws_ec2_client_vpn_network_association" "this" {
   subnet_id              = var.subnet_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "association_id" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_ec2_client_vpn_network_association.this
 }
 ```
+
 [top](#index)

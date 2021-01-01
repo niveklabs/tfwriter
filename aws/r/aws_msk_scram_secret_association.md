@@ -1,11 +1,16 @@
 # aws_msk_scram_secret_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_msk_scram_secret_association" {
   source = "./modules/aws/r/aws_msk_scram_secret_association"
@@ -25,8 +33,11 @@ module "aws_msk_scram_secret_association" {
   secret_arn_list = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_arn" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "secret_arn_list" {
   type        = set(string)
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_msk_scram_secret_association" "this" {
   cluster_arn     = var.cluster_arn
   secret_arn_list = var.secret_arn_list
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_msk_scram_secret_association.this
 }
 ```
+
 [top](#index)

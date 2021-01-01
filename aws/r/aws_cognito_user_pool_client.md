@@ -1,11 +1,16 @@
 # aws_cognito_user_pool_client
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cognito_user_pool_client" {
   source = "./modules/aws/r/aws_cognito_user_pool_client"
@@ -58,8 +66,11 @@ module "aws_cognito_user_pool_client" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "allowed_oauth_flows" {
   description = "(optional)"
@@ -162,9 +173,11 @@ variable "analytics_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cognito_user_pool_client" "this" {
   allowed_oauth_flows                  = var.allowed_oauth_flows
@@ -195,8 +208,11 @@ resource "aws_cognito_user_pool_client" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "client_secret" {
   description = "returns a string"
@@ -218,4 +234,5 @@ output "this" {
   value = aws_cognito_user_pool_client.this
 }
 ```
+
 [top](#index)

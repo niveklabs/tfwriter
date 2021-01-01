@@ -1,11 +1,16 @@
 # aws_codeartifact_authorization_token
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codeartifact_authorization_token" {
   source = "./modules/aws/d/aws_codeartifact_authorization_token"
@@ -27,8 +35,11 @@ module "aws_codeartifact_authorization_token" {
   duration_seconds = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain" {
   description = "(required)"
@@ -47,9 +58,11 @@ variable "duration_seconds" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_codeartifact_authorization_token" "this" {
   domain           = var.domain
@@ -57,8 +70,11 @@ data "aws_codeartifact_authorization_token" "this" {
   duration_seconds = var.duration_seconds
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "authorization_token" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_codeartifact_authorization_token.this
 }
 ```
+
 [top](#index)

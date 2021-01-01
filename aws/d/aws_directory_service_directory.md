@@ -1,11 +1,16 @@
 # aws_directory_service_directory
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_directory_service_directory" {
   source = "./modules/aws/d/aws_directory_service_directory"
@@ -25,8 +33,11 @@ module "aws_directory_service_directory" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "directory_id" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_directory_service_directory" "this" {
   directory_id = var.directory_id
   tags         = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "access_url" {
   description = "returns a string"
@@ -125,4 +141,5 @@ output "this" {
   value = aws_directory_service_directory.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_sfn_state_machine
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sfn_state_machine" {
   source = "./modules/aws/d/aws_sfn_state_machine"
@@ -23,24 +31,32 @@ module "aws_sfn_state_machine" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_sfn_state_machine" "this" {
   name = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_sfn_state_machine.this
 }
 ```
+
 [top](#index)

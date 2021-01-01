@@ -1,11 +1,16 @@
 # aws_api_gateway_request_validator
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_request_validator" {
   source = "./modules/aws/r/aws_api_gateway_request_validator"
@@ -29,8 +37,11 @@ module "aws_api_gateway_request_validator" {
   validate_request_parameters = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "name" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "validate_request_parameters" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_request_validator" "this" {
   name                        = var.name
@@ -65,8 +78,11 @@ resource "aws_api_gateway_request_validator" "this" {
   validate_request_parameters = var.validate_request_parameters
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -77,4 +93,5 @@ output "this" {
   value = aws_api_gateway_request_validator.this
 }
 ```
+
 [top](#index)

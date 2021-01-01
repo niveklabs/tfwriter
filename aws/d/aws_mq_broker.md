@@ -1,11 +1,16 @@
 # aws_mq_broker
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_mq_broker" {
   source = "./modules/aws/d/aws_mq_broker"
@@ -32,8 +40,11 @@ module "aws_mq_broker" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "broker_id" {
   description = "(optional)"
@@ -64,9 +75,11 @@ variable "logs" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_mq_broker" "this" {
   broker_id   = var.broker_id
@@ -81,8 +94,11 @@ data "aws_mq_broker" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -178,4 +194,5 @@ output "this" {
   value = aws_mq_broker.this
 }
 ```
+
 [top](#index)

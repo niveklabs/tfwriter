@@ -1,11 +1,16 @@
 # aws_ami_copy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ami_copy" {
   source = "./modules/aws/r/aws_ami_copy"
@@ -56,8 +64,11 @@ module "aws_ami_copy" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -137,9 +148,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ami_copy" "this" {
   description       = var.description
@@ -173,8 +186,11 @@ resource "aws_ami_copy" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "architecture" {
   description = "returns a string"
@@ -245,4 +261,5 @@ output "this" {
   value = aws_ami_copy.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_vpc
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpc" {
   source = "./modules/aws/d/aws_vpc"
@@ -36,8 +44,11 @@ module "aws_vpc" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cidr_block" {
   description = "(optional)"
@@ -80,9 +91,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_vpc" "this" {
   cidr_block      = var.cidr_block
@@ -101,8 +114,11 @@ data "aws_vpc" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -183,4 +199,5 @@ output "this" {
   value = aws_vpc.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_mq_configuration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_mq_configuration" {
   source = "./modules/aws/r/aws_mq_configuration"
@@ -33,8 +41,11 @@ module "aws_mq_configuration" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "data" {
   description = "(required)"
@@ -68,9 +79,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_mq_configuration" "this" {
   data           = var.data
@@ -81,8 +94,11 @@ resource "aws_mq_configuration" "this" {
   tags           = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -103,4 +119,5 @@ output "this" {
   value = aws_mq_configuration.this
 }
 ```
+
 [top](#index)

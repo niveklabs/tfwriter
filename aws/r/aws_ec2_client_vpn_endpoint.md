@@ -1,11 +1,16 @@
 # aws_ec2_client_vpn_endpoint
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_client_vpn_endpoint" {
   source = "./modules/aws/r/aws_ec2_client_vpn_endpoint"
@@ -48,8 +56,11 @@ module "aws_ec2_client_vpn_endpoint" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "client_cidr_block" {
   description = "(required)"
@@ -114,9 +125,11 @@ variable "connection_log_options" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_client_vpn_endpoint" "this" {
   client_cidr_block      = var.client_cidr_block
@@ -148,8 +161,11 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -175,4 +191,5 @@ output "this" {
   value = aws_ec2_client_vpn_endpoint.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_ec2_transit_gateway_vpc_attachment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_transit_gateway_vpc_attachment" {
   source = "./modules/aws/d/aws_ec2_transit_gateway_vpc_attachment"
@@ -28,8 +36,11 @@ module "aws_ec2_transit_gateway_vpc_attachment" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -48,9 +59,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_transit_gateway_vpc_attachment" "this" {
   tags = var.tags
@@ -65,8 +78,11 @@ data "aws_ec2_transit_gateway_vpc_attachment" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "appliance_mode_support" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_ec2_transit_gateway_vpc_attachment.this
 }
 ```
+
 [top](#index)

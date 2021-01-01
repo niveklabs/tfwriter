@@ -1,11 +1,16 @@
 # aws_opsworks_rds_db_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_rds_db_instance" {
   source = "./modules/aws/r/aws_opsworks_rds_db_instance"
@@ -29,8 +37,11 @@ module "aws_opsworks_rds_db_instance" {
   stack_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "db_password" {
   description = "(required)"
@@ -52,9 +63,11 @@ variable "stack_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_rds_db_instance" "this" {
   db_password         = var.db_password
@@ -63,8 +76,11 @@ resource "aws_opsworks_rds_db_instance" "this" {
   stack_id            = var.stack_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -75,4 +91,5 @@ output "this" {
   value = aws_opsworks_rds_db_instance.this
 }
 ```
+
 [top](#index)

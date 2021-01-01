@@ -1,11 +1,16 @@
 # aws_ec2_spot_price
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_spot_price" {
   source = "./modules/aws/d/aws_ec2_spot_price"
@@ -30,8 +38,11 @@ module "aws_ec2_spot_price" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "availability_zone" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ec2_spot_price" "this" {
   availability_zone = var.availability_zone
@@ -74,8 +87,11 @@ data "aws_ec2_spot_price" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -96,4 +112,5 @@ output "this" {
   value = aws_ec2_spot_price.this
 }
 ```
+
 [top](#index)

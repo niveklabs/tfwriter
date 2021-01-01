@@ -1,11 +1,16 @@
 # aws_route53_resolver_query_log_config
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_route53_resolver_query_log_config" {
   source = "./modules/aws/r/aws_route53_resolver_query_log_config"
@@ -27,8 +35,11 @@ module "aws_route53_resolver_query_log_config" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destination_arn" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_route53_resolver_query_log_config" "this" {
   destination_arn = var.destination_arn
@@ -56,8 +69,11 @@ resource "aws_route53_resolver_query_log_config" "this" {
   tags            = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -83,4 +99,5 @@ output "this" {
   value = aws_route53_resolver_query_log_config.this
 }
 ```
+
 [top](#index)

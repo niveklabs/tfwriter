@@ -1,11 +1,16 @@
 # aws_imagebuilder_image_recipe
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_imagebuilder_image_recipe" {
   source = "./modules/aws/d/aws_imagebuilder_image_recipe"
@@ -25,8 +33,11 @@ module "aws_imagebuilder_image_recipe" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "arn" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_imagebuilder_image_recipe" "this" {
   arn  = var.arn
   tags = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "block_device_mapping" {
   description = "returns a set of object"
@@ -105,4 +121,5 @@ output "this" {
   value = aws_imagebuilder_image_recipe.this
 }
 ```
+
 [top](#index)

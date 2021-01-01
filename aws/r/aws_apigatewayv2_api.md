@@ -1,11 +1,16 @@
 # aws_apigatewayv2_api
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_apigatewayv2_api" {
   source = "./modules/aws/r/aws_apigatewayv2_api"
@@ -54,8 +62,11 @@ module "aws_apigatewayv2_api" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_key_selection_expression" {
   description = "(optional)"
@@ -142,9 +153,11 @@ variable "cors_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_apigatewayv2_api" "this" {
   api_key_selection_expression = var.api_key_selection_expression
@@ -174,8 +187,11 @@ resource "aws_apigatewayv2_api" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "api_endpoint" {
   description = "returns a string"
@@ -201,4 +217,5 @@ output "this" {
   value = aws_apigatewayv2_api.this
 }
 ```
+
 [top](#index)

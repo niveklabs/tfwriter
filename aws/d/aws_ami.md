@@ -1,11 +1,16 @@
 # aws_ami
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ami" {
   source = "./modules/aws/d/aws_ami"
@@ -36,8 +44,11 @@ module "aws_ami" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "executable_users" {
   description = "(optional)"
@@ -79,9 +90,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ami" "this" {
   executable_users = var.executable_users
@@ -100,8 +113,11 @@ data "aws_ami" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "architecture" {
   description = "returns a string"
@@ -237,4 +253,5 @@ output "this" {
   value = aws_ami.this
 }
 ```
+
 [top](#index)

@@ -1,11 +1,16 @@
 # aws_athena_database
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_athena_database" {
   source = "./modules/aws/r/aws_athena_database"
@@ -32,8 +40,11 @@ module "aws_athena_database" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -62,9 +73,11 @@ variable "encryption_configuration" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_athena_database" "this" {
   bucket        = var.bucket
@@ -81,8 +94,11 @@ resource "aws_athena_database" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -93,4 +109,5 @@ output "this" {
   value = aws_athena_database.this
 }
 ```
+
 [top](#index)

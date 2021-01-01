@@ -1,11 +1,16 @@
 # aws_iam_group_membership
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_iam_group_membership" {
   source = "./modules/aws/r/aws_iam_group_membership"
@@ -27,8 +35,11 @@ module "aws_iam_group_membership" {
   users = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "group" {
   description = "(required)"
@@ -45,9 +56,11 @@ variable "users" {
   type        = set(string)
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_iam_group_membership" "this" {
   group = var.group
@@ -55,8 +68,11 @@ resource "aws_iam_group_membership" "this" {
   users = var.users
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -67,4 +83,5 @@ output "this" {
   value = aws_iam_group_membership.this
 }
 ```
+
 [top](#index)

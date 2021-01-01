@@ -1,11 +1,16 @@
 # aws_ssm_document
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ssm_document" {
   source = "./modules/aws/d/aws_ssm_document"
@@ -27,8 +35,11 @@ module "aws_ssm_document" {
   name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "document_format" {
   description = "(optional)"
@@ -47,9 +58,11 @@ variable "name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_ssm_document" "this" {
   document_format  = var.document_format
@@ -57,8 +70,11 @@ data "aws_ssm_document" "this" {
   name             = var.name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_ssm_document.this
 }
 ```
+
 [top](#index)

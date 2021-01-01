@@ -1,11 +1,16 @@
 # aws_subnet_ids
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_subnet_ids" {
   source = "./modules/aws/d/aws_subnet_ids"
@@ -30,8 +38,11 @@ module "aws_subnet_ids" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "tags" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_subnet_ids" "this" {
   tags   = var.tags
@@ -73,8 +86,11 @@ data "aws_subnet_ids" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -95,4 +111,5 @@ output "this" {
   value = aws_subnet_ids.this
 }
 ```
+
 [top](#index)

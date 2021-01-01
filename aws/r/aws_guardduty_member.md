@@ -1,11 +1,16 @@
 # aws_guardduty_member
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_member" {
   source = "./modules/aws/r/aws_guardduty_member"
@@ -38,8 +46,11 @@ module "aws_guardduty_member" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(required)"
@@ -85,9 +96,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_member" "this" {
   account_id                 = var.account_id
@@ -107,8 +120,11 @@ resource "aws_guardduty_member" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -124,4 +140,5 @@ output "this" {
   value = aws_guardduty_member.this
 }
 ```
+
 [top](#index)

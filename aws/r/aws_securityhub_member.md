@@ -1,11 +1,16 @@
 # aws_securityhub_member
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_securityhub_member" {
   source = "./modules/aws/r/aws_securityhub_member"
@@ -27,8 +35,11 @@ module "aws_securityhub_member" {
   invite = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "account_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "invite" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_securityhub_member" "this" {
   account_id = var.account_id
@@ -56,8 +69,11 @@ resource "aws_securityhub_member" "this" {
   invite     = var.invite
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -78,4 +94,5 @@ output "this" {
   value = aws_securityhub_member.this
 }
 ```
+
 [top](#index)

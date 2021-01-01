@@ -1,11 +1,16 @@
 # aws_kms_secrets
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_kms_secrets" {
   source = "./modules/aws/d/aws_kms_secrets"
@@ -28,8 +36,11 @@ module "aws_kms_secrets" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "secret" {
   description = "nested mode: NestingSet, min items: 1, max items: 0"
@@ -43,9 +54,11 @@ variable "secret" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_kms_secrets" "this" {
 
@@ -61,8 +74,11 @@ data "aws_kms_secrets" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -79,4 +95,5 @@ output "this" {
   value = aws_kms_secrets.this
 }
 ```
+
 [top](#index)

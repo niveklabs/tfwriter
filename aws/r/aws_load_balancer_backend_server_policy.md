@@ -1,11 +1,16 @@
 # aws_load_balancer_backend_server_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_load_balancer_backend_server_policy" {
   source = "./modules/aws/r/aws_load_balancer_backend_server_policy"
@@ -27,8 +35,11 @@ module "aws_load_balancer_backend_server_policy" {
   policy_names = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "instance_port" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "policy_names" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_load_balancer_backend_server_policy" "this" {
   instance_port      = var.instance_port
@@ -56,8 +69,11 @@ resource "aws_load_balancer_backend_server_policy" "this" {
   policy_names       = var.policy_names
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_load_balancer_backend_server_policy.this
 }
 ```
+
 [top](#index)

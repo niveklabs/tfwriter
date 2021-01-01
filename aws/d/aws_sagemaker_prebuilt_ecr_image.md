@@ -1,11 +1,16 @@
 # aws_sagemaker_prebuilt_ecr_image
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sagemaker_prebuilt_ecr_image" {
   source = "./modules/aws/d/aws_sagemaker_prebuilt_ecr_image"
@@ -29,8 +37,11 @@ module "aws_sagemaker_prebuilt_ecr_image" {
   repository_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "dns_suffix" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "repository_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_sagemaker_prebuilt_ecr_image" "this" {
   dns_suffix      = var.dns_suffix
@@ -66,8 +79,11 @@ data "aws_sagemaker_prebuilt_ecr_image" "this" {
   repository_name = var.repository_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_sagemaker_prebuilt_ecr_image.this
 }
 ```
+
 [top](#index)

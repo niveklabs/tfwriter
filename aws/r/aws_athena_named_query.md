@@ -1,11 +1,16 @@
 # aws_athena_named_query
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_athena_named_query" {
   source = "./modules/aws/r/aws_athena_named_query"
@@ -31,8 +39,11 @@ module "aws_athena_named_query" {
   workgroup = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "database" {
   description = "(required)"
@@ -61,9 +72,11 @@ variable "workgroup" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_athena_named_query" "this" {
   database    = var.database
@@ -73,8 +86,11 @@ resource "aws_athena_named_query" "this" {
   workgroup   = var.workgroup
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -85,4 +101,5 @@ output "this" {
   value = aws_athena_named_query.this
 }
 ```
+
 [top](#index)

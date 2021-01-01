@@ -1,11 +1,16 @@
 # aws_efs_mount_target
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_efs_mount_target" {
   source = "./modules/aws/r/aws_efs_mount_target"
@@ -29,8 +37,11 @@ module "aws_efs_mount_target" {
   subnet_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "file_system_id" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "subnet_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_efs_mount_target" "this" {
   file_system_id  = var.file_system_id
@@ -65,8 +78,11 @@ resource "aws_efs_mount_target" "this" {
   subnet_id       = var.subnet_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "availability_zone_id" {
   description = "returns a string"
@@ -122,4 +138,5 @@ output "this" {
   value = aws_efs_mount_target.this
 }
 ```
+
 [top](#index)

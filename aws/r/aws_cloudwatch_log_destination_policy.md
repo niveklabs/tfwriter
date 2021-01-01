@@ -1,11 +1,16 @@
 # aws_cloudwatch_log_destination_policy
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudwatch_log_destination_policy" {
   source = "./modules/aws/r/aws_cloudwatch_log_destination_policy"
@@ -25,8 +33,11 @@ module "aws_cloudwatch_log_destination_policy" {
   destination_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "access_policy" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "destination_name" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudwatch_log_destination_policy" "this" {
   access_policy    = var.access_policy
   destination_name = var.destination_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_cloudwatch_log_destination_policy.this
 }
 ```
+
 [top](#index)

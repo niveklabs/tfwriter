@@ -1,11 +1,16 @@
 # aws_codeartifact_repository
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_codeartifact_repository" {
   source = "./modules/aws/r/aws_codeartifact_repository"
@@ -41,8 +49,11 @@ module "aws_codeartifact_repository" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -94,9 +105,11 @@ variable "upstream" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_codeartifact_repository" "this" {
   description  = var.description
@@ -121,8 +134,11 @@ resource "aws_codeartifact_repository" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "administrator_account" {
   description = "returns a string"
@@ -148,4 +164,5 @@ output "this" {
   value = aws_codeartifact_repository.this
 }
 ```
+
 [top](#index)

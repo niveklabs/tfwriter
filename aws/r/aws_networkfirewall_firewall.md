@@ -1,11 +1,16 @@
 # aws_networkfirewall_firewall
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_networkfirewall_firewall" {
   source = "./modules/aws/r/aws_networkfirewall_firewall"
@@ -41,8 +49,11 @@ module "aws_networkfirewall_firewall" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "delete_protection" {
   description = "(optional)"
@@ -98,9 +109,11 @@ variable "subnet_mapping" {
   ))
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_networkfirewall_firewall" "this" {
   delete_protection                 = var.delete_protection
@@ -121,8 +134,11 @@ resource "aws_networkfirewall_firewall" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -148,4 +164,5 @@ output "this" {
   value = aws_networkfirewall_firewall.this
 }
 ```
+
 [top](#index)

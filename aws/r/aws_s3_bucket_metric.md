@@ -1,11 +1,16 @@
 # aws_s3_bucket_metric
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_s3_bucket_metric" {
   source = "./modules/aws/r/aws_s3_bucket_metric"
@@ -30,8 +38,11 @@ module "aws_s3_bucket_metric" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "bucket" {
   description = "(required)"
@@ -54,9 +65,11 @@ variable "filter" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_s3_bucket_metric" "this" {
   bucket = var.bucket
@@ -72,8 +85,11 @@ resource "aws_s3_bucket_metric" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -84,4 +100,5 @@ output "this" {
   value = aws_s3_bucket_metric.this
 }
 ```
+
 [top](#index)

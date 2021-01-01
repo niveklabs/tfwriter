@@ -1,11 +1,16 @@
 # aws_redshift_orderable_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_redshift_orderable_cluster" {
   source = "./modules/aws/d/aws_redshift_orderable_cluster"
@@ -29,8 +37,11 @@ module "aws_redshift_orderable_cluster" {
   preferred_node_types = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_type" {
   description = "(optional)"
@@ -56,9 +67,11 @@ variable "preferred_node_types" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_redshift_orderable_cluster" "this" {
   cluster_type         = var.cluster_type
@@ -67,8 +80,11 @@ data "aws_redshift_orderable_cluster" "this" {
   preferred_node_types = var.preferred_node_types
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "availability_zones" {
   description = "returns a list of string"
@@ -99,4 +115,5 @@ output "this" {
   value = aws_redshift_orderable_cluster.this
 }
 ```
+
 [top](#index)

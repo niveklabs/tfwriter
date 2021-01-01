@@ -1,11 +1,16 @@
 # aws_ec2_local_gateway_route_table_vpc_association
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_ec2_local_gateway_route_table_vpc_association" {
   source = "./modules/aws/r/aws_ec2_local_gateway_route_table_vpc_association"
@@ -27,8 +35,11 @@ module "aws_ec2_local_gateway_route_table_vpc_association" {
   vpc_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "local_gateway_route_table_id" {
   description = "(required)"
@@ -46,9 +57,11 @@ variable "vpc_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_ec2_local_gateway_route_table_vpc_association" "this" {
   local_gateway_route_table_id = var.local_gateway_route_table_id
@@ -56,8 +69,11 @@ resource "aws_ec2_local_gateway_route_table_vpc_association" "this" {
   vpc_id                       = var.vpc_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -73,4 +89,5 @@ output "this" {
   value = aws_ec2_local_gateway_route_table_vpc_association.this
 }
 ```
+
 [top](#index)

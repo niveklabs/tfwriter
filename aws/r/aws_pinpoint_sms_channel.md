@@ -1,11 +1,16 @@
 # aws_pinpoint_sms_channel
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_sms_channel" {
   source = "./modules/aws/r/aws_pinpoint_sms_channel"
@@ -29,8 +37,11 @@ module "aws_pinpoint_sms_channel" {
   short_code = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -55,9 +66,11 @@ variable "short_code" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_sms_channel" "this" {
   application_id = var.application_id
@@ -66,8 +79,11 @@ resource "aws_pinpoint_sms_channel" "this" {
   short_code     = var.short_code
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_pinpoint_sms_channel.this
 }
 ```
+
 [top](#index)

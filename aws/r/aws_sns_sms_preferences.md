@@ -1,11 +1,16 @@
 # aws_sns_sms_preferences
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_sns_sms_preferences" {
   source = "./modules/aws/r/aws_sns_sms_preferences"
@@ -33,8 +41,11 @@ module "aws_sns_sms_preferences" {
   usage_report_s3_bucket = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "default_sender_id" {
   description = "(optional)"
@@ -72,9 +83,11 @@ variable "usage_report_s3_bucket" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_sns_sms_preferences" "this" {
   default_sender_id                     = var.default_sender_id
@@ -85,8 +98,11 @@ resource "aws_sns_sms_preferences" "this" {
   usage_report_s3_bucket                = var.usage_report_s3_bucket
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -97,4 +113,5 @@ output "this" {
   value = aws_sns_sms_preferences.this
 }
 ```
+
 [top](#index)

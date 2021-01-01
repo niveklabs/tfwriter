@@ -1,11 +1,16 @@
 # aws_lightsail_domain
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_lightsail_domain" {
   source = "./modules/aws/r/aws_lightsail_domain"
@@ -23,24 +31,32 @@ module "aws_lightsail_domain" {
   domain_name = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "domain_name" {
   description = "(required)"
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_lightsail_domain" "this" {
   domain_name = var.domain_name
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -56,4 +72,5 @@ output "this" {
   value = aws_lightsail_domain.this
 }
 ```
+
 [top](#index)

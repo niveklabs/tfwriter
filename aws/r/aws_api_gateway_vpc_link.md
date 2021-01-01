@@ -1,11 +1,16 @@
 # aws_api_gateway_vpc_link
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_vpc_link" {
   source = "./modules/aws/r/aws_api_gateway_vpc_link"
@@ -29,8 +37,11 @@ module "aws_api_gateway_vpc_link" {
   target_arns = []
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -54,9 +65,11 @@ variable "target_arns" {
   type        = list(string)
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_vpc_link" "this" {
   description = var.description
@@ -65,8 +78,11 @@ resource "aws_api_gateway_vpc_link" "this" {
   target_arns = var.target_arns
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -82,4 +98,5 @@ output "this" {
   value = aws_api_gateway_vpc_link.this
 }
 ```
+
 [top](#index)

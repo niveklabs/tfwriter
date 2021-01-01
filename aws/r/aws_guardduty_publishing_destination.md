@@ -1,11 +1,16 @@
 # aws_guardduty_publishing_destination
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_guardduty_publishing_destination" {
   source = "./modules/aws/r/aws_guardduty_publishing_destination"
@@ -29,8 +37,11 @@ module "aws_guardduty_publishing_destination" {
   kms_key_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destination_arn" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "kms_key_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_guardduty_publishing_destination" "this" {
   destination_arn  = var.destination_arn
@@ -64,8 +77,11 @@ resource "aws_guardduty_publishing_destination" "this" {
   kms_key_arn      = var.kms_key_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_guardduty_publishing_destination.this
 }
 ```
+
 [top](#index)

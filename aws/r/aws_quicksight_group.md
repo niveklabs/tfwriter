@@ -1,11 +1,16 @@
 # aws_quicksight_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_quicksight_group" {
   source = "./modules/aws/r/aws_quicksight_group"
@@ -29,8 +37,11 @@ module "aws_quicksight_group" {
   namespace = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "aws_account_id" {
   description = "(optional)"
@@ -55,9 +66,11 @@ variable "namespace" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_quicksight_group" "this" {
   aws_account_id = var.aws_account_id
@@ -66,8 +79,11 @@ resource "aws_quicksight_group" "this" {
   namespace      = var.namespace
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -88,4 +104,5 @@ output "this" {
   value = aws_quicksight_group.this
 }
 ```
+
 [top](#index)

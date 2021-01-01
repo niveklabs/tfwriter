@@ -1,11 +1,16 @@
 # aws_pinpoint_baidu_channel
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_baidu_channel" {
   source = "./modules/aws/r/aws_pinpoint_baidu_channel"
@@ -29,8 +37,11 @@ module "aws_pinpoint_baidu_channel" {
   secret_key = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "api_key" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "secret_key" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_baidu_channel" "this" {
   api_key        = var.api_key
@@ -64,8 +77,11 @@ resource "aws_pinpoint_baidu_channel" "this" {
   secret_key     = var.secret_key
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -76,4 +92,5 @@ output "this" {
   value = aws_pinpoint_baidu_channel.this
 }
 ```
+
 [top](#index)

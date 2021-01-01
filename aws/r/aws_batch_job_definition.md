@@ -1,11 +1,16 @@
 # aws_batch_job_definition
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_batch_job_definition" {
   source = "./modules/aws/r/aws_batch_job_definition"
@@ -39,8 +47,11 @@ module "aws_batch_job_definition" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "container_properties" {
   description = "(optional)"
@@ -90,9 +101,11 @@ variable "timeout" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_batch_job_definition" "this" {
   container_properties = var.container_properties
@@ -117,8 +130,11 @@ resource "aws_batch_job_definition" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -139,4 +155,5 @@ output "this" {
   value = aws_batch_job_definition.this
 }
 ```
+
 [top](#index)

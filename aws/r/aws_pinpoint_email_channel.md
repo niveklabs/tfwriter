@@ -1,11 +1,16 @@
 # aws_pinpoint_email_channel
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_pinpoint_email_channel" {
   source = "./modules/aws/r/aws_pinpoint_email_channel"
@@ -31,8 +39,11 @@ module "aws_pinpoint_email_channel" {
   role_arn = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application_id" {
   description = "(required)"
@@ -60,9 +71,11 @@ variable "role_arn" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_pinpoint_email_channel" "this" {
   application_id = var.application_id
@@ -72,8 +85,11 @@ resource "aws_pinpoint_email_channel" "this" {
   role_arn       = var.role_arn
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -89,4 +105,5 @@ output "this" {
   value = aws_pinpoint_email_channel.this
 }
 ```
+
 [top](#index)

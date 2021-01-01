@@ -1,11 +1,16 @@
 # aws_imagebuilder_image_pipeline
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_imagebuilder_image_pipeline" {
   source = "./modules/aws/r/aws_imagebuilder_image_pipeline"
@@ -47,8 +55,11 @@ module "aws_imagebuilder_image_pipeline" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -117,9 +128,11 @@ variable "schedule" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_imagebuilder_image_pipeline" "this" {
   description                      = var.description
@@ -149,8 +162,11 @@ resource "aws_imagebuilder_image_pipeline" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -191,4 +207,5 @@ output "this" {
   value = aws_imagebuilder_image_pipeline.this
 }
 ```
+
 [top](#index)

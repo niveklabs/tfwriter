@@ -1,11 +1,16 @@
 # aws_elastic_beanstalk_configuration_template
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_elastic_beanstalk_configuration_template" {
   source = "./modules/aws/r/aws_elastic_beanstalk_configuration_template"
@@ -38,8 +46,11 @@ module "aws_elastic_beanstalk_configuration_template" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "application" {
   description = "(required)"
@@ -82,9 +93,11 @@ variable "setting" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_elastic_beanstalk_configuration_template" "this" {
   application         = var.application
@@ -105,8 +118,11 @@ resource "aws_elastic_beanstalk_configuration_template" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -117,4 +133,5 @@ output "this" {
   value = aws_elastic_beanstalk_configuration_template.this
 }
 ```
+
 [top](#index)

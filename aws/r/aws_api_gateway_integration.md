@@ -1,11 +1,16 @@
 # aws_api_gateway_integration
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_integration" {
   source = "./modules/aws/r/aws_api_gateway_integration"
@@ -53,8 +61,11 @@ module "aws_api_gateway_integration" {
   uri = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cache_key_parameters" {
   description = "(optional)"
@@ -148,9 +159,11 @@ variable "uri" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_integration" "this" {
   cache_key_parameters    = var.cache_key_parameters
@@ -171,8 +184,11 @@ resource "aws_api_gateway_integration" "this" {
   uri                     = var.uri
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "cache_namespace" {
   description = "returns a string"
@@ -193,4 +209,5 @@ output "this" {
   value = aws_api_gateway_integration.this
 }
 ```
+
 [top](#index)

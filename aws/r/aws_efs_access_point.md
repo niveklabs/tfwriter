@@ -1,11 +1,16 @@
 # aws_efs_access_point
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_efs_access_point" {
   source = "./modules/aws/r/aws_efs_access_point"
@@ -40,8 +48,11 @@ module "aws_efs_access_point" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "file_system_id" {
   description = "(required)"
@@ -83,9 +94,11 @@ variable "root_directory" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_efs_access_point" "this" {
   file_system_id = var.file_system_id
@@ -119,8 +132,11 @@ resource "aws_efs_access_point" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -146,4 +162,5 @@ output "this" {
   value = aws_efs_access_point.this
 }
 ```
+
 [top](#index)

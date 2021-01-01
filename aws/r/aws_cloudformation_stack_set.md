@@ -1,11 +1,16 @@
 # aws_cloudformation_stack_set
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_cloudformation_stack_set" {
   source = "./modules/aws/r/aws_cloudformation_stack_set"
@@ -43,8 +51,11 @@ module "aws_cloudformation_stack_set" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "administration_role_arn" {
   description = "(required)"
@@ -108,9 +119,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_cloudformation_stack_set" "this" {
   administration_role_arn = var.administration_role_arn
@@ -132,8 +145,11 @@ resource "aws_cloudformation_stack_set" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -159,4 +175,5 @@ output "this" {
   value = aws_cloudformation_stack_set.this
 }
 ```
+
 [top](#index)

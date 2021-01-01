@@ -1,11 +1,16 @@
 # aws_dms_replication_subnet_group
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_dms_replication_subnet_group" {
   source = "./modules/aws/r/aws_dms_replication_subnet_group"
@@ -29,8 +37,11 @@ module "aws_dms_replication_subnet_group" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "replication_subnet_group_description" {
   description = "(required)"
@@ -53,9 +64,11 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_dms_replication_subnet_group" "this" {
   replication_subnet_group_description = var.replication_subnet_group_description
@@ -64,8 +77,11 @@ resource "aws_dms_replication_subnet_group" "this" {
   tags                                 = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -86,4 +102,5 @@ output "this" {
   value = aws_dms_replication_subnet_group.this
 }
 ```
+
 [top](#index)

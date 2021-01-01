@@ -1,11 +1,16 @@
 # aws_opsworks_instance
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_opsworks_instance" {
   source = "./modules/aws/r/aws_opsworks_instance"
@@ -130,8 +138,11 @@ module "aws_opsworks_instance" {
   }]
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "agent_version" {
   description = "(optional)"
@@ -428,9 +439,11 @@ variable "timeouts" {
   default = []
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_opsworks_instance" "this" {
   agent_version                = var.agent_version
@@ -516,8 +529,11 @@ resource "aws_opsworks_instance" "this" {
 
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "ami_id" {
   description = "returns a string"
@@ -683,4 +699,5 @@ output "this" {
   value = aws_opsworks_instance.this
 }
 ```
+
 [top](#index)

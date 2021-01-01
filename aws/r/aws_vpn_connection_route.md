@@ -1,11 +1,16 @@
 # aws_vpn_connection_route
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_vpn_connection_route" {
   source = "./modules/aws/r/aws_vpn_connection_route"
@@ -25,8 +33,11 @@ module "aws_vpn_connection_route" {
   vpn_connection_id = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "destination_cidr_block" {
   description = "(required)"
@@ -38,17 +49,22 @@ variable "vpn_connection_id" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_vpn_connection_route" "this" {
   destination_cidr_block = var.destination_cidr_block
   vpn_connection_id      = var.vpn_connection_id
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -59,4 +75,5 @@ output "this" {
   value = aws_vpn_connection_route.this
 }
 ```
+
 [top](#index)

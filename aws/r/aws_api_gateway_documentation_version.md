@@ -1,11 +1,16 @@
 # aws_api_gateway_documentation_version
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_documentation_version" {
   source = "./modules/aws/r/aws_api_gateway_documentation_version"
@@ -27,8 +35,11 @@ module "aws_api_gateway_documentation_version" {
   version = null
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -46,9 +57,11 @@ variable "version" {
   type        = string
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_documentation_version" "this" {
   description = var.description
@@ -56,8 +69,11 @@ resource "aws_api_gateway_documentation_version" "this" {
   version     = var.version
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "id" {
   description = "returns a string"
@@ -68,4 +84,5 @@ output "this" {
   value = aws_api_gateway_documentation_version.this
 }
 ```
+
 [top](#index)

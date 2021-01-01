@@ -1,11 +1,16 @@
 # aws_msk_cluster
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
 - [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_msk_cluster" {
   source = "./modules/aws/d/aws_msk_cluster"
@@ -25,8 +33,11 @@ module "aws_msk_cluster" {
   tags = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "cluster_name" {
   description = "(required)"
@@ -39,17 +50,22 @@ variable "tags" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Datasource
+
 ```hcl
 data "aws_msk_cluster" "this" {
   cluster_name = var.cluster_name
   tags         = var.tags
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "arn" {
   description = "returns a string"
@@ -100,4 +116,5 @@ output "this" {
   value = aws_msk_cluster.this
 }
 ```
+
 [top](#index)

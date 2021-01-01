@@ -1,11 +1,16 @@
 # aws_api_gateway_deployment
+
 [back](../aws.md)
+
 ### Index
+
 - [Example Usage](#example-usage)
 - [Variables](#variables)
-- [Resource](#resource)
+- [Datasource](#datasource)
 - [Outputs](#outputs)
+
 ### Terraform
+
 ```hcl
 terraform {
   required_providers {
@@ -13,8 +18,11 @@ terraform {
   }
 }
 ```
+
 [top](#index)
+
 ### Example Usage
+
 ```hcl
 module "aws_api_gateway_deployment" {
   source = "./modules/aws/r/aws_api_gateway_deployment"
@@ -33,8 +41,11 @@ module "aws_api_gateway_deployment" {
   variables = {}
 }
 ```
+
 [top](#index)
+
 ### Variables
+
 ```hcl
 variable "description" {
   description = "(optional)"
@@ -71,9 +82,11 @@ variable "variables" {
   default     = null
 }
 ```
+
 [top](#index)
 
 ### Resource
+
 ```hcl
 resource "aws_api_gateway_deployment" "this" {
   description       = var.description
@@ -84,8 +97,11 @@ resource "aws_api_gateway_deployment" "this" {
   variables         = var.variables
 }
 ```
+
 [top](#index)
+
 ### Outputs
+
 ```hcl
 output "created_date" {
   description = "returns a string"
@@ -111,4 +127,5 @@ output "this" {
   value = aws_api_gateway_deployment.this
 }
 ```
+
 [top](#index)
