@@ -17,7 +17,7 @@ tags:
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     local = ">= 2.0.0"
@@ -29,7 +29,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "local_file" {
   source = null
 
@@ -53,7 +53,7 @@ module "local_file" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "content" {
   description = "(optional)"
   type        = string
