@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_uptime_check_ips" {
   source = "./modules/google/d/google_monitoring_uptime_check_ips"
 
@@ -34,14 +34,14 @@ module "google_monitoring_uptime_check_ips" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_monitoring_uptime_check_ips" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "google_monitoring_uptime_check_ips" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_monitoring_uptime_check_ips.this.id

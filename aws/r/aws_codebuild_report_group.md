@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codebuild_report_group" {
   source = "./modules/aws/r/aws_codebuild_report_group"
 
@@ -51,7 +51,7 @@ module "aws_codebuild_report_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -91,7 +91,7 @@ variable "export_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codebuild_report_group" "this" {
   name = var.name
   tags = var.tags
@@ -123,7 +123,7 @@ resource "aws_codebuild_report_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codebuild_report_group.this.arn

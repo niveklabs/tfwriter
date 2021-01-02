@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_configuration_recorder" {
   source = "./modules/aws/r/aws_config_configuration_recorder"
 
@@ -44,7 +44,7 @@ module "aws_config_configuration_recorder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -73,7 +73,7 @@ variable "recording_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_configuration_recorder" "this" {
   name     = var.name
   role_arn = var.role_arn
@@ -94,7 +94,7 @@ resource "aws_config_configuration_recorder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_config_configuration_recorder.this.id

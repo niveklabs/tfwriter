@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iap_client" {
   source = "./modules/google/r/google_iap_client"
 
@@ -43,7 +43,7 @@ module "google_iap_client" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "brand" {
   description = "(required) - Identifier of the brand to which this client\nis attached to. The format is\n'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'."
   type        = string
@@ -70,7 +70,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_iap_client" "this" {
   brand        = var.brand
   display_name = var.display_name
@@ -90,7 +90,7 @@ resource "google_iap_client" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "client_id" {
   description = "returns a string"
   value       = google_iap_client.this.client_id

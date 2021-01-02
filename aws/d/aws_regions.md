@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_regions" {
   source = "./modules/aws/d/aws_regions"
 
@@ -41,7 +41,7 @@ module "aws_regions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "all_regions" {
   description = "(optional)"
   type        = bool
@@ -64,7 +64,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_regions" "this" {
   all_regions = var.all_regions
 
@@ -83,7 +83,7 @@ data "aws_regions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_regions.this.id

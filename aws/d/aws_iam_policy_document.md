@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_policy_document" {
   source = "./modules/aws/d/aws_iam_policy_document"
 
@@ -64,7 +64,7 @@ module "aws_iam_policy_document" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "override_json" {
   description = "(optional)"
   type        = string
@@ -128,7 +128,7 @@ variable "statement" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_iam_policy_document" "this" {
   override_json = var.override_json
   policy_id     = var.policy_id
@@ -180,7 +180,7 @@ data "aws_iam_policy_document" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_iam_policy_document.this.id

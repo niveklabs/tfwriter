@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repositories" {
   source = "./modules/github/d/github_repositories"
 
@@ -38,7 +38,7 @@ module "github_repositories" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "query" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "sort" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_repositories" "this" {
   query = var.query
   sort  = var.sort
@@ -66,7 +66,7 @@ data "github_repositories" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "full_names" {
   description = "returns a list of string"
   value       = data.github_repositories.this.full_names

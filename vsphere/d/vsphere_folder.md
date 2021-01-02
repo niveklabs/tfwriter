@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_folder" {
   source = "./modules/vsphere/d/vsphere_folder"
 
@@ -36,7 +36,7 @@ module "vsphere_folder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "path" {
   description = "(required) - The absolute path of the folder."
   type        = string
@@ -47,7 +47,7 @@ variable "path" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_folder" "this" {
   path = var.path
 }
@@ -57,7 +57,7 @@ data "vsphere_folder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_folder.this.id

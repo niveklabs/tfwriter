@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_efs_file_system" {
   source = "./modules/aws/d/aws_efs_file_system"
 
@@ -40,7 +40,7 @@ module "aws_efs_file_system" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "creation_token" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_efs_file_system" "this" {
   creation_token = var.creation_token
   file_system_id = var.file_system_id
@@ -76,7 +76,7 @@ data "aws_efs_file_system" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_efs_file_system.this.arn

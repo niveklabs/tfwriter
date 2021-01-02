@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project" {
   source = "./modules/google/r/google_project"
 
@@ -57,7 +57,7 @@ module "google_project" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_create_network" {
   description = "(optional) - Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily."
   type        = bool
@@ -122,7 +122,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project" "this" {
   auto_create_network = var.auto_create_network
   billing_account     = var.billing_account
@@ -150,7 +150,7 @@ resource "google_project" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "folder_id" {
   description = "returns a string"
   value       = google_project.this.folder_id

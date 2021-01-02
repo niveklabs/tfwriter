@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_endpoint" {
   source = "./modules/aws/r/aws_vpc_endpoint"
 
@@ -60,7 +60,7 @@ module "aws_vpc_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_accept" {
   description = "(optional)"
   type        = bool
@@ -136,7 +136,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_endpoint" "this" {
   auto_accept         = var.auto_accept
   policy              = var.policy
@@ -165,7 +165,7 @@ resource "aws_vpc_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_vpc_endpoint.this.arn

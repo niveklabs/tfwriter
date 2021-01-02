@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_serverlessapplicationrepository_application" {
   source = "./modules/aws/d/aws_serverlessapplicationrepository_application"
 
@@ -38,7 +38,7 @@ module "aws_serverlessapplicationrepository_application" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_id" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "semantic_version" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_serverlessapplicationrepository_application" "this" {
   application_id   = var.application_id
   semantic_version = var.semantic_version
@@ -66,7 +66,7 @@ data "aws_serverlessapplicationrepository_application" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_serverlessapplicationrepository_application.this.id

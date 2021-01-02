@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ram_resource_share" {
   source = "./modules/aws/r/aws_ram_resource_share"
 
@@ -45,7 +45,7 @@ module "aws_ram_resource_share" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_external_principals" {
   description = "(optional)"
   type        = bool
@@ -79,7 +79,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ram_resource_share" "this" {
   allow_external_principals = var.allow_external_principals
   name                      = var.name
@@ -100,7 +100,7 @@ resource "aws_ram_resource_share" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ram_resource_share.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecs_task_definition" {
   source = "./modules/aws/r/aws_ecs_task_definition"
 
@@ -94,7 +94,7 @@ module "aws_ecs_task_definition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "container_definitions" {
   description = "(required)"
   type        = string
@@ -232,7 +232,7 @@ variable "volume" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ecs_task_definition" "this" {
   container_definitions    = var.container_definitions
   cpu                      = var.cpu
@@ -317,7 +317,7 @@ resource "aws_ecs_task_definition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ecs_task_definition.this.arn

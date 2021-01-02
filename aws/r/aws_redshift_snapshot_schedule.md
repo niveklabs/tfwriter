@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_redshift_snapshot_schedule" {
   source = "./modules/aws/r/aws_redshift_snapshot_schedule"
 
@@ -46,7 +46,7 @@ module "aws_redshift_snapshot_schedule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "definitions" {
   description = "(required)"
   type        = set(string)
@@ -87,7 +87,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_redshift_snapshot_schedule" "this" {
   definitions       = var.definitions
   description       = var.description
@@ -102,7 +102,7 @@ resource "aws_redshift_snapshot_schedule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_redshift_snapshot_schedule.this.arn

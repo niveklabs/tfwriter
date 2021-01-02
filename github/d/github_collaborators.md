@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_collaborators" {
   source = "./modules/github/d/github_collaborators"
 
@@ -40,7 +40,7 @@ module "github_collaborators" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "affiliation" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "repository" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_collaborators" "this" {
   affiliation = var.affiliation
   owner       = var.owner
@@ -74,7 +74,7 @@ data "github_collaborators" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "collaborator" {
   description = "returns a list of object"
   value       = data.github_collaborators.this.collaborator

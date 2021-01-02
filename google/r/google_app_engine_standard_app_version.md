@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_standard_app_version" {
   source = "./modules/google/r/google_app_engine_standard_app_version"
 
@@ -130,7 +130,7 @@ module "google_app_engine_standard_app_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "delete_service_on_destroy" {
   description = "(optional)"
   type        = bool
@@ -337,7 +337,7 @@ variable "vpc_access_connector" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_standard_app_version" "this" {
   delete_service_on_destroy = var.delete_service_on_destroy
   env_variables             = var.env_variables
@@ -482,7 +482,7 @@ resource "google_app_engine_standard_app_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_standard_app_version.this.id

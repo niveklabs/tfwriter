@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_groups" {
   source = "./modules/aws/d/aws_autoscaling_groups"
 
@@ -39,7 +39,7 @@ module "aws_autoscaling_groups" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "filter" {
   description = "nested mode: NestingSet, min items: 0, max items: 0"
   type = set(object(
@@ -56,7 +56,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_autoscaling_groups" "this" {
 
   dynamic "filter" {
@@ -74,7 +74,7 @@ data "aws_autoscaling_groups" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arns" {
   description = "returns a list of string"
   value       = data.aws_autoscaling_groups.this.arns

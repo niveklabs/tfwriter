@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_quicksight_group" {
   source = "./modules/aws/r/aws_quicksight_group"
 
@@ -42,7 +42,7 @@ module "aws_quicksight_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aws_account_id" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "namespace" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_quicksight_group" "this" {
   aws_account_id = var.aws_account_id
   description    = var.description
@@ -84,7 +84,7 @@ resource "aws_quicksight_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_quicksight_group.this.arn

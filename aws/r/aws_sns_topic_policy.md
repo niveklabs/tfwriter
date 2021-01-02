@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sns_topic_policy" {
   source = "./modules/aws/r/aws_sns_topic_policy"
 
@@ -38,7 +38,7 @@ module "aws_sns_topic_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sns_topic_policy" "this" {
   arn    = var.arn
   policy = var.policy
@@ -65,7 +65,7 @@ resource "aws_sns_topic_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_sns_topic_policy.this.id

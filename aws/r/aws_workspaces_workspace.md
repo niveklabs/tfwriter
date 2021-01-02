@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_workspaces_workspace" {
   source = "./modules/aws/r/aws_workspaces_workspace"
 
@@ -62,7 +62,7 @@ module "aws_workspaces_workspace" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bundle_id" {
   description = "(required)"
   type        = string
@@ -133,7 +133,7 @@ variable "workspace_properties" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_workspaces_workspace" "this" {
   bundle_id                      = var.bundle_id
   directory_id                   = var.directory_id
@@ -170,7 +170,7 @@ resource "aws_workspaces_workspace" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "computer_name" {
   description = "returns a string"
   value       = aws_workspaces_workspace.this.computer_name

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudfront_public_key" {
   source = "./modules/aws/r/aws_cloudfront_public_key"
 
@@ -42,7 +42,7 @@ module "aws_cloudfront_public_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "comment" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "name_prefix" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudfront_public_key" "this" {
   comment     = var.comment
   encoded_key = var.encoded_key
@@ -84,7 +84,7 @@ resource "aws_cloudfront_public_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "caller_reference" {
   description = "returns a string"
   value       = aws_cloudfront_public_key.this.caller_reference

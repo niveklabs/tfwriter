@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_certificate" {
   source = "./modules/aws/r/aws_dms_certificate"
 
@@ -40,7 +40,7 @@ module "aws_dms_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_id" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "certificate_wallet" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_certificate" "this" {
   certificate_id     = var.certificate_id
   certificate_pem    = var.certificate_pem
@@ -75,7 +75,7 @@ resource "aws_dms_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate_arn" {
   description = "returns a string"
   value       = aws_dms_certificate.this.certificate_arn

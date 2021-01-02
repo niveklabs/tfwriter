@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_billing_account_sink" {
   source = "./modules/google/r/google_logging_billing_account_sink"
 
@@ -57,7 +57,7 @@ module "google_logging_billing_account_sink" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "billing_account" {
   description = "(required) - The billing account exported to the sink."
   type        = string
@@ -119,7 +119,7 @@ variable "exclusions" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_billing_account_sink" "this" {
   billing_account = var.billing_account
   description     = var.description
@@ -152,7 +152,7 @@ resource "google_logging_billing_account_sink" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_logging_billing_account_sink.this.id

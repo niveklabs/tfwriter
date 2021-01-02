@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_maintenance_window_target" {
   source = "./modules/aws/r/aws_ssm_maintenance_window_target"
 
@@ -49,7 +49,7 @@ module "aws_ssm_maintenance_window_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -93,7 +93,7 @@ variable "targets" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_maintenance_window_target" "this" {
   description       = var.description
   name              = var.name
@@ -116,7 +116,7 @@ resource "aws_ssm_maintenance_window_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ssm_maintenance_window_target.this.id

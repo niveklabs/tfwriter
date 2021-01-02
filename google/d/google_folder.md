@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_folder" {
   source = "./modules/google/d/google_folder"
 
@@ -38,7 +38,7 @@ module "google_folder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "folder" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "lookup_organization" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_folder" "this" {
   folder              = var.folder
   lookup_organization = var.lookup_organization
@@ -66,7 +66,7 @@ data "google_folder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = data.google_folder.this.create_time

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_instance" {
   source = "./modules/aws/d/aws_instance"
 
@@ -49,7 +49,7 @@ module "aws_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "get_password_data" {
   description = "(optional)"
   type        = bool
@@ -96,7 +96,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_instance" "this" {
   get_password_data = var.get_password_data
   get_user_data     = var.get_user_data
@@ -119,7 +119,7 @@ data "aws_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ami" {
   description = "returns a string"
   value       = data.aws_instance.this.ami

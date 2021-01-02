@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloudfunctions_function" {
   source = "./modules/google/r/google_cloudfunctions_function"
 
@@ -94,7 +94,7 @@ module "google_cloudfunctions_function" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "available_memory_mb" {
   description = "(optional) - Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB."
   type        = number
@@ -258,7 +258,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloudfunctions_function" "this" {
   available_memory_mb           = var.available_memory_mb
   build_environment_variables   = var.build_environment_variables
@@ -321,7 +321,7 @@ resource "google_cloudfunctions_function" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "https_trigger_url" {
   description = "returns a string"
   value       = google_cloudfunctions_function.this.https_trigger_url

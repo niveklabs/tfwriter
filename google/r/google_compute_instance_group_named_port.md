@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance_group_named_port" {
   source = "./modules/google/r/google_compute_instance_group_named_port"
 
@@ -49,7 +49,7 @@ module "google_compute_instance_group_named_port" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group" {
   description = "(required) - The name of the instance group."
   type        = string
@@ -93,7 +93,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_instance_group_named_port" "this" {
   group   = var.group
   name    = var.name
@@ -116,7 +116,7 @@ resource "google_compute_instance_group_named_port" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_instance_group_named_port.this.id

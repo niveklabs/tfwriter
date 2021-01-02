@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_acl_rule" {
   source = "./modules/aws/r/aws_network_acl_rule"
 
@@ -56,7 +56,7 @@ module "aws_network_acl_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr_block" {
   description = "(optional)"
   type        = string
@@ -124,7 +124,7 @@ variable "to_port" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_network_acl_rule" "this" {
   cidr_block      = var.cidr_block
   egress          = var.egress
@@ -144,7 +144,7 @@ resource "aws_network_acl_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_network_acl_rule.this.id

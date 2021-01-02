@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_resolver_rule" {
   source = "./modules/aws/r/aws_route53_resolver_rule"
 
@@ -55,7 +55,7 @@ module "aws_route53_resolver_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(required)"
   type        = string
@@ -112,7 +112,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_resolver_rule" "this" {
   domain_name          = var.domain_name
   name                 = var.name
@@ -144,7 +144,7 @@ resource "aws_route53_resolver_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_route53_resolver_rule.this.arn

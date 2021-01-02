@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_object_access_control" {
   source = "./modules/google/r/google_storage_object_access_control"
 
@@ -48,7 +48,7 @@ module "google_storage_object_access_control" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required) - The name of the bucket."
   type        = string
@@ -86,7 +86,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_object_access_control" "this" {
   bucket = var.bucket
   entity = var.entity
@@ -109,7 +109,7 @@ resource "google_storage_object_access_control" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "domain" {
   description = "returns a string"
   value       = google_storage_object_access_control.this.domain

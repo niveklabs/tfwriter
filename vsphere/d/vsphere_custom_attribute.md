@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_custom_attribute" {
   source = "./modules/vsphere/d/vsphere_custom_attribute"
 
@@ -36,7 +36,7 @@ module "vsphere_custom_attribute" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - The display name of the custom attribute."
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_custom_attribute" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ data "vsphere_custom_attribute" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_custom_attribute.this.id

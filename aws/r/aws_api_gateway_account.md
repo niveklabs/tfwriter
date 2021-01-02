@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_account" {
   source = "./modules/aws/r/aws_api_gateway_account"
 
@@ -36,7 +36,7 @@ module "aws_api_gateway_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cloudwatch_role_arn" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "cloudwatch_role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_account" "this" {
   cloudwatch_role_arn = var.cloudwatch_role_arn
 }
@@ -58,7 +58,7 @@ resource "aws_api_gateway_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_account.this.id

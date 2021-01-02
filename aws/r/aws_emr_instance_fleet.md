@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_emr_instance_fleet" {
   source = "./modules/aws/r/aws_emr_instance_fleet"
 
@@ -71,7 +71,7 @@ module "aws_emr_instance_fleet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_id" {
   description = "(required)"
   type        = string
@@ -149,7 +149,7 @@ variable "launch_specifications" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_emr_instance_fleet" "this" {
   cluster_id                = var.cluster_id
   name                      = var.name
@@ -216,7 +216,7 @@ resource "aws_emr_instance_fleet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_emr_instance_fleet.this.id

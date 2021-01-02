@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_layer_version" {
   source = "./modules/aws/d/aws_lambda_layer_version"
 
@@ -40,7 +40,7 @@ module "aws_lambda_layer_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compatible_runtime" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "version" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_lambda_layer_version" "this" {
   compatible_runtime = var.compatible_runtime
   layer_name         = var.layer_name
@@ -75,7 +75,7 @@ data "aws_lambda_layer_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_lambda_layer_version.this.arn

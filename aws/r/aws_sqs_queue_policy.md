@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sqs_queue_policy" {
   source = "./modules/aws/r/aws_sqs_queue_policy"
 
@@ -38,7 +38,7 @@ module "aws_sqs_queue_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "policy" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "queue_url" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sqs_queue_policy" "this" {
   policy    = var.policy
   queue_url = var.queue_url
@@ -65,7 +65,7 @@ resource "aws_sqs_queue_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_sqs_queue_policy.this.id

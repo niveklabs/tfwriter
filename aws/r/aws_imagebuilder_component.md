@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_imagebuilder_component" {
   source = "./modules/aws/r/aws_imagebuilder_component"
 
@@ -54,7 +54,7 @@ module "aws_imagebuilder_component" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "change_description" {
   description = "(optional)"
   type        = string
@@ -117,7 +117,7 @@ variable "version" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_imagebuilder_component" "this" {
   change_description    = var.change_description
   data                  = var.data
@@ -136,7 +136,7 @@ resource "aws_imagebuilder_component" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_imagebuilder_component.this.arn

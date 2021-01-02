@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_identity_platform_tenant" {
   source = "./modules/google/r/google_identity_platform_tenant"
 
@@ -50,7 +50,7 @@ module "google_identity_platform_tenant" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_password_signup" {
   description = "(optional) - Whether to allow email/password user authentication."
   type        = bool
@@ -97,7 +97,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_identity_platform_tenant" "this" {
   allow_password_signup    = var.allow_password_signup
   disable_auth             = var.disable_auth
@@ -121,7 +121,7 @@ resource "google_identity_platform_tenant" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_identity_platform_tenant.this.id

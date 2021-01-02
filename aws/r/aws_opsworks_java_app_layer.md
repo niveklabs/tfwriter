@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_java_app_layer" {
   source = "./modules/aws/r/aws_opsworks_java_app_layer"
 
@@ -94,7 +94,7 @@ module "aws_opsworks_java_app_layer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "app_server" {
   description = "(optional)"
   type        = string
@@ -265,7 +265,7 @@ variable "ebs_volume" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_java_app_layer" "this" {
   app_server                  = var.app_server
   app_server_version          = var.app_server_version
@@ -313,7 +313,7 @@ resource "aws_opsworks_java_app_layer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_opsworks_java_app_layer.this.arn

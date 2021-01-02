@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vapp_entity" {
   source = "./modules/vsphere/r/vsphere_vapp_entity"
 
@@ -54,7 +54,7 @@ module "vsphere_vapp_entity" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "container_id" {
   description = "(required) - Managed object ID of the vApp container the entity is a member of."
   type        = string
@@ -118,7 +118,7 @@ variable "wait_for_guest" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_vapp_entity" "this" {
   container_id      = var.container_id
   custom_attributes = var.custom_attributes
@@ -137,7 +137,7 @@ resource "vsphere_vapp_entity" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_vapp_entity.this.id

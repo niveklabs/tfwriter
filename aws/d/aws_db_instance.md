@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_instance" {
   source = "./modules/aws/d/aws_db_instance"
 
@@ -38,7 +38,7 @@ module "aws_db_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_instance_identifier" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_db_instance" "this" {
   db_instance_identifier = var.db_instance_identifier
   tags                   = var.tags
@@ -66,7 +66,7 @@ data "aws_db_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "address" {
   description = "returns a string"
   value       = data.aws_db_instance.this.address

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_network_endpoint_group" {
   source = "./modules/google/d/google_compute_network_endpoint_group"
 
@@ -42,7 +42,7 @@ module "google_compute_network_endpoint_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional) - Name of the resource; provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035. Specifically, the name must be 1-63 characters long and match\nthe regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the\nfirst character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash."
   type        = string
@@ -72,7 +72,7 @@ variable "zone" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_network_endpoint_group" "this" {
   name      = var.name
   project   = var.project
@@ -85,7 +85,7 @@ data "google_compute_network_endpoint_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_port" {
   description = "returns a number"
   value       = data.google_compute_network_endpoint_group.this.default_port

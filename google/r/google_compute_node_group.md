@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_node_group" {
   source = "./modules/google/r/google_compute_node_group"
 
@@ -60,7 +60,7 @@ module "google_compute_node_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional textual description of the resource."
   type        = string
@@ -130,7 +130,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_node_group" "this" {
   description        = var.description
   maintenance_policy = var.maintenance_policy
@@ -165,7 +165,7 @@ resource "google_compute_node_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_node_group.this.creation_timestamp

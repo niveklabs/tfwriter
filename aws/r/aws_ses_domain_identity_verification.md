@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_domain_identity_verification" {
   source = "./modules/aws/r/aws_ses_domain_identity_verification"
 
@@ -40,7 +40,7 @@ module "aws_ses_domain_identity_verification" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_domain_identity_verification" "this" {
   domain = var.domain
 
@@ -79,7 +79,7 @@ resource "aws_ses_domain_identity_verification" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ses_domain_identity_verification.this.arn

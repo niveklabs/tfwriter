@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket_public_access_block" {
   source = "./modules/aws/r/aws_s3_bucket_public_access_block"
 
@@ -44,7 +44,7 @@ module "aws_s3_bucket_public_access_block" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "block_public_acls" {
   description = "(optional)"
   type        = bool
@@ -79,7 +79,7 @@ variable "restrict_public_buckets" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_bucket_public_access_block" "this" {
   block_public_acls       = var.block_public_acls
   block_public_policy     = var.block_public_policy
@@ -93,7 +93,7 @@ resource "aws_s3_bucket_public_access_block" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_s3_bucket_public_access_block.this.id

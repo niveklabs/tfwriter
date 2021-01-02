@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_permission" {
   source = "./modules/aws/r/aws_lambda_permission"
 
@@ -52,7 +52,7 @@ module "aws_lambda_permission" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(required)"
   type        = string
@@ -109,7 +109,7 @@ variable "statement_id_prefix" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_permission" "this" {
   action              = var.action
   event_source_token  = var.event_source_token
@@ -127,7 +127,7 @@ resource "aws_lambda_permission" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lambda_permission.this.id

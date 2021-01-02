@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_nat_gateway" {
   source = "./modules/aws/d/aws_nat_gateway"
 
@@ -47,7 +47,7 @@ module "aws_nat_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "state" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_nat_gateway" "this" {
   state     = var.state
   subnet_id = var.subnet_id
@@ -110,7 +110,7 @@ data "aws_nat_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocation_id" {
   description = "returns a string"
   value       = data.aws_nat_gateway.this.allocation_id

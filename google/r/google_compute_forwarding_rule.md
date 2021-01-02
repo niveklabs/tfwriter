@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_forwarding_rule" {
   source = "./modules/google/r/google_compute_forwarding_rule"
 
@@ -74,7 +74,7 @@ module "google_compute_forwarding_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "all_ports" {
   description = "(optional) - For internal TCP/UDP load balancing (i.e. load balancing scheme is\nINTERNAL and protocol is TCP/UDP), set this to true to allow packets\naddressed to any ports to be forwarded to the backends configured\nwith this forwarding rule. Used with backend service. Cannot be set\nif port or portRange are set."
   type        = bool
@@ -193,7 +193,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_forwarding_rule" "this" {
   all_ports             = var.all_ports
   allow_global_access   = var.allow_global_access
@@ -229,7 +229,7 @@ resource "google_compute_forwarding_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_forwarding_rule.this.creation_timestamp

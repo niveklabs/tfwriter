@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_identity_groups" {
   source = "./modules/google/d/google_cloud_identity_groups"
 
@@ -36,7 +36,7 @@ module "google_cloud_identity_groups" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "parent" {
   description = "(required) - The resource name of the entity under which this Group resides in the\nCloud Identity resource hierarchy.\n\nMust be of the form identitysources/{identity_source_id} for external-identity-mapped\ngroups or customers/{customer_id} for Google Groups."
   type        = string
@@ -47,7 +47,7 @@ variable "parent" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_cloud_identity_groups" "this" {
   parent = var.parent
 }
@@ -57,7 +57,7 @@ data "google_cloud_identity_groups" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "groups" {
   description = "returns a list of object"
   value       = data.google_cloud_identity_groups.this.groups

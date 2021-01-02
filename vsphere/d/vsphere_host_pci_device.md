@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host_pci_device" {
   source = "./modules/vsphere/d/vsphere_host_pci_device"
 
@@ -42,7 +42,7 @@ module "vsphere_host_pci_device" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "class_id" {
   description = "(optional) - The hexadecimal value of the PCI device's class ID."
   type        = string
@@ -71,7 +71,7 @@ variable "vendor_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_host_pci_device" "this" {
   class_id   = var.class_id
   host_id    = var.host_id
@@ -84,7 +84,7 @@ data "vsphere_host_pci_device" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_host_pci_device.this.id

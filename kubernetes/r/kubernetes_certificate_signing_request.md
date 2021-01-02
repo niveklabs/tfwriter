@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_certificate_signing_request" {
   source = "./modules/kubernetes/r/kubernetes_certificate_signing_request"
 
@@ -57,7 +57,7 @@ module "kubernetes_certificate_signing_request" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_approve" {
   description = "(optional) - Automatically approve the CertificateSigningRequest"
   type        = bool
@@ -106,7 +106,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_certificate_signing_request" "this" {
   auto_approve = var.auto_approve
 
@@ -143,7 +143,7 @@ resource "kubernetes_certificate_signing_request" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate" {
   description = "returns a string"
   value       = kubernetes_certificate_signing_request.this.certificate

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_billing_account_exclusion" {
   source = "./modules/google/r/google_logging_billing_account_exclusion"
 
@@ -44,7 +44,7 @@ module "google_logging_billing_account_exclusion" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "billing_account" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_billing_account_exclusion" "this" {
   billing_account = var.billing_account
   description     = var.description
@@ -91,7 +91,7 @@ resource "google_logging_billing_account_exclusion" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_logging_billing_account_exclusion.this.id

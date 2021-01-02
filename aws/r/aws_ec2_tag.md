@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_tag" {
   source = "./modules/aws/r/aws_ec2_tag"
 
@@ -40,7 +40,7 @@ module "aws_ec2_tag" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "value" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_tag" "this" {
   key         = var.key
   resource_id = var.resource_id
@@ -73,7 +73,7 @@ resource "aws_ec2_tag" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_tag.this.id

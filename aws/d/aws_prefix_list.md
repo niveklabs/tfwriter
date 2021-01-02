@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_prefix_list" {
   source = "./modules/aws/d/aws_prefix_list"
 
@@ -43,7 +43,7 @@ module "aws_prefix_list" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_prefix_list" "this" {
   name           = var.name
   prefix_list_id = var.prefix_list_id
@@ -92,7 +92,7 @@ data "aws_prefix_list" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cidr_blocks" {
   description = "returns a list of string"
   value       = data.aws_prefix_list.this.cidr_blocks

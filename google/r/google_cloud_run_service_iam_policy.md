@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_run_service_iam_policy" {
   source = "./modules/google/r/google_cloud_run_service_iam_policy"
 
@@ -42,7 +42,7 @@ module "google_cloud_run_service_iam_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(optional)"
   type        = string
@@ -70,7 +70,7 @@ variable "service" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloud_run_service_iam_policy" "this" {
   location    = var.location
   policy_data = var.policy_data
@@ -83,7 +83,7 @@ resource "google_cloud_run_service_iam_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_cloud_run_service_iam_policy.this.etag

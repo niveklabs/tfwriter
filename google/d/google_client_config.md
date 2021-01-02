@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_client_config" {
   source = "./modules/google/d/google_client_config"
 
@@ -34,14 +34,14 @@ module "google_client_config" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_client_config" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "google_client_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_token" {
   description = "returns a string"
   value       = data.google_client_config.this.access_token

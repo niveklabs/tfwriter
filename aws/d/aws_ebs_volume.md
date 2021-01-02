@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_volume" {
   source = "./modules/aws/d/aws_ebs_volume"
 
@@ -43,7 +43,7 @@ module "aws_ebs_volume" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "most_recent" {
   description = "(optional)"
   type        = bool
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ebs_volume" "this" {
   most_recent = var.most_recent
   tags        = var.tags
@@ -92,7 +92,7 @@ data "aws_ebs_volume" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_ebs_volume.this.arn

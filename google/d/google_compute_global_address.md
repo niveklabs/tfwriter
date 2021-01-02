@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_global_address" {
   source = "./modules/google/d/google_compute_global_address"
 
@@ -38,7 +38,7 @@ module "google_compute_global_address" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_global_address" "this" {
   name    = var.name
   project = var.project
@@ -66,7 +66,7 @@ data "google_compute_global_address" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "address" {
   description = "returns a string"
   value       = data.google_compute_global_address.this.address

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iap_web_backend_service_iam_policy" {
   source = "./modules/google/r/google_iap_web_backend_service_iam_policy"
 
@@ -40,7 +40,7 @@ module "google_iap_web_backend_service_iam_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "policy_data" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "web_backend_service" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_iap_web_backend_service_iam_policy" "this" {
   policy_data         = var.policy_data
   project             = var.project
@@ -74,7 +74,7 @@ resource "google_iap_web_backend_service_iam_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_iap_web_backend_service_iam_policy.this.etag

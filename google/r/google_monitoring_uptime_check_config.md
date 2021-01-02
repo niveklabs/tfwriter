@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_uptime_check_config" {
   source = "./modules/google/r/google_monitoring_uptime_check_config"
 
@@ -85,7 +85,7 @@ module "google_monitoring_uptime_check_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(required) - A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced."
   type        = string
@@ -198,7 +198,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_uptime_check_config" "this" {
   display_name     = var.display_name
   period           = var.period
@@ -277,7 +277,7 @@ resource "google_monitoring_uptime_check_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_uptime_check_config.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_catalog_entry_group" {
   source = "./modules/google/r/google_data_catalog_entry_group"
 
@@ -50,7 +50,7 @@ module "google_data_catalog_entry_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Entry group description, which can consist of several sentences or paragraphs that describe entry group contents."
   type        = string
@@ -97,7 +97,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_catalog_entry_group" "this" {
   description    = var.description
   display_name   = var.display_name
@@ -121,7 +121,7 @@ resource "google_data_catalog_entry_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_catalog_entry_group.this.id

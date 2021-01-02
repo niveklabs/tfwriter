@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_ml_transform" {
   source = "./modules/aws/r/aws_glue_ml_transform"
 
@@ -71,7 +71,7 @@ module "aws_glue_ml_transform" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -164,7 +164,7 @@ variable "parameters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_ml_transform" "this" {
   description       = var.description
   glue_version      = var.glue_version
@@ -212,7 +212,7 @@ resource "aws_glue_ml_transform" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_ml_transform.this.arn

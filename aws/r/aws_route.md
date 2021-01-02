@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route" {
   source = "./modules/aws/r/aws_route"
 
@@ -63,7 +63,7 @@ module "aws_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destination_cidr_block" {
   description = "(optional)"
   type        = string
@@ -151,7 +151,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route" "this" {
   destination_cidr_block      = var.destination_cidr_block
   destination_ipv6_cidr_block = var.destination_ipv6_cidr_block
@@ -181,7 +181,7 @@ resource "aws_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "destination_prefix_list_id" {
   description = "returns a string"
   value       = aws_route.this.destination_prefix_list_id

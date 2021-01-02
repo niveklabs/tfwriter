@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_region_backend_service" {
   source = "./modules/google/r/google_compute_region_backend_service"
 
@@ -148,7 +148,7 @@ module "google_compute_region_backend_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "affinity_cookie_ttl_sec" {
   description = "(optional) - Lifetime of cookies in seconds if session_affinity is\nGENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts\nonly until the end of the browser session (or equivalent). The\nmaximum allowed value for TTL is one day.\n\nWhen the load balancing scheme is INTERNAL, this field is not used."
   type        = number
@@ -385,7 +385,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_region_backend_service" "this" {
   affinity_cookie_ttl_sec         = var.affinity_cookie_ttl_sec
   connection_draining_timeout_sec = var.connection_draining_timeout_sec
@@ -542,7 +542,7 @@ resource "google_compute_region_backend_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_region_backend_service.this.creation_timestamp

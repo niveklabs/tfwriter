@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_ssl_cert" {
   source = "./modules/google/r/google_sql_ssl_cert"
 
@@ -45,7 +45,7 @@ module "google_sql_ssl_cert" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "common_name" {
   description = "(required) - The common name to be used in the certificate to identify the client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created."
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sql_ssl_cert" "this" {
   common_name = var.common_name
   instance    = var.instance
@@ -99,7 +99,7 @@ resource "google_sql_ssl_cert" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cert" {
   description = "returns a string"
   value       = google_sql_ssl_cert.this.cert

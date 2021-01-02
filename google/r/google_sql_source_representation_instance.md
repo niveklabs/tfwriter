@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_source_representation_instance" {
   source = "./modules/google/r/google_sql_source_representation_instance"
 
@@ -51,7 +51,7 @@ module "google_sql_source_representation_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "database_version" {
   description = "(required) - The MySQL version running on your source database server. Possible values: [\"MYSQL_5_6\", \"MYSQL_5_7\"]"
   type        = string
@@ -101,7 +101,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sql_source_representation_instance" "this" {
   database_version = var.database_version
   host             = var.host
@@ -125,7 +125,7 @@ resource "google_sql_source_representation_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_sql_source_representation_instance.this.id

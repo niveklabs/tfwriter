@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_slo" {
   source = "./modules/google/r/google_monitoring_slo"
 
@@ -122,7 +122,7 @@ module "google_monitoring_slo" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "calendar_period" {
   description = "(optional) - A calendar period, semantically \"since the start of the current\n<calendarPeriod>\". Possible values: [\"DAY\", \"WEEK\", \"FORTNIGHT\", \"MONTH\"]"
   type        = string
@@ -296,7 +296,7 @@ variable "windows_based_sli" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_slo" "this" {
   calendar_period     = var.calendar_period
   display_name        = var.display_name
@@ -469,7 +469,7 @@ resource "google_monitoring_slo" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_slo.this.id

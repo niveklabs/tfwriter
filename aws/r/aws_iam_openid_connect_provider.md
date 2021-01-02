@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_openid_connect_provider" {
   source = "./modules/aws/r/aws_iam_openid_connect_provider"
 
@@ -40,7 +40,7 @@ module "aws_iam_openid_connect_provider" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "client_id_list" {
   description = "(required)"
   type        = list(string)
@@ -61,7 +61,7 @@ variable "url" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_openid_connect_provider" "this" {
   client_id_list  = var.client_id_list
   thumbprint_list = var.thumbprint_list
@@ -73,7 +73,7 @@ resource "aws_iam_openid_connect_provider" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_openid_connect_provider.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sns_topic" {
   source = "./modules/aws/r/aws_sns_topic"
 
@@ -72,7 +72,7 @@ module "aws_sns_topic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_failure_feedback_role_arn" {
   description = "(optional)"
   type        = string
@@ -192,7 +192,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sns_topic" "this" {
   application_failure_feedback_role_arn    = var.application_failure_feedback_role_arn
   application_success_feedback_role_arn    = var.application_success_feedback_role_arn
@@ -220,7 +220,7 @@ resource "aws_sns_topic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sns_topic.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_network_policy" {
   source = "./modules/kubernetes/r/kubernetes_network_policy"
 
@@ -114,7 +114,7 @@ module "kubernetes_network_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -246,7 +246,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_network_policy" "this" {
 
   dynamic "metadata" {
@@ -420,7 +420,7 @@ resource "kubernetes_network_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_network_policy.this.id

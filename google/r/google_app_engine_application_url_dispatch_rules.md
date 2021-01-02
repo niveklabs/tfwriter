@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_application_url_dispatch_rules" {
   source = "./modules/google/r/google_app_engine_application_url_dispatch_rules"
 
@@ -48,7 +48,7 @@ module "google_app_engine_application_url_dispatch_rules" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -83,7 +83,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_application_url_dispatch_rules" "this" {
   project = var.project
 
@@ -112,7 +112,7 @@ resource "google_app_engine_application_url_dispatch_rules" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_application_url_dispatch_rules.this.id

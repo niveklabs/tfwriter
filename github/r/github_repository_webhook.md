@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repository_webhook" {
   source = "./modules/github/r/github_repository_webhook"
 
@@ -49,7 +49,7 @@ module "github_repository_webhook" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active" {
   description = "(optional)"
   type        = bool
@@ -90,7 +90,7 @@ variable "configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_repository_webhook" "this" {
   active     = var.active
   events     = var.events
@@ -114,7 +114,7 @@ resource "github_repository_webhook" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_repository_webhook.this.etag

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_access_context_manager_access_level_condition" {
   source = "./modules/google/r/google_access_context_manager_access_level_condition"
 
@@ -63,7 +63,7 @@ module "google_access_context_manager_access_level_condition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_level" {
   description = "(required) - The name of the Access Level to add this condition to."
   type        = string
@@ -135,7 +135,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_access_context_manager_access_level_condition" "this" {
   access_level           = var.access_level
   ip_subnetworks         = var.ip_subnetworks
@@ -179,7 +179,7 @@ resource "google_access_context_manager_access_level_condition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_access_context_manager_access_level_condition.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudfront_origin_access_identity" {
   source = "./modules/aws/r/aws_cloudfront_origin_access_identity"
 
@@ -36,7 +36,7 @@ module "aws_cloudfront_origin_access_identity" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "comment" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "comment" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudfront_origin_access_identity" "this" {
   comment = var.comment
 }
@@ -58,7 +58,7 @@ resource "aws_cloudfront_origin_access_identity" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "caller_reference" {
   description = "returns a string"
   value       = aws_cloudfront_origin_access_identity.this.caller_reference

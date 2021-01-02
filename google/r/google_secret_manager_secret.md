@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_secret_manager_secret" {
   source = "./modules/google/r/google_secret_manager_secret"
 
@@ -55,7 +55,7 @@ module "google_secret_manager_secret" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "labels" {
   description = "(optional) - The labels assigned to this Secret.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,\nand must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}\n\nLabel values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,\nand must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be assigned to a given resource.\n\nAn object containing a list of \"key\": value pairs. Example:\n{ \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }."
   type        = map(string)
@@ -108,7 +108,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_secret_manager_secret" "this" {
   labels    = var.labels
   project   = var.project
@@ -152,7 +152,7 @@ resource "google_secret_manager_secret" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_secret_manager_secret.this.create_time

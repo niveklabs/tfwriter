@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_lifecycle_hook" {
   source = "./modules/aws/r/aws_autoscaling_lifecycle_hook"
 
@@ -50,7 +50,7 @@ module "aws_autoscaling_lifecycle_hook" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "autoscaling_group_name" {
   description = "(required)"
   type        = string
@@ -101,7 +101,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_lifecycle_hook" "this" {
   autoscaling_group_name  = var.autoscaling_group_name
   default_result          = var.default_result
@@ -118,7 +118,7 @@ resource "aws_autoscaling_lifecycle_hook" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_result" {
   description = "returns a string"
   value       = aws_autoscaling_lifecycle_hook.this.default_result

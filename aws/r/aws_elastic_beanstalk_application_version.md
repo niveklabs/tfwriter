@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elastic_beanstalk_application_version" {
   source = "./modules/aws/r/aws_elastic_beanstalk_application_version"
 
@@ -48,7 +48,7 @@ module "aws_elastic_beanstalk_application_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application" {
   description = "(required)"
   type        = string
@@ -92,7 +92,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elastic_beanstalk_application_version" "this" {
   application  = var.application
   bucket       = var.bucket
@@ -108,7 +108,7 @@ resource "aws_elastic_beanstalk_application_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_elastic_beanstalk_application_version.this.arn

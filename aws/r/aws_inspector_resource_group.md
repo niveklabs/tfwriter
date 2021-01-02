@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_inspector_resource_group" {
   source = "./modules/aws/r/aws_inspector_resource_group"
 
@@ -36,7 +36,7 @@ module "aws_inspector_resource_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(required)"
   type        = map(string)
@@ -47,7 +47,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_inspector_resource_group" "this" {
   tags = var.tags
 }
@@ -57,7 +57,7 @@ resource "aws_inspector_resource_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_inspector_resource_group.this.arn

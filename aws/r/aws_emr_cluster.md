@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_emr_cluster" {
   source = "./modules/aws/r/aws_emr_cluster"
 
@@ -207,7 +207,7 @@ module "aws_emr_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "additional_info" {
   description = "(optional)"
   type        = string
@@ -533,7 +533,7 @@ variable "master_instance_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_emr_cluster" "this" {
   additional_info                   = var.additional_info
   applications                      = var.applications
@@ -765,7 +765,7 @@ resource "aws_emr_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_emr_cluster.this.arn

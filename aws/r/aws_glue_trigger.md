@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_trigger" {
   source = "./modules/aws/r/aws_glue_trigger"
 
@@ -75,7 +75,7 @@ module "aws_glue_trigger" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -169,7 +169,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_trigger" "this" {
   description   = var.description
   enabled       = var.enabled
@@ -232,7 +232,7 @@ resource "aws_glue_trigger" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_trigger.this.arn

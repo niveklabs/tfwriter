@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_filestore_instance" {
   source = "./modules/google/r/google_filestore_instance"
 
@@ -64,7 +64,7 @@ module "google_filestore_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A description of the instance."
   type        = string
@@ -137,7 +137,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_filestore_instance" "this" {
   description = var.description
   labels      = var.labels
@@ -179,7 +179,7 @@ resource "google_filestore_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_filestore_instance.this.create_time

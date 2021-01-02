@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_efs_access_point" {
   source = "./modules/aws/r/aws_efs_access_point"
 
@@ -53,7 +53,7 @@ module "aws_efs_access_point" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "file_system_id" {
   description = "(required)"
   type        = string
@@ -99,7 +99,7 @@ variable "root_directory" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_efs_access_point" "this" {
   file_system_id = var.file_system_id
   tags           = var.tags
@@ -137,7 +137,7 @@ resource "aws_efs_access_point" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_efs_access_point.this.arn

@@ -10,7 +10,7 @@
 
 ### Example Usage
 
-```hcl
+```terraform
 provider "vsphere" {
   version = "1.24.3"
 

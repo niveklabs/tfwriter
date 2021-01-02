@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_network_management_connectivity_test" {
   source = [{
     instance     = null
@@ -68,7 +68,7 @@ module "google_network_management_connectivity_test" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - The user-supplied description of the Connectivity Test.\nMaximum of 512 characters."
   type        = string
@@ -148,7 +148,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_network_management_connectivity_test" "this" {
   description      = var.description
   labels           = var.labels
@@ -196,7 +196,7 @@ resource "google_network_management_connectivity_test" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_network_management_connectivity_test.this.id

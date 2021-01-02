@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafv2_ip_set" {
   source = "./modules/aws/d/aws_wafv2_ip_set"
 
@@ -38,7 +38,7 @@ module "aws_wafv2_ip_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "scope" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_wafv2_ip_set" "this" {
   name  = var.name
   scope = var.scope
@@ -65,7 +65,7 @@ data "aws_wafv2_ip_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "addresses" {
   description = "returns a set of string"
   value       = data.aws_wafv2_ip_set.this.addresses

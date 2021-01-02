@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_flow_log" {
   source = "./modules/aws/r/aws_flow_log"
 
@@ -56,7 +56,7 @@ module "aws_flow_log" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "eni_id" {
   description = "(optional)"
   type        = string
@@ -127,7 +127,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_flow_log" "this" {
   eni_id                   = var.eni_id
   iam_role_arn             = var.iam_role_arn
@@ -147,7 +147,7 @@ resource "aws_flow_log" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_flow_log.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloudiot_device" {
   source = "./modules/google/r/google_cloudiot_device"
 
@@ -65,7 +65,7 @@ module "google_cloudiot_device" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "blocked" {
   description = "(optional) - If a device is blocked, connections or requests from this device will fail."
   type        = bool
@@ -140,7 +140,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloudiot_device" "this" {
   blocked   = var.blocked
   log_level = var.log_level
@@ -188,7 +188,7 @@ resource "google_cloudiot_device" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "config" {
   description = "returns a list of object"
   value       = google_cloudiot_device.this.config

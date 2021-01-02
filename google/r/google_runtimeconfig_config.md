@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_runtimeconfig_config" {
   source = "./modules/google/r/google_runtimeconfig_config"
 
@@ -40,7 +40,7 @@ module "google_runtimeconfig_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - The description to associate with the runtime config."
   type        = string
@@ -63,7 +63,7 @@ variable "project" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_runtimeconfig_config" "this" {
   description = var.description
   name        = var.name
@@ -75,7 +75,7 @@ resource "google_runtimeconfig_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_runtimeconfig_config.this.id

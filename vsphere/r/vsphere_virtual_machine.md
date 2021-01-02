@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_virtual_machine" {
   source = "./modules/vsphere/r/vsphere_virtual_machine"
 
@@ -264,7 +264,7 @@ module "vsphere_virtual_machine" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "alternate_guest_name" {
   description = "(optional) - The guest name for the operating system when guest_id is other or other-64."
   type        = string
@@ -790,7 +790,7 @@ variable "vapp" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_virtual_machine" "this" {
   alternate_guest_name                    = var.alternate_guest_name
   annotation                              = var.annotation
@@ -997,7 +997,7 @@ resource "vsphere_virtual_machine" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "change_version" {
   description = "returns a string"
   value       = vsphere_virtual_machine.this.change_version

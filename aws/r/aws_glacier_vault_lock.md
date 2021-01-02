@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glacier_vault_lock" {
   source = "./modules/aws/r/aws_glacier_vault_lock"
 
@@ -42,7 +42,7 @@ module "aws_glacier_vault_lock" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "complete_lock" {
   description = "(required)"
   type        = bool
@@ -69,7 +69,7 @@ variable "vault_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glacier_vault_lock" "this" {
   complete_lock         = var.complete_lock
   ignore_deletion_error = var.ignore_deletion_error
@@ -82,7 +82,7 @@ resource "aws_glacier_vault_lock" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_glacier_vault_lock.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_patch_baseline" {
   source = "./modules/aws/d/aws_ssm_patch_baseline"
 
@@ -42,7 +42,7 @@ module "aws_ssm_patch_baseline" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_baseline" {
   description = "(optional)"
   type        = bool
@@ -71,7 +71,7 @@ variable "owner" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ssm_patch_baseline" "this" {
   default_baseline = var.default_baseline
   name_prefix      = var.name_prefix
@@ -84,7 +84,7 @@ data "aws_ssm_patch_baseline" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.aws_ssm_patch_baseline.this.description

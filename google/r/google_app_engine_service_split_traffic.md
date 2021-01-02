@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_service_split_traffic" {
   source = "./modules/google/r/google_app_engine_service_split_traffic"
 
@@ -51,7 +51,7 @@ module "google_app_engine_service_split_traffic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "migrate_traffic" {
   description = "(optional) - If set to true traffic will be migrated to this version."
   type        = bool
@@ -96,7 +96,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_service_split_traffic" "this" {
   migrate_traffic = var.migrate_traffic
   project         = var.project
@@ -126,7 +126,7 @@ resource "google_app_engine_service_split_traffic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_service_split_traffic.this.id

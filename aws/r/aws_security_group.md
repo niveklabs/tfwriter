@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_security_group" {
   source = "./modules/aws/r/aws_security_group"
 
@@ -75,7 +75,7 @@ module "aws_security_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -164,7 +164,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_security_group" "this" {
   description            = var.description
   egress                 = var.egress
@@ -190,7 +190,7 @@ resource "aws_security_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_security_group.this.arn

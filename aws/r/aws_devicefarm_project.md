@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_devicefarm_project" {
   source = "./modules/aws/r/aws_devicefarm_project"
 
@@ -36,7 +36,7 @@ module "aws_devicefarm_project" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_devicefarm_project" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ resource "aws_devicefarm_project" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_devicefarm_project.this.arn

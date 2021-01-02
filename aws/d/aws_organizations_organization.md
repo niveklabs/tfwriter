@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_organizations_organization" {
   source = "./modules/aws/d/aws_organizations_organization"
 
@@ -34,14 +34,14 @@ module "aws_organizations_organization" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_organizations_organization" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_organizations_organization" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accounts" {
   description = "returns a list of object"
   value       = data.aws_organizations_organization.this.accounts

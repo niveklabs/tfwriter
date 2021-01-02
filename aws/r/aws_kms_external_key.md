@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_external_key" {
   source = "./modules/aws/r/aws_kms_external_key"
 
@@ -48,7 +48,7 @@ module "aws_kms_external_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deletion_window_in_days" {
   description = "(optional)"
   type        = number
@@ -96,7 +96,7 @@ variable "valid_to" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kms_external_key" "this" {
   deletion_window_in_days = var.deletion_window_in_days
   description             = var.description
@@ -112,7 +112,7 @@ resource "aws_kms_external_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kms_external_key.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_entity_permissions" {
   source = "./modules/vsphere/r/vsphere_entity_permissions"
 
@@ -45,7 +45,7 @@ module "vsphere_entity_permissions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "entity_id" {
   description = "(required) - The managed object id or uuid of the entity."
   type        = string
@@ -73,7 +73,7 @@ variable "permissions" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_entity_permissions" "this" {
   entity_id   = var.entity_id
   entity_type = var.entity_type
@@ -95,7 +95,7 @@ resource "vsphere_entity_permissions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_entity_permissions.this.id

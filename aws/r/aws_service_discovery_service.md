@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_service_discovery_service" {
   source = "./modules/aws/r/aws_service_discovery_service"
 
@@ -61,7 +61,7 @@ module "aws_service_discovery_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -129,7 +129,7 @@ variable "health_check_custom_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_service_discovery_service" "this" {
   description  = var.description
   name         = var.name
@@ -176,7 +176,7 @@ resource "aws_service_discovery_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_service_discovery_service.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_user" {
   source = "./modules/github/d/github_user"
 
@@ -36,7 +36,7 @@ module "github_user" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "username" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "username" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_user" "this" {
   username = var.username
 }
@@ -57,7 +57,7 @@ data "github_user" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "avatar_url" {
   description = "returns a string"
   value       = data.github_user.this.avatar_url

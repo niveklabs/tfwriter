@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_transfer_job" {
   source = "./modules/google/r/google_storage_transfer_job"
 
@@ -89,7 +89,7 @@ module "google_storage_transfer_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(required) - Unique description to identify the Transfer Job."
   type        = string
@@ -191,7 +191,7 @@ variable "transfer_spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_transfer_job" "this" {
   description = var.description
   project     = var.project
@@ -302,7 +302,7 @@ resource "google_storage_transfer_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_time" {
   description = "returns a string"
   value       = google_storage_transfer_job.this.creation_time

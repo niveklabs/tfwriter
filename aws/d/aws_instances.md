@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_instances" {
   source = "./modules/aws/d/aws_instances"
 
@@ -43,7 +43,7 @@ module "aws_instances" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance_state_names" {
   description = "(optional)"
   type        = set(string)
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_instances" "this" {
   instance_state_names = var.instance_state_names
   instance_tags        = var.instance_tags
@@ -92,7 +92,7 @@ data "aws_instances" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_instances.this.id

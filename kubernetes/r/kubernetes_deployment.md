@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_deployment" {
   source = "./modules/kubernetes/r/kubernetes_deployment"
 
@@ -857,7 +857,7 @@ module "kubernetes_deployment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "wait_for_rollout" {
   description = "(optional) - Wait for the rollout of the deployment to complete. Defaults to true."
   type        = bool
@@ -2060,7 +2060,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_deployment" "this" {
   wait_for_rollout = var.wait_for_rollout
 
@@ -3675,7 +3675,7 @@ resource "kubernetes_deployment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_deployment.this.id

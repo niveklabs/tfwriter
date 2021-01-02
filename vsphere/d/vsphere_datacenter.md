@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_datacenter" {
   source = "./modules/vsphere/d/vsphere_datacenter"
 
@@ -36,7 +36,7 @@ module "vsphere_datacenter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional) - The name of the datacenter. This can be a name or path.\tCan be omitted if there is only one datacenter in your inventory."
   type        = string
@@ -48,7 +48,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_datacenter" "this" {
   name = var.name
 }
@@ -58,7 +58,7 @@ data "vsphere_datacenter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_datacenter.this.id

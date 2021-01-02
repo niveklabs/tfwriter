@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_billing_account" {
   source = "./modules/google/d/google_billing_account"
 
@@ -40,7 +40,7 @@ module "google_billing_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "billing_account" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "open" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_billing_account" "this" {
   billing_account = var.billing_account
   display_name    = var.display_name
@@ -76,7 +76,7 @@ data "google_billing_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "display_name" {
   description = "returns a string"
   value       = data.google_billing_account.this.display_name

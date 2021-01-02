@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_waf_web_acl" {
   source = "./modules/aws/r/aws_waf_web_acl"
 
@@ -66,7 +66,7 @@ module "aws_waf_web_acl" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metric_name" {
   description = "(required)"
   type        = string
@@ -139,7 +139,7 @@ variable "rules" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_waf_web_acl" "this" {
   metric_name = var.metric_name
   name        = var.name
@@ -206,7 +206,7 @@ resource "aws_waf_web_acl" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_waf_web_acl.this.arn

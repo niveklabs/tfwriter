@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_custom_attribute" {
   source = "./modules/vsphere/r/vsphere_custom_attribute"
 
@@ -38,7 +38,7 @@ module "vsphere_custom_attribute" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "managed_object_type" {
   description = "(optional) - Object type for which the custom attribute is valid. If not specified, the attribute is valid for all managed object types."
   type        = string
@@ -55,7 +55,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_custom_attribute" "this" {
   managed_object_type = var.managed_object_type
   name                = var.name
@@ -66,7 +66,7 @@ resource "vsphere_custom_attribute" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_custom_attribute.this.id

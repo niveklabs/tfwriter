@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_securityhub_member" {
   source = "./modules/aws/r/aws_securityhub_member"
 
@@ -40,7 +40,7 @@ module "aws_securityhub_member" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "invite" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_securityhub_member" "this" {
   account_id = var.account_id
   email      = var.email
@@ -74,7 +74,7 @@ resource "aws_securityhub_member" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_securityhub_member.this.id

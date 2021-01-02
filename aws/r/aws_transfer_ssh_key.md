@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_transfer_ssh_key" {
   source = "./modules/aws/r/aws_transfer_ssh_key"
 
@@ -40,7 +40,7 @@ module "aws_transfer_ssh_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "body" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "user_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_transfer_ssh_key" "this" {
   body      = var.body
   server_id = var.server_id
@@ -73,7 +73,7 @@ resource "aws_transfer_ssh_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_transfer_ssh_key.this.id

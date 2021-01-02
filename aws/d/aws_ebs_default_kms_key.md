@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_default_kms_key" {
   source = "./modules/aws/d/aws_ebs_default_kms_key"
 
@@ -34,14 +34,14 @@ module "aws_ebs_default_kms_key" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ebs_default_kms_key" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_ebs_default_kms_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ebs_default_kms_key.this.id

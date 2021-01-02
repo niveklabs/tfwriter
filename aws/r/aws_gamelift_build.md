@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_gamelift_build" {
   source = "./modules/aws/r/aws_gamelift_build"
 
@@ -48,7 +48,7 @@ module "aws_gamelift_build" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -87,7 +87,7 @@ variable "storage_location" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_gamelift_build" "this" {
   name             = var.name
   operating_system = var.operating_system
@@ -110,7 +110,7 @@ resource "aws_gamelift_build" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_gamelift_build.this.arn

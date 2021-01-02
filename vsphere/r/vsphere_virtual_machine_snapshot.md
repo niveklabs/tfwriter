@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_virtual_machine_snapshot" {
   source = "./modules/vsphere/r/vsphere_virtual_machine_snapshot"
 
@@ -48,7 +48,7 @@ module "vsphere_virtual_machine_snapshot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "consolidate" {
   description = "(optional)"
   type        = bool
@@ -91,7 +91,7 @@ variable "virtual_machine_uuid" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_virtual_machine_snapshot" "this" {
   consolidate          = var.consolidate
   description          = var.description
@@ -107,7 +107,7 @@ resource "vsphere_virtual_machine_snapshot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_virtual_machine_snapshot.this.id

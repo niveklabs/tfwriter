@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudformation_stack_set_instance" {
   source = "./modules/aws/r/aws_cloudformation_stack_set_instance"
 
@@ -50,7 +50,7 @@ module "aws_cloudformation_stack_set_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(optional)"
   type        = string
@@ -97,7 +97,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudformation_stack_set_instance" "this" {
   account_id          = var.account_id
   parameter_overrides = var.parameter_overrides
@@ -121,7 +121,7 @@ resource "aws_cloudformation_stack_set_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_cloudformation_stack_set_instance.this.account_id

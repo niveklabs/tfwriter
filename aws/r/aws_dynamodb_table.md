@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dynamodb_table" {
   source = "./modules/aws/r/aws_dynamodb_table"
 
@@ -98,7 +98,7 @@ module "aws_dynamodb_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "billing_mode" {
   description = "(optional)"
   type        = string
@@ -249,7 +249,7 @@ variable "ttl" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dynamodb_table" "this" {
   billing_mode     = var.billing_mode
   hash_key         = var.hash_key
@@ -338,7 +338,7 @@ resource "aws_dynamodb_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dynamodb_table.this.arn

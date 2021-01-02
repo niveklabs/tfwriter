@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_fms_admin_account" {
   source = "./modules/aws/r/aws_fms_admin_account"
 
@@ -36,7 +36,7 @@ module "aws_fms_admin_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_fms_admin_account" "this" {
   account_id = var.account_id
 }
@@ -58,7 +58,7 @@ resource "aws_fms_admin_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_fms_admin_account.this.account_id

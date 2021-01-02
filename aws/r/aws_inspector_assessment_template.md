@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_inspector_assessment_template" {
   source = "./modules/aws/r/aws_inspector_assessment_template"
 
@@ -44,7 +44,7 @@ module "aws_inspector_assessment_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "duration" {
   description = "(required)"
   type        = number
@@ -76,7 +76,7 @@ variable "target_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_inspector_assessment_template" "this" {
   duration           = var.duration
   name               = var.name
@@ -90,7 +90,7 @@ resource "aws_inspector_assessment_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_inspector_assessment_template.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_patch_group" {
   source = "./modules/aws/r/aws_ssm_patch_group"
 
@@ -38,7 +38,7 @@ module "aws_ssm_patch_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "baseline_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "patch_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_patch_group" "this" {
   baseline_id = var.baseline_id
   patch_group = var.patch_group
@@ -65,7 +65,7 @@ resource "aws_ssm_patch_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ssm_patch_group.this.id

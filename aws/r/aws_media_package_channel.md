@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_media_package_channel" {
   source = "./modules/aws/r/aws_media_package_channel"
 
@@ -40,7 +40,7 @@ module "aws_media_package_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "channel_id" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_media_package_channel" "this" {
   channel_id  = var.channel_id
   description = var.description
@@ -75,7 +75,7 @@ resource "aws_media_package_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_media_package_channel.this.arn

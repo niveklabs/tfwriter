@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_document" {
   source = "./modules/aws/r/aws_ssm_document"
 
@@ -54,7 +54,7 @@ module "aws_ssm_document" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "content" {
   description = "(required)"
   type        = string
@@ -111,7 +111,7 @@ variable "attachments_source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_document" "this" {
   content         = var.content
   document_format = var.document_format
@@ -137,7 +137,7 @@ resource "aws_ssm_document" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ssm_document.this.arn

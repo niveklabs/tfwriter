@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_local_gateway_route" {
   source = "./modules/aws/r/aws_ec2_local_gateway_route"
 
@@ -40,7 +40,7 @@ module "aws_ec2_local_gateway_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destination_cidr_block" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "local_gateway_virtual_interface_group_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_local_gateway_route" "this" {
   destination_cidr_block                   = var.destination_cidr_block
   local_gateway_route_table_id             = var.local_gateway_route_table_id
@@ -73,7 +73,7 @@ resource "aws_ec2_local_gateway_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_local_gateway_route.this.id

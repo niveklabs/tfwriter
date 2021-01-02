@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_reservation" {
   source = "./modules/google/r/google_compute_reservation"
 
@@ -67,7 +67,7 @@ module "google_compute_reservation" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource."
   type        = string
@@ -141,7 +141,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_reservation" "this" {
   description                   = var.description
   name                          = var.name
@@ -198,7 +198,7 @@ resource "google_compute_reservation" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "commitment" {
   description = "returns a string"
   value       = google_compute_reservation.this.commitment

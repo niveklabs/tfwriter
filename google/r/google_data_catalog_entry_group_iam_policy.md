@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_catalog_entry_group_iam_policy" {
   source = "./modules/google/r/google_data_catalog_entry_group_iam_policy"
 
@@ -42,7 +42,7 @@ module "google_data_catalog_entry_group_iam_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "entry_group" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "region" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_catalog_entry_group_iam_policy" "this" {
   entry_group = var.entry_group
   policy_data = var.policy_data
@@ -83,7 +83,7 @@ resource "google_data_catalog_entry_group_iam_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_data_catalog_entry_group_iam_policy.this.etag

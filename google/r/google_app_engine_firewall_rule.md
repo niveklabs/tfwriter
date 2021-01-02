@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_firewall_rule" {
   source = "./modules/google/r/google_app_engine_firewall_rule"
 
@@ -50,7 +50,7 @@ module "google_app_engine_firewall_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(required) - The action to take if this rule matches. Possible values: [\"UNSPECIFIED_ACTION\", \"ALLOW\", \"DENY\"]"
   type        = string
@@ -96,7 +96,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_firewall_rule" "this" {
   action       = var.action
   description  = var.description
@@ -120,7 +120,7 @@ resource "google_app_engine_firewall_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_firewall_rule.this.id

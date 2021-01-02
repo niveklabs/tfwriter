@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_globalaccelerator_endpoint_group" {
   source = "./modules/aws/r/aws_globalaccelerator_endpoint_group"
 
@@ -61,7 +61,7 @@ module "aws_globalaccelerator_endpoint_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "endpoint_group_region" {
   description = "(optional)"
   type        = string
@@ -137,7 +137,7 @@ variable "port_override" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_globalaccelerator_endpoint_group" "this" {
   endpoint_group_region         = var.endpoint_group_region
   health_check_interval_seconds = var.health_check_interval_seconds
@@ -172,7 +172,7 @@ resource "aws_globalaccelerator_endpoint_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_globalaccelerator_endpoint_group.this.arn

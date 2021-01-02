@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_custom_service" {
   source = "./modules/google/r/google_monitoring_custom_service"
 
@@ -50,7 +50,7 @@ module "google_monitoring_custom_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(optional) - Name used for UI elements listing this Service."
   type        = string
@@ -96,7 +96,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_custom_service" "this" {
   display_name = var.display_name
   project      = var.project
@@ -125,7 +125,7 @@ resource "google_monitoring_custom_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_custom_service.this.id

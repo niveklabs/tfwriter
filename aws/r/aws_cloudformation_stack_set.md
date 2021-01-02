@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudformation_stack_set" {
   source = "./modules/aws/r/aws_cloudformation_stack_set"
 
@@ -56,7 +56,7 @@ module "aws_cloudformation_stack_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "administration_role_arn" {
   description = "(required)"
   type        = string
@@ -124,7 +124,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudformation_stack_set" "this" {
   administration_role_arn = var.administration_role_arn
   capabilities            = var.capabilities
@@ -150,7 +150,7 @@ resource "aws_cloudformation_stack_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudformation_stack_set.this.arn

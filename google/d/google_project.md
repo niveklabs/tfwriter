@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project" {
   source = "./modules/google/d/google_project"
 
@@ -36,7 +36,7 @@ module "google_project" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project_id" {
   description = "(optional) - The project ID. Changing this forces a new project to be created."
   type        = string
@@ -48,7 +48,7 @@ variable "project_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_project" "this" {
   project_id = var.project_id
 }
@@ -58,7 +58,7 @@ data "google_project" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "auto_create_network" {
   description = "returns a bool"
   value       = data.google_project.this.auto_create_network

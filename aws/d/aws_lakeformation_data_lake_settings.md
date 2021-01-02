@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lakeformation_data_lake_settings" {
   source = "./modules/aws/d/aws_lakeformation_data_lake_settings"
 
@@ -36,7 +36,7 @@ module "aws_lakeformation_data_lake_settings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "catalog_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_lakeformation_data_lake_settings" "this" {
   catalog_id = var.catalog_id
 }
@@ -58,7 +58,7 @@ data "aws_lakeformation_data_lake_settings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "admins" {
   description = "returns a list of string"
   value       = data.aws_lakeformation_data_lake_settings.this.admins

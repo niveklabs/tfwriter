@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_imagebuilder_image_pipeline" {
   source = "./modules/aws/d/aws_imagebuilder_image_pipeline"
 
@@ -38,7 +38,7 @@ module "aws_imagebuilder_image_pipeline" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_imagebuilder_image_pipeline" "this" {
   arn  = var.arn
   tags = var.tags
@@ -66,7 +66,7 @@ data "aws_imagebuilder_image_pipeline" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "date_created" {
   description = "returns a string"
   value       = data.aws_imagebuilder_image_pipeline.this.date_created

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecr_repository_policy" {
   source = "./modules/aws/r/aws_ecr_repository_policy"
 
@@ -38,7 +38,7 @@ module "aws_ecr_repository_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "policy" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "repository" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ecr_repository_policy" "this" {
   policy     = var.policy
   repository = var.repository
@@ -65,7 +65,7 @@ resource "aws_ecr_repository_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ecr_repository_policy.this.id

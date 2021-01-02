@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_organization_admin_account" {
   source = "./modules/aws/r/aws_guardduty_organization_admin_account"
 
@@ -36,7 +36,7 @@ module "aws_guardduty_organization_admin_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "admin_account_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "admin_account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_organization_admin_account" "this" {
   admin_account_id = var.admin_account_id
 }
@@ -57,7 +57,7 @@ resource "aws_guardduty_organization_admin_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_guardduty_organization_admin_account.this.id

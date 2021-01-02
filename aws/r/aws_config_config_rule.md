@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_config_rule" {
   source = [{
     owner = null
@@ -60,7 +60,7 @@ module "aws_config_config_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -125,7 +125,7 @@ variable "source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_config_rule" "this" {
   description                 = var.description
   input_parameters            = var.input_parameters
@@ -168,7 +168,7 @@ resource "aws_config_config_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_config_config_rule.this.arn

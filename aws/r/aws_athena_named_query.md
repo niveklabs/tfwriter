@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_athena_named_query" {
   source = "./modules/aws/r/aws_athena_named_query"
 
@@ -44,7 +44,7 @@ module "aws_athena_named_query" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "database" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "workgroup" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_athena_named_query" "this" {
   database    = var.database
   description = var.description
@@ -91,7 +91,7 @@ resource "aws_athena_named_query" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_athena_named_query.this.id

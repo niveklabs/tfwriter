@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_acmpca_certificate_authority" {
   source = "./modules/aws/d/aws_acmpca_certificate_authority"
 
@@ -47,7 +47,7 @@ module "aws_acmpca_certificate_authority" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -81,7 +81,7 @@ variable "revocation_configuration" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_acmpca_certificate_authority" "this" {
   arn  = var.arn
   tags = var.tags
@@ -106,7 +106,7 @@ data "aws_acmpca_certificate_authority" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate" {
   description = "returns a string"
   value       = data.aws_acmpca_certificate_authority.this.certificate

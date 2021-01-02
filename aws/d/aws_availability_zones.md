@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_availability_zones" {
   source = "./modules/aws/d/aws_availability_zones"
 
@@ -47,7 +47,7 @@ module "aws_availability_zones" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "all_availability_zones" {
   description = "(optional)"
   type        = bool
@@ -88,7 +88,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_availability_zones" "this" {
   all_availability_zones = var.all_availability_zones
   exclude_names          = var.exclude_names
@@ -110,7 +110,7 @@ data "aws_availability_zones" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "group_names" {
   description = "returns a set of string"
   value       = data.aws_availability_zones.this.group_names

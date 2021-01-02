@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elastic_beanstalk_configuration_template" {
   source = "./modules/aws/r/aws_elastic_beanstalk_configuration_template"
 
@@ -51,7 +51,7 @@ module "aws_elastic_beanstalk_configuration_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application" {
   description = "(required)"
   type        = string
@@ -98,7 +98,7 @@ variable "setting" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elastic_beanstalk_configuration_template" "this" {
   application         = var.application
   description         = var.description
@@ -123,7 +123,7 @@ resource "aws_elastic_beanstalk_configuration_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_elastic_beanstalk_configuration_template.this.id

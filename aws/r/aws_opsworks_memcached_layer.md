@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_memcached_layer" {
   source = "./modules/aws/r/aws_opsworks_memcached_layer"
 
@@ -86,7 +86,7 @@ module "aws_opsworks_memcached_layer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allocated_memory" {
   description = "(optional)"
   type        = number
@@ -233,7 +233,7 @@ variable "ebs_volume" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_memcached_layer" "this" {
   allocated_memory            = var.allocated_memory
   auto_assign_elastic_ips     = var.auto_assign_elastic_ips
@@ -277,7 +277,7 @@ resource "aws_opsworks_memcached_layer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_opsworks_memcached_layer.this.arn

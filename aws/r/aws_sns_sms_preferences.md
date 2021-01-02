@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sns_sms_preferences" {
   source = "./modules/aws/r/aws_sns_sms_preferences"
 
@@ -46,7 +46,7 @@ module "aws_sns_sms_preferences" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_sender_id" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "usage_report_s3_bucket" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sns_sms_preferences" "this" {
   default_sender_id                     = var.default_sender_id
   default_sms_type                      = var.default_sms_type
@@ -103,7 +103,7 @@ resource "aws_sns_sms_preferences" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_sns_sms_preferences.this.id

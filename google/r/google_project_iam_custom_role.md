@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_iam_custom_role" {
   source = "./modules/google/r/google_project_iam_custom_role"
 
@@ -46,7 +46,7 @@ module "google_project_iam_custom_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A human-readable description for the role."
   type        = string
@@ -85,7 +85,7 @@ variable "title" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project_iam_custom_role" "this" {
   description = var.description
   permissions = var.permissions
@@ -100,7 +100,7 @@ resource "google_project_iam_custom_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "deleted" {
   description = "returns a bool"
   value       = google_project_iam_custom_role.this.deleted

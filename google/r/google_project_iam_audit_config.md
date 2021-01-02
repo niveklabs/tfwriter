@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_iam_audit_config" {
   source = "./modules/google/r/google_project_iam_audit_config"
 
@@ -43,7 +43,7 @@ module "google_project_iam_audit_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -70,7 +70,7 @@ variable "audit_log_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project_iam_audit_config" "this" {
   project = var.project
   service = var.service
@@ -90,7 +90,7 @@ resource "google_project_iam_audit_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_project_iam_audit_config.this.etag

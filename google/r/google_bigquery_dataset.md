@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_dataset" {
   source = "./modules/google/r/google_bigquery_dataset"
 
@@ -75,7 +75,7 @@ module "google_bigquery_dataset" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dataset_id" {
   description = "(required) - A unique ID for this dataset, without the project name. The ID\nmust contain only letters (a-z, A-Z), numbers (0-9), or\nunderscores (_). The maximum length is 1,024 characters."
   type        = string
@@ -177,7 +177,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_dataset" "this" {
   dataset_id                      = var.dataset_id
   default_partition_expiration_ms = var.default_partition_expiration_ms
@@ -233,7 +233,7 @@ resource "google_bigquery_dataset" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_time" {
   description = "returns a number"
   value       = google_bigquery_dataset.this.creation_time

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elb" {
   source = "./modules/aws/r/aws_elb"
 
@@ -83,7 +83,7 @@ module "aws_elb" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zones" {
   description = "(optional)"
   type        = set(string)
@@ -207,7 +207,7 @@ variable "listener" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elb" "this" {
   availability_zones          = var.availability_zones
   connection_draining         = var.connection_draining
@@ -262,7 +262,7 @@ resource "aws_elb" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_elb.this.arn

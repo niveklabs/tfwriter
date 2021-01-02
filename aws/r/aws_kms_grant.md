@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_grant" {
   source = "./modules/aws/r/aws_kms_grant"
 
@@ -53,7 +53,7 @@ module "aws_kms_grant" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "grant_creation_tokens" {
   description = "(optional)"
   type        = set(string)
@@ -109,7 +109,7 @@ variable "constraints" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kms_grant" "this" {
   grant_creation_tokens = var.grant_creation_tokens
   grantee_principal     = var.grantee_principal
@@ -134,7 +134,7 @@ resource "aws_kms_grant" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "grant_id" {
   description = "returns a string"
   value       = aws_kms_grant.this.grant_id

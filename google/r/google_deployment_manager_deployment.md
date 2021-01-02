@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_deployment_manager_deployment" {
   source = "./modules/google/r/google_deployment_manager_deployment"
 
@@ -67,7 +67,7 @@ module "google_deployment_manager_deployment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "create_policy" {
   description = "(optional) - Set the policy to use for creating new resources. Only used on\ncreate and update. Valid values are 'CREATE_OR_ACQUIRE' (default) or\n'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist,\nthe deployment will fail. Note that updating this field does not\nactually affect the deployment, just how it is updated. Default value: \"CREATE_OR_ACQUIRE\" Possible values: [\"ACQUIRE\", \"CREATE_OR_ACQUIRE\"]"
   type        = string
@@ -150,7 +150,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_deployment_manager_deployment" "this" {
   create_policy = var.create_policy
   delete_policy = var.delete_policy
@@ -205,7 +205,7 @@ resource "google_deployment_manager_deployment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "deployment_id" {
   description = "returns a string"
   value       = google_deployment_manager_deployment.this.deployment_id

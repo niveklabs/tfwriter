@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_secrets" {
   source = "./modules/aws/d/aws_kms_secrets"
 
@@ -41,7 +41,7 @@ module "aws_kms_secrets" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "secret" {
   description = "nested mode: NestingSet, min items: 1, max items: 0"
   type = set(object(
@@ -59,7 +59,7 @@ variable "secret" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_kms_secrets" "this" {
 
   dynamic "secret" {
@@ -79,7 +79,7 @@ data "aws_kms_secrets" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_kms_secrets.this.id

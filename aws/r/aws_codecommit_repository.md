@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codecommit_repository" {
   source = "./modules/aws/r/aws_codecommit_repository"
 
@@ -42,7 +42,7 @@ module "aws_codecommit_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_branch" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codecommit_repository" "this" {
   default_branch  = var.default_branch
   description     = var.description
@@ -84,7 +84,7 @@ resource "aws_codecommit_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codecommit_repository.this.arn

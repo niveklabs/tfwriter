@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_usage_plan" {
   source = "./modules/aws/r/aws_api_gateway_usage_plan"
 
@@ -58,7 +58,7 @@ module "aws_api_gateway_usage_plan" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -121,7 +121,7 @@ variable "throttle_settings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_usage_plan" "this" {
   description  = var.description
   name         = var.name
@@ -160,7 +160,7 @@ resource "aws_api_gateway_usage_plan" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_usage_plan.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafregional_ipset" {
   source = "./modules/aws/r/aws_wafregional_ipset"
 
@@ -41,7 +41,7 @@ module "aws_wafregional_ipset" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "ip_set_descriptor" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_wafregional_ipset" "this" {
   name = var.name
 
@@ -82,7 +82,7 @@ resource "aws_wafregional_ipset" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_wafregional_ipset.this.arn

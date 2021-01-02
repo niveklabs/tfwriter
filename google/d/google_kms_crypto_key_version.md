@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_crypto_key_version" {
   source = "./modules/google/d/google_kms_crypto_key_version"
 
@@ -38,7 +38,7 @@ module "google_kms_crypto_key_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "crypto_key" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "version" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_kms_crypto_key_version" "this" {
   crypto_key = var.crypto_key
   version    = var.version
@@ -66,7 +66,7 @@ data "google_kms_crypto_key_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "algorithm" {
   description = "returns a string"
   value       = data.google_kms_crypto_key_version.this.algorithm

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3control_bucket_policy" {
   source = "./modules/aws/r/aws_s3control_bucket_policy"
 
@@ -38,7 +38,7 @@ module "aws_s3control_bucket_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3control_bucket_policy" "this" {
   bucket = var.bucket
   policy = var.policy
@@ -65,7 +65,7 @@ resource "aws_s3control_bucket_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_s3control_bucket_policy.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_global_network_endpoint" {
   source = "./modules/google/r/google_compute_global_network_endpoint"
 
@@ -49,7 +49,7 @@ module "google_compute_global_network_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "fqdn" {
   description = "(optional) - Fully qualified domain name of network endpoint.\nThis can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT."
   type        = string
@@ -94,7 +94,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_global_network_endpoint" "this" {
   fqdn                          = var.fqdn
   global_network_endpoint_group = var.global_network_endpoint_group
@@ -117,7 +117,7 @@ resource "google_compute_global_network_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_global_network_endpoint.this.id

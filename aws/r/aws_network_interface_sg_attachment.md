@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_interface_sg_attachment" {
   source = "./modules/aws/r/aws_network_interface_sg_attachment"
 
@@ -38,7 +38,7 @@ module "aws_network_interface_sg_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "network_interface_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "security_group_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_network_interface_sg_attachment" "this" {
   network_interface_id = var.network_interface_id
   security_group_id    = var.security_group_id
@@ -65,7 +65,7 @@ resource "aws_network_interface_sg_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_network_interface_sg_attachment.this.id

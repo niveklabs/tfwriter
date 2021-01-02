@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_alb_target_group" {
   source = "./modules/aws/r/aws_alb_target_group"
 
@@ -76,7 +76,7 @@ module "aws_alb_target_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deregistration_delay" {
   description = "(optional)"
   type        = number
@@ -184,7 +184,7 @@ variable "stickiness" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_alb_target_group" "this" {
   deregistration_delay               = var.deregistration_delay
   lambda_multi_value_headers_enabled = var.lambda_multi_value_headers_enabled
@@ -230,7 +230,7 @@ resource "aws_alb_target_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_alb_target_group.this.arn

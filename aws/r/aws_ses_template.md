@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_template" {
   source = "./modules/aws/r/aws_ses_template"
 
@@ -42,7 +42,7 @@ module "aws_ses_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "html" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "text" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_template" "this" {
   html    = var.html
   name    = var.name
@@ -84,7 +84,7 @@ resource "aws_ses_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ses_template.this.id

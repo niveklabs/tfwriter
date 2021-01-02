@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_waf_size_constraint_set" {
   source = "./modules/aws/r/aws_waf_size_constraint_set"
 
@@ -46,7 +46,7 @@ module "aws_waf_size_constraint_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -75,7 +75,7 @@ variable "size_constraints" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_waf_size_constraint_set" "this" {
   name = var.name
 
@@ -104,7 +104,7 @@ resource "aws_waf_size_constraint_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_waf_size_constraint_set.this.arn

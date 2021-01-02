@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance_group_manager" {
   source = "./modules/google/r/google_compute_instance_group_manager"
 
@@ -91,7 +91,7 @@ module "google_compute_instance_group_manager" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "base_instance_name" {
   description = "(required) - The base instance name to use for instances in this group. The value must be a valid RFC1035 name. Supported characters are lowercase letters, numbers, and hyphens (-). Instances are named by appending a hyphen and a random four-character string to the base instance name."
   type        = string
@@ -221,7 +221,7 @@ variable "version" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_instance_group_manager" "this" {
   base_instance_name = var.base_instance_name
   description        = var.description
@@ -303,7 +303,7 @@ resource "google_compute_instance_group_manager" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "fingerprint" {
   description = "returns a string"
   value       = google_compute_instance_group_manager.this.fingerprint

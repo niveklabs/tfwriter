@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_compute_cluster_vm_dependency_rule" {
   source = "./modules/vsphere/r/vsphere_compute_cluster_vm_dependency_rule"
 
@@ -46,7 +46,7 @@ module "vsphere_compute_cluster_vm_dependency_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_cluster_id" {
   description = "(required) - The managed object ID of the cluster."
   type        = string
@@ -84,7 +84,7 @@ variable "vm_group_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_compute_cluster_vm_dependency_rule" "this" {
   compute_cluster_id       = var.compute_cluster_id
   dependency_vm_group_name = var.dependency_vm_group_name
@@ -99,7 +99,7 @@ resource "vsphere_compute_cluster_vm_dependency_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_compute_cluster_vm_dependency_rule.this.id

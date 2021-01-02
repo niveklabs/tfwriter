@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lightsail_static_ip_attachment" {
   source = "./modules/aws/r/aws_lightsail_static_ip_attachment"
 
@@ -38,7 +38,7 @@ module "aws_lightsail_static_ip_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "static_ip_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lightsail_static_ip_attachment" "this" {
   instance_name  = var.instance_name
   static_ip_name = var.static_ip_name
@@ -65,7 +65,7 @@ resource "aws_lightsail_static_ip_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lightsail_static_ip_attachment.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_usage_plan_key" {
   source = "./modules/aws/r/aws_api_gateway_usage_plan_key"
 
@@ -40,7 +40,7 @@ module "aws_api_gateway_usage_plan_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key_id" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "usage_plan_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_usage_plan_key" "this" {
   key_id        = var.key_id
   key_type      = var.key_type
@@ -73,7 +73,7 @@ resource "aws_api_gateway_usage_plan_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_usage_plan_key.this.id

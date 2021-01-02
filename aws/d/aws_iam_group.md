@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_group" {
   source = "./modules/aws/d/aws_iam_group"
 
@@ -36,7 +36,7 @@ module "aws_iam_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group_name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "group_name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_iam_group" "this" {
   group_name = var.group_name
 }
@@ -57,7 +57,7 @@ data "aws_iam_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_iam_group.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_deployment" {
   source = "./modules/aws/r/aws_apigatewayv2_deployment"
 
@@ -40,7 +40,7 @@ module "aws_apigatewayv2_deployment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_id" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "triggers" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_deployment" "this" {
   api_id      = var.api_id
   description = var.description
@@ -75,7 +75,7 @@ resource "aws_apigatewayv2_deployment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "auto_deployed" {
   description = "returns a bool"
   value       = aws_apigatewayv2_deployment.this.auto_deployed

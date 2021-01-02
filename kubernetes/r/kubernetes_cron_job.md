@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_cron_job" {
   source = "./modules/kubernetes/r/kubernetes_cron_job"
 
@@ -866,7 +866,7 @@ module "kubernetes_cron_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -2076,7 +2076,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_cron_job" "this" {
 
   dynamic "metadata" {
@@ -3702,7 +3702,7 @@ resource "kubernetes_cron_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_cron_job.this.id

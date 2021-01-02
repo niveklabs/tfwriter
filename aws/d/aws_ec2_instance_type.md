@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_instance_type" {
   source = "./modules/aws/d/aws_ec2_instance_type"
 
@@ -76,7 +76,7 @@ module "aws_ec2_instance_type" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_cores" {
   description = "(optional)"
   type        = number
@@ -179,7 +179,7 @@ variable "instance_disks" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_instance_type" "this" {
   default_cores                        = var.default_cores
   default_threads_per_core             = var.default_threads_per_core
@@ -221,7 +221,7 @@ data "aws_ec2_instance_type" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "auto_recovery_supported" {
   description = "returns a bool"
   value       = data.aws_ec2_instance_type.this.auto_recovery_supported

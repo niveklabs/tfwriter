@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_efs_mount_target" {
   source = "./modules/aws/d/aws_efs_mount_target"
 
@@ -36,7 +36,7 @@ module "aws_efs_mount_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "mount_target_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "mount_target_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_efs_mount_target" "this" {
   mount_target_id = var.mount_target_id
 }
@@ -57,7 +57,7 @@ data "aws_efs_mount_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "availability_zone_id" {
   description = "returns a string"
   value       = data.aws_efs_mount_target.this.availability_zone_id

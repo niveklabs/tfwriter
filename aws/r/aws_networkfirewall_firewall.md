@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_networkfirewall_firewall" {
   source = "./modules/aws/r/aws_networkfirewall_firewall"
 
@@ -54,7 +54,7 @@ module "aws_networkfirewall_firewall" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "delete_protection" {
   description = "(optional)"
   type        = bool
@@ -114,7 +114,7 @@ variable "subnet_mapping" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_networkfirewall_firewall" "this" {
   delete_protection                 = var.delete_protection
   description                       = var.description
@@ -139,7 +139,7 @@ resource "aws_networkfirewall_firewall" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_networkfirewall_firewall.this.arn

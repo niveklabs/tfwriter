@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_directory_service_conditional_forwarder" {
   source = "./modules/aws/r/aws_directory_service_conditional_forwarder"
 
@@ -40,7 +40,7 @@ module "aws_directory_service_conditional_forwarder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "directory_id" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "remote_domain_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_directory_service_conditional_forwarder" "this" {
   directory_id       = var.directory_id
   dns_ips            = var.dns_ips
@@ -73,7 +73,7 @@ resource "aws_directory_service_conditional_forwarder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_directory_service_conditional_forwarder.this.id

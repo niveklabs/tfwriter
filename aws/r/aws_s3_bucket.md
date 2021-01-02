@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket" {
   source = "./modules/aws/r/aws_s3_bucket"
 
@@ -163,7 +163,7 @@ module "aws_s3_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "acceleration_status" {
   description = "(optional)"
   type        = string
@@ -428,7 +428,7 @@ variable "website" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_bucket" "this" {
   acceleration_status = var.acceleration_status
   acl                 = var.acl
@@ -647,7 +647,7 @@ resource "aws_s3_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "acceleration_status" {
   description = "returns a string"
   value       = aws_s3_bucket.this.acceleration_status

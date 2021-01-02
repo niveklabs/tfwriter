@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_proxy_target" {
   source = "./modules/aws/r/aws_db_proxy_target"
 
@@ -42,7 +42,7 @@ module "aws_db_proxy_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_cluster_identifier" {
   description = "(optional)"
   type        = string
@@ -70,7 +70,7 @@ variable "target_group_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_proxy_target" "this" {
   db_cluster_identifier  = var.db_cluster_identifier
   db_instance_identifier = var.db_instance_identifier
@@ -83,7 +83,7 @@ resource "aws_db_proxy_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "endpoint" {
   description = "returns a string"
   value       = aws_db_proxy_target.this.endpoint

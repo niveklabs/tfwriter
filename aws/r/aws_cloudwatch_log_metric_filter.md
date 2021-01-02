@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_log_metric_filter" {
   source = "./modules/aws/r/aws_cloudwatch_log_metric_filter"
 
@@ -47,7 +47,7 @@ module "aws_cloudwatch_log_metric_filter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "log_group_name" {
   description = "(required)"
   type        = string
@@ -80,7 +80,7 @@ variable "metric_transformation" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_log_metric_filter" "this" {
   log_group_name = var.log_group_name
   name           = var.name
@@ -103,7 +103,7 @@ resource "aws_cloudwatch_log_metric_filter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cloudwatch_log_metric_filter.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_address" {
   source = "./modules/google/r/google_compute_address"
 
@@ -57,7 +57,7 @@ module "google_compute_address" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "address" {
   description = "(optional) - The static external IP address represented by this resource. Only\nIPv4 is supported. An address may only be specified for INTERNAL\naddress types. The IP address must be inside the specified subnetwork,\nif any."
   type        = string
@@ -127,7 +127,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_address" "this" {
   address      = var.address
   address_type = var.address_type
@@ -154,7 +154,7 @@ resource "google_compute_address" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "address" {
   description = "returns a string"
   value       = google_compute_address.this.address

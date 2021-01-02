@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_client_vpn_route" {
   source = "./modules/aws/r/aws_ec2_client_vpn_route"
 
@@ -42,7 +42,7 @@ module "aws_ec2_client_vpn_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "client_vpn_endpoint_id" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "target_vpc_subnet_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_client_vpn_route" "this" {
   client_vpn_endpoint_id = var.client_vpn_endpoint_id
   description            = var.description
@@ -82,7 +82,7 @@ resource "aws_ec2_client_vpn_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_client_vpn_route.this.id

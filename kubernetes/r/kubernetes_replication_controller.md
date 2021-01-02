@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_replication_controller" {
   source = "./modules/kubernetes/r/kubernetes_replication_controller"
 
@@ -1603,7 +1603,7 @@ module "kubernetes_replication_controller" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -3880,7 +3880,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_replication_controller" "this" {
 
   dynamic "metadata" {
@@ -6973,7 +6973,7 @@ resource "kubernetes_replication_controller" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_replication_controller.this.id

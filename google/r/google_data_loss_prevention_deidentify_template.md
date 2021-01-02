@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_loss_prevention_deidentify_template" {
   source = "./modules/google/r/google_data_loss_prevention_deidentify_template"
 
@@ -88,7 +88,7 @@ module "google_data_loss_prevention_deidentify_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A description of the template."
   type        = string
@@ -190,7 +190,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_loss_prevention_deidentify_template" "this" {
   description  = var.description
   display_name = var.display_name
@@ -304,7 +304,7 @@ resource "google_data_loss_prevention_deidentify_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_loss_prevention_deidentify_template.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_code_repository" {
   source = "./modules/aws/r/aws_sagemaker_code_repository"
 
@@ -42,7 +42,7 @@ module "aws_sagemaker_code_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "code_repository_name" {
   description = "(required)"
   type        = string
@@ -64,7 +64,7 @@ variable "git_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sagemaker_code_repository" "this" {
   code_repository_name = var.code_repository_name
 
@@ -84,7 +84,7 @@ resource "aws_sagemaker_code_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sagemaker_code_repository.this.arn

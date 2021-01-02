@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lb_listener" {
   source = "./modules/aws/r/aws_lb_listener"
 
@@ -100,7 +100,7 @@ module "aws_lb_listener" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(optional)"
   type        = string
@@ -216,7 +216,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lb_listener" "this" {
   certificate_arn   = var.certificate_arn
   load_balancer_arn = var.load_balancer_arn
@@ -323,7 +323,7 @@ resource "aws_lb_listener" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lb_listener.this.arn

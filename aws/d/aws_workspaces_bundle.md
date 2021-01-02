@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_workspaces_bundle" {
   source = "./modules/aws/d/aws_workspaces_bundle"
 
@@ -40,7 +40,7 @@ module "aws_workspaces_bundle" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bundle_id" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "owner" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_workspaces_bundle" "this" {
   bundle_id = var.bundle_id
   name      = var.name
@@ -76,7 +76,7 @@ data "aws_workspaces_bundle" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "compute_type" {
   description = "returns a list of object"
   value       = data.aws_workspaces_bundle.this.compute_type

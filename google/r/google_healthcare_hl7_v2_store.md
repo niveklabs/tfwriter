@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_healthcare_hl7_v2_store" {
   source = "./modules/google/r/google_healthcare_hl7_v2_store"
 
@@ -61,7 +61,7 @@ module "google_healthcare_hl7_v2_store" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dataset" {
   description = "(required) - Identifies the dataset addressed by this request. Must be in the format\n'projects/{project}/locations/{location}/datasets/{dataset}'"
   type        = string
@@ -128,7 +128,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_healthcare_hl7_v2_store" "this" {
   dataset = var.dataset
   labels  = var.labels
@@ -174,7 +174,7 @@ resource "google_healthcare_hl7_v2_store" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_healthcare_hl7_v2_store.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_table" {
   source = "./modules/google/r/google_bigquery_table"
 
@@ -109,7 +109,7 @@ module "google_bigquery_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "clustering" {
   description = "(optional) - Specifies column names to use for data clustering. Up to four top-level columns are allowed, and should be specified in descending priority order."
   type        = list(string)
@@ -268,7 +268,7 @@ variable "view" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_table" "this" {
   clustering      = var.clustering
   dataset_id      = var.dataset_id
@@ -380,7 +380,7 @@ resource "google_bigquery_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_time" {
   description = "returns a number"
   value       = google_bigquery_table.this.creation_time

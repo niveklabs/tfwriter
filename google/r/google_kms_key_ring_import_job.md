@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_key_ring_import_job" {
   source = "./modules/google/r/google_kms_key_ring_import_job"
 
@@ -47,7 +47,7 @@ module "google_kms_key_ring_import_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "import_job_id" {
   description = "(required) - It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}"
   type        = string
@@ -84,7 +84,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_kms_key_ring_import_job" "this" {
   import_job_id    = var.import_job_id
   import_method    = var.import_method
@@ -106,7 +106,7 @@ resource "google_kms_key_ring_import_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "attestation" {
   description = "returns a list of object"
   value       = google_kms_key_ring_import_job.this.attestation

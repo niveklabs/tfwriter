@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_appautoscaling_scheduled_action" {
   source = "./modules/aws/r/aws_appautoscaling_scheduled_action"
 
@@ -53,7 +53,7 @@ module "aws_appautoscaling_scheduled_action" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "end_time" {
   description = "(optional)"
   type        = string
@@ -109,7 +109,7 @@ variable "scalable_target_action" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_appautoscaling_scheduled_action" "this" {
   end_time           = var.end_time
   name               = var.name
@@ -134,7 +134,7 @@ resource "aws_appautoscaling_scheduled_action" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_appautoscaling_scheduled_action.this.arn

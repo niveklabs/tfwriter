@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_configuration_recorder_status" {
   source = "./modules/aws/r/aws_config_configuration_recorder_status"
 
@@ -38,7 +38,7 @@ module "aws_config_configuration_recorder_status" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "is_enabled" {
   description = "(required)"
   type        = bool
@@ -54,7 +54,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_configuration_recorder_status" "this" {
   is_enabled = var.is_enabled
   name       = var.name
@@ -65,7 +65,7 @@ resource "aws_config_configuration_recorder_status" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_config_configuration_recorder_status.this.id

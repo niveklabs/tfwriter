@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigtable_table" {
   source = "./modules/google/r/google_bigtable_table"
 
@@ -46,7 +46,7 @@ module "google_bigtable_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance_name" {
   description = "(required) - The name of the Bigtable instance."
   type        = string
@@ -84,7 +84,7 @@ variable "column_family" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigtable_table" "this" {
   instance_name = var.instance_name
   name          = var.name
@@ -105,7 +105,7 @@ resource "google_bigtable_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_bigtable_table.this.id

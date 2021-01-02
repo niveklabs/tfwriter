@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_project_metadata_item" {
   source = "./modules/google/r/google_compute_project_metadata_item"
 
@@ -46,7 +46,7 @@ module "google_compute_project_metadata_item" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key" {
   description = "(required) - The metadata key to set."
   type        = string
@@ -80,7 +80,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_project_metadata_item" "this" {
   key     = var.key
   project = var.project
@@ -102,7 +102,7 @@ resource "google_compute_project_metadata_item" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_project_metadata_item.this.id

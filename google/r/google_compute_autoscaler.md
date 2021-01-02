@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_autoscaler" {
   source = "./modules/google/r/google_compute_autoscaler"
 
@@ -75,7 +75,7 @@ module "google_compute_autoscaler" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource."
   type        = string
@@ -161,7 +161,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_autoscaler" "this" {
   description = var.description
   name        = var.name
@@ -235,7 +235,7 @@ resource "google_compute_autoscaler" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_autoscaler.this.creation_timestamp

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_workflow" {
   source = "./modules/aws/r/aws_glue_workflow"
 
@@ -44,7 +44,7 @@ module "aws_glue_workflow" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_run_properties" {
   description = "(optional)"
   type        = map(string)
@@ -80,7 +80,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_workflow" "this" {
   default_run_properties = var.default_run_properties
   description            = var.description
@@ -94,7 +94,7 @@ resource "aws_glue_workflow" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_workflow.this.arn

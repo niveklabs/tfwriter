@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_appsync_graphql_api" {
   source = "./modules/aws/r/aws_appsync_graphql_api"
 
@@ -79,7 +79,7 @@ module "aws_appsync_graphql_api" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "authentication_type" {
   description = "(required)"
   type        = string
@@ -176,7 +176,7 @@ variable "user_pool_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_appsync_graphql_api" "this" {
   authentication_type = var.authentication_type
   name                = var.name
@@ -247,7 +247,7 @@ resource "aws_appsync_graphql_api" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_appsync_graphql_api.this.arn

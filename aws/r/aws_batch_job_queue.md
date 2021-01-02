@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_batch_job_queue" {
   source = "./modules/aws/r/aws_batch_job_queue"
 
@@ -44,7 +44,7 @@ module "aws_batch_job_queue" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_environments" {
   description = "(required)"
   type        = list(string)
@@ -76,7 +76,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_batch_job_queue" "this" {
   compute_environments = var.compute_environments
   name                 = var.name
@@ -90,7 +90,7 @@ resource "aws_batch_job_queue" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_batch_job_queue.this.arn

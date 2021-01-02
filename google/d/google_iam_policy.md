@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iam_policy" {
   source = "./modules/google/d/google_iam_policy"
 
@@ -52,7 +52,7 @@ module "google_iam_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "audit_config" {
   description = "nested mode: NestingSet, min items: 0, max items: 0"
   type = set(object(
@@ -92,7 +92,7 @@ variable "binding" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_iam_policy" "this" {
 
   dynamic "audit_config" {
@@ -136,7 +136,7 @@ data "google_iam_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_iam_policy.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_notebook_instance" {
   source = "./modules/aws/r/aws_sagemaker_notebook_instance"
 
@@ -60,7 +60,7 @@ module "aws_sagemaker_notebook_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "additional_code_repositories" {
   description = "(optional)"
   type        = set(string)
@@ -141,7 +141,7 @@ variable "volume_size" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sagemaker_notebook_instance" "this" {
   additional_code_repositories = var.additional_code_repositories
   default_code_repository      = var.default_code_repository
@@ -163,7 +163,7 @@ resource "aws_sagemaker_notebook_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sagemaker_notebook_instance.this.arn

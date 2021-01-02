@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_release" {
   source = "./modules/github/d/github_release"
 
@@ -44,7 +44,7 @@ module "github_release" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "owner" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "retrieve_by" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_release" "this" {
   owner       = var.owner
   release_id  = var.release_id
@@ -91,7 +91,7 @@ data "github_release" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "asserts_url" {
   description = "returns a string"
   value       = data.github_release.this.asserts_url

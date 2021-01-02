@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_game_services_realm" {
   source = "./modules/google/r/google_game_services_realm"
 
@@ -52,7 +52,7 @@ module "google_game_services_realm" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Human readable description of the realm."
   type        = string
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_game_services_realm" "this" {
   description = var.description
   labels      = var.labels
@@ -129,7 +129,7 @@ resource "google_game_services_realm" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_game_services_realm.this.etag

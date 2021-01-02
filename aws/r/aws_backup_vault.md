@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_backup_vault" {
   source = "./modules/aws/r/aws_backup_vault"
 
@@ -40,7 +40,7 @@ module "aws_backup_vault" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "kms_key_arn" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_backup_vault" "this" {
   kms_key_arn = var.kms_key_arn
   name        = var.name
@@ -75,7 +75,7 @@ resource "aws_backup_vault" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_backup_vault.this.arn

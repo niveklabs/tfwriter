@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_lb_ip_ranges" {
   source = "./modules/google/d/google_compute_lb_ip_ranges"
 
@@ -34,14 +34,14 @@ module "google_compute_lb_ip_ranges" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_lb_ip_ranges" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "google_compute_lb_ip_ranges" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "http_ssl_tcp_internal" {
   description = "returns a list of string"
   value       = data.google_compute_lb_ip_ranges.this.http_ssl_tcp_internal

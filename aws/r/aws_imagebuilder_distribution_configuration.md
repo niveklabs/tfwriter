@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_imagebuilder_distribution_configuration" {
   source = "./modules/aws/r/aws_imagebuilder_distribution_configuration"
 
@@ -56,7 +56,7 @@ module "aws_imagebuilder_distribution_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -104,7 +104,7 @@ variable "distribution" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_imagebuilder_distribution_configuration" "this" {
   description = var.description
   name        = var.name
@@ -146,7 +146,7 @@ resource "aws_imagebuilder_distribution_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_imagebuilder_distribution_configuration.this.arn

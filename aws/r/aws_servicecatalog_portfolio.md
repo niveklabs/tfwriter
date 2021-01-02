@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_servicecatalog_portfolio" {
   source = "./modules/aws/r/aws_servicecatalog_portfolio"
 
@@ -48,7 +48,7 @@ module "aws_servicecatalog_portfolio" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -89,7 +89,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_servicecatalog_portfolio" "this" {
   description   = var.description
   name          = var.name
@@ -112,7 +112,7 @@ resource "aws_servicecatalog_portfolio" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_servicecatalog_portfolio.this.arn

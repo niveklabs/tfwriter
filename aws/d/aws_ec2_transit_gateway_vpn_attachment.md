@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_vpn_attachment" {
   source = "./modules/aws/d/aws_ec2_transit_gateway_vpn_attachment"
 
@@ -45,7 +45,7 @@ module "aws_ec2_transit_gateway_vpn_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -80,7 +80,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_transit_gateway_vpn_attachment" "this" {
   tags               = var.tags
   transit_gateway_id = var.transit_gateway_id
@@ -101,7 +101,7 @@ data "aws_ec2_transit_gateway_vpn_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_transit_gateway_vpn_attachment.this.id

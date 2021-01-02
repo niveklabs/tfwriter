@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_metric" {
   source = "./modules/google/r/google_logging_metric"
 
@@ -80,7 +80,7 @@ module "google_logging_metric" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A description of this metric, which is used in documentation. The maximum length of the\ndescription is 8000 characters."
   type        = string
@@ -179,7 +179,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_metric" "this" {
   description      = var.description
   filter           = var.filter
@@ -256,7 +256,7 @@ resource "google_logging_metric" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_logging_metric.this.id

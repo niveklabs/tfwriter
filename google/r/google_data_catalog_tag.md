@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_catalog_tag" {
   source = "./modules/google/r/google_data_catalog_tag"
 
@@ -57,7 +57,7 @@ module "google_data_catalog_tag" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "column" {
   description = "(optional) - Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an\nindividual column based on that schema.\n\nFor attaching a tag to a nested column, use '.' to separate the column names. Example:\n'outer_column.inner_column'"
   type        = string
@@ -108,7 +108,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_catalog_tag" "this" {
   column   = var.column
   parent   = var.parent
@@ -142,7 +142,7 @@ resource "google_data_catalog_tag" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_catalog_tag.this.id

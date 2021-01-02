@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_vpc_access_connector" {
   source = "./modules/google/r/google_vpc_access_connector"
 
@@ -53,7 +53,7 @@ module "google_vpc_access_connector" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ip_cidr_range" {
   description = "(required) - The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'."
   type        = string
@@ -108,7 +108,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_vpc_access_connector" "this" {
   ip_cidr_range  = var.ip_cidr_range
   max_throughput = var.max_throughput
@@ -133,7 +133,7 @@ resource "google_vpc_access_connector" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_vpc_access_connector.this.id

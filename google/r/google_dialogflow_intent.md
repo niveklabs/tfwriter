@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dialogflow_intent" {
   source = "./modules/google/r/google_dialogflow_intent"
 
@@ -64,7 +64,7 @@ module "google_dialogflow_intent" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(optional) - The name of the action associated with the intent.\nNote: The action name must not contain whitespaces."
   type        = string
@@ -153,7 +153,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dialogflow_intent" "this" {
   action                      = var.action
   default_response_platforms  = var.default_response_platforms
@@ -184,7 +184,7 @@ resource "google_dialogflow_intent" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "action" {
   description = "returns a string"
   value       = google_dialogflow_intent.this.action

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_client_vpn_endpoint" {
   source = "./modules/aws/r/aws_ec2_client_vpn_endpoint"
 
@@ -61,7 +61,7 @@ module "aws_ec2_client_vpn_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "client_cidr_block" {
   description = "(required)"
   type        = string
@@ -130,7 +130,7 @@ variable "connection_log_options" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_client_vpn_endpoint" "this" {
   client_cidr_block      = var.client_cidr_block
   description            = var.description
@@ -166,7 +166,7 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ec2_client_vpn_endpoint.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cur_report_definition" {
   source = "./modules/aws/d/aws_cur_report_definition"
 
@@ -36,7 +36,7 @@ module "aws_cur_report_definition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "report_name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "report_name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_cur_report_definition" "this" {
   report_name = var.report_name
 }
@@ -57,7 +57,7 @@ data "aws_cur_report_definition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "additional_artifacts" {
   description = "returns a set of string"
   value       = data.aws_cur_report_definition.this.additional_artifacts

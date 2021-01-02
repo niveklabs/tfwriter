@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_catalog_entry" {
   source = "./modules/google/r/google_data_catalog_entry"
 
@@ -66,7 +66,7 @@ module "google_data_catalog_entry" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Entry description, which can consist of several sentences or paragraphs that describe entry contents."
   type        = string
@@ -152,7 +152,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_catalog_entry" "this" {
   description           = var.description
   display_name          = var.display_name
@@ -187,7 +187,7 @@ resource "google_data_catalog_entry" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bigquery_date_sharded_spec" {
   description = "returns a list of object"
   value       = google_data_catalog_entry.this.bigquery_date_sharded_spec

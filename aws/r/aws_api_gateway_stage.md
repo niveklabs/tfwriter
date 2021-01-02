@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_stage" {
   source = "./modules/aws/r/aws_api_gateway_stage"
 
@@ -61,7 +61,7 @@ module "aws_api_gateway_stage" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cache_cluster_enabled" {
   description = "(optional)"
   type        = bool
@@ -141,7 +141,7 @@ variable "access_log_settings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_stage" "this" {
   cache_cluster_enabled = var.cache_cluster_enabled
   cache_cluster_size    = var.cache_cluster_size
@@ -170,7 +170,7 @@ resource "aws_api_gateway_stage" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_stage.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigtable_app_profile" {
   source = "./modules/google/r/google_bigtable_app_profile"
 
@@ -57,7 +57,7 @@ module "google_bigtable_app_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "app_profile_id" {
   description = "(required) - The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'."
   type        = string
@@ -121,7 +121,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigtable_app_profile" "this" {
   app_profile_id                = var.app_profile_id
   description                   = var.description
@@ -154,7 +154,7 @@ resource "google_bigtable_app_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_bigtable_app_profile.this.id

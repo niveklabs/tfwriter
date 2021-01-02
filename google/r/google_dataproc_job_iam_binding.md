@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dataproc_job_iam_binding" {
   source = "./modules/google/r/google_dataproc_job_iam_binding"
 
@@ -50,7 +50,7 @@ module "google_dataproc_job_iam_binding" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "job_id" {
   description = "(required)"
   type        = string
@@ -95,7 +95,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dataproc_job_iam_binding" "this" {
   job_id  = var.job_id
   members = var.members
@@ -119,7 +119,7 @@ resource "google_dataproc_job_iam_binding" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_dataproc_job_iam_binding.this.etag

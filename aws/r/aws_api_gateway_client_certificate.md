@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_client_certificate" {
   source = "./modules/aws/r/aws_api_gateway_client_certificate"
 
@@ -38,7 +38,7 @@ module "aws_api_gateway_client_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -56,7 +56,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_client_certificate" "this" {
   description = var.description
   tags        = var.tags
@@ -67,7 +67,7 @@ resource "aws_api_gateway_client_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_client_certificate.this.arn

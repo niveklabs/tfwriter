@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_user_invitation_accepter" {
   source = "./modules/github/r/github_user_invitation_accepter"
 
@@ -36,7 +36,7 @@ module "github_user_invitation_accepter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "invitation_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "invitation_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_user_invitation_accepter" "this" {
   invitation_id = var.invitation_id
 }
@@ -57,7 +57,7 @@ resource "github_user_invitation_accepter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = github_user_invitation_accepter.this.id

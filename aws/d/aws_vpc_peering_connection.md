@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_peering_connection" {
   source = "./modules/aws/d/aws_vpc_peering_connection"
 
@@ -59,7 +59,7 @@ module "aws_vpc_peering_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr_block" {
   description = "(optional)"
   type        = string
@@ -136,7 +136,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_vpc_peering_connection" "this" {
   cidr_block      = var.cidr_block
   owner_id        = var.owner_id
@@ -164,7 +164,7 @@ data "aws_vpc_peering_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accepter" {
   description = "returns a map of bool"
   value       = data.aws_vpc_peering_connection.this.accepter

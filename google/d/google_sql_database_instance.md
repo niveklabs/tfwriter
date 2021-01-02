@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_database_instance" {
   source = "./modules/google/d/google_sql_database_instance"
 
@@ -38,7 +38,7 @@ module "google_sql_database_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week."
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_sql_database_instance" "this" {
   name    = var.name
   project = var.project
@@ -66,7 +66,7 @@ data "google_sql_database_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "connection_name" {
   description = "returns a string"
   value       = data.google_sql_database_instance.this.connection_name

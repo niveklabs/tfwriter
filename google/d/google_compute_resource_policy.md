@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_resource_policy" {
   source = "./modules/google/d/google_compute_resource_policy"
 
@@ -40,7 +40,7 @@ module "google_compute_resource_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - The name of the resource, provided by the client when initially creating\nthe resource. The resource name must be 1-63 characters long, and comply\nwith RFC1035. Specifically, the name must be 1-63 characters long and\nmatch the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the\nfirst character must be a lowercase letter, and all following characters\nmust be a dash, lowercase letter, or digit, except the last character,\nwhich cannot be a dash."
   type        = string
@@ -63,7 +63,7 @@ variable "region" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_resource_policy" "this" {
   name    = var.name
   project = var.project
@@ -75,7 +75,7 @@ data "google_compute_resource_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "group_placement_policy" {
   description = "returns a list of object"
   value       = data.google_compute_resource_policy.this.group_placement_policy

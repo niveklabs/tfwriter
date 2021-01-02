@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eks_fargate_profile" {
   source = "./modules/aws/r/aws_eks_fargate_profile"
 
@@ -54,7 +54,7 @@ module "aws_eks_fargate_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_name" {
   description = "(required)"
   type        = string
@@ -108,7 +108,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_eks_fargate_profile" "this" {
   cluster_name           = var.cluster_name
   fargate_profile_name   = var.fargate_profile_name
@@ -139,7 +139,7 @@ resource "aws_eks_fargate_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_eks_fargate_profile.this.arn

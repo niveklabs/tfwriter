@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_secret_manager_secret_version" {
   source = "./modules/google/d/google_secret_manager_secret_version"
 
@@ -40,7 +40,7 @@ module "google_secret_manager_secret_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "version" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_secret_manager_secret_version" "this" {
   project = var.project
   secret  = var.secret
@@ -75,7 +75,7 @@ data "google_secret_manager_secret_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = data.google_secret_manager_secret_version.this.create_time

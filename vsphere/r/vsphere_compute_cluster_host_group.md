@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_compute_cluster_host_group" {
   source = "./modules/vsphere/r/vsphere_compute_cluster_host_group"
 
@@ -40,7 +40,7 @@ module "vsphere_compute_cluster_host_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_cluster_id" {
   description = "(required) - The managed object ID of the cluster."
   type        = string
@@ -62,7 +62,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_compute_cluster_host_group" "this" {
   compute_cluster_id = var.compute_cluster_id
   host_system_ids    = var.host_system_ids
@@ -74,7 +74,7 @@ resource "vsphere_compute_cluster_host_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_compute_cluster_host_group.this.id

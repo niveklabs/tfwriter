@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_fleet" {
   source = "./modules/aws/r/aws_ec2_fleet"
 
@@ -90,7 +90,7 @@ module "aws_ec2_fleet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "excess_capacity_termination_policy" {
   description = "(optional)"
   type        = string
@@ -212,7 +212,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_fleet" "this" {
   excess_capacity_termination_policy  = var.excess_capacity_termination_policy
   replace_unhealthy_instances         = var.replace_unhealthy_instances
@@ -306,7 +306,7 @@ resource "aws_ec2_fleet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_fleet.this.id

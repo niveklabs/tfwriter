@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_secret" {
   source = "./modules/kubernetes/r/kubernetes_secret"
 
@@ -50,7 +50,7 @@ module "kubernetes_secret" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "data" {
   description = "(optional) - A map of the secret data."
   type        = map(string)
@@ -85,7 +85,7 @@ variable "metadata" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_secret" "this" {
   data = var.data
   type = var.type
@@ -108,7 +108,7 @@ resource "kubernetes_secret" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_secret.this.id

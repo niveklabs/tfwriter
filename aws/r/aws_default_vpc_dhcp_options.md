@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_default_vpc_dhcp_options" {
   source = "./modules/aws/r/aws_default_vpc_dhcp_options"
 
@@ -40,7 +40,7 @@ module "aws_default_vpc_dhcp_options" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "netbios_name_servers" {
   description = "(optional)"
   type        = list(string)
@@ -64,7 +64,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_default_vpc_dhcp_options" "this" {
   netbios_name_servers = var.netbios_name_servers
   netbios_node_type    = var.netbios_node_type
@@ -76,7 +76,7 @@ resource "aws_default_vpc_dhcp_options" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_default_vpc_dhcp_options.this.arn

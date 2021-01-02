@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_event_target" {
   source = "./modules/aws/r/aws_cloudwatch_event_target"
 
@@ -86,7 +86,7 @@ module "aws_cloudwatch_event_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -208,7 +208,7 @@ variable "sqs_target" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_event_target" "this" {
   arn            = var.arn
   event_bus_name = var.event_bus_name
@@ -286,7 +286,7 @@ resource "aws_cloudwatch_event_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cloudwatch_event_target.this.id

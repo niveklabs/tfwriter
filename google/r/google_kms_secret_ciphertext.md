@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_secret_ciphertext" {
   source = "./modules/google/r/google_kms_secret_ciphertext"
 
@@ -45,7 +45,7 @@ module "google_kms_secret_ciphertext" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "additional_authenticated_data" {
   description = "(optional) - The additional authenticated data used for integrity checks during encryption and decryption."
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_kms_secret_ciphertext" "this" {
   additional_authenticated_data = var.additional_authenticated_data
   crypto_key                    = var.crypto_key
@@ -99,7 +99,7 @@ resource "google_kms_secret_ciphertext" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ciphertext" {
   description = "returns a string"
   value       = google_kms_secret_ciphertext.this.ciphertext

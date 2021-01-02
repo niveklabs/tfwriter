@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dns_record_set" {
   source = "./modules/google/r/google_dns_record_set"
 
@@ -46,7 +46,7 @@ module "google_dns_record_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "managed_zone" {
   description = "(required) - The name of the zone in which this record set will reside."
   type        = string
@@ -83,7 +83,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dns_record_set" "this" {
   managed_zone = var.managed_zone
   name         = var.name
@@ -98,7 +98,7 @@ resource "google_dns_record_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dns_record_set.this.id

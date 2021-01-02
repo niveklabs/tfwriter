@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_alias" {
   source = "./modules/aws/r/aws_kms_alias"
 
@@ -40,7 +40,7 @@ module "aws_kms_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "target_key_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kms_alias" "this" {
   name          = var.name
   name_prefix   = var.name_prefix
@@ -75,7 +75,7 @@ resource "aws_kms_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kms_alias.this.arn

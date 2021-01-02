@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_user_defined_function" {
   source = "./modules/aws/r/aws_glue_user_defined_function"
 
@@ -51,7 +51,7 @@ module "aws_glue_user_defined_function" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -99,7 +99,7 @@ variable "resource_uris" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_user_defined_function" "this" {
   catalog_id    = var.catalog_id
   class_name    = var.class_name
@@ -123,7 +123,7 @@ resource "aws_glue_user_defined_function" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_user_defined_function.this.arn

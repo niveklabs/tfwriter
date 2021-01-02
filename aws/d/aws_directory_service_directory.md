@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_directory_service_directory" {
   source = "./modules/aws/d/aws_directory_service_directory"
 
@@ -38,7 +38,7 @@ module "aws_directory_service_directory" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "directory_id" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_directory_service_directory" "this" {
   directory_id = var.directory_id
   tags         = var.tags
@@ -66,7 +66,7 @@ data "aws_directory_service_directory" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_url" {
   description = "returns a string"
   value       = data.aws_directory_service_directory.this.access_url

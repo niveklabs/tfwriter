@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_signer_signing_profile" {
   source = "./modules/aws/d/aws_signer_signing_profile"
 
@@ -38,7 +38,7 @@ module "aws_signer_signing_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_signer_signing_profile" "this" {
   name = var.name
   tags = var.tags
@@ -66,7 +66,7 @@ data "aws_signer_signing_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_signer_signing_profile.this.arn

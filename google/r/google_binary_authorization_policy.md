@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_binary_authorization_policy" {
   source = "./modules/google/r/google_binary_authorization_policy"
 
@@ -63,7 +63,7 @@ module "google_binary_authorization_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A descriptive comment."
   type        = string
@@ -133,7 +133,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_binary_authorization_policy" "this" {
   description                   = var.description
   global_policy_evaluation_mode = var.global_policy_evaluation_mode
@@ -181,7 +181,7 @@ resource "google_binary_authorization_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "global_policy_evaluation_mode" {
   description = "returns a string"
   value       = google_binary_authorization_policy.this.global_policy_evaluation_mode

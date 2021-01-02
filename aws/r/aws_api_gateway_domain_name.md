@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_domain_name" {
   source = "./modules/aws/r/aws_api_gateway_domain_name"
 
@@ -58,7 +58,7 @@ module "aws_api_gateway_domain_name" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(optional)"
   type        = string
@@ -133,7 +133,7 @@ variable "endpoint_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_domain_name" "this" {
   certificate_arn           = var.certificate_arn
   certificate_body          = var.certificate_body
@@ -160,7 +160,7 @@ resource "aws_api_gateway_domain_name" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_domain_name.this.arn

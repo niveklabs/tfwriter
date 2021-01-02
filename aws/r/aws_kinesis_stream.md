@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kinesis_stream" {
   source = "./modules/aws/r/aws_kinesis_stream"
 
@@ -58,7 +58,7 @@ module "aws_kinesis_stream" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(optional)"
   type        = string
@@ -128,7 +128,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kinesis_stream" "this" {
   arn                       = var.arn
   encryption_type           = var.encryption_type
@@ -156,7 +156,7 @@ resource "aws_kinesis_stream" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kinesis_stream.this.arn

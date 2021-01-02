@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vmfs_datastore" {
   source = "./modules/vsphere/r/vsphere_vmfs_datastore"
 
@@ -48,7 +48,7 @@ module "vsphere_vmfs_datastore" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "custom_attributes" {
   description = "(optional) - A list of custom attributes to set on this resource."
   type        = map(string)
@@ -93,7 +93,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_vmfs_datastore" "this" {
   custom_attributes    = var.custom_attributes
   datastore_cluster_id = var.datastore_cluster_id
@@ -109,7 +109,7 @@ resource "vsphere_vmfs_datastore" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accessible" {
   description = "returns a bool"
   value       = vsphere_vmfs_datastore.this.accessible

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_application" {
   source = "./modules/google/r/google_app_engine_application"
 
@@ -60,7 +60,7 @@ module "google_app_engine_application" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auth_domain" {
   description = "(optional) - The domain to authenticate users with when using App Engine's User API."
   type        = string
@@ -129,7 +129,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_application" "this" {
   auth_domain    = var.auth_domain
   database_type  = var.database_type
@@ -168,7 +168,7 @@ resource "google_app_engine_application" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "app_id" {
   description = "returns a string"
   value       = google_app_engine_application.this.app_id

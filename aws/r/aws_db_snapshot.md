@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_snapshot" {
   source = "./modules/aws/r/aws_db_snapshot"
 
@@ -44,7 +44,7 @@ module "aws_db_snapshot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_instance_identifier" {
   description = "(required)"
   type        = string
@@ -76,7 +76,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_snapshot" "this" {
   db_instance_identifier = var.db_instance_identifier
   db_snapshot_identifier = var.db_snapshot_identifier
@@ -96,7 +96,7 @@ resource "aws_db_snapshot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocated_storage" {
   description = "returns a number"
   value       = aws_db_snapshot.this.allocated_storage

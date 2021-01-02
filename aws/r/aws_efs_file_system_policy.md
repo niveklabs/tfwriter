@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_efs_file_system_policy" {
   source = "./modules/aws/r/aws_efs_file_system_policy"
 
@@ -38,7 +38,7 @@ module "aws_efs_file_system_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "file_system_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_efs_file_system_policy" "this" {
   file_system_id = var.file_system_id
   policy         = var.policy
@@ -65,7 +65,7 @@ resource "aws_efs_file_system_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_efs_file_system_policy.this.id

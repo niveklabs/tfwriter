@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_config_map" {
   source = "./modules/kubernetes/d/kubernetes_config_map"
 
@@ -45,7 +45,7 @@ module "kubernetes_config_map" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -67,7 +67,7 @@ variable "metadata" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "kubernetes_config_map" "this" {
 
   dynamic "metadata" {
@@ -87,7 +87,7 @@ data "kubernetes_config_map" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "binary_data" {
   description = "returns a map of string"
   value       = data.kubernetes_config_map.this.binary_data

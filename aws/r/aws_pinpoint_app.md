@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pinpoint_app" {
   source = "./modules/aws/r/aws_pinpoint_app"
 
@@ -58,7 +58,7 @@ module "aws_pinpoint_app" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -118,7 +118,7 @@ variable "quiet_time" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_pinpoint_app" "this" {
   name        = var.name
   name_prefix = var.name_prefix
@@ -158,7 +158,7 @@ resource "aws_pinpoint_app" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "application_id" {
   description = "returns a string"
   value       = aws_pinpoint_app.this.application_id

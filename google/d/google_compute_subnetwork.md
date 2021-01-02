@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_subnetwork" {
   source = "./modules/google/d/google_compute_subnetwork"
 
@@ -42,7 +42,7 @@ module "google_compute_subnetwork" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "self_link" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_subnetwork" "this" {
   name      = var.name
   project   = var.project
@@ -85,7 +85,7 @@ data "google_compute_subnetwork" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.google_compute_subnetwork.this.description

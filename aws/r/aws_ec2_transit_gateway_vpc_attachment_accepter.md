@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_vpc_attachment_accepter" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_vpc_attachment_accepter"
 
@@ -42,7 +42,7 @@ module "aws_ec2_transit_gateway_vpc_attachment_accepter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -71,7 +71,7 @@ variable "transit_gateway_default_route_table_propagation" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "this" {
   tags                                            = var.tags
   transit_gateway_attachment_id                   = var.transit_gateway_attachment_id
@@ -84,7 +84,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "appliance_mode_support" {
   description = "returns a string"
   value       = aws_ec2_transit_gateway_vpc_attachment_accepter.this.appliance_mode_support

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_athena_workgroup" {
   source = "./modules/aws/r/aws_athena_workgroup"
 
@@ -57,7 +57,7 @@ module "aws_athena_workgroup" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -115,7 +115,7 @@ variable "configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_athena_workgroup" "this" {
   description   = var.description
   force_destroy = var.force_destroy
@@ -156,7 +156,7 @@ resource "aws_athena_workgroup" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_athena_workgroup.this.arn

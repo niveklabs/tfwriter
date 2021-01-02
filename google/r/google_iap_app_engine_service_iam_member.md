@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iap_app_engine_service_iam_member" {
   source = "./modules/google/r/google_iap_app_engine_service_iam_member"
 
@@ -50,7 +50,7 @@ module "google_iap_app_engine_service_iam_member" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "app_id" {
   description = "(required)"
   type        = string
@@ -94,7 +94,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_iap_app_engine_service_iam_member" "this" {
   app_id  = var.app_id
   member  = var.member
@@ -118,7 +118,7 @@ resource "google_iap_app_engine_service_iam_member" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_iap_app_engine_service_iam_member.this.etag

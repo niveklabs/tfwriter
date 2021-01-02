@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_route" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_route"
 
@@ -42,7 +42,7 @@ module "aws_ec2_transit_gateway_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "blackhole" {
   description = "(optional)"
   type        = bool
@@ -70,7 +70,7 @@ variable "transit_gateway_route_table_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_transit_gateway_route" "this" {
   blackhole                      = var.blackhole
   destination_cidr_block         = var.destination_cidr_block
@@ -83,7 +83,7 @@ resource "aws_ec2_transit_gateway_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_transit_gateway_route.this.id

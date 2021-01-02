@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_bucket" {
   source = "./modules/google/r/google_storage_bucket"
 
@@ -102,7 +102,7 @@ module "google_storage_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket_policy_only" {
   description = "(optional) - Enables Bucket Policy Only access to a bucket."
   type        = bool
@@ -261,7 +261,7 @@ variable "website" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_bucket" "this" {
   bucket_policy_only          = var.bucket_policy_only
   default_event_based_hold    = var.default_event_based_hold
@@ -359,7 +359,7 @@ resource "google_storage_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bucket_policy_only" {
   description = "returns a bool"
   value       = google_storage_bucket.this.bucket_policy_only

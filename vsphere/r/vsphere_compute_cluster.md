@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_compute_cluster" {
   source = "./modules/vsphere/r/vsphere_compute_cluster"
 
@@ -147,7 +147,7 @@ module "vsphere_compute_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "custom_attributes" {
   description = "(optional) - A list of custom attributes to set on this resource."
   type        = map(string)
@@ -486,7 +486,7 @@ variable "vsan_disk_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_compute_cluster" "this" {
   custom_attributes                                     = var.custom_attributes
   datacenter_id                                         = var.datacenter_id
@@ -558,7 +558,7 @@ resource "vsphere_compute_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_compute_cluster.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_dynamic" {
   source = "./modules/vsphere/d/vsphere_dynamic"
 
@@ -40,7 +40,7 @@ module "vsphere_dynamic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "filter" {
   description = "(required) - List of tag IDs to match target."
   type        = set(string)
@@ -63,7 +63,7 @@ variable "type" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_dynamic" "this" {
   filter     = var.filter
   name_regex = var.name_regex
@@ -75,7 +75,7 @@ data "vsphere_dynamic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_dynamic.this.id

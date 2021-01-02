@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudfront_distribution" {
   source = "./modules/aws/d/aws_cloudfront_distribution"
 
@@ -36,7 +36,7 @@ module "aws_cloudfront_distribution" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -48,7 +48,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_cloudfront_distribution" "this" {
   tags = var.tags
 }
@@ -58,7 +58,7 @@ data "aws_cloudfront_distribution" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_cloudfront_distribution.this.arn

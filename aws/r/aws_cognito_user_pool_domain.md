@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_user_pool_domain" {
   source = "./modules/aws/r/aws_cognito_user_pool_domain"
 
@@ -40,7 +40,7 @@ module "aws_cognito_user_pool_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "user_pool_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_user_pool_domain" "this" {
   certificate_arn = var.certificate_arn
   domain          = var.domain
@@ -74,7 +74,7 @@ resource "aws_cognito_user_pool_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "aws_account_id" {
   description = "returns a string"
   value       = aws_cognito_user_pool_domain.this.aws_account_id

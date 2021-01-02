@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_group_membership" {
   source = "./modules/aws/r/aws_iam_group_membership"
 
@@ -40,7 +40,7 @@ module "aws_iam_group_membership" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "users" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_group_membership" "this" {
   group = var.group
   name  = var.name
@@ -73,7 +73,7 @@ resource "aws_iam_group_membership" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_iam_group_membership.this.id

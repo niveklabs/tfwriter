@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_cluster_istio_service" {
   source = "./modules/google/d/google_monitoring_cluster_istio_service"
 
@@ -44,7 +44,7 @@ module "google_monitoring_cluster_istio_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_name" {
   description = "(required) - The name of the Kubernetes cluster in which this Istio service is defined. \n                        Corresponds to the clusterName resource label in k8s_cluster resources."
   type        = string
@@ -76,7 +76,7 @@ variable "service_namespace" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_monitoring_cluster_istio_service" "this" {
   cluster_name      = var.cluster_name
   location          = var.location
@@ -90,7 +90,7 @@ data "google_monitoring_cluster_istio_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "display_name" {
   description = "returns a string"
   value       = data.google_monitoring_cluster_istio_service.this.display_name

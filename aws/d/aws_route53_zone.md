@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_zone" {
   source = "./modules/aws/d/aws_route53_zone"
 
@@ -46,7 +46,7 @@ module "aws_route53_zone" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "zone_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_route53_zone" "this" {
   name                      = var.name
   private_zone              = var.private_zone
@@ -103,7 +103,7 @@ data "aws_route53_zone" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "caller_reference" {
   description = "returns a string"
   value       = data.aws_route53_zone.this.caller_reference

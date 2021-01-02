@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_neptune_orderable_db_instance" {
   source = "./modules/aws/d/aws_neptune_orderable_db_instance"
 
@@ -46,7 +46,7 @@ module "aws_neptune_orderable_db_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "engine" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "vpc" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_neptune_orderable_db_instance" "this" {
   engine                     = var.engine
   engine_version             = var.engine_version
@@ -103,7 +103,7 @@ data "aws_neptune_orderable_db_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "availability_zones" {
   description = "returns a list of string"
   value       = data.aws_neptune_orderable_db_instance.this.availability_zones

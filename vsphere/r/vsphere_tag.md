@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_tag" {
   source = "./modules/vsphere/r/vsphere_tag"
 
@@ -40,7 +40,7 @@ module "vsphere_tag" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "category_id" {
   description = "(required) - The unique identifier of the parent category in which this tag will be created."
   type        = string
@@ -62,7 +62,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_tag" "this" {
   category_id = var.category_id
   description = var.description
@@ -74,7 +74,7 @@ resource "vsphere_tag" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_tag.this.id

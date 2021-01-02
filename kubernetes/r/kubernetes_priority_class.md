@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_priority_class" {
   source = "./modules/kubernetes/r/kubernetes_priority_class"
 
@@ -51,7 +51,7 @@ module "kubernetes_priority_class" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An arbitrary string that usually provides guidelines on when this priority class should be used."
   type        = string
@@ -90,7 +90,7 @@ variable "metadata" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_priority_class" "this" {
   description    = var.description
   global_default = var.global_default
@@ -113,7 +113,7 @@ resource "kubernetes_priority_class" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_priority_class.this.id

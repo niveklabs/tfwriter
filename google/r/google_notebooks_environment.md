@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_notebooks_environment" {
   source = "./modules/google/r/google_notebooks_environment"
 
@@ -63,7 +63,7 @@ module "google_notebooks_environment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A brief description of this environment."
   type        = string
@@ -138,7 +138,7 @@ variable "vm_image" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_notebooks_environment" "this" {
   description         = var.description
   display_name        = var.display_name
@@ -180,7 +180,7 @@ resource "google_notebooks_environment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_notebooks_environment.this.create_time

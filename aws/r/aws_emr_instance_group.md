@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_emr_instance_group" {
   source = "./modules/aws/r/aws_emr_instance_group"
 
@@ -57,7 +57,7 @@ module "aws_emr_instance_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "autoscaling_policy" {
   description = "(optional)"
   type        = string
@@ -122,7 +122,7 @@ variable "ebs_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_emr_instance_group" "this" {
   autoscaling_policy  = var.autoscaling_policy
   bid_price           = var.bid_price
@@ -150,7 +150,7 @@ resource "aws_emr_instance_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_emr_instance_group.this.id

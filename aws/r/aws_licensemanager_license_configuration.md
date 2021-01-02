@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_licensemanager_license_configuration" {
   source = "./modules/aws/r/aws_licensemanager_license_configuration"
 
@@ -48,7 +48,7 @@ module "aws_licensemanager_license_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -94,7 +94,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_licensemanager_license_configuration" "this" {
   description              = var.description
   license_count            = var.license_count
@@ -110,7 +110,7 @@ resource "aws_licensemanager_license_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_licensemanager_license_configuration.this.id

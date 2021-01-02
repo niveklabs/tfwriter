@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_netblock_ip_ranges" {
   source = "./modules/google/d/google_netblock_ip_ranges"
 
@@ -36,7 +36,7 @@ module "google_netblock_ip_ranges" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "range_type" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "range_type" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_netblock_ip_ranges" "this" {
   range_type = var.range_type
 }
@@ -58,7 +58,7 @@ data "google_netblock_ip_ranges" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cidr_blocks" {
   description = "returns a list of string"
   value       = data.google_netblock_ip_ranges.this.cidr_blocks

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_custom_layer" {
   source = "./modules/aws/r/aws_opsworks_custom_layer"
 
@@ -86,7 +86,7 @@ module "aws_opsworks_custom_layer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_assign_elastic_ips" {
   description = "(optional)"
   type        = bool
@@ -231,7 +231,7 @@ variable "ebs_volume" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_custom_layer" "this" {
   auto_assign_elastic_ips     = var.auto_assign_elastic_ips
   auto_assign_public_ips      = var.auto_assign_public_ips
@@ -275,7 +275,7 @@ resource "aws_opsworks_custom_layer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_opsworks_custom_layer.this.arn

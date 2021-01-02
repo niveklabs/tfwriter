@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sfn_state_machine" {
   source = "./modules/aws/r/aws_sfn_state_machine"
 
@@ -42,7 +42,7 @@ module "aws_sfn_state_machine" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "definition" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sfn_state_machine" "this" {
   definition = var.definition
   name       = var.name
@@ -82,7 +82,7 @@ resource "aws_sfn_state_machine" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sfn_state_machine.this.arn

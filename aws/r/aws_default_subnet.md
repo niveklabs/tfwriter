@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_default_subnet" {
   source = "./modules/aws/r/aws_default_subnet"
 
@@ -47,7 +47,7 @@ module "aws_default_subnet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(required)"
   type        = string
@@ -87,7 +87,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_default_subnet" "this" {
   availability_zone       = var.availability_zone
   map_public_ip_on_launch = var.map_public_ip_on_launch
@@ -109,7 +109,7 @@ resource "aws_default_subnet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_default_subnet.this.arn

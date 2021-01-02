@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_location_s3" {
   source = "./modules/aws/r/aws_datasync_location_s3"
 
@@ -44,7 +44,7 @@ module "aws_datasync_location_s3" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "s3_bucket_arn" {
   description = "(required)"
   type        = string
@@ -75,7 +75,7 @@ variable "s3_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_location_s3" "this" {
   s3_bucket_arn = var.s3_bucket_arn
   subdirectory  = var.subdirectory
@@ -95,7 +95,7 @@ resource "aws_datasync_location_s3" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_location_s3.this.arn

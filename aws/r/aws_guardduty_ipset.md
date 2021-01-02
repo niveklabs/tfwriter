@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_ipset" {
   source = "./modules/aws/r/aws_guardduty_ipset"
 
@@ -46,7 +46,7 @@ module "aws_guardduty_ipset" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "activate" {
   description = "(required)"
   type        = bool
@@ -83,7 +83,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_ipset" "this" {
   activate    = var.activate
   detector_id = var.detector_id
@@ -98,7 +98,7 @@ resource "aws_guardduty_ipset" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_guardduty_ipset.this.arn

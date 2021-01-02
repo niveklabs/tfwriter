@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_endpoint_service" {
   source = "./modules/aws/r/aws_vpc_endpoint_service"
 
@@ -44,7 +44,7 @@ module "aws_vpc_endpoint_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "acceptance_required" {
   description = "(required)"
   type        = bool
@@ -79,7 +79,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_endpoint_service" "this" {
   acceptance_required        = var.acceptance_required
   allowed_principals         = var.allowed_principals
@@ -93,7 +93,7 @@ resource "aws_vpc_endpoint_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allowed_principals" {
   description = "returns a set of string"
   value       = aws_vpc_endpoint_service.this.allowed_principals

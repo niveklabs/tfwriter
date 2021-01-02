@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3control_bucket" {
   source = "./modules/aws/r/aws_s3control_bucket"
 
@@ -40,7 +40,7 @@ module "aws_s3control_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3control_bucket" "this" {
   bucket     = var.bucket
   outpost_id = var.outpost_id
@@ -74,7 +74,7 @@ resource "aws_s3control_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_s3control_bucket.this.arn

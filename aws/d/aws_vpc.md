@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc" {
   source = "./modules/aws/d/aws_vpc"
 
@@ -49,7 +49,7 @@ module "aws_vpc" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr_block" {
   description = "(optional)"
   type        = string
@@ -96,7 +96,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_vpc" "this" {
   cidr_block      = var.cidr_block
   default         = var.default
@@ -119,7 +119,7 @@ data "aws_vpc" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_vpc.this.arn

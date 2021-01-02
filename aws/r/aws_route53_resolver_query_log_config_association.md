@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_resolver_query_log_config_association" {
   source = "./modules/aws/r/aws_route53_resolver_query_log_config_association"
 
@@ -38,7 +38,7 @@ module "aws_route53_resolver_query_log_config_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "resolver_query_log_config_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "resource_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_resolver_query_log_config_association" "this" {
   resolver_query_log_config_id = var.resolver_query_log_config_id
   resource_id                  = var.resource_id
@@ -65,7 +65,7 @@ resource "aws_route53_resolver_query_log_config_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_route53_resolver_query_log_config_association.this.id

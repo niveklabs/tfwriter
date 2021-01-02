@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_os_config_patch_deployment" {
   source = "./modules/google/r/google_os_config_patch_deployment"
 
@@ -171,7 +171,7 @@ module "google_os_config_patch_deployment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Description of the patch deployment. Length of the description is limited to 1024 characters."
   type        = string
@@ -408,7 +408,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_os_config_patch_deployment" "this" {
   description         = var.description
   duration            = var.duration
@@ -666,7 +666,7 @@ resource "google_os_config_patch_deployment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_os_config_patch_deployment.this.create_time

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_snapshot_copy" {
   source = "./modules/aws/r/aws_ebs_snapshot_copy"
 
@@ -46,7 +46,7 @@ module "aws_ebs_snapshot_copy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -86,7 +86,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ebs_snapshot_copy" "this" {
   description        = var.description
   encrypted          = var.encrypted
@@ -101,7 +101,7 @@ resource "aws_ebs_snapshot_copy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ebs_snapshot_copy.this.arn

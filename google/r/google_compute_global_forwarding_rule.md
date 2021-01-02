@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_global_forwarding_rule" {
   source = "./modules/google/r/google_compute_global_forwarding_rule"
 
@@ -66,7 +66,7 @@ module "google_compute_global_forwarding_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource. Provide this property when\nyou create the resource."
   type        = string
@@ -152,7 +152,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_global_forwarding_rule" "this" {
   description           = var.description
   ip_address            = var.ip_address
@@ -196,7 +196,7 @@ resource "google_compute_global_forwarding_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_global_forwarding_rule.this.id

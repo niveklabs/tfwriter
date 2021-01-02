@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_receipt_filter" {
   source = "./modules/aws/r/aws_ses_receipt_filter"
 
@@ -40,7 +40,7 @@ module "aws_ses_receipt_filter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_receipt_filter" "this" {
   cidr   = var.cidr
   name   = var.name
@@ -73,7 +73,7 @@ resource "aws_ses_receipt_filter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ses_receipt_filter.this.arn

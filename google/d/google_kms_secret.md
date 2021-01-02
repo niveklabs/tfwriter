@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_secret" {
   source = "./modules/google/d/google_kms_secret"
 
@@ -40,7 +40,7 @@ module "google_kms_secret" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "additional_authenticated_data" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "crypto_key" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_kms_secret" "this" {
   additional_authenticated_data = var.additional_authenticated_data
   ciphertext                    = var.ciphertext
@@ -74,7 +74,7 @@ data "google_kms_secret" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_kms_secret.this.id

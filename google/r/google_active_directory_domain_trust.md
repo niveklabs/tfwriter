@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_active_directory_domain_trust" {
   source = "./modules/google/r/google_active_directory_domain_trust"
 
@@ -56,7 +56,7 @@ module "google_active_directory_domain_trust" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required) - The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions, \nhttps://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains."
   type        = string
@@ -116,7 +116,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_active_directory_domain_trust" "this" {
   domain                   = var.domain
   project                  = var.project
@@ -143,7 +143,7 @@ resource "google_active_directory_domain_trust" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_active_directory_domain_trust.this.id

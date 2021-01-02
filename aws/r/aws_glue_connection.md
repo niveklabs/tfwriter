@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_connection" {
   source = "./modules/aws/r/aws_glue_connection"
 
@@ -52,7 +52,7 @@ module "aws_glue_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -104,7 +104,7 @@ variable "physical_connection_requirements" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_connection" "this" {
   catalog_id            = var.catalog_id
   connection_properties = var.connection_properties
@@ -129,7 +129,7 @@ resource "aws_glue_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_connection.this.arn

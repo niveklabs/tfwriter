@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_vpc_link" {
   source = "./modules/aws/r/aws_apigatewayv2_vpc_link"
 
@@ -42,7 +42,7 @@ module "aws_apigatewayv2_vpc_link" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_vpc_link" "this" {
   name               = var.name
   security_group_ids = var.security_group_ids
@@ -82,7 +82,7 @@ resource "aws_apigatewayv2_vpc_link" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_apigatewayv2_vpc_link.this.arn

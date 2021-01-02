@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpn_connection_route" {
   source = "./modules/aws/r/aws_vpn_connection_route"
 
@@ -38,7 +38,7 @@ module "aws_vpn_connection_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destination_cidr_block" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "vpn_connection_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpn_connection_route" "this" {
   destination_cidr_block = var.destination_cidr_block
   vpn_connection_id      = var.vpn_connection_id
@@ -65,7 +65,7 @@ resource "aws_vpn_connection_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpn_connection_route.this.id

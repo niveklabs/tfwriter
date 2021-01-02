@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_transfer_server" {
   source = "./modules/aws/r/aws_transfer_server"
 
@@ -57,7 +57,7 @@ module "aws_transfer_server" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "endpoint_type" {
   description = "(optional)"
   type        = string
@@ -124,7 +124,7 @@ variable "endpoint_details" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_transfer_server" "this" {
   endpoint_type          = var.endpoint_type
   force_destroy          = var.force_destroy
@@ -152,7 +152,7 @@ resource "aws_transfer_server" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_transfer_server.this.arn

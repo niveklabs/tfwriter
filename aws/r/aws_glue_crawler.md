@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_crawler" {
   source = "./modules/aws/r/aws_glue_crawler"
 
@@ -88,7 +88,7 @@ module "aws_glue_crawler" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "classifiers" {
   description = "(optional)"
   type        = list(string)
@@ -221,7 +221,7 @@ variable "schema_change_policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_crawler" "this" {
   classifiers            = var.classifiers
   configuration          = var.configuration
@@ -293,7 +293,7 @@ resource "aws_glue_crawler" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_crawler.this.arn

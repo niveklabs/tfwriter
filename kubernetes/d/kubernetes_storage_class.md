@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_storage_class" {
   source = "./modules/kubernetes/d/kubernetes_storage_class"
 
@@ -44,7 +44,7 @@ module "kubernetes_storage_class" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -65,7 +65,7 @@ variable "metadata" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "kubernetes_storage_class" "this" {
 
   dynamic "metadata" {
@@ -84,7 +84,7 @@ data "kubernetes_storage_class" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_volume_expansion" {
   description = "returns a bool"
   value       = data.kubernetes_storage_class.this.allow_volume_expansion

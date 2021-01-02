@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_flexible_app_version" {
   source = "./modules/google/r/google_app_engine_flexible_app_version"
 
@@ -208,7 +208,7 @@ module "google_app_engine_flexible_app_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "beta_settings" {
   description = "(optional) - Metadata settings that are supplied to this version to enable beta runtime features."
   type        = map(string)
@@ -548,7 +548,7 @@ variable "vpc_access_connector" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_flexible_app_version" "this" {
   beta_settings                = var.beta_settings
   default_expiration           = var.default_expiration
@@ -803,7 +803,7 @@ resource "google_app_engine_flexible_app_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_flexible_app_version.this.id

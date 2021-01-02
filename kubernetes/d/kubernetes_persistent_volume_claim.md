@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_persistent_volume_claim" {
   source = "./modules/kubernetes/d/kubernetes_persistent_volume_claim"
 
@@ -64,7 +64,7 @@ module "kubernetes_persistent_volume_claim" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -117,7 +117,7 @@ variable "spec" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "kubernetes_persistent_volume_claim" "this" {
 
   dynamic "metadata" {
@@ -164,7 +164,7 @@ data "kubernetes_persistent_volume_claim" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.kubernetes_persistent_volume_claim.this.id

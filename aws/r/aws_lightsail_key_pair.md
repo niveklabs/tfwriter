@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lightsail_key_pair" {
   source = "./modules/aws/r/aws_lightsail_key_pair"
 
@@ -42,7 +42,7 @@ module "aws_lightsail_key_pair" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "public_key" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lightsail_key_pair" "this" {
   name        = var.name
   name_prefix = var.name_prefix
@@ -85,7 +85,7 @@ resource "aws_lightsail_key_pair" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lightsail_key_pair.this.arn

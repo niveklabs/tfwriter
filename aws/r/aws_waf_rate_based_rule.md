@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_waf_rate_based_rule" {
   source = "./modules/aws/r/aws_waf_rate_based_rule"
 
@@ -50,7 +50,7 @@ module "aws_waf_rate_based_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metric_name" {
   description = "(required)"
   type        = string
@@ -94,7 +94,7 @@ variable "predicates" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_waf_rate_based_rule" "this" {
   metric_name = var.metric_name
   name        = var.name
@@ -118,7 +118,7 @@ resource "aws_waf_rate_based_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_waf_rate_based_rule.this.arn

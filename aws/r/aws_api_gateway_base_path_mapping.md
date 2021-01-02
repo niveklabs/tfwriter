@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_base_path_mapping" {
   source = "./modules/aws/r/aws_api_gateway_base_path_mapping"
 
@@ -42,7 +42,7 @@ module "aws_api_gateway_base_path_mapping" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_id" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "stage_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_base_path_mapping" "this" {
   api_id      = var.api_id
   base_path   = var.base_path
@@ -83,7 +83,7 @@ resource "aws_api_gateway_base_path_mapping" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_base_path_mapping.this.id

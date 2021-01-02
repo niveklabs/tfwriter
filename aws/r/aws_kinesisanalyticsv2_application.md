@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kinesisanalyticsv2_application" {
   source = "./modules/aws/r/aws_kinesisanalyticsv2_application"
 
@@ -185,7 +185,7 @@ module "aws_kinesisanalyticsv2_application" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -447,7 +447,7 @@ variable "cloudwatch_logging_options" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kinesisanalyticsv2_application" "this" {
   description            = var.description
   name                   = var.name
@@ -763,7 +763,7 @@ resource "aws_kinesisanalyticsv2_application" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kinesisanalyticsv2_application.this.arn

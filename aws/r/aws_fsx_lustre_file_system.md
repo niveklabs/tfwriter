@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_fsx_lustre_file_system" {
   source = "./modules/aws/r/aws_fsx_lustre_file_system"
 
@@ -73,7 +73,7 @@ module "aws_fsx_lustre_file_system" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_import_policy" {
   description = "(optional)"
   type        = string
@@ -190,7 +190,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_fsx_lustre_file_system" "this" {
   auto_import_policy                = var.auto_import_policy
   automatic_backup_retention_days   = var.automatic_backup_retention_days
@@ -225,7 +225,7 @@ resource "aws_fsx_lustre_file_system" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_fsx_lustre_file_system.this.arn

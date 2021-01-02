@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_user_login_profile" {
   source = "./modules/aws/r/aws_iam_user_login_profile"
 
@@ -42,7 +42,7 @@ module "aws_iam_user_login_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "password_length" {
   description = "(optional)"
   type        = number
@@ -70,7 +70,7 @@ variable "user" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_user_login_profile" "this" {
   password_length         = var.password_length
   password_reset_required = var.password_reset_required
@@ -83,7 +83,7 @@ resource "aws_iam_user_login_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "encrypted_password" {
   description = "returns a string"
   value       = aws_iam_user_login_profile.this.encrypted_password

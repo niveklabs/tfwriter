@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codecommit_repository" {
   source = "./modules/aws/d/aws_codecommit_repository"
 
@@ -36,7 +36,7 @@ module "aws_codecommit_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "repository_name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "repository_name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_codecommit_repository" "this" {
   repository_name = var.repository_name
 }
@@ -57,7 +57,7 @@ data "aws_codecommit_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_codecommit_repository.this.arn

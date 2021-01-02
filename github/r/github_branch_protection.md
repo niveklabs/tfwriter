@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_branch_protection" {
   source = "./modules/github/r/github_branch_protection"
 
@@ -56,7 +56,7 @@ module "github_branch_protection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enforce_admins" {
   description = "(optional)"
   type        = bool
@@ -114,7 +114,7 @@ variable "required_status_checks" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_branch_protection" "this" {
   enforce_admins         = var.enforce_admins
   pattern                = var.pattern
@@ -147,7 +147,7 @@ resource "github_branch_protection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = github_branch_protection.this.id

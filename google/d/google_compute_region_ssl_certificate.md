@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_region_ssl_certificate" {
   source = "./modules/google/d/google_compute_region_ssl_certificate"
 
@@ -40,7 +40,7 @@ module "google_compute_region_ssl_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035. Specifically, the name must be 1-63 characters long and match\nthe regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the\nfirst character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash.\n\n\nThese are in the same namespace as the managed SSL certificates."
   type        = string
@@ -63,7 +63,7 @@ variable "region" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_region_ssl_certificate" "this" {
   name    = var.name
   project = var.project
@@ -75,7 +75,7 @@ data "google_compute_region_ssl_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate" {
   description = "returns a string"
   value       = data.google_compute_region_ssl_certificate.this.certificate

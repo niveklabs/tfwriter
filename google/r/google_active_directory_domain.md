@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_active_directory_domain" {
   source = "./modules/google/r/google_active_directory_domain"
 
@@ -54,7 +54,7 @@ module "google_active_directory_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "admin" {
   description = "(optional) - The name of delegated administrator account used to perform Active Directory operations. \nIf not specified, setupadmin will be used."
   type        = string
@@ -111,7 +111,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_active_directory_domain" "this" {
   admin               = var.admin
   authorized_networks = var.authorized_networks
@@ -137,7 +137,7 @@ resource "google_active_directory_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "fqdn" {
   description = "returns a string"
   value       = google_active_directory_domain.this.fqdn

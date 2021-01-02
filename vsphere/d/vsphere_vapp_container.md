@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vapp_container" {
   source = "./modules/vsphere/d/vsphere_vapp_container"
 
@@ -38,7 +38,7 @@ module "vsphere_vapp_container" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "datacenter_id" {
   description = "(required) - The Managed Object ID of the datacenter."
   type        = string
@@ -54,7 +54,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_vapp_container" "this" {
   datacenter_id = var.datacenter_id
   name          = var.name
@@ -65,7 +65,7 @@ data "vsphere_vapp_container" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_vapp_container.this.id

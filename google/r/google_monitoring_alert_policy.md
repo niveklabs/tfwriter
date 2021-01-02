@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_alert_policy" {
   source = "./modules/google/r/google_monitoring_alert_policy"
 
@@ -107,7 +107,7 @@ module "google_monitoring_alert_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "combiner" {
   description = "(required) - How to combine the results of multiple conditions to\ndetermine if an incident should be opened. Possible values: [\"AND\", \"OR\", \"AND_WITH_MATCHING_RESOURCE\"]"
   type        = string
@@ -243,7 +243,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_alert_policy" "this" {
   combiner              = var.combiner
   display_name          = var.display_name
@@ -368,7 +368,7 @@ resource "google_monitoring_alert_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_record" {
   description = "returns a list of object"
   value       = google_monitoring_alert_policy.this.creation_record

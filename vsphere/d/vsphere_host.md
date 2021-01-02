@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host" {
   source = "./modules/vsphere/d/vsphere_host"
 
@@ -38,7 +38,7 @@ module "vsphere_host" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "datacenter_id" {
   description = "(required) - The managed object ID of the datacenter to look for the host in."
   type        = string
@@ -55,7 +55,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_host" "this" {
   datacenter_id = var.datacenter_id
   name          = var.name
@@ -66,7 +66,7 @@ data "vsphere_host" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_host.this.id

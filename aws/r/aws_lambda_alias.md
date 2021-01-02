@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_alias" {
   source = "./modules/aws/r/aws_lambda_alias"
 
@@ -46,7 +46,7 @@ module "aws_lambda_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -83,7 +83,7 @@ variable "routing_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_alias" "this" {
   description      = var.description
   function_name    = var.function_name
@@ -104,7 +104,7 @@ resource "aws_lambda_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lambda_alias.this.arn

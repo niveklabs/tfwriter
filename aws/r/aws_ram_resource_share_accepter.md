@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ram_resource_share_accepter" {
   source = "./modules/aws/r/aws_ram_resource_share_accepter"
 
@@ -41,7 +41,7 @@ module "aws_ram_resource_share_accepter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "share_arn" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ram_resource_share_accepter" "this" {
   share_arn = var.share_arn
 
@@ -82,7 +82,7 @@ resource "aws_ram_resource_share_accepter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ram_resource_share_accepter.this.id

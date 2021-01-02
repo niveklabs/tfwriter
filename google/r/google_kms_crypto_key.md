@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_crypto_key" {
   source = "./modules/google/r/google_kms_crypto_key"
 
@@ -57,7 +57,7 @@ module "google_kms_crypto_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key_ring" {
   description = "(required) - The KeyRing that this key belongs to.\nFormat: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''."
   type        = string
@@ -120,7 +120,7 @@ variable "version_template" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_kms_crypto_key" "this" {
   key_ring                      = var.key_ring
   labels                        = var.labels
@@ -153,7 +153,7 @@ resource "google_kms_crypto_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_kms_crypto_key.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_location_efs" {
   source = "./modules/aws/r/aws_datasync_location_efs"
 
@@ -45,7 +45,7 @@ module "aws_datasync_location_efs" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "efs_file_system_arn" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "ec2_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_location_efs" "this" {
   efs_file_system_arn = var.efs_file_system_arn
   subdirectory        = var.subdirectory
@@ -99,7 +99,7 @@ resource "aws_datasync_location_efs" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_location_efs.this.arn

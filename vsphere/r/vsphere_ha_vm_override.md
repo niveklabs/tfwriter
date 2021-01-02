@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_ha_vm_override" {
   source = "./modules/vsphere/r/vsphere_ha_vm_override"
 
@@ -64,7 +64,7 @@ module "vsphere_ha_vm_override" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_cluster_id" {
   description = "(required) - The managed object ID of the cluster."
   type        = string
@@ -158,7 +158,7 @@ variable "virtual_machine_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_ha_vm_override" "this" {
   compute_cluster_id                    = var.compute_cluster_id
   ha_datastore_apd_recovery_action      = var.ha_datastore_apd_recovery_action
@@ -182,7 +182,7 @@ resource "vsphere_ha_vm_override" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_ha_vm_override.this.id

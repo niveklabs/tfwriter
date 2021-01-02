@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_user" {
   source = "./modules/google/r/google_sql_user"
 
@@ -52,7 +52,7 @@ module "google_sql_user" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deletion_policy" {
   description = "(optional) - The deletion policy for the user. Setting ABANDON allows the resource\n\t\t\t\tto be abandoned rather than deleted. This is useful for Postgres, where users cannot be deleted from the API if they\n\t\t\t\thave been granted SQL roles. Possible values are: \"ABANDON\"."
   type        = string
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sql_user" "this" {
   deletion_policy = var.deletion_policy
   host            = var.host
@@ -129,7 +129,7 @@ resource "google_sql_user" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_sql_user.this.id

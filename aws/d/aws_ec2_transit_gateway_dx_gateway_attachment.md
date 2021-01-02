@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_dx_gateway_attachment" {
   source = "./modules/aws/d/aws_ec2_transit_gateway_dx_gateway_attachment"
 
@@ -45,7 +45,7 @@ module "aws_ec2_transit_gateway_dx_gateway_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dx_gateway_id" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_transit_gateway_dx_gateway_attachment" "this" {
   dx_gateway_id      = var.dx_gateway_id
   tags               = var.tags
@@ -101,7 +101,7 @@ data "aws_ec2_transit_gateway_dx_gateway_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_transit_gateway_dx_gateway_attachment.this.id

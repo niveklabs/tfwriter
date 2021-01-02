@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_default_service_account" {
   source = "./modules/kubernetes/r/kubernetes_default_service_account"
 
@@ -59,7 +59,7 @@ module "kubernetes_default_service_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "automount_service_account_token" {
   description = "(optional) - True to enable automatic mounting of the service account token"
   type        = bool
@@ -117,7 +117,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_default_service_account" "this" {
   automount_service_account_token = var.automount_service_account_token
 
@@ -159,7 +159,7 @@ resource "kubernetes_default_service_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_secret_name" {
   description = "returns a string"
   value       = kubernetes_default_service_account.this.default_secret_name

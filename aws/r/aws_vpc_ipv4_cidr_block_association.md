@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_ipv4_cidr_block_association" {
   source = "./modules/aws/r/aws_vpc_ipv4_cidr_block_association"
 
@@ -43,7 +43,7 @@ module "aws_vpc_ipv4_cidr_block_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr_block" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_ipv4_cidr_block_association" "this" {
   cidr_block = var.cidr_block
   vpc_id     = var.vpc_id
@@ -90,7 +90,7 @@ resource "aws_vpc_ipv4_cidr_block_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpc_ipv4_cidr_block_association.this.id

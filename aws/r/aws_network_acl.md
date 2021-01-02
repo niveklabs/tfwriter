@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_acl" {
   source = "./modules/aws/r/aws_network_acl"
 
@@ -64,7 +64,7 @@ module "aws_network_acl" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "egress" {
   description = "(optional)"
   type = set(object(
@@ -123,7 +123,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_network_acl" "this" {
   egress     = var.egress
   ingress    = var.ingress
@@ -137,7 +137,7 @@ resource "aws_network_acl" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_network_acl.this.arn

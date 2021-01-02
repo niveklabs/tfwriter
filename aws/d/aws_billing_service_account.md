@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_billing_service_account" {
   source = "./modules/aws/d/aws_billing_service_account"
 
@@ -34,14 +34,14 @@ module "aws_billing_service_account" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_billing_service_account" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_billing_service_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_billing_service_account.this.arn

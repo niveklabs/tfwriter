@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_alb_target_group_attachment" {
   source = "./modules/aws/r/aws_alb_target_group_attachment"
 
@@ -42,7 +42,7 @@ module "aws_alb_target_group_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(optional)"
   type        = string
@@ -70,7 +70,7 @@ variable "target_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_alb_target_group_attachment" "this" {
   availability_zone = var.availability_zone
   port              = var.port
@@ -83,7 +83,7 @@ resource "aws_alb_target_group_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_alb_target_group_attachment.this.id

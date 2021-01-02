@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_user_ssh_key" {
   source = "./modules/aws/r/aws_iam_user_ssh_key"
 
@@ -42,7 +42,7 @@ module "aws_iam_user_ssh_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "encoding" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "username" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_user_ssh_key" "this" {
   encoding   = var.encoding
   public_key = var.public_key
@@ -82,7 +82,7 @@ resource "aws_iam_user_ssh_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "fingerprint" {
   description = "returns a string"
   value       = aws_iam_user_ssh_key.this.fingerprint

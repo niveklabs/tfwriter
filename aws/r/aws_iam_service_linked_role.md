@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_service_linked_role" {
   source = "./modules/aws/r/aws_iam_service_linked_role"
 
@@ -40,7 +40,7 @@ module "aws_iam_service_linked_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aws_service_name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "description" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_service_linked_role" "this" {
   aws_service_name = var.aws_service_name
   custom_suffix    = var.custom_suffix
@@ -75,7 +75,7 @@ resource "aws_iam_service_linked_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_service_linked_role.this.arn

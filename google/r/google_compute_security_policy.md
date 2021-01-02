@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_security_policy" {
   source = "./modules/google/r/google_compute_security_policy"
 
@@ -62,7 +62,7 @@ module "google_compute_security_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this security policy. Max size is 2048."
   type        = string
@@ -125,7 +125,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_security_policy" "this" {
   description = var.description
   name        = var.name
@@ -180,7 +180,7 @@ resource "google_compute_security_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "fingerprint" {
   description = "returns a string"
   value       = google_compute_security_policy.this.fingerprint

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_log_group" {
   source = "./modules/aws/r/aws_cloudwatch_log_group"
 
@@ -44,7 +44,7 @@ module "aws_cloudwatch_log_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "kms_key_id" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_log_group" "this" {
   kms_key_id        = var.kms_key_id
   name              = var.name
@@ -94,7 +94,7 @@ resource "aws_cloudwatch_log_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudwatch_log_group.this.arn

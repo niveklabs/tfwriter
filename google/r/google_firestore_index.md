@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_firestore_index" {
   source = "./modules/google/r/google_firestore_index"
 
@@ -53,7 +53,7 @@ module "google_firestore_index" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "collection" {
   description = "(required) - The collection being indexed."
   type        = string
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_firestore_index" "this" {
   collection  = var.collection
   database    = var.database
@@ -135,7 +135,7 @@ resource "google_firestore_index" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_firestore_index.this.id

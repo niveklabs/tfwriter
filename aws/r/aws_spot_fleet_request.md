@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_spot_fleet_request" {
   source = "./modules/aws/r/aws_spot_fleet_request"
 
@@ -137,7 +137,7 @@ module "aws_spot_fleet_request" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allocation_strategy" {
   description = "(optional)"
   type        = string
@@ -344,7 +344,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_spot_fleet_request" "this" {
   allocation_strategy                 = var.allocation_strategy
   excess_capacity_termination_policy  = var.excess_capacity_termination_policy
@@ -480,7 +480,7 @@ resource "aws_spot_fleet_request" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "client_token" {
   description = "returns a string"
   value       = aws_spot_fleet_request.this.client_token

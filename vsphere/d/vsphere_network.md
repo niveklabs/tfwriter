@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_network" {
   source = "./modules/vsphere/d/vsphere_network"
 
@@ -40,7 +40,7 @@ module "vsphere_network" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "datacenter_id" {
   description = "(optional) - The managed object ID of the datacenter the network is in. This is required if the supplied path is not an absolute path containing a datacenter and there are multiple datacenters in your infrastructure."
   type        = string
@@ -63,7 +63,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_network" "this" {
   datacenter_id                   = var.datacenter_id
   distributed_virtual_switch_uuid = var.distributed_virtual_switch_uuid
@@ -75,7 +75,7 @@ data "vsphere_network" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_network.this.id

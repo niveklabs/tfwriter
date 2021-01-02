@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudformation_stack" {
   source = "./modules/aws/r/aws_cloudformation_stack"
 
@@ -66,7 +66,7 @@ module "aws_cloudformation_stack" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "capabilities" {
   description = "(optional)"
   type        = set(string)
@@ -161,7 +161,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudformation_stack" "this" {
   capabilities       = var.capabilities
   disable_rollback   = var.disable_rollback
@@ -193,7 +193,7 @@ resource "aws_cloudformation_stack" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cloudformation_stack.this.id

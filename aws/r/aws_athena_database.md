@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_athena_database" {
   source = "./modules/aws/r/aws_athena_database"
 
@@ -45,7 +45,7 @@ module "aws_athena_database" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "encryption_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_athena_database" "this" {
   bucket        = var.bucket
   force_destroy = var.force_destroy
@@ -99,7 +99,7 @@ resource "aws_athena_database" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_athena_database.this.id

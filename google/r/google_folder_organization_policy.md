@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_folder_organization_policy" {
   source = "./modules/google/r/google_folder_organization_policy"
 
@@ -68,7 +68,7 @@ module "google_folder_organization_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "constraint" {
   description = "(required) - The name of the Constraint the Policy is configuring, for example, serviceuser.services."
   type        = string
@@ -146,7 +146,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_folder_organization_policy" "this" {
   constraint = var.constraint
   folder     = var.folder
@@ -208,7 +208,7 @@ resource "google_folder_organization_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_folder_organization_policy.this.etag

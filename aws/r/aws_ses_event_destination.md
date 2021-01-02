@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_event_destination" {
   source = "./modules/aws/r/aws_ses_event_destination"
 
@@ -57,7 +57,7 @@ module "aws_ses_event_destination" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "configuration_set_name" {
   description = "(required)"
   type        = string
@@ -117,7 +117,7 @@ variable "sns_destination" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_event_destination" "this" {
   configuration_set_name = var.configuration_set_name
   enabled                = var.enabled
@@ -155,7 +155,7 @@ resource "aws_ses_event_destination" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ses_event_destination.this.id

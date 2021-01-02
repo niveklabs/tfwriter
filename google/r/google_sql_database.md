@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_database" {
   source = "./modules/google/r/google_sql_database"
 
@@ -50,7 +50,7 @@ module "google_sql_database" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "charset" {
   description = "(optional) - The charset value. See MySQL's\n[Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)\nand Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)\nfor more details and supported values. Postgres databases only support\na value of 'UTF8' at creation time."
   type        = string
@@ -96,7 +96,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sql_database" "this" {
   charset   = var.charset
   collation = var.collation
@@ -120,7 +120,7 @@ resource "google_sql_database" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "charset" {
   description = "returns a string"
   value       = google_sql_database.this.charset

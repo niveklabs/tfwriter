@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_account_id_token" {
   source = "./modules/google/d/google_service_account_id_token"
 
@@ -42,7 +42,7 @@ module "google_service_account_id_token" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "delegates" {
   description = "(optional)"
   type        = set(string)
@@ -71,7 +71,7 @@ variable "target_service_account" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_service_account_id_token" "this" {
   delegates              = var.delegates
   include_email          = var.include_email
@@ -84,7 +84,7 @@ data "google_service_account_id_token" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_service_account_id_token.this.id

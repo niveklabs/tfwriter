@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_option_group" {
   source = "./modules/aws/r/aws_db_option_group"
 
@@ -62,7 +62,7 @@ module "aws_db_option_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "engine_name" {
   description = "(required)"
   type        = string
@@ -132,7 +132,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_option_group" "this" {
   engine_name              = var.engine_name
   major_engine_version     = var.major_engine_version
@@ -175,7 +175,7 @@ resource "aws_db_option_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_db_option_group.this.arn

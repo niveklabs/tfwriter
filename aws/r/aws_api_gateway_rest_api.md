@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_rest_api" {
   source = "./modules/aws/r/aws_api_gateway_rest_api"
 
@@ -55,7 +55,7 @@ module "aws_api_gateway_rest_api" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_key_source" {
   description = "(optional)"
   type        = string
@@ -119,7 +119,7 @@ variable "endpoint_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_rest_api" "this" {
   api_key_source           = var.api_key_source
   binary_media_types       = var.binary_media_types
@@ -145,7 +145,7 @@ resource "aws_api_gateway_rest_api" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_rest_api.this.arn

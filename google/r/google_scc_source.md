@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_scc_source" {
   source = "./modules/google/r/google_scc_source"
 
@@ -46,7 +46,7 @@ module "google_scc_source" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - The description of the source (max of 1024 characters)."
   type        = string
@@ -80,7 +80,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_scc_source" "this" {
   description  = var.description
   display_name = var.display_name
@@ -102,7 +102,7 @@ resource "google_scc_source" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_scc_source.this.id

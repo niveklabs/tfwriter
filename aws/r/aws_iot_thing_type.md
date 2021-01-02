@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_thing_type" {
   source = "./modules/aws/r/aws_iot_thing_type"
 
@@ -43,7 +43,7 @@ module "aws_iot_thing_type" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deprecated" {
   description = "(optional)"
   type        = bool
@@ -71,7 +71,7 @@ variable "properties" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iot_thing_type" "this" {
   deprecated = var.deprecated
   name       = var.name
@@ -91,7 +91,7 @@ resource "aws_iot_thing_type" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iot_thing_type.this.arn

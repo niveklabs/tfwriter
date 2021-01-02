@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_spanner_database" {
   source = "./modules/google/r/google_spanner_database"
 
@@ -50,7 +50,7 @@ module "google_spanner_database" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ddl" {
   description = "(optional) - An optional list of DDL statements to run inside the newly created\ndatabase. Statements can create tables, indexes, etc. These statements\nexecute atomically with the creation of the database: if there is an\nerror in any statement, the database is not created."
   type        = list(string)
@@ -96,7 +96,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_spanner_database" "this" {
   ddl                 = var.ddl
   deletion_protection = var.deletion_protection
@@ -120,7 +120,7 @@ resource "google_spanner_database" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_spanner_database.this.id

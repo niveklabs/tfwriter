@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_game_services_game_server_deployment_rollout" {
   source = "./modules/google/d/google_game_services_game_server_deployment_rollout"
 
@@ -36,7 +36,7 @@ module "google_game_services_game_server_deployment_rollout" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deployment_id" {
   description = "(required) - The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment."
   type        = string
@@ -47,7 +47,7 @@ variable "deployment_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_game_services_game_server_deployment_rollout" "this" {
   deployment_id = var.deployment_id
 }
@@ -57,7 +57,7 @@ data "google_game_services_game_server_deployment_rollout" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_game_server_config" {
   description = "returns a string"
   value       = data.google_game_services_game_server_deployment_rollout.this.default_game_server_config

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafregional_rule" {
   source = "./modules/aws/r/aws_wafregional_rule"
 
@@ -46,7 +46,7 @@ module "aws_wafregional_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metric_name" {
   description = "(required)"
   type        = string
@@ -80,7 +80,7 @@ variable "predicate" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_wafregional_rule" "this" {
   metric_name = var.metric_name
   name        = var.name
@@ -102,7 +102,7 @@ resource "aws_wafregional_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_wafregional_rule.this.arn

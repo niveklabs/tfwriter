@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_zones" {
   source = "./modules/google/d/google_compute_zones"
 
@@ -40,7 +40,7 @@ module "google_compute_zones" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "status" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_zones" "this" {
   project = var.project
   region  = var.region
@@ -76,7 +76,7 @@ data "google_compute_zones" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_compute_zones.this.id

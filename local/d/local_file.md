@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     local = ">= 2.0.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "local_file" {
   source = "./modules/local/d/local_file"
 
@@ -36,7 +36,7 @@ module "local_file" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "filename" {
   description = "(required) - Path to the output file"
   type        = string
@@ -47,7 +47,7 @@ variable "filename" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "local_file" "this" {
   filename = var.filename
 }
@@ -57,7 +57,7 @@ data "local_file" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "content" {
   description = "returns a string"
   value       = data.local_file.this.content

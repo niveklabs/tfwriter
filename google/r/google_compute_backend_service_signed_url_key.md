@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_backend_service_signed_url_key" {
   source = "./modules/google/r/google_compute_backend_service_signed_url_key"
 
@@ -47,7 +47,7 @@ module "google_compute_backend_service_signed_url_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "backend_service" {
   description = "(required) - The backend service this signed URL key belongs."
   type        = string
@@ -85,7 +85,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_backend_service_signed_url_key" "this" {
   backend_service = var.backend_service
   key_value       = var.key_value
@@ -107,7 +107,7 @@ resource "google_compute_backend_service_signed_url_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_backend_service_signed_url_key.this.id

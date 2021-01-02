@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_role" {
   source = "./modules/aws/r/aws_iam_role"
 
@@ -52,7 +52,7 @@ module "aws_iam_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "assume_role_policy" {
   description = "(required)"
   type        = string
@@ -111,7 +111,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_role" "this" {
   assume_role_policy    = var.assume_role_policy
   description           = var.description
@@ -129,7 +129,7 @@ resource "aws_iam_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_role.this.arn

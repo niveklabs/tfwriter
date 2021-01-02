@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_analysis_note" {
   source = "./modules/google/r/google_container_analysis_note"
 
@@ -63,7 +63,7 @@ module "google_container_analysis_note" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "expiration_time" {
   description = "(optional) - Time of expiration for this note. Leave empty if note does not expire."
   type        = string
@@ -140,7 +140,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_container_analysis_note" "this" {
   expiration_time    = var.expiration_time
   long_description   = var.long_description
@@ -187,7 +187,7 @@ resource "google_container_analysis_note" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_container_analysis_note.this.create_time

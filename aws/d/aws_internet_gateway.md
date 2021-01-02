@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_internet_gateway" {
   source = "./modules/aws/d/aws_internet_gateway"
 
@@ -43,7 +43,7 @@ module "aws_internet_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "internet_gateway_id" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_internet_gateway" "this" {
   internet_gateway_id = var.internet_gateway_id
   tags                = var.tags
@@ -92,7 +92,7 @@ data "aws_internet_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_internet_gateway.this.arn

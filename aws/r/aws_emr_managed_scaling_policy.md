@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_emr_managed_scaling_policy" {
   source = "./modules/aws/r/aws_emr_managed_scaling_policy"
 
@@ -44,7 +44,7 @@ module "aws_emr_managed_scaling_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_id" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "compute_limits" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_emr_managed_scaling_policy" "this" {
   cluster_id = var.cluster_id
 
@@ -90,7 +90,7 @@ resource "aws_emr_managed_scaling_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_emr_managed_scaling_policy.this.id

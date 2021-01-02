@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vnic" {
   source = "./modules/vsphere/r/vsphere_vnic"
 
@@ -62,7 +62,7 @@ module "vsphere_vnic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "distributed_port_group" {
   description = "(optional) - Key of the distributed portgroup the nic will connect to"
   type        = string
@@ -135,7 +135,7 @@ variable "ipv6" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_vnic" "this" {
   distributed_port_group  = var.distributed_port_group
   distributed_switch_port = var.distributed_switch_port
@@ -172,7 +172,7 @@ resource "vsphere_vnic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_vnic.this.id

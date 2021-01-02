@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_user_ssh_key" {
   source = "./modules/github/r/github_user_ssh_key"
 
@@ -38,7 +38,7 @@ module "github_user_ssh_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "title" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_user_ssh_key" "this" {
   key   = var.key
   title = var.title
@@ -65,7 +65,7 @@ resource "github_user_ssh_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_user_ssh_key.this.etag

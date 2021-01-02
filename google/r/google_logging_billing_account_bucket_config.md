@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_billing_account_bucket_config" {
   source = "./modules/google/r/google_logging_billing_account_bucket_config"
 
@@ -44,7 +44,7 @@ module "google_logging_billing_account_bucket_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "billing_account" {
   description = "(required) - The parent resource that contains the logging bucket."
   type        = string
@@ -77,7 +77,7 @@ variable "retention_days" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_billing_account_bucket_config" "this" {
   billing_account = var.billing_account
   bucket_id       = var.bucket_id
@@ -91,7 +91,7 @@ resource "google_logging_billing_account_bucket_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = google_logging_billing_account_bucket_config.this.description

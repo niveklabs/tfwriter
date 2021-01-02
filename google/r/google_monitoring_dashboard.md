@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_dashboard" {
   source = "./modules/google/r/google_monitoring_dashboard"
 
@@ -44,7 +44,7 @@ module "google_monitoring_dashboard" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dashboard_json" {
   description = "(required) - The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards."
   type        = string
@@ -73,7 +73,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_dashboard" "this" {
   dashboard_json = var.dashboard_json
   project        = var.project
@@ -94,7 +94,7 @@ resource "google_monitoring_dashboard" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_dashboard.this.id

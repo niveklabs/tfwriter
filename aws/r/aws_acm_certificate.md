@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_acm_certificate" {
   source = "./modules/aws/r/aws_acm_certificate"
 
@@ -54,7 +54,7 @@ module "aws_acm_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_authority_arn" {
   description = "(optional)"
   type        = string
@@ -118,7 +118,7 @@ variable "options" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_acm_certificate" "this" {
   certificate_authority_arn = var.certificate_authority_arn
   certificate_body          = var.certificate_body
@@ -143,7 +143,7 @@ resource "aws_acm_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_acm_certificate.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_resolver_rule" {
   source = "./modules/aws/d/aws_route53_resolver_rule"
 
@@ -46,7 +46,7 @@ module "aws_route53_resolver_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_route53_resolver_rule" "this" {
   domain_name          = var.domain_name
   name                 = var.name
@@ -103,7 +103,7 @@ data "aws_route53_resolver_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_route53_resolver_rule.this.arn

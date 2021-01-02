@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_branch" {
   source = "./modules/github/d/github_branch"
 
@@ -38,7 +38,7 @@ module "github_branch" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "branch" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "repository" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_branch" "this" {
   branch     = var.branch
   repository = var.repository
@@ -65,7 +65,7 @@ data "github_branch" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = data.github_branch.this.etag

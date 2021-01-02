@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_shared_vpc_service_project" {
   source = "./modules/google/r/google_compute_shared_vpc_service_project"
 
@@ -43,7 +43,7 @@ module "google_compute_shared_vpc_service_project" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "host_project" {
   description = "(required) - The ID of a host project to associate."
   type        = string
@@ -70,7 +70,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_shared_vpc_service_project" "this" {
   host_project    = var.host_project
   service_project = var.service_project
@@ -90,7 +90,7 @@ resource "google_compute_shared_vpc_service_project" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_shared_vpc_service_project.this.id

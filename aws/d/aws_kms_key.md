@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_key" {
   source = "./modules/aws/d/aws_kms_key"
 
@@ -38,7 +38,7 @@ module "aws_kms_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "grant_tokens" {
   description = "(optional)"
   type        = list(string)
@@ -55,7 +55,7 @@ variable "key_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_kms_key" "this" {
   grant_tokens = var.grant_tokens
   key_id       = var.key_id
@@ -66,7 +66,7 @@ data "aws_kms_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_kms_key.this.arn

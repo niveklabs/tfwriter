@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_horizontal_pod_autoscaler" {
   source = "./modules/kubernetes/r/kubernetes_horizontal_pod_autoscaler"
 
@@ -131,7 +131,7 @@ module "kubernetes_horizontal_pod_autoscaler" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -284,7 +284,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_horizontal_pod_autoscaler" "this" {
 
   dynamic "metadata" {
@@ -485,7 +485,7 @@ resource "kubernetes_horizontal_pod_autoscaler" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_horizontal_pod_autoscaler.this.id

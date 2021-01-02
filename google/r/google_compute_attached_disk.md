@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_attached_disk" {
   source = "./modules/google/r/google_compute_attached_disk"
 
@@ -51,7 +51,7 @@ module "google_compute_attached_disk" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "device_name" {
   description = "(optional) - Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disks-x, where x is a number assigned by Google Compute Engine."
   type        = string
@@ -102,7 +102,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_attached_disk" "this" {
   device_name = var.device_name
   disk        = var.disk
@@ -126,7 +126,7 @@ resource "google_compute_attached_disk" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "device_name" {
   description = "returns a string"
   value       = google_compute_attached_disk.this.device_name

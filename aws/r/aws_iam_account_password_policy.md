@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_account_password_policy" {
   source = "./modules/aws/r/aws_iam_account_password_policy"
 
@@ -52,7 +52,7 @@ module "aws_iam_account_password_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_users_to_change_password" {
   description = "(optional)"
   type        = bool
@@ -112,7 +112,7 @@ variable "require_uppercase_characters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_account_password_policy" "this" {
   allow_users_to_change_password = var.allow_users_to_change_password
   hard_expiry                    = var.hard_expiry
@@ -130,7 +130,7 @@ resource "aws_iam_account_password_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "expire_passwords" {
   description = "returns a bool"
   value       = aws_iam_account_password_policy.this.expire_passwords

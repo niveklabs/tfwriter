@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_identity_notification_topic" {
   source = "./modules/aws/r/aws_ses_identity_notification_topic"
 
@@ -42,7 +42,7 @@ module "aws_ses_identity_notification_topic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "identity" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "topic_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_identity_notification_topic" "this" {
   identity                 = var.identity
   include_original_headers = var.include_original_headers
@@ -83,7 +83,7 @@ resource "aws_ses_identity_notification_topic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ses_identity_notification_topic.this.id

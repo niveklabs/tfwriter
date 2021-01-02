@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_thing" {
   source = "./modules/aws/r/aws_iot_thing"
 
@@ -40,7 +40,7 @@ module "aws_iot_thing" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "attributes" {
   description = "(optional)"
   type        = map(string)
@@ -63,7 +63,7 @@ variable "thing_type_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iot_thing" "this" {
   attributes      = var.attributes
   name            = var.name
@@ -75,7 +75,7 @@ resource "aws_iot_thing" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iot_thing.this.arn

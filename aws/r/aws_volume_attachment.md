@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_volume_attachment" {
   source = "./modules/aws/r/aws_volume_attachment"
 
@@ -44,7 +44,7 @@ module "aws_volume_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "device_name" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "volume_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_volume_attachment" "this" {
   device_name  = var.device_name
   force_detach = var.force_detach
@@ -91,7 +91,7 @@ resource "aws_volume_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_volume_attachment.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_job" {
   source = "./modules/kubernetes/r/kubernetes_job"
 
@@ -850,7 +850,7 @@ module "kubernetes_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "wait_for_completion" {
   description = "(optional)"
   type        = bool
@@ -2042,7 +2042,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_job" "this" {
   wait_for_completion = var.wait_for_completion
 
@@ -3641,7 +3641,7 @@ resource "kubernetes_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_job.this.id

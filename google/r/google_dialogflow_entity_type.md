@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dialogflow_entity_type" {
   source = "./modules/google/r/google_dialogflow_entity_type"
 
@@ -53,7 +53,7 @@ module "google_dialogflow_entity_type" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(required) - The name of this entity type to be displayed on the console."
   type        = string
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dialogflow_entity_type" "this" {
   display_name            = var.display_name
   enable_fuzzy_extraction = var.enable_fuzzy_extraction
@@ -135,7 +135,7 @@ resource "google_dialogflow_entity_type" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dialogflow_entity_type.this.id

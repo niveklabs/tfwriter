@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_delegation_set" {
   source = "./modules/aws/d/aws_route53_delegation_set"
 
@@ -34,14 +34,14 @@ module "aws_route53_delegation_set" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_route53_delegation_set" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_route53_delegation_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "caller_reference" {
   description = "returns a string"
   value       = data.aws_route53_delegation_set.this.caller_reference

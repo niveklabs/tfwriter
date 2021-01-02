@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pinpoint_event_stream" {
   source = "./modules/aws/r/aws_pinpoint_event_stream"
 
@@ -40,7 +40,7 @@ module "aws_pinpoint_event_stream" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_id" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_pinpoint_event_stream" "this" {
   application_id         = var.application_id
   destination_stream_arn = var.destination_stream_arn
@@ -73,7 +73,7 @@ resource "aws_pinpoint_event_stream" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_pinpoint_event_stream.this.id

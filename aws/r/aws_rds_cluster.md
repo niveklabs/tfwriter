@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_rds_cluster" {
   source = "./modules/aws/r/aws_rds_cluster"
 
@@ -133,7 +133,7 @@ module "aws_rds_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_major_version_upgrade" {
   description = "(optional)"
   type        = bool
@@ -402,7 +402,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_rds_cluster" "this" {
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   apply_immediately                   = var.apply_immediately
@@ -488,7 +488,7 @@ resource "aws_rds_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "apply_immediately" {
   description = "returns a bool"
   value       = aws_rds_cluster.this.apply_immediately

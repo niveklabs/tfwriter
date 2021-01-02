@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_snapshot_create_volume_permission" {
   source = "./modules/aws/r/aws_snapshot_create_volume_permission"
 
@@ -38,7 +38,7 @@ module "aws_snapshot_create_volume_permission" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "snapshot_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_snapshot_create_volume_permission" "this" {
   account_id  = var.account_id
   snapshot_id = var.snapshot_id
@@ -65,7 +65,7 @@ resource "aws_snapshot_create_volume_permission" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_snapshot_create_volume_permission.this.id

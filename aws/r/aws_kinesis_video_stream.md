@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kinesis_video_stream" {
   source = "./modules/aws/r/aws_kinesis_video_stream"
 
@@ -52,7 +52,7 @@ module "aws_kinesis_video_stream" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "data_retention_in_hours" {
   description = "(optional)"
   type        = number
@@ -105,7 +105,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kinesis_video_stream" "this" {
   data_retention_in_hours = var.data_retention_in_hours
   device_name             = var.device_name
@@ -130,7 +130,7 @@ resource "aws_kinesis_video_stream" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kinesis_video_stream.this.arn

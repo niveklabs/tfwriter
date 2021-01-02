@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_metric_descriptor" {
   source = "./modules/google/r/google_monitoring_metric_descriptor"
 
@@ -67,7 +67,7 @@ module "google_monitoring_metric_descriptor" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(required) - A detailed description of the metric, which can be used in documentation."
   type        = string
@@ -151,7 +151,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_metric_descriptor" "this" {
   description  = var.description
   display_name = var.display_name
@@ -195,7 +195,7 @@ resource "google_monitoring_metric_descriptor" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_metric_descriptor.this.id

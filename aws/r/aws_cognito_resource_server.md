@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_resource_server" {
   source = "./modules/aws/r/aws_cognito_resource_server"
 
@@ -45,7 +45,7 @@ module "aws_cognito_resource_server" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "identifier" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "scope" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_resource_server" "this" {
   identifier   = var.identifier
   name         = var.name
@@ -98,7 +98,7 @@ resource "aws_cognito_resource_server" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cognito_resource_server.this.id

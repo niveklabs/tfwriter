@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codepipeline_webhook" {
   source = "./modules/aws/r/aws_codepipeline_webhook"
 
@@ -54,7 +54,7 @@ module "aws_codepipeline_webhook" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "authentication" {
   description = "(required)"
   type        = string
@@ -107,7 +107,7 @@ variable "filter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codepipeline_webhook" "this" {
   authentication  = var.authentication
   name            = var.name
@@ -138,7 +138,7 @@ resource "aws_codepipeline_webhook" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_codepipeline_webhook.this.id

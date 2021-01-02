@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_catalog_tag_template" {
   source = "./modules/google/r/google_data_catalog_tag_template"
 
@@ -66,7 +66,7 @@ module "google_data_catalog_tag_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(optional) - The display name for this template."
   type        = string
@@ -140,7 +140,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_catalog_tag_template" "this" {
   display_name    = var.display_name
   force_delete    = var.force_delete
@@ -197,7 +197,7 @@ resource "google_data_catalog_tag_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_catalog_tag_template.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pinpoint_adm_channel" {
   source = "./modules/aws/r/aws_pinpoint_adm_channel"
 
@@ -42,7 +42,7 @@ module "aws_pinpoint_adm_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_id" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "enabled" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_pinpoint_adm_channel" "this" {
   application_id = var.application_id
   client_id      = var.client_id
@@ -82,7 +82,7 @@ resource "aws_pinpoint_adm_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_pinpoint_adm_channel.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ami" {
   source = "./modules/aws/r/aws_ami"
 
@@ -77,7 +77,7 @@ module "aws_ami" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "architecture" {
   description = "(optional)"
   type        = string
@@ -187,7 +187,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ami" "this" {
   architecture        = var.architecture
   description         = var.description
@@ -238,7 +238,7 @@ resource "aws_ami" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ami.this.arn

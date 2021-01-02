@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_backup_vault_policy" {
   source = "./modules/aws/r/aws_backup_vault_policy"
 
@@ -38,7 +38,7 @@ module "aws_backup_vault_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "backup_vault_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_backup_vault_policy" "this" {
   backup_vault_name = var.backup_vault_name
   policy            = var.policy
@@ -65,7 +65,7 @@ resource "aws_backup_vault_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "backup_vault_arn" {
   description = "returns a string"
   value       = aws_backup_vault_policy.this.backup_vault_arn

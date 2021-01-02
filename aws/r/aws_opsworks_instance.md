@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_instance" {
   source = "./modules/aws/r/aws_opsworks_instance"
 
@@ -143,7 +143,7 @@ module "aws_opsworks_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "agent_version" {
   description = "(optional)"
   type        = string
@@ -444,7 +444,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_instance" "this" {
   agent_version                = var.agent_version
   ami_id                       = var.ami_id
@@ -534,7 +534,7 @@ resource "aws_opsworks_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ami_id" {
   description = "returns a string"
   value       = aws_opsworks_instance.this.ami_id

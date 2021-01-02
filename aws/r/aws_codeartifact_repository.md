@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codeartifact_repository" {
   source = "./modules/aws/r/aws_codeartifact_repository"
 
@@ -54,7 +54,7 @@ module "aws_codeartifact_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -110,7 +110,7 @@ variable "upstream" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codeartifact_repository" "this" {
   description  = var.description
   domain       = var.domain
@@ -139,7 +139,7 @@ resource "aws_codeartifact_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "administrator_account" {
   description = "returns a string"
   value       = aws_codeartifact_repository.this.administrator_account

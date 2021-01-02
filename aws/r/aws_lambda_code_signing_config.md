@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_code_signing_config" {
   source = "./modules/aws/r/aws_lambda_code_signing_config"
 
@@ -44,7 +44,7 @@ module "aws_lambda_code_signing_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -75,7 +75,7 @@ variable "policies" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_code_signing_config" "this" {
   description = var.description
 
@@ -100,7 +100,7 @@ resource "aws_lambda_code_signing_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lambda_code_signing_config.this.arn

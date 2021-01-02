@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_notebook_instance_lifecycle_configuration" {
   source = "./modules/aws/r/aws_sagemaker_notebook_instance_lifecycle_configuration"
 
@@ -40,7 +40,7 @@ module "aws_sagemaker_notebook_instance_lifecycle_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "on_start" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {
   name      = var.name
   on_create = var.on_create
@@ -76,7 +76,7 @@ resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sagemaker_notebook_instance_lifecycle_configuration.this.arn

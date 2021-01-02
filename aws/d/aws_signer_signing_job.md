@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_signer_signing_job" {
   source = "./modules/aws/d/aws_signer_signing_job"
 
@@ -36,7 +36,7 @@ module "aws_signer_signing_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "job_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "job_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_signer_signing_job" "this" {
   job_id = var.job_id
 }
@@ -57,7 +57,7 @@ data "aws_signer_signing_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "completed_at" {
   description = "returns a string"
   value       = data.aws_signer_signing_job.this.completed_at

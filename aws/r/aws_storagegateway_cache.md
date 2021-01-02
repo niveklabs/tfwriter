@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_cache" {
   source = "./modules/aws/r/aws_storagegateway_cache"
 
@@ -38,7 +38,7 @@ module "aws_storagegateway_cache" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "disk_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "gateway_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_storagegateway_cache" "this" {
   disk_id     = var.disk_id
   gateway_arn = var.gateway_arn
@@ -65,7 +65,7 @@ resource "aws_storagegateway_cache" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_storagegateway_cache.this.id

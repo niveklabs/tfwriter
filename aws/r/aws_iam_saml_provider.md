@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_saml_provider" {
   source = "./modules/aws/r/aws_iam_saml_provider"
 
@@ -38,7 +38,7 @@ module "aws_iam_saml_provider" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "saml_metadata_document" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_saml_provider" "this" {
   name                   = var.name
   saml_metadata_document = var.saml_metadata_document
@@ -65,7 +65,7 @@ resource "aws_iam_saml_provider" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_saml_provider.this.arn

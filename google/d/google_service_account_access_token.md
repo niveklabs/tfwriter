@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_account_access_token" {
   source = "./modules/google/d/google_service_account_access_token"
 
@@ -42,7 +42,7 @@ module "google_service_account_access_token" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "delegates" {
   description = "(optional)"
   type        = set(string)
@@ -70,7 +70,7 @@ variable "target_service_account" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_service_account_access_token" "this" {
   delegates              = var.delegates
   lifetime               = var.lifetime
@@ -83,7 +83,7 @@ data "google_service_account_access_token" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_token" {
   description = "returns a string"
   value       = data.google_service_account_access_token.this.access_token

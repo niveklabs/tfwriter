@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eip" {
   source = "./modules/aws/d/aws_eip"
 
@@ -43,7 +43,7 @@ module "aws_eip" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "public_ip" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_eip" "this" {
   public_ip = var.public_ip
   tags      = var.tags
@@ -92,7 +92,7 @@ data "aws_eip" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "association_id" {
   description = "returns a string"
   value       = data.aws_eip.this.association_id

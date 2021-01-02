@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_client_vpn_network_association" {
   source = "./modules/aws/r/aws_ec2_client_vpn_network_association"
 
@@ -40,7 +40,7 @@ module "aws_ec2_client_vpn_network_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "client_vpn_endpoint_id" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "subnet_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_client_vpn_network_association" "this" {
   client_vpn_endpoint_id = var.client_vpn_endpoint_id
   security_groups        = var.security_groups
@@ -74,7 +74,7 @@ resource "aws_ec2_client_vpn_network_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "association_id" {
   description = "returns a string"
   value       = aws_ec2_client_vpn_network_association.this.association_id

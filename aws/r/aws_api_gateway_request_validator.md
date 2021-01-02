@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_request_validator" {
   source = "./modules/aws/r/aws_api_gateway_request_validator"
 
@@ -42,7 +42,7 @@ module "aws_api_gateway_request_validator" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "validate_request_parameters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_request_validator" "this" {
   name                        = var.name
   rest_api_id                 = var.rest_api_id
@@ -83,7 +83,7 @@ resource "aws_api_gateway_request_validator" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_request_validator.this.id

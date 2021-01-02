@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_mq_configuration" {
   source = "./modules/aws/r/aws_mq_configuration"
 
@@ -46,7 +46,7 @@ module "aws_mq_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "data" {
   description = "(required)"
   type        = string
@@ -84,7 +84,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_mq_configuration" "this" {
   data           = var.data
   description    = var.description
@@ -99,7 +99,7 @@ resource "aws_mq_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_mq_configuration.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_role_alias" {
   source = "./modules/aws/r/aws_iot_role_alias"
 
@@ -40,7 +40,7 @@ module "aws_iot_role_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "alias" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iot_role_alias" "this" {
   alias               = var.alias
   credential_duration = var.credential_duration
@@ -74,7 +74,7 @@ resource "aws_iot_role_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iot_role_alias.this.arn

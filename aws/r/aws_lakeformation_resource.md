@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lakeformation_resource" {
   source = "./modules/aws/r/aws_lakeformation_resource"
 
@@ -38,7 +38,7 @@ module "aws_lakeformation_resource" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lakeformation_resource" "this" {
   arn      = var.arn
   role_arn = var.role_arn
@@ -66,7 +66,7 @@ resource "aws_lakeformation_resource" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lakeformation_resource.this.id

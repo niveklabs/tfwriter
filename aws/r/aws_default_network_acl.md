@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_default_network_acl" {
   source = "./modules/aws/r/aws_default_network_acl"
 
@@ -64,7 +64,7 @@ module "aws_default_network_acl" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_network_acl_id" {
   description = "(required)"
   type        = string
@@ -123,7 +123,7 @@ variable "ingress" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_default_network_acl" "this" {
   default_network_acl_id = var.default_network_acl_id
   subnet_ids             = var.subnet_ids
@@ -166,7 +166,7 @@ resource "aws_default_network_acl" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_default_network_acl.this.arn

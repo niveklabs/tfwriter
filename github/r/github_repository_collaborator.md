@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repository_collaborator" {
   source = "./modules/github/r/github_repository_collaborator"
 
@@ -40,7 +40,7 @@ module "github_repository_collaborator" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "permission" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "username" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_repository_collaborator" "this" {
   permission = var.permission
   repository = var.repository
@@ -74,7 +74,7 @@ resource "github_repository_collaborator" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = github_repository_collaborator.this.id

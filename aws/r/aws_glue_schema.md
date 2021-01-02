@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_schema" {
   source = "./modules/aws/r/aws_glue_schema"
 
@@ -48,7 +48,7 @@ module "aws_glue_schema" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compatibility" {
   description = "(required)"
   type        = string
@@ -92,7 +92,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_schema" "this" {
   compatibility     = var.compatibility
   data_format       = var.data_format
@@ -108,7 +108,7 @@ resource "aws_glue_schema" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_schema.this.arn

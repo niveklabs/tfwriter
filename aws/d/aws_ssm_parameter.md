@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_parameter" {
   source = "./modules/aws/d/aws_ssm_parameter"
 
@@ -38,7 +38,7 @@ module "aws_ssm_parameter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "with_decryption" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ssm_parameter" "this" {
   name            = var.name
   with_decryption = var.with_decryption
@@ -66,7 +66,7 @@ data "aws_ssm_parameter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_ssm_parameter.this.arn

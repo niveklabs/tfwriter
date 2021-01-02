@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_acls" {
   source = "./modules/aws/d/aws_network_acls"
 
@@ -43,7 +43,7 @@ module "aws_network_acls" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_network_acls" "this" {
   tags   = var.tags
   vpc_id = var.vpc_id
@@ -92,7 +92,7 @@ data "aws_network_acls" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_network_acls.this.id

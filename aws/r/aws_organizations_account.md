@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_organizations_account" {
   source = "./modules/aws/r/aws_organizations_account"
 
@@ -46,7 +46,7 @@ module "aws_organizations_account" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "email" {
   description = "(required)"
   type        = string
@@ -86,7 +86,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_organizations_account" "this" {
   email                      = var.email
   iam_user_access_to_billing = var.iam_user_access_to_billing
@@ -101,7 +101,7 @@ resource "aws_organizations_account" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_organizations_account.this.arn

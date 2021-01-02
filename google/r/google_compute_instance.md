@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance" {
   source = "./modules/google/r/google_compute_instance"
 
@@ -147,7 +147,7 @@ module "google_compute_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_stopping_for_update" {
   description = "(optional) - If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail."
   type        = bool
@@ -392,7 +392,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_instance" "this" {
   allow_stopping_for_update = var.allow_stopping_for_update
   can_ip_forward            = var.can_ip_forward
@@ -534,7 +534,7 @@ resource "google_compute_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cpu_platform" {
   description = "returns a string"
   value       = google_compute_instance.this.cpu_platform

@@ -10,7 +10,7 @@
 
 ### Example Usage
 
-```hcl
+```terraform
 provider "kubernetes" {
   version = "1.13.3"
 

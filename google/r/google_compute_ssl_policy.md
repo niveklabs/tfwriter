@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_ssl_policy" {
   source = "./modules/google/r/google_compute_ssl_policy"
 
@@ -52,7 +52,7 @@ module "google_compute_ssl_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "custom_features" {
   description = "(optional) - Profile specifies the set of SSL features that can be used by the\nload balancer when negotiating SSL with clients. This can be one of\n'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM',\nthe set of SSL features to enable must be specified in the\n'customFeatures' field.\n\nSee the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)\nfor which ciphers are available to use. **Note**: this argument\n*must* be present when using the 'CUSTOM' profile. This argument\n*must not* be present when using any other profile."
   type        = set(string)
@@ -105,7 +105,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_ssl_policy" "this" {
   custom_features = var.custom_features
   description     = var.description
@@ -130,7 +130,7 @@ resource "google_compute_ssl_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_ssl_policy.this.creation_timestamp

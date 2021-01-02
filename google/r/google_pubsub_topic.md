@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_pubsub_topic" {
   source = "./modules/google/r/google_pubsub_topic"
 
@@ -52,7 +52,7 @@ module "google_pubsub_topic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "kms_key_name" {
   description = "(optional) - The resource name of the Cloud KMS CryptoKey to be used to protect access\nto messages published on this topic. Your project's PubSub service account\n('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have\n'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.\nThe expected format is 'projects/*/locations/*/keyRings/*/cryptoKeys/*'"
   type        = string
@@ -103,7 +103,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_pubsub_topic" "this" {
   kms_key_name = var.kms_key_name
   labels       = var.labels
@@ -133,7 +133,7 @@ resource "google_pubsub_topic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_pubsub_topic.this.id

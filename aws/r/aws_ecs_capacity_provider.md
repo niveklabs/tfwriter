@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecs_capacity_provider" {
   source = "./modules/aws/r/aws_ecs_capacity_provider"
 
@@ -49,7 +49,7 @@ module "aws_ecs_capacity_provider" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -84,7 +84,7 @@ variable "auto_scaling_group_provider" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ecs_capacity_provider" "this" {
   name = var.name
   tags = var.tags
@@ -115,7 +115,7 @@ resource "aws_ecs_capacity_provider" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ecs_capacity_provider.this.arn

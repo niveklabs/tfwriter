@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_gateway_response" {
   source = "./modules/aws/r/aws_api_gateway_gateway_response"
 
@@ -44,7 +44,7 @@ module "aws_api_gateway_gateway_response" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "response_parameters" {
   description = "(optional)"
   type        = map(string)
@@ -78,7 +78,7 @@ variable "status_code" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_gateway_response" "this" {
   response_parameters = var.response_parameters
   response_templates  = var.response_templates
@@ -92,7 +92,7 @@ resource "aws_api_gateway_gateway_response" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_gateway_response.this.id

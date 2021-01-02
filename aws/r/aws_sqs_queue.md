@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sqs_queue" {
   source = "./modules/aws/r/aws_sqs_queue"
 
@@ -62,7 +62,7 @@ module "aws_sqs_queue" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "content_based_deduplication" {
   description = "(optional)"
   type        = bool
@@ -152,7 +152,7 @@ variable "visibility_timeout_seconds" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sqs_queue" "this" {
   content_based_deduplication       = var.content_based_deduplication
   delay_seconds                     = var.delay_seconds
@@ -175,7 +175,7 @@ resource "aws_sqs_queue" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sqs_queue.this.arn

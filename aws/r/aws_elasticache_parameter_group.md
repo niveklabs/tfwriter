@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elasticache_parameter_group" {
   source = "./modules/aws/r/aws_elasticache_parameter_group"
 
@@ -45,7 +45,7 @@ module "aws_elasticache_parameter_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -78,7 +78,7 @@ variable "parameter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elasticache_parameter_group" "this" {
   description = var.description
   family      = var.family
@@ -99,7 +99,7 @@ resource "aws_elasticache_parameter_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_elasticache_parameter_group.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_service" {
   source = "./modules/google/r/google_project_service"
 
@@ -49,7 +49,7 @@ module "google_project_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "disable_dependent_services" {
   description = "(optional)"
   type        = bool
@@ -91,7 +91,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project_service" "this" {
   disable_dependent_services = var.disable_dependent_services
   disable_on_destroy         = var.disable_on_destroy
@@ -115,7 +115,7 @@ resource "google_project_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_project_service.this.id

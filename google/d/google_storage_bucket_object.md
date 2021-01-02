@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_bucket_object" {
   source = "./modules/google/d/google_storage_bucket_object"
 
@@ -38,7 +38,7 @@ module "google_storage_bucket_object" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(optional) - The name of the containing bucket."
   type        = string
@@ -56,7 +56,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_storage_bucket_object" "this" {
   bucket = var.bucket
   name   = var.name
@@ -67,7 +67,7 @@ data "google_storage_bucket_object" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cache_control" {
   description = "returns a string"
   value       = data.google_storage_bucket_object.this.cache_control

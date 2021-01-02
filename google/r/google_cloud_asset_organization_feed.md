@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_asset_organization_feed" {
   source = "./modules/google/r/google_cloud_asset_organization_feed"
 
@@ -65,7 +65,7 @@ module "google_cloud_asset_organization_feed" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "asset_names" {
   description = "(optional) - A list of the full names of the assets to receive updates. You must specify either or both of \nassetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are\nexported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.\nSee https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info."
   type        = list(string)
@@ -142,7 +142,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloud_asset_organization_feed" "this" {
   asset_names     = var.asset_names
   asset_types     = var.asset_types
@@ -191,7 +191,7 @@ resource "google_cloud_asset_organization_feed" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_cloud_asset_organization_feed.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_folder" {
   source = "./modules/google/r/google_folder"
 
@@ -45,7 +45,7 @@ module "google_folder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(required) - The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters."
   type        = string
@@ -74,7 +74,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_folder" "this" {
   display_name = var.display_name
   parent       = var.parent
@@ -96,7 +96,7 @@ resource "google_folder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_folder.this.create_time

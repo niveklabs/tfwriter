@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudtrail" {
   source = "./modules/aws/r/aws_cloudtrail"
 
@@ -73,7 +73,7 @@ module "aws_cloudtrail" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cloud_watch_logs_group_arn" {
   description = "(optional)"
   type        = string
@@ -182,7 +182,7 @@ variable "insight_selector" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudtrail" "this" {
   cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
   cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
@@ -229,7 +229,7 @@ resource "aws_cloudtrail" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudtrail.this.arn

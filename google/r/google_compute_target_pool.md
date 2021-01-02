@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_target_pool" {
   source = "./modules/google/r/google_compute_target_pool"
 
@@ -58,7 +58,7 @@ module "google_compute_target_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "backup_pool" {
   description = "(optional) - URL to the backup target pool. Must also set failover_ratio."
   type        = string
@@ -129,7 +129,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_target_pool" "this" {
   backup_pool      = var.backup_pool
   description      = var.description
@@ -157,7 +157,7 @@ resource "google_compute_target_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_target_pool.this.id

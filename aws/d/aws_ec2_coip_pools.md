@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_coip_pools" {
   source = "./modules/aws/d/aws_ec2_coip_pools"
 
@@ -41,7 +41,7 @@ module "aws_ec2_coip_pools" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -64,7 +64,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_coip_pools" "this" {
   tags = var.tags
 
@@ -83,7 +83,7 @@ data "aws_ec2_coip_pools" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_coip_pools.this.id

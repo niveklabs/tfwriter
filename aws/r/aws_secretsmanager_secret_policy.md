@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_secretsmanager_secret_policy" {
   source = "./modules/aws/r/aws_secretsmanager_secret_policy"
 
@@ -40,7 +40,7 @@ module "aws_secretsmanager_secret_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "block_public_policy" {
   description = "(optional)"
   type        = bool
@@ -62,7 +62,7 @@ variable "secret_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_secretsmanager_secret_policy" "this" {
   block_public_policy = var.block_public_policy
   policy              = var.policy
@@ -74,7 +74,7 @@ resource "aws_secretsmanager_secret_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_secretsmanager_secret_policy.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_workspaces_image" {
   source = "./modules/aws/d/aws_workspaces_image"
 
@@ -36,7 +36,7 @@ module "aws_workspaces_image" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "image_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "image_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_workspaces_image" "this" {
   image_id = var.image_id
 }
@@ -57,7 +57,7 @@ data "aws_workspaces_image" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.aws_workspaces_image.this.description

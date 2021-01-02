@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_bgp_peer" {
   source = "./modules/aws/r/aws_dx_bgp_peer"
 
@@ -51,7 +51,7 @@ module "aws_dx_bgp_peer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "address_family" {
   description = "(required)"
   type        = string
@@ -101,7 +101,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_bgp_peer" "this" {
   address_family       = var.address_family
   amazon_address       = var.amazon_address
@@ -125,7 +125,7 @@ resource "aws_dx_bgp_peer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "amazon_address" {
   description = "returns a string"
   value       = aws_dx_bgp_peer.this.amazon_address

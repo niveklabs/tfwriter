@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vm_storage_policy" {
   source = "./modules/vsphere/r/vsphere_vm_storage_policy"
 
@@ -44,7 +44,7 @@ module "vsphere_vm_storage_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Description of the storage policy."
   type        = string
@@ -72,7 +72,7 @@ variable "tag_rules" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_vm_storage_policy" "this" {
   description = var.description
   name        = var.name
@@ -93,7 +93,7 @@ resource "vsphere_vm_storage_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_vm_storage_policy.this.id

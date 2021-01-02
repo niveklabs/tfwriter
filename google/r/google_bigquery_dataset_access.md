@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_dataset_access" {
   source = "./modules/google/r/google_bigquery_dataset_access"
 
@@ -61,7 +61,7 @@ module "google_bigquery_dataset_access" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dataset_id" {
   description = "(required) - A unique ID for this dataset, without the project name. The ID\nmust contain only letters (a-z, A-Z), numbers (0-9), or\nunderscores (_). The maximum length is 1,024 characters."
   type        = string
@@ -137,7 +137,7 @@ variable "view" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_dataset_access" "this" {
   dataset_id     = var.dataset_id
   domain         = var.domain
@@ -172,7 +172,7 @@ resource "google_bigquery_dataset_access" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "api_updated_member" {
   description = "returns a bool"
   value       = google_bigquery_dataset_access.this.api_updated_member

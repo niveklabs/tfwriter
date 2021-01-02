@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_batch_job_definition" {
   source = "./modules/aws/r/aws_batch_job_definition"
 
@@ -52,7 +52,7 @@ module "aws_batch_job_definition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "container_properties" {
   description = "(optional)"
   type        = string
@@ -106,7 +106,7 @@ variable "timeout" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_batch_job_definition" "this" {
   container_properties = var.container_properties
   name                 = var.name
@@ -135,7 +135,7 @@ resource "aws_batch_job_definition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_batch_job_definition.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ami_ids" {
   source = "./modules/aws/d/aws_ami_ids"
 
@@ -47,7 +47,7 @@ module "aws_ami_ids" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "executable_users" {
   description = "(optional)"
   type        = list(string)
@@ -87,7 +87,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ami_ids" "this" {
   executable_users = var.executable_users
   name_regex       = var.name_regex
@@ -109,7 +109,7 @@ data "aws_ami_ids" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ami_ids.this.id

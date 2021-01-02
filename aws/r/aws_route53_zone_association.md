@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_zone_association" {
   source = "./modules/aws/r/aws_route53_zone_association"
 
@@ -40,7 +40,7 @@ module "aws_route53_zone_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "vpc_id" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "zone_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_zone_association" "this" {
   vpc_id     = var.vpc_id
   vpc_region = var.vpc_region
@@ -74,7 +74,7 @@ resource "aws_route53_zone_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_route53_zone_association.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_ip_ranges" {
   source = "./modules/github/d/github_ip_ranges"
 
@@ -34,14 +34,14 @@ module "github_ip_ranges" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_ip_ranges" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "github_ip_ranges" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "git" {
   description = "returns a list of string"
   value       = data.github_ip_ranges.this.git

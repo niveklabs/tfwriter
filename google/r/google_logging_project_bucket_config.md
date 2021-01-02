@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_project_bucket_config" {
   source = "./modules/google/r/google_logging_project_bucket_config"
 
@@ -44,7 +44,7 @@ module "google_logging_project_bucket_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket_id" {
   description = "(required) - The name of the logging bucket. Logging automatically creates two log buckets: _Required and _Default."
   type        = string
@@ -77,7 +77,7 @@ variable "retention_days" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_project_bucket_config" "this" {
   bucket_id      = var.bucket_id
   description    = var.description
@@ -91,7 +91,7 @@ resource "google_logging_project_bucket_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = google_logging_project_bucket_config.this.description

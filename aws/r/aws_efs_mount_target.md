@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_efs_mount_target" {
   source = "./modules/aws/r/aws_efs_mount_target"
 
@@ -42,7 +42,7 @@ module "aws_efs_mount_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "file_system_id" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "subnet_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_efs_mount_target" "this" {
   file_system_id  = var.file_system_id
   ip_address      = var.ip_address
@@ -83,7 +83,7 @@ resource "aws_efs_mount_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "availability_zone_id" {
   description = "returns a string"
   value       = aws_efs_mount_target.this.availability_zone_id

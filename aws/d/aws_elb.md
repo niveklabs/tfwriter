@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elb" {
   source = "./modules/aws/d/aws_elb"
 
@@ -38,7 +38,7 @@ module "aws_elb" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_elb" "this" {
   name = var.name
   tags = var.tags
@@ -66,7 +66,7 @@ data "aws_elb" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_logs" {
   description = "returns a list of object"
   value       = data.aws_elb.this.access_logs

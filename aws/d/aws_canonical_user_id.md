@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_canonical_user_id" {
   source = "./modules/aws/d/aws_canonical_user_id"
 
@@ -34,14 +34,14 @@ module "aws_canonical_user_id" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_canonical_user_id" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_canonical_user_id" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "display_name" {
   description = "returns a string"
   value       = data.aws_canonical_user_id.this.display_name

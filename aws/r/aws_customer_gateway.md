@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_customer_gateway" {
   source = "./modules/aws/r/aws_customer_gateway"
 
@@ -42,7 +42,7 @@ module "aws_customer_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bgp_asn" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_customer_gateway" "this" {
   bgp_asn    = var.bgp_asn
   ip_address = var.ip_address
@@ -82,7 +82,7 @@ resource "aws_customer_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_customer_gateway.this.arn

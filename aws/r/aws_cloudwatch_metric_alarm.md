@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_metric_alarm" {
   source = "./modules/aws/r/aws_cloudwatch_metric_alarm"
 
@@ -91,7 +91,7 @@ module "aws_cloudwatch_metric_alarm" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "actions_enabled" {
   description = "(optional)"
   type        = bool
@@ -243,7 +243,7 @@ variable "metric_query" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_metric_alarm" "this" {
   actions_enabled                       = var.actions_enabled
   alarm_actions                         = var.alarm_actions
@@ -297,7 +297,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudwatch_metric_alarm.this.arn

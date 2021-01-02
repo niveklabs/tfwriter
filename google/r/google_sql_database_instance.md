@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_database_instance" {
   source = "./modules/google/r/google_sql_database_instance"
 
@@ -113,7 +113,7 @@ module "google_sql_database_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "database_version" {
   description = "(optional) - The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, POSTGRES_9_6,POSTGRES_11, SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version Policies includes an up-to-date reference of supported versions."
   type        = string
@@ -255,7 +255,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sql_database_instance" "this" {
   database_version     = var.database_version
   deletion_protection  = var.deletion_protection
@@ -371,7 +371,7 @@ resource "google_sql_database_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "connection_name" {
   description = "returns a string"
   value       = google_sql_database_instance.this.connection_name

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_globalaccelerator_listener" {
   source = "./modules/aws/r/aws_globalaccelerator_listener"
 
@@ -45,7 +45,7 @@ module "aws_globalaccelerator_listener" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "accelerator_arn" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "port_range" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_globalaccelerator_listener" "this" {
   accelerator_arn = var.accelerator_arn
   client_affinity = var.client_affinity
@@ -98,7 +98,7 @@ resource "aws_globalaccelerator_listener" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_globalaccelerator_listener.this.id

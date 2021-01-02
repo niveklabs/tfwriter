@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_server_certificate" {
   source = "./modules/aws/r/aws_iam_server_certificate"
 
@@ -48,7 +48,7 @@ module "aws_iam_server_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(optional)"
   type        = string
@@ -94,7 +94,7 @@ variable "private_key" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_server_certificate" "this" {
   arn               = var.arn
   certificate_body  = var.certificate_body
@@ -110,7 +110,7 @@ resource "aws_iam_server_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_server_certificate.this.arn

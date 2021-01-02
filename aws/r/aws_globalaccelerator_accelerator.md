@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_globalaccelerator_accelerator" {
   source = "./modules/aws/r/aws_globalaccelerator_accelerator"
 
@@ -48,7 +48,7 @@ module "aws_globalaccelerator_accelerator" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enabled" {
   description = "(optional)"
   type        = bool
@@ -89,7 +89,7 @@ variable "attributes" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_globalaccelerator_accelerator" "this" {
   enabled         = var.enabled
   ip_address_type = var.ip_address_type
@@ -112,7 +112,7 @@ resource "aws_globalaccelerator_accelerator" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "dns_name" {
   description = "returns a string"
   value       = aws_globalaccelerator_accelerator.this.dns_name

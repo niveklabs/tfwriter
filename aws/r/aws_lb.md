@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lb" {
   source = "./modules/aws/r/aws_lb"
 
@@ -81,7 +81,7 @@ module "aws_lb" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "customer_owned_ipv4_pool" {
   description = "(optional)"
   type        = string
@@ -208,7 +208,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lb" "this" {
   customer_owned_ipv4_pool         = var.customer_owned_ipv4_pool
   drop_invalid_header_fields       = var.drop_invalid_header_fields
@@ -259,7 +259,7 @@ resource "aws_lb" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lb.this.arn

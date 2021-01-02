@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_role" {
   source = "./modules/vsphere/d/vsphere_role"
 
@@ -42,7 +42,7 @@ module "vsphere_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Description of the role."
   type        = string
@@ -71,7 +71,7 @@ variable "role_privileges" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_role" "this" {
   description     = var.description
   label           = var.label
@@ -84,7 +84,7 @@ data "vsphere_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_role.this.id

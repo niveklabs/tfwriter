@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dataproc_autoscaling_policy" {
   source = "./modules/google/r/google_dataproc_autoscaling_policy"
 
@@ -69,7 +69,7 @@ module "google_dataproc_autoscaling_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(optional) - The  location where the autoscaling policy should reside.\nThe default value is 'global'."
   type        = string
@@ -147,7 +147,7 @@ variable "worker_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dataproc_autoscaling_policy" "this" {
   location  = var.location
   policy_id = var.policy_id
@@ -206,7 +206,7 @@ resource "google_dataproc_autoscaling_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dataproc_autoscaling_policy.this.id

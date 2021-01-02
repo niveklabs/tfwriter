@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_appautoscaling_target" {
   source = "./modules/aws/r/aws_appautoscaling_target"
 
@@ -46,7 +46,7 @@ module "aws_appautoscaling_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "max_capacity" {
   description = "(required)"
   type        = number
@@ -83,7 +83,7 @@ variable "service_namespace" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_appautoscaling_target" "this" {
   max_capacity       = var.max_capacity
   min_capacity       = var.min_capacity
@@ -98,7 +98,7 @@ resource "aws_appautoscaling_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_appautoscaling_target.this.id

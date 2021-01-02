@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codebuild_webhook" {
   source = "./modules/aws/r/aws_codebuild_webhook"
 
@@ -46,7 +46,7 @@ module "aws_codebuild_webhook" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "branch_filter" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "filter_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codebuild_webhook" "this" {
   branch_filter = var.branch_filter
   project_name  = var.project_name
@@ -107,7 +107,7 @@ resource "aws_codebuild_webhook" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_codebuild_webhook.this.id

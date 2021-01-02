@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_job" {
   source = "./modules/aws/r/aws_glue_job"
 
@@ -76,7 +76,7 @@ module "aws_glue_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "connections" {
   description = "(optional)"
   type        = list(string)
@@ -195,7 +195,7 @@ variable "notification_property" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_job" "this" {
   connections               = var.connections
   default_arguments         = var.default_arguments
@@ -242,7 +242,7 @@ resource "aws_glue_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_job.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_spanner_instance" {
   source = "./modules/google/r/google_spanner_instance"
 
@@ -52,7 +52,7 @@ module "google_spanner_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "config" {
   description = "(required) - The name of the instance's configuration (similar but not\nquite the same as a region) which defines defines the geographic placement and\nreplication of your databases in this instance. It determines where your data\nis stored. Values are typically of the form 'regional-europe-west1' , 'us-central' etc.\nIn order to obtain a valid list please consult the\n[Configuration section of the docs](https://cloud.google.com/spanner/docs/instances)."
   type        = string
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_spanner_instance" "this" {
   config       = var.config
   display_name = var.display_name
@@ -129,7 +129,7 @@ resource "google_spanner_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_spanner_instance.this.id

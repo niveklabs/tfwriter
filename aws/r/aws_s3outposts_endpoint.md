@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3outposts_endpoint" {
   source = "./modules/aws/r/aws_s3outposts_endpoint"
 
@@ -40,7 +40,7 @@ module "aws_s3outposts_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "outpost_id" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "subnet_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3outposts_endpoint" "this" {
   outpost_id        = var.outpost_id
   security_group_id = var.security_group_id
@@ -73,7 +73,7 @@ resource "aws_s3outposts_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_s3outposts_endpoint.this.arn

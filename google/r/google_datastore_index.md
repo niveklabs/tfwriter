@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_datastore_index" {
   source = "./modules/google/r/google_datastore_index"
 
@@ -50,7 +50,7 @@ module "google_datastore_index" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ancestor" {
   description = "(optional) - Policy for including ancestors in the index. Default value: \"NONE\" Possible values: [\"NONE\", \"ALL_ANCESTORS\"]"
   type        = string
@@ -95,7 +95,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_datastore_index" "this" {
   ancestor = var.ancestor
   kind     = var.kind
@@ -124,7 +124,7 @@ resource "google_datastore_index" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_datastore_index.this.id

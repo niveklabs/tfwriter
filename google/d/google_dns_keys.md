@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dns_keys" {
   source = "./modules/google/d/google_dns_keys"
 
@@ -38,7 +38,7 @@ module "google_dns_keys" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "managed_zone" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_dns_keys" "this" {
   managed_zone = var.managed_zone
   project      = var.project
@@ -66,7 +66,7 @@ data "google_dns_keys" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_dns_keys.this.id

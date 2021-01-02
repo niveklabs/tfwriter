@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_proxy_default_target_group" {
   source = "./modules/aws/r/aws_db_proxy_default_target_group"
 
@@ -49,7 +49,7 @@ module "aws_db_proxy_default_target_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_proxy_name" {
   description = "(required)"
   type        = string
@@ -85,7 +85,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_proxy_default_target_group" "this" {
   db_proxy_name = var.db_proxy_name
 
@@ -115,7 +115,7 @@ resource "aws_db_proxy_default_target_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_db_proxy_default_target_group.this.arn

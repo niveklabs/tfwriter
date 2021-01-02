@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_usage_export_bucket" {
   source = "./modules/google/r/google_project_usage_export_bucket"
 
@@ -45,7 +45,7 @@ module "google_project_usage_export_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket_name" {
   description = "(required) - The bucket to store reports in."
   type        = string
@@ -79,7 +79,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project_usage_export_bucket" "this" {
   bucket_name = var.bucket_name
   prefix      = var.prefix
@@ -100,7 +100,7 @@ resource "google_project_usage_export_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_project_usage_export_bucket.this.id

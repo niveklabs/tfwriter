@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_network_peering" {
   source = "./modules/google/r/google_compute_network_peering"
 
@@ -54,7 +54,7 @@ module "google_compute_network_peering" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "export_custom_routes" {
   description = "(optional) - Whether to export the custom routes to the peer network. Defaults to false."
   type        = bool
@@ -111,7 +111,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_network_peering" "this" {
   export_custom_routes                = var.export_custom_routes
   export_subnet_routes_with_public_ip = var.export_subnet_routes_with_public_ip
@@ -137,7 +137,7 @@ resource "google_compute_network_peering" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_network_peering.this.id

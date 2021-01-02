@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_organization_policy" {
   source = "./modules/google/d/google_project_organization_policy"
 
@@ -38,7 +38,7 @@ module "google_project_organization_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "constraint" {
   description = "(required) - The name of the Constraint the Policy is configuring, for example, serviceuser.services."
   type        = string
@@ -54,7 +54,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_project_organization_policy" "this" {
   constraint = var.constraint
   project    = var.project
@@ -65,7 +65,7 @@ data "google_project_organization_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "boolean_policy" {
   description = "returns a list of object"
   value       = data.google_project_organization_policy.this.boolean_policy

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_datastore_cluster_vm_anti_affinity_rule" {
   source = "./modules/vsphere/r/vsphere_datastore_cluster_vm_anti_affinity_rule"
 
@@ -44,7 +44,7 @@ module "vsphere_datastore_cluster_vm_anti_affinity_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "datastore_cluster_id" {
   description = "(required) - The managed object ID of the datastore cluster."
   type        = string
@@ -77,7 +77,7 @@ variable "virtual_machine_ids" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_datastore_cluster_vm_anti_affinity_rule" "this" {
   datastore_cluster_id = var.datastore_cluster_id
   enabled              = var.enabled
@@ -91,7 +91,7 @@ resource "vsphere_datastore_cluster_vm_anti_affinity_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_datastore_cluster_vm_anti_affinity_rule.this.id

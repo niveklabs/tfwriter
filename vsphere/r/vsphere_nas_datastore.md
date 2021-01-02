@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_nas_datastore" {
   source = "./modules/vsphere/r/vsphere_nas_datastore"
 
@@ -56,7 +56,7 @@ module "vsphere_nas_datastore" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_mode" {
   description = "(optional) - Access mode for the mount point. Can be one of readOnly or readWrite."
   type        = string
@@ -124,7 +124,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_nas_datastore" "this" {
   access_mode          = var.access_mode
   custom_attributes    = var.custom_attributes
@@ -144,7 +144,7 @@ resource "vsphere_nas_datastore" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accessible" {
   description = "returns a bool"
   value       = vsphere_nas_datastore.this.accessible

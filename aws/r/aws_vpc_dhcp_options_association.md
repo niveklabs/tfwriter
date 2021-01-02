@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_dhcp_options_association" {
   source = "./modules/aws/r/aws_vpc_dhcp_options_association"
 
@@ -38,7 +38,7 @@ module "aws_vpc_dhcp_options_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dhcp_options_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_dhcp_options_association" "this" {
   dhcp_options_id = var.dhcp_options_id
   vpc_id          = var.vpc_id
@@ -65,7 +65,7 @@ resource "aws_vpc_dhcp_options_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpc_dhcp_options_association.this.id

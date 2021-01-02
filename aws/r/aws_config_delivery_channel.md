@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_delivery_channel" {
   source = "./modules/aws/r/aws_config_delivery_channel"
 
@@ -46,7 +46,7 @@ module "aws_config_delivery_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -85,7 +85,7 @@ variable "snapshot_delivery_properties" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_delivery_channel" "this" {
   name           = var.name
   s3_bucket_name = var.s3_bucket_name
@@ -106,7 +106,7 @@ resource "aws_config_delivery_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_config_delivery_channel.this.id

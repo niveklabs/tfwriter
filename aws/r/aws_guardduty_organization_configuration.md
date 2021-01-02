@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_organization_configuration" {
   source = "./modules/aws/r/aws_guardduty_organization_configuration"
 
@@ -38,7 +38,7 @@ module "aws_guardduty_organization_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_enable" {
   description = "(required)"
   type        = bool
@@ -54,7 +54,7 @@ variable "detector_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_organization_configuration" "this" {
   auto_enable = var.auto_enable
   detector_id = var.detector_id
@@ -65,7 +65,7 @@ resource "aws_guardduty_organization_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_guardduty_organization_configuration.this.id

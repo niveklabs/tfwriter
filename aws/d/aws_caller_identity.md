@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_caller_identity" {
   source = "./modules/aws/d/aws_caller_identity"
 
@@ -34,14 +34,14 @@ module "aws_caller_identity" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_caller_identity" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "aws_caller_identity" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = data.aws_caller_identity.this.account_id

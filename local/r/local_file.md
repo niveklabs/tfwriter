@@ -94,7 +94,7 @@ variable "source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "local_file" "this" {
   content              = var.content
   content_base64       = var.content_base64
@@ -110,7 +110,7 @@ resource "local_file" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = local_file.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_record" {
   source = "./modules/aws/r/aws_route53_record"
 
@@ -76,7 +76,7 @@ module "aws_route53_record" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_overwrite" {
   description = "(optional)"
   type        = bool
@@ -187,7 +187,7 @@ variable "weighted_routing_policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_record" "this" {
   allow_overwrite                  = var.allow_overwrite
   health_check_id                  = var.health_check_id
@@ -245,7 +245,7 @@ resource "aws_route53_record" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_overwrite" {
   description = "returns a bool"
   value       = aws_route53_record.this.allow_overwrite

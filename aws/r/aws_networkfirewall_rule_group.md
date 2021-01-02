@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_networkfirewall_rule_group" {
   source = "./modules/aws/r/aws_networkfirewall_rule_group"
 
@@ -125,7 +125,7 @@ module "aws_networkfirewall_rule_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "capacity" {
   description = "(required)"
   type        = number
@@ -295,7 +295,7 @@ variable "rule_group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_networkfirewall_rule_group" "this" {
   capacity    = var.capacity
   description = var.description
@@ -498,7 +498,7 @@ resource "aws_networkfirewall_rule_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_networkfirewall_rule_group.this.arn

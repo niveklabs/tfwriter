@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudhsm_v2_cluster" {
   source = "./modules/aws/d/aws_cloudhsm_v2_cluster"
 
@@ -38,7 +38,7 @@ module "aws_cloudhsm_v2_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_id" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "cluster_state" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_cloudhsm_v2_cluster" "this" {
   cluster_id    = var.cluster_id
   cluster_state = var.cluster_state
@@ -66,7 +66,7 @@ data "aws_cloudhsm_v2_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cluster_certificates" {
   description = "returns a list of object"
   value       = data.aws_cloudhsm_v2_cluster.this.cluster_certificates

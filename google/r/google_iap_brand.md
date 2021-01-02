@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iap_brand" {
   source = "./modules/google/r/google_iap_brand"
 
@@ -45,7 +45,7 @@ module "google_iap_brand" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_title" {
   description = "(required) - Application name displayed on OAuth consent screen."
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_iap_brand" "this" {
   application_title = var.application_title
   project           = var.project
@@ -99,7 +99,7 @@ resource "google_iap_brand" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_iap_brand.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_log_destination_policy" {
   source = "./modules/aws/r/aws_cloudwatch_log_destination_policy"
 
@@ -38,7 +38,7 @@ module "aws_cloudwatch_log_destination_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_policy" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "destination_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_log_destination_policy" "this" {
   access_policy    = var.access_policy
   destination_name = var.destination_name
@@ -65,7 +65,7 @@ resource "aws_cloudwatch_log_destination_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cloudwatch_log_destination_policy.this.id

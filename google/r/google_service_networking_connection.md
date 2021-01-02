@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_networking_connection" {
   source = "./modules/google/r/google_service_networking_connection"
 
@@ -46,7 +46,7 @@ module "google_service_networking_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "network" {
   description = "(required) - Name of VPC network connected with service producers using VPC peering."
   type        = string
@@ -79,7 +79,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_service_networking_connection" "this" {
   network                 = var.network
   reserved_peering_ranges = var.reserved_peering_ranges
@@ -101,7 +101,7 @@ resource "google_service_networking_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_service_networking_connection.this.id

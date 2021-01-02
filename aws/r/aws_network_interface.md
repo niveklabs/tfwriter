@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_interface" {
   source = "./modules/aws/r/aws_network_interface"
 
@@ -60,7 +60,7 @@ module "aws_network_interface" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -137,7 +137,7 @@ variable "attachment" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_network_interface" "this" {
   description        = var.description
   ipv6_address_count = var.ipv6_address_count
@@ -165,7 +165,7 @@ resource "aws_network_interface" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_network_interface.this.id

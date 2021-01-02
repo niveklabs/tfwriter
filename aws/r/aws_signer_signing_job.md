@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_signer_signing_job" {
   source = [{
     s3 = [{
@@ -52,7 +52,7 @@ module "aws_signer_signing_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ignore_signing_job_failure" {
   description = "(optional)"
   type        = bool
@@ -98,7 +98,7 @@ variable "source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_signer_signing_job" "this" {
   ignore_signing_job_failure = var.ignore_signing_job_failure
   profile_name               = var.profile_name
@@ -141,7 +141,7 @@ resource "aws_signer_signing_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "completed_at" {
   description = "returns a string"
   value       = aws_signer_signing_job.this.completed_at

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_appmesh_mesh" {
   source = "./modules/aws/r/aws_appmesh_mesh"
 
@@ -44,7 +44,7 @@ module "aws_appmesh_mesh" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -75,7 +75,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_appmesh_mesh" "this" {
   name = var.name
   tags = var.tags
@@ -101,7 +101,7 @@ resource "aws_appmesh_mesh" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_appmesh_mesh.this.arn

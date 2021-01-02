@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_healthcare_dataset_iam_member" {
   source = "./modules/google/r/google_healthcare_dataset_iam_member"
 
@@ -46,7 +46,7 @@ module "google_healthcare_dataset_iam_member" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dataset_id" {
   description = "(required)"
   type        = string
@@ -79,7 +79,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_healthcare_dataset_iam_member" "this" {
   dataset_id = var.dataset_id
   member     = var.member
@@ -101,7 +101,7 @@ resource "google_healthcare_dataset_iam_member" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_healthcare_dataset_iam_member.this.etag

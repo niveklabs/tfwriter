@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_actions_public_key" {
   source = "./modules/github/d/github_actions_public_key"
 
@@ -36,7 +36,7 @@ module "github_actions_public_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "repository" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "repository" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_actions_public_key" "this" {
   repository = var.repository
 }
@@ -57,7 +57,7 @@ data "github_actions_public_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.github_actions_public_key.this.id

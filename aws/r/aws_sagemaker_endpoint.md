@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_endpoint" {
   source = "./modules/aws/r/aws_sagemaker_endpoint"
 
@@ -40,7 +40,7 @@ module "aws_sagemaker_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "endpoint_config_name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sagemaker_endpoint" "this" {
   endpoint_config_name = var.endpoint_config_name
   name                 = var.name
@@ -75,7 +75,7 @@ resource "aws_sagemaker_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sagemaker_endpoint.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_catalog_database" {
   source = "./modules/aws/r/aws_glue_catalog_database"
 
@@ -44,7 +44,7 @@ module "aws_glue_catalog_database" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "parameters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_catalog_database" "this" {
   catalog_id   = var.catalog_id
   description  = var.description
@@ -93,7 +93,7 @@ resource "aws_glue_catalog_database" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_catalog_database.this.arn

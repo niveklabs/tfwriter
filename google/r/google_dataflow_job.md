@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dataflow_job" {
   source = "./modules/google/r/google_dataflow_job"
 
@@ -72,7 +72,7 @@ module "google_dataflow_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "additional_experiments" {
   description = "(optional) - List of experiments that should be used by the job. An example value is [\"enable_stackdriver_agent_metrics\"]."
   type        = set(string)
@@ -187,7 +187,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dataflow_job" "this" {
   additional_experiments = var.additional_experiments
   ip_configuration       = var.ip_configuration
@@ -221,7 +221,7 @@ resource "google_dataflow_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dataflow_job.this.id

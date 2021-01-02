@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_acmpca_certificate_authority" {
   source = "./modules/aws/r/aws_acmpca_certificate_authority"
 
@@ -75,7 +75,7 @@ module "aws_acmpca_certificate_authority" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enabled" {
   description = "(optional)"
   type        = bool
@@ -159,7 +159,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_acmpca_certificate_authority" "this" {
   enabled                         = var.enabled
   permanent_deletion_time_in_days = var.permanent_deletion_time_in_days
@@ -225,7 +225,7 @@ resource "aws_acmpca_certificate_authority" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_acmpca_certificate_authority.this.arn

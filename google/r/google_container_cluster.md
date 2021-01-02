@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_cluster" {
   source = "./modules/google/r/google_container_cluster"
 
@@ -287,7 +287,7 @@ module "google_container_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_ipv4_cidr" {
   description = "(optional) - The IP address range of the Kubernetes pods in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only work for routes-based clusters, where ip_allocation_policy is not defined."
   type        = string
@@ -789,7 +789,7 @@ variable "workload_identity_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_container_cluster" "this" {
   cluster_ipv4_cidr           = var.cluster_ipv4_cidr
   default_max_pods_per_node   = var.default_max_pods_per_node
@@ -1151,7 +1151,7 @@ resource "google_container_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cluster_ipv4_cidr" {
   description = "returns a string"
   value       = google_container_cluster.this.cluster_ipv4_cidr

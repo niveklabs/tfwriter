@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_project_column" {
   source = "./modules/github/r/github_project_column"
 
@@ -38,7 +38,7 @@ module "github_project_column" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "project_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_project_column" "this" {
   name       = var.name
   project_id = var.project_id
@@ -65,7 +65,7 @@ resource "github_project_column" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "column_id" {
   description = "returns a number"
   value       = github_project_column.this.column_id

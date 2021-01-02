@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_license" {
   source = "./modules/vsphere/r/vsphere_license"
 
@@ -38,7 +38,7 @@ module "vsphere_license" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "labels" {
   description = "(optional)"
   type        = map(string)
@@ -55,7 +55,7 @@ variable "license_key" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_license" "this" {
   labels      = var.labels
   license_key = var.license_key
@@ -66,7 +66,7 @@ resource "vsphere_license" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "edition_key" {
   description = "returns a string"
   value       = vsphere_license.this.edition_key

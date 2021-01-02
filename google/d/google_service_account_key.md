@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_account_key" {
   source = "./modules/google/d/google_service_account_key"
 
@@ -40,7 +40,7 @@ module "google_service_account_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "public_key_type" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_service_account_key" "this" {
   name            = var.name
   project         = var.project
@@ -75,7 +75,7 @@ data "google_service_account_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_service_account_key.this.id

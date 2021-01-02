@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_backup_region_settings" {
   source = "./modules/aws/r/aws_backup_region_settings"
 
@@ -36,7 +36,7 @@ module "aws_backup_region_settings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "resource_type_opt_in_preference" {
   description = "(required)"
   type        = map(bool)
@@ -47,7 +47,7 @@ variable "resource_type_opt_in_preference" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_backup_region_settings" "this" {
   resource_type_opt_in_preference = var.resource_type_opt_in_preference
 }
@@ -57,7 +57,7 @@ resource "aws_backup_region_settings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_backup_region_settings.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_engine_versions" {
   source = "./modules/google/d/google_container_engine_versions"
 
@@ -40,7 +40,7 @@ module "google_container_engine_versions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "version_prefix" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_container_engine_versions" "this" {
   location       = var.location
   project        = var.project
@@ -76,7 +76,7 @@ data "google_container_engine_versions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_cluster_version" {
   description = "returns a string"
   value       = data.google_container_engine_versions.this.default_cluster_version

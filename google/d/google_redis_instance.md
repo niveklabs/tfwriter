@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_redis_instance" {
   source = "./modules/google/d/google_redis_instance"
 
@@ -40,7 +40,7 @@ module "google_redis_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - The ID of the instance or a fully qualified identifier for the instance."
   type        = string
@@ -63,7 +63,7 @@ variable "region" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_redis_instance" "this" {
   name    = var.name
   project = var.project
@@ -75,7 +75,7 @@ data "google_redis_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "alternative_location_id" {
   description = "returns a string"
   value       = data.google_redis_instance.this.alternative_location_id

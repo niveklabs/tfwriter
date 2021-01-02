@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_function_event_invoke_config" {
   source = "./modules/aws/r/aws_lambda_function_event_invoke_config"
 
@@ -51,7 +51,7 @@ module "aws_lambda_function_event_invoke_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "function_name" {
   description = "(required)"
   type        = string
@@ -99,7 +99,7 @@ variable "destination_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_function_event_invoke_config" "this" {
   function_name                = var.function_name
   maximum_event_age_in_seconds = var.maximum_event_age_in_seconds
@@ -134,7 +134,7 @@ resource "aws_lambda_function_event_invoke_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lambda_function_event_invoke_config.this.id

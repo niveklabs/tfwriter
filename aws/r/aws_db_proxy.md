@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_proxy" {
   source = "./modules/aws/r/aws_db_proxy"
 
@@ -65,7 +65,7 @@ module "aws_db_proxy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "debug_logging" {
   description = "(optional)"
   type        = bool
@@ -145,7 +145,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_proxy" "this" {
   debug_logging          = var.debug_logging
   engine_family          = var.engine_family
@@ -183,7 +183,7 @@ resource "aws_db_proxy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_db_proxy.this.arn

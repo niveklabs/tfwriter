@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_dev_endpoint" {
   source = "./modules/aws/r/aws_glue_dev_endpoint"
 
@@ -64,7 +64,7 @@ module "aws_glue_dev_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arguments" {
   description = "(optional)"
   type        = map(string)
@@ -158,7 +158,7 @@ variable "worker_type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_dev_endpoint" "this" {
   arguments                 = var.arguments
   extra_jars_s3_path        = var.extra_jars_s3_path
@@ -182,7 +182,7 @@ resource "aws_glue_dev_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_dev_endpoint.this.arn

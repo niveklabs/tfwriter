@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_stack" {
   source = "./modules/aws/r/aws_opsworks_stack"
 
@@ -85,7 +85,7 @@ module "aws_opsworks_stack" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "agent_version" {
   description = "(optional)"
   type        = string
@@ -228,7 +228,7 @@ variable "custom_cookbooks_source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_stack" "this" {
   agent_version                 = var.agent_version
   berkshelf_version             = var.berkshelf_version
@@ -271,7 +271,7 @@ resource "aws_opsworks_stack" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "agent_version" {
   description = "returns a string"
   value       = aws_opsworks_stack.this.agent_version

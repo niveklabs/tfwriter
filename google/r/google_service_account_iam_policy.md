@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_account_iam_policy" {
   source = "./modules/google/r/google_service_account_iam_policy"
 
@@ -38,7 +38,7 @@ module "google_service_account_iam_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "policy_data" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "service_account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_service_account_iam_policy" "this" {
   policy_data        = var.policy_data
   service_account_id = var.service_account_id
@@ -65,7 +65,7 @@ resource "google_service_account_iam_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_service_account_iam_policy.this.etag

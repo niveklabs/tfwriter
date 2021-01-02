@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_region_instance_group" {
   source = "./modules/google/d/google_compute_region_instance_group"
 
@@ -42,7 +42,7 @@ module "google_compute_region_instance_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "self_link" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_region_instance_group" "this" {
   name      = var.name
   project   = var.project
@@ -85,7 +85,7 @@ data "google_compute_region_instance_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_compute_region_instance_group.this.id

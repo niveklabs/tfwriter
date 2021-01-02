@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_local_gateway_route_table_vpc_association" {
   source = "./modules/aws/r/aws_ec2_local_gateway_route_table_vpc_association"
 
@@ -40,7 +40,7 @@ module "aws_ec2_local_gateway_route_table_vpc_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "local_gateway_route_table_id" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_local_gateway_route_table_vpc_association" "this" {
   local_gateway_route_table_id = var.local_gateway_route_table_id
   tags                         = var.tags
@@ -74,7 +74,7 @@ resource "aws_ec2_local_gateway_route_table_vpc_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_local_gateway_route_table_vpc_association.this.id

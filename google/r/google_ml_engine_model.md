@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_ml_engine_model" {
   source = "./modules/google/r/google_ml_engine_model"
 
@@ -57,7 +57,7 @@ module "google_ml_engine_model" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - The description specified for the model when it was created."
   type        = string
@@ -125,7 +125,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_ml_engine_model" "this" {
   description                       = var.description
   labels                            = var.labels
@@ -157,7 +157,7 @@ resource "google_ml_engine_model" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_ml_engine_model.this.id

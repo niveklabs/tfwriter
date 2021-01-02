@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_worklink_website_certificate_authority_association" {
   source = "./modules/aws/r/aws_worklink_website_certificate_authority_association"
 
@@ -40,7 +40,7 @@ module "aws_worklink_website_certificate_authority_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "fleet_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_worklink_website_certificate_authority_association" "this" {
   certificate  = var.certificate
   display_name = var.display_name
@@ -74,7 +74,7 @@ resource "aws_worklink_website_certificate_authority_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_worklink_website_certificate_authority_association.this.id

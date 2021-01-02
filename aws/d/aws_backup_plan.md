@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_backup_plan" {
   source = "./modules/aws/d/aws_backup_plan"
 
@@ -38,7 +38,7 @@ module "aws_backup_plan" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "plan_id" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_backup_plan" "this" {
   plan_id = var.plan_id
   tags    = var.tags
@@ -66,7 +66,7 @@ data "aws_backup_plan" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_backup_plan.this.arn

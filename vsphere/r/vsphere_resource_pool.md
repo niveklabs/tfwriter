@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_resource_pool" {
   source = "./modules/vsphere/r/vsphere_resource_pool"
 
@@ -62,7 +62,7 @@ module "vsphere_resource_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cpu_expandable" {
   description = "(optional) - Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has unreserved resources."
   type        = bool
@@ -150,7 +150,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_resource_pool" "this" {
   cpu_expandable          = var.cpu_expandable
   cpu_limit               = var.cpu_limit
@@ -173,7 +173,7 @@ resource "vsphere_resource_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cpu_shares" {
   description = "returns a number"
   value       = vsphere_resource_pool.this.cpu_shares

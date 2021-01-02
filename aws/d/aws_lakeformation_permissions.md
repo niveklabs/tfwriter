@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lakeformation_permissions" {
   source = "./modules/aws/d/aws_lakeformation_permissions"
 
@@ -65,7 +65,7 @@ module "aws_lakeformation_permissions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -137,7 +137,7 @@ variable "table_with_columns" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_lakeformation_permissions" "this" {
   catalog_id       = var.catalog_id
   catalog_resource = var.catalog_resource
@@ -187,7 +187,7 @@ data "aws_lakeformation_permissions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_lakeformation_permissions.this.id

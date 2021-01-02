@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_networkfirewall_logging_configuration" {
   source = "./modules/aws/r/aws_networkfirewall_logging_configuration"
 
@@ -44,7 +44,7 @@ module "aws_networkfirewall_logging_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "firewall_arn" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "logging_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_networkfirewall_logging_configuration" "this" {
   firewall_arn = var.firewall_arn
 
@@ -97,7 +97,7 @@ resource "aws_networkfirewall_logging_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_networkfirewall_logging_configuration.this.id

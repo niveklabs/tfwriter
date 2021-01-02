@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_account_public_access_block" {
   source = "./modules/aws/r/aws_s3_account_public_access_block"
 
@@ -44,7 +44,7 @@ module "aws_s3_account_public_access_block" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "restrict_public_buckets" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_account_public_access_block" "this" {
   account_id              = var.account_id
   block_public_acls       = var.block_public_acls
@@ -94,7 +94,7 @@ resource "aws_s3_account_public_access_block" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_s3_account_public_access_block.this.account_id

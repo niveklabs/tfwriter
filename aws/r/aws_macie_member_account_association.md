@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_macie_member_account_association" {
   source = "./modules/aws/r/aws_macie_member_account_association"
 
@@ -36,7 +36,7 @@ module "aws_macie_member_account_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "member_account_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "member_account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_macie_member_account_association" "this" {
   member_account_id = var.member_account_id
 }
@@ -57,7 +57,7 @@ resource "aws_macie_member_account_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_macie_member_account_association.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_authorizer" {
   source = "./modules/aws/r/aws_api_gateway_authorizer"
 
@@ -52,7 +52,7 @@ module "aws_api_gateway_authorizer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "authorizer_credentials" {
   description = "(optional)"
   type        = string
@@ -110,7 +110,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_authorizer" "this" {
   authorizer_credentials           = var.authorizer_credentials
   authorizer_result_ttl_in_seconds = var.authorizer_result_ttl_in_seconds
@@ -128,7 +128,7 @@ resource "aws_api_gateway_authorizer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_authorizer.this.id

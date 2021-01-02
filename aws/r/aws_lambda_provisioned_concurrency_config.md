@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_provisioned_concurrency_config" {
   source = "./modules/aws/r/aws_lambda_provisioned_concurrency_config"
 
@@ -45,7 +45,7 @@ module "aws_lambda_provisioned_concurrency_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "function_name" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_provisioned_concurrency_config" "this" {
   function_name                     = var.function_name
   provisioned_concurrent_executions = var.provisioned_concurrent_executions
@@ -98,7 +98,7 @@ resource "aws_lambda_provisioned_concurrency_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lambda_provisioned_concurrency_config.this.id

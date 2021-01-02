@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecr_repository" {
   source = "./modules/aws/d/aws_ecr_repository"
 
@@ -40,7 +40,7 @@ module "aws_ecr_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ecr_repository" "this" {
   name        = var.name
   registry_id = var.registry_id
@@ -75,7 +75,7 @@ data "aws_ecr_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_ecr_repository.this.arn

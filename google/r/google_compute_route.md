@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_route" {
   source = "./modules/google/r/google_compute_route"
 
@@ -65,7 +65,7 @@ module "google_compute_route" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource. Provide this property\nwhen you create the resource."
   type        = string
@@ -157,7 +157,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_route" "this" {
   description            = var.description
   dest_range             = var.dest_range
@@ -188,7 +188,7 @@ resource "google_compute_route" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_route.this.id

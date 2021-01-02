@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_endpoints" {
   source = "./modules/kubernetes/r/kubernetes_endpoints"
 
@@ -64,7 +64,7 @@ module "kubernetes_endpoints" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -117,7 +117,7 @@ variable "subset" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_endpoints" "this" {
 
   dynamic "metadata" {
@@ -172,7 +172,7 @@ resource "kubernetes_endpoints" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_endpoints.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_file" {
   source = "./modules/vsphere/r/vsphere_file"
 
@@ -48,7 +48,7 @@ module "vsphere_file" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "create_directories" {
   description = "(optional)"
   type        = bool
@@ -93,7 +93,7 @@ variable "source_file" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_file" "this" {
   create_directories = var.create_directories
   datacenter         = var.datacenter
@@ -109,7 +109,7 @@ resource "vsphere_file" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_file.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_event_source_mapping" {
   source = "./modules/aws/r/aws_lambda_event_source_mapping"
 
@@ -62,7 +62,7 @@ module "aws_lambda_event_source_mapping" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "batch_size" {
   description = "(optional)"
   type        = number
@@ -146,7 +146,7 @@ variable "destination_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lambda_event_source_mapping" "this" {
   batch_size                         = var.batch_size
   bisect_batch_on_function_error     = var.bisect_batch_on_function_error
@@ -181,7 +181,7 @@ resource "aws_lambda_event_source_mapping" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "function_arn" {
   description = "returns a string"
   value       = aws_lambda_event_source_mapping.this.function_arn

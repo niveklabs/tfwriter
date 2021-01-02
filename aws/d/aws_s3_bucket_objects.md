@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket_objects" {
   source = "./modules/aws/d/aws_s3_bucket_objects"
 
@@ -48,7 +48,7 @@ module "aws_s3_bucket_objects" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -95,7 +95,7 @@ variable "start_after" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_s3_bucket_objects" "this" {
   bucket        = var.bucket
   delimiter     = var.delimiter
@@ -111,7 +111,7 @@ data "aws_s3_bucket_objects" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "common_prefixes" {
   description = "returns a list of string"
   value       = data.aws_s3_bucket_objects.this.common_prefixes

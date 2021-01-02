@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elastictranscoder_preset" {
   source = "./modules/aws/r/aws_elastictranscoder_preset"
 
@@ -99,7 +99,7 @@ module "aws_elastictranscoder_preset" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "container" {
   description = "(required)"
   type        = string
@@ -219,7 +219,7 @@ variable "video_watermarks" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elastictranscoder_preset" "this" {
   container           = var.container
   description         = var.description
@@ -304,7 +304,7 @@ resource "aws_elastictranscoder_preset" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_elastictranscoder_preset.this.arn

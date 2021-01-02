@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_partition" {
   source = "./modules/aws/r/aws_glue_partition"
 
@@ -74,7 +74,7 @@ module "aws_glue_partition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -151,7 +151,7 @@ variable "storage_descriptor" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_partition" "this" {
   catalog_id       = var.catalog_id
   database_name    = var.database_name
@@ -216,7 +216,7 @@ resource "aws_glue_partition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "catalog_id" {
   description = "returns a string"
   value       = aws_glue_partition.this.catalog_id

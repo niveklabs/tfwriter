@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_endpoint" {
   source = "./modules/aws/r/aws_dms_endpoint"
 
@@ -99,7 +99,7 @@ module "aws_dms_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(optional)"
   type        = string
@@ -253,7 +253,7 @@ variable "s3_settings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_endpoint" "this" {
   certificate_arn             = var.certificate_arn
   database_name               = var.database_name
@@ -329,7 +329,7 @@ resource "aws_dms_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate_arn" {
   description = "returns a string"
   value       = aws_dms_endpoint.this.certificate_arn

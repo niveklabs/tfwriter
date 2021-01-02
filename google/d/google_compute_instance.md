@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance" {
   source = "./modules/google/d/google_compute_instance"
 
@@ -42,7 +42,7 @@ module "google_compute_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional) - The name of the instance. One of name or self_link must be provided."
   type        = string
@@ -72,7 +72,7 @@ variable "zone" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_instance" "this" {
   name      = var.name
   project   = var.project
@@ -85,7 +85,7 @@ data "google_compute_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_stopping_for_update" {
   description = "returns a bool"
   value       = data.google_compute_instance.this.allow_stopping_for_update

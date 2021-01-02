@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_registry_image" {
   source = "./modules/google/d/google_container_registry_image"
 
@@ -44,7 +44,7 @@ module "google_container_registry_image" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "digest" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "tag" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_container_registry_image" "this" {
   digest  = var.digest
   name    = var.name
@@ -93,7 +93,7 @@ data "google_container_registry_image" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_container_registry_image.this.id

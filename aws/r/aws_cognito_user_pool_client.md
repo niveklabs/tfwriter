@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_user_pool_client" {
   source = "./modules/aws/r/aws_cognito_user_pool_client"
 
@@ -71,7 +71,7 @@ module "aws_cognito_user_pool_client" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allowed_oauth_flows" {
   description = "(optional)"
   type        = set(string)
@@ -178,7 +178,7 @@ variable "analytics_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_user_pool_client" "this" {
   allowed_oauth_flows                  = var.allowed_oauth_flows
   allowed_oauth_flows_user_pool_client = var.allowed_oauth_flows_user_pool_client
@@ -213,7 +213,7 @@ resource "aws_cognito_user_pool_client" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "client_secret" {
   description = "returns a string"
   value       = aws_cognito_user_pool_client.this.client_secret

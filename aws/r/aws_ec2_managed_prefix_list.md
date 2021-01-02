@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_managed_prefix_list" {
   source = "./modules/aws/r/aws_ec2_managed_prefix_list"
 
@@ -47,7 +47,7 @@ module "aws_ec2_managed_prefix_list" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "address_family" {
   description = "(required)"
   type        = string
@@ -85,7 +85,7 @@ variable "entry" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_managed_prefix_list" "this" {
   address_family = var.address_family
   max_entries    = var.max_entries
@@ -107,7 +107,7 @@ resource "aws_ec2_managed_prefix_list" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ec2_managed_prefix_list.this.arn

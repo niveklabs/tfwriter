@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lb_listener_rule" {
   source = "./modules/aws/r/aws_lb_listener_rule"
 
@@ -113,7 +113,7 @@ module "aws_lb_listener_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "listener_arn" {
   description = "(required)"
   type        = string
@@ -241,7 +241,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lb_listener_rule" "this" {
   listener_arn = var.listener_arn
   priority     = var.priority
@@ -389,7 +389,7 @@ resource "aws_lb_listener_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lb_listener_rule.this.arn

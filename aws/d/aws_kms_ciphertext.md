@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_ciphertext" {
   source = "./modules/aws/d/aws_kms_ciphertext"
 
@@ -40,7 +40,7 @@ module "aws_kms_ciphertext" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "context" {
   description = "(optional)"
   type        = map(string)
@@ -62,7 +62,7 @@ variable "plaintext" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_kms_ciphertext" "this" {
   context   = var.context
   key_id    = var.key_id
@@ -74,7 +74,7 @@ data "aws_kms_ciphertext" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ciphertext_blob" {
   description = "returns a string"
   value       = data.aws_kms_ciphertext.this.ciphertext_blob

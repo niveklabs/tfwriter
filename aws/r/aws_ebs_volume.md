@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_volume" {
   source = "./modules/aws/r/aws_ebs_volume"
 
@@ -54,7 +54,7 @@ module "aws_ebs_volume" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(required)"
   type        = string
@@ -119,7 +119,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ebs_volume" "this" {
   availability_zone    = var.availability_zone
   encrypted            = var.encrypted
@@ -138,7 +138,7 @@ resource "aws_ebs_volume" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ebs_volume.this.arn

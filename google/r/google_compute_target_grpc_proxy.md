@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_target_grpc_proxy" {
   source = "./modules/google/r/google_compute_target_grpc_proxy"
 
@@ -50,7 +50,7 @@ module "google_compute_target_grpc_proxy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource."
   type        = string
@@ -97,7 +97,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_target_grpc_proxy" "this" {
   description            = var.description
   name                   = var.name
@@ -121,7 +121,7 @@ resource "google_compute_target_grpc_proxy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_target_grpc_proxy.this.creation_timestamp

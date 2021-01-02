@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_snapshot" {
   source = "./modules/aws/d/aws_ebs_snapshot"
 
@@ -49,7 +49,7 @@ module "aws_ebs_snapshot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "most_recent" {
   description = "(optional)"
   type        = bool
@@ -96,7 +96,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ebs_snapshot" "this" {
   most_recent            = var.most_recent
   owners                 = var.owners
@@ -119,7 +119,7 @@ data "aws_ebs_snapshot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_ebs_snapshot.this.arn

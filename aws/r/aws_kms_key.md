@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kms_key" {
   source = "./modules/aws/r/aws_kms_key"
 
@@ -50,7 +50,7 @@ module "aws_kms_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "customer_master_key_spec" {
   description = "(optional)"
   type        = string
@@ -104,7 +104,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kms_key" "this" {
   customer_master_key_spec = var.customer_master_key_spec
   deletion_window_in_days  = var.deletion_window_in_days
@@ -121,7 +121,7 @@ resource "aws_kms_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kms_key.this.arn

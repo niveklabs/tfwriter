@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_group" {
   source = "./modules/aws/r/aws_autoscaling_group"
 
@@ -145,7 +145,7 @@ module "aws_autoscaling_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zones" {
   description = "(optional)"
   type        = set(string)
@@ -414,7 +414,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_group" "this" {
   availability_zones        = var.availability_zones
   capacity_rebalance        = var.capacity_rebalance
@@ -549,7 +549,7 @@ resource "aws_autoscaling_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_autoscaling_group.this.arn

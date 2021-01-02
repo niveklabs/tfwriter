@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_instance_type_offerings" {
   source = "./modules/aws/d/aws_ec2_instance_type_offerings"
 
@@ -41,7 +41,7 @@ module "aws_ec2_instance_type_offerings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location_type" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_instance_type_offerings" "this" {
   location_type = var.location_type
 
@@ -83,7 +83,7 @@ data "aws_ec2_instance_type_offerings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_instance_type_offerings.this.id

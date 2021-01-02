@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_backup_selection" {
   source = "./modules/aws/d/aws_backup_selection"
 
@@ -38,7 +38,7 @@ module "aws_backup_selection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "plan_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "selection_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_backup_selection" "this" {
   plan_id      = var.plan_id
   selection_id = var.selection_id
@@ -65,7 +65,7 @@ data "aws_backup_selection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "iam_role_arn" {
   description = "returns a string"
   value       = data.aws_backup_selection.this.iam_role_arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_snapshot" {
   source = "./modules/aws/r/aws_ebs_snapshot"
 
@@ -45,7 +45,7 @@ module "aws_ebs_snapshot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ebs_snapshot" "this" {
   description = var.description
   tags        = var.tags
@@ -100,7 +100,7 @@ resource "aws_ebs_snapshot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ebs_snapshot.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_job" {
   source = "./modules/google/r/google_bigquery_job"
 
@@ -154,7 +154,7 @@ module "google_bigquery_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "job_id" {
   description = "(required) - The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters."
   type        = string
@@ -355,7 +355,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_job" "this" {
   job_id         = var.job_id
   job_timeout_ms = var.job_timeout_ms
@@ -551,7 +551,7 @@ resource "google_bigquery_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_bigquery_job.this.id

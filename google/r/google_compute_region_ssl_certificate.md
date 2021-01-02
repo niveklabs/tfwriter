@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_region_ssl_certificate" {
   source = "./modules/google/r/google_compute_region_ssl_certificate"
 
@@ -53,7 +53,7 @@ module "google_compute_region_ssl_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate" {
   description = "(required) - The certificate in PEM format.\nThe certificate chain must be no greater than 5 certs long.\nThe chain must include at least one intermediate cert."
   type        = string
@@ -110,7 +110,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_region_ssl_certificate" "this" {
   certificate = var.certificate
   description = var.description
@@ -135,7 +135,7 @@ resource "google_compute_region_ssl_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate_id" {
   description = "returns a number"
   value       = google_compute_region_ssl_certificate.this.certificate_id

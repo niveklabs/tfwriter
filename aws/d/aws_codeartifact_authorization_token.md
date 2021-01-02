@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codeartifact_authorization_token" {
   source = "./modules/aws/d/aws_codeartifact_authorization_token"
 
@@ -40,7 +40,7 @@ module "aws_codeartifact_authorization_token" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "duration_seconds" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_codeartifact_authorization_token" "this" {
   domain           = var.domain
   domain_owner     = var.domain_owner
@@ -75,7 +75,7 @@ data "aws_codeartifact_authorization_token" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "authorization_token" {
   description = "returns a string"
   value       = data.aws_codeartifact_authorization_token.this.authorization_token

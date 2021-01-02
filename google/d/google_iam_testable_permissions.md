@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_iam_testable_permissions" {
   source = "./modules/google/d/google_iam_testable_permissions"
 
@@ -40,7 +40,7 @@ module "google_iam_testable_permissions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "custom_support_level" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "stages" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_iam_testable_permissions" "this" {
   custom_support_level = var.custom_support_level
   full_resource_name   = var.full_resource_name
@@ -75,7 +75,7 @@ data "google_iam_testable_permissions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_iam_testable_permissions.this.id

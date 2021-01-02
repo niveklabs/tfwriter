@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_rds_engine_version" {
   source = "./modules/aws/d/aws_rds_engine_version"
 
@@ -42,7 +42,7 @@ module "aws_rds_engine_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "engine" {
   description = "(required)"
   type        = string
@@ -71,7 +71,7 @@ variable "version" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_rds_engine_version" "this" {
   engine                 = var.engine
   parameter_group_family = var.parameter_group_family
@@ -84,7 +84,7 @@ data "aws_rds_engine_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "default_character_set" {
   description = "returns a string"
   value       = data.aws_rds_engine_version.this.default_character_set

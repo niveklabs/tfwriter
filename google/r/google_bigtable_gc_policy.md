@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigtable_gc_policy" {
   source = "./modules/google/r/google_bigtable_gc_policy"
 
@@ -52,7 +52,7 @@ module "google_bigtable_gc_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "column_family" {
   description = "(required) - The name of the column family."
   type        = string
@@ -105,7 +105,7 @@ variable "max_version" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigtable_gc_policy" "this" {
   column_family = var.column_family
   instance_name = var.instance_name
@@ -134,7 +134,7 @@ resource "google_bigtable_gc_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_bigtable_gc_policy.this.id

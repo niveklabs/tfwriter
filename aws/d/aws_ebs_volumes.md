@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_volumes" {
   source = "./modules/aws/d/aws_ebs_volumes"
 
@@ -41,7 +41,7 @@ module "aws_ebs_volumes" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -64,7 +64,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ebs_volumes" "this" {
   tags = var.tags
 
@@ -83,7 +83,7 @@ data "aws_ebs_volumes" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ebs_volumes.this.id

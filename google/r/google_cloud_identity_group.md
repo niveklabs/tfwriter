@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_identity_group" {
   source = "./modules/google/r/google_cloud_identity_group"
 
@@ -53,7 +53,7 @@ module "google_cloud_identity_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An extended description to help users determine the purpose of a Group.\nMust not be longer than 4,096 characters."
   type        = string
@@ -103,7 +103,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloud_identity_group" "this" {
   description  = var.description
   display_name = var.display_name
@@ -134,7 +134,7 @@ resource "google_cloud_identity_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_cloud_identity_group.this.create_time

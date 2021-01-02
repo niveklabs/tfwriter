@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_user_profile" {
   source = "./modules/aws/r/aws_opsworks_user_profile"
 
@@ -42,7 +42,7 @@ module "aws_opsworks_user_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_self_management" {
   description = "(optional)"
   type        = bool
@@ -70,7 +70,7 @@ variable "user_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_user_profile" "this" {
   allow_self_management = var.allow_self_management
   ssh_public_key        = var.ssh_public_key
@@ -83,7 +83,7 @@ resource "aws_opsworks_user_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_opsworks_user_profile.this.id

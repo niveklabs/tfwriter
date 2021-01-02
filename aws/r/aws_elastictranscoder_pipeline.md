@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elastictranscoder_pipeline" {
   source = "./modules/aws/r/aws_elastictranscoder_pipeline"
 
@@ -73,7 +73,7 @@ module "aws_elastictranscoder_pipeline" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aws_kms_key_arn" {
   description = "(optional)"
   type        = string
@@ -166,7 +166,7 @@ variable "thumbnail_config_permissions" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elastictranscoder_pipeline" "this" {
   aws_kms_key_arn = var.aws_kms_key_arn
   input_bucket    = var.input_bucket
@@ -225,7 +225,7 @@ resource "aws_elastictranscoder_pipeline" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_elastictranscoder_pipeline.this.arn

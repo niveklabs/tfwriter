@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host_virtual_switch" {
   source = "./modules/vsphere/r/vsphere_host_virtual_switch"
 
@@ -76,7 +76,7 @@ module "vsphere_host_virtual_switch" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active_nics" {
   description = "(required) - List of active network adapters used for load balancing."
   type        = list(string)
@@ -203,7 +203,7 @@ variable "teaming_policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_host_virtual_switch" "this" {
   active_nics               = var.active_nics
   allow_forged_transmits    = var.allow_forged_transmits
@@ -233,7 +233,7 @@ resource "vsphere_host_virtual_switch" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_host_virtual_switch.this.id

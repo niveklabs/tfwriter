@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_pubsub_topic" {
   source = "./modules/google/d/google_pubsub_topic"
 
@@ -38,7 +38,7 @@ module "google_pubsub_topic" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Name of the topic."
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_pubsub_topic" "this" {
   name    = var.name
   project = var.project
@@ -66,7 +66,7 @@ data "google_pubsub_topic" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_pubsub_topic.this.id

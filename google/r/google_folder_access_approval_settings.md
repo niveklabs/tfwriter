@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_folder_access_approval_settings" {
   source = "./modules/google/r/google_folder_access_approval_settings"
 
@@ -49,7 +49,7 @@ module "google_folder_access_approval_settings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "folder_id" {
   description = "(required) - ID of the folder of the access approval settings."
   type        = string
@@ -88,7 +88,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_folder_access_approval_settings" "this" {
   folder_id           = var.folder_id
   notification_emails = var.notification_emails
@@ -117,7 +117,7 @@ resource "google_folder_access_approval_settings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "enrolled_ancestor" {
   description = "returns a bool"
   value       = google_folder_access_approval_settings.this.enrolled_ancestor

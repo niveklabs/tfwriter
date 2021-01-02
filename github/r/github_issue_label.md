@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_issue_label" {
   source = "./modules/github/r/github_issue_label"
 
@@ -42,7 +42,7 @@ module "github_issue_label" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "color" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "repository" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_issue_label" "this" {
   color       = var.color
   description = var.description
@@ -82,7 +82,7 @@ resource "github_issue_label" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_issue_label.this.etag

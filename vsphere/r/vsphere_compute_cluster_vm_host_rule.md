@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_compute_cluster_vm_host_rule" {
   source = "./modules/vsphere/r/vsphere_compute_cluster_vm_host_rule"
 
@@ -48,7 +48,7 @@ module "vsphere_compute_cluster_vm_host_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "affinity_host_group_name" {
   description = "(optional) - When this field is used, virtual machines defined in vm_group_name will be run on the hosts defined in this host group."
   type        = string
@@ -93,7 +93,7 @@ variable "vm_group_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_compute_cluster_vm_host_rule" "this" {
   affinity_host_group_name      = var.affinity_host_group_name
   anti_affinity_host_group_name = var.anti_affinity_host_group_name
@@ -109,7 +109,7 @@ resource "vsphere_compute_cluster_vm_host_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_compute_cluster_vm_host_rule.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lightsail_instance" {
   source = "./modules/aws/r/aws_lightsail_instance"
 
@@ -48,7 +48,7 @@ module "aws_lightsail_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(required)"
   type        = string
@@ -92,7 +92,7 @@ variable "user_data" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lightsail_instance" "this" {
   availability_zone = var.availability_zone
   blueprint_id      = var.blueprint_id
@@ -108,7 +108,7 @@ resource "aws_lightsail_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lightsail_instance.this.arn

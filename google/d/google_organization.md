@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_organization" {
   source = "./modules/google/d/google_organization"
 
@@ -38,7 +38,7 @@ module "google_organization" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(optional)"
   type        = string
@@ -56,7 +56,7 @@ variable "organization" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_organization" "this" {
   domain       = var.domain
   organization = var.organization
@@ -67,7 +67,7 @@ data "google_organization" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = data.google_organization.this.create_time

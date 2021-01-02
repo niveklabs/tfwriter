@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_publishing_destination" {
   source = "./modules/aws/r/aws_guardduty_publishing_destination"
 
@@ -42,7 +42,7 @@ module "aws_guardduty_publishing_destination" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destination_arn" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "kms_key_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_publishing_destination" "this" {
   destination_arn  = var.destination_arn
   destination_type = var.destination_type
@@ -82,7 +82,7 @@ resource "aws_guardduty_publishing_destination" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_guardduty_publishing_destination.this.id

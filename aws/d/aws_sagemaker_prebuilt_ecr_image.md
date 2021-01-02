@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_prebuilt_ecr_image" {
   source = "./modules/aws/d/aws_sagemaker_prebuilt_ecr_image"
 
@@ -42,7 +42,7 @@ module "aws_sagemaker_prebuilt_ecr_image" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dns_suffix" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "repository_name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_sagemaker_prebuilt_ecr_image" "this" {
   dns_suffix      = var.dns_suffix
   image_tag       = var.image_tag
@@ -84,7 +84,7 @@ data "aws_sagemaker_prebuilt_ecr_image" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_sagemaker_prebuilt_ecr_image.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_local_gateway" {
   source = "./modules/aws/d/aws_ec2_local_gateway"
 
@@ -43,7 +43,7 @@ module "aws_ec2_local_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "state" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_local_gateway" "this" {
   state = var.state
   tags  = var.tags
@@ -92,7 +92,7 @@ data "aws_ec2_local_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_local_gateway.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_all_namespaces" {
   source = "./modules/kubernetes/d/kubernetes_all_namespaces"
 
@@ -34,14 +34,14 @@ module "kubernetes_all_namespaces" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "kubernetes_all_namespaces" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "kubernetes_all_namespaces" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.kubernetes_all_namespaces.this.id

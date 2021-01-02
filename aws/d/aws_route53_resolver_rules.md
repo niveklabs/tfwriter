@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_resolver_rules" {
   source = "./modules/aws/d/aws_route53_resolver_rules"
 
@@ -42,7 +42,7 @@ module "aws_route53_resolver_rules" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "owner_id" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "share_status" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_route53_resolver_rules" "this" {
   owner_id             = var.owner_id
   resolver_endpoint_id = var.resolver_endpoint_id
@@ -85,7 +85,7 @@ data "aws_route53_resolver_rules" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_route53_resolver_rules.this.id

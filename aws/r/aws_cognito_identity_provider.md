@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_identity_provider" {
   source = "./modules/aws/r/aws_cognito_identity_provider"
 
@@ -46,7 +46,7 @@ module "aws_cognito_identity_provider" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "attribute_mapping" {
   description = "(optional)"
   type        = map(string)
@@ -84,7 +84,7 @@ variable "user_pool_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_identity_provider" "this" {
   attribute_mapping = var.attribute_mapping
   idp_identifiers   = var.idp_identifiers
@@ -99,7 +99,7 @@ resource "aws_cognito_identity_provider" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "attribute_mapping" {
   description = "returns a map of string"
   value       = aws_cognito_identity_provider.this.attribute_mapping

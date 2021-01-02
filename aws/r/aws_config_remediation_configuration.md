@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_remediation_configuration" {
   source = "./modules/aws/r/aws_config_remediation_configuration"
 
@@ -50,7 +50,7 @@ module "aws_config_remediation_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "config_rule_name" {
   description = "(required)"
   type        = string
@@ -95,7 +95,7 @@ variable "parameter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_remediation_configuration" "this" {
   config_rule_name = var.config_rule_name
   resource_type    = var.resource_type
@@ -119,7 +119,7 @@ resource "aws_config_remediation_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_config_remediation_configuration.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_binary_authorization_attestor" {
   source = "./modules/google/r/google_binary_authorization_attestor"
 
@@ -60,7 +60,7 @@ module "google_binary_authorization_attestor" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A descriptive comment. This field may be updated. The field may be\ndisplayed in chooser dialogs."
   type        = string
@@ -118,7 +118,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_binary_authorization_attestor" "this" {
   description = var.description
   name        = var.name
@@ -166,7 +166,7 @@ resource "google_binary_authorization_attestor" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_binary_authorization_attestor.this.id

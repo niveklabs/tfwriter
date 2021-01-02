@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_organizations_policy" {
   source = "./modules/aws/r/aws_organizations_policy"
 
@@ -44,7 +44,7 @@ module "aws_organizations_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "content" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_organizations_policy" "this" {
   content     = var.content
   description = var.description
@@ -92,7 +92,7 @@ resource "aws_organizations_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_organizations_policy.this.arn

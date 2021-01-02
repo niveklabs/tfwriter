@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigtable_instance" {
   source = "./modules/google/r/google_bigtable_instance"
 
@@ -53,7 +53,7 @@ module "google_bigtable_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "deletion_protection" {
   description = "(optional) - Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail."
   type        = bool
@@ -107,7 +107,7 @@ variable "cluster" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigtable_instance" "this" {
   deletion_protection = var.deletion_protection
   display_name        = var.display_name
@@ -133,7 +133,7 @@ resource "google_bigtable_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "display_name" {
   description = "returns a string"
   value       = google_bigtable_instance.this.display_name

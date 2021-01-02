@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_signer_signing_profile_permission" {
   source = "./modules/aws/r/aws_signer_signing_profile_permission"
 
@@ -46,7 +46,7 @@ module "aws_signer_signing_profile_permission" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(required)"
   type        = string
@@ -85,7 +85,7 @@ variable "statement_id_prefix" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_signer_signing_profile_permission" "this" {
   action              = var.action
   principal           = var.principal
@@ -100,7 +100,7 @@ resource "aws_signer_signing_profile_permission" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_signer_signing_profile_permission.this.id

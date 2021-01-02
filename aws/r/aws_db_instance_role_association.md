@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_instance_role_association" {
   source = "./modules/aws/r/aws_db_instance_role_association"
 
@@ -40,7 +40,7 @@ module "aws_db_instance_role_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_instance_identifier" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_db_instance_role_association" "this" {
   db_instance_identifier = var.db_instance_identifier
   feature_name           = var.feature_name
@@ -73,7 +73,7 @@ resource "aws_db_instance_role_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_db_instance_role_association.this.id

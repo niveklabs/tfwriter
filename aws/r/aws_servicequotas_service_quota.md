@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_servicequotas_service_quota" {
   source = "./modules/aws/r/aws_servicequotas_service_quota"
 
@@ -40,7 +40,7 @@ module "aws_servicequotas_service_quota" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "quota_code" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "value" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_servicequotas_service_quota" "this" {
   quota_code   = var.quota_code
   service_code = var.service_code
@@ -73,7 +73,7 @@ resource "aws_servicequotas_service_quota" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "adjustable" {
   description = "returns a bool"
   value       = aws_servicequotas_service_quota.this.adjustable

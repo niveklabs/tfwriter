@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_distributed_port_group" {
   source = "./modules/vsphere/r/vsphere_distributed_port_group"
 
@@ -129,7 +129,7 @@ module "vsphere_distributed_port_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active_uplinks" {
   description = "(optional) - List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS."
   type        = list(string)
@@ -414,7 +414,7 @@ variable "vlan_range" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_distributed_port_group" "this" {
   active_uplinks                         = var.active_uplinks
   allow_forged_transmits                 = var.allow_forged_transmits
@@ -477,7 +477,7 @@ resource "vsphere_distributed_port_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "active_uplinks" {
   description = "returns a list of string"
   value       = vsphere_distributed_port_group.this.active_uplinks

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_media_store_container" {
   source = "./modules/aws/r/aws_media_store_container"
 
@@ -38,7 +38,7 @@ module "aws_media_store_container" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_media_store_container" "this" {
   name = var.name
   tags = var.tags
@@ -66,7 +66,7 @@ resource "aws_media_store_container" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_media_store_container.this.arn

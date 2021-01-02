@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_logging_organization_exclusion" {
   source = "./modules/google/r/google_logging_organization_exclusion"
 
@@ -44,7 +44,7 @@ module "google_logging_organization_exclusion" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A human-readable description."
   type        = string
@@ -77,7 +77,7 @@ variable "org_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_logging_organization_exclusion" "this" {
   description = var.description
   disabled    = var.disabled
@@ -91,7 +91,7 @@ resource "google_logging_organization_exclusion" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_logging_organization_exclusion.this.id

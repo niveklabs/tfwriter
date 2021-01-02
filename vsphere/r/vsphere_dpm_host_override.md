@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_dpm_host_override" {
   source = "./modules/vsphere/r/vsphere_dpm_host_override"
 
@@ -42,7 +42,7 @@ module "vsphere_dpm_host_override" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_cluster_id" {
   description = "(required) - The managed object ID of the cluster."
   type        = string
@@ -70,7 +70,7 @@ variable "host_system_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_dpm_host_override" "this" {
   compute_cluster_id   = var.compute_cluster_id
   dpm_automation_level = var.dpm_automation_level
@@ -83,7 +83,7 @@ resource "vsphere_dpm_host_override" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_dpm_host_override.this.id

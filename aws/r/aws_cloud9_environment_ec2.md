@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloud9_environment_ec2" {
   source = "./modules/aws/r/aws_cloud9_environment_ec2"
 
@@ -48,7 +48,7 @@ module "aws_cloud9_environment_ec2" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "automatic_stop_time_minutes" {
   description = "(optional)"
   type        = number
@@ -94,7 +94,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloud9_environment_ec2" "this" {
   automatic_stop_time_minutes = var.automatic_stop_time_minutes
   description                 = var.description
@@ -110,7 +110,7 @@ resource "aws_cloud9_environment_ec2" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloud9_environment_ec2.this.arn

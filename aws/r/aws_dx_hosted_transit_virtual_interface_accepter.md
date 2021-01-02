@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_hosted_transit_virtual_interface_accepter" {
   source = "./modules/aws/r/aws_dx_hosted_transit_virtual_interface_accepter"
 
@@ -45,7 +45,7 @@ module "aws_dx_hosted_transit_virtual_interface_accepter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dx_gateway_id" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_hosted_transit_virtual_interface_accepter" "this" {
   dx_gateway_id        = var.dx_gateway_id
   tags                 = var.tags
@@ -99,7 +99,7 @@ resource "aws_dx_hosted_transit_virtual_interface_accepter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dx_hosted_transit_virtual_interface_accepter.this.arn

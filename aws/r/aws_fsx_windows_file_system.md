@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_fsx_windows_file_system" {
   source = "./modules/aws/r/aws_fsx_windows_file_system"
 
@@ -79,7 +79,7 @@ module "aws_fsx_windows_file_system" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active_directory_id" {
   description = "(optional)"
   type        = string
@@ -199,7 +199,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_fsx_windows_file_system" "this" {
   active_directory_id               = var.active_directory_id
   automatic_backup_retention_days   = var.automatic_backup_retention_days
@@ -245,7 +245,7 @@ resource "aws_fsx_windows_file_system" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_fsx_windows_file_system.this.arn

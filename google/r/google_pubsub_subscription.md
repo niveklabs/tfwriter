@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_pubsub_subscription" {
   source = "./modules/google/r/google_pubsub_subscription"
 
@@ -81,7 +81,7 @@ module "google_pubsub_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ack_deadline_seconds" {
   description = "(optional) - This value is the maximum time after a subscriber receives a message\nbefore the subscriber should acknowledge the message. After message\ndelivery but before the ack deadline expires and before the message is\nacknowledged, it is an outstanding message and will not be delivered\nagain during that time (on a best-effort basis).\n\nFor pull subscriptions, this value is used as the initial value for\nthe ack deadline. To override this value for a given message, call\nsubscriptions.modifyAckDeadline with the corresponding ackId if using\npull. The minimum custom deadline you can specify is 10 seconds. The\nmaximum custom deadline you can specify is 600 seconds (10 minutes).\nIf this parameter is 0, a default value of 10 seconds is used.\n\nFor push delivery, this value is also used to set the request timeout\nfor the call to the push endpoint.\n\nIf the subscriber never acknowledges the message, the Pub/Sub system\nwill eventually redeliver the message."
   type        = number
@@ -200,7 +200,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_pubsub_subscription" "this" {
   ack_deadline_seconds       = var.ack_deadline_seconds
   enable_message_ordering    = var.enable_message_ordering
@@ -268,7 +268,7 @@ resource "google_pubsub_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ack_deadline_seconds" {
   description = "returns a number"
   value       = google_pubsub_subscription.this.ack_deadline_seconds

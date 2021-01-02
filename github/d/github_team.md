@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_team" {
   source = "./modules/github/d/github_team"
 
@@ -36,7 +36,7 @@ module "github_team" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "slug" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "slug" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_team" "this" {
   slug = var.slug
 }
@@ -57,7 +57,7 @@ data "github_team" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.github_team.this.description

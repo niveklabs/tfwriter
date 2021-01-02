@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_resource_data_sync" {
   source = "./modules/aws/r/aws_ssm_resource_data_sync"
 
@@ -44,7 +44,7 @@ module "aws_ssm_resource_data_sync" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "s3_destination" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_resource_data_sync" "this" {
   name = var.name
 
@@ -90,7 +90,7 @@ resource "aws_ssm_resource_data_sync" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ssm_resource_data_sync.this.id

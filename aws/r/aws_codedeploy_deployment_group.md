@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codedeploy_deployment_group" {
   source = "./modules/aws/r/aws_codedeploy_deployment_group"
 
@@ -125,7 +125,7 @@ module "aws_codedeploy_deployment_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "app_name" {
   description = "(required)"
   type        = string
@@ -319,7 +319,7 @@ variable "trigger_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codedeploy_deployment_group" "this" {
   app_name               = var.app_name
   autoscaling_groups     = var.autoscaling_groups
@@ -489,7 +489,7 @@ resource "aws_codedeploy_deployment_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_codedeploy_deployment_group.this.id

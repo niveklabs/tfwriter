@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_secretsmanager_secret" {
   source = "./modules/aws/r/aws_secretsmanager_secret"
 
@@ -54,7 +54,7 @@ module "aws_secretsmanager_secret" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -118,7 +118,7 @@ variable "rotation_rules" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_secretsmanager_secret" "this" {
   description             = var.description
   kms_key_id              = var.kms_key_id
@@ -143,7 +143,7 @@ resource "aws_secretsmanager_secret" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_secretsmanager_secret.this.arn

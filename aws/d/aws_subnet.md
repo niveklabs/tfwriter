@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_subnet" {
   source = "./modules/aws/d/aws_subnet"
 
@@ -55,7 +55,7 @@ module "aws_subnet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(optional)"
   type        = string
@@ -120,7 +120,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_subnet" "this" {
   availability_zone    = var.availability_zone
   availability_zone_id = var.availability_zone_id
@@ -146,7 +146,7 @@ data "aws_subnet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_subnet.this.arn

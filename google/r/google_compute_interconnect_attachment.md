@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_interconnect_attachment" {
   source = "./modules/google/r/google_compute_interconnect_attachment"
 
@@ -64,7 +64,7 @@ module "google_compute_interconnect_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "admin_enabled" {
   description = "(optional) - Whether the VLAN attachment is enabled or disabled.  When using\nPARTNER type this will Pre-Activate the interconnect attachment"
   type        = bool
@@ -152,7 +152,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_interconnect_attachment" "this" {
   admin_enabled            = var.admin_enabled
   bandwidth                = var.bandwidth
@@ -183,7 +183,7 @@ resource "google_compute_interconnect_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bandwidth" {
   description = "returns a string"
   value       = google_compute_interconnect_attachment.this.bandwidth

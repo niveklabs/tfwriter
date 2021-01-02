@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_organizations_organization" {
   source = "./modules/aws/r/aws_organizations_organization"
 
@@ -40,7 +40,7 @@ module "aws_organizations_organization" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aws_service_access_principals" {
   description = "(optional)"
   type        = set(string)
@@ -64,7 +64,7 @@ variable "feature_set" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_organizations_organization" "this" {
   aws_service_access_principals = var.aws_service_access_principals
   enabled_policy_types          = var.enabled_policy_types
@@ -76,7 +76,7 @@ resource "aws_organizations_organization" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accounts" {
   description = "returns a list of object"
   value       = aws_organizations_organization.this.accounts

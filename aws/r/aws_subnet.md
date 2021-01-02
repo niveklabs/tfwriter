@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_subnet" {
   source = "./modules/aws/r/aws_subnet"
 
@@ -57,7 +57,7 @@ module "aws_subnet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "assign_ipv6_address_on_creation" {
   description = "(optional)"
   type        = bool
@@ -126,7 +126,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_subnet" "this" {
   assign_ipv6_address_on_creation = var.assign_ipv6_address_on_creation
   availability_zone               = var.availability_zone
@@ -153,7 +153,7 @@ resource "aws_subnet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_subnet.this.arn

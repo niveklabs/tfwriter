@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_virtual_disk" {
   source = "./modules/vsphere/r/vsphere_virtual_disk"
 
@@ -48,7 +48,7 @@ module "vsphere_virtual_disk" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "adapter_type" {
   description = "(optional)"
   type        = string
@@ -93,7 +93,7 @@ variable "vmdk_path" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_virtual_disk" "this" {
   adapter_type       = var.adapter_type
   create_directories = var.create_directories
@@ -109,7 +109,7 @@ resource "vsphere_virtual_disk" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_virtual_disk.this.id

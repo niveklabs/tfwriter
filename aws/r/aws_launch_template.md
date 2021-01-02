@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_launch_template" {
   source = "./modules/aws/r/aws_launch_template"
 
@@ -177,7 +177,7 @@ module "aws_launch_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_version" {
   description = "(optional)"
   type        = number
@@ -496,7 +496,7 @@ variable "tag_specifications" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_launch_template" "this" {
   default_version                      = var.default_version
   description                          = var.description
@@ -695,7 +695,7 @@ resource "aws_launch_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_launch_template.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_loss_prevention_stored_info_type" {
   source = "./modules/google/r/google_data_loss_prevention_stored_info_type"
 
@@ -79,7 +79,7 @@ module "google_data_loss_prevention_stored_info_type" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A description of the info type."
   type        = string
@@ -179,7 +179,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_loss_prevention_stored_info_type" "this" {
   description  = var.description
   display_name = var.display_name
@@ -274,7 +274,7 @@ resource "google_data_loss_prevention_stored_info_type" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_loss_prevention_stored_info_type.this.id

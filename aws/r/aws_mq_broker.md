@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_mq_broker" {
   source = "./modules/aws/r/aws_mq_broker"
 
@@ -84,7 +84,7 @@ module "aws_mq_broker" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "apply_immediately" {
   description = "(optional)"
   type        = bool
@@ -208,7 +208,7 @@ variable "user" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_mq_broker" "this" {
   apply_immediately          = var.apply_immediately
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
@@ -272,7 +272,7 @@ resource "aws_mq_broker" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_mq_broker.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pinpoint_gcm_channel" {
   source = "./modules/aws/r/aws_pinpoint_gcm_channel"
 
@@ -40,7 +40,7 @@ module "aws_pinpoint_gcm_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_key" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "enabled" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_pinpoint_gcm_channel" "this" {
   api_key        = var.api_key
   application_id = var.application_id
@@ -74,7 +74,7 @@ resource "aws_pinpoint_gcm_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_pinpoint_gcm_channel.this.id

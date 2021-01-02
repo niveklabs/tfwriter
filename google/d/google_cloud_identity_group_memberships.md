@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_identity_group_memberships" {
   source = "./modules/google/d/google_cloud_identity_group_memberships"
 
@@ -36,7 +36,7 @@ module "google_cloud_identity_group_memberships" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group" {
   description = "(required) - The name of the Group to get memberships from."
   type        = string
@@ -47,7 +47,7 @@ variable "group" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_cloud_identity_group_memberships" "this" {
   group = var.group
 }
@@ -57,7 +57,7 @@ data "google_cloud_identity_group_memberships" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_cloud_identity_group_memberships.this.id

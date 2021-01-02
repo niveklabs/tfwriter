@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_stateful_set" {
   source = "./modules/kubernetes/r/kubernetes_stateful_set"
 
@@ -878,7 +878,7 @@ module "kubernetes_stateful_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "wait_for_rollout" {
   description = "(optional) - Wait for the rollout of the stateful set to complete. Defaults to false."
   type        = bool
@@ -2108,7 +2108,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_stateful_set" "this" {
   wait_for_rollout = var.wait_for_rollout
 
@@ -3764,7 +3764,7 @@ resource "kubernetes_stateful_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_stateful_set.this.id

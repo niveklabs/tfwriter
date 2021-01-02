@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_smb_file_share" {
   source = "./modules/aws/r/aws_storagegateway_smb_file_share"
 
@@ -86,7 +86,7 @@ module "aws_storagegateway_smb_file_share" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_based_enumeration" {
   description = "(optional)"
   type        = bool
@@ -237,7 +237,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_storagegateway_smb_file_share" "this" {
   access_based_enumeration = var.access_based_enumeration
   admin_user_list          = var.admin_user_list
@@ -284,7 +284,7 @@ resource "aws_storagegateway_smb_file_share" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_storagegateway_smb_file_share.this.arn

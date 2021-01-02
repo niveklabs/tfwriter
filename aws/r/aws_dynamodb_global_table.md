@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dynamodb_global_table" {
   source = "./modules/aws/r/aws_dynamodb_global_table"
 
@@ -46,7 +46,7 @@ module "aws_dynamodb_global_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dynamodb_global_table" "this" {
   name = var.name
 
@@ -105,7 +105,7 @@ resource "aws_dynamodb_global_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dynamodb_global_table.this.arn

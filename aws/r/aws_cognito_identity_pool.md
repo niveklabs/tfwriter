@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_identity_pool" {
   source = "./modules/aws/r/aws_cognito_identity_pool"
 
@@ -54,7 +54,7 @@ module "aws_cognito_identity_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_unauthenticated_identities" {
   description = "(optional)"
   type        = bool
@@ -113,7 +113,7 @@ variable "cognito_identity_providers" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_identity_pool" "this" {
   allow_unauthenticated_identities = var.allow_unauthenticated_identities
   developer_provider_name          = var.developer_provider_name
@@ -139,7 +139,7 @@ resource "aws_cognito_identity_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cognito_identity_pool.this.arn

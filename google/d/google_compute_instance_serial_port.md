@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance_serial_port" {
   source = "./modules/google/d/google_compute_instance_serial_port"
 
@@ -42,7 +42,7 @@ module "google_compute_instance_serial_port" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "zone" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_instance_serial_port" "this" {
   instance = var.instance
   port     = var.port
@@ -83,7 +83,7 @@ data "google_compute_instance_serial_port" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "contents" {
   description = "returns a string"
   value       = data.google_compute_instance_serial_port.this.contents

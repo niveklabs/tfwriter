@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_mq_broker" {
   source = "./modules/aws/d/aws_mq_broker"
 
@@ -45,7 +45,7 @@ module "aws_mq_broker" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "broker_id" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "logs" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_mq_broker" "this" {
   broker_id   = var.broker_id
   broker_name = var.broker_name
@@ -99,7 +99,7 @@ data "aws_mq_broker" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_mq_broker.this.arn

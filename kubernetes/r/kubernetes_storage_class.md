@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_storage_class" {
   source = "./modules/kubernetes/r/kubernetes_storage_class"
 
@@ -57,7 +57,7 @@ module "kubernetes_storage_class" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_volume_expansion" {
   description = "(optional) - Indicates whether the storage class allow volume expand"
   type        = bool
@@ -114,7 +114,7 @@ variable "metadata" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_storage_class" "this" {
   allow_volume_expansion = var.allow_volume_expansion
   mount_options          = var.mount_options
@@ -140,7 +140,7 @@ resource "kubernetes_storage_class" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_storage_class.this.id

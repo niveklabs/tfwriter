@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_rest_api" {
   source = "./modules/aws/d/aws_api_gateway_rest_api"
 
@@ -38,7 +38,7 @@ module "aws_api_gateway_rest_api" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_api_gateway_rest_api" "this" {
   name = var.name
   tags = var.tags
@@ -66,7 +66,7 @@ data "aws_api_gateway_rest_api" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "api_key_source" {
   description = "returns a string"
   value       = data.aws_api_gateway_rest_api.this.api_key_source

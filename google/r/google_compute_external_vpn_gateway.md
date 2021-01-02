@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_external_vpn_gateway" {
   source = "./modules/google/r/google_compute_external_vpn_gateway"
 
@@ -52,7 +52,7 @@ module "google_compute_external_vpn_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource."
   type        = string
@@ -103,7 +103,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_external_vpn_gateway" "this" {
   description     = var.description
   name            = var.name
@@ -133,7 +133,7 @@ resource "google_compute_external_vpn_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_external_vpn_gateway.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host_thumbprint" {
   source = "./modules/vsphere/d/vsphere_host_thumbprint"
 
@@ -40,7 +40,7 @@ module "vsphere_host_thumbprint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "address" {
   description = "(required) - The address of the ESXi to extract the thumbprint from."
   type        = string
@@ -63,7 +63,7 @@ variable "port" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_host_thumbprint" "this" {
   address  = var.address
   insecure = var.insecure
@@ -75,7 +75,7 @@ data "vsphere_host_thumbprint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_host_thumbprint.this.id

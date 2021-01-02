@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_gateway_association_proposal" {
   source = "./modules/aws/r/aws_dx_gateway_association_proposal"
 
@@ -42,7 +42,7 @@ module "aws_dx_gateway_association_proposal" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allowed_prefixes" {
   description = "(optional)"
   type        = set(string)
@@ -69,7 +69,7 @@ variable "dx_gateway_owner_account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_gateway_association_proposal" "this" {
   allowed_prefixes            = var.allowed_prefixes
   associated_gateway_id       = var.associated_gateway_id
@@ -82,7 +82,7 @@ resource "aws_dx_gateway_association_proposal" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allowed_prefixes" {
   description = "returns a set of string"
   value       = aws_dx_gateway_association_proposal.this.allowed_prefixes

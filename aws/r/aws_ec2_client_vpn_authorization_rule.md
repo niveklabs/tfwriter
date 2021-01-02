@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_client_vpn_authorization_rule" {
   source = "./modules/aws/r/aws_ec2_client_vpn_authorization_rule"
 
@@ -44,7 +44,7 @@ module "aws_ec2_client_vpn_authorization_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_group_id" {
   description = "(optional)"
   type        = string
@@ -78,7 +78,7 @@ variable "target_network_cidr" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_client_vpn_authorization_rule" "this" {
   access_group_id        = var.access_group_id
   authorize_all_groups   = var.authorize_all_groups
@@ -92,7 +92,7 @@ resource "aws_ec2_client_vpn_authorization_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_client_vpn_authorization_rule.this.id

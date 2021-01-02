@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_game_services_game_server_cluster" {
   source = "./modules/google/r/google_game_services_game_server_cluster"
 
@@ -59,7 +59,7 @@ module "google_game_services_game_server_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_id" {
   description = "(required) - Required. The resource name of the game server cluster"
   type        = string
@@ -125,7 +125,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_game_services_game_server_cluster" "this" {
   cluster_id  = var.cluster_id
   description = var.description
@@ -165,7 +165,7 @@ resource "google_game_services_game_server_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_game_services_game_server_cluster.this.id

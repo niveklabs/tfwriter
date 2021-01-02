@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_network_endpoint_group" {
   source = "./modules/google/r/google_compute_network_endpoint_group"
 
@@ -55,7 +55,7 @@ module "google_compute_network_endpoint_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_port" {
   description = "(optional) - The default port used if the port number is not specified in the\nnetwork endpoint."
   type        = number
@@ -118,7 +118,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_network_endpoint_group" "this" {
   default_port          = var.default_port
   description           = var.description
@@ -144,7 +144,7 @@ resource "google_compute_network_endpoint_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_network_endpoint_group.this.id

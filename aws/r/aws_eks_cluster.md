@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eks_cluster" {
   source = "./modules/aws/r/aws_eks_cluster"
 
@@ -71,7 +71,7 @@ module "aws_eks_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enabled_cluster_log_types" {
   description = "(optional)"
   type        = set(string)
@@ -157,7 +157,7 @@ variable "vpc_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_eks_cluster" "this" {
   enabled_cluster_log_types = var.enabled_cluster_log_types
   name                      = var.name
@@ -214,7 +214,7 @@ resource "aws_eks_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_eks_cluster.this.arn

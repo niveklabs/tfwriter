@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_subnetwork" {
   source = "./modules/google/r/google_compute_subnetwork"
 
@@ -69,7 +69,7 @@ module "google_compute_subnetwork" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource. Provide this property when\nyou create the resource. This field can be set only at resource\ncreation time."
   type        = string
@@ -157,7 +157,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_subnetwork" "this" {
   description                = var.description
   ip_cidr_range              = var.ip_cidr_range
@@ -196,7 +196,7 @@ resource "google_compute_subnetwork" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_subnetwork.this.creation_timestamp

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eip_association" {
   source = "./modules/aws/r/aws_eip_association"
 
@@ -46,7 +46,7 @@ module "aws_eip_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allocation_id" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "public_ip" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_eip_association" "this" {
   allocation_id        = var.allocation_id
   allow_reassociation  = var.allow_reassociation
@@ -103,7 +103,7 @@ resource "aws_eip_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocation_id" {
   description = "returns a string"
   value       = aws_eip_association.this.allocation_id

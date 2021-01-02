@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_user_group" {
   source = "./modules/aws/r/aws_cognito_user_group"
 
@@ -44,7 +44,7 @@ module "aws_cognito_user_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -78,7 +78,7 @@ variable "user_pool_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_user_group" "this" {
   description  = var.description
   name         = var.name
@@ -92,7 +92,7 @@ resource "aws_cognito_user_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cognito_user_group.this.id

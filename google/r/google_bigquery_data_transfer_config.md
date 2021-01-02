@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_data_transfer_config" {
   source = "./modules/google/r/google_bigquery_data_transfer_config"
 
@@ -76,7 +76,7 @@ module "google_bigquery_data_transfer_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "data_refresh_window_days" {
   description = "(optional) - The number of days to look back to automatically refresh the data.\nFor example, if dataRefreshWindowDays = 10, then every day BigQuery\nreingests data for [today-10, today-1], rather than ingesting data for\njust [today-1]. Only valid if the data source supports the feature.\nSet the value to 0 to use the default value."
   type        = number
@@ -188,7 +188,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_data_transfer_config" "this" {
   data_refresh_window_days  = var.data_refresh_window_days
   data_source_id            = var.data_source_id
@@ -241,7 +241,7 @@ resource "google_bigquery_data_transfer_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_bigquery_data_transfer_config.this.id

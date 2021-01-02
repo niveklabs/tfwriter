@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_connection" {
   source = "./modules/aws/r/aws_dx_connection"
 
@@ -42,7 +42,7 @@ module "aws_dx_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bandwidth" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_connection" "this" {
   bandwidth = var.bandwidth
   location  = var.location
@@ -82,7 +82,7 @@ resource "aws_dx_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dx_connection.this.arn

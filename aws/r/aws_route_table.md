@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route_table" {
   source = "./modules/aws/r/aws_route_table"
 
@@ -54,7 +54,7 @@ module "aws_route_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "propagating_vgws" {
   description = "(optional)"
   type        = set(string)
@@ -97,7 +97,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route_table" "this" {
   propagating_vgws = var.propagating_vgws
   route            = var.route
@@ -110,7 +110,7 @@ resource "aws_route_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_route_table.this.id

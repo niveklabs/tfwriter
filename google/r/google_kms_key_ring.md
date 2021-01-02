@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_kms_key_ring" {
   source = "./modules/google/r/google_kms_key_ring"
 
@@ -45,7 +45,7 @@ module "google_kms_key_ring" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(required) - The location for the KeyRing.\nA full list of valid locations can be found by running 'gcloud kms locations list'."
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_kms_key_ring" "this" {
   location = var.location
   name     = var.name
@@ -99,7 +99,7 @@ resource "google_kms_key_ring" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_kms_key_ring.this.id

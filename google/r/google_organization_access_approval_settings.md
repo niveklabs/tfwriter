@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_organization_access_approval_settings" {
   source = "./modules/google/r/google_organization_access_approval_settings"
 
@@ -49,7 +49,7 @@ module "google_organization_access_approval_settings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "notification_emails" {
   description = "(optional) - A list of email addresses to which notifications relating to approval requests should be sent.\nNotifications relating to a resource will be sent to all emails in the settings of ancestor\nresources of that resource. A maximum of 50 email addresses are allowed."
   type        = set(string)
@@ -88,7 +88,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_organization_access_approval_settings" "this" {
   notification_emails = var.notification_emails
   organization_id     = var.organization_id
@@ -117,7 +117,7 @@ resource "google_organization_access_approval_settings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "enrolled_ancestor" {
   description = "returns a bool"
   value       = google_organization_access_approval_settings.this.enrolled_ancestor

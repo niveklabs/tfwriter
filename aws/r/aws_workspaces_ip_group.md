@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_workspaces_ip_group" {
   source = "./modules/aws/r/aws_workspaces_ip_group"
 
@@ -45,7 +45,7 @@ module "aws_workspaces_ip_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "rules" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_workspaces_ip_group" "this" {
   description = var.description
   name        = var.name
@@ -100,7 +100,7 @@ resource "aws_workspaces_ip_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_workspaces_ip_group.this.id

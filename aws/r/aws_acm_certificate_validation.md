@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_acm_certificate_validation" {
   source = "./modules/aws/r/aws_acm_certificate_validation"
 
@@ -42,7 +42,7 @@ module "aws_acm_certificate_validation" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_acm_certificate_validation" "this" {
   certificate_arn         = var.certificate_arn
   validation_record_fqdns = var.validation_record_fqdns
@@ -88,7 +88,7 @@ resource "aws_acm_certificate_validation" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_acm_certificate_validation.this.id

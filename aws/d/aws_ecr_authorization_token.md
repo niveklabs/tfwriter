@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecr_authorization_token" {
   source = "./modules/aws/d/aws_ecr_authorization_token"
 
@@ -36,7 +36,7 @@ module "aws_ecr_authorization_token" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "registry_id" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "registry_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ecr_authorization_token" "this" {
   registry_id = var.registry_id
 }
@@ -58,7 +58,7 @@ data "aws_ecr_authorization_token" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "authorization_token" {
   description = "returns a string"
   value       = data.aws_ecr_authorization_token.this.authorization_token

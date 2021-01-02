@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_scheduler_job" {
   source = "./modules/google/r/google_cloud_scheduler_job"
 
@@ -94,7 +94,7 @@ module "google_cloud_scheduler_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "attempt_deadline" {
   description = "(optional) - The deadline for job attempts. If the request handler does not respond by this deadline then the request is\ncancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in\nexecution logs. Cloud Scheduler will retry the job according to the RetryConfig.\nThe allowed duration for this deadline is:\n* For HTTP targets, between 15 seconds and 30 minutes.\n* For App Engine HTTP targets, between 15 seconds and 24 hours.\n* **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.\nA duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\""
   type        = string
@@ -223,7 +223,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloud_scheduler_job" "this" {
   attempt_deadline = var.attempt_deadline
   description      = var.description
@@ -315,7 +315,7 @@ resource "google_cloud_scheduler_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_cloud_scheduler_job.this.id

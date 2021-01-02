@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_permission" {
   source = "./modules/aws/r/aws_opsworks_permission"
 
@@ -44,7 +44,7 @@ module "aws_opsworks_permission" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_ssh" {
   description = "(optional)"
   type        = bool
@@ -79,7 +79,7 @@ variable "user_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_permission" "this" {
   allow_ssh  = var.allow_ssh
   allow_sudo = var.allow_sudo
@@ -93,7 +93,7 @@ resource "aws_opsworks_permission" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_ssh" {
   description = "returns a bool"
   value       = aws_opsworks_permission.this.allow_ssh

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_network" {
   source = "./modules/google/r/google_compute_network"
 
@@ -54,7 +54,7 @@ module "google_compute_network" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_create_subnetworks" {
   description = "(optional) - When set to 'true', the network is created in \"auto subnet mode\" and\nit will create a subnet for each region automatically across the\n'10.128.0.0/9' address range.\n\nWhen set to 'false', the network is created in \"custom subnet mode\" so\nthe user can explicitly connect subnetwork resources."
   type        = bool
@@ -113,7 +113,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_network" "this" {
   auto_create_subnetworks         = var.auto_create_subnetworks
   delete_default_routes_on_create = var.delete_default_routes_on_create
@@ -139,7 +139,7 @@ resource "google_compute_network" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "gateway_ipv4" {
   description = "returns a string"
   value       = google_compute_network.this.gateway_ipv4

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_db_event_categories" {
   source = "./modules/aws/d/aws_db_event_categories"
 
@@ -36,7 +36,7 @@ module "aws_db_event_categories" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "source_type" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "source_type" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_db_event_categories" "this" {
   source_type = var.source_type
 }
@@ -58,7 +58,7 @@ data "aws_db_event_categories" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "event_categories" {
   description = "returns a set of string"
   value       = data.aws_db_event_categories.this.event_categories

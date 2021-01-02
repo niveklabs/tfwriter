@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elasticsearch_domain" {
   source = "./modules/aws/d/aws_elasticsearch_domain"
 
@@ -38,7 +38,7 @@ module "aws_elasticsearch_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_elasticsearch_domain" "this" {
   domain_name = var.domain_name
   tags        = var.tags
@@ -66,7 +66,7 @@ data "aws_elasticsearch_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_policies" {
   description = "returns a string"
   value       = data.aws_elasticsearch_domain.this.access_policies

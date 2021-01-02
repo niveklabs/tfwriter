@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_tag_category" {
   source = "./modules/vsphere/d/vsphere_tag_category"
 
@@ -36,7 +36,7 @@ module "vsphere_tag_category" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - The display name of the category."
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_tag_category" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ data "vsphere_tag_category" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "associable_types" {
   description = "returns a set of string"
   value       = data.vsphere_tag_category.this.associable_types

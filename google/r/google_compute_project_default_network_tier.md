@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_project_default_network_tier" {
   source = "./modules/google/r/google_compute_project_default_network_tier"
 
@@ -42,7 +42,7 @@ module "google_compute_project_default_network_tier" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "network_tier" {
   description = "(required) - The default network tier to be configured for the project. This field can take the following values: PREMIUM or STANDARD."
   type        = string
@@ -69,7 +69,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_project_default_network_tier" "this" {
   network_tier = var.network_tier
   project      = var.project
@@ -88,7 +88,7 @@ resource "google_compute_project_default_network_tier" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_project_default_network_tier.this.id

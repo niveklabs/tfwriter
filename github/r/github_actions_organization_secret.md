@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_actions_organization_secret" {
   source = "./modules/github/r/github_actions_organization_secret"
 
@@ -42,7 +42,7 @@ module "github_actions_organization_secret" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "plaintext_value" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "visibility" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_actions_organization_secret" "this" {
   plaintext_value         = var.plaintext_value
   secret_name             = var.secret_name
@@ -82,7 +82,7 @@ resource "github_actions_organization_secret" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "created_at" {
   description = "returns a string"
   value       = github_actions_organization_secret.this.created_at

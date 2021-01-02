@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance_template" {
   source = "./modules/google/r/google_compute_instance_template"
 
@@ -129,7 +129,7 @@ module "google_compute_instance_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "can_ip_forward" {
   description = "(optional) - Whether to allow sending and receiving of packets with non-matching source or destination IPs. This defaults to false."
   type        = bool
@@ -334,7 +334,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_instance_template" "this" {
   can_ip_forward          = var.can_ip_forward
   description             = var.description
@@ -463,7 +463,7 @@ resource "google_compute_instance_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_instance_template.this.id

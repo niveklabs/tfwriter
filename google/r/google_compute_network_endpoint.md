@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_network_endpoint" {
   source = "./modules/google/r/google_compute_network_endpoint"
 
@@ -51,7 +51,7 @@ module "google_compute_network_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance" {
   description = "(required) - The name for a specific VM instance that the IP address belongs to.\nThis is required for network endpoints of type GCE_VM_IP_PORT.\nThe instance must be in the same zone of network endpoint group."
   type        = string
@@ -100,7 +100,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_network_endpoint" "this" {
   instance               = var.instance
   ip_address             = var.ip_address
@@ -124,7 +124,7 @@ resource "google_compute_network_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_network_endpoint.this.id

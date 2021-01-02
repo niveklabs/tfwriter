@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_msk_cluster" {
   source = "./modules/aws/d/aws_msk_cluster"
 
@@ -38,7 +38,7 @@ module "aws_msk_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_msk_cluster" "this" {
   cluster_name = var.cluster_name
   tags         = var.tags
@@ -66,7 +66,7 @@ data "aws_msk_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_msk_cluster.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sns_topic_subscription" {
   source = "./modules/aws/r/aws_sns_topic_subscription"
 
@@ -50,7 +50,7 @@ module "aws_sns_topic_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "confirmation_timeout_in_minutes" {
   description = "(optional)"
   type        = number
@@ -101,7 +101,7 @@ variable "topic_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sns_topic_subscription" "this" {
   confirmation_timeout_in_minutes = var.confirmation_timeout_in_minutes
   delivery_policy                 = var.delivery_policy
@@ -118,7 +118,7 @@ resource "aws_sns_topic_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sns_topic_subscription.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_api" {
   source = "./modules/aws/r/aws_apigatewayv2_api"
 
@@ -67,7 +67,7 @@ module "aws_apigatewayv2_api" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_key_selection_expression" {
   description = "(optional)"
   type        = string
@@ -158,7 +158,7 @@ variable "cors_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_api" "this" {
   api_key_selection_expression = var.api_key_selection_expression
   body                         = var.body
@@ -192,7 +192,7 @@ resource "aws_apigatewayv2_api" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "api_endpoint" {
   description = "returns a string"
   value       = aws_apigatewayv2_api.this.api_endpoint

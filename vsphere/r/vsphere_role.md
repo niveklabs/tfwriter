@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_role" {
   source = "./modules/vsphere/r/vsphere_role"
 
@@ -38,7 +38,7 @@ module "vsphere_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Name of the storage policy."
   type        = string
@@ -55,7 +55,7 @@ variable "role_privileges" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_role" "this" {
   name            = var.name
   role_privileges = var.role_privileges
@@ -66,7 +66,7 @@ resource "vsphere_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_role.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloudiot_registry" {
   source = "./modules/google/r/google_cloudiot_registry"
 
@@ -63,7 +63,7 @@ module "google_cloudiot_registry" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "http_config" {
   description = "(optional) - Activate or deactivate HTTP."
   type        = map(string)
@@ -143,7 +143,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloudiot_registry" "this" {
   http_config               = var.http_config
   log_level                 = var.log_level
@@ -184,7 +184,7 @@ resource "google_cloudiot_registry" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "http_config" {
   description = "returns a map of string"
   value       = google_cloudiot_registry.this.http_config

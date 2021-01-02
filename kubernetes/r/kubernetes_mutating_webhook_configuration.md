@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_mutating_webhook_configuration" {
   source = "./modules/kubernetes/r/kubernetes_mutating_webhook_configuration"
 
@@ -88,7 +88,7 @@ module "kubernetes_mutating_webhook_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -172,7 +172,7 @@ variable "webhook" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_mutating_webhook_configuration" "this" {
 
   dynamic "metadata" {
@@ -270,7 +270,7 @@ resource "kubernetes_mutating_webhook_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_mutating_webhook_configuration.this.id

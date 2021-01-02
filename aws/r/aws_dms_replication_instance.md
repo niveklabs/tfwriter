@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_replication_instance" {
   source = "./modules/aws/r/aws_dms_replication_instance"
 
@@ -70,7 +70,7 @@ module "aws_dms_replication_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allocated_storage" {
   description = "(optional)"
   type        = number
@@ -176,7 +176,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_replication_instance" "this" {
   allocated_storage            = var.allocated_storage
   allow_major_version_upgrade  = var.allow_major_version_upgrade
@@ -210,7 +210,7 @@ resource "aws_dms_replication_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocated_storage" {
   description = "returns a number"
   value       = aws_dms_replication_instance.this.allocated_storage

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_game_services_game_server_config" {
   source = "./modules/google/r/google_game_services_game_server_config"
 
@@ -70,7 +70,7 @@ module "google_game_services_game_server_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "config_id" {
   description = "(required) - A unique id for the deployment config."
   type        = string
@@ -155,7 +155,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_game_services_game_server_config" "this" {
   config_id     = var.config_id
   deployment_id = var.deployment_id
@@ -213,7 +213,7 @@ resource "google_game_services_game_server_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_game_services_game_server_config.this.id

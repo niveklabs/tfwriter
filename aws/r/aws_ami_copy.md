@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ami_copy" {
   source = "./modules/aws/r/aws_ami_copy"
 
@@ -69,7 +69,7 @@ module "aws_ami_copy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -153,7 +153,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ami_copy" "this" {
   description       = var.description
   encrypted         = var.encrypted
@@ -191,7 +191,7 @@ resource "aws_ami_copy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "architecture" {
   description = "returns a string"
   value       = aws_ami_copy.this.architecture

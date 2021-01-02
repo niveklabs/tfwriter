@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lex_bot_alias" {
   source = "./modules/aws/d/aws_lex_bot_alias"
 
@@ -38,7 +38,7 @@ module "aws_lex_bot_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bot_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_lex_bot_alias" "this" {
   bot_name = var.bot_name
   name     = var.name
@@ -65,7 +65,7 @@ data "aws_lex_bot_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_lex_bot_alias.this.arn

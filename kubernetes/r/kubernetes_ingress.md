@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_ingress" {
   source = "./modules/kubernetes/r/kubernetes_ingress"
 
@@ -71,7 +71,7 @@ module "kubernetes_ingress" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "wait_for_load_balancer" {
   description = "(optional) - Terraform will wait for the load balancer to have at least 1 endpoint before considering the resource created."
   type        = bool
@@ -140,7 +140,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_ingress" "this" {
   wait_for_load_balancer = var.wait_for_load_balancer
 
@@ -216,7 +216,7 @@ resource "kubernetes_ingress" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_ingress.this.id

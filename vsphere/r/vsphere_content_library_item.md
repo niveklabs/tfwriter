@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_content_library_item" {
   source = "./modules/vsphere/r/vsphere_content_library_item"
 
@@ -46,7 +46,7 @@ module "vsphere_content_library_item" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Optional description of the content library item."
   type        = string
@@ -86,7 +86,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_content_library_item" "this" {
   description = var.description
   file_url    = var.file_url
@@ -101,7 +101,7 @@ resource "vsphere_content_library_item" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_content_library_item.this.id

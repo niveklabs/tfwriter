@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_script" {
   source = "./modules/aws/d/aws_glue_script"
 
@@ -53,7 +53,7 @@ module "aws_glue_script" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "language" {
   description = "(optional)"
   type        = string
@@ -94,7 +94,7 @@ variable "dag_node" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_glue_script" "this" {
   language = var.language
 
@@ -133,7 +133,7 @@ data "aws_glue_script" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_glue_script.this.id

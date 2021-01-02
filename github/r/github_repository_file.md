@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repository_file" {
   source = "./modules/github/r/github_repository_file"
 
@@ -50,7 +50,7 @@ module "github_repository_file" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "branch" {
   description = "(optional) - The branch name, defaults to \"master\""
   type        = string
@@ -101,7 +101,7 @@ variable "repository" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_repository_file" "this" {
   branch              = var.branch
   commit_author       = var.commit_author
@@ -118,7 +118,7 @@ resource "github_repository_file" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "commit_author" {
   description = "returns a string"
   value       = github_repository_file.this.commit_author

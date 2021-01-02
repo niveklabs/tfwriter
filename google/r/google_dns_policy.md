@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dns_policy" {
   source = "./modules/google/r/google_dns_policy"
 
@@ -61,7 +61,7 @@ module "google_dns_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A textual description field. Defaults to 'Managed by Terraform'."
   type        = string
@@ -133,7 +133,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dns_policy" "this" {
   description               = var.description
   enable_inbound_forwarding = var.enable_inbound_forwarding
@@ -179,7 +179,7 @@ resource "google_dns_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dns_policy.this.id

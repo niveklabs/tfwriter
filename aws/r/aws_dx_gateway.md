@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_gateway" {
   source = "./modules/aws/r/aws_dx_gateway"
 
@@ -43,7 +43,7 @@ module "aws_dx_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "amazon_side_asn" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_gateway" "this" {
   amazon_side_asn = var.amazon_side_asn
   name            = var.name
@@ -90,7 +90,7 @@ resource "aws_dx_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dx_gateway.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_identity_platform_tenant_inbound_saml_config" {
   source = "./modules/google/r/google_identity_platform_tenant_inbound_saml_config"
 
@@ -67,7 +67,7 @@ module "google_identity_platform_tenant_inbound_saml_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(required) - Human friendly display name."
   type        = string
@@ -143,7 +143,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_identity_platform_tenant_inbound_saml_config" "this" {
   display_name = var.display_name
   enabled      = var.enabled
@@ -192,7 +192,7 @@ resource "google_identity_platform_tenant_inbound_saml_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_identity_platform_tenant_inbound_saml_config.this.id

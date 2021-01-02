@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_detector" {
   source = "./modules/aws/r/aws_guardduty_detector"
 
@@ -40,7 +40,7 @@ module "aws_guardduty_detector" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enable" {
   description = "(optional)"
   type        = bool
@@ -64,7 +64,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_detector" "this" {
   enable                       = var.enable
   finding_publishing_frequency = var.finding_publishing_frequency
@@ -76,7 +76,7 @@ resource "aws_guardduty_detector" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_guardduty_detector.this.account_id

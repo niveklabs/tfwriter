@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_endpoint" {
   source = "./modules/aws/d/aws_iot_endpoint"
 
@@ -36,7 +36,7 @@ module "aws_iot_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "endpoint_type" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "endpoint_type" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_iot_endpoint" "this" {
   endpoint_type = var.endpoint_type
 }
@@ -58,7 +58,7 @@ data "aws_iot_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "endpoint_address" {
   description = "returns a string"
   value       = data.aws_iot_endpoint.this.endpoint_address

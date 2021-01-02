@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_api_service" {
   source = "./modules/kubernetes/r/kubernetes_api_service"
 
@@ -59,7 +59,7 @@ module "kubernetes_api_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -102,7 +102,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_api_service" "this" {
 
   dynamic "metadata" {
@@ -144,7 +144,7 @@ resource "kubernetes_api_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_api_service.this.id

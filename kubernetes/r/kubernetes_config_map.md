@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_config_map" {
   source = "./modules/kubernetes/r/kubernetes_config_map"
 
@@ -50,7 +50,7 @@ module "kubernetes_config_map" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "binary_data" {
   description = "(optional) - BinaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones in the Data field, this is enforced during validation process. Using this field will require 1.10+ apiserver and kubelet. This field only accepts base64-encoded payloads that will be decoded/encoded before being sent/received to/from the apiserver."
   type        = map(string)
@@ -85,7 +85,7 @@ variable "metadata" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_config_map" "this" {
   binary_data = var.binary_data
   data        = var.data
@@ -108,7 +108,7 @@ resource "kubernetes_config_map" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_config_map.this.id

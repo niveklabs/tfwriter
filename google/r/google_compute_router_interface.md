@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_router_interface" {
   source = "./modules/google/r/google_compute_router_interface"
 
@@ -53,7 +53,7 @@ module "google_compute_router_interface" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "interconnect_attachment" {
   description = "(optional) - The name or resource link to the VLAN interconnect for this interface. Changing this forces a new interface to be created. Only one of vpn_tunnel and interconnect_attachment can be specified."
   type        = string
@@ -110,7 +110,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_router_interface" "this" {
   interconnect_attachment = var.interconnect_attachment
   ip_range                = var.ip_range
@@ -135,7 +135,7 @@ resource "google_compute_router_interface" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_router_interface.this.id

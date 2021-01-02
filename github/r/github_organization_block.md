@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_organization_block" {
   source = "./modules/github/r/github_organization_block"
 
@@ -36,7 +36,7 @@ module "github_organization_block" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "username" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "username" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_organization_block" "this" {
   username = var.username
 }
@@ -57,7 +57,7 @@ resource "github_organization_block" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_organization_block.this.etag

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_notification_channel" {
   source = "./modules/google/r/google_monitoring_notification_channel"
 
@@ -60,7 +60,7 @@ module "google_monitoring_notification_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters."
   type        = string
@@ -131,7 +131,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_monitoring_notification_channel" "this" {
   description  = var.description
   display_name = var.display_name
@@ -166,7 +166,7 @@ resource "google_monitoring_notification_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_monitoring_notification_channel.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_launch_configuration" {
   source = "./modules/aws/r/aws_launch_configuration"
 
@@ -96,7 +96,7 @@ module "aws_launch_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "associate_public_ip_address" {
   description = "(optional)"
   type        = bool
@@ -250,7 +250,7 @@ variable "root_block_device" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_launch_configuration" "this" {
   associate_public_ip_address      = var.associate_public_ip_address
   ebs_optimized                    = var.ebs_optimized
@@ -318,7 +318,7 @@ resource "aws_launch_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_launch_configuration.this.arn

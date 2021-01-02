@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dataproc_job" {
   source = "./modules/google/r/google_dataproc_job"
 
@@ -131,7 +131,7 @@ module "google_dataproc_job" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "force_delete" {
   description = "(optional) - By default, you can only delete inactive jobs within Dataproc. Setting this to true, and calling destroy, will ensure that the job is first cancelled before issuing the delete."
   type        = bool
@@ -319,7 +319,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dataproc_job" "this" {
   force_delete = var.force_delete
   labels       = var.labels
@@ -476,7 +476,7 @@ resource "google_dataproc_job" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "driver_controls_files_uri" {
   description = "returns a string"
   value       = google_dataproc_job.this.driver_controls_files_uri

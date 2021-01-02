@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_xray_group" {
   source = "./modules/aws/r/aws_xray_group"
 
@@ -40,7 +40,7 @@ module "aws_xray_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "filter_expression" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_xray_group" "this" {
   filter_expression = var.filter_expression
   group_name        = var.group_name
@@ -74,7 +74,7 @@ resource "aws_xray_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_xray_group.this.arn

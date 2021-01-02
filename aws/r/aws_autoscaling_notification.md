@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_notification" {
   source = "./modules/aws/r/aws_autoscaling_notification"
 
@@ -40,7 +40,7 @@ module "aws_autoscaling_notification" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group_names" {
   description = "(required)"
   type        = set(string)
@@ -61,7 +61,7 @@ variable "topic_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_notification" "this" {
   group_names   = var.group_names
   notifications = var.notifications
@@ -73,7 +73,7 @@ resource "aws_autoscaling_notification" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_autoscaling_notification.this.id

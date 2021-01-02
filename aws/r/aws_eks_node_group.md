@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eks_node_group" {
   source = "./modules/aws/r/aws_eks_node_group"
 
@@ -83,7 +83,7 @@ module "aws_eks_node_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ami_type" {
   description = "(optional)"
   type        = string
@@ -209,7 +209,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_eks_node_group" "this" {
   ami_type             = var.ami_type
   capacity_type        = var.capacity_type
@@ -267,7 +267,7 @@ resource "aws_eks_node_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "ami_type" {
   description = "returns a string"
   value       = aws_eks_node_group.this.ami_type

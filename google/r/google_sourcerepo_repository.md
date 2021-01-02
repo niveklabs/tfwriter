@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sourcerepo_repository" {
   source = "./modules/google/r/google_sourcerepo_repository"
 
@@ -50,7 +50,7 @@ module "google_sourcerepo_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Resource name of the repository, of the form '{{repo}}'.\nThe repo name may contain slashes. eg, 'name/with/slash'"
   type        = string
@@ -91,7 +91,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_sourcerepo_repository" "this" {
   name    = var.name
   project = var.project
@@ -121,7 +121,7 @@ resource "google_sourcerepo_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_sourcerepo_repository.this.id

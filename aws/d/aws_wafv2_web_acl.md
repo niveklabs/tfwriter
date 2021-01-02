@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafv2_web_acl" {
   source = "./modules/aws/d/aws_wafv2_web_acl"
 
@@ -38,7 +38,7 @@ module "aws_wafv2_web_acl" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "scope" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_wafv2_web_acl" "this" {
   name  = var.name
   scope = var.scope
@@ -65,7 +65,7 @@ data "aws_wafv2_web_acl" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_wafv2_web_acl.this.arn

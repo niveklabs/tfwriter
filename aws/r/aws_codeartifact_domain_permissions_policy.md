@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codeartifact_domain_permissions_policy" {
   source = "./modules/aws/r/aws_codeartifact_domain_permissions_policy"
 
@@ -42,7 +42,7 @@ module "aws_codeartifact_domain_permissions_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "policy_revision" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codeartifact_domain_permissions_policy" "this" {
   domain          = var.domain
   domain_owner    = var.domain_owner
@@ -83,7 +83,7 @@ resource "aws_codeartifact_domain_permissions_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "domain_owner" {
   description = "returns a string"
   value       = aws_codeartifact_domain_permissions_policy.this.domain_owner

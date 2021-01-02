@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_classifier" {
   source = "./modules/aws/r/aws_glue_classifier"
 
@@ -60,7 +60,7 @@ module "aws_glue_classifier" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -119,7 +119,7 @@ variable "xml_classifier" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_classifier" "this" {
   name = var.name
 
@@ -166,7 +166,7 @@ resource "aws_glue_classifier" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_glue_classifier.this.id

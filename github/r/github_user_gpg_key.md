@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_user_gpg_key" {
   source = "./modules/github/r/github_user_gpg_key"
 
@@ -36,7 +36,7 @@ module "github_user_gpg_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "armored_public_key" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "armored_public_key" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_user_gpg_key" "this" {
   armored_public_key = var.armored_public_key
 }
@@ -57,7 +57,7 @@ resource "github_user_gpg_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_user_gpg_key.this.etag

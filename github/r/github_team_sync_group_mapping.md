@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_team_sync_group_mapping" {
   source = "./modules/github/r/github_team_sync_group_mapping"
 
@@ -42,7 +42,7 @@ module "github_team_sync_group_mapping" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "team_slug" {
   description = "(required)"
   type        = string
@@ -65,7 +65,7 @@ variable "group" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_team_sync_group_mapping" "this" {
   team_slug = var.team_slug
 
@@ -85,7 +85,7 @@ resource "github_team_sync_group_mapping" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_team_sync_group_mapping.this.etag

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lambda_function" {
   source = "./modules/aws/d/aws_lambda_function"
 
@@ -40,7 +40,7 @@ module "aws_lambda_function" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "function_name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_lambda_function" "this" {
   function_name = var.function_name
   qualifier     = var.qualifier
@@ -75,7 +75,7 @@ data "aws_lambda_function" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_lambda_function.this.arn

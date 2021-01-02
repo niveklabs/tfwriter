@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_batch_compute_environment" {
   source = "./modules/aws/r/aws_batch_compute_environment"
 
@@ -68,7 +68,7 @@ module "aws_batch_compute_environment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_environment_name" {
   description = "(optional)"
   type        = string
@@ -138,7 +138,7 @@ variable "compute_resources" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_batch_compute_environment" "this" {
   compute_environment_name        = var.compute_environment_name
   compute_environment_name_prefix = var.compute_environment_name_prefix
@@ -184,7 +184,7 @@ resource "aws_batch_compute_environment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_batch_compute_environment.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datapipeline_pipeline" {
   source = "./modules/aws/r/aws_datapipeline_pipeline"
 
@@ -40,7 +40,7 @@ module "aws_datapipeline_pipeline" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datapipeline_pipeline" "this" {
   description = var.description
   name        = var.name
@@ -75,7 +75,7 @@ resource "aws_datapipeline_pipeline" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_datapipeline_pipeline.this.id

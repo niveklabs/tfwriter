@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_quicksight_user" {
   source = "./modules/aws/r/aws_quicksight_user"
 
@@ -50,7 +50,7 @@ module "aws_quicksight_user" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aws_account_id" {
   description = "(optional)"
   type        = string
@@ -101,7 +101,7 @@ variable "user_role" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_quicksight_user" "this" {
   aws_account_id = var.aws_account_id
   email          = var.email
@@ -118,7 +118,7 @@ resource "aws_quicksight_user" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_quicksight_user.this.arn

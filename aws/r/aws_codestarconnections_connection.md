@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codestarconnections_connection" {
   source = "./modules/aws/r/aws_codestarconnections_connection"
 
@@ -38,7 +38,7 @@ module "aws_codestarconnections_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "provider_type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codestarconnections_connection" "this" {
   name          = var.name
   provider_type = var.provider_type
@@ -65,7 +65,7 @@ resource "aws_codestarconnections_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codestarconnections_connection.this.arn

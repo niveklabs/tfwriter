@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_object_acl" {
   source = "./modules/google/r/google_storage_object_acl"
 
@@ -42,7 +42,7 @@ module "google_storage_object_acl" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "role_entity" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_object_acl" "this" {
   bucket         = var.bucket
   object         = var.object
@@ -83,7 +83,7 @@ resource "google_storage_object_acl" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_storage_object_acl.this.id

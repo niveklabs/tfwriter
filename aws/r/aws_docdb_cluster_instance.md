@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_docdb_cluster_instance" {
   source = "./modules/aws/r/aws_docdb_cluster_instance"
 
@@ -64,7 +64,7 @@ module "aws_docdb_cluster_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "apply_immediately" {
   description = "(optional)"
   type        = bool
@@ -152,7 +152,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_docdb_cluster_instance" "this" {
   apply_immediately            = var.apply_immediately
   auto_minor_version_upgrade   = var.auto_minor_version_upgrade
@@ -183,7 +183,7 @@ resource "aws_docdb_cluster_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "apply_immediately" {
   description = "returns a bool"
   value       = aws_docdb_cluster_instance.this.apply_immediately

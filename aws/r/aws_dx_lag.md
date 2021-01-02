@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_lag" {
   source = "./modules/aws/r/aws_dx_lag"
 
@@ -44,7 +44,7 @@ module "aws_dx_lag" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "connections_bandwidth" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_lag" "this" {
   connections_bandwidth = var.connections_bandwidth
   force_destroy         = var.force_destroy
@@ -91,7 +91,7 @@ resource "aws_dx_lag" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dx_lag.this.arn

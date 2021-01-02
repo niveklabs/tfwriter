@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_schedule" {
   source = "./modules/aws/r/aws_autoscaling_schedule"
 
@@ -50,7 +50,7 @@ module "aws_autoscaling_schedule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "autoscaling_group_name" {
   description = "(required)"
   type        = string
@@ -102,7 +102,7 @@ variable "start_time" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_schedule" "this" {
   autoscaling_group_name = var.autoscaling_group_name
   desired_capacity       = var.desired_capacity
@@ -119,7 +119,7 @@ resource "aws_autoscaling_schedule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_autoscaling_schedule.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codeartifact_repository_endpoint" {
   source = "./modules/aws/d/aws_codeartifact_repository_endpoint"
 
@@ -42,7 +42,7 @@ module "aws_codeartifact_repository_endpoint" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "repository" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_codeartifact_repository_endpoint" "this" {
   domain       = var.domain
   domain_owner = var.domain_owner
@@ -82,7 +82,7 @@ data "aws_codeartifact_repository_endpoint" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "domain_owner" {
   description = "returns a string"
   value       = data.aws_codeartifact_repository_endpoint.this.domain_owner

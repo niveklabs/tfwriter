@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_region_url_map" {
   source = "./modules/google/r/google_compute_region_url_map"
 
@@ -280,7 +280,7 @@ module "google_compute_region_url_map" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_service" {
   description = "(optional) - The full or partial URL of the defaultService resource to which traffic is directed if\nnone of the hostRules match. If defaultRouteAction is additionally specified, advanced\nrouting actions like URL Rewrites, etc. take effect prior to sending the request to the\nbackend. However, if defaultService is specified, defaultRouteAction cannot contain any\nweightedBackendServices. Conversely, if routeAction specifies any\nweightedBackendServices, service must not be specified.  Only one of defaultService,\ndefaultUrlRedirect or defaultRouteAction.weightedBackendService must be set."
   type        = string
@@ -669,7 +669,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_region_url_map" "this" {
   default_service = var.default_service
   description     = var.description
@@ -1130,7 +1130,7 @@ resource "google_compute_region_url_map" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_region_url_map.this.creation_timestamp

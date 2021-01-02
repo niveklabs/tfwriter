@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_dashboard" {
   source = "./modules/aws/r/aws_cloudwatch_dashboard"
 
@@ -38,7 +38,7 @@ module "aws_cloudwatch_dashboard" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dashboard_body" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "dashboard_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_dashboard" "this" {
   dashboard_body = var.dashboard_body
   dashboard_name = var.dashboard_name
@@ -65,7 +65,7 @@ resource "aws_cloudwatch_dashboard" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "dashboard_arn" {
   description = "returns a string"
   value       = aws_cloudwatch_dashboard.this.dashboard_arn

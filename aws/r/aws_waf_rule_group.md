@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_waf_rule_group" {
   source = "./modules/aws/r/aws_waf_rule_group"
 
@@ -49,7 +49,7 @@ module "aws_waf_rule_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metric_name" {
   description = "(required)"
   type        = string
@@ -88,7 +88,7 @@ variable "activated_rule" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_waf_rule_group" "this" {
   metric_name = var.metric_name
   name        = var.name
@@ -118,7 +118,7 @@ resource "aws_waf_rule_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_waf_rule_group.this.arn

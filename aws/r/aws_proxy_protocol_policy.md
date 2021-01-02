@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_proxy_protocol_policy" {
   source = "./modules/aws/r/aws_proxy_protocol_policy"
 
@@ -38,7 +38,7 @@ module "aws_proxy_protocol_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance_ports" {
   description = "(required)"
   type        = set(string)
@@ -54,7 +54,7 @@ variable "load_balancer" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_proxy_protocol_policy" "this" {
   instance_ports = var.instance_ports
   load_balancer  = var.load_balancer
@@ -65,7 +65,7 @@ resource "aws_proxy_protocol_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_proxy_protocol_policy.this.id

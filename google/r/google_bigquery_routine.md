@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_bigquery_routine" {
   source = "./modules/google/r/google_bigquery_routine"
 
@@ -67,7 +67,7 @@ module "google_bigquery_routine" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "dataset_id" {
   description = "(required) - The ID of the dataset containing this routine"
   type        = string
@@ -155,7 +155,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_bigquery_routine" "this" {
   dataset_id         = var.dataset_id
   definition_body    = var.definition_body
@@ -194,7 +194,7 @@ resource "google_bigquery_routine" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_time" {
   description = "returns a number"
   value       = google_bigquery_routine.this.creation_time

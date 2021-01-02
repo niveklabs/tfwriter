@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_alb_target_group" {
   source = "./modules/aws/d/aws_alb_target_group"
 
@@ -40,7 +40,7 @@ module "aws_alb_target_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_alb_target_group" "this" {
   arn  = var.arn
   name = var.name
@@ -76,7 +76,7 @@ data "aws_alb_target_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_alb_target_group.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codedeploy_deployment_config" {
   source = "./modules/aws/r/aws_codedeploy_deployment_config"
 
@@ -55,7 +55,7 @@ module "aws_codedeploy_deployment_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_platform" {
   description = "(optional)"
   type        = string
@@ -105,7 +105,7 @@ variable "traffic_routing_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codedeploy_deployment_config" "this" {
   compute_platform       = var.compute_platform
   deployment_config_name = var.deployment_config_name
@@ -149,7 +149,7 @@ resource "aws_codedeploy_deployment_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "deployment_config_id" {
   description = "returns a string"
   value       = aws_codedeploy_deployment_config.this.deployment_config_id

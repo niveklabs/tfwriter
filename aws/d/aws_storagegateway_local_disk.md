@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_local_disk" {
   source = "./modules/aws/d/aws_storagegateway_local_disk"
 
@@ -40,7 +40,7 @@ module "aws_storagegateway_local_disk" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "disk_node" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "gateway_arn" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_storagegateway_local_disk" "this" {
   disk_node   = var.disk_node
   disk_path   = var.disk_path
@@ -75,7 +75,7 @@ data "aws_storagegateway_local_disk" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "disk_id" {
   description = "returns a string"
   value       = data.aws_storagegateway_local_disk.this.disk_id

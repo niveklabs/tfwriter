@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_redshift_snapshot_copy_grant" {
   source = "./modules/aws/r/aws_redshift_snapshot_copy_grant"
 
@@ -40,7 +40,7 @@ module "aws_redshift_snapshot_copy_grant" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "kms_key_id" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_redshift_snapshot_copy_grant" "this" {
   kms_key_id               = var.kms_key_id
   snapshot_copy_grant_name = var.snapshot_copy_grant_name
@@ -75,7 +75,7 @@ resource "aws_redshift_snapshot_copy_grant" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_redshift_snapshot_copy_grant.this.arn

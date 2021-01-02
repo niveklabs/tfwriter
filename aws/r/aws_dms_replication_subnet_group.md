@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_replication_subnet_group" {
   source = "./modules/aws/r/aws_dms_replication_subnet_group"
 
@@ -42,7 +42,7 @@ module "aws_dms_replication_subnet_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "replication_subnet_group_description" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_replication_subnet_group" "this" {
   replication_subnet_group_description = var.replication_subnet_group_description
   replication_subnet_group_id          = var.replication_subnet_group_id
@@ -82,7 +82,7 @@ resource "aws_dms_replication_subnet_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dms_replication_subnet_group.this.id

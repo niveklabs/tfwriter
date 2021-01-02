@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_budgets_budget" {
   source = "./modules/aws/r/aws_budgets_budget"
 
@@ -77,7 +77,7 @@ module "aws_budgets_budget" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(optional)"
   type        = string
@@ -173,7 +173,7 @@ variable "notification" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_budgets_budget" "this" {
   account_id        = var.account_id
   budget_type       = var.budget_type
@@ -222,7 +222,7 @@ resource "aws_budgets_budget" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_budgets_budget.this.account_id

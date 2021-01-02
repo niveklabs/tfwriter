@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_rds_db_instance" {
   source = "./modules/aws/r/aws_opsworks_rds_db_instance"
 
@@ -42,7 +42,7 @@ module "aws_opsworks_rds_db_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_password" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "stack_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_rds_db_instance" "this" {
   db_password         = var.db_password
   db_user             = var.db_user
@@ -81,7 +81,7 @@ resource "aws_opsworks_rds_db_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_opsworks_rds_db_instance.this.id

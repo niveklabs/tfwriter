@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_notebooks_instance" {
   source = "./modules/google/r/google_notebooks_instance"
 
@@ -104,7 +104,7 @@ module "google_notebooks_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "boot_disk_size_gb" {
   description = "(optional) - The size of the boot disk in GB attached to this instance,\nup to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.\nIf not specified, this defaults to 100."
   type        = number
@@ -297,7 +297,7 @@ variable "vm_image" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_notebooks_instance" "this" {
   boot_disk_size_gb      = var.boot_disk_size_gb
   boot_disk_type         = var.boot_disk_type
@@ -365,7 +365,7 @@ resource "google_notebooks_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_notebooks_instance.this.create_time

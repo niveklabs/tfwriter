@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_task" {
   source = "./modules/aws/r/aws_datasync_task"
 
@@ -60,7 +60,7 @@ module "aws_datasync_task" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cloudwatch_log_group_arn" {
   description = "(optional)"
   type        = string
@@ -122,7 +122,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_task" "this" {
   cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
   destination_location_arn = var.destination_location_arn
@@ -159,7 +159,7 @@ resource "aws_datasync_task" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_task.this.arn

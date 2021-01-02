@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_msk_configuration" {
   source = "./modules/aws/r/aws_msk_configuration"
 
@@ -42,7 +42,7 @@ module "aws_msk_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -69,7 +69,7 @@ variable "server_properties" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_msk_configuration" "this" {
   description       = var.description
   kafka_versions    = var.kafka_versions
@@ -82,7 +82,7 @@ resource "aws_msk_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_msk_configuration.this.arn

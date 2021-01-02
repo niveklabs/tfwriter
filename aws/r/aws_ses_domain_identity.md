@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_domain_identity" {
   source = "./modules/aws/r/aws_ses_domain_identity"
 
@@ -36,7 +36,7 @@ module "aws_ses_domain_identity" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "domain" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_domain_identity" "this" {
   domain = var.domain
 }
@@ -57,7 +57,7 @@ resource "aws_ses_domain_identity" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ses_domain_identity.this.arn

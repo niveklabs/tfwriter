@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codecommit_trigger" {
   source = "./modules/aws/r/aws_codecommit_trigger"
 
@@ -44,7 +44,7 @@ module "aws_codecommit_trigger" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "repository_name" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "trigger" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codecommit_trigger" "this" {
   repository_name = var.repository_name
 
@@ -90,7 +90,7 @@ resource "aws_codecommit_trigger" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "configuration_id" {
   description = "returns a string"
   value       = aws_codecommit_trigger.this.configuration_id

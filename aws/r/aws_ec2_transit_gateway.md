@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway" {
   source = "./modules/aws/r/aws_ec2_transit_gateway"
 
@@ -50,7 +50,7 @@ module "aws_ec2_transit_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "amazon_side_asn" {
   description = "(optional)"
   type        = number
@@ -104,7 +104,7 @@ variable "vpn_ecmp_support" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_transit_gateway" "this" {
   amazon_side_asn                 = var.amazon_side_asn
   auto_accept_shared_attachments  = var.auto_accept_shared_attachments
@@ -121,7 +121,7 @@ resource "aws_ec2_transit_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ec2_transit_gateway.this.arn

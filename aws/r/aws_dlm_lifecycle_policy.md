@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dlm_lifecycle_policy" {
   source = "./modules/aws/r/aws_dlm_lifecycle_policy"
 
@@ -60,7 +60,7 @@ module "aws_dlm_lifecycle_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(required)"
   type        = string
@@ -117,7 +117,7 @@ variable "policy_details" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dlm_lifecycle_policy" "this" {
   description        = var.description
   execution_role_arn = var.execution_role_arn
@@ -166,7 +166,7 @@ resource "aws_dlm_lifecycle_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dlm_lifecycle_policy.this.arn

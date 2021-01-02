@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_worklink_fleet" {
   source = "./modules/aws/r/aws_worklink_fleet"
 
@@ -55,7 +55,7 @@ module "aws_worklink_fleet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "audit_stream_arn" {
   description = "(optional)"
   type        = string
@@ -113,7 +113,7 @@ variable "network" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_worklink_fleet" "this" {
   audit_stream_arn               = var.audit_stream_arn
   device_ca_certificate          = var.device_ca_certificate
@@ -145,7 +145,7 @@ resource "aws_worklink_fleet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_worklink_fleet.this.arn

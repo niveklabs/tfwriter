@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_certificate" {
   source = "./modules/aws/r/aws_iot_certificate"
 
@@ -38,7 +38,7 @@ module "aws_iot_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active" {
   description = "(required)"
   type        = bool
@@ -55,7 +55,7 @@ variable "csr" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iot_certificate" "this" {
   active = var.active
   csr    = var.csr
@@ -66,7 +66,7 @@ resource "aws_iot_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iot_certificate.this.arn

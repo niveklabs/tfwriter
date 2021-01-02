@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_peering_connection_options" {
   source = "./modules/aws/r/aws_vpc_peering_connection_options"
 
@@ -48,7 +48,7 @@ module "aws_vpc_peering_connection_options" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "vpc_peering_connection_id" {
   description = "(required)"
   type        = string
@@ -83,7 +83,7 @@ variable "requester" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_peering_connection_options" "this" {
   vpc_peering_connection_id = var.vpc_peering_connection_id
 
@@ -112,7 +112,7 @@ resource "aws_vpc_peering_connection_options" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpc_peering_connection_options.this.id

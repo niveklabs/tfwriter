@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket_object" {
   source = "./modules/aws/d/aws_s3_bucket_object"
 
@@ -44,7 +44,7 @@ module "aws_s3_bucket_object" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "version_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_s3_bucket_object" "this" {
   bucket     = var.bucket
   key        = var.key
@@ -92,7 +92,7 @@ data "aws_s3_bucket_object" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "body" {
   description = "returns a string"
   value       = data.aws_s3_bucket_object.this.body

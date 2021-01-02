@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eks_cluster_auth" {
   source = "./modules/aws/d/aws_eks_cluster_auth"
 
@@ -36,7 +36,7 @@ module "aws_eks_cluster_auth" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_eks_cluster_auth" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ data "aws_eks_cluster_auth" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_eks_cluster_auth.this.id

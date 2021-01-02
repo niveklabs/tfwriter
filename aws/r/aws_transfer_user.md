@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_transfer_user" {
   source = "./modules/aws/r/aws_transfer_user"
 
@@ -53,7 +53,7 @@ module "aws_transfer_user" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "home_directory" {
   description = "(optional)"
   type        = string
@@ -109,7 +109,7 @@ variable "home_directory_mappings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_transfer_user" "this" {
   home_directory      = var.home_directory
   home_directory_type = var.home_directory_type
@@ -134,7 +134,7 @@ resource "aws_transfer_user" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_transfer_user.this.arn

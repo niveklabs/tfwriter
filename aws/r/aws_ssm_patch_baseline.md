@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_patch_baseline" {
   source = "./modules/aws/r/aws_ssm_patch_baseline"
 
@@ -63,7 +63,7 @@ module "aws_ssm_patch_baseline" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "approved_patches" {
   description = "(optional)"
   type        = set(string)
@@ -139,7 +139,7 @@ variable "global_filter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_patch_baseline" "this" {
   approved_patches                  = var.approved_patches
   approved_patches_compliance_level = var.approved_patches_compliance_level
@@ -182,7 +182,7 @@ resource "aws_ssm_patch_baseline" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ssm_patch_baseline.this.id

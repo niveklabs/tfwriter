@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_key_pair" {
   source = "./modules/aws/r/aws_key_pair"
 
@@ -42,7 +42,7 @@ module "aws_key_pair" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key_name" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_key_pair" "this" {
   key_name        = var.key_name
   key_name_prefix = var.key_name_prefix
@@ -84,7 +84,7 @@ resource "aws_key_pair" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_key_pair.this.arn

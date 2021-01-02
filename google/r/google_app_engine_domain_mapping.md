@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_app_engine_domain_mapping" {
   source = "./modules/google/r/google_app_engine_domain_mapping"
 
@@ -52,7 +52,7 @@ module "google_app_engine_domain_mapping" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(required) - Relative name of the domain serving the application. Example: example.com."
   type        = string
@@ -99,7 +99,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_app_engine_domain_mapping" "this" {
   domain_name       = var.domain_name
   override_strategy = var.override_strategy
@@ -129,7 +129,7 @@ resource "google_app_engine_domain_mapping" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_app_engine_domain_mapping.this.id

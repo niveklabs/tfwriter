@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_securityhub_standards_subscription" {
   source = "./modules/aws/r/aws_securityhub_standards_subscription"
 
@@ -36,7 +36,7 @@ module "aws_securityhub_standards_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "standards_arn" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "standards_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_securityhub_standards_subscription" "this" {
   standards_arn = var.standards_arn
 }
@@ -57,7 +57,7 @@ resource "aws_securityhub_standards_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_securityhub_standards_subscription.this.id

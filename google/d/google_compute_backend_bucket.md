@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_backend_bucket" {
   source = "./modules/google/d/google_compute_backend_bucket"
 
@@ -38,7 +38,7 @@ module "google_compute_backend_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035.  Specifically, the name must be 1-63 characters long and\nmatch the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means\nthe first character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the\nlast character, which cannot be a dash."
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_backend_bucket" "this" {
   name    = var.name
   project = var.project
@@ -66,7 +66,7 @@ data "google_compute_backend_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bucket_name" {
   description = "returns a string"
   value       = data.google_compute_backend_bucket.this.bucket_name

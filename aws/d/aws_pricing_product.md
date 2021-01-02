@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pricing_product" {
   source = "./modules/aws/d/aws_pricing_product"
 
@@ -41,7 +41,7 @@ module "aws_pricing_product" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "service_code" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "filters" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_pricing_product" "this" {
   service_code = var.service_code
 
@@ -81,7 +81,7 @@ data "aws_pricing_product" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_pricing_product.this.id

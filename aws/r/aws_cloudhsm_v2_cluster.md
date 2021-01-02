@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudhsm_v2_cluster" {
   source = "./modules/aws/r/aws_cloudhsm_v2_cluster"
 
@@ -48,7 +48,7 @@ module "aws_cloudhsm_v2_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "hsm_type" {
   description = "(required)"
   type        = string
@@ -88,7 +88,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudhsm_v2_cluster" "this" {
   hsm_type                 = var.hsm_type
   source_backup_identifier = var.source_backup_identifier
@@ -111,7 +111,7 @@ resource "aws_cloudhsm_v2_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cluster_certificates" {
   description = "returns a list of object"
   value       = aws_cloudhsm_v2_cluster.this.cluster_certificates

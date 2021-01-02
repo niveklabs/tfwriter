@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_spot_datafeed_subscription" {
   source = "./modules/aws/r/aws_spot_datafeed_subscription"
 
@@ -38,7 +38,7 @@ module "aws_spot_datafeed_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "prefix" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_spot_datafeed_subscription" "this" {
   bucket = var.bucket
   prefix = var.prefix
@@ -66,7 +66,7 @@ resource "aws_spot_datafeed_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_spot_datafeed_subscription.this.id

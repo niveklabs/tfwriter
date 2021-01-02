@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_accessanalyzer_analyzer" {
   source = "./modules/aws/r/aws_accessanalyzer_analyzer"
 
@@ -40,7 +40,7 @@ module "aws_accessanalyzer_analyzer" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "analyzer_name" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_accessanalyzer_analyzer" "this" {
   analyzer_name = var.analyzer_name
   tags          = var.tags
@@ -75,7 +75,7 @@ resource "aws_accessanalyzer_analyzer" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_accessanalyzer_analyzer.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_gamelift_fleet" {
   source = "./modules/aws/r/aws_gamelift_fleet"
 
@@ -79,7 +79,7 @@ module "aws_gamelift_fleet" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "build_id" {
   description = "(required)"
   type        = string
@@ -189,7 +189,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_gamelift_fleet" "this" {
   build_id                           = var.build_id
   description                        = var.description
@@ -252,7 +252,7 @@ resource "aws_gamelift_fleet" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_gamelift_fleet.this.arn

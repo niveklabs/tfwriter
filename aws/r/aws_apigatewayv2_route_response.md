@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_route_response" {
   source = "./modules/aws/r/aws_apigatewayv2_route_response"
 
@@ -44,7 +44,7 @@ module "aws_apigatewayv2_route_response" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_id" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "route_response_key" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_route_response" "this" {
   api_id                     = var.api_id
   model_selection_expression = var.model_selection_expression
@@ -91,7 +91,7 @@ resource "aws_apigatewayv2_route_response" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_apigatewayv2_route_response.this.id

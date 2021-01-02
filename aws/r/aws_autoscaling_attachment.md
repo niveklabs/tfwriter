@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_attachment" {
   source = "./modules/aws/r/aws_autoscaling_attachment"
 
@@ -40,7 +40,7 @@ module "aws_autoscaling_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "alb_target_group_arn" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "elb" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_attachment" "this" {
   alb_target_group_arn   = var.alb_target_group_arn
   autoscaling_group_name = var.autoscaling_group_name
@@ -75,7 +75,7 @@ resource "aws_autoscaling_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_autoscaling_attachment.this.id

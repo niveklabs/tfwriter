@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lightsail_domain" {
   source = "./modules/aws/r/aws_lightsail_domain"
 
@@ -36,7 +36,7 @@ module "aws_lightsail_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "domain_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lightsail_domain" "this" {
   domain_name = var.domain_name
 }
@@ -57,7 +57,7 @@ resource "aws_lightsail_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lightsail_domain.this.arn

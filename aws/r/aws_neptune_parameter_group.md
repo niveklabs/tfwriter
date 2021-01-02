@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_neptune_parameter_group" {
   source = "./modules/aws/r/aws_neptune_parameter_group"
 
@@ -48,7 +48,7 @@ module "aws_neptune_parameter_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -88,7 +88,7 @@ variable "parameter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_neptune_parameter_group" "this" {
   description = var.description
   family      = var.family
@@ -111,7 +111,7 @@ resource "aws_neptune_parameter_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_neptune_parameter_group.this.arn

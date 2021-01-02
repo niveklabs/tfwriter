@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_data_loss_prevention_job_trigger" {
   source = "./modules/google/r/google_data_loss_prevention_job_trigger"
 
@@ -111,7 +111,7 @@ module "google_data_loss_prevention_job_trigger" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A description of the job trigger."
   type        = string
@@ -258,7 +258,7 @@ variable "triggers" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_data_loss_prevention_job_trigger" "this" {
   description  = var.description
   display_name = var.display_name
@@ -425,7 +425,7 @@ resource "google_data_loss_prevention_job_trigger" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_data_loss_prevention_job_trigger.this.id

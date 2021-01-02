@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecr_repository" {
   source = "./modules/aws/r/aws_ecr_repository"
 
@@ -53,7 +53,7 @@ module "aws_ecr_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "image_tag_mutability" {
   description = "(optional)"
   type        = string
@@ -107,7 +107,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ecr_repository" "this" {
   image_tag_mutability = var.image_tag_mutability
   name                 = var.name
@@ -142,7 +142,7 @@ resource "aws_ecr_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ecr_repository.this.arn

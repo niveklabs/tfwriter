@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dns_managed_zone" {
   source = "./modules/google/r/google_dns_managed_zone"
 
@@ -85,7 +85,7 @@ module "google_dns_managed_zone" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - A textual description field. Defaults to 'Managed by Terraform'."
   type        = string
@@ -206,7 +206,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dns_managed_zone" "this" {
   description   = var.description
   dns_name      = var.dns_name
@@ -295,7 +295,7 @@ resource "google_dns_managed_zone" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dns_managed_zone.this.id

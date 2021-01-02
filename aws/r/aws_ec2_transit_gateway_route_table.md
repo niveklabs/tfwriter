@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_route_table" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_route_table"
 
@@ -38,7 +38,7 @@ module "aws_ec2_transit_gateway_route_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -55,7 +55,7 @@ variable "transit_gateway_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_transit_gateway_route_table" "this" {
   tags               = var.tags
   transit_gateway_id = var.transit_gateway_id
@@ -66,7 +66,7 @@ resource "aws_ec2_transit_gateway_route_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_ec2_transit_gateway_route_table.this.arn

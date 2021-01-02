@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_directory_service_log_subscription" {
   source = "./modules/aws/r/aws_directory_service_log_subscription"
 
@@ -38,7 +38,7 @@ module "aws_directory_service_log_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "directory_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "log_group_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_directory_service_log_subscription" "this" {
   directory_id   = var.directory_id
   log_group_name = var.log_group_name
@@ -65,7 +65,7 @@ resource "aws_directory_service_log_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_directory_service_log_subscription.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_pinpoint_apns_sandbox_channel" {
   source = "./modules/aws/r/aws_pinpoint_apns_sandbox_channel"
 
@@ -52,7 +52,7 @@ module "aws_pinpoint_apns_sandbox_channel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_id" {
   description = "(required)"
   type        = string
@@ -111,7 +111,7 @@ variable "token_key_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_pinpoint_apns_sandbox_channel" "this" {
   application_id                = var.application_id
   bundle_id                     = var.bundle_id
@@ -129,7 +129,7 @@ resource "aws_pinpoint_apns_sandbox_channel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_pinpoint_apns_sandbox_channel.this.id

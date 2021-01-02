@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host" {
   source = "./modules/vsphere/r/vsphere_host"
 
@@ -58,7 +58,7 @@ module "vsphere_host" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster" {
   description = "(optional) - ID of the vSphere cluster the host will belong to."
   type        = string
@@ -133,7 +133,7 @@ variable "username" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_host" "this" {
   cluster         = var.cluster
   cluster_managed = var.cluster_managed
@@ -154,7 +154,7 @@ resource "vsphere_host" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = vsphere_host.this.id

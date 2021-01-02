@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_document" {
   source = "./modules/aws/d/aws_ssm_document"
 
@@ -40,7 +40,7 @@ module "aws_ssm_document" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "document_format" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ssm_document" "this" {
   document_format  = var.document_format
   document_version = var.document_version
@@ -75,7 +75,7 @@ data "aws_ssm_document" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_ssm_document.this.arn

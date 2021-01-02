@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscalingplans_scaling_plan" {
   source = "./modules/aws/r/aws_autoscalingplans_scaling_plan"
 
@@ -87,7 +87,7 @@ module "aws_autoscalingplans_scaling_plan" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -171,7 +171,7 @@ variable "scaling_instruction" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscalingplans_scaling_plan" "this" {
   name = var.name
 
@@ -266,7 +266,7 @@ resource "aws_autoscalingplans_scaling_plan" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_autoscalingplans_scaling_plan.this.id

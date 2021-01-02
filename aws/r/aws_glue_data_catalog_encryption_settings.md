@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_data_catalog_encryption_settings" {
   source = "./modules/aws/r/aws_glue_data_catalog_encryption_settings"
 
@@ -47,7 +47,7 @@ module "aws_glue_data_catalog_encryption_settings" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "catalog_id" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "data_catalog_encryption_settings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_data_catalog_encryption_settings" "this" {
   catalog_id = var.catalog_id
 
@@ -113,7 +113,7 @@ resource "aws_glue_data_catalog_encryption_settings" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "catalog_id" {
   description = "returns a string"
   value       = aws_glue_data_catalog_encryption_settings.this.catalog_id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_firestore_document" {
   source = "./modules/google/r/google_firestore_document"
 
@@ -50,7 +50,7 @@ module "google_firestore_document" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "collection" {
   description = "(required) - The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages."
   type        = string
@@ -95,7 +95,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_firestore_document" "this" {
   collection  = var.collection
   database    = var.database
@@ -119,7 +119,7 @@ resource "google_firestore_document" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_firestore_document.this.create_time

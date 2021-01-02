@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecs_container_definition" {
   source = "./modules/aws/d/aws_ecs_container_definition"
 
@@ -38,7 +38,7 @@ module "aws_ecs_container_definition" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "container_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "task_definition" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ecs_container_definition" "this" {
   container_name  = var.container_name
   task_definition = var.task_definition
@@ -65,7 +65,7 @@ data "aws_ecs_container_definition" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cpu" {
   description = "returns a number"
   value       = data.aws_ecs_container_definition.this.cpu

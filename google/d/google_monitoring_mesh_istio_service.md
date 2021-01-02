@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_monitoring_mesh_istio_service" {
   source = "./modules/google/d/google_monitoring_mesh_istio_service"
 
@@ -42,7 +42,7 @@ module "google_monitoring_mesh_istio_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "mesh_uid" {
   description = "(required) - Identifier for the mesh in which this Istio service is defined.\n                        Corresponds to the meshUid metric label in Istio metrics."
   type        = string
@@ -69,7 +69,7 @@ variable "service_namespace" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_monitoring_mesh_istio_service" "this" {
   mesh_uid          = var.mesh_uid
   project           = var.project
@@ -82,7 +82,7 @@ data "google_monitoring_mesh_istio_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "display_name" {
   description = "returns a string"
   value       = data.google_monitoring_mesh_istio_service.this.display_name

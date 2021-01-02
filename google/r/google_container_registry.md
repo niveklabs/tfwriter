@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_registry" {
   source = "./modules/google/r/google_container_registry"
 
@@ -38,7 +38,7 @@ module "google_container_registry" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(optional) - The location of the registry. One of ASIA, EU, US or not specified. See the official documentation for more information on registry locations."
   type        = string
@@ -56,7 +56,7 @@ variable "project" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_container_registry" "this" {
   location = var.location
   project  = var.project
@@ -67,7 +67,7 @@ resource "google_container_registry" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bucket_self_link" {
   description = "returns a string"
   value       = google_container_registry.this.bucket_self_link

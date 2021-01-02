@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_sql_ca_certs" {
   source = "./modules/google/d/google_sql_ca_certs"
 
@@ -38,7 +38,7 @@ module "google_sql_ca_certs" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "instance" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_sql_ca_certs" "this" {
   instance = var.instance
   project  = var.project
@@ -66,7 +66,7 @@ data "google_sql_ca_certs" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "active_version" {
   description = "returns a string"
   value       = data.google_sql_ca_certs.this.active_version

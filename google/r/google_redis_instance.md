@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_redis_instance" {
   source = "./modules/google/r/google_redis_instance"
 
@@ -68,7 +68,7 @@ module "google_redis_instance" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "alternative_location_id" {
   description = "(optional) - Only applicable to STANDARD_HA tier which protects the instance\nagainst zonal failures by provisioning it across two zones.\nIf provided, it must be a different zone from the one provided in\n[locationId]."
   type        = string
@@ -168,7 +168,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_redis_instance" "this" {
   alternative_location_id = var.alternative_location_id
   authorized_network      = var.authorized_network
@@ -201,7 +201,7 @@ resource "google_redis_instance" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "alternative_location_id" {
   description = "returns a string"
   value       = google_redis_instance.this.alternative_location_id

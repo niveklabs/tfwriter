@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_traffic_mirror_filter_rule" {
   source = "./modules/aws/r/aws_ec2_traffic_mirror_filter_rule"
 
@@ -60,7 +60,7 @@ module "aws_ec2_traffic_mirror_filter_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -130,7 +130,7 @@ variable "source_port_range" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_traffic_mirror_filter_rule" "this" {
   description              = var.description
   destination_cidr_block   = var.destination_cidr_block
@@ -164,7 +164,7 @@ resource "aws_ec2_traffic_mirror_filter_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_traffic_mirror_filter_rule.this.id

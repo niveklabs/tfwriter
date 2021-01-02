@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_notebooks_location" {
   source = "./modules/google/r/google_notebooks_location"
 
@@ -44,7 +44,7 @@ module "google_notebooks_location" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional) - Name of the Location resource."
   type        = string
@@ -74,7 +74,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_notebooks_location" "this" {
   name    = var.name
   project = var.project
@@ -95,7 +95,7 @@ resource "google_notebooks_location" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_notebooks_location.this.id

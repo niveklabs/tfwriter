@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket_metric" {
   source = "./modules/aws/r/aws_s3_bucket_metric"
 
@@ -43,7 +43,7 @@ module "aws_s3_bucket_metric" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "filter" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_bucket_metric" "this" {
   bucket = var.bucket
   name   = var.name
@@ -90,7 +90,7 @@ resource "aws_s3_bucket_metric" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_s3_bucket_metric.this.id

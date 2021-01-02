@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_folder_iam_member" {
   source = "./modules/google/r/google_folder_iam_member"
 
@@ -46,7 +46,7 @@ module "google_folder_iam_member" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "folder" {
   description = "(required)"
   type        = string
@@ -79,7 +79,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_folder_iam_member" "this" {
   folder = var.folder
   member = var.member
@@ -101,7 +101,7 @@ resource "google_folder_iam_member" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_folder_iam_member.this.etag

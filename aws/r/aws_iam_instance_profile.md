@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_instance_profile" {
   source = "./modules/aws/r/aws_iam_instance_profile"
 
@@ -42,7 +42,7 @@ module "aws_iam_instance_profile" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "role" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_instance_profile" "this" {
   name        = var.name
   name_prefix = var.name_prefix
@@ -85,7 +85,7 @@ resource "aws_iam_instance_profile" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_iam_instance_profile.this.arn

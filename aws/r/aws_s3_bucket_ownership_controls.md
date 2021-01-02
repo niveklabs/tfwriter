@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_bucket_ownership_controls" {
   source = "./modules/aws/r/aws_s3_bucket_ownership_controls"
 
@@ -40,7 +40,7 @@ module "aws_s3_bucket_ownership_controls" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -60,7 +60,7 @@ variable "rule" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_bucket_ownership_controls" "this" {
   bucket = var.bucket
 
@@ -78,7 +78,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_s3_bucket_ownership_controls.this.id

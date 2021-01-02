@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_domain_name" {
   source = "./modules/aws/r/aws_apigatewayv2_domain_name"
 
@@ -55,7 +55,7 @@ module "aws_apigatewayv2_domain_name" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain_name" {
   description = "(required)"
   type        = string
@@ -106,7 +106,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_domain_name" "this" {
   domain_name = var.domain_name
   tags        = var.tags
@@ -142,7 +142,7 @@ resource "aws_apigatewayv2_domain_name" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "api_mapping_selection_expression" {
   description = "returns a string"
   value       = aws_apigatewayv2_domain_name.this.api_mapping_selection_expression

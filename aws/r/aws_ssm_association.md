@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_association" {
   source = "./modules/aws/r/aws_ssm_association"
 
@@ -64,7 +64,7 @@ module "aws_ssm_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "association_name" {
   description = "(optional)"
   type        = string
@@ -151,7 +151,7 @@ variable "targets" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_association" "this" {
   association_name                 = var.association_name
   automation_target_parameter_name = var.automation_target_parameter_name
@@ -187,7 +187,7 @@ resource "aws_ssm_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "association_id" {
   description = "returns a string"
   value       = aws_ssm_association.this.association_id

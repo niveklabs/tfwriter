@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codestarnotifications_notification_rule" {
   source = "./modules/aws/r/aws_codestarnotifications_notification_rule"
 
@@ -52,7 +52,7 @@ module "aws_codestarnotifications_notification_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "detail_type" {
   description = "(required)"
   type        = string
@@ -102,7 +102,7 @@ variable "target" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codestarnotifications_notification_rule" "this" {
   detail_type    = var.detail_type
   event_type_ids = var.event_type_ids
@@ -126,7 +126,7 @@ resource "aws_codestarnotifications_notification_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codestarnotifications_notification_rule.this.arn

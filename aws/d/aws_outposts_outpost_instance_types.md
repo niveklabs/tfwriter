@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_outposts_outpost_instance_types" {
   source = "./modules/aws/d/aws_outposts_outpost_instance_types"
 
@@ -36,7 +36,7 @@ module "aws_outposts_outpost_instance_types" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "arn" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_outposts_outpost_instance_types" "this" {
   arn = var.arn
 }
@@ -57,7 +57,7 @@ data "aws_outposts_outpost_instance_types" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_outposts_outpost_instance_types.this.id

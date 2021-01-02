@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_networkfirewall_firewall_policy" {
   source = "./modules/aws/r/aws_networkfirewall_firewall_policy"
 
@@ -62,7 +62,7 @@ module "aws_networkfirewall_firewall_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -124,7 +124,7 @@ variable "firewall_policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_networkfirewall_firewall_policy" "this" {
   description = var.description
   name        = var.name
@@ -190,7 +190,7 @@ resource "aws_networkfirewall_firewall_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_networkfirewall_firewall_policy.this.arn

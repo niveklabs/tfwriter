@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_default_security_group" {
   source = "./modules/aws/r/aws_default_security_group"
 
@@ -64,7 +64,7 @@ module "aws_default_security_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "egress" {
   description = "(optional)"
   type = set(object(
@@ -124,7 +124,7 @@ variable "vpc_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_default_security_group" "this" {
   egress                 = var.egress
   ingress                = var.ingress
@@ -138,7 +138,7 @@ resource "aws_default_security_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_default_security_group.this.arn

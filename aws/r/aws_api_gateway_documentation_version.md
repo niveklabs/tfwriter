@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_documentation_version" {
   source = "./modules/aws/r/aws_api_gateway_documentation_version"
 
@@ -40,7 +40,7 @@ module "aws_api_gateway_documentation_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "version" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_documentation_version" "this" {
   description = var.description
   rest_api_id = var.rest_api_id
@@ -74,7 +74,7 @@ resource "aws_api_gateway_documentation_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_documentation_version.this.id

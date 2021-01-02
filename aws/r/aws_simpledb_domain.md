@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_simpledb_domain" {
   source = "./modules/aws/r/aws_simpledb_domain"
 
@@ -36,7 +36,7 @@ module "aws_simpledb_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_simpledb_domain" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ resource "aws_simpledb_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_simpledb_domain.this.id

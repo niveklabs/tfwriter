@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repository" {
   source = "./modules/github/d/github_repository"
 
@@ -38,7 +38,7 @@ module "github_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "full_name" {
   description = "(optional)"
   type        = string
@@ -56,7 +56,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_repository" "this" {
   full_name = var.full_name
   name      = var.name
@@ -67,7 +67,7 @@ data "github_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_merge_commit" {
   description = "returns a bool"
   value       = data.github_repository.this.allow_merge_commit

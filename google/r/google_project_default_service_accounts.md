@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_project_default_service_accounts" {
   source = "./modules/google/r/google_project_default_service_accounts"
 
@@ -46,7 +46,7 @@ module "google_project_default_service_accounts" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(required) - The action to be performed in the default service accounts. Valid values are: DEPRIVILEGE, DELETE, DISABLE.\n\t\t\t\tNote that DEPRIVILEGE action will ignore the REVERT configuration in the restore_policy."
   type        = string
@@ -80,7 +80,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_project_default_service_accounts" "this" {
   action         = var.action
   project        = var.project
@@ -102,7 +102,7 @@ resource "google_project_default_service_accounts" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_project_default_service_accounts.this.id

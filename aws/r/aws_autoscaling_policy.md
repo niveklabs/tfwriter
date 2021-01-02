@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_autoscaling_policy" {
   source = "./modules/aws/r/aws_autoscaling_policy"
 
@@ -77,7 +77,7 @@ module "aws_autoscaling_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "adjustment_type" {
   description = "(optional)"
   type        = string
@@ -178,7 +178,7 @@ variable "target_tracking_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_autoscaling_policy" "this" {
   adjustment_type           = var.adjustment_type
   autoscaling_group_name    = var.autoscaling_group_name
@@ -242,7 +242,7 @@ resource "aws_autoscaling_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_autoscaling_policy.this.arn

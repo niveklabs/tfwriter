@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_replication_task" {
   source = "./modules/aws/r/aws_dms_replication_task"
 
@@ -52,7 +52,7 @@ module "aws_dms_replication_task" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cdc_start_time" {
   description = "(optional)"
   type        = string
@@ -106,7 +106,7 @@ variable "target_endpoint_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_replication_task" "this" {
   cdc_start_time            = var.cdc_start_time
   migration_type            = var.migration_type
@@ -124,7 +124,7 @@ resource "aws_dms_replication_task" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dms_replication_task.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glacier_vault" {
   source = "./modules/aws/r/aws_glacier_vault"
 
@@ -45,7 +45,7 @@ module "aws_glacier_vault" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "access_policy" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "notification" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glacier_vault" "this" {
   access_policy = var.access_policy
   name          = var.name
@@ -100,7 +100,7 @@ resource "aws_glacier_vault" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glacier_vault.this.arn

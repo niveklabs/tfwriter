@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_s3_access_point" {
   source = "./modules/aws/r/aws_s3_access_point"
 
@@ -53,7 +53,7 @@ module "aws_s3_access_point" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(optional)"
   type        = string
@@ -104,7 +104,7 @@ variable "vpc_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_s3_access_point" "this" {
   account_id = var.account_id
   bucket     = var.bucket
@@ -135,7 +135,7 @@ resource "aws_s3_access_point" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "account_id" {
   description = "returns a string"
   value       = aws_s3_access_point.this.account_id

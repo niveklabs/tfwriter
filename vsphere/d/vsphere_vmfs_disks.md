@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_vmfs_disks" {
   source = "./modules/vsphere/d/vsphere_vmfs_disks"
 
@@ -40,7 +40,7 @@ module "vsphere_vmfs_disks" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "filter" {
   description = "(optional) - A regular expression to filter the disks against. Only disks with canonical names that match will be included."
   type        = string
@@ -63,7 +63,7 @@ variable "rescan" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_vmfs_disks" "this" {
   filter         = var.filter
   host_system_id = var.host_system_id
@@ -75,7 +75,7 @@ data "vsphere_vmfs_disks" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "disks" {
   description = "returns a list of string"
   value       = data.vsphere_vmfs_disks.this.disks

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_ingress" {
   source = "./modules/kubernetes/d/kubernetes_ingress"
 
@@ -45,7 +45,7 @@ module "kubernetes_ingress" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -67,7 +67,7 @@ variable "metadata" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "kubernetes_ingress" "this" {
 
   dynamic "metadata" {
@@ -87,7 +87,7 @@ data "kubernetes_ingress" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.kubernetes_ingress.this.id

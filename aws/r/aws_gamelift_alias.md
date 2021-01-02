@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_gamelift_alias" {
   source = "./modules/aws/r/aws_gamelift_alias"
 
@@ -46,7 +46,7 @@ module "aws_gamelift_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "routing_strategy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_gamelift_alias" "this" {
   description = var.description
   name        = var.name
@@ -102,7 +102,7 @@ resource "aws_gamelift_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_gamelift_alias.this.arn

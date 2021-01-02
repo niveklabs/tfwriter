@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_access_key" {
   source = "./modules/aws/r/aws_iam_access_key"
 
@@ -40,7 +40,7 @@ module "aws_iam_access_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "pgp_key" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "user" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_access_key" "this" {
   pgp_key = var.pgp_key
   status  = var.status
@@ -75,7 +75,7 @@ resource "aws_iam_access_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "encrypted_secret" {
   description = "returns a string"
   value       = aws_iam_access_key.this.encrypted_secret

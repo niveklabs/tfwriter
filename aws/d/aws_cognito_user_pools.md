@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_user_pools" {
   source = "./modules/aws/d/aws_cognito_user_pools"
 
@@ -36,7 +36,7 @@ module "aws_cognito_user_pools" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_cognito_user_pools" "this" {
   name = var.name
 }
@@ -57,7 +57,7 @@ data "aws_cognito_user_pools" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arns" {
   description = "returns a set of string"
   value       = data.aws_cognito_user_pools.this.arns

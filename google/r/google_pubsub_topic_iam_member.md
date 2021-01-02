@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_pubsub_topic_iam_member" {
   source = "./modules/google/r/google_pubsub_topic_iam_member"
 
@@ -48,7 +48,7 @@ module "google_pubsub_topic_iam_member" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "member" {
   description = "(required)"
   type        = string
@@ -87,7 +87,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_pubsub_topic_iam_member" "this" {
   member  = var.member
   project = var.project
@@ -110,7 +110,7 @@ resource "google_pubsub_topic_iam_member" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_pubsub_topic_iam_member.this.etag

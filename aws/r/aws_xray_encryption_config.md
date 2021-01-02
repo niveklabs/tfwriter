@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_xray_encryption_config" {
   source = "./modules/aws/r/aws_xray_encryption_config"
 
@@ -38,7 +38,7 @@ module "aws_xray_encryption_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key_id" {
   description = "(optional)"
   type        = string
@@ -55,7 +55,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_xray_encryption_config" "this" {
   key_id = var.key_id
   type   = var.type
@@ -66,7 +66,7 @@ resource "aws_xray_encryption_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_xray_encryption_config.this.id

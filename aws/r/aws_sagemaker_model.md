@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_sagemaker_model" {
   source = "./modules/aws/r/aws_sagemaker_model"
 
@@ -69,7 +69,7 @@ module "aws_sagemaker_model" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enable_network_isolation" {
   description = "(optional)"
   type        = bool
@@ -147,7 +147,7 @@ variable "vpc_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_sagemaker_model" "this" {
   enable_network_isolation = var.enable_network_isolation
   execution_role_arn       = var.execution_role_arn
@@ -207,7 +207,7 @@ resource "aws_sagemaker_model" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_sagemaker_model.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_vpn_tunnel" {
   source = "./modules/google/r/google_compute_vpn_tunnel"
 
@@ -71,7 +71,7 @@ module "google_compute_vpn_tunnel" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - An optional description of this resource."
   type        = string
@@ -182,7 +182,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_vpn_tunnel" "this" {
   description                     = var.description
   ike_version                     = var.ike_version
@@ -216,7 +216,7 @@ resource "google_compute_vpn_tunnel" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_vpn_tunnel.this.creation_timestamp

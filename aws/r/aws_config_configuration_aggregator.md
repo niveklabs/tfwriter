@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_configuration_aggregator" {
   source = "./modules/aws/r/aws_config_configuration_aggregator"
 
@@ -50,7 +50,7 @@ module "aws_config_configuration_aggregator" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -91,7 +91,7 @@ variable "organization_aggregation_source" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_configuration_aggregator" "this" {
   name = var.name
   tags = var.tags
@@ -121,7 +121,7 @@ resource "aws_config_configuration_aggregator" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_config_configuration_aggregator.this.arn

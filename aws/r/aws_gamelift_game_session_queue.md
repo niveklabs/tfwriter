@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_gamelift_game_session_queue" {
   source = "./modules/aws/r/aws_gamelift_game_session_queue"
 
@@ -47,7 +47,7 @@ module "aws_gamelift_game_session_queue" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destinations" {
   description = "(optional)"
   type        = list(string)
@@ -87,7 +87,7 @@ variable "player_latency_policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_gamelift_game_session_queue" "this" {
   destinations       = var.destinations
   name               = var.name
@@ -109,7 +109,7 @@ resource "aws_gamelift_game_session_queue" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_gamelift_game_session_queue.this.arn

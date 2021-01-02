@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_load_balancer_policy" {
   source = "./modules/aws/r/aws_load_balancer_policy"
 
@@ -45,7 +45,7 @@ module "aws_load_balancer_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "load_balancer_name" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "policy_attribute" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_load_balancer_policy" "this" {
   load_balancer_name = var.load_balancer_name
   policy_name        = var.policy_name
@@ -98,7 +98,7 @@ resource "aws_load_balancer_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_load_balancer_policy.this.id

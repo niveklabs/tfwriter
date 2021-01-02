@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_analysis_occurrence" {
   source = "./modules/google/r/google_container_analysis_occurrence"
 
@@ -56,7 +56,7 @@ module "google_container_analysis_occurrence" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "note_name" {
   description = "(required) - The analysis note associated with this occurrence, in the form of\nprojects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a\nfilter in list requests."
   type        = string
@@ -111,7 +111,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_container_analysis_occurrence" "this" {
   note_name    = var.note_name
   project      = var.project
@@ -150,7 +150,7 @@ resource "google_container_analysis_occurrence" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_container_analysis_occurrence.this.create_time

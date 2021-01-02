@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dms_event_subscription" {
   source = "./modules/aws/r/aws_dms_event_subscription"
 
@@ -54,7 +54,7 @@ module "aws_dms_event_subscription" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enabled" {
   description = "(optional)"
   type        = bool
@@ -111,7 +111,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dms_event_subscription" "this" {
   enabled          = var.enabled
   event_categories = var.event_categories
@@ -137,7 +137,7 @@ resource "aws_dms_event_subscription" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dms_event_subscription.this.arn

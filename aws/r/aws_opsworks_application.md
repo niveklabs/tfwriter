@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_opsworks_application" {
   source = "./modules/aws/r/aws_opsworks_application"
 
@@ -83,7 +83,7 @@ module "aws_opsworks_application" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_bundle_on_deploy" {
   description = "(optional)"
   type        = string
@@ -209,7 +209,7 @@ variable "ssl_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_opsworks_application" "this" {
   auto_bundle_on_deploy     = var.auto_bundle_on_deploy
   aws_flow_ruby_settings    = var.aws_flow_ruby_settings
@@ -263,7 +263,7 @@ resource "aws_opsworks_application" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_opsworks_application.this.id

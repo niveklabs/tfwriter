@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lb_ssl_negotiation_policy" {
   source = "./modules/aws/r/aws_lb_ssl_negotiation_policy"
 
@@ -45,7 +45,7 @@ module "aws_lb_ssl_negotiation_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "lb_port" {
   description = "(required)"
   type        = number
@@ -77,7 +77,7 @@ variable "attribute" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lb_ssl_negotiation_policy" "this" {
   lb_port       = var.lb_port
   load_balancer = var.load_balancer
@@ -98,7 +98,7 @@ resource "aws_lb_ssl_negotiation_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lb_ssl_negotiation_policy.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_stored_iscsi_volume" {
   source = "./modules/aws/r/aws_storagegateway_stored_iscsi_volume"
 
@@ -52,7 +52,7 @@ module "aws_storagegateway_stored_iscsi_volume" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "disk_id" {
   description = "(required)"
   type        = string
@@ -107,7 +107,7 @@ variable "target_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_storagegateway_stored_iscsi_volume" "this" {
   disk_id                = var.disk_id
   gateway_arn            = var.gateway_arn
@@ -125,7 +125,7 @@ resource "aws_storagegateway_stored_iscsi_volume" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_storagegateway_stored_iscsi_volume.this.arn

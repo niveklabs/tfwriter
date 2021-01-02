@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_serverlessapplicationrepository_cloudformation_stack" {
   source = "./modules/aws/r/aws_serverlessapplicationrepository_cloudformation_stack"
 
@@ -52,7 +52,7 @@ module "aws_serverlessapplicationrepository_cloudformation_stack" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "application_id" {
   description = "(required)"
   type        = string
@@ -103,7 +103,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_serverlessapplicationrepository_cloudformation_stack" "this" {
   application_id   = var.application_id
   capabilities     = var.capabilities
@@ -128,7 +128,7 @@ resource "aws_serverlessapplicationrepository_cloudformation_stack" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_serverlessapplicationrepository_cloudformation_stack.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_resource" {
   source = "./modules/aws/r/aws_api_gateway_resource"
 
@@ -40,7 +40,7 @@ module "aws_api_gateway_resource" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "parent_id" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "rest_api_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_resource" "this" {
   parent_id   = var.parent_id
   path_part   = var.path_part
@@ -73,7 +73,7 @@ resource "aws_api_gateway_resource" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_api_gateway_resource.this.id

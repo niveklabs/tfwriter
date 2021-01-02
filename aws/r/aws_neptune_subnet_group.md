@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_neptune_subnet_group" {
   source = "./modules/aws/r/aws_neptune_subnet_group"
 
@@ -44,7 +44,7 @@ module "aws_neptune_subnet_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_neptune_subnet_group" "this" {
   description = var.description
   name        = var.name
@@ -93,7 +93,7 @@ resource "aws_neptune_subnet_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_neptune_subnet_group.this.arn

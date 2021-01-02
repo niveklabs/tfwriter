@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_access_context_manager_service_perimeters" {
   source = "./modules/google/r/google_access_context_manager_service_perimeters"
 
@@ -70,7 +70,7 @@ module "google_access_context_manager_service_perimeters" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "parent" {
   description = "(required) - The AccessPolicy this ServicePerimeter lives in.\nFormat: accessPolicies/{policy_id}"
   type        = string
@@ -135,7 +135,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_access_context_manager_service_perimeters" "this" {
   parent = var.parent
 
@@ -203,7 +203,7 @@ resource "google_access_context_manager_service_perimeters" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_access_context_manager_service_perimeters.this.id

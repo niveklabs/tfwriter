@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_host_port_group" {
   source = "./modules/vsphere/r/vsphere_host_port_group"
 
@@ -68,7 +68,7 @@ module "vsphere_host_port_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "active_nics" {
   description = "(optional) - List of active network adapters used for load balancing."
   type        = list(string)
@@ -173,7 +173,7 @@ variable "vlan_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "vsphere_host_port_group" "this" {
   active_nics               = var.active_nics
   allow_forged_transmits    = var.allow_forged_transmits
@@ -199,7 +199,7 @@ resource "vsphere_host_port_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "computed_policy" {
   description = "returns a map of string"
   value       = vsphere_host_port_group.this.computed_policy

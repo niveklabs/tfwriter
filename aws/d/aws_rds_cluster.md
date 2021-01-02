@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_rds_cluster" {
   source = "./modules/aws/d/aws_rds_cluster"
 
@@ -38,7 +38,7 @@ module "aws_rds_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_identifier" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_rds_cluster" "this" {
   cluster_identifier = var.cluster_identifier
   tags               = var.tags
@@ -66,7 +66,7 @@ data "aws_rds_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_rds_cluster.this.arn

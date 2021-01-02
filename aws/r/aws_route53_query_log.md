@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_query_log" {
   source = "./modules/aws/r/aws_route53_query_log"
 
@@ -38,7 +38,7 @@ module "aws_route53_query_log" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cloudwatch_log_group_arn" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "zone_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_query_log" "this" {
   cloudwatch_log_group_arn = var.cloudwatch_log_group_arn
   zone_id                  = var.zone_id
@@ -65,7 +65,7 @@ resource "aws_route53_query_log" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_route53_query_log.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_daemonset" {
   source = "./modules/kubernetes/r/kubernetes_daemonset"
 
@@ -850,7 +850,7 @@ module "kubernetes_daemonset" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -2042,7 +2042,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_daemonset" "this" {
 
   dynamic "metadata" {
@@ -3651,7 +3651,7 @@ resource "kubernetes_daemonset" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_daemonset.this.id

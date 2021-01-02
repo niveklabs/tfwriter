@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ip_ranges" {
   source = "./modules/aws/d/aws_ip_ranges"
 
@@ -40,7 +40,7 @@ module "aws_ip_ranges" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "regions" {
   description = "(optional)"
   type        = set(string)
@@ -63,7 +63,7 @@ variable "url" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ip_ranges" "this" {
   regions  = var.regions
   services = var.services
@@ -75,7 +75,7 @@ data "aws_ip_ranges" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cidr_blocks" {
   description = "returns a list of string"
   value       = data.aws_ip_ranges.this.cidr_blocks

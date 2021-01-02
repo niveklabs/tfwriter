@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_traffic_mirror_filter" {
   source = "./modules/aws/r/aws_ec2_traffic_mirror_filter"
 
@@ -40,7 +40,7 @@ module "aws_ec2_traffic_mirror_filter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -64,7 +64,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_traffic_mirror_filter" "this" {
   description      = var.description
   network_services = var.network_services
@@ -76,7 +76,7 @@ resource "aws_ec2_traffic_mirror_filter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_traffic_mirror_filter.this.id

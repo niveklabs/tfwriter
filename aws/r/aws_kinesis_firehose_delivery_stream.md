@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_kinesis_firehose_delivery_stream" {
   source = "./modules/aws/r/aws_kinesis_firehose_delivery_stream"
 
@@ -292,7 +292,7 @@ module "aws_kinesis_firehose_delivery_stream" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "arn" {
   description = "(optional)"
   type        = string
@@ -702,7 +702,7 @@ variable "splunk_configuration" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_kinesis_firehose_delivery_stream" "this" {
   arn            = var.arn
   destination    = var.destination
@@ -1163,7 +1163,7 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_kinesis_firehose_delivery_stream.this.arn

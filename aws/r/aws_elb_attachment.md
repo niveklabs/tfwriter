@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elb_attachment" {
   source = "./modules/aws/r/aws_elb_attachment"
 
@@ -38,7 +38,7 @@ module "aws_elb_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "elb" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "instance" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elb_attachment" "this" {
   elb      = var.elb
   instance = var.instance
@@ -65,7 +65,7 @@ resource "aws_elb_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_elb_attachment.this.id

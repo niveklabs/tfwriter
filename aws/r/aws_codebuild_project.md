@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codebuild_project" {
   source = [{
     auth = [{
@@ -151,7 +151,7 @@ module "aws_codebuild_project" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "badge_enabled" {
   description = "(optional)"
   type        = bool
@@ -370,7 +370,7 @@ variable "vpc_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codebuild_project" "this" {
   badge_enabled  = var.badge_enabled
   build_timeout  = var.build_timeout
@@ -549,7 +549,7 @@ resource "aws_codebuild_project" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codebuild_project.this.arn

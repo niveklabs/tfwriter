@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_imagebuilder_infrastructure_configuration" {
   source = "./modules/aws/r/aws_imagebuilder_infrastructure_configuration"
 
@@ -63,7 +63,7 @@ module "aws_imagebuilder_infrastructure_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -148,7 +148,7 @@ variable "logging" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_imagebuilder_infrastructure_configuration" "this" {
   description                   = var.description
   instance_profile_name         = var.instance_profile_name
@@ -184,7 +184,7 @@ resource "aws_imagebuilder_infrastructure_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_imagebuilder_infrastructure_configuration.this.arn

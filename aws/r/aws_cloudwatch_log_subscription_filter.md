@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_log_subscription_filter" {
   source = "./modules/aws/r/aws_cloudwatch_log_subscription_filter"
 
@@ -46,7 +46,7 @@ module "aws_cloudwatch_log_subscription_filter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "destination_arn" {
   description = "(required)"
   type        = string
@@ -84,7 +84,7 @@ variable "role_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_log_subscription_filter" "this" {
   destination_arn = var.destination_arn
   distribution    = var.distribution
@@ -99,7 +99,7 @@ resource "aws_cloudwatch_log_subscription_filter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_cloudwatch_log_subscription_filter.this.id

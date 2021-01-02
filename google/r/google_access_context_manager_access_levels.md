@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_access_context_manager_access_levels" {
   source = "./modules/google/r/google_access_context_manager_access_levels"
 
@@ -77,7 +77,7 @@ module "google_access_context_manager_access_levels" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "parent" {
   description = "(required) - The AccessPolicy this AccessLevel lives in.\nFormat: accessPolicies/{policy_id}"
   type        = string
@@ -153,7 +153,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_access_context_manager_access_levels" "this" {
   parent = var.parent
 
@@ -240,7 +240,7 @@ resource "google_access_context_manager_access_levels" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_access_context_manager_access_levels.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloudbuild_trigger" {
   source = "./modules/google/r/google_cloudbuild_trigger"
 
@@ -142,7 +142,7 @@ module "google_cloudbuild_trigger" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional) - Human-readable description of the trigger."
   type        = string
@@ -332,7 +332,7 @@ variable "trigger_template" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloudbuild_trigger" "this" {
   description    = var.description
   disabled       = var.disabled
@@ -491,7 +491,7 @@ resource "google_cloudbuild_trigger" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_cloudbuild_trigger.this.create_time

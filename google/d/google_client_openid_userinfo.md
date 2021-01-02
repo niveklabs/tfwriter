@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_client_openid_userinfo" {
   source = "./modules/google/d/google_client_openid_userinfo"
 
@@ -34,14 +34,14 @@ module "google_client_openid_userinfo" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_client_openid_userinfo" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "google_client_openid_userinfo" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "email" {
   description = "returns a string"
   value       = data.google_client_openid_userinfo.this.email

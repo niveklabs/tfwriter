@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafregional_web_acl_association" {
   source = "./modules/aws/r/aws_wafregional_web_acl_association"
 
@@ -38,7 +38,7 @@ module "aws_wafregional_web_acl_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "resource_arn" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "web_acl_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_wafregional_web_acl_association" "this" {
   resource_arn = var.resource_arn
   web_acl_id   = var.web_acl_id
@@ -65,7 +65,7 @@ resource "aws_wafregional_web_acl_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_wafregional_web_acl_association.this.id

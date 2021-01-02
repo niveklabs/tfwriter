@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_router_nat" {
   source = "./modules/google/r/google_compute_router_nat"
 
@@ -77,7 +77,7 @@ module "google_compute_router_nat" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "drain_nat_ips" {
   description = "(optional) - A list of URLs of the IP resources to be drained. These IPs must be\nvalid static external IPs that have been assigned to the NAT."
   type        = set(string)
@@ -192,7 +192,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_router_nat" "this" {
   drain_nat_ips                      = var.drain_nat_ips
   icmp_idle_timeout_sec              = var.icmp_idle_timeout_sec
@@ -241,7 +241,7 @@ resource "google_compute_router_nat" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_router_nat.this.id

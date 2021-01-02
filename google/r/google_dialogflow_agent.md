@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dialogflow_agent" {
   source = "./modules/google/r/google_dialogflow_agent"
 
@@ -64,7 +64,7 @@ module "google_dialogflow_agent" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_version" {
   description = "(optional) - API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query\ndifferent service endpoints for different API versions. However, bots connectors and webhook calls will follow \nthe specified API version.\n* API_VERSION_V1: Legacy V1 API.\n* API_VERSION_V2: V2 API.\n* API_VERSION_V2_BETA_1: V2beta1 API. Possible values: [\"API_VERSION_V1\", \"API_VERSION_V2\", \"API_VERSION_V2_BETA_1\"]"
   type        = string
@@ -151,7 +151,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dialogflow_agent" "this" {
   api_version              = var.api_version
   avatar_uri               = var.avatar_uri
@@ -182,7 +182,7 @@ resource "google_dialogflow_agent" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "api_version" {
   description = "returns a string"
   value       = google_dialogflow_agent.this.api_version

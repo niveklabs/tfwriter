@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_organizations_organizational_unit" {
   source = "./modules/aws/r/aws_organizations_organizational_unit"
 
@@ -38,7 +38,7 @@ module "aws_organizations_organizational_unit" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "parent_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_organizations_organizational_unit" "this" {
   name      = var.name
   parent_id = var.parent_id
@@ -65,7 +65,7 @@ resource "aws_organizations_organizational_unit" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accounts" {
   description = "returns a list of object"
   value       = aws_organizations_organizational_unit.this.accounts

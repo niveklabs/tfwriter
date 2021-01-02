@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_domain_mail_from" {
   source = "./modules/aws/r/aws_ses_domain_mail_from"
 
@@ -40,7 +40,7 @@ module "aws_ses_domain_mail_from" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "behavior_on_mx_failure" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "mail_from_domain" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_domain_mail_from" "this" {
   behavior_on_mx_failure = var.behavior_on_mx_failure
   domain                 = var.domain
@@ -74,7 +74,7 @@ resource "aws_ses_domain_mail_from" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ses_domain_mail_from.this.id

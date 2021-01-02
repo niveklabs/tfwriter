@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_organization_iam_audit_config" {
   source = "./modules/google/r/google_organization_iam_audit_config"
 
@@ -43,7 +43,7 @@ module "google_organization_iam_audit_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "org_id" {
   description = "(required) - The numeric ID of the organization in which you want to manage the audit logging config."
   type        = string
@@ -69,7 +69,7 @@ variable "audit_log_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_organization_iam_audit_config" "this" {
   org_id  = var.org_id
   service = var.service
@@ -89,7 +89,7 @@ resource "google_organization_iam_audit_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_organization_iam_audit_config.this.etag

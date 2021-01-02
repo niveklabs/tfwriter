@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_network_interface_attachment" {
   source = "./modules/aws/r/aws_network_interface_attachment"
 
@@ -40,7 +40,7 @@ module "aws_network_interface_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "device_index" {
   description = "(required)"
   type        = number
@@ -61,7 +61,7 @@ variable "network_interface_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_network_interface_attachment" "this" {
   device_index         = var.device_index
   instance_id          = var.instance_id
@@ -73,7 +73,7 @@ resource "aws_network_interface_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "attachment_id" {
   description = "returns a string"
   value       = aws_network_interface_attachment.this.attachment_id

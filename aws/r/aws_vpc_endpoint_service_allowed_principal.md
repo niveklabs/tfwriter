@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_endpoint_service_allowed_principal" {
   source = "./modules/aws/r/aws_vpc_endpoint_service_allowed_principal"
 
@@ -38,7 +38,7 @@ module "aws_vpc_endpoint_service_allowed_principal" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "principal_arn" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "vpc_endpoint_service_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_endpoint_service_allowed_principal" "this" {
   principal_arn           = var.principal_arn
   vpc_endpoint_service_id = var.vpc_endpoint_service_id
@@ -65,7 +65,7 @@ resource "aws_vpc_endpoint_service_allowed_principal" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpc_endpoint_service_allowed_principal.this.id

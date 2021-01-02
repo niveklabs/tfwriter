@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_organization_custom_rule" {
   source = "./modules/aws/r/aws_config_organization_custom_rule"
 
@@ -62,7 +62,7 @@ module "aws_config_organization_custom_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -143,7 +143,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_organization_custom_rule" "this" {
   description                 = var.description
   excluded_accounts           = var.excluded_accounts
@@ -173,7 +173,7 @@ resource "aws_config_organization_custom_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_config_organization_custom_rule.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dx_connection_association" {
   source = "./modules/aws/r/aws_dx_connection_association"
 
@@ -38,7 +38,7 @@ module "aws_dx_connection_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "connection_id" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "lag_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dx_connection_association" "this" {
   connection_id = var.connection_id
   lag_id        = var.lag_id
@@ -65,7 +65,7 @@ resource "aws_dx_connection_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dx_connection_association.this.id

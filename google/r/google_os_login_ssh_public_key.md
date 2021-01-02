@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_os_login_ssh_public_key" {
   source = "./modules/google/r/google_os_login_ssh_public_key"
 
@@ -48,7 +48,7 @@ module "google_os_login_ssh_public_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "expiration_time_usec" {
   description = "(optional) - An expiration time in microseconds since epoch."
   type        = string
@@ -88,7 +88,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_os_login_ssh_public_key" "this" {
   expiration_time_usec = var.expiration_time_usec
   key                  = var.key
@@ -111,7 +111,7 @@ resource "google_os_login_ssh_public_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "fingerprint" {
   description = "returns a string"
   value       = google_os_login_ssh_public_key.this.fingerprint

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_redshift_cluster" {
   source = "./modules/aws/r/aws_redshift_cluster"
 
@@ -116,7 +116,7 @@ module "aws_redshift_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_version_upgrade" {
   description = "(optional)"
   type        = bool
@@ -348,7 +348,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_redshift_cluster" "this" {
   allow_version_upgrade               = var.allow_version_upgrade
   automated_snapshot_retention_period = var.automated_snapshot_retention_period
@@ -417,7 +417,7 @@ resource "aws_redshift_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_redshift_cluster.this.arn

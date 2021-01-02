@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_role" {
   source = "./modules/kubernetes/r/kubernetes_role"
 
@@ -53,7 +53,7 @@ module "kubernetes_role" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -88,7 +88,7 @@ variable "rule" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_role" "this" {
 
   dynamic "metadata" {
@@ -119,7 +119,7 @@ resource "kubernetes_role" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_role.this.id

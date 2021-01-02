@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_identity_platform_oauth_idp_config" {
   source = "./modules/google/r/google_identity_platform_oauth_idp_config"
 
@@ -54,7 +54,7 @@ module "google_identity_platform_oauth_idp_config" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "client_id" {
   description = "(required) - The client id of an OAuth client."
   type        = string
@@ -111,7 +111,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_identity_platform_oauth_idp_config" "this" {
   client_id     = var.client_id
   client_secret = var.client_secret
@@ -137,7 +137,7 @@ resource "google_identity_platform_oauth_idp_config" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_identity_platform_oauth_idp_config.this.id

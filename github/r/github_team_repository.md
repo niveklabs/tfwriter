@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_team_repository" {
   source = "./modules/github/r/github_team_repository"
 
@@ -40,7 +40,7 @@ module "github_team_repository" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "permission" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "team_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_team_repository" "this" {
   permission = var.permission
   repository = var.repository
@@ -74,7 +74,7 @@ resource "github_team_repository" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_team_repository.this.etag

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_account_alias" {
   source = "./modules/aws/r/aws_iam_account_alias"
 
@@ -36,7 +36,7 @@ module "aws_iam_account_alias" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_alias" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "account_alias" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_account_alias" "this" {
   account_alias = var.account_alias
 }
@@ -57,7 +57,7 @@ resource "aws_iam_account_alias" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_iam_account_alias.this.id

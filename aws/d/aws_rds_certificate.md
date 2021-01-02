@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_rds_certificate" {
   source = "./modules/aws/d/aws_rds_certificate"
 
@@ -36,7 +36,7 @@ module "aws_rds_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "latest_valid_till" {
   description = "(optional)"
   type        = bool
@@ -48,7 +48,7 @@ variable "latest_valid_till" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_rds_certificate" "this" {
   latest_valid_till = var.latest_valid_till
 }
@@ -58,7 +58,7 @@ data "aws_rds_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_rds_certificate.this.arn

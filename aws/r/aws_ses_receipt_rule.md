@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ses_receipt_rule" {
   source = "./modules/aws/r/aws_ses_receipt_rule"
 
@@ -95,7 +95,7 @@ module "aws_ses_receipt_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "after" {
   description = "(optional)"
   type        = string
@@ -230,7 +230,7 @@ variable "workmail_action" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ses_receipt_rule" "this" {
   after         = var.after
   enabled       = var.enabled
@@ -315,7 +315,7 @@ resource "aws_ses_receipt_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "enabled" {
   description = "returns a bool"
   value       = aws_ses_receipt_rule.this.enabled

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_game_services_game_server_deployment_rollout" {
   source = "./modules/google/r/google_game_services_game_server_deployment_rollout"
 
@@ -53,7 +53,7 @@ module "google_game_services_game_server_deployment_rollout" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "default_game_server_config" {
   description = "(required) - This field points to the game server config that is\napplied by default to all realms and clusters. For example,\n\n'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'."
   type        = string
@@ -102,7 +102,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_game_services_game_server_deployment_rollout" "this" {
   default_game_server_config = var.default_game_server_config
   deployment_id              = var.deployment_id
@@ -139,7 +139,7 @@ resource "google_game_services_game_server_deployment_rollout" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_game_services_game_server_deployment_rollout.this.id

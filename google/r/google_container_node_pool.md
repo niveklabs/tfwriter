@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_container_node_pool" {
   source = "./modules/google/r/google_container_node_pool"
 
@@ -106,7 +106,7 @@ module "google_container_node_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster" {
   description = "(required) - The cluster to create the node pool for. Cluster must be present in location provided for zonal clusters."
   type        = string
@@ -261,7 +261,7 @@ variable "upgrade_settings" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_container_node_pool" "this" {
   cluster            = var.cluster
   initial_node_count = var.initial_node_count
@@ -350,7 +350,7 @@ resource "google_container_node_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_container_node_pool.this.id

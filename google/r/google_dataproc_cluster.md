@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_dataproc_cluster" {
   source = "./modules/google/r/google_dataproc_cluster"
 
@@ -141,7 +141,7 @@ module "google_dataproc_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "graceful_decommission_timeout" {
   description = "(optional) - The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply"
   type        = string
@@ -315,7 +315,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_dataproc_cluster" "this" {
   graceful_decommission_timeout = var.graceful_decommission_timeout
   labels                        = var.labels
@@ -493,7 +493,7 @@ resource "google_dataproc_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_dataproc_cluster.this.id

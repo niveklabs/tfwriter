@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_macie_s3_bucket_association" {
   source = "./modules/aws/r/aws_macie_s3_bucket_association"
 
@@ -45,7 +45,7 @@ module "aws_macie_s3_bucket_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket_name" {
   description = "(required)"
   type        = string
@@ -79,7 +79,7 @@ variable "classification_type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_macie_s3_bucket_association" "this" {
   bucket_name       = var.bucket_name
   member_account_id = var.member_account_id
@@ -100,7 +100,7 @@ resource "aws_macie_s3_bucket_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_macie_s3_bucket_association.this.id

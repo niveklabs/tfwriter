@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_xray_sampling_rule" {
   source = "./modules/aws/r/aws_xray_sampling_rule"
 
@@ -60,7 +60,7 @@ module "aws_xray_sampling_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "attributes" {
   description = "(optional)"
   type        = map(string)
@@ -134,7 +134,7 @@ variable "version" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_xray_sampling_rule" "this" {
   attributes     = var.attributes
   fixed_rate     = var.fixed_rate
@@ -156,7 +156,7 @@ resource "aws_xray_sampling_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_xray_sampling_rule.this.arn

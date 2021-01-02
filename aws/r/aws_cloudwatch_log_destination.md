@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudwatch_log_destination" {
   source = "./modules/aws/r/aws_cloudwatch_log_destination"
 
@@ -40,7 +40,7 @@ module "aws_cloudwatch_log_destination" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "target_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudwatch_log_destination" "this" {
   name       = var.name
   role_arn   = var.role_arn
@@ -73,7 +73,7 @@ resource "aws_cloudwatch_log_destination" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudwatch_log_destination.this.arn

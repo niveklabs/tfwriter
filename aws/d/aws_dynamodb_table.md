@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dynamodb_table" {
   source = "./modules/aws/d/aws_dynamodb_table"
 
@@ -43,7 +43,7 @@ module "aws_dynamodb_table" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -71,7 +71,7 @@ variable "server_side_encryption" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_dynamodb_table" "this" {
   name = var.name
   tags = var.tags
@@ -89,7 +89,7 @@ data "aws_dynamodb_table" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_dynamodb_table.this.arn

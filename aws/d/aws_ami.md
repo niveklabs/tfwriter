@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ami" {
   source = "./modules/aws/d/aws_ami"
 
@@ -49,7 +49,7 @@ module "aws_ami" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "executable_users" {
   description = "(optional)"
   type        = list(string)
@@ -95,7 +95,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ami" "this" {
   executable_users = var.executable_users
   most_recent      = var.most_recent
@@ -118,7 +118,7 @@ data "aws_ami" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "architecture" {
   description = "returns a string"
   value       = data.aws_ami.this.architecture

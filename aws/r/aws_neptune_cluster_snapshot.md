@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_neptune_cluster_snapshot" {
   source = "./modules/aws/r/aws_neptune_cluster_snapshot"
 
@@ -42,7 +42,7 @@ module "aws_neptune_cluster_snapshot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "db_cluster_identifier" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_neptune_cluster_snapshot" "this" {
   db_cluster_identifier          = var.db_cluster_identifier
   db_cluster_snapshot_identifier = var.db_cluster_snapshot_identifier
@@ -87,7 +87,7 @@ resource "aws_neptune_cluster_snapshot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocated_storage" {
   description = "returns a number"
   value       = aws_neptune_cluster_snapshot.this.allocated_storage

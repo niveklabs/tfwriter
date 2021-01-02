@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_tpu_tensorflow_versions" {
   source = "./modules/google/d/google_tpu_tensorflow_versions"
 
@@ -38,7 +38,7 @@ module "google_tpu_tensorflow_versions" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -56,7 +56,7 @@ variable "zone" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_tpu_tensorflow_versions" "this" {
   project = var.project
   zone    = var.zone
@@ -67,7 +67,7 @@ data "google_tpu_tensorflow_versions" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_tpu_tensorflow_versions.this.id

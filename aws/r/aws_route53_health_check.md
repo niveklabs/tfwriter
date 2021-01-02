@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_health_check" {
   source = "./modules/aws/r/aws_route53_health_check"
 
@@ -74,7 +74,7 @@ module "aws_route53_health_check" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "child_health_threshold" {
   description = "(optional)"
   type        = number
@@ -199,7 +199,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_health_check" "this" {
   child_health_threshold          = var.child_health_threshold
   child_healthchecks              = var.child_healthchecks
@@ -228,7 +228,7 @@ resource "aws_route53_health_check" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "enable_sni" {
   description = "returns a bool"
   value       = aws_route53_health_check.this.enable_sni

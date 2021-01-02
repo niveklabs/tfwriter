@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lex_bot" {
   source = "./modules/aws/r/aws_lex_bot"
 
@@ -86,7 +86,7 @@ module "aws_lex_bot" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "child_directed" {
   description = "(required)"
   type        = bool
@@ -212,7 +212,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lex_bot" "this" {
   child_directed                  = var.child_directed
   create_version                  = var.create_version
@@ -285,7 +285,7 @@ resource "aws_lex_bot" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_lex_bot.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_security_group_rule" {
   source = "./modules/aws/r/aws_security_group_rule"
 
@@ -56,7 +56,7 @@ module "aws_security_group_rule" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cidr_blocks" {
   description = "(optional)"
   type        = list(string)
@@ -123,7 +123,7 @@ variable "type" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_security_group_rule" "this" {
   cidr_blocks              = var.cidr_blocks
   description              = var.description
@@ -143,7 +143,7 @@ resource "aws_security_group_rule" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_security_group_rule.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_integration" {
   source = "./modules/aws/r/aws_api_gateway_integration"
 
@@ -66,7 +66,7 @@ module "aws_api_gateway_integration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cache_key_parameters" {
   description = "(optional)"
   type        = set(string)
@@ -164,7 +164,7 @@ variable "uri" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_api_gateway_integration" "this" {
   cache_key_parameters    = var.cache_key_parameters
   cache_namespace         = var.cache_namespace
@@ -189,7 +189,7 @@ resource "aws_api_gateway_integration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cache_namespace" {
   description = "returns a string"
   value       = aws_api_gateway_integration.this.cache_namespace

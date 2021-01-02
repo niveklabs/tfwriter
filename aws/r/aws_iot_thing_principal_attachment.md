@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iot_thing_principal_attachment" {
   source = "./modules/aws/r/aws_iot_thing_principal_attachment"
 
@@ -38,7 +38,7 @@ module "aws_iot_thing_principal_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "principal" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "thing" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iot_thing_principal_attachment" "this" {
   principal = var.principal
   thing     = var.thing
@@ -65,7 +65,7 @@ resource "aws_iot_thing_principal_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_iot_thing_principal_attachment.this.id

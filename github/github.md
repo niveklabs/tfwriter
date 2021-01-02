@@ -10,7 +10,7 @@
 
 ### Example Usage
 
-```hcl
+```terraform
 provider "github" {
   version = "4.1.0"
 

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_transfer_server" {
   source = "./modules/aws/d/aws_transfer_server"
 
@@ -36,7 +36,7 @@ module "aws_transfer_server" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "server_id" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "server_id" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_transfer_server" "this" {
   server_id = var.server_id
 }
@@ -57,7 +57,7 @@ data "aws_transfer_server" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_transfer_server.this.arn

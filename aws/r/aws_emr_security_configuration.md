@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_emr_security_configuration" {
   source = "./modules/aws/r/aws_emr_security_configuration"
 
@@ -40,7 +40,7 @@ module "aws_emr_security_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "configuration" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "name_prefix" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_emr_security_configuration" "this" {
   configuration = var.configuration
   name          = var.name
@@ -75,7 +75,7 @@ resource "aws_emr_security_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_date" {
   description = "returns a string"
   value       = aws_emr_security_configuration.this.creation_date

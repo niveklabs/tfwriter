@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_endpoints_service" {
   source = "./modules/google/r/google_endpoints_service"
 
@@ -50,7 +50,7 @@ module "google_endpoints_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "grpc_config" {
   description = "(optional) - The full text of the Service Config YAML file (Example located here). If provided, must also provide protoc_output_base64. open_api config must not be provided."
   type        = string
@@ -97,7 +97,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_endpoints_service" "this" {
   grpc_config          = var.grpc_config
   openapi_config       = var.openapi_config
@@ -121,7 +121,7 @@ resource "google_endpoints_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "apis" {
   description = "returns a list of object"
   value       = google_endpoints_service.this.apis

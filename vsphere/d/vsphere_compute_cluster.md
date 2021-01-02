@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     vsphere = ">= 1.24.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "vsphere_compute_cluster" {
   source = "./modules/vsphere/d/vsphere_compute_cluster"
 
@@ -38,7 +38,7 @@ module "vsphere_compute_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "datacenter_id" {
   description = "(optional) - The managed object ID of the datacenter the cluster is located in. Not required if using an absolute path."
   type        = string
@@ -55,7 +55,7 @@ variable "name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "vsphere_compute_cluster" "this" {
   datacenter_id = var.datacenter_id
   name          = var.name
@@ -66,7 +66,7 @@ data "vsphere_compute_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.vsphere_compute_cluster.this.id

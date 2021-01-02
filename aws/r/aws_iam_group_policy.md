@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_iam_group_policy" {
   source = "./modules/aws/r/aws_iam_group_policy"
 
@@ -42,7 +42,7 @@ module "aws_iam_group_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group" {
   description = "(required)"
   type        = string
@@ -70,7 +70,7 @@ variable "policy" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_iam_group_policy" "this" {
   group       = var.group
   name        = var.name
@@ -83,7 +83,7 @@ resource "aws_iam_group_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_iam_group_policy.this.id

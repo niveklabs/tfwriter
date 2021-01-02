@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lex_slot_type" {
   source = "./modules/aws/r/aws_lex_slot_type"
 
@@ -53,7 +53,7 @@ module "aws_lex_slot_type" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "create_version" {
   description = "(optional)"
   type        = bool
@@ -104,7 +104,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lex_slot_type" "this" {
   create_version           = var.create_version
   description              = var.description
@@ -135,7 +135,7 @@ resource "aws_lex_slot_type" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "checksum" {
   description = "returns a string"
   value       = aws_lex_slot_type.this.checksum

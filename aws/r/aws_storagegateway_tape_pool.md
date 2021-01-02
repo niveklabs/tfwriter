@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_tape_pool" {
   source = "./modules/aws/r/aws_storagegateway_tape_pool"
 
@@ -44,7 +44,7 @@ module "aws_storagegateway_tape_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "pool_name" {
   description = "(required)"
   type        = string
@@ -78,7 +78,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_storagegateway_tape_pool" "this" {
   pool_name                   = var.pool_name
   retention_lock_time_in_days = var.retention_lock_time_in_days
@@ -92,7 +92,7 @@ resource "aws_storagegateway_tape_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_storagegateway_tape_pool.this.arn

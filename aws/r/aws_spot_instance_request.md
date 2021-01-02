@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_spot_instance_request" {
   source = "./modules/aws/r/aws_spot_instance_request"
 
@@ -164,7 +164,7 @@ module "aws_spot_instance_request" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "ami" {
   description = "(required)"
   type        = string
@@ -494,7 +494,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_spot_instance_request" "this" {
   ami                                  = var.ami
   associate_public_ip_address          = var.associate_public_ip_address
@@ -618,7 +618,7 @@ resource "aws_spot_instance_request" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_spot_instance_request.this.arn

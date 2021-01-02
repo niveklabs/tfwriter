@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_api_gateway_vpc_link" {
   source = "./modules/aws/d/aws_api_gateway_vpc_link"
 
@@ -38,7 +38,7 @@ module "aws_api_gateway_vpc_link" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -55,7 +55,7 @@ variable "tags" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_api_gateway_vpc_link" "this" {
   name = var.name
   tags = var.tags
@@ -66,7 +66,7 @@ data "aws_api_gateway_vpc_link" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.aws_api_gateway_vpc_link.this.description

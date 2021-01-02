@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dynamodb_table_item" {
   source = "./modules/aws/r/aws_dynamodb_table_item"
 
@@ -42,7 +42,7 @@ module "aws_dynamodb_table_item" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "hash_key" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "table_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dynamodb_table_item" "this" {
   hash_key   = var.hash_key
   item       = var.item
@@ -82,7 +82,7 @@ resource "aws_dynamodb_table_item" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dynamodb_table_item.this.id

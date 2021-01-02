@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cognito_user_pool" {
   source = "./modules/aws/r/aws_cognito_user_pool"
 
@@ -146,7 +146,7 @@ module "aws_cognito_user_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "alias_attributes" {
   description = "(optional)"
   type        = set(string)
@@ -383,7 +383,7 @@ variable "verification_message_template" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cognito_user_pool" "this" {
   alias_attributes           = var.alias_attributes
   auto_verified_attributes   = var.auto_verified_attributes
@@ -550,7 +550,7 @@ resource "aws_cognito_user_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cognito_user_pool.this.arn

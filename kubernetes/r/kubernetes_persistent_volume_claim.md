@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_persistent_volume_claim" {
   source = "./modules/kubernetes/r/kubernetes_persistent_volume_claim"
 
@@ -70,7 +70,7 @@ module "kubernetes_persistent_volume_claim" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "wait_until_bound" {
   description = "(optional) - Whether to wait for the claim to reach `Bound` state (to find volume in which to claim the space)"
   type        = bool
@@ -138,7 +138,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_persistent_volume_claim" "this" {
   wait_until_bound = var.wait_until_bound
 
@@ -202,7 +202,7 @@ resource "kubernetes_persistent_volume_claim" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_persistent_volume_claim.this.id

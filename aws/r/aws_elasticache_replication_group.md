@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elasticache_replication_group" {
   source = "./modules/aws/r/aws_elasticache_replication_group"
 
@@ -97,7 +97,7 @@ module "aws_elasticache_replication_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "apply_immediately" {
   description = "(optional)"
   type        = bool
@@ -280,7 +280,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_elasticache_replication_group" "this" {
   apply_immediately             = var.apply_immediately
   at_rest_encryption_enabled    = var.at_rest_encryption_enabled
@@ -333,7 +333,7 @@ resource "aws_elasticache_replication_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "apply_immediately" {
   description = "returns a bool"
   value       = aws_elasticache_replication_group.this.apply_immediately

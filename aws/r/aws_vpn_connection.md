@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpn_connection" {
   source = "./modules/aws/r/aws_vpn_connection"
 
@@ -130,7 +130,7 @@ module "aws_vpn_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "customer_gateway_id" {
   description = "(required)"
   type        = string
@@ -422,7 +422,7 @@ variable "vpn_gateway_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpn_connection" "this" {
   customer_gateway_id                  = var.customer_gateway_id
   enable_acceleration                  = var.enable_acceleration
@@ -479,7 +479,7 @@ resource "aws_vpn_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_vpn_connection.this.arn

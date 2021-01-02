@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_eip" {
   source = "./modules/aws/r/aws_eip"
 
@@ -56,7 +56,7 @@ module "aws_eip" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "associate_with_private_ip" {
   description = "(optional)"
   type        = string
@@ -122,7 +122,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_eip" "this" {
   associate_with_private_ip = var.associate_with_private_ip
   customer_owned_ipv4_pool  = var.customer_owned_ipv4_pool
@@ -149,7 +149,7 @@ resource "aws_eip" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allocation_id" {
   description = "returns a string"
   value       = aws_eip.this.allocation_id

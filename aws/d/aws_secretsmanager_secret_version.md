@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_secretsmanager_secret_version" {
   source = "./modules/aws/d/aws_secretsmanager_secret_version"
 
@@ -40,7 +40,7 @@ module "aws_secretsmanager_secret_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "secret_id" {
   description = "(required)"
   type        = string
@@ -63,7 +63,7 @@ variable "version_stage" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_secretsmanager_secret_version" "this" {
   secret_id     = var.secret_id
   version_id    = var.version_id
@@ -75,7 +75,7 @@ data "aws_secretsmanager_secret_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = data.aws_secretsmanager_secret_version.this.arn

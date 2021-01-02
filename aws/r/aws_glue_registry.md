@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_glue_registry" {
   source = "./modules/aws/r/aws_glue_registry"
 
@@ -40,7 +40,7 @@ module "aws_glue_registry" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_glue_registry" "this" {
   description   = var.description
   registry_name = var.registry_name
@@ -75,7 +75,7 @@ resource "aws_glue_registry" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_glue_registry.this.arn

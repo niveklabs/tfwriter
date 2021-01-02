@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codebuild_source_credential" {
   source = "./modules/aws/r/aws_codebuild_source_credential"
 
@@ -42,7 +42,7 @@ module "aws_codebuild_source_credential" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auth_type" {
   description = "(required)"
   type        = string
@@ -69,7 +69,7 @@ variable "user_name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codebuild_source_credential" "this" {
   auth_type   = var.auth_type
   server_type = var.server_type
@@ -82,7 +82,7 @@ resource "aws_codebuild_source_credential" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codebuild_source_credential.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     kubernetes = ">= 1.13.3"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "kubernetes_limit_range" {
   source = "./modules/kubernetes/r/kubernetes_limit_range"
 
@@ -57,7 +57,7 @@ module "kubernetes_limit_range" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "metadata" {
   description = "nested mode: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -99,7 +99,7 @@ variable "spec" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "kubernetes_limit_range" "this" {
 
   dynamic "metadata" {
@@ -139,7 +139,7 @@ resource "kubernetes_limit_range" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = kubernetes_limit_range.this.id

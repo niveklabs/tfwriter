@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_location_smb" {
   source = "./modules/aws/r/aws_datasync_location_smb"
 
@@ -52,7 +52,7 @@ module "aws_datasync_location_smb" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "agent_arns" {
   description = "(required)"
   type        = set(string)
@@ -105,7 +105,7 @@ variable "mount_options" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_location_smb" "this" {
   agent_arns      = var.agent_arns
   domain          = var.domain
@@ -129,7 +129,7 @@ resource "aws_datasync_location_smb" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_location_smb.this.arn

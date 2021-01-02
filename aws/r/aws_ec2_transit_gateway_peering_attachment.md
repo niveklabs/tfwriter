@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_transit_gateway_peering_attachment" {
   source = "./modules/aws/r/aws_ec2_transit_gateway_peering_attachment"
 
@@ -44,7 +44,7 @@ module "aws_ec2_transit_gateway_peering_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "peer_account_id" {
   description = "(optional)"
   type        = string
@@ -77,7 +77,7 @@ variable "transit_gateway_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_transit_gateway_peering_attachment" "this" {
   peer_account_id         = var.peer_account_id
   peer_region             = var.peer_region
@@ -91,7 +91,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_transit_gateway_peering_attachment.this.id

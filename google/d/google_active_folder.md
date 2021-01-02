@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_active_folder" {
   source = "./modules/google/d/google_active_folder"
 
@@ -38,7 +38,7 @@ module "google_active_folder" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "display_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "parent" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_active_folder" "this" {
   display_name = var.display_name
   parent       = var.parent
@@ -65,7 +65,7 @@ data "google_active_folder" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_active_folder.this.id

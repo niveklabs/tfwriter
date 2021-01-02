@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_organization_team_sync_groups" {
   source = "./modules/github/d/github_organization_team_sync_groups"
 
@@ -34,14 +34,14 @@ module "github_organization_team_sync_groups" {
 
 ### Variables
 
-```hcl
+```terraform
 ```
 
 [top](#index)
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_organization_team_sync_groups" "this" {
 }
 ```
@@ -50,7 +50,7 @@ data "github_organization_team_sync_groups" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "groups" {
   description = "returns a list of object"
   value       = data.github_organization_team_sync_groups.this.groups

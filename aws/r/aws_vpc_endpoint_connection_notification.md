@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_endpoint_connection_notification" {
   source = "./modules/aws/r/aws_vpc_endpoint_connection_notification"
 
@@ -42,7 +42,7 @@ module "aws_vpc_endpoint_connection_notification" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "connection_events" {
   description = "(required)"
   type        = set(string)
@@ -70,7 +70,7 @@ variable "vpc_endpoint_service_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_endpoint_connection_notification" "this" {
   connection_events           = var.connection_events
   connection_notification_arn = var.connection_notification_arn
@@ -83,7 +83,7 @@ resource "aws_vpc_endpoint_connection_notification" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_vpc_endpoint_connection_notification.this.id

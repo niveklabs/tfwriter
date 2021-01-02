@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_location_nfs" {
   source = "./modules/aws/r/aws_datasync_location_nfs"
 
@@ -44,7 +44,7 @@ module "aws_datasync_location_nfs" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "server_hostname" {
   description = "(required)"
   type        = string
@@ -75,7 +75,7 @@ variable "on_prem_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_location_nfs" "this" {
   server_hostname = var.server_hostname
   subdirectory    = var.subdirectory
@@ -95,7 +95,7 @@ resource "aws_datasync_location_nfs" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_location_nfs.this.arn

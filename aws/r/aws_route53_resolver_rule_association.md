@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route53_resolver_rule_association" {
   source = "./modules/aws/r/aws_route53_resolver_rule_association"
 
@@ -45,7 +45,7 @@ module "aws_route53_resolver_rule_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(optional)"
   type        = string
@@ -78,7 +78,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_route53_resolver_rule_association" "this" {
   name             = var.name
   resolver_rule_id = var.resolver_rule_id
@@ -99,7 +99,7 @@ resource "aws_route53_resolver_rule_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_route53_resolver_rule_association.this.id

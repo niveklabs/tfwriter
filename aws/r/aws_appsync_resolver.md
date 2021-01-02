@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_appsync_resolver" {
   source = "./modules/aws/r/aws_appsync_resolver"
 
@@ -57,7 +57,7 @@ module "aws_appsync_resolver" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_id" {
   description = "(required)"
   type        = string
@@ -121,7 +121,7 @@ variable "pipeline_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_appsync_resolver" "this" {
   api_id            = var.api_id
   data_source       = var.data_source
@@ -153,7 +153,7 @@ resource "aws_appsync_resolver" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_appsync_resolver.this.arn

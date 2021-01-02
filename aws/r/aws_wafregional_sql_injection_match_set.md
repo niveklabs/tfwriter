@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafregional_sql_injection_match_set" {
   source = "./modules/aws/r/aws_wafregional_sql_injection_match_set"
 
@@ -44,7 +44,7 @@ module "aws_wafregional_sql_injection_match_set" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required)"
   type        = string
@@ -71,7 +71,7 @@ variable "sql_injection_match_tuple" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_wafregional_sql_injection_match_set" "this" {
   name = var.name
 
@@ -98,7 +98,7 @@ resource "aws_wafregional_sql_injection_match_set" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_wafregional_sql_injection_match_set.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dax_parameter_group" {
   source = "./modules/aws/r/aws_dax_parameter_group"
 
@@ -43,7 +43,7 @@ module "aws_dax_parameter_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -71,7 +71,7 @@ variable "parameters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dax_parameter_group" "this" {
   description = var.description
   name        = var.name
@@ -91,7 +91,7 @@ resource "aws_dax_parameter_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_dax_parameter_group.this.id

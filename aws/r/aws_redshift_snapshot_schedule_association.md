@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_redshift_snapshot_schedule_association" {
   source = "./modules/aws/r/aws_redshift_snapshot_schedule_association"
 
@@ -38,7 +38,7 @@ module "aws_redshift_snapshot_schedule_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster_identifier" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "schedule_identifier" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_redshift_snapshot_schedule_association" "this" {
   cluster_identifier  = var.cluster_identifier
   schedule_identifier = var.schedule_identifier
@@ -65,7 +65,7 @@ resource "aws_redshift_snapshot_schedule_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_redshift_snapshot_schedule_association.this.id

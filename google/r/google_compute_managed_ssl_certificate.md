@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_managed_ssl_certificate" {
   source = "./modules/google/r/google_compute_managed_ssl_certificate"
 
@@ -53,7 +53,7 @@ module "google_compute_managed_ssl_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_id" {
   description = "(optional) - The unique identifier for the resource."
   type        = number
@@ -110,7 +110,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_managed_ssl_certificate" "this" {
   certificate_id = var.certificate_id
   description    = var.description
@@ -140,7 +140,7 @@ resource "google_compute_managed_ssl_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "certificate_id" {
   description = "returns a number"
   value       = google_compute_managed_ssl_certificate.this.certificate_id

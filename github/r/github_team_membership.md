@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_team_membership" {
   source = "./modules/github/r/github_team_membership"
 
@@ -40,7 +40,7 @@ module "github_team_membership" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "role" {
   description = "(optional)"
   type        = string
@@ -62,7 +62,7 @@ variable "username" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "github_team_membership" "this" {
   role     = var.role
   team_id  = var.team_id
@@ -74,7 +74,7 @@ resource "github_team_membership" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = github_team_membership.this.etag

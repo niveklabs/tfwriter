@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_availability_zone_group" {
   source = "./modules/aws/r/aws_ec2_availability_zone_group"
 
@@ -38,7 +38,7 @@ module "aws_ec2_availability_zone_group" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "group_name" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "opt_in_status" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ec2_availability_zone_group" "this" {
   group_name    = var.group_name
   opt_in_status = var.opt_in_status
@@ -65,7 +65,7 @@ resource "aws_ec2_availability_zone_group" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ec2_availability_zone_group.this.id

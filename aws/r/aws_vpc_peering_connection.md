@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpc_peering_connection" {
   source = "./modules/aws/r/aws_vpc_peering_connection"
 
@@ -64,7 +64,7 @@ module "aws_vpc_peering_connection" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "auto_accept" {
   description = "(optional)"
   type        = bool
@@ -140,7 +140,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_vpc_peering_connection" "this" {
   auto_accept   = var.auto_accept
   peer_owner_id = var.peer_owner_id
@@ -183,7 +183,7 @@ resource "aws_vpc_peering_connection" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "accept_status" {
   description = "returns a string"
   value       = aws_vpc_peering_connection.this.accept_status

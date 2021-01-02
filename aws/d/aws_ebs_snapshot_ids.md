@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ebs_snapshot_ids" {
   source = "./modules/aws/d/aws_ebs_snapshot_ids"
 
@@ -43,7 +43,7 @@ module "aws_ebs_snapshot_ids" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "owners" {
   description = "(optional)"
   type        = list(string)
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ebs_snapshot_ids" "this" {
   owners                 = var.owners
   restorable_by_user_ids = var.restorable_by_user_ids
@@ -92,7 +92,7 @@ data "aws_ebs_snapshot_ids" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ebs_snapshot_ids.this.id

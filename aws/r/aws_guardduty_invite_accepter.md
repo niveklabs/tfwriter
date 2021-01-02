@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_invite_accepter" {
   source = "./modules/aws/r/aws_guardduty_invite_accepter"
 
@@ -42,7 +42,7 @@ module "aws_guardduty_invite_accepter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "detector_id" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_invite_accepter" "this" {
   detector_id       = var.detector_id
   master_account_id = var.master_account_id
@@ -87,7 +87,7 @@ resource "aws_guardduty_invite_accepter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_guardduty_invite_accepter.this.id

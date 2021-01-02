@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_resource_manager_lien" {
   source = "./modules/google/r/google_resource_manager_lien"
 
@@ -47,7 +47,7 @@ module "google_resource_manager_lien" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "origin" {
   description = "(required) - A stable, user-visible/meaningful string identifying the origin\nof the Lien, intended to be inspected programmatically. Maximum length of\n200 characters."
   type        = string
@@ -84,7 +84,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_resource_manager_lien" "this" {
   origin       = var.origin
   parent       = var.parent
@@ -106,7 +106,7 @@ resource "google_resource_manager_lien" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_resource_manager_lien.this.create_time

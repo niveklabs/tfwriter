@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ram_principal_association" {
   source = "./modules/aws/r/aws_ram_principal_association"
 
@@ -38,7 +38,7 @@ module "aws_ram_principal_association" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "principal" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "resource_share_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ram_principal_association" "this" {
   principal          = var.principal
   resource_share_arn = var.resource_share_arn
@@ -65,7 +65,7 @@ resource "aws_ram_principal_association" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ram_principal_association.this.id

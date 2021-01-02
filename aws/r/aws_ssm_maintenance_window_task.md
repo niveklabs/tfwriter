@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_maintenance_window_task" {
   source = "./modules/aws/r/aws_ssm_maintenance_window_task"
 
@@ -94,7 +94,7 @@ module "aws_ssm_maintenance_window_task" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -215,7 +215,7 @@ variable "task_invocation_parameters" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_maintenance_window_task" "this" {
   description      = var.description
   max_concurrency  = var.max_concurrency
@@ -313,7 +313,7 @@ resource "aws_ssm_maintenance_window_task" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_ssm_maintenance_window_task.this.id

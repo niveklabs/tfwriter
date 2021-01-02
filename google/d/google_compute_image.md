@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_image" {
   source = "./modules/google/d/google_compute_image"
 
@@ -42,7 +42,7 @@ module "google_compute_image" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "family" {
   description = "(optional)"
   type        = string
@@ -72,7 +72,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_image" "this" {
   family  = var.family
   filter  = var.filter
@@ -85,7 +85,7 @@ data "google_compute_image" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "archive_size_bytes" {
   description = "returns a number"
   value       = data.google_compute_image.this.archive_size_bytes

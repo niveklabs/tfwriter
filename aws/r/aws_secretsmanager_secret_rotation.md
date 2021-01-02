@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_secretsmanager_secret_rotation" {
   source = "./modules/aws/r/aws_secretsmanager_secret_rotation"
 
@@ -44,7 +44,7 @@ module "aws_secretsmanager_secret_rotation" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "rotation_lambda_arn" {
   description = "(required)"
   type        = string
@@ -75,7 +75,7 @@ variable "rotation_rules" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_secretsmanager_secret_rotation" "this" {
   rotation_lambda_arn = var.rotation_lambda_arn
   secret_id           = var.secret_id
@@ -95,7 +95,7 @@ resource "aws_secretsmanager_secret_rotation" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_secretsmanager_secret_rotation.this.id

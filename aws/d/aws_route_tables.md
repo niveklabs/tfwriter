@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_route_tables" {
   source = "./modules/aws/d/aws_route_tables"
 
@@ -43,7 +43,7 @@ module "aws_route_tables" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -72,7 +72,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_route_tables" "this" {
   tags   = var.tags
   vpc_id = var.vpc_id
@@ -92,7 +92,7 @@ data "aws_route_tables" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_route_tables.this.id

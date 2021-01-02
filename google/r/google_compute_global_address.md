@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_global_address" {
   source = "./modules/google/r/google_compute_global_address"
 
@@ -57,7 +57,7 @@ module "google_compute_global_address" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "address" {
   description = "(optional) - The IP address or beginning of the address range represented by this\nresource. This can be supplied as an input to reserve a specific\naddress or omitted to allow GCP to choose a valid one for you."
   type        = string
@@ -127,7 +127,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_global_address" "this" {
   address       = var.address
   address_type  = var.address_type
@@ -154,7 +154,7 @@ resource "google_compute_global_address" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "address" {
   description = "returns a string"
   value       = google_compute_global_address.this.address

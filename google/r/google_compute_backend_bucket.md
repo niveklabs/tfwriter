@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_backend_bucket" {
   source = "./modules/google/r/google_compute_backend_bucket"
 
@@ -54,7 +54,7 @@ module "google_compute_backend_bucket" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket_name" {
   description = "(required) - Cloud Storage bucket name."
   type        = string
@@ -110,7 +110,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_backend_bucket" "this" {
   bucket_name = var.bucket_name
   description = var.description
@@ -141,7 +141,7 @@ resource "google_compute_backend_bucket" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "creation_timestamp" {
   description = "returns a string"
   value       = google_compute_backend_bucket.this.creation_timestamp

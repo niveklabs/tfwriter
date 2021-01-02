@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codeartifact_domain" {
   source = "./modules/aws/r/aws_codeartifact_domain"
 
@@ -40,7 +40,7 @@ module "aws_codeartifact_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codeartifact_domain" "this" {
   domain         = var.domain
   encryption_key = var.encryption_key
@@ -74,7 +74,7 @@ resource "aws_codeartifact_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_codeartifact_domain.this.arn

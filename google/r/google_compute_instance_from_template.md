@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_instance_from_template" {
   source = "./modules/google/r/google_compute_instance_from_template"
 
@@ -149,7 +149,7 @@ module "google_compute_instance_from_template" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "allow_stopping_for_update" {
   description = "(optional) - If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail."
   type        = bool
@@ -402,7 +402,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_instance_from_template" "this" {
   allow_stopping_for_update = var.allow_stopping_for_update
   attached_disk             = var.attached_disk
@@ -506,7 +506,7 @@ resource "google_compute_instance_from_template" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "allow_stopping_for_update" {
   description = "returns a bool"
   value       = google_compute_instance_from_template.this.allow_stopping_for_update

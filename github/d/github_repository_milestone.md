@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     github = ">= 4.1.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "github_repository_milestone" {
   source = "./modules/github/d/github_repository_milestone"
 
@@ -40,7 +40,7 @@ module "github_repository_milestone" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "number" {
   description = "(required)"
   type        = number
@@ -61,7 +61,7 @@ variable "repository" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "github_repository_milestone" "this" {
   number     = var.number
   owner      = var.owner
@@ -73,7 +73,7 @@ data "github_repository_milestone" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "description" {
   description = "returns a string"
   value       = data.github_repository_milestone.this.description

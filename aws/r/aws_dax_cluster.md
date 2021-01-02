@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_dax_cluster" {
   source = "./modules/aws/r/aws_dax_cluster"
 
@@ -68,7 +68,7 @@ module "aws_dax_cluster" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zones" {
   description = "(optional)"
   type        = set(string)
@@ -164,7 +164,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_dax_cluster" "this" {
   availability_zones     = var.availability_zones
   cluster_name           = var.cluster_name
@@ -202,7 +202,7 @@ resource "aws_dax_cluster" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_dax_cluster.this.arn

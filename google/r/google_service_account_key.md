@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_service_account_key" {
   source = "./modules/google/r/google_service_account_key"
 
@@ -44,7 +44,7 @@ module "google_service_account_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "key_algorithm" {
   description = "(optional) - The algorithm used to generate the key, used only on create. KEY_ALG_RSA_2048 is the default algorithm. Valid values are: \"KEY_ALG_RSA_1024\", \"KEY_ALG_RSA_2048\"."
   type        = string
@@ -79,7 +79,7 @@ variable "service_account_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_service_account_key" "this" {
   key_algorithm      = var.key_algorithm
   private_key_type   = var.private_key_type
@@ -93,7 +93,7 @@ resource "google_service_account_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_service_account_key.this.id

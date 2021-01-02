@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_tpu_node" {
   source = "./modules/google/r/google_tpu_node"
 
@@ -64,7 +64,7 @@ module "google_tpu_node" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "accelerator_type" {
   description = "(required) - The type of hardware accelerators associated with this node."
   type        = string
@@ -148,7 +148,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_tpu_node" "this" {
   accelerator_type       = var.accelerator_type
   cidr_block             = var.cidr_block
@@ -184,7 +184,7 @@ resource "google_tpu_node" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cidr_block" {
   description = "returns a string"
   value       = google_tpu_node.this.cidr_block

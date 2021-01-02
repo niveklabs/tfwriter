@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_router" {
   source = "./modules/google/d/google_compute_router"
 
@@ -42,7 +42,7 @@ module "google_compute_router" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "name" {
   description = "(required) - Name of the resource. The name must be 1-63 characters long, and\ncomply with RFC1035. Specifically, the name must be 1-63 characters\nlong and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'\nwhich means the first character must be a lowercase letter, and all\nfollowing characters must be a dash, lowercase letter, or digit,\nexcept the last character, which cannot be a dash."
   type        = string
@@ -70,7 +70,7 @@ variable "region" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_compute_router" "this" {
   name    = var.name
   network = var.network
@@ -83,7 +83,7 @@ data "google_compute_router" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "bgp" {
   description = "returns a list of object"
   value       = data.google_compute_router.this.bgp

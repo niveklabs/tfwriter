@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ssm_activation" {
   source = "./modules/aws/r/aws_ssm_activation"
 
@@ -46,7 +46,7 @@ module "aws_ssm_activation" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -87,7 +87,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ssm_activation" "this" {
   description        = var.description
   expiration_date    = var.expiration_date
@@ -102,7 +102,7 @@ resource "aws_ssm_activation" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "activation_code" {
   description = "returns a string"
   value       = aws_ssm_activation.this.activation_code

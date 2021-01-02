@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_guardduty_filter" {
   source = "./modules/aws/r/aws_guardduty_filter"
 
@@ -58,7 +58,7 @@ module "aws_guardduty_filter" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "action" {
   description = "(required)"
   type        = string
@@ -115,7 +115,7 @@ variable "finding_criteria" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_guardduty_filter" "this" {
   action      = var.action
   description = var.description
@@ -151,7 +151,7 @@ resource "aws_guardduty_filter" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_guardduty_filter.this.arn

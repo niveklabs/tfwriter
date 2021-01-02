@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_lb_listener_certificate" {
   source = "./modules/aws/r/aws_lb_listener_certificate"
 
@@ -38,7 +38,7 @@ module "aws_lb_listener_certificate" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "certificate_arn" {
   description = "(required)"
   type        = string
@@ -54,7 +54,7 @@ variable "listener_arn" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_lb_listener_certificate" "this" {
   certificate_arn = var.certificate_arn
   listener_arn    = var.listener_arn
@@ -65,7 +65,7 @@ resource "aws_lb_listener_certificate" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_lb_listener_certificate.this.id

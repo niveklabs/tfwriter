@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudhsm_v2_hsm" {
   source = "./modules/aws/r/aws_cloudhsm_v2_hsm"
 
@@ -48,7 +48,7 @@ module "aws_cloudhsm_v2_hsm" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "availability_zone" {
   description = "(optional)"
   type        = string
@@ -89,7 +89,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudhsm_v2_hsm" "this" {
   availability_zone = var.availability_zone
   cluster_id        = var.cluster_id
@@ -112,7 +112,7 @@ resource "aws_cloudhsm_v2_hsm" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "availability_zone" {
   description = "returns a string"
   value       = aws_cloudhsm_v2_hsm.this.availability_zone

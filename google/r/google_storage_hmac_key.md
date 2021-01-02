@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_hmac_key" {
   source = "./modules/google/r/google_storage_hmac_key"
 
@@ -46,7 +46,7 @@ module "google_storage_hmac_key" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "project" {
   description = "(optional)"
   type        = string
@@ -81,7 +81,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_hmac_key" "this" {
   project               = var.project
   service_account_email = var.service_account_email
@@ -103,7 +103,7 @@ resource "google_storage_hmac_key" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "access_id" {
   description = "returns a string"
   value       = google_storage_hmac_key.this.access_id

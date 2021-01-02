@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_servicequotas_service" {
   source = "./modules/aws/d/aws_servicequotas_service"
 
@@ -36,7 +36,7 @@ module "aws_servicequotas_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "service_name" {
   description = "(required)"
   type        = string
@@ -47,7 +47,7 @@ variable "service_name" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_servicequotas_service" "this" {
   service_name = var.service_name
 }
@@ -57,7 +57,7 @@ data "aws_servicequotas_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_servicequotas_service.this.id

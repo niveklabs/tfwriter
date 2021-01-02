@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_codedeploy_app" {
   source = "./modules/aws/r/aws_codedeploy_app"
 
@@ -40,7 +40,7 @@ module "aws_codedeploy_app" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "compute_platform" {
   description = "(optional)"
   type        = string
@@ -63,7 +63,7 @@ variable "unique_id" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_codedeploy_app" "this" {
   compute_platform = var.compute_platform
   name             = var.name
@@ -75,7 +75,7 @@ resource "aws_codedeploy_app" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_codedeploy_app.this.id

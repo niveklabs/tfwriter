@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_config_aggregate_authorization" {
   source = "./modules/aws/r/aws_config_aggregate_authorization"
 
@@ -40,7 +40,7 @@ module "aws_config_aggregate_authorization" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "account_id" {
   description = "(required)"
   type        = string
@@ -62,7 +62,7 @@ variable "tags" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_config_aggregate_authorization" "this" {
   account_id = var.account_id
   region     = var.region
@@ -74,7 +74,7 @@ resource "aws_config_aggregate_authorization" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_config_aggregate_authorization.this.arn

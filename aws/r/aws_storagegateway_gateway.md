@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_storagegateway_gateway" {
   source = "./modules/aws/r/aws_storagegateway_gateway"
 
@@ -76,7 +76,7 @@ module "aws_storagegateway_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "activation_key" {
   description = "(optional)"
   type        = string
@@ -190,7 +190,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_storagegateway_gateway" "this" {
   activation_key                              = var.activation_key
   average_download_rate_limit_in_bits_per_sec = var.average_download_rate_limit_in_bits_per_sec
@@ -233,7 +233,7 @@ resource "aws_storagegateway_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "activation_key" {
   description = "returns a string"
   value       = aws_storagegateway_gateway.this.activation_key

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_spanner_database_iam_binding" {
   source = "./modules/google/r/google_spanner_database_iam_binding"
 
@@ -50,7 +50,7 @@ module "google_spanner_database_iam_binding" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "database" {
   description = "(required)"
   type        = string
@@ -94,7 +94,7 @@ variable "condition" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_spanner_database_iam_binding" "this" {
   database = var.database
   instance = var.instance
@@ -118,7 +118,7 @@ resource "google_spanner_database_iam_binding" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "etag" {
   description = "returns a string"
   value       = google_spanner_database_iam_binding.this.etag

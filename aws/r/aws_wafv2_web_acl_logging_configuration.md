@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_wafv2_web_acl_logging_configuration" {
   source = "./modules/aws/r/aws_wafv2_web_acl_logging_configuration"
 
@@ -62,7 +62,7 @@ module "aws_wafv2_web_acl_logging_configuration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "log_destination_configs" {
   description = "(required) - AWS Kinesis Firehose Delivery Stream ARNs"
   type        = set(string)
@@ -122,7 +122,7 @@ variable "redacted_fields" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_wafv2_web_acl_logging_configuration" "this" {
   log_destination_configs = var.log_destination_configs
   resource_arn            = var.resource_arn
@@ -185,7 +185,7 @@ resource "aws_wafv2_web_acl_logging_configuration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_wafv2_web_acl_logging_configuration.this.id

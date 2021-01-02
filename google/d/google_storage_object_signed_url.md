@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_object_signed_url" {
   source = "./modules/google/d/google_storage_object_signed_url"
 
@@ -50,7 +50,7 @@ module "google_storage_object_signed_url" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required)"
   type        = string
@@ -102,7 +102,7 @@ variable "path" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_storage_object_signed_url" "this" {
   bucket            = var.bucket
   content_md5       = var.content_md5
@@ -119,7 +119,7 @@ data "google_storage_object_signed_url" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.google_storage_object_signed_url.this.id

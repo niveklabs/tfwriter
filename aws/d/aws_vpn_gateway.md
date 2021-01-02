@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_vpn_gateway" {
   source = "./modules/aws/d/aws_vpn_gateway"
 
@@ -49,7 +49,7 @@ module "aws_vpn_gateway" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "amazon_side_asn" {
   description = "(optional)"
   type        = string
@@ -96,7 +96,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_vpn_gateway" "this" {
   amazon_side_asn   = var.amazon_side_asn
   attached_vpc_id   = var.attached_vpc_id
@@ -119,7 +119,7 @@ data "aws_vpn_gateway" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "amazon_side_asn" {
   description = "returns a string"
   value       = data.aws_vpn_gateway.this.amazon_side_asn

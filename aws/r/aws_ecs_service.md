@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ecs_service" {
   source = "./modules/aws/r/aws_ecs_service"
 
@@ -110,7 +110,7 @@ module "aws_ecs_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cluster" {
   description = "(optional)"
   type        = string
@@ -303,7 +303,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_ecs_service" "this" {
   cluster                            = var.cluster
   deployment_maximum_percent         = var.deployment_maximum_percent
@@ -397,7 +397,7 @@ resource "aws_ecs_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "cluster" {
   description = "returns a string"
   value       = aws_ecs_service.this.cluster

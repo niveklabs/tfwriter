@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_run_service" {
   source = "./modules/google/d/google_cloud_run_service"
 
@@ -40,7 +40,7 @@ module "google_cloud_run_service" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(required) - The location of the cloud run instance. eg us-central1"
   type        = string
@@ -62,7 +62,7 @@ variable "project" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "google_cloud_run_service" "this" {
   location = var.location
   name     = var.name
@@ -74,7 +74,7 @@ data "google_cloud_run_service" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "autogenerate_revision_name" {
   description = "returns a bool"
   value       = data.google_cloud_run_service.this.autogenerate_revision_name

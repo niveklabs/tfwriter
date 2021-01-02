@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_cloud_tasks_queue" {
   source = "./modules/google/r/google_cloud_tasks_queue"
 
@@ -71,7 +71,7 @@ module "google_cloud_tasks_queue" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "location" {
   description = "(required) - The location of the queue"
   type        = string
@@ -155,7 +155,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_cloud_tasks_queue" "this" {
   location = var.location
   name     = var.name
@@ -212,7 +212,7 @@ resource "google_cloud_tasks_queue" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_cloud_tasks_queue.this.id

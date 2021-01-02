@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_storage_notification" {
   source = "./modules/google/r/google_storage_notification"
 
@@ -46,7 +46,7 @@ module "google_storage_notification" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "bucket" {
   description = "(required) - The name of the bucket."
   type        = string
@@ -85,7 +85,7 @@ variable "topic" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_storage_notification" "this" {
   bucket             = var.bucket
   custom_attributes  = var.custom_attributes
@@ -100,7 +100,7 @@ resource "google_storage_notification" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_storage_notification.this.id

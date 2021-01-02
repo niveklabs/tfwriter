@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_securityhub_action_target" {
   source = "./modules/aws/r/aws_securityhub_action_target"
 
@@ -40,7 +40,7 @@ module "aws_securityhub_action_target" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(required)"
   type        = string
@@ -61,7 +61,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_securityhub_action_target" "this" {
   description = var.description
   identifier  = var.identifier
@@ -73,7 +73,7 @@ resource "aws_securityhub_action_target" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_securityhub_action_target.this.arn

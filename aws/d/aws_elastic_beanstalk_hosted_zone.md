@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_elastic_beanstalk_hosted_zone" {
   source = "./modules/aws/d/aws_elastic_beanstalk_hosted_zone"
 
@@ -36,7 +36,7 @@ module "aws_elastic_beanstalk_hosted_zone" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "region" {
   description = "(optional)"
   type        = string
@@ -48,7 +48,7 @@ variable "region" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_elastic_beanstalk_hosted_zone" "this" {
   region = var.region
 }
@@ -58,7 +58,7 @@ data "aws_elastic_beanstalk_hosted_zone" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_elastic_beanstalk_hosted_zone.this.id

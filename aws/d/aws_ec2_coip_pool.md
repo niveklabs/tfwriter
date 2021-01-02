@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_ec2_coip_pool" {
   source = "./modules/aws/d/aws_ec2_coip_pool"
 
@@ -45,7 +45,7 @@ module "aws_ec2_coip_pool" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "local_gateway_route_table_id" {
   description = "(optional)"
   type        = string
@@ -80,7 +80,7 @@ variable "filter" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_ec2_coip_pool" "this" {
   local_gateway_route_table_id = var.local_gateway_route_table_id
   pool_id                      = var.pool_id
@@ -101,7 +101,7 @@ data "aws_ec2_coip_pool" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = data.aws_ec2_coip_pool.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_swf_domain" {
   source = "./modules/aws/r/aws_swf_domain"
 
@@ -44,7 +44,7 @@ module "aws_swf_domain" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "description" {
   description = "(optional)"
   type        = string
@@ -79,7 +79,7 @@ variable "workflow_execution_retention_period_in_days" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_swf_domain" "this" {
   description                                 = var.description
   name                                        = var.name
@@ -93,7 +93,7 @@ resource "aws_swf_domain" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_swf_domain.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_cloudfront_distribution" {
   source = "./modules/aws/r/aws_cloudfront_distribution"
 
@@ -172,7 +172,7 @@ module "aws_cloudfront_distribution" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "aliases" {
   description = "(optional)"
   type        = set(string)
@@ -427,7 +427,7 @@ variable "viewer_certificate" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_cloudfront_distribution" "this" {
   aliases             = var.aliases
   comment             = var.comment
@@ -643,7 +643,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_cloudfront_distribution.this.arn

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_compute_disk_resource_policy_attachment" {
   source = "./modules/google/r/google_compute_disk_resource_policy_attachment"
 
@@ -47,7 +47,7 @@ module "google_compute_disk_resource_policy_attachment" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "disk" {
   description = "(required) - The name of the disk in which the resource policies are attached to."
   type        = string
@@ -86,7 +86,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_compute_disk_resource_policy_attachment" "this" {
   disk    = var.disk
   name    = var.name
@@ -108,7 +108,7 @@ resource "google_compute_disk_resource_policy_attachment" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = google_compute_disk_resource_policy_attachment.this.id

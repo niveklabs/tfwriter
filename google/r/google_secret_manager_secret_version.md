@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     google = ">= 3.51.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "google_secret_manager_secret_version" {
   source = "./modules/google/r/google_secret_manager_secret_version"
 
@@ -45,7 +45,7 @@ module "google_secret_manager_secret_version" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "enabled" {
   description = "(optional) - The current state of the SecretVersion."
   type        = bool
@@ -79,7 +79,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "google_secret_manager_secret_version" "this" {
   enabled     = var.enabled
   secret      = var.secret
@@ -100,7 +100,7 @@ resource "google_secret_manager_secret_version" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "create_time" {
   description = "returns a string"
   value       = google_secret_manager_secret_version.this.create_time

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_location_fsx_windows_file_system" {
   source = "./modules/aws/r/aws_datasync_location_fsx_windows_file_system"
 
@@ -48,7 +48,7 @@ module "aws_datasync_location_fsx_windows_file_system" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "domain" {
   description = "(optional)"
   type        = string
@@ -92,7 +92,7 @@ variable "user" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_location_fsx_windows_file_system" "this" {
   domain              = var.domain
   fsx_filesystem_arn  = var.fsx_filesystem_arn
@@ -108,7 +108,7 @@ resource "aws_datasync_location_fsx_windows_file_system" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "arn" {
   description = "returns a string"
   value       = aws_datasync_location_fsx_windows_file_system.this.arn

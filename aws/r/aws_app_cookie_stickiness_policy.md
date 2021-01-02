@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_app_cookie_stickiness_policy" {
   source = "./modules/aws/r/aws_app_cookie_stickiness_policy"
 
@@ -42,7 +42,7 @@ module "aws_app_cookie_stickiness_policy" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "cookie_name" {
   description = "(required)"
   type        = string
@@ -68,7 +68,7 @@ variable "name" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_app_cookie_stickiness_policy" "this" {
   cookie_name   = var.cookie_name
   lb_port       = var.lb_port
@@ -81,7 +81,7 @@ resource "aws_app_cookie_stickiness_policy" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_app_cookie_stickiness_policy.this.id

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_workspaces_directory" {
   source = "./modules/aws/d/aws_workspaces_directory"
 
@@ -46,7 +46,7 @@ module "aws_workspaces_directory" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "directory_id" {
   description = "(required)"
   type        = string
@@ -77,7 +77,7 @@ variable "workspace_creation_properties" {
 
 ### Datasource
 
-```hcl
+```terraform
 data "aws_workspaces_directory" "this" {
   directory_id = var.directory_id
   tags         = var.tags
@@ -100,7 +100,7 @@ data "aws_workspaces_directory" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "alias" {
   description = "returns a string"
   value       = data.aws_workspaces_directory.this.alias

@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_datasync_agent" {
   source = "./modules/aws/r/aws_datasync_agent"
 
@@ -46,7 +46,7 @@ module "aws_datasync_agent" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "activation_key" {
   description = "(optional)"
   type        = string
@@ -86,7 +86,7 @@ variable "timeouts" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_datasync_agent" "this" {
   activation_key = var.activation_key
   ip_address     = var.ip_address
@@ -107,7 +107,7 @@ resource "aws_datasync_agent" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "activation_key" {
   description = "returns a string"
   value       = aws_datasync_agent.this.activation_key

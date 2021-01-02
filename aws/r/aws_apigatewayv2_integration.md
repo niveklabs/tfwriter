@@ -11,7 +11,7 @@
 
 ### Terraform
 
-```hcl
+```terraform
 terraform {
   required_providers {
     aws = ">= 3.22.0"
@@ -23,7 +23,7 @@ terraform {
 
 ### Example Usage
 
-```hcl
+```terraform
 module "aws_apigatewayv2_integration" {
   source = "./modules/aws/r/aws_apigatewayv2_integration"
 
@@ -70,7 +70,7 @@ module "aws_apigatewayv2_integration" {
 
 ### Variables
 
-```hcl
+```terraform
 variable "api_id" {
   description = "(required)"
   type        = string
@@ -180,7 +180,7 @@ variable "tls_config" {
 
 ### Resource
 
-```hcl
+```terraform
 resource "aws_apigatewayv2_integration" "this" {
   api_id                        = var.api_id
   connection_id                 = var.connection_id
@@ -213,7 +213,7 @@ resource "aws_apigatewayv2_integration" "this" {
 
 ### Outputs
 
-```hcl
+```terraform
 output "id" {
   description = "returns a string"
   value       = aws_apigatewayv2_integration.this.id
