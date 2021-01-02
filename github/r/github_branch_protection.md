@@ -86,7 +86,7 @@ variable "require_signed_commits" {
 }
 
 variable "required_pull_request_reviews" {
-  description = "nested mode: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       dismiss_stale_reviews           = bool
@@ -99,7 +99,7 @@ variable "required_pull_request_reviews" {
 }
 
 variable "required_status_checks" {
-  description = "nested mode: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       contexts = set(string)

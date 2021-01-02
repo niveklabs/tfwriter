@@ -49,7 +49,7 @@ variable "team_slug" {
 }
 
 variable "group" {
-  description = "nested mode: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
       group_description = string

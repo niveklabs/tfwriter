@@ -216,7 +216,7 @@ variable "vulnerability_alerts" {
 }
 
 variable "template" {
-  description = "nested mode: NestingList, min items: 0, max items: 1"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       owner      = string
