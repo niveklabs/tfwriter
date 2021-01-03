@@ -48,6 +48,7 @@ Terraform providers
 - [digitalocean](/digitalocean/digitalocean.md) (v2.3.0)
 - [dme](/dme/dme.md) (v0.1.2)
 - [dome9](/dome9/dome9.md) (v1.20.4)
+- [docker](/docker/docker.md) (v2.7.2)
 - [equinix](/equinix/equinix.md) (v1.0.2)
 - [exoscale](/exoscale/exoscale.md) (v0.21.0)
 - [fastly](/fastly/fastly.md) (v0.21.2)
