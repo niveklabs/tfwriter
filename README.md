@@ -77,3 +77,4 @@ Terraform providers
 - [pagerduty](/pagerduty/pagerduty.md) (v1.8.0)
 - [panos](/panos/panos.md) (v1.6.3)
 - [prismacloud](/prismacloud/prismacloud.md) (v1.0.8)
+- [sumologic](/sumologic/sumologic.md) (v2.6.2)
