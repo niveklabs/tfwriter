@@ -1,0 +1,99 @@
+# fortios_webfilter_ftgdlocalrating
+
+[back](../fortios.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    fortios = ">= 1.6.18"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "fortios_webfilter_ftgdlocalrating" {
+  source = "./modules/fortios/r/fortios_webfilter_ftgdlocalrating"
+
+  # rating - (required) is a type of string
+  rating = null
+  # status - (optional) is a type of string
+  status = null
+  # url - (optional) is a type of string
+  url = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "rating" {
+  description = "(required)"
+  type        = string
+}
+
+variable "status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "url" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "fortios_webfilter_ftgdlocalrating" "this" {
+  rating = var.rating
+  status = var.status
+  url    = var.url
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "id" {
+  description = "returns a string"
+  value       = fortios_webfilter_ftgdlocalrating.this.id
+}
+
+output "status" {
+  description = "returns a string"
+  value       = fortios_webfilter_ftgdlocalrating.this.status
+}
+
+output "url" {
+  description = "returns a string"
+  value       = fortios_webfilter_ftgdlocalrating.this.url
+}
+
+output "this" {
+  value = fortios_webfilter_ftgdlocalrating.this
+}
+```
+
+[top](#index)

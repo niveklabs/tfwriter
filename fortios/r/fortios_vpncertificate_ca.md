@@ -1,0 +1,190 @@
+# fortios_vpncertificate_ca
+
+[back](../fortios.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    fortios = ">= 1.6.18"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "fortios_vpncertificate_ca" {
+  source = null
+
+  # auto_update_days - (optional) is a type of number
+  auto_update_days = null
+  # auto_update_days_warning - (optional) is a type of number
+  auto_update_days_warning = null
+  # ca - (required) is a type of string
+  ca = null
+  # last_updated - (optional) is a type of number
+  last_updated = null
+  # name - (required) is a type of string
+  name = null
+  # range - (optional) is a type of string
+  range = null
+  # scep_url - (optional) is a type of string
+  scep_url = null
+  # source - (optional) is a type of string
+  # source_ip - (optional) is a type of string
+  source_ip = null
+  # trusted - (optional) is a type of string
+  trusted = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "auto_update_days" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "auto_update_days_warning" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ca" {
+  description = "(required)"
+  type        = string
+}
+
+variable "last_updated" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "name" {
+  description = "(required)"
+  type        = string
+}
+
+variable "range" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "scep_url" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "source" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "source_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "trusted" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "fortios_vpncertificate_ca" "this" {
+  auto_update_days         = var.auto_update_days
+  auto_update_days_warning = var.auto_update_days_warning
+  ca                       = var.ca
+  last_updated             = var.last_updated
+  name                     = var.name
+  range                    = var.range
+  scep_url                 = var.scep_url
+  source                   = var.source
+  source_ip                = var.source_ip
+  trusted                  = var.trusted
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "auto_update_days" {
+  description = "returns a number"
+  value       = fortios_vpncertificate_ca.this.auto_update_days
+}
+
+output "auto_update_days_warning" {
+  description = "returns a number"
+  value       = fortios_vpncertificate_ca.this.auto_update_days_warning
+}
+
+output "id" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.id
+}
+
+output "last_updated" {
+  description = "returns a number"
+  value       = fortios_vpncertificate_ca.this.last_updated
+}
+
+output "range" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.range
+}
+
+output "scep_url" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.scep_url
+}
+
+output "source" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.source
+}
+
+output "source_ip" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.source_ip
+}
+
+output "trusted" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.trusted
+}
+
+output "this" {
+  value = fortios_vpncertificate_ca.this
+}
+```
+
+[top](#index)

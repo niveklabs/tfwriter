@@ -1,0 +1,344 @@
+# fortios_wirelesscontroller_qosprofile
+
+[back](../fortios.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    fortios = ">= 1.6.18"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "fortios_wirelesscontroller_qosprofile" {
+  source = "./modules/fortios/r/fortios_wirelesscontroller_qosprofile"
+
+  # bandwidth_admission_control - (optional) is a type of string
+  bandwidth_admission_control = null
+  # bandwidth_capacity - (optional) is a type of number
+  bandwidth_capacity = null
+  # burst - (optional) is a type of string
+  burst = null
+  # call_admission_control - (optional) is a type of string
+  call_admission_control = null
+  # call_capacity - (optional) is a type of number
+  call_capacity = null
+  # comment - (optional) is a type of string
+  comment = null
+  # downlink - (optional) is a type of number
+  downlink = null
+  # downlink_sta - (optional) is a type of number
+  downlink_sta = null
+  # dscp_wmm_mapping - (optional) is a type of string
+  dscp_wmm_mapping = null
+  # name - (optional) is a type of string
+  name = null
+  # uplink - (optional) is a type of number
+  uplink = null
+  # uplink_sta - (optional) is a type of number
+  uplink_sta = null
+  # wmm - (optional) is a type of string
+  wmm = null
+  # wmm_uapsd - (optional) is a type of string
+  wmm_uapsd = null
+
+  dscp_wmm_be = [{
+    id = null
+  }]
+
+  dscp_wmm_bk = [{
+    id = null
+  }]
+
+  dscp_wmm_vi = [{
+    id = null
+  }]
+
+  dscp_wmm_vo = [{
+    id = null
+  }]
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "bandwidth_admission_control" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "bandwidth_capacity" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "burst" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "call_admission_control" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "call_capacity" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "downlink" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "downlink_sta" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "dscp_wmm_mapping" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "uplink" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "uplink_sta" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "wmm" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "wmm_uapsd" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dscp_wmm_be" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+
+variable "dscp_wmm_bk" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+
+variable "dscp_wmm_vi" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+
+variable "dscp_wmm_vo" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "fortios_wirelesscontroller_qosprofile" "this" {
+  bandwidth_admission_control = var.bandwidth_admission_control
+  bandwidth_capacity          = var.bandwidth_capacity
+  burst                       = var.burst
+  call_admission_control      = var.call_admission_control
+  call_capacity               = var.call_capacity
+  comment                     = var.comment
+  downlink                    = var.downlink
+  downlink_sta                = var.downlink_sta
+  dscp_wmm_mapping            = var.dscp_wmm_mapping
+  name                        = var.name
+  uplink                      = var.uplink
+  uplink_sta                  = var.uplink_sta
+  wmm                         = var.wmm
+  wmm_uapsd                   = var.wmm_uapsd
+
+  dynamic "dscp_wmm_be" {
+    for_each = var.dscp_wmm_be
+    content {
+      id = dscp_wmm_be.value["id"]
+    }
+  }
+
+  dynamic "dscp_wmm_bk" {
+    for_each = var.dscp_wmm_bk
+    content {
+      id = dscp_wmm_bk.value["id"]
+    }
+  }
+
+  dynamic "dscp_wmm_vi" {
+    for_each = var.dscp_wmm_vi
+    content {
+      id = dscp_wmm_vi.value["id"]
+    }
+  }
+
+  dynamic "dscp_wmm_vo" {
+    for_each = var.dscp_wmm_vo
+    content {
+      id = dscp_wmm_vo.value["id"]
+    }
+  }
+
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "bandwidth_admission_control" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.bandwidth_admission_control
+}
+
+output "bandwidth_capacity" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.bandwidth_capacity
+}
+
+output "burst" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.burst
+}
+
+output "call_admission_control" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.call_admission_control
+}
+
+output "call_capacity" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.call_capacity
+}
+
+output "comment" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.comment
+}
+
+output "downlink" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.downlink
+}
+
+output "downlink_sta" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.downlink_sta
+}
+
+output "dscp_wmm_mapping" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.dscp_wmm_mapping
+}
+
+output "id" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.id
+}
+
+output "name" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.name
+}
+
+output "uplink" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.uplink
+}
+
+output "uplink_sta" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.uplink_sta
+}
+
+output "wmm" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm
+}
+
+output "wmm_uapsd" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_uapsd
+}
+
+output "this" {
+  value = fortios_wirelesscontroller_qosprofile.this
+}
+```
+
+[top](#index)

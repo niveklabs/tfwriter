@@ -1,0 +1,226 @@
+# aviatrix_spoke_gateway
+
+[back](../aviatrix.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Datasource](#datasource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    aviatrix = ">= 2.17.2"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "aviatrix_spoke_gateway" {
+  source = "./modules/aviatrix/d/aviatrix_spoke_gateway"
+
+  # gw_name - (required) is a type of string
+  gw_name = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "gw_name" {
+  description = "(required) - Spoke gateway name. This can be used for getting spoke gateway."
+  type        = string
+}
+```
+
+[top](#index)
+
+### Datasource
+
+```terraform
+data "aviatrix_spoke_gateway" "this" {
+  gw_name = var.gw_name
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "account_name" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.account_name
+}
+
+output "allocate_new_eip" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.allocate_new_eip
+}
+
+output "cloud_instance_id" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.cloud_instance_id
+}
+
+output "cloud_type" {
+  description = "returns a number"
+  value       = data.aviatrix_spoke_gateway.this.cloud_type
+}
+
+output "customized_spoke_vpc_routes" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.customized_spoke_vpc_routes
+}
+
+output "enable_active_mesh" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.enable_active_mesh
+}
+
+output "enable_encrypt_volume" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.enable_encrypt_volume
+}
+
+output "enable_vpc_dns_server" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.enable_vpc_dns_server
+}
+
+output "filtered_spoke_vpc_routes" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.filtered_spoke_vpc_routes
+}
+
+output "gw_size" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.gw_size
+}
+
+output "ha_cloud_instance_id" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_cloud_instance_id
+}
+
+output "ha_gw_name" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_gw_name
+}
+
+output "ha_gw_size" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_gw_size
+}
+
+output "ha_insane_mode_az" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_insane_mode_az
+}
+
+output "ha_private_ip" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_private_ip
+}
+
+output "ha_public_ip" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_public_ip
+}
+
+output "ha_subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_subnet
+}
+
+output "ha_zone" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_zone
+}
+
+output "id" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.id
+}
+
+output "included_advertised_spoke_routes" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.included_advertised_spoke_routes
+}
+
+output "insane_mode" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.insane_mode
+}
+
+output "insane_mode_az" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.insane_mode_az
+}
+
+output "private_ip" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.private_ip
+}
+
+output "public_ip" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.public_ip
+}
+
+output "security_group_id" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.security_group_id
+}
+
+output "single_az_ha" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.single_az_ha
+}
+
+output "single_ip_snat" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.single_ip_snat
+}
+
+output "subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.subnet
+}
+
+output "tag_list" {
+  description = "returns a list of string"
+  value       = data.aviatrix_spoke_gateway.this.tag_list
+}
+
+output "transit_gw" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.transit_gw
+}
+
+output "vpc_id" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.vpc_id
+}
+
+output "vpc_reg" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.vpc_reg
+}
+
+output "this" {
+  value = aviatrix_spoke_gateway.this
+}
+```
+
+[top](#index)
