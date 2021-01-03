@@ -1,6 +1,7 @@
 Terraform providers
 
 - [ad](/ad/ad.md) (v0.4.0)
+- [acme](/acme/acme.md) (v2.0.0)
 - [archive](/archive/archive.md) (v2.0.0)
 - [aws](/aws/aws.md) (v3.22.0)
 - [azuread](/azuread/azuread.md) (v1.1.1)
