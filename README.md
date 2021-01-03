@@ -28,7 +28,6 @@ Terraform providers
 - [oraclepaas](/oraclepaas/oraclepaas.md) (v1.5.3)
 - [random](/random/random.md) (v3.0.0)
 - [template](/template/template.md) (v2.2.0)
-- [terraform](/terraform/terraform.md) (v1.0.2)
 - [tfe](/tfe/tfe.md) (v0.23.0)
 - [time](/time/time.md) (v0.6.0)
 - [tls](/tls/tls.md) (v3.0.0)
