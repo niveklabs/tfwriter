@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -76,6 +76,11 @@ resource "aws_iam_access_key" "this" {
 ### Outputs
 
 ```terraform
+output "create_date" {
+  description = "returns a string"
+  value       = aws_iam_access_key.this.create_date
+}
+
 output "encrypted_secret" {
   description = "returns a string"
   value       = aws_iam_access_key.this.encrypted_secret

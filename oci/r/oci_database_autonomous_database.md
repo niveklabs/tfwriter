@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_database_autonomous_database" {
 
   # admin_password - (optional) is a type of string
   admin_password = null
+  # are_primary_whitelisted_ips_used - (optional) is a type of bool
+  are_primary_whitelisted_ips_used = null
   # autonomous_container_database_id - (optional) is a type of string
   autonomous_container_database_id = null
   # autonomous_database_backup_id - (optional) is a type of string
@@ -90,6 +92,8 @@ module "oci_database_autonomous_database" {
   # source - (optional) is a type of string
   # source_id - (optional) is a type of string
   source_id = null
+  # standby_whitelisted_ips - (optional) is a type of list of string
+  standby_whitelisted_ips = []
   # state - (optional) is a type of string
   state = null
   # subnet_id - (optional) is a type of string
@@ -117,6 +121,12 @@ module "oci_database_autonomous_database" {
 variable "admin_password" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "are_primary_whitelisted_ips_used" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -303,6 +313,12 @@ variable "source_id" {
   default     = null
 }
 
+variable "standby_whitelisted_ips" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "state" {
   description = "(optional)"
   type        = string
@@ -353,6 +369,7 @@ variable "timeouts" {
 ```terraform
 resource "oci_database_autonomous_database" "this" {
   admin_password                                 = var.admin_password
+  are_primary_whitelisted_ips_used               = var.are_primary_whitelisted_ips_used
   autonomous_container_database_id               = var.autonomous_container_database_id
   autonomous_database_backup_id                  = var.autonomous_database_backup_id
   autonomous_database_id                         = var.autonomous_database_id
@@ -384,6 +401,7 @@ resource "oci_database_autonomous_database" "this" {
   rotate_key_trigger                             = var.rotate_key_trigger
   source                                         = var.source
   source_id                                      = var.source_id
+  standby_whitelisted_ips                        = var.standby_whitelisted_ips
   state                                          = var.state
   subnet_id                                      = var.subnet_id
   switchover_to                                  = var.switchover_to
@@ -416,6 +434,11 @@ output "admin_password" {
 output "apex_details" {
   description = "returns a list of object"
   value       = oci_database_autonomous_database.this.apex_details
+}
+
+output "are_primary_whitelisted_ips_used" {
+  description = "returns a bool"
+  value       = oci_database_autonomous_database.this.are_primary_whitelisted_ips_used
 }
 
 output "autonomous_container_database_id" {
@@ -641,6 +664,11 @@ output "source_id" {
 output "standby_db" {
   description = "returns a list of object"
   value       = oci_database_autonomous_database.this.standby_db
+}
+
+output "standby_whitelisted_ips" {
+  description = "returns a list of string"
+  value       = oci_database_autonomous_database.this.standby_whitelisted_ips
 }
 
 output "state" {

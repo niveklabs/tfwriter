@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nomad = ">= 1.4.11"
+    nomad = ">= 1.4.13"
   }
 }
 ```
@@ -37,8 +37,6 @@ module "nomad_volume" {
   deregister_on_destroy = null
   # external_id - (required) is a type of string
   external_id = null
-  # mount_options - (optional) is a type of map of string
-  mount_options = {}
   # name - (required) is a type of string
   name = null
   # namespace - (optional) is a type of string
@@ -53,6 +51,11 @@ module "nomad_volume" {
   type = null
   # volume_id - (required) is a type of string
   volume_id = null
+
+  mount_options = [{
+    fs_type     = null
+    mount_flags = []
+  }]
 }
 ```
 
@@ -86,12 +89,6 @@ variable "deregister_on_destroy" {
 variable "external_id" {
   description = "(required) - The ID of the physical volume from the storage provider."
   type        = string
-}
-
-variable "mount_options" {
-  description = "(optional) - Options for mounting 'block-device' volumes without a pre-formatted file system."
-  type        = map(string)
-  default     = null
 }
 
 variable "name" {
@@ -132,6 +129,17 @@ variable "volume_id" {
   description = "(required) - The unique ID of the volume, how jobs will refer to the volume."
   type        = string
 }
+
+variable "mount_options" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      fs_type     = string
+      mount_flags = list(string)
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -145,7 +153,6 @@ resource "nomad_volume" "this" {
   context               = var.context
   deregister_on_destroy = var.deregister_on_destroy
   external_id           = var.external_id
-  mount_options         = var.mount_options
   name                  = var.name
   namespace             = var.namespace
   parameters            = var.parameters
@@ -153,6 +160,15 @@ resource "nomad_volume" "this" {
   secrets               = var.secrets
   type                  = var.type
   volume_id             = var.volume_id
+
+  dynamic "mount_options" {
+    for_each = var.mount_options
+    content {
+      fs_type     = mount_options.value["fs_type"]
+      mount_flags = mount_options.value["mount_flags"]
+    }
+  }
+
 }
 ```
 

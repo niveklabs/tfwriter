@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_firewall_vip" {
   comment = null
   # dns_mapping_ttl - (optional) is a type of number
   dns_mapping_ttl = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extintf - (optional) is a type of string
   extintf = null
   # extip - (optional) is a type of string
@@ -63,6 +65,8 @@ module "fortios_firewall_vip" {
   http_ip_header_name = null
   # http_multiplex - (optional) is a type of string
   http_multiplex = null
+  # http_redirect - (optional) is a type of string
+  http_redirect = null
   # https_cookie_secure - (optional) is a type of string
   https_cookie_secure = null
   # ldb_method - (optional) is a type of string
@@ -95,6 +99,8 @@ module "fortios_firewall_vip" {
   ssl_certificate = null
   # ssl_client_fallback - (optional) is a type of string
   ssl_client_fallback = null
+  # ssl_client_rekey_count - (optional) is a type of number
+  ssl_client_rekey_count = null
   # ssl_client_renegotiation - (optional) is a type of string
   ssl_client_renegotiation = null
   # ssl_client_session_state_max - (optional) is a type of number
@@ -171,6 +177,7 @@ module "fortios_firewall_vip" {
   }]
 
   realservers = [{
+    address           = null
     client_ip         = null
     healthcheck       = null
     holddown_interval = null
@@ -181,6 +188,7 @@ module "fortios_firewall_vip" {
     monitor           = null
     port              = null
     status            = null
+    type              = null
     weight            = null
   }]
 
@@ -236,6 +244,12 @@ variable "comment" {
 variable "dns_mapping_ttl" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -318,6 +332,12 @@ variable "http_ip_header_name" {
 }
 
 variable "http_multiplex" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "http_redirect" {
   description = "(optional)"
   type        = string
   default     = null
@@ -416,6 +436,12 @@ variable "ssl_certificate" {
 variable "ssl_client_fallback" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "ssl_client_rekey_count" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -639,6 +665,7 @@ variable "realservers" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
+      address           = string
       client_ip         = string
       healthcheck       = string
       holddown_interval = number
@@ -649,6 +676,7 @@ variable "realservers" {
       monitor           = string
       port              = number
       status            = string
+      type              = string
       weight            = number
     }
   ))
@@ -720,6 +748,7 @@ resource "fortios_firewall_vip" "this" {
   color                            = var.color
   comment                          = var.comment
   dns_mapping_ttl                  = var.dns_mapping_ttl
+  dynamic_sort_subtable            = var.dynamic_sort_subtable
   extintf                          = var.extintf
   extip                            = var.extip
   extport                          = var.extport
@@ -734,6 +763,7 @@ resource "fortios_firewall_vip" "this" {
   http_ip_header                   = var.http_ip_header
   http_ip_header_name              = var.http_ip_header_name
   http_multiplex                   = var.http_multiplex
+  http_redirect                    = var.http_redirect
   https_cookie_secure              = var.https_cookie_secure
   ldb_method                       = var.ldb_method
   mapped_addr                      = var.mapped_addr
@@ -750,6 +780,7 @@ resource "fortios_firewall_vip" "this" {
   ssl_algorithm                    = var.ssl_algorithm
   ssl_certificate                  = var.ssl_certificate
   ssl_client_fallback              = var.ssl_client_fallback
+  ssl_client_rekey_count           = var.ssl_client_rekey_count
   ssl_client_renegotiation         = var.ssl_client_renegotiation
   ssl_client_session_state_max     = var.ssl_client_session_state_max
   ssl_client_session_state_timeout = var.ssl_client_session_state_timeout
@@ -806,6 +837,7 @@ resource "fortios_firewall_vip" "this" {
   dynamic "realservers" {
     for_each = var.realservers
     content {
+      address           = realservers.value["address"]
       client_ip         = realservers.value["client_ip"]
       healthcheck       = realservers.value["healthcheck"]
       holddown_interval = realservers.value["holddown_interval"]
@@ -816,6 +848,7 @@ resource "fortios_firewall_vip" "this" {
       monitor           = realservers.value["monitor"]
       port              = realservers.value["port"]
       status            = realservers.value["status"]
+      type              = realservers.value["type"]
       weight            = realservers.value["weight"]
     }
   }
@@ -952,6 +985,11 @@ output "http_multiplex" {
   value       = fortios_firewall_vip.this.http_multiplex
 }
 
+output "http_redirect" {
+  description = "returns a string"
+  value       = fortios_firewall_vip.this.http_redirect
+}
+
 output "https_cookie_secure" {
   description = "returns a string"
   value       = fortios_firewall_vip.this.https_cookie_secure
@@ -1035,6 +1073,11 @@ output "ssl_certificate" {
 output "ssl_client_fallback" {
   description = "returns a string"
   value       = fortios_firewall_vip.this.ssl_client_fallback
+}
+
+output "ssl_client_rekey_count" {
+  description = "returns a number"
+  value       = fortios_firewall_vip.this.ssl_client_rekey_count
 }
 
 output "ssl_client_renegotiation" {

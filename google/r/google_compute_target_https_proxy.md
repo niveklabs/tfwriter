@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "google_compute_target_https_proxy" {
   name = null
   # project - (optional) is a type of string
   project = null
+  # proxy_bind - (optional) is a type of bool
+  proxy_bind = null
   # quic_override - (optional) is a type of string
   quic_override = null
   # ssl_certificates - (required) is a type of list of string
@@ -69,6 +71,12 @@ variable "name" {
 variable "project" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "proxy_bind" {
+  description = "(optional) - This field only applies when the forwarding rule that references\nthis target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED."
+  type        = bool
   default     = null
 }
 
@@ -116,6 +124,7 @@ resource "google_compute_target_https_proxy" "this" {
   description      = var.description
   name             = var.name
   project          = var.project
+  proxy_bind       = var.proxy_bind
   quic_override    = var.quic_override
   ssl_certificates = var.ssl_certificates
   ssl_policy       = var.ssl_policy
@@ -151,6 +160,11 @@ output "id" {
 output "project" {
   description = "returns a string"
   value       = google_compute_target_https_proxy.this.project
+}
+
+output "proxy_bind" {
+  description = "returns a bool"
+  value       = google_compute_target_https_proxy.this.proxy_bind
 }
 
 output "proxy_id" {

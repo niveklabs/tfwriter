@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "fortios_vpnsslweb_portal" {
   dns_server2 = null
   # dns_suffix - (optional) is a type of string
   dns_suffix = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # exclusive_routing - (optional) is a type of string
   exclusive_routing = null
   # forticlient_download - (optional) is a type of string
@@ -75,6 +77,8 @@ module "fortios_vpnsslweb_portal" {
   ipv6_service_restriction = null
   # ipv6_split_tunneling - (optional) is a type of string
   ipv6_split_tunneling = null
+  # ipv6_split_tunneling_routing_negate - (optional) is a type of string
+  ipv6_split_tunneling_routing_negate = null
   # ipv6_tunnel_mode - (optional) is a type of string
   ipv6_tunnel_mode = null
   # ipv6_wins_server1 - (optional) is a type of string
@@ -105,16 +109,26 @@ module "fortios_vpnsslweb_portal" {
   skip_check_for_browser = null
   # skip_check_for_unsupported_os - (optional) is a type of string
   skip_check_for_unsupported_os = null
+  # smb_max_version - (optional) is a type of string
+  smb_max_version = null
+  # smb_min_version - (optional) is a type of string
+  smb_min_version = null
   # smb_ntlmv1_auth - (optional) is a type of string
   smb_ntlmv1_auth = null
   # smbv1 - (optional) is a type of string
   smbv1 = null
   # split_tunneling - (optional) is a type of string
   split_tunneling = null
+  # split_tunneling_routing_negate - (optional) is a type of string
+  split_tunneling_routing_negate = null
   # theme - (optional) is a type of string
   theme = null
+  # transform_backward_slashes - (optional) is a type of string
+  transform_backward_slashes = null
   # tunnel_mode - (optional) is a type of string
   tunnel_mode = null
+  # use_sdwan - (optional) is a type of string
+  use_sdwan = null
   # user_bookmark - (optional) is a type of string
   user_bookmark = null
   # user_group_bookmark - (optional) is a type of string
@@ -133,6 +147,7 @@ module "fortios_vpnsslweb_portal" {
       additional_params = null
       apptype           = null
       description       = null
+      domain            = null
       folder            = null
       form_data = [{
         name  = null
@@ -278,6 +293,12 @@ variable "dns_suffix" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "exclusive_routing" {
   description = "(optional)"
   type        = string
@@ -351,6 +372,12 @@ variable "ipv6_service_restriction" {
 }
 
 variable "ipv6_split_tunneling" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ipv6_split_tunneling_routing_negate" {
   description = "(optional)"
   type        = string
   default     = null
@@ -446,6 +473,18 @@ variable "skip_check_for_unsupported_os" {
   default     = null
 }
 
+variable "smb_max_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "smb_min_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "smb_ntlmv1_auth" {
   description = "(optional)"
   type        = string
@@ -464,13 +503,31 @@ variable "split_tunneling" {
   default     = null
 }
 
+variable "split_tunneling_routing_negate" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "theme" {
   description = "(optional)"
   type        = string
   default     = null
 }
 
+variable "transform_backward_slashes" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tunnel_mode" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "use_sdwan" {
   description = "(optional)"
   type        = string
   default     = null
@@ -521,6 +578,7 @@ variable "bookmark_group" {
           additional_params = string
           apptype           = string
           description       = string
+          domain            = string
           folder            = string
           form_data = list(object(
             {
@@ -656,56 +714,63 @@ variable "split_tunneling_routing_address" {
 
 ```terraform
 resource "fortios_vpnsslweb_portal" "this" {
-  allow_user_access                  = var.allow_user_access
-  auto_connect                       = var.auto_connect
-  custom_lang                        = var.custom_lang
-  customize_forticlient_download_url = var.customize_forticlient_download_url
-  display_bookmark                   = var.display_bookmark
-  display_connection_tools           = var.display_connection_tools
-  display_history                    = var.display_history
-  display_status                     = var.display_status
-  dns_server1                        = var.dns_server1
-  dns_server2                        = var.dns_server2
-  dns_suffix                         = var.dns_suffix
-  exclusive_routing                  = var.exclusive_routing
-  forticlient_download               = var.forticlient_download
-  forticlient_download_method        = var.forticlient_download_method
-  heading                            = var.heading
-  hide_sso_credential                = var.hide_sso_credential
-  host_check                         = var.host_check
-  host_check_interval                = var.host_check_interval
-  ip_mode                            = var.ip_mode
-  ipv6_dns_server1                   = var.ipv6_dns_server1
-  ipv6_dns_server2                   = var.ipv6_dns_server2
-  ipv6_exclusive_routing             = var.ipv6_exclusive_routing
-  ipv6_service_restriction           = var.ipv6_service_restriction
-  ipv6_split_tunneling               = var.ipv6_split_tunneling
-  ipv6_tunnel_mode                   = var.ipv6_tunnel_mode
-  ipv6_wins_server1                  = var.ipv6_wins_server1
-  ipv6_wins_server2                  = var.ipv6_wins_server2
-  keep_alive                         = var.keep_alive
-  limit_user_logins                  = var.limit_user_logins
-  mac_addr_action                    = var.mac_addr_action
-  mac_addr_check                     = var.mac_addr_check
-  macos_forticlient_download_url     = var.macos_forticlient_download_url
-  name                               = var.name
-  os_check                           = var.os_check
-  redir_url                          = var.redir_url
-  save_password                      = var.save_password
-  service_restriction                = var.service_restriction
-  skip_check_for_browser             = var.skip_check_for_browser
-  skip_check_for_unsupported_os      = var.skip_check_for_unsupported_os
-  smb_ntlmv1_auth                    = var.smb_ntlmv1_auth
-  smbv1                              = var.smbv1
-  split_tunneling                    = var.split_tunneling
-  theme                              = var.theme
-  tunnel_mode                        = var.tunnel_mode
-  user_bookmark                      = var.user_bookmark
-  user_group_bookmark                = var.user_group_bookmark
-  web_mode                           = var.web_mode
-  windows_forticlient_download_url   = var.windows_forticlient_download_url
-  wins_server1                       = var.wins_server1
-  wins_server2                       = var.wins_server2
+  allow_user_access                   = var.allow_user_access
+  auto_connect                        = var.auto_connect
+  custom_lang                         = var.custom_lang
+  customize_forticlient_download_url  = var.customize_forticlient_download_url
+  display_bookmark                    = var.display_bookmark
+  display_connection_tools            = var.display_connection_tools
+  display_history                     = var.display_history
+  display_status                      = var.display_status
+  dns_server1                         = var.dns_server1
+  dns_server2                         = var.dns_server2
+  dns_suffix                          = var.dns_suffix
+  dynamic_sort_subtable               = var.dynamic_sort_subtable
+  exclusive_routing                   = var.exclusive_routing
+  forticlient_download                = var.forticlient_download
+  forticlient_download_method         = var.forticlient_download_method
+  heading                             = var.heading
+  hide_sso_credential                 = var.hide_sso_credential
+  host_check                          = var.host_check
+  host_check_interval                 = var.host_check_interval
+  ip_mode                             = var.ip_mode
+  ipv6_dns_server1                    = var.ipv6_dns_server1
+  ipv6_dns_server2                    = var.ipv6_dns_server2
+  ipv6_exclusive_routing              = var.ipv6_exclusive_routing
+  ipv6_service_restriction            = var.ipv6_service_restriction
+  ipv6_split_tunneling                = var.ipv6_split_tunneling
+  ipv6_split_tunneling_routing_negate = var.ipv6_split_tunneling_routing_negate
+  ipv6_tunnel_mode                    = var.ipv6_tunnel_mode
+  ipv6_wins_server1                   = var.ipv6_wins_server1
+  ipv6_wins_server2                   = var.ipv6_wins_server2
+  keep_alive                          = var.keep_alive
+  limit_user_logins                   = var.limit_user_logins
+  mac_addr_action                     = var.mac_addr_action
+  mac_addr_check                      = var.mac_addr_check
+  macos_forticlient_download_url      = var.macos_forticlient_download_url
+  name                                = var.name
+  os_check                            = var.os_check
+  redir_url                           = var.redir_url
+  save_password                       = var.save_password
+  service_restriction                 = var.service_restriction
+  skip_check_for_browser              = var.skip_check_for_browser
+  skip_check_for_unsupported_os       = var.skip_check_for_unsupported_os
+  smb_max_version                     = var.smb_max_version
+  smb_min_version                     = var.smb_min_version
+  smb_ntlmv1_auth                     = var.smb_ntlmv1_auth
+  smbv1                               = var.smbv1
+  split_tunneling                     = var.split_tunneling
+  split_tunneling_routing_negate      = var.split_tunneling_routing_negate
+  theme                               = var.theme
+  transform_backward_slashes          = var.transform_backward_slashes
+  tunnel_mode                         = var.tunnel_mode
+  use_sdwan                           = var.use_sdwan
+  user_bookmark                       = var.user_bookmark
+  user_group_bookmark                 = var.user_group_bookmark
+  web_mode                            = var.web_mode
+  windows_forticlient_download_url    = var.windows_forticlient_download_url
+  wins_server1                        = var.wins_server1
+  wins_server2                        = var.wins_server2
 
   dynamic "bookmark_group" {
     for_each = var.bookmark_group
@@ -718,6 +783,7 @@ resource "fortios_vpnsslweb_portal" "this" {
           additional_params        = bookmarks.value["additional_params"]
           apptype                  = bookmarks.value["apptype"]
           description              = bookmarks.value["description"]
+          domain                   = bookmarks.value["domain"]
           folder                   = bookmarks.value["folder"]
           host                     = bookmarks.value["host"]
           listening_port           = bookmarks.value["listening_port"]
@@ -954,6 +1020,11 @@ output "ipv6_split_tunneling" {
   value       = fortios_vpnsslweb_portal.this.ipv6_split_tunneling
 }
 
+output "ipv6_split_tunneling_routing_negate" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.ipv6_split_tunneling_routing_negate
+}
+
 output "ipv6_tunnel_mode" {
   description = "returns a string"
   value       = fortios_vpnsslweb_portal.this.ipv6_tunnel_mode
@@ -1019,6 +1090,16 @@ output "skip_check_for_unsupported_os" {
   value       = fortios_vpnsslweb_portal.this.skip_check_for_unsupported_os
 }
 
+output "smb_max_version" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.smb_max_version
+}
+
+output "smb_min_version" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.smb_min_version
+}
+
 output "smb_ntlmv1_auth" {
   description = "returns a string"
   value       = fortios_vpnsslweb_portal.this.smb_ntlmv1_auth
@@ -1034,14 +1115,29 @@ output "split_tunneling" {
   value       = fortios_vpnsslweb_portal.this.split_tunneling
 }
 
+output "split_tunneling_routing_negate" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.split_tunneling_routing_negate
+}
+
 output "theme" {
   description = "returns a string"
   value       = fortios_vpnsslweb_portal.this.theme
 }
 
+output "transform_backward_slashes" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.transform_backward_slashes
+}
+
 output "tunnel_mode" {
   description = "returns a string"
   value       = fortios_vpnsslweb_portal.this.tunnel_mode
+}
+
+output "use_sdwan" {
+  description = "returns a string"
+  value       = fortios_vpnsslweb_portal.this.use_sdwan
 }
 
 output "user_bookmark" {

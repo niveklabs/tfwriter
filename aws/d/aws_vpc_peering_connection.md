@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -175,6 +175,11 @@ output "cidr_block" {
   value       = data.aws_vpc_peering_connection.this.cidr_block
 }
 
+output "cidr_block_set" {
+  description = "returns a list of object"
+  value       = data.aws_vpc_peering_connection.this.cidr_block_set
+}
+
 output "id" {
   description = "returns a string"
   value       = data.aws_vpc_peering_connection.this.id
@@ -188,6 +193,11 @@ output "owner_id" {
 output "peer_cidr_block" {
   description = "returns a string"
   value       = data.aws_vpc_peering_connection.this.peer_cidr_block
+}
+
+output "peer_cidr_block_set" {
+  description = "returns a list of object"
+  value       = data.aws_vpc_peering_connection.this.peer_cidr_block_set
 }
 
 output "peer_owner_id" {

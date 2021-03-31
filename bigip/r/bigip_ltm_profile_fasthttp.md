@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.5.0"
+    bigip = ">= 1.7.0"
   }
 }
 ```
@@ -148,9 +148,54 @@ resource "bigip_ltm_profile_fasthttp" "this" {
 ### Outputs
 
 ```terraform
+output "connpool_maxreuse" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.connpool_maxreuse
+}
+
+output "connpool_maxsize" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.connpool_maxsize
+}
+
+output "connpool_minsize" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.connpool_minsize
+}
+
+output "connpool_replenish" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_fasthttp.this.connpool_replenish
+}
+
+output "connpool_step" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.connpool_step
+}
+
+output "connpoolidle_timeoutoverride" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.connpoolidle_timeoutoverride
+}
+
+output "forcehttp_10response" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_fasthttp.this.forcehttp_10response
+}
+
 output "id" {
   description = "returns a string"
   value       = bigip_ltm_profile_fasthttp.this.id
+}
+
+output "idle_timeout" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.idle_timeout
+}
+
+output "maxheader_size" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_fasthttp.this.maxheader_size
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -120,6 +120,11 @@ data "aws_route_table" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = data.aws_route_table.this.arn
+}
+
 output "associations" {
   description = "returns a list of object"
   value       = data.aws_route_table.this.associations

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -47,6 +47,13 @@ module "azuredevops_serviceendpoint_aws" {
   service_endpoint_name = null
   # session_token - (optional) is a type of string
   session_token = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -110,6 +117,19 @@ variable "session_token" {
   type        = string
   default     = null
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -128,6 +148,17 @@ resource "azuredevops_serviceendpoint_aws" "this" {
   secret_access_key     = var.secret_access_key
   service_endpoint_name = var.service_endpoint_name
   session_token         = var.session_token
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 

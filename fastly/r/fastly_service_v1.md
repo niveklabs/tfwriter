@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -43,8 +43,9 @@ module "fastly_service_v1" {
   version_comment = null
 
   acl = [{
-    acl_id = null
-    name   = null
+    acl_id        = null
+    force_destroy = null
+    name          = null
   }]
 
   backend = [{
@@ -122,6 +123,7 @@ module "fastly_service_v1" {
 
   dictionary = [{
     dictionary_id = null
+    force_destroy = null
     name          = null
     write_only    = null
   }]
@@ -348,12 +350,16 @@ module "fastly_service_v1" {
   }]
 
   logging_kafka = [{
+    auth_method        = null
     brokers            = null
     compression_codec  = null
     format             = null
     format_version     = null
     name               = null
+    parse_log_keyvals  = null
+    password           = null
     placement          = null
+    request_max_bytes  = null
     required_acks      = null
     response_condition = null
     tls_ca_cert        = null
@@ -362,6 +368,19 @@ module "fastly_service_v1" {
     tls_hostname       = null
     topic              = null
     use_tls            = null
+    user               = null
+  }]
+
+  logging_kinesis = [{
+    access_key         = null
+    format             = null
+    format_version     = null
+    name               = null
+    placement          = null
+    region             = null
+    response_condition = null
+    secret_key         = null
+    topic              = null
   }]
 
   logging_loggly = [{
@@ -443,6 +462,7 @@ module "fastly_service_v1" {
   papertrail = [{
     address            = null
     format             = null
+    format_version     = null
     name               = null
     placement          = null
     port               = null
@@ -509,6 +529,8 @@ module "fastly_service_v1" {
     placement          = null
     response_condition = null
     tls_ca_cert        = null
+    tls_client_cert    = null
+    tls_client_key     = null
     tls_hostname       = null
     token              = null
     url                = null
@@ -548,6 +570,7 @@ module "fastly_service_v1" {
   }]
 
   waf = [{
+    disabled           = null
     prefetch_condition = null
     response_object    = null
     waf_id             = null
@@ -561,42 +584,42 @@ module "fastly_service_v1" {
 
 ```terraform
 variable "activate" {
-  description = "(optional) - Conditionally prevents the Service from being activated"
+  description = "(optional) - Conditionally prevents the Service from being activated. The apply step will continue to create a new draft version but will not activate it if this is set to `false`. Default `true`"
   type        = bool
   default     = null
 }
 
 variable "comment" {
-  description = "(optional) - A personal freeform descriptive note"
+  description = "(optional) - Description field for the service. Default `Managed by Terraform`"
   type        = string
   default     = null
 }
 
 variable "default_host" {
-  description = "(optional) - The default hostname for the version"
+  description = "(optional) - The default hostname"
   type        = string
   default     = null
 }
 
 variable "default_ttl" {
-  description = "(optional) - The default Time-to-live (TTL) for the version"
+  description = "(optional) - The default Time-to-live (TTL) for requests"
   type        = number
   default     = null
 }
 
 variable "force_destroy" {
-  description = "(optional)"
+  description = "(optional) - Services that are active cannot be destroyed. In order to destroy the Service, set `force_destroy` to `true`. Default `false`"
   type        = bool
   default     = null
 }
 
 variable "name" {
-  description = "(required) - Unique name for this Service"
+  description = "(required) - The unique name for the Service to create"
   type        = string
 }
 
 variable "version_comment" {
-  description = "(optional) - A personal freeform descriptive note"
+  description = "(optional) - Description field for the version"
   type        = string
   default     = null
 }
@@ -605,15 +628,16 @@ variable "acl" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
-      acl_id = string
-      name   = string
+      acl_id        = string
+      force_destroy = bool
+      name          = string
     }
   ))
   default = []
 }
 
 variable "backend" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 1, max items: 0"
   type = set(object(
     {
       address               = string
@@ -643,7 +667,6 @@ variable "backend" {
       weight                = number
     }
   ))
-  default = []
 }
 
 variable "bigquerylogging" {
@@ -720,6 +743,7 @@ variable "dictionary" {
   type = set(object(
     {
       dictionary_id = string
+      force_destroy = bool
       name          = string
       write_only    = bool
     }
@@ -1053,12 +1077,16 @@ variable "logging_kafka" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
+      auth_method        = string
       brokers            = string
       compression_codec  = string
       format             = string
       format_version     = number
       name               = string
+      parse_log_keyvals  = bool
+      password           = string
       placement          = string
+      request_max_bytes  = number
       required_acks      = string
       response_condition = string
       tls_ca_cert        = string
@@ -1067,6 +1095,25 @@ variable "logging_kafka" {
       tls_hostname       = string
       topic              = string
       use_tls            = bool
+      user               = string
+    }
+  ))
+  default = []
+}
+
+variable "logging_kinesis" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      access_key         = string
+      format             = string
+      format_version     = number
+      name               = string
+      placement          = string
+      region             = string
+      response_condition = string
+      secret_key         = string
+      topic              = string
     }
   ))
   default = []
@@ -1190,6 +1237,7 @@ variable "papertrail" {
     {
       address            = string
       format             = string
+      format_version     = number
       name               = string
       placement          = string
       port               = number
@@ -1286,6 +1334,8 @@ variable "splunk" {
       placement          = string
       response_condition = string
       tls_ca_cert        = string
+      tls_client_cert    = string
+      tls_client_key     = string
       tls_hostname       = string
       token              = string
       url                = string
@@ -1349,6 +1399,7 @@ variable "waf" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      disabled           = bool
       prefetch_condition = string
       response_object    = string
       waf_id             = string
@@ -1375,7 +1426,8 @@ resource "fastly_service_v1" "this" {
   dynamic "acl" {
     for_each = var.acl
     content {
-      name = acl.value["name"]
+      force_destroy = acl.value["force_destroy"]
+      name          = acl.value["name"]
     }
   }
 
@@ -1470,8 +1522,9 @@ resource "fastly_service_v1" "this" {
   dynamic "dictionary" {
     for_each = var.dictionary
     content {
-      name       = dictionary.value["name"]
-      write_only = dictionary.value["write_only"]
+      force_destroy = dictionary.value["force_destroy"]
+      name          = dictionary.value["name"]
+      write_only    = dictionary.value["write_only"]
     }
   }
 
@@ -1749,12 +1802,16 @@ resource "fastly_service_v1" "this" {
   dynamic "logging_kafka" {
     for_each = var.logging_kafka
     content {
+      auth_method        = logging_kafka.value["auth_method"]
       brokers            = logging_kafka.value["brokers"]
       compression_codec  = logging_kafka.value["compression_codec"]
       format             = logging_kafka.value["format"]
       format_version     = logging_kafka.value["format_version"]
       name               = logging_kafka.value["name"]
+      parse_log_keyvals  = logging_kafka.value["parse_log_keyvals"]
+      password           = logging_kafka.value["password"]
       placement          = logging_kafka.value["placement"]
+      request_max_bytes  = logging_kafka.value["request_max_bytes"]
       required_acks      = logging_kafka.value["required_acks"]
       response_condition = logging_kafka.value["response_condition"]
       tls_ca_cert        = logging_kafka.value["tls_ca_cert"]
@@ -1763,6 +1820,22 @@ resource "fastly_service_v1" "this" {
       tls_hostname       = logging_kafka.value["tls_hostname"]
       topic              = logging_kafka.value["topic"]
       use_tls            = logging_kafka.value["use_tls"]
+      user               = logging_kafka.value["user"]
+    }
+  }
+
+  dynamic "logging_kinesis" {
+    for_each = var.logging_kinesis
+    content {
+      access_key         = logging_kinesis.value["access_key"]
+      format             = logging_kinesis.value["format"]
+      format_version     = logging_kinesis.value["format_version"]
+      name               = logging_kinesis.value["name"]
+      placement          = logging_kinesis.value["placement"]
+      region             = logging_kinesis.value["region"]
+      response_condition = logging_kinesis.value["response_condition"]
+      secret_key         = logging_kinesis.value["secret_key"]
+      topic              = logging_kinesis.value["topic"]
     }
   }
 
@@ -1865,6 +1938,7 @@ resource "fastly_service_v1" "this" {
     content {
       address            = papertrail.value["address"]
       format             = papertrail.value["format"]
+      format_version     = papertrail.value["format_version"]
       name               = papertrail.value["name"]
       placement          = papertrail.value["placement"]
       port               = papertrail.value["port"]
@@ -1946,6 +2020,8 @@ resource "fastly_service_v1" "this" {
       placement          = splunk.value["placement"]
       response_condition = splunk.value["response_condition"]
       tls_ca_cert        = splunk.value["tls_ca_cert"]
+      tls_client_cert    = splunk.value["tls_client_cert"]
+      tls_client_key     = splunk.value["tls_client_key"]
       tls_hostname       = splunk.value["tls_hostname"]
       token              = splunk.value["token"]
       url                = splunk.value["url"]
@@ -1997,6 +2073,7 @@ resource "fastly_service_v1" "this" {
   dynamic "waf" {
     for_each = var.waf
     content {
+      disabled           = waf.value["disabled"]
       prefetch_condition = waf.value["prefetch_condition"]
       response_object    = waf.value["response_object"]
     }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    local = ">= 2.0.0"
+    local = ">= 2.1.0"
   }
 }
 ```

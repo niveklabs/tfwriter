@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -36,7 +36,43 @@ module "google_access_context_manager_service_perimeters" {
     name           = null
     perimeter_type = null
     spec = [{
-      access_levels       = []
+      access_levels = []
+      egress_policies = [{
+        egress_from = [{
+          identities    = []
+          identity_type = null
+        }]
+        egress_to = [{
+          operations = [{
+            method_selectors = [{
+              method     = null
+              permission = null
+            }]
+            service_name = null
+          }]
+          resources = []
+        }]
+      }]
+      ingress_policies = [{
+        ingress_from = [{
+          identities    = []
+          identity_type = null
+          sources = [{
+            access_level = null
+            resource     = null
+          }]
+        }]
+        ingress_to = [{
+          operations = [{
+            method_selectors = [{
+              method     = null
+              permission = null
+            }]
+            service_name = null
+          }]
+          resources = []
+        }]
+      }]
       resources           = []
       restricted_services = []
       vpc_accessible_services = [{
@@ -45,7 +81,43 @@ module "google_access_context_manager_service_perimeters" {
       }]
     }]
     status = [{
-      access_levels       = []
+      access_levels = []
+      egress_policies = [{
+        egress_from = [{
+          identities    = []
+          identity_type = null
+        }]
+        egress_to = [{
+          operations = [{
+            method_selectors = [{
+              method     = null
+              permission = null
+            }]
+            service_name = null
+          }]
+          resources = []
+        }]
+      }]
+      ingress_policies = [{
+        ingress_from = [{
+          identities    = []
+          identity_type = null
+          sources = [{
+            access_level = null
+            resource     = null
+          }]
+        }]
+        ingress_to = [{
+          operations = [{
+            method_selectors = [{
+              method     = null
+              permission = null
+            }]
+            service_name = null
+          }]
+          resources = []
+        }]
+      }]
       resources           = []
       restricted_services = []
       vpc_accessible_services = [{
@@ -86,7 +158,65 @@ variable "service_perimeters" {
       perimeter_type = string
       spec = list(object(
         {
-          access_levels       = list(string)
+          access_levels = list(string)
+          egress_policies = list(object(
+            {
+              egress_from = list(object(
+                {
+                  identities    = list(string)
+                  identity_type = string
+                }
+              ))
+              egress_to = list(object(
+                {
+                  operations = list(object(
+                    {
+                      method_selectors = list(object(
+                        {
+                          method     = string
+                          permission = string
+                        }
+                      ))
+                      service_name = string
+                    }
+                  ))
+                  resources = list(string)
+                }
+              ))
+            }
+          ))
+          ingress_policies = list(object(
+            {
+              ingress_from = list(object(
+                {
+                  identities    = list(string)
+                  identity_type = string
+                  sources = list(object(
+                    {
+                      access_level = string
+                      resource     = string
+                    }
+                  ))
+                }
+              ))
+              ingress_to = list(object(
+                {
+                  operations = list(object(
+                    {
+                      method_selectors = list(object(
+                        {
+                          method     = string
+                          permission = string
+                        }
+                      ))
+                      service_name = string
+                    }
+                  ))
+                  resources = list(string)
+                }
+              ))
+            }
+          ))
           resources           = list(string)
           restricted_services = list(string)
           vpc_accessible_services = list(object(
@@ -99,7 +229,65 @@ variable "service_perimeters" {
       ))
       status = list(object(
         {
-          access_levels       = list(string)
+          access_levels = list(string)
+          egress_policies = list(object(
+            {
+              egress_from = list(object(
+                {
+                  identities    = list(string)
+                  identity_type = string
+                }
+              ))
+              egress_to = list(object(
+                {
+                  operations = list(object(
+                    {
+                      method_selectors = list(object(
+                        {
+                          method     = string
+                          permission = string
+                        }
+                      ))
+                      service_name = string
+                    }
+                  ))
+                  resources = list(string)
+                }
+              ))
+            }
+          ))
+          ingress_policies = list(object(
+            {
+              ingress_from = list(object(
+                {
+                  identities    = list(string)
+                  identity_type = string
+                  sources = list(object(
+                    {
+                      access_level = string
+                      resource     = string
+                    }
+                  ))
+                }
+              ))
+              ingress_to = list(object(
+                {
+                  operations = list(object(
+                    {
+                      method_selectors = list(object(
+                        {
+                          method     = string
+                          permission = string
+                        }
+                      ))
+                      service_name = string
+                    }
+                  ))
+                  resources = list(string)
+                }
+              ))
+            }
+          ))
           resources           = list(string)
           restricted_services = set(string)
           vpc_accessible_services = list(object(
@@ -155,6 +343,93 @@ resource "google_access_context_manager_service_perimeters" "this" {
           resources           = spec.value["resources"]
           restricted_services = spec.value["restricted_services"]
 
+          dynamic "egress_policies" {
+            for_each = spec.value.egress_policies
+            content {
+
+              dynamic "egress_from" {
+                for_each = egress_policies.value.egress_from
+                content {
+                  identities    = egress_from.value["identities"]
+                  identity_type = egress_from.value["identity_type"]
+                }
+              }
+
+              dynamic "egress_to" {
+                for_each = egress_policies.value.egress_to
+                content {
+                  resources = egress_to.value["resources"]
+
+                  dynamic "operations" {
+                    for_each = egress_to.value.operations
+                    content {
+                      service_name = operations.value["service_name"]
+
+                      dynamic "method_selectors" {
+                        for_each = operations.value.method_selectors
+                        content {
+                          method     = method_selectors.value["method"]
+                          permission = method_selectors.value["permission"]
+                        }
+                      }
+
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
+
+          dynamic "ingress_policies" {
+            for_each = spec.value.ingress_policies
+            content {
+
+              dynamic "ingress_from" {
+                for_each = ingress_policies.value.ingress_from
+                content {
+                  identities    = ingress_from.value["identities"]
+                  identity_type = ingress_from.value["identity_type"]
+
+                  dynamic "sources" {
+                    for_each = ingress_from.value.sources
+                    content {
+                      access_level = sources.value["access_level"]
+                      resource     = sources.value["resource"]
+                    }
+                  }
+
+                }
+              }
+
+              dynamic "ingress_to" {
+                for_each = ingress_policies.value.ingress_to
+                content {
+                  resources = ingress_to.value["resources"]
+
+                  dynamic "operations" {
+                    for_each = ingress_to.value.operations
+                    content {
+                      service_name = operations.value["service_name"]
+
+                      dynamic "method_selectors" {
+                        for_each = operations.value.method_selectors
+                        content {
+                          method     = method_selectors.value["method"]
+                          permission = method_selectors.value["permission"]
+                        }
+                      }
+
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
+
           dynamic "vpc_accessible_services" {
             for_each = spec.value.vpc_accessible_services
             content {
@@ -172,6 +447,93 @@ resource "google_access_context_manager_service_perimeters" "this" {
           access_levels       = status.value["access_levels"]
           resources           = status.value["resources"]
           restricted_services = status.value["restricted_services"]
+
+          dynamic "egress_policies" {
+            for_each = status.value.egress_policies
+            content {
+
+              dynamic "egress_from" {
+                for_each = egress_policies.value.egress_from
+                content {
+                  identities    = egress_from.value["identities"]
+                  identity_type = egress_from.value["identity_type"]
+                }
+              }
+
+              dynamic "egress_to" {
+                for_each = egress_policies.value.egress_to
+                content {
+                  resources = egress_to.value["resources"]
+
+                  dynamic "operations" {
+                    for_each = egress_to.value.operations
+                    content {
+                      service_name = operations.value["service_name"]
+
+                      dynamic "method_selectors" {
+                        for_each = operations.value.method_selectors
+                        content {
+                          method     = method_selectors.value["method"]
+                          permission = method_selectors.value["permission"]
+                        }
+                      }
+
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
+
+          dynamic "ingress_policies" {
+            for_each = status.value.ingress_policies
+            content {
+
+              dynamic "ingress_from" {
+                for_each = ingress_policies.value.ingress_from
+                content {
+                  identities    = ingress_from.value["identities"]
+                  identity_type = ingress_from.value["identity_type"]
+
+                  dynamic "sources" {
+                    for_each = ingress_from.value.sources
+                    content {
+                      access_level = sources.value["access_level"]
+                      resource     = sources.value["resource"]
+                    }
+                  }
+
+                }
+              }
+
+              dynamic "ingress_to" {
+                for_each = ingress_policies.value.ingress_to
+                content {
+                  resources = ingress_to.value["resources"]
+
+                  dynamic "operations" {
+                    for_each = ingress_to.value.operations
+                    content {
+                      service_name = operations.value["service_name"]
+
+                      dynamic "method_selectors" {
+                        for_each = operations.value.method_selectors
+                        content {
+                          method     = method_selectors.value["method"]
+                          permission = method_selectors.value["permission"]
+                        }
+                      }
+
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
 
           dynamic "vpc_accessible_services" {
             for_each = status.value.vpc_accessible_services

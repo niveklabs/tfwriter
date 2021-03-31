@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -118,6 +118,21 @@ module "google_cloudbuild_trigger" {
     substitutions = {}
     tags          = []
     timeout       = null
+  }]
+
+  github = [{
+    name  = null
+    owner = null
+    pull_request = [{
+      branch          = null
+      comment_control = null
+      invert_regex    = null
+    }]
+    push = [{
+      branch       = null
+      invert_regex = null
+      tag          = null
+    }]
   }]
 
   timeouts = [{
@@ -299,6 +314,31 @@ variable "build" {
   default = []
 }
 
+variable "github" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      name  = string
+      owner = string
+      pull_request = list(object(
+        {
+          branch          = string
+          comment_control = string
+          invert_regex    = bool
+        }
+      ))
+      push = list(object(
+        {
+          branch       = string
+          invert_regex = bool
+          tag          = string
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -456,6 +496,33 @@ resource "google_cloudbuild_trigger" "this" {
             }
           }
 
+        }
+      }
+
+    }
+  }
+
+  dynamic "github" {
+    for_each = var.github
+    content {
+      name  = github.value["name"]
+      owner = github.value["owner"]
+
+      dynamic "pull_request" {
+        for_each = github.value.pull_request
+        content {
+          branch          = pull_request.value["branch"]
+          comment_control = pull_request.value["comment_control"]
+          invert_regex    = pull_request.value["invert_regex"]
+        }
+      }
+
+      dynamic "push" {
+        for_each = github.value.push
+        content {
+          branch       = push.value["branch"]
+          invert_regex = push.value["invert_regex"]
+          tag          = push.value["tag"]
         }
       }
 

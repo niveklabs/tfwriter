@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_user_passwordpolicy" {
 
   # expire_days - (optional) is a type of number
   expire_days = null
+  # expired_password_renewal - (optional) is a type of string
+  expired_password_renewal = null
   # name - (optional) is a type of string
   name = null
   # warn_days - (optional) is a type of number
@@ -44,6 +46,12 @@ module "fortios_user_passwordpolicy" {
 variable "expire_days" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "expired_password_renewal" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -66,9 +74,10 @@ variable "warn_days" {
 
 ```terraform
 resource "fortios_user_passwordpolicy" "this" {
-  expire_days = var.expire_days
-  name        = var.name
-  warn_days   = var.warn_days
+  expire_days              = var.expire_days
+  expired_password_renewal = var.expired_password_renewal
+  name                     = var.name
+  warn_days                = var.warn_days
 }
 ```
 
@@ -80,6 +89,11 @@ resource "fortios_user_passwordpolicy" "this" {
 output "expire_days" {
   description = "returns a number"
   value       = fortios_user_passwordpolicy.this.expire_days
+}
+
+output "expired_password_renewal" {
+  description = "returns a string"
+  value       = fortios_user_passwordpolicy.this.expired_password_renewal
 }
 
 output "id" {

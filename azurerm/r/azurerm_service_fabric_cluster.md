@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -118,11 +118,38 @@ module "azurerm_service_fabric_cluster" {
     x509_store_name      = null
   }]
 
+  reverse_proxy_certificate_common_names = [{
+    common_names = [{
+      certificate_common_name       = null
+      certificate_issuer_thumbprint = null
+    }]
+    x509_store_name = null
+  }]
+
   timeouts = [{
     create = null
     delete = null
     read   = null
     update = null
+  }]
+
+  upgrade_policy = [{
+    delta_health_policy = [{
+      max_delta_unhealthy_applications_percent         = null
+      max_delta_unhealthy_nodes_percent                = null
+      max_upgrade_domain_delta_unhealthy_nodes_percent = null
+    }]
+    force_restart_enabled        = null
+    health_check_retry_timeout   = null
+    health_check_stable_duration = null
+    health_check_wait_duration   = null
+    health_policy = [{
+      max_unhealthy_applications_percent = null
+      max_unhealthy_nodes_percent        = null
+    }]
+    upgrade_domain_timeout            = null
+    upgrade_replica_set_check_timeout = null
+    upgrade_timeout                   = null
   }]
 }
 ```
@@ -314,6 +341,22 @@ variable "reverse_proxy_certificate" {
   default = []
 }
 
+variable "reverse_proxy_certificate_common_names" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      common_names = set(object(
+        {
+          certificate_common_name       = string
+          certificate_issuer_thumbprint = string
+        }
+      ))
+      x509_store_name = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -322,6 +365,35 @@ variable "timeouts" {
       delete = string
       read   = string
       update = string
+    }
+  ))
+  default = []
+}
+
+variable "upgrade_policy" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      delta_health_policy = list(object(
+        {
+          max_delta_unhealthy_applications_percent         = number
+          max_delta_unhealthy_nodes_percent                = number
+          max_upgrade_domain_delta_unhealthy_nodes_percent = number
+        }
+      ))
+      force_restart_enabled        = bool
+      health_check_retry_timeout   = string
+      health_check_stable_duration = string
+      health_check_wait_duration   = string
+      health_policy = list(object(
+        {
+          max_unhealthy_applications_percent = number
+          max_unhealthy_nodes_percent        = number
+        }
+      ))
+      upgrade_domain_timeout            = string
+      upgrade_replica_set_check_timeout = string
+      upgrade_timeout                   = string
     }
   ))
   default = []
@@ -456,6 +528,22 @@ resource "azurerm_service_fabric_cluster" "this" {
     }
   }
 
+  dynamic "reverse_proxy_certificate_common_names" {
+    for_each = var.reverse_proxy_certificate_common_names
+    content {
+      x509_store_name = reverse_proxy_certificate_common_names.value["x509_store_name"]
+
+      dynamic "common_names" {
+        for_each = reverse_proxy_certificate_common_names.value.common_names
+        content {
+          certificate_common_name       = common_names.value["certificate_common_name"]
+          certificate_issuer_thumbprint = common_names.value["certificate_issuer_thumbprint"]
+        }
+      }
+
+    }
+  }
+
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
@@ -463,6 +551,37 @@ resource "azurerm_service_fabric_cluster" "this" {
       delete = timeouts.value["delete"]
       read   = timeouts.value["read"]
       update = timeouts.value["update"]
+    }
+  }
+
+  dynamic "upgrade_policy" {
+    for_each = var.upgrade_policy
+    content {
+      force_restart_enabled             = upgrade_policy.value["force_restart_enabled"]
+      health_check_retry_timeout        = upgrade_policy.value["health_check_retry_timeout"]
+      health_check_stable_duration      = upgrade_policy.value["health_check_stable_duration"]
+      health_check_wait_duration        = upgrade_policy.value["health_check_wait_duration"]
+      upgrade_domain_timeout            = upgrade_policy.value["upgrade_domain_timeout"]
+      upgrade_replica_set_check_timeout = upgrade_policy.value["upgrade_replica_set_check_timeout"]
+      upgrade_timeout                   = upgrade_policy.value["upgrade_timeout"]
+
+      dynamic "delta_health_policy" {
+        for_each = upgrade_policy.value.delta_health_policy
+        content {
+          max_delta_unhealthy_applications_percent         = delta_health_policy.value["max_delta_unhealthy_applications_percent"]
+          max_delta_unhealthy_nodes_percent                = delta_health_policy.value["max_delta_unhealthy_nodes_percent"]
+          max_upgrade_domain_delta_unhealthy_nodes_percent = delta_health_policy.value["max_upgrade_domain_delta_unhealthy_nodes_percent"]
+        }
+      }
+
+      dynamic "health_policy" {
+        for_each = upgrade_policy.value.health_policy
+        content {
+          max_unhealthy_applications_percent = health_policy.value["max_unhealthy_applications_percent"]
+          max_unhealthy_nodes_percent        = health_policy.value["max_unhealthy_nodes_percent"]
+        }
+      }
+
     }
   }
 

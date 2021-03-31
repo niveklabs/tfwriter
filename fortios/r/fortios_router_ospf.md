@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -61,6 +61,8 @@ module "fortios_router_ospf" {
   distribute_list_in = null
   # distribute_route_map_in - (optional) is a type of string
   distribute_route_map_in = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # log_neighbour_changes - (optional) is a type of string
   log_neighbour_changes = null
   # restart_mode - (optional) is a type of string
@@ -99,12 +101,16 @@ module "fortios_router_ospf" {
     stub_type = null
     type      = null
     virtual_link = [{
-      authentication      = null
-      authentication_key  = null
-      dead_interval       = null
-      hello_interval      = null
-      md5_key             = null
-      md5_keychain        = null
+      authentication     = null
+      authentication_key = null
+      dead_interval      = null
+      hello_interval     = null
+      md5_key            = null
+      md5_keychain       = null
+      md5_keys = [{
+        id         = null
+        key_string = null
+      }]
       name                = null
       peer                = null
       retransmit_interval = null
@@ -145,6 +151,10 @@ module "fortios_router_ospf" {
     ip                  = null
     md5_key             = null
     md5_keychain        = null
+    md5_keys = [{
+      id         = null
+      key_string = null
+    }]
     mtu                 = null
     mtu_ignore          = null
     name                = null
@@ -286,6 +296,12 @@ variable "distribute_route_map_in" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "log_neighbour_changes" {
   description = "(optional)"
   type        = string
@@ -354,12 +370,18 @@ variable "area" {
       type      = string
       virtual_link = list(object(
         {
-          authentication      = string
-          authentication_key  = string
-          dead_interval       = number
-          hello_interval      = number
-          md5_key             = string
-          md5_keychain        = string
+          authentication     = string
+          authentication_key = string
+          dead_interval      = number
+          hello_interval     = number
+          md5_key            = string
+          md5_keychain       = string
+          md5_keys = list(object(
+            {
+              id         = number
+              key_string = string
+            }
+          ))
           name                = string
           peer                = string
           retransmit_interval = number
@@ -425,6 +447,12 @@ variable "ospf_interface" {
       ip                  = string
       md5_key             = string
       md5_keychain        = string
+      md5_keys = list(object(
+        {
+          id         = number
+          key_string = string
+        }
+      ))
       mtu                 = number
       mtu_ignore          = string
       name                = string
@@ -502,6 +530,7 @@ resource "fortios_router_ospf" "this" {
   distance_intra_area               = var.distance_intra_area
   distribute_list_in                = var.distribute_list_in
   distribute_route_map_in           = var.distribute_route_map_in
+  dynamic_sort_subtable             = var.dynamic_sort_subtable
   log_neighbour_changes             = var.log_neighbour_changes
   restart_mode                      = var.restart_mode
   restart_period                    = var.restart_period
@@ -557,6 +586,15 @@ resource "fortios_router_ospf" "this" {
           peer                = virtual_link.value["peer"]
           retransmit_interval = virtual_link.value["retransmit_interval"]
           transmit_delay      = virtual_link.value["transmit_delay"]
+
+          dynamic "md5_keys" {
+            for_each = virtual_link.value.md5_keys
+            content {
+              id         = md5_keys.value["id"]
+              key_string = md5_keys.value["key_string"]
+            }
+          }
+
         }
       }
 
@@ -617,6 +655,15 @@ resource "fortios_router_ospf" "this" {
       retransmit_interval = ospf_interface.value["retransmit_interval"]
       status              = ospf_interface.value["status"]
       transmit_delay      = ospf_interface.value["transmit_delay"]
+
+      dynamic "md5_keys" {
+        for_each = ospf_interface.value.md5_keys
+        content {
+          id         = md5_keys.value["id"]
+          key_string = md5_keys.value["key_string"]
+        }
+      }
+
     }
   }
 

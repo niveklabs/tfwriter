@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    random = ">= 3.0.0"
+    random = ">= 3.1.0"
   }
 }
 ```

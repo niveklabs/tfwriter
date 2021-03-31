@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -62,6 +62,16 @@ module "oci_integration_integration_instance" {
     certificate_secret_id      = null
     certificate_secret_version = null
     hostname                   = null
+  }]
+
+  network_endpoint_details = [{
+    allowlisted_http_ips = []
+    allowlisted_http_vcns = [{
+      allowlisted_ips = []
+      id              = null
+    }]
+    is_integration_vcn_allowlisted = null
+    network_endpoint_type          = null
   }]
 
   timeouts = [{
@@ -168,6 +178,24 @@ variable "custom_endpoint" {
   default = []
 }
 
+variable "network_endpoint_details" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      allowlisted_http_ips = set(string)
+      allowlisted_http_vcns = set(object(
+        {
+          allowlisted_ips = set(string)
+          id              = string
+        }
+      ))
+      is_integration_vcn_allowlisted = bool
+      network_endpoint_type          = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -213,6 +241,24 @@ resource "oci_integration_integration_instance" "this" {
     content {
       certificate_secret_id = custom_endpoint.value["certificate_secret_id"]
       hostname              = custom_endpoint.value["hostname"]
+    }
+  }
+
+  dynamic "network_endpoint_details" {
+    for_each = var.network_endpoint_details
+    content {
+      allowlisted_http_ips           = network_endpoint_details.value["allowlisted_http_ips"]
+      is_integration_vcn_allowlisted = network_endpoint_details.value["is_integration_vcn_allowlisted"]
+      network_endpoint_type          = network_endpoint_details.value["network_endpoint_type"]
+
+      dynamic "allowlisted_http_vcns" {
+        for_each = network_endpoint_details.value.allowlisted_http_vcns
+        content {
+          allowlisted_ips = allowlisted_http_vcns.value["allowlisted_ips"]
+          id              = allowlisted_http_vcns.value["id"]
+        }
+      }
+
     }
   }
 

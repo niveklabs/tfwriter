@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -40,6 +40,11 @@ module "aws_globalaccelerator_accelerator" {
     flow_logs_enabled   = null
     flow_logs_s3_bucket = null
     flow_logs_s3_prefix = null
+  }]
+
+  timeouts = [{
+    create = null
+    update = null
   }]
 }
 ```
@@ -83,6 +88,17 @@ variable "attributes" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -102,6 +118,14 @@ resource "aws_globalaccelerator_accelerator" "this" {
       flow_logs_enabled   = attributes.value["flow_logs_enabled"]
       flow_logs_s3_bucket = attributes.value["flow_logs_s3_bucket"]
       flow_logs_s3_prefix = attributes.value["flow_logs_s3_prefix"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      update = timeouts.value["update"]
     }
   }
 

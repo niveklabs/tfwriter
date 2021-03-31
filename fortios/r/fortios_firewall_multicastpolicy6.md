@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,14 +29,22 @@ module "fortios_firewall_multicastpolicy6" {
 
   # action - (optional) is a type of string
   action = null
+  # auto_asic_offload - (optional) is a type of string
+  auto_asic_offload = null
+  # comments - (optional) is a type of string
+  comments = null
   # dstintf - (required) is a type of string
   dstintf = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # end_port - (optional) is a type of number
   end_port = null
   # fosid - (optional) is a type of number
   fosid = null
   # logtraffic - (optional) is a type of string
   logtraffic = null
+  # name - (optional) is a type of string
+  name = null
   # protocol - (optional) is a type of number
   protocol = null
   # srcintf - (required) is a type of string
@@ -67,9 +75,27 @@ variable "action" {
   default     = null
 }
 
+variable "auto_asic_offload" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dstintf" {
   description = "(required)"
   type        = string
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "end_port" {
@@ -85,6 +111,12 @@ variable "fosid" {
 }
 
 variable "logtraffic" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -138,15 +170,19 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_multicastpolicy6" "this" {
-  action     = var.action
-  dstintf    = var.dstintf
-  end_port   = var.end_port
-  fosid      = var.fosid
-  logtraffic = var.logtraffic
-  protocol   = var.protocol
-  srcintf    = var.srcintf
-  start_port = var.start_port
-  status     = var.status
+  action                = var.action
+  auto_asic_offload     = var.auto_asic_offload
+  comments              = var.comments
+  dstintf               = var.dstintf
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  end_port              = var.end_port
+  fosid                 = var.fosid
+  logtraffic            = var.logtraffic
+  name                  = var.name
+  protocol              = var.protocol
+  srcintf               = var.srcintf
+  start_port            = var.start_port
+  status                = var.status
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
@@ -175,6 +211,11 @@ output "action" {
   value       = fortios_firewall_multicastpolicy6.this.action
 }
 
+output "auto_asic_offload" {
+  description = "returns a string"
+  value       = fortios_firewall_multicastpolicy6.this.auto_asic_offload
+}
+
 output "end_port" {
   description = "returns a number"
   value       = fortios_firewall_multicastpolicy6.this.end_port
@@ -193,6 +234,11 @@ output "id" {
 output "logtraffic" {
   description = "returns a string"
   value       = fortios_firewall_multicastpolicy6.this.logtraffic
+}
+
+output "name" {
+  description = "returns a string"
+  value       = fortios_firewall_multicastpolicy6.this.name
 }
 
 output "protocol" {

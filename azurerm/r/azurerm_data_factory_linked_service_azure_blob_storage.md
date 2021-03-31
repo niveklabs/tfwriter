@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "azurerm_data_factory_linked_service_azure_blob_storage" {
   additional_properties = {}
   # annotations - (optional) is a type of list of string
   annotations = []
-  # connection_string - (required) is a type of string
+  # connection_string - (optional) is a type of string
   connection_string = null
   # data_factory_name - (required) is a type of string
   data_factory_name = null
@@ -45,6 +45,16 @@ module "azurerm_data_factory_linked_service_azure_blob_storage" {
   parameters = {}
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+  # sas_uri - (optional) is a type of string
+  sas_uri = null
+  # service_principal_id - (optional) is a type of string
+  service_principal_id = null
+  # service_principal_key - (optional) is a type of string
+  service_principal_key = null
+  # tenant_id - (optional) is a type of string
+  tenant_id = null
+  # use_managed_identity - (optional) is a type of bool
+  use_managed_identity = null
 
   timeouts = [{
     create = null
@@ -73,8 +83,9 @@ variable "annotations" {
 }
 
 variable "connection_string" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "data_factory_name" {
@@ -110,6 +121,36 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "sas_uri" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "service_principal_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "service_principal_key" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "tenant_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "use_managed_identity" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -139,6 +180,11 @@ resource "azurerm_data_factory_linked_service_azure_blob_storage" "this" {
   name                     = var.name
   parameters               = var.parameters
   resource_group_name      = var.resource_group_name
+  sas_uri                  = var.sas_uri
+  service_principal_id     = var.service_principal_id
+  service_principal_key    = var.service_principal_key
+  tenant_id                = var.tenant_id
+  use_managed_identity     = var.use_managed_identity
 
   dynamic "timeouts" {
     for_each = var.timeouts

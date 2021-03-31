@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "aws_iam_instance_profile" {
   path = null
   # role - (optional) is a type of string
   role = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -66,6 +68,12 @@ variable "role" {
   type        = string
   default     = null
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -78,6 +86,7 @@ resource "aws_iam_instance_profile" "this" {
   name_prefix = var.name_prefix
   path        = var.path
   role        = var.role
+  tags        = var.tags
 }
 ```
 

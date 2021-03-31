@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,7 +37,7 @@ module "aws_ssm_maintenance_window_task" {
   name = null
   # priority - (optional) is a type of number
   priority = null
-  # service_role_arn - (required) is a type of string
+  # service_role_arn - (optional) is a type of string
   service_role_arn = null
   # task_arn - (required) is a type of string
   task_arn = null
@@ -65,9 +65,14 @@ module "aws_ssm_maintenance_window_task" {
       qualifier      = null
     }]
     run_command_parameters = [{
+      cloudwatch_config = [{
+        cloudwatch_log_group_name = null
+        cloudwatch_output_enabled = null
+      }]
       comment            = null
       document_hash      = null
       document_hash_type = null
+      document_version   = null
       notification_config = [{
         notification_arn    = null
         notification_events = []
@@ -124,8 +129,9 @@ variable "priority" {
 }
 
 variable "service_role_arn" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "task_arn" {
@@ -144,13 +150,14 @@ variable "window_id" {
 }
 
 variable "targets" {
-  description = "nested block: NestingList, min items: 1, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 5"
   type = set(object(
     {
       key    = string
       values = list(string)
     }
   ))
+  default = []
 }
 
 variable "task_invocation_parameters" {
@@ -177,9 +184,16 @@ variable "task_invocation_parameters" {
       ))
       run_command_parameters = list(object(
         {
+          cloudwatch_config = list(object(
+            {
+              cloudwatch_log_group_name = string
+              cloudwatch_output_enabled = bool
+            }
+          ))
           comment            = string
           document_hash      = string
           document_hash_type = string
+          document_version   = string
           notification_config = list(object(
             {
               notification_arn    = string
@@ -270,10 +284,19 @@ resource "aws_ssm_maintenance_window_task" "this" {
           comment              = run_command_parameters.value["comment"]
           document_hash        = run_command_parameters.value["document_hash"]
           document_hash_type   = run_command_parameters.value["document_hash_type"]
+          document_version     = run_command_parameters.value["document_version"]
           output_s3_bucket     = run_command_parameters.value["output_s3_bucket"]
           output_s3_key_prefix = run_command_parameters.value["output_s3_key_prefix"]
           service_role_arn     = run_command_parameters.value["service_role_arn"]
           timeout_seconds      = run_command_parameters.value["timeout_seconds"]
+
+          dynamic "cloudwatch_config" {
+            for_each = run_command_parameters.value.cloudwatch_config
+            content {
+              cloudwatch_log_group_name = cloudwatch_config.value["cloudwatch_log_group_name"]
+              cloudwatch_output_enabled = cloudwatch_config.value["cloudwatch_output_enabled"]
+            }
+          }
 
           dynamic "notification_config" {
             for_each = run_command_parameters.value.notification_config
@@ -317,6 +340,11 @@ resource "aws_ssm_maintenance_window_task" "this" {
 output "id" {
   description = "returns a string"
   value       = aws_ssm_maintenance_window_task.this.id
+}
+
+output "service_role_arn" {
+  description = "returns a string"
+  value       = aws_ssm_maintenance_window_task.this.service_role_arn
 }
 
 output "this" {

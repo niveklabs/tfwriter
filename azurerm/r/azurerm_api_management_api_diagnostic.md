@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "azurerm_api_management_api_diagnostic" {
   log_client_ip = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+  # sampling_percentage - (optional) is a type of number
+  sampling_percentage = null
   # verbosity - (optional) is a type of string
   verbosity = null
 
@@ -123,6 +125,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "sampling_percentage" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "verbosity" {
   description = "(optional)"
   type        = string
@@ -201,6 +209,7 @@ resource "azurerm_api_management_api_diagnostic" "this" {
   identifier                = var.identifier
   log_client_ip             = var.log_client_ip
   resource_group_name       = var.resource_group_name
+  sampling_percentage       = var.sampling_percentage
   verbosity                 = var.verbosity
 
   dynamic "backend_request" {
@@ -271,6 +280,11 @@ output "id" {
 output "log_client_ip" {
   description = "returns a bool"
   value       = azurerm_api_management_api_diagnostic.this.log_client_ip
+}
+
+output "sampling_percentage" {
+  description = "returns a number"
+  value       = azurerm_api_management_api_diagnostic.this.sampling_percentage
 }
 
 output "verbosity" {

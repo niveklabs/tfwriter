@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    mongodbatlas = ">= 0.7.0"
+    mongodbatlas = ">= 0.8.2"
   }
 }
 ```
@@ -117,7 +117,7 @@ variable "labels" {
 }
 
 variable "roles" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 1, max items: 0"
   type = set(object(
     {
       collection_name = string
@@ -125,7 +125,6 @@ variable "roles" {
       role_name       = string
     }
   ))
-  default = []
 }
 
 variable "scopes" {

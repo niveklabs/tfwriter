@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,10 @@ module "fortios_log_threatweight" {
 
   # blocked_connection - (optional) is a type of string
   blocked_connection = null
+  # botnet_connection_detected - (optional) is a type of string
+  botnet_connection_detected = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # failed_connection - (optional) is a type of string
   failed_connection = null
   # status - (optional) is a type of string
@@ -68,6 +72,10 @@ module "fortios_log_threatweight" {
     command_blocked            = null
     content_disarm             = null
     file_blocked               = null
+    fsa_high_risk              = null
+    fsa_malicious              = null
+    fsa_medium_risk            = null
+    malware_list               = null
     mimefragmented             = null
     oversized                  = null
     switch_proto               = null
@@ -91,6 +99,18 @@ module "fortios_log_threatweight" {
 
 ```terraform
 variable "blocked_connection" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "botnet_connection_detected" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -173,6 +193,10 @@ variable "malware" {
       command_blocked            = string
       content_disarm             = string
       file_blocked               = string
+      fsa_high_risk              = string
+      fsa_malicious              = string
+      fsa_medium_risk            = string
+      malware_list               = string
       mimefragmented             = string
       oversized                  = string
       switch_proto               = string
@@ -204,10 +228,12 @@ variable "web" {
 
 ```terraform
 resource "fortios_log_threatweight" "this" {
-  blocked_connection = var.blocked_connection
-  failed_connection  = var.failed_connection
-  status             = var.status
-  url_block_detected = var.url_block_detected
+  blocked_connection         = var.blocked_connection
+  botnet_connection_detected = var.botnet_connection_detected
+  dynamic_sort_subtable      = var.dynamic_sort_subtable
+  failed_connection          = var.failed_connection
+  status                     = var.status
+  url_block_detected         = var.url_block_detected
 
   dynamic "application" {
     for_each = var.application
@@ -255,6 +281,10 @@ resource "fortios_log_threatweight" "this" {
       command_blocked            = malware.value["command_blocked"]
       content_disarm             = malware.value["content_disarm"]
       file_blocked               = malware.value["file_blocked"]
+      fsa_high_risk              = malware.value["fsa_high_risk"]
+      fsa_malicious              = malware.value["fsa_malicious"]
+      fsa_medium_risk            = malware.value["fsa_medium_risk"]
+      malware_list               = malware.value["malware_list"]
       mimefragmented             = malware.value["mimefragmented"]
       oversized                  = malware.value["oversized"]
       switch_proto               = malware.value["switch_proto"]
@@ -285,6 +315,11 @@ resource "fortios_log_threatweight" "this" {
 output "blocked_connection" {
   description = "returns a string"
   value       = fortios_log_threatweight.this.blocked_connection
+}
+
+output "botnet_connection_detected" {
+  description = "returns a string"
+  value       = fortios_log_threatweight.this.botnet_connection_detected
 }
 
 output "failed_connection" {

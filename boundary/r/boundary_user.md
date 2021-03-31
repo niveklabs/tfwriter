@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    boundary = ">= 0.1.0"
+    boundary = ">= 1.0.1"
   }
 }
 ```

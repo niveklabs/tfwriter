@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,12 @@ module "aws_globalaccelerator_listener" {
   port_range = [{
     from_port = null
     to_port   = null
+  }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    update = null
   }]
 }
 ```
@@ -71,6 +77,18 @@ variable "port_range" {
     }
   ))
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -88,6 +106,15 @@ resource "aws_globalaccelerator_listener" "this" {
     content {
       from_port = port_range.value["from_port"]
       to_port   = port_range.value["to_port"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      update = timeouts.value["update"]
     }
   }
 

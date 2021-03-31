@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_vpnsslweb_usergroupbookmark" {
   source = "./modules/fortios/r/fortios_vpnsslweb_usergroupbookmark"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
@@ -34,6 +36,7 @@ module "fortios_vpnsslweb_usergroupbookmark" {
     additional_params = null
     apptype           = null
     description       = null
+    domain            = null
     folder            = null
     form_data = [{
       name  = null
@@ -67,6 +70,12 @@ module "fortios_vpnsslweb_usergroupbookmark" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -80,6 +89,7 @@ variable "bookmarks" {
       additional_params = string
       apptype           = string
       description       = string
+      domain            = string
       folder            = string
       form_data = list(object(
         {
@@ -118,7 +128,8 @@ variable "bookmarks" {
 
 ```terraform
 resource "fortios_vpnsslweb_usergroupbookmark" "this" {
-  name = var.name
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "bookmarks" {
     for_each = var.bookmarks
@@ -126,6 +137,7 @@ resource "fortios_vpnsslweb_usergroupbookmark" "this" {
       additional_params        = bookmarks.value["additional_params"]
       apptype                  = bookmarks.value["apptype"]
       description              = bookmarks.value["description"]
+      domain                   = bookmarks.value["domain"]
       folder                   = bookmarks.value["folder"]
       host                     = bookmarks.value["host"]
       listening_port           = bookmarks.value["listening_port"]

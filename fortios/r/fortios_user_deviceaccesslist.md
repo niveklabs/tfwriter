@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_user_deviceaccesslist" {
 
   # default_action - (optional) is a type of string
   default_action = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
 
@@ -46,6 +48,12 @@ module "fortios_user_deviceaccesslist" {
 
 ```terraform
 variable "default_action" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -75,8 +83,9 @@ variable "device_list" {
 
 ```terraform
 resource "fortios_user_deviceaccesslist" "this" {
-  default_action = var.default_action
-  name           = var.name
+  default_action        = var.default_action
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "device_list" {
     for_each = var.device_list

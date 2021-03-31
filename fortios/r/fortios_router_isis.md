@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -57,6 +57,8 @@ module "fortios_router_isis" {
   default_originate6 = null
   # dynamic_hostname - (optional) is a type of string
   dynamic_hostname = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ignore_lsp_errors - (optional) is a type of string
   ignore_lsp_errors = null
   # is_type - (optional) is a type of string
@@ -258,6 +260,12 @@ variable "default_originate6" {
 }
 
 variable "dynamic_hostname" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -509,6 +517,7 @@ resource "fortios_router_isis" "this" {
   default_originate       = var.default_originate
   default_originate6      = var.default_originate6
   dynamic_hostname        = var.dynamic_hostname
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
   ignore_lsp_errors       = var.ignore_lsp_errors
   is_type                 = var.is_type
   lsp_gen_interval_l1     = var.lsp_gen_interval_l1

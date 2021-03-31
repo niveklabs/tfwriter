@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```

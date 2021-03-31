@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,8 +27,14 @@ terraform {
 module "fortios_wirelesscontroller_vap" {
   source = "./modules/fortios/r/fortios_wirelesscontroller_vap"
 
+  # access_control_list - (optional) is a type of string
+  access_control_list = null
   # acct_interim_interval - (optional) is a type of number
   acct_interim_interval = null
+  # additional_akms - (optional) is a type of string
+  additional_akms = null
+  # address_group - (optional) is a type of string
+  address_group = null
   # alias - (optional) is a type of string
   alias = null
   # atf_weight - (optional) is a type of number
@@ -39,8 +45,12 @@ module "fortios_wirelesscontroller_vap" {
   broadcast_ssid = null
   # broadcast_suppression - (optional) is a type of string
   broadcast_suppression = null
+  # bss_color_partial - (optional) is a type of string
+  bss_color_partial = null
   # captive_portal_ac_name - (optional) is a type of string
   captive_portal_ac_name = null
+  # captive_portal_auth_timeout - (optional) is a type of number
+  captive_portal_auth_timeout = null
   # captive_portal_macauth_radius_secret - (optional) is a type of string
   captive_portal_macauth_radius_secret = null
   # captive_portal_macauth_radius_server - (optional) is a type of string
@@ -53,12 +63,16 @@ module "fortios_wirelesscontroller_vap" {
   captive_portal_session_timeout_interval = null
   # dhcp_lease_time - (optional) is a type of number
   dhcp_lease_time = null
+  # dhcp_option43_insertion - (optional) is a type of string
+  dhcp_option43_insertion = null
   # dhcp_option82_circuit_id_insertion - (optional) is a type of string
   dhcp_option82_circuit_id_insertion = null
   # dhcp_option82_insertion - (optional) is a type of string
   dhcp_option82_insertion = null
   # dhcp_option82_remote_id_insertion - (optional) is a type of string
   dhcp_option82_remote_id_insertion = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # dynamic_vlan - (optional) is a type of string
   dynamic_vlan = null
   # eap_reauth - (optional) is a type of string
@@ -75,6 +89,8 @@ module "fortios_wirelesscontroller_vap" {
   external_logout = null
   # external_web - (optional) is a type of string
   external_web = null
+  # external_web_format - (optional) is a type of string
+  external_web_format = null
   # fast_bss_transition - (optional) is a type of string
   fast_bss_transition = null
   # fast_roaming - (optional) is a type of string
@@ -89,12 +105,18 @@ module "fortios_wirelesscontroller_vap" {
   gtk_rekey = null
   # gtk_rekey_intv - (optional) is a type of number
   gtk_rekey_intv = null
+  # high_efficiency - (optional) is a type of string
+  high_efficiency = null
   # hotspot20_profile - (optional) is a type of string
   hotspot20_profile = null
+  # igmp_snooping - (optional) is a type of string
+  igmp_snooping = null
   # intra_vap_privacy - (optional) is a type of string
   intra_vap_privacy = null
   # ip - (optional) is a type of string
   ip = null
+  # ipv6_rules - (optional) is a type of string
+  ipv6_rules = null
   # key - (optional) is a type of string
   key = null
   # keyindex - (optional) is a type of number
@@ -129,6 +151,10 @@ module "fortios_wirelesscontroller_vap" {
   mpsk = null
   # mpsk_concurrent_clients - (optional) is a type of number
   mpsk_concurrent_clients = null
+  # mpsk_profile - (optional) is a type of string
+  mpsk_profile = null
+  # mu_mimo - (optional) is a type of string
+  mu_mimo = null
   # multicast_enhance - (optional) is a type of string
   multicast_enhance = null
   # multicast_rate - (optional) is a type of string
@@ -137,6 +163,12 @@ module "fortios_wirelesscontroller_vap" {
   name = null
   # okc - (optional) is a type of string
   okc = null
+  # owe_groups - (optional) is a type of string
+  owe_groups = null
+  # owe_transition - (optional) is a type of string
+  owe_transition = null
+  # owe_transition_ssid - (optional) is a type of string
+  owe_transition_ssid = null
   # passphrase - (optional) is a type of string
   passphrase = null
   # pmf - (optional) is a type of string
@@ -145,10 +177,18 @@ module "fortios_wirelesscontroller_vap" {
   pmf_assoc_comeback_timeout = null
   # pmf_sa_query_retry_timeout - (optional) is a type of number
   pmf_sa_query_retry_timeout = null
+  # port_macauth - (optional) is a type of string
+  port_macauth = null
+  # port_macauth_reauth_timeout - (optional) is a type of number
+  port_macauth_reauth_timeout = null
+  # port_macauth_timeout - (optional) is a type of number
+  port_macauth_timeout = null
   # portal_message_override_group - (optional) is a type of string
   portal_message_override_group = null
   # portal_type - (optional) is a type of string
   portal_type = null
+  # primary_wag_profile - (optional) is a type of string
+  primary_wag_profile = null
   # probe_resp_suppression - (optional) is a type of string
   probe_resp_suppression = null
   # probe_resp_threshold - (optional) is a type of string
@@ -185,8 +225,14 @@ module "fortios_wirelesscontroller_vap" {
   rates_11n_ss12 = null
   # rates_11n_ss34 - (optional) is a type of string
   rates_11n_ss34 = null
+  # sae_groups - (optional) is a type of string
+  sae_groups = null
+  # sae_password - (optional) is a type of string
+  sae_password = null
   # schedule - (optional) is a type of string
   schedule = null
+  # secondary_wag_profile - (optional) is a type of string
+  secondary_wag_profile = null
   # security - (optional) is a type of string
   security = null
   # security_exempt_list - (optional) is a type of string
@@ -199,8 +245,20 @@ module "fortios_wirelesscontroller_vap" {
   split_tunneling = null
   # ssid - (optional) is a type of string
   ssid = null
+  # sticky_client_remove - (optional) is a type of string
+  sticky_client_remove = null
+  # sticky_client_threshold_2g - (optional) is a type of string
+  sticky_client_threshold_2g = null
+  # sticky_client_threshold_5g - (optional) is a type of string
+  sticky_client_threshold_5g = null
+  # target_wake_time - (optional) is a type of string
+  target_wake_time = null
   # tkip_counter_measure - (optional) is a type of string
   tkip_counter_measure = null
+  # tunnel_echo_interval - (optional) is a type of number
+  tunnel_echo_interval = null
+  # tunnel_fallback_interval - (optional) is a type of number
+  tunnel_fallback_interval = null
   # utm_profile - (optional) is a type of string
   utm_profile = null
   # vlan_auto - (optional) is a type of string
@@ -222,7 +280,10 @@ module "fortios_wirelesscontroller_vap" {
     comment            = null
     concurrent_clients = null
     key_name           = null
-    passphrase         = null
+    mpsk_schedules = [{
+      name = null
+    }]
+    passphrase = null
   }]
 
   portal_message_overrides = [{
@@ -256,9 +317,27 @@ module "fortios_wirelesscontroller_vap" {
 ### Variables
 
 ```terraform
+variable "access_control_list" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "acct_interim_interval" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "additional_akms" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "address_group" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -292,9 +371,21 @@ variable "broadcast_suppression" {
   default     = null
 }
 
+variable "bss_color_partial" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "captive_portal_ac_name" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "captive_portal_auth_timeout" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -334,6 +425,12 @@ variable "dhcp_lease_time" {
   default     = null
 }
 
+variable "dhcp_option43_insertion" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dhcp_option82_circuit_id_insertion" {
   description = "(optional)"
   type        = string
@@ -347,6 +444,12 @@ variable "dhcp_option82_insertion" {
 }
 
 variable "dhcp_option82_remote_id_insertion" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -400,6 +503,12 @@ variable "external_web" {
   default     = null
 }
 
+variable "external_web_format" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fast_bss_transition" {
   description = "(optional)"
   type        = string
@@ -442,7 +551,19 @@ variable "gtk_rekey_intv" {
   default     = null
 }
 
+variable "high_efficiency" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "hotspot20_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "igmp_snooping" {
   description = "(optional)"
   type        = string
   default     = null
@@ -455,6 +576,12 @@ variable "intra_vap_privacy" {
 }
 
 variable "ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ipv6_rules" {
   description = "(optional)"
   type        = string
   default     = null
@@ -562,6 +689,18 @@ variable "mpsk_concurrent_clients" {
   default     = null
 }
 
+variable "mpsk_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "mu_mimo" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "multicast_enhance" {
   description = "(optional)"
   type        = string
@@ -580,6 +719,24 @@ variable "name" {
 }
 
 variable "okc" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "owe_groups" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "owe_transition" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "owe_transition_ssid" {
   description = "(optional)"
   type        = string
   default     = null
@@ -609,6 +766,24 @@ variable "pmf_sa_query_retry_timeout" {
   default     = null
 }
 
+variable "port_macauth" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "port_macauth_reauth_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "port_macauth_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "portal_message_override_group" {
   description = "(optional)"
   type        = string
@@ -616,6 +791,12 @@ variable "portal_message_override_group" {
 }
 
 variable "portal_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "primary_wag_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -729,7 +910,25 @@ variable "rates_11n_ss34" {
   default     = null
 }
 
+variable "sae_groups" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "sae_password" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "schedule" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "secondary_wag_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -771,9 +970,45 @@ variable "ssid" {
   default     = null
 }
 
+variable "sticky_client_remove" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "sticky_client_threshold_2g" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "sticky_client_threshold_5g" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "target_wake_time" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tkip_counter_measure" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "tunnel_echo_interval" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "tunnel_fallback_interval" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -826,7 +1061,12 @@ variable "mpsk_key" {
       comment            = string
       concurrent_clients = string
       key_name           = string
-      passphrase         = string
+      mpsk_schedules = list(object(
+        {
+          name = string
+        }
+      ))
+      passphrase = string
     }
   ))
   default = []
@@ -893,22 +1133,29 @@ variable "vlan_pool" {
 
 ```terraform
 resource "fortios_wirelesscontroller_vap" "this" {
+  access_control_list                     = var.access_control_list
   acct_interim_interval                   = var.acct_interim_interval
+  additional_akms                         = var.additional_akms
+  address_group                           = var.address_group
   alias                                   = var.alias
   atf_weight                              = var.atf_weight
   auth                                    = var.auth
   broadcast_ssid                          = var.broadcast_ssid
   broadcast_suppression                   = var.broadcast_suppression
+  bss_color_partial                       = var.bss_color_partial
   captive_portal_ac_name                  = var.captive_portal_ac_name
+  captive_portal_auth_timeout             = var.captive_portal_auth_timeout
   captive_portal_macauth_radius_secret    = var.captive_portal_macauth_radius_secret
   captive_portal_macauth_radius_server    = var.captive_portal_macauth_radius_server
   captive_portal_radius_secret            = var.captive_portal_radius_secret
   captive_portal_radius_server            = var.captive_portal_radius_server
   captive_portal_session_timeout_interval = var.captive_portal_session_timeout_interval
   dhcp_lease_time                         = var.dhcp_lease_time
+  dhcp_option43_insertion                 = var.dhcp_option43_insertion
   dhcp_option82_circuit_id_insertion      = var.dhcp_option82_circuit_id_insertion
   dhcp_option82_insertion                 = var.dhcp_option82_insertion
   dhcp_option82_remote_id_insertion       = var.dhcp_option82_remote_id_insertion
+  dynamic_sort_subtable                   = var.dynamic_sort_subtable
   dynamic_vlan                            = var.dynamic_vlan
   eap_reauth                              = var.eap_reauth
   eap_reauth_intv                         = var.eap_reauth_intv
@@ -917,6 +1164,7 @@ resource "fortios_wirelesscontroller_vap" "this" {
   external_fast_roaming                   = var.external_fast_roaming
   external_logout                         = var.external_logout
   external_web                            = var.external_web
+  external_web_format                     = var.external_web_format
   fast_bss_transition                     = var.fast_bss_transition
   fast_roaming                            = var.fast_roaming
   ft_mobility_domain                      = var.ft_mobility_domain
@@ -924,9 +1172,12 @@ resource "fortios_wirelesscontroller_vap" "this" {
   ft_r0_key_lifetime                      = var.ft_r0_key_lifetime
   gtk_rekey                               = var.gtk_rekey
   gtk_rekey_intv                          = var.gtk_rekey_intv
+  high_efficiency                         = var.high_efficiency
   hotspot20_profile                       = var.hotspot20_profile
+  igmp_snooping                           = var.igmp_snooping
   intra_vap_privacy                       = var.intra_vap_privacy
   ip                                      = var.ip
+  ipv6_rules                              = var.ipv6_rules
   key                                     = var.key
   keyindex                                = var.keyindex
   ldpc                                    = var.ldpc
@@ -944,16 +1195,25 @@ resource "fortios_wirelesscontroller_vap" "this" {
   mesh_backhaul                           = var.mesh_backhaul
   mpsk                                    = var.mpsk
   mpsk_concurrent_clients                 = var.mpsk_concurrent_clients
+  mpsk_profile                            = var.mpsk_profile
+  mu_mimo                                 = var.mu_mimo
   multicast_enhance                       = var.multicast_enhance
   multicast_rate                          = var.multicast_rate
   name                                    = var.name
   okc                                     = var.okc
+  owe_groups                              = var.owe_groups
+  owe_transition                          = var.owe_transition
+  owe_transition_ssid                     = var.owe_transition_ssid
   passphrase                              = var.passphrase
   pmf                                     = var.pmf
   pmf_assoc_comeback_timeout              = var.pmf_assoc_comeback_timeout
   pmf_sa_query_retry_timeout              = var.pmf_sa_query_retry_timeout
+  port_macauth                            = var.port_macauth
+  port_macauth_reauth_timeout             = var.port_macauth_reauth_timeout
+  port_macauth_timeout                    = var.port_macauth_timeout
   portal_message_override_group           = var.portal_message_override_group
   portal_type                             = var.portal_type
+  primary_wag_profile                     = var.primary_wag_profile
   probe_resp_suppression                  = var.probe_resp_suppression
   probe_resp_threshold                    = var.probe_resp_threshold
   ptk_rekey                               = var.ptk_rekey
@@ -972,14 +1232,23 @@ resource "fortios_wirelesscontroller_vap" "this" {
   rates_11bg                              = var.rates_11bg
   rates_11n_ss12                          = var.rates_11n_ss12
   rates_11n_ss34                          = var.rates_11n_ss34
+  sae_groups                              = var.sae_groups
+  sae_password                            = var.sae_password
   schedule                                = var.schedule
+  secondary_wag_profile                   = var.secondary_wag_profile
   security                                = var.security
   security_exempt_list                    = var.security_exempt_list
   security_obsolete_option                = var.security_obsolete_option
   security_redirect_url                   = var.security_redirect_url
   split_tunneling                         = var.split_tunneling
   ssid                                    = var.ssid
+  sticky_client_remove                    = var.sticky_client_remove
+  sticky_client_threshold_2g              = var.sticky_client_threshold_2g
+  sticky_client_threshold_5g              = var.sticky_client_threshold_5g
+  target_wake_time                        = var.target_wake_time
   tkip_counter_measure                    = var.tkip_counter_measure
+  tunnel_echo_interval                    = var.tunnel_echo_interval
+  tunnel_fallback_interval                = var.tunnel_fallback_interval
   utm_profile                             = var.utm_profile
   vlan_auto                               = var.vlan_auto
   vlan_pooling                            = var.vlan_pooling
@@ -1002,6 +1271,14 @@ resource "fortios_wirelesscontroller_vap" "this" {
       concurrent_clients = mpsk_key.value["concurrent_clients"]
       key_name           = mpsk_key.value["key_name"]
       passphrase         = mpsk_key.value["passphrase"]
+
+      dynamic "mpsk_schedules" {
+        for_each = mpsk_key.value.mpsk_schedules
+        content {
+          name = mpsk_schedules.value["name"]
+        }
+      }
+
     }
   }
 
@@ -1052,9 +1329,24 @@ resource "fortios_wirelesscontroller_vap" "this" {
 ### Outputs
 
 ```terraform
+output "access_control_list" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.access_control_list
+}
+
 output "acct_interim_interval" {
   description = "returns a number"
   value       = fortios_wirelesscontroller_vap.this.acct_interim_interval
+}
+
+output "additional_akms" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.additional_akms
+}
+
+output "address_group" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.address_group
 }
 
 output "alias" {
@@ -1082,9 +1374,19 @@ output "broadcast_suppression" {
   value       = fortios_wirelesscontroller_vap.this.broadcast_suppression
 }
 
+output "bss_color_partial" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.bss_color_partial
+}
+
 output "captive_portal_ac_name" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.captive_portal_ac_name
+}
+
+output "captive_portal_auth_timeout" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_vap.this.captive_portal_auth_timeout
 }
 
 output "captive_portal_macauth_radius_server" {
@@ -1105,6 +1407,11 @@ output "captive_portal_session_timeout_interval" {
 output "dhcp_lease_time" {
   description = "returns a number"
   value       = fortios_wirelesscontroller_vap.this.dhcp_lease_time
+}
+
+output "dhcp_option43_insertion" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.dhcp_option43_insertion
 }
 
 output "dhcp_option82_circuit_id_insertion" {
@@ -1162,6 +1469,11 @@ output "external_web" {
   value       = fortios_wirelesscontroller_vap.this.external_web
 }
 
+output "external_web_format" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.external_web_format
+}
+
 output "fast_bss_transition" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.fast_bss_transition
@@ -1197,6 +1509,11 @@ output "gtk_rekey_intv" {
   value       = fortios_wirelesscontroller_vap.this.gtk_rekey_intv
 }
 
+output "high_efficiency" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.high_efficiency
+}
+
 output "hotspot20_profile" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.hotspot20_profile
@@ -1207,6 +1524,11 @@ output "id" {
   value       = fortios_wirelesscontroller_vap.this.id
 }
 
+output "igmp_snooping" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.igmp_snooping
+}
+
 output "intra_vap_privacy" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.intra_vap_privacy
@@ -1215,6 +1537,11 @@ output "intra_vap_privacy" {
 output "ip" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.ip
+}
+
+output "ipv6_rules" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.ipv6_rules
 }
 
 output "keyindex" {
@@ -1297,6 +1624,16 @@ output "mpsk_concurrent_clients" {
   value       = fortios_wirelesscontroller_vap.this.mpsk_concurrent_clients
 }
 
+output "mpsk_profile" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.mpsk_profile
+}
+
+output "mu_mimo" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.mu_mimo
+}
+
 output "multicast_enhance" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.multicast_enhance
@@ -1310,6 +1647,21 @@ output "multicast_rate" {
 output "okc" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.okc
+}
+
+output "owe_groups" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.owe_groups
+}
+
+output "owe_transition" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.owe_transition
+}
+
+output "owe_transition_ssid" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.owe_transition_ssid
 }
 
 output "pmf" {
@@ -1327,6 +1679,21 @@ output "pmf_sa_query_retry_timeout" {
   value       = fortios_wirelesscontroller_vap.this.pmf_sa_query_retry_timeout
 }
 
+output "port_macauth" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.port_macauth
+}
+
+output "port_macauth_reauth_timeout" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_vap.this.port_macauth_reauth_timeout
+}
+
+output "port_macauth_timeout" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_vap.this.port_macauth_timeout
+}
+
 output "portal_message_override_group" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.portal_message_override_group
@@ -1335,6 +1702,11 @@ output "portal_message_override_group" {
 output "portal_type" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.portal_type
+}
+
+output "primary_wag_profile" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.primary_wag_profile
 }
 
 output "probe_resp_suppression" {
@@ -1427,9 +1799,19 @@ output "rates_11n_ss34" {
   value       = fortios_wirelesscontroller_vap.this.rates_11n_ss34
 }
 
+output "sae_groups" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.sae_groups
+}
+
 output "schedule" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.schedule
+}
+
+output "secondary_wag_profile" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.secondary_wag_profile
 }
 
 output "security" {
@@ -1462,9 +1844,39 @@ output "ssid" {
   value       = fortios_wirelesscontroller_vap.this.ssid
 }
 
+output "sticky_client_remove" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.sticky_client_remove
+}
+
+output "sticky_client_threshold_2g" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.sticky_client_threshold_2g
+}
+
+output "sticky_client_threshold_5g" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.sticky_client_threshold_5g
+}
+
+output "target_wake_time" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_vap.this.target_wake_time
+}
+
 output "tkip_counter_measure" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_vap.this.tkip_counter_measure
+}
+
+output "tunnel_echo_interval" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_vap.this.tunnel_echo_interval
+}
+
+output "tunnel_fallback_interval" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_vap.this.tunnel_fallback_interval
 }
 
 output "utm_profile" {

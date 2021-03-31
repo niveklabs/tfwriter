@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "hcloud_server" {
   backups = null
   # datacenter - (optional) is a type of string
   datacenter = null
+  # firewall_ids - (optional) is a type of set of number
+  firewall_ids = []
   # image - (required) is a type of string
   image = null
   # iso - (optional) is a type of string
@@ -51,6 +53,13 @@ module "hcloud_server" {
   ssh_keys = []
   # user_data - (optional) is a type of string
   user_data = null
+
+  network = [{
+    alias_ips   = []
+    ip          = null
+    mac_address = null
+    network_id  = null
+  }]
 }
 ```
 
@@ -68,6 +77,12 @@ variable "backups" {
 variable "datacenter" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "firewall_ids" {
+  description = "(optional)"
+  type        = set(number)
   default     = null
 }
 
@@ -127,6 +142,19 @@ variable "user_data" {
   type        = string
   default     = null
 }
+
+variable "network" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      alias_ips   = set(string)
+      ip          = string
+      mac_address = string
+      network_id  = number
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -135,18 +163,29 @@ variable "user_data" {
 
 ```terraform
 resource "hcloud_server" "this" {
-  backups     = var.backups
-  datacenter  = var.datacenter
-  image       = var.image
-  iso         = var.iso
-  keep_disk   = var.keep_disk
-  labels      = var.labels
-  location    = var.location
-  name        = var.name
-  rescue      = var.rescue
-  server_type = var.server_type
-  ssh_keys    = var.ssh_keys
-  user_data   = var.user_data
+  backups      = var.backups
+  datacenter   = var.datacenter
+  firewall_ids = var.firewall_ids
+  image        = var.image
+  iso          = var.iso
+  keep_disk    = var.keep_disk
+  labels       = var.labels
+  location     = var.location
+  name         = var.name
+  rescue       = var.rescue
+  server_type  = var.server_type
+  ssh_keys     = var.ssh_keys
+  user_data    = var.user_data
+
+  dynamic "network" {
+    for_each = var.network
+    content {
+      alias_ips  = network.value["alias_ips"]
+      ip         = network.value["ip"]
+      network_id = network.value["network_id"]
+    }
+  }
+
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -106,7 +106,7 @@ variable "next_hop_instance" {
 }
 
 variable "next_hop_instance_zone" {
-  description = "(optional)"
+  description = "(optional) - The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL."
   type        = string
   default     = null
 }

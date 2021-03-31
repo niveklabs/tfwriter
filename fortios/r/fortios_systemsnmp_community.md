@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_systemsnmp_community" {
   source = "./modules/fortios/r/fortios_systemsnmp_community"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # events - (optional) is a type of string
   events = null
   # fosid - (required) is a type of number
@@ -79,6 +81,12 @@ module "fortios_systemsnmp_community" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "events" {
   description = "(optional)"
   type        = string
@@ -196,20 +204,21 @@ variable "hosts6" {
 
 ```terraform
 resource "fortios_systemsnmp_community" "this" {
-  events           = var.events
-  fosid            = var.fosid
-  name             = var.name
-  query_v1_port    = var.query_v1_port
-  query_v1_status  = var.query_v1_status
-  query_v2c_port   = var.query_v2c_port
-  query_v2c_status = var.query_v2c_status
-  status           = var.status
-  trap_v1_lport    = var.trap_v1_lport
-  trap_v1_rport    = var.trap_v1_rport
-  trap_v1_status   = var.trap_v1_status
-  trap_v2c_lport   = var.trap_v2c_lport
-  trap_v2c_rport   = var.trap_v2c_rport
-  trap_v2c_status  = var.trap_v2c_status
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  events                = var.events
+  fosid                 = var.fosid
+  name                  = var.name
+  query_v1_port         = var.query_v1_port
+  query_v1_status       = var.query_v1_status
+  query_v2c_port        = var.query_v2c_port
+  query_v2c_status      = var.query_v2c_status
+  status                = var.status
+  trap_v1_lport         = var.trap_v1_lport
+  trap_v1_rport         = var.trap_v1_rport
+  trap_v1_status        = var.trap_v1_status
+  trap_v2c_lport        = var.trap_v2c_lport
+  trap_v2c_rport        = var.trap_v2c_rport
+  trap_v2c_status       = var.trap_v2c_status
 
   dynamic "hosts" {
     for_each = var.hosts

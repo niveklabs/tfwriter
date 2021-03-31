@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_system_ha" {
   authentication = null
   # cpu_threshold - (optional) is a type of string
   cpu_threshold = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # encryption - (optional) is a type of string
   encryption = null
   # ftp_proxy_threshold - (optional) is a type of string
@@ -77,6 +79,8 @@ module "fortios_system_ha" {
   link_failed_signal = null
   # load_balance_all - (optional) is a type of string
   load_balance_all = null
+  # logical_sn - (optional) is a type of string
+  logical_sn = null
   # memory_compatible_mode - (optional) is a type of string
   memory_compatible_mode = null
   # memory_threshold - (optional) is a type of string
@@ -101,6 +105,8 @@ module "fortios_system_ha" {
   pingserver_flip_timeout = null
   # pingserver_monitor_interface - (optional) is a type of string
   pingserver_monitor_interface = null
+  # pingserver_secondary_force_reset - (optional) is a type of string
+  pingserver_secondary_force_reset = null
   # pingserver_slave_force_reset - (optional) is a type of string
   pingserver_slave_force_reset = null
   # pop3_proxy_threshold - (optional) is a type of string
@@ -129,6 +135,8 @@ module "fortios_system_ha" {
   session_sync_dev = null
   # smtp_proxy_threshold - (optional) is a type of string
   smtp_proxy_threshold = null
+  # ssd_failover - (optional) is a type of string
+  ssd_failover = null
   # standalone_config_sync - (optional) is a type of string
   standalone_config_sync = null
   # standalone_mgmt_vdom - (optional) is a type of string
@@ -163,15 +171,16 @@ module "fortios_system_ha" {
   }]
 
   secondary_vcluster = [{
-    monitor                       = null
-    override                      = null
-    override_wait_time            = null
-    pingserver_failover_threshold = null
-    pingserver_monitor_interface  = null
-    pingserver_slave_force_reset  = null
-    priority                      = null
-    vcluster_id                   = null
-    vdom                          = null
+    monitor                          = null
+    override                         = null
+    override_wait_time               = null
+    pingserver_failover_threshold    = null
+    pingserver_monitor_interface     = null
+    pingserver_secondary_force_reset = null
+    pingserver_slave_force_reset     = null
+    priority                         = null
+    vcluster_id                      = null
+    vdom                             = null
   }]
 }
 ```
@@ -200,6 +209,12 @@ variable "authentication" {
 }
 
 variable "cpu_threshold" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -331,6 +346,12 @@ variable "load_balance_all" {
   default     = null
 }
 
+variable "logical_sn" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "memory_compatible_mode" {
   description = "(optional)"
   type        = string
@@ -398,6 +419,12 @@ variable "pingserver_flip_timeout" {
 }
 
 variable "pingserver_monitor_interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "pingserver_secondary_force_reset" {
   description = "(optional)"
   type        = string
   default     = null
@@ -482,6 +509,12 @@ variable "session_sync_dev" {
 }
 
 variable "smtp_proxy_threshold" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssd_failover" {
   description = "(optional)"
   type        = string
   default     = null
@@ -577,15 +610,16 @@ variable "secondary_vcluster" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      monitor                       = string
-      override                      = string
-      override_wait_time            = number
-      pingserver_failover_threshold = number
-      pingserver_monitor_interface  = string
-      pingserver_slave_force_reset  = string
-      priority                      = number
-      vcluster_id                   = number
-      vdom                          = string
+      monitor                          = string
+      override                         = string
+      override_wait_time               = number
+      pingserver_failover_threshold    = number
+      pingserver_monitor_interface     = string
+      pingserver_secondary_force_reset = string
+      pingserver_slave_force_reset     = string
+      priority                         = number
+      vcluster_id                      = number
+      vdom                             = string
     }
   ))
   default = []
@@ -598,69 +632,73 @@ variable "secondary_vcluster" {
 
 ```terraform
 resource "fortios_system_ha" "this" {
-  arps                          = var.arps
-  arps_interval                 = var.arps_interval
-  authentication                = var.authentication
-  cpu_threshold                 = var.cpu_threshold
-  encryption                    = var.encryption
-  ftp_proxy_threshold           = var.ftp_proxy_threshold
-  gratuitous_arps               = var.gratuitous_arps
-  group_id                      = var.group_id
-  group_name                    = var.group_name
-  ha_direct                     = var.ha_direct
-  ha_eth_type                   = var.ha_eth_type
-  ha_mgmt_status                = var.ha_mgmt_status
-  ha_uptime_diff_margin         = var.ha_uptime_diff_margin
-  hb_interval                   = var.hb_interval
-  hb_lost_threshold             = var.hb_lost_threshold
-  hbdev                         = var.hbdev
-  hc_eth_type                   = var.hc_eth_type
-  hello_holddown                = var.hello_holddown
-  http_proxy_threshold          = var.http_proxy_threshold
-  imap_proxy_threshold          = var.imap_proxy_threshold
-  inter_cluster_session_sync    = var.inter_cluster_session_sync
-  key                           = var.key
-  l2ep_eth_type                 = var.l2ep_eth_type
-  link_failed_signal            = var.link_failed_signal
-  load_balance_all              = var.load_balance_all
-  memory_compatible_mode        = var.memory_compatible_mode
-  memory_threshold              = var.memory_threshold
-  mode                          = var.mode
-  monitor                       = var.monitor
-  multicast_ttl                 = var.multicast_ttl
-  nntp_proxy_threshold          = var.nntp_proxy_threshold
-  override                      = var.override
-  override_wait_time            = var.override_wait_time
-  password                      = var.password
-  pingserver_failover_threshold = var.pingserver_failover_threshold
-  pingserver_flip_timeout       = var.pingserver_flip_timeout
-  pingserver_monitor_interface  = var.pingserver_monitor_interface
-  pingserver_slave_force_reset  = var.pingserver_slave_force_reset
-  pop3_proxy_threshold          = var.pop3_proxy_threshold
-  priority                      = var.priority
-  route_hold                    = var.route_hold
-  route_ttl                     = var.route_ttl
-  route_wait                    = var.route_wait
-  schedule                      = var.schedule
-  session_pickup                = var.session_pickup
-  session_pickup_connectionless = var.session_pickup_connectionless
-  session_pickup_delay          = var.session_pickup_delay
-  session_pickup_expectation    = var.session_pickup_expectation
-  session_pickup_nat            = var.session_pickup_nat
-  session_sync_dev              = var.session_sync_dev
-  smtp_proxy_threshold          = var.smtp_proxy_threshold
-  standalone_config_sync        = var.standalone_config_sync
-  standalone_mgmt_vdom          = var.standalone_mgmt_vdom
-  sync_config                   = var.sync_config
-  sync_packet_balance           = var.sync_packet_balance
-  unicast_hb                    = var.unicast_hb
-  unicast_hb_netmask            = var.unicast_hb_netmask
-  unicast_hb_peerip             = var.unicast_hb_peerip
-  uninterruptible_upgrade       = var.uninterruptible_upgrade
-  vcluster2                     = var.vcluster2
-  vcluster_id                   = var.vcluster_id
-  vdom                          = var.vdom
-  weight                        = var.weight
+  arps                             = var.arps
+  arps_interval                    = var.arps_interval
+  authentication                   = var.authentication
+  cpu_threshold                    = var.cpu_threshold
+  dynamic_sort_subtable            = var.dynamic_sort_subtable
+  encryption                       = var.encryption
+  ftp_proxy_threshold              = var.ftp_proxy_threshold
+  gratuitous_arps                  = var.gratuitous_arps
+  group_id                         = var.group_id
+  group_name                       = var.group_name
+  ha_direct                        = var.ha_direct
+  ha_eth_type                      = var.ha_eth_type
+  ha_mgmt_status                   = var.ha_mgmt_status
+  ha_uptime_diff_margin            = var.ha_uptime_diff_margin
+  hb_interval                      = var.hb_interval
+  hb_lost_threshold                = var.hb_lost_threshold
+  hbdev                            = var.hbdev
+  hc_eth_type                      = var.hc_eth_type
+  hello_holddown                   = var.hello_holddown
+  http_proxy_threshold             = var.http_proxy_threshold
+  imap_proxy_threshold             = var.imap_proxy_threshold
+  inter_cluster_session_sync       = var.inter_cluster_session_sync
+  key                              = var.key
+  l2ep_eth_type                    = var.l2ep_eth_type
+  link_failed_signal               = var.link_failed_signal
+  load_balance_all                 = var.load_balance_all
+  logical_sn                       = var.logical_sn
+  memory_compatible_mode           = var.memory_compatible_mode
+  memory_threshold                 = var.memory_threshold
+  mode                             = var.mode
+  monitor                          = var.monitor
+  multicast_ttl                    = var.multicast_ttl
+  nntp_proxy_threshold             = var.nntp_proxy_threshold
+  override                         = var.override
+  override_wait_time               = var.override_wait_time
+  password                         = var.password
+  pingserver_failover_threshold    = var.pingserver_failover_threshold
+  pingserver_flip_timeout          = var.pingserver_flip_timeout
+  pingserver_monitor_interface     = var.pingserver_monitor_interface
+  pingserver_secondary_force_reset = var.pingserver_secondary_force_reset
+  pingserver_slave_force_reset     = var.pingserver_slave_force_reset
+  pop3_proxy_threshold             = var.pop3_proxy_threshold
+  priority                         = var.priority
+  route_hold                       = var.route_hold
+  route_ttl                        = var.route_ttl
+  route_wait                       = var.route_wait
+  schedule                         = var.schedule
+  session_pickup                   = var.session_pickup
+  session_pickup_connectionless    = var.session_pickup_connectionless
+  session_pickup_delay             = var.session_pickup_delay
+  session_pickup_expectation       = var.session_pickup_expectation
+  session_pickup_nat               = var.session_pickup_nat
+  session_sync_dev                 = var.session_sync_dev
+  smtp_proxy_threshold             = var.smtp_proxy_threshold
+  ssd_failover                     = var.ssd_failover
+  standalone_config_sync           = var.standalone_config_sync
+  standalone_mgmt_vdom             = var.standalone_mgmt_vdom
+  sync_config                      = var.sync_config
+  sync_packet_balance              = var.sync_packet_balance
+  unicast_hb                       = var.unicast_hb
+  unicast_hb_netmask               = var.unicast_hb_netmask
+  unicast_hb_peerip                = var.unicast_hb_peerip
+  uninterruptible_upgrade          = var.uninterruptible_upgrade
+  vcluster2                        = var.vcluster2
+  vcluster_id                      = var.vcluster_id
+  vdom                             = var.vdom
+  weight                           = var.weight
 
   dynamic "ha_mgmt_interfaces" {
     for_each = var.ha_mgmt_interfaces
@@ -676,15 +714,16 @@ resource "fortios_system_ha" "this" {
   dynamic "secondary_vcluster" {
     for_each = var.secondary_vcluster
     content {
-      monitor                       = secondary_vcluster.value["monitor"]
-      override                      = secondary_vcluster.value["override"]
-      override_wait_time            = secondary_vcluster.value["override_wait_time"]
-      pingserver_failover_threshold = secondary_vcluster.value["pingserver_failover_threshold"]
-      pingserver_monitor_interface  = secondary_vcluster.value["pingserver_monitor_interface"]
-      pingserver_slave_force_reset  = secondary_vcluster.value["pingserver_slave_force_reset"]
-      priority                      = secondary_vcluster.value["priority"]
-      vcluster_id                   = secondary_vcluster.value["vcluster_id"]
-      vdom                          = secondary_vcluster.value["vdom"]
+      monitor                          = secondary_vcluster.value["monitor"]
+      override                         = secondary_vcluster.value["override"]
+      override_wait_time               = secondary_vcluster.value["override_wait_time"]
+      pingserver_failover_threshold    = secondary_vcluster.value["pingserver_failover_threshold"]
+      pingserver_monitor_interface     = secondary_vcluster.value["pingserver_monitor_interface"]
+      pingserver_secondary_force_reset = secondary_vcluster.value["pingserver_secondary_force_reset"]
+      pingserver_slave_force_reset     = secondary_vcluster.value["pingserver_slave_force_reset"]
+      priority                         = secondary_vcluster.value["priority"]
+      vcluster_id                      = secondary_vcluster.value["vcluster_id"]
+      vdom                             = secondary_vcluster.value["vdom"]
     }
   }
 
@@ -821,6 +860,11 @@ output "load_balance_all" {
   value       = fortios_system_ha.this.load_balance_all
 }
 
+output "logical_sn" {
+  description = "returns a string"
+  value       = fortios_system_ha.this.logical_sn
+}
+
 output "memory_compatible_mode" {
   description = "returns a string"
   value       = fortios_system_ha.this.memory_compatible_mode
@@ -874,6 +918,11 @@ output "pingserver_flip_timeout" {
 output "pingserver_monitor_interface" {
   description = "returns a string"
   value       = fortios_system_ha.this.pingserver_monitor_interface
+}
+
+output "pingserver_secondary_force_reset" {
+  description = "returns a string"
+  value       = fortios_system_ha.this.pingserver_secondary_force_reset
 }
 
 output "pingserver_slave_force_reset" {
@@ -944,6 +993,11 @@ output "session_sync_dev" {
 output "smtp_proxy_threshold" {
   description = "returns a string"
   value       = fortios_system_ha.this.smtp_proxy_threshold
+}
+
+output "ssd_failover" {
+  description = "returns a string"
+  value       = fortios_system_ha.this.ssd_failover
 }
 
 output "standalone_config_sync" {

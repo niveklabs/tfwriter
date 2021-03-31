@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -43,10 +43,16 @@ module "aws_elasticache_replication_group" {
   engine = null
   # engine_version - (optional) is a type of string
   engine_version = null
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = null
+  # global_replication_group_id - (optional) is a type of string
+  global_replication_group_id = null
   # kms_key_id - (optional) is a type of string
   kms_key_id = null
   # maintenance_window - (optional) is a type of string
   maintenance_window = null
+  # multi_az_enabled - (optional) is a type of bool
+  multi_az_enabled = null
   # node_type - (optional) is a type of string
   node_type = null
   # notification_topic_arn - (optional) is a type of string
@@ -146,6 +152,18 @@ variable "engine_version" {
   default     = null
 }
 
+variable "final_snapshot_identifier" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "global_replication_group_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "kms_key_id" {
   description = "(optional)"
   type        = string
@@ -155,6 +173,12 @@ variable "kms_key_id" {
 variable "maintenance_window" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "multi_az_enabled" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -290,8 +314,11 @@ resource "aws_elasticache_replication_group" "this" {
   availability_zones            = var.availability_zones
   engine                        = var.engine
   engine_version                = var.engine_version
+  final_snapshot_identifier     = var.final_snapshot_identifier
+  global_replication_group_id   = var.global_replication_group_id
   kms_key_id                    = var.kms_key_id
   maintenance_window            = var.maintenance_window
+  multi_az_enabled              = var.multi_az_enabled
   node_type                     = var.node_type
   notification_topic_arn        = var.notification_topic_arn
   number_cache_clusters         = var.number_cache_clusters
@@ -339,6 +366,21 @@ output "apply_immediately" {
   value       = aws_elasticache_replication_group.this.apply_immediately
 }
 
+output "arn" {
+  description = "returns a string"
+  value       = aws_elasticache_replication_group.this.arn
+}
+
+output "at_rest_encryption_enabled" {
+  description = "returns a bool"
+  value       = aws_elasticache_replication_group.this.at_rest_encryption_enabled
+}
+
+output "cluster_enabled" {
+  description = "returns a bool"
+  value       = aws_elasticache_replication_group.this.cluster_enabled
+}
+
 output "configuration_endpoint_address" {
   description = "returns a string"
   value       = aws_elasticache_replication_group.this.configuration_endpoint_address
@@ -347,6 +389,11 @@ output "configuration_endpoint_address" {
 output "engine_version" {
   description = "returns a string"
   value       = aws_elasticache_replication_group.this.engine_version
+}
+
+output "global_replication_group_id" {
+  description = "returns a string"
+  value       = aws_elasticache_replication_group.this.global_replication_group_id
 }
 
 output "id" {
@@ -384,6 +431,11 @@ output "primary_endpoint_address" {
   value       = aws_elasticache_replication_group.this.primary_endpoint_address
 }
 
+output "reader_endpoint_address" {
+  description = "returns a string"
+  value       = aws_elasticache_replication_group.this.reader_endpoint_address
+}
+
 output "security_group_ids" {
   description = "returns a set of string"
   value       = aws_elasticache_replication_group.this.security_group_ids
@@ -402,6 +454,11 @@ output "snapshot_window" {
 output "subnet_group_name" {
   description = "returns a string"
   value       = aws_elasticache_replication_group.this.subnet_group_name
+}
+
+output "transit_encryption_enabled" {
+  description = "returns a bool"
+  value       = aws_elasticache_replication_group.this.transit_encryption_enabled
 }
 
 output "this" {

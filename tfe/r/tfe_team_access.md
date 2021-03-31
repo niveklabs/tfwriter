@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    tfe = ">= 0.23.0"
+    tfe = ">= 0.24.0"
   }
 }
 ```
@@ -66,7 +66,7 @@ variable "workspace_id" {
 }
 
 variable "permissions" {
-  description = "nested block: NestingList, min items: 0, max items: 1"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       runs              = string

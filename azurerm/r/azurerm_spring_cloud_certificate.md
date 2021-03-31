@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -113,6 +113,11 @@ resource "azurerm_spring_cloud_certificate" "this" {
 output "id" {
   description = "returns a string"
   value       = azurerm_spring_cloud_certificate.this.id
+}
+
+output "thumbprint" {
+  description = "returns a string"
+  value       = azurerm_spring_cloud_certificate.this.thumbprint
 }
 
 output "this" {

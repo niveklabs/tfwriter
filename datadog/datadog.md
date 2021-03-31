@@ -12,7 +12,7 @@
 
 ```terraform
 provider "datadog" {
-  version = "2.18.1"
+  version = "2.24.0"
 
   # api_key - (optional) is a type of string
   api_key = null
@@ -32,6 +32,8 @@ provider "datadog" {
 
 - [datadog_dashboard](./r/datadog_dashboard.md)
 
+- [datadog_dashboard_json](./r/datadog_dashboard_json.md)
+
 - [datadog_dashboard_list](./r/datadog_dashboard_list.md)
 
 - [datadog_downtime](./r/datadog_downtime.md)
@@ -42,6 +44,8 @@ provider "datadog" {
 
 - [datadog_integration_aws_log_collection](./r/datadog_integration_aws_log_collection.md)
 
+- [datadog_integration_aws_tag_filter](./r/datadog_integration_aws_tag_filter.md)
+
 - [datadog_integration_azure](./r/datadog_integration_azure.md)
 
 - [datadog_integration_gcp](./r/datadog_integration_gcp.md)
@@ -49,6 +53,8 @@ provider "datadog" {
 - [datadog_integration_pagerduty](./r/datadog_integration_pagerduty.md)
 
 - [datadog_integration_pagerduty_service_object](./r/datadog_integration_pagerduty_service_object.md)
+
+- [datadog_integration_slack_channel](./r/datadog_integration_slack_channel.md)
 
 - [datadog_logs_archive](./r/datadog_logs_archive.md)
 
@@ -62,9 +68,13 @@ provider "datadog" {
 
 - [datadog_logs_integration_pipeline](./r/datadog_logs_integration_pipeline.md)
 
+- [datadog_logs_metric](./r/datadog_logs_metric.md)
+
 - [datadog_logs_pipeline_order](./r/datadog_logs_pipeline_order.md)
 
 - [datadog_metric_metadata](./r/datadog_metric_metadata.md)
+
+- [datadog_metric_tag_configuration](./r/datadog_metric_tag_configuration.md)
 
 - [datadog_monitor](./r/datadog_monitor.md)
 
@@ -77,6 +87,8 @@ provider "datadog" {
 - [datadog_security_monitoring_rule](./r/datadog_security_monitoring_rule.md)
 
 - [datadog_service_level_objective](./r/datadog_service_level_objective.md)
+
+- [datadog_slo_correction](./r/datadog_slo_correction.md)
 
 - [datadog_synthetics_global_variable](./r/datadog_synthetics_global_variable.md)
 

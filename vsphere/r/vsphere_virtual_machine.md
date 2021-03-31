@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    vsphere = ">= 1.24.3"
+    vsphere = ">= 1.25.0"
   }
 }
 ```
@@ -246,6 +246,7 @@ module "vsphere_virtual_machine" {
 
   ovf_deploy = [{
     allow_unverified_ssl_cert = null
+    deployment_option         = null
     disk_provisioning         = null
     ip_allocation_policy      = null
     ip_protocol               = null
@@ -764,6 +765,7 @@ variable "ovf_deploy" {
   type = set(object(
     {
       allow_unverified_ssl_cert = bool
+      deployment_option         = string
       disk_provisioning         = string
       ip_allocation_policy      = string
       ip_protocol               = string
@@ -974,6 +976,7 @@ resource "vsphere_virtual_machine" "this" {
     for_each = var.ovf_deploy
     content {
       allow_unverified_ssl_cert = ovf_deploy.value["allow_unverified_ssl_cert"]
+      deployment_option         = ovf_deploy.value["deployment_option"]
       disk_provisioning         = ovf_deploy.value["disk_provisioning"]
       ip_allocation_policy      = ovf_deploy.value["ip_allocation_policy"]
       ip_protocol               = ovf_deploy.value["ip_protocol"]

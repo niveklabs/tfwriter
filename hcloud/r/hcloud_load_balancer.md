@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -94,7 +94,7 @@ variable "algorithm" {
 }
 
 variable "target" {
-  description = "nested block: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
       server_id      = number

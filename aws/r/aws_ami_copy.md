@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -48,6 +48,7 @@ module "aws_ami_copy" {
     encrypted             = null
     iops                  = null
     snapshot_id           = null
+    throughput            = null
     volume_size           = null
     volume_type           = null
   }]
@@ -118,6 +119,7 @@ variable "ebs_block_device" {
       encrypted             = bool
       iops                  = number
       snapshot_id           = string
+      throughput            = number
       volume_size           = number
       volume_type           = string
     }
@@ -207,6 +209,11 @@ output "ena_support" {
   value       = aws_ami_copy.this.ena_support
 }
 
+output "hypervisor" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.hypervisor
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ami_copy.this.id
@@ -215,6 +222,16 @@ output "id" {
 output "image_location" {
   description = "returns a string"
   value       = aws_ami_copy.this.image_location
+}
+
+output "image_owner_alias" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.image_owner_alias
+}
+
+output "image_type" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.image_type
 }
 
 output "kernel_id" {
@@ -230,6 +247,26 @@ output "kms_key_id" {
 output "manage_ebs_snapshots" {
   description = "returns a bool"
   value       = aws_ami_copy.this.manage_ebs_snapshots
+}
+
+output "owner_id" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.owner_id
+}
+
+output "platform" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.platform
+}
+
+output "platform_details" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.platform_details
+}
+
+output "public" {
+  description = "returns a bool"
+  value       = aws_ami_copy.this.public
 }
 
 output "ramdisk_id" {
@@ -250,6 +287,11 @@ output "root_snapshot_id" {
 output "sriov_net_support" {
   description = "returns a string"
   value       = aws_ami_copy.this.sriov_net_support
+}
+
+output "usage_operation" {
+  description = "returns a string"
+  value       = aws_ami_copy.this.usage_operation
 }
 
 output "virtualization_type" {

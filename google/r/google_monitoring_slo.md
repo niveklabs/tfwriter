@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -43,6 +43,9 @@ module "google_monitoring_slo" {
   slo_id = null
 
   basic_sli = [{
+    availability = [{
+      enabled = null
+    }]
     latency = [{
       threshold = null
     }]
@@ -76,6 +79,9 @@ module "google_monitoring_slo" {
     good_bad_metric_filter = null
     good_total_ratio_threshold = [{
       basic_sli_performance = [{
+        availability = [{
+          enabled = null
+        }]
         latency = [{
           threshold = null
         }]
@@ -167,6 +173,11 @@ variable "basic_sli" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      availability = list(object(
+        {
+          enabled = bool
+        }
+      ))
       latency = list(object(
         {
           threshold = string
@@ -228,6 +239,11 @@ variable "windows_based_sli" {
         {
           basic_sli_performance = list(object(
             {
+              availability = list(object(
+                {
+                  enabled = bool
+                }
+              ))
               latency = list(object(
                 {
                   threshold = string
@@ -313,6 +329,13 @@ resource "google_monitoring_slo" "this" {
       method   = basic_sli.value["method"]
       version  = basic_sli.value["version"]
 
+      dynamic "availability" {
+        for_each = basic_sli.value.availability
+        content {
+          enabled = availability.value["enabled"]
+        }
+      }
+
       dynamic "latency" {
         for_each = basic_sli.value.latency
         content {
@@ -381,6 +404,13 @@ resource "google_monitoring_slo" "this" {
               location = basic_sli_performance.value["location"]
               method   = basic_sli_performance.value["method"]
               version  = basic_sli_performance.value["version"]
+
+              dynamic "availability" {
+                for_each = basic_sli_performance.value.availability
+                content {
+                  enabled = availability.value["enabled"]
+                }
+              }
 
               dynamic "latency" {
                 for_each = basic_sli_performance.value.latency

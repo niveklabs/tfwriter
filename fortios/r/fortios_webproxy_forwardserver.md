@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,10 +41,14 @@ module "fortios_webproxy_forwardserver" {
   monitor = null
   # name - (optional) is a type of string
   name = null
+  # password - (optional) is a type of string
+  password = null
   # port - (optional) is a type of number
   port = null
   # server_down_option - (optional) is a type of string
   server_down_option = null
+  # username - (optional) is a type of string
+  username = null
 }
 ```
 
@@ -95,6 +99,12 @@ variable "name" {
   default     = null
 }
 
+variable "password" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "port" {
   description = "(optional)"
   type        = number
@@ -102,6 +112,12 @@ variable "port" {
 }
 
 variable "server_down_option" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "username" {
   description = "(optional)"
   type        = string
   default     = null
@@ -121,8 +137,10 @@ resource "fortios_webproxy_forwardserver" "this" {
   ip                 = var.ip
   monitor            = var.monitor
   name               = var.name
+  password           = var.password
   port               = var.port
   server_down_option = var.server_down_option
+  username           = var.username
 }
 ```
 
@@ -179,6 +197,11 @@ output "port" {
 output "server_down_option" {
   description = "returns a string"
   value       = fortios_webproxy_forwardserver.this.server_down_option
+}
+
+output "username" {
+  description = "returns a string"
+  value       = fortios_webproxy_forwardserver.this.username
 }
 
 output "this" {

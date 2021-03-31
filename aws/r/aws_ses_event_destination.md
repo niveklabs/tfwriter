@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -156,6 +156,11 @@ resource "aws_ses_event_destination" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_ses_event_destination.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ses_event_destination.this.id

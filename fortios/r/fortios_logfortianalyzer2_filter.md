@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_logfortianalyzer2_filter" {
   dlp_archive = null
   # dns - (optional) is a type of string
   dns = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # filter - (optional) is a type of string
   filter = null
   # filter_type - (optional) is a type of string
@@ -57,6 +59,13 @@ module "fortios_logfortianalyzer2_filter" {
   ssh = null
   # voip - (optional) is a type of string
   voip = null
+
+  free_style = [{
+    category    = null
+    filter      = null
+    filter_type = null
+    id          = null
+  }]
 }
 ```
 
@@ -78,6 +87,12 @@ variable "dlp_archive" {
 }
 
 variable "dns" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -154,6 +169,19 @@ variable "voip" {
   type        = string
   default     = null
 }
+
+variable "free_style" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      category    = string
+      filter      = string
+      filter_type = string
+      id          = number
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -165,6 +193,7 @@ resource "fortios_logfortianalyzer2_filter" "this" {
   anomaly               = var.anomaly
   dlp_archive           = var.dlp_archive
   dns                   = var.dns
+  dynamic_sort_subtable = var.dynamic_sort_subtable
   filter                = var.filter
   filter_type           = var.filter_type
   forward_traffic       = var.forward_traffic
@@ -177,6 +206,17 @@ resource "fortios_logfortianalyzer2_filter" "this" {
   sniffer_traffic       = var.sniffer_traffic
   ssh                   = var.ssh
   voip                  = var.voip
+
+  dynamic "free_style" {
+    for_each = var.free_style
+    content {
+      category    = free_style.value["category"]
+      filter      = free_style.value["filter"]
+      filter_type = free_style.value["filter_type"]
+      id          = free_style.value["id"]
+    }
+  }
+
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_wirelesscontroller_intercontroller" {
   source = "./modules/fortios/r/fortios_wirelesscontroller_intercontroller"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fast_failover_max - (optional) is a type of number
   fast_failover_max = null
   # fast_failover_wait - (optional) is a type of number
@@ -52,6 +54,12 @@ module "fortios_wirelesscontroller_intercontroller" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fast_failover_max" {
   description = "(optional)"
   type        = number
@@ -102,6 +110,7 @@ variable "inter_controller_peer" {
 
 ```terraform
 resource "fortios_wirelesscontroller_intercontroller" "this" {
+  dynamic_sort_subtable = var.dynamic_sort_subtable
   fast_failover_max     = var.fast_failover_max
   fast_failover_wait    = var.fast_failover_wait
   inter_controller_key  = var.inter_controller_key

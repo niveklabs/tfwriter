@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_router_ripng" {
   default_information_originate = null
   # default_metric - (optional) is a type of number
   default_metric = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # garbage_timer - (optional) is a type of number
   garbage_timer = null
   # max_out_metric - (optional) is a type of number
@@ -114,6 +116,12 @@ variable "default_information_originate" {
 variable "default_metric" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -262,6 +270,7 @@ variable "redistribute" {
 resource "fortios_router_ripng" "this" {
   default_information_originate = var.default_information_originate
   default_metric                = var.default_metric
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
   garbage_timer                 = var.garbage_timer
   max_out_metric                = var.max_out_metric
   timeout_timer                 = var.timeout_timer

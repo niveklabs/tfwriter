@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_mobiletunnel" {
   source = "./modules/fortios/r/fortios_system_mobiletunnel"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # hash_algorithm - (required) is a type of string
   hash_algorithm = null
   # home_address - (optional) is a type of string
@@ -69,6 +71,12 @@ module "fortios_system_mobiletunnel" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "hash_algorithm" {
   description = "(required)"
   type        = string
@@ -162,20 +170,21 @@ variable "network" {
 
 ```terraform
 resource "fortios_system_mobiletunnel" "this" {
-  hash_algorithm    = var.hash_algorithm
-  home_address      = var.home_address
-  home_agent        = var.home_agent
-  lifetime          = var.lifetime
-  n_mhae_key        = var.n_mhae_key
-  n_mhae_key_type   = var.n_mhae_key_type
-  n_mhae_spi        = var.n_mhae_spi
-  name              = var.name
-  reg_interval      = var.reg_interval
-  reg_retry         = var.reg_retry
-  renew_interval    = var.renew_interval
-  roaming_interface = var.roaming_interface
-  status            = var.status
-  tunnel_mode       = var.tunnel_mode
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  hash_algorithm        = var.hash_algorithm
+  home_address          = var.home_address
+  home_agent            = var.home_agent
+  lifetime              = var.lifetime
+  n_mhae_key            = var.n_mhae_key
+  n_mhae_key_type       = var.n_mhae_key_type
+  n_mhae_spi            = var.n_mhae_spi
+  name                  = var.name
+  reg_interval          = var.reg_interval
+  reg_retry             = var.reg_retry
+  renew_interval        = var.renew_interval
+  roaming_interface     = var.roaming_interface
+  status                = var.status
+  tunnel_mode           = var.tunnel_mode
 
   dynamic "network" {
     for_each = var.network

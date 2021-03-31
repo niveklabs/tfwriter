@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -123,7 +123,12 @@ module "aws_autoscaling_group" {
         version              = null
       }]
       override = [{
-        instance_type     = null
+        instance_type = null
+        launch_template_specification = [{
+          launch_template_id   = null
+          launch_template_name = null
+          version              = null
+        }]
         weighted_capacity = null
       }]
     }]
@@ -376,7 +381,14 @@ variable "mixed_instances_policy" {
           ))
           override = list(object(
             {
-              instance_type     = string
+              instance_type = string
+              launch_template_specification = list(object(
+                {
+                  launch_template_id   = string
+                  launch_template_name = string
+                  version              = string
+                }
+              ))
               weighted_capacity = string
             }
           ))
@@ -517,6 +529,16 @@ resource "aws_autoscaling_group" "this" {
             content {
               instance_type     = override.value["instance_type"]
               weighted_capacity = override.value["weighted_capacity"]
+
+              dynamic "launch_template_specification" {
+                for_each = override.value.launch_template_specification
+                content {
+                  launch_template_id   = launch_template_specification.value["launch_template_id"]
+                  launch_template_name = launch_template_specification.value["launch_template_name"]
+                  version              = launch_template_specification.value["version"]
+                }
+              }
+
             }
           }
 

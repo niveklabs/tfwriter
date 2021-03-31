@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,12 +29,8 @@ module "akamai_appsec_match_target_sequence" {
 
   # config_id - (required) is a type of number
   config_id = null
-  # json - (optional) is a type of string
-  json = null
-  # sequence_map - (optional) is a type of map of string
-  sequence_map = {}
-  # type - (required) is a type of string
-  type = null
+  # match_target_sequence - (optional) is a type of string
+  match_target_sequence = null
   # version - (required) is a type of number
   version = null
 }
@@ -50,21 +46,10 @@ variable "config_id" {
   type        = number
 }
 
-variable "json" {
+variable "match_target_sequence" {
   description = "(optional)"
   type        = string
   default     = null
-}
-
-variable "sequence_map" {
-  description = "(optional)"
-  type        = map(string)
-  default     = null
-}
-
-variable "type" {
-  description = "(required)"
-  type        = string
 }
 
 variable "version" {
@@ -79,11 +64,9 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_match_target_sequence" "this" {
-  config_id    = var.config_id
-  json         = var.json
-  sequence_map = var.sequence_map
-  type         = var.type
-  version      = var.version
+  config_id             = var.config_id
+  match_target_sequence = var.match_target_sequence
+  version               = var.version
 }
 ```
 

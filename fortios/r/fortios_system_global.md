@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -93,6 +93,8 @@ module "fortios_system_global" {
   auth_session_limit = null
   # auto_auth_extension_device - (optional) is a type of string
   auto_auth_extension_device = null
+  # autorun_log_fsck - (optional) is a type of string
+  autorun_log_fsck = null
   # av_affinity - (optional) is a type of string
   av_affinity = null
   # av_failopen - (optional) is a type of string
@@ -149,10 +151,14 @@ module "fortios_system_global" {
   endpoint_control_portal_port = null
   # failtime - (optional) is a type of number
   failtime = null
+  # faz_disk_buffer_size - (optional) is a type of number
+  faz_disk_buffer_size = null
   # fds_statistics - (optional) is a type of string
   fds_statistics = null
   # fds_statistics_period - (optional) is a type of number
   fds_statistics_period = null
+  # fec_port - (optional) is a type of number
+  fec_port = null
   # fgd_alert_subscription - (optional) is a type of string
   fgd_alert_subscription = null
   # fortiextender - (optional) is a type of string
@@ -161,20 +167,38 @@ module "fortios_system_global" {
   fortiextender_data_port = null
   # fortiextender_vlan_mode - (optional) is a type of string
   fortiextender_vlan_mode = null
+  # fortiipam_integration - (optional) is a type of string
+  fortiipam_integration = null
   # fortiservice_port - (optional) is a type of number
   fortiservice_port = null
+  # fortitoken_cloud - (optional) is a type of string
+  fortitoken_cloud = null
+  # gui_allow_default_hostname - (optional) is a type of string
+  gui_allow_default_hostname = null
   # gui_certificates - (optional) is a type of string
   gui_certificates = null
   # gui_custom_language - (optional) is a type of string
   gui_custom_language = null
   # gui_date_format - (optional) is a type of string
   gui_date_format = null
+  # gui_date_time_source - (optional) is a type of string
+  gui_date_time_source = null
   # gui_device_latitude - (optional) is a type of string
   gui_device_latitude = null
   # gui_device_longitude - (optional) is a type of string
   gui_device_longitude = null
   # gui_display_hostname - (optional) is a type of string
   gui_display_hostname = null
+  # gui_firmware_upgrade_setup_warning - (optional) is a type of string
+  gui_firmware_upgrade_setup_warning = null
+  # gui_firmware_upgrade_warning - (optional) is a type of string
+  gui_firmware_upgrade_warning = null
+  # gui_forticare_registration_setup_warning - (optional) is a type of string
+  gui_forticare_registration_setup_warning = null
+  # gui_fortigate_cloud_sandbox - (optional) is a type of string
+  gui_fortigate_cloud_sandbox = null
+  # gui_fortisandbox_cloud - (optional) is a type of string
+  gui_fortisandbox_cloud = null
   # gui_ipv6 - (optional) is a type of string
   gui_ipv6 = null
   # gui_lines_per_page - (optional) is a type of number
@@ -189,6 +213,8 @@ module "fortios_system_global" {
   hostname = null
   # igmp_state_limit - (optional) is a type of number
   igmp_state_limit = null
+  # ike_embryonic_limit - (optional) is a type of number
+  ike_embryonic_limit = null
   # interval - (optional) is a type of number
   interval = null
   # ip_src_port_range - (optional) is a type of string
@@ -205,6 +231,10 @@ module "fortios_system_global" {
   ipv6_accept_dad = null
   # ipv6_allow_anycast_probe - (optional) is a type of string
   ipv6_allow_anycast_probe = null
+  # ipv6_allow_traffic_redirect - (optional) is a type of string
+  ipv6_allow_traffic_redirect = null
+  # irq_time_accounting - (optional) is a type of string
+  irq_time_accounting = null
   # language - (optional) is a type of string
   language = null
   # ldapconntimeout - (optional) is a type of number
@@ -247,6 +277,8 @@ module "fortios_system_global" {
   multicast_forward = null
   # ndp_max_entry - (optional) is a type of number
   ndp_max_entry = null
+  # per_user_bal - (optional) is a type of string
+  per_user_bal = null
   # per_user_bwl - (optional) is a type of string
   per_user_bwl = null
   # policy_auth_concurrent - (optional) is a type of number
@@ -323,6 +355,8 @@ module "fortios_system_global" {
   ssl_static_key_ciphers = null
   # sslvpn_cipher_hardware_acceleration - (optional) is a type of string
   sslvpn_cipher_hardware_acceleration = null
+  # sslvpn_ems_sn_check - (optional) is a type of string
+  sslvpn_ems_sn_check = null
   # sslvpn_kxp_hardware_acceleration - (optional) is a type of string
   sslvpn_kxp_hardware_acceleration = null
   # sslvpn_max_worker_count - (optional) is a type of number
@@ -369,10 +403,20 @@ module "fortios_system_global" {
   two_factor_sms_expiry = null
   # udp_idle_timer - (optional) is a type of number
   udp_idle_timer = null
+  # url_filter_affinity - (optional) is a type of string
+  url_filter_affinity = null
+  # url_filter_count - (optional) is a type of number
+  url_filter_count = null
+  # user_device_store_max_devices - (optional) is a type of number
+  user_device_store_max_devices = null
+  # user_device_store_max_users - (optional) is a type of number
+  user_device_store_max_users = null
   # user_server_cert - (optional) is a type of string
   user_server_cert = null
   # vdom_admin - (optional) is a type of string
   vdom_admin = null
+  # vdom_mode - (optional) is a type of string
+  vdom_mode = null
   # vip_arp_range - (optional) is a type of string
   vip_arp_range = null
   # virtual_server_count - (optional) is a type of number
@@ -385,6 +429,8 @@ module "fortios_system_global" {
   wad_csvc_cs_count = null
   # wad_csvc_db_count - (optional) is a type of number
   wad_csvc_db_count = null
+  # wad_memory_change_granularity - (optional) is a type of number
+  wad_memory_change_granularity = null
   # wad_source_affinity - (optional) is a type of string
   wad_source_affinity = null
   # wad_worker_count - (optional) is a type of number
@@ -605,6 +651,12 @@ variable "auto_auth_extension_device" {
   default     = null
 }
 
+variable "autorun_log_fsck" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "av_affinity" {
   description = "(optional)"
   type        = string
@@ -773,6 +825,12 @@ variable "failtime" {
   default     = null
 }
 
+variable "faz_disk_buffer_size" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "fds_statistics" {
   description = "(optional)"
   type        = string
@@ -780,6 +838,12 @@ variable "fds_statistics" {
 }
 
 variable "fds_statistics_period" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_port" {
   description = "(optional)"
   type        = number
   default     = null
@@ -809,9 +873,27 @@ variable "fortiextender_vlan_mode" {
   default     = null
 }
 
+variable "fortiipam_integration" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fortiservice_port" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "fortitoken_cloud" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_allow_default_hostname" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -833,6 +915,12 @@ variable "gui_date_format" {
   default     = null
 }
 
+variable "gui_date_time_source" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "gui_device_latitude" {
   description = "(optional)"
   type        = string
@@ -846,6 +934,36 @@ variable "gui_device_longitude" {
 }
 
 variable "gui_display_hostname" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_firmware_upgrade_setup_warning" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_firmware_upgrade_warning" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_forticare_registration_setup_warning" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_fortigate_cloud_sandbox" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_fortisandbox_cloud" {
   description = "(optional)"
   type        = string
   default     = null
@@ -888,6 +1006,12 @@ variable "hostname" {
 }
 
 variable "igmp_state_limit" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ike_embryonic_limit" {
   description = "(optional)"
   type        = number
   default     = null
@@ -936,6 +1060,18 @@ variable "ipv6_accept_dad" {
 }
 
 variable "ipv6_allow_anycast_probe" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ipv6_allow_traffic_redirect" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "irq_time_accounting" {
   description = "(optional)"
   type        = string
   default     = null
@@ -1064,6 +1200,12 @@ variable "multicast_forward" {
 variable "ndp_max_entry" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "per_user_bal" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -1295,6 +1437,12 @@ variable "sslvpn_cipher_hardware_acceleration" {
   default     = null
 }
 
+variable "sslvpn_ems_sn_check" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "sslvpn_kxp_hardware_acceleration" {
   description = "(optional)"
   type        = string
@@ -1433,6 +1581,30 @@ variable "udp_idle_timer" {
   default     = null
 }
 
+variable "url_filter_affinity" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "url_filter_count" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "user_device_store_max_devices" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "user_device_store_max_users" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "user_server_cert" {
   description = "(optional)"
   type        = string
@@ -1440,6 +1612,12 @@ variable "user_server_cert" {
 }
 
 variable "vdom_admin" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "vdom_mode" {
   description = "(optional)"
   type        = string
   default     = null
@@ -1476,6 +1654,12 @@ variable "wad_csvc_cs_count" {
 }
 
 variable "wad_csvc_db_count" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "wad_memory_change_granularity" {
   description = "(optional)"
   type        = number
   default     = null
@@ -1530,192 +1714,215 @@ variable "wireless_controller_port" {
 
 ```terraform
 resource "fortios_system_global" "this" {
-  admin_concurrent                        = var.admin_concurrent
-  admin_console_timeout                   = var.admin_console_timeout
-  admin_hsts_max_age                      = var.admin_hsts_max_age
-  admin_https_pki_required                = var.admin_https_pki_required
-  admin_https_redirect                    = var.admin_https_redirect
-  admin_https_ssl_versions                = var.admin_https_ssl_versions
-  admin_lockout_duration                  = var.admin_lockout_duration
-  admin_lockout_threshold                 = var.admin_lockout_threshold
-  admin_login_max                         = var.admin_login_max
-  admin_maintainer                        = var.admin_maintainer
-  admin_port                              = var.admin_port
-  admin_restrict_local                    = var.admin_restrict_local
-  admin_scp                               = var.admin_scp
-  admin_server_cert                       = var.admin_server_cert
-  admin_sport                             = var.admin_sport
-  admin_ssh_grace_time                    = var.admin_ssh_grace_time
-  admin_ssh_password                      = var.admin_ssh_password
-  admin_ssh_port                          = var.admin_ssh_port
-  admin_ssh_v1                            = var.admin_ssh_v1
-  admin_telnet                            = var.admin_telnet
-  admin_telnet_port                       = var.admin_telnet_port
-  admintimeout                            = var.admintimeout
-  alias                                   = var.alias
-  allow_traffic_redirect                  = var.allow_traffic_redirect
-  anti_replay                             = var.anti_replay
-  arp_max_entry                           = var.arp_max_entry
-  asymroute                               = var.asymroute
-  auth_cert                               = var.auth_cert
-  auth_http_port                          = var.auth_http_port
-  auth_https_port                         = var.auth_https_port
-  auth_keepalive                          = var.auth_keepalive
-  auth_session_limit                      = var.auth_session_limit
-  auto_auth_extension_device              = var.auto_auth_extension_device
-  av_affinity                             = var.av_affinity
-  av_failopen                             = var.av_failopen
-  av_failopen_session                     = var.av_failopen_session
-  batch_cmdb                              = var.batch_cmdb
-  block_session_timer                     = var.block_session_timer
-  br_fdb_max_entry                        = var.br_fdb_max_entry
-  cert_chain_max                          = var.cert_chain_max
-  cfg_revert_timeout                      = var.cfg_revert_timeout
-  cfg_save                                = var.cfg_save
-  check_protocol_header                   = var.check_protocol_header
-  check_reset_range                       = var.check_reset_range
-  cli_audit_log                           = var.cli_audit_log
-  cloud_communication                     = var.cloud_communication
-  clt_cert_req                            = var.clt_cert_req
-  compliance_check                        = var.compliance_check
-  compliance_check_time                   = var.compliance_check_time
-  cpu_use_threshold                       = var.cpu_use_threshold
-  csr_ca_attribute                        = var.csr_ca_attribute
-  daily_restart                           = var.daily_restart
-  default_service_source_port             = var.default_service_source_port
-  device_identification_active_scan_delay = var.device_identification_active_scan_delay
-  device_idle_timeout                     = var.device_idle_timeout
-  dh_params                               = var.dh_params
-  dnsproxy_worker_count                   = var.dnsproxy_worker_count
-  dst                                     = var.dst
-  endpoint_control_fds_access             = var.endpoint_control_fds_access
-  endpoint_control_portal_port            = var.endpoint_control_portal_port
-  failtime                                = var.failtime
-  fds_statistics                          = var.fds_statistics
-  fds_statistics_period                   = var.fds_statistics_period
-  fgd_alert_subscription                  = var.fgd_alert_subscription
-  fortiextender                           = var.fortiextender
-  fortiextender_data_port                 = var.fortiextender_data_port
-  fortiextender_vlan_mode                 = var.fortiextender_vlan_mode
-  fortiservice_port                       = var.fortiservice_port
-  gui_certificates                        = var.gui_certificates
-  gui_custom_language                     = var.gui_custom_language
-  gui_date_format                         = var.gui_date_format
-  gui_device_latitude                     = var.gui_device_latitude
-  gui_device_longitude                    = var.gui_device_longitude
-  gui_display_hostname                    = var.gui_display_hostname
-  gui_ipv6                                = var.gui_ipv6
-  gui_lines_per_page                      = var.gui_lines_per_page
-  gui_theme                               = var.gui_theme
-  gui_wireless_opensecurity               = var.gui_wireless_opensecurity
-  honor_df                                = var.honor_df
-  hostname                                = var.hostname
-  igmp_state_limit                        = var.igmp_state_limit
-  interval                                = var.interval
-  ip_src_port_range                       = var.ip_src_port_range
-  ips_affinity                            = var.ips_affinity
-  ipsec_asic_offload                      = var.ipsec_asic_offload
-  ipsec_hmac_offload                      = var.ipsec_hmac_offload
-  ipsec_soft_dec_async                    = var.ipsec_soft_dec_async
-  ipv6_accept_dad                         = var.ipv6_accept_dad
-  ipv6_allow_anycast_probe                = var.ipv6_allow_anycast_probe
-  language                                = var.language
-  ldapconntimeout                         = var.ldapconntimeout
-  lldp_reception                          = var.lldp_reception
-  lldp_transmission                       = var.lldp_transmission
-  log_ssl_connection                      = var.log_ssl_connection
-  log_uuid_address                        = var.log_uuid_address
-  log_uuid_policy                         = var.log_uuid_policy
-  login_timestamp                         = var.login_timestamp
-  long_vdom_name                          = var.long_vdom_name
-  management_vdom                         = var.management_vdom
-  max_dlpstat_memory                      = var.max_dlpstat_memory
-  max_route_cache_size                    = var.max_route_cache_size
-  mc_ttl_notchange                        = var.mc_ttl_notchange
-  memory_use_threshold_extreme            = var.memory_use_threshold_extreme
-  memory_use_threshold_green              = var.memory_use_threshold_green
-  memory_use_threshold_red                = var.memory_use_threshold_red
-  miglog_affinity                         = var.miglog_affinity
-  miglogd_children                        = var.miglogd_children
-  multi_factor_authentication             = var.multi_factor_authentication
-  multicast_forward                       = var.multicast_forward
-  ndp_max_entry                           = var.ndp_max_entry
-  per_user_bwl                            = var.per_user_bwl
-  policy_auth_concurrent                  = var.policy_auth_concurrent
-  post_login_banner                       = var.post_login_banner
-  pre_login_banner                        = var.pre_login_banner
-  private_data_encryption                 = var.private_data_encryption
-  proxy_auth_lifetime                     = var.proxy_auth_lifetime
-  proxy_auth_lifetime_timeout             = var.proxy_auth_lifetime_timeout
-  proxy_auth_timeout                      = var.proxy_auth_timeout
-  proxy_cipher_hardware_acceleration      = var.proxy_cipher_hardware_acceleration
-  proxy_kxp_hardware_acceleration         = var.proxy_kxp_hardware_acceleration
-  proxy_re_authentication_mode            = var.proxy_re_authentication_mode
-  proxy_worker_count                      = var.proxy_worker_count
-  radius_port                             = var.radius_port
-  reboot_upon_config_restore              = var.reboot_upon_config_restore
-  refresh                                 = var.refresh
-  remoteauthtimeout                       = var.remoteauthtimeout
-  reset_sessionless_tcp                   = var.reset_sessionless_tcp
-  restart_time                            = var.restart_time
-  revision_backup_on_logout               = var.revision_backup_on_logout
-  revision_image_auto_backup              = var.revision_image_auto_backup
-  scanunit_count                          = var.scanunit_count
-  security_rating_result_submission       = var.security_rating_result_submission
-  security_rating_run_on_schedule         = var.security_rating_run_on_schedule
-  send_pmtu_icmp                          = var.send_pmtu_icmp
-  snat_route_change                       = var.snat_route_change
-  special_file_23_support                 = var.special_file_23_support
-  ssd_trim_date                           = var.ssd_trim_date
-  ssd_trim_freq                           = var.ssd_trim_freq
-  ssd_trim_hour                           = var.ssd_trim_hour
-  ssd_trim_min                            = var.ssd_trim_min
-  ssd_trim_weekday                        = var.ssd_trim_weekday
-  ssh_cbc_cipher                          = var.ssh_cbc_cipher
-  ssh_hmac_md5                            = var.ssh_hmac_md5
-  ssh_kex_sha1                            = var.ssh_kex_sha1
-  ssh_mac_weak                            = var.ssh_mac_weak
-  ssl_min_proto_version                   = var.ssl_min_proto_version
-  ssl_static_key_ciphers                  = var.ssl_static_key_ciphers
-  sslvpn_cipher_hardware_acceleration     = var.sslvpn_cipher_hardware_acceleration
-  sslvpn_kxp_hardware_acceleration        = var.sslvpn_kxp_hardware_acceleration
-  sslvpn_max_worker_count                 = var.sslvpn_max_worker_count
-  sslvpn_plugin_version_check             = var.sslvpn_plugin_version_check
-  strict_dirty_session_check              = var.strict_dirty_session_check
-  strong_crypto                           = var.strong_crypto
-  switch_controller                       = var.switch_controller
-  switch_controller_reserved_network      = var.switch_controller_reserved_network
-  sys_perf_log_interval                   = var.sys_perf_log_interval
-  tcp_halfclose_timer                     = var.tcp_halfclose_timer
-  tcp_halfopen_timer                      = var.tcp_halfopen_timer
-  tcp_option                              = var.tcp_option
-  tcp_timewait_timer                      = var.tcp_timewait_timer
-  tftp                                    = var.tftp
-  timezone                                = var.timezone
-  tp_mc_skip_policy                       = var.tp_mc_skip_policy
-  traffic_priority                        = var.traffic_priority
-  traffic_priority_level                  = var.traffic_priority_level
-  two_factor_email_expiry                 = var.two_factor_email_expiry
-  two_factor_fac_expiry                   = var.two_factor_fac_expiry
-  two_factor_ftk_expiry                   = var.two_factor_ftk_expiry
-  two_factor_ftm_expiry                   = var.two_factor_ftm_expiry
-  two_factor_sms_expiry                   = var.two_factor_sms_expiry
-  udp_idle_timer                          = var.udp_idle_timer
-  user_server_cert                        = var.user_server_cert
-  vdom_admin                              = var.vdom_admin
-  vip_arp_range                           = var.vip_arp_range
-  virtual_server_count                    = var.virtual_server_count
-  virtual_server_hardware_acceleration    = var.virtual_server_hardware_acceleration
-  wad_affinity                            = var.wad_affinity
-  wad_csvc_cs_count                       = var.wad_csvc_cs_count
-  wad_csvc_db_count                       = var.wad_csvc_db_count
-  wad_source_affinity                     = var.wad_source_affinity
-  wad_worker_count                        = var.wad_worker_count
-  wifi_ca_certificate                     = var.wifi_ca_certificate
-  wifi_certificate                        = var.wifi_certificate
-  wimax_4g_usb                            = var.wimax_4g_usb
-  wireless_controller                     = var.wireless_controller
-  wireless_controller_port                = var.wireless_controller_port
+  admin_concurrent                         = var.admin_concurrent
+  admin_console_timeout                    = var.admin_console_timeout
+  admin_hsts_max_age                       = var.admin_hsts_max_age
+  admin_https_pki_required                 = var.admin_https_pki_required
+  admin_https_redirect                     = var.admin_https_redirect
+  admin_https_ssl_versions                 = var.admin_https_ssl_versions
+  admin_lockout_duration                   = var.admin_lockout_duration
+  admin_lockout_threshold                  = var.admin_lockout_threshold
+  admin_login_max                          = var.admin_login_max
+  admin_maintainer                         = var.admin_maintainer
+  admin_port                               = var.admin_port
+  admin_restrict_local                     = var.admin_restrict_local
+  admin_scp                                = var.admin_scp
+  admin_server_cert                        = var.admin_server_cert
+  admin_sport                              = var.admin_sport
+  admin_ssh_grace_time                     = var.admin_ssh_grace_time
+  admin_ssh_password                       = var.admin_ssh_password
+  admin_ssh_port                           = var.admin_ssh_port
+  admin_ssh_v1                             = var.admin_ssh_v1
+  admin_telnet                             = var.admin_telnet
+  admin_telnet_port                        = var.admin_telnet_port
+  admintimeout                             = var.admintimeout
+  alias                                    = var.alias
+  allow_traffic_redirect                   = var.allow_traffic_redirect
+  anti_replay                              = var.anti_replay
+  arp_max_entry                            = var.arp_max_entry
+  asymroute                                = var.asymroute
+  auth_cert                                = var.auth_cert
+  auth_http_port                           = var.auth_http_port
+  auth_https_port                          = var.auth_https_port
+  auth_keepalive                           = var.auth_keepalive
+  auth_session_limit                       = var.auth_session_limit
+  auto_auth_extension_device               = var.auto_auth_extension_device
+  autorun_log_fsck                         = var.autorun_log_fsck
+  av_affinity                              = var.av_affinity
+  av_failopen                              = var.av_failopen
+  av_failopen_session                      = var.av_failopen_session
+  batch_cmdb                               = var.batch_cmdb
+  block_session_timer                      = var.block_session_timer
+  br_fdb_max_entry                         = var.br_fdb_max_entry
+  cert_chain_max                           = var.cert_chain_max
+  cfg_revert_timeout                       = var.cfg_revert_timeout
+  cfg_save                                 = var.cfg_save
+  check_protocol_header                    = var.check_protocol_header
+  check_reset_range                        = var.check_reset_range
+  cli_audit_log                            = var.cli_audit_log
+  cloud_communication                      = var.cloud_communication
+  clt_cert_req                             = var.clt_cert_req
+  compliance_check                         = var.compliance_check
+  compliance_check_time                    = var.compliance_check_time
+  cpu_use_threshold                        = var.cpu_use_threshold
+  csr_ca_attribute                         = var.csr_ca_attribute
+  daily_restart                            = var.daily_restart
+  default_service_source_port              = var.default_service_source_port
+  device_identification_active_scan_delay  = var.device_identification_active_scan_delay
+  device_idle_timeout                      = var.device_idle_timeout
+  dh_params                                = var.dh_params
+  dnsproxy_worker_count                    = var.dnsproxy_worker_count
+  dst                                      = var.dst
+  endpoint_control_fds_access              = var.endpoint_control_fds_access
+  endpoint_control_portal_port             = var.endpoint_control_portal_port
+  failtime                                 = var.failtime
+  faz_disk_buffer_size                     = var.faz_disk_buffer_size
+  fds_statistics                           = var.fds_statistics
+  fds_statistics_period                    = var.fds_statistics_period
+  fec_port                                 = var.fec_port
+  fgd_alert_subscription                   = var.fgd_alert_subscription
+  fortiextender                            = var.fortiextender
+  fortiextender_data_port                  = var.fortiextender_data_port
+  fortiextender_vlan_mode                  = var.fortiextender_vlan_mode
+  fortiipam_integration                    = var.fortiipam_integration
+  fortiservice_port                        = var.fortiservice_port
+  fortitoken_cloud                         = var.fortitoken_cloud
+  gui_allow_default_hostname               = var.gui_allow_default_hostname
+  gui_certificates                         = var.gui_certificates
+  gui_custom_language                      = var.gui_custom_language
+  gui_date_format                          = var.gui_date_format
+  gui_date_time_source                     = var.gui_date_time_source
+  gui_device_latitude                      = var.gui_device_latitude
+  gui_device_longitude                     = var.gui_device_longitude
+  gui_display_hostname                     = var.gui_display_hostname
+  gui_firmware_upgrade_setup_warning       = var.gui_firmware_upgrade_setup_warning
+  gui_firmware_upgrade_warning             = var.gui_firmware_upgrade_warning
+  gui_forticare_registration_setup_warning = var.gui_forticare_registration_setup_warning
+  gui_fortigate_cloud_sandbox              = var.gui_fortigate_cloud_sandbox
+  gui_fortisandbox_cloud                   = var.gui_fortisandbox_cloud
+  gui_ipv6                                 = var.gui_ipv6
+  gui_lines_per_page                       = var.gui_lines_per_page
+  gui_theme                                = var.gui_theme
+  gui_wireless_opensecurity                = var.gui_wireless_opensecurity
+  honor_df                                 = var.honor_df
+  hostname                                 = var.hostname
+  igmp_state_limit                         = var.igmp_state_limit
+  ike_embryonic_limit                      = var.ike_embryonic_limit
+  interval                                 = var.interval
+  ip_src_port_range                        = var.ip_src_port_range
+  ips_affinity                             = var.ips_affinity
+  ipsec_asic_offload                       = var.ipsec_asic_offload
+  ipsec_hmac_offload                       = var.ipsec_hmac_offload
+  ipsec_soft_dec_async                     = var.ipsec_soft_dec_async
+  ipv6_accept_dad                          = var.ipv6_accept_dad
+  ipv6_allow_anycast_probe                 = var.ipv6_allow_anycast_probe
+  ipv6_allow_traffic_redirect              = var.ipv6_allow_traffic_redirect
+  irq_time_accounting                      = var.irq_time_accounting
+  language                                 = var.language
+  ldapconntimeout                          = var.ldapconntimeout
+  lldp_reception                           = var.lldp_reception
+  lldp_transmission                        = var.lldp_transmission
+  log_ssl_connection                       = var.log_ssl_connection
+  log_uuid_address                         = var.log_uuid_address
+  log_uuid_policy                          = var.log_uuid_policy
+  login_timestamp                          = var.login_timestamp
+  long_vdom_name                           = var.long_vdom_name
+  management_vdom                          = var.management_vdom
+  max_dlpstat_memory                       = var.max_dlpstat_memory
+  max_route_cache_size                     = var.max_route_cache_size
+  mc_ttl_notchange                         = var.mc_ttl_notchange
+  memory_use_threshold_extreme             = var.memory_use_threshold_extreme
+  memory_use_threshold_green               = var.memory_use_threshold_green
+  memory_use_threshold_red                 = var.memory_use_threshold_red
+  miglog_affinity                          = var.miglog_affinity
+  miglogd_children                         = var.miglogd_children
+  multi_factor_authentication              = var.multi_factor_authentication
+  multicast_forward                        = var.multicast_forward
+  ndp_max_entry                            = var.ndp_max_entry
+  per_user_bal                             = var.per_user_bal
+  per_user_bwl                             = var.per_user_bwl
+  policy_auth_concurrent                   = var.policy_auth_concurrent
+  post_login_banner                        = var.post_login_banner
+  pre_login_banner                         = var.pre_login_banner
+  private_data_encryption                  = var.private_data_encryption
+  proxy_auth_lifetime                      = var.proxy_auth_lifetime
+  proxy_auth_lifetime_timeout              = var.proxy_auth_lifetime_timeout
+  proxy_auth_timeout                       = var.proxy_auth_timeout
+  proxy_cipher_hardware_acceleration       = var.proxy_cipher_hardware_acceleration
+  proxy_kxp_hardware_acceleration          = var.proxy_kxp_hardware_acceleration
+  proxy_re_authentication_mode             = var.proxy_re_authentication_mode
+  proxy_worker_count                       = var.proxy_worker_count
+  radius_port                              = var.radius_port
+  reboot_upon_config_restore               = var.reboot_upon_config_restore
+  refresh                                  = var.refresh
+  remoteauthtimeout                        = var.remoteauthtimeout
+  reset_sessionless_tcp                    = var.reset_sessionless_tcp
+  restart_time                             = var.restart_time
+  revision_backup_on_logout                = var.revision_backup_on_logout
+  revision_image_auto_backup               = var.revision_image_auto_backup
+  scanunit_count                           = var.scanunit_count
+  security_rating_result_submission        = var.security_rating_result_submission
+  security_rating_run_on_schedule          = var.security_rating_run_on_schedule
+  send_pmtu_icmp                           = var.send_pmtu_icmp
+  snat_route_change                        = var.snat_route_change
+  special_file_23_support                  = var.special_file_23_support
+  ssd_trim_date                            = var.ssd_trim_date
+  ssd_trim_freq                            = var.ssd_trim_freq
+  ssd_trim_hour                            = var.ssd_trim_hour
+  ssd_trim_min                             = var.ssd_trim_min
+  ssd_trim_weekday                         = var.ssd_trim_weekday
+  ssh_cbc_cipher                           = var.ssh_cbc_cipher
+  ssh_hmac_md5                             = var.ssh_hmac_md5
+  ssh_kex_sha1                             = var.ssh_kex_sha1
+  ssh_mac_weak                             = var.ssh_mac_weak
+  ssl_min_proto_version                    = var.ssl_min_proto_version
+  ssl_static_key_ciphers                   = var.ssl_static_key_ciphers
+  sslvpn_cipher_hardware_acceleration      = var.sslvpn_cipher_hardware_acceleration
+  sslvpn_ems_sn_check                      = var.sslvpn_ems_sn_check
+  sslvpn_kxp_hardware_acceleration         = var.sslvpn_kxp_hardware_acceleration
+  sslvpn_max_worker_count                  = var.sslvpn_max_worker_count
+  sslvpn_plugin_version_check              = var.sslvpn_plugin_version_check
+  strict_dirty_session_check               = var.strict_dirty_session_check
+  strong_crypto                            = var.strong_crypto
+  switch_controller                        = var.switch_controller
+  switch_controller_reserved_network       = var.switch_controller_reserved_network
+  sys_perf_log_interval                    = var.sys_perf_log_interval
+  tcp_halfclose_timer                      = var.tcp_halfclose_timer
+  tcp_halfopen_timer                       = var.tcp_halfopen_timer
+  tcp_option                               = var.tcp_option
+  tcp_timewait_timer                       = var.tcp_timewait_timer
+  tftp                                     = var.tftp
+  timezone                                 = var.timezone
+  tp_mc_skip_policy                        = var.tp_mc_skip_policy
+  traffic_priority                         = var.traffic_priority
+  traffic_priority_level                   = var.traffic_priority_level
+  two_factor_email_expiry                  = var.two_factor_email_expiry
+  two_factor_fac_expiry                    = var.two_factor_fac_expiry
+  two_factor_ftk_expiry                    = var.two_factor_ftk_expiry
+  two_factor_ftm_expiry                    = var.two_factor_ftm_expiry
+  two_factor_sms_expiry                    = var.two_factor_sms_expiry
+  udp_idle_timer                           = var.udp_idle_timer
+  url_filter_affinity                      = var.url_filter_affinity
+  url_filter_count                         = var.url_filter_count
+  user_device_store_max_devices            = var.user_device_store_max_devices
+  user_device_store_max_users              = var.user_device_store_max_users
+  user_server_cert                         = var.user_server_cert
+  vdom_admin                               = var.vdom_admin
+  vdom_mode                                = var.vdom_mode
+  vip_arp_range                            = var.vip_arp_range
+  virtual_server_count                     = var.virtual_server_count
+  virtual_server_hardware_acceleration     = var.virtual_server_hardware_acceleration
+  wad_affinity                             = var.wad_affinity
+  wad_csvc_cs_count                        = var.wad_csvc_cs_count
+  wad_csvc_db_count                        = var.wad_csvc_db_count
+  wad_memory_change_granularity            = var.wad_memory_change_granularity
+  wad_source_affinity                      = var.wad_source_affinity
+  wad_worker_count                         = var.wad_worker_count
+  wifi_ca_certificate                      = var.wifi_ca_certificate
+  wifi_certificate                         = var.wifi_certificate
+  wimax_4g_usb                             = var.wimax_4g_usb
+  wireless_controller                      = var.wireless_controller
+  wireless_controller_port                 = var.wireless_controller_port
 }
 ```
 
@@ -1889,6 +2096,11 @@ output "auto_auth_extension_device" {
   value       = fortios_system_global.this.auto_auth_extension_device
 }
 
+output "autorun_log_fsck" {
+  description = "returns a string"
+  value       = fortios_system_global.this.autorun_log_fsck
+}
+
 output "av_affinity" {
   description = "returns a string"
   value       = fortios_system_global.this.av_affinity
@@ -2029,6 +2241,11 @@ output "failtime" {
   value       = fortios_system_global.this.failtime
 }
 
+output "faz_disk_buffer_size" {
+  description = "returns a number"
+  value       = fortios_system_global.this.faz_disk_buffer_size
+}
+
 output "fds_statistics" {
   description = "returns a string"
   value       = fortios_system_global.this.fds_statistics
@@ -2037,6 +2254,11 @@ output "fds_statistics" {
 output "fds_statistics_period" {
   description = "returns a number"
   value       = fortios_system_global.this.fds_statistics_period
+}
+
+output "fec_port" {
+  description = "returns a number"
+  value       = fortios_system_global.this.fec_port
 }
 
 output "fgd_alert_subscription" {
@@ -2059,9 +2281,24 @@ output "fortiextender_vlan_mode" {
   value       = fortios_system_global.this.fortiextender_vlan_mode
 }
 
+output "fortiipam_integration" {
+  description = "returns a string"
+  value       = fortios_system_global.this.fortiipam_integration
+}
+
 output "fortiservice_port" {
   description = "returns a number"
   value       = fortios_system_global.this.fortiservice_port
+}
+
+output "fortitoken_cloud" {
+  description = "returns a string"
+  value       = fortios_system_global.this.fortitoken_cloud
+}
+
+output "gui_allow_default_hostname" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_allow_default_hostname
 }
 
 output "gui_certificates" {
@@ -2079,6 +2316,11 @@ output "gui_date_format" {
   value       = fortios_system_global.this.gui_date_format
 }
 
+output "gui_date_time_source" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_date_time_source
+}
+
 output "gui_device_latitude" {
   description = "returns a string"
   value       = fortios_system_global.this.gui_device_latitude
@@ -2092,6 +2334,31 @@ output "gui_device_longitude" {
 output "gui_display_hostname" {
   description = "returns a string"
   value       = fortios_system_global.this.gui_display_hostname
+}
+
+output "gui_firmware_upgrade_setup_warning" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_firmware_upgrade_setup_warning
+}
+
+output "gui_firmware_upgrade_warning" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_firmware_upgrade_warning
+}
+
+output "gui_forticare_registration_setup_warning" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_forticare_registration_setup_warning
+}
+
+output "gui_fortigate_cloud_sandbox" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_fortigate_cloud_sandbox
+}
+
+output "gui_fortisandbox_cloud" {
+  description = "returns a string"
+  value       = fortios_system_global.this.gui_fortisandbox_cloud
 }
 
 output "gui_ipv6" {
@@ -2134,6 +2401,11 @@ output "igmp_state_limit" {
   value       = fortios_system_global.this.igmp_state_limit
 }
 
+output "ike_embryonic_limit" {
+  description = "returns a number"
+  value       = fortios_system_global.this.ike_embryonic_limit
+}
+
 output "interval" {
   description = "returns a number"
   value       = fortios_system_global.this.interval
@@ -2172,6 +2444,16 @@ output "ipv6_accept_dad" {
 output "ipv6_allow_anycast_probe" {
   description = "returns a string"
   value       = fortios_system_global.this.ipv6_allow_anycast_probe
+}
+
+output "ipv6_allow_traffic_redirect" {
+  description = "returns a string"
+  value       = fortios_system_global.this.ipv6_allow_traffic_redirect
+}
+
+output "irq_time_accounting" {
+  description = "returns a string"
+  value       = fortios_system_global.this.irq_time_accounting
 }
 
 output "language" {
@@ -2277,6 +2559,11 @@ output "multicast_forward" {
 output "ndp_max_entry" {
   description = "returns a number"
   value       = fortios_system_global.this.ndp_max_entry
+}
+
+output "per_user_bal" {
+  description = "returns a string"
+  value       = fortios_system_global.this.per_user_bal
 }
 
 output "per_user_bwl" {
@@ -2469,6 +2756,11 @@ output "sslvpn_cipher_hardware_acceleration" {
   value       = fortios_system_global.this.sslvpn_cipher_hardware_acceleration
 }
 
+output "sslvpn_ems_sn_check" {
+  description = "returns a string"
+  value       = fortios_system_global.this.sslvpn_ems_sn_check
+}
+
 output "sslvpn_kxp_hardware_acceleration" {
   description = "returns a string"
   value       = fortios_system_global.this.sslvpn_kxp_hardware_acceleration
@@ -2584,6 +2876,26 @@ output "udp_idle_timer" {
   value       = fortios_system_global.this.udp_idle_timer
 }
 
+output "url_filter_affinity" {
+  description = "returns a string"
+  value       = fortios_system_global.this.url_filter_affinity
+}
+
+output "url_filter_count" {
+  description = "returns a number"
+  value       = fortios_system_global.this.url_filter_count
+}
+
+output "user_device_store_max_devices" {
+  description = "returns a number"
+  value       = fortios_system_global.this.user_device_store_max_devices
+}
+
+output "user_device_store_max_users" {
+  description = "returns a number"
+  value       = fortios_system_global.this.user_device_store_max_users
+}
+
 output "user_server_cert" {
   description = "returns a string"
   value       = fortios_system_global.this.user_server_cert
@@ -2592,6 +2904,11 @@ output "user_server_cert" {
 output "vdom_admin" {
   description = "returns a string"
   value       = fortios_system_global.this.vdom_admin
+}
+
+output "vdom_mode" {
+  description = "returns a string"
+  value       = fortios_system_global.this.vdom_mode
 }
 
 output "vip_arp_range" {
@@ -2622,6 +2939,11 @@ output "wad_csvc_cs_count" {
 output "wad_csvc_db_count" {
   description = "returns a number"
   value       = fortios_system_global.this.wad_csvc_db_count
+}
+
+output "wad_memory_change_granularity" {
+  description = "returns a number"
+  value       = fortios_system_global.this.wad_memory_change_granularity
 }
 
 output "wad_source_affinity" {

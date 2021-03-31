@@ -12,7 +12,7 @@
 
 ```terraform
 provider "tfe" {
-  version = "0.23.0"
+  version = "0.24.0"
 
   # hostname - (optional) is a type of string
   hostname = null
@@ -29,6 +29,8 @@ provider "tfe" {
 
 
 - [tfe_agent_pool](./r/tfe_agent_pool.md)
+
+- [tfe_agent_token](./r/tfe_agent_token.md)
 
 - [tfe_notification_configuration](./r/tfe_notification_configuration.md)
 
@@ -75,6 +77,8 @@ provider "tfe" {
 
 
 - [tfe_agent_pool](./d/tfe_agent_pool.md)
+
+- [tfe_ip_ranges](./d/tfe_ip_ranges.md)
 
 - [tfe_oauth_client](./d/tfe_oauth_client.md)
 

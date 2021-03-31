@@ -12,10 +12,16 @@
 
 ```terraform
 provider "linode" {
-  version = "1.13.4"
+  version = "1.16.0"
 
   # api_version - (optional) is a type of string
   api_version = null
+  # max_retry_delay_ms - (optional) is a type of number
+  max_retry_delay_ms = null
+  # min_retry_delay_ms - (optional) is a type of number
+  min_retry_delay_ms = null
+  # skip_instance_ready_poll - (optional) is a type of bool
+  skip_instance_ready_poll = null
   # token - (required) is a type of string
   token = null
   # ua_prefix - (optional) is a type of string
@@ -40,6 +46,8 @@ provider "linode" {
 
 - [linode_instance](./r/linode_instance.md)
 
+- [linode_instance_ip](./r/linode_instance_ip.md)
+
 - [linode_lke_cluster](./r/linode_lke_cluster.md)
 
 - [linode_nodebalancer](./r/linode_nodebalancer.md)
@@ -62,6 +70,8 @@ provider "linode" {
 
 - [linode_token](./r/linode_token.md)
 
+- [linode_user](./r/linode_user.md)
+
 - [linode_vlan](./r/linode_vlan.md)
 
 - [linode_volume](./r/linode_volume.md)
@@ -81,6 +91,8 @@ provider "linode" {
 - [linode_image](./d/linode_image.md)
 
 - [linode_instance_type](./d/linode_instance_type.md)
+
+- [linode_lke_cluster](./d/linode_lke_cluster.md)
 
 - [linode_networking_ip](./d/linode_networking_ip.md)
 

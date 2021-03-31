@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_wirelesscontroller_wtpgroup" {
   source = "./modules/fortios/r/fortios_wirelesscontroller_wtpgroup"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # platform_type - (optional) is a type of string
@@ -43,6 +45,12 @@ module "fortios_wirelesscontroller_wtpgroup" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,8 +80,9 @@ variable "wtps" {
 
 ```terraform
 resource "fortios_wirelesscontroller_wtpgroup" "this" {
-  name          = var.name
-  platform_type = var.platform_type
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  platform_type         = var.platform_type
 
   dynamic "wtps" {
     for_each = var.wtps

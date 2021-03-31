@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -41,6 +41,10 @@ module "aws_sns_topic_subscription" {
   protocol = null
   # raw_message_delivery - (optional) is a type of bool
   raw_message_delivery = null
+  # redrive_policy - (optional) is a type of string
+  redrive_policy = null
+  # subscription_role_arn - (optional) is a type of string
+  subscription_role_arn = null
   # topic_arn - (required) is a type of string
   topic_arn = null
 }
@@ -91,6 +95,18 @@ variable "raw_message_delivery" {
   default     = null
 }
 
+variable "redrive_policy" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "subscription_role_arn" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "topic_arn" {
   description = "(required)"
   type        = string
@@ -110,6 +126,8 @@ resource "aws_sns_topic_subscription" "this" {
   filter_policy                   = var.filter_policy
   protocol                        = var.protocol
   raw_message_delivery            = var.raw_message_delivery
+  redrive_policy                  = var.redrive_policy
+  subscription_role_arn           = var.subscription_role_arn
   topic_arn                       = var.topic_arn
 }
 ```
@@ -124,9 +142,24 @@ output "arn" {
   value       = aws_sns_topic_subscription.this.arn
 }
 
+output "confirmation_was_authenticated" {
+  description = "returns a bool"
+  value       = aws_sns_topic_subscription.this.confirmation_was_authenticated
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_sns_topic_subscription.this.id
+}
+
+output "owner_id" {
+  description = "returns a string"
+  value       = aws_sns_topic_subscription.this.owner_id
+}
+
+output "pending_confirmation" {
+  description = "returns a bool"
+  value       = aws_sns_topic_subscription.this.pending_confirmation
 }
 
 output "this" {

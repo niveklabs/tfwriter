@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -114,7 +114,7 @@ variable "project" {
 }
 
 variable "purpose" {
-  description = "(optional) - The purpose of the resource. This field can be either PRIVATE\nor INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to\nINTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is\nreserved for Internal HTTP(S) Load Balancing. If unspecified, the\npurpose defaults to PRIVATE.\n\nIf set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role. Possible values: [\"INTERNAL_HTTPS_LOAD_BALANCER\", \"PRIVATE\"]"
+  description = "(optional) - The purpose of the resource. This field can be either PRIVATE\nor INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to\nINTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is\nreserved for Internal HTTP(S) Load Balancing. If unspecified, the\npurpose defaults to PRIVATE.\n\nIf set to INTERNAL_HTTPS_LOAD_BALANCER you must also set 'role'."
   type        = string
   default     = null
 }

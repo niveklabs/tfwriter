@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -132,6 +132,11 @@ output "is_visual_builder_enabled" {
 output "message_packs" {
   description = "returns a number"
   value       = data.oci_integration_integration_instance.this.message_packs
+}
+
+output "network_endpoint_details" {
+  description = "returns a list of object"
+  value       = data.oci_integration_integration_instance.this.network_endpoint_details
 }
 
 output "state" {

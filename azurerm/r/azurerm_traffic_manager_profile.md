@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "azurerm_traffic_manager_profile" {
   tags = {}
   # traffic_routing_method - (required) is a type of string
   traffic_routing_method = null
+  # traffic_view_enabled - (optional) is a type of bool
+  traffic_view_enabled = null
 
   dns_config = [{
     relative_name = null
@@ -106,6 +108,12 @@ variable "traffic_routing_method" {
   type        = string
 }
 
+variable "traffic_view_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "dns_config" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -163,6 +171,7 @@ resource "azurerm_traffic_manager_profile" "this" {
   resource_group_name    = var.resource_group_name
   tags                   = var.tags
   traffic_routing_method = var.traffic_routing_method
+  traffic_view_enabled   = var.traffic_view_enabled
 
   dynamic "dns_config" {
     for_each = var.dns_config

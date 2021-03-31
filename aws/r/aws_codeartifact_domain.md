@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,7 +29,7 @@ module "aws_codeartifact_domain" {
 
   # domain - (required) is a type of string
   domain = null
-  # encryption_key - (required) is a type of string
+  # encryption_key - (optional) is a type of string
   encryption_key = null
   # tags - (optional) is a type of map of string
   tags = {}
@@ -47,8 +47,9 @@ variable "domain" {
 }
 
 variable "encryption_key" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "tags" {
@@ -88,6 +89,11 @@ output "asset_size_bytes" {
 output "created_time" {
   description = "returns a string"
   value       = aws_codeartifact_domain.this.created_time
+}
+
+output "encryption_key" {
+  description = "returns a string"
+  value       = aws_codeartifact_domain.this.encryption_key
 }
 
 output "id" {

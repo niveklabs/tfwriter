@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "alicloud_resource_manager_account" {
   source = "./modules/alicloud/r/alicloud_resource_manager_account"
 
+  # account_name_prefix - (optional) is a type of string
+  account_name_prefix = null
   # display_name - (required) is a type of string
   display_name = null
   # folder_id - (optional) is a type of string
@@ -41,6 +43,12 @@ module "alicloud_resource_manager_account" {
 ### Variables
 
 ```terraform
+variable "account_name_prefix" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "display_name" {
   description = "(required)"
   type        = string
@@ -65,9 +73,10 @@ variable "payer_account_id" {
 
 ```terraform
 resource "alicloud_resource_manager_account" "this" {
-  display_name     = var.display_name
-  folder_id        = var.folder_id
-  payer_account_id = var.payer_account_id
+  account_name_prefix = var.account_name_prefix
+  display_name        = var.display_name
+  folder_id           = var.folder_id
+  payer_account_id    = var.payer_account_id
 }
 ```
 
@@ -76,6 +85,11 @@ resource "alicloud_resource_manager_account" "this" {
 ### Outputs
 
 ```terraform
+output "folder_id" {
+  description = "returns a string"
+  value       = alicloud_resource_manager_account.this.folder_id
+}
+
 output "id" {
   description = "returns a string"
   value       = alicloud_resource_manager_account.this.id

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -316,19 +316,14 @@ resource "aws_ses_receipt_rule" "this" {
 ### Outputs
 
 ```terraform
-output "enabled" {
-  description = "returns a bool"
-  value       = aws_ses_receipt_rule.this.enabled
+output "arn" {
+  description = "returns a string"
+  value       = aws_ses_receipt_rule.this.arn
 }
 
 output "id" {
   description = "returns a string"
   value       = aws_ses_receipt_rule.this.id
-}
-
-output "scan_enabled" {
-  description = "returns a bool"
-  value       = aws_ses_receipt_rule.this.scan_enabled
 }
 
 output "tls_policy" {

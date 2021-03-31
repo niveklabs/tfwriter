@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.5.0"
+    bigip = ">= 1.7.0"
   }
 }
 ```
@@ -210,9 +210,89 @@ resource "bigip_ltm_persistence_profile_cookie" "this" {
 ### Outputs
 
 ```terraform
+output "always_send" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.always_send
+}
+
+output "app_service" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.app_service
+}
+
+output "cookie_encryption" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.cookie_encryption
+}
+
+output "cookie_encryption_passphrase" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.cookie_encryption_passphrase
+}
+
+output "cookie_name" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.cookie_name
+}
+
+output "expiration" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.expiration
+}
+
+output "hash_length" {
+  description = "returns a number"
+  value       = bigip_ltm_persistence_profile_cookie.this.hash_length
+}
+
+output "hash_offset" {
+  description = "returns a number"
+  value       = bigip_ltm_persistence_profile_cookie.this.hash_offset
+}
+
+output "httponly" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.httponly
+}
+
 output "id" {
   description = "returns a string"
   value       = bigip_ltm_persistence_profile_cookie.this.id
+}
+
+output "match_across_pools" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.match_across_pools
+}
+
+output "match_across_services" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.match_across_services
+}
+
+output "match_across_virtuals" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.match_across_virtuals
+}
+
+output "method" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.method
+}
+
+output "mirror" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.mirror
+}
+
+output "override_conn_limit" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_cookie.this.override_conn_limit
+}
+
+output "timeout" {
+  description = "returns a number"
+  value       = bigip_ltm_persistence_profile_cookie.this.timeout
 }
 
 output "this" {

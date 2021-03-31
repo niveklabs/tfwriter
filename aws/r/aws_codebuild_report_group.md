@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_codebuild_report_group" {
   source = "./modules/aws/r/aws_codebuild_report_group"
 
+  # delete_reports - (optional) is a type of bool
+  delete_reports = null
   # name - (required) is a type of string
   name = null
   # tags - (optional) is a type of map of string
@@ -52,6 +54,12 @@ module "aws_codebuild_report_group" {
 ### Variables
 
 ```terraform
+variable "delete_reports" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -93,9 +101,10 @@ variable "export_config" {
 
 ```terraform
 resource "aws_codebuild_report_group" "this" {
-  name = var.name
-  tags = var.tags
-  type = var.type
+  delete_reports = var.delete_reports
+  name           = var.name
+  tags           = var.tags
+  type           = var.type
 
   dynamic "export_config" {
     for_each = var.export_config

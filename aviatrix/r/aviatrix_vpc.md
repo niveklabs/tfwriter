@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -37,6 +37,10 @@ module "aviatrix_vpc" {
   cidr = null
   # cloud_type - (required) is a type of number
   cloud_type = null
+  # enable_native_gwlb - (optional) is a type of bool
+  enable_native_gwlb = null
+  # enable_private_oob_subnet - (optional) is a type of bool
+  enable_private_oob_subnet = null
   # name - (required) is a type of string
   name = null
   # num_of_subnet_pairs - (optional) is a type of number
@@ -88,6 +92,18 @@ variable "cloud_type" {
   type        = number
 }
 
+variable "enable_native_gwlb" {
+  description = "(optional) - Enable Native AWS GWLB for FireNet Function. Only valid with cloud_type = 1 (AWS). Valid values: true or false. Default value: false. Available as of provider version R2.18+."
+  type        = bool
+  default     = null
+}
+
+variable "enable_private_oob_subnet" {
+  description = "(optional) - Switch to enable private oob subnet. Only supported for AWS/AWSGOV provider. Valid values: true, false. Default value: false."
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(required) - Name of the VPC to be created."
   type        = string
@@ -131,15 +147,17 @@ variable "subnets" {
 
 ```terraform
 resource "aviatrix_vpc" "this" {
-  account_name         = var.account_name
-  aviatrix_firenet_vpc = var.aviatrix_firenet_vpc
-  aviatrix_transit_vpc = var.aviatrix_transit_vpc
-  cidr                 = var.cidr
-  cloud_type           = var.cloud_type
-  name                 = var.name
-  num_of_subnet_pairs  = var.num_of_subnet_pairs
-  region               = var.region
-  subnet_size          = var.subnet_size
+  account_name              = var.account_name
+  aviatrix_firenet_vpc      = var.aviatrix_firenet_vpc
+  aviatrix_transit_vpc      = var.aviatrix_transit_vpc
+  cidr                      = var.cidr
+  cloud_type                = var.cloud_type
+  enable_native_gwlb        = var.enable_native_gwlb
+  enable_private_oob_subnet = var.enable_private_oob_subnet
+  name                      = var.name
+  num_of_subnet_pairs       = var.num_of_subnet_pairs
+  region                    = var.region
+  subnet_size               = var.subnet_size
 
   dynamic "subnets" {
     for_each = var.subnets
@@ -158,6 +176,11 @@ resource "aviatrix_vpc" "this" {
 ### Outputs
 
 ```terraform
+output "azure_vnet_resource_id" {
+  description = "returns a string"
+  value       = aviatrix_vpc.this.azure_vnet_resource_id
+}
+
 output "id" {
   description = "returns a string"
   value       = aviatrix_vpc.this.id
@@ -176,6 +199,11 @@ output "public_subnets" {
 output "resource_group" {
   description = "returns a string"
   value       = aviatrix_vpc.this.resource_group
+}
+
+output "route_tables" {
+  description = "returns a list of string"
+  value       = aviatrix_vpc.this.route_tables
 }
 
 output "vpc_id" {

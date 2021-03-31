@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -67,15 +67,16 @@ module "google_compute_instance_template" {
     disk_encryption_key = [{
       kms_key_self_link = null
     }]
-    disk_name    = null
-    disk_size_gb = null
-    disk_type    = null
-    interface    = null
-    labels       = {}
-    mode         = null
-    source       = null
-    source_image = null
-    type         = null
+    disk_name         = null
+    disk_size_gb      = null
+    disk_type         = null
+    interface         = null
+    labels            = {}
+    mode              = null
+    resource_policies = []
+    source            = null
+    source_image      = null
+    type              = null
   }]
 
   guest_accelerator = [{
@@ -240,15 +241,16 @@ variable "disk" {
           kms_key_self_link = string
         }
       ))
-      disk_name    = string
-      disk_size_gb = number
-      disk_type    = string
-      interface    = string
-      labels       = map(string)
-      mode         = string
-      source       = string
-      source_image = string
-      type         = string
+      disk_name         = string
+      disk_size_gb      = number
+      disk_type         = string
+      interface         = string
+      labels            = map(string)
+      mode              = string
+      resource_policies = list(string)
+      source            = string
+      source_image      = string
+      type              = string
     }
   ))
 }
@@ -377,18 +379,19 @@ resource "google_compute_instance_template" "this" {
   dynamic "disk" {
     for_each = var.disk
     content {
-      auto_delete  = disk.value["auto_delete"]
-      boot         = disk.value["boot"]
-      device_name  = disk.value["device_name"]
-      disk_name    = disk.value["disk_name"]
-      disk_size_gb = disk.value["disk_size_gb"]
-      disk_type    = disk.value["disk_type"]
-      interface    = disk.value["interface"]
-      labels       = disk.value["labels"]
-      mode         = disk.value["mode"]
-      source       = disk.value["source"]
-      source_image = disk.value["source_image"]
-      type         = disk.value["type"]
+      auto_delete       = disk.value["auto_delete"]
+      boot              = disk.value["boot"]
+      device_name       = disk.value["device_name"]
+      disk_name         = disk.value["disk_name"]
+      disk_size_gb      = disk.value["disk_size_gb"]
+      disk_type         = disk.value["disk_type"]
+      interface         = disk.value["interface"]
+      labels            = disk.value["labels"]
+      mode              = disk.value["mode"]
+      resource_policies = disk.value["resource_policies"]
+      source            = disk.value["source"]
+      source_image      = disk.value["source_image"]
+      type              = disk.value["type"]
 
       dynamic "disk_encryption_key" {
         for_each = disk.value.disk_encryption_key

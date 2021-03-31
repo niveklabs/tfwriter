@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -111,6 +111,11 @@ output "detect_md5hash" {
 output "id" {
   description = "returns a string"
   value       = data.google_storage_bucket_object.this.id
+}
+
+output "kms_key_name" {
+  description = "returns a string"
+  value       = data.google_storage_bucket_object.this.kms_key_name
 }
 
 output "md5hash" {

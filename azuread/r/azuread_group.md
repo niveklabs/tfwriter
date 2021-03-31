@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -29,9 +29,11 @@ module "azuread_group" {
 
   # description - (optional) is a type of string
   description = null
+  # display_name - (optional) is a type of string
+  display_name = null
   # members - (optional) is a type of set of string
   members = []
-  # name - (required) is a type of string
+  # name - (optional) is a type of string
   name = null
   # owners - (optional) is a type of set of string
   owners = []
@@ -51,6 +53,12 @@ variable "description" {
   default     = null
 }
 
+variable "display_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "members" {
   description = "(optional)"
   type        = set(string)
@@ -58,8 +66,9 @@ variable "members" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "owners" {
@@ -82,6 +91,7 @@ variable "prevent_duplicate_names" {
 ```terraform
 resource "azuread_group" "this" {
   description             = var.description
+  display_name            = var.display_name
   members                 = var.members
   name                    = var.name
   owners                  = var.owners
@@ -94,14 +104,29 @@ resource "azuread_group" "this" {
 ### Outputs
 
 ```terraform
+output "display_name" {
+  description = "returns a string"
+  value       = azuread_group.this.display_name
+}
+
 output "id" {
   description = "returns a string"
   value       = azuread_group.this.id
 }
 
+output "mail_enabled" {
+  description = "returns a bool"
+  value       = azuread_group.this.mail_enabled
+}
+
 output "members" {
   description = "returns a set of string"
   value       = azuread_group.this.members
+}
+
+output "name" {
+  description = "returns a string"
+  value       = azuread_group.this.name
 }
 
 output "object_id" {
@@ -112,6 +137,11 @@ output "object_id" {
 output "owners" {
   description = "returns a set of string"
   value       = azuread_group.this.owners
+}
+
+output "security_enabled" {
+  description = "returns a bool"
+  value       = azuread_group.this.security_enabled
 }
 
 output "this" {

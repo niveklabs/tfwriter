@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aws_mq_broker" {
 
   # apply_immediately - (optional) is a type of bool
   apply_immediately = null
+  # authentication_strategy - (optional) is a type of string
+  authentication_strategy = null
   # auto_minor_version_upgrade - (optional) is a type of bool
   auto_minor_version_upgrade = null
   # broker_name - (required) is a type of string
@@ -43,8 +45,10 @@ module "aws_mq_broker" {
   host_instance_type = null
   # publicly_accessible - (optional) is a type of bool
   publicly_accessible = null
-  # security_groups - (required) is a type of set of string
+  # security_groups - (optional) is a type of set of string
   security_groups = []
+  # storage_type - (optional) is a type of string
+  storage_type = null
   # subnet_ids - (optional) is a type of set of string
   subnet_ids = []
   # tags - (optional) is a type of map of string
@@ -58,6 +62,20 @@ module "aws_mq_broker" {
   encryption_options = [{
     kms_key_id        = null
     use_aws_owned_key = null
+  }]
+
+  ldap_server_metadata = [{
+    hosts                    = []
+    role_base                = null
+    role_name                = null
+    role_search_matching     = null
+    role_search_subtree      = null
+    service_account_password = null
+    service_account_username = null
+    user_base                = null
+    user_role_name           = null
+    user_search_matching     = null
+    user_search_subtree      = null
   }]
 
   logs = [{
@@ -88,6 +106,12 @@ module "aws_mq_broker" {
 variable "apply_immediately" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "authentication_strategy" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -130,8 +154,15 @@ variable "publicly_accessible" {
 }
 
 variable "security_groups" {
-  description = "(required)"
+  description = "(optional)"
   type        = set(string)
+  default     = null
+}
+
+variable "storage_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "subnet_ids" {
@@ -163,6 +194,26 @@ variable "encryption_options" {
     {
       kms_key_id        = string
       use_aws_owned_key = bool
+    }
+  ))
+  default = []
+}
+
+variable "ldap_server_metadata" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      hosts                    = list(string)
+      role_base                = string
+      role_name                = string
+      role_search_matching     = string
+      role_search_subtree      = bool
+      service_account_password = string
+      service_account_username = string
+      user_base                = string
+      user_role_name           = string
+      user_search_matching     = string
+      user_search_subtree      = bool
     }
   ))
   default = []
@@ -211,6 +262,7 @@ variable "user" {
 ```terraform
 resource "aws_mq_broker" "this" {
   apply_immediately          = var.apply_immediately
+  authentication_strategy    = var.authentication_strategy
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   broker_name                = var.broker_name
   deployment_mode            = var.deployment_mode
@@ -219,6 +271,7 @@ resource "aws_mq_broker" "this" {
   host_instance_type         = var.host_instance_type
   publicly_accessible        = var.publicly_accessible
   security_groups            = var.security_groups
+  storage_type               = var.storage_type
   subnet_ids                 = var.subnet_ids
   tags                       = var.tags
 
@@ -235,6 +288,23 @@ resource "aws_mq_broker" "this" {
     content {
       kms_key_id        = encryption_options.value["kms_key_id"]
       use_aws_owned_key = encryption_options.value["use_aws_owned_key"]
+    }
+  }
+
+  dynamic "ldap_server_metadata" {
+    for_each = var.ldap_server_metadata
+    content {
+      hosts                    = ldap_server_metadata.value["hosts"]
+      role_base                = ldap_server_metadata.value["role_base"]
+      role_name                = ldap_server_metadata.value["role_name"]
+      role_search_matching     = ldap_server_metadata.value["role_search_matching"]
+      role_search_subtree      = ldap_server_metadata.value["role_search_subtree"]
+      service_account_password = ldap_server_metadata.value["service_account_password"]
+      service_account_username = ldap_server_metadata.value["service_account_username"]
+      user_base                = ldap_server_metadata.value["user_base"]
+      user_role_name           = ldap_server_metadata.value["user_role_name"]
+      user_search_matching     = ldap_server_metadata.value["user_search_matching"]
+      user_search_subtree      = ldap_server_metadata.value["user_search_subtree"]
     }
   }
 
@@ -278,6 +348,11 @@ output "arn" {
   value       = aws_mq_broker.this.arn
 }
 
+output "authentication_strategy" {
+  description = "returns a string"
+  value       = aws_mq_broker.this.authentication_strategy
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_mq_broker.this.id
@@ -286,6 +361,11 @@ output "id" {
 output "instances" {
   description = "returns a list of object"
   value       = aws_mq_broker.this.instances
+}
+
+output "storage_type" {
+  description = "returns a string"
+  value       = aws_mq_broker.this.storage_type
 }
 
 output "subnet_ids" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -94,6 +94,7 @@ module "google_dataproc_job" {
 
   scheduling = [{
     max_failures_per_hour = null
+    max_failures_total    = null
   }]
 
   spark_config = [{
@@ -258,6 +259,7 @@ variable "scheduling" {
   type = set(object(
     {
       max_failures_per_hour = number
+      max_failures_total    = number
     }
   ))
   default = []
@@ -418,6 +420,7 @@ resource "google_dataproc_job" "this" {
     for_each = var.scheduling
     content {
       max_failures_per_hour = scheduling.value["max_failures_per_hour"]
+      max_failures_total    = scheduling.value["max_failures_total"]
     }
   }
 

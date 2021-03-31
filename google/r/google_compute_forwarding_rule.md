@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "google_compute_forwarding_rule" {
   ip_address = null
   # ip_protocol - (optional) is a type of string
   ip_protocol = null
+  # is_mirroring_collector - (optional) is a type of bool
+  is_mirroring_collector = null
   # load_balancing_scheme - (optional) is a type of string
   load_balancing_scheme = null
   # name - (required) is a type of string
@@ -108,6 +110,12 @@ variable "ip_address" {
 variable "ip_protocol" {
   description = "(optional) - The IP protocol to which this rule applies.\n\nWhen the load balancing scheme is INTERNAL, only TCP and UDP are\nvalid. Possible values: [\"TCP\", \"UDP\", \"ESP\", \"AH\", \"SCTP\", \"ICMP\"]"
   type        = string
+  default     = null
+}
+
+variable "is_mirroring_collector" {
+  description = "(optional) - Indicates whether or not this load balancer can be used\nas a collector for packet mirroring. To prevent mirroring loops,\ninstances behind this load balancer will not have their traffic\nmirrored even if a PacketMirroring rule applies to them. This\ncan only be set to true for load balancers that have their\nloadBalancingScheme set to INTERNAL."
+  type        = bool
   default     = null
 }
 
@@ -195,23 +203,24 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_forwarding_rule" "this" {
-  all_ports             = var.all_ports
-  allow_global_access   = var.allow_global_access
-  backend_service       = var.backend_service
-  description           = var.description
-  ip_address            = var.ip_address
-  ip_protocol           = var.ip_protocol
-  load_balancing_scheme = var.load_balancing_scheme
-  name                  = var.name
-  network               = var.network
-  network_tier          = var.network_tier
-  port_range            = var.port_range
-  ports                 = var.ports
-  project               = var.project
-  region                = var.region
-  service_label         = var.service_label
-  subnetwork            = var.subnetwork
-  target                = var.target
+  all_ports              = var.all_ports
+  allow_global_access    = var.allow_global_access
+  backend_service        = var.backend_service
+  description            = var.description
+  ip_address             = var.ip_address
+  ip_protocol            = var.ip_protocol
+  is_mirroring_collector = var.is_mirroring_collector
+  load_balancing_scheme  = var.load_balancing_scheme
+  name                   = var.name
+  network                = var.network
+  network_tier           = var.network_tier
+  port_range             = var.port_range
+  ports                  = var.ports
+  project                = var.project
+  region                 = var.region
+  service_label          = var.service_label
+  subnetwork             = var.subnetwork
+  target                 = var.target
 
   dynamic "timeouts" {
     for_each = var.timeouts

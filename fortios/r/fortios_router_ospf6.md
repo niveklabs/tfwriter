@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "fortios_router_ospf6" {
   default_information_route_map = null
   # default_metric - (optional) is a type of number
   default_metric = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # log_neighbour_changes - (optional) is a type of string
   log_neighbour_changes = null
   # router_id - (required) is a type of string
@@ -51,8 +53,17 @@ module "fortios_router_ospf6" {
   spf_timers = null
 
   area = [{
-    default_cost                                   = null
-    id                                             = null
+    authentication = null
+    default_cost   = null
+    id             = null
+    ipsec_auth_alg = null
+    ipsec_enc_alg  = null
+    ipsec_keys = [{
+      auth_key = null
+      enc_key  = null
+      spi      = null
+    }]
+    key_rollover_interval                          = null
     nssa_default_information_originate             = null
     nssa_default_information_originate_metric      = null
     nssa_default_information_originate_metric_type = null
@@ -66,25 +77,43 @@ module "fortios_router_ospf6" {
     stub_type = null
     type      = null
     virtual_link = [{
-      dead_interval       = null
-      hello_interval      = null
-      name                = null
-      peer                = null
-      retransmit_interval = null
-      transmit_delay      = null
+      authentication = null
+      dead_interval  = null
+      hello_interval = null
+      ipsec_auth_alg = null
+      ipsec_enc_alg  = null
+      ipsec_keys = [{
+        auth_key = null
+        enc_key  = null
+        spi      = null
+      }]
+      key_rollover_interval = null
+      name                  = null
+      peer                  = null
+      retransmit_interval   = null
+      transmit_delay        = null
     }]
   }]
 
   ospf6_interface = [{
     area_id        = null
+    authentication = null
     bfd            = null
     cost           = null
     dead_interval  = null
     hello_interval = null
     interface      = null
-    mtu            = null
-    mtu_ignore     = null
-    name           = null
+    ipsec_auth_alg = null
+    ipsec_enc_alg  = null
+    ipsec_keys = [{
+      auth_key = null
+      enc_key  = null
+      spi      = null
+    }]
+    key_rollover_interval = null
+    mtu                   = null
+    mtu_ignore            = null
+    name                  = null
     neighbor = [{
       cost          = null
       ip6           = null
@@ -172,6 +201,12 @@ variable "default_metric" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "log_neighbour_changes" {
   description = "(optional)"
   type        = string
@@ -193,8 +228,19 @@ variable "area" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      default_cost                                   = number
-      id                                             = string
+      authentication = string
+      default_cost   = number
+      id             = string
+      ipsec_auth_alg = string
+      ipsec_enc_alg  = string
+      ipsec_keys = list(object(
+        {
+          auth_key = string
+          enc_key  = string
+          spi      = number
+        }
+      ))
+      key_rollover_interval                          = number
       nssa_default_information_originate             = string
       nssa_default_information_originate_metric      = number
       nssa_default_information_originate_metric_type = string
@@ -211,12 +257,23 @@ variable "area" {
       type      = string
       virtual_link = list(object(
         {
-          dead_interval       = number
-          hello_interval      = number
-          name                = string
-          peer                = string
-          retransmit_interval = number
-          transmit_delay      = number
+          authentication = string
+          dead_interval  = number
+          hello_interval = number
+          ipsec_auth_alg = string
+          ipsec_enc_alg  = string
+          ipsec_keys = list(object(
+            {
+              auth_key = string
+              enc_key  = string
+              spi      = number
+            }
+          ))
+          key_rollover_interval = number
+          name                  = string
+          peer                  = string
+          retransmit_interval   = number
+          transmit_delay        = number
         }
       ))
     }
@@ -229,14 +286,25 @@ variable "ospf6_interface" {
   type = set(object(
     {
       area_id        = string
+      authentication = string
       bfd            = string
       cost           = number
       dead_interval  = number
       hello_interval = number
       interface      = string
-      mtu            = number
-      mtu_ignore     = string
-      name           = string
+      ipsec_auth_alg = string
+      ipsec_enc_alg  = string
+      ipsec_keys = list(object(
+        {
+          auth_key = string
+          enc_key  = string
+          spi      = number
+        }
+      ))
+      key_rollover_interval = number
+      mtu                   = number
+      mtu_ignore            = string
+      name                  = string
       neighbor = list(object(
         {
           cost          = number
@@ -307,6 +375,7 @@ resource "fortios_router_ospf6" "this" {
   default_information_originate   = var.default_information_originate
   default_information_route_map   = var.default_information_route_map
   default_metric                  = var.default_metric
+  dynamic_sort_subtable           = var.dynamic_sort_subtable
   log_neighbour_changes           = var.log_neighbour_changes
   router_id                       = var.router_id
   spf_timers                      = var.spf_timers
@@ -314,8 +383,12 @@ resource "fortios_router_ospf6" "this" {
   dynamic "area" {
     for_each = var.area
     content {
+      authentication                                 = area.value["authentication"]
       default_cost                                   = area.value["default_cost"]
       id                                             = area.value["id"]
+      ipsec_auth_alg                                 = area.value["ipsec_auth_alg"]
+      ipsec_enc_alg                                  = area.value["ipsec_enc_alg"]
+      key_rollover_interval                          = area.value["key_rollover_interval"]
       nssa_default_information_originate             = area.value["nssa_default_information_originate"]
       nssa_default_information_originate_metric      = area.value["nssa_default_information_originate_metric"]
       nssa_default_information_originate_metric_type = area.value["nssa_default_information_originate_metric_type"]
@@ -323,6 +396,15 @@ resource "fortios_router_ospf6" "this" {
       nssa_translator_role                           = area.value["nssa_translator_role"]
       stub_type                                      = area.value["stub_type"]
       type                                           = area.value["type"]
+
+      dynamic "ipsec_keys" {
+        for_each = area.value.ipsec_keys
+        content {
+          auth_key = ipsec_keys.value["auth_key"]
+          enc_key  = ipsec_keys.value["enc_key"]
+          spi      = ipsec_keys.value["spi"]
+        }
+      }
 
       dynamic "range" {
         for_each = area.value.range
@@ -336,12 +418,26 @@ resource "fortios_router_ospf6" "this" {
       dynamic "virtual_link" {
         for_each = area.value.virtual_link
         content {
-          dead_interval       = virtual_link.value["dead_interval"]
-          hello_interval      = virtual_link.value["hello_interval"]
-          name                = virtual_link.value["name"]
-          peer                = virtual_link.value["peer"]
-          retransmit_interval = virtual_link.value["retransmit_interval"]
-          transmit_delay      = virtual_link.value["transmit_delay"]
+          authentication        = virtual_link.value["authentication"]
+          dead_interval         = virtual_link.value["dead_interval"]
+          hello_interval        = virtual_link.value["hello_interval"]
+          ipsec_auth_alg        = virtual_link.value["ipsec_auth_alg"]
+          ipsec_enc_alg         = virtual_link.value["ipsec_enc_alg"]
+          key_rollover_interval = virtual_link.value["key_rollover_interval"]
+          name                  = virtual_link.value["name"]
+          peer                  = virtual_link.value["peer"]
+          retransmit_interval   = virtual_link.value["retransmit_interval"]
+          transmit_delay        = virtual_link.value["transmit_delay"]
+
+          dynamic "ipsec_keys" {
+            for_each = virtual_link.value.ipsec_keys
+            content {
+              auth_key = ipsec_keys.value["auth_key"]
+              enc_key  = ipsec_keys.value["enc_key"]
+              spi      = ipsec_keys.value["spi"]
+            }
+          }
+
         }
       }
 
@@ -351,20 +447,33 @@ resource "fortios_router_ospf6" "this" {
   dynamic "ospf6_interface" {
     for_each = var.ospf6_interface
     content {
-      area_id             = ospf6_interface.value["area_id"]
-      bfd                 = ospf6_interface.value["bfd"]
-      cost                = ospf6_interface.value["cost"]
-      dead_interval       = ospf6_interface.value["dead_interval"]
-      hello_interval      = ospf6_interface.value["hello_interval"]
-      interface           = ospf6_interface.value["interface"]
-      mtu                 = ospf6_interface.value["mtu"]
-      mtu_ignore          = ospf6_interface.value["mtu_ignore"]
-      name                = ospf6_interface.value["name"]
-      network_type        = ospf6_interface.value["network_type"]
-      priority            = ospf6_interface.value["priority"]
-      retransmit_interval = ospf6_interface.value["retransmit_interval"]
-      status              = ospf6_interface.value["status"]
-      transmit_delay      = ospf6_interface.value["transmit_delay"]
+      area_id               = ospf6_interface.value["area_id"]
+      authentication        = ospf6_interface.value["authentication"]
+      bfd                   = ospf6_interface.value["bfd"]
+      cost                  = ospf6_interface.value["cost"]
+      dead_interval         = ospf6_interface.value["dead_interval"]
+      hello_interval        = ospf6_interface.value["hello_interval"]
+      interface             = ospf6_interface.value["interface"]
+      ipsec_auth_alg        = ospf6_interface.value["ipsec_auth_alg"]
+      ipsec_enc_alg         = ospf6_interface.value["ipsec_enc_alg"]
+      key_rollover_interval = ospf6_interface.value["key_rollover_interval"]
+      mtu                   = ospf6_interface.value["mtu"]
+      mtu_ignore            = ospf6_interface.value["mtu_ignore"]
+      name                  = ospf6_interface.value["name"]
+      network_type          = ospf6_interface.value["network_type"]
+      priority              = ospf6_interface.value["priority"]
+      retransmit_interval   = ospf6_interface.value["retransmit_interval"]
+      status                = ospf6_interface.value["status"]
+      transmit_delay        = ospf6_interface.value["transmit_delay"]
+
+      dynamic "ipsec_keys" {
+        for_each = ospf6_interface.value.ipsec_keys
+        content {
+          auth_key = ipsec_keys.value["auth_key"]
+          enc_key  = ipsec_keys.value["enc_key"]
+          spi      = ipsec_keys.value["spi"]
+        }
+      }
 
       dynamic "neighbor" {
         for_each = ospf6_interface.value.neighbor

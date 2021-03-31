@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,10 +27,16 @@ terraform {
 module "fortios_vpn_l2tp" {
   source = "./modules/fortios/r/fortios_vpn_l2tp"
 
+  # compress - (optional) is a type of string
+  compress = null
   # eip - (optional) is a type of string
   eip = null
   # enforce_ipsec - (optional) is a type of string
   enforce_ipsec = null
+  # lcp_echo_interval - (optional) is a type of number
+  lcp_echo_interval = null
+  # lcp_max_echo_fails - (optional) is a type of number
+  lcp_max_echo_fails = null
   # sip - (optional) is a type of string
   sip = null
   # status - (required) is a type of string
@@ -45,6 +51,12 @@ module "fortios_vpn_l2tp" {
 ### Variables
 
 ```terraform
+variable "compress" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "eip" {
   description = "(optional)"
   type        = string
@@ -54,6 +66,18 @@ variable "eip" {
 variable "enforce_ipsec" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "lcp_echo_interval" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "lcp_max_echo_fails" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -81,11 +105,14 @@ variable "usrgrp" {
 
 ```terraform
 resource "fortios_vpn_l2tp" "this" {
-  eip           = var.eip
-  enforce_ipsec = var.enforce_ipsec
-  sip           = var.sip
-  status        = var.status
-  usrgrp        = var.usrgrp
+  compress           = var.compress
+  eip                = var.eip
+  enforce_ipsec      = var.enforce_ipsec
+  lcp_echo_interval  = var.lcp_echo_interval
+  lcp_max_echo_fails = var.lcp_max_echo_fails
+  sip                = var.sip
+  status             = var.status
+  usrgrp             = var.usrgrp
 }
 ```
 
@@ -94,6 +121,11 @@ resource "fortios_vpn_l2tp" "this" {
 ### Outputs
 
 ```terraform
+output "compress" {
+  description = "returns a string"
+  value       = fortios_vpn_l2tp.this.compress
+}
+
 output "eip" {
   description = "returns a string"
   value       = fortios_vpn_l2tp.this.eip
@@ -107,6 +139,16 @@ output "enforce_ipsec" {
 output "id" {
   description = "returns a string"
   value       = fortios_vpn_l2tp.this.id
+}
+
+output "lcp_echo_interval" {
+  description = "returns a number"
+  value       = fortios_vpn_l2tp.this.lcp_echo_interval
+}
+
+output "lcp_max_echo_fails" {
+  description = "returns a number"
+  value       = fortios_vpn_l2tp.this.lcp_max_echo_fails
 }
 
 output "sip" {

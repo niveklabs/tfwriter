@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "google_compute_target_tcp_proxy" {
   name = null
   # project - (optional) is a type of string
   project = null
+  # proxy_bind - (optional) is a type of bool
+  proxy_bind = null
   # proxy_header - (optional) is a type of string
   proxy_header = null
 
@@ -73,6 +75,12 @@ variable "project" {
   default     = null
 }
 
+variable "proxy_bind" {
+  description = "(optional) - This field only applies when the forwarding rule that references\nthis target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED."
+  type        = bool
+  default     = null
+}
+
 variable "proxy_header" {
   description = "(optional) - Specifies the type of proxy header to append before sending data to\nthe backend. Default value: \"NONE\" Possible values: [\"NONE\", \"PROXY_V1\"]"
   type        = string
@@ -102,6 +110,7 @@ resource "google_compute_target_tcp_proxy" "this" {
   description     = var.description
   name            = var.name
   project         = var.project
+  proxy_bind      = var.proxy_bind
   proxy_header    = var.proxy_header
 
   dynamic "timeouts" {
@@ -134,6 +143,11 @@ output "id" {
 output "project" {
   description = "returns a string"
   value       = google_compute_target_tcp_proxy.this.project
+}
+
+output "proxy_bind" {
+  description = "returns a bool"
+  value       = google_compute_target_tcp_proxy.this.proxy_bind
 }
 
 output "proxy_id" {

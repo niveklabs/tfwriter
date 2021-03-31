@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "google_bigquery_table" {
   clustering = []
   # dataset_id - (required) is a type of string
   dataset_id = null
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = null
   # description - (optional) is a type of string
   description = null
   # expiration_time - (optional) is a type of number
@@ -119,6 +121,12 @@ variable "clustering" {
 variable "dataset_id" {
   description = "(required) - The dataset ID to create the table in. Changing this forces a new resource to be created."
   type        = string
+}
+
+variable "deletion_protection" {
+  description = "(optional) - Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail."
+  type        = bool
+  default     = null
 }
 
 variable "description" {
@@ -270,15 +278,16 @@ variable "view" {
 
 ```terraform
 resource "google_bigquery_table" "this" {
-  clustering      = var.clustering
-  dataset_id      = var.dataset_id
-  description     = var.description
-  expiration_time = var.expiration_time
-  friendly_name   = var.friendly_name
-  labels          = var.labels
-  project         = var.project
-  schema          = var.schema
-  table_id        = var.table_id
+  clustering          = var.clustering
+  dataset_id          = var.dataset_id
+  deletion_protection = var.deletion_protection
+  description         = var.description
+  expiration_time     = var.expiration_time
+  friendly_name       = var.friendly_name
+  labels              = var.labels
+  project             = var.project
+  schema              = var.schema
+  table_id            = var.table_id
 
   dynamic "encryption_configuration" {
     for_each = var.encryption_configuration

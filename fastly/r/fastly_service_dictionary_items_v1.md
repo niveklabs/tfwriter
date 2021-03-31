@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -42,18 +42,18 @@ module "fastly_service_dictionary_items_v1" {
 
 ```terraform
 variable "dictionary_id" {
-  description = "(required) - The dictionary the items belong to"
+  description = "(required) - The ID of the dictionary that the items belong to"
   type        = string
 }
 
 variable "items" {
-  description = "(optional) - Map of key/value pairs that make up an item in the dictionary"
+  description = "(optional) - A map representing an entry in the dictionary, (key/value)"
   type        = map(string)
   default     = null
 }
 
 variable "service_id" {
-  description = "(required) - The service the dictionary belongs to"
+  description = "(required) - The ID of the service that the dictionary belongs to"
   type        = string
 }
 ```

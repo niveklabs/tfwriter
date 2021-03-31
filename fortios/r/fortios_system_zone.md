@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,10 @@ terraform {
 module "fortios_system_zone" {
   source = "./modules/fortios/r/fortios_system_zone"
 
+  # description - (optional) is a type of string
+  description = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # intrazone - (optional) is a type of string
   intrazone = null
   # name - (optional) is a type of string
@@ -51,6 +55,18 @@ module "fortios_system_zone" {
 ### Variables
 
 ```terraform
+variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "intrazone" {
   description = "(optional)"
   type        = string
@@ -96,8 +112,10 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_system_zone" "this" {
-  intrazone = var.intrazone
-  name      = var.name
+  description           = var.description
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  intrazone             = var.intrazone
+  name                  = var.name
 
   dynamic "interface" {
     for_each = var.interface
@@ -130,6 +148,11 @@ resource "fortios_system_zone" "this" {
 ### Outputs
 
 ```terraform
+output "description" {
+  description = "returns a string"
+  value       = fortios_system_zone.this.description
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_system_zone.this.id

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    digitalocean = ">= 2.3.0"
+    digitalocean = ">= 2.7.0"
   }
 }
 ```
@@ -38,9 +38,58 @@ module "digitalocean_app" {
       production   = null
       version      = null
     }]
+    domain = [{
+      name     = null
+      type     = null
+      wildcard = null
+      zone     = null
+    }]
     domains = []
-    name    = null
-    region  = null
+    env = [{
+      key   = null
+      scope = null
+      type  = null
+      value = null
+    }]
+    job = [{
+      build_command   = null
+      dockerfile_path = null
+      env = [{
+        key   = null
+        scope = null
+        type  = null
+        value = null
+      }]
+      environment_slug = null
+      git = [{
+        branch         = null
+        repo_clone_url = null
+      }]
+      github = [{
+        branch         = null
+        deploy_on_push = null
+        repo           = null
+      }]
+      gitlab = [{
+        branch         = null
+        deploy_on_push = null
+        repo           = null
+      }]
+      image = [{
+        registry      = null
+        registry_type = null
+        repository    = null
+        tag           = null
+      }]
+      instance_count     = null
+      instance_size_slug = null
+      kind               = null
+      name               = null
+      run_command        = null
+      source_dir         = null
+    }]
+    name   = null
+    region = null
     service = [{
       build_command   = null
       dockerfile_path = null
@@ -60,6 +109,11 @@ module "digitalocean_app" {
         deploy_on_push = null
         repo           = null
       }]
+      gitlab = [{
+        branch         = null
+        deploy_on_push = null
+        repo           = null
+      }]
       health_check = [{
         failure_threshold     = null
         http_path             = null
@@ -68,9 +122,16 @@ module "digitalocean_app" {
         success_threshold     = null
         timeout_seconds       = null
       }]
-      http_port          = null
+      http_port = null
+      image = [{
+        registry      = null
+        registry_type = null
+        repository    = null
+        tag           = null
+      }]
       instance_count     = null
       instance_size_slug = null
+      internal_ports     = []
       name               = null
       routes = [{
         path = null
@@ -79,8 +140,9 @@ module "digitalocean_app" {
       source_dir  = null
     }]
     static_site = [{
-      build_command   = null
-      dockerfile_path = null
+      build_command     = null
+      catchall_document = null
+      dockerfile_path   = null
       env = [{
         key   = null
         scope = null
@@ -94,6 +156,11 @@ module "digitalocean_app" {
         repo_clone_url = null
       }]
       github = [{
+        branch         = null
+        deploy_on_push = null
+        repo           = null
+      }]
+      gitlab = [{
         branch         = null
         deploy_on_push = null
         repo           = null
@@ -125,14 +192,22 @@ module "digitalocean_app" {
         deploy_on_push = null
         repo           = null
       }]
+      gitlab = [{
+        branch         = null
+        deploy_on_push = null
+        repo           = null
+      }]
+      image = [{
+        registry      = null
+        registry_type = null
+        repository    = null
+        tag           = null
+      }]
       instance_count     = null
       instance_size_slug = null
       name               = null
-      routes = [{
-        path = null
-      }]
-      run_command = null
-      source_dir  = null
+      run_command        = null
+      source_dir         = null
     }]
   }]
 }
@@ -158,9 +233,74 @@ variable "spec" {
           version      = string
         }
       ))
+      domain = list(object(
+        {
+          name     = string
+          type     = string
+          wildcard = bool
+          zone     = string
+        }
+      ))
       domains = set(string)
-      name    = string
-      region  = string
+      env = set(object(
+        {
+          key   = string
+          scope = string
+          type  = string
+          value = string
+        }
+      ))
+      job = list(object(
+        {
+          build_command   = string
+          dockerfile_path = string
+          env = set(object(
+            {
+              key   = string
+              scope = string
+              type  = string
+              value = string
+            }
+          ))
+          environment_slug = string
+          git = list(object(
+            {
+              branch         = string
+              repo_clone_url = string
+            }
+          ))
+          github = list(object(
+            {
+              branch         = string
+              deploy_on_push = bool
+              repo           = string
+            }
+          ))
+          gitlab = list(object(
+            {
+              branch         = string
+              deploy_on_push = bool
+              repo           = string
+            }
+          ))
+          image = list(object(
+            {
+              registry      = string
+              registry_type = string
+              repository    = string
+              tag           = string
+            }
+          ))
+          instance_count     = number
+          instance_size_slug = string
+          kind               = string
+          name               = string
+          run_command        = string
+          source_dir         = string
+        }
+      ))
+      name   = string
+      region = string
       service = list(object(
         {
           build_command   = string
@@ -187,6 +327,13 @@ variable "spec" {
               repo           = string
             }
           ))
+          gitlab = list(object(
+            {
+              branch         = string
+              deploy_on_push = bool
+              repo           = string
+            }
+          ))
           health_check = list(object(
             {
               failure_threshold     = number
@@ -197,9 +344,18 @@ variable "spec" {
               timeout_seconds       = number
             }
           ))
-          http_port          = number
+          http_port = number
+          image = list(object(
+            {
+              registry      = string
+              registry_type = string
+              repository    = string
+              tag           = string
+            }
+          ))
           instance_count     = number
           instance_size_slug = string
+          internal_ports     = set(number)
           name               = string
           routes = list(object(
             {
@@ -212,8 +368,9 @@ variable "spec" {
       ))
       static_site = list(object(
         {
-          build_command   = string
-          dockerfile_path = string
+          build_command     = string
+          catchall_document = string
+          dockerfile_path   = string
           env = set(object(
             {
               key   = string
@@ -231,6 +388,13 @@ variable "spec" {
             }
           ))
           github = list(object(
+            {
+              branch         = string
+              deploy_on_push = bool
+              repo           = string
+            }
+          ))
+          gitlab = list(object(
             {
               branch         = string
               deploy_on_push = bool
@@ -274,16 +438,26 @@ variable "spec" {
               repo           = string
             }
           ))
+          gitlab = list(object(
+            {
+              branch         = string
+              deploy_on_push = bool
+              repo           = string
+            }
+          ))
+          image = list(object(
+            {
+              registry      = string
+              registry_type = string
+              repository    = string
+              tag           = string
+            }
+          ))
           instance_count     = number
           instance_size_slug = string
           name               = string
-          routes = list(object(
-            {
-              path = string
-            }
-          ))
-          run_command = string
-          source_dir  = string
+          run_command        = string
+          source_dir         = string
         }
       ))
     }
@@ -319,6 +493,88 @@ resource "digitalocean_app" "this" {
         }
       }
 
+      dynamic "domain" {
+        for_each = spec.value.domain
+        content {
+          name     = domain.value["name"]
+          type     = domain.value["type"]
+          wildcard = domain.value["wildcard"]
+          zone     = domain.value["zone"]
+        }
+      }
+
+      dynamic "env" {
+        for_each = spec.value.env
+        content {
+          key   = env.value["key"]
+          scope = env.value["scope"]
+          type  = env.value["type"]
+          value = env.value["value"]
+        }
+      }
+
+      dynamic "job" {
+        for_each = spec.value.job
+        content {
+          build_command      = job.value["build_command"]
+          dockerfile_path    = job.value["dockerfile_path"]
+          environment_slug   = job.value["environment_slug"]
+          instance_count     = job.value["instance_count"]
+          instance_size_slug = job.value["instance_size_slug"]
+          kind               = job.value["kind"]
+          name               = job.value["name"]
+          run_command        = job.value["run_command"]
+          source_dir         = job.value["source_dir"]
+
+          dynamic "env" {
+            for_each = job.value.env
+            content {
+              key   = env.value["key"]
+              scope = env.value["scope"]
+              type  = env.value["type"]
+              value = env.value["value"]
+            }
+          }
+
+          dynamic "git" {
+            for_each = job.value.git
+            content {
+              branch         = git.value["branch"]
+              repo_clone_url = git.value["repo_clone_url"]
+            }
+          }
+
+          dynamic "github" {
+            for_each = job.value.github
+            content {
+              branch         = github.value["branch"]
+              deploy_on_push = github.value["deploy_on_push"]
+              repo           = github.value["repo"]
+            }
+          }
+
+          dynamic "gitlab" {
+            for_each = job.value.gitlab
+            content {
+              branch         = gitlab.value["branch"]
+              deploy_on_push = gitlab.value["deploy_on_push"]
+              repo           = gitlab.value["repo"]
+            }
+          }
+
+          dynamic "image" {
+            for_each = job.value.image
+            content {
+              registry      = image.value["registry"]
+              registry_type = image.value["registry_type"]
+              repository    = image.value["repository"]
+              tag           = image.value["tag"]
+            }
+          }
+
+        }
+      }
+
       dynamic "service" {
         for_each = spec.value.service
         content {
@@ -328,6 +584,7 @@ resource "digitalocean_app" "this" {
           http_port          = service.value["http_port"]
           instance_count     = service.value["instance_count"]
           instance_size_slug = service.value["instance_size_slug"]
+          internal_ports     = service.value["internal_ports"]
           name               = service.value["name"]
           run_command        = service.value["run_command"]
           source_dir         = service.value["source_dir"]
@@ -359,6 +616,15 @@ resource "digitalocean_app" "this" {
             }
           }
 
+          dynamic "gitlab" {
+            for_each = service.value.gitlab
+            content {
+              branch         = gitlab.value["branch"]
+              deploy_on_push = gitlab.value["deploy_on_push"]
+              repo           = gitlab.value["repo"]
+            }
+          }
+
           dynamic "health_check" {
             for_each = service.value.health_check
             content {
@@ -368,6 +634,16 @@ resource "digitalocean_app" "this" {
               period_seconds        = health_check.value["period_seconds"]
               success_threshold     = health_check.value["success_threshold"]
               timeout_seconds       = health_check.value["timeout_seconds"]
+            }
+          }
+
+          dynamic "image" {
+            for_each = service.value.image
+            content {
+              registry      = image.value["registry"]
+              registry_type = image.value["registry_type"]
+              repository    = image.value["repository"]
+              tag           = image.value["tag"]
             }
           }
 
@@ -384,14 +660,15 @@ resource "digitalocean_app" "this" {
       dynamic "static_site" {
         for_each = spec.value.static_site
         content {
-          build_command    = static_site.value["build_command"]
-          dockerfile_path  = static_site.value["dockerfile_path"]
-          environment_slug = static_site.value["environment_slug"]
-          error_document   = static_site.value["error_document"]
-          index_document   = static_site.value["index_document"]
-          name             = static_site.value["name"]
-          output_dir       = static_site.value["output_dir"]
-          source_dir       = static_site.value["source_dir"]
+          build_command     = static_site.value["build_command"]
+          catchall_document = static_site.value["catchall_document"]
+          dockerfile_path   = static_site.value["dockerfile_path"]
+          environment_slug  = static_site.value["environment_slug"]
+          error_document    = static_site.value["error_document"]
+          index_document    = static_site.value["index_document"]
+          name              = static_site.value["name"]
+          output_dir        = static_site.value["output_dir"]
+          source_dir        = static_site.value["source_dir"]
 
           dynamic "env" {
             for_each = static_site.value.env
@@ -417,6 +694,15 @@ resource "digitalocean_app" "this" {
               branch         = github.value["branch"]
               deploy_on_push = github.value["deploy_on_push"]
               repo           = github.value["repo"]
+            }
+          }
+
+          dynamic "gitlab" {
+            for_each = static_site.value.gitlab
+            content {
+              branch         = gitlab.value["branch"]
+              deploy_on_push = gitlab.value["deploy_on_push"]
+              repo           = gitlab.value["repo"]
             }
           }
 
@@ -469,10 +755,22 @@ resource "digitalocean_app" "this" {
             }
           }
 
-          dynamic "routes" {
-            for_each = worker.value.routes
+          dynamic "gitlab" {
+            for_each = worker.value.gitlab
             content {
-              path = routes.value["path"]
+              branch         = gitlab.value["branch"]
+              deploy_on_push = gitlab.value["deploy_on_push"]
+              repo           = gitlab.value["repo"]
+            }
+          }
+
+          dynamic "image" {
+            for_each = worker.value.image
+            content {
+              registry      = image.value["registry"]
+              registry_type = image.value["registry_type"]
+              repository    = image.value["repository"]
+              tag           = image.value["tag"]
             }
           }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -84,6 +84,11 @@ output "alternative_location_id" {
 output "auth_enabled" {
   description = "returns a bool"
   value       = data.google_redis_instance.this.auth_enabled
+}
+
+output "auth_string" {
+  description = "returns a string"
+  value       = data.google_redis_instance.this.auth_string
 }
 
 output "authorized_network" {
@@ -161,9 +166,19 @@ output "reserved_ip_range" {
   value       = data.google_redis_instance.this.reserved_ip_range
 }
 
+output "server_ca_certs" {
+  description = "returns a list of object"
+  value       = data.google_redis_instance.this.server_ca_certs
+}
+
 output "tier" {
   description = "returns a string"
   value       = data.google_redis_instance.this.tier
+}
+
+output "transit_encryption_mode" {
+  description = "returns a string"
+  value       = data.google_redis_instance.this.transit_encryption_mode
 }
 
 output "this" {

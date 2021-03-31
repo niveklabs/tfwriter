@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -86,8 +86,9 @@ module "azurerm_batch_pool" {
       }]
       protocol = null
     }]
-    public_ips = []
-    subnet_id  = null
+    public_address_provisioning_type = null
+    public_ips                       = []
+    subnet_id                        = null
   }]
 
   start_task = [{
@@ -256,8 +257,9 @@ variable "network_configuration" {
           protocol = string
         }
       ))
-      public_ips = set(string)
-      subnet_id  = string
+      public_address_provisioning_type = string
+      public_ips                       = set(string)
+      subnet_id                        = string
     }
   ))
   default = []
@@ -379,8 +381,9 @@ resource "azurerm_batch_pool" "this" {
   dynamic "network_configuration" {
     for_each = var.network_configuration
     content {
-      public_ips = network_configuration.value["public_ips"]
-      subnet_id  = network_configuration.value["subnet_id"]
+      public_address_provisioning_type = network_configuration.value["public_address_provisioning_type"]
+      public_ips                       = network_configuration.value["public_ips"]
+      subnet_id                        = network_configuration.value["subnet_id"]
 
       dynamic "endpoint_configuration" {
         for_each = network_configuration.value.endpoint_configuration

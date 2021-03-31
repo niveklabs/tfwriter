@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -45,6 +45,13 @@ module "azuredevops_serviceendpoint_dockerregistry" {
   registry_type = null
   # service_endpoint_name - (required) is a type of string
   service_endpoint_name = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -104,6 +111,19 @@ variable "service_endpoint_name" {
   description = "(required)"
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -121,6 +141,17 @@ resource "azuredevops_serviceendpoint_dockerregistry" "this" {
   project_id            = var.project_id
   registry_type         = var.registry_type
   service_endpoint_name = var.service_endpoint_name
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 

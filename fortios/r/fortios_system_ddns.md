@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -55,6 +55,8 @@ module "fortios_system_ddns" {
   ddns_zone = null
   # ddnsid - (optional) is a type of number
   ddnsid = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ssl_certificate - (optional) is a type of string
   ssl_certificate = null
   # update_interval - (optional) is a type of number
@@ -156,6 +158,12 @@ variable "ddnsid" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ssl_certificate" {
   description = "(optional)"
   type        = string
@@ -190,23 +198,24 @@ variable "monitor_interface" {
 
 ```terraform
 resource "fortios_system_ddns" "this" {
-  bound_ip        = var.bound_ip
-  clear_text      = var.clear_text
-  ddns_auth       = var.ddns_auth
-  ddns_domain     = var.ddns_domain
-  ddns_key        = var.ddns_key
-  ddns_keyname    = var.ddns_keyname
-  ddns_password   = var.ddns_password
-  ddns_server     = var.ddns_server
-  ddns_server_ip  = var.ddns_server_ip
-  ddns_sn         = var.ddns_sn
-  ddns_ttl        = var.ddns_ttl
-  ddns_username   = var.ddns_username
-  ddns_zone       = var.ddns_zone
-  ddnsid          = var.ddnsid
-  ssl_certificate = var.ssl_certificate
-  update_interval = var.update_interval
-  use_public_ip   = var.use_public_ip
+  bound_ip              = var.bound_ip
+  clear_text            = var.clear_text
+  ddns_auth             = var.ddns_auth
+  ddns_domain           = var.ddns_domain
+  ddns_key              = var.ddns_key
+  ddns_keyname          = var.ddns_keyname
+  ddns_password         = var.ddns_password
+  ddns_server           = var.ddns_server
+  ddns_server_ip        = var.ddns_server_ip
+  ddns_sn               = var.ddns_sn
+  ddns_ttl              = var.ddns_ttl
+  ddns_username         = var.ddns_username
+  ddns_zone             = var.ddns_zone
+  ddnsid                = var.ddnsid
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ssl_certificate       = var.ssl_certificate
+  update_interval       = var.update_interval
+  use_public_ip         = var.use_public_ip
 
   dynamic "monitor_interface" {
     for_each = var.monitor_interface

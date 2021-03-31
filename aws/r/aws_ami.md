@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -56,6 +56,7 @@ module "aws_ami" {
     encrypted             = null
     iops                  = null
     snapshot_id           = null
+    throughput            = null
     volume_size           = null
     volume_type           = null
   }]
@@ -152,6 +153,7 @@ variable "ebs_block_device" {
       encrypted             = bool
       iops                  = number
       snapshot_id           = string
+      throughput            = number
       volume_size           = number
       volume_type           = string
     }
@@ -209,6 +211,7 @@ resource "aws_ami" "this" {
       encrypted             = ebs_block_device.value["encrypted"]
       iops                  = ebs_block_device.value["iops"]
       snapshot_id           = ebs_block_device.value["snapshot_id"]
+      throughput            = ebs_block_device.value["throughput"]
       volume_size           = ebs_block_device.value["volume_size"]
       volume_type           = ebs_block_device.value["volume_type"]
     }
@@ -244,6 +247,11 @@ output "arn" {
   value       = aws_ami.this.arn
 }
 
+output "hypervisor" {
+  description = "returns a string"
+  value       = aws_ami.this.hypervisor
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ami.this.id
@@ -254,14 +262,49 @@ output "image_location" {
   value       = aws_ami.this.image_location
 }
 
+output "image_owner_alias" {
+  description = "returns a string"
+  value       = aws_ami.this.image_owner_alias
+}
+
+output "image_type" {
+  description = "returns a string"
+  value       = aws_ami.this.image_type
+}
+
 output "manage_ebs_snapshots" {
   description = "returns a bool"
   value       = aws_ami.this.manage_ebs_snapshots
 }
 
+output "owner_id" {
+  description = "returns a string"
+  value       = aws_ami.this.owner_id
+}
+
+output "platform" {
+  description = "returns a string"
+  value       = aws_ami.this.platform
+}
+
+output "platform_details" {
+  description = "returns a string"
+  value       = aws_ami.this.platform_details
+}
+
+output "public" {
+  description = "returns a bool"
+  value       = aws_ami.this.public
+}
+
 output "root_snapshot_id" {
   description = "returns a string"
   value       = aws_ami.this.root_snapshot_id
+}
+
+output "usage_operation" {
+  description = "returns a string"
+  value       = aws_ami.this.usage_operation
 }
 
 output "this" {

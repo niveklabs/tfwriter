@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -78,9 +78,24 @@ output "id" {
   value       = data.oci_file_storage_snapshot.this.id
 }
 
+output "is_clone_source" {
+  description = "returns a bool"
+  value       = data.oci_file_storage_snapshot.this.is_clone_source
+}
+
+output "lifecycle_details" {
+  description = "returns a string"
+  value       = data.oci_file_storage_snapshot.this.lifecycle_details
+}
+
 output "name" {
   description = "returns a string"
   value       = data.oci_file_storage_snapshot.this.name
+}
+
+output "provenance_id" {
+  description = "returns a string"
+  value       = data.oci_file_storage_snapshot.this.provenance_id
 }
 
 output "state" {

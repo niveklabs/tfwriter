@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,6 +39,12 @@ module "azurerm_logic_app_trigger_recurrence" {
   start_time = null
   # time_zone - (optional) is a type of string
   time_zone = null
+
+  schedule = [{
+    at_these_hours   = []
+    at_these_minutes = []
+    on_these_days    = []
+  }]
 
   timeouts = [{
     create = null
@@ -86,6 +92,18 @@ variable "time_zone" {
   default     = null
 }
 
+variable "schedule" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      at_these_hours   = set(number)
+      at_these_minutes = set(number)
+      on_these_days    = set(string)
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -112,6 +130,15 @@ resource "azurerm_logic_app_trigger_recurrence" "this" {
   name         = var.name
   start_time   = var.start_time
   time_zone    = var.time_zone
+
+  dynamic "schedule" {
+    for_each = var.schedule
+    content {
+      at_these_hours   = schedule.value["at_these_hours"]
+      at_these_minutes = schedule.value["at_these_minutes"]
+      on_these_days    = schedule.value["on_these_days"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

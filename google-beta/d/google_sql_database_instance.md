@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -67,6 +67,11 @@ data "google_sql_database_instance" "this" {
 ### Outputs
 
 ```terraform
+output "clone" {
+  description = "returns a list of object"
+  value       = data.google_sql_database_instance.this.clone
+}
+
 output "connection_name" {
   description = "returns a string"
   value       = data.google_sql_database_instance.this.connection_name
@@ -125,6 +130,11 @@ output "region" {
 output "replica_configuration" {
   description = "returns a list of object"
   value       = data.google_sql_database_instance.this.replica_configuration
+}
+
+output "restore_backup_context" {
+  description = "returns a list of object"
+  value       = data.google_sql_database_instance.this.restore_backup_context
 }
 
 output "root_password" {

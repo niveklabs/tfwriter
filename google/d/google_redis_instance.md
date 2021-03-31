@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -79,6 +79,16 @@ data "google_redis_instance" "this" {
 output "alternative_location_id" {
   description = "returns a string"
   value       = data.google_redis_instance.this.alternative_location_id
+}
+
+output "auth_enabled" {
+  description = "returns a bool"
+  value       = data.google_redis_instance.this.auth_enabled
+}
+
+output "auth_string" {
+  description = "returns a string"
+  value       = data.google_redis_instance.this.auth_string
 }
 
 output "authorized_network" {

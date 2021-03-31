@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    vault = ">= 2.17.0"
+    vault = ">= 2.19.0"
   }
 }
 ```
@@ -51,6 +51,8 @@ module "vault_jwt_auth_backend" {
   oidc_discovery_url = null
   # path - (optional) is a type of string
   path = null
+  # provider_config - (optional) is a type of map of string
+  provider_config = {}
   # tune - (optional) is a type of set of object
   tune = [{
     allowed_response_headers     = []
@@ -144,6 +146,12 @@ variable "path" {
   default     = null
 }
 
+variable "provider_config" {
+  description = "(optional) - Provider specific handling configuration"
+  type        = map(string)
+  default     = null
+}
+
 variable "tune" {
   description = "(optional)"
   type = set(object(
@@ -186,6 +194,7 @@ resource "vault_jwt_auth_backend" "this" {
   oidc_discovery_ca_pem  = var.oidc_discovery_ca_pem
   oidc_discovery_url     = var.oidc_discovery_url
   path                   = var.path
+  provider_config        = var.provider_config
   tune                   = var.tune
   type                   = var.type
 }

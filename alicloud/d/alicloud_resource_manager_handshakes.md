@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "alicloud_resource_manager_handshakes" {
   source = "./modules/alicloud/d/alicloud_resource_manager_handshakes"
 
+  # enable_details - (optional) is a type of bool
+  enable_details = null
   # ids - (optional) is a type of list of string
   ids = []
   # output_file - (optional) is a type of string
   output_file = null
+  # status - (optional) is a type of string
+  status = null
 }
 ```
 
@@ -39,6 +43,12 @@ module "alicloud_resource_manager_handshakes" {
 ### Variables
 
 ```terraform
+variable "enable_details" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "ids" {
   description = "(optional)"
   type        = list(string)
@@ -46,6 +56,12 @@ variable "ids" {
 }
 
 variable "output_file" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "status" {
   description = "(optional)"
   type        = string
   default     = null
@@ -58,8 +74,10 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_resource_manager_handshakes" "this" {
-  ids         = var.ids
-  output_file = var.output_file
+  enable_details = var.enable_details
+  ids            = var.ids
+  output_file    = var.output_file
+  status         = var.status
 }
 ```
 

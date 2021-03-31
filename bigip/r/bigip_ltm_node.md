@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.5.0"
+    bigip = ">= 1.7.0"
   }
 }
 ```
@@ -73,7 +73,7 @@ variable "connection_limit" {
 }
 
 variable "description" {
-  description = "(optional)"
+  description = "(optional) - User defined description of the node."
   type        = string
   default     = null
 }

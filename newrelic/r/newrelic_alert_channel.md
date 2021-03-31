@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```
@@ -69,7 +69,7 @@ variable "name" {
 }
 
 variable "type" {
-  description = "(required) - (Required) The type of channel. One of: (victorops, webhook, email, opsgenie, pagerduty, slack, user)."
+  description = "(required) - (Required) The type of channel. One of: (user, victorops, webhook, email, opsgenie, pagerduty, slack)."
   type        = string
 }
 

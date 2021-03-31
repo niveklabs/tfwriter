@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    time = ">= 0.6.0"
+    time = ">= 0.7.0"
   }
 }
 ```

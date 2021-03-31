@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -57,10 +57,14 @@ module "fortios_fmg_firewall_security_policy" {
   internet_service = null
   # internet_service_id - (optional) is a type of list of string
   internet_service_id = []
+  # internet_service_name - (optional) is a type of list of string
+  internet_service_name = []
   # internet_service_src - (optional) is a type of string
   internet_service_src = null
   # internet_service_src_id - (optional) is a type of list of string
   internet_service_src_id = []
+  # internet_service_src_name - (optional) is a type of list of string
+  internet_service_src_name = []
   # ippool - (optional) is a type of string
   ippool = null
   # ips_sensor - (optional) is a type of list of string
@@ -205,6 +209,12 @@ variable "internet_service_id" {
   default     = null
 }
 
+variable "internet_service_name" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "internet_service_src" {
   description = "(optional)"
   type        = string
@@ -212,6 +222,12 @@ variable "internet_service_src" {
 }
 
 variable "internet_service_src_id" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
+variable "internet_service_src_name" {
   description = "(optional)"
   type        = list(string)
   default     = null
@@ -363,47 +379,49 @@ variable "webfilter_profile" {
 
 ```terraform
 resource "fortios_fmg_firewall_security_policy" "this" {
-  action                   = var.action
-  adom                     = var.adom
-  application_list         = var.application_list
-  av_profile               = var.av_profile
-  capture_packet           = var.capture_packet
-  comments                 = var.comments
-  dnsfilter_profile        = var.dnsfilter_profile
-  dstaddr                  = var.dstaddr
-  dstintf                  = var.dstintf
-  fixedport                = var.fixedport
-  fsso                     = var.fsso
-  groups                   = var.groups
-  inbound                  = var.inbound
-  internet_service         = var.internet_service
-  internet_service_id      = var.internet_service_id
-  internet_service_src     = var.internet_service_src
-  internet_service_src_id  = var.internet_service_src_id
-  ippool                   = var.ippool
-  ips_sensor               = var.ips_sensor
-  logtraffic               = var.logtraffic
-  logtraffic_start         = var.logtraffic_start
-  name                     = var.name
-  nat                      = var.nat
-  package_name             = var.package_name
-  per_ip_shaper            = var.per_ip_shaper
-  poolname                 = var.poolname
-  profile_group            = var.profile_group
-  profile_protocol_options = var.profile_protocol_options
-  profile_type             = var.profile_type
-  rsso                     = var.rsso
-  schedule                 = var.schedule
-  service                  = var.service
-  srcaddr                  = var.srcaddr
-  srcintf                  = var.srcintf
-  traffic_shaper           = var.traffic_shaper
-  traffic_shaper_reverse   = var.traffic_shaper_reverse
-  users                    = var.users
-  utm_status               = var.utm_status
-  vpn_tunnel               = var.vpn_tunnel
-  waf_profile              = var.waf_profile
-  webfilter_profile        = var.webfilter_profile
+  action                    = var.action
+  adom                      = var.adom
+  application_list          = var.application_list
+  av_profile                = var.av_profile
+  capture_packet            = var.capture_packet
+  comments                  = var.comments
+  dnsfilter_profile         = var.dnsfilter_profile
+  dstaddr                   = var.dstaddr
+  dstintf                   = var.dstintf
+  fixedport                 = var.fixedport
+  fsso                      = var.fsso
+  groups                    = var.groups
+  inbound                   = var.inbound
+  internet_service          = var.internet_service
+  internet_service_id       = var.internet_service_id
+  internet_service_name     = var.internet_service_name
+  internet_service_src      = var.internet_service_src
+  internet_service_src_id   = var.internet_service_src_id
+  internet_service_src_name = var.internet_service_src_name
+  ippool                    = var.ippool
+  ips_sensor                = var.ips_sensor
+  logtraffic                = var.logtraffic
+  logtraffic_start          = var.logtraffic_start
+  name                      = var.name
+  nat                       = var.nat
+  package_name              = var.package_name
+  per_ip_shaper             = var.per_ip_shaper
+  poolname                  = var.poolname
+  profile_group             = var.profile_group
+  profile_protocol_options  = var.profile_protocol_options
+  profile_type              = var.profile_type
+  rsso                      = var.rsso
+  schedule                  = var.schedule
+  service                   = var.service
+  srcaddr                   = var.srcaddr
+  srcintf                   = var.srcintf
+  traffic_shaper            = var.traffic_shaper
+  traffic_shaper_reverse    = var.traffic_shaper_reverse
+  users                     = var.users
+  utm_status                = var.utm_status
+  vpn_tunnel                = var.vpn_tunnel
+  waf_profile               = var.waf_profile
+  webfilter_profile         = var.webfilter_profile
 }
 ```
 
@@ -415,6 +433,16 @@ resource "fortios_fmg_firewall_security_policy" "this" {
 output "id" {
   description = "returns a string"
   value       = fortios_fmg_firewall_security_policy.this.id
+}
+
+output "internet_service" {
+  description = "returns a string"
+  value       = fortios_fmg_firewall_security_policy.this.internet_service
+}
+
+output "internet_service_src" {
+  description = "returns a string"
+  value       = fortios_fmg_firewall_security_policy.this.internet_service_src
 }
 
 output "this" {

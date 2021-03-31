@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_firewall_shapingpolicy" {
   diffservcode_forward = null
   # diffservcode_rev - (optional) is a type of string
   diffservcode_rev = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
   # internet_service - (optional) is a type of string
@@ -110,6 +112,10 @@ module "fortios_firewall_shapingpolicy" {
     id = null
   }]
 
+  internet_service_name = [{
+    name = null
+  }]
+
   internet_service_src_custom = [{
     name = null
   }]
@@ -126,6 +132,10 @@ module "fortios_firewall_shapingpolicy" {
     id = null
   }]
 
+  internet_service_src_name = [{
+    name = null
+  }]
+
   service = [{
     name = null
   }]
@@ -135,6 +145,10 @@ module "fortios_firewall_shapingpolicy" {
   }]
 
   srcaddr6 = [{
+    name = null
+  }]
+
+  srcintf = [{
     name = null
   }]
 
@@ -184,6 +198,12 @@ variable "diffservcode_forward" {
 }
 
 variable "diffservcode_rev" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -375,6 +395,16 @@ variable "internet_service_id" {
   default = []
 }
 
+variable "internet_service_name" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "internet_service_src_custom" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -415,6 +445,16 @@ variable "internet_service_src_id" {
   default = []
 }
 
+variable "internet_service_src_name" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "service" {
   description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
@@ -434,6 +474,16 @@ variable "srcaddr" {
 }
 
 variable "srcaddr6" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
+variable "srcintf" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
@@ -476,6 +526,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   diffserv_reverse       = var.diffserv_reverse
   diffservcode_forward   = var.diffservcode_forward
   diffservcode_rev       = var.diffservcode_rev
+  dynamic_sort_subtable  = var.dynamic_sort_subtable
   fosid                  = var.fosid
   internet_service       = var.internet_service
   internet_service_src   = var.internet_service_src
@@ -567,6 +618,13 @@ resource "fortios_firewall_shapingpolicy" "this" {
     }
   }
 
+  dynamic "internet_service_name" {
+    for_each = var.internet_service_name
+    content {
+      name = internet_service_name.value["name"]
+    }
+  }
+
   dynamic "internet_service_src_custom" {
     for_each = var.internet_service_src_custom
     content {
@@ -595,6 +653,13 @@ resource "fortios_firewall_shapingpolicy" "this" {
     }
   }
 
+  dynamic "internet_service_src_name" {
+    for_each = var.internet_service_src_name
+    content {
+      name = internet_service_src_name.value["name"]
+    }
+  }
+
   dynamic "service" {
     for_each = var.service
     content {
@@ -613,6 +678,13 @@ resource "fortios_firewall_shapingpolicy" "this" {
     for_each = var.srcaddr6
     content {
       name = srcaddr6.value["name"]
+    }
+  }
+
+  dynamic "srcintf" {
+    for_each = var.srcintf
+    content {
+      name = srcintf.value["name"]
     }
   }
 

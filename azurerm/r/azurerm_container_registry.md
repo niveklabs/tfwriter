@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -47,6 +47,8 @@ module "azurerm_container_registry" {
       subnet_id = null
     }]
   }]
+  # public_network_access_enabled - (optional) is a type of bool
+  public_network_access_enabled = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # retention_policy - (optional) is a type of list of object
@@ -123,6 +125,12 @@ variable "network_rule_set" {
   default = null
 }
 
+variable "public_network_access_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "resource_group_name" {
   description = "(required)"
   type        = string
@@ -187,17 +195,18 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_container_registry" "this" {
-  admin_enabled            = var.admin_enabled
-  georeplication_locations = var.georeplication_locations
-  location                 = var.location
-  name                     = var.name
-  network_rule_set         = var.network_rule_set
-  resource_group_name      = var.resource_group_name
-  retention_policy         = var.retention_policy
-  sku                      = var.sku
-  storage_account_id       = var.storage_account_id
-  tags                     = var.tags
-  trust_policy             = var.trust_policy
+  admin_enabled                 = var.admin_enabled
+  georeplication_locations      = var.georeplication_locations
+  location                      = var.location
+  name                          = var.name
+  network_rule_set              = var.network_rule_set
+  public_network_access_enabled = var.public_network_access_enabled
+  resource_group_name           = var.resource_group_name
+  retention_policy              = var.retention_policy
+  sku                           = var.sku
+  storage_account_id            = var.storage_account_id
+  tags                          = var.tags
+  trust_policy                  = var.trust_policy
 
   dynamic "timeouts" {
     for_each = var.timeouts

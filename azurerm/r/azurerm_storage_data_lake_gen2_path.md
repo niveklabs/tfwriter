@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -94,7 +94,7 @@ variable "storage_account_id" {
 }
 
 variable "ace" {
-  description = "nested block: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
       id          = string

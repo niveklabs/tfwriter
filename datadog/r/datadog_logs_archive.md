@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -41,6 +41,28 @@ module "datadog_logs_archive" {
   rehydration_tags = []
   # s3 - (optional) is a type of map of string
   s3 = {}
+
+  azure_archive = [{
+    client_id       = null
+    container       = null
+    path            = null
+    storage_account = null
+    tenant_id       = null
+  }]
+
+  gcs_archive = [{
+    bucket       = null
+    client_email = null
+    path         = null
+    project_id   = null
+  }]
+
+  s3_archive = [{
+    account_id = null
+    bucket     = null
+    path       = null
+    role_name  = null
+  }]
 }
 ```
 
@@ -50,43 +72,83 @@ module "datadog_logs_archive" {
 
 ```terraform
 variable "azure" {
-  description = "(optional)"
+  description = "(optional) - Definition of an azure archive. **Deprecated.** Define `azure_archive` list with one element instead."
   type        = map(string)
   default     = null
 }
 
 variable "gcs" {
-  description = "(optional)"
+  description = "(optional) - Definition of a GCS archive. **Deprecated.** Define `gcs_archive` list with one element instead."
   type        = map(string)
   default     = null
 }
 
 variable "include_tags" {
-  description = "(optional)"
+  description = "(optional) - To store the tags in the archive, set the value `true`. If it is set to `false`, the tags will be dropped when the logs are sent to the archive."
   type        = bool
   default     = null
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Your archive name."
   type        = string
 }
 
 variable "query" {
-  description = "(required)"
+  description = "(required) - The archive query/filter. Logs matching this query are included in the archive."
   type        = string
 }
 
 variable "rehydration_tags" {
-  description = "(optional)"
+  description = "(optional) - An array of tags to add to rehydrated logs from an archive."
   type        = list(string)
   default     = null
 }
 
 variable "s3" {
-  description = "(optional)"
+  description = "(optional) - Definition of an s3 archive. **Deprecated.** Define `s3_archive` list with one element instead."
   type        = map(string)
   default     = null
+}
+
+variable "azure_archive" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      client_id       = string
+      container       = string
+      path            = string
+      storage_account = string
+      tenant_id       = string
+    }
+  ))
+  default = []
+}
+
+variable "gcs_archive" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      bucket       = string
+      client_email = string
+      path         = string
+      project_id   = string
+    }
+  ))
+  default = []
+}
+
+variable "s3_archive" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      account_id = string
+      bucket     = string
+      path       = string
+      role_name  = string
+    }
+  ))
+  default = []
 }
 ```
 
@@ -103,6 +165,38 @@ resource "datadog_logs_archive" "this" {
   query            = var.query
   rehydration_tags = var.rehydration_tags
   s3               = var.s3
+
+  dynamic "azure_archive" {
+    for_each = var.azure_archive
+    content {
+      client_id       = azure_archive.value["client_id"]
+      container       = azure_archive.value["container"]
+      path            = azure_archive.value["path"]
+      storage_account = azure_archive.value["storage_account"]
+      tenant_id       = azure_archive.value["tenant_id"]
+    }
+  }
+
+  dynamic "gcs_archive" {
+    for_each = var.gcs_archive
+    content {
+      bucket       = gcs_archive.value["bucket"]
+      client_email = gcs_archive.value["client_email"]
+      path         = gcs_archive.value["path"]
+      project_id   = gcs_archive.value["project_id"]
+    }
+  }
+
+  dynamic "s3_archive" {
+    for_each = var.s3_archive
+    content {
+      account_id = s3_archive.value["account_id"]
+      bucket     = s3_archive.value["bucket"]
+      path       = s3_archive.value["path"]
+      role_name  = s3_archive.value["role_name"]
+    }
+  }
+
 }
 ```
 

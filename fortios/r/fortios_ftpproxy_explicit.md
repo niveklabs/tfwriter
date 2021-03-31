@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,14 @@ module "fortios_ftpproxy_explicit" {
   outgoing_ip = null
   # sec_default_action - (optional) is a type of string
   sec_default_action = null
+  # ssl - (optional) is a type of string
+  ssl = null
+  # ssl_algorithm - (optional) is a type of string
+  ssl_algorithm = null
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = null
+  # ssl_dh_bits - (optional) is a type of string
+  ssl_dh_bits = null
   # status - (optional) is a type of string
   status = null
 }
@@ -69,6 +77,30 @@ variable "sec_default_action" {
   default     = null
 }
 
+variable "ssl" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssl_algorithm" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssl_cert" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssl_dh_bits" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "status" {
   description = "(optional)"
   type        = string
@@ -86,6 +118,10 @@ resource "fortios_ftpproxy_explicit" "this" {
   incoming_port      = var.incoming_port
   outgoing_ip        = var.outgoing_ip
   sec_default_action = var.sec_default_action
+  ssl                = var.ssl
+  ssl_algorithm      = var.ssl_algorithm
+  ssl_cert           = var.ssl_cert
+  ssl_dh_bits        = var.ssl_dh_bits
   status             = var.status
 }
 ```
@@ -118,6 +154,26 @@ output "outgoing_ip" {
 output "sec_default_action" {
   description = "returns a string"
   value       = fortios_ftpproxy_explicit.this.sec_default_action
+}
+
+output "ssl" {
+  description = "returns a string"
+  value       = fortios_ftpproxy_explicit.this.ssl
+}
+
+output "ssl_algorithm" {
+  description = "returns a string"
+  value       = fortios_ftpproxy_explicit.this.ssl_algorithm
+}
+
+output "ssl_cert" {
+  description = "returns a string"
+  value       = fortios_ftpproxy_explicit.this.ssl_cert
+}
+
+output "ssl_dh_bits" {
+  description = "returns a string"
+  value       = fortios_ftpproxy_explicit.this.ssl_dh_bits
 }
 
 output "status" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    checkpoint = ">= 1.2.0"
+    checkpoint = ">= 1.4.0"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```

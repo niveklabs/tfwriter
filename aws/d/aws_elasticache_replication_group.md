@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -58,6 +58,11 @@ data "aws_elasticache_replication_group" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = data.aws_elasticache_replication_group.this.arn
+}
+
 output "auth_token_enabled" {
   description = "returns a bool"
   value       = data.aws_elasticache_replication_group.this.auth_token_enabled
@@ -83,6 +88,11 @@ output "member_clusters" {
   value       = data.aws_elasticache_replication_group.this.member_clusters
 }
 
+output "multi_az_enabled" {
+  description = "returns a bool"
+  value       = data.aws_elasticache_replication_group.this.multi_az_enabled
+}
+
 output "node_type" {
   description = "returns a string"
   value       = data.aws_elasticache_replication_group.this.node_type
@@ -101,6 +111,11 @@ output "port" {
 output "primary_endpoint_address" {
   description = "returns a string"
   value       = data.aws_elasticache_replication_group.this.primary_endpoint_address
+}
+
+output "reader_endpoint_address" {
+  description = "returns a string"
+  value       = data.aws_elasticache_replication_group.this.reader_endpoint_address
 }
 
 output "replication_group_description" {

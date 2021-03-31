@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -114,6 +114,11 @@ output "ip_address" {
 output "ip_protocol" {
   description = "returns a string"
   value       = data.google_compute_forwarding_rule.this.ip_protocol
+}
+
+output "is_mirroring_collector" {
+  description = "returns a bool"
+  value       = data.google_compute_forwarding_rule.this.is_mirroring_collector
 }
 
 output "load_balancing_scheme" {

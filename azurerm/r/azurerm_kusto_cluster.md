@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_kusto_cluster" {
   source = "./modules/azurerm/r/azurerm_kusto_cluster"
 
+  # double_encryption_enabled - (optional) is a type of bool
+  double_encryption_enabled = null
   # enable_disk_encryption - (optional) is a type of bool
   enable_disk_encryption = null
   # enable_purge - (optional) is a type of bool
@@ -87,6 +89,12 @@ module "azurerm_kusto_cluster" {
 ### Variables
 
 ```terraform
+variable "double_encryption_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "enable_disk_encryption" {
   description = "(optional)"
   type        = bool
@@ -154,7 +162,7 @@ variable "identity" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      identity_ids = list(string)
+      identity_ids = set(string)
       principal_id = string
       tenant_id    = string
       type         = string
@@ -216,22 +224,24 @@ variable "virtual_network_configuration" {
 
 ```terraform
 resource "azurerm_kusto_cluster" "this" {
-  enable_disk_encryption   = var.enable_disk_encryption
-  enable_purge             = var.enable_purge
-  enable_streaming_ingest  = var.enable_streaming_ingest
-  engine                   = var.engine
-  language_extensions      = var.language_extensions
-  location                 = var.location
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  tags                     = var.tags
-  trusted_external_tenants = var.trusted_external_tenants
-  zones                    = var.zones
+  double_encryption_enabled = var.double_encryption_enabled
+  enable_disk_encryption    = var.enable_disk_encryption
+  enable_purge              = var.enable_purge
+  enable_streaming_ingest   = var.enable_streaming_ingest
+  engine                    = var.engine
+  language_extensions       = var.language_extensions
+  location                  = var.location
+  name                      = var.name
+  resource_group_name       = var.resource_group_name
+  tags                      = var.tags
+  trusted_external_tenants  = var.trusted_external_tenants
+  zones                     = var.zones
 
   dynamic "identity" {
     for_each = var.identity
     content {
-      type = identity.value["type"]
+      identity_ids = identity.value["identity_ids"]
+      type         = identity.value["type"]
     }
   }
 

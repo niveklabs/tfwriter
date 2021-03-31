@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -89,6 +89,7 @@ module "azurerm_container_group" {
     }]
     secure_environment_variables = {}
     volume = [{
+      empty_dir = null
       git_repo = [{
         directory = null
         revision  = null
@@ -254,6 +255,7 @@ variable "container" {
       secure_environment_variables = map(string)
       volume = list(object(
         {
+          empty_dir = bool
           git_repo = list(object(
             {
               directory = string
@@ -431,6 +433,7 @@ resource "azurerm_container_group" "this" {
       dynamic "volume" {
         for_each = container.value.volume
         content {
+          empty_dir            = volume.value["empty_dir"]
           mount_path           = volume.value["mount_path"]
           name                 = volume.value["name"]
           read_only            = volume.value["read_only"]

@@ -1,0 +1,103 @@
+# akamai_appsec_penalty_box
+
+[back](../akamai.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    akamai = ">= 1.5.0"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "akamai_appsec_penalty_box" {
+  source = "./modules/akamai/r/akamai_appsec_penalty_box"
+
+  # config_id - (required) is a type of number
+  config_id = null
+  # penalty_box_action - (required) is a type of string
+  penalty_box_action = null
+  # penalty_box_protection - (required) is a type of bool
+  penalty_box_protection = null
+  # security_policy_id - (required) is a type of string
+  security_policy_id = null
+  # version - (required) is a type of number
+  version = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "config_id" {
+  description = "(required)"
+  type        = number
+}
+
+variable "penalty_box_action" {
+  description = "(required)"
+  type        = string
+}
+
+variable "penalty_box_protection" {
+  description = "(required)"
+  type        = bool
+}
+
+variable "security_policy_id" {
+  description = "(required)"
+  type        = string
+}
+
+variable "version" {
+  description = "(required)"
+  type        = number
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "akamai_appsec_penalty_box" "this" {
+  config_id              = var.config_id
+  penalty_box_action     = var.penalty_box_action
+  penalty_box_protection = var.penalty_box_protection
+  security_policy_id     = var.security_policy_id
+  version                = var.version
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "id" {
+  description = "returns a string"
+  value       = akamai_appsec_penalty_box.this.id
+}
+
+output "this" {
+  value = akamai_appsec_penalty_box.this
+}
+```
+
+[top](#index)

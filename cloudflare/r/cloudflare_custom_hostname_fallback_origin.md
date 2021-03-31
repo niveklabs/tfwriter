@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```

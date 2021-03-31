@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,8 +39,9 @@ module "azurerm_lighthouse_definition" {
   scope = null
 
   authorization = [{
-    principal_id       = null
-    role_definition_id = null
+    principal_display_name = null
+    principal_id           = null
+    role_definition_id     = null
   }]
 
   timeouts = [{
@@ -88,8 +89,9 @@ variable "authorization" {
   description = "nested block: NestingSet, min items: 1, max items: 0"
   type = set(object(
     {
-      principal_id       = string
-      role_definition_id = string
+      principal_display_name = string
+      principal_id           = string
+      role_definition_id     = string
     }
   ))
 }
@@ -123,8 +125,9 @@ resource "azurerm_lighthouse_definition" "this" {
   dynamic "authorization" {
     for_each = var.authorization
     content {
-      principal_id       = authorization.value["principal_id"]
-      role_definition_id = authorization.value["role_definition_id"]
+      principal_display_name = authorization.value["principal_display_name"]
+      principal_id           = authorization.value["principal_id"]
+      role_definition_id     = authorization.value["role_definition_id"]
     }
   }
 

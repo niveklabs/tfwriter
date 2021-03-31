@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -84,7 +84,7 @@ variable "proxy_header" {
 }
 
 variable "ssl_certificates" {
-  description = "(required) - A list of SslCertificate resources that are used to authenticate\nconnections between users and the load balancer. Currently, exactly\none SSL certificate must be specified."
+  description = "(required) - A list of SslCertificate resources that are used to authenticate\nconnections between users and the load balancer. At least one\nSSL certificate must be specified."
   type        = list(string)
 }
 

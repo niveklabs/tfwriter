@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gridscale = ">= 1.7.4"
+    gridscale = ">= 1.8.4"
   }
 }
 ```

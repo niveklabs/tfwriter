@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "azurerm_sentinel_alert_rule_ms_security_incident" {
   source = "./modules/azurerm/r/azurerm_sentinel_alert_rule_ms_security_incident"
 
+  # alert_rule_template_guid - (optional) is a type of string
+  alert_rule_template_guid = null
   # description - (optional) is a type of string
   description = null
   # display_name - (required) is a type of string
   display_name = null
+  # display_name_exclude_filter - (optional) is a type of set of string
+  display_name_exclude_filter = []
   # display_name_filter - (optional) is a type of set of string
   display_name_filter = []
   # enabled - (optional) is a type of bool
@@ -60,6 +64,12 @@ module "azurerm_sentinel_alert_rule_ms_security_incident" {
 ### Variables
 
 ```terraform
+variable "alert_rule_template_guid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional)"
   type        = string
@@ -69,6 +79,12 @@ variable "description" {
 variable "display_name" {
   description = "(required)"
   type        = string
+}
+
+variable "display_name_exclude_filter" {
+  description = "(optional)"
+  type        = set(string)
+  default     = null
 }
 
 variable "display_name_filter" {
@@ -129,15 +145,17 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_alert_rule_ms_security_incident" "this" {
-  description                = var.description
-  display_name               = var.display_name
-  display_name_filter        = var.display_name_filter
-  enabled                    = var.enabled
-  log_analytics_workspace_id = var.log_analytics_workspace_id
-  name                       = var.name
-  product_filter             = var.product_filter
-  severity_filter            = var.severity_filter
-  text_whitelist             = var.text_whitelist
+  alert_rule_template_guid    = var.alert_rule_template_guid
+  description                 = var.description
+  display_name                = var.display_name
+  display_name_exclude_filter = var.display_name_exclude_filter
+  display_name_filter         = var.display_name_filter
+  enabled                     = var.enabled
+  log_analytics_workspace_id  = var.log_analytics_workspace_id
+  name                        = var.name
+  product_filter              = var.product_filter
+  severity_filter             = var.severity_filter
+  text_whitelist              = var.text_whitelist
 
   dynamic "timeouts" {
     for_each = var.timeouts

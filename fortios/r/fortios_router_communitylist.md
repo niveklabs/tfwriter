@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_router_communitylist" {
   source = "./modules/fortios/r/fortios_router_communitylist"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
   # type - (required) is a type of string
@@ -46,6 +48,12 @@ module "fortios_router_communitylist" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -76,8 +84,9 @@ variable "rule" {
 
 ```terraform
 resource "fortios_router_communitylist" "this" {
-  name = var.name
-  type = var.type
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  type                  = var.type
 
   dynamic "rule" {
     for_each = var.rule

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "dome9" {
-  version = "1.20.4"
+  version = "1.21.0"
 
   # base_url - (optional) is a type of string
   base_url = null

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,8 +31,16 @@ module "fortios_system_geoipoverride" {
   country_id = null
   # description - (optional) is a type of string
   description = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
+
+  ip6_range = [{
+    end_ip   = null
+    id       = null
+    start_ip = null
+  }]
 
   ip_range = [{
     end_ip   = null
@@ -59,9 +67,27 @@ variable "description" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "ip6_range" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      end_ip   = string
+      id       = number
+      start_ip = string
+    }
+  ))
+  default = []
 }
 
 variable "ip_range" {
@@ -83,9 +109,19 @@ variable "ip_range" {
 
 ```terraform
 resource "fortios_system_geoipoverride" "this" {
-  country_id  = var.country_id
-  description = var.description
-  name        = var.name
+  country_id            = var.country_id
+  description           = var.description
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+
+  dynamic "ip6_range" {
+    for_each = var.ip6_range
+    content {
+      end_ip   = ip6_range.value["end_ip"]
+      id       = ip6_range.value["id"]
+      start_ip = ip6_range.value["start_ip"]
+    }
+  }
 
   dynamic "ip_range" {
     for_each = var.ip_range

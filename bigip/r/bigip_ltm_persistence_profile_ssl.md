@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.5.0"
+    bigip = ">= 1.7.0"
   }
 }
 ```
@@ -132,6 +132,31 @@ resource "bigip_ltm_persistence_profile_ssl" "this" {
 output "id" {
   description = "returns a string"
   value       = bigip_ltm_persistence_profile_ssl.this.id
+}
+
+output "match_across_pools" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_ssl.this.match_across_pools
+}
+
+output "match_across_services" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_ssl.this.match_across_services
+}
+
+output "match_across_virtuals" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_ssl.this.match_across_virtuals
+}
+
+output "mirror" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_ssl.this.mirror
+}
+
+output "override_conn_limit" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_ssl.this.override_conn_limit
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -44,6 +44,8 @@ module "fortios_vpncertificate_ca" {
   # source - (optional) is a type of string
   # source_ip - (optional) is a type of string
   source_ip = null
+  # ssl_inspection_trusted - (optional) is a type of string
+  ssl_inspection_trusted = null
   # trusted - (optional) is a type of string
   trusted = null
 }
@@ -106,6 +108,12 @@ variable "source_ip" {
   default     = null
 }
 
+variable "ssl_inspection_trusted" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "trusted" {
   description = "(optional)"
   type        = string
@@ -128,6 +136,7 @@ resource "fortios_vpncertificate_ca" "this" {
   scep_url                 = var.scep_url
   source                   = var.source
   source_ip                = var.source_ip
+  ssl_inspection_trusted   = var.ssl_inspection_trusted
   trusted                  = var.trusted
 }
 ```
@@ -175,6 +184,11 @@ output "source" {
 output "source_ip" {
   description = "returns a string"
   value       = fortios_vpncertificate_ca.this.source_ip
+}
+
+output "ssl_inspection_trusted" {
+  description = "returns a string"
+  value       = fortios_vpncertificate_ca.this.ssl_inspection_trusted
 }
 
 output "trusted" {

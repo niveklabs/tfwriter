@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -226,6 +226,11 @@ resource "aws_budgets_budget" "this" {
 output "account_id" {
   description = "returns a string"
   value       = aws_budgets_budget.this.account_id
+}
+
+output "arn" {
+  description = "returns a string"
+  value       = aws_budgets_budget.this.arn
 }
 
 output "cost_filters" {

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "github" {
-  version = "4.1.0"
+  version = "4.6.0"
 
   # base_url - (optional) is a type of string
   base_url = null
@@ -36,11 +36,15 @@ provider "github" {
 
 - [github_actions_secret](./r/github_actions_secret.md)
 
+- [github_app_installation_repository](./r/github_app_installation_repository.md)
+
 - [github_branch](./r/github_branch.md)
 
 - [github_branch_default](./r/github_branch_default.md)
 
 - [github_branch_protection](./r/github_branch_protection.md)
+
+- [github_branch_protection_v3](./r/github_branch_protection_v3.md)
 
 - [github_issue_label](./r/github_issue_label.md)
 

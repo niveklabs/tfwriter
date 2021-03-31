@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -123,7 +123,7 @@ variable "http" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      certificates    = list(number)
+      certificates    = set(number)
       cookie_lifetime = number
       cookie_name     = string
       redirect_http   = bool

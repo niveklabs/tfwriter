@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -25,12 +25,18 @@ terraform {
 
 ```terraform
 module "aws_ssm_patch_baseline" {
-  source = "./modules/aws/r/aws_ssm_patch_baseline"
+  source = [{
+    configuration = null
+    name          = null
+    products      = []
+  }]
 
   # approved_patches - (optional) is a type of set of string
   approved_patches = []
   # approved_patches_compliance_level - (optional) is a type of string
   approved_patches_compliance_level = null
+  # approved_patches_enable_non_security - (optional) is a type of bool
+  approved_patches_enable_non_security = null
   # description - (optional) is a type of string
   description = null
   # name - (required) is a type of string
@@ -39,11 +45,14 @@ module "aws_ssm_patch_baseline" {
   operating_system = null
   # rejected_patches - (optional) is a type of set of string
   rejected_patches = []
+  # rejected_patches_action - (optional) is a type of string
+  rejected_patches_action = null
   # tags - (optional) is a type of map of string
   tags = {}
 
   approval_rule = [{
     approve_after_days  = null
+    approve_until_date  = null
     compliance_level    = null
     enable_non_security = null
     patch_filter = [{
@@ -56,6 +65,7 @@ module "aws_ssm_patch_baseline" {
     key    = null
     values = []
   }]
+
 }
 ```
 
@@ -73,6 +83,12 @@ variable "approved_patches" {
 variable "approved_patches_compliance_level" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "approved_patches_enable_non_security" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -99,6 +115,12 @@ variable "rejected_patches" {
   default     = null
 }
 
+variable "rejected_patches_action" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -110,6 +132,7 @@ variable "approval_rule" {
   type = set(object(
     {
       approve_after_days  = number
+      approve_until_date  = string
       compliance_level    = string
       enable_non_security = bool
       patch_filter = list(object(
@@ -133,6 +156,18 @@ variable "global_filter" {
   ))
   default = []
 }
+
+variable "source" {
+  description = "nested block: NestingList, min items: 0, max items: 20"
+  type = set(object(
+    {
+      configuration = string
+      name          = string
+      products      = list(string)
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -141,18 +176,21 @@ variable "global_filter" {
 
 ```terraform
 resource "aws_ssm_patch_baseline" "this" {
-  approved_patches                  = var.approved_patches
-  approved_patches_compliance_level = var.approved_patches_compliance_level
-  description                       = var.description
-  name                              = var.name
-  operating_system                  = var.operating_system
-  rejected_patches                  = var.rejected_patches
-  tags                              = var.tags
+  approved_patches                     = var.approved_patches
+  approved_patches_compliance_level    = var.approved_patches_compliance_level
+  approved_patches_enable_non_security = var.approved_patches_enable_non_security
+  description                          = var.description
+  name                                 = var.name
+  operating_system                     = var.operating_system
+  rejected_patches                     = var.rejected_patches
+  rejected_patches_action              = var.rejected_patches_action
+  tags                                 = var.tags
 
   dynamic "approval_rule" {
     for_each = var.approval_rule
     content {
       approve_after_days  = approval_rule.value["approve_after_days"]
+      approve_until_date  = approval_rule.value["approve_until_date"]
       compliance_level    = approval_rule.value["compliance_level"]
       enable_non_security = approval_rule.value["enable_non_security"]
 
@@ -175,6 +213,15 @@ resource "aws_ssm_patch_baseline" "this" {
     }
   }
 
+  dynamic "source" {
+    for_each = var.source
+    content {
+      configuration = source.value["configuration"]
+      name          = source.value["name"]
+      products      = source.value["products"]
+    }
+  }
+
 }
 ```
 
@@ -183,9 +230,19 @@ resource "aws_ssm_patch_baseline" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_ssm_patch_baseline.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ssm_patch_baseline.this.id
+}
+
+output "rejected_patches_action" {
+  description = "returns a string"
+  value       = aws_ssm_patch_baseline.this.rejected_patches_action
 }
 
 output "this" {

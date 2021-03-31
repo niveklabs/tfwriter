@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_firewall_internetservicecustom" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # reputation - (optional) is a type of number
@@ -55,6 +57,12 @@ module "fortios_firewall_internetservicecustom" {
 
 ```terraform
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -102,9 +110,10 @@ variable "entry" {
 
 ```terraform
 resource "fortios_firewall_internetservicecustom" "this" {
-  comment    = var.comment
-  name       = var.name
-  reputation = var.reputation
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  reputation            = var.reputation
 
   dynamic "entry" {
     for_each = var.entry

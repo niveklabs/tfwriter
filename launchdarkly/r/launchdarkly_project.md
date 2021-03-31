@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    launchdarkly = ">= 1.5.0"
+    launchdarkly = ">= 1.5.1"
   }
 }
 ```

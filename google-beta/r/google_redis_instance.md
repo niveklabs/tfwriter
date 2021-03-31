@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -57,6 +57,8 @@ module "google_redis_instance" {
   reserved_ip_range = null
   # tier - (optional) is a type of string
   tier = null
+  # transit_encryption_mode - (optional) is a type of string
+  transit_encryption_mode = null
 
   timeouts = [{
     create = null
@@ -159,6 +161,12 @@ variable "tier" {
   default     = null
 }
 
+variable "transit_encryption_mode" {
+  description = "(optional) - The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.\n\n- SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation Default value: \"DISABLED\" Possible values: [\"SERVER_AUTHENTICATION\", \"DISABLED\"]"
+  type        = string
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -193,6 +201,7 @@ resource "google_redis_instance" "this" {
   region                  = var.region
   reserved_ip_range       = var.reserved_ip_range
   tier                    = var.tier
+  transit_encryption_mode = var.transit_encryption_mode
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -214,6 +223,12 @@ resource "google_redis_instance" "this" {
 output "alternative_location_id" {
   description = "returns a string"
   value       = google_redis_instance.this.alternative_location_id
+}
+
+output "auth_string" {
+  description = "returns a string"
+  value       = google_redis_instance.this.auth_string
+  sensitive   = true
 }
 
 output "authorized_network" {
@@ -274,6 +289,11 @@ output "region" {
 output "reserved_ip_range" {
   description = "returns a string"
   value       = google_redis_instance.this.reserved_ip_range
+}
+
+output "server_ca_certs" {
+  description = "returns a list of object"
+  value       = google_redis_instance.this.server_ca_certs
 }
 
 output "this" {

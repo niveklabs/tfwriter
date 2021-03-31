@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -31,14 +31,6 @@ module "aws_workspaces_directory" {
   directory_id = null
   # tags - (optional) is a type of map of string
   tags = {}
-
-  workspace_creation_properties = [{
-    custom_security_group_id            = null
-    default_ou                          = null
-    enable_internet_access              = null
-    enable_maintenance_mode             = null
-    user_enabled_as_local_administrator = null
-  }]
 }
 ```
 
@@ -57,20 +49,6 @@ variable "tags" {
   type        = map(string)
   default     = null
 }
-
-variable "workspace_creation_properties" {
-  description = "nested block: NestingList, min items: 0, max items: 1"
-  type = set(object(
-    {
-      custom_security_group_id            = string
-      default_ou                          = string
-      enable_internet_access              = bool
-      enable_maintenance_mode             = bool
-      user_enabled_as_local_administrator = bool
-    }
-  ))
-  default = []
-}
 ```
 
 [top](#index)
@@ -81,18 +59,6 @@ variable "workspace_creation_properties" {
 data "aws_workspaces_directory" "this" {
   directory_id = var.directory_id
   tags         = var.tags
-
-  dynamic "workspace_creation_properties" {
-    for_each = var.workspace_creation_properties
-    content {
-      custom_security_group_id            = workspace_creation_properties.value["custom_security_group_id"]
-      default_ou                          = workspace_creation_properties.value["default_ou"]
-      enable_internet_access              = workspace_creation_properties.value["enable_internet_access"]
-      enable_maintenance_mode             = workspace_creation_properties.value["enable_maintenance_mode"]
-      user_enabled_as_local_administrator = workspace_creation_properties.value["user_enabled_as_local_administrator"]
-    }
-  }
-
 }
 ```
 
@@ -154,6 +120,16 @@ output "self_service_permissions" {
 output "subnet_ids" {
   description = "returns a set of string"
   value       = data.aws_workspaces_directory.this.subnet_ids
+}
+
+output "workspace_access_properties" {
+  description = "returns a list of object"
+  value       = data.aws_workspaces_directory.this.workspace_access_properties
+}
+
+output "workspace_creation_properties" {
+  description = "returns a list of object"
+  value       = data.aws_workspaces_directory.this.workspace_creation_properties
 }
 
 output "workspace_security_group_id" {

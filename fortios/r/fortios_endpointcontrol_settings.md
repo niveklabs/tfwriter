@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_endpointcontrol_settings" {
   forticlient_avdb_update_interval = null
   # forticlient_dereg_unsupported_client - (optional) is a type of string
   forticlient_dereg_unsupported_client = null
+  # forticlient_disconnect_unsupported_client - (optional) is a type of string
+  forticlient_disconnect_unsupported_client = null
   # forticlient_ems_rest_api_call_timeout - (optional) is a type of number
   forticlient_ems_rest_api_call_timeout = null
   # forticlient_keepalive_interval - (optional) is a type of number
@@ -82,6 +84,12 @@ variable "forticlient_avdb_update_interval" {
 }
 
 variable "forticlient_dereg_unsupported_client" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "forticlient_disconnect_unsupported_client" {
   description = "(optional)"
   type        = string
   default     = null
@@ -154,20 +162,21 @@ variable "forticlient_warning_interval" {
 
 ```terraform
 resource "fortios_endpointcontrol_settings" "this" {
-  download_custom_link                  = var.download_custom_link
-  download_location                     = var.download_location
-  forticlient_avdb_update_interval      = var.forticlient_avdb_update_interval
-  forticlient_dereg_unsupported_client  = var.forticlient_dereg_unsupported_client
-  forticlient_ems_rest_api_call_timeout = var.forticlient_ems_rest_api_call_timeout
-  forticlient_keepalive_interval        = var.forticlient_keepalive_interval
-  forticlient_offline_grace             = var.forticlient_offline_grace
-  forticlient_offline_grace_interval    = var.forticlient_offline_grace_interval
-  forticlient_reg_key                   = var.forticlient_reg_key
-  forticlient_reg_key_enforce           = var.forticlient_reg_key_enforce
-  forticlient_reg_timeout               = var.forticlient_reg_timeout
-  forticlient_sys_update_interval       = var.forticlient_sys_update_interval
-  forticlient_user_avatar               = var.forticlient_user_avatar
-  forticlient_warning_interval          = var.forticlient_warning_interval
+  download_custom_link                      = var.download_custom_link
+  download_location                         = var.download_location
+  forticlient_avdb_update_interval          = var.forticlient_avdb_update_interval
+  forticlient_dereg_unsupported_client      = var.forticlient_dereg_unsupported_client
+  forticlient_disconnect_unsupported_client = var.forticlient_disconnect_unsupported_client
+  forticlient_ems_rest_api_call_timeout     = var.forticlient_ems_rest_api_call_timeout
+  forticlient_keepalive_interval            = var.forticlient_keepalive_interval
+  forticlient_offline_grace                 = var.forticlient_offline_grace
+  forticlient_offline_grace_interval        = var.forticlient_offline_grace_interval
+  forticlient_reg_key                       = var.forticlient_reg_key
+  forticlient_reg_key_enforce               = var.forticlient_reg_key_enforce
+  forticlient_reg_timeout                   = var.forticlient_reg_timeout
+  forticlient_sys_update_interval           = var.forticlient_sys_update_interval
+  forticlient_user_avatar                   = var.forticlient_user_avatar
+  forticlient_warning_interval              = var.forticlient_warning_interval
 }
 ```
 
@@ -194,6 +203,11 @@ output "forticlient_avdb_update_interval" {
 output "forticlient_dereg_unsupported_client" {
   description = "returns a string"
   value       = fortios_endpointcontrol_settings.this.forticlient_dereg_unsupported_client
+}
+
+output "forticlient_disconnect_unsupported_client" {
+  description = "returns a string"
+  value       = fortios_endpointcontrol_settings.this.forticlient_disconnect_unsupported_client
 }
 
 output "forticlient_ems_rest_api_call_timeout" {

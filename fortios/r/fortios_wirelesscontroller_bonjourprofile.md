@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_wirelesscontroller_bonjourprofile" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
@@ -48,6 +50,12 @@ module "fortios_wirelesscontroller_bonjourprofile" {
 
 ```terraform
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -80,8 +88,9 @@ variable "policy_list" {
 
 ```terraform
 resource "fortios_wirelesscontroller_bonjourprofile" "this" {
-  comment = var.comment
-  name    = var.name
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "policy_list" {
     for_each = var.policy_list

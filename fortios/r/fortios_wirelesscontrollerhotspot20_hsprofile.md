@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "fortios_wirelesscontrollerhotspot20_hsprofile" {
   dgaf = null
   # domain_name - (optional) is a type of string
   domain_name = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # gas_comeback_delay - (optional) is a type of number
   gas_comeback_delay = null
   # gas_fragmentation_limit - (optional) is a type of number
@@ -162,6 +164,12 @@ variable "dgaf" {
 }
 
 variable "domain_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -315,6 +323,7 @@ resource "fortios_wirelesscontrollerhotspot20_hsprofile" "this" {
   deauth_request_timeout  = var.deauth_request_timeout
   dgaf                    = var.dgaf
   domain_name             = var.domain_name
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
   gas_comeback_delay      = var.gas_comeback_delay
   gas_fragmentation_limit = var.gas_fragmentation_limit
   hessid                  = var.hessid

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -38,7 +38,7 @@ module "datadog_role" {
 
 ```terraform
 variable "filter" {
-  description = "(required)"
+  description = "(required) - A string on which to filter the roles."
   type        = string
 }
 ```

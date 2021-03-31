@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,6 +41,10 @@ module "fortios_firewallshaper_peripshaper" {
   max_bandwidth = null
   # max_concurrent_session - (optional) is a type of number
   max_concurrent_session = null
+  # max_concurrent_tcp_session - (optional) is a type of number
+  max_concurrent_tcp_session = null
+  # max_concurrent_udp_session - (optional) is a type of number
+  max_concurrent_udp_session = null
   # name - (optional) is a type of string
   name = null
 }
@@ -93,6 +97,18 @@ variable "max_concurrent_session" {
   default     = null
 }
 
+variable "max_concurrent_tcp_session" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "max_concurrent_udp_session" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -106,14 +122,16 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewallshaper_peripshaper" "this" {
-  bandwidth_unit         = var.bandwidth_unit
-  diffserv_forward       = var.diffserv_forward
-  diffserv_reverse       = var.diffserv_reverse
-  diffservcode_forward   = var.diffservcode_forward
-  diffservcode_rev       = var.diffservcode_rev
-  max_bandwidth          = var.max_bandwidth
-  max_concurrent_session = var.max_concurrent_session
-  name                   = var.name
+  bandwidth_unit             = var.bandwidth_unit
+  diffserv_forward           = var.diffserv_forward
+  diffserv_reverse           = var.diffserv_reverse
+  diffservcode_forward       = var.diffservcode_forward
+  diffservcode_rev           = var.diffservcode_rev
+  max_bandwidth              = var.max_bandwidth
+  max_concurrent_session     = var.max_concurrent_session
+  max_concurrent_tcp_session = var.max_concurrent_tcp_session
+  max_concurrent_udp_session = var.max_concurrent_udp_session
+  name                       = var.name
 }
 ```
 
@@ -160,6 +178,16 @@ output "max_bandwidth" {
 output "max_concurrent_session" {
   description = "returns a number"
   value       = fortios_firewallshaper_peripshaper.this.max_concurrent_session
+}
+
+output "max_concurrent_tcp_session" {
+  description = "returns a number"
+  value       = fortios_firewallshaper_peripshaper.this.max_concurrent_tcp_session
+}
+
+output "max_concurrent_udp_session" {
+  description = "returns a number"
+  value       = fortios_firewallshaper_peripshaper.this.max_concurrent_udp_session
 }
 
 output "name" {

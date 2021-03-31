@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -85,7 +85,7 @@ variable "end" {
 }
 
 variable "end_date" {
-  description = "(optional)"
+  description = "(optional) - String representing date and time to end the downtime in RFC3339 format."
   type        = string
   default     = null
 }
@@ -120,7 +120,7 @@ variable "start" {
 }
 
 variable "start_date" {
-  description = "(optional)"
+  description = "(optional) - String representing date and time to start the downtime in RFC3339 format."
   type        = string
   default     = null
 }

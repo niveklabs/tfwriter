@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_system_settings" {
   asymroute6_icmp = null
   # asymroute_icmp - (optional) is a type of string
   asymroute_icmp = null
+  # auxiliary_session - (optional) is a type of string
+  auxiliary_session = null
   # bfd - (optional) is a type of string
   bfd = null
   # bfd_desired_min_tx - (optional) is a type of number
@@ -69,10 +71,16 @@ module "fortios_system_settings" {
   dhcp6_server_ip = null
   # dhcp_proxy - (optional) is a type of string
   dhcp_proxy = null
+  # dhcp_proxy_interface - (optional) is a type of string
+  dhcp_proxy_interface = null
+  # dhcp_proxy_interface_select_method - (optional) is a type of string
+  dhcp_proxy_interface_select_method = null
   # dhcp_server_ip - (optional) is a type of string
   dhcp_server_ip = null
   # discovered_device_timeout - (optional) is a type of number
   discovered_device_timeout = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ecmp_max_paths - (optional) is a type of number
   ecmp_max_paths = null
   # email_portal_check_dns - (optional) is a type of string
@@ -119,6 +127,8 @@ module "fortios_system_settings" {
   gui_endpoint_control_advanced = null
   # gui_explicit_proxy - (optional) is a type of string
   gui_explicit_proxy = null
+  # gui_file_filter - (optional) is a type of string
+  gui_file_filter = null
   # gui_fortiap_split_tunneling - (optional) is a type of string
   gui_fortiap_split_tunneling = null
   # gui_fortiextender_controller - (optional) is a type of string
@@ -145,12 +155,18 @@ module "fortios_system_settings" {
   gui_nat46_64 = null
   # gui_object_colors - (optional) is a type of string
   gui_object_colors = null
+  # gui_per_policy_disclaimer - (optional) is a type of string
+  gui_per_policy_disclaimer = null
   # gui_policy_based_ipsec - (optional) is a type of string
   gui_policy_based_ipsec = null
+  # gui_policy_disclaimer - (optional) is a type of string
+  gui_policy_disclaimer = null
   # gui_policy_learning - (optional) is a type of string
   gui_policy_learning = null
   # gui_replacement_message_groups - (optional) is a type of string
   gui_replacement_message_groups = null
+  # gui_security_profile_group - (optional) is a type of string
+  gui_security_profile_group = null
   # gui_spamfilter - (optional) is a type of string
   gui_spamfilter = null
   # gui_sslvpn_personal_bookmarks - (optional) is a type of string
@@ -183,6 +199,10 @@ module "fortios_system_settings" {
   http_external_dest = null
   # ike_dn_format - (optional) is a type of string
   ike_dn_format = null
+  # ike_natt_port - (optional) is a type of number
+  ike_natt_port = null
+  # ike_port - (optional) is a type of number
+  ike_port = null
   # ike_quick_crash_detect - (optional) is a type of string
   ike_quick_crash_detect = null
   # ike_session_resume - (optional) is a type of string
@@ -221,8 +241,12 @@ module "fortios_system_settings" {
   prp_trailer_action = null
   # sccp_port - (optional) is a type of number
   sccp_port = null
+  # sctp_session_without_init - (optional) is a type of string
+  sctp_session_without_init = null
   # ses_denied_traffic - (optional) is a type of string
   ses_denied_traffic = null
+  # sip_expectation - (optional) is a type of string
+  sip_expectation = null
   # sip_helper - (optional) is a type of string
   sip_helper = null
   # sip_nat_trace - (optional) is a type of string
@@ -296,6 +320,12 @@ variable "asymroute6_icmp" {
 }
 
 variable "asymroute_icmp" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "auxiliary_session" {
   description = "(optional)"
   type        = string
   default     = null
@@ -391,6 +421,18 @@ variable "dhcp_proxy" {
   default     = null
 }
 
+variable "dhcp_proxy_interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dhcp_proxy_interface_select_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dhcp_server_ip" {
   description = "(optional)"
   type        = string
@@ -400,6 +442,12 @@ variable "dhcp_server_ip" {
 variable "discovered_device_timeout" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -541,6 +589,12 @@ variable "gui_explicit_proxy" {
   default     = null
 }
 
+variable "gui_file_filter" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "gui_fortiap_split_tunneling" {
   description = "(optional)"
   type        = string
@@ -619,7 +673,19 @@ variable "gui_object_colors" {
   default     = null
 }
 
+variable "gui_per_policy_disclaimer" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "gui_policy_based_ipsec" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_policy_disclaimer" {
   description = "(optional)"
   type        = string
   default     = null
@@ -632,6 +698,12 @@ variable "gui_policy_learning" {
 }
 
 variable "gui_replacement_message_groups" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "gui_security_profile_group" {
   description = "(optional)"
   type        = string
   default     = null
@@ -730,6 +802,18 @@ variable "http_external_dest" {
 variable "ike_dn_format" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "ike_natt_port" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ike_port" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -847,7 +931,19 @@ variable "sccp_port" {
   default     = null
 }
 
+variable "sctp_session_without_init" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ses_denied_traffic" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "sip_expectation" {
   description = "(optional)"
   type        = string
   default     = null
@@ -960,119 +1056,131 @@ variable "gui_default_policy_columns" {
 
 ```terraform
 resource "fortios_system_settings" "this" {
-  allow_linkdown_path            = var.allow_linkdown_path
-  allow_subnet_overlap           = var.allow_subnet_overlap
-  asymroute                      = var.asymroute
-  asymroute6                     = var.asymroute6
-  asymroute6_icmp                = var.asymroute6_icmp
-  asymroute_icmp                 = var.asymroute_icmp
-  bfd                            = var.bfd
-  bfd_desired_min_tx             = var.bfd_desired_min_tx
-  bfd_detect_mult                = var.bfd_detect_mult
-  bfd_dont_enforce_src_port      = var.bfd_dont_enforce_src_port
-  bfd_required_min_rx            = var.bfd_required_min_rx
-  block_land_attack              = var.block_land_attack
-  central_nat                    = var.central_nat
-  comments                       = var.comments
-  compliance_check               = var.compliance_check
-  consolidated_firewall_mode     = var.consolidated_firewall_mode
-  default_voip_alg_mode          = var.default_voip_alg_mode
-  deny_tcp_with_icmp             = var.deny_tcp_with_icmp
-  device                         = var.device
-  dhcp6_server_ip                = var.dhcp6_server_ip
-  dhcp_proxy                     = var.dhcp_proxy
-  dhcp_server_ip                 = var.dhcp_server_ip
-  discovered_device_timeout      = var.discovered_device_timeout
-  ecmp_max_paths                 = var.ecmp_max_paths
-  email_portal_check_dns         = var.email_portal_check_dns
-  firewall_session_dirty         = var.firewall_session_dirty
-  fw_session_hairpin             = var.fw_session_hairpin
-  gateway                        = var.gateway
-  gateway6                       = var.gateway6
-  gui_advanced_policy            = var.gui_advanced_policy
-  gui_allow_unnamed_policy       = var.gui_allow_unnamed_policy
-  gui_antivirus                  = var.gui_antivirus
-  gui_ap_profile                 = var.gui_ap_profile
-  gui_application_control        = var.gui_application_control
-  gui_dhcp_advanced              = var.gui_dhcp_advanced
-  gui_dlp                        = var.gui_dlp
-  gui_dns_database               = var.gui_dns_database
-  gui_dnsfilter                  = var.gui_dnsfilter
-  gui_domain_ip_reputation       = var.gui_domain_ip_reputation
-  gui_dos_policy                 = var.gui_dos_policy
-  gui_dynamic_profile_display    = var.gui_dynamic_profile_display
-  gui_dynamic_routing            = var.gui_dynamic_routing
-  gui_email_collection           = var.gui_email_collection
-  gui_endpoint_control           = var.gui_endpoint_control
-  gui_endpoint_control_advanced  = var.gui_endpoint_control_advanced
-  gui_explicit_proxy             = var.gui_explicit_proxy
-  gui_fortiap_split_tunneling    = var.gui_fortiap_split_tunneling
-  gui_fortiextender_controller   = var.gui_fortiextender_controller
-  gui_icap                       = var.gui_icap
-  gui_implicit_policy            = var.gui_implicit_policy
-  gui_ips                        = var.gui_ips
-  gui_load_balance               = var.gui_load_balance
-  gui_local_in_policy            = var.gui_local_in_policy
-  gui_local_reports              = var.gui_local_reports
-  gui_multicast_policy           = var.gui_multicast_policy
-  gui_multiple_interface_policy  = var.gui_multiple_interface_policy
-  gui_multiple_utm_profiles      = var.gui_multiple_utm_profiles
-  gui_nat46_64                   = var.gui_nat46_64
-  gui_object_colors              = var.gui_object_colors
-  gui_policy_based_ipsec         = var.gui_policy_based_ipsec
-  gui_policy_learning            = var.gui_policy_learning
-  gui_replacement_message_groups = var.gui_replacement_message_groups
-  gui_spamfilter                 = var.gui_spamfilter
-  gui_sslvpn_personal_bookmarks  = var.gui_sslvpn_personal_bookmarks
-  gui_sslvpn_realms              = var.gui_sslvpn_realms
-  gui_switch_controller          = var.gui_switch_controller
-  gui_threat_weight              = var.gui_threat_weight
-  gui_traffic_shaping            = var.gui_traffic_shaping
-  gui_voip_profile               = var.gui_voip_profile
-  gui_vpn                        = var.gui_vpn
-  gui_waf_profile                = var.gui_waf_profile
-  gui_wan_load_balancing         = var.gui_wan_load_balancing
-  gui_wanopt_cache               = var.gui_wanopt_cache
-  gui_webfilter                  = var.gui_webfilter
-  gui_webfilter_advanced         = var.gui_webfilter_advanced
-  gui_wireless_controller        = var.gui_wireless_controller
-  http_external_dest             = var.http_external_dest
-  ike_dn_format                  = var.ike_dn_format
-  ike_quick_crash_detect         = var.ike_quick_crash_detect
-  ike_session_resume             = var.ike_session_resume
-  implicit_allow_dns             = var.implicit_allow_dns
-  inspection_mode                = var.inspection_mode
-  ip                             = var.ip
-  ip6                            = var.ip6
-  link_down_access               = var.link_down_access
-  lldp_reception                 = var.lldp_reception
-  lldp_transmission              = var.lldp_transmission
-  mac_ttl                        = var.mac_ttl
-  manageip                       = var.manageip
-  manageip6                      = var.manageip6
-  multicast_forward              = var.multicast_forward
-  multicast_skip_policy          = var.multicast_skip_policy
-  multicast_ttl_notchange        = var.multicast_ttl_notchange
-  ngfw_mode                      = var.ngfw_mode
-  opmode                         = var.opmode
-  prp_trailer_action             = var.prp_trailer_action
-  sccp_port                      = var.sccp_port
-  ses_denied_traffic             = var.ses_denied_traffic
-  sip_helper                     = var.sip_helper
-  sip_nat_trace                  = var.sip_nat_trace
-  sip_ssl_port                   = var.sip_ssl_port
-  sip_tcp_port                   = var.sip_tcp_port
-  sip_udp_port                   = var.sip_udp_port
-  snat_hairpin_traffic           = var.snat_hairpin_traffic
-  ssl_ssh_profile                = var.ssl_ssh_profile
-  status                         = var.status
-  strict_src_check               = var.strict_src_check
-  tcp_session_without_syn        = var.tcp_session_without_syn
-  utf8_spam_tagging              = var.utf8_spam_tagging
-  v4_ecmp_mode                   = var.v4_ecmp_mode
-  vpn_stats_log                  = var.vpn_stats_log
-  vpn_stats_period               = var.vpn_stats_period
-  wccp_cache_engine              = var.wccp_cache_engine
+  allow_linkdown_path                = var.allow_linkdown_path
+  allow_subnet_overlap               = var.allow_subnet_overlap
+  asymroute                          = var.asymroute
+  asymroute6                         = var.asymroute6
+  asymroute6_icmp                    = var.asymroute6_icmp
+  asymroute_icmp                     = var.asymroute_icmp
+  auxiliary_session                  = var.auxiliary_session
+  bfd                                = var.bfd
+  bfd_desired_min_tx                 = var.bfd_desired_min_tx
+  bfd_detect_mult                    = var.bfd_detect_mult
+  bfd_dont_enforce_src_port          = var.bfd_dont_enforce_src_port
+  bfd_required_min_rx                = var.bfd_required_min_rx
+  block_land_attack                  = var.block_land_attack
+  central_nat                        = var.central_nat
+  comments                           = var.comments
+  compliance_check                   = var.compliance_check
+  consolidated_firewall_mode         = var.consolidated_firewall_mode
+  default_voip_alg_mode              = var.default_voip_alg_mode
+  deny_tcp_with_icmp                 = var.deny_tcp_with_icmp
+  device                             = var.device
+  dhcp6_server_ip                    = var.dhcp6_server_ip
+  dhcp_proxy                         = var.dhcp_proxy
+  dhcp_proxy_interface               = var.dhcp_proxy_interface
+  dhcp_proxy_interface_select_method = var.dhcp_proxy_interface_select_method
+  dhcp_server_ip                     = var.dhcp_server_ip
+  discovered_device_timeout          = var.discovered_device_timeout
+  dynamic_sort_subtable              = var.dynamic_sort_subtable
+  ecmp_max_paths                     = var.ecmp_max_paths
+  email_portal_check_dns             = var.email_portal_check_dns
+  firewall_session_dirty             = var.firewall_session_dirty
+  fw_session_hairpin                 = var.fw_session_hairpin
+  gateway                            = var.gateway
+  gateway6                           = var.gateway6
+  gui_advanced_policy                = var.gui_advanced_policy
+  gui_allow_unnamed_policy           = var.gui_allow_unnamed_policy
+  gui_antivirus                      = var.gui_antivirus
+  gui_ap_profile                     = var.gui_ap_profile
+  gui_application_control            = var.gui_application_control
+  gui_dhcp_advanced                  = var.gui_dhcp_advanced
+  gui_dlp                            = var.gui_dlp
+  gui_dns_database                   = var.gui_dns_database
+  gui_dnsfilter                      = var.gui_dnsfilter
+  gui_domain_ip_reputation           = var.gui_domain_ip_reputation
+  gui_dos_policy                     = var.gui_dos_policy
+  gui_dynamic_profile_display        = var.gui_dynamic_profile_display
+  gui_dynamic_routing                = var.gui_dynamic_routing
+  gui_email_collection               = var.gui_email_collection
+  gui_endpoint_control               = var.gui_endpoint_control
+  gui_endpoint_control_advanced      = var.gui_endpoint_control_advanced
+  gui_explicit_proxy                 = var.gui_explicit_proxy
+  gui_file_filter                    = var.gui_file_filter
+  gui_fortiap_split_tunneling        = var.gui_fortiap_split_tunneling
+  gui_fortiextender_controller       = var.gui_fortiextender_controller
+  gui_icap                           = var.gui_icap
+  gui_implicit_policy                = var.gui_implicit_policy
+  gui_ips                            = var.gui_ips
+  gui_load_balance                   = var.gui_load_balance
+  gui_local_in_policy                = var.gui_local_in_policy
+  gui_local_reports                  = var.gui_local_reports
+  gui_multicast_policy               = var.gui_multicast_policy
+  gui_multiple_interface_policy      = var.gui_multiple_interface_policy
+  gui_multiple_utm_profiles          = var.gui_multiple_utm_profiles
+  gui_nat46_64                       = var.gui_nat46_64
+  gui_object_colors                  = var.gui_object_colors
+  gui_per_policy_disclaimer          = var.gui_per_policy_disclaimer
+  gui_policy_based_ipsec             = var.gui_policy_based_ipsec
+  gui_policy_disclaimer              = var.gui_policy_disclaimer
+  gui_policy_learning                = var.gui_policy_learning
+  gui_replacement_message_groups     = var.gui_replacement_message_groups
+  gui_security_profile_group         = var.gui_security_profile_group
+  gui_spamfilter                     = var.gui_spamfilter
+  gui_sslvpn_personal_bookmarks      = var.gui_sslvpn_personal_bookmarks
+  gui_sslvpn_realms                  = var.gui_sslvpn_realms
+  gui_switch_controller              = var.gui_switch_controller
+  gui_threat_weight                  = var.gui_threat_weight
+  gui_traffic_shaping                = var.gui_traffic_shaping
+  gui_voip_profile                   = var.gui_voip_profile
+  gui_vpn                            = var.gui_vpn
+  gui_waf_profile                    = var.gui_waf_profile
+  gui_wan_load_balancing             = var.gui_wan_load_balancing
+  gui_wanopt_cache                   = var.gui_wanopt_cache
+  gui_webfilter                      = var.gui_webfilter
+  gui_webfilter_advanced             = var.gui_webfilter_advanced
+  gui_wireless_controller            = var.gui_wireless_controller
+  http_external_dest                 = var.http_external_dest
+  ike_dn_format                      = var.ike_dn_format
+  ike_natt_port                      = var.ike_natt_port
+  ike_port                           = var.ike_port
+  ike_quick_crash_detect             = var.ike_quick_crash_detect
+  ike_session_resume                 = var.ike_session_resume
+  implicit_allow_dns                 = var.implicit_allow_dns
+  inspection_mode                    = var.inspection_mode
+  ip                                 = var.ip
+  ip6                                = var.ip6
+  link_down_access                   = var.link_down_access
+  lldp_reception                     = var.lldp_reception
+  lldp_transmission                  = var.lldp_transmission
+  mac_ttl                            = var.mac_ttl
+  manageip                           = var.manageip
+  manageip6                          = var.manageip6
+  multicast_forward                  = var.multicast_forward
+  multicast_skip_policy              = var.multicast_skip_policy
+  multicast_ttl_notchange            = var.multicast_ttl_notchange
+  ngfw_mode                          = var.ngfw_mode
+  opmode                             = var.opmode
+  prp_trailer_action                 = var.prp_trailer_action
+  sccp_port                          = var.sccp_port
+  sctp_session_without_init          = var.sctp_session_without_init
+  ses_denied_traffic                 = var.ses_denied_traffic
+  sip_expectation                    = var.sip_expectation
+  sip_helper                         = var.sip_helper
+  sip_nat_trace                      = var.sip_nat_trace
+  sip_ssl_port                       = var.sip_ssl_port
+  sip_tcp_port                       = var.sip_tcp_port
+  sip_udp_port                       = var.sip_udp_port
+  snat_hairpin_traffic               = var.snat_hairpin_traffic
+  ssl_ssh_profile                    = var.ssl_ssh_profile
+  status                             = var.status
+  strict_src_check                   = var.strict_src_check
+  tcp_session_without_syn            = var.tcp_session_without_syn
+  utf8_spam_tagging                  = var.utf8_spam_tagging
+  v4_ecmp_mode                       = var.v4_ecmp_mode
+  vpn_stats_log                      = var.vpn_stats_log
+  vpn_stats_period                   = var.vpn_stats_period
+  wccp_cache_engine                  = var.wccp_cache_engine
 
   dynamic "gui_default_policy_columns" {
     for_each = var.gui_default_policy_columns
@@ -1117,6 +1225,11 @@ output "asymroute6_icmp" {
 output "asymroute_icmp" {
   description = "returns a string"
   value       = fortios_system_settings.this.asymroute_icmp
+}
+
+output "auxiliary_session" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.auxiliary_session
 }
 
 output "bfd" {
@@ -1187,6 +1300,16 @@ output "dhcp6_server_ip" {
 output "dhcp_proxy" {
   description = "returns a string"
   value       = fortios_system_settings.this.dhcp_proxy
+}
+
+output "dhcp_proxy_interface" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.dhcp_proxy_interface
+}
+
+output "dhcp_proxy_interface_select_method" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.dhcp_proxy_interface_select_method
 }
 
 output "dhcp_server_ip" {
@@ -1314,6 +1437,11 @@ output "gui_explicit_proxy" {
   value       = fortios_system_settings.this.gui_explicit_proxy
 }
 
+output "gui_file_filter" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.gui_file_filter
+}
+
 output "gui_fortiap_split_tunneling" {
   description = "returns a string"
   value       = fortios_system_settings.this.gui_fortiap_split_tunneling
@@ -1379,9 +1507,19 @@ output "gui_object_colors" {
   value       = fortios_system_settings.this.gui_object_colors
 }
 
+output "gui_per_policy_disclaimer" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.gui_per_policy_disclaimer
+}
+
 output "gui_policy_based_ipsec" {
   description = "returns a string"
   value       = fortios_system_settings.this.gui_policy_based_ipsec
+}
+
+output "gui_policy_disclaimer" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.gui_policy_disclaimer
 }
 
 output "gui_policy_learning" {
@@ -1392,6 +1530,11 @@ output "gui_policy_learning" {
 output "gui_replacement_message_groups" {
   description = "returns a string"
   value       = fortios_system_settings.this.gui_replacement_message_groups
+}
+
+output "gui_security_profile_group" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.gui_security_profile_group
 }
 
 output "gui_spamfilter" {
@@ -1477,6 +1620,16 @@ output "id" {
 output "ike_dn_format" {
   description = "returns a string"
   value       = fortios_system_settings.this.ike_dn_format
+}
+
+output "ike_natt_port" {
+  description = "returns a number"
+  value       = fortios_system_settings.this.ike_natt_port
+}
+
+output "ike_port" {
+  description = "returns a number"
+  value       = fortios_system_settings.this.ike_port
 }
 
 output "ike_quick_crash_detect" {
@@ -1574,9 +1727,19 @@ output "sccp_port" {
   value       = fortios_system_settings.this.sccp_port
 }
 
+output "sctp_session_without_init" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.sctp_session_without_init
+}
+
 output "ses_denied_traffic" {
   description = "returns a string"
   value       = fortios_system_settings.this.ses_denied_traffic
+}
+
+output "sip_expectation" {
+  description = "returns a string"
+  value       = fortios_system_settings.this.sip_expectation
 }
 
 output "sip_helper" {

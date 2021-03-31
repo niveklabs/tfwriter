@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -37,7 +37,7 @@ module "fortios_router_static" {
   device = null
   # distance - (optional) is a type of number
   distance = null
-  # dst - (required) is a type of string
+  # dst - (optional) is a type of string
   dst = null
   # dstaddr - (optional) is a type of string
   dstaddr = null
@@ -53,6 +53,8 @@ module "fortios_router_static" {
   link_monitor_exempt = null
   # priority - (optional) is a type of number
   priority = null
+  # sdwan - (optional) is a type of string
+  sdwan = null
   # seq_num - (optional) is a type of number
   seq_num = null
   # src - (optional) is a type of string
@@ -104,8 +106,9 @@ variable "distance" {
 }
 
 variable "dst" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "dstaddr" {
@@ -147,6 +150,12 @@ variable "link_monitor_exempt" {
 variable "priority" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "sdwan" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -206,6 +215,7 @@ resource "fortios_router_static" "this" {
   internet_service_custom = var.internet_service_custom
   link_monitor_exempt     = var.link_monitor_exempt
   priority                = var.priority
+  sdwan                   = var.sdwan
   seq_num                 = var.seq_num
   src                     = var.src
   status                  = var.status
@@ -238,6 +248,11 @@ output "device" {
 output "distance" {
   description = "returns a number"
   value       = fortios_router_static.this.distance
+}
+
+output "dst" {
+  description = "returns a string"
+  value       = fortios_router_static.this.dst
 }
 
 output "dstaddr" {
@@ -278,6 +293,11 @@ output "link_monitor_exempt" {
 output "priority" {
   description = "returns a number"
   value       = fortios_router_static.this.priority
+}
+
+output "sdwan" {
+  description = "returns a string"
+  value       = fortios_router_static.this.sdwan
 }
 
 output "seq_num" {

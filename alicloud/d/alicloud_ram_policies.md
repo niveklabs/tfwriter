@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,8 +27,12 @@ terraform {
 module "alicloud_ram_policies" {
   source = "./modules/alicloud/d/alicloud_ram_policies"
 
+  # enable_details - (optional) is a type of bool
+  enable_details = null
   # group_name - (optional) is a type of string
   group_name = null
+  # ids - (optional) is a type of list of string
+  ids = []
   # name_regex - (optional) is a type of string
   name_regex = null
   # output_file - (optional) is a type of string
@@ -47,9 +51,21 @@ module "alicloud_ram_policies" {
 ### Variables
 
 ```terraform
+variable "enable_details" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "group_name" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "ids" {
+  description = "(optional)"
+  type        = list(string)
   default     = null
 }
 
@@ -90,12 +106,14 @@ variable "user_name" {
 
 ```terraform
 data "alicloud_ram_policies" "this" {
-  group_name  = var.group_name
-  name_regex  = var.name_regex
-  output_file = var.output_file
-  role_name   = var.role_name
-  type        = var.type
-  user_name   = var.user_name
+  enable_details = var.enable_details
+  group_name     = var.group_name
+  ids            = var.ids
+  name_regex     = var.name_regex
+  output_file    = var.output_file
+  role_name      = var.role_name
+  type           = var.type
+  user_name      = var.user_name
 }
 ```
 
@@ -107,6 +125,11 @@ data "alicloud_ram_policies" "this" {
 output "id" {
   description = "returns a string"
   value       = data.alicloud_ram_policies.this.id
+}
+
+output "ids" {
+  description = "returns a list of string"
+  value       = data.alicloud_ram_policies.this.ids
 }
 
 output "names" {

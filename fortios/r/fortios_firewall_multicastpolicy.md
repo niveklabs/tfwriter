@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,16 +29,24 @@ module "fortios_firewall_multicastpolicy" {
 
   # action - (optional) is a type of string
   action = null
+  # auto_asic_offload - (optional) is a type of string
+  auto_asic_offload = null
+  # comments - (optional) is a type of string
+  comments = null
   # dnat - (optional) is a type of string
   dnat = null
   # dstintf - (required) is a type of string
   dstintf = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # end_port - (optional) is a type of number
   end_port = null
   # fosid - (optional) is a type of number
   fosid = null
   # logtraffic - (optional) is a type of string
   logtraffic = null
+  # name - (optional) is a type of string
+  name = null
   # protocol - (optional) is a type of number
   protocol = null
   # snat - (optional) is a type of string
@@ -51,6 +59,8 @@ module "fortios_firewall_multicastpolicy" {
   start_port = null
   # status - (optional) is a type of string
   status = null
+  # uuid - (optional) is a type of string
+  uuid = null
 
   dstaddr = [{
     name = null
@@ -73,6 +83,18 @@ variable "action" {
   default     = null
 }
 
+variable "auto_asic_offload" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dnat" {
   description = "(optional)"
   type        = string
@@ -82,6 +104,12 @@ variable "dnat" {
 variable "dstintf" {
   description = "(required)"
   type        = string
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "end_port" {
@@ -97,6 +125,12 @@ variable "fosid" {
 }
 
 variable "logtraffic" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -137,6 +171,12 @@ variable "status" {
   default     = null
 }
 
+variable "uuid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dstaddr" {
   description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
@@ -162,18 +202,23 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_multicastpolicy" "this" {
-  action     = var.action
-  dnat       = var.dnat
-  dstintf    = var.dstintf
-  end_port   = var.end_port
-  fosid      = var.fosid
-  logtraffic = var.logtraffic
-  protocol   = var.protocol
-  snat       = var.snat
-  snat_ip    = var.snat_ip
-  srcintf    = var.srcintf
-  start_port = var.start_port
-  status     = var.status
+  action                = var.action
+  auto_asic_offload     = var.auto_asic_offload
+  comments              = var.comments
+  dnat                  = var.dnat
+  dstintf               = var.dstintf
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  end_port              = var.end_port
+  fosid                 = var.fosid
+  logtraffic            = var.logtraffic
+  name                  = var.name
+  protocol              = var.protocol
+  snat                  = var.snat
+  snat_ip               = var.snat_ip
+  srcintf               = var.srcintf
+  start_port            = var.start_port
+  status                = var.status
+  uuid                  = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
@@ -202,6 +247,11 @@ output "action" {
   value       = fortios_firewall_multicastpolicy.this.action
 }
 
+output "auto_asic_offload" {
+  description = "returns a string"
+  value       = fortios_firewall_multicastpolicy.this.auto_asic_offload
+}
+
 output "dnat" {
   description = "returns a string"
   value       = fortios_firewall_multicastpolicy.this.dnat
@@ -227,6 +277,11 @@ output "logtraffic" {
   value       = fortios_firewall_multicastpolicy.this.logtraffic
 }
 
+output "name" {
+  description = "returns a string"
+  value       = fortios_firewall_multicastpolicy.this.name
+}
+
 output "protocol" {
   description = "returns a number"
   value       = fortios_firewall_multicastpolicy.this.protocol
@@ -250,6 +305,11 @@ output "start_port" {
 output "status" {
   description = "returns a string"
   value       = fortios_firewall_multicastpolicy.this.status
+}
+
+output "uuid" {
+  description = "returns a string"
+  value       = fortios_firewall_multicastpolicy.this.uuid
 }
 
 output "this" {

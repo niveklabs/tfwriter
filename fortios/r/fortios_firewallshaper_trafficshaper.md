@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,12 +33,24 @@ module "fortios_firewallshaper_trafficshaper" {
   diffserv = null
   # diffservcode - (optional) is a type of string
   diffservcode = null
+  # dscp_marking_method - (optional) is a type of string
+  dscp_marking_method = null
+  # exceed_bandwidth - (optional) is a type of number
+  exceed_bandwidth = null
+  # exceed_class_id - (optional) is a type of number
+  exceed_class_id = null
+  # exceed_dscp - (optional) is a type of string
+  exceed_dscp = null
   # guaranteed_bandwidth - (optional) is a type of number
   guaranteed_bandwidth = null
   # maximum_bandwidth - (optional) is a type of number
   maximum_bandwidth = null
+  # maximum_dscp - (optional) is a type of string
+  maximum_dscp = null
   # name - (optional) is a type of string
   name = null
+  # overhead - (optional) is a type of number
+  overhead = null
   # per_policy - (optional) is a type of string
   per_policy = null
   # priority - (optional) is a type of string
@@ -69,6 +81,30 @@ variable "diffservcode" {
   default     = null
 }
 
+variable "dscp_marking_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "exceed_bandwidth" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "exceed_class_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "exceed_dscp" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "guaranteed_bandwidth" {
   description = "(optional)"
   type        = number
@@ -81,9 +117,21 @@ variable "maximum_bandwidth" {
   default     = null
 }
 
+variable "maximum_dscp" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "overhead" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -109,9 +157,15 @@ resource "fortios_firewallshaper_trafficshaper" "this" {
   bandwidth_unit       = var.bandwidth_unit
   diffserv             = var.diffserv
   diffservcode         = var.diffservcode
+  dscp_marking_method  = var.dscp_marking_method
+  exceed_bandwidth     = var.exceed_bandwidth
+  exceed_class_id      = var.exceed_class_id
+  exceed_dscp          = var.exceed_dscp
   guaranteed_bandwidth = var.guaranteed_bandwidth
   maximum_bandwidth    = var.maximum_bandwidth
+  maximum_dscp         = var.maximum_dscp
   name                 = var.name
+  overhead             = var.overhead
   per_policy           = var.per_policy
   priority             = var.priority
 }
@@ -137,6 +191,26 @@ output "diffservcode" {
   value       = fortios_firewallshaper_trafficshaper.this.diffservcode
 }
 
+output "dscp_marking_method" {
+  description = "returns a string"
+  value       = fortios_firewallshaper_trafficshaper.this.dscp_marking_method
+}
+
+output "exceed_bandwidth" {
+  description = "returns a number"
+  value       = fortios_firewallshaper_trafficshaper.this.exceed_bandwidth
+}
+
+output "exceed_class_id" {
+  description = "returns a number"
+  value       = fortios_firewallshaper_trafficshaper.this.exceed_class_id
+}
+
+output "exceed_dscp" {
+  description = "returns a string"
+  value       = fortios_firewallshaper_trafficshaper.this.exceed_dscp
+}
+
 output "guaranteed_bandwidth" {
   description = "returns a number"
   value       = fortios_firewallshaper_trafficshaper.this.guaranteed_bandwidth
@@ -152,9 +226,19 @@ output "maximum_bandwidth" {
   value       = fortios_firewallshaper_trafficshaper.this.maximum_bandwidth
 }
 
+output "maximum_dscp" {
+  description = "returns a string"
+  value       = fortios_firewallshaper_trafficshaper.this.maximum_dscp
+}
+
 output "name" {
   description = "returns a string"
   value       = fortios_firewallshaper_trafficshaper.this.name
+}
+
+output "overhead" {
+  description = "returns a number"
+  value       = fortios_firewallshaper_trafficshaper.this.overhead
 }
 
 output "per_policy" {

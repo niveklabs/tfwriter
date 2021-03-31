@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -31,10 +31,16 @@ module "alicloud_route_table" {
   description = null
   # name - (optional) is a type of string
   name = null
+  # route_table_name - (optional) is a type of string
+  route_table_name = null
   # tags - (optional) is a type of map of string
   tags = {}
   # vpc_id - (required) is a type of string
   vpc_id = null
+
+  timeouts = [{
+    create = null
+  }]
 }
 ```
 
@@ -55,6 +61,12 @@ variable "name" {
   default     = null
 }
 
+variable "route_table_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -65,6 +77,16 @@ variable "vpc_id" {
   description = "(required)"
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -73,10 +95,19 @@ variable "vpc_id" {
 
 ```terraform
 resource "alicloud_route_table" "this" {
-  description = var.description
-  name        = var.name
-  tags        = var.tags
-  vpc_id      = var.vpc_id
+  description      = var.description
+  name             = var.name
+  route_table_name = var.route_table_name
+  tags             = var.tags
+  vpc_id           = var.vpc_id
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+    }
+  }
+
 }
 ```
 
@@ -88,6 +119,21 @@ resource "alicloud_route_table" "this" {
 output "id" {
   description = "returns a string"
   value       = alicloud_route_table.this.id
+}
+
+output "name" {
+  description = "returns a string"
+  value       = alicloud_route_table.this.name
+}
+
+output "route_table_name" {
+  description = "returns a string"
+  value       = alicloud_route_table.this.route_table_name
+}
+
+output "status" {
+  description = "returns a string"
+  value       = alicloud_route_table.this.status
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -45,6 +45,13 @@ module "azuredevops_serviceendpoint_azurecr" {
   resource_group = null
   # service_endpoint_name - (required) is a type of string
   service_endpoint_name = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -99,6 +106,19 @@ variable "service_endpoint_name" {
   description = "(required)"
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -116,6 +136,17 @@ resource "azuredevops_serviceendpoint_azurecr" "this" {
   project_id                = var.project_id
   resource_group            = var.resource_group
   service_endpoint_name     = var.service_endpoint_name
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 
@@ -124,14 +155,39 @@ resource "azuredevops_serviceendpoint_azurecr" "this" {
 ### Outputs
 
 ```terraform
+output "app_object_id" {
+  description = "returns a string"
+  value       = azuredevops_serviceendpoint_azurecr.this.app_object_id
+}
+
 output "authorization" {
   description = "returns a map of string"
   value       = azuredevops_serviceendpoint_azurecr.this.authorization
 }
 
+output "az_spn_role_assignment_id" {
+  description = "returns a string"
+  value       = azuredevops_serviceendpoint_azurecr.this.az_spn_role_assignment_id
+}
+
+output "az_spn_role_permissions" {
+  description = "returns a string"
+  value       = azuredevops_serviceendpoint_azurecr.this.az_spn_role_permissions
+}
+
 output "id" {
   description = "returns a string"
   value       = azuredevops_serviceendpoint_azurecr.this.id
+}
+
+output "service_principal_id" {
+  description = "returns a string"
+  value       = azuredevops_serviceendpoint_azurecr.this.service_principal_id
+}
+
+output "spn_object_id" {
+  description = "returns a string"
+  value       = azuredevops_serviceendpoint_azurecr.this.spn_object_id
 }
 
 output "this" {

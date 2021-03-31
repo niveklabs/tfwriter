@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_firewall_address6template" {
   source = "./modules/fortios/r/fortios_firewall_address6template"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ip6 - (required) is a type of string
   ip6 = null
   # name - (required) is a type of string
@@ -52,6 +54,12 @@ module "fortios_firewall_address6template" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ip6" {
   description = "(required)"
   type        = string
@@ -93,9 +101,10 @@ variable "subnet_segment" {
 
 ```terraform
 resource "fortios_firewall_address6template" "this" {
-  ip6                  = var.ip6
-  name                 = var.name
-  subnet_segment_count = var.subnet_segment_count
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ip6                   = var.ip6
+  name                  = var.name
+  subnet_segment_count  = var.subnet_segment_count
 
   dynamic "subnet_segment" {
     for_each = var.subnet_segment

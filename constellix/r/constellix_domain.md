@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    constellix = ">= 0.3.6"
+    constellix = ">= 0.3.7"
   }
 }
 ```

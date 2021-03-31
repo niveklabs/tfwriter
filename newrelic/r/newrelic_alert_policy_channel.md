@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "newrelic_alert_policy_channel" {
   source = "./modules/newrelic/r/newrelic_alert_policy_channel"
 
-  # channel_ids - (required) is a type of list of number
+  # channel_ids - (required) is a type of set of number
   channel_ids = []
   # policy_id - (required) is a type of number
   policy_id = null
@@ -41,7 +41,7 @@ module "newrelic_alert_policy_channel" {
 ```terraform
 variable "channel_ids" {
   description = "(required) - Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state."
-  type        = list(number)
+  type        = set(number)
 }
 
 variable "policy_id" {

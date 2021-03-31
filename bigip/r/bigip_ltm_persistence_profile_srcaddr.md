@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.5.0"
+    bigip = ">= 1.7.0"
   }
 }
 ```
@@ -156,9 +156,59 @@ resource "bigip_ltm_persistence_profile_srcaddr" "this" {
 ### Outputs
 
 ```terraform
+output "app_service" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.app_service
+}
+
+output "hash_algorithm" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.hash_algorithm
+}
+
 output "id" {
   description = "returns a string"
   value       = bigip_ltm_persistence_profile_srcaddr.this.id
+}
+
+output "map_proxies" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.map_proxies
+}
+
+output "mask" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.mask
+}
+
+output "match_across_pools" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.match_across_pools
+}
+
+output "match_across_services" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.match_across_services
+}
+
+output "match_across_virtuals" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.match_across_virtuals
+}
+
+output "mirror" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.mirror
+}
+
+output "override_conn_limit" {
+  description = "returns a string"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.override_conn_limit
+}
+
+output "timeout" {
+  description = "returns a number"
+  value       = bigip_ltm_persistence_profile_srcaddr.this.timeout
 }
 
 output "this" {

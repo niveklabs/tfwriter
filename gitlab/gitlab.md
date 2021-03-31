@@ -12,7 +12,7 @@
 
 ```terraform
 provider "gitlab" {
-  version = "3.3.0"
+  version = "3.5.0"
 
   # base_url - (optional) is a type of string
   base_url = null
@@ -52,6 +52,8 @@ provider "gitlab" {
 
 - [gitlab_group_membership](./r/gitlab_group_membership.md)
 
+- [gitlab_group_share_group](./r/gitlab_group_share_group.md)
+
 - [gitlab_group_variable](./r/gitlab_group_variable.md)
 
 - [gitlab_instance_cluster](./r/gitlab_instance_cluster.md)
@@ -71,6 +73,8 @@ provider "gitlab" {
 - [gitlab_project_approval_rule](./r/gitlab_project_approval_rule.md)
 
 - [gitlab_project_cluster](./r/gitlab_project_cluster.md)
+
+- [gitlab_project_freeze_period](./r/gitlab_project_freeze_period.md)
 
 - [gitlab_project_hook](./r/gitlab_project_hook.md)
 

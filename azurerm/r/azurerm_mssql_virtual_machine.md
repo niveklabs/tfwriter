@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -43,6 +43,21 @@ module "azurerm_mssql_virtual_machine" {
   tags = {}
   # virtual_machine_id - (required) is a type of string
   virtual_machine_id = null
+
+  auto_backup = [{
+    encryption_enabled  = null
+    encryption_password = null
+    manual_schedule = [{
+      full_backup_frequency           = null
+      full_backup_start_hour          = null
+      full_backup_window_in_hours     = null
+      log_backup_frequency_in_minutes = null
+    }]
+    retention_period_in_days        = null
+    storage_account_access_key      = null
+    storage_blob_endpoint           = null
+    system_databases_backup_enabled = null
+  }]
 
   auto_patching = [{
     day_of_week                            = null
@@ -134,6 +149,29 @@ variable "virtual_machine_id" {
   type        = string
 }
 
+variable "auto_backup" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      encryption_enabled  = bool
+      encryption_password = string
+      manual_schedule = list(object(
+        {
+          full_backup_frequency           = string
+          full_backup_start_hour          = number
+          full_backup_window_in_hours     = number
+          log_backup_frequency_in_minutes = number
+        }
+      ))
+      retention_period_in_days        = number
+      storage_account_access_key      = string
+      storage_blob_endpoint           = string
+      system_databases_backup_enabled = bool
+    }
+  ))
+  default = []
+}
+
 variable "auto_patching" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -216,6 +254,29 @@ resource "azurerm_mssql_virtual_machine" "this" {
   sql_license_type                 = var.sql_license_type
   tags                             = var.tags
   virtual_machine_id               = var.virtual_machine_id
+
+  dynamic "auto_backup" {
+    for_each = var.auto_backup
+    content {
+      encryption_enabled              = auto_backup.value["encryption_enabled"]
+      encryption_password             = auto_backup.value["encryption_password"]
+      retention_period_in_days        = auto_backup.value["retention_period_in_days"]
+      storage_account_access_key      = auto_backup.value["storage_account_access_key"]
+      storage_blob_endpoint           = auto_backup.value["storage_blob_endpoint"]
+      system_databases_backup_enabled = auto_backup.value["system_databases_backup_enabled"]
+
+      dynamic "manual_schedule" {
+        for_each = auto_backup.value.manual_schedule
+        content {
+          full_backup_frequency           = manual_schedule.value["full_backup_frequency"]
+          full_backup_start_hour          = manual_schedule.value["full_backup_start_hour"]
+          full_backup_window_in_hours     = manual_schedule.value["full_backup_window_in_hours"]
+          log_backup_frequency_in_minutes = manual_schedule.value["log_backup_frequency_in_minutes"]
+        }
+      }
+
+    }
+  }
 
   dynamic "auto_patching" {
     for_each = var.auto_patching

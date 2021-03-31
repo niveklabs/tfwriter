@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "oci_kms_keys" {
   algorithm = null
   # compartment_id - (required) is a type of string
   compartment_id = null
+  # curve_id - (optional) is a type of string
+  curve_id = null
   # length - (optional) is a type of number
   length = null
   # management_endpoint - (required) is a type of string
@@ -60,6 +62,12 @@ variable "algorithm" {
 variable "compartment_id" {
   description = "(required)"
   type        = string
+}
+
+variable "curve_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "length" {
@@ -100,6 +108,7 @@ variable "filter" {
 data "oci_kms_keys" "this" {
   algorithm           = var.algorithm
   compartment_id      = var.compartment_id
+  curve_id            = var.curve_id
   length              = var.length
   management_endpoint = var.management_endpoint
   protection_mode     = var.protection_mode

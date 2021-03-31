@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    heroku = ">= 3.2.0"
+    heroku = ">= 4.1.0"
   }
 }
 ```
@@ -25,13 +25,18 @@ terraform {
 
 ```terraform
 module "heroku_build" {
-  source = {}
+  source = [{
+    checksum = null
+    path     = null
+    url      = null
+    version  = null
+  }]
 
   # app - (required) is a type of string
   app = null
   # buildpacks - (optional) is a type of list of string
   buildpacks = []
-  # source - (required) is a type of map of string
+
 }
 ```
 
@@ -52,8 +57,15 @@ variable "buildpacks" {
 }
 
 variable "source" {
-  description = "(required)"
-  type        = map(string)
+  description = "nested block: NestingList, min items: 1, max items: 1"
+  type = set(object(
+    {
+      checksum = string
+      path     = string
+      url      = string
+      version  = string
+    }
+  ))
 }
 ```
 
@@ -65,7 +77,17 @@ variable "source" {
 resource "heroku_build" "this" {
   app        = var.app
   buildpacks = var.buildpacks
-  source     = var.source
+
+  dynamic "source" {
+    for_each = var.source
+    content {
+      checksum = source.value["checksum"]
+      path     = source.value["path"]
+      url      = source.value["url"]
+      version  = source.value["version"]
+    }
+  }
+
 }
 ```
 
@@ -115,7 +137,7 @@ output "status" {
 }
 
 output "user" {
-  description = "returns a map of string"
+  description = "returns a list of object"
   value       = heroku_build.this.user
 }
 

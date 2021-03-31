@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -120,6 +120,7 @@ module "google_compute_instance_from_template" {
     name               = null
     network            = null
     network_ip         = null
+    nic_type           = null
     subnetwork         = null
     subnetwork_project = null
   }]
@@ -362,6 +363,7 @@ variable "network_interface" {
       name               = string
       network            = string
       network_ip         = string
+      nic_type           = string
       subnetwork         = string
       subnetwork_project = string
     }
@@ -480,6 +482,7 @@ resource "google_compute_instance_from_template" "this" {
       alias_ip_range     = network_interface.value["alias_ip_range"]
       network            = network_interface.value["network"]
       network_ip         = network_interface.value["network_ip"]
+      nic_type           = network_interface.value["nic_type"]
       subnetwork         = network_interface.value["subnetwork"]
       subnetwork_project = network_interface.value["subnetwork_project"]
     }

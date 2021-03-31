@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,16 @@ module "fortios_switchcontrollersecuritypolicy_8021X" {
   auth_fail_vlan_id = null
   # auth_fail_vlanid - (optional) is a type of number
   auth_fail_vlanid = null
+  # authserver_timeout_period - (optional) is a type of number
+  authserver_timeout_period = null
+  # authserver_timeout_vlan - (optional) is a type of string
+  authserver_timeout_vlan = null
+  # authserver_timeout_vlanid - (optional) is a type of string
+  authserver_timeout_vlanid = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # eap_auto_untagged_vlans - (optional) is a type of string
+  eap_auto_untagged_vlans = null
   # eap_passthru - (optional) is a type of string
   eap_passthru = null
   # framevid_apply - (optional) is a type of string
@@ -84,6 +94,36 @@ variable "auth_fail_vlan_id" {
 variable "auth_fail_vlanid" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "authserver_timeout_period" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "authserver_timeout_vlan" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "authserver_timeout_vlanid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "eap_auto_untagged_vlans" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -176,21 +216,26 @@ variable "user_group" {
 
 ```terraform
 resource "fortios_switchcontrollersecuritypolicy_8021X" "this" {
-  auth_fail_vlan           = var.auth_fail_vlan
-  auth_fail_vlan_id        = var.auth_fail_vlan_id
-  auth_fail_vlanid         = var.auth_fail_vlanid
-  eap_passthru             = var.eap_passthru
-  framevid_apply           = var.framevid_apply
-  guest_auth_delay         = var.guest_auth_delay
-  guest_vlan               = var.guest_vlan
-  guest_vlan_id            = var.guest_vlan_id
-  guest_vlanid             = var.guest_vlanid
-  mac_auth_bypass          = var.mac_auth_bypass
-  name                     = var.name
-  open_auth                = var.open_auth
-  policy_type              = var.policy_type
-  radius_timeout_overwrite = var.radius_timeout_overwrite
-  security_mode            = var.security_mode
+  auth_fail_vlan            = var.auth_fail_vlan
+  auth_fail_vlan_id         = var.auth_fail_vlan_id
+  auth_fail_vlanid          = var.auth_fail_vlanid
+  authserver_timeout_period = var.authserver_timeout_period
+  authserver_timeout_vlan   = var.authserver_timeout_vlan
+  authserver_timeout_vlanid = var.authserver_timeout_vlanid
+  dynamic_sort_subtable     = var.dynamic_sort_subtable
+  eap_auto_untagged_vlans   = var.eap_auto_untagged_vlans
+  eap_passthru              = var.eap_passthru
+  framevid_apply            = var.framevid_apply
+  guest_auth_delay          = var.guest_auth_delay
+  guest_vlan                = var.guest_vlan
+  guest_vlan_id             = var.guest_vlan_id
+  guest_vlanid              = var.guest_vlanid
+  mac_auth_bypass           = var.mac_auth_bypass
+  name                      = var.name
+  open_auth                 = var.open_auth
+  policy_type               = var.policy_type
+  radius_timeout_overwrite  = var.radius_timeout_overwrite
+  security_mode             = var.security_mode
 
   dynamic "user_group" {
     for_each = var.user_group
@@ -220,6 +265,26 @@ output "auth_fail_vlan_id" {
 output "auth_fail_vlanid" {
   description = "returns a number"
   value       = fortios_switchcontrollersecuritypolicy_8021X.this.auth_fail_vlanid
+}
+
+output "authserver_timeout_period" {
+  description = "returns a number"
+  value       = fortios_switchcontrollersecuritypolicy_8021X.this.authserver_timeout_period
+}
+
+output "authserver_timeout_vlan" {
+  description = "returns a string"
+  value       = fortios_switchcontrollersecuritypolicy_8021X.this.authserver_timeout_vlan
+}
+
+output "authserver_timeout_vlanid" {
+  description = "returns a string"
+  value       = fortios_switchcontrollersecuritypolicy_8021X.this.authserver_timeout_vlanid
+}
+
+output "eap_auto_untagged_vlans" {
+  description = "returns a string"
+  value       = fortios_switchcontrollersecuritypolicy_8021X.this.eap_auto_untagged_vlans
 }
 
 output "eap_passthru" {

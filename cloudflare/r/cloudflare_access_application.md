@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -33,6 +33,10 @@ module "cloudflare_access_application" {
   allowed_idps = []
   # auto_redirect_to_identity - (optional) is a type of bool
   auto_redirect_to_identity = null
+  # custom_deny_message - (optional) is a type of string
+  custom_deny_message = null
+  # custom_deny_url - (optional) is a type of string
+  custom_deny_url = null
   # domain - (required) is a type of string
   domain = null
   # enable_binding_cookie - (optional) is a type of bool
@@ -77,6 +81,18 @@ variable "allowed_idps" {
 variable "auto_redirect_to_identity" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "custom_deny_message" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "custom_deny_url" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -135,6 +151,8 @@ resource "cloudflare_access_application" "this" {
   account_id                = var.account_id
   allowed_idps              = var.allowed_idps
   auto_redirect_to_identity = var.auto_redirect_to_identity
+  custom_deny_message       = var.custom_deny_message
+  custom_deny_url           = var.custom_deny_url
   domain                    = var.domain
   enable_binding_cookie     = var.enable_binding_cookie
   name                      = var.name

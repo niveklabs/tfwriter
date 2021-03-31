@@ -12,7 +12,7 @@
 
 ```terraform
 provider "aws" {
-  version = "3.22.0"
+  version = "3.34.0"
 
   # access_key - (optional) is a type of string
   access_key = null
@@ -67,6 +67,12 @@ provider "aws" {
     transitive_tag_keys = []
   }
 
+  # NestingList
+  default_tags {
+    # tags - (optional) is a type of map of string
+    tags = {}
+  }
+
   # NestingSet
   endpoints {
     # accessanalyzer - (optional) is a type of string
@@ -91,6 +97,8 @@ provider "aws" {
     appsync = null
     # athena - (optional) is a type of string
     athena = null
+    # auditmanager - (optional) is a type of string
+    auditmanager = null
     # autoscaling - (optional) is a type of string
     autoscaling = null
     # autoscalingplans - (optional) is a type of string
@@ -185,6 +193,8 @@ provider "aws" {
     elb = null
     # emr - (optional) is a type of string
     emr = null
+    # emrcontainers - (optional) is a type of string
+    emrcontainers = null
     # es - (optional) is a type of string
     es = null
     # firehose - (optional) is a type of string
@@ -392,7 +402,11 @@ provider "aws" {
 
 - [aws_acm_certificate_validation](./r/aws_acm_certificate_validation.md)
 
+- [aws_acmpca_certificate](./r/aws_acmpca_certificate.md)
+
 - [aws_acmpca_certificate_authority](./r/aws_acmpca_certificate_authority.md)
+
+- [aws_acmpca_certificate_authority_certificate](./r/aws_acmpca_certificate_authority_certificate.md)
 
 - [aws_alb](./r/aws_alb.md)
 
@@ -538,6 +552,8 @@ provider "aws" {
 
 - [aws_autoscalingplans_scaling_plan](./r/aws_autoscalingplans_scaling_plan.md)
 
+- [aws_backup_global_settings](./r/aws_backup_global_settings.md)
+
 - [aws_backup_plan](./r/aws_backup_plan.md)
 
 - [aws_backup_region_settings](./r/aws_backup_region_settings.md)
@@ -566,11 +582,17 @@ provider "aws" {
 
 - [aws_cloudformation_stack_set_instance](./r/aws_cloudformation_stack_set_instance.md)
 
+- [aws_cloudfront_cache_policy](./r/aws_cloudfront_cache_policy.md)
+
 - [aws_cloudfront_distribution](./r/aws_cloudfront_distribution.md)
 
 - [aws_cloudfront_origin_access_identity](./r/aws_cloudfront_origin_access_identity.md)
 
+- [aws_cloudfront_origin_request_policy](./r/aws_cloudfront_origin_request_policy.md)
+
 - [aws_cloudfront_public_key](./r/aws_cloudfront_public_key.md)
+
+- [aws_cloudfront_realtime_log_config](./r/aws_cloudfront_realtime_log_config.md)
 
 - [aws_cloudhsm_v2_cluster](./r/aws_cloudhsm_v2_cluster.md)
 
@@ -578,7 +600,11 @@ provider "aws" {
 
 - [aws_cloudtrail](./r/aws_cloudtrail.md)
 
+- [aws_cloudwatch_composite_alarm](./r/aws_cloudwatch_composite_alarm.md)
+
 - [aws_cloudwatch_dashboard](./r/aws_cloudwatch_dashboard.md)
+
+- [aws_cloudwatch_event_archive](./r/aws_cloudwatch_event_archive.md)
 
 - [aws_cloudwatch_event_bus](./r/aws_cloudwatch_event_bus.md)
 
@@ -654,6 +680,8 @@ provider "aws" {
 
 - [aws_cognito_user_pool_domain](./r/aws_cognito_user_pool_domain.md)
 
+- [aws_cognito_user_pool_ui_customization](./r/aws_cognito_user_pool_ui_customization.md)
+
 - [aws_config_aggregate_authorization](./r/aws_config_aggregate_authorization.md)
 
 - [aws_config_config_rule](./r/aws_config_config_rule.md)
@@ -663,6 +691,8 @@ provider "aws" {
 - [aws_config_configuration_recorder](./r/aws_config_configuration_recorder.md)
 
 - [aws_config_configuration_recorder_status](./r/aws_config_configuration_recorder_status.md)
+
+- [aws_config_conformance_pack](./r/aws_config_conformance_pack.md)
 
 - [aws_config_delivery_channel](./r/aws_config_delivery_channel.md)
 
@@ -852,6 +882,8 @@ provider "aws" {
 
 - [aws_ec2_transit_gateway_peering_attachment_accepter](./r/aws_ec2_transit_gateway_peering_attachment_accepter.md)
 
+- [aws_ec2_transit_gateway_prefix_list_reference](./r/aws_ec2_transit_gateway_prefix_list_reference.md)
+
 - [aws_ec2_transit_gateway_route](./r/aws_ec2_transit_gateway_route.md)
 
 - [aws_ec2_transit_gateway_route_table](./r/aws_ec2_transit_gateway_route_table.md)
@@ -869,6 +901,8 @@ provider "aws" {
 - [aws_ecr_repository](./r/aws_ecr_repository.md)
 
 - [aws_ecr_repository_policy](./r/aws_ecr_repository_policy.md)
+
+- [aws_ecrpublic_repository](./r/aws_ecrpublic_repository.md)
 
 - [aws_ecs_capacity_provider](./r/aws_ecs_capacity_provider.md)
 
@@ -908,6 +942,8 @@ provider "aws" {
 
 - [aws_elasticache_cluster](./r/aws_elasticache_cluster.md)
 
+- [aws_elasticache_global_replication_group](./r/aws_elasticache_global_replication_group.md)
+
 - [aws_elasticache_parameter_group](./r/aws_elasticache_parameter_group.md)
 
 - [aws_elasticache_replication_group](./r/aws_elasticache_replication_group.md)
@@ -941,6 +977,8 @@ provider "aws" {
 - [aws_flow_log](./r/aws_flow_log.md)
 
 - [aws_fms_admin_account](./r/aws_fms_admin_account.md)
+
+- [aws_fms_policy](./r/aws_fms_policy.md)
 
 - [aws_fsx_lustre_file_system](./r/aws_fsx_lustre_file_system.md)
 
@@ -1066,6 +1104,8 @@ provider "aws" {
 
 - [aws_imagebuilder_distribution_configuration](./r/aws_imagebuilder_distribution_configuration.md)
 
+- [aws_imagebuilder_image](./r/aws_imagebuilder_image.md)
+
 - [aws_imagebuilder_image_pipeline](./r/aws_imagebuilder_image_pipeline.md)
 
 - [aws_imagebuilder_image_recipe](./r/aws_imagebuilder_image_recipe.md)
@@ -1105,6 +1145,8 @@ provider "aws" {
 - [aws_kinesis_firehose_delivery_stream](./r/aws_kinesis_firehose_delivery_stream.md)
 
 - [aws_kinesis_stream](./r/aws_kinesis_stream.md)
+
+- [aws_kinesis_stream_consumer](./r/aws_kinesis_stream_consumer.md)
 
 - [aws_kinesis_video_stream](./r/aws_kinesis_video_stream.md)
 
@@ -1177,6 +1219,8 @@ provider "aws" {
 - [aws_lightsail_domain](./r/aws_lightsail_domain.md)
 
 - [aws_lightsail_instance](./r/aws_lightsail_instance.md)
+
+- [aws_lightsail_instance_public_ports](./r/aws_lightsail_instance_public_ports.md)
 
 - [aws_lightsail_key_pair](./r/aws_lightsail_key_pair.md)
 
@@ -1316,6 +1360,8 @@ provider "aws" {
 
 - [aws_placement_group](./r/aws_placement_group.md)
 
+- [aws_prometheus_workspace](./r/aws_prometheus_workspace.md)
+
 - [aws_proxy_protocol_policy](./r/aws_proxy_protocol_policy.md)
 
 - [aws_qldb_ledger](./r/aws_qldb_ledger.md)
@@ -1366,9 +1412,15 @@ provider "aws" {
 
 - [aws_route53_health_check](./r/aws_route53_health_check.md)
 
+- [aws_route53_hosted_zone_dnssec](./r/aws_route53_hosted_zone_dnssec.md)
+
+- [aws_route53_key_signing_key](./r/aws_route53_key_signing_key.md)
+
 - [aws_route53_query_log](./r/aws_route53_query_log.md)
 
 - [aws_route53_record](./r/aws_route53_record.md)
+
+- [aws_route53_resolver_dnssec_config](./r/aws_route53_resolver_dnssec_config.md)
 
 - [aws_route53_resolver_endpoint](./r/aws_route53_resolver_endpoint.md)
 
@@ -1412,6 +1464,8 @@ provider "aws" {
 
 - [aws_s3_bucket_public_access_block](./r/aws_s3_bucket_public_access_block.md)
 
+- [aws_s3_object_copy](./r/aws_s3_object_copy.md)
+
 - [aws_s3control_bucket](./r/aws_s3control_bucket.md)
 
 - [aws_s3control_bucket_lifecycle_configuration](./r/aws_s3control_bucket_lifecycle_configuration.md)
@@ -1420,17 +1474,33 @@ provider "aws" {
 
 - [aws_s3outposts_endpoint](./r/aws_s3outposts_endpoint.md)
 
+- [aws_sagemaker_app](./r/aws_sagemaker_app.md)
+
+- [aws_sagemaker_app_image_config](./r/aws_sagemaker_app_image_config.md)
+
 - [aws_sagemaker_code_repository](./r/aws_sagemaker_code_repository.md)
+
+- [aws_sagemaker_domain](./r/aws_sagemaker_domain.md)
 
 - [aws_sagemaker_endpoint](./r/aws_sagemaker_endpoint.md)
 
 - [aws_sagemaker_endpoint_configuration](./r/aws_sagemaker_endpoint_configuration.md)
 
+- [aws_sagemaker_feature_group](./r/aws_sagemaker_feature_group.md)
+
+- [aws_sagemaker_image](./r/aws_sagemaker_image.md)
+
+- [aws_sagemaker_image_version](./r/aws_sagemaker_image_version.md)
+
 - [aws_sagemaker_model](./r/aws_sagemaker_model.md)
+
+- [aws_sagemaker_model_package_group](./r/aws_sagemaker_model_package_group.md)
 
 - [aws_sagemaker_notebook_instance](./r/aws_sagemaker_notebook_instance.md)
 
 - [aws_sagemaker_notebook_instance_lifecycle_configuration](./r/aws_sagemaker_notebook_instance_lifecycle_configuration.md)
+
+- [aws_sagemaker_user_profile](./r/aws_sagemaker_user_profile.md)
 
 - [aws_secretsmanager_secret](./r/aws_secretsmanager_secret.md)
 
@@ -1448,7 +1518,11 @@ provider "aws" {
 
 - [aws_securityhub_action_target](./r/aws_securityhub_action_target.md)
 
+- [aws_securityhub_invite_accepter](./r/aws_securityhub_invite_accepter.md)
+
 - [aws_securityhub_member](./r/aws_securityhub_member.md)
+
+- [aws_securityhub_organization_admin_account](./r/aws_securityhub_organization_admin_account.md)
 
 - [aws_securityhub_product_subscription](./r/aws_securityhub_product_subscription.md)
 
@@ -1552,6 +1626,14 @@ provider "aws" {
 
 - [aws_ssm_resource_data_sync](./r/aws_ssm_resource_data_sync.md)
 
+- [aws_ssoadmin_account_assignment](./r/aws_ssoadmin_account_assignment.md)
+
+- [aws_ssoadmin_managed_policy_attachment](./r/aws_ssoadmin_managed_policy_attachment.md)
+
+- [aws_ssoadmin_permission_set](./r/aws_ssoadmin_permission_set.md)
+
+- [aws_ssoadmin_permission_set_inline_policy](./r/aws_ssoadmin_permission_set_inline_policy.md)
+
 - [aws_storagegateway_cache](./r/aws_storagegateway_cache.md)
 
 - [aws_storagegateway_cached_iscsi_volume](./r/aws_storagegateway_cached_iscsi_volume.md)
@@ -1573,6 +1655,8 @@ provider "aws" {
 - [aws_subnet](./r/aws_subnet.md)
 
 - [aws_swf_domain](./r/aws_swf_domain.md)
+
+- [aws_synthetics_canary](./r/aws_synthetics_canary.md)
 
 - [aws_transfer_server](./r/aws_transfer_server.md)
 
@@ -1704,6 +1788,8 @@ provider "aws" {
 
 - [aws_acm_certificate](./d/aws_acm_certificate.md)
 
+- [aws_acmpca_certificate](./d/aws_acmpca_certificate.md)
+
 - [aws_acmpca_certificate_authority](./d/aws_acmpca_certificate_authority.md)
 
 - [aws_alb](./d/aws_alb.md)
@@ -1718,11 +1804,17 @@ provider "aws" {
 
 - [aws_api_gateway_api_key](./d/aws_api_gateway_api_key.md)
 
+- [aws_api_gateway_domain_name](./d/aws_api_gateway_domain_name.md)
+
 - [aws_api_gateway_resource](./d/aws_api_gateway_resource.md)
 
 - [aws_api_gateway_rest_api](./d/aws_api_gateway_rest_api.md)
 
 - [aws_api_gateway_vpc_link](./d/aws_api_gateway_vpc_link.md)
+
+- [aws_apigatewayv2_api](./d/aws_apigatewayv2_api.md)
+
+- [aws_apigatewayv2_apis](./d/aws_apigatewayv2_apis.md)
 
 - [aws_arn](./d/aws_arn.md)
 
@@ -1754,7 +1846,11 @@ provider "aws" {
 
 - [aws_cloudformation_stack](./d/aws_cloudformation_stack.md)
 
+- [aws_cloudfront_cache_policy](./d/aws_cloudfront_cache_policy.md)
+
 - [aws_cloudfront_distribution](./d/aws_cloudfront_distribution.md)
+
+- [aws_cloudfront_origin_request_policy](./d/aws_cloudfront_origin_request_policy.md)
 
 - [aws_cloudhsm_v2_cluster](./d/aws_cloudhsm_v2_cluster.md)
 
@@ -1767,6 +1863,8 @@ provider "aws" {
 - [aws_codeartifact_repository_endpoint](./d/aws_codeartifact_repository_endpoint.md)
 
 - [aws_codecommit_repository](./d/aws_codecommit_repository.md)
+
+- [aws_codestarconnections_connection](./d/aws_codestarconnections_connection.md)
 
 - [aws_cognito_user_pools](./d/aws_cognito_user_pools.md)
 
@@ -1842,6 +1940,8 @@ provider "aws" {
 
 - [aws_ec2_transit_gateway_route_table](./d/aws_ec2_transit_gateway_route_table.md)
 
+- [aws_ec2_transit_gateway_route_tables](./d/aws_ec2_transit_gateway_route_tables.md)
+
 - [aws_ec2_transit_gateway_vpc_attachment](./d/aws_ec2_transit_gateway_vpc_attachment.md)
 
 - [aws_ec2_transit_gateway_vpn_attachment](./d/aws_ec2_transit_gateway_vpn_attachment.md)
@@ -1912,9 +2012,15 @@ provider "aws" {
 
 - [aws_iam_user](./d/aws_iam_user.md)
 
+- [aws_identitystore_group](./d/aws_identitystore_group.md)
+
+- [aws_identitystore_user](./d/aws_identitystore_user.md)
+
 - [aws_imagebuilder_component](./d/aws_imagebuilder_component.md)
 
 - [aws_imagebuilder_distribution_configuration](./d/aws_imagebuilder_distribution_configuration.md)
+
+- [aws_imagebuilder_image](./d/aws_imagebuilder_image.md)
 
 - [aws_imagebuilder_image_pipeline](./d/aws_imagebuilder_image_pipeline.md)
 
@@ -1935,6 +2041,8 @@ provider "aws" {
 - [aws_ip_ranges](./d/aws_ip_ranges.md)
 
 - [aws_kinesis_stream](./d/aws_kinesis_stream.md)
+
+- [aws_kinesis_stream_consumer](./d/aws_kinesis_stream_consumer.md)
 
 - [aws_kms_alias](./d/aws_kms_alias.md)
 
@@ -2099,6 +2207,10 @@ provider "aws" {
 - [aws_ssm_parameter](./d/aws_ssm_parameter.md)
 
 - [aws_ssm_patch_baseline](./d/aws_ssm_patch_baseline.md)
+
+- [aws_ssoadmin_instances](./d/aws_ssoadmin_instances.md)
+
+- [aws_ssoadmin_permission_set](./d/aws_ssoadmin_permission_set.md)
 
 - [aws_storagegateway_local_disk](./d/aws_storagegateway_local_disk.md)
 

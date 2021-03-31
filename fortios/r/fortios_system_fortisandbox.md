@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,12 @@ module "fortios_system_fortisandbox" {
   email = null
   # enc_algorithm - (optional) is a type of string
   enc_algorithm = null
+  # forticloud - (optional) is a type of string
+  forticloud = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
   # server - (optional) is a type of string
   server = null
   # source_ip - (optional) is a type of string
@@ -54,6 +60,24 @@ variable "email" {
 }
 
 variable "enc_algorithm" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "forticloud" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
   description = "(optional)"
   type        = string
   default     = null
@@ -90,12 +114,15 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_fortisandbox" "this" {
-  email                 = var.email
-  enc_algorithm         = var.enc_algorithm
-  server                = var.server
-  source_ip             = var.source_ip
-  ssl_min_proto_version = var.ssl_min_proto_version
-  status                = var.status
+  email                   = var.email
+  enc_algorithm           = var.enc_algorithm
+  forticloud              = var.forticloud
+  interface               = var.interface
+  interface_select_method = var.interface_select_method
+  server                  = var.server
+  source_ip               = var.source_ip
+  ssl_min_proto_version   = var.ssl_min_proto_version
+  status                  = var.status
 }
 ```
 
@@ -114,9 +141,24 @@ output "enc_algorithm" {
   value       = fortios_system_fortisandbox.this.enc_algorithm
 }
 
+output "forticloud" {
+  description = "returns a string"
+  value       = fortios_system_fortisandbox.this.forticloud
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_system_fortisandbox.this.id
+}
+
+output "interface" {
+  description = "returns a string"
+  value       = fortios_system_fortisandbox.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_system_fortisandbox.this.interface_select_method
 }
 
 output "server" {

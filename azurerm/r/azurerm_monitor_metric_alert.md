@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -70,10 +70,11 @@ module "azurerm_monitor_metric_alert" {
       operator = null
       values   = []
     }]
-    metric_name      = null
-    metric_namespace = null
-    operator         = null
-    threshold        = null
+    metric_name            = null
+    metric_namespace       = null
+    operator               = null
+    skip_metric_validation = null
+    threshold              = null
   }]
 
   dynamic_criteria = [{
@@ -90,6 +91,7 @@ module "azurerm_monitor_metric_alert" {
     metric_name              = null
     metric_namespace         = null
     operator                 = null
+    skip_metric_validation   = null
   }]
 
   timeouts = [{
@@ -210,10 +212,11 @@ variable "criteria" {
           values   = list(string)
         }
       ))
-      metric_name      = string
-      metric_namespace = string
-      operator         = string
-      threshold        = number
+      metric_name            = string
+      metric_namespace       = string
+      operator               = string
+      skip_metric_validation = bool
+      threshold              = number
     }
   ))
   default = []
@@ -238,6 +241,7 @@ variable "dynamic_criteria" {
       metric_name              = string
       metric_namespace         = string
       operator                 = string
+      skip_metric_validation   = bool
     }
   ))
   default = []
@@ -296,11 +300,12 @@ resource "azurerm_monitor_metric_alert" "this" {
   dynamic "criteria" {
     for_each = var.criteria
     content {
-      aggregation      = criteria.value["aggregation"]
-      metric_name      = criteria.value["metric_name"]
-      metric_namespace = criteria.value["metric_namespace"]
-      operator         = criteria.value["operator"]
-      threshold        = criteria.value["threshold"]
+      aggregation            = criteria.value["aggregation"]
+      metric_name            = criteria.value["metric_name"]
+      metric_namespace       = criteria.value["metric_namespace"]
+      operator               = criteria.value["operator"]
+      skip_metric_validation = criteria.value["skip_metric_validation"]
+      threshold              = criteria.value["threshold"]
 
       dynamic "dimension" {
         for_each = criteria.value.dimension
@@ -325,6 +330,7 @@ resource "azurerm_monitor_metric_alert" "this" {
       metric_name              = dynamic_criteria.value["metric_name"]
       metric_namespace         = dynamic_criteria.value["metric_namespace"]
       operator                 = dynamic_criteria.value["operator"]
+      skip_metric_validation   = dynamic_criteria.value["skip_metric_validation"]
 
       dynamic "dimension" {
         for_each = dynamic_criteria.value.dimension

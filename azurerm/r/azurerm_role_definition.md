@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -88,7 +88,7 @@ variable "scope" {
 }
 
 variable "permissions" {
-  description = "nested block: NestingList, min items: 1, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       actions          = list(string)
@@ -97,6 +97,7 @@ variable "permissions" {
       not_data_actions = set(string)
     }
   ))
+  default = []
 }
 
 variable "timeouts" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    lacework = ">= 0.2.7"
+    lacework = ">= 0.3.1"
   }
 }
 ```

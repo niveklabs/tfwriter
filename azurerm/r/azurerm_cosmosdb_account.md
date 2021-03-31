@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_cosmosdb_account" {
   source = "./modules/azurerm/r/azurerm_cosmosdb_account"
 
+  # analytical_storage_enabled - (optional) is a type of bool
+  analytical_storage_enabled = null
   # enable_automatic_failover - (optional) is a type of bool
   enable_automatic_failover = null
   # enable_free_tier - (optional) is a type of bool
@@ -91,6 +93,12 @@ module "azurerm_cosmosdb_account" {
 ### Variables
 
 ```terraform
+variable "analytical_storage_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "enable_automatic_failover" {
   description = "(optional)"
   type        = bool
@@ -230,6 +238,7 @@ variable "virtual_network_rule" {
 
 ```terraform
 resource "azurerm_cosmosdb_account" "this" {
+  analytical_storage_enabled        = var.analytical_storage_enabled
   enable_automatic_failover         = var.enable_automatic_failover
   enable_free_tier                  = var.enable_free_tier
   enable_multiple_write_locations   = var.enable_multiple_write_locations

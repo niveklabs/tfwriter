@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_log_setting" {
   brief_traffic_format = null
   # daemon_log - (optional) is a type of string
   daemon_log = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # expolicy_implicit_log - (optional) is a type of string
   expolicy_implicit_log = null
   # faz_override - (optional) is a type of string
@@ -84,6 +86,12 @@ variable "brief_traffic_format" {
 }
 
 variable "daemon_log" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -210,6 +218,7 @@ variable "custom_log_fields" {
 resource "fortios_log_setting" "this" {
   brief_traffic_format    = var.brief_traffic_format
   daemon_log              = var.daemon_log
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
   expolicy_implicit_log   = var.expolicy_implicit_log
   faz_override            = var.faz_override
   fwpolicy6_implicit_log  = var.fwpolicy6_implicit_log

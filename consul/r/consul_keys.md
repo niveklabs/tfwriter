@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    consul = ">= 2.10.1"
+    consul = ">= 2.11.0"
   }
 }
 ```

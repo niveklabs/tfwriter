@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```

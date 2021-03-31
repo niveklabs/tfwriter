@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,10 @@ module "fortios_switchcontroller_lldpprofile" {
   auto_isl_port_group = null
   # auto_isl_receive_timeout - (optional) is a type of number
   auto_isl_receive_timeout = null
+  # auto_mclag_icl - (optional) is a type of string
+  auto_mclag_icl = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # med_tlvs - (optional) is a type of string
   med_tlvs = null
   # n8021_tlvs - (optional) is a type of string
@@ -51,12 +55,20 @@ module "fortios_switchcontroller_lldpprofile" {
     subtype            = null
   }]
 
+  med_location_service = [{
+    name            = null
+    status          = null
+    sys_location_id = null
+  }]
+
   med_network_policy = [{
-    dscp     = null
-    name     = null
-    priority = null
-    status   = null
-    vlan     = null
+    assign_vlan = null
+    dscp        = null
+    name        = null
+    priority    = null
+    status      = null
+    vlan        = null
+    vlan_intf   = null
   }]
 }
 ```
@@ -87,6 +99,18 @@ variable "auto_isl_port_group" {
 variable "auto_isl_receive_timeout" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "auto_mclag_icl" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -127,15 +151,29 @@ variable "custom_tlvs" {
   default = []
 }
 
+variable "med_location_service" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name            = string
+      status          = string
+      sys_location_id = string
+    }
+  ))
+  default = []
+}
+
 variable "med_network_policy" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      dscp     = number
-      name     = string
-      priority = number
-      status   = string
-      vlan     = number
+      assign_vlan = string
+      dscp        = number
+      name        = string
+      priority    = number
+      status      = string
+      vlan        = number
+      vlan_intf   = string
     }
   ))
   default = []
@@ -152,6 +190,8 @@ resource "fortios_switchcontroller_lldpprofile" "this" {
   auto_isl_hello_timer     = var.auto_isl_hello_timer
   auto_isl_port_group      = var.auto_isl_port_group
   auto_isl_receive_timeout = var.auto_isl_receive_timeout
+  auto_mclag_icl           = var.auto_mclag_icl
+  dynamic_sort_subtable    = var.dynamic_sort_subtable
   med_tlvs                 = var.med_tlvs
   n8021_tlvs               = var.n8021_tlvs
   n8023_tlvs               = var.n8023_tlvs
@@ -167,14 +207,25 @@ resource "fortios_switchcontroller_lldpprofile" "this" {
     }
   }
 
+  dynamic "med_location_service" {
+    for_each = var.med_location_service
+    content {
+      name            = med_location_service.value["name"]
+      status          = med_location_service.value["status"]
+      sys_location_id = med_location_service.value["sys_location_id"]
+    }
+  }
+
   dynamic "med_network_policy" {
     for_each = var.med_network_policy
     content {
-      dscp     = med_network_policy.value["dscp"]
-      name     = med_network_policy.value["name"]
-      priority = med_network_policy.value["priority"]
-      status   = med_network_policy.value["status"]
-      vlan     = med_network_policy.value["vlan"]
+      assign_vlan = med_network_policy.value["assign_vlan"]
+      dscp        = med_network_policy.value["dscp"]
+      name        = med_network_policy.value["name"]
+      priority    = med_network_policy.value["priority"]
+      status      = med_network_policy.value["status"]
+      vlan        = med_network_policy.value["vlan"]
+      vlan_intf   = med_network_policy.value["vlan_intf"]
     }
   }
 
@@ -204,6 +255,11 @@ output "auto_isl_port_group" {
 output "auto_isl_receive_timeout" {
   description = "returns a number"
   value       = fortios_switchcontroller_lldpprofile.this.auto_isl_receive_timeout
+}
+
+output "auto_mclag_icl" {
+  description = "returns a string"
+  value       = fortios_switchcontroller_lldpprofile.this.auto_mclag_icl
 }
 
 output "id" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -146,6 +146,11 @@ output "id" {
 output "node_id" {
   description = "returns a string"
   value       = data.github_repository.this.node_id
+}
+
+output "pages" {
+  description = "returns a list of object"
+  value       = data.github_repository.this.pages
 }
 
 output "private" {

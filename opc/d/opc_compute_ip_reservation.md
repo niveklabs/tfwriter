@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    opc = ">= 1.4.0"
+    opc = ">= 1.4.1"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -38,7 +38,7 @@ module "datadog_logs_integration_pipeline" {
 
 ```terraform
 variable "is_enabled" {
-  description = "(optional)"
+  description = "(optional) - Boolean value to enable your pipeline."
   type        = bool
   default     = null
 }

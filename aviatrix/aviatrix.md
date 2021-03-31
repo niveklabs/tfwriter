@@ -12,7 +12,7 @@
 
 ```terraform
 provider "aviatrix" {
-  version = "2.17.2"
+  version = "2.18.2"
 
   # controller_ip - (required) is a type of string
   controller_ip = null
@@ -36,9 +36,15 @@ provider "aviatrix" {
 
 - [aviatrix_arm_peer](./r/aviatrix_arm_peer.md)
 
+- [aviatrix_aws_guard_duty](./r/aviatrix_aws_guard_duty.md)
+
 - [aviatrix_aws_peer](./r/aviatrix_aws_peer.md)
 
 - [aviatrix_aws_tgw](./r/aviatrix_aws_tgw.md)
+
+- [aviatrix_aws_tgw_connect](./r/aviatrix_aws_tgw_connect.md)
+
+- [aviatrix_aws_tgw_connect_peer](./r/aviatrix_aws_tgw_connect_peer.md)
 
 - [aviatrix_aws_tgw_directconnect](./r/aviatrix_aws_tgw_directconnect.md)
 
@@ -56,7 +62,15 @@ provider "aviatrix" {
 
 - [aviatrix_azure_spoke_native_peering](./r/aviatrix_azure_spoke_native_peering.md)
 
+- [aviatrix_azure_vng_conn](./r/aviatrix_azure_vng_conn.md)
+
+- [aviatrix_cloudwatch_agent](./r/aviatrix_cloudwatch_agent.md)
+
 - [aviatrix_controller_config](./r/aviatrix_controller_config.md)
+
+- [aviatrix_controller_private_oob](./r/aviatrix_controller_private_oob.md)
+
+- [aviatrix_datadog_agent](./r/aviatrix_datadog_agent.md)
 
 - [aviatrix_device_aws_tgw_attachment](./r/aviatrix_device_aws_tgw_attachment.md)
 
@@ -69,6 +83,8 @@ provider "aviatrix" {
 - [aviatrix_device_transit_gateway_attachment](./r/aviatrix_device_transit_gateway_attachment.md)
 
 - [aviatrix_device_virtual_wan_attachment](./r/aviatrix_device_virtual_wan_attachment.md)
+
+- [aviatrix_filebeat_forwarder](./r/aviatrix_filebeat_forwarder.md)
 
 - [aviatrix_firenet](./r/aviatrix_firenet.md)
 
@@ -92,13 +108,19 @@ provider "aviatrix" {
 
 - [aviatrix_gateway](./r/aviatrix_gateway.md)
 
+- [aviatrix_gateway_certificate_config](./r/aviatrix_gateway_certificate_config.md)
+
 - [aviatrix_gateway_dnat](./r/aviatrix_gateway_dnat.md)
 
 - [aviatrix_gateway_snat](./r/aviatrix_gateway_snat.md)
 
 - [aviatrix_geo_vpn](./r/aviatrix_geo_vpn.md)
 
+- [aviatrix_netflow_agent](./r/aviatrix_netflow_agent.md)
+
 - [aviatrix_periodic_ping](./r/aviatrix_periodic_ping.md)
+
+- [aviatrix_proxy_config](./r/aviatrix_proxy_config.md)
 
 - [aviatrix_rbac_group](./r/aviatrix_rbac_group.md)
 
@@ -107,6 +129,8 @@ provider "aviatrix" {
 - [aviatrix_rbac_group_permission_attachment](./r/aviatrix_rbac_group_permission_attachment.md)
 
 - [aviatrix_rbac_group_user_attachment](./r/aviatrix_rbac_group_user_attachment.md)
+
+- [aviatrix_remote_syslog](./r/aviatrix_remote_syslog.md)
 
 - [aviatrix_saml_endpoint](./r/aviatrix_saml_endpoint.md)
 
@@ -118,11 +142,15 @@ provider "aviatrix" {
 
 - [aviatrix_site2cloud](./r/aviatrix_site2cloud.md)
 
+- [aviatrix_splunk_logging](./r/aviatrix_splunk_logging.md)
+
 - [aviatrix_spoke_gateway](./r/aviatrix_spoke_gateway.md)
 
 - [aviatrix_spoke_transit_attachment](./r/aviatrix_spoke_transit_attachment.md)
 
 - [aviatrix_spoke_vpc](./r/aviatrix_spoke_vpc.md)
+
+- [aviatrix_sumologic_forwarder](./r/aviatrix_sumologic_forwarder.md)
 
 - [aviatrix_trans_peer](./r/aviatrix_trans_peer.md)
 
@@ -141,6 +169,8 @@ provider "aviatrix" {
 - [aviatrix_vgw_conn](./r/aviatrix_vgw_conn.md)
 
 - [aviatrix_vpc](./r/aviatrix_vpc.md)
+
+- [aviatrix_vpn_cert_download](./r/aviatrix_vpn_cert_download.md)
 
 - [aviatrix_vpn_profile](./r/aviatrix_vpn_profile.md)
 

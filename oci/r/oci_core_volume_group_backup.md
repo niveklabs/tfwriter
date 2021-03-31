@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -146,6 +146,11 @@ output "display_name" {
   value       = oci_core_volume_group_backup.this.display_name
 }
 
+output "expiration_time" {
+  description = "returns a string"
+  value       = oci_core_volume_group_backup.this.expiration_time
+}
+
 output "freeform_tags" {
   description = "returns a map of string"
   value       = oci_core_volume_group_backup.this.freeform_tags
@@ -164,6 +169,16 @@ output "size_in_gbs" {
 output "size_in_mbs" {
   description = "returns a string"
   value       = oci_core_volume_group_backup.this.size_in_mbs
+}
+
+output "source_type" {
+  description = "returns a string"
+  value       = oci_core_volume_group_backup.this.source_type
+}
+
+output "source_volume_group_backup_id" {
+  description = "returns a string"
+  value       = oci_core_volume_group_backup.this.source_volume_group_backup_id
 }
 
 output "state" {

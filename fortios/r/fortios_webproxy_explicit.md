@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_webproxy_explicit" {
   source = "./modules/fortios/r/fortios_webproxy_explicit"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ftp_incoming_port - (optional) is a type of string
   ftp_incoming_port = null
   # ftp_over_http - (optional) is a type of string
@@ -104,6 +106,12 @@ module "fortios_webproxy_explicit" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ftp_incoming_port" {
   description = "(optional)"
   type        = string
@@ -296,6 +304,7 @@ variable "pac_policy" {
 
 ```terraform
 resource "fortios_webproxy_explicit" "this" {
+  dynamic_sort_subtable     = var.dynamic_sort_subtable
   ftp_incoming_port         = var.ftp_incoming_port
   ftp_over_http             = var.ftp_over_http
   http_incoming_port        = var.http_incoming_port

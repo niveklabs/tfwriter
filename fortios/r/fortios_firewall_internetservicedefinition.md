@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_firewall_internetservicedefinition" {
   source = "./modules/fortios/r/fortios_firewall_internetservicedefinition"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
 
@@ -34,8 +36,13 @@ module "fortios_firewall_internetservicedefinition" {
     category_id = null
     name        = null
     port        = null
-    protocol    = null
-    seq_num     = null
+    port_range = [{
+      end_port   = null
+      id         = null
+      start_port = null
+    }]
+    protocol = null
+    seq_num  = null
   }]
 }
 ```
@@ -45,6 +52,12 @@ module "fortios_firewall_internetservicedefinition" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fosid" {
   description = "(optional)"
   type        = number
@@ -58,8 +71,15 @@ variable "entry" {
       category_id = number
       name        = string
       port        = number
-      protocol    = number
-      seq_num     = number
+      port_range = list(object(
+        {
+          end_port   = number
+          id         = number
+          start_port = number
+        }
+      ))
+      protocol = number
+      seq_num  = number
     }
   ))
   default = []
@@ -72,7 +92,8 @@ variable "entry" {
 
 ```terraform
 resource "fortios_firewall_internetservicedefinition" "this" {
-  fosid = var.fosid
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
 
   dynamic "entry" {
     for_each = var.entry
@@ -82,6 +103,16 @@ resource "fortios_firewall_internetservicedefinition" "this" {
       port        = entry.value["port"]
       protocol    = entry.value["protocol"]
       seq_num     = entry.value["seq_num"]
+
+      dynamic "port_range" {
+        for_each = entry.value.port_range
+        content {
+          end_port   = port_range.value["end_port"]
+          id         = port_range.value["id"]
+          start_port = port_range.value["start_port"]
+        }
+      }
+
     }
   }
 

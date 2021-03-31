@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nsxt = ">= 3.1.0"
+    nsxt = ">= 3.1.1"
   }
 }
 ```

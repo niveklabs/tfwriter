@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_budget_budget" {
 
   # amount - (required) is a type of number
   amount = null
+  # budget_processing_period_start_offset - (optional) is a type of number
+  budget_processing_period_start_offset = null
   # compartment_id - (required) is a type of string
   compartment_id = null
   # defined_tags - (optional) is a type of map of string
@@ -64,6 +66,12 @@ module "oci_budget_budget" {
 variable "amount" {
   description = "(required)"
   type        = number
+}
+
+variable "budget_processing_period_start_offset" {
+  description = "(optional)"
+  type        = number
+  default     = null
 }
 
 variable "compartment_id" {
@@ -137,16 +145,17 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_budget_budget" "this" {
-  amount                = var.amount
-  compartment_id        = var.compartment_id
-  defined_tags          = var.defined_tags
-  description           = var.description
-  display_name          = var.display_name
-  freeform_tags         = var.freeform_tags
-  reset_period          = var.reset_period
-  target_compartment_id = var.target_compartment_id
-  target_type           = var.target_type
-  targets               = var.targets
+  amount                                = var.amount
+  budget_processing_period_start_offset = var.budget_processing_period_start_offset
+  compartment_id                        = var.compartment_id
+  defined_tags                          = var.defined_tags
+  description                           = var.description
+  display_name                          = var.display_name
+  freeform_tags                         = var.freeform_tags
+  reset_period                          = var.reset_period
+  target_compartment_id                 = var.target_compartment_id
+  target_type                           = var.target_type
+  targets                               = var.targets
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -173,6 +182,11 @@ output "actual_spend" {
 output "alert_rule_count" {
   description = "returns a number"
   value       = oci_budget_budget.this.alert_rule_count
+}
+
+output "budget_processing_period_start_offset" {
+  description = "returns a number"
+  value       = oci_budget_budget.this.budget_processing_period_start_offset
 }
 
 output "defined_tags" {

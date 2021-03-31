@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -33,14 +33,16 @@ module "aws_appautoscaling_scheduled_action" {
   name = null
   # resource_id - (required) is a type of string
   resource_id = null
-  # scalable_dimension - (optional) is a type of string
+  # scalable_dimension - (required) is a type of string
   scalable_dimension = null
-  # schedule - (optional) is a type of string
+  # schedule - (required) is a type of string
   schedule = null
   # service_namespace - (required) is a type of string
   service_namespace = null
   # start_time - (optional) is a type of string
   start_time = null
+  # timezone - (optional) is a type of string
+  timezone = null
 
   scalable_target_action = [{
     max_capacity = null
@@ -71,15 +73,13 @@ variable "resource_id" {
 }
 
 variable "scalable_dimension" {
-  description = "(optional)"
+  description = "(required)"
   type        = string
-  default     = null
 }
 
 variable "schedule" {
-  description = "(optional)"
+  description = "(required)"
   type        = string
-  default     = null
 }
 
 variable "service_namespace" {
@@ -93,15 +93,20 @@ variable "start_time" {
   default     = null
 }
 
+variable "timezone" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "scalable_target_action" {
-  description = "nested block: NestingList, min items: 0, max items: 1"
+  description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
     {
-      max_capacity = number
-      min_capacity = number
+      max_capacity = string
+      min_capacity = string
     }
   ))
-  default = []
 }
 ```
 
@@ -118,6 +123,7 @@ resource "aws_appautoscaling_scheduled_action" "this" {
   schedule           = var.schedule
   service_namespace  = var.service_namespace
   start_time         = var.start_time
+  timezone           = var.timezone
 
   dynamic "scalable_target_action" {
     for_each = var.scalable_target_action

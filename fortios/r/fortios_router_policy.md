@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,12 +33,16 @@ module "fortios_router_policy" {
   comments = null
   # dst_negate - (optional) is a type of string
   dst_negate = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # end_port - (optional) is a type of number
   end_port = null
   # end_source_port - (optional) is a type of number
   end_source_port = null
   # gateway - (optional) is a type of string
   gateway = null
+  # input_device_negate - (optional) is a type of string
+  input_device_negate = null
   # output_device - (optional) is a type of string
   output_device = null
   # protocol - (optional) is a type of number
@@ -68,6 +72,14 @@ module "fortios_router_policy" {
 
   input_device = [{
     name = null
+  }]
+
+  internet_service_custom = [{
+    name = null
+  }]
+
+  internet_service_id = [{
+    id = null
   }]
 
   src = [{
@@ -103,6 +115,12 @@ variable "dst_negate" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "end_port" {
   description = "(optional)"
   type        = number
@@ -116,6 +134,12 @@ variable "end_source_port" {
 }
 
 variable "gateway" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "input_device_negate" {
   description = "(optional)"
   type        = string
   default     = null
@@ -205,6 +229,26 @@ variable "input_device" {
   default = []
 }
 
+variable "internet_service_custom" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
+variable "internet_service_id" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+
 variable "src" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -232,21 +276,23 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_router_policy" "this" {
-  action            = var.action
-  comments          = var.comments
-  dst_negate        = var.dst_negate
-  end_port          = var.end_port
-  end_source_port   = var.end_source_port
-  gateway           = var.gateway
-  output_device     = var.output_device
-  protocol          = var.protocol
-  seq_num           = var.seq_num
-  src_negate        = var.src_negate
-  start_port        = var.start_port
-  start_source_port = var.start_source_port
-  status            = var.status
-  tos               = var.tos
-  tos_mask          = var.tos_mask
+  action                = var.action
+  comments              = var.comments
+  dst_negate            = var.dst_negate
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  end_port              = var.end_port
+  end_source_port       = var.end_source_port
+  gateway               = var.gateway
+  input_device_negate   = var.input_device_negate
+  output_device         = var.output_device
+  protocol              = var.protocol
+  seq_num               = var.seq_num
+  src_negate            = var.src_negate
+  start_port            = var.start_port
+  start_source_port     = var.start_source_port
+  status                = var.status
+  tos                   = var.tos
+  tos_mask              = var.tos_mask
 
   dynamic "dst" {
     for_each = var.dst
@@ -266,6 +312,20 @@ resource "fortios_router_policy" "this" {
     for_each = var.input_device
     content {
       name = input_device.value["name"]
+    }
+  }
+
+  dynamic "internet_service_custom" {
+    for_each = var.internet_service_custom
+    content {
+      name = internet_service_custom.value["name"]
+    }
+  }
+
+  dynamic "internet_service_id" {
+    for_each = var.internet_service_id
+    content {
+      id = internet_service_id.value["id"]
     }
   }
 
@@ -319,6 +379,11 @@ output "gateway" {
 output "id" {
   description = "returns a string"
   value       = fortios_router_policy.this.id
+}
+
+output "input_device_negate" {
+  description = "returns a string"
+  value       = fortios_router_policy.this.input_device_negate
 }
 
 output "output_device" {

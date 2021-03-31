@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,8 +29,12 @@ module "fortios_firewall_DoSpolicy" {
 
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # interface - (required) is a type of string
   interface = null
+  # name - (optional) is a type of string
+  name = null
   # policyid - (optional) is a type of number
   policyid = null
   # status - (optional) is a type of string
@@ -73,9 +77,21 @@ variable "comments" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "interface" {
   description = "(required)"
   type        = string
+}
+
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "policyid" {
@@ -143,10 +159,12 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_DoSpolicy" "this" {
-  comments  = var.comments
-  interface = var.interface
-  policyid  = var.policyid
-  status    = var.status
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  interface             = var.interface
+  name                  = var.name
+  policyid              = var.policyid
+  status                = var.status
 
   dynamic "anomaly" {
     for_each = var.anomaly
@@ -195,6 +213,11 @@ resource "fortios_firewall_DoSpolicy" "this" {
 output "id" {
   description = "returns a string"
   value       = fortios_firewall_DoSpolicy.this.id
+}
+
+output "name" {
+  description = "returns a string"
+  value       = fortios_firewall_DoSpolicy.this.name
 }
 
 output "policyid" {

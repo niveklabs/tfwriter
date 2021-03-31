@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    tls = ">= 3.0.0"
+    tls = ">= 3.1.0"
   }
 }
 ```

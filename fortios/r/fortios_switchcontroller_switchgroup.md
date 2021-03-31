@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,11 +29,16 @@ module "fortios_switchcontroller_switchgroup" {
 
   # description - (optional) is a type of string
   description = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # fortilink - (optional) is a type of string
+  fortilink = null
   # name - (optional) is a type of string
   name = null
 
   members = [{
-    name = null
+    name      = null
+    switch_id = null
   }]
 }
 ```
@@ -49,6 +54,18 @@ variable "description" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fortilink" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -59,7 +76,8 @@ variable "members" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      name = string
+      name      = string
+      switch_id = string
     }
   ))
   default = []
@@ -72,13 +90,16 @@ variable "members" {
 
 ```terraform
 resource "fortios_switchcontroller_switchgroup" "this" {
-  description = var.description
-  name        = var.name
+  description           = var.description
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fortilink             = var.fortilink
+  name                  = var.name
 
   dynamic "members" {
     for_each = var.members
     content {
-      name = members.value["name"]
+      name      = members.value["name"]
+      switch_id = members.value["switch_id"]
     }
   }
 
@@ -93,6 +114,11 @@ resource "fortios_switchcontroller_switchgroup" "this" {
 output "description" {
   description = "returns a string"
   value       = fortios_switchcontroller_switchgroup.this.description
+}
+
+output "fortilink" {
+  description = "returns a string"
+  value       = fortios_switchcontroller_switchgroup.this.fortilink
 }
 
 output "id" {

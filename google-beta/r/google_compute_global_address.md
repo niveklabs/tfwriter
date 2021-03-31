@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -103,7 +103,7 @@ variable "network" {
 }
 
 variable "prefix_length" {
-  description = "(optional) - The prefix length of the IP range. If not present, it means the\naddress field is a single IP address.\n\nThis field is not applicable to addresses with addressType=EXTERNAL."
+  description = "(optional) - The prefix length of the IP range. If not present, it means the\naddress field is a single IP address.\n\nThis field is not applicable to addresses with addressType=EXTERNAL,\nor addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT"
   type        = number
   default     = null
 }
@@ -115,7 +115,7 @@ variable "project" {
 }
 
 variable "purpose" {
-  description = "(optional) - The purpose of the resource. For global internal addresses it can be\n\n* VPC_PEERING - for peer networks\n\nThis should only be set when using an Internal address. Possible values: [\"VPC_PEERING\"]"
+  description = "(optional) - The purpose of the resource. For global internal addresses it can be\n\n* VPC_PEERING - for peer networks\n* PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks\n\nThis should only be set when using an Internal address. Possible values: [\"VPC_PEERING\", \"PRIVATE_SERVICE_CONNECT\"]"
   type        = string
   default     = null
 }

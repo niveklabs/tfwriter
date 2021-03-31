@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -51,12 +51,18 @@ module "fortios_user_setting" {
   auth_src_mac = null
   # auth_ssl_allow_renegotiation - (optional) is a type of string
   auth_ssl_allow_renegotiation = null
+  # auth_ssl_min_proto_version - (optional) is a type of string
+  auth_ssl_min_proto_version = null
   # auth_timeout - (optional) is a type of number
   auth_timeout = null
   # auth_timeout_type - (optional) is a type of string
   auth_timeout_type = null
   # auth_type - (optional) is a type of string
   auth_type = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # per_policy_disclaimer - (optional) is a type of string
+  per_policy_disclaimer = null
   # radius_ses_timeout_act - (optional) is a type of string
   radius_ses_timeout_act = null
 
@@ -145,6 +151,12 @@ variable "auth_ssl_allow_renegotiation" {
   default     = null
 }
 
+variable "auth_ssl_min_proto_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "auth_timeout" {
   description = "(optional)"
   type        = number
@@ -158,6 +170,18 @@ variable "auth_timeout_type" {
 }
 
 variable "auth_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "per_policy_disclaimer" {
   description = "(optional)"
   type        = string
   default     = null
@@ -200,9 +224,12 @@ resource "fortios_user_setting" "this" {
   auth_secure_http             = var.auth_secure_http
   auth_src_mac                 = var.auth_src_mac
   auth_ssl_allow_renegotiation = var.auth_ssl_allow_renegotiation
+  auth_ssl_min_proto_version   = var.auth_ssl_min_proto_version
   auth_timeout                 = var.auth_timeout
   auth_timeout_type            = var.auth_timeout_type
   auth_type                    = var.auth_type
+  dynamic_sort_subtable        = var.dynamic_sort_subtable
+  per_policy_disclaimer        = var.per_policy_disclaimer
   radius_ses_timeout_act       = var.radius_ses_timeout_act
 
   dynamic "auth_ports" {
@@ -282,6 +309,11 @@ output "auth_ssl_allow_renegotiation" {
   value       = fortios_user_setting.this.auth_ssl_allow_renegotiation
 }
 
+output "auth_ssl_min_proto_version" {
+  description = "returns a string"
+  value       = fortios_user_setting.this.auth_ssl_min_proto_version
+}
+
 output "auth_timeout" {
   description = "returns a number"
   value       = fortios_user_setting.this.auth_timeout
@@ -300,6 +332,11 @@ output "auth_type" {
 output "id" {
   description = "returns a string"
   value       = fortios_user_setting.this.id
+}
+
+output "per_policy_disclaimer" {
+  description = "returns a string"
+  value       = fortios_user_setting.this.per_policy_disclaimer
 }
 
 output "radius_ses_timeout_act" {

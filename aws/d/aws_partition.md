@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -64,6 +64,11 @@ output "id" {
 output "partition" {
   description = "returns a string"
   value       = data.aws_partition.this.partition
+}
+
+output "reverse_dns_prefix" {
+  description = "returns a string"
+  value       = data.aws_partition.this.reverse_dns_prefix
 }
 
 output "this" {

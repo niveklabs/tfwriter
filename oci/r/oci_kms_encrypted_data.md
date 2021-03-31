@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -31,8 +31,12 @@ module "oci_kms_encrypted_data" {
   associated_data = {}
   # crypto_endpoint - (required) is a type of string
   crypto_endpoint = null
+  # encryption_algorithm - (optional) is a type of string
+  encryption_algorithm = null
   # key_id - (required) is a type of string
   key_id = null
+  # key_version_id - (optional) is a type of string
+  key_version_id = null
   # logging_context - (optional) is a type of map of string
   logging_context = {}
   # plaintext - (required) is a type of string
@@ -62,9 +66,21 @@ variable "crypto_endpoint" {
   type        = string
 }
 
+variable "encryption_algorithm" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "key_id" {
   description = "(required)"
   type        = string
+}
+
+variable "key_version_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "logging_context" {
@@ -97,11 +113,13 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_kms_encrypted_data" "this" {
-  associated_data = var.associated_data
-  crypto_endpoint = var.crypto_endpoint
-  key_id          = var.key_id
-  logging_context = var.logging_context
-  plaintext       = var.plaintext
+  associated_data      = var.associated_data
+  crypto_endpoint      = var.crypto_endpoint
+  encryption_algorithm = var.encryption_algorithm
+  key_id               = var.key_id
+  key_version_id       = var.key_version_id
+  logging_context      = var.logging_context
+  plaintext            = var.plaintext
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -125,9 +143,19 @@ output "ciphertext" {
   value       = oci_kms_encrypted_data.this.ciphertext
 }
 
+output "encryption_algorithm" {
+  description = "returns a string"
+  value       = oci_kms_encrypted_data.this.encryption_algorithm
+}
+
 output "id" {
   description = "returns a string"
   value       = oci_kms_encrypted_data.this.id
+}
+
+output "key_version_id" {
+  description = "returns a string"
+  value       = oci_kms_encrypted_data.this.key_version_id
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_ips_rule" {
   application = null
   # date - (optional) is a type of number
   date = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # group - (optional) is a type of string
   group = null
   # location - (optional) is a type of string
@@ -84,6 +86,12 @@ variable "application" {
 variable "date" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -172,20 +180,21 @@ variable "metadata" {
 
 ```terraform
 resource "fortios_ips_rule" "this" {
-  action      = var.action
-  application = var.application
-  date        = var.date
-  group       = var.group
-  location    = var.location
-  log         = var.log
-  log_packet  = var.log_packet
-  name        = var.name
-  os          = var.os
-  rev         = var.rev
-  rule_id     = var.rule_id
-  service     = var.service
-  severity    = var.severity
-  status      = var.status
+  action                = var.action
+  application           = var.application
+  date                  = var.date
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  group                 = var.group
+  location              = var.location
+  log                   = var.log
+  log_packet            = var.log_packet
+  name                  = var.name
+  os                    = var.os
+  rev                   = var.rev
+  rule_id               = var.rule_id
+  service               = var.service
+  severity              = var.severity
+  status                = var.status
 
   dynamic "metadata" {
     for_each = var.metadata

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -123,6 +123,11 @@ resource "alicloud_privatelink_vpc_endpoint_service" "this" {
 ### Outputs
 
 ```terraform
+output "connect_bandwidth" {
+  description = "returns a number"
+  value       = alicloud_privatelink_vpc_endpoint_service.this.connect_bandwidth
+}
+
 output "id" {
   description = "returns a string"
   value       = alicloud_privatelink_vpc_endpoint_service.this.id

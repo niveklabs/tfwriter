@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -79,6 +79,16 @@ data "aws_storagegateway_local_disk" "this" {
 output "disk_id" {
   description = "returns a string"
   value       = data.aws_storagegateway_local_disk.this.disk_id
+}
+
+output "disk_node" {
+  description = "returns a string"
+  value       = data.aws_storagegateway_local_disk.this.disk_node
+}
+
+output "disk_path" {
+  description = "returns a string"
+  value       = data.aws_storagegateway_local_disk.this.disk_path
 }
 
 output "id" {

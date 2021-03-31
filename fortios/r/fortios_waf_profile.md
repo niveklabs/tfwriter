@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_waf_profile" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extended_log - (optional) is a type of string
   extended_log = null
   # external - (optional) is a type of string
@@ -222,6 +224,12 @@ module "fortios_waf_profile" {
 
 ```terraform
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -504,10 +512,11 @@ variable "url_access" {
 
 ```terraform
 resource "fortios_waf_profile" "this" {
-  comment      = var.comment
-  extended_log = var.extended_log
-  external     = var.external
-  name         = var.name
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  extended_log          = var.extended_log
+  external              = var.external
+  name                  = var.name
 
   dynamic "address_list" {
     for_each = var.address_list

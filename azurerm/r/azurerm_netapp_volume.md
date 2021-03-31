@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "azurerm_netapp_volume" {
 
   # account_name - (required) is a type of string
   account_name = null
+  # create_from_snapshot_resource_id - (optional) is a type of string
+  create_from_snapshot_resource_id = null
   # location - (required) is a type of string
   location = null
   # name - (required) is a type of string
@@ -49,6 +51,13 @@ module "azurerm_netapp_volume" {
   tags = {}
   # volume_path - (required) is a type of string
   volume_path = null
+
+  data_protection_replication = [{
+    endpoint_type             = null
+    remote_volume_location    = null
+    remote_volume_resource_id = null
+    replication_frequency     = null
+  }]
 
   export_policy_rule = [{
     allowed_clients   = []
@@ -78,6 +87,12 @@ module "azurerm_netapp_volume" {
 variable "account_name" {
   description = "(required)"
   type        = string
+}
+
+variable "create_from_snapshot_resource_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "location" {
@@ -132,6 +147,19 @@ variable "volume_path" {
   type        = string
 }
 
+variable "data_protection_replication" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      endpoint_type             = string
+      remote_volume_location    = string
+      remote_volume_resource_id = string
+      replication_frequency     = string
+    }
+  ))
+  default = []
+}
+
 variable "export_policy_rule" {
   description = "nested block: NestingList, min items: 0, max items: 5"
   type = set(object(
@@ -169,17 +197,28 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_netapp_volume" "this" {
-  account_name        = var.account_name
-  location            = var.location
-  name                = var.name
-  pool_name           = var.pool_name
-  protocols           = var.protocols
-  resource_group_name = var.resource_group_name
-  service_level       = var.service_level
-  storage_quota_in_gb = var.storage_quota_in_gb
-  subnet_id           = var.subnet_id
-  tags                = var.tags
-  volume_path         = var.volume_path
+  account_name                     = var.account_name
+  create_from_snapshot_resource_id = var.create_from_snapshot_resource_id
+  location                         = var.location
+  name                             = var.name
+  pool_name                        = var.pool_name
+  protocols                        = var.protocols
+  resource_group_name              = var.resource_group_name
+  service_level                    = var.service_level
+  storage_quota_in_gb              = var.storage_quota_in_gb
+  subnet_id                        = var.subnet_id
+  tags                             = var.tags
+  volume_path                      = var.volume_path
+
+  dynamic "data_protection_replication" {
+    for_each = var.data_protection_replication
+    content {
+      endpoint_type             = data_protection_replication.value["endpoint_type"]
+      remote_volume_location    = data_protection_replication.value["remote_volume_location"]
+      remote_volume_resource_id = data_protection_replication.value["remote_volume_resource_id"]
+      replication_frequency     = data_protection_replication.value["replication_frequency"]
+    }
+  }
 
   dynamic "export_policy_rule" {
     for_each = var.export_policy_rule
@@ -213,6 +252,11 @@ resource "azurerm_netapp_volume" "this" {
 ### Outputs
 
 ```terraform
+output "create_from_snapshot_resource_id" {
+  description = "returns a string"
+  value       = azurerm_netapp_volume.this.create_from_snapshot_resource_id
+}
+
 output "id" {
   description = "returns a string"
   value       = azurerm_netapp_volume.this.id

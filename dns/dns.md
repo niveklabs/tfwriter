@@ -12,7 +12,7 @@
 
 ```terraform
 provider "dns" {
-  version = "3.0.0"
+  version = "3.1.0"
 
   # NestingList
   update {
@@ -32,6 +32,18 @@ provider "dns" {
     timeout = null
     # transport - (optional) is a type of string
     transport = null
+
+    # NestingList
+    gssapi {
+      # keytab - (optional) is a type of string
+      keytab = null
+      # password - (optional) is a type of string
+      password = null
+      # realm - (required) is a type of string
+      realm = null
+      # username - (optional) is a type of string
+      username = null
+    }
   }
 }
 ```

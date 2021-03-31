@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    brightbox = ">= 1.5.0"
+    brightbox = ">= 2.0.3"
   }
 }
 ```
@@ -59,7 +59,7 @@ module "brightbox_server" {
 
 ```terraform
 variable "disk_encrypted" {
-  description = "(optional) - Is true if the server has been built with an encrpyted disk"
+  description = "(optional) - Is true if the server has been built with an encrypted disk"
   type        = bool
   default     = null
 }

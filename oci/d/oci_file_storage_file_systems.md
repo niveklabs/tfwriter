@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -33,6 +33,10 @@ module "oci_file_storage_file_systems" {
   compartment_id = null
   # display_name - (optional) is a type of string
   display_name = null
+  # parent_file_system_id - (optional) is a type of string
+  parent_file_system_id = null
+  # source_snapshot_id - (optional) is a type of string
+  source_snapshot_id = null
   # state - (optional) is a type of string
   state = null
 
@@ -65,6 +69,18 @@ variable "display_name" {
   default     = null
 }
 
+variable "parent_file_system_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "source_snapshot_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "state" {
   description = "(optional)"
   type        = string
@@ -90,10 +106,12 @@ variable "filter" {
 
 ```terraform
 data "oci_file_storage_file_systems" "this" {
-  availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  display_name        = var.display_name
-  state               = var.state
+  availability_domain   = var.availability_domain
+  compartment_id        = var.compartment_id
+  display_name          = var.display_name
+  parent_file_system_id = var.parent_file_system_id
+  source_snapshot_id    = var.source_snapshot_id
+  state                 = var.state
 
   dynamic "filter" {
     for_each = var.filter

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -105,6 +105,11 @@ output "arn" {
   value       = data.aws_mq_broker.this.arn
 }
 
+output "authentication_strategy" {
+  description = "returns a string"
+  value       = data.aws_mq_broker.this.authentication_strategy
+}
+
 output "auto_minor_version_upgrade" {
   description = "returns a bool"
   value       = data.aws_mq_broker.this.auto_minor_version_upgrade
@@ -160,6 +165,11 @@ output "instances" {
   value       = data.aws_mq_broker.this.instances
 }
 
+output "ldap_server_metadata" {
+  description = "returns a list of object"
+  value       = data.aws_mq_broker.this.ldap_server_metadata
+}
+
 output "maintenance_window_start_time" {
   description = "returns a list of object"
   value       = data.aws_mq_broker.this.maintenance_window_start_time
@@ -173,6 +183,11 @@ output "publicly_accessible" {
 output "security_groups" {
   description = "returns a set of string"
   value       = data.aws_mq_broker.this.security_groups
+}
+
+output "storage_type" {
+  description = "returns a string"
+  value       = data.aws_mq_broker.this.storage_type
 }
 
 output "subnet_ids" {

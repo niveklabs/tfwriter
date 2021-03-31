@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -88,6 +88,11 @@ data "azurerm_lb_backend_address_pool" "this" {
 ### Outputs
 
 ```terraform
+output "backend_address" {
+  description = "returns a list of object"
+  value       = data.azurerm_lb_backend_address_pool.this.backend_address
+}
+
 output "backend_ip_configurations" {
   description = "returns a list of object"
   value       = data.azurerm_lb_backend_address_pool.this.backend_ip_configurations
@@ -96,6 +101,16 @@ output "backend_ip_configurations" {
 output "id" {
   description = "returns a string"
   value       = data.azurerm_lb_backend_address_pool.this.id
+}
+
+output "load_balancing_rules" {
+  description = "returns a list of string"
+  value       = data.azurerm_lb_backend_address_pool.this.load_balancing_rules
+}
+
+output "outbound_rules" {
+  description = "returns a list of string"
+  value       = data.azurerm_lb_backend_address_pool.this.outbound_rules
 }
 
 output "this" {

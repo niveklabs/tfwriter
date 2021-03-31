@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,10 +33,14 @@ module "fortios_firewall_addrgrp" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # exclude - (optional) is a type of string
   exclude = null
   # name - (required) is a type of string
   name = null
+  # type - (optional) is a type of string
+  type = null
   # uuid - (optional) is a type of string
   uuid = null
   # visibility - (optional) is a type of string
@@ -83,6 +87,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "exclude" {
   description = "(optional)"
   type        = string
@@ -92,6 +102,12 @@ variable "exclude" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "type" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "uuid" {
@@ -148,13 +164,15 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_addrgrp" "this" {
-  allow_routing = var.allow_routing
-  color         = var.color
-  comment       = var.comment
-  exclude       = var.exclude
-  name          = var.name
-  uuid          = var.uuid
-  visibility    = var.visibility
+  allow_routing         = var.allow_routing
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  exclude               = var.exclude
+  name                  = var.name
+  type                  = var.type
+  uuid                  = var.uuid
+  visibility            = var.visibility
 
   dynamic "exclude_member" {
     for_each = var.exclude_member
@@ -212,6 +230,11 @@ output "exclude" {
 output "id" {
   description = "returns a string"
   value       = fortios_firewall_addrgrp.this.id
+}
+
+output "type" {
+  description = "returns a string"
+  value       = fortios_firewall_addrgrp.this.type
 }
 
 output "uuid" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -70,6 +70,7 @@ module "aws_cognito_user_pool" {
   }]
 
   email_configuration = [{
+    configuration_set      = null
     email_sending_account  = null
     from_email_address     = null
     reply_to_email_address = null
@@ -253,6 +254,7 @@ variable "email_configuration" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      configuration_set      = string
       email_sending_account  = string
       from_email_address     = string
       reply_to_email_address = string
@@ -439,6 +441,7 @@ resource "aws_cognito_user_pool" "this" {
   dynamic "email_configuration" {
     for_each = var.email_configuration
     content {
+      configuration_set      = email_configuration.value["configuration_set"]
       email_sending_account  = email_configuration.value["email_sending_account"]
       from_email_address     = email_configuration.value["from_email_address"]
       reply_to_email_address = email_configuration.value["reply_to_email_address"]

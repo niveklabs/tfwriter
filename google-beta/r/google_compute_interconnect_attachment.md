@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "google_compute_interconnect_attachment" {
   edge_availability_domain = null
   # interconnect - (optional) is a type of string
   interconnect = null
+  # mtu - (optional) is a type of number
+  mtu = null
   # name - (required) is a type of string
   name = null
   # project - (optional) is a type of string
@@ -101,6 +103,12 @@ variable "interconnect" {
   default     = null
 }
 
+variable "mtu" {
+  description = "(optional) - Maximum Transmission Unit (MTU), in bytes, of packets passing through\nthis interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440."
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(required) - Name of the resource. Provided by the client when the resource is created. The\nname must be 1-63 characters long, and comply with RFC1035. Specifically, the\nname must be 1-63 characters long and match the regular expression\n'[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a\nlowercase letter, and all following characters must be a dash, lowercase\nletter, or digit, except the last character, which cannot be a dash."
   type        = string
@@ -160,6 +168,7 @@ resource "google_compute_interconnect_attachment" "this" {
   description              = var.description
   edge_availability_domain = var.edge_availability_domain
   interconnect             = var.interconnect
+  mtu                      = var.mtu
   name                     = var.name
   project                  = var.project
   region                   = var.region
@@ -217,6 +226,11 @@ output "google_reference_id" {
 output "id" {
   description = "returns a string"
   value       = google_compute_interconnect_attachment.this.id
+}
+
+output "mtu" {
+  description = "returns a number"
+  value       = google_compute_interconnect_attachment.this.mtu
 }
 
 output "pairing_key" {

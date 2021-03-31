@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    grafana = ">= 1.8.1"
+    grafana = ">= 1.9.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "grafana_alert_notification" {
   source = "./modules/grafana/r/grafana_alert_notification"
 
+  # disable_resolve_message - (optional) is a type of bool
+  disable_resolve_message = null
   # frequency - (optional) is a type of string
   frequency = null
   # is_default - (optional) is a type of bool
@@ -49,6 +51,12 @@ module "grafana_alert_notification" {
 ### Variables
 
 ```terraform
+variable "disable_resolve_message" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "frequency" {
   description = "(optional)"
   type        = string
@@ -96,13 +104,14 @@ variable "uid" {
 
 ```terraform
 resource "grafana_alert_notification" "this" {
-  frequency     = var.frequency
-  is_default    = var.is_default
-  name          = var.name
-  send_reminder = var.send_reminder
-  settings      = var.settings
-  type          = var.type
-  uid           = var.uid
+  disable_resolve_message = var.disable_resolve_message
+  frequency               = var.frequency
+  is_default              = var.is_default
+  name                    = var.name
+  send_reminder           = var.send_reminder
+  settings                = var.settings
+  type                    = var.type
+  uid                     = var.uid
 }
 ```
 

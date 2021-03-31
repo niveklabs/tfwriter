@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    external = ">= 2.0.0"
+    external = ">= 2.1.0"
   }
 }
 ```

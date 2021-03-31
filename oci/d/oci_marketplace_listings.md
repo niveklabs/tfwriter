@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -35,8 +35,12 @@ module "oci_marketplace_listings" {
   is_featured = null
   # listing_id - (optional) is a type of string
   listing_id = null
+  # listing_types - (optional) is a type of list of string
+  listing_types = []
   # name - (optional) is a type of list of string
   name = []
+  # operating_systems - (optional) is a type of list of string
+  operating_systems = []
   # package_type - (optional) is a type of string
   package_type = null
   # pricing - (optional) is a type of list of string
@@ -81,7 +85,19 @@ variable "listing_id" {
   default     = null
 }
 
+variable "listing_types" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "name" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
+variable "operating_systems" {
   description = "(optional)"
   type        = list(string)
   default     = null
@@ -124,14 +140,16 @@ variable "filter" {
 
 ```terraform
 data "oci_marketplace_listings" "this" {
-  category       = var.category
-  compartment_id = var.compartment_id
-  is_featured    = var.is_featured
-  listing_id     = var.listing_id
-  name           = var.name
-  package_type   = var.package_type
-  pricing        = var.pricing
-  publisher_id   = var.publisher_id
+  category          = var.category
+  compartment_id    = var.compartment_id
+  is_featured       = var.is_featured
+  listing_id        = var.listing_id
+  listing_types     = var.listing_types
+  name              = var.name
+  operating_systems = var.operating_systems
+  package_type      = var.package_type
+  pricing           = var.pricing
+  publisher_id      = var.publisher_id
 
   dynamic "filter" {
     for_each = var.filter

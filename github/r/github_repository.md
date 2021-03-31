@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -71,6 +71,18 @@ module "github_repository" {
   visibility = null
   # vulnerability_alerts - (optional) is a type of bool
   vulnerability_alerts = null
+
+  pages = [{
+    cname      = null
+    custom_404 = null
+    html_url   = null
+    source = [{
+      branch = null
+      path   = null
+    }]
+    status = null
+    url    = null
+  }]
 
   template = [{
     owner      = null
@@ -215,6 +227,26 @@ variable "vulnerability_alerts" {
   default     = null
 }
 
+variable "pages" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      cname      = string
+      custom_404 = bool
+      html_url   = string
+      source = list(object(
+        {
+          branch = string
+          path   = string
+        }
+      ))
+      status = string
+      url    = string
+    }
+  ))
+  default = []
+}
+
 variable "template" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -255,6 +287,22 @@ resource "github_repository" "this" {
   topics                 = var.topics
   visibility             = var.visibility
   vulnerability_alerts   = var.vulnerability_alerts
+
+  dynamic "pages" {
+    for_each = var.pages
+    content {
+      cname = pages.value["cname"]
+
+      dynamic "source" {
+        for_each = pages.value.source
+        content {
+          branch = source.value["branch"]
+          path   = source.value["path"]
+        }
+      }
+
+    }
+  }
 
   dynamic "template" {
     for_each = var.template

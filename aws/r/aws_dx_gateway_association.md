@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_dx_gateway_association" {
   dx_gateway_id = null
   # proposal_id - (optional) is a type of string
   proposal_id = null
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = null
 
   timeouts = [{
     create = null
@@ -80,6 +82,12 @@ variable "proposal_id" {
   default     = null
 }
 
+variable "vpn_gateway_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -104,6 +112,7 @@ resource "aws_dx_gateway_association" "this" {
   associated_gateway_owner_account_id = var.associated_gateway_owner_account_id
   dx_gateway_id                       = var.dx_gateway_id
   proposal_id                         = var.proposal_id
+  vpn_gateway_id                      = var.vpn_gateway_id
 
   dynamic "timeouts" {
     for_each = var.timeouts

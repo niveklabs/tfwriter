@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -70,14 +70,20 @@ module "oci_core_instance_configuration" {
     instance_type = null
     launch_details = [{
       agent_config = [{
-        is_management_disabled = null
-        is_monitoring_disabled = null
+        are_all_plugins_disabled = null
+        is_management_disabled   = null
+        is_monitoring_disabled   = null
+        plugins_config = [{
+          desired_state = null
+          name          = null
+        }]
       }]
       availability_config = [{
         recovery_action = null
       }]
-      availability_domain = null
-      compartment_id      = null
+      availability_domain     = null
+      capacity_reservation_id = null
+      compartment_id          = null
       create_vnic_details = [{
         assign_public_ip       = null
         defined_tags           = {}
@@ -109,7 +115,11 @@ module "oci_core_instance_configuration" {
         network_type                        = null
         remote_data_volume_type             = null
       }]
-      metadata                     = {}
+      metadata = {}
+      platform_config = [{
+        numa_nodes_per_socket = null
+        type                  = null
+      }]
       preferred_maintenance_action = null
       shape                        = null
       shape_config = [{
@@ -232,8 +242,15 @@ variable "instance_details" {
         {
           agent_config = list(object(
             {
-              is_management_disabled = bool
-              is_monitoring_disabled = bool
+              are_all_plugins_disabled = bool
+              is_management_disabled   = bool
+              is_monitoring_disabled   = bool
+              plugins_config = list(object(
+                {
+                  desired_state = string
+                  name          = string
+                }
+              ))
             }
           ))
           availability_config = list(object(
@@ -241,8 +258,9 @@ variable "instance_details" {
               recovery_action = string
             }
           ))
-          availability_domain = string
-          compartment_id      = string
+          availability_domain     = string
+          capacity_reservation_id = string
+          compartment_id          = string
           create_vnic_details = list(object(
             {
               assign_public_ip       = bool
@@ -280,7 +298,13 @@ variable "instance_details" {
               remote_data_volume_type             = string
             }
           ))
-          metadata                     = map(string)
+          metadata = map(string)
+          platform_config = list(object(
+            {
+              numa_nodes_per_socket = string
+              type                  = string
+            }
+          ))
           preferred_maintenance_action = string
           shape                        = string
           shape_config = list(object(
@@ -403,6 +427,7 @@ resource "oci_core_instance_configuration" "this" {
         for_each = instance_details.value.launch_details
         content {
           availability_domain                 = launch_details.value["availability_domain"]
+          capacity_reservation_id             = launch_details.value["capacity_reservation_id"]
           compartment_id                      = launch_details.value["compartment_id"]
           dedicated_vm_host_id                = launch_details.value["dedicated_vm_host_id"]
           defined_tags                        = launch_details.value["defined_tags"]
@@ -420,8 +445,18 @@ resource "oci_core_instance_configuration" "this" {
           dynamic "agent_config" {
             for_each = launch_details.value.agent_config
             content {
-              is_management_disabled = agent_config.value["is_management_disabled"]
-              is_monitoring_disabled = agent_config.value["is_monitoring_disabled"]
+              are_all_plugins_disabled = agent_config.value["are_all_plugins_disabled"]
+              is_management_disabled   = agent_config.value["is_management_disabled"]
+              is_monitoring_disabled   = agent_config.value["is_monitoring_disabled"]
+
+              dynamic "plugins_config" {
+                for_each = agent_config.value.plugins_config
+                content {
+                  desired_state = plugins_config.value["desired_state"]
+                  name          = plugins_config.value["name"]
+                }
+              }
+
             }
           }
 
@@ -463,6 +498,14 @@ resource "oci_core_instance_configuration" "this" {
               is_pv_encryption_in_transit_enabled = launch_options.value["is_pv_encryption_in_transit_enabled"]
               network_type                        = launch_options.value["network_type"]
               remote_data_volume_type             = launch_options.value["remote_data_volume_type"]
+            }
+          }
+
+          dynamic "platform_config" {
+            for_each = launch_details.value.platform_config
+            content {
+              numa_nodes_per_socket = platform_config.value["numa_nodes_per_socket"]
+              type                  = platform_config.value["type"]
             }
           }
 

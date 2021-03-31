@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    circonus = ">= 0.11.4"
+    circonus = ">= 0.12.0"
   }
 }
 ```
@@ -39,12 +39,16 @@ module "circonus_rule_set" {
   metric_pattern = null
   # metric_type - (optional) is a type of string
   metric_type = null
+  # name - (optional) is a type of string
+  name = null
   # notes - (optional) is a type of string
   notes = null
   # parent - (optional) is a type of string
   parent = null
   # tags - (optional) is a type of set of string
   tags = []
+  # user_json - (optional) is a type of string
+  user_json = null
 
   if = [{
     then = [{
@@ -56,9 +60,11 @@ module "circonus_rule_set" {
       absent      = null
       changed     = null
       contains    = null
+      eq_value    = null
       match       = null
       max_value   = null
       min_value   = null
+      neq_value   = null
       not_contain = null
       not_match   = null
       over = [{
@@ -111,6 +117,12 @@ variable "metric_type" {
   default     = null
 }
 
+variable "name" {
+  description = "(optional) - The name of this ruleset, if ommitted will default to the metric_name (or pattern) and filter"
+  type        = string
+  default     = null
+}
+
 variable "notes" {
   description = "(optional) - Notes describing this rule set"
   type        = string
@@ -129,6 +141,12 @@ variable "tags" {
   default     = null
 }
 
+variable "user_json" {
+  description = "(optional) - Opaque data that can be supplied with the result and appears in webhooks when alerts go off"
+  type        = string
+  default     = null
+}
+
 variable "if" {
   description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
@@ -136,7 +154,7 @@ variable "if" {
       then = list(object(
         {
           after    = string
-          notify   = list(string)
+          notify   = set(string)
           severity = number
         }
       ))
@@ -145,9 +163,11 @@ variable "if" {
           absent      = string
           changed     = string
           contains    = string
+          eq_value    = string
           match       = string
           max_value   = string
           min_value   = string
+          neq_value   = string
           not_contain = string
           not_match   = string
           over = list(object(
@@ -176,9 +196,11 @@ resource "circonus_rule_set" "this" {
   metric_name    = var.metric_name
   metric_pattern = var.metric_pattern
   metric_type    = var.metric_type
+  name           = var.name
   notes          = var.notes
   parent         = var.parent
   tags           = var.tags
+  user_json      = var.user_json
 
   dynamic "if" {
     for_each = var.if
@@ -199,9 +221,11 @@ resource "circonus_rule_set" "this" {
           absent      = value.value["absent"]
           changed     = value.value["changed"]
           contains    = value.value["contains"]
+          eq_value    = value.value["eq_value"]
           match       = value.value["match"]
           max_value   = value.value["max_value"]
           min_value   = value.value["min_value"]
+          neq_value   = value.value["neq_value"]
           not_contain = value.value["not_contain"]
           not_match   = value.value["not_match"]
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -51,6 +51,8 @@ module "fortios_system_accprofile" {
   secfabgrp = null
   # sysgrp - (optional) is a type of string
   sysgrp = null
+  # system_diagnostics - (optional) is a type of string
+  system_diagnostics = null
   # utmgrp - (optional) is a type of string
   utmgrp = null
   # vpngrp - (optional) is a type of string
@@ -92,7 +94,9 @@ module "fortios_system_accprofile" {
     application_control  = null
     data_loss_prevention = null
     dnsfilter            = null
+    emailfilter          = null
     endpoint_control     = null
+    file_filter          = null
     icap                 = null
     ips                  = null
     spamfilter           = null
@@ -174,6 +178,12 @@ variable "secfabgrp" {
 }
 
 variable "sysgrp" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "system_diagnostics" {
   description = "(optional)"
   type        = string
   default     = null
@@ -262,7 +272,9 @@ variable "utmgrp_permission" {
       application_control  = string
       data_loss_prevention = string
       dnsfilter            = string
+      emailfilter          = string
       endpoint_control     = string
+      file_filter          = string
       icap                 = string
       ips                  = string
       spamfilter           = string
@@ -293,6 +305,7 @@ resource "fortios_system_accprofile" "this" {
   scope                 = var.scope
   secfabgrp             = var.secfabgrp
   sysgrp                = var.sysgrp
+  system_diagnostics    = var.system_diagnostics
   utmgrp                = var.utmgrp
   vpngrp                = var.vpngrp
   wanoptgrp             = var.wanoptgrp
@@ -344,7 +357,9 @@ resource "fortios_system_accprofile" "this" {
       application_control  = utmgrp_permission.value["application_control"]
       data_loss_prevention = utmgrp_permission.value["data_loss_prevention"]
       dnsfilter            = utmgrp_permission.value["dnsfilter"]
+      emailfilter          = utmgrp_permission.value["emailfilter"]
       endpoint_control     = utmgrp_permission.value["endpoint_control"]
+      file_filter          = utmgrp_permission.value["file_filter"]
       icap                 = utmgrp_permission.value["icap"]
       ips                  = utmgrp_permission.value["ips"]
       spamfilter           = utmgrp_permission.value["spamfilter"]
@@ -415,6 +430,11 @@ output "secfabgrp" {
 output "sysgrp" {
   description = "returns a string"
   value       = fortios_system_accprofile.this.sysgrp
+}
+
+output "system_diagnostics" {
+  description = "returns a string"
+  value       = fortios_system_accprofile.this.system_diagnostics
 }
 
 output "utmgrp" {

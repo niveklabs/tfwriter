@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -42,6 +42,11 @@ module "google_sql_database_instance" {
   # root_password - (optional) is a type of string
   root_password = null
 
+  clone = [{
+    point_in_time        = null
+    source_instance_name = null
+  }]
+
   replica_configuration = [{
     ca_certificate            = null
     client_certificate        = null
@@ -56,16 +61,27 @@ module "google_sql_database_instance" {
     verify_server_certificate = null
   }]
 
+  restore_backup_context = [{
+    backup_run_id = null
+    instance_id   = null
+    project       = null
+  }]
+
   settings = [{
     activation_policy           = null
     authorized_gae_applications = []
     availability_type           = null
     backup_configuration = [{
+      backup_retention_settings = [{
+        retained_backups = null
+        retention_unit   = null
+      }]
       binary_log_enabled             = null
       enabled                        = null
       location                       = null
       point_in_time_recovery_enabled = null
       start_time                     = null
+      transaction_log_retention_days = null
     }]
     crash_safe_replication = null
     database_flags = [{
@@ -75,6 +91,12 @@ module "google_sql_database_instance" {
     disk_autoresize = null
     disk_size       = null
     disk_type       = null
+    insights_config = [{
+      query_insights_enabled  = null
+      query_string_length     = null
+      record_application_tags = null
+      record_client_address   = null
+    }]
     ip_configuration = [{
       authorized_networks = [{
         expiration_time = null
@@ -115,7 +137,7 @@ module "google_sql_database_instance" {
 
 ```terraform
 variable "database_version" {
-  description = "(optional) - The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, POSTGRES_9_6,POSTGRES_11, SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version Policies includes an up-to-date reference of supported versions."
+  description = "(optional) - The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, POSTGRES_9_6,POSTGRES_11, SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version Policies includes an up-to-date reference of supported versions."
   type        = string
   default     = null
 }
@@ -145,7 +167,7 @@ variable "project" {
 }
 
 variable "region" {
-  description = "(optional) - The region the instance will sit in. Note, Cloud SQL is not available in all regions - choose from one of the options listed here. A valid region must be provided to use this resource. If a region is not provided in the resource definition, the provider region will be used instead, but this will be an apply-time error for instances if the provider region is not supported with Cloud SQL. If you choose not to provide the region argument for this resource, make sure you understand this."
+  description = "(optional) - The region the instance will sit in. Note, Cloud SQL is not available in all regions. A valid region must be provided to use this resource. If a region is not provided in the resource definition, the provider region will be used instead, but this will be an apply-time error for instances if the provider region is not supported with Cloud SQL. If you choose not to provide the region argument for this resource, make sure you understand this."
   type        = string
   default     = null
 }
@@ -154,6 +176,17 @@ variable "root_password" {
   description = "(optional) - Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL."
   type        = string
   default     = null
+}
+
+variable "clone" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      point_in_time        = string
+      source_instance_name = string
+    }
+  ))
+  default = []
 }
 
 variable "replica_configuration" {
@@ -176,8 +209,20 @@ variable "replica_configuration" {
   default = []
 }
 
+variable "restore_backup_context" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      backup_run_id = number
+      instance_id   = string
+      project       = string
+    }
+  ))
+  default = []
+}
+
 variable "settings" {
-  description = "nested block: NestingList, min items: 1, max items: 1"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       activation_policy           = string
@@ -185,11 +230,18 @@ variable "settings" {
       availability_type           = string
       backup_configuration = list(object(
         {
+          backup_retention_settings = list(object(
+            {
+              retained_backups = number
+              retention_unit   = string
+            }
+          ))
           binary_log_enabled             = bool
           enabled                        = bool
           location                       = string
           point_in_time_recovery_enabled = bool
           start_time                     = string
+          transaction_log_retention_days = number
         }
       ))
       crash_safe_replication = bool
@@ -202,6 +254,14 @@ variable "settings" {
       disk_autoresize = bool
       disk_size       = number
       disk_type       = string
+      insights_config = list(object(
+        {
+          query_insights_enabled  = bool
+          query_string_length     = number
+          record_application_tags = bool
+          record_client_address   = bool
+        }
+      ))
       ip_configuration = list(object(
         {
           authorized_networks = set(object(
@@ -236,6 +296,7 @@ variable "settings" {
       version          = number
     }
   ))
+  default = []
 }
 
 variable "timeouts" {
@@ -265,6 +326,14 @@ resource "google_sql_database_instance" "this" {
   region               = var.region
   root_password        = var.root_password
 
+  dynamic "clone" {
+    for_each = var.clone
+    content {
+      point_in_time        = clone.value["point_in_time"]
+      source_instance_name = clone.value["source_instance_name"]
+    }
+  }
+
   dynamic "replica_configuration" {
     for_each = var.replica_configuration
     content {
@@ -279,6 +348,15 @@ resource "google_sql_database_instance" "this" {
       ssl_cipher                = replica_configuration.value["ssl_cipher"]
       username                  = replica_configuration.value["username"]
       verify_server_certificate = replica_configuration.value["verify_server_certificate"]
+    }
+  }
+
+  dynamic "restore_backup_context" {
+    for_each = var.restore_backup_context
+    content {
+      backup_run_id = restore_backup_context.value["backup_run_id"]
+      instance_id   = restore_backup_context.value["instance_id"]
+      project       = restore_backup_context.value["project"]
     }
   }
 
@@ -305,6 +383,16 @@ resource "google_sql_database_instance" "this" {
           location                       = backup_configuration.value["location"]
           point_in_time_recovery_enabled = backup_configuration.value["point_in_time_recovery_enabled"]
           start_time                     = backup_configuration.value["start_time"]
+          transaction_log_retention_days = backup_configuration.value["transaction_log_retention_days"]
+
+          dynamic "backup_retention_settings" {
+            for_each = backup_configuration.value.backup_retention_settings
+            content {
+              retained_backups = backup_retention_settings.value["retained_backups"]
+              retention_unit   = backup_retention_settings.value["retention_unit"]
+            }
+          }
+
         }
       }
 
@@ -313,6 +401,16 @@ resource "google_sql_database_instance" "this" {
         content {
           name  = database_flags.value["name"]
           value = database_flags.value["value"]
+        }
+      }
+
+      dynamic "insights_config" {
+        for_each = settings.value.insights_config
+        content {
+          query_insights_enabled  = insights_config.value["query_insights_enabled"]
+          query_string_length     = insights_config.value["query_string_length"]
+          record_application_tags = insights_config.value["record_application_tags"]
+          record_client_address   = insights_config.value["record_client_address"]
         }
       }
 

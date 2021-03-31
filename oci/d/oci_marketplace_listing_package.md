@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -98,6 +98,11 @@ output "id" {
 output "image_id" {
   description = "returns a string"
   value       = data.oci_marketplace_listing_package.this.image_id
+}
+
+output "operating_system" {
+  description = "returns a list of object"
+  value       = data.oci_marketplace_listing_package.this.operating_system
 }
 
 output "package_type" {

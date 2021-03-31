@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.3.0"
+    gitlab = ">= 3.5.0"
   }
 }
 ```

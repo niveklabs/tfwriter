@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_vdom" {
   source = "./modules/fortios/r/fortios_system_vdom"
 
+  # flag - (optional) is a type of number
+  flag = null
   # name - (optional) is a type of string
   name = null
   # short_name - (optional) is a type of string
@@ -43,6 +45,12 @@ module "fortios_system_vdom" {
 ### Variables
 
 ```terraform
+variable "flag" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -74,6 +82,7 @@ variable "vcluster_id" {
 
 ```terraform
 resource "fortios_system_vdom" "this" {
+  flag        = var.flag
   name        = var.name
   short_name  = var.short_name
   temporary   = var.temporary
@@ -86,6 +95,11 @@ resource "fortios_system_vdom" "this" {
 ### Outputs
 
 ```terraform
+output "flag" {
+  description = "returns a number"
+  value       = fortios_system_vdom.this.flag
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_system_vdom.this.id

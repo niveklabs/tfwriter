@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,6 +41,7 @@ module "fortios_wanopt_profile" {
     log_traffic     = null
     port            = null
     prefer_chunking = null
+    protocol_opt    = null
     secure_tunnel   = null
     status          = null
     tunnel_sharing  = null
@@ -51,7 +52,9 @@ module "fortios_wanopt_profile" {
     log_traffic     = null
     port            = null
     prefer_chunking = null
+    protocol_opt    = null
     secure_tunnel   = null
+    ssl             = null
     status          = null
     tunnel_sharing  = null
   }]
@@ -61,6 +64,7 @@ module "fortios_wanopt_profile" {
     log_traffic          = null
     port                 = null
     prefer_chunking      = null
+    protocol_opt         = null
     secure_tunnel        = null
     ssl                  = null
     ssl_port             = null
@@ -130,6 +134,7 @@ variable "cifs" {
       log_traffic     = string
       port            = number
       prefer_chunking = string
+      protocol_opt    = string
       secure_tunnel   = string
       status          = string
       tunnel_sharing  = string
@@ -146,7 +151,9 @@ variable "ftp" {
       log_traffic     = string
       port            = number
       prefer_chunking = string
+      protocol_opt    = string
       secure_tunnel   = string
+      ssl             = string
       status          = string
       tunnel_sharing  = string
     }
@@ -162,6 +169,7 @@ variable "http" {
       log_traffic          = string
       port                 = number
       prefer_chunking      = string
+      protocol_opt         = string
       secure_tunnel        = string
       ssl                  = string
       ssl_port             = number
@@ -226,6 +234,7 @@ resource "fortios_wanopt_profile" "this" {
       log_traffic     = cifs.value["log_traffic"]
       port            = cifs.value["port"]
       prefer_chunking = cifs.value["prefer_chunking"]
+      protocol_opt    = cifs.value["protocol_opt"]
       secure_tunnel   = cifs.value["secure_tunnel"]
       status          = cifs.value["status"]
       tunnel_sharing  = cifs.value["tunnel_sharing"]
@@ -239,7 +248,9 @@ resource "fortios_wanopt_profile" "this" {
       log_traffic     = ftp.value["log_traffic"]
       port            = ftp.value["port"]
       prefer_chunking = ftp.value["prefer_chunking"]
+      protocol_opt    = ftp.value["protocol_opt"]
       secure_tunnel   = ftp.value["secure_tunnel"]
+      ssl             = ftp.value["ssl"]
       status          = ftp.value["status"]
       tunnel_sharing  = ftp.value["tunnel_sharing"]
     }
@@ -252,6 +263,7 @@ resource "fortios_wanopt_profile" "this" {
       log_traffic          = http.value["log_traffic"]
       port                 = http.value["port"]
       prefer_chunking      = http.value["prefer_chunking"]
+      protocol_opt         = http.value["protocol_opt"]
       secure_tunnel        = http.value["secure_tunnel"]
       ssl                  = http.value["ssl"]
       ssl_port             = http.value["ssl_port"]

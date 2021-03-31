@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -86,6 +86,13 @@ module "fastly_service_compute" {
     public_key       = null
     sas_token        = null
     timestamp_format = null
+  }]
+
+  dictionary = [{
+    dictionary_id = null
+    force_destroy = null
+    name          = null
+    write_only    = null
   }]
 
   domain = [{
@@ -227,9 +234,13 @@ module "fastly_service_compute" {
   }]
 
   logging_kafka = [{
+    auth_method       = null
     brokers           = null
     compression_codec = null
     name              = null
+    parse_log_keyvals = null
+    password          = null
+    request_max_bytes = null
     required_acks     = null
     tls_ca_cert       = null
     tls_client_cert   = null
@@ -237,6 +248,15 @@ module "fastly_service_compute" {
     tls_hostname      = null
     topic             = null
     use_tls           = null
+    user              = null
+  }]
+
+  logging_kinesis = [{
+    access_key = null
+    name       = null
+    region     = null
+    secret_key = null
+    topic      = null
   }]
 
   logging_loggly = [{
@@ -320,11 +340,13 @@ module "fastly_service_compute" {
   }]
 
   splunk = [{
-    name         = null
-    tls_ca_cert  = null
-    tls_hostname = null
-    token        = null
-    url          = null
+    name            = null
+    tls_ca_cert     = null
+    tls_client_cert = null
+    tls_client_key  = null
+    tls_hostname    = null
+    token           = null
+    url             = null
   }]
 
   sumologic = [{
@@ -354,36 +376,36 @@ module "fastly_service_compute" {
 
 ```terraform
 variable "activate" {
-  description = "(optional) - Conditionally prevents the Service from being activated"
+  description = "(optional) - Conditionally prevents the Service from being activated. The apply step will continue to create a new draft version but will not activate it if this is set to `false`. Default `true`"
   type        = bool
   default     = null
 }
 
 variable "comment" {
-  description = "(optional) - A personal freeform descriptive note"
+  description = "(optional) - Description field for the service. Default `Managed by Terraform`"
   type        = string
   default     = null
 }
 
 variable "force_destroy" {
-  description = "(optional)"
+  description = "(optional) - Services that are active cannot be destroyed. In order to destroy the Service, set `force_destroy` to `true`. Default `false`"
   type        = bool
   default     = null
 }
 
 variable "name" {
-  description = "(required) - Unique name for this Service"
+  description = "(required) - The unique name for the Service to create"
   type        = string
 }
 
 variable "version_comment" {
-  description = "(optional) - A personal freeform descriptive note"
+  description = "(optional) - Description field for the version"
   type        = string
   default     = null
 }
 
 variable "backend" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingSet, min items: 1, max items: 0"
   type = set(object(
     {
       address               = string
@@ -412,7 +434,6 @@ variable "backend" {
       weight                = number
     }
   ))
-  default = []
 }
 
 variable "bigquerylogging" {
@@ -445,6 +466,19 @@ variable "blobstoragelogging" {
       public_key       = string
       sas_token        = string
       timestamp_format = string
+    }
+  ))
+  default = []
+}
+
+variable "dictionary" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      dictionary_id = string
+      force_destroy = bool
+      name          = string
+      write_only    = bool
     }
   ))
   default = []
@@ -669,9 +703,13 @@ variable "logging_kafka" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
+      auth_method       = string
       brokers           = string
       compression_codec = string
       name              = string
+      parse_log_keyvals = bool
+      password          = string
+      request_max_bytes = number
       required_acks     = string
       tls_ca_cert       = string
       tls_client_cert   = string
@@ -679,6 +717,21 @@ variable "logging_kafka" {
       tls_hostname      = string
       topic             = string
       use_tls           = bool
+      user              = string
+    }
+  ))
+  default = []
+}
+
+variable "logging_kinesis" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      access_key = string
+      name       = string
+      region     = string
+      secret_key = string
+      topic      = string
     }
   ))
   default = []
@@ -821,11 +874,13 @@ variable "splunk" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
-      name         = string
-      tls_ca_cert  = string
-      tls_hostname = string
-      token        = string
-      url          = string
+      name            = string
+      tls_ca_cert     = string
+      tls_client_cert = string
+      tls_client_key  = string
+      tls_hostname    = string
+      token           = string
+      url             = string
     }
   ))
   default = []
@@ -931,6 +986,15 @@ resource "fastly_service_compute" "this" {
       public_key       = blobstoragelogging.value["public_key"]
       sas_token        = blobstoragelogging.value["sas_token"]
       timestamp_format = blobstoragelogging.value["timestamp_format"]
+    }
+  }
+
+  dynamic "dictionary" {
+    for_each = var.dictionary
+    content {
+      force_destroy = dictionary.value["force_destroy"]
+      name          = dictionary.value["name"]
+      write_only    = dictionary.value["write_only"]
     }
   }
 
@@ -1114,9 +1178,13 @@ resource "fastly_service_compute" "this" {
   dynamic "logging_kafka" {
     for_each = var.logging_kafka
     content {
+      auth_method       = logging_kafka.value["auth_method"]
       brokers           = logging_kafka.value["brokers"]
       compression_codec = logging_kafka.value["compression_codec"]
       name              = logging_kafka.value["name"]
+      parse_log_keyvals = logging_kafka.value["parse_log_keyvals"]
+      password          = logging_kafka.value["password"]
+      request_max_bytes = logging_kafka.value["request_max_bytes"]
       required_acks     = logging_kafka.value["required_acks"]
       tls_ca_cert       = logging_kafka.value["tls_ca_cert"]
       tls_client_cert   = logging_kafka.value["tls_client_cert"]
@@ -1124,6 +1192,18 @@ resource "fastly_service_compute" "this" {
       tls_hostname      = logging_kafka.value["tls_hostname"]
       topic             = logging_kafka.value["topic"]
       use_tls           = logging_kafka.value["use_tls"]
+      user              = logging_kafka.value["user"]
+    }
+  }
+
+  dynamic "logging_kinesis" {
+    for_each = var.logging_kinesis
+    content {
+      access_key = logging_kinesis.value["access_key"]
+      name       = logging_kinesis.value["name"]
+      region     = logging_kinesis.value["region"]
+      secret_key = logging_kinesis.value["secret_key"]
+      topic      = logging_kinesis.value["topic"]
     }
   }
 
@@ -1237,11 +1317,13 @@ resource "fastly_service_compute" "this" {
   dynamic "splunk" {
     for_each = var.splunk
     content {
-      name         = splunk.value["name"]
-      tls_ca_cert  = splunk.value["tls_ca_cert"]
-      tls_hostname = splunk.value["tls_hostname"]
-      token        = splunk.value["token"]
-      url          = splunk.value["url"]
+      name            = splunk.value["name"]
+      tls_ca_cert     = splunk.value["tls_ca_cert"]
+      tls_client_cert = splunk.value["tls_client_cert"]
+      tls_client_key  = splunk.value["tls_client_key"]
+      tls_hostname    = splunk.value["tls_hostname"]
+      token           = splunk.value["token"]
+      url             = splunk.value["url"]
     }
   }
 

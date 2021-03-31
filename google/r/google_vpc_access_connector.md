@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "google_vpc_access_connector" {
   source = "./modules/google/r/google_vpc_access_connector"
 
-  # ip_cidr_range - (required) is a type of string
+  # ip_cidr_range - (optional) is a type of string
   ip_cidr_range = null
   # max_throughput - (optional) is a type of number
   max_throughput = null
@@ -35,11 +35,11 @@ module "google_vpc_access_connector" {
   min_throughput = null
   # name - (required) is a type of string
   name = null
-  # network - (required) is a type of string
+  # network - (optional) is a type of string
   network = null
   # project - (optional) is a type of string
   project = null
-  # region - (required) is a type of string
+  # region - (optional) is a type of string
   region = null
 
   timeouts = [{
@@ -55,8 +55,9 @@ module "google_vpc_access_connector" {
 
 ```terraform
 variable "ip_cidr_range" {
-  description = "(required) - The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'."
+  description = "(optional) - The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'."
   type        = string
+  default     = null
 }
 
 variable "max_throughput" {
@@ -77,8 +78,9 @@ variable "name" {
 }
 
 variable "network" {
-  description = "(required) - Name of a VPC network."
+  description = "(optional) - Name of the VPC network. Required if 'ip_cidr_range' is set."
   type        = string
+  default     = null
 }
 
 variable "project" {
@@ -88,8 +90,9 @@ variable "project" {
 }
 
 variable "region" {
-  description = "(required) - Region where the VPC Access connector resides"
+  description = "(optional) - Region where the VPC Access connector resides. If it is not provided, the provider region is used."
   type        = string
+  default     = null
 }
 
 variable "timeouts" {
@@ -142,6 +145,11 @@ output "id" {
 output "project" {
   description = "returns a string"
   value       = google_vpc_access_connector.this.project
+}
+
+output "region" {
+  description = "returns a string"
+  value       = google_vpc_access_connector.this.region
 }
 
 output "self_link" {

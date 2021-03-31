@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_ips_decoder" {
   source = "./modules/fortios/r/fortios_ips_decoder"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
@@ -42,6 +44,12 @@ module "fortios_ips_decoder" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -66,7 +74,8 @@ variable "parameter" {
 
 ```terraform
 resource "fortios_ips_decoder" "this" {
-  name = var.name
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "parameter" {
     for_each = var.parameter

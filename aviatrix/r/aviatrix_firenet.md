@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aviatrix_firenet" {
   hashing_algorithm = null
   # inspection_enabled - (optional) is a type of bool
   inspection_enabled = null
+  # keep_alive_via_lan_interface_enabled - (optional) is a type of bool
+  keep_alive_via_lan_interface_enabled = null
   # manage_firewall_instance_association - (optional) is a type of bool
   manage_firewall_instance_association = null
   # vpc_id - (required) is a type of string
@@ -70,6 +72,12 @@ variable "hashing_algorithm" {
 
 variable "inspection_enabled" {
   description = "(optional) - Enable/Disable traffic inspection."
+  type        = bool
+  default     = null
+}
+
+variable "keep_alive_via_lan_interface_enabled" {
+  description = "(optional) - Enable Keep Alive via Firewall LAN Interface."
   type        = bool
   default     = null
 }
@@ -112,6 +120,7 @@ resource "aviatrix_firenet" "this" {
   egress_enabled                       = var.egress_enabled
   hashing_algorithm                    = var.hashing_algorithm
   inspection_enabled                   = var.inspection_enabled
+  keep_alive_via_lan_interface_enabled = var.keep_alive_via_lan_interface_enabled
   manage_firewall_instance_association = var.manage_firewall_instance_association
   vpc_id                               = var.vpc_id
 

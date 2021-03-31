@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -49,6 +49,10 @@ module "aws_cloudwatch_event_target" {
     job_name       = null
   }]
 
+  dead_letter_config = [{
+    arn = null
+  }]
+
   ecs_target = [{
     group       = null
     launch_type = null
@@ -69,6 +73,11 @@ module "aws_cloudwatch_event_target" {
 
   kinesis_target = [{
     partition_key_path = null
+  }]
+
+  retry_policy = [{
+    maximum_event_age_in_seconds = null
+    maximum_retry_attempts       = null
   }]
 
   run_command_targets = [{
@@ -140,6 +149,16 @@ variable "batch_target" {
   default = []
 }
 
+variable "dead_letter_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      arn = string
+    }
+  ))
+  default = []
+}
+
 variable "ecs_target" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -177,6 +196,17 @@ variable "kinesis_target" {
   type = set(object(
     {
       partition_key_path = string
+    }
+  ))
+  default = []
+}
+
+variable "retry_policy" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      maximum_event_age_in_seconds = number
+      maximum_retry_attempts       = number
     }
   ))
   default = []
@@ -228,6 +258,13 @@ resource "aws_cloudwatch_event_target" "this" {
     }
   }
 
+  dynamic "dead_letter_config" {
+    for_each = var.dead_letter_config
+    content {
+      arn = dead_letter_config.value["arn"]
+    }
+  }
+
   dynamic "ecs_target" {
     for_each = var.ecs_target
     content {
@@ -261,6 +298,14 @@ resource "aws_cloudwatch_event_target" "this" {
     for_each = var.kinesis_target
     content {
       partition_key_path = kinesis_target.value["partition_key_path"]
+    }
+  }
+
+  dynamic "retry_policy" {
+    for_each = var.retry_policy
+    content {
+      maximum_event_age_in_seconds = retry_policy.value["maximum_event_age_in_seconds"]
+      maximum_retry_attempts       = retry_policy.value["maximum_retry_attempts"]
     }
   }
 

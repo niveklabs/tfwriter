@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "akamai_appsec_match_targets" {
 
   # config_id - (required) is a type of number
   config_id = null
+  # match_target_id - (optional) is a type of number
+  match_target_id = null
   # version - (required) is a type of number
   version = null
 }
@@ -44,6 +46,12 @@ variable "config_id" {
   type        = number
 }
 
+variable "match_target_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "version" {
   description = "(required)"
   type        = number
@@ -56,8 +64,9 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_match_targets" "this" {
-  config_id = var.config_id
-  version   = var.version
+  config_id       = var.config_id
+  match_target_id = var.match_target_id
+  version         = var.version
 }
 ```
 

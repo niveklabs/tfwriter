@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -60,6 +60,7 @@ module "cloudflare_rate_limit" {
       url_pattern = null
     }]
     response = [{
+      headers        = [{}]
       origin_traffic = null
       statuses       = []
     }]
@@ -144,6 +145,7 @@ variable "match" {
       ))
       response = list(object(
         {
+          headers        = list(map(string))
           origin_traffic = bool
           statuses       = set(number)
         }
@@ -207,6 +209,7 @@ resource "cloudflare_rate_limit" "this" {
       dynamic "response" {
         for_each = match.value.response
         content {
+          headers        = response.value["headers"]
           origin_traffic = response.value["origin_traffic"]
           statuses       = response.value["statuses"]
         }

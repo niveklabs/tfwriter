@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -118,13 +118,23 @@ module "azurerm_api_management" {
   }]
 
   security = [{
-    enable_backend_ssl30      = null
-    enable_backend_tls10      = null
-    enable_backend_tls11      = null
-    enable_frontend_ssl30     = null
-    enable_frontend_tls10     = null
-    enable_frontend_tls11     = null
-    enable_triple_des_ciphers = null
+    enable_backend_ssl30                                = null
+    enable_backend_tls10                                = null
+    enable_backend_tls11                                = null
+    enable_frontend_ssl30                               = null
+    enable_frontend_tls10                               = null
+    enable_frontend_tls11                               = null
+    enable_triple_des_ciphers                           = null
+    tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled = null
+    tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled = null
+    tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled   = null
+    tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled   = null
+    tls_rsa_with_aes128_cbc_sha256_ciphers_enabled      = null
+    tls_rsa_with_aes128_cbc_sha_ciphers_enabled         = null
+    tls_rsa_with_aes128_gcm_sha256_ciphers_enabled      = null
+    tls_rsa_with_aes256_cbc_sha256_ciphers_enabled      = null
+    tls_rsa_with_aes256_cbc_sha_ciphers_enabled         = null
+    triple_des_ciphers_enabled                          = null
   }]
 
   sign_in = [{
@@ -138,6 +148,13 @@ module "azurerm_api_management" {
       enabled          = null
       text             = null
     }]
+  }]
+
+  tenant_access = [{
+    enabled       = null
+    primary_key   = null
+    secondary_key = null
+    tenant_id     = null
   }]
 
   timeouts = [{
@@ -329,13 +346,23 @@ variable "security" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      enable_backend_ssl30      = bool
-      enable_backend_tls10      = bool
-      enable_backend_tls11      = bool
-      enable_frontend_ssl30     = bool
-      enable_frontend_tls10     = bool
-      enable_frontend_tls11     = bool
-      enable_triple_des_ciphers = bool
+      enable_backend_ssl30                                = bool
+      enable_backend_tls10                                = bool
+      enable_backend_tls11                                = bool
+      enable_frontend_ssl30                               = bool
+      enable_frontend_tls10                               = bool
+      enable_frontend_tls11                               = bool
+      enable_triple_des_ciphers                           = bool
+      tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled = bool
+      tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled = bool
+      tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled   = bool
+      tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled   = bool
+      tls_rsa_with_aes128_cbc_sha256_ciphers_enabled      = bool
+      tls_rsa_with_aes128_cbc_sha_ciphers_enabled         = bool
+      tls_rsa_with_aes128_gcm_sha256_ciphers_enabled      = bool
+      tls_rsa_with_aes256_cbc_sha256_ciphers_enabled      = bool
+      tls_rsa_with_aes256_cbc_sha_ciphers_enabled         = bool
+      triple_des_ciphers_enabled                          = bool
     }
   ))
   default = []
@@ -363,6 +390,19 @@ variable "sign_up" {
           text             = string
         }
       ))
+    }
+  ))
+  default = []
+}
+
+variable "tenant_access" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      enabled       = bool
+      primary_key   = string
+      secondary_key = string
+      tenant_id     = string
     }
   ))
   default = []
@@ -514,13 +554,23 @@ resource "azurerm_api_management" "this" {
   dynamic "security" {
     for_each = var.security
     content {
-      enable_backend_ssl30      = security.value["enable_backend_ssl30"]
-      enable_backend_tls10      = security.value["enable_backend_tls10"]
-      enable_backend_tls11      = security.value["enable_backend_tls11"]
-      enable_frontend_ssl30     = security.value["enable_frontend_ssl30"]
-      enable_frontend_tls10     = security.value["enable_frontend_tls10"]
-      enable_frontend_tls11     = security.value["enable_frontend_tls11"]
-      enable_triple_des_ciphers = security.value["enable_triple_des_ciphers"]
+      enable_backend_ssl30                                = security.value["enable_backend_ssl30"]
+      enable_backend_tls10                                = security.value["enable_backend_tls10"]
+      enable_backend_tls11                                = security.value["enable_backend_tls11"]
+      enable_frontend_ssl30                               = security.value["enable_frontend_ssl30"]
+      enable_frontend_tls10                               = security.value["enable_frontend_tls10"]
+      enable_frontend_tls11                               = security.value["enable_frontend_tls11"]
+      enable_triple_des_ciphers                           = security.value["enable_triple_des_ciphers"]
+      tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled"]
+      tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled = security.value["tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled"]
+      tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled   = security.value["tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled"]
+      tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled   = security.value["tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled"]
+      tls_rsa_with_aes128_cbc_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes128_cbc_sha256_ciphers_enabled"]
+      tls_rsa_with_aes128_cbc_sha_ciphers_enabled         = security.value["tls_rsa_with_aes128_cbc_sha_ciphers_enabled"]
+      tls_rsa_with_aes128_gcm_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes128_gcm_sha256_ciphers_enabled"]
+      tls_rsa_with_aes256_cbc_sha256_ciphers_enabled      = security.value["tls_rsa_with_aes256_cbc_sha256_ciphers_enabled"]
+      tls_rsa_with_aes256_cbc_sha_ciphers_enabled         = security.value["tls_rsa_with_aes256_cbc_sha_ciphers_enabled"]
+      triple_des_ciphers_enabled                          = security.value["triple_des_ciphers_enabled"]
     }
   }
 
@@ -545,6 +595,13 @@ resource "azurerm_api_management" "this" {
         }
       }
 
+    }
+  }
+
+  dynamic "tenant_access" {
+    for_each = var.tenant_access
+    content {
+      enabled = tenant_access.value["enabled"]
     }
   }
 

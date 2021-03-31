@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -203,6 +203,11 @@ output "id" {
 output "metadata" {
   description = "returns a map of string"
   value       = data.oci_objectstorage_object.this.metadata
+}
+
+output "storage_tier" {
+  description = "returns a string"
+  value       = data.oci_objectstorage_object.this.storage_tier
 }
 
 output "version_id" {

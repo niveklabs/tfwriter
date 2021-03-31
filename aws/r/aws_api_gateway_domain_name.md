@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -50,6 +50,11 @@ module "aws_api_gateway_domain_name" {
 
   endpoint_configuration = [{
     types = []
+  }]
+
+  mutual_tls_authentication = [{
+    truststore_uri     = null
+    truststore_version = null
   }]
 }
 ```
@@ -127,6 +132,17 @@ variable "endpoint_configuration" {
   ))
   default = []
 }
+
+variable "mutual_tls_authentication" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      truststore_uri     = string
+      truststore_version = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -150,6 +166,14 @@ resource "aws_api_gateway_domain_name" "this" {
     for_each = var.endpoint_configuration
     content {
       types = endpoint_configuration.value["types"]
+    }
+  }
+
+  dynamic "mutual_tls_authentication" {
+    for_each = var.mutual_tls_authentication
+    content {
+      truststore_uri     = mutual_tls_authentication.value["truststore_uri"]
+      truststore_version = mutual_tls_authentication.value["truststore_version"]
     }
   }
 

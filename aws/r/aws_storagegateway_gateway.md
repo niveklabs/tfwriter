@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -47,6 +47,8 @@ module "aws_storagegateway_gateway" {
   gateway_vpc_endpoint = null
   # medium_changer_type - (optional) is a type of string
   medium_changer_type = null
+  # smb_file_share_visibility - (optional) is a type of bool
+  smb_file_share_visibility = null
   # smb_guest_password - (optional) is a type of string
   smb_guest_password = null
   # smb_security_strategy - (optional) is a type of string
@@ -135,6 +137,12 @@ variable "medium_changer_type" {
   default     = null
 }
 
+variable "smb_file_share_visibility" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "smb_guest_password" {
   description = "(optional)"
   type        = string
@@ -202,6 +210,7 @@ resource "aws_storagegateway_gateway" "this" {
   gateway_type                                = var.gateway_type
   gateway_vpc_endpoint                        = var.gateway_vpc_endpoint
   medium_changer_type                         = var.medium_changer_type
+  smb_file_share_visibility                   = var.smb_file_share_visibility
   smb_guest_password                          = var.smb_guest_password
   smb_security_strategy                       = var.smb_security_strategy
   tags                                        = var.tags

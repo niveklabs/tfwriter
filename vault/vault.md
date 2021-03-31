@@ -12,7 +12,7 @@
 
 ```terraform
 provider "vault" {
-  version = "2.17.0"
+  version = "2.19.0"
 
   # add_address_to_env - (optional) is a type of string
   add_address_to_env = null
@@ -198,6 +198,8 @@ provider "vault" {
 
 - [vault_okta_auth_backend_user](./r/vault_okta_auth_backend_user.md)
 
+- [vault_password_policy](./r/vault_password_policy.md)
+
 - [vault_pki_secret_backend](./r/vault_pki_secret_backend.md)
 
 - [vault_pki_secret_backend_cert](./r/vault_pki_secret_backend_cert.md)
@@ -233,6 +235,12 @@ provider "vault" {
 - [vault_ssh_secret_backend_ca](./r/vault_ssh_secret_backend_ca.md)
 
 - [vault_ssh_secret_backend_role](./r/vault_ssh_secret_backend_role.md)
+
+- [vault_terraform_cloud_secret_backend](./r/vault_terraform_cloud_secret_backend.md)
+
+- [vault_terraform_cloud_secret_creds](./r/vault_terraform_cloud_secret_creds.md)
+
+- [vault_terraform_cloud_secret_role](./r/vault_terraform_cloud_secret_role.md)
 
 - [vault_token](./r/vault_token.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -59,6 +59,10 @@ module "aws_api_gateway_integration" {
   type = null
   # uri - (optional) is a type of string
   uri = null
+
+  tls_config = [{
+    insecure_skip_verification = null
+  }]
 }
 ```
 
@@ -158,6 +162,16 @@ variable "uri" {
   type        = string
   default     = null
 }
+
+variable "tls_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      insecure_skip_verification = bool
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -182,6 +196,14 @@ resource "aws_api_gateway_integration" "this" {
   timeout_milliseconds    = var.timeout_milliseconds
   type                    = var.type
   uri                     = var.uri
+
+  dynamic "tls_config" {
+    for_each = var.tls_config
+    content {
+      insecure_skip_verification = tls_config.value["insecure_skip_verification"]
+    }
+  }
+
 }
 ```
 

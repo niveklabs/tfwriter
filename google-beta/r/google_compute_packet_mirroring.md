@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -44,6 +44,7 @@ module "google_compute_packet_mirroring" {
 
   filter = [{
     cidr_ranges  = []
+    direction    = null
     ip_protocols = []
   }]
 
@@ -117,6 +118,7 @@ variable "filter" {
   type = set(object(
     {
       cidr_ranges  = list(string)
+      direction    = string
       ip_protocols = list(string)
     }
   ))
@@ -187,6 +189,7 @@ resource "google_compute_packet_mirroring" "this" {
     for_each = var.filter
     content {
       cidr_ranges  = filter.value["cidr_ranges"]
+      direction    = filter.value["direction"]
       ip_protocols = filter.value["ip_protocols"]
     }
   }

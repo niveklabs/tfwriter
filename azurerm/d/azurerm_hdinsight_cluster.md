@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -116,6 +116,11 @@ output "https_endpoint" {
 output "id" {
   description = "returns a string"
   value       = data.azurerm_hdinsight_cluster.this.id
+}
+
+output "kafka_rest_proxy_endpoint" {
+  description = "returns a string"
+  value       = data.azurerm_hdinsight_cluster.this.kafka_rest_proxy_endpoint
 }
 
 output "kind" {

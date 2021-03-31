@@ -12,7 +12,7 @@
 
 ```terraform
 provider "vsphere" {
-  version = "1.24.3"
+  version = "1.25.0"
 
   # allow_unverified_ssl - (optional) is a type of bool
   allow_unverified_ssl = null
@@ -159,6 +159,8 @@ provider "vsphere" {
 - [vsphere_host_thumbprint](./d/vsphere_host_thumbprint.md)
 
 - [vsphere_network](./d/vsphere_network.md)
+
+- [vsphere_ovf_vm_template](./d/vsphere_ovf_vm_template.md)
 
 - [vsphere_resource_pool](./d/vsphere_resource_pool.md)
 

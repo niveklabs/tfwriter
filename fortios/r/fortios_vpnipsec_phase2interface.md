@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,6 +41,10 @@ module "fortios_vpnipsec_phase2interface" {
   dhcp_ipsec = null
   # dhgrp - (optional) is a type of string
   dhgrp = null
+  # diffserv - (optional) is a type of string
+  diffserv = null
+  # diffservcode - (optional) is a type of string
+  diffservcode = null
   # dst_addr_type - (optional) is a type of string
   dst_addr_type = null
   # dst_end_ip - (optional) is a type of string
@@ -63,6 +67,10 @@ module "fortios_vpnipsec_phase2interface" {
   dst_subnet6 = null
   # encapsulation - (optional) is a type of string
   encapsulation = null
+  # initiator_ts_narrow - (optional) is a type of string
+  initiator_ts_narrow = null
+  # ipv4_df - (optional) is a type of string
+  ipv4_df = null
   # keepalive - (optional) is a type of string
   keepalive = null
   # keylife_type - (optional) is a type of string
@@ -159,6 +167,18 @@ variable "dhgrp" {
   default     = null
 }
 
+variable "diffserv" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "diffservcode" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dst_addr_type" {
   description = "(optional)"
   type        = string
@@ -220,6 +240,18 @@ variable "dst_subnet6" {
 }
 
 variable "encapsulation" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "initiator_ts_narrow" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ipv4_df" {
   description = "(optional)"
   type        = string
   default     = null
@@ -375,6 +407,8 @@ resource "fortios_vpnipsec_phase2interface" "this" {
   comments                 = var.comments
   dhcp_ipsec               = var.dhcp_ipsec
   dhgrp                    = var.dhgrp
+  diffserv                 = var.diffserv
+  diffservcode             = var.diffservcode
   dst_addr_type            = var.dst_addr_type
   dst_end_ip               = var.dst_end_ip
   dst_end_ip6              = var.dst_end_ip6
@@ -386,6 +420,8 @@ resource "fortios_vpnipsec_phase2interface" "this" {
   dst_subnet               = var.dst_subnet
   dst_subnet6              = var.dst_subnet6
   encapsulation            = var.encapsulation
+  initiator_ts_narrow      = var.initiator_ts_narrow
+  ipv4_df                  = var.ipv4_df
   keepalive                = var.keepalive
   keylife_type             = var.keylife_type
   keylifekbs               = var.keylifekbs
@@ -447,6 +483,16 @@ output "dhgrp" {
   value       = fortios_vpnipsec_phase2interface.this.dhgrp
 }
 
+output "diffserv" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2interface.this.diffserv
+}
+
+output "diffservcode" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2interface.this.diffservcode
+}
+
 output "dst_addr_type" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase2interface.this.dst_addr_type
@@ -505,6 +551,16 @@ output "encapsulation" {
 output "id" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase2interface.this.id
+}
+
+output "initiator_ts_narrow" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2interface.this.initiator_ts_narrow
+}
+
+output "ipv4_df" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2interface.this.ipv4_df
 }
 
 output "keepalive" {

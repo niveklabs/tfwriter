@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aviatrix_aws_tgw" {
   attached_aviatrix_transit_gateway = []
   # aws_side_as_number - (required) is a type of string
   aws_side_as_number = null
+  # cidrs - (optional) is a type of set of string
+  cidrs = []
   # cloud_type - (optional) is a type of number
   cloud_type = null
   # enable_multicast - (optional) is a type of bool
@@ -87,6 +89,12 @@ variable "aws_side_as_number" {
   type        = string
 }
 
+variable "cidrs" {
+  description = "(optional) - TGW CIDRs."
+  type        = set(string)
+  default     = null
+}
+
 variable "cloud_type" {
   description = "(optional) - Type of cloud service provider, requires an integer value. Supported for AWS (1) and AWS GOV (256). Default value: 1."
   type        = number
@@ -94,7 +102,7 @@ variable "cloud_type" {
 }
 
 variable "enable_multicast" {
-  description = "(optional)"
+  description = "(optional) - Enable Multicast."
   type        = bool
   default     = null
 }
@@ -156,6 +164,7 @@ resource "aviatrix_aws_tgw" "this" {
   account_name                      = var.account_name
   attached_aviatrix_transit_gateway = var.attached_aviatrix_transit_gateway
   aws_side_as_number                = var.aws_side_as_number
+  cidrs                             = var.cidrs
   cloud_type                        = var.cloud_type
   enable_multicast                  = var.enable_multicast
   manage_transit_gateway_attachment = var.manage_transit_gateway_attachment

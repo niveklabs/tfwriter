@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_endpointcontrol_profile" {
 
   # description - (optional) is a type of string
   description = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # profile_name - (optional) is a type of string
   profile_name = null
   # replacemsg_override_group - (optional) is a type of string
@@ -162,6 +164,12 @@ module "fortios_endpointcontrol_profile" {
 
 ```terraform
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -369,6 +377,7 @@ variable "users" {
 ```terraform
 resource "fortios_endpointcontrol_profile" "this" {
   description               = var.description
+  dynamic_sort_subtable     = var.dynamic_sort_subtable
   profile_name              = var.profile_name
   replacemsg_override_group = var.replacemsg_override_group
 

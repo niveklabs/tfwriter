@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -74,6 +74,11 @@ data "oci_objectstorage_object_head" "this" {
 ### Outputs
 
 ```terraform
+output "archival_state" {
+  description = "returns a string"
+  value       = data.oci_objectstorage_object_head.this.archival_state
+}
+
 output "content_length" {
   description = "returns a number"
   value       = data.oci_objectstorage_object_head.this.content_length
@@ -97,6 +102,11 @@ output "id" {
 output "metadata" {
   description = "returns a map of string"
   value       = data.oci_objectstorage_object_head.this.metadata
+}
+
+output "storage_tier" {
+  description = "returns a string"
+  value       = data.oci_objectstorage_object_head.this.storage_tier
 }
 
 output "this" {

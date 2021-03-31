@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_user_krbkeytab" {
   ldap_server = null
   # name - (optional) is a type of string
   name = null
+  # pac_data - (optional) is a type of string
+  pac_data = null
   # principal - (required) is a type of string
   principal = null
 }
@@ -59,6 +61,12 @@ variable "name" {
   default     = null
 }
 
+variable "pac_data" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "principal" {
   description = "(required)"
   type        = string
@@ -74,6 +82,7 @@ resource "fortios_user_krbkeytab" "this" {
   keytab      = var.keytab
   ldap_server = var.ldap_server
   name        = var.name
+  pac_data    = var.pac_data
   principal   = var.principal
 }
 ```
@@ -91,6 +100,11 @@ output "id" {
 output "name" {
   description = "returns a string"
   value       = fortios_user_krbkeytab.this.name
+}
+
+output "pac_data" {
+  description = "returns a string"
+  value       = fortios_user_krbkeytab.this.pac_data
 }
 
 output "this" {

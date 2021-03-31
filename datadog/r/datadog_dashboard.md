@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -59,6 +59,7 @@ module "datadog_dashboard" {
   widget = [{
     alert_graph_definition = [{
       alert_id    = null
+      live_span   = null
       time        = {}
       title       = null
       title_align = null
@@ -79,13 +80,24 @@ module "datadog_dashboard" {
         label = null
         link  = null
       }]
+      live_span = null
       request = [{
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -93,17 +105,28 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         change_type   = null
         compare_to    = null
         increase_good = null
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -111,7 +134,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         order_by  = null
         order_dir = null
@@ -124,10 +148,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -135,14 +169,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -150,7 +195,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         show_present = null
       }]
@@ -164,6 +210,7 @@ module "datadog_dashboard" {
       group       = null
       group_by    = []
       grouping    = null
+      live_span   = null
       tags        = []
       time        = {}
       title       = null
@@ -172,13 +219,24 @@ module "datadog_dashboard" {
     }]
     distribution_definition = [{
       legend_size = null
+      live_span   = null
       request = [{
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -186,14 +244,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -201,7 +270,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         process_query = [{
           filter_by = []
@@ -212,10 +282,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -223,14 +303,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -238,7 +329,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         style = [{
           palette = null
@@ -252,6 +344,7 @@ module "datadog_dashboard" {
     }]
     event_stream_definition = [{
       event_size     = null
+      live_span      = null
       query          = null
       tags_execution = null
       time           = {}
@@ -260,6 +353,7 @@ module "datadog_dashboard" {
       title_size     = null
     }]
     event_timeline_definition = [{
+      live_span      = null
       query          = null
       tags_execution = null
       time           = {}
@@ -273,12 +367,85 @@ module "datadog_dashboard" {
       text       = null
       text_align = null
     }]
+    geomap_definition = [{
+      custom_link = [{
+        label = null
+        link  = null
+      }]
+      live_span = null
+      request = [{
+        log_query = [{
+          compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
+          group_by = [{
+            facet = null
+            limit = null
+            sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
+          }]
+          index = null
+          multi_compute = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
+          search       = {}
+          search_query = null
+        }]
+        q = null
+        rum_query = [{
+          compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
+          group_by = [{
+            facet = null
+            limit = null
+            sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
+          }]
+          index = null
+          multi_compute = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
+          search       = {}
+          search_query = null
+        }]
+      }]
+      style = [{
+        palette      = null
+        palette_flip = null
+      }]
+      title       = null
+      title_align = null
+      title_size  = null
+      view = [{
+        focus = null
+      }]
+    }]
     group_definition = [{
       layout_type = null
       title       = null
       widget = [{
         alert_graph_definition = [{
           alert_id    = null
+          live_span   = null
           time        = {}
           title       = null
           title_align = null
@@ -299,13 +466,24 @@ module "datadog_dashboard" {
             label = null
             link  = null
           }]
+          live_span = null
           request = [{
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -313,17 +491,28 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             change_type   = null
             compare_to    = null
             increase_good = null
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -331,7 +520,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             order_by  = null
             order_dir = null
@@ -344,10 +534,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -355,14 +555,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -370,7 +581,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             show_present = null
           }]
@@ -384,6 +596,7 @@ module "datadog_dashboard" {
           group       = null
           group_by    = []
           grouping    = null
+          live_span   = null
           tags        = []
           time        = {}
           title       = null
@@ -392,13 +605,24 @@ module "datadog_dashboard" {
         }]
         distribution_definition = [{
           legend_size = null
+          live_span   = null
           request = [{
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -406,14 +630,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -421,7 +656,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             process_query = [{
               filter_by = []
@@ -432,10 +668,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -443,14 +689,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -458,7 +715,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             style = [{
               palette = null
@@ -472,6 +730,7 @@ module "datadog_dashboard" {
         }]
         event_stream_definition = [{
           event_size     = null
+          live_span      = null
           query          = null
           tags_execution = null
           time           = {}
@@ -480,6 +739,7 @@ module "datadog_dashboard" {
           title_size     = null
         }]
         event_timeline_definition = [{
+          live_span      = null
           query          = null
           tags_execution = null
           time           = {}
@@ -493,6 +753,78 @@ module "datadog_dashboard" {
           text       = null
           text_align = null
         }]
+        geomap_definition = [{
+          custom_link = [{
+            label = null
+            link  = null
+          }]
+          live_span = null
+          request = [{
+            log_query = [{
+              compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
+              group_by = [{
+                facet = null
+                limit = null
+                sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
+              }]
+              index = null
+              multi_compute = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
+              search       = {}
+              search_query = null
+            }]
+            q = null
+            rum_query = [{
+              compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
+              group_by = [{
+                facet = null
+                limit = null
+                sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
+              }]
+              index = null
+              multi_compute = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
+              search       = {}
+              search_query = null
+            }]
+          }]
+          style = [{
+            palette      = null
+            palette_flip = null
+          }]
+          title       = null
+          title_align = null
+          title_size  = null
+          view = [{
+            focus = null
+          }]
+        }]
         heatmap_definition = [{
           custom_link = [{
             label = null
@@ -503,13 +835,24 @@ module "datadog_dashboard" {
             tags_execution = null
           }]
           legend_size = null
+          live_span   = null
           request = [{
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -517,14 +860,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -532,7 +886,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             process_query = [{
               filter_by = []
@@ -543,10 +898,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -554,14 +919,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -569,7 +945,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             style = [{
               palette = null
@@ -601,10 +978,20 @@ module "datadog_dashboard" {
             fill = [{
               apm_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -612,14 +999,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               log_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -627,7 +1025,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               process_query = [{
                 filter_by = []
@@ -638,10 +1037,20 @@ module "datadog_dashboard" {
               q = null
               rum_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -649,14 +1058,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               security_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -664,16 +1084,27 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
             }]
             size = [{
               apm_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -681,14 +1112,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               log_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -696,7 +1138,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               process_query = [{
                 filter_by = []
@@ -707,10 +1150,20 @@ module "datadog_dashboard" {
               q = null
               rum_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -718,14 +1171,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               security_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -733,7 +1197,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
             }]
           }]
@@ -748,6 +1213,7 @@ module "datadog_dashboard" {
           title_align = null
           title_size  = null
         }]
+        id = null
         iframe_definition = [{
           url = null
         }]
@@ -760,6 +1226,7 @@ module "datadog_dashboard" {
         log_stream_definition = [{
           columns             = []
           indexes             = []
+          live_span           = null
           logset              = null
           message_display     = null
           query               = null
@@ -803,15 +1270,26 @@ module "datadog_dashboard" {
             link  = null
           }]
           has_search_bar = null
+          live_span      = null
           request = [{
             aggregator = null
             alias      = null
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -819,7 +1297,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             apm_stats_query = [{
               columns = [{
@@ -850,10 +1329,20 @@ module "datadog_dashboard" {
             limit = null
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -861,7 +1350,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             order = null
             process_query = [{
@@ -873,10 +1363,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -884,14 +1384,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -899,7 +1410,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
           }]
           time        = {}
@@ -914,15 +1426,26 @@ module "datadog_dashboard" {
             link  = null
           }]
           custom_unit = null
+          live_span   = null
           precision   = null
           request = [{
             aggregator = null
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -930,7 +1453,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             conditional_formats = [{
               comparator      = null
@@ -945,10 +1469,20 @@ module "datadog_dashboard" {
             }]
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -956,7 +1490,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             process_query = [{
               filter_by = []
@@ -967,10 +1502,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -978,14 +1523,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -993,7 +1549,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
           }]
           text_align  = null
@@ -1008,15 +1565,26 @@ module "datadog_dashboard" {
             label = null
             link  = null
           }]
+          live_span = null
           request = [{
             x = [{
               aggregator = null
               apm_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1024,14 +1592,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               log_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1039,7 +1618,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               process_query = [{
                 filter_by = []
@@ -1050,10 +1630,20 @@ module "datadog_dashboard" {
               q = null
               rum_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1061,14 +1651,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               security_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1076,17 +1677,28 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
             }]
             y = [{
               aggregator = null
               apm_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1094,14 +1706,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               log_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1109,7 +1732,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               process_query = [{
                 filter_by = []
@@ -1120,10 +1744,20 @@ module "datadog_dashboard" {
               q = null
               rum_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1131,14 +1765,25 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
               security_query = [{
                 compute = {}
+                compute_query = [{
+                  aggregation = null
+                  facet       = null
+                  interval    = null
+                }]
                 group_by = [{
                   facet = null
                   limit = null
                   sort  = {}
+                  sort_query = [{
+                    aggregation = null
+                    facet       = null
+                    order       = null
+                  }]
                 }]
                 index = null
                 multi_compute = [{
@@ -1146,7 +1791,8 @@ module "datadog_dashboard" {
                   facet       = null
                   interval    = null
                 }]
-                search = {}
+                search       = {}
+                search_query = null
               }]
             }]
           }]
@@ -1199,7 +1845,10 @@ module "datadog_dashboard" {
             q              = null
             tags_execution = null
           }]
-          legend_size = null
+          legend_columns = []
+          legend_layout  = null
+          legend_size    = null
+          live_span      = null
           marker = [{
             display_type = null
             label        = null
@@ -1208,10 +1857,20 @@ module "datadog_dashboard" {
           request = [{
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1219,15 +1878,26 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             display_type = null
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1235,7 +1905,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             metadata = [{
               alias_name = null
@@ -1243,10 +1914,20 @@ module "datadog_dashboard" {
             }]
             network_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1254,7 +1935,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             on_right_yaxis = null
             process_query = [{
@@ -1266,10 +1948,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1277,14 +1969,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1292,7 +1995,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             style = [{
               line_type  = null
@@ -1325,13 +2029,24 @@ module "datadog_dashboard" {
             label = null
             link  = null
           }]
+          live_span = null
           request = [{
             apm_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1339,7 +2054,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             conditional_formats = [{
               comparator      = null
@@ -1354,10 +2070,20 @@ module "datadog_dashboard" {
             }]
             log_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1365,7 +2091,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             process_query = [{
               filter_by = []
@@ -1376,10 +2103,20 @@ module "datadog_dashboard" {
             q = null
             rum_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1387,14 +2124,25 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             security_query = [{
               compute = {}
+              compute_query = [{
+                aggregation = null
+                facet       = null
+                interval    = null
+              }]
               group_by = [{
                 facet = null
                 limit = null
                 sort  = {}
+                sort_query = [{
+                  aggregation = null
+                  facet       = null
+                  order       = null
+                }]
               }]
               index = null
               multi_compute = [{
@@ -1402,7 +2150,8 @@ module "datadog_dashboard" {
                 facet       = null
                 interval    = null
               }]
-              search = {}
+              search       = {}
+              search_query = null
             }]
             style = [{
               palette = null
@@ -1416,6 +2165,7 @@ module "datadog_dashboard" {
         trace_service_definition = [{
           display_format     = null
           env                = null
+          live_span          = null
           service            = null
           show_breakdown     = null
           show_distribution  = null
@@ -1430,6 +2180,12 @@ module "datadog_dashboard" {
           title_align        = null
           title_size         = null
         }]
+        widget_layout = [{
+          height = null
+          width  = null
+          x      = null
+          y      = null
+        }]
       }]
     }]
     heatmap_definition = [{
@@ -1442,13 +2198,24 @@ module "datadog_dashboard" {
         tags_execution = null
       }]
       legend_size = null
+      live_span   = null
       request = [{
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1456,14 +2223,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1471,7 +2249,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         process_query = [{
           filter_by = []
@@ -1482,10 +2261,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1493,14 +2282,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1508,7 +2308,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         style = [{
           palette = null
@@ -1540,10 +2341,20 @@ module "datadog_dashboard" {
         fill = [{
           apm_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1551,14 +2362,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           log_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1566,7 +2388,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           process_query = [{
             filter_by = []
@@ -1577,10 +2400,20 @@ module "datadog_dashboard" {
           q = null
           rum_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1588,14 +2421,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           security_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1603,16 +2447,27 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
         }]
         size = [{
           apm_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1620,14 +2475,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           log_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1635,7 +2501,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           process_query = [{
             filter_by = []
@@ -1646,10 +2513,20 @@ module "datadog_dashboard" {
           q = null
           rum_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1657,14 +2534,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           security_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1672,7 +2560,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
         }]
       }]
@@ -1687,6 +2576,7 @@ module "datadog_dashboard" {
       title_align = null
       title_size  = null
     }]
+    id = null
     iframe_definition = [{
       url = null
     }]
@@ -1699,6 +2589,7 @@ module "datadog_dashboard" {
     log_stream_definition = [{
       columns             = []
       indexes             = []
+      live_span           = null
       logset              = null
       message_display     = null
       query               = null
@@ -1742,15 +2633,26 @@ module "datadog_dashboard" {
         link  = null
       }]
       has_search_bar = null
+      live_span      = null
       request = [{
         aggregator = null
         alias      = null
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1758,7 +2660,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         apm_stats_query = [{
           columns = [{
@@ -1789,10 +2692,20 @@ module "datadog_dashboard" {
         limit = null
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1800,7 +2713,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         order = null
         process_query = [{
@@ -1812,10 +2726,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1823,14 +2747,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1838,7 +2773,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
       }]
       time        = {}
@@ -1853,15 +2789,26 @@ module "datadog_dashboard" {
         link  = null
       }]
       custom_unit = null
+      live_span   = null
       precision   = null
       request = [{
         aggregator = null
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1869,7 +2816,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         conditional_formats = [{
           comparator      = null
@@ -1884,10 +2832,20 @@ module "datadog_dashboard" {
         }]
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1895,7 +2853,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         process_query = [{
           filter_by = []
@@ -1906,10 +2865,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1917,14 +2886,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -1932,7 +2912,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
       }]
       text_align  = null
@@ -1947,15 +2928,26 @@ module "datadog_dashboard" {
         label = null
         link  = null
       }]
+      live_span = null
       request = [{
         x = [{
           aggregator = null
           apm_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1963,14 +2955,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           log_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -1978,7 +2981,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           process_query = [{
             filter_by = []
@@ -1989,10 +2993,20 @@ module "datadog_dashboard" {
           q = null
           rum_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2000,14 +3014,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           security_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2015,17 +3040,28 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
         }]
         y = [{
           aggregator = null
           apm_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2033,14 +3069,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           log_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2048,7 +3095,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           process_query = [{
             filter_by = []
@@ -2059,10 +3107,20 @@ module "datadog_dashboard" {
           q = null
           rum_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2070,14 +3128,25 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
           security_query = [{
             compute = {}
+            compute_query = [{
+              aggregation = null
+              facet       = null
+              interval    = null
+            }]
             group_by = [{
               facet = null
               limit = null
               sort  = {}
+              sort_query = [{
+                aggregation = null
+                facet       = null
+                order       = null
+              }]
             }]
             index = null
             multi_compute = [{
@@ -2085,7 +3154,8 @@ module "datadog_dashboard" {
               facet       = null
               interval    = null
             }]
-            search = {}
+            search       = {}
+            search_query = null
           }]
         }]
       }]
@@ -2138,7 +3208,10 @@ module "datadog_dashboard" {
         q              = null
         tags_execution = null
       }]
-      legend_size = null
+      legend_columns = []
+      legend_layout  = null
+      legend_size    = null
+      live_span      = null
       marker = [{
         display_type = null
         label        = null
@@ -2147,10 +3220,20 @@ module "datadog_dashboard" {
       request = [{
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2158,15 +3241,26 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         display_type = null
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2174,7 +3268,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         metadata = [{
           alias_name = null
@@ -2182,10 +3277,20 @@ module "datadog_dashboard" {
         }]
         network_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2193,7 +3298,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         on_right_yaxis = null
         process_query = [{
@@ -2205,10 +3311,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2216,14 +3332,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2231,7 +3358,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         style = [{
           line_type  = null
@@ -2264,13 +3392,24 @@ module "datadog_dashboard" {
         label = null
         link  = null
       }]
+      live_span = null
       request = [{
         apm_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2278,7 +3417,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         conditional_formats = [{
           comparator      = null
@@ -2293,10 +3433,20 @@ module "datadog_dashboard" {
         }]
         log_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2304,7 +3454,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         process_query = [{
           filter_by = []
@@ -2315,10 +3466,20 @@ module "datadog_dashboard" {
         q = null
         rum_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2326,14 +3487,25 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         security_query = [{
           compute = {}
+          compute_query = [{
+            aggregation = null
+            facet       = null
+            interval    = null
+          }]
           group_by = [{
             facet = null
             limit = null
             sort  = {}
+            sort_query = [{
+              aggregation = null
+              facet       = null
+              order       = null
+            }]
           }]
           index = null
           multi_compute = [{
@@ -2341,7 +3513,8 @@ module "datadog_dashboard" {
             facet       = null
             interval    = null
           }]
-          search = {}
+          search       = {}
+          search_query = null
         }]
         style = [{
           palette = null
@@ -2355,6 +3528,7 @@ module "datadog_dashboard" {
     trace_service_definition = [{
       display_format     = null
       env                = null
+      live_span          = null
       service            = null
       show_breakdown     = null
       show_distribution  = null
@@ -2368,6 +3542,12 @@ module "datadog_dashboard" {
       title              = null
       title_align        = null
       title_size         = null
+    }]
+    widget_layout = [{
+      height = null
+      width  = null
+      x      = null
+      y      = null
     }]
   }]
 }
@@ -2453,6 +3633,7 @@ variable "widget" {
       alert_graph_definition = list(object(
         {
           alert_id    = string
+          live_span   = string
           time        = map(string)
           title       = string
           title_align = string
@@ -2479,16 +3660,31 @@ variable "widget" {
               link  = string
             }
           ))
+          live_span = string
           request = list(object(
             {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2499,7 +3695,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               change_type   = string
@@ -2508,11 +3705,25 @@ variable "widget" {
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2523,7 +3734,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               order_by  = string
@@ -2540,11 +3752,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2555,17 +3781,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2576,7 +3817,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               show_present = bool
@@ -2594,6 +3836,7 @@ variable "widget" {
           group       = string
           group_by    = list(string)
           grouping    = string
+          live_span   = string
           tags        = list(string)
           time        = map(string)
           title       = string
@@ -2604,16 +3847,31 @@ variable "widget" {
       distribution_definition = list(object(
         {
           legend_size = string
+          live_span   = string
           request = list(object(
             {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2624,17 +3882,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2645,7 +3918,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               process_query = list(object(
@@ -2660,11 +3934,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2675,17 +3963,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -2696,7 +3999,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               style = list(object(
@@ -2716,6 +4020,7 @@ variable "widget" {
       event_stream_definition = list(object(
         {
           event_size     = string
+          live_span      = string
           query          = string
           tags_execution = string
           time           = map(string)
@@ -2726,6 +4031,7 @@ variable "widget" {
       ))
       event_timeline_definition = list(object(
         {
+          live_span      = string
           query          = string
           tags_execution = string
           time           = map(string)
@@ -2742,6 +4048,108 @@ variable "widget" {
           text_align = string
         }
       ))
+      geomap_definition = list(object(
+        {
+          custom_link = list(object(
+            {
+              label = string
+              link  = string
+            }
+          ))
+          live_span = string
+          request = list(object(
+            {
+              log_query = list(object(
+                {
+                  compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
+                  group_by = list(object(
+                    {
+                      facet = string
+                      limit = number
+                      sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
+                    }
+                  ))
+                  index = string
+                  multi_compute = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
+                  search       = map(string)
+                  search_query = string
+                }
+              ))
+              q = string
+              rum_query = list(object(
+                {
+                  compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
+                  group_by = list(object(
+                    {
+                      facet = string
+                      limit = number
+                      sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
+                    }
+                  ))
+                  index = string
+                  multi_compute = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
+                  search       = map(string)
+                  search_query = string
+                }
+              ))
+            }
+          ))
+          style = list(object(
+            {
+              palette      = string
+              palette_flip = bool
+            }
+          ))
+          title       = string
+          title_align = string
+          title_size  = string
+          view = list(object(
+            {
+              focus = string
+            }
+          ))
+        }
+      ))
       group_definition = list(object(
         {
           layout_type = string
@@ -2751,6 +4159,7 @@ variable "widget" {
               alert_graph_definition = list(object(
                 {
                   alert_id    = string
+                  live_span   = string
                   time        = map(string)
                   title       = string
                   title_align = string
@@ -2777,16 +4186,31 @@ variable "widget" {
                       link  = string
                     }
                   ))
+                  live_span = string
                   request = list(object(
                     {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2797,7 +4221,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       change_type   = string
@@ -2806,11 +4231,25 @@ variable "widget" {
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2821,7 +4260,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       order_by  = string
@@ -2838,11 +4278,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2853,17 +4307,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2874,7 +4343,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       show_present = bool
@@ -2892,6 +4362,7 @@ variable "widget" {
                   group       = string
                   group_by    = list(string)
                   grouping    = string
+                  live_span   = string
                   tags        = list(string)
                   time        = map(string)
                   title       = string
@@ -2902,16 +4373,31 @@ variable "widget" {
               distribution_definition = list(object(
                 {
                   legend_size = string
+                  live_span   = string
                   request = list(object(
                     {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2922,17 +4408,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2943,7 +4444,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       process_query = list(object(
@@ -2958,11 +4460,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2973,17 +4489,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -2994,7 +4525,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       style = list(object(
@@ -3014,6 +4546,7 @@ variable "widget" {
               event_stream_definition = list(object(
                 {
                   event_size     = string
+                  live_span      = string
                   query          = string
                   tags_execution = string
                   time           = map(string)
@@ -3024,6 +4557,7 @@ variable "widget" {
               ))
               event_timeline_definition = list(object(
                 {
+                  live_span      = string
                   query          = string
                   tags_execution = string
                   time           = map(string)
@@ -3038,6 +4572,108 @@ variable "widget" {
                   font_size  = string
                   text       = string
                   text_align = string
+                }
+              ))
+              geomap_definition = list(object(
+                {
+                  custom_link = list(object(
+                    {
+                      label = string
+                      link  = string
+                    }
+                  ))
+                  live_span = string
+                  request = list(object(
+                    {
+                      log_query = list(object(
+                        {
+                          compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
+                          group_by = list(object(
+                            {
+                              facet = string
+                              limit = number
+                              sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
+                            }
+                          ))
+                          index = string
+                          multi_compute = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
+                          search       = map(string)
+                          search_query = string
+                        }
+                      ))
+                      q = string
+                      rum_query = list(object(
+                        {
+                          compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
+                          group_by = list(object(
+                            {
+                              facet = string
+                              limit = number
+                              sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
+                            }
+                          ))
+                          index = string
+                          multi_compute = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
+                          search       = map(string)
+                          search_query = string
+                        }
+                      ))
+                    }
+                  ))
+                  style = list(object(
+                    {
+                      palette      = string
+                      palette_flip = bool
+                    }
+                  ))
+                  title       = string
+                  title_align = string
+                  title_size  = string
+                  view = list(object(
+                    {
+                      focus = string
+                    }
+                  ))
                 }
               ))
               heatmap_definition = list(object(
@@ -3055,16 +4691,31 @@ variable "widget" {
                     }
                   ))
                   legend_size = string
+                  live_span   = string
                   request = list(object(
                     {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3075,17 +4726,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3096,7 +4762,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       process_query = list(object(
@@ -3111,11 +4778,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3126,17 +4807,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3147,7 +4843,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       style = list(object(
@@ -3192,11 +4889,25 @@ variable "widget" {
                           apm_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3207,17 +4918,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           log_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3228,7 +4954,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           process_query = list(object(
@@ -3243,11 +4970,25 @@ variable "widget" {
                           rum_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3258,17 +4999,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           security_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3279,7 +5035,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                         }
@@ -3289,11 +5046,25 @@ variable "widget" {
                           apm_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3304,17 +5075,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           log_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3325,7 +5111,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           process_query = list(object(
@@ -3340,11 +5127,25 @@ variable "widget" {
                           rum_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3355,17 +5156,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           security_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3376,7 +5192,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                         }
@@ -3397,6 +5214,7 @@ variable "widget" {
                   title_size  = string
                 }
               ))
+              id = number
               iframe_definition = list(object(
                 {
                   url = string
@@ -3414,6 +5232,7 @@ variable "widget" {
                 {
                   columns             = list(string)
                   indexes             = list(string)
+                  live_span           = string
                   logset              = string
                   message_display     = string
                   query               = string
@@ -3467,6 +5286,7 @@ variable "widget" {
                     }
                   ))
                   has_search_bar = string
+                  live_span      = string
                   request = list(object(
                     {
                       aggregator = string
@@ -3474,11 +5294,25 @@ variable "widget" {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3489,7 +5323,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       apm_stats_query = list(object(
@@ -3528,11 +5363,25 @@ variable "widget" {
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3543,7 +5392,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       order = string
@@ -3559,11 +5409,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3574,17 +5438,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3595,7 +5474,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                     }
@@ -3616,6 +5496,7 @@ variable "widget" {
                     }
                   ))
                   custom_unit = string
+                  live_span   = string
                   precision   = number
                   request = list(object(
                     {
@@ -3623,11 +5504,25 @@ variable "widget" {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3638,7 +5533,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       conditional_formats = list(object(
@@ -3657,11 +5553,25 @@ variable "widget" {
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3672,7 +5582,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       process_query = list(object(
@@ -3687,11 +5598,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3702,17 +5627,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -3723,7 +5663,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                     }
@@ -3744,6 +5685,7 @@ variable "widget" {
                       link  = string
                     }
                   ))
+                  live_span = string
                   request = list(object(
                     {
                       x = list(object(
@@ -3752,11 +5694,25 @@ variable "widget" {
                           apm_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3767,17 +5723,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           log_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3788,7 +5759,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           process_query = list(object(
@@ -3803,11 +5775,25 @@ variable "widget" {
                           rum_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3818,17 +5804,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           security_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3839,7 +5840,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                         }
@@ -3850,11 +5852,25 @@ variable "widget" {
                           apm_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3865,17 +5881,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           log_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3886,7 +5917,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           process_query = list(object(
@@ -3901,11 +5933,25 @@ variable "widget" {
                           rum_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3916,17 +5962,32 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                           security_query = list(object(
                             {
                               compute = map(string)
+                              compute_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  interval    = number
+                                }
+                              ))
                               group_by = list(object(
                                 {
                                   facet = string
                                   limit = number
                                   sort  = map(string)
+                                  sort_query = list(object(
+                                    {
+                                      aggregation = string
+                                      facet       = string
+                                      order       = string
+                                    }
+                                  ))
                                 }
                               ))
                               index = string
@@ -3937,7 +5998,8 @@ variable "widget" {
                                   interval    = number
                                 }
                               ))
-                              search = map(string)
+                              search       = map(string)
+                              search_query = string
                             }
                           ))
                         }
@@ -4009,7 +6071,10 @@ variable "widget" {
                       tags_execution = string
                     }
                   ))
-                  legend_size = string
+                  legend_columns = set(string)
+                  legend_layout  = string
+                  legend_size    = string
+                  live_span      = string
                   marker = list(object(
                     {
                       display_type = string
@@ -4022,11 +6087,25 @@ variable "widget" {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4037,18 +6116,33 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       display_type = string
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4059,7 +6153,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       metadata = list(object(
@@ -4071,11 +6166,25 @@ variable "widget" {
                       network_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4086,7 +6195,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       on_right_yaxis = bool
@@ -4102,11 +6212,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4117,17 +6241,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4138,7 +6277,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       style = list(object(
@@ -4183,16 +6323,31 @@ variable "widget" {
                       link  = string
                     }
                   ))
+                  live_span = string
                   request = list(object(
                     {
                       apm_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4203,7 +6358,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       conditional_formats = list(object(
@@ -4222,11 +6378,25 @@ variable "widget" {
                       log_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4237,7 +6407,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       process_query = list(object(
@@ -4252,11 +6423,25 @@ variable "widget" {
                       rum_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4267,17 +6452,32 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       security_query = list(object(
                         {
                           compute = map(string)
+                          compute_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              interval    = number
+                            }
+                          ))
                           group_by = list(object(
                             {
                               facet = string
                               limit = number
                               sort  = map(string)
+                              sort_query = list(object(
+                                {
+                                  aggregation = string
+                                  facet       = string
+                                  order       = string
+                                }
+                              ))
                             }
                           ))
                           index = string
@@ -4288,7 +6488,8 @@ variable "widget" {
                               interval    = number
                             }
                           ))
-                          search = map(string)
+                          search       = map(string)
+                          search_query = string
                         }
                       ))
                       style = list(object(
@@ -4308,6 +6509,7 @@ variable "widget" {
                 {
                   display_format     = string
                   env                = string
+                  live_span          = string
                   service            = string
                   show_breakdown     = bool
                   show_distribution  = bool
@@ -4321,6 +6523,14 @@ variable "widget" {
                   title              = string
                   title_align        = string
                   title_size         = string
+                }
+              ))
+              widget_layout = list(object(
+                {
+                  height = number
+                  width  = number
+                  x      = number
+                  y      = number
                 }
               ))
             }
@@ -4342,16 +6552,31 @@ variable "widget" {
             }
           ))
           legend_size = string
+          live_span   = string
           request = list(object(
             {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4362,17 +6587,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4383,7 +6623,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               process_query = list(object(
@@ -4398,11 +6639,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4413,17 +6668,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4434,7 +6704,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               style = list(object(
@@ -4479,11 +6750,25 @@ variable "widget" {
                   apm_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4494,17 +6779,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   log_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4515,7 +6815,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   process_query = list(object(
@@ -4530,11 +6831,25 @@ variable "widget" {
                   rum_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4545,17 +6860,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   security_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4566,7 +6896,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                 }
@@ -4576,11 +6907,25 @@ variable "widget" {
                   apm_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4591,17 +6936,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   log_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4612,7 +6972,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   process_query = list(object(
@@ -4627,11 +6988,25 @@ variable "widget" {
                   rum_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4642,17 +7017,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   security_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -4663,7 +7053,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                 }
@@ -4684,6 +7075,7 @@ variable "widget" {
           title_size  = string
         }
       ))
+      id = number
       iframe_definition = list(object(
         {
           url = string
@@ -4701,6 +7093,7 @@ variable "widget" {
         {
           columns             = list(string)
           indexes             = list(string)
+          live_span           = string
           logset              = string
           message_display     = string
           query               = string
@@ -4754,6 +7147,7 @@ variable "widget" {
             }
           ))
           has_search_bar = string
+          live_span      = string
           request = list(object(
             {
               aggregator = string
@@ -4761,11 +7155,25 @@ variable "widget" {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4776,7 +7184,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               apm_stats_query = list(object(
@@ -4815,11 +7224,25 @@ variable "widget" {
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4830,7 +7253,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               order = string
@@ -4846,11 +7270,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4861,17 +7299,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4882,7 +7335,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
             }
@@ -4903,6 +7357,7 @@ variable "widget" {
             }
           ))
           custom_unit = string
+          live_span   = string
           precision   = number
           request = list(object(
             {
@@ -4910,11 +7365,25 @@ variable "widget" {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4925,7 +7394,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               conditional_formats = list(object(
@@ -4944,11 +7414,25 @@ variable "widget" {
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4959,7 +7443,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               process_query = list(object(
@@ -4974,11 +7459,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -4989,17 +7488,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5010,7 +7524,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
             }
@@ -5031,6 +7546,7 @@ variable "widget" {
               link  = string
             }
           ))
+          live_span = string
           request = list(object(
             {
               x = list(object(
@@ -5039,11 +7555,25 @@ variable "widget" {
                   apm_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5054,17 +7584,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   log_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5075,7 +7620,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   process_query = list(object(
@@ -5090,11 +7636,25 @@ variable "widget" {
                   rum_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5105,17 +7665,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   security_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5126,7 +7701,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                 }
@@ -5137,11 +7713,25 @@ variable "widget" {
                   apm_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5152,17 +7742,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   log_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5173,7 +7778,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   process_query = list(object(
@@ -5188,11 +7794,25 @@ variable "widget" {
                   rum_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5203,17 +7823,32 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                   security_query = list(object(
                     {
                       compute = map(string)
+                      compute_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          interval    = number
+                        }
+                      ))
                       group_by = list(object(
                         {
                           facet = string
                           limit = number
                           sort  = map(string)
+                          sort_query = list(object(
+                            {
+                              aggregation = string
+                              facet       = string
+                              order       = string
+                            }
+                          ))
                         }
                       ))
                       index = string
@@ -5224,7 +7859,8 @@ variable "widget" {
                           interval    = number
                         }
                       ))
-                      search = map(string)
+                      search       = map(string)
+                      search_query = string
                     }
                   ))
                 }
@@ -5296,7 +7932,10 @@ variable "widget" {
               tags_execution = string
             }
           ))
-          legend_size = string
+          legend_columns = set(string)
+          legend_layout  = string
+          legend_size    = string
+          live_span      = string
           marker = list(object(
             {
               display_type = string
@@ -5309,11 +7948,25 @@ variable "widget" {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5324,18 +7977,33 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               display_type = string
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5346,7 +8014,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               metadata = list(object(
@@ -5358,11 +8027,25 @@ variable "widget" {
               network_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5373,7 +8056,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               on_right_yaxis = bool
@@ -5389,11 +8073,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5404,17 +8102,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5425,7 +8138,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               style = list(object(
@@ -5470,16 +8184,31 @@ variable "widget" {
               link  = string
             }
           ))
+          live_span = string
           request = list(object(
             {
               apm_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5490,7 +8219,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               conditional_formats = list(object(
@@ -5509,11 +8239,25 @@ variable "widget" {
               log_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5524,7 +8268,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               process_query = list(object(
@@ -5539,11 +8284,25 @@ variable "widget" {
               rum_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5554,17 +8313,32 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               security_query = list(object(
                 {
                   compute = map(string)
+                  compute_query = list(object(
+                    {
+                      aggregation = string
+                      facet       = string
+                      interval    = number
+                    }
+                  ))
                   group_by = list(object(
                     {
                       facet = string
                       limit = number
                       sort  = map(string)
+                      sort_query = list(object(
+                        {
+                          aggregation = string
+                          facet       = string
+                          order       = string
+                        }
+                      ))
                     }
                   ))
                   index = string
@@ -5575,7 +8349,8 @@ variable "widget" {
                       interval    = number
                     }
                   ))
-                  search = map(string)
+                  search       = map(string)
+                  search_query = string
                 }
               ))
               style = list(object(
@@ -5595,6 +8370,7 @@ variable "widget" {
         {
           display_format     = string
           env                = string
+          live_span          = string
           service            = string
           show_breakdown     = bool
           show_distribution  = bool
@@ -5608,6 +8384,14 @@ variable "widget" {
           title              = string
           title_align        = string
           title_size         = string
+        }
+      ))
+      widget_layout = list(object(
+        {
+          height = number
+          width  = number
+          x      = number
+          y      = number
         }
       ))
     }
@@ -5663,6 +8447,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.alert_graph_definition
         content {
           alert_id    = alert_graph_definition.value["alert_id"]
+          live_span   = alert_graph_definition.value["live_span"]
           time        = alert_graph_definition.value["time"]
           title       = alert_graph_definition.value["title"]
           title_align = alert_graph_definition.value["title_align"]
@@ -5687,6 +8472,7 @@ resource "datadog_dashboard" "this" {
       dynamic "change_definition" {
         for_each = widget.value.change_definition
         content {
+          live_span   = change_definition.value["live_span"]
           time        = change_definition.value["time"]
           title       = change_definition.value["title"]
           title_align = change_definition.value["title_align"]
@@ -5714,9 +8500,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -5724,6 +8520,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5742,9 +8548,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -5752,6 +8568,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5780,9 +8606,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -5790,6 +8626,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5808,9 +8654,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -5818,6 +8674,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5846,6 +8712,7 @@ resource "datadog_dashboard" "this" {
           group       = check_status_definition.value["group"]
           group_by    = check_status_definition.value["group_by"]
           grouping    = check_status_definition.value["grouping"]
+          live_span   = check_status_definition.value["live_span"]
           tags        = check_status_definition.value["tags"]
           time        = check_status_definition.value["time"]
           title       = check_status_definition.value["title"]
@@ -5858,6 +8725,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.distribution_definition
         content {
           legend_size = distribution_definition.value["legend_size"]
+          live_span   = distribution_definition.value["live_span"]
           show_legend = distribution_definition.value["show_legend"]
           time        = distribution_definition.value["time"]
           title       = distribution_definition.value["title"]
@@ -5872,9 +8740,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -5882,6 +8760,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5900,9 +8788,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -5910,6 +8808,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5938,9 +8846,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -5948,6 +8866,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -5966,9 +8894,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -5976,6 +8914,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -6008,6 +8956,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.event_stream_definition
         content {
           event_size     = event_stream_definition.value["event_size"]
+          live_span      = event_stream_definition.value["live_span"]
           query          = event_stream_definition.value["query"]
           tags_execution = event_stream_definition.value["tags_execution"]
           time           = event_stream_definition.value["time"]
@@ -6020,6 +8969,7 @@ resource "datadog_dashboard" "this" {
       dynamic "event_timeline_definition" {
         for_each = widget.value.event_timeline_definition
         content {
+          live_span      = event_timeline_definition.value["live_span"]
           query          = event_timeline_definition.value["query"]
           tags_execution = event_timeline_definition.value["tags_execution"]
           time           = event_timeline_definition.value["time"]
@@ -6039,6 +8989,144 @@ resource "datadog_dashboard" "this" {
         }
       }
 
+      dynamic "geomap_definition" {
+        for_each = widget.value.geomap_definition
+        content {
+          live_span   = geomap_definition.value["live_span"]
+          title       = geomap_definition.value["title"]
+          title_align = geomap_definition.value["title_align"]
+          title_size  = geomap_definition.value["title_size"]
+
+          dynamic "custom_link" {
+            for_each = geomap_definition.value.custom_link
+            content {
+              label = custom_link.value["label"]
+              link  = custom_link.value["link"]
+            }
+          }
+
+          dynamic "request" {
+            for_each = geomap_definition.value.request
+            content {
+              q = request.value["q"]
+
+              dynamic "log_query" {
+                for_each = request.value.log_query
+                content {
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
+
+                  dynamic "group_by" {
+                    for_each = log_query.value.group_by
+                    content {
+                      facet = group_by.value["facet"]
+                      limit = group_by.value["limit"]
+                      sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
+                    }
+                  }
+
+                  dynamic "multi_compute" {
+                    for_each = log_query.value.multi_compute
+                    content {
+                      aggregation = multi_compute.value["aggregation"]
+                      facet       = multi_compute.value["facet"]
+                      interval    = multi_compute.value["interval"]
+                    }
+                  }
+
+                }
+              }
+
+              dynamic "rum_query" {
+                for_each = request.value.rum_query
+                content {
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
+
+                  dynamic "group_by" {
+                    for_each = rum_query.value.group_by
+                    content {
+                      facet = group_by.value["facet"]
+                      limit = group_by.value["limit"]
+                      sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
+                    }
+                  }
+
+                  dynamic "multi_compute" {
+                    for_each = rum_query.value.multi_compute
+                    content {
+                      aggregation = multi_compute.value["aggregation"]
+                      facet       = multi_compute.value["facet"]
+                      interval    = multi_compute.value["interval"]
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
+
+          dynamic "style" {
+            for_each = geomap_definition.value.style
+            content {
+              palette      = style.value["palette"]
+              palette_flip = style.value["palette_flip"]
+            }
+          }
+
+          dynamic "view" {
+            for_each = geomap_definition.value.view
+            content {
+              focus = view.value["focus"]
+            }
+          }
+
+        }
+      }
+
       dynamic "group_definition" {
         for_each = widget.value.group_definition
         content {
@@ -6054,6 +9142,7 @@ resource "datadog_dashboard" "this" {
                 for_each = widget.value.alert_graph_definition
                 content {
                   alert_id    = alert_graph_definition.value["alert_id"]
+                  live_span   = alert_graph_definition.value["live_span"]
                   time        = alert_graph_definition.value["time"]
                   title       = alert_graph_definition.value["title"]
                   title_align = alert_graph_definition.value["title_align"]
@@ -6078,6 +9167,7 @@ resource "datadog_dashboard" "this" {
               dynamic "change_definition" {
                 for_each = widget.value.change_definition
                 content {
+                  live_span   = change_definition.value["live_span"]
                   time        = change_definition.value["time"]
                   title       = change_definition.value["title"]
                   title_align = change_definition.value["title_align"]
@@ -6105,9 +9195,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -6115,6 +9215,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6133,9 +9243,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -6143,6 +9263,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6171,9 +9301,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -6181,6 +9321,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6199,9 +9349,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -6209,6 +9369,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6237,6 +9407,7 @@ resource "datadog_dashboard" "this" {
                   group       = check_status_definition.value["group"]
                   group_by    = check_status_definition.value["group_by"]
                   grouping    = check_status_definition.value["grouping"]
+                  live_span   = check_status_definition.value["live_span"]
                   tags        = check_status_definition.value["tags"]
                   time        = check_status_definition.value["time"]
                   title       = check_status_definition.value["title"]
@@ -6249,6 +9420,7 @@ resource "datadog_dashboard" "this" {
                 for_each = widget.value.distribution_definition
                 content {
                   legend_size = distribution_definition.value["legend_size"]
+                  live_span   = distribution_definition.value["live_span"]
                   show_legend = distribution_definition.value["show_legend"]
                   time        = distribution_definition.value["time"]
                   title       = distribution_definition.value["title"]
@@ -6263,9 +9435,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -6273,6 +9455,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6291,9 +9483,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -6301,6 +9503,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6329,9 +9541,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -6339,6 +9561,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6357,9 +9589,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -6367,6 +9609,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6399,6 +9651,7 @@ resource "datadog_dashboard" "this" {
                 for_each = widget.value.event_stream_definition
                 content {
                   event_size     = event_stream_definition.value["event_size"]
+                  live_span      = event_stream_definition.value["live_span"]
                   query          = event_stream_definition.value["query"]
                   tags_execution = event_stream_definition.value["tags_execution"]
                   time           = event_stream_definition.value["time"]
@@ -6411,6 +9664,7 @@ resource "datadog_dashboard" "this" {
               dynamic "event_timeline_definition" {
                 for_each = widget.value.event_timeline_definition
                 content {
+                  live_span      = event_timeline_definition.value["live_span"]
                   query          = event_timeline_definition.value["query"]
                   tags_execution = event_timeline_definition.value["tags_execution"]
                   time           = event_timeline_definition.value["time"]
@@ -6430,10 +9684,149 @@ resource "datadog_dashboard" "this" {
                 }
               }
 
+              dynamic "geomap_definition" {
+                for_each = widget.value.geomap_definition
+                content {
+                  live_span   = geomap_definition.value["live_span"]
+                  title       = geomap_definition.value["title"]
+                  title_align = geomap_definition.value["title_align"]
+                  title_size  = geomap_definition.value["title_size"]
+
+                  dynamic "custom_link" {
+                    for_each = geomap_definition.value.custom_link
+                    content {
+                      label = custom_link.value["label"]
+                      link  = custom_link.value["link"]
+                    }
+                  }
+
+                  dynamic "request" {
+                    for_each = geomap_definition.value.request
+                    content {
+                      q = request.value["q"]
+
+                      dynamic "log_query" {
+                        for_each = request.value.log_query
+                        content {
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
+
+                          dynamic "group_by" {
+                            for_each = log_query.value.group_by
+                            content {
+                              facet = group_by.value["facet"]
+                              limit = group_by.value["limit"]
+                              sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
+                            }
+                          }
+
+                          dynamic "multi_compute" {
+                            for_each = log_query.value.multi_compute
+                            content {
+                              aggregation = multi_compute.value["aggregation"]
+                              facet       = multi_compute.value["facet"]
+                              interval    = multi_compute.value["interval"]
+                            }
+                          }
+
+                        }
+                      }
+
+                      dynamic "rum_query" {
+                        for_each = request.value.rum_query
+                        content {
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
+
+                          dynamic "group_by" {
+                            for_each = rum_query.value.group_by
+                            content {
+                              facet = group_by.value["facet"]
+                              limit = group_by.value["limit"]
+                              sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
+                            }
+                          }
+
+                          dynamic "multi_compute" {
+                            for_each = rum_query.value.multi_compute
+                            content {
+                              aggregation = multi_compute.value["aggregation"]
+                              facet       = multi_compute.value["facet"]
+                              interval    = multi_compute.value["interval"]
+                            }
+                          }
+
+                        }
+                      }
+
+                    }
+                  }
+
+                  dynamic "style" {
+                    for_each = geomap_definition.value.style
+                    content {
+                      palette      = style.value["palette"]
+                      palette_flip = style.value["palette_flip"]
+                    }
+                  }
+
+                  dynamic "view" {
+                    for_each = geomap_definition.value.view
+                    content {
+                      focus = view.value["focus"]
+                    }
+                  }
+
+                }
+              }
+
               dynamic "heatmap_definition" {
                 for_each = widget.value.heatmap_definition
                 content {
                   legend_size = heatmap_definition.value["legend_size"]
+                  live_span   = heatmap_definition.value["live_span"]
                   show_legend = heatmap_definition.value["show_legend"]
                   time        = heatmap_definition.value["time"]
                   title       = heatmap_definition.value["title"]
@@ -6464,9 +9857,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -6474,6 +9877,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6492,9 +9905,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -6502,6 +9925,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6530,9 +9963,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -6540,6 +9983,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6558,9 +10011,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -6568,6 +10031,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -6639,9 +10112,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "apm_query" {
                             for_each = fill.value.apm_query
                             content {
-                              compute = apm_query.value["compute"]
-                              index   = apm_query.value["index"]
-                              search  = apm_query.value["search"]
+                              compute      = apm_query.value["compute"]
+                              index        = apm_query.value["index"]
+                              search       = apm_query.value["search"]
+                              search_query = apm_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = apm_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = apm_query.value.group_by
@@ -6649,6 +10132,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6667,9 +10160,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "log_query" {
                             for_each = fill.value.log_query
                             content {
-                              compute = log_query.value["compute"]
-                              index   = log_query.value["index"]
-                              search  = log_query.value["search"]
+                              compute      = log_query.value["compute"]
+                              index        = log_query.value["index"]
+                              search       = log_query.value["search"]
+                              search_query = log_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = log_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = log_query.value.group_by
@@ -6677,6 +10180,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6705,9 +10218,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "rum_query" {
                             for_each = fill.value.rum_query
                             content {
-                              compute = rum_query.value["compute"]
-                              index   = rum_query.value["index"]
-                              search  = rum_query.value["search"]
+                              compute      = rum_query.value["compute"]
+                              index        = rum_query.value["index"]
+                              search       = rum_query.value["search"]
+                              search_query = rum_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = rum_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = rum_query.value.group_by
@@ -6715,6 +10238,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6733,9 +10266,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "security_query" {
                             for_each = fill.value.security_query
                             content {
-                              compute = security_query.value["compute"]
-                              index   = security_query.value["index"]
-                              search  = security_query.value["search"]
+                              compute      = security_query.value["compute"]
+                              index        = security_query.value["index"]
+                              search       = security_query.value["search"]
+                              search_query = security_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = security_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = security_query.value.group_by
@@ -6743,6 +10286,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6769,9 +10322,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "apm_query" {
                             for_each = size.value.apm_query
                             content {
-                              compute = apm_query.value["compute"]
-                              index   = apm_query.value["index"]
-                              search  = apm_query.value["search"]
+                              compute      = apm_query.value["compute"]
+                              index        = apm_query.value["index"]
+                              search       = apm_query.value["search"]
+                              search_query = apm_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = apm_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = apm_query.value.group_by
@@ -6779,6 +10342,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6797,9 +10370,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "log_query" {
                             for_each = size.value.log_query
                             content {
-                              compute = log_query.value["compute"]
-                              index   = log_query.value["index"]
-                              search  = log_query.value["search"]
+                              compute      = log_query.value["compute"]
+                              index        = log_query.value["index"]
+                              search       = log_query.value["search"]
+                              search_query = log_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = log_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = log_query.value.group_by
@@ -6807,6 +10390,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6835,9 +10428,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "rum_query" {
                             for_each = size.value.rum_query
                             content {
-                              compute = rum_query.value["compute"]
-                              index   = rum_query.value["index"]
-                              search  = rum_query.value["search"]
+                              compute      = rum_query.value["compute"]
+                              index        = rum_query.value["index"]
+                              search       = rum_query.value["search"]
+                              search_query = rum_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = rum_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = rum_query.value.group_by
@@ -6845,6 +10448,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6863,9 +10476,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "security_query" {
                             for_each = size.value.security_query
                             content {
-                              compute = security_query.value["compute"]
-                              index   = security_query.value["index"]
-                              search  = security_query.value["search"]
+                              compute      = security_query.value["compute"]
+                              index        = security_query.value["index"]
+                              search       = security_query.value["search"]
+                              search_query = security_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = security_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = security_query.value.group_by
@@ -6873,6 +10496,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -6928,6 +10561,7 @@ resource "datadog_dashboard" "this" {
                 content {
                   columns             = log_stream_definition.value["columns"]
                   indexes             = log_stream_definition.value["indexes"]
+                  live_span           = log_stream_definition.value["live_span"]
                   logset              = log_stream_definition.value["logset"]
                   message_display     = log_stream_definition.value["message_display"]
                   query               = log_stream_definition.value["query"]
@@ -6984,6 +10618,7 @@ resource "datadog_dashboard" "this" {
                 for_each = widget.value.query_table_definition
                 content {
                   has_search_bar = query_table_definition.value["has_search_bar"]
+                  live_span      = query_table_definition.value["live_span"]
                   time           = query_table_definition.value["time"]
                   title          = query_table_definition.value["title"]
                   title_align    = query_table_definition.value["title_align"]
@@ -7010,9 +10645,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -7020,6 +10665,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7076,9 +10731,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -7086,6 +10751,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7114,9 +10789,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -7124,6 +10809,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7142,9 +10837,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -7152,6 +10857,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7178,6 +10893,7 @@ resource "datadog_dashboard" "this" {
                 content {
                   autoscale   = query_value_definition.value["autoscale"]
                   custom_unit = query_value_definition.value["custom_unit"]
+                  live_span   = query_value_definition.value["live_span"]
                   precision   = query_value_definition.value["precision"]
                   text_align  = query_value_definition.value["text_align"]
                   time        = query_value_definition.value["time"]
@@ -7202,9 +10918,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -7212,6 +10938,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7245,9 +10981,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -7255,6 +11001,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7283,9 +11039,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -7293,6 +11059,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7311,9 +11087,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -7321,6 +11107,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7346,6 +11142,7 @@ resource "datadog_dashboard" "this" {
                 for_each = widget.value.scatterplot_definition
                 content {
                   color_by_groups = scatterplot_definition.value["color_by_groups"]
+                  live_span       = scatterplot_definition.value["live_span"]
                   time            = scatterplot_definition.value["time"]
                   title           = scatterplot_definition.value["title"]
                   title_align     = scatterplot_definition.value["title_align"]
@@ -7372,9 +11169,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "apm_query" {
                             for_each = x.value.apm_query
                             content {
-                              compute = apm_query.value["compute"]
-                              index   = apm_query.value["index"]
-                              search  = apm_query.value["search"]
+                              compute      = apm_query.value["compute"]
+                              index        = apm_query.value["index"]
+                              search       = apm_query.value["search"]
+                              search_query = apm_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = apm_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = apm_query.value.group_by
@@ -7382,6 +11189,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7400,9 +11217,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "log_query" {
                             for_each = x.value.log_query
                             content {
-                              compute = log_query.value["compute"]
-                              index   = log_query.value["index"]
-                              search  = log_query.value["search"]
+                              compute      = log_query.value["compute"]
+                              index        = log_query.value["index"]
+                              search       = log_query.value["search"]
+                              search_query = log_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = log_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = log_query.value.group_by
@@ -7410,6 +11237,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7438,9 +11275,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "rum_query" {
                             for_each = x.value.rum_query
                             content {
-                              compute = rum_query.value["compute"]
-                              index   = rum_query.value["index"]
-                              search  = rum_query.value["search"]
+                              compute      = rum_query.value["compute"]
+                              index        = rum_query.value["index"]
+                              search       = rum_query.value["search"]
+                              search_query = rum_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = rum_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = rum_query.value.group_by
@@ -7448,6 +11295,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7466,9 +11323,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "security_query" {
                             for_each = x.value.security_query
                             content {
-                              compute = security_query.value["compute"]
-                              index   = security_query.value["index"]
-                              search  = security_query.value["search"]
+                              compute      = security_query.value["compute"]
+                              index        = security_query.value["index"]
+                              search       = security_query.value["search"]
+                              search_query = security_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = security_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = security_query.value.group_by
@@ -7476,6 +11343,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7503,9 +11380,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "apm_query" {
                             for_each = y.value.apm_query
                             content {
-                              compute = apm_query.value["compute"]
-                              index   = apm_query.value["index"]
-                              search  = apm_query.value["search"]
+                              compute      = apm_query.value["compute"]
+                              index        = apm_query.value["index"]
+                              search       = apm_query.value["search"]
+                              search_query = apm_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = apm_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = apm_query.value.group_by
@@ -7513,6 +11400,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7531,9 +11428,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "log_query" {
                             for_each = y.value.log_query
                             content {
-                              compute = log_query.value["compute"]
-                              index   = log_query.value["index"]
-                              search  = log_query.value["search"]
+                              compute      = log_query.value["compute"]
+                              index        = log_query.value["index"]
+                              search       = log_query.value["search"]
+                              search_query = log_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = log_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = log_query.value.group_by
@@ -7541,6 +11448,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7569,9 +11486,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "rum_query" {
                             for_each = y.value.rum_query
                             content {
-                              compute = rum_query.value["compute"]
-                              index   = rum_query.value["index"]
-                              search  = rum_query.value["search"]
+                              compute      = rum_query.value["compute"]
+                              index        = rum_query.value["index"]
+                              search       = rum_query.value["search"]
+                              search_query = rum_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = rum_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = rum_query.value.group_by
@@ -7579,6 +11506,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7597,9 +11534,19 @@ resource "datadog_dashboard" "this" {
                           dynamic "security_query" {
                             for_each = y.value.security_query
                             content {
-                              compute = security_query.value["compute"]
-                              index   = security_query.value["index"]
-                              search  = security_query.value["search"]
+                              compute      = security_query.value["compute"]
+                              index        = security_query.value["index"]
+                              search       = security_query.value["search"]
+                              search_query = security_query.value["search_query"]
+
+                              dynamic "compute_query" {
+                                for_each = security_query.value.compute_query
+                                content {
+                                  aggregation = compute_query.value["aggregation"]
+                                  facet       = compute_query.value["facet"]
+                                  interval    = compute_query.value["interval"]
+                                }
+                              }
 
                               dynamic "group_by" {
                                 for_each = security_query.value.group_by
@@ -7607,6 +11554,16 @@ resource "datadog_dashboard" "this" {
                                   facet = group_by.value["facet"]
                                   limit = group_by.value["limit"]
                                   sort  = group_by.value["sort"]
+
+                                  dynamic "sort_query" {
+                                    for_each = group_by.value.sort_query
+                                    content {
+                                      aggregation = sort_query.value["aggregation"]
+                                      facet       = sort_query.value["facet"]
+                                      order       = sort_query.value["order"]
+                                    }
+                                  }
+
                                 }
                               }
 
@@ -7690,12 +11647,15 @@ resource "datadog_dashboard" "this" {
               dynamic "timeseries_definition" {
                 for_each = widget.value.timeseries_definition
                 content {
-                  legend_size = timeseries_definition.value["legend_size"]
-                  show_legend = timeseries_definition.value["show_legend"]
-                  time        = timeseries_definition.value["time"]
-                  title       = timeseries_definition.value["title"]
-                  title_align = timeseries_definition.value["title_align"]
-                  title_size  = timeseries_definition.value["title_size"]
+                  legend_columns = timeseries_definition.value["legend_columns"]
+                  legend_layout  = timeseries_definition.value["legend_layout"]
+                  legend_size    = timeseries_definition.value["legend_size"]
+                  live_span      = timeseries_definition.value["live_span"]
+                  show_legend    = timeseries_definition.value["show_legend"]
+                  time           = timeseries_definition.value["time"]
+                  title          = timeseries_definition.value["title"]
+                  title_align    = timeseries_definition.value["title_align"]
+                  title_size     = timeseries_definition.value["title_size"]
 
                   dynamic "custom_link" {
                     for_each = timeseries_definition.value.custom_link
@@ -7732,9 +11692,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -7742,6 +11712,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7760,9 +11740,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -7770,6 +11760,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7796,9 +11796,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "network_query" {
                         for_each = request.value.network_query
                         content {
-                          compute = network_query.value["compute"]
-                          index   = network_query.value["index"]
-                          search  = network_query.value["search"]
+                          compute      = network_query.value["compute"]
+                          index        = network_query.value["index"]
+                          search       = network_query.value["search"]
+                          search_query = network_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = network_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = network_query.value.group_by
@@ -7806,6 +11816,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7834,9 +11854,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -7844,6 +11874,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7862,9 +11902,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -7872,6 +11922,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7927,6 +11987,7 @@ resource "datadog_dashboard" "this" {
               dynamic "toplist_definition" {
                 for_each = widget.value.toplist_definition
                 content {
+                  live_span   = toplist_definition.value["live_span"]
                   time        = toplist_definition.value["time"]
                   title       = toplist_definition.value["title"]
                   title_align = toplist_definition.value["title_align"]
@@ -7948,9 +12009,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "apm_query" {
                         for_each = request.value.apm_query
                         content {
-                          compute = apm_query.value["compute"]
-                          index   = apm_query.value["index"]
-                          search  = apm_query.value["search"]
+                          compute      = apm_query.value["compute"]
+                          index        = apm_query.value["index"]
+                          search       = apm_query.value["search"]
+                          search_query = apm_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = apm_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = apm_query.value.group_by
@@ -7958,6 +12029,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -7991,9 +12072,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "log_query" {
                         for_each = request.value.log_query
                         content {
-                          compute = log_query.value["compute"]
-                          index   = log_query.value["index"]
-                          search  = log_query.value["search"]
+                          compute      = log_query.value["compute"]
+                          index        = log_query.value["index"]
+                          search       = log_query.value["search"]
+                          search_query = log_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = log_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = log_query.value.group_by
@@ -8001,6 +12092,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -8029,9 +12130,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "rum_query" {
                         for_each = request.value.rum_query
                         content {
-                          compute = rum_query.value["compute"]
-                          index   = rum_query.value["index"]
-                          search  = rum_query.value["search"]
+                          compute      = rum_query.value["compute"]
+                          index        = rum_query.value["index"]
+                          search       = rum_query.value["search"]
+                          search_query = rum_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = rum_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = rum_query.value.group_by
@@ -8039,6 +12150,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -8057,9 +12178,19 @@ resource "datadog_dashboard" "this" {
                       dynamic "security_query" {
                         for_each = request.value.security_query
                         content {
-                          compute = security_query.value["compute"]
-                          index   = security_query.value["index"]
-                          search  = security_query.value["search"]
+                          compute      = security_query.value["compute"]
+                          index        = security_query.value["index"]
+                          search       = security_query.value["search"]
+                          search_query = security_query.value["search_query"]
+
+                          dynamic "compute_query" {
+                            for_each = security_query.value.compute_query
+                            content {
+                              aggregation = compute_query.value["aggregation"]
+                              facet       = compute_query.value["facet"]
+                              interval    = compute_query.value["interval"]
+                            }
+                          }
 
                           dynamic "group_by" {
                             for_each = security_query.value.group_by
@@ -8067,6 +12198,16 @@ resource "datadog_dashboard" "this" {
                               facet = group_by.value["facet"]
                               limit = group_by.value["limit"]
                               sort  = group_by.value["sort"]
+
+                              dynamic "sort_query" {
+                                for_each = group_by.value.sort_query
+                                content {
+                                  aggregation = sort_query.value["aggregation"]
+                                  facet       = sort_query.value["facet"]
+                                  order       = sort_query.value["order"]
+                                }
+                              }
+
                             }
                           }
 
@@ -8100,6 +12241,7 @@ resource "datadog_dashboard" "this" {
                 content {
                   display_format     = trace_service_definition.value["display_format"]
                   env                = trace_service_definition.value["env"]
+                  live_span          = trace_service_definition.value["live_span"]
                   service            = trace_service_definition.value["service"]
                   show_breakdown     = trace_service_definition.value["show_breakdown"]
                   show_distribution  = trace_service_definition.value["show_distribution"]
@@ -8116,6 +12258,16 @@ resource "datadog_dashboard" "this" {
                 }
               }
 
+              dynamic "widget_layout" {
+                for_each = widget.value.widget_layout
+                content {
+                  height = widget_layout.value["height"]
+                  width  = widget_layout.value["width"]
+                  x      = widget_layout.value["x"]
+                  y      = widget_layout.value["y"]
+                }
+              }
+
             }
           }
 
@@ -8126,6 +12278,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.heatmap_definition
         content {
           legend_size = heatmap_definition.value["legend_size"]
+          live_span   = heatmap_definition.value["live_span"]
           show_legend = heatmap_definition.value["show_legend"]
           time        = heatmap_definition.value["time"]
           title       = heatmap_definition.value["title"]
@@ -8156,9 +12309,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -8166,6 +12329,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8184,9 +12357,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -8194,6 +12377,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8222,9 +12415,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -8232,6 +12435,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8250,9 +12463,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -8260,6 +12483,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8331,9 +12564,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "apm_query" {
                     for_each = fill.value.apm_query
                     content {
-                      compute = apm_query.value["compute"]
-                      index   = apm_query.value["index"]
-                      search  = apm_query.value["search"]
+                      compute      = apm_query.value["compute"]
+                      index        = apm_query.value["index"]
+                      search       = apm_query.value["search"]
+                      search_query = apm_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = apm_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = apm_query.value.group_by
@@ -8341,6 +12584,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8359,9 +12612,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "log_query" {
                     for_each = fill.value.log_query
                     content {
-                      compute = log_query.value["compute"]
-                      index   = log_query.value["index"]
-                      search  = log_query.value["search"]
+                      compute      = log_query.value["compute"]
+                      index        = log_query.value["index"]
+                      search       = log_query.value["search"]
+                      search_query = log_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = log_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = log_query.value.group_by
@@ -8369,6 +12632,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8397,9 +12670,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "rum_query" {
                     for_each = fill.value.rum_query
                     content {
-                      compute = rum_query.value["compute"]
-                      index   = rum_query.value["index"]
-                      search  = rum_query.value["search"]
+                      compute      = rum_query.value["compute"]
+                      index        = rum_query.value["index"]
+                      search       = rum_query.value["search"]
+                      search_query = rum_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = rum_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = rum_query.value.group_by
@@ -8407,6 +12690,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8425,9 +12718,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "security_query" {
                     for_each = fill.value.security_query
                     content {
-                      compute = security_query.value["compute"]
-                      index   = security_query.value["index"]
-                      search  = security_query.value["search"]
+                      compute      = security_query.value["compute"]
+                      index        = security_query.value["index"]
+                      search       = security_query.value["search"]
+                      search_query = security_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = security_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = security_query.value.group_by
@@ -8435,6 +12738,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8461,9 +12774,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "apm_query" {
                     for_each = size.value.apm_query
                     content {
-                      compute = apm_query.value["compute"]
-                      index   = apm_query.value["index"]
-                      search  = apm_query.value["search"]
+                      compute      = apm_query.value["compute"]
+                      index        = apm_query.value["index"]
+                      search       = apm_query.value["search"]
+                      search_query = apm_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = apm_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = apm_query.value.group_by
@@ -8471,6 +12794,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8489,9 +12822,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "log_query" {
                     for_each = size.value.log_query
                     content {
-                      compute = log_query.value["compute"]
-                      index   = log_query.value["index"]
-                      search  = log_query.value["search"]
+                      compute      = log_query.value["compute"]
+                      index        = log_query.value["index"]
+                      search       = log_query.value["search"]
+                      search_query = log_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = log_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = log_query.value.group_by
@@ -8499,6 +12842,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8527,9 +12880,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "rum_query" {
                     for_each = size.value.rum_query
                     content {
-                      compute = rum_query.value["compute"]
-                      index   = rum_query.value["index"]
-                      search  = rum_query.value["search"]
+                      compute      = rum_query.value["compute"]
+                      index        = rum_query.value["index"]
+                      search       = rum_query.value["search"]
+                      search_query = rum_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = rum_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = rum_query.value.group_by
@@ -8537,6 +12900,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8555,9 +12928,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "security_query" {
                     for_each = size.value.security_query
                     content {
-                      compute = security_query.value["compute"]
-                      index   = security_query.value["index"]
-                      search  = security_query.value["search"]
+                      compute      = security_query.value["compute"]
+                      index        = security_query.value["index"]
+                      search       = security_query.value["search"]
+                      search_query = security_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = security_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = security_query.value.group_by
@@ -8565,6 +12948,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -8620,6 +13013,7 @@ resource "datadog_dashboard" "this" {
         content {
           columns             = log_stream_definition.value["columns"]
           indexes             = log_stream_definition.value["indexes"]
+          live_span           = log_stream_definition.value["live_span"]
           logset              = log_stream_definition.value["logset"]
           message_display     = log_stream_definition.value["message_display"]
           query               = log_stream_definition.value["query"]
@@ -8676,6 +13070,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.query_table_definition
         content {
           has_search_bar = query_table_definition.value["has_search_bar"]
+          live_span      = query_table_definition.value["live_span"]
           time           = query_table_definition.value["time"]
           title          = query_table_definition.value["title"]
           title_align    = query_table_definition.value["title_align"]
@@ -8702,9 +13097,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -8712,6 +13117,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8768,9 +13183,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -8778,6 +13203,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8806,9 +13241,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -8816,6 +13261,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8834,9 +13289,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -8844,6 +13309,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8870,6 +13345,7 @@ resource "datadog_dashboard" "this" {
         content {
           autoscale   = query_value_definition.value["autoscale"]
           custom_unit = query_value_definition.value["custom_unit"]
+          live_span   = query_value_definition.value["live_span"]
           precision   = query_value_definition.value["precision"]
           text_align  = query_value_definition.value["text_align"]
           time        = query_value_definition.value["time"]
@@ -8894,9 +13370,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -8904,6 +13390,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8937,9 +13433,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -8947,6 +13453,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -8975,9 +13491,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -8985,6 +13511,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9003,9 +13539,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -9013,6 +13559,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9038,6 +13594,7 @@ resource "datadog_dashboard" "this" {
         for_each = widget.value.scatterplot_definition
         content {
           color_by_groups = scatterplot_definition.value["color_by_groups"]
+          live_span       = scatterplot_definition.value["live_span"]
           time            = scatterplot_definition.value["time"]
           title           = scatterplot_definition.value["title"]
           title_align     = scatterplot_definition.value["title_align"]
@@ -9064,9 +13621,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "apm_query" {
                     for_each = x.value.apm_query
                     content {
-                      compute = apm_query.value["compute"]
-                      index   = apm_query.value["index"]
-                      search  = apm_query.value["search"]
+                      compute      = apm_query.value["compute"]
+                      index        = apm_query.value["index"]
+                      search       = apm_query.value["search"]
+                      search_query = apm_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = apm_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = apm_query.value.group_by
@@ -9074,6 +13641,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9092,9 +13669,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "log_query" {
                     for_each = x.value.log_query
                     content {
-                      compute = log_query.value["compute"]
-                      index   = log_query.value["index"]
-                      search  = log_query.value["search"]
+                      compute      = log_query.value["compute"]
+                      index        = log_query.value["index"]
+                      search       = log_query.value["search"]
+                      search_query = log_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = log_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = log_query.value.group_by
@@ -9102,6 +13689,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9130,9 +13727,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "rum_query" {
                     for_each = x.value.rum_query
                     content {
-                      compute = rum_query.value["compute"]
-                      index   = rum_query.value["index"]
-                      search  = rum_query.value["search"]
+                      compute      = rum_query.value["compute"]
+                      index        = rum_query.value["index"]
+                      search       = rum_query.value["search"]
+                      search_query = rum_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = rum_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = rum_query.value.group_by
@@ -9140,6 +13747,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9158,9 +13775,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "security_query" {
                     for_each = x.value.security_query
                     content {
-                      compute = security_query.value["compute"]
-                      index   = security_query.value["index"]
-                      search  = security_query.value["search"]
+                      compute      = security_query.value["compute"]
+                      index        = security_query.value["index"]
+                      search       = security_query.value["search"]
+                      search_query = security_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = security_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = security_query.value.group_by
@@ -9168,6 +13795,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9195,9 +13832,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "apm_query" {
                     for_each = y.value.apm_query
                     content {
-                      compute = apm_query.value["compute"]
-                      index   = apm_query.value["index"]
-                      search  = apm_query.value["search"]
+                      compute      = apm_query.value["compute"]
+                      index        = apm_query.value["index"]
+                      search       = apm_query.value["search"]
+                      search_query = apm_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = apm_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = apm_query.value.group_by
@@ -9205,6 +13852,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9223,9 +13880,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "log_query" {
                     for_each = y.value.log_query
                     content {
-                      compute = log_query.value["compute"]
-                      index   = log_query.value["index"]
-                      search  = log_query.value["search"]
+                      compute      = log_query.value["compute"]
+                      index        = log_query.value["index"]
+                      search       = log_query.value["search"]
+                      search_query = log_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = log_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = log_query.value.group_by
@@ -9233,6 +13900,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9261,9 +13938,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "rum_query" {
                     for_each = y.value.rum_query
                     content {
-                      compute = rum_query.value["compute"]
-                      index   = rum_query.value["index"]
-                      search  = rum_query.value["search"]
+                      compute      = rum_query.value["compute"]
+                      index        = rum_query.value["index"]
+                      search       = rum_query.value["search"]
+                      search_query = rum_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = rum_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = rum_query.value.group_by
@@ -9271,6 +13958,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9289,9 +13986,19 @@ resource "datadog_dashboard" "this" {
                   dynamic "security_query" {
                     for_each = y.value.security_query
                     content {
-                      compute = security_query.value["compute"]
-                      index   = security_query.value["index"]
-                      search  = security_query.value["search"]
+                      compute      = security_query.value["compute"]
+                      index        = security_query.value["index"]
+                      search       = security_query.value["search"]
+                      search_query = security_query.value["search_query"]
+
+                      dynamic "compute_query" {
+                        for_each = security_query.value.compute_query
+                        content {
+                          aggregation = compute_query.value["aggregation"]
+                          facet       = compute_query.value["facet"]
+                          interval    = compute_query.value["interval"]
+                        }
+                      }
 
                       dynamic "group_by" {
                         for_each = security_query.value.group_by
@@ -9299,6 +14006,16 @@ resource "datadog_dashboard" "this" {
                           facet = group_by.value["facet"]
                           limit = group_by.value["limit"]
                           sort  = group_by.value["sort"]
+
+                          dynamic "sort_query" {
+                            for_each = group_by.value.sort_query
+                            content {
+                              aggregation = sort_query.value["aggregation"]
+                              facet       = sort_query.value["facet"]
+                              order       = sort_query.value["order"]
+                            }
+                          }
+
                         }
                       }
 
@@ -9382,12 +14099,15 @@ resource "datadog_dashboard" "this" {
       dynamic "timeseries_definition" {
         for_each = widget.value.timeseries_definition
         content {
-          legend_size = timeseries_definition.value["legend_size"]
-          show_legend = timeseries_definition.value["show_legend"]
-          time        = timeseries_definition.value["time"]
-          title       = timeseries_definition.value["title"]
-          title_align = timeseries_definition.value["title_align"]
-          title_size  = timeseries_definition.value["title_size"]
+          legend_columns = timeseries_definition.value["legend_columns"]
+          legend_layout  = timeseries_definition.value["legend_layout"]
+          legend_size    = timeseries_definition.value["legend_size"]
+          live_span      = timeseries_definition.value["live_span"]
+          show_legend    = timeseries_definition.value["show_legend"]
+          time           = timeseries_definition.value["time"]
+          title          = timeseries_definition.value["title"]
+          title_align    = timeseries_definition.value["title_align"]
+          title_size     = timeseries_definition.value["title_size"]
 
           dynamic "custom_link" {
             for_each = timeseries_definition.value.custom_link
@@ -9424,9 +14144,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -9434,6 +14164,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9452,9 +14192,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -9462,6 +14212,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9488,9 +14248,19 @@ resource "datadog_dashboard" "this" {
               dynamic "network_query" {
                 for_each = request.value.network_query
                 content {
-                  compute = network_query.value["compute"]
-                  index   = network_query.value["index"]
-                  search  = network_query.value["search"]
+                  compute      = network_query.value["compute"]
+                  index        = network_query.value["index"]
+                  search       = network_query.value["search"]
+                  search_query = network_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = network_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = network_query.value.group_by
@@ -9498,6 +14268,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9526,9 +14306,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -9536,6 +14326,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9554,9 +14354,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -9564,6 +14374,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9619,6 +14439,7 @@ resource "datadog_dashboard" "this" {
       dynamic "toplist_definition" {
         for_each = widget.value.toplist_definition
         content {
+          live_span   = toplist_definition.value["live_span"]
           time        = toplist_definition.value["time"]
           title       = toplist_definition.value["title"]
           title_align = toplist_definition.value["title_align"]
@@ -9640,9 +14461,19 @@ resource "datadog_dashboard" "this" {
               dynamic "apm_query" {
                 for_each = request.value.apm_query
                 content {
-                  compute = apm_query.value["compute"]
-                  index   = apm_query.value["index"]
-                  search  = apm_query.value["search"]
+                  compute      = apm_query.value["compute"]
+                  index        = apm_query.value["index"]
+                  search       = apm_query.value["search"]
+                  search_query = apm_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = apm_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = apm_query.value.group_by
@@ -9650,6 +14481,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9683,9 +14524,19 @@ resource "datadog_dashboard" "this" {
               dynamic "log_query" {
                 for_each = request.value.log_query
                 content {
-                  compute = log_query.value["compute"]
-                  index   = log_query.value["index"]
-                  search  = log_query.value["search"]
+                  compute      = log_query.value["compute"]
+                  index        = log_query.value["index"]
+                  search       = log_query.value["search"]
+                  search_query = log_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = log_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = log_query.value.group_by
@@ -9693,6 +14544,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9721,9 +14582,19 @@ resource "datadog_dashboard" "this" {
               dynamic "rum_query" {
                 for_each = request.value.rum_query
                 content {
-                  compute = rum_query.value["compute"]
-                  index   = rum_query.value["index"]
-                  search  = rum_query.value["search"]
+                  compute      = rum_query.value["compute"]
+                  index        = rum_query.value["index"]
+                  search       = rum_query.value["search"]
+                  search_query = rum_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = rum_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = rum_query.value.group_by
@@ -9731,6 +14602,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9749,9 +14630,19 @@ resource "datadog_dashboard" "this" {
               dynamic "security_query" {
                 for_each = request.value.security_query
                 content {
-                  compute = security_query.value["compute"]
-                  index   = security_query.value["index"]
-                  search  = security_query.value["search"]
+                  compute      = security_query.value["compute"]
+                  index        = security_query.value["index"]
+                  search       = security_query.value["search"]
+                  search_query = security_query.value["search_query"]
+
+                  dynamic "compute_query" {
+                    for_each = security_query.value.compute_query
+                    content {
+                      aggregation = compute_query.value["aggregation"]
+                      facet       = compute_query.value["facet"]
+                      interval    = compute_query.value["interval"]
+                    }
+                  }
 
                   dynamic "group_by" {
                     for_each = security_query.value.group_by
@@ -9759,6 +14650,16 @@ resource "datadog_dashboard" "this" {
                       facet = group_by.value["facet"]
                       limit = group_by.value["limit"]
                       sort  = group_by.value["sort"]
+
+                      dynamic "sort_query" {
+                        for_each = group_by.value.sort_query
+                        content {
+                          aggregation = sort_query.value["aggregation"]
+                          facet       = sort_query.value["facet"]
+                          order       = sort_query.value["order"]
+                        }
+                      }
+
                     }
                   }
 
@@ -9792,6 +14693,7 @@ resource "datadog_dashboard" "this" {
         content {
           display_format     = trace_service_definition.value["display_format"]
           env                = trace_service_definition.value["env"]
+          live_span          = trace_service_definition.value["live_span"]
           service            = trace_service_definition.value["service"]
           show_breakdown     = trace_service_definition.value["show_breakdown"]
           show_distribution  = trace_service_definition.value["show_distribution"]
@@ -9805,6 +14707,16 @@ resource "datadog_dashboard" "this" {
           title              = trace_service_definition.value["title"]
           title_align        = trace_service_definition.value["title_align"]
           title_size         = trace_service_definition.value["title_size"]
+        }
+      }
+
+      dynamic "widget_layout" {
+        for_each = widget.value.widget_layout
+        content {
+          height = widget_layout.value["height"]
+          width  = widget_layout.value["width"]
+          x      = widget_layout.value["x"]
+          y      = widget_layout.value["y"]
         }
       }
 

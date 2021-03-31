@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_firewall_authportal" {
   source = "./modules/fortios/r/fortios_firewall_authportal"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # identity_based_route - (optional) is a type of string
   identity_based_route = null
   # portal_addr - (optional) is a type of string
@@ -45,6 +47,12 @@ module "fortios_firewall_authportal" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "identity_based_route" {
   description = "(optional)"
   type        = string
@@ -80,9 +88,10 @@ variable "groups" {
 
 ```terraform
 resource "fortios_firewall_authportal" "this" {
-  identity_based_route = var.identity_based_route
-  portal_addr          = var.portal_addr
-  portal_addr6         = var.portal_addr6
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  identity_based_route  = var.identity_based_route
+  portal_addr           = var.portal_addr
+  portal_addr6          = var.portal_addr6
 
   dynamic "groups" {
     for_each = var.groups

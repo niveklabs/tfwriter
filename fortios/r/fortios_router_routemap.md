@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_router_routemap" {
 
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
 
@@ -48,6 +50,7 @@ module "fortios_router_routemap" {
     match_origin          = null
     match_route_type      = null
     match_tag             = null
+    match_vrf             = null
     set_aggregator_as     = null
     set_aggregator_ip     = null
     set_aspath = [{
@@ -98,6 +101,12 @@ variable "comments" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -122,6 +131,7 @@ variable "rule" {
       match_origin          = string
       match_route_type      = string
       match_tag             = number
+      match_vrf             = number
       set_aggregator_as     = number
       set_aggregator_ip     = string
       set_aspath = list(object(
@@ -177,8 +187,9 @@ variable "rule" {
 
 ```terraform
 resource "fortios_router_routemap" "this" {
-  comments = var.comments
-  name     = var.name
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "rule" {
     for_each = var.rule
@@ -198,6 +209,7 @@ resource "fortios_router_routemap" "this" {
       match_origin                           = rule.value["match_origin"]
       match_route_type                       = rule.value["match_route_type"]
       match_tag                              = rule.value["match_tag"]
+      match_vrf                              = rule.value["match_vrf"]
       set_aggregator_as                      = rule.value["set_aggregator_as"]
       set_aggregator_ip                      = rule.value["set_aggregator_ip"]
       set_aspath_action                      = rule.value["set_aspath_action"]

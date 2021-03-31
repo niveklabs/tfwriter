@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,18 +29,28 @@ module "fortios_logsyslogd2_overridesetting" {
 
   # certificate - (optional) is a type of string
   certificate = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # enc_algorithm - (optional) is a type of string
   enc_algorithm = null
   # facility - (optional) is a type of string
   facility = null
   # format - (optional) is a type of string
   format = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = null
   # mode - (optional) is a type of string
   mode = null
   # override - (optional) is a type of string
   override = null
   # port - (optional) is a type of number
   port = null
+  # priority - (optional) is a type of string
+  priority = null
   # server - (optional) is a type of string
   server = null
   # source_ip - (optional) is a type of string
@@ -71,6 +81,12 @@ variable "certificate" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "enc_algorithm" {
   description = "(optional)"
   type        = string
@@ -89,6 +105,24 @@ variable "format" {
   default     = null
 }
 
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "max_log_rate" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "mode" {
   description = "(optional)"
   type        = string
@@ -104,6 +138,12 @@ variable "override" {
 variable "port" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "priority" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -156,18 +196,23 @@ variable "custom_field_name" {
 
 ```terraform
 resource "fortios_logsyslogd2_overridesetting" "this" {
-  certificate           = var.certificate
-  enc_algorithm         = var.enc_algorithm
-  facility              = var.facility
-  format                = var.format
-  mode                  = var.mode
-  override              = var.override
-  port                  = var.port
-  server                = var.server
-  source_ip             = var.source_ip
-  ssl_min_proto_version = var.ssl_min_proto_version
-  status                = var.status
-  syslog_type           = var.syslog_type
+  certificate             = var.certificate
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
+  enc_algorithm           = var.enc_algorithm
+  facility                = var.facility
+  format                  = var.format
+  interface               = var.interface
+  interface_select_method = var.interface_select_method
+  max_log_rate            = var.max_log_rate
+  mode                    = var.mode
+  override                = var.override
+  port                    = var.port
+  priority                = var.priority
+  server                  = var.server
+  source_ip               = var.source_ip
+  ssl_min_proto_version   = var.ssl_min_proto_version
+  status                  = var.status
+  syslog_type             = var.syslog_type
 
   dynamic "custom_field_name" {
     for_each = var.custom_field_name
@@ -211,6 +256,21 @@ output "id" {
   value       = fortios_logsyslogd2_overridesetting.this.id
 }
 
+output "interface" {
+  description = "returns a string"
+  value       = fortios_logsyslogd2_overridesetting.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_logsyslogd2_overridesetting.this.interface_select_method
+}
+
+output "max_log_rate" {
+  description = "returns a number"
+  value       = fortios_logsyslogd2_overridesetting.this.max_log_rate
+}
+
 output "mode" {
   description = "returns a string"
   value       = fortios_logsyslogd2_overridesetting.this.mode
@@ -224,6 +284,11 @@ output "override" {
 output "port" {
   description = "returns a number"
   value       = fortios_logsyslogd2_overridesetting.this.port
+}
+
+output "priority" {
+  description = "returns a string"
+  value       = fortios_logsyslogd2_overridesetting.this.priority
 }
 
 output "server" {

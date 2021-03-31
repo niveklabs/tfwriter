@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_router_multicast" {
   source = "./modules/fortios/r/fortios_router_multicast"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # multicast_routing - (optional) is a type of string
   multicast_routing = null
   # route_limit - (optional) is a type of number
@@ -54,19 +56,21 @@ module "fortios_router_multicast" {
     join_group = [{
       address = null
     }]
-    multicast_flow         = null
-    name                   = null
-    neighbour_filter       = null
-    passive                = null
-    pim_mode               = null
-    propagation_delay      = null
-    rp_candidate           = null
-    rp_candidate_group     = null
-    rp_candidate_interval  = null
-    rp_candidate_priority  = null
-    state_refresh_interval = null
-    static_group           = null
-    ttl_threshold          = null
+    multicast_flow           = null
+    name                     = null
+    neighbour_filter         = null
+    passive                  = null
+    pim_mode                 = null
+    propagation_delay        = null
+    rp_candidate             = null
+    rp_candidate_group       = null
+    rp_candidate_interval    = null
+    rp_candidate_priority    = null
+    rpf_nbr_fail_back        = null
+    rpf_nbr_fail_back_filter = null
+    state_refresh_interval   = null
+    static_group             = null
+    ttl_threshold            = null
   }]
 
   pim_sm_global = [{
@@ -109,6 +113,12 @@ module "fortios_router_multicast" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "multicast_routing" {
   description = "(optional)"
   type        = string
@@ -154,19 +164,21 @@ variable "interface" {
           address = string
         }
       ))
-      multicast_flow         = string
-      name                   = string
-      neighbour_filter       = string
-      passive                = string
-      pim_mode               = string
-      propagation_delay      = number
-      rp_candidate           = string
-      rp_candidate_group     = string
-      rp_candidate_interval  = number
-      rp_candidate_priority  = number
-      state_refresh_interval = number
-      static_group           = string
-      ttl_threshold          = number
+      multicast_flow           = string
+      name                     = string
+      neighbour_filter         = string
+      passive                  = string
+      pim_mode                 = string
+      propagation_delay        = number
+      rp_candidate             = string
+      rp_candidate_group       = string
+      rp_candidate_interval    = number
+      rp_candidate_priority    = number
+      rpf_nbr_fail_back        = string
+      rpf_nbr_fail_back_filter = string
+      state_refresh_interval   = number
+      static_group             = string
+      ttl_threshold            = number
     }
   ))
   default = []
@@ -220,31 +232,34 @@ variable "pim_sm_global" {
 
 ```terraform
 resource "fortios_router_multicast" "this" {
-  multicast_routing = var.multicast_routing
-  route_limit       = var.route_limit
-  route_threshold   = var.route_threshold
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  multicast_routing     = var.multicast_routing
+  route_limit           = var.route_limit
+  route_threshold       = var.route_threshold
 
   dynamic "interface" {
     for_each = var.interface
     content {
-      bfd                    = interface.value["bfd"]
-      cisco_exclude_genid    = interface.value["cisco_exclude_genid"]
-      dr_priority            = interface.value["dr_priority"]
-      hello_holdtime         = interface.value["hello_holdtime"]
-      hello_interval         = interface.value["hello_interval"]
-      multicast_flow         = interface.value["multicast_flow"]
-      name                   = interface.value["name"]
-      neighbour_filter       = interface.value["neighbour_filter"]
-      passive                = interface.value["passive"]
-      pim_mode               = interface.value["pim_mode"]
-      propagation_delay      = interface.value["propagation_delay"]
-      rp_candidate           = interface.value["rp_candidate"]
-      rp_candidate_group     = interface.value["rp_candidate_group"]
-      rp_candidate_interval  = interface.value["rp_candidate_interval"]
-      rp_candidate_priority  = interface.value["rp_candidate_priority"]
-      state_refresh_interval = interface.value["state_refresh_interval"]
-      static_group           = interface.value["static_group"]
-      ttl_threshold          = interface.value["ttl_threshold"]
+      bfd                      = interface.value["bfd"]
+      cisco_exclude_genid      = interface.value["cisco_exclude_genid"]
+      dr_priority              = interface.value["dr_priority"]
+      hello_holdtime           = interface.value["hello_holdtime"]
+      hello_interval           = interface.value["hello_interval"]
+      multicast_flow           = interface.value["multicast_flow"]
+      name                     = interface.value["name"]
+      neighbour_filter         = interface.value["neighbour_filter"]
+      passive                  = interface.value["passive"]
+      pim_mode                 = interface.value["pim_mode"]
+      propagation_delay        = interface.value["propagation_delay"]
+      rp_candidate             = interface.value["rp_candidate"]
+      rp_candidate_group       = interface.value["rp_candidate_group"]
+      rp_candidate_interval    = interface.value["rp_candidate_interval"]
+      rp_candidate_priority    = interface.value["rp_candidate_priority"]
+      rpf_nbr_fail_back        = interface.value["rpf_nbr_fail_back"]
+      rpf_nbr_fail_back_filter = interface.value["rpf_nbr_fail_back_filter"]
+      state_refresh_interval   = interface.value["state_refresh_interval"]
+      static_group             = interface.value["static_group"]
+      ttl_threshold            = interface.value["ttl_threshold"]
 
       dynamic "igmp" {
         for_each = interface.value.igmp

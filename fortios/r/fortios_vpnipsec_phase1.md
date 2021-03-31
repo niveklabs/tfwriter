@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -61,6 +61,10 @@ module "fortios_vpnipsec_phase1" {
   client_keep_alive = null
   # comments - (optional) is a type of string
   comments = null
+  # dhcp6_ra_linkaddr - (optional) is a type of string
+  dhcp6_ra_linkaddr = null
+  # dhcp_ra_giaddr - (optional) is a type of string
+  dhcp_ra_giaddr = null
   # dhgrp - (optional) is a type of string
   dhgrp = null
   # digital_signature_auth - (optional) is a type of string
@@ -77,12 +81,30 @@ module "fortios_vpnipsec_phase1" {
   dpd_retrycount = null
   # dpd_retryinterval - (optional) is a type of string
   dpd_retryinterval = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # eap - (optional) is a type of string
   eap = null
+  # eap_exclude_peergrp - (optional) is a type of string
+  eap_exclude_peergrp = null
   # eap_identity - (optional) is a type of string
   eap_identity = null
   # enforce_unique_id - (optional) is a type of string
   enforce_unique_id = null
+  # fec_base - (optional) is a type of number
+  fec_base = null
+  # fec_codec - (optional) is a type of number
+  fec_codec = null
+  # fec_egress - (optional) is a type of string
+  fec_egress = null
+  # fec_ingress - (optional) is a type of string
+  fec_ingress = null
+  # fec_receive_timeout - (optional) is a type of number
+  fec_receive_timeout = null
+  # fec_redundant - (optional) is a type of number
+  fec_redundant = null
+  # fec_send_timeout - (optional) is a type of number
+  fec_send_timeout = null
   # forticlient_enforcement - (optional) is a type of string
   forticlient_enforcement = null
   # fragmentation - (optional) is a type of string
@@ -167,6 +189,10 @@ module "fortios_vpnipsec_phase1" {
   nattraversal = null
   # negotiate_timeout - (optional) is a type of number
   negotiate_timeout = null
+  # network_id - (optional) is a type of number
+  network_id = null
+  # network_overlay - (optional) is a type of string
+  network_overlay = null
   # peer - (optional) is a type of string
   peer = null
   # peergrp - (optional) is a type of string
@@ -349,6 +375,18 @@ variable "comments" {
   default     = null
 }
 
+variable "dhcp6_ra_linkaddr" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dhcp_ra_giaddr" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dhgrp" {
   description = "(optional)"
   type        = string
@@ -397,7 +435,19 @@ variable "dpd_retryinterval" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "eap" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "eap_exclude_peergrp" {
   description = "(optional)"
   type        = string
   default     = null
@@ -412,6 +462,48 @@ variable "eap_identity" {
 variable "enforce_unique_id" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "fec_base" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_codec" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_egress" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fec_ingress" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fec_receive_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_redundant" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_send_timeout" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -666,6 +758,18 @@ variable "negotiate_timeout" {
   default     = null
 }
 
+variable "network_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "network_overlay" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "peer" {
   description = "(optional)"
   type        = string
@@ -888,6 +992,8 @@ resource "fortios_vpnipsec_phase1" "this" {
   client_auto_negotiate       = var.client_auto_negotiate
   client_keep_alive           = var.client_keep_alive
   comments                    = var.comments
+  dhcp6_ra_linkaddr           = var.dhcp6_ra_linkaddr
+  dhcp_ra_giaddr              = var.dhcp_ra_giaddr
   dhgrp                       = var.dhgrp
   digital_signature_auth      = var.digital_signature_auth
   distance                    = var.distance
@@ -896,9 +1002,18 @@ resource "fortios_vpnipsec_phase1" "this" {
   dpd                         = var.dpd
   dpd_retrycount              = var.dpd_retrycount
   dpd_retryinterval           = var.dpd_retryinterval
+  dynamic_sort_subtable       = var.dynamic_sort_subtable
   eap                         = var.eap
+  eap_exclude_peergrp         = var.eap_exclude_peergrp
   eap_identity                = var.eap_identity
   enforce_unique_id           = var.enforce_unique_id
+  fec_base                    = var.fec_base
+  fec_codec                   = var.fec_codec
+  fec_egress                  = var.fec_egress
+  fec_ingress                 = var.fec_ingress
+  fec_receive_timeout         = var.fec_receive_timeout
+  fec_redundant               = var.fec_redundant
+  fec_send_timeout            = var.fec_send_timeout
   forticlient_enforcement     = var.forticlient_enforcement
   fragmentation               = var.fragmentation
   fragmentation_mtu           = var.fragmentation_mtu
@@ -941,6 +1056,8 @@ resource "fortios_vpnipsec_phase1" "this" {
   name                        = var.name
   nattraversal                = var.nattraversal
   negotiate_timeout           = var.negotiate_timeout
+  network_id                  = var.network_id
+  network_overlay             = var.network_overlay
   peer                        = var.peer
   peergrp                     = var.peergrp
   peerid                      = var.peerid
@@ -1078,6 +1195,16 @@ output "client_keep_alive" {
   value       = fortios_vpnipsec_phase1.this.client_keep_alive
 }
 
+output "dhcp6_ra_linkaddr" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.dhcp6_ra_linkaddr
+}
+
+output "dhcp_ra_giaddr" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.dhcp_ra_giaddr
+}
+
 output "dhgrp" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1.this.dhgrp
@@ -1123,6 +1250,11 @@ output "eap" {
   value       = fortios_vpnipsec_phase1.this.eap
 }
 
+output "eap_exclude_peergrp" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.eap_exclude_peergrp
+}
+
 output "eap_identity" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1.this.eap_identity
@@ -1131,6 +1263,41 @@ output "eap_identity" {
 output "enforce_unique_id" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1.this.enforce_unique_id
+}
+
+output "fec_base" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.fec_base
+}
+
+output "fec_codec" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.fec_codec
+}
+
+output "fec_egress" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.fec_egress
+}
+
+output "fec_ingress" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.fec_ingress
+}
+
+output "fec_receive_timeout" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.fec_receive_timeout
+}
+
+output "fec_redundant" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.fec_redundant
+}
+
+output "fec_send_timeout" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.fec_send_timeout
 }
 
 output "forticlient_enforcement" {
@@ -1336,6 +1503,16 @@ output "nattraversal" {
 output "negotiate_timeout" {
   description = "returns a number"
   value       = fortios_vpnipsec_phase1.this.negotiate_timeout
+}
+
+output "network_id" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1.this.network_id
+}
+
+output "network_overlay" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1.this.network_overlay
 }
 
 output "peer" {

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "azuredevops" {
-  version = "0.1.0"
+  version = "0.1.3"
 
   # org_service_url - (optional) is a type of string
   org_service_url = null
@@ -38,11 +38,15 @@ provider "azuredevops" {
 
 - [azuredevops_branch_policy_comment_resolution](./r/azuredevops_branch_policy_comment_resolution.md)
 
+- [azuredevops_branch_policy_merge_types](./r/azuredevops_branch_policy_merge_types.md)
+
 - [azuredevops_branch_policy_min_reviewers](./r/azuredevops_branch_policy_min_reviewers.md)
 
 - [azuredevops_branch_policy_work_item_linking](./r/azuredevops_branch_policy_work_item_linking.md)
 
 - [azuredevops_build_definition](./r/azuredevops_build_definition.md)
+
+- [azuredevops_build_definition_permissions](./r/azuredevops_build_definition_permissions.md)
 
 - [azuredevops_git_permissions](./r/azuredevops_git_permissions.md)
 
@@ -62,6 +66,8 @@ provider "azuredevops" {
 
 - [azuredevops_resource_authorization](./r/azuredevops_resource_authorization.md)
 
+- [azuredevops_serviceendpoint_artifactory](./r/azuredevops_serviceendpoint_artifactory.md)
+
 - [azuredevops_serviceendpoint_aws](./r/azuredevops_serviceendpoint_aws.md)
 
 - [azuredevops_serviceendpoint_azurecr](./r/azuredevops_serviceendpoint_azurecr.md)
@@ -75,6 +81,10 @@ provider "azuredevops" {
 - [azuredevops_serviceendpoint_github](./r/azuredevops_serviceendpoint_github.md)
 
 - [azuredevops_serviceendpoint_kubernetes](./r/azuredevops_serviceendpoint_kubernetes.md)
+
+- [azuredevops_serviceendpoint_runpipeline](./r/azuredevops_serviceendpoint_runpipeline.md)
+
+- [azuredevops_serviceendpoint_sonarqube](./r/azuredevops_serviceendpoint_sonarqube.md)
 
 - [azuredevops_user_entitlement](./r/azuredevops_user_entitlement.md)
 

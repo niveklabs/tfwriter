@@ -12,7 +12,7 @@
 
 ```terraform
 provider "cloudflare" {
-  version = "2.15.0"
+  version = "2.19.2"
 
   # account_id - (optional) is a type of string
   account_id = null
@@ -48,6 +48,8 @@ provider "cloudflare" {
 
 - [cloudflare_access_identity_provider](./r/cloudflare_access_identity_provider.md)
 
+- [cloudflare_access_mutual_tls_certificate](./r/cloudflare_access_mutual_tls_certificate.md)
+
 - [cloudflare_access_policy](./r/cloudflare_access_policy.md)
 
 - [cloudflare_access_rule](./r/cloudflare_access_rule.md)
@@ -59,6 +61,8 @@ provider "cloudflare" {
 - [cloudflare_api_token](./r/cloudflare_api_token.md)
 
 - [cloudflare_argo](./r/cloudflare_argo.md)
+
+- [cloudflare_argo_tunnel](./r/cloudflare_argo_tunnel.md)
 
 - [cloudflare_authenticated_origin_pulls](./r/cloudflare_authenticated_origin_pulls.md)
 
@@ -96,6 +100,8 @@ provider "cloudflare" {
 
 - [cloudflare_logpush_ownership_challenge](./r/cloudflare_logpush_ownership_challenge.md)
 
+- [cloudflare_magic_firewall_ruleset](./r/cloudflare_magic_firewall_ruleset.md)
+
 - [cloudflare_origin_ca_certificate](./r/cloudflare_origin_ca_certificate.md)
 
 - [cloudflare_page_rule](./r/cloudflare_page_rule.md)
@@ -113,6 +119,8 @@ provider "cloudflare" {
 - [cloudflare_waf_package](./r/cloudflare_waf_package.md)
 
 - [cloudflare_waf_rule](./r/cloudflare_waf_rule.md)
+
+- [cloudflare_worker_cron_trigger](./r/cloudflare_worker_cron_trigger.md)
 
 - [cloudflare_worker_route](./r/cloudflare_worker_route.md)
 

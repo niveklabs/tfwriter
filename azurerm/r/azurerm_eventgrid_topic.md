@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,12 +27,19 @@ terraform {
 module "azurerm_eventgrid_topic" {
   source = "./modules/azurerm/r/azurerm_eventgrid_topic"
 
+  # inbound_ip_rule - (optional) is a type of list of object
+  inbound_ip_rule = [{
+    action  = null
+    ip_mask = null
+  }]
   # input_schema - (optional) is a type of string
   input_schema = null
   # location - (required) is a type of string
   location = null
   # name - (required) is a type of string
   name = null
+  # public_network_access_enabled - (optional) is a type of bool
+  public_network_access_enabled = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # tags - (optional) is a type of map of string
@@ -67,6 +74,17 @@ module "azurerm_eventgrid_topic" {
 ### Variables
 
 ```terraform
+variable "inbound_ip_rule" {
+  description = "(optional)"
+  type = list(object(
+    {
+      action  = string
+      ip_mask = string
+    }
+  ))
+  default = null
+}
+
 variable "input_schema" {
   description = "(optional)"
   type        = string
@@ -81,6 +99,12 @@ variable "location" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "public_network_access_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
 }
 
 variable "resource_group_name" {
@@ -141,11 +165,13 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_eventgrid_topic" "this" {
-  input_schema        = var.input_schema
-  location            = var.location
-  name                = var.name
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
+  inbound_ip_rule               = var.inbound_ip_rule
+  input_schema                  = var.input_schema
+  location                      = var.location
+  name                          = var.name
+  public_network_access_enabled = var.public_network_access_enabled
+  resource_group_name           = var.resource_group_name
+  tags                          = var.tags
 
   dynamic "input_mapping_default_values" {
     for_each = var.input_mapping_default_values

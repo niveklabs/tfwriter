@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -62,7 +62,7 @@ variable "description" {
 }
 
 variable "format" {
-  description = "(required) - The format of packages that are stored in the repository. Possible values: [\"DOCKER\"]"
+  description = "(required) - The format of packages that are stored in the repository."
   type        = string
 }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -33,6 +33,13 @@ module "azurerm_storage_data_lake_gen2_filesystem" {
   properties = {}
   # storage_account_id - (required) is a type of string
   storage_account_id = null
+
+  ace = [{
+    id          = null
+    permissions = null
+    scope       = null
+    type        = null
+  }]
 
   timeouts = [{
     create = null
@@ -64,6 +71,19 @@ variable "storage_account_id" {
   type        = string
 }
 
+variable "ace" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id          = string
+      permissions = string
+      scope       = string
+      type        = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -87,6 +107,16 @@ resource "azurerm_storage_data_lake_gen2_filesystem" "this" {
   name               = var.name
   properties         = var.properties
   storage_account_id = var.storage_account_id
+
+  dynamic "ace" {
+    for_each = var.ace
+    content {
+      id          = ace.value["id"]
+      permissions = ace.value["permissions"]
+      scope       = ace.value["scope"]
+      type        = ace.value["type"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

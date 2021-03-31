@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -31,12 +31,23 @@ module "datadog_synthetics_global_variable" {
   description = null
   # name - (required) is a type of string
   name = null
+  # parse_test_id - (optional) is a type of string
+  parse_test_id = null
   # secure - (optional) is a type of bool
   secure = null
   # tags - (optional) is a type of list of string
   tags = []
   # value - (required) is a type of string
   value = null
+
+  parse_test_options = [{
+    field = null
+    parser = [{
+      type  = null
+      value = null
+    }]
+    type = null
+  }]
 }
 ```
 
@@ -46,31 +57,54 @@ module "datadog_synthetics_global_variable" {
 
 ```terraform
 variable "description" {
-  description = "(optional)"
+  description = "(optional) - Description of the global variable."
   type        = string
   default     = null
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Synthetics global variable name."
   type        = string
 }
 
+variable "parse_test_id" {
+  description = "(optional) - Id of the Synthetics test to use for a variable from test."
+  type        = string
+  default     = null
+}
+
 variable "secure" {
-  description = "(optional)"
+  description = "(optional) - Sets the variable as secure. Defaults to `false`."
   type        = bool
   default     = null
 }
 
 variable "tags" {
-  description = "(optional)"
+  description = "(optional) - A list of tags to associate with your synthetics global variable."
   type        = list(string)
   default     = null
 }
 
 variable "value" {
-  description = "(required)"
+  description = "(required) - The value of the global variable."
   type        = string
+}
+
+variable "parse_test_options" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      field = string
+      parser = list(object(
+        {
+          type  = string
+          value = string
+        }
+      ))
+      type = string
+    }
+  ))
+  default = []
 }
 ```
 
@@ -80,11 +114,30 @@ variable "value" {
 
 ```terraform
 resource "datadog_synthetics_global_variable" "this" {
-  description = var.description
-  name        = var.name
-  secure      = var.secure
-  tags        = var.tags
-  value       = var.value
+  description   = var.description
+  name          = var.name
+  parse_test_id = var.parse_test_id
+  secure        = var.secure
+  tags          = var.tags
+  value         = var.value
+
+  dynamic "parse_test_options" {
+    for_each = var.parse_test_options
+    content {
+      field = parse_test_options.value["field"]
+      type  = parse_test_options.value["type"]
+
+      dynamic "parser" {
+        for_each = parse_test_options.value.parser
+        content {
+          type  = parser.value["type"]
+          value = parser.value["value"]
+        }
+      }
+
+    }
+  }
+
 }
 ```
 

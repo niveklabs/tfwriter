@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_core_instance" {
 
   # availability_domain - (required) is a type of string
   availability_domain = null
+  # capacity_reservation_id - (optional) is a type of string
+  capacity_reservation_id = null
   # compartment_id - (required) is a type of string
   compartment_id = null
   # dedicated_vm_host_id - (optional) is a type of string
@@ -63,8 +65,13 @@ module "oci_core_instance" {
   subnet_id = null
 
   agent_config = [{
-    is_management_disabled = null
-    is_monitoring_disabled = null
+    are_all_plugins_disabled = null
+    is_management_disabled   = null
+    is_monitoring_disabled   = null
+    plugins_config = [{
+      desired_state = null
+      name          = null
+    }]
   }]
 
   availability_config = [{
@@ -95,6 +102,11 @@ module "oci_core_instance" {
     is_pv_encryption_in_transit_enabled = null
     network_type                        = null
     remote_data_volume_type             = null
+  }]
+
+  platform_config = [{
+    numa_nodes_per_socket = null
+    type                  = null
   }]
 
   shape_config = [{
@@ -133,6 +145,12 @@ module "oci_core_instance" {
 variable "availability_domain" {
   description = "(required)"
   type        = string
+}
+
+variable "capacity_reservation_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "compartment_id" {
@@ -233,8 +251,15 @@ variable "agent_config" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      is_management_disabled = bool
-      is_monitoring_disabled = bool
+      are_all_plugins_disabled = bool
+      is_management_disabled   = bool
+      is_monitoring_disabled   = bool
+      plugins_config = list(object(
+        {
+          desired_state = string
+          name          = string
+        }
+      ))
     }
   ))
   default = []
@@ -294,6 +319,17 @@ variable "launch_options" {
   default = []
 }
 
+variable "platform_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      numa_nodes_per_socket = string
+      type                  = string
+    }
+  ))
+  default = []
+}
+
 variable "shape_config" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -346,6 +382,7 @@ variable "timeouts" {
 ```terraform
 resource "oci_core_instance" "this" {
   availability_domain                 = var.availability_domain
+  capacity_reservation_id             = var.capacity_reservation_id
   compartment_id                      = var.compartment_id
   dedicated_vm_host_id                = var.dedicated_vm_host_id
   defined_tags                        = var.defined_tags
@@ -366,8 +403,18 @@ resource "oci_core_instance" "this" {
   dynamic "agent_config" {
     for_each = var.agent_config
     content {
-      is_management_disabled = agent_config.value["is_management_disabled"]
-      is_monitoring_disabled = agent_config.value["is_monitoring_disabled"]
+      are_all_plugins_disabled = agent_config.value["are_all_plugins_disabled"]
+      is_management_disabled   = agent_config.value["is_management_disabled"]
+      is_monitoring_disabled   = agent_config.value["is_monitoring_disabled"]
+
+      dynamic "plugins_config" {
+        for_each = agent_config.value.plugins_config
+        content {
+          desired_state = plugins_config.value["desired_state"]
+          name          = plugins_config.value["name"]
+        }
+      }
+
     }
   }
 
@@ -413,6 +460,14 @@ resource "oci_core_instance" "this" {
     }
   }
 
+  dynamic "platform_config" {
+    for_each = var.platform_config
+    content {
+      numa_nodes_per_socket = platform_config.value["numa_nodes_per_socket"]
+      type                  = platform_config.value["type"]
+    }
+  }
+
   dynamic "shape_config" {
     for_each = var.shape_config
     content {
@@ -451,6 +506,11 @@ resource "oci_core_instance" "this" {
 output "boot_volume_id" {
   description = "returns a string"
   value       = oci_core_instance.this.boot_volume_id
+}
+
+output "capacity_reservation_id" {
+  description = "returns a string"
+  value       = oci_core_instance.this.capacity_reservation_id
 }
 
 output "dedicated_vm_host_id" {

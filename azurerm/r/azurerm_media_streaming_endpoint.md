@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -291,6 +291,11 @@ output "cdn_profile" {
 output "cdn_provider" {
   description = "returns a string"
   value       = azurerm_media_streaming_endpoint.this.cdn_provider
+}
+
+output "host_name" {
+  description = "returns a string"
+  value       = azurerm_media_streaming_endpoint.this.host_name
 }
 
 output "id" {

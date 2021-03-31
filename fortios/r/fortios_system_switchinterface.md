@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,8 +27,12 @@ terraform {
 module "fortios_system_switchinterface" {
   source = "./modules/fortios/r/fortios_system_switchinterface"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # intra_switch_policy - (optional) is a type of string
   intra_switch_policy = null
+  # mac_ttl - (optional) is a type of number
+  mac_ttl = null
   # name - (required) is a type of string
   name = null
   # span - (optional) is a type of string
@@ -57,9 +61,21 @@ module "fortios_system_switchinterface" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "intra_switch_policy" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "mac_ttl" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -125,13 +141,15 @@ variable "span_source_port" {
 
 ```terraform
 resource "fortios_system_switchinterface" "this" {
-  intra_switch_policy = var.intra_switch_policy
-  name                = var.name
-  span                = var.span
-  span_dest_port      = var.span_dest_port
-  span_direction      = var.span_direction
-  type                = var.type
-  vdom                = var.vdom
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  intra_switch_policy   = var.intra_switch_policy
+  mac_ttl               = var.mac_ttl
+  name                  = var.name
+  span                  = var.span
+  span_dest_port        = var.span_dest_port
+  span_direction        = var.span_direction
+  type                  = var.type
+  vdom                  = var.vdom
 
   dynamic "member" {
     for_each = var.member
@@ -163,6 +181,11 @@ output "id" {
 output "intra_switch_policy" {
   description = "returns a string"
   value       = fortios_system_switchinterface.this.intra_switch_policy
+}
+
+output "mac_ttl" {
+  description = "returns a number"
+  value       = fortios_system_switchinterface.this.mac_ttl
 }
 
 output "span" {

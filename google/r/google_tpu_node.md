@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -45,7 +45,7 @@ module "google_tpu_node" {
   tensorflow_version = null
   # use_service_networking - (optional) is a type of bool
   use_service_networking = null
-  # zone - (required) is a type of string
+  # zone - (optional) is a type of string
   zone = null
 
   scheduling_config = [{
@@ -117,8 +117,9 @@ variable "use_service_networking" {
 }
 
 variable "zone" {
-  description = "(required) - The GCP location for the TPU."
+  description = "(optional) - The GCP location for the TPU. If it is not provided, the provider zone is used."
   type        = string
+  default     = null
 }
 
 variable "scheduling_config" {
@@ -213,6 +214,11 @@ output "project" {
 output "service_account" {
   description = "returns a string"
   value       = google_tpu_node.this.service_account
+}
+
+output "zone" {
+  description = "returns a string"
+  value       = google_tpu_node.this.zone
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aws_customer_gateway" {
 
   # bgp_asn - (required) is a type of string
   bgp_asn = null
+  # device_name - (optional) is a type of string
+  device_name = null
   # ip_address - (required) is a type of string
   ip_address = null
   # tags - (optional) is a type of map of string
@@ -46,6 +48,12 @@ module "aws_customer_gateway" {
 variable "bgp_asn" {
   description = "(required)"
   type        = string
+}
+
+variable "device_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "ip_address" {
@@ -71,10 +79,11 @@ variable "type" {
 
 ```terraform
 resource "aws_customer_gateway" "this" {
-  bgp_asn    = var.bgp_asn
-  ip_address = var.ip_address
-  tags       = var.tags
-  type       = var.type
+  bgp_asn     = var.bgp_asn
+  device_name = var.device_name
+  ip_address  = var.ip_address
+  tags        = var.tags
+  type        = var.type
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    exoscale = ">= 0.21.0"
+    exoscale = ">= 0.23.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "exoscale_instance_pool" {
   description = null
   # disk_size - (optional) is a type of number
   disk_size = null
+  # elastic_ip_ids - (optional) is a type of set of string
+  elastic_ip_ids = []
   # ipv6 - (optional) is a type of bool
   ipv6 = null
   # key_pair - (optional) is a type of string
@@ -87,6 +89,12 @@ variable "description" {
 variable "disk_size" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "elastic_ip_ids" {
+  description = "(optional)"
+  type        = set(string)
   default     = null
 }
 
@@ -180,6 +188,7 @@ resource "exoscale_instance_pool" "this" {
   affinity_group_ids = var.affinity_group_ids
   description        = var.description
   disk_size          = var.disk_size
+  elastic_ip_ids     = var.elastic_ip_ids
   ipv6               = var.ipv6
   key_pair           = var.key_pair
   name               = var.name

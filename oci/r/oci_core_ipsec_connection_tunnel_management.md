@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -46,6 +46,11 @@ module "oci_core_ipsec_connection_tunnel_management" {
     customer_interface_ip = null
     oracle_bgp_asn        = null
     oracle_interface_ip   = null
+  }]
+
+  encryption_domain_config = [{
+    cpe_traffic_selector    = []
+    oracle_traffic_selector = []
   }]
 
   timeouts = [{
@@ -108,6 +113,17 @@ variable "bgp_session_info" {
   default = []
 }
 
+variable "encryption_domain_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      cpe_traffic_selector    = list(string)
+      oracle_traffic_selector = list(string)
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -140,6 +156,14 @@ resource "oci_core_ipsec_connection_tunnel_management" "this" {
       customer_bgp_asn      = bgp_session_info.value["customer_bgp_asn"]
       customer_interface_ip = bgp_session_info.value["customer_interface_ip"]
       oracle_interface_ip   = bgp_session_info.value["oracle_interface_ip"]
+    }
+  }
+
+  dynamic "encryption_domain_config" {
+    for_each = var.encryption_domain_config
+    content {
+      cpe_traffic_selector    = encryption_domain_config.value["cpe_traffic_selector"]
+      oracle_traffic_selector = encryption_domain_config.value["oracle_traffic_selector"]
     }
   }
 

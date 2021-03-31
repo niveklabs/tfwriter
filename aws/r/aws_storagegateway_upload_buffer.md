@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,8 +27,10 @@ terraform {
 module "aws_storagegateway_upload_buffer" {
   source = "./modules/aws/r/aws_storagegateway_upload_buffer"
 
-  # disk_id - (required) is a type of string
+  # disk_id - (optional) is a type of string
   disk_id = null
+  # disk_path - (optional) is a type of string
+  disk_path = null
   # gateway_arn - (required) is a type of string
   gateway_arn = null
 }
@@ -40,8 +42,15 @@ module "aws_storagegateway_upload_buffer" {
 
 ```terraform
 variable "disk_id" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "disk_path" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "gateway_arn" {
@@ -57,6 +66,7 @@ variable "gateway_arn" {
 ```terraform
 resource "aws_storagegateway_upload_buffer" "this" {
   disk_id     = var.disk_id
+  disk_path   = var.disk_path
   gateway_arn = var.gateway_arn
 }
 ```
@@ -66,6 +76,16 @@ resource "aws_storagegateway_upload_buffer" "this" {
 ### Outputs
 
 ```terraform
+output "disk_id" {
+  description = "returns a string"
+  value       = aws_storagegateway_upload_buffer.this.disk_id
+}
+
+output "disk_path" {
+  description = "returns a string"
+  value       = aws_storagegateway_upload_buffer.this.disk_path
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_storagegateway_upload_buffer.this.id

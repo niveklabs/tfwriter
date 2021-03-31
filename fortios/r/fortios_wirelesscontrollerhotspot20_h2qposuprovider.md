@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_wirelesscontrollerhotspot20_h2qposuprovider" {
   source = "./modules/fortios/r/fortios_wirelesscontrollerhotspot20_h2qposuprovider"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # icon - (optional) is a type of string
   icon = null
   # name - (optional) is a type of string
@@ -57,6 +59,12 @@ module "fortios_wirelesscontrollerhotspot20_h2qposuprovider" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "icon" {
   description = "(optional)"
   type        = string
@@ -118,11 +126,12 @@ variable "service_description" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_h2qposuprovider" "this" {
-  icon       = var.icon
-  name       = var.name
-  osu_method = var.osu_method
-  osu_nai    = var.osu_nai
-  server_uri = var.server_uri
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  icon                  = var.icon
+  name                  = var.name
+  osu_method            = var.osu_method
+  osu_nai               = var.osu_nai
+  server_uri            = var.server_uri
 
   dynamic "friendly_name" {
     for_each = var.friendly_name

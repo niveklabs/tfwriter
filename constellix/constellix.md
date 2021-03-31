@@ -12,7 +12,7 @@
 
 ```terraform
 provider "constellix" {
-  version = "0.3.6"
+  version = "0.3.7"
 
   # apikey - (required) is a type of string
   apikey = null

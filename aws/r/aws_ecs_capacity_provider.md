@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -35,6 +35,7 @@ module "aws_ecs_capacity_provider" {
   auto_scaling_group_provider = [{
     auto_scaling_group_arn = null
     managed_scaling = [{
+      instance_warmup_period    = null
       maximum_scaling_step_size = null
       minimum_scaling_step_size = null
       status                    = null
@@ -68,6 +69,7 @@ variable "auto_scaling_group_provider" {
       auto_scaling_group_arn = string
       managed_scaling = list(object(
         {
+          instance_warmup_period    = number
           maximum_scaling_step_size = number
           minimum_scaling_step_size = number
           status                    = string
@@ -98,6 +100,7 @@ resource "aws_ecs_capacity_provider" "this" {
       dynamic "managed_scaling" {
         for_each = auto_scaling_group_provider.value.managed_scaling
         content {
+          instance_warmup_period    = managed_scaling.value["instance_warmup_period"]
           maximum_scaling_step_size = managed_scaling.value["maximum_scaling_step_size"]
           minimum_scaling_step_size = managed_scaling.value["minimum_scaling_step_size"]
           status                    = managed_scaling.value["status"]

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nomad = ">= 1.4.11"
+    nomad = ">= 1.4.13"
   }
 }
 ```
@@ -41,6 +41,11 @@ module "nomad_job" {
   policy_override = null
   # purge_on_destroy - (optional) is a type of bool
   purge_on_destroy = null
+
+  hcl2 = [{
+    allow_fs = null
+    enabled  = null
+  }]
 }
 ```
 
@@ -89,6 +94,17 @@ variable "purge_on_destroy" {
   type        = bool
   default     = null
 }
+
+variable "hcl2" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      allow_fs = bool
+      enabled  = bool
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -104,6 +120,15 @@ resource "nomad_job" "this" {
   json                    = var.json
   policy_override         = var.policy_override
   purge_on_destroy        = var.purge_on_destroy
+
+  dynamic "hcl2" {
+    for_each = var.hcl2
+    content {
+      allow_fs = hcl2.value["allow_fs"]
+      enabled  = hcl2.value["enabled"]
+    }
+  }
+
 }
 ```
 

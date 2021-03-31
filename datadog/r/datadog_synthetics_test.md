@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "datadog_synthetics_test" {
   assertions = [{}]
   # device_ids - (optional) is a type of list of string
   device_ids = []
-  # locations - (required) is a type of list of string
+  # locations - (required) is a type of set of string
   locations = []
   # message - (optional) is a type of string
   message = null
@@ -39,7 +39,7 @@ module "datadog_synthetics_test" {
   name = null
   # options - (optional) is a type of map of string
   options = {}
-  # request - (required) is a type of map of string
+  # request - (optional) is a type of map of string
   request = {}
   # request_headers - (optional) is a type of map of string
   request_headers = {}
@@ -64,6 +64,52 @@ module "datadog_synthetics_test" {
       targetvalue = null
     }]
     type = null
+  }]
+
+  browser_step = [{
+    allow_failure        = null
+    force_element_update = null
+    name                 = null
+    params = [{
+      attribute         = null
+      check             = null
+      click_type        = null
+      code              = null
+      delay             = null
+      element           = null
+      email             = null
+      file              = null
+      files             = null
+      modifiers         = []
+      playing_tab_id    = null
+      request           = null
+      subtest_public_id = null
+      value             = null
+      variable = [{
+        example = null
+        name    = null
+      }]
+      with_click = null
+      x          = null
+      y          = null
+    }]
+    timeout = null
+    type    = null
+  }]
+
+  browser_variable = [{
+    example = null
+    id      = null
+    name    = null
+    pattern = null
+    type    = null
+  }]
+
+  config_variable = [{
+    example = null
+    name    = null
+    pattern = null
+    type    = null
   }]
 
   options_list = [{
@@ -98,12 +144,23 @@ module "datadog_synthetics_test" {
     }]
   }]
 
+  request_definition = [{
+    body       = null
+    dns_server = null
+    host       = null
+    method     = null
+    port       = null
+    timeout    = null
+    url        = null
+  }]
+
   step = [{
-    allow_failure = null
-    name          = null
-    params        = null
-    timeout       = null
-    type          = null
+    allow_failure        = null
+    force_element_update = null
+    name                 = null
+    params               = null
+    timeout              = null
+    type                 = null
   }]
 
   variable = [{
@@ -122,75 +179,76 @@ module "datadog_synthetics_test" {
 
 ```terraform
 variable "assertions" {
-  description = "(optional)"
+  description = "(optional) - List of assertions. **Deprecated.** Define `assertion` blocks instead."
   type        = list(map(string))
   default     = null
 }
 
 variable "device_ids" {
-  description = "(optional)"
+  description = "(optional) - Array with the different device IDs used to run the test. Allowed enum values: `laptop_large`, `tablet`, `mobile_small` (only available for `browser` tests)."
   type        = list(string)
   default     = null
 }
 
 variable "locations" {
-  description = "(required)"
-  type        = list(string)
+  description = "(required) - Array of locations used to run the test. Refer to [Datadog documentation](https://docs.datadoghq.com/synthetics/api_test/#request) for available locations (e.g. `aws:eu-central-1`)."
+  type        = set(string)
 }
 
 variable "message" {
-  description = "(optional)"
+  description = "(optional) - A message to include with notifications for this synthetics test. Email notifications can be sent to specific users by using the same `@username` notation as events."
   type        = string
   default     = null
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Name of Datadog synthetics test."
   type        = string
 }
 
 variable "options" {
-  description = "(optional)"
+  description = "(optional) - **Deprecated.** Define `options_list` blocks instead."
   type        = map(string)
   default     = null
 }
 
 variable "request" {
-  description = "(required)"
+  description = "(optional) - The synthetics test request. Required if `type = \"api\"`. **Deprecated.** Define `request_definition` list with one element instead."
   type        = map(string)
+  default     = null
 }
 
 variable "request_headers" {
-  description = "(optional)"
+  description = "(optional) - Header name and value map."
   type        = map(string)
   default     = null
 }
 
 variable "request_query" {
-  description = "(optional)"
+  description = "(optional) - Query arguments name and value map."
   type        = map(string)
   default     = null
 }
 
 variable "status" {
-  description = "(required)"
+  description = "(required) - Define whether you want to start (`live`) or pause (`paused`) a Synthetic test. Allowed enum values: `live`, `paused`"
   type        = string
 }
 
 variable "subtype" {
-  description = "(optional)"
+  description = "(optional) - When `type` is `api`, choose from `http`, `ssl`, `tcp` or `dns`. Defaults to `http`."
   type        = string
   default     = null
 }
 
 variable "tags" {
-  description = "(optional)"
+  description = "(optional) - A list of tags to associate with your synthetics test. This can help you categorize and filter tests in the manage synthetics page of the UI. Default is an empty list (`[]`)."
   type        = list(string)
   default     = null
 }
 
 variable "type" {
-  description = "(required)"
+  description = "(required) - Synthetics test type (`api` or `browser`)."
   type        = string
 }
 
@@ -209,6 +267,74 @@ variable "assertion" {
         }
       ))
       type = string
+    }
+  ))
+  default = []
+}
+
+variable "browser_step" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      allow_failure        = bool
+      force_element_update = bool
+      name                 = string
+      params = list(object(
+        {
+          attribute         = string
+          check             = string
+          click_type        = string
+          code              = string
+          delay             = number
+          element           = string
+          email             = string
+          file              = string
+          files             = string
+          modifiers         = list(string)
+          playing_tab_id    = string
+          request           = string
+          subtest_public_id = string
+          value             = string
+          variable = list(object(
+            {
+              example = string
+              name    = string
+            }
+          ))
+          with_click = bool
+          x          = number
+          y          = number
+        }
+      ))
+      timeout = number
+      type    = string
+    }
+  ))
+  default = []
+}
+
+variable "browser_variable" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      example = string
+      id      = string
+      name    = string
+      pattern = string
+      type    = string
+    }
+  ))
+  default = []
+}
+
+variable "config_variable" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      example = string
+      name    = string
+      pattern = string
+      type    = string
     }
   ))
   default = []
@@ -272,15 +398,32 @@ variable "request_client_certificate" {
   default = []
 }
 
+variable "request_definition" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      body       = string
+      dns_server = string
+      host       = string
+      method     = string
+      port       = number
+      timeout    = number
+      url        = string
+    }
+  ))
+  default = []
+}
+
 variable "step" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      allow_failure = bool
-      name          = string
-      params        = string
-      timeout       = number
-      type          = string
+      allow_failure        = bool
+      force_element_update = bool
+      name                 = string
+      params               = string
+      timeout              = number
+      type                 = string
     }
   ))
   default = []
@@ -338,6 +481,71 @@ resource "datadog_synthetics_test" "this" {
         }
       }
 
+    }
+  }
+
+  dynamic "browser_step" {
+    for_each = var.browser_step
+    content {
+      allow_failure        = browser_step.value["allow_failure"]
+      force_element_update = browser_step.value["force_element_update"]
+      name                 = browser_step.value["name"]
+      timeout              = browser_step.value["timeout"]
+      type                 = browser_step.value["type"]
+
+      dynamic "params" {
+        for_each = browser_step.value.params
+        content {
+          attribute         = params.value["attribute"]
+          check             = params.value["check"]
+          click_type        = params.value["click_type"]
+          code              = params.value["code"]
+          delay             = params.value["delay"]
+          element           = params.value["element"]
+          email             = params.value["email"]
+          file              = params.value["file"]
+          files             = params.value["files"]
+          modifiers         = params.value["modifiers"]
+          playing_tab_id    = params.value["playing_tab_id"]
+          request           = params.value["request"]
+          subtest_public_id = params.value["subtest_public_id"]
+          value             = params.value["value"]
+          with_click        = params.value["with_click"]
+          x                 = params.value["x"]
+          y                 = params.value["y"]
+
+          dynamic "variable" {
+            for_each = params.value.variable
+            content {
+              example = variable.value["example"]
+              name    = variable.value["name"]
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+  dynamic "browser_variable" {
+    for_each = var.browser_variable
+    content {
+      example = browser_variable.value["example"]
+      id      = browser_variable.value["id"]
+      name    = browser_variable.value["name"]
+      pattern = browser_variable.value["pattern"]
+      type    = browser_variable.value["type"]
+    }
+  }
+
+  dynamic "config_variable" {
+    for_each = var.config_variable
+    content {
+      example = config_variable.value["example"]
+      name    = config_variable.value["name"]
+      pattern = config_variable.value["pattern"]
+      type    = config_variable.value["type"]
     }
   }
 
@@ -400,14 +608,28 @@ resource "datadog_synthetics_test" "this" {
     }
   }
 
+  dynamic "request_definition" {
+    for_each = var.request_definition
+    content {
+      body       = request_definition.value["body"]
+      dns_server = request_definition.value["dns_server"]
+      host       = request_definition.value["host"]
+      method     = request_definition.value["method"]
+      port       = request_definition.value["port"]
+      timeout    = request_definition.value["timeout"]
+      url        = request_definition.value["url"]
+    }
+  }
+
   dynamic "step" {
     for_each = var.step
     content {
-      allow_failure = step.value["allow_failure"]
-      name          = step.value["name"]
-      params        = step.value["params"]
-      timeout       = step.value["timeout"]
-      type          = step.value["type"]
+      allow_failure        = step.value["allow_failure"]
+      force_element_update = step.value["force_element_update"]
+      name                 = step.value["name"]
+      params               = step.value["params"]
+      timeout              = step.value["timeout"]
+      type                 = step.value["type"]
     }
   }
 

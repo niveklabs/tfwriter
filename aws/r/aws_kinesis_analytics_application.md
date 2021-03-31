@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aws_kinesis_analytics_application" {
   description = null
   # name - (required) is a type of string
   name = null
+  # start_application - (optional) is a type of bool
+  start_application = null
   # tags - (optional) is a type of map of string
   tags = {}
 
@@ -160,6 +162,12 @@ variable "description" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "start_application" {
+  description = "(optional)"
+  type        = bool
+  default     = null
 }
 
 variable "tags" {
@@ -347,10 +355,11 @@ variable "reference_data_sources" {
 
 ```terraform
 resource "aws_kinesis_analytics_application" "this" {
-  code        = var.code
-  description = var.description
-  name        = var.name
-  tags        = var.tags
+  code              = var.code
+  description       = var.description
+  name              = var.name
+  start_application = var.start_application
+  tags              = var.tags
 
   dynamic "cloudwatch_logging_options" {
     for_each = var.cloudwatch_logging_options
@@ -446,6 +455,13 @@ resource "aws_kinesis_analytics_application" "this" {
             }
           }
 
+        }
+      }
+
+      dynamic "starting_position_configuration" {
+        for_each = inputs.value.starting_position_configuration
+        content {
+          starting_position = starting_position_configuration.value["starting_position"]
         }
       }
 

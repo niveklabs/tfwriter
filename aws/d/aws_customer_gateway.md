@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -92,6 +92,11 @@ output "arn" {
 output "bgp_asn" {
   description = "returns a number"
   value       = data.aws_customer_gateway.this.bgp_asn
+}
+
+output "device_name" {
+  description = "returns a string"
+  value       = data.aws_customer_gateway.this.device_name
 }
 
 output "id" {

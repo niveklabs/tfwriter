@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "google_service_account_key" {
   source = "./modules/google/r/google_service_account_key"
 
+  # keepers - (optional) is a type of map of string
+  keepers = {}
   # key_algorithm - (optional) is a type of string
   key_algorithm = null
   # private_key_type - (optional) is a type of string
@@ -45,6 +47,12 @@ module "google_service_account_key" {
 ### Variables
 
 ```terraform
+variable "keepers" {
+  description = "(optional) - Arbitrary map of values that, when changed, will trigger recreation of resource."
+  type        = map(string)
+  default     = null
+}
+
 variable "key_algorithm" {
   description = "(optional) - The algorithm used to generate the key, used only on create. KEY_ALG_RSA_2048 is the default algorithm. Valid values are: \"KEY_ALG_RSA_1024\", \"KEY_ALG_RSA_2048\"."
   type        = string
@@ -81,6 +89,7 @@ variable "service_account_id" {
 
 ```terraform
 resource "google_service_account_key" "this" {
+  keepers            = var.keepers
   key_algorithm      = var.key_algorithm
   private_key_type   = var.private_key_type
   public_key_data    = var.public_key_data

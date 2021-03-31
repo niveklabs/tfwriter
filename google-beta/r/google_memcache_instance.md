@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -41,7 +41,7 @@ module "google_memcache_instance" {
   node_count = null
   # project - (optional) is a type of string
   project = null
-  # region - (required) is a type of string
+  # region - (optional) is a type of string
   region = null
   # zones - (optional) is a type of set of string
   zones = []
@@ -110,8 +110,9 @@ variable "project" {
 }
 
 variable "region" {
-  description = "(required) - The name of the Memcache region of the instance."
+  description = "(optional) - The region of the Memcache instance. If it is not provided, the provider region is used."
   type        = string
+  default     = null
 }
 
 variable "zones" {
@@ -202,6 +203,11 @@ resource "google_memcache_instance" "this" {
 ### Outputs
 
 ```terraform
+output "authorized_network" {
+  description = "returns a string"
+  value       = google_memcache_instance.this.authorized_network
+}
+
 output "create_time" {
   description = "returns a string"
   value       = google_memcache_instance.this.create_time
@@ -235,6 +241,11 @@ output "memcache_nodes" {
 output "project" {
   description = "returns a string"
   value       = google_memcache_instance.this.project
+}
+
+output "region" {
+  description = "returns a string"
+  value       = google_memcache_instance.this.region
 }
 
 output "zones" {

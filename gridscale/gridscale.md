@@ -12,7 +12,7 @@
 
 ```terraform
 provider "gridscale" {
-  version = "1.7.4"
+  version = "1.8.4"
 
   # api_url - (optional) is a type of string
   api_url = null
@@ -65,6 +65,8 @@ provider "gridscale" {
 - [gridscale_storage](./r/gridscale_storage.md)
 
 - [gridscale_storage_clone](./r/gridscale_storage_clone.md)
+
+- [gridscale_storage_import](./r/gridscale_storage_import.md)
 
 - [gridscale_template](./r/gridscale_template.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "fortios_antivirus_profile" {
   source = "./modules/fortios/r/fortios_antivirus_profile"
 
+  # analytics_accept_filetype - (optional) is a type of number
+  analytics_accept_filetype = null
   # analytics_bl_filetype - (optional) is a type of number
   analytics_bl_filetype = null
   # analytics_db - (optional) is a type of string
   analytics_db = null
+  # analytics_ignore_filetype - (optional) is a type of number
+  analytics_ignore_filetype = null
   # analytics_max_upload - (optional) is a type of number
   analytics_max_upload = null
   # analytics_wl_filetype - (optional) is a type of number
@@ -43,6 +47,8 @@ module "fortios_antivirus_profile" {
   comment = null
   # extended_log - (optional) is a type of string
   extended_log = null
+  # feature_set - (optional) is a type of string
+  feature_set = null
   # ftgd_analytics - (optional) is a type of string
   ftgd_analytics = null
   # inspection_mode - (optional) is a type of string
@@ -56,9 +62,20 @@ module "fortios_antivirus_profile" {
   # scan_mode - (optional) is a type of string
   scan_mode = null
 
+  cifs = [{
+    archive_block       = null
+    archive_log         = null
+    emulator            = null
+    options             = null
+    outbreak_prevention = null
+  }]
+
   content_disarm = [{
     cover_page                = null
     detect_only               = null
+    error_action              = null
+    office_action             = null
+    office_dde                = null
     office_embed              = null
     office_hylink             = null
     office_linked             = null
@@ -157,6 +174,14 @@ module "fortios_antivirus_profile" {
     options             = null
     outbreak_prevention = null
   }]
+
+  ssh = [{
+    archive_block       = null
+    archive_log         = null
+    emulator            = null
+    options             = null
+    outbreak_prevention = null
+  }]
 }
 ```
 
@@ -165,6 +190,12 @@ module "fortios_antivirus_profile" {
 ### Variables
 
 ```terraform
+variable "analytics_accept_filetype" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "analytics_bl_filetype" {
   description = "(optional)"
   type        = number
@@ -174,6 +205,12 @@ variable "analytics_bl_filetype" {
 variable "analytics_db" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "analytics_ignore_filetype" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -208,6 +245,12 @@ variable "comment" {
 }
 
 variable "extended_log" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "feature_set" {
   description = "(optional)"
   type        = string
   default     = null
@@ -248,12 +291,29 @@ variable "scan_mode" {
   default     = null
 }
 
+variable "cifs" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      archive_block       = string
+      archive_log         = string
+      emulator            = string
+      options             = string
+      outbreak_prevention = string
+    }
+  ))
+  default = []
+}
+
 variable "content_disarm" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       cover_page                = string
       detect_only               = string
+      error_action              = string
+      office_action             = string
+      office_dde                = string
       office_embed              = string
       office_hylink             = string
       office_linked             = string
@@ -415,6 +475,20 @@ variable "smtp" {
   ))
   default = []
 }
+
+variable "ssh" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      archive_block       = string
+      archive_log         = string
+      emulator            = string
+      options             = string
+      outbreak_prevention = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -423,26 +497,43 @@ variable "smtp" {
 
 ```terraform
 resource "fortios_antivirus_profile" "this" {
-  analytics_bl_filetype = var.analytics_bl_filetype
-  analytics_db          = var.analytics_db
-  analytics_max_upload  = var.analytics_max_upload
-  analytics_wl_filetype = var.analytics_wl_filetype
-  av_block_log          = var.av_block_log
-  av_virus_log          = var.av_virus_log
-  comment               = var.comment
-  extended_log          = var.extended_log
-  ftgd_analytics        = var.ftgd_analytics
-  inspection_mode       = var.inspection_mode
-  mobile_malware_db     = var.mobile_malware_db
-  name                  = var.name
-  replacemsg_group      = var.replacemsg_group
-  scan_mode             = var.scan_mode
+  analytics_accept_filetype = var.analytics_accept_filetype
+  analytics_bl_filetype     = var.analytics_bl_filetype
+  analytics_db              = var.analytics_db
+  analytics_ignore_filetype = var.analytics_ignore_filetype
+  analytics_max_upload      = var.analytics_max_upload
+  analytics_wl_filetype     = var.analytics_wl_filetype
+  av_block_log              = var.av_block_log
+  av_virus_log              = var.av_virus_log
+  comment                   = var.comment
+  extended_log              = var.extended_log
+  feature_set               = var.feature_set
+  ftgd_analytics            = var.ftgd_analytics
+  inspection_mode           = var.inspection_mode
+  mobile_malware_db         = var.mobile_malware_db
+  name                      = var.name
+  replacemsg_group          = var.replacemsg_group
+  scan_mode                 = var.scan_mode
+
+  dynamic "cifs" {
+    for_each = var.cifs
+    content {
+      archive_block       = cifs.value["archive_block"]
+      archive_log         = cifs.value["archive_log"]
+      emulator            = cifs.value["emulator"]
+      options             = cifs.value["options"]
+      outbreak_prevention = cifs.value["outbreak_prevention"]
+    }
+  }
 
   dynamic "content_disarm" {
     for_each = var.content_disarm
     content {
       cover_page                = content_disarm.value["cover_page"]
       detect_only               = content_disarm.value["detect_only"]
+      error_action              = content_disarm.value["error_action"]
+      office_action             = content_disarm.value["office_action"]
+      office_dde                = content_disarm.value["office_dde"]
       office_embed              = content_disarm.value["office_embed"]
       office_hylink             = content_disarm.value["office_hylink"]
       office_linked             = content_disarm.value["office_linked"]
@@ -573,6 +664,17 @@ resource "fortios_antivirus_profile" "this" {
     }
   }
 
+  dynamic "ssh" {
+    for_each = var.ssh
+    content {
+      archive_block       = ssh.value["archive_block"]
+      archive_log         = ssh.value["archive_log"]
+      emulator            = ssh.value["emulator"]
+      options             = ssh.value["options"]
+      outbreak_prevention = ssh.value["outbreak_prevention"]
+    }
+  }
+
 }
 ```
 
@@ -581,6 +683,11 @@ resource "fortios_antivirus_profile" "this" {
 ### Outputs
 
 ```terraform
+output "analytics_accept_filetype" {
+  description = "returns a number"
+  value       = fortios_antivirus_profile.this.analytics_accept_filetype
+}
+
 output "analytics_bl_filetype" {
   description = "returns a number"
   value       = fortios_antivirus_profile.this.analytics_bl_filetype
@@ -589,6 +696,11 @@ output "analytics_bl_filetype" {
 output "analytics_db" {
   description = "returns a string"
   value       = fortios_antivirus_profile.this.analytics_db
+}
+
+output "analytics_ignore_filetype" {
+  description = "returns a number"
+  value       = fortios_antivirus_profile.this.analytics_ignore_filetype
 }
 
 output "analytics_max_upload" {
@@ -614,6 +726,11 @@ output "av_virus_log" {
 output "extended_log" {
   description = "returns a string"
   value       = fortios_antivirus_profile.this.extended_log
+}
+
+output "feature_set" {
+  description = "returns a string"
+  value       = fortios_antivirus_profile.this.feature_set
 }
 
 output "ftgd_analytics" {

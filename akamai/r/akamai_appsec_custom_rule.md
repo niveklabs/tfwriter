@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,8 +29,8 @@ module "akamai_appsec_custom_rule" {
 
   # config_id - (required) is a type of number
   config_id = null
-  # rules - (required) is a type of string
-  rules = null
+  # custom_rule - (required) is a type of string
+  custom_rule = null
 }
 ```
 
@@ -44,7 +44,7 @@ variable "config_id" {
   type        = number
 }
 
-variable "rules" {
+variable "custom_rule" {
   description = "(required)"
   type        = string
 }
@@ -56,8 +56,8 @@ variable "rules" {
 
 ```terraform
 resource "akamai_appsec_custom_rule" "this" {
-  config_id = var.config_id
-  rules     = var.rules
+  config_id   = var.config_id
+  custom_rule = var.custom_rule
 }
 ```
 

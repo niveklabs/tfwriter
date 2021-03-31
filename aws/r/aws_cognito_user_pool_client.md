@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_cognito_user_pool_client" {
   source = "./modules/aws/r/aws_cognito_user_pool_client"
 
+  # access_token_validity - (optional) is a type of number
+  access_token_validity = null
   # allowed_oauth_flows - (optional) is a type of set of string
   allowed_oauth_flows = []
   # allowed_oauth_flows_user_pool_client - (optional) is a type of bool
@@ -41,6 +43,8 @@ module "aws_cognito_user_pool_client" {
   explicit_auth_flows = []
   # generate_secret - (optional) is a type of bool
   generate_secret = null
+  # id_token_validity - (optional) is a type of number
+  id_token_validity = null
   # logout_urls - (optional) is a type of set of string
   logout_urls = []
   # name - (required) is a type of string
@@ -59,10 +63,17 @@ module "aws_cognito_user_pool_client" {
   write_attributes = []
 
   analytics_configuration = [{
+    application_arn  = null
     application_id   = null
     external_id      = null
     role_arn         = null
     user_data_shared = null
+  }]
+
+  token_validity_units = [{
+    access_token  = null
+    id_token      = null
+    refresh_token = null
   }]
 }
 ```
@@ -72,6 +83,12 @@ module "aws_cognito_user_pool_client" {
 ### Variables
 
 ```terraform
+variable "access_token_validity" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "allowed_oauth_flows" {
   description = "(optional)"
   type        = set(string)
@@ -111,6 +128,12 @@ variable "explicit_auth_flows" {
 variable "generate_secret" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "id_token_validity" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -164,10 +187,23 @@ variable "analytics_configuration" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      application_arn  = string
       application_id   = string
       external_id      = string
       role_arn         = string
       user_data_shared = bool
+    }
+  ))
+  default = []
+}
+
+variable "token_validity_units" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      access_token  = string
+      id_token      = string
+      refresh_token = string
     }
   ))
   default = []
@@ -180,6 +216,7 @@ variable "analytics_configuration" {
 
 ```terraform
 resource "aws_cognito_user_pool_client" "this" {
+  access_token_validity                = var.access_token_validity
   allowed_oauth_flows                  = var.allowed_oauth_flows
   allowed_oauth_flows_user_pool_client = var.allowed_oauth_flows_user_pool_client
   allowed_oauth_scopes                 = var.allowed_oauth_scopes
@@ -187,6 +224,7 @@ resource "aws_cognito_user_pool_client" "this" {
   default_redirect_uri                 = var.default_redirect_uri
   explicit_auth_flows                  = var.explicit_auth_flows
   generate_secret                      = var.generate_secret
+  id_token_validity                    = var.id_token_validity
   logout_urls                          = var.logout_urls
   name                                 = var.name
   prevent_user_existence_errors        = var.prevent_user_existence_errors
@@ -199,10 +237,20 @@ resource "aws_cognito_user_pool_client" "this" {
   dynamic "analytics_configuration" {
     for_each = var.analytics_configuration
     content {
+      application_arn  = analytics_configuration.value["application_arn"]
       application_id   = analytics_configuration.value["application_id"]
       external_id      = analytics_configuration.value["external_id"]
       role_arn         = analytics_configuration.value["role_arn"]
       user_data_shared = analytics_configuration.value["user_data_shared"]
+    }
+  }
+
+  dynamic "token_validity_units" {
+    for_each = var.token_validity_units
+    content {
+      access_token  = token_validity_units.value["access_token"]
+      id_token      = token_validity_units.value["id_token"]
+      refresh_token = token_validity_units.value["refresh_token"]
     }
   }
 

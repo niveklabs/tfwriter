@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_mq_configuration" {
   source = "./modules/aws/r/aws_mq_configuration"
 
+  # authentication_strategy - (optional) is a type of string
+  authentication_strategy = null
   # data - (required) is a type of string
   data = null
   # description - (optional) is a type of string
@@ -47,6 +49,12 @@ module "aws_mq_configuration" {
 ### Variables
 
 ```terraform
+variable "authentication_strategy" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "data" {
   description = "(required)"
   type        = string
@@ -86,12 +94,13 @@ variable "tags" {
 
 ```terraform
 resource "aws_mq_configuration" "this" {
-  data           = var.data
-  description    = var.description
-  engine_type    = var.engine_type
-  engine_version = var.engine_version
-  name           = var.name
-  tags           = var.tags
+  authentication_strategy = var.authentication_strategy
+  data                    = var.data
+  description             = var.description
+  engine_type             = var.engine_type
+  engine_version          = var.engine_version
+  name                    = var.name
+  tags                    = var.tags
 }
 ```
 
@@ -103,6 +112,11 @@ resource "aws_mq_configuration" "this" {
 output "arn" {
   description = "returns a string"
   value       = aws_mq_configuration.this.arn
+}
+
+output "authentication_strategy" {
+  description = "returns a string"
+  value       = aws_mq_configuration.this.authentication_strategy
 }
 
 output "id" {

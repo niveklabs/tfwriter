@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_nat64" {
 
   # always_synthesize_aaaa_record - (optional) is a type of string
   always_synthesize_aaaa_record = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # generate_ipv6_fragment_header - (optional) is a type of string
   generate_ipv6_fragment_header = null
   # nat46_force_ipv4_packet_forwarding - (optional) is a type of string
@@ -53,6 +55,12 @@ module "fortios_system_nat64" {
 
 ```terraform
 variable "always_synthesize_aaaa_record" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -106,6 +114,7 @@ variable "secondary_prefix" {
 ```terraform
 resource "fortios_system_nat64" "this" {
   always_synthesize_aaaa_record      = var.always_synthesize_aaaa_record
+  dynamic_sort_subtable              = var.dynamic_sort_subtable
   generate_ipv6_fragment_header      = var.generate_ipv6_fragment_header
   nat46_force_ipv4_packet_forwarding = var.nat46_force_ipv4_packet_forwarding
   nat64_prefix                       = var.nat64_prefix

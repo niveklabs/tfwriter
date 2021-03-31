@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -72,7 +72,13 @@ module "azurerm_monitor_autoscale_setting" {
     }]
     rule = [{
       metric_trigger = [{
+        dimensions = [{
+          name     = null
+          operator = null
+          values   = []
+        }]
         metric_name        = null
+        metric_namespace   = null
         metric_resource_id = null
         operator           = null
         statistic          = null
@@ -189,7 +195,15 @@ variable "profile" {
         {
           metric_trigger = list(object(
             {
+              dimensions = list(object(
+                {
+                  name     = string
+                  operator = string
+                  values   = list(string)
+                }
+              ))
               metric_name        = string
+              metric_namespace   = string
               metric_resource_id = string
               operator           = string
               statistic          = string
@@ -305,6 +319,7 @@ resource "azurerm_monitor_autoscale_setting" "this" {
             for_each = rule.value.metric_trigger
             content {
               metric_name        = metric_trigger.value["metric_name"]
+              metric_namespace   = metric_trigger.value["metric_namespace"]
               metric_resource_id = metric_trigger.value["metric_resource_id"]
               operator           = metric_trigger.value["operator"]
               statistic          = metric_trigger.value["statistic"]
@@ -312,6 +327,16 @@ resource "azurerm_monitor_autoscale_setting" "this" {
               time_aggregation   = metric_trigger.value["time_aggregation"]
               time_grain         = metric_trigger.value["time_grain"]
               time_window        = metric_trigger.value["time_window"]
+
+              dynamic "dimensions" {
+                for_each = metric_trigger.value.dimensions
+                content {
+                  name     = dimensions.value["name"]
+                  operator = dimensions.value["operator"]
+                  values   = dimensions.value["values"]
+                }
+              }
+
             }
           }
 

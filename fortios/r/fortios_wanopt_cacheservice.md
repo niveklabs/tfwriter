@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_wanopt_cacheservice" {
   collaboration = null
   # device_id - (optional) is a type of string
   device_id = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # prefer_scenario - (optional) is a type of string
   prefer_scenario = null
 
@@ -72,6 +74,12 @@ variable "collaboration" {
 }
 
 variable "device_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -121,6 +129,7 @@ resource "fortios_wanopt_cacheservice" "this" {
   acceptable_connections = var.acceptable_connections
   collaboration          = var.collaboration
   device_id              = var.device_id
+  dynamic_sort_subtable  = var.dynamic_sort_subtable
   prefer_scenario        = var.prefer_scenario
 
   dynamic "dst_peer" {

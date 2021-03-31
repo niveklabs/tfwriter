@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_firewall_internetservice" {
   database = null
   # direction - (optional) is a type of string
   direction = null
+  # extra_ip_range_number - (optional) is a type of number
+  extra_ip_range_number = null
   # fosid - (optional) is a type of number
   fosid = null
   # icon_id - (optional) is a type of number
@@ -66,6 +68,12 @@ variable "database" {
 variable "direction" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "extra_ip_range_number" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -130,17 +138,18 @@ variable "sld_id" {
 
 ```terraform
 resource "fortios_firewall_internetservice" "this" {
-  database        = var.database
-  direction       = var.direction
-  fosid           = var.fosid
-  icon_id         = var.icon_id
-  ip_number       = var.ip_number
-  ip_range_number = var.ip_range_number
-  name            = var.name
-  obsolete        = var.obsolete
-  reputation      = var.reputation
-  singularity     = var.singularity
-  sld_id          = var.sld_id
+  database              = var.database
+  direction             = var.direction
+  extra_ip_range_number = var.extra_ip_range_number
+  fosid                 = var.fosid
+  icon_id               = var.icon_id
+  ip_number             = var.ip_number
+  ip_range_number       = var.ip_range_number
+  name                  = var.name
+  obsolete              = var.obsolete
+  reputation            = var.reputation
+  singularity           = var.singularity
+  sld_id                = var.sld_id
 }
 ```
 
@@ -157,6 +166,11 @@ output "database" {
 output "direction" {
   description = "returns a string"
   value       = fortios_firewall_internetservice.this.direction
+}
+
+output "extra_ip_range_number" {
+  description = "returns a number"
+  value       = fortios_firewall_internetservice.this.extra_ip_range_number
 }
 
 output "fosid" {

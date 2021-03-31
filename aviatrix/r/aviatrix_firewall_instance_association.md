@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "aviatrix_firewall_instance_association" {
   attached = null
   # egress_interface - (optional) is a type of string
   egress_interface = null
-  # firenet_gw_name - (required) is a type of string
+  # firenet_gw_name - (optional) is a type of string
   firenet_gw_name = null
   # firewall_name - (optional) is a type of string
   firewall_name = null
@@ -66,12 +66,13 @@ variable "egress_interface" {
 }
 
 variable "firenet_gw_name" {
-  description = "(required) - Name of the gateway to launch the firewall instance."
+  description = "(optional) - Name of the gateway to launch the firewall instance."
   type        = string
+  default     = null
 }
 
 variable "firewall_name" {
-  description = "(optional) - Firewall instance name, or FQDN Gateway's gw_name, required if it is a firewall instance."
+  description = "(optional) - Firewall instance name, or FQDN Gateway's gw_name, required if it is a AWS or AZURE firewall instance. Not allowed for GCP"
   type        = string
   default     = null
 }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -115,6 +115,11 @@ output "platform" {
 output "version" {
   description = "returns a string"
   value       = data.aws_imagebuilder_image_recipe.this.version
+}
+
+output "working_directory" {
+  description = "returns a string"
+  value       = data.aws_imagebuilder_image_recipe.this.working_directory
 }
 
 output "this" {

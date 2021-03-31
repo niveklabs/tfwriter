@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_dnsfilter_domainfilter" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (required) is a type of number
   fosid = null
   # name - (required) is a type of string
@@ -50,6 +52,12 @@ module "fortios_dnsfilter_domainfilter" {
 
 ```terraform
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -86,9 +94,10 @@ variable "entries" {
 
 ```terraform
 resource "fortios_dnsfilter_domainfilter" "this" {
-  comment = var.comment
-  fosid   = var.fosid
-  name    = var.name
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
+  name                  = var.name
 
   dynamic "entries" {
     for_each = var.entries

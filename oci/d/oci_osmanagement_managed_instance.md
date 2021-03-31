@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -58,6 +58,11 @@ data "oci_osmanagement_managed_instance" "this" {
 ### Outputs
 
 ```terraform
+output "bug_updates_available" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.bug_updates_available
+}
+
 output "child_software_sources" {
   description = "returns a list of object"
   value       = data.oci_osmanagement_managed_instance.this.child_software_sources
@@ -76,6 +81,11 @@ output "description" {
 output "display_name" {
   description = "returns a string"
   value       = data.oci_osmanagement_managed_instance.this.display_name
+}
+
+output "enhancement_updates_available" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.enhancement_updates_available
 }
 
 output "id" {
@@ -123,9 +133,24 @@ output "os_version" {
   value       = data.oci_osmanagement_managed_instance.this.os_version
 }
 
+output "other_updates_available" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.other_updates_available
+}
+
 output "parent_software_source" {
   description = "returns a list of object"
   value       = data.oci_osmanagement_managed_instance.this.parent_software_source
+}
+
+output "scheduled_job_count" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.scheduled_job_count
+}
+
+output "security_updates_available" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.security_updates_available
 }
 
 output "status" {
@@ -136,6 +161,11 @@ output "status" {
 output "updates_available" {
   description = "returns a number"
   value       = data.oci_osmanagement_managed_instance.this.updates_available
+}
+
+output "work_request_count" {
+  description = "returns a number"
+  value       = data.oci_osmanagement_managed_instance.this.work_request_count
 }
 
 output "this" {

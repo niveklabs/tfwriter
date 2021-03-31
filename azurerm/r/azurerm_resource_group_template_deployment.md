@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,8 +39,10 @@ module "azurerm_resource_group_template_deployment" {
   resource_group_name = null
   # tags - (optional) is a type of map of string
   tags = {}
-  # template_content - (required) is a type of string
+  # template_content - (optional) is a type of string
   template_content = null
+  # template_spec_version_id - (optional) is a type of string
+  template_spec_version_id = null
 
   timeouts = [{
     create = null
@@ -90,8 +92,15 @@ variable "tags" {
 }
 
 variable "template_content" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "template_spec_version_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "timeouts" {
@@ -114,13 +123,14 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_resource_group_template_deployment" "this" {
-  debug_level         = var.debug_level
-  deployment_mode     = var.deployment_mode
-  name                = var.name
-  parameters_content  = var.parameters_content
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
-  template_content    = var.template_content
+  debug_level              = var.debug_level
+  deployment_mode          = var.deployment_mode
+  name                     = var.name
+  parameters_content       = var.parameters_content
+  resource_group_name      = var.resource_group_name
+  tags                     = var.tags
+  template_content         = var.template_content
+  template_spec_version_id = var.template_spec_version_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -153,6 +163,11 @@ output "output_content" {
 output "parameters_content" {
   description = "returns a string"
   value       = azurerm_resource_group_template_deployment.this.parameters_content
+}
+
+output "template_content" {
+  description = "returns a string"
+  value       = azurerm_resource_group_template_deployment.this.template_content
 }
 
 output "this" {

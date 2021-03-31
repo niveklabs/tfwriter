@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -108,174 +108,174 @@ module "fastly_service_waf_configuration" {
 
 ```terraform
 variable "allowed_http_versions" {
-  description = "(optional) - Allowed HTTP versions (default HTTP/1.0 HTTP/1.1 HTTP/2)."
+  description = "(optional) - Allowed HTTP versions"
   type        = string
   default     = null
 }
 
 variable "allowed_methods" {
-  description = "(optional) - A space-separated list of HTTP method names (default GET HEAD POST OPTIONS PUT PATCH DELETE)."
+  description = "(optional) - A space-separated list of HTTP method names"
   type        = string
   default     = null
 }
 
 variable "allowed_request_content_type" {
-  description = "(optional) - Allowed request content types (default application/x-www-form-urlencoded|multipart/form-data|text/xml|application/xml|application/x-amf|application/json|text/plain)."
+  description = "(optional) - Allowed request content types"
   type        = string
   default     = null
 }
 
 variable "allowed_request_content_type_charset" {
-  description = "(optional) - Allowed request content type charset (default utf-8|iso-8859-1|iso-8859-15|windows-1252)."
+  description = "(optional) - Allowed request content type charset"
   type        = string
   default     = null
 }
 
 variable "arg_length" {
-  description = "(optional) - The maximum number of arguments allowed (default 400)."
+  description = "(optional) - The maximum number of arguments allowed"
   type        = number
   default     = null
 }
 
 variable "arg_name_length" {
-  description = "(optional) - The maximum allowed argument name length (default 100)."
+  description = "(optional) - The maximum allowed argument name length"
   type        = number
   default     = null
 }
 
 variable "combined_file_sizes" {
-  description = "(optional) - The maximum allowed size of all files (in bytes, default 10000000)."
+  description = "(optional) - The maximum allowed size of all files"
   type        = number
   default     = null
 }
 
 variable "critical_anomaly_score" {
-  description = "(optional) - Score value to add for critical anomalies (default 6)."
+  description = "(optional) - Score value to add for critical anomalies"
   type        = number
   default     = null
 }
 
 variable "crs_validate_utf8_encoding" {
-  description = "(optional) - CRS validate UTF8 encoding."
+  description = "(optional) - CRS validate UTF8 encoding"
   type        = bool
   default     = null
 }
 
 variable "error_anomaly_score" {
-  description = "(optional) - Score value to add for error anomalies (default 5)."
+  description = "(optional) - Score value to add for error anomalies"
   type        = number
   default     = null
 }
 
 variable "high_risk_country_codes" {
-  description = "(optional) - A space-separated list of country codes in ISO 3166-1 (two-letter) format."
+  description = "(optional) - A space-separated list of country codes in ISO 3166-1 (two-letter) format"
   type        = string
   default     = null
 }
 
 variable "http_violation_score_threshold" {
-  description = "(optional) - HTTP violation threshold."
+  description = "(optional) - HTTP violation threshold"
   type        = number
   default     = null
 }
 
 variable "inbound_anomaly_score_threshold" {
-  description = "(optional) - Inbound anomaly threshold."
+  description = "(optional) - Inbound anomaly threshold"
   type        = number
   default     = null
 }
 
 variable "lfi_score_threshold" {
-  description = "(optional) - Local file inclusion attack threshold."
+  description = "(optional) - Local file inclusion attack threshold"
   type        = number
   default     = null
 }
 
 variable "max_file_size" {
-  description = "(optional) - The maximum allowed file size, in bytes (default 10000000)."
+  description = "(optional) - The maximum allowed file size, in bytes"
   type        = number
   default     = null
 }
 
 variable "max_num_args" {
-  description = "(optional) - The maximum number of arguments allowed (default 255)."
+  description = "(optional) - The maximum number of arguments allowed"
   type        = number
   default     = null
 }
 
 variable "notice_anomaly_score" {
-  description = "(optional) - Score value to add for notice anomalies (default 4)."
+  description = "(optional) - Score value to add for notice anomalies"
   type        = number
   default     = null
 }
 
 variable "paranoia_level" {
-  description = "(optional) - The configured paranoia level (default 1)."
+  description = "(optional) - The configured paranoia level"
   type        = number
   default     = null
 }
 
 variable "php_injection_score_threshold" {
-  description = "(optional) - PHP injection threshold."
+  description = "(optional) - PHP injection threshold"
   type        = number
   default     = null
 }
 
 variable "rce_score_threshold" {
-  description = "(optional) - Remote code execution threshold."
+  description = "(optional) - Remote code execution threshold"
   type        = number
   default     = null
 }
 
 variable "restricted_extensions" {
-  description = "(optional) - A space-separated list of allowed file extensions (default .asa/ .asax/ .ascx/ .axd/ .backup/ .bak/ .bat/ .cdx/ .cer/ .cfg/ .cmd/ .com/ .config/ .conf/ .cs/ .csproj/ .csr/ .dat/ .db/ .dbf/ .dll/ .dos/ .htr/ .htw/ .ida/ .idc/ .idq/ .inc/ .ini/ .key/ .licx/ .lnk/ .log/ .mdb/ .old/ .pass/ .pdb/ .pol/ .printer/ .pwd/ .resources/ .resx/ .sql/ .sys/ .vb/ .vbs/ .vbproj/ .vsdisco/ .webinfo/ .xsd/ .xsx)."
+  description = "(optional) - A space-separated list of allowed file extensions"
   type        = string
   default     = null
 }
 
 variable "restricted_headers" {
-  description = "(optional) - A space-separated list of allowed header names (default /proxy/ /lock-token/ /content-range/ /translate/ /if/)."
+  description = "(optional) - A space-separated list of allowed header names"
   type        = string
   default     = null
 }
 
 variable "rfi_score_threshold" {
-  description = "(optional) - Remote file inclusion attack threshold."
+  description = "(optional) - Remote file inclusion attack threshold"
   type        = number
   default     = null
 }
 
 variable "session_fixation_score_threshold" {
-  description = "(optional) - Session fixation attack threshold."
+  description = "(optional) - Session fixation attack threshold"
   type        = number
   default     = null
 }
 
 variable "sql_injection_score_threshold" {
-  description = "(optional) - SQL injection attack threshold."
+  description = "(optional) - SQL injection attack threshold"
   type        = number
   default     = null
 }
 
 variable "total_arg_length" {
-  description = "(optional) - The maximum size of argument names and values (default 6400)."
+  description = "(optional) - The maximum size of argument names and values"
   type        = number
   default     = null
 }
 
 variable "waf_id" {
-  description = "(required) - The service the WAF belongs to."
+  description = "(required) - The ID of the Web Application Firewall that the configuration belongs to"
   type        = string
 }
 
 variable "warning_anomaly_score" {
-  description = "(optional) - Score value to add for warning anomalies."
+  description = "(optional) - Score value to add for warning anomalies"
   type        = number
   default     = null
 }
 
 variable "xss_score_threshold" {
-  description = "(optional) - XSS attack threshold."
+  description = "(optional) - XSS attack threshold"
   type        = number
   default     = null
 }

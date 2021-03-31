@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "oci_file_storage_file_system" {
   freeform_tags = {}
   # kms_key_id - (optional) is a type of string
   kms_key_id = null
+  # source_snapshot_id - (optional) is a type of string
+  source_snapshot_id = null
 
   timeouts = [{
     create = null
@@ -87,6 +89,12 @@ variable "kms_key_id" {
   default     = null
 }
 
+variable "source_snapshot_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -112,6 +120,7 @@ resource "oci_file_storage_file_system" "this" {
   display_name        = var.display_name
   freeform_tags       = var.freeform_tags
   kms_key_id          = var.kms_key_id
+  source_snapshot_id  = var.source_snapshot_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -150,9 +159,34 @@ output "id" {
   value       = oci_file_storage_file_system.this.id
 }
 
+output "is_clone_parent" {
+  description = "returns a bool"
+  value       = oci_file_storage_file_system.this.is_clone_parent
+}
+
+output "is_hydrated" {
+  description = "returns a bool"
+  value       = oci_file_storage_file_system.this.is_hydrated
+}
+
+output "lifecycle_details" {
+  description = "returns a string"
+  value       = oci_file_storage_file_system.this.lifecycle_details
+}
+
 output "metered_bytes" {
   description = "returns a string"
   value       = oci_file_storage_file_system.this.metered_bytes
+}
+
+output "source_details" {
+  description = "returns a list of object"
+  value       = oci_file_storage_file_system.this.source_details
+}
+
+output "source_snapshot_id" {
+  description = "returns a string"
+  value       = oci_file_storage_file_system.this.source_snapshot_id
 }
 
 output "state" {

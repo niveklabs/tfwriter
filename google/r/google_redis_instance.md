@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "google_redis_instance" {
 
   # alternative_location_id - (optional) is a type of string
   alternative_location_id = null
+  # auth_enabled - (optional) is a type of bool
+  auth_enabled = null
   # authorized_network - (optional) is a type of string
   authorized_network = null
   # connect_mode - (optional) is a type of string
@@ -72,6 +74,12 @@ module "google_redis_instance" {
 variable "alternative_location_id" {
   description = "(optional) - Only applicable to STANDARD_HA tier which protects the instance\nagainst zonal failures by provisioning it across two zones.\nIf provided, it must be a different zone from the one provided in\n[locationId]."
   type        = string
+  default     = null
+}
+
+variable "auth_enabled" {
+  description = "(optional) - Optional. Indicates whether OSS Redis AUTH is enabled for the\ninstance. If set to \"true\" AUTH is enabled on the instance.\nDefault value is \"false\" meaning AUTH is disabled."
+  type        = bool
   default     = null
 }
 
@@ -171,6 +179,7 @@ variable "timeouts" {
 ```terraform
 resource "google_redis_instance" "this" {
   alternative_location_id = var.alternative_location_id
+  auth_enabled            = var.auth_enabled
   authorized_network      = var.authorized_network
   connect_mode            = var.connect_mode
   display_name            = var.display_name
@@ -205,6 +214,12 @@ resource "google_redis_instance" "this" {
 output "alternative_location_id" {
   description = "returns a string"
   value       = google_redis_instance.this.alternative_location_id
+}
+
+output "auth_string" {
+  description = "returns a string"
+  value       = google_redis_instance.this.auth_string
+  sensitive   = true
 }
 
 output "authorized_network" {

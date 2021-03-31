@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -41,6 +41,9 @@ module "google_composer_environment" {
     dag_gcs_prefix = null
     database_config = [{
       machine_type = null
+    }]
+    encryption_config = [{
+      kms_key_name = null
     }]
     gke_cluster = null
     node_config = [{
@@ -130,6 +133,11 @@ variable "config" {
       database_config = list(object(
         {
           machine_type = string
+        }
+      ))
+      encryption_config = list(object(
+        {
+          kms_key_name = string
         }
       ))
       gke_cluster = string
@@ -225,6 +233,13 @@ resource "google_composer_environment" "this" {
         for_each = config.value.database_config
         content {
           machine_type = database_config.value["machine_type"]
+        }
+      }
+
+      dynamic "encryption_config" {
+        for_each = config.value.encryption_config
+        content {
+          kms_key_name = encryption_config.value["kms_key_name"]
         }
       }
 

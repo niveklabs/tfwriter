@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -48,12 +48,12 @@ module "fastly_service_acl_entries_v1" {
 
 ```terraform
 variable "acl_id" {
-  description = "(required) - ACL Id"
+  description = "(required) - The ID of the ACL that the items belong to"
   type        = string
 }
 
 variable "service_id" {
-  description = "(required) - Service Id"
+  description = "(required) - The ID of the Service that the ACL belongs to"
   type        = string
 }
 

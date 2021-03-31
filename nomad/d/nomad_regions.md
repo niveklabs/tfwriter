@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nomad = ">= 1.4.11"
+    nomad = ">= 1.4.13"
   }
 }
 ```

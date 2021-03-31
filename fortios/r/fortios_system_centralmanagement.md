@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,10 @@ module "fortios_system_centralmanagement" {
   allow_push_firmware = null
   # allow_remote_firmware_upgrade - (optional) is a type of string
   allow_remote_firmware_upgrade = null
+  # ca_cert - (optional) is a type of string
+  ca_cert = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # enc_algorithm - (optional) is a type of string
   enc_algorithm = null
   # fmg - (optional) is a type of string
@@ -43,8 +47,16 @@ module "fortios_system_centralmanagement" {
   fmg_source_ip = null
   # fmg_source_ip6 - (optional) is a type of string
   fmg_source_ip6 = null
+  # fmg_update_port - (optional) is a type of string
+  fmg_update_port = null
   # include_default_servers - (optional) is a type of string
   include_default_servers = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
+  # local_cert - (optional) is a type of string
+  local_cert = null
   # mode - (optional) is a type of string
   mode = null
   # schedule_config_restore - (optional) is a type of string
@@ -98,6 +110,18 @@ variable "allow_remote_firmware_upgrade" {
   default     = null
 }
 
+variable "ca_cert" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "enc_algorithm" {
   description = "(optional)"
   type        = string
@@ -122,7 +146,31 @@ variable "fmg_source_ip6" {
   default     = null
 }
 
+variable "fmg_update_port" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "include_default_servers" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "local_cert" {
   description = "(optional)"
   type        = string
   default     = null
@@ -190,11 +238,17 @@ resource "fortios_system_centralmanagement" "this" {
   allow_push_configuration      = var.allow_push_configuration
   allow_push_firmware           = var.allow_push_firmware
   allow_remote_firmware_upgrade = var.allow_remote_firmware_upgrade
+  ca_cert                       = var.ca_cert
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
   enc_algorithm                 = var.enc_algorithm
   fmg                           = var.fmg
   fmg_source_ip                 = var.fmg_source_ip
   fmg_source_ip6                = var.fmg_source_ip6
+  fmg_update_port               = var.fmg_update_port
   include_default_servers       = var.include_default_servers
+  interface                     = var.interface
+  interface_select_method       = var.interface_select_method
+  local_cert                    = var.local_cert
   mode                          = var.mode
   schedule_config_restore       = var.schedule_config_restore
   schedule_script_restore       = var.schedule_script_restore
@@ -242,6 +296,11 @@ output "allow_remote_firmware_upgrade" {
   value       = fortios_system_centralmanagement.this.allow_remote_firmware_upgrade
 }
 
+output "ca_cert" {
+  description = "returns a string"
+  value       = fortios_system_centralmanagement.this.ca_cert
+}
+
 output "enc_algorithm" {
   description = "returns a string"
   value       = fortios_system_centralmanagement.this.enc_algorithm
@@ -262,6 +321,11 @@ output "fmg_source_ip6" {
   value       = fortios_system_centralmanagement.this.fmg_source_ip6
 }
 
+output "fmg_update_port" {
+  description = "returns a string"
+  value       = fortios_system_centralmanagement.this.fmg_update_port
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_system_centralmanagement.this.id
@@ -270,6 +334,21 @@ output "id" {
 output "include_default_servers" {
   description = "returns a string"
   value       = fortios_system_centralmanagement.this.include_default_servers
+}
+
+output "interface" {
+  description = "returns a string"
+  value       = fortios_system_centralmanagement.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_system_centralmanagement.this.interface_select_method
+}
+
+output "local_cert" {
+  description = "returns a string"
+  value       = fortios_system_centralmanagement.this.local_cert
 }
 
 output "mode" {

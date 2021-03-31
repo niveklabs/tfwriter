@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    dns = ">= 3.0.0"
+    dns = ">= 3.1.0"
   }
 }
 ```

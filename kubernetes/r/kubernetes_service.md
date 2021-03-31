@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "kubernetes_service" {
   source = "./modules/kubernetes/r/kubernetes_service"
 
+  # wait_for_load_balancer - (optional) is a type of bool
+  wait_for_load_balancer = null
 
   metadata = [{
     annotations      = {}
@@ -72,6 +74,12 @@ module "kubernetes_service" {
 ### Variables
 
 ```terraform
+variable "wait_for_load_balancer" {
+  description = "(optional) - Terraform will wait for the load balancer to have at least 1 endpoint before considering the resource created."
+  type        = bool
+  default     = null
+}
+
 variable "metadata" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -134,6 +142,7 @@ variable "timeouts" {
 
 ```terraform
 resource "kubernetes_service" "this" {
+  wait_for_load_balancer = var.wait_for_load_balancer
 
   dynamic "metadata" {
     for_each = var.metadata
@@ -195,9 +204,9 @@ output "id" {
   value       = kubernetes_service.this.id
 }
 
-output "load_balancer_ingress" {
+output "status" {
   description = "returns a list of object"
-  value       = kubernetes_service.this.load_balancer_ingress
+  value       = kubernetes_service.this.status
 }
 
 output "this" {

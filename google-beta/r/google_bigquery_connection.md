@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -168,6 +168,11 @@ resource "google_bigquery_connection" "this" {
 ### Outputs
 
 ```terraform
+output "connection_id" {
+  description = "returns a string"
+  value       = google_bigquery_connection.this.connection_id
+}
+
 output "has_credential" {
   description = "returns a bool"
   value       = google_bigquery_connection.this.has_credential

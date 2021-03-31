@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    circonus = ">= 0.11.4"
+    circonus = ">= 0.12.0"
   }
 }
 ```
@@ -180,7 +180,7 @@ variable "alert_option" {
 }
 
 variable "email" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       address = string
@@ -230,7 +230,7 @@ variable "slack" {
 }
 
 variable "sms" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       address = string
@@ -256,7 +256,7 @@ variable "victorops" {
 }
 
 variable "xmpp" {
-  description = "nested block: NestingSet, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       address = string

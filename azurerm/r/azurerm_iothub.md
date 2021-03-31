@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -38,6 +38,12 @@ module "azurerm_iothub" {
     name                       = null
     resource_group_name        = null
     type                       = null
+  }]
+  # enrichment - (optional) is a type of list of object
+  enrichment = [{
+    endpoint_names = []
+    key            = null
+    value          = null
   }]
   # event_hub_partition_count - (optional) is a type of number
   event_hub_partition_count = null
@@ -119,6 +125,18 @@ variable "endpoint" {
       name                       = string
       resource_group_name        = string
       type                       = string
+    }
+  ))
+  default = null
+}
+
+variable "enrichment" {
+  description = "(optional)"
+  type = list(object(
+    {
+      endpoint_names = list(string)
+      key            = string
+      value          = string
     }
   ))
   default = null
@@ -255,6 +273,7 @@ variable "timeouts" {
 ```terraform
 resource "azurerm_iothub" "this" {
   endpoint                      = var.endpoint
+  enrichment                    = var.enrichment
   event_hub_partition_count     = var.event_hub_partition_count
   event_hub_retention_in_days   = var.event_hub_retention_in_days
   location                      = var.location
@@ -326,6 +345,11 @@ resource "azurerm_iothub" "this" {
 output "endpoint" {
   description = "returns a list of object"
   value       = azurerm_iothub.this.endpoint
+}
+
+output "enrichment" {
+  description = "returns a list of object"
+  value       = azurerm_iothub.this.enrichment
 }
 
 output "event_hub_events_endpoint" {

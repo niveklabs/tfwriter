@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_vpnipsec_concentrator" {
   source = "./modules/fortios/r/fortios_vpnipsec_concentrator"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # src_check - (optional) is a type of string
@@ -43,6 +45,12 @@ module "fortios_vpnipsec_concentrator" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -72,8 +80,9 @@ variable "member" {
 
 ```terraform
 resource "fortios_vpnipsec_concentrator" "this" {
-  name      = var.name
-  src_check = var.src_check
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  src_check             = var.src_check
 
   dynamic "member" {
     for_each = var.member

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,10 @@ module "fortios_vpnipsec_phase1interface" {
   add_gw_route = null
   # add_route - (optional) is a type of string
   add_route = null
+  # aggregate_member - (optional) is a type of string
+  aggregate_member = null
+  # aggregate_weight - (optional) is a type of number
+  aggregate_weight = null
   # assign_ip - (optional) is a type of string
   assign_ip = null
   # assign_ip_from - (optional) is a type of string
@@ -55,6 +59,8 @@ module "fortios_vpnipsec_phase1interface" {
   auto_discovery_receiver = null
   # auto_discovery_sender - (optional) is a type of string
   auto_discovery_sender = null
+  # auto_discovery_shortcuts - (optional) is a type of string
+  auto_discovery_shortcuts = null
   # auto_negotiate - (optional) is a type of string
   auto_negotiate = null
   # banner - (optional) is a type of string
@@ -73,6 +79,10 @@ module "fortios_vpnipsec_phase1interface" {
   default_gw = null
   # default_gw_priority - (optional) is a type of number
   default_gw_priority = null
+  # dhcp6_ra_linkaddr - (optional) is a type of string
+  dhcp6_ra_linkaddr = null
+  # dhcp_ra_giaddr - (optional) is a type of string
+  dhcp_ra_giaddr = null
   # dhgrp - (optional) is a type of string
   dhgrp = null
   # digital_signature_auth - (optional) is a type of string
@@ -89,8 +99,12 @@ module "fortios_vpnipsec_phase1interface" {
   dpd_retrycount = null
   # dpd_retryinterval - (optional) is a type of string
   dpd_retryinterval = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # eap - (optional) is a type of string
   eap = null
+  # eap_exclude_peergrp - (optional) is a type of string
+  eap_exclude_peergrp = null
   # eap_identity - (optional) is a type of string
   eap_identity = null
   # encap_local_gw4 - (optional) is a type of string
@@ -113,6 +127,20 @@ module "fortios_vpnipsec_phase1interface" {
   exchange_ip_addr4 = null
   # exchange_ip_addr6 - (optional) is a type of string
   exchange_ip_addr6 = null
+  # fec_base - (optional) is a type of number
+  fec_base = null
+  # fec_codec - (optional) is a type of number
+  fec_codec = null
+  # fec_egress - (optional) is a type of string
+  fec_egress = null
+  # fec_ingress - (optional) is a type of string
+  fec_ingress = null
+  # fec_receive_timeout - (optional) is a type of number
+  fec_receive_timeout = null
+  # fec_redundant - (optional) is a type of number
+  fec_redundant = null
+  # fec_send_timeout - (optional) is a type of number
+  fec_send_timeout = null
   # forticlient_enforcement - (optional) is a type of string
   forticlient_enforcement = null
   # fragmentation - (optional) is a type of string
@@ -135,6 +163,8 @@ module "fortios_vpnipsec_phase1interface" {
   include_local_lan = null
   # interface - (required) is a type of string
   interface = null
+  # ip_fragmentation - (optional) is a type of string
+  ip_fragmentation = null
   # ip_version - (optional) is a type of string
   ip_version = null
   # ipv4_dns_server1 - (optional) is a type of string
@@ -213,6 +243,10 @@ module "fortios_vpnipsec_phase1interface" {
   negotiate_timeout = null
   # net_device - (optional) is a type of string
   net_device = null
+  # network_id - (optional) is a type of number
+  network_id = null
+  # network_overlay - (optional) is a type of string
+  network_overlay = null
   # passive_mode - (optional) is a type of string
   passive_mode = null
   # peer - (optional) is a type of string
@@ -319,6 +353,18 @@ variable "add_route" {
   default     = null
 }
 
+variable "aggregate_member" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "aggregate_weight" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "assign_ip" {
   description = "(optional)"
   type        = string
@@ -385,6 +431,12 @@ variable "auto_discovery_sender" {
   default     = null
 }
 
+variable "auto_discovery_shortcuts" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "auto_negotiate" {
   description = "(optional)"
   type        = string
@@ -439,6 +491,18 @@ variable "default_gw_priority" {
   default     = null
 }
 
+variable "dhcp6_ra_linkaddr" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dhcp_ra_giaddr" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dhgrp" {
   description = "(optional)"
   type        = string
@@ -487,7 +551,19 @@ variable "dpd_retryinterval" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "eap" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "eap_exclude_peergrp" {
   description = "(optional)"
   type        = string
   default     = null
@@ -559,6 +635,48 @@ variable "exchange_ip_addr6" {
   default     = null
 }
 
+variable "fec_base" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_codec" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_egress" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fec_ingress" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fec_receive_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_redundant" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_send_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "forticlient_enforcement" {
   description = "(optional)"
   type        = string
@@ -622,6 +740,12 @@ variable "include_local_lan" {
 variable "interface" {
   description = "(required)"
   type        = string
+}
+
+variable "ip_fragmentation" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "ip_version" {
@@ -853,6 +977,18 @@ variable "negotiate_timeout" {
 }
 
 variable "net_device" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "network_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "network_overlay" {
   description = "(optional)"
   type        = string
   default     = null
@@ -1091,6 +1227,8 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   acct_verify                 = var.acct_verify
   add_gw_route                = var.add_gw_route
   add_route                   = var.add_route
+  aggregate_member            = var.aggregate_member
+  aggregate_weight            = var.aggregate_weight
   assign_ip                   = var.assign_ip
   assign_ip_from              = var.assign_ip_from
   authmethod                  = var.authmethod
@@ -1102,6 +1240,7 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   auto_discovery_psk          = var.auto_discovery_psk
   auto_discovery_receiver     = var.auto_discovery_receiver
   auto_discovery_sender       = var.auto_discovery_sender
+  auto_discovery_shortcuts    = var.auto_discovery_shortcuts
   auto_negotiate              = var.auto_negotiate
   banner                      = var.banner
   cert_id_validation          = var.cert_id_validation
@@ -1111,6 +1250,8 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   comments                    = var.comments
   default_gw                  = var.default_gw
   default_gw_priority         = var.default_gw_priority
+  dhcp6_ra_linkaddr           = var.dhcp6_ra_linkaddr
+  dhcp_ra_giaddr              = var.dhcp_ra_giaddr
   dhgrp                       = var.dhgrp
   digital_signature_auth      = var.digital_signature_auth
   distance                    = var.distance
@@ -1119,7 +1260,9 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   dpd                         = var.dpd
   dpd_retrycount              = var.dpd_retrycount
   dpd_retryinterval           = var.dpd_retryinterval
+  dynamic_sort_subtable       = var.dynamic_sort_subtable
   eap                         = var.eap
+  eap_exclude_peergrp         = var.eap_exclude_peergrp
   eap_identity                = var.eap_identity
   encap_local_gw4             = var.encap_local_gw4
   encap_local_gw6             = var.encap_local_gw6
@@ -1131,6 +1274,13 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   exchange_interface_ip       = var.exchange_interface_ip
   exchange_ip_addr4           = var.exchange_ip_addr4
   exchange_ip_addr6           = var.exchange_ip_addr6
+  fec_base                    = var.fec_base
+  fec_codec                   = var.fec_codec
+  fec_egress                  = var.fec_egress
+  fec_ingress                 = var.fec_ingress
+  fec_receive_timeout         = var.fec_receive_timeout
+  fec_redundant               = var.fec_redundant
+  fec_send_timeout            = var.fec_send_timeout
   forticlient_enforcement     = var.forticlient_enforcement
   fragmentation               = var.fragmentation
   fragmentation_mtu           = var.fragmentation_mtu
@@ -1142,6 +1292,7 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   ike_version                 = var.ike_version
   include_local_lan           = var.include_local_lan
   interface                   = var.interface
+  ip_fragmentation            = var.ip_fragmentation
   ip_version                  = var.ip_version
   ipv4_dns_server1            = var.ipv4_dns_server1
   ipv4_dns_server2            = var.ipv4_dns_server2
@@ -1181,6 +1332,8 @@ resource "fortios_vpnipsec_phase1interface" "this" {
   nattraversal                = var.nattraversal
   negotiate_timeout           = var.negotiate_timeout
   net_device                  = var.net_device
+  network_id                  = var.network_id
+  network_overlay             = var.network_overlay
   passive_mode                = var.passive_mode
   peer                        = var.peer
   peergrp                     = var.peergrp
@@ -1267,6 +1420,16 @@ output "add_route" {
   value       = fortios_vpnipsec_phase1interface.this.add_route
 }
 
+output "aggregate_member" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.aggregate_member
+}
+
+output "aggregate_weight" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.aggregate_weight
+}
+
 output "assign_ip" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.assign_ip
@@ -1317,6 +1480,11 @@ output "auto_discovery_sender" {
   value       = fortios_vpnipsec_phase1interface.this.auto_discovery_sender
 }
 
+output "auto_discovery_shortcuts" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.auto_discovery_shortcuts
+}
+
 output "auto_negotiate" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.auto_negotiate
@@ -1350,6 +1518,16 @@ output "default_gw" {
 output "default_gw_priority" {
   description = "returns a number"
   value       = fortios_vpnipsec_phase1interface.this.default_gw_priority
+}
+
+output "dhcp6_ra_linkaddr" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.dhcp6_ra_linkaddr
+}
+
+output "dhcp_ra_giaddr" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.dhcp_ra_giaddr
 }
 
 output "dhgrp" {
@@ -1395,6 +1573,11 @@ output "dpd_retryinterval" {
 output "eap" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.eap
+}
+
+output "eap_exclude_peergrp" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.eap_exclude_peergrp
 }
 
 output "eap_identity" {
@@ -1452,6 +1635,41 @@ output "exchange_ip_addr6" {
   value       = fortios_vpnipsec_phase1interface.this.exchange_ip_addr6
 }
 
+output "fec_base" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.fec_base
+}
+
+output "fec_codec" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.fec_codec
+}
+
+output "fec_egress" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.fec_egress
+}
+
+output "fec_ingress" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.fec_ingress
+}
+
+output "fec_receive_timeout" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.fec_receive_timeout
+}
+
+output "fec_redundant" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.fec_redundant
+}
+
+output "fec_send_timeout" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.fec_send_timeout
+}
+
 output "forticlient_enforcement" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.forticlient_enforcement
@@ -1500,6 +1718,11 @@ output "ike_version" {
 output "include_local_lan" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.include_local_lan
+}
+
+output "ip_fragmentation" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.ip_fragmentation
 }
 
 output "ip_version" {
@@ -1695,6 +1918,16 @@ output "negotiate_timeout" {
 output "net_device" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase1interface.this.net_device
+}
+
+output "network_id" {
+  description = "returns a number"
+  value       = fortios_vpnipsec_phase1interface.this.network_id
+}
+
+output "network_overlay" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase1interface.this.network_overlay
 }
 
 output "passive_mode" {

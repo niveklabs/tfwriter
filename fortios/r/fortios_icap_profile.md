@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,10 +27,16 @@ terraform {
 module "fortios_icap_profile" {
   source = "./modules/fortios/r/fortios_icap_profile"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # methods - (optional) is a type of string
   methods = null
   # name - (optional) is a type of string
   name = null
+  # preview - (optional) is a type of string
+  preview = null
+  # preview_data_length - (optional) is a type of number
+  preview_data_length = null
   # replacemsg_group - (optional) is a type of string
   replacemsg_group = null
   # request - (optional) is a type of string
@@ -41,6 +47,8 @@ module "fortios_icap_profile" {
   request_path = null
   # request_server - (optional) is a type of string
   request_server = null
+  # respmod_default_action - (optional) is a type of string
+  respmod_default_action = null
   # response - (optional) is a type of string
   response = null
   # response_failure - (optional) is a type of string
@@ -60,6 +68,21 @@ module "fortios_icap_profile" {
     id              = null
     name            = null
   }]
+
+  respmod_forward_rules = [{
+    action = null
+    header_group = [{
+      case_sensitivity = null
+      header           = null
+      header_name      = null
+      id               = null
+    }]
+    host = null
+    http_resp_status_code = [{
+      code = null
+    }]
+    name = null
+  }]
 }
 ```
 
@@ -68,6 +91,12 @@ module "fortios_icap_profile" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "methods" {
   description = "(optional)"
   type        = string
@@ -77,6 +106,18 @@ variable "methods" {
 variable "name" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "preview" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "preview_data_length" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -105,6 +146,12 @@ variable "request_path" {
 }
 
 variable "request_server" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "respmod_default_action" {
   description = "(optional)"
   type        = string
   default     = null
@@ -158,6 +205,31 @@ variable "icap_headers" {
   ))
   default = []
 }
+
+variable "respmod_forward_rules" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      action = string
+      header_group = list(object(
+        {
+          case_sensitivity = string
+          header           = string
+          header_name      = string
+          id               = number
+        }
+      ))
+      host = string
+      http_resp_status_code = list(object(
+        {
+          code = number
+        }
+      ))
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -166,13 +238,17 @@ variable "icap_headers" {
 
 ```terraform
 resource "fortios_icap_profile" "this" {
+  dynamic_sort_subtable    = var.dynamic_sort_subtable
   methods                  = var.methods
   name                     = var.name
+  preview                  = var.preview
+  preview_data_length      = var.preview_data_length
   replacemsg_group         = var.replacemsg_group
   request                  = var.request
   request_failure          = var.request_failure
   request_path             = var.request_path
   request_server           = var.request_server
+  respmod_default_action   = var.respmod_default_action
   response                 = var.response
   response_failure         = var.response_failure
   response_path            = var.response_path
@@ -187,6 +263,33 @@ resource "fortios_icap_profile" "this" {
       content         = icap_headers.value["content"]
       id              = icap_headers.value["id"]
       name            = icap_headers.value["name"]
+    }
+  }
+
+  dynamic "respmod_forward_rules" {
+    for_each = var.respmod_forward_rules
+    content {
+      action = respmod_forward_rules.value["action"]
+      host   = respmod_forward_rules.value["host"]
+      name   = respmod_forward_rules.value["name"]
+
+      dynamic "header_group" {
+        for_each = respmod_forward_rules.value.header_group
+        content {
+          case_sensitivity = header_group.value["case_sensitivity"]
+          header           = header_group.value["header"]
+          header_name      = header_group.value["header_name"]
+          id               = header_group.value["id"]
+        }
+      }
+
+      dynamic "http_resp_status_code" {
+        for_each = respmod_forward_rules.value.http_resp_status_code
+        content {
+          code = http_resp_status_code.value["code"]
+        }
+      }
+
     }
   }
 
@@ -213,6 +316,16 @@ output "name" {
   value       = fortios_icap_profile.this.name
 }
 
+output "preview" {
+  description = "returns a string"
+  value       = fortios_icap_profile.this.preview
+}
+
+output "preview_data_length" {
+  description = "returns a number"
+  value       = fortios_icap_profile.this.preview_data_length
+}
+
 output "replacemsg_group" {
   description = "returns a string"
   value       = fortios_icap_profile.this.replacemsg_group
@@ -236,6 +349,11 @@ output "request_path" {
 output "request_server" {
   description = "returns a string"
   value       = fortios_icap_profile.this.request_server
+}
+
+output "respmod_default_action" {
+  description = "returns a string"
+  value       = fortios_icap_profile.this.respmod_default_action
 }
 
 output "response" {

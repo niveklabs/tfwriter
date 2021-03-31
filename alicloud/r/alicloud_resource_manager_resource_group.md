@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -29,8 +29,10 @@ module "alicloud_resource_manager_resource_group" {
 
   # display_name - (required) is a type of string
   display_name = null
-  # name - (required) is a type of string
+  # name - (optional) is a type of string
   name = null
+  # resource_group_name - (optional) is a type of string
+  resource_group_name = null
 
   timeouts = [{
     create = null
@@ -49,8 +51,15 @@ variable "display_name" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "resource_group_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "timeouts" {
@@ -70,8 +79,9 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_resource_manager_resource_group" "this" {
-  display_name = var.display_name
-  name         = var.name
+  display_name        = var.display_name
+  name                = var.name
+  resource_group_name = var.resource_group_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -103,9 +113,19 @@ output "id" {
   value       = alicloud_resource_manager_resource_group.this.id
 }
 
+output "name" {
+  description = "returns a string"
+  value       = alicloud_resource_manager_resource_group.this.name
+}
+
 output "region_statuses" {
-  description = "returns a set of object"
+  description = "returns a list of object"
   value       = alicloud_resource_manager_resource_group.this.region_statuses
+}
+
+output "resource_group_name" {
+  description = "returns a string"
+  value       = alicloud_resource_manager_resource_group.this.resource_group_name
 }
 
 output "status" {

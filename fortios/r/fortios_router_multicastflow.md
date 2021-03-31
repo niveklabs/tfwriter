@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_router_multicastflow" {
 
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
 
@@ -46,6 +48,12 @@ module "fortios_router_multicastflow" {
 
 ```terraform
 variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -75,8 +83,9 @@ variable "flows" {
 
 ```terraform
 resource "fortios_router_multicastflow" "this" {
-  comments = var.comments
-  name     = var.name
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "flows" {
     for_each = var.flows

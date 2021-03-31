@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_user_group" {
   authtimeout = null
   # company - (optional) is a type of string
   company = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # email - (optional) is a type of string
   email = null
   # expire - (optional) is a type of number
@@ -75,6 +77,7 @@ module "fortios_user_group" {
     company      = null
     email        = null
     expiration   = null
+    id           = null
     mobile_phone = null
     name         = null
     password     = null
@@ -118,6 +121,12 @@ variable "authtimeout" {
 }
 
 variable "company" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -233,6 +242,7 @@ variable "guest" {
       company      = string
       email        = string
       expiration   = string
+      id           = number
       mobile_phone = string
       name         = string
       password     = string
@@ -276,6 +286,7 @@ resource "fortios_user_group" "this" {
   auth_concurrent_value    = var.auth_concurrent_value
   authtimeout              = var.authtimeout
   company                  = var.company
+  dynamic_sort_subtable    = var.dynamic_sort_subtable
   email                    = var.email
   expire                   = var.expire
   expire_type              = var.expire_type
@@ -301,6 +312,7 @@ resource "fortios_user_group" "this" {
       company      = guest.value["company"]
       email        = guest.value["email"]
       expiration   = guest.value["expiration"]
+      id           = guest.value["id"]
       mobile_phone = guest.value["mobile_phone"]
       name         = guest.value["name"]
       password     = guest.value["password"]

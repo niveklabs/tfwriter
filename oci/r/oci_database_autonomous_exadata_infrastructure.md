@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -280,6 +280,11 @@ output "next_maintenance_run_id" {
   value       = oci_database_autonomous_exadata_infrastructure.this.next_maintenance_run_id
 }
 
+output "scan_dns_name" {
+  description = "returns a string"
+  value       = oci_database_autonomous_exadata_infrastructure.this.scan_dns_name
+}
+
 output "state" {
   description = "returns a string"
   value       = oci_database_autonomous_exadata_infrastructure.this.state
@@ -288,6 +293,11 @@ output "state" {
 output "time_created" {
   description = "returns a string"
   value       = oci_database_autonomous_exadata_infrastructure.this.time_created
+}
+
+output "zone_id" {
+  description = "returns a string"
+  value       = oci_database_autonomous_exadata_infrastructure.this.zone_id
 }
 
 output "this" {

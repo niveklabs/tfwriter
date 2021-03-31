@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -42,19 +42,19 @@ module "datadog_monitor" {
 
 ```terraform
 variable "monitor_tags_filter" {
-  description = "(optional)"
+  description = "(optional) - A list of monitor tags to limit the search. This filters on the tags set on the monitor itself."
   type        = list(string)
   default     = null
 }
 
 variable "name_filter" {
-  description = "(optional)"
+  description = "(optional) - A monitor name to limit the search."
   type        = string
   default     = null
 }
 
 variable "tags_filter" {
-  description = "(optional)"
+  description = "(optional) - A list of tags to limit the search. This filters on the monitor scope."
   type        = list(string)
   default     = null
 }
@@ -92,6 +92,11 @@ output "evaluation_delay" {
   value       = data.datadog_monitor.this.evaluation_delay
 }
 
+output "groupby_simple_monitor" {
+  description = "returns a bool"
+  value       = data.datadog_monitor.this.groupby_simple_monitor
+}
+
 output "id" {
   description = "returns a string"
   value       = data.datadog_monitor.this.id
@@ -110,6 +115,16 @@ output "locked" {
 output "message" {
   description = "returns a string"
   value       = data.datadog_monitor.this.message
+}
+
+output "monitor_threshold_windows" {
+  description = "returns a list of object"
+  value       = data.datadog_monitor.this.monitor_threshold_windows
+}
+
+output "monitor_thresholds" {
+  description = "returns a list of object"
+  value       = data.datadog_monitor.this.monitor_thresholds
 }
 
 output "name" {

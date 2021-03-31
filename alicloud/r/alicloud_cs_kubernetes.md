@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -67,6 +67,8 @@ module "alicloud_cs_kubernetes" {
   kms_encryption_context = {}
   # kube_config - (optional) is a type of string
   kube_config = null
+  # load_balancer_spec - (optional) is a type of string
+  load_balancer_spec = null
   # master_auto_renew - (optional) is a type of bool
   master_auto_renew = null
   # master_auto_renew_period - (optional) is a type of number
@@ -326,6 +328,12 @@ variable "kms_encryption_context" {
 }
 
 variable "kube_config" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "load_balancer_spec" {
   description = "(optional)"
   type        = string
   default     = null
@@ -723,6 +731,7 @@ resource "alicloud_cs_kubernetes" "this" {
   kms_encrypted_password       = var.kms_encrypted_password
   kms_encryption_context       = var.kms_encryption_context
   kube_config                  = var.kube_config
+  load_balancer_spec           = var.load_balancer_spec
   master_auto_renew            = var.master_auto_renew
   master_auto_renew_period     = var.master_auto_renew_period
   master_disk_category         = var.master_disk_category

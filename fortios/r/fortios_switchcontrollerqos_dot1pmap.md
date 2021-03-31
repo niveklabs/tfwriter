@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_switchcontrollerqos_dot1pmap" {
 
   # description - (optional) is a type of string
   description = null
+  # egress_pri_tagging - (optional) is a type of string
+  egress_pri_tagging = null
   # name - (required) is a type of string
   name = null
   # priority_0 - (optional) is a type of string
@@ -56,6 +58,12 @@ module "fortios_switchcontrollerqos_dot1pmap" {
 
 ```terraform
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "egress_pri_tagging" {
   description = "(optional)"
   type        = string
   default     = null
@@ -121,16 +129,17 @@ variable "priority_7" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_dot1pmap" "this" {
-  description = var.description
-  name        = var.name
-  priority_0  = var.priority_0
-  priority_1  = var.priority_1
-  priority_2  = var.priority_2
-  priority_3  = var.priority_3
-  priority_4  = var.priority_4
-  priority_5  = var.priority_5
-  priority_6  = var.priority_6
-  priority_7  = var.priority_7
+  description        = var.description
+  egress_pri_tagging = var.egress_pri_tagging
+  name               = var.name
+  priority_0         = var.priority_0
+  priority_1         = var.priority_1
+  priority_2         = var.priority_2
+  priority_3         = var.priority_3
+  priority_4         = var.priority_4
+  priority_5         = var.priority_5
+  priority_6         = var.priority_6
+  priority_7         = var.priority_7
 }
 ```
 
@@ -142,6 +151,11 @@ resource "fortios_switchcontrollerqos_dot1pmap" "this" {
 output "description" {
   description = "returns a string"
   value       = fortios_switchcontrollerqos_dot1pmap.this.description
+}
+
+output "egress_pri_tagging" {
+  description = "returns a string"
+  value       = fortios_switchcontrollerqos_dot1pmap.this.egress_pri_tagging
 }
 
 output "id" {

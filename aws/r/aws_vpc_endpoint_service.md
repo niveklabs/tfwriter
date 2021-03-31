@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "aws_vpc_endpoint_service" {
   gateway_load_balancer_arns = []
   # network_load_balancer_arns - (optional) is a type of set of string
   network_load_balancer_arns = []
+  # private_dns_name - (optional) is a type of string
+  private_dns_name = null
   # tags - (optional) is a type of map of string
   tags = {}
 }
@@ -68,6 +70,12 @@ variable "network_load_balancer_arns" {
   default     = null
 }
 
+variable "private_dns_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "(optional)"
   type        = map(string)
@@ -85,6 +93,7 @@ resource "aws_vpc_endpoint_service" "this" {
   allowed_principals         = var.allowed_principals
   gateway_load_balancer_arns = var.gateway_load_balancer_arns
   network_load_balancer_arns = var.network_load_balancer_arns
+  private_dns_name           = var.private_dns_name
   tags                       = var.tags
 }
 ```
@@ -127,6 +136,11 @@ output "manages_vpc_endpoints" {
 output "private_dns_name" {
   description = "returns a string"
   value       = aws_vpc_endpoint_service.this.private_dns_name
+}
+
+output "private_dns_name_configuration" {
+  description = "returns a list of object"
+  value       = aws_vpc_endpoint_service.this.private_dns_name_configuration
 }
 
 output "service_name" {

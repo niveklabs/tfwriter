@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,6 +27,12 @@ terraform {
 module "azurerm_role_assignment" {
   source = "./modules/azurerm/r/azurerm_role_assignment"
 
+  # condition - (optional) is a type of string
+  condition = null
+  # condition_version - (optional) is a type of string
+  condition_version = null
+  # description - (optional) is a type of string
+  description = null
   # name - (optional) is a type of string
   name = null
   # principal_id - (required) is a type of string
@@ -54,6 +60,24 @@ module "azurerm_role_assignment" {
 ### Variables
 
 ```terraform
+variable "condition" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "condition_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -108,6 +132,9 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_role_assignment" "this" {
+  condition                        = var.condition
+  condition_version                = var.condition_version
+  description                      = var.description
   name                             = var.name
   principal_id                     = var.principal_id
   role_definition_id               = var.role_definition_id

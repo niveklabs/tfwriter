@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_report_chart" {
   dataset = null
   # dimension - (optional) is a type of string
   dimension = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # favorite - (optional) is a type of string
   favorite = null
   # graph_type - (optional) is a type of string
@@ -158,6 +160,12 @@ variable "dataset" {
 }
 
 variable "dimension" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -333,23 +341,24 @@ variable "y_series" {
 
 ```terraform
 resource "fortios_report_chart" "this" {
-  background       = var.background
-  category         = var.category
-  color_palette    = var.color_palette
-  comments         = var.comments
-  dataset          = var.dataset
-  dimension        = var.dimension
-  favorite         = var.favorite
-  graph_type       = var.graph_type
-  legend           = var.legend
-  legend_font_size = var.legend_font_size
-  name             = var.name
-  period           = var.period
-  policy           = var.policy
-  style            = var.style
-  title            = var.title
-  title_font_size  = var.title_font_size
-  type             = var.type
+  background            = var.background
+  category              = var.category
+  color_palette         = var.color_palette
+  comments              = var.comments
+  dataset               = var.dataset
+  dimension             = var.dimension
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  favorite              = var.favorite
+  graph_type            = var.graph_type
+  legend                = var.legend
+  legend_font_size      = var.legend_font_size
+  name                  = var.name
+  period                = var.period
+  policy                = var.policy
+  style                 = var.style
+  title                 = var.title
+  title_font_size       = var.title_font_size
+  type                  = var.type
 
   dynamic "category_series" {
     for_each = var.category_series

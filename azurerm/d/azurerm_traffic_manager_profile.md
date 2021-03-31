@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "azurerm_traffic_manager_profile" {
   resource_group_name = null
   # tags - (optional) is a type of map of string
   tags = {}
+  # traffic_view_enabled - (optional) is a type of bool
+  traffic_view_enabled = null
 
   timeouts = [{
     read = null
@@ -61,6 +63,12 @@ variable "tags" {
   default     = null
 }
 
+variable "traffic_view_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -78,9 +86,10 @@ variable "timeouts" {
 
 ```terraform
 data "azurerm_traffic_manager_profile" "this" {
-  name                = var.name
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
+  name                 = var.name
+  resource_group_name  = var.resource_group_name
+  tags                 = var.tags
+  traffic_view_enabled = var.traffic_view_enabled
 
   dynamic "timeouts" {
     for_each = var.timeouts

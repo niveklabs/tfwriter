@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    tfe = ">= 0.23.0"
+    tfe = ">= 0.24.0"
   }
 }
 ```
@@ -43,9 +43,7 @@ module "tfe_notification_configuration" {
   triggers = []
   # url - (optional) is a type of string
   url = null
-  # workspace_external_id - (optional) is a type of string
-  workspace_external_id = null
-  # workspace_id - (optional) is a type of string
+  # workspace_id - (required) is a type of string
   workspace_id = null
 }
 ```
@@ -101,16 +99,9 @@ variable "url" {
   default     = null
 }
 
-variable "workspace_external_id" {
-  description = "(optional)"
-  type        = string
-  default     = null
-}
-
 variable "workspace_id" {
-  description = "(optional)"
+  description = "(required)"
   type        = string
-  default     = null
 }
 ```
 
@@ -120,16 +111,15 @@ variable "workspace_id" {
 
 ```terraform
 resource "tfe_notification_configuration" "this" {
-  destination_type      = var.destination_type
-  email_addresses       = var.email_addresses
-  email_user_ids        = var.email_user_ids
-  enabled               = var.enabled
-  name                  = var.name
-  token                 = var.token
-  triggers              = var.triggers
-  url                   = var.url
-  workspace_external_id = var.workspace_external_id
-  workspace_id          = var.workspace_id
+  destination_type = var.destination_type
+  email_addresses  = var.email_addresses
+  email_user_ids   = var.email_user_ids
+  enabled          = var.enabled
+  name             = var.name
+  token            = var.token
+  triggers         = var.triggers
+  url              = var.url
+  workspace_id     = var.workspace_id
 }
 ```
 
@@ -151,16 +141,6 @@ output "email_user_ids" {
 output "id" {
   description = "returns a string"
   value       = tfe_notification_configuration.this.id
-}
-
-output "workspace_external_id" {
-  description = "returns a string"
-  value       = tfe_notification_configuration.this.workspace_external_id
-}
-
-output "workspace_id" {
-  description = "returns a string"
-  value       = tfe_notification_configuration.this.workspace_id
 }
 
 output "this" {

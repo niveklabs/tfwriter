@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -40,12 +40,12 @@ module "datadog_integration_aws_lambda_arn" {
 
 ```terraform
 variable "account_id" {
-  description = "(required)"
+  description = "(required) - Your AWS Account ID without dashes."
   type        = string
 }
 
 variable "lambda_arn" {
-  description = "(required)"
+  description = "(required) - The ARN of the Datadog forwarder Lambda."
   type        = string
 }
 ```

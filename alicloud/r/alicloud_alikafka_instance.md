@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "alicloud_alikafka_instance" {
   source = "./modules/alicloud/r/alicloud_alikafka_instance"
 
+  # config - (optional) is a type of string
+  config = null
   # deploy_type - (required) is a type of number
   deploy_type = null
   # disk_size - (required) is a type of number
@@ -43,6 +45,8 @@ module "alicloud_alikafka_instance" {
   paid_type = null
   # security_group - (optional) is a type of string
   security_group = null
+  # service_version - (optional) is a type of string
+  service_version = null
   # spec_type - (optional) is a type of string
   spec_type = null
   # tags - (optional) is a type of map of string
@@ -59,6 +63,12 @@ module "alicloud_alikafka_instance" {
 ### Variables
 
 ```terraform
+variable "config" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "deploy_type" {
   description = "(required)"
   type        = number
@@ -103,6 +113,12 @@ variable "security_group" {
   default     = null
 }
 
+variable "service_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "spec_type" {
   description = "(optional)"
   type        = string
@@ -132,18 +148,20 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_alikafka_instance" "this" {
-  deploy_type    = var.deploy_type
-  disk_size      = var.disk_size
-  disk_type      = var.disk_type
-  eip_max        = var.eip_max
-  io_max         = var.io_max
-  name           = var.name
-  paid_type      = var.paid_type
-  security_group = var.security_group
-  spec_type      = var.spec_type
-  tags           = var.tags
-  topic_quota    = var.topic_quota
-  vswitch_id     = var.vswitch_id
+  config          = var.config
+  deploy_type     = var.deploy_type
+  disk_size       = var.disk_size
+  disk_type       = var.disk_type
+  eip_max         = var.eip_max
+  io_max          = var.io_max
+  name            = var.name
+  paid_type       = var.paid_type
+  security_group  = var.security_group
+  service_version = var.service_version
+  spec_type       = var.spec_type
+  tags            = var.tags
+  topic_quota     = var.topic_quota
+  vswitch_id      = var.vswitch_id
 }
 ```
 
@@ -152,6 +170,11 @@ resource "alicloud_alikafka_instance" "this" {
 ### Outputs
 
 ```terraform
+output "config" {
+  description = "returns a string"
+  value       = alicloud_alikafka_instance.this.config
+}
+
 output "end_point" {
   description = "returns a string"
   value       = alicloud_alikafka_instance.this.end_point
@@ -165,6 +188,11 @@ output "id" {
 output "name" {
   description = "returns a string"
   value       = alicloud_alikafka_instance.this.name
+}
+
+output "service_version" {
+  description = "returns a string"
+  value       = alicloud_alikafka_instance.this.service_version
 }
 
 output "vpc_id" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    helm = ">= 2.0.1"
+    helm = ">= 2.0.3"
   }
 }
 ```

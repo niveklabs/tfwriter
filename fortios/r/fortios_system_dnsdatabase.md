@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,14 +35,20 @@ module "fortios_system_dnsdatabase" {
   contact = null
   # domain - (required) is a type of string
   domain = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # forwarder - (optional) is a type of string
   forwarder = null
   # ip_master - (optional) is a type of string
   ip_master = null
+  # ip_primary - (optional) is a type of string
+  ip_primary = null
   # name - (required) is a type of string
   name = null
   # primary_name - (optional) is a type of string
   primary_name = null
+  # rr_max - (optional) is a type of number
+  rr_max = null
   # source_ip - (optional) is a type of string
   source_ip = null
   # status - (optional) is a type of string
@@ -95,6 +101,12 @@ variable "domain" {
   type        = string
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "forwarder" {
   description = "(optional)"
   type        = string
@@ -102,6 +114,12 @@ variable "forwarder" {
 }
 
 variable "ip_master" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ip_primary" {
   description = "(optional)"
   type        = string
   default     = null
@@ -115,6 +133,12 @@ variable "name" {
 variable "primary_name" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "rr_max" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -170,19 +194,22 @@ variable "dns_entry" {
 
 ```terraform
 resource "fortios_system_dnsdatabase" "this" {
-  allow_transfer = var.allow_transfer
-  authoritative  = var.authoritative
-  contact        = var.contact
-  domain         = var.domain
-  forwarder      = var.forwarder
-  ip_master      = var.ip_master
-  name           = var.name
-  primary_name   = var.primary_name
-  source_ip      = var.source_ip
-  status         = var.status
-  ttl            = var.ttl
-  type           = var.type
-  view           = var.view
+  allow_transfer        = var.allow_transfer
+  authoritative         = var.authoritative
+  contact               = var.contact
+  domain                = var.domain
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  forwarder             = var.forwarder
+  ip_master             = var.ip_master
+  ip_primary            = var.ip_primary
+  name                  = var.name
+  primary_name          = var.primary_name
+  rr_max                = var.rr_max
+  source_ip             = var.source_ip
+  status                = var.status
+  ttl                   = var.ttl
+  type                  = var.type
+  view                  = var.view
 
   dynamic "dns_entry" {
     for_each = var.dns_entry
@@ -232,9 +259,19 @@ output "ip_master" {
   value       = fortios_system_dnsdatabase.this.ip_master
 }
 
+output "ip_primary" {
+  description = "returns a string"
+  value       = fortios_system_dnsdatabase.this.ip_primary
+}
+
 output "primary_name" {
   description = "returns a string"
   value       = fortios_system_dnsdatabase.this.primary_name
+}
+
+output "rr_max" {
+  description = "returns a number"
+  value       = fortios_system_dnsdatabase.this.rr_max
 }
 
 output "source_ip" {

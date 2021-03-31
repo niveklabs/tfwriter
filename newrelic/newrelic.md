@@ -12,7 +12,7 @@
 
 ```terraform
 provider "newrelic" {
-  version = "2.14.0"
+  version = "2.21.0"
 
   # account_id - (required) is a type of number
   account_id = null
@@ -73,6 +73,10 @@ provider "newrelic" {
 - [newrelic_insights_event](./r/newrelic_insights_event.md)
 
 - [newrelic_nrql_alert_condition](./r/newrelic_nrql_alert_condition.md)
+
+- [newrelic_nrql_drop_rule](./r/newrelic_nrql_drop_rule.md)
+
+- [newrelic_one_dashboard](./r/newrelic_one_dashboard.md)
 
 - [newrelic_plugins_alert_condition](./r/newrelic_plugins_alert_condition.md)
 

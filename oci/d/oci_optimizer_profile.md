@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -96,6 +96,16 @@ output "name" {
 output "state" {
   description = "returns a string"
   value       = data.oci_optimizer_profile.this.state
+}
+
+output "target_compartments" {
+  description = "returns a list of object"
+  value       = data.oci_optimizer_profile.this.target_compartments
+}
+
+output "target_tags" {
+  description = "returns a list of object"
+  value       = data.oci_optimizer_profile.this.target_tags
 }
 
 output "time_created" {

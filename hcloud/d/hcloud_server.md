@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -99,6 +99,11 @@ output "backups" {
 output "datacenter" {
   description = "returns a string"
   value       = data.hcloud_server.this.datacenter
+}
+
+output "firewall_ids" {
+  description = "returns a list of number"
+  value       = data.hcloud_server.this.firewall_ids
 }
 
 output "id" {

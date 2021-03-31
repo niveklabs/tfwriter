@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    boundary = ">= 0.1.0"
+    boundary = ">= 1.0.1"
   }
 }
 ```
@@ -71,7 +71,7 @@ variable "name" {
 }
 
 variable "password" {
-  description = "(optional) - The account password."
+  description = "(optional) - The account password. Only set on create, changes will not be reflected when updating account."
   type        = string
   default     = null
 }

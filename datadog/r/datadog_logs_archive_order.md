@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -38,7 +38,7 @@ module "datadog_logs_archive_order" {
 
 ```terraform
 variable "archive_ids" {
-  description = "(optional)"
+  description = "(optional) - The archive IDs list. The order of archive IDs in this attribute defines the overall archive order for logs. If `archive_ids` is empty or not specified, it will import the actual archive order, and create the resource. Otherwise, it will try to update the order."
   type        = list(string)
   default     = null
 }

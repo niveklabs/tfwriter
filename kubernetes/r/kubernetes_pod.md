@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -142,6 +142,7 @@ module "kubernetes_pod" {
           }]
           resource_field_ref = [{
             container_name = null
+            divisor        = null
             resource       = null
           }]
           secret_key_ref = [{
@@ -257,14 +258,8 @@ module "kubernetes_pod" {
         timeout_seconds = null
       }]
       resources = [{
-        limits = [{
-          cpu    = null
-          memory = null
-        }]
-        requests = [{
-          cpu    = null
-          memory = null
-        }]
+        limits   = {}
+        requests = {}
       }]
       security_context = [{
         allow_privilege_escalation = null
@@ -360,6 +355,7 @@ module "kubernetes_pod" {
           }]
           resource_field_ref = [{
             container_name = null
+            divisor        = null
             resource       = null
           }]
           secret_key_ref = [{
@@ -475,14 +471,8 @@ module "kubernetes_pod" {
         timeout_seconds = null
       }]
       resources = [{
-        limits = [{
-          cpu    = null
-          memory = null
-        }]
-        requests = [{
-          cpu    = null
-          memory = null
-        }]
+        limits   = {}
+        requests = {}
       }]
       security_context = [{
         allow_privilege_escalation = null
@@ -574,6 +564,19 @@ module "kubernetes_pod" {
       toleration_seconds = null
       value              = null
     }]
+    topology_spread_constraint = [{
+      label_selector = [{
+        match_expressions = [{
+          key      = null
+          operator = null
+          values   = []
+        }]
+        match_labels = {}
+      }]
+      max_skew           = null
+      topology_key       = null
+      when_unsatisfiable = null
+    }]
     volume = [{
       aws_elastic_block_store = [{
         fs_type   = null
@@ -654,7 +657,7 @@ module "kubernetes_pod" {
           path = null
           resource_field_ref = [{
             container_name = null
-            quantity       = null
+            divisor        = null
             resource       = null
           }]
         }]
@@ -750,7 +753,7 @@ module "kubernetes_pod" {
               path = null
               resource_field_ref = [{
                 container_name = null
-                quantity       = null
+                divisor        = null
                 resource       = null
               }]
             }]
@@ -998,6 +1001,7 @@ variable "spec" {
                   resource_field_ref = list(object(
                     {
                       container_name = string
+                      divisor        = string
                       resource       = string
                     }
                   ))
@@ -1169,18 +1173,8 @@ variable "spec" {
           ))
           resources = list(object(
             {
-              limits = list(object(
-                {
-                  cpu    = string
-                  memory = string
-                }
-              ))
-              requests = list(object(
-                {
-                  cpu    = string
-                  memory = string
-                }
-              ))
+              limits   = map(string)
+              requests = map(string)
             }
           ))
           security_context = list(object(
@@ -1194,9 +1188,9 @@ variable "spec" {
               ))
               privileged                = bool
               read_only_root_filesystem = bool
-              run_as_group              = number
+              run_as_group              = string
               run_as_non_root           = bool
-              run_as_user               = number
+              run_as_user               = string
               se_linux_options = list(object(
                 {
                   level = string
@@ -1312,6 +1306,7 @@ variable "spec" {
                   resource_field_ref = list(object(
                     {
                       container_name = string
+                      divisor        = string
                       resource       = string
                     }
                   ))
@@ -1483,18 +1478,8 @@ variable "spec" {
           ))
           resources = list(object(
             {
-              limits = list(object(
-                {
-                  cpu    = string
-                  memory = string
-                }
-              ))
-              requests = list(object(
-                {
-                  cpu    = string
-                  memory = string
-                }
-              ))
+              limits   = map(string)
+              requests = map(string)
             }
           ))
           security_context = list(object(
@@ -1508,9 +1493,9 @@ variable "spec" {
               ))
               privileged                = bool
               read_only_root_filesystem = bool
-              run_as_group              = number
+              run_as_group              = string
               run_as_non_root           = bool
-              run_as_user               = number
+              run_as_user               = string
               se_linux_options = list(object(
                 {
                   level = string
@@ -1582,10 +1567,10 @@ variable "spec" {
       restart_policy = string
       security_context = list(object(
         {
-          fs_group        = number
-          run_as_group    = number
+          fs_group        = string
+          run_as_group    = string
           run_as_non_root = bool
-          run_as_user     = number
+          run_as_user     = string
           se_linux_options = list(object(
             {
               level = string
@@ -1614,6 +1599,25 @@ variable "spec" {
           operator           = string
           toleration_seconds = string
           value              = string
+        }
+      ))
+      topology_spread_constraint = list(object(
+        {
+          label_selector = list(object(
+            {
+              match_expressions = list(object(
+                {
+                  key      = string
+                  operator = string
+                  values   = set(string)
+                }
+              ))
+              match_labels = map(string)
+            }
+          ))
+          max_skew           = number
+          topology_key       = string
+          when_unsatisfiable = string
         }
       ))
       volume = list(object(
@@ -1728,7 +1732,7 @@ variable "spec" {
                   resource_field_ref = list(object(
                     {
                       container_name = string
-                      quantity       = string
+                      divisor        = string
                       resource       = string
                     }
                   ))
@@ -1866,7 +1870,7 @@ variable "spec" {
                           resource_field_ref = list(object(
                             {
                               container_name = string
-                              quantity       = string
+                              divisor        = string
                               resource       = string
                             }
                           ))
@@ -2241,6 +2245,7 @@ resource "kubernetes_pod" "this" {
                     for_each = value_from.value.resource_field_ref
                     content {
                       container_name = resource_field_ref.value["container_name"]
+                      divisor        = resource_field_ref.value["divisor"]
                       resource       = resource_field_ref.value["resource"]
                     }
                   }
@@ -2475,23 +2480,8 @@ resource "kubernetes_pod" "this" {
           dynamic "resources" {
             for_each = container.value.resources
             content {
-
-              dynamic "limits" {
-                for_each = resources.value.limits
-                content {
-                  cpu    = limits.value["cpu"]
-                  memory = limits.value["memory"]
-                }
-              }
-
-              dynamic "requests" {
-                for_each = resources.value.requests
-                content {
-                  cpu    = requests.value["cpu"]
-                  memory = requests.value["memory"]
-                }
-              }
-
+              limits   = resources.value["limits"]
+              requests = resources.value["requests"]
             }
           }
 
@@ -2663,6 +2653,7 @@ resource "kubernetes_pod" "this" {
                     for_each = value_from.value.resource_field_ref
                     content {
                       container_name = resource_field_ref.value["container_name"]
+                      divisor        = resource_field_ref.value["divisor"]
                       resource       = resource_field_ref.value["resource"]
                     }
                   }
@@ -2897,23 +2888,8 @@ resource "kubernetes_pod" "this" {
           dynamic "resources" {
             for_each = init_container.value.resources
             content {
-
-              dynamic "limits" {
-                for_each = resources.value.limits
-                content {
-                  cpu    = limits.value["cpu"]
-                  memory = limits.value["memory"]
-                }
-              }
-
-              dynamic "requests" {
-                for_each = resources.value.requests
-                content {
-                  cpu    = requests.value["cpu"]
-                  memory = requests.value["memory"]
-                }
-              }
-
+              limits   = resources.value["limits"]
+              requests = resources.value["requests"]
             }
           }
 
@@ -3052,6 +3028,33 @@ resource "kubernetes_pod" "this" {
           operator           = toleration.value["operator"]
           toleration_seconds = toleration.value["toleration_seconds"]
           value              = toleration.value["value"]
+        }
+      }
+
+      dynamic "topology_spread_constraint" {
+        for_each = spec.value.topology_spread_constraint
+        content {
+          max_skew           = topology_spread_constraint.value["max_skew"]
+          topology_key       = topology_spread_constraint.value["topology_key"]
+          when_unsatisfiable = topology_spread_constraint.value["when_unsatisfiable"]
+
+          dynamic "label_selector" {
+            for_each = topology_spread_constraint.value.label_selector
+            content {
+              match_labels = label_selector.value["match_labels"]
+
+              dynamic "match_expressions" {
+                for_each = label_selector.value.match_expressions
+                content {
+                  key      = match_expressions.value["key"]
+                  operator = match_expressions.value["operator"]
+                  values   = match_expressions.value["values"]
+                }
+              }
+
+            }
+          }
+
         }
       }
 
@@ -3206,7 +3209,7 @@ resource "kubernetes_pod" "this" {
                     for_each = items.value.resource_field_ref
                     content {
                       container_name = resource_field_ref.value["container_name"]
-                      quantity       = resource_field_ref.value["quantity"]
+                      divisor        = resource_field_ref.value["divisor"]
                       resource       = resource_field_ref.value["resource"]
                     }
                   }
@@ -3391,7 +3394,7 @@ resource "kubernetes_pod" "this" {
                             for_each = items.value.resource_field_ref
                             content {
                               container_name = resource_field_ref.value["container_name"]
-                              quantity       = resource_field_ref.value["quantity"]
+                              divisor        = resource_field_ref.value["divisor"]
                               resource       = resource_field_ref.value["resource"]
                             }
                           }

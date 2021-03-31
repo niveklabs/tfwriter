@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -65,10 +65,18 @@ module "aws_glue_crawler" {
     path            = null
   }]
 
+  lineage_configuration = [{
+    crawler_lineage_settings = null
+  }]
+
   mongodb_target = [{
     connection_name = null
     path            = null
     scan_all        = null
+  }]
+
+  recrawl_policy = [{
+    recrawl_behavior = null
   }]
 
   s3_target = [{
@@ -181,6 +189,16 @@ variable "jdbc_target" {
   default = []
 }
 
+variable "lineage_configuration" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      crawler_lineage_settings = string
+    }
+  ))
+  default = []
+}
+
 variable "mongodb_target" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -188,6 +206,16 @@ variable "mongodb_target" {
       connection_name = string
       path            = string
       scan_all        = bool
+    }
+  ))
+  default = []
+}
+
+variable "recrawl_policy" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      recrawl_behavior = string
     }
   ))
   default = []
@@ -260,12 +288,26 @@ resource "aws_glue_crawler" "this" {
     }
   }
 
+  dynamic "lineage_configuration" {
+    for_each = var.lineage_configuration
+    content {
+      crawler_lineage_settings = lineage_configuration.value["crawler_lineage_settings"]
+    }
+  }
+
   dynamic "mongodb_target" {
     for_each = var.mongodb_target
     content {
       connection_name = mongodb_target.value["connection_name"]
       path            = mongodb_target.value["path"]
       scan_all        = mongodb_target.value["scan_all"]
+    }
+  }
+
+  dynamic "recrawl_policy" {
+    for_each = var.recrawl_policy
+    content {
+      recrawl_behavior = recrawl_policy.value["recrawl_behavior"]
     }
   }
 

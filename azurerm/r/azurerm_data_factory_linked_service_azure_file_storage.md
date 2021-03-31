@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "azurerm_data_factory_linked_service_azure_file_storage" {
   data_factory_name = null
   # description - (optional) is a type of string
   description = null
+  # file_share - (optional) is a type of string
+  file_share = null
   # host - (optional) is a type of string
   host = null
   # integration_runtime_name - (optional) is a type of string
@@ -89,6 +91,12 @@ variable "data_factory_name" {
 }
 
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "file_share" {
   description = "(optional)"
   type        = string
   default     = null
@@ -159,6 +167,7 @@ resource "azurerm_data_factory_linked_service_azure_file_storage" "this" {
   connection_string        = var.connection_string
   data_factory_name        = var.data_factory_name
   description              = var.description
+  file_share               = var.file_share
   host                     = var.host
   integration_runtime_name = var.integration_runtime_name
   name                     = var.name

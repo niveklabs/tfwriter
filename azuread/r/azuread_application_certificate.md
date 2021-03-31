@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "azuread_application_certificate" {
 
   # application_object_id - (required) is a type of string
   application_object_id = null
+  # encoding - (optional) is a type of string
+  encoding = null
   # end_date - (optional) is a type of string
   end_date = null
   # end_date_relative - (optional) is a type of string
@@ -52,6 +54,12 @@ module "azuread_application_certificate" {
 variable "application_object_id" {
   description = "(required)"
   type        = string
+}
+
+variable "encoding" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "end_date" {
@@ -97,6 +105,7 @@ variable "value" {
 ```terraform
 resource "azuread_application_certificate" "this" {
   application_object_id = var.application_object_id
+  encoding              = var.encoding
   end_date              = var.end_date
   end_date_relative     = var.end_date_relative
   key_id                = var.key_id

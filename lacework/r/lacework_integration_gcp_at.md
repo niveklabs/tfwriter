@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    lacework = ">= 0.2.7"
+    lacework = ">= 0.3.1"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "lacework_integration_gcp_at" {
   resource_id = null
   # resource_level - (optional) is a type of string
   resource_level = null
+  # retries - (optional) is a type of number
+  retries = null
   # subscription - (required) is a type of string
   subscription = null
 
@@ -74,6 +76,12 @@ variable "resource_level" {
   default     = null
 }
 
+variable "retries" {
+  description = "(optional) - The number of attempts to create the external integration."
+  type        = number
+  default     = null
+}
+
 variable "subscription" {
   description = "(required)"
   type        = string
@@ -102,6 +110,7 @@ resource "lacework_integration_gcp_at" "this" {
   name           = var.name
   resource_id    = var.resource_id
   resource_level = var.resource_level
+  retries        = var.retries
   subscription   = var.subscription
 
   dynamic "credentials" {

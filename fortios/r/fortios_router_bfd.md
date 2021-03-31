@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_router_bfd" {
   source = "./modules/fortios/r/fortios_router_bfd"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
 
   neighbor = [{
     interface = null
@@ -40,6 +42,12 @@ module "fortios_router_bfd" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "neighbor" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -58,6 +66,7 @@ variable "neighbor" {
 
 ```terraform
 resource "fortios_router_bfd" "this" {
+  dynamic_sort_subtable = var.dynamic_sort_subtable
 
   dynamic "neighbor" {
     for_each = var.neighbor

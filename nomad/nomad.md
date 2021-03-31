@@ -12,16 +12,24 @@
 
 ```terraform
 provider "nomad" {
-  version = "1.4.11"
+  version = "1.4.13"
 
   # address - (required) is a type of string
   address = null
   # ca_file - (optional) is a type of string
   ca_file = null
+  # ca_pem - (optional) is a type of string
+  ca_pem = null
   # cert_file - (optional) is a type of string
   cert_file = null
+  # cert_pem - (optional) is a type of string
+  cert_pem = null
+  # http_auth - (optional) is a type of string
+  http_auth = null
   # key_file - (optional) is a type of string
   key_file = null
+  # key_pem - (optional) is a type of string
+  key_pem = null
   # region - (optional) is a type of string
   region = null
   # secret_id - (optional) is a type of string

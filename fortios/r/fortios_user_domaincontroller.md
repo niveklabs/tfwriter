@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_user_domaincontroller" {
 
   # domain_name - (optional) is a type of string
   domain_name = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ip_address - (required) is a type of string
   ip_address = null
   # ldap_server - (required) is a type of string
@@ -52,6 +54,12 @@ module "fortios_user_domaincontroller" {
 
 ```terraform
 variable "domain_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -98,11 +106,12 @@ variable "extra_server" {
 
 ```terraform
 resource "fortios_user_domaincontroller" "this" {
-  domain_name = var.domain_name
-  ip_address  = var.ip_address
-  ldap_server = var.ldap_server
-  name        = var.name
-  port        = var.port
+  domain_name           = var.domain_name
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ip_address            = var.ip_address
+  ldap_server           = var.ldap_server
+  name                  = var.name
+  port                  = var.port
 
   dynamic "extra_server" {
     for_each = var.extra_server

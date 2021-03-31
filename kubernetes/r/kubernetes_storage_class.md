@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -39,6 +39,13 @@ module "kubernetes_storage_class" {
   storage_provisioner = null
   # volume_binding_mode - (optional) is a type of string
   volume_binding_mode = null
+
+  allowed_topologies = [{
+    match_label_expressions = [{
+      key    = null
+      values = []
+    }]
+  }]
 
   metadata = [{
     annotations      = {}
@@ -93,6 +100,21 @@ variable "volume_binding_mode" {
   default     = null
 }
 
+variable "allowed_topologies" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      match_label_expressions = list(object(
+        {
+          key    = string
+          values = set(string)
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "metadata" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -122,6 +144,21 @@ resource "kubernetes_storage_class" "this" {
   reclaim_policy         = var.reclaim_policy
   storage_provisioner    = var.storage_provisioner
   volume_binding_mode    = var.volume_binding_mode
+
+  dynamic "allowed_topologies" {
+    for_each = var.allowed_topologies
+    content {
+
+      dynamic "match_label_expressions" {
+        for_each = allowed_topologies.value.match_label_expressions
+        content {
+          key    = match_label_expressions.value["key"]
+          values = match_label_expressions.value["values"]
+        }
+      }
+
+    }
+  }
 
   dynamic "metadata" {
     for_each = var.metadata

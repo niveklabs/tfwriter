@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -241,6 +241,11 @@ output "arn" {
 output "id" {
   description = "returns a string"
   value       = aws_glue_trigger.this.id
+}
+
+output "state" {
+  description = "returns a string"
+  value       = aws_glue_trigger.this.state
 }
 
 output "this" {

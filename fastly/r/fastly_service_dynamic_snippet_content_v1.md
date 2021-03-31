@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -42,17 +42,17 @@ module "fastly_service_dynamic_snippet_content_v1" {
 
 ```terraform
 variable "content" {
-  description = "(required) - The contents of the VCL dynamic snippet"
+  description = "(required) - The VCL code that specifies exactly what the snippet does"
   type        = string
 }
 
 variable "service_id" {
-  description = "(required) - Service Id"
+  description = "(required) - The ID of the service that the dynamic snippet belongs to"
   type        = string
 }
 
 variable "snippet_id" {
-  description = "(required) - Snippet Id"
+  description = "(required) - The ID of the dynamic snippet that the content belong to"
   type        = string
 }
 ```

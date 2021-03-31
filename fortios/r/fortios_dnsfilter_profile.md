@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,12 +33,16 @@ module "fortios_dnsfilter_profile" {
   block_botnet = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # log_all_domain - (optional) is a type of string
   log_all_domain = null
   # name - (required) is a type of string
   name = null
   # redirect_portal - (optional) is a type of string
   redirect_portal = null
+  # redirect_portal6 - (optional) is a type of string
+  redirect_portal6 = null
   # safe_search - (optional) is a type of string
   safe_search = null
   # sdns_domain_log - (optional) is a type of string
@@ -47,6 +51,18 @@ module "fortios_dnsfilter_profile" {
   sdns_ftgd_err_log = null
   # youtube_restrict - (optional) is a type of string
   youtube_restrict = null
+
+  dns_translation = [{
+    addr_type = null
+    dst       = null
+    dst6      = null
+    id        = null
+    netmask   = null
+    prefix    = null
+    src       = null
+    src6      = null
+    status    = null
+  }]
 
   domain_filter = [{
     domain_filter_table = null
@@ -91,6 +107,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "log_all_domain" {
   description = "(optional)"
   type        = string
@@ -103,6 +125,12 @@ variable "name" {
 }
 
 variable "redirect_portal" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "redirect_portal6" {
   description = "(optional)"
   type        = string
   default     = null
@@ -130,6 +158,24 @@ variable "youtube_restrict" {
   description = "(optional)"
   type        = string
   default     = null
+}
+
+variable "dns_translation" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      addr_type = string
+      dst       = string
+      dst6      = string
+      id        = number
+      netmask   = string
+      prefix    = number
+      src       = string
+      src6      = string
+      status    = string
+    }
+  ))
+  default = []
 }
 
 variable "domain_filter" {
@@ -177,16 +223,33 @@ variable "ftgd_dns" {
 
 ```terraform
 resource "fortios_dnsfilter_profile" "this" {
-  block_action      = var.block_action
-  block_botnet      = var.block_botnet
-  comment           = var.comment
-  log_all_domain    = var.log_all_domain
-  name              = var.name
-  redirect_portal   = var.redirect_portal
-  safe_search       = var.safe_search
-  sdns_domain_log   = var.sdns_domain_log
-  sdns_ftgd_err_log = var.sdns_ftgd_err_log
-  youtube_restrict  = var.youtube_restrict
+  block_action          = var.block_action
+  block_botnet          = var.block_botnet
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  log_all_domain        = var.log_all_domain
+  name                  = var.name
+  redirect_portal       = var.redirect_portal
+  redirect_portal6      = var.redirect_portal6
+  safe_search           = var.safe_search
+  sdns_domain_log       = var.sdns_domain_log
+  sdns_ftgd_err_log     = var.sdns_ftgd_err_log
+  youtube_restrict      = var.youtube_restrict
+
+  dynamic "dns_translation" {
+    for_each = var.dns_translation
+    content {
+      addr_type = dns_translation.value["addr_type"]
+      dst       = dns_translation.value["dst"]
+      dst6      = dns_translation.value["dst6"]
+      id        = dns_translation.value["id"]
+      netmask   = dns_translation.value["netmask"]
+      prefix    = dns_translation.value["prefix"]
+      src       = dns_translation.value["src"]
+      src6      = dns_translation.value["src6"]
+      status    = dns_translation.value["status"]
+    }
+  }
 
   dynamic "domain_filter" {
     for_each = var.domain_filter
@@ -251,6 +314,11 @@ output "log_all_domain" {
 output "redirect_portal" {
   description = "returns a string"
   value       = fortios_dnsfilter_profile.this.redirect_portal
+}
+
+output "redirect_portal6" {
+  description = "returns a string"
+  value       = fortios_dnsfilter_profile.this.redirect_portal6
 }
 
 output "safe_search" {

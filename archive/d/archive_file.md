@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    archive = ">= 2.0.0"
+    archive = ">= 2.1.0"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_imagebuilder_image_recipe" {
   tags = {}
   # version - (required) is a type of string
   version = null
+  # working_directory - (optional) is a type of string
+  working_directory = null
 
   block_device_mapping = [{
     device_name = null
@@ -91,6 +93,12 @@ variable "version" {
   type        = string
 }
 
+variable "working_directory" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "block_device_mapping" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
@@ -130,11 +138,12 @@ variable "component" {
 
 ```terraform
 resource "aws_imagebuilder_image_recipe" "this" {
-  description  = var.description
-  name         = var.name
-  parent_image = var.parent_image
-  tags         = var.tags
-  version      = var.version
+  description       = var.description
+  name              = var.name
+  parent_image      = var.parent_image
+  tags              = var.tags
+  version           = var.version
+  working_directory = var.working_directory
 
   dynamic "block_device_mapping" {
     for_each = var.block_device_mapping

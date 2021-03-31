@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    brightbox = ">= 1.5.0"
+    brightbox = ">= 2.0.3"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,8 +31,12 @@ module "fortios_dlp_sensor" {
   comment = null
   # dlp_log - (optional) is a type of string
   dlp_log = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extended_log - (optional) is a type of string
   extended_log = null
+  # feature_set - (optional) is a type of string
+  feature_set = null
   # flow_based - (optional) is a type of string
   flow_based = null
   # full_archive_proto - (optional) is a type of string
@@ -64,8 +68,11 @@ module "fortios_dlp_sensor" {
     name             = null
     proto            = null
     regexp           = null
-    severity         = null
-    type             = null
+    sensitivity = [{
+      name = null
+    }]
+    severity = null
+    type     = null
   }]
 }
 ```
@@ -87,7 +94,19 @@ variable "dlp_log" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "extended_log" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "feature_set" {
   description = "(optional)"
   type        = string
   default     = null
@@ -155,8 +174,13 @@ variable "filter" {
       name             = string
       proto            = string
       regexp           = string
-      severity         = string
-      type             = string
+      sensitivity = list(object(
+        {
+          name = string
+        }
+      ))
+      severity = string
+      type     = string
     }
   ))
   default = []
@@ -169,16 +193,18 @@ variable "filter" {
 
 ```terraform
 resource "fortios_dlp_sensor" "this" {
-  comment            = var.comment
-  dlp_log            = var.dlp_log
-  extended_log       = var.extended_log
-  flow_based         = var.flow_based
-  full_archive_proto = var.full_archive_proto
-  nac_quar_log       = var.nac_quar_log
-  name               = var.name
-  options            = var.options
-  replacemsg_group   = var.replacemsg_group
-  summary_proto      = var.summary_proto
+  comment               = var.comment
+  dlp_log               = var.dlp_log
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  extended_log          = var.extended_log
+  feature_set           = var.feature_set
+  flow_based            = var.flow_based
+  full_archive_proto    = var.full_archive_proto
+  nac_quar_log          = var.nac_quar_log
+  name                  = var.name
+  options               = var.options
+  replacemsg_group      = var.replacemsg_group
+  summary_proto         = var.summary_proto
 
   dynamic "filter" {
     for_each = var.filter
@@ -205,6 +231,13 @@ resource "fortios_dlp_sensor" "this" {
         }
       }
 
+      dynamic "sensitivity" {
+        for_each = filter.value.sensitivity
+        content {
+          name = sensitivity.value["name"]
+        }
+      }
+
     }
   }
 
@@ -224,6 +257,11 @@ output "dlp_log" {
 output "extended_log" {
   description = "returns a string"
   value       = fortios_dlp_sensor.this.extended_log
+}
+
+output "feature_set" {
+  description = "returns a string"
+  value       = fortios_dlp_sensor.this.feature_set
 }
 
 output "flow_based" {

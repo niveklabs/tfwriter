@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_firewall_ippool" {
   comments = null
   # endip - (required) is a type of string
   endip = null
+  # endport - (optional) is a type of number
+  endport = null
   # name - (optional) is a type of string
   name = null
   # num_blocks_per_user - (optional) is a type of number
@@ -47,12 +49,16 @@ module "fortios_firewall_ippool" {
   pba_timeout = null
   # permit_any_host - (optional) is a type of string
   permit_any_host = null
+  # port_per_user - (optional) is a type of number
+  port_per_user = null
   # source_endip - (optional) is a type of string
   source_endip = null
   # source_startip - (optional) is a type of string
   source_startip = null
   # startip - (required) is a type of string
   startip = null
+  # startport - (optional) is a type of number
+  startport = null
   # type - (optional) is a type of string
   type = null
 }
@@ -98,6 +104,12 @@ variable "endip" {
   type        = string
 }
 
+variable "endport" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -122,6 +134,12 @@ variable "permit_any_host" {
   default     = null
 }
 
+variable "port_per_user" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "source_endip" {
   description = "(optional)"
   type        = string
@@ -137,6 +155,12 @@ variable "source_startip" {
 variable "startip" {
   description = "(required)"
   type        = string
+}
+
+variable "startport" {
+  description = "(optional)"
+  type        = number
+  default     = null
 }
 
 variable "type" {
@@ -158,13 +182,16 @@ resource "fortios_firewall_ippool" "this" {
   block_size           = var.block_size
   comments             = var.comments
   endip                = var.endip
+  endport              = var.endport
   name                 = var.name
   num_blocks_per_user  = var.num_blocks_per_user
   pba_timeout          = var.pba_timeout
   permit_any_host      = var.permit_any_host
+  port_per_user        = var.port_per_user
   source_endip         = var.source_endip
   source_startip       = var.source_startip
   startip              = var.startip
+  startport            = var.startport
   type                 = var.type
 }
 ```
@@ -194,6 +221,11 @@ output "block_size" {
   value       = fortios_firewall_ippool.this.block_size
 }
 
+output "endport" {
+  description = "returns a number"
+  value       = fortios_firewall_ippool.this.endport
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_firewall_ippool.this.id
@@ -219,6 +251,11 @@ output "permit_any_host" {
   value       = fortios_firewall_ippool.this.permit_any_host
 }
 
+output "port_per_user" {
+  description = "returns a number"
+  value       = fortios_firewall_ippool.this.port_per_user
+}
+
 output "source_endip" {
   description = "returns a string"
   value       = fortios_firewall_ippool.this.source_endip
@@ -227,6 +264,11 @@ output "source_endip" {
 output "source_startip" {
   description = "returns a string"
   value       = fortios_firewall_ippool.this.source_startip
+}
+
+output "startport" {
+  description = "returns a number"
+  value       = fortios_firewall_ippool.this.startport
 }
 
 output "type" {

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "icinga2" {
-  version = "0.4.0"
+  version = "0.5.0"
 
   # api_password - (required) is a type of string
   api_password = null

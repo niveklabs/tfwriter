@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    vsphere = ">= 1.24.3"
+    vsphere = ">= 1.25.0"
   }
 }
 ```

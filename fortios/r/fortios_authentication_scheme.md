@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_authentication_scheme" {
 
   # domain_controller - (optional) is a type of string
   domain_controller = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fsso_agent_for_ntlm - (optional) is a type of string
   fsso_agent_for_ntlm = null
   # fsso_guest - (optional) is a type of string
@@ -58,6 +60,12 @@ module "fortios_authentication_scheme" {
 
 ```terraform
 variable "domain_controller" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -127,15 +135,16 @@ variable "user_database" {
 
 ```terraform
 resource "fortios_authentication_scheme" "this" {
-  domain_controller   = var.domain_controller
-  fsso_agent_for_ntlm = var.fsso_agent_for_ntlm
-  fsso_guest          = var.fsso_guest
-  kerberos_keytab     = var.kerberos_keytab
-  method              = var.method
-  name                = var.name
-  negotiate_ntlm      = var.negotiate_ntlm
-  require_tfa         = var.require_tfa
-  ssh_ca              = var.ssh_ca
+  domain_controller     = var.domain_controller
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fsso_agent_for_ntlm   = var.fsso_agent_for_ntlm
+  fsso_guest            = var.fsso_guest
+  kerberos_keytab       = var.kerberos_keytab
+  method                = var.method
+  name                  = var.name
+  negotiate_ntlm        = var.negotiate_ntlm
+  require_tfa           = var.require_tfa
+  ssh_ca                = var.ssh_ca
 
   dynamic "user_database" {
     for_each = var.user_database

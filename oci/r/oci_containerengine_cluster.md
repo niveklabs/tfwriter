@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -37,6 +37,12 @@ module "oci_containerengine_cluster" {
   name = null
   # vcn_id - (required) is a type of string
   vcn_id = null
+
+  endpoint_config = [{
+    is_public_ip_enabled = null
+    nsg_ids              = []
+    subnet_id            = null
+  }]
 
   options = [{
     add_ons = [{
@@ -92,6 +98,18 @@ variable "vcn_id" {
   type        = string
 }
 
+variable "endpoint_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      is_public_ip_enabled = bool
+      nsg_ids              = set(string)
+      subnet_id            = string
+    }
+  ))
+  default = []
+}
+
 variable "options" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -143,6 +161,15 @@ resource "oci_containerengine_cluster" "this" {
   kubernetes_version = var.kubernetes_version
   name               = var.name
   vcn_id             = var.vcn_id
+
+  dynamic "endpoint_config" {
+    for_each = var.endpoint_config
+    content {
+      is_public_ip_enabled = endpoint_config.value["is_public_ip_enabled"]
+      nsg_ids              = endpoint_config.value["nsg_ids"]
+      subnet_id            = endpoint_config.value["subnet_id"]
+    }
+  }
 
   dynamic "options" {
     for_each = var.options

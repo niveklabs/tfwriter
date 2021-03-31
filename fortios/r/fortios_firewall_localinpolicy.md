@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_firewall_localinpolicy" {
   action = null
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ha_mgmt_intf_only - (optional) is a type of string
   ha_mgmt_intf_only = null
   # intf - (optional) is a type of string
@@ -41,6 +43,8 @@ module "fortios_firewall_localinpolicy" {
   schedule = null
   # status - (optional) is a type of string
   status = null
+  # uuid - (optional) is a type of string
+  uuid = null
 
   dstaddr = [{
     name = null
@@ -73,6 +77,12 @@ variable "comments" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ha_mgmt_intf_only" {
   description = "(optional)"
   type        = string
@@ -97,6 +107,12 @@ variable "schedule" {
 }
 
 variable "status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "uuid" {
   description = "(optional)"
   type        = string
   default     = null
@@ -137,13 +153,15 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_localinpolicy" "this" {
-  action            = var.action
-  comments          = var.comments
-  ha_mgmt_intf_only = var.ha_mgmt_intf_only
-  intf              = var.intf
-  policyid          = var.policyid
-  schedule          = var.schedule
-  status            = var.status
+  action                = var.action
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ha_mgmt_intf_only     = var.ha_mgmt_intf_only
+  intf                  = var.intf
+  policyid              = var.policyid
+  schedule              = var.schedule
+  status                = var.status
+  uuid                  = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
@@ -202,6 +220,11 @@ output "policyid" {
 output "status" {
   description = "returns a string"
   value       = fortios_firewall_localinpolicy.this.status
+}
+
+output "uuid" {
+  description = "returns a string"
+  value       = fortios_firewall_localinpolicy.this.uuid
 }
 
 output "this" {

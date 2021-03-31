@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_webproxy_forwardservergroup" {
 
   # affinity - (optional) is a type of string
   affinity = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # group_down_option - (optional) is a type of string
   group_down_option = null
   # ldb_method - (optional) is a type of string
@@ -49,6 +51,12 @@ module "fortios_webproxy_forwardservergroup" {
 
 ```terraform
 variable "affinity" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -90,10 +98,11 @@ variable "server_list" {
 
 ```terraform
 resource "fortios_webproxy_forwardservergroup" "this" {
-  affinity          = var.affinity
-  group_down_option = var.group_down_option
-  ldb_method        = var.ldb_method
-  name              = var.name
+  affinity              = var.affinity
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  group_down_option     = var.group_down_option
+  ldb_method            = var.ldb_method
+  name                  = var.name
 
   dynamic "server_list" {
     for_each = var.server_list

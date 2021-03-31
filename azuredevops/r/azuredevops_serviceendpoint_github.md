@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -43,6 +43,13 @@ module "azuredevops_serviceendpoint_github" {
   auth_personal = [{
     personal_access_token      = null
     personal_access_token_hash = null
+  }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
   }]
 }
 ```
@@ -94,6 +101,19 @@ variable "auth_personal" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -118,6 +138,16 @@ resource "azuredevops_serviceendpoint_github" "this" {
     for_each = var.auth_personal
     content {
       personal_access_token = auth_personal.value["personal_access_token"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
     }
   }
 

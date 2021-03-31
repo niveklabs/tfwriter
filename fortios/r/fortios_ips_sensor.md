@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,16 +31,23 @@ module "fortios_ips_sensor" {
   block_malicious_url = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extended_log - (optional) is a type of string
   extended_log = null
   # name - (required) is a type of string
   name = null
   # replacemsg_group - (optional) is a type of string
   replacemsg_group = null
+  # scan_botnet_connections - (optional) is a type of string
+  scan_botnet_connections = null
 
   entries = [{
     action      = null
     application = null
+    cve = [{
+      cve_entry = null
+    }]
     exempt_ip = [{
       dst_ip = null
       id     = null
@@ -118,6 +125,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "extended_log" {
   description = "(optional)"
   type        = string
@@ -135,12 +148,23 @@ variable "replacemsg_group" {
   default     = null
 }
 
+variable "scan_botnet_connections" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "entries" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       action      = string
       application = string
+      cve = list(object(
+        {
+          cve_entry = string
+        }
+      ))
       exempt_ip = list(object(
         {
           dst_ip = string
@@ -227,11 +251,13 @@ variable "override" {
 
 ```terraform
 resource "fortios_ips_sensor" "this" {
-  block_malicious_url = var.block_malicious_url
-  comment             = var.comment
-  extended_log        = var.extended_log
-  name                = var.name
-  replacemsg_group    = var.replacemsg_group
+  block_malicious_url     = var.block_malicious_url
+  comment                 = var.comment
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
+  extended_log            = var.extended_log
+  name                    = var.name
+  replacemsg_group        = var.replacemsg_group
+  scan_botnet_connections = var.scan_botnet_connections
 
   dynamic "entries" {
     for_each = var.entries
@@ -254,6 +280,13 @@ resource "fortios_ips_sensor" "this" {
       rate_track         = entries.value["rate_track"]
       severity           = entries.value["severity"]
       status             = entries.value["status"]
+
+      dynamic "cve" {
+        for_each = entries.value.cve
+        content {
+          cve_entry = cve.value["cve_entry"]
+        }
+      }
 
       dynamic "exempt_ip" {
         for_each = entries.value.exempt_ip
@@ -343,6 +376,11 @@ output "id" {
 output "replacemsg_group" {
   description = "returns a string"
   value       = fortios_ips_sensor.this.replacemsg_group
+}
+
+output "scan_botnet_connections" {
+  description = "returns a string"
+  value       = fortios_ips_sensor.this.scan_botnet_connections
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "alicloud_oos_execution" {
   parent_execution_id = null
   # safety_check - (optional) is a type of string
   safety_check = null
+  # template_content - (optional) is a type of string
+  template_content = null
   # template_name - (required) is a type of string
   template_name = null
   # template_version - (optional) is a type of string
@@ -91,6 +93,12 @@ variable "safety_check" {
   default     = null
 }
 
+variable "template_content" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "template_name" {
   description = "(required)"
   type        = string
@@ -125,6 +133,7 @@ resource "alicloud_oos_execution" "this" {
   parameters          = var.parameters
   parent_execution_id = var.parent_execution_id
   safety_check        = var.safety_check
+  template_content    = var.template_content
   template_name       = var.template_name
   template_version    = var.template_version
 

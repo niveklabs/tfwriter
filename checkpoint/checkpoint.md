@@ -12,7 +12,7 @@
 
 ```terraform
 provider "checkpoint" {
-  version = "1.2.0"
+  version = "1.4.0"
 
   # context - (optional) is a type of string
   context = null
@@ -192,9 +192,15 @@ provider "checkpoint" {
 
 - [checkpoint_management_set_threat_protection](./r/checkpoint_management_set_threat_protection.md)
 
+- [checkpoint_management_simple_cluster](./r/checkpoint_management_simple_cluster.md)
+
+- [checkpoint_management_simple_gateway](./r/checkpoint_management_simple_gateway.md)
+
 - [checkpoint_management_threat_exception](./r/checkpoint_management_threat_exception.md)
 
 - [checkpoint_management_threat_indicator](./r/checkpoint_management_threat_indicator.md)
+
+- [checkpoint_management_threat_profile](./r/checkpoint_management_threat_profile.md)
 
 - [checkpoint_management_threat_rule](./r/checkpoint_management_threat_rule.md)
 
@@ -332,7 +338,13 @@ provider "checkpoint" {
 
 - [checkpoint_management_show_updatable_objects_repository_content](./d/checkpoint_management_show_updatable_objects_repository_content.md)
 
+- [checkpoint_management_simple_cluster](./d/checkpoint_management_simple_cluster.md)
+
+- [checkpoint_management_simple_gateway](./d/checkpoint_management_simple_gateway.md)
+
 - [checkpoint_management_threat_exception](./d/checkpoint_management_threat_exception.md)
+
+- [checkpoint_management_threat_profile](./d/checkpoint_management_threat_profile.md)
 
 - [checkpoint_management_threat_rule](./d/checkpoint_management_threat_rule.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -154,15 +154,15 @@ variable "actions" {
         {
           cookie = list(object(
             {
-              check_presence = list(string)
-              include        = list(string)
+              check_presence = set(string)
+              include        = set(string)
             }
           ))
           header = list(object(
             {
-              check_presence = list(string)
-              exclude        = list(string)
-              include        = list(string)
+              check_presence = set(string)
+              exclude        = set(string)
+              include        = set(string)
             }
           ))
           host = list(object(
@@ -172,9 +172,9 @@ variable "actions" {
           ))
           query_string = list(object(
             {
-              exclude = list(string)
+              exclude = set(string)
               ignore  = bool
-              include = list(string)
+              include = set(string)
             }
           ))
           user = list(object(

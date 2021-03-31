@@ -12,7 +12,7 @@
 
 ```terraform
 provider "oci" {
-  version = "4.7.0"
+  version = "4.19.0"
 
   # auth - (optional) is a type of string
   auth = null
@@ -46,6 +46,10 @@ provider "oci" {
 
 - [oci_analytics_analytics_instance](./r/oci_analytics_analytics_instance.md)
 
+- [oci_analytics_analytics_instance_private_access_channel](./r/oci_analytics_analytics_instance_private_access_channel.md)
+
+- [oci_analytics_analytics_instance_vanity_url](./r/oci_analytics_analytics_instance_vanity_url.md)
+
 - [oci_apigateway_api](./r/oci_apigateway_api.md)
 
 - [oci_apigateway_certificate](./r/oci_apigateway_certificate.md)
@@ -54,9 +58,15 @@ provider "oci" {
 
 - [oci_apigateway_gateway](./r/oci_apigateway_gateway.md)
 
+- [oci_artifacts_container_configuration](./r/oci_artifacts_container_configuration.md)
+
+- [oci_artifacts_container_repository](./r/oci_artifacts_container_repository.md)
+
 - [oci_audit_configuration](./r/oci_audit_configuration.md)
 
 - [oci_autoscaling_auto_scaling_configuration](./r/oci_autoscaling_auto_scaling_configuration.md)
+
+- [oci_bds_auto_scaling_configuration](./r/oci_bds_auto_scaling_configuration.md)
 
 - [oci_bds_bds_instance](./r/oci_bds_bds_instance.md)
 
@@ -94,6 +104,8 @@ provider "oci" {
 
 - [oci_core_cluster_network](./r/oci_core_cluster_network.md)
 
+- [oci_core_compute_capacity_reservation](./r/oci_core_compute_capacity_reservation.md)
+
 - [oci_core_compute_image_capability_schema](./r/oci_core_compute_image_capability_schema.md)
 
 - [oci_core_console_history](./r/oci_core_console_history.md)
@@ -127,6 +139,8 @@ provider "oci" {
 - [oci_core_instance_console_connection](./r/oci_core_instance_console_connection.md)
 
 - [oci_core_instance_pool](./r/oci_core_instance_pool.md)
+
+- [oci_core_instance_pool_instance](./r/oci_core_instance_pool_instance.md)
 
 - [oci_core_internet_gateway](./r/oci_core_internet_gateway.md)
 
@@ -240,9 +254,25 @@ provider "oci" {
 
 - [oci_database_exadata_iorm_config](./r/oci_database_exadata_iorm_config.md)
 
+- [oci_database_external_container_database](./r/oci_database_external_container_database.md)
+
+- [oci_database_external_container_database_management](./r/oci_database_external_container_database_management.md)
+
+- [oci_database_external_database_connector](./r/oci_database_external_database_connector.md)
+
+- [oci_database_external_non_container_database](./r/oci_database_external_non_container_database.md)
+
+- [oci_database_external_non_container_database_management](./r/oci_database_external_non_container_database_management.md)
+
+- [oci_database_external_pluggable_database](./r/oci_database_external_pluggable_database.md)
+
+- [oci_database_external_pluggable_database_management](./r/oci_database_external_pluggable_database_management.md)
+
 - [oci_database_key_store](./r/oci_database_key_store.md)
 
 - [oci_database_maintenance_run](./r/oci_database_maintenance_run.md)
+
+- [oci_database_management_managed_database_group](./r/oci_database_management_managed_database_group.md)
 
 - [oci_database_migration](./r/oci_database_migration.md)
 
@@ -267,6 +297,8 @@ provider "oci" {
 - [oci_dataintegration_workspace](./r/oci_dataintegration_workspace.md)
 
 - [oci_datascience_model](./r/oci_datascience_model.md)
+
+- [oci_datascience_model_deployment](./r/oci_datascience_model_deployment.md)
 
 - [oci_datascience_model_provenance](./r/oci_datascience_model_provenance.md)
 
@@ -313,6 +345,12 @@ provider "oci" {
 - [oci_functions_function](./r/oci_functions_function.md)
 
 - [oci_functions_invoke_function](./r/oci_functions_invoke_function.md)
+
+- [oci_golden_gate_database_registration](./r/oci_golden_gate_database_registration.md)
+
+- [oci_golden_gate_deployment](./r/oci_golden_gate_deployment.md)
+
+- [oci_golden_gate_deployment_backup](./r/oci_golden_gate_deployment_backup.md)
 
 - [oci_health_checks_http_monitor](./r/oci_health_checks_http_monitor.md)
 
@@ -372,7 +410,11 @@ provider "oci" {
 
 - [oci_kms_key_version](./r/oci_kms_key_version.md)
 
+- [oci_kms_sign](./r/oci_kms_sign.md)
+
 - [oci_kms_vault](./r/oci_kms_vault.md)
+
+- [oci_kms_verify](./r/oci_kms_verify.md)
 
 - [oci_limits_quota](./r/oci_limits_quota.md)
 
@@ -392,11 +434,17 @@ provider "oci" {
 
 - [oci_load_balancer_load_balancer](./r/oci_load_balancer_load_balancer.md)
 
+- [oci_load_balancer_load_balancer_routing_policy](./r/oci_load_balancer_load_balancer_routing_policy.md)
+
 - [oci_load_balancer_path_route_set](./r/oci_load_balancer_path_route_set.md)
 
 - [oci_load_balancer_rule_set](./r/oci_load_balancer_rule_set.md)
 
 - [oci_load_balancer_ssl_cipher_suite](./r/oci_load_balancer_ssl_cipher_suite.md)
+
+- [oci_log_analytics_log_analytics_entity](./r/oci_log_analytics_log_analytics_entity.md)
+
+- [oci_log_analytics_log_analytics_log_group](./r/oci_log_analytics_log_analytics_log_group.md)
 
 - [oci_log_analytics_namespace](./r/oci_log_analytics_namespace.md)
 
@@ -405,6 +453,8 @@ provider "oci" {
 - [oci_logging_log_group](./r/oci_logging_log_group.md)
 
 - [oci_logging_log_saved_search](./r/oci_logging_log_saved_search.md)
+
+- [oci_logging_unified_agent_configuration](./r/oci_logging_unified_agent_configuration.md)
 
 - [oci_management_agent_management_agent](./r/oci_management_agent_management_agent.md)
 
@@ -416,6 +466,10 @@ provider "oci" {
 
 - [oci_marketplace_listing_package_agreement](./r/oci_marketplace_listing_package_agreement.md)
 
+- [oci_marketplace_publication](./r/oci_marketplace_publication.md)
+
+- [oci_metering_computation_query](./r/oci_metering_computation_query.md)
+
 - [oci_metering_computation_usage](./r/oci_metering_computation_usage.md)
 
 - [oci_monitoring_alarm](./r/oci_monitoring_alarm.md)
@@ -424,9 +478,19 @@ provider "oci" {
 
 - [oci_mysql_channel](./r/oci_mysql_channel.md)
 
+- [oci_mysql_heat_wave_cluster](./r/oci_mysql_heat_wave_cluster.md)
+
 - [oci_mysql_mysql_backup](./r/oci_mysql_mysql_backup.md)
 
 - [oci_mysql_mysql_db_system](./r/oci_mysql_mysql_db_system.md)
+
+- [oci_network_load_balancer_backend](./r/oci_network_load_balancer_backend.md)
+
+- [oci_network_load_balancer_backend_set](./r/oci_network_load_balancer_backend_set.md)
+
+- [oci_network_load_balancer_listener](./r/oci_network_load_balancer_listener.md)
+
+- [oci_network_load_balancer_network_load_balancer](./r/oci_network_load_balancer_network_load_balancer.md)
 
 - [oci_nosql_index](./r/oci_nosql_index.md)
 
@@ -500,6 +564,8 @@ provider "oci" {
 
 - [oci_analytics_analytics_instance](./d/oci_analytics_analytics_instance.md)
 
+- [oci_analytics_analytics_instance_private_access_channel](./d/oci_analytics_analytics_instance_private_access_channel.md)
+
 - [oci_analytics_analytics_instances](./d/oci_analytics_analytics_instances.md)
 
 - [oci_apigateway_api](./d/oci_apigateway_api.md)
@@ -524,6 +590,12 @@ provider "oci" {
 
 - [oci_apigateway_gateways](./d/oci_apigateway_gateways.md)
 
+- [oci_artifacts_container_configuration](./d/oci_artifacts_container_configuration.md)
+
+- [oci_artifacts_container_repositories](./d/oci_artifacts_container_repositories.md)
+
+- [oci_artifacts_container_repository](./d/oci_artifacts_container_repository.md)
+
 - [oci_audit_configuration](./d/oci_audit_configuration.md)
 
 - [oci_audit_events](./d/oci_audit_events.md)
@@ -531,6 +603,10 @@ provider "oci" {
 - [oci_autoscaling_auto_scaling_configuration](./d/oci_autoscaling_auto_scaling_configuration.md)
 
 - [oci_autoscaling_auto_scaling_configurations](./d/oci_autoscaling_auto_scaling_configurations.md)
+
+- [oci_bds_auto_scaling_configuration](./d/oci_bds_auto_scaling_configuration.md)
+
+- [oci_bds_auto_scaling_configurations](./d/oci_bds_auto_scaling_configurations.md)
 
 - [oci_bds_bds_instance](./d/oci_bds_bds_instance.md)
 
@@ -573,6 +649,12 @@ provider "oci" {
 - [oci_cloud_guard_target](./d/oci_cloud_guard_target.md)
 
 - [oci_cloud_guard_targets](./d/oci_cloud_guard_targets.md)
+
+- [oci_computeinstanceagent_instance_agent_plugin](./d/oci_computeinstanceagent_instance_agent_plugin.md)
+
+- [oci_computeinstanceagent_instance_agent_plugins](./d/oci_computeinstanceagent_instance_agent_plugins.md)
+
+- [oci_computeinstanceagent_instance_available_plugins](./d/oci_computeinstanceagent_instance_available_plugins.md)
 
 - [oci_containerengine_cluster_kube_config](./d/oci_containerengine_cluster_kube_config.md)
 
@@ -623,6 +705,14 @@ provider "oci" {
 - [oci_core_cluster_network_instances](./d/oci_core_cluster_network_instances.md)
 
 - [oci_core_cluster_networks](./d/oci_core_cluster_networks.md)
+
+- [oci_core_compute_capacity_reservation](./d/oci_core_compute_capacity_reservation.md)
+
+- [oci_core_compute_capacity_reservation_instance_shapes](./d/oci_core_compute_capacity_reservation_instance_shapes.md)
+
+- [oci_core_compute_capacity_reservation_instances](./d/oci_core_compute_capacity_reservation_instances.md)
+
+- [oci_core_compute_capacity_reservations](./d/oci_core_compute_capacity_reservations.md)
 
 - [oci_core_compute_global_image_capability_schema](./d/oci_core_compute_global_image_capability_schema.md)
 
@@ -938,6 +1028,22 @@ provider "oci" {
 
 - [oci_database_exadata_iorm_config](./d/oci_database_exadata_iorm_config.md)
 
+- [oci_database_external_container_database](./d/oci_database_external_container_database.md)
+
+- [oci_database_external_container_databases](./d/oci_database_external_container_databases.md)
+
+- [oci_database_external_database_connector](./d/oci_database_external_database_connector.md)
+
+- [oci_database_external_database_connectors](./d/oci_database_external_database_connectors.md)
+
+- [oci_database_external_non_container_database](./d/oci_database_external_non_container_database.md)
+
+- [oci_database_external_non_container_databases](./d/oci_database_external_non_container_databases.md)
+
+- [oci_database_external_pluggable_database](./d/oci_database_external_pluggable_database.md)
+
+- [oci_database_external_pluggable_databases](./d/oci_database_external_pluggable_databases.md)
+
 - [oci_database_flex_components](./d/oci_database_flex_components.md)
 
 - [oci_database_gi_versions](./d/oci_database_gi_versions.md)
@@ -949,6 +1055,14 @@ provider "oci" {
 - [oci_database_maintenance_run](./d/oci_database_maintenance_run.md)
 
 - [oci_database_maintenance_runs](./d/oci_database_maintenance_runs.md)
+
+- [oci_database_management_managed_database](./d/oci_database_management_managed_database.md)
+
+- [oci_database_management_managed_database_group](./d/oci_database_management_managed_database_group.md)
+
+- [oci_database_management_managed_database_groups](./d/oci_database_management_managed_database_groups.md)
+
+- [oci_database_management_managed_databases](./d/oci_database_management_managed_databases.md)
 
 - [oci_database_vm_cluster](./d/oci_database_vm_cluster.md)
 
@@ -1011,6 +1125,12 @@ provider "oci" {
 - [oci_dataintegration_workspaces](./d/oci_dataintegration_workspaces.md)
 
 - [oci_datascience_model](./d/oci_datascience_model.md)
+
+- [oci_datascience_model_deployment](./d/oci_datascience_model_deployment.md)
+
+- [oci_datascience_model_deployment_shapes](./d/oci_datascience_model_deployment_shapes.md)
+
+- [oci_datascience_model_deployments](./d/oci_datascience_model_deployments.md)
 
 - [oci_datascience_model_provenance](./d/oci_datascience_model_provenance.md)
 
@@ -1087,6 +1207,18 @@ provider "oci" {
 - [oci_functions_function](./d/oci_functions_function.md)
 
 - [oci_functions_functions](./d/oci_functions_functions.md)
+
+- [oci_golden_gate_database_registration](./d/oci_golden_gate_database_registration.md)
+
+- [oci_golden_gate_database_registrations](./d/oci_golden_gate_database_registrations.md)
+
+- [oci_golden_gate_deployment](./d/oci_golden_gate_deployment.md)
+
+- [oci_golden_gate_deployment_backup](./d/oci_golden_gate_deployment_backup.md)
+
+- [oci_golden_gate_deployment_backups](./d/oci_golden_gate_deployment_backups.md)
+
+- [oci_golden_gate_deployments](./d/oci_golden_gate_deployments.md)
 
 - [oci_health_checks_http_monitor](./d/oci_health_checks_http_monitor.md)
 
@@ -1220,6 +1352,10 @@ provider "oci" {
 
 - [oci_load_balancer_listener_rules](./d/oci_load_balancer_listener_rules.md)
 
+- [oci_load_balancer_load_balancer_routing_policies](./d/oci_load_balancer_load_balancer_routing_policies.md)
+
+- [oci_load_balancer_load_balancer_routing_policy](./d/oci_load_balancer_load_balancer_routing_policy.md)
+
 - [oci_load_balancer_load_balancers](./d/oci_load_balancer_load_balancers.md)
 
 - [oci_load_balancer_path_route_sets](./d/oci_load_balancer_path_route_sets.md)
@@ -1240,6 +1376,18 @@ provider "oci" {
 
 - [oci_load_balancers](./d/oci_load_balancers.md)
 
+- [oci_log_analytics_log_analytics_entities](./d/oci_log_analytics_log_analytics_entities.md)
+
+- [oci_log_analytics_log_analytics_entities_summary](./d/oci_log_analytics_log_analytics_entities_summary.md)
+
+- [oci_log_analytics_log_analytics_entity](./d/oci_log_analytics_log_analytics_entity.md)
+
+- [oci_log_analytics_log_analytics_log_group](./d/oci_log_analytics_log_analytics_log_group.md)
+
+- [oci_log_analytics_log_analytics_log_groups](./d/oci_log_analytics_log_analytics_log_groups.md)
+
+- [oci_log_analytics_log_analytics_log_groups_summary](./d/oci_log_analytics_log_analytics_log_groups_summary.md)
+
 - [oci_log_analytics_namespace](./d/oci_log_analytics_namespace.md)
 
 - [oci_log_analytics_namespaces](./d/oci_log_analytics_namespaces.md)
@@ -1255,6 +1403,10 @@ provider "oci" {
 - [oci_logging_log_saved_searches](./d/oci_logging_log_saved_searches.md)
 
 - [oci_logging_logs](./d/oci_logging_logs.md)
+
+- [oci_logging_unified_agent_configuration](./d/oci_logging_unified_agent_configuration.md)
+
+- [oci_logging_unified_agent_configurations](./d/oci_logging_unified_agent_configurations.md)
 
 - [oci_management_agent_management_agent](./d/oci_management_agent_management_agent.md)
 
@@ -1290,9 +1442,21 @@ provider "oci" {
 
 - [oci_marketplace_listings](./d/oci_marketplace_listings.md)
 
+- [oci_marketplace_publication](./d/oci_marketplace_publication.md)
+
+- [oci_marketplace_publication_package](./d/oci_marketplace_publication_package.md)
+
+- [oci_marketplace_publication_packages](./d/oci_marketplace_publication_packages.md)
+
+- [oci_marketplace_publications](./d/oci_marketplace_publications.md)
+
 - [oci_marketplace_publishers](./d/oci_marketplace_publishers.md)
 
 - [oci_metering_computation_configuration](./d/oci_metering_computation_configuration.md)
+
+- [oci_metering_computation_queries](./d/oci_metering_computation_queries.md)
+
+- [oci_metering_computation_query](./d/oci_metering_computation_query.md)
 
 - [oci_monitoring_alarm](./d/oci_monitoring_alarm.md)
 
@@ -1312,6 +1476,8 @@ provider "oci" {
 
 - [oci_mysql_channels](./d/oci_mysql_channels.md)
 
+- [oci_mysql_heat_wave_cluster](./d/oci_mysql_heat_wave_cluster.md)
+
 - [oci_mysql_mysql_backup](./d/oci_mysql_mysql_backup.md)
 
 - [oci_mysql_mysql_backups](./d/oci_mysql_mysql_backups.md)
@@ -1327,6 +1493,30 @@ provider "oci" {
 - [oci_mysql_mysql_versions](./d/oci_mysql_mysql_versions.md)
 
 - [oci_mysql_shapes](./d/oci_mysql_shapes.md)
+
+- [oci_network_load_balancer_backend_health](./d/oci_network_load_balancer_backend_health.md)
+
+- [oci_network_load_balancer_backend_set](./d/oci_network_load_balancer_backend_set.md)
+
+- [oci_network_load_balancer_backend_set_health](./d/oci_network_load_balancer_backend_set_health.md)
+
+- [oci_network_load_balancer_backend_sets](./d/oci_network_load_balancer_backend_sets.md)
+
+- [oci_network_load_balancer_backends](./d/oci_network_load_balancer_backends.md)
+
+- [oci_network_load_balancer_listener](./d/oci_network_load_balancer_listener.md)
+
+- [oci_network_load_balancer_listeners](./d/oci_network_load_balancer_listeners.md)
+
+- [oci_network_load_balancer_network_load_balancer](./d/oci_network_load_balancer_network_load_balancer.md)
+
+- [oci_network_load_balancer_network_load_balancer_health](./d/oci_network_load_balancer_network_load_balancer_health.md)
+
+- [oci_network_load_balancer_network_load_balancers](./d/oci_network_load_balancer_network_load_balancers.md)
+
+- [oci_network_load_balancer_network_load_balancers_policies](./d/oci_network_load_balancer_network_load_balancers_policies.md)
+
+- [oci_network_load_balancer_network_load_balancers_protocols](./d/oci_network_load_balancer_network_load_balancers_protocols.md)
 
 - [oci_nosql_index](./d/oci_nosql_index.md)
 
@@ -1405,6 +1595,10 @@ provider "oci" {
 - [oci_optimizer_profiles](./d/oci_optimizer_profiles.md)
 
 - [oci_optimizer_recommendation](./d/oci_optimizer_recommendation.md)
+
+- [oci_optimizer_recommendation_strategies](./d/oci_optimizer_recommendation_strategies.md)
+
+- [oci_optimizer_recommendation_strategy](./d/oci_optimizer_recommendation_strategy.md)
 
 - [oci_optimizer_recommendations](./d/oci_optimizer_recommendations.md)
 

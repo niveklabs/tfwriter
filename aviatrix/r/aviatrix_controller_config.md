@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aviatrix_controller_config" {
   source = "./modules/aviatrix/r/aviatrix_controller_config"
 
+  # aws_guard_duty_scanning_interval - (optional) is a type of number
+  aws_guard_duty_scanning_interval = null
   # backup_account_name - (optional) is a type of string
   backup_account_name = null
   # backup_bucket_name - (optional) is a type of string
@@ -35,6 +37,14 @@ module "aviatrix_controller_config" {
   backup_cloud_type = null
   # backup_configuration - (optional) is a type of bool
   backup_configuration = null
+  # backup_container_name - (optional) is a type of string
+  backup_container_name = null
+  # backup_region - (optional) is a type of string
+  backup_region = null
+  # backup_storage_name - (optional) is a type of string
+  backup_storage_name = null
+  # ca_certificate_file_path - (optional) is a type of string
+  ca_certificate_file_path = null
   # enable_vpc_dns_server - (optional) is a type of bool
   enable_vpc_dns_server = null
   # fqdn_exception_rule - (optional) is a type of bool
@@ -45,6 +55,10 @@ module "aviatrix_controller_config" {
   multiple_backups = null
   # security_group_management - (optional) is a type of bool
   security_group_management = null
+  # server_private_key_file_path - (optional) is a type of string
+  server_private_key_file_path = null
+  # server_public_certificate_file_path - (optional) is a type of string
+  server_public_certificate_file_path = null
   # sg_management_account_name - (optional) is a type of string
   sg_management_account_name = null
   # target_version - (optional) is a type of string
@@ -57,6 +71,12 @@ module "aviatrix_controller_config" {
 ### Variables
 
 ```terraform
+variable "aws_guard_duty_scanning_interval" {
+  description = "(optional) - Scanning Interval for AWS Guard Duty."
+  type        = number
+  default     = null
+}
+
 variable "backup_account_name" {
   description = "(optional) - This parameter represents the name of a Cloud-Account in Aviatrix controller."
   type        = string
@@ -64,7 +84,7 @@ variable "backup_account_name" {
 }
 
 variable "backup_bucket_name" {
-  description = "(optional) - S3 Bucket Name for AWS."
+  description = "(optional) - Bucket name. Required for AWS, AWSGOV, GCP and OCI."
   type        = string
   default     = null
 }
@@ -78,6 +98,30 @@ variable "backup_cloud_type" {
 variable "backup_configuration" {
   description = "(optional) - Switch to enable/disable controller cloudn backup config."
   type        = bool
+  default     = null
+}
+
+variable "backup_container_name" {
+  description = "(optional) - Container name. Required for Azure."
+  type        = string
+  default     = null
+}
+
+variable "backup_region" {
+  description = "(optional) - Name of region. Required for Azure and OCI."
+  type        = string
+  default     = null
+}
+
+variable "backup_storage_name" {
+  description = "(optional) - Storage name. Required for Azure."
+  type        = string
+  default     = null
+}
+
+variable "ca_certificate_file_path" {
+  description = "(optional) - File path to the CA Certificate."
+  type        = string
   default     = null
 }
 
@@ -111,6 +155,18 @@ variable "security_group_management" {
   default     = null
 }
 
+variable "server_private_key_file_path" {
+  description = "(optional) - File path to server private key."
+  type        = string
+  default     = null
+}
+
+variable "server_public_certificate_file_path" {
+  description = "(optional) - File path to the Server public certificate."
+  type        = string
+  default     = null
+}
+
 variable "sg_management_account_name" {
   description = "(optional) - Cloud account name of user."
   type        = string
@@ -130,17 +186,24 @@ variable "target_version" {
 
 ```terraform
 resource "aviatrix_controller_config" "this" {
-  backup_account_name        = var.backup_account_name
-  backup_bucket_name         = var.backup_bucket_name
-  backup_cloud_type          = var.backup_cloud_type
-  backup_configuration       = var.backup_configuration
-  enable_vpc_dns_server      = var.enable_vpc_dns_server
-  fqdn_exception_rule        = var.fqdn_exception_rule
-  http_access                = var.http_access
-  multiple_backups           = var.multiple_backups
-  security_group_management  = var.security_group_management
-  sg_management_account_name = var.sg_management_account_name
-  target_version             = var.target_version
+  aws_guard_duty_scanning_interval    = var.aws_guard_duty_scanning_interval
+  backup_account_name                 = var.backup_account_name
+  backup_bucket_name                  = var.backup_bucket_name
+  backup_cloud_type                   = var.backup_cloud_type
+  backup_configuration                = var.backup_configuration
+  backup_container_name               = var.backup_container_name
+  backup_region                       = var.backup_region
+  backup_storage_name                 = var.backup_storage_name
+  ca_certificate_file_path            = var.ca_certificate_file_path
+  enable_vpc_dns_server               = var.enable_vpc_dns_server
+  fqdn_exception_rule                 = var.fqdn_exception_rule
+  http_access                         = var.http_access
+  multiple_backups                    = var.multiple_backups
+  security_group_management           = var.security_group_management
+  server_private_key_file_path        = var.server_private_key_file_path
+  server_public_certificate_file_path = var.server_public_certificate_file_path
+  sg_management_account_name          = var.sg_management_account_name
+  target_version                      = var.target_version
 }
 ```
 

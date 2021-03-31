@@ -12,7 +12,7 @@
 
 ```terraform
 provider "kubernetes-alpha" {
-  version = "0.2.1"
+  version = "0.3.2"
 
   # client_certificate - (optional) is a type of string
   client_certificate = null
@@ -41,8 +41,6 @@ provider "kubernetes-alpha" {
   insecure = null
   # password - (optional) is a type of string
   password = null
-  # server_side_planning - (optional) is a type of bool
-  server_side_planning = null
   # token - (optional) is a type of string
   token = null
   # username - (optional) is a type of string

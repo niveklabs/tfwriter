@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -40,12 +40,12 @@ module "datadog_integration_aws_log_collection" {
 
 ```terraform
 variable "account_id" {
-  description = "(required)"
+  description = "(required) - Your AWS Account ID without dashes."
   type        = string
 }
 
 variable "services" {
-  description = "(required)"
+  description = "(required) - A list of services to collect logs from. See the [api docs](https://docs.datadoghq.com/api/v1/aws-logs-integration/#get-list-of-aws-log-ready-services) for more details on which services are supported."
   type        = list(string)
 }
 ```

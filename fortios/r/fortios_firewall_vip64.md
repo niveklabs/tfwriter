@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_firewall_vip64" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extip - (required) is a type of string
   extip = null
   # extport - (optional) is a type of string
@@ -99,6 +101,12 @@ variable "color" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -220,21 +228,22 @@ variable "src_filter" {
 
 ```terraform
 resource "fortios_firewall_vip64" "this" {
-  arp_reply   = var.arp_reply
-  color       = var.color
-  comment     = var.comment
-  extip       = var.extip
-  extport     = var.extport
-  fosid       = var.fosid
-  ldb_method  = var.ldb_method
-  mappedip    = var.mappedip
-  mappedport  = var.mappedport
-  name        = var.name
-  portforward = var.portforward
-  protocol    = var.protocol
-  server_type = var.server_type
-  type        = var.type
-  uuid        = var.uuid
+  arp_reply             = var.arp_reply
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  extip                 = var.extip
+  extport               = var.extport
+  fosid                 = var.fosid
+  ldb_method            = var.ldb_method
+  mappedip              = var.mappedip
+  mappedport            = var.mappedport
+  name                  = var.name
+  portforward           = var.portforward
+  protocol              = var.protocol
+  server_type           = var.server_type
+  type                  = var.type
+  uuid                  = var.uuid
 
   dynamic "monitor" {
     for_each = var.monitor

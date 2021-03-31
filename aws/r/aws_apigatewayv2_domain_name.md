@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -46,6 +46,7 @@ module "aws_apigatewayv2_domain_name" {
   }]
 
   timeouts = [{
+    create = null
     update = null
   }]
 }
@@ -95,6 +96,7 @@ variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
     {
+      create = string
       update = string
     }
   ))
@@ -131,6 +133,7 @@ resource "aws_apigatewayv2_domain_name" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      create = timeouts.value["create"]
       update = timeouts.value["update"]
     }
   }

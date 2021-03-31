@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -79,6 +79,11 @@ output "id" {
 output "lifecycle_details" {
   description = "returns a string"
   value       = data.oci_database_database_upgrade_history_entry.this.lifecycle_details
+}
+
+output "options" {
+  description = "returns a string"
+  value       = data.oci_database_database_upgrade_history_entry.this.options
 }
 
 output "source" {

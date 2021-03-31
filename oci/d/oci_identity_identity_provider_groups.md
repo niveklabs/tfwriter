@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,10 @@ module "oci_identity_identity_provider_groups" {
 
   # identity_provider_id - (required) is a type of string
   identity_provider_id = null
+  # name - (optional) is a type of string
+  name = null
+  # state - (optional) is a type of string
+  state = null
 
   filter = [{
     name   = null
@@ -46,6 +50,18 @@ module "oci_identity_identity_provider_groups" {
 variable "identity_provider_id" {
   description = "(required)"
   type        = string
+}
+
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "state" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "filter" {
@@ -68,6 +84,8 @@ variable "filter" {
 ```terraform
 data "oci_identity_identity_provider_groups" "this" {
   identity_provider_id = var.identity_provider_id
+  name                 = var.name
+  state                = var.state
 
   dynamic "filter" {
     for_each = var.filter

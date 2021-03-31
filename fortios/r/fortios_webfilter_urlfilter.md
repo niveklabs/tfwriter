@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_webfilter_urlfilter" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (required) is a type of number
   fosid = null
   # ip_addr_block - (optional) is a type of string
@@ -40,6 +42,7 @@ module "fortios_webfilter_urlfilter" {
 
   entries = [{
     action             = null
+    antiphish_action   = null
     dns_address_family = null
     exempt             = null
     id                 = null
@@ -58,6 +61,12 @@ module "fortios_webfilter_urlfilter" {
 
 ```terraform
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -90,6 +99,7 @@ variable "entries" {
   type = set(object(
     {
       action             = string
+      antiphish_action   = string
       dns_address_family = string
       exempt             = string
       id                 = number
@@ -111,6 +121,7 @@ variable "entries" {
 ```terraform
 resource "fortios_webfilter_urlfilter" "this" {
   comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
   fosid                 = var.fosid
   ip_addr_block         = var.ip_addr_block
   name                  = var.name
@@ -120,6 +131,7 @@ resource "fortios_webfilter_urlfilter" "this" {
     for_each = var.entries
     content {
       action             = entries.value["action"]
+      antiphish_action   = entries.value["antiphish_action"]
       dns_address_family = entries.value["dns_address_family"]
       exempt             = entries.value["exempt"]
       id                 = entries.value["id"]

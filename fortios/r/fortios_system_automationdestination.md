@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_automationdestination" {
   source = "./modules/fortios/r/fortios_system_automationdestination"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ha_group_id - (optional) is a type of number
   ha_group_id = null
   # name - (optional) is a type of string
@@ -45,6 +47,12 @@ module "fortios_system_automationdestination" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ha_group_id" {
   description = "(optional)"
   type        = number
@@ -80,9 +88,10 @@ variable "destination" {
 
 ```terraform
 resource "fortios_system_automationdestination" "this" {
-  ha_group_id = var.ha_group_id
-  name        = var.name
-  type        = var.type
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ha_group_id           = var.ha_group_id
+  name                  = var.name
+  type                  = var.type
 
   dynamic "destination" {
     for_each = var.destination

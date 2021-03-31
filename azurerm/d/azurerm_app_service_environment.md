@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -88,6 +88,11 @@ data "azurerm_app_service_environment" "this" {
 ### Outputs
 
 ```terraform
+output "cluster_setting" {
+  description = "returns a list of object"
+  value       = data.azurerm_app_service_environment.this.cluster_setting
+}
+
 output "front_end_scale_factor" {
   description = "returns a number"
   value       = data.azurerm_app_service_environment.this.front_end_scale_factor

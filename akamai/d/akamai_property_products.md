@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```

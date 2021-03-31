@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -59,7 +59,7 @@ variable "notification_emails" {
 }
 
 variable "project" {
-  description = "(optional)"
+  description = "(optional) - Deprecated in favor of 'project_id'"
   type        = string
   default     = null
 }
@@ -145,11 +145,6 @@ output "name" {
 output "notification_emails" {
   description = "returns a set of string"
   value       = google_project_access_approval_settings.this.notification_emails
-}
-
-output "project" {
-  description = "returns a string"
-  value       = google_project_access_approval_settings.this.project
 }
 
 output "this" {

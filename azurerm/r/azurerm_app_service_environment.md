@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -45,6 +45,11 @@ module "azurerm_app_service_environment" {
   tags = {}
   # user_whitelisted_ip_ranges - (optional) is a type of set of string
   user_whitelisted_ip_ranges = []
+
+  cluster_setting = [{
+    name  = null
+    value = null
+  }]
 
   timeouts = [{
     create = null
@@ -112,6 +117,17 @@ variable "user_whitelisted_ip_ranges" {
   default     = null
 }
 
+variable "cluster_setting" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name  = string
+      value = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -141,6 +157,14 @@ resource "azurerm_app_service_environment" "this" {
   subnet_id                    = var.subnet_id
   tags                         = var.tags
   user_whitelisted_ip_ranges   = var.user_whitelisted_ip_ranges
+
+  dynamic "cluster_setting" {
+    for_each = var.cluster_setting
+    content {
+      name  = cluster_setting.value["name"]
+      value = cluster_setting.value["value"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

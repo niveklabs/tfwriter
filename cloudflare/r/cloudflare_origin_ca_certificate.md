@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "cloudflare_origin_ca_certificate" {
   source = "./modules/cloudflare/r/cloudflare_origin_ca_certificate"
 
-  # csr - (required) is a type of string
+  # csr - (optional) is a type of string
   csr = null
   # hostnames - (required) is a type of set of string
   hostnames = []
@@ -44,8 +44,9 @@ module "cloudflare_origin_ca_certificate" {
 
 ```terraform
 variable "csr" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "hostnames" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,14 +33,24 @@ module "fortios_firewall_proxypolicy" {
   application_list = null
   # av_profile - (optional) is a type of string
   av_profile = null
+  # cifs_profile - (optional) is a type of string
+  cifs_profile = null
   # comments - (optional) is a type of string
   comments = null
+  # decrypted_traffic_mirror - (optional) is a type of string
+  decrypted_traffic_mirror = null
   # disclaimer - (optional) is a type of string
   disclaimer = null
   # dlp_sensor - (optional) is a type of string
   dlp_sensor = null
   # dstaddr_negate - (optional) is a type of string
   dstaddr_negate = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = null
+  # file_filter_profile - (optional) is a type of string
+  file_filter_profile = null
   # global_label - (optional) is a type of string
   global_label = null
   # http_tunnel_auth - (optional) is a type of string
@@ -59,6 +69,8 @@ module "fortios_firewall_proxypolicy" {
   logtraffic = null
   # logtraffic_start - (optional) is a type of string
   logtraffic_start = null
+  # name - (optional) is a type of string
+  name = null
   # policyid - (optional) is a type of number
   policyid = null
   # profile_group - (optional) is a type of string
@@ -87,6 +99,8 @@ module "fortios_firewall_proxypolicy" {
   srcaddr_negate = null
   # ssh_filter_profile - (optional) is a type of string
   ssh_filter_profile = null
+  # ssh_policy_redirect - (optional) is a type of string
+  ssh_policy_redirect = null
   # ssl_ssh_profile - (optional) is a type of string
   ssl_ssh_profile = null
   # status - (optional) is a type of string
@@ -130,8 +144,20 @@ module "fortios_firewall_proxypolicy" {
     name = null
   }]
 
+  internet_service_custom_group = [{
+    name = null
+  }]
+
+  internet_service_group = [{
+    name = null
+  }]
+
   internet_service_id = [{
     id = null
+  }]
+
+  internet_service_name = [{
+    name = null
   }]
 
   poolname = [{
@@ -183,7 +209,19 @@ variable "av_profile" {
   default     = null
 }
 
+variable "cifs_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "decrypted_traffic_mirror" {
   description = "(optional)"
   type        = string
   default     = null
@@ -202,6 +240,24 @@ variable "dlp_sensor" {
 }
 
 variable "dstaddr_negate" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "file_filter_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -256,6 +312,12 @@ variable "logtraffic" {
 }
 
 variable "logtraffic_start" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -338,6 +400,12 @@ variable "srcaddr_negate" {
 }
 
 variable "ssh_filter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssh_policy_redirect" {
   description = "(optional)"
   type        = string
   default     = null
@@ -458,11 +526,41 @@ variable "internet_service_custom" {
   default = []
 }
 
+variable "internet_service_custom_group" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
+variable "internet_service_group" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "internet_service_id" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       id = number
+    }
+  ))
+  default = []
+}
+
+variable "internet_service_name" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
     }
   ))
   default = []
@@ -538,10 +636,15 @@ resource "fortios_firewall_proxypolicy" "this" {
   action                    = var.action
   application_list          = var.application_list
   av_profile                = var.av_profile
+  cifs_profile              = var.cifs_profile
   comments                  = var.comments
+  decrypted_traffic_mirror  = var.decrypted_traffic_mirror
   disclaimer                = var.disclaimer
   dlp_sensor                = var.dlp_sensor
   dstaddr_negate            = var.dstaddr_negate
+  dynamic_sort_subtable     = var.dynamic_sort_subtable
+  emailfilter_profile       = var.emailfilter_profile
+  file_filter_profile       = var.file_filter_profile
   global_label              = var.global_label
   http_tunnel_auth          = var.http_tunnel_auth
   icap_profile              = var.icap_profile
@@ -551,6 +654,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   label                     = var.label
   logtraffic                = var.logtraffic
   logtraffic_start          = var.logtraffic_start
+  name                      = var.name
   policyid                  = var.policyid
   profile_group             = var.profile_group
   profile_protocol_options  = var.profile_protocol_options
@@ -565,6 +669,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   spamfilter_profile        = var.spamfilter_profile
   srcaddr_negate            = var.srcaddr_negate
   ssh_filter_profile        = var.ssh_filter_profile
+  ssh_policy_redirect       = var.ssh_policy_redirect
   ssl_ssh_profile           = var.ssl_ssh_profile
   status                    = var.status
   transparent               = var.transparent
@@ -612,10 +717,31 @@ resource "fortios_firewall_proxypolicy" "this" {
     }
   }
 
+  dynamic "internet_service_custom_group" {
+    for_each = var.internet_service_custom_group
+    content {
+      name = internet_service_custom_group.value["name"]
+    }
+  }
+
+  dynamic "internet_service_group" {
+    for_each = var.internet_service_group
+    content {
+      name = internet_service_group.value["name"]
+    }
+  }
+
   dynamic "internet_service_id" {
     for_each = var.internet_service_id
     content {
       id = internet_service_id.value["id"]
+    }
+  }
+
+  dynamic "internet_service_name" {
+    for_each = var.internet_service_name
+    content {
+      name = internet_service_name.value["name"]
     }
   }
 
@@ -684,6 +810,16 @@ output "av_profile" {
   value       = fortios_firewall_proxypolicy.this.av_profile
 }
 
+output "cifs_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.cifs_profile
+}
+
+output "decrypted_traffic_mirror" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.decrypted_traffic_mirror
+}
+
 output "disclaimer" {
   description = "returns a string"
   value       = fortios_firewall_proxypolicy.this.disclaimer
@@ -697,6 +833,16 @@ output "dlp_sensor" {
 output "dstaddr_negate" {
   description = "returns a string"
   value       = fortios_firewall_proxypolicy.this.dstaddr_negate
+}
+
+output "emailfilter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.emailfilter_profile
+}
+
+output "file_filter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.file_filter_profile
 }
 
 output "global_label" {
@@ -747,6 +893,11 @@ output "logtraffic" {
 output "logtraffic_start" {
   description = "returns a string"
   value       = fortios_firewall_proxypolicy.this.logtraffic_start
+}
+
+output "name" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.name
 }
 
 output "policyid" {
@@ -802,6 +953,11 @@ output "srcaddr_negate" {
 output "ssh_filter_profile" {
   description = "returns a string"
   value       = fortios_firewall_proxypolicy.this.ssh_filter_profile
+}
+
+output "ssh_policy_redirect" {
+  description = "returns a string"
+  value       = fortios_firewall_proxypolicy.this.ssh_policy_redirect
 }
 
 output "ssl_ssh_profile" {

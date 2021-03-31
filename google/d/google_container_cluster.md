@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -101,9 +101,19 @@ output "database_encryption" {
   value       = data.google_container_cluster.this.database_encryption
 }
 
+output "datapath_provider" {
+  description = "returns a string"
+  value       = data.google_container_cluster.this.datapath_provider
+}
+
 output "default_max_pods_per_node" {
   description = "returns a number"
   value       = data.google_container_cluster.this.default_max_pods_per_node
+}
+
+output "default_snat_status" {
+  description = "returns a list of object"
+  value       = data.google_container_cluster.this.default_snat_status
 }
 
 output "description" {
@@ -284,6 +294,11 @@ output "services_ipv4_cidr" {
 output "subnetwork" {
   description = "returns a string"
   value       = data.google_container_cluster.this.subnetwork
+}
+
+output "tpu_ipv4_cidr_block" {
+  description = "returns a string"
+  value       = data.google_container_cluster.this.tpu_ipv4_cidr_block
 }
 
 output "vertical_pod_autoscaling" {

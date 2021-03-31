@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -92,6 +92,10 @@ module "google_compute_instance" {
     source            = null
   }]
 
+  confidential_instance_config = [{
+    enable_confidential_compute = null
+  }]
+
   network_interface = [{
     access_config = [{
       nat_ip                 = null
@@ -105,12 +109,14 @@ module "google_compute_instance" {
     name               = null
     network            = null
     network_ip         = null
+    nic_type           = null
     subnetwork         = null
     subnetwork_project = null
   }]
 
   scheduling = [{
     automatic_restart = null
+    min_node_cpus     = null
     node_affinities = [{
       key      = null
       operator = null
@@ -297,6 +303,16 @@ variable "boot_disk" {
   ))
 }
 
+variable "confidential_instance_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      enable_confidential_compute = bool
+    }
+  ))
+  default = []
+}
+
 variable "network_interface" {
   description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
@@ -317,6 +333,7 @@ variable "network_interface" {
       name               = string
       network            = string
       network_ip         = string
+      nic_type           = string
       subnetwork         = string
       subnetwork_project = string
     }
@@ -328,6 +345,7 @@ variable "scheduling" {
   type = set(object(
     {
       automatic_restart = bool
+      min_node_cpus     = number
       node_affinities = set(object(
         {
           key      = string
@@ -447,11 +465,19 @@ resource "google_compute_instance" "this" {
     }
   }
 
+  dynamic "confidential_instance_config" {
+    for_each = var.confidential_instance_config
+    content {
+      enable_confidential_compute = confidential_instance_config.value["enable_confidential_compute"]
+    }
+  }
+
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
       network            = network_interface.value["network"]
       network_ip         = network_interface.value["network_ip"]
+      nic_type           = network_interface.value["nic_type"]
       subnetwork         = network_interface.value["subnetwork"]
       subnetwork_project = network_interface.value["subnetwork_project"]
 
@@ -479,6 +505,7 @@ resource "google_compute_instance" "this" {
     for_each = var.scheduling
     content {
       automatic_restart   = scheduling.value["automatic_restart"]
+      min_node_cpus       = scheduling.value["min_node_cpus"]
       on_host_maintenance = scheduling.value["on_host_maintenance"]
       preemptible         = scheduling.value["preemptible"]
 

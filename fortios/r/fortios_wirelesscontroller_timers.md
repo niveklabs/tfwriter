@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -37,6 +37,10 @@ module "fortios_wirelesscontroller_timers" {
   darrp_optimize = null
   # discovery_interval - (optional) is a type of number
   discovery_interval = null
+  # drma_interval - (optional) is a type of number
+  drma_interval = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # echo_interval - (optional) is a type of number
   echo_interval = null
   # fake_ap_log - (optional) is a type of number
@@ -94,6 +98,18 @@ variable "darrp_optimize" {
 variable "discovery_interval" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "drma_interval" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -173,6 +189,8 @@ resource "fortios_wirelesscontroller_timers" "this" {
   darrp_day               = var.darrp_day
   darrp_optimize          = var.darrp_optimize
   discovery_interval      = var.discovery_interval
+  drma_interval           = var.drma_interval
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
   echo_interval           = var.echo_interval
   fake_ap_log             = var.fake_ap_log
   ipsec_intf_cleanup      = var.ipsec_intf_cleanup
@@ -221,6 +239,11 @@ output "darrp_optimize" {
 output "discovery_interval" {
   description = "returns a number"
   value       = fortios_wirelesscontroller_timers.this.discovery_interval
+}
+
+output "drma_interval" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_timers.this.drma_interval
 }
 
 output "echo_interval" {

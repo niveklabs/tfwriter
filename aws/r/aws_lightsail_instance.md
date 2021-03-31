@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -132,6 +132,11 @@ output "id" {
 output "ipv6_address" {
   description = "returns a string"
   value       = aws_lightsail_instance.this.ipv6_address
+}
+
+output "ipv6_addresses" {
+  description = "returns a list of string"
+  value       = aws_lightsail_instance.this.ipv6_addresses
 }
 
 output "is_static_ip" {

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "exoscale" {
-  version = "0.21.0"
+  version = "0.23.0"
 
   # compute_endpoint - (optional) is a type of string
   compute_endpoint = null
@@ -73,6 +73,10 @@ provider "exoscale" {
 - [exoscale_security_group_rule](./r/exoscale_security_group_rule.md)
 
 - [exoscale_security_group_rules](./r/exoscale_security_group_rules.md)
+
+- [exoscale_sks_cluster](./r/exoscale_sks_cluster.md)
+
+- [exoscale_sks_nodepool](./r/exoscale_sks_nodepool.md)
 
 - [exoscale_ssh_keypair](./r/exoscale_ssh_keypair.md)
 

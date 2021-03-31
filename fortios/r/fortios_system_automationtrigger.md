@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,8 +27,16 @@ terraform {
 module "fortios_system_automationtrigger" {
   source = "./modules/fortios/r/fortios_system_automationtrigger"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # event_type - (optional) is a type of string
   event_type = null
+  # faz_event_name - (optional) is a type of string
+  faz_event_name = null
+  # faz_event_severity - (optional) is a type of string
+  faz_event_severity = null
+  # faz_event_tags - (optional) is a type of string
+  faz_event_tags = null
   # ioc_level - (optional) is a type of string
   ioc_level = null
   # license_type - (optional) is a type of string
@@ -37,6 +45,8 @@ module "fortios_system_automationtrigger" {
   logid = null
   # name - (optional) is a type of string
   name = null
+  # report_type - (optional) is a type of string
+  report_type = null
   # trigger_day - (optional) is a type of number
   trigger_day = null
   # trigger_frequency - (optional) is a type of string
@@ -49,6 +59,12 @@ module "fortios_system_automationtrigger" {
   trigger_type = null
   # trigger_weekday - (optional) is a type of string
   trigger_weekday = null
+
+  fields = [{
+    id    = null
+    name  = null
+    value = null
+  }]
 }
 ```
 
@@ -57,7 +73,31 @@ module "fortios_system_automationtrigger" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "event_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "faz_event_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "faz_event_severity" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "faz_event_tags" {
   description = "(optional)"
   type        = string
   default     = null
@@ -82,6 +122,12 @@ variable "logid" {
 }
 
 variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "report_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -122,6 +168,18 @@ variable "trigger_weekday" {
   type        = string
   default     = null
 }
+
+variable "fields" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id    = number
+      name  = string
+      value = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -130,17 +188,32 @@ variable "trigger_weekday" {
 
 ```terraform
 resource "fortios_system_automationtrigger" "this" {
-  event_type        = var.event_type
-  ioc_level         = var.ioc_level
-  license_type      = var.license_type
-  logid             = var.logid
-  name              = var.name
-  trigger_day       = var.trigger_day
-  trigger_frequency = var.trigger_frequency
-  trigger_hour      = var.trigger_hour
-  trigger_minute    = var.trigger_minute
-  trigger_type      = var.trigger_type
-  trigger_weekday   = var.trigger_weekday
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  event_type            = var.event_type
+  faz_event_name        = var.faz_event_name
+  faz_event_severity    = var.faz_event_severity
+  faz_event_tags        = var.faz_event_tags
+  ioc_level             = var.ioc_level
+  license_type          = var.license_type
+  logid                 = var.logid
+  name                  = var.name
+  report_type           = var.report_type
+  trigger_day           = var.trigger_day
+  trigger_frequency     = var.trigger_frequency
+  trigger_hour          = var.trigger_hour
+  trigger_minute        = var.trigger_minute
+  trigger_type          = var.trigger_type
+  trigger_weekday       = var.trigger_weekday
+
+  dynamic "fields" {
+    for_each = var.fields
+    content {
+      id    = fields.value["id"]
+      name  = fields.value["name"]
+      value = fields.value["value"]
+    }
+  }
+
 }
 ```
 
@@ -177,6 +250,11 @@ output "logid" {
 output "name" {
   description = "returns a string"
   value       = fortios_system_automationtrigger.this.name
+}
+
+output "report_type" {
+  description = "returns a string"
+  value       = fortios_system_automationtrigger.this.report_type
 }
 
 output "trigger_day" {

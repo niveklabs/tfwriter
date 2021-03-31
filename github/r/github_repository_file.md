@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -52,7 +52,7 @@ module "github_repository_file" {
 
 ```terraform
 variable "branch" {
-  description = "(optional) - The branch name, defaults to \"master\""
+  description = "(optional) - The branch name, defaults to \"main\""
   type        = string
   default     = null
 }
@@ -132,6 +132,11 @@ output "commit_email" {
 output "commit_message" {
   description = "returns a string"
   value       = github_repository_file.this.commit_message
+}
+
+output "commit_sha" {
+  description = "returns a string"
+  value       = github_repository_file.this.commit_sha
 }
 
 output "id" {

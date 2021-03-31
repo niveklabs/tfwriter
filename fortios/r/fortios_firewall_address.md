@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,34 +33,54 @@ module "fortios_firewall_address" {
   associated_interface = null
   # cache_ttl - (optional) is a type of number
   cache_ttl = null
+  # clearpass_spt - (optional) is a type of string
+  clearpass_spt = null
   # color - (optional) is a type of number
   color = null
   # comment - (optional) is a type of string
   comment = null
   # country - (optional) is a type of string
   country = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # end_ip - (optional) is a type of string
   end_ip = null
+  # end_mac - (optional) is a type of string
+  end_mac = null
   # epg_name - (optional) is a type of string
   epg_name = null
   # filter - (optional) is a type of string
   filter = null
   # fqdn - (optional) is a type of string
   fqdn = null
+  # interface - (optional) is a type of string
+  interface = null
   # name - (optional) is a type of string
   name = null
+  # node_ip_only - (optional) is a type of string
+  node_ip_only = null
   # obj_id - (optional) is a type of string
   obj_id = null
+  # obj_tag - (optional) is a type of string
+  obj_tag = null
+  # obj_type - (optional) is a type of string
+  obj_type = null
   # organization - (optional) is a type of string
   organization = null
   # policy_group - (optional) is a type of string
   policy_group = null
   # sdn - (optional) is a type of string
   sdn = null
+  # sdn_addr_type - (optional) is a type of string
+  sdn_addr_type = null
   # sdn_tag - (optional) is a type of string
   sdn_tag = null
   # start_ip - (optional) is a type of string
   start_ip = null
+  # start_mac - (optional) is a type of string
+  start_mac = null
+  # sub_type - (optional) is a type of string
+  sub_type = null
   # subnet - (optional) is a type of string
   subnet = null
   # subnet_name - (optional) is a type of string
@@ -77,6 +97,10 @@ module "fortios_firewall_address" {
   wildcard = null
   # wildcard_fqdn - (optional) is a type of string
   wildcard_fqdn = null
+
+  fsso_group = [{
+    name = null
+  }]
 
   list = [{
     ip = null
@@ -115,6 +139,12 @@ variable "cache_ttl" {
   default     = null
 }
 
+variable "clearpass_spt" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "color" {
   description = "(optional)"
   type        = number
@@ -133,7 +163,19 @@ variable "country" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "end_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "end_mac" {
   description = "(optional)"
   type        = string
   default     = null
@@ -157,13 +199,37 @@ variable "fqdn" {
   default     = null
 }
 
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
   default     = null
 }
 
+variable "node_ip_only" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "obj_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "obj_tag" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "obj_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -187,6 +253,12 @@ variable "sdn" {
   default     = null
 }
 
+variable "sdn_addr_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "sdn_tag" {
   description = "(optional)"
   type        = string
@@ -194,6 +266,18 @@ variable "sdn_tag" {
 }
 
 variable "start_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "start_mac" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "sub_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -247,6 +331,16 @@ variable "wildcard_fqdn" {
   default     = null
 }
 
+variable "fsso_group" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "list" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -280,31 +374,48 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_address" "this" {
-  allow_routing        = var.allow_routing
-  associated_interface = var.associated_interface
-  cache_ttl            = var.cache_ttl
-  color                = var.color
-  comment              = var.comment
-  country              = var.country
-  end_ip               = var.end_ip
-  epg_name             = var.epg_name
-  filter               = var.filter
-  fqdn                 = var.fqdn
-  name                 = var.name
-  obj_id               = var.obj_id
-  organization         = var.organization
-  policy_group         = var.policy_group
-  sdn                  = var.sdn
-  sdn_tag              = var.sdn_tag
-  start_ip             = var.start_ip
-  subnet               = var.subnet
-  subnet_name          = var.subnet_name
-  tenant               = var.tenant
-  type                 = var.type
-  uuid                 = var.uuid
-  visibility           = var.visibility
-  wildcard             = var.wildcard
-  wildcard_fqdn        = var.wildcard_fqdn
+  allow_routing         = var.allow_routing
+  associated_interface  = var.associated_interface
+  cache_ttl             = var.cache_ttl
+  clearpass_spt         = var.clearpass_spt
+  color                 = var.color
+  comment               = var.comment
+  country               = var.country
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  end_ip                = var.end_ip
+  end_mac               = var.end_mac
+  epg_name              = var.epg_name
+  filter                = var.filter
+  fqdn                  = var.fqdn
+  interface             = var.interface
+  name                  = var.name
+  node_ip_only          = var.node_ip_only
+  obj_id                = var.obj_id
+  obj_tag               = var.obj_tag
+  obj_type              = var.obj_type
+  organization          = var.organization
+  policy_group          = var.policy_group
+  sdn                   = var.sdn
+  sdn_addr_type         = var.sdn_addr_type
+  sdn_tag               = var.sdn_tag
+  start_ip              = var.start_ip
+  start_mac             = var.start_mac
+  sub_type              = var.sub_type
+  subnet                = var.subnet
+  subnet_name           = var.subnet_name
+  tenant                = var.tenant
+  type                  = var.type
+  uuid                  = var.uuid
+  visibility            = var.visibility
+  wildcard              = var.wildcard
+  wildcard_fqdn         = var.wildcard_fqdn
+
+  dynamic "fsso_group" {
+    for_each = var.fsso_group
+    content {
+      name = fsso_group.value["name"]
+    }
+  }
 
   dynamic "list" {
     for_each = var.list
@@ -352,6 +463,11 @@ output "cache_ttl" {
   value       = fortios_firewall_address.this.cache_ttl
 }
 
+output "clearpass_spt" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.clearpass_spt
+}
+
 output "color" {
   description = "returns a number"
   value       = fortios_firewall_address.this.color
@@ -365,6 +481,11 @@ output "country" {
 output "end_ip" {
   description = "returns a string"
   value       = fortios_firewall_address.this.end_ip
+}
+
+output "end_mac" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.end_mac
 }
 
 output "epg_name" {
@@ -382,9 +503,29 @@ output "id" {
   value       = fortios_firewall_address.this.id
 }
 
+output "interface" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.interface
+}
+
 output "name" {
   description = "returns a string"
   value       = fortios_firewall_address.this.name
+}
+
+output "node_ip_only" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.node_ip_only
+}
+
+output "obj_tag" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.obj_tag
+}
+
+output "obj_type" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.obj_type
 }
 
 output "organization" {
@@ -402,6 +543,11 @@ output "sdn" {
   value       = fortios_firewall_address.this.sdn
 }
 
+output "sdn_addr_type" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.sdn_addr_type
+}
+
 output "sdn_tag" {
   description = "returns a string"
   value       = fortios_firewall_address.this.sdn_tag
@@ -410,6 +556,16 @@ output "sdn_tag" {
 output "start_ip" {
   description = "returns a string"
   value       = fortios_firewall_address.this.start_ip
+}
+
+output "start_mac" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.start_mac
+}
+
+output "sub_type" {
+  description = "returns a string"
+  value       = fortios_firewall_address.this.sub_type
 }
 
 output "subnet" {

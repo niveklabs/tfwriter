@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_webfilter_ftgdlocalrating" {
   source = "./modules/fortios/r/fortios_webfilter_ftgdlocalrating"
 
+  # comment - (optional) is a type of string
+  comment = null
   # rating - (required) is a type of string
   rating = null
   # status - (optional) is a type of string
@@ -41,6 +43,12 @@ module "fortios_webfilter_ftgdlocalrating" {
 ### Variables
 
 ```terraform
+variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "rating" {
   description = "(required)"
   type        = string
@@ -65,9 +73,10 @@ variable "url" {
 
 ```terraform
 resource "fortios_webfilter_ftgdlocalrating" "this" {
-  rating = var.rating
-  status = var.status
-  url    = var.url
+  comment = var.comment
+  rating  = var.rating
+  status  = var.status
+  url     = var.url
 }
 ```
 

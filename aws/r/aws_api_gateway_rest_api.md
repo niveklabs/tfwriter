@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -35,10 +35,14 @@ module "aws_api_gateway_rest_api" {
   body = null
   # description - (optional) is a type of string
   description = null
+  # disable_execute_api_endpoint - (optional) is a type of bool
+  disable_execute_api_endpoint = null
   # minimum_compression_size - (optional) is a type of number
   minimum_compression_size = null
   # name - (required) is a type of string
   name = null
+  # parameters - (optional) is a type of map of string
+  parameters = {}
   # policy - (optional) is a type of string
   policy = null
   # tags - (optional) is a type of map of string
@@ -80,6 +84,12 @@ variable "description" {
   default     = null
 }
 
+variable "disable_execute_api_endpoint" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "minimum_compression_size" {
   description = "(optional)"
   type        = number
@@ -89,6 +99,12 @@ variable "minimum_compression_size" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "parameters" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
 }
 
 variable "policy" {
@@ -121,14 +137,16 @@ variable "endpoint_configuration" {
 
 ```terraform
 resource "aws_api_gateway_rest_api" "this" {
-  api_key_source           = var.api_key_source
-  binary_media_types       = var.binary_media_types
-  body                     = var.body
-  description              = var.description
-  minimum_compression_size = var.minimum_compression_size
-  name                     = var.name
-  policy                   = var.policy
-  tags                     = var.tags
+  api_key_source               = var.api_key_source
+  binary_media_types           = var.binary_media_types
+  body                         = var.body
+  description                  = var.description
+  disable_execute_api_endpoint = var.disable_execute_api_endpoint
+  minimum_compression_size     = var.minimum_compression_size
+  name                         = var.name
+  parameters                   = var.parameters
+  policy                       = var.policy
+  tags                         = var.tags
 
   dynamic "endpoint_configuration" {
     for_each = var.endpoint_configuration
@@ -146,14 +164,34 @@ resource "aws_api_gateway_rest_api" "this" {
 ### Outputs
 
 ```terraform
+output "api_key_source" {
+  description = "returns a string"
+  value       = aws_api_gateway_rest_api.this.api_key_source
+}
+
 output "arn" {
   description = "returns a string"
   value       = aws_api_gateway_rest_api.this.arn
 }
 
+output "binary_media_types" {
+  description = "returns a list of string"
+  value       = aws_api_gateway_rest_api.this.binary_media_types
+}
+
 output "created_date" {
   description = "returns a string"
   value       = aws_api_gateway_rest_api.this.created_date
+}
+
+output "description" {
+  description = "returns a string"
+  value       = aws_api_gateway_rest_api.this.description
+}
+
+output "disable_execute_api_endpoint" {
+  description = "returns a bool"
+  value       = aws_api_gateway_rest_api.this.disable_execute_api_endpoint
 }
 
 output "execution_arn" {

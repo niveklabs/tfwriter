@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -70,7 +70,7 @@ variable "name" {
 }
 
 variable "name_prefix" {
-  description = "(optional)"
+  description = "(optional) - Creates a unique name beginning with the specified prefix. Conflicts with name."
   type        = string
   default     = null
 }

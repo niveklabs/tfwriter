@@ -12,14 +12,20 @@
 
 ```terraform
 provider "nsxt" {
-  version = "3.1.0"
+  version = "3.1.1"
 
   # allow_unverified_ssl - (optional) is a type of bool
   allow_unverified_ssl = null
+  # ca - (optional) is a type of string
+  ca = null
   # ca_file - (optional) is a type of string
   ca_file = null
+  # client_auth_cert - (optional) is a type of string
+  client_auth_cert = null
   # client_auth_cert_file - (optional) is a type of string
   client_auth_cert_file = null
+  # client_auth_key - (optional) is a type of string
+  client_auth_key = null
   # client_auth_key_file - (optional) is a type of string
   client_auth_key_file = null
   # enforcement_point - (optional) is a type of string
@@ -48,6 +54,8 @@ provider "nsxt" {
   username = null
   # vmc_auth_host - (optional) is a type of string
   vmc_auth_host = null
+  # vmc_auth_mode - (optional) is a type of string
+  vmc_auth_mode = null
   # vmc_token - (optional) is a type of string
   vmc_token = null
 }
@@ -172,11 +180,27 @@ provider "nsxt" {
 
 - [nsxt_policy_dhcp_server](./r/nsxt_policy_dhcp_server.md)
 
+- [nsxt_policy_dhcp_v4_static_binding](./r/nsxt_policy_dhcp_v4_static_binding.md)
+
+- [nsxt_policy_dhcp_v6_static_binding](./r/nsxt_policy_dhcp_v6_static_binding.md)
+
+- [nsxt_policy_dns_forwarder_zone](./r/nsxt_policy_dns_forwarder_zone.md)
+
+- [nsxt_policy_domain](./r/nsxt_policy_domain.md)
+
+- [nsxt_policy_fixed_segment](./r/nsxt_policy_fixed_segment.md)
+
+- [nsxt_policy_gateway_community_list](./r/nsxt_policy_gateway_community_list.md)
+
+- [nsxt_policy_gateway_dns_forwarder](./r/nsxt_policy_gateway_dns_forwarder.md)
+
 - [nsxt_policy_gateway_policy](./r/nsxt_policy_gateway_policy.md)
 
 - [nsxt_policy_gateway_prefix_list](./r/nsxt_policy_gateway_prefix_list.md)
 
 - [nsxt_policy_group](./r/nsxt_policy_group.md)
+
+- [nsxt_policy_intrusion_service_policy](./r/nsxt_policy_intrusion_service_policy.md)
 
 - [nsxt_policy_ip_address_allocation](./r/nsxt_policy_ip_address_allocation.md)
 
@@ -260,9 +284,13 @@ provider "nsxt" {
 
 - [nsxt_ns_service](./d/nsxt_ns_service.md)
 
+- [nsxt_policy_bfd_profile](./d/nsxt_policy_bfd_profile.md)
+
 - [nsxt_policy_certificate](./d/nsxt_policy_certificate.md)
 
 - [nsxt_policy_context_profile](./d/nsxt_policy_context_profile.md)
+
+- [nsxt_policy_dhcp_server](./d/nsxt_policy_dhcp_server.md)
 
 - [nsxt_policy_edge_cluster](./d/nsxt_policy_edge_cluster.md)
 
@@ -321,6 +349,8 @@ provider "nsxt" {
 - [nsxt_policy_vm](./d/nsxt_policy_vm.md)
 
 - [nsxt_policy_vni_pool](./d/nsxt_policy_vni_pool.md)
+
+- [nsxt_provider_info](./d/nsxt_provider_info.md)
 
 - [nsxt_switching_profile](./d/nsxt_switching_profile.md)
 

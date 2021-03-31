@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -61,10 +61,11 @@ module "oci_database_exadata_infrastructure" {
   time_zone = null
 
   contacts = [{
-    email        = null
-    is_primary   = null
-    name         = null
-    phone_number = null
+    email                    = null
+    is_contact_mos_validated = null
+    is_primary               = null
+    name                     = null
+    phone_number             = null
   }]
 
   maintenance_window = [{
@@ -181,10 +182,11 @@ variable "contacts" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      email        = string
-      is_primary   = bool
-      name         = string
-      phone_number = string
+      email                    = string
+      is_contact_mos_validated = bool
+      is_primary               = bool
+      name                     = string
+      phone_number             = string
     }
   ))
   default = []
@@ -252,10 +254,11 @@ resource "oci_database_exadata_infrastructure" "this" {
   dynamic "contacts" {
     for_each = var.contacts
     content {
-      email        = contacts.value["email"]
-      is_primary   = contacts.value["is_primary"]
-      name         = contacts.value["name"]
-      phone_number = contacts.value["phone_number"]
+      email                    = contacts.value["email"]
+      is_contact_mos_validated = contacts.value["is_contact_mos_validated"]
+      is_primary               = contacts.value["is_primary"]
+      name                     = contacts.value["name"]
+      phone_number             = contacts.value["phone_number"]
     }
   }
 
@@ -344,6 +347,11 @@ output "id" {
 output "lifecycle_details" {
   description = "returns a string"
   value       = oci_database_exadata_infrastructure.this.lifecycle_details
+}
+
+output "maintenance_slo_status" {
+  description = "returns a string"
+  value       = oci_database_exadata_infrastructure.this.maintenance_slo_status
 }
 
 output "max_cpu_count" {

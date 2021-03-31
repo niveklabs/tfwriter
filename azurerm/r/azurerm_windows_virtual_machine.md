@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -61,6 +61,8 @@ module "azurerm_windows_virtual_machine" {
   network_interface_ids = []
   # patch_mode - (optional) is a type of string
   patch_mode = null
+  # platform_fault_domain - (optional) is a type of number
+  platform_fault_domain = null
   # priority - (optional) is a type of string
   priority = null
   # provision_vm_agent - (optional) is a type of bool
@@ -248,6 +250,12 @@ variable "network_interface_ids" {
 variable "patch_mode" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "platform_fault_domain" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -461,6 +469,7 @@ resource "azurerm_windows_virtual_machine" "this" {
   name                         = var.name
   network_interface_ids        = var.network_interface_ids
   patch_mode                   = var.patch_mode
+  platform_fault_domain        = var.platform_fault_domain
   priority                     = var.priority
   provision_vm_agent           = var.provision_vm_agent
   proximity_placement_group_id = var.proximity_placement_group_id

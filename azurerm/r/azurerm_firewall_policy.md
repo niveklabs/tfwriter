@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "azurerm_firewall_policy" {
   name = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+  # sku - (optional) is a type of string
+  sku = null
   # tags - (optional) is a type of map of string
   tags = {}
   # threat_intelligence_mode - (optional) is a type of string
@@ -84,6 +86,12 @@ variable "name" {
 variable "resource_group_name" {
   description = "(required)"
   type        = string
+}
+
+variable "sku" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "tags" {
@@ -145,6 +153,7 @@ resource "azurerm_firewall_policy" "this" {
   location                 = var.location
   name                     = var.name
   resource_group_name      = var.resource_group_name
+  sku                      = var.sku
   tags                     = var.tags
   threat_intelligence_mode = var.threat_intelligence_mode
 
@@ -201,6 +210,11 @@ output "id" {
 output "rule_collection_groups" {
   description = "returns a list of string"
   value       = azurerm_firewall_policy.this.rule_collection_groups
+}
+
+output "sku" {
+  description = "returns a string"
+  value       = azurerm_firewall_policy.this.sku
 }
 
 output "this" {

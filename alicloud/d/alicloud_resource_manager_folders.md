@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "alicloud_resource_manager_folders" {
   source = "./modules/alicloud/d/alicloud_resource_manager_folders"
 
+  # enable_details - (optional) is a type of bool
+  enable_details = null
   # ids - (optional) is a type of list of string
   ids = []
   # name_regex - (optional) is a type of string
@@ -35,6 +37,8 @@ module "alicloud_resource_manager_folders" {
   output_file = null
   # parent_folder_id - (optional) is a type of string
   parent_folder_id = null
+  # query_keyword - (optional) is a type of string
+  query_keyword = null
 }
 ```
 
@@ -43,6 +47,12 @@ module "alicloud_resource_manager_folders" {
 ### Variables
 
 ```terraform
+variable "enable_details" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "ids" {
   description = "(optional)"
   type        = list(string)
@@ -66,6 +76,12 @@ variable "parent_folder_id" {
   type        = string
   default     = null
 }
+
+variable "query_keyword" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -74,10 +90,12 @@ variable "parent_folder_id" {
 
 ```terraform
 data "alicloud_resource_manager_folders" "this" {
+  enable_details   = var.enable_details
   ids              = var.ids
   name_regex       = var.name_regex
   output_file      = var.output_file
   parent_folder_id = var.parent_folder_id
+  query_keyword    = var.query_keyword
 }
 ```
 

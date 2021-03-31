@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "alicloud_polardb_cluster" {
 
   # auto_renew_period - (optional) is a type of number
   auto_renew_period = null
+  # collector_status - (optional) is a type of string
+  collector_status = null
   # db_node_class - (required) is a type of string
   db_node_class = null
   # db_node_count - (optional) is a type of number
@@ -81,6 +83,12 @@ module "alicloud_polardb_cluster" {
 variable "auto_renew_period" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "collector_status" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -202,6 +210,7 @@ variable "timeouts" {
 ```terraform
 resource "alicloud_polardb_cluster" "this" {
   auto_renew_period = var.auto_renew_period
+  collector_status  = var.collector_status
   db_node_class     = var.db_node_class
   db_node_count     = var.db_node_count
   db_type           = var.db_type
@@ -243,6 +252,11 @@ resource "alicloud_polardb_cluster" "this" {
 ### Outputs
 
 ```terraform
+output "collector_status" {
+  description = "returns a string"
+  value       = alicloud_polardb_cluster.this.collector_status
+}
+
 output "connection_string" {
   description = "returns a string"
   value       = alicloud_polardb_cluster.this.connection_string

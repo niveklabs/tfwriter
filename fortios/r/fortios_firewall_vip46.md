@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_firewall_vip46" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extip - (required) is a type of string
   extip = null
   # extport - (optional) is a type of string
@@ -78,6 +80,10 @@ module "fortios_firewall_vip46" {
   src_filter = [{
     range = null
   }]
+
+  srcintf_filter = [{
+    interface_name = null
+  }]
 }
 ```
 
@@ -99,6 +105,12 @@ variable "color" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -212,6 +224,16 @@ variable "src_filter" {
   ))
   default = []
 }
+
+variable "srcintf_filter" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      interface_name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -220,21 +242,22 @@ variable "src_filter" {
 
 ```terraform
 resource "fortios_firewall_vip46" "this" {
-  arp_reply   = var.arp_reply
-  color       = var.color
-  comment     = var.comment
-  extip       = var.extip
-  extport     = var.extport
-  fosid       = var.fosid
-  ldb_method  = var.ldb_method
-  mappedip    = var.mappedip
-  mappedport  = var.mappedport
-  name        = var.name
-  portforward = var.portforward
-  protocol    = var.protocol
-  server_type = var.server_type
-  type        = var.type
-  uuid        = var.uuid
+  arp_reply             = var.arp_reply
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  extip                 = var.extip
+  extport               = var.extport
+  fosid                 = var.fosid
+  ldb_method            = var.ldb_method
+  mappedip              = var.mappedip
+  mappedport            = var.mappedport
+  name                  = var.name
+  portforward           = var.portforward
+  protocol              = var.protocol
+  server_type           = var.server_type
+  type                  = var.type
+  uuid                  = var.uuid
 
   dynamic "monitor" {
     for_each = var.monitor
@@ -263,6 +286,13 @@ resource "fortios_firewall_vip46" "this" {
     for_each = var.src_filter
     content {
       range = src_filter.value["range"]
+    }
+  }
+
+  dynamic "srcintf_filter" {
+    for_each = var.srcintf_filter
+    content {
+      interface_name = srcintf_filter.value["interface_name"]
     }
   }
 

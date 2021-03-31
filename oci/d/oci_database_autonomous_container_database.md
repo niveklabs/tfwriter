@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -191,6 +191,11 @@ output "peer_autonomous_exadata_infrastructure_id" {
 output "peer_autonomous_vm_cluster_id" {
   description = "returns a string"
   value       = data.oci_database_autonomous_container_database.this.peer_autonomous_vm_cluster_id
+}
+
+output "peer_db_unique_name" {
+  description = "returns a string"
+  value       = data.oci_database_autonomous_container_database.this.peer_db_unique_name
 }
 
 output "protection_mode" {

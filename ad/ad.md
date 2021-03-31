@@ -12,7 +12,7 @@
 
 ```terraform
 provider "ad" {
-  version = "0.4.0"
+  version = "0.4.1"
 
   # krb_conf - (optional) is a type of string
   krb_conf = null

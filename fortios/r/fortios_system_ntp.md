@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,16 @@ terraform {
 module "fortios_system_ntp" {
   source = "./modules/fortios/r/fortios_system_ntp"
 
+  # authentication - (optional) is a type of string
+  authentication = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # key - (optional) is a type of string
+  key = null
+  # key_id - (optional) is a type of number
+  key_id = null
+  # key_type - (optional) is a type of string
+  key_type = null
   # ntpsync - (optional) is a type of string
   ntpsync = null
   # server_mode - (optional) is a type of string
@@ -45,12 +55,14 @@ module "fortios_system_ntp" {
   }]
 
   ntpserver = [{
-    authentication = null
-    id             = null
-    key            = null
-    key_id         = null
-    ntpv3          = null
-    server         = null
+    authentication          = null
+    id                      = null
+    interface               = null
+    interface_select_method = null
+    key                     = null
+    key_id                  = null
+    ntpv3                   = null
+    server                  = null
   }]
 }
 ```
@@ -60,6 +72,36 @@ module "fortios_system_ntp" {
 ### Variables
 
 ```terraform
+variable "authentication" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "key" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "key_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "key_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ntpsync" {
   description = "(optional)"
   type        = string
@@ -110,12 +152,14 @@ variable "ntpserver" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      authentication = string
-      id             = number
-      key            = string
-      key_id         = number
-      ntpv3          = string
-      server         = string
+      authentication          = string
+      id                      = number
+      interface               = string
+      interface_select_method = string
+      key                     = string
+      key_id                  = number
+      ntpv3                   = string
+      server                  = string
     }
   ))
   default = []
@@ -128,12 +172,17 @@ variable "ntpserver" {
 
 ```terraform
 resource "fortios_system_ntp" "this" {
-  ntpsync      = var.ntpsync
-  server_mode  = var.server_mode
-  source_ip    = var.source_ip
-  source_ip6   = var.source_ip6
-  syncinterval = var.syncinterval
-  type         = var.type
+  authentication        = var.authentication
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  key                   = var.key
+  key_id                = var.key_id
+  key_type              = var.key_type
+  ntpsync               = var.ntpsync
+  server_mode           = var.server_mode
+  source_ip             = var.source_ip
+  source_ip6            = var.source_ip6
+  syncinterval          = var.syncinterval
+  type                  = var.type
 
   dynamic "interface" {
     for_each = var.interface
@@ -145,12 +194,14 @@ resource "fortios_system_ntp" "this" {
   dynamic "ntpserver" {
     for_each = var.ntpserver
     content {
-      authentication = ntpserver.value["authentication"]
-      id             = ntpserver.value["id"]
-      key            = ntpserver.value["key"]
-      key_id         = ntpserver.value["key_id"]
-      ntpv3          = ntpserver.value["ntpv3"]
-      server         = ntpserver.value["server"]
+      authentication          = ntpserver.value["authentication"]
+      id                      = ntpserver.value["id"]
+      interface               = ntpserver.value["interface"]
+      interface_select_method = ntpserver.value["interface_select_method"]
+      key                     = ntpserver.value["key"]
+      key_id                  = ntpserver.value["key_id"]
+      ntpv3                   = ntpserver.value["ntpv3"]
+      server                  = ntpserver.value["server"]
     }
   }
 
@@ -162,9 +213,24 @@ resource "fortios_system_ntp" "this" {
 ### Outputs
 
 ```terraform
+output "authentication" {
+  description = "returns a string"
+  value       = fortios_system_ntp.this.authentication
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_system_ntp.this.id
+}
+
+output "key_id" {
+  description = "returns a number"
+  value       = fortios_system_ntp.this.key_id
+}
+
+output "key_type" {
+  description = "returns a string"
+  value       = fortios_system_ntp.this.key_type
 }
 
 output "ntpsync" {

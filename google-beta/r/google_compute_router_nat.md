@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "google_compute_router_nat" {
 
   # drain_nat_ips - (optional) is a type of set of string
   drain_nat_ips = []
+  # enable_endpoint_independent_mapping - (optional) is a type of bool
+  enable_endpoint_independent_mapping = null
   # icmp_idle_timeout_sec - (optional) is a type of number
   icmp_idle_timeout_sec = null
   # min_ports_per_vm - (optional) is a type of number
@@ -81,6 +83,12 @@ module "google_compute_router_nat" {
 variable "drain_nat_ips" {
   description = "(optional) - A list of URLs of the IP resources to be drained. These IPs must be\nvalid static external IPs that have been assigned to the NAT."
   type        = set(string)
+  default     = null
+}
+
+variable "enable_endpoint_independent_mapping" {
+  description = "(optional) - Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information\nsee the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs)."
+  type        = bool
   default     = null
 }
 
@@ -194,19 +202,20 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_router_nat" "this" {
-  drain_nat_ips                      = var.drain_nat_ips
-  icmp_idle_timeout_sec              = var.icmp_idle_timeout_sec
-  min_ports_per_vm                   = var.min_ports_per_vm
-  name                               = var.name
-  nat_ip_allocate_option             = var.nat_ip_allocate_option
-  nat_ips                            = var.nat_ips
-  project                            = var.project
-  region                             = var.region
-  router                             = var.router
-  source_subnetwork_ip_ranges_to_nat = var.source_subnetwork_ip_ranges_to_nat
-  tcp_established_idle_timeout_sec   = var.tcp_established_idle_timeout_sec
-  tcp_transitory_idle_timeout_sec    = var.tcp_transitory_idle_timeout_sec
-  udp_idle_timeout_sec               = var.udp_idle_timeout_sec
+  drain_nat_ips                       = var.drain_nat_ips
+  enable_endpoint_independent_mapping = var.enable_endpoint_independent_mapping
+  icmp_idle_timeout_sec               = var.icmp_idle_timeout_sec
+  min_ports_per_vm                    = var.min_ports_per_vm
+  name                                = var.name
+  nat_ip_allocate_option              = var.nat_ip_allocate_option
+  nat_ips                             = var.nat_ips
+  project                             = var.project
+  region                              = var.region
+  router                              = var.router
+  source_subnetwork_ip_ranges_to_nat  = var.source_subnetwork_ip_ranges_to_nat
+  tcp_established_idle_timeout_sec    = var.tcp_established_idle_timeout_sec
+  tcp_transitory_idle_timeout_sec     = var.tcp_transitory_idle_timeout_sec
+  udp_idle_timeout_sec                = var.udp_idle_timeout_sec
 
   dynamic "log_config" {
     for_each = var.log_config

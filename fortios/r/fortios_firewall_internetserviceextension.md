@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_firewall_internetserviceextension" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
 
@@ -39,7 +41,12 @@ module "fortios_firewall_internetserviceextension" {
       id       = null
       start_ip = null
     }]
-    port     = null
+    port = null
+    port_range = [{
+      end_port   = null
+      id         = null
+      start_port = null
+    }]
     protocol = null
   }]
 
@@ -69,6 +76,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fosid" {
   description = "(optional)"
   type        = number
@@ -87,7 +100,14 @@ variable "disable_entry" {
           start_ip = string
         }
       ))
-      port     = number
+      port = number
+      port_range = list(object(
+        {
+          end_port   = number
+          id         = number
+          start_port = number
+        }
+      ))
       protocol = number
     }
   ))
@@ -124,8 +144,9 @@ variable "entry" {
 
 ```terraform
 resource "fortios_firewall_internetserviceextension" "this" {
-  comment = var.comment
-  fosid   = var.fosid
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
 
   dynamic "disable_entry" {
     for_each = var.disable_entry
@@ -140,6 +161,15 @@ resource "fortios_firewall_internetserviceextension" "this" {
           end_ip   = ip_range.value["end_ip"]
           id       = ip_range.value["id"]
           start_ip = ip_range.value["start_ip"]
+        }
+      }
+
+      dynamic "port_range" {
+        for_each = disable_entry.value.port_range
+        content {
+          end_port   = port_range.value["end_port"]
+          id         = port_range.value["id"]
+          start_port = port_range.value["start_port"]
         }
       }
 

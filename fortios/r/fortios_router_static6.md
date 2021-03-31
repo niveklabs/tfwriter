@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,12 +39,16 @@ module "fortios_router_static6" {
   devindex = null
   # distance - (optional) is a type of number
   distance = null
-  # dst - (required) is a type of string
+  # dst - (optional) is a type of string
   dst = null
   # gateway - (optional) is a type of string
   gateway = null
+  # link_monitor_exempt - (optional) is a type of string
+  link_monitor_exempt = null
   # priority - (optional) is a type of number
   priority = null
+  # sdwan - (optional) is a type of string
+  sdwan = null
   # seq_num - (optional) is a type of number
   seq_num = null
   # status - (optional) is a type of string
@@ -95,8 +99,9 @@ variable "distance" {
 }
 
 variable "dst" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "gateway" {
@@ -105,9 +110,21 @@ variable "gateway" {
   default     = null
 }
 
+variable "link_monitor_exempt" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "priority" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "sdwan" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -136,18 +153,20 @@ variable "virtual_wan_link" {
 
 ```terraform
 resource "fortios_router_static6" "this" {
-  bfd              = var.bfd
-  blackhole        = var.blackhole
-  comment          = var.comment
-  device           = var.device
-  devindex         = var.devindex
-  distance         = var.distance
-  dst              = var.dst
-  gateway          = var.gateway
-  priority         = var.priority
-  seq_num          = var.seq_num
-  status           = var.status
-  virtual_wan_link = var.virtual_wan_link
+  bfd                 = var.bfd
+  blackhole           = var.blackhole
+  comment             = var.comment
+  device              = var.device
+  devindex            = var.devindex
+  distance            = var.distance
+  dst                 = var.dst
+  gateway             = var.gateway
+  link_monitor_exempt = var.link_monitor_exempt
+  priority            = var.priority
+  sdwan               = var.sdwan
+  seq_num             = var.seq_num
+  status              = var.status
+  virtual_wan_link    = var.virtual_wan_link
 }
 ```
 
@@ -176,6 +195,11 @@ output "distance" {
   value       = fortios_router_static6.this.distance
 }
 
+output "dst" {
+  description = "returns a string"
+  value       = fortios_router_static6.this.dst
+}
+
 output "gateway" {
   description = "returns a string"
   value       = fortios_router_static6.this.gateway
@@ -186,9 +210,19 @@ output "id" {
   value       = fortios_router_static6.this.id
 }
 
+output "link_monitor_exempt" {
+  description = "returns a string"
+  value       = fortios_router_static6.this.link_monitor_exempt
+}
+
 output "priority" {
   description = "returns a number"
   value       = fortios_router_static6.this.priority
+}
+
+output "sdwan" {
+  description = "returns a string"
+  value       = fortios_router_static6.this.sdwan
 }
 
 output "seq_num" {

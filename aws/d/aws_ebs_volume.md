@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -146,6 +146,11 @@ output "snapshot_id" {
 output "tags" {
   description = "returns a map of string"
   value       = data.aws_ebs_volume.this.tags
+}
+
+output "throughput" {
+  description = "returns a number"
+  value       = data.aws_ebs_volume.this.throughput
 }
 
 output "volume_id" {

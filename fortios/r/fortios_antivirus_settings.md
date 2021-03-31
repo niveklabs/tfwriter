@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_antivirus_settings" {
   grayware = null
   # override_timeout - (optional) is a type of number
   override_timeout = null
+  # use_extreme_db - (optional) is a type of string
+  use_extreme_db = null
 }
 ```
 
@@ -58,6 +60,12 @@ variable "override_timeout" {
   type        = number
   default     = null
 }
+
+variable "use_extreme_db" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -69,6 +77,7 @@ resource "fortios_antivirus_settings" "this" {
   default_db       = var.default_db
   grayware         = var.grayware
   override_timeout = var.override_timeout
+  use_extreme_db   = var.use_extreme_db
 }
 ```
 
@@ -95,6 +104,11 @@ output "id" {
 output "override_timeout" {
   description = "returns a number"
   value       = fortios_antivirus_settings.this.override_timeout
+}
+
+output "use_extreme_db" {
+  description = "returns a string"
+  value       = fortios_antivirus_settings.this.use_extreme_db
 }
 
 output "this" {

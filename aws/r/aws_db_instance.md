@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -743,6 +743,11 @@ output "replicas" {
 output "resource_id" {
   description = "returns a string"
   value       = aws_db_instance.this.resource_id
+}
+
+output "snapshot_identifier" {
+  description = "returns a string"
+  value       = aws_db_instance.this.snapshot_identifier
 }
 
 output "status" {

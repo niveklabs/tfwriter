@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -106,7 +106,7 @@ variable "certificate_config" {
 }
 
 variable "sources" {
-  description = "nested block: NestingList, min items: 1, max items: 1"
+  description = "nested block: NestingSet, min items: 1, max items: 0"
   type = set(object(
     {
       content  = string

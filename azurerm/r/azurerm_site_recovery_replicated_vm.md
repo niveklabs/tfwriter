@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,9 +39,10 @@ module "azurerm_site_recovery_replicated_vm" {
   name = null
   # network_interface - (optional) is a type of set of object
   network_interface = [{
-    source_network_interface_id = null
-    target_static_ip            = null
-    target_subnet_name          = null
+    recovery_public_ip_address_id = null
+    source_network_interface_id   = null
+    target_static_ip              = null
+    target_subnet_name            = null
   }]
   # recovery_replication_policy_id - (required) is a type of string
   recovery_replication_policy_id = null
@@ -103,9 +104,10 @@ variable "network_interface" {
   description = "(optional)"
   type = set(object(
     {
-      source_network_interface_id = string
-      target_static_ip            = string
-      target_subnet_name          = string
+      recovery_public_ip_address_id = string
+      source_network_interface_id   = string
+      target_static_ip              = string
+      target_subnet_name            = string
     }
   ))
   default = null

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -37,6 +37,10 @@ module "fortios_logdisk_setting" {
   full_first_warning_threshold = null
   # full_second_warning_threshold - (optional) is a type of number
   full_second_warning_threshold = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
   # ips_archive - (optional) is a type of string
   ips_archive = null
   # log_quota - (optional) is a type of number
@@ -118,6 +122,18 @@ variable "full_first_warning_threshold" {
 variable "full_second_warning_threshold" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -270,6 +286,8 @@ resource "fortios_logdisk_setting" "this" {
   full_final_warning_threshold   = var.full_final_warning_threshold
   full_first_warning_threshold   = var.full_first_warning_threshold
   full_second_warning_threshold  = var.full_second_warning_threshold
+  interface                      = var.interface
+  interface_select_method        = var.interface_select_method
   ips_archive                    = var.ips_archive
   log_quota                      = var.log_quota
   max_log_file_size              = var.max_log_file_size
@@ -329,6 +347,16 @@ output "full_second_warning_threshold" {
 output "id" {
   description = "returns a string"
   value       = fortios_logdisk_setting.this.id
+}
+
+output "interface" {
+  description = "returns a string"
+  value       = fortios_logdisk_setting.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_logdisk_setting.this.interface_select_method
 }
 
 output "ips_archive" {

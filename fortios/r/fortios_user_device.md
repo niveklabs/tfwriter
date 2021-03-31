@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_user_device" {
   category = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # mac - (optional) is a type of string
   mac = null
   # master_device - (optional) is a type of string
@@ -78,6 +80,12 @@ variable "category" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -130,14 +138,15 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_user_device" "this" {
-  alias         = var.alias
-  avatar        = var.avatar
-  category      = var.category
-  comment       = var.comment
-  mac           = var.mac
-  master_device = var.master_device
-  type          = var.type
-  user          = var.user
+  alias                 = var.alias
+  avatar                = var.avatar
+  category              = var.category
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  mac                   = var.mac
+  master_device         = var.master_device
+  type                  = var.type
+  user                  = var.user
 
   dynamic "tagging" {
     for_each = var.tagging

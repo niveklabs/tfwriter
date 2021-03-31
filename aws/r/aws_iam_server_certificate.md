@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,8 +27,6 @@ terraform {
 module "aws_iam_server_certificate" {
   source = "./modules/aws/r/aws_iam_server_certificate"
 
-  # arn - (optional) is a type of string
-  arn = null
   # certificate_body - (required) is a type of string
   certificate_body = null
   # certificate_chain - (optional) is a type of string
@@ -41,6 +39,8 @@ module "aws_iam_server_certificate" {
   path = null
   # private_key - (required) is a type of string
   private_key = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -49,12 +49,6 @@ module "aws_iam_server_certificate" {
 ### Variables
 
 ```terraform
-variable "arn" {
-  description = "(optional)"
-  type        = string
-  default     = null
-}
-
 variable "certificate_body" {
   description = "(required)"
   type        = string
@@ -88,6 +82,12 @@ variable "private_key" {
   description = "(required)"
   type        = string
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -96,13 +96,13 @@ variable "private_key" {
 
 ```terraform
 resource "aws_iam_server_certificate" "this" {
-  arn               = var.arn
   certificate_body  = var.certificate_body
   certificate_chain = var.certificate_chain
   name              = var.name
   name_prefix       = var.name_prefix
   path              = var.path
   private_key       = var.private_key
+  tags              = var.tags
 }
 ```
 
@@ -116,6 +116,11 @@ output "arn" {
   value       = aws_iam_server_certificate.this.arn
 }
 
+output "expiration" {
+  description = "returns a string"
+  value       = aws_iam_server_certificate.this.expiration
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_iam_server_certificate.this.id
@@ -124,6 +129,11 @@ output "id" {
 output "name" {
   description = "returns a string"
   value       = aws_iam_server_certificate.this.name
+}
+
+output "upload_date" {
+  description = "returns a string"
+  value       = aws_iam_server_certificate.this.upload_date
 }
 
 output "this" {

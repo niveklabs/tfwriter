@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -43,10 +43,12 @@ module "oci_blockchain_blockchain_platform" {
   federated_user_id = null
   # freeform_tags - (optional) is a type of map of string
   freeform_tags = {}
-  # idcs_access_token - (optional) is a type of string
+  # idcs_access_token - (required) is a type of string
   idcs_access_token = null
   # is_byol - (optional) is a type of bool
   is_byol = null
+  # load_balancer_shape - (optional) is a type of string
+  load_balancer_shape = null
   # platform_role - (required) is a type of string
   platform_role = null
   # storage_size_in_tbs - (optional) is a type of number
@@ -119,14 +121,19 @@ variable "freeform_tags" {
 }
 
 variable "idcs_access_token" {
-  description = "(optional)"
+  description = "(required)"
   type        = string
-  default     = null
 }
 
 variable "is_byol" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "load_balancer_shape" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -188,6 +195,7 @@ resource "oci_blockchain_blockchain_platform" "this" {
   freeform_tags        = var.freeform_tags
   idcs_access_token    = var.idcs_access_token
   is_byol              = var.is_byol
+  load_balancer_shape  = var.load_balancer_shape
   platform_role        = var.platform_role
   storage_size_in_tbs  = var.storage_size_in_tbs
   total_ocpu_capacity  = var.total_ocpu_capacity
@@ -271,6 +279,11 @@ output "is_multi_ad" {
 output "lifecycle_details" {
   description = "returns a string"
   value       = oci_blockchain_blockchain_platform.this.lifecycle_details
+}
+
+output "load_balancer_shape" {
+  description = "returns a string"
+  value       = oci_blockchain_blockchain_platform.this.load_balancer_shape
 }
 
 output "platform_shape_type" {

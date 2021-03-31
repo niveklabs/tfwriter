@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -106,6 +106,11 @@ output "not_valid_after" {
 output "not_valid_before" {
   description = "returns a string"
   value       = data.hcloud_certificate.this.not_valid_before
+}
+
+output "type" {
+  description = "returns a string"
+  value       = data.hcloud_certificate.this.type
 }
 
 output "this" {

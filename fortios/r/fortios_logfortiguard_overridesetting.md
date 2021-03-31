@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,8 +27,12 @@ terraform {
 module "fortios_logfortiguard_overridesetting" {
   source = "./modules/fortios/r/fortios_logfortiguard_overridesetting"
 
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = null
   # override - (optional) is a type of string
   override = null
+  # priority - (optional) is a type of string
+  priority = null
   # status - (optional) is a type of string
   status = null
   # upload_day - (optional) is a type of string
@@ -47,7 +51,19 @@ module "fortios_logfortiguard_overridesetting" {
 ### Variables
 
 ```terraform
+variable "max_log_rate" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "override" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "priority" {
   description = "(optional)"
   type        = string
   default     = null
@@ -90,7 +106,9 @@ variable "upload_time" {
 
 ```terraform
 resource "fortios_logfortiguard_overridesetting" "this" {
+  max_log_rate    = var.max_log_rate
   override        = var.override
+  priority        = var.priority
   status          = var.status
   upload_day      = var.upload_day
   upload_interval = var.upload_interval
@@ -109,9 +127,19 @@ output "id" {
   value       = fortios_logfortiguard_overridesetting.this.id
 }
 
+output "max_log_rate" {
+  description = "returns a number"
+  value       = fortios_logfortiguard_overridesetting.this.max_log_rate
+}
+
 output "override" {
   description = "returns a string"
   value       = fortios_logfortiguard_overridesetting.this.override
+}
+
+output "priority" {
+  description = "returns a string"
+  value       = fortios_logfortiguard_overridesetting.this.priority
 }
 
 output "status" {

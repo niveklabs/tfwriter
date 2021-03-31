@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "azurerm_redis_cache" {
   name = null
   # private_static_ip_address - (optional) is a type of string
   private_static_ip_address = null
+  # public_network_access_enabled - (optional) is a type of bool
+  public_network_access_enabled = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # shard_count - (optional) is a type of number
@@ -125,6 +127,12 @@ variable "name" {
 variable "private_static_ip_address" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "public_network_access_enabled" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -216,19 +224,20 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_redis_cache" "this" {
-  capacity                  = var.capacity
-  enable_non_ssl_port       = var.enable_non_ssl_port
-  family                    = var.family
-  location                  = var.location
-  minimum_tls_version       = var.minimum_tls_version
-  name                      = var.name
-  private_static_ip_address = var.private_static_ip_address
-  resource_group_name       = var.resource_group_name
-  shard_count               = var.shard_count
-  sku_name                  = var.sku_name
-  subnet_id                 = var.subnet_id
-  tags                      = var.tags
-  zones                     = var.zones
+  capacity                      = var.capacity
+  enable_non_ssl_port           = var.enable_non_ssl_port
+  family                        = var.family
+  location                      = var.location
+  minimum_tls_version           = var.minimum_tls_version
+  name                          = var.name
+  private_static_ip_address     = var.private_static_ip_address
+  public_network_access_enabled = var.public_network_access_enabled
+  resource_group_name           = var.resource_group_name
+  shard_count                   = var.shard_count
+  sku_name                      = var.sku_name
+  subnet_id                     = var.subnet_id
+  tags                          = var.tags
+  zones                         = var.zones
 
   dynamic "patch_schedule" {
     for_each = var.patch_schedule

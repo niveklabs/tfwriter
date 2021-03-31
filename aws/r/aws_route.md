@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -187,16 +187,6 @@ output "destination_prefix_list_id" {
   value       = aws_route.this.destination_prefix_list_id
 }
 
-output "egress_only_gateway_id" {
-  description = "returns a string"
-  value       = aws_route.this.egress_only_gateway_id
-}
-
-output "gateway_id" {
-  description = "returns a string"
-  value       = aws_route.this.gateway_id
-}
-
 output "id" {
   description = "returns a string"
   value       = aws_route.this.id
@@ -210,16 +200,6 @@ output "instance_id" {
 output "instance_owner_id" {
   description = "returns a string"
   value       = aws_route.this.instance_owner_id
-}
-
-output "local_gateway_id" {
-  description = "returns a string"
-  value       = aws_route.this.local_gateway_id
-}
-
-output "nat_gateway_id" {
-  description = "returns a string"
-  value       = aws_route.this.nat_gateway_id
 }
 
 output "network_interface_id" {

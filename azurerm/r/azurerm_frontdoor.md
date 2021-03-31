@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -182,7 +182,7 @@ variable "tags" {
 }
 
 variable "backend_pool" {
-  description = "nested block: NestingList, min items: 1, max items: 50"
+  description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
     {
       backend = list(object(
@@ -443,9 +443,29 @@ resource "azurerm_frontdoor" "this" {
 ### Outputs
 
 ```terraform
+output "backend_pool_health_probes" {
+  description = "returns a map of string"
+  value       = azurerm_frontdoor.this.backend_pool_health_probes
+}
+
+output "backend_pool_load_balancing_settings" {
+  description = "returns a map of string"
+  value       = azurerm_frontdoor.this.backend_pool_load_balancing_settings
+}
+
+output "backend_pools" {
+  description = "returns a map of string"
+  value       = azurerm_frontdoor.this.backend_pools
+}
+
 output "cname" {
   description = "returns a string"
   value       = azurerm_frontdoor.this.cname
+}
+
+output "frontend_endpoints" {
+  description = "returns a map of string"
+  value       = azurerm_frontdoor.this.frontend_endpoints
 }
 
 output "header_frontdoor_id" {
@@ -461,6 +481,11 @@ output "id" {
 output "location" {
   description = "returns a string"
   value       = azurerm_frontdoor.this.location
+}
+
+output "routing_rules" {
+  description = "returns a map of string"
+  value       = azurerm_frontdoor.this.routing_rules
 }
 
 output "this" {

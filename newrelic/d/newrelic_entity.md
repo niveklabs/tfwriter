@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "newrelic_entity" {
 
   # domain - (optional) is a type of string
   domain = null
+  # ignore_case - (optional) is a type of bool
+  ignore_case = null
   # name - (required) is a type of string
   name = null
   # type - (optional) is a type of string
@@ -49,6 +51,12 @@ module "newrelic_entity" {
 variable "domain" {
   description = "(optional) - The entity's domain. Valid values are APM, BROWSER, INFRA, MOBILE, SYNTH, and VIZ. If not specified, all domains are searched."
   type        = string
+  default     = null
+}
+
+variable "ignore_case" {
+  description = "(optional) - Ignore case when searching the entity name."
+  type        = bool
   default     = null
 }
 
@@ -81,9 +89,10 @@ variable "tag" {
 
 ```terraform
 data "newrelic_entity" "this" {
-  domain = var.domain
-  name   = var.name
-  type   = var.type
+  domain      = var.domain
+  ignore_case = var.ignore_case
+  name        = var.name
+  type        = var.type
 
   dynamic "tag" {
     for_each = var.tag

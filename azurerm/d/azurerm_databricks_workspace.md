@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "azurerm_databricks_workspace" {
   name = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 
   timeouts = [{
     read = null
@@ -53,6 +55,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -72,6 +80,7 @@ variable "timeouts" {
 data "azurerm_databricks_workspace" "this" {
   name                = var.name
   resource_group_name = var.resource_group_name
+  tags                = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts

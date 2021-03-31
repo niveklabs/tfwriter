@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```
@@ -112,7 +112,7 @@ variable "runbook_url" {
 }
 
 variable "type" {
-  description = "(required) - The type of condition. One of: (apm_kt_metric, browser_metric, mobile_metric, servers_metric, apm_app_metric, apm_jvm_metric)."
+  description = "(required) - The type of condition. One of: (apm_app_metric, apm_jvm_metric, apm_kt_metric, browser_metric, mobile_metric, servers_metric)."
   type        = string
 }
 

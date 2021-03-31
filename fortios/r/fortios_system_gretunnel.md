@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_system_gretunnel" {
   checksum_reception = null
   # checksum_transmission - (optional) is a type of string
   checksum_transmission = null
+  # diffservcode - (optional) is a type of string
+  diffservcode = null
   # dscp_copying - (optional) is a type of string
   dscp_copying = null
   # interface - (optional) is a type of string
@@ -74,6 +76,12 @@ variable "checksum_reception" {
 }
 
 variable "checksum_transmission" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "diffservcode" {
   description = "(optional)"
   type        = string
   default     = null
@@ -170,6 +178,7 @@ variable "sequence_number_transmission" {
 resource "fortios_system_gretunnel" "this" {
   checksum_reception           = var.checksum_reception
   checksum_transmission        = var.checksum_transmission
+  diffservcode                 = var.diffservcode
   dscp_copying                 = var.dscp_copying
   interface                    = var.interface
   ip_version                   = var.ip_version
@@ -200,6 +209,11 @@ output "checksum_reception" {
 output "checksum_transmission" {
   description = "returns a string"
   value       = fortios_system_gretunnel.this.checksum_transmission
+}
+
+output "diffservcode" {
+  description = "returns a string"
+  value       = fortios_system_gretunnel.this.diffservcode
 }
 
 output "dscp_copying" {

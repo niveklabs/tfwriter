@@ -12,7 +12,7 @@
 
 ```terraform
 provider "hcloud" {
-  version = "1.23.0"
+  version = "1.26.0"
 
   # endpoint - (optional) is a type of string
   endpoint = null
@@ -28,6 +28,8 @@ provider "hcloud" {
 
 - [hcloud_certificate](./r/hcloud_certificate.md)
 
+- [hcloud_firewall](./r/hcloud_firewall.md)
+
 - [hcloud_floating_ip](./r/hcloud_floating_ip.md)
 
 - [hcloud_floating_ip_assignment](./r/hcloud_floating_ip_assignment.md)
@@ -39,6 +41,8 @@ provider "hcloud" {
 - [hcloud_load_balancer_service](./r/hcloud_load_balancer_service.md)
 
 - [hcloud_load_balancer_target](./r/hcloud_load_balancer_target.md)
+
+- [hcloud_managed_certificate](./r/hcloud_managed_certificate.md)
 
 - [hcloud_network](./r/hcloud_network.md)
 
@@ -52,7 +56,11 @@ provider "hcloud" {
 
 - [hcloud_server_network](./r/hcloud_server_network.md)
 
+- [hcloud_snapshot](./r/hcloud_snapshot.md)
+
 - [hcloud_ssh_key](./r/hcloud_ssh_key.md)
+
+- [hcloud_uploaded_certificate](./r/hcloud_uploaded_certificate.md)
 
 - [hcloud_volume](./r/hcloud_volume.md)
 
@@ -70,6 +78,8 @@ provider "hcloud" {
 
 - [hcloud_datacenters](./d/hcloud_datacenters.md)
 
+- [hcloud_firewall](./d/hcloud_firewall.md)
+
 - [hcloud_floating_ip](./d/hcloud_floating_ip.md)
 
 - [hcloud_image](./d/hcloud_image.md)
@@ -83,6 +93,10 @@ provider "hcloud" {
 - [hcloud_network](./d/hcloud_network.md)
 
 - [hcloud_server](./d/hcloud_server.md)
+
+- [hcloud_server_type](./d/hcloud_server_type.md)
+
+- [hcloud_server_types](./d/hcloud_server_types.md)
 
 - [hcloud_ssh_key](./d/hcloud_ssh_key.md)
 

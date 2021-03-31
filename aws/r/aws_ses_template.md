@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -85,6 +85,11 @@ resource "aws_ses_template" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_ses_template.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ses_template.this.id

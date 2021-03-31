@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -53,6 +53,8 @@ module "fortios_firewall_policy" {
   cifs_profile = null
   # comments - (optional) is a type of string
   comments = null
+  # decrypted_traffic_mirror - (optional) is a type of string
+  decrypted_traffic_mirror = null
   # delay_tcp_npu_session - (optional) is a type of string
   delay_tcp_npu_session = null
   # diffserv_forward - (optional) is a type of string
@@ -73,10 +75,14 @@ module "fortios_firewall_policy" {
   dsri = null
   # dstaddr_negate - (optional) is a type of string
   dstaddr_negate = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # email_collect - (optional) is a type of string
   email_collect = null
   # emailfilter_profile - (optional) is a type of string
   emailfilter_profile = null
+  # file_filter_profile - (optional) is a type of string
+  file_filter_profile = null
   # firewall_session_dirty - (optional) is a type of string
   firewall_session_dirty = null
   # fixedport - (optional) is a type of string
@@ -87,6 +93,8 @@ module "fortios_firewall_policy" {
   fsso_agent_for_ntlm = null
   # geoip_anycast - (optional) is a type of string
   geoip_anycast = null
+  # geoip_match - (optional) is a type of string
+  geoip_match = null
   # global_label - (optional) is a type of string
   global_label = null
   # http_policy_redirect - (optional) is a type of string
@@ -276,6 +284,10 @@ module "fortios_firewall_policy" {
     name = null
   }]
 
+  dstaddr6 = [{
+    name = null
+  }]
+
   dstintf = [{
     name = null
   }]
@@ -304,6 +316,10 @@ module "fortios_firewall_policy" {
     id = null
   }]
 
+  internet_service_name = [{
+    name = null
+  }]
+
   internet_service_src_custom = [{
     name = null
   }]
@@ -320,11 +336,19 @@ module "fortios_firewall_policy" {
     id = null
   }]
 
+  internet_service_src_name = [{
+    name = null
+  }]
+
   ntlm_enabled_browsers = [{
     user_agent_string = null
   }]
 
   poolname = [{
+    name = null
+  }]
+
+  poolname6 = [{
     name = null
   }]
 
@@ -336,7 +360,15 @@ module "fortios_firewall_policy" {
     name = null
   }]
 
+  src_vendor_mac = [{
+    id = null
+  }]
+
   srcaddr = [{
+    name = null
+  }]
+
+  srcaddr6 = [{
     name = null
   }]
 
@@ -441,6 +473,12 @@ variable "comments" {
   default     = null
 }
 
+variable "decrypted_traffic_mirror" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "delay_tcp_npu_session" {
   description = "(optional)"
   type        = string
@@ -501,6 +539,12 @@ variable "dstaddr_negate" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "email_collect" {
   description = "(optional)"
   type        = string
@@ -508,6 +552,12 @@ variable "email_collect" {
 }
 
 variable "emailfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "file_filter_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -538,6 +588,12 @@ variable "fsso_agent_for_ntlm" {
 }
 
 variable "geoip_anycast" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "geoip_match" {
   description = "(optional)"
   type        = string
   default     = null
@@ -1095,6 +1151,16 @@ variable "dstaddr" {
   default = []
 }
 
+variable "dstaddr6" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "dstintf" {
   description = "nested block: NestingList, min items: 1, max items: 0"
   type = set(object(
@@ -1164,6 +1230,16 @@ variable "internet_service_id" {
   default = []
 }
 
+variable "internet_service_name" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "internet_service_src_custom" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -1204,6 +1280,16 @@ variable "internet_service_src_id" {
   default = []
 }
 
+variable "internet_service_src_name" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "ntlm_enabled_browsers" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -1215,6 +1301,16 @@ variable "ntlm_enabled_browsers" {
 }
 
 variable "poolname" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
+variable "poolname6" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
@@ -1244,7 +1340,27 @@ variable "service" {
   default = []
 }
 
+variable "src_vendor_mac" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      id = number
+    }
+  ))
+  default = []
+}
+
 variable "srcaddr" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
+variable "srcaddr6" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
@@ -1313,6 +1429,7 @@ resource "fortios_firewall_policy" "this" {
   capture_packet              = var.capture_packet
   cifs_profile                = var.cifs_profile
   comments                    = var.comments
+  decrypted_traffic_mirror    = var.decrypted_traffic_mirror
   delay_tcp_npu_session       = var.delay_tcp_npu_session
   diffserv_forward            = var.diffserv_forward
   diffserv_reverse            = var.diffserv_reverse
@@ -1323,13 +1440,16 @@ resource "fortios_firewall_policy" "this" {
   dnsfilter_profile           = var.dnsfilter_profile
   dsri                        = var.dsri
   dstaddr_negate              = var.dstaddr_negate
+  dynamic_sort_subtable       = var.dynamic_sort_subtable
   email_collect               = var.email_collect
   emailfilter_profile         = var.emailfilter_profile
+  file_filter_profile         = var.file_filter_profile
   firewall_session_dirty      = var.firewall_session_dirty
   fixedport                   = var.fixedport
   fsso                        = var.fsso
   fsso_agent_for_ntlm         = var.fsso_agent_for_ntlm
   geoip_anycast               = var.geoip_anycast
+  geoip_match                 = var.geoip_match
   global_label                = var.global_label
   http_policy_redirect        = var.http_policy_redirect
   icap_profile                = var.icap_profile
@@ -1455,6 +1575,13 @@ resource "fortios_firewall_policy" "this" {
     }
   }
 
+  dynamic "dstaddr6" {
+    for_each = var.dstaddr6
+    content {
+      name = dstaddr6.value["name"]
+    }
+  }
+
   dynamic "dstintf" {
     for_each = var.dstintf
     content {
@@ -1504,6 +1631,13 @@ resource "fortios_firewall_policy" "this" {
     }
   }
 
+  dynamic "internet_service_name" {
+    for_each = var.internet_service_name
+    content {
+      name = internet_service_name.value["name"]
+    }
+  }
+
   dynamic "internet_service_src_custom" {
     for_each = var.internet_service_src_custom
     content {
@@ -1532,6 +1666,13 @@ resource "fortios_firewall_policy" "this" {
     }
   }
 
+  dynamic "internet_service_src_name" {
+    for_each = var.internet_service_src_name
+    content {
+      name = internet_service_src_name.value["name"]
+    }
+  }
+
   dynamic "ntlm_enabled_browsers" {
     for_each = var.ntlm_enabled_browsers
     content {
@@ -1543,6 +1684,13 @@ resource "fortios_firewall_policy" "this" {
     for_each = var.poolname
     content {
       name = poolname.value["name"]
+    }
+  }
+
+  dynamic "poolname6" {
+    for_each = var.poolname6
+    content {
+      name = poolname6.value["name"]
     }
   }
 
@@ -1560,10 +1708,24 @@ resource "fortios_firewall_policy" "this" {
     }
   }
 
+  dynamic "src_vendor_mac" {
+    for_each = var.src_vendor_mac
+    content {
+      id = src_vendor_mac.value["id"]
+    }
+  }
+
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
       name = srcaddr.value["name"]
+    }
+  }
+
+  dynamic "srcaddr6" {
+    for_each = var.srcaddr6
+    content {
+      name = srcaddr6.value["name"]
     }
   }
 
@@ -1663,6 +1825,11 @@ output "cifs_profile" {
   value       = fortios_firewall_policy.this.cifs_profile
 }
 
+output "decrypted_traffic_mirror" {
+  description = "returns a string"
+  value       = fortios_firewall_policy.this.decrypted_traffic_mirror
+}
+
 output "delay_tcp_npu_session" {
   description = "returns a string"
   value       = fortios_firewall_policy.this.delay_tcp_npu_session
@@ -1723,6 +1890,11 @@ output "emailfilter_profile" {
   value       = fortios_firewall_policy.this.emailfilter_profile
 }
 
+output "file_filter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_policy.this.file_filter_profile
+}
+
 output "firewall_session_dirty" {
   description = "returns a string"
   value       = fortios_firewall_policy.this.firewall_session_dirty
@@ -1746,6 +1918,11 @@ output "fsso_agent_for_ntlm" {
 output "geoip_anycast" {
   description = "returns a string"
   value       = fortios_firewall_policy.this.geoip_anycast
+}
+
+output "geoip_match" {
+  description = "returns a string"
+  value       = fortios_firewall_policy.this.geoip_match
 }
 
 output "global_label" {
@@ -1956,11 +2133,6 @@ output "rtp_nat" {
 output "scan_botnet_connections" {
   description = "returns a string"
   value       = fortios_firewall_policy.this.scan_botnet_connections
-}
-
-output "schedule" {
-  description = "returns a string"
-  value       = fortios_firewall_policy.this.schedule
 }
 
 output "schedule_timeout" {

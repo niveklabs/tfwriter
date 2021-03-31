@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -35,6 +35,7 @@ module "oci_database_database_upgrade" {
   database_upgrade_source_details = [{
     database_software_image_id = null
     db_version                 = null
+    options                    = null
     source                     = null
   }]
 
@@ -67,6 +68,7 @@ variable "database_upgrade_source_details" {
     {
       database_software_image_id = string
       db_version                 = string
+      options                    = string
       source                     = string
     }
   ))
@@ -100,6 +102,7 @@ resource "oci_database_database_upgrade" "this" {
     content {
       database_software_image_id = database_upgrade_source_details.value["database_software_image_id"]
       db_version                 = database_upgrade_source_details.value["db_version"]
+      options                    = database_upgrade_source_details.value["options"]
       source                     = database_upgrade_source_details.value["source"]
     }
   }

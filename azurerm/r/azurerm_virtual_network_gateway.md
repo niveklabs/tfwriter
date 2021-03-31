@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -56,6 +56,12 @@ module "azurerm_virtual_network_gateway" {
     asn             = null
     peer_weight     = null
     peering_address = null
+    peering_addresses = [{
+      apipa_addresses       = []
+      default_addresses     = []
+      ip_configuration_name = null
+      tunnel_ip_addresses   = []
+    }]
   }]
 
   custom_route = [{
@@ -175,6 +181,14 @@ variable "bgp_settings" {
       asn             = number
       peer_weight     = number
       peering_address = string
+      peering_addresses = list(object(
+        {
+          apipa_addresses       = list(string)
+          default_addresses     = list(string)
+          ip_configuration_name = string
+          tunnel_ip_addresses   = list(string)
+        }
+      ))
     }
   ))
   default = []
@@ -269,6 +283,15 @@ resource "azurerm_virtual_network_gateway" "this" {
       asn             = bgp_settings.value["asn"]
       peer_weight     = bgp_settings.value["peer_weight"]
       peering_address = bgp_settings.value["peering_address"]
+
+      dynamic "peering_addresses" {
+        for_each = bgp_settings.value.peering_addresses
+        content {
+          apipa_addresses       = peering_addresses.value["apipa_addresses"]
+          ip_configuration_name = peering_addresses.value["ip_configuration_name"]
+        }
+      }
+
     }
   }
 

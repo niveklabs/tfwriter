@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,10 +29,14 @@ module "aws_iam_policy_document" {
 
   # override_json - (optional) is a type of string
   override_json = null
+  # override_policy_documents - (optional) is a type of list of string
+  override_policy_documents = []
   # policy_id - (optional) is a type of string
   policy_id = null
   # source_json - (optional) is a type of string
   source_json = null
+  # source_policy_documents - (optional) is a type of list of string
+  source_policy_documents = []
   # version - (optional) is a type of string
   version = null
 
@@ -71,6 +75,12 @@ variable "override_json" {
   default     = null
 }
 
+variable "override_policy_documents" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "policy_id" {
   description = "(optional)"
   type        = string
@@ -80,6 +90,12 @@ variable "policy_id" {
 variable "source_json" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "source_policy_documents" {
+  description = "(optional)"
+  type        = list(string)
   default     = null
 }
 
@@ -97,7 +113,7 @@ variable "statement" {
       condition = set(object(
         {
           test     = string
-          values   = set(string)
+          values   = list(string)
           variable = string
         }
       ))
@@ -130,10 +146,12 @@ variable "statement" {
 
 ```terraform
 data "aws_iam_policy_document" "this" {
-  override_json = var.override_json
-  policy_id     = var.policy_id
-  source_json   = var.source_json
-  version       = var.version
+  override_json             = var.override_json
+  override_policy_documents = var.override_policy_documents
+  policy_id                 = var.policy_id
+  source_json               = var.source_json
+  source_policy_documents   = var.source_policy_documents
+  version                   = var.version
 
   dynamic "statement" {
     for_each = var.statement

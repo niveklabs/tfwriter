@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,8 +29,12 @@ module "fortios_webfilter_profile" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extended_log - (optional) is a type of string
   extended_log = null
+  # feature_set - (optional) is a type of string
+  feature_set = null
   # https_replacemsg - (optional) is a type of string
   https_replacemsg = null
   # inspection_mode - (optional) is a type of string
@@ -47,6 +51,8 @@ module "fortios_webfilter_profile" {
   post_action = null
   # replacemsg_group - (optional) is a type of string
   replacemsg_group = null
+  # web_antiphishing_log - (optional) is a type of string
+  web_antiphishing_log = null
   # web_content_log - (optional) is a type of string
   web_content_log = null
   # web_extended_all_action_log - (optional) is a type of string
@@ -85,6 +91,41 @@ module "fortios_webfilter_profile" {
   wisp_algorithm = null
   # youtube_channel_status - (optional) is a type of string
   youtube_channel_status = null
+
+  antiphish = [{
+    check_basic_auth = null
+    check_uri        = null
+    custom_patterns = [{
+      category = null
+      pattern  = null
+    }]
+    default_action    = null
+    domain_controller = null
+    inspection_entries = [{
+      action              = null
+      fortiguard_category = null
+      name                = null
+    }]
+    max_body_len = null
+    status       = null
+  }]
+
+  file_filter = [{
+    entries = [{
+      action    = null
+      comment   = null
+      direction = null
+      file_type = [{
+        name = null
+      }]
+      filter             = null
+      password_protected = null
+      protocol           = null
+    }]
+    log                   = null
+    scan_archive_contents = null
+    status                = null
+  }]
 
   ftgd_wf = [{
     exempt_quota = null
@@ -135,7 +176,9 @@ module "fortios_webfilter_profile" {
   }]
 
   web = [{
+    allowlist           = null
     blacklist           = null
+    blocklist           = null
     bword_table         = null
     bword_threshold     = null
     content_header_list = null
@@ -172,7 +215,19 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "extended_log" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "feature_set" {
   description = "(optional)"
   type        = string
   default     = null
@@ -220,6 +275,12 @@ variable "post_action" {
 }
 
 variable "replacemsg_group" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "web_antiphishing_log" {
   description = "(optional)"
   type        = string
   default     = null
@@ -339,6 +400,61 @@ variable "youtube_channel_status" {
   default     = null
 }
 
+variable "antiphish" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      check_basic_auth = string
+      check_uri        = string
+      custom_patterns = list(object(
+        {
+          category = string
+          pattern  = string
+        }
+      ))
+      default_action    = string
+      domain_controller = string
+      inspection_entries = list(object(
+        {
+          action              = string
+          fortiguard_category = string
+          name                = string
+        }
+      ))
+      max_body_len = number
+      status       = string
+    }
+  ))
+  default = []
+}
+
+variable "file_filter" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      entries = list(object(
+        {
+          action    = string
+          comment   = string
+          direction = string
+          file_type = list(object(
+            {
+              name = string
+            }
+          ))
+          filter             = string
+          password_protected = string
+          protocol           = string
+        }
+      ))
+      log                   = string
+      scan_archive_contents = string
+      status                = string
+    }
+  ))
+  default = []
+}
+
 variable "ftgd_wf" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -413,7 +529,9 @@ variable "web" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      allowlist           = string
       blacklist           = string
+      blocklist           = string
       bword_table         = number
       bword_threshold     = number
       content_header_list = number
@@ -462,7 +580,9 @@ variable "youtube_channel_filter" {
 ```terraform
 resource "fortios_webfilter_profile" "this" {
   comment                       = var.comment
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
   extended_log                  = var.extended_log
+  feature_set                   = var.feature_set
   https_replacemsg              = var.https_replacemsg
   inspection_mode               = var.inspection_mode
   log_all_url                   = var.log_all_url
@@ -471,6 +591,7 @@ resource "fortios_webfilter_profile" "this" {
   ovrd_perm                     = var.ovrd_perm
   post_action                   = var.post_action
   replacemsg_group              = var.replacemsg_group
+  web_antiphishing_log          = var.web_antiphishing_log
   web_content_log               = var.web_content_log
   web_extended_all_action_log   = var.web_extended_all_action_log
   web_filter_activex_log        = var.web_filter_activex_log
@@ -490,6 +611,66 @@ resource "fortios_webfilter_profile" "this" {
   wisp                          = var.wisp
   wisp_algorithm                = var.wisp_algorithm
   youtube_channel_status        = var.youtube_channel_status
+
+  dynamic "antiphish" {
+    for_each = var.antiphish
+    content {
+      check_basic_auth  = antiphish.value["check_basic_auth"]
+      check_uri         = antiphish.value["check_uri"]
+      default_action    = antiphish.value["default_action"]
+      domain_controller = antiphish.value["domain_controller"]
+      max_body_len      = antiphish.value["max_body_len"]
+      status            = antiphish.value["status"]
+
+      dynamic "custom_patterns" {
+        for_each = antiphish.value.custom_patterns
+        content {
+          category = custom_patterns.value["category"]
+          pattern  = custom_patterns.value["pattern"]
+        }
+      }
+
+      dynamic "inspection_entries" {
+        for_each = antiphish.value.inspection_entries
+        content {
+          action              = inspection_entries.value["action"]
+          fortiguard_category = inspection_entries.value["fortiguard_category"]
+          name                = inspection_entries.value["name"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "file_filter" {
+    for_each = var.file_filter
+    content {
+      log                   = file_filter.value["log"]
+      scan_archive_contents = file_filter.value["scan_archive_contents"]
+      status                = file_filter.value["status"]
+
+      dynamic "entries" {
+        for_each = file_filter.value.entries
+        content {
+          action             = entries.value["action"]
+          comment            = entries.value["comment"]
+          direction          = entries.value["direction"]
+          filter             = entries.value["filter"]
+          password_protected = entries.value["password_protected"]
+          protocol           = entries.value["protocol"]
+
+          dynamic "file_type" {
+            for_each = entries.value.file_type
+            content {
+              name = file_type.value["name"]
+            }
+          }
+
+        }
+      }
+
+    }
+  }
 
   dynamic "ftgd_wf" {
     for_each = var.ftgd_wf
@@ -571,7 +752,9 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "web" {
     for_each = var.web
     content {
+      allowlist           = web.value["allowlist"]
       blacklist           = web.value["blacklist"]
+      blocklist           = web.value["blocklist"]
       bword_table         = web.value["bword_table"]
       bword_threshold     = web.value["bword_threshold"]
       content_header_list = web.value["content_header_list"]
@@ -620,6 +803,11 @@ output "extended_log" {
   value       = fortios_webfilter_profile.this.extended_log
 }
 
+output "feature_set" {
+  description = "returns a string"
+  value       = fortios_webfilter_profile.this.feature_set
+}
+
 output "https_replacemsg" {
   description = "returns a string"
   value       = fortios_webfilter_profile.this.https_replacemsg
@@ -658,6 +846,11 @@ output "post_action" {
 output "replacemsg_group" {
   description = "returns a string"
   value       = fortios_webfilter_profile.this.replacemsg_group
+}
+
+output "web_antiphishing_log" {
+  description = "returns a string"
+  value       = fortios_webfilter_profile.this.web_antiphishing_log
 }
 
 output "web_content_log" {

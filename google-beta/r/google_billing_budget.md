@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -49,9 +49,12 @@ module "google_billing_budget" {
   }]
 
   budget_filter = [{
+    credit_types           = []
     credit_types_treatment = null
+    labels                 = {}
     projects               = []
     services               = []
+    subaccounts            = []
   }]
 
   threshold_rules = [{
@@ -116,9 +119,12 @@ variable "budget_filter" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      credit_types           = list(string)
       credit_types_treatment = string
+      labels                 = map(string)
       projects               = list(string)
       services               = list(string)
+      subaccounts            = list(string)
     }
   ))
   default = []
@@ -186,9 +192,12 @@ resource "google_billing_budget" "this" {
   dynamic "budget_filter" {
     for_each = var.budget_filter
     content {
+      credit_types           = budget_filter.value["credit_types"]
       credit_types_treatment = budget_filter.value["credit_types_treatment"]
+      labels                 = budget_filter.value["labels"]
       projects               = budget_filter.value["projects"]
       services               = budget_filter.value["services"]
+      subaccounts            = budget_filter.value["subaccounts"]
     }
   }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azuread_service_principal_certificate" {
   source = "./modules/azuread/r/azuread_service_principal_certificate"
 
+  # encoding - (optional) is a type of string
+  encoding = null
   # end_date - (optional) is a type of string
   end_date = null
   # end_date_relative - (optional) is a type of string
@@ -49,6 +51,12 @@ module "azuread_service_principal_certificate" {
 ### Variables
 
 ```terraform
+variable "encoding" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "end_date" {
   description = "(optional)"
   type        = string
@@ -96,6 +104,7 @@ variable "value" {
 
 ```terraform
 resource "azuread_service_principal_certificate" "this" {
+  encoding             = var.encoding
   end_date             = var.end_date
   end_date_relative    = var.end_date_relative
   key_id               = var.key_id

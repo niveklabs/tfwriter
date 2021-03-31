@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "azurerm_data_factory" {
   location = null
   # name - (required) is a type of string
   name = null
+  # public_network_enabled - (optional) is a type of bool
+  public_network_enabled = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # tags - (optional) is a type of map of string
@@ -81,6 +83,12 @@ variable "location" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "public_network_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
 }
 
 variable "resource_group_name" {
@@ -155,10 +163,11 @@ variable "vsts_configuration" {
 
 ```terraform
 resource "azurerm_data_factory" "this" {
-  location            = var.location
-  name                = var.name
-  resource_group_name = var.resource_group_name
-  tags                = var.tags
+  location               = var.location
+  name                   = var.name
+  public_network_enabled = var.public_network_enabled
+  resource_group_name    = var.resource_group_name
+  tags                   = var.tags
 
   dynamic "github_configuration" {
     for_each = var.github_configuration

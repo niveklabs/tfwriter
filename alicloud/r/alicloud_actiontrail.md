@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "alicloud_actiontrail" {
   oss_bucket_name = null
   # oss_key_prefix - (optional) is a type of string
   oss_key_prefix = null
+  # oss_write_role_arn - (optional) is a type of string
+  oss_write_role_arn = null
   # role_name - (optional) is a type of string
   role_name = null
   # sls_project_arn - (optional) is a type of string
@@ -95,6 +97,12 @@ variable "oss_bucket_name" {
 }
 
 variable "oss_key_prefix" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "oss_write_role_arn" {
   description = "(optional)"
   type        = string
   default     = null
@@ -160,6 +168,7 @@ resource "alicloud_actiontrail" "this" {
   name                  = var.name
   oss_bucket_name       = var.oss_bucket_name
   oss_key_prefix        = var.oss_key_prefix
+  oss_write_role_arn    = var.oss_write_role_arn
   role_name             = var.role_name
   sls_project_arn       = var.sls_project_arn
   sls_write_role_arn    = var.sls_write_role_arn

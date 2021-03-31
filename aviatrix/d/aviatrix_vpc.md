@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -80,6 +80,11 @@ output "aviatrix_firenet_vpc" {
 output "aviatrix_transit_vpc" {
   description = "returns a bool"
   value       = data.aviatrix_vpc.this.aviatrix_transit_vpc
+}
+
+output "azure_vnet_resource_id" {
+  description = "returns a string"
+  value       = data.aviatrix_vpc.this.azure_vnet_resource_id
 }
 
 output "cidr" {

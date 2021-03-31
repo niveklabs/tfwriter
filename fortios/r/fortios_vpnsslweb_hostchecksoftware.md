@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_vpnsslweb_hostchecksoftware" {
   source = "./modules/fortios/r/fortios_vpnsslweb_hostchecksoftware"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # guid - (optional) is a type of string
   guid = null
   # name - (optional) is a type of string
@@ -56,6 +58,12 @@ module "fortios_vpnsslweb_hostchecksoftware" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "guid" {
   description = "(optional)"
   type        = string
@@ -112,11 +120,12 @@ variable "check_item_list" {
 
 ```terraform
 resource "fortios_vpnsslweb_hostchecksoftware" "this" {
-  guid    = var.guid
-  name    = var.name
-  os_type = var.os_type
-  type    = var.type
-  version = var.version
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  guid                  = var.guid
+  name                  = var.name
+  os_type               = var.os_type
+  type                  = var.type
+  version               = var.version
 
   dynamic "check_item_list" {
     for_each = var.check_item_list

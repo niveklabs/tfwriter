@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -91,6 +91,12 @@ data "azurerm_function_app_host_keys" "this" {
 output "default_function_key" {
   description = "returns a string"
   value       = data.azurerm_function_app_host_keys.this.default_function_key
+  sensitive   = true
+}
+
+output "event_grid_extension_config_key" {
+  description = "returns a string"
+  value       = data.azurerm_function_app_host_keys.this.event_grid_extension_config_key
   sensitive   = true
 }
 

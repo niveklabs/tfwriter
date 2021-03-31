@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -167,9 +167,19 @@ output "availability_zone_id" {
   value       = data.aws_subnet.this.availability_zone_id
 }
 
+output "available_ip_address_count" {
+  description = "returns a number"
+  value       = data.aws_subnet.this.available_ip_address_count
+}
+
 output "cidr_block" {
   description = "returns a string"
   value       = data.aws_subnet.this.cidr_block
+}
+
+output "customer_owned_ipv4_pool" {
+  description = "returns a string"
+  value       = data.aws_subnet.this.customer_owned_ipv4_pool
 }
 
 output "default_for_az" {
@@ -190,6 +200,11 @@ output "ipv6_cidr_block" {
 output "ipv6_cidr_block_association_id" {
   description = "returns a string"
   value       = data.aws_subnet.this.ipv6_cidr_block_association_id
+}
+
+output "map_customer_owned_ip_on_launch" {
+  description = "returns a bool"
+  value       = data.aws_subnet.this.map_customer_owned_ip_on_launch
 }
 
 output "map_public_ip_on_launch" {

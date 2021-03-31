@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -67,6 +67,11 @@ output "admin_password" {
 output "apex_details" {
   description = "returns a list of object"
   value       = data.oci_database_autonomous_database.this.apex_details
+}
+
+output "are_primary_whitelisted_ips_used" {
+  description = "returns a bool"
+  value       = data.oci_database_autonomous_database.this.are_primary_whitelisted_ips_used
 }
 
 output "autonomous_container_database_id" {
@@ -307,6 +312,11 @@ output "source_id" {
 output "standby_db" {
   description = "returns a list of object"
   value       = data.oci_database_autonomous_database.this.standby_db
+}
+
+output "standby_whitelisted_ips" {
+  description = "returns a list of string"
+  value       = data.oci_database_autonomous_database.this.standby_whitelisted_ips
 }
 
 output "state" {

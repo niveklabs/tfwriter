@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -93,14 +93,14 @@ output "id" {
   value       = data.kubernetes_service.this.id
 }
 
-output "load_balancer_ingress" {
-  description = "returns a list of object"
-  value       = data.kubernetes_service.this.load_balancer_ingress
-}
-
 output "spec" {
   description = "returns a list of object"
   value       = data.kubernetes_service.this.spec
+}
+
+output "status" {
+  description = "returns a list of object"
+  value       = data.kubernetes_service.this.status
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_firewall_localinpolicy6" {
   action = null
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # intf - (required) is a type of string
   intf = null
   # policyid - (optional) is a type of number
@@ -39,6 +41,8 @@ module "fortios_firewall_localinpolicy6" {
   schedule = null
   # status - (optional) is a type of string
   status = null
+  # uuid - (optional) is a type of string
+  uuid = null
 
   dstaddr = [{
     name = null
@@ -71,6 +75,12 @@ variable "comments" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "intf" {
   description = "(required)"
   type        = string
@@ -88,6 +98,12 @@ variable "schedule" {
 }
 
 variable "status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "uuid" {
   description = "(optional)"
   type        = string
   default     = null
@@ -127,12 +143,14 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_localinpolicy6" "this" {
-  action   = var.action
-  comments = var.comments
-  intf     = var.intf
-  policyid = var.policyid
-  schedule = var.schedule
-  status   = var.status
+  action                = var.action
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  intf                  = var.intf
+  policyid              = var.policyid
+  schedule              = var.schedule
+  status                = var.status
+  uuid                  = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
@@ -181,6 +199,11 @@ output "policyid" {
 output "status" {
   description = "returns a string"
   value       = fortios_firewall_localinpolicy6.this.status
+}
+
+output "uuid" {
+  description = "returns a string"
+  value       = fortios_firewall_localinpolicy6.this.uuid
 }
 
 output "this" {

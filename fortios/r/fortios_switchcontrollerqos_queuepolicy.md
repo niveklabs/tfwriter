@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_switchcontrollerqos_queuepolicy" {
   source = "./modules/fortios/r/fortios_switchcontrollerqos_queuepolicy"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
   # rate_by - (required) is a type of string
@@ -37,6 +39,7 @@ module "fortios_switchcontrollerqos_queuepolicy" {
   cos_queue = [{
     description      = null
     drop_policy      = null
+    ecn              = null
     max_rate         = null
     max_rate_percent = null
     min_rate         = null
@@ -52,6 +55,12 @@ module "fortios_switchcontrollerqos_queuepolicy" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -73,6 +82,7 @@ variable "cos_queue" {
     {
       description      = string
       drop_policy      = string
+      ecn              = string
       max_rate         = number
       max_rate_percent = number
       min_rate         = number
@@ -91,15 +101,17 @@ variable "cos_queue" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_queuepolicy" "this" {
-  name     = var.name
-  rate_by  = var.rate_by
-  schedule = var.schedule
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  rate_by               = var.rate_by
+  schedule              = var.schedule
 
   dynamic "cos_queue" {
     for_each = var.cos_queue
     content {
       description      = cos_queue.value["description"]
       drop_policy      = cos_queue.value["drop_policy"]
+      ecn              = cos_queue.value["ecn"]
       max_rate         = cos_queue.value["max_rate"]
       max_rate_percent = cos_queue.value["max_rate_percent"]
       min_rate         = cos_queue.value["min_rate"]

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "azurerm_kusto_eventhub_data_connection" {
   data_format = null
   # database_name - (required) is a type of string
   database_name = null
+  # event_system_properties - (optional) is a type of list of string
+  event_system_properties = []
   # eventhub_id - (required) is a type of string
   eventhub_id = null
   # location - (required) is a type of string
@@ -91,6 +93,12 @@ variable "database_name" {
   type        = string
 }
 
+variable "event_system_properties" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "eventhub_id" {
   description = "(required)"
   type        = string
@@ -143,17 +151,18 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_kusto_eventhub_data_connection" "this" {
-  cluster_name        = var.cluster_name
-  compression         = var.compression
-  consumer_group      = var.consumer_group
-  data_format         = var.data_format
-  database_name       = var.database_name
-  eventhub_id         = var.eventhub_id
-  location            = var.location
-  mapping_rule_name   = var.mapping_rule_name
-  name                = var.name
-  resource_group_name = var.resource_group_name
-  table_name          = var.table_name
+  cluster_name            = var.cluster_name
+  compression             = var.compression
+  consumer_group          = var.consumer_group
+  data_format             = var.data_format
+  database_name           = var.database_name
+  event_system_properties = var.event_system_properties
+  eventhub_id             = var.eventhub_id
+  location                = var.location
+  mapping_rule_name       = var.mapping_rule_name
+  name                    = var.name
+  resource_group_name     = var.resource_group_name
+  table_name              = var.table_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -173,6 +182,11 @@ resource "azurerm_kusto_eventhub_data_connection" "this" {
 ### Outputs
 
 ```terraform
+output "event_system_properties" {
+  description = "returns a list of string"
+  value       = azurerm_kusto_eventhub_data_connection.this.event_system_properties
+}
+
 output "id" {
   description = "returns a string"
   value       = azurerm_kusto_eventhub_data_connection.this.id

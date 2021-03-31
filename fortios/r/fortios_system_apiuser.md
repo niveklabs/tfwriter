@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_system_apiuser" {
   comments = null
   # cors_allow_origin - (optional) is a type of string
   cors_allow_origin = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # peer_auth - (optional) is a type of string
@@ -80,6 +82,12 @@ variable "comments" {
 }
 
 variable "cors_allow_origin" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -139,14 +147,15 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_apiuser" "this" {
-  accprofile        = var.accprofile
-  api_key           = var.api_key
-  comments          = var.comments
-  cors_allow_origin = var.cors_allow_origin
-  name              = var.name
-  peer_auth         = var.peer_auth
-  peer_group        = var.peer_group
-  schedule          = var.schedule
+  accprofile            = var.accprofile
+  api_key               = var.api_key
+  comments              = var.comments
+  cors_allow_origin     = var.cors_allow_origin
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  peer_auth             = var.peer_auth
+  peer_group            = var.peer_group
+  schedule              = var.schedule
 
   dynamic "trusthost" {
     for_each = var.trusthost

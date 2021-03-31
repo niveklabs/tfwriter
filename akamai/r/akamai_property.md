@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -39,8 +39,6 @@ module "akamai_property" {
   group = null
   # group_id - (optional) is a type of string
   group_id = null
-  # hostnames - (optional) is a type of map of string
-  hostnames = {}
   # is_secure - (optional) is a type of bool
   is_secure = null
   # name - (required) is a type of string
@@ -55,6 +53,20 @@ module "akamai_property" {
   rules = null
   # variables - (optional) is a type of string
   variables = null
+
+  hostnames = [{
+    cert_provisioning_type = null
+    cert_status = [{
+      hostname          = null
+      production_status = null
+      staging_status    = null
+      target            = null
+    }]
+    cname_from       = null
+    cname_to         = null
+    cname_type       = null
+    edge_hostname_id = null
+  }]
 
   origin = [{
     cache_key_hostname    = null
@@ -108,12 +120,6 @@ variable "group_id" {
   default     = null
 }
 
-variable "hostnames" {
-  description = "(optional) - Mapping of edge hostname CNAMEs to other CNAMEs"
-  type        = map(string)
-  default     = null
-}
-
 variable "is_secure" {
   description = "(optional)"
   type        = bool
@@ -155,6 +161,28 @@ variable "variables" {
   default     = null
 }
 
+variable "hostnames" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      cert_provisioning_type = string
+      cert_status = list(object(
+        {
+          hostname          = string
+          production_status = string
+          staging_status    = string
+          target            = string
+        }
+      ))
+      cname_from       = string
+      cname_to         = string
+      cname_type       = string
+      edge_hostname_id = string
+    }
+  ))
+  default = []
+}
+
 variable "origin" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
@@ -183,7 +211,6 @@ resource "akamai_property" "this" {
   cp_code     = var.cp_code
   group       = var.group
   group_id    = var.group_id
-  hostnames   = var.hostnames
   is_secure   = var.is_secure
   name        = var.name
   product     = var.product
@@ -191,6 +218,23 @@ resource "akamai_property" "this" {
   rule_format = var.rule_format
   rules       = var.rules
   variables   = var.variables
+
+  dynamic "hostnames" {
+    for_each = var.hostnames
+    content {
+      cert_provisioning_type = hostnames.value["cert_provisioning_type"]
+      cname_from             = hostnames.value["cname_from"]
+      cname_to               = hostnames.value["cname_to"]
+      cname_type             = hostnames.value["cname_type"]
+
+      dynamic "cert_status" {
+        for_each = hostnames.value.cert_status
+        content {
+        }
+      }
+
+    }
+  }
 
   dynamic "origin" {
     for_each = var.origin

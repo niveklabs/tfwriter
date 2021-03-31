@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -79,6 +79,8 @@ module "fortios_router_bgp" {
   distance_internal = null
   # distance_local - (optional) is a type of number
   distance_local = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ebgp_multipath - (optional) is a type of string
   ebgp_multipath = null
   # enforce_first_as - (optional) is a type of string
@@ -105,8 +107,12 @@ module "fortios_router_bgp" {
   keepalive_timer = null
   # log_neighbour_changes - (optional) is a type of string
   log_neighbour_changes = null
+  # multipath_recursive_distance - (optional) is a type of string
+  multipath_recursive_distance = null
   # network_import_check - (optional) is a type of string
   network_import_check = null
+  # recursive_next_hop - (optional) is a type of string
+  recursive_next_hop = null
   # router_id - (optional) is a type of string
   router_id = null
   # scan_time - (optional) is a type of number
@@ -200,6 +206,8 @@ module "fortios_router_bgp" {
     maximum_prefix_warning_only6 = null
     next_hop_self                = null
     next_hop_self6               = null
+    next_hop_self_rr             = null
+    next_hop_self_rr6            = null
     override_capability          = null
     passive                      = null
     password                     = null
@@ -216,6 +224,8 @@ module "fortios_router_bgp" {
     route_map_in6                = null
     route_map_out                = null
     route_map_out6               = null
+    route_map_out6_preferable    = null
+    route_map_out_preferable     = null
     route_reflector_client       = null
     route_reflector_client6      = null
     route_server_client          = null
@@ -289,6 +299,8 @@ module "fortios_router_bgp" {
     name                          = null
     next_hop_self                 = null
     next_hop_self6                = null
+    next_hop_self_rr              = null
+    next_hop_self_rr6             = null
     override_capability           = null
     passive                       = null
     prefix_list_in                = null
@@ -304,6 +316,8 @@ module "fortios_router_bgp" {
     route_map_in6                 = null
     route_map_out                 = null
     route_map_out6                = null
+    route_map_out6_preferable     = null
+    route_map_out_preferable      = null
     route_reflector_client        = null
     route_reflector_client6       = null
     route_server_client           = null
@@ -359,6 +373,15 @@ module "fortios_router_bgp" {
     name      = null
     route_map = null
     status    = null
+  }]
+
+  vrf_leak = [{
+    target = [{
+      interface = null
+      route_map = null
+      vrf       = null
+    }]
+    vrf = null
   }]
 }
 ```
@@ -523,6 +546,12 @@ variable "distance_local" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ebgp_multipath" {
   description = "(optional)"
   type        = string
@@ -601,7 +630,19 @@ variable "log_neighbour_changes" {
   default     = null
 }
 
+variable "multipath_recursive_distance" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "network_import_check" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "recursive_next_hop" {
   description = "(optional)"
   type        = string
   default     = null
@@ -740,6 +781,8 @@ variable "neighbor" {
       maximum_prefix_warning_only6 = string
       next_hop_self                = string
       next_hop_self6               = string
+      next_hop_self_rr             = string
+      next_hop_self_rr6            = string
       override_capability          = string
       passive                      = string
       password                     = string
@@ -756,6 +799,8 @@ variable "neighbor" {
       route_map_in6                = string
       route_map_out                = string
       route_map_out6               = string
+      route_map_out6_preferable    = string
+      route_map_out_preferable     = string
       route_reflector_client       = string
       route_reflector_client6      = string
       route_server_client          = string
@@ -835,6 +880,8 @@ variable "neighbor_group" {
       name                          = string
       next_hop_self                 = string
       next_hop_self6                = string
+      next_hop_self_rr              = string
+      next_hop_self_rr6             = string
       override_capability           = string
       passive                       = string
       prefix_list_in                = string
@@ -850,6 +897,8 @@ variable "neighbor_group" {
       route_map_in6                 = string
       route_map_out                 = string
       route_map_out6                = string
+      route_map_out6_preferable     = string
+      route_map_out_preferable      = string
       route_reflector_client        = string
       route_reflector_client6       = string
       route_server_client           = string
@@ -945,6 +994,23 @@ variable "redistribute6" {
   ))
   default = []
 }
+
+variable "vrf_leak" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      target = list(object(
+        {
+          interface = string
+          route_map = string
+          vrf       = string
+        }
+      ))
+      vrf = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -979,6 +1045,7 @@ resource "fortios_router_bgp" "this" {
   distance_external                  = var.distance_external
   distance_internal                  = var.distance_internal
   distance_local                     = var.distance_local
+  dynamic_sort_subtable              = var.dynamic_sort_subtable
   ebgp_multipath                     = var.ebgp_multipath
   enforce_first_as                   = var.enforce_first_as
   fast_external_failover             = var.fast_external_failover
@@ -992,7 +1059,9 @@ resource "fortios_router_bgp" "this" {
   ignore_optional_capability         = var.ignore_optional_capability
   keepalive_timer                    = var.keepalive_timer
   log_neighbour_changes              = var.log_neighbour_changes
+  multipath_recursive_distance       = var.multipath_recursive_distance
   network_import_check               = var.network_import_check
+  recursive_next_hop                 = var.recursive_next_hop
   router_id                          = var.router_id
   scan_time                          = var.scan_time
   synchronization                    = var.synchronization
@@ -1092,6 +1161,8 @@ resource "fortios_router_bgp" "this" {
       maximum_prefix_warning_only6  = neighbor.value["maximum_prefix_warning_only6"]
       next_hop_self                 = neighbor.value["next_hop_self"]
       next_hop_self6                = neighbor.value["next_hop_self6"]
+      next_hop_self_rr              = neighbor.value["next_hop_self_rr"]
+      next_hop_self_rr6             = neighbor.value["next_hop_self_rr6"]
       override_capability           = neighbor.value["override_capability"]
       passive                       = neighbor.value["passive"]
       password                      = neighbor.value["password"]
@@ -1108,6 +1179,8 @@ resource "fortios_router_bgp" "this" {
       route_map_in6                 = neighbor.value["route_map_in6"]
       route_map_out                 = neighbor.value["route_map_out"]
       route_map_out6                = neighbor.value["route_map_out6"]
+      route_map_out6_preferable     = neighbor.value["route_map_out6_preferable"]
+      route_map_out_preferable      = neighbor.value["route_map_out_preferable"]
       route_reflector_client        = neighbor.value["route_reflector_client"]
       route_reflector_client6       = neighbor.value["route_reflector_client6"]
       route_server_client           = neighbor.value["route_server_client"]
@@ -1194,6 +1267,8 @@ resource "fortios_router_bgp" "this" {
       name                          = neighbor_group.value["name"]
       next_hop_self                 = neighbor_group.value["next_hop_self"]
       next_hop_self6                = neighbor_group.value["next_hop_self6"]
+      next_hop_self_rr              = neighbor_group.value["next_hop_self_rr"]
+      next_hop_self_rr6             = neighbor_group.value["next_hop_self_rr6"]
       override_capability           = neighbor_group.value["override_capability"]
       passive                       = neighbor_group.value["passive"]
       prefix_list_in                = neighbor_group.value["prefix_list_in"]
@@ -1209,6 +1284,8 @@ resource "fortios_router_bgp" "this" {
       route_map_in6                 = neighbor_group.value["route_map_in6"]
       route_map_out                 = neighbor_group.value["route_map_out"]
       route_map_out6                = neighbor_group.value["route_map_out6"]
+      route_map_out6_preferable     = neighbor_group.value["route_map_out6_preferable"]
+      route_map_out_preferable      = neighbor_group.value["route_map_out_preferable"]
       route_reflector_client        = neighbor_group.value["route_reflector_client"]
       route_reflector_client6       = neighbor_group.value["route_reflector_client6"]
       route_server_client           = neighbor_group.value["route_server_client"]
@@ -1282,6 +1359,23 @@ resource "fortios_router_bgp" "this" {
       name      = redistribute6.value["name"]
       route_map = redistribute6.value["route_map"]
       status    = redistribute6.value["status"]
+    }
+  }
+
+  dynamic "vrf_leak" {
+    for_each = var.vrf_leak
+    content {
+      vrf = vrf_leak.value["vrf"]
+
+      dynamic "target" {
+        for_each = vrf_leak.value.target
+        content {
+          interface = target.value["interface"]
+          route_map = target.value["route_map"]
+          vrf       = target.value["vrf"]
+        }
+      }
+
     }
   }
 
@@ -1488,9 +1582,19 @@ output "log_neighbour_changes" {
   value       = fortios_router_bgp.this.log_neighbour_changes
 }
 
+output "multipath_recursive_distance" {
+  description = "returns a string"
+  value       = fortios_router_bgp.this.multipath_recursive_distance
+}
+
 output "network_import_check" {
   description = "returns a string"
   value       = fortios_router_bgp.this.network_import_check
+}
+
+output "recursive_next_hop" {
+  description = "returns a string"
+  value       = fortios_router_bgp.this.recursive_next_hop
 }
 
 output "router_id" {

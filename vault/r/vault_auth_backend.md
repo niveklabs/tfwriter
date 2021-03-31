@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    vault = ">= 2.17.0"
+    vault = ">= 2.19.0"
   }
 }
 ```

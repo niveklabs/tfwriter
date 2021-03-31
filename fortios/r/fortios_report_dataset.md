@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_report_dataset" {
   source = "./modules/fortios/r/fortios_report_dataset"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
   # policy - (optional) is a type of number
@@ -55,6 +57,12 @@ module "fortios_report_dataset" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -105,9 +113,10 @@ variable "parameters" {
 
 ```terraform
 resource "fortios_report_dataset" "this" {
-  name   = var.name
-  policy = var.policy
-  query  = var.query
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
+  policy                = var.policy
+  query                 = var.query
 
   dynamic "field" {
     for_each = var.field

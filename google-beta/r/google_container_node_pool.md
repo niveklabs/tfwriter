@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -62,6 +62,9 @@ module "google_container_node_pool" {
     boot_disk_kms_key = null
     disk_size_gb      = null
     disk_type         = null
+    ephemeral_storage_config = [{
+      local_ssd_count = null
+    }]
     guest_accelerator = [{
       count = null
       type  = null
@@ -207,6 +210,11 @@ variable "node_config" {
       boot_disk_kms_key = string
       disk_size_gb      = number
       disk_type         = string
+      ephemeral_storage_config = list(object(
+        {
+          local_ssd_count = number
+        }
+      ))
       guest_accelerator = list(object(
         {
           count = number
@@ -339,6 +347,13 @@ resource "google_container_node_pool" "this" {
       tags              = node_config.value["tags"]
       taint             = node_config.value["taint"]
 
+      dynamic "ephemeral_storage_config" {
+        for_each = node_config.value.ephemeral_storage_config
+        content {
+          local_ssd_count = ephemeral_storage_config.value["local_ssd_count"]
+        }
+      }
+
       dynamic "kubelet_config" {
         for_each = node_config.value.kubelet_config
         content {
@@ -448,6 +463,11 @@ output "node_count" {
 output "node_locations" {
   description = "returns a set of string"
   value       = google_container_node_pool.this.node_locations
+}
+
+output "operation" {
+  description = "returns a string"
+  value       = google_container_node_pool.this.operation
 }
 
 output "project" {

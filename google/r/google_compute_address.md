@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -94,7 +94,7 @@ variable "project" {
 }
 
 variable "purpose" {
-  description = "(optional) - The purpose of this resource, which can be one of the following values:\n\n* GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.\n\nThis should only be set when using an Internal address. Possible values: [\"GCE_ENDPOINT\"]"
+  description = "(optional) - The purpose of this resource, which can be one of the following values:\n\n* GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.\n\n* SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.\n\n* VPC_PEERING for addresses that are reserved for VPC peer networks.\n\nThis should only be set when using an Internal address. Possible values: [\"GCE_ENDPOINT\", \"VPC_PEERING\", \"SHARED_LOADBALANCER_VIP\"]"
   type        = string
   default     = null
 }

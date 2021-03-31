@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -41,6 +41,10 @@ module "alicloud_alikafka_topic" {
   tags = {}
   # topic - (required) is a type of string
   topic = null
+
+  timeouts = [{
+    create = null
+  }]
 }
 ```
 
@@ -87,6 +91,16 @@ variable "topic" {
   description = "(required)"
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -102,6 +116,14 @@ resource "alicloud_alikafka_topic" "this" {
   remark        = var.remark
   tags          = var.tags
   topic         = var.topic
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+    }
+  }
+
 }
 ```
 

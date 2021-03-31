@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_system_objecttagging" {
   color = null
   # device - (optional) is a type of string
   device = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # interface - (optional) is a type of string
   interface = null
   # multiple - (optional) is a type of string
@@ -75,6 +77,12 @@ variable "device" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "interface" {
   description = "(optional)"
   type        = string
@@ -104,12 +112,13 @@ variable "tags" {
 
 ```terraform
 resource "fortios_system_objecttagging" "this" {
-  address   = var.address
-  category  = var.category
-  color     = var.color
-  device    = var.device
-  interface = var.interface
-  multiple  = var.multiple
+  address               = var.address
+  category              = var.category
+  color                 = var.color
+  device                = var.device
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  interface             = var.interface
+  multiple              = var.multiple
 
   dynamic "tags" {
     for_each = var.tags

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -37,6 +37,10 @@ module "fortios_vpnipsec_phase2" {
   dhcp_ipsec = null
   # dhgrp - (optional) is a type of string
   dhgrp = null
+  # diffserv - (optional) is a type of string
+  diffserv = null
+  # diffservcode - (optional) is a type of string
+  diffservcode = null
   # dst_addr_type - (optional) is a type of string
   dst_addr_type = null
   # dst_end_ip - (optional) is a type of string
@@ -59,6 +63,10 @@ module "fortios_vpnipsec_phase2" {
   dst_subnet6 = null
   # encapsulation - (optional) is a type of string
   encapsulation = null
+  # initiator_ts_narrow - (optional) is a type of string
+  initiator_ts_narrow = null
+  # ipv4_df - (optional) is a type of string
+  ipv4_df = null
   # keepalive - (optional) is a type of string
   keepalive = null
   # keylife_type - (optional) is a type of string
@@ -147,6 +155,18 @@ variable "dhgrp" {
   default     = null
 }
 
+variable "diffserv" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "diffservcode" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dst_addr_type" {
   description = "(optional)"
   type        = string
@@ -208,6 +228,18 @@ variable "dst_subnet6" {
 }
 
 variable "encapsulation" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "initiator_ts_narrow" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ipv4_df" {
   description = "(optional)"
   type        = string
   default     = null
@@ -368,47 +400,51 @@ variable "use_natip" {
 
 ```terraform
 resource "fortios_vpnipsec_phase2" "this" {
-  add_route      = var.add_route
-  auto_negotiate = var.auto_negotiate
-  comments       = var.comments
-  dhcp_ipsec     = var.dhcp_ipsec
-  dhgrp          = var.dhgrp
-  dst_addr_type  = var.dst_addr_type
-  dst_end_ip     = var.dst_end_ip
-  dst_end_ip6    = var.dst_end_ip6
-  dst_name       = var.dst_name
-  dst_name6      = var.dst_name6
-  dst_port       = var.dst_port
-  dst_start_ip   = var.dst_start_ip
-  dst_start_ip6  = var.dst_start_ip6
-  dst_subnet     = var.dst_subnet
-  dst_subnet6    = var.dst_subnet6
-  encapsulation  = var.encapsulation
-  keepalive      = var.keepalive
-  keylife_type   = var.keylife_type
-  keylifekbs     = var.keylifekbs
-  keylifeseconds = var.keylifeseconds
-  l2tp           = var.l2tp
-  name           = var.name
-  pfs            = var.pfs
-  phase1name     = var.phase1name
-  proposal       = var.proposal
-  protocol       = var.protocol
-  replay         = var.replay
-  route_overlap  = var.route_overlap
-  selector_match = var.selector_match
-  single_source  = var.single_source
-  src_addr_type  = var.src_addr_type
-  src_end_ip     = var.src_end_ip
-  src_end_ip6    = var.src_end_ip6
-  src_name       = var.src_name
-  src_name6      = var.src_name6
-  src_port       = var.src_port
-  src_start_ip   = var.src_start_ip
-  src_start_ip6  = var.src_start_ip6
-  src_subnet     = var.src_subnet
-  src_subnet6    = var.src_subnet6
-  use_natip      = var.use_natip
+  add_route           = var.add_route
+  auto_negotiate      = var.auto_negotiate
+  comments            = var.comments
+  dhcp_ipsec          = var.dhcp_ipsec
+  dhgrp               = var.dhgrp
+  diffserv            = var.diffserv
+  diffservcode        = var.diffservcode
+  dst_addr_type       = var.dst_addr_type
+  dst_end_ip          = var.dst_end_ip
+  dst_end_ip6         = var.dst_end_ip6
+  dst_name            = var.dst_name
+  dst_name6           = var.dst_name6
+  dst_port            = var.dst_port
+  dst_start_ip        = var.dst_start_ip
+  dst_start_ip6       = var.dst_start_ip6
+  dst_subnet          = var.dst_subnet
+  dst_subnet6         = var.dst_subnet6
+  encapsulation       = var.encapsulation
+  initiator_ts_narrow = var.initiator_ts_narrow
+  ipv4_df             = var.ipv4_df
+  keepalive           = var.keepalive
+  keylife_type        = var.keylife_type
+  keylifekbs          = var.keylifekbs
+  keylifeseconds      = var.keylifeseconds
+  l2tp                = var.l2tp
+  name                = var.name
+  pfs                 = var.pfs
+  phase1name          = var.phase1name
+  proposal            = var.proposal
+  protocol            = var.protocol
+  replay              = var.replay
+  route_overlap       = var.route_overlap
+  selector_match      = var.selector_match
+  single_source       = var.single_source
+  src_addr_type       = var.src_addr_type
+  src_end_ip          = var.src_end_ip
+  src_end_ip6         = var.src_end_ip6
+  src_name            = var.src_name
+  src_name6           = var.src_name6
+  src_port            = var.src_port
+  src_start_ip        = var.src_start_ip
+  src_start_ip6       = var.src_start_ip6
+  src_subnet          = var.src_subnet
+  src_subnet6         = var.src_subnet6
+  use_natip           = var.use_natip
 }
 ```
 
@@ -435,6 +471,16 @@ output "dhcp_ipsec" {
 output "dhgrp" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase2.this.dhgrp
+}
+
+output "diffserv" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2.this.diffserv
+}
+
+output "diffservcode" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2.this.diffservcode
 }
 
 output "dst_addr_type" {
@@ -495,6 +541,16 @@ output "encapsulation" {
 output "id" {
   description = "returns a string"
   value       = fortios_vpnipsec_phase2.this.id
+}
+
+output "initiator_ts_narrow" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2.this.initiator_ts_narrow
+}
+
+output "ipv4_df" {
+  description = "returns a string"
+  value       = fortios_vpnipsec_phase2.this.ipv4_df
 }
 
 output "keepalive" {

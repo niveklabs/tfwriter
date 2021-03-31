@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -84,6 +84,11 @@ output "cpe_ip" {
 output "display_name" {
   description = "returns a string"
   value       = data.oci_core_ipsec_connection_tunnel.this.display_name
+}
+
+output "encryption_domain_config" {
+  description = "returns a list of object"
+  value       = data.oci_core_ipsec_connection_tunnel.this.encryption_domain_config
 }
 
 output "id" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -39,7 +39,7 @@ module "google_compute_per_instance_config" {
   project = null
   # remove_instance_state_on_destroy - (optional) is a type of bool
   remove_instance_state_on_destroy = null
-  # zone - (required) is a type of string
+  # zone - (optional) is a type of string
   zone = null
 
   preserved_state = [{
@@ -100,8 +100,9 @@ variable "remove_instance_state_on_destroy" {
 }
 
 variable "zone" {
-  description = "(required) - Zone where the containing instance group manager is located"
+  description = "(optional) - Zone where the containing instance group manager is located"
   type        = string
+  default     = null
 }
 
 variable "preserved_state" {

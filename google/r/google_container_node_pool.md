@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -394,6 +394,11 @@ output "node_count" {
 output "node_locations" {
   description = "returns a set of string"
   value       = google_container_node_pool.this.node_locations
+}
+
+output "operation" {
+  description = "returns a string"
+  value       = google_container_node_pool.this.operation
 }
 
 output "project" {

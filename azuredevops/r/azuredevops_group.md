@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```

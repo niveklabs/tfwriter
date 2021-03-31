@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -565,6 +565,11 @@ output "job_type" {
 output "project" {
   description = "returns a string"
   value       = google_bigquery_job.this.project
+}
+
+output "status" {
+  description = "returns a list of object"
+  value       = google_bigquery_job.this.status
 }
 
 output "user_email" {

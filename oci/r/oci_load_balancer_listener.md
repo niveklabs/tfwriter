@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "oci_load_balancer_listener" {
   port = null
   # protocol - (required) is a type of string
   protocol = null
+  # routing_policy_name - (optional) is a type of string
+  routing_policy_name = null
   # rule_set_names - (optional) is a type of list of string
   rule_set_names = []
 
@@ -108,6 +110,12 @@ variable "protocol" {
   type        = string
 }
 
+variable "routing_policy_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "rule_set_names" {
   description = "(optional)"
   type        = list(string)
@@ -166,6 +174,7 @@ resource "oci_load_balancer_listener" "this" {
   path_route_set_name      = var.path_route_set_name
   port                     = var.port
   protocol                 = var.protocol
+  routing_policy_name      = var.routing_policy_name
   rule_set_names           = var.rule_set_names
 
   dynamic "connection_configuration" {
@@ -218,6 +227,11 @@ output "id" {
 output "path_route_set_name" {
   description = "returns a string"
   value       = oci_load_balancer_listener.this.path_route_set_name
+}
+
+output "routing_policy_name" {
+  description = "returns a string"
+  value       = oci_load_balancer_listener.this.routing_policy_name
 }
 
 output "rule_set_names" {

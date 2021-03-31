@@ -12,7 +12,7 @@
 
 ```terraform
 provider "alicloud" {
-  version = "1.111.0"
+  version = "1.119.1"
 
   # access_key - (optional) is a type of string
   access_key = null
@@ -71,6 +71,8 @@ provider "alicloud" {
     alikafka = null
     # apigateway - (optional) is a type of string
     apigateway = null
+    # brain_industrial - (optional) is a type of string
+    brain_industrial = null
     # bssopenapi - (optional) is a type of string
     bssopenapi = null
     # cas - (optional) is a type of string
@@ -111,6 +113,8 @@ provider "alicloud" {
     eci = null
     # ecs - (optional) is a type of string
     ecs = null
+    # eipanycast - (optional) is a type of string
+    eipanycast = null
     # elasticsearch - (optional) is a type of string
     elasticsearch = null
     # emr - (optional) is a type of string
@@ -125,6 +129,10 @@ provider "alicloud" {
     ga = null
     # gpdb - (optional) is a type of string
     gpdb = null
+    # hitsdb - (optional) is a type of string
+    hitsdb = null
+    # ims - (optional) is a type of string
+    ims = null
     # kms - (optional) is a type of string
     kms = null
     # kvstore - (optional) is a type of string
@@ -157,6 +165,8 @@ provider "alicloud" {
     privatelink = null
     # pvtz - (optional) is a type of string
     pvtz = null
+    # quotas - (optional) is a type of string
+    quotas = null
     # r_kvstore - (optional) is a type of string
     r_kvstore = null
     # ram - (optional) is a type of string
@@ -169,6 +179,8 @@ provider "alicloud" {
     resourcesharing = null
     # ros - (optional) is a type of string
     ros = null
+    # sgw - (optional) is a type of string
+    sgw = null
     # slb - (optional) is a type of string
     slb = null
     # sts - (optional) is a type of string
@@ -230,6 +242,12 @@ provider "alicloud" {
 
 - [alicloud_auto_provisioning_group](./r/alicloud_auto_provisioning_group.md)
 
+- [alicloud_brain_industrial_pid_loop](./r/alicloud_brain_industrial_pid_loop.md)
+
+- [alicloud_brain_industrial_pid_organization](./r/alicloud_brain_industrial_pid_organization.md)
+
+- [alicloud_brain_industrial_pid_project](./r/alicloud_brain_industrial_pid_project.md)
+
 - [alicloud_cas_certificate](./r/alicloud_cas_certificate.md)
 
 - [alicloud_cassandra_cluster](./r/alicloud_cassandra_cluster.md)
@@ -272,6 +290,8 @@ provider "alicloud" {
 
 - [alicloud_cloud_connect_network_grant](./r/alicloud_cloud_connect_network_grant.md)
 
+- [alicloud_cloud_storage_gateway_storage_bundle](./r/alicloud_cloud_storage_gateway_storage_bundle.md)
+
 - [alicloud_cms_alarm](./r/alicloud_cms_alarm.md)
 
 - [alicloud_cms_alarm_contact](./r/alicloud_cms_alarm_contact.md)
@@ -279,6 +299,10 @@ provider "alicloud" {
 - [alicloud_cms_alarm_contact_group](./r/alicloud_cms_alarm_contact_group.md)
 
 - [alicloud_cms_group_metric_rule](./r/alicloud_cms_group_metric_rule.md)
+
+- [alicloud_cms_monitor_group](./r/alicloud_cms_monitor_group.md)
+
+- [alicloud_cms_monitor_group_instances](./r/alicloud_cms_monitor_group_instances.md)
 
 - [alicloud_cms_site_monitor](./r/alicloud_cms_site_monitor.md)
 
@@ -380,7 +404,13 @@ provider "alicloud" {
 
 - [alicloud_eci_openapi_image_cache](./r/alicloud_eci_openapi_image_cache.md)
 
+- [alicloud_ecs_auto_snapshot_policy](./r/alicloud_ecs_auto_snapshot_policy.md)
+
+- [alicloud_ecs_command](./r/alicloud_ecs_command.md)
+
 - [alicloud_ecs_dedicated_host](./r/alicloud_ecs_dedicated_host.md)
+
+- [alicloud_ecs_hpc_cluster](./r/alicloud_ecs_hpc_cluster.md)
 
 - [alicloud_edas_application](./r/alicloud_edas_application.md)
 
@@ -403,6 +433,10 @@ provider "alicloud" {
 - [alicloud_eip](./r/alicloud_eip.md)
 
 - [alicloud_eip_association](./r/alicloud_eip_association.md)
+
+- [alicloud_eipanycast_anycast_eip_address](./r/alicloud_eipanycast_anycast_eip_address.md)
+
+- [alicloud_eipanycast_anycast_eip_address_attachment](./r/alicloud_eipanycast_anycast_eip_address_attachment.md)
 
 - [alicloud_elasticsearch_instance](./r/alicloud_elasticsearch_instance.md)
 
@@ -447,6 +481,14 @@ provider "alicloud" {
 - [alicloud_forward_entry](./r/alicloud_forward_entry.md)
 
 - [alicloud_ga_accelerator](./r/alicloud_ga_accelerator.md)
+
+- [alicloud_ga_bandwidth_package](./r/alicloud_ga_bandwidth_package.md)
+
+- [alicloud_ga_bandwidth_package_attachment](./r/alicloud_ga_bandwidth_package_attachment.md)
+
+- [alicloud_ga_endpoint_group](./r/alicloud_ga_endpoint_group.md)
+
+- [alicloud_ga_ip_set](./r/alicloud_ga_ip_set.md)
 
 - [alicloud_ga_listener](./r/alicloud_ga_listener.md)
 
@@ -602,6 +644,12 @@ provider "alicloud" {
 
 - [alicloud_pvtz_zone_record](./r/alicloud_pvtz_zone_record.md)
 
+- [alicloud_quotas_application_info](./r/alicloud_quotas_application_info.md)
+
+- [alicloud_quotas_quota_alarm](./r/alicloud_quotas_quota_alarm.md)
+
+- [alicloud_quotas_quota_application](./r/alicloud_quotas_quota_application.md)
+
 - [alicloud_ram_access_key](./r/alicloud_ram_access_key.md)
 
 - [alicloud_ram_account_alias](./r/alicloud_ram_account_alias.md)
@@ -626,9 +674,13 @@ provider "alicloud" {
 
 - [alicloud_ram_role_policy_attachment](./r/alicloud_ram_role_policy_attachment.md)
 
+- [alicloud_ram_saml_provider](./r/alicloud_ram_saml_provider.md)
+
 - [alicloud_ram_user](./r/alicloud_ram_user.md)
 
 - [alicloud_ram_user_policy_attachment](./r/alicloud_ram_user_policy_attachment.md)
+
+- [alicloud_rds_parameter_group](./r/alicloud_rds_parameter_group.md)
 
 - [alicloud_reserved_instance](./r/alicloud_reserved_instance.md)
 
@@ -728,7 +780,11 @@ provider "alicloud" {
 
 - [alicloud_subnet](./r/alicloud_subnet.md)
 
+- [alicloud_tsdb_instance](./r/alicloud_tsdb_instance.md)
+
 - [alicloud_vpc](./r/alicloud_vpc.md)
+
+- [alicloud_vpc_flow_log](./r/alicloud_vpc_flow_log.md)
 
 - [alicloud_vpn_connection](./r/alicloud_vpn_connection.md)
 
@@ -755,6 +811,8 @@ provider "alicloud" {
 
 
 - [alicloud_account](./d/alicloud_account.md)
+
+- [alicloud_ack_service](./d/alicloud_ack_service.md)
 
 - [alicloud_actiontrail_trails](./d/alicloud_actiontrail_trails.md)
 
@@ -789,6 +847,14 @@ provider "alicloud" {
 - [alicloud_api_gateway_groups](./d/alicloud_api_gateway_groups.md)
 
 - [alicloud_api_gateway_service](./d/alicloud_api_gateway_service.md)
+
+- [alicloud_brain_industrial_pid_loops](./d/alicloud_brain_industrial_pid_loops.md)
+
+- [alicloud_brain_industrial_pid_organizations](./d/alicloud_brain_industrial_pid_organizations.md)
+
+- [alicloud_brain_industrial_pid_projects](./d/alicloud_brain_industrial_pid_projects.md)
+
+- [alicloud_brain_industrial_service](./d/alicloud_brain_industrial_service.md)
 
 - [alicloud_caller_identity](./d/alicloud_caller_identity.md)
 
@@ -826,11 +892,21 @@ provider "alicloud" {
 
 - [alicloud_cloud_connect_networks](./d/alicloud_cloud_connect_networks.md)
 
+- [alicloud_cloud_storage_gateway_service](./d/alicloud_cloud_storage_gateway_service.md)
+
+- [alicloud_cloud_storage_gateway_storage_bundles](./d/alicloud_cloud_storage_gateway_storage_bundles.md)
+
 - [alicloud_cms_alarm_contact_groups](./d/alicloud_cms_alarm_contact_groups.md)
 
 - [alicloud_cms_alarm_contacts](./d/alicloud_cms_alarm_contacts.md)
 
 - [alicloud_cms_group_metric_rules](./d/alicloud_cms_group_metric_rules.md)
+
+- [alicloud_cms_monitor_group_instances](./d/alicloud_cms_monitor_group_instances.md)
+
+- [alicloud_cms_monitor_group_instanceses](./d/alicloud_cms_monitor_group_instanceses.md)
+
+- [alicloud_cms_monitor_groups](./d/alicloud_cms_monitor_groups.md)
 
 - [alicloud_cms_service](./d/alicloud_cms_service.md)
 
@@ -854,6 +930,8 @@ provider "alicloud" {
 
 - [alicloud_cr_repos](./d/alicloud_cr_repos.md)
 
+- [alicloud_cr_service](./d/alicloud_cr_service.md)
+
 - [alicloud_cs_edge_kubernetes_clusters](./d/alicloud_cs_edge_kubernetes_clusters.md)
 
 - [alicloud_cs_kubernetes_clusters](./d/alicloud_cs_kubernetes_clusters.md)
@@ -863,6 +941,8 @@ provider "alicloud" {
 - [alicloud_cs_serverless_kubernetes_clusters](./d/alicloud_cs_serverless_kubernetes_clusters.md)
 
 - [alicloud_datahub_service](./d/alicloud_datahub_service.md)
+
+- [alicloud_dataworks_service](./d/alicloud_dataworks_service.md)
 
 - [alicloud_db_instance_classes](./d/alicloud_db_instance_classes.md)
 
@@ -908,7 +988,13 @@ provider "alicloud" {
 
 - [alicloud_eci_image_caches](./d/alicloud_eci_image_caches.md)
 
+- [alicloud_ecs_auto_snapshot_policies](./d/alicloud_ecs_auto_snapshot_policies.md)
+
+- [alicloud_ecs_commands](./d/alicloud_ecs_commands.md)
+
 - [alicloud_ecs_dedicated_hosts](./d/alicloud_ecs_dedicated_hosts.md)
+
+- [alicloud_ecs_hpc_clusters](./d/alicloud_ecs_hpc_clusters.md)
 
 - [alicloud_edas_applications](./d/alicloud_edas_applications.md)
 
@@ -917,6 +1003,8 @@ provider "alicloud" {
 - [alicloud_edas_deploy_groups](./d/alicloud_edas_deploy_groups.md)
 
 - [alicloud_edas_service](./d/alicloud_edas_service.md)
+
+- [alicloud_eipanycast_anycast_eip_addresses](./d/alicloud_eipanycast_anycast_eip_addresses.md)
 
 - [alicloud_eips](./d/alicloud_eips.md)
 
@@ -950,6 +1038,8 @@ provider "alicloud" {
 
 - [alicloud_fc_functions](./d/alicloud_fc_functions.md)
 
+- [alicloud_fc_service](./d/alicloud_fc_service.md)
+
 - [alicloud_fc_services](./d/alicloud_fc_services.md)
 
 - [alicloud_fc_triggers](./d/alicloud_fc_triggers.md)
@@ -962,9 +1052,17 @@ provider "alicloud" {
 
 - [alicloud_fnf_schedules](./d/alicloud_fnf_schedules.md)
 
+- [alicloud_fnf_service](./d/alicloud_fnf_service.md)
+
 - [alicloud_forward_entries](./d/alicloud_forward_entries.md)
 
 - [alicloud_ga_accelerators](./d/alicloud_ga_accelerators.md)
+
+- [alicloud_ga_bandwidth_packages](./d/alicloud_ga_bandwidth_packages.md)
+
+- [alicloud_ga_endpoint_groups](./d/alicloud_ga_endpoint_groups.md)
+
+- [alicloud_ga_ip_sets](./d/alicloud_ga_ip_sets.md)
 
 - [alicloud_ga_listeners](./d/alicloud_ga_listeners.md)
 
@@ -985,6 +1083,8 @@ provider "alicloud" {
 - [alicloud_instance_types](./d/alicloud_instance_types.md)
 
 - [alicloud_instances](./d/alicloud_instances.md)
+
+- [alicloud_iot_service](./d/alicloud_iot_service.md)
 
 - [alicloud_key_pairs](./d/alicloud_key_pairs.md)
 
@@ -1022,7 +1122,11 @@ provider "alicloud" {
 
 - [alicloud_market_products](./d/alicloud_market_products.md)
 
+- [alicloud_maxcompute_service](./d/alicloud_maxcompute_service.md)
+
 - [alicloud_mns_queues](./d/alicloud_mns_queues.md)
+
+- [alicloud_mns_service](./d/alicloud_mns_service.md)
 
 - [alicloud_mns_topic_subscriptions](./d/alicloud_mns_topic_subscriptions.md)
 
@@ -1090,6 +1194,8 @@ provider "alicloud" {
 
 - [alicloud_polardb_zones](./d/alicloud_polardb_zones.md)
 
+- [alicloud_privatelink_service](./d/alicloud_privatelink_service.md)
+
 - [alicloud_privatelink_vpc_endpoint_connections](./d/alicloud_privatelink_vpc_endpoint_connections.md)
 
 - [alicloud_privatelink_vpc_endpoint_service_resources](./d/alicloud_privatelink_vpc_endpoint_service_resources.md)
@@ -1102,9 +1208,19 @@ provider "alicloud" {
 
 - [alicloud_privatelink_vpc_endpoints](./d/alicloud_privatelink_vpc_endpoints.md)
 
+- [alicloud_pvtz_service](./d/alicloud_pvtz_service.md)
+
 - [alicloud_pvtz_zone_records](./d/alicloud_pvtz_zone_records.md)
 
 - [alicloud_pvtz_zones](./d/alicloud_pvtz_zones.md)
+
+- [alicloud_quotas_application_infos](./d/alicloud_quotas_application_infos.md)
+
+- [alicloud_quotas_quota_alarms](./d/alicloud_quotas_quota_alarms.md)
+
+- [alicloud_quotas_quota_applications](./d/alicloud_quotas_quota_applications.md)
+
+- [alicloud_quotas_quotas](./d/alicloud_quotas_quotas.md)
 
 - [alicloud_ram_account_alias](./d/alicloud_ram_account_alias.md)
 
@@ -1116,7 +1232,11 @@ provider "alicloud" {
 
 - [alicloud_ram_roles](./d/alicloud_ram_roles.md)
 
+- [alicloud_ram_saml_providers](./d/alicloud_ram_saml_providers.md)
+
 - [alicloud_ram_users](./d/alicloud_ram_users.md)
+
+- [alicloud_rds_parameter_groups](./d/alicloud_rds_parameter_groups.md)
 
 - [alicloud_regions](./d/alicloud_regions.md)
 
@@ -1196,6 +1316,10 @@ provider "alicloud" {
 
 - [alicloud_ssl_vpn_servers](./d/alicloud_ssl_vpn_servers.md)
 
+- [alicloud_tsdb_instances](./d/alicloud_tsdb_instances.md)
+
+- [alicloud_tsdb_zones](./d/alicloud_tsdb_zones.md)
+
 - [alicloud_vpcs](./d/alicloud_vpcs.md)
 
 - [alicloud_vpn_connections](./d/alicloud_vpn_connections.md)
@@ -1203,6 +1327,8 @@ provider "alicloud" {
 - [alicloud_vpn_customer_gateways](./d/alicloud_vpn_customer_gateways.md)
 
 - [alicloud_vpn_gateways](./d/alicloud_vpn_gateways.md)
+
+- [alicloud_vs_service](./d/alicloud_vs_service.md)
 
 - [alicloud_vswitches](./d/alicloud_vswitches.md)
 

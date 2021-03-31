@@ -12,7 +12,7 @@
 
 ```terraform
 provider "azurerm" {
-  version = "2.41.0"
+  version = "2.53.0"
 
   # auxiliary_tenant_ids - (optional) is a type of list of string
   auxiliary_tenant_ids = []
@@ -60,6 +60,12 @@ provider "azurerm" {
       purge_soft_delete_on_destroy = null
       # recover_soft_deleted_key_vaults - (optional) is a type of bool
       recover_soft_deleted_key_vaults = null
+    }
+
+    # NestingList
+    log_analytics_workspace {
+      # permanently_delete_on_destroy - (required) is a type of bool
+      permanently_delete_on_destroy = null
     }
 
     # NestingList
@@ -132,6 +138,8 @@ provider "azurerm" {
 
 - [azurerm_api_management_identity_provider_aad](./r/azurerm_api_management_identity_provider_aad.md)
 
+- [azurerm_api_management_identity_provider_aadb2c](./r/azurerm_api_management_identity_provider_aadb2c.md)
+
 - [azurerm_api_management_identity_provider_facebook](./r/azurerm_api_management_identity_provider_facebook.md)
 
 - [azurerm_api_management_identity_provider_google](./r/azurerm_api_management_identity_provider_google.md)
@@ -199,6 +207,8 @@ provider "azurerm" {
 - [azurerm_application_insights_analytics_item](./r/azurerm_application_insights_analytics_item.md)
 
 - [azurerm_application_insights_api_key](./r/azurerm_application_insights_api_key.md)
+
+- [azurerm_application_insights_smart_detection_rule](./r/azurerm_application_insights_smart_detection_rule.md)
 
 - [azurerm_application_insights_web_test](./r/azurerm_application_insights_web_test.md)
 
@@ -294,6 +304,8 @@ provider "azurerm" {
 
 - [azurerm_cosmosdb_cassandra_keyspace](./r/azurerm_cosmosdb_cassandra_keyspace.md)
 
+- [azurerm_cosmosdb_cassandra_table](./r/azurerm_cosmosdb_cassandra_table.md)
+
 - [azurerm_cosmosdb_gremlin_database](./r/azurerm_cosmosdb_gremlin_database.md)
 
 - [azurerm_cosmosdb_gremlin_graph](./r/azurerm_cosmosdb_gremlin_graph.md)
@@ -330,9 +342,15 @@ provider "azurerm" {
 
 - [azurerm_data_factory_dataset_mysql](./r/azurerm_data_factory_dataset_mysql.md)
 
+- [azurerm_data_factory_dataset_parquet](./r/azurerm_data_factory_dataset_parquet.md)
+
 - [azurerm_data_factory_dataset_postgresql](./r/azurerm_data_factory_dataset_postgresql.md)
 
 - [azurerm_data_factory_dataset_sql_server_table](./r/azurerm_data_factory_dataset_sql_server_table.md)
+
+- [azurerm_data_factory_integration_runtime_azure](./r/azurerm_data_factory_integration_runtime_azure.md)
+
+- [azurerm_data_factory_integration_runtime_azure_ssis](./r/azurerm_data_factory_integration_runtime_azure_ssis.md)
 
 - [azurerm_data_factory_integration_runtime_managed](./r/azurerm_data_factory_integration_runtime_managed.md)
 
@@ -346,6 +364,8 @@ provider "azurerm" {
 
 - [azurerm_data_factory_linked_service_azure_sql_database](./r/azurerm_data_factory_linked_service_azure_sql_database.md)
 
+- [azurerm_data_factory_linked_service_azure_table_storage](./r/azurerm_data_factory_linked_service_azure_table_storage.md)
+
 - [azurerm_data_factory_linked_service_cosmosdb](./r/azurerm_data_factory_linked_service_cosmosdb.md)
 
 - [azurerm_data_factory_linked_service_data_lake_storage_gen2](./r/azurerm_data_factory_linked_service_data_lake_storage_gen2.md)
@@ -358,7 +378,11 @@ provider "azurerm" {
 
 - [azurerm_data_factory_linked_service_sftp](./r/azurerm_data_factory_linked_service_sftp.md)
 
+- [azurerm_data_factory_linked_service_snowflake](./r/azurerm_data_factory_linked_service_snowflake.md)
+
 - [azurerm_data_factory_linked_service_sql_server](./r/azurerm_data_factory_linked_service_sql_server.md)
+
+- [azurerm_data_factory_linked_service_synapse](./r/azurerm_data_factory_linked_service_synapse.md)
 
 - [azurerm_data_factory_linked_service_web](./r/azurerm_data_factory_linked_service_web.md)
 
@@ -394,6 +418,10 @@ provider "azurerm" {
 
 - [azurerm_database_migration_service](./r/azurerm_database_migration_service.md)
 
+- [azurerm_databox_edge_device](./r/azurerm_databox_edge_device.md)
+
+- [azurerm_databox_edge_order](./r/azurerm_databox_edge_order.md)
+
 - [azurerm_databricks_workspace](./r/azurerm_databricks_workspace.md)
 
 - [azurerm_dedicated_hardware_security_module](./r/azurerm_dedicated_hardware_security_module.md)
@@ -425,6 +453,8 @@ provider "azurerm" {
 - [azurerm_digital_twins_endpoint_servicebus](./r/azurerm_digital_twins_endpoint_servicebus.md)
 
 - [azurerm_digital_twins_instance](./r/azurerm_digital_twins_instance.md)
+
+- [azurerm_disk_access](./r/azurerm_disk_access.md)
 
 - [azurerm_disk_encryption_set](./r/azurerm_disk_encryption_set.md)
 
@@ -532,6 +562,10 @@ provider "azurerm" {
 
 - [azurerm_integration_service_environment](./r/azurerm_integration_service_environment.md)
 
+- [azurerm_iot_security_device_group](./r/azurerm_iot_security_device_group.md)
+
+- [azurerm_iot_security_solution](./r/azurerm_iot_security_solution.md)
+
 - [azurerm_iot_time_series_insights_access_policy](./r/azurerm_iot_time_series_insights_access_policy.md)
 
 - [azurerm_iot_time_series_insights_gen2_environment](./r/azurerm_iot_time_series_insights_gen2_environment.md)
@@ -559,6 +593,8 @@ provider "azurerm" {
 - [azurerm_iothub_endpoint_servicebus_topic](./r/azurerm_iothub_endpoint_servicebus_topic.md)
 
 - [azurerm_iothub_endpoint_storage_container](./r/azurerm_iothub_endpoint_storage_container.md)
+
+- [azurerm_iothub_enrichment](./r/azurerm_iothub_enrichment.md)
 
 - [azurerm_iothub_fallback_route](./r/azurerm_iothub_fallback_route.md)
 
@@ -598,11 +634,17 @@ provider "azurerm" {
 
 - [azurerm_kusto_database_principal_assignment](./r/azurerm_kusto_database_principal_assignment.md)
 
+- [azurerm_kusto_eventgrid_data_connection](./r/azurerm_kusto_eventgrid_data_connection.md)
+
 - [azurerm_kusto_eventhub_data_connection](./r/azurerm_kusto_eventhub_data_connection.md)
+
+- [azurerm_kusto_iothub_data_connection](./r/azurerm_kusto_iothub_data_connection.md)
 
 - [azurerm_lb](./r/azurerm_lb.md)
 
 - [azurerm_lb_backend_address_pool](./r/azurerm_lb_backend_address_pool.md)
+
+- [azurerm_lb_backend_address_pool_address](./r/azurerm_lb_backend_address_pool_address.md)
 
 - [azurerm_lb_nat_pool](./r/azurerm_lb_nat_pool.md)
 
@@ -676,6 +718,8 @@ provider "azurerm" {
 
 - [azurerm_management_group](./r/azurerm_management_group.md)
 
+- [azurerm_management_group_template_deployment](./r/azurerm_management_group_template_deployment.md)
+
 - [azurerm_management_lock](./r/azurerm_management_lock.md)
 
 - [azurerm_maps_account](./r/azurerm_maps_account.md)
@@ -694,11 +738,17 @@ provider "azurerm" {
 
 - [azurerm_media_asset](./r/azurerm_media_asset.md)
 
+- [azurerm_media_content_key_policy](./r/azurerm_media_content_key_policy.md)
+
 - [azurerm_media_job](./r/azurerm_media_job.md)
 
 - [azurerm_media_services_account](./r/azurerm_media_services_account.md)
 
 - [azurerm_media_streaming_endpoint](./r/azurerm_media_streaming_endpoint.md)
+
+- [azurerm_media_streaming_locator](./r/azurerm_media_streaming_locator.md)
+
+- [azurerm_media_streaming_policy](./r/azurerm_media_streaming_policy.md)
 
 - [azurerm_media_transform](./r/azurerm_media_transform.md)
 
@@ -732,6 +782,8 @@ provider "azurerm" {
 
 - [azurerm_mssql_elasticpool](./r/azurerm_mssql_elasticpool.md)
 
+- [azurerm_mssql_firewall_rule](./r/azurerm_mssql_firewall_rule.md)
+
 - [azurerm_mssql_server](./r/azurerm_mssql_server.md)
 
 - [azurerm_mssql_server_extended_auditing_policy](./r/azurerm_mssql_server_extended_auditing_policy.md)
@@ -741,6 +793,8 @@ provider "azurerm" {
 - [azurerm_mssql_server_vulnerability_assessment](./r/azurerm_mssql_server_vulnerability_assessment.md)
 
 - [azurerm_mssql_virtual_machine](./r/azurerm_mssql_virtual_machine.md)
+
+- [azurerm_mssql_virtual_network_rule](./r/azurerm_mssql_virtual_network_rule.md)
 
 - [azurerm_mysql_active_directory_administrator](./r/azurerm_mysql_active_directory_administrator.md)
 
@@ -860,9 +914,15 @@ provider "azurerm" {
 
 - [azurerm_public_ip_prefix](./r/azurerm_public_ip_prefix.md)
 
+- [azurerm_purview_account](./r/azurerm_purview_account.md)
+
 - [azurerm_recovery_services_vault](./r/azurerm_recovery_services_vault.md)
 
 - [azurerm_redis_cache](./r/azurerm_redis_cache.md)
+
+- [azurerm_redis_enterprise_cluster](./r/azurerm_redis_enterprise_cluster.md)
+
+- [azurerm_redis_enterprise_database](./r/azurerm_redis_enterprise_database.md)
 
 - [azurerm_redis_firewall_rule](./r/azurerm_redis_firewall_rule.md)
 
@@ -890,11 +950,19 @@ provider "azurerm" {
 
 - [azurerm_search_service](./r/azurerm_search_service.md)
 
+- [azurerm_security_center_assessment](./r/azurerm_security_center_assessment.md)
+
+- [azurerm_security_center_assessment_metadata](./r/azurerm_security_center_assessment_metadata.md)
+
+- [azurerm_security_center_assessment_policy](./r/azurerm_security_center_assessment_policy.md)
+
 - [azurerm_security_center_auto_provisioning](./r/azurerm_security_center_auto_provisioning.md)
 
 - [azurerm_security_center_automation](./r/azurerm_security_center_automation.md)
 
 - [azurerm_security_center_contact](./r/azurerm_security_center_contact.md)
+
+- [azurerm_security_center_server_vulnerability_assessment](./r/azurerm_security_center_server_vulnerability_assessment.md)
 
 - [azurerm_security_center_setting](./r/azurerm_security_center_setting.md)
 
@@ -902,9 +970,25 @@ provider "azurerm" {
 
 - [azurerm_security_center_workspace](./r/azurerm_security_center_workspace.md)
 
+- [azurerm_sentinel_alert_rule_fusion](./r/azurerm_sentinel_alert_rule_fusion.md)
+
 - [azurerm_sentinel_alert_rule_ms_security_incident](./r/azurerm_sentinel_alert_rule_ms_security_incident.md)
 
 - [azurerm_sentinel_alert_rule_scheduled](./r/azurerm_sentinel_alert_rule_scheduled.md)
+
+- [azurerm_sentinel_data_connector_aws_cloud_trail](./r/azurerm_sentinel_data_connector_aws_cloud_trail.md)
+
+- [azurerm_sentinel_data_connector_azure_active_directory](./r/azurerm_sentinel_data_connector_azure_active_directory.md)
+
+- [azurerm_sentinel_data_connector_azure_advanced_threat_protection](./r/azurerm_sentinel_data_connector_azure_advanced_threat_protection.md)
+
+- [azurerm_sentinel_data_connector_azure_security_center](./r/azurerm_sentinel_data_connector_azure_security_center.md)
+
+- [azurerm_sentinel_data_connector_microsoft_cloud_app_security](./r/azurerm_sentinel_data_connector_microsoft_cloud_app_security.md)
+
+- [azurerm_sentinel_data_connector_office_365](./r/azurerm_sentinel_data_connector_office_365.md)
+
+- [azurerm_sentinel_data_connector_threat_intelligence](./r/azurerm_sentinel_data_connector_threat_intelligence.md)
 
 - [azurerm_service_fabric_cluster](./r/azurerm_service_fabric_cluster.md)
 
@@ -958,9 +1042,15 @@ provider "azurerm" {
 
 - [azurerm_spatial_anchors_account](./r/azurerm_spatial_anchors_account.md)
 
+- [azurerm_spring_cloud_active_deployment](./r/azurerm_spring_cloud_active_deployment.md)
+
 - [azurerm_spring_cloud_app](./r/azurerm_spring_cloud_app.md)
 
 - [azurerm_spring_cloud_certificate](./r/azurerm_spring_cloud_certificate.md)
+
+- [azurerm_spring_cloud_custom_domain](./r/azurerm_spring_cloud_custom_domain.md)
+
+- [azurerm_spring_cloud_java_deployment](./r/azurerm_spring_cloud_java_deployment.md)
 
 - [azurerm_spring_cloud_service](./r/azurerm_spring_cloud_service.md)
 
@@ -977,6 +1067,8 @@ provider "azurerm" {
 - [azurerm_sql_server](./r/azurerm_sql_server.md)
 
 - [azurerm_sql_virtual_network_rule](./r/azurerm_sql_virtual_network_rule.md)
+
+- [azurerm_ssh_public_key](./r/azurerm_ssh_public_key.md)
 
 - [azurerm_stack_hci_cluster](./r/azurerm_stack_hci_cluster.md)
 
@@ -1048,6 +1140,8 @@ provider "azurerm" {
 
 - [azurerm_subnet_service_endpoint_storage_policy](./r/azurerm_subnet_service_endpoint_storage_policy.md)
 
+- [azurerm_subscription](./r/azurerm_subscription.md)
+
 - [azurerm_subscription_template_deployment](./r/azurerm_subscription_template_deployment.md)
 
 - [azurerm_synapse_firewall_rule](./r/azurerm_synapse_firewall_rule.md)
@@ -1063,6 +1157,8 @@ provider "azurerm" {
 - [azurerm_synapse_workspace](./r/azurerm_synapse_workspace.md)
 
 - [azurerm_template_deployment](./r/azurerm_template_deployment.md)
+
+- [azurerm_tenant_template_deployment](./r/azurerm_tenant_template_deployment.md)
 
 - [azurerm_traffic_manager_endpoint](./r/azurerm_traffic_manager_endpoint.md)
 
@@ -1110,6 +1206,8 @@ provider "azurerm" {
 
 - [azurerm_virtual_wan](./r/azurerm_virtual_wan.md)
 
+- [azurerm_vmware_private_cloud](./r/azurerm_vmware_private_cloud.md)
+
 - [azurerm_vpn_gateway](./r/azurerm_vpn_gateway.md)
 
 - [azurerm_vpn_gateway_connection](./r/azurerm_vpn_gateway_connection.md)
@@ -1156,6 +1254,8 @@ provider "azurerm" {
 
 - [azurerm_app_service_plan](./d/azurerm_app_service_plan.md)
 
+- [azurerm_application_gateway](./d/azurerm_application_gateway.md)
+
 - [azurerm_application_insights](./d/azurerm_application_insights.md)
 
 - [azurerm_application_security_group](./d/azurerm_application_security_group.md)
@@ -1181,6 +1281,10 @@ provider "azurerm" {
 - [azurerm_batch_certificate](./d/azurerm_batch_certificate.md)
 
 - [azurerm_batch_pool](./d/azurerm_batch_pool.md)
+
+- [azurerm_billing_enrollment_account_scope](./d/azurerm_billing_enrollment_account_scope.md)
+
+- [azurerm_billing_mca_account_scope](./d/azurerm_billing_mca_account_scope.md)
 
 - [azurerm_blueprint_definition](./d/azurerm_blueprint_definition.md)
 
@@ -1230,9 +1334,13 @@ provider "azurerm" {
 
 - [azurerm_digital_twins_instance](./d/azurerm_digital_twins_instance.md)
 
+- [azurerm_disk_access](./d/azurerm_disk_access.md)
+
 - [azurerm_disk_encryption_set](./d/azurerm_disk_encryption_set.md)
 
 - [azurerm_dns_zone](./d/azurerm_dns_zone.md)
+
+- [azurerm_eventgrid_domain_topic](./d/azurerm_eventgrid_domain_topic.md)
 
 - [azurerm_eventgrid_topic](./d/azurerm_eventgrid_topic.md)
 
@@ -1264,6 +1372,8 @@ provider "azurerm" {
 
 - [azurerm_images](./d/azurerm_images.md)
 
+- [azurerm_iothub](./d/azurerm_iothub.md)
+
 - [azurerm_iothub_dps](./d/azurerm_iothub_dps.md)
 
 - [azurerm_iothub_dps_shared_access_policy](./d/azurerm_iothub_dps_shared_access_policy.md)
@@ -1277,6 +1387,8 @@ provider "azurerm" {
 - [azurerm_key_vault_access_policy](./d/azurerm_key_vault_access_policy.md)
 
 - [azurerm_key_vault_certificate](./d/azurerm_key_vault_certificate.md)
+
+- [azurerm_key_vault_certificate_data](./d/azurerm_key_vault_certificate_data.md)
 
 - [azurerm_key_vault_certificate_issuer](./d/azurerm_key_vault_certificate_issuer.md)
 
@@ -1398,15 +1510,23 @@ provider "azurerm" {
 
 - [azurerm_route_table](./d/azurerm_route_table.md)
 
+- [azurerm_search_service](./d/azurerm_search_service.md)
+
 - [azurerm_sentinel_alert_rule](./d/azurerm_sentinel_alert_rule.md)
+
+- [azurerm_sentinel_alert_rule_template](./d/azurerm_sentinel_alert_rule_template.md)
 
 - [azurerm_servicebus_namespace](./d/azurerm_servicebus_namespace.md)
 
 - [azurerm_servicebus_namespace_authorization_rule](./d/azurerm_servicebus_namespace_authorization_rule.md)
 
+- [azurerm_servicebus_queue](./d/azurerm_servicebus_queue.md)
+
 - [azurerm_servicebus_queue_authorization_rule](./d/azurerm_servicebus_queue_authorization_rule.md)
 
 - [azurerm_servicebus_subscription](./d/azurerm_servicebus_subscription.md)
+
+- [azurerm_servicebus_topic](./d/azurerm_servicebus_topic.md)
 
 - [azurerm_servicebus_topic_authorization_rule](./d/azurerm_servicebus_topic_authorization_rule.md)
 
@@ -1422,11 +1542,15 @@ provider "azurerm" {
 
 - [azurerm_snapshot](./d/azurerm_snapshot.md)
 
+- [azurerm_spring_cloud_app](./d/azurerm_spring_cloud_app.md)
+
 - [azurerm_spring_cloud_service](./d/azurerm_spring_cloud_service.md)
 
 - [azurerm_sql_database](./d/azurerm_sql_database.md)
 
 - [azurerm_sql_server](./d/azurerm_sql_server.md)
+
+- [azurerm_ssh_public_key](./d/azurerm_ssh_public_key.md)
 
 - [azurerm_storage_account](./d/azurerm_storage_account.md)
 
@@ -1454,6 +1578,8 @@ provider "azurerm" {
 
 - [azurerm_synapse_workspace](./d/azurerm_synapse_workspace.md)
 
+- [azurerm_template_spec_version](./d/azurerm_template_spec_version.md)
+
 - [azurerm_traffic_manager_geographical_location](./d/azurerm_traffic_manager_geographical_location.md)
 
 - [azurerm_traffic_manager_profile](./d/azurerm_traffic_manager_profile.md)
@@ -1473,6 +1599,8 @@ provider "azurerm" {
 - [azurerm_virtual_network_gateway_connection](./d/azurerm_virtual_network_gateway_connection.md)
 
 - [azurerm_virtual_wan](./d/azurerm_virtual_wan.md)
+
+- [azurerm_vmware_private_cloud](./d/azurerm_vmware_private_cloud.md)
 
 - [azurerm_web_application_firewall_policy](./d/azurerm_web_application_firewall_policy.md)
 

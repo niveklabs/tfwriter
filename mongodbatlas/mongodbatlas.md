@@ -12,7 +12,7 @@
 
 ```terraform
 provider "mongodbatlas" {
-  version = "0.7.0"
+  version = "0.8.2"
 
   # private_key - (optional) is a type of string
   private_key = null
@@ -29,6 +29,8 @@ provider "mongodbatlas" {
 - [mongodbatlas_alert_configuration](./r/mongodbatlas_alert_configuration.md)
 
 - [mongodbatlas_auditing](./r/mongodbatlas_auditing.md)
+
+- [mongodbatlas_cloud_provider_access](./r/mongodbatlas_cloud_provider_access.md)
 
 - [mongodbatlas_cloud_provider_snapshot](./r/mongodbatlas_cloud_provider_snapshot.md)
 
@@ -58,6 +60,10 @@ provider "mongodbatlas" {
 
 - [mongodbatlas_private_ip_mode](./r/mongodbatlas_private_ip_mode.md)
 
+- [mongodbatlas_privatelink_endpoint](./r/mongodbatlas_privatelink_endpoint.md)
+
+- [mongodbatlas_privatelink_endpoint_service](./r/mongodbatlas_privatelink_endpoint_service.md)
+
 - [mongodbatlas_project](./r/mongodbatlas_project.md)
 
 - [mongodbatlas_project_ip_access_list](./r/mongodbatlas_project_ip_access_list.md)
@@ -81,6 +87,8 @@ provider "mongodbatlas" {
 - [mongodbatlas_alert_configuration](./d/mongodbatlas_alert_configuration.md)
 
 - [mongodbatlas_auditing](./d/mongodbatlas_auditing.md)
+
+- [mongodbatlas_cloud_provider_access](./d/mongodbatlas_cloud_provider_access.md)
 
 - [mongodbatlas_cloud_provider_snapshot](./d/mongodbatlas_cloud_provider_snapshot.md)
 
@@ -119,6 +127,10 @@ provider "mongodbatlas" {
 - [mongodbatlas_private_endpoint](./d/mongodbatlas_private_endpoint.md)
 
 - [mongodbatlas_private_endpoint_interface_link](./d/mongodbatlas_private_endpoint_interface_link.md)
+
+- [mongodbatlas_privatelink_endpoint](./d/mongodbatlas_privatelink_endpoint.md)
+
+- [mongodbatlas_privatelink_endpoint_service](./d/mongodbatlas_privatelink_endpoint_service.md)
 
 - [mongodbatlas_project](./d/mongodbatlas_project.md)
 

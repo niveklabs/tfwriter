@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -285,6 +285,11 @@ output "access_policy" {
 output "id" {
   description = "returns a string"
   value       = azurerm_key_vault.this.id
+}
+
+output "soft_delete_enabled" {
+  description = "returns a bool"
+  value       = azurerm_key_vault.this.soft_delete_enabled
 }
 
 output "vault_uri" {

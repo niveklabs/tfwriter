@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    lacework = ">= 0.2.7"
+    lacework = ">= 0.3.1"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "lacework_integration_aws_ct" {
   name = null
   # queue_url - (required) is a type of string
   queue_url = null
+  # retries - (optional) is a type of number
+  retries = null
 
   credentials = [{
     external_id = null
@@ -68,6 +70,12 @@ variable "name" {
 variable "queue_url" {
   description = "(required) - The SQS Queue URL."
   type        = string
+}
+
+variable "retries" {
+  description = "(optional) - The number of attempts to create the external integration."
+  type        = number
+  default     = null
 }
 
 variable "credentials" {
@@ -106,6 +114,7 @@ resource "lacework_integration_aws_ct" "this" {
   enabled   = var.enabled
   name      = var.name
   queue_url = var.queue_url
+  retries   = var.retries
 
   dynamic "credentials" {
     for_each = var.credentials

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -27,6 +27,10 @@ terraform {
 module "github_branch_protection" {
   source = "./modules/github/r/github_branch_protection"
 
+  # allows_deletions - (optional) is a type of bool
+  allows_deletions = null
+  # allows_force_pushes - (optional) is a type of bool
+  allows_force_pushes = null
   # enforce_admins - (optional) is a type of bool
   enforce_admins = null
   # pattern - (required) is a type of string
@@ -57,6 +61,18 @@ module "github_branch_protection" {
 ### Variables
 
 ```terraform
+variable "allows_deletions" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "allows_force_pushes" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "enforce_admins" {
   description = "(optional)"
   type        = bool
@@ -116,6 +132,8 @@ variable "required_status_checks" {
 
 ```terraform
 resource "github_branch_protection" "this" {
+  allows_deletions       = var.allows_deletions
+  allows_force_pushes    = var.allows_force_pushes
   enforce_admins         = var.enforce_admins
   pattern                = var.pattern
   push_restrictions      = var.push_restrictions

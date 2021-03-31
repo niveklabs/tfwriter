@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -89,6 +89,7 @@ module "aws_dms_endpoint" {
     compression_type          = null
     csv_delimiter             = null
     csv_row_delimiter         = null
+    date_partition_enabled    = null
     external_table_definition = null
     service_access_role_arn   = null
   }]
@@ -241,6 +242,7 @@ variable "s3_settings" {
       compression_type          = string
       csv_delimiter             = string
       csv_row_delimiter         = string
+      date_partition_enabled    = bool
       external_table_definition = string
       service_access_role_arn   = string
     }
@@ -317,6 +319,7 @@ resource "aws_dms_endpoint" "this" {
       compression_type          = s3_settings.value["compression_type"]
       csv_delimiter             = s3_settings.value["csv_delimiter"]
       csv_row_delimiter         = s3_settings.value["csv_row_delimiter"]
+      date_partition_enabled    = s3_settings.value["date_partition_enabled"]
       external_table_definition = s3_settings.value["external_table_definition"]
       service_access_role_arn   = s3_settings.value["service_access_role_arn"]
     }

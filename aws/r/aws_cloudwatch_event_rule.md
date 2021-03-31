@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -144,6 +144,11 @@ output "id" {
 output "name" {
   description = "returns a string"
   value       = aws_cloudwatch_event_rule.this.name
+}
+
+output "name_prefix" {
+  description = "returns a string"
+  value       = aws_cloudwatch_event_rule.this.name_prefix
 }
 
 output "this" {

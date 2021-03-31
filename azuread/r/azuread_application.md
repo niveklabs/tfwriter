@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -38,6 +38,8 @@ module "azuread_application" {
   }]
   # available_to_other_tenants - (optional) is a type of bool
   available_to_other_tenants = null
+  # display_name - (optional) is a type of string
+  display_name = null
   # group_membership_claims - (optional) is a type of string
   group_membership_claims = null
   # homepage - (optional) is a type of string
@@ -46,7 +48,7 @@ module "azuread_application" {
   identifier_uris = []
   # logout_url - (optional) is a type of string
   logout_url = null
-  # name - (required) is a type of string
+  # name - (optional) is a type of string
   name = null
   # oauth2_allow_implicit_flow - (optional) is a type of bool
   oauth2_allow_implicit_flow = null
@@ -94,6 +96,13 @@ module "azuread_application" {
     }]
     resource_app_id = null
   }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -123,6 +132,12 @@ variable "available_to_other_tenants" {
   default     = null
 }
 
+variable "display_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "group_membership_claims" {
   description = "(optional)"
   type        = string
@@ -148,8 +163,9 @@ variable "logout_url" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "oauth2_allow_implicit_flow" {
@@ -245,6 +261,19 @@ variable "required_resource_access" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -255,6 +284,7 @@ variable "required_resource_access" {
 resource "azuread_application" "this" {
   app_role                   = var.app_role
   available_to_other_tenants = var.available_to_other_tenants
+  display_name               = var.display_name
   group_membership_claims    = var.group_membership_claims
   homepage                   = var.homepage
   identifier_uris            = var.identifier_uris
@@ -311,6 +341,16 @@ resource "azuread_application" "this" {
     }
   }
 
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 
@@ -329,6 +369,11 @@ output "application_id" {
   value       = azuread_application.this.application_id
 }
 
+output "display_name" {
+  description = "returns a string"
+  value       = azuread_application.this.display_name
+}
+
 output "homepage" {
   description = "returns a string"
   value       = azuread_application.this.homepage
@@ -342,6 +387,11 @@ output "id" {
 output "identifier_uris" {
   description = "returns a list of string"
   value       = azuread_application.this.identifier_uris
+}
+
+output "name" {
+  description = "returns a string"
+  value       = azuread_application.this.name
 }
 
 output "oauth2_permissions" {

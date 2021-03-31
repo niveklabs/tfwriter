@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "alicloud_cs_edge_kubernetes" {
   cluster_ca_cert = null
   # deletion_protection - (optional) is a type of bool
   deletion_protection = null
+  # force_update - (optional) is a type of bool
+  force_update = null
   # install_cloud_monitor - (optional) is a type of bool
   install_cloud_monitor = null
   # is_enterprise_security_group - (optional) is a type of bool
@@ -146,6 +148,12 @@ variable "cluster_ca_cert" {
 }
 
 variable "deletion_protection" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "force_update" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -356,6 +364,7 @@ resource "alicloud_cs_edge_kubernetes" "this" {
   client_key                   = var.client_key
   cluster_ca_cert              = var.cluster_ca_cert
   deletion_protection          = var.deletion_protection
+  force_update                 = var.force_update
   install_cloud_monitor        = var.install_cloud_monitor
   is_enterprise_security_group = var.is_enterprise_security_group
   key_name                     = var.key_name

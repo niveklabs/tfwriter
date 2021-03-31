@@ -12,7 +12,7 @@
 
 ```terraform
 provider "google-beta" {
-  version = "3.51.0"
+  version = "3.62.0"
 
   # access_approval_custom_endpoint - (optional) is a type of string
   access_approval_custom_endpoint = null
@@ -24,6 +24,8 @@ provider "google-beta" {
   active_directory_custom_endpoint = null
   # api_gateway_custom_endpoint - (optional) is a type of string
   api_gateway_custom_endpoint = null
+  # apigee_custom_endpoint - (optional) is a type of string
+  apigee_custom_endpoint = null
   # app_engine_custom_endpoint - (optional) is a type of string
   app_engine_custom_endpoint = null
   # artifact_registry_custom_endpoint - (optional) is a type of string
@@ -88,16 +90,20 @@ provider "google-beta" {
   dataproc_beta_custom_endpoint = null
   # dataproc_custom_endpoint - (optional) is a type of string
   dataproc_custom_endpoint = null
+  # dataproc_metastore_custom_endpoint - (optional) is a type of string
+  dataproc_metastore_custom_endpoint = null
   # datastore_custom_endpoint - (optional) is a type of string
   datastore_custom_endpoint = null
   # deployment_manager_custom_endpoint - (optional) is a type of string
   deployment_manager_custom_endpoint = null
   # dialogflow_custom_endpoint - (optional) is a type of string
   dialogflow_custom_endpoint = null
-  # dns_beta_custom_endpoint - (optional) is a type of string
-  dns_beta_custom_endpoint = null
   # dns_custom_endpoint - (optional) is a type of string
   dns_custom_endpoint = null
+  # essential_contacts_custom_endpoint - (optional) is a type of string
+  essential_contacts_custom_endpoint = null
+  # eventarc_custom_endpoint - (optional) is a type of string
+  eventarc_custom_endpoint = null
   # filestore_custom_endpoint - (optional) is a type of string
   filestore_custom_endpoint = null
   # firebase_custom_endpoint - (optional) is a type of string
@@ -106,6 +112,8 @@ provider "google-beta" {
   firestore_custom_endpoint = null
   # game_services_custom_endpoint - (optional) is a type of string
   game_services_custom_endpoint = null
+  # gke_hub_custom_endpoint - (optional) is a type of string
+  gke_hub_custom_endpoint = null
   # healthcare_custom_endpoint - (optional) is a type of string
   healthcare_custom_endpoint = null
   # iam_beta_custom_endpoint - (optional) is a type of string
@@ -140,10 +148,14 @@ provider "google-beta" {
   os_config_custom_endpoint = null
   # os_login_custom_endpoint - (optional) is a type of string
   os_login_custom_endpoint = null
+  # privateca_custom_endpoint - (optional) is a type of string
+  privateca_custom_endpoint = null
   # project - (optional) is a type of string
   project = null
   # pubsub_custom_endpoint - (optional) is a type of string
   pubsub_custom_endpoint = null
+  # pubsub_lite_custom_endpoint - (optional) is a type of string
+  pubsub_lite_custom_endpoint = null
   # redis_custom_endpoint - (optional) is a type of string
   redis_custom_endpoint = null
   # region - (optional) is a type of string
@@ -152,8 +164,8 @@ provider "google-beta" {
   request_timeout = null
   # resource_manager_custom_endpoint - (optional) is a type of string
   resource_manager_custom_endpoint = null
-  # resource_manager_v2beta1_custom_endpoint - (optional) is a type of string
-  resource_manager_v2beta1_custom_endpoint = null
+  # resource_manager_v2_custom_endpoint - (optional) is a type of string
+  resource_manager_v2_custom_endpoint = null
   # runtime_config_custom_endpoint - (optional) is a type of string
   runtime_config_custom_endpoint = null
   # runtimeconfig_custom_endpoint - (optional) is a type of string
@@ -184,12 +196,16 @@ provider "google-beta" {
   storage_custom_endpoint = null
   # storage_transfer_custom_endpoint - (optional) is a type of string
   storage_transfer_custom_endpoint = null
+  # tags_custom_endpoint - (optional) is a type of string
+  tags_custom_endpoint = null
   # tpu_custom_endpoint - (optional) is a type of string
   tpu_custom_endpoint = null
   # user_project_override - (optional) is a type of bool
   user_project_override = null
   # vpc_access_custom_endpoint - (optional) is a type of string
   vpc_access_custom_endpoint = null
+  # workflows_custom_endpoint - (optional) is a type of string
+  workflows_custom_endpoint = null
   # zone - (optional) is a type of string
   zone = null
 
@@ -215,6 +231,8 @@ provider "google-beta" {
 - [google_access_context_manager_access_levels](./r/google_access_context_manager_access_levels.md)
 
 - [google_access_context_manager_access_policy](./r/google_access_context_manager_access_policy.md)
+
+- [google_access_context_manager_gcp_user_access_binding](./r/google_access_context_manager_gcp_user_access_binding.md)
 
 - [google_access_context_manager_service_perimeter](./r/google_access_context_manager_service_perimeter.md)
 
@@ -249,6 +267,14 @@ provider "google-beta" {
 - [google_api_gateway_gateway_iam_member](./r/google_api_gateway_gateway_iam_member.md)
 
 - [google_api_gateway_gateway_iam_policy](./r/google_api_gateway_gateway_iam_policy.md)
+
+- [google_apigee_envgroup](./r/google_apigee_envgroup.md)
+
+- [google_apigee_environment](./r/google_apigee_environment.md)
+
+- [google_apigee_instance](./r/google_apigee_instance.md)
+
+- [google_apigee_organization](./r/google_apigee_organization.md)
 
 - [google_app_engine_application](./r/google_app_engine_application.md)
 
@@ -327,6 +353,8 @@ provider "google-beta" {
 - [google_billing_account_iam_policy](./r/google_billing_account_iam_policy.md)
 
 - [google_billing_budget](./r/google_billing_budget.md)
+
+- [google_billing_subaccount](./r/google_billing_subaccount.md)
 
 - [google_binary_authorization_attestor](./r/google_binary_authorization_attestor.md)
 
@@ -610,6 +638,12 @@ provider "google-beta" {
 
 - [google_data_catalog_tag_template](./r/google_data_catalog_tag_template.md)
 
+- [google_data_catalog_tag_template_iam_binding](./r/google_data_catalog_tag_template_iam_binding.md)
+
+- [google_data_catalog_tag_template_iam_member](./r/google_data_catalog_tag_template_iam_member.md)
+
+- [google_data_catalog_tag_template_iam_policy](./r/google_data_catalog_tag_template_iam_policy.md)
+
 - [google_data_catalog_taxonomy](./r/google_data_catalog_taxonomy.md)
 
 - [google_data_catalog_taxonomy_iam_binding](./r/google_data_catalog_taxonomy_iam_binding.md)
@@ -650,6 +684,8 @@ provider "google-beta" {
 
 - [google_dataproc_job_iam_policy](./r/google_dataproc_job_iam_policy.md)
 
+- [google_dataproc_metastore_service](./r/google_dataproc_metastore_service.md)
+
 - [google_datastore_index](./r/google_datastore_index.md)
 
 - [google_deployment_manager_deployment](./r/google_deployment_manager_deployment.md)
@@ -673,6 +709,10 @@ provider "google-beta" {
 - [google_endpoints_service_iam_member](./r/google_endpoints_service_iam_member.md)
 
 - [google_endpoints_service_iam_policy](./r/google_endpoints_service_iam_policy.md)
+
+- [google_essential_contacts_contact](./r/google_essential_contacts_contact.md)
+
+- [google_eventarc_trigger](./r/google_eventarc_trigger.md)
 
 - [google_filestore_instance](./r/google_filestore_instance.md)
 
@@ -709,6 +749,8 @@ provider "google-beta" {
 - [google_game_services_game_server_deployment_rollout](./r/google_game_services_game_server_deployment_rollout.md)
 
 - [google_game_services_realm](./r/google_game_services_realm.md)
+
+- [google_gke_hub_membership](./r/google_gke_hub_membership.md)
 
 - [google_healthcare_consent_store](./r/google_healthcare_consent_store.md)
 
@@ -920,6 +962,16 @@ provider "google-beta" {
 
 - [google_os_login_ssh_public_key](./r/google_os_login_ssh_public_key.md)
 
+- [google_privateca_certificate](./r/google_privateca_certificate.md)
+
+- [google_privateca_certificate_authority](./r/google_privateca_certificate_authority.md)
+
+- [google_privateca_certificate_authority_iam_binding](./r/google_privateca_certificate_authority_iam_binding.md)
+
+- [google_privateca_certificate_authority_iam_member](./r/google_privateca_certificate_authority_iam_member.md)
+
+- [google_privateca_certificate_authority_iam_policy](./r/google_privateca_certificate_authority_iam_policy.md)
+
 - [google_project](./r/google_project.md)
 
 - [google_project_access_approval_settings](./r/google_project_access_approval_settings.md)
@@ -943,6 +995,10 @@ provider "google-beta" {
 - [google_project_service_identity](./r/google_project_service_identity.md)
 
 - [google_project_usage_export_bucket](./r/google_project_usage_export_bucket.md)
+
+- [google_pubsub_lite_subscription](./r/google_pubsub_lite_subscription.md)
+
+- [google_pubsub_lite_topic](./r/google_pubsub_lite_topic.md)
 
 - [google_pubsub_subscription](./r/google_pubsub_subscription.md)
 
@@ -1082,9 +1138,13 @@ provider "google-beta" {
 
 - [google_storage_transfer_job](./r/google_storage_transfer_job.md)
 
+- [google_tags_tag_key](./r/google_tags_tag_key.md)
+
 - [google_tpu_node](./r/google_tpu_node.md)
 
 - [google_vpc_access_connector](./r/google_vpc_access_connector.md)
+
+- [google_workflows_workflow](./r/google_workflows_workflow.md)
 
 
 [top](#index)
@@ -1108,6 +1168,8 @@ provider "google-beta" {
 
 - [google_cloud_identity_groups](./d/google_cloud_identity_groups.md)
 
+- [google_cloud_run_locations](./d/google_cloud_run_locations.md)
+
 - [google_cloud_run_service](./d/google_cloud_run_service.md)
 
 - [google_cloudfunctions_function](./d/google_cloudfunctions_function.md)
@@ -1130,6 +1192,8 @@ provider "google-beta" {
 
 - [google_compute_global_forwarding_rule](./d/google_compute_global_forwarding_rule.md)
 
+- [google_compute_health_check](./d/google_compute_health_check.md)
+
 - [google_compute_image](./d/google_compute_image.md)
 
 - [google_compute_instance](./d/google_compute_instance.md)
@@ -1137,6 +1201,8 @@ provider "google-beta" {
 - [google_compute_instance_group](./d/google_compute_instance_group.md)
 
 - [google_compute_instance_serial_port](./d/google_compute_instance_serial_port.md)
+
+- [google_compute_instance_template](./d/google_compute_instance_template.md)
 
 - [google_compute_lb_ip_ranges](./d/google_compute_lb_ip_ranges.md)
 
@@ -1198,6 +1264,8 @@ provider "google-beta" {
 
 - [google_iam_workload_identity_pool_provider](./d/google_iam_workload_identity_pool_provider.md)
 
+- [google_iap_client](./d/google_iap_client.md)
+
 - [google_kms_crypto_key](./d/google_kms_crypto_key.md)
 
 - [google_kms_crypto_key_version](./d/google_kms_crypto_key_version.md)
@@ -1205,6 +1273,8 @@ provider "google-beta" {
 - [google_kms_key_ring](./d/google_kms_key_ring.md)
 
 - [google_kms_secret](./d/google_kms_secret.md)
+
+- [google_kms_secret_asymmetric](./d/google_kms_secret_asymmetric.md)
 
 - [google_kms_secret_ciphertext](./d/google_kms_secret_ciphertext.md)
 
@@ -1232,6 +1302,10 @@ provider "google-beta" {
 
 - [google_redis_instance](./d/google_redis_instance.md)
 
+- [google_runtimeconfig_config](./d/google_runtimeconfig_config.md)
+
+- [google_runtimeconfig_variable](./d/google_runtimeconfig_variable.md)
+
 - [google_secret_manager_secret_version](./d/google_secret_manager_secret_version.md)
 
 - [google_service_account](./d/google_service_account.md)
@@ -1244,11 +1318,15 @@ provider "google-beta" {
 
 - [google_spanner_instance](./d/google_spanner_instance.md)
 
+- [google_sql_backup_run](./d/google_sql_backup_run.md)
+
 - [google_sql_ca_certs](./d/google_sql_ca_certs.md)
 
 - [google_sql_database_instance](./d/google_sql_database_instance.md)
 
 - [google_storage_bucket_object](./d/google_storage_bucket_object.md)
+
+- [google_storage_bucket_object_content](./d/google_storage_bucket_object_content.md)
 
 - [google_storage_object_signed_url](./d/google_storage_object_signed_url.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_ssoadmin" {
 
   # accprofile - (required) is a type of string
   accprofile = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
@@ -46,6 +48,12 @@ module "fortios_system_ssoadmin" {
 variable "accprofile" {
   description = "(required)"
   type        = string
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "name" {
@@ -71,8 +79,9 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_ssoadmin" "this" {
-  accprofile = var.accprofile
-  name       = var.name
+  accprofile            = var.accprofile
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "vdom" {
     for_each = var.vdom

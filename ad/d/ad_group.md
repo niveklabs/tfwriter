@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ad = ">= 0.4.0"
+    ad = ">= 0.4.1"
   }
 }
 ```
@@ -27,8 +27,8 @@ terraform {
 module "ad_group" {
   source = "./modules/ad/d/ad_group"
 
-  # guid - (required) is a type of string
-  guid = null
+  # group_id - (required) is a type of string
+  group_id = null
 }
 ```
 
@@ -37,8 +37,8 @@ module "ad_group" {
 ### Variables
 
 ```terraform
-variable "guid" {
-  description = "(required) - The GUID of the Group object."
+variable "group_id" {
+  description = "(required) - The group's identifier. It can be the group's GUID, SID, Distinguished Name, or SAM Account Name."
   type        = string
 }
 ```
@@ -49,7 +49,7 @@ variable "guid" {
 
 ```terraform
 data "ad_group" "this" {
-  guid = var.guid
+  group_id = var.group_id
 }
 ```
 

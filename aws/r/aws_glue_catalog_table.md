@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -74,6 +74,15 @@ module "aws_glue_catalog_table" {
     number_of_buckets = null
     output_format     = null
     parameters        = {}
+    schema_reference = [{
+      schema_id = [{
+        registry_name = null
+        schema_arn    = null
+        schema_name   = null
+      }]
+      schema_version_id     = null
+      schema_version_number = null
+    }]
     ser_de_info = [{
       name                  = null
       parameters            = {}
@@ -199,6 +208,19 @@ variable "storage_descriptor" {
       number_of_buckets = number
       output_format     = string
       parameters        = map(string)
+      schema_reference = list(object(
+        {
+          schema_id = list(object(
+            {
+              registry_name = string
+              schema_arn    = string
+              schema_name   = string
+            }
+          ))
+          schema_version_id     = string
+          schema_version_number = number
+        }
+      ))
       ser_de_info = list(object(
         {
           name                  = string
@@ -279,6 +301,24 @@ resource "aws_glue_catalog_table" "this" {
           name       = columns.value["name"]
           parameters = columns.value["parameters"]
           type       = columns.value["type"]
+        }
+      }
+
+      dynamic "schema_reference" {
+        for_each = storage_descriptor.value.schema_reference
+        content {
+          schema_version_id     = schema_reference.value["schema_version_id"]
+          schema_version_number = schema_reference.value["schema_version_number"]
+
+          dynamic "schema_id" {
+            for_each = schema_reference.value.schema_id
+            content {
+              registry_name = schema_id.value["registry_name"]
+              schema_arn    = schema_id.value["schema_arn"]
+              schema_name   = schema_id.value["schema_name"]
+            }
+          }
+
         }
       }
 

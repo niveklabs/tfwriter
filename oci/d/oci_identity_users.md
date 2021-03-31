@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -33,6 +33,10 @@ module "oci_identity_users" {
   external_identifier = null
   # identity_provider_id - (optional) is a type of string
   identity_provider_id = null
+  # name - (optional) is a type of string
+  name = null
+  # state - (optional) is a type of string
+  state = null
 
   filter = [{
     name   = null
@@ -64,6 +68,18 @@ variable "identity_provider_id" {
   default     = null
 }
 
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "state" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "filter" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
@@ -86,6 +102,8 @@ data "oci_identity_users" "this" {
   compartment_id       = var.compartment_id
   external_identifier  = var.external_identifier
   identity_provider_id = var.identity_provider_id
+  name                 = var.name
+  state                = var.state
 
   dynamic "filter" {
     for_each = var.filter

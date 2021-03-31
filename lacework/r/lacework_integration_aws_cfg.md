@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    lacework = ">= 0.2.7"
+    lacework = ">= 0.3.1"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "lacework_integration_aws_cfg" {
   enabled = null
   # name - (required) is a type of string
   name = null
+  # retries - (optional) is a type of number
+  retries = null
 
   credentials = [{
     external_id = null
@@ -55,6 +57,12 @@ variable "name" {
   type        = string
 }
 
+variable "retries" {
+  description = "(optional) - The number of attempts to create the external integration."
+  type        = number
+  default     = null
+}
+
 variable "credentials" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
@@ -74,6 +82,7 @@ variable "credentials" {
 resource "lacework_integration_aws_cfg" "this" {
   enabled = var.enabled
   name    = var.name
+  retries = var.retries
 
   dynamic "credentials" {
     for_each = var.credentials

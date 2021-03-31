@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_systemdhcp_server" {
 
   # auto_configuration - (optional) is a type of string
   auto_configuration = null
+  # auto_managed_status - (optional) is a type of string
+  auto_managed_status = null
   # conflicted_ip_timeout - (optional) is a type of number
   conflicted_ip_timeout = null
   # ddns_auth - (optional) is a type of string
@@ -49,16 +51,22 @@ module "fortios_systemdhcp_server" {
   ddns_zone = null
   # default_gateway - (optional) is a type of string
   default_gateway = null
+  # dhcp_settings_from_fortiipam - (optional) is a type of string
+  dhcp_settings_from_fortiipam = null
   # dns_server1 - (optional) is a type of string
   dns_server1 = null
   # dns_server2 - (optional) is a type of string
   dns_server2 = null
   # dns_server3 - (optional) is a type of string
   dns_server3 = null
+  # dns_server4 - (optional) is a type of string
+  dns_server4 = null
   # dns_service - (optional) is a type of string
   dns_service = null
   # domain - (optional) is a type of string
   domain = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # filename - (optional) is a type of string
   filename = null
   # forticlient_on_net_status - (optional) is a type of string
@@ -103,6 +111,8 @@ module "fortios_systemdhcp_server" {
   wifi_ac2 = null
   # wifi_ac3 - (optional) is a type of string
   wifi_ac3 = null
+  # wifi_ac_service - (optional) is a type of string
+  wifi_ac_service = null
   # wins_server1 - (optional) is a type of string
   wins_server1 = null
   # wins_server2 - (optional) is a type of string
@@ -129,14 +139,16 @@ module "fortios_systemdhcp_server" {
   }]
 
   reserved_address = [{
-    action      = null
-    circuit_id  = null
-    description = null
-    id          = null
-    ip          = null
-    mac         = null
-    remote_id   = null
-    type        = null
+    action          = null
+    circuit_id      = null
+    circuit_id_type = null
+    description     = null
+    id              = null
+    ip              = null
+    mac             = null
+    remote_id       = null
+    remote_id_type  = null
+    type            = null
   }]
 
   tftp_server = [{
@@ -155,6 +167,12 @@ module "fortios_systemdhcp_server" {
 
 ```terraform
 variable "auto_configuration" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "auto_managed_status" {
   description = "(optional)"
   type        = string
   default     = null
@@ -220,6 +238,12 @@ variable "default_gateway" {
   default     = null
 }
 
+variable "dhcp_settings_from_fortiipam" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dns_server1" {
   description = "(optional)"
   type        = string
@@ -238,6 +262,12 @@ variable "dns_server3" {
   default     = null
 }
 
+variable "dns_server4" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dns_service" {
   description = "(optional)"
   type        = string
@@ -245,6 +275,12 @@ variable "dns_service" {
 }
 
 variable "domain" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -379,6 +415,12 @@ variable "wifi_ac3" {
   default     = null
 }
 
+variable "wifi_ac_service" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "wins_server1" {
   description = "(optional)"
   type        = string
@@ -433,14 +475,16 @@ variable "reserved_address" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      action      = string
-      circuit_id  = string
-      description = string
-      id          = number
-      ip          = string
-      mac         = string
-      remote_id   = string
-      type        = string
+      action          = string
+      circuit_id      = string
+      circuit_id_type = string
+      description     = string
+      id              = number
+      ip              = string
+      mac             = string
+      remote_id       = string
+      remote_id_type  = string
+      type            = string
     }
   ))
   default = []
@@ -473,46 +517,51 @@ variable "vci_string" {
 
 ```terraform
 resource "fortios_systemdhcp_server" "this" {
-  auto_configuration        = var.auto_configuration
-  conflicted_ip_timeout     = var.conflicted_ip_timeout
-  ddns_auth                 = var.ddns_auth
-  ddns_key                  = var.ddns_key
-  ddns_keyname              = var.ddns_keyname
-  ddns_server_ip            = var.ddns_server_ip
-  ddns_ttl                  = var.ddns_ttl
-  ddns_update               = var.ddns_update
-  ddns_update_override      = var.ddns_update_override
-  ddns_zone                 = var.ddns_zone
-  default_gateway           = var.default_gateway
-  dns_server1               = var.dns_server1
-  dns_server2               = var.dns_server2
-  dns_server3               = var.dns_server3
-  dns_service               = var.dns_service
-  domain                    = var.domain
-  filename                  = var.filename
-  forticlient_on_net_status = var.forticlient_on_net_status
-  fosid                     = var.fosid
-  interface                 = var.interface
-  ip_mode                   = var.ip_mode
-  ipsec_lease_hold          = var.ipsec_lease_hold
-  lease_time                = var.lease_time
-  mac_acl_default_action    = var.mac_acl_default_action
-  netmask                   = var.netmask
-  next_server               = var.next_server
-  ntp_server1               = var.ntp_server1
-  ntp_server2               = var.ntp_server2
-  ntp_server3               = var.ntp_server3
-  ntp_service               = var.ntp_service
-  server_type               = var.server_type
-  status                    = var.status
-  timezone                  = var.timezone
-  timezone_option           = var.timezone_option
-  vci_match                 = var.vci_match
-  wifi_ac1                  = var.wifi_ac1
-  wifi_ac2                  = var.wifi_ac2
-  wifi_ac3                  = var.wifi_ac3
-  wins_server1              = var.wins_server1
-  wins_server2              = var.wins_server2
+  auto_configuration           = var.auto_configuration
+  auto_managed_status          = var.auto_managed_status
+  conflicted_ip_timeout        = var.conflicted_ip_timeout
+  ddns_auth                    = var.ddns_auth
+  ddns_key                     = var.ddns_key
+  ddns_keyname                 = var.ddns_keyname
+  ddns_server_ip               = var.ddns_server_ip
+  ddns_ttl                     = var.ddns_ttl
+  ddns_update                  = var.ddns_update
+  ddns_update_override         = var.ddns_update_override
+  ddns_zone                    = var.ddns_zone
+  default_gateway              = var.default_gateway
+  dhcp_settings_from_fortiipam = var.dhcp_settings_from_fortiipam
+  dns_server1                  = var.dns_server1
+  dns_server2                  = var.dns_server2
+  dns_server3                  = var.dns_server3
+  dns_server4                  = var.dns_server4
+  dns_service                  = var.dns_service
+  domain                       = var.domain
+  dynamic_sort_subtable        = var.dynamic_sort_subtable
+  filename                     = var.filename
+  forticlient_on_net_status    = var.forticlient_on_net_status
+  fosid                        = var.fosid
+  interface                    = var.interface
+  ip_mode                      = var.ip_mode
+  ipsec_lease_hold             = var.ipsec_lease_hold
+  lease_time                   = var.lease_time
+  mac_acl_default_action       = var.mac_acl_default_action
+  netmask                      = var.netmask
+  next_server                  = var.next_server
+  ntp_server1                  = var.ntp_server1
+  ntp_server2                  = var.ntp_server2
+  ntp_server3                  = var.ntp_server3
+  ntp_service                  = var.ntp_service
+  server_type                  = var.server_type
+  status                       = var.status
+  timezone                     = var.timezone
+  timezone_option              = var.timezone_option
+  vci_match                    = var.vci_match
+  wifi_ac1                     = var.wifi_ac1
+  wifi_ac2                     = var.wifi_ac2
+  wifi_ac3                     = var.wifi_ac3
+  wifi_ac_service              = var.wifi_ac_service
+  wins_server1                 = var.wins_server1
+  wins_server2                 = var.wins_server2
 
   dynamic "exclude_range" {
     for_each = var.exclude_range
@@ -546,14 +595,16 @@ resource "fortios_systemdhcp_server" "this" {
   dynamic "reserved_address" {
     for_each = var.reserved_address
     content {
-      action      = reserved_address.value["action"]
-      circuit_id  = reserved_address.value["circuit_id"]
-      description = reserved_address.value["description"]
-      id          = reserved_address.value["id"]
-      ip          = reserved_address.value["ip"]
-      mac         = reserved_address.value["mac"]
-      remote_id   = reserved_address.value["remote_id"]
-      type        = reserved_address.value["type"]
+      action          = reserved_address.value["action"]
+      circuit_id      = reserved_address.value["circuit_id"]
+      circuit_id_type = reserved_address.value["circuit_id_type"]
+      description     = reserved_address.value["description"]
+      id              = reserved_address.value["id"]
+      ip              = reserved_address.value["ip"]
+      mac             = reserved_address.value["mac"]
+      remote_id       = reserved_address.value["remote_id"]
+      remote_id_type  = reserved_address.value["remote_id_type"]
+      type            = reserved_address.value["type"]
     }
   }
 
@@ -582,6 +633,11 @@ resource "fortios_systemdhcp_server" "this" {
 output "auto_configuration" {
   description = "returns a string"
   value       = fortios_systemdhcp_server.this.auto_configuration
+}
+
+output "auto_managed_status" {
+  description = "returns a string"
+  value       = fortios_systemdhcp_server.this.auto_managed_status
 }
 
 output "conflicted_ip_timeout" {
@@ -635,6 +691,11 @@ output "default_gateway" {
   value       = fortios_systemdhcp_server.this.default_gateway
 }
 
+output "dhcp_settings_from_fortiipam" {
+  description = "returns a string"
+  value       = fortios_systemdhcp_server.this.dhcp_settings_from_fortiipam
+}
+
 output "dns_server1" {
   description = "returns a string"
   value       = fortios_systemdhcp_server.this.dns_server1
@@ -648,6 +709,11 @@ output "dns_server2" {
 output "dns_server3" {
   description = "returns a string"
   value       = fortios_systemdhcp_server.this.dns_server3
+}
+
+output "dns_server4" {
+  description = "returns a string"
+  value       = fortios_systemdhcp_server.this.dns_server4
 }
 
 output "dns_service" {
@@ -758,6 +824,11 @@ output "wifi_ac2" {
 output "wifi_ac3" {
   description = "returns a string"
   value       = fortios_systemdhcp_server.this.wifi_ac3
+}
+
+output "wifi_ac_service" {
+  description = "returns a string"
+  value       = fortios_systemdhcp_server.this.wifi_ac_service
 }
 
 output "wins_server1" {

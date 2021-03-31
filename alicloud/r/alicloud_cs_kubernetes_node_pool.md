@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,10 +27,18 @@ terraform {
 module "alicloud_cs_kubernetes_node_pool" {
   source = "./modules/alicloud/r/alicloud_cs_kubernetes_node_pool"
 
+  # auto_renew - (optional) is a type of bool
+  auto_renew = null
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = null
   # cluster_id - (required) is a type of string
   cluster_id = null
   # image_id - (optional) is a type of string
   image_id = null
+  # install_cloud_monitor - (optional) is a type of bool
+  install_cloud_monitor = null
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = null
   # instance_types - (required) is a type of list of string
   instance_types = []
   # key_name - (optional) is a type of string
@@ -45,6 +53,10 @@ module "alicloud_cs_kubernetes_node_pool" {
   node_name_mode = null
   # password - (optional) is a type of string
   password = null
+  # period - (optional) is a type of number
+  period = null
+  # period_unit - (optional) is a type of string
+  period_unit = null
   # security_group_id - (optional) is a type of string
   security_group_id = null
   # system_disk_category - (optional) is a type of string
@@ -53,6 +65,8 @@ module "alicloud_cs_kubernetes_node_pool" {
   system_disk_size = null
   # tags - (optional) is a type of map of string
   tags = {}
+  # unschedulable - (optional) is a type of bool
+  unschedulable = null
   # user_data - (optional) is a type of string
   user_data = null
   # vswitch_ids - (required) is a type of list of string
@@ -110,12 +124,36 @@ module "alicloud_cs_kubernetes_node_pool" {
 ### Variables
 
 ```terraform
+variable "auto_renew" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "auto_renew_period" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "cluster_id" {
   description = "(required)"
   type        = string
 }
 
 variable "image_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "install_cloud_monitor" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "instance_charge_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -161,6 +199,18 @@ variable "password" {
   default     = null
 }
 
+variable "period" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "period_unit" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "security_group_id" {
   description = "(optional)"
   type        = string
@@ -182,6 +232,12 @@ variable "system_disk_size" {
 variable "tags" {
   description = "(optional)"
   type        = map(string)
+  default     = null
+}
+
+variable "unschedulable" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -284,8 +340,12 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cs_kubernetes_node_pool" "this" {
+  auto_renew             = var.auto_renew
+  auto_renew_period      = var.auto_renew_period
   cluster_id             = var.cluster_id
   image_id               = var.image_id
+  install_cloud_monitor  = var.install_cloud_monitor
+  instance_charge_type   = var.instance_charge_type
   instance_types         = var.instance_types
   key_name               = var.key_name
   kms_encrypted_password = var.kms_encrypted_password
@@ -293,10 +353,13 @@ resource "alicloud_cs_kubernetes_node_pool" "this" {
   node_count             = var.node_count
   node_name_mode         = var.node_name_mode
   password               = var.password
+  period                 = var.period
+  period_unit            = var.period_unit
   security_group_id      = var.security_group_id
   system_disk_category   = var.system_disk_category
   system_disk_size       = var.system_disk_size
   tags                   = var.tags
+  unschedulable          = var.unschedulable
   user_data              = var.user_data
   vswitch_ids            = var.vswitch_ids
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    lacework = ">= 0.2.7"
+    lacework = ">= 0.3.1"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "lacework_integration_azure_al" {
   name = null
   # queue_url - (required) is a type of string
   queue_url = null
+  # retries - (optional) is a type of number
+  retries = null
   # tenant_id - (required) is a type of string
   tenant_id = null
 
@@ -64,6 +66,12 @@ variable "queue_url" {
   type        = string
 }
 
+variable "retries" {
+  description = "(optional) - The number of attempts to create the external integration."
+  type        = number
+  default     = null
+}
+
 variable "tenant_id" {
   description = "(required)"
   type        = string
@@ -89,6 +97,7 @@ resource "lacework_integration_azure_al" "this" {
   enabled   = var.enabled
   name      = var.name
   queue_url = var.queue_url
+  retries   = var.retries
   tenant_id = var.tenant_id
 
   dynamic "credentials" {

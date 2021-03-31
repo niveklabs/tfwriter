@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_report_layout" {
   day = null
   # description - (optional) is a type of string
   description = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # email_recipients - (optional) is a type of string
   email_recipients = null
   # email_send - (optional) is a type of string
@@ -147,6 +149,12 @@ variable "day" {
 }
 
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -311,21 +319,22 @@ variable "page" {
 
 ```terraform
 resource "fortios_report_layout" "this" {
-  cutoff_option    = var.cutoff_option
-  cutoff_time      = var.cutoff_time
-  day              = var.day
-  description      = var.description
-  email_recipients = var.email_recipients
-  email_send       = var.email_send
-  format           = var.format
-  max_pdf_report   = var.max_pdf_report
-  name             = var.name
-  options          = var.options
-  schedule_type    = var.schedule_type
-  style_theme      = var.style_theme
-  subtitle         = var.subtitle
-  time             = var.time
-  title            = var.title
+  cutoff_option         = var.cutoff_option
+  cutoff_time           = var.cutoff_time
+  day                   = var.day
+  description           = var.description
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  email_recipients      = var.email_recipients
+  email_send            = var.email_send
+  format                = var.format
+  max_pdf_report        = var.max_pdf_report
+  name                  = var.name
+  options               = var.options
+  schedule_type         = var.schedule_type
+  style_theme           = var.style_theme
+  subtitle              = var.subtitle
+  time                  = var.time
+  title                 = var.title
 
   dynamic "body_item" {
     for_each = var.body_item

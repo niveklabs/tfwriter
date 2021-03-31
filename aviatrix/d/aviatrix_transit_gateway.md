@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -93,6 +93,11 @@ output "customized_spoke_vpc_routes" {
   value       = data.aviatrix_transit_gateway.this.customized_spoke_vpc_routes
 }
 
+output "customized_transit_vpc_routes" {
+  description = "returns a set of string"
+  value       = data.aviatrix_transit_gateway.this.customized_transit_vpc_routes
+}
+
 output "enable_active_mesh" {
   description = "returns a bool"
   value       = data.aviatrix_transit_gateway.this.enable_active_mesh
@@ -126,6 +131,11 @@ output "enable_hybrid_connection" {
 output "enable_learned_cidrs_approval" {
   description = "returns a bool"
   value       = data.aviatrix_transit_gateway.this.enable_learned_cidrs_approval
+}
+
+output "enable_private_oob" {
+  description = "returns a bool"
+  value       = data.aviatrix_transit_gateway.this.enable_private_oob
 }
 
 output "enable_transit_firenet" {
@@ -173,6 +183,16 @@ output "ha_insane_mode_az" {
   value       = data.aviatrix_transit_gateway.this.ha_insane_mode_az
 }
 
+output "ha_oob_availability_zone" {
+  description = "returns a string"
+  value       = data.aviatrix_transit_gateway.this.ha_oob_availability_zone
+}
+
+output "ha_oob_management_subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_transit_gateway.this.ha_oob_management_subnet
+}
+
 output "ha_private_ip" {
   description = "returns a string"
   value       = data.aviatrix_transit_gateway.this.ha_private_ip
@@ -206,6 +226,16 @@ output "insane_mode" {
 output "insane_mode_az" {
   description = "returns a string"
   value       = data.aviatrix_transit_gateway.this.insane_mode_az
+}
+
+output "oob_availability_zone" {
+  description = "returns a string"
+  value       = data.aviatrix_transit_gateway.this.oob_availability_zone
+}
+
+output "oob_management_subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_transit_gateway.this.oob_management_subnet
 }
 
 output "private_ip" {

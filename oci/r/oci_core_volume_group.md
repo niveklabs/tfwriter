@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_core_volume_group" {
 
   # availability_domain - (required) is a type of string
   availability_domain = null
+  # backup_policy_id - (optional) is a type of string
+  backup_policy_id = null
   # compartment_id - (required) is a type of string
   compartment_id = null
   # defined_tags - (optional) is a type of map of string
@@ -61,6 +63,12 @@ module "oci_core_volume_group" {
 variable "availability_domain" {
   description = "(required)"
   type        = string
+}
+
+variable "backup_policy_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "compartment_id" {
@@ -118,6 +126,7 @@ variable "timeouts" {
 ```terraform
 resource "oci_core_volume_group" "this" {
   availability_domain = var.availability_domain
+  backup_policy_id    = var.backup_policy_id
   compartment_id      = var.compartment_id
   defined_tags        = var.defined_tags
   display_name        = var.display_name
@@ -150,6 +159,11 @@ resource "oci_core_volume_group" "this" {
 ### Outputs
 
 ```terraform
+output "backup_policy_id" {
+  description = "returns a string"
+  value       = oci_core_volume_group.this.backup_policy_id
+}
+
 output "defined_tags" {
   description = "returns a map of string"
   value       = oci_core_volume_group.this.defined_tags

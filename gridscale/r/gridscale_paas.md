@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gridscale = ">= 1.7.4"
+    gridscale = ">= 1.8.4"
   }
 }
 ```
@@ -183,6 +183,11 @@ output "id" {
   value       = gridscale_paas.this.id
 }
 
+output "kubeconfig" {
+  description = "returns a string"
+  value       = gridscale_paas.this.kubeconfig
+}
+
 output "listen_port" {
   description = "returns a set of object"
   value       = gridscale_paas.this.listen_port
@@ -201,6 +206,11 @@ output "password" {
 output "security_zone_uuid" {
   description = "returns a string"
   value       = gridscale_paas.this.security_zone_uuid
+}
+
+output "service_template_uuid_computed" {
+  description = "returns a string"
+  value       = gridscale_paas.this.service_template_uuid_computed
 }
 
 output "status" {

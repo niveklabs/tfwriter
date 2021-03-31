@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -50,42 +50,42 @@ module "datadog_metric_metadata" {
 
 ```terraform
 variable "description" {
-  description = "(optional)"
+  description = "(optional) - A description of the metric."
   type        = string
   default     = null
 }
 
 variable "metric" {
-  description = "(required)"
+  description = "(required) - The name of the metric."
   type        = string
 }
 
 variable "per_unit" {
-  description = "(optional)"
+  description = "(optional) - Per unit of the metric such as `second` in `bytes per second`."
   type        = string
   default     = null
 }
 
 variable "short_name" {
-  description = "(optional)"
+  description = "(optional) - A short name of the metric."
   type        = string
   default     = null
 }
 
 variable "statsd_interval" {
-  description = "(optional)"
+  description = "(optional) - If applicable, statsd flush interval in seconds for the metric."
   type        = number
   default     = null
 }
 
 variable "type" {
-  description = "(optional)"
+  description = "(optional) - Type of the metric."
   type        = string
   default     = null
 }
 
 variable "unit" {
-  description = "(optional)"
+  description = "(optional) - Primary unit of the metric such as `byte` or `operation`."
   type        = string
   default     = null
 }

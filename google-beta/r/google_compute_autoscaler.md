@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -41,7 +41,8 @@ module "google_compute_autoscaler" {
   autoscaling_policy = [{
     cooldown_period = null
     cpu_utilization = [{
-      target = null
+      predictive_method = null
+      target            = null
     }]
     load_balancing_utilization = [{
       target = null
@@ -69,6 +70,15 @@ module "google_compute_autoscaler" {
         percent = null
       }]
       time_window_sec = null
+    }]
+    scaling_schedules = [{
+      description           = null
+      disabled              = null
+      duration_sec          = null
+      min_required_replicas = null
+      name                  = null
+      schedule              = null
+      time_zone             = null
     }]
   }]
 
@@ -120,7 +130,8 @@ variable "autoscaling_policy" {
       cooldown_period = number
       cpu_utilization = list(object(
         {
-          target = number
+          predictive_method = string
+          target            = number
         }
       ))
       load_balancing_utilization = list(object(
@@ -160,6 +171,17 @@ variable "autoscaling_policy" {
             }
           ))
           time_window_sec = number
+        }
+      ))
+      scaling_schedules = set(object(
+        {
+          description           = string
+          disabled              = bool
+          duration_sec          = number
+          min_required_replicas = number
+          name                  = string
+          schedule              = string
+          time_zone             = string
         }
       ))
     }
@@ -202,7 +224,8 @@ resource "google_compute_autoscaler" "this" {
       dynamic "cpu_utilization" {
         for_each = autoscaling_policy.value.cpu_utilization
         content {
-          target = cpu_utilization.value["target"]
+          predictive_method = cpu_utilization.value["predictive_method"]
+          target            = cpu_utilization.value["target"]
         }
       }
 
@@ -253,6 +276,19 @@ resource "google_compute_autoscaler" "this" {
             }
           }
 
+        }
+      }
+
+      dynamic "scaling_schedules" {
+        for_each = autoscaling_policy.value.scaling_schedules
+        content {
+          description           = scaling_schedules.value["description"]
+          disabled              = scaling_schedules.value["disabled"]
+          duration_sec          = scaling_schedules.value["duration_sec"]
+          min_required_replicas = scaling_schedules.value["min_required_replicas"]
+          name                  = scaling_schedules.value["name"]
+          schedule              = scaling_schedules.value["schedule"]
+          time_zone             = scaling_schedules.value["time_zone"]
         }
       }
 

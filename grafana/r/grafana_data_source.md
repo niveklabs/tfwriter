@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    grafana = ">= 1.8.1"
+    grafana = ">= 1.9.0"
   }
 }
 ```
@@ -53,8 +53,11 @@ module "grafana_data_source" {
   json_data = [{
     assume_role_arn           = null
     auth_type                 = null
+    authentication_type       = null
+    client_email              = null
     conn_max_lifetime         = null
     custom_metrics_namespaces = null
+    default_project           = null
     default_region            = null
     encrypt                   = null
     es_version                = null
@@ -66,6 +69,7 @@ module "grafana_data_source" {
     max_idle_conns            = null
     max_open_conns            = null
     postgres_version          = null
+    profile                   = null
     query_timeout             = null
     ssl_mode                  = null
     time_field                = null
@@ -74,6 +78,7 @@ module "grafana_data_source" {
     tls_auth                  = null
     tls_auth_with_ca_cert     = null
     tls_skip_verify           = null
+    token_uri                 = null
     tsdb_resolution           = null
     tsdb_version              = null
   }]
@@ -166,8 +171,11 @@ variable "json_data" {
     {
       assume_role_arn           = string
       auth_type                 = string
+      authentication_type       = string
+      client_email              = string
       conn_max_lifetime         = number
       custom_metrics_namespaces = string
+      default_project           = string
       default_region            = string
       encrypt                   = string
       es_version                = number
@@ -179,6 +187,7 @@ variable "json_data" {
       max_idle_conns            = number
       max_open_conns            = number
       postgres_version          = number
+      profile                   = string
       query_timeout             = string
       ssl_mode                  = string
       time_field                = string
@@ -187,6 +196,7 @@ variable "json_data" {
       tls_auth                  = bool
       tls_auth_with_ca_cert     = bool
       tls_skip_verify           = bool
+      token_uri                 = string
       tsdb_resolution           = string
       tsdb_version              = string
     }
@@ -235,8 +245,11 @@ resource "grafana_data_source" "this" {
     content {
       assume_role_arn           = json_data.value["assume_role_arn"]
       auth_type                 = json_data.value["auth_type"]
+      authentication_type       = json_data.value["authentication_type"]
+      client_email              = json_data.value["client_email"]
       conn_max_lifetime         = json_data.value["conn_max_lifetime"]
       custom_metrics_namespaces = json_data.value["custom_metrics_namespaces"]
+      default_project           = json_data.value["default_project"]
       default_region            = json_data.value["default_region"]
       encrypt                   = json_data.value["encrypt"]
       es_version                = json_data.value["es_version"]
@@ -248,6 +261,7 @@ resource "grafana_data_source" "this" {
       max_idle_conns            = json_data.value["max_idle_conns"]
       max_open_conns            = json_data.value["max_open_conns"]
       postgres_version          = json_data.value["postgres_version"]
+      profile                   = json_data.value["profile"]
       query_timeout             = json_data.value["query_timeout"]
       ssl_mode                  = json_data.value["ssl_mode"]
       time_field                = json_data.value["time_field"]
@@ -256,6 +270,7 @@ resource "grafana_data_source" "this" {
       tls_auth                  = json_data.value["tls_auth"]
       tls_auth_with_ca_cert     = json_data.value["tls_auth_with_ca_cert"]
       tls_skip_verify           = json_data.value["tls_skip_verify"]
+      token_uri                 = json_data.value["token_uri"]
       tsdb_resolution           = json_data.value["tsdb_resolution"]
       tsdb_version              = json_data.value["tsdb_version"]
     }

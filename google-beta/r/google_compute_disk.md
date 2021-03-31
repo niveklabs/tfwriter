@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "google_compute_disk" {
   interface = null
   # labels - (optional) is a type of map of string
   labels = {}
+  # multi_writer - (optional) is a type of bool
+  multi_writer = null
   # name - (required) is a type of string
   name = null
   # physical_block_size_bytes - (optional) is a type of number
@@ -110,6 +112,12 @@ variable "labels" {
   default     = null
 }
 
+variable "multi_writer" {
+  description = "(optional) - Indicates whether or not the disk can be read/write attached to more than one instance."
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(required) - Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035. Specifically, the name must be 1-63 characters long and match\nthe regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the\nfirst character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash."
   type        = string
@@ -134,7 +142,7 @@ variable "resource_policies" {
 }
 
 variable "size" {
-  description = "(optional) - Size of the persistent disk, specified in GB. You can specify this\nfield when creating a persistent disk using the 'image' or\n'snapshot' parameter, or specify it alone to create an empty\npersistent disk.\n\nIf you specify this field along with 'image' or 'snapshot',\nthe value must not be less than the size of the image\nor the size of the snapshot."
+  description = "(optional) - Size of the persistent disk, specified in GB. You can specify this\nfield when creating a persistent disk using the 'image' or\n'snapshot' parameter, or specify it alone to create an empty\npersistent disk.\n\nIf you specify this field along with 'image' or 'snapshot',\nthe value must not be less than the size of the image\nor the size of the snapshot.\n\n~>**NOTE** If you change the size, Terraform updates the disk size\nif upsizing is detected but recreates the disk if downsizing is requested.\nYou can add 'lifecycle.prevent_destroy' in the config to prevent destroying\nand recreating."
   type        = number
   default     = null
 }
@@ -219,6 +227,7 @@ resource "google_compute_disk" "this" {
   image                     = var.image
   interface                 = var.interface
   labels                    = var.labels
+  multi_writer              = var.multi_writer
   name                      = var.name
   physical_block_size_bytes = var.physical_block_size_bytes
   project                   = var.project

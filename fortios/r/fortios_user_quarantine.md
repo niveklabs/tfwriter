@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,10 @@ terraform {
 module "fortios_user_quarantine" {
   source = "./modules/fortios/r/fortios_user_quarantine"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # firewall_groups - (optional) is a type of string
+  firewall_groups = null
   # quarantine - (optional) is a type of string
   quarantine = null
   # traffic_policy - (optional) is a type of string
@@ -37,6 +41,7 @@ module "fortios_user_quarantine" {
     entry       = null
     macs = [{
       description = null
+      drop        = null
       entry_id    = null
       mac         = null
       parent      = null
@@ -50,6 +55,18 @@ module "fortios_user_quarantine" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "firewall_groups" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "quarantine" {
   description = "(optional)"
   type        = string
@@ -71,6 +88,7 @@ variable "targets" {
       macs = list(object(
         {
           description = string
+          drop        = string
           entry_id    = number
           mac         = string
           parent      = string
@@ -88,8 +106,10 @@ variable "targets" {
 
 ```terraform
 resource "fortios_user_quarantine" "this" {
-  quarantine     = var.quarantine
-  traffic_policy = var.traffic_policy
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  firewall_groups       = var.firewall_groups
+  quarantine            = var.quarantine
+  traffic_policy        = var.traffic_policy
 
   dynamic "targets" {
     for_each = var.targets
@@ -101,6 +121,7 @@ resource "fortios_user_quarantine" "this" {
         for_each = targets.value.macs
         content {
           description = macs.value["description"]
+          drop        = macs.value["drop"]
           entry_id    = macs.value["entry_id"]
           mac         = macs.value["mac"]
           parent      = macs.value["parent"]
@@ -118,6 +139,11 @@ resource "fortios_user_quarantine" "this" {
 ### Outputs
 
 ```terraform
+output "firewall_groups" {
+  description = "returns a string"
+  value       = fortios_user_quarantine.this.firewall_groups
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_user_quarantine.this.id

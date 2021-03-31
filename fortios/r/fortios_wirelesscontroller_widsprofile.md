@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -51,6 +51,8 @@ module "fortios_wirelesscontroller_widsprofile" {
   ap_scan = null
   # ap_scan_passive - (optional) is a type of string
   ap_scan_passive = null
+  # ap_scan_threshold - (optional) is a type of string
+  ap_scan_threshold = null
   # asleap_attack - (optional) is a type of string
   asleap_attack = null
   # assoc_flood_thresh - (optional) is a type of number
@@ -71,6 +73,8 @@ module "fortios_wirelesscontroller_widsprofile" {
   deauth_broadcast = null
   # deauth_unknown_src_thresh - (optional) is a type of number
   deauth_unknown_src_thresh = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # eapol_fail_flood - (optional) is a type of string
   eapol_fail_flood = null
   # eapol_fail_intv - (optional) is a type of number
@@ -125,6 +129,10 @@ module "fortios_wirelesscontroller_widsprofile" {
   weak_wep_iv = null
   # wireless_bridge - (optional) is a type of string
   wireless_bridge = null
+
+  ap_bgscan_disable_schedules = [{
+    name = null
+  }]
 }
 ```
 
@@ -205,6 +213,12 @@ variable "ap_scan_passive" {
   default     = null
 }
 
+variable "ap_scan_threshold" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "asleap_attack" {
   description = "(optional)"
   type        = string
@@ -262,6 +276,12 @@ variable "deauth_broadcast" {
 variable "deauth_unknown_src_thresh" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -426,6 +446,16 @@ variable "wireless_bridge" {
   type        = string
   default     = null
 }
+
+variable "ap_bgscan_disable_schedules" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -446,6 +476,7 @@ resource "fortios_wirelesscontroller_widsprofile" "this" {
   ap_fgscan_report_intv     = var.ap_fgscan_report_intv
   ap_scan                   = var.ap_scan
   ap_scan_passive           = var.ap_scan_passive
+  ap_scan_threshold         = var.ap_scan_threshold
   asleap_attack             = var.asleap_attack
   assoc_flood_thresh        = var.assoc_flood_thresh
   assoc_flood_time          = var.assoc_flood_time
@@ -456,6 +487,7 @@ resource "fortios_wirelesscontroller_widsprofile" "this" {
   comment                   = var.comment
   deauth_broadcast          = var.deauth_broadcast
   deauth_unknown_src_thresh = var.deauth_unknown_src_thresh
+  dynamic_sort_subtable     = var.dynamic_sort_subtable
   eapol_fail_flood          = var.eapol_fail_flood
   eapol_fail_intv           = var.eapol_fail_intv
   eapol_fail_thresh         = var.eapol_fail_thresh
@@ -483,6 +515,14 @@ resource "fortios_wirelesscontroller_widsprofile" "this" {
   spoofed_deauth            = var.spoofed_deauth
   weak_wep_iv               = var.weak_wep_iv
   wireless_bridge           = var.wireless_bridge
+
+  dynamic "ap_bgscan_disable_schedules" {
+    for_each = var.ap_bgscan_disable_schedules
+    content {
+      name = ap_bgscan_disable_schedules.value["name"]
+    }
+  }
+
 }
 ```
 
@@ -549,6 +589,11 @@ output "ap_scan" {
 output "ap_scan_passive" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_widsprofile.this.ap_scan_passive
+}
+
+output "ap_scan_threshold" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_widsprofile.this.ap_scan_threshold
 }
 
 output "asleap_attack" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -77,6 +77,11 @@ module "alicloud_cms_group_metric_rule" {
       threshold           = null
       times               = null
     }]
+  }]
+
+  timeouts = [{
+    create = null
+    update = null
   }]
 }
 ```
@@ -201,6 +206,17 @@ variable "escalations" {
     }
   ))
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -259,6 +275,14 @@ resource "alicloud_cms_group_metric_rule" "this" {
         }
       }
 
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      update = timeouts.value["update"]
     }
   }
 

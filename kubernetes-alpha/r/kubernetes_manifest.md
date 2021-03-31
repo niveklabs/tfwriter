@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes-alpha = ">= 0.2.1"
+    kubernetes-alpha = ">= 0.3.2"
   }
 }
 ```

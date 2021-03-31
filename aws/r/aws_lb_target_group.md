@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "aws_lb_target_group" {
   port = null
   # protocol - (optional) is a type of string
   protocol = null
+  # protocol_version - (optional) is a type of string
+  protocol_version = null
   # proxy_protocol_v2 - (optional) is a type of bool
   proxy_protocol_v2 = null
   # slow_start - (optional) is a type of number
@@ -114,6 +116,12 @@ variable "port" {
 }
 
 variable "protocol" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "protocol_version" {
   description = "(optional)"
   type        = string
   default     = null
@@ -193,6 +201,7 @@ resource "aws_lb_target_group" "this" {
   name_prefix                        = var.name_prefix
   port                               = var.port
   protocol                           = var.protocol
+  protocol_version                   = var.protocol_version
   proxy_protocol_v2                  = var.proxy_protocol_v2
   slow_start                         = var.slow_start
   tags                               = var.tags
@@ -254,6 +263,11 @@ output "load_balancing_algorithm_type" {
 output "name" {
   description = "returns a string"
   value       = aws_lb_target_group.this.name
+}
+
+output "protocol_version" {
+  description = "returns a string"
+  value       = aws_lb_target_group.this.protocol_version
 }
 
 output "this" {

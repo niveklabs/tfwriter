@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "oci_mysql_mysql_db_systems" {
   display_name = null
   # is_analytics_cluster_attached - (optional) is a type of bool
   is_analytics_cluster_attached = null
+  # is_heat_wave_cluster_attached - (optional) is a type of bool
+  is_heat_wave_cluster_attached = null
   # is_up_to_date - (optional) is a type of bool
   is_up_to_date = null
   # state - (optional) is a type of string
@@ -84,6 +86,12 @@ variable "is_analytics_cluster_attached" {
   default     = null
 }
 
+variable "is_heat_wave_cluster_attached" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "is_up_to_date" {
   description = "(optional)"
   type        = bool
@@ -120,6 +128,7 @@ data "oci_mysql_mysql_db_systems" "this" {
   db_system_id                  = var.db_system_id
   display_name                  = var.display_name
   is_analytics_cluster_attached = var.is_analytics_cluster_attached
+  is_heat_wave_cluster_attached = var.is_heat_wave_cluster_attached
   is_up_to_date                 = var.is_up_to_date
   state                         = var.state
 

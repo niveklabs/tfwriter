@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -45,6 +45,12 @@ module "fortios_firewall_interfacepolicy6" {
   dlp_sensor_status = null
   # dsri - (optional) is a type of string
   dsri = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = null
+  # emailfilter_profile_status - (optional) is a type of string
+  emailfilter_profile_status = null
   # interface - (required) is a type of string
   interface = null
   # ips_sensor - (optional) is a type of string
@@ -138,6 +144,24 @@ variable "dlp_sensor_status" {
 }
 
 variable "dsri" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile_status" {
   description = "(optional)"
   type        = string
   default     = null
@@ -249,27 +273,30 @@ variable "srcaddr6" {
 
 ```terraform
 resource "fortios_firewall_interfacepolicy6" "this" {
-  address_type              = var.address_type
-  application_list          = var.application_list
-  application_list_status   = var.application_list_status
-  av_profile                = var.av_profile
-  av_profile_status         = var.av_profile_status
-  comments                  = var.comments
-  dlp_sensor                = var.dlp_sensor
-  dlp_sensor_status         = var.dlp_sensor_status
-  dsri                      = var.dsri
-  interface                 = var.interface
-  ips_sensor                = var.ips_sensor
-  ips_sensor_status         = var.ips_sensor_status
-  label                     = var.label
-  logtraffic                = var.logtraffic
-  policyid                  = var.policyid
-  scan_botnet_connections   = var.scan_botnet_connections
-  spamfilter_profile        = var.spamfilter_profile
-  spamfilter_profile_status = var.spamfilter_profile_status
-  status                    = var.status
-  webfilter_profile         = var.webfilter_profile
-  webfilter_profile_status  = var.webfilter_profile_status
+  address_type               = var.address_type
+  application_list           = var.application_list
+  application_list_status    = var.application_list_status
+  av_profile                 = var.av_profile
+  av_profile_status          = var.av_profile_status
+  comments                   = var.comments
+  dlp_sensor                 = var.dlp_sensor
+  dlp_sensor_status          = var.dlp_sensor_status
+  dsri                       = var.dsri
+  dynamic_sort_subtable      = var.dynamic_sort_subtable
+  emailfilter_profile        = var.emailfilter_profile
+  emailfilter_profile_status = var.emailfilter_profile_status
+  interface                  = var.interface
+  ips_sensor                 = var.ips_sensor
+  ips_sensor_status          = var.ips_sensor_status
+  label                      = var.label
+  logtraffic                 = var.logtraffic
+  policyid                   = var.policyid
+  scan_botnet_connections    = var.scan_botnet_connections
+  spamfilter_profile         = var.spamfilter_profile
+  spamfilter_profile_status  = var.spamfilter_profile_status
+  status                     = var.status
+  webfilter_profile          = var.webfilter_profile
+  webfilter_profile_status   = var.webfilter_profile_status
 
   dynamic "dstaddr6" {
     for_each = var.dstaddr6
@@ -338,6 +365,16 @@ output "dlp_sensor_status" {
 output "dsri" {
   description = "returns a string"
   value       = fortios_firewall_interfacepolicy6.this.dsri
+}
+
+output "emailfilter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_interfacepolicy6.this.emailfilter_profile
+}
+
+output "emailfilter_profile_status" {
+  description = "returns a string"
+  value       = fortios_firewall_interfacepolicy6.this.emailfilter_profile_status
 }
 
 output "id" {

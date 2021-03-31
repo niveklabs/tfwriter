@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ns1 = ">= 1.9.0"
+    ns1 = ">= 1.9.4"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "ns1_user" {
   account_manage_account_settings = null
   # account_manage_apikeys - (optional) is a type of bool
   account_manage_apikeys = null
+  # account_manage_ip_whitelist - (optional) is a type of bool
+  account_manage_ip_whitelist = null
   # account_manage_payment_methods - (optional) is a type of bool
   account_manage_payment_methods = null
   # account_manage_plan - (optional) is a type of bool
@@ -106,6 +108,12 @@ variable "account_manage_account_settings" {
 }
 
 variable "account_manage_apikeys" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "account_manage_ip_whitelist" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -297,6 +305,7 @@ variable "username" {
 resource "ns1_user" "this" {
   account_manage_account_settings  = var.account_manage_account_settings
   account_manage_apikeys           = var.account_manage_apikeys
+  account_manage_ip_whitelist      = var.account_manage_ip_whitelist
   account_manage_payment_methods   = var.account_manage_payment_methods
   account_manage_plan              = var.account_manage_plan
   account_manage_teams             = var.account_manage_teams

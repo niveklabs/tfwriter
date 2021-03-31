@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -35,7 +35,12 @@ module "azuredevops_branch_policy_min_reviewers" {
   project_id = null
 
   settings = [{
-    reviewer_count = null
+    allow_completion_with_rejects_or_waits = null
+    last_pusher_cannot_approve             = null
+    on_last_iteration_require_vote         = null
+    on_push_reset_all_votes                = null
+    on_push_reset_approved_votes           = null
+    reviewer_count                         = null
     scope = [{
       match_type     = null
       repository_id  = null
@@ -72,7 +77,12 @@ variable "settings" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
     {
-      reviewer_count = number
+      allow_completion_with_rejects_or_waits = bool
+      last_pusher_cannot_approve             = bool
+      on_last_iteration_require_vote         = bool
+      on_push_reset_all_votes                = bool
+      on_push_reset_approved_votes           = bool
+      reviewer_count                         = number
       scope = list(object(
         {
           match_type     = string
@@ -99,8 +109,13 @@ resource "azuredevops_branch_policy_min_reviewers" "this" {
   dynamic "settings" {
     for_each = var.settings
     content {
-      reviewer_count     = settings.value["reviewer_count"]
-      submitter_can_vote = settings.value["submitter_can_vote"]
+      allow_completion_with_rejects_or_waits = settings.value["allow_completion_with_rejects_or_waits"]
+      last_pusher_cannot_approve             = settings.value["last_pusher_cannot_approve"]
+      on_last_iteration_require_vote         = settings.value["on_last_iteration_require_vote"]
+      on_push_reset_all_votes                = settings.value["on_push_reset_all_votes"]
+      on_push_reset_approved_votes           = settings.value["on_push_reset_approved_votes"]
+      reviewer_count                         = settings.value["reviewer_count"]
+      submitter_can_vote                     = settings.value["submitter_can_vote"]
 
       dynamic "scope" {
         for_each = settings.value.scope

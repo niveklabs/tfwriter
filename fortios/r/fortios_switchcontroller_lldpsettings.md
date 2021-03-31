@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_switchcontroller_lldpsettings" {
   source = "./modules/fortios/r/fortios_switchcontroller_lldpsettings"
 
+  # device_detection - (optional) is a type of string
+  device_detection = null
   # fast_start_interval - (optional) is a type of number
   fast_start_interval = null
   # management_interface - (optional) is a type of string
@@ -45,6 +47,12 @@ module "fortios_switchcontroller_lldpsettings" {
 ### Variables
 
 ```terraform
+variable "device_detection" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fast_start_interval" {
   description = "(optional)"
   type        = number
@@ -82,6 +90,7 @@ variable "tx_interval" {
 
 ```terraform
 resource "fortios_switchcontroller_lldpsettings" "this" {
+  device_detection     = var.device_detection
   fast_start_interval  = var.fast_start_interval
   management_interface = var.management_interface
   status               = var.status
@@ -95,6 +104,11 @@ resource "fortios_switchcontroller_lldpsettings" "this" {
 ### Outputs
 
 ```terraform
+output "device_detection" {
+  description = "returns a string"
+  value       = fortios_switchcontroller_lldpsettings.this.device_detection
+}
+
 output "fast_start_interval" {
   description = "returns a number"
   value       = fortios_switchcontroller_lldpsettings.this.fast_start_interval

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nsxt = ">= 3.1.0"
+    nsxt = ">= 3.1.1"
   }
 }
 ```
@@ -41,7 +41,7 @@ module "nsxt_policy_segment" {
   nsx_id = null
   # overlay_id - (optional) is a type of number
   overlay_id = null
-  # transport_zone_path - (required) is a type of string
+  # transport_zone_path - (optional) is a type of string
   transport_zone_path = null
   # vlan_ids - (optional) is a type of list of string
   vlan_ids = []
@@ -164,8 +164,9 @@ variable "overlay_id" {
 }
 
 variable "transport_zone_path" {
-  description = "(required) - Policy path to the transport zone"
+  description = "(optional) - Policy path to the transport zone"
   type        = string
+  default     = null
 }
 
 variable "vlan_ids" {

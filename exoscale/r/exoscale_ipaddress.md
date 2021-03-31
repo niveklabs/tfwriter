@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    exoscale = ">= 0.21.0"
+    exoscale = ">= 0.23.0"
   }
 }
 ```
@@ -47,6 +47,8 @@ module "exoscale_ipaddress" {
   healthcheck_tls_skip_verify = null
   # healthcheck_tls_sni - (optional) is a type of string
   healthcheck_tls_sni = null
+  # reverse_dns - (optional) is a type of string
+  reverse_dns = null
   # tags - (optional) is a type of map of string
   tags = {}
   # zone - (required) is a type of string
@@ -126,6 +128,12 @@ variable "healthcheck_tls_sni" {
   default     = null
 }
 
+variable "reverse_dns" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "(optional) - Map of tags (key: value)"
   type        = map(string)
@@ -167,6 +175,7 @@ resource "exoscale_ipaddress" "this" {
   healthcheck_timeout         = var.healthcheck_timeout
   healthcheck_tls_skip_verify = var.healthcheck_tls_skip_verify
   healthcheck_tls_sni         = var.healthcheck_tls_sni
+  reverse_dns                 = var.reverse_dns
   tags                        = var.tags
   zone                        = var.zone
 

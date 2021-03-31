@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -62,7 +62,7 @@ module "kubernetes_service_account" {
 
 ```terraform
 variable "automount_service_account_token" {
-  description = "(optional) - True to enable automatic mounting of the service account token"
+  description = "(optional) - Enable automatic mounting of the service account token"
   type        = bool
   default     = null
 }

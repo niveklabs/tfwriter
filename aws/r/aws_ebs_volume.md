@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -45,6 +45,8 @@ module "aws_ebs_volume" {
   snapshot_id = null
   # tags - (optional) is a type of map of string
   tags = {}
+  # throughput - (optional) is a type of number
+  throughput = null
   # type - (optional) is a type of string
   type = null
 }
@@ -108,6 +110,12 @@ variable "tags" {
   default     = null
 }
 
+variable "throughput" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "type" {
   description = "(optional)"
   type        = string
@@ -130,6 +138,7 @@ resource "aws_ebs_volume" "this" {
   size                 = var.size
   snapshot_id          = var.snapshot_id
   tags                 = var.tags
+  throughput           = var.throughput
   type                 = var.type
 }
 ```
@@ -172,6 +181,11 @@ output "size" {
 output "snapshot_id" {
   description = "returns a string"
   value       = aws_ebs_volume.this.snapshot_id
+}
+
+output "throughput" {
+  description = "returns a number"
+  value       = aws_ebs_volume.this.throughput
 }
 
 output "type" {

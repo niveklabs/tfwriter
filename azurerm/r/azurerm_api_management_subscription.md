@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -45,7 +45,7 @@ module "azurerm_api_management_subscription" {
   state = null
   # subscription_id - (optional) is a type of string
   subscription_id = null
-  # user_id - (required) is a type of string
+  # user_id - (optional) is a type of string
   user_id = null
 
   timeouts = [{
@@ -114,8 +114,9 @@ variable "subscription_id" {
 }
 
 variable "user_id" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "timeouts" {

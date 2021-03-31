@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -52,6 +52,8 @@ module "oci_objectstorage_object" {
   # object - (required) is a type of string
   object = null
   # source - (optional) is a type of string
+  # storage_tier - (optional) is a type of string
+  storage_tier = null
 
   source_uri_details = [{
     bucket                                = null
@@ -152,6 +154,12 @@ variable "source" {
   default     = null
 }
 
+variable "storage_tier" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "source_uri_details" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -201,6 +209,7 @@ resource "oci_objectstorage_object" "this" {
   namespace                  = var.namespace
   object                     = var.object
   source                     = var.source
+  storage_tier               = var.storage_tier
 
   dynamic "source_uri_details" {
     for_each = var.source_uri_details
@@ -256,6 +265,11 @@ output "id" {
 output "state" {
   description = "returns a string"
   value       = oci_objectstorage_object.this.state
+}
+
+output "storage_tier" {
+  description = "returns a string"
+  value       = oci_objectstorage_object.this.storage_tier
 }
 
 output "version_id" {

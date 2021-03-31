@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    digitalocean = ">= 2.3.0"
+    digitalocean = ">= 2.7.0"
   }
 }
 ```
@@ -45,6 +45,12 @@ module "digitalocean_kubernetes_node_pool" {
   size = null
   # tags - (optional) is a type of set of string
   tags = []
+
+  taint = [{
+    effect = null
+    key    = null
+    value  = null
+  }]
 }
 ```
 
@@ -103,6 +109,18 @@ variable "tags" {
   type        = set(string)
   default     = null
 }
+
+variable "taint" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      effect = string
+      key    = string
+      value  = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -120,6 +138,16 @@ resource "digitalocean_kubernetes_node_pool" "this" {
   node_count = var.node_count
   size       = var.size
   tags       = var.tags
+
+  dynamic "taint" {
+    for_each = var.taint
+    content {
+      effect = taint.value["effect"]
+      key    = taint.value["key"]
+      value  = taint.value["value"]
+    }
+  }
+
 }
 ```
 

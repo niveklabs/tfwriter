@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,8 +29,12 @@ module "oci_identity_identity_providers" {
 
   # compartment_id - (required) is a type of string
   compartment_id = null
+  # name - (optional) is a type of string
+  name = null
   # protocol - (required) is a type of string
   protocol = null
+  # state - (optional) is a type of string
+  state = null
 
   filter = [{
     name   = null
@@ -50,9 +54,21 @@ variable "compartment_id" {
   type        = string
 }
 
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "protocol" {
   description = "(required)"
   type        = string
+}
+
+variable "state" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "filter" {
@@ -75,7 +91,9 @@ variable "filter" {
 ```terraform
 data "oci_identity_identity_providers" "this" {
   compartment_id = var.compartment_id
+  name           = var.name
   protocol       = var.protocol
+  state          = var.state
 
   dynamic "filter" {
     for_each = var.filter

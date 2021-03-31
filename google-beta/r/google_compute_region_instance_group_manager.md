@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -31,13 +31,15 @@ module "google_compute_region_instance_group_manager" {
   base_instance_name = null
   # description - (optional) is a type of string
   description = null
+  # distribution_policy_target_shape - (optional) is a type of string
+  distribution_policy_target_shape = null
   # distribution_policy_zones - (optional) is a type of set of string
   distribution_policy_zones = []
   # name - (required) is a type of string
   name = null
   # project - (optional) is a type of string
   project = null
-  # region - (required) is a type of string
+  # region - (optional) is a type of string
   region = null
   # target_pools - (optional) is a type of set of string
   target_pools = []
@@ -106,6 +108,12 @@ variable "description" {
   default     = null
 }
 
+variable "distribution_policy_target_shape" {
+  description = "(optional) - The shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType)."
+  type        = string
+  default     = null
+}
+
 variable "distribution_policy_zones" {
   description = "(optional) - The distribution policy for this managed instance group. You can specify one or more values."
   type        = set(string)
@@ -124,8 +132,9 @@ variable "project" {
 }
 
 variable "region" {
-  description = "(required) - The region where the managed instance group resides."
+  description = "(optional) - The region where the managed instance group resides."
   type        = string
+  default     = null
 }
 
 variable "target_pools" {
@@ -232,15 +241,16 @@ variable "version" {
 
 ```terraform
 resource "google_compute_region_instance_group_manager" "this" {
-  base_instance_name        = var.base_instance_name
-  description               = var.description
-  distribution_policy_zones = var.distribution_policy_zones
-  name                      = var.name
-  project                   = var.project
-  region                    = var.region
-  target_pools              = var.target_pools
-  target_size               = var.target_size
-  wait_for_instances        = var.wait_for_instances
+  base_instance_name               = var.base_instance_name
+  description                      = var.description
+  distribution_policy_target_shape = var.distribution_policy_target_shape
+  distribution_policy_zones        = var.distribution_policy_zones
+  name                             = var.name
+  project                          = var.project
+  region                           = var.region
+  target_pools                     = var.target_pools
+  target_size                      = var.target_size
+  wait_for_instances               = var.wait_for_instances
 
   dynamic "auto_healing_policies" {
     for_each = var.auto_healing_policies
@@ -315,6 +325,11 @@ resource "google_compute_region_instance_group_manager" "this" {
 ### Outputs
 
 ```terraform
+output "distribution_policy_target_shape" {
+  description = "returns a string"
+  value       = google_compute_region_instance_group_manager.this.distribution_policy_target_shape
+}
+
 output "distribution_policy_zones" {
   description = "returns a set of string"
   value       = google_compute_region_instance_group_manager.this.distribution_policy_zones
@@ -338,6 +353,11 @@ output "instance_group" {
 output "project" {
   description = "returns a string"
   value       = google_compute_region_instance_group_manager.this.project
+}
+
+output "region" {
+  description = "returns a string"
+  value       = google_compute_region_instance_group_manager.this.region
 }
 
 output "self_link" {

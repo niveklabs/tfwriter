@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -93,6 +93,11 @@ output "enable_encrypt_volume" {
   value       = data.aviatrix_spoke_gateway.this.enable_encrypt_volume
 }
 
+output "enable_private_oob" {
+  description = "returns a bool"
+  value       = data.aviatrix_spoke_gateway.this.enable_private_oob
+}
+
 output "enable_vpc_dns_server" {
   description = "returns a bool"
   value       = data.aviatrix_spoke_gateway.this.enable_vpc_dns_server
@@ -126,6 +131,16 @@ output "ha_gw_size" {
 output "ha_insane_mode_az" {
   description = "returns a string"
   value       = data.aviatrix_spoke_gateway.this.ha_insane_mode_az
+}
+
+output "ha_oob_availability_zone" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_oob_availability_zone
+}
+
+output "ha_oob_management_subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.ha_oob_management_subnet
 }
 
 output "ha_private_ip" {
@@ -166,6 +181,16 @@ output "insane_mode" {
 output "insane_mode_az" {
   description = "returns a string"
   value       = data.aviatrix_spoke_gateway.this.insane_mode_az
+}
+
+output "oob_availability_zone" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.oob_availability_zone
+}
+
+output "oob_management_subnet" {
+  description = "returns a string"
+  value       = data.aviatrix_spoke_gateway.this.oob_management_subnet
 }
 
 output "private_ip" {

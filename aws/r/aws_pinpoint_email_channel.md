@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aws_pinpoint_email_channel" {
 
   # application_id - (required) is a type of string
   application_id = null
+  # configuration_set - (optional) is a type of string
+  configuration_set = null
   # enabled - (optional) is a type of bool
   enabled = null
   # from_address - (required) is a type of string
@@ -48,6 +50,12 @@ module "aws_pinpoint_email_channel" {
 variable "application_id" {
   description = "(required)"
   type        = string
+}
+
+variable "configuration_set" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "enabled" {
@@ -78,11 +86,12 @@ variable "role_arn" {
 
 ```terraform
 resource "aws_pinpoint_email_channel" "this" {
-  application_id = var.application_id
-  enabled        = var.enabled
-  from_address   = var.from_address
-  identity       = var.identity
-  role_arn       = var.role_arn
+  application_id    = var.application_id
+  configuration_set = var.configuration_set
+  enabled           = var.enabled
+  from_address      = var.from_address
+  identity          = var.identity
+  role_arn          = var.role_arn
 }
 ```
 

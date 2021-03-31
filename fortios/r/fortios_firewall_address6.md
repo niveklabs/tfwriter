@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,8 +33,14 @@ module "fortios_firewall_address6" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # country - (optional) is a type of string
+  country = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # end_ip - (optional) is a type of string
   end_ip = null
+  # end_mac - (optional) is a type of string
+  end_mac = null
   # fqdn - (optional) is a type of string
   fqdn = null
   # host - (optional) is a type of string
@@ -51,6 +57,8 @@ module "fortios_firewall_address6" {
   sdn = null
   # start_ip - (optional) is a type of string
   start_ip = null
+  # start_mac - (optional) is a type of string
+  start_mac = null
   # template - (optional) is a type of string
   template = null
   # type - (optional) is a type of string
@@ -103,7 +111,25 @@ variable "comment" {
   default     = null
 }
 
+variable "country" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "end_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "end_mac" {
   description = "(optional)"
   type        = string
   default     = null
@@ -152,6 +178,12 @@ variable "sdn" {
 }
 
 variable "start_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "start_mac" {
   description = "(optional)"
   type        = string
   default     = null
@@ -226,22 +258,26 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_address6" "this" {
-  cache_ttl  = var.cache_ttl
-  color      = var.color
-  comment    = var.comment
-  end_ip     = var.end_ip
-  fqdn       = var.fqdn
-  host       = var.host
-  host_type  = var.host_type
-  ip6        = var.ip6
-  name       = var.name
-  obj_id     = var.obj_id
-  sdn        = var.sdn
-  start_ip   = var.start_ip
-  template   = var.template
-  type       = var.type
-  uuid       = var.uuid
-  visibility = var.visibility
+  cache_ttl             = var.cache_ttl
+  color                 = var.color
+  comment               = var.comment
+  country               = var.country
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  end_ip                = var.end_ip
+  end_mac               = var.end_mac
+  fqdn                  = var.fqdn
+  host                  = var.host
+  host_type             = var.host_type
+  ip6                   = var.ip6
+  name                  = var.name
+  obj_id                = var.obj_id
+  sdn                   = var.sdn
+  start_ip              = var.start_ip
+  start_mac             = var.start_mac
+  template              = var.template
+  type                  = var.type
+  uuid                  = var.uuid
+  visibility            = var.visibility
 
   dynamic "list" {
     for_each = var.list
@@ -293,9 +329,19 @@ output "color" {
   value       = fortios_firewall_address6.this.color
 }
 
+output "country" {
+  description = "returns a string"
+  value       = fortios_firewall_address6.this.country
+}
+
 output "end_ip" {
   description = "returns a string"
   value       = fortios_firewall_address6.this.end_ip
+}
+
+output "end_mac" {
+  description = "returns a string"
+  value       = fortios_firewall_address6.this.end_mac
 }
 
 output "fqdn" {
@@ -336,6 +382,11 @@ output "sdn" {
 output "start_ip" {
   description = "returns a string"
   value       = fortios_firewall_address6.this.start_ip
+}
+
+output "start_mac" {
+  description = "returns a string"
+  value       = fortios_firewall_address6.this.start_mac
 }
 
 output "template" {

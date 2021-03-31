@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azuread_groups" {
   source = "./modules/azuread/d/azuread_groups"
 
+  # display_names - (optional) is a type of list of string
+  display_names = []
   # names - (optional) is a type of list of string
   names = []
   # object_ids - (optional) is a type of list of string
@@ -39,6 +41,12 @@ module "azuread_groups" {
 ### Variables
 
 ```terraform
+variable "display_names" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "names" {
   description = "(optional)"
   type        = list(string)
@@ -58,8 +66,9 @@ variable "object_ids" {
 
 ```terraform
 data "azuread_groups" "this" {
-  names      = var.names
-  object_ids = var.object_ids
+  display_names = var.display_names
+  names         = var.names
+  object_ids    = var.object_ids
 }
 ```
 
@@ -68,6 +77,11 @@ data "azuread_groups" "this" {
 ### Outputs
 
 ```terraform
+output "display_names" {
+  description = "returns a list of string"
+  value       = data.azuread_groups.this.display_names
+}
+
 output "id" {
   description = "returns a string"
   value       = data.azuread_groups.this.id

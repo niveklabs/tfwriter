@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_core_instances" {
 
   # availability_domain - (optional) is a type of string
   availability_domain = null
+  # capacity_reservation_id - (optional) is a type of string
+  capacity_reservation_id = null
   # compartment_id - (required) is a type of string
   compartment_id = null
   # display_name - (optional) is a type of string
@@ -50,6 +52,12 @@ module "oci_core_instances" {
 
 ```terraform
 variable "availability_domain" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "capacity_reservation_id" {
   description = "(optional)"
   type        = string
   default     = null
@@ -91,10 +99,11 @@ variable "filter" {
 
 ```terraform
 data "oci_core_instances" "this" {
-  availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  display_name        = var.display_name
-  state               = var.state
+  availability_domain     = var.availability_domain
+  capacity_reservation_id = var.capacity_reservation_id
+  compartment_id          = var.compartment_id
+  display_name            = var.display_name
+  state                   = var.state
 
   dynamic "filter" {
     for_each = var.filter

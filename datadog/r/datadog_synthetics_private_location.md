@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -42,18 +42,18 @@ module "datadog_synthetics_private_location" {
 
 ```terraform
 variable "description" {
-  description = "(optional)"
+  description = "(optional) - Description of the private location."
   type        = string
   default     = null
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Synthetics private location name."
   type        = string
 }
 
 variable "tags" {
-  description = "(optional)"
+  description = "(optional) - A list of tags to associate with your synthetics private location."
   type        = list(string)
   default     = null
 }

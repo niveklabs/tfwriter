@@ -12,7 +12,7 @@
 
 ```terraform
 provider "brightbox" {
-  version = "1.5.0"
+  version = "2.0.3"
 
   # account - (optional) is a type of string
   account = null

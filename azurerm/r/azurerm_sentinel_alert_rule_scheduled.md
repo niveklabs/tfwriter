@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_sentinel_alert_rule_scheduled" {
   source = "./modules/azurerm/r/azurerm_sentinel_alert_rule_scheduled"
 
+  # alert_rule_template_guid - (optional) is a type of string
+  alert_rule_template_guid = null
   # description - (optional) is a type of string
   description = null
   # display_name - (required) is a type of string
@@ -56,6 +58,21 @@ module "azurerm_sentinel_alert_rule_scheduled" {
   # trigger_threshold - (optional) is a type of number
   trigger_threshold = null
 
+  event_grouping = [{
+    aggregation_method = null
+  }]
+
+  incident_configuration = [{
+    create_incident = null
+    grouping = [{
+      enabled                 = null
+      entity_matching_method  = null
+      group_by                = []
+      lookback_duration       = null
+      reopen_closed_incidents = null
+    }]
+  }]
+
   timeouts = [{
     create = null
     delete = null
@@ -70,6 +87,12 @@ module "azurerm_sentinel_alert_rule_scheduled" {
 ### Variables
 
 ```terraform
+variable "alert_rule_template_guid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional)"
   type        = string
@@ -149,6 +172,35 @@ variable "trigger_threshold" {
   default     = null
 }
 
+variable "event_grouping" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      aggregation_method = string
+    }
+  ))
+  default = []
+}
+
+variable "incident_configuration" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      create_incident = bool
+      grouping = list(object(
+        {
+          enabled                 = bool
+          entity_matching_method  = string
+          group_by                = set(string)
+          lookback_duration       = string
+          reopen_closed_incidents = bool
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -169,6 +221,7 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_sentinel_alert_rule_scheduled" "this" {
+  alert_rule_template_guid   = var.alert_rule_template_guid
   description                = var.description
   display_name               = var.display_name
   enabled                    = var.enabled
@@ -183,6 +236,32 @@ resource "azurerm_sentinel_alert_rule_scheduled" "this" {
   tactics                    = var.tactics
   trigger_operator           = var.trigger_operator
   trigger_threshold          = var.trigger_threshold
+
+  dynamic "event_grouping" {
+    for_each = var.event_grouping
+    content {
+      aggregation_method = event_grouping.value["aggregation_method"]
+    }
+  }
+
+  dynamic "incident_configuration" {
+    for_each = var.incident_configuration
+    content {
+      create_incident = incident_configuration.value["create_incident"]
+
+      dynamic "grouping" {
+        for_each = incident_configuration.value.grouping
+        content {
+          enabled                 = grouping.value["enabled"]
+          entity_matching_method  = grouping.value["entity_matching_method"]
+          group_by                = grouping.value["group_by"]
+          lookback_duration       = grouping.value["lookback_duration"]
+          reopen_closed_incidents = grouping.value["reopen_closed_incidents"]
+        }
+      }
+
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

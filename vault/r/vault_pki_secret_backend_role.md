@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    vault = ">= 2.17.0"
+    vault = ">= 2.19.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "vault_pki_secret_backend_role" {
   allow_subdomains = null
   # allowed_domains - (optional) is a type of list of string
   allowed_domains = []
+  # allowed_domains_template - (optional) is a type of bool
+  allowed_domains_template = null
   # allowed_other_sans - (optional) is a type of list of string
   allowed_other_sans = []
   # allowed_uri_sans - (optional) is a type of list of string
@@ -148,6 +150,12 @@ variable "allow_subdomains" {
 variable "allowed_domains" {
   description = "(optional) - The domains of the role."
   type        = list(string)
+  default     = null
+}
+
+variable "allowed_domains_template" {
+  description = "(optional) - Flag to indicate that `allowed_domains` specifies a template expression (e.g. {{identity.entity.aliases.<mount accessor>.name}})"
+  type        = bool
   default     = null
 }
 
@@ -343,6 +351,7 @@ resource "vault_pki_secret_backend_role" "this" {
   allow_localhost                    = var.allow_localhost
   allow_subdomains                   = var.allow_subdomains
   allowed_domains                    = var.allowed_domains
+  allowed_domains_template           = var.allowed_domains_template
   allowed_other_sans                 = var.allowed_other_sans
   allowed_uri_sans                   = var.allowed_uri_sans
   backend                            = var.backend

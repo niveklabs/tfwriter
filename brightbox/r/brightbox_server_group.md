@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    brightbox = ">= 1.5.0"
+    brightbox = ">= 2.0.3"
   }
 }
 ```
@@ -45,13 +45,13 @@ module "brightbox_server_group" {
 
 ```terraform
 variable "description" {
-  description = "(optional) - USer editable label"
+  description = "(optional) - User editable label"
   type        = string
   default     = null
 }
 
 variable "name" {
-  description = "(optional) - USer editable label"
+  description = "(optional) - User editable label"
   type        = string
   default     = null
 }

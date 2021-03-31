@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "alicloud_forward_entry" {
   external_ip = null
   # external_port - (required) is a type of string
   external_port = null
+  # forward_entry_name - (optional) is a type of string
+  forward_entry_name = null
   # forward_table_id - (required) is a type of string
   forward_table_id = null
   # internal_ip - (required) is a type of string
@@ -41,6 +43,14 @@ module "alicloud_forward_entry" {
   ip_protocol = null
   # name - (optional) is a type of string
   name = null
+  # port_break - (optional) is a type of bool
+  port_break = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    update = null
+  }]
 }
 ```
 
@@ -57,6 +67,12 @@ variable "external_ip" {
 variable "external_port" {
   description = "(required)"
   type        = string
+}
+
+variable "forward_entry_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "forward_table_id" {
@@ -84,6 +100,24 @@ variable "name" {
   type        = string
   default     = null
 }
+
+variable "port_break" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -92,13 +126,25 @@ variable "name" {
 
 ```terraform
 resource "alicloud_forward_entry" "this" {
-  external_ip      = var.external_ip
-  external_port    = var.external_port
-  forward_table_id = var.forward_table_id
-  internal_ip      = var.internal_ip
-  internal_port    = var.internal_port
-  ip_protocol      = var.ip_protocol
-  name             = var.name
+  external_ip        = var.external_ip
+  external_port      = var.external_port
+  forward_entry_name = var.forward_entry_name
+  forward_table_id   = var.forward_table_id
+  internal_ip        = var.internal_ip
+  internal_port      = var.internal_port
+  ip_protocol        = var.ip_protocol
+  name               = var.name
+  port_break         = var.port_break
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 
@@ -112,9 +158,24 @@ output "forward_entry_id" {
   value       = alicloud_forward_entry.this.forward_entry_id
 }
 
+output "forward_entry_name" {
+  description = "returns a string"
+  value       = alicloud_forward_entry.this.forward_entry_name
+}
+
 output "id" {
   description = "returns a string"
   value       = alicloud_forward_entry.this.id
+}
+
+output "name" {
+  description = "returns a string"
+  value       = alicloud_forward_entry.this.name
+}
+
+output "status" {
+  description = "returns a string"
+  value       = alicloud_forward_entry.this.status
 }
 
 output "this" {

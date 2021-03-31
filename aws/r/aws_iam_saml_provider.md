@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "aws_iam_saml_provider" {
   name = null
   # saml_metadata_document - (required) is a type of string
   saml_metadata_document = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -48,6 +50,12 @@ variable "saml_metadata_document" {
   description = "(required)"
   type        = string
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -58,6 +66,7 @@ variable "saml_metadata_document" {
 resource "aws_iam_saml_provider" "this" {
   name                   = var.name
   saml_metadata_document = var.saml_metadata_document
+  tags                   = var.tags
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    kubernetes = ">= 1.13.3"
+    kubernetes = ">= 2.0.3"
   }
 }
 ```
@@ -47,6 +47,7 @@ module "kubernetes_ingress" {
       service_name = null
       service_port = null
     }]
+    ingress_class_name = null
     rule = [{
       host = null
       http = [{
@@ -105,6 +106,7 @@ variable "spec" {
           service_port = string
         }
       ))
+      ingress_class_name = string
       rule = list(object(
         {
           host = string
@@ -158,6 +160,7 @@ resource "kubernetes_ingress" "this" {
   dynamic "spec" {
     for_each = var.spec
     content {
+      ingress_class_name = spec.value["ingress_class_name"]
 
       dynamic "backend" {
         for_each = spec.value.backend
@@ -222,9 +225,9 @@ output "id" {
   value       = kubernetes_ingress.this.id
 }
 
-output "load_balancer_ingress" {
+output "status" {
   description = "returns a list of object"
-  value       = kubernetes_ingress.this.load_balancer_ingress
+  value       = kubernetes_ingress.this.status
 }
 
 output "this" {

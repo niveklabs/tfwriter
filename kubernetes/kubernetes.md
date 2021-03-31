@@ -12,7 +12,7 @@
 
 ```terraform
 provider "kubernetes" {
-  version = "1.13.3"
+  version = "2.0.3"
 
   # client_certificate - (optional) is a type of string
   client_certificate = null
@@ -28,12 +28,12 @@ provider "kubernetes" {
   config_context_cluster = null
   # config_path - (optional) is a type of string
   config_path = null
+  # config_paths - (optional) is a type of list of string
+  config_paths = []
   # host - (optional) is a type of string
   host = null
   # insecure - (optional) is a type of bool
   insecure = null
-  # load_config_file - (optional) is a type of bool
-  load_config_file = null
   # password - (optional) is a type of string
   password = null
   # token - (optional) is a type of string

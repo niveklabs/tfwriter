@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -43,6 +43,12 @@ module "aviatrix_spoke_gateway" {
   enable_active_mesh = null
   # enable_encrypt_volume - (optional) is a type of bool
   enable_encrypt_volume = null
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = null
+  # enable_monitor_gateway_subnets - (optional) is a type of bool
+  enable_monitor_gateway_subnets = null
+  # enable_private_oob - (optional) is a type of bool
+  enable_private_oob = null
   # enable_vpc_dns_server - (optional) is a type of bool
   enable_vpc_dns_server = null
   # filtered_spoke_vpc_routes - (optional) is a type of string
@@ -57,6 +63,10 @@ module "aviatrix_spoke_gateway" {
   ha_gw_size = null
   # ha_insane_mode_az - (optional) is a type of string
   ha_insane_mode_az = null
+  # ha_oob_availability_zone - (optional) is a type of string
+  ha_oob_availability_zone = null
+  # ha_oob_management_subnet - (optional) is a type of string
+  ha_oob_management_subnet = null
   # ha_subnet - (optional) is a type of string
   ha_subnet = null
   # ha_zone - (optional) is a type of string
@@ -69,6 +79,12 @@ module "aviatrix_spoke_gateway" {
   insane_mode_az = null
   # manage_transit_gateway_attachment - (optional) is a type of bool
   manage_transit_gateway_attachment = null
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = []
+  # oob_availability_zone - (optional) is a type of string
+  oob_availability_zone = null
+  # oob_management_subnet - (optional) is a type of string
+  oob_management_subnet = null
   # single_az_ha - (optional) is a type of bool
   single_az_ha = null
   # single_ip_snat - (optional) is a type of bool
@@ -116,7 +132,7 @@ variable "customer_managed_keys" {
 }
 
 variable "customized_spoke_vpc_routes" {
-  description = "(optional) - A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned routes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to this spoke gateway only\u200b."
+  description = "(optional) - A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned routes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to this spoke gateway only."
   type        = string
   default     = null
 }
@@ -135,6 +151,24 @@ variable "enable_active_mesh" {
 
 variable "enable_encrypt_volume" {
   description = "(optional) - Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false."
+  type        = bool
+  default     = null
+}
+
+variable "enable_jumbo_frame" {
+  description = "(optional) - Enable jumbo frame support for spoke gateway. Valid values: true or false. Default value: true."
+  type        = bool
+  default     = null
+}
+
+variable "enable_monitor_gateway_subnets" {
+  description = "(optional) - Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for cloud_type = 1 (AWS) or 256 (AWSGOV). Valid values: true, false. Default value: false."
+  type        = bool
+  default     = null
+}
+
+variable "enable_private_oob" {
+  description = "(optional) - Enable private OOB."
   type        = bool
   default     = null
 }
@@ -179,6 +213,18 @@ variable "ha_insane_mode_az" {
   default     = null
 }
 
+variable "ha_oob_availability_zone" {
+  description = "(optional) - OOB HA availability zone."
+  type        = string
+  default     = null
+}
+
+variable "ha_oob_management_subnet" {
+  description = "(optional) - OOB HA management subnet."
+  type        = string
+  default     = null
+}
+
 variable "ha_subnet" {
   description = "(optional) - HA Subnet. Required if enabling HA for AWS/AZURE. Optional if enabling HA for GCP."
   type        = string
@@ -192,7 +238,7 @@ variable "ha_zone" {
 }
 
 variable "included_advertised_spoke_routes" {
-  description = "(optional) - A list of comma separated CIDRs to be advertised to on-prem as 'Included CIDR List'. When configured, it will replace all advertised routes from this VPC.\u200b"
+  description = "(optional) - A list of comma separated CIDRs to be advertised to on-prem as 'Included CIDR List'. When configured, it will replace all advertised routes from this VPC."
   type        = string
   default     = null
 }
@@ -212,6 +258,24 @@ variable "insane_mode_az" {
 variable "manage_transit_gateway_attachment" {
   description = "(optional) - This parameter is a switch used to determine whether or not to manage attaching this spoke gateway to transit gateways using the aviatrix_spoke_gateway resource. If this is set to false, attaching this spoke gateway to transit gateways must be done using the aviatrix_spoke_transit_attachment resource. Valid values: true, false. Default value: true."
   type        = bool
+  default     = null
+}
+
+variable "monitor_exclude_list" {
+  description = "(optional) - A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true."
+  type        = set(string)
+  default     = null
+}
+
+variable "oob_availability_zone" {
+  description = "(optional) - OOB subnet availability zone."
+  type        = string
+  default     = null
+}
+
+variable "oob_management_subnet" {
+  description = "(optional) - OOB management subnet."
+  type        = string
   default     = null
 }
 
@@ -275,6 +339,9 @@ resource "aviatrix_spoke_gateway" "this" {
   eip                               = var.eip
   enable_active_mesh                = var.enable_active_mesh
   enable_encrypt_volume             = var.enable_encrypt_volume
+  enable_jumbo_frame                = var.enable_jumbo_frame
+  enable_monitor_gateway_subnets    = var.enable_monitor_gateway_subnets
+  enable_private_oob                = var.enable_private_oob
   enable_vpc_dns_server             = var.enable_vpc_dns_server
   filtered_spoke_vpc_routes         = var.filtered_spoke_vpc_routes
   gw_name                           = var.gw_name
@@ -282,12 +349,17 @@ resource "aviatrix_spoke_gateway" "this" {
   ha_eip                            = var.ha_eip
   ha_gw_size                        = var.ha_gw_size
   ha_insane_mode_az                 = var.ha_insane_mode_az
+  ha_oob_availability_zone          = var.ha_oob_availability_zone
+  ha_oob_management_subnet          = var.ha_oob_management_subnet
   ha_subnet                         = var.ha_subnet
   ha_zone                           = var.ha_zone
   included_advertised_spoke_routes  = var.included_advertised_spoke_routes
   insane_mode                       = var.insane_mode
   insane_mode_az                    = var.insane_mode_az
   manage_transit_gateway_attachment = var.manage_transit_gateway_attachment
+  monitor_exclude_list              = var.monitor_exclude_list
+  oob_availability_zone             = var.oob_availability_zone
+  oob_management_subnet             = var.oob_management_subnet
   single_az_ha                      = var.single_az_ha
   single_ip_snat                    = var.single_ip_snat
   subnet                            = var.subnet

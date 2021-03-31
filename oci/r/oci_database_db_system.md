@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -714,6 +714,11 @@ output "reco_storage_size_in_gb" {
   value       = oci_database_db_system.this.reco_storage_size_in_gb
 }
 
+output "scan_dns_name" {
+  description = "returns a string"
+  value       = oci_database_db_system.this.scan_dns_name
+}
+
 output "scan_dns_record_id" {
   description = "returns a string"
   value       = oci_database_db_system.this.scan_dns_record_id
@@ -762,6 +767,11 @@ output "version" {
 output "vip_ids" {
   description = "returns a list of string"
   value       = oci_database_db_system.this.vip_ids
+}
+
+output "zone_id" {
+  description = "returns a string"
+  value       = oci_database_db_system.this.zone_id
 }
 
 output "this" {

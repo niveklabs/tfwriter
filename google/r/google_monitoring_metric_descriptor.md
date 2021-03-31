@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -101,7 +101,7 @@ variable "type" {
 }
 
 variable "unit" {
-  description = "(optional) - The units in which the metric value is reported. It is only applicable if the\nvalueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of \nthe stored metric values. \n\nDifferent systems may scale the values to be more easily displayed (so a value of \n0.02KBy might be displayed as 20By, and a value of 3523KBy might be displayed as \n3.5MBy). However, if the unit is KBy, then the value of the metric is always in \nthousands of bytes, no matter how it may be displayed. \n\nIf you want a custom metric to record the exact number of CPU-seconds used by a job, \nyou can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently \n1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as \n12005. \n\nAlternatively, if you want a custom metric to record data in a more granular way, you \ncan create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value \n12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024). \nThe supported units are a subset of The Unified Code for Units of Measure standard.\nMore info can be found in the API documentation \n(https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)."
+  description = "(optional) - The units in which the metric value is reported. It is only applicable if the\nvalueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of\nthe stored metric values.\n\nDifferent systems may scale the values to be more easily displayed (so a value of\n0.02KBy might be displayed as 20By, and a value of 3523KBy might be displayed as\n3.5MBy). However, if the unit is KBy, then the value of the metric is always in\nthousands of bytes, no matter how it may be displayed.\n\nIf you want a custom metric to record the exact number of CPU-seconds used by a job,\nyou can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently\n1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as\n12005.\n\nAlternatively, if you want a custom metric to record data in a more granular way, you\ncan create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value\n12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).\nThe supported units are a subset of The Unified Code for Units of Measure standard.\nMore info can be found in the API documentation\n(https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)."
   type        = string
   default     = null
 }

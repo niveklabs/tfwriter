@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_replacemsggroup" {
 
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # group_type - (required) is a type of string
   group_type = null
   # name - (optional) is a type of string
@@ -49,6 +51,13 @@ module "fortios_system_replacemsggroup" {
   }]
 
   auth = [{
+    buffer   = null
+    format   = null
+    header   = null
+    msg_type = null
+  }]
+
+  automation = [{
     buffer   = null
     format   = null
     header   = null
@@ -173,6 +182,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "group_type" {
   description = "(required)"
   type        = string
@@ -211,6 +226,19 @@ variable "alertmail" {
 }
 
 variable "auth" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      buffer   = string
+      format   = string
+      header   = string
+      msg_type = string
+    }
+  ))
+  default = []
+}
+
+variable "automation" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
@@ -425,9 +453,10 @@ variable "webproxy" {
 
 ```terraform
 resource "fortios_system_replacemsggroup" "this" {
-  comment    = var.comment
-  group_type = var.group_type
-  name       = var.name
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  group_type            = var.group_type
+  name                  = var.name
 
   dynamic "admin" {
     for_each = var.admin
@@ -456,6 +485,16 @@ resource "fortios_system_replacemsggroup" "this" {
       format   = auth.value["format"]
       header   = auth.value["header"]
       msg_type = auth.value["msg_type"]
+    }
+  }
+
+  dynamic "automation" {
+    for_each = var.automation
+    content {
+      buffer   = automation.value["buffer"]
+      format   = automation.value["format"]
+      header   = automation.value["header"]
+      msg_type = automation.value["msg_type"]
     }
   }
 

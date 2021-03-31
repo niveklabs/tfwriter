@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "azurerm_linux_virtual_machine" {
   eviction_policy = null
   # extensions_time_budget - (optional) is a type of string
   extensions_time_budget = null
+  # license_type - (optional) is a type of string
+  license_type = null
   # location - (required) is a type of string
   location = null
   # max_bid_price - (optional) is a type of number
@@ -57,6 +59,8 @@ module "azurerm_linux_virtual_machine" {
   name = null
   # network_interface_ids - (required) is a type of list of string
   network_interface_ids = []
+  # platform_fault_domain - (optional) is a type of number
+  platform_fault_domain = null
   # priority - (optional) is a type of string
   priority = null
   # provision_vm_agent - (optional) is a type of bool
@@ -207,6 +211,12 @@ variable "extensions_time_budget" {
   default     = null
 }
 
+variable "license_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "location" {
   description = "(required)"
   type        = string
@@ -226,6 +236,12 @@ variable "name" {
 variable "network_interface_ids" {
   description = "(required)"
   type        = list(string)
+}
+
+variable "platform_fault_domain" {
+  description = "(optional)"
+  type        = number
+  default     = null
 }
 
 variable "priority" {
@@ -414,10 +430,12 @@ resource "azurerm_linux_virtual_machine" "this" {
   encryption_at_host_enabled      = var.encryption_at_host_enabled
   eviction_policy                 = var.eviction_policy
   extensions_time_budget          = var.extensions_time_budget
+  license_type                    = var.license_type
   location                        = var.location
   max_bid_price                   = var.max_bid_price
   name                            = var.name
   network_interface_ids           = var.network_interface_ids
+  platform_fault_domain           = var.platform_fault_domain
   priority                        = var.priority
   provision_vm_agent              = var.provision_vm_agent
   proximity_placement_group_id    = var.proximity_placement_group_id

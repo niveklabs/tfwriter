@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_firewall_multicastaddress6" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ip6 - (required) is a type of string
   ip6 = null
   # name - (optional) is a type of string
@@ -60,6 +62,12 @@ variable "color" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -105,11 +113,12 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_multicastaddress6" "this" {
-  color      = var.color
-  comment    = var.comment
-  ip6        = var.ip6
-  name       = var.name
-  visibility = var.visibility
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ip6                   = var.ip6
+  name                  = var.name
+  visibility            = var.visibility
 
   dynamic "tagging" {
     for_each = var.tagging

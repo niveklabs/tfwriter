@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_router_multicast6" {
   source = "./modules/fortios/r/fortios_router_multicast6"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # multicast_pmtu - (optional) is a type of string
   multicast_pmtu = null
   # multicast_routing - (optional) is a type of string
@@ -53,6 +55,12 @@ module "fortios_router_multicast6" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "multicast_pmtu" {
   description = "(optional)"
   type        = string
@@ -100,8 +108,9 @@ variable "pim_sm_global" {
 
 ```terraform
 resource "fortios_router_multicast6" "this" {
-  multicast_pmtu    = var.multicast_pmtu
-  multicast_routing = var.multicast_routing
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  multicast_pmtu        = var.multicast_pmtu
+  multicast_routing     = var.multicast_routing
 
   dynamic "interface" {
     for_each = var.interface

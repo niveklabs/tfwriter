@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -45,6 +45,8 @@ module "fortios_wirelesscontroller_qosprofile" {
   downlink_sta = null
   # dscp_wmm_mapping - (optional) is a type of string
   dscp_wmm_mapping = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # uplink - (optional) is a type of number
@@ -53,8 +55,18 @@ module "fortios_wirelesscontroller_qosprofile" {
   uplink_sta = null
   # wmm - (optional) is a type of string
   wmm = null
+  # wmm_be_dscp - (optional) is a type of number
+  wmm_be_dscp = null
+  # wmm_bk_dscp - (optional) is a type of number
+  wmm_bk_dscp = null
+  # wmm_dscp_marking - (optional) is a type of string
+  wmm_dscp_marking = null
   # wmm_uapsd - (optional) is a type of string
   wmm_uapsd = null
+  # wmm_vi_dscp - (optional) is a type of number
+  wmm_vi_dscp = null
+  # wmm_vo_dscp - (optional) is a type of number
+  wmm_vo_dscp = null
 
   dscp_wmm_be = [{
     id = null
@@ -133,6 +145,12 @@ variable "dscp_wmm_mapping" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -157,9 +175,39 @@ variable "wmm" {
   default     = null
 }
 
+variable "wmm_be_dscp" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "wmm_bk_dscp" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "wmm_dscp_marking" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "wmm_uapsd" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "wmm_vi_dscp" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "wmm_vo_dscp" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -219,11 +267,17 @@ resource "fortios_wirelesscontroller_qosprofile" "this" {
   downlink                    = var.downlink
   downlink_sta                = var.downlink_sta
   dscp_wmm_mapping            = var.dscp_wmm_mapping
+  dynamic_sort_subtable       = var.dynamic_sort_subtable
   name                        = var.name
   uplink                      = var.uplink
   uplink_sta                  = var.uplink_sta
   wmm                         = var.wmm
+  wmm_be_dscp                 = var.wmm_be_dscp
+  wmm_bk_dscp                 = var.wmm_bk_dscp
+  wmm_dscp_marking            = var.wmm_dscp_marking
   wmm_uapsd                   = var.wmm_uapsd
+  wmm_vi_dscp                 = var.wmm_vi_dscp
+  wmm_vo_dscp                 = var.wmm_vo_dscp
 
   dynamic "dscp_wmm_be" {
     for_each = var.dscp_wmm_be
@@ -331,9 +385,34 @@ output "wmm" {
   value       = fortios_wirelesscontroller_qosprofile.this.wmm
 }
 
+output "wmm_be_dscp" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_be_dscp
+}
+
+output "wmm_bk_dscp" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_bk_dscp
+}
+
+output "wmm_dscp_marking" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_dscp_marking
+}
+
 output "wmm_uapsd" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_qosprofile.this.wmm_uapsd
+}
+
+output "wmm_vi_dscp" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_vi_dscp
+}
+
+output "wmm_vo_dscp" {
+  description = "returns a number"
+  value       = fortios_wirelesscontroller_qosprofile.this.wmm_vo_dscp
 }
 
 output "this" {

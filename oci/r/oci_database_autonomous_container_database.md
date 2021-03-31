@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -55,6 +55,8 @@ module "oci_database_autonomous_container_database" {
   peer_autonomous_exadata_infrastructure_id = null
   # peer_autonomous_vm_cluster_id - (optional) is a type of string
   peer_autonomous_vm_cluster_id = null
+  # peer_db_unique_name - (optional) is a type of string
+  peer_db_unique_name = null
   # protection_mode - (optional) is a type of string
   protection_mode = null
   # rotate_key_trigger - (optional) is a type of bool
@@ -196,6 +198,12 @@ variable "peer_autonomous_vm_cluster_id" {
   default     = null
 }
 
+variable "peer_db_unique_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "protection_mode" {
   description = "(optional)"
   type        = string
@@ -320,6 +328,7 @@ resource "oci_database_autonomous_container_database" "this" {
   peer_autonomous_container_database_display_name   = var.peer_autonomous_container_database_display_name
   peer_autonomous_exadata_infrastructure_id         = var.peer_autonomous_exadata_infrastructure_id
   peer_autonomous_vm_cluster_id                     = var.peer_autonomous_vm_cluster_id
+  peer_db_unique_name                               = var.peer_db_unique_name
   protection_mode                                   = var.protection_mode
   rotate_key_trigger                                = var.rotate_key_trigger
   service_level_agreement_type                      = var.service_level_agreement_type
@@ -514,6 +523,11 @@ output "peer_autonomous_exadata_infrastructure_id" {
 output "peer_autonomous_vm_cluster_id" {
   description = "returns a string"
   value       = oci_database_autonomous_container_database.this.peer_autonomous_vm_cluster_id
+}
+
+output "peer_db_unique_name" {
+  description = "returns a string"
+  value       = oci_database_autonomous_container_database.this.peer_db_unique_name
 }
 
 output "protection_mode" {

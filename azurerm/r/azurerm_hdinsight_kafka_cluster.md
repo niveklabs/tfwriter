@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -78,8 +78,20 @@ module "azurerm_hdinsight_kafka_cluster" {
     primary_key                = null
   }]
 
+  rest_proxy = [{
+    security_group_id = null
+  }]
+
   roles = [{
     head_node = [{
+      password           = null
+      ssh_keys           = []
+      subnet_id          = null
+      username           = null
+      virtual_network_id = null
+      vm_size            = null
+    }]
+    kafka_management_node = [{
       password           = null
       ssh_keys           = []
       subnet_id          = null
@@ -236,11 +248,31 @@ variable "monitor" {
   default = []
 }
 
+variable "rest_proxy" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      security_group_id = string
+    }
+  ))
+  default = []
+}
+
 variable "roles" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
     {
       head_node = list(object(
+        {
+          password           = string
+          ssh_keys           = set(string)
+          subnet_id          = string
+          username           = string
+          virtual_network_id = string
+          vm_size            = string
+        }
+      ))
+      kafka_management_node = list(object(
         {
           password           = string
           ssh_keys           = set(string)
@@ -391,6 +423,13 @@ resource "azurerm_hdinsight_kafka_cluster" "this" {
     }
   }
 
+  dynamic "rest_proxy" {
+    for_each = var.rest_proxy
+    content {
+      security_group_id = rest_proxy.value["security_group_id"]
+    }
+  }
+
   dynamic "roles" {
     for_each = var.roles
     content {
@@ -404,6 +443,18 @@ resource "azurerm_hdinsight_kafka_cluster" "this" {
           username           = head_node.value["username"]
           virtual_network_id = head_node.value["virtual_network_id"]
           vm_size            = head_node.value["vm_size"]
+        }
+      }
+
+      dynamic "kafka_management_node" {
+        for_each = roles.value.kafka_management_node
+        content {
+          password           = kafka_management_node.value["password"]
+          ssh_keys           = kafka_management_node.value["ssh_keys"]
+          subnet_id          = kafka_management_node.value["subnet_id"]
+          username           = kafka_management_node.value["username"]
+          virtual_network_id = kafka_management_node.value["virtual_network_id"]
+          vm_size            = kafka_management_node.value["vm_size"]
         }
       }
 
@@ -482,6 +533,11 @@ output "https_endpoint" {
 output "id" {
   description = "returns a string"
   value       = azurerm_hdinsight_kafka_cluster.this.id
+}
+
+output "kafka_rest_proxy_endpoint" {
+  description = "returns a string"
+  value       = azurerm_hdinsight_kafka_cluster.this.kafka_rest_proxy_endpoint
 }
 
 output "ssh_endpoint" {

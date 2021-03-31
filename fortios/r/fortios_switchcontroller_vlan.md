@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_switchcontroller_vlan" {
   color = null
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # portal_message_override_group - (optional) is a type of string
@@ -79,6 +81,12 @@ variable "color" {
 }
 
 variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -159,6 +167,7 @@ resource "fortios_switchcontroller_vlan" "this" {
   auth                          = var.auth
   color                         = var.color
   comments                      = var.comments
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
   name                          = var.name
   portal_message_override_group = var.portal_message_override_group
   radius_server                 = var.radius_server

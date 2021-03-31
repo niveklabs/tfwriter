@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcloud = ">= 1.23.0"
+    hcloud = ">= 1.26.0"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "hcloud_server_network" {
   source = "./modules/hcloud/r/hcloud_server_network"
 
-  # alias_ips - (optional) is a type of list of string
+  # alias_ips - (optional) is a type of set of string
   alias_ips = []
   # ip - (optional) is a type of string
   ip = null
@@ -47,7 +47,7 @@ module "hcloud_server_network" {
 ```terraform
 variable "alias_ips" {
   description = "(optional)"
-  type        = list(string)
+  type        = set(string)
   default     = null
 }
 

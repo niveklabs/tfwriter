@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    exoscale = ">= 0.21.0"
+    exoscale = ">= 0.23.0"
   }
 }
 ```

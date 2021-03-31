@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -39,6 +39,13 @@ module "azuredevops_project" {
   visibility = null
   # work_item_template - (optional) is a type of string
   work_item_template = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -81,6 +88,19 @@ variable "work_item_template" {
   type        = string
   default     = null
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -95,6 +115,17 @@ resource "azuredevops_project" "this" {
   version_control    = var.version_control
   visibility         = var.visibility
   work_item_template = var.work_item_template
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 

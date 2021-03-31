@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "google_storage_bucket_object" {
   content_type = null
   # detect_md5hash - (optional) is a type of string
   detect_md5hash = null
+  # kms_key_name - (optional) is a type of string
+  kms_key_name = null
   # metadata - (optional) is a type of map of string
   metadata = {}
   # name - (required) is a type of string
@@ -105,6 +107,12 @@ variable "detect_md5hash" {
   default     = null
 }
 
+variable "kms_key_name" {
+  description = "(optional) - Resource name of the Cloud KMS key that will be used to encrypt the object. Overrides the object metadata's kmsKeyName value, if any."
+  type        = string
+  default     = null
+}
+
 variable "metadata" {
   description = "(optional) - User-provided metadata, in key/value pairs."
   type        = map(string)
@@ -143,6 +151,7 @@ resource "google_storage_bucket_object" "this" {
   content_language    = var.content_language
   content_type        = var.content_type
   detect_md5hash      = var.detect_md5hash
+  kms_key_name        = var.kms_key_name
   metadata            = var.metadata
   name                = var.name
   source              = var.source
@@ -168,6 +177,11 @@ output "crc32c" {
 output "id" {
   description = "returns a string"
   value       = google_storage_bucket_object.this.id
+}
+
+output "kms_key_name" {
+  description = "returns a string"
+  value       = google_storage_bucket_object.this.kms_key_name
 }
 
 output "md5hash" {

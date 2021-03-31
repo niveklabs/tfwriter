@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,10 @@ module "fortios_user_tacacs" {
   authen_type = null
   # authorization - (optional) is a type of string
   authorization = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
   # key - (optional) is a type of string
   key = null
   # name - (optional) is a type of string
@@ -64,6 +68,18 @@ variable "authen_type" {
 }
 
 variable "authorization" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
   description = "(optional)"
   type        = string
   default     = null
@@ -130,17 +146,19 @@ variable "tertiary_server" {
 
 ```terraform
 resource "fortios_user_tacacs" "this" {
-  authen_type      = var.authen_type
-  authorization    = var.authorization
-  key              = var.key
-  name             = var.name
-  port             = var.port
-  secondary_key    = var.secondary_key
-  secondary_server = var.secondary_server
-  server           = var.server
-  source_ip        = var.source_ip
-  tertiary_key     = var.tertiary_key
-  tertiary_server  = var.tertiary_server
+  authen_type             = var.authen_type
+  authorization           = var.authorization
+  interface               = var.interface
+  interface_select_method = var.interface_select_method
+  key                     = var.key
+  name                    = var.name
+  port                    = var.port
+  secondary_key           = var.secondary_key
+  secondary_server        = var.secondary_server
+  server                  = var.server
+  source_ip               = var.source_ip
+  tertiary_key            = var.tertiary_key
+  tertiary_server         = var.tertiary_server
 }
 ```
 
@@ -162,6 +180,16 @@ output "authorization" {
 output "id" {
   description = "returns a string"
   value       = fortios_user_tacacs.this.id
+}
+
+output "interface" {
+  description = "returns a string"
+  value       = fortios_user_tacacs.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_user_tacacs.this.interface_select_method
 }
 
 output "name" {

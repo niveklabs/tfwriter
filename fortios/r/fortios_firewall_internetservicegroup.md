@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,11 +31,14 @@ module "fortios_firewall_internetservicegroup" {
   comment = null
   # direction - (optional) is a type of string
   direction = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
   member = [{
-    id = null
+    id   = null
+    name = null
   }]
 }
 ```
@@ -57,6 +60,12 @@ variable "direction" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -67,7 +76,8 @@ variable "member" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      id = number
+      id   = number
+      name = string
     }
   ))
   default = []
@@ -80,14 +90,16 @@ variable "member" {
 
 ```terraform
 resource "fortios_firewall_internetservicegroup" "this" {
-  comment   = var.comment
-  direction = var.direction
-  name      = var.name
+  comment               = var.comment
+  direction             = var.direction
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
-      id = member.value["id"]
+      id   = member.value["id"]
+      name = member.value["name"]
     }
   }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -39,7 +39,7 @@ module "oci_analytics_analytics_instance" {
   feature_set = null
   # freeform_tags - (optional) is a type of map of string
   freeform_tags = {}
-  # idcs_access_token - (optional) is a type of string
+  # idcs_access_token - (required) is a type of string
   idcs_access_token = null
   # license_type - (required) is a type of string
   license_type = null
@@ -112,9 +112,8 @@ variable "freeform_tags" {
 }
 
 variable "idcs_access_token" {
-  description = "(optional)"
+  description = "(required)"
   type        = string
-  default     = null
 }
 
 variable "license_type" {
@@ -261,6 +260,11 @@ output "id" {
   value       = oci_analytics_analytics_instance.this.id
 }
 
+output "private_access_channels" {
+  description = "returns a map of string"
+  value       = oci_analytics_analytics_instance.this.private_access_channels
+}
+
 output "service_url" {
   description = "returns a string"
   value       = oci_analytics_analytics_instance.this.service_url
@@ -279,6 +283,11 @@ output "time_created" {
 output "time_updated" {
   description = "returns a string"
   value       = oci_analytics_analytics_instance.this.time_updated
+}
+
+output "vanity_url_details" {
+  description = "returns a map of string"
+  value       = oci_analytics_analytics_instance.this.vanity_url_details
 }
 
 output "this" {

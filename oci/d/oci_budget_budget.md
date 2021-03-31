@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -71,6 +71,11 @@ output "alert_rule_count" {
 output "amount" {
   description = "returns a number"
   value       = data.oci_budget_budget.this.amount
+}
+
+output "budget_processing_period_start_offset" {
+  description = "returns a number"
+  value       = data.oci_budget_budget.this.budget_processing_period_start_offset
 }
 
 output "compartment_id" {

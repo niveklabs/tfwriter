@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -113,6 +113,7 @@ module "aws_spot_instance_request" {
     iops                  = null
     kms_key_id            = null
     snapshot_id           = null
+    tags                  = {}
     throughput            = null
     volume_id             = null
     volume_size           = null
@@ -147,6 +148,7 @@ module "aws_spot_instance_request" {
     encrypted             = null
     iops                  = null
     kms_key_id            = null
+    tags                  = {}
     throughput            = null
     volume_id             = null
     volume_size           = null
@@ -405,6 +407,7 @@ variable "ebs_block_device" {
       iops                  = number
       kms_key_id            = string
       snapshot_id           = string
+      tags                  = map(string)
       throughput            = number
       volume_id             = string
       volume_size           = number
@@ -469,6 +472,7 @@ variable "root_block_device" {
       encrypted             = bool
       iops                  = number
       kms_key_id            = string
+      tags                  = map(string)
       throughput            = number
       volume_id             = string
       volume_size           = number
@@ -550,6 +554,7 @@ resource "aws_spot_instance_request" "this" {
       iops                  = ebs_block_device.value["iops"]
       kms_key_id            = ebs_block_device.value["kms_key_id"]
       snapshot_id           = ebs_block_device.value["snapshot_id"]
+      tags                  = ebs_block_device.value["tags"]
       throughput            = ebs_block_device.value["throughput"]
       volume_size           = ebs_block_device.value["volume_size"]
       volume_type           = ebs_block_device.value["volume_type"]
@@ -597,6 +602,7 @@ resource "aws_spot_instance_request" "this" {
       encrypted             = root_block_device.value["encrypted"]
       iops                  = root_block_device.value["iops"]
       kms_key_id            = root_block_device.value["kms_key_id"]
+      tags                  = root_block_device.value["tags"]
       throughput            = root_block_device.value["throughput"]
       volume_size           = root_block_device.value["volume_size"]
       volume_type           = root_block_device.value["volume_type"]
@@ -732,6 +738,11 @@ output "spot_bid_status" {
 output "spot_instance_id" {
   description = "returns a string"
   value       = aws_spot_instance_request.this.spot_instance_id
+}
+
+output "spot_price" {
+  description = "returns a string"
+  value       = aws_spot_instance_request.this.spot_price
 }
 
 output "spot_request_state" {

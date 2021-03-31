@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -80,7 +80,7 @@ variable "ip_address" {
 }
 
 variable "ip_protocol" {
-  description = "(optional) - The IP protocol to which this rule applies. When the load balancing scheme is\nINTERNAL_SELF_MANAGED, only TCP is valid. Possible values: [\"TCP\", \"UDP\", \"ESP\", \"AH\", \"SCTP\", \"ICMP\"]"
+  description = "(optional) - The IP protocol to which this rule applies. When the load balancing scheme is\nINTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the\nglobal address is configured as a purpose of PRIVATE_SERVICE_CONNECT\nand addressType of INTERNAL Possible values: [\"TCP\", \"UDP\", \"ESP\", \"AH\", \"SCTP\", \"ICMP\"]"
   type        = string
   default     = null
 }
@@ -92,7 +92,7 @@ variable "ip_version" {
 }
 
 variable "load_balancing_scheme" {
-  description = "(optional) - This signifies what the GlobalForwardingRule will be used for.\nThe value of INTERNAL_SELF_MANAGED means that this will be used for\nInternal Global HTTP(S) LB. The value of EXTERNAL means that this\nwill be used for External Global Load Balancing (HTTP(S) LB,\nExternal TCP/UDP LB, SSL Proxy)\n\nNOTE: Currently global forwarding rules cannot be used for INTERNAL\nload balancing. Default value: \"EXTERNAL\" Possible values: [\"EXTERNAL\", \"INTERNAL_SELF_MANAGED\"]"
+  description = "(optional) - This signifies what the GlobalForwardingRule will be used for.\nThe value of INTERNAL_SELF_MANAGED means that this will be used for\nInternal Global HTTP(S) LB. The value of EXTERNAL means that this\nwill be used for External Global Load Balancing (HTTP(S) LB,\nExternal TCP/UDP LB, SSL Proxy)\n\n([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set \"\" if the global address is\nconfigured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value: \"EXTERNAL\" Possible values: [\"EXTERNAL\", \"INTERNAL_SELF_MANAGED\"]"
   type        = string
   default     = null
 }
@@ -115,7 +115,7 @@ variable "project" {
 }
 
 variable "target" {
-  description = "(required) - The URL of the target resource to receive the matched traffic.\nThe forwarded traffic must be of a type appropriate to the target object.\nFor INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets\nare valid."
+  description = "(required) - The URL of the target resource to receive the matched traffic.\nThe forwarded traffic must be of a type appropriate to the target object.\nFor INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets\nare valid.\n\n([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a purpose of PRIVATE_SERVICE_CONNECT and\naddressType of INTERNAL, only \"all-apis\" and \"vpc-sc\" are valid."
   type        = string
 }
 

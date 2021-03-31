@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_wanopt_contentdeliverynetworkrule" {
   category = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
   # request_cache_control - (optional) is a type of string
@@ -94,6 +96,12 @@ variable "category" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -206,6 +214,7 @@ variable "rules" {
 resource "fortios_wanopt_contentdeliverynetworkrule" "this" {
   category               = var.category
   comment                = var.comment
+  dynamic_sort_subtable  = var.dynamic_sort_subtable
   name                   = var.name
   request_cache_control  = var.request_cache_control
   response_cache_control = var.response_cache_control

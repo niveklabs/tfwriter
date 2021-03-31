@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -33,8 +33,14 @@ module "alicloud_ram_policy" {
   document = null
   # force - (optional) is a type of bool
   force = null
-  # name - (required) is a type of string
+  # name - (optional) is a type of string
   name = null
+  # policy_document - (optional) is a type of string
+  policy_document = null
+  # policy_name - (optional) is a type of string
+  policy_name = null
+  # rotate_strategy - (optional) is a type of string
+  rotate_strategy = null
   # version - (optional) is a type of string
   version = null
 
@@ -42,6 +48,10 @@ module "alicloud_ram_policy" {
     action   = []
     effect   = null
     resource = []
+  }]
+
+  timeouts = [{
+    delete = null
   }]
 }
 ```
@@ -70,8 +80,27 @@ variable "force" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "policy_document" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "policy_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "rotate_strategy" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "version" {
@@ -91,6 +120,16 @@ variable "statement" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      delete = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -99,11 +138,14 @@ variable "statement" {
 
 ```terraform
 resource "alicloud_ram_policy" "this" {
-  description = var.description
-  document    = var.document
-  force       = var.force
-  name        = var.name
-  version     = var.version
+  description     = var.description
+  document        = var.document
+  force           = var.force
+  name            = var.name
+  policy_document = var.policy_document
+  policy_name     = var.policy_name
+  rotate_strategy = var.rotate_strategy
+  version         = var.version
 
   dynamic "statement" {
     for_each = var.statement
@@ -111,6 +153,13 @@ resource "alicloud_ram_policy" "this" {
       action   = statement.value["action"]
       effect   = statement.value["effect"]
       resource = statement.value["resource"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      delete = timeouts.value["delete"]
     }
   }
 
@@ -127,6 +176,11 @@ output "attachment_count" {
   value       = alicloud_ram_policy.this.attachment_count
 }
 
+output "default_version" {
+  description = "returns a string"
+  value       = alicloud_ram_policy.this.default_version
+}
+
 output "document" {
   description = "returns a string"
   value       = alicloud_ram_policy.this.document
@@ -137,9 +191,29 @@ output "id" {
   value       = alicloud_ram_policy.this.id
 }
 
+output "name" {
+  description = "returns a string"
+  value       = alicloud_ram_policy.this.name
+}
+
+output "policy_document" {
+  description = "returns a string"
+  value       = alicloud_ram_policy.this.policy_document
+}
+
+output "policy_name" {
+  description = "returns a string"
+  value       = alicloud_ram_policy.this.policy_name
+}
+
 output "type" {
   description = "returns a string"
   value       = alicloud_ram_policy.this.type
+}
+
+output "version_id" {
+  description = "returns a string"
+  value       = alicloud_ram_policy.this.version_id
 }
 
 output "this" {

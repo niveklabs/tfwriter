@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    heroku = ">= 3.2.0"
+    heroku = ">= 4.1.0"
   }
 }
 ```
@@ -111,6 +111,11 @@ output "space" {
 output "stack" {
   description = "returns a string"
   value       = data.heroku_app.this.stack
+}
+
+output "uuid" {
+  description = "returns a string"
+  value       = data.heroku_app.this.uuid
 }
 
 output "web_url" {

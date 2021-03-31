@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -35,9 +35,11 @@ module "aviatrix_firewall_instance" {
   container_folder = null
   # egress_subnet - (required) is a type of string
   egress_subnet = null
+  # egress_vpc_id - (optional) is a type of string
+  egress_vpc_id = null
   # file_share_folder - (optional) is a type of string
   file_share_folder = null
-  # firenet_gw_name - (required) is a type of string
+  # firenet_gw_name - (optional) is a type of string
   firenet_gw_name = null
   # firewall_image - (required) is a type of string
   firewall_image = null
@@ -53,6 +55,8 @@ module "aviatrix_firewall_instance" {
   key_name = null
   # management_subnet - (optional) is a type of string
   management_subnet = null
+  # management_vpc_id - (optional) is a type of string
+  management_vpc_id = null
   # password - (optional) is a type of string
   password = null
   # sas_url_config - (optional) is a type of string
@@ -67,6 +71,8 @@ module "aviatrix_firewall_instance" {
   ssh_public_key = null
   # storage_access_key - (optional) is a type of string
   storage_access_key = null
+  # tags - (optional) is a type of map of string
+  tags = {}
   # user_data - (optional) is a type of string
   user_data = null
   # username - (optional) is a type of string
@@ -106,6 +112,12 @@ variable "egress_subnet" {
   type        = string
 }
 
+variable "egress_vpc_id" {
+  description = "(optional) - Egress VPC ID. Required for GCP."
+  type        = string
+  default     = null
+}
+
 variable "file_share_folder" {
   description = "(optional) - Advanced option. File share folder. Applicable to Azure and Palo Alto Networks VM-Series deployment only."
   type        = string
@@ -113,8 +125,9 @@ variable "file_share_folder" {
 }
 
 variable "firenet_gw_name" {
-  description = "(required) - Name of the primary FireNet gateway."
+  description = "(optional) - Name of the primary FireNet gateway."
   type        = string
+  default     = null
 }
 
 variable "firewall_image" {
@@ -152,6 +165,12 @@ variable "key_name" {
 
 variable "management_subnet" {
   description = "(optional) - Management Interface Subnet. Required for Palo Alto Networks VM-Series, and required to be empty for Check Point or Fortinet series."
+  type        = string
+  default     = null
+}
+
+variable "management_vpc_id" {
+  description = "(optional) - Management VPC ID. Required for GCP."
   type        = string
   default     = null
 }
@@ -198,6 +217,12 @@ variable "storage_access_key" {
   default     = null
 }
 
+variable "tags" {
+  description = "(optional) - A map of tags to assign to the firewall instance."
+  type        = map(string)
+  default     = null
+}
+
 variable "user_data" {
   description = "(optional) - Advanced option. Bootstrap storage name. Applicable to Check Point Series and Fortinet Series deployment only."
   type        = string
@@ -216,7 +241,7 @@ variable "vpc_id" {
 }
 
 variable "zone" {
-  description = "(optional) - Availability Zone. Only available for AZURE. Must be in the form 'az-n', for example, 'az-2'."
+  description = "(optional) - Availability Zone. Only available for AWS, GCP and AZURE."
   type        = string
   default     = null
 }
@@ -232,6 +257,7 @@ resource "aviatrix_firewall_instance" "this" {
   bootstrap_storage_name = var.bootstrap_storage_name
   container_folder       = var.container_folder
   egress_subnet          = var.egress_subnet
+  egress_vpc_id          = var.egress_vpc_id
   file_share_folder      = var.file_share_folder
   firenet_gw_name        = var.firenet_gw_name
   firewall_image         = var.firewall_image
@@ -241,6 +267,7 @@ resource "aviatrix_firewall_instance" "this" {
   iam_role               = var.iam_role
   key_name               = var.key_name
   management_subnet      = var.management_subnet
+  management_vpc_id      = var.management_vpc_id
   password               = var.password
   sas_url_config         = var.sas_url_config
   sas_url_license        = var.sas_url_license
@@ -248,6 +275,7 @@ resource "aviatrix_firewall_instance" "this" {
   sic_key                = var.sic_key
   ssh_public_key         = var.ssh_public_key
   storage_access_key     = var.storage_access_key
+  tags                   = var.tags
   user_data              = var.user_data
   username               = var.username
   vpc_id                 = var.vpc_id
@@ -260,6 +288,11 @@ resource "aviatrix_firewall_instance" "this" {
 ### Outputs
 
 ```terraform
+output "cloud_type" {
+  description = "returns a number"
+  value       = aviatrix_firewall_instance.this.cloud_type
+}
+
 output "egress_interface" {
   description = "returns a string"
   value       = aviatrix_firewall_instance.this.egress_interface
@@ -268,6 +301,11 @@ output "egress_interface" {
 output "firewall_image_version" {
   description = "returns a string"
   value       = aviatrix_firewall_instance.this.firewall_image_version
+}
+
+output "gcp_vpc_id" {
+  description = "returns a string"
+  value       = aviatrix_firewall_instance.this.gcp_vpc_id
 }
 
 output "id" {
@@ -293,6 +331,11 @@ output "management_interface" {
 output "public_ip" {
   description = "returns a string"
   value       = aviatrix_firewall_instance.this.public_ip
+}
+
+output "zone" {
+  description = "returns a string"
+  value       = aviatrix_firewall_instance.this.zone
 }
 
 output "this" {

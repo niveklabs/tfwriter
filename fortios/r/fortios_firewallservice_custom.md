@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "fortios_firewallservice_custom" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fqdn - (optional) is a type of string
   fqdn = null
   # helper - (optional) is a type of string
@@ -114,6 +116,12 @@ variable "color" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -254,29 +262,30 @@ variable "application" {
 
 ```terraform
 resource "fortios_firewallservice_custom" "this" {
-  app_service_type    = var.app_service_type
-  category            = var.category
-  check_reset_range   = var.check_reset_range
-  color               = var.color
-  comment             = var.comment
-  fqdn                = var.fqdn
-  helper              = var.helper
-  icmpcode            = var.icmpcode
-  icmptype            = var.icmptype
-  iprange             = var.iprange
-  name                = var.name
-  protocol            = var.protocol
-  protocol_number     = var.protocol_number
-  proxy               = var.proxy
-  sctp_portrange      = var.sctp_portrange
-  session_ttl         = var.session_ttl
-  tcp_halfclose_timer = var.tcp_halfclose_timer
-  tcp_halfopen_timer  = var.tcp_halfopen_timer
-  tcp_portrange       = var.tcp_portrange
-  tcp_timewait_timer  = var.tcp_timewait_timer
-  udp_idle_timer      = var.udp_idle_timer
-  udp_portrange       = var.udp_portrange
-  visibility          = var.visibility
+  app_service_type      = var.app_service_type
+  category              = var.category
+  check_reset_range     = var.check_reset_range
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fqdn                  = var.fqdn
+  helper                = var.helper
+  icmpcode              = var.icmpcode
+  icmptype              = var.icmptype
+  iprange               = var.iprange
+  name                  = var.name
+  protocol              = var.protocol
+  protocol_number       = var.protocol_number
+  proxy                 = var.proxy
+  sctp_portrange        = var.sctp_portrange
+  session_ttl           = var.session_ttl
+  tcp_halfclose_timer   = var.tcp_halfclose_timer
+  tcp_halfopen_timer    = var.tcp_halfopen_timer
+  tcp_portrange         = var.tcp_portrange
+  tcp_timewait_timer    = var.tcp_timewait_timer
+  udp_idle_timer        = var.udp_idle_timer
+  udp_portrange         = var.udp_portrange
+  visibility            = var.visibility
 
   dynamic "app_category" {
     for_each = var.app_category

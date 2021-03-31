@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    circonus = ">= 0.11.4"
+    circonus = ">= 0.12.0"
   }
 }
 ```

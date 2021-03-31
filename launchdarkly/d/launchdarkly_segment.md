@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    launchdarkly = ">= 1.5.0"
+    launchdarkly = ">= 1.5.1"
   }
 }
 ```
@@ -45,10 +45,11 @@ module "launchdarkly_segment" {
   rules = [{
     bucket_by = null
     clauses = [{
-      attribute = null
-      negate    = null
-      op        = null
-      values    = []
+      attribute  = null
+      negate     = null
+      op         = null
+      value_type = null
+      values     = []
     }]
     weight = null
   }]
@@ -106,10 +107,11 @@ variable "rules" {
       bucket_by = string
       clauses = list(object(
         {
-          attribute = string
-          negate    = bool
-          op        = string
-          values    = list(string)
+          attribute  = string
+          negate     = bool
+          op         = string
+          value_type = string
+          values     = list(string)
         }
       ))
       weight = number
@@ -142,10 +144,11 @@ data "launchdarkly_segment" "this" {
       dynamic "clauses" {
         for_each = rules.value.clauses
         content {
-          attribute = clauses.value["attribute"]
-          negate    = clauses.value["negate"]
-          op        = clauses.value["op"]
-          values    = clauses.value["values"]
+          attribute  = clauses.value["attribute"]
+          negate     = clauses.value["negate"]
+          op         = clauses.value["op"]
+          value_type = clauses.value["value_type"]
+          values     = clauses.value["values"]
         }
       }
 

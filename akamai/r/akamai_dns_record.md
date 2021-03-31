@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -113,8 +113,14 @@ module "akamai_dns_record" {
   software = null
   # subtype - (optional) is a type of number
   subtype = null
+  # svc_params - (optional) is a type of string
+  svc_params = null
+  # svc_priority - (optional) is a type of number
+  svc_priority = null
   # target - (optional) is a type of list of string
   target = []
+  # target_name - (optional) is a type of string
+  target_name = null
   # ttl - (required) is a type of number
   ttl = null
   # txt - (optional) is a type of string
@@ -397,9 +403,27 @@ variable "subtype" {
   default     = null
 }
 
+variable "svc_params" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "svc_priority" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "target" {
   description = "(optional)"
   type        = list(string)
+  default     = null
+}
+
+variable "target_name" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -505,7 +529,10 @@ resource "akamai_dns_record" "this" {
   signer                 = var.signer
   software               = var.software
   subtype                = var.subtype
+  svc_params             = var.svc_params
+  svc_priority           = var.svc_priority
   target                 = var.target
+  target_name            = var.target_name
   ttl                    = var.ttl
   txt                    = var.txt
   type_bitmaps           = var.type_bitmaps

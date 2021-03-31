@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    icinga2 = ">= 0.4.0"
+    icinga2 = ">= 0.5.0"
   }
 }
 ```

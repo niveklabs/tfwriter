@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -33,6 +33,10 @@ module "azurerm_data_factory_dataset_delimited_text" {
   annotations = []
   # column_delimiter - (optional) is a type of string
   column_delimiter = null
+  # compression_codec - (optional) is a type of string
+  compression_codec = null
+  # compression_level - (optional) is a type of string
+  compression_level = null
   # data_factory_name - (required) is a type of string
   data_factory_name = null
   # description - (optional) is a type of string
@@ -105,6 +109,18 @@ variable "annotations" {
 }
 
 variable "column_delimiter" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "compression_codec" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "compression_level" {
   description = "(optional)"
   type        = string
   default     = null
@@ -243,6 +259,8 @@ resource "azurerm_data_factory_dataset_delimited_text" "this" {
   additional_properties = var.additional_properties
   annotations           = var.annotations
   column_delimiter      = var.column_delimiter
+  compression_codec     = var.compression_codec
+  compression_level     = var.compression_level
   data_factory_name     = var.data_factory_name
   description           = var.description
   encoding              = var.encoding

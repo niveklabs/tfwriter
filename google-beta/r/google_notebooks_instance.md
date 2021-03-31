@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -71,8 +71,12 @@ module "google_notebooks_instance" {
   project = null
   # service_account - (optional) is a type of string
   service_account = null
+  # service_account_scopes - (optional) is a type of list of string
+  service_account_scopes = []
   # subnet - (optional) is a type of string
   subnet = null
+  # tags - (optional) is a type of list of string
+  tags = []
   # update_time - (optional) is a type of string
   update_time = null
 
@@ -84,6 +88,12 @@ module "google_notebooks_instance" {
   container_image = [{
     repository = null
     tag        = null
+  }]
+
+  shielded_instance_config = [{
+    enable_integrity_monitoring = null
+    enable_secure_boot          = null
+    enable_vtpm                 = null
   }]
 
   timeouts = [{
@@ -199,13 +209,13 @@ variable "network" {
 }
 
 variable "no_proxy_access" {
-  description = "(optional) - the notebook instance will not register with the proxy.."
+  description = "(optional) - The notebook instance will not register with the proxy.."
   type        = bool
   default     = null
 }
 
 variable "no_public_ip" {
-  description = "(optional) - no public IP will be assigned to this instance."
+  description = "(optional) - No public IP will be assigned to this instance."
   type        = bool
   default     = null
 }
@@ -234,9 +244,21 @@ variable "service_account" {
   default     = null
 }
 
+variable "service_account_scopes" {
+  description = "(optional) - Optional. The URIs of service account scopes to be included in Compute Engine instances.\nIf not specified, the following scopes are defined:\n- https://www.googleapis.com/auth/cloud-platform\n- https://www.googleapis.com/auth/userinfo.email"
+  type        = list(string)
+  default     = null
+}
+
 variable "subnet" {
   description = "(optional) - The name of the subnet that this instance is in.\nFormat: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}"
   type        = string
+  default     = null
+}
+
+variable "tags" {
+  description = "(optional) - The Compute Engine tags to add to runtime."
+  type        = list(string)
   default     = null
 }
 
@@ -263,6 +285,18 @@ variable "container_image" {
     {
       repository = string
       tag        = string
+    }
+  ))
+  default = []
+}
+
+variable "shielded_instance_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      enable_integrity_monitoring = bool
+      enable_secure_boot          = bool
+      enable_vtpm                 = bool
     }
   ))
   default = []
@@ -321,7 +355,9 @@ resource "google_notebooks_instance" "this" {
   post_startup_script    = var.post_startup_script
   project                = var.project
   service_account        = var.service_account
+  service_account_scopes = var.service_account_scopes
   subnet                 = var.subnet
+  tags                   = var.tags
   update_time            = var.update_time
 
   dynamic "accelerator_config" {
@@ -337,6 +373,15 @@ resource "google_notebooks_instance" "this" {
     content {
       repository = container_image.value["repository"]
       tag        = container_image.value["tag"]
+    }
+  }
+
+  dynamic "shielded_instance_config" {
+    for_each = var.shielded_instance_config
+    content {
+      enable_integrity_monitoring = shielded_instance_config.value["enable_integrity_monitoring"]
+      enable_secure_boot          = shielded_instance_config.value["enable_secure_boot"]
+      enable_vtpm                 = shielded_instance_config.value["enable_vtpm"]
     }
   }
 

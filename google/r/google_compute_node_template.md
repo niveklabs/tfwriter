@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "google_compute_node_template" {
   source = "./modules/google/r/google_compute_node_template"
 
+  # cpu_overcommit_type - (optional) is a type of string
+  cpu_overcommit_type = null
   # description - (optional) is a type of string
   description = null
   # name - (optional) is a type of string
@@ -46,6 +48,10 @@ module "google_compute_node_template" {
     memory    = null
   }]
 
+  server_binding = [{
+    type = null
+  }]
+
   timeouts = [{
     create = null
     delete = null
@@ -58,6 +64,12 @@ module "google_compute_node_template" {
 ### Variables
 
 ```terraform
+variable "cpu_overcommit_type" {
+  description = "(optional) - CPU overcommit. Default value: \"NONE\" Possible values: [\"ENABLED\", \"NONE\"]"
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional) - An optional textual description of the resource."
   type        = string
@@ -106,6 +118,16 @@ variable "node_type_flexibility" {
   default = []
 }
 
+variable "server_binding" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      type = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -124,6 +146,7 @@ variable "timeouts" {
 
 ```terraform
 resource "google_compute_node_template" "this" {
+  cpu_overcommit_type  = var.cpu_overcommit_type
   description          = var.description
   name                 = var.name
   node_affinity_labels = var.node_affinity_labels
@@ -136,6 +159,13 @@ resource "google_compute_node_template" "this" {
     content {
       cpus   = node_type_flexibility.value["cpus"]
       memory = node_type_flexibility.value["memory"]
+    }
+  }
+
+  dynamic "server_binding" {
+    for_each = var.server_binding
+    content {
+      type = server_binding.value["type"]
     }
   }
 

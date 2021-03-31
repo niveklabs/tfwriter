@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    linode = ">= 1.13.4"
+    linode = ">= 1.16.0"
   }
 }
 ```
@@ -244,7 +244,7 @@ output "id" {
 }
 
 output "node_status" {
-  description = "returns a map of string"
+  description = "returns a list of object"
   value       = linode_nodebalancer_config.this.node_status
 }
 

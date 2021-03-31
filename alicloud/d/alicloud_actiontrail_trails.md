@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "alicloud_actiontrail_trails" {
 
   # ids - (optional) is a type of list of string
   ids = []
+  # include_organization_trail - (optional) is a type of bool
+  include_organization_trail = null
   # include_shadow_trails - (optional) is a type of bool
   include_shadow_trails = null
   # name_regex - (optional) is a type of string
@@ -48,6 +50,12 @@ module "alicloud_actiontrail_trails" {
 variable "ids" {
   description = "(optional)"
   type        = list(string)
+  default     = null
+}
+
+variable "include_organization_trail" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -82,11 +90,12 @@ variable "status" {
 
 ```terraform
 data "alicloud_actiontrail_trails" "this" {
-  ids                   = var.ids
-  include_shadow_trails = var.include_shadow_trails
-  name_regex            = var.name_regex
-  output_file           = var.output_file
-  status                = var.status
+  ids                        = var.ids
+  include_organization_trail = var.include_organization_trail
+  include_shadow_trails      = var.include_shadow_trails
+  name_regex                 = var.name_regex
+  output_file                = var.output_file
+  status                     = var.status
 }
 ```
 

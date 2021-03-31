@@ -12,7 +12,7 @@
 
 ```terraform
 provider "heroku" {
-  version = "3.2.0"
+  version = "4.1.0"
 
   # api_key - (optional) is a type of string
   api_key = null
@@ -22,6 +22,12 @@ provider "heroku" {
   headers = null
   # url - (optional) is a type of string
   url = null
+
+  # NestingList
+  customizations {
+    # set_app_all_config_vars_in_state - (optional) is a type of bool
+    set_app_all_config_vars_in_state = null
+  }
 
   # NestingList
   delays {

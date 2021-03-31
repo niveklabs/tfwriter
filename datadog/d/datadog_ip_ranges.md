@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -111,9 +111,19 @@ output "synthetics_ipv4" {
   value       = data.datadog_ip_ranges.this.synthetics_ipv4
 }
 
+output "synthetics_ipv4_by_location" {
+  description = "returns a map of string"
+  value       = data.datadog_ip_ranges.this.synthetics_ipv4_by_location
+}
+
 output "synthetics_ipv6" {
   description = "returns a list of string"
   value       = data.datadog_ip_ranges.this.synthetics_ipv6
+}
+
+output "synthetics_ipv6_by_location" {
+  description = "returns a map of string"
+  value       = data.datadog_ip_ranges.this.synthetics_ipv6_by_location
 }
 
 output "webhooks_ipv4" {

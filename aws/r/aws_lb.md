@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -64,6 +64,7 @@ module "aws_lb" {
 
   subnet_mapping = [{
     allocation_id        = null
+    ipv6_address         = null
     outpost_id           = null
     private_ipv4_address = null
     subnet_id            = null
@@ -183,6 +184,7 @@ variable "subnet_mapping" {
   type = set(object(
     {
       allocation_id        = string
+      ipv6_address         = string
       outpost_id           = string
       private_ipv4_address = string
       subnet_id            = string
@@ -238,6 +240,7 @@ resource "aws_lb" "this" {
     for_each = var.subnet_mapping
     content {
       allocation_id        = subnet_mapping.value["allocation_id"]
+      ipv6_address         = subnet_mapping.value["ipv6_address"]
       private_ipv4_address = subnet_mapping.value["private_ipv4_address"]
       subnet_id            = subnet_mapping.value["subnet_id"]
     }

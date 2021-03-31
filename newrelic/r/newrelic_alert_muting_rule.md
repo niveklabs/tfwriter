@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    newrelic = ">= 2.14.0"
+    newrelic = ">= 2.21.0"
   }
 }
 ```
@@ -43,6 +43,16 @@ module "newrelic_alert_muting_rule" {
       values    = []
     }]
     operator = null
+  }]
+
+  schedule = [{
+    end_repeat         = null
+    end_time           = null
+    repeat             = null
+    repeat_count       = null
+    start_time         = null
+    time_zone          = null
+    weekly_repeat_days = []
   }]
 }
 ```
@@ -89,6 +99,22 @@ variable "condition" {
     }
   ))
 }
+
+variable "schedule" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      end_repeat         = string
+      end_time           = string
+      repeat             = string
+      repeat_count       = number
+      start_time         = string
+      time_zone          = string
+      weekly_repeat_days = set(string)
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -116,6 +142,19 @@ resource "newrelic_alert_muting_rule" "this" {
         }
       }
 
+    }
+  }
+
+  dynamic "schedule" {
+    for_each = var.schedule
+    content {
+      end_repeat         = schedule.value["end_repeat"]
+      end_time           = schedule.value["end_time"]
+      repeat             = schedule.value["repeat"]
+      repeat_count       = schedule.value["repeat_count"]
+      start_time         = schedule.value["start_time"]
+      time_zone          = schedule.value["time_zone"]
+      weekly_repeat_days = schedule.value["weekly_repeat_days"]
     }
   }
 

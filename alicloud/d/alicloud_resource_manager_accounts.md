@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "alicloud_resource_manager_accounts" {
   ids = []
   # output_file - (optional) is a type of string
   output_file = null
+  # status - (optional) is a type of string
+  status = null
 }
 ```
 
@@ -50,6 +52,12 @@ variable "output_file" {
   type        = string
   default     = null
 }
+
+variable "status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -60,6 +68,7 @@ variable "output_file" {
 data "alicloud_resource_manager_accounts" "this" {
   ids         = var.ids
   output_file = var.output_file
+  status      = var.status
 }
 ```
 

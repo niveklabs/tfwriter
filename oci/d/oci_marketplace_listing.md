@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -122,6 +122,11 @@ output "links" {
   value       = data.oci_marketplace_listing.this.links
 }
 
+output "listing_type" {
+  description = "returns a string"
+  value       = data.oci_marketplace_listing.this.listing_type
+}
+
 output "long_description" {
   description = "returns a string"
   value       = data.oci_marketplace_listing.this.long_description
@@ -170,6 +175,11 @@ output "support_contacts" {
 output "support_links" {
   description = "returns a list of object"
   value       = data.oci_marketplace_listing.this.support_links
+}
+
+output "supported_operating_systems" {
+  description = "returns a list of object"
+  value       = data.oci_marketplace_listing.this.supported_operating_systems
 }
 
 output "system_requirements" {

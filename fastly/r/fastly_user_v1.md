@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fastly = ">= 0.21.2"
+    fastly = ">= 0.27.0"
   }
 }
 ```
@@ -42,17 +42,17 @@ module "fastly_user_v1" {
 
 ```terraform
 variable "login" {
-  description = "(required) - The email address, which is the login name, of this user."
+  description = "(required) - The email address, which is the login name, of the User"
   type        = string
 }
 
 variable "name" {
-  description = "(required) - The real life name of the user."
+  description = "(required) - The real life name of the user"
   type        = string
 }
 
 variable "role" {
-  description = "(optional) - The user-assigned permissions role. Can be `user` (the default), `billing`, `engineer`, or `superuser`."
+  description = "(optional) - The role of this user. Can be `user` (the default), `billing`, `engineer`, or `superuser`. For detailed information on the abilities granted to each role, see [Fastly's Documentation on User roles](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions#user-roles-and-what-they-can-do)"
   type        = string
   default     = null
 }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "alicloud_nas_mount_target" {
   source = "./modules/alicloud/r/alicloud_nas_mount_target"
 
-  # access_group_name - (required) is a type of string
+  # access_group_name - (optional) is a type of string
   access_group_name = null
   # file_system_id - (required) is a type of string
   file_system_id = null
@@ -50,8 +50,9 @@ module "alicloud_nas_mount_target" {
 
 ```terraform
 variable "access_group_name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "file_system_id" {

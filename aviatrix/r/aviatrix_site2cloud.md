@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -55,13 +55,13 @@ module "aviatrix_site2cloud" {
   forward_traffic_to_transit = null
   # ha_enabled - (optional) is a type of bool
   ha_enabled = null
-  # local_destination_real_cidrs - (optional) is a type of set of string
+  # local_destination_real_cidrs - (optional) is a type of list of string
   local_destination_real_cidrs = []
-  # local_destination_virtual_cidrs - (optional) is a type of set of string
+  # local_destination_virtual_cidrs - (optional) is a type of list of string
   local_destination_virtual_cidrs = []
-  # local_source_real_cidrs - (optional) is a type of set of string
+  # local_source_real_cidrs - (optional) is a type of list of string
   local_source_real_cidrs = []
-  # local_source_virtual_cidrs - (optional) is a type of set of string
+  # local_source_virtual_cidrs - (optional) is a type of list of string
   local_source_virtual_cidrs = []
   # local_subnet_cidr - (optional) is a type of string
   local_subnet_cidr = null
@@ -85,9 +85,9 @@ module "aviatrix_site2cloud" {
   primary_cloud_gateway_name = null
   # private_route_encryption - (optional) is a type of bool
   private_route_encryption = null
-  # remote_destination_real_cidrs - (optional) is a type of set of string
+  # remote_destination_real_cidrs - (optional) is a type of list of string
   remote_destination_real_cidrs = []
-  # remote_destination_virtual_cidrs - (optional) is a type of set of string
+  # remote_destination_virtual_cidrs - (optional) is a type of list of string
   remote_destination_virtual_cidrs = []
   # remote_gateway_ip - (required) is a type of string
   remote_gateway_ip = null
@@ -97,9 +97,9 @@ module "aviatrix_site2cloud" {
   remote_gateway_longitude = null
   # remote_gateway_type - (required) is a type of string
   remote_gateway_type = null
-  # remote_source_real_cidrs - (optional) is a type of set of string
+  # remote_source_real_cidrs - (optional) is a type of list of string
   remote_source_real_cidrs = []
-  # remote_source_virtual_cidrs - (optional) is a type of set of string
+  # remote_source_virtual_cidrs - (optional) is a type of list of string
   remote_source_virtual_cidrs = []
   # remote_subnet_cidr - (optional) is a type of string
   remote_subnet_cidr = null
@@ -205,25 +205,25 @@ variable "ha_enabled" {
 
 variable "local_destination_real_cidrs" {
   description = "(optional) - Local Initiated Traffic Destination Real CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
 variable "local_destination_virtual_cidrs" {
   description = "(optional) - Local Initiated Traffic Destination Virtual CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
 variable "local_source_real_cidrs" {
   description = "(optional) - Local Initiated Traffic Source Real CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
 variable "local_source_virtual_cidrs" {
   description = "(optional) - Local Initiated Traffic Source Virtual CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
@@ -246,7 +246,7 @@ variable "phase_1_authentication" {
 }
 
 variable "phase_1_dh_groups" {
-  description = "(optional) - Phase one DH Groups. Valid values: '1', '2', '5', '14', '15', '16', '17', '18' and '19."
+  description = "(optional) - Phase one DH Groups. Valid values: '1', '2', '5', '14', '15', '16', '17', '18', '19', '20' and '21'."
   type        = string
   default     = null
 }
@@ -264,7 +264,7 @@ variable "phase_2_authentication" {
 }
 
 variable "phase_2_dh_groups" {
-  description = "(optional) - Phase two DH Groups. Valid values: '1', '2', '5', '14', '15', '16', '17', '18' and '19'."
+  description = "(optional) - Phase two DH Groups. Valid values: '1', '2', '5', '14', '15', '16', '17', '18', '19', '20' and '21'."
   type        = string
   default     = null
 }
@@ -294,13 +294,13 @@ variable "private_route_encryption" {
 
 variable "remote_destination_real_cidrs" {
   description = "(optional) - Remote Initiated Traffic Destination Real CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
 variable "remote_destination_virtual_cidrs" {
   description = "(optional) - Remote Initiated Traffic Destination Virtual CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
@@ -328,13 +328,13 @@ variable "remote_gateway_type" {
 
 variable "remote_source_real_cidrs" {
   description = "(optional) - Remote Initiated Traffic Source Real CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
 variable "remote_source_virtual_cidrs" {
   description = "(optional) - Remote Initiated Traffic Source Virtual CIDRs."
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 

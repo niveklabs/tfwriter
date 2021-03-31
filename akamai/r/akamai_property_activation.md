@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -39,6 +39,26 @@ module "akamai_property_activation" {
   property_id = null
   # version - (required) is a type of number
   version = null
+
+  rule_errors = [{
+    behavior_name  = null
+    detail         = null
+    error_location = null
+    instance       = null
+    status_code    = null
+    title          = null
+    type           = null
+  }]
+
+  rule_warnings = [{
+    behavior_name  = null
+    detail         = null
+    error_location = null
+    instance       = null
+    status_code    = null
+    title          = null
+    type           = null
+  }]
 
   timeouts = [{
     default = null
@@ -85,6 +105,38 @@ variable "version" {
   type        = number
 }
 
+variable "rule_errors" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      behavior_name  = string
+      detail         = string
+      error_location = string
+      instance       = string
+      status_code    = number
+      title          = string
+      type           = string
+    }
+  ))
+  default = []
+}
+
+variable "rule_warnings" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      behavior_name  = string
+      detail         = string
+      error_location = string
+      instance       = string
+      status_code    = number
+      title          = string
+      type           = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -108,6 +160,32 @@ resource "akamai_property_activation" "this" {
   property      = var.property
   property_id   = var.property_id
   version       = var.version
+
+  dynamic "rule_errors" {
+    for_each = var.rule_errors
+    content {
+      behavior_name  = rule_errors.value["behavior_name"]
+      detail         = rule_errors.value["detail"]
+      error_location = rule_errors.value["error_location"]
+      instance       = rule_errors.value["instance"]
+      status_code    = rule_errors.value["status_code"]
+      title          = rule_errors.value["title"]
+      type           = rule_errors.value["type"]
+    }
+  }
+
+  dynamic "rule_warnings" {
+    for_each = var.rule_warnings
+    content {
+      behavior_name  = rule_warnings.value["behavior_name"]
+      detail         = rule_warnings.value["detail"]
+      error_location = rule_warnings.value["error_location"]
+      instance       = rule_warnings.value["instance"]
+      status_code    = rule_warnings.value["status_code"]
+      title          = rule_warnings.value["title"]
+      type           = rule_warnings.value["type"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

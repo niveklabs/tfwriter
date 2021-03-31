@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -144,6 +144,11 @@ output "description" {
   value       = data.aws_ami.this.description
 }
 
+output "ena_support" {
+  description = "returns a bool"
+  value       = data.aws_ami.this.ena_support
+}
+
 output "hypervisor" {
   description = "returns a string"
   value       = data.aws_ami.this.hypervisor
@@ -194,6 +199,11 @@ output "platform" {
   value       = data.aws_ami.this.platform
 }
 
+output "platform_details" {
+  description = "returns a string"
+  value       = data.aws_ami.this.platform_details
+}
+
 output "product_codes" {
   description = "returns a set of object"
   value       = data.aws_ami.this.product_codes
@@ -242,6 +252,11 @@ output "state_reason" {
 output "tags" {
   description = "returns a map of string"
   value       = data.aws_ami.this.tags
+}
+
+output "usage_operation" {
+  description = "returns a string"
+  value       = data.aws_ami.this.usage_operation
 }
 
 output "virtualization_type" {

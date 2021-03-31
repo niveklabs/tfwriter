@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -45,6 +45,8 @@ module "cloudflare_load_balancer_monitor" {
   path = null
   # port - (optional) is a type of number
   port = null
+  # probe_zone - (optional) is a type of string
+  probe_zone = null
   # retries - (optional) is a type of number
   retries = null
   # timeout - (optional) is a type of number
@@ -118,6 +120,12 @@ variable "port" {
   default     = null
 }
 
+variable "probe_zone" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "retries" {
   description = "(optional)"
   type        = number
@@ -163,6 +171,7 @@ resource "cloudflare_load_balancer_monitor" "this" {
   method           = var.method
   path             = var.path
   port             = var.port
+  probe_zone       = var.probe_zone
   retries          = var.retries
   timeout          = var.timeout
   type             = var.type

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_sdnconnector" {
 
   # access_key - (optional) is a type of string
   access_key = null
+  # api_key - (optional) is a type of string
+  api_key = null
   # azure_region - (optional) is a type of string
   azure_region = null
   # client_id - (optional) is a type of string
@@ -37,10 +39,20 @@ module "fortios_system_sdnconnector" {
   client_secret = null
   # compartment_id - (optional) is a type of string
   compartment_id = null
+  # compute_generation - (optional) is a type of number
+  compute_generation = null
+  # domain - (optional) is a type of string
+  domain = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # gcp_project - (optional) is a type of string
   gcp_project = null
+  # group_name - (optional) is a type of string
+  group_name = null
   # ha_status - (optional) is a type of string
   ha_status = null
+  # ibm_region - (optional) is a type of string
+  ibm_region = null
   # key_passwd - (optional) is a type of string
   key_passwd = null
   # login_endpoint - (optional) is a type of string
@@ -53,6 +65,8 @@ module "fortios_system_sdnconnector" {
   oci_fingerprint = null
   # oci_region - (optional) is a type of string
   oci_region = null
+  # oci_region_type - (optional) is a type of string
+  oci_region_type = null
   # password - (optional) is a type of string
   password = null
   # private_key - (optional) is a type of string
@@ -89,6 +103,12 @@ module "fortios_system_sdnconnector" {
   user_id = null
   # username - (optional) is a type of string
   username = null
+  # vcenter_password - (optional) is a type of string
+  vcenter_password = null
+  # vcenter_server - (optional) is a type of string
+  vcenter_server = null
+  # vcenter_username - (optional) is a type of string
+  vcenter_username = null
   # vpc_id - (optional) is a type of string
   vpc_id = null
 
@@ -98,8 +118,9 @@ module "fortios_system_sdnconnector" {
 
   nic = [{
     ip = [{
-      name      = null
-      public_ip = null
+      name           = null
+      public_ip      = null
+      resource_group = null
     }]
     name = null
   }]
@@ -109,11 +130,13 @@ module "fortios_system_sdnconnector" {
   }]
 
   route_table = [{
-    name = null
+    name           = null
+    resource_group = null
     route = [{
       name     = null
       next_hop = null
     }]
+    subscription_id = null
   }]
 }
 ```
@@ -124,6 +147,12 @@ module "fortios_system_sdnconnector" {
 
 ```terraform
 variable "access_key" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "api_key" {
   description = "(optional)"
   type        = string
   default     = null
@@ -153,13 +182,43 @@ variable "compartment_id" {
   default     = null
 }
 
+variable "compute_generation" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "domain" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "gcp_project" {
   description = "(optional)"
   type        = string
   default     = null
 }
 
+variable "group_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ha_status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ibm_region" {
   description = "(optional)"
   type        = string
   default     = null
@@ -196,6 +255,12 @@ variable "oci_fingerprint" {
 }
 
 variable "oci_region" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "oci_region_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -307,6 +372,24 @@ variable "username" {
   default     = null
 }
 
+variable "vcenter_password" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "vcenter_server" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "vcenter_username" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "vpc_id" {
   description = "(optional)"
   type        = string
@@ -329,8 +412,9 @@ variable "nic" {
     {
       ip = list(object(
         {
-          name      = string
-          public_ip = string
+          name           = string
+          public_ip      = string
+          resource_group = string
         }
       ))
       name = string
@@ -353,13 +437,15 @@ variable "route_table" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      name = string
+      name           = string
+      resource_group = string
       route = list(object(
         {
           name     = string
           next_hop = string
         }
       ))
+      subscription_id = string
     }
   ))
   default = []
@@ -372,38 +458,48 @@ variable "route_table" {
 
 ```terraform
 resource "fortios_system_sdnconnector" "this" {
-  access_key       = var.access_key
-  azure_region     = var.azure_region
-  client_id        = var.client_id
-  client_secret    = var.client_secret
-  compartment_id   = var.compartment_id
-  gcp_project      = var.gcp_project
-  ha_status        = var.ha_status
-  key_passwd       = var.key_passwd
-  login_endpoint   = var.login_endpoint
-  name             = var.name
-  oci_cert         = var.oci_cert
-  oci_fingerprint  = var.oci_fingerprint
-  oci_region       = var.oci_region
-  password         = var.password
-  private_key      = var.private_key
-  region           = var.region
-  resource_group   = var.resource_group
-  resource_url     = var.resource_url
-  secret_key       = var.secret_key
-  secret_token     = var.secret_token
-  server           = var.server
-  server_port      = var.server_port
-  service_account  = var.service_account
-  status           = var.status
-  subscription_id  = var.subscription_id
-  tenant_id        = var.tenant_id
-  type             = var.type
-  update_interval  = var.update_interval
-  use_metadata_iam = var.use_metadata_iam
-  user_id          = var.user_id
-  username         = var.username
-  vpc_id           = var.vpc_id
+  access_key            = var.access_key
+  api_key               = var.api_key
+  azure_region          = var.azure_region
+  client_id             = var.client_id
+  client_secret         = var.client_secret
+  compartment_id        = var.compartment_id
+  compute_generation    = var.compute_generation
+  domain                = var.domain
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  gcp_project           = var.gcp_project
+  group_name            = var.group_name
+  ha_status             = var.ha_status
+  ibm_region            = var.ibm_region
+  key_passwd            = var.key_passwd
+  login_endpoint        = var.login_endpoint
+  name                  = var.name
+  oci_cert              = var.oci_cert
+  oci_fingerprint       = var.oci_fingerprint
+  oci_region            = var.oci_region
+  oci_region_type       = var.oci_region_type
+  password              = var.password
+  private_key           = var.private_key
+  region                = var.region
+  resource_group        = var.resource_group
+  resource_url          = var.resource_url
+  secret_key            = var.secret_key
+  secret_token          = var.secret_token
+  server                = var.server
+  server_port           = var.server_port
+  service_account       = var.service_account
+  status                = var.status
+  subscription_id       = var.subscription_id
+  tenant_id             = var.tenant_id
+  type                  = var.type
+  update_interval       = var.update_interval
+  use_metadata_iam      = var.use_metadata_iam
+  user_id               = var.user_id
+  username              = var.username
+  vcenter_password      = var.vcenter_password
+  vcenter_server        = var.vcenter_server
+  vcenter_username      = var.vcenter_username
+  vpc_id                = var.vpc_id
 
   dynamic "external_ip" {
     for_each = var.external_ip
@@ -420,8 +516,9 @@ resource "fortios_system_sdnconnector" "this" {
       dynamic "ip" {
         for_each = nic.value.ip
         content {
-          name      = ip.value["name"]
-          public_ip = ip.value["public_ip"]
+          name           = ip.value["name"]
+          public_ip      = ip.value["public_ip"]
+          resource_group = ip.value["resource_group"]
         }
       }
 
@@ -438,7 +535,9 @@ resource "fortios_system_sdnconnector" "this" {
   dynamic "route_table" {
     for_each = var.route_table
     content {
-      name = route_table.value["name"]
+      name            = route_table.value["name"]
+      resource_group  = route_table.value["resource_group"]
+      subscription_id = route_table.value["subscription_id"]
 
       dynamic "route" {
         for_each = route_table.value.route
@@ -480,14 +579,34 @@ output "compartment_id" {
   value       = fortios_system_sdnconnector.this.compartment_id
 }
 
+output "compute_generation" {
+  description = "returns a number"
+  value       = fortios_system_sdnconnector.this.compute_generation
+}
+
+output "domain" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.domain
+}
+
 output "gcp_project" {
   description = "returns a string"
   value       = fortios_system_sdnconnector.this.gcp_project
 }
 
+output "group_name" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.group_name
+}
+
 output "ha_status" {
   description = "returns a string"
   value       = fortios_system_sdnconnector.this.ha_status
+}
+
+output "ibm_region" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.ibm_region
 }
 
 output "id" {
@@ -518,6 +637,11 @@ output "oci_fingerprint" {
 output "oci_region" {
   description = "returns a string"
   value       = fortios_system_sdnconnector.this.oci_region
+}
+
+output "oci_region_type" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.oci_region_type
 }
 
 output "password" {
@@ -596,6 +720,16 @@ output "user_id" {
 output "username" {
   description = "returns a string"
   value       = fortios_system_sdnconnector.this.username
+}
+
+output "vcenter_server" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.vcenter_server
+}
+
+output "vcenter_username" {
+  description = "returns a string"
+  value       = fortios_system_sdnconnector.this.vcenter_username
 }
 
 output "vpc_id" {

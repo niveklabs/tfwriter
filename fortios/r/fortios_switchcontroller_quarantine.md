@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_switchcontroller_quarantine" {
   source = "./modules/fortios/r/fortios_switchcontroller_quarantine"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # quarantine - (optional) is a type of string
   quarantine = null
 
@@ -46,6 +48,12 @@ module "fortios_switchcontroller_quarantine" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "quarantine" {
   description = "(optional)"
   type        = string
@@ -76,7 +84,8 @@ variable "targets" {
 
 ```terraform
 resource "fortios_switchcontroller_quarantine" "this" {
-  quarantine = var.quarantine
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  quarantine            = var.quarantine
 
   dynamic "targets" {
     for_each = var.targets

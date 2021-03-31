@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -55,6 +55,13 @@ module "azurerm_signalr_service" {
     delete = null
     read   = null
     update = null
+  }]
+
+  upstream_endpoint = [{
+    category_pattern = []
+    event_pattern    = []
+    hub_pattern      = []
+    url_template     = null
   }]
 }
 ```
@@ -128,6 +135,19 @@ variable "timeouts" {
   ))
   default = []
 }
+
+variable "upstream_endpoint" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      category_pattern = list(string)
+      event_pattern    = list(string)
+      hub_pattern      = list(string)
+      url_template     = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -171,6 +191,16 @@ resource "azurerm_signalr_service" "this" {
       delete = timeouts.value["delete"]
       read   = timeouts.value["read"]
       update = timeouts.value["update"]
+    }
+  }
+
+  dynamic "upstream_endpoint" {
+    for_each = var.upstream_endpoint
+    content {
+      category_pattern = upstream_endpoint.value["category_pattern"]
+      event_pattern    = upstream_endpoint.value["event_pattern"]
+      hub_pattern      = upstream_endpoint.value["hub_pattern"]
+      url_template     = upstream_endpoint.value["url_template"]
     }
   }
 

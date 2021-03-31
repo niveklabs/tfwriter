@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_webproxy_global" {
   source = "./modules/fortios/r/fortios_webproxy_global"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fast_policy_match - (optional) is a type of string
   fast_policy_match = null
   # forward_proxy_auth - (optional) is a type of string
@@ -73,6 +75,12 @@ module "fortios_webproxy_global" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fast_policy_match" {
   description = "(optional)"
   type        = string
@@ -189,6 +197,7 @@ variable "learn_client_ip_srcaddr6" {
 
 ```terraform
 resource "fortios_webproxy_global" "this" {
+  dynamic_sort_subtable           = var.dynamic_sort_subtable
   fast_policy_match               = var.fast_policy_match
   forward_proxy_auth              = var.forward_proxy_auth
   forward_server_affinity_timeout = var.forward_server_affinity_timeout

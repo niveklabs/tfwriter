@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "azurerm_kubernetes_cluster" {
 
   # api_server_authorized_ip_ranges - (optional) is a type of set of string
   api_server_authorized_ip_ranges = []
+  # automatic_channel_upgrade - (optional) is a type of string
+  automatic_channel_upgrade = null
   # disk_encryption_set_id - (optional) is a type of string
   disk_encryption_set_id = null
   # dns_prefix - (required) is a type of string
@@ -45,6 +47,8 @@ module "azurerm_kubernetes_cluster" {
   node_resource_group = null
   # private_cluster_enabled - (optional) is a type of bool
   private_cluster_enabled = null
+  # private_dns_zone_id - (optional) is a type of string
+  private_dns_zone_id = null
   # private_link_enabled - (optional) is a type of bool
   private_link_enabled = null
   # resource_group_name - (required) is a type of string
@@ -82,7 +86,9 @@ module "azurerm_kubernetes_cluster" {
 
   auto_scaler_profile = [{
     balance_similar_node_groups      = null
+    expander                         = null
     max_graceful_termination_sec     = null
+    new_pod_scale_up_delay           = null
     scale_down_delay_after_add       = null
     scale_down_delay_after_delete    = null
     scale_down_delay_after_failure   = null
@@ -90,11 +96,14 @@ module "azurerm_kubernetes_cluster" {
     scale_down_unready               = null
     scale_down_utilization_threshold = null
     scan_interval                    = null
+    skip_nodes_with_local_storage    = null
+    skip_nodes_with_system_pods      = null
   }]
 
   default_node_pool = [{
     availability_zones           = []
     enable_auto_scaling          = null
+    enable_host_encryption       = null
     enable_node_public_ip        = null
     max_count                    = null
     max_pods                     = null
@@ -103,20 +112,25 @@ module "azurerm_kubernetes_cluster" {
     node_count                   = null
     node_labels                  = {}
     node_taints                  = []
+    only_critical_addons_enabled = null
     orchestrator_version         = null
     os_disk_size_gb              = null
     os_disk_type                 = null
     proximity_placement_group_id = null
     tags                         = {}
     type                         = null
-    vm_size                      = null
-    vnet_subnet_id               = null
+    upgrade_settings = [{
+      max_surge = null
+    }]
+    vm_size        = null
+    vnet_subnet_id = null
   }]
 
   identity = [{
-    principal_id = null
-    tenant_id    = null
-    type         = null
+    principal_id              = null
+    tenant_id                 = null
+    type                      = null
+    user_assigned_identity_id = null
   }]
 
   linux_profile = [{
@@ -138,6 +152,7 @@ module "azurerm_kubernetes_cluster" {
       outbound_ports_allocated  = null
     }]
     load_balancer_sku = null
+    network_mode      = null
     network_plugin    = null
     network_policy    = null
     outbound_type     = null
@@ -187,6 +202,12 @@ variable "api_server_authorized_ip_ranges" {
   default     = null
 }
 
+variable "automatic_channel_upgrade" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "disk_encryption_set_id" {
   description = "(optional)"
   type        = string
@@ -229,6 +250,12 @@ variable "node_resource_group" {
 variable "private_cluster_enabled" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "private_dns_zone_id" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -304,7 +331,9 @@ variable "auto_scaler_profile" {
   type = set(object(
     {
       balance_similar_node_groups      = bool
+      expander                         = string
       max_graceful_termination_sec     = string
+      new_pod_scale_up_delay           = string
       scale_down_delay_after_add       = string
       scale_down_delay_after_delete    = string
       scale_down_delay_after_failure   = string
@@ -312,6 +341,8 @@ variable "auto_scaler_profile" {
       scale_down_unready               = string
       scale_down_utilization_threshold = string
       scan_interval                    = string
+      skip_nodes_with_local_storage    = bool
+      skip_nodes_with_system_pods      = bool
     }
   ))
   default = []
@@ -323,6 +354,7 @@ variable "default_node_pool" {
     {
       availability_zones           = list(string)
       enable_auto_scaling          = bool
+      enable_host_encryption       = bool
       enable_node_public_ip        = bool
       max_count                    = number
       max_pods                     = number
@@ -331,14 +363,20 @@ variable "default_node_pool" {
       node_count                   = number
       node_labels                  = map(string)
       node_taints                  = list(string)
+      only_critical_addons_enabled = bool
       orchestrator_version         = string
       os_disk_size_gb              = number
       os_disk_type                 = string
       proximity_placement_group_id = string
       tags                         = map(string)
       type                         = string
-      vm_size                      = string
-      vnet_subnet_id               = string
+      upgrade_settings = list(object(
+        {
+          max_surge = string
+        }
+      ))
+      vm_size        = string
+      vnet_subnet_id = string
     }
   ))
 }
@@ -347,9 +385,10 @@ variable "identity" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      principal_id = string
-      tenant_id    = string
-      type         = string
+      principal_id              = string
+      tenant_id                 = string
+      type                      = string
+      user_assigned_identity_id = string
     }
   ))
   default = []
@@ -387,6 +426,7 @@ variable "network_profile" {
         }
       ))
       load_balancer_sku = string
+      network_mode      = string
       network_plugin    = string
       network_policy    = string
       outbound_type     = string
@@ -460,6 +500,7 @@ variable "windows_profile" {
 ```terraform
 resource "azurerm_kubernetes_cluster" "this" {
   api_server_authorized_ip_ranges = var.api_server_authorized_ip_ranges
+  automatic_channel_upgrade       = var.automatic_channel_upgrade
   disk_encryption_set_id          = var.disk_encryption_set_id
   dns_prefix                      = var.dns_prefix
   enable_pod_security_policy      = var.enable_pod_security_policy
@@ -468,6 +509,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   name                            = var.name
   node_resource_group             = var.node_resource_group
   private_cluster_enabled         = var.private_cluster_enabled
+  private_dns_zone_id             = var.private_dns_zone_id
   private_link_enabled            = var.private_link_enabled
   resource_group_name             = var.resource_group_name
   sku_tier                        = var.sku_tier
@@ -521,7 +563,9 @@ resource "azurerm_kubernetes_cluster" "this" {
     for_each = var.auto_scaler_profile
     content {
       balance_similar_node_groups      = auto_scaler_profile.value["balance_similar_node_groups"]
+      expander                         = auto_scaler_profile.value["expander"]
       max_graceful_termination_sec     = auto_scaler_profile.value["max_graceful_termination_sec"]
+      new_pod_scale_up_delay           = auto_scaler_profile.value["new_pod_scale_up_delay"]
       scale_down_delay_after_add       = auto_scaler_profile.value["scale_down_delay_after_add"]
       scale_down_delay_after_delete    = auto_scaler_profile.value["scale_down_delay_after_delete"]
       scale_down_delay_after_failure   = auto_scaler_profile.value["scale_down_delay_after_failure"]
@@ -529,6 +573,8 @@ resource "azurerm_kubernetes_cluster" "this" {
       scale_down_unready               = auto_scaler_profile.value["scale_down_unready"]
       scale_down_utilization_threshold = auto_scaler_profile.value["scale_down_utilization_threshold"]
       scan_interval                    = auto_scaler_profile.value["scan_interval"]
+      skip_nodes_with_local_storage    = auto_scaler_profile.value["skip_nodes_with_local_storage"]
+      skip_nodes_with_system_pods      = auto_scaler_profile.value["skip_nodes_with_system_pods"]
     }
   }
 
@@ -537,6 +583,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     content {
       availability_zones           = default_node_pool.value["availability_zones"]
       enable_auto_scaling          = default_node_pool.value["enable_auto_scaling"]
+      enable_host_encryption       = default_node_pool.value["enable_host_encryption"]
       enable_node_public_ip        = default_node_pool.value["enable_node_public_ip"]
       max_count                    = default_node_pool.value["max_count"]
       max_pods                     = default_node_pool.value["max_pods"]
@@ -545,6 +592,7 @@ resource "azurerm_kubernetes_cluster" "this" {
       node_count                   = default_node_pool.value["node_count"]
       node_labels                  = default_node_pool.value["node_labels"]
       node_taints                  = default_node_pool.value["node_taints"]
+      only_critical_addons_enabled = default_node_pool.value["only_critical_addons_enabled"]
       orchestrator_version         = default_node_pool.value["orchestrator_version"]
       os_disk_size_gb              = default_node_pool.value["os_disk_size_gb"]
       os_disk_type                 = default_node_pool.value["os_disk_type"]
@@ -553,13 +601,22 @@ resource "azurerm_kubernetes_cluster" "this" {
       type                         = default_node_pool.value["type"]
       vm_size                      = default_node_pool.value["vm_size"]
       vnet_subnet_id               = default_node_pool.value["vnet_subnet_id"]
+
+      dynamic "upgrade_settings" {
+        for_each = default_node_pool.value.upgrade_settings
+        content {
+          max_surge = upgrade_settings.value["max_surge"]
+        }
+      }
+
     }
   }
 
   dynamic "identity" {
     for_each = var.identity
     content {
-      type = identity.value["type"]
+      type                      = identity.value["type"]
+      user_assigned_identity_id = identity.value["user_assigned_identity_id"]
     }
   }
 
@@ -584,6 +641,7 @@ resource "azurerm_kubernetes_cluster" "this" {
       dns_service_ip     = network_profile.value["dns_service_ip"]
       docker_bridge_cidr = network_profile.value["docker_bridge_cidr"]
       load_balancer_sku  = network_profile.value["load_balancer_sku"]
+      network_mode       = network_profile.value["network_mode"]
       network_plugin     = network_profile.value["network_plugin"]
       network_policy     = network_profile.value["network_policy"]
       outbound_type      = network_profile.value["outbound_type"]
@@ -708,6 +766,11 @@ output "node_resource_group" {
 output "private_cluster_enabled" {
   description = "returns a bool"
   value       = azurerm_kubernetes_cluster.this.private_cluster_enabled
+}
+
+output "private_dns_zone_id" {
+  description = "returns a string"
+  value       = azurerm_kubernetes_cluster.this.private_dns_zone_id
 }
 
 output "private_fqdn" {

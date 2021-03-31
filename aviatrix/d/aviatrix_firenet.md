@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -111,6 +111,11 @@ output "id" {
 output "inspection_enabled" {
   description = "returns a bool"
   value       = data.aviatrix_firenet.this.inspection_enabled
+}
+
+output "keep_alive_via_lan_interface_enabled" {
+  description = "returns a bool"
+  value       = data.aviatrix_firenet.this.keep_alive_via_lan_interface_enabled
 }
 
 output "this" {

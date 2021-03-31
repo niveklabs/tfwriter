@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -119,6 +119,11 @@ output "network_endpoint_details" {
   value       = data.oci_analytics_analytics_instance.this.network_endpoint_details
 }
 
+output "private_access_channels" {
+  description = "returns a map of string"
+  value       = data.oci_analytics_analytics_instance.this.private_access_channels
+}
+
 output "service_url" {
   description = "returns a string"
   value       = data.oci_analytics_analytics_instance.this.service_url
@@ -137,6 +142,11 @@ output "time_created" {
 output "time_updated" {
   description = "returns a string"
   value       = data.oci_analytics_analytics_instance.this.time_updated
+}
+
+output "vanity_url_details" {
+  description = "returns a map of string"
+  value       = data.oci_analytics_analytics_instance.this.vanity_url_details
 }
 
 output "this" {

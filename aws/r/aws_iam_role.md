@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aws_iam_role" {
   description = null
   # force_detach_policies - (optional) is a type of bool
   force_detach_policies = null
+  # managed_policy_arns - (optional) is a type of set of string
+  managed_policy_arns = []
   # max_session_duration - (optional) is a type of number
   max_session_duration = null
   # name - (optional) is a type of string
@@ -45,6 +47,11 @@ module "aws_iam_role" {
   permissions_boundary = null
   # tags - (optional) is a type of map of string
   tags = {}
+
+  inline_policy = [{
+    name   = null
+    policy = null
+  }]
 }
 ```
 
@@ -67,6 +74,12 @@ variable "description" {
 variable "force_detach_policies" {
   description = "(optional)"
   type        = bool
+  default     = null
+}
+
+variable "managed_policy_arns" {
+  description = "(optional)"
+  type        = set(string)
   default     = null
 }
 
@@ -105,6 +118,17 @@ variable "tags" {
   type        = map(string)
   default     = null
 }
+
+variable "inline_policy" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name   = string
+      policy = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -116,12 +140,22 @@ resource "aws_iam_role" "this" {
   assume_role_policy    = var.assume_role_policy
   description           = var.description
   force_detach_policies = var.force_detach_policies
+  managed_policy_arns   = var.managed_policy_arns
   max_session_duration  = var.max_session_duration
   name                  = var.name
   name_prefix           = var.name_prefix
   path                  = var.path
   permissions_boundary  = var.permissions_boundary
   tags                  = var.tags
+
+  dynamic "inline_policy" {
+    for_each = var.inline_policy
+    content {
+      name   = inline_policy.value["name"]
+      policy = inline_policy.value["policy"]
+    }
+  }
+
 }
 ```
 
@@ -143,6 +177,11 @@ output "create_date" {
 output "id" {
   description = "returns a string"
   value       = aws_iam_role.this.id
+}
+
+output "managed_policy_arns" {
+  description = "returns a set of string"
+  value       = aws_iam_role.this.managed_policy_arns
 }
 
 output "name" {

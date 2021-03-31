@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -44,23 +44,23 @@ module "datadog_integration_azure" {
 
 ```terraform
 variable "client_id" {
-  description = "(required)"
+  description = "(required) - Your Azure web application ID."
   type        = string
 }
 
 variable "client_secret" {
-  description = "(required)"
+  description = "(required) - (Required for Initial Creation) Your Azure web application secret key."
   type        = string
 }
 
 variable "host_filters" {
-  description = "(optional)"
+  description = "(optional) - String of host tag(s) (in the form `key:value,key:value`) defines a filter that Datadog will use when collecting metrics from Azure. Limit the Azure instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. e.x. `env:production,deploymentgroup:red`"
   type        = string
   default     = null
 }
 
 variable "tenant_name" {
-  description = "(required)"
+  description = "(required) - Your Azure Active Directory ID."
   type        = string
 }
 ```

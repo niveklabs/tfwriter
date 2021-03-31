@@ -12,7 +12,7 @@
 
 ```terraform
 provider "dme" {
-  version = "0.1.2"
+  version = "0.1.3"
 
   # api_key - (required) is a type of string
   api_key = null

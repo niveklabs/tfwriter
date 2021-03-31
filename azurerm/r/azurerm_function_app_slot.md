@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -124,6 +124,7 @@ module "azurerm_function_app_slot" {
       ip_address                = null
       name                      = null
       priority                  = null
+      service_tag               = null
       subnet_id                 = null
       virtual_network_subnet_id = null
     }]
@@ -135,6 +136,7 @@ module "azurerm_function_app_slot" {
       ip_address                = null
       name                      = null
       priority                  = null
+      service_tag               = null
       subnet_id                 = null
       virtual_network_subnet_id = null
     }]
@@ -345,6 +347,7 @@ variable "site_config" {
           ip_address                = string
           name                      = string
           priority                  = number
+          service_tag               = string
           subnet_id                 = string
           virtual_network_subnet_id = string
         }
@@ -358,6 +361,7 @@ variable "site_config" {
           ip_address                = string
           name                      = string
           priority                  = number
+          service_tag               = string
           subnet_id                 = string
           virtual_network_subnet_id = string
         }

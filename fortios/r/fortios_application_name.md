@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_application_name" {
   behavior = null
   # category - (required) is a type of number
   category = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
   # name - (optional) is a type of string
@@ -57,6 +59,10 @@ module "fortios_application_name" {
     metaid  = null
     valueid = null
   }]
+
+  parameters = [{
+    name = null
+  }]
 }
 ```
 
@@ -74,6 +80,12 @@ variable "behavior" {
 variable "category" {
   description = "(required)"
   type        = number
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "fosid" {
@@ -147,6 +159,16 @@ variable "metadata" {
   ))
   default = []
 }
+
+variable "parameters" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -155,18 +177,19 @@ variable "metadata" {
 
 ```terraform
 resource "fortios_application_name" "this" {
-  behavior     = var.behavior
-  category     = var.category
-  fosid        = var.fosid
-  name         = var.name
-  parameter    = var.parameter
-  popularity   = var.popularity
-  protocol     = var.protocol
-  risk         = var.risk
-  sub_category = var.sub_category
-  technology   = var.technology
-  vendor       = var.vendor
-  weight       = var.weight
+  behavior              = var.behavior
+  category              = var.category
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
+  name                  = var.name
+  parameter             = var.parameter
+  popularity            = var.popularity
+  protocol              = var.protocol
+  risk                  = var.risk
+  sub_category          = var.sub_category
+  technology            = var.technology
+  vendor                = var.vendor
+  weight                = var.weight
 
   dynamic "metadata" {
     for_each = var.metadata
@@ -174,6 +197,13 @@ resource "fortios_application_name" "this" {
       id      = metadata.value["id"]
       metaid  = metadata.value["metaid"]
       valueid = metadata.value["valueid"]
+    }
+  }
+
+  dynamic "parameters" {
+    for_each = var.parameters
+    content {
+      name = parameters.value["name"]
     }
   }
 

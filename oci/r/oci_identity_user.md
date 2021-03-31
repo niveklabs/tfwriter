@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -148,6 +148,11 @@ output "defined_tags" {
 output "email" {
   description = "returns a string"
   value       = oci_identity_user.this.email
+}
+
+output "email_verified" {
+  description = "returns a bool"
+  value       = oci_identity_user.this.email_verified
 }
 
 output "external_identifier" {

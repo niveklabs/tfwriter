@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -29,6 +29,12 @@ module "alicloud_vpcs" {
 
   # cidr_block - (optional) is a type of string
   cidr_block = null
+  # dhcp_options_set_id - (optional) is a type of string
+  dhcp_options_set_id = null
+  # dry_run - (optional) is a type of bool
+  dry_run = null
+  # enable_details - (optional) is a type of bool
+  enable_details = null
   # ids - (optional) is a type of list of string
   ids = []
   # is_default - (optional) is a type of bool
@@ -43,6 +49,10 @@ module "alicloud_vpcs" {
   status = null
   # tags - (optional) is a type of map of string
   tags = {}
+  # vpc_name - (optional) is a type of string
+  vpc_name = null
+  # vpc_owner_id - (optional) is a type of number
+  vpc_owner_id = null
   # vswitch_id - (optional) is a type of string
   vswitch_id = null
 }
@@ -56,6 +66,24 @@ module "alicloud_vpcs" {
 variable "cidr_block" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "dhcp_options_set_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dry_run" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "enable_details" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -101,6 +129,18 @@ variable "tags" {
   default     = null
 }
 
+variable "vpc_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "vpc_owner_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "vswitch_id" {
   description = "(optional)"
   type        = string
@@ -114,15 +154,20 @@ variable "vswitch_id" {
 
 ```terraform
 data "alicloud_vpcs" "this" {
-  cidr_block        = var.cidr_block
-  ids               = var.ids
-  is_default        = var.is_default
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  resource_group_id = var.resource_group_id
-  status            = var.status
-  tags              = var.tags
-  vswitch_id        = var.vswitch_id
+  cidr_block          = var.cidr_block
+  dhcp_options_set_id = var.dhcp_options_set_id
+  dry_run             = var.dry_run
+  enable_details      = var.enable_details
+  ids                 = var.ids
+  is_default          = var.is_default
+  name_regex          = var.name_regex
+  output_file         = var.output_file
+  resource_group_id   = var.resource_group_id
+  status              = var.status
+  tags                = var.tags
+  vpc_name            = var.vpc_name
+  vpc_owner_id        = var.vpc_owner_id
+  vswitch_id          = var.vswitch_id
 }
 ```
 

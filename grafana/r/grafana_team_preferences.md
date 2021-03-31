@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    grafana = ">= 1.8.1"
+    grafana = ">= 1.9.0"
   }
 }
 ```

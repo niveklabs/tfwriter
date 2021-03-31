@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_firewall_proxyaddress" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # header - (optional) is a type of string
   header = null
   # header_name - (optional) is a type of string
@@ -99,6 +101,12 @@ variable "color" {
 }
 
 variable "comment" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -228,22 +236,23 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_proxyaddress" "this" {
-  case_sensitivity = var.case_sensitivity
-  color            = var.color
-  comment          = var.comment
-  header           = var.header
-  header_name      = var.header_name
-  host             = var.host
-  host_regex       = var.host_regex
-  method           = var.method
-  name             = var.name
-  path             = var.path
-  query            = var.query
-  referrer         = var.referrer
-  type             = var.type
-  ua               = var.ua
-  uuid             = var.uuid
-  visibility       = var.visibility
+  case_sensitivity      = var.case_sensitivity
+  color                 = var.color
+  comment               = var.comment
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  header                = var.header
+  header_name           = var.header_name
+  host                  = var.host
+  host_regex            = var.host_regex
+  method                = var.method
+  name                  = var.name
+  path                  = var.path
+  query                 = var.query
+  referrer              = var.referrer
+  type                  = var.type
+  ua                    = var.ua
+  uuid                  = var.uuid
+  visibility            = var.visibility
 
   dynamic "category" {
     for_each = var.category

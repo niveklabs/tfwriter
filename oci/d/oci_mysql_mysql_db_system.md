@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -134,6 +134,11 @@ output "freeform_tags" {
   value       = data.oci_mysql_mysql_db_system.this.freeform_tags
 }
 
+output "heat_wave_cluster" {
+  description = "returns a list of object"
+  value       = data.oci_mysql_mysql_db_system.this.heat_wave_cluster
+}
+
 output "hostname_label" {
   description = "returns a string"
   value       = data.oci_mysql_mysql_db_system.this.hostname_label
@@ -152,6 +157,11 @@ output "ip_address" {
 output "is_analytics_cluster_attached" {
   description = "returns a bool"
   value       = data.oci_mysql_mysql_db_system.this.is_analytics_cluster_attached
+}
+
+output "is_heat_wave_cluster_attached" {
+  description = "returns a bool"
+  value       = data.oci_mysql_mysql_db_system.this.is_heat_wave_cluster_attached
 }
 
 output "lifecycle_details" {

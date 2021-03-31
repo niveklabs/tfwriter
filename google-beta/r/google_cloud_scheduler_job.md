@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -86,6 +86,7 @@ module "google_cloud_scheduler_job" {
   timeouts = [{
     create = null
     delete = null
+    update = null
   }]
 }
 ```
@@ -213,6 +214,7 @@ variable "timeouts" {
     {
       create = string
       delete = string
+      update = string
     }
   ))
   default = []
@@ -305,6 +307,7 @@ resource "google_cloud_scheduler_job" "this" {
     content {
       create = timeouts.value["create"]
       delete = timeouts.value["delete"]
+      update = timeouts.value["update"]
     }
   }
 

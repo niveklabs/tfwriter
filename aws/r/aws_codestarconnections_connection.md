@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "aws_codestarconnections_connection" {
   name = null
   # provider_type - (required) is a type of string
   provider_type = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -48,6 +50,12 @@ variable "provider_type" {
   description = "(required)"
   type        = string
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -58,6 +66,7 @@ variable "provider_type" {
 resource "aws_codestarconnections_connection" "this" {
   name          = var.name
   provider_type = var.provider_type
+  tags          = var.tags
 }
 ```
 

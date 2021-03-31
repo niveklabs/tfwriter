@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_default_vpc" {
   enable_dns_support = null
   # tags - (optional) is a type of map of string
   tags = {}
+  # tags_all - (optional) is a type of map of string
+  tags_all = {}
 }
 ```
 
@@ -74,6 +76,12 @@ variable "tags" {
   type        = map(string)
   default     = null
 }
+
+variable "tags_all" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -87,6 +95,7 @@ resource "aws_default_vpc" "this" {
   enable_dns_hostnames           = var.enable_dns_hostnames
   enable_dns_support             = var.enable_dns_support
   tags                           = var.tags
+  tags_all                       = var.tags_all
 }
 ```
 
@@ -173,6 +182,11 @@ output "main_route_table_id" {
 output "owner_id" {
   description = "returns a string"
   value       = aws_default_vpc.this.owner_id
+}
+
+output "tags_all" {
+  description = "returns a map of string"
+  value       = aws_default_vpc.this.tags_all
 }
 
 output "this" {

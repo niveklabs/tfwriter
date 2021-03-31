@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nsxt = ">= 3.1.0"
+    nsxt = ">= 3.1.1"
   }
 }
 ```
@@ -53,6 +53,8 @@ module "nsxt_policy_tier0_gateway" {
   ipv6_ndra_profile_path = null
   # nsx_id - (optional) is a type of string
   nsx_id = null
+  # rd_admin_address - (optional) is a type of string
+  rd_admin_address = null
   # transit_subnets - (optional) is a type of list of string
   transit_subnets = []
 
@@ -213,6 +215,12 @@ variable "nsx_id" {
   default     = null
 }
 
+variable "rd_admin_address" {
+  description = "(optional) - Route distinguisher administrator address"
+  type        = string
+  default     = null
+}
+
 variable "transit_subnets" {
   description = "(optional) - Transit subnets in CIDR format"
   type        = list(string)
@@ -362,6 +370,7 @@ resource "nsxt_policy_tier0_gateway" "this" {
   ipv6_dad_profile_path    = var.ipv6_dad_profile_path
   ipv6_ndra_profile_path   = var.ipv6_ndra_profile_path
   nsx_id                   = var.nsx_id
+  rd_admin_address         = var.rd_admin_address
   transit_subnets          = var.transit_subnets
 
   dynamic "bgp_config" {

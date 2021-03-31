@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -151,6 +151,11 @@ output "infini_band_network_cidr" {
 output "lifecycle_details" {
   description = "returns a string"
   value       = data.oci_database_exadata_infrastructure.this.lifecycle_details
+}
+
+output "maintenance_slo_status" {
+  description = "returns a string"
+  value       = data.oci_database_exadata_infrastructure.this.maintenance_slo_status
 }
 
 output "maintenance_window" {

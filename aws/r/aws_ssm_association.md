@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_ssm_association" {
   source = "./modules/aws/r/aws_ssm_association"
 
+  # apply_only_at_cron_interval - (optional) is a type of bool
+  apply_only_at_cron_interval = null
   # association_name - (optional) is a type of string
   association_name = null
   # automation_target_parameter_name - (optional) is a type of string
@@ -65,6 +67,12 @@ module "aws_ssm_association" {
 ### Variables
 
 ```terraform
+variable "apply_only_at_cron_interval" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "association_name" {
   description = "(optional)"
   type        = string
@@ -153,6 +161,7 @@ variable "targets" {
 
 ```terraform
 resource "aws_ssm_association" "this" {
+  apply_only_at_cron_interval      = var.apply_only_at_cron_interval
   association_name                 = var.association_name
   automation_target_parameter_name = var.automation_target_parameter_name
   compliance_severity              = var.compliance_severity

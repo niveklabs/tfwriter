@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -46,6 +46,7 @@ module "azurerm_eventhub_namespace" {
       action  = null
       ip_mask = null
     }]
+    trusted_service_access_enabled = null
     virtual_network_rule = [{
       ignore_missing_virtual_network_service_endpoint = null
       subnet_id                                       = null
@@ -125,6 +126,7 @@ variable "network_rulesets" {
           ip_mask = string
         }
       ))
+      trusted_service_access_enabled = bool
       virtual_network_rule = list(object(
         {
           ignore_missing_virtual_network_service_endpoint = bool

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    tfe = ">= 0.23.0"
+    tfe = ">= 0.24.0"
   }
 }
 ```

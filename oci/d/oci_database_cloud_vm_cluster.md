@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -138,6 +138,11 @@ output "id" {
   value       = data.oci_database_cloud_vm_cluster.this.id
 }
 
+output "iorm_config_cache" {
+  description = "returns a list of object"
+  value       = data.oci_database_cloud_vm_cluster.this.iorm_config_cache
+}
+
 output "is_local_backup_enabled" {
   description = "returns a bool"
   value       = data.oci_database_cloud_vm_cluster.this.is_local_backup_enabled
@@ -176,6 +181,11 @@ output "node_count" {
 output "nsg_ids" {
   description = "returns a list of string"
   value       = data.oci_database_cloud_vm_cluster.this.nsg_ids
+}
+
+output "scan_dns_name" {
+  description = "returns a string"
+  value       = data.oci_database_cloud_vm_cluster.this.scan_dns_name
 }
 
 output "scan_dns_record_id" {
@@ -231,6 +241,11 @@ output "time_zone" {
 output "vip_ids" {
   description = "returns a list of string"
   value       = data.oci_database_cloud_vm_cluster.this.vip_ids
+}
+
+output "zone_id" {
+  description = "returns a string"
+  value       = data.oci_database_cloud_vm_cluster.this.zone_id
 }
 
 output "this" {

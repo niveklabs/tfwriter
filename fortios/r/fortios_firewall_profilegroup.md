@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,10 +31,16 @@ module "fortios_firewall_profilegroup" {
   application_list = null
   # av_profile - (optional) is a type of string
   av_profile = null
+  # cifs_profile - (optional) is a type of string
+  cifs_profile = null
   # dlp_sensor - (optional) is a type of string
   dlp_sensor = null
   # dnsfilter_profile - (optional) is a type of string
   dnsfilter_profile = null
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = null
+  # file_filter_profile - (optional) is a type of string
+  file_filter_profile = null
   # icap_profile - (optional) is a type of string
   icap_profile = null
   # ips_sensor - (optional) is a type of string
@@ -75,6 +81,12 @@ variable "av_profile" {
   default     = null
 }
 
+variable "cifs_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dlp_sensor" {
   description = "(optional)"
   type        = string
@@ -82,6 +94,18 @@ variable "dlp_sensor" {
 }
 
 variable "dnsfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "file_filter_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -155,8 +179,11 @@ variable "webfilter_profile" {
 resource "fortios_firewall_profilegroup" "this" {
   application_list         = var.application_list
   av_profile               = var.av_profile
+  cifs_profile             = var.cifs_profile
   dlp_sensor               = var.dlp_sensor
   dnsfilter_profile        = var.dnsfilter_profile
+  emailfilter_profile      = var.emailfilter_profile
+  file_filter_profile      = var.file_filter_profile
   icap_profile             = var.icap_profile
   ips_sensor               = var.ips_sensor
   name                     = var.name
@@ -185,6 +212,11 @@ output "av_profile" {
   value       = fortios_firewall_profilegroup.this.av_profile
 }
 
+output "cifs_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_profilegroup.this.cifs_profile
+}
+
 output "dlp_sensor" {
   description = "returns a string"
   value       = fortios_firewall_profilegroup.this.dlp_sensor
@@ -193,6 +225,16 @@ output "dlp_sensor" {
 output "dnsfilter_profile" {
   description = "returns a string"
   value       = fortios_firewall_profilegroup.this.dnsfilter_profile
+}
+
+output "emailfilter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_profilegroup.this.emailfilter_profile
+}
+
+output "file_filter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_profilegroup.this.file_filter_profile
 }
 
 output "icap_profile" {

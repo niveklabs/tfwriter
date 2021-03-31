@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aws_iam_openid_connect_provider" {
 
   # client_id_list - (required) is a type of list of string
   client_id_list = []
+  # tags - (optional) is a type of map of string
+  tags = {}
   # thumbprint_list - (required) is a type of list of string
   thumbprint_list = []
   # url - (required) is a type of string
@@ -44,6 +46,12 @@ module "aws_iam_openid_connect_provider" {
 variable "client_id_list" {
   description = "(required)"
   type        = list(string)
+}
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
 }
 
 variable "thumbprint_list" {
@@ -64,6 +72,7 @@ variable "url" {
 ```terraform
 resource "aws_iam_openid_connect_provider" "this" {
   client_id_list  = var.client_id_list
+  tags            = var.tags
   thumbprint_list = var.thumbprint_list
   url             = var.url
 }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "fortios_system_admin" {
   allow_remove_admin_session = null
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # email_to - (optional) is a type of string
   email_to = null
   # force_password_change - (optional) is a type of string
@@ -125,6 +127,10 @@ module "fortios_system_admin" {
   trusthost9 = null
   # two_factor - (optional) is a type of string
   two_factor = null
+  # two_factor_authentication - (optional) is a type of string
+  two_factor_authentication = null
+  # two_factor_notification - (optional) is a type of string
+  two_factor_notification = null
   # wildcard - (optional) is a type of string
   wildcard = null
 
@@ -210,6 +216,12 @@ variable "allow_remove_admin_session" {
 }
 
 variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -485,6 +497,18 @@ variable "two_factor" {
   default     = null
 }
 
+variable "two_factor_authentication" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "two_factor_notification" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "wildcard" {
   description = "(optional)"
   type        = string
@@ -604,6 +628,7 @@ resource "fortios_system_admin" "this" {
   accprofile_override        = var.accprofile_override
   allow_remove_admin_session = var.allow_remove_admin_session
   comments                   = var.comments
+  dynamic_sort_subtable      = var.dynamic_sort_subtable
   email_to                   = var.email_to
   force_password_change      = var.force_password_change
   fortitoken                 = var.fortitoken
@@ -649,6 +674,8 @@ resource "fortios_system_admin" "this" {
   trusthost8                 = var.trusthost8
   trusthost9                 = var.trusthost9
   two_factor                 = var.two_factor
+  two_factor_authentication  = var.two_factor_authentication
+  two_factor_notification    = var.two_factor_notification
   wildcard                   = var.wildcard
 
   dynamic "guest_usergroups" {
@@ -977,6 +1004,16 @@ output "trusthost9" {
 output "two_factor" {
   description = "returns a string"
   value       = fortios_system_admin.this.two_factor
+}
+
+output "two_factor_authentication" {
+  description = "returns a string"
+  value       = fortios_system_admin.this.two_factor_authentication
+}
+
+output "two_factor_notification" {
+  description = "returns a string"
+  value       = fortios_system_admin.this.two_factor_notification
 }
 
 output "wildcard" {

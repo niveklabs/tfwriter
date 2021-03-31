@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -67,8 +67,16 @@ module "fortios_user_local" {
   tacacs_server = null
   # two_factor - (optional) is a type of string
   two_factor = null
+  # two_factor_authentication - (optional) is a type of string
+  two_factor_authentication = null
+  # two_factor_notification - (optional) is a type of string
+  two_factor_notification = null
   # type - (required) is a type of string
   type = null
+  # username_case_insensitivity - (optional) is a type of string
+  username_case_insensitivity = null
+  # username_case_sensitivity - (optional) is a type of string
+  username_case_sensitivity = null
   # workstation - (optional) is a type of string
   workstation = null
 }
@@ -198,9 +206,33 @@ variable "two_factor" {
   default     = null
 }
 
+variable "two_factor_authentication" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "two_factor_notification" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "type" {
   description = "(required)"
   type        = string
+}
+
+variable "username_case_insensitivity" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "username_case_sensitivity" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "workstation" {
@@ -216,28 +248,32 @@ variable "workstation" {
 
 ```terraform
 resource "fortios_user_local" "this" {
-  auth_concurrent_override = var.auth_concurrent_override
-  auth_concurrent_value    = var.auth_concurrent_value
-  authtimeout              = var.authtimeout
-  email_to                 = var.email_to
-  fortitoken               = var.fortitoken
-  fosid                    = var.fosid
-  ldap_server              = var.ldap_server
-  name                     = var.name
-  passwd                   = var.passwd
-  passwd_policy            = var.passwd_policy
-  passwd_time              = var.passwd_time
-  ppk_identity             = var.ppk_identity
-  ppk_secret               = var.ppk_secret
-  radius_server            = var.radius_server
-  sms_custom_server        = var.sms_custom_server
-  sms_phone                = var.sms_phone
-  sms_server               = var.sms_server
-  status                   = var.status
-  tacacs_server            = var.tacacs_server
-  two_factor               = var.two_factor
-  type                     = var.type
-  workstation              = var.workstation
+  auth_concurrent_override    = var.auth_concurrent_override
+  auth_concurrent_value       = var.auth_concurrent_value
+  authtimeout                 = var.authtimeout
+  email_to                    = var.email_to
+  fortitoken                  = var.fortitoken
+  fosid                       = var.fosid
+  ldap_server                 = var.ldap_server
+  name                        = var.name
+  passwd                      = var.passwd
+  passwd_policy               = var.passwd_policy
+  passwd_time                 = var.passwd_time
+  ppk_identity                = var.ppk_identity
+  ppk_secret                  = var.ppk_secret
+  radius_server               = var.radius_server
+  sms_custom_server           = var.sms_custom_server
+  sms_phone                   = var.sms_phone
+  sms_server                  = var.sms_server
+  status                      = var.status
+  tacacs_server               = var.tacacs_server
+  two_factor                  = var.two_factor
+  two_factor_authentication   = var.two_factor_authentication
+  two_factor_notification     = var.two_factor_notification
+  type                        = var.type
+  username_case_insensitivity = var.username_case_insensitivity
+  username_case_sensitivity   = var.username_case_sensitivity
+  workstation                 = var.workstation
 }
 ```
 
@@ -334,6 +370,26 @@ output "tacacs_server" {
 output "two_factor" {
   description = "returns a string"
   value       = fortios_user_local.this.two_factor
+}
+
+output "two_factor_authentication" {
+  description = "returns a string"
+  value       = fortios_user_local.this.two_factor_authentication
+}
+
+output "two_factor_notification" {
+  description = "returns a string"
+  value       = fortios_user_local.this.two_factor_notification
+}
+
+output "username_case_insensitivity" {
+  description = "returns a string"
+  value       = fortios_user_local.this.username_case_insensitivity
+}
+
+output "username_case_sensitivity" {
+  description = "returns a string"
+  value       = fortios_user_local.this.username_case_sensitivity
 }
 
 output "workstation" {

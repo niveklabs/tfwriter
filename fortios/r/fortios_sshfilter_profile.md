@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,10 +31,28 @@ module "fortios_sshfilter_profile" {
   block = null
   # default_command_log - (optional) is a type of string
   default_command_log = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # log - (optional) is a type of string
   log = null
   # name - (optional) is a type of string
   name = null
+
+  file_filter = [{
+    entries = [{
+      action    = null
+      comment   = null
+      direction = null
+      file_type = [{
+        name = null
+      }]
+      filter             = null
+      password_protected = null
+    }]
+    log                   = null
+    scan_archive_contents = null
+    status                = null
+  }]
 
   shell_commands = [{
     action   = null
@@ -65,6 +83,12 @@ variable "default_command_log" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "log" {
   description = "(optional)"
   type        = string
@@ -75,6 +99,32 @@ variable "name" {
   description = "(optional)"
   type        = string
   default     = null
+}
+
+variable "file_filter" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      entries = list(object(
+        {
+          action    = string
+          comment   = string
+          direction = string
+          file_type = list(object(
+            {
+              name = string
+            }
+          ))
+          filter             = string
+          password_protected = string
+        }
+      ))
+      log                   = string
+      scan_archive_contents = string
+      status                = string
+    }
+  ))
+  default = []
 }
 
 variable "shell_commands" {
@@ -100,10 +150,40 @@ variable "shell_commands" {
 
 ```terraform
 resource "fortios_sshfilter_profile" "this" {
-  block               = var.block
-  default_command_log = var.default_command_log
-  log                 = var.log
-  name                = var.name
+  block                 = var.block
+  default_command_log   = var.default_command_log
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  log                   = var.log
+  name                  = var.name
+
+  dynamic "file_filter" {
+    for_each = var.file_filter
+    content {
+      log                   = file_filter.value["log"]
+      scan_archive_contents = file_filter.value["scan_archive_contents"]
+      status                = file_filter.value["status"]
+
+      dynamic "entries" {
+        for_each = file_filter.value.entries
+        content {
+          action             = entries.value["action"]
+          comment            = entries.value["comment"]
+          direction          = entries.value["direction"]
+          filter             = entries.value["filter"]
+          password_protected = entries.value["password_protected"]
+
+          dynamic "file_type" {
+            for_each = entries.value.file_type
+            content {
+              name = file_type.value["name"]
+            }
+          }
+
+        }
+      }
+
+    }
+  }
 
   dynamic "shell_commands" {
     for_each = var.shell_commands

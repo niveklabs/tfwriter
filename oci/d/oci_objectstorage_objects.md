@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -147,6 +147,11 @@ output "id" {
 output "objects" {
   description = "returns a list of object"
   value       = data.oci_objectstorage_objects.this.objects
+}
+
+output "prefixes" {
+  description = "returns a list of string"
+  value       = data.oci_objectstorage_objects.this.prefixes
 }
 
 output "this" {

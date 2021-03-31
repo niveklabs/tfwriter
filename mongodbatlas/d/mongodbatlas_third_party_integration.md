@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    mongodbatlas = ">= 0.7.0"
+    mongodbatlas = ">= 0.8.2"
   }
 }
 ```

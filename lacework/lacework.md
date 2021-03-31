@@ -12,7 +12,7 @@
 
 ```terraform
 provider "lacework" {
-  version = "0.2.7"
+  version = "0.3.1"
 
   # account - (optional) is a type of string
   account = null
@@ -34,13 +34,33 @@ provider "lacework" {
 
 - [lacework_alert_channel_aws_cloudwatch](./r/lacework_alert_channel_aws_cloudwatch.md)
 
+- [lacework_alert_channel_aws_s3](./r/lacework_alert_channel_aws_s3.md)
+
+- [lacework_alert_channel_cisco_webex](./r/lacework_alert_channel_cisco_webex.md)
+
+- [lacework_alert_channel_datadog](./r/lacework_alert_channel_datadog.md)
+
+- [lacework_alert_channel_gcp_pub_sub](./r/lacework_alert_channel_gcp_pub_sub.md)
+
 - [lacework_alert_channel_jira_cloud](./r/lacework_alert_channel_jira_cloud.md)
 
 - [lacework_alert_channel_jira_server](./r/lacework_alert_channel_jira_server.md)
 
+- [lacework_alert_channel_microsoft_teams](./r/lacework_alert_channel_microsoft_teams.md)
+
+- [lacework_alert_channel_newrelic](./r/lacework_alert_channel_newrelic.md)
+
 - [lacework_alert_channel_pagerduty](./r/lacework_alert_channel_pagerduty.md)
 
+- [lacework_alert_channel_qradar](./r/lacework_alert_channel_qradar.md)
+
+- [lacework_alert_channel_service_now](./r/lacework_alert_channel_service_now.md)
+
 - [lacework_alert_channel_slack](./r/lacework_alert_channel_slack.md)
+
+- [lacework_alert_channel_splunk](./r/lacework_alert_channel_splunk.md)
+
+- [lacework_alert_channel_victorops](./r/lacework_alert_channel_victorops.md)
 
 - [lacework_alert_channel_webhook](./r/lacework_alert_channel_webhook.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.3.0"
+    gitlab = ">= 3.5.0"
   }
 }
 ```
@@ -72,7 +72,7 @@ output "http_url_to_repo" {
 }
 
 output "id" {
-  description = "returns a number"
+  description = "returns a string"
   value       = data.gitlab_project.this.id
 }
 

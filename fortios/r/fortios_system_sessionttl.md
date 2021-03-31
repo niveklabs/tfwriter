@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_sessionttl" {
 
   # default - (optional) is a type of string
   default = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
 
   port = [{
     end_port   = null
@@ -46,6 +48,12 @@ module "fortios_system_sessionttl" {
 
 ```terraform
 variable "default" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -72,7 +80,8 @@ variable "port" {
 
 ```terraform
 resource "fortios_system_sessionttl" "this" {
-  default = var.default
+  default               = var.default
+  dynamic_sort_subtable = var.dynamic_sort_subtable
 
   dynamic "port" {
     for_each = var.port

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "opc" {
-  version = "1.4.0"
+  version = "1.4.1"
 
   # endpoint - (optional) is a type of string
   endpoint = null

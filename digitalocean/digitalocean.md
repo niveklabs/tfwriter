@@ -12,7 +12,7 @@
 
 ```terraform
 provider "digitalocean" {
-  version = "2.3.0"
+  version = "2.7.0"
 
   # api_endpoint - (optional) is a type of string
   api_endpoint = null
@@ -121,6 +121,8 @@ provider "digitalocean" {
 - [digitalocean_droplet_snapshot](./d/digitalocean_droplet_snapshot.md)
 
 - [digitalocean_droplets](./d/digitalocean_droplets.md)
+
+- [digitalocean_firewall](./d/digitalocean_firewall.md)
 
 - [digitalocean_floating_ip](./d/digitalocean_floating_ip.md)
 

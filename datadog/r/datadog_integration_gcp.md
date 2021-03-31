@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -48,33 +48,33 @@ module "datadog_integration_gcp" {
 
 ```terraform
 variable "client_email" {
-  description = "(required)"
+  description = "(required) - Your email found in your JSON service account key."
   type        = string
 }
 
 variable "client_id" {
-  description = "(required)"
+  description = "(required) - Your ID found in your JSON service account key."
   type        = string
 }
 
 variable "host_filters" {
-  description = "(optional)"
+  description = "(optional) - Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog."
   type        = string
   default     = null
 }
 
 variable "private_key" {
-  description = "(required)"
+  description = "(required) - Your private key name found in your JSON service account key."
   type        = string
 }
 
 variable "private_key_id" {
-  description = "(required)"
+  description = "(required) - Your private key ID found in your JSON service account key."
   type        = string
 }
 
 variable "project_id" {
-  description = "(required)"
+  description = "(required) - Your Google Cloud project ID found in your JSON service account key."
   type        = string
 }
 ```

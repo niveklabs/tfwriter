@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "akamai_appsec_custom_rules" {
 
   # config_id - (required) is a type of number
   config_id = null
+  # custom_rule_id - (optional) is a type of number
+  custom_rule_id = null
 }
 ```
 
@@ -41,6 +43,12 @@ variable "config_id" {
   description = "(required)"
   type        = number
 }
+
+variable "custom_rule_id" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
 ```
 
 [top](#index)
@@ -49,7 +57,8 @@ variable "config_id" {
 
 ```terraform
 data "akamai_appsec_custom_rules" "this" {
-  config_id = var.config_id
+  config_id      = var.config_id
+  custom_rule_id = var.custom_rule_id
 }
 ```
 
@@ -61,6 +70,11 @@ data "akamai_appsec_custom_rules" "this" {
 output "id" {
   description = "returns a string"
   value       = data.akamai_appsec_custom_rules.this.id
+}
+
+output "json" {
+  description = "returns a string"
+  value       = data.akamai_appsec_custom_rules.this.json
 }
 
 output "output_text" {

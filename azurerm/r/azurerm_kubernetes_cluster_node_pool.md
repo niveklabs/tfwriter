@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "azurerm_kubernetes_cluster_node_pool" {
   availability_zones = []
   # enable_auto_scaling - (optional) is a type of bool
   enable_auto_scaling = null
+  # enable_host_encryption - (optional) is a type of bool
+  enable_host_encryption = null
   # enable_node_public_ip - (optional) is a type of bool
   enable_node_public_ip = null
   # eviction_policy - (optional) is a type of string
@@ -80,6 +82,10 @@ module "azurerm_kubernetes_cluster_node_pool" {
     read   = null
     update = null
   }]
+
+  upgrade_settings = [{
+    max_surge = null
+  }]
 }
 ```
 
@@ -95,6 +101,12 @@ variable "availability_zones" {
 }
 
 variable "enable_auto_scaling" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "enable_host_encryption" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -235,6 +247,16 @@ variable "timeouts" {
   ))
   default = []
 }
+
+variable "upgrade_settings" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      max_surge = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -245,6 +267,7 @@ variable "timeouts" {
 resource "azurerm_kubernetes_cluster_node_pool" "this" {
   availability_zones           = var.availability_zones
   enable_auto_scaling          = var.enable_auto_scaling
+  enable_host_encryption       = var.enable_host_encryption
   enable_node_public_ip        = var.enable_node_public_ip
   eviction_policy              = var.eviction_policy
   kubernetes_cluster_id        = var.kubernetes_cluster_id
@@ -274,6 +297,13 @@ resource "azurerm_kubernetes_cluster_node_pool" "this" {
       delete = timeouts.value["delete"]
       read   = timeouts.value["read"]
       update = timeouts.value["update"]
+    }
+  }
+
+  dynamic "upgrade_settings" {
+    for_each = var.upgrade_settings
+    content {
+      max_surge = upgrade_settings.value["max_surge"]
     }
   }
 

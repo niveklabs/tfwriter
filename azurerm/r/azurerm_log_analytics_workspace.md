@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "azurerm_log_analytics_workspace" {
   location = null
   # name - (required) is a type of string
   name = null
+  # reservation_capcity_in_gb_per_day - (optional) is a type of number
+  reservation_capcity_in_gb_per_day = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # retention_in_days - (optional) is a type of number
@@ -88,6 +90,12 @@ variable "name" {
   type        = string
 }
 
+variable "reservation_capcity_in_gb_per_day" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "resource_group_name" {
   description = "(required)"
   type        = string
@@ -131,15 +139,16 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_log_analytics_workspace" "this" {
-  daily_quota_gb             = var.daily_quota_gb
-  internet_ingestion_enabled = var.internet_ingestion_enabled
-  internet_query_enabled     = var.internet_query_enabled
-  location                   = var.location
-  name                       = var.name
-  resource_group_name        = var.resource_group_name
-  retention_in_days          = var.retention_in_days
-  sku                        = var.sku
-  tags                       = var.tags
+  daily_quota_gb                    = var.daily_quota_gb
+  internet_ingestion_enabled        = var.internet_ingestion_enabled
+  internet_query_enabled            = var.internet_query_enabled
+  location                          = var.location
+  name                              = var.name
+  reservation_capcity_in_gb_per_day = var.reservation_capcity_in_gb_per_day
+  resource_group_name               = var.resource_group_name
+  retention_in_days                 = var.retention_in_days
+  sku                               = var.sku
+  tags                              = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts

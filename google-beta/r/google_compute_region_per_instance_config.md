@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -35,7 +35,7 @@ module "google_compute_region_per_instance_config" {
   name = null
   # project - (optional) is a type of string
   project = null
-  # region - (required) is a type of string
+  # region - (optional) is a type of string
   region = null
   # region_instance_group_manager - (required) is a type of string
   region_instance_group_manager = null
@@ -89,8 +89,9 @@ variable "project" {
 }
 
 variable "region" {
-  description = "(required) - Region where the containing instance group manager is located"
+  description = "(optional) - Region where the containing instance group manager is located"
   type        = string
+  default     = null
 }
 
 variable "region_instance_group_manager" {
@@ -192,6 +193,11 @@ output "id" {
 output "project" {
   description = "returns a string"
   value       = google_compute_region_per_instance_config.this.project
+}
+
+output "region" {
+  description = "returns a string"
+  value       = google_compute_region_per_instance_config.this.region
 }
 
 output "this" {

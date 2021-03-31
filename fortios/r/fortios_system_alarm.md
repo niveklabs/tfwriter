@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_alarm" {
 
   # audible - (optional) is a type of string
   audible = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # status - (optional) is a type of string
   status = null
 
@@ -64,6 +66,12 @@ module "fortios_system_alarm" {
 
 ```terraform
 variable "audible" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -114,8 +122,9 @@ variable "groups" {
 
 ```terraform
 resource "fortios_system_alarm" "this" {
-  audible = var.audible
-  status  = var.status
+  audible               = var.audible
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  status                = var.status
 
   dynamic "groups" {
     for_each = var.groups

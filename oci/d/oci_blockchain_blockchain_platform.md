@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -132,6 +132,11 @@ output "is_multi_ad" {
 output "lifecycle_details" {
   description = "returns a string"
   value       = data.oci_blockchain_blockchain_platform.this.lifecycle_details
+}
+
+output "load_balancer_shape" {
+  description = "returns a string"
+  value       = data.oci_blockchain_blockchain_platform.this.load_balancer_shape
 }
 
 output "platform_role" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -78,7 +78,7 @@ variable "api_config_id" {
 }
 
 variable "api_config_id_prefix" {
-  description = "(optional)"
+  description = "(optional) - Creates a unique name beginning with the specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name."
   type        = string
   default     = null
 }

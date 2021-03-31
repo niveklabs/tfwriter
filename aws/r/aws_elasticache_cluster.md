@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "aws_elasticache_cluster" {
   engine = null
   # engine_version - (optional) is a type of string
   engine_version = null
+  # final_snapshot_identifier - (optional) is a type of string
+  final_snapshot_identifier = null
   # maintenance_window - (optional) is a type of string
   maintenance_window = null
   # node_type - (optional) is a type of string
@@ -59,7 +61,7 @@ module "aws_elasticache_cluster" {
   security_group_ids = []
   # security_group_names - (optional) is a type of set of string
   security_group_names = []
-  # snapshot_arns - (optional) is a type of set of string
+  # snapshot_arns - (optional) is a type of list of string
   snapshot_arns = []
   # snapshot_name - (optional) is a type of string
   snapshot_name = null
@@ -109,6 +111,12 @@ variable "engine" {
 }
 
 variable "engine_version" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "final_snapshot_identifier" {
   description = "(optional)"
   type        = string
   default     = null
@@ -176,7 +184,7 @@ variable "security_group_names" {
 
 variable "snapshot_arns" {
   description = "(optional)"
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
@@ -223,6 +231,7 @@ resource "aws_elasticache_cluster" "this" {
   cluster_id                   = var.cluster_id
   engine                       = var.engine
   engine_version               = var.engine_version
+  final_snapshot_identifier    = var.final_snapshot_identifier
   maintenance_window           = var.maintenance_window
   node_type                    = var.node_type
   notification_topic_arn       = var.notification_topic_arn

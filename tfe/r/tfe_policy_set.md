@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    tfe = ">= 0.23.0"
+    tfe = ">= 0.24.0"
   }
 }
 ```
@@ -39,8 +39,6 @@ module "tfe_policy_set" {
   policies_path = null
   # policy_ids - (optional) is a type of set of string
   policy_ids = []
-  # workspace_external_ids - (optional) is a type of set of string
-  workspace_external_ids = []
   # workspace_ids - (optional) is a type of set of string
   workspace_ids = []
 
@@ -92,12 +90,6 @@ variable "policy_ids" {
   default     = null
 }
 
-variable "workspace_external_ids" {
-  description = "(optional)"
-  type        = set(string)
-  default     = null
-}
-
 variable "workspace_ids" {
   description = "(optional)"
   type        = set(string)
@@ -124,14 +116,13 @@ variable "vcs_repo" {
 
 ```terraform
 resource "tfe_policy_set" "this" {
-  description            = var.description
-  global                 = var.global
-  name                   = var.name
-  organization           = var.organization
-  policies_path          = var.policies_path
-  policy_ids             = var.policy_ids
-  workspace_external_ids = var.workspace_external_ids
-  workspace_ids          = var.workspace_ids
+  description   = var.description
+  global        = var.global
+  name          = var.name
+  organization  = var.organization
+  policies_path = var.policies_path
+  policy_ids    = var.policy_ids
+  workspace_ids = var.workspace_ids
 
   dynamic "vcs_repo" {
     for_each = var.vcs_repo
@@ -159,16 +150,6 @@ output "description" {
 output "id" {
   description = "returns a string"
   value       = tfe_policy_set.this.id
-}
-
-output "workspace_external_ids" {
-  description = "returns a set of string"
-  value       = tfe_policy_set.this.workspace_external_ids
-}
-
-output "workspace_ids" {
-  description = "returns a set of string"
-  value       = tfe_policy_set.this.workspace_ids
 }
 
 output "this" {

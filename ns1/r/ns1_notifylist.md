@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ns1 = ">= 1.9.0"
+    ns1 = ">= 1.9.4"
   }
 }
 ```

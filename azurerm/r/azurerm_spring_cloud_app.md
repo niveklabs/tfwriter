@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,17 +27,28 @@ terraform {
 module "azurerm_spring_cloud_app" {
   source = "./modules/azurerm/r/azurerm_spring_cloud_app"
 
+  # https_only - (optional) is a type of bool
+  https_only = null
+  # is_public - (optional) is a type of bool
+  is_public = null
   # name - (required) is a type of string
   name = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # service_name - (required) is a type of string
   service_name = null
+  # tls_enabled - (optional) is a type of bool
+  tls_enabled = null
 
   identity = [{
     principal_id = null
     tenant_id    = null
     type         = null
+  }]
+
+  persistent_disk = [{
+    mount_path = null
+    size_in_gb = null
   }]
 
   timeouts = [{
@@ -54,6 +65,18 @@ module "azurerm_spring_cloud_app" {
 ### Variables
 
 ```terraform
+variable "https_only" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "is_public" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -69,6 +92,12 @@ variable "service_name" {
   type        = string
 }
 
+variable "tls_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "identity" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -76,6 +105,17 @@ variable "identity" {
       principal_id = string
       tenant_id    = string
       type         = string
+    }
+  ))
+  default = []
+}
+
+variable "persistent_disk" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      mount_path = string
+      size_in_gb = number
     }
   ))
   default = []
@@ -101,14 +141,25 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_spring_cloud_app" "this" {
+  https_only          = var.https_only
+  is_public           = var.is_public
   name                = var.name
   resource_group_name = var.resource_group_name
   service_name        = var.service_name
+  tls_enabled         = var.tls_enabled
 
   dynamic "identity" {
     for_each = var.identity
     content {
       type = identity.value["type"]
+    }
+  }
+
+  dynamic "persistent_disk" {
+    for_each = var.persistent_disk
+    content {
+      mount_path = persistent_disk.value["mount_path"]
+      size_in_gb = persistent_disk.value["size_in_gb"]
     }
   }
 
@@ -130,9 +181,19 @@ resource "azurerm_spring_cloud_app" "this" {
 ### Outputs
 
 ```terraform
+output "fqdn" {
+  description = "returns a string"
+  value       = azurerm_spring_cloud_app.this.fqdn
+}
+
 output "id" {
   description = "returns a string"
   value       = azurerm_spring_cloud_app.this.id
+}
+
+output "url" {
+  description = "returns a string"
+  value       = azurerm_spring_cloud_app.this.url
 }
 
 output "this" {

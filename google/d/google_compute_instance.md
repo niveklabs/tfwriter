@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -104,6 +104,11 @@ output "boot_disk" {
 output "can_ip_forward" {
   description = "returns a bool"
   value       = data.google_compute_instance.this.can_ip_forward
+}
+
+output "confidential_instance_config" {
+  description = "returns a list of object"
+  value       = data.google_compute_instance.this.confidential_instance_config
 }
 
 output "cpu_platform" {

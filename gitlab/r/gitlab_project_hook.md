@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.3.0"
+    gitlab = ">= 3.5.0"
   }
 }
 ```
@@ -27,6 +27,12 @@ terraform {
 module "gitlab_project_hook" {
   source = "./modules/gitlab/r/gitlab_project_hook"
 
+  # confidential_issues_events - (optional) is a type of bool
+  confidential_issues_events = null
+  # confidential_note_events - (optional) is a type of bool
+  confidential_note_events = null
+  # deployment_events - (optional) is a type of bool
+  deployment_events = null
   # enable_ssl_verification - (optional) is a type of bool
   enable_ssl_verification = null
   # issues_events - (optional) is a type of bool
@@ -43,6 +49,8 @@ module "gitlab_project_hook" {
   project = null
   # push_events - (optional) is a type of bool
   push_events = null
+  # push_events_branch_filter - (optional) is a type of string
+  push_events_branch_filter = null
   # tag_push_events - (optional) is a type of bool
   tag_push_events = null
   # token - (optional) is a type of string
@@ -59,6 +67,24 @@ module "gitlab_project_hook" {
 ### Variables
 
 ```terraform
+variable "confidential_issues_events" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "confidential_note_events" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "deployment_events" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "enable_ssl_verification" {
   description = "(optional)"
   type        = bool
@@ -106,6 +132,12 @@ variable "push_events" {
   default     = null
 }
 
+variable "push_events_branch_filter" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tag_push_events" {
   description = "(optional)"
   type        = bool
@@ -136,18 +168,22 @@ variable "wiki_page_events" {
 
 ```terraform
 resource "gitlab_project_hook" "this" {
-  enable_ssl_verification = var.enable_ssl_verification
-  issues_events           = var.issues_events
-  job_events              = var.job_events
-  merge_requests_events   = var.merge_requests_events
-  note_events             = var.note_events
-  pipeline_events         = var.pipeline_events
-  project                 = var.project
-  push_events             = var.push_events
-  tag_push_events         = var.tag_push_events
-  token                   = var.token
-  url                     = var.url
-  wiki_page_events        = var.wiki_page_events
+  confidential_issues_events = var.confidential_issues_events
+  confidential_note_events   = var.confidential_note_events
+  deployment_events          = var.deployment_events
+  enable_ssl_verification    = var.enable_ssl_verification
+  issues_events              = var.issues_events
+  job_events                 = var.job_events
+  merge_requests_events      = var.merge_requests_events
+  note_events                = var.note_events
+  pipeline_events            = var.pipeline_events
+  project                    = var.project
+  push_events                = var.push_events
+  push_events_branch_filter  = var.push_events_branch_filter
+  tag_push_events            = var.tag_push_events
+  token                      = var.token
+  url                        = var.url
+  wiki_page_events           = var.wiki_page_events
 }
 ```
 

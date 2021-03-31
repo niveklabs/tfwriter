@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -27,10 +27,16 @@ terraform {
 module "azuread_group" {
   source = "./modules/azuread/d/azuread_group"
 
+  # display_name - (optional) is a type of string
+  display_name = null
+  # mail_enabled - (optional) is a type of bool
+  mail_enabled = null
   # name - (optional) is a type of string
   name = null
   # object_id - (optional) is a type of string
   object_id = null
+  # security_enabled - (optional) is a type of bool
+  security_enabled = null
 }
 ```
 
@@ -39,6 +45,18 @@ module "azuread_group" {
 ### Variables
 
 ```terraform
+variable "display_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "mail_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -50,6 +68,12 @@ variable "object_id" {
   type        = string
   default     = null
 }
+
+variable "security_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
 ```
 
 [top](#index)
@@ -58,8 +82,11 @@ variable "object_id" {
 
 ```terraform
 data "azuread_group" "this" {
-  name      = var.name
-  object_id = var.object_id
+  display_name     = var.display_name
+  mail_enabled     = var.mail_enabled
+  name             = var.name
+  object_id        = var.object_id
+  security_enabled = var.security_enabled
 }
 ```
 
@@ -73,9 +100,19 @@ output "description" {
   value       = data.azuread_group.this.description
 }
 
+output "display_name" {
+  description = "returns a string"
+  value       = data.azuread_group.this.display_name
+}
+
 output "id" {
   description = "returns a string"
   value       = data.azuread_group.this.id
+}
+
+output "mail_enabled" {
+  description = "returns a bool"
+  value       = data.azuread_group.this.mail_enabled
 }
 
 output "members" {
@@ -96,6 +133,11 @@ output "object_id" {
 output "owners" {
   description = "returns a list of string"
   value       = data.azuread_group.this.owners
+}
+
+output "security_enabled" {
+  description = "returns a bool"
+  value       = data.azuread_group.this.security_enabled
 }
 
 output "this" {

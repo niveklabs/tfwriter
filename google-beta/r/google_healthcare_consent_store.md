@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -63,7 +63,7 @@ variable "default_consent_ttl" {
 }
 
 variable "enable_consent_create_on_update" {
-  description = "(optional) - If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist."
+  description = "(optional) - If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist."
   type        = bool
   default     = null
 }

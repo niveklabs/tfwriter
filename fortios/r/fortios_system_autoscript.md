@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_system_autoscript" {
   script = null
   # start - (optional) is a type of string
   start = null
+  # timeout - (optional) is a type of number
+  timeout = null
 }
 ```
 
@@ -82,6 +84,12 @@ variable "start" {
   type        = string
   default     = null
 }
+
+variable "timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
 ```
 
 [top](#index)
@@ -96,6 +104,7 @@ resource "fortios_system_autoscript" "this" {
   repeat      = var.repeat
   script      = var.script
   start       = var.start
+  timeout     = var.timeout
 }
 ```
 
@@ -132,6 +141,11 @@ output "repeat" {
 output "start" {
   description = "returns a string"
   value       = fortios_system_autoscript.this.start
+}
+
+output "timeout" {
+  description = "returns a number"
+  value       = fortios_system_autoscript.this.timeout
 }
 
 output "this" {

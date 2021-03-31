@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -39,7 +39,8 @@ module "google_bigtable_gc_policy" {
   table = null
 
   max_age = [{
-    days = null
+    days     = null
+    duration = null
   }]
 
   max_version = [{
@@ -81,10 +82,11 @@ variable "table" {
 }
 
 variable "max_age" {
-  description = "nested block: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      days = number
+      days     = number
+      duration = string
     }
   ))
   default = []
@@ -116,7 +118,8 @@ resource "google_bigtable_gc_policy" "this" {
   dynamic "max_age" {
     for_each = var.max_age
     content {
-      days = max_age.value["days"]
+      days     = max_age.value["days"]
+      duration = max_age.value["duration"]
     }
   }
 

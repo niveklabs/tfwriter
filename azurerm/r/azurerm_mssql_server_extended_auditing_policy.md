@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_mssql_server_extended_auditing_policy" {
   source = "./modules/azurerm/r/azurerm_mssql_server_extended_auditing_policy"
 
+  # log_monitoring_enabled - (optional) is a type of bool
+  log_monitoring_enabled = null
   # retention_in_days - (optional) is a type of number
   retention_in_days = null
   # server_id - (required) is a type of string
@@ -35,7 +37,7 @@ module "azurerm_mssql_server_extended_auditing_policy" {
   storage_account_access_key = null
   # storage_account_access_key_is_secondary - (optional) is a type of bool
   storage_account_access_key_is_secondary = null
-  # storage_endpoint - (required) is a type of string
+  # storage_endpoint - (optional) is a type of string
   storage_endpoint = null
 
   timeouts = [{
@@ -52,6 +54,12 @@ module "azurerm_mssql_server_extended_auditing_policy" {
 ### Variables
 
 ```terraform
+variable "log_monitoring_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "retention_in_days" {
   description = "(optional)"
   type        = number
@@ -76,8 +84,9 @@ variable "storage_account_access_key_is_secondary" {
 }
 
 variable "storage_endpoint" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "timeouts" {
@@ -100,6 +109,7 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_mssql_server_extended_auditing_policy" "this" {
+  log_monitoring_enabled                  = var.log_monitoring_enabled
   retention_in_days                       = var.retention_in_days
   server_id                               = var.server_id
   storage_account_access_key              = var.storage_account_access_key

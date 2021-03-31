@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -51,7 +51,7 @@ module "datadog_logs_index" {
 
 ```terraform
 variable "name" {
-  description = "(required)"
+  description = "(required) - The name of the index."
   type        = string
 }
 

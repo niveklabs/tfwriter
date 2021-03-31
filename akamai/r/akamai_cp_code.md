@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -37,8 +37,10 @@ module "akamai_cp_code" {
   group_id = null
   # name - (required) is a type of string
   name = null
-  # product - (required) is a type of string
+  # product - (optional) is a type of string
   product = null
+  # product_id - (optional) is a type of string
+  product_id = null
 }
 ```
 
@@ -77,8 +79,15 @@ variable "name" {
 }
 
 variable "product" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "product_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 ```
 
@@ -94,6 +103,7 @@ resource "akamai_cp_code" "this" {
   group_id    = var.group_id
   name        = var.name
   product     = var.product
+  product_id  = var.product_id
 }
 ```
 
@@ -125,6 +135,16 @@ output "group_id" {
 output "id" {
   description = "returns a string"
   value       = akamai_cp_code.this.id
+}
+
+output "product" {
+  description = "returns a string"
+  value       = akamai_cp_code.this.product
+}
+
+output "product_id" {
+  description = "returns a string"
+  value       = akamai_cp_code.this.product_id
 }
 
 output "this" {

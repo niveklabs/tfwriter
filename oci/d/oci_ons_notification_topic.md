@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -96,6 +96,11 @@ output "id" {
 output "name" {
   description = "returns a string"
   value       = data.oci_ons_notification_topic.this.name
+}
+
+output "short_topic_id" {
+  description = "returns a string"
+  value       = data.oci_ons_notification_topic.this.short_topic_id
 }
 
 output "state" {

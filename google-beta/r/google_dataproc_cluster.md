@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -120,6 +120,7 @@ module "google_dataproc_cluster" {
       properties          = {}
     }]
     staging_bucket = null
+    temp_bucket    = null
     worker_config = [{
       accelerators = [{
         accelerator_count = null
@@ -293,6 +294,7 @@ variable "cluster_config" {
         }
       ))
       staging_bucket = string
+      temp_bucket    = string
       worker_config = list(object(
         {
           accelerators = set(object(
@@ -349,6 +351,7 @@ resource "google_dataproc_cluster" "this" {
     for_each = var.cluster_config
     content {
       staging_bucket = cluster_config.value["staging_bucket"]
+      temp_bucket    = cluster_config.value["temp_bucket"]
 
       dynamic "autoscaling_config" {
         for_each = cluster_config.value.autoscaling_config

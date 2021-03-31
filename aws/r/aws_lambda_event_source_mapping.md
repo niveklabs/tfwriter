@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "aws_lambda_event_source_mapping" {
   starting_position = null
   # starting_position_timestamp - (optional) is a type of string
   starting_position_timestamp = null
+  # topics - (optional) is a type of set of string
+  topics = []
 
   destination_config = [{
     on_failure = [{
@@ -127,6 +129,12 @@ variable "starting_position_timestamp" {
   default     = null
 }
 
+variable "topics" {
+  description = "(optional)"
+  type        = set(string)
+  default     = null
+}
+
 variable "destination_config" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -159,6 +167,7 @@ resource "aws_lambda_event_source_mapping" "this" {
   parallelization_factor             = var.parallelization_factor
   starting_position                  = var.starting_position
   starting_position_timestamp        = var.starting_position_timestamp
+  topics                             = var.topics
 
   dynamic "destination_config" {
     for_each = var.destination_config

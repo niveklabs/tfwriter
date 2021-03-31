@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    checkpoint = ">= 1.2.0"
+    checkpoint = ">= 1.4.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "checkpoint_management_access_layer" {
   source = "./modules/checkpoint/r/checkpoint_management_access_layer"
 
+  # add_default_rule - (optional) is a type of bool
+  add_default_rule = null
   # applications_and_url_filtering - (optional) is a type of bool
   applications_and_url_filtering = null
   # color - (optional) is a type of string
@@ -61,6 +63,12 @@ module "checkpoint_management_access_layer" {
 ### Variables
 
 ```terraform
+variable "add_default_rule" {
+  description = "(optional) - Indicates whether to include a cleanup rule in the new layer."
+  type        = bool
+  default     = null
+}
+
 variable "applications_and_url_filtering" {
   description = "(optional) - Whether to enable Applications & URL Filtering blade on the layer."
   type        = bool
@@ -145,6 +153,7 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_access_layer" "this" {
+  add_default_rule               = var.add_default_rule
   applications_and_url_filtering = var.applications_and_url_filtering
   color                          = var.color
   comments                       = var.comments

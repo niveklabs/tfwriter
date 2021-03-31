@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -84,6 +84,11 @@ data "aws_security_groups" "this" {
 ### Outputs
 
 ```terraform
+output "arns" {
+  description = "returns a list of string"
+  value       = data.aws_security_groups.this.arns
+}
+
 output "id" {
   description = "returns a string"
   value       = data.aws_security_groups.this.id

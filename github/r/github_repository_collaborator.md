@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "github_repository_collaborator" {
 
   # permission - (optional) is a type of string
   permission = null
+  # permission_diff_suppression - (optional) is a type of bool
+  permission_diff_suppression = null
   # repository - (required) is a type of string
   repository = null
   # username - (required) is a type of string
@@ -44,6 +46,12 @@ module "github_repository_collaborator" {
 variable "permission" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "permission_diff_suppression" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -64,9 +72,10 @@ variable "username" {
 
 ```terraform
 resource "github_repository_collaborator" "this" {
-  permission = var.permission
-  repository = var.repository
-  username   = var.username
+  permission                  = var.permission
+  permission_diff_suppression = var.permission_diff_suppression
+  repository                  = var.repository
+  username                    = var.username
 }
 ```
 

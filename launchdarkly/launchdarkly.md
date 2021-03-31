@@ -12,7 +12,7 @@
 
 ```terraform
 provider "launchdarkly" {
-  version = "1.5.0"
+  version = "1.5.1"
 
   # access_token - (optional) is a type of string
   access_token = null

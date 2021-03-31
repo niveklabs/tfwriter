@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_ecs_service" {
   desired_count = null
   # enable_ecs_managed_tags - (optional) is a type of bool
   enable_ecs_managed_tags = null
+  # enable_execute_command - (optional) is a type of bool
+  enable_execute_command = null
   # force_new_deployment - (optional) is a type of bool
   force_new_deployment = null
   # health_check_grace_period_seconds - (optional) is a type of number
@@ -136,6 +138,12 @@ variable "desired_count" {
 }
 
 variable "enable_ecs_managed_tags" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "enable_execute_command" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -310,6 +318,7 @@ resource "aws_ecs_service" "this" {
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   desired_count                      = var.desired_count
   enable_ecs_managed_tags            = var.enable_ecs_managed_tags
+  enable_execute_command             = var.enable_execute_command
   force_new_deployment               = var.force_new_deployment
   health_check_grace_period_seconds  = var.health_check_grace_period_seconds
   iam_role                           = var.iam_role

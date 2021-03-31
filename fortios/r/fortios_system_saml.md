@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,8 +31,10 @@ module "fortios_system_saml" {
   cert = null
   # default_login_page - (optional) is a type of string
   default_login_page = null
-  # default_profile - (required) is a type of string
+  # default_profile - (optional) is a type of string
   default_profile = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # entity_id - (optional) is a type of string
   entity_id = null
   # idp_cert - (optional) is a type of string
@@ -97,8 +99,15 @@ variable "default_login_page" {
 }
 
 variable "default_profile" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "entity_id" {
@@ -214,6 +223,7 @@ resource "fortios_system_saml" "this" {
   cert                   = var.cert
   default_login_page     = var.default_login_page
   default_profile        = var.default_profile
+  dynamic_sort_subtable  = var.dynamic_sort_subtable
   entity_id              = var.entity_id
   idp_cert               = var.idp_cert
   idp_entity_id          = var.idp_entity_id
@@ -269,6 +279,11 @@ output "cert" {
 output "default_login_page" {
   description = "returns a string"
   value       = fortios_system_saml.this.default_login_page
+}
+
+output "default_profile" {
+  description = "returns a string"
+  value       = fortios_system_saml.this.default_profile
 }
 
 output "entity_id" {

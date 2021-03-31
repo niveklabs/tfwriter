@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_user_fssopolling" {
 
   # default_domain - (optional) is a type of string
   default_domain = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
   # ldap_server - (required) is a type of string
@@ -64,6 +66,12 @@ module "fortios_user_fssopolling" {
 
 ```terraform
 variable "default_domain" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -149,18 +157,19 @@ variable "adgrp" {
 
 ```terraform
 resource "fortios_user_fssopolling" "this" {
-  default_domain    = var.default_domain
-  fosid             = var.fosid
-  ldap_server       = var.ldap_server
-  logon_history     = var.logon_history
-  password          = var.password
-  polling_frequency = var.polling_frequency
-  port              = var.port
-  server            = var.server
-  smb_ntlmv1_auth   = var.smb_ntlmv1_auth
-  smbv1             = var.smbv1
-  status            = var.status
-  user              = var.user
+  default_domain        = var.default_domain
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
+  ldap_server           = var.ldap_server
+  logon_history         = var.logon_history
+  password              = var.password
+  polling_frequency     = var.polling_frequency
+  port                  = var.port
+  server                = var.server
+  smb_ntlmv1_auth       = var.smb_ntlmv1_auth
+  smbv1                 = var.smbv1
+  status                = var.status
+  user                  = var.user
 
   dynamic "adgrp" {
     for_each = var.adgrp

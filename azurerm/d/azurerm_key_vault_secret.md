@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -112,6 +112,11 @@ output "value" {
 output "version" {
   description = "returns a string"
   value       = data.azurerm_key_vault_secret.this.version
+}
+
+output "versionless_id" {
+  description = "returns a string"
+  value       = data.azurerm_key_vault_secret.this.versionless_id
 }
 
 output "this" {

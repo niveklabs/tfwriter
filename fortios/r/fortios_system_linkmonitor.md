@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_linkmonitor" {
 
   # addr_mode - (optional) is a type of string
   addr_mode = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # failtime - (optional) is a type of number
   failtime = null
   # gateway_ip - (optional) is a type of string
@@ -53,6 +55,10 @@ module "fortios_system_linkmonitor" {
   password = null
   # port - (optional) is a type of number
   port = null
+  # probe_count - (optional) is a type of number
+  probe_count = null
+  # probe_timeout - (optional) is a type of number
+  probe_timeout = null
   # protocol - (optional) is a type of string
   protocol = null
   # recoverytime - (optional) is a type of number
@@ -84,6 +90,12 @@ module "fortios_system_linkmonitor" {
 
 ```terraform
 variable "addr_mode" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -161,6 +173,18 @@ variable "port" {
   default     = null
 }
 
+variable "probe_count" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "probe_timeout" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "protocol" {
   description = "(optional)"
   type        = string
@@ -232,6 +256,7 @@ variable "server" {
 ```terraform
 resource "fortios_system_linkmonitor" "this" {
   addr_mode                = var.addr_mode
+  dynamic_sort_subtable    = var.dynamic_sort_subtable
   failtime                 = var.failtime
   gateway_ip               = var.gateway_ip
   gateway_ip6              = var.gateway_ip6
@@ -244,6 +269,8 @@ resource "fortios_system_linkmonitor" "this" {
   packet_size              = var.packet_size
   password                 = var.password
   port                     = var.port
+  probe_count              = var.probe_count
+  probe_timeout            = var.probe_timeout
   protocol                 = var.protocol
   recoverytime             = var.recoverytime
   security_mode            = var.security_mode
@@ -332,6 +359,16 @@ output "packet_size" {
 output "port" {
   description = "returns a number"
   value       = fortios_system_linkmonitor.this.port
+}
+
+output "probe_count" {
+  description = "returns a number"
+  value       = fortios_system_linkmonitor.this.probe_count
+}
+
+output "probe_timeout" {
+  description = "returns a number"
+  value       = fortios_system_linkmonitor.this.probe_timeout
 }
 
 output "protocol" {

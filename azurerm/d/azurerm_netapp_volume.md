@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -104,6 +104,11 @@ data "azurerm_netapp_volume" "this" {
 ### Outputs
 
 ```terraform
+output "data_protection_replication" {
+  description = "returns a list of object"
+  value       = data.azurerm_netapp_volume.this.data_protection_replication
+}
+
 output "id" {
   description = "returns a string"
   value       = data.azurerm_netapp_volume.this.id

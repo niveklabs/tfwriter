@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_vdomexception" {
   source = "./modules/fortios/r/fortios_system_vdomexception"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fosid - (optional) is a type of number
   fosid = null
   # object - (required) is a type of string
@@ -47,6 +49,12 @@ module "fortios_system_vdomexception" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fosid" {
   description = "(optional)"
   type        = number
@@ -87,10 +95,11 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_vdomexception" "this" {
-  fosid  = var.fosid
-  object = var.object
-  oid    = var.oid
-  scope  = var.scope
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  fosid                 = var.fosid
+  object                = var.object
+  oid                   = var.oid
+  scope                 = var.scope
 
   dynamic "vdom" {
     for_each = var.vdom

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -357,7 +357,7 @@ variable "static_rr_set" {
 }
 
 variable "traffic_target" {
-  description = "nested block: NestingList, min items: 1, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       datacenter_id = number
@@ -368,6 +368,7 @@ variable "traffic_target" {
       weight        = number
     }
   ))
+  default = []
 }
 ```
 

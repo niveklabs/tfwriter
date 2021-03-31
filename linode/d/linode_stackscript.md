@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    linode = ">= 1.13.4"
+    linode = ">= 1.16.0"
   }
 }
 ```

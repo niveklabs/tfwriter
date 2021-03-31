@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "oci_containerengine_cluster_kube_config" {
 
   # cluster_id - (required) is a type of string
   cluster_id = null
+  # endpoint - (optional) is a type of string
+  endpoint = null
   # expiration - (optional) is a type of number
   expiration = null
   # token_version - (optional) is a type of string
@@ -44,6 +46,12 @@ module "oci_containerengine_cluster_kube_config" {
 variable "cluster_id" {
   description = "(required)"
   type        = string
+}
+
+variable "endpoint" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "expiration" {
@@ -66,6 +74,7 @@ variable "token_version" {
 ```terraform
 data "oci_containerengine_cluster_kube_config" "this" {
   cluster_id    = var.cluster_id
+  endpoint      = var.endpoint
   expiration    = var.expiration
   token_version = var.token_version
 }

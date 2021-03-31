@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    grafana = ">= 1.8.1"
+    grafana = ">= 1.9.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "grafana_user" {
 
   # email - (required) is a type of string
   email = null
+  # is_admin - (optional) is a type of bool
+  is_admin = null
   # login - (optional) is a type of string
   login = null
   # name - (optional) is a type of string
@@ -46,6 +48,12 @@ module "grafana_user" {
 variable "email" {
   description = "(required)"
   type        = string
+}
+
+variable "is_admin" {
+  description = "(optional)"
+  type        = bool
+  default     = null
 }
 
 variable "login" {
@@ -73,6 +81,7 @@ variable "password" {
 ```terraform
 resource "grafana_user" "this" {
   email    = var.email
+  is_admin = var.is_admin
   login    = var.login
   name     = var.name
   password = var.password

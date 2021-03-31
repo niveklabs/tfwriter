@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    equinix = ">= 1.0.2"
+    equinix = ">= 1.1.0-beta"
   }
 }
 ```
@@ -70,13 +70,19 @@ module "equinix_ecx_l2_connection" {
   }]
 
   secondary_connection = [{
+    authorization_key   = null
     device_interface_id = null
     device_uuid         = null
     name                = null
     port_uuid           = null
+    profile_uuid        = null
     provider_status     = null
     redundancy_type     = null
     redundant_uuid      = null
+    seller_metro_code   = null
+    seller_region       = null
+    speed               = null
+    speed_unit          = null
     status              = null
     uuid                = null
     vlan_ctag           = null
@@ -99,105 +105,105 @@ module "equinix_ecx_l2_connection" {
 
 ```terraform
 variable "authorization_key" {
-  description = "(optional)"
+  description = "(optional) - Text field used to authorize connection on the provider side. Value depends on a provider service profile used for connection"
   type        = string
   default     = null
 }
 
 variable "device_interface_id" {
-  description = "(optional)"
+  description = "(optional) - Identifier of network interface on a given device, used for a connection. If not specified then first available interface will be selected"
   type        = number
   default     = null
 }
 
 variable "device_uuid" {
-  description = "(optional)"
+  description = "(optional) - Unique identifier of the Network Edge virtual device from which the connection would originate"
   type        = string
   default     = null
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores"
   type        = string
 }
 
 variable "named_tag" {
-  description = "(optional)"
+  description = "(optional) - The type of peering to set up in case when connecting to Azure Express Route. One of Public, Private, Microsoft, Manual"
   type        = string
   default     = null
 }
 
 variable "notifications" {
-  description = "(required)"
+  description = "(required) - A list of email addresses used for sending connection update notifications"
   type        = set(string)
 }
 
 variable "port_uuid" {
-  description = "(optional)"
+  description = "(optional) - Unique identifier of the buyer's port from which the connection would originate"
   type        = string
   default     = null
 }
 
 variable "profile_uuid" {
-  description = "(optional)"
+  description = "(optional) - Unique identifier of the service provider's service profile"
   type        = string
   default     = null
 }
 
 variable "purchase_order_number" {
-  description = "(optional)"
+  description = "(optional) - Connection's purchase order number to reflect on the invoice"
   type        = string
   default     = null
 }
 
 variable "seller_metro_code" {
-  description = "(optional)"
+  description = "(optional) - The metro code that denotes the connection’s remote side (z-side)"
   type        = string
   default     = null
 }
 
 variable "seller_region" {
-  description = "(optional)"
+  description = "(optional) - The region in which the seller port resides"
   type        = string
   default     = null
 }
 
 variable "speed" {
-  description = "(required)"
+  description = "(required) - Speed/Bandwidth to be allocated to the connection"
   type        = number
 }
 
 variable "speed_unit" {
-  description = "(required)"
+  description = "(required) - Unit of the speed/bandwidth to be allocated to the connection"
   type        = string
 }
 
 variable "vlan_ctag" {
-  description = "(optional)"
+  description = "(optional) - C-Tag/Inner-Tag of the connection, a numeric character ranging from 2 - 4094"
   type        = number
   default     = null
 }
 
 variable "vlan_stag" {
-  description = "(optional)"
+  description = "(optional) - S-Tag/Outer-Tag of the connection, a numeric character ranging from 2 - 4094"
   type        = number
   default     = null
 }
 
 variable "zside_port_uuid" {
-  description = "(optional)"
+  description = "(optional) - Unique identifier of the port on the remote side (z-side)"
   type        = string
   default     = null
 }
 
 variable "zside_vlan_ctag" {
-  description = "(optional)"
+  description = "(optional) - C-Tag/Inner-Tag of the connection on the remote side (z-side)"
   type        = number
   default     = null
 }
 
 variable "zside_vlan_stag" {
-  description = "(optional)"
+  description = "(optional) - S-Tag/Outer-Tag of the connection on the remote side (z-side)"
   type        = number
   default     = null
 }
@@ -214,16 +220,22 @@ variable "additional_info" {
 }
 
 variable "secondary_connection" {
-  description = "nested block: NestingSet, min items: 0, max items: 1"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      authorization_key   = string
       device_interface_id = number
       device_uuid         = string
       name                = string
       port_uuid           = string
+      profile_uuid        = string
       provider_status     = string
       redundancy_type     = string
       redundant_uuid      = string
+      seller_metro_code   = string
+      seller_region       = string
+      speed               = number
+      speed_unit          = string
       status              = string
       uuid                = string
       vlan_ctag           = number
@@ -284,10 +296,16 @@ resource "equinix_ecx_l2_connection" "this" {
   dynamic "secondary_connection" {
     for_each = var.secondary_connection
     content {
+      authorization_key   = secondary_connection.value["authorization_key"]
       device_interface_id = secondary_connection.value["device_interface_id"]
       device_uuid         = secondary_connection.value["device_uuid"]
       name                = secondary_connection.value["name"]
       port_uuid           = secondary_connection.value["port_uuid"]
+      profile_uuid        = secondary_connection.value["profile_uuid"]
+      seller_metro_code   = secondary_connection.value["seller_metro_code"]
+      seller_region       = secondary_connection.value["seller_region"]
+      speed               = secondary_connection.value["speed"]
+      speed_unit          = secondary_connection.value["speed_unit"]
       vlan_ctag           = secondary_connection.value["vlan_ctag"]
       vlan_stag           = secondary_connection.value["vlan_stag"]
     }
@@ -309,6 +327,11 @@ resource "equinix_ecx_l2_connection" "this" {
 ### Outputs
 
 ```terraform
+output "authorization_key" {
+  description = "returns a string"
+  value       = equinix_ecx_l2_connection.this.authorization_key
+}
+
 output "id" {
   description = "returns a string"
   value       = equinix_ecx_l2_connection.this.id
@@ -347,6 +370,11 @@ output "status" {
 output "uuid" {
   description = "returns a string"
   value       = equinix_ecx_l2_connection.this.uuid
+}
+
+output "vlan_stag" {
+  description = "returns a number"
+  value       = equinix_ecx_l2_connection.this.vlan_stag
 }
 
 output "zside_port_uuid" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,8 +29,6 @@ module "akamai_appsec_configuration" {
 
   # name - (optional) is a type of string
   name = null
-  # version - (optional) is a type of number
-  version = null
 }
 ```
 
@@ -44,12 +42,6 @@ variable "name" {
   type        = string
   default     = null
 }
-
-variable "version" {
-  description = "(optional)"
-  type        = number
-  default     = null
-}
 ```
 
 [top](#index)
@@ -58,8 +50,7 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_configuration" "this" {
-  name    = var.name
-  version = var.version
+  name = var.name
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_api_gateway_method" {
   authorizer_id = null
   # http_method - (required) is a type of string
   http_method = null
+  # operation_name - (optional) is a type of string
+  operation_name = null
   # request_models - (optional) is a type of map of string
   request_models = {}
   # request_parameters - (optional) is a type of map of bool
@@ -83,6 +85,12 @@ variable "http_method" {
   type        = string
 }
 
+variable "operation_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "request_models" {
   description = "(optional)"
   type        = map(string)
@@ -123,6 +131,7 @@ resource "aws_api_gateway_method" "this" {
   authorization_scopes = var.authorization_scopes
   authorizer_id        = var.authorizer_id
   http_method          = var.http_method
+  operation_name       = var.operation_name
   request_models       = var.request_models
   request_parameters   = var.request_parameters
   request_validator_id = var.request_validator_id

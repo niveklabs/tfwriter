@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -42,6 +42,16 @@ module "aws_workspaces_directory" {
     rebuild_workspace    = null
     restart_workspace    = null
     switch_running_mode  = null
+  }]
+
+  workspace_access_properties = [{
+    device_type_android    = null
+    device_type_chromeos   = null
+    device_type_ios        = null
+    device_type_osx        = null
+    device_type_web        = null
+    device_type_windows    = null
+    device_type_zeroclient = null
   }]
 
   workspace_creation_properties = [{
@@ -96,6 +106,22 @@ variable "self_service_permissions" {
   default = []
 }
 
+variable "workspace_access_properties" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      device_type_android    = string
+      device_type_chromeos   = string
+      device_type_ios        = string
+      device_type_osx        = string
+      device_type_web        = string
+      device_type_windows    = string
+      device_type_zeroclient = string
+    }
+  ))
+  default = []
+}
+
 variable "workspace_creation_properties" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -130,6 +156,19 @@ resource "aws_workspaces_directory" "this" {
       rebuild_workspace    = self_service_permissions.value["rebuild_workspace"]
       restart_workspace    = self_service_permissions.value["restart_workspace"]
       switch_running_mode  = self_service_permissions.value["switch_running_mode"]
+    }
+  }
+
+  dynamic "workspace_access_properties" {
+    for_each = var.workspace_access_properties
+    content {
+      device_type_android    = workspace_access_properties.value["device_type_android"]
+      device_type_chromeos   = workspace_access_properties.value["device_type_chromeos"]
+      device_type_ios        = workspace_access_properties.value["device_type_ios"]
+      device_type_osx        = workspace_access_properties.value["device_type_osx"]
+      device_type_web        = workspace_access_properties.value["device_type_web"]
+      device_type_windows    = workspace_access_properties.value["device_type_windows"]
+      device_type_zeroclient = workspace_access_properties.value["device_type_zeroclient"]
     }
   }
 

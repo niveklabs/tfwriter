@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "alicloud_resource_manager_roles" {
   source = "./modules/alicloud/d/alicloud_resource_manager_roles"
 
+  # enable_details - (optional) is a type of bool
+  enable_details = null
   # ids - (optional) is a type of list of string
   ids = []
   # name_regex - (optional) is a type of string
@@ -41,6 +43,12 @@ module "alicloud_resource_manager_roles" {
 ### Variables
 
 ```terraform
+variable "enable_details" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "ids" {
   description = "(optional)"
   type        = list(string)
@@ -66,9 +74,10 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_resource_manager_roles" "this" {
-  ids         = var.ids
-  name_regex  = var.name_regex
-  output_file = var.output_file
+  enable_details = var.enable_details
+  ids            = var.ids
+  name_regex     = var.name_regex
+  output_file    = var.output_file
 }
 ```
 

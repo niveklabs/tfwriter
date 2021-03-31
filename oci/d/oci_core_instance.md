@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -76,6 +76,11 @@ output "availability_domain" {
 output "boot_volume_id" {
   description = "returns a string"
   value       = data.oci_core_instance.this.boot_volume_id
+}
+
+output "capacity_reservation_id" {
+  description = "returns a string"
+  value       = data.oci_core_instance.this.capacity_reservation_id
 }
 
 output "compartment_id" {
@@ -161,6 +166,11 @@ output "launch_options" {
 output "metadata" {
   description = "returns a map of string"
   value       = data.oci_core_instance.this.metadata
+}
+
+output "platform_config" {
+  description = "returns a list of object"
+  value       = data.oci_core_instance.this.platform_config
 }
 
 output "preserve_boot_volume" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "fortios_authentication_rule" {
   active_auth_method = null
   # comments - (optional) is a type of string
   comments = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # ip_based - (optional) is a type of string
   ip_based = null
   # name - (optional) is a type of string
@@ -45,12 +47,22 @@ module "fortios_authentication_rule" {
   transaction_based = null
   # web_auth_cookie - (optional) is a type of string
   web_auth_cookie = null
+  # web_portal - (optional) is a type of string
+  web_portal = null
+
+  dstaddr = [{
+    name = null
+  }]
 
   srcaddr = [{
     name = null
   }]
 
   srcaddr6 = [{
+    name = null
+  }]
+
+  srcintf = [{
     name = null
   }]
 }
@@ -68,6 +80,12 @@ variable "active_auth_method" {
 }
 
 variable "comments" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -115,6 +133,22 @@ variable "web_auth_cookie" {
   default     = null
 }
 
+variable "web_portal" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dstaddr" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+
 variable "srcaddr" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -134,6 +168,16 @@ variable "srcaddr6" {
   ))
   default = []
 }
+
+variable "srcintf" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -142,15 +186,24 @@ variable "srcaddr6" {
 
 ```terraform
 resource "fortios_authentication_rule" "this" {
-  active_auth_method = var.active_auth_method
-  comments           = var.comments
-  ip_based           = var.ip_based
-  name               = var.name
-  protocol           = var.protocol
-  sso_auth_method    = var.sso_auth_method
-  status             = var.status
-  transaction_based  = var.transaction_based
-  web_auth_cookie    = var.web_auth_cookie
+  active_auth_method    = var.active_auth_method
+  comments              = var.comments
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  ip_based              = var.ip_based
+  name                  = var.name
+  protocol              = var.protocol
+  sso_auth_method       = var.sso_auth_method
+  status                = var.status
+  transaction_based     = var.transaction_based
+  web_auth_cookie       = var.web_auth_cookie
+  web_portal            = var.web_portal
+
+  dynamic "dstaddr" {
+    for_each = var.dstaddr
+    content {
+      name = dstaddr.value["name"]
+    }
+  }
 
   dynamic "srcaddr" {
     for_each = var.srcaddr
@@ -163,6 +216,13 @@ resource "fortios_authentication_rule" "this" {
     for_each = var.srcaddr6
     content {
       name = srcaddr6.value["name"]
+    }
+  }
+
+  dynamic "srcintf" {
+    for_each = var.srcintf
+    content {
+      name = srcintf.value["name"]
     }
   }
 
@@ -217,6 +277,11 @@ output "transaction_based" {
 output "web_auth_cookie" {
   description = "returns a string"
   value       = fortios_authentication_rule.this.web_auth_cookie
+}
+
+output "web_portal" {
+  description = "returns a string"
+  value       = fortios_authentication_rule.this.web_portal
 }
 
 output "this" {

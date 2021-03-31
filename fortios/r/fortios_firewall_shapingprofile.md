@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,15 +31,25 @@ module "fortios_firewall_shapingprofile" {
   comment = null
   # default_class_id - (required) is a type of number
   default_class_id = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # profile_name - (required) is a type of string
   profile_name = null
+  # type - (optional) is a type of string
+  type = null
 
   shaping_entries = [{
+    burst_in_msec                   = null
+    cburst_in_msec                  = null
     class_id                        = null
     guaranteed_bandwidth_percentage = null
     id                              = null
+    limit                           = null
+    max                             = null
     maximum_bandwidth_percentage    = null
+    min                             = null
     priority                        = null
+    red_probability                 = null
   }]
 }
 ```
@@ -60,20 +70,38 @@ variable "default_class_id" {
   type        = number
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "profile_name" {
   description = "(required)"
   type        = string
+}
+
+variable "type" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "shaping_entries" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
+      burst_in_msec                   = number
+      cburst_in_msec                  = number
       class_id                        = number
       guaranteed_bandwidth_percentage = number
       id                              = number
+      limit                           = number
+      max                             = number
       maximum_bandwidth_percentage    = number
+      min                             = number
       priority                        = string
+      red_probability                 = number
     }
   ))
   default = []
@@ -86,18 +114,26 @@ variable "shaping_entries" {
 
 ```terraform
 resource "fortios_firewall_shapingprofile" "this" {
-  comment          = var.comment
-  default_class_id = var.default_class_id
-  profile_name     = var.profile_name
+  comment               = var.comment
+  default_class_id      = var.default_class_id
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  profile_name          = var.profile_name
+  type                  = var.type
 
   dynamic "shaping_entries" {
     for_each = var.shaping_entries
     content {
+      burst_in_msec                   = shaping_entries.value["burst_in_msec"]
+      cburst_in_msec                  = shaping_entries.value["cburst_in_msec"]
       class_id                        = shaping_entries.value["class_id"]
       guaranteed_bandwidth_percentage = shaping_entries.value["guaranteed_bandwidth_percentage"]
       id                              = shaping_entries.value["id"]
+      limit                           = shaping_entries.value["limit"]
+      max                             = shaping_entries.value["max"]
       maximum_bandwidth_percentage    = shaping_entries.value["maximum_bandwidth_percentage"]
+      min                             = shaping_entries.value["min"]
       priority                        = shaping_entries.value["priority"]
+      red_probability                 = shaping_entries.value["red_probability"]
     }
   }
 
@@ -112,6 +148,11 @@ resource "fortios_firewall_shapingprofile" "this" {
 output "id" {
   description = "returns a string"
   value       = fortios_firewall_shapingprofile.this.id
+}
+
+output "type" {
+  description = "returns a string"
+  value       = fortios_firewall_shapingprofile.this.type
 }
 
 output "this" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_switchcontrollerautoconfig_custom" {
   source = "./modules/fortios/r/fortios_switchcontrollerautoconfig_custom"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
 
@@ -42,6 +44,12 @@ module "fortios_switchcontrollerautoconfig_custom" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -65,7 +73,8 @@ variable "switch_binding" {
 
 ```terraform
 resource "fortios_switchcontrollerautoconfig_custom" "this" {
-  name = var.name
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "switch_binding" {
     for_each = var.switch_binding

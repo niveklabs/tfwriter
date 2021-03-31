@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -119,6 +119,8 @@ module "azurerm_app_service" {
       }]
       file_system_level = null
     }]
+    detailed_error_messages_enabled = null
+    failed_request_tracing_enabled  = null
     http_logs = [{
       azure_blob_storage = [{
         retention_in_days = null
@@ -149,6 +151,7 @@ module "azurerm_app_service" {
       ip_address                = null
       name                      = null
       priority                  = null
+      service_tag               = null
       subnet_id                 = null
       virtual_network_subnet_id = null
     }]
@@ -159,6 +162,7 @@ module "azurerm_app_service" {
     local_mysql_enabled      = null
     managed_pipeline_mode    = null
     min_tls_version          = null
+    number_of_workers        = null
     php_version              = null
     python_version           = null
     remote_debugging_enabled = null
@@ -168,6 +172,7 @@ module "azurerm_app_service" {
       ip_address                = null
       name                      = null
       priority                  = null
+      service_tag               = null
       subnet_id                 = null
       virtual_network_subnet_id = null
     }]
@@ -379,6 +384,8 @@ variable "logs" {
           file_system_level = string
         }
       ))
+      detailed_error_messages_enabled = bool
+      failed_request_tracing_enabled  = bool
       http_logs = list(object(
         {
           azure_blob_storage = list(object(
@@ -424,6 +431,7 @@ variable "site_config" {
           ip_address                = string
           name                      = string
           priority                  = number
+          service_tag               = string
           subnet_id                 = string
           virtual_network_subnet_id = string
         }
@@ -435,6 +443,7 @@ variable "site_config" {
       local_mysql_enabled      = bool
       managed_pipeline_mode    = string
       min_tls_version          = string
+      number_of_workers        = number
       php_version              = string
       python_version           = string
       remote_debugging_enabled = bool
@@ -445,6 +454,7 @@ variable "site_config" {
           ip_address                = string
           name                      = string
           priority                  = number
+          service_tag               = string
           subnet_id                 = string
           virtual_network_subnet_id = string
         }
@@ -620,6 +630,8 @@ resource "azurerm_app_service" "this" {
   dynamic "logs" {
     for_each = var.logs
     content {
+      detailed_error_messages_enabled = logs.value["detailed_error_messages_enabled"]
+      failed_request_tracing_enabled  = logs.value["failed_request_tracing_enabled"]
 
       dynamic "application_logs" {
         for_each = logs.value.application_logs
@@ -683,6 +695,7 @@ resource "azurerm_app_service" "this" {
       local_mysql_enabled         = site_config.value["local_mysql_enabled"]
       managed_pipeline_mode       = site_config.value["managed_pipeline_mode"]
       min_tls_version             = site_config.value["min_tls_version"]
+      number_of_workers           = site_config.value["number_of_workers"]
       php_version                 = site_config.value["php_version"]
       python_version              = site_config.value["python_version"]
       remote_debugging_enabled    = site_config.value["remote_debugging_enabled"]

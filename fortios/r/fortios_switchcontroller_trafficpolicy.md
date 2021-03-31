@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_switchcontroller_trafficpolicy" {
 
   # cos - (optional) is a type of number
   cos = null
+  # cos_queue - (optional) is a type of number
+  cos_queue = null
   # description - (optional) is a type of string
   description = null
   # fosid - (optional) is a type of number
@@ -54,6 +56,12 @@ module "fortios_switchcontroller_trafficpolicy" {
 
 ```terraform
 variable "cos" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "cos_queue" {
   description = "(optional)"
   type        = number
   default     = null
@@ -114,6 +122,7 @@ variable "type" {
 ```terraform
 resource "fortios_switchcontroller_trafficpolicy" "this" {
   cos                  = var.cos
+  cos_queue            = var.cos_queue
   description          = var.description
   fosid                = var.fosid
   guaranteed_bandwidth = var.guaranteed_bandwidth
@@ -133,6 +142,11 @@ resource "fortios_switchcontroller_trafficpolicy" "this" {
 output "cos" {
   description = "returns a number"
   value       = fortios_switchcontroller_trafficpolicy.this.cos
+}
+
+output "cos_queue" {
+  description = "returns a number"
+  value       = fortios_switchcontroller_trafficpolicy.this.cos_queue
 }
 
 output "description" {

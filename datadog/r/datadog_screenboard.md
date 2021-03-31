@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -220,7 +220,7 @@ variable "height" {
 }
 
 variable "read_only" {
-  description = "(optional)"
+  description = "(optional) - The read-only status of the screenboard. Default is `false`."
   type        = bool
   default     = null
 }

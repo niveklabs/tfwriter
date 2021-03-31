@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -57,16 +57,22 @@ module "aviatrix_gateway" {
   enable_elb = null
   # enable_encrypt_volume - (optional) is a type of bool
   enable_encrypt_volume = null
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = null
   # enable_ldap - (optional) is a type of bool
   enable_ldap = null
   # enable_monitor_gateway_subnets - (optional) is a type of bool
   enable_monitor_gateway_subnets = null
+  # enable_public_subnet_filtering - (optional) is a type of bool
+  enable_public_subnet_filtering = null
   # enable_vpc_dns_server - (optional) is a type of bool
   enable_vpc_dns_server = null
   # enable_vpn_nat - (optional) is a type of bool
   enable_vpn_nat = null
   # fqdn_lan_cidr - (optional) is a type of string
   fqdn_lan_cidr = null
+  # fqdn_lan_vpc_id - (optional) is a type of string
+  fqdn_lan_vpc_id = null
   # gw_name - (required) is a type of string
   gw_name = null
   # gw_size - (required) is a type of string
@@ -89,8 +95,8 @@ module "aviatrix_gateway" {
   ldap_username_attribute = null
   # max_vpn_conn - (optional) is a type of string
   max_vpn_conn = null
-  # monitor_exclude_list - (optional) is a type of string
-  monitor_exclude_list = null
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = []
   # name_servers - (optional) is a type of string
   name_servers = null
   # okta_token - (optional) is a type of string
@@ -111,6 +117,12 @@ module "aviatrix_gateway" {
   peering_ha_subnet = null
   # peering_ha_zone - (optional) is a type of string
   peering_ha_zone = null
+  # public_subnet_filtering_guard_duty_enforced - (optional) is a type of bool
+  public_subnet_filtering_guard_duty_enforced = null
+  # public_subnet_filtering_ha_route_tables - (optional) is a type of set of string
+  public_subnet_filtering_ha_route_tables = []
+  # public_subnet_filtering_route_tables - (optional) is a type of set of string
+  public_subnet_filtering_route_tables = []
   # renegotiation_interval - (optional) is a type of number
   renegotiation_interval = null
   # saml_enabled - (optional) is a type of bool
@@ -235,6 +247,12 @@ variable "enable_encrypt_volume" {
   default     = null
 }
 
+variable "enable_jumbo_frame" {
+  description = "(optional) - Enable jumbo frame support for Gateway. Valid values: true or false. Default value: true."
+  type        = bool
+  default     = null
+}
+
 variable "enable_ldap" {
   description = "(optional) - Specify whether to enable LDAP or not. Supported values: 'yes' and 'no'."
   type        = bool
@@ -243,6 +261,12 @@ variable "enable_ldap" {
 
 variable "enable_monitor_gateway_subnets" {
   description = "(optional) - Enable monitor gateway subnets. Valid values: true, false. Default value: false."
+  type        = bool
+  default     = null
+}
+
+variable "enable_public_subnet_filtering" {
+  description = "(optional) - Create a [Public Subnet Filtering gateway](https://docs.aviatrix.com/HowTos/public_subnet_filtering_faq.html)."
   type        = bool
   default     = null
 }
@@ -261,6 +285,12 @@ variable "enable_vpn_nat" {
 
 variable "fqdn_lan_cidr" {
   description = "(optional) - FQDN gateway lan interface cidr."
+  type        = string
+  default     = null
+}
+
+variable "fqdn_lan_vpc_id" {
+  description = "(optional) - LAN VPC ID. Only used for GCP FQDN Gateway."
   type        = string
   default     = null
 }
@@ -330,8 +360,8 @@ variable "max_vpn_conn" {
 }
 
 variable "monitor_exclude_list" {
-  description = "(optional) - A list of monitored instance ids separated by comma when 'monitor gateway subnets' feature is enabled."
-  type        = string
+  description = "(optional) - A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true."
+  type        = set(string)
   default     = null
 }
 
@@ -392,6 +422,24 @@ variable "peering_ha_subnet" {
 variable "peering_ha_zone" {
   description = "(optional) - Zone information for creating Peering HA Gateway. Required to create peering ha gateway if cloud_type = 4 (GCP). Optional for cloud_type = 8 (AZURE)."
   type        = string
+  default     = null
+}
+
+variable "public_subnet_filtering_guard_duty_enforced" {
+  description = "(optional) - Whether to enforce Guard Duty IP blocking. Required when `enable_public_subnet_filtering` attribute is true. Valid values: true or false. Default value: true."
+  type        = bool
+  default     = null
+}
+
+variable "public_subnet_filtering_ha_route_tables" {
+  description = "(optional) - Route tables whose associated public subnets are protected for the HA PSF gateway. Required when enable_public_subnet_filtering and peering_ha_subnet are set."
+  type        = set(string)
+  default     = null
+}
+
+variable "public_subnet_filtering_route_tables" {
+  description = "(optional) - Route tables whose associated public subnets are protected. Required when `enable_public_subnet_filtering` attribute is true."
+  type        = set(string)
   default     = null
 }
 
@@ -471,7 +519,7 @@ variable "vpn_protocol" {
 }
 
 variable "zone" {
-  description = "(optional) - Availability Zone. Only available for cloud_type = 8 (AZURE). Must be in the form 'az-n', for example, 'az-2'."
+  description = "(optional) - Availability Zone. Only available for Azure and Public Subnet Filtering gateway"
   type        = string
   default     = null
 }
@@ -483,62 +531,68 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_gateway" "this" {
-  account_name                        = var.account_name
-  additional_cidrs                    = var.additional_cidrs
-  additional_cidrs_designated_gateway = var.additional_cidrs_designated_gateway
-  allocate_new_eip                    = var.allocate_new_eip
-  cloud_type                          = var.cloud_type
-  customer_managed_keys               = var.customer_managed_keys
-  duo_api_hostname                    = var.duo_api_hostname
-  duo_integration_key                 = var.duo_integration_key
-  duo_push_mode                       = var.duo_push_mode
-  duo_secret_key                      = var.duo_secret_key
-  eip                                 = var.eip
-  elb_name                            = var.elb_name
-  enable_designated_gateway           = var.enable_designated_gateway
-  enable_elb                          = var.enable_elb
-  enable_encrypt_volume               = var.enable_encrypt_volume
-  enable_ldap                         = var.enable_ldap
-  enable_monitor_gateway_subnets      = var.enable_monitor_gateway_subnets
-  enable_vpc_dns_server               = var.enable_vpc_dns_server
-  enable_vpn_nat                      = var.enable_vpn_nat
-  fqdn_lan_cidr                       = var.fqdn_lan_cidr
-  gw_name                             = var.gw_name
-  gw_size                             = var.gw_size
-  idle_timeout                        = var.idle_timeout
-  insane_mode                         = var.insane_mode
-  insane_mode_az                      = var.insane_mode_az
-  ldap_base_dn                        = var.ldap_base_dn
-  ldap_bind_dn                        = var.ldap_bind_dn
-  ldap_password                       = var.ldap_password
-  ldap_server                         = var.ldap_server
-  ldap_username_attribute             = var.ldap_username_attribute
-  max_vpn_conn                        = var.max_vpn_conn
-  monitor_exclude_list                = var.monitor_exclude_list
-  name_servers                        = var.name_servers
-  okta_token                          = var.okta_token
-  okta_url                            = var.okta_url
-  okta_username_suffix                = var.okta_username_suffix
-  otp_mode                            = var.otp_mode
-  peering_ha_eip                      = var.peering_ha_eip
-  peering_ha_gw_size                  = var.peering_ha_gw_size
-  peering_ha_insane_mode_az           = var.peering_ha_insane_mode_az
-  peering_ha_subnet                   = var.peering_ha_subnet
-  peering_ha_zone                     = var.peering_ha_zone
-  renegotiation_interval              = var.renegotiation_interval
-  saml_enabled                        = var.saml_enabled
-  search_domains                      = var.search_domains
-  single_az_ha                        = var.single_az_ha
-  single_ip_snat                      = var.single_ip_snat
-  split_tunnel                        = var.split_tunnel
-  subnet                              = var.subnet
-  tag_list                            = var.tag_list
-  vpc_id                              = var.vpc_id
-  vpc_reg                             = var.vpc_reg
-  vpn_access                          = var.vpn_access
-  vpn_cidr                            = var.vpn_cidr
-  vpn_protocol                        = var.vpn_protocol
-  zone                                = var.zone
+  account_name                                = var.account_name
+  additional_cidrs                            = var.additional_cidrs
+  additional_cidrs_designated_gateway         = var.additional_cidrs_designated_gateway
+  allocate_new_eip                            = var.allocate_new_eip
+  cloud_type                                  = var.cloud_type
+  customer_managed_keys                       = var.customer_managed_keys
+  duo_api_hostname                            = var.duo_api_hostname
+  duo_integration_key                         = var.duo_integration_key
+  duo_push_mode                               = var.duo_push_mode
+  duo_secret_key                              = var.duo_secret_key
+  eip                                         = var.eip
+  elb_name                                    = var.elb_name
+  enable_designated_gateway                   = var.enable_designated_gateway
+  enable_elb                                  = var.enable_elb
+  enable_encrypt_volume                       = var.enable_encrypt_volume
+  enable_jumbo_frame                          = var.enable_jumbo_frame
+  enable_ldap                                 = var.enable_ldap
+  enable_monitor_gateway_subnets              = var.enable_monitor_gateway_subnets
+  enable_public_subnet_filtering              = var.enable_public_subnet_filtering
+  enable_vpc_dns_server                       = var.enable_vpc_dns_server
+  enable_vpn_nat                              = var.enable_vpn_nat
+  fqdn_lan_cidr                               = var.fqdn_lan_cidr
+  fqdn_lan_vpc_id                             = var.fqdn_lan_vpc_id
+  gw_name                                     = var.gw_name
+  gw_size                                     = var.gw_size
+  idle_timeout                                = var.idle_timeout
+  insane_mode                                 = var.insane_mode
+  insane_mode_az                              = var.insane_mode_az
+  ldap_base_dn                                = var.ldap_base_dn
+  ldap_bind_dn                                = var.ldap_bind_dn
+  ldap_password                               = var.ldap_password
+  ldap_server                                 = var.ldap_server
+  ldap_username_attribute                     = var.ldap_username_attribute
+  max_vpn_conn                                = var.max_vpn_conn
+  monitor_exclude_list                        = var.monitor_exclude_list
+  name_servers                                = var.name_servers
+  okta_token                                  = var.okta_token
+  okta_url                                    = var.okta_url
+  okta_username_suffix                        = var.okta_username_suffix
+  otp_mode                                    = var.otp_mode
+  peering_ha_eip                              = var.peering_ha_eip
+  peering_ha_gw_size                          = var.peering_ha_gw_size
+  peering_ha_insane_mode_az                   = var.peering_ha_insane_mode_az
+  peering_ha_subnet                           = var.peering_ha_subnet
+  peering_ha_zone                             = var.peering_ha_zone
+  public_subnet_filtering_guard_duty_enforced = var.public_subnet_filtering_guard_duty_enforced
+  public_subnet_filtering_ha_route_tables     = var.public_subnet_filtering_ha_route_tables
+  public_subnet_filtering_route_tables        = var.public_subnet_filtering_route_tables
+  renegotiation_interval                      = var.renegotiation_interval
+  saml_enabled                                = var.saml_enabled
+  search_domains                              = var.search_domains
+  single_az_ha                                = var.single_az_ha
+  single_ip_snat                              = var.single_ip_snat
+  split_tunnel                                = var.split_tunnel
+  subnet                                      = var.subnet
+  tag_list                                    = var.tag_list
+  vpc_id                                      = var.vpc_id
+  vpc_reg                                     = var.vpc_reg
+  vpn_access                                  = var.vpn_access
+  vpn_cidr                                    = var.vpn_cidr
+  vpn_protocol                                = var.vpn_protocol
+  zone                                        = var.zone
 }
 ```
 

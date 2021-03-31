@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -53,6 +53,12 @@ module "aws_globalaccelerator_endpoint_group" {
   port_override = [{
     endpoint_port = null
     listener_port = null
+  }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    update = null
   }]
 }
 ```
@@ -131,6 +137,18 @@ variable "port_override" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -162,6 +180,15 @@ resource "aws_globalaccelerator_endpoint_group" "this" {
     content {
       endpoint_port = port_override.value["endpoint_port"]
       listener_port = port_override.value["listener_port"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      update = timeouts.value["update"]
     }
   }
 

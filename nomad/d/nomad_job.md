@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nomad = ">= 1.4.11"
+    nomad = ">= 1.4.13"
   }
 }
 ```
@@ -160,11 +160,6 @@ output "task_groups" {
 output "type" {
   description = "returns a string"
   value       = data.nomad_job.this.type
-}
-
-output "update_strategy" {
-  description = "returns a list of object"
-  value       = data.nomad_job.this.update_strategy
 }
 
 output "version" {

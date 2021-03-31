@@ -12,7 +12,7 @@
 
 ```terraform
 provider "azuread" {
-  version = "1.1.1"
+  version = "1.4.0"
 
   # client_certificate_password - (optional) is a type of string
   client_certificate_password = null

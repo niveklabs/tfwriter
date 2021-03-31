@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_json_generic_api" {
   source = "./modules/fortios/r/fortios_json_generic_api"
 
+  # force_recreate - (optional) is a type of string
+  force_recreate = null
   # json - (optional) is a type of string
   json = null
   # method - (required) is a type of string
@@ -43,6 +45,12 @@ module "fortios_json_generic_api" {
 ### Variables
 
 ```terraform
+variable "force_recreate" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "json" {
   description = "(optional)"
   type        = string
@@ -72,10 +80,11 @@ variable "specialparams" {
 
 ```terraform
 resource "fortios_json_generic_api" "this" {
-  json          = var.json
-  method        = var.method
-  path          = var.path
-  specialparams = var.specialparams
+  force_recreate = var.force_recreate
+  json           = var.json
+  method         = var.method
+  path           = var.path
+  specialparams  = var.specialparams
 }
 ```
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    equinix = ">= 1.0.2"
+    equinix = ">= 1.1.0-beta"
   }
 }
 ```
@@ -42,19 +42,19 @@ module "equinix_ecx_l2_sellerprofile" {
 
 ```terraform
 variable "name" {
-  description = "(optional)"
+  description = "(optional) - Name of the seller profile"
   type        = string
   default     = null
 }
 
 variable "organization_global_name" {
-  description = "(optional)"
+  description = "(optional) - Name of seller's global organization"
   type        = string
   default     = null
 }
 
 variable "organization_name" {
-  description = "(optional)"
+  description = "(optional) - Name of seller's organization"
   type        = string
   default     = null
 }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,12 +31,18 @@ module "fortios_wirelesscontroller_wtp" {
   admin = null
   # allowaccess - (optional) is a type of string
   allowaccess = null
+  # apcfg_profile - (optional) is a type of string
+  apcfg_profile = null
   # bonjour_profile - (optional) is a type of string
   bonjour_profile = null
   # coordinate_latitude - (optional) is a type of string
   coordinate_latitude = null
   # coordinate_longitude - (optional) is a type of string
   coordinate_longitude = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # firmware_provision - (optional) is a type of string
+  firmware_provision = null
   # image_download - (optional) is a type of string
   image_download = null
   # index - (optional) is a type of number
@@ -83,6 +89,8 @@ module "fortios_wirelesscontroller_wtp" {
   tun_mtu_downlink = null
   # tun_mtu_uplink - (optional) is a type of number
   tun_mtu_uplink = null
+  # uuid - (optional) is a type of string
+  uuid = null
   # wan_port_mode - (optional) is a type of string
   wan_port_mode = null
   # wtp_id - (optional) is a type of string
@@ -93,34 +101,38 @@ module "fortios_wirelesscontroller_wtp" {
   wtp_profile = null
 
   lan = [{
-    port1_mode = null
-    port1_ssid = null
-    port2_mode = null
-    port2_ssid = null
-    port3_mode = null
-    port3_ssid = null
-    port4_mode = null
-    port4_ssid = null
-    port5_mode = null
-    port5_ssid = null
-    port6_mode = null
-    port6_ssid = null
-    port7_mode = null
-    port7_ssid = null
-    port8_mode = null
-    port8_ssid = null
-    port_mode  = null
-    port_ssid  = null
+    port1_mode    = null
+    port1_ssid    = null
+    port2_mode    = null
+    port2_ssid    = null
+    port3_mode    = null
+    port3_ssid    = null
+    port4_mode    = null
+    port4_ssid    = null
+    port5_mode    = null
+    port5_ssid    = null
+    port6_mode    = null
+    port6_ssid    = null
+    port7_mode    = null
+    port7_ssid    = null
+    port8_mode    = null
+    port8_ssid    = null
+    port_esl_mode = null
+    port_esl_ssid = null
+    port_mode     = null
+    port_ssid     = null
   }]
 
   radio_1 = [{
-    auto_power_high  = null
-    auto_power_level = null
-    auto_power_low   = null
-    band             = null
+    auto_power_high   = null
+    auto_power_level  = null
+    auto_power_low    = null
+    auto_power_target = null
+    band              = null
     channel = [{
       chan = null
     }]
+    drma_manual_mode  = null
     override_analysis = null
     override_band     = null
     override_channel  = null
@@ -136,13 +148,15 @@ module "fortios_wirelesscontroller_wtp" {
   }]
 
   radio_2 = [{
-    auto_power_high  = null
-    auto_power_level = null
-    auto_power_low   = null
-    band             = null
+    auto_power_high   = null
+    auto_power_level  = null
+    auto_power_low    = null
+    auto_power_target = null
+    band              = null
     channel = [{
       chan = null
     }]
+    drma_manual_mode  = null
     override_analysis = null
     override_band     = null
     override_channel  = null
@@ -150,6 +164,52 @@ module "fortios_wirelesscontroller_wtp" {
     override_vaps     = null
     power_level       = null
     radio_id          = null
+    spectrum_analysis = null
+    vap_all           = null
+    vaps = [{
+      name = null
+    }]
+  }]
+
+  radio_3 = [{
+    auto_power_high   = null
+    auto_power_level  = null
+    auto_power_low    = null
+    auto_power_target = null
+    band              = null
+    channel = [{
+      chan = null
+    }]
+    drma_manual_mode  = null
+    override_analysis = null
+    override_band     = null
+    override_channel  = null
+    override_txpower  = null
+    override_vaps     = null
+    power_level       = null
+    spectrum_analysis = null
+    vap_all           = null
+    vaps = [{
+      name = null
+    }]
+  }]
+
+  radio_4 = [{
+    auto_power_high   = null
+    auto_power_level  = null
+    auto_power_low    = null
+    auto_power_target = null
+    band              = null
+    channel = [{
+      chan = null
+    }]
+    drma_manual_mode  = null
+    override_analysis = null
+    override_band     = null
+    override_channel  = null
+    override_txpower  = null
+    override_vaps     = null
+    power_level       = null
     spectrum_analysis = null
     vap_all           = null
     vaps = [{
@@ -181,6 +241,12 @@ variable "allowaccess" {
   default     = null
 }
 
+variable "apcfg_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "bonjour_profile" {
   description = "(optional)"
   type        = string
@@ -194,6 +260,18 @@ variable "coordinate_latitude" {
 }
 
 variable "coordinate_longitude" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "firmware_provision" {
   description = "(optional)"
   type        = string
   default     = null
@@ -337,6 +415,12 @@ variable "tun_mtu_uplink" {
   default     = null
 }
 
+variable "uuid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "wan_port_mode" {
   description = "(optional)"
   type        = string
@@ -364,24 +448,26 @@ variable "lan" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      port1_mode = string
-      port1_ssid = string
-      port2_mode = string
-      port2_ssid = string
-      port3_mode = string
-      port3_ssid = string
-      port4_mode = string
-      port4_ssid = string
-      port5_mode = string
-      port5_ssid = string
-      port6_mode = string
-      port6_ssid = string
-      port7_mode = string
-      port7_ssid = string
-      port8_mode = string
-      port8_ssid = string
-      port_mode  = string
-      port_ssid  = string
+      port1_mode    = string
+      port1_ssid    = string
+      port2_mode    = string
+      port2_ssid    = string
+      port3_mode    = string
+      port3_ssid    = string
+      port4_mode    = string
+      port4_ssid    = string
+      port5_mode    = string
+      port5_ssid    = string
+      port6_mode    = string
+      port6_ssid    = string
+      port7_mode    = string
+      port7_ssid    = string
+      port8_mode    = string
+      port8_ssid    = string
+      port_esl_mode = string
+      port_esl_ssid = string
+      port_mode     = string
+      port_ssid     = string
     }
   ))
   default = []
@@ -391,15 +477,17 @@ variable "radio_1" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      auto_power_high  = number
-      auto_power_level = string
-      auto_power_low   = number
-      band             = string
+      auto_power_high   = number
+      auto_power_level  = string
+      auto_power_low    = number
+      auto_power_target = string
+      band              = string
       channel = list(object(
         {
           chan = string
         }
       ))
+      drma_manual_mode  = string
       override_analysis = string
       override_band     = string
       override_channel  = string
@@ -423,15 +511,17 @@ variable "radio_2" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      auto_power_high  = number
-      auto_power_level = string
-      auto_power_low   = number
-      band             = string
+      auto_power_high   = number
+      auto_power_level  = string
+      auto_power_low    = number
+      auto_power_target = string
+      band              = string
       channel = list(object(
         {
           chan = string
         }
       ))
+      drma_manual_mode  = string
       override_analysis = string
       override_band     = string
       override_channel  = string
@@ -439,6 +529,72 @@ variable "radio_2" {
       override_vaps     = string
       power_level       = number
       radio_id          = number
+      spectrum_analysis = string
+      vap_all           = string
+      vaps = list(object(
+        {
+          name = string
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
+variable "radio_3" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      auto_power_high   = number
+      auto_power_level  = string
+      auto_power_low    = number
+      auto_power_target = string
+      band              = string
+      channel = list(object(
+        {
+          chan = string
+        }
+      ))
+      drma_manual_mode  = string
+      override_analysis = string
+      override_band     = string
+      override_channel  = string
+      override_txpower  = string
+      override_vaps     = string
+      power_level       = number
+      spectrum_analysis = string
+      vap_all           = string
+      vaps = list(object(
+        {
+          name = string
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
+variable "radio_4" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      auto_power_high   = number
+      auto_power_level  = string
+      auto_power_low    = number
+      auto_power_target = string
+      band              = string
+      channel = list(object(
+        {
+          chan = string
+        }
+      ))
+      drma_manual_mode  = string
+      override_analysis = string
+      override_band     = string
+      override_channel  = string
+      override_txpower  = string
+      override_vaps     = string
+      power_level       = number
       spectrum_analysis = string
       vap_all           = string
       vaps = list(object(
@@ -471,9 +627,12 @@ variable "split_tunneling_acl" {
 resource "fortios_wirelesscontroller_wtp" "this" {
   admin                               = var.admin
   allowaccess                         = var.allowaccess
+  apcfg_profile                       = var.apcfg_profile
   bonjour_profile                     = var.bonjour_profile
   coordinate_latitude                 = var.coordinate_latitude
   coordinate_longitude                = var.coordinate_longitude
+  dynamic_sort_subtable               = var.dynamic_sort_subtable
+  firmware_provision                  = var.firmware_provision
   image_download                      = var.image_download
   index                               = var.index
   ip_fragment_preventing              = var.ip_fragment_preventing
@@ -497,6 +656,7 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   split_tunneling_acl_path            = var.split_tunneling_acl_path
   tun_mtu_downlink                    = var.tun_mtu_downlink
   tun_mtu_uplink                      = var.tun_mtu_uplink
+  uuid                                = var.uuid
   wan_port_mode                       = var.wan_port_mode
   wtp_id                              = var.wtp_id
   wtp_mode                            = var.wtp_mode
@@ -505,24 +665,26 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   dynamic "lan" {
     for_each = var.lan
     content {
-      port1_mode = lan.value["port1_mode"]
-      port1_ssid = lan.value["port1_ssid"]
-      port2_mode = lan.value["port2_mode"]
-      port2_ssid = lan.value["port2_ssid"]
-      port3_mode = lan.value["port3_mode"]
-      port3_ssid = lan.value["port3_ssid"]
-      port4_mode = lan.value["port4_mode"]
-      port4_ssid = lan.value["port4_ssid"]
-      port5_mode = lan.value["port5_mode"]
-      port5_ssid = lan.value["port5_ssid"]
-      port6_mode = lan.value["port6_mode"]
-      port6_ssid = lan.value["port6_ssid"]
-      port7_mode = lan.value["port7_mode"]
-      port7_ssid = lan.value["port7_ssid"]
-      port8_mode = lan.value["port8_mode"]
-      port8_ssid = lan.value["port8_ssid"]
-      port_mode  = lan.value["port_mode"]
-      port_ssid  = lan.value["port_ssid"]
+      port1_mode    = lan.value["port1_mode"]
+      port1_ssid    = lan.value["port1_ssid"]
+      port2_mode    = lan.value["port2_mode"]
+      port2_ssid    = lan.value["port2_ssid"]
+      port3_mode    = lan.value["port3_mode"]
+      port3_ssid    = lan.value["port3_ssid"]
+      port4_mode    = lan.value["port4_mode"]
+      port4_ssid    = lan.value["port4_ssid"]
+      port5_mode    = lan.value["port5_mode"]
+      port5_ssid    = lan.value["port5_ssid"]
+      port6_mode    = lan.value["port6_mode"]
+      port6_ssid    = lan.value["port6_ssid"]
+      port7_mode    = lan.value["port7_mode"]
+      port7_ssid    = lan.value["port7_ssid"]
+      port8_mode    = lan.value["port8_mode"]
+      port8_ssid    = lan.value["port8_ssid"]
+      port_esl_mode = lan.value["port_esl_mode"]
+      port_esl_ssid = lan.value["port_esl_ssid"]
+      port_mode     = lan.value["port_mode"]
+      port_ssid     = lan.value["port_ssid"]
     }
   }
 
@@ -532,7 +694,9 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       auto_power_high   = radio_1.value["auto_power_high"]
       auto_power_level  = radio_1.value["auto_power_level"]
       auto_power_low    = radio_1.value["auto_power_low"]
+      auto_power_target = radio_1.value["auto_power_target"]
       band              = radio_1.value["band"]
+      drma_manual_mode  = radio_1.value["drma_manual_mode"]
       override_analysis = radio_1.value["override_analysis"]
       override_band     = radio_1.value["override_band"]
       override_channel  = radio_1.value["override_channel"]
@@ -566,7 +730,9 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       auto_power_high   = radio_2.value["auto_power_high"]
       auto_power_level  = radio_2.value["auto_power_level"]
       auto_power_low    = radio_2.value["auto_power_low"]
+      auto_power_target = radio_2.value["auto_power_target"]
       band              = radio_2.value["band"]
+      drma_manual_mode  = radio_2.value["drma_manual_mode"]
       override_analysis = radio_2.value["override_analysis"]
       override_band     = radio_2.value["override_band"]
       override_channel  = radio_2.value["override_channel"]
@@ -586,6 +752,76 @@ resource "fortios_wirelesscontroller_wtp" "this" {
 
       dynamic "vaps" {
         for_each = radio_2.value.vaps
+        content {
+          name = vaps.value["name"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "radio_3" {
+    for_each = var.radio_3
+    content {
+      auto_power_high   = radio_3.value["auto_power_high"]
+      auto_power_level  = radio_3.value["auto_power_level"]
+      auto_power_low    = radio_3.value["auto_power_low"]
+      auto_power_target = radio_3.value["auto_power_target"]
+      band              = radio_3.value["band"]
+      drma_manual_mode  = radio_3.value["drma_manual_mode"]
+      override_analysis = radio_3.value["override_analysis"]
+      override_band     = radio_3.value["override_band"]
+      override_channel  = radio_3.value["override_channel"]
+      override_txpower  = radio_3.value["override_txpower"]
+      override_vaps     = radio_3.value["override_vaps"]
+      power_level       = radio_3.value["power_level"]
+      spectrum_analysis = radio_3.value["spectrum_analysis"]
+      vap_all           = radio_3.value["vap_all"]
+
+      dynamic "channel" {
+        for_each = radio_3.value.channel
+        content {
+          chan = channel.value["chan"]
+        }
+      }
+
+      dynamic "vaps" {
+        for_each = radio_3.value.vaps
+        content {
+          name = vaps.value["name"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "radio_4" {
+    for_each = var.radio_4
+    content {
+      auto_power_high   = radio_4.value["auto_power_high"]
+      auto_power_level  = radio_4.value["auto_power_level"]
+      auto_power_low    = radio_4.value["auto_power_low"]
+      auto_power_target = radio_4.value["auto_power_target"]
+      band              = radio_4.value["band"]
+      drma_manual_mode  = radio_4.value["drma_manual_mode"]
+      override_analysis = radio_4.value["override_analysis"]
+      override_band     = radio_4.value["override_band"]
+      override_channel  = radio_4.value["override_channel"]
+      override_txpower  = radio_4.value["override_txpower"]
+      override_vaps     = radio_4.value["override_vaps"]
+      power_level       = radio_4.value["power_level"]
+      spectrum_analysis = radio_4.value["spectrum_analysis"]
+      vap_all           = radio_4.value["vap_all"]
+
+      dynamic "channel" {
+        for_each = radio_4.value.channel
+        content {
+          chan = channel.value["chan"]
+        }
+      }
+
+      dynamic "vaps" {
+        for_each = radio_4.value.vaps
         content {
           name = vaps.value["name"]
         }
@@ -620,6 +856,11 @@ output "allowaccess" {
   value       = fortios_wirelesscontroller_wtp.this.allowaccess
 }
 
+output "apcfg_profile" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtp.this.apcfg_profile
+}
+
 output "bonjour_profile" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_wtp.this.bonjour_profile
@@ -633,6 +874,11 @@ output "coordinate_latitude" {
 output "coordinate_longitude" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_wtp.this.coordinate_longitude
+}
+
+output "firmware_provision" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtp.this.firmware_provision
 }
 
 output "id" {
@@ -748,6 +994,11 @@ output "tun_mtu_downlink" {
 output "tun_mtu_uplink" {
   description = "returns a number"
   value       = fortios_wirelesscontroller_wtp.this.tun_mtu_uplink
+}
+
+output "uuid" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtp.this.uuid
 }
 
 output "wan_port_mode" {

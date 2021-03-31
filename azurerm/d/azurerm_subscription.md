@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -114,6 +114,11 @@ output "state" {
 output "subscription_id" {
   description = "returns a string"
   value       = data.azurerm_subscription.this.subscription_id
+}
+
+output "tags" {
+  description = "returns a map of string"
+  value       = data.azurerm_subscription.this.tags
 }
 
 output "tenant_id" {

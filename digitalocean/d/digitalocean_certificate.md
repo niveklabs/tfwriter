@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    digitalocean = ">= 2.3.0"
+    digitalocean = ">= 2.7.0"
   }
 }
 ```

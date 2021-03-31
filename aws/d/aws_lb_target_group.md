@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -125,6 +125,11 @@ output "port" {
 output "protocol" {
   description = "returns a string"
   value       = data.aws_lb_target_group.this.protocol
+}
+
+output "protocol_version" {
+  description = "returns a string"
+  value       = data.aws_lb_target_group.this.protocol_version
 }
 
 output "proxy_protocol_v2" {

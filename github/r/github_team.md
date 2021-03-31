@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "github_team" {
   source = "./modules/github/r/github_team"
 
+  # create_default_maintainer - (optional) is a type of bool
+  create_default_maintainer = null
   # description - (optional) is a type of string
   description = null
   # ldap_dn - (optional) is a type of string
@@ -45,6 +47,12 @@ module "github_team" {
 ### Variables
 
 ```terraform
+variable "create_default_maintainer" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "description" {
   description = "(optional)"
   type        = string
@@ -81,11 +89,12 @@ variable "privacy" {
 
 ```terraform
 resource "github_team" "this" {
-  description    = var.description
-  ldap_dn        = var.ldap_dn
-  name           = var.name
-  parent_team_id = var.parent_team_id
-  privacy        = var.privacy
+  create_default_maintainer = var.create_default_maintainer
+  description               = var.description
+  ldap_dn                   = var.ldap_dn
+  name                      = var.name
+  parent_team_id            = var.parent_team_id
+  privacy                   = var.privacy
 }
 ```
 
@@ -102,6 +111,11 @@ output "etag" {
 output "id" {
   description = "returns a string"
   value       = github_team.this.id
+}
+
+output "members_count" {
+  description = "returns a number"
+  value       = github_team.this.members_count
 }
 
 output "node_id" {

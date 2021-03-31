@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -45,6 +45,8 @@ module "aviatrix_transit_gateway" {
   customer_managed_keys = null
   # customized_spoke_vpc_routes - (optional) is a type of string
   customized_spoke_vpc_routes = null
+  # customized_transit_vpc_routes - (optional) is a type of set of string
+  customized_transit_vpc_routes = []
   # eip - (optional) is a type of string
   eip = null
   # enable_active_mesh - (optional) is a type of bool
@@ -53,20 +55,32 @@ module "aviatrix_transit_gateway" {
   enable_active_standby = null
   # enable_advertise_transit_cidr - (optional) is a type of bool
   enable_advertise_transit_cidr = null
+  # enable_bgp_over_lan - (optional) is a type of bool
+  enable_bgp_over_lan = null
   # enable_egress_transit_firenet - (optional) is a type of bool
   enable_egress_transit_firenet = null
   # enable_encrypt_volume - (optional) is a type of bool
   enable_encrypt_volume = null
   # enable_firenet - (optional) is a type of bool
   enable_firenet = null
+  # enable_gateway_load_balancer - (optional) is a type of bool
+  enable_gateway_load_balancer = null
   # enable_hybrid_connection - (optional) is a type of bool
   enable_hybrid_connection = null
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = null
   # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = null
+  # enable_monitor_gateway_subnets - (optional) is a type of bool
+  enable_monitor_gateway_subnets = null
+  # enable_private_oob - (optional) is a type of bool
+  enable_private_oob = null
   # enable_segmentation - (optional) is a type of bool
   enable_segmentation = null
   # enable_transit_firenet - (optional) is a type of bool
   enable_transit_firenet = null
+  # enable_transit_summarize_cidr_to_tgw - (optional) is a type of bool
+  enable_transit_summarize_cidr_to_tgw = null
   # enable_vpc_dns_server - (optional) is a type of bool
   enable_vpc_dns_server = null
   # excluded_advertised_spoke_routes - (optional) is a type of string
@@ -83,6 +97,10 @@ module "aviatrix_transit_gateway" {
   ha_gw_size = null
   # ha_insane_mode_az - (optional) is a type of string
   ha_insane_mode_az = null
+  # ha_oob_availability_zone - (optional) is a type of string
+  ha_oob_availability_zone = null
+  # ha_oob_management_subnet - (optional) is a type of string
+  ha_oob_management_subnet = null
   # ha_subnet - (optional) is a type of string
   ha_subnet = null
   # ha_zone - (optional) is a type of string
@@ -91,8 +109,20 @@ module "aviatrix_transit_gateway" {
   insane_mode = null
   # insane_mode_az - (optional) is a type of string
   insane_mode_az = null
+  # lan_private_subnet - (optional) is a type of string
+  lan_private_subnet = null
+  # lan_vpc_id - (optional) is a type of string
+  lan_vpc_id = null
+  # learned_cidrs_approval_mode - (optional) is a type of string
+  learned_cidrs_approval_mode = null
   # local_as_number - (optional) is a type of string
   local_as_number = null
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = []
+  # oob_availability_zone - (optional) is a type of string
+  oob_availability_zone = null
+  # oob_management_subnet - (optional) is a type of string
+  oob_management_subnet = null
   # prepend_as_path - (optional) is a type of list of string
   prepend_as_path = []
   # single_az_ha - (optional) is a type of bool
@@ -169,6 +199,12 @@ variable "customized_spoke_vpc_routes" {
   default     = null
 }
 
+variable "customized_transit_vpc_routes" {
+  description = "(optional) - A list of CIDRs to be customized for the transit VPC routes. When configured, it will replace all learned routes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs.To be effective, `enable_advertise_transit_cidr` or firewall management access for a transit firenet gateway must be enabled."
+  type        = set(string)
+  default     = null
+}
+
 variable "eip" {
   description = "(optional) - Required when allocate_new_eip is false. It uses specified EIP for this gateway."
   type        = string
@@ -193,6 +229,12 @@ variable "enable_advertise_transit_cidr" {
   default     = null
 }
 
+variable "enable_bgp_over_lan" {
+  description = "(optional) - Pre-allocate a network interface(eth4) for \"BGP over LAN\" functionality. Only valid for cloud_type = 8 (AZURE). Valid values: true or false. Default value: false. Available as of provider version R2.18+"
+  type        = bool
+  default     = null
+}
+
 variable "enable_egress_transit_firenet" {
   description = "(optional) - Specify whether to enable egress transit firenet interfaces or not."
   type        = bool
@@ -211,14 +253,38 @@ variable "enable_firenet" {
   default     = null
 }
 
+variable "enable_gateway_load_balancer" {
+  description = "(optional) - Enable firenet interfaces with AWS Gateway Load Balancer. Only valid when `enable_firenet` or `enable_transit_firenet` are set to true and `cloud_type` = 1 (AWS). Currently AWS Gateway Load Balancer is only supported in AWS regions us-west-2 and us-east-1. Valid values: true or false. Default value: false."
+  type        = bool
+  default     = null
+}
+
 variable "enable_hybrid_connection" {
   description = "(optional) - Sign of readiness for TGW connection."
   type        = bool
   default     = null
 }
 
+variable "enable_jumbo_frame" {
+  description = "(optional) - Enable jumbo frame support for transit gateway. Valid values: true or false. Default value: true."
+  type        = bool
+  default     = null
+}
+
 variable "enable_learned_cidrs_approval" {
   description = "(optional) - Switch to enable/disable encrypted transit approval for transit Gateway. Valid values: true, false."
+  type        = bool
+  default     = null
+}
+
+variable "enable_monitor_gateway_subnets" {
+  description = "(optional) - Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for cloud_type = 1 (AWS) or 256 (AWSGOV). Valid values: true, false. Default value: false."
+  type        = bool
+  default     = null
+}
+
+variable "enable_private_oob" {
+  description = "(optional) - Enable private OOB."
   type        = bool
   default     = null
 }
@@ -231,6 +297,12 @@ variable "enable_segmentation" {
 
 variable "enable_transit_firenet" {
   description = "(optional) - Specify whether to enable transit firenet interfaces or not."
+  type        = bool
+  default     = null
+}
+
+variable "enable_transit_summarize_cidr_to_tgw" {
+  description = "(optional) - Enable summarize CIDR to TGW."
   type        = bool
   default     = null
 }
@@ -281,6 +353,18 @@ variable "ha_insane_mode_az" {
   default     = null
 }
 
+variable "ha_oob_availability_zone" {
+  description = "(optional) - OOB HA availability zone."
+  type        = string
+  default     = null
+}
+
+variable "ha_oob_management_subnet" {
+  description = "(optional) - OOB HA management subnet."
+  type        = string
+  default     = null
+}
+
 variable "ha_subnet" {
   description = "(optional) - HA Subnet. Required for enabling HA for AWS/AZURE/AWSGOV gateway. Optional for enabling HA for GCP gateway."
   type        = string
@@ -305,8 +389,44 @@ variable "insane_mode_az" {
   default     = null
 }
 
+variable "lan_private_subnet" {
+  description = "(optional) - LAN Private Subnet. Only used for GCP Transit FireNet."
+  type        = string
+  default     = null
+}
+
+variable "lan_vpc_id" {
+  description = "(optional) - LAN VPC ID. Only used for GCP Transit FireNet."
+  type        = string
+  default     = null
+}
+
+variable "learned_cidrs_approval_mode" {
+  description = "(optional) - Set the learned CIDRs approval mode. Only valid when 'enable_learned_cidrs_approval' is set to true. If set to 'gateway', learned CIDR approval applies to ALL connections. If set to 'connection', learned CIDR approval is configured on a per connection basis. When configuring per connection, use the enable_learned_cidrs_approval attribute within the connection resource to toggle learned CIDR approval. Valid values: 'gateway' or 'connection'. Default value: 'gateway'."
+  type        = string
+  default     = null
+}
+
 variable "local_as_number" {
   description = "(optional) - Changes the Aviatrix Transit Gateway ASN number before you setup Aviatrix Transit Gateway connection configurations."
+  type        = string
+  default     = null
+}
+
+variable "monitor_exclude_list" {
+  description = "(optional) - A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true."
+  type        = set(string)
+  default     = null
+}
+
+variable "oob_availability_zone" {
+  description = "(optional) - OOB subnet availability zone."
+  type        = string
+  default     = null
+}
+
+variable "oob_management_subnet" {
+  description = "(optional) - OOB management subnet."
   type        = string
   default     = null
 }
@@ -363,47 +483,62 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_transit_gateway" "this" {
-  account_name                     = var.account_name
-  allocate_new_eip                 = var.allocate_new_eip
-  bgp_ecmp                         = var.bgp_ecmp
-  bgp_manual_spoke_advertise_cidrs = var.bgp_manual_spoke_advertise_cidrs
-  bgp_polling_time                 = var.bgp_polling_time
-  cloud_type                       = var.cloud_type
-  connected_transit                = var.connected_transit
-  customer_managed_keys            = var.customer_managed_keys
-  customized_spoke_vpc_routes      = var.customized_spoke_vpc_routes
-  eip                              = var.eip
-  enable_active_mesh               = var.enable_active_mesh
-  enable_active_standby            = var.enable_active_standby
-  enable_advertise_transit_cidr    = var.enable_advertise_transit_cidr
-  enable_egress_transit_firenet    = var.enable_egress_transit_firenet
-  enable_encrypt_volume            = var.enable_encrypt_volume
-  enable_firenet                   = var.enable_firenet
-  enable_hybrid_connection         = var.enable_hybrid_connection
-  enable_learned_cidrs_approval    = var.enable_learned_cidrs_approval
-  enable_segmentation              = var.enable_segmentation
-  enable_transit_firenet           = var.enable_transit_firenet
-  enable_vpc_dns_server            = var.enable_vpc_dns_server
-  excluded_advertised_spoke_routes = var.excluded_advertised_spoke_routes
-  filtered_spoke_vpc_routes        = var.filtered_spoke_vpc_routes
-  gw_name                          = var.gw_name
-  gw_size                          = var.gw_size
-  ha_eip                           = var.ha_eip
-  ha_gw_size                       = var.ha_gw_size
-  ha_insane_mode_az                = var.ha_insane_mode_az
-  ha_subnet                        = var.ha_subnet
-  ha_zone                          = var.ha_zone
-  insane_mode                      = var.insane_mode
-  insane_mode_az                   = var.insane_mode_az
-  local_as_number                  = var.local_as_number
-  prepend_as_path                  = var.prepend_as_path
-  single_az_ha                     = var.single_az_ha
-  single_ip_snat                   = var.single_ip_snat
-  subnet                           = var.subnet
-  tag_list                         = var.tag_list
-  vpc_id                           = var.vpc_id
-  vpc_reg                          = var.vpc_reg
-  zone                             = var.zone
+  account_name                         = var.account_name
+  allocate_new_eip                     = var.allocate_new_eip
+  bgp_ecmp                             = var.bgp_ecmp
+  bgp_manual_spoke_advertise_cidrs     = var.bgp_manual_spoke_advertise_cidrs
+  bgp_polling_time                     = var.bgp_polling_time
+  cloud_type                           = var.cloud_type
+  connected_transit                    = var.connected_transit
+  customer_managed_keys                = var.customer_managed_keys
+  customized_spoke_vpc_routes          = var.customized_spoke_vpc_routes
+  customized_transit_vpc_routes        = var.customized_transit_vpc_routes
+  eip                                  = var.eip
+  enable_active_mesh                   = var.enable_active_mesh
+  enable_active_standby                = var.enable_active_standby
+  enable_advertise_transit_cidr        = var.enable_advertise_transit_cidr
+  enable_bgp_over_lan                  = var.enable_bgp_over_lan
+  enable_egress_transit_firenet        = var.enable_egress_transit_firenet
+  enable_encrypt_volume                = var.enable_encrypt_volume
+  enable_firenet                       = var.enable_firenet
+  enable_gateway_load_balancer         = var.enable_gateway_load_balancer
+  enable_hybrid_connection             = var.enable_hybrid_connection
+  enable_jumbo_frame                   = var.enable_jumbo_frame
+  enable_learned_cidrs_approval        = var.enable_learned_cidrs_approval
+  enable_monitor_gateway_subnets       = var.enable_monitor_gateway_subnets
+  enable_private_oob                   = var.enable_private_oob
+  enable_segmentation                  = var.enable_segmentation
+  enable_transit_firenet               = var.enable_transit_firenet
+  enable_transit_summarize_cidr_to_tgw = var.enable_transit_summarize_cidr_to_tgw
+  enable_vpc_dns_server                = var.enable_vpc_dns_server
+  excluded_advertised_spoke_routes     = var.excluded_advertised_spoke_routes
+  filtered_spoke_vpc_routes            = var.filtered_spoke_vpc_routes
+  gw_name                              = var.gw_name
+  gw_size                              = var.gw_size
+  ha_eip                               = var.ha_eip
+  ha_gw_size                           = var.ha_gw_size
+  ha_insane_mode_az                    = var.ha_insane_mode_az
+  ha_oob_availability_zone             = var.ha_oob_availability_zone
+  ha_oob_management_subnet             = var.ha_oob_management_subnet
+  ha_subnet                            = var.ha_subnet
+  ha_zone                              = var.ha_zone
+  insane_mode                          = var.insane_mode
+  insane_mode_az                       = var.insane_mode_az
+  lan_private_subnet                   = var.lan_private_subnet
+  lan_vpc_id                           = var.lan_vpc_id
+  learned_cidrs_approval_mode          = var.learned_cidrs_approval_mode
+  local_as_number                      = var.local_as_number
+  monitor_exclude_list                 = var.monitor_exclude_list
+  oob_availability_zone                = var.oob_availability_zone
+  oob_management_subnet                = var.oob_management_subnet
+  prepend_as_path                      = var.prepend_as_path
+  single_az_ha                         = var.single_az_ha
+  single_ip_snat                       = var.single_ip_snat
+  subnet                               = var.subnet
+  tag_list                             = var.tag_list
+  vpc_id                               = var.vpc_id
+  vpc_reg                              = var.vpc_reg
+  zone                                 = var.zone
 }
 ```
 
@@ -437,6 +572,11 @@ output "ha_gw_name" {
   value       = aviatrix_transit_gateway.this.ha_gw_name
 }
 
+output "ha_lan_interface_cidr" {
+  description = "returns a string"
+  value       = aviatrix_transit_gateway.this.ha_lan_interface_cidr
+}
+
 output "ha_private_ip" {
   description = "returns a string"
   value       = aviatrix_transit_gateway.this.ha_private_ip
@@ -450,6 +590,11 @@ output "id" {
 output "lan_interface_cidr" {
   description = "returns a string"
   value       = aviatrix_transit_gateway.this.lan_interface_cidr
+}
+
+output "local_as_number" {
+  description = "returns a string"
+  value       = aviatrix_transit_gateway.this.local_as_number
 }
 
 output "private_ip" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -105,6 +105,7 @@ module "fortios_voip_profile" {
     max_idle_dialogs                     = null
     max_line_length                      = null
     message_rate                         = null
+    nat_port_range                       = null
     nat_trace                            = null
     no_sdp_fixup                         = null
     notify_rate                          = null
@@ -240,6 +241,7 @@ variable "sip" {
       max_idle_dialogs                     = number
       max_line_length                      = number
       message_rate                         = number
+      nat_port_range                       = string
       nat_trace                            = string
       no_sdp_fixup                         = string
       notify_rate                          = number
@@ -366,6 +368,7 @@ resource "fortios_voip_profile" "this" {
       max_idle_dialogs                     = sip.value["max_idle_dialogs"]
       max_line_length                      = sip.value["max_line_length"]
       message_rate                         = sip.value["message_rate"]
+      nat_port_range                       = sip.value["nat_port_range"]
       nat_trace                            = sip.value["nat_trace"]
       no_sdp_fixup                         = sip.value["no_sdp_fixup"]
       notify_rate                          = sip.value["notify_rate"]

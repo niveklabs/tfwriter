@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_firewall_vip6" {
   color = null
   # comment - (optional) is a type of string
   comment = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # extip - (required) is a type of string
   extip = null
   # extport - (optional) is a type of string
@@ -57,6 +59,8 @@ module "fortios_firewall_vip6" {
   http_ip_header_name = null
   # http_multiplex - (optional) is a type of string
   http_multiplex = null
+  # http_redirect - (optional) is a type of string
+  http_redirect = null
   # https_cookie_secure - (optional) is a type of string
   https_cookie_secure = null
   # ldb_method - (optional) is a type of string
@@ -69,6 +73,8 @@ module "fortios_firewall_vip6" {
   max_embryonic_connections = null
   # name - (optional) is a type of string
   name = null
+  # nat_source_vip - (optional) is a type of string
+  nat_source_vip = null
   # outlook_web_access - (optional) is a type of string
   outlook_web_access = null
   # persistence - (optional) is a type of string
@@ -85,6 +91,8 @@ module "fortios_firewall_vip6" {
   ssl_certificate = null
   # ssl_client_fallback - (optional) is a type of string
   ssl_client_fallback = null
+  # ssl_client_rekey_count - (optional) is a type of number
+  ssl_client_rekey_count = null
   # ssl_client_renegotiation - (optional) is a type of string
   ssl_client_renegotiation = null
   # ssl_client_session_state_max - (optional) is a type of number
@@ -207,6 +215,12 @@ variable "comment" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "extip" {
   description = "(required)"
   type        = string
@@ -278,6 +292,12 @@ variable "http_multiplex" {
   default     = null
 }
 
+variable "http_redirect" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "https_cookie_secure" {
   description = "(optional)"
   type        = string
@@ -308,6 +328,12 @@ variable "max_embryonic_connections" {
 }
 
 variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "nat_source_vip" {
   description = "(optional)"
   type        = string
   default     = null
@@ -358,6 +384,12 @@ variable "ssl_certificate" {
 variable "ssl_client_fallback" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "ssl_client_rekey_count" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -621,6 +653,7 @@ resource "fortios_firewall_vip6" "this" {
   arp_reply                        = var.arp_reply
   color                            = var.color
   comment                          = var.comment
+  dynamic_sort_subtable            = var.dynamic_sort_subtable
   extip                            = var.extip
   extport                          = var.extport
   fosid                            = var.fosid
@@ -633,12 +666,14 @@ resource "fortios_firewall_vip6" "this" {
   http_ip_header                   = var.http_ip_header
   http_ip_header_name              = var.http_ip_header_name
   http_multiplex                   = var.http_multiplex
+  http_redirect                    = var.http_redirect
   https_cookie_secure              = var.https_cookie_secure
   ldb_method                       = var.ldb_method
   mappedip                         = var.mappedip
   mappedport                       = var.mappedport
   max_embryonic_connections        = var.max_embryonic_connections
   name                             = var.name
+  nat_source_vip                   = var.nat_source_vip
   outlook_web_access               = var.outlook_web_access
   persistence                      = var.persistence
   portforward                      = var.portforward
@@ -647,6 +682,7 @@ resource "fortios_firewall_vip6" "this" {
   ssl_algorithm                    = var.ssl_algorithm
   ssl_certificate                  = var.ssl_certificate
   ssl_client_fallback              = var.ssl_client_fallback
+  ssl_client_rekey_count           = var.ssl_client_rekey_count
   ssl_client_renegotiation         = var.ssl_client_renegotiation
   ssl_client_session_state_max     = var.ssl_client_session_state_max
   ssl_client_session_state_timeout = var.ssl_client_session_state_timeout
@@ -801,6 +837,11 @@ output "http_multiplex" {
   value       = fortios_firewall_vip6.this.http_multiplex
 }
 
+output "http_redirect" {
+  description = "returns a string"
+  value       = fortios_firewall_vip6.this.http_redirect
+}
+
 output "https_cookie_secure" {
   description = "returns a string"
   value       = fortios_firewall_vip6.this.https_cookie_secure
@@ -829,6 +870,11 @@ output "max_embryonic_connections" {
 output "name" {
   description = "returns a string"
   value       = fortios_firewall_vip6.this.name
+}
+
+output "nat_source_vip" {
+  description = "returns a string"
+  value       = fortios_firewall_vip6.this.nat_source_vip
 }
 
 output "outlook_web_access" {
@@ -869,6 +915,11 @@ output "ssl_certificate" {
 output "ssl_client_fallback" {
   description = "returns a string"
   value       = fortios_firewall_vip6.this.ssl_client_fallback
+}
+
+output "ssl_client_rekey_count" {
+  description = "returns a number"
+  value       = fortios_firewall_vip6.this.ssl_client_rekey_count
 }
 
 output "ssl_client_renegotiation" {

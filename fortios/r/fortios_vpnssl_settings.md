@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -53,12 +53,24 @@ module "fortios_vpnssl_settings" {
   dns_suffix = null
   # dtls_hello_timeout - (optional) is a type of number
   dtls_hello_timeout = null
+  # dtls_max_proto_ver - (optional) is a type of string
+  dtls_max_proto_ver = null
+  # dtls_min_proto_ver - (optional) is a type of string
+  dtls_min_proto_ver = null
   # dtls_tunnel - (optional) is a type of string
   dtls_tunnel = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # encode_2f_sequence - (optional) is a type of string
+  encode_2f_sequence = null
+  # encrypt_and_store_password - (optional) is a type of string
+  encrypt_and_store_password = null
   # force_two_factor_auth - (optional) is a type of string
   force_two_factor_auth = null
   # header_x_forwarded_for - (optional) is a type of string
   header_x_forwarded_for = null
+  # hsts_include_subdomains - (optional) is a type of string
+  hsts_include_subdomains = null
   # http_compression - (optional) is a type of string
   http_compression = null
   # http_only_cookie - (optional) is a type of string
@@ -115,6 +127,8 @@ module "fortios_vpnssl_settings" {
   tlsv1_2 = null
   # tlsv1_3 - (optional) is a type of string
   tlsv1_3 = null
+  # transform_backward_slashes - (optional) is a type of string
+  transform_backward_slashes = null
   # tunnel_connect_without_reauth - (optional) is a type of string
   tunnel_connect_without_reauth = null
   # tunnel_user_session_timeout - (optional) is a type of number
@@ -123,6 +137,8 @@ module "fortios_vpnssl_settings" {
   unsafe_legacy_renegotiation = null
   # url_obscuration - (optional) is a type of string
   url_obscuration = null
+  # user_peer - (optional) is a type of string
+  user_peer = null
   # wins_server1 - (optional) is a type of string
   wins_server1 = null
   # wins_server2 - (optional) is a type of string
@@ -151,6 +167,7 @@ module "fortios_vpnssl_settings" {
     source_interface = [{
       name = null
     }]
+    user_peer = null
     users = [{
       name = null
     }]
@@ -261,7 +278,37 @@ variable "dtls_hello_timeout" {
   default     = null
 }
 
+variable "dtls_max_proto_ver" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dtls_min_proto_ver" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "dtls_tunnel" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "encode_2f_sequence" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "encrypt_and_store_password" {
   description = "(optional)"
   type        = string
   default     = null
@@ -274,6 +321,12 @@ variable "force_two_factor_auth" {
 }
 
 variable "header_x_forwarded_for" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "hsts_include_subdomains" {
   description = "(optional)"
   type        = string
   default     = null
@@ -447,6 +500,12 @@ variable "tlsv1_3" {
   default     = null
 }
 
+variable "transform_backward_slashes" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "tunnel_connect_without_reauth" {
   description = "(optional)"
   type        = string
@@ -466,6 +525,12 @@ variable "unsafe_legacy_renegotiation" {
 }
 
 variable "url_obscuration" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "user_peer" {
   description = "(optional)"
   type        = string
   default     = null
@@ -521,6 +586,7 @@ variable "authentication_rule" {
           name = string
         }
       ))
+      user_peer = string
       users = list(object(
         {
           name = string
@@ -601,9 +667,15 @@ resource "fortios_vpnssl_settings" "this" {
   dns_server2                   = var.dns_server2
   dns_suffix                    = var.dns_suffix
   dtls_hello_timeout            = var.dtls_hello_timeout
+  dtls_max_proto_ver            = var.dtls_max_proto_ver
+  dtls_min_proto_ver            = var.dtls_min_proto_ver
   dtls_tunnel                   = var.dtls_tunnel
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
+  encode_2f_sequence            = var.encode_2f_sequence
+  encrypt_and_store_password    = var.encrypt_and_store_password
   force_two_factor_auth         = var.force_two_factor_auth
   header_x_forwarded_for        = var.header_x_forwarded_for
+  hsts_include_subdomains       = var.hsts_include_subdomains
   http_compression              = var.http_compression
   http_only_cookie              = var.http_only_cookie
   http_request_body_timeout     = var.http_request_body_timeout
@@ -632,10 +704,12 @@ resource "fortios_vpnssl_settings" "this" {
   tlsv1_1                       = var.tlsv1_1
   tlsv1_2                       = var.tlsv1_2
   tlsv1_3                       = var.tlsv1_3
+  transform_backward_slashes    = var.transform_backward_slashes
   tunnel_connect_without_reauth = var.tunnel_connect_without_reauth
   tunnel_user_session_timeout   = var.tunnel_user_session_timeout
   unsafe_legacy_renegotiation   = var.unsafe_legacy_renegotiation
   url_obscuration               = var.url_obscuration
+  user_peer                     = var.user_peer
   wins_server1                  = var.wins_server1
   wins_server2                  = var.wins_server2
   x_content_type_options        = var.x_content_type_options
@@ -651,6 +725,7 @@ resource "fortios_vpnssl_settings" "this" {
       realm                  = authentication_rule.value["realm"]
       source_address6_negate = authentication_rule.value["source_address6_negate"]
       source_address_negate  = authentication_rule.value["source_address_negate"]
+      user_peer              = authentication_rule.value["user_peer"]
 
       dynamic "groups" {
         for_each = authentication_rule.value.groups
@@ -793,9 +868,29 @@ output "dtls_hello_timeout" {
   value       = fortios_vpnssl_settings.this.dtls_hello_timeout
 }
 
+output "dtls_max_proto_ver" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.dtls_max_proto_ver
+}
+
+output "dtls_min_proto_ver" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.dtls_min_proto_ver
+}
+
 output "dtls_tunnel" {
   description = "returns a string"
   value       = fortios_vpnssl_settings.this.dtls_tunnel
+}
+
+output "encode_2f_sequence" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.encode_2f_sequence
+}
+
+output "encrypt_and_store_password" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.encrypt_and_store_password
 }
 
 output "force_two_factor_auth" {
@@ -806,6 +901,11 @@ output "force_two_factor_auth" {
 output "header_x_forwarded_for" {
   description = "returns a string"
   value       = fortios_vpnssl_settings.this.header_x_forwarded_for
+}
+
+output "hsts_include_subdomains" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.hsts_include_subdomains
 }
 
 output "http_compression" {
@@ -953,6 +1053,11 @@ output "tlsv1_3" {
   value       = fortios_vpnssl_settings.this.tlsv1_3
 }
 
+output "transform_backward_slashes" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.transform_backward_slashes
+}
+
 output "tunnel_connect_without_reauth" {
   description = "returns a string"
   value       = fortios_vpnssl_settings.this.tunnel_connect_without_reauth
@@ -971,6 +1076,11 @@ output "unsafe_legacy_renegotiation" {
 output "url_obscuration" {
   description = "returns a string"
   value       = fortios_vpnssl_settings.this.url_obscuration
+}
+
+output "user_peer" {
+  description = "returns a string"
+  value       = fortios_vpnssl_settings.this.user_peer
 }
 
 output "wins_server1" {

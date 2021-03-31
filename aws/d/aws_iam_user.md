@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_iam_user" {
   source = "./modules/aws/d/aws_iam_user"
 
+  # tags - (optional) is a type of map of string
+  tags = {}
   # user_name - (required) is a type of string
   user_name = null
 }
@@ -37,6 +39,12 @@ module "aws_iam_user" {
 ### Variables
 
 ```terraform
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
 variable "user_name" {
   description = "(required)"
   type        = string
@@ -49,6 +57,7 @@ variable "user_name" {
 
 ```terraform
 data "aws_iam_user" "this" {
+  tags      = var.tags
   user_name = var.user_name
 }
 ```
@@ -76,6 +85,11 @@ output "path" {
 output "permissions_boundary" {
   description = "returns a string"
   value       = data.aws_iam_user.this.permissions_boundary
+}
+
+output "tags" {
+  description = "returns a map of string"
+  value       = data.aws_iam_user.this.tags
 }
 
 output "user_id" {

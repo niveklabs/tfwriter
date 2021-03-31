@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -48,36 +48,36 @@ module "datadog_integration_aws" {
 
 ```terraform
 variable "account_id" {
-  description = "(required)"
+  description = "(required) - Your AWS Account ID without dashes."
   type        = string
 }
 
 variable "account_specific_namespace_rules" {
-  description = "(optional)"
+  description = "(optional) - Enables or disables metric collection for specific AWS namespaces for this AWS account only. A list of namespaces can be found at the [available namespace rules API endpoint](https://docs.datadoghq.com/api/v1/aws-integration/#list-namespace-rules)."
   type        = map(bool)
   default     = null
 }
 
 variable "excluded_regions" {
-  description = "(optional)"
+  description = "(optional) - An array of AWS regions to exclude from metrics collection."
   type        = list(string)
   default     = null
 }
 
 variable "filter_tags" {
-  description = "(optional)"
+  description = "(optional) - Array of EC2 tags (in the form `key:value`) defines a filter that Datadog uses when collecting metrics from EC2. Wildcards, such as `?` (for single characters) and `*` (for multiple characters) can also be used. Only hosts that match one of the defined tags will be imported into Datadog. The rest will be ignored. Host matching a given tag can also be excluded by adding `!` before the tag. e.x. `env:production,instance-type:c1.*,!region:us-east-1`."
   type        = list(string)
   default     = null
 }
 
 variable "host_tags" {
-  description = "(optional)"
+  description = "(optional) - Array of tags (in the form `key:value`) to add to all hosts and metrics reporting through this integration."
   type        = list(string)
   default     = null
 }
 
 variable "role_name" {
-  description = "(required)"
+  description = "(required) - Your Datadog role delegation name."
   type        = string
 }
 ```

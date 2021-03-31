@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "fortios_switchcontroller_8021Xsettings" {
   max_reauth_attempt = null
   # reauth_period - (optional) is a type of number
   reauth_period = null
+  # tx_period - (optional) is a type of number
+  tx_period = null
 }
 ```
 
@@ -58,6 +60,12 @@ variable "reauth_period" {
   type        = number
   default     = null
 }
+
+variable "tx_period" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
 ```
 
 [top](#index)
@@ -69,6 +77,7 @@ resource "fortios_switchcontroller_8021Xsettings" "this" {
   link_down_auth     = var.link_down_auth
   max_reauth_attempt = var.max_reauth_attempt
   reauth_period      = var.reauth_period
+  tx_period          = var.tx_period
 }
 ```
 
@@ -95,6 +104,11 @@ output "max_reauth_attempt" {
 output "reauth_period" {
   description = "returns a number"
   value       = fortios_switchcontroller_8021Xsettings.this.reauth_period
+}
+
+output "tx_period" {
+  description = "returns a number"
+  value       = fortios_switchcontroller_8021Xsettings.this.tx_period
 }
 
 output "this" {

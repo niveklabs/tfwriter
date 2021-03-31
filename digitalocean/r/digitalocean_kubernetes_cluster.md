@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    digitalocean = ">= 2.3.0"
+    digitalocean = ">= 2.7.0"
   }
 }
 ```
@@ -61,6 +61,11 @@ module "digitalocean_kubernetes_cluster" {
     }]
     size = null
     tags = []
+    taint = [{
+      effect = null
+      key    = null
+      value  = null
+    }]
   }]
 }
 ```
@@ -133,6 +138,13 @@ variable "node_pool" {
       ))
       size = string
       tags = set(string)
+      taint = set(object(
+        {
+          effect = string
+          key    = string
+          value  = string
+        }
+      ))
     }
   ))
 }
@@ -163,6 +175,16 @@ resource "digitalocean_kubernetes_cluster" "this" {
       node_count = node_pool.value["node_count"]
       size       = node_pool.value["size"]
       tags       = node_pool.value["tags"]
+
+      dynamic "taint" {
+        for_each = node_pool.value.taint
+        content {
+          effect = taint.value["effect"]
+          key    = taint.value["key"]
+          value  = taint.value["value"]
+        }
+      }
+
     }
   }
 

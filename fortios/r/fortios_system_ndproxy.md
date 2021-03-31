@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_ndproxy" {
   source = "./modules/fortios/r/fortios_system_ndproxy"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # status - (optional) is a type of string
   status = null
 
@@ -41,6 +43,12 @@ module "fortios_system_ndproxy" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "status" {
   description = "(optional)"
   type        = string
@@ -64,7 +72,8 @@ variable "member" {
 
 ```terraform
 resource "fortios_system_ndproxy" "this" {
-  status = var.status
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  status                = var.status
 
   dynamic "member" {
     for_each = var.member

@@ -12,12 +12,20 @@
 
 ```terraform
 provider "grafana" {
-  version = "1.8.1"
+  version = "1.9.0"
 
   # auth - (required) is a type of string
   auth = null
+  # ca_cert - (optional) is a type of string
+  ca_cert = null
+  # insecure_skip_verify - (optional) is a type of bool
+  insecure_skip_verify = null
   # org_id - (optional) is a type of number
   org_id = null
+  # tls_cert - (optional) is a type of string
+  tls_cert = null
+  # tls_key - (optional) is a type of string
+  tls_key = null
   # url - (required) is a type of string
   url = null
 }

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -64,7 +64,7 @@ variable "tags" {
 }
 
 variable "notification" {
-  description = "nested block: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       events    = set(string)

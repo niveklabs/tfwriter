@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    null = ">= 3.0.0"
+    null = ">= 3.1.0"
   }
 }
 ```

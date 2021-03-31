@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -49,25 +49,25 @@ module "datadog_integration_pagerduty" {
 
 ```terraform
 variable "api_token" {
-  description = "(optional)"
+  description = "(optional) - Your PagerDuty API token."
   type        = string
   default     = null
 }
 
 variable "individual_services" {
-  description = "(optional)"
+  description = "(optional) - Boolean to specify whether or not individual service objects specified by [datadog_integration_pagerduty_service_object](https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/integration_pagerduty_service_object) resource are to be used. Mutually exclusive with `services` key."
   type        = bool
   default     = null
 }
 
 variable "schedules" {
-  description = "(optional)"
+  description = "(optional) - Array of your schedule URLs."
   type        = list(string)
   default     = null
 }
 
 variable "subdomain" {
-  description = "(required)"
+  description = "(required) - Your PagerDuty account’s personalized subdomain name."
   type        = string
 }
 

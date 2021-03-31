@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -59,6 +59,11 @@ module "aws_apigatewayv2_integration" {
   template_selection_expression = null
   # timeout_milliseconds - (optional) is a type of number
   timeout_milliseconds = null
+
+  response_parameters = [{
+    mappings    = {}
+    status_code = null
+  }]
 
   tls_config = [{
     server_name_to_verify = null
@@ -165,6 +170,17 @@ variable "timeout_milliseconds" {
   default     = null
 }
 
+variable "response_parameters" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      mappings    = map(string)
+      status_code = string
+    }
+  ))
+  default = []
+}
+
 variable "tls_config" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -198,6 +214,14 @@ resource "aws_apigatewayv2_integration" "this" {
   request_templates             = var.request_templates
   template_selection_expression = var.template_selection_expression
   timeout_milliseconds          = var.timeout_milliseconds
+
+  dynamic "response_parameters" {
+    for_each = var.response_parameters
+    content {
+      mappings    = response_parameters.value["mappings"]
+      status_code = response_parameters.value["status_code"]
+    }
+  }
 
   dynamic "tls_config" {
     for_each = var.tls_config

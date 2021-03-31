@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aci = ">= 0.5.3"
+    aci = ">= 0.5.4"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -118,9 +118,19 @@ output "key_version_id" {
   value       = oci_kms_key_version.this.key_version_id
 }
 
+output "public_key" {
+  description = "returns a string"
+  value       = oci_kms_key_version.this.public_key
+}
+
 output "restored_from_key_id" {
   description = "returns a string"
   value       = oci_kms_key_version.this.restored_from_key_id
+}
+
+output "restored_from_key_version_id" {
+  description = "returns a string"
+  value       = oci_kms_key_version.this.restored_from_key_version_id
 }
 
 output "state" {

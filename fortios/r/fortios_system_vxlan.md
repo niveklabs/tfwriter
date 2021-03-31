@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_system_vxlan" {
 
   # dstport - (optional) is a type of number
   dstport = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # interface - (required) is a type of string
   interface = null
   # ip_version - (required) is a type of string
@@ -58,6 +60,12 @@ module "fortios_system_vxlan" {
 variable "dstport" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -115,12 +123,13 @@ variable "remote_ip6" {
 
 ```terraform
 resource "fortios_system_vxlan" "this" {
-  dstport       = var.dstport
-  interface     = var.interface
-  ip_version    = var.ip_version
-  multicast_ttl = var.multicast_ttl
-  name          = var.name
-  vni           = var.vni
+  dstport               = var.dstport
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  interface             = var.interface
+  ip_version            = var.ip_version
+  multicast_ttl         = var.multicast_ttl
+  name                  = var.name
+  vni                   = var.vni
 
   dynamic "remote_ip" {
     for_each = var.remote_ip

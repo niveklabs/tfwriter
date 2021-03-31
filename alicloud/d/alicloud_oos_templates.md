@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -184,6 +184,11 @@ output "id" {
 output "ids" {
   description = "returns a list of string"
   value       = data.alicloud_oos_templates.this.ids
+}
+
+output "names" {
+  description = "returns a list of string"
+  value       = data.alicloud_oos_templates.this.names
 }
 
 output "templates" {

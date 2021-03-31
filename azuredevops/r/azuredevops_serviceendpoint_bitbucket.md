@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -39,6 +39,13 @@ module "azuredevops_serviceendpoint_bitbucket" {
   service_endpoint_name = null
   # username - (required) is a type of string
   username = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
+  }]
 }
 ```
 
@@ -78,6 +85,19 @@ variable "username" {
   description = "(required) - The bitbucket username which should be used."
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -92,6 +112,17 @@ resource "azuredevops_serviceendpoint_bitbucket" "this" {
   project_id            = var.project_id
   service_endpoint_name = var.service_endpoint_name
   username              = var.username
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 

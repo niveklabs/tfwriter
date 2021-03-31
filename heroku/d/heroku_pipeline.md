@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    heroku = ">= 3.2.0"
+    heroku = ">= 4.1.0"
   }
 }
 ```

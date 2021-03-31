@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "fortios_firewallschedule_group" {
 
   # color - (optional) is a type of number
   color = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (required) is a type of string
   name = null
 
@@ -46,6 +48,12 @@ module "fortios_firewallschedule_group" {
 variable "color" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -70,8 +78,9 @@ variable "member" {
 
 ```terraform
 resource "fortios_firewallschedule_group" "this" {
-  color = var.color
-  name  = var.name
+  color                 = var.color
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "member" {
     for_each = var.member

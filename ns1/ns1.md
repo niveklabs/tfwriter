@@ -12,7 +12,7 @@
 
 ```terraform
 provider "ns1" {
-  version = "1.9.0"
+  version = "1.9.4"
 
   # apikey - (optional) is a type of string
   apikey = null

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -33,7 +33,7 @@ module "aws_glue_partition" {
   database_name = null
   # parameters - (optional) is a type of map of string
   parameters = {}
-  # partition_values - (required) is a type of set of string
+  # partition_values - (required) is a type of list of string
   partition_values = []
   # table_name - (required) is a type of string
   table_name = null
@@ -94,7 +94,7 @@ variable "parameters" {
 
 variable "partition_values" {
   description = "(required)"
-  type        = set(string)
+  type        = list(string)
 }
 
 variable "table_name" {

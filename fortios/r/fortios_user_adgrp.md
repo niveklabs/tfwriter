@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,10 @@ terraform {
 module "fortios_user_adgrp" {
   source = "./modules/fortios/r/fortios_user_adgrp"
 
+  # connector_source - (optional) is a type of string
+  connector_source = null
+  # fosid - (optional) is a type of number
+  fosid = null
   # name - (required) is a type of string
   name = null
   # server_name - (optional) is a type of string
@@ -39,6 +43,18 @@ module "fortios_user_adgrp" {
 ### Variables
 
 ```terraform
+variable "connector_source" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fosid" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -57,8 +73,10 @@ variable "server_name" {
 
 ```terraform
 resource "fortios_user_adgrp" "this" {
-  name        = var.name
-  server_name = var.server_name
+  connector_source = var.connector_source
+  fosid            = var.fosid
+  name             = var.name
+  server_name      = var.server_name
 }
 ```
 
@@ -67,6 +85,16 @@ resource "fortios_user_adgrp" "this" {
 ### Outputs
 
 ```terraform
+output "connector_source" {
+  description = "returns a string"
+  value       = fortios_user_adgrp.this.connector_source
+}
+
+output "fosid" {
+  description = "returns a number"
+  value       = fortios_user_adgrp.this.fosid
+}
+
 output "id" {
   description = "returns a string"
   value       = fortios_user_adgrp.this.id

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "azuread_application" {
 
   # application_id - (optional) is a type of string
   application_id = null
+  # display_name - (optional) is a type of string
+  display_name = null
   # name - (optional) is a type of string
   name = null
   # object_id - (optional) is a type of string
@@ -68,6 +70,12 @@ module "azuread_application" {
 
 ```terraform
 variable "application_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "display_name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -135,6 +143,7 @@ variable "optional_claims" {
 ```terraform
 data "azuread_application" "this" {
   application_id = var.application_id
+  display_name   = var.display_name
   name           = var.name
   object_id      = var.object_id
 
@@ -192,6 +201,11 @@ output "application_id" {
 output "available_to_other_tenants" {
   description = "returns a bool"
   value       = data.azuread_application.this.available_to_other_tenants
+}
+
+output "display_name" {
+  description = "returns a string"
+  value       = data.azuread_application.this.display_name
 }
 
 output "group_membership_claims" {

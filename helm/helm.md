@@ -12,7 +12,7 @@
 
 ```terraform
 provider "helm" {
-  version = "2.0.1"
+  version = "2.0.3"
 
   # debug - (optional) is a type of bool
   debug = null

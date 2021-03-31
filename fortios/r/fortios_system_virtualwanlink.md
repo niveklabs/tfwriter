@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,10 +27,18 @@ terraform {
 module "fortios_system_virtualwanlink" {
   source = "./modules/fortios/r/fortios_system_virtualwanlink"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fail_detect - (optional) is a type of string
   fail_detect = null
   # load_balance_mode - (optional) is a type of string
   load_balance_mode = null
+  # neighbor_hold_boot_time - (optional) is a type of number
+  neighbor_hold_boot_time = null
+  # neighbor_hold_down - (optional) is a type of string
+  neighbor_hold_down = null
+  # neighbor_hold_down_time - (optional) is a type of number
+  neighbor_hold_down_time = null
   # status - (optional) is a type of string
   status = null
 
@@ -39,12 +47,15 @@ module "fortios_system_virtualwanlink" {
   }]
 
   health_check = [{
-    addr_mode  = null
-    failtime   = null
-    http_agent = null
-    http_get   = null
-    http_match = null
-    interval   = null
+    addr_mode          = null
+    diffservcode       = null
+    dns_request_domain = null
+    failtime           = null
+    ha_priority        = null
+    http_agent         = null
+    http_get           = null
+    http_match         = null
+    interval           = null
     members = [{
       seq_num = null
     }]
@@ -52,7 +63,9 @@ module "fortios_system_virtualwanlink" {
     packet_size   = null
     password      = null
     port          = null
+    probe_count   = null
     probe_packets = null
+    probe_timeout = null
     protocol      = null
     recoverytime  = null
     security_mode = null
@@ -66,6 +79,7 @@ module "fortios_system_virtualwanlink" {
     }]
     sla_fail_log_period          = null
     sla_pass_log_period          = null
+    system_dns                   = null
     threshold_alert_jitter       = null
     threshold_alert_latency      = null
     threshold_alert_packetloss   = null
@@ -93,9 +107,18 @@ module "fortios_system_virtualwanlink" {
     weight                      = null
   }]
 
+  neighbor = [{
+    health_check = null
+    ip           = null
+    member       = null
+    role         = null
+    sla_id       = null
+  }]
+
   service = [{
     addr_mode        = null
     bandwidth_weight = null
+    default          = null
     dscp_forward     = null
     dscp_forward_tag = null
     dscp_reverse     = null
@@ -118,7 +141,14 @@ module "fortios_system_virtualwanlink" {
     input_device = [{
       name = null
     }]
-    internet_service = null
+    input_device_negate = null
+    internet_service    = null
+    internet_service_app_ctrl = [{
+      id = null
+    }]
+    internet_service_app_ctrl_group = [{
+      name = null
+    }]
     internet_service_ctrl = [{
       id = null
     }]
@@ -137,6 +167,9 @@ module "fortios_system_virtualwanlink" {
     internet_service_id = [{
       id = null
     }]
+    internet_service_name = [{
+      name = null
+    }]
     jitter_weight       = null
     latency_weight      = null
     link_cost_factor    = null
@@ -150,25 +183,32 @@ module "fortios_system_virtualwanlink" {
     }]
     protocol     = null
     quality_link = null
+    role         = null
     route_tag    = null
     sla = [{
       health_check = null
       id           = null
     }]
+    sla_compare_method = null
     src = [{
       name = null
     }]
     src6 = [{
       name = null
     }]
-    src_negate = null
-    start_port = null
-    status     = null
-    tos        = null
-    tos_mask   = null
+    src_negate        = null
+    standalone_action = null
+    start_port        = null
+    status            = null
+    tos               = null
+    tos_mask          = null
     users = [{
       name = null
     }]
+  }]
+
+  zone = [{
+    name = null
   }]
 }
 ```
@@ -178,6 +218,12 @@ module "fortios_system_virtualwanlink" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fail_detect" {
   description = "(optional)"
   type        = string
@@ -187,6 +233,24 @@ variable "fail_detect" {
 variable "load_balance_mode" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "neighbor_hold_boot_time" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "neighbor_hold_down" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "neighbor_hold_down_time" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -210,12 +274,15 @@ variable "health_check" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
-      addr_mode  = string
-      failtime   = number
-      http_agent = string
-      http_get   = string
-      http_match = string
-      interval   = number
+      addr_mode          = string
+      diffservcode       = string
+      dns_request_domain = string
+      failtime           = number
+      ha_priority        = number
+      http_agent         = string
+      http_get           = string
+      http_match         = string
+      interval           = number
       members = list(object(
         {
           seq_num = number
@@ -225,7 +292,9 @@ variable "health_check" {
       packet_size   = number
       password      = string
       port          = number
+      probe_count   = number
       probe_packets = string
+      probe_timeout = number
       protocol      = string
       recoverytime  = number
       security_mode = string
@@ -241,6 +310,7 @@ variable "health_check" {
       ))
       sla_fail_log_period          = number
       sla_pass_log_period          = number
+      system_dns                   = string
       threshold_alert_jitter       = number
       threshold_alert_latency      = number
       threshold_alert_packetloss   = number
@@ -277,12 +347,27 @@ variable "members" {
   default = []
 }
 
+variable "neighbor" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      health_check = string
+      ip           = string
+      member       = number
+      role         = string
+      sla_id       = number
+    }
+  ))
+  default = []
+}
+
 variable "service" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       addr_mode        = string
       bandwidth_weight = number
+      default          = string
       dscp_forward     = string
       dscp_forward_tag = string
       dscp_reverse     = string
@@ -313,7 +398,18 @@ variable "service" {
           name = string
         }
       ))
-      internet_service = string
+      input_device_negate = string
+      internet_service    = string
+      internet_service_app_ctrl = list(object(
+        {
+          id = number
+        }
+      ))
+      internet_service_app_ctrl_group = list(object(
+        {
+          name = string
+        }
+      ))
       internet_service_ctrl = list(object(
         {
           id = number
@@ -344,6 +440,11 @@ variable "service" {
           id = number
         }
       ))
+      internet_service_name = list(object(
+        {
+          name = string
+        }
+      ))
       jitter_weight       = number
       latency_weight      = number
       link_cost_factor    = string
@@ -359,6 +460,7 @@ variable "service" {
       ))
       protocol     = number
       quality_link = number
+      role         = string
       route_tag    = number
       sla = list(object(
         {
@@ -366,6 +468,7 @@ variable "service" {
           id           = number
         }
       ))
+      sla_compare_method = string
       src = list(object(
         {
           name = string
@@ -376,16 +479,27 @@ variable "service" {
           name = string
         }
       ))
-      src_negate = string
-      start_port = number
-      status     = string
-      tos        = string
-      tos_mask   = string
+      src_negate        = string
+      standalone_action = string
+      start_port        = number
+      status            = string
+      tos               = string
+      tos_mask          = string
       users = list(object(
         {
           name = string
         }
       ))
+    }
+  ))
+  default = []
+}
+
+variable "zone" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
     }
   ))
   default = []
@@ -398,9 +512,13 @@ variable "service" {
 
 ```terraform
 resource "fortios_system_virtualwanlink" "this" {
-  fail_detect       = var.fail_detect
-  load_balance_mode = var.load_balance_mode
-  status            = var.status
+  dynamic_sort_subtable   = var.dynamic_sort_subtable
+  fail_detect             = var.fail_detect
+  load_balance_mode       = var.load_balance_mode
+  neighbor_hold_boot_time = var.neighbor_hold_boot_time
+  neighbor_hold_down      = var.neighbor_hold_down
+  neighbor_hold_down_time = var.neighbor_hold_down_time
+  status                  = var.status
 
   dynamic "fail_alert_interfaces" {
     for_each = var.fail_alert_interfaces
@@ -413,7 +531,10 @@ resource "fortios_system_virtualwanlink" "this" {
     for_each = var.health_check
     content {
       addr_mode                    = health_check.value["addr_mode"]
+      diffservcode                 = health_check.value["diffservcode"]
+      dns_request_domain           = health_check.value["dns_request_domain"]
       failtime                     = health_check.value["failtime"]
+      ha_priority                  = health_check.value["ha_priority"]
       http_agent                   = health_check.value["http_agent"]
       http_get                     = health_check.value["http_get"]
       http_match                   = health_check.value["http_match"]
@@ -422,13 +543,16 @@ resource "fortios_system_virtualwanlink" "this" {
       packet_size                  = health_check.value["packet_size"]
       password                     = health_check.value["password"]
       port                         = health_check.value["port"]
+      probe_count                  = health_check.value["probe_count"]
       probe_packets                = health_check.value["probe_packets"]
+      probe_timeout                = health_check.value["probe_timeout"]
       protocol                     = health_check.value["protocol"]
       recoverytime                 = health_check.value["recoverytime"]
       security_mode                = health_check.value["security_mode"]
       server                       = health_check.value["server"]
       sla_fail_log_period          = health_check.value["sla_fail_log_period"]
       sla_pass_log_period          = health_check.value["sla_pass_log_period"]
+      system_dns                   = health_check.value["system_dns"]
       threshold_alert_jitter       = health_check.value["threshold_alert_jitter"]
       threshold_alert_latency      = health_check.value["threshold_alert_latency"]
       threshold_alert_packetloss   = health_check.value["threshold_alert_packetloss"]
@@ -479,11 +603,23 @@ resource "fortios_system_virtualwanlink" "this" {
     }
   }
 
+  dynamic "neighbor" {
+    for_each = var.neighbor
+    content {
+      health_check = neighbor.value["health_check"]
+      ip           = neighbor.value["ip"]
+      member       = neighbor.value["member"]
+      role         = neighbor.value["role"]
+      sla_id       = neighbor.value["sla_id"]
+    }
+  }
+
   dynamic "service" {
     for_each = var.service
     content {
       addr_mode           = service.value["addr_mode"]
       bandwidth_weight    = service.value["bandwidth_weight"]
+      default             = service.value["default"]
       dscp_forward        = service.value["dscp_forward"]
       dscp_forward_tag    = service.value["dscp_forward_tag"]
       dscp_reverse        = service.value["dscp_reverse"]
@@ -494,6 +630,7 @@ resource "fortios_system_virtualwanlink" "this" {
       health_check        = service.value["health_check"]
       hold_down_time      = service.value["hold_down_time"]
       id                  = service.value["id"]
+      input_device_negate = service.value["input_device_negate"]
       internet_service    = service.value["internet_service"]
       jitter_weight       = service.value["jitter_weight"]
       latency_weight      = service.value["latency_weight"]
@@ -505,8 +642,11 @@ resource "fortios_system_virtualwanlink" "this" {
       packet_loss_weight  = service.value["packet_loss_weight"]
       protocol            = service.value["protocol"]
       quality_link        = service.value["quality_link"]
+      role                = service.value["role"]
       route_tag           = service.value["route_tag"]
+      sla_compare_method  = service.value["sla_compare_method"]
       src_negate          = service.value["src_negate"]
+      standalone_action   = service.value["standalone_action"]
       start_port          = service.value["start_port"]
       status              = service.value["status"]
       tos                 = service.value["tos"]
@@ -537,6 +677,20 @@ resource "fortios_system_virtualwanlink" "this" {
         for_each = service.value.input_device
         content {
           name = input_device.value["name"]
+        }
+      }
+
+      dynamic "internet_service_app_ctrl" {
+        for_each = service.value.internet_service_app_ctrl
+        content {
+          id = internet_service_app_ctrl.value["id"]
+        }
+      }
+
+      dynamic "internet_service_app_ctrl_group" {
+        for_each = service.value.internet_service_app_ctrl_group
+        content {
+          name = internet_service_app_ctrl_group.value["name"]
         }
       }
 
@@ -582,6 +736,13 @@ resource "fortios_system_virtualwanlink" "this" {
         }
       }
 
+      dynamic "internet_service_name" {
+        for_each = service.value.internet_service_name
+        content {
+          name = internet_service_name.value["name"]
+        }
+      }
+
       dynamic "priority_members" {
         for_each = service.value.priority_members
         content {
@@ -621,6 +782,13 @@ resource "fortios_system_virtualwanlink" "this" {
     }
   }
 
+  dynamic "zone" {
+    for_each = var.zone
+    content {
+      name = zone.value["name"]
+    }
+  }
+
 }
 ```
 
@@ -642,6 +810,21 @@ output "id" {
 output "load_balance_mode" {
   description = "returns a string"
   value       = fortios_system_virtualwanlink.this.load_balance_mode
+}
+
+output "neighbor_hold_boot_time" {
+  description = "returns a number"
+  value       = fortios_system_virtualwanlink.this.neighbor_hold_boot_time
+}
+
+output "neighbor_hold_down" {
+  description = "returns a string"
+  value       = fortios_system_virtualwanlink.this.neighbor_hold_down
+}
+
+output "neighbor_hold_down_time" {
+  description = "returns a number"
+  value       = fortios_system_virtualwanlink.this.neighbor_hold_down_time
 }
 
 output "status" {

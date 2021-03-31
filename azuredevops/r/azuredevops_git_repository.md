@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -72,7 +72,7 @@ variable "project_id" {
 }
 
 variable "initialization" {
-  description = "nested block: NestingSet, min items: 1, max items: 1"
+  description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
     {
       init_type   = string

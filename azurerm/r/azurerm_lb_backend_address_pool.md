@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,8 +31,14 @@ module "azurerm_lb_backend_address_pool" {
   loadbalancer_id = null
   # name - (required) is a type of string
   name = null
-  # resource_group_name - (required) is a type of string
+  # resource_group_name - (optional) is a type of string
   resource_group_name = null
+
+  backend_address = [{
+    ip_address         = null
+    name               = null
+    virtual_network_id = null
+  }]
 
   timeouts = [{
     create = null
@@ -59,8 +65,21 @@ variable "name" {
 }
 
 variable "resource_group_name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "backend_address" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      ip_address         = string
+      name               = string
+      virtual_network_id = string
+    }
+  ))
+  default = []
 }
 
 variable "timeouts" {
@@ -87,6 +106,15 @@ resource "azurerm_lb_backend_address_pool" "this" {
   name                = var.name
   resource_group_name = var.resource_group_name
 
+  dynamic "backend_address" {
+    for_each = var.backend_address
+    content {
+      ip_address         = backend_address.value["ip_address"]
+      name               = backend_address.value["name"]
+      virtual_network_id = backend_address.value["virtual_network_id"]
+    }
+  }
+
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
@@ -106,7 +134,7 @@ resource "azurerm_lb_backend_address_pool" "this" {
 
 ```terraform
 output "backend_ip_configurations" {
-  description = "returns a set of string"
+  description = "returns a list of string"
   value       = azurerm_lb_backend_address_pool.this.backend_ip_configurations
 }
 
@@ -116,8 +144,18 @@ output "id" {
 }
 
 output "load_balancing_rules" {
-  description = "returns a set of string"
+  description = "returns a list of string"
   value       = azurerm_lb_backend_address_pool.this.load_balancing_rules
+}
+
+output "outbound_rules" {
+  description = "returns a list of string"
+  value       = azurerm_lb_backend_address_pool.this.outbound_rules
+}
+
+output "resource_group_name" {
+  description = "returns a string"
+  value       = azurerm_lb_backend_address_pool.this.resource_group_name
 }
 
 output "this" {

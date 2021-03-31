@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_webproxy_profile" {
   source = "./modules/fortios/r/fortios_webproxy_profile"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # header_client_ip - (optional) is a type of string
   header_client_ip = null
   # header_front_end_https - (optional) is a type of string
@@ -53,9 +55,15 @@ module "fortios_webproxy_profile" {
     add_option      = null
     base64_encoding = null
     content         = null
-    id              = null
-    name            = null
-    protocol        = null
+    dstaddr = [{
+      name = null
+    }]
+    dstaddr6 = [{
+      name = null
+    }]
+    id       = null
+    name     = null
+    protocol = null
   }]
 }
 ```
@@ -65,6 +73,12 @@ module "fortios_webproxy_profile" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "header_client_ip" {
   description = "(optional)"
   type        = string
@@ -133,9 +147,19 @@ variable "headers" {
       add_option      = string
       base64_encoding = string
       content         = string
-      id              = number
-      name            = string
-      protocol        = string
+      dstaddr = list(object(
+        {
+          name = string
+        }
+      ))
+      dstaddr6 = list(object(
+        {
+          name = string
+        }
+      ))
+      id       = number
+      name     = string
+      protocol = string
     }
   ))
   default = []
@@ -148,6 +172,7 @@ variable "headers" {
 
 ```terraform
 resource "fortios_webproxy_profile" "this" {
+  dynamic_sort_subtable         = var.dynamic_sort_subtable
   header_client_ip              = var.header_client_ip
   header_front_end_https        = var.header_front_end_https
   header_via_request            = var.header_via_request
@@ -169,6 +194,21 @@ resource "fortios_webproxy_profile" "this" {
       id              = headers.value["id"]
       name            = headers.value["name"]
       protocol        = headers.value["protocol"]
+
+      dynamic "dstaddr" {
+        for_each = headers.value.dstaddr
+        content {
+          name = dstaddr.value["name"]
+        }
+      }
+
+      dynamic "dstaddr6" {
+        for_each = headers.value.dstaddr6
+        content {
+          name = dstaddr6.value["name"]
+        }
+      }
+
     }
   }
 

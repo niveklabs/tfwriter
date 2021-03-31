@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -51,7 +51,6 @@ module "aws_dx_hosted_transit_virtual_interface" {
   timeouts = [{
     create = null
     delete = null
-    update = null
   }]
 }
 ```
@@ -121,7 +120,6 @@ variable "timeouts" {
     {
       create = string
       delete = string
-      update = string
     }
   ))
   default = []
@@ -150,7 +148,6 @@ resource "aws_dx_hosted_transit_virtual_interface" "this" {
     content {
       create = timeouts.value["create"]
       delete = timeouts.value["delete"]
-      update = timeouts.value["update"]
     }
   }
 

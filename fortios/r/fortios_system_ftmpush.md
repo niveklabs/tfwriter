@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_system_ftmpush" {
   source = "./modules/fortios/r/fortios_system_ftmpush"
 
+  # server_cert - (optional) is a type of string
+  server_cert = null
   # server_ip - (optional) is a type of string
   server_ip = null
   # server_port - (optional) is a type of number
@@ -41,6 +43,12 @@ module "fortios_system_ftmpush" {
 ### Variables
 
 ```terraform
+variable "server_cert" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "server_ip" {
   description = "(optional)"
   type        = string
@@ -66,6 +74,7 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_ftmpush" "this" {
+  server_cert = var.server_cert
   server_ip   = var.server_ip
   server_port = var.server_port
   status      = var.status
@@ -80,6 +89,11 @@ resource "fortios_system_ftmpush" "this" {
 output "id" {
   description = "returns a string"
   value       = fortios_system_ftmpush.this.id
+}
+
+output "server_cert" {
+  description = "returns a string"
+  value       = fortios_system_ftmpush.this.server_cert
 }
 
 output "server_ip" {

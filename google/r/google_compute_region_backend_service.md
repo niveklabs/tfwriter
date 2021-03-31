@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -174,7 +174,7 @@ variable "enable_cdn" {
 }
 
 variable "health_checks" {
-  description = "(optional) - The set of URLs to HealthCheck resources for health checking\nthis RegionBackendService. Currently at most one health\ncheck can be specified. \n\nA health check must be specified unless the backend service uses an internet\nor serverless NEG as a backend."
+  description = "(optional) - The set of URLs to HealthCheck resources for health checking\nthis RegionBackendService. Currently at most one health\ncheck can be specified.\n\nA health check must be specified unless the backend service uses an internet\nor serverless NEG as a backend."
   type        = set(string)
   default     = null
 }

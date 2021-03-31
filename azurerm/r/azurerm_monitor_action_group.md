@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -108,6 +108,11 @@ module "azurerm_monitor_action_group" {
   }]
 
   webhook_receiver = [{
+    aad_auth = [{
+      identifier_uri = null
+      object_id      = null
+      tenant_id      = null
+    }]
     name                    = null
     service_uri             = null
     use_common_alert_schema = null
@@ -280,6 +285,13 @@ variable "webhook_receiver" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
+      aad_auth = list(object(
+        {
+          identifier_uri = string
+          object_id      = string
+          tenant_id      = string
+        }
+      ))
       name                    = string
       service_uri             = string
       use_common_alert_schema = bool
@@ -406,6 +418,16 @@ resource "azurerm_monitor_action_group" "this" {
       name                    = webhook_receiver.value["name"]
       service_uri             = webhook_receiver.value["service_uri"]
       use_common_alert_schema = webhook_receiver.value["use_common_alert_schema"]
+
+      dynamic "aad_auth" {
+        for_each = webhook_receiver.value.aad_auth
+        content {
+          identifier_uri = aad_auth.value["identifier_uri"]
+          object_id      = aad_auth.value["object_id"]
+          tenant_id      = aad_auth.value["tenant_id"]
+        }
+      }
+
     }
   }
 

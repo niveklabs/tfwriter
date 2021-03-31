@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudinit = ">= 2.1.0"
+    cloudinit = ">= 2.2.0"
   }
 }
 ```

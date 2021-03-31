@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    boundary = ">= 0.1.0"
+    boundary = ">= 1.0.1"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "boundary_target" {
   session_max_seconds = null
   # type - (required) is a type of string
   type = null
+  # worker_filter - (optional) is a type of string
+  worker_filter = null
 }
 ```
 
@@ -96,6 +98,12 @@ variable "type" {
   description = "(required) - The target resource type."
   type        = string
 }
+
+variable "worker_filter" {
+  description = "(optional) - Boolean expression to filter the workers for this target"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -112,6 +120,7 @@ resource "boundary_target" "this" {
   session_connection_limit = var.session_connection_limit
   session_max_seconds      = var.session_max_seconds
   type                     = var.type
+  worker_filter            = var.worker_filter
 }
 ```
 

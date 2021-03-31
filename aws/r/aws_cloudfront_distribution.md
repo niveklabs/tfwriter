@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -59,6 +59,7 @@ module "aws_cloudfront_distribution" {
 
   default_cache_behavior = [{
     allowed_methods           = []
+    cache_policy_id           = null
     cached_methods            = []
     compress                  = null
     default_ttl               = null
@@ -77,12 +78,14 @@ module "aws_cloudfront_distribution" {
       include_body = null
       lambda_arn   = null
     }]
-    max_ttl                = null
-    min_ttl                = null
-    smooth_streaming       = null
-    target_origin_id       = null
-    trusted_signers        = []
-    viewer_protocol_policy = null
+    max_ttl                  = null
+    min_ttl                  = null
+    origin_request_policy_id = null
+    realtime_log_config_arn  = null
+    smooth_streaming         = null
+    target_origin_id         = null
+    trusted_signers          = []
+    viewer_protocol_policy   = null
   }]
 
   logging_config = [{
@@ -93,6 +96,7 @@ module "aws_cloudfront_distribution" {
 
   ordered_cache_behavior = [{
     allowed_methods           = []
+    cache_policy_id           = null
     cached_methods            = []
     compress                  = null
     default_ttl               = null
@@ -111,13 +115,15 @@ module "aws_cloudfront_distribution" {
       include_body = null
       lambda_arn   = null
     }]
-    max_ttl                = null
-    min_ttl                = null
-    path_pattern           = null
-    smooth_streaming       = null
-    target_origin_id       = null
-    trusted_signers        = []
-    viewer_protocol_policy = null
+    max_ttl                  = null
+    min_ttl                  = null
+    origin_request_policy_id = null
+    path_pattern             = null
+    realtime_log_config_arn  = null
+    smooth_streaming         = null
+    target_origin_id         = null
+    trusted_signers          = []
+    viewer_protocol_policy   = null
   }]
 
   origin = [{
@@ -256,6 +262,7 @@ variable "default_cache_behavior" {
   type = set(object(
     {
       allowed_methods           = set(string)
+      cache_policy_id           = string
       cached_methods            = set(string)
       compress                  = bool
       default_ttl               = number
@@ -280,12 +287,14 @@ variable "default_cache_behavior" {
           lambda_arn   = string
         }
       ))
-      max_ttl                = number
-      min_ttl                = number
-      smooth_streaming       = bool
-      target_origin_id       = string
-      trusted_signers        = list(string)
-      viewer_protocol_policy = string
+      max_ttl                  = number
+      min_ttl                  = number
+      origin_request_policy_id = string
+      realtime_log_config_arn  = string
+      smooth_streaming         = bool
+      target_origin_id         = string
+      trusted_signers          = list(string)
+      viewer_protocol_policy   = string
     }
   ))
 }
@@ -307,6 +316,7 @@ variable "ordered_cache_behavior" {
   type = set(object(
     {
       allowed_methods           = set(string)
+      cache_policy_id           = string
       cached_methods            = set(string)
       compress                  = bool
       default_ttl               = number
@@ -331,13 +341,15 @@ variable "ordered_cache_behavior" {
           lambda_arn   = string
         }
       ))
-      max_ttl                = number
-      min_ttl                = number
-      path_pattern           = string
-      smooth_streaming       = bool
-      target_origin_id       = string
-      trusted_signers        = list(string)
-      viewer_protocol_policy = string
+      max_ttl                  = number
+      min_ttl                  = number
+      origin_request_policy_id = string
+      path_pattern             = string
+      realtime_log_config_arn  = string
+      smooth_streaming         = bool
+      target_origin_id         = string
+      trusted_signers          = list(string)
+      viewer_protocol_policy   = string
     }
   ))
   default = []
@@ -455,12 +467,15 @@ resource "aws_cloudfront_distribution" "this" {
     for_each = var.default_cache_behavior
     content {
       allowed_methods           = default_cache_behavior.value["allowed_methods"]
+      cache_policy_id           = default_cache_behavior.value["cache_policy_id"]
       cached_methods            = default_cache_behavior.value["cached_methods"]
       compress                  = default_cache_behavior.value["compress"]
       default_ttl               = default_cache_behavior.value["default_ttl"]
       field_level_encryption_id = default_cache_behavior.value["field_level_encryption_id"]
       max_ttl                   = default_cache_behavior.value["max_ttl"]
       min_ttl                   = default_cache_behavior.value["min_ttl"]
+      origin_request_policy_id  = default_cache_behavior.value["origin_request_policy_id"]
+      realtime_log_config_arn   = default_cache_behavior.value["realtime_log_config_arn"]
       smooth_streaming          = default_cache_behavior.value["smooth_streaming"]
       target_origin_id          = default_cache_behavior.value["target_origin_id"]
       trusted_signers           = default_cache_behavior.value["trusted_signers"]
@@ -509,13 +524,16 @@ resource "aws_cloudfront_distribution" "this" {
     for_each = var.ordered_cache_behavior
     content {
       allowed_methods           = ordered_cache_behavior.value["allowed_methods"]
+      cache_policy_id           = ordered_cache_behavior.value["cache_policy_id"]
       cached_methods            = ordered_cache_behavior.value["cached_methods"]
       compress                  = ordered_cache_behavior.value["compress"]
       default_ttl               = ordered_cache_behavior.value["default_ttl"]
       field_level_encryption_id = ordered_cache_behavior.value["field_level_encryption_id"]
       max_ttl                   = ordered_cache_behavior.value["max_ttl"]
       min_ttl                   = ordered_cache_behavior.value["min_ttl"]
+      origin_request_policy_id  = ordered_cache_behavior.value["origin_request_policy_id"]
       path_pattern              = ordered_cache_behavior.value["path_pattern"]
+      realtime_log_config_arn   = ordered_cache_behavior.value["realtime_log_config_arn"]
       smooth_streaming          = ordered_cache_behavior.value["smooth_streaming"]
       target_origin_id          = ordered_cache_behavior.value["target_origin_id"]
       trusted_signers           = ordered_cache_behavior.value["trusted_signers"]

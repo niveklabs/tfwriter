@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    github = ">= 4.1.0"
+    github = ">= 4.6.0"
   }
 }
 ```
@@ -53,7 +53,7 @@ variable "repository" {
 }
 
 variable "team_id" {
-  description = "(required)"
+  description = "(required) - ID or slug of team"
   type        = string
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -100,6 +100,11 @@ data "azurerm_key_vault_certificate" "this" {
 output "certificate_data" {
   description = "returns a string"
   value       = data.azurerm_key_vault_certificate.this.certificate_data
+}
+
+output "certificate_data_base64" {
+  description = "returns a string"
+  value       = data.azurerm_key_vault_certificate.this.certificate_data_base64
 }
 
 output "certificate_policy" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "azurerm_local_network_gateway" {
   source = "./modules/azurerm/r/azurerm_local_network_gateway"
 
-  # address_space - (required) is a type of list of string
+  # address_space - (optional) is a type of list of string
   address_space = []
   # gateway_address - (optional) is a type of string
   gateway_address = null
@@ -63,8 +63,9 @@ module "azurerm_local_network_gateway" {
 
 ```terraform
 variable "address_space" {
-  description = "(required)"
+  description = "(optional)"
   type        = list(string)
+  default     = null
 }
 
 variable "gateway_address" {

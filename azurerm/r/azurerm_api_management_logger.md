@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "azurerm_api_management_logger" {
   name = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+  # resource_id - (optional) is a type of string
+  resource_id = null
 
   application_insights = [{
     instrumentation_key = null
@@ -88,6 +90,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "resource_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "application_insights" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -134,6 +142,7 @@ resource "azurerm_api_management_logger" "this" {
   description         = var.description
   name                = var.name
   resource_group_name = var.resource_group_name
+  resource_id         = var.resource_id
 
   dynamic "application_insights" {
     for_each = var.application_insights

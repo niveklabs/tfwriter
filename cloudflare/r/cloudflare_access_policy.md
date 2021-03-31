@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    cloudflare = ">= 2.15.0"
+    cloudflare = ">= 2.19.2"
   }
 }
 ```
@@ -35,7 +35,7 @@ module "cloudflare_access_policy" {
   decision = null
   # name - (required) is a type of string
   name = null
-  # precedence - (optional) is a type of number
+  # precedence - (required) is a type of number
   precedence = null
   # zone_id - (optional) is a type of string
   zone_id = null
@@ -177,9 +177,8 @@ variable "name" {
 }
 
 variable "precedence" {
-  description = "(optional)"
+  description = "(required)"
   type        = number
-  default     = null
 }
 
 variable "zone_id" {

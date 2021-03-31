@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -37,6 +37,7 @@ module "azurerm_sql_database" {
   elastic_pool_name = null
   # extended_auditing_policy - (optional) is a type of list of object
   extended_auditing_policy = [{
+    log_monitoring_enabled                  = null
     retention_in_days                       = null
     storage_account_access_key              = null
     storage_account_access_key_is_secondary = null
@@ -134,6 +135,7 @@ variable "extended_auditing_policy" {
   description = "(optional)"
   type = list(object(
     {
+      log_monitoring_enabled                  = bool
       retention_in_days                       = number
       storage_account_access_key              = string
       storage_account_access_key_is_secondary = bool

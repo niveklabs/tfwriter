@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -77,6 +77,11 @@ resource "aws_ec2_traffic_mirror_filter" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_ec2_traffic_mirror_filter.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ec2_traffic_mirror_filter.this.id

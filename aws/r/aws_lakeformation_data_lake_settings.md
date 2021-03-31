@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -27,7 +27,7 @@ terraform {
 module "aws_lakeformation_data_lake_settings" {
   source = "./modules/aws/r/aws_lakeformation_data_lake_settings"
 
-  # admins - (optional) is a type of list of string
+  # admins - (optional) is a type of set of string
   admins = []
   # catalog_id - (optional) is a type of string
   catalog_id = null
@@ -53,7 +53,7 @@ module "aws_lakeformation_data_lake_settings" {
 ```terraform
 variable "admins" {
   description = "(optional)"
-  type        = list(string)
+  type        = set(string)
   default     = null
 }
 
@@ -127,7 +127,7 @@ resource "aws_lakeformation_data_lake_settings" "this" {
 
 ```terraform
 output "admins" {
-  description = "returns a list of string"
+  description = "returns a set of string"
   value       = aws_lakeformation_data_lake_settings.this.admins
 }
 

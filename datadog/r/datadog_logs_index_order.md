@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -40,12 +40,12 @@ module "datadog_logs_index_order" {
 
 ```terraform
 variable "indexes" {
-  description = "(required)"
+  description = "(required) - The index resource list. Logs are tested against the query filter of each index one by one following the order of the list."
   type        = list(string)
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - The unique name of the index order resource."
   type        = string
 }
 ```

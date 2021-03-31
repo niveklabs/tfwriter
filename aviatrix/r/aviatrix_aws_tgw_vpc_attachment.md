@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aviatrix_aws_tgw_vpc_attachment" {
   customized_routes = null
   # disable_local_route_propagation - (optional) is a type of bool
   disable_local_route_propagation = null
+  # edge_attachment - (optional) is a type of string
+  edge_attachment = null
   # region - (required) is a type of string
   region = null
   # route_tables - (optional) is a type of string
@@ -70,6 +72,12 @@ variable "customized_routes" {
 variable "disable_local_route_propagation" {
   description = "(optional) - Advanced option. If set to true, it disables automatic route propagation of this VPC to other VPCs within the same security domain."
   type        = bool
+  default     = null
+}
+
+variable "edge_attachment" {
+  description = "(optional) - Edge attachment ID. To allow access to the private IP of the MGMT interface of the Firewalls, set this attribute to enable Management Access From Onprem. This feature advertises the Firewalls private MGMT subnet to your Edge domain."
+  type        = string
   default     = null
 }
 
@@ -120,6 +128,7 @@ resource "aviatrix_aws_tgw_vpc_attachment" "this" {
   customized_route_advertisement  = var.customized_route_advertisement
   customized_routes               = var.customized_routes
   disable_local_route_propagation = var.disable_local_route_propagation
+  edge_attachment                 = var.edge_attachment
   region                          = var.region
   route_tables                    = var.route_tables
   security_domain_name            = var.security_domain_name

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.3.0"
+    gitlab = ">= 3.5.0"
   }
 }
 ```
@@ -51,6 +51,12 @@ module "gitlab_project" {
   merge_method = null
   # merge_requests_enabled - (optional) is a type of bool
   merge_requests_enabled = null
+  # mirror - (optional) is a type of bool
+  mirror = null
+  # mirror_overwrites_diverged_branches - (optional) is a type of bool
+  mirror_overwrites_diverged_branches = null
+  # mirror_trigger_builds - (optional) is a type of bool
+  mirror_trigger_builds = null
   # name - (required) is a type of string
   name = null
   # namespace_id - (optional) is a type of number
@@ -59,6 +65,8 @@ module "gitlab_project" {
   only_allow_merge_if_all_discussions_are_resolved = null
   # only_allow_merge_if_pipeline_succeeds - (optional) is a type of bool
   only_allow_merge_if_pipeline_succeeds = null
+  # only_mirror_protected_branches - (optional) is a type of bool
+  only_mirror_protected_branches = null
   # packages_enabled - (optional) is a type of bool
   packages_enabled = null
   # pages_access_level - (optional) is a type of string
@@ -181,6 +189,24 @@ variable "merge_requests_enabled" {
   default     = null
 }
 
+variable "mirror" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "mirror_overwrites_diverged_branches" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "mirror_trigger_builds" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "name" {
   description = "(required)"
   type        = string
@@ -199,6 +225,12 @@ variable "only_allow_merge_if_all_discussions_are_resolved" {
 }
 
 variable "only_allow_merge_if_pipeline_succeeds" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "only_mirror_protected_branches" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -327,10 +359,14 @@ resource "gitlab_project" "this" {
   lfs_enabled                                      = var.lfs_enabled
   merge_method                                     = var.merge_method
   merge_requests_enabled                           = var.merge_requests_enabled
+  mirror                                           = var.mirror
+  mirror_overwrites_diverged_branches              = var.mirror_overwrites_diverged_branches
+  mirror_trigger_builds                            = var.mirror_trigger_builds
   name                                             = var.name
   namespace_id                                     = var.namespace_id
   only_allow_merge_if_all_discussions_are_resolved = var.only_allow_merge_if_all_discussions_are_resolved
   only_allow_merge_if_pipeline_succeeds            = var.only_allow_merge_if_pipeline_succeeds
+  only_mirror_protected_branches                   = var.only_mirror_protected_branches
   packages_enabled                                 = var.packages_enabled
   pages_access_level                               = var.pages_access_level
   path                                             = var.path

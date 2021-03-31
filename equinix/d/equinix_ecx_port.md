@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    equinix = ">= 1.0.2"
+    equinix = ">= 1.1.0-beta"
   }
 }
 ```
@@ -38,7 +38,7 @@ module "equinix_ecx_port" {
 
 ```terraform
 variable "name" {
-  description = "(required)"
+  description = "(required) - Name of the port"
   type        = string
 }
 ```

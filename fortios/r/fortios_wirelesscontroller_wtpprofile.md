@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -31,6 +31,10 @@ module "fortios_wirelesscontroller_wtpprofile" {
   allowaccess = null
   # ap_country - (optional) is a type of string
   ap_country = null
+  # ap_handoff - (optional) is a type of string
+  ap_handoff = null
+  # apcfg_profile - (optional) is a type of string
+  apcfg_profile = null
   # ble_profile - (optional) is a type of string
   ble_profile = null
   # comment - (optional) is a type of string
@@ -41,10 +45,14 @@ module "fortios_wirelesscontroller_wtpprofile" {
   dtls_in_kernel = null
   # dtls_policy - (optional) is a type of string
   dtls_policy = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # energy_efficient_ethernet - (optional) is a type of string
   energy_efficient_ethernet = null
   # ext_info_enable - (optional) is a type of string
   ext_info_enable = null
+  # frequency_handoff - (optional) is a type of string
+  frequency_handoff = null
   # handoff_roaming - (optional) is a type of string
   handoff_roaming = null
   # handoff_rssi - (optional) is a type of number
@@ -84,24 +92,26 @@ module "fortios_wirelesscontroller_wtpprofile" {
   }]
 
   lan = [{
-    port1_mode = null
-    port1_ssid = null
-    port2_mode = null
-    port2_ssid = null
-    port3_mode = null
-    port3_ssid = null
-    port4_mode = null
-    port4_ssid = null
-    port5_mode = null
-    port5_ssid = null
-    port6_mode = null
-    port6_ssid = null
-    port7_mode = null
-    port7_ssid = null
-    port8_mode = null
-    port8_ssid = null
-    port_mode  = null
-    port_ssid  = null
+    port1_mode    = null
+    port1_ssid    = null
+    port2_mode    = null
+    port2_ssid    = null
+    port3_mode    = null
+    port3_ssid    = null
+    port4_mode    = null
+    port4_ssid    = null
+    port5_mode    = null
+    port5_ssid    = null
+    port6_mode    = null
+    port6_ssid    = null
+    port7_mode    = null
+    port7_ssid    = null
+    port8_mode    = null
+    port8_ssid    = null
+    port_esl_mode = null
+    port_esl_ssid = null
+    port_mode     = null
+    port_ssid     = null
   }]
 
   lbs = [{
@@ -118,6 +128,7 @@ module "fortios_wirelesscontroller_wtpprofile" {
     erc_server_ip           = null
     erc_server_port         = null
     fortipresence           = null
+    fortipresence_ble       = null
     fortipresence_frequency = null
     fortipresence_port      = null
     fortipresence_project   = null
@@ -133,7 +144,9 @@ module "fortios_wirelesscontroller_wtpprofile" {
   }]
 
   platform = [{
-    type = null
+    ddscan = null
+    mode   = null
+    type   = null
   }]
 
   radio_1 = [{
@@ -151,10 +164,13 @@ module "fortios_wirelesscontroller_wtpprofile" {
     auto_power_high             = null
     auto_power_level            = null
     auto_power_low              = null
+    auto_power_target           = null
     band                        = null
+    band_5g_type                = null
     bandwidth_admission_control = null
     bandwidth_capacity          = null
     beacon_interval             = null
+    bss_color                   = null
     call_admission_control      = null
     call_capacity               = null
     channel = [{
@@ -164,6 +180,8 @@ module "fortios_wirelesscontroller_wtpprofile" {
     channel_utilization  = null
     coexistence          = null
     darrp                = null
+    drma                 = null
+    drma_sensitivity     = null
     dtim                 = null
     frag_threshold       = null
     frequency_handoff    = null
@@ -182,7 +200,8 @@ module "fortios_wirelesscontroller_wtpprofile" {
     vaps = [{
       name = null
     }]
-    wids_profile = null
+    wids_profile  = null
+    zero_wait_dfs = null
   }]
 
   radio_2 = [{
@@ -200,10 +219,13 @@ module "fortios_wirelesscontroller_wtpprofile" {
     auto_power_high             = null
     auto_power_level            = null
     auto_power_low              = null
+    auto_power_target           = null
     band                        = null
+    band_5g_type                = null
     bandwidth_admission_control = null
     bandwidth_capacity          = null
     beacon_interval             = null
+    bss_color                   = null
     call_admission_control      = null
     call_capacity               = null
     channel = [{
@@ -213,6 +235,8 @@ module "fortios_wirelesscontroller_wtpprofile" {
     channel_utilization  = null
     coexistence          = null
     darrp                = null
+    drma                 = null
+    drma_sensitivity     = null
     dtim                 = null
     frag_threshold       = null
     frequency_handoff    = null
@@ -231,7 +255,116 @@ module "fortios_wirelesscontroller_wtpprofile" {
     vaps = [{
       name = null
     }]
-    wids_profile = null
+    wids_profile  = null
+    zero_wait_dfs = null
+  }]
+
+  radio_3 = [{
+    airtime_fairness            = null
+    amsdu                       = null
+    ap_handoff                  = null
+    ap_sniffer_addr             = null
+    ap_sniffer_bufsize          = null
+    ap_sniffer_chan             = null
+    ap_sniffer_ctl              = null
+    ap_sniffer_data             = null
+    ap_sniffer_mgmt_beacon      = null
+    ap_sniffer_mgmt_other       = null
+    ap_sniffer_mgmt_probe       = null
+    auto_power_high             = null
+    auto_power_level            = null
+    auto_power_low              = null
+    auto_power_target           = null
+    band                        = null
+    band_5g_type                = null
+    bandwidth_admission_control = null
+    bandwidth_capacity          = null
+    beacon_interval             = null
+    bss_color                   = null
+    call_admission_control      = null
+    call_capacity               = null
+    channel = [{
+      chan = null
+    }]
+    channel_bonding      = null
+    channel_utilization  = null
+    coexistence          = null
+    darrp                = null
+    drma                 = null
+    drma_sensitivity     = null
+    dtim                 = null
+    frag_threshold       = null
+    frequency_handoff    = null
+    max_clients          = null
+    max_distance         = null
+    mode                 = null
+    power_level          = null
+    powersave_optimize   = null
+    protection_mode      = null
+    rts_threshold        = null
+    short_guard_interval = null
+    spectrum_analysis    = null
+    transmit_optimize    = null
+    vap_all              = null
+    vaps = [{
+      name = null
+    }]
+    wids_profile  = null
+    zero_wait_dfs = null
+  }]
+
+  radio_4 = [{
+    airtime_fairness            = null
+    amsdu                       = null
+    ap_handoff                  = null
+    ap_sniffer_addr             = null
+    ap_sniffer_bufsize          = null
+    ap_sniffer_chan             = null
+    ap_sniffer_ctl              = null
+    ap_sniffer_data             = null
+    ap_sniffer_mgmt_beacon      = null
+    ap_sniffer_mgmt_other       = null
+    ap_sniffer_mgmt_probe       = null
+    auto_power_high             = null
+    auto_power_level            = null
+    auto_power_low              = null
+    auto_power_target           = null
+    band                        = null
+    band_5g_type                = null
+    bandwidth_admission_control = null
+    bandwidth_capacity          = null
+    beacon_interval             = null
+    bss_color                   = null
+    call_admission_control      = null
+    call_capacity               = null
+    channel = [{
+      chan = null
+    }]
+    channel_bonding      = null
+    channel_utilization  = null
+    coexistence          = null
+    darrp                = null
+    drma                 = null
+    drma_sensitivity     = null
+    dtim                 = null
+    frag_threshold       = null
+    frequency_handoff    = null
+    max_clients          = null
+    max_distance         = null
+    mode                 = null
+    power_level          = null
+    powersave_optimize   = null
+    protection_mode      = null
+    rts_threshold        = null
+    short_guard_interval = null
+    spectrum_analysis    = null
+    transmit_optimize    = null
+    vap_all              = null
+    vaps = [{
+      name = null
+    }]
+    wids_profile  = null
+    zero_wait_dfs = null
   }]
 
   split_tunneling_acl = [{
@@ -253,6 +386,18 @@ variable "allowaccess" {
 }
 
 variable "ap_country" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ap_handoff" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "apcfg_profile" {
   description = "(optional)"
   type        = string
   default     = null
@@ -288,6 +433,12 @@ variable "dtls_policy" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "energy_efficient_ethernet" {
   description = "(optional)"
   type        = string
@@ -295,6 +446,12 @@ variable "energy_efficient_ethernet" {
 }
 
 variable "ext_info_enable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "frequency_handoff" {
   description = "(optional)"
   type        = string
   default     = null
@@ -411,24 +568,26 @@ variable "lan" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      port1_mode = string
-      port1_ssid = string
-      port2_mode = string
-      port2_ssid = string
-      port3_mode = string
-      port3_ssid = string
-      port4_mode = string
-      port4_ssid = string
-      port5_mode = string
-      port5_ssid = string
-      port6_mode = string
-      port6_ssid = string
-      port7_mode = string
-      port7_ssid = string
-      port8_mode = string
-      port8_ssid = string
-      port_mode  = string
-      port_ssid  = string
+      port1_mode    = string
+      port1_ssid    = string
+      port2_mode    = string
+      port2_ssid    = string
+      port3_mode    = string
+      port3_ssid    = string
+      port4_mode    = string
+      port4_ssid    = string
+      port5_mode    = string
+      port5_ssid    = string
+      port6_mode    = string
+      port6_ssid    = string
+      port7_mode    = string
+      port7_ssid    = string
+      port8_mode    = string
+      port8_ssid    = string
+      port_esl_mode = string
+      port_esl_ssid = string
+      port_mode     = string
+      port_ssid     = string
     }
   ))
   default = []
@@ -451,6 +610,7 @@ variable "lbs" {
       erc_server_ip           = string
       erc_server_port         = number
       fortipresence           = string
+      fortipresence_ble       = string
       fortipresence_frequency = number
       fortipresence_port      = number
       fortipresence_project   = string
@@ -478,7 +638,9 @@ variable "platform" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      type = string
+      ddscan = string
+      mode   = string
+      type   = string
     }
   ))
   default = []
@@ -502,10 +664,13 @@ variable "radio_1" {
       auto_power_high             = number
       auto_power_level            = string
       auto_power_low              = number
+      auto_power_target           = string
       band                        = string
+      band_5g_type                = string
       bandwidth_admission_control = string
       bandwidth_capacity          = number
       beacon_interval             = number
+      bss_color                   = number
       call_admission_control      = string
       call_capacity               = number
       channel = list(object(
@@ -517,6 +682,8 @@ variable "radio_1" {
       channel_utilization  = string
       coexistence          = string
       darrp                = string
+      drma                 = string
+      drma_sensitivity     = string
       dtim                 = number
       frag_threshold       = number
       frequency_handoff    = string
@@ -537,7 +704,8 @@ variable "radio_1" {
           name = string
         }
       ))
-      wids_profile = string
+      wids_profile  = string
+      zero_wait_dfs = string
     }
   ))
   default = []
@@ -561,10 +729,13 @@ variable "radio_2" {
       auto_power_high             = number
       auto_power_level            = string
       auto_power_low              = number
+      auto_power_target           = string
       band                        = string
+      band_5g_type                = string
       bandwidth_admission_control = string
       bandwidth_capacity          = number
       beacon_interval             = number
+      bss_color                   = number
       call_admission_control      = string
       call_capacity               = number
       channel = list(object(
@@ -576,6 +747,8 @@ variable "radio_2" {
       channel_utilization  = string
       coexistence          = string
       darrp                = string
+      drma                 = string
+      drma_sensitivity     = string
       dtim                 = number
       frag_threshold       = number
       frequency_handoff    = string
@@ -596,7 +769,136 @@ variable "radio_2" {
           name = string
         }
       ))
-      wids_profile = string
+      wids_profile  = string
+      zero_wait_dfs = string
+    }
+  ))
+  default = []
+}
+
+variable "radio_3" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      airtime_fairness            = string
+      amsdu                       = string
+      ap_handoff                  = string
+      ap_sniffer_addr             = string
+      ap_sniffer_bufsize          = number
+      ap_sniffer_chan             = number
+      ap_sniffer_ctl              = string
+      ap_sniffer_data             = string
+      ap_sniffer_mgmt_beacon      = string
+      ap_sniffer_mgmt_other       = string
+      ap_sniffer_mgmt_probe       = string
+      auto_power_high             = number
+      auto_power_level            = string
+      auto_power_low              = number
+      auto_power_target           = string
+      band                        = string
+      band_5g_type                = string
+      bandwidth_admission_control = string
+      bandwidth_capacity          = number
+      beacon_interval             = number
+      bss_color                   = number
+      call_admission_control      = string
+      call_capacity               = number
+      channel = list(object(
+        {
+          chan = string
+        }
+      ))
+      channel_bonding      = string
+      channel_utilization  = string
+      coexistence          = string
+      darrp                = string
+      drma                 = string
+      drma_sensitivity     = string
+      dtim                 = number
+      frag_threshold       = number
+      frequency_handoff    = string
+      max_clients          = number
+      max_distance         = number
+      mode                 = string
+      power_level          = number
+      powersave_optimize   = string
+      protection_mode      = string
+      rts_threshold        = number
+      short_guard_interval = string
+      spectrum_analysis    = string
+      transmit_optimize    = string
+      vap_all              = string
+      vaps = list(object(
+        {
+          name = string
+        }
+      ))
+      wids_profile  = string
+      zero_wait_dfs = string
+    }
+  ))
+  default = []
+}
+
+variable "radio_4" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      airtime_fairness            = string
+      amsdu                       = string
+      ap_handoff                  = string
+      ap_sniffer_addr             = string
+      ap_sniffer_bufsize          = number
+      ap_sniffer_chan             = number
+      ap_sniffer_ctl              = string
+      ap_sniffer_data             = string
+      ap_sniffer_mgmt_beacon      = string
+      ap_sniffer_mgmt_other       = string
+      ap_sniffer_mgmt_probe       = string
+      auto_power_high             = number
+      auto_power_level            = string
+      auto_power_low              = number
+      auto_power_target           = string
+      band                        = string
+      band_5g_type                = string
+      bandwidth_admission_control = string
+      bandwidth_capacity          = number
+      beacon_interval             = number
+      bss_color                   = number
+      call_admission_control      = string
+      call_capacity               = number
+      channel = list(object(
+        {
+          chan = string
+        }
+      ))
+      channel_bonding      = string
+      channel_utilization  = string
+      coexistence          = string
+      darrp                = string
+      drma                 = string
+      drma_sensitivity     = string
+      dtim                 = number
+      frag_threshold       = number
+      frequency_handoff    = string
+      max_clients          = number
+      max_distance         = number
+      mode                 = string
+      power_level          = number
+      powersave_optimize   = string
+      protection_mode      = string
+      rts_threshold        = number
+      short_guard_interval = string
+      spectrum_analysis    = string
+      transmit_optimize    = string
+      vap_all              = string
+      vaps = list(object(
+        {
+          name = string
+        }
+      ))
+      wids_profile  = string
+      zero_wait_dfs = string
     }
   ))
   default = []
@@ -622,13 +924,17 @@ variable "split_tunneling_acl" {
 resource "fortios_wirelesscontroller_wtpprofile" "this" {
   allowaccess                         = var.allowaccess
   ap_country                          = var.ap_country
+  ap_handoff                          = var.ap_handoff
+  apcfg_profile                       = var.apcfg_profile
   ble_profile                         = var.ble_profile
   comment                             = var.comment
   control_message_offload             = var.control_message_offload
   dtls_in_kernel                      = var.dtls_in_kernel
   dtls_policy                         = var.dtls_policy
+  dynamic_sort_subtable               = var.dynamic_sort_subtable
   energy_efficient_ethernet           = var.energy_efficient_ethernet
   ext_info_enable                     = var.ext_info_enable
+  frequency_handoff                   = var.frequency_handoff
   handoff_roaming                     = var.handoff_roaming
   handoff_rssi                        = var.handoff_rssi
   handoff_sta_thresh                  = var.handoff_sta_thresh
@@ -657,24 +963,26 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "lan" {
     for_each = var.lan
     content {
-      port1_mode = lan.value["port1_mode"]
-      port1_ssid = lan.value["port1_ssid"]
-      port2_mode = lan.value["port2_mode"]
-      port2_ssid = lan.value["port2_ssid"]
-      port3_mode = lan.value["port3_mode"]
-      port3_ssid = lan.value["port3_ssid"]
-      port4_mode = lan.value["port4_mode"]
-      port4_ssid = lan.value["port4_ssid"]
-      port5_mode = lan.value["port5_mode"]
-      port5_ssid = lan.value["port5_ssid"]
-      port6_mode = lan.value["port6_mode"]
-      port6_ssid = lan.value["port6_ssid"]
-      port7_mode = lan.value["port7_mode"]
-      port7_ssid = lan.value["port7_ssid"]
-      port8_mode = lan.value["port8_mode"]
-      port8_ssid = lan.value["port8_ssid"]
-      port_mode  = lan.value["port_mode"]
-      port_ssid  = lan.value["port_ssid"]
+      port1_mode    = lan.value["port1_mode"]
+      port1_ssid    = lan.value["port1_ssid"]
+      port2_mode    = lan.value["port2_mode"]
+      port2_ssid    = lan.value["port2_ssid"]
+      port3_mode    = lan.value["port3_mode"]
+      port3_ssid    = lan.value["port3_ssid"]
+      port4_mode    = lan.value["port4_mode"]
+      port4_ssid    = lan.value["port4_ssid"]
+      port5_mode    = lan.value["port5_mode"]
+      port5_ssid    = lan.value["port5_ssid"]
+      port6_mode    = lan.value["port6_mode"]
+      port6_ssid    = lan.value["port6_ssid"]
+      port7_mode    = lan.value["port7_mode"]
+      port7_ssid    = lan.value["port7_ssid"]
+      port8_mode    = lan.value["port8_mode"]
+      port8_ssid    = lan.value["port8_ssid"]
+      port_esl_mode = lan.value["port_esl_mode"]
+      port_esl_ssid = lan.value["port_esl_ssid"]
+      port_mode     = lan.value["port_mode"]
+      port_ssid     = lan.value["port_ssid"]
     }
   }
 
@@ -694,6 +1002,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       erc_server_ip           = lbs.value["erc_server_ip"]
       erc_server_port         = lbs.value["erc_server_port"]
       fortipresence           = lbs.value["fortipresence"]
+      fortipresence_ble       = lbs.value["fortipresence_ble"]
       fortipresence_frequency = lbs.value["fortipresence_frequency"]
       fortipresence_port      = lbs.value["fortipresence_port"]
       fortipresence_project   = lbs.value["fortipresence_project"]
@@ -715,7 +1024,9 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "platform" {
     for_each = var.platform
     content {
-      type = platform.value["type"]
+      ddscan = platform.value["ddscan"]
+      mode   = platform.value["mode"]
+      type   = platform.value["type"]
     }
   }
 
@@ -736,16 +1047,21 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       auto_power_high             = radio_1.value["auto_power_high"]
       auto_power_level            = radio_1.value["auto_power_level"]
       auto_power_low              = radio_1.value["auto_power_low"]
+      auto_power_target           = radio_1.value["auto_power_target"]
       band                        = radio_1.value["band"]
+      band_5g_type                = radio_1.value["band_5g_type"]
       bandwidth_admission_control = radio_1.value["bandwidth_admission_control"]
       bandwidth_capacity          = radio_1.value["bandwidth_capacity"]
       beacon_interval             = radio_1.value["beacon_interval"]
+      bss_color                   = radio_1.value["bss_color"]
       call_admission_control      = radio_1.value["call_admission_control"]
       call_capacity               = radio_1.value["call_capacity"]
       channel_bonding             = radio_1.value["channel_bonding"]
       channel_utilization         = radio_1.value["channel_utilization"]
       coexistence                 = radio_1.value["coexistence"]
       darrp                       = radio_1.value["darrp"]
+      drma                        = radio_1.value["drma"]
+      drma_sensitivity            = radio_1.value["drma_sensitivity"]
       dtim                        = radio_1.value["dtim"]
       frag_threshold              = radio_1.value["frag_threshold"]
       frequency_handoff           = radio_1.value["frequency_handoff"]
@@ -762,6 +1078,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       transmit_optimize           = radio_1.value["transmit_optimize"]
       vap_all                     = radio_1.value["vap_all"]
       wids_profile                = radio_1.value["wids_profile"]
+      zero_wait_dfs               = radio_1.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_1.value.channel
@@ -797,16 +1114,21 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       auto_power_high             = radio_2.value["auto_power_high"]
       auto_power_level            = radio_2.value["auto_power_level"]
       auto_power_low              = radio_2.value["auto_power_low"]
+      auto_power_target           = radio_2.value["auto_power_target"]
       band                        = radio_2.value["band"]
+      band_5g_type                = radio_2.value["band_5g_type"]
       bandwidth_admission_control = radio_2.value["bandwidth_admission_control"]
       bandwidth_capacity          = radio_2.value["bandwidth_capacity"]
       beacon_interval             = radio_2.value["beacon_interval"]
+      bss_color                   = radio_2.value["bss_color"]
       call_admission_control      = radio_2.value["call_admission_control"]
       call_capacity               = radio_2.value["call_capacity"]
       channel_bonding             = radio_2.value["channel_bonding"]
       channel_utilization         = radio_2.value["channel_utilization"]
       coexistence                 = radio_2.value["coexistence"]
       darrp                       = radio_2.value["darrp"]
+      drma                        = radio_2.value["drma"]
+      drma_sensitivity            = radio_2.value["drma_sensitivity"]
       dtim                        = radio_2.value["dtim"]
       frag_threshold              = radio_2.value["frag_threshold"]
       frequency_handoff           = radio_2.value["frequency_handoff"]
@@ -823,6 +1145,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       transmit_optimize           = radio_2.value["transmit_optimize"]
       vap_all                     = radio_2.value["vap_all"]
       wids_profile                = radio_2.value["wids_profile"]
+      zero_wait_dfs               = radio_2.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_2.value.channel
@@ -833,6 +1156,138 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
 
       dynamic "vaps" {
         for_each = radio_2.value.vaps
+        content {
+          name = vaps.value["name"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "radio_3" {
+    for_each = var.radio_3
+    content {
+      airtime_fairness            = radio_3.value["airtime_fairness"]
+      amsdu                       = radio_3.value["amsdu"]
+      ap_handoff                  = radio_3.value["ap_handoff"]
+      ap_sniffer_addr             = radio_3.value["ap_sniffer_addr"]
+      ap_sniffer_bufsize          = radio_3.value["ap_sniffer_bufsize"]
+      ap_sniffer_chan             = radio_3.value["ap_sniffer_chan"]
+      ap_sniffer_ctl              = radio_3.value["ap_sniffer_ctl"]
+      ap_sniffer_data             = radio_3.value["ap_sniffer_data"]
+      ap_sniffer_mgmt_beacon      = radio_3.value["ap_sniffer_mgmt_beacon"]
+      ap_sniffer_mgmt_other       = radio_3.value["ap_sniffer_mgmt_other"]
+      ap_sniffer_mgmt_probe       = radio_3.value["ap_sniffer_mgmt_probe"]
+      auto_power_high             = radio_3.value["auto_power_high"]
+      auto_power_level            = radio_3.value["auto_power_level"]
+      auto_power_low              = radio_3.value["auto_power_low"]
+      auto_power_target           = radio_3.value["auto_power_target"]
+      band                        = radio_3.value["band"]
+      band_5g_type                = radio_3.value["band_5g_type"]
+      bandwidth_admission_control = radio_3.value["bandwidth_admission_control"]
+      bandwidth_capacity          = radio_3.value["bandwidth_capacity"]
+      beacon_interval             = radio_3.value["beacon_interval"]
+      bss_color                   = radio_3.value["bss_color"]
+      call_admission_control      = radio_3.value["call_admission_control"]
+      call_capacity               = radio_3.value["call_capacity"]
+      channel_bonding             = radio_3.value["channel_bonding"]
+      channel_utilization         = radio_3.value["channel_utilization"]
+      coexistence                 = radio_3.value["coexistence"]
+      darrp                       = radio_3.value["darrp"]
+      drma                        = radio_3.value["drma"]
+      drma_sensitivity            = radio_3.value["drma_sensitivity"]
+      dtim                        = radio_3.value["dtim"]
+      frag_threshold              = radio_3.value["frag_threshold"]
+      frequency_handoff           = radio_3.value["frequency_handoff"]
+      max_clients                 = radio_3.value["max_clients"]
+      max_distance                = radio_3.value["max_distance"]
+      mode                        = radio_3.value["mode"]
+      power_level                 = radio_3.value["power_level"]
+      powersave_optimize          = radio_3.value["powersave_optimize"]
+      protection_mode             = radio_3.value["protection_mode"]
+      rts_threshold               = radio_3.value["rts_threshold"]
+      short_guard_interval        = radio_3.value["short_guard_interval"]
+      spectrum_analysis           = radio_3.value["spectrum_analysis"]
+      transmit_optimize           = radio_3.value["transmit_optimize"]
+      vap_all                     = radio_3.value["vap_all"]
+      wids_profile                = radio_3.value["wids_profile"]
+      zero_wait_dfs               = radio_3.value["zero_wait_dfs"]
+
+      dynamic "channel" {
+        for_each = radio_3.value.channel
+        content {
+          chan = channel.value["chan"]
+        }
+      }
+
+      dynamic "vaps" {
+        for_each = radio_3.value.vaps
+        content {
+          name = vaps.value["name"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "radio_4" {
+    for_each = var.radio_4
+    content {
+      airtime_fairness            = radio_4.value["airtime_fairness"]
+      amsdu                       = radio_4.value["amsdu"]
+      ap_handoff                  = radio_4.value["ap_handoff"]
+      ap_sniffer_addr             = radio_4.value["ap_sniffer_addr"]
+      ap_sniffer_bufsize          = radio_4.value["ap_sniffer_bufsize"]
+      ap_sniffer_chan             = radio_4.value["ap_sniffer_chan"]
+      ap_sniffer_ctl              = radio_4.value["ap_sniffer_ctl"]
+      ap_sniffer_data             = radio_4.value["ap_sniffer_data"]
+      ap_sniffer_mgmt_beacon      = radio_4.value["ap_sniffer_mgmt_beacon"]
+      ap_sniffer_mgmt_other       = radio_4.value["ap_sniffer_mgmt_other"]
+      ap_sniffer_mgmt_probe       = radio_4.value["ap_sniffer_mgmt_probe"]
+      auto_power_high             = radio_4.value["auto_power_high"]
+      auto_power_level            = radio_4.value["auto_power_level"]
+      auto_power_low              = radio_4.value["auto_power_low"]
+      auto_power_target           = radio_4.value["auto_power_target"]
+      band                        = radio_4.value["band"]
+      band_5g_type                = radio_4.value["band_5g_type"]
+      bandwidth_admission_control = radio_4.value["bandwidth_admission_control"]
+      bandwidth_capacity          = radio_4.value["bandwidth_capacity"]
+      beacon_interval             = radio_4.value["beacon_interval"]
+      bss_color                   = radio_4.value["bss_color"]
+      call_admission_control      = radio_4.value["call_admission_control"]
+      call_capacity               = radio_4.value["call_capacity"]
+      channel_bonding             = radio_4.value["channel_bonding"]
+      channel_utilization         = radio_4.value["channel_utilization"]
+      coexistence                 = radio_4.value["coexistence"]
+      darrp                       = radio_4.value["darrp"]
+      drma                        = radio_4.value["drma"]
+      drma_sensitivity            = radio_4.value["drma_sensitivity"]
+      dtim                        = radio_4.value["dtim"]
+      frag_threshold              = radio_4.value["frag_threshold"]
+      frequency_handoff           = radio_4.value["frequency_handoff"]
+      max_clients                 = radio_4.value["max_clients"]
+      max_distance                = radio_4.value["max_distance"]
+      mode                        = radio_4.value["mode"]
+      power_level                 = radio_4.value["power_level"]
+      powersave_optimize          = radio_4.value["powersave_optimize"]
+      protection_mode             = radio_4.value["protection_mode"]
+      rts_threshold               = radio_4.value["rts_threshold"]
+      short_guard_interval        = radio_4.value["short_guard_interval"]
+      spectrum_analysis           = radio_4.value["spectrum_analysis"]
+      transmit_optimize           = radio_4.value["transmit_optimize"]
+      vap_all                     = radio_4.value["vap_all"]
+      wids_profile                = radio_4.value["wids_profile"]
+      zero_wait_dfs               = radio_4.value["zero_wait_dfs"]
+
+      dynamic "channel" {
+        for_each = radio_4.value.channel
+        content {
+          chan = channel.value["chan"]
+        }
+      }
+
+      dynamic "vaps" {
+        for_each = radio_4.value.vaps
         content {
           name = vaps.value["name"]
         }
@@ -867,6 +1322,16 @@ output "ap_country" {
   value       = fortios_wirelesscontroller_wtpprofile.this.ap_country
 }
 
+output "ap_handoff" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtpprofile.this.ap_handoff
+}
+
+output "apcfg_profile" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtpprofile.this.apcfg_profile
+}
+
 output "ble_profile" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_wtpprofile.this.ble_profile
@@ -895,6 +1360,11 @@ output "energy_efficient_ethernet" {
 output "ext_info_enable" {
   description = "returns a string"
   value       = fortios_wirelesscontroller_wtpprofile.this.ext_info_enable
+}
+
+output "frequency_handoff" {
+  description = "returns a string"
+  value       = fortios_wirelesscontroller_wtpprofile.this.frequency_handoff
 }
 
 output "handoff_roaming" {

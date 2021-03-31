@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aviatrix = ">= 2.17.2"
+    aviatrix = ">= 2.18.2"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aviatrix_transit_gateway_peering" {
 
   # enable_peering_over_private_network - (optional) is a type of bool
   enable_peering_over_private_network = null
+  # enable_single_tunnel_mode - (optional) is a type of bool
+  enable_single_tunnel_mode = null
   # gateway1_excluded_network_cidrs - (optional) is a type of list of string
   gateway1_excluded_network_cidrs = []
   # gateway1_excluded_tgw_connections - (optional) is a type of list of string
@@ -55,6 +57,12 @@ module "aviatrix_transit_gateway_peering" {
 ```terraform
 variable "enable_peering_over_private_network" {
   description = "(optional) - (Optional) Enable peering over private network. Insane mode is required on both transit gateways. Available as of provider version R2.17.1"
+  type        = bool
+  default     = null
+}
+
+variable "enable_single_tunnel_mode" {
+  description = "(optional) - Enable peering with Single-Tunnel mode."
   type        = bool
   default     = null
 }
@@ -113,6 +121,7 @@ variable "transit_gateway_name2" {
 ```terraform
 resource "aviatrix_transit_gateway_peering" "this" {
   enable_peering_over_private_network = var.enable_peering_over_private_network
+  enable_single_tunnel_mode           = var.enable_single_tunnel_mode
   gateway1_excluded_network_cidrs     = var.gateway1_excluded_network_cidrs
   gateway1_excluded_tgw_connections   = var.gateway1_excluded_tgw_connections
   gateway2_excluded_network_cidrs     = var.gateway2_excluded_network_cidrs

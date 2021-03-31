@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "fortios_wirelesscontrollerhotspot20_anqpnairealm" {
   source = "./modules/fortios/r/fortios_wirelesscontrollerhotspot20_anqpnairealm"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # name - (optional) is a type of string
   name = null
 
@@ -52,6 +54,12 @@ module "fortios_wirelesscontrollerhotspot20_anqpnairealm" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -90,7 +98,8 @@ variable "nai_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqpnairealm" "this" {
-  name = var.name
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  name                  = var.name
 
   dynamic "nai_list" {
     for_each = var.nai_list

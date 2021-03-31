@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -33,12 +33,18 @@ module "fortios_firewall_policy46" {
   comments = null
   # dstintf - (required) is a type of string
   dstintf = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # fixedport - (optional) is a type of string
   fixedport = null
   # ippool - (optional) is a type of string
   ippool = null
   # logtraffic - (optional) is a type of string
   logtraffic = null
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = null
+  # name - (optional) is a type of string
+  name = null
   # per_ip_shaper - (optional) is a type of string
   per_ip_shaper = null
   # permit_any_host - (optional) is a type of string
@@ -102,6 +108,12 @@ variable "dstintf" {
   type        = string
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fixedport" {
   description = "(optional)"
   type        = string
@@ -115,6 +127,18 @@ variable "ippool" {
 }
 
 variable "logtraffic" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "logtraffic_start" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -232,9 +256,12 @@ resource "fortios_firewall_policy46" "this" {
   action                 = var.action
   comments               = var.comments
   dstintf                = var.dstintf
+  dynamic_sort_subtable  = var.dynamic_sort_subtable
   fixedport              = var.fixedport
   ippool                 = var.ippool
   logtraffic             = var.logtraffic
+  logtraffic_start       = var.logtraffic_start
+  name                   = var.name
   per_ip_shaper          = var.per_ip_shaper
   permit_any_host        = var.permit_any_host
   policyid               = var.policyid
@@ -306,6 +333,16 @@ output "ippool" {
 output "logtraffic" {
   description = "returns a string"
   value       = fortios_firewall_policy46.this.logtraffic
+}
+
+output "logtraffic_start" {
+  description = "returns a string"
+  value       = fortios_firewall_policy46.this.logtraffic_start
+}
+
+output "name" {
+  description = "returns a string"
+  value       = fortios_firewall_policy46.this.name
 }
 
 output "per_ip_shaper" {

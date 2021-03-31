@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -40,6 +40,7 @@ module "oci_kms_generated_key" {
 
   key_shape = [{
     algorithm = null
+    curve_id  = null
     length    = null
   }]
 
@@ -88,6 +89,7 @@ variable "key_shape" {
   type = set(object(
     {
       algorithm = string
+      curve_id  = string
       length    = number
     }
   ))
@@ -122,6 +124,7 @@ resource "oci_kms_generated_key" "this" {
     for_each = var.key_shape
     content {
       algorithm = key_shape.value["algorithm"]
+      curve_id  = key_shape.value["curve_id"]
       length    = key_shape.value["length"]
     }
   }

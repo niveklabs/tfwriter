@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -45,10 +45,16 @@ module "fortios_user_ldap" {
   group_object_filter = null
   # group_search_base - (optional) is a type of string
   group_search_base = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
   # member_attr - (optional) is a type of string
   member_attr = null
   # name - (optional) is a type of string
   name = null
+  # obtain_user_info - (optional) is a type of string
+  obtain_user_info = null
   # password - (optional) is a type of string
   password = null
   # password_expiry_warning - (optional) is a type of string
@@ -73,8 +79,16 @@ module "fortios_user_ldap" {
   ssl_min_proto_version = null
   # tertiary_server - (optional) is a type of string
   tertiary_server = null
+  # two_factor - (optional) is a type of string
+  two_factor = null
+  # two_factor_authentication - (optional) is a type of string
+  two_factor_authentication = null
+  # two_factor_notification - (optional) is a type of string
+  two_factor_notification = null
   # type - (optional) is a type of string
   type = null
+  # user_info_exchange_server - (optional) is a type of string
+  user_info_exchange_server = null
   # username - (optional) is a type of string
   username = null
 }
@@ -138,6 +152,18 @@ variable "group_search_base" {
   default     = null
 }
 
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "member_attr" {
   description = "(optional)"
   type        = string
@@ -145,6 +171,12 @@ variable "member_attr" {
 }
 
 variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "obtain_user_info" {
   description = "(optional)"
   type        = string
   default     = null
@@ -221,7 +253,31 @@ variable "tertiary_server" {
   default     = null
 }
 
+variable "two_factor" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "two_factor_authentication" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "two_factor_notification" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "user_info_exchange_server" {
   description = "(optional)"
   type        = string
   default     = null
@@ -240,31 +296,38 @@ variable "username" {
 
 ```terraform
 resource "fortios_user_ldap" "this" {
-  account_key_filter      = var.account_key_filter
-  account_key_processing  = var.account_key_processing
-  ca_cert                 = var.ca_cert
-  cnid                    = var.cnid
-  dn                      = var.dn
-  group_filter            = var.group_filter
-  group_member_check      = var.group_member_check
-  group_object_filter     = var.group_object_filter
-  group_search_base       = var.group_search_base
-  member_attr             = var.member_attr
-  name                    = var.name
-  password                = var.password
-  password_expiry_warning = var.password_expiry_warning
-  password_renewal        = var.password_renewal
-  port                    = var.port
-  search_type             = var.search_type
-  secondary_server        = var.secondary_server
-  secure                  = var.secure
-  server                  = var.server
-  server_identity_check   = var.server_identity_check
-  source_ip               = var.source_ip
-  ssl_min_proto_version   = var.ssl_min_proto_version
-  tertiary_server         = var.tertiary_server
-  type                    = var.type
-  username                = var.username
+  account_key_filter        = var.account_key_filter
+  account_key_processing    = var.account_key_processing
+  ca_cert                   = var.ca_cert
+  cnid                      = var.cnid
+  dn                        = var.dn
+  group_filter              = var.group_filter
+  group_member_check        = var.group_member_check
+  group_object_filter       = var.group_object_filter
+  group_search_base         = var.group_search_base
+  interface                 = var.interface
+  interface_select_method   = var.interface_select_method
+  member_attr               = var.member_attr
+  name                      = var.name
+  obtain_user_info          = var.obtain_user_info
+  password                  = var.password
+  password_expiry_warning   = var.password_expiry_warning
+  password_renewal          = var.password_renewal
+  port                      = var.port
+  search_type               = var.search_type
+  secondary_server          = var.secondary_server
+  secure                    = var.secure
+  server                    = var.server
+  server_identity_check     = var.server_identity_check
+  source_ip                 = var.source_ip
+  ssl_min_proto_version     = var.ssl_min_proto_version
+  tertiary_server           = var.tertiary_server
+  two_factor                = var.two_factor
+  two_factor_authentication = var.two_factor_authentication
+  two_factor_notification   = var.two_factor_notification
+  type                      = var.type
+  user_info_exchange_server = var.user_info_exchange_server
+  username                  = var.username
 }
 ```
 
@@ -318,6 +381,16 @@ output "id" {
   value       = fortios_user_ldap.this.id
 }
 
+output "interface" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.interface_select_method
+}
+
 output "member_attr" {
   description = "returns a string"
   value       = fortios_user_ldap.this.member_attr
@@ -326,6 +399,11 @@ output "member_attr" {
 output "name" {
   description = "returns a string"
   value       = fortios_user_ldap.this.name
+}
+
+output "obtain_user_info" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.obtain_user_info
 }
 
 output "password_expiry_warning" {
@@ -378,9 +456,29 @@ output "tertiary_server" {
   value       = fortios_user_ldap.this.tertiary_server
 }
 
+output "two_factor" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.two_factor
+}
+
+output "two_factor_authentication" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.two_factor_authentication
+}
+
+output "two_factor_notification" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.two_factor_notification
+}
+
 output "type" {
   description = "returns a string"
   value       = fortios_user_ldap.this.type
+}
+
+output "user_info_exchange_server" {
+  description = "returns a string"
+  value       = fortios_user_ldap.this.user_info_exchange_server
 }
 
 output "username" {

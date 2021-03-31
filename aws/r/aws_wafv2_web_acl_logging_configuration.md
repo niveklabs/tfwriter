@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -74,7 +74,7 @@ variable "resource_arn" {
 }
 
 variable "redacted_fields" {
-  description = "nested block: NestingSet, min items: 0, max items: 100"
+  description = "nested block: NestingList, min items: 0, max items: 100"
   type = set(object(
     {
       all_query_arguments = list(object(

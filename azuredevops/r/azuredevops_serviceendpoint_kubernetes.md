@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -42,6 +42,7 @@ module "azuredevops_serviceendpoint_kubernetes" {
 
   azure_subscription = [{
     azure_environment = null
+    cluster_admin     = null
     cluster_name      = null
     namespace         = null
     resourcegroup_id  = null
@@ -62,6 +63,13 @@ module "azuredevops_serviceendpoint_kubernetes" {
     ca_cert_hash = null
     token        = null
     token_hash   = null
+  }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
   }]
 }
 ```
@@ -108,6 +116,7 @@ variable "azure_subscription" {
   type = set(object(
     {
       azure_environment = string
+      cluster_admin     = bool
       cluster_name      = string
       namespace         = string
       resourcegroup_id  = string
@@ -144,6 +153,19 @@ variable "service_account" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -163,6 +185,7 @@ resource "azuredevops_serviceendpoint_kubernetes" "this" {
     for_each = var.azure_subscription
     content {
       azure_environment = azure_subscription.value["azure_environment"]
+      cluster_admin     = azure_subscription.value["cluster_admin"]
       cluster_name      = azure_subscription.value["cluster_name"]
       namespace         = azure_subscription.value["namespace"]
       resourcegroup_id  = azure_subscription.value["resourcegroup_id"]
@@ -186,6 +209,16 @@ resource "azuredevops_serviceendpoint_kubernetes" "this" {
     content {
       ca_cert = service_account.value["ca_cert"]
       token   = service_account.value["token"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
     }
   }
 

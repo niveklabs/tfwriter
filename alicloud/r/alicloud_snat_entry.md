@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.111.0"
+    alicloud = ">= 1.119.1"
   }
 }
 ```
@@ -37,6 +37,12 @@ module "alicloud_snat_entry" {
   source_cidr = null
   # source_vswitch_id - (optional) is a type of string
   source_vswitch_id = null
+
+  timeouts = [{
+    create = null
+    delete = null
+    update = null
+  }]
 }
 ```
 
@@ -72,6 +78,18 @@ variable "source_vswitch_id" {
   type        = string
   default     = null
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -85,6 +103,16 @@ resource "alicloud_snat_entry" "this" {
   snat_table_id     = var.snat_table_id
   source_cidr       = var.source_cidr
   source_vswitch_id = var.source_vswitch_id
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 
@@ -101,6 +129,11 @@ output "id" {
 output "snat_entry_id" {
   description = "returns a string"
   value       = alicloud_snat_entry.this.snat_entry_id
+}
+
+output "status" {
+  description = "returns a string"
+  value       = alicloud_snat_entry.this.status
 }
 
 output "this" {

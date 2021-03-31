@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "fortios_system_clustersync" {
   source = "./modules/fortios/r/fortios_system_clustersync"
 
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # hb_interval - (optional) is a type of number
   hb_interval = null
   # hb_lost_threshold - (optional) is a type of number
   hb_lost_threshold = null
+  # ipsec_tunnel_sync - (optional) is a type of string
+  ipsec_tunnel_sync = null
   # peerip - (optional) is a type of string
   peerip = null
   # peervd - (optional) is a type of string
@@ -69,6 +73,12 @@ module "fortios_system_clustersync" {
 ### Variables
 
 ```terraform
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "hb_interval" {
   description = "(optional)"
   type        = number
@@ -78,6 +88,12 @@ variable "hb_interval" {
 variable "hb_lost_threshold" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "ipsec_tunnel_sync" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -154,12 +170,14 @@ variable "syncvd" {
 
 ```terraform
 resource "fortios_system_clustersync" "this" {
-  hb_interval          = var.hb_interval
-  hb_lost_threshold    = var.hb_lost_threshold
-  peerip               = var.peerip
-  peervd               = var.peervd
-  slave_add_ike_routes = var.slave_add_ike_routes
-  sync_id              = var.sync_id
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  hb_interval           = var.hb_interval
+  hb_lost_threshold     = var.hb_lost_threshold
+  ipsec_tunnel_sync     = var.ipsec_tunnel_sync
+  peerip                = var.peerip
+  peervd                = var.peervd
+  slave_add_ike_routes  = var.slave_add_ike_routes
+  sync_id               = var.sync_id
 
   dynamic "down_intfs_before_sess_sync" {
     for_each = var.down_intfs_before_sess_sync
@@ -218,6 +236,11 @@ output "hb_lost_threshold" {
 output "id" {
   description = "returns a string"
   value       = fortios_system_clustersync.this.id
+}
+
+output "ipsec_tunnel_sync" {
+  description = "returns a string"
+  value       = fortios_system_clustersync.this.ipsec_tunnel_sync
 }
 
 output "peerip" {

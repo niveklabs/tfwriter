@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -29,6 +29,10 @@ module "aws_ses_configuration_set" {
 
   # name - (required) is a type of string
   name = null
+
+  delivery_options = [{
+    tls_policy = null
+  }]
 }
 ```
 
@@ -41,6 +45,16 @@ variable "name" {
   description = "(required)"
   type        = string
 }
+
+variable "delivery_options" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      tls_policy = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -50,6 +64,14 @@ variable "name" {
 ```terraform
 resource "aws_ses_configuration_set" "this" {
   name = var.name
+
+  dynamic "delivery_options" {
+    for_each = var.delivery_options
+    content {
+      tls_policy = delivery_options.value["tls_policy"]
+    }
+  }
+
 }
 ```
 
@@ -58,6 +80,11 @@ resource "aws_ses_configuration_set" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_ses_configuration_set.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_ses_configuration_set.this.id

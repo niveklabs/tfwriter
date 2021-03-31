@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "azurerm_cosmosdb_gremlin_graph" {
   account_name = null
   # database_name - (required) is a type of string
   database_name = null
+  # default_ttl - (optional) is a type of number
+  default_ttl = null
   # name - (required) is a type of string
   name = null
   # partition_key_path - (optional) is a type of string
@@ -83,6 +85,12 @@ variable "account_name" {
 variable "database_name" {
   description = "(required)"
   type        = string
+}
+
+variable "default_ttl" {
+  description = "(optional)"
+  type        = number
+  default     = null
 }
 
 variable "name" {
@@ -172,6 +180,7 @@ variable "unique_key" {
 resource "azurerm_cosmosdb_gremlin_graph" "this" {
   account_name        = var.account_name
   database_name       = var.database_name
+  default_ttl         = var.default_ttl
   name                = var.name
   partition_key_path  = var.partition_key_path
   resource_group_name = var.resource_group_name
@@ -228,6 +237,11 @@ resource "azurerm_cosmosdb_gremlin_graph" "this" {
 ### Outputs
 
 ```terraform
+output "default_ttl" {
+  description = "returns a number"
+  value       = azurerm_cosmosdb_gremlin_graph.this.default_ttl
+}
+
 output "id" {
   description = "returns a string"
   value       = azurerm_cosmosdb_gremlin_graph.this.id

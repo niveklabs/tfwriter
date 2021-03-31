@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "google_sql_user" {
   password = null
   # project - (optional) is a type of string
   project = null
+  # type - (optional) is a type of string
+  type = null
 
   timeouts = [{
     create = null
@@ -76,13 +78,19 @@ variable "name" {
 }
 
 variable "password" {
-  description = "(optional) - The password for the user. Can be updated. For Postgres instances this is a Required field."
+  description = "(optional) - The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to\n                either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT."
   type        = string
   default     = null
 }
 
 variable "project" {
   description = "(optional) - The ID of the project in which the resource belongs. If it is not provided, the provider project is used."
+  type        = string
+  default     = null
+}
+
+variable "type" {
+  description = "(optional) - The user type. It determines the method to authenticate the user during login.\n                The default is the database's built-in user type. Flags include \"BUILT_IN\", \"CLOUD_IAM_USER\", or \"CLOUD_IAM_SERVICE_ACCOUNT\"."
   type        = string
   default     = null
 }
@@ -112,6 +120,7 @@ resource "google_sql_user" "this" {
   name            = var.name
   password        = var.password
   project         = var.project
+  type            = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts

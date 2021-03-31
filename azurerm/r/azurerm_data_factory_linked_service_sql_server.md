@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -45,6 +45,11 @@ module "azurerm_data_factory_linked_service_sql_server" {
   parameters = {}
   # resource_group_name - (required) is a type of string
   resource_group_name = null
+
+  key_vault_password = [{
+    linked_service_name = null
+    secret_name         = null
+  }]
 
   timeouts = [{
     create = null
@@ -110,6 +115,17 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "key_vault_password" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      linked_service_name = string
+      secret_name         = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -139,6 +155,14 @@ resource "azurerm_data_factory_linked_service_sql_server" "this" {
   name                     = var.name
   parameters               = var.parameters
   resource_group_name      = var.resource_group_name
+
+  dynamic "key_vault_password" {
+    for_each = var.key_vault_password
+    content {
+      linked_service_name = key_vault_password.value["linked_service_name"]
+      secret_name         = key_vault_password.value["secret_name"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

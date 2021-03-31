@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "azurerm_monitor_smart_detector_alert_rule" {
   scope_resource_ids = []
   # severity - (required) is a type of string
   severity = null
+  # tags - (optional) is a type of map of string
+  tags = {}
   # throttling_duration - (optional) is a type of string
   throttling_duration = null
 
@@ -108,6 +110,12 @@ variable "severity" {
   type        = string
 }
 
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
 variable "throttling_duration" {
   description = "(optional)"
   type        = string
@@ -153,6 +161,7 @@ resource "azurerm_monitor_smart_detector_alert_rule" "this" {
   resource_group_name = var.resource_group_name
   scope_resource_ids  = var.scope_resource_ids
   severity            = var.severity
+  tags                = var.tags
   throttling_duration = var.throttling_duration
 
   dynamic "action_group" {

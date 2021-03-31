@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuread = ">= 1.1.1"
+    azuread = ">= 1.4.0"
   }
 }
 ```
@@ -111,6 +111,11 @@ resource "azuread_service_principal" "this" {
 ### Outputs
 
 ```terraform
+output "app_roles" {
+  description = "returns a list of object"
+  value       = azuread_service_principal.this.app_roles
+}
+
 output "display_name" {
   description = "returns a string"
   value       = azuread_service_principal.this.display_name

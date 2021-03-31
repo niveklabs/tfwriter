@@ -12,7 +12,7 @@
 
 ```terraform
 provider "consul" {
-  version = "2.10.1"
+  version = "2.11.0"
 
   # address - (optional) is a type of string
   address = null

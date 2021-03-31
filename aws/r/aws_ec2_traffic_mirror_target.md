@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -94,6 +94,11 @@ output "arn" {
 output "id" {
   description = "returns a string"
   value       = aws_ec2_traffic_mirror_target.this.id
+}
+
+output "owner_id" {
+  description = "returns a string"
+  value       = aws_ec2_traffic_mirror_target.this.owner_id
 }
 
 output "this" {

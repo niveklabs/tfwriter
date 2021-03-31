@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -116,6 +116,11 @@ output "launch_mode" {
 output "launch_options" {
   description = "returns a list of object"
   value       = data.oci_core_image.this.launch_options
+}
+
+output "listing_type" {
+  description = "returns a string"
+  value       = data.oci_core_image.this.listing_type
 }
 
 output "operating_system" {

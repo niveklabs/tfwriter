@@ -12,7 +12,7 @@
 
 ```terraform
 provider "aci" {
-  version = "0.5.3"
+  version = "0.5.4"
 
   # cert_name - (optional) is a type of string
   cert_name = null

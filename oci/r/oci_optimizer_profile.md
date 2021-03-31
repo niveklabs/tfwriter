@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -42,6 +42,19 @@ module "oci_optimizer_profile" {
     items = [{
       level             = null
       recommendation_id = null
+    }]
+  }]
+
+  target_compartments = [{
+    items = []
+  }]
+
+  target_tags = [{
+    items = [{
+      tag_definition_name = null
+      tag_namespace_name  = null
+      tag_value_type      = null
+      tag_values          = []
     }]
   }]
 
@@ -99,6 +112,33 @@ variable "levels_configuration" {
   ))
 }
 
+variable "target_compartments" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      items = list(string)
+    }
+  ))
+  default = []
+}
+
+variable "target_tags" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      items = list(object(
+        {
+          tag_definition_name = string
+          tag_namespace_name  = string
+          tag_value_type      = string
+          tag_values          = list(string)
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -133,6 +173,30 @@ resource "oci_optimizer_profile" "this" {
         content {
           level             = items.value["level"]
           recommendation_id = items.value["recommendation_id"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "target_compartments" {
+    for_each = var.target_compartments
+    content {
+      items = target_compartments.value["items"]
+    }
+  }
+
+  dynamic "target_tags" {
+    for_each = var.target_tags
+    content {
+
+      dynamic "items" {
+        for_each = target_tags.value.items
+        content {
+          tag_definition_name = items.value["tag_definition_name"]
+          tag_namespace_name  = items.value["tag_namespace_name"]
+          tag_value_type      = items.value["tag_value_type"]
+          tag_values          = items.value["tag_values"]
         }
       }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -29,18 +29,30 @@ module "fortios_logfortianalyzer2_overridesetting" {
 
   # __change_ip - (optional) is a type of number
   __change_ip = null
+  # access_config - (optional) is a type of string
+  access_config = null
   # certificate - (optional) is a type of string
   certificate = null
+  # certificate_verification - (optional) is a type of string
+  certificate_verification = null
   # conn_timeout - (optional) is a type of number
   conn_timeout = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # enc_algorithm - (optional) is a type of string
   enc_algorithm = null
   # faz_type - (optional) is a type of number
   faz_type = null
   # hmac_algorithm - (optional) is a type of string
   hmac_algorithm = null
+  # interface - (optional) is a type of string
+  interface = null
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = null
   # ips_archive - (optional) is a type of string
   ips_archive = null
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = null
   # mgmt_name - (optional) is a type of string
   mgmt_name = null
   # monitor_failure_retry_period - (optional) is a type of number
@@ -49,6 +61,8 @@ module "fortios_logfortianalyzer2_overridesetting" {
   monitor_keepalive_period = null
   # override - (optional) is a type of string
   override = null
+  # priority - (optional) is a type of string
+  priority = null
   # reliable - (optional) is a type of string
   reliable = null
   # server - (optional) is a type of string
@@ -69,6 +83,10 @@ module "fortios_logfortianalyzer2_overridesetting" {
   upload_time = null
   # use_management_vdom - (optional) is a type of string
   use_management_vdom = null
+
+  serial = [{
+    name = null
+  }]
 }
 ```
 
@@ -83,7 +101,19 @@ variable "__change_ip" {
   default     = null
 }
 
+variable "access_config" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "certificate" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "certificate_verification" {
   description = "(optional)"
   type        = string
   default     = null
@@ -92,6 +122,12 @@ variable "certificate" {
 variable "conn_timeout" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -113,9 +149,27 @@ variable "hmac_algorithm" {
   default     = null
 }
 
+variable "interface" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "interface_select_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ips_archive" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "max_log_rate" {
+  description = "(optional)"
+  type        = number
   default     = null
 }
 
@@ -138,6 +192,12 @@ variable "monitor_keepalive_period" {
 }
 
 variable "override" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "priority" {
   description = "(optional)"
   type        = string
   default     = null
@@ -202,6 +262,16 @@ variable "use_management_vdom" {
   type        = string
   default     = null
 }
+
+variable "serial" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -211,16 +281,23 @@ variable "use_management_vdom" {
 ```terraform
 resource "fortios_logfortianalyzer2_overridesetting" "this" {
   __change_ip                  = var.__change_ip
+  access_config                = var.access_config
   certificate                  = var.certificate
+  certificate_verification     = var.certificate_verification
   conn_timeout                 = var.conn_timeout
+  dynamic_sort_subtable        = var.dynamic_sort_subtable
   enc_algorithm                = var.enc_algorithm
   faz_type                     = var.faz_type
   hmac_algorithm               = var.hmac_algorithm
+  interface                    = var.interface
+  interface_select_method      = var.interface_select_method
   ips_archive                  = var.ips_archive
+  max_log_rate                 = var.max_log_rate
   mgmt_name                    = var.mgmt_name
   monitor_failure_retry_period = var.monitor_failure_retry_period
   monitor_keepalive_period     = var.monitor_keepalive_period
   override                     = var.override
+  priority                     = var.priority
   reliable                     = var.reliable
   server                       = var.server
   source_ip                    = var.source_ip
@@ -231,6 +308,14 @@ resource "fortios_logfortianalyzer2_overridesetting" "this" {
   upload_option                = var.upload_option
   upload_time                  = var.upload_time
   use_management_vdom          = var.use_management_vdom
+
+  dynamic "serial" {
+    for_each = var.serial
+    content {
+      name = serial.value["name"]
+    }
+  }
+
 }
 ```
 
@@ -244,9 +329,19 @@ output "__change_ip" {
   value       = fortios_logfortianalyzer2_overridesetting.this.__change_ip
 }
 
+output "access_config" {
+  description = "returns a string"
+  value       = fortios_logfortianalyzer2_overridesetting.this.access_config
+}
+
 output "certificate" {
   description = "returns a string"
   value       = fortios_logfortianalyzer2_overridesetting.this.certificate
+}
+
+output "certificate_verification" {
+  description = "returns a string"
+  value       = fortios_logfortianalyzer2_overridesetting.this.certificate_verification
 }
 
 output "conn_timeout" {
@@ -274,9 +369,24 @@ output "id" {
   value       = fortios_logfortianalyzer2_overridesetting.this.id
 }
 
+output "interface" {
+  description = "returns a string"
+  value       = fortios_logfortianalyzer2_overridesetting.this.interface
+}
+
+output "interface_select_method" {
+  description = "returns a string"
+  value       = fortios_logfortianalyzer2_overridesetting.this.interface_select_method
+}
+
 output "ips_archive" {
   description = "returns a string"
   value       = fortios_logfortianalyzer2_overridesetting.this.ips_archive
+}
+
+output "max_log_rate" {
+  description = "returns a number"
+  value       = fortios_logfortianalyzer2_overridesetting.this.max_log_rate
 }
 
 output "mgmt_name" {
@@ -297,6 +407,11 @@ output "monitor_keepalive_period" {
 output "override" {
   description = "returns a string"
   value       = fortios_logfortianalyzer2_overridesetting.this.override
+}
+
+output "priority" {
+  description = "returns a string"
+  value       = fortios_logfortianalyzer2_overridesetting.this.priority
 }
 
 output "reliable" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,12 +41,20 @@ module "fortios_firewall_sniffer" {
   dlp_sensor_status = null
   # dsri - (optional) is a type of string
   dsri = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = null
+  # emailfilter_profile_status - (optional) is a type of string
+  emailfilter_profile_status = null
   # fosid - (optional) is a type of number
   fosid = null
   # host - (optional) is a type of string
   host = null
   # interface - (required) is a type of string
   interface = null
+  # ip_threatfeed_status - (optional) is a type of string
+  ip_threatfeed_status = null
   # ips_dos_status - (optional) is a type of string
   ips_dos_status = null
   # ips_sensor - (optional) is a type of string
@@ -90,6 +98,10 @@ module "fortios_firewall_sniffer" {
     status            = null
     threshold         = null
     thresholddefault  = null
+  }]
+
+  ip_threatfeed = [{
+    name = null
   }]
 }
 ```
@@ -141,6 +153,24 @@ variable "dsri" {
   default     = null
 }
 
+variable "dynamic_sort_subtable" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "emailfilter_profile_status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "fosid" {
   description = "(optional)"
   type        = number
@@ -156,6 +186,12 @@ variable "host" {
 variable "interface" {
   description = "(required)"
   type        = string
+}
+
+variable "ip_threatfeed_status" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "ips_dos_status" {
@@ -271,6 +307,16 @@ variable "anomaly" {
   ))
   default = []
 }
+
+variable "ip_threatfeed" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -279,32 +325,36 @@ variable "anomaly" {
 
 ```terraform
 resource "fortios_firewall_sniffer" "this" {
-  application_list          = var.application_list
-  application_list_status   = var.application_list_status
-  av_profile                = var.av_profile
-  av_profile_status         = var.av_profile_status
-  dlp_sensor                = var.dlp_sensor
-  dlp_sensor_status         = var.dlp_sensor_status
-  dsri                      = var.dsri
-  fosid                     = var.fosid
-  host                      = var.host
-  interface                 = var.interface
-  ips_dos_status            = var.ips_dos_status
-  ips_sensor                = var.ips_sensor
-  ips_sensor_status         = var.ips_sensor_status
-  ipv6                      = var.ipv6
-  logtraffic                = var.logtraffic
-  max_packet_count          = var.max_packet_count
-  non_ip                    = var.non_ip
-  port                      = var.port
-  protocol                  = var.protocol
-  scan_botnet_connections   = var.scan_botnet_connections
-  spamfilter_profile        = var.spamfilter_profile
-  spamfilter_profile_status = var.spamfilter_profile_status
-  status                    = var.status
-  vlan                      = var.vlan
-  webfilter_profile         = var.webfilter_profile
-  webfilter_profile_status  = var.webfilter_profile_status
+  application_list           = var.application_list
+  application_list_status    = var.application_list_status
+  av_profile                 = var.av_profile
+  av_profile_status          = var.av_profile_status
+  dlp_sensor                 = var.dlp_sensor
+  dlp_sensor_status          = var.dlp_sensor_status
+  dsri                       = var.dsri
+  dynamic_sort_subtable      = var.dynamic_sort_subtable
+  emailfilter_profile        = var.emailfilter_profile
+  emailfilter_profile_status = var.emailfilter_profile_status
+  fosid                      = var.fosid
+  host                       = var.host
+  interface                  = var.interface
+  ip_threatfeed_status       = var.ip_threatfeed_status
+  ips_dos_status             = var.ips_dos_status
+  ips_sensor                 = var.ips_sensor
+  ips_sensor_status          = var.ips_sensor_status
+  ipv6                       = var.ipv6
+  logtraffic                 = var.logtraffic
+  max_packet_count           = var.max_packet_count
+  non_ip                     = var.non_ip
+  port                       = var.port
+  protocol                   = var.protocol
+  scan_botnet_connections    = var.scan_botnet_connections
+  spamfilter_profile         = var.spamfilter_profile
+  spamfilter_profile_status  = var.spamfilter_profile_status
+  status                     = var.status
+  vlan                       = var.vlan
+  webfilter_profile          = var.webfilter_profile
+  webfilter_profile_status   = var.webfilter_profile_status
 
   dynamic "anomaly" {
     for_each = var.anomaly
@@ -318,6 +368,13 @@ resource "fortios_firewall_sniffer" "this" {
       status            = anomaly.value["status"]
       threshold         = anomaly.value["threshold"]
       thresholddefault  = anomaly.value["thresholddefault"]
+    }
+  }
+
+  dynamic "ip_threatfeed" {
+    for_each = var.ip_threatfeed
+    content {
+      name = ip_threatfeed.value["name"]
     }
   }
 
@@ -364,6 +421,16 @@ output "dsri" {
   value       = fortios_firewall_sniffer.this.dsri
 }
 
+output "emailfilter_profile" {
+  description = "returns a string"
+  value       = fortios_firewall_sniffer.this.emailfilter_profile
+}
+
+output "emailfilter_profile_status" {
+  description = "returns a string"
+  value       = fortios_firewall_sniffer.this.emailfilter_profile_status
+}
+
 output "fosid" {
   description = "returns a number"
   value       = fortios_firewall_sniffer.this.fosid
@@ -377,6 +444,11 @@ output "host" {
 output "id" {
   description = "returns a string"
   value       = fortios_firewall_sniffer.this.id
+}
+
+output "ip_threatfeed_status" {
+  description = "returns a string"
+  value       = fortios_firewall_sniffer.this.ip_threatfeed_status
 }
 
 output "ips_dos_status" {

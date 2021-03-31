@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    circonus = ">= 0.11.4"
+    circonus = ">= 0.12.0"
   }
 }
 ```
@@ -634,7 +634,7 @@ variable "smtp" {
 }
 
 variable "snmp" {
-  description = "nested block: NestingSet, min items: 0, max items: 1"
+  description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
       auth_passphrase = string

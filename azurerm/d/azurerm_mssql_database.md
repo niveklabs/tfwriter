@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -126,6 +126,11 @@ output "read_scale" {
 output "sku_name" {
   description = "returns a string"
   value       = data.azurerm_mssql_database.this.sku_name
+}
+
+output "storage_account_type" {
+  description = "returns a string"
+  value       = data.azurerm_mssql_database.this.storage_account_type
 }
 
 output "tags" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "aws_ssm_document" {
   tags = {}
   # target_type - (optional) is a type of string
   target_type = null
+  # version_name - (optional) is a type of string
+  version_name = null
 
   attachments_source = [{
     key    = null
@@ -94,8 +96,14 @@ variable "target_type" {
   default     = null
 }
 
+variable "version_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "attachments_source" {
-  description = "nested block: NestingList, min items: 0, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 20"
   type = set(object(
     {
       key    = string
@@ -120,6 +128,7 @@ resource "aws_ssm_document" "this" {
   permissions     = var.permissions
   tags            = var.tags
   target_type     = var.target_type
+  version_name    = var.version_name
 
   dynamic "attachments_source" {
     for_each = var.attachments_source

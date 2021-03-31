@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.51.0"
+    google-beta = ">= 3.62.0"
   }
 }
 ```
@@ -29,8 +29,12 @@ module "google_dataflow_job" {
 
   # additional_experiments - (optional) is a type of set of string
   additional_experiments = []
+  # enable_streaming_engine - (optional) is a type of bool
+  enable_streaming_engine = null
   # ip_configuration - (optional) is a type of string
   ip_configuration = null
+  # kms_key_name - (optional) is a type of string
+  kms_key_name = null
   # labels - (optional) is a type of map of string
   labels = {}
   # machine_type - (optional) is a type of string
@@ -79,8 +83,20 @@ variable "additional_experiments" {
   default     = null
 }
 
+variable "enable_streaming_engine" {
+  description = "(optional) - Indicates if the job should use the streaming engine feature."
+  type        = bool
+  default     = null
+}
+
 variable "ip_configuration" {
   description = "(optional) - The configuration for VM IPs. Options are \"WORKER_IP_PUBLIC\" or \"WORKER_IP_PRIVATE\"."
+  type        = string
+  default     = null
+}
+
+variable "kms_key_name" {
+  description = "(optional) - The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
   type        = string
   default     = null
 }
@@ -189,23 +205,25 @@ variable "timeouts" {
 
 ```terraform
 resource "google_dataflow_job" "this" {
-  additional_experiments = var.additional_experiments
-  ip_configuration       = var.ip_configuration
-  labels                 = var.labels
-  machine_type           = var.machine_type
-  max_workers            = var.max_workers
-  name                   = var.name
-  network                = var.network
-  on_delete              = var.on_delete
-  parameters             = var.parameters
-  project                = var.project
-  region                 = var.region
-  service_account_email  = var.service_account_email
-  subnetwork             = var.subnetwork
-  temp_gcs_location      = var.temp_gcs_location
-  template_gcs_path      = var.template_gcs_path
-  transform_name_mapping = var.transform_name_mapping
-  zone                   = var.zone
+  additional_experiments  = var.additional_experiments
+  enable_streaming_engine = var.enable_streaming_engine
+  ip_configuration        = var.ip_configuration
+  kms_key_name            = var.kms_key_name
+  labels                  = var.labels
+  machine_type            = var.machine_type
+  max_workers             = var.max_workers
+  name                    = var.name
+  network                 = var.network
+  on_delete               = var.on_delete
+  parameters              = var.parameters
+  project                 = var.project
+  region                  = var.region
+  service_account_email   = var.service_account_email
+  subnetwork              = var.subnetwork
+  temp_gcs_location       = var.temp_gcs_location
+  template_gcs_path       = var.template_gcs_path
+  transform_name_mapping  = var.transform_name_mapping
+  zone                    = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts

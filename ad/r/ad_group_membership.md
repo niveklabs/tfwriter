@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ad = ">= 0.4.0"
+    ad = ">= 0.4.1"
   }
 }
 ```

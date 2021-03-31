@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    equinix = ">= 1.0.2"
+    equinix = ">= 1.1.0-beta"
   }
 }
 ```
@@ -27,11 +27,13 @@ terraform {
 module "equinix_ecx_l2_connection_accepter" {
   source = "./modules/equinix/r/equinix_ecx_l2_connection_accepter"
 
-  # access_key - (required) is a type of string
+  # access_key - (optional) is a type of string
   access_key = null
+  # aws_profile - (optional) is a type of string
+  aws_profile = null
   # connection_id - (required) is a type of string
   connection_id = null
-  # secret_key - (required) is a type of string
+  # secret_key - (optional) is a type of string
   secret_key = null
 
   timeouts = [{
@@ -46,18 +48,26 @@ module "equinix_ecx_l2_connection_accepter" {
 
 ```terraform
 variable "access_key" {
-  description = "(required)"
+  description = "(optional) - Access Key used to accept connection on provider side"
   type        = string
+  default     = null
+}
+
+variable "aws_profile" {
+  description = "(optional) - AWS Profile Name for retrieving credentials from shared credentials file"
+  type        = string
+  default     = null
 }
 
 variable "connection_id" {
-  description = "(required)"
+  description = "(required) - Identifier of layer 2 connection that will be accepted"
   type        = string
 }
 
 variable "secret_key" {
-  description = "(required)"
+  description = "(optional) - Secret Key used to accept connection on provider side"
   type        = string
+  default     = null
 }
 
 variable "timeouts" {
@@ -78,6 +88,7 @@ variable "timeouts" {
 ```terraform
 resource "equinix_ecx_l2_connection_accepter" "this" {
   access_key    = var.access_key
+  aws_profile   = var.aws_profile
   connection_id = var.connection_id
   secret_key    = var.secret_key
 
@@ -96,6 +107,12 @@ resource "equinix_ecx_l2_connection_accepter" "this" {
 ### Outputs
 
 ```terraform
+output "access_key" {
+  description = "returns a string"
+  value       = equinix_ecx_l2_connection_accepter.this.access_key
+  sensitive   = true
+}
+
 output "aws_connection_id" {
   description = "returns a string"
   value       = equinix_ecx_l2_connection_accepter.this.aws_connection_id
@@ -104,6 +121,12 @@ output "aws_connection_id" {
 output "id" {
   description = "returns a string"
   value       = equinix_ecx_l2_connection_accepter.this.id
+}
+
+output "secret_key" {
+  description = "returns a string"
+  value       = equinix_ecx_l2_connection_accepter.this.secret_key
+  sensitive   = true
 }
 
 output "this" {

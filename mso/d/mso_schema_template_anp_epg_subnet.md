@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    mso = ">= 0.1.4"
+    mso = ">= 0.1.5"
   }
 }
 ```

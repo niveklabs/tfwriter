@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "oci_metering_computation_usage" {
   granularity = null
   # group_by - (optional) is a type of list of string
   group_by = []
+  # is_aggregate_by_time - (optional) is a type of bool
+  is_aggregate_by_time = null
   # query_type - (optional) is a type of string
   query_type = null
   # tenant_id - (required) is a type of string
@@ -43,6 +45,12 @@ module "oci_metering_computation_usage" {
   time_usage_ended = null
   # time_usage_started - (required) is a type of string
   time_usage_started = null
+
+  group_by_tag = [{
+    key       = null
+    namespace = null
+    value     = null
+  }]
 
   timeouts = [{
     create = null
@@ -80,6 +88,12 @@ variable "group_by" {
   default     = null
 }
 
+variable "is_aggregate_by_time" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "query_type" {
   description = "(optional)"
   type        = string
@@ -101,6 +115,18 @@ variable "time_usage_started" {
   type        = string
 }
 
+variable "group_by_tag" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      key       = string
+      namespace = string
+      value     = string
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -120,14 +146,24 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_metering_computation_usage" "this" {
-  compartment_depth  = var.compartment_depth
-  filter             = var.filter
-  granularity        = var.granularity
-  group_by           = var.group_by
-  query_type         = var.query_type
-  tenant_id          = var.tenant_id
-  time_usage_ended   = var.time_usage_ended
-  time_usage_started = var.time_usage_started
+  compartment_depth    = var.compartment_depth
+  filter               = var.filter
+  granularity          = var.granularity
+  group_by             = var.group_by
+  is_aggregate_by_time = var.is_aggregate_by_time
+  query_type           = var.query_type
+  tenant_id            = var.tenant_id
+  time_usage_ended     = var.time_usage_ended
+  time_usage_started   = var.time_usage_started
+
+  dynamic "group_by_tag" {
+    for_each = var.group_by_tag
+    content {
+      key       = group_by_tag.value["key"]
+      namespace = group_by_tag.value["namespace"]
+      value     = group_by_tag.value["value"]
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -159,6 +195,11 @@ output "group_by" {
 output "id" {
   description = "returns a string"
   value       = oci_metering_computation_usage.this.id
+}
+
+output "is_aggregate_by_time" {
+  description = "returns a bool"
+  value       = oci_metering_computation_usage.this.is_aggregate_by_time
 }
 
 output "items" {

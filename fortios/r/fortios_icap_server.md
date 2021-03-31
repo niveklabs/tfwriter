@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,10 @@ module "fortios_icap_server" {
   name = null
   # port - (optional) is a type of number
   port = null
+  # secure - (optional) is a type of string
+  secure = null
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = null
 }
 ```
 
@@ -82,6 +86,18 @@ variable "port" {
   type        = number
   default     = null
 }
+
+variable "secure" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ssl_cert" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -96,6 +112,8 @@ resource "fortios_icap_server" "this" {
   max_connections = var.max_connections
   name            = var.name
   port            = var.port
+  secure          = var.secure
+  ssl_cert        = var.ssl_cert
 }
 ```
 
@@ -137,6 +155,16 @@ output "name" {
 output "port" {
   description = "returns a number"
   value       = fortios_icap_server.this.port
+}
+
+output "secure" {
+  description = "returns a string"
+  value       = fortios_icap_server.this.secure
+}
+
+output "ssl_cert" {
+  description = "returns a string"
+  value       = fortios_icap_server.this.ssl_cert
 }
 
 output "this" {

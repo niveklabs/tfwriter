@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -60,7 +60,7 @@ data "aws_lakeformation_data_lake_settings" "this" {
 
 ```terraform
 output "admins" {
-  description = "returns a list of string"
+  description = "returns a set of string"
   value       = data.aws_lakeformation_data_lake_settings.this.admins
 }
 

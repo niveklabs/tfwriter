@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -39,6 +39,7 @@ module "azurerm_mssql_database" {
   elastic_pool_id = null
   # extended_auditing_policy - (optional) is a type of list of object
   extended_auditing_policy = [{
+    log_monitoring_enabled                  = null
     retention_in_days                       = null
     storage_account_access_key              = null
     storage_account_access_key_is_secondary = null
@@ -68,6 +69,8 @@ module "azurerm_mssql_database" {
   server_id = null
   # sku_name - (optional) is a type of string
   sku_name = null
+  # storage_account_type - (optional) is a type of string
+  storage_account_type = null
   # tags - (optional) is a type of map of string
   tags = {}
   # zone_redundant - (optional) is a type of bool
@@ -143,6 +146,7 @@ variable "extended_auditing_policy" {
   description = "(optional)"
   type = list(object(
     {
+      log_monitoring_enabled                  = bool
       retention_in_days                       = number
       storage_account_access_key              = string
       storage_account_access_key_is_secondary = bool
@@ -217,6 +221,12 @@ variable "server_id" {
 }
 
 variable "sku_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "storage_account_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -312,6 +322,7 @@ resource "azurerm_mssql_database" "this" {
   sample_name                 = var.sample_name
   server_id                   = var.server_id
   sku_name                    = var.sku_name
+  storage_account_type        = var.storage_account_type
   tags                        = var.tags
   zone_redundant              = var.zone_redundant
 

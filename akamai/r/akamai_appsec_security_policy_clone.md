@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    akamai = ">= 1.0.0"
+    akamai = ">= 1.5.0"
   }
 }
 ```
@@ -29,12 +29,12 @@ module "akamai_appsec_security_policy_clone" {
 
   # config_id - (required) is a type of number
   config_id = null
-  # create_from_security_policy - (required) is a type of string
-  create_from_security_policy = null
-  # policy_name - (optional) is a type of string
-  policy_name = null
-  # policy_prefix - (optional) is a type of string
-  policy_prefix = null
+  # create_from_security_policy_id - (required) is a type of string
+  create_from_security_policy_id = null
+  # security_policy_name - (optional) is a type of string
+  security_policy_name = null
+  # security_policy_prefix - (optional) is a type of string
+  security_policy_prefix = null
   # version - (required) is a type of number
   version = null
 }
@@ -50,18 +50,18 @@ variable "config_id" {
   type        = number
 }
 
-variable "create_from_security_policy" {
+variable "create_from_security_policy_id" {
   description = "(required)"
   type        = string
 }
 
-variable "policy_name" {
+variable "security_policy_name" {
   description = "(optional)"
   type        = string
   default     = null
 }
 
-variable "policy_prefix" {
+variable "security_policy_prefix" {
   description = "(optional)"
   type        = string
   default     = null
@@ -79,11 +79,11 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_security_policy_clone" "this" {
-  config_id                   = var.config_id
-  create_from_security_policy = var.create_from_security_policy
-  policy_name                 = var.policy_name
-  policy_prefix               = var.policy_prefix
-  version                     = var.version
+  config_id                      = var.config_id
+  create_from_security_policy_id = var.create_from_security_policy_id
+  security_policy_name           = var.security_policy_name
+  security_policy_prefix         = var.security_policy_prefix
+  version                        = var.version
 }
 ```
 
@@ -97,9 +97,9 @@ output "id" {
   value       = akamai_appsec_security_policy_clone.this.id
 }
 
-output "policy_id" {
+output "security_policy_id" {
   description = "returns a string"
-  value       = akamai_appsec_security_policy_clone.this.policy_id
+  value       = akamai_appsec_security_policy_clone.this.security_policy_id
 }
 
 output "this" {

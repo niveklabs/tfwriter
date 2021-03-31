@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "fortios_logmemory_filter" {
   dhcp = null
   # dns - (optional) is a type of string
   dns = null
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = null
   # event - (optional) is a type of string
   event = null
   # filter - (optional) is a type of string
@@ -91,6 +93,13 @@ module "fortios_logmemory_filter" {
   wan_opt = null
   # wireless_activity - (optional) is a type of string
   wireless_activity = null
+
+  free_style = [{
+    category    = null
+    filter      = null
+    filter_type = null
+    id          = null
+  }]
 }
 ```
 
@@ -130,6 +139,12 @@ variable "dhcp" {
 }
 
 variable "dns" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "dynamic_sort_subtable" {
   description = "(optional)"
   type        = string
   default     = null
@@ -290,6 +305,19 @@ variable "wireless_activity" {
   type        = string
   default     = null
 }
+
+variable "free_style" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      category    = string
+      filter      = string
+      filter_type = string
+      id          = number
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -304,6 +332,7 @@ resource "fortios_logmemory_filter" "this" {
   cpu_memory_usage      = var.cpu_memory_usage
   dhcp                  = var.dhcp
   dns                   = var.dns
+  dynamic_sort_subtable = var.dynamic_sort_subtable
   event                 = var.event
   filter                = var.filter
   filter_type           = var.filter_type
@@ -330,6 +359,17 @@ resource "fortios_logmemory_filter" "this" {
   voip                  = var.voip
   wan_opt               = var.wan_opt
   wireless_activity     = var.wireless_activity
+
+  dynamic "free_style" {
+    for_each = var.free_style
+    content {
+      category    = free_style.value["category"]
+      filter      = free_style.value["filter"]
+      filter_type = free_style.value["filter_type"]
+      id          = free_style.value["id"]
+    }
+  }
+
 }
 ```
 

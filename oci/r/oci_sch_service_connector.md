@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.7.0"
+    oci = ">= 4.19.0"
   }
 }
 ```
@@ -49,16 +49,20 @@ module "oci_sch_service_connector" {
 
 
   target = [{
-    bucket             = null
-    compartment_id     = null
-    function_id        = null
-    kind               = null
-    metric             = null
-    metric_namespace   = null
-    namespace          = null
-    object_name_prefix = null
-    stream_id          = null
-    topic_id           = null
+    batch_rollover_size_in_mbs = null
+    batch_rollover_time_in_ms  = null
+    bucket                     = null
+    compartment_id             = null
+    enable_formatted_messaging = null
+    function_id                = null
+    kind                       = null
+    log_group_id               = null
+    metric                     = null
+    metric_namespace           = null
+    namespace                  = null
+    object_name_prefix         = null
+    stream_id                  = null
+    topic_id                   = null
   }]
 
   tasks = [{
@@ -133,16 +137,20 @@ variable "target" {
   description = "nested block: NestingList, min items: 1, max items: 1"
   type = set(object(
     {
-      bucket             = string
-      compartment_id     = string
-      function_id        = string
-      kind               = string
-      metric             = string
-      metric_namespace   = string
-      namespace          = string
-      object_name_prefix = string
-      stream_id          = string
-      topic_id           = string
+      batch_rollover_size_in_mbs = number
+      batch_rollover_time_in_ms  = number
+      bucket                     = string
+      compartment_id             = string
+      enable_formatted_messaging = bool
+      function_id                = string
+      kind                       = string
+      log_group_id               = string
+      metric                     = string
+      metric_namespace           = string
+      namespace                  = string
+      object_name_prefix         = string
+      stream_id                  = string
+      topic_id                   = string
     }
   ))
 }
@@ -204,16 +212,20 @@ resource "oci_sch_service_connector" "this" {
   dynamic "target" {
     for_each = var.target
     content {
-      bucket             = target.value["bucket"]
-      compartment_id     = target.value["compartment_id"]
-      function_id        = target.value["function_id"]
-      kind               = target.value["kind"]
-      metric             = target.value["metric"]
-      metric_namespace   = target.value["metric_namespace"]
-      namespace          = target.value["namespace"]
-      object_name_prefix = target.value["object_name_prefix"]
-      stream_id          = target.value["stream_id"]
-      topic_id           = target.value["topic_id"]
+      batch_rollover_size_in_mbs = target.value["batch_rollover_size_in_mbs"]
+      batch_rollover_time_in_ms  = target.value["batch_rollover_time_in_ms"]
+      bucket                     = target.value["bucket"]
+      compartment_id             = target.value["compartment_id"]
+      enable_formatted_messaging = target.value["enable_formatted_messaging"]
+      function_id                = target.value["function_id"]
+      kind                       = target.value["kind"]
+      log_group_id               = target.value["log_group_id"]
+      metric                     = target.value["metric"]
+      metric_namespace           = target.value["metric_namespace"]
+      namespace                  = target.value["namespace"]
+      object_name_prefix         = target.value["object_name_prefix"]
+      stream_id                  = target.value["stream_id"]
+      topic_id                   = target.value["topic_id"]
     }
   }
 

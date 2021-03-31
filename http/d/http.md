@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    http = ">= 2.0.0"
+    http = ">= 2.1.0"
   }
 }
 ```

@@ -12,7 +12,7 @@
 
 ```terraform
 provider "bigip" {
-  version = "1.5.0"
+  version = "1.7.0"
 
   # address - (required) is a type of string
   address = null
@@ -135,6 +135,10 @@ provider "bigip" {
 - [bigip_ltm_irule](./d/bigip_ltm_irule.md)
 
 - [bigip_ltm_monitor](./d/bigip_ltm_monitor.md)
+
+- [bigip_ltm_node](./d/bigip_ltm_node.md)
+
+- [bigip_ltm_pool](./d/bigip_ltm_pool.md)
 
 - [bigip_ssl_certificate](./d/bigip_ssl_certificate.md)
 

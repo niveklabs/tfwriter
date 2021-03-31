@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -194,6 +194,11 @@ output "spot_max_price" {
 output "tags" {
   description = "returns a map of string"
   value       = data.azurerm_kubernetes_cluster_node_pool.this.tags
+}
+
+output "upgrade_settings" {
+  description = "returns a list of object"
+  value       = data.azurerm_kubernetes_cluster_node_pool.this.upgrade_settings
 }
 
 output "vm_size" {

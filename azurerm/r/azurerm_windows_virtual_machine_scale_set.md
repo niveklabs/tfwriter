@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.41.0"
+    azurerm = ">= 2.53.0"
   }
 }
 ```
@@ -43,6 +43,8 @@ module "azurerm_windows_virtual_machine_scale_set" {
   encryption_at_host_enabled = null
   # eviction_policy - (optional) is a type of string
   eviction_policy = null
+  # extensions_time_budget - (optional) is a type of string
+  extensions_time_budget = null
   # health_probe_id - (optional) is a type of string
   health_probe_id = null
   # instances - (required) is a type of number
@@ -272,6 +274,12 @@ variable "encryption_at_host_enabled" {
 }
 
 variable "eviction_policy" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "extensions_time_budget" {
   description = "(optional)"
   type        = string
   default     = null
@@ -661,6 +669,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "this" {
   enable_automatic_updates                          = var.enable_automatic_updates
   encryption_at_host_enabled                        = var.encryption_at_host_enabled
   eviction_policy                                   = var.eviction_policy
+  extensions_time_budget                            = var.extensions_time_budget
   health_probe_id                                   = var.health_probe_id
   instances                                         = var.instances
   license_type                                      = var.license_type

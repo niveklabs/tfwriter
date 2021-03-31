@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azuredevops = ">= 0.1.0"
+    azuredevops = ">= 0.1.3"
   }
 }
 ```
@@ -48,6 +48,13 @@ module "azuredevops_serviceendpoint_azurerm" {
     serviceprincipalid       = null
     serviceprincipalkey      = null
     serviceprincipalkey_hash = null
+  }]
+
+  timeouts = [{
+    create = null
+    delete = null
+    read   = null
+    update = null
   }]
 }
 ```
@@ -111,6 +118,19 @@ variable "credentials" {
   ))
   default = []
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+      delete = string
+      read   = string
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -133,6 +153,16 @@ resource "azuredevops_serviceendpoint_azurerm" "this" {
     content {
       serviceprincipalid  = credentials.value["serviceprincipalid"]
       serviceprincipalkey = credentials.value["serviceprincipalkey"]
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+      delete = timeouts.value["delete"]
+      read   = timeouts.value["read"]
+      update = timeouts.value["update"]
     }
   }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.51.0"
+    google = ">= 3.62.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "google_container_cluster" {
 
   # cluster_ipv4_cidr - (optional) is a type of string
   cluster_ipv4_cidr = null
+  # datapath_provider - (optional) is a type of string
+  datapath_provider = null
   # default_max_pods_per_node - (optional) is a type of number
   default_max_pods_per_node = null
   # description - (optional) is a type of string
@@ -108,6 +110,10 @@ module "google_container_cluster" {
   database_encryption = [{
     key_name = null
     state    = null
+  }]
+
+  default_snat_status = [{
+    disabled = null
   }]
 
   ip_allocation_policy = [{
@@ -248,10 +254,13 @@ module "google_container_cluster" {
   private_cluster_config = [{
     enable_private_endpoint = null
     enable_private_nodes    = null
-    master_ipv4_cidr_block  = null
-    peering_name            = null
-    private_endpoint        = null
-    public_endpoint         = null
+    master_global_access_config = [{
+      enabled = null
+    }]
+    master_ipv4_cidr_block = null
+    peering_name           = null
+    private_endpoint       = null
+    public_endpoint        = null
   }]
 
   release_channel = [{
@@ -290,6 +299,12 @@ module "google_container_cluster" {
 ```terraform
 variable "cluster_ipv4_cidr" {
   description = "(optional) - The IP address range of the Kubernetes pods in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only work for routes-based clusters, where ip_allocation_policy is not defined."
+  type        = string
+  default     = null
+}
+
+variable "datapath_provider" {
+  description = "(optional) - The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation."
   type        = string
   default     = null
 }
@@ -488,6 +503,16 @@ variable "database_encryption" {
     {
       key_name = string
       state    = string
+    }
+  ))
+  default = []
+}
+
+variable "default_snat_status" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      disabled = bool
     }
   ))
   default = []
@@ -716,10 +741,15 @@ variable "private_cluster_config" {
     {
       enable_private_endpoint = bool
       enable_private_nodes    = bool
-      master_ipv4_cidr_block  = string
-      peering_name            = string
-      private_endpoint        = string
-      public_endpoint         = string
+      master_global_access_config = list(object(
+        {
+          enabled = bool
+        }
+      ))
+      master_ipv4_cidr_block = string
+      peering_name           = string
+      private_endpoint       = string
+      public_endpoint        = string
     }
   ))
   default = []
@@ -792,6 +822,7 @@ variable "workload_identity_config" {
 ```terraform
 resource "google_container_cluster" "this" {
   cluster_ipv4_cidr           = var.cluster_ipv4_cidr
+  datapath_provider           = var.datapath_provider
   default_max_pods_per_node   = var.default_max_pods_per_node
   description                 = var.description
   enable_binary_authorization = var.enable_binary_authorization
@@ -887,6 +918,13 @@ resource "google_container_cluster" "this" {
     content {
       key_name = database_encryption.value["key_name"]
       state    = database_encryption.value["state"]
+    }
+  }
+
+  dynamic "default_snat_status" {
+    for_each = var.default_snat_status
+    content {
+      disabled = default_snat_status.value["disabled"]
     }
   }
 
@@ -1094,6 +1132,14 @@ resource "google_container_cluster" "this" {
       enable_private_endpoint = private_cluster_config.value["enable_private_endpoint"]
       enable_private_nodes    = private_cluster_config.value["enable_private_nodes"]
       master_ipv4_cidr_block  = private_cluster_config.value["master_ipv4_cidr_block"]
+
+      dynamic "master_global_access_config" {
+        for_each = private_cluster_config.value.master_global_access_config
+        content {
+          enabled = master_global_access_config.value["enabled"]
+        }
+      }
+
     }
   }
 
@@ -1155,6 +1201,11 @@ resource "google_container_cluster" "this" {
 output "cluster_ipv4_cidr" {
   description = "returns a string"
   value       = google_container_cluster.this.cluster_ipv4_cidr
+}
+
+output "datapath_provider" {
+  description = "returns a string"
+  value       = google_container_cluster.this.datapath_provider
 }
 
 output "default_max_pods_per_node" {
@@ -1235,6 +1286,11 @@ output "services_ipv4_cidr" {
 output "subnetwork" {
   description = "returns a string"
   value       = google_container_cluster.this.subnetwork
+}
+
+output "tpu_ipv4_cidr_block" {
+  description = "returns a string"
+  value       = google_container_cluster.this.tpu_ipv4_cidr_block
 }
 
 output "this" {

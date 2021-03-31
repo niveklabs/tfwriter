@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -43,6 +43,10 @@ module "fortios_ips_global" {
   fail_open = null
   # intelligent_mode - (optional) is a type of string
   intelligent_mode = null
+  # ngfw_max_scan_range - (optional) is a type of number
+  ngfw_max_scan_range = null
+  # packet_log_queue_depth - (optional) is a type of number
+  packet_log_queue_depth = null
   # session_limit_mode - (optional) is a type of string
   session_limit_mode = null
   # skype_client_public_ipaddr - (optional) is a type of string
@@ -53,6 +57,14 @@ module "fortios_ips_global" {
   sync_session_ttl = null
   # traffic_submit - (optional) is a type of string
   traffic_submit = null
+
+  tls_active_probe = [{
+    interface               = null
+    interface_select_method = null
+    source_ip               = null
+    source_ip6              = null
+    vdom                    = null
+  }]
 }
 ```
 
@@ -109,6 +121,18 @@ variable "intelligent_mode" {
   default     = null
 }
 
+variable "ngfw_max_scan_range" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "packet_log_queue_depth" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "session_limit_mode" {
   description = "(optional)"
   type        = string
@@ -138,6 +162,20 @@ variable "traffic_submit" {
   type        = string
   default     = null
 }
+
+variable "tls_active_probe" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      interface               = string
+      interface_select_method = string
+      source_ip               = string
+      source_ip6              = string
+      vdom                    = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -154,11 +192,25 @@ resource "fortios_ips_global" "this" {
   exclude_signatures         = var.exclude_signatures
   fail_open                  = var.fail_open
   intelligent_mode           = var.intelligent_mode
+  ngfw_max_scan_range        = var.ngfw_max_scan_range
+  packet_log_queue_depth     = var.packet_log_queue_depth
   session_limit_mode         = var.session_limit_mode
   skype_client_public_ipaddr = var.skype_client_public_ipaddr
   socket_size                = var.socket_size
   sync_session_ttl           = var.sync_session_ttl
   traffic_submit             = var.traffic_submit
+
+  dynamic "tls_active_probe" {
+    for_each = var.tls_active_probe
+    content {
+      interface               = tls_active_probe.value["interface"]
+      interface_select_method = tls_active_probe.value["interface_select_method"]
+      source_ip               = tls_active_probe.value["source_ip"]
+      source_ip6              = tls_active_probe.value["source_ip6"]
+      vdom                    = tls_active_probe.value["vdom"]
+    }
+  }
+
 }
 ```
 
@@ -210,6 +262,16 @@ output "id" {
 output "intelligent_mode" {
   description = "returns a string"
   value       = fortios_ips_global.this.intelligent_mode
+}
+
+output "ngfw_max_scan_range" {
+  description = "returns a number"
+  value       = fortios_ips_global.this.ngfw_max_scan_range
+}
+
+output "packet_log_queue_depth" {
+  description = "returns a number"
+  value       = fortios_ips_global.this.packet_log_queue_depth
 }
 
 output "session_limit_mode" {

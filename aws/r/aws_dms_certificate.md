@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.22.0"
+    aws = ">= 3.34.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "aws_dms_certificate" {
   certificate_pem = null
   # certificate_wallet - (optional) is a type of string
   certificate_wallet = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -57,6 +59,12 @@ variable "certificate_wallet" {
   type        = string
   default     = null
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -68,6 +76,7 @@ resource "aws_dms_certificate" "this" {
   certificate_id     = var.certificate_id
   certificate_pem    = var.certificate_pem
   certificate_wallet = var.certificate_wallet
+  tags               = var.tags
 }
 ```
 

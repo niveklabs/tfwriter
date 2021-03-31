@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    datadog = ">= 2.18.1"
+    datadog = ">= 2.24.0"
   }
 }
 ```
@@ -67,13 +67,13 @@ module "datadog_service_level_objective" {
 
 ```terraform
 variable "description" {
-  description = "(optional)"
+  description = "(optional) - A description of this service level objective."
   type        = string
   default     = null
 }
 
 variable "force_delete" {
-  description = "(optional)"
+  description = "(optional) - A boolean indicating whether this monitor can be deleted even if it’s referenced by other resources (e.g. dashboards)."
   type        = bool
   default     = null
 }
@@ -97,23 +97,23 @@ variable "monitor_search" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(required) - Name of Datadog service level objective"
   type        = string
 }
 
 variable "tags" {
-  description = "(optional)"
+  description = "(optional) - A list of tags to associate with your service level objective. This can help you categorize and filter service level objectives in the service level objectives page of the UI. Note: it's not currently possible to filter by these tags when querying via the API"
   type        = set(string)
   default     = null
 }
 
 variable "type" {
-  description = "(required)"
+  description = "(required) - The type of the service level objective. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/service-level-objectives/#create-a-slo-object). Available options to choose from are: `metric` and `monitor`."
   type        = string
 }
 
 variable "validate" {
-  description = "(optional)"
+  description = "(optional) - Whether or not to validate the SLO."
   type        = bool
   default     = null
 }

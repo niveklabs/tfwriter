@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    dome9 = ">= 1.20.4"
+    dome9 = ">= 1.21.0"
   }
 }
 ```
@@ -126,14 +126,14 @@ variable "services" {
   description = "nested block: NestingSet, min items: 0, max items: 0"
   type = set(object(
     {
-      inbound = list(object(
+      inbound = set(object(
         {
           description   = string
           name          = string
           open_for_all  = bool
           port          = string
           protocol_type = string
-          scope = list(object(
+          scope = set(object(
             {
               data = map(string)
               type = string
@@ -141,14 +141,14 @@ variable "services" {
           ))
         }
       ))
-      outbound = list(object(
+      outbound = set(object(
         {
           description   = string
           name          = string
           open_for_all  = bool
           port          = string
           protocol_type = string
-          scope = list(object(
+          scope = set(object(
             {
               data = map(string)
               type = string

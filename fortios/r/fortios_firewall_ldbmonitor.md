@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    fortios = ">= 1.6.18"
+    fortios = ">= 1.11.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "fortios_firewall_ldbmonitor" {
   port = null
   # retry - (optional) is a type of number
   retry = null
+  # src_ip - (optional) is a type of string
+  src_ip = null
   # timeout - (optional) is a type of number
   timeout = null
   # type - (required) is a type of string
@@ -95,6 +97,12 @@ variable "retry" {
   default     = null
 }
 
+variable "src_ip" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "timeout" {
   description = "(optional)"
   type        = number
@@ -120,6 +128,7 @@ resource "fortios_firewall_ldbmonitor" "this" {
   name               = var.name
   port               = var.port
   retry              = var.retry
+  src_ip             = var.src_ip
   timeout            = var.timeout
   type               = var.type
 }
@@ -168,6 +177,11 @@ output "port" {
 output "retry" {
   description = "returns a number"
   value       = fortios_firewall_ldbmonitor.this.retry
+}
+
+output "src_ip" {
+  description = "returns a string"
+  value       = fortios_firewall_ldbmonitor.this.src_ip
 }
 
 output "timeout" {
