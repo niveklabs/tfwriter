@@ -16,9 +16,9 @@ tags: provider
 
 ### Example Usage
 
-<div id="snippet">
+<div id="time-snippet">
 {% if site.show_clipboard %}
-<a href="#" data-clipboard-snippet>[Copy to clipboard]</a>
+<a href="#" data-clipboard-target="#time-snippet">[Copy to clipboard]</a>
 {% endif %}
 
 ```terraform time-snippet
