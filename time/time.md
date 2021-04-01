@@ -16,16 +16,16 @@ tags: provider
 
 ### Example Usage
 
-<pre class="language-terraform"><code>
 {% if site.show_clipboard %}
-<button class="btn" data-clipboard-highlight>
+<button class="btn" data-clipboard-target="#time-snippet">
     <img class="clippy" width="13" src="/assets/images/clippy.svg" alt="Copy to clipboard">
 </button>
 {% endif %}
+```terraform {#time-snippet}
 provider "time" {
   version = "0.7.0"
 }
-</code></pre>
+```
 
 [top](#index)
 
