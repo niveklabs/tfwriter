@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "time provider | tfwriter"
+title: "time provider"
 ---
 
 # time
