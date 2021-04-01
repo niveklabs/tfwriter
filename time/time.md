@@ -17,9 +17,11 @@ tags: provider
 ### Example Usage
 
 <pre language="terraform"><code>
+{% if site.show_clipboard %}
 <button class="btn" data-clipboard-highlight>
     <img class="clippy" width="13" src="/assets/images/clippy.svg" alt="Copy to clipboard">
 </button>
+{% endif %}
 provider "time" {
   version = "0.7.0"
 }
