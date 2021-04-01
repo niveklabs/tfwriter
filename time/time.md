@@ -16,14 +16,14 @@ tags: provider
 
 ### Example Usage
 
-```terraform
+<pre language="terraform"><code>
 <button class="btn" data-clipboard-highlight>
     <img class="clippy" width="13" src="assets/images/clippy.svg" alt="Copy to clipboard">
 </button>
 provider "time" {
   version = "0.7.0"
 }
-```
+</code></pre>
 
 [top](#index)
 
