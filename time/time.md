@@ -29,7 +29,7 @@ provider "time" {
 
 ### Resources
 
-
+ 
 - [time_offset](./r/time_offset.md)
 
 - [time_rotating](./r/time_rotating.md)
