@@ -21,7 +21,7 @@ tags: provider
     <img class="clippy" width="13" src="/assets/images/clippy.svg" alt="Copy to clipboard">
 </button>
 {% endif %}
-```terraform {#time-snippet}
+```terraform time-snippet
 provider "time" {
   version = "0.7.0"
 }
