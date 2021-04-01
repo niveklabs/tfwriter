@@ -18,9 +18,7 @@ tags: provider
 
 <div id="snippet">
 {% if site.show_clipboard %}
-<button class="btn" data-clipboard-snippet>
-    <img class="clippy" width="13" src="/assets/images/clippy.svg" alt="Copy to clipboard">
-</button>
+<a href="#" data-clipboard-snippet>[Copy to clipboard]</a>
 {% endif %}
 
 ```terraform time-snippet
