@@ -1,3 +1,7 @@
+---
+title: "time provider | tfwriter"
+---
+
 # time
 
 [back](../)
