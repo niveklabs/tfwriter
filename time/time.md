@@ -16,18 +16,11 @@ tags: provider
 
 ### Example Usage
 
-<div id="time-snippet">
-{% if site.show_clipboard %}
-<button class="clippy" data-clipboard-target="#time-snippet">[Copy to clipboard]</button>
-{% endif %}
-
 ```terraform
 provider "time" {
   version = "0.7.0"
 }
 ```
-
-</div>
 
 [top](#index)
 
