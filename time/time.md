@@ -17,6 +17,9 @@ tags: provider
 ### Example Usage
 
 ```terraform
+<button class="btn" data-clipboard-highlight>
+    <img class="clippy" width="13" src="assets/images/clippy.svg" alt="Copy to clipboard">
+</button>
 provider "time" {
   version = "0.7.0"
 }
