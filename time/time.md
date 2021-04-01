@@ -16,7 +16,7 @@ tags: provider
 
 ### Example Usage
 
-<pre language="terraform"><code>
+<pre class="language-terraform"><code>
 {% if site.show_clipboard %}
 <button class="btn" data-clipboard-highlight>
     <img class="clippy" width="13" src="/assets/images/clippy.svg" alt="Copy to clipboard">
