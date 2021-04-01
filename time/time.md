@@ -18,7 +18,7 @@ tags: provider
 
 <div id="time-snippet">
 {% if site.show_clipboard %}
-<button data-clipboard-target="#time-snippet">[Copy to clipboard]</button>
+<button class="clippy" data-clipboard-target="#time-snippet">[Copy to clipboard]</button>
 {% endif %}
 
 ```terraform

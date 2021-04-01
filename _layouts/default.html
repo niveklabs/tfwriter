@@ -38,7 +38,7 @@
   {% if site.show_clipboard %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
   <script>
-    var clipboard = new ClipboardJS('.btn');
+    var clipboard = new ClipboardJS('.clip-btn');
 
     clipboard.on('success', function (e) {
       console.info('Action:', e.action);
