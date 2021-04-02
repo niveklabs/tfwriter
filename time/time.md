@@ -1,4 +1,8 @@
-# time
+---
+layout: resource
+type: provider
+name: time
+---
 
 [back](../)
 
