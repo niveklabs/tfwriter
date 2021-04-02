@@ -10,7 +10,7 @@ tags: plugin terraform provider
 Link | Namespace | Tier
 ---|---|---
 {% for provider in site.data.providers %}
-  [{{ provider.attributes.name }}](/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html) | provider.attributes.full-name | provider.attributes.tier
+[{{ provider.attributes.name }}](/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html) | {{ provider.attributes.full-name }} | {{ provider.attributes.tier }}
 {% endfor %}
 
 
