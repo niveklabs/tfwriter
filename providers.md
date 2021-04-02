@@ -9,8 +9,8 @@ tags: plugin terraform provider
 
 <table>
   <tr>
-    <th></th>
-    <th>Full Name</th>
+    <th>Name</th>
+    <th>Full Name <i>(Terraform 0.13 >)</i></th>
     <th>Tier</th>
   </tr>
 {% for provider in site.data.providers %}
