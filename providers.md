@@ -14,6 +14,7 @@ tags: plugin terraform provider
     <th>Tier</th>
   </tr>
 {% for provider in site.data.providers %}
+  {% if provider.attributes.tier == "official" }
   <tr>
     <td>
       <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}">
@@ -23,6 +24,28 @@ tags: plugin terraform provider
     <td>{{ provider.attributes.full-name }}</td>
     <td>{{ provider.attributes.tier }}</td>
   </tr>
+  {% endif %}
+{% endfor %}
+</table>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Full Name <i>(Terraform 0.13 >)</i></th>
+    <th>Tier</th>
+  </tr>
+{% for provider in site.data.providers %}
+  {% if provider.attributes.tier == "partner" }
+  <tr>
+    <td>
+      <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}">
+        {{ provider.attributes.name }}
+      </a>
+    </td> 
+    <td>{{ provider.attributes.full-name }}</td>
+    <td>{{ provider.attributes.tier }}</td>
+  </tr>
+  {% endif %}
 {% endfor %}
 </table>
 
