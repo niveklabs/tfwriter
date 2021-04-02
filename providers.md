@@ -7,14 +7,26 @@ tags: plugin terraform provider
 
 [back](/)
 
-Link | Namespace | Tier
----|---|---
+<table>
+  <tr>
+    <th></th>
+    <th>Full Name</th>
+    <th>Tier</th>
+  </tr>
 {% for provider in site.data.providers %}
-[{{ provider.attributes.name }}](/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html) | {{ provider.attributes.full-name }} | {{ provider.attributes.tier }}
+  <tr>
+    <td>
+      <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}">
+        {{ provider.attributes.name }}
+      </a>
+    </td> 
+    <td>{{ provider.attributes.full-name }}</td>
+    <td>{{ provider.attributes.tier }}</td>
+  </tr>
 {% endfor %}
+</table>
 
-
-<ul>
+<!-- <ul>
 {% for provider in site.data.providers %}
   <li>
     <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html">
@@ -22,4 +34,4 @@ Link | Namespace | Tier
     </a>
   </li>
 {% endfor %}
-</ul>
+</ul> -->
