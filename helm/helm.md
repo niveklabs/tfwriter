@@ -12,7 +12,7 @@
 
 ```terraform
 provider "helm" {
-  version = "2.0.3"
+  version = "2.1.0"
 
   # debug - (optional) is a type of bool
   debug = null
@@ -26,6 +26,12 @@ provider "helm" {
   repository_cache = null
   # repository_config_path - (optional) is a type of string
   repository_config_path = null
+
+  # NestingList
+  experiments {
+    # manifest - (optional) is a type of bool
+    manifest = null
+  }
 
   # NestingList
   kubernetes {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -49,6 +49,11 @@ module "aws_apigatewayv2_route" {
   route_response_selection_expression = null
   # target - (optional) is a type of string
   target = null
+
+  request_parameter = [{
+    request_parameter_key = null
+    required              = null
+  }]
 }
 ```
 
@@ -120,6 +125,17 @@ variable "target" {
   type        = string
   default     = null
 }
+
+variable "request_parameter" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      request_parameter_key = string
+      required              = bool
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -139,6 +155,15 @@ resource "aws_apigatewayv2_route" "this" {
   route_key                           = var.route_key
   route_response_selection_expression = var.route_response_selection_expression
   target                              = var.target
+
+  dynamic "request_parameter" {
+    for_each = var.request_parameter
+    content {
+      request_parameter_key = request_parameter.value["request_parameter_key"]
+      required              = request_parameter.value["required"]
+    }
+  }
+
 }
 ```
 

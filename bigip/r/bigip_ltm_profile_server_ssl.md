@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.7.0"
+    bigip = ">= 1.8.0"
   }
 }
 ```
@@ -33,6 +33,20 @@ module "bigip_ltm_profile_server_ssl" {
   authenticate = null
   # authenticate_depth - (optional) is a type of number
   authenticate_depth = null
+  # c3d_ca_cert - (optional) is a type of string
+  c3d_ca_cert = null
+  # c3d_ca_key - (optional) is a type of string
+  c3d_ca_key = null
+  # c3d_ca_passphrase - (optional) is a type of string
+  c3d_ca_passphrase = null
+  # c3d_cert_extension_custom_oids - (optional) is a type of list of string
+  c3d_cert_extension_custom_oids = []
+  # c3d_cert_extension_includes - (optional) is a type of list of string
+  c3d_cert_extension_includes = []
+  # c3d_cert_lifespan - (optional) is a type of number
+  c3d_cert_lifespan = null
+  # c3d_certificate_extensions - (optional) is a type of string
+  c3d_certificate_extensions = null
   # ca_file - (optional) is a type of string
   ca_file = null
   # cache_size - (optional) is a type of number
@@ -97,6 +111,8 @@ module "bigip_ltm_profile_server_ssl" {
   sni_default = null
   # sni_require - (optional) is a type of string
   sni_require = null
+  # ssl_c3d - (optional) is a type of string
+  ssl_c3d = null
   # ssl_forward_proxy - (optional) is a type of string
   ssl_forward_proxy = null
   # ssl_forward_proxy_bypass - (optional) is a type of string
@@ -134,6 +150,48 @@ variable "authenticate" {
 variable "authenticate_depth" {
   description = "(optional) - Client certificate chain traversal depth.  Default 9."
   type        = number
+  default     = null
+}
+
+variable "c3d_ca_cert" {
+  description = "(optional) - CA Certificate. Default none."
+  type        = string
+  default     = null
+}
+
+variable "c3d_ca_key" {
+  description = "(optional) - CA Key.  Default none."
+  type        = string
+  default     = null
+}
+
+variable "c3d_ca_passphrase" {
+  description = "(optional) - CA Passphrase. Default"
+  type        = string
+  default     = null
+}
+
+variable "c3d_cert_extension_custom_oids" {
+  description = "(optional) - Certificate Extensions List.  Default"
+  type        = list(string)
+  default     = null
+}
+
+variable "c3d_cert_extension_includes" {
+  description = "(optional) - Certificate Extensions Includes. Default Extensions List"
+  type        = list(string)
+  default     = null
+}
+
+variable "c3d_cert_lifespan" {
+  description = "(optional) - Certificate Lifespan.  Default"
+  type        = number
+  default     = null
+}
+
+variable "c3d_certificate_extensions" {
+  description = "(optional) - CA Passphrase. Default enabled"
+  type        = string
   default     = null
 }
 
@@ -328,6 +386,12 @@ variable "sni_require" {
   default     = null
 }
 
+variable "ssl_c3d" {
+  description = "(optional) - Client Certificate Constrained Delegation. Default disabled"
+  type        = string
+  default     = null
+}
+
 variable "ssl_forward_proxy" {
   description = "(optional) - SSL forward Proxy (enabled / disabled)"
   type        = string
@@ -380,6 +444,13 @@ resource "bigip_ltm_profile_server_ssl" "this" {
   alert_timeout                   = var.alert_timeout
   authenticate                    = var.authenticate
   authenticate_depth              = var.authenticate_depth
+  c3d_ca_cert                     = var.c3d_ca_cert
+  c3d_ca_key                      = var.c3d_ca_key
+  c3d_ca_passphrase               = var.c3d_ca_passphrase
+  c3d_cert_extension_custom_oids  = var.c3d_cert_extension_custom_oids
+  c3d_cert_extension_includes     = var.c3d_cert_extension_includes
+  c3d_cert_lifespan               = var.c3d_cert_lifespan
+  c3d_certificate_extensions      = var.c3d_certificate_extensions
   ca_file                         = var.ca_file
   cache_size                      = var.cache_size
   cache_timeout                   = var.cache_timeout
@@ -412,6 +483,7 @@ resource "bigip_ltm_profile_server_ssl" "this" {
   session_ticket                  = var.session_ticket
   sni_default                     = var.sni_default
   sni_require                     = var.sni_require
+  ssl_c3d                         = var.ssl_c3d
   ssl_forward_proxy               = var.ssl_forward_proxy
   ssl_forward_proxy_bypass        = var.ssl_forward_proxy_bypass
   ssl_sign_hash                   = var.ssl_sign_hash
@@ -440,6 +512,21 @@ output "authenticate" {
 output "authenticate_depth" {
   description = "returns a number"
   value       = bigip_ltm_profile_server_ssl.this.authenticate_depth
+}
+
+output "c3d_ca_passphrase" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_server_ssl.this.c3d_ca_passphrase
+}
+
+output "c3d_cert_lifespan" {
+  description = "returns a number"
+  value       = bigip_ltm_profile_server_ssl.this.c3d_cert_lifespan
+}
+
+output "c3d_certificate_extensions" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_server_ssl.this.c3d_certificate_extensions
 }
 
 output "ca_file" {

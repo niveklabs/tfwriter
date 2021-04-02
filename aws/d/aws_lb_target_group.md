@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -120,6 +120,11 @@ output "name" {
 output "port" {
   description = "returns a number"
   value       = data.aws_lb_target_group.this.port
+}
+
+output "preserve_client_ip" {
+  description = "returns a string"
+  value       = data.aws_lb_target_group.this.preserve_client_ip
 }
 
 output "protocol" {

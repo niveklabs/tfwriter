@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    helm = ">= 2.0.3"
+    helm = ">= 2.1.0"
   }
 }
 ```
@@ -424,6 +424,11 @@ resource "helm_release" "this" {
 output "id" {
   description = "returns a string"
   value       = helm_release.this.id
+}
+
+output "manifest" {
+  description = "returns a string"
+  value       = helm_release.this.manifest
 }
 
 output "metadata" {

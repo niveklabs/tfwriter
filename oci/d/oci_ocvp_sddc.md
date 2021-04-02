@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.19.0"
+    oci = ">= 4.20.0"
   }
 }
 ```
@@ -186,6 +186,16 @@ output "nsx_vtep_vlan_id" {
 output "provisioning_subnet_id" {
   description = "returns a string"
   value       = data.oci_ocvp_sddc.this.provisioning_subnet_id
+}
+
+output "provisioning_vlan_id" {
+  description = "returns a string"
+  value       = data.oci_ocvp_sddc.this.provisioning_vlan_id
+}
+
+output "replication_vlan_id" {
+  description = "returns a string"
+  value       = data.oci_ocvp_sddc.this.replication_vlan_id
 }
 
 output "ssh_authorized_keys" {

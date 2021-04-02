@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_hpc_cache_blob_target" {
   source = "./modules/azurerm/r/azurerm_hpc_cache_blob_target"
 
+  # access_policy_name - (optional) is a type of string
+  access_policy_name = null
   # cache_name - (required) is a type of string
   cache_name = null
   # name - (required) is a type of string
@@ -52,6 +54,12 @@ module "azurerm_hpc_cache_blob_target" {
 ### Variables
 
 ```terraform
+variable "access_policy_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "cache_name" {
   description = "(required)"
   type        = string
@@ -97,6 +105,7 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_hpc_cache_blob_target" "this" {
+  access_policy_name   = var.access_policy_name
   cache_name           = var.cache_name
   name                 = var.name
   namespace_path       = var.namespace_path
@@ -121,6 +130,11 @@ resource "azurerm_hpc_cache_blob_target" "this" {
 ### Outputs
 
 ```terraform
+output "access_policy_name" {
+  description = "returns a string"
+  value       = azurerm_hpc_cache_blob_target.this.access_policy_name
+}
+
 output "id" {
   description = "returns a string"
   value       = azurerm_hpc_cache_blob_target.this.id

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "aws_apigatewayv2_api" {
   description = null
   # disable_execute_api_endpoint - (optional) is a type of bool
   disable_execute_api_endpoint = null
+  # fail_on_warnings - (optional) is a type of bool
+  fail_on_warnings = null
   # name - (required) is a type of string
   name = null
   # protocol_type - (required) is a type of string
@@ -93,6 +95,12 @@ variable "description" {
 }
 
 variable "disable_execute_api_endpoint" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "fail_on_warnings" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -165,6 +173,7 @@ resource "aws_apigatewayv2_api" "this" {
   credentials_arn              = var.credentials_arn
   description                  = var.description
   disable_execute_api_endpoint = var.disable_execute_api_endpoint
+  fail_on_warnings             = var.fail_on_warnings
   name                         = var.name
   protocol_type                = var.protocol_type
   route_key                    = var.route_key

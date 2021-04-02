@@ -12,7 +12,7 @@
 
 ```terraform
 provider "aws" {
-  version = "3.34.0"
+  version = "3.35.0"
 
   # access_key - (optional) is a type of string
   access_key = null
@@ -629,6 +629,8 @@ provider "aws" {
 - [aws_cloudwatch_log_subscription_filter](./r/aws_cloudwatch_log_subscription_filter.md)
 
 - [aws_cloudwatch_metric_alarm](./r/aws_cloudwatch_metric_alarm.md)
+
+- [aws_cloudwatch_query_definition](./r/aws_cloudwatch_query_definition.md)
 
 - [aws_codeartifact_domain](./r/aws_codeartifact_domain.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.19.0"
+    oci = ">= 4.20.0"
   }
 }
 ```
@@ -45,6 +45,12 @@ module "oci_metering_computation_usage" {
   time_usage_ended = null
   # time_usage_started - (required) is a type of string
   time_usage_started = null
+
+  forecast = [{
+    forecast_type         = null
+    time_forecast_ended   = null
+    time_forecast_started = null
+  }]
 
   group_by_tag = [{
     key       = null
@@ -115,6 +121,18 @@ variable "time_usage_started" {
   type        = string
 }
 
+variable "forecast" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      forecast_type         = string
+      time_forecast_ended   = string
+      time_forecast_started = string
+    }
+  ))
+  default = []
+}
+
 variable "group_by_tag" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -155,6 +173,15 @@ resource "oci_metering_computation_usage" "this" {
   tenant_id            = var.tenant_id
   time_usage_ended     = var.time_usage_ended
   time_usage_started   = var.time_usage_started
+
+  dynamic "forecast" {
+    for_each = var.forecast
+    content {
+      forecast_type         = forecast.value["forecast_type"]
+      time_forecast_ended   = forecast.value["time_forecast_ended"]
+      time_forecast_started = forecast.value["time_forecast_started"]
+    }
+  }
 
   dynamic "group_by_tag" {
     for_each = var.group_by_tag

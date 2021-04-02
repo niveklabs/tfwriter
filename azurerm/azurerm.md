@@ -12,7 +12,7 @@
 
 ```terraform
 provider "azurerm" {
-  version = "2.53.0"
+  version = "2.54.0"
 
   # auxiliary_tenant_ids - (optional) is a type of list of string
   auxiliary_tenant_ids = []
@@ -554,6 +554,8 @@ provider "azurerm" {
 
 - [azurerm_hpc_cache](./r/azurerm_hpc_cache.md)
 
+- [azurerm_hpc_cache_access_policy](./r/azurerm_hpc_cache_access_policy.md)
+
 - [azurerm_hpc_cache_blob_target](./r/azurerm_hpc_cache_blob_target.md)
 
 - [azurerm_hpc_cache_nfs_target](./r/azurerm_hpc_cache_nfs_target.md)
@@ -718,6 +720,8 @@ provider "azurerm" {
 
 - [azurerm_management_group](./r/azurerm_management_group.md)
 
+- [azurerm_management_group_subscription_association](./r/azurerm_management_group_subscription_association.md)
+
 - [azurerm_management_group_template_deployment](./r/azurerm_management_group_template_deployment.md)
 
 - [azurerm_management_lock](./r/azurerm_management_lock.md)
@@ -741,6 +745,8 @@ provider "azurerm" {
 - [azurerm_media_content_key_policy](./r/azurerm_media_content_key_policy.md)
 
 - [azurerm_media_job](./r/azurerm_media_job.md)
+
+- [azurerm_media_live_event](./r/azurerm_media_live_event.md)
 
 - [azurerm_media_services_account](./r/azurerm_media_services_account.md)
 

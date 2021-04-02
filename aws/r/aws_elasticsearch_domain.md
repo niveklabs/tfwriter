@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -71,8 +71,11 @@ module "aws_elasticsearch_domain" {
   }]
 
   domain_endpoint_options = [{
-    enforce_https       = null
-    tls_security_policy = null
+    custom_endpoint                 = null
+    custom_endpoint_certificate_arn = null
+    custom_endpoint_enabled         = null
+    enforce_https                   = null
+    tls_security_policy             = null
   }]
 
   ebs_options = [{
@@ -206,8 +209,11 @@ variable "domain_endpoint_options" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
-      enforce_https       = bool
-      tls_security_policy = string
+      custom_endpoint                 = string
+      custom_endpoint_certificate_arn = string
+      custom_endpoint_enabled         = bool
+      enforce_https                   = bool
+      tls_security_policy             = string
     }
   ))
   default = []
@@ -359,8 +365,11 @@ resource "aws_elasticsearch_domain" "this" {
   dynamic "domain_endpoint_options" {
     for_each = var.domain_endpoint_options
     content {
-      enforce_https       = domain_endpoint_options.value["enforce_https"]
-      tls_security_policy = domain_endpoint_options.value["tls_security_policy"]
+      custom_endpoint                 = domain_endpoint_options.value["custom_endpoint"]
+      custom_endpoint_certificate_arn = domain_endpoint_options.value["custom_endpoint_certificate_arn"]
+      custom_endpoint_enabled         = domain_endpoint_options.value["custom_endpoint_enabled"]
+      enforce_https                   = domain_endpoint_options.value["enforce_https"]
+      tls_security_policy             = domain_endpoint_options.value["tls_security_policy"]
     }
   }
 

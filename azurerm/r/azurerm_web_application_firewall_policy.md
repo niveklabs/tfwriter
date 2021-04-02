@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "azurerm_web_application_firewall_policy" {
   source = "./modules/azurerm/r/azurerm_web_application_firewall_policy"
 
+  # http_listener_ids - (optional) is a type of list of string
+  http_listener_ids = []
   # location - (required) is a type of string
   location = null
   # name - (required) is a type of string
   name = null
+  # path_based_rule_ids - (optional) is a type of list of string
+  path_based_rule_ids = []
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # tags - (optional) is a type of map of string
@@ -91,6 +95,12 @@ module "azurerm_web_application_firewall_policy" {
 ### Variables
 
 ```terraform
+variable "http_listener_ids" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "location" {
   description = "(required)"
   type        = string
@@ -99,6 +109,12 @@ variable "location" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "path_based_rule_ids" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
 }
 
 variable "resource_group_name" {
@@ -200,8 +216,10 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_web_application_firewall_policy" "this" {
+  http_listener_ids   = var.http_listener_ids
   location            = var.location
   name                = var.name
+  path_based_rule_ids = var.path_based_rule_ids
   resource_group_name = var.resource_group_name
   tags                = var.tags
 

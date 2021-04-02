@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.19.0"
+    oci = ">= 4.20.0"
   }
 }
 ```
@@ -40,8 +40,13 @@ module "oci_metering_computation_query" {
       compartment_depth = null
       date_range_name   = null
       filter            = null
-      granularity       = null
-      group_by          = []
+      forecast = [{
+        forecast_type         = null
+        time_forecast_ended   = null
+        time_forecast_started = null
+      }]
+      granularity = null
+      group_by    = []
       group_by_tag = [{
         key       = null
         namespace = null
@@ -90,8 +95,15 @@ variable "query_definition" {
           compartment_depth = number
           date_range_name   = string
           filter            = string
-          granularity       = string
-          group_by          = list(string)
+          forecast = list(object(
+            {
+              forecast_type         = string
+              time_forecast_ended   = string
+              time_forecast_started = string
+            }
+          ))
+          granularity = string
+          group_by    = list(string)
           group_by_tag = list(object(
             {
               key       = string
@@ -159,6 +171,15 @@ resource "oci_metering_computation_query" "this" {
           tenant_id            = report_query.value["tenant_id"]
           time_usage_ended     = report_query.value["time_usage_ended"]
           time_usage_started   = report_query.value["time_usage_started"]
+
+          dynamic "forecast" {
+            for_each = report_query.value.forecast
+            content {
+              forecast_type         = forecast.value["forecast_type"]
+              time_forecast_ended   = forecast.value["time_forecast_ended"]
+              time_forecast_started = forecast.value["time_forecast_started"]
+            }
+          }
 
           dynamic "group_by_tag" {
             for_each = report_query.value.group_by_tag

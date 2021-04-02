@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "aws_efs_file_system" {
   source = "./modules/aws/r/aws_efs_file_system"
 
+  # availability_zone_name - (optional) is a type of string
+  availability_zone_name = null
   # creation_token - (optional) is a type of string
   creation_token = null
   # encrypted - (optional) is a type of bool
@@ -53,6 +55,12 @@ module "aws_efs_file_system" {
 ### Variables
 
 ```terraform
+variable "availability_zone_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "creation_token" {
   description = "(optional)"
   type        = string
@@ -112,6 +120,7 @@ variable "lifecycle_policy" {
 
 ```terraform
 resource "aws_efs_file_system" "this" {
+  availability_zone_name          = var.availability_zone_name
   creation_token                  = var.creation_token
   encrypted                       = var.encrypted
   kms_key_id                      = var.kms_key_id
@@ -140,6 +149,16 @@ output "arn" {
   value       = aws_efs_file_system.this.arn
 }
 
+output "availability_zone_id" {
+  description = "returns a string"
+  value       = aws_efs_file_system.this.availability_zone_id
+}
+
+output "availability_zone_name" {
+  description = "returns a string"
+  value       = aws_efs_file_system.this.availability_zone_name
+}
+
 output "creation_token" {
   description = "returns a string"
   value       = aws_efs_file_system.this.creation_token
@@ -165,9 +184,24 @@ output "kms_key_id" {
   value       = aws_efs_file_system.this.kms_key_id
 }
 
+output "number_of_mount_targets" {
+  description = "returns a number"
+  value       = aws_efs_file_system.this.number_of_mount_targets
+}
+
+output "owner_id" {
+  description = "returns a string"
+  value       = aws_efs_file_system.this.owner_id
+}
+
 output "performance_mode" {
   description = "returns a string"
   value       = aws_efs_file_system.this.performance_mode
+}
+
+output "size_in_bytes" {
+  description = "returns a list of object"
+  value       = aws_efs_file_system.this.size_in_bytes
 }
 
 output "this" {

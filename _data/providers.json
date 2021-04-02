@@ -1,0 +1,1065 @@
+[
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "aci",
+            "downloads": 6,
+            "namespace": "CiscoDevNet",
+            "source": "https://github.com/CiscoDevNet/terraform-provider-aci",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "ad",
+            "name": "ad",
+            "description": "An experimental provider that enables management of Active Directory resources like Users, Groups, and Group Policy Objects",
+            "downloads": 31407,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-ad",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "ah",
+            "downloads": 571,
+            "namespace": "advancedhosting",
+            "source": "https://github.com/advancedhosting/terraform-provider-ah",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "aiven",
+            "downloads": 77159,
+            "namespace": "aiven",
+            "source": "https://github.com/aiven/terraform-provider-aiven",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "akamai",
+            "downloads": 132384,
+            "namespace": "akamai",
+            "source": "https://github.com/akamai/terraform-provider-akamai",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "alicloud",
+            "downloads": 217387,
+            "namespace": "aliyun",
+            "source": "https://github.com/aliyun/terraform-provider-alicloud",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "alkira",
+            "downloads": 182,
+            "namespace": "alkiranet",
+            "source": "https://github.com/alkiranet/terraform-provider-alkira",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "amixr",
+            "downloads": 1584,
+            "namespace": "alertmixer",
+            "source": "https://github.com/alertmixer/terraform-provider-amixr",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "anxcloud",
+            "downloads": 370,
+            "namespace": "anexia-it",
+            "source": "https://github.com/anexia-it/terraform-provider-anxcloud",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "archive",
+            "name": "archive",
+            "description": "The archive provider exposes resources to manage archive files.",
+            "downloads": 31994593,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-archive",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "artifactory",
+            "downloads": 38347,
+            "namespace": "jfrog",
+            "source": "https://github.com/jfrog/terraform-provider-artifactory",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "avi",
+            "downloads": 321,
+            "namespace": "vmware",
+            "source": "https://github.com/vmware/terraform-provider-avi",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "aviatrix",
+            "downloads": 8,
+            "namespace": "AviatrixSystems",
+            "source": "https://github.com/AviatrixSystems/terraform-provider-aviatrix",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "aws",
+            "name": "aws",
+            "description": "Lifecycle management of AWS resources, including  EC2, Lambda, EKS, ECS, VPC, S3, RDS, DynamoDB, and more. This provider is maintained internally by the HashiCorp AWS Provider team.",
+            "downloads": 294636794,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-aws",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "azuread",
+            "name": "azuread",
+            "description": "Configure infrastructure in Azure Active Directory using the Azure Resource Manager APIs",
+            "downloads": 9608219,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-azuread",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "azurecaf",
+            "downloads": 138849,
+            "namespace": "aztfmod",
+            "source": "https://github.com/aztfmod/terraform-provider-azurecaf",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "azuredevops",
+            "downloads": 162245,
+            "namespace": "microsoft",
+            "source": "https://github.com/microsoft/terraform-provider-azuredevops",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "azurerm",
+            "name": "azurerm",
+            "description": "Lifecycle management of Microsoft Azure using the Azure Resource Manager APIs. maintained by the Azure team at Microsoft and the Terraform team at HashiCorp",
+            "downloads": 45191652,
+            "namespace": "hashicorp",
+            "source": "https://github.com/terraform-providers/terraform-provider-azurerm",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "azurestack",
+            "name": "azurestack",
+            "description": "Manage resources in Azure Stack via the Azure Resource Manager APIs",
+            "downloads": 169198,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-azurestack",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "bigip",
+            "downloads": 18,
+            "namespace": "F5Networks",
+            "source": "https://github.com/F5Networks/terraform-provider-bigip",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "boundary",
+            "name": "boundary",
+            "description": "Manage Boundary's identity-based access controls for resources provisioned with Terraform. This provider is maintained internally by the HashiCorp Boundary team.",
+            "downloads": 5535,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-boundary",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "brightbox",
+            "downloads": 554,
+            "namespace": "brightbox",
+            "source": "https://github.com/brightbox/terraform-provider-brightbox",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "buildkite",
+            "downloads": 1502,
+            "namespace": "jradtilbrook",
+            "source": "https://github.com/jradtilbrook/terraform-provider-buildkite",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "buildkite",
+            "downloads": 3705,
+            "namespace": "buildkite",
+            "source": "https://github.com/buildkite/terraform-provider-buildkite",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "checkly",
+            "downloads": 3042,
+            "namespace": "checkly",
+            "source": "https://github.com/checkly/terraform-provider-checkly",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "checkpoint",
+            "downloads": 6,
+            "namespace": "CheckPointSW",
+            "source": "https://github.com/CheckPointSW/terraform-provider-checkpoint",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "circonus",
+            "downloads": 3311,
+            "namespace": "circonus-labs",
+            "source": "https://github.com/circonus-labs/terraform-provider-circonus",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "ciscoasa",
+            "name": "ciscoasa",
+            "description": "Interact with Cisco ASA hardware devices or Cisco ASAv virtual appliances",
+            "downloads": 4953,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-ciscoasa",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "civo",
+            "downloads": 1699,
+            "namespace": "civo",
+            "source": "https://github.com/civo/terraform-provider-civo",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudeos",
+            "downloads": 1105,
+            "namespace": "aristanetworks",
+            "source": "https://github.com/aristanetworks/terraform-provider-cloudeos",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudflare",
+            "downloads": 1136339,
+            "namespace": "cloudflare",
+            "source": "https://github.com/cloudflare/terraform-provider-cloudflare",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "cloudinit",
+            "name": "cloudinit",
+            "description": "Exposes the cloudinit_config data source which renders a multipart MIME configuration for use with cloud-init (previously available as the template_cloudinit_config resource in the template provider)",
+            "downloads": 191352,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-cloudinit",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudscale",
+            "downloads": 353,
+            "namespace": "cloudscale-ch",
+            "source": "https://github.com/cloudscale-ch/terraform-provider-cloudscale",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudsigma",
+            "downloads": 486,
+            "namespace": "cloudsigma",
+            "source": "https://github.com/cloudsigma/terraform-provider-cloudsigma",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudsmith",
+            "downloads": 474,
+            "namespace": "cloudsmith-io",
+            "source": "https://github.com/cloudsmith-io/terraform-provider-cloudsmith",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "cloudtamerio",
+            "downloads": 230,
+            "namespace": "cloudtamer-io",
+            "source": "https://github.com/cloudtamer-io/terraform-provider-cloudtamerio",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "configcat",
+            "downloads": 401,
+            "namespace": "configcat",
+            "source": "https://github.com/configcat/terraform-provider-configcat",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "constellix",
+            "namespace": "Constellix",
+            "source": "https://github.com/Constellix/terraform-provider-constellix",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "consul",
+            "name": "consul",
+            "description": "Exposes resources used to interact with a Consul cluster, such as adding external services or working with the key/value store",
+            "downloads": 3519731,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-consul",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "databricks",
+            "downloads": 192053,
+            "namespace": "databrickslabs",
+            "source": "https://github.com/databrickslabs/terraform-provider-databricks",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "datadog",
+            "downloads": 101,
+            "namespace": "DataDog",
+            "source": "https://github.com/DataDog/terraform-provider-datadog",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "dcnm",
+            "namespace": "CiscoDevNet",
+            "source": "https://github.com/CiscoDevNet/terraform-provider-dcnm",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "digitalocean",
+            "downloads": 273349,
+            "namespace": "digitalocean",
+            "source": "https://github.com/digitalocean/terraform-provider-digitalocean",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "dme",
+            "downloads": 2,
+            "namespace": "DNSMadeEasy",
+            "source": "https://github.com/DNSMadeEasy/terraform-provider-dme",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "dns",
+            "name": "dns",
+            "description": "Supports DNS updates (RFC 2136) and can optionally be configured with secret key based transaction authentication (RFC 2845).",
+            "downloads": 4477921,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-dns",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "dome9",
+            "downloads": 4475,
+            "namespace": "dome9",
+            "source": "https://github.com/dome9/terraform-provider-dome9",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "dynatrace",
+            "downloads": 872,
+            "namespace": "dynatrace-oss",
+            "source": "https://github.com/dynatrace-oss/terraform-provider-dynatrace",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "ecl",
+            "downloads": 554,
+            "namespace": "nttcom",
+            "source": "https://github.com/nttcom/terraform-provider-ecl",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "equinix",
+            "downloads": 1626,
+            "namespace": "equinix",
+            "source": "https://github.com/equinix/terraform-provider-equinix",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "exoscale",
+            "downloads": 10320,
+            "namespace": "exoscale",
+            "source": "https://github.com/exoscale/terraform-provider-exoscale",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "external",
+            "name": "external",
+            "description": "A special provider that exists to provide an interface between Terraform and external programs – useful for integrating Terraform with a system for which a first-class provider does not exist.",
+            "downloads": 27639872,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-external",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "fastly",
+            "downloads": 136970,
+            "namespace": "fastly",
+            "source": "https://github.com/fastly/terraform-provider-fastly",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "fortios",
+            "downloads": 26291,
+            "namespace": "fortinetdev",
+            "source": "https://github.com/fortinetdev/terraform-provider-fortios",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "github",
+            "downloads": 303651,
+            "namespace": "integrations",
+            "source": "https://github.com/integrations/terraform-provider-github",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "gitlab",
+            "downloads": 504605,
+            "namespace": "gitlabhq",
+            "source": "https://github.com/gitlabhq/terraform-provider-gitlab",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "google",
+            "name": "google",
+            "description": "Lifecycle management of GCP resources, including Compute Engine, Cloud Storage, Cloud SDK, Cloud SQL, GKE, BigQuery, Cloud Functions and more. This provider is collaboratively maintained by the Google Terraform Team at Google and the Terraform team at HashiCorp",
+            "downloads": 43512330,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-google",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "google-beta",
+            "name": "google-beta",
+            "downloads": 18175328,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-google-beta",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "grafana",
+            "downloads": 670093,
+            "namespace": "grafana",
+            "source": "https://github.com/grafana/terraform-provider-grafana",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "gridscale",
+            "downloads": 586,
+            "namespace": "gridscale",
+            "source": "https://github.com/gridscale/terraform-provider-gridscale",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "hcloud",
+            "downloads": 84899,
+            "namespace": "hetznercloud",
+            "source": "https://github.com/hetznercloud/terraform-provider-hcloud",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "hcp",
+            "name": "hcp",
+            "description": "HashiCorp Cloud Platform (HCP) is HashiCorp's first-party platform for hosting our products as managed services. HCP includes shared platform functionality like login, access control, and billing, and can be managed via web portal interface or Terraform provider. It primarily serves to enable easily launching and running services like Consul and Vault, which will be deployed into HashiCorp Virtual Networks (HVNs) and connected to your infrastructure resources.",
+            "downloads": 20371,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-hcp",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "hcs",
+            "name": "hcs",
+            "description": "HashiCorp Consul Service (HCS) on Azure enables your team to provision HashiCorp-managed Consul clusters directly through the Azure Marketplace. As a fully managed service, HCS on Azure lowers the barrier to entry for your organization to securely connect services and route traffic across a mix of Kubernetes/AKS and virtual machine environments - while offloading the operational burden to the experts at HashiCorp. HCS on Azure is the easiest way to implement service mesh and secure service-to-service communication for your AKS clusters.",
+            "downloads": 8402,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-hcs",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "helm",
+            "name": "helm",
+            "description": "Manage installed Charts in your Kubernetes cluster, in the same way Helm does, through Terraform",
+            "downloads": 12877860,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-helm",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "heroku",
+            "downloads": 97997,
+            "namespace": "heroku",
+            "source": "https://github.com/heroku/terraform-provider-heroku",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "http",
+            "name": "http",
+            "description": "Utility provider for interacting with generic HTTP servers as part of a Terraform configuration.",
+            "downloads": 4893097,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-http",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "icinga2",
+            "namespace": "Icinga",
+            "source": "https://github.com/Icinga/terraform-provider-icinga2",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "ilert",
+            "namespace": "iLert",
+            "source": "https://github.com/iLert/terraform-provider-ilert",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "intersight",
+            "namespace": "CiscoDevNet",
+            "source": "https://github.com/CiscoDevNet/terraform-provider-intersight",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "ionoscloud",
+            "downloads": 935,
+            "namespace": "ionos-cloud",
+            "source": "https://github.com/ionos-cloud/terraform-provider-ionoscloud",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "kubernetes",
+            "name": "kubernetes",
+            "description": "Management of Kubernetes resources, including Pods, Services, Policies, Quotas and more.\n\nNote: A new experimental provider is now available, that enables management of all Kubernetes resources, including CustomResourceDefinitions (CRDs), please see the kubernetes-alpha provider for more information.",
+            "downloads": 29223768,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-kubernetes",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "kubernetes-alpha",
+            "name": "kubernetes-alpha",
+            "description": "An experimental provider that enables management of all Kubernetes resources. including CustomResourceDefinitions (CRDs)",
+            "downloads": 508608,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-kubernetes-alpha",
+            "tier": "official",
+            "warning": "Please do not rely on this provider for production use while we strive towards project maturity. https://github.com/hashicorp/terraform-provider-kubernetes-alpha#experimental-status"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "lacework",
+            "downloads": 17543,
+            "namespace": "lacework",
+            "source": "https://github.com/lacework/terraform-provider-lacework",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "launchdarkly",
+            "downloads": 38727,
+            "namespace": "launchdarkly",
+            "source": "https://github.com/launchdarkly/terraform-provider-launchdarkly",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "limelight",
+            "downloads": 568,
+            "namespace": "llnw",
+            "source": "https://github.com/llnw/terraform-provider-limelight",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "linode",
+            "downloads": 65875,
+            "namespace": "linode",
+            "source": "https://github.com/linode/terraform-provider-linode",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "local",
+            "name": "local",
+            "description": "Used to manage local resources, such as creating files",
+            "downloads": 30279417,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-local",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "logicmonitor",
+            "downloads": 637,
+            "namespace": "logicmonitor",
+            "source": "https://github.com/logicmonitor/terraform-provider-logicmonitor",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "logzio",
+            "downloads": 994,
+            "namespace": "logzio",
+            "source": "https://github.com/logzio/terraform-provider-logzio",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "metal",
+            "description": "Equinix Metal - Global, Automated Bare Metal Server Provider",
+            "downloads": 3325,
+            "namespace": "equinix",
+            "source": "https://github.com/equinix/terraform-provider-metal",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "mongodbatlas",
+            "description": "Deploy, update, and manage Atlas configurations as code through Terraform",
+            "downloads": 318660,
+            "namespace": "mongodb",
+            "source": "https://github.com/mongodb/terraform-provider-mongodbatlas",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "mso",
+            "namespace": "CiscoDevNet",
+            "source": "https://github.com/CiscoDevNet/terraform-provider-mso",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "netapp-cloudmanager",
+            "downloads": 2,
+            "namespace": "NetApp",
+            "source": "https://github.com/NetApp/terraform-provider-netapp-cloudmanager",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "netapp-elementsw",
+            "namespace": "NetApp",
+            "source": "https://github.com/NetApp/terraform-provider-netapp-elementsw",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "netapp-gcp",
+            "namespace": "NetApp",
+            "source": "https://github.com/NetApp/terraform-provider-netapp-gcp",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "newrelic",
+            "downloads": 821815,
+            "namespace": "newrelic",
+            "source": "https://github.com/newrelic/terraform-provider-newrelic",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "nomad",
+            "name": "nomad",
+            "description": "Exposes resources to interact with a HashiCorp Nomad cluster.",
+            "downloads": 540198,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-nomad",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "ns1",
+            "downloads": 86237,
+            "namespace": "ns1-terraform",
+            "source": "https://github.com/ns1-terraform/terraform-provider-ns1",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "name": "nsxt",
+            "downloads": 98760,
+            "namespace": "vmware",
+            "source": "https://github.com/vmware/terraform-provider-nsxt",
+            "tier": "partner"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "null",
+            "name": "null",
+            "description": "Provides constructs that intentionally do nothing – useful in various situations to help orchestrate tricky behavior or work around limitations.",
+            "downloads": 100222219,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-null",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "oci",
+            "name": "oci",
+            "description": "Interact with the many resources supported by the Oracle Cloud Infrastructure via the OCI provider APIs.",
+            "downloads": 1590052,
+            "namespace": "hashicorp",
+            "source": "https://github.com/terraform-providers/terraform-provider-oci",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "opc",
+            "name": "opc",
+            "description": "Used to interact with the many resources supported by the Oracle Cloud Infrastructure Classic and Oracle Cloud at Customer infrastructure services",
+            "downloads": 2989,
+            "namespace": "hashicorp",
+            "source": "https://github.com/terraform-providers/terraform-provider-opc",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "oraclepaas",
+            "name": "oraclepaas",
+            "description": "Interact with the many resources supported by the Oracle Cloud Infrastructure via the OCI provider APIs",
+            "downloads": 1705,
+            "namespace": "hashicorp",
+            "source": "https://github.com/terraform-providers/terraform-provider-oraclepaas",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "random",
+            "name": "random",
+            "description": "Supports the use of randomness within Terraform configurations. This is a logical provider, which means that it works entirely within Terraform logic, and does not interact with any other services.",
+            "downloads": 71229191,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-random",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "template",
+            "name": "template",
+            "description": "This provider has been archived. Please use the `templatefile` function or the `Cloudinit` provider instead. See documentation for more details.",
+            "downloads": 95582515,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-template",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "terraform",
+            "name": "terraform",
+            "description": "This provider has been archived as functionality is available directly in Terraform Core as of v0.11.",
+            "downloads": 4295,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-terraform",
+            "tier": "official",
+            "warning": "This provider is archived and no longer needed. The terraform_remote_state data source is built into the latest Terraform release."
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "tfe",
+            "name": "tfe",
+            "description": "Provision Terraform Cloud or Terraform Enterprise - with Terraform! Management of organizations, workspaces, teams, variables, run triggers, policy sets, and more. Maintained by the Terraform Cloud team at HashiCorp.",
+            "downloads": 1747299,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-tfe",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "time",
+            "name": "time",
+            "description": "Used to interact with time-based resources. The provider itself has no configuration options.",
+            "downloads": 2481440,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-time",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "tls",
+            "name": "tls",
+            "description": "Provides utilities for working with Transport Layer Security keys and certificates. It provides resources that allow private keys, certificates and certficate requests to be created as part of a Terraform deployment.",
+            "downloads": 12612522,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-tls",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "vault",
+            "name": "vault",
+            "description": "Allows Terraform to read from, write to, and configure Hashicorp Vault.",
+            "downloads": 16286721,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-vault",
+            "tier": "official"
+        }
+    },
+    {
+        "type": "providers",
+        "attributes": {
+            "alias": "vsphere",
+            "name": "vsphere",
+            "description": "Lifecycle management of VMware vSphere resources, including Virtual Machines, ESXi Hosts, Datastores, vSwitches, and more. This provider is maintained by the Terraform team at HashiCorp.",
+            "downloads": 2759780,
+            "namespace": "hashicorp",
+            "source": "https://github.com/hashicorp/terraform-provider-vsphere",
+            "tier": "official"
+        }
+    }
+]

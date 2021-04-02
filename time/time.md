@@ -1,9 +1,3 @@
----
-layout: default
-title: "time provider"
-tags: provider
----
-
 # time
 
 [back](../)
@@ -26,7 +20,7 @@ provider "time" {
 
 ### Resources
 
- 
+
 - [time_offset](./r/time_offset.md)
 
 - [time_rotating](./r/time_rotating.md)

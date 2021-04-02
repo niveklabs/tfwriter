@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.19.0"
+    oci = ">= 4.20.0"
   }
 }
 ```

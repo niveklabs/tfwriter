@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -47,6 +47,8 @@ module "azurerm_data_factory_linked_service_azure_blob_storage" {
   resource_group_name = null
   # sas_uri - (optional) is a type of string
   sas_uri = null
+  # service_endpoint - (optional) is a type of string
+  service_endpoint = null
   # service_principal_id - (optional) is a type of string
   service_principal_id = null
   # service_principal_key - (optional) is a type of string
@@ -127,6 +129,12 @@ variable "sas_uri" {
   default     = null
 }
 
+variable "service_endpoint" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "service_principal_id" {
   description = "(optional)"
   type        = string
@@ -181,6 +189,7 @@ resource "azurerm_data_factory_linked_service_azure_blob_storage" "this" {
   parameters               = var.parameters
   resource_group_name      = var.resource_group_name
   sas_uri                  = var.sas_uri
+  service_endpoint         = var.service_endpoint
   service_principal_id     = var.service_principal_id
   service_principal_key    = var.service_principal_key
   tenant_id                = var.tenant_id

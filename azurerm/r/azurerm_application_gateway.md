@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -204,6 +204,11 @@ module "azurerm_application_gateway" {
         header_value = null
       }]
       rule_sequence = null
+      url = [{
+        path         = null
+        query_string = null
+        reroute      = null
+      }]
     }]
   }]
 
@@ -585,6 +590,13 @@ variable "rewrite_rule_set" {
             }
           ))
           rule_sequence = number
+          url = list(object(
+            {
+              path         = string
+              query_string = string
+              reroute      = bool
+            }
+          ))
         }
       ))
     }
@@ -945,6 +957,15 @@ resource "azurerm_application_gateway" "this" {
             content {
               header_name  = response_header_configuration.value["header_name"]
               header_value = response_header_configuration.value["header_value"]
+            }
+          }
+
+          dynamic "url" {
+            for_each = rewrite_rule.value.url
+            content {
+              path         = url.value["path"]
+              query_string = url.value["query_string"]
+              reroute      = url.value["reroute"]
             }
           }
 

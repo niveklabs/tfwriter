@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "aws_iam_policy" {
 
   # arn - (required) is a type of string
   arn = null
+  # tags - (optional) is a type of map of string
+  tags = {}
 }
 ```
 
@@ -41,6 +43,12 @@ variable "arn" {
   description = "(required)"
   type        = string
 }
+
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -49,7 +57,8 @@ variable "arn" {
 
 ```terraform
 data "aws_iam_policy" "this" {
-  arn = var.arn
+  arn  = var.arn
+  tags = var.tags
 }
 ```
 
@@ -81,6 +90,16 @@ output "path" {
 output "policy" {
   description = "returns a string"
   value       = data.aws_iam_policy.this.policy
+}
+
+output "policy_id" {
+  description = "returns a string"
+  value       = data.aws_iam_policy.this.policy_id
+}
+
+output "tags" {
+  description = "returns a map of string"
+  value       = data.aws_iam_policy.this.tags
 }
 
 output "this" {

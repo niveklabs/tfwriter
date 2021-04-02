@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.7.0"
+    bigip = ">= 1.8.0"
   }
 }
 ```
@@ -35,6 +35,12 @@ module "bigip_ltm_profile_client_ssl" {
   authenticate = null
   # authenticate_depth - (optional) is a type of number
   authenticate_depth = null
+  # c3d_client_fallback_cert - (optional) is a type of string
+  c3d_client_fallback_cert = null
+  # c3d_drop_unknown_ocsp_status - (optional) is a type of string
+  c3d_drop_unknown_ocsp_status = null
+  # c3d_ocsp - (optional) is a type of string
+  c3d_ocsp = null
   # ca_file - (optional) is a type of string
   ca_file = null
   # cache_size - (optional) is a type of number
@@ -115,6 +121,8 @@ module "bigip_ltm_profile_client_ssl" {
   sni_default = null
   # sni_require - (optional) is a type of string
   sni_require = null
+  # ssl_c3d - (optional) is a type of string
+  ssl_c3d = null
   # ssl_forward_proxy - (optional) is a type of string
   ssl_forward_proxy = null
   # ssl_forward_proxy_bypass - (optional) is a type of string
@@ -164,6 +172,24 @@ variable "authenticate" {
 variable "authenticate_depth" {
   description = "(optional) - Client certificate chain traversal depth.  Default 9."
   type        = number
+  default     = null
+}
+
+variable "c3d_client_fallback_cert" {
+  description = "(optional) - Client Fallback Certificate. Default None."
+  type        = string
+  default     = null
+}
+
+variable "c3d_drop_unknown_ocsp_status" {
+  description = "(optional) - Unknown OCSP Response Control. Default Drop."
+  type        = string
+  default     = null
+}
+
+variable "c3d_ocsp" {
+  description = "(optional) - OCSP. Default None."
+  type        = string
   default     = null
 }
 
@@ -406,6 +432,12 @@ variable "sni_require" {
   default     = null
 }
 
+variable "ssl_c3d" {
+  description = "(optional) - Client Certificate Constrained Delegation enabled / disabled.  Default is disabled."
+  type        = string
+  default     = null
+}
+
 variable "ssl_forward_proxy" {
   description = "(optional) - SSL forward Proxy (enabled / disabled)"
   type        = string
@@ -467,6 +499,9 @@ resource "bigip_ltm_profile_client_ssl" "this" {
   allow_non_ssl                       = var.allow_non_ssl
   authenticate                        = var.authenticate
   authenticate_depth                  = var.authenticate_depth
+  c3d_client_fallback_cert            = var.c3d_client_fallback_cert
+  c3d_drop_unknown_ocsp_status        = var.c3d_drop_unknown_ocsp_status
+  c3d_ocsp                            = var.c3d_ocsp
   ca_file                             = var.ca_file
   cache_size                          = var.cache_size
   cache_timeout                       = var.cache_timeout
@@ -507,6 +542,7 @@ resource "bigip_ltm_profile_client_ssl" "this" {
   session_ticket                      = var.session_ticket
   sni_default                         = var.sni_default
   sni_require                         = var.sni_require
+  ssl_c3d                             = var.ssl_c3d
   ssl_forward_proxy                   = var.ssl_forward_proxy
   ssl_forward_proxy_bypass            = var.ssl_forward_proxy_bypass
   ssl_sign_hash                       = var.ssl_sign_hash
@@ -551,6 +587,21 @@ output "authenticate" {
 output "authenticate_depth" {
   description = "returns a number"
   value       = bigip_ltm_profile_client_ssl.this.authenticate_depth
+}
+
+output "c3d_client_fallback_cert" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_client_ssl.this.c3d_client_fallback_cert
+}
+
+output "c3d_drop_unknown_ocsp_status" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_client_ssl.this.c3d_drop_unknown_ocsp_status
+}
+
+output "c3d_ocsp" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_client_ssl.this.c3d_ocsp
 }
 
 output "ca_file" {
@@ -746,6 +797,11 @@ output "sni_default" {
 output "sni_require" {
   description = "returns a string"
   value       = bigip_ltm_profile_client_ssl.this.sni_require
+}
+
+output "ssl_c3d" {
+  description = "returns a string"
+  value       = bigip_ltm_profile_client_ssl.this.ssl_c3d
 }
 
 output "ssl_forward_proxy" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -27,10 +27,14 @@ terraform {
 module "aws_route" {
   source = "./modules/aws/r/aws_route"
 
+  # carrier_gateway_id - (optional) is a type of string
+  carrier_gateway_id = null
   # destination_cidr_block - (optional) is a type of string
   destination_cidr_block = null
   # destination_ipv6_cidr_block - (optional) is a type of string
   destination_ipv6_cidr_block = null
+  # destination_prefix_list_id - (optional) is a type of string
+  destination_prefix_list_id = null
   # egress_only_gateway_id - (optional) is a type of string
   egress_only_gateway_id = null
   # gateway_id - (optional) is a type of string
@@ -64,6 +68,12 @@ module "aws_route" {
 ### Variables
 
 ```terraform
+variable "carrier_gateway_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "destination_cidr_block" {
   description = "(optional)"
   type        = string
@@ -71,6 +81,12 @@ variable "destination_cidr_block" {
 }
 
 variable "destination_ipv6_cidr_block" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "destination_prefix_list_id" {
   description = "(optional)"
   type        = string
   default     = null
@@ -153,8 +169,10 @@ variable "timeouts" {
 
 ```terraform
 resource "aws_route" "this" {
+  carrier_gateway_id          = var.carrier_gateway_id
   destination_cidr_block      = var.destination_cidr_block
   destination_ipv6_cidr_block = var.destination_ipv6_cidr_block
+  destination_prefix_list_id  = var.destination_prefix_list_id
   egress_only_gateway_id      = var.egress_only_gateway_id
   gateway_id                  = var.gateway_id
   instance_id                 = var.instance_id
@@ -182,11 +200,6 @@ resource "aws_route" "this" {
 ### Outputs
 
 ```terraform
-output "destination_prefix_list_id" {
-  description = "returns a string"
-  value       = aws_route.this.destination_prefix_list_id
-}
-
 output "id" {
   description = "returns a string"
   value       = aws_route.this.id

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.7.0"
+    bigip = ">= 1.8.0"
   }
 }
 ```
@@ -37,7 +37,7 @@ module "bigip_ltm_virtual_address" {
   conn_limit = null
   # enabled - (optional) is a type of bool
   enabled = null
-  # icmp_echo - (optional) is a type of bool
+  # icmp_echo - (optional) is a type of string
   icmp_echo = null
   # name - (required) is a type of string
   name = null
@@ -83,7 +83,7 @@ variable "enabled" {
 
 variable "icmp_echo" {
   description = "(optional) - Enable/Disable ICMP response to the virtual address"
-  type        = bool
+  type        = string
   default     = null
 }
 

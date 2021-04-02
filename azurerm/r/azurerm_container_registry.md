@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "azurerm_container_registry" {
   }]
   # public_network_access_enabled - (optional) is a type of bool
   public_network_access_enabled = null
+  # quarantine_policy_enabled - (optional) is a type of bool
+  quarantine_policy_enabled = null
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # retention_policy - (optional) is a type of list of object
@@ -131,6 +133,12 @@ variable "public_network_access_enabled" {
   default     = null
 }
 
+variable "quarantine_policy_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
 variable "resource_group_name" {
   description = "(required)"
   type        = string
@@ -201,6 +209,7 @@ resource "azurerm_container_registry" "this" {
   name                          = var.name
   network_rule_set              = var.network_rule_set
   public_network_access_enabled = var.public_network_access_enabled
+  quarantine_policy_enabled     = var.quarantine_policy_enabled
   resource_group_name           = var.resource_group_name
   retention_policy              = var.retention_policy
   sku                           = var.sku

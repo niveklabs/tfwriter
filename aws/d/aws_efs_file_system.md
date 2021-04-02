@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -80,6 +80,16 @@ data "aws_efs_file_system" "this" {
 output "arn" {
   description = "returns a string"
   value       = data.aws_efs_file_system.this.arn
+}
+
+output "availability_zone_id" {
+  description = "returns a string"
+  value       = data.aws_efs_file_system.this.availability_zone_id
+}
+
+output "availability_zone_name" {
+  description = "returns a string"
+  value       = data.aws_efs_file_system.this.availability_zone_name
 }
 
 output "creation_token" {

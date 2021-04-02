@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -46,6 +46,7 @@ module "aws_backup_plan" {
         delete_after       = null
       }]
     }]
+    enable_continuous_backup = null
     lifecycle = [{
       cold_storage_after = null
       delete_after       = null
@@ -102,6 +103,7 @@ variable "rule" {
           ))
         }
       ))
+      enable_continuous_backup = bool
       lifecycle = list(object(
         {
           cold_storage_after = number
@@ -138,12 +140,13 @@ resource "aws_backup_plan" "this" {
   dynamic "rule" {
     for_each = var.rule
     content {
-      completion_window   = rule.value["completion_window"]
-      recovery_point_tags = rule.value["recovery_point_tags"]
-      rule_name           = rule.value["rule_name"]
-      schedule            = rule.value["schedule"]
-      start_window        = rule.value["start_window"]
-      target_vault_name   = rule.value["target_vault_name"]
+      completion_window        = rule.value["completion_window"]
+      enable_continuous_backup = rule.value["enable_continuous_backup"]
+      recovery_point_tags      = rule.value["recovery_point_tags"]
+      rule_name                = rule.value["rule_name"]
+      schedule                 = rule.value["schedule"]
+      start_window             = rule.value["start_window"]
+      target_vault_name        = rule.value["target_vault_name"]
 
       dynamic "copy_action" {
         for_each = rule.value.copy_action

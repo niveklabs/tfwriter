@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "aws_lb_target_group" {
   name_prefix = null
   # port - (optional) is a type of number
   port = null
+  # preserve_client_ip - (optional) is a type of string
+  preserve_client_ip = null
   # protocol - (optional) is a type of string
   protocol = null
   # protocol_version - (optional) is a type of string
@@ -112,6 +114,12 @@ variable "name_prefix" {
 variable "port" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "preserve_client_ip" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -200,6 +208,7 @@ resource "aws_lb_target_group" "this" {
   name                               = var.name
   name_prefix                        = var.name_prefix
   port                               = var.port
+  preserve_client_ip                 = var.preserve_client_ip
   protocol                           = var.protocol
   protocol_version                   = var.protocol_version
   proxy_protocol_v2                  = var.proxy_protocol_v2
@@ -263,6 +272,11 @@ output "load_balancing_algorithm_type" {
 output "name" {
   description = "returns a string"
   value       = aws_lb_target_group.this.name
+}
+
+output "preserve_client_ip" {
+  description = "returns a string"
+  value       = aws_lb_target_group.this.preserve_client_ip
 }
 
 output "protocol_version" {

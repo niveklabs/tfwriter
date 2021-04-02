@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    bigip = ">= 1.7.0"
+    bigip = ">= 1.8.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "bigip_as3" {
   application_list = null
   # as3_json - (required) is a type of string
   as3_json = null
+  # ignore_metadata - (optional) is a type of bool
+  ignore_metadata = null
   # tenant_filter - (optional) is a type of string
   tenant_filter = null
   # tenant_list - (optional) is a type of string
@@ -54,6 +56,12 @@ variable "application_list" {
 variable "as3_json" {
   description = "(required) - AS3 json"
   type        = string
+}
+
+variable "ignore_metadata" {
+  description = "(optional) - Set True if you want to ignore metadata update"
+  type        = bool
+  default     = null
 }
 
 variable "tenant_filter" {
@@ -83,6 +91,7 @@ variable "tenant_name" {
 resource "bigip_as3" "this" {
   application_list = var.application_list
   as3_json         = var.as3_json
+  ignore_metadata  = var.ignore_metadata
   tenant_filter    = var.tenant_filter
   tenant_list      = var.tenant_list
   tenant_name      = var.tenant_name

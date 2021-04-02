@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -43,6 +43,19 @@ module "azurerm_hpc_cache" {
   sku_name = null
   # subnet_id - (required) is a type of string
   subnet_id = null
+
+  default_access_policy = [{
+    access_rule = [{
+      access                  = null
+      anonymous_gid           = null
+      anonymous_uid           = null
+      filter                  = null
+      root_squash_enabled     = null
+      scope                   = null
+      submount_access_enabled = null
+      suid_enabled            = null
+    }]
+  }]
 
   timeouts = [{
     create = null
@@ -100,6 +113,27 @@ variable "subnet_id" {
   type        = string
 }
 
+variable "default_access_policy" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      access_rule = set(object(
+        {
+          access                  = string
+          anonymous_gid           = number
+          anonymous_uid           = number
+          filter                  = string
+          root_squash_enabled     = bool
+          scope                   = string
+          submount_access_enabled = bool
+          suid_enabled            = bool
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "timeouts" {
   description = "nested block: NestingSingle, min items: 0, max items: 0"
   type = set(object(
@@ -128,6 +162,27 @@ resource "azurerm_hpc_cache" "this" {
   root_squash_enabled = var.root_squash_enabled
   sku_name            = var.sku_name
   subnet_id           = var.subnet_id
+
+  dynamic "default_access_policy" {
+    for_each = var.default_access_policy
+    content {
+
+      dynamic "access_rule" {
+        for_each = default_access_policy.value.access_rule
+        content {
+          access                  = access_rule.value["access"]
+          anonymous_gid           = access_rule.value["anonymous_gid"]
+          anonymous_uid           = access_rule.value["anonymous_uid"]
+          filter                  = access_rule.value["filter"]
+          root_squash_enabled     = access_rule.value["root_squash_enabled"]
+          scope                   = access_rule.value["scope"]
+          submount_access_enabled = access_rule.value["submount_access_enabled"]
+          suid_enabled            = access_rule.value["suid_enabled"]
+        }
+      }
+
+    }
+  }
 
   dynamic "timeouts" {
     for_each = var.timeouts

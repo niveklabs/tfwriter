@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -33,16 +33,17 @@ module "aws_default_route_table" {
   propagating_vgws = []
   # route - (optional) is a type of set of object
   route = [{
-    cidr_block                = null
-    egress_only_gateway_id    = null
-    gateway_id                = null
-    instance_id               = null
-    ipv6_cidr_block           = null
-    nat_gateway_id            = null
-    network_interface_id      = null
-    transit_gateway_id        = null
-    vpc_endpoint_id           = null
-    vpc_peering_connection_id = null
+    cidr_block                 = null
+    destination_prefix_list_id = null
+    egress_only_gateway_id     = null
+    gateway_id                 = null
+    instance_id                = null
+    ipv6_cidr_block            = null
+    nat_gateway_id             = null
+    network_interface_id       = null
+    transit_gateway_id         = null
+    vpc_endpoint_id            = null
+    vpc_peering_connection_id  = null
   }]
   # tags - (optional) is a type of map of string
   tags = {}
@@ -69,16 +70,17 @@ variable "route" {
   description = "(optional)"
   type = set(object(
     {
-      cidr_block                = string
-      egress_only_gateway_id    = string
-      gateway_id                = string
-      instance_id               = string
-      ipv6_cidr_block           = string
-      nat_gateway_id            = string
-      network_interface_id      = string
-      transit_gateway_id        = string
-      vpc_endpoint_id           = string
-      vpc_peering_connection_id = string
+      cidr_block                 = string
+      destination_prefix_list_id = string
+      egress_only_gateway_id     = string
+      gateway_id                 = string
+      instance_id                = string
+      ipv6_cidr_block            = string
+      nat_gateway_id             = string
+      network_interface_id       = string
+      transit_gateway_id         = string
+      vpc_endpoint_id            = string
+      vpc_peering_connection_id  = string
     }
   ))
   default = null
@@ -109,6 +111,11 @@ resource "aws_default_route_table" "this" {
 ### Outputs
 
 ```terraform
+output "arn" {
+  description = "returns a string"
+  value       = aws_default_route_table.this.arn
+}
+
 output "id" {
   description = "returns a string"
   value       = aws_default_route_table.this.id

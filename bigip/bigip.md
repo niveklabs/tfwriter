@@ -12,7 +12,7 @@
 
 ```terraform
 provider "bigip" {
-  version = "1.7.0"
+  version = "1.8.0"
 
   # address - (required) is a type of string
   address = null
@@ -51,6 +51,8 @@ provider "bigip" {
 - [bigip_do](./r/bigip_do.md)
 
 - [bigip_event_service_discovery](./r/bigip_event_service_discovery.md)
+
+- [bigip_ipsec_policy](./r/bigip_ipsec_policy.md)
 
 - [bigip_ltm_datagroup](./r/bigip_ltm_datagroup.md)
 
@@ -104,6 +106,8 @@ provider "bigip" {
 
 - [bigip_net_selfip](./r/bigip_net_selfip.md)
 
+- [bigip_net_tunnel](./r/bigip_net_tunnel.md)
+
 - [bigip_net_vlan](./r/bigip_net_vlan.md)
 
 - [bigip_ssl_certificate](./r/bigip_ssl_certificate.md)
@@ -123,6 +127,8 @@ provider "bigip" {
 - [bigip_sys_snmp](./r/bigip_sys_snmp.md)
 
 - [bigip_sys_snmp_traps](./r/bigip_sys_snmp_traps.md)
+
+- [bigip_traffic_selector](./r/bigip_traffic_selector.md)
 
 
 [top](#index)

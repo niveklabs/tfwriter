@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -55,6 +55,9 @@ module "azurerm_storage_account" {
   tags = {}
 
   blob_properties = [{
+    container_delete_retention_policy = [{
+      days = null
+    }]
     cors_rule = [{
       allowed_headers    = []
       allowed_methods    = []
@@ -210,6 +213,11 @@ variable "blob_properties" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
     {
+      container_delete_retention_policy = list(object(
+        {
+          days = number
+        }
+      ))
       cors_rule = list(object(
         {
           allowed_headers    = list(string)
@@ -356,6 +364,13 @@ resource "azurerm_storage_account" "this" {
   dynamic "blob_properties" {
     for_each = var.blob_properties
     content {
+
+      dynamic "container_delete_retention_policy" {
+        for_each = blob_properties.value.container_delete_retention_policy
+        content {
+          days = container_delete_retention_policy.value["days"]
+        }
+      }
 
       dynamic "cors_rule" {
         for_each = blob_properties.value.cors_rule

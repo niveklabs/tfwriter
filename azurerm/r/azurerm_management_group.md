@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -149,6 +149,11 @@ output "name" {
 output "parent_management_group_id" {
   description = "returns a string"
   value       = azurerm_management_group.this.parent_management_group_id
+}
+
+output "subscription_ids" {
+  description = "returns a set of string"
+  value       = azurerm_management_group.this.subscription_ids
 }
 
 output "this" {

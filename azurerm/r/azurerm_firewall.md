@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "azurerm_firewall" {
   location = null
   # name - (required) is a type of string
   name = null
+  # private_ip_ranges - (optional) is a type of set of string
+  private_ip_ranges = []
   # resource_group_name - (required) is a type of string
   resource_group_name = null
   # sku_name - (optional) is a type of string
@@ -103,6 +105,12 @@ variable "location" {
 variable "name" {
   description = "(required)"
   type        = string
+}
+
+variable "private_ip_ranges" {
+  description = "(optional)"
+  type        = set(string)
+  default     = null
 }
 
 variable "resource_group_name" {
@@ -203,6 +211,7 @@ resource "azurerm_firewall" "this" {
   firewall_policy_id  = var.firewall_policy_id
   location            = var.location
   name                = var.name
+  private_ip_ranges   = var.private_ip_ranges
   resource_group_name = var.resource_group_name
   sku_name            = var.sku_name
   sku_tier            = var.sku_tier

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -66,6 +66,11 @@ module "aws_ecs_service" {
     base              = null
     capacity_provider = null
     weight            = null
+  }]
+
+  deployment_circuit_breaker = [{
+    enable   = null
+    rollback = null
   }]
 
   deployment_controller = [{
@@ -226,6 +231,17 @@ variable "capacity_provider_strategy" {
   default = []
 }
 
+variable "deployment_circuit_breaker" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      enable   = bool
+      rollback = bool
+    }
+  ))
+  default = []
+}
+
 variable "deployment_controller" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -337,6 +353,14 @@ resource "aws_ecs_service" "this" {
       base              = capacity_provider_strategy.value["base"]
       capacity_provider = capacity_provider_strategy.value["capacity_provider"]
       weight            = capacity_provider_strategy.value["weight"]
+    }
+  }
+
+  dynamic "deployment_circuit_breaker" {
+    for_each = var.deployment_circuit_breaker
+    content {
+      enable   = deployment_circuit_breaker.value["enable"]
+      rollback = deployment_circuit_breaker.value["rollback"]
     }
   }
 

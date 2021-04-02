@@ -12,7 +12,7 @@
 
 ```terraform
 provider "oci" {
-  version = "4.19.0"
+  version = "4.20.0"
 
   # auth - (optional) is a type of string
   auth = null
@@ -542,6 +542,10 @@ provider "oci" {
 
 - [oci_streaming_stream_pool](./r/oci_streaming_stream_pool.md)
 
+- [oci_vulnerability_scanning_host_scan_recipe](./r/oci_vulnerability_scanning_host_scan_recipe.md)
+
+- [oci_vulnerability_scanning_host_scan_target](./r/oci_vulnerability_scanning_host_scan_target.md)
+
 - [oci_waas_address_list](./r/oci_waas_address_list.md)
 
 - [oci_waas_certificate](./r/oci_waas_certificate.md)
@@ -591,6 +595,10 @@ provider "oci" {
 - [oci_apigateway_gateways](./d/oci_apigateway_gateways.md)
 
 - [oci_artifacts_container_configuration](./d/oci_artifacts_container_configuration.md)
+
+- [oci_artifacts_container_image](./d/oci_artifacts_container_image.md)
+
+- [oci_artifacts_container_images](./d/oci_artifacts_container_images.md)
 
 - [oci_artifacts_container_repositories](./d/oci_artifacts_container_repositories.md)
 
@@ -1645,6 +1653,14 @@ provider "oci" {
 - [oci_vault_secret_version](./d/oci_vault_secret_version.md)
 
 - [oci_vault_secrets](./d/oci_vault_secrets.md)
+
+- [oci_vulnerability_scanning_host_scan_recipe](./d/oci_vulnerability_scanning_host_scan_recipe.md)
+
+- [oci_vulnerability_scanning_host_scan_recipes](./d/oci_vulnerability_scanning_host_scan_recipes.md)
+
+- [oci_vulnerability_scanning_host_scan_target](./d/oci_vulnerability_scanning_host_scan_target.md)
+
+- [oci_vulnerability_scanning_host_scan_targets](./d/oci_vulnerability_scanning_host_scan_targets.md)
 
 - [oci_waas_address_list](./d/oci_waas_address_list.md)
 

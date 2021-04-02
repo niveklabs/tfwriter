@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "azurerm_virtual_desktop_host_pool" {
   source = "./modules/azurerm/r/azurerm_virtual_desktop_host_pool"
 
+  # custom_rdp_properties - (optional) is a type of string
+  custom_rdp_properties = null
   # description - (optional) is a type of string
   description = null
   # friendly_name - (optional) is a type of string
@@ -72,6 +74,12 @@ module "azurerm_virtual_desktop_host_pool" {
 ### Variables
 
 ```terraform
+variable "custom_rdp_properties" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional)"
   type        = string
@@ -171,6 +179,7 @@ variable "timeouts" {
 
 ```terraform
 resource "azurerm_virtual_desktop_host_pool" "this" {
+  custom_rdp_properties            = var.custom_rdp_properties
   description                      = var.description
   friendly_name                    = var.friendly_name
   load_balancer_type               = var.load_balancer_type

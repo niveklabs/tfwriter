@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    aws = ">= 3.34.0"
+    aws = ">= 3.35.0"
   }
 }
 ```
@@ -40,15 +40,32 @@ module "aws_appmesh_virtual_gateway" {
     backend_defaults = [{
       client_policy = [{
         tls = [{
+          certificate = [{
+            file = [{
+              certificate_chain = null
+              private_key       = null
+            }]
+            sds = [{
+              secret_name = null
+            }]
+          }]
           enforce = null
           ports   = []
           validation = [{
+            subject_alternative_names = [{
+              match = [{
+                exact = []
+              }]
+            }]
             trust = [{
               acm = [{
                 certificate_authority_arns = []
               }]
               file = [{
                 certificate_chain = null
+              }]
+              sds = [{
+                secret_name = null
               }]
             }]
           }]
@@ -90,8 +107,26 @@ module "aws_appmesh_virtual_gateway" {
             certificate_chain = null
             private_key       = null
           }]
+          sds = [{
+            secret_name = null
+          }]
         }]
         mode = null
+        validation = [{
+          subject_alternative_names = [{
+            match = [{
+              exact = []
+            }]
+          }]
+          trust = [{
+            file = [{
+              certificate_chain = null
+            }]
+            sds = [{
+              secret_name = null
+            }]
+          }]
+        }]
       }]
     }]
     logging = [{
@@ -142,10 +177,34 @@ variable "spec" {
             {
               tls = list(object(
                 {
+                  certificate = list(object(
+                    {
+                      file = list(object(
+                        {
+                          certificate_chain = string
+                          private_key       = string
+                        }
+                      ))
+                      sds = list(object(
+                        {
+                          secret_name = string
+                        }
+                      ))
+                    }
+                  ))
                   enforce = bool
                   ports   = set(number)
                   validation = list(object(
                     {
+                      subject_alternative_names = list(object(
+                        {
+                          match = list(object(
+                            {
+                              exact = set(string)
+                            }
+                          ))
+                        }
+                      ))
                       trust = list(object(
                         {
                           acm = list(object(
@@ -156,6 +215,11 @@ variable "spec" {
                           file = list(object(
                             {
                               certificate_chain = string
+                            }
+                          ))
+                          sds = list(object(
+                            {
+                              secret_name = string
                             }
                           ))
                         }
@@ -222,9 +286,41 @@ variable "spec" {
                       private_key       = string
                     }
                   ))
+                  sds = list(object(
+                    {
+                      secret_name = string
+                    }
+                  ))
                 }
               ))
               mode = string
+              validation = list(object(
+                {
+                  subject_alternative_names = list(object(
+                    {
+                      match = list(object(
+                        {
+                          exact = set(string)
+                        }
+                      ))
+                    }
+                  ))
+                  trust = list(object(
+                    {
+                      file = list(object(
+                        {
+                          certificate_chain = string
+                        }
+                      ))
+                      sds = list(object(
+                        {
+                          secret_name = string
+                        }
+                      ))
+                    }
+                  ))
+                }
+              ))
             }
           ))
         }
@@ -276,9 +372,45 @@ resource "aws_appmesh_virtual_gateway" "this" {
                   enforce = tls.value["enforce"]
                   ports   = tls.value["ports"]
 
+                  dynamic "certificate" {
+                    for_each = tls.value.certificate
+                    content {
+
+                      dynamic "file" {
+                        for_each = certificate.value.file
+                        content {
+                          certificate_chain = file.value["certificate_chain"]
+                          private_key       = file.value["private_key"]
+                        }
+                      }
+
+                      dynamic "sds" {
+                        for_each = certificate.value.sds
+                        content {
+                          secret_name = sds.value["secret_name"]
+                        }
+                      }
+
+                    }
+                  }
+
                   dynamic "validation" {
                     for_each = tls.value.validation
                     content {
+
+                      dynamic "subject_alternative_names" {
+                        for_each = validation.value.subject_alternative_names
+                        content {
+
+                          dynamic "match" {
+                            for_each = subject_alternative_names.value.match
+                            content {
+                              exact = match.value["exact"]
+                            }
+                          }
+
+                        }
+                      }
 
                       dynamic "trust" {
                         for_each = validation.value.trust
@@ -295,6 +427,13 @@ resource "aws_appmesh_virtual_gateway" "this" {
                             for_each = trust.value.file
                             content {
                               certificate_chain = file.value["certificate_chain"]
+                            }
+                          }
+
+                          dynamic "sds" {
+                            for_each = trust.value.sds
+                            content {
+                              secret_name = sds.value["secret_name"]
                             }
                           }
 
@@ -388,6 +527,55 @@ resource "aws_appmesh_virtual_gateway" "this" {
                     content {
                       certificate_chain = file.value["certificate_chain"]
                       private_key       = file.value["private_key"]
+                    }
+                  }
+
+                  dynamic "sds" {
+                    for_each = certificate.value.sds
+                    content {
+                      secret_name = sds.value["secret_name"]
+                    }
+                  }
+
+                }
+              }
+
+              dynamic "validation" {
+                for_each = tls.value.validation
+                content {
+
+                  dynamic "subject_alternative_names" {
+                    for_each = validation.value.subject_alternative_names
+                    content {
+
+                      dynamic "match" {
+                        for_each = subject_alternative_names.value.match
+                        content {
+                          exact = match.value["exact"]
+                        }
+                      }
+
+                    }
+                  }
+
+                  dynamic "trust" {
+                    for_each = validation.value.trust
+                    content {
+
+                      dynamic "file" {
+                        for_each = trust.value.file
+                        content {
+                          certificate_chain = file.value["certificate_chain"]
+                        }
+                      }
+
+                      dynamic "sds" {
+                        for_each = trust.value.sds
+                        content {
+                          secret_name = sds.value["secret_name"]
+                        }
+                      }
+
                     }
                   }
 

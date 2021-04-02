@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    azurerm = ">= 2.53.0"
+    azurerm = ">= 2.54.0"
   }
 }
 ```
@@ -88,6 +88,7 @@ module "azurerm_spring_cloud_service" {
 
   trace = [{
     instrumentation_key = null
+    sample_rate         = null
   }]
 }
 ```
@@ -205,6 +206,7 @@ variable "trace" {
   type = set(object(
     {
       instrumentation_key = string
+      sample_rate         = number
     }
   ))
   default = []
@@ -306,6 +308,7 @@ resource "azurerm_spring_cloud_service" "this" {
     for_each = var.trace
     content {
       instrumentation_key = trace.value["instrumentation_key"]
+      sample_rate         = trace.value["sample_rate"]
     }
   }
 

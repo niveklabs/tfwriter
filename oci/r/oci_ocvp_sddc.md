@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.19.0"
+    oci = ">= 4.20.0"
   }
 }
 ```
@@ -55,6 +55,10 @@ module "oci_ocvp_sddc" {
   nsx_vtep_vlan_id = null
   # provisioning_subnet_id - (required) is a type of string
   provisioning_subnet_id = null
+  # provisioning_vlan_id - (optional) is a type of string
+  provisioning_vlan_id = null
+  # replication_vlan_id - (optional) is a type of string
+  replication_vlan_id = null
   # ssh_authorized_keys - (required) is a type of string
   ssh_authorized_keys = null
   # vmotion_vlan_id - (required) is a type of string
@@ -155,6 +159,18 @@ variable "provisioning_subnet_id" {
   type        = string
 }
 
+variable "provisioning_vlan_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "replication_vlan_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "ssh_authorized_keys" {
   description = "(required)"
   type        = string
@@ -217,6 +233,8 @@ resource "oci_ocvp_sddc" "this" {
   nsx_edge_vtep_vlan_id        = var.nsx_edge_vtep_vlan_id
   nsx_vtep_vlan_id             = var.nsx_vtep_vlan_id
   provisioning_subnet_id       = var.provisioning_subnet_id
+  provisioning_vlan_id         = var.provisioning_vlan_id
+  replication_vlan_id          = var.replication_vlan_id
   ssh_authorized_keys          = var.ssh_authorized_keys
   vmotion_vlan_id              = var.vmotion_vlan_id
   vmware_software_version      = var.vmware_software_version
@@ -327,6 +345,16 @@ output "nsx_manager_username" {
 output "nsx_overlay_segment_name" {
   description = "returns a string"
   value       = oci_ocvp_sddc.this.nsx_overlay_segment_name
+}
+
+output "provisioning_vlan_id" {
+  description = "returns a string"
+  value       = oci_ocvp_sddc.this.provisioning_vlan_id
+}
+
+output "replication_vlan_id" {
+  description = "returns a string"
+  value       = oci_ocvp_sddc.this.replication_vlan_id
 }
 
 output "state" {
