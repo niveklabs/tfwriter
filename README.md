@@ -1,5 +1,7 @@
 Terraform providers
 
+## A
+
 - [aci](/aci/aci.md) (v0.5.4)
 - [ad](/ad/ad.md) (v0.4.1)
 - [akamai](/akamai/akamai.md) (v1.5.0)
