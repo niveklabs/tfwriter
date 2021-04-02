@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"alias":"archive","name":"archive","full-name":"hashicorp/archive","description":"The archive provider exposes resources to manage archive files.","version":"2.1.0","downloads":32023395,"namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-archive","tier":"official"}}

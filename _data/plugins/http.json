@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"alias":"http","name":"http","full-name":"hashicorp/http","description":"Utility provider for interacting with generic HTTP servers as part of a Terraform configuration.","version":"2.1.0","downloads":4899369,"namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-http","tier":"official"}}

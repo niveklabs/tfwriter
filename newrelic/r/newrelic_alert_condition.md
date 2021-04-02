@@ -112,7 +112,7 @@ variable "runbook_url" {
 }
 
 variable "type" {
-  description = "(required) - The type of condition. One of: (apm_app_metric, apm_jvm_metric, apm_kt_metric, browser_metric, mobile_metric, servers_metric)."
+  description = "(required) - The type of condition. One of: (apm_jvm_metric, apm_kt_metric, browser_metric, mobile_metric, servers_metric, apm_app_metric)."
   type        = string
 }
 

@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"icinga2","full-name":"Icinga/icinga2","version":"0.5.0","namespace":"Icinga","source":"https://github.com/Icinga/terraform-provider-icinga2","tier":"partner"}}

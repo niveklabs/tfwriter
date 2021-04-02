@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"nsxt","full-name":"vmware/nsxt","version":"3.1.1","downloads":98864,"namespace":"vmware","source":"https://github.com/vmware/terraform-provider-nsxt","tier":"partner"}}

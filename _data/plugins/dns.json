@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"alias":"dns","name":"dns","full-name":"hashicorp/dns","description":"Supports DNS updates (RFC 2136) and can optionally be configured with secret key based transaction authentication (RFC 2845).","version":"3.1.0","downloads":4480541,"namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-dns","tier":"official"}}

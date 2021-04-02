@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"bigip","full-name":"F5Networks/bigip","version":"1.8.0","downloads":18,"namespace":"F5Networks","source":"https://github.com/F5Networks/terraform-provider-bigip","tier":"partner"}}

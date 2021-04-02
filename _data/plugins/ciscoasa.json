@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"alias":"ciscoasa","name":"ciscoasa","full-name":"hashicorp/ciscoasa","description":"Interact with Cisco ASA hardware devices or Cisco ASAv virtual appliances","version":"1.2.0","downloads":4960,"namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-ciscoasa","tier":"official"}}

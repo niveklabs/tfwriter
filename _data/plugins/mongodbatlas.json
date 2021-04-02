@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"mongodbatlas","full-name":"mongodb/mongodbatlas","description":"Deploy, update, and manage Atlas configurations as code through Terraform","version":"0.8.2","downloads":319760,"namespace":"mongodb","source":"https://github.com/mongodb/terraform-provider-mongodbatlas","tier":"partner"}}
