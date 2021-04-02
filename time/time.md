@@ -1,5 +1,6 @@
 ---
 layout: resource
+title: time
 type: provider
 resource: time
 ---

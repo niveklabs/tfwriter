@@ -1,0 +1,13 @@
+{
+    "type": "providers",
+    "attributes": {
+        "alias": "time",
+        "name": "time",
+        "full-name": "hashicorp/time",
+        "description": "Used to interact with time-based resources. The provider itself has no configuration options.",
+        "downloads": 2482256,
+        "namespace": "hashicorp",
+        "source": "https://github.com/hashicorp/terraform-provider-time",
+        "tier": "official"
+    }
+}

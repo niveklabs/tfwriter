@@ -4,4 +4,8 @@ layout: default
 
 <h1>{{ page.type }} > {{ page.resource }}</h1>
 
+{% assign resource = site.data.plugins[page.resource] %}
+
+{{ resource.attributes.downloads }}
+
 {{content}}
