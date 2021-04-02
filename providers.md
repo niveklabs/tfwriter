@@ -14,7 +14,7 @@ tags: plugin terraform provider
     <th>Tier</th>
   </tr>
 {% for provider in site.data.providers %}
-  {% if provider.attributes.tier == "official" }
+  {% if provider.attributes.tier == "official" %}
   <tr>
     <td>
       <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}">
@@ -35,7 +35,7 @@ tags: plugin terraform provider
     <th>Tier</th>
   </tr>
 {% for provider in site.data.providers %}
-  {% if provider.attributes.tier == "partner" }
+  {% if provider.attributes.tier == "partner" %}
   <tr>
     <td>
       <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}">
