@@ -1,7 +1,7 @@
 ---
 layout: resource
 type: provider
-name: time
+resource: time
 ---
 
 [back](../)
