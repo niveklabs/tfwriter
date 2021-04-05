@@ -14,7 +14,7 @@ tags: [ plugin, terraform, provider ]
 {% assign plugins = site.data.plugins | sort %}
 {% for plugin in plugins %}
 {% assign resource = plugin[1] %}
-{% assign resource_group resource.attributes.name | slice: 0 | upcase %}
+{% assign resource_group = resource.attributes.name | slice: 0 | upcase %}
 {% if resource_group == group %}
   <li>
     <a href="/{{ resource.attributes.name }}/{{ resource.attributes.name }}.html">
