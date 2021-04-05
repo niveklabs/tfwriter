@@ -9,7 +9,7 @@ tags: [ plugin, terraform, provider ]
 {% for provider in site.data.plugins %}
   <li>
     <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html">
-      {{ provider.attributes.name }} ({{ provider.attributes.version }}) {{ provider }}
+      {{ provider.attributes.name }} ({{ provider.attributes.version }}) {{ provider.type }}
     </a>
   </li>
 {% endfor %}
