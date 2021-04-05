@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nutanix = ">= 1.1.0"
+    nutanix = ">= 1.2.0"
   }
 }
 ```
@@ -126,6 +126,11 @@ output "boot_device_order_list" {
   value       = data.nutanix_virtual_machine.this.boot_device_order_list
 }
 
+output "boot_type" {
+  description = "returns a string"
+  value       = data.nutanix_virtual_machine.this.boot_type
+}
+
 output "cluster_name" {
   description = "returns a string"
   value       = data.nutanix_virtual_machine.this.cluster_name
@@ -209,6 +214,11 @@ output "hypervisor_type" {
 output "id" {
   description = "returns a string"
   value       = data.nutanix_virtual_machine.this.id
+}
+
+output "machine_type" {
+  description = "returns a string"
+  value       = data.nutanix_virtual_machine.this.machine_type
 }
 
 output "memory_size_mib" {

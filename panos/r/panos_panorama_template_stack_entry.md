@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```

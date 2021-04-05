@@ -1,6 +1,9 @@
-# panos
-
-[back](../)
+---
+layout: resource
+title: panos
+type: provider
+resource: panos
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "panos" {
-  version = "1.6.3"
+  version = "1.8.1"
 
   # api_key - (optional) is a type of string
   api_key = null
@@ -28,6 +31,8 @@ provider "panos" {
   port = null
   # protocol - (optional) is a type of string
   protocol = null
+  # target - (optional) is a type of string
+  target = null
   # timeout - (optional) is a type of number
   timeout = null
   # username - (optional) is a type of string
@@ -50,11 +55,17 @@ provider "panos" {
 
 - [panos_aggregate_interface](./r/panos_aggregate_interface.md)
 
+- [panos_anti_spyware_security_profile](./r/panos_anti_spyware_security_profile.md)
+
+- [panos_antivirus_security_profile](./r/panos_antivirus_security_profile.md)
+
 - [panos_application_group](./r/panos_application_group.md)
 
 - [panos_application_object](./r/panos_application_object.md)
 
 - [panos_application_signature](./r/panos_application_signature.md)
+
+- [panos_arp](./r/panos_arp.md)
 
 - [panos_bfd_profile](./r/panos_bfd_profile.md)
 
@@ -86,13 +97,25 @@ provider "panos" {
 
 - [panos_bgp_redist_rule](./r/panos_bgp_redist_rule.md)
 
+- [panos_custom_data_pattern_object](./r/panos_custom_data_pattern_object.md)
+
 - [panos_dag_tags](./r/panos_dag_tags.md)
+
+- [panos_data_filtering_security_profile](./r/panos_data_filtering_security_profile.md)
+
+- [panos_device_group_parent](./r/panos_device_group_parent.md)
+
+- [panos_dos_protection_profile](./r/panos_dos_protection_profile.md)
+
+- [panos_dynamic_user_group](./r/panos_dynamic_user_group.md)
 
 - [panos_edl](./r/panos_edl.md)
 
 - [panos_email_server_profile](./r/panos_email_server_profile.md)
 
 - [panos_ethernet_interface](./r/panos_ethernet_interface.md)
+
+- [panos_file_blocking_security_profile](./r/panos_file_blocking_security_profile.md)
 
 - [panos_general_settings](./r/panos_general_settings.md)
 
@@ -103,6 +126,8 @@ provider "panos" {
 - [panos_ike_crypto_profile](./r/panos_ike_crypto_profile.md)
 
 - [panos_ike_gateway](./r/panos_ike_gateway.md)
+
+- [panos_ip_tag](./r/panos_ip_tag.md)
 
 - [panos_ipsec_crypto_profile](./r/panos_ipsec_crypto_profile.md)
 
@@ -131,6 +156,18 @@ provider "panos" {
 - [panos_nat_rule](./r/panos_nat_rule.md)
 
 - [panos_nat_rule_group](./r/panos_nat_rule_group.md)
+
+- [panos_ospf](./r/panos_ospf.md)
+
+- [panos_ospf_area](./r/panos_ospf_area.md)
+
+- [panos_ospf_area_interface](./r/panos_ospf_area_interface.md)
+
+- [panos_ospf_area_virtual_link](./r/panos_ospf_area_virtual_link.md)
+
+- [panos_ospf_auth_profile](./r/panos_ospf_auth_profile.md)
+
+- [panos_ospf_export](./r/panos_ospf_export.md)
 
 - [panos_panorama_address_group](./r/panos_panorama_address_group.md)
 
@@ -298,6 +335,12 @@ provider "panos" {
 
 - [panos_tunnel_interface](./r/panos_tunnel_interface.md)
 
+- [panos_url_filtering_security_profile](./r/panos_url_filtering_security_profile.md)
+
+- [panos_user_tag](./r/panos_user_tag.md)
+
+- [panos_userid_login](./r/panos_userid_login.md)
+
 - [panos_virtual_router](./r/panos_virtual_router.md)
 
 - [panos_virtual_router_entry](./r/panos_virtual_router_entry.md)
@@ -307,6 +350,12 @@ provider "panos" {
 - [panos_vlan_entry](./r/panos_vlan_entry.md)
 
 - [panos_vlan_interface](./r/panos_vlan_interface.md)
+
+- [panos_vm_auth_key](./r/panos_vm_auth_key.md)
+
+- [panos_vulnerability_security_profile](./r/panos_vulnerability_security_profile.md)
+
+- [panos_wildfire_analysis_security_profile](./r/panos_wildfire_analysis_security_profile.md)
 
 - [panos_zone](./r/panos_zone.md)
 
@@ -318,11 +367,97 @@ provider "panos" {
 ### Datasources
 
 
+- [panos_address_object](./d/panos_address_object.md)
+
+- [panos_address_objects](./d/panos_address_objects.md)
+
+- [panos_anti_spyware_security_profile](./d/panos_anti_spyware_security_profile.md)
+
+- [panos_anti_spyware_security_profiles](./d/panos_anti_spyware_security_profiles.md)
+
+- [panos_antivirus_security_profile](./d/panos_antivirus_security_profile.md)
+
+- [panos_antivirus_security_profiles](./d/panos_antivirus_security_profiles.md)
+
+- [panos_api_key](./d/panos_api_key.md)
+
+- [panos_arp](./d/panos_arp.md)
+
+- [panos_arps](./d/panos_arps.md)
+
+- [panos_custom_data_pattern_object](./d/panos_custom_data_pattern_object.md)
+
+- [panos_custom_data_pattern_objects](./d/panos_custom_data_pattern_objects.md)
+
+- [panos_data_filtering_security_profile](./d/panos_data_filtering_security_profile.md)
+
+- [panos_data_filtering_security_profiles](./d/panos_data_filtering_security_profiles.md)
+
+- [panos_device_group_parent](./d/panos_device_group_parent.md)
+
 - [panos_dhcp_interface_info](./d/panos_dhcp_interface_info.md)
+
+- [panos_dos_protection_profile](./d/panos_dos_protection_profile.md)
+
+- [panos_dos_protection_profiles](./d/panos_dos_protection_profiles.md)
+
+- [panos_dynamic_user_group](./d/panos_dynamic_user_group.md)
+
+- [panos_dynamic_user_groups](./d/panos_dynamic_user_groups.md)
+
+- [panos_file_blocking_security_profile](./d/panos_file_blocking_security_profile.md)
+
+- [panos_file_blocking_security_profiles](./d/panos_file_blocking_security_profiles.md)
+
+- [panos_ip_tag](./d/panos_ip_tag.md)
+
+- [panos_ospf](./d/panos_ospf.md)
+
+- [panos_ospf_area](./d/panos_ospf_area.md)
+
+- [panos_ospf_area_interface](./d/panos_ospf_area_interface.md)
+
+- [panos_ospf_area_interfaces](./d/panos_ospf_area_interfaces.md)
+
+- [panos_ospf_area_virtual_link](./d/panos_ospf_area_virtual_link.md)
+
+- [panos_ospf_area_virtual_links](./d/panos_ospf_area_virtual_links.md)
+
+- [panos_ospf_areas](./d/panos_ospf_areas.md)
+
+- [panos_ospf_auth_profiles](./d/panos_ospf_auth_profiles.md)
+
+- [panos_ospf_export](./d/panos_ospf_export.md)
+
+- [panos_ospf_exports](./d/panos_ospf_exports.md)
 
 - [panos_panorama_plugin](./d/panos_panorama_plugin.md)
 
+- [panos_plugin](./d/panos_plugin.md)
+
+- [panos_predefined_dlp_file_type](./d/panos_predefined_dlp_file_type.md)
+
+- [panos_predefined_tdb_file_type](./d/panos_predefined_tdb_file_type.md)
+
+- [panos_predefined_threat](./d/panos_predefined_threat.md)
+
 - [panos_system_info](./d/panos_system_info.md)
+
+- [panos_url_filtering_security_profile](./d/panos_url_filtering_security_profile.md)
+
+- [panos_url_filtering_security_profiles](./d/panos_url_filtering_security_profiles.md)
+
+- [panos_user_tag](./d/panos_user_tag.md)
+
+- [panos_vm_auth_key](./d/panos_vm_auth_key.md)
+
+- [panos_vulnerability_security_profile](./d/panos_vulnerability_security_profile.md)
+
+- [panos_vulnerability_security_profiles](./d/panos_vulnerability_security_profiles.md)
+
+- [panos_wildfire_analysis_security_profile](./d/panos_wildfire_analysis_security_profile.md)
+
+- [panos_wildfire_analysis_security_profiles](./d/panos_wildfire_analysis_security_profiles.md)
 
 
 [top](#index)

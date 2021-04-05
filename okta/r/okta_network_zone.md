@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "okta_network_zone" {
   proxies = []
   # type - (required) is a type of string
   type = null
+  # usage - (optional) is a type of string
+  usage = null
 }
 ```
 
@@ -72,6 +74,12 @@ variable "type" {
   description = "(required) - Type of the Network Zone - can either be IP or DYNAMIC only"
   type        = string
 }
+
+variable "usage" {
+  description = "(optional) - Zone's purpose: POLICY or BLOCKLIST"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -85,6 +93,7 @@ resource "okta_network_zone" "this" {
   name              = var.name
   proxies           = var.proxies
   type              = var.type
+  usage             = var.usage
 }
 ```
 

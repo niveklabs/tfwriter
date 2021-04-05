@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -49,6 +49,7 @@ module "okta_users" {
     group_memberships         = []
     honorific_prefix          = null
     honorific_suffix          = null
+    id                        = null
     last_name                 = null
     locale                    = null
     login                     = null
@@ -108,6 +109,7 @@ variable "users" {
       group_memberships         = set(string)
       honorific_prefix          = string
       honorific_suffix          = string
+      id                        = string
       last_name                 = string
       locale                    = string
       login                     = string

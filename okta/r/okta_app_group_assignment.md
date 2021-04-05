@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "okta_app_group_assignment" {
   priority = null
   # profile - (optional) is a type of string
   profile = null
+  # retain_assignment - (optional) is a type of bool
+  retain_assignment = null
 }
 ```
 
@@ -64,6 +66,12 @@ variable "profile" {
   type        = string
   default     = null
 }
+
+variable "retain_assignment" {
+  description = "(optional) - Retain the group assignment on destroy. If set to true, the resource will be removed from state but not from the Okta app."
+  type        = bool
+  default     = null
+}
 ```
 
 [top](#index)
@@ -72,10 +80,11 @@ variable "profile" {
 
 ```terraform
 resource "okta_app_group_assignment" "this" {
-  app_id   = var.app_id
-  group_id = var.group_id
-  priority = var.priority
-  profile  = var.profile
+  app_id            = var.app_id
+  group_id          = var.group_id
+  priority          = var.priority
+  profile           = var.profile
+  retain_assignment = var.retain_assignment
 }
 ```
 

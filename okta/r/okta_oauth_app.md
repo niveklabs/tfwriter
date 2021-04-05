@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -49,10 +49,16 @@ module "okta_oauth_app" {
   hide_ios = null
   # hide_web - (optional) is a type of bool
   hide_web = null
+  # implicit_assignment - (optional) is a type of bool
+  implicit_assignment = null
   # issuer_mode - (optional) is a type of string
   issuer_mode = null
   # label - (required) is a type of string
   label = null
+  # login_mode - (optional) is a type of string
+  login_mode = null
+  # login_scopes - (optional) is a type of set of string
+  login_scopes = []
   # login_uri - (optional) is a type of string
   login_uri = null
   # logo_uri - (optional) is a type of string
@@ -165,6 +171,12 @@ variable "hide_web" {
   default     = null
 }
 
+variable "implicit_assignment" {
+  description = "(optional) - *Early Access Property*. Enable Federation Broker Mode."
+  type        = bool
+  default     = null
+}
+
 variable "issuer_mode" {
   description = "(optional) - *Early Access Property*. Indicates whether the Okta Authorization Server uses the original Okta org domain URL or a custom domain URL as the issuer of ID token for this client."
   type        = string
@@ -174,6 +186,18 @@ variable "issuer_mode" {
 variable "label" {
   description = "(required) - Pretty name of app."
   type        = string
+}
+
+variable "login_mode" {
+  description = "(optional) - The type of Idp-Initiated login that the client supports, if any"
+  type        = string
+  default     = null
+}
+
+variable "login_scopes" {
+  description = "(optional) - List of scopes to use for the request"
+  type        = set(string)
+  default     = null
 }
 
 variable "login_uri" {
@@ -195,7 +219,7 @@ variable "omit_secret" {
 }
 
 variable "policy_uri" {
-  description = "(optional) - *Early Access Property*. URI to web page providing client policy document."
+  description = "(optional) - URI to web page providing client policy document."
   type        = string
   default     = null
 }
@@ -237,7 +261,7 @@ variable "token_endpoint_auth_method" {
 }
 
 variable "tos_uri" {
-  description = "(optional) - *Early Access Property*. URI to web page providing client tos (terms of service)."
+  description = "(optional) - URI to web page providing client tos (terms of service)."
   type        = string
   default     = null
 }
@@ -291,8 +315,11 @@ resource "okta_oauth_app" "this" {
   groups                     = var.groups
   hide_ios                   = var.hide_ios
   hide_web                   = var.hide_web
+  implicit_assignment        = var.implicit_assignment
   issuer_mode                = var.issuer_mode
   label                      = var.label
+  login_mode                 = var.login_mode
+  login_scopes               = var.login_scopes
   login_uri                  = var.login_uri
   logo_uri                   = var.logo_uri
   omit_secret                = var.omit_secret

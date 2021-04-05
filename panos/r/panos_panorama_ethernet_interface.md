@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```
@@ -51,6 +51,10 @@ module "panos_panorama_ethernet_interface" {
   ipv6_enabled = null
   # ipv6_mss_adjust - (optional) is a type of number
   ipv6_mss_adjust = null
+  # lacp_ha_passive_pre_negotiation - (optional) is a type of bool
+  lacp_ha_passive_pre_negotiation = null
+  # lacp_port_priority - (optional) is a type of number
+  lacp_port_priority = null
   # link_duplex - (optional) is a type of string
   link_duplex = null
   # link_speed - (optional) is a type of string
@@ -59,6 +63,8 @@ module "panos_panorama_ethernet_interface" {
   link_state = null
   # lldp_enabled - (optional) is a type of bool
   lldp_enabled = null
+  # lldp_ha_passive_pre_negotiation - (optional) is a type of bool
+  lldp_ha_passive_pre_negotiation = null
   # lldp_profile - (optional) is a type of string
   lldp_profile = null
   # management_profile - (optional) is a type of string
@@ -161,6 +167,18 @@ variable "ipv6_mss_adjust" {
   default     = null
 }
 
+variable "lacp_ha_passive_pre_negotiation" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "lacp_port_priority" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "link_duplex" {
   description = "(optional)"
   type        = string
@@ -180,6 +198,12 @@ variable "link_state" {
 }
 
 variable "lldp_enabled" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "lldp_ha_passive_pre_negotiation" {
   description = "(optional)"
   type        = bool
   default     = null
@@ -255,33 +279,36 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_ethernet_interface" "this" {
-  adjust_tcp_mss            = var.adjust_tcp_mss
-  aggregate_group           = var.aggregate_group
-  comment                   = var.comment
-  create_dhcp_default_route = var.create_dhcp_default_route
-  decrypt_forward           = var.decrypt_forward
-  dhcp_default_route_metric = var.dhcp_default_route_metric
-  dhcp_send_hostname_enable = var.dhcp_send_hostname_enable
-  dhcp_send_hostname_value  = var.dhcp_send_hostname_value
-  enable_dhcp               = var.enable_dhcp
-  ipv4_mss_adjust           = var.ipv4_mss_adjust
-  ipv6_enabled              = var.ipv6_enabled
-  ipv6_mss_adjust           = var.ipv6_mss_adjust
-  link_duplex               = var.link_duplex
-  link_speed                = var.link_speed
-  link_state                = var.link_state
-  lldp_enabled              = var.lldp_enabled
-  lldp_profile              = var.lldp_profile
-  management_profile        = var.management_profile
-  mode                      = var.mode
-  mtu                       = var.mtu
-  name                      = var.name
-  netflow_profile           = var.netflow_profile
-  rx_policing_rate          = var.rx_policing_rate
-  static_ips                = var.static_ips
-  template                  = var.template
-  tx_policing_rate          = var.tx_policing_rate
-  vsys                      = var.vsys
+  adjust_tcp_mss                  = var.adjust_tcp_mss
+  aggregate_group                 = var.aggregate_group
+  comment                         = var.comment
+  create_dhcp_default_route       = var.create_dhcp_default_route
+  decrypt_forward                 = var.decrypt_forward
+  dhcp_default_route_metric       = var.dhcp_default_route_metric
+  dhcp_send_hostname_enable       = var.dhcp_send_hostname_enable
+  dhcp_send_hostname_value        = var.dhcp_send_hostname_value
+  enable_dhcp                     = var.enable_dhcp
+  ipv4_mss_adjust                 = var.ipv4_mss_adjust
+  ipv6_enabled                    = var.ipv6_enabled
+  ipv6_mss_adjust                 = var.ipv6_mss_adjust
+  lacp_ha_passive_pre_negotiation = var.lacp_ha_passive_pre_negotiation
+  lacp_port_priority              = var.lacp_port_priority
+  link_duplex                     = var.link_duplex
+  link_speed                      = var.link_speed
+  link_state                      = var.link_state
+  lldp_enabled                    = var.lldp_enabled
+  lldp_ha_passive_pre_negotiation = var.lldp_ha_passive_pre_negotiation
+  lldp_profile                    = var.lldp_profile
+  management_profile              = var.management_profile
+  mode                            = var.mode
+  mtu                             = var.mtu
+  name                            = var.name
+  netflow_profile                 = var.netflow_profile
+  rx_policing_rate                = var.rx_policing_rate
+  static_ips                      = var.static_ips
+  template                        = var.template
+  tx_policing_rate                = var.tx_policing_rate
+  vsys                            = var.vsys
 }
 ```
 

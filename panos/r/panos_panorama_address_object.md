@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```
@@ -39,6 +39,8 @@ module "panos_panorama_address_object" {
   type = null
   # value - (required) is a type of string
   value = null
+  # vsys - (optional) is a type of string
+  vsys = null
 }
 ```
 
@@ -80,6 +82,12 @@ variable "value" {
   description = "(required)"
   type        = string
 }
+
+variable "vsys" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -94,6 +102,7 @@ resource "panos_panorama_address_object" "this" {
   tags         = var.tags
   type         = var.type
   value        = var.value
+  vsys         = var.vsys
 }
 ```
 

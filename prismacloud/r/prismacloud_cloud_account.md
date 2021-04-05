@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    prismacloud = ">= 1.0.8"
+    prismacloud = ">= 1.1.0"
   }
 }
 ```

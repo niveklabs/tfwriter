@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -79,6 +79,12 @@ module "okta_saml_app" {
   response_signed = null
   # signature_algorithm - (optional) is a type of string
   signature_algorithm = null
+  # single_logout_certificate - (optional) is a type of string
+  single_logout_certificate = null
+  # single_logout_issuer - (optional) is a type of string
+  single_logout_issuer = null
+  # single_logout_url - (optional) is a type of string
+  single_logout_url = null
   # sp_issuer - (optional) is a type of string
   sp_issuer = null
   # sso_url - (optional) is a type of string
@@ -274,6 +280,24 @@ variable "signature_algorithm" {
   default     = null
 }
 
+variable "single_logout_certificate" {
+  description = "(optional) - x509 encoded certificate that the Service Provider uses to sign Single Logout requests"
+  type        = string
+  default     = null
+}
+
+variable "single_logout_issuer" {
+  description = "(optional) - The issuer of the Service Provider that generates the Single Logout request"
+  type        = string
+  default     = null
+}
+
+variable "single_logout_url" {
+  description = "(optional) - The location where the logout response is sent"
+  type        = string
+  default     = null
+}
+
 variable "sp_issuer" {
   description = "(optional) - SAML SP issuer ID"
   type        = string
@@ -383,6 +407,9 @@ resource "okta_saml_app" "this" {
   request_compressed               = var.request_compressed
   response_signed                  = var.response_signed
   signature_algorithm              = var.signature_algorithm
+  single_logout_certificate        = var.single_logout_certificate
+  single_logout_issuer             = var.single_logout_issuer
+  single_logout_url                = var.single_logout_url
   sp_issuer                        = var.sp_issuer
   sso_url                          = var.sso_url
   status                           = var.status
@@ -459,6 +486,11 @@ output "key_id" {
 output "metadata" {
   description = "returns a string"
   value       = okta_saml_app.this.metadata
+}
+
+output "metadata_url" {
+  description = "returns a string"
+  value       = okta_saml_app.this.metadata_url
 }
 
 output "name" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    onelogin = ">= 0.1.6"
+    onelogin = ">= 0.1.12"
   }
 }
 ```
@@ -27,13 +27,13 @@ terraform {
 module "onelogin_roles" {
   source = "./modules/onelogin/r/onelogin_roles"
 
-  # admins - (required) is a type of set of number
+  # admins - (optional) is a type of set of number
   admins = []
-  # apps - (required) is a type of set of number
+  # apps - (optional) is a type of set of number
   apps = []
   # name - (required) is a type of string
   name = null
-  # users - (required) is a type of set of number
+  # users - (optional) is a type of set of number
   users = []
 }
 ```
@@ -44,13 +44,15 @@ module "onelogin_roles" {
 
 ```terraform
 variable "admins" {
-  description = "(required)"
+  description = "(optional)"
   type        = set(number)
+  default     = null
 }
 
 variable "apps" {
-  description = "(required)"
+  description = "(optional)"
   type        = set(number)
+  default     = null
 }
 
 variable "name" {
@@ -59,8 +61,9 @@ variable "name" {
 }
 
 variable "users" {
-  description = "(required)"
+  description = "(optional)"
   type        = set(number)
+  default     = null
 }
 ```
 

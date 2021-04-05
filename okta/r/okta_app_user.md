@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -33,6 +33,8 @@ module "okta_app_user" {
   password = null
   # profile - (optional) is a type of string
   profile = null
+  # retain_assignment - (optional) is a type of bool
+  retain_assignment = null
   # user_id - (required) is a type of string
   user_id = null
   # username - (required) is a type of string
@@ -62,6 +64,12 @@ variable "profile" {
   default     = null
 }
 
+variable "retain_assignment" {
+  description = "(optional) - Retain the user assignment on destroy. If set to true, the resource will be removed from state but not from the Okta app."
+  type        = bool
+  default     = null
+}
+
 variable "user_id" {
   description = "(required) - User associated with the application"
   type        = string
@@ -79,11 +87,12 @@ variable "username" {
 
 ```terraform
 resource "okta_app_user" "this" {
-  app_id   = var.app_id
-  password = var.password
-  profile  = var.profile
-  user_id  = var.user_id
-  username = var.username
+  app_id            = var.app_id
+  password          = var.password
+  profile           = var.profile
+  retain_assignment = var.retain_assignment
+  user_id           = var.user_id
+  username          = var.username
 }
 ```
 

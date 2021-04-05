@@ -1,6 +1,9 @@
-# okta
-
-[back](../)
+---
+layout: resource
+title: okta
+type: provider
+resource: okta
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "okta" {
-  version = "3.7.4"
+  version = "3.11.0"
 
   # api_token - (optional) is a type of string
   api_token = null
@@ -20,6 +23,8 @@ provider "okta" {
   backoff = null
   # base_url - (optional) is a type of string
   base_url = null
+  # client_id - (optional) is a type of string
+  client_id = null
   # log_level - (optional) is a type of number
   log_level = null
   # max_retries - (optional) is a type of number
@@ -32,8 +37,12 @@ provider "okta" {
   org_name = null
   # parallelism - (optional) is a type of number
   parallelism = null
+  # private_key - (optional) is a type of string
+  private_key = null
   # request_timeout - (optional) is a type of number
   request_timeout = null
+  # scopes - (optional) is a type of set of string
+  scopes = []
 }
 ```
 
@@ -41,6 +50,8 @@ provider "okta" {
 
 ### Resources
 
+
+- [okta_admin_role_targets](./r/okta_admin_role_targets.md)
 
 - [okta_app_auto_login](./r/okta_app_auto_login.md)
 
@@ -51,6 +62,8 @@ provider "okta" {
 - [okta_app_group_assignment](./r/okta_app_group_assignment.md)
 
 - [okta_app_oauth](./r/okta_app_oauth.md)
+
+- [okta_app_oauth_api_scope](./r/okta_app_oauth_api_scope.md)
 
 - [okta_app_oauth_redirect_uri](./r/okta_app_oauth_redirect_uri.md)
 
@@ -72,6 +85,10 @@ provider "okta" {
 
 - [okta_auth_server_claim](./r/okta_auth_server_claim.md)
 
+- [okta_auth_server_claim_default](./r/okta_auth_server_claim_default.md)
+
+- [okta_auth_server_default](./r/okta_auth_server_default.md)
+
 - [okta_auth_server_policy](./r/okta_auth_server_policy.md)
 
 - [okta_auth_server_policy_rule](./r/okta_auth_server_policy_rule.md)
@@ -87,6 +104,10 @@ provider "okta" {
 - [okta_factor](./r/okta_factor.md)
 
 - [okta_group](./r/okta_group.md)
+
+- [okta_group_membership](./r/okta_group_membership.md)
+
+- [okta_group_role](./r/okta_group_role.md)
 
 - [okta_group_roles](./r/okta_group_roles.md)
 
@@ -120,7 +141,11 @@ provider "okta" {
 
 - [okta_policy_mfa](./r/okta_policy_mfa.md)
 
+- [okta_policy_mfa_default](./r/okta_policy_mfa_default.md)
+
 - [okta_policy_password](./r/okta_policy_password.md)
+
+- [okta_policy_password_default](./r/okta_policy_password_default.md)
 
 - [okta_policy_rule_idp_discovery](./r/okta_policy_rule_idp_discovery.md)
 
@@ -176,9 +201,15 @@ provider "okta" {
 
 - [okta_app_metadata_saml](./d/okta_app_metadata_saml.md)
 
+- [okta_app_oauth](./d/okta_app_oauth.md)
+
 - [okta_app_saml](./d/okta_app_saml.md)
 
 - [okta_auth_server](./d/okta_auth_server.md)
+
+- [okta_auth_server_policy](./d/okta_auth_server_policy.md)
+
+- [okta_auth_server_scopes](./d/okta_auth_server_scopes.md)
 
 - [okta_default_policies](./d/okta_default_policies.md)
 
@@ -188,9 +219,15 @@ provider "okta" {
 
 - [okta_group](./d/okta_group.md)
 
+- [okta_groups](./d/okta_groups.md)
+
 - [okta_idp_metadata_saml](./d/okta_idp_metadata_saml.md)
 
+- [okta_idp_oidc](./d/okta_idp_oidc.md)
+
 - [okta_idp_saml](./d/okta_idp_saml.md)
+
+- [okta_idp_social](./d/okta_idp_social.md)
 
 - [okta_policy](./d/okta_policy.md)
 

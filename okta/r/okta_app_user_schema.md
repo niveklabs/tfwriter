@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -61,6 +61,8 @@ module "okta_app_user_schema" {
   title = null
   # type - (required) is a type of string
   type = null
+  # union - (optional) is a type of bool
+  union = null
   # unique - (optional) is a type of string
   unique = null
   # user_type - (optional) is a type of string
@@ -181,6 +183,12 @@ variable "type" {
   type        = string
 }
 
+variable "union" {
+  description = "(optional) - Allows to assign attribute's group priority"
+  type        = bool
+  default     = null
+}
+
 variable "unique" {
   description = "(optional) - Subschema unique restriction"
   type        = string
@@ -239,6 +247,7 @@ resource "okta_app_user_schema" "this" {
   scope              = var.scope
   title              = var.title
   type               = var.type
+  union              = var.union
   unique             = var.unique
   user_type          = var.user_type
 

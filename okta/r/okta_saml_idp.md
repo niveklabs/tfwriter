@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "okta_saml_idp" {
   account_link_action = null
   # account_link_group_include - (optional) is a type of set of string
   account_link_group_include = []
-  # acs_binding - (required) is a type of string
+  # acs_binding - (optional) is a type of string
   acs_binding = null
   # acs_type - (optional) is a type of string
   acs_type = null
@@ -110,8 +110,9 @@ variable "account_link_group_include" {
 }
 
 variable "acs_binding" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "acs_type" {

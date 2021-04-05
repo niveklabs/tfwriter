@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ovh = ">= 0.10.0"
+    ovh = ">= 0.11.0"
   }
 }
 ```

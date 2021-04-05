@@ -1,6 +1,9 @@
-# opennebula
-
-[back](../)
+---
+layout: resource
+title: opennebula
+type: provider
+resource: opennebula
+---
 
 ### Index
 

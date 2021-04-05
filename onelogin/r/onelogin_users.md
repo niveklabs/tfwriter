@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    onelogin = ">= 0.1.6"
+    onelogin = ">= 0.1.12"
   }
 }
 ```

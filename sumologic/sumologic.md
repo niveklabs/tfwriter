@@ -1,6 +1,9 @@
-# sumologic
-
-[back](../)
+---
+layout: resource
+title: sumologic
+type: provider
+resource: sumologic
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "sumologic" {
-  version = "2.6.2"
+  version = "2.9.1"
 
   # access_id - (required) is a type of string
   access_id = null
@@ -52,6 +55,8 @@ provider "sumologic" {
 
 - [sumologic_content](./r/sumologic_content.md)
 
+- [sumologic_dashboard](./r/sumologic_dashboard.md)
+
 - [sumologic_elb_source](./r/sumologic_elb_source.md)
 
 - [sumologic_field](./r/sumologic_field.md)
@@ -78,6 +83,8 @@ provider "sumologic" {
 
 - [sumologic_partition](./r/sumologic_partition.md)
 
+- [sumologic_password_policy](./r/sumologic_password_policy.md)
+
 - [sumologic_polling_source](./r/sumologic_polling_source.md)
 
 - [sumologic_role](./r/sumologic_role.md)
@@ -85,6 +92,8 @@ provider "sumologic" {
 - [sumologic_s3_audit_source](./r/sumologic_s3_audit_source.md)
 
 - [sumologic_s3_source](./r/sumologic_s3_source.md)
+
+- [sumologic_saml_configuration](./r/sumologic_saml_configuration.md)
 
 - [sumologic_scheduled_view](./r/sumologic_scheduled_view.md)
 
@@ -107,6 +116,8 @@ provider "sumologic" {
 - [sumologic_my_user_id](./d/sumologic_my_user_id.md)
 
 - [sumologic_personal_folder](./d/sumologic_personal_folder.md)
+
+- [sumologic_role](./d/sumologic_role.md)
 
 
 [top](#index)

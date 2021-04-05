@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    opsgenie = ">= 0.5.7"
+    opsgenie = ">= 0.6.3"
   }
 }
 ```
@@ -41,7 +41,7 @@ module "opsgenie_service_incident_rule" {
     }]
     incident_properties = [{
       description = null
-      details     = []
+      details     = {}
       message     = null
       priority    = null
       stakeholder_properties = [{
@@ -82,7 +82,7 @@ variable "incident_rule" {
       incident_properties = list(object(
         {
           description = string
-          details     = list(string)
+          details     = map(string)
           message     = string
           priority    = string
           stakeholder_properties = list(object(
@@ -92,7 +92,7 @@ variable "incident_rule" {
               message     = string
             }
           ))
-          tags = list(string)
+          tags = set(string)
         }
       ))
     }

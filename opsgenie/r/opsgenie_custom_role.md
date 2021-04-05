@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    opsgenie = ">= 0.5.7"
+    opsgenie = ">= 0.6.3"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -55,6 +55,8 @@ module "okta_app_saml" {
   digest_algorithm = null
   # features - (optional) is a type of set of string
   features = []
+  # groups - (optional) is a type of set of string
+  groups = []
   # hide_ios - (optional) is a type of bool
   hide_ios = null
   # hide_web - (optional) is a type of bool
@@ -89,6 +91,8 @@ module "okta_app_saml" {
   user_name_template_suffix = null
   # user_name_template_type - (optional) is a type of string
   user_name_template_type = null
+  # users - (optional) is a type of set of string
+  users = []
 
   attribute_statements = [{
     filter_type  = null
@@ -186,6 +190,12 @@ variable "digest_algorithm" {
 
 variable "features" {
   description = "(optional) - features to enable"
+  type        = set(string)
+  default     = null
+}
+
+variable "groups" {
+  description = "(optional) - Groups associated with the application"
   type        = set(string)
   default     = null
 }
@@ -292,6 +302,12 @@ variable "user_name_template_type" {
   default     = null
 }
 
+variable "users" {
+  description = "(optional) - Users associated with the application"
+  type        = set(string)
+  default     = null
+}
+
 variable "attribute_statements" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -328,6 +344,7 @@ data "okta_app_saml" "this" {
   destination                      = var.destination
   digest_algorithm                 = var.digest_algorithm
   features                         = var.features
+  groups                           = var.groups
   hide_ios                         = var.hide_ios
   hide_web                         = var.hide_web
   honor_force_authn                = var.honor_force_authn
@@ -345,16 +362,11 @@ data "okta_app_saml" "this" {
   user_name_template               = var.user_name_template
   user_name_template_suffix        = var.user_name_template_suffix
   user_name_template_type          = var.user_name_template_type
+  users                            = var.users
 
   dynamic "attribute_statements" {
     for_each = var.attribute_statements
     content {
-      filter_type  = attribute_statements.value["filter_type"]
-      filter_value = attribute_statements.value["filter_value"]
-      name         = attribute_statements.value["name"]
-      namespace    = attribute_statements.value["namespace"]
-      type         = attribute_statements.value["type"]
-      values       = attribute_statements.value["values"]
     }
   }
 
@@ -366,11 +378,6 @@ data "okta_app_saml" "this" {
 ### Outputs
 
 ```terraform
-output "description" {
-  description = "returns a string"
-  value       = data.okta_app_saml.this.description
-}
-
 output "id" {
   description = "returns a string"
   value       = data.okta_app_saml.this.id
@@ -381,9 +388,29 @@ output "key_id" {
   value       = data.okta_app_saml.this.key_id
 }
 
+output "links" {
+  description = "returns a string"
+  value       = data.okta_app_saml.this.links
+}
+
 output "name" {
   description = "returns a string"
   value       = data.okta_app_saml.this.name
+}
+
+output "single_logout_certificate" {
+  description = "returns a string"
+  value       = data.okta_app_saml.this.single_logout_certificate
+}
+
+output "single_logout_issuer" {
+  description = "returns a string"
+  value       = data.okta_app_saml.this.single_logout_issuer
+}
+
+output "single_logout_url" {
+  description = "returns a string"
+  value       = data.okta_app_saml.this.single_logout_url
 }
 
 output "status" {

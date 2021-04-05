@@ -1,6 +1,9 @@
-# oktaasa
-
-[back](../)
+---
+layout: resource
+title: oktaasa
+type: provider
+resource: oktaasa
+---
 
 ### Index
 

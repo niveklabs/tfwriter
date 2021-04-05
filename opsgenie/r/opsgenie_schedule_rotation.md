@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    opsgenie = ">= 0.5.7"
+    opsgenie = ">= 0.6.3"
   }
 }
 ```
@@ -125,7 +125,7 @@ variable "time_restriction" {
           start_min  = number
         }
       ))
-      restrictions = set(object(
+      restrictions = list(object(
         {
           end_day    = string
           end_hour   = number

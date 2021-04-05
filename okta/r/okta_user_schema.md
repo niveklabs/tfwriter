@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -67,6 +67,11 @@ module "okta_user_schema" {
   array_one_of = [{
     const = null
     title = null
+  }]
+
+  master_override_priority = [{
+    type  = null
+    value = null
   }]
 
   one_of = [{
@@ -197,6 +202,17 @@ variable "array_one_of" {
   default = []
 }
 
+variable "master_override_priority" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      type  = string
+      value = string
+    }
+  ))
+  default = []
+}
+
 variable "one_of" {
   description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
@@ -239,6 +255,14 @@ resource "okta_user_schema" "this" {
     content {
       const = array_one_of.value["const"]
       title = array_one_of.value["title"]
+    }
+  }
+
+  dynamic "master_override_priority" {
+    for_each = var.master_override_priority
+    content {
+      type  = master_override_priority.value["type"]
+      value = master_override_priority.value["value"]
     }
   }
 

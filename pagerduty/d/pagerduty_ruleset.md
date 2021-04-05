@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    pagerduty = ">= 1.8.0"
+    pagerduty = ">= 1.9.5"
   }
 }
 ```
@@ -61,6 +61,11 @@ data "pagerduty_ruleset" "this" {
 output "id" {
   description = "returns a string"
   value       = data.pagerduty_ruleset.this.id
+}
+
+output "routing_keys" {
+  description = "returns a list of string"
+  value       = data.pagerduty_ruleset.this.routing_keys
 }
 
 output "this" {

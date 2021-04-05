@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```
@@ -29,6 +29,24 @@ module "panos_panorama_virtual_router" {
 
   # ebgp_dist - (optional) is a type of number
   ebgp_dist = null
+  # ecmp_hash_seed - (optional) is a type of number
+  ecmp_hash_seed = null
+  # ecmp_hash_source_only - (optional) is a type of bool
+  ecmp_hash_source_only = null
+  # ecmp_hash_use_port - (optional) is a type of bool
+  ecmp_hash_use_port = null
+  # ecmp_load_balance_method - (optional) is a type of string
+  ecmp_load_balance_method = null
+  # ecmp_max_path - (optional) is a type of number
+  ecmp_max_path = null
+  # ecmp_strict_source_path - (optional) is a type of bool
+  ecmp_strict_source_path = null
+  # ecmp_symmetric_return - (optional) is a type of bool
+  ecmp_symmetric_return = null
+  # ecmp_weighted_round_robin_interfaces - (optional) is a type of map of number
+  ecmp_weighted_round_robin_interfaces = {}
+  # enable_ecmp - (optional) is a type of bool
+  enable_ecmp = null
   # ibgp_dist - (optional) is a type of number
   ibgp_dist = null
   # interfaces - (optional) is a type of list of string
@@ -64,6 +82,60 @@ module "panos_panorama_virtual_router" {
 variable "ebgp_dist" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "ecmp_hash_seed" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ecmp_hash_source_only" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "ecmp_hash_use_port" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "ecmp_load_balance_method" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "ecmp_max_path" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ecmp_strict_source_path" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "ecmp_symmetric_return" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "ecmp_weighted_round_robin_interfaces" {
+  description = "(optional)"
+  type        = map(number)
+  default     = null
+}
+
+variable "enable_ecmp" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -144,19 +216,28 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_virtual_router" "this" {
-  ebgp_dist        = var.ebgp_dist
-  ibgp_dist        = var.ibgp_dist
-  interfaces       = var.interfaces
-  name             = var.name
-  ospf_ext_dist    = var.ospf_ext_dist
-  ospf_int_dist    = var.ospf_int_dist
-  ospfv3_ext_dist  = var.ospfv3_ext_dist
-  ospfv3_int_dist  = var.ospfv3_int_dist
-  rip_dist         = var.rip_dist
-  static_dist      = var.static_dist
-  static_ipv6_dist = var.static_ipv6_dist
-  template         = var.template
-  vsys             = var.vsys
+  ebgp_dist                            = var.ebgp_dist
+  ecmp_hash_seed                       = var.ecmp_hash_seed
+  ecmp_hash_source_only                = var.ecmp_hash_source_only
+  ecmp_hash_use_port                   = var.ecmp_hash_use_port
+  ecmp_load_balance_method             = var.ecmp_load_balance_method
+  ecmp_max_path                        = var.ecmp_max_path
+  ecmp_strict_source_path              = var.ecmp_strict_source_path
+  ecmp_symmetric_return                = var.ecmp_symmetric_return
+  ecmp_weighted_round_robin_interfaces = var.ecmp_weighted_round_robin_interfaces
+  enable_ecmp                          = var.enable_ecmp
+  ibgp_dist                            = var.ibgp_dist
+  interfaces                           = var.interfaces
+  name                                 = var.name
+  ospf_ext_dist                        = var.ospf_ext_dist
+  ospf_int_dist                        = var.ospf_int_dist
+  ospfv3_ext_dist                      = var.ospfv3_ext_dist
+  ospfv3_int_dist                      = var.ospfv3_int_dist
+  rip_dist                             = var.rip_dist
+  static_dist                          = var.static_dist
+  static_ipv6_dist                     = var.static_ipv6_dist
+  template                             = var.template
+  vsys                                 = var.vsys
 }
 ```
 

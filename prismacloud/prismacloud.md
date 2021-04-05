@@ -1,6 +1,9 @@
-# prismacloud
-
-[back](../)
+---
+layout: resource
+title: prismacloud
+type: provider
+resource: prismacloud
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "prismacloud" {
-  version = "1.0.8"
+  version = "1.1.0"
 
   # customer_name - (optional) is a type of string
   customer_name = null
@@ -63,6 +66,10 @@ provider "prismacloud" {
 - [prismacloud_integration](./r/prismacloud_integration.md)
 
 - [prismacloud_policy](./r/prismacloud_policy.md)
+
+- [prismacloud_rql_search](./r/prismacloud_rql_search.md)
+
+- [prismacloud_saved_search](./r/prismacloud_saved_search.md)
 
 - [prismacloud_user_role](./r/prismacloud_user_role.md)
 

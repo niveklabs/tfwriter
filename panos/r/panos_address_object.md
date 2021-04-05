@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```
@@ -29,6 +29,8 @@ module "panos_address_object" {
 
   # description - (optional) is a type of string
   description = null
+  # device_group - (optional) is a type of string
+  device_group = null
   # name - (required) is a type of string
   name = null
   # tags - (optional) is a type of list of string
@@ -48,6 +50,12 @@ module "panos_address_object" {
 
 ```terraform
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "device_group" {
   description = "(optional)"
   type        = string
   default     = null
@@ -88,12 +96,13 @@ variable "vsys" {
 
 ```terraform
 resource "panos_address_object" "this" {
-  description = var.description
-  name        = var.name
-  tags        = var.tags
-  type        = var.type
-  value       = var.value
-  vsys        = var.vsys
+  description  = var.description
+  device_group = var.device_group
+  name         = var.name
+  tags         = var.tags
+  type         = var.type
+  value        = var.value
+  vsys         = var.vsys
 }
 ```
 

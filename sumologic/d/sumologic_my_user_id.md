@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    sumologic = ">= 2.6.2"
+    sumologic = ">= 2.9.1"
   }
 }
 ```

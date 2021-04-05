@@ -1,6 +1,9 @@
-# packet
-
-[back](../)
+---
+layout: resource
+title: packet
+type: provider
+resource: packet
+---
 
 ### Index
 

@@ -1,0 +1,1 @@
+{"type":"providers","attributes":{"name":"packet","full-name":"packethost/packet","version":"3.2.1","downloads":10131,"namespace":"packethost","source":"https://github.com/packethost/terraform-provider-packet","tier":"partner"}}

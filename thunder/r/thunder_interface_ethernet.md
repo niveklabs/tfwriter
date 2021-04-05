@@ -1,0 +1,2095 @@
+# thunder_interface_ethernet
+
+[back](../thunder.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    thunder = ">= 0.4.16"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "thunder_interface_ethernet" {
+  source = "./modules/thunder/r/thunder_interface_ethernet"
+
+  # action - (optional) is a type of string
+  action = null
+  # auto_neg_enable - (optional) is a type of number
+  auto_neg_enable = null
+  # cpu_process - (optional) is a type of number
+  cpu_process = null
+  # cpu_process_dir - (optional) is a type of string
+  cpu_process_dir = null
+  # duplexity - (optional) is a type of string
+  duplexity = null
+  # fec_forced_off - (optional) is a type of number
+  fec_forced_off = null
+  # fec_forced_on - (optional) is a type of number
+  fec_forced_on = null
+  # flow_control - (optional) is a type of number
+  flow_control = null
+  # ifnum - (optional) is a type of number
+  ifnum = null
+  # l3_vlan_fwd_disable - (optional) is a type of number
+  l3_vlan_fwd_disable = null
+  # load_interval - (optional) is a type of number
+  load_interval = null
+  # media_type_copper - (optional) is a type of number
+  media_type_copper = null
+  # mtu - (optional) is a type of number
+  mtu = null
+  # name - (optional) is a type of string
+  name = null
+  # remove_vlan_tag - (optional) is a type of number
+  remove_vlan_tag = null
+  # speed - (optional) is a type of string
+  speed = null
+  # speed_forced_40g - (optional) is a type of number
+  speed_forced_40g = null
+  # traffic_distribution_mode - (optional) is a type of string
+  traffic_distribution_mode = null
+  # trap_source - (optional) is a type of number
+  trap_source = null
+  # user_tag - (optional) is a type of string
+  user_tag = null
+  # uuid - (optional) is a type of string
+  uuid = null
+
+  access_list = [{
+    acl_id   = null
+    acl_name = null
+  }]
+
+  bfd = [{
+    authentication = [{
+      encrypted = null
+      key_id    = null
+      method    = null
+      password  = null
+    }]
+    demand = null
+    echo   = null
+    interval_cfg = [{
+      interval   = null
+      min_rx     = null
+      multiplier = null
+    }]
+    uuid = null
+  }]
+
+  ddos = [{
+    inside  = null
+    outside = null
+    uuid    = null
+  }]
+
+  icmp_rate_limit = [{
+    lockup        = null
+    lockup_period = null
+    normal        = null
+  }]
+
+  icmpv6_rate_limit = [{
+    lockup_period_v6 = null
+    lockup_v6        = null
+    normal_v6        = null
+  }]
+
+  ip = [{
+    address_list = [{
+      address_type = null
+      ipv6_addr    = null
+    }]
+    allow_promiscuous_vip     = null
+    cache_spoofing_port       = null
+    client                    = null
+    dhcp                      = null
+    generate_membership_query = null
+    helper_address_list = [{
+      helper_address = null
+    }]
+    inside        = null
+    max_resp_time = null
+    ospf = [{
+      ospf_global = [{
+        authentication_cfg = [{
+          authentication = null
+          value          = null
+        }]
+        authentication_key = null
+        bfd_cfg = [{
+          bfd     = null
+          disable = null
+        }]
+        cost = null
+        database_filter_cfg = [{
+          database_filter = null
+          out             = null
+        }]
+        dead_interval  = null
+        disable        = null
+        hello_interval = null
+        message_digest_cfg = [{
+          md5 = [{
+            encrypted = null
+            md5_value = null
+          }]
+          message_digest_key = null
+        }]
+        mtu        = null
+        mtu_ignore = null
+        network = [{
+          broadcast           = null
+          non_broadcast       = null
+          p2mp_nbma           = null
+          point_to_multipoint = null
+          point_to_point      = null
+        }]
+        priority            = null
+        retransmit_interval = null
+        transmit_delay      = null
+        uuid                = null
+      }]
+      ospf_ip_list = [{
+        authentication     = null
+        authentication_key = null
+        cost               = null
+        database_filter    = null
+        dead_interval      = null
+        hello_interval     = null
+        ip_addr            = null
+        message_digest_cfg = [{
+          md5 = [{
+            encrypted = null
+            md5_value = null
+          }]
+          message_digest_key = null
+        }]
+        mtu_ignore          = null
+        out                 = null
+        priority            = null
+        retransmit_interval = null
+        transmit_delay      = null
+        uuid                = null
+        value               = null
+      }]
+    }]
+    outside        = null
+    query_interval = null
+    rip = [{
+      authentication = [{
+        key_chain = [{
+          key_chain = null
+        }]
+        mode = [{
+          mode = null
+        }]
+        str = [{
+          string = null
+        }]
+      }]
+      receive_cfg = [{
+        receive = null
+        version = null
+      }]
+      receive_packet = null
+      send_cfg = [{
+        send    = null
+        version = null
+      }]
+      send_packet = null
+      split_horizon_cfg = [{
+        state = null
+      }]
+      uuid = null
+    }]
+    router = [{
+      isis = [{
+        tag  = null
+        uuid = null
+      }]
+    }]
+    server                 = null
+    slb_partition_redirect = null
+    stateful_firewall = [{
+      access_list = null
+      acl_id      = null
+      class_list  = null
+      inside      = null
+      outside     = null
+      uuid        = null
+    }]
+    ttl_ignore = null
+    uuid       = null
+  }]
+
+  ipv6 = [{
+    access_list_cfg = [{
+      inbound     = null
+      v6_acl_name = null
+    }]
+    address_list = [{
+      address_type = null
+      ipv6_addr    = null
+    }]
+    inside      = null
+    ipv6_enable = null
+    ospf = [{
+      bfd = null
+      cost_cfg = [{
+        cost        = null
+        instance_id = null
+      }]
+      dead_interval_cfg = [{
+        dead_interval = null
+        instance_id   = null
+      }]
+      disable = null
+      hello_interval_cfg = [{
+        hello_interval = null
+        instance_id    = null
+      }]
+      mtu_ignore_cfg = [{
+        instance_id = null
+        mtu_ignore  = null
+      }]
+      neighbor_cfg = [{
+        neig_inst              = null
+        neighbor               = null
+        neighbor_cost          = null
+        neighbor_poll_interval = null
+        neighbor_priority      = null
+      }]
+      network_list = [{
+        broadcast_type      = null
+        network_instance_id = null
+        p2mp_nbma           = null
+      }]
+      priority_cfg = [{
+        instance_id = null
+        priority    = null
+      }]
+      retransmit_interval_cfg = [{
+        instance_id         = null
+        retransmit_interval = null
+      }]
+      transmit_delay_cfg = [{
+        instance_id    = null
+        transmit_delay = null
+      }]
+      uuid = null
+    }]
+    outside = null
+    rip = [{
+      split_horizon_cfg = [{
+        state = null
+      }]
+      uuid = null
+    }]
+    router = [{
+      isis = [{
+        tag  = null
+        uuid = null
+      }]
+      ospf = [{
+        area_list = [{
+          area_id_addr = null
+          area_id_num  = null
+          instance_id  = null
+          tag          = null
+        }]
+        uuid = null
+      }]
+      ripng = [{
+        rip  = null
+        uuid = null
+      }]
+    }]
+    router_adver = [{
+      action                   = null
+      adver_mtu                = null
+      adver_mtu_disable        = null
+      adver_vrid               = null
+      adver_vrid_default       = null
+      default_lifetime         = null
+      floating_ip              = null
+      floating_ip_default_vrid = null
+      hop_limit                = null
+      managed_config_action    = null
+      max_interval             = null
+      min_interval             = null
+      other_config_action      = null
+      prefix_list = [{
+        not_autonomous     = null
+        not_on_link        = null
+        preferred_lifetime = null
+        prefix             = null
+        valid_lifetime     = null
+      }]
+      rate_limit                   = null
+      reachable_time               = null
+      retransmit_timer             = null
+      use_floating_ip              = null
+      use_floating_ip_default_vrid = null
+    }]
+    stateful_firewall = [{
+      access_list = null
+      acl_name    = null
+      class_list  = null
+      inside      = null
+      outside     = null
+      uuid        = null
+    }]
+    ttl_ignore = null
+    uuid       = null
+  }]
+
+  isis = [{
+    authentication = [{
+      key_chain_list = [{
+        key_chain = null
+        level     = null
+      }]
+      mode_list = [{
+        level = null
+        mode  = null
+      }]
+      send_only_list = [{
+        level     = null
+        send_only = null
+      }]
+    }]
+    bfd_cfg = [{
+      bfd     = null
+      disable = null
+    }]
+    circuit_type = null
+    csnp_interval_list = [{
+      csnp_interval = null
+      level         = null
+    }]
+    hello_interval_list = [{
+      hello_interval = null
+      level          = null
+    }]
+    hello_interval_minimal_list = [{
+      hello_interval_minimal = null
+      level                  = null
+    }]
+    hello_multiplier_list = [{
+      hello_multiplier = null
+      level            = null
+    }]
+    lsp_interval = null
+    mesh_group = [{
+      blocked = null
+      value   = null
+    }]
+    metric_list = [{
+      level  = null
+      metric = null
+    }]
+    network = null
+    padding = null
+    password_list = [{
+      level    = null
+      password = null
+    }]
+    priority_list = [{
+      level    = null
+      priority = null
+    }]
+    retransmit_interval = null
+    uuid                = null
+    wide_metric_list = [{
+      level       = null
+      wide_metric = null
+    }]
+  }]
+
+  lldp = [{
+    enable_cfg = [{
+      rt_enable = null
+      rx        = null
+      tx        = null
+    }]
+    notification_cfg = [{
+      notif_enable = null
+      notification = null
+    }]
+    tx_dot1_cfg = [{
+      link_aggregation = null
+      tx_dot1_tlvs     = null
+      vlan             = null
+    }]
+    tx_tlvs_cfg = [{
+      exclude             = null
+      management_address  = null
+      port_description    = null
+      system_capabilities = null
+      system_description  = null
+      system_name         = null
+      tx_tlvs             = null
+    }]
+    uuid = null
+  }]
+
+  lw_4o6 = [{
+    inside  = null
+    outside = null
+    uuid    = null
+  }]
+
+  map = [{
+    inside        = null
+    map_t_inside  = null
+    map_t_outside = null
+    outside       = null
+    uuid          = null
+  }]
+
+  monitor_list = [{
+    mirror_index = null
+    monitor      = null
+    monitor_vlan = null
+  }]
+
+  nptv6 = [{
+    domain_list = [{
+      bind_type   = null
+      domain_name = null
+      uuid        = null
+    }]
+  }]
+
+  sampling_enable = [{
+    counters1 = null
+  }]
+
+  trunk_group_list = [{
+    admin_key     = null
+    mode          = null
+    port_priority = null
+    timeout       = null
+    trunk_number  = null
+    type          = null
+    udld_timeout_cfg = [{
+      fast = null
+      slow = null
+    }]
+    user_tag = null
+    uuid     = null
+  }]
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "action" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "auto_neg_enable" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "cpu_process" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "cpu_process_dir" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "duplexity" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "fec_forced_off" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "fec_forced_on" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "flow_control" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "ifnum" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "l3_vlan_fwd_disable" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "load_interval" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "media_type_copper" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "mtu" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "remove_vlan_tag" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "speed" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "speed_forced_40g" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "traffic_distribution_mode" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "trap_source" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "user_tag" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "uuid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "access_list" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      acl_id   = number
+      acl_name = string
+    }
+  ))
+  default = []
+}
+
+variable "bfd" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      authentication = list(object(
+        {
+          encrypted = string
+          key_id    = number
+          method    = string
+          password  = string
+        }
+      ))
+      demand = number
+      echo   = number
+      interval_cfg = list(object(
+        {
+          interval   = number
+          min_rx     = number
+          multiplier = number
+        }
+      ))
+      uuid = string
+    }
+  ))
+  default = []
+}
+
+variable "ddos" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      inside  = number
+      outside = number
+      uuid    = string
+    }
+  ))
+  default = []
+}
+
+variable "icmp_rate_limit" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      lockup        = number
+      lockup_period = number
+      normal        = number
+    }
+  ))
+  default = []
+}
+
+variable "icmpv6_rate_limit" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      lockup_period_v6 = number
+      lockup_v6        = number
+      normal_v6        = number
+    }
+  ))
+  default = []
+}
+
+variable "ip" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      address_list = list(object(
+        {
+          address_type = string
+          ipv6_addr    = string
+        }
+      ))
+      allow_promiscuous_vip     = number
+      cache_spoofing_port       = number
+      client                    = number
+      dhcp                      = number
+      generate_membership_query = number
+      helper_address_list = list(object(
+        {
+          helper_address = string
+        }
+      ))
+      inside        = number
+      max_resp_time = number
+      ospf = list(object(
+        {
+          ospf_global = list(object(
+            {
+              authentication_cfg = list(object(
+                {
+                  authentication = number
+                  value          = string
+                }
+              ))
+              authentication_key = string
+              bfd_cfg = list(object(
+                {
+                  bfd     = number
+                  disable = number
+                }
+              ))
+              cost = number
+              database_filter_cfg = list(object(
+                {
+                  database_filter = string
+                  out             = number
+                }
+              ))
+              dead_interval  = number
+              disable        = string
+              hello_interval = number
+              message_digest_cfg = list(object(
+                {
+                  md5 = list(object(
+                    {
+                      encrypted = string
+                      md5_value = string
+                    }
+                  ))
+                  message_digest_key = number
+                }
+              ))
+              mtu        = number
+              mtu_ignore = number
+              network = list(object(
+                {
+                  broadcast           = number
+                  non_broadcast       = number
+                  p2mp_nbma           = number
+                  point_to_multipoint = number
+                  point_to_point      = number
+                }
+              ))
+              priority            = number
+              retransmit_interval = number
+              transmit_delay      = number
+              uuid                = string
+            }
+          ))
+          ospf_ip_list = list(object(
+            {
+              authentication     = number
+              authentication_key = string
+              cost               = number
+              database_filter    = string
+              dead_interval      = number
+              hello_interval     = number
+              ip_addr            = string
+              message_digest_cfg = list(object(
+                {
+                  md5 = list(object(
+                    {
+                      encrypted = string
+                      md5_value = string
+                    }
+                  ))
+                  message_digest_key = number
+                }
+              ))
+              mtu_ignore          = number
+              out                 = number
+              priority            = number
+              retransmit_interval = number
+              transmit_delay      = number
+              uuid                = string
+              value               = string
+            }
+          ))
+        }
+      ))
+      outside        = number
+      query_interval = number
+      rip = list(object(
+        {
+          authentication = list(object(
+            {
+              key_chain = list(object(
+                {
+                  key_chain = string
+                }
+              ))
+              mode = list(object(
+                {
+                  mode = string
+                }
+              ))
+              str = list(object(
+                {
+                  string = string
+                }
+              ))
+            }
+          ))
+          receive_cfg = list(object(
+            {
+              receive = number
+              version = string
+            }
+          ))
+          receive_packet = number
+          send_cfg = list(object(
+            {
+              send    = number
+              version = string
+            }
+          ))
+          send_packet = number
+          split_horizon_cfg = list(object(
+            {
+              state = string
+            }
+          ))
+          uuid = string
+        }
+      ))
+      router = list(object(
+        {
+          isis = list(object(
+            {
+              tag  = string
+              uuid = string
+            }
+          ))
+        }
+      ))
+      server                 = number
+      slb_partition_redirect = number
+      stateful_firewall = list(object(
+        {
+          access_list = number
+          acl_id      = number
+          class_list  = string
+          inside      = number
+          outside     = number
+          uuid        = string
+        }
+      ))
+      ttl_ignore = number
+      uuid       = string
+    }
+  ))
+  default = []
+}
+
+variable "ipv6" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      access_list_cfg = list(object(
+        {
+          inbound     = number
+          v6_acl_name = string
+        }
+      ))
+      address_list = list(object(
+        {
+          address_type = string
+          ipv6_addr    = string
+        }
+      ))
+      inside      = number
+      ipv6_enable = number
+      ospf = list(object(
+        {
+          bfd = number
+          cost_cfg = list(object(
+            {
+              cost        = number
+              instance_id = number
+            }
+          ))
+          dead_interval_cfg = list(object(
+            {
+              dead_interval = number
+              instance_id   = number
+            }
+          ))
+          disable = number
+          hello_interval_cfg = list(object(
+            {
+              hello_interval = number
+              instance_id    = number
+            }
+          ))
+          mtu_ignore_cfg = list(object(
+            {
+              instance_id = number
+              mtu_ignore  = number
+            }
+          ))
+          neighbor_cfg = list(object(
+            {
+              neig_inst              = number
+              neighbor               = string
+              neighbor_cost          = number
+              neighbor_poll_interval = number
+              neighbor_priority      = number
+            }
+          ))
+          network_list = list(object(
+            {
+              broadcast_type      = string
+              network_instance_id = number
+              p2mp_nbma           = number
+            }
+          ))
+          priority_cfg = list(object(
+            {
+              instance_id = number
+              priority    = number
+            }
+          ))
+          retransmit_interval_cfg = list(object(
+            {
+              instance_id         = number
+              retransmit_interval = number
+            }
+          ))
+          transmit_delay_cfg = list(object(
+            {
+              instance_id    = number
+              transmit_delay = number
+            }
+          ))
+          uuid = string
+        }
+      ))
+      outside = number
+      rip = list(object(
+        {
+          split_horizon_cfg = list(object(
+            {
+              state = string
+            }
+          ))
+          uuid = string
+        }
+      ))
+      router = list(object(
+        {
+          isis = list(object(
+            {
+              tag  = string
+              uuid = string
+            }
+          ))
+          ospf = list(object(
+            {
+              area_list = list(object(
+                {
+                  area_id_addr = string
+                  area_id_num  = number
+                  instance_id  = number
+                  tag          = string
+                }
+              ))
+              uuid = string
+            }
+          ))
+          ripng = list(object(
+            {
+              rip  = number
+              uuid = string
+            }
+          ))
+        }
+      ))
+      router_adver = list(object(
+        {
+          action                   = string
+          adver_mtu                = number
+          adver_mtu_disable        = number
+          adver_vrid               = number
+          adver_vrid_default       = number
+          default_lifetime         = number
+          floating_ip              = string
+          floating_ip_default_vrid = string
+          hop_limit                = number
+          managed_config_action    = string
+          max_interval             = number
+          min_interval             = number
+          other_config_action      = string
+          prefix_list = list(object(
+            {
+              not_autonomous     = number
+              not_on_link        = number
+              preferred_lifetime = number
+              prefix             = string
+              valid_lifetime     = number
+            }
+          ))
+          rate_limit                   = number
+          reachable_time               = number
+          retransmit_timer             = number
+          use_floating_ip              = number
+          use_floating_ip_default_vrid = number
+        }
+      ))
+      stateful_firewall = list(object(
+        {
+          access_list = number
+          acl_name    = string
+          class_list  = string
+          inside      = number
+          outside     = number
+          uuid        = string
+        }
+      ))
+      ttl_ignore = number
+      uuid       = string
+    }
+  ))
+  default = []
+}
+
+variable "isis" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      authentication = list(object(
+        {
+          key_chain_list = list(object(
+            {
+              key_chain = string
+              level     = string
+            }
+          ))
+          mode_list = list(object(
+            {
+              level = string
+              mode  = string
+            }
+          ))
+          send_only_list = list(object(
+            {
+              level     = string
+              send_only = number
+            }
+          ))
+        }
+      ))
+      bfd_cfg = list(object(
+        {
+          bfd     = number
+          disable = number
+        }
+      ))
+      circuit_type = string
+      csnp_interval_list = list(object(
+        {
+          csnp_interval = number
+          level         = string
+        }
+      ))
+      hello_interval_list = list(object(
+        {
+          hello_interval = number
+          level          = string
+        }
+      ))
+      hello_interval_minimal_list = list(object(
+        {
+          hello_interval_minimal = number
+          level                  = string
+        }
+      ))
+      hello_multiplier_list = list(object(
+        {
+          hello_multiplier = number
+          level            = string
+        }
+      ))
+      lsp_interval = number
+      mesh_group = list(object(
+        {
+          blocked = number
+          value   = number
+        }
+      ))
+      metric_list = list(object(
+        {
+          level  = string
+          metric = number
+        }
+      ))
+      network = string
+      padding = number
+      password_list = list(object(
+        {
+          level    = string
+          password = string
+        }
+      ))
+      priority_list = list(object(
+        {
+          level    = string
+          priority = number
+        }
+      ))
+      retransmit_interval = number
+      uuid                = string
+      wide_metric_list = list(object(
+        {
+          level       = string
+          wide_metric = number
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
+variable "lldp" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      enable_cfg = list(object(
+        {
+          rt_enable = number
+          rx        = number
+          tx        = number
+        }
+      ))
+      notification_cfg = list(object(
+        {
+          notif_enable = number
+          notification = number
+        }
+      ))
+      tx_dot1_cfg = list(object(
+        {
+          link_aggregation = number
+          tx_dot1_tlvs     = number
+          vlan             = number
+        }
+      ))
+      tx_tlvs_cfg = list(object(
+        {
+          exclude             = number
+          management_address  = number
+          port_description    = number
+          system_capabilities = number
+          system_description  = number
+          system_name         = number
+          tx_tlvs             = number
+        }
+      ))
+      uuid = string
+    }
+  ))
+  default = []
+}
+
+variable "lw_4o6" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      inside  = number
+      outside = number
+      uuid    = string
+    }
+  ))
+  default = []
+}
+
+variable "map" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      inside        = number
+      map_t_inside  = number
+      map_t_outside = number
+      outside       = number
+      uuid          = string
+    }
+  ))
+  default = []
+}
+
+variable "monitor_list" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      mirror_index = number
+      monitor      = string
+      monitor_vlan = number
+    }
+  ))
+  default = []
+}
+
+variable "nptv6" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      domain_list = list(object(
+        {
+          bind_type   = string
+          domain_name = string
+          uuid        = string
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
+variable "sampling_enable" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      counters1 = string
+    }
+  ))
+  default = []
+}
+
+variable "trunk_group_list" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      admin_key     = number
+      mode          = string
+      port_priority = number
+      timeout       = string
+      trunk_number  = number
+      type          = string
+      udld_timeout_cfg = list(object(
+        {
+          fast = number
+          slow = number
+        }
+      ))
+      user_tag = string
+      uuid     = string
+    }
+  ))
+  default = []
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "thunder_interface_ethernet" "this" {
+  action                    = var.action
+  auto_neg_enable           = var.auto_neg_enable
+  cpu_process               = var.cpu_process
+  cpu_process_dir           = var.cpu_process_dir
+  duplexity                 = var.duplexity
+  fec_forced_off            = var.fec_forced_off
+  fec_forced_on             = var.fec_forced_on
+  flow_control              = var.flow_control
+  ifnum                     = var.ifnum
+  l3_vlan_fwd_disable       = var.l3_vlan_fwd_disable
+  load_interval             = var.load_interval
+  media_type_copper         = var.media_type_copper
+  mtu                       = var.mtu
+  name                      = var.name
+  remove_vlan_tag           = var.remove_vlan_tag
+  speed                     = var.speed
+  speed_forced_40g          = var.speed_forced_40g
+  traffic_distribution_mode = var.traffic_distribution_mode
+  trap_source               = var.trap_source
+  user_tag                  = var.user_tag
+  uuid                      = var.uuid
+
+  dynamic "access_list" {
+    for_each = var.access_list
+    content {
+      acl_id   = access_list.value["acl_id"]
+      acl_name = access_list.value["acl_name"]
+    }
+  }
+
+  dynamic "bfd" {
+    for_each = var.bfd
+    content {
+      demand = bfd.value["demand"]
+      echo   = bfd.value["echo"]
+      uuid   = bfd.value["uuid"]
+
+      dynamic "authentication" {
+        for_each = bfd.value.authentication
+        content {
+          encrypted = authentication.value["encrypted"]
+          key_id    = authentication.value["key_id"]
+          method    = authentication.value["method"]
+          password  = authentication.value["password"]
+        }
+      }
+
+      dynamic "interval_cfg" {
+        for_each = bfd.value.interval_cfg
+        content {
+          interval   = interval_cfg.value["interval"]
+          min_rx     = interval_cfg.value["min_rx"]
+          multiplier = interval_cfg.value["multiplier"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "ddos" {
+    for_each = var.ddos
+    content {
+      inside  = ddos.value["inside"]
+      outside = ddos.value["outside"]
+      uuid    = ddos.value["uuid"]
+    }
+  }
+
+  dynamic "icmp_rate_limit" {
+    for_each = var.icmp_rate_limit
+    content {
+      lockup        = icmp_rate_limit.value["lockup"]
+      lockup_period = icmp_rate_limit.value["lockup_period"]
+      normal        = icmp_rate_limit.value["normal"]
+    }
+  }
+
+  dynamic "icmpv6_rate_limit" {
+    for_each = var.icmpv6_rate_limit
+    content {
+      lockup_period_v6 = icmpv6_rate_limit.value["lockup_period_v6"]
+      lockup_v6        = icmpv6_rate_limit.value["lockup_v6"]
+      normal_v6        = icmpv6_rate_limit.value["normal_v6"]
+    }
+  }
+
+  dynamic "ip" {
+    for_each = var.ip
+    content {
+      allow_promiscuous_vip     = ip.value["allow_promiscuous_vip"]
+      cache_spoofing_port       = ip.value["cache_spoofing_port"]
+      client                    = ip.value["client"]
+      dhcp                      = ip.value["dhcp"]
+      generate_membership_query = ip.value["generate_membership_query"]
+      inside                    = ip.value["inside"]
+      max_resp_time             = ip.value["max_resp_time"]
+      outside                   = ip.value["outside"]
+      query_interval            = ip.value["query_interval"]
+      server                    = ip.value["server"]
+      slb_partition_redirect    = ip.value["slb_partition_redirect"]
+      ttl_ignore                = ip.value["ttl_ignore"]
+      uuid                      = ip.value["uuid"]
+
+      dynamic "address_list" {
+        for_each = ip.value.address_list
+        content {
+          address_type = address_list.value["address_type"]
+          ipv6_addr    = address_list.value["ipv6_addr"]
+        }
+      }
+
+      dynamic "helper_address_list" {
+        for_each = ip.value.helper_address_list
+        content {
+          helper_address = helper_address_list.value["helper_address"]
+        }
+      }
+
+      dynamic "ospf" {
+        for_each = ip.value.ospf
+        content {
+
+          dynamic "ospf_global" {
+            for_each = ospf.value.ospf_global
+            content {
+              authentication_key  = ospf_global.value["authentication_key"]
+              cost                = ospf_global.value["cost"]
+              dead_interval       = ospf_global.value["dead_interval"]
+              disable             = ospf_global.value["disable"]
+              hello_interval      = ospf_global.value["hello_interval"]
+              mtu                 = ospf_global.value["mtu"]
+              mtu_ignore          = ospf_global.value["mtu_ignore"]
+              priority            = ospf_global.value["priority"]
+              retransmit_interval = ospf_global.value["retransmit_interval"]
+              transmit_delay      = ospf_global.value["transmit_delay"]
+              uuid                = ospf_global.value["uuid"]
+
+              dynamic "authentication_cfg" {
+                for_each = ospf_global.value.authentication_cfg
+                content {
+                  authentication = authentication_cfg.value["authentication"]
+                  value          = authentication_cfg.value["value"]
+                }
+              }
+
+              dynamic "bfd_cfg" {
+                for_each = ospf_global.value.bfd_cfg
+                content {
+                  bfd     = bfd_cfg.value["bfd"]
+                  disable = bfd_cfg.value["disable"]
+                }
+              }
+
+              dynamic "database_filter_cfg" {
+                for_each = ospf_global.value.database_filter_cfg
+                content {
+                  database_filter = database_filter_cfg.value["database_filter"]
+                  out             = database_filter_cfg.value["out"]
+                }
+              }
+
+              dynamic "message_digest_cfg" {
+                for_each = ospf_global.value.message_digest_cfg
+                content {
+                  message_digest_key = message_digest_cfg.value["message_digest_key"]
+
+                  dynamic "md5" {
+                    for_each = message_digest_cfg.value.md5
+                    content {
+                      encrypted = md5.value["encrypted"]
+                      md5_value = md5.value["md5_value"]
+                    }
+                  }
+
+                }
+              }
+
+              dynamic "network" {
+                for_each = ospf_global.value.network
+                content {
+                  broadcast           = network.value["broadcast"]
+                  non_broadcast       = network.value["non_broadcast"]
+                  p2mp_nbma           = network.value["p2mp_nbma"]
+                  point_to_multipoint = network.value["point_to_multipoint"]
+                  point_to_point      = network.value["point_to_point"]
+                }
+              }
+
+            }
+          }
+
+          dynamic "ospf_ip_list" {
+            for_each = ospf.value.ospf_ip_list
+            content {
+              authentication      = ospf_ip_list.value["authentication"]
+              authentication_key  = ospf_ip_list.value["authentication_key"]
+              cost                = ospf_ip_list.value["cost"]
+              database_filter     = ospf_ip_list.value["database_filter"]
+              dead_interval       = ospf_ip_list.value["dead_interval"]
+              hello_interval      = ospf_ip_list.value["hello_interval"]
+              ip_addr             = ospf_ip_list.value["ip_addr"]
+              mtu_ignore          = ospf_ip_list.value["mtu_ignore"]
+              out                 = ospf_ip_list.value["out"]
+              priority            = ospf_ip_list.value["priority"]
+              retransmit_interval = ospf_ip_list.value["retransmit_interval"]
+              transmit_delay      = ospf_ip_list.value["transmit_delay"]
+              uuid                = ospf_ip_list.value["uuid"]
+              value               = ospf_ip_list.value["value"]
+
+              dynamic "message_digest_cfg" {
+                for_each = ospf_ip_list.value.message_digest_cfg
+                content {
+                  message_digest_key = message_digest_cfg.value["message_digest_key"]
+
+                  dynamic "md5" {
+                    for_each = message_digest_cfg.value.md5
+                    content {
+                      encrypted = md5.value["encrypted"]
+                      md5_value = md5.value["md5_value"]
+                    }
+                  }
+
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+
+      dynamic "rip" {
+        for_each = ip.value.rip
+        content {
+          receive_packet = rip.value["receive_packet"]
+          send_packet    = rip.value["send_packet"]
+          uuid           = rip.value["uuid"]
+
+          dynamic "authentication" {
+            for_each = rip.value.authentication
+            content {
+
+              dynamic "key_chain" {
+                for_each = authentication.value.key_chain
+                content {
+                  key_chain = key_chain.value["key_chain"]
+                }
+              }
+
+              dynamic "mode" {
+                for_each = authentication.value.mode
+                content {
+                  mode = mode.value["mode"]
+                }
+              }
+
+              dynamic "str" {
+                for_each = authentication.value.str
+                content {
+                  string = str.value["string"]
+                }
+              }
+
+            }
+          }
+
+          dynamic "receive_cfg" {
+            for_each = rip.value.receive_cfg
+            content {
+              receive = receive_cfg.value["receive"]
+              version = receive_cfg.value["version"]
+            }
+          }
+
+          dynamic "send_cfg" {
+            for_each = rip.value.send_cfg
+            content {
+              send    = send_cfg.value["send"]
+              version = send_cfg.value["version"]
+            }
+          }
+
+          dynamic "split_horizon_cfg" {
+            for_each = rip.value.split_horizon_cfg
+            content {
+              state = split_horizon_cfg.value["state"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "router" {
+        for_each = ip.value.router
+        content {
+
+          dynamic "isis" {
+            for_each = router.value.isis
+            content {
+              tag  = isis.value["tag"]
+              uuid = isis.value["uuid"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "stateful_firewall" {
+        for_each = ip.value.stateful_firewall
+        content {
+          access_list = stateful_firewall.value["access_list"]
+          acl_id      = stateful_firewall.value["acl_id"]
+          class_list  = stateful_firewall.value["class_list"]
+          inside      = stateful_firewall.value["inside"]
+          outside     = stateful_firewall.value["outside"]
+          uuid        = stateful_firewall.value["uuid"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "ipv6" {
+    for_each = var.ipv6
+    content {
+      inside      = ipv6.value["inside"]
+      ipv6_enable = ipv6.value["ipv6_enable"]
+      outside     = ipv6.value["outside"]
+      ttl_ignore  = ipv6.value["ttl_ignore"]
+      uuid        = ipv6.value["uuid"]
+
+      dynamic "access_list_cfg" {
+        for_each = ipv6.value.access_list_cfg
+        content {
+          inbound     = access_list_cfg.value["inbound"]
+          v6_acl_name = access_list_cfg.value["v6_acl_name"]
+        }
+      }
+
+      dynamic "address_list" {
+        for_each = ipv6.value.address_list
+        content {
+          address_type = address_list.value["address_type"]
+          ipv6_addr    = address_list.value["ipv6_addr"]
+        }
+      }
+
+      dynamic "ospf" {
+        for_each = ipv6.value.ospf
+        content {
+          bfd     = ospf.value["bfd"]
+          disable = ospf.value["disable"]
+          uuid    = ospf.value["uuid"]
+
+          dynamic "cost_cfg" {
+            for_each = ospf.value.cost_cfg
+            content {
+              cost        = cost_cfg.value["cost"]
+              instance_id = cost_cfg.value["instance_id"]
+            }
+          }
+
+          dynamic "dead_interval_cfg" {
+            for_each = ospf.value.dead_interval_cfg
+            content {
+              dead_interval = dead_interval_cfg.value["dead_interval"]
+              instance_id   = dead_interval_cfg.value["instance_id"]
+            }
+          }
+
+          dynamic "hello_interval_cfg" {
+            for_each = ospf.value.hello_interval_cfg
+            content {
+              hello_interval = hello_interval_cfg.value["hello_interval"]
+              instance_id    = hello_interval_cfg.value["instance_id"]
+            }
+          }
+
+          dynamic "mtu_ignore_cfg" {
+            for_each = ospf.value.mtu_ignore_cfg
+            content {
+              instance_id = mtu_ignore_cfg.value["instance_id"]
+              mtu_ignore  = mtu_ignore_cfg.value["mtu_ignore"]
+            }
+          }
+
+          dynamic "neighbor_cfg" {
+            for_each = ospf.value.neighbor_cfg
+            content {
+              neig_inst              = neighbor_cfg.value["neig_inst"]
+              neighbor               = neighbor_cfg.value["neighbor"]
+              neighbor_cost          = neighbor_cfg.value["neighbor_cost"]
+              neighbor_poll_interval = neighbor_cfg.value["neighbor_poll_interval"]
+              neighbor_priority      = neighbor_cfg.value["neighbor_priority"]
+            }
+          }
+
+          dynamic "network_list" {
+            for_each = ospf.value.network_list
+            content {
+              broadcast_type      = network_list.value["broadcast_type"]
+              network_instance_id = network_list.value["network_instance_id"]
+              p2mp_nbma           = network_list.value["p2mp_nbma"]
+            }
+          }
+
+          dynamic "priority_cfg" {
+            for_each = ospf.value.priority_cfg
+            content {
+              instance_id = priority_cfg.value["instance_id"]
+              priority    = priority_cfg.value["priority"]
+            }
+          }
+
+          dynamic "retransmit_interval_cfg" {
+            for_each = ospf.value.retransmit_interval_cfg
+            content {
+              instance_id         = retransmit_interval_cfg.value["instance_id"]
+              retransmit_interval = retransmit_interval_cfg.value["retransmit_interval"]
+            }
+          }
+
+          dynamic "transmit_delay_cfg" {
+            for_each = ospf.value.transmit_delay_cfg
+            content {
+              instance_id    = transmit_delay_cfg.value["instance_id"]
+              transmit_delay = transmit_delay_cfg.value["transmit_delay"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "rip" {
+        for_each = ipv6.value.rip
+        content {
+          uuid = rip.value["uuid"]
+
+          dynamic "split_horizon_cfg" {
+            for_each = rip.value.split_horizon_cfg
+            content {
+              state = split_horizon_cfg.value["state"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "router" {
+        for_each = ipv6.value.router
+        content {
+
+          dynamic "isis" {
+            for_each = router.value.isis
+            content {
+              tag  = isis.value["tag"]
+              uuid = isis.value["uuid"]
+            }
+          }
+
+          dynamic "ospf" {
+            for_each = router.value.ospf
+            content {
+              uuid = ospf.value["uuid"]
+
+              dynamic "area_list" {
+                for_each = ospf.value.area_list
+                content {
+                  area_id_addr = area_list.value["area_id_addr"]
+                  area_id_num  = area_list.value["area_id_num"]
+                  instance_id  = area_list.value["instance_id"]
+                  tag          = area_list.value["tag"]
+                }
+              }
+
+            }
+          }
+
+          dynamic "ripng" {
+            for_each = router.value.ripng
+            content {
+              rip  = ripng.value["rip"]
+              uuid = ripng.value["uuid"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "router_adver" {
+        for_each = ipv6.value.router_adver
+        content {
+          action                       = router_adver.value["action"]
+          adver_mtu                    = router_adver.value["adver_mtu"]
+          adver_mtu_disable            = router_adver.value["adver_mtu_disable"]
+          adver_vrid                   = router_adver.value["adver_vrid"]
+          adver_vrid_default           = router_adver.value["adver_vrid_default"]
+          default_lifetime             = router_adver.value["default_lifetime"]
+          floating_ip                  = router_adver.value["floating_ip"]
+          floating_ip_default_vrid     = router_adver.value["floating_ip_default_vrid"]
+          hop_limit                    = router_adver.value["hop_limit"]
+          managed_config_action        = router_adver.value["managed_config_action"]
+          max_interval                 = router_adver.value["max_interval"]
+          min_interval                 = router_adver.value["min_interval"]
+          other_config_action          = router_adver.value["other_config_action"]
+          rate_limit                   = router_adver.value["rate_limit"]
+          reachable_time               = router_adver.value["reachable_time"]
+          retransmit_timer             = router_adver.value["retransmit_timer"]
+          use_floating_ip              = router_adver.value["use_floating_ip"]
+          use_floating_ip_default_vrid = router_adver.value["use_floating_ip_default_vrid"]
+
+          dynamic "prefix_list" {
+            for_each = router_adver.value.prefix_list
+            content {
+              not_autonomous     = prefix_list.value["not_autonomous"]
+              not_on_link        = prefix_list.value["not_on_link"]
+              preferred_lifetime = prefix_list.value["preferred_lifetime"]
+              prefix             = prefix_list.value["prefix"]
+              valid_lifetime     = prefix_list.value["valid_lifetime"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "stateful_firewall" {
+        for_each = ipv6.value.stateful_firewall
+        content {
+          access_list = stateful_firewall.value["access_list"]
+          acl_name    = stateful_firewall.value["acl_name"]
+          class_list  = stateful_firewall.value["class_list"]
+          inside      = stateful_firewall.value["inside"]
+          outside     = stateful_firewall.value["outside"]
+          uuid        = stateful_firewall.value["uuid"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "isis" {
+    for_each = var.isis
+    content {
+      circuit_type        = isis.value["circuit_type"]
+      lsp_interval        = isis.value["lsp_interval"]
+      network             = isis.value["network"]
+      padding             = isis.value["padding"]
+      retransmit_interval = isis.value["retransmit_interval"]
+      uuid                = isis.value["uuid"]
+
+      dynamic "authentication" {
+        for_each = isis.value.authentication
+        content {
+
+          dynamic "key_chain_list" {
+            for_each = authentication.value.key_chain_list
+            content {
+              key_chain = key_chain_list.value["key_chain"]
+              level     = key_chain_list.value["level"]
+            }
+          }
+
+          dynamic "mode_list" {
+            for_each = authentication.value.mode_list
+            content {
+              level = mode_list.value["level"]
+              mode  = mode_list.value["mode"]
+            }
+          }
+
+          dynamic "send_only_list" {
+            for_each = authentication.value.send_only_list
+            content {
+              level     = send_only_list.value["level"]
+              send_only = send_only_list.value["send_only"]
+            }
+          }
+
+        }
+      }
+
+      dynamic "bfd_cfg" {
+        for_each = isis.value.bfd_cfg
+        content {
+          bfd     = bfd_cfg.value["bfd"]
+          disable = bfd_cfg.value["disable"]
+        }
+      }
+
+      dynamic "csnp_interval_list" {
+        for_each = isis.value.csnp_interval_list
+        content {
+          csnp_interval = csnp_interval_list.value["csnp_interval"]
+          level         = csnp_interval_list.value["level"]
+        }
+      }
+
+      dynamic "hello_interval_list" {
+        for_each = isis.value.hello_interval_list
+        content {
+          hello_interval = hello_interval_list.value["hello_interval"]
+          level          = hello_interval_list.value["level"]
+        }
+      }
+
+      dynamic "hello_interval_minimal_list" {
+        for_each = isis.value.hello_interval_minimal_list
+        content {
+          hello_interval_minimal = hello_interval_minimal_list.value["hello_interval_minimal"]
+          level                  = hello_interval_minimal_list.value["level"]
+        }
+      }
+
+      dynamic "hello_multiplier_list" {
+        for_each = isis.value.hello_multiplier_list
+        content {
+          hello_multiplier = hello_multiplier_list.value["hello_multiplier"]
+          level            = hello_multiplier_list.value["level"]
+        }
+      }
+
+      dynamic "mesh_group" {
+        for_each = isis.value.mesh_group
+        content {
+          blocked = mesh_group.value["blocked"]
+          value   = mesh_group.value["value"]
+        }
+      }
+
+      dynamic "metric_list" {
+        for_each = isis.value.metric_list
+        content {
+          level  = metric_list.value["level"]
+          metric = metric_list.value["metric"]
+        }
+      }
+
+      dynamic "password_list" {
+        for_each = isis.value.password_list
+        content {
+          level    = password_list.value["level"]
+          password = password_list.value["password"]
+        }
+      }
+
+      dynamic "priority_list" {
+        for_each = isis.value.priority_list
+        content {
+          level    = priority_list.value["level"]
+          priority = priority_list.value["priority"]
+        }
+      }
+
+      dynamic "wide_metric_list" {
+        for_each = isis.value.wide_metric_list
+        content {
+          level       = wide_metric_list.value["level"]
+          wide_metric = wide_metric_list.value["wide_metric"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "lldp" {
+    for_each = var.lldp
+    content {
+      uuid = lldp.value["uuid"]
+
+      dynamic "enable_cfg" {
+        for_each = lldp.value.enable_cfg
+        content {
+          rt_enable = enable_cfg.value["rt_enable"]
+          rx        = enable_cfg.value["rx"]
+          tx        = enable_cfg.value["tx"]
+        }
+      }
+
+      dynamic "notification_cfg" {
+        for_each = lldp.value.notification_cfg
+        content {
+          notif_enable = notification_cfg.value["notif_enable"]
+          notification = notification_cfg.value["notification"]
+        }
+      }
+
+      dynamic "tx_dot1_cfg" {
+        for_each = lldp.value.tx_dot1_cfg
+        content {
+          link_aggregation = tx_dot1_cfg.value["link_aggregation"]
+          tx_dot1_tlvs     = tx_dot1_cfg.value["tx_dot1_tlvs"]
+          vlan             = tx_dot1_cfg.value["vlan"]
+        }
+      }
+
+      dynamic "tx_tlvs_cfg" {
+        for_each = lldp.value.tx_tlvs_cfg
+        content {
+          exclude             = tx_tlvs_cfg.value["exclude"]
+          management_address  = tx_tlvs_cfg.value["management_address"]
+          port_description    = tx_tlvs_cfg.value["port_description"]
+          system_capabilities = tx_tlvs_cfg.value["system_capabilities"]
+          system_description  = tx_tlvs_cfg.value["system_description"]
+          system_name         = tx_tlvs_cfg.value["system_name"]
+          tx_tlvs             = tx_tlvs_cfg.value["tx_tlvs"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "lw_4o6" {
+    for_each = var.lw_4o6
+    content {
+      inside  = lw_4o6.value["inside"]
+      outside = lw_4o6.value["outside"]
+      uuid    = lw_4o6.value["uuid"]
+    }
+  }
+
+  dynamic "map" {
+    for_each = var.map
+    content {
+      inside        = map.value["inside"]
+      map_t_inside  = map.value["map_t_inside"]
+      map_t_outside = map.value["map_t_outside"]
+      outside       = map.value["outside"]
+      uuid          = map.value["uuid"]
+    }
+  }
+
+  dynamic "monitor_list" {
+    for_each = var.monitor_list
+    content {
+      mirror_index = monitor_list.value["mirror_index"]
+      monitor      = monitor_list.value["monitor"]
+      monitor_vlan = monitor_list.value["monitor_vlan"]
+    }
+  }
+
+  dynamic "nptv6" {
+    for_each = var.nptv6
+    content {
+
+      dynamic "domain_list" {
+        for_each = nptv6.value.domain_list
+        content {
+          bind_type   = domain_list.value["bind_type"]
+          domain_name = domain_list.value["domain_name"]
+          uuid        = domain_list.value["uuid"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "sampling_enable" {
+    for_each = var.sampling_enable
+    content {
+      counters1 = sampling_enable.value["counters1"]
+    }
+  }
+
+  dynamic "trunk_group_list" {
+    for_each = var.trunk_group_list
+    content {
+      admin_key     = trunk_group_list.value["admin_key"]
+      mode          = trunk_group_list.value["mode"]
+      port_priority = trunk_group_list.value["port_priority"]
+      timeout       = trunk_group_list.value["timeout"]
+      trunk_number  = trunk_group_list.value["trunk_number"]
+      type          = trunk_group_list.value["type"]
+      user_tag      = trunk_group_list.value["user_tag"]
+      uuid          = trunk_group_list.value["uuid"]
+
+      dynamic "udld_timeout_cfg" {
+        for_each = trunk_group_list.value.udld_timeout_cfg
+        content {
+          fast = udld_timeout_cfg.value["fast"]
+          slow = udld_timeout_cfg.value["slow"]
+        }
+      }
+
+    }
+  }
+
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "id" {
+  description = "returns a string"
+  value       = thunder_interface_ethernet.this.id
+}
+
+output "this" {
+  value = thunder_interface_ethernet.this
+}
+```
+
+[top](#index)

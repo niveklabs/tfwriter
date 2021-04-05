@@ -1,6 +1,9 @@
-# opsgenie
-
-[back](../)
+---
+layout: resource
+title: opsgenie
+type: provider
+resource: opsgenie
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "opsgenie" {
-  version = "0.5.7"
+  version = "0.6.3"
 
   # api_key - (required) is a type of string
   api_key = null

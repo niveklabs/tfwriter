@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -65,7 +65,7 @@ variable "description" {
 }
 
 variable "issuer_mode" {
-  description = "(optional) - EA Feature: allows you to use a custom issuer URL"
+  description = "(optional) - *Early Access Property*. Indicates which value is specified in the issuer of the tokens that a Custom Authorization Server returns: the original Okta org domain URL or a custom domain URL"
   type        = string
   default     = null
 }

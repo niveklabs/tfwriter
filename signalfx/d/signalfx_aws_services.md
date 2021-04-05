@@ -1,0 +1,85 @@
+# signalfx_aws_services
+
+[back](../signalfx.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Datasource](#datasource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    signalfx = ">= 6.7.3"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "signalfx_aws_services" {
+  source = "./modules/signalfx/d/signalfx_aws_services"
+
+
+  services = [{
+    name = null
+  }]
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "services" {
+  description = "nested block: NestingSet, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+    }
+  ))
+  default = []
+}
+```
+
+[top](#index)
+
+### Datasource
+
+```terraform
+data "signalfx_aws_services" "this" {
+
+  dynamic "services" {
+    for_each = var.services
+    content {
+      name = services.value["name"]
+    }
+  }
+
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "id" {
+  description = "returns a string"
+  value       = data.signalfx_aws_services.this.id
+}
+
+output "this" {
+  value = signalfx_aws_services.this
+}
+```
+
+[top](#index)

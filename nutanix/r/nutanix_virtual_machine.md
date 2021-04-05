@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nutanix = ">= 1.1.0"
+    nutanix = ">= 1.2.0"
   }
 }
 ```
@@ -35,6 +35,10 @@ module "nutanix_virtual_machine" {
   boot_device_mac_address = null
   # boot_device_order_list - (optional) is a type of list of string
   boot_device_order_list = []
+  # boot_type - (optional) is a type of string
+  boot_type = null
+  # cloud_init_cdrom_uuid - (optional) is a type of string
+  cloud_init_cdrom_uuid = null
   # cluster_uuid - (required) is a type of string
   cluster_uuid = null
   # description - (optional) is a type of string
@@ -57,6 +61,8 @@ module "nutanix_virtual_machine" {
   guest_os_id = null
   # hardware_clock_timezone - (optional) is a type of string
   hardware_clock_timezone = null
+  # machine_type - (optional) is a type of string
+  machine_type = null
   # memory_size_mib - (optional) is a type of number
   memory_size_mib = null
   # name - (required) is a type of string
@@ -179,6 +185,18 @@ variable "boot_device_order_list" {
   default     = null
 }
 
+variable "boot_type" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "cloud_init_cdrom_uuid" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "cluster_uuid" {
   description = "(required)"
   type        = string
@@ -239,6 +257,12 @@ variable "guest_os_id" {
 }
 
 variable "hardware_clock_timezone" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "machine_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -442,6 +466,8 @@ resource "nutanix_virtual_machine" "this" {
   boot_device_disk_address                         = var.boot_device_disk_address
   boot_device_mac_address                          = var.boot_device_mac_address
   boot_device_order_list                           = var.boot_device_order_list
+  boot_type                                        = var.boot_type
+  cloud_init_cdrom_uuid                            = var.cloud_init_cdrom_uuid
   cluster_uuid                                     = var.cluster_uuid
   description                                      = var.description
   enable_script_exec                               = var.enable_script_exec
@@ -453,6 +479,7 @@ resource "nutanix_virtual_machine" "this" {
   guest_customization_sysprep_custom_key_values    = var.guest_customization_sysprep_custom_key_values
   guest_os_id                                      = var.guest_os_id
   hardware_clock_timezone                          = var.hardware_clock_timezone
+  machine_type                                     = var.machine_type
   memory_size_mib                                  = var.memory_size_mib
   name                                             = var.name
   ngt_credentials                                  = var.ngt_credentials
@@ -588,6 +615,16 @@ output "boot_device_order_list" {
   value       = nutanix_virtual_machine.this.boot_device_order_list
 }
 
+output "boot_type" {
+  description = "returns a string"
+  value       = nutanix_virtual_machine.this.boot_type
+}
+
+output "cloud_init_cdrom_uuid" {
+  description = "returns a string"
+  value       = nutanix_virtual_machine.this.cloud_init_cdrom_uuid
+}
+
 output "cluster_name" {
   description = "returns a string"
   value       = nutanix_virtual_machine.this.cluster_name
@@ -656,6 +693,11 @@ output "hypervisor_type" {
 output "id" {
   description = "returns a string"
   value       = nutanix_virtual_machine.this.id
+}
+
+output "machine_type" {
+  description = "returns a string"
+  value       = nutanix_virtual_machine.this.machine_type
 }
 
 output "memory_size_mib" {

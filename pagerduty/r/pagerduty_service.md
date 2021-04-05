@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    pagerduty = ">= 1.8.0"
+    pagerduty = ">= 1.9.5"
   }
 }
 ```

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -29,10 +29,14 @@ module "okta_app" {
 
   # active_only - (optional) is a type of bool
   active_only = null
+  # groups - (optional) is a type of set of string
+  groups = []
   # label - (optional) is a type of string
   label = null
   # label_prefix - (optional) is a type of string
   label_prefix = null
+  # users - (optional) is a type of set of string
+  users = []
 }
 ```
 
@@ -47,6 +51,12 @@ variable "active_only" {
   default     = null
 }
 
+variable "groups" {
+  description = "(optional) - Groups associated with the application"
+  type        = set(string)
+  default     = null
+}
+
 variable "label" {
   description = "(optional)"
   type        = string
@@ -58,6 +68,12 @@ variable "label_prefix" {
   type        = string
   default     = null
 }
+
+variable "users" {
+  description = "(optional) - Users associated with the application"
+  type        = set(string)
+  default     = null
+}
 ```
 
 [top](#index)
@@ -67,8 +83,10 @@ variable "label_prefix" {
 ```terraform
 data "okta_app" "this" {
   active_only  = var.active_only
+  groups       = var.groups
   label        = var.label
   label_prefix = var.label_prefix
+  users        = var.users
 }
 ```
 
@@ -77,14 +95,14 @@ data "okta_app" "this" {
 ### Outputs
 
 ```terraform
-output "description" {
-  description = "returns a string"
-  value       = data.okta_app.this.description
-}
-
 output "id" {
   description = "returns a string"
   value       = data.okta_app.this.id
+}
+
+output "links" {
+  description = "returns a string"
+  value       = data.okta_app.this.links
 }
 
 output "name" {

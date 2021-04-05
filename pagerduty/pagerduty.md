@@ -1,6 +1,9 @@
-# pagerduty
-
-[back](../)
+---
+layout: resource
+title: pagerduty
+type: provider
+resource: pagerduty
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "pagerduty" {
-  version = "1.8.0"
+  version = "1.9.5"
 
   # skip_credentials_validation - (optional) is a type of bool
   skip_credentials_validation = null
@@ -50,6 +53,8 @@ provider "pagerduty" {
 
 - [pagerduty_service_dependency](./r/pagerduty_service_dependency.md)
 
+- [pagerduty_service_event_rule](./r/pagerduty_service_event_rule.md)
+
 - [pagerduty_service_integration](./r/pagerduty_service_integration.md)
 
 - [pagerduty_team](./r/pagerduty_team.md)
@@ -85,6 +90,8 @@ provider "pagerduty" {
 - [pagerduty_team](./d/pagerduty_team.md)
 
 - [pagerduty_user](./d/pagerduty_user.md)
+
+- [pagerduty_user_contact_method](./d/pagerduty_user_contact_method.md)
 
 - [pagerduty_vendor](./d/pagerduty_vendor.md)
 

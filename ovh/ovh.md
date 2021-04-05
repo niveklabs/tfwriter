@@ -1,6 +1,9 @@
-# ovh
-
-[back](../)
+---
+layout: resource
+title: ovh
+type: provider
+resource: ovh
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "ovh" {
-  version = "0.10.0"
+  version = "0.11.0"
 
   # application_key - (optional) is a type of string
   application_key = null
@@ -33,6 +36,10 @@ provider "ovh" {
 - [ovh_cloud_network_private](./r/ovh_cloud_network_private.md)
 
 - [ovh_cloud_network_private_subnet](./r/ovh_cloud_network_private_subnet.md)
+
+- [ovh_cloud_project_kube](./r/ovh_cloud_project_kube.md)
+
+- [ovh_cloud_project_kube_nodepool](./r/ovh_cloud_project_kube_nodepool.md)
 
 - [ovh_cloud_project_network_private](./r/ovh_cloud_project_network_private.md)
 
@@ -103,6 +110,8 @@ provider "ovh" {
 
 ### Datasources
 
+
+- [ovh_cloud_project_kube](./d/ovh_cloud_project_kube.md)
 
 - [ovh_cloud_project_region](./d/ovh_cloud_project_region.md)
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -39,10 +39,14 @@ module "okta_mfa_policy" {
   google_otp = {}
   # groups_included - (optional) is a type of set of string
   groups_included = []
+  # hotp - (optional) is a type of map of string
+  hotp = {}
   # name - (required) is a type of string
   name = null
   # okta_call - (optional) is a type of map of string
   okta_call = {}
+  # okta_email - (optional) is a type of map of string
+  okta_email = {}
   # okta_otp - (optional) is a type of map of string
   okta_otp = {}
   # okta_password - (optional) is a type of map of string
@@ -107,12 +111,24 @@ variable "groups_included" {
   default     = null
 }
 
+variable "hotp" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
 variable "name" {
   description = "(required) - Policy Name"
   type        = string
 }
 
 variable "okta_call" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
+variable "okta_email" {
   description = "(optional)"
   type        = map(string)
   default     = null
@@ -149,7 +165,7 @@ variable "okta_sms" {
 }
 
 variable "priority" {
-  description = "(optional) - Policy Priority, this attribute can be set to a valid priority. To avoid endless diff situation we error if an invalid priority is provided. API defaults it to the last/lowest if not there."
+  description = "(optional) - Policy Priority, this attribute can be set to a valid priority. To avoid endless diff situation we error if an invalid priority is provided. API defaults it to the last (lowest) if not there."
   type        = number
   default     = null
 }
@@ -191,8 +207,10 @@ resource "okta_mfa_policy" "this" {
   fido_webauthn   = var.fido_webauthn
   google_otp      = var.google_otp
   groups_included = var.groups_included
+  hotp            = var.hotp
   name            = var.name
   okta_call       = var.okta_call
+  okta_email      = var.okta_email
   okta_otp        = var.okta_otp
   okta_password   = var.okta_password
   okta_push       = var.okta_push

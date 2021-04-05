@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nutanix = ">= 1.1.0"
+    nutanix = ">= 1.2.0"
   }
 }
 ```
@@ -83,6 +83,46 @@ data "nutanix_network_security_rule" "this" {
 ### Outputs
 
 ```terraform
+output "ad_rule_action" {
+  description = "returns a string"
+  value       = data.nutanix_network_security_rule.this.ad_rule_action
+}
+
+output "ad_rule_inbound_allow_list" {
+  description = "returns a list of object"
+  value       = data.nutanix_network_security_rule.this.ad_rule_inbound_allow_list
+}
+
+output "ad_rule_outbound_allow_list" {
+  description = "returns a list of object"
+  value       = data.nutanix_network_security_rule.this.ad_rule_outbound_allow_list
+}
+
+output "ad_rule_target_group_default_internal_policy" {
+  description = "returns a string"
+  value       = data.nutanix_network_security_rule.this.ad_rule_target_group_default_internal_policy
+}
+
+output "ad_rule_target_group_filter_kind_list" {
+  description = "returns a list of string"
+  value       = data.nutanix_network_security_rule.this.ad_rule_target_group_filter_kind_list
+}
+
+output "ad_rule_target_group_filter_params" {
+  description = "returns a set of object"
+  value       = data.nutanix_network_security_rule.this.ad_rule_target_group_filter_params
+}
+
+output "ad_rule_target_group_filter_type" {
+  description = "returns a string"
+  value       = data.nutanix_network_security_rule.this.ad_rule_target_group_filter_type
+}
+
+output "ad_rule_target_group_peer_specification_type" {
+  description = "returns a string"
+  value       = data.nutanix_network_security_rule.this.ad_rule_target_group_peer_specification_type
+}
+
 output "api_version" {
   description = "returns a string"
   value       = data.nutanix_network_security_rule.this.api_version

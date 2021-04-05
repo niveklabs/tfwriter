@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    sumologic = ">= 2.6.2"
+    sumologic = ">= 2.9.1"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "sumologic_user" {
   email = null
   # first_name - (required) is a type of string
   first_name = null
-  # is_active - (optional) is a type of bool
+  # is_active - (required) is a type of bool
   is_active = null
   # last_name - (required) is a type of string
   last_name = null
@@ -58,9 +58,8 @@ variable "first_name" {
 }
 
 variable "is_active" {
-  description = "(optional)"
+  description = "(required)"
   type        = bool
-  default     = null
 }
 
 variable "last_name" {

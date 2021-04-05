@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -31,10 +31,6 @@ module "okta_idp" {
   account_link_action = null
   # account_link_group_include - (optional) is a type of set of string
   account_link_group_include = []
-  # acs_binding - (required) is a type of string
-  acs_binding = null
-  # acs_type - (optional) is a type of string
-  acs_type = null
   # authorization_binding - (required) is a type of string
   authorization_binding = null
   # authorization_url - (required) is a type of string
@@ -116,17 +112,6 @@ variable "account_link_action" {
 variable "account_link_group_include" {
   description = "(optional)"
   type        = set(string)
-  default     = null
-}
-
-variable "acs_binding" {
-  description = "(required)"
-  type        = string
-}
-
-variable "acs_type" {
-  description = "(optional)"
-  type        = string
   default     = null
 }
 
@@ -320,8 +305,6 @@ variable "username_template" {
 resource "okta_idp" "this" {
   account_link_action          = var.account_link_action
   account_link_group_include   = var.account_link_group_include
-  acs_binding                  = var.acs_binding
-  acs_type                     = var.acs_type
   authorization_binding        = var.authorization_binding
   authorization_url            = var.authorization_url
   client_id                    = var.client_id

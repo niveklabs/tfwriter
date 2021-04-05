@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    pagerduty = ">= 1.8.0"
+    pagerduty = ">= 1.9.5"
   }
 }
 ```
@@ -42,9 +42,10 @@ module "pagerduty_ruleset_rule" {
       value = null
     }]
     extractions = [{
-      regex  = null
-      source = null
-      target = null
+      regex    = null
+      source   = null
+      target   = null
+      template = null
     }]
     priority = [{
       value = null
@@ -60,6 +61,9 @@ module "pagerduty_ruleset_rule" {
       threshold_time_unit   = null
       threshold_value       = null
       value                 = null
+    }]
+    suspend = [{
+      value = null
     }]
   }]
 
@@ -85,6 +89,15 @@ module "pagerduty_ruleset_rule" {
       timezone   = null
       weekdays   = []
     }]
+  }]
+
+  variable = [{
+    name = null
+    parameters = [{
+      path  = null
+      value = null
+    }]
+    type = null
   }]
 }
 ```
@@ -127,9 +140,10 @@ variable "actions" {
       ))
       extractions = list(object(
         {
-          regex  = string
-          source = string
-          target = string
+          regex    = string
+          source   = string
+          target   = string
+          template = string
         }
       ))
       priority = list(object(
@@ -153,6 +167,11 @@ variable "actions" {
           threshold_time_unit   = string
           threshold_value       = number
           value                 = bool
+        }
+      ))
+      suspend = list(object(
+        {
+          value = number
         }
       ))
     }
@@ -203,6 +222,23 @@ variable "time_frame" {
   ))
   default = []
 }
+
+variable "variable" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      name = string
+      parameters = list(object(
+        {
+          path  = string
+          value = string
+        }
+      ))
+      type = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -236,9 +272,10 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "extractions" {
         for_each = actions.value.extractions
         content {
-          regex  = extractions.value["regex"]
-          source = extractions.value["source"]
-          target = extractions.value["target"]
+          regex    = extractions.value["regex"]
+          source   = extractions.value["source"]
+          target   = extractions.value["target"]
+          template = extractions.value["template"]
         }
       }
 
@@ -270,6 +307,13 @@ resource "pagerduty_ruleset_rule" "this" {
           threshold_time_unit   = suppress.value["threshold_time_unit"]
           threshold_value       = suppress.value["threshold_value"]
           value                 = suppress.value["value"]
+        }
+      }
+
+      dynamic "suspend" {
+        for_each = actions.value.suspend
+        content {
+          value = suspend.value["value"]
         }
       }
 
@@ -319,6 +363,23 @@ resource "pagerduty_ruleset_rule" "this" {
           start_time = scheduled_weekly.value["start_time"]
           timezone   = scheduled_weekly.value["timezone"]
           weekdays   = scheduled_weekly.value["weekdays"]
+        }
+      }
+
+    }
+  }
+
+  dynamic "variable" {
+    for_each = var.variable
+    content {
+      name = variable.value["name"]
+      type = variable.value["type"]
+
+      dynamic "parameters" {
+        for_each = variable.value.parameters
+        content {
+          path  = parameters.value["path"]
+          value = parameters.value["value"]
         }
       }
 

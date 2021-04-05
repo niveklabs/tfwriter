@@ -1,6 +1,9 @@
-# onelogin
-
-[back](../)
+---
+layout: resource
+title: onelogin
+type: provider
+resource: onelogin
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "onelogin" {
-  version = "0.1.6"
+  version = "0.1.12"
 
   # client_id - (required) is a type of string
   client_id = null
@@ -43,6 +46,10 @@ provider "onelogin" {
 - [onelogin_roles](./r/onelogin_roles.md)
 
 - [onelogin_saml_apps](./r/onelogin_saml_apps.md)
+
+- [onelogin_smarthook_environment_variables](./r/onelogin_smarthook_environment_variables.md)
+
+- [onelogin_smarthooks](./r/onelogin_smarthooks.md)
 
 - [onelogin_user_mappings](./r/onelogin_user_mappings.md)
 

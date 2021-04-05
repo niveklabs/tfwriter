@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nutanix = ">= 1.1.0"
+    nutanix = ">= 1.2.0"
   }
 }
 ```

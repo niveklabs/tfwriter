@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -38,7 +38,7 @@ module "okta_default_policy" {
 
 ```terraform
 variable "type" {
-  description = "(required) - Policy type: OKTA_SIGN_ON, PASSWORD, MFA_ENROLL, OAUTH_AUTHORIZATION_POLICY, or IDP_DISCOVERY"
+  description = "(required) - Policy type: OKTA_SIGN_ON, PASSWORD, MFA_ENROLL, or IDP_DISCOVERY"
   type        = string
 }
 ```

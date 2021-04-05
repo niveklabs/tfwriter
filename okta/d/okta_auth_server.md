@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -86,6 +86,16 @@ output "description" {
 output "id" {
   description = "returns a string"
   value       = data.okta_auth_server.this.id
+}
+
+output "issuer" {
+  description = "returns a string"
+  value       = data.okta_auth_server.this.issuer
+}
+
+output "issuer_mode" {
+  description = "returns a string"
+  value       = data.okta_auth_server.this.issuer_mode
 }
 
 output "kid" {

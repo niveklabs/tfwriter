@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -29,7 +29,7 @@ module "okta_app_metadata_saml" {
 
   # app_id - (required) is a type of string
   app_id = null
-  # key_id - (required) is a type of string
+  # key_id - (optional) is a type of string
   key_id = null
 }
 ```
@@ -45,8 +45,9 @@ variable "app_id" {
 }
 
 variable "key_id" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 ```
 

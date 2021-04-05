@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    okta = ">= 3.7.4"
+    okta = ">= 3.11.0"
   }
 }
 ```
@@ -29,7 +29,7 @@ module "okta_group" {
 
   # include_users - (optional) is a type of bool
   include_users = null
-  # name - (required) is a type of string
+  # name - (optional) is a type of string
   name = null
   # type - (optional) is a type of string
   type = null
@@ -48,8 +48,9 @@ variable "include_users" {
 }
 
 variable "name" {
-  description = "(required)"
+  description = "(optional)"
   type        = string
+  default     = null
 }
 
 variable "type" {

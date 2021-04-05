@@ -1,0 +1,124 @@
+# panos_ospf_export
+
+[back](../panos.md)
+
+### Index
+
+- [Example Usage](#example-usage)
+- [Variables](#variables)
+- [Resource](#resource)
+- [Outputs](#outputs)
+
+### Terraform
+
+```terraform
+terraform {
+  required_providers {
+    panos = ">= 1.8.1"
+  }
+}
+```
+
+[top](#index)
+
+### Example Usage
+
+```terraform
+module "panos_ospf_export" {
+  source = "./modules/panos/r/panos_ospf_export"
+
+  # metric - (optional) is a type of number
+  metric = null
+  # name - (required) is a type of string
+  name = null
+  # path_type - (optional) is a type of string
+  path_type = null
+  # tag - (optional) is a type of string
+  tag = null
+  # template - (optional) is a type of string
+  template = null
+  # template_stack - (optional) is a type of string
+  template_stack = null
+  # virtual_router - (required) is a type of string
+  virtual_router = null
+}
+```
+
+[top](#index)
+
+### Variables
+
+```terraform
+variable "metric" {
+  description = "(optional) - Metric"
+  type        = number
+  default     = null
+}
+
+variable "name" {
+  description = "(required) - The export rule name"
+  type        = string
+}
+
+variable "path_type" {
+  description = "(optional) - Path type"
+  type        = string
+  default     = null
+}
+
+variable "tag" {
+  description = "(optional) - Tag"
+  type        = string
+  default     = null
+}
+
+variable "template" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "template_stack" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "virtual_router" {
+  description = "(required) - The virtual router"
+  type        = string
+}
+```
+
+[top](#index)
+
+### Resource
+
+```terraform
+resource "panos_ospf_export" "this" {
+  metric         = var.metric
+  name           = var.name
+  path_type      = var.path_type
+  tag            = var.tag
+  template       = var.template
+  template_stack = var.template_stack
+  virtual_router = var.virtual_router
+}
+```
+
+[top](#index)
+
+### Outputs
+
+```terraform
+output "id" {
+  description = "returns a string"
+  value       = panos_ospf_export.this.id
+}
+
+output "this" {
+  value = panos_ospf_export.this
+}
+```
+
+[top](#index)

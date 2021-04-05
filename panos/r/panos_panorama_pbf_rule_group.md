@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    panos = ">= 1.6.3"
+    panos = ">= 1.8.1"
   }
 }
 ```
@@ -94,13 +94,13 @@ variable "device_group" {
 }
 
 variable "position_keyword" {
-  description = "(optional)"
+  description = "(optional) - The position keyword for this group of rules"
   type        = string
   default     = null
 }
 
 variable "position_reference" {
-  description = "(optional)"
+  description = "(optional) - The position reference for this group of rules"
   type        = string
   default     = null
 }
