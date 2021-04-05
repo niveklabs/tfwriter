@@ -4,8 +4,11 @@ layout: default
 
 <h1>{{ page.resource }}</h1>
 
+<a href="../">back</a>
+
 {% assign resource = site.data.plugins[page.resource] %}
 {% if resource.attributes.description != "" %}
+<h3>Description</h3>
 <p>{{ resource.attributes.description }}</p>
 {% endif %}
 
