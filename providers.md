@@ -19,6 +19,7 @@ tags: [ plugin, terraform, provider ]
       {{ resource.attributes.name }} 
     </a> (v{{ resource.attributes.version }})
   </li>
+{% endif %}
 {% endfor %}
 </ul>
 {% endfor %}
