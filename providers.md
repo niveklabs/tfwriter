@@ -7,7 +7,7 @@ tags: [ plugin, terraform, provider ]
 
 <p>Select a provider</p>
 
-{% for group in array = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z"}
+{% for group in array = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" %}
 <h3>{{ group }}</h3>
 <ul>
 {% assign plugins = site.data.plugins | sort %}
