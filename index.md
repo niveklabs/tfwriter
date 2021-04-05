@@ -18,7 +18,7 @@ tags: [ plugin, terraform, provider ]
 {% if resource_group == group %}
   <li>
     <a href="/{{ resource.attributes.name }}/{{ resource.attributes.name }}.html">
-      {{ resource.attributes.name }} 
+      {{ resource.attributes.name -}} 
     </a> (v{{ resource.attributes.version }})
   </li>
 {% endif %}
