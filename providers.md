@@ -7,9 +7,10 @@ tags: [ plugin, terraform, provider ]
 
 <ul>
 {% for provider in site.data.plugins %}
+{% assign resource = site.data.plugins[provider] %}
   <li>
-    <a href="/{{ provider.attributes.name }}/{{ provider.attributes.name }}.html">
-      {{ provider.attributes.name }} ({{ provider.attributes.version }}) {{ provider.type }}
+    <a href="/{{ resource.attributes.name }}/{{ resource.attributes.name }}.html">
+      {{ resource.attributes.name }} ({{ resource.attributes.version }})
     </a>
   </li>
 {% endfor %}
