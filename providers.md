@@ -8,7 +8,7 @@ tags: [ plugin, terraform, provider ]
 <p>Select a provider</p>
 
 <ul>
-{% assign plugins = site.data.plugins | sort %}
+{% assign plugins = site.data.plugins | sort: 'name' %}
 {% for plugin in plugins %}
 {% assign resource = plugin[1] %}
   <li>
