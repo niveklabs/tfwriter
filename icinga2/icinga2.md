@@ -1,6 +1,9 @@
-# icinga2
-
-[back](../)
+---
+layout: resource
+title: icinga2
+type: provider
+resource: icinga2
+---
 
 ### Index
 

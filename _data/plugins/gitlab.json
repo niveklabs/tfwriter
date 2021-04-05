@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"gitlab","full-name":"gitlabhq/gitlab","version":"3.5.0","downloads":505861,"namespace":"gitlabhq","source":"https://github.com/gitlabhq/terraform-provider-gitlab","tier":"partner"}}
+{"type":"providers","attributes":{"name":"gitlab","full-name":"gitlabhq/gitlab","version":"3.5.0","downloads":510825,"namespace":"gitlabhq","source":"https://github.com/gitlabhq/terraform-provider-gitlab","tier":"partner"}}

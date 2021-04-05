@@ -1,6 +1,9 @@
-# linode
-
-[back](../)
+---
+layout: resource
+title: linode
+type: provider
+resource: linode
+---
 
 ### Index
 

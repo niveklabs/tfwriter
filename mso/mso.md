@@ -1,6 +1,9 @@
-# mso
-
-[back](../)
+---
+layout: resource
+title: mso
+type: provider
+resource: mso
+---
 
 ### Index
 

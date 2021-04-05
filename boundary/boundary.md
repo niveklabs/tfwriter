@@ -1,6 +1,9 @@
-# boundary
-
-[back](../)
+---
+layout: resource
+title: boundary
+type: provider
+resource: boundary
+---
 
 ### Index
 

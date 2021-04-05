@@ -1,6 +1,9 @@
-# azuredevops
-
-[back](../)
+---
+layout: resource
+title: azuredevops
+type: provider
+resource: azuredevops
+---
 
 ### Index
 

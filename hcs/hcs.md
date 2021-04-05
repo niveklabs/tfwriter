@@ -1,6 +1,9 @@
-# hcs
-
-[back](../)
+---
+layout: resource
+title: hcs
+type: provider
+resource: hcs
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# dme
-
-[back](../)
+---
+layout: resource
+title: dme
+type: provider
+resource: dme
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# nsxt
-
-[back](../)
+---
+layout: resource
+title: nsxt
+type: provider
+resource: nsxt
+---
 
 ### Index
 

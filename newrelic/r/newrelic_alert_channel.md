@@ -69,7 +69,7 @@ variable "name" {
 }
 
 variable "type" {
-  description = "(required) - (Required) The type of channel. One of: (webhook, email, opsgenie, pagerduty, slack, user, victorops)."
+  description = "(required) - (Required) The type of channel. One of: (slack, user, victorops, webhook, email, opsgenie, pagerduty)."
   type        = string
 }
 

@@ -1,6 +1,9 @@
-# nomad
-
-[back](../)
+---
+layout: resource
+title: nomad
+type: provider
+resource: nomad
+---
 
 ### Index
 

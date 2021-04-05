@@ -1,6 +1,9 @@
-# newrelic
-
-[back](../)
+---
+layout: resource
+title: newrelic
+type: provider
+resource: newrelic
+---
 
 ### Index
 

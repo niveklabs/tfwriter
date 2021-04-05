@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.62.0"
+    google = ">= 3.63.0"
   }
 }
 ```
@@ -35,6 +35,8 @@ module "google_container_cluster" {
   default_max_pods_per_node = null
   # description - (optional) is a type of string
   description = null
+  # enable_autopilot - (optional) is a type of bool
+  enable_autopilot = null
   # enable_binary_authorization - (optional) is a type of bool
   enable_binary_authorization = null
   # enable_intranode_visibility - (optional) is a type of bool
@@ -61,10 +63,14 @@ module "google_container_cluster" {
   name = null
   # network - (optional) is a type of string
   network = null
+  # networking_mode - (optional) is a type of string
+  networking_mode = null
   # node_locations - (optional) is a type of set of string
   node_locations = []
   # node_version - (optional) is a type of string
   node_version = null
+  # private_ipv6_google_access - (optional) is a type of string
+  private_ipv6_google_access = null
   # project - (optional) is a type of string
   project = null
   # remove_default_node_pool - (optional) is a type of bool
@@ -321,6 +327,12 @@ variable "description" {
   default     = null
 }
 
+variable "enable_autopilot" {
+  description = "(optional) - Enable Autopilot for this cluster."
+  type        = bool
+  default     = null
+}
+
 variable "enable_binary_authorization" {
   description = "(optional) - Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Google Binary Authorization."
   type        = bool
@@ -346,7 +358,7 @@ variable "enable_legacy_abac" {
 }
 
 variable "enable_shielded_nodes" {
-  description = "(optional) - Enable Shielded Nodes features on all nodes in this cluster. Defaults to false."
+  description = "(optional) - Enable Shielded Nodes features on all nodes in this cluster."
   type        = bool
   default     = null
 }
@@ -398,6 +410,12 @@ variable "network" {
   default     = null
 }
 
+variable "networking_mode" {
+  description = "(optional) - Determines whether alias IPs or routes will be used for pod IPs in the cluster."
+  type        = string
+  default     = null
+}
+
 variable "node_locations" {
   description = "(optional) - The list of zones in which the cluster's nodes are located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If this is specified for a zonal cluster, omit the cluster's zone."
   type        = set(string)
@@ -406,6 +424,12 @@ variable "node_locations" {
 
 variable "node_version" {
   description = "(optional) - The Kubernetes version on the nodes. Must either be unset or set to the same value as min_master_version on create. Defaults to the default version set by GKE which is not necessarily the latest version. This only affects nodes in the default node pool. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the google_container_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way. To update nodes in other node pools, use the version attribute on the node pool."
+  type        = string
+  default     = null
+}
+
+variable "private_ipv6_google_access" {
+  description = "(optional) - The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)."
   type        = string
   default     = null
 }
@@ -825,6 +849,7 @@ resource "google_container_cluster" "this" {
   datapath_provider           = var.datapath_provider
   default_max_pods_per_node   = var.default_max_pods_per_node
   description                 = var.description
+  enable_autopilot            = var.enable_autopilot
   enable_binary_authorization = var.enable_binary_authorization
   enable_intranode_visibility = var.enable_intranode_visibility
   enable_kubernetes_alpha     = var.enable_kubernetes_alpha
@@ -838,8 +863,10 @@ resource "google_container_cluster" "this" {
   monitoring_service          = var.monitoring_service
   name                        = var.name
   network                     = var.network
+  networking_mode             = var.networking_mode
   node_locations              = var.node_locations
   node_version                = var.node_version
+  private_ipv6_google_access  = var.private_ipv6_google_access
   project                     = var.project
   remove_default_node_pool    = var.remove_default_node_pool
   resource_labels             = var.resource_labels
@@ -1213,6 +1240,16 @@ output "default_max_pods_per_node" {
   value       = google_container_cluster.this.default_max_pods_per_node
 }
 
+output "enable_intranode_visibility" {
+  description = "returns a bool"
+  value       = google_container_cluster.this.enable_intranode_visibility
+}
+
+output "enable_shielded_nodes" {
+  description = "returns a bool"
+  value       = google_container_cluster.this.enable_shielded_nodes
+}
+
 output "endpoint" {
   description = "returns a string"
   value       = google_container_cluster.this.endpoint
@@ -1253,6 +1290,11 @@ output "monitoring_service" {
   value       = google_container_cluster.this.monitoring_service
 }
 
+output "networking_mode" {
+  description = "returns a string"
+  value       = google_container_cluster.this.networking_mode
+}
+
 output "node_locations" {
   description = "returns a set of string"
   value       = google_container_cluster.this.node_locations
@@ -1266,6 +1308,11 @@ output "node_version" {
 output "operation" {
   description = "returns a string"
   value       = google_container_cluster.this.operation
+}
+
+output "private_ipv6_google_access" {
+  description = "returns a string"
+  value       = google_container_cluster.this.private_ipv6_google_access
 }
 
 output "project" {

@@ -1,6 +1,9 @@
-# vault
-
-[back](../)
+---
+layout: resource
+title: vault
+type: provider
+resource: vault
+---
 
 ### Index
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.62.0"
+    google = ">= 3.63.0"
   }
 }
 ```
@@ -88,7 +88,7 @@ variable "org_id" {
 }
 
 variable "peering_cidr_range" {
-  description = "(optional) - The size of the CIDR block range that will be reserved by the instance. Default value: \"SLASH_16\" Possible values: [\"SLASH_16\", \"SLASH_20\"]"
+  description = "(optional) - The size of the CIDR block range that will be reserved by the instance. Possible values: [\"SLASH_16\", \"SLASH_20\"]"
   type        = string
   default     = null
 }

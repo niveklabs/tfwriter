@@ -1,6 +1,9 @@
-# dns
-
-[back](../)
+---
+layout: resource
+title: dns
+type: provider
+resource: dns
+---
 
 ### Index
 

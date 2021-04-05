@@ -1,6 +1,9 @@
-# opc
-
-[back](../)
+---
+layout: resource
+title: opc
+type: provider
+resource: opc
+---
 
 ### Index
 

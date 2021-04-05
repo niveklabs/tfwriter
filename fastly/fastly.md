@@ -1,6 +1,9 @@
-# fastly
-
-[back](../)
+---
+layout: resource
+title: fastly
+type: provider
+resource: fastly
+---
 
 ### Index
 

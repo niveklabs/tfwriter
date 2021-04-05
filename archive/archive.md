@@ -1,6 +1,9 @@
-# archive
-
-[back](../)
+---
+layout: resource
+title: archive
+type: provider
+resource: archive
+---
 
 ### Index
 

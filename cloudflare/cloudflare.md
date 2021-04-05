@@ -1,6 +1,9 @@
-# cloudflare
-
-[back](../)
+---
+layout: resource
+title: cloudflare
+type: provider
+resource: cloudflare
+---
 
 ### Index
 

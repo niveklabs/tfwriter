@@ -1,6 +1,9 @@
-# oci
-
-[back](../)
+---
+layout: resource
+title: oci
+type: provider
+resource: oci
+---
 
 ### Index
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -27,6 +27,12 @@ terraform {
 module "alicloud_resource_manager_resource_directory" {
   source = "./modules/alicloud/r/alicloud_resource_manager_resource_directory"
 
+  # status - (optional) is a type of string
+  status = null
+
+  timeouts = [{
+    update = null
+  }]
 }
 ```
 
@@ -35,6 +41,21 @@ module "alicloud_resource_manager_resource_directory" {
 ### Variables
 
 ```terraform
+variable "status" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      update = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -43,6 +64,15 @@ module "alicloud_resource_manager_resource_directory" {
 
 ```terraform
 resource "alicloud_resource_manager_resource_directory" "this" {
+  status = var.status
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      update = timeouts.value["update"]
+    }
+  }
+
 }
 ```
 

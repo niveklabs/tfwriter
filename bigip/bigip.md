@@ -1,6 +1,9 @@
-# bigip
-
-[back](../)
+---
+layout: resource
+title: bigip
+type: provider
+resource: bigip
+---
 
 ### Index
 

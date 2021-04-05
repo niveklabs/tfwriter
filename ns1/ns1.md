@@ -1,6 +1,9 @@
-# ns1
-
-[back](../)
+---
+layout: resource
+title: ns1
+type: provider
+resource: ns1
+---
 
 ### Index
 

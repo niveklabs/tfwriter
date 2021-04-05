@@ -1,6 +1,9 @@
-# external
-
-[back](../)
+---
+layout: resource
+title: external
+type: provider
+resource: external
+---
 
 ### Index
 

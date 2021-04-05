@@ -1,6 +1,9 @@
-# aws
-
-[back](../)
+---
+layout: resource
+title: aws
+type: provider
+resource: aws
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# grafana
-
-[back](../)
+---
+layout: resource
+title: grafana
+type: provider
+resource: grafana
+---
 
 ### Index
 

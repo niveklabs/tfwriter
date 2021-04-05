@@ -1,6 +1,9 @@
-# azuread
-
-[back](../)
+---
+layout: resource
+title: azuread
+type: provider
+resource: azuread
+---
 
 ### Index
 

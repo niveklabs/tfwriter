@@ -1,6 +1,9 @@
-# circonus
-
-[back](../)
+---
+layout: resource
+title: circonus
+type: provider
+resource: circonus
+---
 
 ### Index
 

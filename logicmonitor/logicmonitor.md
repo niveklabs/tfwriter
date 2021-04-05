@@ -1,6 +1,9 @@
-# logicmonitor
-
-[back](../)
+---
+layout: resource
+title: logicmonitor
+type: provider
+resource: logicmonitor
+---
 
 ### Index
 

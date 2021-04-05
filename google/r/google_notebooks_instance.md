@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.62.0"
+    google = ">= 3.63.0"
   }
 }
 ```
@@ -419,6 +419,11 @@ output "create_time" {
 output "id" {
   description = "returns a string"
   value       = google_notebooks_instance.this.id
+}
+
+output "labels" {
+  description = "returns a map of string"
+  value       = google_notebooks_instance.this.labels
 }
 
 output "network" {

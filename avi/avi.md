@@ -1,6 +1,9 @@
-# avi
-
-[back](../)
+---
+layout: resource
+title: avi
+type: provider
+resource: avi
+---
 
 ### Index
 

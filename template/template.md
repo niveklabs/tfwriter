@@ -1,6 +1,9 @@
-# template
-
-[back](../)
+---
+layout: resource
+title: template
+type: provider
+resource: template
+---
 
 ### Index
 

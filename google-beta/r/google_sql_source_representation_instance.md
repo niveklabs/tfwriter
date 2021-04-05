@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.62.0"
+    google-beta = ">= 3.63.0"
   }
 }
 ```
@@ -53,7 +53,7 @@ module "google_sql_source_representation_instance" {
 
 ```terraform
 variable "database_version" {
-  description = "(required) - The MySQL version running on your source database server. Possible values: [\"MYSQL_5_6\", \"MYSQL_5_7\", \"MYSQL_8_0\"]"
+  description = "(required) - The MySQL version running on your source database server. Possible values: [\"MYSQL_5_5\", \"MYSQL_5_6\", \"MYSQL_5_7\", \"MYSQL_8_0\"]"
   type        = string
 }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -61,6 +61,8 @@ module "alicloud_cs_kubernetes_node_pool" {
   security_group_id = null
   # system_disk_category - (optional) is a type of string
   system_disk_category = null
+  # system_disk_performance_level - (optional) is a type of string
+  system_disk_performance_level = null
   # system_disk_size - (optional) is a type of number
   system_disk_size = null
   # tags - (optional) is a type of map of string
@@ -79,6 +81,7 @@ module "alicloud_cs_kubernetes_node_pool" {
     encrypted               = null
     kms_key_id              = null
     name                    = null
+    performance_level       = null
     size                    = null
     snapshot_id             = null
   }]
@@ -223,6 +226,12 @@ variable "system_disk_category" {
   default     = null
 }
 
+variable "system_disk_performance_level" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "system_disk_size" {
   description = "(optional)"
   type        = number
@@ -262,6 +271,7 @@ variable "data_disks" {
       encrypted               = string
       kms_key_id              = string
       name                    = string
+      performance_level       = string
       size                    = number
       snapshot_id             = string
     }
@@ -340,28 +350,29 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cs_kubernetes_node_pool" "this" {
-  auto_renew             = var.auto_renew
-  auto_renew_period      = var.auto_renew_period
-  cluster_id             = var.cluster_id
-  image_id               = var.image_id
-  install_cloud_monitor  = var.install_cloud_monitor
-  instance_charge_type   = var.instance_charge_type
-  instance_types         = var.instance_types
-  key_name               = var.key_name
-  kms_encrypted_password = var.kms_encrypted_password
-  name                   = var.name
-  node_count             = var.node_count
-  node_name_mode         = var.node_name_mode
-  password               = var.password
-  period                 = var.period
-  period_unit            = var.period_unit
-  security_group_id      = var.security_group_id
-  system_disk_category   = var.system_disk_category
-  system_disk_size       = var.system_disk_size
-  tags                   = var.tags
-  unschedulable          = var.unschedulable
-  user_data              = var.user_data
-  vswitch_ids            = var.vswitch_ids
+  auto_renew                    = var.auto_renew
+  auto_renew_period             = var.auto_renew_period
+  cluster_id                    = var.cluster_id
+  image_id                      = var.image_id
+  install_cloud_monitor         = var.install_cloud_monitor
+  instance_charge_type          = var.instance_charge_type
+  instance_types                = var.instance_types
+  key_name                      = var.key_name
+  kms_encrypted_password        = var.kms_encrypted_password
+  name                          = var.name
+  node_count                    = var.node_count
+  node_name_mode                = var.node_name_mode
+  password                      = var.password
+  period                        = var.period
+  period_unit                   = var.period_unit
+  security_group_id             = var.security_group_id
+  system_disk_category          = var.system_disk_category
+  system_disk_performance_level = var.system_disk_performance_level
+  system_disk_size              = var.system_disk_size
+  tags                          = var.tags
+  unschedulable                 = var.unschedulable
+  user_data                     = var.user_data
+  vswitch_ids                   = var.vswitch_ids
 
   dynamic "data_disks" {
     for_each = var.data_disks
@@ -372,6 +383,7 @@ resource "alicloud_cs_kubernetes_node_pool" "this" {
       encrypted               = data_disks.value["encrypted"]
       kms_key_id              = data_disks.value["kms_key_id"]
       name                    = data_disks.value["name"]
+      performance_level       = data_disks.value["performance_level"]
       size                    = data_disks.value["size"]
       snapshot_id             = data_disks.value["snapshot_id"]
     }

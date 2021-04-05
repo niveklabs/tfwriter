@@ -1,6 +1,9 @@
-# akamai
-
-[back](../)
+---
+layout: resource
+title: akamai
+type: provider
+resource: akamai
+---
 
 ### Index
 

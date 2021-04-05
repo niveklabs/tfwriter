@@ -1,6 +1,9 @@
-# constellix
-
-[back](../)
+---
+layout: resource
+title: constellix
+type: provider
+resource: constellix
+---
 
 ### Index
 

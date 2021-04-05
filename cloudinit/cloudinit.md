@@ -1,6 +1,9 @@
-# cloudinit
-
-[back](../)
+---
+layout: resource
+title: cloudinit
+type: provider
+resource: cloudinit
+---
 
 ### Index
 

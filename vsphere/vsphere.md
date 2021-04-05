@@ -1,6 +1,9 @@
-# vsphere
-
-[back](../)
+---
+layout: resource
+title: vsphere
+type: provider
+resource: vsphere
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# kubernetes
-
-[back](../)
+---
+layout: resource
+title: kubernetes
+type: provider
+resource: kubernetes
+---
 
 ### Index
 

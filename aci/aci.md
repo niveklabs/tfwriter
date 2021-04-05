@@ -1,6 +1,9 @@
-# aci
-
-[back](../)
+---
+layout: resource
+title: aci
+type: provider
+resource: aci
+---
 
 ### Index
 

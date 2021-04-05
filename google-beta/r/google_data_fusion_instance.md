@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.62.0"
+    google-beta = ">= 3.63.0"
   }
 }
 ```
@@ -27,6 +27,8 @@ terraform {
 module "google_data_fusion_instance" {
   source = "./modules/google-beta/r/google_data_fusion_instance"
 
+  # dataproc_service_account - (optional) is a type of string
+  dataproc_service_account = null
   # description - (optional) is a type of string
   description = null
   # enable_stackdriver_logging - (optional) is a type of bool
@@ -68,6 +70,12 @@ module "google_data_fusion_instance" {
 ### Variables
 
 ```terraform
+variable "dataproc_service_account" {
+  description = "(optional) - User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines."
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional) - An optional description of the instance."
   type        = string
@@ -162,6 +170,7 @@ variable "timeouts" {
 
 ```terraform
 resource "google_data_fusion_instance" "this" {
+  dataproc_service_account      = var.dataproc_service_account
   description                   = var.description
   enable_stackdriver_logging    = var.enable_stackdriver_logging
   enable_stackdriver_monitoring = var.enable_stackdriver_monitoring

@@ -1,6 +1,9 @@
-# digitalocean
-
-[back](../)
+---
+layout: resource
+title: digitalocean
+type: provider
+resource: digitalocean
+---
 
 ### Index
 

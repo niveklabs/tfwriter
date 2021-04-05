@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -27,14 +27,26 @@ terraform {
 module "alicloud_snapshot" {
   source = "./modules/alicloud/r/alicloud_snapshot"
 
+  # category - (optional) is a type of string
+  category = null
   # description - (optional) is a type of string
   description = null
   # disk_id - (required) is a type of string
   disk_id = null
+  # force - (optional) is a type of bool
+  force = null
+  # instant_access - (optional) is a type of bool
+  instant_access = null
+  # instant_access_retention_days - (optional) is a type of number
+  instant_access_retention_days = null
   # name - (optional) is a type of string
   name = null
   # resource_group_id - (optional) is a type of string
   resource_group_id = null
+  # retention_days - (optional) is a type of number
+  retention_days = null
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = null
   # tags - (optional) is a type of map of string
   tags = {}
 
@@ -50,6 +62,12 @@ module "alicloud_snapshot" {
 ### Variables
 
 ```terraform
+variable "category" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "(optional)"
   type        = string
@@ -61,6 +79,24 @@ variable "disk_id" {
   type        = string
 }
 
+variable "force" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "instant_access" {
+  description = "(optional)"
+  type        = bool
+  default     = null
+}
+
+variable "instant_access_retention_days" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "name" {
   description = "(optional)"
   type        = string
@@ -68,6 +104,18 @@ variable "name" {
 }
 
 variable "resource_group_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "retention_days" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "snapshot_name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -97,11 +145,17 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_snapshot" "this" {
-  description       = var.description
-  disk_id           = var.disk_id
-  name              = var.name
-  resource_group_id = var.resource_group_id
-  tags              = var.tags
+  category                      = var.category
+  description                   = var.description
+  disk_id                       = var.disk_id
+  force                         = var.force
+  instant_access                = var.instant_access
+  instant_access_retention_days = var.instant_access_retention_days
+  name                          = var.name
+  resource_group_id             = var.resource_group_id
+  retention_days                = var.retention_days
+  snapshot_name                 = var.snapshot_name
+  tags                          = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -122,6 +176,21 @@ resource "alicloud_snapshot" "this" {
 output "id" {
   description = "returns a string"
   value       = alicloud_snapshot.this.id
+}
+
+output "name" {
+  description = "returns a string"
+  value       = alicloud_snapshot.this.name
+}
+
+output "snapshot_name" {
+  description = "returns a string"
+  value       = alicloud_snapshot.this.snapshot_name
+}
+
+output "status" {
+  description = "returns a string"
+  value       = alicloud_snapshot.this.status
 }
 
 output "this" {

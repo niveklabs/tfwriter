@@ -1,6 +1,9 @@
-# azurerm
-
-[back](../)
+---
+layout: resource
+title: azurerm
+type: provider
+resource: azurerm
+---
 
 ### Index
 

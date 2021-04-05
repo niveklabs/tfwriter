@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"ecl","full-name":"nttcom/ecl","version":"1.13.0","downloads":554,"namespace":"nttcom","source":"https://github.com/nttcom/terraform-provider-ecl","tier":"partner"}}
+{"type":"providers","attributes":{"name":"ecl","full-name":"nttcom/ecl","version":"2.0.0","downloads":567,"namespace":"nttcom","source":"https://github.com/nttcom/terraform-provider-ecl","tier":"partner"}}

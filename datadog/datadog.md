@@ -1,6 +1,9 @@
-# datadog
-
-[back](../)
+---
+layout: resource
+title: datadog
+type: provider
+resource: datadog
+---
 
 ### Index
 

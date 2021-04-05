@@ -1,6 +1,9 @@
-# gitlab
-
-[back](../)
+---
+layout: resource
+title: gitlab
+type: provider
+resource: gitlab
+---
 
 ### Index
 

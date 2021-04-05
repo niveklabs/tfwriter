@@ -1,6 +1,9 @@
-# kubernetes-alpha
-
-[back](../)
+---
+layout: resource
+title: kubernetes-alpha
+type: provider
+resource: kubernetes-alpha
+---
 
 ### Index
 

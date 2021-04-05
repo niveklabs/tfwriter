@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -29,10 +29,16 @@ module "alicloud_havip" {
 
   # description - (optional) is a type of string
   description = null
+  # havip_name - (optional) is a type of string
+  havip_name = null
   # ip_address - (optional) is a type of string
   ip_address = null
   # vswitch_id - (required) is a type of string
   vswitch_id = null
+
+  timeouts = [{
+    create = null
+  }]
 }
 ```
 
@@ -42,6 +48,12 @@ module "alicloud_havip" {
 
 ```terraform
 variable "description" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "havip_name" {
   description = "(optional)"
   type        = string
   default     = null
@@ -57,6 +69,16 @@ variable "vswitch_id" {
   description = "(required)"
   type        = string
 }
+
+variable "timeouts" {
+  description = "nested block: NestingSingle, min items: 0, max items: 0"
+  type = set(object(
+    {
+      create = string
+    }
+  ))
+  default = []
+}
 ```
 
 [top](#index)
@@ -66,8 +88,17 @@ variable "vswitch_id" {
 ```terraform
 resource "alicloud_havip" "this" {
   description = var.description
+  havip_name  = var.havip_name
   ip_address  = var.ip_address
   vswitch_id  = var.vswitch_id
+
+  dynamic "timeouts" {
+    for_each = var.timeouts
+    content {
+      create = timeouts.value["create"]
+    }
+  }
+
 }
 ```
 
@@ -84,6 +115,11 @@ output "id" {
 output "ip_address" {
   description = "returns a string"
   value       = alicloud_havip.this.ip_address
+}
+
+output "status" {
+  description = "returns a string"
+  value       = alicloud_havip.this.status
 }
 
 output "this" {

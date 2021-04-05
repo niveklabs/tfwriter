@@ -1,6 +1,9 @@
-# equinix
-
-[back](../)
+---
+layout: resource
+title: equinix
+type: provider
+resource: equinix
+---
 
 ### Index
 

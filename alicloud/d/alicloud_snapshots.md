@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -27,18 +27,28 @@ terraform {
 module "alicloud_snapshots" {
   source = "./modules/alicloud/d/alicloud_snapshots"
 
-  # disk_id - (optional) is a type of string
-  disk_id = null
+  # category - (optional) is a type of string
+  category = null
+  # dry_run - (optional) is a type of bool
+  dry_run = null
   # encrypted - (optional) is a type of bool
   encrypted = null
-  # ids - (optional) is a type of set of string
+  # ids - (optional) is a type of list of string
   ids = []
-  # instance_id - (optional) is a type of string
-  instance_id = null
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = null
   # name_regex - (optional) is a type of string
   name_regex = null
   # output_file - (optional) is a type of string
   output_file = null
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = null
+  # snapshot_link_id - (optional) is a type of string
+  snapshot_link_id = null
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = null
+  # snapshot_type - (optional) is a type of string
+  snapshot_type = null
   # source_disk_type - (optional) is a type of string
   source_disk_type = null
   # status - (optional) is a type of string
@@ -57,9 +67,15 @@ module "alicloud_snapshots" {
 ### Variables
 
 ```terraform
-variable "disk_id" {
+variable "category" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "dry_run" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -71,11 +87,11 @@ variable "encrypted" {
 
 variable "ids" {
   description = "(optional)"
-  type        = set(string)
+  type        = list(string)
   default     = null
 }
 
-variable "instance_id" {
+variable "kms_key_id" {
   description = "(optional)"
   type        = string
   default     = null
@@ -88,6 +104,30 @@ variable "name_regex" {
 }
 
 variable "output_file" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "resource_group_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "snapshot_link_id" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "snapshot_name" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
+variable "snapshot_type" {
   description = "(optional)"
   type        = string
   default     = null
@@ -130,17 +170,22 @@ variable "usage" {
 
 ```terraform
 data "alicloud_snapshots" "this" {
-  disk_id          = var.disk_id
-  encrypted        = var.encrypted
-  ids              = var.ids
-  instance_id      = var.instance_id
-  name_regex       = var.name_regex
-  output_file      = var.output_file
-  source_disk_type = var.source_disk_type
-  status           = var.status
-  tags             = var.tags
-  type             = var.type
-  usage            = var.usage
+  category          = var.category
+  dry_run           = var.dry_run
+  encrypted         = var.encrypted
+  ids               = var.ids
+  kms_key_id        = var.kms_key_id
+  name_regex        = var.name_regex
+  output_file       = var.output_file
+  resource_group_id = var.resource_group_id
+  snapshot_link_id  = var.snapshot_link_id
+  snapshot_name     = var.snapshot_name
+  snapshot_type     = var.snapshot_type
+  source_disk_type  = var.source_disk_type
+  status            = var.status
+  tags              = var.tags
+  type              = var.type
+  usage             = var.usage
 }
 ```
 
@@ -155,7 +200,7 @@ output "id" {
 }
 
 output "ids" {
-  description = "returns a set of string"
+  description = "returns a list of string"
   value       = data.alicloud_snapshots.this.ids
 }
 

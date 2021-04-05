@@ -1,6 +1,9 @@
-# exoscale
-
-[back](../)
+---
+layout: resource
+title: exoscale
+type: provider
+resource: exoscale
+---
 
 ### Index
 

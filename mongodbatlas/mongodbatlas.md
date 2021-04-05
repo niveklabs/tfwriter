@@ -1,6 +1,9 @@
-# mongodbatlas
-
-[back](../)
+---
+layout: resource
+title: mongodbatlas
+type: provider
+resource: mongodbatlas
+---
 
 ### Index
 

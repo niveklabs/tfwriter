@@ -11,21 +11,21 @@ tags: [ plugin, terraform, provider ]
 {% for group in groups %}
 <h3>{{ group }}</h3>
 <ul>
-{% assign plugins = site.data.plugins | sort %}
-{% for plugin in plugins %}
-{% assign resource = plugin[1] %}
-{% assign resource_group = resource.attributes.name | slice: 0 | upcase %}
-{% if resource_group == group %}
+  {% assign plugins = site.data.plugins | sort %}
+  {% for plugin in plugins %}
+  {% assign resource = plugin[1] %}
+  {% assign resource_group = resource.attributes.name | slice: 0 | upcase %}
+  {% if resource_group == group %}
   <li>
     <a href="/{{ resource.attributes.name }}/{{ resource.attributes.name }}.html">
-      {{ resource.attributes.name -}} 
+      {{ resource.attributes.name -}}
     </a> (v{{ resource.attributes.version }})
   </li>
-{% endif %}
-{% endfor %}
+  {% endif %}
+  {% endfor %}
 </ul>
 {% endfor %}
 
 {% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+<small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
 {% endif %}

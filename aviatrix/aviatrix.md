@@ -1,6 +1,9 @@
-# aviatrix
-
-[back](../)
+---
+layout: resource
+title: aviatrix
+type: provider
+resource: aviatrix
+---
 
 ### Index
 

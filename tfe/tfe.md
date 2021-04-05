@@ -1,6 +1,9 @@
-# tfe
-
-[back](../)
+---
+layout: resource
+title: tfe
+type: provider
+resource: tfe
+---
 
 ### Index
 

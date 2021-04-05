@@ -1,6 +1,9 @@
-# random
-
-[back](../)
+---
+layout: resource
+title: random
+type: provider
+resource: random
+---
 
 ### Index
 

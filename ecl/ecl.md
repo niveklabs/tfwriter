@@ -1,6 +1,9 @@
-# ecl
-
-[back](../)
+---
+layout: resource
+title: ecl
+type: provider
+resource: ecl
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "ecl" {
-  version = "1.13.0"
+  version = "2.0.0"
 
   # auth_url - (optional) is a type of string
   auth_url = null
@@ -116,13 +119,13 @@ provider "ecl" {
 
 - [ecl_rca_user_v1](./r/ecl_rca_user_v1.md)
 
-- [ecl_security_host_based_v1](./r/ecl_security_host_based_v1.md)
+- [ecl_security_host_based_v2](./r/ecl_security_host_based_v2.md)
 
-- [ecl_security_network_based_device_ha_v1](./r/ecl_security_network_based_device_ha_v1.md)
+- [ecl_security_network_based_device_ha_v2](./r/ecl_security_network_based_device_ha_v2.md)
 
-- [ecl_security_network_based_device_single_v1](./r/ecl_security_network_based_device_single_v1.md)
+- [ecl_security_network_based_device_single_v2](./r/ecl_security_network_based_device_single_v2.md)
 
-- [ecl_security_network_based_waf_single_v1](./r/ecl_security_network_based_waf_single_v1.md)
+- [ecl_security_network_based_waf_single_v2](./r/ecl_security_network_based_waf_single_v2.md)
 
 - [ecl_sss_approval_request_v1](./r/ecl_sss_approval_request_v1.md)
 

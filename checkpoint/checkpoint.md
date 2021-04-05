@@ -1,6 +1,9 @@
-# checkpoint
-
-[back](../)
+---
+layout: resource
+title: checkpoint
+type: provider
+resource: checkpoint
+---
 
 ### Index
 

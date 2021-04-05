@@ -1,6 +1,9 @@
-# heroku
-
-[back](../)
+---
+layout: resource
+title: heroku
+type: provider
+resource: heroku
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "heroku" {
-  version = "4.1.0"
+  version = "4.1.1-beta"
 
   # api_key - (optional) is a type of string
   api_key = null

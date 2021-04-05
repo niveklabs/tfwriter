@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"grafana","full-name":"grafana/grafana","version":"1.9.0","downloads":672211,"namespace":"grafana","source":"https://github.com/grafana/terraform-provider-grafana","tier":"partner"}}
+{"type":"providers","attributes":{"name":"grafana","full-name":"grafana/grafana","version":"1.9.0","downloads":677090,"namespace":"grafana","source":"https://github.com/grafana/terraform-provider-grafana","tier":"partner"}}

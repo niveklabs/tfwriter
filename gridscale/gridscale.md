@@ -1,6 +1,9 @@
-# gridscale
-
-[back](../)
+---
+layout: resource
+title: gridscale
+type: provider
+resource: gridscale
+---
 
 ### Index
 

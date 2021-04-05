@@ -1,6 +1,9 @@
-# ad
-
-[back](../)
+---
+layout: resource
+title: ad
+type: provider
+resource: ad
+---
 
 ### Index
 

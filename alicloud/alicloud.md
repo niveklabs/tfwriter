@@ -1,6 +1,9 @@
-# alicloud
-
-[back](../)
+---
+layout: resource
+title: alicloud
+type: provider
+resource: alicloud
+---
 
 ### Index
 
@@ -12,7 +15,7 @@
 
 ```terraform
 provider "alicloud" {
-  version = "1.119.1"
+  version = "1.120.0"
 
   # access_key - (optional) is a type of string
   access_key = null
@@ -412,6 +415,10 @@ provider "alicloud" {
 
 - [alicloud_ecs_hpc_cluster](./r/alicloud_ecs_hpc_cluster.md)
 
+- [alicloud_ecs_launch_template](./r/alicloud_ecs_launch_template.md)
+
+- [alicloud_ecs_snapshot](./r/alicloud_ecs_snapshot.md)
+
 - [alicloud_edas_application](./r/alicloud_edas_application.md)
 
 - [alicloud_edas_application_deployment](./r/alicloud_edas_application_deployment.md)
@@ -488,6 +495,8 @@ provider "alicloud" {
 
 - [alicloud_ga_endpoint_group](./r/alicloud_ga_endpoint_group.md)
 
+- [alicloud_ga_forwarding_rule](./r/alicloud_ga_forwarding_rule.md)
+
 - [alicloud_ga_ip_set](./r/alicloud_ga_ip_set.md)
 
 - [alicloud_ga_listener](./r/alicloud_ga_listener.md)
@@ -543,6 +552,8 @@ provider "alicloud" {
 - [alicloud_log_audit](./r/alicloud_log_audit.md)
 
 - [alicloud_log_dashboard](./r/alicloud_log_dashboard.md)
+
+- [alicloud_log_etl](./r/alicloud_log_etl.md)
 
 - [alicloud_log_machine_group](./r/alicloud_log_machine_group.md)
 
@@ -680,11 +691,17 @@ provider "alicloud" {
 
 - [alicloud_ram_user_policy_attachment](./r/alicloud_ram_user_policy_attachment.md)
 
+- [alicloud_rds_account](./r/alicloud_rds_account.md)
+
 - [alicloud_rds_parameter_group](./r/alicloud_rds_parameter_group.md)
 
 - [alicloud_reserved_instance](./r/alicloud_reserved_instance.md)
 
 - [alicloud_resource_manager_account](./r/alicloud_resource_manager_account.md)
+
+- [alicloud_resource_manager_control_policy](./r/alicloud_resource_manager_control_policy.md)
+
+- [alicloud_resource_manager_control_policy_attachment](./r/alicloud_resource_manager_control_policy_attachment.md)
 
 - [alicloud_resource_manager_folder](./r/alicloud_resource_manager_folder.md)
 
@@ -996,6 +1013,10 @@ provider "alicloud" {
 
 - [alicloud_ecs_hpc_clusters](./d/alicloud_ecs_hpc_clusters.md)
 
+- [alicloud_ecs_launch_templates](./d/alicloud_ecs_launch_templates.md)
+
+- [alicloud_ecs_snapshots](./d/alicloud_ecs_snapshots.md)
+
 - [alicloud_edas_applications](./d/alicloud_edas_applications.md)
 
 - [alicloud_edas_clusters](./d/alicloud_edas_clusters.md)
@@ -1062,6 +1083,8 @@ provider "alicloud" {
 
 - [alicloud_ga_endpoint_groups](./d/alicloud_ga_endpoint_groups.md)
 
+- [alicloud_ga_forwarding_rules](./d/alicloud_ga_forwarding_rules.md)
+
 - [alicloud_ga_ip_sets](./d/alicloud_ga_ip_sets.md)
 
 - [alicloud_ga_listeners](./d/alicloud_ga_listeners.md)
@@ -1069,6 +1092,8 @@ provider "alicloud" {
 - [alicloud_gpdb_instances](./d/alicloud_gpdb_instances.md)
 
 - [alicloud_gpdb_zones](./d/alicloud_gpdb_zones.md)
+
+- [alicloud_havips](./d/alicloud_havips.md)
 
 - [alicloud_hbase_instance_types](./d/alicloud_hbase_instance_types.md)
 
@@ -1236,11 +1261,17 @@ provider "alicloud" {
 
 - [alicloud_ram_users](./d/alicloud_ram_users.md)
 
+- [alicloud_rds_accounts](./d/alicloud_rds_accounts.md)
+
 - [alicloud_rds_parameter_groups](./d/alicloud_rds_parameter_groups.md)
 
 - [alicloud_regions](./d/alicloud_regions.md)
 
 - [alicloud_resource_manager_accounts](./d/alicloud_resource_manager_accounts.md)
+
+- [alicloud_resource_manager_control_policies](./d/alicloud_resource_manager_control_policies.md)
+
+- [alicloud_resource_manager_control_policy_attachments](./d/alicloud_resource_manager_control_policy_attachments.md)
 
 - [alicloud_resource_manager_folders](./d/alicloud_resource_manager_folders.md)
 
@@ -1277,6 +1308,8 @@ provider "alicloud" {
 - [alicloud_route_tables](./d/alicloud_route_tables.md)
 
 - [alicloud_router_interfaces](./d/alicloud_router_interfaces.md)
+
+- [alicloud_sae_service](./d/alicloud_sae_service.md)
 
 - [alicloud_sag_acls](./d/alicloud_sag_acls.md)
 

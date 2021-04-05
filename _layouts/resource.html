@@ -3,10 +3,14 @@ layout: default
 ---
 
 <h1>{{ page.resource }}</h1>
-<h2>{{ page.type }}</h2>
 
 {% assign resource = site.data.plugins[page.resource] %}
-
+{% if resource.attributes.description != "" %}
 <p>{{ resource.attributes.description }}</p>
+{% endif %}
 
 {{content}}
+
+{% if page.tags %}
+<small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% endif %}

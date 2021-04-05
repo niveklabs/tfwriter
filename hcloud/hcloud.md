@@ -1,6 +1,9 @@
-# hcloud
-
-[back](../)
+---
+layout: resource
+title: hcloud
+type: provider
+resource: hcloud
+---
 
 ### Index
 

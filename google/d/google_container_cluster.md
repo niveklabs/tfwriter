@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.62.0"
+    google = ">= 3.63.0"
   }
 }
 ```
@@ -119,6 +119,11 @@ output "default_snat_status" {
 output "description" {
   description = "returns a string"
   value       = data.google_container_cluster.this.description
+}
+
+output "enable_autopilot" {
+  description = "returns a bool"
+  value       = data.google_container_cluster.this.enable_autopilot
 }
 
 output "enable_binary_authorization" {
@@ -226,6 +231,11 @@ output "network_policy" {
   value       = data.google_container_cluster.this.network_policy
 }
 
+output "networking_mode" {
+  description = "returns a string"
+  value       = data.google_container_cluster.this.networking_mode
+}
+
 output "node_config" {
   description = "returns a list of object"
   value       = data.google_container_cluster.this.node_config
@@ -259,6 +269,11 @@ output "pod_security_policy_config" {
 output "private_cluster_config" {
   description = "returns a list of object"
   value       = data.google_container_cluster.this.private_cluster_config
+}
+
+output "private_ipv6_google_access" {
+  description = "returns a string"
+  value       = data.google_container_cluster.this.private_ipv6_google_access
 }
 
 output "release_channel" {

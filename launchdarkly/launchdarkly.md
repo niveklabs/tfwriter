@@ -1,6 +1,9 @@
-# launchdarkly
-
-[back](../)
+---
+layout: resource
+title: launchdarkly
+type: provider
+resource: launchdarkly
+---
 
 ### Index
 

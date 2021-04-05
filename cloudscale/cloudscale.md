@@ -1,6 +1,9 @@
-# cloudscale
-
-[back](../)
+---
+layout: resource
+title: cloudscale
+type: provider
+resource: cloudscale
+---
 
 ### Index
 

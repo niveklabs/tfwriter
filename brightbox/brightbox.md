@@ -1,6 +1,9 @@
-# brightbox
-
-[back](../)
+---
+layout: resource
+title: brightbox
+type: provider
+resource: brightbox
+---
 
 ### Index
 

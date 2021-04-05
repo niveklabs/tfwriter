@@ -1,6 +1,9 @@
-# github
-
-[back](../)
+---
+layout: resource
+title: github
+type: provider
+resource: github
+---
 
 ### Index
 

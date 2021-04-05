@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google = ">= 3.62.0"
+    google = ">= 3.63.0"
   }
 }
 ```
@@ -39,7 +39,7 @@ module "google_compute_interconnect_attachment" {
   edge_availability_domain = null
   # interconnect - (optional) is a type of string
   interconnect = null
-  # mtu - (optional) is a type of number
+  # mtu - (optional) is a type of string
   mtu = null
   # name - (required) is a type of string
   name = null
@@ -105,7 +105,7 @@ variable "interconnect" {
 
 variable "mtu" {
   description = "(optional) - Maximum Transmission Unit (MTU), in bytes, of packets passing through\nthis interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440."
-  type        = number
+  type        = string
   default     = null
 }
 
@@ -229,7 +229,7 @@ output "id" {
 }
 
 output "mtu" {
-  description = "returns a number"
+  description = "returns a string"
   value       = google_compute_interconnect_attachment.this.mtu
 }
 

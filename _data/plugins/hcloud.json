@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"hcloud","full-name":"hetznercloud/hcloud","version":"1.26.0","downloads":85017,"namespace":"hetznercloud","source":"https://github.com/hetznercloud/terraform-provider-hcloud","tier":"partner"}}
+{"type":"providers","attributes":{"name":"hcloud","full-name":"hetznercloud/hcloud","version":"1.26.0","downloads":86054,"namespace":"hetznercloud","source":"https://github.com/hetznercloud/terraform-provider-hcloud","tier":"partner"}}

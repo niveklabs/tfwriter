@@ -1,6 +1,9 @@
-# helm
-
-[back](../)
+---
+layout: resource
+title: helm
+type: provider
+resource: helm
+---
 
 ### Index
 

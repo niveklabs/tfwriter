@@ -5,8 +5,6 @@ type: provider
 resource: time
 ---
 
-[back](../)
-
 ### Index
 
 - [Example Usage](#example-usage)

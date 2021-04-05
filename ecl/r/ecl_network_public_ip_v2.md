@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    ecl = ">= 1.13.0"
+    ecl = ">= 2.0.0"
   }
 }
 ```

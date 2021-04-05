@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.62.0"
+    google-beta = ">= 3.63.0"
   }
 }
 ```

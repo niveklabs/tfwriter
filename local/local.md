@@ -1,6 +1,9 @@
-# local
-
-[back](../)
+---
+layout: resource
+title: local
+type: provider
+resource: local
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# dome9
-
-[back](../)
+---
+layout: resource
+title: dome9
+type: provider
+resource: dome9
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# fortios
-
-[back](../)
+---
+layout: resource
+title: fortios
+type: provider
+resource: fortios
+---
 
 ### Index
 

@@ -1,6 +1,9 @@
-# oraclepaas
-
-[back](../)
+---
+layout: resource
+title: oraclepaas
+type: provider
+resource: oraclepaas
+---
 
 ### Index
 

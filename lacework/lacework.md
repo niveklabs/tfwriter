@@ -1,6 +1,9 @@
-# lacework
-
-[back](../)
+---
+layout: resource
+title: lacework
+type: provider
+resource: lacework
+---
 
 ### Index
 

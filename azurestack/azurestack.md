@@ -1,6 +1,9 @@
-# azurestack
-
-[back](../)
+---
+layout: resource
+title: azurestack
+type: provider
+resource: azurestack
+---
 
 ### Index
 

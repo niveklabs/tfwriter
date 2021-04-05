@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"linode","full-name":"linode/linode","version":"1.16.0","downloads":65925,"namespace":"linode","source":"https://github.com/linode/terraform-provider-linode","tier":"partner"}}
+{"type":"providers","attributes":{"name":"linode","full-name":"linode/linode","version":"1.16.0","downloads":66305,"namespace":"linode","source":"https://github.com/linode/terraform-provider-linode","tier":"partner"}}

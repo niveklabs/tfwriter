@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -71,14 +71,20 @@ module "alicloud_cs_edge_kubernetes" {
   service_cidr = null
   # slb_internet_enabled - (optional) is a type of bool
   slb_internet_enabled = null
+  # tags - (optional) is a type of map of string
+  tags = {}
   # user_data - (optional) is a type of string
   user_data = null
   # version - (optional) is a type of string
   version = null
   # worker_disk_category - (optional) is a type of string
   worker_disk_category = null
+  # worker_disk_performance_level - (optional) is a type of string
+  worker_disk_performance_level = null
   # worker_disk_size - (optional) is a type of number
   worker_disk_size = null
+  # worker_disk_snapshot_policy_id - (optional) is a type of string
+  worker_disk_snapshot_policy_id = null
   # worker_instance_charge_type - (optional) is a type of string
   worker_instance_charge_type = null
   # worker_instance_types - (required) is a type of list of string
@@ -112,6 +118,7 @@ module "alicloud_cs_edge_kubernetes" {
     encrypted               = null
     kms_key_id              = null
     name                    = null
+    performance_level       = null
     size                    = null
     snapshot_id             = null
   }]
@@ -255,6 +262,12 @@ variable "slb_internet_enabled" {
   default     = null
 }
 
+variable "tags" {
+  description = "(optional)"
+  type        = map(string)
+  default     = null
+}
+
 variable "user_data" {
   description = "(optional)"
   type        = string
@@ -273,9 +286,21 @@ variable "worker_disk_category" {
   default     = null
 }
 
+variable "worker_disk_performance_level" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "worker_disk_size" {
   description = "(optional)"
   type        = number
+  default     = null
+}
+
+variable "worker_disk_snapshot_policy_id" {
+  description = "(optional)"
+  type        = string
   default     = null
 }
 
@@ -345,6 +370,7 @@ variable "worker_data_disks" {
       encrypted               = string
       kms_key_id              = string
       name                    = string
+      performance_level       = string
       size                    = string
       snapshot_id             = string
     }
@@ -359,36 +385,39 @@ variable "worker_data_disks" {
 
 ```terraform
 resource "alicloud_cs_edge_kubernetes" "this" {
-  availability_zone            = var.availability_zone
-  client_cert                  = var.client_cert
-  client_key                   = var.client_key
-  cluster_ca_cert              = var.cluster_ca_cert
-  deletion_protection          = var.deletion_protection
-  force_update                 = var.force_update
-  install_cloud_monitor        = var.install_cloud_monitor
-  is_enterprise_security_group = var.is_enterprise_security_group
-  key_name                     = var.key_name
-  kube_config                  = var.kube_config
-  name                         = var.name
-  name_prefix                  = var.name_prefix
-  new_nat_gateway              = var.new_nat_gateway
-  node_cidr_mask               = var.node_cidr_mask
-  password                     = var.password
-  pod_cidr                     = var.pod_cidr
-  proxy_mode                   = var.proxy_mode
-  rds_instances                = var.rds_instances
-  resource_group_id            = var.resource_group_id
-  security_group_id            = var.security_group_id
-  service_cidr                 = var.service_cidr
-  slb_internet_enabled         = var.slb_internet_enabled
-  user_data                    = var.user_data
-  version                      = var.version
-  worker_disk_category         = var.worker_disk_category
-  worker_disk_size             = var.worker_disk_size
-  worker_instance_charge_type  = var.worker_instance_charge_type
-  worker_instance_types        = var.worker_instance_types
-  worker_number                = var.worker_number
-  worker_vswitch_ids           = var.worker_vswitch_ids
+  availability_zone              = var.availability_zone
+  client_cert                    = var.client_cert
+  client_key                     = var.client_key
+  cluster_ca_cert                = var.cluster_ca_cert
+  deletion_protection            = var.deletion_protection
+  force_update                   = var.force_update
+  install_cloud_monitor          = var.install_cloud_monitor
+  is_enterprise_security_group   = var.is_enterprise_security_group
+  key_name                       = var.key_name
+  kube_config                    = var.kube_config
+  name                           = var.name
+  name_prefix                    = var.name_prefix
+  new_nat_gateway                = var.new_nat_gateway
+  node_cidr_mask                 = var.node_cidr_mask
+  password                       = var.password
+  pod_cidr                       = var.pod_cidr
+  proxy_mode                     = var.proxy_mode
+  rds_instances                  = var.rds_instances
+  resource_group_id              = var.resource_group_id
+  security_group_id              = var.security_group_id
+  service_cidr                   = var.service_cidr
+  slb_internet_enabled           = var.slb_internet_enabled
+  tags                           = var.tags
+  user_data                      = var.user_data
+  version                        = var.version
+  worker_disk_category           = var.worker_disk_category
+  worker_disk_performance_level  = var.worker_disk_performance_level
+  worker_disk_size               = var.worker_disk_size
+  worker_disk_snapshot_policy_id = var.worker_disk_snapshot_policy_id
+  worker_instance_charge_type    = var.worker_instance_charge_type
+  worker_instance_types          = var.worker_instance_types
+  worker_number                  = var.worker_number
+  worker_vswitch_ids             = var.worker_vswitch_ids
 
   dynamic "addons" {
     for_each = var.addons
@@ -425,6 +454,7 @@ resource "alicloud_cs_edge_kubernetes" "this" {
       encrypted               = worker_data_disks.value["encrypted"]
       kms_key_id              = worker_data_disks.value["kms_key_id"]
       name                    = worker_data_disks.value["name"]
+      performance_level       = worker_data_disks.value["performance_level"]
       size                    = worker_data_disks.value["size"]
       snapshot_id             = worker_data_disks.value["snapshot_id"]
     }

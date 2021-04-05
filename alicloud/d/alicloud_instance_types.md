@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    alicloud = ">= 1.119.1"
+    alicloud = ">= 1.120.0"
   }
 }
 ```
@@ -55,6 +55,8 @@ module "alicloud_instance_types" {
   sorted_by = null
   # spot_strategy - (optional) is a type of string
   spot_strategy = null
+  # system_disk_category - (optional) is a type of string
+  system_disk_category = null
 }
 ```
 
@@ -146,6 +148,12 @@ variable "spot_strategy" {
   type        = string
   default     = null
 }
+
+variable "system_disk_category" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -168,6 +176,7 @@ data "alicloud_instance_types" "this" {
   output_file          = var.output_file
   sorted_by            = var.sorted_by
   spot_strategy        = var.spot_strategy
+  system_disk_category = var.system_disk_category
 }
 ```
 

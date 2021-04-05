@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    google-beta = ">= 3.62.0"
+    google-beta = ">= 3.63.0"
   }
 }
 ```
@@ -31,7 +31,7 @@ module "google_secret_manager_secret_version" {
   enabled = null
   # secret - (required) is a type of string
   secret = null
-  # secret_data - (optional) is a type of string
+  # secret_data - (required) is a type of string
   secret_data = null
 
   timeouts = [{
@@ -58,9 +58,8 @@ variable "secret" {
 }
 
 variable "secret_data" {
-  description = "(optional) - The secret data. Must be no larger than 64KiB."
+  description = "(required) - The secret data. Must be no larger than 64KiB."
   type        = string
-  default     = null
 }
 
 variable "timeouts" {

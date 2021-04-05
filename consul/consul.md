@@ -1,6 +1,9 @@
-# consul
-
-[back](../)
+---
+layout: resource
+title: consul
+type: provider
+resource: consul
+---
 
 ### Index
 
