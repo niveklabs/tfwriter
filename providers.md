@@ -7,9 +7,9 @@ tags: [ plugin, terraform, provider ]
 
 <p>Select a provider</p>
 
-{% for group in array = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" %}
+{% for group in "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" %}
 <h3>{{ group }}</h3>
-<ul>
+<!-- <ul>
 {% assign plugins = site.data.plugins | sort %}
 {% for plugin in plugins %}
 {% assign resource = plugin[1] %}
@@ -21,7 +21,7 @@ tags: [ plugin, terraform, provider ]
   </li>
 {% endif %}
 {% endfor %}
-</ul>
+</ul> -->
 {% endfor %}
 
 {% if page.tags %}
