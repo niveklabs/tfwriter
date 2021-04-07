@@ -73,9 +73,13 @@ variable "pull_triggers" {
 
 ```terraform
 resource "docker_image" "this" {
-  keep_locally  = var.keep_locally
-  name          = var.name
-  pull_trigger  = var.pull_trigger
+  # keep_locally - (optional) is a type of bool
+  keep_locally = var.keep_locally
+  # name - (required) is a type of string
+  name = var.name
+  # pull_trigger - (optional) is a type of string
+  pull_trigger = var.pull_trigger
+  # pull_triggers - (optional) is a type of set of string
   pull_triggers = var.pull_triggers
 }
 ```

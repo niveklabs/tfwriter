@@ -149,30 +149,45 @@ variable "labels" {
 
 ```terraform
 resource "docker_network" "this" {
-  attachable      = var.attachable
+  # attachable - (optional) is a type of bool
+  attachable = var.attachable
+  # check_duplicate - (optional) is a type of bool
   check_duplicate = var.check_duplicate
-  driver          = var.driver
-  ingress         = var.ingress
-  internal        = var.internal
-  ipam_driver     = var.ipam_driver
-  ipv6            = var.ipv6
-  name            = var.name
-  options         = var.options
+  # driver - (optional) is a type of string
+  driver = var.driver
+  # ingress - (optional) is a type of bool
+  ingress = var.ingress
+  # internal - (optional) is a type of bool
+  internal = var.internal
+  # ipam_driver - (optional) is a type of string
+  ipam_driver = var.ipam_driver
+  # ipv6 - (optional) is a type of bool
+  ipv6 = var.ipv6
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of map of string
+  options = var.options
 
   dynamic "ipam_config" {
     for_each = var.ipam_config
     content {
+      # aux_address - (optional) is a type of map of string
       aux_address = ipam_config.value["aux_address"]
-      gateway     = ipam_config.value["gateway"]
-      ip_range    = ipam_config.value["ip_range"]
-      subnet      = ipam_config.value["subnet"]
+      # gateway - (optional) is a type of string
+      gateway = ipam_config.value["gateway"]
+      # ip_range - (optional) is a type of string
+      ip_range = ipam_config.value["ip_range"]
+      # subnet - (optional) is a type of string
+      subnet = ipam_config.value["subnet"]
     }
   }
 
   dynamic "labels" {
     for_each = var.labels
     content {
+      # label - (required) is a type of string
       label = labels.value["label"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }

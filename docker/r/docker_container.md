@@ -612,51 +612,93 @@ variable "volumes" {
 
 ```terraform
 resource "docker_container" "this" {
-  attach                = var.attach
-  command               = var.command
-  cpu_set               = var.cpu_set
-  cpu_shares            = var.cpu_shares
+  # attach - (optional) is a type of bool
+  attach = var.attach
+  # command - (optional) is a type of list of string
+  command = var.command
+  # cpu_set - (optional) is a type of string
+  cpu_set = var.cpu_set
+  # cpu_shares - (optional) is a type of number
+  cpu_shares = var.cpu_shares
+  # destroy_grace_seconds - (optional) is a type of number
   destroy_grace_seconds = var.destroy_grace_seconds
-  dns                   = var.dns
-  dns_opts              = var.dns_opts
-  dns_search            = var.dns_search
-  domainname            = var.domainname
-  entrypoint            = var.entrypoint
-  env                   = var.env
-  group_add             = var.group_add
-  hostname              = var.hostname
-  image                 = var.image
-  ipc_mode              = var.ipc_mode
-  links                 = var.links
-  log_driver            = var.log_driver
-  log_opts              = var.log_opts
-  logs                  = var.logs
-  max_retry_count       = var.max_retry_count
-  memory                = var.memory
-  memory_swap           = var.memory_swap
-  must_run              = var.must_run
-  name                  = var.name
-  network_alias         = var.network_alias
-  network_mode          = var.network_mode
-  networks              = var.networks
-  pid_mode              = var.pid_mode
-  privileged            = var.privileged
-  publish_all_ports     = var.publish_all_ports
-  read_only             = var.read_only
-  restart               = var.restart
-  rm                    = var.rm
-  shm_size              = var.shm_size
-  start                 = var.start
-  sysctls               = var.sysctls
-  tmpfs                 = var.tmpfs
-  user                  = var.user
-  userns_mode           = var.userns_mode
-  working_dir           = var.working_dir
+  # dns - (optional) is a type of set of string
+  dns = var.dns
+  # dns_opts - (optional) is a type of set of string
+  dns_opts = var.dns_opts
+  # dns_search - (optional) is a type of set of string
+  dns_search = var.dns_search
+  # domainname - (optional) is a type of string
+  domainname = var.domainname
+  # entrypoint - (optional) is a type of list of string
+  entrypoint = var.entrypoint
+  # env - (optional) is a type of set of string
+  env = var.env
+  # group_add - (optional) is a type of set of string
+  group_add = var.group_add
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # image - (required) is a type of string
+  image = var.image
+  # ipc_mode - (optional) is a type of string
+  ipc_mode = var.ipc_mode
+  # links - (optional) is a type of set of string
+  links = var.links
+  # log_driver - (optional) is a type of string
+  log_driver = var.log_driver
+  # log_opts - (optional) is a type of map of string
+  log_opts = var.log_opts
+  # logs - (optional) is a type of bool
+  logs = var.logs
+  # max_retry_count - (optional) is a type of number
+  max_retry_count = var.max_retry_count
+  # memory - (optional) is a type of number
+  memory = var.memory
+  # memory_swap - (optional) is a type of number
+  memory_swap = var.memory_swap
+  # must_run - (optional) is a type of bool
+  must_run = var.must_run
+  # name - (required) is a type of string
+  name = var.name
+  # network_alias - (optional) is a type of set of string
+  network_alias = var.network_alias
+  # network_mode - (optional) is a type of string
+  network_mode = var.network_mode
+  # networks - (optional) is a type of set of string
+  networks = var.networks
+  # pid_mode - (optional) is a type of string
+  pid_mode = var.pid_mode
+  # privileged - (optional) is a type of bool
+  privileged = var.privileged
+  # publish_all_ports - (optional) is a type of bool
+  publish_all_ports = var.publish_all_ports
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # restart - (optional) is a type of string
+  restart = var.restart
+  # rm - (optional) is a type of bool
+  rm = var.rm
+  # shm_size - (optional) is a type of number
+  shm_size = var.shm_size
+  # start - (optional) is a type of bool
+  start = var.start
+  # sysctls - (optional) is a type of map of string
+  sysctls = var.sysctls
+  # tmpfs - (optional) is a type of map of string
+  tmpfs = var.tmpfs
+  # user - (optional) is a type of string
+  user = var.user
+  # userns_mode - (optional) is a type of string
+  userns_mode = var.userns_mode
+  # working_dir - (optional) is a type of string
+  working_dir = var.working_dir
 
   dynamic "capabilities" {
     for_each = var.capabilities
     content {
-      add  = capabilities.value["add"]
+      # add - (optional) is a type of set of string
+      add = capabilities.value["add"]
+      # drop - (optional) is a type of set of string
       drop = capabilities.value["drop"]
     }
   }
@@ -664,35 +706,47 @@ resource "docker_container" "this" {
   dynamic "devices" {
     for_each = var.devices
     content {
+      # container_path - (optional) is a type of string
       container_path = devices.value["container_path"]
-      host_path      = devices.value["host_path"]
-      permissions    = devices.value["permissions"]
+      # host_path - (required) is a type of string
+      host_path = devices.value["host_path"]
+      # permissions - (optional) is a type of string
+      permissions = devices.value["permissions"]
     }
   }
 
   dynamic "healthcheck" {
     for_each = var.healthcheck
     content {
-      interval     = healthcheck.value["interval"]
-      retries      = healthcheck.value["retries"]
+      # interval - (optional) is a type of string
+      interval = healthcheck.value["interval"]
+      # retries - (optional) is a type of number
+      retries = healthcheck.value["retries"]
+      # start_period - (optional) is a type of string
       start_period = healthcheck.value["start_period"]
-      test         = healthcheck.value["test"]
-      timeout      = healthcheck.value["timeout"]
+      # test - (required) is a type of list of string
+      test = healthcheck.value["test"]
+      # timeout - (optional) is a type of string
+      timeout = healthcheck.value["timeout"]
     }
   }
 
   dynamic "host" {
     for_each = var.host
     content {
+      # host - (required) is a type of string
       host = host.value["host"]
-      ip   = host.value["ip"]
+      # ip - (required) is a type of string
+      ip = host.value["ip"]
     }
   }
 
   dynamic "labels" {
     for_each = var.labels
     content {
+      # label - (required) is a type of string
       label = labels.value["label"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }
@@ -700,14 +754,19 @@ resource "docker_container" "this" {
   dynamic "mounts" {
     for_each = var.mounts
     content {
+      # read_only - (optional) is a type of bool
       read_only = mounts.value["read_only"]
-      source    = mounts.value["source"]
-      target    = mounts.value["target"]
-      type      = mounts.value["type"]
+      # source - (optional) is a type of string
+      source = mounts.value["source"]
+      # target - (required) is a type of string
+      target = mounts.value["target"]
+      # type - (required) is a type of string
+      type = mounts.value["type"]
 
       dynamic "bind_options" {
         for_each = mounts.value.bind_options
         content {
+          # propagation - (optional) is a type of string
           propagation = bind_options.value["propagation"]
         }
       }
@@ -715,7 +774,9 @@ resource "docker_container" "this" {
       dynamic "tmpfs_options" {
         for_each = mounts.value.tmpfs_options
         content {
-          mode       = tmpfs_options.value["mode"]
+          # mode - (optional) is a type of number
+          mode = tmpfs_options.value["mode"]
+          # size_bytes - (optional) is a type of number
           size_bytes = tmpfs_options.value["size_bytes"]
         }
       }
@@ -723,14 +784,19 @@ resource "docker_container" "this" {
       dynamic "volume_options" {
         for_each = mounts.value.volume_options
         content {
-          driver_name    = volume_options.value["driver_name"]
+          # driver_name - (optional) is a type of string
+          driver_name = volume_options.value["driver_name"]
+          # driver_options - (optional) is a type of map of string
           driver_options = volume_options.value["driver_options"]
-          no_copy        = volume_options.value["no_copy"]
+          # no_copy - (optional) is a type of bool
+          no_copy = volume_options.value["no_copy"]
 
           dynamic "labels" {
             for_each = volume_options.value.labels
             content {
+              # label - (required) is a type of string
               label = labels.value["label"]
+              # value - (required) is a type of string
               value = labels.value["value"]
             }
           }
@@ -744,19 +810,27 @@ resource "docker_container" "this" {
   dynamic "networks_advanced" {
     for_each = var.networks_advanced
     content {
-      aliases      = networks_advanced.value["aliases"]
+      # aliases - (optional) is a type of set of string
+      aliases = networks_advanced.value["aliases"]
+      # ipv4_address - (optional) is a type of string
       ipv4_address = networks_advanced.value["ipv4_address"]
+      # ipv6_address - (optional) is a type of string
       ipv6_address = networks_advanced.value["ipv6_address"]
-      name         = networks_advanced.value["name"]
+      # name - (required) is a type of string
+      name = networks_advanced.value["name"]
     }
   }
 
   dynamic "ports" {
     for_each = var.ports
     content {
+      # external - (optional) is a type of number
       external = ports.value["external"]
+      # internal - (required) is a type of number
       internal = ports.value["internal"]
-      ip       = ports.value["ip"]
+      # ip - (optional) is a type of string
+      ip = ports.value["ip"]
+      # protocol - (optional) is a type of string
       protocol = ports.value["protocol"]
     }
   }
@@ -764,8 +838,11 @@ resource "docker_container" "this" {
   dynamic "ulimit" {
     for_each = var.ulimit
     content {
+      # hard - (required) is a type of number
       hard = ulimit.value["hard"]
+      # name - (required) is a type of string
       name = ulimit.value["name"]
+      # soft - (required) is a type of number
       soft = ulimit.value["soft"]
     }
   }
@@ -773,23 +850,34 @@ resource "docker_container" "this" {
   dynamic "upload" {
     for_each = var.upload
     content {
-      content        = upload.value["content"]
+      # content - (optional) is a type of string
+      content = upload.value["content"]
+      # content_base64 - (optional) is a type of string
       content_base64 = upload.value["content_base64"]
-      executable     = upload.value["executable"]
-      file           = upload.value["file"]
-      source         = upload.value["source"]
-      source_hash    = upload.value["source_hash"]
+      # executable - (optional) is a type of bool
+      executable = upload.value["executable"]
+      # file - (required) is a type of string
+      file = upload.value["file"]
+      # source - (optional) is a type of string
+      source = upload.value["source"]
+      # source_hash - (optional) is a type of string
+      source_hash = upload.value["source_hash"]
     }
   }
 
   dynamic "volumes" {
     for_each = var.volumes
     content {
+      # container_path - (optional) is a type of string
       container_path = volumes.value["container_path"]
+      # from_container - (optional) is a type of string
       from_container = volumes.value["from_container"]
-      host_path      = volumes.value["host_path"]
-      read_only      = volumes.value["read_only"]
-      volume_name    = volumes.value["volume_name"]
+      # host_path - (optional) is a type of string
+      host_path = volumes.value["host_path"]
+      # read_only - (optional) is a type of bool
+      read_only = volumes.value["read_only"]
+      # volume_name - (optional) is a type of string
+      volume_name = volumes.value["volume_name"]
     }
   }
 

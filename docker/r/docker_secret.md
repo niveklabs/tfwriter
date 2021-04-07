@@ -72,13 +72,17 @@ variable "labels" {
 
 ```terraform
 resource "docker_secret" "this" {
+  # data - (required) is a type of string
   data = var.data
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "labels" {
     for_each = var.labels
     content {
+      # label - (required) is a type of string
       label = labels.value["label"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }

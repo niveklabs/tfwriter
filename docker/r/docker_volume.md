@@ -82,14 +82,19 @@ variable "labels" {
 
 ```terraform
 resource "docker_volume" "this" {
-  driver      = var.driver
+  # driver - (optional) is a type of string
+  driver = var.driver
+  # driver_opts - (optional) is a type of map of string
   driver_opts = var.driver_opts
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "labels" {
     for_each = var.labels
     content {
+      # label - (required) is a type of string
       label = labels.value["label"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }

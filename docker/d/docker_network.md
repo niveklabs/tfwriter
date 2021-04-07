@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "docker_network" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

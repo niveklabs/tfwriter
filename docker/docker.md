@@ -1,6 +1,9 @@
-# docker
-
-[back](../)
+---
+layout: resource
+title: docker
+type: provider
+resource: docker
+---
 
 ### Index
 

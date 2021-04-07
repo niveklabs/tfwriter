@@ -56,7 +56,9 @@ variable "name" {
 
 ```terraform
 resource "docker_config" "this" {
+  # data - (required) is a type of string
   data = var.data
+  # name - (required) is a type of string
   name = var.name
 }
 ```
