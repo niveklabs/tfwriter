@@ -130,17 +130,28 @@ variable "status" {
 
 ```terraform
 data "alicloud_eipanycast_anycast_eip_addresses" "this" {
+  # anycast_eip_address_name - (optional) is a type of string
   anycast_eip_address_name = var.anycast_eip_address_name
-  bind_instance_ids        = var.bind_instance_ids
-  business_status          = var.business_status
-  ids                      = var.ids
-  internet_charge_type     = var.internet_charge_type
-  ip_address               = var.ip_address
-  name_regex               = var.name_regex
-  output_file              = var.output_file
-  payment_type             = var.payment_type
-  service_location         = var.service_location
-  status                   = var.status
+  # bind_instance_ids - (optional) is a type of set of string
+  bind_instance_ids = var.bind_instance_ids
+  # business_status - (optional) is a type of string
+  business_status = var.business_status
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # service_location - (optional) is a type of string
+  service_location = var.service_location
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

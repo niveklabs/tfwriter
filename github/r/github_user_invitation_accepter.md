@@ -49,6 +49,7 @@ variable "invitation_id" {
 
 ```terraform
 resource "github_user_invitation_accepter" "this" {
+  # invitation_id - (required) is a type of string
   invitation_id = var.invitation_id
 }
 ```

@@ -58,7 +58,9 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_mns_queues" "this" {
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

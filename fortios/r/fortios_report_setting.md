@@ -82,10 +82,15 @@ variable "web_browsing_threshold" {
 
 ```terraform
 resource "fortios_report_setting" "this" {
-  fortiview              = var.fortiview
-  pdf_report             = var.pdf_report
-  report_source          = var.report_source
-  top_n                  = var.top_n
+  # fortiview - (optional) is a type of string
+  fortiview = var.fortiview
+  # pdf_report - (optional) is a type of string
+  pdf_report = var.pdf_report
+  # report_source - (optional) is a type of string
+  report_source = var.report_source
+  # top_n - (optional) is a type of number
+  top_n = var.top_n
+  # web_browsing_threshold - (optional) is a type of number
   web_browsing_threshold = var.web_browsing_threshold
 }
 ```

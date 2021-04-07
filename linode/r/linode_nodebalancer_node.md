@@ -86,12 +86,18 @@ variable "weight" {
 
 ```terraform
 resource "linode_nodebalancer_node" "this" {
-  address         = var.address
-  config_id       = var.config_id
-  label           = var.label
-  mode            = var.mode
+  # address - (required) is a type of string
+  address = var.address
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # label - (required) is a type of string
+  label = var.label
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # nodebalancer_id - (required) is a type of number
   nodebalancer_id = var.nodebalancer_id
-  weight          = var.weight
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

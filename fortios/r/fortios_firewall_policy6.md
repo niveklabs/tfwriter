@@ -861,85 +861,161 @@ variable "users" {
 
 ```terraform
 resource "fortios_firewall_policy6" "this" {
-  action                    = var.action
-  anti_replay               = var.anti_replay
-  application_list          = var.application_list
-  auto_asic_offload         = var.auto_asic_offload
-  av_profile                = var.av_profile
-  cifs_profile              = var.cifs_profile
-  comments                  = var.comments
-  decrypted_traffic_mirror  = var.decrypted_traffic_mirror
-  diffserv_forward          = var.diffserv_forward
-  diffserv_reverse          = var.diffserv_reverse
-  diffservcode_forward      = var.diffservcode_forward
-  diffservcode_rev          = var.diffservcode_rev
-  dlp_sensor                = var.dlp_sensor
-  dnsfilter_profile         = var.dnsfilter_profile
-  dsri                      = var.dsri
-  dstaddr_negate            = var.dstaddr_negate
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  emailfilter_profile       = var.emailfilter_profile
-  firewall_session_dirty    = var.firewall_session_dirty
-  fixedport                 = var.fixedport
-  global_label              = var.global_label
-  http_policy_redirect      = var.http_policy_redirect
-  icap_profile              = var.icap_profile
-  inbound                   = var.inbound
-  inspection_mode           = var.inspection_mode
-  ippool                    = var.ippool
-  ips_sensor                = var.ips_sensor
-  label                     = var.label
-  logtraffic                = var.logtraffic
-  logtraffic_start          = var.logtraffic_start
-  name                      = var.name
-  nat                       = var.nat
-  natinbound                = var.natinbound
-  natoutbound               = var.natoutbound
-  outbound                  = var.outbound
-  per_ip_shaper             = var.per_ip_shaper
-  policyid                  = var.policyid
-  profile_group             = var.profile_group
-  profile_protocol_options  = var.profile_protocol_options
-  profile_type              = var.profile_type
+  # action - (optional) is a type of string
+  action = var.action
+  # anti_replay - (optional) is a type of string
+  anti_replay = var.anti_replay
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # auto_asic_offload - (optional) is a type of string
+  auto_asic_offload = var.auto_asic_offload
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # cifs_profile - (optional) is a type of string
+  cifs_profile = var.cifs_profile
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # decrypted_traffic_mirror - (optional) is a type of string
+  decrypted_traffic_mirror = var.decrypted_traffic_mirror
+  # diffserv_forward - (optional) is a type of string
+  diffserv_forward = var.diffserv_forward
+  # diffserv_reverse - (optional) is a type of string
+  diffserv_reverse = var.diffserv_reverse
+  # diffservcode_forward - (optional) is a type of string
+  diffservcode_forward = var.diffservcode_forward
+  # diffservcode_rev - (optional) is a type of string
+  diffservcode_rev = var.diffservcode_rev
+  # dlp_sensor - (optional) is a type of string
+  dlp_sensor = var.dlp_sensor
+  # dnsfilter_profile - (optional) is a type of string
+  dnsfilter_profile = var.dnsfilter_profile
+  # dsri - (optional) is a type of string
+  dsri = var.dsri
+  # dstaddr_negate - (optional) is a type of string
+  dstaddr_negate = var.dstaddr_negate
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = var.emailfilter_profile
+  # firewall_session_dirty - (optional) is a type of string
+  firewall_session_dirty = var.firewall_session_dirty
+  # fixedport - (optional) is a type of string
+  fixedport = var.fixedport
+  # global_label - (optional) is a type of string
+  global_label = var.global_label
+  # http_policy_redirect - (optional) is a type of string
+  http_policy_redirect = var.http_policy_redirect
+  # icap_profile - (optional) is a type of string
+  icap_profile = var.icap_profile
+  # inbound - (optional) is a type of string
+  inbound = var.inbound
+  # inspection_mode - (optional) is a type of string
+  inspection_mode = var.inspection_mode
+  # ippool - (optional) is a type of string
+  ippool = var.ippool
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # label - (optional) is a type of string
+  label = var.label
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = var.logtraffic_start
+  # name - (optional) is a type of string
+  name = var.name
+  # nat - (optional) is a type of string
+  nat = var.nat
+  # natinbound - (optional) is a type of string
+  natinbound = var.natinbound
+  # natoutbound - (optional) is a type of string
+  natoutbound = var.natoutbound
+  # outbound - (optional) is a type of string
+  outbound = var.outbound
+  # per_ip_shaper - (optional) is a type of string
+  per_ip_shaper = var.per_ip_shaper
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # profile_group - (optional) is a type of string
+  profile_group = var.profile_group
+  # profile_protocol_options - (optional) is a type of string
+  profile_protocol_options = var.profile_protocol_options
+  # profile_type - (optional) is a type of string
+  profile_type = var.profile_type
+  # replacemsg_override_group - (optional) is a type of string
   replacemsg_override_group = var.replacemsg_override_group
-  rsso                      = var.rsso
-  schedule                  = var.schedule
-  send_deny_packet          = var.send_deny_packet
-  service_negate            = var.service_negate
-  session_ttl               = var.session_ttl
-  spamfilter_profile        = var.spamfilter_profile
-  srcaddr_negate            = var.srcaddr_negate
-  ssh_filter_profile        = var.ssh_filter_profile
-  ssh_policy_redirect       = var.ssh_policy_redirect
-  ssl_mirror                = var.ssl_mirror
-  ssl_ssh_profile           = var.ssl_ssh_profile
-  status                    = var.status
-  tcp_mss_receiver          = var.tcp_mss_receiver
-  tcp_mss_sender            = var.tcp_mss_sender
-  tcp_session_without_syn   = var.tcp_session_without_syn
-  timeout_send_rst          = var.timeout_send_rst
-  tos                       = var.tos
-  tos_mask                  = var.tos_mask
-  tos_negate                = var.tos_negate
-  traffic_shaper            = var.traffic_shaper
-  traffic_shaper_reverse    = var.traffic_shaper_reverse
-  utm_status                = var.utm_status
-  uuid                      = var.uuid
-  vlan_cos_fwd              = var.vlan_cos_fwd
-  vlan_cos_rev              = var.vlan_cos_rev
-  vlan_filter               = var.vlan_filter
-  voip_profile              = var.voip_profile
-  vpntunnel                 = var.vpntunnel
-  waf_profile               = var.waf_profile
-  webcache                  = var.webcache
-  webcache_https            = var.webcache_https
-  webfilter_profile         = var.webfilter_profile
-  webproxy_forward_server   = var.webproxy_forward_server
-  webproxy_profile          = var.webproxy_profile
+  # rsso - (optional) is a type of string
+  rsso = var.rsso
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # send_deny_packet - (optional) is a type of string
+  send_deny_packet = var.send_deny_packet
+  # service_negate - (optional) is a type of string
+  service_negate = var.service_negate
+  # session_ttl - (optional) is a type of number
+  session_ttl = var.session_ttl
+  # spamfilter_profile - (optional) is a type of string
+  spamfilter_profile = var.spamfilter_profile
+  # srcaddr_negate - (optional) is a type of string
+  srcaddr_negate = var.srcaddr_negate
+  # ssh_filter_profile - (optional) is a type of string
+  ssh_filter_profile = var.ssh_filter_profile
+  # ssh_policy_redirect - (optional) is a type of string
+  ssh_policy_redirect = var.ssh_policy_redirect
+  # ssl_mirror - (optional) is a type of string
+  ssl_mirror = var.ssl_mirror
+  # ssl_ssh_profile - (optional) is a type of string
+  ssl_ssh_profile = var.ssl_ssh_profile
+  # status - (optional) is a type of string
+  status = var.status
+  # tcp_mss_receiver - (optional) is a type of number
+  tcp_mss_receiver = var.tcp_mss_receiver
+  # tcp_mss_sender - (optional) is a type of number
+  tcp_mss_sender = var.tcp_mss_sender
+  # tcp_session_without_syn - (optional) is a type of string
+  tcp_session_without_syn = var.tcp_session_without_syn
+  # timeout_send_rst - (optional) is a type of string
+  timeout_send_rst = var.timeout_send_rst
+  # tos - (optional) is a type of string
+  tos = var.tos
+  # tos_mask - (optional) is a type of string
+  tos_mask = var.tos_mask
+  # tos_negate - (optional) is a type of string
+  tos_negate = var.tos_negate
+  # traffic_shaper - (optional) is a type of string
+  traffic_shaper = var.traffic_shaper
+  # traffic_shaper_reverse - (optional) is a type of string
+  traffic_shaper_reverse = var.traffic_shaper_reverse
+  # utm_status - (optional) is a type of string
+  utm_status = var.utm_status
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vlan_cos_fwd - (optional) is a type of number
+  vlan_cos_fwd = var.vlan_cos_fwd
+  # vlan_cos_rev - (optional) is a type of number
+  vlan_cos_rev = var.vlan_cos_rev
+  # vlan_filter - (optional) is a type of string
+  vlan_filter = var.vlan_filter
+  # voip_profile - (optional) is a type of string
+  voip_profile = var.voip_profile
+  # vpntunnel - (optional) is a type of string
+  vpntunnel = var.vpntunnel
+  # waf_profile - (optional) is a type of string
+  waf_profile = var.waf_profile
+  # webcache - (optional) is a type of string
+  webcache = var.webcache
+  # webcache_https - (optional) is a type of string
+  webcache_https = var.webcache_https
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
+  # webproxy_forward_server - (optional) is a type of string
+  webproxy_forward_server = var.webproxy_forward_server
+  # webproxy_profile - (optional) is a type of string
+  webproxy_profile = var.webproxy_profile
 
   dynamic "app_category" {
     for_each = var.app_category
     content {
+      # id - (optional) is a type of number
       id = app_category.value["id"]
     }
   }
@@ -947,6 +1023,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "app_group" {
     for_each = var.app_group
     content {
+      # name - (optional) is a type of string
       name = app_group.value["name"]
     }
   }
@@ -954,6 +1031,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "application" {
     for_each = var.application
     content {
+      # id - (optional) is a type of number
       id = application.value["id"]
     }
   }
@@ -961,6 +1039,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "custom_log_fields" {
     for_each = var.custom_log_fields
     content {
+      # field_id - (optional) is a type of string
       field_id = custom_log_fields.value["field_id"]
     }
   }
@@ -968,6 +1047,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "devices" {
     for_each = var.devices
     content {
+      # name - (optional) is a type of string
       name = devices.value["name"]
     }
   }
@@ -975,6 +1055,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -982,6 +1063,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "dstintf" {
     for_each = var.dstintf
     content {
+      # name - (optional) is a type of string
       name = dstintf.value["name"]
     }
   }
@@ -989,6 +1071,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "fsso_groups" {
     for_each = var.fsso_groups
     content {
+      # name - (optional) is a type of string
       name = fsso_groups.value["name"]
     }
   }
@@ -996,6 +1079,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "groups" {
     for_each = var.groups
     content {
+      # name - (optional) is a type of string
       name = groups.value["name"]
     }
   }
@@ -1003,6 +1087,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "poolname" {
     for_each = var.poolname
     content {
+      # name - (optional) is a type of string
       name = poolname.value["name"]
     }
   }
@@ -1010,6 +1095,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -1017,6 +1103,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }
@@ -1024,6 +1111,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "srcintf" {
     for_each = var.srcintf
     content {
+      # name - (optional) is a type of string
       name = srcintf.value["name"]
     }
   }
@@ -1031,6 +1119,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "ssl_mirror_intf" {
     for_each = var.ssl_mirror_intf
     content {
+      # name - (optional) is a type of string
       name = ssl_mirror_intf.value["name"]
     }
   }
@@ -1038,6 +1127,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "url_category" {
     for_each = var.url_category
     content {
+      # id - (optional) is a type of number
       id = url_category.value["id"]
     }
   }
@@ -1045,6 +1135,7 @@ resource "fortios_firewall_policy6" "this" {
   dynamic "users" {
     for_each = var.users
     content {
+      # name - (optional) is a type of string
       name = users.value["name"]
     }
   }

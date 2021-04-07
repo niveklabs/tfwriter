@@ -134,18 +134,30 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_bgp_conditional_adv_advertise_filter" "this" {
-  address_prefixes         = var.address_prefixes
-  as_path_regex            = var.as_path_regex
-  bgp_conditional_adv      = var.bgp_conditional_adv
-  community_regex          = var.community_regex
-  enable                   = var.enable
+  # address_prefixes - (required) is a type of list of string
+  address_prefixes = var.address_prefixes
+  # as_path_regex - (optional) is a type of string
+  as_path_regex = var.as_path_regex
+  # bgp_conditional_adv - (required) is a type of string
+  bgp_conditional_adv = var.bgp_conditional_adv
+  # community_regex - (optional) is a type of string
+  community_regex = var.community_regex
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # extended_community_regex - (optional) is a type of string
   extended_community_regex = var.extended_community_regex
-  from_peers               = var.from_peers
-  med                      = var.med
-  name                     = var.name
-  next_hops                = var.next_hops
-  route_table              = var.route_table
-  virtual_router           = var.virtual_router
+  # from_peers - (optional) is a type of list of string
+  from_peers = var.from_peers
+  # med - (optional) is a type of string
+  med = var.med
+  # name - (required) is a type of string
+  name = var.name
+  # next_hops - (optional) is a type of list of string
+  next_hops = var.next_hops
+  # route_table - (optional) is a type of string
+  route_table = var.route_table
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

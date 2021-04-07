@@ -213,38 +213,55 @@ variable "upgrade_strategy" {
 
 ```terraform
 resource "rancher2_multi_cluster_app" "this" {
-  annotations            = var.annotations
-  catalog_name           = var.catalog_name
-  labels                 = var.labels
-  name                   = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # catalog_name - (required) is a type of string
+  catalog_name = var.catalog_name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # revision_history_limit - (optional) is a type of number
   revision_history_limit = var.revision_history_limit
-  revision_id            = var.revision_id
-  roles                  = var.roles
-  template_name          = var.template_name
-  template_version       = var.template_version
-  wait                   = var.wait
+  # revision_id - (optional) is a type of string
+  revision_id = var.revision_id
+  # roles - (required) is a type of list of string
+  roles = var.roles
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # template_version - (optional) is a type of string
+  template_version = var.template_version
+  # wait - (optional) is a type of bool
+  wait = var.wait
 
   dynamic "answers" {
     for_each = var.answers
     content {
+      # cluster_id - (optional) is a type of string
       cluster_id = answers.value["cluster_id"]
+      # project_id - (optional) is a type of string
       project_id = answers.value["project_id"]
-      values     = answers.value["values"]
+      # values - (optional) is a type of map of string
+      values = answers.value["values"]
     }
   }
 
   dynamic "members" {
     for_each = var.members
     content {
-      access_type        = members.value["access_type"]
+      # access_type - (optional) is a type of string
+      access_type = members.value["access_type"]
+      # group_principal_id - (optional) is a type of string
       group_principal_id = members.value["group_principal_id"]
-      user_principal_id  = members.value["user_principal_id"]
+      # user_principal_id - (optional) is a type of string
+      user_principal_id = members.value["user_principal_id"]
     }
   }
 
   dynamic "targets" {
     for_each = var.targets
     content {
+      # project_id - (required) is a type of string
       project_id = targets.value["project_id"]
     }
   }
@@ -252,8 +269,11 @@ resource "rancher2_multi_cluster_app" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -265,8 +285,10 @@ resource "rancher2_multi_cluster_app" "this" {
       dynamic "rolling_update" {
         for_each = upgrade_strategy.value.rolling_update
         content {
+          # batch_size - (optional) is a type of number
           batch_size = rolling_update.value["batch_size"]
-          interval   = rolling_update.value["interval"]
+          # interval - (optional) is a type of number
+          interval = rolling_update.value["interval"]
         }
       }
 

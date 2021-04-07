@@ -49,6 +49,7 @@ variable "resource_id" {
 
 ```terraform
 data "gridscale_marketplace_application" "this" {
+  # resource_id - (required) is a type of string
   resource_id = var.resource_id
 }
 ```

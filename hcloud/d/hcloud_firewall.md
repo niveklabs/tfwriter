@@ -94,17 +94,25 @@ variable "rule" {
 
 ```terraform
 data "hcloud_firewall" "this" {
-  labels        = var.labels
-  most_recent   = var.most_recent
-  name          = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # name - (optional) is a type of string
+  name = var.name
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      direction  = rule.value["direction"]
-      port       = rule.value["port"]
-      protocol   = rule.value["protocol"]
+      # direction - (required) is a type of string
+      direction = rule.value["direction"]
+      # port - (optional) is a type of string
+      port = rule.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = rule.value["protocol"]
+      # source_ips - (optional) is a type of list of string
       source_ips = rule.value["source_ips"]
     }
   }

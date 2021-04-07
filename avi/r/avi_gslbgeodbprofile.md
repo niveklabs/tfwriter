@@ -105,22 +105,30 @@ variable "entries" {
 
 ```terraform
 resource "avi_gslbgeodbprofile" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # is_federated - (optional) is a type of bool
   is_federated = var.is_federated
-  name         = var.name
-  tenant_ref   = var.tenant_ref
-  uuid         = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "entries" {
     for_each = var.entries
     content {
+      # priority - (optional) is a type of number
       priority = entries.value["priority"]
 
       dynamic "file" {
         for_each = entries.value.file
         content {
+          # filename - (optional) is a type of string
           filename = file.value["filename"]
-          format   = file.value["format"]
+          # format - (optional) is a type of string
+          format = file.value["format"]
         }
       }
 

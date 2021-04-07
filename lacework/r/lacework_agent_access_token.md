@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "lacework_agent_access_token" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

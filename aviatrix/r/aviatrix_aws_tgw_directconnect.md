@@ -85,12 +85,18 @@ variable "tgw_name" {
 
 ```terraform
 resource "aviatrix_aws_tgw_directconnect" "this" {
-  allowed_prefix                = var.allowed_prefix
-  directconnect_account_name    = var.directconnect_account_name
-  dx_gateway_id                 = var.dx_gateway_id
+  # allowed_prefix - (required) is a type of string
+  allowed_prefix = var.allowed_prefix
+  # directconnect_account_name - (required) is a type of string
+  directconnect_account_name = var.directconnect_account_name
+  # dx_gateway_id - (required) is a type of string
+  dx_gateway_id = var.dx_gateway_id
+  # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
-  security_domain_name          = var.security_domain_name
-  tgw_name                      = var.tgw_name
+  # security_domain_name - (required) is a type of string
+  security_domain_name = var.security_domain_name
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
 }
 ```
 

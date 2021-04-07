@@ -63,9 +63,12 @@ variable "network_id" {
 
 ```terraform
 resource "hcloud_network_route" "this" {
+  # destination - (required) is a type of string
   destination = var.destination
-  gateway     = var.gateway
-  network_id  = var.network_id
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # network_id - (required) is a type of number
+  network_id = var.network_id
 }
 ```
 

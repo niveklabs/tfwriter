@@ -56,8 +56,10 @@ variable "key_id" {
 
 ```terraform
 resource "alicloud_kms_alias" "this" {
+  # alias_name - (required) is a type of string
   alias_name = var.alias_name
-  key_id     = var.key_id
+  # key_id - (required) is a type of string
+  key_id = var.key_id
 }
 ```
 

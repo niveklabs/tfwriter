@@ -79,11 +79,16 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewall_iptranslation" "this" {
-  endip       = var.endip
+  # endip - (required) is a type of string
+  endip = var.endip
+  # map_startip - (required) is a type of string
   map_startip = var.map_startip
-  startip     = var.startip
-  transid     = var.transid
-  type        = var.type
+  # startip - (required) is a type of string
+  startip = var.startip
+  # transid - (optional) is a type of number
+  transid = var.transid
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

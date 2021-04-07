@@ -64,9 +64,12 @@ variable "script" {
 
 ```terraform
 resource "ovh_me_ipxe_script" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  script      = var.script
+  # name - (required) is a type of string
+  name = var.name
+  # script - (required) is a type of string
+  script = var.script
 }
 ```
 

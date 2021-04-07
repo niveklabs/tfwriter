@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "prismacloud_compliance_standard" "this" {
+  # cs_id - (optional) is a type of string
   cs_id = var.cs_id
-  name  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

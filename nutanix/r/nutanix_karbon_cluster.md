@@ -331,13 +331,17 @@ variable "worker_node_pool" {
 
 ```terraform
 resource "nutanix_karbon_cluster" "this" {
-  name                 = var.name
-  version              = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # version - (required) is a type of string
+  version = var.version
+  # wait_timeout_minutes - (optional) is a type of number
   wait_timeout_minutes = var.wait_timeout_minutes
 
   dynamic "active_passive_config" {
     for_each = var.active_passive_config
     content {
+      # external_ipv4_address - (required) is a type of string
       external_ipv4_address = active_passive_config.value["external_ipv4_address"]
     }
   }
@@ -345,9 +349,12 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "cni_config" {
     for_each = var.cni_config
     content {
+      # node_cidr_mask_size - (optional) is a type of number
       node_cidr_mask_size = cni_config.value["node_cidr_mask_size"]
-      pod_ipv4_cidr       = cni_config.value["pod_ipv4_cidr"]
-      service_ipv4_cidr   = cni_config.value["service_ipv4_cidr"]
+      # pod_ipv4_cidr - (optional) is a type of string
+      pod_ipv4_cidr = cni_config.value["pod_ipv4_cidr"]
+      # service_ipv4_cidr - (optional) is a type of string
+      service_ipv4_cidr = cni_config.value["service_ipv4_cidr"]
 
       dynamic "calico_config" {
         for_each = cni_config.value.calico_config
@@ -356,6 +363,7 @@ resource "nutanix_karbon_cluster" "this" {
           dynamic "ip_pool_config" {
             for_each = calico_config.value.ip_pool_config
             content {
+              # cidr - (optional) is a type of string
               cidr = ip_pool_config.value["cidr"]
             }
           }
@@ -375,17 +383,25 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "etcd_node_pool" {
     for_each = var.etcd_node_pool
     content {
-      name            = etcd_node_pool.value["name"]
+      # name - (optional) is a type of string
+      name = etcd_node_pool.value["name"]
+      # node_os_version - (required) is a type of string
       node_os_version = etcd_node_pool.value["node_os_version"]
-      num_instances   = etcd_node_pool.value["num_instances"]
+      # num_instances - (required) is a type of number
+      num_instances = etcd_node_pool.value["num_instances"]
 
       dynamic "ahv_config" {
         for_each = etcd_node_pool.value.ahv_config
         content {
-          cpu                        = ahv_config.value["cpu"]
-          disk_mib                   = ahv_config.value["disk_mib"]
-          memory_mib                 = ahv_config.value["memory_mib"]
-          network_uuid               = ahv_config.value["network_uuid"]
+          # cpu - (optional) is a type of number
+          cpu = ahv_config.value["cpu"]
+          # disk_mib - (optional) is a type of number
+          disk_mib = ahv_config.value["disk_mib"]
+          # memory_mib - (optional) is a type of number
+          memory_mib = ahv_config.value["memory_mib"]
+          # network_uuid - (required) is a type of string
+          network_uuid = ahv_config.value["network_uuid"]
+          # prism_element_cluster_uuid - (required) is a type of string
           prism_element_cluster_uuid = ahv_config.value["prism_element_cluster_uuid"]
         }
       }
@@ -396,12 +412,15 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "external_lb_config" {
     for_each = var.external_lb_config
     content {
+      # external_ipv4_address - (required) is a type of string
       external_ipv4_address = external_lb_config.value["external_ipv4_address"]
 
       dynamic "master_nodes_config" {
         for_each = external_lb_config.value.master_nodes_config
         content {
-          ipv4_address   = master_nodes_config.value["ipv4_address"]
+          # ipv4_address - (required) is a type of string
+          ipv4_address = master_nodes_config.value["ipv4_address"]
+          # node_pool_name - (optional) is a type of string
           node_pool_name = master_nodes_config.value["node_pool_name"]
         }
       }
@@ -412,17 +431,25 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "master_node_pool" {
     for_each = var.master_node_pool
     content {
-      name            = master_node_pool.value["name"]
+      # name - (optional) is a type of string
+      name = master_node_pool.value["name"]
+      # node_os_version - (required) is a type of string
       node_os_version = master_node_pool.value["node_os_version"]
-      num_instances   = master_node_pool.value["num_instances"]
+      # num_instances - (required) is a type of number
+      num_instances = master_node_pool.value["num_instances"]
 
       dynamic "ahv_config" {
         for_each = master_node_pool.value.ahv_config
         content {
-          cpu                        = ahv_config.value["cpu"]
-          disk_mib                   = ahv_config.value["disk_mib"]
-          memory_mib                 = ahv_config.value["memory_mib"]
-          network_uuid               = ahv_config.value["network_uuid"]
+          # cpu - (optional) is a type of number
+          cpu = ahv_config.value["cpu"]
+          # disk_mib - (optional) is a type of number
+          disk_mib = ahv_config.value["disk_mib"]
+          # memory_mib - (optional) is a type of number
+          memory_mib = ahv_config.value["memory_mib"]
+          # network_uuid - (required) is a type of string
+          network_uuid = ahv_config.value["network_uuid"]
+          # prism_element_cluster_uuid - (required) is a type of string
           prism_element_cluster_uuid = ahv_config.value["prism_element_cluster_uuid"]
         }
       }
@@ -433,6 +460,7 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "private_registry" {
     for_each = var.private_registry
     content {
+      # registry_name - (required) is a type of string
       registry_name = private_registry.value["registry_name"]
     }
   }
@@ -446,18 +474,26 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "storage_class_config" {
     for_each = var.storage_class_config
     content {
-      name           = storage_class_config.value["name"]
+      # name - (optional) is a type of string
+      name = storage_class_config.value["name"]
+      # reclaim_policy - (optional) is a type of string
       reclaim_policy = storage_class_config.value["reclaim_policy"]
 
       dynamic "volumes_config" {
         for_each = storage_class_config.value.volumes_config
         content {
-          file_system                = volumes_config.value["file_system"]
-          flash_mode                 = volumes_config.value["flash_mode"]
-          password                   = volumes_config.value["password"]
+          # file_system - (optional) is a type of string
+          file_system = volumes_config.value["file_system"]
+          # flash_mode - (optional) is a type of bool
+          flash_mode = volumes_config.value["flash_mode"]
+          # password - (required) is a type of string
+          password = volumes_config.value["password"]
+          # prism_element_cluster_uuid - (required) is a type of string
           prism_element_cluster_uuid = volumes_config.value["prism_element_cluster_uuid"]
-          storage_container          = volumes_config.value["storage_container"]
-          username                   = volumes_config.value["username"]
+          # storage_container - (required) is a type of string
+          storage_container = volumes_config.value["storage_container"]
+          # username - (required) is a type of string
+          username = volumes_config.value["username"]
         }
       }
 
@@ -467,17 +503,25 @@ resource "nutanix_karbon_cluster" "this" {
   dynamic "worker_node_pool" {
     for_each = var.worker_node_pool
     content {
-      name            = worker_node_pool.value["name"]
+      # name - (optional) is a type of string
+      name = worker_node_pool.value["name"]
+      # node_os_version - (required) is a type of string
       node_os_version = worker_node_pool.value["node_os_version"]
-      num_instances   = worker_node_pool.value["num_instances"]
+      # num_instances - (required) is a type of number
+      num_instances = worker_node_pool.value["num_instances"]
 
       dynamic "ahv_config" {
         for_each = worker_node_pool.value.ahv_config
         content {
-          cpu                        = ahv_config.value["cpu"]
-          disk_mib                   = ahv_config.value["disk_mib"]
-          memory_mib                 = ahv_config.value["memory_mib"]
-          network_uuid               = ahv_config.value["network_uuid"]
+          # cpu - (optional) is a type of number
+          cpu = ahv_config.value["cpu"]
+          # disk_mib - (optional) is a type of number
+          disk_mib = ahv_config.value["disk_mib"]
+          # memory_mib - (optional) is a type of number
+          memory_mib = ahv_config.value["memory_mib"]
+          # network_uuid - (required) is a type of string
+          network_uuid = ahv_config.value["network_uuid"]
+          # prism_element_cluster_uuid - (required) is a type of string
           prism_element_cluster_uuid = ahv_config.value["prism_element_cluster_uuid"]
         }
       }

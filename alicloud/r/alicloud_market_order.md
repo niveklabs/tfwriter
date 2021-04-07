@@ -103,14 +103,22 @@ variable "quantity" {
 
 ```terraform
 resource "alicloud_market_order" "this" {
-  components      = var.components
-  coupon_id       = var.coupon_id
-  duration        = var.duration
+  # components - (optional) is a type of map of string
+  components = var.components
+  # coupon_id - (optional) is a type of string
+  coupon_id = var.coupon_id
+  # duration - (optional) is a type of number
+  duration = var.duration
+  # package_version - (required) is a type of string
   package_version = var.package_version
-  pay_type        = var.pay_type
-  pricing_cycle   = var.pricing_cycle
-  product_code    = var.product_code
-  quantity        = var.quantity
+  # pay_type - (optional) is a type of string
+  pay_type = var.pay_type
+  # pricing_cycle - (required) is a type of string
+  pricing_cycle = var.pricing_cycle
+  # product_code - (required) is a type of string
+  product_code = var.product_code
+  # quantity - (optional) is a type of number
+  quantity = var.quantity
 }
 ```
 

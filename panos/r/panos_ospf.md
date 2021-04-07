@@ -169,22 +169,38 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_ospf" "this" {
+  # allow_redistribute_default_route - (optional) is a type of bool
   allow_redistribute_default_route = var.allow_redistribute_default_route
-  bfd_profile                      = var.bfd_profile
-  enable                           = var.enable
-  enable_graceful_restart          = var.enable_graceful_restart
-  grace_period                     = var.grace_period
-  helper_enable                    = var.helper_enable
-  lsa_interval                     = var.lsa_interval
-  max_neighbor_restart_time        = var.max_neighbor_restart_time
-  reject_default_route             = var.reject_default_route
-  rfc_1583                         = var.rfc_1583
-  router_id                        = var.router_id
-  spf_calculation_delay            = var.spf_calculation_delay
-  strict_lsa_checking              = var.strict_lsa_checking
-  template                         = var.template
-  template_stack                   = var.template_stack
-  virtual_router                   = var.virtual_router
+  # bfd_profile - (optional) is a type of string
+  bfd_profile = var.bfd_profile
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # enable_graceful_restart - (optional) is a type of bool
+  enable_graceful_restart = var.enable_graceful_restart
+  # grace_period - (optional) is a type of number
+  grace_period = var.grace_period
+  # helper_enable - (optional) is a type of bool
+  helper_enable = var.helper_enable
+  # lsa_interval - (optional) is a type of number
+  lsa_interval = var.lsa_interval
+  # max_neighbor_restart_time - (optional) is a type of number
+  max_neighbor_restart_time = var.max_neighbor_restart_time
+  # reject_default_route - (optional) is a type of bool
+  reject_default_route = var.reject_default_route
+  # rfc_1583 - (optional) is a type of bool
+  rfc_1583 = var.rfc_1583
+  # router_id - (optional) is a type of string
+  router_id = var.router_id
+  # spf_calculation_delay - (optional) is a type of number
+  spf_calculation_delay = var.spf_calculation_delay
+  # strict_lsa_checking - (optional) is a type of bool
+  strict_lsa_checking = var.strict_lsa_checking
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

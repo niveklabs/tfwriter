@@ -49,6 +49,7 @@ variable "category" {
 
 ```terraform
 data "fortios_system_objecttagging" "this" {
+  # category - (required) is a type of string
   category = var.category
 }
 ```

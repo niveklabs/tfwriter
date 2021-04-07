@@ -81,11 +81,16 @@ variable "role_id" {
 
 ```terraform
 data "tencentcloud_cam_role_policy_attachments" "this" {
-  create_mode        = var.create_mode
-  policy_id          = var.policy_id
-  policy_type        = var.policy_type
+  # create_mode - (optional) is a type of number
+  create_mode = var.create_mode
+  # policy_id - (optional) is a type of string
+  policy_id = var.policy_id
+  # policy_type - (optional) is a type of string
+  policy_type = var.policy_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  role_id            = var.role_id
+  # role_id - (required) is a type of string
+  role_id = var.role_id
 }
 ```
 

@@ -258,43 +258,65 @@ variable "refer_config" {
 
 ```terraform
 resource "alicloud_cdn_domain" "this" {
-  block_ips            = var.block_ips
-  cdn_type             = var.cdn_type
-  domain_name          = var.domain_name
-  optimize_enable      = var.optimize_enable
+  # block_ips - (optional) is a type of set of string
+  block_ips = var.block_ips
+  # cdn_type - (required) is a type of string
+  cdn_type = var.cdn_type
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # optimize_enable - (optional) is a type of string
+  optimize_enable = var.optimize_enable
+  # page_compress_enable - (optional) is a type of string
   page_compress_enable = var.page_compress_enable
-  range_enable         = var.range_enable
-  scope                = var.scope
-  source_port          = var.source_port
-  source_type          = var.source_type
-  sources              = var.sources
-  video_seek_enable    = var.video_seek_enable
+  # range_enable - (optional) is a type of string
+  range_enable = var.range_enable
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # source_port - (optional) is a type of number
+  source_port = var.source_port
+  # source_type - (optional) is a type of string
+  source_type = var.source_type
+  # sources - (optional) is a type of set of string
+  sources = var.sources
+  # video_seek_enable - (optional) is a type of string
+  video_seek_enable = var.video_seek_enable
 
   dynamic "auth_config" {
     for_each = var.auth_config
     content {
-      auth_type  = auth_config.value["auth_type"]
+      # auth_type - (optional) is a type of string
+      auth_type = auth_config.value["auth_type"]
+      # master_key - (optional) is a type of string
       master_key = auth_config.value["master_key"]
-      slave_key  = auth_config.value["slave_key"]
-      timeout    = auth_config.value["timeout"]
+      # slave_key - (optional) is a type of string
+      slave_key = auth_config.value["slave_key"]
+      # timeout - (optional) is a type of number
+      timeout = auth_config.value["timeout"]
     }
   }
 
   dynamic "cache_config" {
     for_each = var.cache_config
     content {
+      # cache_content - (required) is a type of string
       cache_content = cache_config.value["cache_content"]
-      cache_type    = cache_config.value["cache_type"]
-      ttl           = cache_config.value["ttl"]
-      weight        = cache_config.value["weight"]
+      # cache_type - (required) is a type of string
+      cache_type = cache_config.value["cache_type"]
+      # ttl - (required) is a type of number
+      ttl = cache_config.value["ttl"]
+      # weight - (optional) is a type of number
+      weight = cache_config.value["weight"]
     }
   }
 
   dynamic "certificate_config" {
     for_each = var.certificate_config
     content {
-      private_key               = certificate_config.value["private_key"]
-      server_certificate        = certificate_config.value["server_certificate"]
+      # private_key - (optional) is a type of string
+      private_key = certificate_config.value["private_key"]
+      # server_certificate - (optional) is a type of string
+      server_certificate = certificate_config.value["server_certificate"]
+      # server_certificate_status - (optional) is a type of string
       server_certificate_status = certificate_config.value["server_certificate_status"]
     }
   }
@@ -302,7 +324,9 @@ resource "alicloud_cdn_domain" "this" {
   dynamic "http_header_config" {
     for_each = var.http_header_config
     content {
-      header_key   = http_header_config.value["header_key"]
+      # header_key - (required) is a type of string
+      header_key = http_header_config.value["header_key"]
+      # header_value - (required) is a type of string
       header_value = http_header_config.value["header_value"]
     }
   }
@@ -310,15 +334,19 @@ resource "alicloud_cdn_domain" "this" {
   dynamic "page_404_config" {
     for_each = var.page_404_config
     content {
+      # custom_page_url - (optional) is a type of string
       custom_page_url = page_404_config.value["custom_page_url"]
-      page_type       = page_404_config.value["page_type"]
+      # page_type - (optional) is a type of string
+      page_type = page_404_config.value["page_type"]
     }
   }
 
   dynamic "parameter_filter_config" {
     for_each = var.parameter_filter_config
     content {
-      enable        = parameter_filter_config.value["enable"]
+      # enable - (optional) is a type of string
+      enable = parameter_filter_config.value["enable"]
+      # hash_key_args - (optional) is a type of list of string
       hash_key_args = parameter_filter_config.value["hash_key_args"]
     }
   }
@@ -326,9 +354,12 @@ resource "alicloud_cdn_domain" "this" {
   dynamic "refer_config" {
     for_each = var.refer_config
     content {
+      # allow_empty - (optional) is a type of string
       allow_empty = refer_config.value["allow_empty"]
-      refer_list  = refer_config.value["refer_list"]
-      refer_type  = refer_config.value["refer_type"]
+      # refer_list - (required) is a type of list of string
+      refer_list = refer_config.value["refer_list"]
+      # refer_type - (optional) is a type of string
+      refer_type = refer_config.value["refer_type"]
     }
   }
 

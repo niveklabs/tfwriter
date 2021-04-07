@@ -300,54 +300,82 @@ variable "variable" {
 
 ```terraform
 resource "signalfx_dashboard" "this" {
-  authorized_writer_teams     = var.authorized_writer_teams
-  authorized_writer_users     = var.authorized_writer_users
-  charts_resolution           = var.charts_resolution
-  dashboard_group             = var.dashboard_group
-  description                 = var.description
-  discovery_options_query     = var.discovery_options_query
+  # authorized_writer_teams - (optional) is a type of set of string
+  authorized_writer_teams = var.authorized_writer_teams
+  # authorized_writer_users - (optional) is a type of set of string
+  authorized_writer_users = var.authorized_writer_users
+  # charts_resolution - (optional) is a type of string
+  charts_resolution = var.charts_resolution
+  # dashboard_group - (required) is a type of string
+  dashboard_group = var.dashboard_group
+  # description - (optional) is a type of string
+  description = var.description
+  # discovery_options_query - (optional) is a type of string
+  discovery_options_query = var.discovery_options_query
+  # discovery_options_selectors - (optional) is a type of set of string
   discovery_options_selectors = var.discovery_options_selectors
-  end_time                    = var.end_time
-  name                        = var.name
-  start_time                  = var.start_time
-  time_range                  = var.time_range
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # name - (required) is a type of string
+  name = var.name
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # time_range - (optional) is a type of string
+  time_range = var.time_range
 
   dynamic "chart" {
     for_each = var.chart
     content {
+      # chart_id - (required) is a type of string
       chart_id = chart.value["chart_id"]
-      column   = chart.value["column"]
-      height   = chart.value["height"]
-      row      = chart.value["row"]
-      width    = chart.value["width"]
+      # column - (optional) is a type of number
+      column = chart.value["column"]
+      # height - (optional) is a type of number
+      height = chart.value["height"]
+      # row - (optional) is a type of number
+      row = chart.value["row"]
+      # width - (optional) is a type of number
+      width = chart.value["width"]
     }
   }
 
   dynamic "column" {
     for_each = var.column
     content {
+      # chart_ids - (required) is a type of list of string
       chart_ids = column.value["chart_ids"]
-      column    = column.value["column"]
-      height    = column.value["height"]
-      width     = column.value["width"]
+      # column - (optional) is a type of number
+      column = column.value["column"]
+      # height - (optional) is a type of number
+      height = column.value["height"]
+      # width - (optional) is a type of number
+      width = column.value["width"]
     }
   }
 
   dynamic "event_overlay" {
     for_each = var.event_overlay
     content {
-      color  = event_overlay.value["color"]
-      label  = event_overlay.value["label"]
-      line   = event_overlay.value["line"]
+      # color - (optional) is a type of string
+      color = event_overlay.value["color"]
+      # label - (optional) is a type of string
+      label = event_overlay.value["label"]
+      # line - (optional) is a type of bool
+      line = event_overlay.value["line"]
+      # signal - (required) is a type of string
       signal = event_overlay.value["signal"]
-      type   = event_overlay.value["type"]
+      # type - (optional) is a type of string
+      type = event_overlay.value["type"]
 
       dynamic "source" {
         for_each = event_overlay.value.source
         content {
-          negated  = source.value["negated"]
+          # negated - (optional) is a type of bool
+          negated = source.value["negated"]
+          # property - (required) is a type of string
           property = source.value["property"]
-          values   = source.value["values"]
+          # values - (required) is a type of set of string
+          values = source.value["values"]
         }
       }
 
@@ -357,34 +385,46 @@ resource "signalfx_dashboard" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
+      # apply_if_exist - (optional) is a type of bool
       apply_if_exist = filter.value["apply_if_exist"]
-      negated        = filter.value["negated"]
-      property       = filter.value["property"]
-      values         = filter.value["values"]
+      # negated - (optional) is a type of bool
+      negated = filter.value["negated"]
+      # property - (required) is a type of string
+      property = filter.value["property"]
+      # values - (required) is a type of set of string
+      values = filter.value["values"]
     }
   }
 
   dynamic "grid" {
     for_each = var.grid
     content {
+      # chart_ids - (required) is a type of list of string
       chart_ids = grid.value["chart_ids"]
-      height    = grid.value["height"]
-      width     = grid.value["width"]
+      # height - (optional) is a type of number
+      height = grid.value["height"]
+      # width - (optional) is a type of number
+      width = grid.value["width"]
     }
   }
 
   dynamic "selected_event_overlay" {
     for_each = var.selected_event_overlay
     content {
+      # signal - (required) is a type of string
       signal = selected_event_overlay.value["signal"]
-      type   = selected_event_overlay.value["type"]
+      # type - (optional) is a type of string
+      type = selected_event_overlay.value["type"]
 
       dynamic "source" {
         for_each = selected_event_overlay.value.source
         content {
-          negated  = source.value["negated"]
+          # negated - (optional) is a type of bool
+          negated = source.value["negated"]
+          # property - (required) is a type of string
           property = source.value["property"]
-          values   = source.value["values"]
+          # values - (required) is a type of set of string
+          values = source.value["values"]
         }
       }
 
@@ -394,15 +434,24 @@ resource "signalfx_dashboard" "this" {
   dynamic "variable" {
     for_each = var.variable
     content {
-      alias                  = variable.value["alias"]
-      apply_if_exist         = variable.value["apply_if_exist"]
-      description            = variable.value["description"]
-      property               = variable.value["property"]
-      replace_only           = variable.value["replace_only"]
+      # alias - (required) is a type of string
+      alias = variable.value["alias"]
+      # apply_if_exist - (optional) is a type of bool
+      apply_if_exist = variable.value["apply_if_exist"]
+      # description - (optional) is a type of string
+      description = variable.value["description"]
+      # property - (required) is a type of string
+      property = variable.value["property"]
+      # replace_only - (optional) is a type of bool
+      replace_only = variable.value["replace_only"]
+      # restricted_suggestions - (optional) is a type of bool
       restricted_suggestions = variable.value["restricted_suggestions"]
-      value_required         = variable.value["value_required"]
-      values                 = variable.value["values"]
-      values_suggested       = variable.value["values_suggested"]
+      # value_required - (optional) is a type of bool
+      value_required = variable.value["value_required"]
+      # values - (optional) is a type of set of string
+      values = variable.value["values"]
+      # values_suggested - (optional) is a type of set of string
+      values_suggested = variable.value["values_suggested"]
     }
   }
 

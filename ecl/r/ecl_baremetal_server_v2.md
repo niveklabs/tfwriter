@@ -249,22 +249,35 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_baremetal_server_v2" "this" {
-  admin_pass        = var.admin_pass
+  # admin_pass - (optional) is a type of string
+  admin_pass = var.admin_pass
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  flavor_id         = var.flavor_id
-  flavor_name       = var.flavor_name
-  image_id          = var.image_id
-  image_name        = var.image_name
-  key_pair          = var.key_pair
-  metadata          = var.metadata
-  name              = var.name
-  user_data         = var.user_data
+  # flavor_id - (optional) is a type of string
+  flavor_id = var.flavor_id
+  # flavor_name - (optional) is a type of string
+  flavor_name = var.flavor_name
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "filesystems" {
     for_each = var.filesystems
     content {
-      fs_type     = filesystems.value["fs_type"]
-      label       = filesystems.value["label"]
+      # fs_type - (optional) is a type of string
+      fs_type = filesystems.value["fs_type"]
+      # label - (optional) is a type of string
+      label = filesystems.value["label"]
+      # mount_point - (optional) is a type of string
       mount_point = filesystems.value["mount_point"]
     }
   }
@@ -272,14 +285,18 @@ resource "ecl_baremetal_server_v2" "this" {
   dynamic "lvm_volume_groups" {
     for_each = var.lvm_volume_groups
     content {
+      # physical_volume_partition_labels - (optional) is a type of list of string
       physical_volume_partition_labels = lvm_volume_groups.value["physical_volume_partition_labels"]
-      vg_label                         = lvm_volume_groups.value["vg_label"]
+      # vg_label - (optional) is a type of string
+      vg_label = lvm_volume_groups.value["vg_label"]
 
       dynamic "logical_volumes" {
         for_each = lvm_volume_groups.value.logical_volumes
         content {
+          # lv_label - (optional) is a type of string
           lv_label = logical_volumes.value["lv_label"]
-          size     = logical_volumes.value["size"]
+          # size - (optional) is a type of string
+          size = logical_volumes.value["size"]
         }
       }
 
@@ -289,35 +306,48 @@ resource "ecl_baremetal_server_v2" "this" {
   dynamic "networks" {
     for_each = var.networks
     content {
+      # fixed_ip - (optional) is a type of string
       fixed_ip = networks.value["fixed_ip"]
-      plane    = networks.value["plane"]
-      port     = networks.value["port"]
-      uuid     = networks.value["uuid"]
+      # plane - (optional) is a type of string
+      plane = networks.value["plane"]
+      # port - (optional) is a type of string
+      port = networks.value["port"]
+      # uuid - (optional) is a type of string
+      uuid = networks.value["uuid"]
     }
   }
 
   dynamic "personality" {
     for_each = var.personality
     content {
+      # contents - (optional) is a type of string
       contents = personality.value["contents"]
-      path     = personality.value["path"]
+      # path - (optional) is a type of string
+      path = personality.value["path"]
     }
   }
 
   dynamic "raid_arrays" {
     for_each = var.raid_arrays
     content {
-      disk_hardware_ids     = raid_arrays.value["disk_hardware_ids"]
-      primary_storage       = raid_arrays.value["primary_storage"]
+      # disk_hardware_ids - (optional) is a type of list of string
+      disk_hardware_ids = raid_arrays.value["disk_hardware_ids"]
+      # primary_storage - (optional) is a type of bool
+      primary_storage = raid_arrays.value["primary_storage"]
+      # raid_card_hardware_id - (optional) is a type of string
       raid_card_hardware_id = raid_arrays.value["raid_card_hardware_id"]
-      raid_level            = raid_arrays.value["raid_level"]
+      # raid_level - (optional) is a type of number
+      raid_level = raid_arrays.value["raid_level"]
 
       dynamic "partitions" {
         for_each = raid_arrays.value.partitions
         content {
-          lvm             = partitions.value["lvm"]
+          # lvm - (optional) is a type of bool
+          lvm = partitions.value["lvm"]
+          # partition_label - (optional) is a type of string
           partition_label = partitions.value["partition_label"]
-          size            = partitions.value["size"]
+          # size - (optional) is a type of string
+          size = partitions.value["size"]
         }
       }
 
@@ -327,7 +357,9 @@ resource "ecl_baremetal_server_v2" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

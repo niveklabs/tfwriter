@@ -90,12 +90,18 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewall_internetservicename" "this" {
-  city_id             = var.city_id
-  country_id          = var.country_id
+  # city_id - (optional) is a type of number
+  city_id = var.city_id
+  # country_id - (optional) is a type of number
+  country_id = var.country_id
+  # internet_service_id - (optional) is a type of number
   internet_service_id = var.internet_service_id
-  name                = var.name
-  region_id           = var.region_id
-  type                = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # region_id - (optional) is a type of number
+  region_id = var.region_id
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

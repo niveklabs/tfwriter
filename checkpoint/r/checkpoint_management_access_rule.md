@@ -258,43 +258,72 @@ variable "user_check" {
 
 ```terraform
 resource "checkpoint_management_access_rule" "this" {
-  action             = var.action
-  action_settings    = var.action_settings
-  comments           = var.comments
-  content            = var.content
-  content_direction  = var.content_direction
-  content_negate     = var.content_negate
-  custom_fields      = var.custom_fields
-  destination        = var.destination
+  # action - (optional) is a type of string
+  action = var.action
+  # action_settings - (optional) is a type of map of string
+  action_settings = var.action_settings
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # content - (optional) is a type of set of string
+  content = var.content
+  # content_direction - (optional) is a type of string
+  content_direction = var.content_direction
+  # content_negate - (optional) is a type of bool
+  content_negate = var.content_negate
+  # custom_fields - (optional) is a type of map of string
+  custom_fields = var.custom_fields
+  # destination - (optional) is a type of set of string
+  destination = var.destination
+  # destination_negate - (optional) is a type of bool
   destination_negate = var.destination_negate
-  enabled            = var.enabled
-  ignore_errors      = var.ignore_errors
-  ignore_warnings    = var.ignore_warnings
-  inline_layer       = var.inline_layer
-  install_on         = var.install_on
-  layer              = var.layer
-  name               = var.name
-  position           = var.position
-  service            = var.service
-  service_negate     = var.service_negate
-  source             = var.source
-  source_negate      = var.source_negate
-  time               = var.time
-  track              = var.track
-  vpn                = var.vpn
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # inline_layer - (optional) is a type of string
+  inline_layer = var.inline_layer
+  # install_on - (optional) is a type of set of string
+  install_on = var.install_on
+  # layer - (required) is a type of string
+  layer = var.layer
+  # name - (required) is a type of string
+  name = var.name
+  # position - (required) is a type of map of string
+  position = var.position
+  # service - (optional) is a type of set of string
+  service = var.service
+  # service_negate - (optional) is a type of bool
+  service_negate = var.service_negate
+  # source - (optional) is a type of set of string
+  source = var.source
+  # source_negate - (optional) is a type of bool
+  source_negate = var.source_negate
+  # time - (optional) is a type of set of string
+  time = var.time
+  # track - (optional) is a type of map of string
+  track = var.track
+  # vpn - (optional) is a type of string
+  vpn = var.vpn
 
   dynamic "user_check" {
     for_each = var.user_check
     content {
-      confirm     = user_check.value["confirm"]
-      frequency   = user_check.value["frequency"]
+      # confirm - (optional) is a type of string
+      confirm = user_check.value["confirm"]
+      # frequency - (optional) is a type of string
+      frequency = user_check.value["frequency"]
+      # interaction - (optional) is a type of string
       interaction = user_check.value["interaction"]
 
       dynamic "custom_frequency" {
         for_each = user_check.value.custom_frequency
         content {
+          # every - (optional) is a type of number
           every = custom_frequency.value["every"]
-          unit  = custom_frequency.value["unit"]
+          # unit - (optional) is a type of string
+          unit = custom_frequency.value["unit"]
         }
       }
 

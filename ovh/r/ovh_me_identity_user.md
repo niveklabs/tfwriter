@@ -79,11 +79,16 @@ variable "password" {
 
 ```terraform
 resource "ovh_me_identity_user" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  email       = var.email
-  group       = var.group
-  login       = var.login
-  password    = var.password
+  # email - (required) is a type of string
+  email = var.email
+  # group - (optional) is a type of string
+  group = var.group
+  # login - (required) is a type of string
+  login = var.login
+  # password - (required) is a type of string
+  password = var.password
 }
 ```
 

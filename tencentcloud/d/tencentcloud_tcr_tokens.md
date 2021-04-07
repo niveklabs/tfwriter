@@ -65,9 +65,12 @@ variable "token_id" {
 
 ```terraform
 data "tencentcloud_tcr_tokens" "this" {
-  instance_id        = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  token_id           = var.token_id
+  # token_id - (optional) is a type of string
+  token_id = var.token_id
 }
 ```
 

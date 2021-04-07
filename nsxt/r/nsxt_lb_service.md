@@ -113,19 +113,28 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_service" "this" {
-  description        = var.description
-  display_name       = var.display_name
-  enabled            = var.enabled
-  error_log_level    = var.error_log_level
-  logical_router_id  = var.logical_router_id
-  size               = var.size
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # error_log_level - (optional) is a type of string
+  error_log_level = var.error_log_level
+  # logical_router_id - (required) is a type of string
+  logical_router_id = var.logical_router_id
+  # size - (optional) is a type of string
+  size = var.size
+  # virtual_server_ids - (optional) is a type of set of string
   virtual_server_ids = var.virtual_server_ids
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

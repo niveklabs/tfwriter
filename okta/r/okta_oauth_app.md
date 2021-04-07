@@ -304,50 +304,85 @@ variable "users" {
 
 ```terraform
 resource "okta_oauth_app" "this" {
-  auto_key_rotation          = var.auto_key_rotation
-  auto_submit_toolbar        = var.auto_submit_toolbar
-  client_basic_secret        = var.client_basic_secret
-  client_id                  = var.client_id
-  client_uri                 = var.client_uri
-  consent_method             = var.consent_method
-  custom_client_id           = var.custom_client_id
-  grant_types                = var.grant_types
-  groups                     = var.groups
-  hide_ios                   = var.hide_ios
-  hide_web                   = var.hide_web
-  implicit_assignment        = var.implicit_assignment
-  issuer_mode                = var.issuer_mode
-  label                      = var.label
-  login_mode                 = var.login_mode
-  login_scopes               = var.login_scopes
-  login_uri                  = var.login_uri
-  logo_uri                   = var.logo_uri
-  omit_secret                = var.omit_secret
-  policy_uri                 = var.policy_uri
-  post_logout_redirect_uris  = var.post_logout_redirect_uris
-  profile                    = var.profile
-  redirect_uris              = var.redirect_uris
-  response_types             = var.response_types
-  status                     = var.status
+  # auto_key_rotation - (optional) is a type of bool
+  auto_key_rotation = var.auto_key_rotation
+  # auto_submit_toolbar - (optional) is a type of bool
+  auto_submit_toolbar = var.auto_submit_toolbar
+  # client_basic_secret - (optional) is a type of string
+  client_basic_secret = var.client_basic_secret
+  # client_id - (optional) is a type of string
+  client_id = var.client_id
+  # client_uri - (optional) is a type of string
+  client_uri = var.client_uri
+  # consent_method - (optional) is a type of string
+  consent_method = var.consent_method
+  # custom_client_id - (optional) is a type of string
+  custom_client_id = var.custom_client_id
+  # grant_types - (optional) is a type of set of string
+  grant_types = var.grant_types
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # implicit_assignment - (optional) is a type of bool
+  implicit_assignment = var.implicit_assignment
+  # issuer_mode - (optional) is a type of string
+  issuer_mode = var.issuer_mode
+  # label - (required) is a type of string
+  label = var.label
+  # login_mode - (optional) is a type of string
+  login_mode = var.login_mode
+  # login_scopes - (optional) is a type of set of string
+  login_scopes = var.login_scopes
+  # login_uri - (optional) is a type of string
+  login_uri = var.login_uri
+  # logo_uri - (optional) is a type of string
+  logo_uri = var.logo_uri
+  # omit_secret - (optional) is a type of bool
+  omit_secret = var.omit_secret
+  # policy_uri - (optional) is a type of string
+  policy_uri = var.policy_uri
+  # post_logout_redirect_uris - (optional) is a type of set of string
+  post_logout_redirect_uris = var.post_logout_redirect_uris
+  # profile - (optional) is a type of string
+  profile = var.profile
+  # redirect_uris - (optional) is a type of set of string
+  redirect_uris = var.redirect_uris
+  # response_types - (optional) is a type of set of string
+  response_types = var.response_types
+  # status - (optional) is a type of string
+  status = var.status
+  # token_endpoint_auth_method - (optional) is a type of string
   token_endpoint_auth_method = var.token_endpoint_auth_method
-  tos_uri                    = var.tos_uri
-  type                       = var.type
+  # tos_uri - (optional) is a type of string
+  tos_uri = var.tos_uri
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "jwks" {
     for_each = var.jwks
     content {
-      e   = jwks.value["e"]
+      # e - (optional) is a type of string
+      e = jwks.value["e"]
+      # kid - (required) is a type of string
       kid = jwks.value["kid"]
+      # kty - (required) is a type of string
       kty = jwks.value["kty"]
-      n   = jwks.value["n"]
+      # n - (optional) is a type of string
+      n = jwks.value["n"]
     }
   }
 
   dynamic "users" {
     for_each = var.users
     content {
-      id       = users.value["id"]
+      # id - (optional) is a type of string
+      id = users.value["id"]
+      # password - (optional) is a type of string
       password = users.value["password"]
+      # username - (optional) is a type of string
       username = users.value["username"]
     }
   }

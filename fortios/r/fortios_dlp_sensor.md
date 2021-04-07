@@ -193,40 +193,67 @@ variable "filter" {
 
 ```terraform
 resource "fortios_dlp_sensor" "this" {
-  comment               = var.comment
-  dlp_log               = var.dlp_log
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dlp_log - (optional) is a type of string
+  dlp_log = var.dlp_log
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  extended_log          = var.extended_log
-  feature_set           = var.feature_set
-  flow_based            = var.flow_based
-  full_archive_proto    = var.full_archive_proto
-  nac_quar_log          = var.nac_quar_log
-  name                  = var.name
-  options               = var.options
-  replacemsg_group      = var.replacemsg_group
-  summary_proto         = var.summary_proto
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
+  # flow_based - (optional) is a type of string
+  flow_based = var.flow_based
+  # full_archive_proto - (optional) is a type of string
+  full_archive_proto = var.full_archive_proto
+  # nac_quar_log - (optional) is a type of string
+  nac_quar_log = var.nac_quar_log
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # summary_proto - (optional) is a type of string
+  summary_proto = var.summary_proto
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      action             = filter.value["action"]
-      archive            = filter.value["archive"]
+      # action - (optional) is a type of string
+      action = filter.value["action"]
+      # archive - (optional) is a type of string
+      archive = filter.value["archive"]
+      # company_identifier - (optional) is a type of string
       company_identifier = filter.value["company_identifier"]
-      expiry             = filter.value["expiry"]
-      file_size          = filter.value["file_size"]
-      file_type          = filter.value["file_type"]
-      filter_by          = filter.value["filter_by"]
-      id                 = filter.value["id"]
-      match_percentage   = filter.value["match_percentage"]
-      name               = filter.value["name"]
-      proto              = filter.value["proto"]
-      regexp             = filter.value["regexp"]
-      severity           = filter.value["severity"]
-      type               = filter.value["type"]
+      # expiry - (optional) is a type of string
+      expiry = filter.value["expiry"]
+      # file_size - (optional) is a type of number
+      file_size = filter.value["file_size"]
+      # file_type - (optional) is a type of number
+      file_type = filter.value["file_type"]
+      # filter_by - (optional) is a type of string
+      filter_by = filter.value["filter_by"]
+      # id - (optional) is a type of number
+      id = filter.value["id"]
+      # match_percentage - (optional) is a type of number
+      match_percentage = filter.value["match_percentage"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # proto - (optional) is a type of string
+      proto = filter.value["proto"]
+      # regexp - (optional) is a type of string
+      regexp = filter.value["regexp"]
+      # severity - (optional) is a type of string
+      severity = filter.value["severity"]
+      # type - (optional) is a type of string
+      type = filter.value["type"]
 
       dynamic "fp_sensitivity" {
         for_each = filter.value.fp_sensitivity
         content {
+          # name - (optional) is a type of string
           name = fp_sensitivity.value["name"]
         }
       }
@@ -234,6 +261,7 @@ resource "fortios_dlp_sensor" "this" {
       dynamic "sensitivity" {
         for_each = filter.value.sensitivity
         content {
+          # name - (optional) is a type of string
           name = sensitivity.value["name"]
         }
       }

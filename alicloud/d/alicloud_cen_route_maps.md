@@ -97,12 +97,19 @@ variable "transmit_direction" {
 
 ```terraform
 data "alicloud_cen_route_maps" "this" {
-  cen_id             = var.cen_id
-  cen_region_id      = var.cen_region_id
-  description_regex  = var.description_regex
-  ids                = var.ids
-  output_file        = var.output_file
-  status             = var.status
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # cen_region_id - (optional) is a type of string
+  cen_region_id = var.cen_region_id
+  # description_regex - (optional) is a type of string
+  description_regex = var.description_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # transmit_direction - (optional) is a type of string
   transmit_direction = var.transmit_direction
 }
 ```

@@ -121,21 +121,32 @@ variable "rule_list" {
 
 ```terraform
 resource "tencentcloud_dayu_cc_http_policy" "this" {
-  action        = var.action
-  frequency     = var.frequency
-  ip            = var.ip
-  name          = var.name
-  resource_id   = var.resource_id
+  # action - (optional) is a type of string
+  action = var.action
+  # frequency - (optional) is a type of number
+  frequency = var.frequency
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
   resource_type = var.resource_type
-  smode         = var.smode
-  switch        = var.switch
+  # smode - (optional) is a type of string
+  smode = var.smode
+  # switch - (optional) is a type of bool
+  switch = var.switch
 
   dynamic "rule_list" {
     for_each = var.rule_list
     content {
+      # operator - (optional) is a type of string
       operator = rule_list.value["operator"]
-      skey     = rule_list.value["skey"]
-      value    = rule_list.value["value"]
+      # skey - (optional) is a type of string
+      skey = rule_list.value["skey"]
+      # value - (optional) is a type of string
+      value = rule_list.value["value"]
     }
   }
 

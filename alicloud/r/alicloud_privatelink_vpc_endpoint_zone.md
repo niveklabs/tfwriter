@@ -88,15 +88,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_privatelink_vpc_endpoint_zone" "this" {
-  dry_run     = var.dry_run
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # endpoint_id - (required) is a type of string
   endpoint_id = var.endpoint_id
-  vswitch_id  = var.vswitch_id
-  zone_id     = var.zone_id
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

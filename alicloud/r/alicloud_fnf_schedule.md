@@ -105,18 +105,27 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_fnf_schedule" "this" {
+  # cron_expression - (required) is a type of string
   cron_expression = var.cron_expression
-  description     = var.description
-  enable          = var.enable
-  flow_name       = var.flow_name
-  payload         = var.payload
-  schedule_name   = var.schedule_name
+  # description - (optional) is a type of string
+  description = var.description
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # flow_name - (required) is a type of string
+  flow_name = var.flow_name
+  # payload - (optional) is a type of string
+  payload = var.payload
+  # schedule_name - (required) is a type of string
+  schedule_name = var.schedule_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

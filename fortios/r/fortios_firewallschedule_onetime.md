@@ -79,11 +79,16 @@ variable "start" {
 
 ```terraform
 resource "fortios_firewallschedule_onetime" "this" {
-  color           = var.color
-  end             = var.end
+  # color - (optional) is a type of number
+  color = var.color
+  # end - (required) is a type of string
+  end = var.end
+  # expiration_days - (optional) is a type of number
   expiration_days = var.expiration_days
-  name            = var.name
-  start           = var.start
+  # name - (required) is a type of string
+  name = var.name
+  # start - (required) is a type of string
+  start = var.start
 }
 ```
 

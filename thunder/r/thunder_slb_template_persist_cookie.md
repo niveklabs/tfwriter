@@ -202,26 +202,46 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_persist_cookie" "this" {
-  cookie_name           = var.cookie_name
-  domain                = var.domain
+  # cookie_name - (optional) is a type of string
+  cookie_name = var.cookie_name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # dont_honor_conn_rules - (optional) is a type of number
   dont_honor_conn_rules = var.dont_honor_conn_rules
-  encrypt_level         = var.encrypt_level
-  encrypted             = var.encrypted
-  expire                = var.expire
-  httponly              = var.httponly
-  insert_always         = var.insert_always
-  match_type            = var.match_type
-  name                  = var.name
-  pass_phrase           = var.pass_phrase
-  pass_thru             = var.pass_thru
-  path                  = var.path
-  scan_all_members      = var.scan_all_members
-  secure                = var.secure
-  server                = var.server
-  server_service_group  = var.server_service_group
-  service_group         = var.service_group
-  user_tag              = var.user_tag
-  uuid                  = var.uuid
+  # encrypt_level - (optional) is a type of number
+  encrypt_level = var.encrypt_level
+  # encrypted - (optional) is a type of string
+  encrypted = var.encrypted
+  # expire - (optional) is a type of number
+  expire = var.expire
+  # httponly - (optional) is a type of number
+  httponly = var.httponly
+  # insert_always - (optional) is a type of number
+  insert_always = var.insert_always
+  # match_type - (optional) is a type of number
+  match_type = var.match_type
+  # name - (optional) is a type of string
+  name = var.name
+  # pass_phrase - (optional) is a type of string
+  pass_phrase = var.pass_phrase
+  # pass_thru - (optional) is a type of number
+  pass_thru = var.pass_thru
+  # path - (optional) is a type of string
+  path = var.path
+  # scan_all_members - (optional) is a type of number
+  scan_all_members = var.scan_all_members
+  # secure - (optional) is a type of number
+  secure = var.secure
+  # server - (optional) is a type of number
+  server = var.server
+  # server_service_group - (optional) is a type of number
+  server_service_group = var.server_service_group
+  # service_group - (optional) is a type of number
+  service_group = var.service_group
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

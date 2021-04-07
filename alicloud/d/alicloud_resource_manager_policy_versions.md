@@ -80,11 +80,16 @@ variable "policy_type" {
 
 ```terraform
 data "alicloud_resource_manager_policy_versions" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  output_file    = var.output_file
-  policy_name    = var.policy_name
-  policy_type    = var.policy_type
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # policy_name - (required) is a type of string
+  policy_name = var.policy_name
+  # policy_type - (required) is a type of string
+  policy_type = var.policy_type
 }
 ```
 

@@ -71,9 +71,13 @@ variable "private_key" {
 
 ```terraform
 resource "hcloud_certificate" "this" {
+  # certificate - (required) is a type of string
   certificate = var.certificate
-  labels      = var.labels
-  name        = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # private_key - (required) is a type of string
   private_key = var.private_key
 }
 ```

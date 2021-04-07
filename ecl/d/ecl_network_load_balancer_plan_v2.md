@@ -106,18 +106,26 @@ variable "model" {
 
 ```terraform
 data "ecl_network_load_balancer_plan_v2" "this" {
-  description            = var.description
-  enabled                = var.enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # maximum_syslog_servers - (optional) is a type of number
   maximum_syslog_servers = var.maximum_syslog_servers
-  name                   = var.name
-  vendor                 = var.vendor
-  version                = var.version
+  # name - (optional) is a type of string
+  name = var.name
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "model" {
     for_each = var.model
     content {
+      # edition - (optional) is a type of string
       edition = model.value["edition"]
-      size    = model.value["size"]
+      # size - (optional) is a type of string
+      size = model.value["size"]
     }
   }
 

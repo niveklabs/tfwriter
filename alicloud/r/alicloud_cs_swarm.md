@@ -150,20 +150,34 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_cs_swarm" "this" {
-  cidr_block    = var.cidr_block
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # disk_category - (optional) is a type of string
   disk_category = var.disk_category
-  disk_size     = var.disk_size
-  image_id      = var.image_id
+  # disk_size - (optional) is a type of number
+  disk_size = var.disk_size
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # instance_type - (required) is a type of string
   instance_type = var.instance_type
-  is_outdated   = var.is_outdated
-  name          = var.name
-  name_prefix   = var.name_prefix
-  need_slb      = var.need_slb
-  node_number   = var.node_number
-  password      = var.password
-  release_eip   = var.release_eip
-  size          = var.size
-  vswitch_id    = var.vswitch_id
+  # is_outdated - (optional) is a type of bool
+  is_outdated = var.is_outdated
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # need_slb - (optional) is a type of bool
+  need_slb = var.need_slb
+  # node_number - (optional) is a type of number
+  node_number = var.node_number
+  # password - (required) is a type of string
+  password = var.password
+  # release_eip - (optional) is a type of bool
+  release_eip = var.release_eip
+  # size - (optional) is a type of number
+  size = var.size
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

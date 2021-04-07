@@ -145,22 +145,35 @@ variable "categories" {
 
 ```terraform
 resource "nutanix_image" "this" {
-  architecture                = var.architecture
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # availability_zone_reference - (optional) is a type of map of string
   availability_zone_reference = var.availability_zone_reference
-  checksum                    = var.checksum
-  description                 = var.description
-  image_type                  = var.image_type
-  name                        = var.name
-  owner_reference             = var.owner_reference
-  project_reference           = var.project_reference
-  source_path                 = var.source_path
-  source_uri                  = var.source_uri
-  version                     = var.version
+  # checksum - (optional) is a type of map of string
+  checksum = var.checksum
+  # description - (optional) is a type of string
+  description = var.description
+  # image_type - (optional) is a type of string
+  image_type = var.image_type
+  # name - (required) is a type of string
+  name = var.name
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # project_reference - (optional) is a type of map of string
+  project_reference = var.project_reference
+  # source_path - (optional) is a type of string
+  source_path = var.source_path
+  # source_uri - (optional) is a type of string
+  source_uri = var.source_uri
+  # version - (optional) is a type of map of string
+  version = var.version
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

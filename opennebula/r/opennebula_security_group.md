@@ -114,23 +114,36 @@ variable "rule" {
 
 ```terraform
 resource "opennebula_security_group" "this" {
-  commit      = var.commit
+  # commit - (optional) is a type of bool
+  commit = var.commit
+  # description - (optional) is a type of string
   description = var.description
-  group       = var.group
-  name        = var.name
+  # group - (optional) is a type of string
+  group = var.group
+  # name - (required) is a type of string
+  name = var.name
+  # permissions - (optional) is a type of string
   permissions = var.permissions
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      icmp_type  = rule.value["icmp_type"]
-      ip         = rule.value["ip"]
+      # icmp_type - (optional) is a type of string
+      icmp_type = rule.value["icmp_type"]
+      # ip - (optional) is a type of string
+      ip = rule.value["ip"]
+      # network_id - (optional) is a type of string
       network_id = rule.value["network_id"]
-      protocol   = rule.value["protocol"]
-      range      = rule.value["range"]
-      rule_type  = rule.value["rule_type"]
-      size       = rule.value["size"]
+      # protocol - (required) is a type of string
+      protocol = rule.value["protocol"]
+      # range - (optional) is a type of string
+      range = rule.value["range"]
+      # rule_type - (required) is a type of string
+      rule_type = rule.value["rule_type"]
+      # size - (optional) is a type of string
+      size = rule.value["size"]
     }
   }
 

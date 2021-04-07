@@ -92,12 +92,19 @@ variable "service_bandwidth" {
 
 ```terraform
 resource "alicloud_ddoscoo_instance" "this" {
-  bandwidth         = var.bandwidth
-  base_bandwidth    = var.base_bandwidth
-  domain_count      = var.domain_count
-  name              = var.name
-  period            = var.period
-  port_count        = var.port_count
+  # bandwidth - (required) is a type of string
+  bandwidth = var.bandwidth
+  # base_bandwidth - (required) is a type of string
+  base_bandwidth = var.base_bandwidth
+  # domain_count - (required) is a type of string
+  domain_count = var.domain_count
+  # name - (required) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # port_count - (required) is a type of string
+  port_count = var.port_count
+  # service_bandwidth - (required) is a type of string
   service_bandwidth = var.service_bandwidth
 }
 ```

@@ -65,9 +65,12 @@ variable "timezone" {
 
 ```terraform
 resource "bigip_sys_ntp" "this" {
+  # description - (required) is a type of string
   description = var.description
-  servers     = var.servers
-  timezone    = var.timezone
+  # servers - (optional) is a type of set of string
+  servers = var.servers
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

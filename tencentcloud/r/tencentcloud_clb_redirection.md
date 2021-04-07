@@ -95,13 +95,20 @@ variable "target_rule_id" {
 
 ```terraform
 resource "tencentcloud_clb_redirection" "this" {
-  clb_id                  = var.clb_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # delete_all_auto_rewrite - (optional) is a type of bool
   delete_all_auto_rewrite = var.delete_all_auto_rewrite
-  is_auto_rewrite         = var.is_auto_rewrite
-  source_listener_id      = var.source_listener_id
-  source_rule_id          = var.source_rule_id
-  target_listener_id      = var.target_listener_id
-  target_rule_id          = var.target_rule_id
+  # is_auto_rewrite - (optional) is a type of bool
+  is_auto_rewrite = var.is_auto_rewrite
+  # source_listener_id - (optional) is a type of string
+  source_listener_id = var.source_listener_id
+  # source_rule_id - (optional) is a type of string
+  source_rule_id = var.source_rule_id
+  # target_listener_id - (required) is a type of string
+  target_listener_id = var.target_listener_id
+  # target_rule_id - (required) is a type of string
+  target_rule_id = var.target_rule_id
 }
 ```
 

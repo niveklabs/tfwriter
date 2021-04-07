@@ -483,62 +483,118 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_transit_gateway" "this" {
-  account_name                         = var.account_name
-  allocate_new_eip                     = var.allocate_new_eip
-  bgp_ecmp                             = var.bgp_ecmp
-  bgp_manual_spoke_advertise_cidrs     = var.bgp_manual_spoke_advertise_cidrs
-  bgp_polling_time                     = var.bgp_polling_time
-  cloud_type                           = var.cloud_type
-  connected_transit                    = var.connected_transit
-  customer_managed_keys                = var.customer_managed_keys
-  customized_spoke_vpc_routes          = var.customized_spoke_vpc_routes
-  customized_transit_vpc_routes        = var.customized_transit_vpc_routes
-  eip                                  = var.eip
-  enable_active_mesh                   = var.enable_active_mesh
-  enable_active_standby                = var.enable_active_standby
-  enable_advertise_transit_cidr        = var.enable_advertise_transit_cidr
-  enable_bgp_over_lan                  = var.enable_bgp_over_lan
-  enable_egress_transit_firenet        = var.enable_egress_transit_firenet
-  enable_encrypt_volume                = var.enable_encrypt_volume
-  enable_firenet                       = var.enable_firenet
-  enable_gateway_load_balancer         = var.enable_gateway_load_balancer
-  enable_hybrid_connection             = var.enable_hybrid_connection
-  enable_jumbo_frame                   = var.enable_jumbo_frame
-  enable_learned_cidrs_approval        = var.enable_learned_cidrs_approval
-  enable_monitor_gateway_subnets       = var.enable_monitor_gateway_subnets
-  enable_private_oob                   = var.enable_private_oob
-  enable_segmentation                  = var.enable_segmentation
-  enable_transit_firenet               = var.enable_transit_firenet
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # allocate_new_eip - (optional) is a type of bool
+  allocate_new_eip = var.allocate_new_eip
+  # bgp_ecmp - (optional) is a type of bool
+  bgp_ecmp = var.bgp_ecmp
+  # bgp_manual_spoke_advertise_cidrs - (optional) is a type of string
+  bgp_manual_spoke_advertise_cidrs = var.bgp_manual_spoke_advertise_cidrs
+  # bgp_polling_time - (optional) is a type of string
+  bgp_polling_time = var.bgp_polling_time
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # connected_transit - (optional) is a type of bool
+  connected_transit = var.connected_transit
+  # customer_managed_keys - (optional) is a type of string
+  customer_managed_keys = var.customer_managed_keys
+  # customized_spoke_vpc_routes - (optional) is a type of string
+  customized_spoke_vpc_routes = var.customized_spoke_vpc_routes
+  # customized_transit_vpc_routes - (optional) is a type of set of string
+  customized_transit_vpc_routes = var.customized_transit_vpc_routes
+  # eip - (optional) is a type of string
+  eip = var.eip
+  # enable_active_mesh - (optional) is a type of bool
+  enable_active_mesh = var.enable_active_mesh
+  # enable_active_standby - (optional) is a type of bool
+  enable_active_standby = var.enable_active_standby
+  # enable_advertise_transit_cidr - (optional) is a type of bool
+  enable_advertise_transit_cidr = var.enable_advertise_transit_cidr
+  # enable_bgp_over_lan - (optional) is a type of bool
+  enable_bgp_over_lan = var.enable_bgp_over_lan
+  # enable_egress_transit_firenet - (optional) is a type of bool
+  enable_egress_transit_firenet = var.enable_egress_transit_firenet
+  # enable_encrypt_volume - (optional) is a type of bool
+  enable_encrypt_volume = var.enable_encrypt_volume
+  # enable_firenet - (optional) is a type of bool
+  enable_firenet = var.enable_firenet
+  # enable_gateway_load_balancer - (optional) is a type of bool
+  enable_gateway_load_balancer = var.enable_gateway_load_balancer
+  # enable_hybrid_connection - (optional) is a type of bool
+  enable_hybrid_connection = var.enable_hybrid_connection
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = var.enable_jumbo_frame
+  # enable_learned_cidrs_approval - (optional) is a type of bool
+  enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
+  # enable_monitor_gateway_subnets - (optional) is a type of bool
+  enable_monitor_gateway_subnets = var.enable_monitor_gateway_subnets
+  # enable_private_oob - (optional) is a type of bool
+  enable_private_oob = var.enable_private_oob
+  # enable_segmentation - (optional) is a type of bool
+  enable_segmentation = var.enable_segmentation
+  # enable_transit_firenet - (optional) is a type of bool
+  enable_transit_firenet = var.enable_transit_firenet
+  # enable_transit_summarize_cidr_to_tgw - (optional) is a type of bool
   enable_transit_summarize_cidr_to_tgw = var.enable_transit_summarize_cidr_to_tgw
-  enable_vpc_dns_server                = var.enable_vpc_dns_server
-  excluded_advertised_spoke_routes     = var.excluded_advertised_spoke_routes
-  filtered_spoke_vpc_routes            = var.filtered_spoke_vpc_routes
-  gw_name                              = var.gw_name
-  gw_size                              = var.gw_size
-  ha_eip                               = var.ha_eip
-  ha_gw_size                           = var.ha_gw_size
-  ha_insane_mode_az                    = var.ha_insane_mode_az
-  ha_oob_availability_zone             = var.ha_oob_availability_zone
-  ha_oob_management_subnet             = var.ha_oob_management_subnet
-  ha_subnet                            = var.ha_subnet
-  ha_zone                              = var.ha_zone
-  insane_mode                          = var.insane_mode
-  insane_mode_az                       = var.insane_mode_az
-  lan_private_subnet                   = var.lan_private_subnet
-  lan_vpc_id                           = var.lan_vpc_id
-  learned_cidrs_approval_mode          = var.learned_cidrs_approval_mode
-  local_as_number                      = var.local_as_number
-  monitor_exclude_list                 = var.monitor_exclude_list
-  oob_availability_zone                = var.oob_availability_zone
-  oob_management_subnet                = var.oob_management_subnet
-  prepend_as_path                      = var.prepend_as_path
-  single_az_ha                         = var.single_az_ha
-  single_ip_snat                       = var.single_ip_snat
-  subnet                               = var.subnet
-  tag_list                             = var.tag_list
-  vpc_id                               = var.vpc_id
-  vpc_reg                              = var.vpc_reg
-  zone                                 = var.zone
+  # enable_vpc_dns_server - (optional) is a type of bool
+  enable_vpc_dns_server = var.enable_vpc_dns_server
+  # excluded_advertised_spoke_routes - (optional) is a type of string
+  excluded_advertised_spoke_routes = var.excluded_advertised_spoke_routes
+  # filtered_spoke_vpc_routes - (optional) is a type of string
+  filtered_spoke_vpc_routes = var.filtered_spoke_vpc_routes
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # gw_size - (required) is a type of string
+  gw_size = var.gw_size
+  # ha_eip - (optional) is a type of string
+  ha_eip = var.ha_eip
+  # ha_gw_size - (optional) is a type of string
+  ha_gw_size = var.ha_gw_size
+  # ha_insane_mode_az - (optional) is a type of string
+  ha_insane_mode_az = var.ha_insane_mode_az
+  # ha_oob_availability_zone - (optional) is a type of string
+  ha_oob_availability_zone = var.ha_oob_availability_zone
+  # ha_oob_management_subnet - (optional) is a type of string
+  ha_oob_management_subnet = var.ha_oob_management_subnet
+  # ha_subnet - (optional) is a type of string
+  ha_subnet = var.ha_subnet
+  # ha_zone - (optional) is a type of string
+  ha_zone = var.ha_zone
+  # insane_mode - (optional) is a type of bool
+  insane_mode = var.insane_mode
+  # insane_mode_az - (optional) is a type of string
+  insane_mode_az = var.insane_mode_az
+  # lan_private_subnet - (optional) is a type of string
+  lan_private_subnet = var.lan_private_subnet
+  # lan_vpc_id - (optional) is a type of string
+  lan_vpc_id = var.lan_vpc_id
+  # learned_cidrs_approval_mode - (optional) is a type of string
+  learned_cidrs_approval_mode = var.learned_cidrs_approval_mode
+  # local_as_number - (optional) is a type of string
+  local_as_number = var.local_as_number
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = var.monitor_exclude_list
+  # oob_availability_zone - (optional) is a type of string
+  oob_availability_zone = var.oob_availability_zone
+  # oob_management_subnet - (optional) is a type of string
+  oob_management_subnet = var.oob_management_subnet
+  # prepend_as_path - (optional) is a type of list of string
+  prepend_as_path = var.prepend_as_path
+  # single_az_ha - (optional) is a type of bool
+  single_az_ha = var.single_az_ha
+  # single_ip_snat - (optional) is a type of bool
+  single_ip_snat = var.single_ip_snat
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tag_list - (optional) is a type of list of string
+  tag_list = var.tag_list
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_reg - (required) is a type of string
+  vpc_reg = var.vpc_reg
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

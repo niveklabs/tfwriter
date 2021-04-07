@@ -170,28 +170,46 @@ variable "network" {
 
 ```terraform
 resource "fortios_system_mobiletunnel" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  hash_algorithm        = var.hash_algorithm
-  home_address          = var.home_address
-  home_agent            = var.home_agent
-  lifetime              = var.lifetime
-  n_mhae_key            = var.n_mhae_key
-  n_mhae_key_type       = var.n_mhae_key_type
-  n_mhae_spi            = var.n_mhae_spi
-  name                  = var.name
-  reg_interval          = var.reg_interval
-  reg_retry             = var.reg_retry
-  renew_interval        = var.renew_interval
-  roaming_interface     = var.roaming_interface
-  status                = var.status
-  tunnel_mode           = var.tunnel_mode
+  # hash_algorithm - (required) is a type of string
+  hash_algorithm = var.hash_algorithm
+  # home_address - (optional) is a type of string
+  home_address = var.home_address
+  # home_agent - (required) is a type of string
+  home_agent = var.home_agent
+  # lifetime - (required) is a type of number
+  lifetime = var.lifetime
+  # n_mhae_key - (optional) is a type of string
+  n_mhae_key = var.n_mhae_key
+  # n_mhae_key_type - (required) is a type of string
+  n_mhae_key_type = var.n_mhae_key_type
+  # n_mhae_spi - (required) is a type of number
+  n_mhae_spi = var.n_mhae_spi
+  # name - (optional) is a type of string
+  name = var.name
+  # reg_interval - (required) is a type of number
+  reg_interval = var.reg_interval
+  # reg_retry - (required) is a type of number
+  reg_retry = var.reg_retry
+  # renew_interval - (required) is a type of number
+  renew_interval = var.renew_interval
+  # roaming_interface - (required) is a type of string
+  roaming_interface = var.roaming_interface
+  # status - (optional) is a type of string
+  status = var.status
+  # tunnel_mode - (required) is a type of string
+  tunnel_mode = var.tunnel_mode
 
   dynamic "network" {
     for_each = var.network
     content {
-      id        = network.value["id"]
+      # id - (optional) is a type of number
+      id = network.value["id"]
+      # interface - (optional) is a type of string
       interface = network.value["interface"]
-      prefix    = network.value["prefix"]
+      # prefix - (optional) is a type of string
+      prefix = network.value["prefix"]
     }
   }
 

@@ -63,9 +63,12 @@ variable "username" {
 
 ```terraform
 resource "equinix_network_ssh_user" "this" {
+  # device_ids - (required) is a type of set of string
   device_ids = var.device_ids
-  password   = var.password
-  username   = var.username
+  # password - (required) is a type of string
+  password = var.password
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

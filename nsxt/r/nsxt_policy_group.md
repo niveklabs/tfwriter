@@ -177,14 +177,19 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  domain       = var.domain
-  nsx_id       = var.nsx_id
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "conjunction" {
     for_each = var.conjunction
     content {
+      # operator - (required) is a type of string
       operator = conjunction.value["operator"]
     }
   }
@@ -196,16 +201,21 @@ resource "nsxt_policy_group" "this" {
       dynamic "condition" {
         for_each = criteria.value.condition
         content {
-          key         = condition.value["key"]
+          # key - (required) is a type of string
+          key = condition.value["key"]
+          # member_type - (required) is a type of string
           member_type = condition.value["member_type"]
-          operator    = condition.value["operator"]
-          value       = condition.value["value"]
+          # operator - (required) is a type of string
+          operator = condition.value["operator"]
+          # value - (required) is a type of string
+          value = condition.value["value"]
         }
       }
 
       dynamic "ipaddress_expression" {
         for_each = criteria.value.ipaddress_expression
         content {
+          # ip_addresses - (required) is a type of set of string
           ip_addresses = ipaddress_expression.value["ip_addresses"]
         }
       }
@@ -213,6 +223,7 @@ resource "nsxt_policy_group" "this" {
       dynamic "macaddress_expression" {
         for_each = criteria.value.macaddress_expression
         content {
+          # mac_addresses - (required) is a type of set of string
           mac_addresses = macaddress_expression.value["mac_addresses"]
         }
       }
@@ -220,6 +231,7 @@ resource "nsxt_policy_group" "this" {
       dynamic "path_expression" {
         for_each = criteria.value.path_expression
         content {
+          # member_paths - (required) is a type of set of string
           member_paths = path_expression.value["member_paths"]
         }
       }
@@ -234,9 +246,12 @@ resource "nsxt_policy_group" "this" {
       dynamic "identity_group" {
         for_each = extended_criteria.value.identity_group
         content {
-          distinguished_name             = identity_group.value["distinguished_name"]
+          # distinguished_name - (optional) is a type of string
+          distinguished_name = identity_group.value["distinguished_name"]
+          # domain_base_distinguished_name - (optional) is a type of string
           domain_base_distinguished_name = identity_group.value["domain_base_distinguished_name"]
-          sid                            = identity_group.value["sid"]
+          # sid - (optional) is a type of string
+          sid = identity_group.value["sid"]
         }
       }
 
@@ -246,8 +261,10 @@ resource "nsxt_policy_group" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -123,17 +123,28 @@ variable "value" {
 
 ```terraform
 resource "mso_schema_template_anp_epg_useg_attr" "this" {
-  anp_name      = var.anp_name
-  category      = var.category
-  description   = var.description
-  epg_name      = var.epg_name
-  name          = var.name
-  operator      = var.operator
-  schema_id     = var.schema_id
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # category - (optional) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
+  description = var.description
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # name - (required) is a type of string
+  name = var.name
+  # operator - (optional) is a type of string
+  operator = var.operator
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  useg_subnet   = var.useg_subnet
-  useg_type     = var.useg_type
-  value         = var.value
+  # useg_subnet - (optional) is a type of bool
+  useg_subnet = var.useg_subnet
+  # useg_type - (required) is a type of string
+  useg_type = var.useg_type
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

@@ -74,10 +74,14 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_helper_sessions" "this" {
+  # idle_timeout - (optional) is a type of number
   idle_timeout = var.idle_timeout
-  limit        = var.limit
-  mode         = var.mode
-  uuid         = var.uuid
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

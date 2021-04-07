@@ -175,22 +175,30 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_predefined_security_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  path        = var.path
+  # path - (required) is a type of string
+  path = var.path
 
   dynamic "default_rule" {
     for_each = var.default_rule
     content {
-      action      = default_rule.value["action"]
+      # action - (optional) is a type of string
+      action = default_rule.value["action"]
+      # description - (optional) is a type of string
       description = default_rule.value["description"]
-      log_label   = default_rule.value["log_label"]
-      logged      = default_rule.value["logged"]
+      # log_label - (optional) is a type of string
+      log_label = default_rule.value["log_label"]
+      # logged - (optional) is a type of bool
+      logged = default_rule.value["logged"]
 
       dynamic "tag" {
         for_each = default_rule.value.tag
         content {
+          # scope - (optional) is a type of string
           scope = tag.value["scope"]
-          tag   = tag.value["tag"]
+          # tag - (optional) is a type of string
+          tag = tag.value["tag"]
         }
       }
 
@@ -200,30 +208,50 @@ resource "nsxt_policy_predefined_security_policy" "this" {
   dynamic "rule" {
     for_each = var.rule
     content {
-      action                = rule.value["action"]
-      description           = rule.value["description"]
-      destination_groups    = rule.value["destination_groups"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # destination_groups - (optional) is a type of set of string
+      destination_groups = rule.value["destination_groups"]
+      # destinations_excluded - (optional) is a type of bool
       destinations_excluded = rule.value["destinations_excluded"]
-      direction             = rule.value["direction"]
-      disabled              = rule.value["disabled"]
-      display_name          = rule.value["display_name"]
-      ip_version            = rule.value["ip_version"]
-      log_label             = rule.value["log_label"]
-      logged                = rule.value["logged"]
-      notes                 = rule.value["notes"]
-      nsx_id                = rule.value["nsx_id"]
-      profiles              = rule.value["profiles"]
-      scope                 = rule.value["scope"]
-      sequence_number       = rule.value["sequence_number"]
-      services              = rule.value["services"]
-      source_groups         = rule.value["source_groups"]
-      sources_excluded      = rule.value["sources_excluded"]
+      # direction - (optional) is a type of string
+      direction = rule.value["direction"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # display_name - (required) is a type of string
+      display_name = rule.value["display_name"]
+      # ip_version - (optional) is a type of string
+      ip_version = rule.value["ip_version"]
+      # log_label - (optional) is a type of string
+      log_label = rule.value["log_label"]
+      # logged - (optional) is a type of bool
+      logged = rule.value["logged"]
+      # notes - (optional) is a type of string
+      notes = rule.value["notes"]
+      # nsx_id - (optional) is a type of string
+      nsx_id = rule.value["nsx_id"]
+      # profiles - (optional) is a type of set of string
+      profiles = rule.value["profiles"]
+      # scope - (optional) is a type of set of string
+      scope = rule.value["scope"]
+      # sequence_number - (optional) is a type of number
+      sequence_number = rule.value["sequence_number"]
+      # services - (optional) is a type of set of string
+      services = rule.value["services"]
+      # source_groups - (optional) is a type of set of string
+      source_groups = rule.value["source_groups"]
+      # sources_excluded - (optional) is a type of bool
+      sources_excluded = rule.value["sources_excluded"]
 
       dynamic "tag" {
         for_each = rule.value.tag
         content {
+          # scope - (optional) is a type of string
           scope = tag.value["scope"]
-          tag   = tag.value["tag"]
+          # tag - (optional) is a type of string
+          tag = tag.value["tag"]
         }
       }
 
@@ -233,8 +261,10 @@ resource "nsxt_policy_predefined_security_policy" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

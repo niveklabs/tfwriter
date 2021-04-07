@@ -56,7 +56,9 @@ variable "ssh_key" {
 
 ```terraform
 resource "linode_sshkey" "this" {
-  label   = var.label
+  # label - (required) is a type of string
+  label = var.label
+  # ssh_key - (required) is a type of string
   ssh_key = var.ssh_key
 }
 ```

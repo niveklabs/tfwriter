@@ -66,9 +66,12 @@ variable "volume_id" {
 
 ```terraform
 data "packet_volume" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
   project_id = var.project_id
-  volume_id  = var.volume_id
+  # volume_id - (optional) is a type of string
+  volume_id = var.volume_id
 }
 ```
 

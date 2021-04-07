@@ -145,19 +145,32 @@ variable "vsys" {
 
 ```terraform
 resource "panos_vlan_interface" "this" {
-  adjust_tcp_mss            = var.adjust_tcp_mss
-  comment                   = var.comment
+  # adjust_tcp_mss - (optional) is a type of bool
+  adjust_tcp_mss = var.adjust_tcp_mss
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # create_dhcp_default_route - (optional) is a type of bool
   create_dhcp_default_route = var.create_dhcp_default_route
+  # dhcp_default_route_metric - (optional) is a type of number
   dhcp_default_route_metric = var.dhcp_default_route_metric
-  enable_dhcp               = var.enable_dhcp
-  ipv4_mss_adjust           = var.ipv4_mss_adjust
-  ipv6_mss_adjust           = var.ipv6_mss_adjust
-  management_profile        = var.management_profile
-  mtu                       = var.mtu
-  name                      = var.name
-  netflow_profile           = var.netflow_profile
-  static_ips                = var.static_ips
-  vsys                      = var.vsys
+  # enable_dhcp - (optional) is a type of bool
+  enable_dhcp = var.enable_dhcp
+  # ipv4_mss_adjust - (optional) is a type of number
+  ipv4_mss_adjust = var.ipv4_mss_adjust
+  # ipv6_mss_adjust - (optional) is a type of number
+  ipv6_mss_adjust = var.ipv6_mss_adjust
+  # management_profile - (optional) is a type of string
+  management_profile = var.management_profile
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # static_ips - (optional) is a type of list of string
+  static_ips = var.static_ips
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

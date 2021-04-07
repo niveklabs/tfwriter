@@ -73,10 +73,14 @@ variable "name" {
 
 ```terraform
 data "rancher2_cluster_template" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  name        = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

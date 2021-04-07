@@ -56,7 +56,9 @@ variable "vrack_network_id" {
 
 ```terraform
 data "ovh_iploadbalancing_vrack_network" "this" {
-  service_name     = var.service_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # vrack_network_id - (required) is a type of number
   vrack_network_id = var.vrack_network_id
 }
 ```

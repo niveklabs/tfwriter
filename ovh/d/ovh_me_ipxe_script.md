@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "ovh_me_ipxe_script" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

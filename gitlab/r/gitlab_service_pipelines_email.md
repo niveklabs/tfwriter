@@ -72,10 +72,14 @@ variable "recipients" {
 
 ```terraform
 resource "gitlab_service_pipelines_email" "this" {
-  branches_to_be_notified      = var.branches_to_be_notified
+  # branches_to_be_notified - (optional) is a type of string
+  branches_to_be_notified = var.branches_to_be_notified
+  # notify_only_broken_pipelines - (optional) is a type of bool
   notify_only_broken_pipelines = var.notify_only_broken_pipelines
-  project                      = var.project
-  recipients                   = var.recipients
+  # project - (required) is a type of string
+  project = var.project
+  # recipients - (required) is a type of set of string
+  recipients = var.recipients
 }
 ```
 

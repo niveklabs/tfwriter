@@ -90,11 +90,17 @@ variable "ui_default_landing" {
 
 ```terraform
 resource "rancher2_bootstrap" "this" {
-  current_password   = var.current_password
-  password           = var.password
-  telemetry          = var.telemetry
-  token_ttl          = var.token_ttl
-  token_update       = var.token_update
+  # current_password - (optional) is a type of string
+  current_password = var.current_password
+  # password - (optional) is a type of string
+  password = var.password
+  # telemetry - (optional) is a type of bool
+  telemetry = var.telemetry
+  # token_ttl - (optional) is a type of number
+  token_ttl = var.token_ttl
+  # token_update - (optional) is a type of bool
+  token_update = var.token_update
+  # ui_default_landing - (optional) is a type of string
   ui_default_landing = var.ui_default_landing
 }
 ```

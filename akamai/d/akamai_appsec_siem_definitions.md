@@ -50,6 +50,7 @@ variable "siem_definition_name" {
 
 ```terraform
 data "akamai_appsec_siem_definitions" "this" {
+  # siem_definition_name - (optional) is a type of string
   siem_definition_name = var.siem_definition_name
 }
 ```

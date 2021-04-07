@@ -125,35 +125,48 @@ variable "table" {
 
 ```terraform
 resource "tencentcloud_mysql_privilege" "this" {
+  # account_host - (optional) is a type of string
   account_host = var.account_host
+  # account_name - (required) is a type of string
   account_name = var.account_name
-  global       = var.global
-  mysql_id     = var.mysql_id
+  # global - (required) is a type of set of string
+  global = var.global
+  # mysql_id - (required) is a type of string
+  mysql_id = var.mysql_id
 
   dynamic "column" {
     for_each = var.column
     content {
-      column_name   = column.value["column_name"]
+      # column_name - (required) is a type of string
+      column_name = column.value["column_name"]
+      # database_name - (required) is a type of string
       database_name = column.value["database_name"]
-      privileges    = column.value["privileges"]
-      table_name    = column.value["table_name"]
+      # privileges - (required) is a type of set of string
+      privileges = column.value["privileges"]
+      # table_name - (required) is a type of string
+      table_name = column.value["table_name"]
     }
   }
 
   dynamic "database" {
     for_each = var.database
     content {
+      # database_name - (required) is a type of string
       database_name = database.value["database_name"]
-      privileges    = database.value["privileges"]
+      # privileges - (required) is a type of set of string
+      privileges = database.value["privileges"]
     }
   }
 
   dynamic "table" {
     for_each = var.table
     content {
+      # database_name - (required) is a type of string
       database_name = table.value["database_name"]
-      privileges    = table.value["privileges"]
-      table_name    = table.value["table_name"]
+      # privileges - (required) is a type of set of string
+      privileges = table.value["privileges"]
+      # table_name - (required) is a type of string
+      table_name = table.value["table_name"]
     }
   }
 

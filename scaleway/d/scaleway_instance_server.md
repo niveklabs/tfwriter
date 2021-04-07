@@ -66,9 +66,12 @@ variable "zone" {
 
 ```terraform
 data "scaleway_instance_server" "this" {
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # server_id - (optional) is a type of string
   server_id = var.server_id
-  zone      = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

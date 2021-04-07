@@ -237,34 +237,59 @@ variable "security_group_policy" {
 
 ```terraform
 resource "tencentcloud_vpn_connection" "this" {
-  customer_gateway_id        = var.customer_gateway_id
-  ike_dh_group_name          = var.ike_dh_group_name
-  ike_exchange_mode          = var.ike_exchange_mode
-  ike_local_address          = var.ike_local_address
-  ike_local_fqdn_name        = var.ike_local_fqdn_name
-  ike_local_identity         = var.ike_local_identity
+  # customer_gateway_id - (required) is a type of string
+  customer_gateway_id = var.customer_gateway_id
+  # ike_dh_group_name - (optional) is a type of string
+  ike_dh_group_name = var.ike_dh_group_name
+  # ike_exchange_mode - (optional) is a type of string
+  ike_exchange_mode = var.ike_exchange_mode
+  # ike_local_address - (optional) is a type of string
+  ike_local_address = var.ike_local_address
+  # ike_local_fqdn_name - (optional) is a type of string
+  ike_local_fqdn_name = var.ike_local_fqdn_name
+  # ike_local_identity - (optional) is a type of string
+  ike_local_identity = var.ike_local_identity
+  # ike_proto_authen_algorithm - (optional) is a type of string
   ike_proto_authen_algorithm = var.ike_proto_authen_algorithm
-  ike_proto_encry_algorithm  = var.ike_proto_encry_algorithm
-  ike_remote_address         = var.ike_remote_address
-  ike_remote_fqdn_name       = var.ike_remote_fqdn_name
-  ike_remote_identity        = var.ike_remote_identity
-  ike_sa_lifetime_seconds    = var.ike_sa_lifetime_seconds
-  ike_version                = var.ike_version
-  ipsec_encrypt_algorithm    = var.ipsec_encrypt_algorithm
-  ipsec_integrity_algorithm  = var.ipsec_integrity_algorithm
-  ipsec_pfs_dh_group         = var.ipsec_pfs_dh_group
-  ipsec_sa_lifetime_seconds  = var.ipsec_sa_lifetime_seconds
-  ipsec_sa_lifetime_traffic  = var.ipsec_sa_lifetime_traffic
-  name                       = var.name
-  pre_share_key              = var.pre_share_key
-  tags                       = var.tags
-  vpc_id                     = var.vpc_id
-  vpn_gateway_id             = var.vpn_gateway_id
+  # ike_proto_encry_algorithm - (optional) is a type of string
+  ike_proto_encry_algorithm = var.ike_proto_encry_algorithm
+  # ike_remote_address - (optional) is a type of string
+  ike_remote_address = var.ike_remote_address
+  # ike_remote_fqdn_name - (optional) is a type of string
+  ike_remote_fqdn_name = var.ike_remote_fqdn_name
+  # ike_remote_identity - (optional) is a type of string
+  ike_remote_identity = var.ike_remote_identity
+  # ike_sa_lifetime_seconds - (optional) is a type of number
+  ike_sa_lifetime_seconds = var.ike_sa_lifetime_seconds
+  # ike_version - (optional) is a type of string
+  ike_version = var.ike_version
+  # ipsec_encrypt_algorithm - (optional) is a type of string
+  ipsec_encrypt_algorithm = var.ipsec_encrypt_algorithm
+  # ipsec_integrity_algorithm - (optional) is a type of string
+  ipsec_integrity_algorithm = var.ipsec_integrity_algorithm
+  # ipsec_pfs_dh_group - (optional) is a type of string
+  ipsec_pfs_dh_group = var.ipsec_pfs_dh_group
+  # ipsec_sa_lifetime_seconds - (optional) is a type of number
+  ipsec_sa_lifetime_seconds = var.ipsec_sa_lifetime_seconds
+  # ipsec_sa_lifetime_traffic - (optional) is a type of number
+  ipsec_sa_lifetime_traffic = var.ipsec_sa_lifetime_traffic
+  # name - (required) is a type of string
+  name = var.name
+  # pre_share_key - (required) is a type of string
+  pre_share_key = var.pre_share_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # vpn_gateway_id - (required) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 
   dynamic "security_group_policy" {
     for_each = var.security_group_policy
     content {
-      local_cidr_block  = security_group_policy.value["local_cidr_block"]
+      # local_cidr_block - (required) is a type of string
+      local_cidr_block = security_group_policy.value["local_cidr_block"]
+      # remote_cidr_block - (required) is a type of set of string
       remote_cidr_block = security_group_policy.value["remote_cidr_block"]
     }
   }

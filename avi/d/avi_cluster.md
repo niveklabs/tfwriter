@@ -84,15 +84,21 @@ variable "cluster_state" {
 
 ```terraform
 data "avi_cluster" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "cluster_state" {
     for_each = var.cluster_state
     content {
+      # progress - (optional) is a type of number
       progress = cluster_state.value["progress"]
-      state    = cluster_state.value["state"]
+      # state - (optional) is a type of string
+      state = cluster_state.value["state"]
+      # up_since - (optional) is a type of string
       up_since = cluster_state.value["up_since"]
     }
   }

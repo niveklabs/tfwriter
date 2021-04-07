@@ -160,24 +160,39 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_bandwidth_package" "this" {
-  auto_pay                  = var.auto_pay
-  auto_use_coupon           = var.auto_use_coupon
-  bandwidth                 = var.bandwidth
-  bandwidth_package_name    = var.bandwidth_package_name
-  bandwidth_type            = var.bandwidth_type
-  billing_type              = var.billing_type
+  # auto_pay - (optional) is a type of bool
+  auto_pay = var.auto_pay
+  # auto_use_coupon - (optional) is a type of bool
+  auto_use_coupon = var.auto_use_coupon
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # bandwidth_package_name - (optional) is a type of string
+  bandwidth_package_name = var.bandwidth_package_name
+  # bandwidth_type - (optional) is a type of string
+  bandwidth_type = var.bandwidth_type
+  # billing_type - (optional) is a type of string
+  billing_type = var.billing_type
+  # cbn_geographic_region_ida - (optional) is a type of string
   cbn_geographic_region_ida = var.cbn_geographic_region_ida
+  # cbn_geographic_region_idb - (optional) is a type of string
   cbn_geographic_region_idb = var.cbn_geographic_region_idb
-  description               = var.description
-  duration                  = var.duration
-  payment_type              = var.payment_type
-  ratio                     = var.ratio
-  type                      = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # duration - (optional) is a type of string
+  duration = var.duration
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # ratio - (optional) is a type of number
+  ratio = var.ratio
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

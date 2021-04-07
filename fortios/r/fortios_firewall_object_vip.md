@@ -111,15 +111,24 @@ variable "protocol" {
 
 ```terraform
 resource "fortios_firewall_object_vip" "this" {
-  comment     = var.comment
-  extintf     = var.extintf
-  extip       = var.extip
-  extport     = var.extport
-  mappedip    = var.mappedip
-  mappedport  = var.mappedport
-  name        = var.name
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # extintf - (optional) is a type of string
+  extintf = var.extintf
+  # extip - (required) is a type of string
+  extip = var.extip
+  # extport - (optional) is a type of string
+  extport = var.extport
+  # mappedip - (required) is a type of list of string
+  mappedip = var.mappedip
+  # mappedport - (optional) is a type of string
+  mappedport = var.mappedport
+  # name - (required) is a type of string
+  name = var.name
+  # portforward - (optional) is a type of string
   portforward = var.portforward
-  protocol    = var.protocol
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
 }
 ```
 

@@ -137,22 +137,35 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_kms_secret" "this" {
-  description                   = var.description
-  encryption_key_id             = var.encryption_key_id
+  # description - (optional) is a type of string
+  description = var.description
+  # encryption_key_id - (optional) is a type of string
+  encryption_key_id = var.encryption_key_id
+  # force_delete_without_recovery - (optional) is a type of bool
   force_delete_without_recovery = var.force_delete_without_recovery
-  recovery_window_in_days       = var.recovery_window_in_days
-  secret_data                   = var.secret_data
-  secret_data_type              = var.secret_data_type
-  secret_name                   = var.secret_name
-  tags                          = var.tags
-  version_id                    = var.version_id
-  version_stages                = var.version_stages
+  # recovery_window_in_days - (optional) is a type of number
+  recovery_window_in_days = var.recovery_window_in_days
+  # secret_data - (required) is a type of string
+  secret_data = var.secret_data
+  # secret_data_type - (optional) is a type of string
+  secret_data_type = var.secret_data_type
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version_id - (required) is a type of string
+  version_id = var.version_id
+  # version_stages - (optional) is a type of set of string
+  version_stages = var.version_stages
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

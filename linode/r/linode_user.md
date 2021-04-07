@@ -64,9 +64,12 @@ variable "username" {
 
 ```terraform
 resource "linode_user" "this" {
-  email      = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # restricted - (optional) is a type of bool
   restricted = var.restricted
-  username   = var.username
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

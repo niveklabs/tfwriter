@@ -154,42 +154,63 @@ variable "timeouts" {
 
 ```terraform
 resource "akamai_property_activation" "this" {
+  # activation_id - (optional) is a type of string
   activation_id = var.activation_id
-  contact       = var.contact
-  network       = var.network
-  property      = var.property
-  property_id   = var.property_id
-  version       = var.version
+  # contact - (required) is a type of set of string
+  contact = var.contact
+  # network - (optional) is a type of string
+  network = var.network
+  # property - (optional) is a type of string
+  property = var.property
+  # property_id - (optional) is a type of string
+  property_id = var.property_id
+  # version - (required) is a type of number
+  version = var.version
 
   dynamic "rule_errors" {
     for_each = var.rule_errors
     content {
-      behavior_name  = rule_errors.value["behavior_name"]
-      detail         = rule_errors.value["detail"]
+      # behavior_name - (optional) is a type of string
+      behavior_name = rule_errors.value["behavior_name"]
+      # detail - (optional) is a type of string
+      detail = rule_errors.value["detail"]
+      # error_location - (optional) is a type of string
       error_location = rule_errors.value["error_location"]
-      instance       = rule_errors.value["instance"]
-      status_code    = rule_errors.value["status_code"]
-      title          = rule_errors.value["title"]
-      type           = rule_errors.value["type"]
+      # instance - (optional) is a type of string
+      instance = rule_errors.value["instance"]
+      # status_code - (optional) is a type of number
+      status_code = rule_errors.value["status_code"]
+      # title - (optional) is a type of string
+      title = rule_errors.value["title"]
+      # type - (optional) is a type of string
+      type = rule_errors.value["type"]
     }
   }
 
   dynamic "rule_warnings" {
     for_each = var.rule_warnings
     content {
-      behavior_name  = rule_warnings.value["behavior_name"]
-      detail         = rule_warnings.value["detail"]
+      # behavior_name - (optional) is a type of string
+      behavior_name = rule_warnings.value["behavior_name"]
+      # detail - (optional) is a type of string
+      detail = rule_warnings.value["detail"]
+      # error_location - (optional) is a type of string
       error_location = rule_warnings.value["error_location"]
-      instance       = rule_warnings.value["instance"]
-      status_code    = rule_warnings.value["status_code"]
-      title          = rule_warnings.value["title"]
-      type           = rule_warnings.value["type"]
+      # instance - (optional) is a type of string
+      instance = rule_warnings.value["instance"]
+      # status_code - (optional) is a type of number
+      status_code = rule_warnings.value["status_code"]
+      # title - (optional) is a type of string
+      title = rule_warnings.value["title"]
+      # type - (optional) is a type of string
+      type = rule_warnings.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

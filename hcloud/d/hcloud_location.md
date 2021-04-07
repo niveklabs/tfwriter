@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "hcloud_location" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

@@ -66,12 +66,15 @@ variable "neighbor" {
 
 ```terraform
 resource "fortios_router_bfd6" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
 
   dynamic "neighbor" {
     for_each = var.neighbor
     content {
-      interface   = neighbor.value["interface"]
+      # interface - (optional) is a type of string
+      interface = neighbor.value["interface"]
+      # ip6_address - (optional) is a type of string
       ip6_address = neighbor.value["ip6_address"]
     }
   }

@@ -288,37 +288,65 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_slb_server_port" "this" {
-  action                         = var.action
-  conn_limit                     = var.conn_limit
-  conn_resume                    = var.conn_resume
-  extended_stats                 = var.extended_stats
-  follow_port_protocol           = var.follow_port_protocol
-  health_check                   = var.health_check
-  health_check_disable           = var.health_check_disable
-  health_check_follow_port       = var.health_check_follow_port
-  name                           = var.name
-  no_logging                     = var.no_logging
-  no_ssl                         = var.no_ssl
-  port_number                    = var.port_number
-  protocol                       = var.protocol
-  range                          = var.range
-  rport_health_check_shared      = var.rport_health_check_shared
+  # action - (optional) is a type of string
+  action = var.action
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # conn_resume - (optional) is a type of number
+  conn_resume = var.conn_resume
+  # extended_stats - (optional) is a type of number
+  extended_stats = var.extended_stats
+  # follow_port_protocol - (optional) is a type of string
+  follow_port_protocol = var.follow_port_protocol
+  # health_check - (optional) is a type of string
+  health_check = var.health_check
+  # health_check_disable - (optional) is a type of number
+  health_check_disable = var.health_check_disable
+  # health_check_follow_port - (optional) is a type of number
+  health_check_follow_port = var.health_check_follow_port
+  # name - (optional) is a type of string
+  name = var.name
+  # no_logging - (optional) is a type of number
+  no_logging = var.no_logging
+  # no_ssl - (optional) is a type of number
+  no_ssl = var.no_ssl
+  # port_number - (optional) is a type of number
+  port_number = var.port_number
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # range - (optional) is a type of number
+  range = var.range
+  # rport_health_check_shared - (optional) is a type of string
+  rport_health_check_shared = var.rport_health_check_shared
+  # shared_partition_port_template - (optional) is a type of number
   shared_partition_port_template = var.shared_partition_port_template
-  shared_rport_health_check      = var.shared_rport_health_check
-  stats_data_action              = var.stats_data_action
-  support_http2                  = var.support_http2
-  template_port                  = var.template_port
-  template_port_shared           = var.template_port_shared
-  template_server_ssl            = var.template_server_ssl
-  user_tag                       = var.user_tag
-  uuid                           = var.uuid
-  weight                         = var.weight
+  # shared_rport_health_check - (optional) is a type of number
+  shared_rport_health_check = var.shared_rport_health_check
+  # stats_data_action - (optional) is a type of string
+  stats_data_action = var.stats_data_action
+  # support_http2 - (optional) is a type of number
+  support_http2 = var.support_http2
+  # template_port - (optional) is a type of string
+  template_port = var.template_port
+  # template_port_shared - (optional) is a type of string
+  template_port_shared = var.template_port_shared
+  # template_server_ssl - (optional) is a type of string
+  template_server_ssl = var.template_server_ssl
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "alternate_port" {
     for_each = var.alternate_port
     content {
-      alternate             = alternate_port.value["alternate"]
-      alternate_name        = alternate_port.value["alternate_name"]
+      # alternate - (optional) is a type of number
+      alternate = alternate_port.value["alternate"]
+      # alternate_name - (optional) is a type of string
+      alternate_name = alternate_port.value["alternate_name"]
+      # alternate_server_port - (optional) is a type of number
       alternate_server_port = alternate_port.value["alternate_server_port"]
     }
   }
@@ -326,6 +354,7 @@ resource "thunder_slb_server_port" "this" {
   dynamic "auth_cfg" {
     for_each = var.auth_cfg
     content {
+      # service_principal_name - (optional) is a type of string
       service_principal_name = auth_cfg.value["service_principal_name"]
     }
   }
@@ -333,6 +362,7 @@ resource "thunder_slb_server_port" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

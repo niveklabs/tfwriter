@@ -136,22 +136,35 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_cluster_driver" "this" {
-  active            = var.active
-  actual_url        = var.actual_url
-  annotations       = var.annotations
-  builtin           = var.builtin
-  checksum          = var.checksum
-  labels            = var.labels
-  name              = var.name
-  ui_url            = var.ui_url
-  url               = var.url
+  # active - (required) is a type of bool
+  active = var.active
+  # actual_url - (optional) is a type of string
+  actual_url = var.actual_url
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # builtin - (required) is a type of bool
+  builtin = var.builtin
+  # checksum - (optional) is a type of string
+  checksum = var.checksum
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # ui_url - (optional) is a type of string
+  ui_url = var.ui_url
+  # url - (required) is a type of string
+  url = var.url
+  # whitelist_domains - (optional) is a type of list of string
   whitelist_domains = var.whitelist_domains
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

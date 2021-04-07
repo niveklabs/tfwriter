@@ -85,12 +85,18 @@ variable "project_id" {
 
 ```terraform
 resource "datadog_integration_gcp" "this" {
-  client_email   = var.client_email
-  client_id      = var.client_id
-  host_filters   = var.host_filters
-  private_key    = var.private_key
+  # client_email - (required) is a type of string
+  client_email = var.client_email
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # host_filters - (optional) is a type of string
+  host_filters = var.host_filters
+  # private_key - (required) is a type of string
+  private_key = var.private_key
+  # private_key_id - (required) is a type of string
   private_key_id = var.private_key_id
-  project_id     = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

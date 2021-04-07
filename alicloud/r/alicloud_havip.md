@@ -87,14 +87,19 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_havip" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  havip_name  = var.havip_name
-  ip_address  = var.ip_address
-  vswitch_id  = var.vswitch_id
+  # havip_name - (optional) is a type of string
+  havip_name = var.havip_name
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

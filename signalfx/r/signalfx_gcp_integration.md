@@ -104,17 +104,25 @@ variable "project_service_keys" {
 
 ```terraform
 resource "signalfx_gcp_integration" "this" {
-  enabled     = var.enabled
-  name        = var.name
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # named_token - (optional) is a type of string
   named_token = var.named_token
-  poll_rate   = var.poll_rate
-  services    = var.services
-  whitelist   = var.whitelist
+  # poll_rate - (optional) is a type of number
+  poll_rate = var.poll_rate
+  # services - (optional) is a type of set of string
+  services = var.services
+  # whitelist - (optional) is a type of set of string
+  whitelist = var.whitelist
 
   dynamic "project_service_keys" {
     for_each = var.project_service_keys
     content {
-      project_id  = project_service_keys.value["project_id"]
+      # project_id - (required) is a type of string
+      project_id = project_service_keys.value["project_id"]
+      # project_key - (required) is a type of string
       project_key = project_service_keys.value["project_key"]
     }
   }

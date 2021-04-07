@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_alg_dns" "this" {
+  # default_port_disable - (optional) is a type of string
   default_port_disable = var.default_port_disable
-  uuid                 = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

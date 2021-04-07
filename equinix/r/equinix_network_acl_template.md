@@ -87,17 +87,24 @@ variable "inbound_rule" {
 
 ```terraform
 resource "equinix_network_acl_template" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  metro_code  = var.metro_code
-  name        = var.name
+  # metro_code - (required) is a type of string
+  metro_code = var.metro_code
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "inbound_rule" {
     for_each = var.inbound_rule
     content {
+      # dst_port - (required) is a type of string
       dst_port = inbound_rule.value["dst_port"]
+      # protocol - (required) is a type of string
       protocol = inbound_rule.value["protocol"]
+      # src_port - (required) is a type of string
       src_port = inbound_rule.value["src_port"]
-      subnets  = inbound_rule.value["subnets"]
+      # subnets - (required) is a type of list of string
+      subnets = inbound_rule.value["subnets"]
     }
   }
 

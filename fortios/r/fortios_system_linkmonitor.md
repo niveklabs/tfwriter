@@ -255,35 +255,61 @@ variable "server" {
 
 ```terraform
 resource "fortios_system_linkmonitor" "this" {
-  addr_mode                = var.addr_mode
-  dynamic_sort_subtable    = var.dynamic_sort_subtable
-  failtime                 = var.failtime
-  gateway_ip               = var.gateway_ip
-  gateway_ip6              = var.gateway_ip6
-  ha_priority              = var.ha_priority
-  http_agent               = var.http_agent
-  http_get                 = var.http_get
-  http_match               = var.http_match
-  interval                 = var.interval
-  name                     = var.name
-  packet_size              = var.packet_size
-  password                 = var.password
-  port                     = var.port
-  probe_count              = var.probe_count
-  probe_timeout            = var.probe_timeout
-  protocol                 = var.protocol
-  recoverytime             = var.recoverytime
-  security_mode            = var.security_mode
-  source_ip                = var.source_ip
-  source_ip6               = var.source_ip6
-  srcintf                  = var.srcintf
-  status                   = var.status
+  # addr_mode - (optional) is a type of string
+  addr_mode = var.addr_mode
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # failtime - (optional) is a type of number
+  failtime = var.failtime
+  # gateway_ip - (optional) is a type of string
+  gateway_ip = var.gateway_ip
+  # gateway_ip6 - (optional) is a type of string
+  gateway_ip6 = var.gateway_ip6
+  # ha_priority - (optional) is a type of number
+  ha_priority = var.ha_priority
+  # http_agent - (optional) is a type of string
+  http_agent = var.http_agent
+  # http_get - (optional) is a type of string
+  http_get = var.http_get
+  # http_match - (optional) is a type of string
+  http_match = var.http_match
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (optional) is a type of string
+  name = var.name
+  # packet_size - (optional) is a type of number
+  packet_size = var.packet_size
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # probe_count - (optional) is a type of number
+  probe_count = var.probe_count
+  # probe_timeout - (optional) is a type of number
+  probe_timeout = var.probe_timeout
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # recoverytime - (optional) is a type of number
+  recoverytime = var.recoverytime
+  # security_mode - (optional) is a type of string
+  security_mode = var.security_mode
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ip6 - (optional) is a type of string
+  source_ip6 = var.source_ip6
+  # srcintf - (optional) is a type of string
+  srcintf = var.srcintf
+  # status - (optional) is a type of string
+  status = var.status
+  # update_cascade_interface - (optional) is a type of string
   update_cascade_interface = var.update_cascade_interface
-  update_static_route      = var.update_static_route
+  # update_static_route - (optional) is a type of string
+  update_static_route = var.update_static_route
 
   dynamic "server" {
     for_each = var.server
     content {
+      # address - (optional) is a type of string
       address = server.value["address"]
     }
   }

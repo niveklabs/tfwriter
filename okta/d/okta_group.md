@@ -66,9 +66,12 @@ variable "type" {
 
 ```terraform
 data "okta_group" "this" {
+  # include_users - (optional) is a type of bool
   include_users = var.include_users
-  name          = var.name
-  type          = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

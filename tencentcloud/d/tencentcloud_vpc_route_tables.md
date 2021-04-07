@@ -98,13 +98,20 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_vpc_route_tables" "this" {
-  association_main   = var.association_main
-  name               = var.name
+  # association_main - (optional) is a type of bool
+  association_main = var.association_main
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  route_table_id     = var.route_table_id
-  tag_key            = var.tag_key
-  tags               = var.tags
-  vpc_id             = var.vpc_id
+  # route_table_id - (optional) is a type of string
+  route_table_id = var.route_table_id
+  # tag_key - (optional) is a type of string
+  tag_key = var.tag_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

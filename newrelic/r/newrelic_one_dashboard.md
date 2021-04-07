@@ -402,31 +402,44 @@ variable "page" {
 
 ```terraform
 resource "newrelic_one_dashboard" "this" {
-  account_id  = var.account_id
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # permissions - (optional) is a type of string
   permissions = var.permissions
 
   dynamic "page" {
     for_each = var.page
     content {
+      # description - (optional) is a type of string
       description = page.value["description"]
-      name        = page.value["name"]
+      # name - (required) is a type of string
+      name = page.value["name"]
 
       dynamic "widget_area" {
         for_each = page.value.widget_area
         content {
+          # column - (required) is a type of number
           column = widget_area.value["column"]
+          # height - (optional) is a type of number
           height = widget_area.value["height"]
-          row    = widget_area.value["row"]
-          title  = widget_area.value["title"]
-          width  = widget_area.value["width"]
+          # row - (required) is a type of number
+          row = widget_area.value["row"]
+          # title - (required) is a type of string
+          title = widget_area.value["title"]
+          # width - (optional) is a type of number
+          width = widget_area.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_area.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -436,18 +449,26 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_bar" {
         for_each = page.value.widget_bar
         content {
-          column              = widget_bar.value["column"]
-          height              = widget_bar.value["height"]
+          # column - (required) is a type of number
+          column = widget_bar.value["column"]
+          # height - (optional) is a type of number
+          height = widget_bar.value["height"]
+          # linked_entity_guids - (optional) is a type of list of string
           linked_entity_guids = widget_bar.value["linked_entity_guids"]
-          row                 = widget_bar.value["row"]
-          title               = widget_bar.value["title"]
-          width               = widget_bar.value["width"]
+          # row - (required) is a type of number
+          row = widget_bar.value["row"]
+          # title - (required) is a type of string
+          title = widget_bar.value["title"]
+          # width - (optional) is a type of number
+          width = widget_bar.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_bar.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -457,19 +478,28 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_billboard" {
         for_each = page.value.widget_billboard
         content {
-          column   = widget_billboard.value["column"]
+          # column - (required) is a type of number
+          column = widget_billboard.value["column"]
+          # critical - (optional) is a type of number
           critical = widget_billboard.value["critical"]
-          height   = widget_billboard.value["height"]
-          row      = widget_billboard.value["row"]
-          title    = widget_billboard.value["title"]
-          warning  = widget_billboard.value["warning"]
-          width    = widget_billboard.value["width"]
+          # height - (optional) is a type of number
+          height = widget_billboard.value["height"]
+          # row - (required) is a type of number
+          row = widget_billboard.value["row"]
+          # title - (required) is a type of string
+          title = widget_billboard.value["title"]
+          # warning - (optional) is a type of number
+          warning = widget_billboard.value["warning"]
+          # width - (optional) is a type of number
+          width = widget_billboard.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_billboard.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -479,18 +509,26 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_bullet" {
         for_each = page.value.widget_bullet
         content {
+          # column - (required) is a type of number
           column = widget_bullet.value["column"]
+          # height - (optional) is a type of number
           height = widget_bullet.value["height"]
-          limit  = widget_bullet.value["limit"]
-          row    = widget_bullet.value["row"]
-          title  = widget_bullet.value["title"]
-          width  = widget_bullet.value["width"]
+          # limit - (optional) is a type of number
+          limit = widget_bullet.value["limit"]
+          # row - (required) is a type of number
+          row = widget_bullet.value["row"]
+          # title - (required) is a type of string
+          title = widget_bullet.value["title"]
+          # width - (optional) is a type of number
+          width = widget_bullet.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_bullet.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -500,17 +538,24 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_funnel" {
         for_each = page.value.widget_funnel
         content {
+          # column - (required) is a type of number
           column = widget_funnel.value["column"]
+          # height - (optional) is a type of number
           height = widget_funnel.value["height"]
-          row    = widget_funnel.value["row"]
-          title  = widget_funnel.value["title"]
-          width  = widget_funnel.value["width"]
+          # row - (required) is a type of number
+          row = widget_funnel.value["row"]
+          # title - (required) is a type of string
+          title = widget_funnel.value["title"]
+          # width - (optional) is a type of number
+          width = widget_funnel.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_funnel.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -520,17 +565,24 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_heatmap" {
         for_each = page.value.widget_heatmap
         content {
+          # column - (required) is a type of number
           column = widget_heatmap.value["column"]
+          # height - (optional) is a type of number
           height = widget_heatmap.value["height"]
-          row    = widget_heatmap.value["row"]
-          title  = widget_heatmap.value["title"]
-          width  = widget_heatmap.value["width"]
+          # row - (required) is a type of number
+          row = widget_heatmap.value["row"]
+          # title - (required) is a type of string
+          title = widget_heatmap.value["title"]
+          # width - (optional) is a type of number
+          width = widget_heatmap.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_heatmap.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -540,17 +592,24 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_histogram" {
         for_each = page.value.widget_histogram
         content {
+          # column - (required) is a type of number
           column = widget_histogram.value["column"]
+          # height - (optional) is a type of number
           height = widget_histogram.value["height"]
-          row    = widget_histogram.value["row"]
-          title  = widget_histogram.value["title"]
-          width  = widget_histogram.value["width"]
+          # row - (required) is a type of number
+          row = widget_histogram.value["row"]
+          # title - (required) is a type of string
+          title = widget_histogram.value["title"]
+          # width - (optional) is a type of number
+          width = widget_histogram.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_histogram.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -560,17 +619,24 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_line" {
         for_each = page.value.widget_line
         content {
+          # column - (required) is a type of number
           column = widget_line.value["column"]
+          # height - (optional) is a type of number
           height = widget_line.value["height"]
-          row    = widget_line.value["row"]
-          title  = widget_line.value["title"]
-          width  = widget_line.value["width"]
+          # row - (required) is a type of number
+          row = widget_line.value["row"]
+          # title - (required) is a type of string
+          title = widget_line.value["title"]
+          # width - (optional) is a type of number
+          width = widget_line.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_line.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -580,30 +646,44 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_markdown" {
         for_each = page.value.widget_markdown
         content {
+          # column - (required) is a type of number
           column = widget_markdown.value["column"]
+          # height - (optional) is a type of number
           height = widget_markdown.value["height"]
-          row    = widget_markdown.value["row"]
-          text   = widget_markdown.value["text"]
-          title  = widget_markdown.value["title"]
-          width  = widget_markdown.value["width"]
+          # row - (required) is a type of number
+          row = widget_markdown.value["row"]
+          # text - (optional) is a type of string
+          text = widget_markdown.value["text"]
+          # title - (required) is a type of string
+          title = widget_markdown.value["title"]
+          # width - (optional) is a type of number
+          width = widget_markdown.value["width"]
         }
       }
 
       dynamic "widget_pie" {
         for_each = page.value.widget_pie
         content {
-          column              = widget_pie.value["column"]
-          height              = widget_pie.value["height"]
+          # column - (required) is a type of number
+          column = widget_pie.value["column"]
+          # height - (optional) is a type of number
+          height = widget_pie.value["height"]
+          # linked_entity_guids - (optional) is a type of list of string
           linked_entity_guids = widget_pie.value["linked_entity_guids"]
-          row                 = widget_pie.value["row"]
-          title               = widget_pie.value["title"]
-          width               = widget_pie.value["width"]
+          # row - (required) is a type of number
+          row = widget_pie.value["row"]
+          # title - (required) is a type of string
+          title = widget_pie.value["title"]
+          # width - (optional) is a type of number
+          width = widget_pie.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_pie.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 
@@ -613,18 +693,26 @@ resource "newrelic_one_dashboard" "this" {
       dynamic "widget_table" {
         for_each = page.value.widget_table
         content {
-          column              = widget_table.value["column"]
-          height              = widget_table.value["height"]
+          # column - (required) is a type of number
+          column = widget_table.value["column"]
+          # height - (optional) is a type of number
+          height = widget_table.value["height"]
+          # linked_entity_guids - (optional) is a type of list of string
           linked_entity_guids = widget_table.value["linked_entity_guids"]
-          row                 = widget_table.value["row"]
-          title               = widget_table.value["title"]
-          width               = widget_table.value["width"]
+          # row - (required) is a type of number
+          row = widget_table.value["row"]
+          # title - (required) is a type of string
+          title = widget_table.value["title"]
+          # width - (optional) is a type of number
+          width = widget_table.value["width"]
 
           dynamic "nrql_query" {
             for_each = widget_table.value.nrql_query
             content {
+              # account_id - (optional) is a type of number
               account_id = nrql_query.value["account_id"]
-              query      = nrql_query.value["query"]
+              # query - (required) is a type of string
+              query = nrql_query.value["query"]
             }
           }
 

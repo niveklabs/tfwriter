@@ -121,28 +121,41 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_global_role" "this" {
-  annotations      = var.annotations
-  description      = var.description
-  labels           = var.labels
-  name             = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # new_user_default - (optional) is a type of bool
   new_user_default = var.new_user_default
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      api_groups        = rules.value["api_groups"]
+      # api_groups - (optional) is a type of list of string
+      api_groups = rules.value["api_groups"]
+      # non_resource_urls - (optional) is a type of list of string
       non_resource_urls = rules.value["non_resource_urls"]
-      resource_names    = rules.value["resource_names"]
-      resources         = rules.value["resources"]
-      verbs             = rules.value["verbs"]
+      # resource_names - (optional) is a type of list of string
+      resource_names = rules.value["resource_names"]
+      # resources - (optional) is a type of list of string
+      resources = rules.value["resources"]
+      # verbs - (optional) is a type of list of string
+      verbs = rules.value["verbs"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

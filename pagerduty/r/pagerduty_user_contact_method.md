@@ -86,12 +86,18 @@ variable "user_id" {
 
 ```terraform
 resource "pagerduty_user_contact_method" "this" {
-  address          = var.address
-  country_code     = var.country_code
-  label            = var.label
+  # address - (required) is a type of string
+  address = var.address
+  # country_code - (optional) is a type of number
+  country_code = var.country_code
+  # label - (required) is a type of string
+  label = var.label
+  # send_short_email - (optional) is a type of bool
   send_short_email = var.send_short_email
-  type             = var.type
-  user_id          = var.user_id
+  # type - (required) is a type of string
+  type = var.type
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 }
 ```
 

@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_bypass_network_lists" "this" {
+  # bypass_network_list - (required) is a type of list of string
   bypass_network_list = var.bypass_network_list
-  config_id           = var.config_id
-  version             = var.version
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

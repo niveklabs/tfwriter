@@ -654,82 +654,151 @@ variable "tunnel_ipv6_pools" {
 
 ```terraform
 resource "fortios_vpnssl_settings" "this" {
-  algorithm                     = var.algorithm
-  auth_session_check_source_ip  = var.auth_session_check_source_ip
-  auth_timeout                  = var.auth_timeout
-  auto_tunnel_static_route      = var.auto_tunnel_static_route
-  banned_cipher                 = var.banned_cipher
-  check_referer                 = var.check_referer
-  default_portal                = var.default_portal
-  deflate_compression_level     = var.deflate_compression_level
-  deflate_min_data_size         = var.deflate_min_data_size
-  dns_server1                   = var.dns_server1
-  dns_server2                   = var.dns_server2
-  dns_suffix                    = var.dns_suffix
-  dtls_hello_timeout            = var.dtls_hello_timeout
-  dtls_max_proto_ver            = var.dtls_max_proto_ver
-  dtls_min_proto_ver            = var.dtls_min_proto_ver
-  dtls_tunnel                   = var.dtls_tunnel
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  encode_2f_sequence            = var.encode_2f_sequence
-  encrypt_and_store_password    = var.encrypt_and_store_password
-  force_two_factor_auth         = var.force_two_factor_auth
-  header_x_forwarded_for        = var.header_x_forwarded_for
-  hsts_include_subdomains       = var.hsts_include_subdomains
-  http_compression              = var.http_compression
-  http_only_cookie              = var.http_only_cookie
-  http_request_body_timeout     = var.http_request_body_timeout
-  http_request_header_timeout   = var.http_request_header_timeout
-  https_redirect                = var.https_redirect
-  idle_timeout                  = var.idle_timeout
-  ipv6_dns_server1              = var.ipv6_dns_server1
-  ipv6_dns_server2              = var.ipv6_dns_server2
-  ipv6_wins_server1             = var.ipv6_wins_server1
-  ipv6_wins_server2             = var.ipv6_wins_server2
-  login_attempt_limit           = var.login_attempt_limit
-  login_block_time              = var.login_block_time
-  login_timeout                 = var.login_timeout
-  port                          = var.port
-  port_precedence               = var.port_precedence
-  reqclientcert                 = var.reqclientcert
-  route_source_interface        = var.route_source_interface
-  servercert                    = var.servercert
-  source_address6_negate        = var.source_address6_negate
-  source_address_negate         = var.source_address_negate
-  ssl_client_renegotiation      = var.ssl_client_renegotiation
-  ssl_insert_empty_fragment     = var.ssl_insert_empty_fragment
-  ssl_max_proto_ver             = var.ssl_max_proto_ver
-  ssl_min_proto_ver             = var.ssl_min_proto_ver
-  tlsv1_0                       = var.tlsv1_0
-  tlsv1_1                       = var.tlsv1_1
-  tlsv1_2                       = var.tlsv1_2
-  tlsv1_3                       = var.tlsv1_3
-  transform_backward_slashes    = var.transform_backward_slashes
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # auth_session_check_source_ip - (optional) is a type of string
+  auth_session_check_source_ip = var.auth_session_check_source_ip
+  # auth_timeout - (optional) is a type of number
+  auth_timeout = var.auth_timeout
+  # auto_tunnel_static_route - (optional) is a type of string
+  auto_tunnel_static_route = var.auto_tunnel_static_route
+  # banned_cipher - (optional) is a type of string
+  banned_cipher = var.banned_cipher
+  # check_referer - (optional) is a type of string
+  check_referer = var.check_referer
+  # default_portal - (optional) is a type of string
+  default_portal = var.default_portal
+  # deflate_compression_level - (optional) is a type of number
+  deflate_compression_level = var.deflate_compression_level
+  # deflate_min_data_size - (optional) is a type of number
+  deflate_min_data_size = var.deflate_min_data_size
+  # dns_server1 - (optional) is a type of string
+  dns_server1 = var.dns_server1
+  # dns_server2 - (optional) is a type of string
+  dns_server2 = var.dns_server2
+  # dns_suffix - (optional) is a type of string
+  dns_suffix = var.dns_suffix
+  # dtls_hello_timeout - (optional) is a type of number
+  dtls_hello_timeout = var.dtls_hello_timeout
+  # dtls_max_proto_ver - (optional) is a type of string
+  dtls_max_proto_ver = var.dtls_max_proto_ver
+  # dtls_min_proto_ver - (optional) is a type of string
+  dtls_min_proto_ver = var.dtls_min_proto_ver
+  # dtls_tunnel - (optional) is a type of string
+  dtls_tunnel = var.dtls_tunnel
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # encode_2f_sequence - (optional) is a type of string
+  encode_2f_sequence = var.encode_2f_sequence
+  # encrypt_and_store_password - (optional) is a type of string
+  encrypt_and_store_password = var.encrypt_and_store_password
+  # force_two_factor_auth - (optional) is a type of string
+  force_two_factor_auth = var.force_two_factor_auth
+  # header_x_forwarded_for - (optional) is a type of string
+  header_x_forwarded_for = var.header_x_forwarded_for
+  # hsts_include_subdomains - (optional) is a type of string
+  hsts_include_subdomains = var.hsts_include_subdomains
+  # http_compression - (optional) is a type of string
+  http_compression = var.http_compression
+  # http_only_cookie - (optional) is a type of string
+  http_only_cookie = var.http_only_cookie
+  # http_request_body_timeout - (optional) is a type of number
+  http_request_body_timeout = var.http_request_body_timeout
+  # http_request_header_timeout - (optional) is a type of number
+  http_request_header_timeout = var.http_request_header_timeout
+  # https_redirect - (optional) is a type of string
+  https_redirect = var.https_redirect
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # ipv6_dns_server1 - (optional) is a type of string
+  ipv6_dns_server1 = var.ipv6_dns_server1
+  # ipv6_dns_server2 - (optional) is a type of string
+  ipv6_dns_server2 = var.ipv6_dns_server2
+  # ipv6_wins_server1 - (optional) is a type of string
+  ipv6_wins_server1 = var.ipv6_wins_server1
+  # ipv6_wins_server2 - (optional) is a type of string
+  ipv6_wins_server2 = var.ipv6_wins_server2
+  # login_attempt_limit - (optional) is a type of number
+  login_attempt_limit = var.login_attempt_limit
+  # login_block_time - (optional) is a type of number
+  login_block_time = var.login_block_time
+  # login_timeout - (optional) is a type of number
+  login_timeout = var.login_timeout
+  # port - (optional) is a type of number
+  port = var.port
+  # port_precedence - (optional) is a type of string
+  port_precedence = var.port_precedence
+  # reqclientcert - (optional) is a type of string
+  reqclientcert = var.reqclientcert
+  # route_source_interface - (optional) is a type of string
+  route_source_interface = var.route_source_interface
+  # servercert - (optional) is a type of string
+  servercert = var.servercert
+  # source_address6_negate - (optional) is a type of string
+  source_address6_negate = var.source_address6_negate
+  # source_address_negate - (optional) is a type of string
+  source_address_negate = var.source_address_negate
+  # ssl_client_renegotiation - (optional) is a type of string
+  ssl_client_renegotiation = var.ssl_client_renegotiation
+  # ssl_insert_empty_fragment - (optional) is a type of string
+  ssl_insert_empty_fragment = var.ssl_insert_empty_fragment
+  # ssl_max_proto_ver - (optional) is a type of string
+  ssl_max_proto_ver = var.ssl_max_proto_ver
+  # ssl_min_proto_ver - (optional) is a type of string
+  ssl_min_proto_ver = var.ssl_min_proto_ver
+  # tlsv1_0 - (optional) is a type of string
+  tlsv1_0 = var.tlsv1_0
+  # tlsv1_1 - (optional) is a type of string
+  tlsv1_1 = var.tlsv1_1
+  # tlsv1_2 - (optional) is a type of string
+  tlsv1_2 = var.tlsv1_2
+  # tlsv1_3 - (optional) is a type of string
+  tlsv1_3 = var.tlsv1_3
+  # transform_backward_slashes - (optional) is a type of string
+  transform_backward_slashes = var.transform_backward_slashes
+  # tunnel_connect_without_reauth - (optional) is a type of string
   tunnel_connect_without_reauth = var.tunnel_connect_without_reauth
-  tunnel_user_session_timeout   = var.tunnel_user_session_timeout
-  unsafe_legacy_renegotiation   = var.unsafe_legacy_renegotiation
-  url_obscuration               = var.url_obscuration
-  user_peer                     = var.user_peer
-  wins_server1                  = var.wins_server1
-  wins_server2                  = var.wins_server2
-  x_content_type_options        = var.x_content_type_options
+  # tunnel_user_session_timeout - (optional) is a type of number
+  tunnel_user_session_timeout = var.tunnel_user_session_timeout
+  # unsafe_legacy_renegotiation - (optional) is a type of string
+  unsafe_legacy_renegotiation = var.unsafe_legacy_renegotiation
+  # url_obscuration - (optional) is a type of string
+  url_obscuration = var.url_obscuration
+  # user_peer - (optional) is a type of string
+  user_peer = var.user_peer
+  # wins_server1 - (optional) is a type of string
+  wins_server1 = var.wins_server1
+  # wins_server2 - (optional) is a type of string
+  wins_server2 = var.wins_server2
+  # x_content_type_options - (optional) is a type of string
+  x_content_type_options = var.x_content_type_options
 
   dynamic "authentication_rule" {
     for_each = var.authentication_rule
     content {
-      auth                   = authentication_rule.value["auth"]
-      cipher                 = authentication_rule.value["cipher"]
-      client_cert            = authentication_rule.value["client_cert"]
-      id                     = authentication_rule.value["id"]
-      portal                 = authentication_rule.value["portal"]
-      realm                  = authentication_rule.value["realm"]
+      # auth - (optional) is a type of string
+      auth = authentication_rule.value["auth"]
+      # cipher - (optional) is a type of string
+      cipher = authentication_rule.value["cipher"]
+      # client_cert - (optional) is a type of string
+      client_cert = authentication_rule.value["client_cert"]
+      # id - (optional) is a type of number
+      id = authentication_rule.value["id"]
+      # portal - (optional) is a type of string
+      portal = authentication_rule.value["portal"]
+      # realm - (optional) is a type of string
+      realm = authentication_rule.value["realm"]
+      # source_address6_negate - (optional) is a type of string
       source_address6_negate = authentication_rule.value["source_address6_negate"]
-      source_address_negate  = authentication_rule.value["source_address_negate"]
-      user_peer              = authentication_rule.value["user_peer"]
+      # source_address_negate - (optional) is a type of string
+      source_address_negate = authentication_rule.value["source_address_negate"]
+      # user_peer - (optional) is a type of string
+      user_peer = authentication_rule.value["user_peer"]
 
       dynamic "groups" {
         for_each = authentication_rule.value.groups
         content {
+          # name - (optional) is a type of string
           name = groups.value["name"]
         }
       }
@@ -737,6 +806,7 @@ resource "fortios_vpnssl_settings" "this" {
       dynamic "source_address" {
         for_each = authentication_rule.value.source_address
         content {
+          # name - (optional) is a type of string
           name = source_address.value["name"]
         }
       }
@@ -744,6 +814,7 @@ resource "fortios_vpnssl_settings" "this" {
       dynamic "source_address6" {
         for_each = authentication_rule.value.source_address6
         content {
+          # name - (optional) is a type of string
           name = source_address6.value["name"]
         }
       }
@@ -751,6 +822,7 @@ resource "fortios_vpnssl_settings" "this" {
       dynamic "source_interface" {
         for_each = authentication_rule.value.source_interface
         content {
+          # name - (optional) is a type of string
           name = source_interface.value["name"]
         }
       }
@@ -758,6 +830,7 @@ resource "fortios_vpnssl_settings" "this" {
       dynamic "users" {
         for_each = authentication_rule.value.users
         content {
+          # name - (optional) is a type of string
           name = users.value["name"]
         }
       }
@@ -768,6 +841,7 @@ resource "fortios_vpnssl_settings" "this" {
   dynamic "source_address" {
     for_each = var.source_address
     content {
+      # name - (optional) is a type of string
       name = source_address.value["name"]
     }
   }
@@ -775,6 +849,7 @@ resource "fortios_vpnssl_settings" "this" {
   dynamic "source_address6" {
     for_each = var.source_address6
     content {
+      # name - (optional) is a type of string
       name = source_address6.value["name"]
     }
   }
@@ -782,6 +857,7 @@ resource "fortios_vpnssl_settings" "this" {
   dynamic "source_interface" {
     for_each = var.source_interface
     content {
+      # name - (optional) is a type of string
       name = source_interface.value["name"]
     }
   }
@@ -789,6 +865,7 @@ resource "fortios_vpnssl_settings" "this" {
   dynamic "tunnel_ip_pools" {
     for_each = var.tunnel_ip_pools
     content {
+      # name - (optional) is a type of string
       name = tunnel_ip_pools.value["name"]
     }
   }
@@ -796,6 +873,7 @@ resource "fortios_vpnssl_settings" "this" {
   dynamic "tunnel_ipv6_pools" {
     for_each = var.tunnel_ipv6_pools
     content {
+      # name - (optional) is a type of string
       name = tunnel_ipv6_pools.value["name"]
     }
   }

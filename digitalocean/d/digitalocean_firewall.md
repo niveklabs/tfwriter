@@ -113,31 +113,46 @@ variable "outbound_rule" {
 
 ```terraform
 data "digitalocean_firewall" "this" {
+  # droplet_ids - (optional) is a type of set of number
   droplet_ids = var.droplet_ids
+  # firewall_id - (required) is a type of string
   firewall_id = var.firewall_id
-  tags        = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "inbound_rule" {
     for_each = var.inbound_rule
     content {
-      port_range                = inbound_rule.value["port_range"]
-      protocol                  = inbound_rule.value["protocol"]
-      source_addresses          = inbound_rule.value["source_addresses"]
-      source_droplet_ids        = inbound_rule.value["source_droplet_ids"]
+      # port_range - (optional) is a type of string
+      port_range = inbound_rule.value["port_range"]
+      # protocol - (required) is a type of string
+      protocol = inbound_rule.value["protocol"]
+      # source_addresses - (optional) is a type of set of string
+      source_addresses = inbound_rule.value["source_addresses"]
+      # source_droplet_ids - (optional) is a type of set of number
+      source_droplet_ids = inbound_rule.value["source_droplet_ids"]
+      # source_load_balancer_uids - (optional) is a type of set of string
       source_load_balancer_uids = inbound_rule.value["source_load_balancer_uids"]
-      source_tags               = inbound_rule.value["source_tags"]
+      # source_tags - (optional) is a type of set of string
+      source_tags = inbound_rule.value["source_tags"]
     }
   }
 
   dynamic "outbound_rule" {
     for_each = var.outbound_rule
     content {
-      destination_addresses          = outbound_rule.value["destination_addresses"]
-      destination_droplet_ids        = outbound_rule.value["destination_droplet_ids"]
+      # destination_addresses - (optional) is a type of set of string
+      destination_addresses = outbound_rule.value["destination_addresses"]
+      # destination_droplet_ids - (optional) is a type of set of number
+      destination_droplet_ids = outbound_rule.value["destination_droplet_ids"]
+      # destination_load_balancer_uids - (optional) is a type of set of string
       destination_load_balancer_uids = outbound_rule.value["destination_load_balancer_uids"]
-      destination_tags               = outbound_rule.value["destination_tags"]
-      port_range                     = outbound_rule.value["port_range"]
-      protocol                       = outbound_rule.value["protocol"]
+      # destination_tags - (optional) is a type of set of string
+      destination_tags = outbound_rule.value["destination_tags"]
+      # port_range - (optional) is a type of string
+      port_range = outbound_rule.value["port_range"]
+      # protocol - (required) is a type of string
+      protocol = outbound_rule.value["protocol"]
     }
   }
 

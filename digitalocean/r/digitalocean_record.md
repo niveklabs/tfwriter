@@ -118,16 +118,26 @@ variable "weight" {
 
 ```terraform
 resource "digitalocean_record" "this" {
-  domain   = var.domain
-  flags    = var.flags
-  name     = var.name
-  port     = var.port
+  # domain - (required) is a type of string
+  domain = var.domain
+  # flags - (optional) is a type of number
+  flags = var.flags
+  # name - (required) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # priority - (optional) is a type of number
   priority = var.priority
-  tag      = var.tag
-  ttl      = var.ttl
-  type     = var.type
-  value    = var.value
-  weight   = var.weight
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

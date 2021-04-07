@@ -56,7 +56,9 @@ variable "subscription_tier_slug" {
 
 ```terraform
 resource "digitalocean_container_registry" "this" {
-  name                   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # subscription_tier_slug - (required) is a type of string
   subscription_tier_slug = var.subscription_tier_slug
 }
 ```

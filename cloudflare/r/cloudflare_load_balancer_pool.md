@@ -116,21 +116,32 @@ variable "origins" {
 
 ```terraform
 resource "cloudflare_load_balancer_pool" "this" {
-  check_regions      = var.check_regions
-  description        = var.description
-  enabled            = var.enabled
-  minimum_origins    = var.minimum_origins
-  monitor            = var.monitor
-  name               = var.name
+  # check_regions - (optional) is a type of set of string
+  check_regions = var.check_regions
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # minimum_origins - (optional) is a type of number
+  minimum_origins = var.minimum_origins
+  # monitor - (optional) is a type of string
+  monitor = var.monitor
+  # name - (required) is a type of string
+  name = var.name
+  # notification_email - (optional) is a type of string
   notification_email = var.notification_email
 
   dynamic "origins" {
     for_each = var.origins
     content {
+      # address - (required) is a type of string
       address = origins.value["address"]
+      # enabled - (optional) is a type of bool
       enabled = origins.value["enabled"]
-      name    = origins.value["name"]
-      weight  = origins.value["weight"]
+      # name - (required) is a type of string
+      name = origins.value["name"]
+      # weight - (optional) is a type of number
+      weight = origins.value["weight"]
     }
   }
 

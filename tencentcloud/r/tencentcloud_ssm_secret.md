@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_ssm_secret" "this" {
-  description             = var.description
-  is_enabled              = var.is_enabled
-  kms_key_id              = var.kms_key_id
+  # description - (optional) is a type of string
+  description = var.description
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # recovery_window_in_days - (optional) is a type of number
   recovery_window_in_days = var.recovery_window_in_days
-  secret_name             = var.secret_name
-  tags                    = var.tags
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

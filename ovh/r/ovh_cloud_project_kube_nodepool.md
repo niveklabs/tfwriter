@@ -111,15 +111,24 @@ variable "service_name" {
 
 ```terraform
 resource "ovh_cloud_project_kube_nodepool" "this" {
-  anti_affinity  = var.anti_affinity
-  desired_nodes  = var.desired_nodes
-  flavor_name    = var.flavor_name
-  kube_id        = var.kube_id
-  max_nodes      = var.max_nodes
-  min_nodes      = var.min_nodes
+  # anti_affinity - (optional) is a type of bool
+  anti_affinity = var.anti_affinity
+  # desired_nodes - (optional) is a type of number
+  desired_nodes = var.desired_nodes
+  # flavor_name - (required) is a type of string
+  flavor_name = var.flavor_name
+  # kube_id - (required) is a type of string
+  kube_id = var.kube_id
+  # max_nodes - (optional) is a type of number
+  max_nodes = var.max_nodes
+  # min_nodes - (optional) is a type of number
+  min_nodes = var.min_nodes
+  # monthly_billed - (optional) is a type of bool
   monthly_billed = var.monthly_billed
-  name           = var.name
-  service_name   = var.service_name
+  # name - (optional) is a type of string
+  name = var.name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 }
 ```
 

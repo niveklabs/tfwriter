@@ -221,47 +221,78 @@ variable "viz_options" {
 
 ```terraform
 resource "signalfx_detector" "this" {
+  # authorized_writer_teams - (optional) is a type of set of string
   authorized_writer_teams = var.authorized_writer_teams
+  # authorized_writer_users - (optional) is a type of set of string
   authorized_writer_users = var.authorized_writer_users
-  description             = var.description
-  disable_sampling        = var.disable_sampling
-  end_time                = var.end_time
-  max_delay               = var.max_delay
-  min_delay               = var.min_delay
-  name                    = var.name
-  program_text            = var.program_text
-  show_data_markers       = var.show_data_markers
-  show_event_lines        = var.show_event_lines
-  start_time              = var.start_time
-  tags                    = var.tags
-  teams                   = var.teams
-  time_range              = var.time_range
-  timezone                = var.timezone
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_sampling - (optional) is a type of bool
+  disable_sampling = var.disable_sampling
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # max_delay - (optional) is a type of number
+  max_delay = var.max_delay
+  # min_delay - (optional) is a type of number
+  min_delay = var.min_delay
+  # name - (required) is a type of string
+  name = var.name
+  # program_text - (required) is a type of string
+  program_text = var.program_text
+  # show_data_markers - (optional) is a type of bool
+  show_data_markers = var.show_data_markers
+  # show_event_lines - (optional) is a type of bool
+  show_event_lines = var.show_event_lines
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # teams - (optional) is a type of list of string
+  teams = var.teams
+  # time_range - (optional) is a type of number
+  time_range = var.time_range
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      description           = rule.value["description"]
-      detect_label          = rule.value["detect_label"]
-      disabled              = rule.value["disabled"]
-      notifications         = rule.value["notifications"]
-      parameterized_body    = rule.value["parameterized_body"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # detect_label - (required) is a type of string
+      detect_label = rule.value["detect_label"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # notifications - (optional) is a type of list of string
+      notifications = rule.value["notifications"]
+      # parameterized_body - (optional) is a type of string
+      parameterized_body = rule.value["parameterized_body"]
+      # parameterized_subject - (optional) is a type of string
       parameterized_subject = rule.value["parameterized_subject"]
-      runbook_url           = rule.value["runbook_url"]
-      severity              = rule.value["severity"]
-      tip                   = rule.value["tip"]
+      # runbook_url - (optional) is a type of string
+      runbook_url = rule.value["runbook_url"]
+      # severity - (required) is a type of string
+      severity = rule.value["severity"]
+      # tip - (optional) is a type of string
+      tip = rule.value["tip"]
     }
   }
 
   dynamic "viz_options" {
     for_each = var.viz_options
     content {
-      color        = viz_options.value["color"]
+      # color - (optional) is a type of string
+      color = viz_options.value["color"]
+      # display_name - (optional) is a type of string
       display_name = viz_options.value["display_name"]
-      label        = viz_options.value["label"]
+      # label - (required) is a type of string
+      label = viz_options.value["label"]
+      # value_prefix - (optional) is a type of string
       value_prefix = viz_options.value["value_prefix"]
+      # value_suffix - (optional) is a type of string
       value_suffix = viz_options.value["value_suffix"]
-      value_unit   = viz_options.value["value_unit"]
+      # value_unit - (optional) is a type of string
+      value_unit = viz_options.value["value_unit"]
     }
   }
 

@@ -106,15 +106,24 @@ variable "zone" {
 
 ```terraform
 resource "mso_schema_site_vrf_region_cidr_subnet" "this" {
-  cidr_ip       = var.cidr_ip
-  ip            = var.ip
-  region_name   = var.region_name
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # cidr_ip - (required) is a type of string
+  cidr_ip = var.cidr_ip
+  # ip - (required) is a type of string
+  ip = var.ip
+  # region_name - (required) is a type of string
+  region_name = var.region_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  usage         = var.usage
-  vrf_name      = var.vrf_name
-  zone          = var.zone
+  # usage - (optional) is a type of string
+  usage = var.usage
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

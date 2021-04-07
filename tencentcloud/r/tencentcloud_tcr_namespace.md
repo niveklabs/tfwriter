@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "tencentcloud_tcr_namespace" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  is_public   = var.is_public
-  name        = var.name
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

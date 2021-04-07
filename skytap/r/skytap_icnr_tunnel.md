@@ -73,14 +73,19 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_icnr_tunnel" "this" {
+  # source - (required) is a type of number
   source = var.source
+  # target - (required) is a type of number
   target = var.target
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

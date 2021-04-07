@@ -96,15 +96,21 @@ variable "interface" {
 
 ```terraform
 resource "fortios_firewall_decryptedtrafficmirror" "this" {
-  dstmac                = var.dstmac
+  # dstmac - (optional) is a type of string
+  dstmac = var.dstmac
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  traffic_source        = var.traffic_source
-  traffic_type          = var.traffic_type
+  # name - (optional) is a type of string
+  name = var.name
+  # traffic_source - (optional) is a type of string
+  traffic_source = var.traffic_source
+  # traffic_type - (optional) is a type of string
+  traffic_type = var.traffic_type
 
   dynamic "interface" {
     for_each = var.interface
     content {
+      # name - (optional) is a type of string
       name = interface.value["name"]
     }
   }

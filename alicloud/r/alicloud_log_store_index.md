@@ -114,27 +114,40 @@ variable "full_text" {
 
 ```terraform
 resource "alicloud_log_store_index" "this" {
+  # logstore - (required) is a type of string
   logstore = var.logstore
-  project  = var.project
+  # project - (required) is a type of string
+  project = var.project
 
   dynamic "field_search" {
     for_each = var.field_search
     content {
-      alias            = field_search.value["alias"]
-      case_sensitive   = field_search.value["case_sensitive"]
+      # alias - (optional) is a type of string
+      alias = field_search.value["alias"]
+      # case_sensitive - (optional) is a type of bool
+      case_sensitive = field_search.value["case_sensitive"]
+      # enable_analytics - (optional) is a type of bool
       enable_analytics = field_search.value["enable_analytics"]
-      include_chinese  = field_search.value["include_chinese"]
-      name             = field_search.value["name"]
-      token            = field_search.value["token"]
-      type             = field_search.value["type"]
+      # include_chinese - (optional) is a type of bool
+      include_chinese = field_search.value["include_chinese"]
+      # name - (required) is a type of string
+      name = field_search.value["name"]
+      # token - (optional) is a type of string
+      token = field_search.value["token"]
+      # type - (optional) is a type of string
+      type = field_search.value["type"]
 
       dynamic "json_keys" {
         for_each = field_search.value.json_keys
         content {
-          alias     = json_keys.value["alias"]
+          # alias - (optional) is a type of string
+          alias = json_keys.value["alias"]
+          # doc_value - (optional) is a type of bool
           doc_value = json_keys.value["doc_value"]
-          name      = json_keys.value["name"]
-          type      = json_keys.value["type"]
+          # name - (required) is a type of string
+          name = json_keys.value["name"]
+          # type - (optional) is a type of string
+          type = json_keys.value["type"]
         }
       }
 
@@ -144,9 +157,12 @@ resource "alicloud_log_store_index" "this" {
   dynamic "full_text" {
     for_each = var.full_text
     content {
-      case_sensitive  = full_text.value["case_sensitive"]
+      # case_sensitive - (optional) is a type of bool
+      case_sensitive = full_text.value["case_sensitive"]
+      # include_chinese - (optional) is a type of bool
       include_chinese = full_text.value["include_chinese"]
-      token           = full_text.value["token"]
+      # token - (optional) is a type of string
+      token = full_text.value["token"]
     }
   }
 

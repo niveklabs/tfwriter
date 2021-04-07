@@ -58,7 +58,9 @@ variable "with_selector" {
 
 ```terraform
 data "hcloud_certificate" "this" {
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 }
 ```

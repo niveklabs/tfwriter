@@ -145,22 +145,35 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ecs_snapshot" "this" {
-  category                      = var.category
-  description                   = var.description
-  disk_id                       = var.disk_id
-  force                         = var.force
-  instant_access                = var.instant_access
+  # category - (optional) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
+  description = var.description
+  # disk_id - (required) is a type of string
+  disk_id = var.disk_id
+  # force - (optional) is a type of bool
+  force = var.force
+  # instant_access - (optional) is a type of bool
+  instant_access = var.instant_access
+  # instant_access_retention_days - (optional) is a type of number
   instant_access_retention_days = var.instant_access_retention_days
-  name                          = var.name
-  resource_group_id             = var.resource_group_id
-  retention_days                = var.retention_days
-  snapshot_name                 = var.snapshot_name
-  tags                          = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # retention_days - (optional) is a type of number
+  retention_days = var.retention_days
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = var.snapshot_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

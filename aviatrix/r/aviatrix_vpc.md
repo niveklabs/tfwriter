@@ -147,23 +147,37 @@ variable "subnets" {
 
 ```terraform
 resource "aviatrix_vpc" "this" {
-  account_name              = var.account_name
-  aviatrix_firenet_vpc      = var.aviatrix_firenet_vpc
-  aviatrix_transit_vpc      = var.aviatrix_transit_vpc
-  cidr                      = var.cidr
-  cloud_type                = var.cloud_type
-  enable_native_gwlb        = var.enable_native_gwlb
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # aviatrix_firenet_vpc - (optional) is a type of bool
+  aviatrix_firenet_vpc = var.aviatrix_firenet_vpc
+  # aviatrix_transit_vpc - (optional) is a type of bool
+  aviatrix_transit_vpc = var.aviatrix_transit_vpc
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # enable_native_gwlb - (optional) is a type of bool
+  enable_native_gwlb = var.enable_native_gwlb
+  # enable_private_oob_subnet - (optional) is a type of bool
   enable_private_oob_subnet = var.enable_private_oob_subnet
-  name                      = var.name
-  num_of_subnet_pairs       = var.num_of_subnet_pairs
-  region                    = var.region
-  subnet_size               = var.subnet_size
+  # name - (required) is a type of string
+  name = var.name
+  # num_of_subnet_pairs - (optional) is a type of number
+  num_of_subnet_pairs = var.num_of_subnet_pairs
+  # region - (optional) is a type of string
+  region = var.region
+  # subnet_size - (optional) is a type of number
+  subnet_size = var.subnet_size
 
   dynamic "subnets" {
     for_each = var.subnets
     content {
-      cidr   = subnets.value["cidr"]
-      name   = subnets.value["name"]
+      # cidr - (optional) is a type of string
+      cidr = subnets.value["cidr"]
+      # name - (optional) is a type of string
+      name = subnets.value["name"]
+      # region - (optional) is a type of string
       region = subnets.value["region"]
     }
   }

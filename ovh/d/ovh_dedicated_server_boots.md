@@ -65,8 +65,11 @@ variable "service_name" {
 
 ```terraform
 data "ovh_dedicated_server_boots" "this" {
-  boot_type    = var.boot_type
-  kernel       = var.kernel
+  # boot_type - (optional) is a type of string
+  boot_type = var.boot_type
+  # kernel - (optional) is a type of string
+  kernel = var.kernel
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

@@ -112,15 +112,24 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_bgp_peer_group" "this" {
-  aggregated_confed_as_path   = var.aggregated_confed_as_path
-  enable                      = var.enable
-  export_next_hop             = var.export_next_hop
-  import_next_hop             = var.import_next_hop
-  name                        = var.name
-  remove_private_as           = var.remove_private_as
+  # aggregated_confed_as_path - (optional) is a type of bool
+  aggregated_confed_as_path = var.aggregated_confed_as_path
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # export_next_hop - (optional) is a type of string
+  export_next_hop = var.export_next_hop
+  # import_next_hop - (optional) is a type of string
+  import_next_hop = var.import_next_hop
+  # name - (required) is a type of string
+  name = var.name
+  # remove_private_as - (optional) is a type of bool
+  remove_private_as = var.remove_private_as
+  # soft_reset_with_stored_info - (optional) is a type of bool
   soft_reset_with_stored_info = var.soft_reset_with_stored_info
-  type                        = var.type
-  virtual_router              = var.virtual_router
+  # type - (optional) is a type of string
+  type = var.type
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

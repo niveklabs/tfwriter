@@ -66,9 +66,12 @@ variable "service_name" {
 
 ```terraform
 data "ovh_cloud_project_regions" "this" {
+  # has_services_up - (optional) is a type of list of string
   has_services_up = var.has_services_up
-  project_id      = var.project_id
-  service_name    = var.service_name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # service_name - (optional) is a type of string
+  service_name = var.service_name
 }
 ```
 

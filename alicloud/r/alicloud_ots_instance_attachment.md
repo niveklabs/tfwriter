@@ -63,9 +63,12 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_ots_instance_attachment" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  vpc_name      = var.vpc_name
-  vswitch_id    = var.vswitch_id
+  # vpc_name - (required) is a type of string
+  vpc_name = var.vpc_name
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

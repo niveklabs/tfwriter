@@ -74,13 +74,17 @@ variable "filter" {
 
 ```terraform
 data "tencentcloud_eip" "this" {
+  # include_arrears - (optional) is a type of bool
   include_arrears = var.include_arrears
+  # include_blocked - (optional) is a type of bool
   include_blocked = var.include_blocked
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

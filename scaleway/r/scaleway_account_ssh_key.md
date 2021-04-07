@@ -79,13 +79,17 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_account_ssh_key" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
   project_id = var.project_id
+  # public_key - (required) is a type of string
   public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

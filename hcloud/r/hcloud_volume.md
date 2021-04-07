@@ -96,13 +96,20 @@ variable "size" {
 
 ```terraform
 resource "hcloud_volume" "this" {
+  # automount - (optional) is a type of bool
   automount = var.automount
-  format    = var.format
-  labels    = var.labels
-  location  = var.location
-  name      = var.name
+  # format - (optional) is a type of string
+  format = var.format
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # server_id - (optional) is a type of number
   server_id = var.server_id
-  size      = var.size
+  # size - (required) is a type of number
+  size = var.size
 }
 ```
 

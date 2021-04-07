@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "sumologic_collector" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

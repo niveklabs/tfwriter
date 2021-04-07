@@ -301,35 +301,57 @@ variable "update_policy" {
 
 ```terraform
 resource "spotinst_ocean_ecs" "this" {
+  # associate_public_ip_address - (optional) is a type of bool
   associate_public_ip_address = var.associate_public_ip_address
-  cluster_name                = var.cluster_name
-  desired_capacity            = var.desired_capacity
-  draining_timeout            = var.draining_timeout
-  ebs_optimized               = var.ebs_optimized
-  iam_instance_profile        = var.iam_instance_profile
-  image_id                    = var.image_id
-  key_pair                    = var.key_pair
-  max_size                    = var.max_size
-  min_size                    = var.min_size
-  monitoring                  = var.monitoring
-  name                        = var.name
-  region                      = var.region
-  security_group_ids          = var.security_group_ids
-  subnet_ids                  = var.subnet_ids
-  user_data                   = var.user_data
-  utilize_reserved_instances  = var.utilize_reserved_instances
-  whitelist                   = var.whitelist
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # draining_timeout - (optional) is a type of number
+  draining_timeout = var.draining_timeout
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # iam_instance_profile - (optional) is a type of string
+  iam_instance_profile = var.iam_instance_profile
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # monitoring - (optional) is a type of bool
+  monitoring = var.monitoring
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
+  # security_group_ids - (required) is a type of list of string
+  security_group_ids = var.security_group_ids
+  # subnet_ids - (required) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # utilize_reserved_instances - (optional) is a type of bool
+  utilize_reserved_instances = var.utilize_reserved_instances
+  # whitelist - (optional) is a type of list of string
+  whitelist = var.whitelist
 
   dynamic "autoscaler" {
     for_each = var.autoscaler
     content {
-      cooldown       = autoscaler.value["cooldown"]
+      # cooldown - (optional) is a type of number
+      cooldown = autoscaler.value["cooldown"]
+      # is_auto_config - (optional) is a type of bool
       is_auto_config = autoscaler.value["is_auto_config"]
-      is_enabled     = autoscaler.value["is_enabled"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = autoscaler.value["is_enabled"]
 
       dynamic "down" {
         for_each = autoscaler.value.down
         content {
+          # max_scale_down_percentage - (optional) is a type of number
           max_scale_down_percentage = down.value["max_scale_down_percentage"]
         }
       }
@@ -337,17 +359,22 @@ resource "spotinst_ocean_ecs" "this" {
       dynamic "headroom" {
         for_each = autoscaler.value.headroom
         content {
-          cpu_per_unit    = headroom.value["cpu_per_unit"]
+          # cpu_per_unit - (optional) is a type of number
+          cpu_per_unit = headroom.value["cpu_per_unit"]
+          # memory_per_unit - (optional) is a type of number
           memory_per_unit = headroom.value["memory_per_unit"]
-          num_of_units    = headroom.value["num_of_units"]
+          # num_of_units - (optional) is a type of number
+          num_of_units = headroom.value["num_of_units"]
         }
       }
 
       dynamic "resource_limits" {
         for_each = autoscaler.value.resource_limits
         content {
+          # max_memory_gib - (optional) is a type of number
           max_memory_gib = resource_limits.value["max_memory_gib"]
-          max_vcpu       = resource_limits.value["max_vcpu"]
+          # max_vcpu - (optional) is a type of number
+          max_vcpu = resource_limits.value["max_vcpu"]
         }
       }
 
@@ -361,7 +388,9 @@ resource "spotinst_ocean_ecs" "this" {
       dynamic "shutdown_hours" {
         for_each = scheduled_task.value.shutdown_hours
         content {
-          is_enabled   = shutdown_hours.value["is_enabled"]
+          # is_enabled - (optional) is a type of bool
+          is_enabled = shutdown_hours.value["is_enabled"]
+          # time_windows - (required) is a type of list of string
           time_windows = shutdown_hours.value["time_windows"]
         }
       }
@@ -369,9 +398,12 @@ resource "spotinst_ocean_ecs" "this" {
       dynamic "tasks" {
         for_each = scheduled_task.value.tasks
         content {
+          # cron_expression - (required) is a type of string
           cron_expression = tasks.value["cron_expression"]
-          is_enabled      = tasks.value["is_enabled"]
-          task_type       = tasks.value["task_type"]
+          # is_enabled - (required) is a type of bool
+          is_enabled = tasks.value["is_enabled"]
+          # task_type - (required) is a type of string
+          task_type = tasks.value["task_type"]
         }
       }
 
@@ -381,7 +413,9 @@ resource "spotinst_ocean_ecs" "this" {
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }
@@ -389,11 +423,13 @@ resource "spotinst_ocean_ecs" "this" {
   dynamic "update_policy" {
     for_each = var.update_policy
     content {
+      # should_roll - (required) is a type of bool
       should_roll = update_policy.value["should_roll"]
 
       dynamic "roll_config" {
         for_each = update_policy.value.roll_config
         content {
+          # batch_size_percentage - (required) is a type of number
           batch_size_percentage = roll_config.value["batch_size_percentage"]
         }
       }

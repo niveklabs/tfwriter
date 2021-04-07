@@ -83,15 +83,21 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_paas_securityzone" "this" {
-  labels        = var.labels
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # location_uuid - (optional) is a type of string
   location_uuid = var.location_uuid
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

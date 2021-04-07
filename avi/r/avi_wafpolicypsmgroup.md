@@ -206,21 +206,32 @@ variable "locations" {
 
 ```terraform
 resource "avi_wafpolicypsmgroup" "this" {
-  description       = var.description
-  enable            = var.enable
-  hit_action        = var.hit_action
+  # description - (optional) is a type of string
+  description = var.description
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # hit_action - (optional) is a type of string
+  hit_action = var.hit_action
+  # is_learning_group - (optional) is a type of bool
   is_learning_group = var.is_learning_group
-  miss_action       = var.miss_action
-  name              = var.name
-  tenant_ref        = var.tenant_ref
-  uuid              = var.uuid
+  # miss_action - (optional) is a type of string
+  miss_action = var.miss_action
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "locations" {
     for_each = var.locations
     content {
+      # description - (optional) is a type of string
       description = locations.value["description"]
-      index       = locations.value["index"]
-      name        = locations.value["name"]
+      # index - (optional) is a type of number
+      index = locations.value["index"]
+      # name - (optional) is a type of string
+      name = locations.value["name"]
 
       dynamic "match" {
         for_each = locations.value.match
@@ -229,26 +240,35 @@ resource "avi_wafpolicypsmgroup" "this" {
           dynamic "host" {
             for_each = match.value.host
             content {
-              match_case     = host.value["match_case"]
+              # match_case - (optional) is a type of string
+              match_case = host.value["match_case"]
+              # match_criteria - (required) is a type of string
               match_criteria = host.value["match_criteria"]
-              value          = host.value["value"]
+              # value - (optional) is a type of list of string
+              value = host.value["value"]
             }
           }
 
           dynamic "methods" {
             for_each = match.value.methods
             content {
+              # match_criteria - (required) is a type of string
               match_criteria = methods.value["match_criteria"]
-              methods        = methods.value["methods"]
+              # methods - (optional) is a type of list of string
+              methods = methods.value["methods"]
             }
           }
 
           dynamic "path" {
             for_each = match.value.path
             content {
-              match_case        = path.value["match_case"]
-              match_criteria    = path.value["match_criteria"]
-              match_str         = path.value["match_str"]
+              # match_case - (optional) is a type of string
+              match_case = path.value["match_case"]
+              # match_criteria - (required) is a type of string
+              match_criteria = path.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = path.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = path.value["string_group_refs"]
             }
           }
@@ -259,23 +279,37 @@ resource "avi_wafpolicypsmgroup" "this" {
       dynamic "rules" {
         for_each = locations.value.rules
         content {
-          description            = rules.value["description"]
-          enable                 = rules.value["enable"]
-          index                  = rules.value["index"]
-          match_case             = rules.value["match_case"]
+          # description - (optional) is a type of string
+          description = rules.value["description"]
+          # enable - (optional) is a type of bool
+          enable = rules.value["enable"]
+          # index - (optional) is a type of number
+          index = rules.value["index"]
+          # match_case - (optional) is a type of string
+          match_case = rules.value["match_case"]
+          # match_value_max_length - (optional) is a type of number
           match_value_max_length = rules.value["match_value_max_length"]
-          match_value_pattern    = rules.value["match_value_pattern"]
-          mode                   = rules.value["mode"]
-          name                   = rules.value["name"]
-          paranoia_level         = rules.value["paranoia_level"]
-          rule_id                = rules.value["rule_id"]
+          # match_value_pattern - (optional) is a type of string
+          match_value_pattern = rules.value["match_value_pattern"]
+          # mode - (optional) is a type of string
+          mode = rules.value["mode"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
+          # paranoia_level - (optional) is a type of string
+          paranoia_level = rules.value["paranoia_level"]
+          # rule_id - (optional) is a type of string
+          rule_id = rules.value["rule_id"]
 
           dynamic "match_elements" {
             for_each = rules.value.match_elements
             content {
-              excluded    = match_elements.value["excluded"]
-              index       = match_elements.value["index"]
-              name        = match_elements.value["name"]
+              # excluded - (optional) is a type of bool
+              excluded = match_elements.value["excluded"]
+              # index - (optional) is a type of number
+              index = match_elements.value["index"]
+              # name - (optional) is a type of string
+              name = match_elements.value["name"]
+              # sub_element - (optional) is a type of string
               sub_element = match_elements.value["sub_element"]
             }
           }

@@ -71,9 +71,13 @@ variable "snapshot_policy_name" {
 
 ```terraform
 resource "tencentcloud_cbs_snapshot_policy" "this" {
-  repeat_hours         = var.repeat_hours
-  repeat_weekdays      = var.repeat_weekdays
-  retention_days       = var.retention_days
+  # repeat_hours - (required) is a type of list of number
+  repeat_hours = var.repeat_hours
+  # repeat_weekdays - (required) is a type of list of number
+  repeat_weekdays = var.repeat_weekdays
+  # retention_days - (optional) is a type of number
+  retention_days = var.retention_days
+  # snapshot_policy_name - (required) is a type of string
   snapshot_policy_name = var.snapshot_policy_name
 }
 ```

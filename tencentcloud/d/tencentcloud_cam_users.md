@@ -114,15 +114,24 @@ variable "uin" {
 
 ```terraform
 data "tencentcloud_cam_users" "this" {
-  console_login      = var.console_login
-  country_code       = var.country_code
-  email              = var.email
-  name               = var.name
-  phone_num          = var.phone_num
-  remark             = var.remark
+  # console_login - (optional) is a type of bool
+  console_login = var.console_login
+  # country_code - (optional) is a type of string
+  country_code = var.country_code
+  # email - (optional) is a type of string
+  email = var.email
+  # name - (optional) is a type of string
+  name = var.name
+  # phone_num - (optional) is a type of string
+  phone_num = var.phone_num
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  uid                = var.uid
-  uin                = var.uin
+  # uid - (optional) is a type of number
+  uid = var.uid
+  # uin - (optional) is a type of number
+  uin = var.uin
 }
 ```
 

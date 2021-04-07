@@ -63,8 +63,11 @@ variable "tag_filter_str" {
 
 ```terraform
 resource "datadog_integration_aws_tag_filter" "this" {
-  account_id     = var.account_id
-  namespace      = var.namespace
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # tag_filter_str - (required) is a type of string
   tag_filter_str = var.tag_filter_str
 }
 ```

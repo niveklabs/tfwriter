@@ -88,12 +88,18 @@ variable "usage" {
 
 ```terraform
 resource "okta_network_zone" "this" {
+  # dynamic_locations - (optional) is a type of set of string
   dynamic_locations = var.dynamic_locations
-  gateways          = var.gateways
-  name              = var.name
-  proxies           = var.proxies
-  type              = var.type
-  usage             = var.usage
+  # gateways - (optional) is a type of set of string
+  gateways = var.gateways
+  # name - (required) is a type of string
+  name = var.name
+  # proxies - (optional) is a type of set of string
+  proxies = var.proxies
+  # type - (required) is a type of string
+  type = var.type
+  # usage - (optional) is a type of string
+  usage = var.usage
 }
 ```
 

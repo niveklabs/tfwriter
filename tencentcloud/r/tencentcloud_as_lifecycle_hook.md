@@ -111,15 +111,24 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "tencentcloud_as_lifecycle_hook" "this" {
-  default_result           = var.default_result
-  heartbeat_timeout        = var.heartbeat_timeout
-  lifecycle_hook_name      = var.lifecycle_hook_name
-  lifecycle_transition     = var.lifecycle_transition
-  notification_metadata    = var.notification_metadata
-  notification_queue_name  = var.notification_queue_name
+  # default_result - (optional) is a type of string
+  default_result = var.default_result
+  # heartbeat_timeout - (optional) is a type of number
+  heartbeat_timeout = var.heartbeat_timeout
+  # lifecycle_hook_name - (required) is a type of string
+  lifecycle_hook_name = var.lifecycle_hook_name
+  # lifecycle_transition - (required) is a type of string
+  lifecycle_transition = var.lifecycle_transition
+  # notification_metadata - (optional) is a type of string
+  notification_metadata = var.notification_metadata
+  # notification_queue_name - (optional) is a type of string
+  notification_queue_name = var.notification_queue_name
+  # notification_target_type - (optional) is a type of string
   notification_target_type = var.notification_target_type
-  notification_topic_name  = var.notification_topic_name
-  scaling_group_id         = var.scaling_group_id
+  # notification_topic_name - (optional) is a type of string
+  notification_topic_name = var.notification_topic_name
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
 }
 ```
 

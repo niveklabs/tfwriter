@@ -64,8 +64,11 @@ variable "instance_id" {
 
 ```terraform
 resource "alicloud_disk_attachment" "this" {
+  # device_name - (optional) is a type of string
   device_name = var.device_name
-  disk_id     = var.disk_id
+  # disk_id - (required) is a type of string
+  disk_id = var.disk_id
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 }
 ```

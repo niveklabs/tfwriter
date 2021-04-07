@@ -143,23 +143,36 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_dhcp_v6_static_binding" "this" {
-  description     = var.description
-  display_name    = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns_nameservers - (optional) is a type of list of string
   dns_nameservers = var.dns_nameservers
-  domain_names    = var.domain_names
-  ip_addresses    = var.ip_addresses
-  lease_time      = var.lease_time
-  mac_address     = var.mac_address
-  nsx_id          = var.nsx_id
-  preferred_time  = var.preferred_time
-  segment_path    = var.segment_path
-  sntp_servers    = var.sntp_servers
+  # domain_names - (optional) is a type of list of string
+  domain_names = var.domain_names
+  # ip_addresses - (optional) is a type of list of string
+  ip_addresses = var.ip_addresses
+  # lease_time - (optional) is a type of number
+  lease_time = var.lease_time
+  # mac_address - (required) is a type of string
+  mac_address = var.mac_address
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # preferred_time - (optional) is a type of number
+  preferred_time = var.preferred_time
+  # segment_path - (required) is a type of string
+  segment_path = var.segment_path
+  # sntp_servers - (optional) is a type of list of string
+  sntp_servers = var.sntp_servers
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

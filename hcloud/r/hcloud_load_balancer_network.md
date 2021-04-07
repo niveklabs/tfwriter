@@ -81,11 +81,16 @@ variable "subnet_id" {
 
 ```terraform
 resource "hcloud_load_balancer_network" "this" {
+  # enable_public_interface - (optional) is a type of bool
   enable_public_interface = var.enable_public_interface
-  ip                      = var.ip
-  load_balancer_id        = var.load_balancer_id
-  network_id              = var.network_id
-  subnet_id               = var.subnet_id
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # load_balancer_id - (required) is a type of number
+  load_balancer_id = var.load_balancer_id
+  # network_id - (optional) is a type of number
+  network_id = var.network_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

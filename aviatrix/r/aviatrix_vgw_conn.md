@@ -107,15 +107,24 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_vgw_conn" "this" {
-  bgp_local_as_num              = var.bgp_local_as_num
-  bgp_vgw_account               = var.bgp_vgw_account
-  bgp_vgw_id                    = var.bgp_vgw_id
-  bgp_vgw_region                = var.bgp_vgw_region
-  conn_name                     = var.conn_name
+  # bgp_local_as_num - (required) is a type of string
+  bgp_local_as_num = var.bgp_local_as_num
+  # bgp_vgw_account - (required) is a type of string
+  bgp_vgw_account = var.bgp_vgw_account
+  # bgp_vgw_id - (required) is a type of string
+  bgp_vgw_id = var.bgp_vgw_id
+  # bgp_vgw_region - (required) is a type of string
+  bgp_vgw_region = var.bgp_vgw_region
+  # conn_name - (required) is a type of string
+  conn_name = var.conn_name
+  # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
-  gw_name                       = var.gw_name
-  manual_bgp_advertised_cidrs   = var.manual_bgp_advertised_cidrs
-  vpc_id                        = var.vpc_id
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # manual_bgp_advertised_cidrs - (optional) is a type of set of string
+  manual_bgp_advertised_cidrs = var.manual_bgp_advertised_cidrs
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

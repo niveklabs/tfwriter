@@ -66,9 +66,12 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_availability_zones" "this" {
+  # include_unavailable - (optional) is a type of bool
   include_unavailable = var.include_unavailable
-  name                = var.name
-  result_output_file  = var.result_output_file
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
 }
 ```
 

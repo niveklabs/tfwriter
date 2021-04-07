@@ -58,7 +58,9 @@ variable "value" {
 
 ```terraform
 resource "thunder_hostname" "this" {
-  uuid  = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # value - (optional) is a type of string
   value = var.value
 }
 ```

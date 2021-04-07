@@ -136,21 +136,33 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_switch_security_switching_profile" "this" {
-  block_client_dhcp     = var.block_client_dhcp
-  block_non_ip          = var.block_non_ip
-  block_server_dhcp     = var.block_server_dhcp
-  bpdu_filter_enabled   = var.bpdu_filter_enabled
+  # block_client_dhcp - (optional) is a type of bool
+  block_client_dhcp = var.block_client_dhcp
+  # block_non_ip - (optional) is a type of bool
+  block_non_ip = var.block_non_ip
+  # block_server_dhcp - (optional) is a type of bool
+  block_server_dhcp = var.block_server_dhcp
+  # bpdu_filter_enabled - (optional) is a type of bool
+  bpdu_filter_enabled = var.bpdu_filter_enabled
+  # bpdu_filter_whitelist - (optional) is a type of set of string
   bpdu_filter_whitelist = var.bpdu_filter_whitelist
-  description           = var.description
-  display_name          = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
 
   dynamic "rate_limits" {
     for_each = var.rate_limits
     content {
-      enabled      = rate_limits.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = rate_limits.value["enabled"]
+      # rx_broadcast - (optional) is a type of number
       rx_broadcast = rate_limits.value["rx_broadcast"]
+      # rx_multicast - (optional) is a type of number
       rx_multicast = rate_limits.value["rx_multicast"]
+      # tx_broadcast - (optional) is a type of number
       tx_broadcast = rate_limits.value["tx_broadcast"]
+      # tx_multicast - (optional) is a type of number
       tx_multicast = rate_limits.value["tx_multicast"]
     }
   }
@@ -158,8 +170,10 @@ resource "nsxt_switch_security_switching_profile" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

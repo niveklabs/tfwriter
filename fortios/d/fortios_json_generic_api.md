@@ -57,7 +57,9 @@ variable "specialparams" {
 
 ```terraform
 data "fortios_json_generic_api" "this" {
-  path          = var.path
+  # path - (required) is a type of string
+  path = var.path
+  # specialparams - (optional) is a type of string
   specialparams = var.specialparams
 }
 ```

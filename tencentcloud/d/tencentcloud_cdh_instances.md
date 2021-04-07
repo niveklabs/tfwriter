@@ -90,11 +90,17 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_cdh_instances" "this" {
-  availability_zone  = var.availability_zone
-  host_id            = var.host_id
-  host_name          = var.host_name
-  host_state         = var.host_state
-  project_id         = var.project_id
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # host_id - (optional) is a type of string
+  host_id = var.host_id
+  # host_name - (optional) is a type of string
+  host_name = var.host_name
+  # host_state - (optional) is a type of string
+  host_state = var.host_state
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

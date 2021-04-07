@@ -66,9 +66,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_switchcontrollersecuritypolicy_localaccess" "this" {
+  # internal_allowaccess - (optional) is a type of string
   internal_allowaccess = var.internal_allowaccess
-  mgmt_allowaccess     = var.mgmt_allowaccess
-  name                 = var.name
+  # mgmt_allowaccess - (optional) is a type of string
+  mgmt_allowaccess = var.mgmt_allowaccess
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

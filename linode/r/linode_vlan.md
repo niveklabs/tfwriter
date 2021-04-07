@@ -73,10 +73,14 @@ variable "region" {
 
 ```terraform
 resource "linode_vlan" "this" {
-  cidr_block  = var.cidr_block
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # description - (optional) is a type of string
   description = var.description
-  linodes     = var.linodes
-  region      = var.region
+  # linodes - (optional) is a type of set of number
+  linodes = var.linodes
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

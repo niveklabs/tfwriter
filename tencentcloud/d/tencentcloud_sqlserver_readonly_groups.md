@@ -58,7 +58,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_sqlserver_readonly_groups" "this" {
+  # master_instance_id - (optional) is a type of string
   master_instance_id = var.master_instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

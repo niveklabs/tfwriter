@@ -336,43 +336,80 @@ variable "type" {
 
 ```terraform
 resource "panos_ipsec_tunnel" "this" {
-  ak_ike_gateway                 = var.ak_ike_gateway
-  ak_ipsec_crypto_profile        = var.ak_ipsec_crypto_profile
-  anti_replay                    = var.anti_replay
-  copy_flow_label                = var.copy_flow_label
-  copy_tos                       = var.copy_tos
-  disabled                       = var.disabled
-  enable_ipv6                    = var.enable_ipv6
-  enable_tunnel_monitor          = var.enable_tunnel_monitor
-  gps_certificate_profile        = var.gps_certificate_profile
-  gps_interface                  = var.gps_interface
+  # ak_ike_gateway - (optional) is a type of string
+  ak_ike_gateway = var.ak_ike_gateway
+  # ak_ipsec_crypto_profile - (optional) is a type of string
+  ak_ipsec_crypto_profile = var.ak_ipsec_crypto_profile
+  # anti_replay - (optional) is a type of bool
+  anti_replay = var.anti_replay
+  # copy_flow_label - (optional) is a type of bool
+  copy_flow_label = var.copy_flow_label
+  # copy_tos - (optional) is a type of bool
+  copy_tos = var.copy_tos
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # enable_ipv6 - (optional) is a type of bool
+  enable_ipv6 = var.enable_ipv6
+  # enable_tunnel_monitor - (optional) is a type of bool
+  enable_tunnel_monitor = var.enable_tunnel_monitor
+  # gps_certificate_profile - (optional) is a type of string
+  gps_certificate_profile = var.gps_certificate_profile
+  # gps_interface - (optional) is a type of string
+  gps_interface = var.gps_interface
+  # gps_interface_floating_ip_ipv4 - (optional) is a type of string
   gps_interface_floating_ip_ipv4 = var.gps_interface_floating_ip_ipv4
+  # gps_interface_floating_ip_ipv6 - (optional) is a type of string
   gps_interface_floating_ip_ipv6 = var.gps_interface_floating_ip_ipv6
-  gps_interface_ip_ipv4          = var.gps_interface_ip_ipv4
-  gps_interface_ip_ipv6          = var.gps_interface_ip_ipv6
-  gps_local_certificate          = var.gps_local_certificate
-  gps_portal_address             = var.gps_portal_address
-  gps_prefer_ipv6                = var.gps_prefer_ipv6
-  gps_publish_connected_routes   = var.gps_publish_connected_routes
-  gps_publish_routes             = var.gps_publish_routes
-  mk_auth_key                    = var.mk_auth_key
-  mk_auth_type                   = var.mk_auth_type
-  mk_esp_encryption_key          = var.mk_esp_encryption_key
-  mk_esp_encryption_type         = var.mk_esp_encryption_type
-  mk_interface                   = var.mk_interface
-  mk_local_address_floating_ip   = var.mk_local_address_floating_ip
-  mk_local_address_ip            = var.mk_local_address_ip
-  mk_local_spi                   = var.mk_local_spi
-  mk_protocol                    = var.mk_protocol
-  mk_remote_address              = var.mk_remote_address
-  mk_remote_spi                  = var.mk_remote_spi
-  name                           = var.name
-  tunnel_interface               = var.tunnel_interface
-  tunnel_monitor_destination_ip  = var.tunnel_monitor_destination_ip
-  tunnel_monitor_profile         = var.tunnel_monitor_profile
-  tunnel_monitor_proxy_id        = var.tunnel_monitor_proxy_id
-  tunnel_monitor_source_ip       = var.tunnel_monitor_source_ip
-  type                           = var.type
+  # gps_interface_ip_ipv4 - (optional) is a type of string
+  gps_interface_ip_ipv4 = var.gps_interface_ip_ipv4
+  # gps_interface_ip_ipv6 - (optional) is a type of string
+  gps_interface_ip_ipv6 = var.gps_interface_ip_ipv6
+  # gps_local_certificate - (optional) is a type of string
+  gps_local_certificate = var.gps_local_certificate
+  # gps_portal_address - (optional) is a type of string
+  gps_portal_address = var.gps_portal_address
+  # gps_prefer_ipv6 - (optional) is a type of bool
+  gps_prefer_ipv6 = var.gps_prefer_ipv6
+  # gps_publish_connected_routes - (optional) is a type of bool
+  gps_publish_connected_routes = var.gps_publish_connected_routes
+  # gps_publish_routes - (optional) is a type of list of string
+  gps_publish_routes = var.gps_publish_routes
+  # mk_auth_key - (optional) is a type of string
+  mk_auth_key = var.mk_auth_key
+  # mk_auth_type - (optional) is a type of string
+  mk_auth_type = var.mk_auth_type
+  # mk_esp_encryption_key - (optional) is a type of string
+  mk_esp_encryption_key = var.mk_esp_encryption_key
+  # mk_esp_encryption_type - (optional) is a type of string
+  mk_esp_encryption_type = var.mk_esp_encryption_type
+  # mk_interface - (optional) is a type of string
+  mk_interface = var.mk_interface
+  # mk_local_address_floating_ip - (optional) is a type of string
+  mk_local_address_floating_ip = var.mk_local_address_floating_ip
+  # mk_local_address_ip - (optional) is a type of string
+  mk_local_address_ip = var.mk_local_address_ip
+  # mk_local_spi - (optional) is a type of string
+  mk_local_spi = var.mk_local_spi
+  # mk_protocol - (optional) is a type of string
+  mk_protocol = var.mk_protocol
+  # mk_remote_address - (optional) is a type of string
+  mk_remote_address = var.mk_remote_address
+  # mk_remote_spi - (optional) is a type of string
+  mk_remote_spi = var.mk_remote_spi
+  # name - (required) is a type of string
+  name = var.name
+  # tunnel_interface - (required) is a type of string
+  tunnel_interface = var.tunnel_interface
+  # tunnel_monitor_destination_ip - (optional) is a type of string
+  tunnel_monitor_destination_ip = var.tunnel_monitor_destination_ip
+  # tunnel_monitor_profile - (optional) is a type of string
+  tunnel_monitor_profile = var.tunnel_monitor_profile
+  # tunnel_monitor_proxy_id - (optional) is a type of string
+  tunnel_monitor_proxy_id = var.tunnel_monitor_proxy_id
+  # tunnel_monitor_source_ip - (optional) is a type of string
+  tunnel_monitor_source_ip = var.tunnel_monitor_source_ip
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

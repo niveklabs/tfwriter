@@ -80,11 +80,16 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_filter" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  expression  = var.expression
-  paused      = var.paused
-  ref         = var.ref
-  zone_id     = var.zone_id
+  # expression - (required) is a type of string
+  expression = var.expression
+  # paused - (optional) is a type of bool
+  paused = var.paused
+  # ref - (optional) is a type of string
+  ref = var.ref
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

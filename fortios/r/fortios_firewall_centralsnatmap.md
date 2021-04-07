@@ -227,20 +227,31 @@ variable "srcintf" {
 
 ```terraform
 resource "fortios_firewall_centralsnatmap" "this" {
-  comments              = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  nat                   = var.nat
-  nat_port              = var.nat_port
-  orig_port             = var.orig_port
-  policyid              = var.policyid
-  protocol              = var.protocol
-  status                = var.status
-  type                  = var.type
-  uuid                  = var.uuid
+  # nat - (required) is a type of string
+  nat = var.nat
+  # nat_port - (optional) is a type of string
+  nat_port = var.nat_port
+  # orig_port - (required) is a type of string
+  orig_port = var.orig_port
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # protocol - (required) is a type of number
+  protocol = var.protocol
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dst_addr" {
     for_each = var.dst_addr
     content {
+      # name - (optional) is a type of string
       name = dst_addr.value["name"]
     }
   }
@@ -248,6 +259,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "dst_addr6" {
     for_each = var.dst_addr6
     content {
+      # name - (optional) is a type of string
       name = dst_addr6.value["name"]
     }
   }
@@ -255,6 +267,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "dstintf" {
     for_each = var.dstintf
     content {
+      # name - (optional) is a type of string
       name = dstintf.value["name"]
     }
   }
@@ -262,6 +275,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "nat_ippool" {
     for_each = var.nat_ippool
     content {
+      # name - (optional) is a type of string
       name = nat_ippool.value["name"]
     }
   }
@@ -269,6 +283,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "nat_ippool6" {
     for_each = var.nat_ippool6
     content {
+      # name - (optional) is a type of string
       name = nat_ippool6.value["name"]
     }
   }
@@ -276,6 +291,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "orig_addr" {
     for_each = var.orig_addr
     content {
+      # name - (optional) is a type of string
       name = orig_addr.value["name"]
     }
   }
@@ -283,6 +299,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "orig_addr6" {
     for_each = var.orig_addr6
     content {
+      # name - (optional) is a type of string
       name = orig_addr6.value["name"]
     }
   }
@@ -290,6 +307,7 @@ resource "fortios_firewall_centralsnatmap" "this" {
   dynamic "srcintf" {
     for_each = var.srcintf
     content {
+      # name - (optional) is a type of string
       name = srcintf.value["name"]
     }
   }

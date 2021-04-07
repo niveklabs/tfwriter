@@ -89,11 +89,17 @@ variable "widget_tokens" {
 
 ```terraform
 resource "logicmonitor_dashboard_group" "this" {
-  description   = var.description
-  force_delete  = var.force_delete
-  name          = var.name
-  parent_id     = var.parent_id
-  template      = var.template
+  # description - (optional) is a type of string
+  description = var.description
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of number
+  parent_id = var.parent_id
+  # template - (optional) is a type of string
+  template = var.template
+  # widget_tokens - (optional) is a type of map of string
   widget_tokens = var.widget_tokens
 }
 ```

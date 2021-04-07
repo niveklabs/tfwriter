@@ -159,17 +159,25 @@ variable "machine_learning_model" {
 
 ```terraform
 resource "panos_antivirus_security_profile" "this" {
-  description       = var.description
-  device_group      = var.device_group
-  name              = var.name
-  packet_capture    = var.packet_capture
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # name - (required) is a type of string
+  name = var.name
+  # packet_capture - (optional) is a type of bool
+  packet_capture = var.packet_capture
+  # threat_exceptions - (optional) is a type of list of string
   threat_exceptions = var.threat_exceptions
-  vsys              = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "application_exception" {
     for_each = var.application_exception
     content {
-      action      = application_exception.value["action"]
+      # action - (optional) is a type of string
+      action = application_exception.value["action"]
+      # application - (required) is a type of string
       application = application_exception.value["application"]
     }
   }
@@ -177,27 +185,36 @@ resource "panos_antivirus_security_profile" "this" {
   dynamic "decoder" {
     for_each = var.decoder
     content {
-      action                  = decoder.value["action"]
+      # action - (optional) is a type of string
+      action = decoder.value["action"]
+      # machine_learning_action - (optional) is a type of string
       machine_learning_action = decoder.value["machine_learning_action"]
-      name                    = decoder.value["name"]
-      wildfire_action         = decoder.value["wildfire_action"]
+      # name - (required) is a type of string
+      name = decoder.value["name"]
+      # wildfire_action - (optional) is a type of string
+      wildfire_action = decoder.value["wildfire_action"]
     }
   }
 
   dynamic "machine_learning_exception" {
     for_each = var.machine_learning_exception
     content {
+      # description - (optional) is a type of string
       description = machine_learning_exception.value["description"]
-      filename    = machine_learning_exception.value["filename"]
-      name        = machine_learning_exception.value["name"]
+      # filename - (optional) is a type of string
+      filename = machine_learning_exception.value["filename"]
+      # name - (required) is a type of string
+      name = machine_learning_exception.value["name"]
     }
   }
 
   dynamic "machine_learning_model" {
     for_each = var.machine_learning_model
     content {
+      # action - (required) is a type of string
       action = machine_learning_model.value["action"]
-      model  = machine_learning_model.value["model"]
+      # model - (required) is a type of string
+      model = machine_learning_model.value["model"]
     }
   }
 

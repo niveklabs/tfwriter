@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 data "alicloud_cen_instance_attachments" "this" {
+  # child_instance_region_id - (optional) is a type of string
   child_instance_region_id = var.child_instance_region_id
-  child_instance_type      = var.child_instance_type
-  instance_id              = var.instance_id
-  output_file              = var.output_file
-  status                   = var.status
+  # child_instance_type - (optional) is a type of string
+  child_instance_type = var.child_instance_type
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

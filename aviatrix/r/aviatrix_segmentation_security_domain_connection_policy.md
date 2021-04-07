@@ -56,7 +56,9 @@ variable "domain_name_2" {
 
 ```terraform
 resource "aviatrix_segmentation_security_domain_connection_policy" "this" {
+  # domain_name_1 - (required) is a type of string
   domain_name_1 = var.domain_name_1
+  # domain_name_2 - (required) is a type of string
   domain_name_2 = var.domain_name_2
 }
 ```

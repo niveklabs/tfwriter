@@ -128,17 +128,28 @@ variable "timeout" {
 
 ```terraform
 resource "bigip_ltm_persistence_profile_dstaddr" "this" {
-  app_service           = var.app_service
-  defaults_from         = var.defaults_from
-  hash_algorithm        = var.hash_algorithm
-  mask                  = var.mask
-  match_across_pools    = var.match_across_pools
+  # app_service - (optional) is a type of string
+  app_service = var.app_service
+  # defaults_from - (required) is a type of string
+  defaults_from = var.defaults_from
+  # hash_algorithm - (optional) is a type of string
+  hash_algorithm = var.hash_algorithm
+  # mask - (optional) is a type of string
+  mask = var.mask
+  # match_across_pools - (optional) is a type of string
+  match_across_pools = var.match_across_pools
+  # match_across_services - (optional) is a type of string
   match_across_services = var.match_across_services
+  # match_across_virtuals - (optional) is a type of string
   match_across_virtuals = var.match_across_virtuals
-  mirror                = var.mirror
-  name                  = var.name
-  override_conn_limit   = var.override_conn_limit
-  timeout               = var.timeout
+  # mirror - (optional) is a type of string
+  mirror = var.mirror
+  # name - (required) is a type of string
+  name = var.name
+  # override_conn_limit - (optional) is a type of string
+  override_conn_limit = var.override_conn_limit
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

@@ -162,25 +162,41 @@ variable "source_list" {
 
 ```terraform
 resource "tencentcloud_dayu_l4_rule" "this" {
-  d_port                    = var.d_port
-  health_check_health_num   = var.health_check_health_num
-  health_check_interval     = var.health_check_interval
-  health_check_switch       = var.health_check_switch
-  health_check_timeout      = var.health_check_timeout
+  # d_port - (required) is a type of number
+  d_port = var.d_port
+  # health_check_health_num - (optional) is a type of number
+  health_check_health_num = var.health_check_health_num
+  # health_check_interval - (optional) is a type of number
+  health_check_interval = var.health_check_interval
+  # health_check_switch - (optional) is a type of bool
+  health_check_switch = var.health_check_switch
+  # health_check_timeout - (optional) is a type of number
+  health_check_timeout = var.health_check_timeout
+  # health_check_unhealth_num - (optional) is a type of number
   health_check_unhealth_num = var.health_check_unhealth_num
-  name                      = var.name
-  protocol                  = var.protocol
-  resource_id               = var.resource_id
-  resource_type             = var.resource_type
-  s_port                    = var.s_port
-  session_switch            = var.session_switch
-  session_time              = var.session_time
-  source_type               = var.source_type
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # s_port - (required) is a type of number
+  s_port = var.s_port
+  # session_switch - (optional) is a type of bool
+  session_switch = var.session_switch
+  # session_time - (optional) is a type of number
+  session_time = var.session_time
+  # source_type - (required) is a type of number
+  source_type = var.source_type
 
   dynamic "source_list" {
     for_each = var.source_list
     content {
+      # source - (required) is a type of string
       source = source_list.value["source"]
+      # weight - (required) is a type of number
       weight = source_list.value["weight"]
     }
   }

@@ -64,9 +64,12 @@ variable "team_id" {
 
 ```terraform
 resource "github_team_repository" "this" {
+  # permission - (optional) is a type of string
   permission = var.permission
+  # repository - (required) is a type of string
   repository = var.repository
-  team_id    = var.team_id
+  # team_id - (required) is a type of string
+  team_id = var.team_id
 }
 ```
 

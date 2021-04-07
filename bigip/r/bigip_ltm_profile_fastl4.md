@@ -121,16 +121,26 @@ variable "partition" {
 
 ```terraform
 resource "bigip_ltm_profile_fastl4" "this" {
-  client_timeout         = var.client_timeout
-  defaults_from          = var.defaults_from
+  # client_timeout - (optional) is a type of number
+  client_timeout = var.client_timeout
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # explicitflow_migration - (optional) is a type of string
   explicitflow_migration = var.explicitflow_migration
-  hardware_syncookie     = var.hardware_syncookie
-  idle_timeout           = var.idle_timeout
-  iptos_toclient         = var.iptos_toclient
-  iptos_toserver         = var.iptos_toserver
-  keepalive_interval     = var.keepalive_interval
-  name                   = var.name
-  partition              = var.partition
+  # hardware_syncookie - (optional) is a type of string
+  hardware_syncookie = var.hardware_syncookie
+  # idle_timeout - (optional) is a type of string
+  idle_timeout = var.idle_timeout
+  # iptos_toclient - (optional) is a type of string
+  iptos_toclient = var.iptos_toclient
+  # iptos_toserver - (optional) is a type of string
+  iptos_toserver = var.iptos_toserver
+  # keepalive_interval - (optional) is a type of string
+  keepalive_interval = var.keepalive_interval
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
 }
 ```
 

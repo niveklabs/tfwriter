@@ -49,6 +49,7 @@ variable "app_id" {
 
 ```terraform
 data "digitalocean_app" "this" {
+  # app_id - (required) is a type of string
   app_id = var.app_id
 }
 ```

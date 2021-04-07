@@ -188,32 +188,51 @@ variable "state" {
 
 ```terraform
 resource "avi_upgradestatussummary" "this" {
+  # enable_patch_rollback - (optional) is a type of bool
   enable_patch_rollback = var.enable_patch_rollback
-  enable_rollback       = var.enable_rollback
-  end_time              = var.end_time
-  image_ref             = var.image_ref
-  name                  = var.name
-  node_type             = var.node_type
-  obj_cloud_ref         = var.obj_cloud_ref
-  patch_image_ref       = var.patch_image_ref
-  start_time            = var.start_time
-  tasks_completed       = var.tasks_completed
-  tenant_ref            = var.tenant_ref
-  total_tasks           = var.total_tasks
-  upgrade_ops           = var.upgrade_ops
-  uuid                  = var.uuid
-  version               = var.version
+  # enable_rollback - (optional) is a type of bool
+  enable_rollback = var.enable_rollback
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # image_ref - (optional) is a type of string
+  image_ref = var.image_ref
+  # name - (optional) is a type of string
+  name = var.name
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # obj_cloud_ref - (optional) is a type of string
+  obj_cloud_ref = var.obj_cloud_ref
+  # patch_image_ref - (optional) is a type of string
+  patch_image_ref = var.patch_image_ref
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # tasks_completed - (optional) is a type of number
+  tasks_completed = var.tasks_completed
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # total_tasks - (optional) is a type of number
+  total_tasks = var.total_tasks
+  # upgrade_ops - (optional) is a type of string
+  upgrade_ops = var.upgrade_ops
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "state" {
     for_each = var.state
     content {
+      # reason - (optional) is a type of string
       reason = state.value["reason"]
-      state  = state.value["state"]
+      # state - (optional) is a type of string
+      state = state.value["state"]
 
       dynamic "last_changed_time" {
         for_each = state.value.last_changed_time
         content {
-          secs  = last_changed_time.value["secs"]
+          # secs - (required) is a type of number
+          secs = last_changed_time.value["secs"]
+          # usecs - (required) is a type of number
           usecs = last_changed_time.value["usecs"]
         }
       }

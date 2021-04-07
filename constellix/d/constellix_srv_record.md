@@ -125,23 +125,36 @@ variable "roundrobin" {
 
 ```terraform
 data "constellix_srv_record" "this" {
-  domain_id   = var.domain_id
-  gtd_region  = var.gtd_region
-  name        = var.name
-  noanswer    = var.noanswer
-  note        = var.note
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # name - (required) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # source_type - (required) is a type of string
   source_type = var.source_type
-  ttl         = var.ttl
-  type        = var.type
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "roundrobin" {
     for_each = var.roundrobin
     content {
+      # disable_flag - (optional) is a type of bool
       disable_flag = roundrobin.value["disable_flag"]
-      port         = roundrobin.value["port"]
-      priority     = roundrobin.value["priority"]
-      value        = roundrobin.value["value"]
-      weight       = roundrobin.value["weight"]
+      # port - (optional) is a type of number
+      port = roundrobin.value["port"]
+      # priority - (optional) is a type of number
+      priority = roundrobin.value["priority"]
+      # value - (optional) is a type of string
+      value = roundrobin.value["value"]
+      # weight - (optional) is a type of number
+      weight = roundrobin.value["weight"]
     }
   }
 

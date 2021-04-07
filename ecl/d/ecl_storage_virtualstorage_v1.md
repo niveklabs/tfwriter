@@ -58,7 +58,9 @@ variable "virtual_storage_id" {
 
 ```terraform
 data "ecl_storage_virtualstorage_v1" "this" {
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # virtual_storage_id - (optional) is a type of string
   virtual_storage_id = var.virtual_storage_id
 }
 ```

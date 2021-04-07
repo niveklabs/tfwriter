@@ -114,15 +114,24 @@ variable "tenant_id" {
 
 ```terraform
 data "ecl_network_public_ip_v2" "this" {
-  cidr           = var.cidr
-  description    = var.description
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_gw_id - (optional) is a type of string
   internet_gw_id = var.internet_gw_id
-  name           = var.name
-  public_ip_id   = var.public_ip_id
-  region         = var.region
-  status         = var.status
+  # name - (optional) is a type of string
+  name = var.name
+  # public_ip_id - (optional) is a type of string
+  public_ip_id = var.public_ip_id
+  # region - (optional) is a type of string
+  region = var.region
+  # status - (optional) is a type of string
+  status = var.status
+  # submask_length - (optional) is a type of number
   submask_length = var.submask_length
-  tenant_id      = var.tenant_id
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

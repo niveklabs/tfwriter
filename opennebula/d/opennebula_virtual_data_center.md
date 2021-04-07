@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "opennebula_virtual_data_center" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

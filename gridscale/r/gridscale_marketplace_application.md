@@ -190,29 +190,49 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_marketplace_application" "this" {
-  category               = var.category
-  meta_advices           = var.meta_advices
-  meta_author            = var.meta_author
-  meta_components        = var.meta_components
-  meta_features          = var.meta_features
-  meta_hints             = var.meta_hints
-  meta_icon              = var.meta_icon
-  meta_license           = var.meta_license
-  meta_os                = var.meta_os
-  meta_overview          = var.meta_overview
-  meta_terms_of_use      = var.meta_terms_of_use
-  name                   = var.name
-  object_storage_path    = var.object_storage_path
-  publish                = var.publish
-  setup_cores            = var.setup_cores
-  setup_memory           = var.setup_memory
+  # category - (required) is a type of string
+  category = var.category
+  # meta_advices - (optional) is a type of string
+  meta_advices = var.meta_advices
+  # meta_author - (optional) is a type of string
+  meta_author = var.meta_author
+  # meta_components - (optional) is a type of set of string
+  meta_components = var.meta_components
+  # meta_features - (optional) is a type of string
+  meta_features = var.meta_features
+  # meta_hints - (optional) is a type of string
+  meta_hints = var.meta_hints
+  # meta_icon - (optional) is a type of string
+  meta_icon = var.meta_icon
+  # meta_license - (optional) is a type of string
+  meta_license = var.meta_license
+  # meta_os - (optional) is a type of string
+  meta_os = var.meta_os
+  # meta_overview - (optional) is a type of string
+  meta_overview = var.meta_overview
+  # meta_terms_of_use - (optional) is a type of string
+  meta_terms_of_use = var.meta_terms_of_use
+  # name - (required) is a type of string
+  name = var.name
+  # object_storage_path - (required) is a type of string
+  object_storage_path = var.object_storage_path
+  # publish - (optional) is a type of bool
+  publish = var.publish
+  # setup_cores - (required) is a type of number
+  setup_cores = var.setup_cores
+  # setup_memory - (required) is a type of number
+  setup_memory = var.setup_memory
+  # setup_storage_capacity - (required) is a type of number
   setup_storage_capacity = var.setup_storage_capacity
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

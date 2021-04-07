@@ -92,13 +92,20 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_siem_settings" "this" {
-  config_id               = var.config_id
-  enable_botman_siem      = var.enable_botman_siem
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # enable_botman_siem - (optional) is a type of bool
+  enable_botman_siem = var.enable_botman_siem
+  # enable_for_all_policies - (required) is a type of bool
   enable_for_all_policies = var.enable_for_all_policies
-  enable_siem             = var.enable_siem
-  security_policy_ids     = var.security_policy_ids
-  siem_id                 = var.siem_id
-  version                 = var.version
+  # enable_siem - (required) is a type of bool
+  enable_siem = var.enable_siem
+  # security_policy_ids - (required) is a type of list of string
+  security_policy_ids = var.security_policy_ids
+  # siem_id - (required) is a type of number
+  siem_id = var.siem_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

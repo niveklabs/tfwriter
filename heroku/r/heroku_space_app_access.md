@@ -63,9 +63,12 @@ variable "space" {
 
 ```terraform
 resource "heroku_space_app_access" "this" {
-  email       = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # permissions - (required) is a type of set of string
   permissions = var.permissions
-  space       = var.space
+  # space - (required) is a type of string
+  space = var.space
 }
 ```
 

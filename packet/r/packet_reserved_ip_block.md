@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "packet_reserved_ip_block" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  facility    = var.facility
-  project_id  = var.project_id
-  quantity    = var.quantity
-  type        = var.type
+  # facility - (optional) is a type of string
+  facility = var.facility
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # quantity - (required) is a type of number
+  quantity = var.quantity
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

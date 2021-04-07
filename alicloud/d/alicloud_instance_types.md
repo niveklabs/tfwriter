@@ -162,20 +162,35 @@ variable "system_disk_category" {
 
 ```terraform
 data "alicloud_instance_types" "this" {
-  availability_zone    = var.availability_zone
-  cpu_core_count       = var.cpu_core_count
-  eni_amount           = var.eni_amount
-  gpu_amount           = var.gpu_amount
-  gpu_spec             = var.gpu_spec
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cpu_core_count - (optional) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # eni_amount - (optional) is a type of number
+  eni_amount = var.eni_amount
+  # gpu_amount - (optional) is a type of number
+  gpu_amount = var.gpu_amount
+  # gpu_spec - (optional) is a type of string
+  gpu_spec = var.gpu_spec
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
+  # instance_type_family - (optional) is a type of string
   instance_type_family = var.instance_type_family
-  is_outdated          = var.is_outdated
+  # is_outdated - (optional) is a type of bool
+  is_outdated = var.is_outdated
+  # kubernetes_node_role - (optional) is a type of string
   kubernetes_node_role = var.kubernetes_node_role
-  memory_size          = var.memory_size
-  network_type         = var.network_type
-  output_file          = var.output_file
-  sorted_by            = var.sorted_by
-  spot_strategy        = var.spot_strategy
+  # memory_size - (optional) is a type of number
+  memory_size = var.memory_size
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # sorted_by - (optional) is a type of string
+  sorted_by = var.sorted_by
+  # spot_strategy - (optional) is a type of string
+  spot_strategy = var.spot_strategy
+  # system_disk_category - (optional) is a type of string
   system_disk_category = var.system_disk_category
 }
 ```

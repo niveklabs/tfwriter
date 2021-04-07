@@ -103,14 +103,19 @@ variable "tls_config" {
 
 ```terraform
 resource "spotinst_multai_listener" "this" {
+  # balancer_id - (required) is a type of string
   balancer_id = var.balancer_id
-  port        = var.port
-  protocol    = var.protocol
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }
@@ -118,12 +123,18 @@ resource "spotinst_multai_listener" "this" {
   dynamic "tls_config" {
     for_each = var.tls_config
     content {
-      certificate_ids             = tls_config.value["certificate_ids"]
-      cipher_suites               = tls_config.value["cipher_suites"]
-      max_version                 = tls_config.value["max_version"]
-      min_version                 = tls_config.value["min_version"]
+      # certificate_ids - (required) is a type of list of string
+      certificate_ids = tls_config.value["certificate_ids"]
+      # cipher_suites - (required) is a type of list of string
+      cipher_suites = tls_config.value["cipher_suites"]
+      # max_version - (required) is a type of string
+      max_version = tls_config.value["max_version"]
+      # min_version - (required) is a type of string
+      min_version = tls_config.value["min_version"]
+      # prefer_server_cipher_suites - (required) is a type of bool
       prefer_server_cipher_suites = tls_config.value["prefer_server_cipher_suites"]
-      session_tickets_disabled    = tls_config.value["session_tickets_disabled"]
+      # session_tickets_disabled - (required) is a type of bool
+      session_tickets_disabled = tls_config.value["session_tickets_disabled"]
     }
   }
 

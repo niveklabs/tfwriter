@@ -81,11 +81,16 @@ variable "vlan_id" {
 
 ```terraform
 resource "ovh_cloud_network_private" "this" {
-  name         = var.name
-  project_id   = var.project_id
-  regions      = var.regions
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # regions - (optional) is a type of set of string
+  regions = var.regions
+  # service_name - (optional) is a type of string
   service_name = var.service_name
-  vlan_id      = var.vlan_id
+  # vlan_id - (optional) is a type of number
+  vlan_id = var.vlan_id
 }
 ```
 

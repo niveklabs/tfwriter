@@ -97,13 +97,20 @@ variable "status" {
 
 ```terraform
 data "alicloud_cen_route_services" "this" {
+  # access_region_id - (optional) is a type of string
   access_region_id = var.access_region_id
-  cen_id           = var.cen_id
-  host             = var.host
-  host_region_id   = var.host_region_id
-  host_vpc_id      = var.host_vpc_id
-  output_file      = var.output_file
-  status           = var.status
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # host - (optional) is a type of string
+  host = var.host
+  # host_region_id - (optional) is a type of string
+  host_region_id = var.host_region_id
+  # host_vpc_id - (optional) is a type of string
+  host_vpc_id = var.host_vpc_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

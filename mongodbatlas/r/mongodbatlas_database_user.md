@@ -145,18 +145,27 @@ variable "scopes" {
 
 ```terraform
 resource "mongodbatlas_database_user" "this" {
+  # auth_database_name - (optional) is a type of string
   auth_database_name = var.auth_database_name
-  aws_iam_type       = var.aws_iam_type
-  database_name      = var.database_name
-  password           = var.password
-  project_id         = var.project_id
-  username           = var.username
-  x509_type          = var.x509_type
+  # aws_iam_type - (optional) is a type of string
+  aws_iam_type = var.aws_iam_type
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # password - (optional) is a type of string
+  password = var.password
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # username - (required) is a type of string
+  username = var.username
+  # x509_type - (optional) is a type of string
+  x509_type = var.x509_type
 
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (optional) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }
@@ -164,16 +173,21 @@ resource "mongodbatlas_database_user" "this" {
   dynamic "roles" {
     for_each = var.roles
     content {
+      # collection_name - (optional) is a type of string
       collection_name = roles.value["collection_name"]
-      database_name   = roles.value["database_name"]
-      role_name       = roles.value["role_name"]
+      # database_name - (optional) is a type of string
+      database_name = roles.value["database_name"]
+      # role_name - (optional) is a type of string
+      role_name = roles.value["role_name"]
     }
   }
 
   dynamic "scopes" {
     for_each = var.scopes
     content {
+      # name - (optional) is a type of string
       name = scopes.value["name"]
+      # type - (optional) is a type of string
       type = scopes.value["type"]
     }
   }

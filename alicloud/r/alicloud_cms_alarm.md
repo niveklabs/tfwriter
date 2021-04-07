@@ -233,51 +233,80 @@ variable "escalations_warn" {
 
 ```terraform
 resource "alicloud_cms_alarm" "this" {
-  contact_groups     = var.contact_groups
-  dimensions         = var.dimensions
+  # contact_groups - (required) is a type of list of string
+  contact_groups = var.contact_groups
+  # dimensions - (required) is a type of map of string
+  dimensions = var.dimensions
+  # effective_interval - (optional) is a type of string
   effective_interval = var.effective_interval
-  enabled            = var.enabled
-  end_time           = var.end_time
-  metric             = var.metric
-  name               = var.name
-  notify_type        = var.notify_type
-  operator           = var.operator
-  period             = var.period
-  project            = var.project
-  silence_time       = var.silence_time
-  start_time         = var.start_time
-  statistics         = var.statistics
-  threshold          = var.threshold
-  triggered_count    = var.triggered_count
-  webhook            = var.webhook
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # metric - (required) is a type of string
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # notify_type - (optional) is a type of number
+  notify_type = var.notify_type
+  # operator - (optional) is a type of string
+  operator = var.operator
+  # period - (optional) is a type of number
+  period = var.period
+  # project - (required) is a type of string
+  project = var.project
+  # silence_time - (optional) is a type of number
+  silence_time = var.silence_time
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # statistics - (optional) is a type of string
+  statistics = var.statistics
+  # threshold - (optional) is a type of string
+  threshold = var.threshold
+  # triggered_count - (optional) is a type of number
+  triggered_count = var.triggered_count
+  # webhook - (optional) is a type of string
+  webhook = var.webhook
 
   dynamic "escalations_critical" {
     for_each = var.escalations_critical
     content {
+      # comparison_operator - (optional) is a type of string
       comparison_operator = escalations_critical.value["comparison_operator"]
-      statistics          = escalations_critical.value["statistics"]
-      threshold           = escalations_critical.value["threshold"]
-      times               = escalations_critical.value["times"]
+      # statistics - (optional) is a type of string
+      statistics = escalations_critical.value["statistics"]
+      # threshold - (optional) is a type of string
+      threshold = escalations_critical.value["threshold"]
+      # times - (optional) is a type of number
+      times = escalations_critical.value["times"]
     }
   }
 
   dynamic "escalations_info" {
     for_each = var.escalations_info
     content {
+      # comparison_operator - (optional) is a type of string
       comparison_operator = escalations_info.value["comparison_operator"]
-      statistics          = escalations_info.value["statistics"]
-      threshold           = escalations_info.value["threshold"]
-      times               = escalations_info.value["times"]
+      # statistics - (optional) is a type of string
+      statistics = escalations_info.value["statistics"]
+      # threshold - (optional) is a type of string
+      threshold = escalations_info.value["threshold"]
+      # times - (optional) is a type of number
+      times = escalations_info.value["times"]
     }
   }
 
   dynamic "escalations_warn" {
     for_each = var.escalations_warn
     content {
+      # comparison_operator - (optional) is a type of string
       comparison_operator = escalations_warn.value["comparison_operator"]
-      statistics          = escalations_warn.value["statistics"]
-      threshold           = escalations_warn.value["threshold"]
-      times               = escalations_warn.value["times"]
+      # statistics - (optional) is a type of string
+      statistics = escalations_warn.value["statistics"]
+      # threshold - (optional) is a type of string
+      threshold = escalations_warn.value["threshold"]
+      # times - (optional) is a type of number
+      times = escalations_warn.value["times"]
     }
   }
 

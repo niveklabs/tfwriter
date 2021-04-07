@@ -191,55 +191,88 @@ variable "metric_cluster" {
 
 ```terraform
 resource "circonus_graph" "this" {
+  # description - (optional) is a type of string
   description = var.description
+  # graph_style - (optional) is a type of string
   graph_style = var.graph_style
-  left        = var.left
-  line_style  = var.line_style
-  name        = var.name
-  notes       = var.notes
-  right       = var.right
-  tags        = var.tags
+  # left - (optional) is a type of map of string
+  left = var.left
+  # line_style - (optional) is a type of string
+  line_style = var.line_style
+  # name - (required) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # right - (optional) is a type of map of string
+  right = var.right
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "guide" {
     for_each = var.guide
     content {
-      color          = guide.value["color"]
-      formula        = guide.value["formula"]
-      hidden         = guide.value["hidden"]
+      # color - (optional) is a type of string
+      color = guide.value["color"]
+      # formula - (optional) is a type of string
+      formula = guide.value["formula"]
+      # hidden - (optional) is a type of bool
+      hidden = guide.value["hidden"]
+      # legend_formula - (optional) is a type of string
       legend_formula = guide.value["legend_formula"]
-      name           = guide.value["name"]
+      # name - (optional) is a type of string
+      name = guide.value["name"]
     }
   }
 
   dynamic "metric" {
     for_each = var.metric
     content {
-      active         = metric.value["active"]
-      alpha          = metric.value["alpha"]
-      axis           = metric.value["axis"]
-      caql           = metric.value["caql"]
-      check          = metric.value["check"]
-      color          = metric.value["color"]
-      formula        = metric.value["formula"]
-      function       = metric.value["function"]
+      # active - (optional) is a type of bool
+      active = metric.value["active"]
+      # alpha - (optional) is a type of string
+      alpha = metric.value["alpha"]
+      # axis - (optional) is a type of string
+      axis = metric.value["axis"]
+      # caql - (optional) is a type of string
+      caql = metric.value["caql"]
+      # check - (optional) is a type of string
+      check = metric.value["check"]
+      # color - (optional) is a type of string
+      color = metric.value["color"]
+      # formula - (optional) is a type of string
+      formula = metric.value["formula"]
+      # function - (optional) is a type of string
+      function = metric.value["function"]
+      # legend_formula - (optional) is a type of string
       legend_formula = metric.value["legend_formula"]
-      metric_name    = metric.value["metric_name"]
-      metric_type    = metric.value["metric_type"]
-      name           = metric.value["name"]
-      search         = metric.value["search"]
-      stack          = metric.value["stack"]
+      # metric_name - (optional) is a type of string
+      metric_name = metric.value["metric_name"]
+      # metric_type - (required) is a type of string
+      metric_type = metric.value["metric_type"]
+      # name - (optional) is a type of string
+      name = metric.value["name"]
+      # search - (optional) is a type of string
+      search = metric.value["search"]
+      # stack - (optional) is a type of string
+      stack = metric.value["stack"]
     }
   }
 
   dynamic "metric_cluster" {
     for_each = var.metric_cluster
     content {
-      active    = metric_cluster.value["active"]
+      # active - (optional) is a type of bool
+      active = metric_cluster.value["active"]
+      # aggregate - (optional) is a type of string
       aggregate = metric_cluster.value["aggregate"]
-      axis      = metric_cluster.value["axis"]
-      color     = metric_cluster.value["color"]
-      name      = metric_cluster.value["name"]
-      query     = metric_cluster.value["query"]
+      # axis - (optional) is a type of string
+      axis = metric_cluster.value["axis"]
+      # color - (optional) is a type of string
+      color = metric_cluster.value["color"]
+      # name - (required) is a type of string
+      name = metric_cluster.value["name"]
+      # query - (optional) is a type of string
+      query = metric_cluster.value["query"]
     }
   }
 

@@ -106,14 +106,22 @@ variable "reset_rev" {
 
 ```terraform
 resource "thunder_slb_template_tcp" "this" {
+  # del_session_on_server_down - (optional) is a type of number
   del_session_on_server_down = var.del_session_on_server_down
-  idle_timeout               = var.idle_timeout
-  insert_client_ip           = var.insert_client_ip
-  lan_fast_ack               = var.lan_fast_ack
-  name                       = var.name
-  reset_follow_fin           = var.reset_follow_fin
-  reset_fwd                  = var.reset_fwd
-  reset_rev                  = var.reset_rev
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # insert_client_ip - (optional) is a type of number
+  insert_client_ip = var.insert_client_ip
+  # lan_fast_ack - (optional) is a type of number
+  lan_fast_ack = var.lan_fast_ack
+  # name - (optional) is a type of string
+  name = var.name
+  # reset_follow_fin - (optional) is a type of number
+  reset_follow_fin = var.reset_follow_fin
+  # reset_fwd - (optional) is a type of number
+  reset_fwd = var.reset_fwd
+  # reset_rev - (optional) is a type of number
+  reset_rev = var.reset_rev
 }
 ```
 

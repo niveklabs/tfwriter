@@ -113,15 +113,24 @@ variable "notifications_warning" {
 
 ```terraform
 resource "signalfx_team" "this" {
-  description            = var.description
-  members                = var.members
-  name                   = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # members - (optional) is a type of set of string
+  members = var.members
+  # name - (required) is a type of string
+  name = var.name
+  # notifications_critical - (optional) is a type of list of string
   notifications_critical = var.notifications_critical
-  notifications_default  = var.notifications_default
-  notifications_info     = var.notifications_info
-  notifications_major    = var.notifications_major
-  notifications_minor    = var.notifications_minor
-  notifications_warning  = var.notifications_warning
+  # notifications_default - (optional) is a type of list of string
+  notifications_default = var.notifications_default
+  # notifications_info - (optional) is a type of list of string
+  notifications_info = var.notifications_info
+  # notifications_major - (optional) is a type of list of string
+  notifications_major = var.notifications_major
+  # notifications_minor - (optional) is a type of list of string
+  notifications_minor = var.notifications_minor
+  # notifications_warning - (optional) is a type of list of string
+  notifications_warning = var.notifications_warning
 }
 ```
 

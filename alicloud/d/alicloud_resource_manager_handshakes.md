@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 data "alicloud_resource_manager_handshakes" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  output_file    = var.output_file
-  status         = var.status
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

@@ -127,17 +127,28 @@ variable "war_url" {
 
 ```terraform
 resource "alicloud_edas_application" "this" {
-  application_name  = var.application_name
-  build_pack_id     = var.build_pack_id
-  cluster_id        = var.cluster_id
-  descriotion       = var.descriotion
-  ecu_info          = var.ecu_info
-  group_id          = var.group_id
-  health_check_url  = var.health_check_url
+  # application_name - (required) is a type of string
+  application_name = var.application_name
+  # build_pack_id - (optional) is a type of number
+  build_pack_id = var.build_pack_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # descriotion - (optional) is a type of string
+  descriotion = var.descriotion
+  # ecu_info - (optional) is a type of list of string
+  ecu_info = var.ecu_info
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # health_check_url - (optional) is a type of string
+  health_check_url = var.health_check_url
+  # logical_region_id - (optional) is a type of string
   logical_region_id = var.logical_region_id
-  package_type      = var.package_type
-  package_version   = var.package_version
-  war_url           = var.war_url
+  # package_type - (required) is a type of string
+  package_type = var.package_type
+  # package_version - (optional) is a type of string
+  package_version = var.package_version
+  # war_url - (optional) is a type of string
+  war_url = var.war_url
 }
 ```
 

@@ -144,19 +144,32 @@ variable "type" {
 
 ```terraform
 resource "linode_domain" "this" {
-  axfr_ips    = var.axfr_ips
+  # axfr_ips - (optional) is a type of set of string
+  axfr_ips = var.axfr_ips
+  # description - (optional) is a type of string
   description = var.description
-  domain      = var.domain
-  expire_sec  = var.expire_sec
-  group       = var.group
-  master_ips  = var.master_ips
+  # domain - (required) is a type of string
+  domain = var.domain
+  # expire_sec - (optional) is a type of number
+  expire_sec = var.expire_sec
+  # group - (optional) is a type of string
+  group = var.group
+  # master_ips - (optional) is a type of set of string
+  master_ips = var.master_ips
+  # refresh_sec - (optional) is a type of number
   refresh_sec = var.refresh_sec
-  retry_sec   = var.retry_sec
-  soa_email   = var.soa_email
-  status      = var.status
-  tags        = var.tags
-  ttl_sec     = var.ttl_sec
-  type        = var.type
+  # retry_sec - (optional) is a type of number
+  retry_sec = var.retry_sec
+  # soa_email - (optional) is a type of string
+  soa_email = var.soa_email
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # ttl_sec - (optional) is a type of number
+  ttl_sec = var.ttl_sec
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

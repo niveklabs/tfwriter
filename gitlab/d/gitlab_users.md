@@ -114,15 +114,24 @@ variable "sort" {
 
 ```terraform
 data "gitlab_users" "this" {
-  active          = var.active
-  blocked         = var.blocked
-  created_after   = var.created_after
-  created_before  = var.created_before
+  # active - (optional) is a type of bool
+  active = var.active
+  # blocked - (optional) is a type of bool
+  blocked = var.blocked
+  # created_after - (optional) is a type of string
+  created_after = var.created_after
+  # created_before - (optional) is a type of string
+  created_before = var.created_before
+  # extern_provider - (optional) is a type of string
   extern_provider = var.extern_provider
-  extern_uid      = var.extern_uid
-  order_by        = var.order_by
-  search          = var.search
-  sort            = var.sort
+  # extern_uid - (optional) is a type of string
+  extern_uid = var.extern_uid
+  # order_by - (optional) is a type of string
+  order_by = var.order_by
+  # search - (optional) is a type of string
+  search = var.search
+  # sort - (optional) is a type of string
+  sort = var.sort
 }
 ```
 

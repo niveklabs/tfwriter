@@ -56,8 +56,10 @@ variable "plan" {
 
 ```terraform
 data "packet_spot_market_price" "this" {
+  # facility - (required) is a type of string
   facility = var.facility
-  plan     = var.plan
+  # plan - (required) is a type of string
+  plan = var.plan
 }
 ```
 

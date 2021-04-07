@@ -118,27 +118,38 @@ variable "template" {
 
 ```terraform
 resource "thunder_partition" "this" {
+  # application_type - (optional) is a type of string
   application_type = var.application_type
-  id2              = var.id2
-  partition_name   = var.partition_name
-  user_tag         = var.user_tag
-  uuid             = var.uuid
+  # id2 - (optional) is a type of number
+  id2 = var.id2
+  # partition_name - (optional) is a type of string
+  partition_name = var.partition_name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "shared_vlan" {
     for_each = var.shared_vlan
     content {
+      # mgmt_floating_ip_address - (optional) is a type of string
       mgmt_floating_ip_address = shared_vlan.value["mgmt_floating_ip_address"]
-      uuid                     = shared_vlan.value["uuid"]
-      vlan                     = shared_vlan.value["vlan"]
-      vrid                     = shared_vlan.value["vrid"]
+      # uuid - (optional) is a type of string
+      uuid = shared_vlan.value["uuid"]
+      # vlan - (optional) is a type of number
+      vlan = shared_vlan.value["vlan"]
+      # vrid - (optional) is a type of number
+      vrid = shared_vlan.value["vrid"]
     }
   }
 
   dynamic "template" {
     for_each = var.template
     content {
+      # resource_accounting - (optional) is a type of string
       resource_accounting = template.value["resource_accounting"]
-      uuid                = template.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = template.value["uuid"]
     }
   }
 

@@ -82,11 +82,16 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_nats" "this" {
-  bandwidth      = var.bandwidth
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # max_concurrent - (optional) is a type of number
   max_concurrent = var.max_concurrent
-  name           = var.name
-  state          = var.state
-  vpc_id         = var.vpc_id
+  # name - (optional) is a type of string
+  name = var.name
+  # state - (optional) is a type of number
+  state = var.state
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

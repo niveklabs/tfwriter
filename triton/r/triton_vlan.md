@@ -84,16 +84,23 @@ variable "timeouts" {
 
 ```terraform
 resource "triton_vlan" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  vlan_id     = var.vlan_id
+  # name - (required) is a type of string
+  name = var.name
+  # vlan_id - (required) is a type of number
+  vlan_id = var.vlan_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

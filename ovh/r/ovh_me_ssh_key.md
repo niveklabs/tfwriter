@@ -64,8 +64,11 @@ variable "key_name" {
 
 ```terraform
 resource "ovh_me_ssh_key" "this" {
-  default  = var.default
-  key      = var.key
+  # default - (optional) is a type of bool
+  default = var.default
+  # key - (required) is a type of string
+  key = var.key
+  # key_name - (required) is a type of string
   key_name = var.key_name
 }
 ```

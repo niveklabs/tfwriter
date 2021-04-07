@@ -105,15 +105,21 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_port" "this" {
-  admin_state       = var.admin_state
-  description       = var.description
-  display_name      = var.display_name
+  # admin_state - (optional) is a type of string
+  admin_state = var.admin_state
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # logical_switch_id - (required) is a type of string
   logical_switch_id = var.logical_switch_id
 
   dynamic "switching_profile_id" {
     for_each = var.switching_profile_id
     content {
-      key   = switching_profile_id.value["key"]
+      # key - (required) is a type of string
+      key = switching_profile_id.value["key"]
+      # value - (required) is a type of string
       value = switching_profile_id.value["value"]
     }
   }
@@ -121,8 +127,10 @@ resource "nsxt_logical_port" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

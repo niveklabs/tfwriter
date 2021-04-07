@@ -89,11 +89,17 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_gaap_layer4_listeners" "this" {
-  listener_id        = var.listener_id
-  listener_name      = var.listener_name
-  port               = var.port
-  protocol           = var.protocol
-  proxy_id           = var.proxy_id
+  # listener_id - (optional) is a type of string
+  listener_id = var.listener_id
+  # listener_name - (optional) is a type of string
+  listener_name = var.listener_name
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # proxy_id - (optional) is a type of string
+  proxy_id = var.proxy_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

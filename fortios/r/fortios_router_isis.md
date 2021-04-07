@@ -502,83 +502,151 @@ variable "summary_address6" {
 
 ```terraform
 resource "fortios_router_isis" "this" {
-  adjacency_check         = var.adjacency_check
-  adjacency_check6        = var.adjacency_check6
-  adv_passive_only        = var.adv_passive_only
-  adv_passive_only6       = var.adv_passive_only6
-  auth_keychain_l1        = var.auth_keychain_l1
-  auth_keychain_l2        = var.auth_keychain_l2
-  auth_mode_l1            = var.auth_mode_l1
-  auth_mode_l2            = var.auth_mode_l2
-  auth_password_l1        = var.auth_password_l1
-  auth_password_l2        = var.auth_password_l2
-  auth_sendonly_l1        = var.auth_sendonly_l1
-  auth_sendonly_l2        = var.auth_sendonly_l2
-  default_originate       = var.default_originate
-  default_originate6      = var.default_originate6
-  dynamic_hostname        = var.dynamic_hostname
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  ignore_lsp_errors       = var.ignore_lsp_errors
-  is_type                 = var.is_type
-  lsp_gen_interval_l1     = var.lsp_gen_interval_l1
-  lsp_gen_interval_l2     = var.lsp_gen_interval_l2
-  lsp_refresh_interval    = var.lsp_refresh_interval
-  max_lsp_lifetime        = var.max_lsp_lifetime
-  metric_style            = var.metric_style
-  overload_bit            = var.overload_bit
+  # adjacency_check - (optional) is a type of string
+  adjacency_check = var.adjacency_check
+  # adjacency_check6 - (optional) is a type of string
+  adjacency_check6 = var.adjacency_check6
+  # adv_passive_only - (optional) is a type of string
+  adv_passive_only = var.adv_passive_only
+  # adv_passive_only6 - (optional) is a type of string
+  adv_passive_only6 = var.adv_passive_only6
+  # auth_keychain_l1 - (optional) is a type of string
+  auth_keychain_l1 = var.auth_keychain_l1
+  # auth_keychain_l2 - (optional) is a type of string
+  auth_keychain_l2 = var.auth_keychain_l2
+  # auth_mode_l1 - (optional) is a type of string
+  auth_mode_l1 = var.auth_mode_l1
+  # auth_mode_l2 - (optional) is a type of string
+  auth_mode_l2 = var.auth_mode_l2
+  # auth_password_l1 - (optional) is a type of string
+  auth_password_l1 = var.auth_password_l1
+  # auth_password_l2 - (optional) is a type of string
+  auth_password_l2 = var.auth_password_l2
+  # auth_sendonly_l1 - (optional) is a type of string
+  auth_sendonly_l1 = var.auth_sendonly_l1
+  # auth_sendonly_l2 - (optional) is a type of string
+  auth_sendonly_l2 = var.auth_sendonly_l2
+  # default_originate - (optional) is a type of string
+  default_originate = var.default_originate
+  # default_originate6 - (optional) is a type of string
+  default_originate6 = var.default_originate6
+  # dynamic_hostname - (optional) is a type of string
+  dynamic_hostname = var.dynamic_hostname
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # ignore_lsp_errors - (optional) is a type of string
+  ignore_lsp_errors = var.ignore_lsp_errors
+  # is_type - (optional) is a type of string
+  is_type = var.is_type
+  # lsp_gen_interval_l1 - (optional) is a type of number
+  lsp_gen_interval_l1 = var.lsp_gen_interval_l1
+  # lsp_gen_interval_l2 - (optional) is a type of number
+  lsp_gen_interval_l2 = var.lsp_gen_interval_l2
+  # lsp_refresh_interval - (optional) is a type of number
+  lsp_refresh_interval = var.lsp_refresh_interval
+  # max_lsp_lifetime - (optional) is a type of number
+  max_lsp_lifetime = var.max_lsp_lifetime
+  # metric_style - (optional) is a type of string
+  metric_style = var.metric_style
+  # overload_bit - (optional) is a type of string
+  overload_bit = var.overload_bit
+  # overload_bit_on_startup - (optional) is a type of number
   overload_bit_on_startup = var.overload_bit_on_startup
-  overload_bit_suppress   = var.overload_bit_suppress
-  redistribute6_l1        = var.redistribute6_l1
-  redistribute6_l1_list   = var.redistribute6_l1_list
-  redistribute6_l2        = var.redistribute6_l2
-  redistribute6_l2_list   = var.redistribute6_l2_list
-  redistribute_l1         = var.redistribute_l1
-  redistribute_l1_list    = var.redistribute_l1_list
-  redistribute_l2         = var.redistribute_l2
-  redistribute_l2_list    = var.redistribute_l2_list
-  spf_interval_exp_l1     = var.spf_interval_exp_l1
-  spf_interval_exp_l2     = var.spf_interval_exp_l2
+  # overload_bit_suppress - (optional) is a type of string
+  overload_bit_suppress = var.overload_bit_suppress
+  # redistribute6_l1 - (optional) is a type of string
+  redistribute6_l1 = var.redistribute6_l1
+  # redistribute6_l1_list - (optional) is a type of string
+  redistribute6_l1_list = var.redistribute6_l1_list
+  # redistribute6_l2 - (optional) is a type of string
+  redistribute6_l2 = var.redistribute6_l2
+  # redistribute6_l2_list - (optional) is a type of string
+  redistribute6_l2_list = var.redistribute6_l2_list
+  # redistribute_l1 - (optional) is a type of string
+  redistribute_l1 = var.redistribute_l1
+  # redistribute_l1_list - (optional) is a type of string
+  redistribute_l1_list = var.redistribute_l1_list
+  # redistribute_l2 - (optional) is a type of string
+  redistribute_l2 = var.redistribute_l2
+  # redistribute_l2_list - (optional) is a type of string
+  redistribute_l2_list = var.redistribute_l2_list
+  # spf_interval_exp_l1 - (optional) is a type of string
+  spf_interval_exp_l1 = var.spf_interval_exp_l1
+  # spf_interval_exp_l2 - (optional) is a type of string
+  spf_interval_exp_l2 = var.spf_interval_exp_l2
 
   dynamic "isis_interface" {
     for_each = var.isis_interface
     content {
-      auth_keychain_l1        = isis_interface.value["auth_keychain_l1"]
-      auth_keychain_l2        = isis_interface.value["auth_keychain_l2"]
-      auth_mode_l1            = isis_interface.value["auth_mode_l1"]
-      auth_mode_l2            = isis_interface.value["auth_mode_l2"]
-      auth_password_l1        = isis_interface.value["auth_password_l1"]
-      auth_password_l2        = isis_interface.value["auth_password_l2"]
-      auth_send_only_l1       = isis_interface.value["auth_send_only_l1"]
-      auth_send_only_l2       = isis_interface.value["auth_send_only_l2"]
-      circuit_type            = isis_interface.value["circuit_type"]
-      csnp_interval_l1        = isis_interface.value["csnp_interval_l1"]
-      csnp_interval_l2        = isis_interface.value["csnp_interval_l2"]
-      hello_interval_l1       = isis_interface.value["hello_interval_l1"]
-      hello_interval_l2       = isis_interface.value["hello_interval_l2"]
-      hello_multiplier_l1     = isis_interface.value["hello_multiplier_l1"]
-      hello_multiplier_l2     = isis_interface.value["hello_multiplier_l2"]
-      hello_padding           = isis_interface.value["hello_padding"]
-      lsp_interval            = isis_interface.value["lsp_interval"]
+      # auth_keychain_l1 - (optional) is a type of string
+      auth_keychain_l1 = isis_interface.value["auth_keychain_l1"]
+      # auth_keychain_l2 - (optional) is a type of string
+      auth_keychain_l2 = isis_interface.value["auth_keychain_l2"]
+      # auth_mode_l1 - (optional) is a type of string
+      auth_mode_l1 = isis_interface.value["auth_mode_l1"]
+      # auth_mode_l2 - (optional) is a type of string
+      auth_mode_l2 = isis_interface.value["auth_mode_l2"]
+      # auth_password_l1 - (optional) is a type of string
+      auth_password_l1 = isis_interface.value["auth_password_l1"]
+      # auth_password_l2 - (optional) is a type of string
+      auth_password_l2 = isis_interface.value["auth_password_l2"]
+      # auth_send_only_l1 - (optional) is a type of string
+      auth_send_only_l1 = isis_interface.value["auth_send_only_l1"]
+      # auth_send_only_l2 - (optional) is a type of string
+      auth_send_only_l2 = isis_interface.value["auth_send_only_l2"]
+      # circuit_type - (optional) is a type of string
+      circuit_type = isis_interface.value["circuit_type"]
+      # csnp_interval_l1 - (optional) is a type of number
+      csnp_interval_l1 = isis_interface.value["csnp_interval_l1"]
+      # csnp_interval_l2 - (optional) is a type of number
+      csnp_interval_l2 = isis_interface.value["csnp_interval_l2"]
+      # hello_interval_l1 - (optional) is a type of number
+      hello_interval_l1 = isis_interface.value["hello_interval_l1"]
+      # hello_interval_l2 - (optional) is a type of number
+      hello_interval_l2 = isis_interface.value["hello_interval_l2"]
+      # hello_multiplier_l1 - (optional) is a type of number
+      hello_multiplier_l1 = isis_interface.value["hello_multiplier_l1"]
+      # hello_multiplier_l2 - (optional) is a type of number
+      hello_multiplier_l2 = isis_interface.value["hello_multiplier_l2"]
+      # hello_padding - (optional) is a type of string
+      hello_padding = isis_interface.value["hello_padding"]
+      # lsp_interval - (optional) is a type of number
+      lsp_interval = isis_interface.value["lsp_interval"]
+      # lsp_retransmit_interval - (optional) is a type of number
       lsp_retransmit_interval = isis_interface.value["lsp_retransmit_interval"]
-      mesh_group              = isis_interface.value["mesh_group"]
-      mesh_group_id           = isis_interface.value["mesh_group_id"]
-      metric_l1               = isis_interface.value["metric_l1"]
-      metric_l2               = isis_interface.value["metric_l2"]
-      name                    = isis_interface.value["name"]
-      network_type            = isis_interface.value["network_type"]
-      priority_l1             = isis_interface.value["priority_l1"]
-      priority_l2             = isis_interface.value["priority_l2"]
-      status                  = isis_interface.value["status"]
-      status6                 = isis_interface.value["status6"]
-      wide_metric_l1          = isis_interface.value["wide_metric_l1"]
-      wide_metric_l2          = isis_interface.value["wide_metric_l2"]
+      # mesh_group - (optional) is a type of string
+      mesh_group = isis_interface.value["mesh_group"]
+      # mesh_group_id - (optional) is a type of number
+      mesh_group_id = isis_interface.value["mesh_group_id"]
+      # metric_l1 - (optional) is a type of number
+      metric_l1 = isis_interface.value["metric_l1"]
+      # metric_l2 - (optional) is a type of number
+      metric_l2 = isis_interface.value["metric_l2"]
+      # name - (optional) is a type of string
+      name = isis_interface.value["name"]
+      # network_type - (optional) is a type of string
+      network_type = isis_interface.value["network_type"]
+      # priority_l1 - (optional) is a type of number
+      priority_l1 = isis_interface.value["priority_l1"]
+      # priority_l2 - (optional) is a type of number
+      priority_l2 = isis_interface.value["priority_l2"]
+      # status - (optional) is a type of string
+      status = isis_interface.value["status"]
+      # status6 - (optional) is a type of string
+      status6 = isis_interface.value["status6"]
+      # wide_metric_l1 - (optional) is a type of number
+      wide_metric_l1 = isis_interface.value["wide_metric_l1"]
+      # wide_metric_l2 - (optional) is a type of number
+      wide_metric_l2 = isis_interface.value["wide_metric_l2"]
     }
   }
 
   dynamic "isis_net" {
     for_each = var.isis_net
     content {
-      id  = isis_net.value["id"]
+      # id - (optional) is a type of number
+      id = isis_net.value["id"]
+      # net - (optional) is a type of string
       net = isis_net.value["net"]
     }
   }
@@ -586,32 +654,47 @@ resource "fortios_router_isis" "this" {
   dynamic "redistribute" {
     for_each = var.redistribute
     content {
-      level       = redistribute.value["level"]
-      metric      = redistribute.value["metric"]
+      # level - (optional) is a type of string
+      level = redistribute.value["level"]
+      # metric - (optional) is a type of number
+      metric = redistribute.value["metric"]
+      # metric_type - (optional) is a type of string
       metric_type = redistribute.value["metric_type"]
-      protocol    = redistribute.value["protocol"]
-      routemap    = redistribute.value["routemap"]
-      status      = redistribute.value["status"]
+      # protocol - (optional) is a type of string
+      protocol = redistribute.value["protocol"]
+      # routemap - (optional) is a type of string
+      routemap = redistribute.value["routemap"]
+      # status - (optional) is a type of string
+      status = redistribute.value["status"]
     }
   }
 
   dynamic "redistribute6" {
     for_each = var.redistribute6
     content {
-      level       = redistribute6.value["level"]
-      metric      = redistribute6.value["metric"]
+      # level - (optional) is a type of string
+      level = redistribute6.value["level"]
+      # metric - (optional) is a type of number
+      metric = redistribute6.value["metric"]
+      # metric_type - (optional) is a type of string
       metric_type = redistribute6.value["metric_type"]
-      protocol    = redistribute6.value["protocol"]
-      routemap    = redistribute6.value["routemap"]
-      status      = redistribute6.value["status"]
+      # protocol - (optional) is a type of string
+      protocol = redistribute6.value["protocol"]
+      # routemap - (optional) is a type of string
+      routemap = redistribute6.value["routemap"]
+      # status - (optional) is a type of string
+      status = redistribute6.value["status"]
     }
   }
 
   dynamic "summary_address" {
     for_each = var.summary_address
     content {
-      id     = summary_address.value["id"]
-      level  = summary_address.value["level"]
+      # id - (optional) is a type of number
+      id = summary_address.value["id"]
+      # level - (optional) is a type of string
+      level = summary_address.value["level"]
+      # prefix - (optional) is a type of string
       prefix = summary_address.value["prefix"]
     }
   }
@@ -619,8 +702,11 @@ resource "fortios_router_isis" "this" {
   dynamic "summary_address6" {
     for_each = var.summary_address6
     content {
-      id      = summary_address6.value["id"]
-      level   = summary_address6.value["level"]
+      # id - (optional) is a type of number
+      id = summary_address6.value["id"]
+      # level - (optional) is a type of string
+      level = summary_address6.value["level"]
+      # prefix6 - (optional) is a type of string
       prefix6 = summary_address6.value["prefix6"]
     }
   }

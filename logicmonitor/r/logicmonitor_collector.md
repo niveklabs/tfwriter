@@ -114,15 +114,24 @@ variable "suppress_alert_clear" {
 
 ```terraform
 resource "logicmonitor_collector" "this" {
-  backup_collector_id              = var.backup_collector_id
-  collector_group_id               = var.collector_group_id
-  description                      = var.description
+  # backup_collector_id - (optional) is a type of number
+  backup_collector_id = var.backup_collector_id
+  # collector_group_id - (optional) is a type of number
+  collector_group_id = var.collector_group_id
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_collector_device_failover - (optional) is a type of bool
   enable_collector_device_failover = var.enable_collector_device_failover
-  enable_failback                  = var.enable_failback
-  escalation_chain_id              = var.escalation_chain_id
-  properties                       = var.properties
-  resend_interval                  = var.resend_interval
-  suppress_alert_clear             = var.suppress_alert_clear
+  # enable_failback - (optional) is a type of bool
+  enable_failback = var.enable_failback
+  # escalation_chain_id - (optional) is a type of number
+  escalation_chain_id = var.escalation_chain_id
+  # properties - (optional) is a type of map of string
+  properties = var.properties
+  # resend_interval - (optional) is a type of number
+  resend_interval = var.resend_interval
+  # suppress_alert_clear - (optional) is a type of bool
+  suppress_alert_clear = var.suppress_alert_clear
 }
 ```
 

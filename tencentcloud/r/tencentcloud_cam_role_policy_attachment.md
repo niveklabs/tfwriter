@@ -56,8 +56,10 @@ variable "role_id" {
 
 ```terraform
 resource "tencentcloud_cam_role_policy_attachment" "this" {
+  # policy_id - (required) is a type of string
   policy_id = var.policy_id
-  role_id   = var.role_id
+  # role_id - (required) is a type of string
+  role_id = var.role_id
 }
 ```
 

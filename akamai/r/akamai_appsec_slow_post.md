@@ -92,13 +92,20 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_slow_post" "this" {
-  config_id                  = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # duration_threshold_timeout - (optional) is a type of number
   duration_threshold_timeout = var.duration_threshold_timeout
-  security_policy_id         = var.security_policy_id
-  slow_rate_action           = var.slow_rate_action
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # slow_rate_action - (required) is a type of string
+  slow_rate_action = var.slow_rate_action
+  # slow_rate_threshold_period - (required) is a type of number
   slow_rate_threshold_period = var.slow_rate_threshold_period
-  slow_rate_threshold_rate   = var.slow_rate_threshold_rate
-  version                    = var.version
+  # slow_rate_threshold_rate - (required) is a type of number
+  slow_rate_threshold_rate = var.slow_rate_threshold_rate
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

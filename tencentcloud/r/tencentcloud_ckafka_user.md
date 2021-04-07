@@ -63,9 +63,12 @@ variable "password" {
 
 ```terraform
 resource "tencentcloud_ckafka_user" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
-  instance_id  = var.instance_id
-  password     = var.password
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # password - (required) is a type of string
+  password = var.password
 }
 ```
 

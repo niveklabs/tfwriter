@@ -81,15 +81,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_kvstore_connection" "this" {
+  # connection_string_prefix - (required) is a type of string
   connection_string_prefix = var.connection_string_prefix
-  instance_id              = var.instance_id
-  port                     = var.port
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # port - (required) is a type of string
+  port = var.port
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

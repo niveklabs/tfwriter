@@ -56,7 +56,9 @@ variable "ingest_budget_id" {
 
 ```terraform
 resource "sumologic_collector_ingest_budget_assignment" "this" {
-  collector_id     = var.collector_id
+  # collector_id - (required) is a type of string
+  collector_id = var.collector_id
+  # ingest_budget_id - (required) is a type of string
   ingest_budget_id = var.ingest_budget_id
 }
 ```

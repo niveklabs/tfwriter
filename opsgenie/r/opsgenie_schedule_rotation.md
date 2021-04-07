@@ -148,17 +148,25 @@ variable "time_restriction" {
 
 ```terraform
 resource "opsgenie_schedule_rotation" "this" {
-  end_date    = var.end_date
-  length      = var.length
-  name        = var.name
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # length - (optional) is a type of number
+  length = var.length
+  # name - (optional) is a type of string
+  name = var.name
+  # schedule_id - (required) is a type of string
   schedule_id = var.schedule_id
-  start_date  = var.start_date
-  type        = var.type
+  # start_date - (required) is a type of string
+  start_date = var.start_date
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "participant" {
     for_each = var.participant
     content {
-      id   = participant.value["id"]
+      # id - (optional) is a type of string
+      id = participant.value["id"]
+      # type - (required) is a type of string
       type = participant.value["type"]
     }
   }
@@ -166,27 +174,38 @@ resource "opsgenie_schedule_rotation" "this" {
   dynamic "time_restriction" {
     for_each = var.time_restriction
     content {
+      # type - (required) is a type of string
       type = time_restriction.value["type"]
 
       dynamic "restriction" {
         for_each = time_restriction.value.restriction
         content {
-          end_hour   = restriction.value["end_hour"]
-          end_min    = restriction.value["end_min"]
+          # end_hour - (required) is a type of number
+          end_hour = restriction.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restriction.value["end_min"]
+          # start_hour - (required) is a type of number
           start_hour = restriction.value["start_hour"]
-          start_min  = restriction.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restriction.value["start_min"]
         }
       }
 
       dynamic "restrictions" {
         for_each = time_restriction.value.restrictions
         content {
-          end_day    = restrictions.value["end_day"]
-          end_hour   = restrictions.value["end_hour"]
-          end_min    = restrictions.value["end_min"]
-          start_day  = restrictions.value["start_day"]
+          # end_day - (required) is a type of string
+          end_day = restrictions.value["end_day"]
+          # end_hour - (required) is a type of number
+          end_hour = restrictions.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restrictions.value["end_min"]
+          # start_day - (required) is a type of string
+          start_day = restrictions.value["start_day"]
+          # start_hour - (required) is a type of number
           start_hour = restrictions.value["start_hour"]
-          start_min  = restrictions.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restrictions.value["start_min"]
         }
       }
 

@@ -89,15 +89,21 @@ variable "member" {
 
 ```terraform
 resource "opsgenie_team" "this" {
+  # delete_default_resources - (optional) is a type of bool
   delete_default_resources = var.delete_default_resources
-  description              = var.description
-  ignore_members           = var.ignore_members
-  name                     = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # ignore_members - (optional) is a type of bool
+  ignore_members = var.ignore_members
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
-      id   = member.value["id"]
+      # id - (required) is a type of string
+      id = member.value["id"]
+      # role - (optional) is a type of string
       role = member.value["role"]
     }
   }

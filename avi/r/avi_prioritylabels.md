@@ -95,15 +95,21 @@ variable "equivalent_labels" {
 
 ```terraform
 resource "avi_prioritylabels" "this" {
-  cloud_ref   = var.cloud_ref
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "equivalent_labels" {
     for_each = var.equivalent_labels
     content {
+      # labels - (optional) is a type of list of string
       labels = equivalent_labels.value["labels"]
     }
   }

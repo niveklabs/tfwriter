@@ -143,19 +143,32 @@ variable "source" {
 
 ```terraform
 resource "alicloud_oss_bucket_object" "this" {
-  acl                    = var.acl
-  bucket                 = var.bucket
-  cache_control          = var.cache_control
-  content                = var.content
-  content_disposition    = var.content_disposition
-  content_encoding       = var.content_encoding
-  content_md5            = var.content_md5
-  content_type           = var.content_type
-  expires                = var.expires
-  key                    = var.key
-  kms_key_id             = var.kms_key_id
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content - (optional) is a type of string
+  content = var.content
+  # content_disposition - (optional) is a type of string
+  content_disposition = var.content_disposition
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_md5 - (optional) is a type of string
+  content_md5 = var.content_md5
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # expires - (optional) is a type of string
+  expires = var.expires
+  # key - (required) is a type of string
+  key = var.key
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # server_side_encryption - (optional) is a type of string
   server_side_encryption = var.server_side_encryption
-  source                 = var.source
+  # source - (optional) is a type of string
+  source = var.source
 }
 ```
 

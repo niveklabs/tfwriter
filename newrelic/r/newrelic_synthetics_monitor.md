@@ -125,17 +125,28 @@ variable "verify_ssl" {
 
 ```terraform
 resource "newrelic_synthetics_monitor" "this" {
-  bypass_head_request       = var.bypass_head_request
-  frequency                 = var.frequency
-  locations                 = var.locations
-  name                      = var.name
-  sla_threshold             = var.sla_threshold
-  status                    = var.status
+  # bypass_head_request - (optional) is a type of bool
+  bypass_head_request = var.bypass_head_request
+  # frequency - (required) is a type of number
+  frequency = var.frequency
+  # locations - (required) is a type of set of string
+  locations = var.locations
+  # name - (required) is a type of string
+  name = var.name
+  # sla_threshold - (optional) is a type of number
+  sla_threshold = var.sla_threshold
+  # status - (required) is a type of string
+  status = var.status
+  # treat_redirect_as_failure - (optional) is a type of bool
   treat_redirect_as_failure = var.treat_redirect_as_failure
-  type                      = var.type
-  uri                       = var.uri
-  validation_string         = var.validation_string
-  verify_ssl                = var.verify_ssl
+  # type - (required) is a type of string
+  type = var.type
+  # uri - (optional) is a type of string
+  uri = var.uri
+  # validation_string - (optional) is a type of string
+  validation_string = var.validation_string
+  # verify_ssl - (optional) is a type of bool
+  verify_ssl = var.verify_ssl
 }
 ```
 

@@ -72,14 +72,18 @@ variable "teams" {
 
 ```terraform
 resource "mongodbatlas_project" "this" {
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (required) is a type of string
   org_id = var.org_id
 
   dynamic "teams" {
     for_each = var.teams
     content {
+      # role_names - (required) is a type of set of string
       role_names = teams.value["role_names"]
-      team_id    = teams.value["team_id"]
+      # team_id - (required) is a type of string
+      team_id = teams.value["team_id"]
     }
   }
 

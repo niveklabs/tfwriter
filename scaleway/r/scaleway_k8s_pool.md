@@ -188,25 +188,41 @@ variable "upgrade_policy" {
 
 ```terraform
 resource "scaleway_k8s_pool" "this" {
-  autohealing         = var.autohealing
-  autoscaling         = var.autoscaling
-  cluster_id          = var.cluster_id
-  container_runtime   = var.container_runtime
-  kubelet_args        = var.kubelet_args
-  max_size            = var.max_size
-  min_size            = var.min_size
-  name                = var.name
-  node_type           = var.node_type
-  placement_group_id  = var.placement_group_id
-  region              = var.region
-  size                = var.size
-  tags                = var.tags
+  # autohealing - (optional) is a type of bool
+  autohealing = var.autohealing
+  # autoscaling - (optional) is a type of bool
+  autoscaling = var.autoscaling
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # container_runtime - (optional) is a type of string
+  container_runtime = var.container_runtime
+  # kubelet_args - (optional) is a type of map of string
+  kubelet_args = var.kubelet_args
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # node_type - (required) is a type of string
+  node_type = var.node_type
+  # placement_group_id - (optional) is a type of string
+  placement_group_id = var.placement_group_id
+  # region - (optional) is a type of string
+  region = var.region
+  # size - (required) is a type of number
+  size = var.size
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # wait_for_pool_ready - (optional) is a type of bool
   wait_for_pool_ready = var.wait_for_pool_ready
-  zone                = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }
@@ -214,7 +230,9 @@ resource "scaleway_k8s_pool" "this" {
   dynamic "upgrade_policy" {
     for_each = var.upgrade_policy
     content {
-      max_surge       = upgrade_policy.value["max_surge"]
+      # max_surge - (optional) is a type of number
+      max_surge = upgrade_policy.value["max_surge"]
+      # max_unavailable - (optional) is a type of number
       max_unavailable = upgrade_policy.value["max_unavailable"]
     }
   }

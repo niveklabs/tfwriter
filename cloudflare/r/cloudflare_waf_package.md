@@ -72,10 +72,14 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_waf_package" "this" {
+  # action_mode - (optional) is a type of string
   action_mode = var.action_mode
-  package_id  = var.package_id
+  # package_id - (required) is a type of string
+  package_id = var.package_id
+  # sensitivity - (optional) is a type of string
   sensitivity = var.sensitivity
-  zone_id     = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

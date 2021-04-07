@@ -106,14 +106,22 @@ variable "status" {
 
 ```terraform
 data "alicloud_cen_flowlogs" "this" {
-  cen_id         = var.cen_id
-  description    = var.description
-  ids            = var.ids
+  # cen_id - (optional) is a type of string
+  cen_id = var.cen_id
+  # description - (optional) is a type of string
+  description = var.description
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # log_store_name - (optional) is a type of string
   log_store_name = var.log_store_name
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  project_name   = var.project_name
-  status         = var.status
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # project_name - (optional) is a type of string
+  project_name = var.project_name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

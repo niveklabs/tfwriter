@@ -171,34 +171,52 @@ variable "roundrobin" {
 
 ```terraform
 data "constellix_aname_record" "this" {
-  contact_ids                   = var.contact_ids
-  domain_id                     = var.domain_id
-  gtd_region                    = var.gtd_region
-  name                          = var.name
-  noanswer                      = var.noanswer
-  note                          = var.note
-  record_failover_disable_flag  = var.record_failover_disable_flag
+  # contact_ids - (optional) is a type of list of number
+  contact_ids = var.contact_ids
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # name - (required) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # record_failover_disable_flag - (optional) is a type of string
+  record_failover_disable_flag = var.record_failover_disable_flag
+  # record_failover_failover_type - (optional) is a type of number
   record_failover_failover_type = var.record_failover_failover_type
-  record_option                 = var.record_option
-  source_type                   = var.source_type
-  ttl                           = var.ttl
-  type                          = var.type
+  # record_option - (optional) is a type of string
+  record_option = var.record_option
+  # source_type - (required) is a type of string
+  source_type = var.source_type
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "record_failover_values" {
     for_each = var.record_failover_values
     content {
-      checkidrcdf  = record_failover_values.value["checkidrcdf"]
+      # checkidrcdf - (optional) is a type of string
+      checkidrcdf = record_failover_values.value["checkidrcdf"]
+      # disable_flag - (optional) is a type of string
       disable_flag = record_failover_values.value["disable_flag"]
-      sort_order   = record_failover_values.value["sort_order"]
-      value        = record_failover_values.value["value"]
+      # sort_order - (optional) is a type of string
+      sort_order = record_failover_values.value["sort_order"]
+      # value - (optional) is a type of string
+      value = record_failover_values.value["value"]
     }
   }
 
   dynamic "roundrobin" {
     for_each = var.roundrobin
     content {
+      # disable_flag - (optional) is a type of bool
       disable_flag = roundrobin.value["disable_flag"]
-      value        = roundrobin.value["value"]
+      # value - (optional) is a type of string
+      value = roundrobin.value["value"]
     }
   }
 

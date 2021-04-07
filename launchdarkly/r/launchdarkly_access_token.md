@@ -111,21 +111,32 @@ variable "policy_statements" {
 
 ```terraform
 resource "launchdarkly_access_token" "this" {
-  custom_roles        = var.custom_roles
+  # custom_roles - (optional) is a type of set of string
+  custom_roles = var.custom_roles
+  # default_api_version - (optional) is a type of number
   default_api_version = var.default_api_version
-  expire              = var.expire
-  name                = var.name
-  role                = var.role
-  service_token       = var.service_token
+  # expire - (optional) is a type of number
+  expire = var.expire
+  # name - (required) is a type of string
+  name = var.name
+  # role - (optional) is a type of string
+  role = var.role
+  # service_token - (optional) is a type of bool
+  service_token = var.service_token
 
   dynamic "policy_statements" {
     for_each = var.policy_statements
     content {
-      actions       = policy_statements.value["actions"]
-      effect        = policy_statements.value["effect"]
-      not_actions   = policy_statements.value["not_actions"]
+      # actions - (optional) is a type of list of string
+      actions = policy_statements.value["actions"]
+      # effect - (required) is a type of string
+      effect = policy_statements.value["effect"]
+      # not_actions - (optional) is a type of list of string
+      not_actions = policy_statements.value["not_actions"]
+      # not_resources - (optional) is a type of list of string
       not_resources = policy_statements.value["not_resources"]
-      resources     = policy_statements.value["resources"]
+      # resources - (optional) is a type of list of string
+      resources = policy_statements.value["resources"]
     }
   }
 

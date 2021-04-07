@@ -50,6 +50,7 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_audit_cos_regions" "this" {
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

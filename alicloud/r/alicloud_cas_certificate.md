@@ -63,8 +63,11 @@ variable "name" {
 
 ```terraform
 resource "alicloud_cas_certificate" "this" {
+  # cert - (required) is a type of string
   cert = var.cert
-  key  = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
   name = var.name
 }
 ```

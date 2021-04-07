@@ -80,10 +80,15 @@ variable "notification_emails" {
 
 ```terraform
 resource "akamai_networklist_activations" "this" {
-  activate            = var.activate
-  network             = var.network
-  network_list_id     = var.network_list_id
-  notes               = var.notes
+  # activate - (optional) is a type of bool
+  activate = var.activate
+  # network - (optional) is a type of string
+  network = var.network
+  # network_list_id - (required) is a type of string
+  network_list_id = var.network_list_id
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # notification_emails - (required) is a type of set of string
   notification_emails = var.notification_emails
 }
 ```

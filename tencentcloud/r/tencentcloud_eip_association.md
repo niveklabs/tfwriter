@@ -73,10 +73,14 @@ variable "private_ip" {
 
 ```terraform
 resource "tencentcloud_eip_association" "this" {
-  eip_id               = var.eip_id
-  instance_id          = var.instance_id
+  # eip_id - (required) is a type of string
+  eip_id = var.eip_id
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # network_interface_id - (optional) is a type of string
   network_interface_id = var.network_interface_id
-  private_ip           = var.private_ip
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
 }
 ```
 

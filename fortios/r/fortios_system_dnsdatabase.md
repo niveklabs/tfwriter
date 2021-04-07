@@ -194,35 +194,60 @@ variable "dns_entry" {
 
 ```terraform
 resource "fortios_system_dnsdatabase" "this" {
-  allow_transfer        = var.allow_transfer
-  authoritative         = var.authoritative
-  contact               = var.contact
-  domain                = var.domain
+  # allow_transfer - (optional) is a type of string
+  allow_transfer = var.allow_transfer
+  # authoritative - (required) is a type of string
+  authoritative = var.authoritative
+  # contact - (optional) is a type of string
+  contact = var.contact
+  # domain - (required) is a type of string
+  domain = var.domain
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  forwarder             = var.forwarder
-  ip_master             = var.ip_master
-  ip_primary            = var.ip_primary
-  name                  = var.name
-  primary_name          = var.primary_name
-  rr_max                = var.rr_max
-  source_ip             = var.source_ip
-  status                = var.status
-  ttl                   = var.ttl
-  type                  = var.type
-  view                  = var.view
+  # forwarder - (optional) is a type of string
+  forwarder = var.forwarder
+  # ip_master - (optional) is a type of string
+  ip_master = var.ip_master
+  # ip_primary - (optional) is a type of string
+  ip_primary = var.ip_primary
+  # name - (required) is a type of string
+  name = var.name
+  # primary_name - (optional) is a type of string
+  primary_name = var.primary_name
+  # rr_max - (optional) is a type of number
+  rr_max = var.rr_max
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # status - (optional) is a type of string
+  status = var.status
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # view - (required) is a type of string
+  view = var.view
 
   dynamic "dns_entry" {
     for_each = var.dns_entry
     content {
+      # canonical_name - (optional) is a type of string
       canonical_name = dns_entry.value["canonical_name"]
-      hostname       = dns_entry.value["hostname"]
-      id             = dns_entry.value["id"]
-      ip             = dns_entry.value["ip"]
-      ipv6           = dns_entry.value["ipv6"]
-      preference     = dns_entry.value["preference"]
-      status         = dns_entry.value["status"]
-      ttl            = dns_entry.value["ttl"]
-      type           = dns_entry.value["type"]
+      # hostname - (optional) is a type of string
+      hostname = dns_entry.value["hostname"]
+      # id - (optional) is a type of number
+      id = dns_entry.value["id"]
+      # ip - (optional) is a type of string
+      ip = dns_entry.value["ip"]
+      # ipv6 - (optional) is a type of string
+      ipv6 = dns_entry.value["ipv6"]
+      # preference - (optional) is a type of number
+      preference = dns_entry.value["preference"]
+      # status - (optional) is a type of string
+      status = dns_entry.value["status"]
+      # ttl - (optional) is a type of number
+      ttl = dns_entry.value["ttl"]
+      # type - (optional) is a type of string
+      type = dns_entry.value["type"]
     }
   }
 

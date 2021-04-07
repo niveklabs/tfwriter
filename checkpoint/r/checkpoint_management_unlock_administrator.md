@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "checkpoint_management_unlock_administrator" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

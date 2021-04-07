@@ -139,19 +139,32 @@ variable "token_endpoint" {
 
 ```terraform
 resource "rancher2_auth_config_azuread" "this" {
-  access_mode           = var.access_mode
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # allowed_principal_ids - (optional) is a type of list of string
   allowed_principal_ids = var.allowed_principal_ids
-  annotations           = var.annotations
-  application_id        = var.application_id
-  application_secret    = var.application_secret
-  auth_endpoint         = var.auth_endpoint
-  enabled               = var.enabled
-  endpoint              = var.endpoint
-  graph_endpoint        = var.graph_endpoint
-  labels                = var.labels
-  rancher_url           = var.rancher_url
-  tenant_id             = var.tenant_id
-  token_endpoint        = var.token_endpoint
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # application_id - (required) is a type of string
+  application_id = var.application_id
+  # application_secret - (required) is a type of string
+  application_secret = var.application_secret
+  # auth_endpoint - (required) is a type of string
+  auth_endpoint = var.auth_endpoint
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # endpoint - (optional) is a type of string
+  endpoint = var.endpoint
+  # graph_endpoint - (required) is a type of string
+  graph_endpoint = var.graph_endpoint
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # rancher_url - (required) is a type of string
+  rancher_url = var.rancher_url
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
+  # token_endpoint - (required) is a type of string
+  token_endpoint = var.token_endpoint
 }
 ```
 

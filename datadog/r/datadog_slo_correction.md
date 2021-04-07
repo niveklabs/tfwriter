@@ -86,12 +86,18 @@ variable "timezone" {
 
 ```terraform
 resource "datadog_slo_correction" "this" {
-  category    = var.category
+  # category - (required) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
   description = var.description
-  end         = var.end
-  slo_id      = var.slo_id
-  start       = var.start
-  timezone    = var.timezone
+  # end - (required) is a type of number
+  end = var.end
+  # slo_id - (required) is a type of string
+  slo_id = var.slo_id
+  # start - (required) is a type of number
+  start = var.start
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

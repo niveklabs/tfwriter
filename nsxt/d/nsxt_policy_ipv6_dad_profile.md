@@ -58,7 +58,9 @@ variable "display_name" {
 
 ```terraform
 data "nsxt_policy_ipv6_dad_profile" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
 }
 ```

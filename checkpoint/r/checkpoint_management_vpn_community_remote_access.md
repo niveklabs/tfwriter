@@ -106,14 +106,22 @@ variable "user_groups" {
 
 ```terraform
 resource "checkpoint_management_vpn_community_remote_access" "this" {
-  color           = var.color
-  comments        = var.comments
-  gateways        = var.gateways
-  ignore_errors   = var.ignore_errors
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # gateways - (optional) is a type of set of string
+  gateways = var.gateways
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  name            = var.name
-  tags            = var.tags
-  user_groups     = var.user_groups
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # user_groups - (optional) is a type of set of string
+  user_groups = var.user_groups
 }
 ```
 

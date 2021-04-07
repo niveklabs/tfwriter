@@ -50,6 +50,7 @@ variable "domain" {
 
 ```terraform
 data "linode_domain" "this" {
+  # domain - (optional) is a type of string
   domain = var.domain
 }
 ```

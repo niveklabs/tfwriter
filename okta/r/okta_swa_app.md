@@ -197,29 +197,49 @@ variable "users" {
 
 ```terraform
 resource "okta_swa_app" "this" {
+  # accessibility_error_redirect_url - (optional) is a type of string
   accessibility_error_redirect_url = var.accessibility_error_redirect_url
-  accessibility_self_service       = var.accessibility_self_service
-  auto_submit_toolbar              = var.auto_submit_toolbar
-  button_field                     = var.button_field
-  groups                           = var.groups
-  hide_ios                         = var.hide_ios
-  hide_web                         = var.hide_web
-  label                            = var.label
-  password_field                   = var.password_field
-  preconfigured_app                = var.preconfigured_app
-  status                           = var.status
-  url                              = var.url
-  url_regex                        = var.url_regex
-  user_name_template               = var.user_name_template
-  user_name_template_suffix        = var.user_name_template_suffix
-  user_name_template_type          = var.user_name_template_type
-  username_field                   = var.username_field
+  # accessibility_self_service - (optional) is a type of bool
+  accessibility_self_service = var.accessibility_self_service
+  # auto_submit_toolbar - (optional) is a type of bool
+  auto_submit_toolbar = var.auto_submit_toolbar
+  # button_field - (optional) is a type of string
+  button_field = var.button_field
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # label - (required) is a type of string
+  label = var.label
+  # password_field - (optional) is a type of string
+  password_field = var.password_field
+  # preconfigured_app - (optional) is a type of string
+  preconfigured_app = var.preconfigured_app
+  # status - (optional) is a type of string
+  status = var.status
+  # url - (optional) is a type of string
+  url = var.url
+  # url_regex - (optional) is a type of string
+  url_regex = var.url_regex
+  # user_name_template - (optional) is a type of string
+  user_name_template = var.user_name_template
+  # user_name_template_suffix - (optional) is a type of string
+  user_name_template_suffix = var.user_name_template_suffix
+  # user_name_template_type - (optional) is a type of string
+  user_name_template_type = var.user_name_template_type
+  # username_field - (optional) is a type of string
+  username_field = var.username_field
 
   dynamic "users" {
     for_each = var.users
     content {
-      id       = users.value["id"]
+      # id - (optional) is a type of string
+      id = users.value["id"]
+      # password - (optional) is a type of string
       password = users.value["password"]
+      # username - (optional) is a type of string
       username = users.value["username"]
     }
   }

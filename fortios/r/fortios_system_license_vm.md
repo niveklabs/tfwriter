@@ -49,6 +49,7 @@ variable "file_content" {
 
 ```terraform
 resource "fortios_system_license_vm" "this" {
+  # file_content - (required) is a type of string
   file_content = var.file_content
 }
 ```

@@ -258,26 +258,43 @@ variable "volume" {
 
 ```terraform
 resource "triton_machine" "this" {
-  administrator_pw            = var.administrator_pw
-  affinity                    = var.affinity
-  cloud_config                = var.cloud_config
-  delegate_dataset            = var.delegate_dataset
+  # administrator_pw - (optional) is a type of string
+  administrator_pw = var.administrator_pw
+  # affinity - (optional) is a type of list of string
+  affinity = var.affinity
+  # cloud_config - (optional) is a type of string
+  cloud_config = var.cloud_config
+  # delegate_dataset - (optional) is a type of bool
+  delegate_dataset = var.delegate_dataset
+  # deletion_protection_enabled - (optional) is a type of bool
   deletion_protection_enabled = var.deletion_protection_enabled
-  firewall_enabled            = var.firewall_enabled
-  image                       = var.image
-  metadata                    = var.metadata
-  name                        = var.name
-  networks                    = var.networks
-  package                     = var.package
-  root_authorized_keys        = var.root_authorized_keys
-  tags                        = var.tags
-  user_data                   = var.user_data
-  user_script                 = var.user_script
+  # firewall_enabled - (optional) is a type of bool
+  firewall_enabled = var.firewall_enabled
+  # image - (required) is a type of string
+  image = var.image
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (optional) is a type of string
+  name = var.name
+  # networks - (optional) is a type of list of string
+  networks = var.networks
+  # package - (required) is a type of string
+  package = var.package
+  # root_authorized_keys - (optional) is a type of string
+  root_authorized_keys = var.root_authorized_keys
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # user_script - (optional) is a type of string
+  user_script = var.user_script
 
   dynamic "cns" {
     for_each = var.cns
     content {
-      disable  = cns.value["disable"]
+      # disable - (optional) is a type of bool
+      disable = cns.value["disable"]
+      # services - (optional) is a type of list of string
       services = cns.value["services"]
     }
   }
@@ -285,7 +302,9 @@ resource "triton_machine" "this" {
   dynamic "locality" {
     for_each = var.locality
     content {
+      # close_to - (optional) is a type of list of string
       close_to = locality.value["close_to"]
+      # far_from - (optional) is a type of list of string
       far_from = locality.value["far_from"]
     }
   }
@@ -293,6 +312,7 @@ resource "triton_machine" "this" {
   dynamic "nic" {
     for_each = var.nic
     content {
+      # network - (required) is a type of string
       network = nic.value["network"]
     }
   }
@@ -300,9 +320,13 @@ resource "triton_machine" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -310,10 +334,14 @@ resource "triton_machine" "this" {
   dynamic "volume" {
     for_each = var.volume
     content {
-      mode       = volume.value["mode"]
+      # mode - (optional) is a type of string
+      mode = volume.value["mode"]
+      # mountpoint - (required) is a type of string
       mountpoint = volume.value["mountpoint"]
-      name       = volume.value["name"]
-      type       = volume.value["type"]
+      # name - (required) is a type of string
+      name = volume.value["name"]
+      # type - (optional) is a type of string
+      type = volume.value["type"]
     }
   }
 

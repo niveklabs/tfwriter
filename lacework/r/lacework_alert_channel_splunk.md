@@ -109,18 +109,27 @@ variable "event_data" {
 
 ```terraform
 resource "lacework_alert_channel_splunk" "this" {
-  channel   = var.channel
-  enabled   = var.enabled
+  # channel - (optional) is a type of string
+  channel = var.channel
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # hec_token - (required) is a type of string
   hec_token = var.hec_token
-  host      = var.host
-  name      = var.name
-  port      = var.port
-  ssl       = var.ssl
+  # host - (required) is a type of string
+  host = var.host
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # ssl - (optional) is a type of bool
+  ssl = var.ssl
 
   dynamic "event_data" {
     for_each = var.event_data
     content {
-      index  = event_data.value["index"]
+      # index - (required) is a type of string
+      index = event_data.value["index"]
+      # source - (required) is a type of string
       source = event_data.value["source"]
     }
   }

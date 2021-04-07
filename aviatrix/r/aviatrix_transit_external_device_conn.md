@@ -335,43 +335,80 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_transit_external_device_conn" "this" {
-  backup_bgp_remote_as_num      = var.backup_bgp_remote_as_num
-  backup_direct_connect         = var.backup_direct_connect
-  backup_local_lan_ip           = var.backup_local_lan_ip
-  backup_local_tunnel_cidr      = var.backup_local_tunnel_cidr
-  backup_pre_shared_key         = var.backup_pre_shared_key
-  backup_remote_gateway_ip      = var.backup_remote_gateway_ip
-  backup_remote_lan_ip          = var.backup_remote_lan_ip
-  backup_remote_tunnel_cidr     = var.backup_remote_tunnel_cidr
-  bgp_local_as_num              = var.bgp_local_as_num
-  bgp_remote_as_num             = var.bgp_remote_as_num
-  connection_name               = var.connection_name
-  connection_type               = var.connection_type
-  custom_algorithms             = var.custom_algorithms
-  direct_connect                = var.direct_connect
-  enable_edge_segmentation      = var.enable_edge_segmentation
-  enable_ikev2                  = var.enable_ikev2
+  # backup_bgp_remote_as_num - (optional) is a type of string
+  backup_bgp_remote_as_num = var.backup_bgp_remote_as_num
+  # backup_direct_connect - (optional) is a type of bool
+  backup_direct_connect = var.backup_direct_connect
+  # backup_local_lan_ip - (optional) is a type of string
+  backup_local_lan_ip = var.backup_local_lan_ip
+  # backup_local_tunnel_cidr - (optional) is a type of string
+  backup_local_tunnel_cidr = var.backup_local_tunnel_cidr
+  # backup_pre_shared_key - (optional) is a type of string
+  backup_pre_shared_key = var.backup_pre_shared_key
+  # backup_remote_gateway_ip - (optional) is a type of string
+  backup_remote_gateway_ip = var.backup_remote_gateway_ip
+  # backup_remote_lan_ip - (optional) is a type of string
+  backup_remote_lan_ip = var.backup_remote_lan_ip
+  # backup_remote_tunnel_cidr - (optional) is a type of string
+  backup_remote_tunnel_cidr = var.backup_remote_tunnel_cidr
+  # bgp_local_as_num - (optional) is a type of string
+  bgp_local_as_num = var.bgp_local_as_num
+  # bgp_remote_as_num - (optional) is a type of string
+  bgp_remote_as_num = var.bgp_remote_as_num
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # connection_type - (optional) is a type of string
+  connection_type = var.connection_type
+  # custom_algorithms - (optional) is a type of bool
+  custom_algorithms = var.custom_algorithms
+  # direct_connect - (optional) is a type of bool
+  direct_connect = var.direct_connect
+  # enable_edge_segmentation - (optional) is a type of bool
+  enable_edge_segmentation = var.enable_edge_segmentation
+  # enable_ikev2 - (optional) is a type of bool
+  enable_ikev2 = var.enable_ikev2
+  # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
-  gw_name                       = var.gw_name
-  ha_enabled                    = var.ha_enabled
-  local_lan_ip                  = var.local_lan_ip
-  local_tunnel_cidr             = var.local_tunnel_cidr
-  manual_bgp_advertised_cidrs   = var.manual_bgp_advertised_cidrs
-  phase_1_authentication        = var.phase_1_authentication
-  phase_1_dh_groups             = var.phase_1_dh_groups
-  phase_1_encryption            = var.phase_1_encryption
-  phase_2_authentication        = var.phase_2_authentication
-  phase_2_dh_groups             = var.phase_2_dh_groups
-  phase_2_encryption            = var.phase_2_encryption
-  pre_shared_key                = var.pre_shared_key
-  remote_gateway_ip             = var.remote_gateway_ip
-  remote_lan_ip                 = var.remote_lan_ip
-  remote_subnet                 = var.remote_subnet
-  remote_tunnel_cidr            = var.remote_tunnel_cidr
-  remote_vpc_name               = var.remote_vpc_name
-  switch_to_ha_standby_gateway  = var.switch_to_ha_standby_gateway
-  tunnel_protocol               = var.tunnel_protocol
-  vpc_id                        = var.vpc_id
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # ha_enabled - (optional) is a type of bool
+  ha_enabled = var.ha_enabled
+  # local_lan_ip - (optional) is a type of string
+  local_lan_ip = var.local_lan_ip
+  # local_tunnel_cidr - (optional) is a type of string
+  local_tunnel_cidr = var.local_tunnel_cidr
+  # manual_bgp_advertised_cidrs - (optional) is a type of set of string
+  manual_bgp_advertised_cidrs = var.manual_bgp_advertised_cidrs
+  # phase_1_authentication - (optional) is a type of string
+  phase_1_authentication = var.phase_1_authentication
+  # phase_1_dh_groups - (optional) is a type of string
+  phase_1_dh_groups = var.phase_1_dh_groups
+  # phase_1_encryption - (optional) is a type of string
+  phase_1_encryption = var.phase_1_encryption
+  # phase_2_authentication - (optional) is a type of string
+  phase_2_authentication = var.phase_2_authentication
+  # phase_2_dh_groups - (optional) is a type of string
+  phase_2_dh_groups = var.phase_2_dh_groups
+  # phase_2_encryption - (optional) is a type of string
+  phase_2_encryption = var.phase_2_encryption
+  # pre_shared_key - (optional) is a type of string
+  pre_shared_key = var.pre_shared_key
+  # remote_gateway_ip - (optional) is a type of string
+  remote_gateway_ip = var.remote_gateway_ip
+  # remote_lan_ip - (optional) is a type of string
+  remote_lan_ip = var.remote_lan_ip
+  # remote_subnet - (optional) is a type of string
+  remote_subnet = var.remote_subnet
+  # remote_tunnel_cidr - (optional) is a type of string
+  remote_tunnel_cidr = var.remote_tunnel_cidr
+  # remote_vpc_name - (optional) is a type of string
+  remote_vpc_name = var.remote_vpc_name
+  # switch_to_ha_standby_gateway - (optional) is a type of bool
+  switch_to_ha_standby_gateway = var.switch_to_ha_standby_gateway
+  # tunnel_protocol - (optional) is a type of string
+  tunnel_protocol = var.tunnel_protocol
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

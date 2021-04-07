@@ -66,9 +66,12 @@ variable "zone" {
 
 ```terraform
 data "scaleway_instance_security_group" "this" {
-  name              = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # security_group_id - (optional) is a type of string
   security_group_id = var.security_group_id
-  zone              = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

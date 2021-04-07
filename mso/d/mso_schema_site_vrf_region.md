@@ -130,27 +130,40 @@ variable "cidr" {
 
 ```terraform
 data "mso_schema_site_vrf_region" "this" {
-  hub_network        = var.hub_network
+  # hub_network - (optional) is a type of map of string
+  hub_network = var.hub_network
+  # hub_network_enable - (optional) is a type of bool
   hub_network_enable = var.hub_network_enable
-  region_name        = var.region_name
-  schema_id          = var.schema_id
-  site_id            = var.site_id
-  template_name      = var.template_name
-  vpn_gateway        = var.vpn_gateway
-  vrf_name           = var.vrf_name
+  # region_name - (required) is a type of string
+  region_name = var.region_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
+  # vpn_gateway - (optional) is a type of bool
+  vpn_gateway = var.vpn_gateway
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
 
   dynamic "cidr" {
     for_each = var.cidr
     content {
+      # cidr_ip - (optional) is a type of string
       cidr_ip = cidr.value["cidr_ip"]
+      # primary - (optional) is a type of bool
       primary = cidr.value["primary"]
 
       dynamic "subnet" {
         for_each = cidr.value.subnet
         content {
-          ip    = subnet.value["ip"]
+          # ip - (optional) is a type of string
+          ip = subnet.value["ip"]
+          # usage - (optional) is a type of string
           usage = subnet.value["usage"]
-          zone  = subnet.value["zone"]
+          # zone - (optional) is a type of string
+          zone = subnet.value["zone"]
         }
       }
 

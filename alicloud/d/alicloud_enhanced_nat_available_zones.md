@@ -50,6 +50,7 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_enhanced_nat_available_zones" "this" {
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

@@ -57,7 +57,9 @@ variable "name" {
 
 ```terraform
 data "dme_transfer_acl" "this" {
-  ips  = var.ips
+  # ips - (optional) is a type of list of string
+  ips = var.ips
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -74,9 +74,13 @@ variable "msg_type" {
 
 ```terraform
 resource "fortios_systemreplacemsg_automation" "this" {
-  buffer   = var.buffer
-  format   = var.format
-  header   = var.header
+  # buffer - (optional) is a type of string
+  buffer = var.buffer
+  # format - (optional) is a type of string
+  format = var.format
+  # header - (optional) is a type of string
+  header = var.header
+  # msg_type - (optional) is a type of string
   msg_type = var.msg_type
 }
 ```

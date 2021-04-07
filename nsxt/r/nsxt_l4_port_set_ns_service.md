@@ -97,17 +97,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_l4_port_set_ns_service" "this" {
-  description       = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_ports - (optional) is a type of set of string
   destination_ports = var.destination_ports
-  display_name      = var.display_name
-  protocol          = var.protocol
-  source_ports      = var.source_ports
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # source_ports - (optional) is a type of set of string
+  source_ports = var.source_ports
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

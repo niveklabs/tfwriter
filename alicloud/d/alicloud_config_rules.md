@@ -114,15 +114,24 @@ variable "risk_level" {
 
 ```terraform
 data "alicloud_config_rules" "this" {
+  # config_rule_state - (optional) is a type of string
   config_rule_state = var.config_rule_state
-  enable_details    = var.enable_details
-  ids               = var.ids
-  member_id         = var.member_id
-  message_type      = var.message_type
-  multi_account     = var.multi_account
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  risk_level        = var.risk_level
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # member_id - (optional) is a type of number
+  member_id = var.member_id
+  # message_type - (optional) is a type of string
+  message_type = var.message_type
+  # multi_account - (optional) is a type of bool
+  multi_account = var.multi_account
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # risk_level - (optional) is a type of number
+  risk_level = var.risk_level
 }
 ```
 

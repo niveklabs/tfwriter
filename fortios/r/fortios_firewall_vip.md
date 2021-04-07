@@ -744,78 +744,147 @@ variable "ssl_server_cipher_suites" {
 
 ```terraform
 resource "fortios_firewall_vip" "this" {
-  arp_reply                        = var.arp_reply
-  color                            = var.color
-  comment                          = var.comment
-  dns_mapping_ttl                  = var.dns_mapping_ttl
-  dynamic_sort_subtable            = var.dynamic_sort_subtable
-  extintf                          = var.extintf
-  extip                            = var.extip
-  extport                          = var.extport
-  fosid                            = var.fosid
-  gratuitous_arp_interval          = var.gratuitous_arp_interval
-  http_cookie_age                  = var.http_cookie_age
-  http_cookie_domain               = var.http_cookie_domain
-  http_cookie_domain_from_host     = var.http_cookie_domain_from_host
-  http_cookie_generation           = var.http_cookie_generation
-  http_cookie_path                 = var.http_cookie_path
-  http_cookie_share                = var.http_cookie_share
-  http_ip_header                   = var.http_ip_header
-  http_ip_header_name              = var.http_ip_header_name
-  http_multiplex                   = var.http_multiplex
-  http_redirect                    = var.http_redirect
-  https_cookie_secure              = var.https_cookie_secure
-  ldb_method                       = var.ldb_method
-  mapped_addr                      = var.mapped_addr
-  mappedport                       = var.mappedport
-  max_embryonic_connections        = var.max_embryonic_connections
-  name                             = var.name
-  nat_source_vip                   = var.nat_source_vip
-  outlook_web_access               = var.outlook_web_access
-  persistence                      = var.persistence
-  portforward                      = var.portforward
-  portmapping_type                 = var.portmapping_type
-  protocol                         = var.protocol
-  server_type                      = var.server_type
-  ssl_algorithm                    = var.ssl_algorithm
-  ssl_certificate                  = var.ssl_certificate
-  ssl_client_fallback              = var.ssl_client_fallback
-  ssl_client_rekey_count           = var.ssl_client_rekey_count
-  ssl_client_renegotiation         = var.ssl_client_renegotiation
-  ssl_client_session_state_max     = var.ssl_client_session_state_max
+  # arp_reply - (optional) is a type of string
+  arp_reply = var.arp_reply
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dns_mapping_ttl - (optional) is a type of number
+  dns_mapping_ttl = var.dns_mapping_ttl
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # extintf - (optional) is a type of string
+  extintf = var.extintf
+  # extip - (optional) is a type of string
+  extip = var.extip
+  # extport - (optional) is a type of string
+  extport = var.extport
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # gratuitous_arp_interval - (optional) is a type of number
+  gratuitous_arp_interval = var.gratuitous_arp_interval
+  # http_cookie_age - (optional) is a type of number
+  http_cookie_age = var.http_cookie_age
+  # http_cookie_domain - (optional) is a type of string
+  http_cookie_domain = var.http_cookie_domain
+  # http_cookie_domain_from_host - (optional) is a type of string
+  http_cookie_domain_from_host = var.http_cookie_domain_from_host
+  # http_cookie_generation - (optional) is a type of number
+  http_cookie_generation = var.http_cookie_generation
+  # http_cookie_path - (optional) is a type of string
+  http_cookie_path = var.http_cookie_path
+  # http_cookie_share - (optional) is a type of string
+  http_cookie_share = var.http_cookie_share
+  # http_ip_header - (optional) is a type of string
+  http_ip_header = var.http_ip_header
+  # http_ip_header_name - (optional) is a type of string
+  http_ip_header_name = var.http_ip_header_name
+  # http_multiplex - (optional) is a type of string
+  http_multiplex = var.http_multiplex
+  # http_redirect - (optional) is a type of string
+  http_redirect = var.http_redirect
+  # https_cookie_secure - (optional) is a type of string
+  https_cookie_secure = var.https_cookie_secure
+  # ldb_method - (optional) is a type of string
+  ldb_method = var.ldb_method
+  # mapped_addr - (optional) is a type of string
+  mapped_addr = var.mapped_addr
+  # mappedport - (optional) is a type of string
+  mappedport = var.mappedport
+  # max_embryonic_connections - (optional) is a type of number
+  max_embryonic_connections = var.max_embryonic_connections
+  # name - (optional) is a type of string
+  name = var.name
+  # nat_source_vip - (optional) is a type of string
+  nat_source_vip = var.nat_source_vip
+  # outlook_web_access - (optional) is a type of string
+  outlook_web_access = var.outlook_web_access
+  # persistence - (optional) is a type of string
+  persistence = var.persistence
+  # portforward - (optional) is a type of string
+  portforward = var.portforward
+  # portmapping_type - (optional) is a type of string
+  portmapping_type = var.portmapping_type
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # ssl_algorithm - (optional) is a type of string
+  ssl_algorithm = var.ssl_algorithm
+  # ssl_certificate - (optional) is a type of string
+  ssl_certificate = var.ssl_certificate
+  # ssl_client_fallback - (optional) is a type of string
+  ssl_client_fallback = var.ssl_client_fallback
+  # ssl_client_rekey_count - (optional) is a type of number
+  ssl_client_rekey_count = var.ssl_client_rekey_count
+  # ssl_client_renegotiation - (optional) is a type of string
+  ssl_client_renegotiation = var.ssl_client_renegotiation
+  # ssl_client_session_state_max - (optional) is a type of number
+  ssl_client_session_state_max = var.ssl_client_session_state_max
+  # ssl_client_session_state_timeout - (optional) is a type of number
   ssl_client_session_state_timeout = var.ssl_client_session_state_timeout
-  ssl_client_session_state_type    = var.ssl_client_session_state_type
-  ssl_dh_bits                      = var.ssl_dh_bits
-  ssl_hpkp                         = var.ssl_hpkp
-  ssl_hpkp_age                     = var.ssl_hpkp_age
-  ssl_hpkp_backup                  = var.ssl_hpkp_backup
-  ssl_hpkp_include_subdomains      = var.ssl_hpkp_include_subdomains
-  ssl_hpkp_primary                 = var.ssl_hpkp_primary
-  ssl_hpkp_report_uri              = var.ssl_hpkp_report_uri
-  ssl_hsts                         = var.ssl_hsts
-  ssl_hsts_age                     = var.ssl_hsts_age
-  ssl_hsts_include_subdomains      = var.ssl_hsts_include_subdomains
-  ssl_http_location_conversion     = var.ssl_http_location_conversion
-  ssl_http_match_host              = var.ssl_http_match_host
-  ssl_max_version                  = var.ssl_max_version
-  ssl_min_version                  = var.ssl_min_version
-  ssl_mode                         = var.ssl_mode
-  ssl_pfs                          = var.ssl_pfs
-  ssl_send_empty_frags             = var.ssl_send_empty_frags
-  ssl_server_algorithm             = var.ssl_server_algorithm
-  ssl_server_max_version           = var.ssl_server_max_version
-  ssl_server_min_version           = var.ssl_server_min_version
-  ssl_server_session_state_max     = var.ssl_server_session_state_max
+  # ssl_client_session_state_type - (optional) is a type of string
+  ssl_client_session_state_type = var.ssl_client_session_state_type
+  # ssl_dh_bits - (optional) is a type of string
+  ssl_dh_bits = var.ssl_dh_bits
+  # ssl_hpkp - (optional) is a type of string
+  ssl_hpkp = var.ssl_hpkp
+  # ssl_hpkp_age - (optional) is a type of number
+  ssl_hpkp_age = var.ssl_hpkp_age
+  # ssl_hpkp_backup - (optional) is a type of string
+  ssl_hpkp_backup = var.ssl_hpkp_backup
+  # ssl_hpkp_include_subdomains - (optional) is a type of string
+  ssl_hpkp_include_subdomains = var.ssl_hpkp_include_subdomains
+  # ssl_hpkp_primary - (optional) is a type of string
+  ssl_hpkp_primary = var.ssl_hpkp_primary
+  # ssl_hpkp_report_uri - (optional) is a type of string
+  ssl_hpkp_report_uri = var.ssl_hpkp_report_uri
+  # ssl_hsts - (optional) is a type of string
+  ssl_hsts = var.ssl_hsts
+  # ssl_hsts_age - (optional) is a type of number
+  ssl_hsts_age = var.ssl_hsts_age
+  # ssl_hsts_include_subdomains - (optional) is a type of string
+  ssl_hsts_include_subdomains = var.ssl_hsts_include_subdomains
+  # ssl_http_location_conversion - (optional) is a type of string
+  ssl_http_location_conversion = var.ssl_http_location_conversion
+  # ssl_http_match_host - (optional) is a type of string
+  ssl_http_match_host = var.ssl_http_match_host
+  # ssl_max_version - (optional) is a type of string
+  ssl_max_version = var.ssl_max_version
+  # ssl_min_version - (optional) is a type of string
+  ssl_min_version = var.ssl_min_version
+  # ssl_mode - (optional) is a type of string
+  ssl_mode = var.ssl_mode
+  # ssl_pfs - (optional) is a type of string
+  ssl_pfs = var.ssl_pfs
+  # ssl_send_empty_frags - (optional) is a type of string
+  ssl_send_empty_frags = var.ssl_send_empty_frags
+  # ssl_server_algorithm - (optional) is a type of string
+  ssl_server_algorithm = var.ssl_server_algorithm
+  # ssl_server_max_version - (optional) is a type of string
+  ssl_server_max_version = var.ssl_server_max_version
+  # ssl_server_min_version - (optional) is a type of string
+  ssl_server_min_version = var.ssl_server_min_version
+  # ssl_server_session_state_max - (optional) is a type of number
+  ssl_server_session_state_max = var.ssl_server_session_state_max
+  # ssl_server_session_state_timeout - (optional) is a type of number
   ssl_server_session_state_timeout = var.ssl_server_session_state_timeout
-  ssl_server_session_state_type    = var.ssl_server_session_state_type
-  type                             = var.type
-  uuid                             = var.uuid
-  weblogic_server                  = var.weblogic_server
-  websphere_server                 = var.websphere_server
+  # ssl_server_session_state_type - (optional) is a type of string
+  ssl_server_session_state_type = var.ssl_server_session_state_type
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # weblogic_server - (optional) is a type of string
+  weblogic_server = var.weblogic_server
+  # websphere_server - (optional) is a type of string
+  websphere_server = var.websphere_server
 
   dynamic "extaddr" {
     for_each = var.extaddr
     content {
+      # name - (optional) is a type of string
       name = extaddr.value["name"]
     }
   }
@@ -823,6 +892,7 @@ resource "fortios_firewall_vip" "this" {
   dynamic "mappedip" {
     for_each = var.mappedip
     content {
+      # range - (optional) is a type of string
       range = mappedip.value["range"]
     }
   }
@@ -830,6 +900,7 @@ resource "fortios_firewall_vip" "this" {
   dynamic "monitor" {
     for_each = var.monitor
     content {
+      # name - (optional) is a type of string
       name = monitor.value["name"]
     }
   }
@@ -837,25 +908,39 @@ resource "fortios_firewall_vip" "this" {
   dynamic "realservers" {
     for_each = var.realservers
     content {
-      address           = realservers.value["address"]
-      client_ip         = realservers.value["client_ip"]
-      healthcheck       = realservers.value["healthcheck"]
+      # address - (optional) is a type of string
+      address = realservers.value["address"]
+      # client_ip - (optional) is a type of string
+      client_ip = realservers.value["client_ip"]
+      # healthcheck - (optional) is a type of string
+      healthcheck = realservers.value["healthcheck"]
+      # holddown_interval - (optional) is a type of number
       holddown_interval = realservers.value["holddown_interval"]
-      http_host         = realservers.value["http_host"]
-      id                = realservers.value["id"]
-      ip                = realservers.value["ip"]
-      max_connections   = realservers.value["max_connections"]
-      monitor           = realservers.value["monitor"]
-      port              = realservers.value["port"]
-      status            = realservers.value["status"]
-      type              = realservers.value["type"]
-      weight            = realservers.value["weight"]
+      # http_host - (optional) is a type of string
+      http_host = realservers.value["http_host"]
+      # id - (optional) is a type of number
+      id = realservers.value["id"]
+      # ip - (optional) is a type of string
+      ip = realservers.value["ip"]
+      # max_connections - (optional) is a type of number
+      max_connections = realservers.value["max_connections"]
+      # monitor - (optional) is a type of string
+      monitor = realservers.value["monitor"]
+      # port - (optional) is a type of number
+      port = realservers.value["port"]
+      # status - (optional) is a type of string
+      status = realservers.value["status"]
+      # type - (optional) is a type of string
+      type = realservers.value["type"]
+      # weight - (optional) is a type of number
+      weight = realservers.value["weight"]
     }
   }
 
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -863,6 +948,7 @@ resource "fortios_firewall_vip" "this" {
   dynamic "src_filter" {
     for_each = var.src_filter
     content {
+      # range - (optional) is a type of string
       range = src_filter.value["range"]
     }
   }
@@ -870,6 +956,7 @@ resource "fortios_firewall_vip" "this" {
   dynamic "srcintf_filter" {
     for_each = var.srcintf_filter
     content {
+      # interface_name - (optional) is a type of string
       interface_name = srcintf_filter.value["interface_name"]
     }
   }
@@ -877,8 +964,11 @@ resource "fortios_firewall_vip" "this" {
   dynamic "ssl_cipher_suites" {
     for_each = var.ssl_cipher_suites
     content {
-      cipher   = ssl_cipher_suites.value["cipher"]
+      # cipher - (optional) is a type of string
+      cipher = ssl_cipher_suites.value["cipher"]
+      # priority - (optional) is a type of number
       priority = ssl_cipher_suites.value["priority"]
+      # versions - (optional) is a type of string
       versions = ssl_cipher_suites.value["versions"]
     }
   }
@@ -886,8 +976,11 @@ resource "fortios_firewall_vip" "this" {
   dynamic "ssl_server_cipher_suites" {
     for_each = var.ssl_server_cipher_suites
     content {
-      cipher   = ssl_server_cipher_suites.value["cipher"]
+      # cipher - (optional) is a type of string
+      cipher = ssl_server_cipher_suites.value["cipher"]
+      # priority - (optional) is a type of number
       priority = ssl_server_cipher_suites.value["priority"]
+      # versions - (optional) is a type of string
       versions = ssl_server_cipher_suites.value["versions"]
     }
   }

@@ -107,17 +107,25 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_gateway_prefix_list" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
+  # gateway_path - (required) is a type of string
   gateway_path = var.gateway_path
-  nsx_id       = var.nsx_id
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "prefix" {
     for_each = var.prefix
     content {
-      action  = prefix.value["action"]
-      ge      = prefix.value["ge"]
-      le      = prefix.value["le"]
+      # action - (optional) is a type of string
+      action = prefix.value["action"]
+      # ge - (optional) is a type of number
+      ge = prefix.value["ge"]
+      # le - (optional) is a type of number
+      le = prefix.value["le"]
+      # network - (optional) is a type of string
       network = prefix.value["network"]
     }
   }
@@ -125,8 +133,10 @@ resource "nsxt_policy_gateway_prefix_list" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

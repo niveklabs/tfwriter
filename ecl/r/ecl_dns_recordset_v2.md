@@ -103,18 +103,27 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_dns_recordset_v2" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  record      = var.record
-  ttl         = var.ttl
-  type        = var.type
-  zone_id     = var.zone_id
+  # name - (required) is a type of string
+  name = var.name
+  # record - (required) is a type of string
+  record = var.record
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

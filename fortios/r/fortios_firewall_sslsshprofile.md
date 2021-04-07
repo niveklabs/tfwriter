@@ -525,192 +525,326 @@ variable "ssl_server" {
 
 ```terraform
 resource "fortios_firewall_sslsshprofile" "this" {
-  allowlist                      = var.allowlist
+  # allowlist - (optional) is a type of string
+  allowlist = var.allowlist
+  # block_blacklisted_certificates - (optional) is a type of string
   block_blacklisted_certificates = var.block_blacklisted_certificates
+  # block_blocklisted_certificates - (optional) is a type of string
   block_blocklisted_certificates = var.block_blocklisted_certificates
-  caname                         = var.caname
-  comment                        = var.comment
-  dynamic_sort_subtable          = var.dynamic_sort_subtable
-  mapi_over_https                = var.mapi_over_https
-  name                           = var.name
-  rpc_over_https                 = var.rpc_over_https
-  server_cert                    = var.server_cert
-  server_cert_mode               = var.server_cert_mode
-  ssl_anomalies_log              = var.ssl_anomalies_log
-  ssl_exemptions_log             = var.ssl_exemptions_log
-  ssl_negotiation_log            = var.ssl_negotiation_log
-  supported_alpn                 = var.supported_alpn
-  untrusted_caname               = var.untrusted_caname
-  use_ssl_server                 = var.use_ssl_server
-  whitelist                      = var.whitelist
+  # caname - (optional) is a type of string
+  caname = var.caname
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # mapi_over_https - (optional) is a type of string
+  mapi_over_https = var.mapi_over_https
+  # name - (required) is a type of string
+  name = var.name
+  # rpc_over_https - (optional) is a type of string
+  rpc_over_https = var.rpc_over_https
+  # server_cert - (optional) is a type of string
+  server_cert = var.server_cert
+  # server_cert_mode - (optional) is a type of string
+  server_cert_mode = var.server_cert_mode
+  # ssl_anomalies_log - (optional) is a type of string
+  ssl_anomalies_log = var.ssl_anomalies_log
+  # ssl_exemptions_log - (optional) is a type of string
+  ssl_exemptions_log = var.ssl_exemptions_log
+  # ssl_negotiation_log - (optional) is a type of string
+  ssl_negotiation_log = var.ssl_negotiation_log
+  # supported_alpn - (optional) is a type of string
+  supported_alpn = var.supported_alpn
+  # untrusted_caname - (optional) is a type of string
+  untrusted_caname = var.untrusted_caname
+  # use_ssl_server - (optional) is a type of string
+  use_ssl_server = var.use_ssl_server
+  # whitelist - (optional) is a type of string
+  whitelist = var.whitelist
 
   dynamic "ftps" {
     for_each = var.ftps
     content {
-      cert_validation_failure     = ftps.value["cert_validation_failure"]
-      cert_validation_timeout     = ftps.value["cert_validation_timeout"]
-      client_cert_request         = ftps.value["client_cert_request"]
-      client_certificate          = ftps.value["client_certificate"]
-      expired_server_cert         = ftps.value["expired_server_cert"]
-      invalid_server_cert         = ftps.value["invalid_server_cert"]
-      ports                       = ftps.value["ports"]
-      revoked_server_cert         = ftps.value["revoked_server_cert"]
-      sni_server_cert_check       = ftps.value["sni_server_cert_check"]
-      status                      = ftps.value["status"]
-      unsupported_ssl             = ftps.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = ftps.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = ftps.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = ftps.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = ftps.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = ftps.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = ftps.value["expired_server_cert"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = ftps.value["invalid_server_cert"]
+      # ports - (optional) is a type of string
+      ports = ftps.value["ports"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = ftps.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = ftps.value["sni_server_cert_check"]
+      # status - (optional) is a type of string
+      status = ftps.value["status"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = ftps.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = ftps.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = ftps.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = ftps.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = ftps.value["untrusted_server_cert"]
     }
   }
 
   dynamic "https" {
     for_each = var.https
     content {
-      cert_validation_failure     = https.value["cert_validation_failure"]
-      cert_validation_timeout     = https.value["cert_validation_timeout"]
-      client_cert_request         = https.value["client_cert_request"]
-      client_certificate          = https.value["client_certificate"]
-      expired_server_cert         = https.value["expired_server_cert"]
-      invalid_server_cert         = https.value["invalid_server_cert"]
-      ports                       = https.value["ports"]
-      proxy_after_tcp_handshake   = https.value["proxy_after_tcp_handshake"]
-      revoked_server_cert         = https.value["revoked_server_cert"]
-      sni_server_cert_check       = https.value["sni_server_cert_check"]
-      status                      = https.value["status"]
-      unsupported_ssl             = https.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = https.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = https.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = https.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = https.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = https.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = https.value["expired_server_cert"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = https.value["invalid_server_cert"]
+      # ports - (optional) is a type of string
+      ports = https.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = https.value["proxy_after_tcp_handshake"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = https.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = https.value["sni_server_cert_check"]
+      # status - (optional) is a type of string
+      status = https.value["status"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = https.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = https.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = https.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = https.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = https.value["untrusted_server_cert"]
     }
   }
 
   dynamic "imaps" {
     for_each = var.imaps
     content {
-      cert_validation_failure     = imaps.value["cert_validation_failure"]
-      cert_validation_timeout     = imaps.value["cert_validation_timeout"]
-      client_cert_request         = imaps.value["client_cert_request"]
-      client_certificate          = imaps.value["client_certificate"]
-      expired_server_cert         = imaps.value["expired_server_cert"]
-      invalid_server_cert         = imaps.value["invalid_server_cert"]
-      ports                       = imaps.value["ports"]
-      proxy_after_tcp_handshake   = imaps.value["proxy_after_tcp_handshake"]
-      revoked_server_cert         = imaps.value["revoked_server_cert"]
-      sni_server_cert_check       = imaps.value["sni_server_cert_check"]
-      status                      = imaps.value["status"]
-      unsupported_ssl             = imaps.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = imaps.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = imaps.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = imaps.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = imaps.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = imaps.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = imaps.value["expired_server_cert"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = imaps.value["invalid_server_cert"]
+      # ports - (optional) is a type of string
+      ports = imaps.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = imaps.value["proxy_after_tcp_handshake"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = imaps.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = imaps.value["sni_server_cert_check"]
+      # status - (optional) is a type of string
+      status = imaps.value["status"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = imaps.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = imaps.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = imaps.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = imaps.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = imaps.value["untrusted_server_cert"]
     }
   }
 
   dynamic "pop3s" {
     for_each = var.pop3s
     content {
-      cert_validation_failure     = pop3s.value["cert_validation_failure"]
-      cert_validation_timeout     = pop3s.value["cert_validation_timeout"]
-      client_cert_request         = pop3s.value["client_cert_request"]
-      client_certificate          = pop3s.value["client_certificate"]
-      expired_server_cert         = pop3s.value["expired_server_cert"]
-      invalid_server_cert         = pop3s.value["invalid_server_cert"]
-      ports                       = pop3s.value["ports"]
-      proxy_after_tcp_handshake   = pop3s.value["proxy_after_tcp_handshake"]
-      revoked_server_cert         = pop3s.value["revoked_server_cert"]
-      sni_server_cert_check       = pop3s.value["sni_server_cert_check"]
-      status                      = pop3s.value["status"]
-      unsupported_ssl             = pop3s.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = pop3s.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = pop3s.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = pop3s.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = pop3s.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = pop3s.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = pop3s.value["expired_server_cert"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = pop3s.value["invalid_server_cert"]
+      # ports - (optional) is a type of string
+      ports = pop3s.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = pop3s.value["proxy_after_tcp_handshake"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = pop3s.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = pop3s.value["sni_server_cert_check"]
+      # status - (optional) is a type of string
+      status = pop3s.value["status"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = pop3s.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = pop3s.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = pop3s.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = pop3s.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = pop3s.value["untrusted_server_cert"]
     }
   }
 
   dynamic "smtps" {
     for_each = var.smtps
     content {
-      cert_validation_failure     = smtps.value["cert_validation_failure"]
-      cert_validation_timeout     = smtps.value["cert_validation_timeout"]
-      client_cert_request         = smtps.value["client_cert_request"]
-      client_certificate          = smtps.value["client_certificate"]
-      expired_server_cert         = smtps.value["expired_server_cert"]
-      invalid_server_cert         = smtps.value["invalid_server_cert"]
-      ports                       = smtps.value["ports"]
-      proxy_after_tcp_handshake   = smtps.value["proxy_after_tcp_handshake"]
-      revoked_server_cert         = smtps.value["revoked_server_cert"]
-      sni_server_cert_check       = smtps.value["sni_server_cert_check"]
-      status                      = smtps.value["status"]
-      unsupported_ssl             = smtps.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = smtps.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = smtps.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = smtps.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = smtps.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = smtps.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = smtps.value["expired_server_cert"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = smtps.value["invalid_server_cert"]
+      # ports - (optional) is a type of string
+      ports = smtps.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = smtps.value["proxy_after_tcp_handshake"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = smtps.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = smtps.value["sni_server_cert_check"]
+      # status - (optional) is a type of string
+      status = smtps.value["status"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = smtps.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = smtps.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = smtps.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = smtps.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = smtps.value["untrusted_server_cert"]
     }
   }
 
   dynamic "ssh" {
     for_each = var.ssh
     content {
-      inspect_all               = ssh.value["inspect_all"]
-      ports                     = ssh.value["ports"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = ssh.value["inspect_all"]
+      # ports - (optional) is a type of string
+      ports = ssh.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
       proxy_after_tcp_handshake = ssh.value["proxy_after_tcp_handshake"]
-      ssh_algorithm             = ssh.value["ssh_algorithm"]
-      ssh_policy_check          = ssh.value["ssh_policy_check"]
-      ssh_tun_policy_check      = ssh.value["ssh_tun_policy_check"]
-      status                    = ssh.value["status"]
-      unsupported_version       = ssh.value["unsupported_version"]
+      # ssh_algorithm - (optional) is a type of string
+      ssh_algorithm = ssh.value["ssh_algorithm"]
+      # ssh_policy_check - (optional) is a type of string
+      ssh_policy_check = ssh.value["ssh_policy_check"]
+      # ssh_tun_policy_check - (optional) is a type of string
+      ssh_tun_policy_check = ssh.value["ssh_tun_policy_check"]
+      # status - (optional) is a type of string
+      status = ssh.value["status"]
+      # unsupported_version - (optional) is a type of string
+      unsupported_version = ssh.value["unsupported_version"]
     }
   }
 
   dynamic "ssl" {
     for_each = var.ssl
     content {
-      cert_validation_failure     = ssl.value["cert_validation_failure"]
-      cert_validation_timeout     = ssl.value["cert_validation_timeout"]
-      client_cert_request         = ssl.value["client_cert_request"]
-      client_certificate          = ssl.value["client_certificate"]
-      expired_server_cert         = ssl.value["expired_server_cert"]
-      inspect_all                 = ssl.value["inspect_all"]
-      invalid_server_cert         = ssl.value["invalid_server_cert"]
-      revoked_server_cert         = ssl.value["revoked_server_cert"]
-      sni_server_cert_check       = ssl.value["sni_server_cert_check"]
-      unsupported_ssl             = ssl.value["unsupported_ssl"]
-      unsupported_ssl_cipher      = ssl.value["unsupported_ssl_cipher"]
+      # cert_validation_failure - (optional) is a type of string
+      cert_validation_failure = ssl.value["cert_validation_failure"]
+      # cert_validation_timeout - (optional) is a type of string
+      cert_validation_timeout = ssl.value["cert_validation_timeout"]
+      # client_cert_request - (optional) is a type of string
+      client_cert_request = ssl.value["client_cert_request"]
+      # client_certificate - (optional) is a type of string
+      client_certificate = ssl.value["client_certificate"]
+      # expired_server_cert - (optional) is a type of string
+      expired_server_cert = ssl.value["expired_server_cert"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = ssl.value["inspect_all"]
+      # invalid_server_cert - (optional) is a type of string
+      invalid_server_cert = ssl.value["invalid_server_cert"]
+      # revoked_server_cert - (optional) is a type of string
+      revoked_server_cert = ssl.value["revoked_server_cert"]
+      # sni_server_cert_check - (optional) is a type of string
+      sni_server_cert_check = ssl.value["sni_server_cert_check"]
+      # unsupported_ssl - (optional) is a type of string
+      unsupported_ssl = ssl.value["unsupported_ssl"]
+      # unsupported_ssl_cipher - (optional) is a type of string
+      unsupported_ssl_cipher = ssl.value["unsupported_ssl_cipher"]
+      # unsupported_ssl_negotiation - (optional) is a type of string
       unsupported_ssl_negotiation = ssl.value["unsupported_ssl_negotiation"]
-      untrusted_server_cert       = ssl.value["untrusted_server_cert"]
+      # untrusted_server_cert - (optional) is a type of string
+      untrusted_server_cert = ssl.value["untrusted_server_cert"]
     }
   }
 
   dynamic "ssl_exempt" {
     for_each = var.ssl_exempt
     content {
-      address             = ssl_exempt.value["address"]
-      address6            = ssl_exempt.value["address6"]
+      # address - (optional) is a type of string
+      address = ssl_exempt.value["address"]
+      # address6 - (optional) is a type of string
+      address6 = ssl_exempt.value["address6"]
+      # fortiguard_category - (optional) is a type of number
       fortiguard_category = ssl_exempt.value["fortiguard_category"]
-      id                  = ssl_exempt.value["id"]
-      regex               = ssl_exempt.value["regex"]
-      type                = ssl_exempt.value["type"]
-      wildcard_fqdn       = ssl_exempt.value["wildcard_fqdn"]
+      # id - (optional) is a type of number
+      id = ssl_exempt.value["id"]
+      # regex - (optional) is a type of string
+      regex = ssl_exempt.value["regex"]
+      # type - (optional) is a type of string
+      type = ssl_exempt.value["type"]
+      # wildcard_fqdn - (optional) is a type of string
+      wildcard_fqdn = ssl_exempt.value["wildcard_fqdn"]
     }
   }
 
   dynamic "ssl_server" {
     for_each = var.ssl_server
     content {
-      ftps_client_cert_request      = ssl_server.value["ftps_client_cert_request"]
-      ftps_client_certificate       = ssl_server.value["ftps_client_certificate"]
-      https_client_cert_request     = ssl_server.value["https_client_cert_request"]
-      https_client_certificate      = ssl_server.value["https_client_certificate"]
-      id                            = ssl_server.value["id"]
-      imaps_client_cert_request     = ssl_server.value["imaps_client_cert_request"]
-      imaps_client_certificate      = ssl_server.value["imaps_client_certificate"]
-      ip                            = ssl_server.value["ip"]
-      pop3s_client_cert_request     = ssl_server.value["pop3s_client_cert_request"]
-      pop3s_client_certificate      = ssl_server.value["pop3s_client_certificate"]
-      smtps_client_cert_request     = ssl_server.value["smtps_client_cert_request"]
-      smtps_client_certificate      = ssl_server.value["smtps_client_certificate"]
+      # ftps_client_cert_request - (optional) is a type of string
+      ftps_client_cert_request = ssl_server.value["ftps_client_cert_request"]
+      # ftps_client_certificate - (optional) is a type of string
+      ftps_client_certificate = ssl_server.value["ftps_client_certificate"]
+      # https_client_cert_request - (optional) is a type of string
+      https_client_cert_request = ssl_server.value["https_client_cert_request"]
+      # https_client_certificate - (optional) is a type of string
+      https_client_certificate = ssl_server.value["https_client_certificate"]
+      # id - (optional) is a type of number
+      id = ssl_server.value["id"]
+      # imaps_client_cert_request - (optional) is a type of string
+      imaps_client_cert_request = ssl_server.value["imaps_client_cert_request"]
+      # imaps_client_certificate - (optional) is a type of string
+      imaps_client_certificate = ssl_server.value["imaps_client_certificate"]
+      # ip - (optional) is a type of string
+      ip = ssl_server.value["ip"]
+      # pop3s_client_cert_request - (optional) is a type of string
+      pop3s_client_cert_request = ssl_server.value["pop3s_client_cert_request"]
+      # pop3s_client_certificate - (optional) is a type of string
+      pop3s_client_certificate = ssl_server.value["pop3s_client_certificate"]
+      # smtps_client_cert_request - (optional) is a type of string
+      smtps_client_cert_request = ssl_server.value["smtps_client_cert_request"]
+      # smtps_client_certificate - (optional) is a type of string
+      smtps_client_certificate = ssl_server.value["smtps_client_certificate"]
+      # ssl_other_client_cert_request - (optional) is a type of string
       ssl_other_client_cert_request = ssl_server.value["ssl_other_client_cert_request"]
-      ssl_other_client_certificate  = ssl_server.value["ssl_other_client_certificate"]
+      # ssl_other_client_certificate - (optional) is a type of string
+      ssl_other_client_certificate = ssl_server.value["ssl_other_client_certificate"]
     }
   }
 

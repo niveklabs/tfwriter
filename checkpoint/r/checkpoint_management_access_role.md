@@ -141,30 +141,44 @@ variable "users" {
 
 ```terraform
 resource "checkpoint_management_access_role" "this" {
-  color                 = var.color
-  comments              = var.comments
-  ignore_errors         = var.ignore_errors
-  ignore_warnings       = var.ignore_warnings
-  name                  = var.name
-  networks              = var.networks
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # name - (required) is a type of string
+  name = var.name
+  # networks - (optional) is a type of set of string
+  networks = var.networks
+  # remote_access_clients - (optional) is a type of string
   remote_access_clients = var.remote_access_clients
-  tags                  = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "machines" {
     for_each = var.machines
     content {
-      base_dn   = machines.value["base_dn"]
+      # base_dn - (optional) is a type of string
+      base_dn = machines.value["base_dn"]
+      # selection - (optional) is a type of set of string
       selection = machines.value["selection"]
-      source    = machines.value["source"]
+      # source - (optional) is a type of string
+      source = machines.value["source"]
     }
   }
 
   dynamic "users" {
     for_each = var.users
     content {
-      base_dn   = users.value["base_dn"]
+      # base_dn - (optional) is a type of string
+      base_dn = users.value["base_dn"]
+      # selection - (optional) is a type of set of string
       selection = users.value["selection"]
-      source    = users.value["source"]
+      # source - (optional) is a type of string
+      source = users.value["source"]
     }
   }
 

@@ -121,15 +121,25 @@ variable "verification_policy" {
 
 ```terraform
 data "constellix_tcp_check" "this" {
-  check_sites         = var.check_sites
-  host                = var.host
-  interval            = var.interval
-  interval_policy     = var.interval_policy
-  ip_version          = var.ip_version
-  name                = var.name
-  port                = var.port
-  string_to_receive   = var.string_to_receive
-  string_to_send      = var.string_to_send
+  # check_sites - (optional) is a type of list of number
+  check_sites = var.check_sites
+  # host - (optional) is a type of string
+  host = var.host
+  # interval - (optional) is a type of string
+  interval = var.interval
+  # interval_policy - (optional) is a type of string
+  interval_policy = var.interval_policy
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # name - (required) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # string_to_receive - (optional) is a type of string
+  string_to_receive = var.string_to_receive
+  # string_to_send - (optional) is a type of string
+  string_to_send = var.string_to_send
+  # verification_policy - (optional) is a type of string
   verification_policy = var.verification_policy
 }
 ```

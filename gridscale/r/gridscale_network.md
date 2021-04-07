@@ -83,15 +83,21 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_network" "this" {
+  # l2security - (optional) is a type of bool
   l2security = var.l2security
-  labels     = var.labels
-  name       = var.name
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

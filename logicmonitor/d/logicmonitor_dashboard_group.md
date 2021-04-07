@@ -80,17 +80,24 @@ variable "filters" {
 
 ```terraform
 data "logicmonitor_dashboard_group" "this" {
+  # offset - (optional) is a type of number
   offset = var.offset
-  size   = var.size
+  # size - (optional) is a type of number
+  size = var.size
 
   dynamic "filters" {
     for_each = var.filters
     content {
-      custom_property_name  = filters.value["custom_property_name"]
+      # custom_property_name - (optional) is a type of string
+      custom_property_name = filters.value["custom_property_name"]
+      # custom_property_value - (optional) is a type of string
       custom_property_value = filters.value["custom_property_value"]
-      operator              = filters.value["operator"]
-      property              = filters.value["property"]
-      value                 = filters.value["value"]
+      # operator - (optional) is a type of string
+      operator = filters.value["operator"]
+      # property - (optional) is a type of string
+      property = filters.value["property"]
+      # value - (optional) is a type of string
+      value = filters.value["value"]
     }
   }
 

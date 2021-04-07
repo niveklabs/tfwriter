@@ -97,31 +97,42 @@ variable "overlays" {
 
 ```terraform
 resource "circonus_overlay_set" "this" {
+  # graph_cid - (required) is a type of string
   graph_cid = var.graph_cid
-  title     = var.title
+  # title - (required) is a type of string
+  title = var.title
 
   dynamic "overlays" {
     for_each = var.overlays
     content {
+      # id - (required) is a type of string
       id = overlays.value["id"]
 
       dynamic "data_opts" {
         for_each = overlays.value.data_opts
         content {
+          # graph_title - (required) is a type of string
           graph_title = data_opts.value["graph_title"]
-          graph_uuid  = data_opts.value["graph_uuid"]
-          x_shift     = data_opts.value["x_shift"]
+          # graph_uuid - (required) is a type of string
+          graph_uuid = data_opts.value["graph_uuid"]
+          # x_shift - (required) is a type of string
+          x_shift = data_opts.value["x_shift"]
         }
       }
 
       dynamic "ui_specs" {
         for_each = overlays.value.ui_specs
         content {
+          # decouple - (optional) is a type of bool
           decouple = ui_specs.value["decouple"]
-          id       = ui_specs.value["id"]
-          label    = ui_specs.value["label"]
-          type     = ui_specs.value["type"]
-          z        = ui_specs.value["z"]
+          # id - (required) is a type of string
+          id = ui_specs.value["id"]
+          # label - (required) is a type of string
+          label = ui_specs.value["label"]
+          # type - (required) is a type of string
+          type = ui_specs.value["type"]
+          # z - (optional) is a type of string
+          z = ui_specs.value["z"]
         }
       }
 

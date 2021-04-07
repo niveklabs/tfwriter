@@ -65,9 +65,12 @@ variable "server_id" {
 
 ```terraform
 resource "hcloud_snapshot" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  server_id   = var.server_id
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # server_id - (required) is a type of number
+  server_id = var.server_id
 }
 ```
 

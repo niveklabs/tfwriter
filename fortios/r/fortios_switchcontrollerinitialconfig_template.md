@@ -90,12 +90,18 @@ variable "vlanid" {
 
 ```terraform
 resource "fortios_switchcontrollerinitialconfig_template" "this" {
+  # allowaccess - (optional) is a type of string
   allowaccess = var.allowaccess
-  auto_ip     = var.auto_ip
+  # auto_ip - (optional) is a type of string
+  auto_ip = var.auto_ip
+  # dhcp_server - (optional) is a type of string
   dhcp_server = var.dhcp_server
-  ip          = var.ip
-  name        = var.name
-  vlanid      = var.vlanid
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (optional) is a type of string
+  name = var.name
+  # vlanid - (optional) is a type of number
+  vlanid = var.vlanid
 }
 ```
 

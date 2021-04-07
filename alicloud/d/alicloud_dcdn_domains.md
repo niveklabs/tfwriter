@@ -130,17 +130,28 @@ variable "status" {
 
 ```terraform
 data "alicloud_dcdn_domains" "this" {
-  change_end_time    = var.change_end_time
-  change_start_time  = var.change_start_time
-  check_domain_show  = var.check_domain_show
+  # change_end_time - (optional) is a type of string
+  change_end_time = var.change_end_time
+  # change_start_time - (optional) is a type of string
+  change_start_time = var.change_start_time
+  # check_domain_show - (optional) is a type of bool
+  check_domain_show = var.check_domain_show
+  # domain_search_type - (optional) is a type of string
   domain_search_type = var.domain_search_type
-  enable_details     = var.enable_details
-  ids                = var.ids
-  name_regex         = var.name_regex
-  output_file        = var.output_file
-  resource_group_id  = var.resource_group_id
-  security_token     = var.security_token
-  status             = var.status
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # security_token - (optional) is a type of string
+  security_token = var.security_token
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

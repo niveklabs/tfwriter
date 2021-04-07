@@ -64,9 +64,12 @@ variable "gw_name2" {
 
 ```terraform
 resource "aviatrix_tunnel" "this" {
+  # enable_ha - (optional) is a type of bool
   enable_ha = var.enable_ha
-  gw_name1  = var.gw_name1
-  gw_name2  = var.gw_name2
+  # gw_name1 - (required) is a type of string
+  gw_name1 = var.gw_name1
+  # gw_name2 - (required) is a type of string
+  gw_name2 = var.gw_name2
 }
 ```
 

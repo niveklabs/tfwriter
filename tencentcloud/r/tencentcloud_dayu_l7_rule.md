@@ -162,22 +162,38 @@ variable "switch" {
 
 ```terraform
 resource "tencentcloud_dayu_l7_rule" "this" {
-  domain                    = var.domain
-  health_check_code         = var.health_check_code
-  health_check_health_num   = var.health_check_health_num
-  health_check_interval     = var.health_check_interval
-  health_check_method       = var.health_check_method
-  health_check_path         = var.health_check_path
-  health_check_switch       = var.health_check_switch
+  # domain - (required) is a type of string
+  domain = var.domain
+  # health_check_code - (optional) is a type of number
+  health_check_code = var.health_check_code
+  # health_check_health_num - (optional) is a type of number
+  health_check_health_num = var.health_check_health_num
+  # health_check_interval - (optional) is a type of number
+  health_check_interval = var.health_check_interval
+  # health_check_method - (optional) is a type of string
+  health_check_method = var.health_check_method
+  # health_check_path - (optional) is a type of string
+  health_check_path = var.health_check_path
+  # health_check_switch - (optional) is a type of bool
+  health_check_switch = var.health_check_switch
+  # health_check_unhealth_num - (optional) is a type of number
   health_check_unhealth_num = var.health_check_unhealth_num
-  name                      = var.name
-  protocol                  = var.protocol
-  resource_id               = var.resource_id
-  resource_type             = var.resource_type
-  source_list               = var.source_list
-  source_type               = var.source_type
-  ssl_id                    = var.ssl_id
-  switch                    = var.switch
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # source_list - (required) is a type of set of string
+  source_list = var.source_list
+  # source_type - (required) is a type of number
+  source_type = var.source_type
+  # ssl_id - (optional) is a type of string
+  ssl_id = var.ssl_id
+  # switch - (required) is a type of bool
+  switch = var.switch
 }
 ```
 

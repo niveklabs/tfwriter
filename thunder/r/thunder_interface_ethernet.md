@@ -1288,32 +1288,55 @@ variable "trunk_group_list" {
 
 ```terraform
 resource "thunder_interface_ethernet" "this" {
-  action                    = var.action
-  auto_neg_enable           = var.auto_neg_enable
-  cpu_process               = var.cpu_process
-  cpu_process_dir           = var.cpu_process_dir
-  duplexity                 = var.duplexity
-  fec_forced_off            = var.fec_forced_off
-  fec_forced_on             = var.fec_forced_on
-  flow_control              = var.flow_control
-  ifnum                     = var.ifnum
-  l3_vlan_fwd_disable       = var.l3_vlan_fwd_disable
-  load_interval             = var.load_interval
-  media_type_copper         = var.media_type_copper
-  mtu                       = var.mtu
-  name                      = var.name
-  remove_vlan_tag           = var.remove_vlan_tag
-  speed                     = var.speed
-  speed_forced_40g          = var.speed_forced_40g
+  # action - (optional) is a type of string
+  action = var.action
+  # auto_neg_enable - (optional) is a type of number
+  auto_neg_enable = var.auto_neg_enable
+  # cpu_process - (optional) is a type of number
+  cpu_process = var.cpu_process
+  # cpu_process_dir - (optional) is a type of string
+  cpu_process_dir = var.cpu_process_dir
+  # duplexity - (optional) is a type of string
+  duplexity = var.duplexity
+  # fec_forced_off - (optional) is a type of number
+  fec_forced_off = var.fec_forced_off
+  # fec_forced_on - (optional) is a type of number
+  fec_forced_on = var.fec_forced_on
+  # flow_control - (optional) is a type of number
+  flow_control = var.flow_control
+  # ifnum - (optional) is a type of number
+  ifnum = var.ifnum
+  # l3_vlan_fwd_disable - (optional) is a type of number
+  l3_vlan_fwd_disable = var.l3_vlan_fwd_disable
+  # load_interval - (optional) is a type of number
+  load_interval = var.load_interval
+  # media_type_copper - (optional) is a type of number
+  media_type_copper = var.media_type_copper
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (optional) is a type of string
+  name = var.name
+  # remove_vlan_tag - (optional) is a type of number
+  remove_vlan_tag = var.remove_vlan_tag
+  # speed - (optional) is a type of string
+  speed = var.speed
+  # speed_forced_40g - (optional) is a type of number
+  speed_forced_40g = var.speed_forced_40g
+  # traffic_distribution_mode - (optional) is a type of string
   traffic_distribution_mode = var.traffic_distribution_mode
-  trap_source               = var.trap_source
-  user_tag                  = var.user_tag
-  uuid                      = var.uuid
+  # trap_source - (optional) is a type of number
+  trap_source = var.trap_source
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "access_list" {
     for_each = var.access_list
     content {
-      acl_id   = access_list.value["acl_id"]
+      # acl_id - (optional) is a type of number
+      acl_id = access_list.value["acl_id"]
+      # acl_name - (optional) is a type of string
       acl_name = access_list.value["acl_name"]
     }
   }
@@ -1321,25 +1344,35 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "bfd" {
     for_each = var.bfd
     content {
+      # demand - (optional) is a type of number
       demand = bfd.value["demand"]
-      echo   = bfd.value["echo"]
-      uuid   = bfd.value["uuid"]
+      # echo - (optional) is a type of number
+      echo = bfd.value["echo"]
+      # uuid - (optional) is a type of string
+      uuid = bfd.value["uuid"]
 
       dynamic "authentication" {
         for_each = bfd.value.authentication
         content {
+          # encrypted - (optional) is a type of string
           encrypted = authentication.value["encrypted"]
-          key_id    = authentication.value["key_id"]
-          method    = authentication.value["method"]
-          password  = authentication.value["password"]
+          # key_id - (optional) is a type of number
+          key_id = authentication.value["key_id"]
+          # method - (optional) is a type of string
+          method = authentication.value["method"]
+          # password - (optional) is a type of string
+          password = authentication.value["password"]
         }
       }
 
       dynamic "interval_cfg" {
         for_each = bfd.value.interval_cfg
         content {
-          interval   = interval_cfg.value["interval"]
-          min_rx     = interval_cfg.value["min_rx"]
+          # interval - (optional) is a type of number
+          interval = interval_cfg.value["interval"]
+          # min_rx - (optional) is a type of number
+          min_rx = interval_cfg.value["min_rx"]
+          # multiplier - (optional) is a type of number
           multiplier = interval_cfg.value["multiplier"]
         }
       }
@@ -1350,58 +1383,83 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "ddos" {
     for_each = var.ddos
     content {
-      inside  = ddos.value["inside"]
+      # inside - (optional) is a type of number
+      inside = ddos.value["inside"]
+      # outside - (optional) is a type of number
       outside = ddos.value["outside"]
-      uuid    = ddos.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = ddos.value["uuid"]
     }
   }
 
   dynamic "icmp_rate_limit" {
     for_each = var.icmp_rate_limit
     content {
-      lockup        = icmp_rate_limit.value["lockup"]
+      # lockup - (optional) is a type of number
+      lockup = icmp_rate_limit.value["lockup"]
+      # lockup_period - (optional) is a type of number
       lockup_period = icmp_rate_limit.value["lockup_period"]
-      normal        = icmp_rate_limit.value["normal"]
+      # normal - (optional) is a type of number
+      normal = icmp_rate_limit.value["normal"]
     }
   }
 
   dynamic "icmpv6_rate_limit" {
     for_each = var.icmpv6_rate_limit
     content {
+      # lockup_period_v6 - (optional) is a type of number
       lockup_period_v6 = icmpv6_rate_limit.value["lockup_period_v6"]
-      lockup_v6        = icmpv6_rate_limit.value["lockup_v6"]
-      normal_v6        = icmpv6_rate_limit.value["normal_v6"]
+      # lockup_v6 - (optional) is a type of number
+      lockup_v6 = icmpv6_rate_limit.value["lockup_v6"]
+      # normal_v6 - (optional) is a type of number
+      normal_v6 = icmpv6_rate_limit.value["normal_v6"]
     }
   }
 
   dynamic "ip" {
     for_each = var.ip
     content {
-      allow_promiscuous_vip     = ip.value["allow_promiscuous_vip"]
-      cache_spoofing_port       = ip.value["cache_spoofing_port"]
-      client                    = ip.value["client"]
-      dhcp                      = ip.value["dhcp"]
+      # allow_promiscuous_vip - (optional) is a type of number
+      allow_promiscuous_vip = ip.value["allow_promiscuous_vip"]
+      # cache_spoofing_port - (optional) is a type of number
+      cache_spoofing_port = ip.value["cache_spoofing_port"]
+      # client - (optional) is a type of number
+      client = ip.value["client"]
+      # dhcp - (optional) is a type of number
+      dhcp = ip.value["dhcp"]
+      # generate_membership_query - (optional) is a type of number
       generate_membership_query = ip.value["generate_membership_query"]
-      inside                    = ip.value["inside"]
-      max_resp_time             = ip.value["max_resp_time"]
-      outside                   = ip.value["outside"]
-      query_interval            = ip.value["query_interval"]
-      server                    = ip.value["server"]
-      slb_partition_redirect    = ip.value["slb_partition_redirect"]
-      ttl_ignore                = ip.value["ttl_ignore"]
-      uuid                      = ip.value["uuid"]
+      # inside - (optional) is a type of number
+      inside = ip.value["inside"]
+      # max_resp_time - (optional) is a type of number
+      max_resp_time = ip.value["max_resp_time"]
+      # outside - (optional) is a type of number
+      outside = ip.value["outside"]
+      # query_interval - (optional) is a type of number
+      query_interval = ip.value["query_interval"]
+      # server - (optional) is a type of number
+      server = ip.value["server"]
+      # slb_partition_redirect - (optional) is a type of number
+      slb_partition_redirect = ip.value["slb_partition_redirect"]
+      # ttl_ignore - (optional) is a type of number
+      ttl_ignore = ip.value["ttl_ignore"]
+      # uuid - (optional) is a type of string
+      uuid = ip.value["uuid"]
 
       dynamic "address_list" {
         for_each = ip.value.address_list
         content {
+          # address_type - (optional) is a type of string
           address_type = address_list.value["address_type"]
-          ipv6_addr    = address_list.value["ipv6_addr"]
+          # ipv6_addr - (optional) is a type of string
+          ipv6_addr = address_list.value["ipv6_addr"]
         }
       }
 
       dynamic "helper_address_list" {
         for_each = ip.value.helper_address_list
         content {
+          # helper_address - (optional) is a type of string
           helper_address = helper_address_list.value["helper_address"]
         }
       }
@@ -1413,30 +1471,45 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "ospf_global" {
             for_each = ospf.value.ospf_global
             content {
-              authentication_key  = ospf_global.value["authentication_key"]
-              cost                = ospf_global.value["cost"]
-              dead_interval       = ospf_global.value["dead_interval"]
-              disable             = ospf_global.value["disable"]
-              hello_interval      = ospf_global.value["hello_interval"]
-              mtu                 = ospf_global.value["mtu"]
-              mtu_ignore          = ospf_global.value["mtu_ignore"]
-              priority            = ospf_global.value["priority"]
+              # authentication_key - (optional) is a type of string
+              authentication_key = ospf_global.value["authentication_key"]
+              # cost - (optional) is a type of number
+              cost = ospf_global.value["cost"]
+              # dead_interval - (optional) is a type of number
+              dead_interval = ospf_global.value["dead_interval"]
+              # disable - (optional) is a type of string
+              disable = ospf_global.value["disable"]
+              # hello_interval - (optional) is a type of number
+              hello_interval = ospf_global.value["hello_interval"]
+              # mtu - (optional) is a type of number
+              mtu = ospf_global.value["mtu"]
+              # mtu_ignore - (optional) is a type of number
+              mtu_ignore = ospf_global.value["mtu_ignore"]
+              # priority - (optional) is a type of number
+              priority = ospf_global.value["priority"]
+              # retransmit_interval - (optional) is a type of number
               retransmit_interval = ospf_global.value["retransmit_interval"]
-              transmit_delay      = ospf_global.value["transmit_delay"]
-              uuid                = ospf_global.value["uuid"]
+              # transmit_delay - (optional) is a type of number
+              transmit_delay = ospf_global.value["transmit_delay"]
+              # uuid - (optional) is a type of string
+              uuid = ospf_global.value["uuid"]
 
               dynamic "authentication_cfg" {
                 for_each = ospf_global.value.authentication_cfg
                 content {
+                  # authentication - (optional) is a type of number
                   authentication = authentication_cfg.value["authentication"]
-                  value          = authentication_cfg.value["value"]
+                  # value - (optional) is a type of string
+                  value = authentication_cfg.value["value"]
                 }
               }
 
               dynamic "bfd_cfg" {
                 for_each = ospf_global.value.bfd_cfg
                 content {
-                  bfd     = bfd_cfg.value["bfd"]
+                  # bfd - (optional) is a type of number
+                  bfd = bfd_cfg.value["bfd"]
+                  # disable - (optional) is a type of number
                   disable = bfd_cfg.value["disable"]
                 }
               }
@@ -1444,20 +1517,25 @@ resource "thunder_interface_ethernet" "this" {
               dynamic "database_filter_cfg" {
                 for_each = ospf_global.value.database_filter_cfg
                 content {
+                  # database_filter - (optional) is a type of string
                   database_filter = database_filter_cfg.value["database_filter"]
-                  out             = database_filter_cfg.value["out"]
+                  # out - (optional) is a type of number
+                  out = database_filter_cfg.value["out"]
                 }
               }
 
               dynamic "message_digest_cfg" {
                 for_each = ospf_global.value.message_digest_cfg
                 content {
+                  # message_digest_key - (optional) is a type of number
                   message_digest_key = message_digest_cfg.value["message_digest_key"]
 
                   dynamic "md5" {
                     for_each = message_digest_cfg.value.md5
                     content {
+                      # encrypted - (optional) is a type of string
                       encrypted = md5.value["encrypted"]
+                      # md5_value - (optional) is a type of string
                       md5_value = md5.value["md5_value"]
                     }
                   }
@@ -1468,11 +1546,16 @@ resource "thunder_interface_ethernet" "this" {
               dynamic "network" {
                 for_each = ospf_global.value.network
                 content {
-                  broadcast           = network.value["broadcast"]
-                  non_broadcast       = network.value["non_broadcast"]
-                  p2mp_nbma           = network.value["p2mp_nbma"]
+                  # broadcast - (optional) is a type of number
+                  broadcast = network.value["broadcast"]
+                  # non_broadcast - (optional) is a type of number
+                  non_broadcast = network.value["non_broadcast"]
+                  # p2mp_nbma - (optional) is a type of number
+                  p2mp_nbma = network.value["p2mp_nbma"]
+                  # point_to_multipoint - (optional) is a type of number
                   point_to_multipoint = network.value["point_to_multipoint"]
-                  point_to_point      = network.value["point_to_point"]
+                  # point_to_point - (optional) is a type of number
+                  point_to_point = network.value["point_to_point"]
                 }
               }
 
@@ -1482,30 +1565,47 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "ospf_ip_list" {
             for_each = ospf.value.ospf_ip_list
             content {
-              authentication      = ospf_ip_list.value["authentication"]
-              authentication_key  = ospf_ip_list.value["authentication_key"]
-              cost                = ospf_ip_list.value["cost"]
-              database_filter     = ospf_ip_list.value["database_filter"]
-              dead_interval       = ospf_ip_list.value["dead_interval"]
-              hello_interval      = ospf_ip_list.value["hello_interval"]
-              ip_addr             = ospf_ip_list.value["ip_addr"]
-              mtu_ignore          = ospf_ip_list.value["mtu_ignore"]
-              out                 = ospf_ip_list.value["out"]
-              priority            = ospf_ip_list.value["priority"]
+              # authentication - (optional) is a type of number
+              authentication = ospf_ip_list.value["authentication"]
+              # authentication_key - (optional) is a type of string
+              authentication_key = ospf_ip_list.value["authentication_key"]
+              # cost - (optional) is a type of number
+              cost = ospf_ip_list.value["cost"]
+              # database_filter - (optional) is a type of string
+              database_filter = ospf_ip_list.value["database_filter"]
+              # dead_interval - (optional) is a type of number
+              dead_interval = ospf_ip_list.value["dead_interval"]
+              # hello_interval - (optional) is a type of number
+              hello_interval = ospf_ip_list.value["hello_interval"]
+              # ip_addr - (optional) is a type of string
+              ip_addr = ospf_ip_list.value["ip_addr"]
+              # mtu_ignore - (optional) is a type of number
+              mtu_ignore = ospf_ip_list.value["mtu_ignore"]
+              # out - (optional) is a type of number
+              out = ospf_ip_list.value["out"]
+              # priority - (optional) is a type of number
+              priority = ospf_ip_list.value["priority"]
+              # retransmit_interval - (optional) is a type of number
               retransmit_interval = ospf_ip_list.value["retransmit_interval"]
-              transmit_delay      = ospf_ip_list.value["transmit_delay"]
-              uuid                = ospf_ip_list.value["uuid"]
-              value               = ospf_ip_list.value["value"]
+              # transmit_delay - (optional) is a type of number
+              transmit_delay = ospf_ip_list.value["transmit_delay"]
+              # uuid - (optional) is a type of string
+              uuid = ospf_ip_list.value["uuid"]
+              # value - (optional) is a type of string
+              value = ospf_ip_list.value["value"]
 
               dynamic "message_digest_cfg" {
                 for_each = ospf_ip_list.value.message_digest_cfg
                 content {
+                  # message_digest_key - (optional) is a type of number
                   message_digest_key = message_digest_cfg.value["message_digest_key"]
 
                   dynamic "md5" {
                     for_each = message_digest_cfg.value.md5
                     content {
+                      # encrypted - (optional) is a type of string
                       encrypted = md5.value["encrypted"]
+                      # md5_value - (optional) is a type of string
                       md5_value = md5.value["md5_value"]
                     }
                   }
@@ -1522,9 +1622,12 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "rip" {
         for_each = ip.value.rip
         content {
+          # receive_packet - (optional) is a type of number
           receive_packet = rip.value["receive_packet"]
-          send_packet    = rip.value["send_packet"]
-          uuid           = rip.value["uuid"]
+          # send_packet - (optional) is a type of number
+          send_packet = rip.value["send_packet"]
+          # uuid - (optional) is a type of string
+          uuid = rip.value["uuid"]
 
           dynamic "authentication" {
             for_each = rip.value.authentication
@@ -1533,6 +1636,7 @@ resource "thunder_interface_ethernet" "this" {
               dynamic "key_chain" {
                 for_each = authentication.value.key_chain
                 content {
+                  # key_chain - (optional) is a type of string
                   key_chain = key_chain.value["key_chain"]
                 }
               }
@@ -1540,6 +1644,7 @@ resource "thunder_interface_ethernet" "this" {
               dynamic "mode" {
                 for_each = authentication.value.mode
                 content {
+                  # mode - (optional) is a type of string
                   mode = mode.value["mode"]
                 }
               }
@@ -1547,6 +1652,7 @@ resource "thunder_interface_ethernet" "this" {
               dynamic "str" {
                 for_each = authentication.value.str
                 content {
+                  # string - (optional) is a type of string
                   string = str.value["string"]
                 }
               }
@@ -1557,7 +1663,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "receive_cfg" {
             for_each = rip.value.receive_cfg
             content {
+              # receive - (optional) is a type of number
               receive = receive_cfg.value["receive"]
+              # version - (optional) is a type of string
               version = receive_cfg.value["version"]
             }
           }
@@ -1565,7 +1673,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "send_cfg" {
             for_each = rip.value.send_cfg
             content {
-              send    = send_cfg.value["send"]
+              # send - (optional) is a type of number
+              send = send_cfg.value["send"]
+              # version - (optional) is a type of string
               version = send_cfg.value["version"]
             }
           }
@@ -1573,6 +1683,7 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "split_horizon_cfg" {
             for_each = rip.value.split_horizon_cfg
             content {
+              # state - (optional) is a type of string
               state = split_horizon_cfg.value["state"]
             }
           }
@@ -1587,7 +1698,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "isis" {
             for_each = router.value.isis
             content {
-              tag  = isis.value["tag"]
+              # tag - (optional) is a type of string
+              tag = isis.value["tag"]
+              # uuid - (optional) is a type of string
               uuid = isis.value["uuid"]
             }
           }
@@ -1598,12 +1711,18 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "stateful_firewall" {
         for_each = ip.value.stateful_firewall
         content {
+          # access_list - (optional) is a type of number
           access_list = stateful_firewall.value["access_list"]
-          acl_id      = stateful_firewall.value["acl_id"]
-          class_list  = stateful_firewall.value["class_list"]
-          inside      = stateful_firewall.value["inside"]
-          outside     = stateful_firewall.value["outside"]
-          uuid        = stateful_firewall.value["uuid"]
+          # acl_id - (optional) is a type of number
+          acl_id = stateful_firewall.value["acl_id"]
+          # class_list - (optional) is a type of string
+          class_list = stateful_firewall.value["class_list"]
+          # inside - (optional) is a type of number
+          inside = stateful_firewall.value["inside"]
+          # outside - (optional) is a type of number
+          outside = stateful_firewall.value["outside"]
+          # uuid - (optional) is a type of string
+          uuid = stateful_firewall.value["uuid"]
         }
       }
 
@@ -1613,16 +1732,23 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "ipv6" {
     for_each = var.ipv6
     content {
-      inside      = ipv6.value["inside"]
+      # inside - (optional) is a type of number
+      inside = ipv6.value["inside"]
+      # ipv6_enable - (optional) is a type of number
       ipv6_enable = ipv6.value["ipv6_enable"]
-      outside     = ipv6.value["outside"]
-      ttl_ignore  = ipv6.value["ttl_ignore"]
-      uuid        = ipv6.value["uuid"]
+      # outside - (optional) is a type of number
+      outside = ipv6.value["outside"]
+      # ttl_ignore - (optional) is a type of number
+      ttl_ignore = ipv6.value["ttl_ignore"]
+      # uuid - (optional) is a type of string
+      uuid = ipv6.value["uuid"]
 
       dynamic "access_list_cfg" {
         for_each = ipv6.value.access_list_cfg
         content {
-          inbound     = access_list_cfg.value["inbound"]
+          # inbound - (optional) is a type of number
+          inbound = access_list_cfg.value["inbound"]
+          # v6_acl_name - (optional) is a type of string
           v6_acl_name = access_list_cfg.value["v6_acl_name"]
         }
       }
@@ -1630,22 +1756,29 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "address_list" {
         for_each = ipv6.value.address_list
         content {
+          # address_type - (optional) is a type of string
           address_type = address_list.value["address_type"]
-          ipv6_addr    = address_list.value["ipv6_addr"]
+          # ipv6_addr - (optional) is a type of string
+          ipv6_addr = address_list.value["ipv6_addr"]
         }
       }
 
       dynamic "ospf" {
         for_each = ipv6.value.ospf
         content {
-          bfd     = ospf.value["bfd"]
+          # bfd - (optional) is a type of number
+          bfd = ospf.value["bfd"]
+          # disable - (optional) is a type of number
           disable = ospf.value["disable"]
-          uuid    = ospf.value["uuid"]
+          # uuid - (optional) is a type of string
+          uuid = ospf.value["uuid"]
 
           dynamic "cost_cfg" {
             for_each = ospf.value.cost_cfg
             content {
-              cost        = cost_cfg.value["cost"]
+              # cost - (optional) is a type of number
+              cost = cost_cfg.value["cost"]
+              # instance_id - (optional) is a type of number
               instance_id = cost_cfg.value["instance_id"]
             }
           }
@@ -1653,59 +1786,77 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "dead_interval_cfg" {
             for_each = ospf.value.dead_interval_cfg
             content {
+              # dead_interval - (optional) is a type of number
               dead_interval = dead_interval_cfg.value["dead_interval"]
-              instance_id   = dead_interval_cfg.value["instance_id"]
+              # instance_id - (optional) is a type of number
+              instance_id = dead_interval_cfg.value["instance_id"]
             }
           }
 
           dynamic "hello_interval_cfg" {
             for_each = ospf.value.hello_interval_cfg
             content {
+              # hello_interval - (optional) is a type of number
               hello_interval = hello_interval_cfg.value["hello_interval"]
-              instance_id    = hello_interval_cfg.value["instance_id"]
+              # instance_id - (optional) is a type of number
+              instance_id = hello_interval_cfg.value["instance_id"]
             }
           }
 
           dynamic "mtu_ignore_cfg" {
             for_each = ospf.value.mtu_ignore_cfg
             content {
+              # instance_id - (optional) is a type of number
               instance_id = mtu_ignore_cfg.value["instance_id"]
-              mtu_ignore  = mtu_ignore_cfg.value["mtu_ignore"]
+              # mtu_ignore - (optional) is a type of number
+              mtu_ignore = mtu_ignore_cfg.value["mtu_ignore"]
             }
           }
 
           dynamic "neighbor_cfg" {
             for_each = ospf.value.neighbor_cfg
             content {
-              neig_inst              = neighbor_cfg.value["neig_inst"]
-              neighbor               = neighbor_cfg.value["neighbor"]
-              neighbor_cost          = neighbor_cfg.value["neighbor_cost"]
+              # neig_inst - (optional) is a type of number
+              neig_inst = neighbor_cfg.value["neig_inst"]
+              # neighbor - (optional) is a type of string
+              neighbor = neighbor_cfg.value["neighbor"]
+              # neighbor_cost - (optional) is a type of number
+              neighbor_cost = neighbor_cfg.value["neighbor_cost"]
+              # neighbor_poll_interval - (optional) is a type of number
               neighbor_poll_interval = neighbor_cfg.value["neighbor_poll_interval"]
-              neighbor_priority      = neighbor_cfg.value["neighbor_priority"]
+              # neighbor_priority - (optional) is a type of number
+              neighbor_priority = neighbor_cfg.value["neighbor_priority"]
             }
           }
 
           dynamic "network_list" {
             for_each = ospf.value.network_list
             content {
-              broadcast_type      = network_list.value["broadcast_type"]
+              # broadcast_type - (optional) is a type of string
+              broadcast_type = network_list.value["broadcast_type"]
+              # network_instance_id - (optional) is a type of number
               network_instance_id = network_list.value["network_instance_id"]
-              p2mp_nbma           = network_list.value["p2mp_nbma"]
+              # p2mp_nbma - (optional) is a type of number
+              p2mp_nbma = network_list.value["p2mp_nbma"]
             }
           }
 
           dynamic "priority_cfg" {
             for_each = ospf.value.priority_cfg
             content {
+              # instance_id - (optional) is a type of number
               instance_id = priority_cfg.value["instance_id"]
-              priority    = priority_cfg.value["priority"]
+              # priority - (optional) is a type of number
+              priority = priority_cfg.value["priority"]
             }
           }
 
           dynamic "retransmit_interval_cfg" {
             for_each = ospf.value.retransmit_interval_cfg
             content {
-              instance_id         = retransmit_interval_cfg.value["instance_id"]
+              # instance_id - (optional) is a type of number
+              instance_id = retransmit_interval_cfg.value["instance_id"]
+              # retransmit_interval - (optional) is a type of number
               retransmit_interval = retransmit_interval_cfg.value["retransmit_interval"]
             }
           }
@@ -1713,7 +1864,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "transmit_delay_cfg" {
             for_each = ospf.value.transmit_delay_cfg
             content {
-              instance_id    = transmit_delay_cfg.value["instance_id"]
+              # instance_id - (optional) is a type of number
+              instance_id = transmit_delay_cfg.value["instance_id"]
+              # transmit_delay - (optional) is a type of number
               transmit_delay = transmit_delay_cfg.value["transmit_delay"]
             }
           }
@@ -1724,11 +1877,13 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "rip" {
         for_each = ipv6.value.rip
         content {
+          # uuid - (optional) is a type of string
           uuid = rip.value["uuid"]
 
           dynamic "split_horizon_cfg" {
             for_each = rip.value.split_horizon_cfg
             content {
+              # state - (optional) is a type of string
               state = split_horizon_cfg.value["state"]
             }
           }
@@ -1743,7 +1898,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "isis" {
             for_each = router.value.isis
             content {
-              tag  = isis.value["tag"]
+              # tag - (optional) is a type of string
+              tag = isis.value["tag"]
+              # uuid - (optional) is a type of string
               uuid = isis.value["uuid"]
             }
           }
@@ -1751,15 +1908,20 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "ospf" {
             for_each = router.value.ospf
             content {
+              # uuid - (optional) is a type of string
               uuid = ospf.value["uuid"]
 
               dynamic "area_list" {
                 for_each = ospf.value.area_list
                 content {
+                  # area_id_addr - (optional) is a type of string
                   area_id_addr = area_list.value["area_id_addr"]
-                  area_id_num  = area_list.value["area_id_num"]
-                  instance_id  = area_list.value["instance_id"]
-                  tag          = area_list.value["tag"]
+                  # area_id_num - (optional) is a type of number
+                  area_id_num = area_list.value["area_id_num"]
+                  # instance_id - (optional) is a type of number
+                  instance_id = area_list.value["instance_id"]
+                  # tag - (optional) is a type of string
+                  tag = area_list.value["tag"]
                 }
               }
 
@@ -1769,7 +1931,9 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "ripng" {
             for_each = router.value.ripng
             content {
-              rip  = ripng.value["rip"]
+              # rip - (optional) is a type of number
+              rip = ripng.value["rip"]
+              # uuid - (optional) is a type of string
               uuid = ripng.value["uuid"]
             }
           }
@@ -1780,33 +1944,56 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "router_adver" {
         for_each = ipv6.value.router_adver
         content {
-          action                       = router_adver.value["action"]
-          adver_mtu                    = router_adver.value["adver_mtu"]
-          adver_mtu_disable            = router_adver.value["adver_mtu_disable"]
-          adver_vrid                   = router_adver.value["adver_vrid"]
-          adver_vrid_default           = router_adver.value["adver_vrid_default"]
-          default_lifetime             = router_adver.value["default_lifetime"]
-          floating_ip                  = router_adver.value["floating_ip"]
-          floating_ip_default_vrid     = router_adver.value["floating_ip_default_vrid"]
-          hop_limit                    = router_adver.value["hop_limit"]
-          managed_config_action        = router_adver.value["managed_config_action"]
-          max_interval                 = router_adver.value["max_interval"]
-          min_interval                 = router_adver.value["min_interval"]
-          other_config_action          = router_adver.value["other_config_action"]
-          rate_limit                   = router_adver.value["rate_limit"]
-          reachable_time               = router_adver.value["reachable_time"]
-          retransmit_timer             = router_adver.value["retransmit_timer"]
-          use_floating_ip              = router_adver.value["use_floating_ip"]
+          # action - (optional) is a type of string
+          action = router_adver.value["action"]
+          # adver_mtu - (optional) is a type of number
+          adver_mtu = router_adver.value["adver_mtu"]
+          # adver_mtu_disable - (optional) is a type of number
+          adver_mtu_disable = router_adver.value["adver_mtu_disable"]
+          # adver_vrid - (optional) is a type of number
+          adver_vrid = router_adver.value["adver_vrid"]
+          # adver_vrid_default - (optional) is a type of number
+          adver_vrid_default = router_adver.value["adver_vrid_default"]
+          # default_lifetime - (optional) is a type of number
+          default_lifetime = router_adver.value["default_lifetime"]
+          # floating_ip - (optional) is a type of string
+          floating_ip = router_adver.value["floating_ip"]
+          # floating_ip_default_vrid - (optional) is a type of string
+          floating_ip_default_vrid = router_adver.value["floating_ip_default_vrid"]
+          # hop_limit - (optional) is a type of number
+          hop_limit = router_adver.value["hop_limit"]
+          # managed_config_action - (optional) is a type of string
+          managed_config_action = router_adver.value["managed_config_action"]
+          # max_interval - (optional) is a type of number
+          max_interval = router_adver.value["max_interval"]
+          # min_interval - (optional) is a type of number
+          min_interval = router_adver.value["min_interval"]
+          # other_config_action - (optional) is a type of string
+          other_config_action = router_adver.value["other_config_action"]
+          # rate_limit - (optional) is a type of number
+          rate_limit = router_adver.value["rate_limit"]
+          # reachable_time - (optional) is a type of number
+          reachable_time = router_adver.value["reachable_time"]
+          # retransmit_timer - (optional) is a type of number
+          retransmit_timer = router_adver.value["retransmit_timer"]
+          # use_floating_ip - (optional) is a type of number
+          use_floating_ip = router_adver.value["use_floating_ip"]
+          # use_floating_ip_default_vrid - (optional) is a type of number
           use_floating_ip_default_vrid = router_adver.value["use_floating_ip_default_vrid"]
 
           dynamic "prefix_list" {
             for_each = router_adver.value.prefix_list
             content {
-              not_autonomous     = prefix_list.value["not_autonomous"]
-              not_on_link        = prefix_list.value["not_on_link"]
+              # not_autonomous - (optional) is a type of number
+              not_autonomous = prefix_list.value["not_autonomous"]
+              # not_on_link - (optional) is a type of number
+              not_on_link = prefix_list.value["not_on_link"]
+              # preferred_lifetime - (optional) is a type of number
               preferred_lifetime = prefix_list.value["preferred_lifetime"]
-              prefix             = prefix_list.value["prefix"]
-              valid_lifetime     = prefix_list.value["valid_lifetime"]
+              # prefix - (optional) is a type of string
+              prefix = prefix_list.value["prefix"]
+              # valid_lifetime - (optional) is a type of number
+              valid_lifetime = prefix_list.value["valid_lifetime"]
             }
           }
 
@@ -1816,12 +2003,18 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "stateful_firewall" {
         for_each = ipv6.value.stateful_firewall
         content {
+          # access_list - (optional) is a type of number
           access_list = stateful_firewall.value["access_list"]
-          acl_name    = stateful_firewall.value["acl_name"]
-          class_list  = stateful_firewall.value["class_list"]
-          inside      = stateful_firewall.value["inside"]
-          outside     = stateful_firewall.value["outside"]
-          uuid        = stateful_firewall.value["uuid"]
+          # acl_name - (optional) is a type of string
+          acl_name = stateful_firewall.value["acl_name"]
+          # class_list - (optional) is a type of string
+          class_list = stateful_firewall.value["class_list"]
+          # inside - (optional) is a type of number
+          inside = stateful_firewall.value["inside"]
+          # outside - (optional) is a type of number
+          outside = stateful_firewall.value["outside"]
+          # uuid - (optional) is a type of string
+          uuid = stateful_firewall.value["uuid"]
         }
       }
 
@@ -1831,12 +2024,18 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "isis" {
     for_each = var.isis
     content {
-      circuit_type        = isis.value["circuit_type"]
-      lsp_interval        = isis.value["lsp_interval"]
-      network             = isis.value["network"]
-      padding             = isis.value["padding"]
+      # circuit_type - (optional) is a type of string
+      circuit_type = isis.value["circuit_type"]
+      # lsp_interval - (optional) is a type of number
+      lsp_interval = isis.value["lsp_interval"]
+      # network - (optional) is a type of string
+      network = isis.value["network"]
+      # padding - (optional) is a type of number
+      padding = isis.value["padding"]
+      # retransmit_interval - (optional) is a type of number
       retransmit_interval = isis.value["retransmit_interval"]
-      uuid                = isis.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = isis.value["uuid"]
 
       dynamic "authentication" {
         for_each = isis.value.authentication
@@ -1845,23 +2044,29 @@ resource "thunder_interface_ethernet" "this" {
           dynamic "key_chain_list" {
             for_each = authentication.value.key_chain_list
             content {
+              # key_chain - (optional) is a type of string
               key_chain = key_chain_list.value["key_chain"]
-              level     = key_chain_list.value["level"]
+              # level - (optional) is a type of string
+              level = key_chain_list.value["level"]
             }
           }
 
           dynamic "mode_list" {
             for_each = authentication.value.mode_list
             content {
+              # level - (optional) is a type of string
               level = mode_list.value["level"]
-              mode  = mode_list.value["mode"]
+              # mode - (optional) is a type of string
+              mode = mode_list.value["mode"]
             }
           }
 
           dynamic "send_only_list" {
             for_each = authentication.value.send_only_list
             content {
-              level     = send_only_list.value["level"]
+              # level - (optional) is a type of string
+              level = send_only_list.value["level"]
+              # send_only - (optional) is a type of number
               send_only = send_only_list.value["send_only"]
             }
           }
@@ -1872,7 +2077,9 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "bfd_cfg" {
         for_each = isis.value.bfd_cfg
         content {
-          bfd     = bfd_cfg.value["bfd"]
+          # bfd - (optional) is a type of number
+          bfd = bfd_cfg.value["bfd"]
+          # disable - (optional) is a type of number
           disable = bfd_cfg.value["disable"]
         }
       }
@@ -1880,47 +2087,59 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "csnp_interval_list" {
         for_each = isis.value.csnp_interval_list
         content {
+          # csnp_interval - (optional) is a type of number
           csnp_interval = csnp_interval_list.value["csnp_interval"]
-          level         = csnp_interval_list.value["level"]
+          # level - (optional) is a type of string
+          level = csnp_interval_list.value["level"]
         }
       }
 
       dynamic "hello_interval_list" {
         for_each = isis.value.hello_interval_list
         content {
+          # hello_interval - (optional) is a type of number
           hello_interval = hello_interval_list.value["hello_interval"]
-          level          = hello_interval_list.value["level"]
+          # level - (optional) is a type of string
+          level = hello_interval_list.value["level"]
         }
       }
 
       dynamic "hello_interval_minimal_list" {
         for_each = isis.value.hello_interval_minimal_list
         content {
+          # hello_interval_minimal - (optional) is a type of number
           hello_interval_minimal = hello_interval_minimal_list.value["hello_interval_minimal"]
-          level                  = hello_interval_minimal_list.value["level"]
+          # level - (optional) is a type of string
+          level = hello_interval_minimal_list.value["level"]
         }
       }
 
       dynamic "hello_multiplier_list" {
         for_each = isis.value.hello_multiplier_list
         content {
+          # hello_multiplier - (optional) is a type of number
           hello_multiplier = hello_multiplier_list.value["hello_multiplier"]
-          level            = hello_multiplier_list.value["level"]
+          # level - (optional) is a type of string
+          level = hello_multiplier_list.value["level"]
         }
       }
 
       dynamic "mesh_group" {
         for_each = isis.value.mesh_group
         content {
+          # blocked - (optional) is a type of number
           blocked = mesh_group.value["blocked"]
-          value   = mesh_group.value["value"]
+          # value - (optional) is a type of number
+          value = mesh_group.value["value"]
         }
       }
 
       dynamic "metric_list" {
         for_each = isis.value.metric_list
         content {
-          level  = metric_list.value["level"]
+          # level - (optional) is a type of string
+          level = metric_list.value["level"]
+          # metric - (optional) is a type of number
           metric = metric_list.value["metric"]
         }
       }
@@ -1928,7 +2147,9 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "password_list" {
         for_each = isis.value.password_list
         content {
-          level    = password_list.value["level"]
+          # level - (optional) is a type of string
+          level = password_list.value["level"]
+          # password - (optional) is a type of string
           password = password_list.value["password"]
         }
       }
@@ -1936,7 +2157,9 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "priority_list" {
         for_each = isis.value.priority_list
         content {
-          level    = priority_list.value["level"]
+          # level - (optional) is a type of string
+          level = priority_list.value["level"]
+          # priority - (optional) is a type of number
           priority = priority_list.value["priority"]
         }
       }
@@ -1944,7 +2167,9 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "wide_metric_list" {
         for_each = isis.value.wide_metric_list
         content {
-          level       = wide_metric_list.value["level"]
+          # level - (optional) is a type of string
+          level = wide_metric_list.value["level"]
+          # wide_metric - (optional) is a type of number
           wide_metric = wide_metric_list.value["wide_metric"]
         }
       }
@@ -1955,21 +2180,27 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "lldp" {
     for_each = var.lldp
     content {
+      # uuid - (optional) is a type of string
       uuid = lldp.value["uuid"]
 
       dynamic "enable_cfg" {
         for_each = lldp.value.enable_cfg
         content {
+          # rt_enable - (optional) is a type of number
           rt_enable = enable_cfg.value["rt_enable"]
-          rx        = enable_cfg.value["rx"]
-          tx        = enable_cfg.value["tx"]
+          # rx - (optional) is a type of number
+          rx = enable_cfg.value["rx"]
+          # tx - (optional) is a type of number
+          tx = enable_cfg.value["tx"]
         }
       }
 
       dynamic "notification_cfg" {
         for_each = lldp.value.notification_cfg
         content {
+          # notif_enable - (optional) is a type of number
           notif_enable = notification_cfg.value["notif_enable"]
+          # notification - (optional) is a type of number
           notification = notification_cfg.value["notification"]
         }
       }
@@ -1977,22 +2208,32 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "tx_dot1_cfg" {
         for_each = lldp.value.tx_dot1_cfg
         content {
+          # link_aggregation - (optional) is a type of number
           link_aggregation = tx_dot1_cfg.value["link_aggregation"]
-          tx_dot1_tlvs     = tx_dot1_cfg.value["tx_dot1_tlvs"]
-          vlan             = tx_dot1_cfg.value["vlan"]
+          # tx_dot1_tlvs - (optional) is a type of number
+          tx_dot1_tlvs = tx_dot1_cfg.value["tx_dot1_tlvs"]
+          # vlan - (optional) is a type of number
+          vlan = tx_dot1_cfg.value["vlan"]
         }
       }
 
       dynamic "tx_tlvs_cfg" {
         for_each = lldp.value.tx_tlvs_cfg
         content {
-          exclude             = tx_tlvs_cfg.value["exclude"]
-          management_address  = tx_tlvs_cfg.value["management_address"]
-          port_description    = tx_tlvs_cfg.value["port_description"]
+          # exclude - (optional) is a type of number
+          exclude = tx_tlvs_cfg.value["exclude"]
+          # management_address - (optional) is a type of number
+          management_address = tx_tlvs_cfg.value["management_address"]
+          # port_description - (optional) is a type of number
+          port_description = tx_tlvs_cfg.value["port_description"]
+          # system_capabilities - (optional) is a type of number
           system_capabilities = tx_tlvs_cfg.value["system_capabilities"]
-          system_description  = tx_tlvs_cfg.value["system_description"]
-          system_name         = tx_tlvs_cfg.value["system_name"]
-          tx_tlvs             = tx_tlvs_cfg.value["tx_tlvs"]
+          # system_description - (optional) is a type of number
+          system_description = tx_tlvs_cfg.value["system_description"]
+          # system_name - (optional) is a type of number
+          system_name = tx_tlvs_cfg.value["system_name"]
+          # tx_tlvs - (optional) is a type of number
+          tx_tlvs = tx_tlvs_cfg.value["tx_tlvs"]
         }
       }
 
@@ -2002,28 +2243,39 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "lw_4o6" {
     for_each = var.lw_4o6
     content {
-      inside  = lw_4o6.value["inside"]
+      # inside - (optional) is a type of number
+      inside = lw_4o6.value["inside"]
+      # outside - (optional) is a type of number
       outside = lw_4o6.value["outside"]
-      uuid    = lw_4o6.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = lw_4o6.value["uuid"]
     }
   }
 
   dynamic "map" {
     for_each = var.map
     content {
-      inside        = map.value["inside"]
-      map_t_inside  = map.value["map_t_inside"]
+      # inside - (optional) is a type of number
+      inside = map.value["inside"]
+      # map_t_inside - (optional) is a type of number
+      map_t_inside = map.value["map_t_inside"]
+      # map_t_outside - (optional) is a type of number
       map_t_outside = map.value["map_t_outside"]
-      outside       = map.value["outside"]
-      uuid          = map.value["uuid"]
+      # outside - (optional) is a type of number
+      outside = map.value["outside"]
+      # uuid - (optional) is a type of string
+      uuid = map.value["uuid"]
     }
   }
 
   dynamic "monitor_list" {
     for_each = var.monitor_list
     content {
+      # mirror_index - (optional) is a type of number
       mirror_index = monitor_list.value["mirror_index"]
-      monitor      = monitor_list.value["monitor"]
+      # monitor - (optional) is a type of string
+      monitor = monitor_list.value["monitor"]
+      # monitor_vlan - (optional) is a type of number
       monitor_vlan = monitor_list.value["monitor_vlan"]
     }
   }
@@ -2035,9 +2287,12 @@ resource "thunder_interface_ethernet" "this" {
       dynamic "domain_list" {
         for_each = nptv6.value.domain_list
         content {
-          bind_type   = domain_list.value["bind_type"]
+          # bind_type - (optional) is a type of string
+          bind_type = domain_list.value["bind_type"]
+          # domain_name - (optional) is a type of string
           domain_name = domain_list.value["domain_name"]
-          uuid        = domain_list.value["uuid"]
+          # uuid - (optional) is a type of string
+          uuid = domain_list.value["uuid"]
         }
       }
 
@@ -2047,6 +2302,7 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }
@@ -2054,19 +2310,29 @@ resource "thunder_interface_ethernet" "this" {
   dynamic "trunk_group_list" {
     for_each = var.trunk_group_list
     content {
-      admin_key     = trunk_group_list.value["admin_key"]
-      mode          = trunk_group_list.value["mode"]
+      # admin_key - (optional) is a type of number
+      admin_key = trunk_group_list.value["admin_key"]
+      # mode - (optional) is a type of string
+      mode = trunk_group_list.value["mode"]
+      # port_priority - (optional) is a type of number
       port_priority = trunk_group_list.value["port_priority"]
-      timeout       = trunk_group_list.value["timeout"]
-      trunk_number  = trunk_group_list.value["trunk_number"]
-      type          = trunk_group_list.value["type"]
-      user_tag      = trunk_group_list.value["user_tag"]
-      uuid          = trunk_group_list.value["uuid"]
+      # timeout - (optional) is a type of string
+      timeout = trunk_group_list.value["timeout"]
+      # trunk_number - (optional) is a type of number
+      trunk_number = trunk_group_list.value["trunk_number"]
+      # type - (optional) is a type of string
+      type = trunk_group_list.value["type"]
+      # user_tag - (optional) is a type of string
+      user_tag = trunk_group_list.value["user_tag"]
+      # uuid - (optional) is a type of string
+      uuid = trunk_group_list.value["uuid"]
 
       dynamic "udld_timeout_cfg" {
         for_each = trunk_group_list.value.udld_timeout_cfg
         content {
+          # fast - (optional) is a type of number
           fast = udld_timeout_cfg.value["fast"]
+          # slow - (optional) is a type of number
           slow = udld_timeout_cfg.value["slow"]
         }
       }

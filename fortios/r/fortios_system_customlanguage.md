@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_system_customlanguage" "this" {
+  # comments - (optional) is a type of string
   comments = var.comments
+  # filename - (required) is a type of string
   filename = var.filename
-  name     = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

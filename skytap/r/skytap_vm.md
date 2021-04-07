@@ -201,19 +201,29 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_vm" "this" {
-  cpus           = var.cpus
+  # cpus - (optional) is a type of number
+  cpus = var.cpus
+  # environment_id - (required) is a type of string
   environment_id = var.environment_id
-  name           = var.name
-  os_disk_size   = var.os_disk_size
-  ram            = var.ram
-  template_id    = var.template_id
-  user_data      = var.user_data
-  vm_id          = var.vm_id
+  # name - (optional) is a type of string
+  name = var.name
+  # os_disk_size - (optional) is a type of number
+  os_disk_size = var.os_disk_size
+  # ram - (optional) is a type of number
+  ram = var.ram
+  # template_id - (required) is a type of string
+  template_id = var.template_id
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # vm_id - (required) is a type of string
+  vm_id = var.vm_id
 
   dynamic "disk" {
     for_each = var.disk
     content {
+      # name - (required) is a type of string
       name = disk.value["name"]
+      # size - (required) is a type of number
       size = disk.value["size"]
     }
   }
@@ -221,24 +231,32 @@ resource "skytap_vm" "this" {
   dynamic "label" {
     for_each = var.label
     content {
+      # category - (required) is a type of string
       category = label.value["category"]
-      value    = label.value["value"]
+      # value - (required) is a type of string
+      value = label.value["value"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      hostname       = network_interface.value["hostname"]
+      # hostname - (required) is a type of string
+      hostname = network_interface.value["hostname"]
+      # interface_type - (required) is a type of string
       interface_type = network_interface.value["interface_type"]
-      ip             = network_interface.value["ip"]
-      network_id     = network_interface.value["network_id"]
+      # ip - (required) is a type of string
+      ip = network_interface.value["ip"]
+      # network_id - (required) is a type of string
+      network_id = network_interface.value["network_id"]
 
       dynamic "published_service" {
         for_each = network_interface.value.published_service
         content {
+          # internal_port - (required) is a type of number
           internal_port = published_service.value["internal_port"]
-          name          = published_service.value["name"]
+          # name - (required) is a type of string
+          name = published_service.value["name"]
         }
       }
 
@@ -248,8 +266,11 @@ resource "skytap_vm" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -89,12 +89,18 @@ variable "properties" {
 
 ```terraform
 resource "logicmonitor_device_group" "this" {
-  applies_to       = var.applies_to
-  description      = var.description
+  # applies_to - (optional) is a type of string
+  applies_to = var.applies_to
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_alerting - (optional) is a type of bool
   disable_alerting = var.disable_alerting
-  name             = var.name
-  parent_id        = var.parent_id
-  properties       = var.properties
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of number
+  parent_id = var.parent_id
+  # properties - (optional) is a type of map of string
+  properties = var.properties
 }
 ```
 

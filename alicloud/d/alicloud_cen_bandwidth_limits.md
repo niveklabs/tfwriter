@@ -58,8 +58,10 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cen_bandwidth_limits" "this" {
+  # instance_ids - (optional) is a type of list of string
   instance_ids = var.instance_ids
-  output_file  = var.output_file
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

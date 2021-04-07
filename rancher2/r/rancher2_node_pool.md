@@ -164,33 +164,51 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_node_pool" "this" {
-  annotations                 = var.annotations
-  cluster_id                  = var.cluster_id
-  control_plane               = var.control_plane
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # control_plane - (optional) is a type of bool
+  control_plane = var.control_plane
+  # delete_not_ready_after_secs - (optional) is a type of number
   delete_not_ready_after_secs = var.delete_not_ready_after_secs
-  etcd                        = var.etcd
-  hostname_prefix             = var.hostname_prefix
-  labels                      = var.labels
-  name                        = var.name
-  node_template_id            = var.node_template_id
-  quantity                    = var.quantity
-  worker                      = var.worker
+  # etcd - (optional) is a type of bool
+  etcd = var.etcd
+  # hostname_prefix - (required) is a type of string
+  hostname_prefix = var.hostname_prefix
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # node_template_id - (required) is a type of string
+  node_template_id = var.node_template_id
+  # quantity - (optional) is a type of number
+  quantity = var.quantity
+  # worker - (optional) is a type of bool
+  worker = var.worker
 
   dynamic "node_taints" {
     for_each = var.node_taints
     content {
-      effect     = node_taints.value["effect"]
-      key        = node_taints.value["key"]
+      # effect - (optional) is a type of string
+      effect = node_taints.value["effect"]
+      # key - (required) is a type of string
+      key = node_taints.value["key"]
+      # time_added - (optional) is a type of string
       time_added = node_taints.value["time_added"]
-      value      = node_taints.value["value"]
+      # value - (required) is a type of string
+      value = node_taints.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

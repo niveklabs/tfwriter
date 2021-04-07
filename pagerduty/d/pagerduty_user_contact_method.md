@@ -63,8 +63,11 @@ variable "user_id" {
 
 ```terraform
 data "pagerduty_user_contact_method" "this" {
-  label   = var.label
-  type    = var.type
+  # label - (required) is a type of string
+  label = var.label
+  # type - (required) is a type of string
+  type = var.type
+  # user_id - (required) is a type of string
   user_id = var.user_id
 }
 ```

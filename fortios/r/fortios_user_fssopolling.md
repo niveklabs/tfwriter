@@ -157,23 +157,37 @@ variable "adgrp" {
 
 ```terraform
 resource "fortios_user_fssopolling" "this" {
-  default_domain        = var.default_domain
+  # default_domain - (optional) is a type of string
+  default_domain = var.default_domain
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  ldap_server           = var.ldap_server
-  logon_history         = var.logon_history
-  password              = var.password
-  polling_frequency     = var.polling_frequency
-  port                  = var.port
-  server                = var.server
-  smb_ntlmv1_auth       = var.smb_ntlmv1_auth
-  smbv1                 = var.smbv1
-  status                = var.status
-  user                  = var.user
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # ldap_server - (required) is a type of string
+  ldap_server = var.ldap_server
+  # logon_history - (optional) is a type of number
+  logon_history = var.logon_history
+  # password - (optional) is a type of string
+  password = var.password
+  # polling_frequency - (optional) is a type of number
+  polling_frequency = var.polling_frequency
+  # port - (optional) is a type of number
+  port = var.port
+  # server - (required) is a type of string
+  server = var.server
+  # smb_ntlmv1_auth - (optional) is a type of string
+  smb_ntlmv1_auth = var.smb_ntlmv1_auth
+  # smbv1 - (optional) is a type of string
+  smbv1 = var.smbv1
+  # status - (optional) is a type of string
+  status = var.status
+  # user - (required) is a type of string
+  user = var.user
 
   dynamic "adgrp" {
     for_each = var.adgrp
     content {
+      # name - (optional) is a type of string
       name = adgrp.value["name"]
     }
   }

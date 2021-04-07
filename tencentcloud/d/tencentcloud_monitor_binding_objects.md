@@ -57,7 +57,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_monitor_binding_objects" "this" {
-  group_id           = var.group_id
+  # group_id - (required) is a type of number
+  group_id = var.group_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

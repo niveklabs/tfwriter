@@ -223,27 +223,40 @@ variable "time_restriction" {
 
 ```terraform
 resource "opsgenie_notification_rule" "this" {
-  action_type       = var.action_type
-  enabled           = var.enabled
-  name              = var.name
+  # action_type - (required) is a type of string
+  action_type = var.action_type
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # notification_time - (optional) is a type of set of string
   notification_time = var.notification_time
-  order             = var.order
-  username          = var.username
+  # order - (optional) is a type of number
+  order = var.order
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "criteria" {
     for_each = var.criteria
     content {
+      # type - (required) is a type of string
       type = criteria.value["type"]
 
       dynamic "conditions" {
         for_each = criteria.value.conditions
         content {
+          # expected_value - (optional) is a type of string
           expected_value = conditions.value["expected_value"]
-          field          = conditions.value["field"]
-          key            = conditions.value["key"]
-          not            = conditions.value["not"]
-          operation      = conditions.value["operation"]
-          order          = conditions.value["order"]
+          # field - (required) is a type of string
+          field = conditions.value["field"]
+          # key - (optional) is a type of string
+          key = conditions.value["key"]
+          # not - (optional) is a type of bool
+          not = conditions.value["not"]
+          # operation - (required) is a type of string
+          operation = conditions.value["operation"]
+          # order - (optional) is a type of number
+          order = conditions.value["order"]
         }
       }
 
@@ -253,7 +266,9 @@ resource "opsgenie_notification_rule" "this" {
   dynamic "repeat" {
     for_each = var.repeat
     content {
-      enabled    = repeat.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = repeat.value["enabled"]
+      # loop_after - (required) is a type of number
       loop_after = repeat.value["loop_after"]
     }
   }
@@ -261,7 +276,9 @@ resource "opsgenie_notification_rule" "this" {
   dynamic "schedules" {
     for_each = var.schedules
     content {
+      # name - (required) is a type of string
       name = schedules.value["name"]
+      # type - (required) is a type of string
       type = schedules.value["type"]
     }
   }
@@ -269,14 +286,18 @@ resource "opsgenie_notification_rule" "this" {
   dynamic "steps" {
     for_each = var.steps
     content {
-      enabled    = steps.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = steps.value["enabled"]
+      # send_after - (optional) is a type of number
       send_after = steps.value["send_after"]
 
       dynamic "contact" {
         for_each = steps.value.contact
         content {
+          # method - (required) is a type of string
           method = contact.value["method"]
-          to     = contact.value["to"]
+          # to - (required) is a type of string
+          to = contact.value["to"]
         }
       }
 
@@ -286,27 +307,38 @@ resource "opsgenie_notification_rule" "this" {
   dynamic "time_restriction" {
     for_each = var.time_restriction
     content {
+      # type - (required) is a type of string
       type = time_restriction.value["type"]
 
       dynamic "restriction" {
         for_each = time_restriction.value.restriction
         content {
-          end_hour   = restriction.value["end_hour"]
-          end_min    = restriction.value["end_min"]
+          # end_hour - (required) is a type of number
+          end_hour = restriction.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restriction.value["end_min"]
+          # start_hour - (required) is a type of number
           start_hour = restriction.value["start_hour"]
-          start_min  = restriction.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restriction.value["start_min"]
         }
       }
 
       dynamic "restrictions" {
         for_each = time_restriction.value.restrictions
         content {
-          end_day    = restrictions.value["end_day"]
-          end_hour   = restrictions.value["end_hour"]
-          end_min    = restrictions.value["end_min"]
-          start_day  = restrictions.value["start_day"]
+          # end_day - (required) is a type of string
+          end_day = restrictions.value["end_day"]
+          # end_hour - (required) is a type of number
+          end_hour = restrictions.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restrictions.value["end_min"]
+          # start_day - (required) is a type of string
+          start_day = restrictions.value["start_day"]
+          # start_hour - (required) is a type of number
           start_hour = restrictions.value["start_hour"]
-          start_min  = restrictions.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restrictions.value["start_min"]
         }
       }
 

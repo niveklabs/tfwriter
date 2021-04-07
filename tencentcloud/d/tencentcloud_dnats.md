@@ -106,14 +106,22 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_dnats" "this" {
-  description        = var.description
-  elastic_ip         = var.elastic_ip
-  elastic_port       = var.elastic_port
-  nat_id             = var.nat_id
-  private_ip         = var.private_ip
-  private_port       = var.private_port
+  # description - (optional) is a type of string
+  description = var.description
+  # elastic_ip - (optional) is a type of string
+  elastic_ip = var.elastic_ip
+  # elastic_port - (optional) is a type of string
+  elastic_port = var.elastic_port
+  # nat_id - (optional) is a type of string
+  nat_id = var.nat_id
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # private_port - (optional) is a type of string
+  private_port = var.private_port
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  vpc_id             = var.vpc_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

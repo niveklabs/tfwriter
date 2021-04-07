@@ -90,12 +90,18 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_selectable_hostnames" "this" {
+  # active_in_production - (optional) is a type of bool
   active_in_production = var.active_in_production
-  active_in_staging    = var.active_in_staging
-  config_id            = var.config_id
-  contractid           = var.contractid
-  groupid              = var.groupid
-  version              = var.version
+  # active_in_staging - (optional) is a type of bool
+  active_in_staging = var.active_in_staging
+  # config_id - (optional) is a type of number
+  config_id = var.config_id
+  # contractid - (optional) is a type of string
+  contractid = var.contractid
+  # groupid - (optional) is a type of number
+  groupid = var.groupid
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

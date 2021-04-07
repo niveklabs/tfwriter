@@ -73,9 +73,13 @@ variable "url_pattern" {
 
 ```terraform
 resource "fortios_webproxy_debugurl" "this" {
-  exact       = var.exact
-  name        = var.name
-  status      = var.status
+  # exact - (optional) is a type of string
+  exact = var.exact
+  # name - (optional) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
+  # url_pattern - (required) is a type of string
   url_pattern = var.url_pattern
 }
 ```

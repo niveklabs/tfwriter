@@ -74,9 +74,13 @@ variable "with_selector" {
 
 ```terraform
 data "hcloud_floating_ip" "this" {
-  ip_address    = var.ip_address
-  name          = var.name
-  selector      = var.selector
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # name - (optional) is a type of string
+  name = var.name
+  # selector - (optional) is a type of string
+  selector = var.selector
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 }
 ```

@@ -110,19 +110,29 @@ variable "inter_controller_peer" {
 
 ```terraform
 resource "fortios_wirelesscontroller_intercontroller" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fast_failover_max     = var.fast_failover_max
-  fast_failover_wait    = var.fast_failover_wait
-  inter_controller_key  = var.inter_controller_key
+  # fast_failover_max - (optional) is a type of number
+  fast_failover_max = var.fast_failover_max
+  # fast_failover_wait - (optional) is a type of number
+  fast_failover_wait = var.fast_failover_wait
+  # inter_controller_key - (optional) is a type of string
+  inter_controller_key = var.inter_controller_key
+  # inter_controller_mode - (optional) is a type of string
   inter_controller_mode = var.inter_controller_mode
-  inter_controller_pri  = var.inter_controller_pri
+  # inter_controller_pri - (optional) is a type of string
+  inter_controller_pri = var.inter_controller_pri
 
   dynamic "inter_controller_peer" {
     for_each = var.inter_controller_peer
     content {
-      id            = inter_controller_peer.value["id"]
-      peer_ip       = inter_controller_peer.value["peer_ip"]
-      peer_port     = inter_controller_peer.value["peer_port"]
+      # id - (optional) is a type of number
+      id = inter_controller_peer.value["id"]
+      # peer_ip - (optional) is a type of string
+      peer_ip = inter_controller_peer.value["peer_ip"]
+      # peer_port - (optional) is a type of number
+      peer_port = inter_controller_peer.value["peer_port"]
+      # peer_priority - (optional) is a type of string
       peer_priority = inter_controller_peer.value["peer_priority"]
     }
   }

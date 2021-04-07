@@ -130,21 +130,33 @@ variable "organization" {
 
 ```terraform
 resource "heroku_app" "this" {
-  acm                   = var.acm
-  buildpacks            = var.buildpacks
-  config_vars           = var.config_vars
-  internal_routing      = var.internal_routing
-  name                  = var.name
-  region                = var.region
+  # acm - (optional) is a type of bool
+  acm = var.acm
+  # buildpacks - (optional) is a type of list of string
+  buildpacks = var.buildpacks
+  # config_vars - (optional) is a type of map of string
+  config_vars = var.config_vars
+  # internal_routing - (optional) is a type of bool
+  internal_routing = var.internal_routing
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
+  # sensitive_config_vars - (optional) is a type of map of string
   sensitive_config_vars = var.sensitive_config_vars
-  space                 = var.space
-  stack                 = var.stack
+  # space - (optional) is a type of string
+  space = var.space
+  # stack - (optional) is a type of string
+  stack = var.stack
 
   dynamic "organization" {
     for_each = var.organization
     content {
-      locked   = organization.value["locked"]
-      name     = organization.value["name"]
+      # locked - (optional) is a type of bool
+      locked = organization.value["locked"]
+      # name - (required) is a type of string
+      name = organization.value["name"]
+      # personal - (optional) is a type of bool
       personal = organization.value["personal"]
     }
   }

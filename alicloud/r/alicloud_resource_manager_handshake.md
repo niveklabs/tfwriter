@@ -64,9 +64,12 @@ variable "target_type" {
 
 ```terraform
 resource "alicloud_resource_manager_handshake" "this" {
-  note          = var.note
+  # note - (optional) is a type of string
+  note = var.note
+  # target_entity - (required) is a type of string
   target_entity = var.target_entity
-  target_type   = var.target_type
+  # target_type - (required) is a type of string
+  target_type = var.target_type
 }
 ```
 

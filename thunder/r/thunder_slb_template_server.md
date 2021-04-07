@@ -290,37 +290,68 @@ variable "weight" {
 
 ```terraform
 resource "thunder_slb_template_server" "this" {
-  add                        = var.add
-  bw_rate_limit              = var.bw_rate_limit
-  bw_rate_limit_acct         = var.bw_rate_limit_acct
-  bw_rate_limit_duration     = var.bw_rate_limit_duration
-  bw_rate_limit_no_logging   = var.bw_rate_limit_no_logging
-  bw_rate_limit_resume       = var.bw_rate_limit_resume
-  conn_limit                 = var.conn_limit
-  conn_limit_no_logging      = var.conn_limit_no_logging
-  conn_rate_limit            = var.conn_rate_limit
+  # add - (optional) is a type of number
+  add = var.add
+  # bw_rate_limit - (optional) is a type of number
+  bw_rate_limit = var.bw_rate_limit
+  # bw_rate_limit_acct - (optional) is a type of string
+  bw_rate_limit_acct = var.bw_rate_limit_acct
+  # bw_rate_limit_duration - (optional) is a type of number
+  bw_rate_limit_duration = var.bw_rate_limit_duration
+  # bw_rate_limit_no_logging - (optional) is a type of number
+  bw_rate_limit_no_logging = var.bw_rate_limit_no_logging
+  # bw_rate_limit_resume - (optional) is a type of number
+  bw_rate_limit_resume = var.bw_rate_limit_resume
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # conn_limit_no_logging - (optional) is a type of number
+  conn_limit_no_logging = var.conn_limit_no_logging
+  # conn_rate_limit - (optional) is a type of number
+  conn_rate_limit = var.conn_rate_limit
+  # conn_rate_limit_no_logging - (optional) is a type of number
   conn_rate_limit_no_logging = var.conn_rate_limit_no_logging
-  dns_query_interval         = var.dns_query_interval
-  dynamic_server_prefix      = var.dynamic_server_prefix
-  every                      = var.every
-  extended_stats             = var.extended_stats
-  health_check               = var.health_check
-  health_check_disable       = var.health_check_disable
-  initial_slow_start         = var.initial_slow_start
-  log_selection_failure      = var.log_selection_failure
-  max_dynamic_server         = var.max_dynamic_server
-  min_ttl_ratio              = var.min_ttl_ratio
-  name                       = var.name
-  rate_interval              = var.rate_interval
-  resume                     = var.resume
-  slow_start                 = var.slow_start
-  spoofing_cache             = var.spoofing_cache
-  stats_data_action          = var.stats_data_action
-  till                       = var.till
-  times                      = var.times
-  user_tag                   = var.user_tag
-  uuid                       = var.uuid
-  weight                     = var.weight
+  # dns_query_interval - (optional) is a type of number
+  dns_query_interval = var.dns_query_interval
+  # dynamic_server_prefix - (optional) is a type of string
+  dynamic_server_prefix = var.dynamic_server_prefix
+  # every - (optional) is a type of number
+  every = var.every
+  # extended_stats - (optional) is a type of number
+  extended_stats = var.extended_stats
+  # health_check - (optional) is a type of string
+  health_check = var.health_check
+  # health_check_disable - (optional) is a type of number
+  health_check_disable = var.health_check_disable
+  # initial_slow_start - (optional) is a type of number
+  initial_slow_start = var.initial_slow_start
+  # log_selection_failure - (optional) is a type of number
+  log_selection_failure = var.log_selection_failure
+  # max_dynamic_server - (optional) is a type of number
+  max_dynamic_server = var.max_dynamic_server
+  # min_ttl_ratio - (optional) is a type of number
+  min_ttl_ratio = var.min_ttl_ratio
+  # name - (optional) is a type of string
+  name = var.name
+  # rate_interval - (optional) is a type of string
+  rate_interval = var.rate_interval
+  # resume - (optional) is a type of number
+  resume = var.resume
+  # slow_start - (optional) is a type of number
+  slow_start = var.slow_start
+  # spoofing_cache - (optional) is a type of number
+  spoofing_cache = var.spoofing_cache
+  # stats_data_action - (optional) is a type of string
+  stats_data_action = var.stats_data_action
+  # till - (optional) is a type of number
+  till = var.till
+  # times - (optional) is a type of number
+  times = var.times
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

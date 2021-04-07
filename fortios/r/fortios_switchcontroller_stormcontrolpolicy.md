@@ -98,13 +98,20 @@ variable "unknown_unicast" {
 
 ```terraform
 resource "fortios_switchcontroller_stormcontrolpolicy" "this" {
-  broadcast          = var.broadcast
-  description        = var.description
-  name               = var.name
-  rate               = var.rate
+  # broadcast - (optional) is a type of string
+  broadcast = var.broadcast
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # rate - (optional) is a type of number
+  rate = var.rate
+  # storm_control_mode - (optional) is a type of string
   storm_control_mode = var.storm_control_mode
-  unknown_multicast  = var.unknown_multicast
-  unknown_unicast    = var.unknown_unicast
+  # unknown_multicast - (optional) is a type of string
+  unknown_multicast = var.unknown_multicast
+  # unknown_unicast - (optional) is a type of string
+  unknown_unicast = var.unknown_unicast
 }
 ```
 

@@ -56,7 +56,9 @@ variable "target_id" {
 
 ```terraform
 resource "alicloud_resource_manager_control_policy_attachment" "this" {
+  # policy_id - (required) is a type of string
   policy_id = var.policy_id
+  # target_id - (required) is a type of string
   target_id = var.target_id
 }
 ```

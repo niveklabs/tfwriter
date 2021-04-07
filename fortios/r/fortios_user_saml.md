@@ -125,17 +125,28 @@ variable "user_name" {
 
 ```terraform
 resource "fortios_user_saml" "this" {
-  cert                   = var.cert
-  entity_id              = var.entity_id
-  group_name             = var.group_name
-  idp_cert               = var.idp_cert
-  idp_entity_id          = var.idp_entity_id
-  idp_single_logout_url  = var.idp_single_logout_url
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # entity_id - (required) is a type of string
+  entity_id = var.entity_id
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # idp_cert - (required) is a type of string
+  idp_cert = var.idp_cert
+  # idp_entity_id - (required) is a type of string
+  idp_entity_id = var.idp_entity_id
+  # idp_single_logout_url - (optional) is a type of string
+  idp_single_logout_url = var.idp_single_logout_url
+  # idp_single_sign_on_url - (required) is a type of string
   idp_single_sign_on_url = var.idp_single_sign_on_url
-  name                   = var.name
-  single_logout_url      = var.single_logout_url
-  single_sign_on_url     = var.single_sign_on_url
-  user_name              = var.user_name
+  # name - (optional) is a type of string
+  name = var.name
+  # single_logout_url - (optional) is a type of string
+  single_logout_url = var.single_logout_url
+  # single_sign_on_url - (required) is a type of string
+  single_sign_on_url = var.single_sign_on_url
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 }
 ```
 

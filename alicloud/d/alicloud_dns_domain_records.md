@@ -113,15 +113,24 @@ variable "value_regex" {
 
 ```terraform
 data "alicloud_dns_domain_records" "this" {
-  domain_name       = var.domain_name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # host_record_regex - (optional) is a type of string
   host_record_regex = var.host_record_regex
-  ids               = var.ids
-  is_locked         = var.is_locked
-  line              = var.line
-  output_file       = var.output_file
-  status            = var.status
-  type              = var.type
-  value_regex       = var.value_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # is_locked - (optional) is a type of bool
+  is_locked = var.is_locked
+  # line - (optional) is a type of string
+  line = var.line
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # value_regex - (optional) is a type of string
+  value_regex = var.value_regex
 }
 ```
 

@@ -65,8 +65,11 @@ variable "port" {
 
 ```terraform
 resource "fortios_fmg_system_syslogserver" "this" {
-  ip   = var.ip
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
   name = var.name
+  # port - (optional) is a type of number
   port = var.port
 }
 ```

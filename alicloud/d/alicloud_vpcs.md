@@ -154,20 +154,34 @@ variable "vswitch_id" {
 
 ```terraform
 data "alicloud_vpcs" "this" {
-  cidr_block          = var.cidr_block
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # dhcp_options_set_id - (optional) is a type of string
   dhcp_options_set_id = var.dhcp_options_set_id
-  dry_run             = var.dry_run
-  enable_details      = var.enable_details
-  ids                 = var.ids
-  is_default          = var.is_default
-  name_regex          = var.name_regex
-  output_file         = var.output_file
-  resource_group_id   = var.resource_group_id
-  status              = var.status
-  tags                = var.tags
-  vpc_name            = var.vpc_name
-  vpc_owner_id        = var.vpc_owner_id
-  vswitch_id          = var.vswitch_id
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_name - (optional) is a type of string
+  vpc_name = var.vpc_name
+  # vpc_owner_id - (optional) is a type of number
+  vpc_owner_id = var.vpc_owner_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

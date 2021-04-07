@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_scf_functions" "this" {
-  description        = var.description
-  name               = var.name
-  namespace          = var.namespace
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

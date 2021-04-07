@@ -142,19 +142,32 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_dcx" "this" {
-  bandwidth             = var.bandwidth
-  bgp_asn               = var.bgp_asn
-  bgp_auth_key          = var.bgp_auth_key
-  customer_address      = var.customer_address
-  dc_id                 = var.dc_id
-  dcg_id                = var.dcg_id
-  name                  = var.name
-  network_type          = var.network_type
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # bgp_asn - (optional) is a type of number
+  bgp_asn = var.bgp_asn
+  # bgp_auth_key - (optional) is a type of string
+  bgp_auth_key = var.bgp_auth_key
+  # customer_address - (optional) is a type of string
+  customer_address = var.customer_address
+  # dc_id - (required) is a type of string
+  dc_id = var.dc_id
+  # dcg_id - (required) is a type of string
+  dcg_id = var.dcg_id
+  # name - (required) is a type of string
+  name = var.name
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # route_filter_prefixes - (optional) is a type of set of string
   route_filter_prefixes = var.route_filter_prefixes
-  route_type            = var.route_type
-  tencent_address       = var.tencent_address
-  vlan                  = var.vlan
-  vpc_id                = var.vpc_id
+  # route_type - (optional) is a type of string
+  route_type = var.route_type
+  # tencent_address - (optional) is a type of string
+  tencent_address = var.tencent_address
+  # vlan - (optional) is a type of number
+  vlan = var.vlan
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

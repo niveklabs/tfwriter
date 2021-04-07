@@ -75,18 +75,26 @@ variable "receivers" {
 
 ```terraform
 resource "tencentcloud_monitor_binding_receiver" "this" {
+  # group_id - (required) is a type of number
   group_id = var.group_id
 
   dynamic "receivers" {
     for_each = var.receivers
     content {
-      end_time            = receivers.value["end_time"]
-      notify_way          = receivers.value["notify_way"]
-      receive_language    = receivers.value["receive_language"]
+      # end_time - (optional) is a type of number
+      end_time = receivers.value["end_time"]
+      # notify_way - (required) is a type of list of string
+      notify_way = receivers.value["notify_way"]
+      # receive_language - (optional) is a type of string
+      receive_language = receivers.value["receive_language"]
+      # receiver_group_list - (optional) is a type of list of number
       receiver_group_list = receivers.value["receiver_group_list"]
-      receiver_type       = receivers.value["receiver_type"]
-      receiver_user_list  = receivers.value["receiver_user_list"]
-      start_time          = receivers.value["start_time"]
+      # receiver_type - (required) is a type of string
+      receiver_type = receivers.value["receiver_type"]
+      # receiver_user_list - (optional) is a type of list of number
+      receiver_user_list = receivers.value["receiver_user_list"]
+      # start_time - (optional) is a type of number
+      start_time = receivers.value["start_time"]
     }
   }
 

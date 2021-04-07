@@ -105,14 +105,22 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_service_dce_rpc" "this" {
-  color                                           = var.color
-  comments                                        = var.comments
-  ignore_errors                                   = var.ignore_errors
-  ignore_warnings                                 = var.ignore_warnings
-  interface_uuid                                  = var.interface_uuid
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # interface_uuid - (optional) is a type of string
+  interface_uuid = var.interface_uuid
+  # keep_connections_open_after_policy_installation - (optional) is a type of bool
   keep_connections_open_after_policy_installation = var.keep_connections_open_after_policy_installation
-  name                                            = var.name
-  tags                                            = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

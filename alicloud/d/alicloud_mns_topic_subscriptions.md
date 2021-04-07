@@ -65,9 +65,12 @@ variable "topic_name" {
 
 ```terraform
 data "alicloud_mns_topic_subscriptions" "this" {
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  topic_name  = var.topic_name
+  # topic_name - (required) is a type of string
+  topic_name = var.topic_name
 }
 ```
 

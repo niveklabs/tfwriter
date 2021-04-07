@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_cms_monitor_group" "this" {
-  contact_groups     = var.contact_groups
+  # contact_groups - (optional) is a type of list of string
+  contact_groups = var.contact_groups
+  # monitor_group_name - (required) is a type of string
   monitor_group_name = var.monitor_group_name
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

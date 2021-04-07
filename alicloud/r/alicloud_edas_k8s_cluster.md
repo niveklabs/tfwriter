@@ -73,13 +73,17 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_edas_k8s_cluster" "this" {
+  # cs_cluster_id - (required) is a type of string
   cs_cluster_id = var.cs_cluster_id
-  namespace_id  = var.namespace_id
+  # namespace_id - (optional) is a type of string
+  namespace_id = var.namespace_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

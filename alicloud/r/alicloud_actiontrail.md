@@ -162,24 +162,39 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_actiontrail" "this" {
-  event_rw              = var.event_rw
+  # event_rw - (optional) is a type of string
+  event_rw = var.event_rw
+  # is_organization_trail - (optional) is a type of bool
   is_organization_trail = var.is_organization_trail
-  mns_topic_arn         = var.mns_topic_arn
-  name                  = var.name
-  oss_bucket_name       = var.oss_bucket_name
-  oss_key_prefix        = var.oss_key_prefix
-  oss_write_role_arn    = var.oss_write_role_arn
-  role_name             = var.role_name
-  sls_project_arn       = var.sls_project_arn
-  sls_write_role_arn    = var.sls_write_role_arn
-  status                = var.status
-  trail_name            = var.trail_name
-  trail_region          = var.trail_region
+  # mns_topic_arn - (optional) is a type of string
+  mns_topic_arn = var.mns_topic_arn
+  # name - (optional) is a type of string
+  name = var.name
+  # oss_bucket_name - (optional) is a type of string
+  oss_bucket_name = var.oss_bucket_name
+  # oss_key_prefix - (optional) is a type of string
+  oss_key_prefix = var.oss_key_prefix
+  # oss_write_role_arn - (optional) is a type of string
+  oss_write_role_arn = var.oss_write_role_arn
+  # role_name - (optional) is a type of string
+  role_name = var.role_name
+  # sls_project_arn - (optional) is a type of string
+  sls_project_arn = var.sls_project_arn
+  # sls_write_role_arn - (optional) is a type of string
+  sls_write_role_arn = var.sls_write_role_arn
+  # status - (optional) is a type of string
+  status = var.status
+  # trail_name - (optional) is a type of string
+  trail_name = var.trail_name
+  # trail_region - (optional) is a type of string
+  trail_region = var.trail_region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

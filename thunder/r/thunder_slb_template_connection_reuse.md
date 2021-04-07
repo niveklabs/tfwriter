@@ -106,14 +106,22 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_connection_reuse" "this" {
-  keep_alive_conn   = var.keep_alive_conn
-  limit_per_server  = var.limit_per_server
-  name              = var.name
+  # keep_alive_conn - (optional) is a type of number
+  keep_alive_conn = var.keep_alive_conn
+  # limit_per_server - (optional) is a type of number
+  limit_per_server = var.limit_per_server
+  # name - (optional) is a type of string
+  name = var.name
+  # num_conn_per_port - (optional) is a type of number
   num_conn_per_port = var.num_conn_per_port
-  preopen           = var.preopen
-  timeout           = var.timeout
-  user_tag          = var.user_tag
-  uuid              = var.uuid
+  # preopen - (optional) is a type of number
+  preopen = var.preopen
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

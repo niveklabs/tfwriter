@@ -213,33 +213,57 @@ variable "launch_template_config" {
 
 ```terraform
 resource "alicloud_auto_provisioning_group" "this" {
-  auto_provisioning_group_name        = var.auto_provisioning_group_name
-  auto_provisioning_group_type        = var.auto_provisioning_group_type
-  default_target_capacity_type        = var.default_target_capacity_type
-  description                         = var.description
-  excess_capacity_termination_policy  = var.excess_capacity_termination_policy
-  launch_template_id                  = var.launch_template_id
-  launch_template_version             = var.launch_template_version
-  max_spot_price                      = var.max_spot_price
-  pay_as_you_go_allocation_strategy   = var.pay_as_you_go_allocation_strategy
-  pay_as_you_go_target_capacity       = var.pay_as_you_go_target_capacity
-  spot_allocation_strategy            = var.spot_allocation_strategy
+  # auto_provisioning_group_name - (optional) is a type of string
+  auto_provisioning_group_name = var.auto_provisioning_group_name
+  # auto_provisioning_group_type - (optional) is a type of string
+  auto_provisioning_group_type = var.auto_provisioning_group_type
+  # default_target_capacity_type - (optional) is a type of string
+  default_target_capacity_type = var.default_target_capacity_type
+  # description - (optional) is a type of string
+  description = var.description
+  # excess_capacity_termination_policy - (optional) is a type of string
+  excess_capacity_termination_policy = var.excess_capacity_termination_policy
+  # launch_template_id - (required) is a type of string
+  launch_template_id = var.launch_template_id
+  # launch_template_version - (optional) is a type of string
+  launch_template_version = var.launch_template_version
+  # max_spot_price - (optional) is a type of number
+  max_spot_price = var.max_spot_price
+  # pay_as_you_go_allocation_strategy - (optional) is a type of string
+  pay_as_you_go_allocation_strategy = var.pay_as_you_go_allocation_strategy
+  # pay_as_you_go_target_capacity - (optional) is a type of string
+  pay_as_you_go_target_capacity = var.pay_as_you_go_target_capacity
+  # spot_allocation_strategy - (optional) is a type of string
+  spot_allocation_strategy = var.spot_allocation_strategy
+  # spot_instance_interruption_behavior - (optional) is a type of string
   spot_instance_interruption_behavior = var.spot_instance_interruption_behavior
-  spot_instance_pools_to_use_count    = var.spot_instance_pools_to_use_count
-  spot_target_capacity                = var.spot_target_capacity
-  terminate_instances                 = var.terminate_instances
+  # spot_instance_pools_to_use_count - (optional) is a type of number
+  spot_instance_pools_to_use_count = var.spot_instance_pools_to_use_count
+  # spot_target_capacity - (optional) is a type of string
+  spot_target_capacity = var.spot_target_capacity
+  # terminate_instances - (optional) is a type of bool
+  terminate_instances = var.terminate_instances
+  # terminate_instances_with_expiration - (optional) is a type of bool
   terminate_instances_with_expiration = var.terminate_instances_with_expiration
-  total_target_capacity               = var.total_target_capacity
-  valid_from                          = var.valid_from
-  valid_until                         = var.valid_until
+  # total_target_capacity - (required) is a type of string
+  total_target_capacity = var.total_target_capacity
+  # valid_from - (optional) is a type of string
+  valid_from = var.valid_from
+  # valid_until - (optional) is a type of string
+  valid_until = var.valid_until
 
   dynamic "launch_template_config" {
     for_each = var.launch_template_config
     content {
-      instance_type     = launch_template_config.value["instance_type"]
-      max_price         = launch_template_config.value["max_price"]
-      priority          = launch_template_config.value["priority"]
-      vswitch_id        = launch_template_config.value["vswitch_id"]
+      # instance_type - (optional) is a type of string
+      instance_type = launch_template_config.value["instance_type"]
+      # max_price - (required) is a type of string
+      max_price = launch_template_config.value["max_price"]
+      # priority - (optional) is a type of string
+      priority = launch_template_config.value["priority"]
+      # vswitch_id - (required) is a type of string
+      vswitch_id = launch_template_config.value["vswitch_id"]
+      # weighted_capacity - (required) is a type of string
       weighted_capacity = launch_template_config.value["weighted_capacity"]
     }
   }

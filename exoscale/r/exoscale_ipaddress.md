@@ -165,26 +165,43 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_ipaddress" "this" {
-  description                 = var.description
-  healthcheck_interval        = var.healthcheck_interval
-  healthcheck_mode            = var.healthcheck_mode
-  healthcheck_path            = var.healthcheck_path
-  healthcheck_port            = var.healthcheck_port
-  healthcheck_strikes_fail    = var.healthcheck_strikes_fail
-  healthcheck_strikes_ok      = var.healthcheck_strikes_ok
-  healthcheck_timeout         = var.healthcheck_timeout
+  # description - (optional) is a type of string
+  description = var.description
+  # healthcheck_interval - (optional) is a type of number
+  healthcheck_interval = var.healthcheck_interval
+  # healthcheck_mode - (optional) is a type of string
+  healthcheck_mode = var.healthcheck_mode
+  # healthcheck_path - (optional) is a type of string
+  healthcheck_path = var.healthcheck_path
+  # healthcheck_port - (optional) is a type of number
+  healthcheck_port = var.healthcheck_port
+  # healthcheck_strikes_fail - (optional) is a type of number
+  healthcheck_strikes_fail = var.healthcheck_strikes_fail
+  # healthcheck_strikes_ok - (optional) is a type of number
+  healthcheck_strikes_ok = var.healthcheck_strikes_ok
+  # healthcheck_timeout - (optional) is a type of number
+  healthcheck_timeout = var.healthcheck_timeout
+  # healthcheck_tls_skip_verify - (optional) is a type of bool
   healthcheck_tls_skip_verify = var.healthcheck_tls_skip_verify
-  healthcheck_tls_sni         = var.healthcheck_tls_sni
-  reverse_dns                 = var.reverse_dns
-  tags                        = var.tags
-  zone                        = var.zone
+  # healthcheck_tls_sni - (optional) is a type of string
+  healthcheck_tls_sni = var.healthcheck_tls_sni
+  # reverse_dns - (optional) is a type of string
+  reverse_dns = var.reverse_dns
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

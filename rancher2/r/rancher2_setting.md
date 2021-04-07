@@ -72,10 +72,14 @@ variable "value" {
 
 ```terraform
 resource "rancher2_setting" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  labels      = var.labels
-  name        = var.name
-  value       = var.value
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

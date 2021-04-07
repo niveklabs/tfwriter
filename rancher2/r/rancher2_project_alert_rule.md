@@ -197,24 +197,39 @@ variable "workload_rule" {
 
 ```terraform
 resource "rancher2_project_alert_rule" "this" {
-  annotations             = var.annotations
-  group_id                = var.group_id
-  group_interval_seconds  = var.group_interval_seconds
-  group_wait_seconds      = var.group_wait_seconds
-  inherited               = var.inherited
-  labels                  = var.labels
-  name                    = var.name
-  project_id              = var.project_id
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # group_interval_seconds - (optional) is a type of number
+  group_interval_seconds = var.group_interval_seconds
+  # group_wait_seconds - (optional) is a type of number
+  group_wait_seconds = var.group_wait_seconds
+  # inherited - (optional) is a type of bool
+  inherited = var.inherited
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # repeat_interval_seconds - (optional) is a type of number
   repeat_interval_seconds = var.repeat_interval_seconds
-  severity                = var.severity
+  # severity - (optional) is a type of string
+  severity = var.severity
 
   dynamic "metric_rule" {
     for_each = var.metric_rule
     content {
-      comparison      = metric_rule.value["comparison"]
-      description     = metric_rule.value["description"]
-      duration        = metric_rule.value["duration"]
-      expression      = metric_rule.value["expression"]
+      # comparison - (optional) is a type of string
+      comparison = metric_rule.value["comparison"]
+      # description - (optional) is a type of string
+      description = metric_rule.value["description"]
+      # duration - (required) is a type of string
+      duration = metric_rule.value["duration"]
+      # expression - (required) is a type of string
+      expression = metric_rule.value["expression"]
+      # threshold_value - (required) is a type of number
       threshold_value = metric_rule.value["threshold_value"]
     }
   }
@@ -222,18 +237,25 @@ resource "rancher2_project_alert_rule" "this" {
   dynamic "pod_rule" {
     for_each = var.pod_rule
     content {
-      condition                = pod_rule.value["condition"]
-      pod_id                   = pod_rule.value["pod_id"]
+      # condition - (optional) is a type of string
+      condition = pod_rule.value["condition"]
+      # pod_id - (required) is a type of string
+      pod_id = pod_rule.value["pod_id"]
+      # restart_interval_seconds - (optional) is a type of number
       restart_interval_seconds = pod_rule.value["restart_interval_seconds"]
-      restart_times            = pod_rule.value["restart_times"]
+      # restart_times - (optional) is a type of number
+      restart_times = pod_rule.value["restart_times"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -241,9 +263,12 @@ resource "rancher2_project_alert_rule" "this" {
   dynamic "workload_rule" {
     for_each = var.workload_rule
     content {
+      # available_percentage - (optional) is a type of number
       available_percentage = workload_rule.value["available_percentage"]
-      selector             = workload_rule.value["selector"]
-      workload_id          = workload_rule.value["workload_id"]
+      # selector - (optional) is a type of map of string
+      selector = workload_rule.value["selector"]
+      # workload_id - (optional) is a type of string
+      workload_id = workload_rule.value["workload_id"]
     }
   }
 

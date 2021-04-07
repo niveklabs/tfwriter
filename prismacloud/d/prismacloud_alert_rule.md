@@ -58,7 +58,9 @@ variable "policy_scan_config_id" {
 
 ```terraform
 data "prismacloud_alert_rule" "this" {
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_scan_config_id - (optional) is a type of string
   policy_scan_config_id = var.policy_scan_config_id
 }
 ```

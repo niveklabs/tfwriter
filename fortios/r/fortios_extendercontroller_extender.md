@@ -335,43 +335,80 @@ variable "wimax_realm" {
 
 ```terraform
 resource "fortios_extendercontroller_extender" "this" {
-  aaa_shared_secret   = var.aaa_shared_secret
-  access_point_name   = var.access_point_name
-  admin               = var.admin
-  at_dial_script      = var.at_dial_script
-  billing_start_day   = var.billing_start_day
-  cdma_aaa_spi        = var.cdma_aaa_spi
-  cdma_ha_spi         = var.cdma_ha_spi
-  cdma_nai            = var.cdma_nai
-  conn_status         = var.conn_status
-  description         = var.description
-  dial_mode           = var.dial_mode
-  dial_status         = var.dial_status
-  ext_name            = var.ext_name
-  fosid               = var.fosid
-  ha_shared_secret    = var.ha_shared_secret
-  ifname              = var.ifname
-  initiated_update    = var.initiated_update
-  mode                = var.mode
-  modem_passwd        = var.modem_passwd
-  modem_type          = var.modem_type
-  multi_mode          = var.multi_mode
-  ppp_auth_protocol   = var.ppp_auth_protocol
-  ppp_echo_request    = var.ppp_echo_request
-  ppp_password        = var.ppp_password
-  ppp_username        = var.ppp_username
-  primary_ha          = var.primary_ha
-  quota_limit_mb      = var.quota_limit_mb
-  redial              = var.redial
-  redundant_intf      = var.redundant_intf
-  roaming             = var.roaming
-  role                = var.role
-  secondary_ha        = var.secondary_ha
-  sim_pin             = var.sim_pin
-  vdom                = var.vdom
+  # aaa_shared_secret - (optional) is a type of string
+  aaa_shared_secret = var.aaa_shared_secret
+  # access_point_name - (optional) is a type of string
+  access_point_name = var.access_point_name
+  # admin - (required) is a type of string
+  admin = var.admin
+  # at_dial_script - (optional) is a type of string
+  at_dial_script = var.at_dial_script
+  # billing_start_day - (optional) is a type of number
+  billing_start_day = var.billing_start_day
+  # cdma_aaa_spi - (optional) is a type of string
+  cdma_aaa_spi = var.cdma_aaa_spi
+  # cdma_ha_spi - (optional) is a type of string
+  cdma_ha_spi = var.cdma_ha_spi
+  # cdma_nai - (optional) is a type of string
+  cdma_nai = var.cdma_nai
+  # conn_status - (optional) is a type of number
+  conn_status = var.conn_status
+  # description - (optional) is a type of string
+  description = var.description
+  # dial_mode - (optional) is a type of string
+  dial_mode = var.dial_mode
+  # dial_status - (optional) is a type of number
+  dial_status = var.dial_status
+  # ext_name - (optional) is a type of string
+  ext_name = var.ext_name
+  # fosid - (required) is a type of string
+  fosid = var.fosid
+  # ha_shared_secret - (optional) is a type of string
+  ha_shared_secret = var.ha_shared_secret
+  # ifname - (optional) is a type of string
+  ifname = var.ifname
+  # initiated_update - (optional) is a type of string
+  initiated_update = var.initiated_update
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # modem_passwd - (optional) is a type of string
+  modem_passwd = var.modem_passwd
+  # modem_type - (optional) is a type of string
+  modem_type = var.modem_type
+  # multi_mode - (optional) is a type of string
+  multi_mode = var.multi_mode
+  # ppp_auth_protocol - (optional) is a type of string
+  ppp_auth_protocol = var.ppp_auth_protocol
+  # ppp_echo_request - (optional) is a type of string
+  ppp_echo_request = var.ppp_echo_request
+  # ppp_password - (optional) is a type of string
+  ppp_password = var.ppp_password
+  # ppp_username - (optional) is a type of string
+  ppp_username = var.ppp_username
+  # primary_ha - (optional) is a type of string
+  primary_ha = var.primary_ha
+  # quota_limit_mb - (optional) is a type of number
+  quota_limit_mb = var.quota_limit_mb
+  # redial - (optional) is a type of string
+  redial = var.redial
+  # redundant_intf - (optional) is a type of string
+  redundant_intf = var.redundant_intf
+  # roaming - (optional) is a type of string
+  roaming = var.roaming
+  # role - (required) is a type of string
+  role = var.role
+  # secondary_ha - (optional) is a type of string
+  secondary_ha = var.secondary_ha
+  # sim_pin - (optional) is a type of string
+  sim_pin = var.sim_pin
+  # vdom - (optional) is a type of number
+  vdom = var.vdom
+  # wimax_auth_protocol - (optional) is a type of string
   wimax_auth_protocol = var.wimax_auth_protocol
-  wimax_carrier       = var.wimax_carrier
-  wimax_realm         = var.wimax_realm
+  # wimax_carrier - (optional) is a type of string
+  wimax_carrier = var.wimax_carrier
+  # wimax_realm - (optional) is a type of string
+  wimax_realm = var.wimax_realm
 }
 ```
 

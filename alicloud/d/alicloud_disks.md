@@ -114,15 +114,24 @@ variable "type" {
 
 ```terraform
 data "alicloud_disks" "this" {
-  category          = var.category
-  encrypted         = var.encrypted
-  ids               = var.ids
-  instance_id       = var.instance_id
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # category - (optional) is a type of string
+  category = var.category
+  # encrypted - (optional) is a type of string
+  encrypted = var.encrypted
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
-  type              = var.type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

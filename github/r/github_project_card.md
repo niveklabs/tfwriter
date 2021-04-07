@@ -56,8 +56,10 @@ variable "note" {
 
 ```terraform
 resource "github_project_card" "this" {
+  # column_id - (required) is a type of string
   column_id = var.column_id
-  note      = var.note
+  # note - (required) is a type of string
+  note = var.note
 }
 ```
 

@@ -74,9 +74,13 @@ variable "high_availability_mode" {
 
 ```terraform
 data "nsxt_logical_tier0_router" "this" {
-  description            = var.description
-  display_name           = var.display_name
-  edge_cluster_id        = var.edge_cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # edge_cluster_id - (optional) is a type of string
+  edge_cluster_id = var.edge_cluster_id
+  # high_availability_mode - (optional) is a type of string
   high_availability_mode = var.high_availability_mode
 }
 ```

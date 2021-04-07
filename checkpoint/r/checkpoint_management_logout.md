@@ -50,6 +50,7 @@ variable "triggers" {
 
 ```terraform
 resource "checkpoint_management_logout" "this" {
+  # triggers - (optional) is a type of set of string
   triggers = var.triggers
 }
 ```

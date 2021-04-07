@@ -64,9 +64,12 @@ variable "project_id" {
 
 ```terraform
 data "rancher2_registry" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
-  project_id   = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

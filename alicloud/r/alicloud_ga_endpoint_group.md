@@ -196,34 +196,53 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_endpoint_group" "this" {
-  accelerator_id                = var.accelerator_id
-  description                   = var.description
-  endpoint_group_region         = var.endpoint_group_region
-  endpoint_group_type           = var.endpoint_group_type
-  endpoint_request_protocol     = var.endpoint_request_protocol
+  # accelerator_id - (required) is a type of string
+  accelerator_id = var.accelerator_id
+  # description - (optional) is a type of string
+  description = var.description
+  # endpoint_group_region - (required) is a type of string
+  endpoint_group_region = var.endpoint_group_region
+  # endpoint_group_type - (optional) is a type of string
+  endpoint_group_type = var.endpoint_group_type
+  # endpoint_request_protocol - (optional) is a type of string
+  endpoint_request_protocol = var.endpoint_request_protocol
+  # health_check_interval_seconds - (optional) is a type of number
   health_check_interval_seconds = var.health_check_interval_seconds
-  health_check_path             = var.health_check_path
-  health_check_port             = var.health_check_port
-  health_check_protocol         = var.health_check_protocol
-  listener_id                   = var.listener_id
-  name                          = var.name
-  threshold_count               = var.threshold_count
-  traffic_percentage            = var.traffic_percentage
+  # health_check_path - (optional) is a type of string
+  health_check_path = var.health_check_path
+  # health_check_port - (optional) is a type of number
+  health_check_port = var.health_check_port
+  # health_check_protocol - (optional) is a type of string
+  health_check_protocol = var.health_check_protocol
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # name - (optional) is a type of string
+  name = var.name
+  # threshold_count - (optional) is a type of number
+  threshold_count = var.threshold_count
+  # traffic_percentage - (optional) is a type of number
+  traffic_percentage = var.traffic_percentage
 
   dynamic "endpoint_configurations" {
     for_each = var.endpoint_configurations
     content {
+      # enable_clientip_preservation - (optional) is a type of bool
       enable_clientip_preservation = endpoint_configurations.value["enable_clientip_preservation"]
-      endpoint                     = endpoint_configurations.value["endpoint"]
-      type                         = endpoint_configurations.value["type"]
-      weight                       = endpoint_configurations.value["weight"]
+      # endpoint - (required) is a type of string
+      endpoint = endpoint_configurations.value["endpoint"]
+      # type - (required) is a type of string
+      type = endpoint_configurations.value["type"]
+      # weight - (required) is a type of number
+      weight = endpoint_configurations.value["weight"]
     }
   }
 
   dynamic "port_overrides" {
     for_each = var.port_overrides
     content {
+      # endpoint_port - (optional) is a type of number
       endpoint_port = port_overrides.value["endpoint_port"]
+      # listener_port - (optional) is a type of number
       listener_port = port_overrides.value["listener_port"]
     }
   }
@@ -231,8 +250,11 @@ resource "alicloud_ga_endpoint_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

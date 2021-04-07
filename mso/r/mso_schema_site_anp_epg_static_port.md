@@ -142,20 +142,34 @@ variable "vlan" {
 
 ```terraform
 resource "mso_schema_site_anp_epg_static_port" "this" {
-  anp_name             = var.anp_name
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # deployment_immediacy - (required) is a type of string
   deployment_immediacy = var.deployment_immediacy
-  epg_name             = var.epg_name
-  fex                  = var.fex
-  leaf                 = var.leaf
-  micro_seg_vlan       = var.micro_seg_vlan
-  mode                 = var.mode
-  path                 = var.path
-  path_type            = var.path_type
-  pod                  = var.pod
-  schema_id            = var.schema_id
-  site_id              = var.site_id
-  template_name        = var.template_name
-  vlan                 = var.vlan
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # fex - (optional) is a type of string
+  fex = var.fex
+  # leaf - (required) is a type of string
+  leaf = var.leaf
+  # micro_seg_vlan - (optional) is a type of number
+  micro_seg_vlan = var.micro_seg_vlan
+  # mode - (required) is a type of string
+  mode = var.mode
+  # path - (required) is a type of string
+  path = var.path
+  # path_type - (required) is a type of string
+  path_type = var.path_type
+  # pod - (required) is a type of string
+  pod = var.pod
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vlan - (required) is a type of number
+  vlan = var.vlan
 }
 ```
 

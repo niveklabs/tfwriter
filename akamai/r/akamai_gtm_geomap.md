@@ -97,17 +97,24 @@ variable "assignment" {
 
 ```terraform
 resource "akamai_gtm_geomap" "this" {
+  # default_datacenter - (required) is a type of list of object
   default_datacenter = var.default_datacenter
-  domain             = var.domain
-  name               = var.name
-  wait_on_complete   = var.wait_on_complete
+  # domain - (required) is a type of string
+  domain = var.domain
+  # name - (required) is a type of string
+  name = var.name
+  # wait_on_complete - (optional) is a type of bool
+  wait_on_complete = var.wait_on_complete
 
   dynamic "assignment" {
     for_each = var.assignment
     content {
-      countries     = assignment.value["countries"]
+      # countries - (optional) is a type of list of string
+      countries = assignment.value["countries"]
+      # datacenter_id - (required) is a type of number
       datacenter_id = assignment.value["datacenter_id"]
-      nickname      = assignment.value["nickname"]
+      # nickname - (required) is a type of string
+      nickname = assignment.value["nickname"]
     }
   }
 

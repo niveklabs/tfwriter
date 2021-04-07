@@ -74,10 +74,14 @@ variable "warn_days" {
 
 ```terraform
 resource "fortios_user_passwordpolicy" "this" {
-  expire_days              = var.expire_days
+  # expire_days - (optional) is a type of number
+  expire_days = var.expire_days
+  # expired_password_renewal - (optional) is a type of string
   expired_password_renewal = var.expired_password_renewal
-  name                     = var.name
-  warn_days                = var.warn_days
+  # name - (optional) is a type of string
+  name = var.name
+  # warn_days - (optional) is a type of number
+  warn_days = var.warn_days
 }
 ```
 

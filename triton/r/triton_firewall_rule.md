@@ -65,9 +65,12 @@ variable "rule" {
 
 ```terraform
 resource "triton_firewall_rule" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  rule        = var.rule
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # rule - (required) is a type of string
+  rule = var.rule
 }
 ```
 

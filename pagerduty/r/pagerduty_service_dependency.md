@@ -79,12 +79,15 @@ resource "pagerduty_service_dependency" "this" {
   dynamic "dependency" {
     for_each = var.dependency
     content {
+      # type - (optional) is a type of string
       type = dependency.value["type"]
 
       dynamic "dependent_service" {
         for_each = dependency.value.dependent_service
         content {
-          id   = dependent_service.value["id"]
+          # id - (required) is a type of string
+          id = dependent_service.value["id"]
+          # type - (required) is a type of string
           type = dependent_service.value["type"]
         }
       }
@@ -92,7 +95,9 @@ resource "pagerduty_service_dependency" "this" {
       dynamic "supporting_service" {
         for_each = dependency.value.supporting_service
         content {
-          id   = supporting_service.value["id"]
+          # id - (required) is a type of string
+          id = supporting_service.value["id"]
+          # type - (required) is a type of string
           type = supporting_service.value["type"]
         }
       }

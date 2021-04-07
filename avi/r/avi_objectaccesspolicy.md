@@ -94,21 +94,29 @@ variable "rules" {
 
 ```terraform
 resource "avi_objectaccesspolicy" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      name      = rules.value["name"]
+      # name - (optional) is a type of string
+      name = rules.value["name"]
+      # obj_types - (optional) is a type of list of string
       obj_types = rules.value["obj_types"]
+      # privilege - (optional) is a type of string
       privilege = rules.value["privilege"]
 
       dynamic "matches" {
         for_each = rules.value.matches
         content {
-          label_key    = matches.value["label_key"]
+          # label_key - (optional) is a type of string
+          label_key = matches.value["label_key"]
+          # label_values - (optional) is a type of list of string
           label_values = matches.value["label_values"]
         }
       }

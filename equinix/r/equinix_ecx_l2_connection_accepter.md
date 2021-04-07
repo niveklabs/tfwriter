@@ -87,14 +87,19 @@ variable "timeouts" {
 
 ```terraform
 resource "equinix_ecx_l2_connection_accepter" "this" {
-  access_key    = var.access_key
-  aws_profile   = var.aws_profile
+  # access_key - (optional) is a type of string
+  access_key = var.access_key
+  # aws_profile - (optional) is a type of string
+  aws_profile = var.aws_profile
+  # connection_id - (required) is a type of string
   connection_id = var.connection_id
-  secret_key    = var.secret_key
+  # secret_key - (optional) is a type of string
+  secret_key = var.secret_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

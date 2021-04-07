@@ -58,8 +58,10 @@ variable "fosid" {
 
 ```terraform
 resource "fortios_firewall_internetservicereputation" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  fosid       = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
 }
 ```
 

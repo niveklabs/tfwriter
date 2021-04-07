@@ -74,9 +74,13 @@ variable "user_client_ip" {
 
 ```terraform
 data "alicloud_alidns_instances" "this" {
-  ids            = var.ids
-  lang           = var.lang
-  output_file    = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # user_client_ip - (optional) is a type of string
   user_client_ip = var.user_client_ip
 }
 ```

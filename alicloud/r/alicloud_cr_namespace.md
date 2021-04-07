@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "alicloud_cr_namespace" "this" {
-  auto_create        = var.auto_create
+  # auto_create - (required) is a type of bool
+  auto_create = var.auto_create
+  # default_visibility - (required) is a type of string
   default_visibility = var.default_visibility
-  name               = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -65,9 +65,12 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_slb_backend_servers" "this" {
-  ids              = var.ids
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  output_file      = var.output_file
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

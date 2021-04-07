@@ -98,13 +98,20 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_mqtt" "this" {
-  clientid_hash_first   = var.clientid_hash_first
-  clientid_hash_last    = var.clientid_hash_last
-  clientid_hash_offset  = var.clientid_hash_offset
+  # clientid_hash_first - (optional) is a type of number
+  clientid_hash_first = var.clientid_hash_first
+  # clientid_hash_last - (optional) is a type of number
+  clientid_hash_last = var.clientid_hash_last
+  # clientid_hash_offset - (optional) is a type of number
+  clientid_hash_offset = var.clientid_hash_offset
+  # clientid_hash_persist - (optional) is a type of number
   clientid_hash_persist = var.clientid_hash_persist
-  name                  = var.name
-  user_tag              = var.user_tag
-  uuid                  = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

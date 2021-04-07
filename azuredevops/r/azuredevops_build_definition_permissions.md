@@ -78,11 +78,16 @@ variable "replace" {
 
 ```terraform
 resource "azuredevops_build_definition_permissions" "this" {
+  # build_definition_id - (required) is a type of string
   build_definition_id = var.build_definition_id
-  permissions         = var.permissions
-  principal           = var.principal
-  project_id          = var.project_id
-  replace             = var.replace
+  # permissions - (required) is a type of map of string
+  permissions = var.permissions
+  # principal - (required) is a type of string
+  principal = var.principal
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # replace - (optional) is a type of bool
+  replace = var.replace
 }
 ```
 

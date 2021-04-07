@@ -90,12 +90,18 @@ variable "vpc_id" {
 
 ```terraform
 data "alicloud_vpn_gateways" "this" {
+  # business_status - (optional) is a type of string
   business_status = var.business_status
-  ids             = var.ids
-  name_regex      = var.name_regex
-  output_file     = var.output_file
-  status          = var.status
-  vpc_id          = var.vpc_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

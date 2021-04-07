@@ -86,15 +86,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_eipanycast_anycast_eip_address_attachment" "this" {
-  anycast_id              = var.anycast_id
-  bind_instance_id        = var.bind_instance_id
+  # anycast_id - (required) is a type of string
+  anycast_id = var.anycast_id
+  # bind_instance_id - (required) is a type of string
+  bind_instance_id = var.bind_instance_id
+  # bind_instance_region_id - (required) is a type of string
   bind_instance_region_id = var.bind_instance_region_id
-  bind_instance_type      = var.bind_instance_type
+  # bind_instance_type - (required) is a type of string
+  bind_instance_type = var.bind_instance_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

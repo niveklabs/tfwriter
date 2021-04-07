@@ -79,13 +79,17 @@ variable "member" {
 
 ```terraform
 resource "fortios_system_ipsecaggregate" "this" {
-  algorithm             = var.algorithm
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
+      # tunnel_name - (optional) is a type of string
       tunnel_name = member.value["tunnel_name"]
     }
   }

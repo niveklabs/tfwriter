@@ -73,10 +73,14 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_tcr_vpc_attachments" "this" {
-  instance_id        = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  subnet_id          = var.subnet_id
-  vpc_id             = var.vpc_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

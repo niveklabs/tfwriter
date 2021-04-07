@@ -57,7 +57,9 @@ variable "organizational_unit_id" {
 
 ```terraform
 resource "dome9_cloudaccount_kubernetes" "this" {
-  name                   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # organizational_unit_id - (optional) is a type of string
   organizational_unit_id = var.organizational_unit_id
 }
 ```

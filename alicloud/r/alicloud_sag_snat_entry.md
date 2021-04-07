@@ -63,9 +63,12 @@ variable "snat_ip" {
 
 ```terraform
 resource "alicloud_sag_snat_entry" "this" {
+  # cidr_block - (required) is a type of string
   cidr_block = var.cidr_block
-  sag_id     = var.sag_id
-  snat_ip    = var.snat_ip
+  # sag_id - (required) is a type of string
+  sag_id = var.sag_id
+  # snat_ip - (required) is a type of string
+  snat_ip = var.snat_ip
 }
 ```
 

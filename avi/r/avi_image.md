@@ -252,46 +252,68 @@ variable "se_info" {
 
 ```terraform
 resource "avi_image" "this" {
+  # controller_patch_uuid - (optional) is a type of string
   controller_patch_uuid = var.controller_patch_uuid
-  name                  = var.name
-  se_patch_uuid         = var.se_patch_uuid
-  status                = var.status
-  tenant_ref            = var.tenant_ref
-  type                  = var.type
-  uber_bundle           = var.uber_bundle
-  uuid                  = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # se_patch_uuid - (optional) is a type of string
+  se_patch_uuid = var.se_patch_uuid
+  # status - (optional) is a type of string
+  status = var.status
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (optional) is a type of string
+  type = var.type
+  # uber_bundle - (optional) is a type of bool
+  uber_bundle = var.uber_bundle
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "controller_info" {
     for_each = var.controller_info
     content {
+      # hash - (optional) is a type of string
       hash = controller_info.value["hash"]
+      # path - (optional) is a type of string
       path = controller_info.value["path"]
 
       dynamic "build" {
         for_each = controller_info.value.build
         content {
-          build_no      = build.value["build_no"]
-          date          = build.value["date"]
-          min_version   = build.value["min_version"]
+          # build_no - (optional) is a type of number
+          build_no = build.value["build_no"]
+          # date - (optional) is a type of string
+          date = build.value["date"]
+          # min_version - (optional) is a type of string
+          min_version = build.value["min_version"]
+          # patch_version - (optional) is a type of string
           patch_version = build.value["patch_version"]
-          product       = build.value["product"]
-          product_name  = build.value["product_name"]
-          tag           = build.value["tag"]
-          version       = build.value["version"]
+          # product - (optional) is a type of string
+          product = build.value["product"]
+          # product_name - (optional) is a type of string
+          product_name = build.value["product_name"]
+          # tag - (optional) is a type of string
+          tag = build.value["tag"]
+          # version - (optional) is a type of string
+          version = build.value["version"]
         }
       }
 
       dynamic "patch" {
         for_each = controller_info.value.patch
         content {
+          # patch_type - (optional) is a type of string
           patch_type = patch.value["patch_type"]
-          reboot     = patch.value["reboot"]
+          # reboot - (optional) is a type of bool
+          reboot = patch.value["reboot"]
 
           dynamic "reboot_list" {
             for_each = patch.value.reboot_list
             content {
+              # patch_version - (optional) is a type of string
               patch_version = reboot_list.value["patch_version"]
-              reboot        = reboot_list.value["reboot"]
+              # reboot - (optional) is a type of bool
+              reboot = reboot_list.value["reboot"]
             }
           }
 
@@ -304,49 +326,72 @@ resource "avi_image" "this" {
   dynamic "migrations" {
     for_each = var.migrations
     content {
-      api_version                        = migrations.value["api_version"]
+      # api_version - (optional) is a type of string
+      api_version = migrations.value["api_version"]
+      # controller_host_min_free_disk_size - (optional) is a type of number
       controller_host_min_free_disk_size = migrations.value["controller_host_min_free_disk_size"]
-      controller_min_free_disk_size      = migrations.value["controller_min_free_disk_size"]
-      max_active_versions                = migrations.value["max_active_versions"]
-      rollback_controller_disk_space     = migrations.value["rollback_controller_disk_space"]
-      rollback_se_disk_space             = migrations.value["rollback_se_disk_space"]
-      se_host_min_free_disk_size         = migrations.value["se_host_min_free_disk_size"]
-      se_min_free_disk_size              = migrations.value["se_min_free_disk_size"]
-      versions                           = migrations.value["versions"]
+      # controller_min_free_disk_size - (optional) is a type of number
+      controller_min_free_disk_size = migrations.value["controller_min_free_disk_size"]
+      # max_active_versions - (optional) is a type of number
+      max_active_versions = migrations.value["max_active_versions"]
+      # rollback_controller_disk_space - (optional) is a type of number
+      rollback_controller_disk_space = migrations.value["rollback_controller_disk_space"]
+      # rollback_se_disk_space - (optional) is a type of number
+      rollback_se_disk_space = migrations.value["rollback_se_disk_space"]
+      # se_host_min_free_disk_size - (optional) is a type of number
+      se_host_min_free_disk_size = migrations.value["se_host_min_free_disk_size"]
+      # se_min_free_disk_size - (optional) is a type of number
+      se_min_free_disk_size = migrations.value["se_min_free_disk_size"]
+      # versions - (optional) is a type of list of string
+      versions = migrations.value["versions"]
     }
   }
 
   dynamic "se_info" {
     for_each = var.se_info
     content {
+      # hash - (optional) is a type of string
       hash = se_info.value["hash"]
+      # path - (optional) is a type of string
       path = se_info.value["path"]
 
       dynamic "build" {
         for_each = se_info.value.build
         content {
-          build_no      = build.value["build_no"]
-          date          = build.value["date"]
-          min_version   = build.value["min_version"]
+          # build_no - (optional) is a type of number
+          build_no = build.value["build_no"]
+          # date - (optional) is a type of string
+          date = build.value["date"]
+          # min_version - (optional) is a type of string
+          min_version = build.value["min_version"]
+          # patch_version - (optional) is a type of string
           patch_version = build.value["patch_version"]
-          product       = build.value["product"]
-          product_name  = build.value["product_name"]
-          tag           = build.value["tag"]
-          version       = build.value["version"]
+          # product - (optional) is a type of string
+          product = build.value["product"]
+          # product_name - (optional) is a type of string
+          product_name = build.value["product_name"]
+          # tag - (optional) is a type of string
+          tag = build.value["tag"]
+          # version - (optional) is a type of string
+          version = build.value["version"]
         }
       }
 
       dynamic "patch" {
         for_each = se_info.value.patch
         content {
+          # patch_type - (optional) is a type of string
           patch_type = patch.value["patch_type"]
-          reboot     = patch.value["reboot"]
+          # reboot - (optional) is a type of bool
+          reboot = patch.value["reboot"]
 
           dynamic "reboot_list" {
             for_each = patch.value.reboot_list
             content {
+              # patch_version - (optional) is a type of string
               patch_version = reboot_list.value["patch_version"]
-              reboot        = reboot_list.value["reboot"]
+              # reboot - (optional) is a type of bool
+              reboot = reboot_list.value["reboot"]
             }
           }
 

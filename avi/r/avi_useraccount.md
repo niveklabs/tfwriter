@@ -98,13 +98,20 @@ variable "username" {
 
 ```terraform
 resource "avi_useraccount" "this" {
-  email        = var.email
-  full_name    = var.full_name
-  local        = var.local
-  name         = var.name
+  # email - (optional) is a type of string
+  email = var.email
+  # full_name - (optional) is a type of string
+  full_name = var.full_name
+  # local - (optional) is a type of bool
+  local = var.local
+  # name - (optional) is a type of string
+  name = var.name
+  # old_password - (optional) is a type of string
   old_password = var.old_password
-  password     = var.password
-  username     = var.username
+  # password - (optional) is a type of string
+  password = var.password
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

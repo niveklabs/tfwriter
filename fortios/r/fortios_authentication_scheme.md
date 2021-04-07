@@ -135,20 +135,31 @@ variable "user_database" {
 
 ```terraform
 resource "fortios_authentication_scheme" "this" {
-  domain_controller     = var.domain_controller
+  # domain_controller - (optional) is a type of string
+  domain_controller = var.domain_controller
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fsso_agent_for_ntlm   = var.fsso_agent_for_ntlm
-  fsso_guest            = var.fsso_guest
-  kerberos_keytab       = var.kerberos_keytab
-  method                = var.method
-  name                  = var.name
-  negotiate_ntlm        = var.negotiate_ntlm
-  require_tfa           = var.require_tfa
-  ssh_ca                = var.ssh_ca
+  # fsso_agent_for_ntlm - (optional) is a type of string
+  fsso_agent_for_ntlm = var.fsso_agent_for_ntlm
+  # fsso_guest - (optional) is a type of string
+  fsso_guest = var.fsso_guest
+  # kerberos_keytab - (optional) is a type of string
+  kerberos_keytab = var.kerberos_keytab
+  # method - (required) is a type of string
+  method = var.method
+  # name - (optional) is a type of string
+  name = var.name
+  # negotiate_ntlm - (optional) is a type of string
+  negotiate_ntlm = var.negotiate_ntlm
+  # require_tfa - (optional) is a type of string
+  require_tfa = var.require_tfa
+  # ssh_ca - (optional) is a type of string
+  ssh_ca = var.ssh_ca
 
   dynamic "user_database" {
     for_each = var.user_database
     content {
+      # name - (optional) is a type of string
       name = user_database.value["name"]
     }
   }

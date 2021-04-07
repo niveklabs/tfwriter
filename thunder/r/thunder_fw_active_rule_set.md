@@ -74,10 +74,14 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_active_rule_set" "this" {
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # override_nat_aging - (optional) is a type of number
   override_nat_aging = var.override_nat_aging
-  session_aging      = var.session_aging
-  uuid               = var.uuid
+  # session_aging - (optional) is a type of string
+  session_aging = var.session_aging
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

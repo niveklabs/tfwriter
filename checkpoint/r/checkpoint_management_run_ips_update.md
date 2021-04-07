@@ -50,6 +50,7 @@ variable "package_path" {
 
 ```terraform
 resource "checkpoint_management_run_ips_update" "this" {
+  # package_path - (optional) is a type of string
   package_path = var.package_path
 }
 ```

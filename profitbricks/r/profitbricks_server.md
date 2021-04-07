@@ -232,42 +232,70 @@ variable "volume" {
 
 ```terraform
 resource "profitbricks_server" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  boot_image        = var.boot_image
-  cores             = var.cores
-  cpu_family        = var.cpu_family
-  datacenter_id     = var.datacenter_id
-  image_name        = var.image_name
-  image_password    = var.image_password
-  licence_type      = var.licence_type
-  name              = var.name
-  ram               = var.ram
-  ssh_key_path      = var.ssh_key_path
+  # boot_image - (optional) is a type of string
+  boot_image = var.boot_image
+  # cores - (required) is a type of number
+  cores = var.cores
+  # cpu_family - (optional) is a type of string
+  cpu_family = var.cpu_family
+  # datacenter_id - (required) is a type of string
+  datacenter_id = var.datacenter_id
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # image_password - (optional) is a type of string
+  image_password = var.image_password
+  # licence_type - (optional) is a type of string
+  licence_type = var.licence_type
+  # name - (required) is a type of string
+  name = var.name
+  # ram - (required) is a type of number
+  ram = var.ram
+  # ssh_key_path - (optional) is a type of list of string
+  ssh_key_path = var.ssh_key_path
 
   dynamic "nic" {
     for_each = var.nic
     content {
-      dhcp            = nic.value["dhcp"]
+      # dhcp - (optional) is a type of bool
+      dhcp = nic.value["dhcp"]
+      # firewall_active - (optional) is a type of bool
       firewall_active = nic.value["firewall_active"]
-      ip              = nic.value["ip"]
-      lan             = nic.value["lan"]
-      name            = nic.value["name"]
-      nat             = nic.value["nat"]
+      # ip - (optional) is a type of string
+      ip = nic.value["ip"]
+      # lan - (required) is a type of number
+      lan = nic.value["lan"]
+      # name - (optional) is a type of string
+      name = nic.value["name"]
+      # nat - (optional) is a type of bool
+      nat = nic.value["nat"]
 
       dynamic "firewall" {
         for_each = nic.value.firewall
         content {
-          icmp_code        = firewall.value["icmp_code"]
-          icmp_type        = firewall.value["icmp_type"]
-          ip               = firewall.value["ip"]
-          ips              = firewall.value["ips"]
-          name             = firewall.value["name"]
-          port_range_end   = firewall.value["port_range_end"]
+          # icmp_code - (optional) is a type of string
+          icmp_code = firewall.value["icmp_code"]
+          # icmp_type - (optional) is a type of string
+          icmp_type = firewall.value["icmp_type"]
+          # ip - (optional) is a type of string
+          ip = firewall.value["ip"]
+          # ips - (optional) is a type of list of string
+          ips = firewall.value["ips"]
+          # name - (optional) is a type of string
+          name = firewall.value["name"]
+          # port_range_end - (optional) is a type of number
+          port_range_end = firewall.value["port_range_end"]
+          # port_range_start - (optional) is a type of number
           port_range_start = firewall.value["port_range_start"]
-          protocol         = firewall.value["protocol"]
-          source_ip        = firewall.value["source_ip"]
-          source_mac       = firewall.value["source_mac"]
-          target_ip        = firewall.value["target_ip"]
+          # protocol - (required) is a type of string
+          protocol = firewall.value["protocol"]
+          # source_ip - (optional) is a type of string
+          source_ip = firewall.value["source_ip"]
+          # source_mac - (optional) is a type of string
+          source_mac = firewall.value["source_mac"]
+          # target_ip - (optional) is a type of string
+          target_ip = firewall.value["target_ip"]
         }
       }
 
@@ -277,25 +305,38 @@ resource "profitbricks_server" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 
   dynamic "volume" {
     for_each = var.volume
     content {
+      # availability_zone - (optional) is a type of string
       availability_zone = volume.value["availability_zone"]
-      bus               = volume.value["bus"]
-      disk_type         = volume.value["disk_type"]
-      image_name        = volume.value["image_name"]
-      image_password    = volume.value["image_password"]
-      licence_type      = volume.value["licence_type"]
-      name              = volume.value["name"]
-      size              = volume.value["size"]
-      ssh_key_path      = volume.value["ssh_key_path"]
+      # bus - (optional) is a type of string
+      bus = volume.value["bus"]
+      # disk_type - (required) is a type of string
+      disk_type = volume.value["disk_type"]
+      # image_name - (optional) is a type of string
+      image_name = volume.value["image_name"]
+      # image_password - (optional) is a type of string
+      image_password = volume.value["image_password"]
+      # licence_type - (optional) is a type of string
+      licence_type = volume.value["licence_type"]
+      # name - (optional) is a type of string
+      name = volume.value["name"]
+      # size - (required) is a type of number
+      size = volume.value["size"]
+      # ssh_key_path - (optional) is a type of list of string
+      ssh_key_path = volume.value["ssh_key_path"]
     }
   }
 

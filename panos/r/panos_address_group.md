@@ -89,12 +89,18 @@ variable "vsys" {
 
 ```terraform
 resource "panos_address_group" "this" {
-  description      = var.description
-  dynamic_match    = var.dynamic_match
-  name             = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_match - (optional) is a type of string
+  dynamic_match = var.dynamic_match
+  # name - (required) is a type of string
+  name = var.name
+  # static_addresses - (optional) is a type of list of string
   static_addresses = var.static_addresses
-  tags             = var.tags
-  vsys             = var.vsys
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

@@ -65,9 +65,12 @@ variable "vlan_id" {
 
 ```terraform
 data "ovh_iploadbalancing_vrack_networks" "this" {
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  subnet       = var.subnet
-  vlan_id      = var.vlan_id
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # vlan_id - (optional) is a type of number
+  vlan_id = var.vlan_id
 }
 ```
 

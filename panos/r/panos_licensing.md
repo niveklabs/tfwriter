@@ -65,9 +65,12 @@ variable "mode" {
 
 ```terraform
 resource "panos_licensing" "this" {
+  # auth_codes - (required) is a type of list of string
   auth_codes = var.auth_codes
-  delicense  = var.delicense
-  mode       = var.mode
+  # delicense - (optional) is a type of bool
+  delicense = var.delicense
+  # mode - (optional) is a type of string
+  mode = var.mode
 }
 ```
 

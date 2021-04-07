@@ -58,8 +58,10 @@ variable "vsys" {
 
 ```terraform
 data "panos_file_blocking_security_profiles" "this" {
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  vsys         = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "pagerduty_extension_schema" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

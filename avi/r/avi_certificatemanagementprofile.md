@@ -92,18 +92,26 @@ variable "script_params" {
 
 ```terraform
 resource "avi_certificatemanagementprofile" "this" {
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # script_path - (required) is a type of string
   script_path = var.script_path
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "script_params" {
     for_each = var.script_params
     content {
-      is_dynamic   = script_params.value["is_dynamic"]
+      # is_dynamic - (optional) is a type of bool
+      is_dynamic = script_params.value["is_dynamic"]
+      # is_sensitive - (optional) is a type of bool
       is_sensitive = script_params.value["is_sensitive"]
-      name         = script_params.value["name"]
-      value        = script_params.value["value"]
+      # name - (required) is a type of string
+      name = script_params.value["name"]
+      # value - (optional) is a type of string
+      value = script_params.value["value"]
     }
   }
 

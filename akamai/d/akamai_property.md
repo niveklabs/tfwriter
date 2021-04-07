@@ -57,7 +57,9 @@ variable "version" {
 
 ```terraform
 data "akamai_property" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # version - (optional) is a type of number
   version = var.version
 }
 ```

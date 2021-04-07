@@ -71,10 +71,14 @@ variable "vlan" {
 
 ```terraform
 resource "bigip_net_selfip" "this" {
-  ip            = var.ip
-  name          = var.name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
+  name = var.name
+  # traffic_group - (optional) is a type of string
   traffic_group = var.traffic_group
-  vlan          = var.vlan
+  # vlan - (required) is a type of string
+  vlan = var.vlan
 }
 ```
 

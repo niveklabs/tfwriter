@@ -145,19 +145,32 @@ variable "tos_mask" {
 
 ```terraform
 resource "fortios_router_policy6" "this" {
-  comments      = var.comments
-  dst           = var.dst
-  end_port      = var.end_port
-  gateway       = var.gateway
-  input_device  = var.input_device
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dst - (optional) is a type of string
+  dst = var.dst
+  # end_port - (optional) is a type of number
+  end_port = var.end_port
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # input_device - (required) is a type of string
+  input_device = var.input_device
+  # output_device - (optional) is a type of string
   output_device = var.output_device
-  protocol      = var.protocol
-  seq_num       = var.seq_num
-  src           = var.src
-  start_port    = var.start_port
-  status        = var.status
-  tos           = var.tos
-  tos_mask      = var.tos_mask
+  # protocol - (optional) is a type of number
+  protocol = var.protocol
+  # seq_num - (optional) is a type of number
+  seq_num = var.seq_num
+  # src - (optional) is a type of string
+  src = var.src
+  # start_port - (optional) is a type of number
+  start_port = var.start_port
+  # status - (optional) is a type of string
+  status = var.status
+  # tos - (optional) is a type of string
+  tos = var.tos
+  # tos_mask - (optional) is a type of string
+  tos_mask = var.tos_mask
 }
 ```
 

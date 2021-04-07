@@ -123,17 +123,28 @@ variable "start_time" {
 
 ```terraform
 resource "alicloud_sag_qos_policy" "this" {
-  description       = var.description
-  dest_cidr         = var.dest_cidr
-  dest_port_range   = var.dest_port_range
-  end_time          = var.end_time
-  ip_protocol       = var.ip_protocol
-  name              = var.name
-  priority          = var.priority
-  qos_id            = var.qos_id
-  source_cidr       = var.source_cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # dest_cidr - (required) is a type of string
+  dest_cidr = var.dest_cidr
+  # dest_port_range - (required) is a type of string
+  dest_port_range = var.dest_port_range
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # ip_protocol - (required) is a type of string
+  ip_protocol = var.ip_protocol
+  # name - (optional) is a type of string
+  name = var.name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # qos_id - (required) is a type of string
+  qos_id = var.qos_id
+  # source_cidr - (required) is a type of string
+  source_cidr = var.source_cidr
+  # source_port_range - (required) is a type of string
   source_port_range = var.source_port_range
-  start_time        = var.start_time
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
 }
 ```
 

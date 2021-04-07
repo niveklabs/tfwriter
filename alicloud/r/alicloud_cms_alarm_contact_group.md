@@ -73,10 +73,14 @@ variable "enable_subscribed" {
 
 ```terraform
 resource "alicloud_cms_alarm_contact_group" "this" {
+  # alarm_contact_group_name - (required) is a type of string
   alarm_contact_group_name = var.alarm_contact_group_name
-  contacts                 = var.contacts
-  describe                 = var.describe
-  enable_subscribed        = var.enable_subscribed
+  # contacts - (optional) is a type of set of string
+  contacts = var.contacts
+  # describe - (optional) is a type of string
+  describe = var.describe
+  # enable_subscribed - (optional) is a type of bool
+  enable_subscribed = var.enable_subscribed
 }
 ```
 

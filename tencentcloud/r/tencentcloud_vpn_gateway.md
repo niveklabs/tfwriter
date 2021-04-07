@@ -112,15 +112,24 @@ variable "zone" {
 
 ```terraform
 resource "tencentcloud_vpn_gateway" "this" {
-  bandwidth          = var.bandwidth
-  charge_type        = var.charge_type
-  name               = var.name
-  prepaid_period     = var.prepaid_period
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # name - (required) is a type of string
+  name = var.name
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # prepaid_renew_flag - (optional) is a type of string
   prepaid_renew_flag = var.prepaid_renew_flag
-  tags               = var.tags
-  type               = var.type
-  vpc_id             = var.vpc_id
-  zone               = var.zone
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

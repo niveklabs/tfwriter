@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_fipscc" "this" {
-  entropy_token            = var.entropy_token
+  # entropy_token - (optional) is a type of string
+  entropy_token = var.entropy_token
+  # key_generation_self_test - (optional) is a type of string
   key_generation_self_test = var.key_generation_self_test
-  self_test_period         = var.self_test_period
-  status                   = var.status
+  # self_test_period - (optional) is a type of number
+  self_test_period = var.self_test_period
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

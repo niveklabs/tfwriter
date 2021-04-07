@@ -111,17 +111,25 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_instance_volume" "this" {
+  # from_snapshot_id - (optional) is a type of string
   from_snapshot_id = var.from_snapshot_id
-  from_volume_id   = var.from_volume_id
-  name             = var.name
-  project_id       = var.project_id
-  size_in_gb       = var.size_in_gb
-  type             = var.type
-  zone             = var.zone
+  # from_volume_id - (optional) is a type of string
+  from_volume_id = var.from_volume_id
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # size_in_gb - (optional) is a type of number
+  size_in_gb = var.size_in_gb
+  # type - (required) is a type of string
+  type = var.type
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

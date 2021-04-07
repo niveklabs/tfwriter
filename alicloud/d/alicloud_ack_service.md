@@ -57,8 +57,10 @@ variable "type" {
 
 ```terraform
 data "alicloud_ack_service" "this" {
+  # enable - (optional) is a type of string
   enable = var.enable
-  type   = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

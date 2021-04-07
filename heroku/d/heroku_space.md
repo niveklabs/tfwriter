@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 data "heroku_space" "this" {
-  cidr      = var.cidr
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # data_cidr - (optional) is a type of string
   data_cidr = var.data_cidr
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

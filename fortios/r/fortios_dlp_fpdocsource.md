@@ -183,24 +183,42 @@ variable "weekday" {
 
 ```terraform
 resource "fortios_dlp_fpdocsource" "this" {
-  date                = var.date
-  file_path           = var.file_path
-  file_pattern        = var.file_pattern
-  keep_modified       = var.keep_modified
-  name                = var.name
-  password            = var.password
-  period              = var.period
-  remove_deleted      = var.remove_deleted
-  scan_on_creation    = var.scan_on_creation
+  # date - (optional) is a type of number
+  date = var.date
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # file_pattern - (optional) is a type of string
+  file_pattern = var.file_pattern
+  # keep_modified - (optional) is a type of string
+  keep_modified = var.keep_modified
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # period - (optional) is a type of string
+  period = var.period
+  # remove_deleted - (optional) is a type of string
+  remove_deleted = var.remove_deleted
+  # scan_on_creation - (optional) is a type of string
+  scan_on_creation = var.scan_on_creation
+  # scan_subdirectories - (optional) is a type of string
   scan_subdirectories = var.scan_subdirectories
-  sensitivity         = var.sensitivity
-  server              = var.server
-  server_type         = var.server_type
-  tod_hour            = var.tod_hour
-  tod_min             = var.tod_min
-  username            = var.username
-  vdom                = var.vdom
-  weekday             = var.weekday
+  # sensitivity - (optional) is a type of string
+  sensitivity = var.sensitivity
+  # server - (required) is a type of string
+  server = var.server
+  # server_type - (required) is a type of string
+  server_type = var.server_type
+  # tod_hour - (optional) is a type of number
+  tod_hour = var.tod_hour
+  # tod_min - (optional) is a type of number
+  tod_min = var.tod_min
+  # username - (required) is a type of string
+  username = var.username
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
+  # weekday - (optional) is a type of string
+  weekday = var.weekday
 }
 ```
 

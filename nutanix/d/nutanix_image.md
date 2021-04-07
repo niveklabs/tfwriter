@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_image" "this" {
-  image_id   = var.image_id
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # image_name - (optional) is a type of string
   image_name = var.image_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

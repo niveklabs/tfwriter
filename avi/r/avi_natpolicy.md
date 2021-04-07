@@ -312,23 +312,33 @@ variable "rules" {
 
 ```terraform
 resource "avi_natpolicy" "this" {
-  created_by  = var.created_by
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # created_by - (optional) is a type of string
       created_by = rules.value["created_by"]
-      enable     = rules.value["enable"]
-      index      = rules.value["index"]
-      name       = rules.value["name"]
+      # enable - (optional) is a type of bool
+      enable = rules.value["enable"]
+      # index - (optional) is a type of number
+      index = rules.value["index"]
+      # name - (optional) is a type of string
+      name = rules.value["name"]
 
       dynamic "action" {
         for_each = rules.value.action
         content {
+          # type - (optional) is a type of string
           type = action.value["type"]
 
           dynamic "nat_info" {
@@ -338,7 +348,9 @@ resource "avi_natpolicy" "this" {
               dynamic "nat_ip" {
                 for_each = nat_info.value.nat_ip
                 content {
+                  # addr - (required) is a type of string
                   addr = nat_ip.value["addr"]
+                  # type - (required) is a type of string
                   type = nat_ip.value["type"]
                 }
               }
@@ -350,7 +362,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "begin" {
                     for_each = nat_ip_range.value.begin
                     content {
+                      # addr - (required) is a type of string
                       addr = begin.value["addr"]
+                      # type - (required) is a type of string
                       type = begin.value["type"]
                     }
                   }
@@ -358,7 +372,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "end" {
                     for_each = nat_ip_range.value.end
                     content {
+                      # addr - (required) is a type of string
                       addr = end.value["addr"]
+                      # type - (required) is a type of string
                       type = end.value["type"]
                     }
                   }
@@ -379,13 +395,17 @@ resource "avi_natpolicy" "this" {
           dynamic "destination_ip" {
             for_each = match.value.destination_ip
             content {
-              group_refs     = destination_ip.value["group_refs"]
+              # group_refs - (optional) is a type of list of string
+              group_refs = destination_ip.value["group_refs"]
+              # match_criteria - (required) is a type of string
               match_criteria = destination_ip.value["match_criteria"]
 
               dynamic "addrs" {
                 for_each = destination_ip.value.addrs
                 content {
+                  # addr - (required) is a type of string
                   addr = addrs.value["addr"]
+                  # type - (required) is a type of string
                   type = addrs.value["type"]
                 }
               }
@@ -393,12 +413,15 @@ resource "avi_natpolicy" "this" {
               dynamic "prefixes" {
                 for_each = destination_ip.value.prefixes
                 content {
+                  # mask - (required) is a type of number
                   mask = prefixes.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = prefixes.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -413,7 +436,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "begin" {
                     for_each = ranges.value.begin
                     content {
+                      # addr - (required) is a type of string
                       addr = begin.value["addr"]
+                      # type - (required) is a type of string
                       type = begin.value["type"]
                     }
                   }
@@ -421,7 +446,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "end" {
                     for_each = ranges.value.end
                     content {
+                      # addr - (required) is a type of string
                       addr = end.value["addr"]
+                      # type - (required) is a type of string
                       type = end.value["type"]
                     }
                   }
@@ -439,16 +466,20 @@ resource "avi_natpolicy" "this" {
               dynamic "destination_port" {
                 for_each = services.value.destination_port
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = destination_port.value["match_criteria"]
-                  ports          = destination_port.value["ports"]
+                  # ports - (optional) is a type of list of number
+                  ports = destination_port.value["ports"]
                 }
               }
 
               dynamic "source_port" {
                 for_each = services.value.source_port
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = source_port.value["match_criteria"]
-                  ports          = source_port.value["ports"]
+                  # ports - (optional) is a type of list of number
+                  ports = source_port.value["ports"]
                 }
               }
 
@@ -458,13 +489,17 @@ resource "avi_natpolicy" "this" {
           dynamic "source_ip" {
             for_each = match.value.source_ip
             content {
-              group_refs     = source_ip.value["group_refs"]
+              # group_refs - (optional) is a type of list of string
+              group_refs = source_ip.value["group_refs"]
+              # match_criteria - (required) is a type of string
               match_criteria = source_ip.value["match_criteria"]
 
               dynamic "addrs" {
                 for_each = source_ip.value.addrs
                 content {
+                  # addr - (required) is a type of string
                   addr = addrs.value["addr"]
+                  # type - (required) is a type of string
                   type = addrs.value["type"]
                 }
               }
@@ -472,12 +507,15 @@ resource "avi_natpolicy" "this" {
               dynamic "prefixes" {
                 for_each = source_ip.value.prefixes
                 content {
+                  # mask - (required) is a type of number
                   mask = prefixes.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = prefixes.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -492,7 +530,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "begin" {
                     for_each = ranges.value.begin
                     content {
+                      # addr - (required) is a type of string
                       addr = begin.value["addr"]
+                      # type - (required) is a type of string
                       type = begin.value["type"]
                     }
                   }
@@ -500,7 +540,9 @@ resource "avi_natpolicy" "this" {
                   dynamic "end" {
                     for_each = ranges.value.end
                     content {
+                      # addr - (required) is a type of string
                       addr = end.value["addr"]
+                      # type - (required) is a type of string
                       type = end.value["type"]
                     }
                   }

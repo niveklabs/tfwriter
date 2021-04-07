@@ -157,23 +157,37 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_imagestorages_image_v2" "this" {
+  # container_format - (required) is a type of string
   container_format = var.container_format
-  disk_format      = var.disk_format
-  license_switch   = var.license_switch
-  local_file_path  = var.local_file_path
-  min_disk_gb      = var.min_disk_gb
-  min_ram_mb       = var.min_ram_mb
-  name             = var.name
-  properties       = var.properties
-  protected        = var.protected
-  region           = var.region
-  tags             = var.tags
-  verify_checksum  = var.verify_checksum
-  visibility       = var.visibility
+  # disk_format - (required) is a type of string
+  disk_format = var.disk_format
+  # license_switch - (optional) is a type of string
+  license_switch = var.license_switch
+  # local_file_path - (required) is a type of string
+  local_file_path = var.local_file_path
+  # min_disk_gb - (optional) is a type of number
+  min_disk_gb = var.min_disk_gb
+  # min_ram_mb - (optional) is a type of number
+  min_ram_mb = var.min_ram_mb
+  # name - (optional) is a type of string
+  name = var.name
+  # properties - (optional) is a type of map of string
+  properties = var.properties
+  # protected - (optional) is a type of bool
+  protected = var.protected
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # verify_checksum - (optional) is a type of bool
+  verify_checksum = var.verify_checksum
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

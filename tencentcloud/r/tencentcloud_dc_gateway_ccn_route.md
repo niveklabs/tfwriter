@@ -56,8 +56,10 @@ variable "dcg_id" {
 
 ```terraform
 resource "tencentcloud_dc_gateway_ccn_route" "this" {
+  # cidr_block - (required) is a type of string
   cidr_block = var.cidr_block
-  dcg_id     = var.dcg_id
+  # dcg_id - (required) is a type of string
+  dcg_id = var.dcg_id
 }
 ```
 

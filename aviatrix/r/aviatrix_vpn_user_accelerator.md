@@ -49,6 +49,7 @@ variable "elb_name" {
 
 ```terraform
 resource "aviatrix_vpn_user_accelerator" "this" {
+  # elb_name - (required) is a type of string
   elb_name = var.elb_name
 }
 ```

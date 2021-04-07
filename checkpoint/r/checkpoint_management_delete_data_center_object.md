@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "checkpoint_management_delete_data_center_object" "this" {
-  ignore_errors   = var.ignore_errors
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

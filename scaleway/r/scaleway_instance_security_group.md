@@ -176,43 +176,65 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_instance_security_group" "this" {
-  description             = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_default_security - (optional) is a type of bool
   enable_default_security = var.enable_default_security
-  external_rules          = var.external_rules
-  inbound_default_policy  = var.inbound_default_policy
-  name                    = var.name
+  # external_rules - (optional) is a type of bool
+  external_rules = var.external_rules
+  # inbound_default_policy - (optional) is a type of string
+  inbound_default_policy = var.inbound_default_policy
+  # name - (optional) is a type of string
+  name = var.name
+  # outbound_default_policy - (optional) is a type of string
   outbound_default_policy = var.outbound_default_policy
-  project_id              = var.project_id
-  stateful                = var.stateful
-  zone                    = var.zone
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # stateful - (optional) is a type of bool
+  stateful = var.stateful
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "inbound_rule" {
     for_each = var.inbound_rule
     content {
-      action     = inbound_rule.value["action"]
-      ip         = inbound_rule.value["ip"]
-      ip_range   = inbound_rule.value["ip_range"]
-      port       = inbound_rule.value["port"]
+      # action - (required) is a type of string
+      action = inbound_rule.value["action"]
+      # ip - (optional) is a type of string
+      ip = inbound_rule.value["ip"]
+      # ip_range - (optional) is a type of string
+      ip_range = inbound_rule.value["ip_range"]
+      # port - (optional) is a type of number
+      port = inbound_rule.value["port"]
+      # port_range - (optional) is a type of string
       port_range = inbound_rule.value["port_range"]
-      protocol   = inbound_rule.value["protocol"]
+      # protocol - (optional) is a type of string
+      protocol = inbound_rule.value["protocol"]
     }
   }
 
   dynamic "outbound_rule" {
     for_each = var.outbound_rule
     content {
-      action     = outbound_rule.value["action"]
-      ip         = outbound_rule.value["ip"]
-      ip_range   = outbound_rule.value["ip_range"]
-      port       = outbound_rule.value["port"]
+      # action - (required) is a type of string
+      action = outbound_rule.value["action"]
+      # ip - (optional) is a type of string
+      ip = outbound_rule.value["ip"]
+      # ip_range - (optional) is a type of string
+      ip_range = outbound_rule.value["ip_range"]
+      # port - (optional) is a type of number
+      port = outbound_rule.value["port"]
+      # port_range - (optional) is a type of string
       port_range = outbound_rule.value["port_range"]
-      protocol   = outbound_rule.value["protocol"]
+      # protocol - (optional) is a type of string
+      protocol = outbound_rule.value["protocol"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

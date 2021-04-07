@@ -122,16 +122,26 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontroller_nacdevice" "this" {
-  description        = var.description
-  fosid              = var.fosid
-  last_known_port    = var.last_known_port
-  last_known_switch  = var.last_known_switch
-  last_seen          = var.last_seen
-  mac                = var.mac
-  mac_policy         = var.mac_policy
+  # description - (optional) is a type of string
+  description = var.description
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # last_known_port - (optional) is a type of string
+  last_known_port = var.last_known_port
+  # last_known_switch - (optional) is a type of string
+  last_known_switch = var.last_known_switch
+  # last_seen - (optional) is a type of number
+  last_seen = var.last_seen
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # mac_policy - (optional) is a type of string
+  mac_policy = var.mac_policy
+  # matched_nac_policy - (optional) is a type of string
   matched_nac_policy = var.matched_nac_policy
-  port_policy        = var.port_policy
-  status             = var.status
+  # port_policy - (optional) is a type of string
+  port_policy = var.port_policy
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

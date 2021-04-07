@@ -56,7 +56,9 @@ variable "type" {
 
 ```terraform
 resource "tencentcloud_placement_group" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # type - (required) is a type of string
   type = var.type
 }
 ```

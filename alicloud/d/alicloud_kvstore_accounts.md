@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 data "alicloud_kvstore_accounts" "this" {
+  # account_name - (optional) is a type of string
   account_name = var.account_name
-  instance_id  = var.instance_id
-  name_regex   = var.name_regex
-  output_file  = var.output_file
-  status       = var.status
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

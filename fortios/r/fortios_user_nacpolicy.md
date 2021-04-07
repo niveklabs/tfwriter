@@ -224,31 +224,53 @@ variable "switch_scope" {
 
 ```terraform
 resource "fortios_user_nacpolicy" "this" {
-  category              = var.category
-  description           = var.description
+  # category - (optional) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ems_tag               = var.ems_tag
-  family                = var.family
-  host                  = var.host
-  hw_vendor             = var.hw_vendor
-  hw_version            = var.hw_version
-  mac                   = var.mac
-  name                  = var.name
-  os                    = var.os
-  src                   = var.src
-  status                = var.status
-  sw_version            = var.sw_version
-  switch_auto_auth      = var.switch_auto_auth
-  switch_fortilink      = var.switch_fortilink
-  switch_mac_policy     = var.switch_mac_policy
-  switch_port_policy    = var.switch_port_policy
-  type                  = var.type
-  user                  = var.user
-  user_group            = var.user_group
+  # ems_tag - (optional) is a type of string
+  ems_tag = var.ems_tag
+  # family - (optional) is a type of string
+  family = var.family
+  # host - (optional) is a type of string
+  host = var.host
+  # hw_vendor - (optional) is a type of string
+  hw_vendor = var.hw_vendor
+  # hw_version - (optional) is a type of string
+  hw_version = var.hw_version
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # name - (optional) is a type of string
+  name = var.name
+  # os - (optional) is a type of string
+  os = var.os
+  # src - (optional) is a type of string
+  src = var.src
+  # status - (optional) is a type of string
+  status = var.status
+  # sw_version - (optional) is a type of string
+  sw_version = var.sw_version
+  # switch_auto_auth - (optional) is a type of string
+  switch_auto_auth = var.switch_auto_auth
+  # switch_fortilink - (optional) is a type of string
+  switch_fortilink = var.switch_fortilink
+  # switch_mac_policy - (optional) is a type of string
+  switch_mac_policy = var.switch_mac_policy
+  # switch_port_policy - (optional) is a type of string
+  switch_port_policy = var.switch_port_policy
+  # type - (optional) is a type of string
+  type = var.type
+  # user - (optional) is a type of string
+  user = var.user
+  # user_group - (optional) is a type of string
+  user_group = var.user_group
 
   dynamic "switch_scope" {
     for_each = var.switch_scope
     content {
+      # switch_id - (optional) is a type of string
       switch_id = switch_scope.value["switch_id"]
     }
   }

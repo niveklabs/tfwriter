@@ -153,20 +153,34 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_kvstore_instance_classes" "this" {
-  architecture         = var.architecture
-  edition_type         = var.edition_type
-  engine               = var.engine
-  engine_version       = var.engine_version
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # edition_type - (optional) is a type of string
+  edition_type = var.edition_type
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  node_type            = var.node_type
-  output_file          = var.output_file
-  package_type         = var.package_type
-  performance_type     = var.performance_type
-  series_type          = var.series_type
-  shard_number         = var.shard_number
-  sorted_by            = var.sorted_by
-  storage_type         = var.storage_type
-  zone_id              = var.zone_id
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # package_type - (optional) is a type of string
+  package_type = var.package_type
+  # performance_type - (optional) is a type of string
+  performance_type = var.performance_type
+  # series_type - (optional) is a type of string
+  series_type = var.series_type
+  # shard_number - (optional) is a type of number
+  shard_number = var.shard_number
+  # sorted_by - (optional) is a type of string
+  sorted_by = var.sorted_by
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -66,8 +66,11 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_regions" "this" {
-  current     = var.current
-  name        = var.name
+  # current - (optional) is a type of bool
+  current = var.current
+  # name - (optional) is a type of string
+  name = var.name
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

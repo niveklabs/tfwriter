@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_image_export" "this" {
-  image_id   = var.image_id
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # oss_bucket - (required) is a type of string
   oss_bucket = var.oss_bucket
+  # oss_prefix - (optional) is a type of string
   oss_prefix = var.oss_prefix
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

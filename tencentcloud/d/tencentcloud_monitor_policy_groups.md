@@ -66,8 +66,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_monitor_policy_groups" "this" {
-  name               = var.name
-  policy_view_names  = var.policy_view_names
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_view_names - (optional) is a type of list of string
+  policy_view_names = var.policy_view_names
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

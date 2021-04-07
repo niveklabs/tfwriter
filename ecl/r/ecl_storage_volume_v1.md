@@ -129,21 +129,33 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_storage_volume_v1" "this" {
-  availability_zone  = var.availability_zone
-  description        = var.description
-  error_message      = var.error_message
-  initiator_iqns     = var.initiator_iqns
-  iops_per_gb        = var.iops_per_gb
-  name               = var.name
-  size               = var.size
-  throughput         = var.throughput
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # description - (optional) is a type of string
+  description = var.description
+  # error_message - (optional) is a type of string
+  error_message = var.error_message
+  # initiator_iqns - (optional) is a type of set of string
+  initiator_iqns = var.initiator_iqns
+  # iops_per_gb - (optional) is a type of string
+  iops_per_gb = var.iops_per_gb
+  # name - (required) is a type of string
+  name = var.name
+  # size - (required) is a type of number
+  size = var.size
+  # throughput - (optional) is a type of string
+  throughput = var.throughput
+  # virtual_storage_id - (required) is a type of string
   virtual_storage_id = var.virtual_storage_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

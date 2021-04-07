@@ -101,17 +101,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cen_route_service" "this" {
+  # access_region_id - (required) is a type of string
   access_region_id = var.access_region_id
-  cen_id           = var.cen_id
-  description      = var.description
-  host             = var.host
-  host_region_id   = var.host_region_id
-  host_vpc_id      = var.host_vpc_id
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # description - (optional) is a type of string
+  description = var.description
+  # host - (required) is a type of string
+  host = var.host
+  # host_region_id - (required) is a type of string
+  host_region_id = var.host_region_id
+  # host_vpc_id - (required) is a type of string
+  host_vpc_id = var.host_vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -49,6 +49,7 @@ variable "ip_address" {
 
 ```terraform
 data "digitalocean_floating_ip" "this" {
+  # ip_address - (required) is a type of string
   ip_address = var.ip_address
 }
 ```

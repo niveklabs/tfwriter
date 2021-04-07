@@ -49,6 +49,7 @@ variable "title" {
 
 ```terraform
 resource "grafana_folder" "this" {
+  # title - (required) is a type of string
   title = var.title
 }
 ```

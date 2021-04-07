@@ -89,12 +89,18 @@ variable "type" {
 
 ```terraform
 resource "cloudscale_floating_ip" "this" {
-  ip_version    = var.ip_version
+  # ip_version - (required) is a type of number
+  ip_version = var.ip_version
+  # prefix_length - (optional) is a type of number
   prefix_length = var.prefix_length
-  region_slug   = var.region_slug
-  reverse_ptr   = var.reverse_ptr
-  server        = var.server
-  type          = var.type
+  # region_slug - (optional) is a type of string
+  region_slug = var.region_slug
+  # reverse_ptr - (optional) is a type of string
+  reverse_ptr = var.reverse_ptr
+  # server - (optional) is a type of string
+  server = var.server
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

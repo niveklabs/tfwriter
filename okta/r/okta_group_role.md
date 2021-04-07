@@ -72,9 +72,13 @@ variable "target_group_list" {
 
 ```terraform
 resource "okta_group_role" "this" {
-  group_id          = var.group_id
-  role_type         = var.role_type
-  target_app_list   = var.target_app_list
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # role_type - (required) is a type of string
+  role_type = var.role_type
+  # target_app_list - (optional) is a type of set of string
+  target_app_list = var.target_app_list
+  # target_group_list - (optional) is a type of set of string
   target_group_list = var.target_group_list
 }
 ```

@@ -1388,88 +1388,139 @@ variable "vcenter_configuration" {
 
 ```terraform
 resource "avi_cloud" "this" {
-  apic_mode                    = var.apic_mode
-  autoscale_polling_interval   = var.autoscale_polling_interval
-  dhcp_enabled                 = var.dhcp_enabled
-  dns_provider_ref             = var.dns_provider_ref
-  dns_resolution_on_se         = var.dns_resolution_on_se
-  east_west_dns_provider_ref   = var.east_west_dns_provider_ref
-  east_west_ipam_provider_ref  = var.east_west_ipam_provider_ref
+  # apic_mode - (optional) is a type of bool
+  apic_mode = var.apic_mode
+  # autoscale_polling_interval - (optional) is a type of number
+  autoscale_polling_interval = var.autoscale_polling_interval
+  # dhcp_enabled - (optional) is a type of bool
+  dhcp_enabled = var.dhcp_enabled
+  # dns_provider_ref - (optional) is a type of string
+  dns_provider_ref = var.dns_provider_ref
+  # dns_resolution_on_se - (optional) is a type of bool
+  dns_resolution_on_se = var.dns_resolution_on_se
+  # east_west_dns_provider_ref - (optional) is a type of string
+  east_west_dns_provider_ref = var.east_west_dns_provider_ref
+  # east_west_ipam_provider_ref - (optional) is a type of string
+  east_west_ipam_provider_ref = var.east_west_ipam_provider_ref
+  # enable_vip_on_all_interfaces - (optional) is a type of bool
   enable_vip_on_all_interfaces = var.enable_vip_on_all_interfaces
-  enable_vip_static_routes     = var.enable_vip_static_routes
-  ip6_autocfg_enabled          = var.ip6_autocfg_enabled
-  ipam_provider_ref            = var.ipam_provider_ref
-  license_tier                 = var.license_tier
-  license_type                 = var.license_type
-  mtu                          = var.mtu
-  name                         = var.name
-  obj_name_prefix              = var.obj_name_prefix
-  prefer_static_routes         = var.prefer_static_routes
-  se_group_template_ref        = var.se_group_template_ref
+  # enable_vip_static_routes - (optional) is a type of bool
+  enable_vip_static_routes = var.enable_vip_static_routes
+  # ip6_autocfg_enabled - (optional) is a type of bool
+  ip6_autocfg_enabled = var.ip6_autocfg_enabled
+  # ipam_provider_ref - (optional) is a type of string
+  ipam_provider_ref = var.ipam_provider_ref
+  # license_tier - (optional) is a type of string
+  license_tier = var.license_tier
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # obj_name_prefix - (optional) is a type of string
+  obj_name_prefix = var.obj_name_prefix
+  # prefer_static_routes - (optional) is a type of bool
+  prefer_static_routes = var.prefer_static_routes
+  # se_group_template_ref - (optional) is a type of string
+  se_group_template_ref = var.se_group_template_ref
+  # state_based_dns_registration - (optional) is a type of bool
   state_based_dns_registration = var.state_based_dns_registration
-  tenant_ref                   = var.tenant_ref
-  uuid                         = var.uuid
-  vtype                        = var.vtype
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vtype - (required) is a type of string
+  vtype = var.vtype
 
   dynamic "apic_configuration" {
     for_each = var.apic_configuration
     content {
+      # apic_admin_tenant - (optional) is a type of string
       apic_admin_tenant = apic_configuration.value["apic_admin_tenant"]
-      apic_domain       = apic_configuration.value["apic_domain"]
-      apic_name         = apic_configuration.value["apic_name"]
-      apic_password     = apic_configuration.value["apic_password"]
-      apic_username     = apic_configuration.value["apic_username"]
-      context_aware     = apic_configuration.value["context_aware"]
-      se_tunnel_mode    = apic_configuration.value["se_tunnel_mode"]
+      # apic_domain - (optional) is a type of string
+      apic_domain = apic_configuration.value["apic_domain"]
+      # apic_name - (optional) is a type of list of string
+      apic_name = apic_configuration.value["apic_name"]
+      # apic_password - (optional) is a type of string
+      apic_password = apic_configuration.value["apic_password"]
+      # apic_username - (optional) is a type of string
+      apic_username = apic_configuration.value["apic_username"]
+      # context_aware - (optional) is a type of string
+      context_aware = apic_configuration.value["context_aware"]
+      # se_tunnel_mode - (optional) is a type of bool
+      se_tunnel_mode = apic_configuration.value["se_tunnel_mode"]
     }
   }
 
   dynamic "aws_configuration" {
     for_each = var.aws_configuration
     content {
-      access_key_id              = aws_configuration.value["access_key_id"]
-      asg_poll_interval          = aws_configuration.value["asg_poll_interval"]
-      free_elasticips            = aws_configuration.value["free_elasticips"]
-      iam_assume_role            = aws_configuration.value["iam_assume_role"]
+      # access_key_id - (optional) is a type of string
+      access_key_id = aws_configuration.value["access_key_id"]
+      # asg_poll_interval - (optional) is a type of number
+      asg_poll_interval = aws_configuration.value["asg_poll_interval"]
+      # free_elasticips - (optional) is a type of bool
+      free_elasticips = aws_configuration.value["free_elasticips"]
+      # iam_assume_role - (optional) is a type of string
+      iam_assume_role = aws_configuration.value["iam_assume_role"]
+      # publish_vip_to_public_zone - (optional) is a type of bool
       publish_vip_to_public_zone = aws_configuration.value["publish_vip_to_public_zone"]
-      region                     = aws_configuration.value["region"]
-      route53_integration        = aws_configuration.value["route53_integration"]
-      secret_access_key          = aws_configuration.value["secret_access_key"]
-      ttl                        = aws_configuration.value["ttl"]
-      use_iam_roles              = aws_configuration.value["use_iam_roles"]
-      use_sns_sqs                = aws_configuration.value["use_sns_sqs"]
-      vpc                        = aws_configuration.value["vpc"]
-      vpc_id                     = aws_configuration.value["vpc_id"]
+      # region - (optional) is a type of string
+      region = aws_configuration.value["region"]
+      # route53_integration - (optional) is a type of bool
+      route53_integration = aws_configuration.value["route53_integration"]
+      # secret_access_key - (optional) is a type of string
+      secret_access_key = aws_configuration.value["secret_access_key"]
+      # ttl - (optional) is a type of number
+      ttl = aws_configuration.value["ttl"]
+      # use_iam_roles - (optional) is a type of bool
+      use_iam_roles = aws_configuration.value["use_iam_roles"]
+      # use_sns_sqs - (optional) is a type of bool
+      use_sns_sqs = aws_configuration.value["use_sns_sqs"]
+      # vpc - (optional) is a type of string
+      vpc = aws_configuration.value["vpc"]
+      # vpc_id - (required) is a type of string
+      vpc_id = aws_configuration.value["vpc_id"]
 
       dynamic "ebs_encryption" {
         for_each = aws_configuration.value.ebs_encryption
         content {
+          # master_key - (optional) is a type of string
           master_key = ebs_encryption.value["master_key"]
-          mode       = ebs_encryption.value["mode"]
+          # mode - (optional) is a type of string
+          mode = ebs_encryption.value["mode"]
         }
       }
 
       dynamic "s3_encryption" {
         for_each = aws_configuration.value.s3_encryption
         content {
+          # master_key - (optional) is a type of string
           master_key = s3_encryption.value["master_key"]
-          mode       = s3_encryption.value["mode"]
+          # mode - (optional) is a type of string
+          mode = s3_encryption.value["mode"]
         }
       }
 
       dynamic "sqs_encryption" {
         for_each = aws_configuration.value.sqs_encryption
         content {
+          # master_key - (optional) is a type of string
           master_key = sqs_encryption.value["master_key"]
-          mode       = sqs_encryption.value["mode"]
+          # mode - (optional) is a type of string
+          mode = sqs_encryption.value["mode"]
         }
       }
 
       dynamic "zones" {
         for_each = aws_configuration.value.zones
         content {
+          # availability_zone - (required) is a type of string
           availability_zone = zones.value["availability_zone"]
+          # mgmt_network_name - (required) is a type of string
           mgmt_network_name = zones.value["mgmt_network_name"]
+          # mgmt_network_uuid - (optional) is a type of string
           mgmt_network_uuid = zones.value["mgmt_network_uuid"]
         }
       }
@@ -1480,22 +1531,34 @@ resource "avi_cloud" "this" {
   dynamic "azure_configuration" {
     for_each = var.azure_configuration
     content {
-      availability_zones    = azure_configuration.value["availability_zones"]
+      # availability_zones - (optional) is a type of list of string
+      availability_zones = azure_configuration.value["availability_zones"]
+      # cloud_credentials_ref - (optional) is a type of string
       cloud_credentials_ref = azure_configuration.value["cloud_credentials_ref"]
-      location              = azure_configuration.value["location"]
-      resource_group        = azure_configuration.value["resource_group"]
-      subscription_id       = azure_configuration.value["subscription_id"]
-      use_azure_dns         = azure_configuration.value["use_azure_dns"]
-      use_enhanced_ha       = azure_configuration.value["use_enhanced_ha"]
-      use_managed_disks     = azure_configuration.value["use_managed_disks"]
-      use_standard_alb      = azure_configuration.value["use_standard_alb"]
+      # location - (optional) is a type of string
+      location = azure_configuration.value["location"]
+      # resource_group - (optional) is a type of string
+      resource_group = azure_configuration.value["resource_group"]
+      # subscription_id - (optional) is a type of string
+      subscription_id = azure_configuration.value["subscription_id"]
+      # use_azure_dns - (optional) is a type of bool
+      use_azure_dns = azure_configuration.value["use_azure_dns"]
+      # use_enhanced_ha - (optional) is a type of bool
+      use_enhanced_ha = azure_configuration.value["use_enhanced_ha"]
+      # use_managed_disks - (optional) is a type of bool
+      use_managed_disks = azure_configuration.value["use_managed_disks"]
+      # use_standard_alb - (optional) is a type of bool
+      use_standard_alb = azure_configuration.value["use_standard_alb"]
 
       dynamic "network_info" {
         for_each = azure_configuration.value.network_info
         content {
+          # management_network_id - (optional) is a type of string
           management_network_id = network_info.value["management_network_id"]
-          se_network_id         = network_info.value["se_network_id"]
-          virtual_network_id    = network_info.value["virtual_network_id"]
+          # se_network_id - (optional) is a type of string
+          se_network_id = network_info.value["se_network_id"]
+          # virtual_network_id - (optional) is a type of string
+          virtual_network_id = network_info.value["virtual_network_id"]
         }
       }
 
@@ -1505,12 +1568,19 @@ resource "avi_cloud" "this" {
   dynamic "cloudstack_configuration" {
     for_each = var.cloudstack_configuration
     content {
-      access_key_id     = cloudstack_configuration.value["access_key_id"]
-      api_url           = cloudstack_configuration.value["api_url"]
-      cntr_public_ip    = cloudstack_configuration.value["cntr_public_ip"]
-      hypervisor        = cloudstack_configuration.value["hypervisor"]
+      # access_key_id - (required) is a type of string
+      access_key_id = cloudstack_configuration.value["access_key_id"]
+      # api_url - (required) is a type of string
+      api_url = cloudstack_configuration.value["api_url"]
+      # cntr_public_ip - (optional) is a type of string
+      cntr_public_ip = cloudstack_configuration.value["cntr_public_ip"]
+      # hypervisor - (optional) is a type of string
+      hypervisor = cloudstack_configuration.value["hypervisor"]
+      # mgmt_network_name - (required) is a type of string
       mgmt_network_name = cloudstack_configuration.value["mgmt_network_name"]
+      # mgmt_network_uuid - (optional) is a type of string
       mgmt_network_uuid = cloudstack_configuration.value["mgmt_network_uuid"]
+      # secret_access_key - (required) is a type of string
       secret_access_key = cloudstack_configuration.value["secret_access_key"]
     }
   }
@@ -1518,7 +1588,9 @@ resource "avi_cloud" "this" {
   dynamic "custom_tags" {
     for_each = var.custom_tags
     content {
+      # tag_key - (required) is a type of string
       tag_key = custom_tags.value["tag_key"]
+      # tag_val - (optional) is a type of string
       tag_val = custom_tags.value["tag_val"]
     }
   }
@@ -1526,46 +1598,75 @@ resource "avi_cloud" "this" {
   dynamic "docker_configuration" {
     for_each = var.docker_configuration
     content {
-      app_sync_frequency                 = docker_configuration.value["app_sync_frequency"]
-      ca_tls_key_and_certificate_ref     = docker_configuration.value["ca_tls_key_and_certificate_ref"]
+      # app_sync_frequency - (optional) is a type of number
+      app_sync_frequency = docker_configuration.value["app_sync_frequency"]
+      # ca_tls_key_and_certificate_ref - (optional) is a type of string
+      ca_tls_key_and_certificate_ref = docker_configuration.value["ca_tls_key_and_certificate_ref"]
+      # client_tls_key_and_certificate_ref - (optional) is a type of string
       client_tls_key_and_certificate_ref = docker_configuration.value["client_tls_key_and_certificate_ref"]
-      container_port_match_http_service  = docker_configuration.value["container_port_match_http_service"]
-      coredump_directory                 = docker_configuration.value["coredump_directory"]
-      disable_auto_backend_service_sync  = docker_configuration.value["disable_auto_backend_service_sync"]
+      # container_port_match_http_service - (optional) is a type of bool
+      container_port_match_http_service = docker_configuration.value["container_port_match_http_service"]
+      # coredump_directory - (optional) is a type of string
+      coredump_directory = docker_configuration.value["coredump_directory"]
+      # disable_auto_backend_service_sync - (optional) is a type of bool
+      disable_auto_backend_service_sync = docker_configuration.value["disable_auto_backend_service_sync"]
+      # disable_auto_frontend_service_sync - (optional) is a type of bool
       disable_auto_frontend_service_sync = docker_configuration.value["disable_auto_frontend_service_sync"]
-      disable_auto_se_creation           = docker_configuration.value["disable_auto_se_creation"]
-      enable_event_subscription          = docker_configuration.value["enable_event_subscription"]
-      feproxy_container_port_as_service  = docker_configuration.value["feproxy_container_port_as_service"]
-      feproxy_vips_enable_proxy_arp      = docker_configuration.value["feproxy_vips_enable_proxy_arp"]
-      fleet_endpoint                     = docker_configuration.value["fleet_endpoint"]
-      http_container_ports               = docker_configuration.value["http_container_ports"]
-      se_deployment_method               = docker_configuration.value["se_deployment_method"]
-      se_spawn_rate                      = docker_configuration.value["se_spawn_rate"]
-      se_volume                          = docker_configuration.value["se_volume"]
+      # disable_auto_se_creation - (optional) is a type of bool
+      disable_auto_se_creation = docker_configuration.value["disable_auto_se_creation"]
+      # enable_event_subscription - (optional) is a type of bool
+      enable_event_subscription = docker_configuration.value["enable_event_subscription"]
+      # feproxy_container_port_as_service - (optional) is a type of bool
+      feproxy_container_port_as_service = docker_configuration.value["feproxy_container_port_as_service"]
+      # feproxy_vips_enable_proxy_arp - (optional) is a type of bool
+      feproxy_vips_enable_proxy_arp = docker_configuration.value["feproxy_vips_enable_proxy_arp"]
+      # fleet_endpoint - (optional) is a type of string
+      fleet_endpoint = docker_configuration.value["fleet_endpoint"]
+      # http_container_ports - (optional) is a type of list of number
+      http_container_ports = docker_configuration.value["http_container_ports"]
+      # se_deployment_method - (optional) is a type of string
+      se_deployment_method = docker_configuration.value["se_deployment_method"]
+      # se_spawn_rate - (optional) is a type of number
+      se_spawn_rate = docker_configuration.value["se_spawn_rate"]
+      # se_volume - (optional) is a type of string
+      se_volume = docker_configuration.value["se_volume"]
+      # services_accessible_all_interfaces - (optional) is a type of bool
       services_accessible_all_interfaces = docker_configuration.value["services_accessible_all_interfaces"]
-      ssh_user_ref                       = docker_configuration.value["ssh_user_ref"]
-      ucp_nodes                          = docker_configuration.value["ucp_nodes"]
-      use_container_ip_port              = docker_configuration.value["use_container_ip_port"]
-      use_controller_image               = docker_configuration.value["use_controller_image"]
+      # ssh_user_ref - (optional) is a type of string
+      ssh_user_ref = docker_configuration.value["ssh_user_ref"]
+      # ucp_nodes - (optional) is a type of list of string
+      ucp_nodes = docker_configuration.value["ucp_nodes"]
+      # use_container_ip_port - (optional) is a type of bool
+      use_container_ip_port = docker_configuration.value["use_container_ip_port"]
+      # use_controller_image - (optional) is a type of bool
+      use_controller_image = docker_configuration.value["use_controller_image"]
 
       dynamic "docker_registry_se" {
         for_each = docker_configuration.value.docker_registry_se
         content {
+          # password - (optional) is a type of string
           password = docker_registry_se.value["password"]
-          private  = docker_registry_se.value["private"]
+          # private - (optional) is a type of bool
+          private = docker_registry_se.value["private"]
+          # registry - (optional) is a type of string
           registry = docker_registry_se.value["registry"]
+          # username - (optional) is a type of string
           username = docker_registry_se.value["username"]
 
           dynamic "oshift_registry" {
             for_each = docker_registry_se.value.oshift_registry
             content {
+              # registry_namespace - (optional) is a type of string
               registry_namespace = oshift_registry.value["registry_namespace"]
-              registry_service   = oshift_registry.value["registry_service"]
+              # registry_service - (optional) is a type of string
+              registry_service = oshift_registry.value["registry_service"]
 
               dynamic "registry_vip" {
                 for_each = oshift_registry.value.registry_vip
                 content {
+                  # addr - (required) is a type of string
                   addr = registry_vip.value["addr"]
+                  # type - (required) is a type of string
                   type = registry_vip.value["type"]
                 }
               }
@@ -1579,12 +1680,15 @@ resource "avi_cloud" "this" {
       dynamic "east_west_placement_subnet" {
         for_each = docker_configuration.value.east_west_placement_subnet
         content {
+          # mask - (required) is a type of number
           mask = east_west_placement_subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = east_west_placement_subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -1595,16 +1699,20 @@ resource "avi_cloud" "this" {
       dynamic "se_exclude_attributes" {
         for_each = docker_configuration.value.se_exclude_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_exclude_attributes.value["attribute"]
-          value     = se_exclude_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_exclude_attributes.value["value"]
         }
       }
 
       dynamic "se_include_attributes" {
         for_each = docker_configuration.value.se_include_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_include_attributes.value["attribute"]
-          value     = se_include_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_include_attributes.value["value"]
         }
       }
 
@@ -1614,50 +1722,74 @@ resource "avi_cloud" "this" {
   dynamic "gcp_configuration" {
     for_each = var.gcp_configuration
     content {
+      # cloud_credentials_ref - (optional) is a type of string
       cloud_credentials_ref = gcp_configuration.value["cloud_credentials_ref"]
-      encryption_key_id     = gcp_configuration.value["encryption_key_id"]
-      firewall_target_tags  = gcp_configuration.value["firewall_target_tags"]
-      gcs_bucket_name       = gcp_configuration.value["gcs_bucket_name"]
-      gcs_project_id        = gcp_configuration.value["gcs_project_id"]
-      region_name           = gcp_configuration.value["region_name"]
-      se_project_id         = gcp_configuration.value["se_project_id"]
-      zones                 = gcp_configuration.value["zones"]
+      # encryption_key_id - (optional) is a type of string
+      encryption_key_id = gcp_configuration.value["encryption_key_id"]
+      # firewall_target_tags - (optional) is a type of list of string
+      firewall_target_tags = gcp_configuration.value["firewall_target_tags"]
+      # gcs_bucket_name - (optional) is a type of string
+      gcs_bucket_name = gcp_configuration.value["gcs_bucket_name"]
+      # gcs_project_id - (optional) is a type of string
+      gcs_project_id = gcp_configuration.value["gcs_project_id"]
+      # region_name - (optional) is a type of string
+      region_name = gcp_configuration.value["region_name"]
+      # se_project_id - (optional) is a type of string
+      se_project_id = gcp_configuration.value["se_project_id"]
+      # zones - (optional) is a type of list of string
+      zones = gcp_configuration.value["zones"]
 
       dynamic "network_config" {
         for_each = gcp_configuration.value.network_config
         content {
+          # config - (optional) is a type of string
           config = network_config.value["config"]
 
           dynamic "inband" {
             for_each = network_config.value.inband
             content {
+              # vpc_network_name - (optional) is a type of string
               vpc_network_name = inband.value["vpc_network_name"]
-              vpc_project_id   = inband.value["vpc_project_id"]
-              vpc_subnet_name  = inband.value["vpc_subnet_name"]
+              # vpc_project_id - (optional) is a type of string
+              vpc_project_id = inband.value["vpc_project_id"]
+              # vpc_subnet_name - (optional) is a type of string
+              vpc_subnet_name = inband.value["vpc_subnet_name"]
             }
           }
 
           dynamic "one_arm" {
             for_each = network_config.value.one_arm
             content {
-              data_vpc_network_name       = one_arm.value["data_vpc_network_name"]
-              data_vpc_project_id         = one_arm.value["data_vpc_project_id"]
-              data_vpc_subnet_name        = one_arm.value["data_vpc_subnet_name"]
+              # data_vpc_network_name - (optional) is a type of string
+              data_vpc_network_name = one_arm.value["data_vpc_network_name"]
+              # data_vpc_project_id - (optional) is a type of string
+              data_vpc_project_id = one_arm.value["data_vpc_project_id"]
+              # data_vpc_subnet_name - (optional) is a type of string
+              data_vpc_subnet_name = one_arm.value["data_vpc_subnet_name"]
+              # management_vpc_network_name - (optional) is a type of string
               management_vpc_network_name = one_arm.value["management_vpc_network_name"]
-              management_vpc_subnet_name  = one_arm.value["management_vpc_subnet_name"]
+              # management_vpc_subnet_name - (optional) is a type of string
+              management_vpc_subnet_name = one_arm.value["management_vpc_subnet_name"]
             }
           }
 
           dynamic "two_arm" {
             for_each = network_config.value.two_arm
             content {
-              backend_data_vpc_network_name  = two_arm.value["backend_data_vpc_network_name"]
-              backend_data_vpc_subnet_name   = two_arm.value["backend_data_vpc_subnet_name"]
+              # backend_data_vpc_network_name - (optional) is a type of string
+              backend_data_vpc_network_name = two_arm.value["backend_data_vpc_network_name"]
+              # backend_data_vpc_subnet_name - (optional) is a type of string
+              backend_data_vpc_subnet_name = two_arm.value["backend_data_vpc_subnet_name"]
+              # frontend_data_vpc_network_name - (optional) is a type of string
               frontend_data_vpc_network_name = two_arm.value["frontend_data_vpc_network_name"]
-              frontend_data_vpc_project_id   = two_arm.value["frontend_data_vpc_project_id"]
-              frontend_data_vpc_subnet_name  = two_arm.value["frontend_data_vpc_subnet_name"]
-              management_vpc_network_name    = two_arm.value["management_vpc_network_name"]
-              management_vpc_subnet_name     = two_arm.value["management_vpc_subnet_name"]
+              # frontend_data_vpc_project_id - (optional) is a type of string
+              frontend_data_vpc_project_id = two_arm.value["frontend_data_vpc_project_id"]
+              # frontend_data_vpc_subnet_name - (optional) is a type of string
+              frontend_data_vpc_subnet_name = two_arm.value["frontend_data_vpc_subnet_name"]
+              # management_vpc_network_name - (optional) is a type of string
+              management_vpc_network_name = two_arm.value["management_vpc_network_name"]
+              # management_vpc_subnet_name - (optional) is a type of string
+              management_vpc_subnet_name = two_arm.value["management_vpc_subnet_name"]
             }
           }
 
@@ -1667,11 +1799,13 @@ resource "avi_cloud" "this" {
       dynamic "vip_allocation_strategy" {
         for_each = gcp_configuration.value.vip_allocation_strategy
         content {
+          # mode - (optional) is a type of string
           mode = vip_allocation_strategy.value["mode"]
 
           dynamic "ilb" {
             for_each = vip_allocation_strategy.value.ilb
             content {
+              # cloud_router_names - (optional) is a type of list of string
               cloud_router_names = ilb.value["cloud_router_names"]
             }
           }
@@ -1679,6 +1813,7 @@ resource "avi_cloud" "this" {
           dynamic "routes" {
             for_each = vip_allocation_strategy.value.routes
             content {
+              # match_se_group_subnet - (optional) is a type of bool
               match_se_group_subnet = routes.value["match_se_group_subnet"]
             }
           }
@@ -1692,23 +1827,33 @@ resource "avi_cloud" "this" {
   dynamic "linuxserver_configuration" {
     for_each = var.linuxserver_configuration
     content {
-      se_inband_mgmt      = linuxserver_configuration.value["se_inband_mgmt"]
-      se_log_disk_path    = linuxserver_configuration.value["se_log_disk_path"]
+      # se_inband_mgmt - (optional) is a type of bool
+      se_inband_mgmt = linuxserver_configuration.value["se_inband_mgmt"]
+      # se_log_disk_path - (optional) is a type of string
+      se_log_disk_path = linuxserver_configuration.value["se_log_disk_path"]
+      # se_log_disk_size_gb - (optional) is a type of number
       se_log_disk_size_gb = linuxserver_configuration.value["se_log_disk_size_gb"]
-      se_sys_disk_path    = linuxserver_configuration.value["se_sys_disk_path"]
+      # se_sys_disk_path - (optional) is a type of string
+      se_sys_disk_path = linuxserver_configuration.value["se_sys_disk_path"]
+      # se_sys_disk_size_gb - (optional) is a type of number
       se_sys_disk_size_gb = linuxserver_configuration.value["se_sys_disk_size_gb"]
-      ssh_user_ref        = linuxserver_configuration.value["ssh_user_ref"]
+      # ssh_user_ref - (optional) is a type of string
+      ssh_user_ref = linuxserver_configuration.value["ssh_user_ref"]
 
       dynamic "hosts" {
         for_each = linuxserver_configuration.value.hosts
         content {
+          # node_availability_zone - (optional) is a type of string
           node_availability_zone = hosts.value["node_availability_zone"]
-          se_group_ref           = hosts.value["se_group_ref"]
+          # se_group_ref - (optional) is a type of string
+          se_group_ref = hosts.value["se_group_ref"]
 
           dynamic "host_attr" {
             for_each = hosts.value.host_attr
             content {
+              # attr_key - (required) is a type of string
               attr_key = host_attr.value["attr_key"]
+              # attr_val - (optional) is a type of string
               attr_val = host_attr.value["attr_val"]
             }
           }
@@ -1716,7 +1861,9 @@ resource "avi_cloud" "this" {
           dynamic "host_ip" {
             for_each = hosts.value.host_ip
             content {
+              # addr - (required) is a type of string
               addr = host_ip.value["addr"]
+              # type - (required) is a type of string
               type = host_ip.value["type"]
             }
           }
@@ -1730,61 +1877,107 @@ resource "avi_cloud" "this" {
   dynamic "nsx_configuration" {
     for_each = var.nsx_configuration
     content {
-      avi_nsx_prefix       = nsx_configuration.value["avi_nsx_prefix"]
-      nsx_manager_name     = nsx_configuration.value["nsx_manager_name"]
+      # avi_nsx_prefix - (optional) is a type of string
+      avi_nsx_prefix = nsx_configuration.value["avi_nsx_prefix"]
+      # nsx_manager_name - (optional) is a type of string
+      nsx_manager_name = nsx_configuration.value["nsx_manager_name"]
+      # nsx_manager_password - (optional) is a type of string
       nsx_manager_password = nsx_configuration.value["nsx_manager_password"]
+      # nsx_manager_username - (optional) is a type of string
       nsx_manager_username = nsx_configuration.value["nsx_manager_username"]
-      nsx_poll_time        = nsx_configuration.value["nsx_poll_time"]
+      # nsx_poll_time - (optional) is a type of number
+      nsx_poll_time = nsx_configuration.value["nsx_poll_time"]
     }
   }
 
   dynamic "openstack_configuration" {
     for_each = var.openstack_configuration
     content {
-      admin_tenant            = openstack_configuration.value["admin_tenant"]
-      admin_tenant_uuid       = openstack_configuration.value["admin_tenant_uuid"]
-      allowed_address_pairs   = openstack_configuration.value["allowed_address_pairs"]
-      anti_affinity           = openstack_configuration.value["anti_affinity"]
-      auth_url                = openstack_configuration.value["auth_url"]
-      config_drive            = openstack_configuration.value["config_drive"]
+      # admin_tenant - (required) is a type of string
+      admin_tenant = openstack_configuration.value["admin_tenant"]
+      # admin_tenant_uuid - (optional) is a type of string
+      admin_tenant_uuid = openstack_configuration.value["admin_tenant_uuid"]
+      # allowed_address_pairs - (optional) is a type of bool
+      allowed_address_pairs = openstack_configuration.value["allowed_address_pairs"]
+      # anti_affinity - (optional) is a type of bool
+      anti_affinity = openstack_configuration.value["anti_affinity"]
+      # auth_url - (optional) is a type of string
+      auth_url = openstack_configuration.value["auth_url"]
+      # config_drive - (optional) is a type of bool
+      config_drive = openstack_configuration.value["config_drive"]
+      # contrail_disable_policy - (optional) is a type of bool
       contrail_disable_policy = openstack_configuration.value["contrail_disable_policy"]
-      contrail_endpoint       = openstack_configuration.value["contrail_endpoint"]
-      contrail_plugin         = openstack_configuration.value["contrail_plugin"]
-      external_networks       = openstack_configuration.value["external_networks"]
-      free_floatingips        = openstack_configuration.value["free_floatingips"]
-      hypervisor              = openstack_configuration.value["hypervisor"]
-      img_format              = openstack_configuration.value["img_format"]
+      # contrail_endpoint - (optional) is a type of string
+      contrail_endpoint = openstack_configuration.value["contrail_endpoint"]
+      # contrail_plugin - (optional) is a type of bool
+      contrail_plugin = openstack_configuration.value["contrail_plugin"]
+      # external_networks - (optional) is a type of bool
+      external_networks = openstack_configuration.value["external_networks"]
+      # free_floatingips - (optional) is a type of bool
+      free_floatingips = openstack_configuration.value["free_floatingips"]
+      # hypervisor - (optional) is a type of string
+      hypervisor = openstack_configuration.value["hypervisor"]
+      # img_format - (optional) is a type of string
+      img_format = openstack_configuration.value["img_format"]
+      # import_keystone_tenants - (optional) is a type of bool
       import_keystone_tenants = openstack_configuration.value["import_keystone_tenants"]
-      insecure                = openstack_configuration.value["insecure"]
-      keystone_host           = openstack_configuration.value["keystone_host"]
+      # insecure - (optional) is a type of bool
+      insecure = openstack_configuration.value["insecure"]
+      # keystone_host - (optional) is a type of string
+      keystone_host = openstack_configuration.value["keystone_host"]
+      # map_admin_to_cloudadmin - (optional) is a type of bool
       map_admin_to_cloudadmin = openstack_configuration.value["map_admin_to_cloudadmin"]
-      mgmt_network_name       = openstack_configuration.value["mgmt_network_name"]
-      mgmt_network_uuid       = openstack_configuration.value["mgmt_network_uuid"]
-      name_owner              = openstack_configuration.value["name_owner"]
-      neutron_rbac            = openstack_configuration.value["neutron_rbac"]
-      nuage_organization      = openstack_configuration.value["nuage_organization"]
-      nuage_password          = openstack_configuration.value["nuage_password"]
-      nuage_port              = openstack_configuration.value["nuage_port"]
-      nuage_username          = openstack_configuration.value["nuage_username"]
-      nuage_virtualip         = openstack_configuration.value["nuage_virtualip"]
-      nuage_vsd_host          = openstack_configuration.value["nuage_vsd_host"]
-      password                = openstack_configuration.value["password"]
-      port_security           = openstack_configuration.value["port_security"]
-      privilege               = openstack_configuration.value["privilege"]
-      prov_name               = openstack_configuration.value["prov_name"]
-      region                  = openstack_configuration.value["region"]
-      security_groups         = openstack_configuration.value["security_groups"]
-      tenant_se               = openstack_configuration.value["tenant_se"]
-      use_admin_url           = openstack_configuration.value["use_admin_url"]
-      use_internal_endpoints  = openstack_configuration.value["use_internal_endpoints"]
-      use_keystone_auth       = openstack_configuration.value["use_keystone_auth"]
-      use_nuagevip            = openstack_configuration.value["use_nuagevip"]
-      username                = openstack_configuration.value["username"]
+      # mgmt_network_name - (required) is a type of string
+      mgmt_network_name = openstack_configuration.value["mgmt_network_name"]
+      # mgmt_network_uuid - (optional) is a type of string
+      mgmt_network_uuid = openstack_configuration.value["mgmt_network_uuid"]
+      # name_owner - (optional) is a type of bool
+      name_owner = openstack_configuration.value["name_owner"]
+      # neutron_rbac - (optional) is a type of bool
+      neutron_rbac = openstack_configuration.value["neutron_rbac"]
+      # nuage_organization - (optional) is a type of string
+      nuage_organization = openstack_configuration.value["nuage_organization"]
+      # nuage_password - (optional) is a type of string
+      nuage_password = openstack_configuration.value["nuage_password"]
+      # nuage_port - (optional) is a type of number
+      nuage_port = openstack_configuration.value["nuage_port"]
+      # nuage_username - (optional) is a type of string
+      nuage_username = openstack_configuration.value["nuage_username"]
+      # nuage_virtualip - (optional) is a type of bool
+      nuage_virtualip = openstack_configuration.value["nuage_virtualip"]
+      # nuage_vsd_host - (optional) is a type of string
+      nuage_vsd_host = openstack_configuration.value["nuage_vsd_host"]
+      # password - (optional) is a type of string
+      password = openstack_configuration.value["password"]
+      # port_security - (optional) is a type of bool
+      port_security = openstack_configuration.value["port_security"]
+      # privilege - (required) is a type of string
+      privilege = openstack_configuration.value["privilege"]
+      # prov_name - (optional) is a type of list of string
+      prov_name = openstack_configuration.value["prov_name"]
+      # region - (optional) is a type of string
+      region = openstack_configuration.value["region"]
+      # security_groups - (optional) is a type of bool
+      security_groups = openstack_configuration.value["security_groups"]
+      # tenant_se - (optional) is a type of bool
+      tenant_se = openstack_configuration.value["tenant_se"]
+      # use_admin_url - (optional) is a type of bool
+      use_admin_url = openstack_configuration.value["use_admin_url"]
+      # use_internal_endpoints - (optional) is a type of bool
+      use_internal_endpoints = openstack_configuration.value["use_internal_endpoints"]
+      # use_keystone_auth - (optional) is a type of bool
+      use_keystone_auth = openstack_configuration.value["use_keystone_auth"]
+      # use_nuagevip - (optional) is a type of bool
+      use_nuagevip = openstack_configuration.value["use_nuagevip"]
+      # username - (required) is a type of string
+      username = openstack_configuration.value["username"]
 
       dynamic "custom_se_image_properties" {
         for_each = openstack_configuration.value.custom_se_image_properties
         content {
-          name  = custom_se_image_properties.value["name"]
+          # name - (required) is a type of string
+          name = custom_se_image_properties.value["name"]
+          # value - (optional) is a type of string
           value = custom_se_image_properties.value["value"]
         }
       }
@@ -1792,12 +1985,15 @@ resource "avi_cloud" "this" {
       dynamic "hypervisor_properties" {
         for_each = openstack_configuration.value.hypervisor_properties
         content {
+          # hypervisor - (required) is a type of string
           hypervisor = hypervisor_properties.value["hypervisor"]
 
           dynamic "image_properties" {
             for_each = hypervisor_properties.value.image_properties
             content {
-              name  = image_properties.value["name"]
+              # name - (required) is a type of string
+              name = image_properties.value["name"]
+              # value - (optional) is a type of string
               value = image_properties.value["value"]
             }
           }
@@ -1808,7 +2004,9 @@ resource "avi_cloud" "this" {
       dynamic "provider_vip_networks" {
         for_each = openstack_configuration.value.provider_vip_networks
         content {
+          # os_network_uuid - (optional) is a type of string
           os_network_uuid = provider_vip_networks.value["os_network_uuid"]
+          # os_tenant_uuids - (optional) is a type of list of string
           os_tenant_uuids = provider_vip_networks.value["os_tenant_uuids"]
         }
       }
@@ -1816,8 +2014,10 @@ resource "avi_cloud" "this" {
       dynamic "role_mapping" {
         for_each = openstack_configuration.value.role_mapping
         content {
+          # avi_role - (required) is a type of string
           avi_role = role_mapping.value["avi_role"]
-          os_role  = role_mapping.value["os_role"]
+          # os_role - (required) is a type of string
+          os_role = role_mapping.value["os_role"]
         }
       }
 
@@ -1827,57 +2027,101 @@ resource "avi_cloud" "this" {
   dynamic "oshiftk8s_configuration" {
     for_each = var.oshiftk8s_configuration
     content {
-      app_sync_frequency                   = oshiftk8s_configuration.value["app_sync_frequency"]
-      auto_assign_fqdn                     = oshiftk8s_configuration.value["auto_assign_fqdn"]
-      ca_tls_key_and_certificate_ref       = oshiftk8s_configuration.value["ca_tls_key_and_certificate_ref"]
-      client_tls_key_and_certificate_ref   = oshiftk8s_configuration.value["client_tls_key_and_certificate_ref"]
-      cluster_tag                          = oshiftk8s_configuration.value["cluster_tag"]
-      container_port_match_http_service    = oshiftk8s_configuration.value["container_port_match_http_service"]
-      coredump_directory                   = oshiftk8s_configuration.value["coredump_directory"]
+      # app_sync_frequency - (optional) is a type of number
+      app_sync_frequency = oshiftk8s_configuration.value["app_sync_frequency"]
+      # auto_assign_fqdn - (optional) is a type of bool
+      auto_assign_fqdn = oshiftk8s_configuration.value["auto_assign_fqdn"]
+      # ca_tls_key_and_certificate_ref - (optional) is a type of string
+      ca_tls_key_and_certificate_ref = oshiftk8s_configuration.value["ca_tls_key_and_certificate_ref"]
+      # client_tls_key_and_certificate_ref - (optional) is a type of string
+      client_tls_key_and_certificate_ref = oshiftk8s_configuration.value["client_tls_key_and_certificate_ref"]
+      # cluster_tag - (optional) is a type of string
+      cluster_tag = oshiftk8s_configuration.value["cluster_tag"]
+      # container_port_match_http_service - (optional) is a type of bool
+      container_port_match_http_service = oshiftk8s_configuration.value["container_port_match_http_service"]
+      # coredump_directory - (optional) is a type of string
+      coredump_directory = oshiftk8s_configuration.value["coredump_directory"]
+      # default_service_as_east_west_service - (optional) is a type of bool
       default_service_as_east_west_service = oshiftk8s_configuration.value["default_service_as_east_west_service"]
-      disable_auto_backend_service_sync    = oshiftk8s_configuration.value["disable_auto_backend_service_sync"]
-      disable_auto_frontend_service_sync   = oshiftk8s_configuration.value["disable_auto_frontend_service_sync"]
-      disable_auto_gs_sync                 = oshiftk8s_configuration.value["disable_auto_gs_sync"]
-      disable_auto_se_creation             = oshiftk8s_configuration.value["disable_auto_se_creation"]
-      docker_endpoint                      = oshiftk8s_configuration.value["docker_endpoint"]
-      enable_event_subscription            = oshiftk8s_configuration.value["enable_event_subscription"]
-      enable_route_ingress_hardening       = oshiftk8s_configuration.value["enable_route_ingress_hardening"]
-      feproxy_vips_enable_proxy_arp        = oshiftk8s_configuration.value["feproxy_vips_enable_proxy_arp"]
-      http_container_ports                 = oshiftk8s_configuration.value["http_container_ports"]
-      l4_health_monitoring                 = oshiftk8s_configuration.value["l4_health_monitoring"]
-      master_nodes                         = oshiftk8s_configuration.value["master_nodes"]
-      node_availability_zone_label         = oshiftk8s_configuration.value["node_availability_zone_label"]
-      num_shards                           = oshiftk8s_configuration.value["num_shards"]
-      override_service_ports               = oshiftk8s_configuration.value["override_service_ports"]
-      persistent_volume_claim              = oshiftk8s_configuration.value["persistent_volume_claim"]
-      sdn_overlay                          = oshiftk8s_configuration.value["sdn_overlay"]
-      se_deployment_method                 = oshiftk8s_configuration.value["se_deployment_method"]
-      se_image_pull_secret                 = oshiftk8s_configuration.value["se_image_pull_secret"]
-      se_namespace                         = oshiftk8s_configuration.value["se_namespace"]
-      se_priority_class                    = oshiftk8s_configuration.value["se_priority_class"]
-      se_restart_batch_size                = oshiftk8s_configuration.value["se_restart_batch_size"]
-      se_restart_force                     = oshiftk8s_configuration.value["se_restart_force"]
-      se_volume                            = oshiftk8s_configuration.value["se_volume"]
-      secure_egress_mode                   = oshiftk8s_configuration.value["secure_egress_mode"]
-      service_account_token                = oshiftk8s_configuration.value["service_account_token"]
-      shard_prefix                         = oshiftk8s_configuration.value["shard_prefix"]
-      shared_virtualservice_namespace      = oshiftk8s_configuration.value["shared_virtualservice_namespace"]
-      ssh_user_ref                         = oshiftk8s_configuration.value["ssh_user_ref"]
-      sync_not_ready_addresses             = oshiftk8s_configuration.value["sync_not_ready_addresses"]
-      use_controller_image                 = oshiftk8s_configuration.value["use_controller_image"]
-      use_resource_definition_as_ssot      = oshiftk8s_configuration.value["use_resource_definition_as_ssot"]
-      use_scheduling_disabled_nodes        = oshiftk8s_configuration.value["use_scheduling_disabled_nodes"]
-      use_service_cluster_ip_as_ew_vip     = oshiftk8s_configuration.value["use_service_cluster_ip_as_ew_vip"]
+      # disable_auto_backend_service_sync - (optional) is a type of bool
+      disable_auto_backend_service_sync = oshiftk8s_configuration.value["disable_auto_backend_service_sync"]
+      # disable_auto_frontend_service_sync - (optional) is a type of bool
+      disable_auto_frontend_service_sync = oshiftk8s_configuration.value["disable_auto_frontend_service_sync"]
+      # disable_auto_gs_sync - (optional) is a type of bool
+      disable_auto_gs_sync = oshiftk8s_configuration.value["disable_auto_gs_sync"]
+      # disable_auto_se_creation - (optional) is a type of bool
+      disable_auto_se_creation = oshiftk8s_configuration.value["disable_auto_se_creation"]
+      # docker_endpoint - (optional) is a type of string
+      docker_endpoint = oshiftk8s_configuration.value["docker_endpoint"]
+      # enable_event_subscription - (optional) is a type of bool
+      enable_event_subscription = oshiftk8s_configuration.value["enable_event_subscription"]
+      # enable_route_ingress_hardening - (optional) is a type of bool
+      enable_route_ingress_hardening = oshiftk8s_configuration.value["enable_route_ingress_hardening"]
+      # feproxy_vips_enable_proxy_arp - (optional) is a type of bool
+      feproxy_vips_enable_proxy_arp = oshiftk8s_configuration.value["feproxy_vips_enable_proxy_arp"]
+      # http_container_ports - (optional) is a type of list of number
+      http_container_ports = oshiftk8s_configuration.value["http_container_ports"]
+      # l4_health_monitoring - (optional) is a type of bool
+      l4_health_monitoring = oshiftk8s_configuration.value["l4_health_monitoring"]
+      # master_nodes - (optional) is a type of list of string
+      master_nodes = oshiftk8s_configuration.value["master_nodes"]
+      # node_availability_zone_label - (optional) is a type of string
+      node_availability_zone_label = oshiftk8s_configuration.value["node_availability_zone_label"]
+      # num_shards - (optional) is a type of number
+      num_shards = oshiftk8s_configuration.value["num_shards"]
+      # override_service_ports - (optional) is a type of bool
+      override_service_ports = oshiftk8s_configuration.value["override_service_ports"]
+      # persistent_volume_claim - (optional) is a type of string
+      persistent_volume_claim = oshiftk8s_configuration.value["persistent_volume_claim"]
+      # sdn_overlay - (optional) is a type of bool
+      sdn_overlay = oshiftk8s_configuration.value["sdn_overlay"]
+      # se_deployment_method - (optional) is a type of string
+      se_deployment_method = oshiftk8s_configuration.value["se_deployment_method"]
+      # se_image_pull_secret - (optional) is a type of string
+      se_image_pull_secret = oshiftk8s_configuration.value["se_image_pull_secret"]
+      # se_namespace - (optional) is a type of string
+      se_namespace = oshiftk8s_configuration.value["se_namespace"]
+      # se_priority_class - (optional) is a type of string
+      se_priority_class = oshiftk8s_configuration.value["se_priority_class"]
+      # se_restart_batch_size - (optional) is a type of number
+      se_restart_batch_size = oshiftk8s_configuration.value["se_restart_batch_size"]
+      # se_restart_force - (optional) is a type of bool
+      se_restart_force = oshiftk8s_configuration.value["se_restart_force"]
+      # se_volume - (optional) is a type of string
+      se_volume = oshiftk8s_configuration.value["se_volume"]
+      # secure_egress_mode - (optional) is a type of bool
+      secure_egress_mode = oshiftk8s_configuration.value["secure_egress_mode"]
+      # service_account_token - (optional) is a type of string
+      service_account_token = oshiftk8s_configuration.value["service_account_token"]
+      # shard_prefix - (optional) is a type of string
+      shard_prefix = oshiftk8s_configuration.value["shard_prefix"]
+      # shared_virtualservice_namespace - (optional) is a type of bool
+      shared_virtualservice_namespace = oshiftk8s_configuration.value["shared_virtualservice_namespace"]
+      # ssh_user_ref - (optional) is a type of string
+      ssh_user_ref = oshiftk8s_configuration.value["ssh_user_ref"]
+      # sync_not_ready_addresses - (optional) is a type of bool
+      sync_not_ready_addresses = oshiftk8s_configuration.value["sync_not_ready_addresses"]
+      # use_controller_image - (optional) is a type of bool
+      use_controller_image = oshiftk8s_configuration.value["use_controller_image"]
+      # use_resource_definition_as_ssot - (optional) is a type of bool
+      use_resource_definition_as_ssot = oshiftk8s_configuration.value["use_resource_definition_as_ssot"]
+      # use_scheduling_disabled_nodes - (optional) is a type of bool
+      use_scheduling_disabled_nodes = oshiftk8s_configuration.value["use_scheduling_disabled_nodes"]
+      # use_service_cluster_ip_as_ew_vip - (optional) is a type of bool
+      use_service_cluster_ip_as_ew_vip = oshiftk8s_configuration.value["use_service_cluster_ip_as_ew_vip"]
 
       dynamic "avi_bridge_subnet" {
         for_each = oshiftk8s_configuration.value.avi_bridge_subnet
         content {
+          # mask - (required) is a type of number
           mask = avi_bridge_subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = avi_bridge_subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -1888,21 +2132,29 @@ resource "avi_cloud" "this" {
       dynamic "docker_registry_se" {
         for_each = oshiftk8s_configuration.value.docker_registry_se
         content {
+          # password - (optional) is a type of string
           password = docker_registry_se.value["password"]
-          private  = docker_registry_se.value["private"]
+          # private - (optional) is a type of bool
+          private = docker_registry_se.value["private"]
+          # registry - (optional) is a type of string
           registry = docker_registry_se.value["registry"]
+          # username - (optional) is a type of string
           username = docker_registry_se.value["username"]
 
           dynamic "oshift_registry" {
             for_each = docker_registry_se.value.oshift_registry
             content {
+              # registry_namespace - (optional) is a type of string
               registry_namespace = oshift_registry.value["registry_namespace"]
-              registry_service   = oshift_registry.value["registry_service"]
+              # registry_service - (optional) is a type of string
+              registry_service = oshift_registry.value["registry_service"]
 
               dynamic "registry_vip" {
                 for_each = oshift_registry.value.registry_vip
                 content {
+                  # addr - (required) is a type of string
                   addr = registry_vip.value["addr"]
+                  # type - (required) is a type of string
                   type = registry_vip.value["type"]
                 }
               }
@@ -1916,12 +2168,15 @@ resource "avi_cloud" "this" {
       dynamic "east_west_placement_subnet" {
         for_each = oshiftk8s_configuration.value.east_west_placement_subnet
         content {
+          # mask - (required) is a type of number
           mask = east_west_placement_subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = east_west_placement_subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -1932,45 +2187,57 @@ resource "avi_cloud" "this" {
       dynamic "ing_exclude_attributes" {
         for_each = oshiftk8s_configuration.value.ing_exclude_attributes
         content {
+          # attribute - (optional) is a type of string
           attribute = ing_exclude_attributes.value["attribute"]
-          value     = ing_exclude_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = ing_exclude_attributes.value["value"]
         }
       }
 
       dynamic "ing_include_attributes" {
         for_each = oshiftk8s_configuration.value.ing_include_attributes
         content {
+          # attribute - (optional) is a type of string
           attribute = ing_include_attributes.value["attribute"]
-          value     = ing_include_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = ing_include_attributes.value["value"]
         }
       }
 
       dynamic "ns_exclude_attributes" {
         for_each = oshiftk8s_configuration.value.ns_exclude_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = ns_exclude_attributes.value["attribute"]
-          value     = ns_exclude_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = ns_exclude_attributes.value["value"]
         }
       }
 
       dynamic "ns_include_attributes" {
         for_each = oshiftk8s_configuration.value.ns_include_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = ns_include_attributes.value["attribute"]
-          value     = ns_include_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = ns_include_attributes.value["value"]
         }
       }
 
       dynamic "routes" {
         for_each = oshiftk8s_configuration.value.routes
         content {
-          if_name           = routes.value["if_name"]
+          # if_name - (optional) is a type of string
+          if_name = routes.value["if_name"]
+          # network_namespace - (optional) is a type of string
           network_namespace = routes.value["network_namespace"]
 
           dynamic "nexthop" {
             for_each = routes.value.nexthop
             content {
+              # addr - (required) is a type of string
               addr = nexthop.value["addr"]
+              # type - (required) is a type of string
               type = nexthop.value["type"]
             }
           }
@@ -1978,12 +2245,15 @@ resource "avi_cloud" "this" {
           dynamic "subnet" {
             for_each = routes.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1997,34 +2267,45 @@ resource "avi_cloud" "this" {
       dynamic "se_exclude_attributes" {
         for_each = oshiftk8s_configuration.value.se_exclude_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_exclude_attributes.value["attribute"]
-          value     = se_exclude_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_exclude_attributes.value["value"]
         }
       }
 
       dynamic "se_include_attributes" {
         for_each = oshiftk8s_configuration.value.se_include_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_include_attributes.value["attribute"]
-          value     = se_include_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_include_attributes.value["value"]
         }
       }
 
       dynamic "se_pod_tolerations" {
         for_each = oshiftk8s_configuration.value.se_pod_tolerations
         content {
-          effect             = se_pod_tolerations.value["effect"]
-          key                = se_pod_tolerations.value["key"]
-          operator           = se_pod_tolerations.value["operator"]
+          # effect - (optional) is a type of string
+          effect = se_pod_tolerations.value["effect"]
+          # key - (optional) is a type of string
+          key = se_pod_tolerations.value["key"]
+          # operator - (optional) is a type of string
+          operator = se_pod_tolerations.value["operator"]
+          # toleration_seconds - (optional) is a type of number
           toleration_seconds = se_pod_tolerations.value["toleration_seconds"]
-          value              = se_pod_tolerations.value["value"]
+          # value - (optional) is a type of string
+          value = se_pod_tolerations.value["value"]
         }
       }
 
       dynamic "vip_default_gateway" {
         for_each = oshiftk8s_configuration.value.vip_default_gateway
         content {
+          # addr - (required) is a type of string
           addr = vip_default_gateway.value["addr"]
+          # type - (required) is a type of string
           type = vip_default_gateway.value["type"]
         }
       }
@@ -2035,9 +2316,13 @@ resource "avi_cloud" "this" {
   dynamic "proxy_configuration" {
     for_each = var.proxy_configuration
     content {
-      host     = proxy_configuration.value["host"]
+      # host - (required) is a type of string
+      host = proxy_configuration.value["host"]
+      # password - (optional) is a type of string
       password = proxy_configuration.value["password"]
-      port     = proxy_configuration.value["port"]
+      # port - (required) is a type of number
+      port = proxy_configuration.value["port"]
+      # username - (optional) is a type of string
       username = proxy_configuration.value["username"]
     }
   }
@@ -2045,46 +2330,75 @@ resource "avi_cloud" "this" {
   dynamic "rancher_configuration" {
     for_each = var.rancher_configuration
     content {
-      access_key                         = rancher_configuration.value["access_key"]
-      app_sync_frequency                 = rancher_configuration.value["app_sync_frequency"]
-      container_port_match_http_service  = rancher_configuration.value["container_port_match_http_service"]
-      coredump_directory                 = rancher_configuration.value["coredump_directory"]
-      disable_auto_backend_service_sync  = rancher_configuration.value["disable_auto_backend_service_sync"]
+      # access_key - (optional) is a type of string
+      access_key = rancher_configuration.value["access_key"]
+      # app_sync_frequency - (optional) is a type of number
+      app_sync_frequency = rancher_configuration.value["app_sync_frequency"]
+      # container_port_match_http_service - (optional) is a type of bool
+      container_port_match_http_service = rancher_configuration.value["container_port_match_http_service"]
+      # coredump_directory - (optional) is a type of string
+      coredump_directory = rancher_configuration.value["coredump_directory"]
+      # disable_auto_backend_service_sync - (optional) is a type of bool
+      disable_auto_backend_service_sync = rancher_configuration.value["disable_auto_backend_service_sync"]
+      # disable_auto_frontend_service_sync - (optional) is a type of bool
       disable_auto_frontend_service_sync = rancher_configuration.value["disable_auto_frontend_service_sync"]
-      disable_auto_se_creation           = rancher_configuration.value["disable_auto_se_creation"]
-      enable_event_subscription          = rancher_configuration.value["enable_event_subscription"]
-      feproxy_container_port_as_service  = rancher_configuration.value["feproxy_container_port_as_service"]
-      feproxy_vips_enable_proxy_arp      = rancher_configuration.value["feproxy_vips_enable_proxy_arp"]
-      fleet_endpoint                     = rancher_configuration.value["fleet_endpoint"]
-      http_container_ports               = rancher_configuration.value["http_container_ports"]
-      rancher_servers                    = rancher_configuration.value["rancher_servers"]
-      se_deployment_method               = rancher_configuration.value["se_deployment_method"]
-      se_spawn_rate                      = rancher_configuration.value["se_spawn_rate"]
-      se_volume                          = rancher_configuration.value["se_volume"]
-      secret_key                         = rancher_configuration.value["secret_key"]
+      # disable_auto_se_creation - (optional) is a type of bool
+      disable_auto_se_creation = rancher_configuration.value["disable_auto_se_creation"]
+      # enable_event_subscription - (optional) is a type of bool
+      enable_event_subscription = rancher_configuration.value["enable_event_subscription"]
+      # feproxy_container_port_as_service - (optional) is a type of bool
+      feproxy_container_port_as_service = rancher_configuration.value["feproxy_container_port_as_service"]
+      # feproxy_vips_enable_proxy_arp - (optional) is a type of bool
+      feproxy_vips_enable_proxy_arp = rancher_configuration.value["feproxy_vips_enable_proxy_arp"]
+      # fleet_endpoint - (optional) is a type of string
+      fleet_endpoint = rancher_configuration.value["fleet_endpoint"]
+      # http_container_ports - (optional) is a type of list of number
+      http_container_ports = rancher_configuration.value["http_container_ports"]
+      # rancher_servers - (optional) is a type of list of string
+      rancher_servers = rancher_configuration.value["rancher_servers"]
+      # se_deployment_method - (optional) is a type of string
+      se_deployment_method = rancher_configuration.value["se_deployment_method"]
+      # se_spawn_rate - (optional) is a type of number
+      se_spawn_rate = rancher_configuration.value["se_spawn_rate"]
+      # se_volume - (optional) is a type of string
+      se_volume = rancher_configuration.value["se_volume"]
+      # secret_key - (optional) is a type of string
+      secret_key = rancher_configuration.value["secret_key"]
+      # services_accessible_all_interfaces - (optional) is a type of bool
       services_accessible_all_interfaces = rancher_configuration.value["services_accessible_all_interfaces"]
-      ssh_user_ref                       = rancher_configuration.value["ssh_user_ref"]
-      use_container_ip_port              = rancher_configuration.value["use_container_ip_port"]
-      use_controller_image               = rancher_configuration.value["use_controller_image"]
+      # ssh_user_ref - (optional) is a type of string
+      ssh_user_ref = rancher_configuration.value["ssh_user_ref"]
+      # use_container_ip_port - (optional) is a type of bool
+      use_container_ip_port = rancher_configuration.value["use_container_ip_port"]
+      # use_controller_image - (optional) is a type of bool
+      use_controller_image = rancher_configuration.value["use_controller_image"]
 
       dynamic "docker_registry_se" {
         for_each = rancher_configuration.value.docker_registry_se
         content {
+          # password - (optional) is a type of string
           password = docker_registry_se.value["password"]
-          private  = docker_registry_se.value["private"]
+          # private - (optional) is a type of bool
+          private = docker_registry_se.value["private"]
+          # registry - (optional) is a type of string
           registry = docker_registry_se.value["registry"]
+          # username - (optional) is a type of string
           username = docker_registry_se.value["username"]
 
           dynamic "oshift_registry" {
             for_each = docker_registry_se.value.oshift_registry
             content {
+              # registry_namespace - (optional) is a type of string
               registry_namespace = oshift_registry.value["registry_namespace"]
-              registry_service   = oshift_registry.value["registry_service"]
+              # registry_service - (optional) is a type of string
+              registry_service = oshift_registry.value["registry_service"]
 
               dynamic "registry_vip" {
                 for_each = oshift_registry.value.registry_vip
                 content {
+                  # addr - (required) is a type of string
                   addr = registry_vip.value["addr"]
+                  # type - (required) is a type of string
                   type = registry_vip.value["type"]
                 }
               }
@@ -2098,12 +2412,15 @@ resource "avi_cloud" "this" {
       dynamic "east_west_placement_subnet" {
         for_each = rancher_configuration.value.east_west_placement_subnet
         content {
+          # mask - (required) is a type of number
           mask = east_west_placement_subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = east_west_placement_subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -2114,33 +2431,48 @@ resource "avi_cloud" "this" {
       dynamic "nuage_controller" {
         for_each = rancher_configuration.value.nuage_controller
         content {
+          # nuage_organization - (optional) is a type of string
           nuage_organization = nuage_controller.value["nuage_organization"]
-          nuage_password     = nuage_controller.value["nuage_password"]
-          nuage_port         = nuage_controller.value["nuage_port"]
-          nuage_username     = nuage_controller.value["nuage_username"]
-          nuage_vsd_host     = nuage_controller.value["nuage_vsd_host"]
-          se_domain          = nuage_controller.value["se_domain"]
-          se_enterprise      = nuage_controller.value["se_enterprise"]
-          se_network         = nuage_controller.value["se_network"]
-          se_policy_group    = nuage_controller.value["se_policy_group"]
-          se_user            = nuage_controller.value["se_user"]
-          se_zone            = nuage_controller.value["se_zone"]
+          # nuage_password - (optional) is a type of string
+          nuage_password = nuage_controller.value["nuage_password"]
+          # nuage_port - (optional) is a type of number
+          nuage_port = nuage_controller.value["nuage_port"]
+          # nuage_username - (optional) is a type of string
+          nuage_username = nuage_controller.value["nuage_username"]
+          # nuage_vsd_host - (optional) is a type of string
+          nuage_vsd_host = nuage_controller.value["nuage_vsd_host"]
+          # se_domain - (optional) is a type of string
+          se_domain = nuage_controller.value["se_domain"]
+          # se_enterprise - (optional) is a type of string
+          se_enterprise = nuage_controller.value["se_enterprise"]
+          # se_network - (optional) is a type of string
+          se_network = nuage_controller.value["se_network"]
+          # se_policy_group - (optional) is a type of string
+          se_policy_group = nuage_controller.value["se_policy_group"]
+          # se_user - (optional) is a type of string
+          se_user = nuage_controller.value["se_user"]
+          # se_zone - (optional) is a type of string
+          se_zone = nuage_controller.value["se_zone"]
         }
       }
 
       dynamic "se_exclude_attributes" {
         for_each = rancher_configuration.value.se_exclude_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_exclude_attributes.value["attribute"]
-          value     = se_exclude_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_exclude_attributes.value["value"]
         }
       }
 
       dynamic "se_include_attributes" {
         for_each = rancher_configuration.value.se_include_attributes
         content {
+          # attribute - (required) is a type of string
           attribute = se_include_attributes.value["attribute"]
-          value     = se_include_attributes.value["value"]
+          # value - (optional) is a type of string
+          value = se_include_attributes.value["value"]
         }
       }
 
@@ -2150,37 +2482,55 @@ resource "avi_cloud" "this" {
   dynamic "vca_configuration" {
     for_each = var.vca_configuration
     content {
-      privilege        = vca_configuration.value["privilege"]
-      vca_host         = vca_configuration.value["vca_host"]
-      vca_instance     = vca_configuration.value["vca_instance"]
+      # privilege - (required) is a type of string
+      privilege = vca_configuration.value["privilege"]
+      # vca_host - (required) is a type of string
+      vca_host = vca_configuration.value["vca_host"]
+      # vca_instance - (required) is a type of string
+      vca_instance = vca_configuration.value["vca_instance"]
+      # vca_mgmt_network - (required) is a type of string
       vca_mgmt_network = vca_configuration.value["vca_mgmt_network"]
-      vca_orgnization  = vca_configuration.value["vca_orgnization"]
-      vca_password     = vca_configuration.value["vca_password"]
-      vca_username     = vca_configuration.value["vca_username"]
-      vca_vdc          = vca_configuration.value["vca_vdc"]
+      # vca_orgnization - (required) is a type of string
+      vca_orgnization = vca_configuration.value["vca_orgnization"]
+      # vca_password - (required) is a type of string
+      vca_password = vca_configuration.value["vca_password"]
+      # vca_username - (required) is a type of string
+      vca_username = vca_configuration.value["vca_username"]
+      # vca_vdc - (required) is a type of string
+      vca_vdc = vca_configuration.value["vca_vdc"]
     }
   }
 
   dynamic "vcenter_configuration" {
     for_each = var.vcenter_configuration
     content {
-      datacenter                   = vcenter_configuration.value["datacenter"]
-      management_network           = vcenter_configuration.value["management_network"]
-      password                     = vcenter_configuration.value["password"]
-      privilege                    = vcenter_configuration.value["privilege"]
-      username                     = vcenter_configuration.value["username"]
+      # datacenter - (optional) is a type of string
+      datacenter = vcenter_configuration.value["datacenter"]
+      # management_network - (optional) is a type of string
+      management_network = vcenter_configuration.value["management_network"]
+      # password - (optional) is a type of string
+      password = vcenter_configuration.value["password"]
+      # privilege - (required) is a type of string
+      privilege = vcenter_configuration.value["privilege"]
+      # username - (optional) is a type of string
+      username = vcenter_configuration.value["username"]
+      # vcenter_template_se_location - (optional) is a type of string
       vcenter_template_se_location = vcenter_configuration.value["vcenter_template_se_location"]
-      vcenter_url                  = vcenter_configuration.value["vcenter_url"]
+      # vcenter_url - (optional) is a type of string
+      vcenter_url = vcenter_configuration.value["vcenter_url"]
 
       dynamic "management_ip_subnet" {
         for_each = vcenter_configuration.value.management_ip_subnet
         content {
+          # mask - (required) is a type of number
           mask = management_ip_subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = management_ip_subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }

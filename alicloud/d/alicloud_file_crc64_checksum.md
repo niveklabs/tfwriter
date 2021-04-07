@@ -57,7 +57,9 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_file_crc64_checksum" "this" {
-  filename    = var.filename
+  # filename - (required) is a type of string
+  filename = var.filename
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

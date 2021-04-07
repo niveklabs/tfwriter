@@ -138,22 +138,34 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_http_application_profile" "this" {
-  description            = var.description
-  display_name           = var.display_name
-  http_redirect_to       = var.http_redirect_to
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # http_redirect_to - (optional) is a type of string
+  http_redirect_to = var.http_redirect_to
+  # http_redirect_to_https - (optional) is a type of bool
   http_redirect_to_https = var.http_redirect_to_https
-  idle_timeout           = var.idle_timeout
-  ntlm                   = var.ntlm
-  request_body_size      = var.request_body_size
-  request_header_size    = var.request_header_size
-  response_timeout       = var.response_timeout
-  x_forwarded_for        = var.x_forwarded_for
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # ntlm - (optional) is a type of bool
+  ntlm = var.ntlm
+  # request_body_size - (optional) is a type of number
+  request_body_size = var.request_body_size
+  # request_header_size - (optional) is a type of number
+  request_header_size = var.request_header_size
+  # response_timeout - (optional) is a type of number
+  response_timeout = var.response_timeout
+  # x_forwarded_for - (optional) is a type of string
+  x_forwarded_for = var.x_forwarded_for
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

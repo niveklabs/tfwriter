@@ -92,16 +92,23 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_ipv6" "this" {
-  failover    = var.failover
-  labels      = var.labels
-  name        = var.name
+  # failover - (optional) is a type of bool
+  failover = var.failover
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # reverse_dns - (optional) is a type of string
   reverse_dns = var.reverse_dns
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -87,12 +87,18 @@ variable "vlan" {
 
 ```terraform
 resource "ovh_iploadbalancing_vrack_network" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  farm_id      = var.farm_id
-  nat_ip       = var.nat_ip
+  # farm_id - (optional) is a type of list of number
+  farm_id = var.farm_id
+  # nat_ip - (required) is a type of string
+  nat_ip = var.nat_ip
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  subnet       = var.subnet
-  vlan         = var.vlan
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # vlan - (optional) is a type of number
+  vlan = var.vlan
 }
 ```
 

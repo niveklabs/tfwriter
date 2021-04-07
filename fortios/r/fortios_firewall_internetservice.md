@@ -138,18 +138,30 @@ variable "sld_id" {
 
 ```terraform
 resource "fortios_firewall_internetservice" "this" {
-  database              = var.database
-  direction             = var.direction
+  # database - (optional) is a type of string
+  database = var.database
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # extra_ip_range_number - (optional) is a type of number
   extra_ip_range_number = var.extra_ip_range_number
-  fosid                 = var.fosid
-  icon_id               = var.icon_id
-  ip_number             = var.ip_number
-  ip_range_number       = var.ip_range_number
-  name                  = var.name
-  obsolete              = var.obsolete
-  reputation            = var.reputation
-  singularity           = var.singularity
-  sld_id                = var.sld_id
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # icon_id - (optional) is a type of number
+  icon_id = var.icon_id
+  # ip_number - (optional) is a type of number
+  ip_number = var.ip_number
+  # ip_range_number - (optional) is a type of number
+  ip_range_number = var.ip_range_number
+  # name - (optional) is a type of string
+  name = var.name
+  # obsolete - (optional) is a type of number
+  obsolete = var.obsolete
+  # reputation - (optional) is a type of number
+  reputation = var.reputation
+  # singularity - (optional) is a type of number
+  singularity = var.singularity
+  # sld_id - (optional) is a type of number
+  sld_id = var.sld_id
 }
 ```
 

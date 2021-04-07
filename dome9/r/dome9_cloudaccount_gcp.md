@@ -115,16 +115,26 @@ variable "project_id" {
 
 ```terraform
 resource "dome9_cloudaccount_gcp" "this" {
-  client_email           = var.client_email
-  client_id              = var.client_id
-  client_x509_cert_url   = var.client_x509_cert_url
-  domain_name            = var.domain_name
-  gsuite_user            = var.gsuite_user
-  name                   = var.name
+  # client_email - (required) is a type of string
+  client_email = var.client_email
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_x509_cert_url - (required) is a type of string
+  client_x509_cert_url = var.client_x509_cert_url
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # gsuite_user - (optional) is a type of string
+  gsuite_user = var.gsuite_user
+  # name - (required) is a type of string
+  name = var.name
+  # organizational_unit_id - (optional) is a type of string
   organizational_unit_id = var.organizational_unit_id
-  private_key            = var.private_key
-  private_key_id         = var.private_key_id
-  project_id             = var.project_id
+  # private_key - (required) is a type of string
+  private_key = var.private_key
+  # private_key_id - (required) is a type of string
+  private_key_id = var.private_key_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

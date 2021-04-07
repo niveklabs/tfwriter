@@ -56,7 +56,9 @@ variable "primary_gateway_name" {
 
 ```terraform
 resource "aviatrix_azure_vng_conn" "this" {
-  connection_name      = var.connection_name
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # primary_gateway_name - (required) is a type of string
   primary_gateway_name = var.primary_gateway_name
 }
 ```

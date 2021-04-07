@@ -208,28 +208,50 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_cynosdb_cluster" "this" {
-  auto_renew_flag              = var.auto_renew_flag
-  available_zone               = var.available_zone
-  charge_type                  = var.charge_type
-  cluster_name                 = var.cluster_name
-  db_type                      = var.db_type
-  db_version                   = var.db_version
-  force_delete                 = var.force_delete
-  instance_cpu_core            = var.instance_cpu_core
-  instance_maintain_duration   = var.instance_maintain_duration
+  # auto_renew_flag - (optional) is a type of number
+  auto_renew_flag = var.auto_renew_flag
+  # available_zone - (required) is a type of string
+  available_zone = var.available_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # db_type - (required) is a type of string
+  db_type = var.db_type
+  # db_version - (required) is a type of string
+  db_version = var.db_version
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # instance_cpu_core - (required) is a type of number
+  instance_cpu_core = var.instance_cpu_core
+  # instance_maintain_duration - (optional) is a type of number
+  instance_maintain_duration = var.instance_maintain_duration
+  # instance_maintain_start_time - (optional) is a type of number
   instance_maintain_start_time = var.instance_maintain_start_time
-  instance_maintain_weekdays   = var.instance_maintain_weekdays
-  instance_memory_size         = var.instance_memory_size
-  password                     = var.password
-  port                         = var.port
-  prepaid_period               = var.prepaid_period
-  project_id                   = var.project_id
-  ro_group_sg                  = var.ro_group_sg
-  rw_group_sg                  = var.rw_group_sg
-  storage_limit                = var.storage_limit
-  subnet_id                    = var.subnet_id
-  tags                         = var.tags
-  vpc_id                       = var.vpc_id
+  # instance_maintain_weekdays - (optional) is a type of set of string
+  instance_maintain_weekdays = var.instance_maintain_weekdays
+  # instance_memory_size - (required) is a type of number
+  instance_memory_size = var.instance_memory_size
+  # password - (required) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # ro_group_sg - (optional) is a type of list of string
+  ro_group_sg = var.ro_group_sg
+  # rw_group_sg - (optional) is a type of list of string
+  rw_group_sg = var.rw_group_sg
+  # storage_limit - (required) is a type of number
+  storage_limit = var.storage_limit
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

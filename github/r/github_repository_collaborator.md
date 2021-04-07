@@ -72,10 +72,14 @@ variable "username" {
 
 ```terraform
 resource "github_repository_collaborator" "this" {
-  permission                  = var.permission
+  # permission - (optional) is a type of string
+  permission = var.permission
+  # permission_diff_suppression - (optional) is a type of bool
   permission_diff_suppression = var.permission_diff_suppression
-  repository                  = var.repository
-  username                    = var.username
+  # repository - (required) is a type of string
+  repository = var.repository
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

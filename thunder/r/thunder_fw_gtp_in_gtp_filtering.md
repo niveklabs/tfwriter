@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_gtp_in_gtp_filtering" "this" {
+  # gtp_in_gtp_value - (optional) is a type of string
   gtp_in_gtp_value = var.gtp_in_gtp_value
-  uuid             = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

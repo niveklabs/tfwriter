@@ -114,15 +114,24 @@ variable "tags" {
 
 ```terraform
 data "alicloud_ros_stacks" "this" {
-  enable_details    = var.enable_details
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  parent_stack_id   = var.parent_stack_id
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # parent_stack_id - (optional) is a type of string
+  parent_stack_id = var.parent_stack_id
+  # show_nested_stack - (optional) is a type of bool
   show_nested_stack = var.show_nested_stack
-  stack_name        = var.stack_name
-  status            = var.status
-  tags              = var.tags
+  # stack_name - (optional) is a type of string
+  stack_name = var.stack_name
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

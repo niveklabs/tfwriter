@@ -258,30 +258,51 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_address6" "this" {
-  cache_ttl             = var.cache_ttl
-  color                 = var.color
-  comment               = var.comment
-  country               = var.country
+  # cache_ttl - (optional) is a type of number
+  cache_ttl = var.cache_ttl
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # country - (optional) is a type of string
+  country = var.country
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  end_ip                = var.end_ip
-  end_mac               = var.end_mac
-  fqdn                  = var.fqdn
-  host                  = var.host
-  host_type             = var.host_type
-  ip6                   = var.ip6
-  name                  = var.name
-  obj_id                = var.obj_id
-  sdn                   = var.sdn
-  start_ip              = var.start_ip
-  start_mac             = var.start_mac
-  template              = var.template
-  type                  = var.type
-  uuid                  = var.uuid
-  visibility            = var.visibility
+  # end_ip - (optional) is a type of string
+  end_ip = var.end_ip
+  # end_mac - (optional) is a type of string
+  end_mac = var.end_mac
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # host - (optional) is a type of string
+  host = var.host
+  # host_type - (optional) is a type of string
+  host_type = var.host_type
+  # ip6 - (optional) is a type of string
+  ip6 = var.ip6
+  # name - (optional) is a type of string
+  name = var.name
+  # obj_id - (optional) is a type of string
+  obj_id = var.obj_id
+  # sdn - (optional) is a type of string
+  sdn = var.sdn
+  # start_ip - (optional) is a type of string
+  start_ip = var.start_ip
+  # start_mac - (optional) is a type of string
+  start_mac = var.start_mac
+  # template - (optional) is a type of string
+  template = var.template
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "list" {
     for_each = var.list
     content {
+      # ip - (optional) is a type of string
       ip = list.value["ip"]
     }
   }
@@ -289,8 +310,11 @@ resource "fortios_firewall_address6" "this" {
   dynamic "subnet_segment" {
     for_each = var.subnet_segment
     content {
-      name  = subnet_segment.value["name"]
-      type  = subnet_segment.value["type"]
+      # name - (optional) is a type of string
+      name = subnet_segment.value["name"]
+      # type - (optional) is a type of string
+      type = subnet_segment.value["type"]
+      # value - (optional) is a type of string
       value = subnet_segment.value["value"]
     }
   }
@@ -298,12 +322,15 @@ resource "fortios_firewall_address6" "this" {
   dynamic "tagging" {
     for_each = var.tagging
     content {
+      # category - (optional) is a type of string
       category = tagging.value["category"]
-      name     = tagging.value["name"]
+      # name - (optional) is a type of string
+      name = tagging.value["name"]
 
       dynamic "tags" {
         for_each = tagging.value.tags
         content {
+          # name - (optional) is a type of string
           name = tags.value["name"]
         }
       }

@@ -58,7 +58,9 @@ variable "private_registry_name" {
 
 ```terraform
 data "nutanix_karbon_private_registry" "this" {
-  private_registry_id   = var.private_registry_id
+  # private_registry_id - (optional) is a type of string
+  private_registry_id = var.private_registry_id
+  # private_registry_name - (optional) is a type of string
   private_registry_name = var.private_registry_name
 }
 ```

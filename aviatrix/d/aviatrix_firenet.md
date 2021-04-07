@@ -77,6 +77,7 @@ variable "firewall_instance_association" {
 
 ```terraform
 data "aviatrix_firenet" "this" {
+  # vpc_id - (required) is a type of string
   vpc_id = var.vpc_id
 
   dynamic "firewall_instance_association" {

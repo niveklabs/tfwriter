@@ -66,9 +66,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqpipaddresstype" "this" {
+  # ipv4_address_type - (optional) is a type of string
   ipv4_address_type = var.ipv4_address_type
+  # ipv6_address_type - (optional) is a type of string
   ipv6_address_type = var.ipv6_address_type
-  name              = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

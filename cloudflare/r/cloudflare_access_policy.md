@@ -349,32 +349,51 @@ variable "require" {
 
 ```terraform
 resource "cloudflare_access_policy" "this" {
-  account_id     = var.account_id
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # application_id - (required) is a type of string
   application_id = var.application_id
-  decision       = var.decision
-  name           = var.name
-  precedence     = var.precedence
-  zone_id        = var.zone_id
+  # decision - (required) is a type of string
+  decision = var.decision
+  # name - (required) is a type of string
+  name = var.name
+  # precedence - (required) is a type of number
+  precedence = var.precedence
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "exclude" {
     for_each = var.exclude
     content {
+      # any_valid_service_token - (optional) is a type of bool
       any_valid_service_token = exclude.value["any_valid_service_token"]
-      auth_method             = exclude.value["auth_method"]
-      certificate             = exclude.value["certificate"]
-      common_name             = exclude.value["common_name"]
-      email                   = exclude.value["email"]
-      email_domain            = exclude.value["email_domain"]
-      everyone                = exclude.value["everyone"]
-      geo                     = exclude.value["geo"]
-      group                   = exclude.value["group"]
-      ip                      = exclude.value["ip"]
-      service_token           = exclude.value["service_token"]
+      # auth_method - (optional) is a type of string
+      auth_method = exclude.value["auth_method"]
+      # certificate - (optional) is a type of bool
+      certificate = exclude.value["certificate"]
+      # common_name - (optional) is a type of string
+      common_name = exclude.value["common_name"]
+      # email - (optional) is a type of list of string
+      email = exclude.value["email"]
+      # email_domain - (optional) is a type of list of string
+      email_domain = exclude.value["email_domain"]
+      # everyone - (optional) is a type of bool
+      everyone = exclude.value["everyone"]
+      # geo - (optional) is a type of list of string
+      geo = exclude.value["geo"]
+      # group - (optional) is a type of list of string
+      group = exclude.value["group"]
+      # ip - (optional) is a type of list of string
+      ip = exclude.value["ip"]
+      # service_token - (optional) is a type of list of string
+      service_token = exclude.value["service_token"]
 
       dynamic "azure" {
         for_each = exclude.value.azure
         content {
-          id                   = azure.value["id"]
+          # id - (optional) is a type of list of string
+          id = azure.value["id"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = azure.value["identity_provider_id"]
         }
       }
@@ -382,16 +401,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "github" {
         for_each = exclude.value.github
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = github.value["identity_provider_id"]
-          name                 = github.value["name"]
-          teams                = github.value["teams"]
+          # name - (optional) is a type of string
+          name = github.value["name"]
+          # teams - (optional) is a type of list of string
+          teams = github.value["teams"]
         }
       }
 
       dynamic "gsuite" {
         for_each = exclude.value.gsuite
         content {
-          email                = gsuite.value["email"]
+          # email - (optional) is a type of list of string
+          email = gsuite.value["email"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = gsuite.value["identity_provider_id"]
         }
       }
@@ -399,16 +423,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "okta" {
         for_each = exclude.value.okta
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = okta.value["identity_provider_id"]
-          name                 = okta.value["name"]
+          # name - (optional) is a type of list of string
+          name = okta.value["name"]
         }
       }
 
       dynamic "saml" {
         for_each = exclude.value.saml
         content {
-          attribute_name       = saml.value["attribute_name"]
-          attribute_value      = saml.value["attribute_value"]
+          # attribute_name - (optional) is a type of string
+          attribute_name = saml.value["attribute_name"]
+          # attribute_value - (optional) is a type of string
+          attribute_value = saml.value["attribute_value"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = saml.value["identity_provider_id"]
         }
       }
@@ -419,22 +448,35 @@ resource "cloudflare_access_policy" "this" {
   dynamic "include" {
     for_each = var.include
     content {
+      # any_valid_service_token - (optional) is a type of bool
       any_valid_service_token = include.value["any_valid_service_token"]
-      auth_method             = include.value["auth_method"]
-      certificate             = include.value["certificate"]
-      common_name             = include.value["common_name"]
-      email                   = include.value["email"]
-      email_domain            = include.value["email_domain"]
-      everyone                = include.value["everyone"]
-      geo                     = include.value["geo"]
-      group                   = include.value["group"]
-      ip                      = include.value["ip"]
-      service_token           = include.value["service_token"]
+      # auth_method - (optional) is a type of string
+      auth_method = include.value["auth_method"]
+      # certificate - (optional) is a type of bool
+      certificate = include.value["certificate"]
+      # common_name - (optional) is a type of string
+      common_name = include.value["common_name"]
+      # email - (optional) is a type of list of string
+      email = include.value["email"]
+      # email_domain - (optional) is a type of list of string
+      email_domain = include.value["email_domain"]
+      # everyone - (optional) is a type of bool
+      everyone = include.value["everyone"]
+      # geo - (optional) is a type of list of string
+      geo = include.value["geo"]
+      # group - (optional) is a type of list of string
+      group = include.value["group"]
+      # ip - (optional) is a type of list of string
+      ip = include.value["ip"]
+      # service_token - (optional) is a type of list of string
+      service_token = include.value["service_token"]
 
       dynamic "azure" {
         for_each = include.value.azure
         content {
-          id                   = azure.value["id"]
+          # id - (optional) is a type of list of string
+          id = azure.value["id"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = azure.value["identity_provider_id"]
         }
       }
@@ -442,16 +484,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "github" {
         for_each = include.value.github
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = github.value["identity_provider_id"]
-          name                 = github.value["name"]
-          teams                = github.value["teams"]
+          # name - (optional) is a type of string
+          name = github.value["name"]
+          # teams - (optional) is a type of list of string
+          teams = github.value["teams"]
         }
       }
 
       dynamic "gsuite" {
         for_each = include.value.gsuite
         content {
-          email                = gsuite.value["email"]
+          # email - (optional) is a type of list of string
+          email = gsuite.value["email"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = gsuite.value["identity_provider_id"]
         }
       }
@@ -459,16 +506,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "okta" {
         for_each = include.value.okta
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = okta.value["identity_provider_id"]
-          name                 = okta.value["name"]
+          # name - (optional) is a type of list of string
+          name = okta.value["name"]
         }
       }
 
       dynamic "saml" {
         for_each = include.value.saml
         content {
-          attribute_name       = saml.value["attribute_name"]
-          attribute_value      = saml.value["attribute_value"]
+          # attribute_name - (optional) is a type of string
+          attribute_name = saml.value["attribute_name"]
+          # attribute_value - (optional) is a type of string
+          attribute_value = saml.value["attribute_value"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = saml.value["identity_provider_id"]
         }
       }
@@ -479,22 +531,35 @@ resource "cloudflare_access_policy" "this" {
   dynamic "require" {
     for_each = var.require
     content {
+      # any_valid_service_token - (optional) is a type of bool
       any_valid_service_token = require.value["any_valid_service_token"]
-      auth_method             = require.value["auth_method"]
-      certificate             = require.value["certificate"]
-      common_name             = require.value["common_name"]
-      email                   = require.value["email"]
-      email_domain            = require.value["email_domain"]
-      everyone                = require.value["everyone"]
-      geo                     = require.value["geo"]
-      group                   = require.value["group"]
-      ip                      = require.value["ip"]
-      service_token           = require.value["service_token"]
+      # auth_method - (optional) is a type of string
+      auth_method = require.value["auth_method"]
+      # certificate - (optional) is a type of bool
+      certificate = require.value["certificate"]
+      # common_name - (optional) is a type of string
+      common_name = require.value["common_name"]
+      # email - (optional) is a type of list of string
+      email = require.value["email"]
+      # email_domain - (optional) is a type of list of string
+      email_domain = require.value["email_domain"]
+      # everyone - (optional) is a type of bool
+      everyone = require.value["everyone"]
+      # geo - (optional) is a type of list of string
+      geo = require.value["geo"]
+      # group - (optional) is a type of list of string
+      group = require.value["group"]
+      # ip - (optional) is a type of list of string
+      ip = require.value["ip"]
+      # service_token - (optional) is a type of list of string
+      service_token = require.value["service_token"]
 
       dynamic "azure" {
         for_each = require.value.azure
         content {
-          id                   = azure.value["id"]
+          # id - (optional) is a type of list of string
+          id = azure.value["id"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = azure.value["identity_provider_id"]
         }
       }
@@ -502,16 +567,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "github" {
         for_each = require.value.github
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = github.value["identity_provider_id"]
-          name                 = github.value["name"]
-          teams                = github.value["teams"]
+          # name - (optional) is a type of string
+          name = github.value["name"]
+          # teams - (optional) is a type of list of string
+          teams = github.value["teams"]
         }
       }
 
       dynamic "gsuite" {
         for_each = require.value.gsuite
         content {
-          email                = gsuite.value["email"]
+          # email - (optional) is a type of list of string
+          email = gsuite.value["email"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = gsuite.value["identity_provider_id"]
         }
       }
@@ -519,16 +589,21 @@ resource "cloudflare_access_policy" "this" {
       dynamic "okta" {
         for_each = require.value.okta
         content {
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = okta.value["identity_provider_id"]
-          name                 = okta.value["name"]
+          # name - (optional) is a type of list of string
+          name = okta.value["name"]
         }
       }
 
       dynamic "saml" {
         for_each = require.value.saml
         content {
-          attribute_name       = saml.value["attribute_name"]
-          attribute_value      = saml.value["attribute_value"]
+          # attribute_name - (optional) is a type of string
+          attribute_name = saml.value["attribute_name"]
+          # attribute_value - (optional) is a type of string
+          attribute_value = saml.value["attribute_value"]
+          # identity_provider_id - (optional) is a type of string
           identity_provider_id = saml.value["identity_provider_id"]
         }
       }

@@ -66,9 +66,12 @@ variable "tags_filter" {
 
 ```terraform
 data "datadog_monitor" "this" {
+  # monitor_tags_filter - (optional) is a type of list of string
   monitor_tags_filter = var.monitor_tags_filter
-  name_filter         = var.name_filter
-  tags_filter         = var.tags_filter
+  # name_filter - (optional) is a type of string
+  name_filter = var.name_filter
+  # tags_filter - (optional) is a type of list of string
+  tags_filter = var.tags_filter
 }
 ```
 

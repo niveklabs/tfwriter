@@ -89,12 +89,18 @@ variable "usrgrp" {
 
 ```terraform
 resource "fortios_vpn_pptp" "this" {
-  eip      = var.eip
-  ip_mode  = var.ip_mode
+  # eip - (optional) is a type of string
+  eip = var.eip
+  # ip_mode - (optional) is a type of string
+  ip_mode = var.ip_mode
+  # local_ip - (optional) is a type of string
   local_ip = var.local_ip
-  sip      = var.sip
-  status   = var.status
-  usrgrp   = var.usrgrp
+  # sip - (optional) is a type of string
+  sip = var.sip
+  # status - (required) is a type of string
+  status = var.status
+  # usrgrp - (optional) is a type of string
+  usrgrp = var.usrgrp
 }
 ```
 

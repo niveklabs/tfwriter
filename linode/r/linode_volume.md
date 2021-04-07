@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "linode_volume" "this" {
-  label     = var.label
+  # label - (required) is a type of string
+  label = var.label
+  # linode_id - (optional) is a type of number
   linode_id = var.linode_id
-  region    = var.region
-  size      = var.size
-  tags      = var.tags
+  # region - (required) is a type of string
+  region = var.region
+  # size - (optional) is a type of number
+  size = var.size
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

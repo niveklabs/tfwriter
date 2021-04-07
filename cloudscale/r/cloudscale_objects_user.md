@@ -49,6 +49,7 @@ variable "display_name" {
 
 ```terraform
 resource "cloudscale_objects_user" "this" {
+  # display_name - (required) is a type of string
   display_name = var.display_name
 }
 ```

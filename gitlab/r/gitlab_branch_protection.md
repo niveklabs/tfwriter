@@ -78,11 +78,16 @@ variable "push_access_level" {
 
 ```terraform
 resource "gitlab_branch_protection" "this" {
-  branch                       = var.branch
+  # branch - (required) is a type of string
+  branch = var.branch
+  # code_owner_approval_required - (optional) is a type of bool
   code_owner_approval_required = var.code_owner_approval_required
-  merge_access_level           = var.merge_access_level
-  project                      = var.project
-  push_access_level            = var.push_access_level
+  # merge_access_level - (required) is a type of string
+  merge_access_level = var.merge_access_level
+  # project - (required) is a type of string
+  project = var.project
+  # push_access_level - (required) is a type of string
+  push_access_level = var.push_access_level
 }
 ```
 

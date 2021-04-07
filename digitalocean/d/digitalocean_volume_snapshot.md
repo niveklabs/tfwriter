@@ -74,10 +74,14 @@ variable "region" {
 
 ```terraform
 data "digitalocean_volume_snapshot" "this" {
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  name        = var.name
-  name_regex  = var.name_regex
-  region      = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

@@ -102,14 +102,22 @@ variable "username" {
 
 ```terraform
 resource "lacework_integration_docker_v2" "this" {
-  enabled         = var.enabled
-  limit_by_label  = var.limit_by_label
-  limit_by_tag    = var.limit_by_tag
-  name            = var.name
-  password        = var.password
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # limit_by_label - (optional) is a type of string
+  limit_by_label = var.limit_by_label
+  # limit_by_tag - (optional) is a type of string
+  limit_by_tag = var.limit_by_tag
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # registry_domain - (required) is a type of string
   registry_domain = var.registry_domain
-  ssl             = var.ssl
-  username        = var.username
+  # ssl - (optional) is a type of bool
+  ssl = var.ssl
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

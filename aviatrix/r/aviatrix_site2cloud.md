@@ -379,49 +379,92 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_site2cloud" "this" {
-  backup_gateway_name              = var.backup_gateway_name
-  backup_pre_shared_key            = var.backup_pre_shared_key
-  backup_remote_gateway_ip         = var.backup_remote_gateway_ip
-  backup_remote_gateway_latitude   = var.backup_remote_gateway_latitude
-  backup_remote_gateway_longitude  = var.backup_remote_gateway_longitude
-  connection_name                  = var.connection_name
-  connection_type                  = var.connection_type
-  custom_algorithms                = var.custom_algorithms
-  custom_mapped                    = var.custom_mapped
-  enable_active_active             = var.enable_active_active
-  enable_dead_peer_detection       = var.enable_dead_peer_detection
-  enable_ikev2                     = var.enable_ikev2
-  forward_traffic_to_transit       = var.forward_traffic_to_transit
-  ha_enabled                       = var.ha_enabled
-  local_destination_real_cidrs     = var.local_destination_real_cidrs
-  local_destination_virtual_cidrs  = var.local_destination_virtual_cidrs
-  local_source_real_cidrs          = var.local_source_real_cidrs
-  local_source_virtual_cidrs       = var.local_source_virtual_cidrs
-  local_subnet_cidr                = var.local_subnet_cidr
-  local_subnet_virtual             = var.local_subnet_virtual
-  phase_1_authentication           = var.phase_1_authentication
-  phase_1_dh_groups                = var.phase_1_dh_groups
-  phase_1_encryption               = var.phase_1_encryption
-  phase_2_authentication           = var.phase_2_authentication
-  phase_2_dh_groups                = var.phase_2_dh_groups
-  phase_2_encryption               = var.phase_2_encryption
-  pre_shared_key                   = var.pre_shared_key
-  primary_cloud_gateway_name       = var.primary_cloud_gateway_name
-  private_route_encryption         = var.private_route_encryption
-  remote_destination_real_cidrs    = var.remote_destination_real_cidrs
+  # backup_gateway_name - (optional) is a type of string
+  backup_gateway_name = var.backup_gateway_name
+  # backup_pre_shared_key - (optional) is a type of string
+  backup_pre_shared_key = var.backup_pre_shared_key
+  # backup_remote_gateway_ip - (optional) is a type of string
+  backup_remote_gateway_ip = var.backup_remote_gateway_ip
+  # backup_remote_gateway_latitude - (optional) is a type of number
+  backup_remote_gateway_latitude = var.backup_remote_gateway_latitude
+  # backup_remote_gateway_longitude - (optional) is a type of number
+  backup_remote_gateway_longitude = var.backup_remote_gateway_longitude
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # connection_type - (required) is a type of string
+  connection_type = var.connection_type
+  # custom_algorithms - (optional) is a type of bool
+  custom_algorithms = var.custom_algorithms
+  # custom_mapped - (optional) is a type of bool
+  custom_mapped = var.custom_mapped
+  # enable_active_active - (optional) is a type of bool
+  enable_active_active = var.enable_active_active
+  # enable_dead_peer_detection - (optional) is a type of bool
+  enable_dead_peer_detection = var.enable_dead_peer_detection
+  # enable_ikev2 - (optional) is a type of bool
+  enable_ikev2 = var.enable_ikev2
+  # forward_traffic_to_transit - (optional) is a type of bool
+  forward_traffic_to_transit = var.forward_traffic_to_transit
+  # ha_enabled - (optional) is a type of bool
+  ha_enabled = var.ha_enabled
+  # local_destination_real_cidrs - (optional) is a type of list of string
+  local_destination_real_cidrs = var.local_destination_real_cidrs
+  # local_destination_virtual_cidrs - (optional) is a type of list of string
+  local_destination_virtual_cidrs = var.local_destination_virtual_cidrs
+  # local_source_real_cidrs - (optional) is a type of list of string
+  local_source_real_cidrs = var.local_source_real_cidrs
+  # local_source_virtual_cidrs - (optional) is a type of list of string
+  local_source_virtual_cidrs = var.local_source_virtual_cidrs
+  # local_subnet_cidr - (optional) is a type of string
+  local_subnet_cidr = var.local_subnet_cidr
+  # local_subnet_virtual - (optional) is a type of string
+  local_subnet_virtual = var.local_subnet_virtual
+  # phase_1_authentication - (optional) is a type of string
+  phase_1_authentication = var.phase_1_authentication
+  # phase_1_dh_groups - (optional) is a type of string
+  phase_1_dh_groups = var.phase_1_dh_groups
+  # phase_1_encryption - (optional) is a type of string
+  phase_1_encryption = var.phase_1_encryption
+  # phase_2_authentication - (optional) is a type of string
+  phase_2_authentication = var.phase_2_authentication
+  # phase_2_dh_groups - (optional) is a type of string
+  phase_2_dh_groups = var.phase_2_dh_groups
+  # phase_2_encryption - (optional) is a type of string
+  phase_2_encryption = var.phase_2_encryption
+  # pre_shared_key - (optional) is a type of string
+  pre_shared_key = var.pre_shared_key
+  # primary_cloud_gateway_name - (required) is a type of string
+  primary_cloud_gateway_name = var.primary_cloud_gateway_name
+  # private_route_encryption - (optional) is a type of bool
+  private_route_encryption = var.private_route_encryption
+  # remote_destination_real_cidrs - (optional) is a type of list of string
+  remote_destination_real_cidrs = var.remote_destination_real_cidrs
+  # remote_destination_virtual_cidrs - (optional) is a type of list of string
   remote_destination_virtual_cidrs = var.remote_destination_virtual_cidrs
-  remote_gateway_ip                = var.remote_gateway_ip
-  remote_gateway_latitude          = var.remote_gateway_latitude
-  remote_gateway_longitude         = var.remote_gateway_longitude
-  remote_gateway_type              = var.remote_gateway_type
-  remote_source_real_cidrs         = var.remote_source_real_cidrs
-  remote_source_virtual_cidrs      = var.remote_source_virtual_cidrs
-  remote_subnet_cidr               = var.remote_subnet_cidr
-  remote_subnet_virtual            = var.remote_subnet_virtual
-  route_table_list                 = var.route_table_list
-  ssl_server_pool                  = var.ssl_server_pool
-  tunnel_type                      = var.tunnel_type
-  vpc_id                           = var.vpc_id
+  # remote_gateway_ip - (required) is a type of string
+  remote_gateway_ip = var.remote_gateway_ip
+  # remote_gateway_latitude - (optional) is a type of number
+  remote_gateway_latitude = var.remote_gateway_latitude
+  # remote_gateway_longitude - (optional) is a type of number
+  remote_gateway_longitude = var.remote_gateway_longitude
+  # remote_gateway_type - (required) is a type of string
+  remote_gateway_type = var.remote_gateway_type
+  # remote_source_real_cidrs - (optional) is a type of list of string
+  remote_source_real_cidrs = var.remote_source_real_cidrs
+  # remote_source_virtual_cidrs - (optional) is a type of list of string
+  remote_source_virtual_cidrs = var.remote_source_virtual_cidrs
+  # remote_subnet_cidr - (optional) is a type of string
+  remote_subnet_cidr = var.remote_subnet_cidr
+  # remote_subnet_virtual - (optional) is a type of string
+  remote_subnet_virtual = var.remote_subnet_virtual
+  # route_table_list - (optional) is a type of list of string
+  route_table_list = var.route_table_list
+  # ssl_server_pool - (optional) is a type of string
+  ssl_server_pool = var.ssl_server_pool
+  # tunnel_type - (required) is a type of string
+  tunnel_type = var.tunnel_type
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

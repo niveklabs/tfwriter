@@ -120,19 +120,29 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_storage" "this" {
-  capacity                  = var.capacity
-  labels                    = var.labels
-  name                      = var.name
+  # capacity - (required) is a type of number
+  capacity = var.capacity
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # rollback_from_backup_uuid - (optional) is a type of string
   rollback_from_backup_uuid = var.rollback_from_backup_uuid
-  storage_type              = var.storage_type
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
 
   dynamic "template" {
     for_each = var.template
     content {
-      hostname      = template.value["hostname"]
-      password      = template.value["password"]
+      # hostname - (optional) is a type of string
+      hostname = template.value["hostname"]
+      # password - (optional) is a type of string
+      password = template.value["password"]
+      # password_type - (optional) is a type of string
       password_type = template.value["password_type"]
-      sshkeys       = template.value["sshkeys"]
+      # sshkeys - (optional) is a type of list of string
+      sshkeys = template.value["sshkeys"]
+      # template_uuid - (required) is a type of string
       template_uuid = template.value["template_uuid"]
     }
   }
@@ -140,8 +150,11 @@ resource "gridscale_storage" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

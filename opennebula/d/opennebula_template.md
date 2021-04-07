@@ -197,42 +197,63 @@ variable "vmgroup" {
 
 ```terraform
 data "opennebula_template" "this" {
-  context  = var.context
-  cpu      = var.cpu
-  memory   = var.memory
-  name     = var.name
-  tags     = var.tags
+  # context - (optional) is a type of map of string
+  context = var.context
+  # cpu - (optional) is a type of number
+  cpu = var.cpu
+  # memory - (optional) is a type of number
+  memory = var.memory
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template - (optional) is a type of string
   template = var.template
-  vcpu     = var.vcpu
+  # vcpu - (optional) is a type of number
+  vcpu = var.vcpu
 
   dynamic "disk" {
     for_each = var.disk
     content {
-      driver   = disk.value["driver"]
+      # driver - (optional) is a type of string
+      driver = disk.value["driver"]
+      # image_id - (required) is a type of number
       image_id = disk.value["image_id"]
-      size     = disk.value["size"]
-      target   = disk.value["target"]
+      # size - (optional) is a type of number
+      size = disk.value["size"]
+      # target - (optional) is a type of string
+      target = disk.value["target"]
     }
   }
 
   dynamic "graphics" {
     for_each = var.graphics
     content {
+      # keymap - (optional) is a type of string
       keymap = graphics.value["keymap"]
+      # listen - (required) is a type of string
       listen = graphics.value["listen"]
-      port   = graphics.value["port"]
-      type   = graphics.value["type"]
+      # port - (optional) is a type of string
+      port = graphics.value["port"]
+      # type - (required) is a type of string
+      type = graphics.value["type"]
     }
   }
 
   dynamic "nic" {
     for_each = var.nic
     content {
-      ip              = nic.value["ip"]
-      mac             = nic.value["mac"]
-      model           = nic.value["model"]
-      network_id      = nic.value["network_id"]
+      # ip - (optional) is a type of string
+      ip = nic.value["ip"]
+      # mac - (optional) is a type of string
+      mac = nic.value["mac"]
+      # model - (optional) is a type of string
+      model = nic.value["model"]
+      # network_id - (required) is a type of number
+      network_id = nic.value["network_id"]
+      # physical_device - (optional) is a type of string
       physical_device = nic.value["physical_device"]
+      # security_groups - (optional) is a type of list of number
       security_groups = nic.value["security_groups"]
     }
   }
@@ -240,7 +261,9 @@ data "opennebula_template" "this" {
   dynamic "os" {
     for_each = var.os
     content {
+      # arch - (required) is a type of string
       arch = os.value["arch"]
+      # boot - (required) is a type of string
       boot = os.value["boot"]
     }
   }
@@ -248,7 +271,9 @@ data "opennebula_template" "this" {
   dynamic "vmgroup" {
     for_each = var.vmgroup
     content {
-      role       = vmgroup.value["role"]
+      # role - (required) is a type of string
+      role = vmgroup.value["role"]
+      # vmgroup_id - (required) is a type of number
       vmgroup_id = vmgroup.value["vmgroup_id"]
     }
   }

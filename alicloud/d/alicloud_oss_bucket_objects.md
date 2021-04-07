@@ -73,9 +73,13 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_oss_bucket_objects" "this" {
+  # bucket_name - (required) is a type of string
   bucket_name = var.bucket_name
-  key_prefix  = var.key_prefix
-  key_regex   = var.key_regex
+  # key_prefix - (optional) is a type of string
+  key_prefix = var.key_prefix
+  # key_regex - (optional) is a type of string
+  key_regex = var.key_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

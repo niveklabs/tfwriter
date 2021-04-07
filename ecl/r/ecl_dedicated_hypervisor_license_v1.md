@@ -49,6 +49,7 @@ variable "license_type" {
 
 ```terraform
 resource "ecl_dedicated_hypervisor_license_v1" "this" {
+  # license_type - (required) is a type of string
   license_type = var.license_type
 }
 ```

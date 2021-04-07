@@ -771,42 +771,63 @@ variable "whitelist" {
 
 ```terraform
 resource "avi_wafpolicy" "this" {
+  # allow_mode_delegation - (optional) is a type of bool
   allow_mode_delegation = var.allow_mode_delegation
-  created_by            = var.created_by
-  description           = var.description
-  enable_app_learning   = var.enable_app_learning
-  failure_mode          = var.failure_mode
-  mode                  = var.mode
-  name                  = var.name
-  paranoia_level        = var.paranoia_level
-  tenant_ref            = var.tenant_ref
-  uuid                  = var.uuid
-  waf_crs_ref           = var.waf_crs_ref
-  waf_profile_ref       = var.waf_profile_ref
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_app_learning - (optional) is a type of bool
+  enable_app_learning = var.enable_app_learning
+  # failure_mode - (optional) is a type of string
+  failure_mode = var.failure_mode
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # paranoia_level - (optional) is a type of string
+  paranoia_level = var.paranoia_level
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # waf_crs_ref - (optional) is a type of string
+  waf_crs_ref = var.waf_crs_ref
+  # waf_profile_ref - (optional) is a type of string
+  waf_profile_ref = var.waf_profile_ref
 
   dynamic "crs_groups" {
     for_each = var.crs_groups
     content {
+      # enable - (optional) is a type of bool
       enable = crs_groups.value["enable"]
-      index  = crs_groups.value["index"]
-      name   = crs_groups.value["name"]
+      # index - (required) is a type of number
+      index = crs_groups.value["index"]
+      # name - (optional) is a type of string
+      name = crs_groups.value["name"]
 
       dynamic "exclude_list" {
         for_each = crs_groups.value.exclude_list
         content {
-          description   = exclude_list.value["description"]
+          # description - (optional) is a type of string
+          description = exclude_list.value["description"]
+          # match_element - (optional) is a type of string
           match_element = exclude_list.value["match_element"]
-          uri_path      = exclude_list.value["uri_path"]
+          # uri_path - (optional) is a type of string
+          uri_path = exclude_list.value["uri_path"]
 
           dynamic "client_subnet" {
             for_each = exclude_list.value.client_subnet
             content {
+              # mask - (required) is a type of number
               mask = client_subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = client_subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -817,16 +838,20 @@ resource "avi_wafpolicy" "this" {
           dynamic "match_element_criteria" {
             for_each = exclude_list.value.match_element_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = match_element_criteria.value["match_case"]
-              match_op   = match_element_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = match_element_criteria.value["match_op"]
             }
           }
 
           dynamic "uri_match_criteria" {
             for_each = exclude_list.value.uri_match_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = uri_match_criteria.value["match_case"]
-              match_op   = uri_match_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = uri_match_criteria.value["match_op"]
             }
           }
 
@@ -836,30 +861,43 @@ resource "avi_wafpolicy" "this" {
       dynamic "rules" {
         for_each = crs_groups.value.rules
         content {
-          enable  = rules.value["enable"]
-          index   = rules.value["index"]
-          mode    = rules.value["mode"]
-          name    = rules.value["name"]
-          rule    = rules.value["rule"]
+          # enable - (optional) is a type of bool
+          enable = rules.value["enable"]
+          # index - (required) is a type of number
+          index = rules.value["index"]
+          # mode - (optional) is a type of string
+          mode = rules.value["mode"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
+          # rule - (optional) is a type of string
+          rule = rules.value["rule"]
+          # rule_id - (optional) is a type of string
           rule_id = rules.value["rule_id"]
-          tags    = rules.value["tags"]
+          # tags - (optional) is a type of list of string
+          tags = rules.value["tags"]
 
           dynamic "exclude_list" {
             for_each = rules.value.exclude_list
             content {
-              description   = exclude_list.value["description"]
+              # description - (optional) is a type of string
+              description = exclude_list.value["description"]
+              # match_element - (optional) is a type of string
               match_element = exclude_list.value["match_element"]
-              uri_path      = exclude_list.value["uri_path"]
+              # uri_path - (optional) is a type of string
+              uri_path = exclude_list.value["uri_path"]
 
               dynamic "client_subnet" {
                 for_each = exclude_list.value.client_subnet
                 content {
+                  # mask - (required) is a type of number
                   mask = client_subnet.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = client_subnet.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -870,16 +908,20 @@ resource "avi_wafpolicy" "this" {
               dynamic "match_element_criteria" {
                 for_each = exclude_list.value.match_element_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = match_element_criteria.value["match_case"]
-                  match_op   = match_element_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = match_element_criteria.value["match_op"]
                 }
               }
 
               dynamic "uri_match_criteria" {
                 for_each = exclude_list.value.uri_match_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = uri_match_criteria.value["match_case"]
-                  match_op   = uri_match_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = uri_match_criteria.value["match_op"]
                 }
               }
 
@@ -895,6 +937,7 @@ resource "avi_wafpolicy" "this" {
   dynamic "positive_security_model" {
     for_each = var.positive_security_model
     content {
+      # group_refs - (optional) is a type of list of string
       group_refs = positive_security_model.value["group_refs"]
     }
   }
@@ -902,26 +945,35 @@ resource "avi_wafpolicy" "this" {
   dynamic "post_crs_groups" {
     for_each = var.post_crs_groups
     content {
+      # enable - (optional) is a type of bool
       enable = post_crs_groups.value["enable"]
-      index  = post_crs_groups.value["index"]
-      name   = post_crs_groups.value["name"]
+      # index - (required) is a type of number
+      index = post_crs_groups.value["index"]
+      # name - (optional) is a type of string
+      name = post_crs_groups.value["name"]
 
       dynamic "exclude_list" {
         for_each = post_crs_groups.value.exclude_list
         content {
-          description   = exclude_list.value["description"]
+          # description - (optional) is a type of string
+          description = exclude_list.value["description"]
+          # match_element - (optional) is a type of string
           match_element = exclude_list.value["match_element"]
-          uri_path      = exclude_list.value["uri_path"]
+          # uri_path - (optional) is a type of string
+          uri_path = exclude_list.value["uri_path"]
 
           dynamic "client_subnet" {
             for_each = exclude_list.value.client_subnet
             content {
+              # mask - (required) is a type of number
               mask = client_subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = client_subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -932,16 +984,20 @@ resource "avi_wafpolicy" "this" {
           dynamic "match_element_criteria" {
             for_each = exclude_list.value.match_element_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = match_element_criteria.value["match_case"]
-              match_op   = match_element_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = match_element_criteria.value["match_op"]
             }
           }
 
           dynamic "uri_match_criteria" {
             for_each = exclude_list.value.uri_match_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = uri_match_criteria.value["match_case"]
-              match_op   = uri_match_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = uri_match_criteria.value["match_op"]
             }
           }
 
@@ -951,30 +1007,43 @@ resource "avi_wafpolicy" "this" {
       dynamic "rules" {
         for_each = post_crs_groups.value.rules
         content {
-          enable  = rules.value["enable"]
-          index   = rules.value["index"]
-          mode    = rules.value["mode"]
-          name    = rules.value["name"]
-          rule    = rules.value["rule"]
+          # enable - (optional) is a type of bool
+          enable = rules.value["enable"]
+          # index - (required) is a type of number
+          index = rules.value["index"]
+          # mode - (optional) is a type of string
+          mode = rules.value["mode"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
+          # rule - (optional) is a type of string
+          rule = rules.value["rule"]
+          # rule_id - (optional) is a type of string
           rule_id = rules.value["rule_id"]
-          tags    = rules.value["tags"]
+          # tags - (optional) is a type of list of string
+          tags = rules.value["tags"]
 
           dynamic "exclude_list" {
             for_each = rules.value.exclude_list
             content {
-              description   = exclude_list.value["description"]
+              # description - (optional) is a type of string
+              description = exclude_list.value["description"]
+              # match_element - (optional) is a type of string
               match_element = exclude_list.value["match_element"]
-              uri_path      = exclude_list.value["uri_path"]
+              # uri_path - (optional) is a type of string
+              uri_path = exclude_list.value["uri_path"]
 
               dynamic "client_subnet" {
                 for_each = exclude_list.value.client_subnet
                 content {
+                  # mask - (required) is a type of number
                   mask = client_subnet.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = client_subnet.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -985,16 +1054,20 @@ resource "avi_wafpolicy" "this" {
               dynamic "match_element_criteria" {
                 for_each = exclude_list.value.match_element_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = match_element_criteria.value["match_case"]
-                  match_op   = match_element_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = match_element_criteria.value["match_op"]
                 }
               }
 
               dynamic "uri_match_criteria" {
                 for_each = exclude_list.value.uri_match_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = uri_match_criteria.value["match_case"]
-                  match_op   = uri_match_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = uri_match_criteria.value["match_op"]
                 }
               }
 
@@ -1010,26 +1083,35 @@ resource "avi_wafpolicy" "this" {
   dynamic "pre_crs_groups" {
     for_each = var.pre_crs_groups
     content {
+      # enable - (optional) is a type of bool
       enable = pre_crs_groups.value["enable"]
-      index  = pre_crs_groups.value["index"]
-      name   = pre_crs_groups.value["name"]
+      # index - (required) is a type of number
+      index = pre_crs_groups.value["index"]
+      # name - (optional) is a type of string
+      name = pre_crs_groups.value["name"]
 
       dynamic "exclude_list" {
         for_each = pre_crs_groups.value.exclude_list
         content {
-          description   = exclude_list.value["description"]
+          # description - (optional) is a type of string
+          description = exclude_list.value["description"]
+          # match_element - (optional) is a type of string
           match_element = exclude_list.value["match_element"]
-          uri_path      = exclude_list.value["uri_path"]
+          # uri_path - (optional) is a type of string
+          uri_path = exclude_list.value["uri_path"]
 
           dynamic "client_subnet" {
             for_each = exclude_list.value.client_subnet
             content {
+              # mask - (required) is a type of number
               mask = client_subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = client_subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1040,16 +1122,20 @@ resource "avi_wafpolicy" "this" {
           dynamic "match_element_criteria" {
             for_each = exclude_list.value.match_element_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = match_element_criteria.value["match_case"]
-              match_op   = match_element_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = match_element_criteria.value["match_op"]
             }
           }
 
           dynamic "uri_match_criteria" {
             for_each = exclude_list.value.uri_match_criteria
             content {
+              # match_case - (optional) is a type of string
               match_case = uri_match_criteria.value["match_case"]
-              match_op   = uri_match_criteria.value["match_op"]
+              # match_op - (optional) is a type of string
+              match_op = uri_match_criteria.value["match_op"]
             }
           }
 
@@ -1059,30 +1145,43 @@ resource "avi_wafpolicy" "this" {
       dynamic "rules" {
         for_each = pre_crs_groups.value.rules
         content {
-          enable  = rules.value["enable"]
-          index   = rules.value["index"]
-          mode    = rules.value["mode"]
-          name    = rules.value["name"]
-          rule    = rules.value["rule"]
+          # enable - (optional) is a type of bool
+          enable = rules.value["enable"]
+          # index - (required) is a type of number
+          index = rules.value["index"]
+          # mode - (optional) is a type of string
+          mode = rules.value["mode"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
+          # rule - (optional) is a type of string
+          rule = rules.value["rule"]
+          # rule_id - (optional) is a type of string
           rule_id = rules.value["rule_id"]
-          tags    = rules.value["tags"]
+          # tags - (optional) is a type of list of string
+          tags = rules.value["tags"]
 
           dynamic "exclude_list" {
             for_each = rules.value.exclude_list
             content {
-              description   = exclude_list.value["description"]
+              # description - (optional) is a type of string
+              description = exclude_list.value["description"]
+              # match_element - (optional) is a type of string
               match_element = exclude_list.value["match_element"]
-              uri_path      = exclude_list.value["uri_path"]
+              # uri_path - (optional) is a type of string
+              uri_path = exclude_list.value["uri_path"]
 
               dynamic "client_subnet" {
                 for_each = exclude_list.value.client_subnet
                 content {
+                  # mask - (required) is a type of number
                   mask = client_subnet.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = client_subnet.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -1093,16 +1192,20 @@ resource "avi_wafpolicy" "this" {
               dynamic "match_element_criteria" {
                 for_each = exclude_list.value.match_element_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = match_element_criteria.value["match_case"]
-                  match_op   = match_element_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = match_element_criteria.value["match_op"]
                 }
               }
 
               dynamic "uri_match_criteria" {
                 for_each = exclude_list.value.uri_match_criteria
                 content {
+                  # match_case - (optional) is a type of string
                   match_case = uri_match_criteria.value["match_case"]
-                  match_op   = uri_match_criteria.value["match_op"]
+                  # match_op - (optional) is a type of string
+                  match_op = uri_match_criteria.value["match_op"]
                 }
               }
 
@@ -1122,11 +1225,16 @@ resource "avi_wafpolicy" "this" {
       dynamic "rules" {
         for_each = whitelist.value.rules
         content {
-          actions     = rules.value["actions"]
+          # actions - (optional) is a type of list of string
+          actions = rules.value["actions"]
+          # description - (optional) is a type of string
           description = rules.value["description"]
-          enable      = rules.value["enable"]
-          index       = rules.value["index"]
-          name        = rules.value["name"]
+          # enable - (optional) is a type of bool
+          enable = rules.value["enable"]
+          # index - (optional) is a type of number
+          index = rules.value["index"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
 
           dynamic "match" {
             for_each = rules.value.match
@@ -1135,13 +1243,17 @@ resource "avi_wafpolicy" "this" {
               dynamic "client_ip" {
                 for_each = match.value.client_ip
                 content {
-                  group_refs     = client_ip.value["group_refs"]
+                  # group_refs - (optional) is a type of list of string
+                  group_refs = client_ip.value["group_refs"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = client_ip.value["match_criteria"]
 
                   dynamic "addrs" {
                     for_each = client_ip.value.addrs
                     content {
+                      # addr - (required) is a type of string
                       addr = addrs.value["addr"]
+                      # type - (required) is a type of string
                       type = addrs.value["type"]
                     }
                   }
@@ -1149,12 +1261,15 @@ resource "avi_wafpolicy" "this" {
                   dynamic "prefixes" {
                     for_each = client_ip.value.prefixes
                     content {
+                      # mask - (required) is a type of number
                       mask = prefixes.value["mask"]
 
                       dynamic "ip_addr" {
                         for_each = prefixes.value.ip_addr
                         content {
+                          # addr - (required) is a type of string
                           addr = ip_addr.value["addr"]
+                          # type - (required) is a type of string
                           type = ip_addr.value["type"]
                         }
                       }
@@ -1169,7 +1284,9 @@ resource "avi_wafpolicy" "this" {
                       dynamic "begin" {
                         for_each = ranges.value.begin
                         content {
+                          # addr - (required) is a type of string
                           addr = begin.value["addr"]
+                          # type - (required) is a type of string
                           type = begin.value["type"]
                         }
                       }
@@ -1177,7 +1294,9 @@ resource "avi_wafpolicy" "this" {
                       dynamic "end" {
                         for_each = ranges.value.end
                         content {
+                          # addr - (required) is a type of string
                           addr = end.value["addr"]
+                          # type - (required) is a type of string
                           type = end.value["type"]
                         }
                       }
@@ -1191,46 +1310,63 @@ resource "avi_wafpolicy" "this" {
               dynamic "cookie" {
                 for_each = match.value.cookie
                 content {
-                  match_case     = cookie.value["match_case"]
+                  # match_case - (optional) is a type of string
+                  match_case = cookie.value["match_case"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = cookie.value["match_criteria"]
-                  name           = cookie.value["name"]
-                  value          = cookie.value["value"]
+                  # name - (required) is a type of string
+                  name = cookie.value["name"]
+                  # value - (optional) is a type of string
+                  value = cookie.value["value"]
                 }
               }
 
               dynamic "hdrs" {
                 for_each = match.value.hdrs
                 content {
-                  hdr            = hdrs.value["hdr"]
-                  match_case     = hdrs.value["match_case"]
+                  # hdr - (required) is a type of string
+                  hdr = hdrs.value["hdr"]
+                  # match_case - (optional) is a type of string
+                  match_case = hdrs.value["match_case"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = hdrs.value["match_criteria"]
-                  value          = hdrs.value["value"]
+                  # value - (optional) is a type of list of string
+                  value = hdrs.value["value"]
                 }
               }
 
               dynamic "host_hdr" {
                 for_each = match.value.host_hdr
                 content {
-                  match_case     = host_hdr.value["match_case"]
+                  # match_case - (optional) is a type of string
+                  match_case = host_hdr.value["match_case"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = host_hdr.value["match_criteria"]
-                  value          = host_hdr.value["value"]
+                  # value - (optional) is a type of list of string
+                  value = host_hdr.value["value"]
                 }
               }
 
               dynamic "method" {
                 for_each = match.value.method
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = method.value["match_criteria"]
-                  methods        = method.value["methods"]
+                  # methods - (optional) is a type of list of string
+                  methods = method.value["methods"]
                 }
               }
 
               dynamic "path" {
                 for_each = match.value.path
                 content {
-                  match_case        = path.value["match_case"]
-                  match_criteria    = path.value["match_criteria"]
-                  match_str         = path.value["match_str"]
+                  # match_case - (optional) is a type of string
+                  match_case = path.value["match_case"]
+                  # match_criteria - (required) is a type of string
+                  match_criteria = path.value["match_criteria"]
+                  # match_str - (optional) is a type of list of string
+                  match_str = path.value["match_str"]
+                  # string_group_refs - (optional) is a type of list of string
                   string_group_refs = path.value["string_group_refs"]
                 }
               }
@@ -1238,17 +1374,23 @@ resource "avi_wafpolicy" "this" {
               dynamic "protocol" {
                 for_each = match.value.protocol
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = protocol.value["match_criteria"]
-                  protocols      = protocol.value["protocols"]
+                  # protocols - (required) is a type of string
+                  protocols = protocol.value["protocols"]
                 }
               }
 
               dynamic "query" {
                 for_each = match.value.query
                 content {
-                  match_case        = query.value["match_case"]
-                  match_criteria    = query.value["match_criteria"]
-                  match_str         = query.value["match_str"]
+                  # match_case - (optional) is a type of string
+                  match_case = query.value["match_case"]
+                  # match_criteria - (required) is a type of string
+                  match_criteria = query.value["match_criteria"]
+                  # match_str - (optional) is a type of list of string
+                  match_str = query.value["match_str"]
+                  # string_group_refs - (optional) is a type of list of string
                   string_group_refs = query.value["string_group_refs"]
                 }
               }
@@ -1256,16 +1398,20 @@ resource "avi_wafpolicy" "this" {
               dynamic "version" {
                 for_each = match.value.version
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = version.value["match_criteria"]
-                  versions       = version.value["versions"]
+                  # versions - (optional) is a type of list of string
+                  versions = version.value["versions"]
                 }
               }
 
               dynamic "vs_port" {
                 for_each = match.value.vs_port
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = vs_port.value["match_criteria"]
-                  ports          = vs_port.value["ports"]
+                  # ports - (optional) is a type of list of number
+                  ports = vs_port.value["ports"]
                 }
               }
 

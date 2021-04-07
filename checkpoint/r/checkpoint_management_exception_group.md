@@ -123,20 +123,31 @@ variable "applied_threat_rules" {
 
 ```terraform
 resource "checkpoint_management_exception_group" "this" {
+  # applied_profile - (optional) is a type of string
   applied_profile = var.applied_profile
-  apply_on        = var.apply_on
-  color           = var.color
-  comments        = var.comments
-  ignore_errors   = var.ignore_errors
+  # apply_on - (optional) is a type of string
+  apply_on = var.apply_on
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  name            = var.name
-  tags            = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "applied_threat_rules" {
     for_each = var.applied_threat_rules
     content {
-      layer    = applied_threat_rules.value["layer"]
-      name     = applied_threat_rules.value["name"]
+      # layer - (optional) is a type of string
+      layer = applied_threat_rules.value["layer"]
+      # name - (optional) is a type of string
+      name = applied_threat_rules.value["name"]
+      # position - (required) is a type of map of string
       position = applied_threat_rules.value["position"]
     }
   }

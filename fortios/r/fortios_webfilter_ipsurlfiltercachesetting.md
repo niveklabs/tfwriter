@@ -58,8 +58,10 @@ variable "extended_ttl" {
 
 ```terraform
 resource "fortios_webfilter_ipsurlfiltercachesetting" "this" {
+  # dns_retry_interval - (optional) is a type of number
   dns_retry_interval = var.dns_retry_interval
-  extended_ttl       = var.extended_ttl
+  # extended_ttl - (optional) is a type of number
+  extended_ttl = var.extended_ttl
 }
 ```
 

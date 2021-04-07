@@ -56,7 +56,9 @@ variable "name" {
 
 ```terraform
 resource "dme_secondary_ip_set" "this" {
-  ips  = var.ips
+  # ips - (required) is a type of list of string
+  ips = var.ips
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -122,16 +122,26 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_ecs_dedicated_hosts" "this" {
-  dedicated_host_id   = var.dedicated_host_id
+  # dedicated_host_id - (optional) is a type of string
+  dedicated_host_id = var.dedicated_host_id
+  # dedicated_host_name - (optional) is a type of string
   dedicated_host_name = var.dedicated_host_name
+  # dedicated_host_type - (optional) is a type of string
   dedicated_host_type = var.dedicated_host_type
-  ids                 = var.ids
-  name_regex          = var.name_regex
-  output_file         = var.output_file
-  resource_group_id   = var.resource_group_id
-  status              = var.status
-  tags                = var.tags
-  zone_id             = var.zone_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

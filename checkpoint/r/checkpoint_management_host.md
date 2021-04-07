@@ -177,31 +177,48 @@ variable "interfaces" {
 
 ```terraform
 resource "checkpoint_management_host" "this" {
-  color           = var.color
-  comments        = var.comments
-  ignore_errors   = var.ignore_errors
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  ipv4_address    = var.ipv4_address
-  ipv6_address    = var.ipv6_address
-  name            = var.name
-  nat_settings    = var.nat_settings
-  tags            = var.tags
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # name - (required) is a type of string
+  name = var.name
+  # nat_settings - (optional) is a type of map of string
+  nat_settings = var.nat_settings
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "host_servers" {
     for_each = var.host_servers
     content {
-      dns_server  = host_servers.value["dns_server"]
+      # dns_server - (optional) is a type of bool
+      dns_server = host_servers.value["dns_server"]
+      # mail_server - (optional) is a type of bool
       mail_server = host_servers.value["mail_server"]
-      web_server  = host_servers.value["web_server"]
+      # web_server - (optional) is a type of bool
+      web_server = host_servers.value["web_server"]
 
       dynamic "web_server_config" {
         for_each = host_servers.value.web_server_config
         content {
-          additional_ports     = web_server_config.value["additional_ports"]
-          application_engines  = web_server_config.value["application_engines"]
+          # additional_ports - (optional) is a type of set of string
+          additional_ports = web_server_config.value["additional_ports"]
+          # application_engines - (optional) is a type of set of string
+          application_engines = web_server_config.value["application_engines"]
+          # listen_standard_port - (optional) is a type of bool
           listen_standard_port = web_server_config.value["listen_standard_port"]
-          operating_system     = web_server_config.value["operating_system"]
-          protected_by         = web_server_config.value["protected_by"]
+          # operating_system - (optional) is a type of string
+          operating_system = web_server_config.value["operating_system"]
+          # protected_by - (optional) is a type of string
+          protected_by = web_server_config.value["protected_by"]
         }
       }
 
@@ -211,15 +228,24 @@ resource "checkpoint_management_host" "this" {
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
-      color           = interfaces.value["color"]
-      comments        = interfaces.value["comments"]
-      ignore_errors   = interfaces.value["ignore_errors"]
+      # color - (optional) is a type of string
+      color = interfaces.value["color"]
+      # comments - (optional) is a type of string
+      comments = interfaces.value["comments"]
+      # ignore_errors - (optional) is a type of bool
+      ignore_errors = interfaces.value["ignore_errors"]
+      # ignore_warnings - (optional) is a type of bool
       ignore_warnings = interfaces.value["ignore_warnings"]
-      mask_length4    = interfaces.value["mask_length4"]
-      mask_length6    = interfaces.value["mask_length6"]
-      name            = interfaces.value["name"]
-      subnet4         = interfaces.value["subnet4"]
-      subnet6         = interfaces.value["subnet6"]
+      # mask_length4 - (optional) is a type of number
+      mask_length4 = interfaces.value["mask_length4"]
+      # mask_length6 - (optional) is a type of number
+      mask_length6 = interfaces.value["mask_length6"]
+      # name - (optional) is a type of string
+      name = interfaces.value["name"]
+      # subnet4 - (optional) is a type of string
+      subnet4 = interfaces.value["subnet4"]
+      # subnet6 - (optional) is a type of string
+      subnet6 = interfaces.value["subnet6"]
     }
   }
 

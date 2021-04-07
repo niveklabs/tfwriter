@@ -327,47 +327,81 @@ variable "timeouts" {
 
 ```terraform
 resource "equinix_network_device" "this" {
-  account_number        = var.account_number
-  acl_template_id       = var.acl_template_id
-  additional_bandwidth  = var.additional_bandwidth
-  byol                  = var.byol
-  core_count            = var.core_count
-  hostname              = var.hostname
-  interface_count       = var.interface_count
-  license_file          = var.license_file
-  license_token         = var.license_token
-  metro_code            = var.metro_code
-  name                  = var.name
-  notifications         = var.notifications
-  order_reference       = var.order_reference
-  package_code          = var.package_code
+  # account_number - (required) is a type of string
+  account_number = var.account_number
+  # acl_template_id - (optional) is a type of string
+  acl_template_id = var.acl_template_id
+  # additional_bandwidth - (optional) is a type of number
+  additional_bandwidth = var.additional_bandwidth
+  # byol - (optional) is a type of bool
+  byol = var.byol
+  # core_count - (required) is a type of number
+  core_count = var.core_count
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # interface_count - (optional) is a type of number
+  interface_count = var.interface_count
+  # license_file - (optional) is a type of string
+  license_file = var.license_file
+  # license_token - (optional) is a type of string
+  license_token = var.license_token
+  # metro_code - (required) is a type of string
+  metro_code = var.metro_code
+  # name - (required) is a type of string
+  name = var.name
+  # notifications - (required) is a type of set of string
+  notifications = var.notifications
+  # order_reference - (optional) is a type of string
+  order_reference = var.order_reference
+  # package_code - (required) is a type of string
+  package_code = var.package_code
+  # purchase_order_number - (optional) is a type of string
   purchase_order_number = var.purchase_order_number
-  self_managed          = var.self_managed
-  term_length           = var.term_length
-  throughput            = var.throughput
-  throughput_unit       = var.throughput_unit
-  type_code             = var.type_code
-  vendor_configuration  = var.vendor_configuration
-  version               = var.version
+  # self_managed - (optional) is a type of bool
+  self_managed = var.self_managed
+  # term_length - (required) is a type of number
+  term_length = var.term_length
+  # throughput - (optional) is a type of number
+  throughput = var.throughput
+  # throughput_unit - (optional) is a type of string
+  throughput_unit = var.throughput_unit
+  # type_code - (required) is a type of string
+  type_code = var.type_code
+  # vendor_configuration - (optional) is a type of map of string
+  vendor_configuration = var.vendor_configuration
+  # version - (required) is a type of string
+  version = var.version
 
   dynamic "secondary_device" {
     for_each = var.secondary_device
     content {
-      account_number       = secondary_device.value["account_number"]
-      acl_template_id      = secondary_device.value["acl_template_id"]
+      # account_number - (required) is a type of string
+      account_number = secondary_device.value["account_number"]
+      # acl_template_id - (optional) is a type of string
+      acl_template_id = secondary_device.value["acl_template_id"]
+      # additional_bandwidth - (optional) is a type of number
       additional_bandwidth = secondary_device.value["additional_bandwidth"]
-      hostname             = secondary_device.value["hostname"]
-      license_file         = secondary_device.value["license_file"]
-      license_token        = secondary_device.value["license_token"]
-      metro_code           = secondary_device.value["metro_code"]
-      name                 = secondary_device.value["name"]
-      notifications        = secondary_device.value["notifications"]
+      # hostname - (optional) is a type of string
+      hostname = secondary_device.value["hostname"]
+      # license_file - (optional) is a type of string
+      license_file = secondary_device.value["license_file"]
+      # license_token - (optional) is a type of string
+      license_token = secondary_device.value["license_token"]
+      # metro_code - (required) is a type of string
+      metro_code = secondary_device.value["metro_code"]
+      # name - (required) is a type of string
+      name = secondary_device.value["name"]
+      # notifications - (required) is a type of set of string
+      notifications = secondary_device.value["notifications"]
+      # vendor_configuration - (optional) is a type of map of string
       vendor_configuration = secondary_device.value["vendor_configuration"]
 
       dynamic "ssh_key" {
         for_each = secondary_device.value.ssh_key
         content {
+          # key_name - (required) is a type of string
           key_name = ssh_key.value["key_name"]
+          # username - (required) is a type of string
           username = ssh_key.value["username"]
         }
       }
@@ -378,7 +412,9 @@ resource "equinix_network_device" "this" {
   dynamic "ssh_key" {
     for_each = var.ssh_key
     content {
+      # key_name - (required) is a type of string
       key_name = ssh_key.value["key_name"]
+      # username - (required) is a type of string
       username = ssh_key.value["username"]
     }
   }
@@ -386,8 +422,11 @@ resource "equinix_network_device" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

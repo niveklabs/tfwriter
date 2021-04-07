@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "akamai_appsec_configuration" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

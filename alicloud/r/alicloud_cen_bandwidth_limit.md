@@ -79,14 +79,19 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cen_bandwidth_limit" "this" {
+  # bandwidth_limit - (required) is a type of number
   bandwidth_limit = var.bandwidth_limit
-  instance_id     = var.instance_id
-  region_ids      = var.region_ids
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # region_ids - (required) is a type of set of string
+  region_ids = var.region_ids
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -109,25 +109,35 @@ variable "gw_filter_tag_list" {
 
 ```terraform
 resource "aviatrix_fqdn" "this" {
-  fqdn_enabled        = var.fqdn_enabled
-  fqdn_mode           = var.fqdn_mode
-  fqdn_tag            = var.fqdn_tag
+  # fqdn_enabled - (optional) is a type of bool
+  fqdn_enabled = var.fqdn_enabled
+  # fqdn_mode - (optional) is a type of string
+  fqdn_mode = var.fqdn_mode
+  # fqdn_tag - (required) is a type of string
+  fqdn_tag = var.fqdn_tag
+  # manage_domain_names - (optional) is a type of bool
   manage_domain_names = var.manage_domain_names
 
   dynamic "domain_names" {
     for_each = var.domain_names
     content {
+      # action - (optional) is a type of string
       action = domain_names.value["action"]
-      fqdn   = domain_names.value["fqdn"]
-      port   = domain_names.value["port"]
-      proto  = domain_names.value["proto"]
+      # fqdn - (required) is a type of string
+      fqdn = domain_names.value["fqdn"]
+      # port - (required) is a type of string
+      port = domain_names.value["port"]
+      # proto - (required) is a type of string
+      proto = domain_names.value["proto"]
     }
   }
 
   dynamic "gw_filter_tag_list" {
     for_each = var.gw_filter_tag_list
     content {
-      gw_name        = gw_filter_tag_list.value["gw_name"]
+      # gw_name - (required) is a type of string
+      gw_name = gw_filter_tag_list.value["gw_name"]
+      # source_ip_list - (optional) is a type of list of string
       source_ip_list = gw_filter_tag_list.value["source_ip_list"]
     }
   }

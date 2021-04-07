@@ -70,10 +70,14 @@ variable "name" {
 
 ```terraform
 resource "newrelic_application_settings" "this" {
-  app_apdex_threshold         = var.app_apdex_threshold
+  # app_apdex_threshold - (required) is a type of number
+  app_apdex_threshold = var.app_apdex_threshold
+  # enable_real_user_monitoring - (required) is a type of bool
   enable_real_user_monitoring = var.enable_real_user_monitoring
-  end_user_apdex_threshold    = var.end_user_apdex_threshold
-  name                        = var.name
+  # end_user_apdex_threshold - (required) is a type of number
+  end_user_apdex_threshold = var.end_user_apdex_threshold
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

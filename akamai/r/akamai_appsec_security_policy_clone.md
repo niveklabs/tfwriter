@@ -79,11 +79,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_security_policy_clone" "this" {
-  config_id                      = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # create_from_security_policy_id - (required) is a type of string
   create_from_security_policy_id = var.create_from_security_policy_id
-  security_policy_name           = var.security_policy_name
-  security_policy_prefix         = var.security_policy_prefix
-  version                        = var.version
+  # security_policy_name - (optional) is a type of string
+  security_policy_name = var.security_policy_name
+  # security_policy_prefix - (optional) is a type of string
+  security_policy_prefix = var.security_policy_prefix
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

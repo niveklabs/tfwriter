@@ -144,22 +144,31 @@ variable "entry" {
 
 ```terraform
 resource "fortios_firewall_internetserviceextension" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
 
   dynamic "disable_entry" {
     for_each = var.disable_entry
     content {
-      id       = disable_entry.value["id"]
-      port     = disable_entry.value["port"]
+      # id - (optional) is a type of number
+      id = disable_entry.value["id"]
+      # port - (optional) is a type of number
+      port = disable_entry.value["port"]
+      # protocol - (optional) is a type of number
       protocol = disable_entry.value["protocol"]
 
       dynamic "ip_range" {
         for_each = disable_entry.value.ip_range
         content {
-          end_ip   = ip_range.value["end_ip"]
-          id       = ip_range.value["id"]
+          # end_ip - (optional) is a type of string
+          end_ip = ip_range.value["end_ip"]
+          # id - (optional) is a type of number
+          id = ip_range.value["id"]
+          # start_ip - (optional) is a type of string
           start_ip = ip_range.value["start_ip"]
         }
       }
@@ -167,8 +176,11 @@ resource "fortios_firewall_internetserviceextension" "this" {
       dynamic "port_range" {
         for_each = disable_entry.value.port_range
         content {
-          end_port   = port_range.value["end_port"]
-          id         = port_range.value["id"]
+          # end_port - (optional) is a type of number
+          end_port = port_range.value["end_port"]
+          # id - (optional) is a type of number
+          id = port_range.value["id"]
+          # start_port - (optional) is a type of number
           start_port = port_range.value["start_port"]
         }
       }
@@ -179,12 +191,15 @@ resource "fortios_firewall_internetserviceextension" "this" {
   dynamic "entry" {
     for_each = var.entry
     content {
-      id       = entry.value["id"]
+      # id - (optional) is a type of number
+      id = entry.value["id"]
+      # protocol - (optional) is a type of number
       protocol = entry.value["protocol"]
 
       dynamic "dst" {
         for_each = entry.value.dst
         content {
+          # name - (optional) is a type of string
           name = dst.value["name"]
         }
       }
@@ -192,8 +207,11 @@ resource "fortios_firewall_internetserviceextension" "this" {
       dynamic "port_range" {
         for_each = entry.value.port_range
         content {
-          end_port   = port_range.value["end_port"]
-          id         = port_range.value["id"]
+          # end_port - (optional) is a type of number
+          end_port = port_range.value["end_port"]
+          # id - (optional) is a type of number
+          id = port_range.value["id"]
+          # start_port - (optional) is a type of number
           start_port = port_range.value["start_port"]
         }
       }

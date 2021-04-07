@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "dme_contact_list" "this" {
+  # emails - (required) is a type of list of string
   emails = var.emails
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

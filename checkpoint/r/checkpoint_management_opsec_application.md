@@ -121,16 +121,26 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_opsec_application" "this" {
-  color             = var.color
-  comments          = var.comments
-  cpmi              = var.cpmi
-  host              = var.host
-  ignore_errors     = var.ignore_errors
-  ignore_warnings   = var.ignore_warnings
-  lea               = var.lea
-  name              = var.name
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # cpmi - (optional) is a type of map of string
+  cpmi = var.cpmi
+  # host - (optional) is a type of string
+  host = var.host
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # lea - (optional) is a type of map of string
+  lea = var.lea
+  # name - (required) is a type of string
+  name = var.name
+  # one_time_password - (optional) is a type of string
   one_time_password = var.one_time_password
-  tags              = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

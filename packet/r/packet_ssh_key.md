@@ -56,7 +56,9 @@ variable "public_key" {
 
 ```terraform
 resource "packet_ssh_key" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (required) is a type of string
   public_key = var.public_key
 }
 ```

@@ -66,8 +66,11 @@ variable "priority" {
 
 ```terraform
 resource "fortios_system_dscpbasedpriority" "this" {
-  ds       = var.ds
-  fosid    = var.fosid
+  # ds - (optional) is a type of number
+  ds = var.ds
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # priority - (optional) is a type of string
   priority = var.priority
 }
 ```

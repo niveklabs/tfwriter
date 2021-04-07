@@ -50,6 +50,7 @@ variable "license_request" {
 
 ```terraform
 resource "thunder_glm_send" "this" {
+  # license_request - (optional) is a type of number
   license_request = var.license_request
 }
 ```

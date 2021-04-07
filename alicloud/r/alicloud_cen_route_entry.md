@@ -63,8 +63,11 @@ variable "route_table_id" {
 
 ```terraform
 resource "alicloud_cen_route_entry" "this" {
-  cidr_block     = var.cidr_block
-  instance_id    = var.instance_id
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
 }
 ```

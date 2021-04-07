@@ -86,11 +86,17 @@ variable "vserver_group_id" {
 
 ```terraform
 resource "alicloud_edas_slb_attachment" "this" {
-  app_id           = var.app_id
-  listener_port    = var.listener_port
-  slb_id           = var.slb_id
-  slb_ip           = var.slb_ip
-  type             = var.type
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # listener_port - (optional) is a type of number
+  listener_port = var.listener_port
+  # slb_id - (required) is a type of string
+  slb_id = var.slb_id
+  # slb_ip - (required) is a type of string
+  slb_ip = var.slb_ip
+  # type - (required) is a type of string
+  type = var.type
+  # vserver_group_id - (optional) is a type of string
   vserver_group_id = var.vserver_group_id
 }
 ```

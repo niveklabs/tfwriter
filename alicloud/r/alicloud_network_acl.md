@@ -65,9 +65,12 @@ variable "vpc_id" {
 
 ```terraform
 resource "alicloud_network_acl" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  vpc_id      = var.vpc_id
+  # name - (optional) is a type of string
+  name = var.name
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

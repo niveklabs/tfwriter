@@ -82,11 +82,16 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cms_alarm_contacts" "this" {
-  chanel_type  = var.chanel_type
+  # chanel_type - (optional) is a type of string
+  chanel_type = var.chanel_type
+  # chanel_value - (optional) is a type of string
   chanel_value = var.chanel_value
-  ids          = var.ids
-  name_regex   = var.name_regex
-  output_file  = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

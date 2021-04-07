@@ -98,13 +98,20 @@ variable "user_tag" {
 
 ```terraform
 resource "thunder_slb_template_udp" "this" {
-  idle_timeout             = var.idle_timeout
-  immediate                = var.immediate
-  name                     = var.name
-  qos                      = var.qos
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # immediate - (optional) is a type of number
+  immediate = var.immediate
+  # name - (optional) is a type of string
+  name = var.name
+  # qos - (optional) is a type of number
+  qos = var.qos
+  # re_select_if_server_down - (optional) is a type of number
   re_select_if_server_down = var.re_select_if_server_down
-  stateless_conn_timeout   = var.stateless_conn_timeout
-  user_tag                 = var.user_tag
+  # stateless_conn_timeout - (optional) is a type of number
+  stateless_conn_timeout = var.stateless_conn_timeout
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
 }
 ```
 

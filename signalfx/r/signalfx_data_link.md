@@ -124,35 +124,49 @@ variable "target_splunk" {
 
 ```terraform
 resource "signalfx_data_link" "this" {
+  # context_dashboard_id - (optional) is a type of string
   context_dashboard_id = var.context_dashboard_id
-  property_name        = var.property_name
-  property_value       = var.property_value
+  # property_name - (optional) is a type of string
+  property_name = var.property_name
+  # property_value - (optional) is a type of string
+  property_value = var.property_value
 
   dynamic "target_external_url" {
     for_each = var.target_external_url
     content {
-      minimum_time_window  = target_external_url.value["minimum_time_window"]
-      name                 = target_external_url.value["name"]
+      # minimum_time_window - (optional) is a type of string
+      minimum_time_window = target_external_url.value["minimum_time_window"]
+      # name - (required) is a type of string
+      name = target_external_url.value["name"]
+      # property_key_mapping - (optional) is a type of map of string
       property_key_mapping = target_external_url.value["property_key_mapping"]
-      time_format          = target_external_url.value["time_format"]
-      url                  = target_external_url.value["url"]
+      # time_format - (optional) is a type of string
+      time_format = target_external_url.value["time_format"]
+      # url - (required) is a type of string
+      url = target_external_url.value["url"]
     }
   }
 
   dynamic "target_signalfx_dashboard" {
     for_each = var.target_signalfx_dashboard
     content {
+      # dashboard_group_id - (required) is a type of string
       dashboard_group_id = target_signalfx_dashboard.value["dashboard_group_id"]
-      dashboard_id       = target_signalfx_dashboard.value["dashboard_id"]
-      is_default         = target_signalfx_dashboard.value["is_default"]
-      name               = target_signalfx_dashboard.value["name"]
+      # dashboard_id - (required) is a type of string
+      dashboard_id = target_signalfx_dashboard.value["dashboard_id"]
+      # is_default - (optional) is a type of bool
+      is_default = target_signalfx_dashboard.value["is_default"]
+      # name - (required) is a type of string
+      name = target_signalfx_dashboard.value["name"]
     }
   }
 
   dynamic "target_splunk" {
     for_each = var.target_splunk
     content {
-      name                 = target_splunk.value["name"]
+      # name - (required) is a type of string
+      name = target_splunk.value["name"]
+      # property_key_mapping - (optional) is a type of map of string
       property_key_mapping = target_splunk.value["property_key_mapping"]
     }
   }

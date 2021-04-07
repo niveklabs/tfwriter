@@ -114,23 +114,33 @@ variable "parse_test_options" {
 
 ```terraform
 resource "datadog_synthetics_global_variable" "this" {
-  description   = var.description
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # parse_test_id - (optional) is a type of string
   parse_test_id = var.parse_test_id
-  secure        = var.secure
-  tags          = var.tags
-  value         = var.value
+  # secure - (optional) is a type of bool
+  secure = var.secure
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # value - (required) is a type of string
+  value = var.value
 
   dynamic "parse_test_options" {
     for_each = var.parse_test_options
     content {
+      # field - (optional) is a type of string
       field = parse_test_options.value["field"]
-      type  = parse_test_options.value["type"]
+      # type - (required) is a type of string
+      type = parse_test_options.value["type"]
 
       dynamic "parser" {
         for_each = parse_test_options.value.parser
         content {
-          type  = parser.value["type"]
+          # type - (required) is a type of string
+          type = parser.value["type"]
+          # value - (optional) is a type of string
           value = parser.value["value"]
         }
       }

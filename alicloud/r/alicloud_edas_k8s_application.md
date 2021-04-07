@@ -304,42 +304,75 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_edas_k8s_application" "this" {
+  # application_descriotion - (optional) is a type of string
   application_descriotion = var.application_descriotion
-  application_name        = var.application_name
-  cluster_id              = var.cluster_id
-  command                 = var.command
-  command_args            = var.command_args
-  edas_container_version  = var.edas_container_version
-  envs                    = var.envs
-  image_url               = var.image_url
-  internet_slb_id         = var.internet_slb_id
-  internet_slb_port       = var.internet_slb_port
-  internet_slb_protocol   = var.internet_slb_protocol
-  internet_target_port    = var.internet_target_port
-  jdk                     = var.jdk
-  limit_m_cpu             = var.limit_m_cpu
-  limit_mem               = var.limit_mem
-  liveness                = var.liveness
-  local_volume            = var.local_volume
-  logical_region_id       = var.logical_region_id
-  mount_descs             = var.mount_descs
-  namespace               = var.namespace
-  nas_id                  = var.nas_id
-  package_type            = var.package_type
-  package_url             = var.package_url
-  package_version         = var.package_version
-  post_start              = var.post_start
-  pre_stop                = var.pre_stop
-  readiness               = var.readiness
-  replicas                = var.replicas
-  requests_m_cpu          = var.requests_m_cpu
-  requests_mem            = var.requests_mem
-  web_container           = var.web_container
+  # application_name - (required) is a type of string
+  application_name = var.application_name
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # command - (optional) is a type of string
+  command = var.command
+  # command_args - (optional) is a type of list of string
+  command_args = var.command_args
+  # edas_container_version - (optional) is a type of string
+  edas_container_version = var.edas_container_version
+  # envs - (optional) is a type of map of string
+  envs = var.envs
+  # image_url - (optional) is a type of string
+  image_url = var.image_url
+  # internet_slb_id - (optional) is a type of string
+  internet_slb_id = var.internet_slb_id
+  # internet_slb_port - (optional) is a type of number
+  internet_slb_port = var.internet_slb_port
+  # internet_slb_protocol - (optional) is a type of string
+  internet_slb_protocol = var.internet_slb_protocol
+  # internet_target_port - (optional) is a type of number
+  internet_target_port = var.internet_target_port
+  # jdk - (optional) is a type of string
+  jdk = var.jdk
+  # limit_m_cpu - (optional) is a type of number
+  limit_m_cpu = var.limit_m_cpu
+  # limit_mem - (optional) is a type of number
+  limit_mem = var.limit_mem
+  # liveness - (optional) is a type of string
+  liveness = var.liveness
+  # local_volume - (optional) is a type of string
+  local_volume = var.local_volume
+  # logical_region_id - (optional) is a type of string
+  logical_region_id = var.logical_region_id
+  # mount_descs - (optional) is a type of string
+  mount_descs = var.mount_descs
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # nas_id - (optional) is a type of string
+  nas_id = var.nas_id
+  # package_type - (optional) is a type of string
+  package_type = var.package_type
+  # package_url - (optional) is a type of string
+  package_url = var.package_url
+  # package_version - (optional) is a type of string
+  package_version = var.package_version
+  # post_start - (optional) is a type of string
+  post_start = var.post_start
+  # pre_stop - (optional) is a type of string
+  pre_stop = var.pre_stop
+  # readiness - (optional) is a type of string
+  readiness = var.readiness
+  # replicas - (optional) is a type of number
+  replicas = var.replicas
+  # requests_m_cpu - (optional) is a type of number
+  requests_m_cpu = var.requests_m_cpu
+  # requests_mem - (optional) is a type of number
+  requests_mem = var.requests_mem
+  # web_container - (optional) is a type of string
+  web_container = var.web_container
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

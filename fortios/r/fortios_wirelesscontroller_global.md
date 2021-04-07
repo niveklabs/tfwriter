@@ -178,23 +178,40 @@ variable "wtp_share" {
 
 ```terraform
 resource "fortios_wirelesscontroller_global" "this" {
-  ap_log_server            = var.ap_log_server
-  ap_log_server_ip         = var.ap_log_server_ip
-  ap_log_server_port       = var.ap_log_server_port
-  control_message_offload  = var.control_message_offload
-  data_ethernet_ii         = var.data_ethernet_ii
-  discovery_mc_addr        = var.discovery_mc_addr
-  fiapp_eth_type           = var.fiapp_eth_type
-  image_download           = var.image_download
-  ipsec_base_ip            = var.ipsec_base_ip
-  link_aggregation         = var.link_aggregation
-  location                 = var.location
-  max_clients              = var.max_clients
-  max_retransmit           = var.max_retransmit
-  mesh_eth_type            = var.mesh_eth_type
-  name                     = var.name
+  # ap_log_server - (optional) is a type of string
+  ap_log_server = var.ap_log_server
+  # ap_log_server_ip - (optional) is a type of string
+  ap_log_server_ip = var.ap_log_server_ip
+  # ap_log_server_port - (optional) is a type of number
+  ap_log_server_port = var.ap_log_server_port
+  # control_message_offload - (optional) is a type of string
+  control_message_offload = var.control_message_offload
+  # data_ethernet_ii - (optional) is a type of string
+  data_ethernet_ii = var.data_ethernet_ii
+  # discovery_mc_addr - (optional) is a type of string
+  discovery_mc_addr = var.discovery_mc_addr
+  # fiapp_eth_type - (optional) is a type of number
+  fiapp_eth_type = var.fiapp_eth_type
+  # image_download - (optional) is a type of string
+  image_download = var.image_download
+  # ipsec_base_ip - (optional) is a type of string
+  ipsec_base_ip = var.ipsec_base_ip
+  # link_aggregation - (optional) is a type of string
+  link_aggregation = var.link_aggregation
+  # location - (optional) is a type of string
+  location = var.location
+  # max_clients - (optional) is a type of number
+  max_clients = var.max_clients
+  # max_retransmit - (optional) is a type of number
+  max_retransmit = var.max_retransmit
+  # mesh_eth_type - (optional) is a type of number
+  mesh_eth_type = var.mesh_eth_type
+  # name - (optional) is a type of string
+  name = var.name
+  # rogue_scan_mac_adjacency - (optional) is a type of number
   rogue_scan_mac_adjacency = var.rogue_scan_mac_adjacency
-  wtp_share                = var.wtp_share
+  # wtp_share - (optional) is a type of string
+  wtp_share = var.wtp_share
 }
 ```
 

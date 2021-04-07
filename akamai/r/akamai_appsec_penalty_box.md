@@ -77,11 +77,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_penalty_box" "this" {
-  config_id              = var.config_id
-  penalty_box_action     = var.penalty_box_action
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # penalty_box_action - (required) is a type of string
+  penalty_box_action = var.penalty_box_action
+  # penalty_box_protection - (required) is a type of bool
   penalty_box_protection = var.penalty_box_protection
-  security_policy_id     = var.security_policy_id
-  version                = var.version
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

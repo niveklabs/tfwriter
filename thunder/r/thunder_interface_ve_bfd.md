@@ -112,26 +112,37 @@ variable "interval_cfg" {
 
 ```terraform
 resource "thunder_interface_ve_bfd" "this" {
+  # demand - (optional) is a type of number
   demand = var.demand
-  echo   = var.echo
-  ifnum  = var.ifnum
-  uuid   = var.uuid
+  # echo - (optional) is a type of number
+  echo = var.echo
+  # ifnum - (optional) is a type of number
+  ifnum = var.ifnum
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "authentication" {
     for_each = var.authentication
     content {
+      # encrypted - (optional) is a type of string
       encrypted = authentication.value["encrypted"]
-      key_id    = authentication.value["key_id"]
-      method    = authentication.value["method"]
-      password  = authentication.value["password"]
+      # key_id - (optional) is a type of number
+      key_id = authentication.value["key_id"]
+      # method - (optional) is a type of string
+      method = authentication.value["method"]
+      # password - (optional) is a type of string
+      password = authentication.value["password"]
     }
   }
 
   dynamic "interval_cfg" {
     for_each = var.interval_cfg
     content {
-      interval   = interval_cfg.value["interval"]
-      min_rx     = interval_cfg.value["min_rx"]
+      # interval - (optional) is a type of number
+      interval = interval_cfg.value["interval"]
+      # min_rx - (optional) is a type of number
+      min_rx = interval_cfg.value["min_rx"]
+      # multiplier - (optional) is a type of number
       multiplier = interval_cfg.value["multiplier"]
     }
   }

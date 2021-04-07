@@ -135,19 +135,29 @@ variable "protocol_template" {
 
 ```terraform
 resource "tencentcloud_security_group_rule" "this" {
-  cidr_ip           = var.cidr_ip
-  description       = var.description
-  ip_protocol       = var.ip_protocol
-  policy            = var.policy
-  port_range        = var.port_range
+  # cidr_ip - (optional) is a type of string
+  cidr_ip = var.cidr_ip
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # policy - (required) is a type of string
+  policy = var.policy
+  # port_range - (optional) is a type of string
+  port_range = var.port_range
+  # security_group_id - (required) is a type of string
   security_group_id = var.security_group_id
-  source_sgid       = var.source_sgid
-  type              = var.type
+  # source_sgid - (optional) is a type of string
+  source_sgid = var.source_sgid
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "address_template" {
     for_each = var.address_template
     content {
-      group_id    = address_template.value["group_id"]
+      # group_id - (optional) is a type of string
+      group_id = address_template.value["group_id"]
+      # template_id - (optional) is a type of string
       template_id = address_template.value["template_id"]
     }
   }
@@ -155,7 +165,9 @@ resource "tencentcloud_security_group_rule" "this" {
   dynamic "protocol_template" {
     for_each = var.protocol_template
     content {
-      group_id    = protocol_template.value["group_id"]
+      # group_id - (optional) is a type of string
+      group_id = protocol_template.value["group_id"]
+      # template_id - (optional) is a type of string
       template_id = protocol_template.value["template_id"]
     }
   }

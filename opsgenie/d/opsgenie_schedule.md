@@ -81,11 +81,16 @@ variable "timezone" {
 
 ```terraform
 data "opsgenie_schedule" "this" {
-  description   = var.description
-  enabled       = var.enabled
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # owner_team_id - (optional) is a type of string
   owner_team_id = var.owner_team_id
-  timezone      = var.timezone
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

@@ -112,7 +112,7 @@ variable "runbook_url" {
 }
 
 variable "type" {
-  description = "(required) - The type of condition. One of: (apm_jvm_metric, apm_kt_metric, browser_metric, mobile_metric, servers_metric, apm_app_metric)."
+  description = "(required) - The type of condition. One of: (apm_app_metric, apm_jvm_metric, apm_kt_metric, browser_metric, mobile_metric, servers_metric)."
   type        = string
 }
 
@@ -154,26 +154,43 @@ variable "term" {
 
 ```terraform
 resource "newrelic_alert_condition" "this" {
-  condition_scope             = var.condition_scope
-  enabled                     = var.enabled
-  entities                    = var.entities
-  gc_metric                   = var.gc_metric
-  metric                      = var.metric
-  name                        = var.name
-  policy_id                   = var.policy_id
-  runbook_url                 = var.runbook_url
-  type                        = var.type
-  user_defined_metric         = var.user_defined_metric
+  # condition_scope - (optional) is a type of string
+  condition_scope = var.condition_scope
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # entities - (required) is a type of set of number
+  entities = var.entities
+  # gc_metric - (optional) is a type of string
+  gc_metric = var.gc_metric
+  # metric - (required) is a type of string
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # runbook_url - (optional) is a type of string
+  runbook_url = var.runbook_url
+  # type - (required) is a type of string
+  type = var.type
+  # user_defined_metric - (optional) is a type of string
+  user_defined_metric = var.user_defined_metric
+  # user_defined_value_function - (optional) is a type of string
   user_defined_value_function = var.user_defined_value_function
-  violation_close_timer       = var.violation_close_timer
+  # violation_close_timer - (optional) is a type of number
+  violation_close_timer = var.violation_close_timer
 
   dynamic "term" {
     for_each = var.term
     content {
-      duration      = term.value["duration"]
-      operator      = term.value["operator"]
-      priority      = term.value["priority"]
-      threshold     = term.value["threshold"]
+      # duration - (required) is a type of number
+      duration = term.value["duration"]
+      # operator - (optional) is a type of string
+      operator = term.value["operator"]
+      # priority - (optional) is a type of string
+      priority = term.value["priority"]
+      # threshold - (required) is a type of number
+      threshold = term.value["threshold"]
+      # time_function - (required) is a type of string
       time_function = term.value["time_function"]
     }
   }

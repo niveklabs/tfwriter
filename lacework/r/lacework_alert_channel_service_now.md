@@ -94,13 +94,20 @@ variable "username" {
 
 ```terraform
 resource "lacework_alert_channel_service_now" "this" {
+  # custom_template_file - (optional) is a type of string
   custom_template_file = var.custom_template_file
-  enabled              = var.enabled
-  instance_url         = var.instance_url
-  issue_grouping       = var.issue_grouping
-  name                 = var.name
-  password             = var.password
-  username             = var.username
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # instance_url - (required) is a type of string
+  instance_url = var.instance_url
+  # issue_grouping - (optional) is a type of string
+  issue_grouping = var.issue_grouping
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

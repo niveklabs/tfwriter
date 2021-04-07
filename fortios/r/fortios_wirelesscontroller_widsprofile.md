@@ -464,61 +464,113 @@ variable "ap_bgscan_disable_schedules" {
 
 ```terraform
 resource "fortios_wirelesscontroller_widsprofile" "this" {
-  ap_auto_suppress          = var.ap_auto_suppress
-  ap_bgscan_disable_day     = var.ap_bgscan_disable_day
-  ap_bgscan_disable_end     = var.ap_bgscan_disable_end
-  ap_bgscan_disable_start   = var.ap_bgscan_disable_start
-  ap_bgscan_duration        = var.ap_bgscan_duration
-  ap_bgscan_idle            = var.ap_bgscan_idle
-  ap_bgscan_intv            = var.ap_bgscan_intv
-  ap_bgscan_period          = var.ap_bgscan_period
-  ap_bgscan_report_intv     = var.ap_bgscan_report_intv
-  ap_fgscan_report_intv     = var.ap_fgscan_report_intv
-  ap_scan                   = var.ap_scan
-  ap_scan_passive           = var.ap_scan_passive
-  ap_scan_threshold         = var.ap_scan_threshold
-  asleap_attack             = var.asleap_attack
-  assoc_flood_thresh        = var.assoc_flood_thresh
-  assoc_flood_time          = var.assoc_flood_time
-  assoc_frame_flood         = var.assoc_frame_flood
-  auth_flood_thresh         = var.auth_flood_thresh
-  auth_flood_time           = var.auth_flood_time
-  auth_frame_flood          = var.auth_frame_flood
-  comment                   = var.comment
-  deauth_broadcast          = var.deauth_broadcast
+  # ap_auto_suppress - (optional) is a type of string
+  ap_auto_suppress = var.ap_auto_suppress
+  # ap_bgscan_disable_day - (optional) is a type of string
+  ap_bgscan_disable_day = var.ap_bgscan_disable_day
+  # ap_bgscan_disable_end - (optional) is a type of string
+  ap_bgscan_disable_end = var.ap_bgscan_disable_end
+  # ap_bgscan_disable_start - (optional) is a type of string
+  ap_bgscan_disable_start = var.ap_bgscan_disable_start
+  # ap_bgscan_duration - (optional) is a type of number
+  ap_bgscan_duration = var.ap_bgscan_duration
+  # ap_bgscan_idle - (optional) is a type of number
+  ap_bgscan_idle = var.ap_bgscan_idle
+  # ap_bgscan_intv - (optional) is a type of number
+  ap_bgscan_intv = var.ap_bgscan_intv
+  # ap_bgscan_period - (optional) is a type of number
+  ap_bgscan_period = var.ap_bgscan_period
+  # ap_bgscan_report_intv - (optional) is a type of number
+  ap_bgscan_report_intv = var.ap_bgscan_report_intv
+  # ap_fgscan_report_intv - (optional) is a type of number
+  ap_fgscan_report_intv = var.ap_fgscan_report_intv
+  # ap_scan - (optional) is a type of string
+  ap_scan = var.ap_scan
+  # ap_scan_passive - (optional) is a type of string
+  ap_scan_passive = var.ap_scan_passive
+  # ap_scan_threshold - (optional) is a type of string
+  ap_scan_threshold = var.ap_scan_threshold
+  # asleap_attack - (optional) is a type of string
+  asleap_attack = var.asleap_attack
+  # assoc_flood_thresh - (optional) is a type of number
+  assoc_flood_thresh = var.assoc_flood_thresh
+  # assoc_flood_time - (optional) is a type of number
+  assoc_flood_time = var.assoc_flood_time
+  # assoc_frame_flood - (optional) is a type of string
+  assoc_frame_flood = var.assoc_frame_flood
+  # auth_flood_thresh - (optional) is a type of number
+  auth_flood_thresh = var.auth_flood_thresh
+  # auth_flood_time - (optional) is a type of number
+  auth_flood_time = var.auth_flood_time
+  # auth_frame_flood - (optional) is a type of string
+  auth_frame_flood = var.auth_frame_flood
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # deauth_broadcast - (optional) is a type of string
+  deauth_broadcast = var.deauth_broadcast
+  # deauth_unknown_src_thresh - (optional) is a type of number
   deauth_unknown_src_thresh = var.deauth_unknown_src_thresh
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  eapol_fail_flood          = var.eapol_fail_flood
-  eapol_fail_intv           = var.eapol_fail_intv
-  eapol_fail_thresh         = var.eapol_fail_thresh
-  eapol_logoff_flood        = var.eapol_logoff_flood
-  eapol_logoff_intv         = var.eapol_logoff_intv
-  eapol_logoff_thresh       = var.eapol_logoff_thresh
-  eapol_pre_fail_flood      = var.eapol_pre_fail_flood
-  eapol_pre_fail_intv       = var.eapol_pre_fail_intv
-  eapol_pre_fail_thresh     = var.eapol_pre_fail_thresh
-  eapol_pre_succ_flood      = var.eapol_pre_succ_flood
-  eapol_pre_succ_intv       = var.eapol_pre_succ_intv
-  eapol_pre_succ_thresh     = var.eapol_pre_succ_thresh
-  eapol_start_flood         = var.eapol_start_flood
-  eapol_start_intv          = var.eapol_start_intv
-  eapol_start_thresh        = var.eapol_start_thresh
-  eapol_succ_flood          = var.eapol_succ_flood
-  eapol_succ_intv           = var.eapol_succ_intv
-  eapol_succ_thresh         = var.eapol_succ_thresh
-  invalid_mac_oui           = var.invalid_mac_oui
-  long_duration_attack      = var.long_duration_attack
-  long_duration_thresh      = var.long_duration_thresh
-  name                      = var.name
-  null_ssid_probe_resp      = var.null_ssid_probe_resp
-  sensor_mode               = var.sensor_mode
-  spoofed_deauth            = var.spoofed_deauth
-  weak_wep_iv               = var.weak_wep_iv
-  wireless_bridge           = var.wireless_bridge
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # eapol_fail_flood - (optional) is a type of string
+  eapol_fail_flood = var.eapol_fail_flood
+  # eapol_fail_intv - (optional) is a type of number
+  eapol_fail_intv = var.eapol_fail_intv
+  # eapol_fail_thresh - (optional) is a type of number
+  eapol_fail_thresh = var.eapol_fail_thresh
+  # eapol_logoff_flood - (optional) is a type of string
+  eapol_logoff_flood = var.eapol_logoff_flood
+  # eapol_logoff_intv - (optional) is a type of number
+  eapol_logoff_intv = var.eapol_logoff_intv
+  # eapol_logoff_thresh - (optional) is a type of number
+  eapol_logoff_thresh = var.eapol_logoff_thresh
+  # eapol_pre_fail_flood - (optional) is a type of string
+  eapol_pre_fail_flood = var.eapol_pre_fail_flood
+  # eapol_pre_fail_intv - (optional) is a type of number
+  eapol_pre_fail_intv = var.eapol_pre_fail_intv
+  # eapol_pre_fail_thresh - (optional) is a type of number
+  eapol_pre_fail_thresh = var.eapol_pre_fail_thresh
+  # eapol_pre_succ_flood - (optional) is a type of string
+  eapol_pre_succ_flood = var.eapol_pre_succ_flood
+  # eapol_pre_succ_intv - (optional) is a type of number
+  eapol_pre_succ_intv = var.eapol_pre_succ_intv
+  # eapol_pre_succ_thresh - (optional) is a type of number
+  eapol_pre_succ_thresh = var.eapol_pre_succ_thresh
+  # eapol_start_flood - (optional) is a type of string
+  eapol_start_flood = var.eapol_start_flood
+  # eapol_start_intv - (optional) is a type of number
+  eapol_start_intv = var.eapol_start_intv
+  # eapol_start_thresh - (optional) is a type of number
+  eapol_start_thresh = var.eapol_start_thresh
+  # eapol_succ_flood - (optional) is a type of string
+  eapol_succ_flood = var.eapol_succ_flood
+  # eapol_succ_intv - (optional) is a type of number
+  eapol_succ_intv = var.eapol_succ_intv
+  # eapol_succ_thresh - (optional) is a type of number
+  eapol_succ_thresh = var.eapol_succ_thresh
+  # invalid_mac_oui - (optional) is a type of string
+  invalid_mac_oui = var.invalid_mac_oui
+  # long_duration_attack - (optional) is a type of string
+  long_duration_attack = var.long_duration_attack
+  # long_duration_thresh - (optional) is a type of number
+  long_duration_thresh = var.long_duration_thresh
+  # name - (optional) is a type of string
+  name = var.name
+  # null_ssid_probe_resp - (optional) is a type of string
+  null_ssid_probe_resp = var.null_ssid_probe_resp
+  # sensor_mode - (optional) is a type of string
+  sensor_mode = var.sensor_mode
+  # spoofed_deauth - (optional) is a type of string
+  spoofed_deauth = var.spoofed_deauth
+  # weak_wep_iv - (optional) is a type of string
+  weak_wep_iv = var.weak_wep_iv
+  # wireless_bridge - (optional) is a type of string
+  wireless_bridge = var.wireless_bridge
 
   dynamic "ap_bgscan_disable_schedules" {
     for_each = var.ap_bgscan_disable_schedules
     content {
+      # name - (optional) is a type of string
       name = ap_bgscan_disable_schedules.value["name"]
     }
   }

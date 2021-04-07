@@ -125,23 +125,31 @@ variable "taints" {
 
 ```terraform
 resource "spotinst_ocean_gke_launch_spec" "this" {
-  ocean_id     = var.ocean_id
+  # ocean_id - (required) is a type of string
+  ocean_id = var.ocean_id
+  # source_image - (required) is a type of string
   source_image = var.source_image
 
   dynamic "autoscale_headrooms" {
     for_each = var.autoscale_headrooms
     content {
-      cpu_per_unit    = autoscale_headrooms.value["cpu_per_unit"]
-      gpu_per_unit    = autoscale_headrooms.value["gpu_per_unit"]
+      # cpu_per_unit - (optional) is a type of number
+      cpu_per_unit = autoscale_headrooms.value["cpu_per_unit"]
+      # gpu_per_unit - (optional) is a type of number
+      gpu_per_unit = autoscale_headrooms.value["gpu_per_unit"]
+      # memory_per_unit - (optional) is a type of number
       memory_per_unit = autoscale_headrooms.value["memory_per_unit"]
-      num_of_units    = autoscale_headrooms.value["num_of_units"]
+      # num_of_units - (required) is a type of number
+      num_of_units = autoscale_headrooms.value["num_of_units"]
     }
   }
 
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }
@@ -149,7 +157,9 @@ resource "spotinst_ocean_gke_launch_spec" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      key   = metadata.value["key"]
+      # key - (required) is a type of string
+      key = metadata.value["key"]
+      # value - (required) is a type of string
       value = metadata.value["value"]
     }
   }
@@ -157,9 +167,12 @@ resource "spotinst_ocean_gke_launch_spec" "this" {
   dynamic "taints" {
     for_each = var.taints
     content {
+      # effect - (required) is a type of string
       effect = taints.value["effect"]
-      key    = taints.value["key"]
-      value  = taints.value["value"]
+      # key - (required) is a type of string
+      key = taints.value["key"]
+      # value - (required) is a type of string
+      value = taints.value["value"]
     }
   }
 

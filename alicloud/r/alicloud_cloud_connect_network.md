@@ -73,10 +73,14 @@ variable "name" {
 
 ```terraform
 resource "alicloud_cloud_connect_network" "this" {
-  cidr_block  = var.cidr_block
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # description - (optional) is a type of string
   description = var.description
-  is_default  = var.is_default
-  name        = var.name
+  # is_default - (required) is a type of bool
+  is_default = var.is_default
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

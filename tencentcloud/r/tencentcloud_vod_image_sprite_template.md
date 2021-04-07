@@ -125,17 +125,28 @@ variable "width" {
 
 ```terraform
 resource "tencentcloud_vod_image_sprite_template" "this" {
-  column_count        = var.column_count
-  comment             = var.comment
-  fill_type           = var.fill_type
-  height              = var.height
-  name                = var.name
+  # column_count - (required) is a type of number
+  column_count = var.column_count
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fill_type - (optional) is a type of string
+  fill_type = var.fill_type
+  # height - (optional) is a type of number
+  height = var.height
+  # name - (required) is a type of string
+  name = var.name
+  # resolution_adaptive - (optional) is a type of bool
   resolution_adaptive = var.resolution_adaptive
-  row_count           = var.row_count
-  sample_interval     = var.sample_interval
-  sample_type         = var.sample_type
-  sub_app_id          = var.sub_app_id
-  width               = var.width
+  # row_count - (required) is a type of number
+  row_count = var.row_count
+  # sample_interval - (required) is a type of number
+  sample_interval = var.sample_interval
+  # sample_type - (required) is a type of string
+  sample_type = var.sample_type
+  # sub_app_id - (optional) is a type of number
+  sub_app_id = var.sub_app_id
+  # width - (optional) is a type of number
+  width = var.width
 }
 ```
 

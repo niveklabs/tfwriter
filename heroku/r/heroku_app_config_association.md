@@ -65,9 +65,12 @@ variable "vars" {
 
 ```terraform
 resource "heroku_app_config_association" "this" {
-  app_id         = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # sensitive_vars - (optional) is a type of map of string
   sensitive_vars = var.sensitive_vars
-  vars           = var.vars
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

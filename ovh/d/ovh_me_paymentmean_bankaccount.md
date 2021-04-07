@@ -74,10 +74,14 @@ variable "use_oldest" {
 
 ```terraform
 data "ovh_me_paymentmean_bankaccount" "this" {
+  # description_regexp - (optional) is a type of string
   description_regexp = var.description_regexp
-  state              = var.state
-  use_default        = var.use_default
-  use_oldest         = var.use_oldest
+  # state - (optional) is a type of string
+  state = var.state
+  # use_default - (optional) is a type of bool
+  use_default = var.use_default
+  # use_oldest - (optional) is a type of bool
+  use_oldest = var.use_oldest
 }
 ```
 

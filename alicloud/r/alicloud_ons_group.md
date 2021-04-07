@@ -113,18 +113,27 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ons_group" "this" {
-  group_id    = var.group_id
-  group_name  = var.group_name
-  group_type  = var.group_type
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # group_type - (optional) is a type of string
+  group_type = var.group_type
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
+  # read_enable - (optional) is a type of bool
   read_enable = var.read_enable
-  remark      = var.remark
-  tags        = var.tags
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

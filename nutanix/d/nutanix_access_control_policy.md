@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_access_control_policy" "this" {
-  access_control_policy_id   = var.access_control_policy_id
+  # access_control_policy_id - (optional) is a type of string
+  access_control_policy_id = var.access_control_policy_id
+  # access_control_policy_name - (optional) is a type of string
   access_control_policy_name = var.access_control_policy_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

@@ -82,11 +82,16 @@ variable "storage_type" {
 
 ```terraform
 data "alicloud_nas_file_systems" "this" {
+  # description_regex - (optional) is a type of string
   description_regex = var.description_regex
-  ids               = var.ids
-  output_file       = var.output_file
-  protocol_type     = var.protocol_type
-  storage_type      = var.storage_type
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # protocol_type - (optional) is a type of string
+  protocol_type = var.protocol_type
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
 }
 ```
 

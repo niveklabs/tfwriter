@@ -222,46 +222,67 @@ variable "variables" {
 
 ```terraform
 resource "bigip_sys_iapp" "this" {
-  description                  = var.description
-  devicegroup                  = var.devicegroup
-  execute_action               = var.execute_action
-  inherited_devicegroup        = var.inherited_devicegroup
-  inherited_traffic_group      = var.inherited_traffic_group
-  jsonfile                     = var.jsonfile
-  name                         = var.name
-  partition                    = var.partition
-  strict_updates               = var.strict_updates
-  template                     = var.template
-  template_modified            = var.template_modified
+  # description - (optional) is a type of string
+  description = var.description
+  # devicegroup - (optional) is a type of string
+  devicegroup = var.devicegroup
+  # execute_action - (optional) is a type of string
+  execute_action = var.execute_action
+  # inherited_devicegroup - (optional) is a type of string
+  inherited_devicegroup = var.inherited_devicegroup
+  # inherited_traffic_group - (optional) is a type of string
+  inherited_traffic_group = var.inherited_traffic_group
+  # jsonfile - (optional) is a type of string
+  jsonfile = var.jsonfile
+  # name - (optional) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # strict_updates - (optional) is a type of string
+  strict_updates = var.strict_updates
+  # template - (optional) is a type of string
+  template = var.template
+  # template_modified - (optional) is a type of string
+  template_modified = var.template_modified
+  # template_prerequisite_errors - (optional) is a type of string
   template_prerequisite_errors = var.template_prerequisite_errors
-  traffic_group                = var.traffic_group
+  # traffic_group - (optional) is a type of string
+  traffic_group = var.traffic_group
 
   dynamic "lists" {
     for_each = var.lists
     content {
+      # encrypted - (optional) is a type of string
       encrypted = lists.value["encrypted"]
-      value     = lists.value["value"]
+      # value - (optional) is a type of string
+      value = lists.value["value"]
     }
   }
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
+      # persists - (optional) is a type of string
       persists = metadata.value["persists"]
-      value    = metadata.value["value"]
+      # value - (optional) is a type of string
+      value = metadata.value["value"]
     }
   }
 
   dynamic "tables" {
     for_each = var.tables
     content {
-      column_names      = tables.value["column_names"]
+      # column_names - (optional) is a type of list of string
+      column_names = tables.value["column_names"]
+      # encrypted_columns - (optional) is a type of string
       encrypted_columns = tables.value["encrypted_columns"]
-      name              = tables.value["name"]
+      # name - (optional) is a type of string
+      name = tables.value["name"]
 
       dynamic "rows" {
         for_each = tables.value.rows
         content {
+          # row - (optional) is a type of list of string
           row = rows.value["row"]
         }
       }
@@ -272,9 +293,12 @@ resource "bigip_sys_iapp" "this" {
   dynamic "variables" {
     for_each = var.variables
     content {
+      # encrypted - (optional) is a type of string
       encrypted = variables.value["encrypted"]
-      name      = variables.value["name"]
-      value     = variables.value["value"]
+      # name - (optional) is a type of string
+      name = variables.value["name"]
+      # value - (optional) is a type of string
+      value = variables.value["value"]
     }
   }
 

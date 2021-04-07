@@ -79,10 +79,15 @@ variable "version_id" {
 
 ```terraform
 data "digitalocean_spaces_bucket_object" "this" {
-  bucket     = var.bucket
-  key        = var.key
-  range      = var.range
-  region     = var.region
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # key - (required) is a type of string
+  key = var.key
+  # range - (optional) is a type of string
+  range = var.range
+  # region - (required) is a type of string
+  region = var.region
+  # version_id - (optional) is a type of string
   version_id = var.version_id
 }
 ```

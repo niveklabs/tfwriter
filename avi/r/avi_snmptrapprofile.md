@@ -109,21 +109,29 @@ variable "trap_servers" {
 
 ```terraform
 resource "avi_snmptrapprofile" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "trap_servers" {
     for_each = var.trap_servers
     content {
+      # community - (optional) is a type of string
       community = trap_servers.value["community"]
-      port      = trap_servers.value["port"]
-      version   = trap_servers.value["version"]
+      # port - (optional) is a type of number
+      port = trap_servers.value["port"]
+      # version - (optional) is a type of string
+      version = trap_servers.value["version"]
 
       dynamic "ip_addr" {
         for_each = trap_servers.value.ip_addr
         content {
+          # addr - (required) is a type of string
           addr = ip_addr.value["addr"]
+          # type - (required) is a type of string
           type = ip_addr.value["type"]
         }
       }
@@ -131,11 +139,16 @@ resource "avi_snmptrapprofile" "this" {
       dynamic "user" {
         for_each = trap_servers.value.user
         content {
+          # auth_passphrase - (optional) is a type of string
           auth_passphrase = user.value["auth_passphrase"]
-          auth_type       = user.value["auth_type"]
+          # auth_type - (optional) is a type of string
+          auth_type = user.value["auth_type"]
+          # priv_passphrase - (optional) is a type of string
           priv_passphrase = user.value["priv_passphrase"]
-          priv_type       = user.value["priv_type"]
-          username        = user.value["username"]
+          # priv_type - (optional) is a type of string
+          priv_type = user.value["priv_type"]
+          # username - (optional) is a type of string
+          username = user.value["username"]
         }
       }
 

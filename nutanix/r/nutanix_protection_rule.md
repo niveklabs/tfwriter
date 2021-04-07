@@ -209,28 +209,39 @@ variable "project_reference" {
 
 ```terraform
 resource "nutanix_protection_rule" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  start_time  = var.start_time
+  # name - (required) is a type of string
+  name = var.name
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
 
   dynamic "availability_zone_connectivity_list" {
     for_each = var.availability_zone_connectivity_list
     content {
+      # destination_availability_zone_index - (optional) is a type of number
       destination_availability_zone_index = availability_zone_connectivity_list.value["destination_availability_zone_index"]
-      source_availability_zone_index      = availability_zone_connectivity_list.value["source_availability_zone_index"]
+      # source_availability_zone_index - (optional) is a type of number
+      source_availability_zone_index = availability_zone_connectivity_list.value["source_availability_zone_index"]
 
       dynamic "snapshot_schedule_list" {
         for_each = availability_zone_connectivity_list.value.snapshot_schedule_list
         content {
-          auto_suspend_timeout_secs     = snapshot_schedule_list.value["auto_suspend_timeout_secs"]
+          # auto_suspend_timeout_secs - (optional) is a type of number
+          auto_suspend_timeout_secs = snapshot_schedule_list.value["auto_suspend_timeout_secs"]
+          # recovery_point_objective_secs - (required) is a type of number
           recovery_point_objective_secs = snapshot_schedule_list.value["recovery_point_objective_secs"]
-          snapshot_type                 = snapshot_schedule_list.value["snapshot_type"]
+          # snapshot_type - (optional) is a type of string
+          snapshot_type = snapshot_schedule_list.value["snapshot_type"]
 
           dynamic "local_snapshot_retention_policy" {
             for_each = snapshot_schedule_list.value.local_snapshot_retention_policy
             content {
-              num_snapshots                                  = local_snapshot_retention_policy.value["num_snapshots"]
-              rollup_retention_policy_multiple               = local_snapshot_retention_policy.value["rollup_retention_policy_multiple"]
+              # num_snapshots - (optional) is a type of number
+              num_snapshots = local_snapshot_retention_policy.value["num_snapshots"]
+              # rollup_retention_policy_multiple - (optional) is a type of number
+              rollup_retention_policy_multiple = local_snapshot_retention_policy.value["rollup_retention_policy_multiple"]
+              # rollup_retention_policy_snapshot_interval_type - (optional) is a type of string
               rollup_retention_policy_snapshot_interval_type = local_snapshot_retention_policy.value["rollup_retention_policy_snapshot_interval_type"]
             }
           }
@@ -238,8 +249,11 @@ resource "nutanix_protection_rule" "this" {
           dynamic "remote_snapshot_retention_policy" {
             for_each = snapshot_schedule_list.value.remote_snapshot_retention_policy
             content {
-              num_snapshots                                  = remote_snapshot_retention_policy.value["num_snapshots"]
-              rollup_retention_policy_multiple               = remote_snapshot_retention_policy.value["rollup_retention_policy_multiple"]
+              # num_snapshots - (optional) is a type of number
+              num_snapshots = remote_snapshot_retention_policy.value["num_snapshots"]
+              # rollup_retention_policy_multiple - (optional) is a type of number
+              rollup_retention_policy_multiple = remote_snapshot_retention_policy.value["rollup_retention_policy_multiple"]
+              # rollup_retention_policy_snapshot_interval_type - (optional) is a type of string
               rollup_retention_policy_snapshot_interval_type = remote_snapshot_retention_policy.value["rollup_retention_policy_snapshot_interval_type"]
             }
           }
@@ -253,7 +267,9 @@ resource "nutanix_protection_rule" "this" {
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -261,13 +277,17 @@ resource "nutanix_protection_rule" "this" {
   dynamic "category_filter" {
     for_each = var.category_filter
     content {
+      # kind_list - (optional) is a type of list of string
       kind_list = category_filter.value["kind_list"]
-      type      = category_filter.value["type"]
+      # type - (optional) is a type of string
+      type = category_filter.value["type"]
 
       dynamic "params" {
         for_each = category_filter.value.params
         content {
-          name   = params.value["name"]
+          # name - (required) is a type of string
+          name = params.value["name"]
+          # values - (required) is a type of list of string
           values = params.value["values"]
         }
       }
@@ -278,16 +298,21 @@ resource "nutanix_protection_rule" "this" {
   dynamic "ordered_availability_zone_list" {
     for_each = var.ordered_availability_zone_list
     content {
+      # availability_zone_url - (optional) is a type of string
       availability_zone_url = ordered_availability_zone_list.value["availability_zone_url"]
-      cluster_uuid          = ordered_availability_zone_list.value["cluster_uuid"]
+      # cluster_uuid - (optional) is a type of string
+      cluster_uuid = ordered_availability_zone_list.value["cluster_uuid"]
     }
   }
 
   dynamic "owner_reference" {
     for_each = var.owner_reference
     content {
+      # kind - (optional) is a type of string
       kind = owner_reference.value["kind"]
+      # name - (optional) is a type of string
       name = owner_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = owner_reference.value["uuid"]
     }
   }
@@ -295,8 +320,11 @@ resource "nutanix_protection_rule" "this" {
   dynamic "project_reference" {
     for_each = var.project_reference
     content {
+      # kind - (optional) is a type of string
       kind = project_reference.value["kind"]
+      # name - (optional) is a type of string
       name = project_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = project_reference.value["uuid"]
     }
   }

@@ -72,13 +72,17 @@ variable "record" {
 
 ```terraform
 resource "bigip_ltm_datagroup" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # type - (required) is a type of string
   type = var.type
 
   dynamic "record" {
     for_each = var.record
     content {
+      # data - (optional) is a type of string
       data = record.value["data"]
+      # name - (required) is a type of string
       name = record.value["name"]
     }
   }

@@ -56,8 +56,10 @@ variable "storage_id" {
 
 ```terraform
 resource "tencentcloud_cbs_snapshot_policy_attachment" "this" {
+  # snapshot_policy_id - (required) is a type of string
   snapshot_policy_id = var.snapshot_policy_id
-  storage_id         = var.storage_id
+  # storage_id - (required) is a type of string
+  storage_id = var.storage_id
 }
 ```
 

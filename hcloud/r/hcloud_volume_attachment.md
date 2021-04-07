@@ -64,8 +64,11 @@ variable "volume_id" {
 
 ```terraform
 resource "hcloud_volume_attachment" "this" {
+  # automount - (optional) is a type of bool
   automount = var.automount
+  # server_id - (required) is a type of number
   server_id = var.server_id
+  # volume_id - (required) is a type of number
   volume_id = var.volume_id
 }
 ```

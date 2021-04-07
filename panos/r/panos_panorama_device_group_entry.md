@@ -64,9 +64,12 @@ variable "vsys_list" {
 
 ```terraform
 resource "panos_panorama_device_group_entry" "this" {
+  # device_group - (required) is a type of string
   device_group = var.device_group
-  serial       = var.serial
-  vsys_list    = var.vsys_list
+  # serial - (required) is a type of string
+  serial = var.serial
+  # vsys_list - (optional) is a type of set of string
+  vsys_list = var.vsys_list
 }
 ```
 

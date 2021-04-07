@@ -114,15 +114,24 @@ variable "uplink_speed" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_h2qpwanmetric" "this" {
-  downlink_load             = var.downlink_load
-  downlink_speed            = var.downlink_speed
-  link_at_capacity          = var.link_at_capacity
-  link_status               = var.link_status
+  # downlink_load - (optional) is a type of number
+  downlink_load = var.downlink_load
+  # downlink_speed - (optional) is a type of number
+  downlink_speed = var.downlink_speed
+  # link_at_capacity - (optional) is a type of string
+  link_at_capacity = var.link_at_capacity
+  # link_status - (optional) is a type of string
+  link_status = var.link_status
+  # load_measurement_duration - (optional) is a type of number
   load_measurement_duration = var.load_measurement_duration
-  name                      = var.name
-  symmetric_wan_link        = var.symmetric_wan_link
-  uplink_load               = var.uplink_load
-  uplink_speed              = var.uplink_speed
+  # name - (optional) is a type of string
+  name = var.name
+  # symmetric_wan_link - (optional) is a type of string
+  symmetric_wan_link = var.symmetric_wan_link
+  # uplink_load - (optional) is a type of number
+  uplink_load = var.uplink_load
+  # uplink_speed - (optional) is a type of number
+  uplink_speed = var.uplink_speed
 }
 ```
 

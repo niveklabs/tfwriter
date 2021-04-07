@@ -490,56 +490,98 @@ variable "se_runtime_properties" {
 
 ```terraform
 resource "avi_seproperties" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "se_agent_properties" {
     for_each = var.se_agent_properties
     content {
-      controller_echo_miss_aggressive_limit  = se_agent_properties.value["controller_echo_miss_aggressive_limit"]
-      controller_echo_miss_limit             = se_agent_properties.value["controller_echo_miss_limit"]
+      # controller_echo_miss_aggressive_limit - (optional) is a type of number
+      controller_echo_miss_aggressive_limit = se_agent_properties.value["controller_echo_miss_aggressive_limit"]
+      # controller_echo_miss_limit - (optional) is a type of number
+      controller_echo_miss_limit = se_agent_properties.value["controller_echo_miss_limit"]
+      # controller_echo_rpc_aggressive_timeout - (optional) is a type of number
       controller_echo_rpc_aggressive_timeout = se_agent_properties.value["controller_echo_rpc_aggressive_timeout"]
-      controller_echo_rpc_timeout            = se_agent_properties.value["controller_echo_rpc_timeout"]
-      controller_heartbeat_miss_limit        = se_agent_properties.value["controller_heartbeat_miss_limit"]
-      controller_heartbeat_timeout_sec       = se_agent_properties.value["controller_heartbeat_timeout_sec"]
-      controller_registration_timeout_sec    = se_agent_properties.value["controller_registration_timeout_sec"]
-      controller_rpc_timeout                 = se_agent_properties.value["controller_rpc_timeout"]
-      cpustats_interval                      = se_agent_properties.value["cpustats_interval"]
-      ctrl_reg_pending_max_wait_time         = se_agent_properties.value["ctrl_reg_pending_max_wait_time"]
-      debug_mode                             = se_agent_properties.value["debug_mode"]
-      dp_aggressive_deq_interval_msec        = se_agent_properties.value["dp_aggressive_deq_interval_msec"]
-      dp_aggressive_enq_interval_msec        = se_agent_properties.value["dp_aggressive_enq_interval_msec"]
-      dp_batch_size                          = se_agent_properties.value["dp_batch_size"]
-      dp_deq_interval_msec                   = se_agent_properties.value["dp_deq_interval_msec"]
-      dp_enq_interval_msec                   = se_agent_properties.value["dp_enq_interval_msec"]
-      dp_max_wait_rsp_time_sec               = se_agent_properties.value["dp_max_wait_rsp_time_sec"]
-      dp_reg_pending_max_wait_time           = se_agent_properties.value["dp_reg_pending_max_wait_time"]
-      headless_timeout_sec                   = se_agent_properties.value["headless_timeout_sec"]
-      ignore_docker_mac_change               = se_agent_properties.value["ignore_docker_mac_change"]
-      ns_helper_deq_interval_msec            = se_agent_properties.value["ns_helper_deq_interval_msec"]
-      sdb_flush_interval                     = se_agent_properties.value["sdb_flush_interval"]
-      sdb_pipeline_size                      = se_agent_properties.value["sdb_pipeline_size"]
-      sdb_scan_count                         = se_agent_properties.value["sdb_scan_count"]
-      se_grp_change_disruptive               = se_agent_properties.value["se_grp_change_disruptive"]
-      send_se_ready_timeout                  = se_agent_properties.value["send_se_ready_timeout"]
-      states_flush_interval                  = se_agent_properties.value["states_flush_interval"]
-      vnic_dhcp_ip_check_interval            = se_agent_properties.value["vnic_dhcp_ip_check_interval"]
-      vnic_dhcp_ip_max_retries               = se_agent_properties.value["vnic_dhcp_ip_max_retries"]
-      vnic_ip_delete_interval                = se_agent_properties.value["vnic_ip_delete_interval"]
-      vnic_probe_interval                    = se_agent_properties.value["vnic_probe_interval"]
-      vnic_rpc_retry_interval                = se_agent_properties.value["vnic_rpc_retry_interval"]
-      vnicdb_cmd_history_size                = se_agent_properties.value["vnicdb_cmd_history_size"]
+      # controller_echo_rpc_timeout - (optional) is a type of number
+      controller_echo_rpc_timeout = se_agent_properties.value["controller_echo_rpc_timeout"]
+      # controller_heartbeat_miss_limit - (optional) is a type of number
+      controller_heartbeat_miss_limit = se_agent_properties.value["controller_heartbeat_miss_limit"]
+      # controller_heartbeat_timeout_sec - (optional) is a type of number
+      controller_heartbeat_timeout_sec = se_agent_properties.value["controller_heartbeat_timeout_sec"]
+      # controller_registration_timeout_sec - (optional) is a type of number
+      controller_registration_timeout_sec = se_agent_properties.value["controller_registration_timeout_sec"]
+      # controller_rpc_timeout - (optional) is a type of number
+      controller_rpc_timeout = se_agent_properties.value["controller_rpc_timeout"]
+      # cpustats_interval - (optional) is a type of number
+      cpustats_interval = se_agent_properties.value["cpustats_interval"]
+      # ctrl_reg_pending_max_wait_time - (optional) is a type of number
+      ctrl_reg_pending_max_wait_time = se_agent_properties.value["ctrl_reg_pending_max_wait_time"]
+      # debug_mode - (optional) is a type of bool
+      debug_mode = se_agent_properties.value["debug_mode"]
+      # dp_aggressive_deq_interval_msec - (optional) is a type of number
+      dp_aggressive_deq_interval_msec = se_agent_properties.value["dp_aggressive_deq_interval_msec"]
+      # dp_aggressive_enq_interval_msec - (optional) is a type of number
+      dp_aggressive_enq_interval_msec = se_agent_properties.value["dp_aggressive_enq_interval_msec"]
+      # dp_batch_size - (optional) is a type of number
+      dp_batch_size = se_agent_properties.value["dp_batch_size"]
+      # dp_deq_interval_msec - (optional) is a type of number
+      dp_deq_interval_msec = se_agent_properties.value["dp_deq_interval_msec"]
+      # dp_enq_interval_msec - (optional) is a type of number
+      dp_enq_interval_msec = se_agent_properties.value["dp_enq_interval_msec"]
+      # dp_max_wait_rsp_time_sec - (optional) is a type of number
+      dp_max_wait_rsp_time_sec = se_agent_properties.value["dp_max_wait_rsp_time_sec"]
+      # dp_reg_pending_max_wait_time - (optional) is a type of number
+      dp_reg_pending_max_wait_time = se_agent_properties.value["dp_reg_pending_max_wait_time"]
+      # headless_timeout_sec - (optional) is a type of number
+      headless_timeout_sec = se_agent_properties.value["headless_timeout_sec"]
+      # ignore_docker_mac_change - (optional) is a type of bool
+      ignore_docker_mac_change = se_agent_properties.value["ignore_docker_mac_change"]
+      # ns_helper_deq_interval_msec - (optional) is a type of number
+      ns_helper_deq_interval_msec = se_agent_properties.value["ns_helper_deq_interval_msec"]
+      # sdb_flush_interval - (optional) is a type of number
+      sdb_flush_interval = se_agent_properties.value["sdb_flush_interval"]
+      # sdb_pipeline_size - (optional) is a type of number
+      sdb_pipeline_size = se_agent_properties.value["sdb_pipeline_size"]
+      # sdb_scan_count - (optional) is a type of number
+      sdb_scan_count = se_agent_properties.value["sdb_scan_count"]
+      # se_grp_change_disruptive - (optional) is a type of bool
+      se_grp_change_disruptive = se_agent_properties.value["se_grp_change_disruptive"]
+      # send_se_ready_timeout - (optional) is a type of number
+      send_se_ready_timeout = se_agent_properties.value["send_se_ready_timeout"]
+      # states_flush_interval - (optional) is a type of number
+      states_flush_interval = se_agent_properties.value["states_flush_interval"]
+      # vnic_dhcp_ip_check_interval - (optional) is a type of number
+      vnic_dhcp_ip_check_interval = se_agent_properties.value["vnic_dhcp_ip_check_interval"]
+      # vnic_dhcp_ip_max_retries - (optional) is a type of number
+      vnic_dhcp_ip_max_retries = se_agent_properties.value["vnic_dhcp_ip_max_retries"]
+      # vnic_ip_delete_interval - (optional) is a type of number
+      vnic_ip_delete_interval = se_agent_properties.value["vnic_ip_delete_interval"]
+      # vnic_probe_interval - (optional) is a type of number
+      vnic_probe_interval = se_agent_properties.value["vnic_probe_interval"]
+      # vnic_rpc_retry_interval - (optional) is a type of number
+      vnic_rpc_retry_interval = se_agent_properties.value["vnic_rpc_retry_interval"]
+      # vnicdb_cmd_history_size - (optional) is a type of number
+      vnicdb_cmd_history_size = se_agent_properties.value["vnicdb_cmd_history_size"]
 
       dynamic "seagent_statecache_properties" {
         for_each = se_agent_properties.value.seagent_statecache_properties
         content {
-          sc_batch_buffer_flush_limit       = seagent_statecache_properties.value["sc_batch_buffer_flush_limit"]
-          sc_shard_cleanup_max_time         = seagent_statecache_properties.value["sc_shard_cleanup_max_time"]
+          # sc_batch_buffer_flush_limit - (optional) is a type of number
+          sc_batch_buffer_flush_limit = seagent_statecache_properties.value["sc_batch_buffer_flush_limit"]
+          # sc_shard_cleanup_max_time - (optional) is a type of number
+          sc_shard_cleanup_max_time = seagent_statecache_properties.value["sc_shard_cleanup_max_time"]
+          # sc_state_ring_batch_dequeue_limit - (optional) is a type of number
           sc_state_ring_batch_dequeue_limit = seagent_statecache_properties.value["sc_state_ring_batch_dequeue_limit"]
-          sc_states_flush_interval          = seagent_statecache_properties.value["sc_states_flush_interval"]
-          sc_stream_check_interval          = seagent_statecache_properties.value["sc_stream_check_interval"]
-          sc_thread_q_batch_dequeue_limit   = seagent_statecache_properties.value["sc_thread_q_batch_dequeue_limit"]
-          sc_thread_q_max_size              = seagent_statecache_properties.value["sc_thread_q_max_size"]
-          sc_thread_sleep_interval          = seagent_statecache_properties.value["sc_thread_sleep_interval"]
+          # sc_states_flush_interval - (optional) is a type of number
+          sc_states_flush_interval = seagent_statecache_properties.value["sc_states_flush_interval"]
+          # sc_stream_check_interval - (optional) is a type of number
+          sc_stream_check_interval = seagent_statecache_properties.value["sc_stream_check_interval"]
+          # sc_thread_q_batch_dequeue_limit - (optional) is a type of number
+          sc_thread_q_batch_dequeue_limit = seagent_statecache_properties.value["sc_thread_q_batch_dequeue_limit"]
+          # sc_thread_q_max_size - (optional) is a type of number
+          sc_thread_q_max_size = seagent_statecache_properties.value["sc_thread_q_max_size"]
+          # sc_thread_sleep_interval - (optional) is a type of number
+          sc_thread_sleep_interval = seagent_statecache_properties.value["sc_thread_sleep_interval"]
         }
       }
 
@@ -549,37 +591,64 @@ resource "avi_seproperties" "this" {
   dynamic "se_bootup_properties" {
     for_each = var.se_bootup_properties
     content {
-      docker_backend_portend                = se_bootup_properties.value["docker_backend_portend"]
-      docker_backend_portstart              = se_bootup_properties.value["docker_backend_portstart"]
-      fair_queueing_enabled                 = se_bootup_properties.value["fair_queueing_enabled"]
-      geo_db_granularity                    = se_bootup_properties.value["geo_db_granularity"]
-      l7_conns_per_core                     = se_bootup_properties.value["l7_conns_per_core"]
-      l7_resvd_listen_conns_per_core        = se_bootup_properties.value["l7_resvd_listen_conns_per_core"]
-      log_agent_debug_enabled               = se_bootup_properties.value["log_agent_debug_enabled"]
-      log_agent_trace_enabled               = se_bootup_properties.value["log_agent_trace_enabled"]
-      se_emulated_cores                     = se_bootup_properties.value["se_emulated_cores"]
-      se_ip_encap_ipc                       = se_bootup_properties.value["se_ip_encap_ipc"]
-      se_l3_encap_ipc                       = se_bootup_properties.value["se_l3_encap_ipc"]
-      se_log_buffer_app_blocking_dequeue    = se_bootup_properties.value["se_log_buffer_app_blocking_dequeue"]
-      se_log_buffer_applog_size             = se_bootup_properties.value["se_log_buffer_applog_size"]
-      se_log_buffer_chunk_count             = se_bootup_properties.value["se_log_buffer_chunk_count"]
-      se_log_buffer_conn_blocking_dequeue   = se_bootup_properties.value["se_log_buffer_conn_blocking_dequeue"]
-      se_log_buffer_connlog_size            = se_bootup_properties.value["se_log_buffer_connlog_size"]
+      # docker_backend_portend - (optional) is a type of number
+      docker_backend_portend = se_bootup_properties.value["docker_backend_portend"]
+      # docker_backend_portstart - (optional) is a type of number
+      docker_backend_portstart = se_bootup_properties.value["docker_backend_portstart"]
+      # fair_queueing_enabled - (optional) is a type of bool
+      fair_queueing_enabled = se_bootup_properties.value["fair_queueing_enabled"]
+      # geo_db_granularity - (optional) is a type of number
+      geo_db_granularity = se_bootup_properties.value["geo_db_granularity"]
+      # l7_conns_per_core - (optional) is a type of number
+      l7_conns_per_core = se_bootup_properties.value["l7_conns_per_core"]
+      # l7_resvd_listen_conns_per_core - (optional) is a type of number
+      l7_resvd_listen_conns_per_core = se_bootup_properties.value["l7_resvd_listen_conns_per_core"]
+      # log_agent_debug_enabled - (optional) is a type of bool
+      log_agent_debug_enabled = se_bootup_properties.value["log_agent_debug_enabled"]
+      # log_agent_trace_enabled - (optional) is a type of bool
+      log_agent_trace_enabled = se_bootup_properties.value["log_agent_trace_enabled"]
+      # se_emulated_cores - (optional) is a type of number
+      se_emulated_cores = se_bootup_properties.value["se_emulated_cores"]
+      # se_ip_encap_ipc - (optional) is a type of number
+      se_ip_encap_ipc = se_bootup_properties.value["se_ip_encap_ipc"]
+      # se_l3_encap_ipc - (optional) is a type of number
+      se_l3_encap_ipc = se_bootup_properties.value["se_l3_encap_ipc"]
+      # se_log_buffer_app_blocking_dequeue - (optional) is a type of bool
+      se_log_buffer_app_blocking_dequeue = se_bootup_properties.value["se_log_buffer_app_blocking_dequeue"]
+      # se_log_buffer_applog_size - (optional) is a type of number
+      se_log_buffer_applog_size = se_bootup_properties.value["se_log_buffer_applog_size"]
+      # se_log_buffer_chunk_count - (optional) is a type of number
+      se_log_buffer_chunk_count = se_bootup_properties.value["se_log_buffer_chunk_count"]
+      # se_log_buffer_conn_blocking_dequeue - (optional) is a type of bool
+      se_log_buffer_conn_blocking_dequeue = se_bootup_properties.value["se_log_buffer_conn_blocking_dequeue"]
+      # se_log_buffer_connlog_size - (optional) is a type of number
+      se_log_buffer_connlog_size = se_bootup_properties.value["se_log_buffer_connlog_size"]
+      # se_log_buffer_events_blocking_dequeue - (optional) is a type of bool
       se_log_buffer_events_blocking_dequeue = se_bootup_properties.value["se_log_buffer_events_blocking_dequeue"]
-      se_log_buffer_events_size             = se_bootup_properties.value["se_log_buffer_events_size"]
-      ssl_sess_cache_per_vs                 = se_bootup_properties.value["ssl_sess_cache_per_vs"]
-      ssl_sess_cache_timeout                = se_bootup_properties.value["ssl_sess_cache_timeout"]
-      tcp_syncache_hashsize                 = se_bootup_properties.value["tcp_syncache_hashsize"]
+      # se_log_buffer_events_size - (optional) is a type of number
+      se_log_buffer_events_size = se_bootup_properties.value["se_log_buffer_events_size"]
+      # ssl_sess_cache_per_vs - (optional) is a type of number
+      ssl_sess_cache_per_vs = se_bootup_properties.value["ssl_sess_cache_per_vs"]
+      # ssl_sess_cache_timeout - (optional) is a type of number
+      ssl_sess_cache_timeout = se_bootup_properties.value["ssl_sess_cache_timeout"]
+      # tcp_syncache_hashsize - (optional) is a type of number
+      tcp_syncache_hashsize = se_bootup_properties.value["tcp_syncache_hashsize"]
 
       dynamic "se_dp_compression" {
         for_each = se_bootup_properties.value.se_dp_compression
         content {
-          buf_num          = se_dp_compression.value["buf_num"]
-          buf_size         = se_dp_compression.value["buf_size"]
-          hash_size        = se_dp_compression.value["hash_size"]
+          # buf_num - (optional) is a type of number
+          buf_num = se_dp_compression.value["buf_num"]
+          # buf_size - (optional) is a type of number
+          buf_size = se_dp_compression.value["buf_size"]
+          # hash_size - (optional) is a type of number
+          hash_size = se_dp_compression.value["hash_size"]
+          # level_aggressive - (optional) is a type of number
           level_aggressive = se_dp_compression.value["level_aggressive"]
-          level_normal     = se_dp_compression.value["level_normal"]
-          window_size      = se_dp_compression.value["window_size"]
+          # level_normal - (optional) is a type of number
+          level_normal = se_dp_compression.value["level_normal"]
+          # window_size - (optional) is a type of number
+          window_size = se_dp_compression.value["window_size"]
         }
       }
 
@@ -589,108 +658,197 @@ resource "avi_seproperties" "this" {
   dynamic "se_runtime_properties" {
     for_each = var.se_runtime_properties
     content {
-      admin_ssh_enabled                             = se_runtime_properties.value["admin_ssh_enabled"]
-      baremetal_dispatcher_handles_flows            = se_runtime_properties.value["baremetal_dispatcher_handles_flows"]
-      connections_lossy_log_rate_limiter_threshold  = se_runtime_properties.value["connections_lossy_log_rate_limiter_threshold"]
-      connections_udfnf_log_rate_limiter_threshold  = se_runtime_properties.value["connections_udfnf_log_rate_limiter_threshold"]
-      disable_flow_probes                           = se_runtime_properties.value["disable_flow_probes"]
-      downstream_send_timeout                       = se_runtime_properties.value["downstream_send_timeout"]
-      dp_aggressive_hb_frequency                    = se_runtime_properties.value["dp_aggressive_hb_frequency"]
-      dp_aggressive_hb_timeout_count                = se_runtime_properties.value["dp_aggressive_hb_timeout_count"]
-      dp_hb_frequency                               = se_runtime_properties.value["dp_hb_frequency"]
-      dp_hb_timeout_count                           = se_runtime_properties.value["dp_hb_timeout_count"]
-      dupip_frequency                               = se_runtime_properties.value["dupip_frequency"]
-      dupip_timeout_count                           = se_runtime_properties.value["dupip_timeout_count"]
-      enable_hsm_log                                = se_runtime_properties.value["enable_hsm_log"]
-      feproxy_vips_enable_proxy_arp                 = se_runtime_properties.value["feproxy_vips_enable_proxy_arp"]
-      flow_table_batch_push_frequency               = se_runtime_properties.value["flow_table_batch_push_frequency"]
-      global_mtu                                    = se_runtime_properties.value["global_mtu"]
-      http_rum_console_log                          = se_runtime_properties.value["http_rum_console_log"]
-      http_rum_min_content_length                   = se_runtime_properties.value["http_rum_min_content_length"]
-      lbaction_num_requests_to_dispatch             = se_runtime_properties.value["lbaction_num_requests_to_dispatch"]
-      lbaction_rq_per_request_max_retries           = se_runtime_properties.value["lbaction_rq_per_request_max_retries"]
-      log_agent_compress_logs                       = se_runtime_properties.value["log_agent_compress_logs"]
-      log_agent_conn_send_buffer_size               = se_runtime_properties.value["log_agent_conn_send_buffer_size"]
-      log_agent_export_msg_buffer_size              = se_runtime_properties.value["log_agent_export_msg_buffer_size"]
-      log_agent_export_wait_time                    = se_runtime_properties.value["log_agent_export_wait_time"]
-      log_agent_file_sz_appl                        = se_runtime_properties.value["log_agent_file_sz_appl"]
-      log_agent_file_sz_conn                        = se_runtime_properties.value["log_agent_file_sz_conn"]
-      log_agent_file_sz_debug                       = se_runtime_properties.value["log_agent_file_sz_debug"]
-      log_agent_file_sz_event                       = se_runtime_properties.value["log_agent_file_sz_event"]
-      log_agent_log_storage_min_sz                  = se_runtime_properties.value["log_agent_log_storage_min_sz"]
-      log_agent_max_active_adf_files_per_vs         = se_runtime_properties.value["log_agent_max_active_adf_files_per_vs"]
-      log_agent_max_concurrent_rsync                = se_runtime_properties.value["log_agent_max_concurrent_rsync"]
-      log_agent_max_logmessage_proto_sz             = se_runtime_properties.value["log_agent_max_logmessage_proto_sz"]
-      log_agent_max_storage_excess_percent          = se_runtime_properties.value["log_agent_max_storage_excess_percent"]
-      log_agent_max_storage_ignore_percent          = se_runtime_properties.value["log_agent_max_storage_ignore_percent"]
-      log_agent_min_storage_per_vs                  = se_runtime_properties.value["log_agent_min_storage_per_vs"]
-      log_agent_pause_interval                      = se_runtime_properties.value["log_agent_pause_interval"]
-      log_agent_sleep_interval                      = se_runtime_properties.value["log_agent_sleep_interval"]
-      log_agent_unknown_vs_timer                    = se_runtime_properties.value["log_agent_unknown_vs_timer"]
-      log_message_max_file_list_size                = se_runtime_properties.value["log_message_max_file_list_size"]
-      mcache_enabled                                = se_runtime_properties.value["mcache_enabled"]
-      mcache_fetch_enabled                          = se_runtime_properties.value["mcache_fetch_enabled"]
-      mcache_store_in_enabled                       = se_runtime_properties.value["mcache_store_in_enabled"]
-      mcache_store_in_max_size                      = se_runtime_properties.value["mcache_store_in_max_size"]
-      mcache_store_in_min_size                      = se_runtime_properties.value["mcache_store_in_min_size"]
-      mcache_store_out_enabled                      = se_runtime_properties.value["mcache_store_out_enabled"]
-      ngx_free_connection_stack                     = se_runtime_properties.value["ngx_free_connection_stack"]
-      persistence_mem_max                           = se_runtime_properties.value["persistence_mem_max"]
-      scaleout_udp_per_pkt                          = se_runtime_properties.value["scaleout_udp_per_pkt"]
-      se_auth_ldap_bind_timeout                     = se_runtime_properties.value["se_auth_ldap_bind_timeout"]
-      se_auth_ldap_cache_size                       = se_runtime_properties.value["se_auth_ldap_cache_size"]
-      se_auth_ldap_connect_timeout                  = se_runtime_properties.value["se_auth_ldap_connect_timeout"]
-      se_auth_ldap_conns_per_server                 = se_runtime_properties.value["se_auth_ldap_conns_per_server"]
-      se_auth_ldap_reconnect_timeout                = se_runtime_properties.value["se_auth_ldap_reconnect_timeout"]
-      se_auth_ldap_request_timeout                  = se_runtime_properties.value["se_auth_ldap_request_timeout"]
-      se_auth_ldap_servers_failover_only            = se_runtime_properties.value["se_auth_ldap_servers_failover_only"]
-      se_dp_hm_drops                                = se_runtime_properties.value["se_dp_hm_drops"]
-      se_dp_if_state_poll_interval                  = se_runtime_properties.value["se_dp_if_state_poll_interval"]
-      se_dp_log_nf_enqueue_percent                  = se_runtime_properties.value["se_dp_log_nf_enqueue_percent"]
-      se_dp_log_udf_enqueue_percent                 = se_runtime_properties.value["se_dp_log_udf_enqueue_percent"]
-      se_dump_core_on_assert                        = se_runtime_properties.value["se_dump_core_on_assert"]
-      se_handle_interface_routes                    = se_runtime_properties.value["se_handle_interface_routes"]
-      se_hb_persist_fudge_bits                      = se_runtime_properties.value["se_hb_persist_fudge_bits"]
+      # admin_ssh_enabled - (optional) is a type of bool
+      admin_ssh_enabled = se_runtime_properties.value["admin_ssh_enabled"]
+      # baremetal_dispatcher_handles_flows - (optional) is a type of bool
+      baremetal_dispatcher_handles_flows = se_runtime_properties.value["baremetal_dispatcher_handles_flows"]
+      # connections_lossy_log_rate_limiter_threshold - (optional) is a type of number
+      connections_lossy_log_rate_limiter_threshold = se_runtime_properties.value["connections_lossy_log_rate_limiter_threshold"]
+      # connections_udfnf_log_rate_limiter_threshold - (optional) is a type of number
+      connections_udfnf_log_rate_limiter_threshold = se_runtime_properties.value["connections_udfnf_log_rate_limiter_threshold"]
+      # disable_flow_probes - (optional) is a type of bool
+      disable_flow_probes = se_runtime_properties.value["disable_flow_probes"]
+      # downstream_send_timeout - (optional) is a type of number
+      downstream_send_timeout = se_runtime_properties.value["downstream_send_timeout"]
+      # dp_aggressive_hb_frequency - (optional) is a type of number
+      dp_aggressive_hb_frequency = se_runtime_properties.value["dp_aggressive_hb_frequency"]
+      # dp_aggressive_hb_timeout_count - (optional) is a type of number
+      dp_aggressive_hb_timeout_count = se_runtime_properties.value["dp_aggressive_hb_timeout_count"]
+      # dp_hb_frequency - (optional) is a type of number
+      dp_hb_frequency = se_runtime_properties.value["dp_hb_frequency"]
+      # dp_hb_timeout_count - (optional) is a type of number
+      dp_hb_timeout_count = se_runtime_properties.value["dp_hb_timeout_count"]
+      # dupip_frequency - (optional) is a type of number
+      dupip_frequency = se_runtime_properties.value["dupip_frequency"]
+      # dupip_timeout_count - (optional) is a type of number
+      dupip_timeout_count = se_runtime_properties.value["dupip_timeout_count"]
+      # enable_hsm_log - (optional) is a type of bool
+      enable_hsm_log = se_runtime_properties.value["enable_hsm_log"]
+      # feproxy_vips_enable_proxy_arp - (optional) is a type of bool
+      feproxy_vips_enable_proxy_arp = se_runtime_properties.value["feproxy_vips_enable_proxy_arp"]
+      # flow_table_batch_push_frequency - (optional) is a type of number
+      flow_table_batch_push_frequency = se_runtime_properties.value["flow_table_batch_push_frequency"]
+      # global_mtu - (optional) is a type of number
+      global_mtu = se_runtime_properties.value["global_mtu"]
+      # http_rum_console_log - (optional) is a type of bool
+      http_rum_console_log = se_runtime_properties.value["http_rum_console_log"]
+      # http_rum_min_content_length - (optional) is a type of number
+      http_rum_min_content_length = se_runtime_properties.value["http_rum_min_content_length"]
+      # lbaction_num_requests_to_dispatch - (optional) is a type of number
+      lbaction_num_requests_to_dispatch = se_runtime_properties.value["lbaction_num_requests_to_dispatch"]
+      # lbaction_rq_per_request_max_retries - (optional) is a type of number
+      lbaction_rq_per_request_max_retries = se_runtime_properties.value["lbaction_rq_per_request_max_retries"]
+      # log_agent_compress_logs - (optional) is a type of bool
+      log_agent_compress_logs = se_runtime_properties.value["log_agent_compress_logs"]
+      # log_agent_conn_send_buffer_size - (optional) is a type of number
+      log_agent_conn_send_buffer_size = se_runtime_properties.value["log_agent_conn_send_buffer_size"]
+      # log_agent_export_msg_buffer_size - (optional) is a type of number
+      log_agent_export_msg_buffer_size = se_runtime_properties.value["log_agent_export_msg_buffer_size"]
+      # log_agent_export_wait_time - (optional) is a type of number
+      log_agent_export_wait_time = se_runtime_properties.value["log_agent_export_wait_time"]
+      # log_agent_file_sz_appl - (optional) is a type of number
+      log_agent_file_sz_appl = se_runtime_properties.value["log_agent_file_sz_appl"]
+      # log_agent_file_sz_conn - (optional) is a type of number
+      log_agent_file_sz_conn = se_runtime_properties.value["log_agent_file_sz_conn"]
+      # log_agent_file_sz_debug - (optional) is a type of number
+      log_agent_file_sz_debug = se_runtime_properties.value["log_agent_file_sz_debug"]
+      # log_agent_file_sz_event - (optional) is a type of number
+      log_agent_file_sz_event = se_runtime_properties.value["log_agent_file_sz_event"]
+      # log_agent_log_storage_min_sz - (optional) is a type of number
+      log_agent_log_storage_min_sz = se_runtime_properties.value["log_agent_log_storage_min_sz"]
+      # log_agent_max_active_adf_files_per_vs - (optional) is a type of number
+      log_agent_max_active_adf_files_per_vs = se_runtime_properties.value["log_agent_max_active_adf_files_per_vs"]
+      # log_agent_max_concurrent_rsync - (optional) is a type of number
+      log_agent_max_concurrent_rsync = se_runtime_properties.value["log_agent_max_concurrent_rsync"]
+      # log_agent_max_logmessage_proto_sz - (optional) is a type of number
+      log_agent_max_logmessage_proto_sz = se_runtime_properties.value["log_agent_max_logmessage_proto_sz"]
+      # log_agent_max_storage_excess_percent - (optional) is a type of number
+      log_agent_max_storage_excess_percent = se_runtime_properties.value["log_agent_max_storage_excess_percent"]
+      # log_agent_max_storage_ignore_percent - (optional) is a type of number
+      log_agent_max_storage_ignore_percent = se_runtime_properties.value["log_agent_max_storage_ignore_percent"]
+      # log_agent_min_storage_per_vs - (optional) is a type of number
+      log_agent_min_storage_per_vs = se_runtime_properties.value["log_agent_min_storage_per_vs"]
+      # log_agent_pause_interval - (optional) is a type of number
+      log_agent_pause_interval = se_runtime_properties.value["log_agent_pause_interval"]
+      # log_agent_sleep_interval - (optional) is a type of number
+      log_agent_sleep_interval = se_runtime_properties.value["log_agent_sleep_interval"]
+      # log_agent_unknown_vs_timer - (optional) is a type of number
+      log_agent_unknown_vs_timer = se_runtime_properties.value["log_agent_unknown_vs_timer"]
+      # log_message_max_file_list_size - (optional) is a type of number
+      log_message_max_file_list_size = se_runtime_properties.value["log_message_max_file_list_size"]
+      # mcache_enabled - (optional) is a type of bool
+      mcache_enabled = se_runtime_properties.value["mcache_enabled"]
+      # mcache_fetch_enabled - (optional) is a type of bool
+      mcache_fetch_enabled = se_runtime_properties.value["mcache_fetch_enabled"]
+      # mcache_store_in_enabled - (optional) is a type of bool
+      mcache_store_in_enabled = se_runtime_properties.value["mcache_store_in_enabled"]
+      # mcache_store_in_max_size - (optional) is a type of number
+      mcache_store_in_max_size = se_runtime_properties.value["mcache_store_in_max_size"]
+      # mcache_store_in_min_size - (optional) is a type of number
+      mcache_store_in_min_size = se_runtime_properties.value["mcache_store_in_min_size"]
+      # mcache_store_out_enabled - (optional) is a type of bool
+      mcache_store_out_enabled = se_runtime_properties.value["mcache_store_out_enabled"]
+      # ngx_free_connection_stack - (optional) is a type of bool
+      ngx_free_connection_stack = se_runtime_properties.value["ngx_free_connection_stack"]
+      # persistence_mem_max - (optional) is a type of number
+      persistence_mem_max = se_runtime_properties.value["persistence_mem_max"]
+      # scaleout_udp_per_pkt - (optional) is a type of bool
+      scaleout_udp_per_pkt = se_runtime_properties.value["scaleout_udp_per_pkt"]
+      # se_auth_ldap_bind_timeout - (optional) is a type of number
+      se_auth_ldap_bind_timeout = se_runtime_properties.value["se_auth_ldap_bind_timeout"]
+      # se_auth_ldap_cache_size - (optional) is a type of number
+      se_auth_ldap_cache_size = se_runtime_properties.value["se_auth_ldap_cache_size"]
+      # se_auth_ldap_connect_timeout - (optional) is a type of number
+      se_auth_ldap_connect_timeout = se_runtime_properties.value["se_auth_ldap_connect_timeout"]
+      # se_auth_ldap_conns_per_server - (optional) is a type of number
+      se_auth_ldap_conns_per_server = se_runtime_properties.value["se_auth_ldap_conns_per_server"]
+      # se_auth_ldap_reconnect_timeout - (optional) is a type of number
+      se_auth_ldap_reconnect_timeout = se_runtime_properties.value["se_auth_ldap_reconnect_timeout"]
+      # se_auth_ldap_request_timeout - (optional) is a type of number
+      se_auth_ldap_request_timeout = se_runtime_properties.value["se_auth_ldap_request_timeout"]
+      # se_auth_ldap_servers_failover_only - (optional) is a type of bool
+      se_auth_ldap_servers_failover_only = se_runtime_properties.value["se_auth_ldap_servers_failover_only"]
+      # se_dp_hm_drops - (optional) is a type of number
+      se_dp_hm_drops = se_runtime_properties.value["se_dp_hm_drops"]
+      # se_dp_if_state_poll_interval - (optional) is a type of number
+      se_dp_if_state_poll_interval = se_runtime_properties.value["se_dp_if_state_poll_interval"]
+      # se_dp_log_nf_enqueue_percent - (optional) is a type of number
+      se_dp_log_nf_enqueue_percent = se_runtime_properties.value["se_dp_log_nf_enqueue_percent"]
+      # se_dp_log_udf_enqueue_percent - (optional) is a type of number
+      se_dp_log_udf_enqueue_percent = se_runtime_properties.value["se_dp_log_udf_enqueue_percent"]
+      # se_dump_core_on_assert - (optional) is a type of bool
+      se_dump_core_on_assert = se_runtime_properties.value["se_dump_core_on_assert"]
+      # se_handle_interface_routes - (optional) is a type of bool
+      se_handle_interface_routes = se_runtime_properties.value["se_handle_interface_routes"]
+      # se_hb_persist_fudge_bits - (optional) is a type of number
+      se_hb_persist_fudge_bits = se_runtime_properties.value["se_hb_persist_fudge_bits"]
+      # se_mac_error_threshold_to_disable_promiscious - (optional) is a type of number
       se_mac_error_threshold_to_disable_promiscious = se_runtime_properties.value["se_mac_error_threshold_to_disable_promiscious"]
-      se_memory_poison                              = se_runtime_properties.value["se_memory_poison"]
-      se_metrics_interval                           = se_runtime_properties.value["se_metrics_interval"]
-      se_metrics_rt_enabled                         = se_runtime_properties.value["se_metrics_rt_enabled"]
-      se_metrics_rt_interval                        = se_runtime_properties.value["se_metrics_rt_interval"]
-      se_packet_buffer_max                          = se_runtime_properties.value["se_packet_buffer_max"]
-      se_random_tcp_drops                           = se_runtime_properties.value["se_random_tcp_drops"]
-      services_accessible_all_interfaces            = se_runtime_properties.value["services_accessible_all_interfaces"]
-      spdy_fwd_proxy_parse_enable                   = se_runtime_properties.value["spdy_fwd_proxy_parse_enable"]
-      tcp_syncache_max_retransmit_default           = se_runtime_properties.value["tcp_syncache_max_retransmit_default"]
-      upstream_connect_timeout                      = se_runtime_properties.value["upstream_connect_timeout"]
-      upstream_connpool_cache_thresh                = se_runtime_properties.value["upstream_connpool_cache_thresh"]
-      upstream_connpool_conn_idle_thresh_tmo        = se_runtime_properties.value["upstream_connpool_conn_idle_thresh_tmo"]
-      upstream_connpool_core_max_cache              = se_runtime_properties.value["upstream_connpool_core_max_cache"]
-      upstream_connpool_enable                      = se_runtime_properties.value["upstream_connpool_enable"]
-      upstream_connpool_strategy                    = se_runtime_properties.value["upstream_connpool_strategy"]
-      upstream_keepalive                            = se_runtime_properties.value["upstream_keepalive"]
-      upstream_read_timeout                         = se_runtime_properties.value["upstream_read_timeout"]
-      upstream_send_timeout                         = se_runtime_properties.value["upstream_send_timeout"]
-      user_defined_metric_age                       = se_runtime_properties.value["user_defined_metric_age"]
+      # se_memory_poison - (optional) is a type of bool
+      se_memory_poison = se_runtime_properties.value["se_memory_poison"]
+      # se_metrics_interval - (optional) is a type of number
+      se_metrics_interval = se_runtime_properties.value["se_metrics_interval"]
+      # se_metrics_rt_enabled - (optional) is a type of bool
+      se_metrics_rt_enabled = se_runtime_properties.value["se_metrics_rt_enabled"]
+      # se_metrics_rt_interval - (optional) is a type of number
+      se_metrics_rt_interval = se_runtime_properties.value["se_metrics_rt_interval"]
+      # se_packet_buffer_max - (optional) is a type of number
+      se_packet_buffer_max = se_runtime_properties.value["se_packet_buffer_max"]
+      # se_random_tcp_drops - (optional) is a type of bool
+      se_random_tcp_drops = se_runtime_properties.value["se_random_tcp_drops"]
+      # services_accessible_all_interfaces - (optional) is a type of bool
+      services_accessible_all_interfaces = se_runtime_properties.value["services_accessible_all_interfaces"]
+      # spdy_fwd_proxy_parse_enable - (optional) is a type of bool
+      spdy_fwd_proxy_parse_enable = se_runtime_properties.value["spdy_fwd_proxy_parse_enable"]
+      # tcp_syncache_max_retransmit_default - (optional) is a type of number
+      tcp_syncache_max_retransmit_default = se_runtime_properties.value["tcp_syncache_max_retransmit_default"]
+      # upstream_connect_timeout - (optional) is a type of number
+      upstream_connect_timeout = se_runtime_properties.value["upstream_connect_timeout"]
+      # upstream_connpool_cache_thresh - (optional) is a type of number
+      upstream_connpool_cache_thresh = se_runtime_properties.value["upstream_connpool_cache_thresh"]
+      # upstream_connpool_conn_idle_thresh_tmo - (optional) is a type of number
+      upstream_connpool_conn_idle_thresh_tmo = se_runtime_properties.value["upstream_connpool_conn_idle_thresh_tmo"]
+      # upstream_connpool_core_max_cache - (optional) is a type of number
+      upstream_connpool_core_max_cache = se_runtime_properties.value["upstream_connpool_core_max_cache"]
+      # upstream_connpool_enable - (optional) is a type of bool
+      upstream_connpool_enable = se_runtime_properties.value["upstream_connpool_enable"]
+      # upstream_connpool_strategy - (optional) is a type of number
+      upstream_connpool_strategy = se_runtime_properties.value["upstream_connpool_strategy"]
+      # upstream_keepalive - (optional) is a type of bool
+      upstream_keepalive = se_runtime_properties.value["upstream_keepalive"]
+      # upstream_read_timeout - (optional) is a type of number
+      upstream_read_timeout = se_runtime_properties.value["upstream_read_timeout"]
+      # upstream_send_timeout - (optional) is a type of number
+      upstream_send_timeout = se_runtime_properties.value["upstream_send_timeout"]
+      # user_defined_metric_age - (optional) is a type of number
+      user_defined_metric_age = se_runtime_properties.value["user_defined_metric_age"]
 
       dynamic "app_headers" {
         for_each = se_runtime_properties.value.app_headers
         content {
+          # hdr_match_case - (required) is a type of string
           hdr_match_case = app_headers.value["hdr_match_case"]
-          hdr_name       = app_headers.value["hdr_name"]
-          hdr_string_op  = app_headers.value["hdr_string_op"]
+          # hdr_name - (required) is a type of string
+          hdr_name = app_headers.value["hdr_name"]
+          # hdr_string_op - (required) is a type of string
+          hdr_string_op = app_headers.value["hdr_string_op"]
         }
       }
 
       dynamic "dos_profile" {
         for_each = se_runtime_properties.value.dos_profile
         content {
+          # thresh_period - (required) is a type of number
           thresh_period = dos_profile.value["thresh_period"]
 
           dynamic "thresh_info" {
             for_each = dos_profile.value.thresh_info
             content {
-              attack    = thresh_info.value["attack"]
+              # attack - (required) is a type of string
+              attack = thresh_info.value["attack"]
+              # max_value - (required) is a type of number
               max_value = thresh_info.value["max_value"]
+              # min_value - (required) is a type of number
               min_value = thresh_info.value["min_value"]
             }
           }
@@ -701,34 +859,47 @@ resource "avi_seproperties" "this" {
       dynamic "se_dp_compression" {
         for_each = se_runtime_properties.value.se_dp_compression
         content {
-          max_low_rtt  = se_dp_compression.value["max_low_rtt"]
+          # max_low_rtt - (optional) is a type of number
+          max_low_rtt = se_dp_compression.value["max_low_rtt"]
+          # min_high_rtt - (optional) is a type of number
           min_high_rtt = se_dp_compression.value["min_high_rtt"]
-          min_length   = se_dp_compression.value["min_length"]
-          mobile_str   = se_dp_compression.value["mobile_str"]
+          # min_length - (optional) is a type of number
+          min_length = se_dp_compression.value["min_length"]
+          # mobile_str - (optional) is a type of list of string
+          mobile_str = se_dp_compression.value["mobile_str"]
         }
       }
 
       dynamic "se_rate_limiters" {
         for_each = se_runtime_properties.value.se_rate_limiters
         content {
-          arp_rl        = se_rate_limiters.value["arp_rl"]
-          default_rl    = se_rate_limiters.value["default_rl"]
+          # arp_rl - (optional) is a type of number
+          arp_rl = se_rate_limiters.value["arp_rl"]
+          # default_rl - (optional) is a type of number
+          default_rl = se_rate_limiters.value["default_rl"]
+          # flow_probe_rl - (optional) is a type of number
           flow_probe_rl = se_rate_limiters.value["flow_probe_rl"]
-          icmp_rl       = se_rate_limiters.value["icmp_rl"]
-          icmp_rsp_rl   = se_rate_limiters.value["icmp_rsp_rl"]
-          rst_rl        = se_rate_limiters.value["rst_rl"]
+          # icmp_rl - (optional) is a type of number
+          icmp_rl = se_rate_limiters.value["icmp_rl"]
+          # icmp_rsp_rl - (optional) is a type of number
+          icmp_rsp_rl = se_rate_limiters.value["icmp_rsp_rl"]
+          # rst_rl - (optional) is a type of number
+          rst_rl = se_rate_limiters.value["rst_rl"]
         }
       }
 
       dynamic "service_ip_subnets" {
         for_each = se_runtime_properties.value.service_ip_subnets
         content {
+          # mask - (required) is a type of number
           mask = service_ip_subnets.value["mask"]
 
           dynamic "ip_addr" {
             for_each = service_ip_subnets.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -739,7 +910,9 @@ resource "avi_seproperties" "this" {
       dynamic "service_port_ranges" {
         for_each = se_runtime_properties.value.service_port_ranges
         content {
-          end   = service_port_ranges.value["end"]
+          # end - (required) is a type of number
+          end = service_port_ranges.value["end"]
+          # start - (required) is a type of number
           start = service_port_ranges.value["start"]
         }
       }

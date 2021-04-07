@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "digitalocean_record" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

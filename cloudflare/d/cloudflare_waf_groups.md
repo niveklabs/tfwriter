@@ -73,13 +73,17 @@ variable "filter" {
 
 ```terraform
 data "cloudflare_waf_groups" "this" {
+  # package_id - (optional) is a type of string
   package_id = var.package_id
-  zone_id    = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # mode - (optional) is a type of string
       mode = filter.value["mode"]
+      # name - (optional) is a type of string
       name = filter.value["name"]
     }
   }

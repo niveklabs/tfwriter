@@ -87,11 +87,17 @@ variable "state_policy_srcdst_pos" {
 
 ```terraform
 resource "fortios_firewall_security_policyseq" "this" {
-  alter_position          = var.alter_position
-  comment                 = var.comment
-  enable_state_checking   = var.enable_state_checking
-  policy_dst_id           = var.policy_dst_id
-  policy_src_id           = var.policy_src_id
+  # alter_position - (required) is a type of string
+  alter_position = var.alter_position
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # enable_state_checking - (optional) is a type of bool
+  enable_state_checking = var.enable_state_checking
+  # policy_dst_id - (required) is a type of number
+  policy_dst_id = var.policy_dst_id
+  # policy_src_id - (required) is a type of number
+  policy_src_id = var.policy_src_id
+  # state_policy_srcdst_pos - (optional) is a type of string
   state_policy_srcdst_pos = var.state_policy_srcdst_pos
 }
 ```

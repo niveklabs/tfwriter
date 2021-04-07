@@ -94,19 +94,28 @@ variable "fqdn" {
 
 ```terraform
 data "bigip_ltm_node" "this" {
-  address     = var.address
+  # address - (optional) is a type of string
+  address = var.address
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  partition   = var.partition
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (required) is a type of string
+  partition = var.partition
 
   dynamic "fqdn" {
     for_each = var.fqdn
     content {
+      # address_family - (optional) is a type of string
       address_family = fqdn.value["address_family"]
-      autopopulate   = fqdn.value["autopopulate"]
-      downinterval   = fqdn.value["downinterval"]
-      interval       = fqdn.value["interval"]
-      name           = fqdn.value["name"]
+      # autopopulate - (optional) is a type of string
+      autopopulate = fqdn.value["autopopulate"]
+      # downinterval - (optional) is a type of number
+      downinterval = fqdn.value["downinterval"]
+      # interval - (optional) is a type of string
+      interval = fqdn.value["interval"]
+      # name - (optional) is a type of string
+      name = fqdn.value["name"]
     }
   }
 

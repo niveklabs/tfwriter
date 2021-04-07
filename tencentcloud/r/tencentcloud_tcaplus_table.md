@@ -113,16 +113,26 @@ variable "tablegroup_id" {
 
 ```terraform
 resource "tencentcloud_tcaplus_table" "this" {
-  cluster_id        = var.cluster_id
-  description       = var.description
-  idl_id            = var.idl_id
-  reserved_read_cu  = var.reserved_read_cu
-  reserved_volume   = var.reserved_volume
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # idl_id - (required) is a type of string
+  idl_id = var.idl_id
+  # reserved_read_cu - (required) is a type of number
+  reserved_read_cu = var.reserved_read_cu
+  # reserved_volume - (required) is a type of number
+  reserved_volume = var.reserved_volume
+  # reserved_write_cu - (required) is a type of number
   reserved_write_cu = var.reserved_write_cu
-  table_idl_type    = var.table_idl_type
-  table_name        = var.table_name
-  table_type        = var.table_type
-  tablegroup_id     = var.tablegroup_id
+  # table_idl_type - (required) is a type of string
+  table_idl_type = var.table_idl_type
+  # table_name - (required) is a type of string
+  table_name = var.table_name
+  # table_type - (required) is a type of string
+  table_type = var.table_type
+  # tablegroup_id - (required) is a type of string
+  tablegroup_id = var.tablegroup_id
 }
 ```
 

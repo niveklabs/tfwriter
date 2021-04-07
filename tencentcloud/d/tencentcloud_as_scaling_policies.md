@@ -74,10 +74,14 @@ variable "scaling_policy_id" {
 
 ```terraform
 data "tencentcloud_as_scaling_policies" "this" {
-  policy_name        = var.policy_name
+  # policy_name - (optional) is a type of string
+  policy_name = var.policy_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  scaling_group_id   = var.scaling_group_id
-  scaling_policy_id  = var.scaling_policy_id
+  # scaling_group_id - (optional) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # scaling_policy_id - (optional) is a type of string
+  scaling_policy_id = var.scaling_policy_id
 }
 ```
 

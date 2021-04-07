@@ -152,20 +152,34 @@ variable "version" {
 
 ```terraform
 resource "sumologic_monitor_folder" "this" {
-  content_type     = var.content_type
-  created_at       = var.created_at
-  created_by       = var.created_by
-  description      = var.description
-  is_locked        = var.is_locked
-  is_mutable       = var.is_mutable
-  is_system        = var.is_system
-  modified_at      = var.modified_at
-  modified_by      = var.modified_by
-  name             = var.name
-  parent_id        = var.parent_id
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (required) is a type of string
+  description = var.description
+  # is_locked - (optional) is a type of bool
+  is_locked = var.is_locked
+  # is_mutable - (optional) is a type of bool
+  is_mutable = var.is_mutable
+  # is_system - (optional) is a type of bool
+  is_system = var.is_system
+  # modified_at - (optional) is a type of string
+  modified_at = var.modified_at
+  # modified_by - (optional) is a type of string
+  modified_by = var.modified_by
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of string
+  parent_id = var.parent_id
+  # post_request_map - (optional) is a type of map of string
   post_request_map = var.post_request_map
-  type             = var.type
-  version          = var.version
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

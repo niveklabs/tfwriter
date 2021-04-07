@@ -49,6 +49,7 @@ variable "project_id" {
 
 ```terraform
 data "rancher2_project_logging" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

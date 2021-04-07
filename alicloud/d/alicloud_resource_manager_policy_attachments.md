@@ -98,12 +98,19 @@ variable "resource_group_id" {
 
 ```terraform
 data "alicloud_resource_manager_policy_attachments" "this" {
-  language          = var.language
-  output_file       = var.output_file
-  policy_name       = var.policy_name
-  policy_type       = var.policy_type
-  principal_name    = var.principal_name
-  principal_type    = var.principal_type
+  # language - (optional) is a type of string
+  language = var.language
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # policy_name - (optional) is a type of string
+  policy_name = var.policy_name
+  # policy_type - (optional) is a type of string
+  policy_type = var.policy_type
+  # principal_name - (optional) is a type of string
+  principal_name = var.principal_name
+  # principal_type - (optional) is a type of string
+  principal_type = var.principal_type
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
 }
 ```

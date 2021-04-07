@@ -88,15 +88,21 @@ variable "headers" {
 
 ```terraform
 resource "signalfx_webhook_integration" "this" {
-  enabled       = var.enabled
-  name          = var.name
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # shared_secret - (optional) is a type of string
   shared_secret = var.shared_secret
-  url           = var.url
+  # url - (optional) is a type of string
+  url = var.url
 
   dynamic "headers" {
     for_each = var.headers
     content {
-      header_key   = headers.value["header_key"]
+      # header_key - (required) is a type of string
+      header_key = headers.value["header_key"]
+      # header_value - (required) is a type of string
       header_value = headers.value["header_value"]
     }
   }

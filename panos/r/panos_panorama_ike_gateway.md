@@ -352,45 +352,84 @@ variable "version" {
 
 ```terraform
 resource "panos_panorama_ike_gateway" "this" {
-  auth_type                         = var.auth_type
-  cert_base_url                     = var.cert_base_url
-  cert_enable_hash_and_url          = var.cert_enable_hash_and_url
-  cert_enable_strict_validation     = var.cert_enable_strict_validation
-  cert_permit_payload_mismatch      = var.cert_permit_payload_mismatch
-  cert_profile                      = var.cert_profile
-  cert_use_management_as_source     = var.cert_use_management_as_source
-  dead_peer_detection_interval      = var.dead_peer_detection_interval
-  dead_peer_detection_retry         = var.dead_peer_detection_retry
-  disabled                          = var.disabled
-  enable_dead_peer_detection        = var.enable_dead_peer_detection
-  enable_fragmentation              = var.enable_fragmentation
-  enable_ipv6                       = var.enable_ipv6
-  enable_liveness_check             = var.enable_liveness_check
-  enable_nat_traversal              = var.enable_nat_traversal
-  enable_passive_mode               = var.enable_passive_mode
-  ikev1_crypto_profile              = var.ikev1_crypto_profile
-  ikev1_exchange_mode               = var.ikev1_exchange_mode
-  ikev2_cookie_validation           = var.ikev2_cookie_validation
-  ikev2_crypto_profile              = var.ikev2_crypto_profile
-  interface                         = var.interface
-  liveness_check_interval           = var.liveness_check_interval
-  local_cert                        = var.local_cert
-  local_id_type                     = var.local_id_type
-  local_id_value                    = var.local_id_value
-  local_ip_address_type             = var.local_ip_address_type
-  local_ip_address_value            = var.local_ip_address_value
-  name                              = var.name
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # cert_base_url - (optional) is a type of string
+  cert_base_url = var.cert_base_url
+  # cert_enable_hash_and_url - (optional) is a type of bool
+  cert_enable_hash_and_url = var.cert_enable_hash_and_url
+  # cert_enable_strict_validation - (optional) is a type of bool
+  cert_enable_strict_validation = var.cert_enable_strict_validation
+  # cert_permit_payload_mismatch - (optional) is a type of bool
+  cert_permit_payload_mismatch = var.cert_permit_payload_mismatch
+  # cert_profile - (optional) is a type of string
+  cert_profile = var.cert_profile
+  # cert_use_management_as_source - (optional) is a type of bool
+  cert_use_management_as_source = var.cert_use_management_as_source
+  # dead_peer_detection_interval - (optional) is a type of number
+  dead_peer_detection_interval = var.dead_peer_detection_interval
+  # dead_peer_detection_retry - (optional) is a type of number
+  dead_peer_detection_retry = var.dead_peer_detection_retry
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # enable_dead_peer_detection - (optional) is a type of bool
+  enable_dead_peer_detection = var.enable_dead_peer_detection
+  # enable_fragmentation - (optional) is a type of bool
+  enable_fragmentation = var.enable_fragmentation
+  # enable_ipv6 - (optional) is a type of bool
+  enable_ipv6 = var.enable_ipv6
+  # enable_liveness_check - (optional) is a type of bool
+  enable_liveness_check = var.enable_liveness_check
+  # enable_nat_traversal - (optional) is a type of bool
+  enable_nat_traversal = var.enable_nat_traversal
+  # enable_passive_mode - (optional) is a type of bool
+  enable_passive_mode = var.enable_passive_mode
+  # ikev1_crypto_profile - (optional) is a type of string
+  ikev1_crypto_profile = var.ikev1_crypto_profile
+  # ikev1_exchange_mode - (optional) is a type of string
+  ikev1_exchange_mode = var.ikev1_exchange_mode
+  # ikev2_cookie_validation - (optional) is a type of bool
+  ikev2_cookie_validation = var.ikev2_cookie_validation
+  # ikev2_crypto_profile - (optional) is a type of string
+  ikev2_crypto_profile = var.ikev2_crypto_profile
+  # interface - (required) is a type of string
+  interface = var.interface
+  # liveness_check_interval - (optional) is a type of number
+  liveness_check_interval = var.liveness_check_interval
+  # local_cert - (optional) is a type of string
+  local_cert = var.local_cert
+  # local_id_type - (optional) is a type of string
+  local_id_type = var.local_id_type
+  # local_id_value - (optional) is a type of string
+  local_id_value = var.local_id_value
+  # local_ip_address_type - (optional) is a type of string
+  local_ip_address_type = var.local_ip_address_type
+  # local_ip_address_value - (optional) is a type of string
+  local_ip_address_value = var.local_ip_address_value
+  # name - (required) is a type of string
+  name = var.name
+  # nat_traversal_enable_udp_checksum - (optional) is a type of bool
   nat_traversal_enable_udp_checksum = var.nat_traversal_enable_udp_checksum
-  nat_traversal_keep_alive          = var.nat_traversal_keep_alive
-  peer_id_check                     = var.peer_id_check
-  peer_id_type                      = var.peer_id_type
-  peer_id_value                     = var.peer_id_value
-  peer_ip_type                      = var.peer_ip_type
-  peer_ip_value                     = var.peer_ip_value
-  pre_shared_key                    = var.pre_shared_key
-  template                          = var.template
-  template_stack                    = var.template_stack
-  version                           = var.version
+  # nat_traversal_keep_alive - (optional) is a type of number
+  nat_traversal_keep_alive = var.nat_traversal_keep_alive
+  # peer_id_check - (optional) is a type of string
+  peer_id_check = var.peer_id_check
+  # peer_id_type - (optional) is a type of string
+  peer_id_type = var.peer_id_type
+  # peer_id_value - (optional) is a type of string
+  peer_id_value = var.peer_id_value
+  # peer_ip_type - (optional) is a type of string
+  peer_ip_type = var.peer_ip_type
+  # peer_ip_value - (optional) is a type of string
+  peer_ip_value = var.peer_ip_value
+  # pre_shared_key - (optional) is a type of string
+  pre_shared_key = var.pre_shared_key
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

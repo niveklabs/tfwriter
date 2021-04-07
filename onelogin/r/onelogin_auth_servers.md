@@ -75,16 +75,22 @@ variable "configuration" {
 
 ```terraform
 resource "onelogin_auth_servers" "this" {
+  # description - (required) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "configuration" {
     for_each = var.configuration
     content {
-      access_token_expiration_minutes  = configuration.value["access_token_expiration_minutes"]
-      audiences                        = configuration.value["audiences"]
+      # access_token_expiration_minutes - (optional) is a type of number
+      access_token_expiration_minutes = configuration.value["access_token_expiration_minutes"]
+      # audiences - (required) is a type of list of string
+      audiences = configuration.value["audiences"]
+      # refresh_token_expiration_minutes - (optional) is a type of number
       refresh_token_expiration_minutes = configuration.value["refresh_token_expiration_minutes"]
-      resource_identifier              = configuration.value["resource_identifier"]
+      # resource_identifier - (required) is a type of string
+      resource_identifier = configuration.value["resource_identifier"]
     }
   }
 

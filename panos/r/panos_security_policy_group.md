@@ -139,44 +139,78 @@ variable "rule" {
 
 ```terraform
 resource "panos_security_policy_group" "this" {
-  position_keyword   = var.position_keyword
+  # position_keyword - (optional) is a type of string
+  position_keyword = var.position_keyword
+  # position_reference - (optional) is a type of string
   position_reference = var.position_reference
-  vsys               = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action                             = rule.value["action"]
-      applications                       = rule.value["applications"]
-      categories                         = rule.value["categories"]
-      data_filtering                     = rule.value["data_filtering"]
-      description                        = rule.value["description"]
-      destination_addresses              = rule.value["destination_addresses"]
-      destination_zones                  = rule.value["destination_zones"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # applications - (required) is a type of list of string
+      applications = rule.value["applications"]
+      # categories - (required) is a type of list of string
+      categories = rule.value["categories"]
+      # data_filtering - (optional) is a type of string
+      data_filtering = rule.value["data_filtering"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # destination_addresses - (required) is a type of list of string
+      destination_addresses = rule.value["destination_addresses"]
+      # destination_zones - (required) is a type of list of string
+      destination_zones = rule.value["destination_zones"]
+      # disable_server_response_inspection - (optional) is a type of bool
       disable_server_response_inspection = rule.value["disable_server_response_inspection"]
-      disabled                           = rule.value["disabled"]
-      file_blocking                      = rule.value["file_blocking"]
-      group                              = rule.value["group"]
-      hip_profiles                       = rule.value["hip_profiles"]
-      icmp_unreachable                   = rule.value["icmp_unreachable"]
-      log_end                            = rule.value["log_end"]
-      log_setting                        = rule.value["log_setting"]
-      log_start                          = rule.value["log_start"]
-      name                               = rule.value["name"]
-      negate_destination                 = rule.value["negate_destination"]
-      negate_source                      = rule.value["negate_source"]
-      schedule                           = rule.value["schedule"]
-      services                           = rule.value["services"]
-      source_addresses                   = rule.value["source_addresses"]
-      source_users                       = rule.value["source_users"]
-      source_zones                       = rule.value["source_zones"]
-      spyware                            = rule.value["spyware"]
-      tags                               = rule.value["tags"]
-      type                               = rule.value["type"]
-      url_filtering                      = rule.value["url_filtering"]
-      virus                              = rule.value["virus"]
-      vulnerability                      = rule.value["vulnerability"]
-      wildfire_analysis                  = rule.value["wildfire_analysis"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # file_blocking - (optional) is a type of string
+      file_blocking = rule.value["file_blocking"]
+      # group - (optional) is a type of string
+      group = rule.value["group"]
+      # hip_profiles - (required) is a type of list of string
+      hip_profiles = rule.value["hip_profiles"]
+      # icmp_unreachable - (optional) is a type of bool
+      icmp_unreachable = rule.value["icmp_unreachable"]
+      # log_end - (optional) is a type of bool
+      log_end = rule.value["log_end"]
+      # log_setting - (optional) is a type of string
+      log_setting = rule.value["log_setting"]
+      # log_start - (optional) is a type of bool
+      log_start = rule.value["log_start"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # negate_destination - (optional) is a type of bool
+      negate_destination = rule.value["negate_destination"]
+      # negate_source - (optional) is a type of bool
+      negate_source = rule.value["negate_source"]
+      # schedule - (optional) is a type of string
+      schedule = rule.value["schedule"]
+      # services - (required) is a type of list of string
+      services = rule.value["services"]
+      # source_addresses - (required) is a type of list of string
+      source_addresses = rule.value["source_addresses"]
+      # source_users - (required) is a type of list of string
+      source_users = rule.value["source_users"]
+      # source_zones - (required) is a type of list of string
+      source_zones = rule.value["source_zones"]
+      # spyware - (optional) is a type of string
+      spyware = rule.value["spyware"]
+      # tags - (optional) is a type of set of string
+      tags = rule.value["tags"]
+      # type - (optional) is a type of string
+      type = rule.value["type"]
+      # url_filtering - (optional) is a type of string
+      url_filtering = rule.value["url_filtering"]
+      # virus - (optional) is a type of string
+      virus = rule.value["virus"]
+      # vulnerability - (optional) is a type of string
+      vulnerability = rule.value["vulnerability"]
+      # wildfire_analysis - (optional) is a type of string
+      wildfire_analysis = rule.value["wildfire_analysis"]
     }
   }
 

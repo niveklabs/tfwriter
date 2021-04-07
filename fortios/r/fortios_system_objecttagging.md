@@ -112,17 +112,25 @@ variable "tags" {
 
 ```terraform
 resource "fortios_system_objecttagging" "this" {
-  address               = var.address
-  category              = var.category
-  color                 = var.color
-  device                = var.device
+  # address - (optional) is a type of string
+  address = var.address
+  # category - (optional) is a type of string
+  category = var.category
+  # color - (optional) is a type of number
+  color = var.color
+  # device - (optional) is a type of string
+  device = var.device
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  interface             = var.interface
-  multiple              = var.multiple
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # multiple - (optional) is a type of string
+  multiple = var.multiple
 
   dynamic "tags" {
     for_each = var.tags
     content {
+      # name - (optional) is a type of string
       name = tags.value["name"]
     }
   }

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "fortios_systemlldp_networkpolicy" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

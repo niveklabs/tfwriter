@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "fastly_tls_certificate" "this" {
+  # certificate_body - (required) is a type of string
   certificate_body = var.certificate_body
-  name             = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

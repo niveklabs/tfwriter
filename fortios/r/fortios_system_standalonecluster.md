@@ -90,11 +90,17 @@ variable "standalone_group_id" {
 
 ```terraform
 resource "fortios_system_standalonecluster" "this" {
-  encryption          = var.encryption
-  group_member_id     = var.group_member_id
-  layer2_connection   = var.layer2_connection
-  psksecret           = var.psksecret
-  session_sync_dev    = var.session_sync_dev
+  # encryption - (optional) is a type of string
+  encryption = var.encryption
+  # group_member_id - (optional) is a type of number
+  group_member_id = var.group_member_id
+  # layer2_connection - (optional) is a type of string
+  layer2_connection = var.layer2_connection
+  # psksecret - (optional) is a type of string
+  psksecret = var.psksecret
+  # session_sync_dev - (optional) is a type of string
+  session_sync_dev = var.session_sync_dev
+  # standalone_group_id - (optional) is a type of number
   standalone_group_id = var.standalone_group_id
 }
 ```

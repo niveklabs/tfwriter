@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "prismacloud_account_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

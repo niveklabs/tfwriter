@@ -72,10 +72,14 @@ variable "name" {
 
 ```terraform
 resource "alicloud_db_database" "this" {
+  # character_set - (optional) is a type of string
   character_set = var.character_set
-  description   = var.description
-  instance_id   = var.instance_id
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

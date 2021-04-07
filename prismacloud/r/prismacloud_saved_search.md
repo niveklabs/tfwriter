@@ -110,10 +110,14 @@ variable "time_range" {
 
 ```terraform
 resource "prismacloud_saved_search" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  query       = var.query
-  search_id   = var.search_id
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # search_id - (required) is a type of string
+  search_id = var.search_id
 
   dynamic "time_range" {
     for_each = var.time_range
@@ -122,7 +126,9 @@ resource "prismacloud_saved_search" "this" {
       dynamic "absolute" {
         for_each = time_range.value.absolute
         content {
-          end   = absolute.value["end"]
+          # end - (required) is a type of number
+          end = absolute.value["end"]
+          # start - (required) is a type of number
           start = absolute.value["start"]
         }
       }
@@ -130,14 +136,17 @@ resource "prismacloud_saved_search" "this" {
       dynamic "relative" {
         for_each = time_range.value.relative
         content {
+          # amount - (required) is a type of number
           amount = relative.value["amount"]
-          unit   = relative.value["unit"]
+          # unit - (required) is a type of string
+          unit = relative.value["unit"]
         }
       }
 
       dynamic "to_now" {
         for_each = time_range.value.to_now
         content {
+          # unit - (required) is a type of string
           unit = to_now.value["unit"]
         }
       }

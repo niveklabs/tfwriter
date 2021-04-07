@@ -66,9 +66,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_system_replacemsgimage" "this" {
+  # image_base64 - (optional) is a type of string
   image_base64 = var.image_base64
-  image_type   = var.image_type
-  name         = var.name
+  # image_type - (optional) is a type of string
+  image_type = var.image_type
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

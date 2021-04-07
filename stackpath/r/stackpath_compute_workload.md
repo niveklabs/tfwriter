@@ -780,49 +780,69 @@ variable "volume_claim" {
 
 ```terraform
 resource "stackpath_compute_workload" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  labels      = var.labels
-  name        = var.name
-  slug        = var.slug
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # slug - (required) is a type of string
+  slug = var.slug
 
   dynamic "container" {
     for_each = var.container
     content {
+      # command - (optional) is a type of list of string
       command = container.value["command"]
-      image   = container.value["image"]
-      name    = container.value["name"]
+      # image - (required) is a type of string
+      image = container.value["image"]
+      # name - (required) is a type of string
+      name = container.value["name"]
 
       dynamic "env" {
         for_each = container.value.env
         content {
-          key          = env.value["key"]
+          # key - (required) is a type of string
+          key = env.value["key"]
+          # secret_value - (optional) is a type of string
           secret_value = env.value["secret_value"]
-          value        = env.value["value"]
+          # value - (optional) is a type of string
+          value = env.value["value"]
         }
       }
 
       dynamic "liveness_probe" {
         for_each = container.value.liveness_probe
         content {
-          failure_threshold     = liveness_probe.value["failure_threshold"]
+          # failure_threshold - (required) is a type of number
+          failure_threshold = liveness_probe.value["failure_threshold"]
+          # initial_delay_seconds - (optional) is a type of number
           initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-          period_seconds        = liveness_probe.value["period_seconds"]
-          success_threshold     = liveness_probe.value["success_threshold"]
-          timeout_seconds       = liveness_probe.value["timeout_seconds"]
+          # period_seconds - (optional) is a type of number
+          period_seconds = liveness_probe.value["period_seconds"]
+          # success_threshold - (required) is a type of number
+          success_threshold = liveness_probe.value["success_threshold"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = liveness_probe.value["timeout_seconds"]
 
           dynamic "http_get" {
             for_each = liveness_probe.value.http_get
             content {
+              # http_headers - (optional) is a type of map of string
               http_headers = http_get.value["http_headers"]
-              path         = http_get.value["path"]
-              port         = http_get.value["port"]
-              scheme       = http_get.value["scheme"]
+              # path - (optional) is a type of string
+              path = http_get.value["path"]
+              # port - (required) is a type of number
+              port = http_get.value["port"]
+              # scheme - (optional) is a type of string
+              scheme = http_get.value["scheme"]
             }
           }
 
           dynamic "tcp_socket" {
             for_each = liveness_probe.value.tcp_socket
             content {
+              # port - (required) is a type of number
               port = tcp_socket.value["port"]
             }
           }
@@ -833,35 +853,49 @@ resource "stackpath_compute_workload" "this" {
       dynamic "port" {
         for_each = container.value.port
         content {
+          # enable_implicit_network_policy - (optional) is a type of bool
           enable_implicit_network_policy = port.value["enable_implicit_network_policy"]
-          name                           = port.value["name"]
-          port                           = port.value["port"]
-          protocol                       = port.value["protocol"]
+          # name - (required) is a type of string
+          name = port.value["name"]
+          # port - (required) is a type of number
+          port = port.value["port"]
+          # protocol - (optional) is a type of string
+          protocol = port.value["protocol"]
         }
       }
 
       dynamic "readiness_probe" {
         for_each = container.value.readiness_probe
         content {
-          failure_threshold     = readiness_probe.value["failure_threshold"]
+          # failure_threshold - (required) is a type of number
+          failure_threshold = readiness_probe.value["failure_threshold"]
+          # initial_delay_seconds - (optional) is a type of number
           initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-          period_seconds        = readiness_probe.value["period_seconds"]
-          success_threshold     = readiness_probe.value["success_threshold"]
-          timeout_seconds       = readiness_probe.value["timeout_seconds"]
+          # period_seconds - (optional) is a type of number
+          period_seconds = readiness_probe.value["period_seconds"]
+          # success_threshold - (required) is a type of number
+          success_threshold = readiness_probe.value["success_threshold"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = readiness_probe.value["timeout_seconds"]
 
           dynamic "http_get" {
             for_each = readiness_probe.value.http_get
             content {
+              # http_headers - (optional) is a type of map of string
               http_headers = http_get.value["http_headers"]
-              path         = http_get.value["path"]
-              port         = http_get.value["port"]
-              scheme       = http_get.value["scheme"]
+              # path - (optional) is a type of string
+              path = http_get.value["path"]
+              # port - (required) is a type of number
+              port = http_get.value["port"]
+              # scheme - (optional) is a type of string
+              scheme = http_get.value["scheme"]
             }
           }
 
           dynamic "tcp_socket" {
             for_each = readiness_probe.value.tcp_socket
             content {
+              # port - (required) is a type of number
               port = tcp_socket.value["port"]
             }
           }
@@ -872,6 +906,7 @@ resource "stackpath_compute_workload" "this" {
       dynamic "resources" {
         for_each = container.value.resources
         content {
+          # requests - (required) is a type of map of string
           requests = resources.value["requests"]
         }
       }
@@ -879,8 +914,10 @@ resource "stackpath_compute_workload" "this" {
       dynamic "volume_mount" {
         for_each = container.value.volume_mount
         content {
+          # mount_path - (required) is a type of string
           mount_path = volume_mount.value["mount_path"]
-          slug       = volume_mount.value["slug"]
+          # slug - (required) is a type of string
+          slug = volume_mount.value["slug"]
         }
       }
 
@@ -894,9 +931,13 @@ resource "stackpath_compute_workload" "this" {
       dynamic "docker_registry" {
         for_each = image_pull_credentials.value.docker_registry
         content {
-          email    = docker_registry.value["email"]
+          # email - (optional) is a type of string
+          email = docker_registry.value["email"]
+          # password - (required) is a type of string
           password = docker_registry.value["password"]
-          server   = docker_registry.value["server"]
+          # server - (optional) is a type of string
+          server = docker_registry.value["server"]
+          # username - (required) is a type of string
           username = docker_registry.value["username"]
         }
       }
@@ -907,51 +948,73 @@ resource "stackpath_compute_workload" "this" {
   dynamic "instances" {
     for_each = var.instances
     content {
+      # external_ip_address - (optional) is a type of string
       external_ip_address = instances.value["external_ip_address"]
-      ip_address          = instances.value["ip_address"]
-      message             = instances.value["message"]
-      name                = instances.value["name"]
-      phase               = instances.value["phase"]
-      reason              = instances.value["reason"]
+      # ip_address - (optional) is a type of string
+      ip_address = instances.value["ip_address"]
+      # message - (optional) is a type of string
+      message = instances.value["message"]
+      # name - (required) is a type of string
+      name = instances.value["name"]
+      # phase - (optional) is a type of string
+      phase = instances.value["phase"]
+      # reason - (optional) is a type of string
+      reason = instances.value["reason"]
 
       dynamic "container" {
         for_each = instances.value.container
         content {
+          # command - (optional) is a type of list of string
           command = container.value["command"]
-          image   = container.value["image"]
-          name    = container.value["name"]
+          # image - (required) is a type of string
+          image = container.value["image"]
+          # name - (required) is a type of string
+          name = container.value["name"]
 
           dynamic "env" {
             for_each = container.value.env
             content {
-              key          = env.value["key"]
+              # key - (required) is a type of string
+              key = env.value["key"]
+              # secret_value - (optional) is a type of string
               secret_value = env.value["secret_value"]
-              value        = env.value["value"]
+              # value - (optional) is a type of string
+              value = env.value["value"]
             }
           }
 
           dynamic "liveness_probe" {
             for_each = container.value.liveness_probe
             content {
-              failure_threshold     = liveness_probe.value["failure_threshold"]
+              # failure_threshold - (required) is a type of number
+              failure_threshold = liveness_probe.value["failure_threshold"]
+              # initial_delay_seconds - (optional) is a type of number
               initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-              period_seconds        = liveness_probe.value["period_seconds"]
-              success_threshold     = liveness_probe.value["success_threshold"]
-              timeout_seconds       = liveness_probe.value["timeout_seconds"]
+              # period_seconds - (optional) is a type of number
+              period_seconds = liveness_probe.value["period_seconds"]
+              # success_threshold - (required) is a type of number
+              success_threshold = liveness_probe.value["success_threshold"]
+              # timeout_seconds - (optional) is a type of number
+              timeout_seconds = liveness_probe.value["timeout_seconds"]
 
               dynamic "http_get" {
                 for_each = liveness_probe.value.http_get
                 content {
+                  # http_headers - (optional) is a type of map of string
                   http_headers = http_get.value["http_headers"]
-                  path         = http_get.value["path"]
-                  port         = http_get.value["port"]
-                  scheme       = http_get.value["scheme"]
+                  # path - (optional) is a type of string
+                  path = http_get.value["path"]
+                  # port - (required) is a type of number
+                  port = http_get.value["port"]
+                  # scheme - (optional) is a type of string
+                  scheme = http_get.value["scheme"]
                 }
               }
 
               dynamic "tcp_socket" {
                 for_each = liveness_probe.value.tcp_socket
                 content {
+                  # port - (required) is a type of number
                   port = tcp_socket.value["port"]
                 }
               }
@@ -962,35 +1025,49 @@ resource "stackpath_compute_workload" "this" {
           dynamic "port" {
             for_each = container.value.port
             content {
+              # enable_implicit_network_policy - (optional) is a type of bool
               enable_implicit_network_policy = port.value["enable_implicit_network_policy"]
-              name                           = port.value["name"]
-              port                           = port.value["port"]
-              protocol                       = port.value["protocol"]
+              # name - (required) is a type of string
+              name = port.value["name"]
+              # port - (required) is a type of number
+              port = port.value["port"]
+              # protocol - (optional) is a type of string
+              protocol = port.value["protocol"]
             }
           }
 
           dynamic "readiness_probe" {
             for_each = container.value.readiness_probe
             content {
-              failure_threshold     = readiness_probe.value["failure_threshold"]
+              # failure_threshold - (required) is a type of number
+              failure_threshold = readiness_probe.value["failure_threshold"]
+              # initial_delay_seconds - (optional) is a type of number
               initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-              period_seconds        = readiness_probe.value["period_seconds"]
-              success_threshold     = readiness_probe.value["success_threshold"]
-              timeout_seconds       = readiness_probe.value["timeout_seconds"]
+              # period_seconds - (optional) is a type of number
+              period_seconds = readiness_probe.value["period_seconds"]
+              # success_threshold - (required) is a type of number
+              success_threshold = readiness_probe.value["success_threshold"]
+              # timeout_seconds - (optional) is a type of number
+              timeout_seconds = readiness_probe.value["timeout_seconds"]
 
               dynamic "http_get" {
                 for_each = readiness_probe.value.http_get
                 content {
+                  # http_headers - (optional) is a type of map of string
                   http_headers = http_get.value["http_headers"]
-                  path         = http_get.value["path"]
-                  port         = http_get.value["port"]
-                  scheme       = http_get.value["scheme"]
+                  # path - (optional) is a type of string
+                  path = http_get.value["path"]
+                  # port - (required) is a type of number
+                  port = http_get.value["port"]
+                  # scheme - (optional) is a type of string
+                  scheme = http_get.value["scheme"]
                 }
               }
 
               dynamic "tcp_socket" {
                 for_each = readiness_probe.value.tcp_socket
                 content {
+                  # port - (required) is a type of number
                   port = tcp_socket.value["port"]
                 }
               }
@@ -1001,6 +1078,7 @@ resource "stackpath_compute_workload" "this" {
           dynamic "resources" {
             for_each = container.value.resources
             content {
+              # requests - (required) is a type of map of string
               requests = resources.value["requests"]
             }
           }
@@ -1008,8 +1086,10 @@ resource "stackpath_compute_workload" "this" {
           dynamic "volume_mount" {
             for_each = container.value.volume_mount
             content {
+              # mount_path - (required) is a type of string
               mount_path = volume_mount.value["mount_path"]
-              slug       = volume_mount.value["slug"]
+              # slug - (required) is a type of string
+              slug = volume_mount.value["slug"]
             }
           }
 
@@ -1019,18 +1099,31 @@ resource "stackpath_compute_workload" "this" {
       dynamic "location" {
         for_each = instances.value.location
         content {
-          city             = location.value["city"]
-          city_code        = location.value["city_code"]
-          continent        = location.value["continent"]
-          continent_code   = location.value["continent_code"]
-          country          = location.value["country"]
-          country_code     = location.value["country_code"]
-          latitude         = location.value["latitude"]
-          longitude        = location.value["longitude"]
-          name             = location.value["name"]
-          region           = location.value["region"]
-          region_code      = location.value["region_code"]
-          subdivision      = location.value["subdivision"]
+          # city - (optional) is a type of string
+          city = location.value["city"]
+          # city_code - (optional) is a type of string
+          city_code = location.value["city_code"]
+          # continent - (optional) is a type of string
+          continent = location.value["continent"]
+          # continent_code - (optional) is a type of string
+          continent_code = location.value["continent_code"]
+          # country - (optional) is a type of string
+          country = location.value["country"]
+          # country_code - (optional) is a type of string
+          country_code = location.value["country_code"]
+          # latitude - (optional) is a type of number
+          latitude = location.value["latitude"]
+          # longitude - (optional) is a type of number
+          longitude = location.value["longitude"]
+          # name - (optional) is a type of string
+          name = location.value["name"]
+          # region - (optional) is a type of string
+          region = location.value["region"]
+          # region_code - (optional) is a type of string
+          region_code = location.value["region_code"]
+          # subdivision - (optional) is a type of string
+          subdivision = location.value["subdivision"]
+          # subdivision_code - (optional) is a type of string
           subdivision_code = location.value["subdivision_code"]
         }
       }
@@ -1038,50 +1131,69 @@ resource "stackpath_compute_workload" "this" {
       dynamic "metadata" {
         for_each = instances.value.metadata
         content {
+          # annotations - (optional) is a type of map of string
           annotations = metadata.value["annotations"]
-          labels      = metadata.value["labels"]
+          # labels - (optional) is a type of map of string
+          labels = metadata.value["labels"]
         }
       }
 
       dynamic "network_interface" {
         for_each = instances.value.network_interface
         content {
-          gateway            = network_interface.value["gateway"]
-          ip_address         = network_interface.value["ip_address"]
+          # gateway - (required) is a type of string
+          gateway = network_interface.value["gateway"]
+          # ip_address - (required) is a type of string
+          ip_address = network_interface.value["ip_address"]
+          # ip_address_aliases - (optional) is a type of list of string
           ip_address_aliases = network_interface.value["ip_address_aliases"]
-          network            = network_interface.value["network"]
+          # network - (required) is a type of string
+          network = network_interface.value["network"]
         }
       }
 
       dynamic "virtual_machine" {
         for_each = instances.value.virtual_machine
         content {
-          image     = virtual_machine.value["image"]
-          name      = virtual_machine.value["name"]
+          # image - (required) is a type of string
+          image = virtual_machine.value["image"]
+          # name - (required) is a type of string
+          name = virtual_machine.value["name"]
+          # user_data - (optional) is a type of string
           user_data = virtual_machine.value["user_data"]
 
           dynamic "liveness_probe" {
             for_each = virtual_machine.value.liveness_probe
             content {
-              failure_threshold     = liveness_probe.value["failure_threshold"]
+              # failure_threshold - (required) is a type of number
+              failure_threshold = liveness_probe.value["failure_threshold"]
+              # initial_delay_seconds - (optional) is a type of number
               initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-              period_seconds        = liveness_probe.value["period_seconds"]
-              success_threshold     = liveness_probe.value["success_threshold"]
-              timeout_seconds       = liveness_probe.value["timeout_seconds"]
+              # period_seconds - (optional) is a type of number
+              period_seconds = liveness_probe.value["period_seconds"]
+              # success_threshold - (required) is a type of number
+              success_threshold = liveness_probe.value["success_threshold"]
+              # timeout_seconds - (optional) is a type of number
+              timeout_seconds = liveness_probe.value["timeout_seconds"]
 
               dynamic "http_get" {
                 for_each = liveness_probe.value.http_get
                 content {
+                  # http_headers - (optional) is a type of map of string
                   http_headers = http_get.value["http_headers"]
-                  path         = http_get.value["path"]
-                  port         = http_get.value["port"]
-                  scheme       = http_get.value["scheme"]
+                  # path - (optional) is a type of string
+                  path = http_get.value["path"]
+                  # port - (required) is a type of number
+                  port = http_get.value["port"]
+                  # scheme - (optional) is a type of string
+                  scheme = http_get.value["scheme"]
                 }
               }
 
               dynamic "tcp_socket" {
                 for_each = liveness_probe.value.tcp_socket
                 content {
+                  # port - (required) is a type of number
                   port = tcp_socket.value["port"]
                 }
               }
@@ -1092,35 +1204,49 @@ resource "stackpath_compute_workload" "this" {
           dynamic "port" {
             for_each = virtual_machine.value.port
             content {
+              # enable_implicit_network_policy - (optional) is a type of bool
               enable_implicit_network_policy = port.value["enable_implicit_network_policy"]
-              name                           = port.value["name"]
-              port                           = port.value["port"]
-              protocol                       = port.value["protocol"]
+              # name - (required) is a type of string
+              name = port.value["name"]
+              # port - (required) is a type of number
+              port = port.value["port"]
+              # protocol - (optional) is a type of string
+              protocol = port.value["protocol"]
             }
           }
 
           dynamic "readiness_probe" {
             for_each = virtual_machine.value.readiness_probe
             content {
-              failure_threshold     = readiness_probe.value["failure_threshold"]
+              # failure_threshold - (required) is a type of number
+              failure_threshold = readiness_probe.value["failure_threshold"]
+              # initial_delay_seconds - (optional) is a type of number
               initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-              period_seconds        = readiness_probe.value["period_seconds"]
-              success_threshold     = readiness_probe.value["success_threshold"]
-              timeout_seconds       = readiness_probe.value["timeout_seconds"]
+              # period_seconds - (optional) is a type of number
+              period_seconds = readiness_probe.value["period_seconds"]
+              # success_threshold - (required) is a type of number
+              success_threshold = readiness_probe.value["success_threshold"]
+              # timeout_seconds - (optional) is a type of number
+              timeout_seconds = readiness_probe.value["timeout_seconds"]
 
               dynamic "http_get" {
                 for_each = readiness_probe.value.http_get
                 content {
+                  # http_headers - (optional) is a type of map of string
                   http_headers = http_get.value["http_headers"]
-                  path         = http_get.value["path"]
-                  port         = http_get.value["port"]
-                  scheme       = http_get.value["scheme"]
+                  # path - (optional) is a type of string
+                  path = http_get.value["path"]
+                  # port - (required) is a type of number
+                  port = http_get.value["port"]
+                  # scheme - (optional) is a type of string
+                  scheme = http_get.value["scheme"]
                 }
               }
 
               dynamic "tcp_socket" {
                 for_each = readiness_probe.value.tcp_socket
                 content {
+                  # port - (required) is a type of number
                   port = tcp_socket.value["port"]
                 }
               }
@@ -1131,6 +1257,7 @@ resource "stackpath_compute_workload" "this" {
           dynamic "resources" {
             for_each = virtual_machine.value.resources
             content {
+              # requests - (required) is a type of map of string
               requests = resources.value["requests"]
             }
           }
@@ -1138,8 +1265,10 @@ resource "stackpath_compute_workload" "this" {
           dynamic "volume_mount" {
             for_each = virtual_machine.value.volume_mount
             content {
+              # mount_path - (required) is a type of string
               mount_path = volume_mount.value["mount_path"]
-              slug       = volume_mount.value["slug"]
+              # slug - (required) is a type of string
+              slug = volume_mount.value["slug"]
             }
           }
 
@@ -1152,6 +1281,7 @@ resource "stackpath_compute_workload" "this" {
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
+      # network - (required) is a type of string
       network = network_interface.value["network"]
     }
   }
@@ -1159,10 +1289,14 @@ resource "stackpath_compute_workload" "this" {
   dynamic "target" {
     for_each = var.target
     content {
+      # deployment_scope - (optional) is a type of string
       deployment_scope = target.value["deployment_scope"]
-      max_replicas     = target.value["max_replicas"]
-      min_replicas     = target.value["min_replicas"]
-      name             = target.value["name"]
+      # max_replicas - (optional) is a type of number
+      max_replicas = target.value["max_replicas"]
+      # min_replicas - (required) is a type of number
+      min_replicas = target.value["min_replicas"]
+      # name - (required) is a type of string
+      name = target.value["name"]
 
       dynamic "scale_settings" {
         for_each = target.value.scale_settings
@@ -1171,9 +1305,12 @@ resource "stackpath_compute_workload" "this" {
           dynamic "metrics" {
             for_each = scale_settings.value.metrics
             content {
+              # average_utilization - (optional) is a type of number
               average_utilization = metrics.value["average_utilization"]
-              average_value       = metrics.value["average_value"]
-              metric              = metrics.value["metric"]
+              # average_value - (optional) is a type of string
+              average_value = metrics.value["average_value"]
+              # metric - (required) is a type of string
+              metric = metrics.value["metric"]
             }
           }
 
@@ -1183,9 +1320,12 @@ resource "stackpath_compute_workload" "this" {
       dynamic "selector" {
         for_each = target.value.selector
         content {
-          key      = selector.value["key"]
+          # key - (required) is a type of string
+          key = selector.value["key"]
+          # operator - (required) is a type of string
           operator = selector.value["operator"]
-          values   = selector.value["values"]
+          # values - (required) is a type of list of string
+          values = selector.value["values"]
         }
       }
 
@@ -1195,32 +1335,45 @@ resource "stackpath_compute_workload" "this" {
   dynamic "virtual_machine" {
     for_each = var.virtual_machine
     content {
-      image     = virtual_machine.value["image"]
-      name      = virtual_machine.value["name"]
+      # image - (required) is a type of string
+      image = virtual_machine.value["image"]
+      # name - (required) is a type of string
+      name = virtual_machine.value["name"]
+      # user_data - (optional) is a type of string
       user_data = virtual_machine.value["user_data"]
 
       dynamic "liveness_probe" {
         for_each = virtual_machine.value.liveness_probe
         content {
-          failure_threshold     = liveness_probe.value["failure_threshold"]
+          # failure_threshold - (required) is a type of number
+          failure_threshold = liveness_probe.value["failure_threshold"]
+          # initial_delay_seconds - (optional) is a type of number
           initial_delay_seconds = liveness_probe.value["initial_delay_seconds"]
-          period_seconds        = liveness_probe.value["period_seconds"]
-          success_threshold     = liveness_probe.value["success_threshold"]
-          timeout_seconds       = liveness_probe.value["timeout_seconds"]
+          # period_seconds - (optional) is a type of number
+          period_seconds = liveness_probe.value["period_seconds"]
+          # success_threshold - (required) is a type of number
+          success_threshold = liveness_probe.value["success_threshold"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = liveness_probe.value["timeout_seconds"]
 
           dynamic "http_get" {
             for_each = liveness_probe.value.http_get
             content {
+              # http_headers - (optional) is a type of map of string
               http_headers = http_get.value["http_headers"]
-              path         = http_get.value["path"]
-              port         = http_get.value["port"]
-              scheme       = http_get.value["scheme"]
+              # path - (optional) is a type of string
+              path = http_get.value["path"]
+              # port - (required) is a type of number
+              port = http_get.value["port"]
+              # scheme - (optional) is a type of string
+              scheme = http_get.value["scheme"]
             }
           }
 
           dynamic "tcp_socket" {
             for_each = liveness_probe.value.tcp_socket
             content {
+              # port - (required) is a type of number
               port = tcp_socket.value["port"]
             }
           }
@@ -1231,35 +1384,49 @@ resource "stackpath_compute_workload" "this" {
       dynamic "port" {
         for_each = virtual_machine.value.port
         content {
+          # enable_implicit_network_policy - (optional) is a type of bool
           enable_implicit_network_policy = port.value["enable_implicit_network_policy"]
-          name                           = port.value["name"]
-          port                           = port.value["port"]
-          protocol                       = port.value["protocol"]
+          # name - (required) is a type of string
+          name = port.value["name"]
+          # port - (required) is a type of number
+          port = port.value["port"]
+          # protocol - (optional) is a type of string
+          protocol = port.value["protocol"]
         }
       }
 
       dynamic "readiness_probe" {
         for_each = virtual_machine.value.readiness_probe
         content {
-          failure_threshold     = readiness_probe.value["failure_threshold"]
+          # failure_threshold - (required) is a type of number
+          failure_threshold = readiness_probe.value["failure_threshold"]
+          # initial_delay_seconds - (optional) is a type of number
           initial_delay_seconds = readiness_probe.value["initial_delay_seconds"]
-          period_seconds        = readiness_probe.value["period_seconds"]
-          success_threshold     = readiness_probe.value["success_threshold"]
-          timeout_seconds       = readiness_probe.value["timeout_seconds"]
+          # period_seconds - (optional) is a type of number
+          period_seconds = readiness_probe.value["period_seconds"]
+          # success_threshold - (required) is a type of number
+          success_threshold = readiness_probe.value["success_threshold"]
+          # timeout_seconds - (optional) is a type of number
+          timeout_seconds = readiness_probe.value["timeout_seconds"]
 
           dynamic "http_get" {
             for_each = readiness_probe.value.http_get
             content {
+              # http_headers - (optional) is a type of map of string
               http_headers = http_get.value["http_headers"]
-              path         = http_get.value["path"]
-              port         = http_get.value["port"]
-              scheme       = http_get.value["scheme"]
+              # path - (optional) is a type of string
+              path = http_get.value["path"]
+              # port - (required) is a type of number
+              port = http_get.value["port"]
+              # scheme - (optional) is a type of string
+              scheme = http_get.value["scheme"]
             }
           }
 
           dynamic "tcp_socket" {
             for_each = readiness_probe.value.tcp_socket
             content {
+              # port - (required) is a type of number
               port = tcp_socket.value["port"]
             }
           }
@@ -1270,6 +1437,7 @@ resource "stackpath_compute_workload" "this" {
       dynamic "resources" {
         for_each = virtual_machine.value.resources
         content {
+          # requests - (required) is a type of map of string
           requests = resources.value["requests"]
         }
       }
@@ -1277,8 +1445,10 @@ resource "stackpath_compute_workload" "this" {
       dynamic "volume_mount" {
         for_each = virtual_machine.value.volume_mount
         content {
+          # mount_path - (required) is a type of string
           mount_path = volume_mount.value["mount_path"]
-          slug       = volume_mount.value["slug"]
+          # slug - (required) is a type of string
+          slug = volume_mount.value["slug"]
         }
       }
 
@@ -1288,12 +1458,15 @@ resource "stackpath_compute_workload" "this" {
   dynamic "volume_claim" {
     for_each = var.volume_claim
     content {
+      # name - (required) is a type of string
       name = volume_claim.value["name"]
+      # slug - (optional) is a type of string
       slug = volume_claim.value["slug"]
 
       dynamic "resources" {
         for_each = volume_claim.value.resources
         content {
+          # requests - (required) is a type of map of string
           requests = resources.value["requests"]
         }
       }

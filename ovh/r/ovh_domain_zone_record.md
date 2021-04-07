@@ -79,11 +79,16 @@ variable "zone" {
 
 ```terraform
 resource "ovh_domain_zone_record" "this" {
+  # fieldtype - (required) is a type of string
   fieldtype = var.fieldtype
+  # subdomain - (optional) is a type of string
   subdomain = var.subdomain
-  target    = var.target
-  ttl       = var.ttl
-  zone      = var.zone
+  # target - (required) is a type of string
+  target = var.target
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

@@ -71,10 +71,14 @@ variable "start_time" {
 
 ```terraform
 resource "pagerduty_maintenance_window" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  end_time    = var.end_time
-  services    = var.services
-  start_time  = var.start_time
+  # end_time - (required) is a type of string
+  end_time = var.end_time
+  # services - (required) is a type of set of string
+  services = var.services
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 }
 ```
 

@@ -210,27 +210,48 @@ variable "verify_update_server" {
 
 ```terraform
 resource "panos_general_settings" "this" {
-  dns_primary             = var.dns_primary
-  dns_secondary           = var.dns_secondary
-  domain                  = var.domain
-  hostname                = var.hostname
-  ntp_primary_address     = var.ntp_primary_address
-  ntp_primary_algorithm   = var.ntp_primary_algorithm
-  ntp_primary_auth_key    = var.ntp_primary_auth_key
-  ntp_primary_auth_type   = var.ntp_primary_auth_type
-  ntp_primary_key_id      = var.ntp_primary_key_id
-  ntp_secondary_address   = var.ntp_secondary_address
+  # dns_primary - (optional) is a type of string
+  dns_primary = var.dns_primary
+  # dns_secondary - (optional) is a type of string
+  dns_secondary = var.dns_secondary
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # ntp_primary_address - (optional) is a type of string
+  ntp_primary_address = var.ntp_primary_address
+  # ntp_primary_algorithm - (optional) is a type of string
+  ntp_primary_algorithm = var.ntp_primary_algorithm
+  # ntp_primary_auth_key - (optional) is a type of string
+  ntp_primary_auth_key = var.ntp_primary_auth_key
+  # ntp_primary_auth_type - (optional) is a type of string
+  ntp_primary_auth_type = var.ntp_primary_auth_type
+  # ntp_primary_key_id - (optional) is a type of number
+  ntp_primary_key_id = var.ntp_primary_key_id
+  # ntp_secondary_address - (optional) is a type of string
+  ntp_secondary_address = var.ntp_secondary_address
+  # ntp_secondary_algorithm - (optional) is a type of string
   ntp_secondary_algorithm = var.ntp_secondary_algorithm
-  ntp_secondary_auth_key  = var.ntp_secondary_auth_key
+  # ntp_secondary_auth_key - (optional) is a type of string
+  ntp_secondary_auth_key = var.ntp_secondary_auth_key
+  # ntp_secondary_auth_type - (optional) is a type of string
   ntp_secondary_auth_type = var.ntp_secondary_auth_type
-  ntp_secondary_key_id    = var.ntp_secondary_key_id
-  proxy_password          = var.proxy_password
-  proxy_port              = var.proxy_port
-  proxy_server            = var.proxy_server
-  proxy_user              = var.proxy_user
-  timezone                = var.timezone
-  update_server           = var.update_server
-  verify_update_server    = var.verify_update_server
+  # ntp_secondary_key_id - (optional) is a type of number
+  ntp_secondary_key_id = var.ntp_secondary_key_id
+  # proxy_password - (optional) is a type of string
+  proxy_password = var.proxy_password
+  # proxy_port - (optional) is a type of number
+  proxy_port = var.proxy_port
+  # proxy_server - (optional) is a type of string
+  proxy_server = var.proxy_server
+  # proxy_user - (optional) is a type of string
+  proxy_user = var.proxy_user
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # update_server - (optional) is a type of string
+  update_server = var.update_server
+  # verify_update_server - (optional) is a type of bool
+  verify_update_server = var.verify_update_server
 }
 ```
 

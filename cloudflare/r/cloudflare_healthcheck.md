@@ -236,32 +236,55 @@ variable "timeouts" {
 
 ```terraform
 resource "cloudflare_healthcheck" "this" {
-  address                      = var.address
-  allow_insecure               = var.allow_insecure
-  check_regions                = var.check_regions
-  consecutive_fails            = var.consecutive_fails
-  consecutive_successes        = var.consecutive_successes
-  description                  = var.description
-  expected_body                = var.expected_body
-  expected_codes               = var.expected_codes
-  follow_redirects             = var.follow_redirects
-  interval                     = var.interval
-  method                       = var.method
-  name                         = var.name
+  # address - (required) is a type of string
+  address = var.address
+  # allow_insecure - (optional) is a type of bool
+  allow_insecure = var.allow_insecure
+  # check_regions - (optional) is a type of list of string
+  check_regions = var.check_regions
+  # consecutive_fails - (optional) is a type of number
+  consecutive_fails = var.consecutive_fails
+  # consecutive_successes - (optional) is a type of number
+  consecutive_successes = var.consecutive_successes
+  # description - (optional) is a type of string
+  description = var.description
+  # expected_body - (optional) is a type of string
+  expected_body = var.expected_body
+  # expected_codes - (optional) is a type of list of string
+  expected_codes = var.expected_codes
+  # follow_redirects - (optional) is a type of bool
+  follow_redirects = var.follow_redirects
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # method - (optional) is a type of string
+  method = var.method
+  # name - (required) is a type of string
+  name = var.name
+  # notification_email_addresses - (optional) is a type of list of string
   notification_email_addresses = var.notification_email_addresses
-  notification_suspended       = var.notification_suspended
-  path                         = var.path
-  port                         = var.port
-  retries                      = var.retries
-  suspended                    = var.suspended
-  timeout                      = var.timeout
-  type                         = var.type
-  zone_id                      = var.zone_id
+  # notification_suspended - (optional) is a type of bool
+  notification_suspended = var.notification_suspended
+  # path - (optional) is a type of string
+  path = var.path
+  # port - (optional) is a type of number
+  port = var.port
+  # retries - (optional) is a type of number
+  retries = var.retries
+  # suspended - (optional) is a type of bool
+  suspended = var.suspended
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "header" {
     for_each = var.header
     content {
+      # header - (required) is a type of string
       header = header.value["header"]
+      # values - (required) is a type of set of string
       values = header.value["values"]
     }
   }
@@ -269,6 +292,7 @@ resource "cloudflare_healthcheck" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -82,11 +82,16 @@ variable "timezone" {
 
 ```terraform
 resource "fortios_fmg_system_global" "this" {
-  adom_mode            = var.adom_mode
-  adom_status          = var.adom_status
+  # adom_mode - (optional) is a type of string
+  adom_mode = var.adom_mode
+  # adom_status - (optional) is a type of string
+  adom_status = var.adom_status
+  # fortianalyzer_status - (optional) is a type of string
   fortianalyzer_status = var.fortianalyzer_status
-  hostname             = var.hostname
-  timezone             = var.timezone
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

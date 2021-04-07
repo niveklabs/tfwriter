@@ -81,11 +81,16 @@ variable "templates" {
 
 ```terraform
 resource "panos_panorama_template_stack" "this" {
+  # default_vsys - (optional) is a type of string
   default_vsys = var.default_vsys
-  description  = var.description
-  devices      = var.devices
-  name         = var.name
-  templates    = var.templates
+  # description - (optional) is a type of string
+  description = var.description
+  # devices - (optional) is a type of list of string
+  devices = var.devices
+  # name - (required) is a type of string
+  name = var.name
+  # templates - (optional) is a type of list of string
+  templates = var.templates
 }
 ```
 

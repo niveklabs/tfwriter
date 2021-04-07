@@ -90,15 +90,21 @@ variable "members" {
 
 ```terraform
 resource "fortios_switchcontroller_switchgroup" "this" {
-  description           = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fortilink             = var.fortilink
-  name                  = var.name
+  # fortilink - (optional) is a type of string
+  fortilink = var.fortilink
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "members" {
     for_each = var.members
     content {
-      name      = members.value["name"]
+      # name - (optional) is a type of string
+      name = members.value["name"]
+      # switch_id - (optional) is a type of string
       switch_id = members.value["switch_id"]
     }
   }

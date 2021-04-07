@@ -57,8 +57,10 @@ variable "parent" {
 
 ```terraform
 resource "panos_device_group_parent" "this" {
+  # device_group - (required) is a type of string
   device_group = var.device_group
-  parent       = var.parent
+  # parent - (optional) is a type of string
+  parent = var.parent
 }
 ```
 

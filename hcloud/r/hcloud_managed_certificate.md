@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "hcloud_managed_certificate" "this" {
+  # domain_names - (required) is a type of set of string
   domain_names = var.domain_names
-  labels       = var.labels
-  name         = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

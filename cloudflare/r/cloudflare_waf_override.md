@@ -103,14 +103,22 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_waf_override" "this" {
-  description    = var.description
-  groups         = var.groups
-  paused         = var.paused
-  priority       = var.priority
+  # description - (optional) is a type of string
+  description = var.description
+  # groups - (optional) is a type of map of string
+  groups = var.groups
+  # paused - (optional) is a type of bool
+  paused = var.paused
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # rewrite_action - (optional) is a type of map of string
   rewrite_action = var.rewrite_action
-  rules          = var.rules
-  urls           = var.urls
-  zone_id        = var.zone_id
+  # rules - (required) is a type of map of string
+  rules = var.rules
+  # urls - (required) is a type of list of string
+  urls = var.urls
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -135,30 +135,44 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_cookie_persistence_profile" "this" {
-  cookie_fallback    = var.cookie_fallback
-  cookie_garble      = var.cookie_garble
-  cookie_mode        = var.cookie_mode
-  cookie_name        = var.cookie_name
-  description        = var.description
-  display_name       = var.display_name
+  # cookie_fallback - (optional) is a type of bool
+  cookie_fallback = var.cookie_fallback
+  # cookie_garble - (optional) is a type of bool
+  cookie_garble = var.cookie_garble
+  # cookie_mode - (optional) is a type of string
+  cookie_mode = var.cookie_mode
+  # cookie_name - (required) is a type of string
+  cookie_name = var.cookie_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # persistence_shared - (optional) is a type of bool
   persistence_shared = var.persistence_shared
 
   dynamic "insert_mode_params" {
     for_each = var.insert_mode_params
     content {
-      cookie_domain      = insert_mode_params.value["cookie_domain"]
+      # cookie_domain - (optional) is a type of string
+      cookie_domain = insert_mode_params.value["cookie_domain"]
+      # cookie_expiry_type - (optional) is a type of string
       cookie_expiry_type = insert_mode_params.value["cookie_expiry_type"]
-      cookie_path        = insert_mode_params.value["cookie_path"]
-      max_idle_time      = insert_mode_params.value["max_idle_time"]
-      max_life_time      = insert_mode_params.value["max_life_time"]
+      # cookie_path - (optional) is a type of string
+      cookie_path = insert_mode_params.value["cookie_path"]
+      # max_idle_time - (optional) is a type of number
+      max_idle_time = insert_mode_params.value["max_idle_time"]
+      # max_life_time - (optional) is a type of number
+      max_life_time = insert_mode_params.value["max_life_time"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -57,8 +57,10 @@ variable "pid_organization_name" {
 
 ```terraform
 resource "alicloud_brain_industrial_pid_organization" "this" {
+  # parent_pid_organization_id - (optional) is a type of string
   parent_pid_organization_id = var.parent_pid_organization_id
-  pid_organization_name      = var.pid_organization_name
+  # pid_organization_name - (required) is a type of string
+  pid_organization_name = var.pid_organization_name
 }
 ```
 

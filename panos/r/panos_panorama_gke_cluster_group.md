@@ -78,11 +78,16 @@ variable "template_stack" {
 
 ```terraform
 resource "panos_panorama_gke_cluster_group" "this" {
-  description            = var.description
-  device_group           = var.device_group
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (required) is a type of string
+  device_group = var.device_group
+  # gcp_project_credential - (required) is a type of string
   gcp_project_credential = var.gcp_project_credential
-  name                   = var.name
-  template_stack         = var.template_stack
+  # name - (required) is a type of string
+  name = var.name
+  # template_stack - (required) is a type of string
+  template_stack = var.template_stack
 }
 ```
 

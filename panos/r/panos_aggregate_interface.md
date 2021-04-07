@@ -297,38 +297,70 @@ variable "vsys" {
 
 ```terraform
 resource "panos_aggregate_interface" "this" {
-  adjust_tcp_mss                  = var.adjust_tcp_mss
-  comment                         = var.comment
-  create_dhcp_default_route       = var.create_dhcp_default_route
-  decrypt_forward                 = var.decrypt_forward
-  dhcp_default_route_metric       = var.dhcp_default_route_metric
-  dhcp_send_hostname_enable       = var.dhcp_send_hostname_enable
-  dhcp_send_hostname_value        = var.dhcp_send_hostname_value
-  enable_dhcp                     = var.enable_dhcp
-  enable_untagged_subinterface    = var.enable_untagged_subinterface
-  ipv4_mss_adjust                 = var.ipv4_mss_adjust
-  ipv6_enabled                    = var.ipv6_enabled
-  ipv6_interface_id               = var.ipv6_interface_id
-  ipv6_mss_adjust                 = var.ipv6_mss_adjust
-  lacp_enable                     = var.lacp_enable
-  lacp_fast_failover              = var.lacp_fast_failover
-  lacp_ha_enable_same_system_mac  = var.lacp_ha_enable_same_system_mac
+  # adjust_tcp_mss - (optional) is a type of bool
+  adjust_tcp_mss = var.adjust_tcp_mss
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # create_dhcp_default_route - (optional) is a type of bool
+  create_dhcp_default_route = var.create_dhcp_default_route
+  # decrypt_forward - (optional) is a type of bool
+  decrypt_forward = var.decrypt_forward
+  # dhcp_default_route_metric - (optional) is a type of number
+  dhcp_default_route_metric = var.dhcp_default_route_metric
+  # dhcp_send_hostname_enable - (optional) is a type of bool
+  dhcp_send_hostname_enable = var.dhcp_send_hostname_enable
+  # dhcp_send_hostname_value - (optional) is a type of string
+  dhcp_send_hostname_value = var.dhcp_send_hostname_value
+  # enable_dhcp - (optional) is a type of bool
+  enable_dhcp = var.enable_dhcp
+  # enable_untagged_subinterface - (optional) is a type of bool
+  enable_untagged_subinterface = var.enable_untagged_subinterface
+  # ipv4_mss_adjust - (optional) is a type of number
+  ipv4_mss_adjust = var.ipv4_mss_adjust
+  # ipv6_enabled - (optional) is a type of bool
+  ipv6_enabled = var.ipv6_enabled
+  # ipv6_interface_id - (optional) is a type of string
+  ipv6_interface_id = var.ipv6_interface_id
+  # ipv6_mss_adjust - (optional) is a type of number
+  ipv6_mss_adjust = var.ipv6_mss_adjust
+  # lacp_enable - (optional) is a type of bool
+  lacp_enable = var.lacp_enable
+  # lacp_fast_failover - (optional) is a type of bool
+  lacp_fast_failover = var.lacp_fast_failover
+  # lacp_ha_enable_same_system_mac - (optional) is a type of bool
+  lacp_ha_enable_same_system_mac = var.lacp_ha_enable_same_system_mac
+  # lacp_ha_passive_pre_negotiation - (optional) is a type of bool
   lacp_ha_passive_pre_negotiation = var.lacp_ha_passive_pre_negotiation
+  # lacp_ha_same_system_mac_address - (optional) is a type of string
   lacp_ha_same_system_mac_address = var.lacp_ha_same_system_mac_address
-  lacp_max_ports                  = var.lacp_max_ports
-  lacp_mode                       = var.lacp_mode
-  lacp_system_priority            = var.lacp_system_priority
-  lacp_transmission_rate          = var.lacp_transmission_rate
-  lldp_enable                     = var.lldp_enable
+  # lacp_max_ports - (optional) is a type of number
+  lacp_max_ports = var.lacp_max_ports
+  # lacp_mode - (optional) is a type of string
+  lacp_mode = var.lacp_mode
+  # lacp_system_priority - (optional) is a type of number
+  lacp_system_priority = var.lacp_system_priority
+  # lacp_transmission_rate - (optional) is a type of string
+  lacp_transmission_rate = var.lacp_transmission_rate
+  # lldp_enable - (optional) is a type of bool
+  lldp_enable = var.lldp_enable
+  # lldp_ha_passive_pre_negotiation - (optional) is a type of bool
   lldp_ha_passive_pre_negotiation = var.lldp_ha_passive_pre_negotiation
-  lldp_profile                    = var.lldp_profile
-  management_profile              = var.management_profile
-  mode                            = var.mode
-  mtu                             = var.mtu
-  name                            = var.name
-  netflow_profile                 = var.netflow_profile
-  static_ips                      = var.static_ips
-  vsys                            = var.vsys
+  # lldp_profile - (optional) is a type of string
+  lldp_profile = var.lldp_profile
+  # management_profile - (optional) is a type of string
+  management_profile = var.management_profile
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # static_ips - (optional) is a type of list of string
+  static_ips = var.static_ips
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

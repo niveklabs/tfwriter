@@ -50,6 +50,7 @@ variable "to_session" {
 
 ```terraform
 resource "checkpoint_management_revert_to_revision" "this" {
+  # to_session - (optional) is a type of string
   to_session = var.to_session
 }
 ```

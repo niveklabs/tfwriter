@@ -82,15 +82,21 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_template" "this" {
-  labels        = var.labels
-  name          = var.name
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # snapshot_uuid - (required) is a type of string
   snapshot_uuid = var.snapshot_uuid
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

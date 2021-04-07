@@ -65,9 +65,12 @@ variable "status" {
 
 ```terraform
 data "equinix_network_account" "this" {
+  # metro_code - (required) is a type of string
   metro_code = var.metro_code
-  name       = var.name
-  status     = var.status
+  # name - (optional) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

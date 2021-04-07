@@ -82,10 +82,15 @@ variable "scheduled_task_id" {
 
 ```terraform
 data "alicloud_ess_scheduled_tasks" "this" {
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  scheduled_action  = var.scheduled_action
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # scheduled_action - (optional) is a type of string
+  scheduled_action = var.scheduled_action
+  # scheduled_task_id - (optional) is a type of string
   scheduled_task_id = var.scheduled_task_id
 }
 ```

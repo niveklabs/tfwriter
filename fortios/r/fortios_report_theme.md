@@ -282,36 +282,66 @@ variable "toc_title_style" {
 
 ```terraform
 resource "fortios_report_theme" "this" {
-  bullet_list_style          = var.bullet_list_style
-  column_count               = var.column_count
-  default_html_style         = var.default_html_style
-  default_pdf_style          = var.default_pdf_style
-  graph_chart_style          = var.graph_chart_style
-  heading1_style             = var.heading1_style
-  heading2_style             = var.heading2_style
-  heading3_style             = var.heading3_style
-  heading4_style             = var.heading4_style
-  hline_style                = var.hline_style
-  image_style                = var.image_style
-  name                       = var.name
-  normal_text_style          = var.normal_text_style
-  numbered_list_style        = var.numbered_list_style
-  page_footer_style          = var.page_footer_style
-  page_header_style          = var.page_header_style
-  page_orient                = var.page_orient
-  page_style                 = var.page_style
-  report_subtitle_style      = var.report_subtitle_style
-  report_title_style         = var.report_title_style
-  table_chart_caption_style  = var.table_chart_caption_style
+  # bullet_list_style - (optional) is a type of string
+  bullet_list_style = var.bullet_list_style
+  # column_count - (optional) is a type of string
+  column_count = var.column_count
+  # default_html_style - (optional) is a type of string
+  default_html_style = var.default_html_style
+  # default_pdf_style - (optional) is a type of string
+  default_pdf_style = var.default_pdf_style
+  # graph_chart_style - (optional) is a type of string
+  graph_chart_style = var.graph_chart_style
+  # heading1_style - (optional) is a type of string
+  heading1_style = var.heading1_style
+  # heading2_style - (optional) is a type of string
+  heading2_style = var.heading2_style
+  # heading3_style - (optional) is a type of string
+  heading3_style = var.heading3_style
+  # heading4_style - (optional) is a type of string
+  heading4_style = var.heading4_style
+  # hline_style - (optional) is a type of string
+  hline_style = var.hline_style
+  # image_style - (optional) is a type of string
+  image_style = var.image_style
+  # name - (optional) is a type of string
+  name = var.name
+  # normal_text_style - (optional) is a type of string
+  normal_text_style = var.normal_text_style
+  # numbered_list_style - (optional) is a type of string
+  numbered_list_style = var.numbered_list_style
+  # page_footer_style - (optional) is a type of string
+  page_footer_style = var.page_footer_style
+  # page_header_style - (optional) is a type of string
+  page_header_style = var.page_header_style
+  # page_orient - (optional) is a type of string
+  page_orient = var.page_orient
+  # page_style - (optional) is a type of string
+  page_style = var.page_style
+  # report_subtitle_style - (optional) is a type of string
+  report_subtitle_style = var.report_subtitle_style
+  # report_title_style - (optional) is a type of string
+  report_title_style = var.report_title_style
+  # table_chart_caption_style - (optional) is a type of string
+  table_chart_caption_style = var.table_chart_caption_style
+  # table_chart_even_row_style - (optional) is a type of string
   table_chart_even_row_style = var.table_chart_even_row_style
-  table_chart_head_style     = var.table_chart_head_style
-  table_chart_odd_row_style  = var.table_chart_odd_row_style
-  table_chart_style          = var.table_chart_style
-  toc_heading1_style         = var.toc_heading1_style
-  toc_heading2_style         = var.toc_heading2_style
-  toc_heading3_style         = var.toc_heading3_style
-  toc_heading4_style         = var.toc_heading4_style
-  toc_title_style            = var.toc_title_style
+  # table_chart_head_style - (optional) is a type of string
+  table_chart_head_style = var.table_chart_head_style
+  # table_chart_odd_row_style - (optional) is a type of string
+  table_chart_odd_row_style = var.table_chart_odd_row_style
+  # table_chart_style - (optional) is a type of string
+  table_chart_style = var.table_chart_style
+  # toc_heading1_style - (optional) is a type of string
+  toc_heading1_style = var.toc_heading1_style
+  # toc_heading2_style - (optional) is a type of string
+  toc_heading2_style = var.toc_heading2_style
+  # toc_heading3_style - (optional) is a type of string
+  toc_heading3_style = var.toc_heading3_style
+  # toc_heading4_style - (optional) is a type of string
+  toc_heading4_style = var.toc_heading4_style
+  # toc_title_style - (optional) is a type of string
+  toc_title_style = var.toc_title_style
 }
 ```
 

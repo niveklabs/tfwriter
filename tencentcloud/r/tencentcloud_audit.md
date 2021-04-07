@@ -101,13 +101,21 @@ variable "read_write_attribute" {
 
 ```terraform
 resource "tencentcloud_audit" "this" {
-  audit_switch         = var.audit_switch
-  cos_bucket           = var.cos_bucket
-  cos_region           = var.cos_region
-  enable_kms_encry     = var.enable_kms_encry
-  key_id               = var.key_id
-  log_file_prefix      = var.log_file_prefix
-  name                 = var.name
+  # audit_switch - (required) is a type of bool
+  audit_switch = var.audit_switch
+  # cos_bucket - (required) is a type of string
+  cos_bucket = var.cos_bucket
+  # cos_region - (required) is a type of string
+  cos_region = var.cos_region
+  # enable_kms_encry - (optional) is a type of bool
+  enable_kms_encry = var.enable_kms_encry
+  # key_id - (optional) is a type of string
+  key_id = var.key_id
+  # log_file_prefix - (optional) is a type of string
+  log_file_prefix = var.log_file_prefix
+  # name - (required) is a type of string
+  name = var.name
+  # read_write_attribute - (required) is a type of number
   read_write_attribute = var.read_write_attribute
 }
 ```

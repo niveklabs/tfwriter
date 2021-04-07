@@ -128,20 +128,31 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_server" "this" {
-  disk_encrypted   = var.disk_encrypted
-  image            = var.image
-  locked           = var.locked
-  name             = var.name
-  server_groups    = var.server_groups
-  type             = var.type
-  user_data        = var.user_data
+  # disk_encrypted - (optional) is a type of bool
+  disk_encrypted = var.disk_encrypted
+  # image - (required) is a type of string
+  image = var.image
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # name - (optional) is a type of string
+  name = var.name
+  # server_groups - (required) is a type of set of string
+  server_groups = var.server_groups
+  # type - (optional) is a type of string
+  type = var.type
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # user_data_base64 - (optional) is a type of string
   user_data_base64 = var.user_data_base64
-  zone             = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

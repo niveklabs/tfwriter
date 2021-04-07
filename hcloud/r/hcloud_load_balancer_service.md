@@ -140,29 +140,44 @@ variable "http" {
 
 ```terraform
 resource "hcloud_load_balancer_service" "this" {
+  # destination_port - (optional) is a type of number
   destination_port = var.destination_port
-  listen_port      = var.listen_port
+  # listen_port - (optional) is a type of number
+  listen_port = var.listen_port
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  protocol         = var.protocol
-  proxyprotocol    = var.proxyprotocol
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # proxyprotocol - (optional) is a type of bool
+  proxyprotocol = var.proxyprotocol
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
+      # interval - (required) is a type of number
       interval = health_check.value["interval"]
-      port     = health_check.value["port"]
+      # port - (required) is a type of number
+      port = health_check.value["port"]
+      # protocol - (required) is a type of string
       protocol = health_check.value["protocol"]
-      retries  = health_check.value["retries"]
-      timeout  = health_check.value["timeout"]
+      # retries - (optional) is a type of number
+      retries = health_check.value["retries"]
+      # timeout - (required) is a type of number
+      timeout = health_check.value["timeout"]
 
       dynamic "http" {
         for_each = health_check.value.http
         content {
-          domain       = http.value["domain"]
-          path         = http.value["path"]
-          response     = http.value["response"]
+          # domain - (optional) is a type of string
+          domain = http.value["domain"]
+          # path - (optional) is a type of string
+          path = http.value["path"]
+          # response - (optional) is a type of string
+          response = http.value["response"]
+          # status_codes - (optional) is a type of list of string
           status_codes = http.value["status_codes"]
-          tls          = http.value["tls"]
+          # tls - (optional) is a type of bool
+          tls = http.value["tls"]
         }
       }
 
@@ -172,10 +187,15 @@ resource "hcloud_load_balancer_service" "this" {
   dynamic "http" {
     for_each = var.http
     content {
-      certificates    = http.value["certificates"]
+      # certificates - (optional) is a type of set of number
+      certificates = http.value["certificates"]
+      # cookie_lifetime - (optional) is a type of number
       cookie_lifetime = http.value["cookie_lifetime"]
-      cookie_name     = http.value["cookie_name"]
-      redirect_http   = http.value["redirect_http"]
+      # cookie_name - (optional) is a type of string
+      cookie_name = http.value["cookie_name"]
+      # redirect_http - (optional) is a type of bool
+      redirect_http = http.value["redirect_http"]
+      # sticky_sessions - (optional) is a type of bool
       sticky_sessions = http.value["sticky_sessions"]
     }
   }

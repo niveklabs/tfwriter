@@ -220,42 +220,71 @@ variable "service_providers" {
 
 ```terraform
 resource "fortios_system_saml" "this" {
-  cert                   = var.cert
-  default_login_page     = var.default_login_page
-  default_profile        = var.default_profile
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  entity_id              = var.entity_id
-  idp_cert               = var.idp_cert
-  idp_entity_id          = var.idp_entity_id
-  idp_single_logout_url  = var.idp_single_logout_url
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # default_login_page - (optional) is a type of string
+  default_login_page = var.default_login_page
+  # default_profile - (optional) is a type of string
+  default_profile = var.default_profile
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # entity_id - (optional) is a type of string
+  entity_id = var.entity_id
+  # idp_cert - (optional) is a type of string
+  idp_cert = var.idp_cert
+  # idp_entity_id - (optional) is a type of string
+  idp_entity_id = var.idp_entity_id
+  # idp_single_logout_url - (optional) is a type of string
+  idp_single_logout_url = var.idp_single_logout_url
+  # idp_single_sign_on_url - (optional) is a type of string
   idp_single_sign_on_url = var.idp_single_sign_on_url
-  life                   = var.life
-  portal_url             = var.portal_url
-  role                   = var.role
-  server_address         = var.server_address
-  single_logout_url      = var.single_logout_url
-  single_sign_on_url     = var.single_sign_on_url
-  status                 = var.status
-  tolerance              = var.tolerance
+  # life - (optional) is a type of number
+  life = var.life
+  # portal_url - (optional) is a type of string
+  portal_url = var.portal_url
+  # role - (optional) is a type of string
+  role = var.role
+  # server_address - (optional) is a type of string
+  server_address = var.server_address
+  # single_logout_url - (optional) is a type of string
+  single_logout_url = var.single_logout_url
+  # single_sign_on_url - (optional) is a type of string
+  single_sign_on_url = var.single_sign_on_url
+  # status - (optional) is a type of string
+  status = var.status
+  # tolerance - (optional) is a type of number
+  tolerance = var.tolerance
 
   dynamic "service_providers" {
     for_each = var.service_providers
     content {
-      idp_entity_id          = service_providers.value["idp_entity_id"]
-      idp_single_logout_url  = service_providers.value["idp_single_logout_url"]
+      # idp_entity_id - (optional) is a type of string
+      idp_entity_id = service_providers.value["idp_entity_id"]
+      # idp_single_logout_url - (optional) is a type of string
+      idp_single_logout_url = service_providers.value["idp_single_logout_url"]
+      # idp_single_sign_on_url - (optional) is a type of string
       idp_single_sign_on_url = service_providers.value["idp_single_sign_on_url"]
-      name                   = service_providers.value["name"]
-      prefix                 = service_providers.value["prefix"]
-      sp_cert                = service_providers.value["sp_cert"]
-      sp_entity_id           = service_providers.value["sp_entity_id"]
-      sp_portal_url          = service_providers.value["sp_portal_url"]
-      sp_single_logout_url   = service_providers.value["sp_single_logout_url"]
-      sp_single_sign_on_url  = service_providers.value["sp_single_sign_on_url"]
+      # name - (optional) is a type of string
+      name = service_providers.value["name"]
+      # prefix - (optional) is a type of string
+      prefix = service_providers.value["prefix"]
+      # sp_cert - (optional) is a type of string
+      sp_cert = service_providers.value["sp_cert"]
+      # sp_entity_id - (optional) is a type of string
+      sp_entity_id = service_providers.value["sp_entity_id"]
+      # sp_portal_url - (optional) is a type of string
+      sp_portal_url = service_providers.value["sp_portal_url"]
+      # sp_single_logout_url - (optional) is a type of string
+      sp_single_logout_url = service_providers.value["sp_single_logout_url"]
+      # sp_single_sign_on_url - (optional) is a type of string
+      sp_single_sign_on_url = service_providers.value["sp_single_sign_on_url"]
 
       dynamic "assertion_attributes" {
         for_each = service_providers.value.assertion_attributes
         content {
+          # name - (optional) is a type of string
           name = assertion_attributes.value["name"]
+          # type - (optional) is a type of string
           type = assertion_attributes.value["type"]
         }
       }

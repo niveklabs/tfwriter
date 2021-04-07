@@ -113,20 +113,30 @@ variable "ipv4s" {
 
 ```terraform
 resource "tencentcloud_eni" "this" {
-  description     = var.description
-  ipv4_count      = var.ipv4_count
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # ipv4_count - (optional) is a type of number
+  ipv4_count = var.ipv4_count
+  # name - (required) is a type of string
+  name = var.name
+  # security_groups - (optional) is a type of set of string
   security_groups = var.security_groups
-  subnet_id       = var.subnet_id
-  tags            = var.tags
-  vpc_id          = var.vpc_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "ipv4s" {
     for_each = var.ipv4s
     content {
+      # description - (optional) is a type of string
       description = ipv4s.value["description"]
-      ip          = ipv4s.value["ip"]
-      primary     = ipv4s.value["primary"]
+      # ip - (required) is a type of string
+      ip = ipv4s.value["ip"]
+      # primary - (required) is a type of bool
+      primary = ipv4s.value["primary"]
     }
   }
 

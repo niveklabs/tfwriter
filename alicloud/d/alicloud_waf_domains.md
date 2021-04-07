@@ -89,11 +89,17 @@ variable "resource_group_id" {
 
 ```terraform
 data "alicloud_waf_domains" "this" {
-  enable_details    = var.enable_details
-  ids               = var.ids
-  instance_id       = var.instance_id
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
 }
 ```

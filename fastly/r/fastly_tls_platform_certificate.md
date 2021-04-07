@@ -71,10 +71,14 @@ variable "intermediates_blob" {
 
 ```terraform
 resource "fastly_tls_platform_certificate" "this" {
+  # allow_untrusted_root - (optional) is a type of bool
   allow_untrusted_root = var.allow_untrusted_root
-  certificate_body     = var.certificate_body
-  configuration_id     = var.configuration_id
-  intermediates_blob   = var.intermediates_blob
+  # certificate_body - (required) is a type of string
+  certificate_body = var.certificate_body
+  # configuration_id - (required) is a type of string
+  configuration_id = var.configuration_id
+  # intermediates_blob - (required) is a type of string
+  intermediates_blob = var.intermediates_blob
 }
 ```
 

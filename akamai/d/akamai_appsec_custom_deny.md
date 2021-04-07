@@ -64,9 +64,12 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_custom_deny" "this" {
-  config_id      = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # custom_deny_id - (optional) is a type of string
   custom_deny_id = var.custom_deny_id
-  version        = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

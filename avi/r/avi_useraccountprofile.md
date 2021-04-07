@@ -97,13 +97,20 @@ variable "uuid" {
 
 ```terraform
 resource "avi_useraccountprofile" "this" {
-  account_lock_timeout          = var.account_lock_timeout
+  # account_lock_timeout - (optional) is a type of number
+  account_lock_timeout = var.account_lock_timeout
+  # credentials_timeout_threshold - (optional) is a type of number
   credentials_timeout_threshold = var.credentials_timeout_threshold
-  max_concurrent_sessions       = var.max_concurrent_sessions
-  max_login_failure_count       = var.max_login_failure_count
-  max_password_history_count    = var.max_password_history_count
-  name                          = var.name
-  uuid                          = var.uuid
+  # max_concurrent_sessions - (optional) is a type of number
+  max_concurrent_sessions = var.max_concurrent_sessions
+  # max_login_failure_count - (optional) is a type of number
+  max_login_failure_count = var.max_login_failure_count
+  # max_password_history_count - (optional) is a type of number
+  max_password_history_count = var.max_password_history_count
+  # name - (required) is a type of string
+  name = var.name
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

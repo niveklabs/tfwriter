@@ -77,11 +77,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_attack_group_action" "this" {
-  attack_group        = var.attack_group
+  # attack_group - (required) is a type of string
+  attack_group = var.attack_group
+  # attack_group_action - (required) is a type of string
   attack_group_action = var.attack_group_action
-  config_id           = var.config_id
-  security_policy_id  = var.security_policy_id
-  version             = var.version
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

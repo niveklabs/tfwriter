@@ -49,6 +49,7 @@ variable "new_state" {
 
 ```terraform
 resource "checkpoint_management_set_ha_state" "this" {
+  # new_state - (required) is a type of string
   new_state = var.new_state
 }
 ```

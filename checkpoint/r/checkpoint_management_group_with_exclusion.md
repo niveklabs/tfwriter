@@ -105,14 +105,22 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_group_with_exclusion" "this" {
-  color           = var.color
-  comments        = var.comments
-  except          = var.except
-  ignore_errors   = var.ignore_errors
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # except - (optional) is a type of string
+  except = var.except
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  include         = var.include
-  name            = var.name
-  tags            = var.tags
+  # include - (optional) is a type of string
+  include = var.include
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

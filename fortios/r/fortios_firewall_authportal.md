@@ -88,14 +88,19 @@ variable "groups" {
 
 ```terraform
 resource "fortios_firewall_authportal" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  identity_based_route  = var.identity_based_route
-  portal_addr           = var.portal_addr
-  portal_addr6          = var.portal_addr6
+  # identity_based_route - (optional) is a type of string
+  identity_based_route = var.identity_based_route
+  # portal_addr - (optional) is a type of string
+  portal_addr = var.portal_addr
+  # portal_addr6 - (optional) is a type of string
+  portal_addr6 = var.portal_addr6
 
   dynamic "groups" {
     for_each = var.groups
     content {
+      # name - (optional) is a type of string
       name = groups.value["name"]
     }
   }

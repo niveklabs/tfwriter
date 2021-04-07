@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_security_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project_id  = var.project_id
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

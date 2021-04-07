@@ -578,39 +578,65 @@ variable "subnets" {
 
 ```terraform
 resource "spotinst_elastigroup_gcp" "this" {
-  auto_healing               = var.auto_healing
-  availability_zones         = var.availability_zones
-  description                = var.description
-  desired_capacity           = var.desired_capacity
-  draining_timeout           = var.draining_timeout
-  fallback_to_ondemand       = var.fallback_to_ondemand
-  health_check_grace_period  = var.health_check_grace_period
-  health_check_type          = var.health_check_type
-  instance_types_ondemand    = var.instance_types_ondemand
+  # auto_healing - (optional) is a type of bool
+  auto_healing = var.auto_healing
+  # availability_zones - (optional) is a type of list of string
+  availability_zones = var.availability_zones
+  # description - (optional) is a type of string
+  description = var.description
+  # desired_capacity - (required) is a type of number
+  desired_capacity = var.desired_capacity
+  # draining_timeout - (optional) is a type of number
+  draining_timeout = var.draining_timeout
+  # fallback_to_ondemand - (optional) is a type of bool
+  fallback_to_ondemand = var.fallback_to_ondemand
+  # health_check_grace_period - (optional) is a type of number
+  health_check_grace_period = var.health_check_grace_period
+  # health_check_type - (optional) is a type of string
+  health_check_type = var.health_check_type
+  # instance_types_ondemand - (optional) is a type of string
+  instance_types_ondemand = var.instance_types_ondemand
+  # instance_types_preemptible - (optional) is a type of list of string
   instance_types_preemptible = var.instance_types_preemptible
-  ip_forwarding              = var.ip_forwarding
-  max_size                   = var.max_size
-  min_size                   = var.min_size
-  name                       = var.name
-  ondemand_count             = var.ondemand_count
-  preemptible_percentage     = var.preemptible_percentage
-  service_account            = var.service_account
-  shutdown_script            = var.shutdown_script
-  startup_script             = var.startup_script
-  tags                       = var.tags
-  unhealthy_duration         = var.unhealthy_duration
+  # ip_forwarding - (optional) is a type of bool
+  ip_forwarding = var.ip_forwarding
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # ondemand_count - (optional) is a type of number
+  ondemand_count = var.ondemand_count
+  # preemptible_percentage - (optional) is a type of number
+  preemptible_percentage = var.preemptible_percentage
+  # service_account - (optional) is a type of string
+  service_account = var.service_account
+  # shutdown_script - (optional) is a type of string
+  shutdown_script = var.shutdown_script
+  # startup_script - (optional) is a type of string
+  startup_script = var.startup_script
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # unhealthy_duration - (optional) is a type of number
+  unhealthy_duration = var.unhealthy_duration
 
   dynamic "backend_services" {
     for_each = var.backend_services
     content {
+      # location_type - (optional) is a type of string
       location_type = backend_services.value["location_type"]
-      scheme        = backend_services.value["scheme"]
-      service_name  = backend_services.value["service_name"]
+      # scheme - (optional) is a type of string
+      scheme = backend_services.value["scheme"]
+      # service_name - (required) is a type of string
+      service_name = backend_services.value["service_name"]
 
       dynamic "named_ports" {
         for_each = backend_services.value.named_ports
         content {
-          name  = named_ports.value["name"]
+          # name - (required) is a type of string
+          name = named_ports.value["name"]
+          # ports - (required) is a type of list of string
           ports = named_ports.value["ports"]
         }
       }
@@ -621,19 +647,29 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "disk" {
     for_each = var.disk
     content {
+      # auto_delete - (optional) is a type of bool
       auto_delete = disk.value["auto_delete"]
-      boot        = disk.value["boot"]
+      # boot - (optional) is a type of bool
+      boot = disk.value["boot"]
+      # device_name - (optional) is a type of string
       device_name = disk.value["device_name"]
-      interface   = disk.value["interface"]
-      mode        = disk.value["mode"]
-      source      = disk.value["source"]
-      type        = disk.value["type"]
+      # interface - (optional) is a type of string
+      interface = disk.value["interface"]
+      # mode - (optional) is a type of string
+      mode = disk.value["mode"]
+      # source - (optional) is a type of string
+      source = disk.value["source"]
+      # type - (optional) is a type of string
+      type = disk.value["type"]
 
       dynamic "initialize_params" {
         for_each = disk.value.initialize_params
         content {
+          # disk_size_gb - (optional) is a type of string
           disk_size_gb = initialize_params.value["disk_size_gb"]
-          disk_type    = initialize_params.value["disk_type"]
+          # disk_type - (optional) is a type of string
+          disk_type = initialize_params.value["disk_type"]
+          # source_image - (required) is a type of string
           source_image = initialize_params.value["source_image"]
         }
       }
@@ -644,23 +680,29 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "gpu" {
     for_each = var.gpu
     content {
+      # count - (required) is a type of number
       count = gpu.value["count"]
-      type  = gpu.value["type"]
+      # type - (required) is a type of string
+      type = gpu.value["type"]
     }
   }
 
   dynamic "instance_types_custom" {
     for_each = var.instance_types_custom
     content {
+      # memory_gib - (required) is a type of number
       memory_gib = instance_types_custom.value["memory_gib"]
-      vcpu       = instance_types_custom.value["vcpu"]
+      # vcpu - (required) is a type of number
+      vcpu = instance_types_custom.value["vcpu"]
     }
   }
 
   dynamic "integration_docker_swarm" {
     for_each = var.integration_docker_swarm
     content {
+      # master_host - (required) is a type of string
       master_host = integration_docker_swarm.value["master_host"]
+      # master_port - (required) is a type of number
       master_port = integration_docker_swarm.value["master_port"]
     }
   }
@@ -668,16 +710,23 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "integration_gke" {
     for_each = var.integration_gke
     content {
-      auto_update              = integration_gke.value["auto_update"]
-      autoscale_cooldown       = integration_gke.value["autoscale_cooldown"]
+      # auto_update - (optional) is a type of bool
+      auto_update = integration_gke.value["auto_update"]
+      # autoscale_cooldown - (optional) is a type of number
+      autoscale_cooldown = integration_gke.value["autoscale_cooldown"]
+      # autoscale_is_auto_config - (optional) is a type of bool
       autoscale_is_auto_config = integration_gke.value["autoscale_is_auto_config"]
-      autoscale_is_enabled     = integration_gke.value["autoscale_is_enabled"]
-      cluster_id               = integration_gke.value["cluster_id"]
-      location                 = integration_gke.value["location"]
+      # autoscale_is_enabled - (optional) is a type of bool
+      autoscale_is_enabled = integration_gke.value["autoscale_is_enabled"]
+      # cluster_id - (optional) is a type of string
+      cluster_id = integration_gke.value["cluster_id"]
+      # location - (optional) is a type of string
+      location = integration_gke.value["location"]
 
       dynamic "autoscale_down" {
         for_each = integration_gke.value.autoscale_down
         content {
+          # evaluation_periods - (optional) is a type of number
           evaluation_periods = autoscale_down.value["evaluation_periods"]
         }
       }
@@ -685,16 +734,21 @@ resource "spotinst_elastigroup_gcp" "this" {
       dynamic "autoscale_headroom" {
         for_each = integration_gke.value.autoscale_headroom
         content {
-          cpu_per_unit    = autoscale_headroom.value["cpu_per_unit"]
+          # cpu_per_unit - (optional) is a type of number
+          cpu_per_unit = autoscale_headroom.value["cpu_per_unit"]
+          # memory_per_unit - (optional) is a type of number
           memory_per_unit = autoscale_headroom.value["memory_per_unit"]
-          num_of_units    = autoscale_headroom.value["num_of_units"]
+          # num_of_units - (optional) is a type of number
+          num_of_units = autoscale_headroom.value["num_of_units"]
         }
       }
 
       dynamic "autoscale_labels" {
         for_each = integration_gke.value.autoscale_labels
         content {
-          key   = autoscale_labels.value["key"]
+          # key - (required) is a type of string
+          key = autoscale_labels.value["key"]
+          # value - (required) is a type of string
           value = autoscale_labels.value["value"]
         }
       }
@@ -705,7 +759,9 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }
@@ -713,7 +769,9 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      key   = metadata.value["key"]
+      # key - (required) is a type of string
+      key = metadata.value["key"]
+      # value - (required) is a type of string
       value = metadata.value["value"]
     }
   }
@@ -721,12 +779,15 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
+      # network - (required) is a type of string
       network = network_interface.value["network"]
 
       dynamic "access_configs" {
         for_each = network_interface.value.access_configs
         content {
+          # name - (optional) is a type of string
           name = access_configs.value["name"]
+          # type - (optional) is a type of string
           type = access_configs.value["type"]
         }
       }
@@ -734,7 +795,9 @@ resource "spotinst_elastigroup_gcp" "this" {
       dynamic "alias_ip_ranges" {
         for_each = network_interface.value.alias_ip_ranges
         content {
-          ip_cidr_range         = alias_ip_ranges.value["ip_cidr_range"]
+          # ip_cidr_range - (required) is a type of string
+          ip_cidr_range = alias_ip_ranges.value["ip_cidr_range"]
+          # subnetwork_range_name - (required) is a type of string
           subnetwork_range_name = alias_ip_ranges.value["subnetwork_range_name"]
         }
       }
@@ -745,24 +808,39 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "scaling_down_policy" {
     for_each = var.scaling_down_policy
     content {
-      action_type        = scaling_down_policy.value["action_type"]
-      adjustment         = scaling_down_policy.value["adjustment"]
-      cooldown           = scaling_down_policy.value["cooldown"]
+      # action_type - (optional) is a type of string
+      action_type = scaling_down_policy.value["action_type"]
+      # adjustment - (optional) is a type of number
+      adjustment = scaling_down_policy.value["adjustment"]
+      # cooldown - (optional) is a type of number
+      cooldown = scaling_down_policy.value["cooldown"]
+      # evaluation_periods - (optional) is a type of number
       evaluation_periods = scaling_down_policy.value["evaluation_periods"]
-      metric_name        = scaling_down_policy.value["metric_name"]
-      namespace          = scaling_down_policy.value["namespace"]
-      operator           = scaling_down_policy.value["operator"]
-      period             = scaling_down_policy.value["period"]
-      policy_name        = scaling_down_policy.value["policy_name"]
-      source             = scaling_down_policy.value["source"]
-      statistic          = scaling_down_policy.value["statistic"]
-      threshold          = scaling_down_policy.value["threshold"]
-      unit               = scaling_down_policy.value["unit"]
+      # metric_name - (required) is a type of string
+      metric_name = scaling_down_policy.value["metric_name"]
+      # namespace - (required) is a type of string
+      namespace = scaling_down_policy.value["namespace"]
+      # operator - (optional) is a type of string
+      operator = scaling_down_policy.value["operator"]
+      # period - (optional) is a type of number
+      period = scaling_down_policy.value["period"]
+      # policy_name - (required) is a type of string
+      policy_name = scaling_down_policy.value["policy_name"]
+      # source - (optional) is a type of string
+      source = scaling_down_policy.value["source"]
+      # statistic - (optional) is a type of string
+      statistic = scaling_down_policy.value["statistic"]
+      # threshold - (required) is a type of number
+      threshold = scaling_down_policy.value["threshold"]
+      # unit - (required) is a type of string
+      unit = scaling_down_policy.value["unit"]
 
       dynamic "dimensions" {
         for_each = scaling_down_policy.value.dimensions
         content {
-          name  = dimensions.value["name"]
+          # name - (required) is a type of string
+          name = dimensions.value["name"]
+          # value - (optional) is a type of string
           value = dimensions.value["value"]
         }
       }
@@ -773,24 +851,39 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "scaling_up_policy" {
     for_each = var.scaling_up_policy
     content {
-      action_type        = scaling_up_policy.value["action_type"]
-      adjustment         = scaling_up_policy.value["adjustment"]
-      cooldown           = scaling_up_policy.value["cooldown"]
+      # action_type - (optional) is a type of string
+      action_type = scaling_up_policy.value["action_type"]
+      # adjustment - (optional) is a type of number
+      adjustment = scaling_up_policy.value["adjustment"]
+      # cooldown - (optional) is a type of number
+      cooldown = scaling_up_policy.value["cooldown"]
+      # evaluation_periods - (optional) is a type of number
       evaluation_periods = scaling_up_policy.value["evaluation_periods"]
-      metric_name        = scaling_up_policy.value["metric_name"]
-      namespace          = scaling_up_policy.value["namespace"]
-      operator           = scaling_up_policy.value["operator"]
-      period             = scaling_up_policy.value["period"]
-      policy_name        = scaling_up_policy.value["policy_name"]
-      source             = scaling_up_policy.value["source"]
-      statistic          = scaling_up_policy.value["statistic"]
-      threshold          = scaling_up_policy.value["threshold"]
-      unit               = scaling_up_policy.value["unit"]
+      # metric_name - (required) is a type of string
+      metric_name = scaling_up_policy.value["metric_name"]
+      # namespace - (required) is a type of string
+      namespace = scaling_up_policy.value["namespace"]
+      # operator - (optional) is a type of string
+      operator = scaling_up_policy.value["operator"]
+      # period - (optional) is a type of number
+      period = scaling_up_policy.value["period"]
+      # policy_name - (required) is a type of string
+      policy_name = scaling_up_policy.value["policy_name"]
+      # source - (optional) is a type of string
+      source = scaling_up_policy.value["source"]
+      # statistic - (optional) is a type of string
+      statistic = scaling_up_policy.value["statistic"]
+      # threshold - (required) is a type of number
+      threshold = scaling_up_policy.value["threshold"]
+      # unit - (required) is a type of string
+      unit = scaling_up_policy.value["unit"]
 
       dynamic "dimensions" {
         for_each = scaling_up_policy.value.dimensions
         content {
-          name  = dimensions.value["name"]
+          # name - (required) is a type of string
+          name = dimensions.value["name"]
+          # value - (optional) is a type of string
           value = dimensions.value["value"]
         }
       }
@@ -801,19 +894,27 @@ resource "spotinst_elastigroup_gcp" "this" {
   dynamic "scheduled_task" {
     for_each = var.scheduled_task
     content {
+      # cron_expression - (optional) is a type of string
       cron_expression = scheduled_task.value["cron_expression"]
-      is_enabled      = scheduled_task.value["is_enabled"]
-      max_capacity    = scheduled_task.value["max_capacity"]
-      min_capacity    = scheduled_task.value["min_capacity"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = scheduled_task.value["is_enabled"]
+      # max_capacity - (optional) is a type of string
+      max_capacity = scheduled_task.value["max_capacity"]
+      # min_capacity - (optional) is a type of string
+      min_capacity = scheduled_task.value["min_capacity"]
+      # target_capacity - (optional) is a type of string
       target_capacity = scheduled_task.value["target_capacity"]
-      task_type       = scheduled_task.value["task_type"]
+      # task_type - (required) is a type of string
+      task_type = scheduled_task.value["task_type"]
     }
   }
 
   dynamic "subnets" {
     for_each = var.subnets
     content {
-      region       = subnets.value["region"]
+      # region - (required) is a type of string
+      region = subnets.value["region"]
+      # subnet_names - (required) is a type of list of string
       subnet_names = subnets.value["subnet_names"]
     }
   }

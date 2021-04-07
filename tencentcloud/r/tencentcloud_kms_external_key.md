@@ -113,15 +113,24 @@ variable "wrapping_algorithm" {
 
 ```terraform
 resource "tencentcloud_kms_external_key" "this" {
-  alias                         = var.alias
-  description                   = var.description
-  is_archived                   = var.is_archived
-  is_enabled                    = var.is_enabled
-  key_material_base64           = var.key_material_base64
+  # alias - (required) is a type of string
+  alias = var.alias
+  # description - (optional) is a type of string
+  description = var.description
+  # is_archived - (optional) is a type of bool
+  is_archived = var.is_archived
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # key_material_base64 - (optional) is a type of string
+  key_material_base64 = var.key_material_base64
+  # pending_delete_window_in_days - (optional) is a type of number
   pending_delete_window_in_days = var.pending_delete_window_in_days
-  tags                          = var.tags
-  valid_to                      = var.valid_to
-  wrapping_algorithm            = var.wrapping_algorithm
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # valid_to - (optional) is a type of number
+  valid_to = var.valid_to
+  # wrapping_algorithm - (optional) is a type of string
+  wrapping_algorithm = var.wrapping_algorithm
 }
 ```
 

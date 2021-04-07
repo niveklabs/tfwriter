@@ -97,22 +97,29 @@ variable "tags" {
 
 ```terraform
 resource "spotinst_multai_balancer" "this" {
+  # dns_cname_aliases - (optional) is a type of list of string
   dns_cname_aliases = var.dns_cname_aliases
-  name              = var.name
-  scheme            = var.scheme
+  # name - (required) is a type of string
+  name = var.name
+  # scheme - (optional) is a type of string
+  scheme = var.scheme
 
   dynamic "connection_timeouts" {
     for_each = var.connection_timeouts
     content {
+      # draining - (optional) is a type of number
       draining = connection_timeouts.value["draining"]
-      idle     = connection_timeouts.value["idle"]
+      # idle - (optional) is a type of number
+      idle = connection_timeouts.value["idle"]
     }
   }
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

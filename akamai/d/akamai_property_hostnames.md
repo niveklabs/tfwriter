@@ -63,8 +63,11 @@ variable "property_id" {
 
 ```terraform
 data "akamai_property_hostnames" "this" {
+  # contract_id - (required) is a type of string
   contract_id = var.contract_id
-  group_id    = var.group_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # property_id - (required) is a type of string
   property_id = var.property_id
 }
 ```

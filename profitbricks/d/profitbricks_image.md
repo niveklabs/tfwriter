@@ -94,18 +94,26 @@ variable "timeouts" {
 
 ```terraform
 data "profitbricks_image" "this" {
+  # location - (optional) is a type of string
   location = var.location
-  name     = var.name
-  type     = var.type
-  version  = var.version
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

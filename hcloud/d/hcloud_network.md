@@ -74,9 +74,13 @@ variable "with_selector" {
 
 ```terraform
 data "hcloud_network" "this" {
-  ip_range      = var.ip_range
-  labels        = var.labels
-  name          = var.name
+  # ip_range - (optional) is a type of string
+  ip_range = var.ip_range
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 }
 ```

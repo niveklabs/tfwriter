@@ -226,33 +226,56 @@ variable "bypass_ip_cfg" {
 
 ```terraform
 resource "thunder_slb_template_respmod_icap" "this" {
-  action                                      = var.action
-  cylance                                     = var.cylance
-  disable_http_server_reset                   = var.disable_http_server_reset
-  fail_close                                  = var.fail_close
-  include_protocol_in_uri                     = var.include_protocol_in_uri
-  log_only_allowed_method                     = var.log_only_allowed_method
-  logging                                     = var.logging
-  min_payload_size                            = var.min_payload_size
-  name                                        = var.name
-  preview                                     = var.preview
-  server_ssl                                  = var.server_ssl
-  service_group                               = var.service_group
-  service_url                                 = var.service_url
+  # action - (optional) is a type of string
+  action = var.action
+  # cylance - (optional) is a type of number
+  cylance = var.cylance
+  # disable_http_server_reset - (optional) is a type of number
+  disable_http_server_reset = var.disable_http_server_reset
+  # fail_close - (optional) is a type of number
+  fail_close = var.fail_close
+  # include_protocol_in_uri - (optional) is a type of number
+  include_protocol_in_uri = var.include_protocol_in_uri
+  # log_only_allowed_method - (optional) is a type of number
+  log_only_allowed_method = var.log_only_allowed_method
+  # logging - (optional) is a type of string
+  logging = var.logging
+  # min_payload_size - (optional) is a type of number
+  min_payload_size = var.min_payload_size
+  # name - (optional) is a type of string
+  name = var.name
+  # preview - (optional) is a type of number
+  preview = var.preview
+  # server_ssl - (optional) is a type of string
+  server_ssl = var.server_ssl
+  # service_group - (optional) is a type of string
+  service_group = var.service_group
+  # service_url - (optional) is a type of string
+  service_url = var.service_url
+  # shared_partition_persist_source_ip_template - (optional) is a type of number
   shared_partition_persist_source_ip_template = var.shared_partition_persist_source_ip_template
-  shared_partition_tcp_proxy_template         = var.shared_partition_tcp_proxy_template
-  source_ip                                   = var.source_ip
-  tcp_proxy                                   = var.tcp_proxy
-  template_persist_source_ip_shared           = var.template_persist_source_ip_shared
-  template_tcp_proxy_shared                   = var.template_tcp_proxy_shared
-  user_tag                                    = var.user_tag
-  uuid                                        = var.uuid
+  # shared_partition_tcp_proxy_template - (optional) is a type of number
+  shared_partition_tcp_proxy_template = var.shared_partition_tcp_proxy_template
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # tcp_proxy - (optional) is a type of string
+  tcp_proxy = var.tcp_proxy
+  # template_persist_source_ip_shared - (optional) is a type of string
+  template_persist_source_ip_shared = var.template_persist_source_ip_shared
+  # template_tcp_proxy_shared - (optional) is a type of string
+  template_tcp_proxy_shared = var.template_tcp_proxy_shared
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "bypass_ip_cfg" {
     for_each = var.bypass_ip_cfg
     content {
+      # bypass_ip - (optional) is a type of string
       bypass_ip = bypass_ip_cfg.value["bypass_ip"]
-      mask      = bypass_ip_cfg.value["mask"]
+      # mask - (optional) is a type of string
+      mask = bypass_ip_cfg.value["mask"]
     }
   }
 

@@ -110,12 +110,19 @@ variable "user_defined_fields" {
 
 ```terraform
 resource "linode_stackscript" "this" {
-  description         = var.description
-  images              = var.images
-  is_public           = var.is_public
-  label               = var.label
-  rev_note            = var.rev_note
-  script              = var.script
+  # description - (required) is a type of string
+  description = var.description
+  # images - (required) is a type of list of string
+  images = var.images
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # label - (required) is a type of string
+  label = var.label
+  # rev_note - (optional) is a type of string
+  rev_note = var.rev_note
+  # script - (required) is a type of string
+  script = var.script
+  # user_defined_fields - (optional) is a type of list of object
   user_defined_fields = var.user_defined_fields
 }
 ```

@@ -458,52 +458,95 @@ variable "route_table" {
 
 ```terraform
 resource "fortios_system_sdnconnector" "this" {
-  access_key            = var.access_key
-  api_key               = var.api_key
-  azure_region          = var.azure_region
-  client_id             = var.client_id
-  client_secret         = var.client_secret
-  compartment_id        = var.compartment_id
-  compute_generation    = var.compute_generation
-  domain                = var.domain
+  # access_key - (optional) is a type of string
+  access_key = var.access_key
+  # api_key - (optional) is a type of string
+  api_key = var.api_key
+  # azure_region - (optional) is a type of string
+  azure_region = var.azure_region
+  # client_id - (optional) is a type of string
+  client_id = var.client_id
+  # client_secret - (optional) is a type of string
+  client_secret = var.client_secret
+  # compartment_id - (optional) is a type of string
+  compartment_id = var.compartment_id
+  # compute_generation - (optional) is a type of number
+  compute_generation = var.compute_generation
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  gcp_project           = var.gcp_project
-  group_name            = var.group_name
-  ha_status             = var.ha_status
-  ibm_region            = var.ibm_region
-  key_passwd            = var.key_passwd
-  login_endpoint        = var.login_endpoint
-  name                  = var.name
-  oci_cert              = var.oci_cert
-  oci_fingerprint       = var.oci_fingerprint
-  oci_region            = var.oci_region
-  oci_region_type       = var.oci_region_type
-  password              = var.password
-  private_key           = var.private_key
-  region                = var.region
-  resource_group        = var.resource_group
-  resource_url          = var.resource_url
-  secret_key            = var.secret_key
-  secret_token          = var.secret_token
-  server                = var.server
-  server_port           = var.server_port
-  service_account       = var.service_account
-  status                = var.status
-  subscription_id       = var.subscription_id
-  tenant_id             = var.tenant_id
-  type                  = var.type
-  update_interval       = var.update_interval
-  use_metadata_iam      = var.use_metadata_iam
-  user_id               = var.user_id
-  username              = var.username
-  vcenter_password      = var.vcenter_password
-  vcenter_server        = var.vcenter_server
-  vcenter_username      = var.vcenter_username
-  vpc_id                = var.vpc_id
+  # gcp_project - (optional) is a type of string
+  gcp_project = var.gcp_project
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # ha_status - (optional) is a type of string
+  ha_status = var.ha_status
+  # ibm_region - (optional) is a type of string
+  ibm_region = var.ibm_region
+  # key_passwd - (optional) is a type of string
+  key_passwd = var.key_passwd
+  # login_endpoint - (optional) is a type of string
+  login_endpoint = var.login_endpoint
+  # name - (optional) is a type of string
+  name = var.name
+  # oci_cert - (optional) is a type of string
+  oci_cert = var.oci_cert
+  # oci_fingerprint - (optional) is a type of string
+  oci_fingerprint = var.oci_fingerprint
+  # oci_region - (optional) is a type of string
+  oci_region = var.oci_region
+  # oci_region_type - (optional) is a type of string
+  oci_region_type = var.oci_region_type
+  # password - (optional) is a type of string
+  password = var.password
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # region - (optional) is a type of string
+  region = var.region
+  # resource_group - (optional) is a type of string
+  resource_group = var.resource_group
+  # resource_url - (optional) is a type of string
+  resource_url = var.resource_url
+  # secret_key - (optional) is a type of string
+  secret_key = var.secret_key
+  # secret_token - (optional) is a type of string
+  secret_token = var.secret_token
+  # server - (optional) is a type of string
+  server = var.server
+  # server_port - (optional) is a type of number
+  server_port = var.server_port
+  # service_account - (optional) is a type of string
+  service_account = var.service_account
+  # status - (required) is a type of string
+  status = var.status
+  # subscription_id - (optional) is a type of string
+  subscription_id = var.subscription_id
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # type - (required) is a type of string
+  type = var.type
+  # update_interval - (optional) is a type of number
+  update_interval = var.update_interval
+  # use_metadata_iam - (optional) is a type of string
+  use_metadata_iam = var.use_metadata_iam
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
+  # username - (optional) is a type of string
+  username = var.username
+  # vcenter_password - (optional) is a type of string
+  vcenter_password = var.vcenter_password
+  # vcenter_server - (optional) is a type of string
+  vcenter_server = var.vcenter_server
+  # vcenter_username - (optional) is a type of string
+  vcenter_username = var.vcenter_username
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "external_ip" {
     for_each = var.external_ip
     content {
+      # name - (optional) is a type of string
       name = external_ip.value["name"]
     }
   }
@@ -511,13 +554,17 @@ resource "fortios_system_sdnconnector" "this" {
   dynamic "nic" {
     for_each = var.nic
     content {
+      # name - (optional) is a type of string
       name = nic.value["name"]
 
       dynamic "ip" {
         for_each = nic.value.ip
         content {
-          name           = ip.value["name"]
-          public_ip      = ip.value["public_ip"]
+          # name - (optional) is a type of string
+          name = ip.value["name"]
+          # public_ip - (optional) is a type of string
+          public_ip = ip.value["public_ip"]
+          # resource_group - (optional) is a type of string
           resource_group = ip.value["resource_group"]
         }
       }
@@ -528,6 +575,7 @@ resource "fortios_system_sdnconnector" "this" {
   dynamic "route" {
     for_each = var.route
     content {
+      # name - (optional) is a type of string
       name = route.value["name"]
     }
   }
@@ -535,14 +583,19 @@ resource "fortios_system_sdnconnector" "this" {
   dynamic "route_table" {
     for_each = var.route_table
     content {
-      name            = route_table.value["name"]
-      resource_group  = route_table.value["resource_group"]
+      # name - (optional) is a type of string
+      name = route_table.value["name"]
+      # resource_group - (optional) is a type of string
+      resource_group = route_table.value["resource_group"]
+      # subscription_id - (optional) is a type of string
       subscription_id = route_table.value["subscription_id"]
 
       dynamic "route" {
         for_each = route_table.value.route
         content {
-          name     = route.value["name"]
+          # name - (optional) is a type of string
+          name = route.value["name"]
+          # next_hop - (optional) is a type of string
           next_hop = route.value["next_hop"]
         }
       }

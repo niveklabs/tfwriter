@@ -56,7 +56,9 @@ variable "ca_private_key" {
 
 ```terraform
 resource "aviatrix_gateway_certificate_config" "this" {
+  # ca_certificate - (required) is a type of string
   ca_certificate = var.ca_certificate
+  # ca_private_key - (required) is a type of string
   ca_private_key = var.ca_private_key
 }
 ```

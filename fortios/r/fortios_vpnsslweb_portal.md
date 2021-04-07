@@ -714,101 +714,185 @@ variable "split_tunneling_routing_address" {
 
 ```terraform
 resource "fortios_vpnsslweb_portal" "this" {
-  allow_user_access                   = var.allow_user_access
-  auto_connect                        = var.auto_connect
-  custom_lang                         = var.custom_lang
-  customize_forticlient_download_url  = var.customize_forticlient_download_url
-  display_bookmark                    = var.display_bookmark
-  display_connection_tools            = var.display_connection_tools
-  display_history                     = var.display_history
-  display_status                      = var.display_status
-  dns_server1                         = var.dns_server1
-  dns_server2                         = var.dns_server2
-  dns_suffix                          = var.dns_suffix
-  dynamic_sort_subtable               = var.dynamic_sort_subtable
-  exclusive_routing                   = var.exclusive_routing
-  forticlient_download                = var.forticlient_download
-  forticlient_download_method         = var.forticlient_download_method
-  heading                             = var.heading
-  hide_sso_credential                 = var.hide_sso_credential
-  host_check                          = var.host_check
-  host_check_interval                 = var.host_check_interval
-  ip_mode                             = var.ip_mode
-  ipv6_dns_server1                    = var.ipv6_dns_server1
-  ipv6_dns_server2                    = var.ipv6_dns_server2
-  ipv6_exclusive_routing              = var.ipv6_exclusive_routing
-  ipv6_service_restriction            = var.ipv6_service_restriction
-  ipv6_split_tunneling                = var.ipv6_split_tunneling
+  # allow_user_access - (optional) is a type of string
+  allow_user_access = var.allow_user_access
+  # auto_connect - (optional) is a type of string
+  auto_connect = var.auto_connect
+  # custom_lang - (optional) is a type of string
+  custom_lang = var.custom_lang
+  # customize_forticlient_download_url - (optional) is a type of string
+  customize_forticlient_download_url = var.customize_forticlient_download_url
+  # display_bookmark - (optional) is a type of string
+  display_bookmark = var.display_bookmark
+  # display_connection_tools - (optional) is a type of string
+  display_connection_tools = var.display_connection_tools
+  # display_history - (optional) is a type of string
+  display_history = var.display_history
+  # display_status - (optional) is a type of string
+  display_status = var.display_status
+  # dns_server1 - (optional) is a type of string
+  dns_server1 = var.dns_server1
+  # dns_server2 - (optional) is a type of string
+  dns_server2 = var.dns_server2
+  # dns_suffix - (optional) is a type of string
+  dns_suffix = var.dns_suffix
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # exclusive_routing - (optional) is a type of string
+  exclusive_routing = var.exclusive_routing
+  # forticlient_download - (optional) is a type of string
+  forticlient_download = var.forticlient_download
+  # forticlient_download_method - (optional) is a type of string
+  forticlient_download_method = var.forticlient_download_method
+  # heading - (optional) is a type of string
+  heading = var.heading
+  # hide_sso_credential - (optional) is a type of string
+  hide_sso_credential = var.hide_sso_credential
+  # host_check - (optional) is a type of string
+  host_check = var.host_check
+  # host_check_interval - (optional) is a type of number
+  host_check_interval = var.host_check_interval
+  # ip_mode - (optional) is a type of string
+  ip_mode = var.ip_mode
+  # ipv6_dns_server1 - (optional) is a type of string
+  ipv6_dns_server1 = var.ipv6_dns_server1
+  # ipv6_dns_server2 - (optional) is a type of string
+  ipv6_dns_server2 = var.ipv6_dns_server2
+  # ipv6_exclusive_routing - (optional) is a type of string
+  ipv6_exclusive_routing = var.ipv6_exclusive_routing
+  # ipv6_service_restriction - (optional) is a type of string
+  ipv6_service_restriction = var.ipv6_service_restriction
+  # ipv6_split_tunneling - (optional) is a type of string
+  ipv6_split_tunneling = var.ipv6_split_tunneling
+  # ipv6_split_tunneling_routing_negate - (optional) is a type of string
   ipv6_split_tunneling_routing_negate = var.ipv6_split_tunneling_routing_negate
-  ipv6_tunnel_mode                    = var.ipv6_tunnel_mode
-  ipv6_wins_server1                   = var.ipv6_wins_server1
-  ipv6_wins_server2                   = var.ipv6_wins_server2
-  keep_alive                          = var.keep_alive
-  limit_user_logins                   = var.limit_user_logins
-  mac_addr_action                     = var.mac_addr_action
-  mac_addr_check                      = var.mac_addr_check
-  macos_forticlient_download_url      = var.macos_forticlient_download_url
-  name                                = var.name
-  os_check                            = var.os_check
-  redir_url                           = var.redir_url
-  save_password                       = var.save_password
-  service_restriction                 = var.service_restriction
-  skip_check_for_browser              = var.skip_check_for_browser
-  skip_check_for_unsupported_os       = var.skip_check_for_unsupported_os
-  smb_max_version                     = var.smb_max_version
-  smb_min_version                     = var.smb_min_version
-  smb_ntlmv1_auth                     = var.smb_ntlmv1_auth
-  smbv1                               = var.smbv1
-  split_tunneling                     = var.split_tunneling
-  split_tunneling_routing_negate      = var.split_tunneling_routing_negate
-  theme                               = var.theme
-  transform_backward_slashes          = var.transform_backward_slashes
-  tunnel_mode                         = var.tunnel_mode
-  use_sdwan                           = var.use_sdwan
-  user_bookmark                       = var.user_bookmark
-  user_group_bookmark                 = var.user_group_bookmark
-  web_mode                            = var.web_mode
-  windows_forticlient_download_url    = var.windows_forticlient_download_url
-  wins_server1                        = var.wins_server1
-  wins_server2                        = var.wins_server2
+  # ipv6_tunnel_mode - (optional) is a type of string
+  ipv6_tunnel_mode = var.ipv6_tunnel_mode
+  # ipv6_wins_server1 - (optional) is a type of string
+  ipv6_wins_server1 = var.ipv6_wins_server1
+  # ipv6_wins_server2 - (optional) is a type of string
+  ipv6_wins_server2 = var.ipv6_wins_server2
+  # keep_alive - (optional) is a type of string
+  keep_alive = var.keep_alive
+  # limit_user_logins - (optional) is a type of string
+  limit_user_logins = var.limit_user_logins
+  # mac_addr_action - (optional) is a type of string
+  mac_addr_action = var.mac_addr_action
+  # mac_addr_check - (optional) is a type of string
+  mac_addr_check = var.mac_addr_check
+  # macos_forticlient_download_url - (optional) is a type of string
+  macos_forticlient_download_url = var.macos_forticlient_download_url
+  # name - (optional) is a type of string
+  name = var.name
+  # os_check - (optional) is a type of string
+  os_check = var.os_check
+  # redir_url - (optional) is a type of string
+  redir_url = var.redir_url
+  # save_password - (optional) is a type of string
+  save_password = var.save_password
+  # service_restriction - (optional) is a type of string
+  service_restriction = var.service_restriction
+  # skip_check_for_browser - (optional) is a type of string
+  skip_check_for_browser = var.skip_check_for_browser
+  # skip_check_for_unsupported_os - (optional) is a type of string
+  skip_check_for_unsupported_os = var.skip_check_for_unsupported_os
+  # smb_max_version - (optional) is a type of string
+  smb_max_version = var.smb_max_version
+  # smb_min_version - (optional) is a type of string
+  smb_min_version = var.smb_min_version
+  # smb_ntlmv1_auth - (optional) is a type of string
+  smb_ntlmv1_auth = var.smb_ntlmv1_auth
+  # smbv1 - (optional) is a type of string
+  smbv1 = var.smbv1
+  # split_tunneling - (optional) is a type of string
+  split_tunneling = var.split_tunneling
+  # split_tunneling_routing_negate - (optional) is a type of string
+  split_tunneling_routing_negate = var.split_tunneling_routing_negate
+  # theme - (optional) is a type of string
+  theme = var.theme
+  # transform_backward_slashes - (optional) is a type of string
+  transform_backward_slashes = var.transform_backward_slashes
+  # tunnel_mode - (optional) is a type of string
+  tunnel_mode = var.tunnel_mode
+  # use_sdwan - (optional) is a type of string
+  use_sdwan = var.use_sdwan
+  # user_bookmark - (optional) is a type of string
+  user_bookmark = var.user_bookmark
+  # user_group_bookmark - (optional) is a type of string
+  user_group_bookmark = var.user_group_bookmark
+  # web_mode - (optional) is a type of string
+  web_mode = var.web_mode
+  # windows_forticlient_download_url - (optional) is a type of string
+  windows_forticlient_download_url = var.windows_forticlient_download_url
+  # wins_server1 - (optional) is a type of string
+  wins_server1 = var.wins_server1
+  # wins_server2 - (optional) is a type of string
+  wins_server2 = var.wins_server2
 
   dynamic "bookmark_group" {
     for_each = var.bookmark_group
     content {
+      # name - (optional) is a type of string
       name = bookmark_group.value["name"]
 
       dynamic "bookmarks" {
         for_each = bookmark_group.value.bookmarks
         content {
-          additional_params        = bookmarks.value["additional_params"]
-          apptype                  = bookmarks.value["apptype"]
-          description              = bookmarks.value["description"]
-          domain                   = bookmarks.value["domain"]
-          folder                   = bookmarks.value["folder"]
-          host                     = bookmarks.value["host"]
-          listening_port           = bookmarks.value["listening_port"]
-          load_balancing_info      = bookmarks.value["load_balancing_info"]
-          logon_password           = bookmarks.value["logon_password"]
-          logon_user               = bookmarks.value["logon_user"]
-          name                     = bookmarks.value["name"]
-          port                     = bookmarks.value["port"]
-          preconnection_blob       = bookmarks.value["preconnection_blob"]
-          preconnection_id         = bookmarks.value["preconnection_id"]
-          remote_port              = bookmarks.value["remote_port"]
-          security                 = bookmarks.value["security"]
-          server_layout            = bookmarks.value["server_layout"]
-          show_status_window       = bookmarks.value["show_status_window"]
-          sso                      = bookmarks.value["sso"]
-          sso_credential           = bookmarks.value["sso_credential"]
+          # additional_params - (optional) is a type of string
+          additional_params = bookmarks.value["additional_params"]
+          # apptype - (optional) is a type of string
+          apptype = bookmarks.value["apptype"]
+          # description - (optional) is a type of string
+          description = bookmarks.value["description"]
+          # domain - (optional) is a type of string
+          domain = bookmarks.value["domain"]
+          # folder - (optional) is a type of string
+          folder = bookmarks.value["folder"]
+          # host - (optional) is a type of string
+          host = bookmarks.value["host"]
+          # listening_port - (optional) is a type of number
+          listening_port = bookmarks.value["listening_port"]
+          # load_balancing_info - (optional) is a type of string
+          load_balancing_info = bookmarks.value["load_balancing_info"]
+          # logon_password - (optional) is a type of string
+          logon_password = bookmarks.value["logon_password"]
+          # logon_user - (optional) is a type of string
+          logon_user = bookmarks.value["logon_user"]
+          # name - (optional) is a type of string
+          name = bookmarks.value["name"]
+          # port - (optional) is a type of number
+          port = bookmarks.value["port"]
+          # preconnection_blob - (optional) is a type of string
+          preconnection_blob = bookmarks.value["preconnection_blob"]
+          # preconnection_id - (optional) is a type of number
+          preconnection_id = bookmarks.value["preconnection_id"]
+          # remote_port - (optional) is a type of number
+          remote_port = bookmarks.value["remote_port"]
+          # security - (optional) is a type of string
+          security = bookmarks.value["security"]
+          # server_layout - (optional) is a type of string
+          server_layout = bookmarks.value["server_layout"]
+          # show_status_window - (optional) is a type of string
+          show_status_window = bookmarks.value["show_status_window"]
+          # sso - (optional) is a type of string
+          sso = bookmarks.value["sso"]
+          # sso_credential - (optional) is a type of string
+          sso_credential = bookmarks.value["sso_credential"]
+          # sso_credential_sent_once - (optional) is a type of string
           sso_credential_sent_once = bookmarks.value["sso_credential_sent_once"]
-          sso_password             = bookmarks.value["sso_password"]
-          sso_username             = bookmarks.value["sso_username"]
-          url                      = bookmarks.value["url"]
+          # sso_password - (optional) is a type of string
+          sso_password = bookmarks.value["sso_password"]
+          # sso_username - (optional) is a type of string
+          sso_username = bookmarks.value["sso_username"]
+          # url - (optional) is a type of string
+          url = bookmarks.value["url"]
 
           dynamic "form_data" {
             for_each = bookmarks.value.form_data
             content {
-              name  = form_data.value["name"]
+              # name - (optional) is a type of string
+              name = form_data.value["name"]
+              # value - (optional) is a type of string
               value = form_data.value["value"]
             }
           }
@@ -822,6 +906,7 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "host_check_policy" {
     for_each = var.host_check_policy
     content {
+      # name - (optional) is a type of string
       name = host_check_policy.value["name"]
     }
   }
@@ -829,6 +914,7 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "ip_pools" {
     for_each = var.ip_pools
     content {
+      # name - (optional) is a type of string
       name = ip_pools.value["name"]
     }
   }
@@ -836,6 +922,7 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "ipv6_pools" {
     for_each = var.ipv6_pools
     content {
+      # name - (optional) is a type of string
       name = ipv6_pools.value["name"]
     }
   }
@@ -843,6 +930,7 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "ipv6_split_tunneling_routing_address" {
     for_each = var.ipv6_split_tunneling_routing_address
     content {
+      # name - (optional) is a type of string
       name = ipv6_split_tunneling_routing_address.value["name"]
     }
   }
@@ -850,12 +938,15 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "mac_addr_check_rule" {
     for_each = var.mac_addr_check_rule
     content {
+      # mac_addr_mask - (optional) is a type of number
       mac_addr_mask = mac_addr_check_rule.value["mac_addr_mask"]
-      name          = mac_addr_check_rule.value["name"]
+      # name - (optional) is a type of string
+      name = mac_addr_check_rule.value["name"]
 
       dynamic "mac_addr_list" {
         for_each = mac_addr_check_rule.value.mac_addr_list
         content {
+          # addr - (optional) is a type of string
           addr = mac_addr_list.value["addr"]
         }
       }
@@ -866,21 +957,31 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "os_check_list" {
     for_each = var.os_check_list
     content {
-      action             = os_check_list.value["action"]
+      # action - (optional) is a type of string
+      action = os_check_list.value["action"]
+      # latest_patch_level - (optional) is a type of string
       latest_patch_level = os_check_list.value["latest_patch_level"]
-      name               = os_check_list.value["name"]
-      tolerance          = os_check_list.value["tolerance"]
+      # name - (optional) is a type of string
+      name = os_check_list.value["name"]
+      # tolerance - (optional) is a type of number
+      tolerance = os_check_list.value["tolerance"]
     }
   }
 
   dynamic "split_dns" {
     for_each = var.split_dns
     content {
-      dns_server1      = split_dns.value["dns_server1"]
-      dns_server2      = split_dns.value["dns_server2"]
-      domains          = split_dns.value["domains"]
-      id               = split_dns.value["id"]
+      # dns_server1 - (optional) is a type of string
+      dns_server1 = split_dns.value["dns_server1"]
+      # dns_server2 - (optional) is a type of string
+      dns_server2 = split_dns.value["dns_server2"]
+      # domains - (optional) is a type of string
+      domains = split_dns.value["domains"]
+      # id - (optional) is a type of number
+      id = split_dns.value["id"]
+      # ipv6_dns_server1 - (optional) is a type of string
       ipv6_dns_server1 = split_dns.value["ipv6_dns_server1"]
+      # ipv6_dns_server2 - (optional) is a type of string
       ipv6_dns_server2 = split_dns.value["ipv6_dns_server2"]
     }
   }
@@ -888,6 +989,7 @@ resource "fortios_vpnsslweb_portal" "this" {
   dynamic "split_tunneling_routing_address" {
     for_each = var.split_tunneling_routing_address
     content {
+      # name - (optional) is a type of string
       name = split_tunneling_routing_address.value["name"]
     }
   }

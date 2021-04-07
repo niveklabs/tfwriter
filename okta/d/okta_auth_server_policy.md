@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 data "okta_auth_server_policy" "this" {
+  # auth_server_id - (required) is a type of string
   auth_server_id = var.auth_server_id
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

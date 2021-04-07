@@ -90,12 +90,18 @@ variable "scope" {
 
 ```terraform
 resource "azuredevops_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  mail         = var.mail
-  members      = var.members
-  origin_id    = var.origin_id
-  scope        = var.scope
+  # mail - (optional) is a type of string
+  mail = var.mail
+  # members - (optional) is a type of set of string
+  members = var.members
+  # origin_id - (optional) is a type of string
+  origin_id = var.origin_id
+  # scope - (optional) is a type of string
+  scope = var.scope
 }
 ```
 

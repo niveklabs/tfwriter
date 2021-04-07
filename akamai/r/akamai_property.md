@@ -205,27 +205,44 @@ variable "origin" {
 
 ```terraform
 resource "akamai_property" "this" {
-  contact     = var.contact
-  contract    = var.contract
+  # contact - (optional) is a type of set of string
+  contact = var.contact
+  # contract - (optional) is a type of string
+  contract = var.contract
+  # contract_id - (optional) is a type of string
   contract_id = var.contract_id
-  cp_code     = var.cp_code
-  group       = var.group
-  group_id    = var.group_id
-  is_secure   = var.is_secure
-  name        = var.name
-  product     = var.product
-  product_id  = var.product_id
+  # cp_code - (optional) is a type of string
+  cp_code = var.cp_code
+  # group - (optional) is a type of string
+  group = var.group
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # is_secure - (optional) is a type of bool
+  is_secure = var.is_secure
+  # name - (required) is a type of string
+  name = var.name
+  # product - (optional) is a type of string
+  product = var.product
+  # product_id - (optional) is a type of string
+  product_id = var.product_id
+  # rule_format - (optional) is a type of string
   rule_format = var.rule_format
-  rules       = var.rules
-  variables   = var.variables
+  # rules - (optional) is a type of string
+  rules = var.rules
+  # variables - (optional) is a type of string
+  variables = var.variables
 
   dynamic "hostnames" {
     for_each = var.hostnames
     content {
+      # cert_provisioning_type - (required) is a type of string
       cert_provisioning_type = hostnames.value["cert_provisioning_type"]
-      cname_from             = hostnames.value["cname_from"]
-      cname_to               = hostnames.value["cname_to"]
-      cname_type             = hostnames.value["cname_type"]
+      # cname_from - (required) is a type of string
+      cname_from = hostnames.value["cname_from"]
+      # cname_to - (required) is a type of string
+      cname_to = hostnames.value["cname_to"]
+      # cname_type - (optional) is a type of string
+      cname_type = hostnames.value["cname_type"]
 
       dynamic "cert_status" {
         for_each = hostnames.value.cert_status
@@ -239,12 +256,18 @@ resource "akamai_property" "this" {
   dynamic "origin" {
     for_each = var.origin
     content {
-      cache_key_hostname    = origin.value["cache_key_hostname"]
-      compress              = origin.value["compress"]
+      # cache_key_hostname - (optional) is a type of string
+      cache_key_hostname = origin.value["cache_key_hostname"]
+      # compress - (optional) is a type of bool
+      compress = origin.value["compress"]
+      # enable_true_client_ip - (optional) is a type of bool
       enable_true_client_ip = origin.value["enable_true_client_ip"]
-      forward_hostname      = origin.value["forward_hostname"]
-      hostname              = origin.value["hostname"]
-      port                  = origin.value["port"]
+      # forward_hostname - (optional) is a type of string
+      forward_hostname = origin.value["forward_hostname"]
+      # hostname - (optional) is a type of string
+      hostname = origin.value["hostname"]
+      # port - (optional) is a type of number
+      port = origin.value["port"]
     }
   }
 

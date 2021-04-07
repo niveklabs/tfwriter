@@ -74,10 +74,14 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_elasticsearch_instances" "this" {
-  instance_id        = var.instance_id
-  instance_name      = var.instance_name
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

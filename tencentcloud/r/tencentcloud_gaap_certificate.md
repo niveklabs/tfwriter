@@ -72,10 +72,14 @@ variable "type" {
 
 ```terraform
 resource "tencentcloud_gaap_certificate" "this" {
+  # content - (required) is a type of string
   content = var.content
-  key     = var.key
-  name    = var.name
-  type    = var.type
+  # key - (optional) is a type of string
+  key = var.key
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -104,15 +104,21 @@ variable "policy_statements" {
 
 ```terraform
 resource "launchdarkly_custom_role" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  key         = var.key
-  name        = var.name
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "policy" {
     for_each = var.policy
     content {
-      actions   = policy.value["actions"]
-      effect    = policy.value["effect"]
+      # actions - (required) is a type of list of string
+      actions = policy.value["actions"]
+      # effect - (required) is a type of string
+      effect = policy.value["effect"]
+      # resources - (required) is a type of list of string
       resources = policy.value["resources"]
     }
   }
@@ -120,11 +126,16 @@ resource "launchdarkly_custom_role" "this" {
   dynamic "policy_statements" {
     for_each = var.policy_statements
     content {
-      actions       = policy_statements.value["actions"]
-      effect        = policy_statements.value["effect"]
-      not_actions   = policy_statements.value["not_actions"]
+      # actions - (optional) is a type of list of string
+      actions = policy_statements.value["actions"]
+      # effect - (required) is a type of string
+      effect = policy_statements.value["effect"]
+      # not_actions - (optional) is a type of list of string
+      not_actions = policy_statements.value["not_actions"]
+      # not_resources - (optional) is a type of list of string
       not_resources = policy_statements.value["not_resources"]
-      resources     = policy_statements.value["resources"]
+      # resources - (optional) is a type of list of string
+      resources = policy_statements.value["resources"]
     }
   }
 

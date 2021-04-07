@@ -162,21 +162,36 @@ variable "source_ip" {
 
 ```terraform
 resource "fortios_endpointcontrol_fctems" "this" {
-  admin_password                   = var.admin_password
-  admin_username                   = var.admin_username
-  call_timeout                     = var.call_timeout
-  certificate                      = var.certificate
-  cloud_server_type                = var.cloud_server_type
+  # admin_password - (optional) is a type of string
+  admin_password = var.admin_password
+  # admin_username - (optional) is a type of string
+  admin_username = var.admin_username
+  # call_timeout - (optional) is a type of number
+  call_timeout = var.call_timeout
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # cloud_server_type - (optional) is a type of string
+  cloud_server_type = var.cloud_server_type
+  # fortinetone_cloud_authentication - (optional) is a type of string
   fortinetone_cloud_authentication = var.fortinetone_cloud_authentication
-  https_port                       = var.https_port
-  name                             = var.name
-  pull_avatars                     = var.pull_avatars
-  pull_sysinfo                     = var.pull_sysinfo
-  pull_tags                        = var.pull_tags
-  pull_vulnerabilities             = var.pull_vulnerabilities
-  serial_number                    = var.serial_number
-  server                           = var.server
-  source_ip                        = var.source_ip
+  # https_port - (optional) is a type of number
+  https_port = var.https_port
+  # name - (optional) is a type of string
+  name = var.name
+  # pull_avatars - (optional) is a type of string
+  pull_avatars = var.pull_avatars
+  # pull_sysinfo - (optional) is a type of string
+  pull_sysinfo = var.pull_sysinfo
+  # pull_tags - (optional) is a type of string
+  pull_tags = var.pull_tags
+  # pull_vulnerabilities - (optional) is a type of string
+  pull_vulnerabilities = var.pull_vulnerabilities
+  # serial_number - (optional) is a type of string
+  serial_number = var.serial_number
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
 }
 ```
 

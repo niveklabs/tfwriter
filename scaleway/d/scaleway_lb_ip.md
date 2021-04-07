@@ -58,8 +58,10 @@ variable "ip_id" {
 
 ```terraform
 data "scaleway_lb_ip" "this" {
+  # ip_address - (optional) is a type of string
   ip_address = var.ip_address
-  ip_id      = var.ip_id
+  # ip_id - (optional) is a type of string
+  ip_id = var.ip_id
 }
 ```
 

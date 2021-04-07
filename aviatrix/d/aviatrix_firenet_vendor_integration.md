@@ -132,18 +132,30 @@ variable "vpc_id" {
 
 ```terraform
 data "aviatrix_firenet_vendor_integration" "this" {
-  firewall_name     = var.firewall_name
-  instance_id       = var.instance_id
+  # firewall_name - (optional) is a type of string
+  firewall_name = var.firewall_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # number_of_retries - (optional) is a type of number
   number_of_retries = var.number_of_retries
-  password          = var.password
-  public_ip         = var.public_ip
-  retry_interval    = var.retry_interval
-  route_table       = var.route_table
-  save              = var.save
-  synchronize       = var.synchronize
-  username          = var.username
-  vendor_type       = var.vendor_type
-  vpc_id            = var.vpc_id
+  # password - (required) is a type of string
+  password = var.password
+  # public_ip - (required) is a type of string
+  public_ip = var.public_ip
+  # retry_interval - (optional) is a type of number
+  retry_interval = var.retry_interval
+  # route_table - (optional) is a type of string
+  route_table = var.route_table
+  # save - (optional) is a type of bool
+  save = var.save
+  # synchronize - (optional) is a type of bool
+  synchronize = var.synchronize
+  # username - (required) is a type of string
+  username = var.username
+  # vendor_type - (required) is a type of string
+  vendor_type = var.vendor_type
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

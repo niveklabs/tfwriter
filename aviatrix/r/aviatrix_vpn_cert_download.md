@@ -58,8 +58,10 @@ variable "saml_endpoints" {
 
 ```terraform
 resource "aviatrix_vpn_cert_download" "this" {
+  # download_enabled - (optional) is a type of bool
   download_enabled = var.download_enabled
-  saml_endpoints   = var.saml_endpoints
+  # saml_endpoints - (optional) is a type of set of string
+  saml_endpoints = var.saml_endpoints
 }
 ```
 

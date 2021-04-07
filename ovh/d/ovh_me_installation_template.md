@@ -49,6 +49,7 @@ variable "template_name" {
 
 ```terraform
 data "ovh_me_installation_template" "this" {
+  # template_name - (required) is a type of string
   template_name = var.template_name
 }
 ```

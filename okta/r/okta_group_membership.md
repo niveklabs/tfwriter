@@ -56,8 +56,10 @@ variable "user_id" {
 
 ```terraform
 resource "okta_group_membership" "this" {
+  # group_id - (required) is a type of string
   group_id = var.group_id
-  user_id  = var.user_id
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 }
 ```
 

@@ -110,33 +110,56 @@ variable "config" {
 
 ```terraform
 resource "newrelic_alert_channel" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # type - (required) is a type of string
   type = var.type
 
   dynamic "config" {
     for_each = var.config
     content {
-      api_key                 = config.value["api_key"]
-      auth_password           = config.value["auth_password"]
-      auth_type               = config.value["auth_type"]
-      auth_username           = config.value["auth_username"]
-      base_url                = config.value["base_url"]
-      channel                 = config.value["channel"]
-      headers                 = config.value["headers"]
-      headers_string          = config.value["headers_string"]
+      # api_key - (optional) is a type of string
+      api_key = config.value["api_key"]
+      # auth_password - (optional) is a type of string
+      auth_password = config.value["auth_password"]
+      # auth_type - (optional) is a type of string
+      auth_type = config.value["auth_type"]
+      # auth_username - (optional) is a type of string
+      auth_username = config.value["auth_username"]
+      # base_url - (optional) is a type of string
+      base_url = config.value["base_url"]
+      # channel - (optional) is a type of string
+      channel = config.value["channel"]
+      # headers - (optional) is a type of map of string
+      headers = config.value["headers"]
+      # headers_string - (optional) is a type of string
+      headers_string = config.value["headers_string"]
+      # include_json_attachment - (optional) is a type of string
       include_json_attachment = config.value["include_json_attachment"]
-      key                     = config.value["key"]
-      payload                 = config.value["payload"]
-      payload_string          = config.value["payload_string"]
-      payload_type            = config.value["payload_type"]
-      recipients              = config.value["recipients"]
-      region                  = config.value["region"]
-      route_key               = config.value["route_key"]
-      service_key             = config.value["service_key"]
-      tags                    = config.value["tags"]
-      teams                   = config.value["teams"]
-      url                     = config.value["url"]
-      user_id                 = config.value["user_id"]
+      # key - (optional) is a type of string
+      key = config.value["key"]
+      # payload - (optional) is a type of map of string
+      payload = config.value["payload"]
+      # payload_string - (optional) is a type of string
+      payload_string = config.value["payload_string"]
+      # payload_type - (optional) is a type of string
+      payload_type = config.value["payload_type"]
+      # recipients - (optional) is a type of string
+      recipients = config.value["recipients"]
+      # region - (optional) is a type of string
+      region = config.value["region"]
+      # route_key - (optional) is a type of string
+      route_key = config.value["route_key"]
+      # service_key - (optional) is a type of string
+      service_key = config.value["service_key"]
+      # tags - (optional) is a type of string
+      tags = config.value["tags"]
+      # teams - (optional) is a type of string
+      teams = config.value["teams"]
+      # url - (optional) is a type of string
+      url = config.value["url"]
+      # user_id - (optional) is a type of string
+      user_id = config.value["user_id"]
     }
   }
 

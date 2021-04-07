@@ -82,11 +82,16 @@ variable "speed_bands" {
 
 ```terraform
 data "equinix_ecx_l2_sellerprofiles" "this" {
-  metro_codes              = var.metro_codes
-  name_regex               = var.name_regex
+  # metro_codes - (optional) is a type of set of string
+  metro_codes = var.metro_codes
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # organization_global_name - (optional) is a type of string
   organization_global_name = var.organization_global_name
-  organization_name        = var.organization_name
-  speed_bands              = var.speed_bands
+  # organization_name - (optional) is a type of string
+  organization_name = var.organization_name
+  # speed_bands - (optional) is a type of set of string
+  speed_bands = var.speed_bands
 }
 ```
 

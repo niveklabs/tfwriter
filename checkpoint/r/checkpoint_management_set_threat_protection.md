@@ -85,17 +85,24 @@ variable "overrides" {
 
 ```terraform
 resource "checkpoint_management_set_threat_protection" "this" {
-  comments  = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # follow_up - (optional) is a type of bool
   follow_up = var.follow_up
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "overrides" {
     for_each = var.overrides
     content {
-      action          = overrides.value["action"]
+      # action - (optional) is a type of string
+      action = overrides.value["action"]
+      # capture_packets - (optional) is a type of bool
       capture_packets = overrides.value["capture_packets"]
-      profile         = overrides.value["profile"]
-      track           = overrides.value["track"]
+      # profile - (optional) is a type of string
+      profile = overrides.value["profile"]
+      # track - (optional) is a type of string
+      track = overrides.value["track"]
     }
   }
 

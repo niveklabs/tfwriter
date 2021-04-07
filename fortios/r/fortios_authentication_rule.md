@@ -186,21 +186,33 @@ variable "srcintf" {
 
 ```terraform
 resource "fortios_authentication_rule" "this" {
-  active_auth_method    = var.active_auth_method
-  comments              = var.comments
+  # active_auth_method - (optional) is a type of string
+  active_auth_method = var.active_auth_method
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ip_based              = var.ip_based
-  name                  = var.name
-  protocol              = var.protocol
-  sso_auth_method       = var.sso_auth_method
-  status                = var.status
-  transaction_based     = var.transaction_based
-  web_auth_cookie       = var.web_auth_cookie
-  web_portal            = var.web_portal
+  # ip_based - (optional) is a type of string
+  ip_based = var.ip_based
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # sso_auth_method - (optional) is a type of string
+  sso_auth_method = var.sso_auth_method
+  # status - (optional) is a type of string
+  status = var.status
+  # transaction_based - (optional) is a type of string
+  transaction_based = var.transaction_based
+  # web_auth_cookie - (optional) is a type of string
+  web_auth_cookie = var.web_auth_cookie
+  # web_portal - (optional) is a type of string
+  web_portal = var.web_portal
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -208,6 +220,7 @@ resource "fortios_authentication_rule" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }
@@ -215,6 +228,7 @@ resource "fortios_authentication_rule" "this" {
   dynamic "srcaddr6" {
     for_each = var.srcaddr6
     content {
+      # name - (optional) is a type of string
       name = srcaddr6.value["name"]
     }
   }
@@ -222,6 +236,7 @@ resource "fortios_authentication_rule" "this" {
   dynamic "srcintf" {
     for_each = var.srcintf
     content {
+      # name - (optional) is a type of string
       name = srcintf.value["name"]
     }
   }

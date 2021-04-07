@@ -84,19 +84,28 @@ variable "rules" {
 
 ```terraform
 resource "thunder_ip_prefix_list" "this" {
+  # name - (optional) is a type of string
   name = var.name
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      action      = rules.value["action"]
-      any         = rules.value["any"]
+      # action - (optional) is a type of string
+      action = rules.value["action"]
+      # any - (optional) is a type of number
+      any = rules.value["any"]
+      # description - (optional) is a type of string
       description = rules.value["description"]
-      ge          = rules.value["ge"]
-      ipaddr      = rules.value["ipaddr"]
-      le          = rules.value["le"]
-      seq         = rules.value["seq"]
+      # ge - (optional) is a type of number
+      ge = rules.value["ge"]
+      # ipaddr - (optional) is a type of string
+      ipaddr = rules.value["ipaddr"]
+      # le - (optional) is a type of number
+      le = rules.value["le"]
+      # seq - (optional) is a type of number
+      seq = rules.value["seq"]
     }
   }
 

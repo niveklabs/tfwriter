@@ -58,7 +58,9 @@ variable "secondary" {
 
 ```terraform
 resource "fortios_fmg_system_dns" "this" {
-  primary   = var.primary
+  # primary - (optional) is a type of string
+  primary = var.primary
+  # secondary - (optional) is a type of string
   secondary = var.secondary
 }
 ```

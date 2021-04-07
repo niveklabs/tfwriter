@@ -129,20 +129,31 @@ variable "responders" {
 
 ```terraform
 resource "opsgenie_api_integration" "this" {
-  allow_write_access             = var.allow_write_access
-  enabled                        = var.enabled
-  headers                        = var.headers
+  # allow_write_access - (optional) is a type of bool
+  allow_write_access = var.allow_write_access
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # headers - (optional) is a type of map of string
+  headers = var.headers
+  # ignore_responders_from_payload - (optional) is a type of bool
   ignore_responders_from_payload = var.ignore_responders_from_payload
-  name                           = var.name
-  owner_team_id                  = var.owner_team_id
-  suppress_notifications         = var.suppress_notifications
-  type                           = var.type
-  webhook_url                    = var.webhook_url
+  # name - (required) is a type of string
+  name = var.name
+  # owner_team_id - (optional) is a type of string
+  owner_team_id = var.owner_team_id
+  # suppress_notifications - (optional) is a type of bool
+  suppress_notifications = var.suppress_notifications
+  # type - (optional) is a type of string
+  type = var.type
+  # webhook_url - (optional) is a type of string
+  webhook_url = var.webhook_url
 
   dynamic "responders" {
     for_each = var.responders
     content {
-      id   = responders.value["id"]
+      # id - (optional) is a type of string
+      id = responders.value["id"]
+      # type - (optional) is a type of string
       type = responders.value["type"]
     }
   }

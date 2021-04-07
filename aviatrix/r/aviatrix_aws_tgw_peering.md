@@ -56,7 +56,9 @@ variable "tgw_name2" {
 
 ```terraform
 resource "aviatrix_aws_tgw_peering" "this" {
+  # tgw_name1 - (required) is a type of string
   tgw_name1 = var.tgw_name1
+  # tgw_name2 - (required) is a type of string
   tgw_name2 = var.tgw_name2
 }
 ```

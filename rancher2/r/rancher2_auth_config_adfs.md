@@ -138,19 +138,32 @@ variable "user_name_field" {
 
 ```terraform
 resource "rancher2_auth_config_adfs" "this" {
-  access_mode           = var.access_mode
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # allowed_principal_ids - (optional) is a type of list of string
   allowed_principal_ids = var.allowed_principal_ids
-  annotations           = var.annotations
-  display_name_field    = var.display_name_field
-  enabled               = var.enabled
-  groups_field          = var.groups_field
-  idp_metadata_content  = var.idp_metadata_content
-  labels                = var.labels
-  rancher_api_host      = var.rancher_api_host
-  sp_cert               = var.sp_cert
-  sp_key                = var.sp_key
-  uid_field             = var.uid_field
-  user_name_field       = var.user_name_field
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # display_name_field - (required) is a type of string
+  display_name_field = var.display_name_field
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # groups_field - (required) is a type of string
+  groups_field = var.groups_field
+  # idp_metadata_content - (required) is a type of string
+  idp_metadata_content = var.idp_metadata_content
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # rancher_api_host - (required) is a type of string
+  rancher_api_host = var.rancher_api_host
+  # sp_cert - (required) is a type of string
+  sp_cert = var.sp_cert
+  # sp_key - (required) is a type of string
+  sp_key = var.sp_key
+  # uid_field - (required) is a type of string
+  uid_field = var.uid_field
+  # user_name_field - (required) is a type of string
+  user_name_field = var.user_name_field
 }
 ```
 

@@ -99,27 +99,38 @@ variable "v3_server" {
 
 ```terraform
 resource "panos_snmptrap_server_profile" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # vsys - (optional) is a type of string
   vsys = var.vsys
 
   dynamic "v2c_server" {
     for_each = var.v2c_server
     content {
+      # community - (required) is a type of string
       community = v2c_server.value["community"]
-      manager   = v2c_server.value["manager"]
-      name      = v2c_server.value["name"]
+      # manager - (required) is a type of string
+      manager = v2c_server.value["manager"]
+      # name - (required) is a type of string
+      name = v2c_server.value["name"]
     }
   }
 
   dynamic "v3_server" {
     for_each = var.v3_server
     content {
+      # auth_password - (required) is a type of string
       auth_password = v3_server.value["auth_password"]
-      engine_id     = v3_server.value["engine_id"]
-      manager       = v3_server.value["manager"]
-      name          = v3_server.value["name"]
+      # engine_id - (optional) is a type of string
+      engine_id = v3_server.value["engine_id"]
+      # manager - (required) is a type of string
+      manager = v3_server.value["manager"]
+      # name - (required) is a type of string
+      name = v3_server.value["name"]
+      # priv_password - (required) is a type of string
       priv_password = v3_server.value["priv_password"]
-      user          = v3_server.value["user"]
+      # user - (required) is a type of string
+      user = v3_server.value["user"]
     }
   }
 

@@ -142,18 +142,31 @@ variable "unclean_leader_election_enable" {
 
 ```terraform
 resource "tencentcloud_ckafka_topic" "this" {
-  clean_up_policy                = var.clean_up_policy
-  enable_white_list              = var.enable_white_list
-  instance_id                    = var.instance_id
-  ip_white_list                  = var.ip_white_list
-  max_message_bytes              = var.max_message_bytes
-  note                           = var.note
-  partition_num                  = var.partition_num
-  replica_num                    = var.replica_num
-  retention                      = var.retention
-  segment                        = var.segment
-  sync_replica_min_num           = var.sync_replica_min_num
-  topic_name                     = var.topic_name
+  # clean_up_policy - (optional) is a type of string
+  clean_up_policy = var.clean_up_policy
+  # enable_white_list - (optional) is a type of bool
+  enable_white_list = var.enable_white_list
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # ip_white_list - (optional) is a type of list of string
+  ip_white_list = var.ip_white_list
+  # max_message_bytes - (optional) is a type of number
+  max_message_bytes = var.max_message_bytes
+  # note - (optional) is a type of string
+  note = var.note
+  # partition_num - (required) is a type of number
+  partition_num = var.partition_num
+  # replica_num - (required) is a type of number
+  replica_num = var.replica_num
+  # retention - (optional) is a type of number
+  retention = var.retention
+  # segment - (optional) is a type of number
+  segment = var.segment
+  # sync_replica_min_num - (optional) is a type of number
+  sync_replica_min_num = var.sync_replica_min_num
+  # topic_name - (required) is a type of string
+  topic_name = var.topic_name
+  # unclean_leader_election_enable - (optional) is a type of bool
   unclean_leader_election_enable = var.unclean_leader_election_enable
 }
 ```

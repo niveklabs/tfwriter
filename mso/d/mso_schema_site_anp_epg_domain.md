@@ -188,25 +188,44 @@ variable "vlan_encap_mode" {
 
 ```terraform
 data "mso_schema_site_anp_epg_domain" "this" {
+  # allow_micro_segmentation - (optional) is a type of bool
   allow_micro_segmentation = var.allow_micro_segmentation
-  anp_name                 = var.anp_name
-  deployment_immediacy     = var.deployment_immediacy
-  dn                       = var.dn
-  domain_type              = var.domain_type
-  enhanced_lag_policy_dn   = var.enhanced_lag_policy_dn
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # deployment_immediacy - (optional) is a type of string
+  deployment_immediacy = var.deployment_immediacy
+  # dn - (required) is a type of string
+  dn = var.dn
+  # domain_type - (required) is a type of string
+  domain_type = var.domain_type
+  # enhanced_lag_policy_dn - (optional) is a type of string
+  enhanced_lag_policy_dn = var.enhanced_lag_policy_dn
+  # enhanced_lag_policy_name - (optional) is a type of string
   enhanced_lag_policy_name = var.enhanced_lag_policy_name
-  epg_name                 = var.epg_name
-  micro_seg_vlan           = var.micro_seg_vlan
-  micro_seg_vlan_type      = var.micro_seg_vlan_type
-  port_encap_vlan          = var.port_encap_vlan
-  port_encap_vlan_type     = var.port_encap_vlan_type
-  resolution_immediacy     = var.resolution_immediacy
-  schema_id                = var.schema_id
-  site_id                  = var.site_id
-  switch_type              = var.switch_type
-  switching_mode           = var.switching_mode
-  template_name            = var.template_name
-  vlan_encap_mode          = var.vlan_encap_mode
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # micro_seg_vlan - (optional) is a type of number
+  micro_seg_vlan = var.micro_seg_vlan
+  # micro_seg_vlan_type - (optional) is a type of string
+  micro_seg_vlan_type = var.micro_seg_vlan_type
+  # port_encap_vlan - (optional) is a type of number
+  port_encap_vlan = var.port_encap_vlan
+  # port_encap_vlan_type - (optional) is a type of string
+  port_encap_vlan_type = var.port_encap_vlan_type
+  # resolution_immediacy - (optional) is a type of string
+  resolution_immediacy = var.resolution_immediacy
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # switch_type - (optional) is a type of string
+  switch_type = var.switch_type
+  # switching_mode - (optional) is a type of string
+  switching_mode = var.switching_mode
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
+  # vlan_encap_mode - (optional) is a type of string
+  vlan_encap_mode = var.vlan_encap_mode
 }
 ```
 

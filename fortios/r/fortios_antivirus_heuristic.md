@@ -50,6 +50,7 @@ variable "mode" {
 
 ```terraform
 resource "fortios_antivirus_heuristic" "this" {
+  # mode - (optional) is a type of string
   mode = var.mode
 }
 ```

@@ -72,10 +72,14 @@ variable "name" {
 
 ```terraform
 resource "lacework_alert_channel_aws_cloudwatch" "this" {
-  enabled         = var.enabled
-  event_bus_arn   = var.event_bus_arn
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # event_bus_arn - (required) is a type of string
+  event_bus_arn = var.event_bus_arn
+  # group_issues_by - (optional) is a type of string
   group_issues_by = var.group_issues_by
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

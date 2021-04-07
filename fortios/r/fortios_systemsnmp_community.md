@@ -204,29 +204,49 @@ variable "hosts6" {
 
 ```terraform
 resource "fortios_systemsnmp_community" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  events                = var.events
-  fosid                 = var.fosid
-  name                  = var.name
-  query_v1_port         = var.query_v1_port
-  query_v1_status       = var.query_v1_status
-  query_v2c_port        = var.query_v2c_port
-  query_v2c_status      = var.query_v2c_status
-  status                = var.status
-  trap_v1_lport         = var.trap_v1_lport
-  trap_v1_rport         = var.trap_v1_rport
-  trap_v1_status        = var.trap_v1_status
-  trap_v2c_lport        = var.trap_v2c_lport
-  trap_v2c_rport        = var.trap_v2c_rport
-  trap_v2c_status       = var.trap_v2c_status
+  # events - (optional) is a type of string
+  events = var.events
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # name - (required) is a type of string
+  name = var.name
+  # query_v1_port - (optional) is a type of number
+  query_v1_port = var.query_v1_port
+  # query_v1_status - (optional) is a type of string
+  query_v1_status = var.query_v1_status
+  # query_v2c_port - (optional) is a type of number
+  query_v2c_port = var.query_v2c_port
+  # query_v2c_status - (optional) is a type of string
+  query_v2c_status = var.query_v2c_status
+  # status - (optional) is a type of string
+  status = var.status
+  # trap_v1_lport - (optional) is a type of number
+  trap_v1_lport = var.trap_v1_lport
+  # trap_v1_rport - (optional) is a type of number
+  trap_v1_rport = var.trap_v1_rport
+  # trap_v1_status - (optional) is a type of string
+  trap_v1_status = var.trap_v1_status
+  # trap_v2c_lport - (optional) is a type of number
+  trap_v2c_lport = var.trap_v2c_lport
+  # trap_v2c_rport - (optional) is a type of number
+  trap_v2c_rport = var.trap_v2c_rport
+  # trap_v2c_status - (optional) is a type of string
+  trap_v2c_status = var.trap_v2c_status
 
   dynamic "hosts" {
     for_each = var.hosts
     content {
+      # ha_direct - (optional) is a type of string
       ha_direct = hosts.value["ha_direct"]
+      # host_type - (optional) is a type of string
       host_type = hosts.value["host_type"]
-      id        = hosts.value["id"]
-      ip        = hosts.value["ip"]
+      # id - (optional) is a type of number
+      id = hosts.value["id"]
+      # ip - (optional) is a type of string
+      ip = hosts.value["ip"]
+      # source_ip - (optional) is a type of string
       source_ip = hosts.value["source_ip"]
     }
   }
@@ -234,10 +254,15 @@ resource "fortios_systemsnmp_community" "this" {
   dynamic "hosts6" {
     for_each = var.hosts6
     content {
-      ha_direct   = hosts6.value["ha_direct"]
-      host_type   = hosts6.value["host_type"]
-      id          = hosts6.value["id"]
-      ipv6        = hosts6.value["ipv6"]
+      # ha_direct - (optional) is a type of string
+      ha_direct = hosts6.value["ha_direct"]
+      # host_type - (optional) is a type of string
+      host_type = hosts6.value["host_type"]
+      # id - (optional) is a type of number
+      id = hosts6.value["id"]
+      # ipv6 - (optional) is a type of string
+      ipv6 = hosts6.value["ipv6"]
+      # source_ipv6 - (optional) is a type of string
       source_ipv6 = hosts6.value["source_ipv6"]
     }
   }

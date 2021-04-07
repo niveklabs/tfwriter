@@ -175,42 +175,71 @@ variable "files" {
 
 ```terraform
 resource "avi_wafprofile" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "config" {
     for_each = var.config
     content {
-      allowed_http_versions                = config.value["allowed_http_versions"]
-      allowed_methods                      = config.value["allowed_methods"]
-      allowed_request_content_types        = config.value["allowed_request_content_types"]
-      argument_separator                   = config.value["argument_separator"]
-      client_request_max_body_size         = config.value["client_request_max_body_size"]
-      cookie_format_version                = config.value["cookie_format_version"]
-      enable_auto_rule_updates             = config.value["enable_auto_rule_updates"]
+      # allowed_http_versions - (optional) is a type of list of string
+      allowed_http_versions = config.value["allowed_http_versions"]
+      # allowed_methods - (optional) is a type of list of string
+      allowed_methods = config.value["allowed_methods"]
+      # allowed_request_content_types - (optional) is a type of list of string
+      allowed_request_content_types = config.value["allowed_request_content_types"]
+      # argument_separator - (optional) is a type of string
+      argument_separator = config.value["argument_separator"]
+      # client_request_max_body_size - (optional) is a type of number
+      client_request_max_body_size = config.value["client_request_max_body_size"]
+      # cookie_format_version - (optional) is a type of number
+      cookie_format_version = config.value["cookie_format_version"]
+      # enable_auto_rule_updates - (optional) is a type of bool
+      enable_auto_rule_updates = config.value["enable_auto_rule_updates"]
+      # ignore_incomplete_request_body_error - (optional) is a type of bool
       ignore_incomplete_request_body_error = config.value["ignore_incomplete_request_body_error"]
-      max_execution_time                   = config.value["max_execution_time"]
-      min_confidence                       = config.value["min_confidence"]
-      regex_match_limit                    = config.value["regex_match_limit"]
-      regex_recursion_limit                = config.value["regex_recursion_limit"]
-      request_body_default_action          = config.value["request_body_default_action"]
-      request_hdr_default_action           = config.value["request_hdr_default_action"]
-      response_body_default_action         = config.value["response_body_default_action"]
-      response_hdr_default_action          = config.value["response_hdr_default_action"]
-      restricted_extensions                = config.value["restricted_extensions"]
-      restricted_headers                   = config.value["restricted_headers"]
-      server_response_max_body_size        = config.value["server_response_max_body_size"]
-      static_extensions                    = config.value["static_extensions"]
-      status_code_for_rejected_requests    = config.value["status_code_for_rejected_requests"]
+      # max_execution_time - (optional) is a type of number
+      max_execution_time = config.value["max_execution_time"]
+      # min_confidence - (optional) is a type of string
+      min_confidence = config.value["min_confidence"]
+      # regex_match_limit - (optional) is a type of number
+      regex_match_limit = config.value["regex_match_limit"]
+      # regex_recursion_limit - (optional) is a type of number
+      regex_recursion_limit = config.value["regex_recursion_limit"]
+      # request_body_default_action - (optional) is a type of string
+      request_body_default_action = config.value["request_body_default_action"]
+      # request_hdr_default_action - (optional) is a type of string
+      request_hdr_default_action = config.value["request_hdr_default_action"]
+      # response_body_default_action - (optional) is a type of string
+      response_body_default_action = config.value["response_body_default_action"]
+      # response_hdr_default_action - (optional) is a type of string
+      response_hdr_default_action = config.value["response_hdr_default_action"]
+      # restricted_extensions - (optional) is a type of list of string
+      restricted_extensions = config.value["restricted_extensions"]
+      # restricted_headers - (optional) is a type of list of string
+      restricted_headers = config.value["restricted_headers"]
+      # server_response_max_body_size - (optional) is a type of number
+      server_response_max_body_size = config.value["server_response_max_body_size"]
+      # static_extensions - (optional) is a type of list of string
+      static_extensions = config.value["static_extensions"]
+      # status_code_for_rejected_requests - (optional) is a type of string
+      status_code_for_rejected_requests = config.value["status_code_for_rejected_requests"]
 
       dynamic "confidence_override" {
         for_each = config.value.confidence_override
         content {
-          confid_high_value      = confidence_override.value["confid_high_value"]
-          confid_low_value       = confidence_override.value["confid_low_value"]
-          confid_probable_value  = confidence_override.value["confid_probable_value"]
+          # confid_high_value - (optional) is a type of number
+          confid_high_value = confidence_override.value["confid_high_value"]
+          # confid_low_value - (optional) is a type of number
+          confid_low_value = confidence_override.value["confid_low_value"]
+          # confid_probable_value - (optional) is a type of number
+          confid_probable_value = confidence_override.value["confid_probable_value"]
+          # confid_very_high_value - (optional) is a type of number
           confid_very_high_value = confidence_override.value["confid_very_high_value"]
         }
       }
@@ -218,12 +247,18 @@ resource "avi_wafprofile" "this" {
       dynamic "learning_params" {
         for_each = config.value.learning_params
         content {
+          # enable_per_uri_learning - (optional) is a type of bool
           enable_per_uri_learning = learning_params.value["enable_per_uri_learning"]
-          max_params              = learning_params.value["max_params"]
-          max_uris                = learning_params.value["max_uris"]
-          min_hits_to_learn       = learning_params.value["min_hits_to_learn"]
-          sampling_percent        = learning_params.value["sampling_percent"]
-          update_interval         = learning_params.value["update_interval"]
+          # max_params - (optional) is a type of number
+          max_params = learning_params.value["max_params"]
+          # max_uris - (optional) is a type of number
+          max_uris = learning_params.value["max_uris"]
+          # min_hits_to_learn - (optional) is a type of number
+          min_hits_to_learn = learning_params.value["min_hits_to_learn"]
+          # sampling_percent - (optional) is a type of number
+          sampling_percent = learning_params.value["sampling_percent"]
+          # update_interval - (optional) is a type of number
+          update_interval = learning_params.value["update_interval"]
         }
       }
 
@@ -233,7 +268,9 @@ resource "avi_wafprofile" "this" {
   dynamic "files" {
     for_each = var.files
     content {
+      # data - (optional) is a type of string
       data = files.value["data"]
+      # name - (optional) is a type of string
       name = files.value["name"]
     }
   }

@@ -57,7 +57,9 @@ variable "db_endpoint_id" {
 
 ```terraform
 data "alicloud_polardb_endpoints" "this" {
-  db_cluster_id  = var.db_cluster_id
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
+  # db_endpoint_id - (optional) is a type of string
   db_endpoint_id = var.db_endpoint_id
 }
 ```

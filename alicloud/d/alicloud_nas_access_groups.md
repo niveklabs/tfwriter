@@ -106,14 +106,22 @@ variable "useutc_date_time" {
 
 ```terraform
 data "alicloud_nas_access_groups" "this" {
+  # access_group_name - (optional) is a type of string
   access_group_name = var.access_group_name
+  # access_group_type - (optional) is a type of string
   access_group_type = var.access_group_type
-  description       = var.description
-  file_system_type  = var.file_system_type
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  type              = var.type
-  useutc_date_time  = var.useutc_date_time
+  # description - (optional) is a type of string
+  description = var.description
+  # file_system_type - (optional) is a type of string
+  file_system_type = var.file_system_type
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # type - (optional) is a type of string
+  type = var.type
+  # useutc_date_time - (optional) is a type of bool
+  useutc_date_time = var.useutc_date_time
 }
 ```
 

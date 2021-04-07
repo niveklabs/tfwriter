@@ -94,13 +94,20 @@ variable "value" {
 
 ```terraform
 resource "alicloud_dns_record" "this" {
+  # host_record - (required) is a type of string
   host_record = var.host_record
-  name        = var.name
-  priority    = var.priority
-  routing     = var.routing
-  ttl         = var.ttl
-  type        = var.type
-  value       = var.value
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # routing - (optional) is a type of string
+  routing = var.routing
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

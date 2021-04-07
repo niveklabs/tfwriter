@@ -106,14 +106,22 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewallssh_hostkey" "this" {
-  hostname   = var.hostname
-  ip         = var.ip
-  name       = var.name
-  nid        = var.nid
-  port       = var.port
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (optional) is a type of string
+  name = var.name
+  # nid - (optional) is a type of string
+  nid = var.nid
+  # port - (optional) is a type of number
+  port = var.port
+  # public_key - (optional) is a type of string
   public_key = var.public_key
-  status     = var.status
-  type       = var.type
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

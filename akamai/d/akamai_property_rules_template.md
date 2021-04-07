@@ -83,15 +83,21 @@ variable "variables" {
 
 ```terraform
 data "akamai_property_rules_template" "this" {
-  template_file       = var.template_file
+  # template_file - (required) is a type of string
+  template_file = var.template_file
+  # var_definition_file - (optional) is a type of string
   var_definition_file = var.var_definition_file
-  var_values_file     = var.var_values_file
+  # var_values_file - (optional) is a type of string
+  var_values_file = var.var_values_file
 
   dynamic "variables" {
     for_each = var.variables
     content {
-      name  = variables.value["name"]
-      type  = variables.value["type"]
+      # name - (required) is a type of string
+      name = variables.value["name"]
+      # type - (optional) is a type of string
+      type = variables.value["type"]
+      # value - (required) is a type of string
       value = variables.value["value"]
     }
   }

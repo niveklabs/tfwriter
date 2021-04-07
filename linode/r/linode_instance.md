@@ -395,31 +395,53 @@ variable "timeouts" {
 
 ```terraform
 resource "linode_instance" "this" {
-  authorized_keys   = var.authorized_keys
-  authorized_users  = var.authorized_users
-  backup_id         = var.backup_id
-  backups_enabled   = var.backups_enabled
+  # authorized_keys - (optional) is a type of list of string
+  authorized_keys = var.authorized_keys
+  # authorized_users - (optional) is a type of list of string
+  authorized_users = var.authorized_users
+  # backup_id - (optional) is a type of number
+  backup_id = var.backup_id
+  # backups_enabled - (optional) is a type of bool
+  backups_enabled = var.backups_enabled
+  # boot_config_label - (optional) is a type of string
   boot_config_label = var.boot_config_label
-  group             = var.group
-  image             = var.image
-  label             = var.label
-  private_ip        = var.private_ip
-  region            = var.region
-  root_pass         = var.root_pass
-  stackscript_data  = var.stackscript_data
-  stackscript_id    = var.stackscript_id
-  swap_size         = var.swap_size
-  tags              = var.tags
-  type              = var.type
-  watchdog_enabled  = var.watchdog_enabled
+  # group - (optional) is a type of string
+  group = var.group
+  # image - (optional) is a type of string
+  image = var.image
+  # label - (optional) is a type of string
+  label = var.label
+  # private_ip - (optional) is a type of bool
+  private_ip = var.private_ip
+  # region - (required) is a type of string
+  region = var.region
+  # root_pass - (optional) is a type of string
+  root_pass = var.root_pass
+  # stackscript_data - (optional) is a type of map of string
+  stackscript_data = var.stackscript_data
+  # stackscript_id - (optional) is a type of number
+  stackscript_id = var.stackscript_id
+  # swap_size - (optional) is a type of number
+  swap_size = var.swap_size
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # watchdog_enabled - (optional) is a type of bool
+  watchdog_enabled = var.watchdog_enabled
 
   dynamic "alerts" {
     for_each = var.alerts
     content {
-      cpu            = alerts.value["cpu"]
-      io             = alerts.value["io"]
-      network_in     = alerts.value["network_in"]
-      network_out    = alerts.value["network_out"]
+      # cpu - (optional) is a type of number
+      cpu = alerts.value["cpu"]
+      # io - (optional) is a type of number
+      io = alerts.value["io"]
+      # network_in - (optional) is a type of number
+      network_in = alerts.value["network_in"]
+      # network_out - (optional) is a type of number
+      network_out = alerts.value["network_out"]
+      # transfer_quota - (optional) is a type of number
       transfer_quota = alerts.value["transfer_quota"]
     }
   }
@@ -427,13 +449,20 @@ resource "linode_instance" "this" {
   dynamic "config" {
     for_each = var.config
     content {
-      comments     = config.value["comments"]
-      kernel       = config.value["kernel"]
-      label        = config.value["label"]
+      # comments - (optional) is a type of string
+      comments = config.value["comments"]
+      # kernel - (optional) is a type of string
+      kernel = config.value["kernel"]
+      # label - (required) is a type of string
+      label = config.value["label"]
+      # memory_limit - (optional) is a type of number
       memory_limit = config.value["memory_limit"]
-      root_device  = config.value["root_device"]
-      run_level    = config.value["run_level"]
-      virt_mode    = config.value["virt_mode"]
+      # root_device - (optional) is a type of string
+      root_device = config.value["root_device"]
+      # run_level - (optional) is a type of string
+      run_level = config.value["run_level"]
+      # virt_mode - (optional) is a type of string
+      virt_mode = config.value["virt_mode"]
 
       dynamic "devices" {
         for_each = config.value.devices
@@ -442,72 +471,96 @@ resource "linode_instance" "this" {
           dynamic "sda" {
             for_each = devices.value.sda
             content {
-              disk_id    = sda.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sda.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sda.value["disk_label"]
-              volume_id  = sda.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sda.value["volume_id"]
             }
           }
 
           dynamic "sdb" {
             for_each = devices.value.sdb
             content {
-              disk_id    = sdb.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdb.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdb.value["disk_label"]
-              volume_id  = sdb.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdb.value["volume_id"]
             }
           }
 
           dynamic "sdc" {
             for_each = devices.value.sdc
             content {
-              disk_id    = sdc.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdc.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdc.value["disk_label"]
-              volume_id  = sdc.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdc.value["volume_id"]
             }
           }
 
           dynamic "sdd" {
             for_each = devices.value.sdd
             content {
-              disk_id    = sdd.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdd.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdd.value["disk_label"]
-              volume_id  = sdd.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdd.value["volume_id"]
             }
           }
 
           dynamic "sde" {
             for_each = devices.value.sde
             content {
-              disk_id    = sde.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sde.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sde.value["disk_label"]
-              volume_id  = sde.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sde.value["volume_id"]
             }
           }
 
           dynamic "sdf" {
             for_each = devices.value.sdf
             content {
-              disk_id    = sdf.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdf.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdf.value["disk_label"]
-              volume_id  = sdf.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdf.value["volume_id"]
             }
           }
 
           dynamic "sdg" {
             for_each = devices.value.sdg
             content {
-              disk_id    = sdg.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdg.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdg.value["disk_label"]
-              volume_id  = sdg.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdg.value["volume_id"]
             }
           }
 
           dynamic "sdh" {
             for_each = devices.value.sdh
             content {
-              disk_id    = sdh.value["disk_id"]
+              # disk_id - (optional) is a type of number
+              disk_id = sdh.value["disk_id"]
+              # disk_label - (optional) is a type of string
               disk_label = sdh.value["disk_label"]
-              volume_id  = sdh.value["volume_id"]
+              # volume_id - (optional) is a type of number
+              volume_id = sdh.value["volume_id"]
             }
           }
 
@@ -517,11 +570,16 @@ resource "linode_instance" "this" {
       dynamic "helpers" {
         for_each = config.value.helpers
         content {
+          # devtmpfs_automount - (optional) is a type of bool
           devtmpfs_automount = helpers.value["devtmpfs_automount"]
-          distro             = helpers.value["distro"]
-          modules_dep        = helpers.value["modules_dep"]
-          network            = helpers.value["network"]
-          updatedb_disabled  = helpers.value["updatedb_disabled"]
+          # distro - (optional) is a type of bool
+          distro = helpers.value["distro"]
+          # modules_dep - (optional) is a type of bool
+          modules_dep = helpers.value["modules_dep"]
+          # network - (optional) is a type of bool
+          network = helpers.value["network"]
+          # updatedb_disabled - (optional) is a type of bool
+          updatedb_disabled = helpers.value["updatedb_disabled"]
         }
       }
 
@@ -531,24 +589,37 @@ resource "linode_instance" "this" {
   dynamic "disk" {
     for_each = var.disk
     content {
-      authorized_keys  = disk.value["authorized_keys"]
+      # authorized_keys - (optional) is a type of list of string
+      authorized_keys = disk.value["authorized_keys"]
+      # authorized_users - (optional) is a type of list of string
       authorized_users = disk.value["authorized_users"]
-      filesystem       = disk.value["filesystem"]
-      image            = disk.value["image"]
-      label            = disk.value["label"]
-      read_only        = disk.value["read_only"]
-      root_pass        = disk.value["root_pass"]
-      size             = disk.value["size"]
+      # filesystem - (optional) is a type of string
+      filesystem = disk.value["filesystem"]
+      # image - (optional) is a type of string
+      image = disk.value["image"]
+      # label - (required) is a type of string
+      label = disk.value["label"]
+      # read_only - (optional) is a type of bool
+      read_only = disk.value["read_only"]
+      # root_pass - (optional) is a type of string
+      root_pass = disk.value["root_pass"]
+      # size - (required) is a type of number
+      size = disk.value["size"]
+      # stackscript_data - (optional) is a type of map of string
       stackscript_data = disk.value["stackscript_data"]
-      stackscript_id   = disk.value["stackscript_id"]
+      # stackscript_id - (optional) is a type of number
+      stackscript_id = disk.value["stackscript_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

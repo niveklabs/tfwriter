@@ -88,18 +88,26 @@ variable "policy_statements" {
 
 ```terraform
 data "launchdarkly_webhook" "this" {
-  name   = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # secret - (optional) is a type of string
   secret = var.secret
-  tags   = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "policy_statements" {
     for_each = var.policy_statements
     content {
-      actions       = policy_statements.value["actions"]
-      effect        = policy_statements.value["effect"]
-      not_actions   = policy_statements.value["not_actions"]
+      # actions - (optional) is a type of list of string
+      actions = policy_statements.value["actions"]
+      # effect - (required) is a type of string
+      effect = policy_statements.value["effect"]
+      # not_actions - (optional) is a type of list of string
+      not_actions = policy_statements.value["not_actions"]
+      # not_resources - (optional) is a type of list of string
       not_resources = policy_statements.value["not_resources"]
-      resources     = policy_statements.value["resources"]
+      # resources - (optional) is a type of list of string
+      resources = policy_statements.value["resources"]
     }
   }
 

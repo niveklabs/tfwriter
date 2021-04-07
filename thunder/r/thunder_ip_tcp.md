@@ -64,11 +64,13 @@ variable "syn_cookie" {
 
 ```terraform
 resource "thunder_ip_tcp" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "syn_cookie" {
     for_each = var.syn_cookie
     content {
+      # threshold - (optional) is a type of number
       threshold = syn_cookie.value["threshold"]
     }
   }

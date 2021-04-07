@@ -142,19 +142,32 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_postgresql_instance" "this" {
-  availability_zone    = var.availability_zone
-  charge_type          = var.charge_type
-  charset              = var.charset
-  engine_version       = var.engine_version
-  memory               = var.memory
-  name                 = var.name
-  project_id           = var.project_id
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # charset - (optional) is a type of string
+  charset = var.charset
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # memory - (required) is a type of number
+  memory = var.memory
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # public_access_switch - (optional) is a type of bool
   public_access_switch = var.public_access_switch
-  root_password        = var.root_password
-  storage              = var.storage
-  subnet_id            = var.subnet_id
-  tags                 = var.tags
-  vpc_id               = var.vpc_id
+  # root_password - (required) is a type of string
+  root_password = var.root_password
+  # storage - (required) is a type of number
+  storage = var.storage
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

@@ -81,15 +81,20 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_ns_service_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  members      = var.members
+  # members - (required) is a type of set of string
+  members = var.members
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

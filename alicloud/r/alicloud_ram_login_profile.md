@@ -72,10 +72,14 @@ variable "user_name" {
 
 ```terraform
 resource "alicloud_ram_login_profile" "this" {
-  mfa_bind_required       = var.mfa_bind_required
-  password                = var.password
+  # mfa_bind_required - (optional) is a type of bool
+  mfa_bind_required = var.mfa_bind_required
+  # password - (required) is a type of string
+  password = var.password
+  # password_reset_required - (optional) is a type of bool
   password_reset_required = var.password_reset_required
-  user_name               = var.user_name
+  # user_name - (required) is a type of string
+  user_name = var.user_name
 }
 ```
 

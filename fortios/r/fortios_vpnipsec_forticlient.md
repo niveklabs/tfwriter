@@ -72,9 +72,13 @@ variable "usergroupname" {
 
 ```terraform
 resource "fortios_vpnipsec_forticlient" "this" {
-  phase2name    = var.phase2name
-  realm         = var.realm
-  status        = var.status
+  # phase2name - (required) is a type of string
+  phase2name = var.phase2name
+  # realm - (optional) is a type of string
+  realm = var.realm
+  # status - (optional) is a type of string
+  status = var.status
+  # usergroupname - (required) is a type of string
   usergroupname = var.usergroupname
 }
 ```

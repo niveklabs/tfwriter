@@ -279,36 +279,66 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_ethernet_interface" "this" {
-  adjust_tcp_mss                  = var.adjust_tcp_mss
-  aggregate_group                 = var.aggregate_group
-  comment                         = var.comment
-  create_dhcp_default_route       = var.create_dhcp_default_route
-  decrypt_forward                 = var.decrypt_forward
-  dhcp_default_route_metric       = var.dhcp_default_route_metric
-  dhcp_send_hostname_enable       = var.dhcp_send_hostname_enable
-  dhcp_send_hostname_value        = var.dhcp_send_hostname_value
-  enable_dhcp                     = var.enable_dhcp
-  ipv4_mss_adjust                 = var.ipv4_mss_adjust
-  ipv6_enabled                    = var.ipv6_enabled
-  ipv6_mss_adjust                 = var.ipv6_mss_adjust
+  # adjust_tcp_mss - (optional) is a type of bool
+  adjust_tcp_mss = var.adjust_tcp_mss
+  # aggregate_group - (optional) is a type of string
+  aggregate_group = var.aggregate_group
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # create_dhcp_default_route - (optional) is a type of bool
+  create_dhcp_default_route = var.create_dhcp_default_route
+  # decrypt_forward - (optional) is a type of bool
+  decrypt_forward = var.decrypt_forward
+  # dhcp_default_route_metric - (optional) is a type of number
+  dhcp_default_route_metric = var.dhcp_default_route_metric
+  # dhcp_send_hostname_enable - (optional) is a type of bool
+  dhcp_send_hostname_enable = var.dhcp_send_hostname_enable
+  # dhcp_send_hostname_value - (optional) is a type of string
+  dhcp_send_hostname_value = var.dhcp_send_hostname_value
+  # enable_dhcp - (optional) is a type of bool
+  enable_dhcp = var.enable_dhcp
+  # ipv4_mss_adjust - (optional) is a type of number
+  ipv4_mss_adjust = var.ipv4_mss_adjust
+  # ipv6_enabled - (optional) is a type of bool
+  ipv6_enabled = var.ipv6_enabled
+  # ipv6_mss_adjust - (optional) is a type of number
+  ipv6_mss_adjust = var.ipv6_mss_adjust
+  # lacp_ha_passive_pre_negotiation - (optional) is a type of bool
   lacp_ha_passive_pre_negotiation = var.lacp_ha_passive_pre_negotiation
-  lacp_port_priority              = var.lacp_port_priority
-  link_duplex                     = var.link_duplex
-  link_speed                      = var.link_speed
-  link_state                      = var.link_state
-  lldp_enabled                    = var.lldp_enabled
+  # lacp_port_priority - (optional) is a type of number
+  lacp_port_priority = var.lacp_port_priority
+  # link_duplex - (optional) is a type of string
+  link_duplex = var.link_duplex
+  # link_speed - (optional) is a type of string
+  link_speed = var.link_speed
+  # link_state - (optional) is a type of string
+  link_state = var.link_state
+  # lldp_enabled - (optional) is a type of bool
+  lldp_enabled = var.lldp_enabled
+  # lldp_ha_passive_pre_negotiation - (optional) is a type of bool
   lldp_ha_passive_pre_negotiation = var.lldp_ha_passive_pre_negotiation
-  lldp_profile                    = var.lldp_profile
-  management_profile              = var.management_profile
-  mode                            = var.mode
-  mtu                             = var.mtu
-  name                            = var.name
-  netflow_profile                 = var.netflow_profile
-  rx_policing_rate                = var.rx_policing_rate
-  static_ips                      = var.static_ips
-  template                        = var.template
-  tx_policing_rate                = var.tx_policing_rate
-  vsys                            = var.vsys
+  # lldp_profile - (optional) is a type of string
+  lldp_profile = var.lldp_profile
+  # management_profile - (optional) is a type of string
+  management_profile = var.management_profile
+  # mode - (required) is a type of string
+  mode = var.mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # rx_policing_rate - (optional) is a type of number
+  rx_policing_rate = var.rx_policing_rate
+  # static_ips - (optional) is a type of list of string
+  static_ips = var.static_ips
+  # template - (required) is a type of string
+  template = var.template
+  # tx_policing_rate - (optional) is a type of number
+  tx_policing_rate = var.tx_policing_rate
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

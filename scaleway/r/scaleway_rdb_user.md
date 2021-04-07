@@ -93,15 +93,21 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_rdb_user" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  is_admin    = var.is_admin
-  name        = var.name
-  password    = var.password
-  region      = var.region
+  # is_admin - (optional) is a type of bool
+  is_admin = var.is_admin
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

@@ -89,12 +89,18 @@ variable "user_access" {
 
 ```terraform
 data "alicloud_nas_access_rules" "this" {
+  # access_group_name - (required) is a type of string
   access_group_name = var.access_group_name
-  ids               = var.ids
-  output_file       = var.output_file
-  rw_access         = var.rw_access
-  source_cidr_ip    = var.source_cidr_ip
-  user_access       = var.user_access
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # rw_access - (optional) is a type of string
+  rw_access = var.rw_access
+  # source_cidr_ip - (optional) is a type of string
+  source_cidr_ip = var.source_cidr_ip
+  # user_access - (optional) is a type of string
+  user_access = var.user_access
 }
 ```
 

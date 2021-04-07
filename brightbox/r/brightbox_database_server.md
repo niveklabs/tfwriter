@@ -153,23 +153,37 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_database_server" "this" {
-  allow_access        = var.allow_access
-  database_engine     = var.database_engine
-  database_type       = var.database_type
-  database_version    = var.database_version
-  description         = var.description
-  locked              = var.locked
-  maintenance_hour    = var.maintenance_hour
+  # allow_access - (required) is a type of set of string
+  allow_access = var.allow_access
+  # database_engine - (optional) is a type of string
+  database_engine = var.database_engine
+  # database_type - (optional) is a type of string
+  database_type = var.database_type
+  # database_version - (optional) is a type of string
+  database_version = var.database_version
+  # description - (optional) is a type of string
+  description = var.description
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # maintenance_hour - (optional) is a type of number
+  maintenance_hour = var.maintenance_hour
+  # maintenance_weekday - (optional) is a type of number
   maintenance_weekday = var.maintenance_weekday
-  name                = var.name
-  snapshot            = var.snapshot
-  snapshots_schedule  = var.snapshots_schedule
-  zone                = var.zone
+  # name - (optional) is a type of string
+  name = var.name
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
+  # snapshots_schedule - (optional) is a type of string
+  snapshots_schedule = var.snapshots_schedule
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

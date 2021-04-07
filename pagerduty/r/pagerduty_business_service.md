@@ -81,11 +81,16 @@ variable "type" {
 
 ```terraform
 resource "pagerduty_business_service" "this" {
-  description      = var.description
-  name             = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # point_of_contact - (optional) is a type of string
   point_of_contact = var.point_of_contact
-  team             = var.team
-  type             = var.type
+  # team - (optional) is a type of string
+  team = var.team
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

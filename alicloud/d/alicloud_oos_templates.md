@@ -154,20 +154,34 @@ variable "template_type" {
 
 ```terraform
 data "alicloud_oos_templates" "this" {
-  category           = var.category
-  created_by         = var.created_by
-  created_date       = var.created_date
+  # category - (optional) is a type of string
+  category = var.category
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # created_date - (optional) is a type of string
+  created_date = var.created_date
+  # created_date_after - (optional) is a type of string
   created_date_after = var.created_date_after
-  has_trigger        = var.has_trigger
-  ids                = var.ids
-  name_regex         = var.name_regex
-  output_file        = var.output_file
-  share_type         = var.share_type
-  sort_field         = var.sort_field
-  sort_order         = var.sort_order
-  tags               = var.tags
-  template_format    = var.template_format
-  template_type      = var.template_type
+  # has_trigger - (optional) is a type of bool
+  has_trigger = var.has_trigger
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # share_type - (optional) is a type of string
+  share_type = var.share_type
+  # sort_field - (optional) is a type of string
+  sort_field = var.sort_field
+  # sort_order - (optional) is a type of string
+  sort_order = var.sort_order
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_format - (optional) is a type of string
+  template_format = var.template_format
+  # template_type - (optional) is a type of string
+  template_type = var.template_type
 }
 ```
 

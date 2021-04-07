@@ -95,13 +95,20 @@ variable "zone" {
 
 ```terraform
 resource "ovh_domain_zone_redirection" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  keywords    = var.keywords
-  subdomain   = var.subdomain
-  target      = var.target
-  title       = var.title
-  type        = var.type
-  zone        = var.zone
+  # keywords - (optional) is a type of string
+  keywords = var.keywords
+  # subdomain - (optional) is a type of string
+  subdomain = var.subdomain
+  # target - (required) is a type of string
+  target = var.target
+  # title - (optional) is a type of string
+  title = var.title
+  # type - (required) is a type of string
+  type = var.type
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

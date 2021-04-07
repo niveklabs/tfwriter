@@ -73,10 +73,14 @@ variable "users" {
 
 ```terraform
 resource "onelogin_roles" "this" {
+  # admins - (optional) is a type of set of number
   admins = var.admins
-  apps   = var.apps
-  name   = var.name
-  users  = var.users
+  # apps - (optional) is a type of set of number
+  apps = var.apps
+  # name - (required) is a type of string
+  name = var.name
+  # users - (optional) is a type of set of number
+  users = var.users
 }
 ```
 

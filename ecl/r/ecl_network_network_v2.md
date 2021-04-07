@@ -114,18 +114,27 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_network_v2" "this" {
+  # admin_state_up - (optional) is a type of bool
   admin_state_up = var.admin_state_up
-  description    = var.description
-  name           = var.name
-  plane          = var.plane
-  region         = var.region
-  tags           = var.tags
-  tenant_id      = var.tenant_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # plane - (optional) is a type of string
+  plane = var.plane
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

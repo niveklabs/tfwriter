@@ -177,23 +177,40 @@ variable "to_hour" {
 
 ```terraform
 resource "checkpoint_management_user_template" "this" {
-  allowed_locations               = var.allowed_locations
-  authentication_method           = var.authentication_method
-  color                           = var.color
-  comments                        = var.comments
-  connect_daily                   = var.connect_daily
-  connect_on_days                 = var.connect_on_days
-  encryption                      = var.encryption
+  # allowed_locations - (optional) is a type of map of string
+  allowed_locations = var.allowed_locations
+  # authentication_method - (optional) is a type of string
+  authentication_method = var.authentication_method
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # connect_daily - (optional) is a type of bool
+  connect_daily = var.connect_daily
+  # connect_on_days - (optional) is a type of set of string
+  connect_on_days = var.connect_on_days
+  # encryption - (optional) is a type of map of string
+  encryption = var.encryption
+  # expiration_by_global_properties - (optional) is a type of bool
   expiration_by_global_properties = var.expiration_by_global_properties
-  expiration_date                 = var.expiration_date
-  from_hour                       = var.from_hour
-  ignore_errors                   = var.ignore_errors
-  ignore_warnings                 = var.ignore_warnings
-  name                            = var.name
-  radius_server                   = var.radius_server
-  tacacs_server                   = var.tacacs_server
-  tags                            = var.tags
-  to_hour                         = var.to_hour
+  # expiration_date - (optional) is a type of string
+  expiration_date = var.expiration_date
+  # from_hour - (optional) is a type of string
+  from_hour = var.from_hour
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # name - (required) is a type of string
+  name = var.name
+  # radius_server - (optional) is a type of string
+  radius_server = var.radius_server
+  # tacacs_server - (optional) is a type of string
+  tacacs_server = var.tacacs_server
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # to_hour - (optional) is a type of string
+  to_hour = var.to_hour
 }
 ```
 

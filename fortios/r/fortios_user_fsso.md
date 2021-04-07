@@ -272,35 +272,64 @@ variable "user_info_server" {
 
 ```terraform
 resource "fortios_user_fsso" "this" {
-  group_poll_interval     = var.group_poll_interval
-  interface               = var.interface
+  # group_poll_interval - (optional) is a type of number
+  group_poll_interval = var.group_poll_interval
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  ldap_poll               = var.ldap_poll
-  ldap_poll_filter        = var.ldap_poll_filter
-  ldap_poll_interval      = var.ldap_poll_interval
-  ldap_server             = var.ldap_server
-  name                    = var.name
-  password                = var.password
-  password2               = var.password2
-  password3               = var.password3
-  password4               = var.password4
-  password5               = var.password5
-  port                    = var.port
-  port2                   = var.port2
-  port3                   = var.port3
-  port4                   = var.port4
-  port5                   = var.port5
-  server                  = var.server
-  server2                 = var.server2
-  server3                 = var.server3
-  server4                 = var.server4
-  server5                 = var.server5
-  source_ip               = var.source_ip
-  source_ip6              = var.source_ip6
-  ssl                     = var.ssl
-  ssl_trusted_cert        = var.ssl_trusted_cert
-  type                    = var.type
-  user_info_server        = var.user_info_server
+  # ldap_poll - (optional) is a type of string
+  ldap_poll = var.ldap_poll
+  # ldap_poll_filter - (optional) is a type of string
+  ldap_poll_filter = var.ldap_poll_filter
+  # ldap_poll_interval - (optional) is a type of number
+  ldap_poll_interval = var.ldap_poll_interval
+  # ldap_server - (optional) is a type of string
+  ldap_server = var.ldap_server
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # password2 - (optional) is a type of string
+  password2 = var.password2
+  # password3 - (optional) is a type of string
+  password3 = var.password3
+  # password4 - (optional) is a type of string
+  password4 = var.password4
+  # password5 - (optional) is a type of string
+  password5 = var.password5
+  # port - (optional) is a type of number
+  port = var.port
+  # port2 - (optional) is a type of number
+  port2 = var.port2
+  # port3 - (optional) is a type of number
+  port3 = var.port3
+  # port4 - (optional) is a type of number
+  port4 = var.port4
+  # port5 - (optional) is a type of number
+  port5 = var.port5
+  # server - (required) is a type of string
+  server = var.server
+  # server2 - (optional) is a type of string
+  server2 = var.server2
+  # server3 - (optional) is a type of string
+  server3 = var.server3
+  # server4 - (optional) is a type of string
+  server4 = var.server4
+  # server5 - (optional) is a type of string
+  server5 = var.server5
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ip6 - (optional) is a type of string
+  source_ip6 = var.source_ip6
+  # ssl - (optional) is a type of string
+  ssl = var.ssl
+  # ssl_trusted_cert - (optional) is a type of string
+  ssl_trusted_cert = var.ssl_trusted_cert
+  # type - (optional) is a type of string
+  type = var.type
+  # user_info_server - (optional) is a type of string
+  user_info_server = var.user_info_server
 }
 ```
 

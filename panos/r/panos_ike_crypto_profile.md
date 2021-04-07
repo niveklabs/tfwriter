@@ -94,13 +94,20 @@ variable "name" {
 
 ```terraform
 resource "panos_ike_crypto_profile" "this" {
+  # authentication_multiple - (optional) is a type of number
   authentication_multiple = var.authentication_multiple
-  authentications         = var.authentications
-  dh_groups               = var.dh_groups
-  encryptions             = var.encryptions
-  lifetime_type           = var.lifetime_type
-  lifetime_value          = var.lifetime_value
-  name                    = var.name
+  # authentications - (required) is a type of list of string
+  authentications = var.authentications
+  # dh_groups - (required) is a type of list of string
+  dh_groups = var.dh_groups
+  # encryptions - (required) is a type of list of string
+  encryptions = var.encryptions
+  # lifetime_type - (optional) is a type of string
+  lifetime_type = var.lifetime_type
+  # lifetime_value - (optional) is a type of number
+  lifetime_value = var.lifetime_value
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

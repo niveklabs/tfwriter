@@ -80,16 +80,23 @@ variable "node_list" {
 
 ```terraform
 resource "fortios_system_federatedupgrade" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  status                = var.status
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "node_list" {
     for_each = var.node_list
     content {
-      serial       = node_list.value["serial"]
-      setup_time   = node_list.value["setup_time"]
-      time         = node_list.value["time"]
-      timing       = node_list.value["timing"]
+      # serial - (optional) is a type of string
+      serial = node_list.value["serial"]
+      # setup_time - (optional) is a type of string
+      setup_time = node_list.value["setup_time"]
+      # time - (optional) is a type of string
+      time = node_list.value["time"]
+      # timing - (optional) is a type of string
+      timing = node_list.value["timing"]
+      # upgrade_path - (optional) is a type of string
       upgrade_path = node_list.value["upgrade_path"]
     }
   }

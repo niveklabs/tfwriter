@@ -198,26 +198,46 @@ variable "url" {
 
 ```terraform
 resource "tencentcloud_clb_listener_rule" "this" {
-  certificate_ca_id          = var.certificate_ca_id
-  certificate_id             = var.certificate_id
-  certificate_ssl_mode       = var.certificate_ssl_mode
-  clb_id                     = var.clb_id
-  domain                     = var.domain
-  forward_type               = var.forward_type
-  health_check_health_num    = var.health_check_health_num
-  health_check_http_code     = var.health_check_http_code
-  health_check_http_domain   = var.health_check_http_domain
-  health_check_http_method   = var.health_check_http_method
-  health_check_http_path     = var.health_check_http_path
+  # certificate_ca_id - (optional) is a type of string
+  certificate_ca_id = var.certificate_ca_id
+  # certificate_id - (optional) is a type of string
+  certificate_id = var.certificate_id
+  # certificate_ssl_mode - (optional) is a type of string
+  certificate_ssl_mode = var.certificate_ssl_mode
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # domain - (required) is a type of string
+  domain = var.domain
+  # forward_type - (optional) is a type of string
+  forward_type = var.forward_type
+  # health_check_health_num - (optional) is a type of number
+  health_check_health_num = var.health_check_health_num
+  # health_check_http_code - (optional) is a type of number
+  health_check_http_code = var.health_check_http_code
+  # health_check_http_domain - (optional) is a type of string
+  health_check_http_domain = var.health_check_http_domain
+  # health_check_http_method - (optional) is a type of string
+  health_check_http_method = var.health_check_http_method
+  # health_check_http_path - (optional) is a type of string
+  health_check_http_path = var.health_check_http_path
+  # health_check_interval_time - (optional) is a type of number
   health_check_interval_time = var.health_check_interval_time
-  health_check_switch        = var.health_check_switch
-  health_check_unhealth_num  = var.health_check_unhealth_num
-  http2_switch               = var.http2_switch
-  listener_id                = var.listener_id
-  scheduler                  = var.scheduler
-  session_expire_time        = var.session_expire_time
-  target_type                = var.target_type
-  url                        = var.url
+  # health_check_switch - (optional) is a type of bool
+  health_check_switch = var.health_check_switch
+  # health_check_unhealth_num - (optional) is a type of number
+  health_check_unhealth_num = var.health_check_unhealth_num
+  # http2_switch - (optional) is a type of bool
+  http2_switch = var.http2_switch
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # scheduler - (optional) is a type of string
+  scheduler = var.scheduler
+  # session_expire_time - (optional) is a type of number
+  session_expire_time = var.session_expire_time
+  # target_type - (optional) is a type of string
+  target_type = var.target_type
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

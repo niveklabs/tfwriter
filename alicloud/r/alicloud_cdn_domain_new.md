@@ -125,20 +125,31 @@ variable "sources" {
 
 ```terraform
 resource "alicloud_cdn_domain_new" "this" {
-  cdn_type          = var.cdn_type
-  domain_name       = var.domain_name
+  # cdn_type - (required) is a type of string
+  cdn_type = var.cdn_type
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  scope             = var.scope
-  tags              = var.tags
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "certificate_config" {
     for_each = var.certificate_config
     content {
-      cert_name                 = certificate_config.value["cert_name"]
-      cert_type                 = certificate_config.value["cert_type"]
-      force_set                 = certificate_config.value["force_set"]
-      private_key               = certificate_config.value["private_key"]
-      server_certificate        = certificate_config.value["server_certificate"]
+      # cert_name - (optional) is a type of string
+      cert_name = certificate_config.value["cert_name"]
+      # cert_type - (optional) is a type of string
+      cert_type = certificate_config.value["cert_type"]
+      # force_set - (optional) is a type of string
+      force_set = certificate_config.value["force_set"]
+      # private_key - (optional) is a type of string
+      private_key = certificate_config.value["private_key"]
+      # server_certificate - (optional) is a type of string
+      server_certificate = certificate_config.value["server_certificate"]
+      # server_certificate_status - (optional) is a type of string
       server_certificate_status = certificate_config.value["server_certificate_status"]
     }
   }
@@ -146,11 +157,16 @@ resource "alicloud_cdn_domain_new" "this" {
   dynamic "sources" {
     for_each = var.sources
     content {
-      content  = sources.value["content"]
-      port     = sources.value["port"]
+      # content - (required) is a type of string
+      content = sources.value["content"]
+      # port - (optional) is a type of number
+      port = sources.value["port"]
+      # priority - (optional) is a type of number
       priority = sources.value["priority"]
-      type     = sources.value["type"]
-      weight   = sources.value["weight"]
+      # type - (required) is a type of string
+      type = sources.value["type"]
+      # weight - (optional) is a type of number
+      weight = sources.value["weight"]
     }
   }
 

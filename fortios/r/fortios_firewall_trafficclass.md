@@ -58,7 +58,9 @@ variable "class_name" {
 
 ```terraform
 resource "fortios_firewall_trafficclass" "this" {
-  class_id   = var.class_id
+  # class_id - (optional) is a type of number
+  class_id = var.class_id
+  # class_name - (optional) is a type of string
   class_name = var.class_name
 }
 ```

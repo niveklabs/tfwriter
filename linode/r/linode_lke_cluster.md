@@ -118,24 +118,33 @@ variable "timeouts" {
 
 ```terraform
 resource "linode_lke_cluster" "this" {
+  # k8s_version - (required) is a type of string
   k8s_version = var.k8s_version
-  label       = var.label
-  region      = var.region
-  tags        = var.tags
+  # label - (required) is a type of string
+  label = var.label
+  # region - (required) is a type of string
+  region = var.region
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "pool" {
     for_each = var.pool
     content {
+      # count - (required) is a type of number
       count = pool.value["count"]
-      type  = pool.value["type"]
+      # type - (required) is a type of string
+      type = pool.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

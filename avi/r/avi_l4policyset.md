@@ -232,12 +232,18 @@ variable "l4_connection_policy" {
 
 ```terraform
 resource "avi_l4policyset" "this" {
-  created_by         = var.created_by
-  description        = var.description
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # is_internal_policy - (optional) is a type of bool
   is_internal_policy = var.is_internal_policy
-  name               = var.name
-  tenant_ref         = var.tenant_ref
-  uuid               = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "l4_connection_policy" {
     for_each = var.l4_connection_policy
@@ -246,9 +252,12 @@ resource "avi_l4policyset" "this" {
       dynamic "rules" {
         for_each = l4_connection_policy.value.rules
         content {
+          # enable - (optional) is a type of bool
           enable = rules.value["enable"]
-          index  = rules.value["index"]
-          name   = rules.value["name"]
+          # index - (optional) is a type of number
+          index = rules.value["index"]
+          # name - (optional) is a type of string
+          name = rules.value["name"]
 
           dynamic "action" {
             for_each = rules.value.action
@@ -257,9 +266,12 @@ resource "avi_l4policyset" "this" {
               dynamic "select_pool" {
                 for_each = action.value.select_pool
                 content {
-                  action_type    = select_pool.value["action_type"]
+                  # action_type - (optional) is a type of string
+                  action_type = select_pool.value["action_type"]
+                  # pool_group_ref - (optional) is a type of string
                   pool_group_ref = select_pool.value["pool_group_ref"]
-                  pool_ref       = select_pool.value["pool_ref"]
+                  # pool_ref - (optional) is a type of string
+                  pool_ref = select_pool.value["pool_ref"]
                 }
               }
 
@@ -273,13 +285,17 @@ resource "avi_l4policyset" "this" {
               dynamic "client_ip" {
                 for_each = match.value.client_ip
                 content {
-                  group_refs     = client_ip.value["group_refs"]
+                  # group_refs - (optional) is a type of list of string
+                  group_refs = client_ip.value["group_refs"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = client_ip.value["match_criteria"]
 
                   dynamic "addrs" {
                     for_each = client_ip.value.addrs
                     content {
+                      # addr - (required) is a type of string
                       addr = addrs.value["addr"]
+                      # type - (required) is a type of string
                       type = addrs.value["type"]
                     }
                   }
@@ -287,12 +303,15 @@ resource "avi_l4policyset" "this" {
                   dynamic "prefixes" {
                     for_each = client_ip.value.prefixes
                     content {
+                      # mask - (required) is a type of number
                       mask = prefixes.value["mask"]
 
                       dynamic "ip_addr" {
                         for_each = prefixes.value.ip_addr
                         content {
+                          # addr - (required) is a type of string
                           addr = ip_addr.value["addr"]
+                          # type - (required) is a type of string
                           type = ip_addr.value["type"]
                         }
                       }
@@ -307,7 +326,9 @@ resource "avi_l4policyset" "this" {
                       dynamic "begin" {
                         for_each = ranges.value.begin
                         content {
+                          # addr - (required) is a type of string
                           addr = begin.value["addr"]
+                          # type - (required) is a type of string
                           type = begin.value["type"]
                         }
                       }
@@ -315,7 +336,9 @@ resource "avi_l4policyset" "this" {
                       dynamic "end" {
                         for_each = ranges.value.end
                         content {
+                          # addr - (required) is a type of string
                           addr = end.value["addr"]
+                          # type - (required) is a type of string
                           type = end.value["type"]
                         }
                       }
@@ -329,13 +352,17 @@ resource "avi_l4policyset" "this" {
               dynamic "port" {
                 for_each = match.value.port
                 content {
+                  # match_criteria - (optional) is a type of string
                   match_criteria = port.value["match_criteria"]
-                  ports          = port.value["ports"]
+                  # ports - (optional) is a type of list of number
+                  ports = port.value["ports"]
 
                   dynamic "port_ranges" {
                     for_each = port.value.port_ranges
                     content {
-                      end   = port_ranges.value["end"]
+                      # end - (required) is a type of number
+                      end = port_ranges.value["end"]
+                      # start - (required) is a type of number
                       start = port_ranges.value["start"]
                     }
                   }
@@ -346,8 +373,10 @@ resource "avi_l4policyset" "this" {
               dynamic "protocol" {
                 for_each = match.value.protocol
                 content {
+                  # match_criteria - (optional) is a type of string
                   match_criteria = protocol.value["match_criteria"]
-                  protocol       = protocol.value["protocol"]
+                  # protocol - (optional) is a type of string
+                  protocol = protocol.value["protocol"]
                 }
               }
 

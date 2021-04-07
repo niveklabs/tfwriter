@@ -71,10 +71,14 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_advanced_settings_logging" "this" {
-  config_id          = var.config_id
-  logging            = var.logging
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # logging - (required) is a type of string
+  logging = var.logging
+  # security_policy_id - (optional) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

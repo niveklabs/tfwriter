@@ -71,13 +71,17 @@ variable "function_args" {
 
 ```terraform
 resource "alicloud_cdn_domain_config" "this" {
-  domain_name   = var.domain_name
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # function_name - (required) is a type of string
   function_name = var.function_name
 
   dynamic "function_args" {
     for_each = var.function_args
     content {
-      arg_name  = function_args.value["arg_name"]
+      # arg_name - (required) is a type of string
+      arg_name = function_args.value["arg_name"]
+      # arg_value - (required) is a type of string
       arg_value = function_args.value["arg_value"]
     }
   }

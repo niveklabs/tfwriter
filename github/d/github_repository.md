@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "github_repository" "this" {
+  # full_name - (optional) is a type of string
   full_name = var.full_name
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

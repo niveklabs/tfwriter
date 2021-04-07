@@ -121,16 +121,26 @@ variable "type" {
 
 ```terraform
 resource "fortios_fmg_firewall_object_vip" "this" {
-  adom           = var.adom
-  arp_reply      = var.arp_reply
-  comment        = var.comment
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # arp_reply - (optional) is a type of string
+  arp_reply = var.arp_reply
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # config_default - (optional) is a type of string
   config_default = var.config_default
-  ext_intf       = var.ext_intf
-  ext_ip         = var.ext_ip
-  mapped_addr    = var.mapped_addr
-  mapped_ip      = var.mapped_ip
-  name           = var.name
-  type           = var.type
+  # ext_intf - (optional) is a type of string
+  ext_intf = var.ext_intf
+  # ext_ip - (optional) is a type of string
+  ext_ip = var.ext_ip
+  # mapped_addr - (optional) is a type of string
+  mapped_addr = var.mapped_addr
+  # mapped_ip - (optional) is a type of string
+  mapped_ip = var.mapped_ip
+  # name - (required) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

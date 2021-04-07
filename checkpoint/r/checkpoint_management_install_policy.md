@@ -120,16 +120,26 @@ variable "triggers" {
 
 ```terraform
 resource "checkpoint_management_install_policy" "this" {
-  access                                 = var.access
-  desktop_security                       = var.desktop_security
+  # access - (optional) is a type of bool
+  access = var.access
+  # desktop_security - (optional) is a type of bool
+  desktop_security = var.desktop_security
+  # install_on_all_cluster_members_or_fail - (optional) is a type of bool
   install_on_all_cluster_members_or_fail = var.install_on_all_cluster_members_or_fail
-  policy_package                         = var.policy_package
-  prepare_only                           = var.prepare_only
-  qos                                    = var.qos
-  revision                               = var.revision
-  targets                                = var.targets
-  threat_prevention                      = var.threat_prevention
-  triggers                               = var.triggers
+  # policy_package - (required) is a type of string
+  policy_package = var.policy_package
+  # prepare_only - (optional) is a type of bool
+  prepare_only = var.prepare_only
+  # qos - (optional) is a type of bool
+  qos = var.qos
+  # revision - (optional) is a type of string
+  revision = var.revision
+  # targets - (required) is a type of set of string
+  targets = var.targets
+  # threat_prevention - (optional) is a type of bool
+  threat_prevention = var.threat_prevention
+  # triggers - (optional) is a type of set of string
+  triggers = var.triggers
 }
 ```
 

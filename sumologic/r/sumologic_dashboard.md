@@ -560,25 +560,36 @@ variable "variable" {
 
 ```terraform
 resource "sumologic_dashboard" "this" {
-  description      = var.description
-  folder_id        = var.folder_id
+  # description - (optional) is a type of string
+  description = var.description
+  # folder_id - (optional) is a type of string
+  folder_id = var.folder_id
+  # refresh_interval - (optional) is a type of number
   refresh_interval = var.refresh_interval
-  theme            = var.theme
-  title            = var.title
+  # theme - (optional) is a type of string
+  theme = var.theme
+  # title - (required) is a type of string
+  title = var.title
 
   dynamic "coloring_rule" {
     for_each = var.coloring_rule
     content {
+      # multiple_series_aggregate_function - (required) is a type of string
       multiple_series_aggregate_function = coloring_rule.value["multiple_series_aggregate_function"]
-      scope                              = coloring_rule.value["scope"]
-      single_series_aggregate_function   = coloring_rule.value["single_series_aggregate_function"]
+      # scope - (required) is a type of string
+      scope = coloring_rule.value["scope"]
+      # single_series_aggregate_function - (required) is a type of string
+      single_series_aggregate_function = coloring_rule.value["single_series_aggregate_function"]
 
       dynamic "color_threshold" {
         for_each = coloring_rule.value.color_threshold
         content {
+          # color - (required) is a type of string
           color = color_threshold.value["color"]
-          max   = color_threshold.value["max"]
-          min   = color_threshold.value["min"]
+          # max - (optional) is a type of number
+          max = color_threshold.value["max"]
+          # min - (optional) is a type of number
+          min = color_threshold.value["min"]
         }
       }
 
@@ -596,7 +607,9 @@ resource "sumologic_dashboard" "this" {
           dynamic "layout_structure" {
             for_each = grid.value.layout_structure
             content {
-              key       = layout_structure.value["key"]
+              # key - (required) is a type of string
+              key = layout_structure.value["key"]
+              # structure - (required) is a type of string
               structure = layout_structure.value["structure"]
             }
           }
@@ -614,25 +627,36 @@ resource "sumologic_dashboard" "this" {
       dynamic "sumo_search_panel" {
         for_each = panel.value.sumo_search_panel
         content {
-          description                                 = sumo_search_panel.value["description"]
+          # description - (optional) is a type of string
+          description = sumo_search_panel.value["description"]
+          # keep_visual_settings_consistent_with_parent - (optional) is a type of bool
           keep_visual_settings_consistent_with_parent = sumo_search_panel.value["keep_visual_settings_consistent_with_parent"]
-          key                                         = sumo_search_panel.value["key"]
-          title                                       = sumo_search_panel.value["title"]
-          visual_settings                             = sumo_search_panel.value["visual_settings"]
+          # key - (required) is a type of string
+          key = sumo_search_panel.value["key"]
+          # title - (optional) is a type of string
+          title = sumo_search_panel.value["title"]
+          # visual_settings - (optional) is a type of string
+          visual_settings = sumo_search_panel.value["visual_settings"]
 
           dynamic "coloring_rule" {
             for_each = sumo_search_panel.value.coloring_rule
             content {
+              # multiple_series_aggregate_function - (required) is a type of string
               multiple_series_aggregate_function = coloring_rule.value["multiple_series_aggregate_function"]
-              scope                              = coloring_rule.value["scope"]
-              single_series_aggregate_function   = coloring_rule.value["single_series_aggregate_function"]
+              # scope - (required) is a type of string
+              scope = coloring_rule.value["scope"]
+              # single_series_aggregate_function - (required) is a type of string
+              single_series_aggregate_function = coloring_rule.value["single_series_aggregate_function"]
 
               dynamic "color_threshold" {
                 for_each = coloring_rule.value.color_threshold
                 content {
+                  # color - (required) is a type of string
                   color = color_threshold.value["color"]
-                  max   = color_threshold.value["max"]
-                  min   = color_threshold.value["min"]
+                  # max - (optional) is a type of number
+                  max = color_threshold.value["max"]
+                  # min - (optional) is a type of number
+                  min = color_threshold.value["min"]
                 }
               }
 
@@ -642,46 +666,63 @@ resource "sumologic_dashboard" "this" {
           dynamic "linked_dashboard" {
             for_each = sumo_search_panel.value.linked_dashboard
             content {
-              id                 = linked_dashboard.value["id"]
+              # id - (required) is a type of string
+              id = linked_dashboard.value["id"]
+              # include_time_range - (optional) is a type of bool
               include_time_range = linked_dashboard.value["include_time_range"]
-              include_variables  = linked_dashboard.value["include_variables"]
-              relative_path      = linked_dashboard.value["relative_path"]
+              # include_variables - (optional) is a type of bool
+              include_variables = linked_dashboard.value["include_variables"]
+              # relative_path - (optional) is a type of string
+              relative_path = linked_dashboard.value["relative_path"]
             }
           }
 
           dynamic "query" {
             for_each = sumo_search_panel.value.query
             content {
+              # metrics_query_mode - (optional) is a type of string
               metrics_query_mode = query.value["metrics_query_mode"]
-              query_key          = query.value["query_key"]
-              query_string       = query.value["query_string"]
-              query_type         = query.value["query_type"]
+              # query_key - (required) is a type of string
+              query_key = query.value["query_key"]
+              # query_string - (required) is a type of string
+              query_string = query.value["query_string"]
+              # query_type - (required) is a type of string
+              query_type = query.value["query_type"]
 
               dynamic "metrics_query_data" {
                 for_each = query.value.metrics_query_data
                 content {
+                  # aggregation_type - (optional) is a type of string
                   aggregation_type = metrics_query_data.value["aggregation_type"]
-                  group_by         = metrics_query_data.value["group_by"]
-                  metric           = metrics_query_data.value["metric"]
+                  # group_by - (optional) is a type of string
+                  group_by = metrics_query_data.value["group_by"]
+                  # metric - (required) is a type of string
+                  metric = metrics_query_data.value["metric"]
 
                   dynamic "filter" {
                     for_each = metrics_query_data.value.filter
                     content {
-                      key      = filter.value["key"]
+                      # key - (required) is a type of string
+                      key = filter.value["key"]
+                      # negation - (optional) is a type of bool
                       negation = filter.value["negation"]
-                      value    = filter.value["value"]
+                      # value - (required) is a type of string
+                      value = filter.value["value"]
                     }
                   }
 
                   dynamic "operator" {
                     for_each = metrics_query_data.value.operator
                     content {
+                      # operator_name - (required) is a type of string
                       operator_name = operator.value["operator_name"]
 
                       dynamic "parameter" {
                         for_each = operator.value.parameter
                         content {
-                          key   = parameter.value["key"]
+                          # key - (required) is a type of string
+                          key = parameter.value["key"]
+                          # value - (required) is a type of string
                           value = parameter.value["value"]
                         }
                       }
@@ -710,6 +751,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "epoch_time_range" {
                         for_each = from.value.epoch_time_range
                         content {
+                          # epoch_millis - (required) is a type of number
                           epoch_millis = epoch_time_range.value["epoch_millis"]
                         }
                       }
@@ -717,6 +759,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "iso8601_time_range" {
                         for_each = from.value.iso8601_time_range
                         content {
+                          # iso8601_time - (required) is a type of string
                           iso8601_time = iso8601_time_range.value["iso8601_time"]
                         }
                       }
@@ -724,6 +767,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "literal_time_range" {
                         for_each = from.value.literal_time_range
                         content {
+                          # range_name - (required) is a type of string
                           range_name = literal_time_range.value["range_name"]
                         }
                       }
@@ -731,6 +775,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "relative_time_range" {
                         for_each = from.value.relative_time_range
                         content {
+                          # relative_time - (required) is a type of string
                           relative_time = relative_time_range.value["relative_time"]
                         }
                       }
@@ -745,6 +790,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "epoch_time_range" {
                         for_each = to.value.epoch_time_range
                         content {
+                          # epoch_millis - (required) is a type of number
                           epoch_millis = epoch_time_range.value["epoch_millis"]
                         }
                       }
@@ -752,6 +798,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "iso8601_time_range" {
                         for_each = to.value.iso8601_time_range
                         content {
+                          # iso8601_time - (required) is a type of string
                           iso8601_time = iso8601_time_range.value["iso8601_time"]
                         }
                       }
@@ -759,6 +806,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "literal_time_range" {
                         for_each = to.value.literal_time_range
                         content {
+                          # range_name - (required) is a type of string
                           range_name = literal_time_range.value["range_name"]
                         }
                       }
@@ -766,6 +814,7 @@ resource "sumologic_dashboard" "this" {
                       dynamic "relative_time_range" {
                         for_each = to.value.relative_time_range
                         content {
+                          # relative_time - (required) is a type of string
                           relative_time = relative_time_range.value["relative_time"]
                         }
                       }
@@ -779,6 +828,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "complete_literal_time_range" {
                 for_each = time_range.value.complete_literal_time_range
                 content {
+                  # range_name - (required) is a type of string
                   range_name = complete_literal_time_range.value["range_name"]
                 }
               }
@@ -792,11 +842,16 @@ resource "sumologic_dashboard" "this" {
       dynamic "text_panel" {
         for_each = panel.value.text_panel
         content {
+          # keep_visual_settings_consistent_with_parent - (optional) is a type of bool
           keep_visual_settings_consistent_with_parent = text_panel.value["keep_visual_settings_consistent_with_parent"]
-          key                                         = text_panel.value["key"]
-          text                                        = text_panel.value["text"]
-          title                                       = text_panel.value["title"]
-          visual_settings                             = text_panel.value["visual_settings"]
+          # key - (required) is a type of string
+          key = text_panel.value["key"]
+          # text - (optional) is a type of string
+          text = text_panel.value["text"]
+          # title - (optional) is a type of string
+          title = text_panel.value["title"]
+          # visual_settings - (optional) is a type of string
+          visual_settings = text_panel.value["visual_settings"]
         }
       }
 
@@ -818,6 +873,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "epoch_time_range" {
                 for_each = from.value.epoch_time_range
                 content {
+                  # epoch_millis - (required) is a type of number
                   epoch_millis = epoch_time_range.value["epoch_millis"]
                 }
               }
@@ -825,6 +881,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "iso8601_time_range" {
                 for_each = from.value.iso8601_time_range
                 content {
+                  # iso8601_time - (required) is a type of string
                   iso8601_time = iso8601_time_range.value["iso8601_time"]
                 }
               }
@@ -832,6 +889,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "literal_time_range" {
                 for_each = from.value.literal_time_range
                 content {
+                  # range_name - (required) is a type of string
                   range_name = literal_time_range.value["range_name"]
                 }
               }
@@ -839,6 +897,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "relative_time_range" {
                 for_each = from.value.relative_time_range
                 content {
+                  # relative_time - (required) is a type of string
                   relative_time = relative_time_range.value["relative_time"]
                 }
               }
@@ -853,6 +912,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "epoch_time_range" {
                 for_each = to.value.epoch_time_range
                 content {
+                  # epoch_millis - (required) is a type of number
                   epoch_millis = epoch_time_range.value["epoch_millis"]
                 }
               }
@@ -860,6 +920,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "iso8601_time_range" {
                 for_each = to.value.iso8601_time_range
                 content {
+                  # iso8601_time - (required) is a type of string
                   iso8601_time = iso8601_time_range.value["iso8601_time"]
                 }
               }
@@ -867,6 +928,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "literal_time_range" {
                 for_each = to.value.literal_time_range
                 content {
+                  # range_name - (required) is a type of string
                   range_name = literal_time_range.value["range_name"]
                 }
               }
@@ -874,6 +936,7 @@ resource "sumologic_dashboard" "this" {
               dynamic "relative_time_range" {
                 for_each = to.value.relative_time_range
                 content {
+                  # relative_time - (required) is a type of string
                   relative_time = relative_time_range.value["relative_time"]
                 }
               }
@@ -887,6 +950,7 @@ resource "sumologic_dashboard" "this" {
       dynamic "complete_literal_time_range" {
         for_each = time_range.value.complete_literal_time_range
         content {
+          # range_name - (required) is a type of string
           range_name = complete_literal_time_range.value["range_name"]
         }
       }
@@ -901,7 +965,9 @@ resource "sumologic_dashboard" "this" {
       dynamic "data" {
         for_each = topology_label_map.value.data
         content {
-          label  = data.value["label"]
+          # label - (required) is a type of string
+          label = data.value["label"]
+          # values - (required) is a type of list of string
           values = data.value["values"]
         }
       }
@@ -912,12 +978,18 @@ resource "sumologic_dashboard" "this" {
   dynamic "variable" {
     for_each = var.variable
     content {
+      # allow_multi_select - (optional) is a type of bool
       allow_multi_select = variable.value["allow_multi_select"]
-      default_value      = variable.value["default_value"]
-      display_name       = variable.value["display_name"]
-      hide_from_ui       = variable.value["hide_from_ui"]
+      # default_value - (optional) is a type of string
+      default_value = variable.value["default_value"]
+      # display_name - (optional) is a type of string
+      display_name = variable.value["display_name"]
+      # hide_from_ui - (optional) is a type of bool
+      hide_from_ui = variable.value["hide_from_ui"]
+      # include_all_option - (optional) is a type of bool
       include_all_option = variable.value["include_all_option"]
-      name               = variable.value["name"]
+      # name - (required) is a type of string
+      name = variable.value["name"]
 
       dynamic "source_definition" {
         for_each = variable.value.source_definition
@@ -926,6 +998,7 @@ resource "sumologic_dashboard" "this" {
           dynamic "csv_variable_source_definition" {
             for_each = source_definition.value.csv_variable_source_definition
             content {
+              # values - (required) is a type of string
               values = csv_variable_source_definition.value["values"]
             }
           }
@@ -933,7 +1006,9 @@ resource "sumologic_dashboard" "this" {
           dynamic "log_query_variable_source_definition" {
             for_each = source_definition.value.log_query_variable_source_definition
             content {
+              # field - (required) is a type of string
               field = log_query_variable_source_definition.value["field"]
+              # query - (required) is a type of string
               query = log_query_variable_source_definition.value["query"]
             }
           }
@@ -941,8 +1016,10 @@ resource "sumologic_dashboard" "this" {
           dynamic "metadata_variable_source_definition" {
             for_each = source_definition.value.metadata_variable_source_definition
             content {
+              # filter - (required) is a type of string
               filter = metadata_variable_source_definition.value["filter"]
-              key    = metadata_variable_source_definition.value["key"]
+              # key - (required) is a type of string
+              key = metadata_variable_source_definition.value["key"]
             }
           }
 

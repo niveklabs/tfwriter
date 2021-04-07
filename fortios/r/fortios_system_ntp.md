@@ -172,21 +172,33 @@ variable "ntpserver" {
 
 ```terraform
 resource "fortios_system_ntp" "this" {
-  authentication        = var.authentication
+  # authentication - (optional) is a type of string
+  authentication = var.authentication
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  key                   = var.key
-  key_id                = var.key_id
-  key_type              = var.key_type
-  ntpsync               = var.ntpsync
-  server_mode           = var.server_mode
-  source_ip             = var.source_ip
-  source_ip6            = var.source_ip6
-  syncinterval          = var.syncinterval
-  type                  = var.type
+  # key - (optional) is a type of string
+  key = var.key
+  # key_id - (optional) is a type of number
+  key_id = var.key_id
+  # key_type - (optional) is a type of string
+  key_type = var.key_type
+  # ntpsync - (optional) is a type of string
+  ntpsync = var.ntpsync
+  # server_mode - (optional) is a type of string
+  server_mode = var.server_mode
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ip6 - (optional) is a type of string
+  source_ip6 = var.source_ip6
+  # syncinterval - (optional) is a type of number
+  syncinterval = var.syncinterval
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "interface" {
     for_each = var.interface
     content {
+      # interface_name - (optional) is a type of string
       interface_name = interface.value["interface_name"]
     }
   }
@@ -194,14 +206,22 @@ resource "fortios_system_ntp" "this" {
   dynamic "ntpserver" {
     for_each = var.ntpserver
     content {
-      authentication          = ntpserver.value["authentication"]
-      id                      = ntpserver.value["id"]
-      interface               = ntpserver.value["interface"]
+      # authentication - (optional) is a type of string
+      authentication = ntpserver.value["authentication"]
+      # id - (optional) is a type of number
+      id = ntpserver.value["id"]
+      # interface - (optional) is a type of string
+      interface = ntpserver.value["interface"]
+      # interface_select_method - (optional) is a type of string
       interface_select_method = ntpserver.value["interface_select_method"]
-      key                     = ntpserver.value["key"]
-      key_id                  = ntpserver.value["key_id"]
-      ntpv3                   = ntpserver.value["ntpv3"]
-      server                  = ntpserver.value["server"]
+      # key - (optional) is a type of string
+      key = ntpserver.value["key"]
+      # key_id - (optional) is a type of number
+      key_id = ntpserver.value["key_id"]
+      # ntpv3 - (optional) is a type of string
+      ntpv3 = ntpserver.value["ntpv3"]
+      # server - (optional) is a type of string
+      server = ntpserver.value["server"]
     }
   }
 

@@ -89,12 +89,18 @@ variable "visibility_timeout" {
 
 ```terraform
 resource "alicloud_mns_queue" "this" {
-  delay_seconds            = var.delay_seconds
-  maximum_message_size     = var.maximum_message_size
+  # delay_seconds - (optional) is a type of number
+  delay_seconds = var.delay_seconds
+  # maximum_message_size - (optional) is a type of number
+  maximum_message_size = var.maximum_message_size
+  # message_retention_period - (optional) is a type of number
   message_retention_period = var.message_retention_period
-  name                     = var.name
-  polling_wait_seconds     = var.polling_wait_seconds
-  visibility_timeout       = var.visibility_timeout
+  # name - (required) is a type of string
+  name = var.name
+  # polling_wait_seconds - (optional) is a type of number
+  polling_wait_seconds = var.polling_wait_seconds
+  # visibility_timeout - (optional) is a type of number
+  visibility_timeout = var.visibility_timeout
 }
 ```
 

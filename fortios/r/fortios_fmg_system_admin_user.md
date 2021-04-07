@@ -121,16 +121,26 @@ variable "userid" {
 
 ```terraform
 resource "fortios_fmg_system_admin_user" "this" {
-  description   = var.description
-  password      = var.password
-  profileid     = var.profileid
+  # description - (optional) is a type of string
+  description = var.description
+  # password - (optional) is a type of string
+  password = var.password
+  # profileid - (optional) is a type of string
+  profileid = var.profileid
+  # radius_server - (optional) is a type of string
   radius_server = var.radius_server
-  rpc_permit    = var.rpc_permit
-  trusthost1    = var.trusthost1
-  trusthost2    = var.trusthost2
-  trusthost3    = var.trusthost3
-  user_type     = var.user_type
-  userid        = var.userid
+  # rpc_permit - (optional) is a type of string
+  rpc_permit = var.rpc_permit
+  # trusthost1 - (optional) is a type of string
+  trusthost1 = var.trusthost1
+  # trusthost2 - (optional) is a type of string
+  trusthost2 = var.trusthost2
+  # trusthost3 - (optional) is a type of string
+  trusthost3 = var.trusthost3
+  # user_type - (optional) is a type of string
+  user_type = var.user_type
+  # userid - (required) is a type of string
+  userid = var.userid
 }
 ```
 

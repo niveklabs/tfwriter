@@ -110,20 +110,30 @@ variable "rule_list" {
 
 ```terraform
 resource "tencentcloud_dayu_cc_https_policy" "this" {
-  action        = var.action
-  domain        = var.domain
-  name          = var.name
-  resource_id   = var.resource_id
+  # action - (optional) is a type of string
+  action = var.action
+  # domain - (required) is a type of string
+  domain = var.domain
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
   resource_type = var.resource_type
-  rule_id       = var.rule_id
-  switch        = var.switch
+  # rule_id - (required) is a type of string
+  rule_id = var.rule_id
+  # switch - (optional) is a type of bool
+  switch = var.switch
 
   dynamic "rule_list" {
     for_each = var.rule_list
     content {
+      # operator - (required) is a type of string
       operator = rule_list.value["operator"]
-      skey     = rule_list.value["skey"]
-      value    = rule_list.value["value"]
+      # skey - (required) is a type of string
+      skey = rule_list.value["skey"]
+      # value - (required) is a type of string
+      value = rule_list.value["value"]
     }
   }
 

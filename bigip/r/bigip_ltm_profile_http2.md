@@ -145,19 +145,32 @@ variable "write_size" {
 
 ```terraform
 resource "bigip_ltm_profile_http2" "this" {
-  activation_modes                  = var.activation_modes
+  # activation_modes - (optional) is a type of set of string
+  activation_modes = var.activation_modes
+  # concurrent_streams_per_connection - (optional) is a type of number
   concurrent_streams_per_connection = var.concurrent_streams_per_connection
-  connection_idle_timeout           = var.connection_idle_timeout
-  defaults_from                     = var.defaults_from
-  enforce_tls_requirements          = var.enforce_tls_requirements
-  frame_size                        = var.frame_size
-  header_table_size                 = var.header_table_size
-  include_content_length            = var.include_content_length
-  insert_header                     = var.insert_header
-  insert_header_name                = var.insert_header_name
-  name                              = var.name
-  receive_window                    = var.receive_window
-  write_size                        = var.write_size
+  # connection_idle_timeout - (optional) is a type of number
+  connection_idle_timeout = var.connection_idle_timeout
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # enforce_tls_requirements - (optional) is a type of string
+  enforce_tls_requirements = var.enforce_tls_requirements
+  # frame_size - (optional) is a type of number
+  frame_size = var.frame_size
+  # header_table_size - (optional) is a type of number
+  header_table_size = var.header_table_size
+  # include_content_length - (optional) is a type of string
+  include_content_length = var.include_content_length
+  # insert_header - (optional) is a type of string
+  insert_header = var.insert_header
+  # insert_header_name - (optional) is a type of string
+  insert_header_name = var.insert_header_name
+  # name - (required) is a type of string
+  name = var.name
+  # receive_window - (optional) is a type of number
+  receive_window = var.receive_window
+  # write_size - (optional) is a type of number
+  write_size = var.write_size
 }
 ```
 

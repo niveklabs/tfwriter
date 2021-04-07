@@ -82,20 +82,26 @@ variable "vserver_groups" {
 
 ```terraform
 resource "alicloud_ess_scalinggroup_vserver_groups" "this" {
-  force            = var.force
+  # force - (optional) is a type of bool
+  force = var.force
+  # scaling_group_id - (required) is a type of string
   scaling_group_id = var.scaling_group_id
 
   dynamic "vserver_groups" {
     for_each = var.vserver_groups
     content {
+      # loadbalancer_id - (required) is a type of string
       loadbalancer_id = vserver_groups.value["loadbalancer_id"]
 
       dynamic "vserver_attributes" {
         for_each = vserver_groups.value.vserver_attributes
         content {
-          port             = vserver_attributes.value["port"]
+          # port - (required) is a type of number
+          port = vserver_attributes.value["port"]
+          # vserver_group_id - (required) is a type of string
           vserver_group_id = vserver_attributes.value["vserver_group_id"]
-          weight           = vserver_attributes.value["weight"]
+          # weight - (required) is a type of number
+          weight = vserver_attributes.value["weight"]
         }
       }
 

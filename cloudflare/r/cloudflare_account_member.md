@@ -56,8 +56,10 @@ variable "role_ids" {
 
 ```terraform
 resource "cloudflare_account_member" "this" {
+  # email_address - (required) is a type of string
   email_address = var.email_address
-  role_ids      = var.role_ids
+  # role_ids - (required) is a type of set of string
+  role_ids = var.role_ids
 }
 ```
 

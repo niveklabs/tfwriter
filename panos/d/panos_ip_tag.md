@@ -66,8 +66,11 @@ variable "vsys" {
 
 ```terraform
 data "panos_ip_tag" "this" {
-  ip   = var.ip
-  tag  = var.tag
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # vsys - (optional) is a type of string
   vsys = var.vsys
 }
 ```

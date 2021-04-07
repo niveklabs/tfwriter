@@ -258,33 +258,60 @@ variable "when_rr_enable" {
 
 ```terraform
 resource "thunder_slb_template_virtual_port" "this" {
-  aflow                      = var.aflow
-  allow_syn_otherflags       = var.allow_syn_otherflags
+  # aflow - (optional) is a type of number
+  aflow = var.aflow
+  # allow_syn_otherflags - (optional) is a type of number
+  allow_syn_otherflags = var.allow_syn_otherflags
+  # allow_vip_to_rport_mapping - (optional) is a type of number
   allow_vip_to_rport_mapping = var.allow_vip_to_rport_mapping
-  conn_limit                 = var.conn_limit
-  conn_limit_no_logging      = var.conn_limit_no_logging
-  conn_limit_reset           = var.conn_limit_reset
-  conn_rate_limit            = var.conn_rate_limit
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # conn_limit_no_logging - (optional) is a type of number
+  conn_limit_no_logging = var.conn_limit_no_logging
+  # conn_limit_reset - (optional) is a type of number
+  conn_limit_reset = var.conn_limit_reset
+  # conn_rate_limit - (optional) is a type of number
+  conn_rate_limit = var.conn_rate_limit
+  # conn_rate_limit_no_logging - (optional) is a type of number
   conn_rate_limit_no_logging = var.conn_rate_limit_no_logging
-  conn_rate_limit_reset      = var.conn_rate_limit_reset
-  drop_unknown_conn          = var.drop_unknown_conn
-  dscp                       = var.dscp
-  ignore_tcp_msl             = var.ignore_tcp_msl
-  log_options                = var.log_options
-  name                       = var.name
-  non_syn_initiation         = var.non_syn_initiation
-  pkt_rate_interval          = var.pkt_rate_interval
-  pkt_rate_limit_reset       = var.pkt_rate_limit_reset
-  pkt_rate_type              = var.pkt_rate_type
-  rate                       = var.rate
-  rate_interval              = var.rate_interval
-  reset_l7_on_failover       = var.reset_l7_on_failover
-  reset_unknown_conn         = var.reset_unknown_conn
-  snat_msl                   = var.snat_msl
-  snat_port_preserve         = var.snat_port_preserve
-  user_tag                   = var.user_tag
-  uuid                       = var.uuid
-  when_rr_enable             = var.when_rr_enable
+  # conn_rate_limit_reset - (optional) is a type of number
+  conn_rate_limit_reset = var.conn_rate_limit_reset
+  # drop_unknown_conn - (optional) is a type of number
+  drop_unknown_conn = var.drop_unknown_conn
+  # dscp - (optional) is a type of number
+  dscp = var.dscp
+  # ignore_tcp_msl - (optional) is a type of number
+  ignore_tcp_msl = var.ignore_tcp_msl
+  # log_options - (optional) is a type of string
+  log_options = var.log_options
+  # name - (optional) is a type of string
+  name = var.name
+  # non_syn_initiation - (optional) is a type of number
+  non_syn_initiation = var.non_syn_initiation
+  # pkt_rate_interval - (optional) is a type of string
+  pkt_rate_interval = var.pkt_rate_interval
+  # pkt_rate_limit_reset - (optional) is a type of number
+  pkt_rate_limit_reset = var.pkt_rate_limit_reset
+  # pkt_rate_type - (optional) is a type of string
+  pkt_rate_type = var.pkt_rate_type
+  # rate - (optional) is a type of number
+  rate = var.rate
+  # rate_interval - (optional) is a type of string
+  rate_interval = var.rate_interval
+  # reset_l7_on_failover - (optional) is a type of number
+  reset_l7_on_failover = var.reset_l7_on_failover
+  # reset_unknown_conn - (optional) is a type of number
+  reset_unknown_conn = var.reset_unknown_conn
+  # snat_msl - (optional) is a type of number
+  snat_msl = var.snat_msl
+  # snat_port_preserve - (optional) is a type of number
+  snat_port_preserve = var.snat_port_preserve
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # when_rr_enable - (optional) is a type of number
+  when_rr_enable = var.when_rr_enable
 }
 ```
 

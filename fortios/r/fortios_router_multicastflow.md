@@ -83,15 +83,21 @@ variable "flows" {
 
 ```terraform
 resource "fortios_router_multicastflow" "this" {
-  comments              = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "flows" {
     for_each = var.flows
     content {
-      group_addr  = flows.value["group_addr"]
-      id          = flows.value["id"]
+      # group_addr - (optional) is a type of string
+      group_addr = flows.value["group_addr"]
+      # id - (optional) is a type of number
+      id = flows.value["id"]
+      # source_addr - (optional) is a type of string
       source_addr = flows.value["source_addr"]
     }
   }

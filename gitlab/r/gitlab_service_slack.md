@@ -224,29 +224,52 @@ variable "wiki_page_events" {
 
 ```terraform
 resource "gitlab_service_slack" "this" {
-  branches_to_be_notified      = var.branches_to_be_notified
-  confidential_issue_channel   = var.confidential_issue_channel
-  confidential_issues_events   = var.confidential_issues_events
-  confidential_note_events     = var.confidential_note_events
-  issue_channel                = var.issue_channel
-  issues_events                = var.issues_events
-  merge_request_channel        = var.merge_request_channel
-  merge_requests_events        = var.merge_requests_events
-  note_channel                 = var.note_channel
-  note_events                  = var.note_events
+  # branches_to_be_notified - (optional) is a type of string
+  branches_to_be_notified = var.branches_to_be_notified
+  # confidential_issue_channel - (optional) is a type of string
+  confidential_issue_channel = var.confidential_issue_channel
+  # confidential_issues_events - (optional) is a type of bool
+  confidential_issues_events = var.confidential_issues_events
+  # confidential_note_events - (optional) is a type of bool
+  confidential_note_events = var.confidential_note_events
+  # issue_channel - (optional) is a type of string
+  issue_channel = var.issue_channel
+  # issues_events - (optional) is a type of bool
+  issues_events = var.issues_events
+  # merge_request_channel - (optional) is a type of string
+  merge_request_channel = var.merge_request_channel
+  # merge_requests_events - (optional) is a type of bool
+  merge_requests_events = var.merge_requests_events
+  # note_channel - (optional) is a type of string
+  note_channel = var.note_channel
+  # note_events - (optional) is a type of bool
+  note_events = var.note_events
+  # notify_only_broken_pipelines - (optional) is a type of bool
   notify_only_broken_pipelines = var.notify_only_broken_pipelines
-  notify_only_default_branch   = var.notify_only_default_branch
-  pipeline_channel             = var.pipeline_channel
-  pipeline_events              = var.pipeline_events
-  project                      = var.project
-  push_channel                 = var.push_channel
-  push_events                  = var.push_events
-  tag_push_channel             = var.tag_push_channel
-  tag_push_events              = var.tag_push_events
-  username                     = var.username
-  webhook                      = var.webhook
-  wiki_page_channel            = var.wiki_page_channel
-  wiki_page_events             = var.wiki_page_events
+  # notify_only_default_branch - (optional) is a type of bool
+  notify_only_default_branch = var.notify_only_default_branch
+  # pipeline_channel - (optional) is a type of string
+  pipeline_channel = var.pipeline_channel
+  # pipeline_events - (optional) is a type of bool
+  pipeline_events = var.pipeline_events
+  # project - (required) is a type of string
+  project = var.project
+  # push_channel - (optional) is a type of string
+  push_channel = var.push_channel
+  # push_events - (optional) is a type of bool
+  push_events = var.push_events
+  # tag_push_channel - (optional) is a type of string
+  tag_push_channel = var.tag_push_channel
+  # tag_push_events - (optional) is a type of bool
+  tag_push_events = var.tag_push_events
+  # username - (optional) is a type of string
+  username = var.username
+  # webhook - (required) is a type of string
+  webhook = var.webhook
+  # wiki_page_channel - (optional) is a type of string
+  wiki_page_channel = var.wiki_page_channel
+  # wiki_page_events - (optional) is a type of bool
+  wiki_page_events = var.wiki_page_events
 }
 ```
 

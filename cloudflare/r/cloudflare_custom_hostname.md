@@ -107,30 +107,46 @@ variable "ssl" {
 
 ```terraform
 resource "cloudflare_custom_hostname" "this" {
+  # custom_origin_server - (optional) is a type of string
   custom_origin_server = var.custom_origin_server
-  hostname             = var.hostname
-  zone_id              = var.zone_id
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "ssl" {
     for_each = var.ssl
     content {
+      # certificate_authority - (optional) is a type of string
       certificate_authority = ssl.value["certificate_authority"]
-      cname_name            = ssl.value["cname_name"]
-      cname_target          = ssl.value["cname_target"]
-      custom_certificate    = ssl.value["custom_certificate"]
-      custom_key            = ssl.value["custom_key"]
-      method                = ssl.value["method"]
-      status                = ssl.value["status"]
-      type                  = ssl.value["type"]
-      wildcard              = ssl.value["wildcard"]
+      # cname_name - (optional) is a type of string
+      cname_name = ssl.value["cname_name"]
+      # cname_target - (optional) is a type of string
+      cname_target = ssl.value["cname_target"]
+      # custom_certificate - (optional) is a type of string
+      custom_certificate = ssl.value["custom_certificate"]
+      # custom_key - (optional) is a type of string
+      custom_key = ssl.value["custom_key"]
+      # method - (optional) is a type of string
+      method = ssl.value["method"]
+      # status - (optional) is a type of string
+      status = ssl.value["status"]
+      # type - (optional) is a type of string
+      type = ssl.value["type"]
+      # wildcard - (optional) is a type of bool
+      wildcard = ssl.value["wildcard"]
 
       dynamic "settings" {
         for_each = ssl.value.settings
         content {
-          ciphers         = settings.value["ciphers"]
-          http2           = settings.value["http2"]
+          # ciphers - (optional) is a type of list of string
+          ciphers = settings.value["ciphers"]
+          # http2 - (optional) is a type of string
+          http2 = settings.value["http2"]
+          # min_tls_version - (optional) is a type of string
           min_tls_version = settings.value["min_tls_version"]
-          tls13           = settings.value["tls13"]
+          # tls13 - (optional) is a type of string
+          tls13 = settings.value["tls13"]
         }
       }
 

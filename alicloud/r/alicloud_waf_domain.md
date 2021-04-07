@@ -184,27 +184,45 @@ variable "log_headers" {
 
 ```terraform
 resource "alicloud_waf_domain" "this" {
-  cluster_type      = var.cluster_type
-  connection_time   = var.connection_time
-  domain            = var.domain
-  domain_name       = var.domain_name
-  http2_port        = var.http2_port
-  http_port         = var.http_port
-  http_to_user_ip   = var.http_to_user_ip
-  https_port        = var.https_port
-  https_redirect    = var.https_redirect
-  instance_id       = var.instance_id
+  # cluster_type - (optional) is a type of string
+  cluster_type = var.cluster_type
+  # connection_time - (optional) is a type of number
+  connection_time = var.connection_time
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # http2_port - (optional) is a type of set of string
+  http2_port = var.http2_port
+  # http_port - (optional) is a type of set of string
+  http_port = var.http_port
+  # http_to_user_ip - (optional) is a type of string
+  http_to_user_ip = var.http_to_user_ip
+  # https_port - (optional) is a type of set of string
+  https_port = var.https_port
+  # https_redirect - (optional) is a type of string
+  https_redirect = var.https_redirect
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # is_access_product - (required) is a type of string
   is_access_product = var.is_access_product
-  load_balancing    = var.load_balancing
-  read_time         = var.read_time
+  # load_balancing - (optional) is a type of string
+  load_balancing = var.load_balancing
+  # read_time - (optional) is a type of number
+  read_time = var.read_time
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  source_ips        = var.source_ips
-  write_time        = var.write_time
+  # source_ips - (optional) is a type of set of string
+  source_ips = var.source_ips
+  # write_time - (optional) is a type of number
+  write_time = var.write_time
 
   dynamic "log_headers" {
     for_each = var.log_headers
     content {
-      key   = log_headers.value["key"]
+      # key - (optional) is a type of string
+      key = log_headers.value["key"]
+      # value - (optional) is a type of string
       value = log_headers.value["value"]
     }
   }

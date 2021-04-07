@@ -77,10 +77,15 @@ variable "security_domain_name" {
 
 ```terraform
 resource "aviatrix_device_aws_tgw_attachment" "this" {
-  aws_tgw_name         = var.aws_tgw_name
-  connection_name      = var.connection_name
-  device_bgp_asn       = var.device_bgp_asn
-  device_name          = var.device_name
+  # aws_tgw_name - (required) is a type of string
+  aws_tgw_name = var.aws_tgw_name
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # device_bgp_asn - (required) is a type of number
+  device_bgp_asn = var.device_bgp_asn
+  # device_name - (required) is a type of string
+  device_name = var.device_name
+  # security_domain_name - (required) is a type of string
   security_domain_name = var.security_domain_name
 }
 ```

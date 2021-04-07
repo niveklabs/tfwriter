@@ -71,10 +71,14 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_waf_rule" "this" {
-  mode       = var.mode
+  # mode - (required) is a type of string
+  mode = var.mode
+  # package_id - (optional) is a type of string
   package_id = var.package_id
-  rule_id    = var.rule_id
-  zone_id    = var.zone_id
+  # rule_id - (required) is a type of string
+  rule_id = var.rule_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

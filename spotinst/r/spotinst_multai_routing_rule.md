@@ -110,18 +110,27 @@ variable "tags" {
 
 ```terraform
 resource "spotinst_multai_routing_rule" "this" {
-  balancer_id    = var.balancer_id
-  listener_id    = var.listener_id
+  # balancer_id - (required) is a type of string
+  balancer_id = var.balancer_id
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # middleware_ids - (optional) is a type of list of string
   middleware_ids = var.middleware_ids
-  priority       = var.priority
-  route          = var.route
-  strategy       = var.strategy
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # route - (required) is a type of string
+  route = var.route
+  # strategy - (optional) is a type of string
+  strategy = var.strategy
+  # target_set_ids - (required) is a type of list of string
   target_set_ids = var.target_set_ids
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

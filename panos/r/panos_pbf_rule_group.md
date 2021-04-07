@@ -159,54 +159,78 @@ variable "rule" {
 
 ```terraform
 resource "panos_pbf_rule_group" "this" {
-  position_keyword   = var.position_keyword
+  # position_keyword - (optional) is a type of string
+  position_keyword = var.position_keyword
+  # position_reference - (optional) is a type of string
   position_reference = var.position_reference
-  vsys               = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # active_active_device_binding - (optional) is a type of string
       active_active_device_binding = rule.value["active_active_device_binding"]
-      description                  = rule.value["description"]
-      disabled                     = rule.value["disabled"]
-      name                         = rule.value["name"]
-      schedule                     = rule.value["schedule"]
-      tags                         = rule.value["tags"]
-      uuid                         = rule.value["uuid"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # schedule - (optional) is a type of string
+      schedule = rule.value["schedule"]
+      # tags - (optional) is a type of list of string
+      tags = rule.value["tags"]
+      # uuid - (optional) is a type of string
+      uuid = rule.value["uuid"]
 
       dynamic "destination" {
         for_each = rule.value.destination
         content {
-          addresses    = destination.value["addresses"]
+          # addresses - (required) is a type of set of string
+          addresses = destination.value["addresses"]
+          # applications - (required) is a type of set of string
           applications = destination.value["applications"]
-          negate       = destination.value["negate"]
-          services     = destination.value["services"]
+          # negate - (optional) is a type of bool
+          negate = destination.value["negate"]
+          # services - (required) is a type of set of string
+          services = destination.value["services"]
         }
       }
 
       dynamic "forwarding" {
         for_each = rule.value.forwarding
         content {
-          action           = forwarding.value["action"]
+          # action - (optional) is a type of string
+          action = forwarding.value["action"]
+          # egress_interface - (optional) is a type of string
           egress_interface = forwarding.value["egress_interface"]
-          next_hop_type    = forwarding.value["next_hop_type"]
-          next_hop_value   = forwarding.value["next_hop_value"]
-          vsys             = forwarding.value["vsys"]
+          # next_hop_type - (optional) is a type of string
+          next_hop_type = forwarding.value["next_hop_type"]
+          # next_hop_value - (optional) is a type of string
+          next_hop_value = forwarding.value["next_hop_value"]
+          # vsys - (optional) is a type of string
+          vsys = forwarding.value["vsys"]
 
           dynamic "monitor" {
             for_each = forwarding.value.monitor
             content {
+              # disable_if_unreachable - (optional) is a type of bool
               disable_if_unreachable = monitor.value["disable_if_unreachable"]
-              ip_address             = monitor.value["ip_address"]
-              profile                = monitor.value["profile"]
+              # ip_address - (optional) is a type of string
+              ip_address = monitor.value["ip_address"]
+              # profile - (optional) is a type of string
+              profile = monitor.value["profile"]
             }
           }
 
           dynamic "symmetric_return" {
             for_each = forwarding.value.symmetric_return
             content {
+              # addresses - (optional) is a type of list of string
               addresses = symmetric_return.value["addresses"]
-              enable    = symmetric_return.value["enable"]
+              # enable - (optional) is a type of bool
+              enable = symmetric_return.value["enable"]
             }
           }
 
@@ -216,11 +240,16 @@ resource "panos_pbf_rule_group" "this" {
       dynamic "source" {
         for_each = rule.value.source
         content {
-          addresses  = source.value["addresses"]
+          # addresses - (required) is a type of set of string
+          addresses = source.value["addresses"]
+          # interfaces - (optional) is a type of set of string
           interfaces = source.value["interfaces"]
-          negate     = source.value["negate"]
-          users      = source.value["users"]
-          zones      = source.value["zones"]
+          # negate - (optional) is a type of bool
+          negate = source.value["negate"]
+          # users - (required) is a type of set of string
+          users = source.value["users"]
+          # zones - (optional) is a type of set of string
+          zones = source.value["zones"]
         }
       }
 

@@ -64,9 +64,12 @@ variable "region_id" {
 
 ```terraform
 data "alicloud_cen_region_route_entries" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  region_id   = var.region_id
+  # region_id - (required) is a type of string
+  region_id = var.region_id
 }
 ```
 

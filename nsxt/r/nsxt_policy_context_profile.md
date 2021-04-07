@@ -143,22 +143,30 @@ variable "url_category" {
 
 ```terraform
 resource "nsxt_policy_context_profile" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  nsx_id       = var.nsx_id
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "app_id" {
     for_each = var.app_id
     content {
+      # description - (optional) is a type of string
       description = app_id.value["description"]
-      value       = app_id.value["value"]
+      # value - (required) is a type of set of string
+      value = app_id.value["value"]
 
       dynamic "sub_attribute" {
         for_each = app_id.value.sub_attribute
         content {
+          # cifs_smb_version - (optional) is a type of set of string
           cifs_smb_version = sub_attribute.value["cifs_smb_version"]
+          # tls_cipher_suite - (optional) is a type of set of string
           tls_cipher_suite = sub_attribute.value["tls_cipher_suite"]
-          tls_version      = sub_attribute.value["tls_version"]
+          # tls_version - (optional) is a type of set of string
+          tls_version = sub_attribute.value["tls_version"]
         }
       }
 
@@ -168,24 +176,30 @@ resource "nsxt_policy_context_profile" "this" {
   dynamic "domain_name" {
     for_each = var.domain_name
     content {
+      # description - (optional) is a type of string
       description = domain_name.value["description"]
-      value       = domain_name.value["value"]
+      # value - (required) is a type of set of string
+      value = domain_name.value["value"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 
   dynamic "url_category" {
     for_each = var.url_category
     content {
+      # description - (optional) is a type of string
       description = url_category.value["description"]
-      value       = url_category.value["value"]
+      # value - (required) is a type of set of string
+      value = url_category.value["value"]
     }
   }
 

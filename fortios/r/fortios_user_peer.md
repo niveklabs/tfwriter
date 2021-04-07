@@ -146,19 +146,32 @@ variable "two_factor" {
 
 ```terraform
 resource "fortios_user_peer" "this" {
-  ca                   = var.ca
-  cn                   = var.cn
-  cn_type              = var.cn_type
-  ldap_mode            = var.ldap_mode
-  ldap_password        = var.ldap_password
-  ldap_server          = var.ldap_server
-  ldap_username        = var.ldap_username
-  mandatory_ca_verify  = var.mandatory_ca_verify
-  name                 = var.name
+  # ca - (optional) is a type of string
+  ca = var.ca
+  # cn - (optional) is a type of string
+  cn = var.cn
+  # cn_type - (optional) is a type of string
+  cn_type = var.cn_type
+  # ldap_mode - (optional) is a type of string
+  ldap_mode = var.ldap_mode
+  # ldap_password - (optional) is a type of string
+  ldap_password = var.ldap_password
+  # ldap_server - (optional) is a type of string
+  ldap_server = var.ldap_server
+  # ldap_username - (optional) is a type of string
+  ldap_username = var.ldap_username
+  # mandatory_ca_verify - (optional) is a type of string
+  mandatory_ca_verify = var.mandatory_ca_verify
+  # name - (optional) is a type of string
+  name = var.name
+  # ocsp_override_server - (optional) is a type of string
   ocsp_override_server = var.ocsp_override_server
-  passwd               = var.passwd
-  subject              = var.subject
-  two_factor           = var.two_factor
+  # passwd - (optional) is a type of string
+  passwd = var.passwd
+  # subject - (optional) is a type of string
+  subject = var.subject
+  # two_factor - (optional) is a type of string
+  two_factor = var.two_factor
 }
 ```
 

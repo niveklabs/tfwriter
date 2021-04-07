@@ -86,17 +86,24 @@ variable "service_index" {
 
 ```terraform
 resource "fortios_nsxt_servicechain" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "service_index" {
     for_each = var.service_index
     content {
-      id            = service_index.value["id"]
-      name          = service_index.value["name"]
+      # id - (optional) is a type of number
+      id = service_index.value["id"]
+      # name - (optional) is a type of string
+      name = service_index.value["name"]
+      # reverse_index - (optional) is a type of number
       reverse_index = service_index.value["reverse_index"]
-      vd            = service_index.value["vd"]
+      # vd - (optional) is a type of string
+      vd = service_index.value["vd"]
     }
   }
 

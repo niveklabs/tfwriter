@@ -215,28 +215,50 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_layer3_subinterface" "this" {
-  adjust_tcp_mss            = var.adjust_tcp_mss
-  comment                   = var.comment
+  # adjust_tcp_mss - (optional) is a type of bool
+  adjust_tcp_mss = var.adjust_tcp_mss
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # create_dhcp_default_route - (optional) is a type of bool
   create_dhcp_default_route = var.create_dhcp_default_route
-  decrypt_forward           = var.decrypt_forward
+  # decrypt_forward - (optional) is a type of bool
+  decrypt_forward = var.decrypt_forward
+  # dhcp_default_route_metric - (optional) is a type of number
   dhcp_default_route_metric = var.dhcp_default_route_metric
+  # dhcp_send_hostname_enable - (optional) is a type of bool
   dhcp_send_hostname_enable = var.dhcp_send_hostname_enable
-  dhcp_send_hostname_value  = var.dhcp_send_hostname_value
-  enable_dhcp               = var.enable_dhcp
-  interface_type            = var.interface_type
-  ipv4_mss_adjust           = var.ipv4_mss_adjust
-  ipv6_enabled              = var.ipv6_enabled
-  ipv6_interface_id         = var.ipv6_interface_id
-  ipv6_mss_adjust           = var.ipv6_mss_adjust
-  management_profile        = var.management_profile
-  mtu                       = var.mtu
-  name                      = var.name
-  netflow_profile           = var.netflow_profile
-  parent_interface          = var.parent_interface
-  static_ips                = var.static_ips
-  tag                       = var.tag
-  template                  = var.template
-  vsys                      = var.vsys
+  # dhcp_send_hostname_value - (optional) is a type of string
+  dhcp_send_hostname_value = var.dhcp_send_hostname_value
+  # enable_dhcp - (optional) is a type of bool
+  enable_dhcp = var.enable_dhcp
+  # interface_type - (optional) is a type of string
+  interface_type = var.interface_type
+  # ipv4_mss_adjust - (optional) is a type of number
+  ipv4_mss_adjust = var.ipv4_mss_adjust
+  # ipv6_enabled - (optional) is a type of bool
+  ipv6_enabled = var.ipv6_enabled
+  # ipv6_interface_id - (optional) is a type of string
+  ipv6_interface_id = var.ipv6_interface_id
+  # ipv6_mss_adjust - (optional) is a type of number
+  ipv6_mss_adjust = var.ipv6_mss_adjust
+  # management_profile - (optional) is a type of string
+  management_profile = var.management_profile
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # parent_interface - (required) is a type of string
+  parent_interface = var.parent_interface
+  # static_ips - (optional) is a type of list of string
+  static_ips = var.static_ips
+  # tag - (optional) is a type of number
+  tag = var.tag
+  # template - (required) is a type of string
+  template = var.template
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

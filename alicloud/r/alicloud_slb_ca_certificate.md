@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_slb_ca_certificate" "this" {
-  ca_certificate    = var.ca_certificate
-  name              = var.name
+  # ca_certificate - (required) is a type of string
+  ca_certificate = var.ca_certificate
+  # name - (optional) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

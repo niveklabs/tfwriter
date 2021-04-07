@@ -205,19 +205,29 @@ variable "ranges" {
 
 ```terraform
 resource "avi_ipaddrgroup" "this" {
-  apic_epg_name         = var.apic_epg_name
-  country_codes         = var.country_codes
-  description           = var.description
-  marathon_app_name     = var.marathon_app_name
+  # apic_epg_name - (optional) is a type of string
+  apic_epg_name = var.apic_epg_name
+  # country_codes - (optional) is a type of list of string
+  country_codes = var.country_codes
+  # description - (optional) is a type of string
+  description = var.description
+  # marathon_app_name - (optional) is a type of string
+  marathon_app_name = var.marathon_app_name
+  # marathon_service_port - (optional) is a type of number
   marathon_service_port = var.marathon_service_port
-  name                  = var.name
-  tenant_ref            = var.tenant_ref
-  uuid                  = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "addrs" {
     for_each = var.addrs
     content {
+      # addr - (required) is a type of string
       addr = addrs.value["addr"]
+      # type - (required) is a type of string
       type = addrs.value["type"]
     }
   }
@@ -225,14 +235,19 @@ resource "avi_ipaddrgroup" "this" {
   dynamic "ip_ports" {
     for_each = var.ip_ports
     content {
+      # hostname - (optional) is a type of string
       hostname = ip_ports.value["hostname"]
-      name     = ip_ports.value["name"]
-      port     = ip_ports.value["port"]
+      # name - (optional) is a type of string
+      name = ip_ports.value["name"]
+      # port - (required) is a type of number
+      port = ip_ports.value["port"]
 
       dynamic "ip" {
         for_each = ip_ports.value.ip
         content {
+          # addr - (required) is a type of string
           addr = ip.value["addr"]
+          # type - (required) is a type of string
           type = ip.value["type"]
         }
       }
@@ -243,12 +258,15 @@ resource "avi_ipaddrgroup" "this" {
   dynamic "prefixes" {
     for_each = var.prefixes
     content {
+      # mask - (required) is a type of number
       mask = prefixes.value["mask"]
 
       dynamic "ip_addr" {
         for_each = prefixes.value.ip_addr
         content {
+          # addr - (required) is a type of string
           addr = ip_addr.value["addr"]
+          # type - (required) is a type of string
           type = ip_addr.value["type"]
         }
       }
@@ -263,7 +281,9 @@ resource "avi_ipaddrgroup" "this" {
       dynamic "begin" {
         for_each = ranges.value.begin
         content {
+          # addr - (required) is a type of string
           addr = begin.value["addr"]
+          # type - (required) is a type of string
           type = begin.value["type"]
         }
       }
@@ -271,7 +291,9 @@ resource "avi_ipaddrgroup" "this" {
       dynamic "end" {
         for_each = ranges.value.end
         content {
+          # addr - (required) is a type of string
           addr = end.value["addr"]
+          # type - (required) is a type of string
           type = end.value["type"]
         }
       }

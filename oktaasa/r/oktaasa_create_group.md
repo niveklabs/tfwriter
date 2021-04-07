@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "oktaasa_create_group" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

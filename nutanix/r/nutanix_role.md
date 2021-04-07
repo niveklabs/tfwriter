@@ -126,13 +126,17 @@ variable "project_reference" {
 
 ```terraform
 resource "nutanix_role" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -140,8 +144,11 @@ resource "nutanix_role" "this" {
   dynamic "owner_reference" {
     for_each = var.owner_reference
     content {
+      # kind - (optional) is a type of string
       kind = owner_reference.value["kind"]
+      # name - (optional) is a type of string
       name = owner_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = owner_reference.value["uuid"]
     }
   }
@@ -149,8 +156,11 @@ resource "nutanix_role" "this" {
   dynamic "permission_reference_list" {
     for_each = var.permission_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = permission_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = permission_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = permission_reference_list.value["uuid"]
     }
   }
@@ -158,8 +168,11 @@ resource "nutanix_role" "this" {
   dynamic "project_reference" {
     for_each = var.project_reference
     content {
+      # kind - (optional) is a type of string
       kind = project_reference.value["kind"]
+      # name - (optional) is a type of string
       name = project_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = project_reference.value["uuid"]
     }
   }

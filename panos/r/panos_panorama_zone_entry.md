@@ -79,11 +79,16 @@ variable "zone" {
 
 ```terraform
 resource "panos_panorama_zone_entry" "this" {
+  # interface - (required) is a type of string
   interface = var.interface
-  mode      = var.mode
-  template  = var.template
-  vsys      = var.vsys
-  zone      = var.zone
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # template - (required) is a type of string
+  template = var.template
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

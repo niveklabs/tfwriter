@@ -486,57 +486,101 @@ variable "resources" {
 
 ```terraform
 resource "avi_serviceengine" "this" {
-  availability_zone  = var.availability_zone
-  cloud_ref          = var.cloud_ref
-  container_mode     = var.container_mode
-  container_type     = var.container_type
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # container_mode - (optional) is a type of bool
+  container_mode = var.container_mode
+  # container_type - (optional) is a type of string
+  container_type = var.container_type
+  # controller_created - (optional) is a type of bool
   controller_created = var.controller_created
-  controller_ip      = var.controller_ip
-  enable_state       = var.enable_state
-  flavor             = var.flavor
-  host_ref           = var.host_ref
-  hypervisor         = var.hypervisor
-  name               = var.name
-  se_group_ref       = var.se_group_ref
-  tenant_ref         = var.tenant_ref
-  uuid               = var.uuid
+  # controller_ip - (optional) is a type of string
+  controller_ip = var.controller_ip
+  # enable_state - (optional) is a type of string
+  enable_state = var.enable_state
+  # flavor - (optional) is a type of string
+  flavor = var.flavor
+  # host_ref - (optional) is a type of string
+  host_ref = var.host_ref
+  # hypervisor - (optional) is a type of string
+  hypervisor = var.hypervisor
+  # name - (optional) is a type of string
+  name = var.name
+  # se_group_ref - (optional) is a type of string
+  se_group_ref = var.se_group_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "data_vnics" {
     for_each = var.data_vnics
     content {
-      adapter                 = data_vnics.value["adapter"]
-      aggregator_chgd         = data_vnics.value["aggregator_chgd"]
-      can_se_dp_takeover      = data_vnics.value["can_se_dp_takeover"]
-      connected               = data_vnics.value["connected"]
-      del_pending             = data_vnics.value["del_pending"]
-      delete_vnic             = data_vnics.value["delete_vnic"]
-      dhcp_enabled            = data_vnics.value["dhcp_enabled"]
-      dp_deletion_done        = data_vnics.value["dp_deletion_done"]
-      enabled                 = data_vnics.value["enabled"]
-      if_name                 = data_vnics.value["if_name"]
-      ip6_autocfg_enabled     = data_vnics.value["ip6_autocfg_enabled"]
-      is_asm                  = data_vnics.value["is_asm"]
+      # adapter - (optional) is a type of string
+      adapter = data_vnics.value["adapter"]
+      # aggregator_chgd - (optional) is a type of bool
+      aggregator_chgd = data_vnics.value["aggregator_chgd"]
+      # can_se_dp_takeover - (optional) is a type of bool
+      can_se_dp_takeover = data_vnics.value["can_se_dp_takeover"]
+      # connected - (optional) is a type of bool
+      connected = data_vnics.value["connected"]
+      # del_pending - (optional) is a type of bool
+      del_pending = data_vnics.value["del_pending"]
+      # delete_vnic - (optional) is a type of bool
+      delete_vnic = data_vnics.value["delete_vnic"]
+      # dhcp_enabled - (optional) is a type of bool
+      dhcp_enabled = data_vnics.value["dhcp_enabled"]
+      # dp_deletion_done - (optional) is a type of bool
+      dp_deletion_done = data_vnics.value["dp_deletion_done"]
+      # enabled - (optional) is a type of bool
+      enabled = data_vnics.value["enabled"]
+      # if_name - (optional) is a type of string
+      if_name = data_vnics.value["if_name"]
+      # ip6_autocfg_enabled - (optional) is a type of bool
+      ip6_autocfg_enabled = data_vnics.value["ip6_autocfg_enabled"]
+      # is_asm - (optional) is a type of bool
+      is_asm = data_vnics.value["is_asm"]
+      # is_avi_internal_network - (optional) is a type of bool
       is_avi_internal_network = data_vnics.value["is_avi_internal_network"]
-      is_hsm                  = data_vnics.value["is_hsm"]
-      is_mgmt                 = data_vnics.value["is_mgmt"]
-      is_portchannel          = data_vnics.value["is_portchannel"]
-      link_up                 = data_vnics.value["link_up"]
-      linux_name              = data_vnics.value["linux_name"]
-      mac_address             = data_vnics.value["mac_address"]
-      mtu                     = data_vnics.value["mtu"]
-      network_name            = data_vnics.value["network_name"]
-      network_ref             = data_vnics.value["network_ref"]
-      pci_id                  = data_vnics.value["pci_id"]
-      port_uuid               = data_vnics.value["port_uuid"]
-      vlan_id                 = data_vnics.value["vlan_id"]
-      vrf_id                  = data_vnics.value["vrf_id"]
-      vrf_ref                 = data_vnics.value["vrf_ref"]
+      # is_hsm - (optional) is a type of bool
+      is_hsm = data_vnics.value["is_hsm"]
+      # is_mgmt - (optional) is a type of bool
+      is_mgmt = data_vnics.value["is_mgmt"]
+      # is_portchannel - (optional) is a type of bool
+      is_portchannel = data_vnics.value["is_portchannel"]
+      # link_up - (optional) is a type of bool
+      link_up = data_vnics.value["link_up"]
+      # linux_name - (optional) is a type of string
+      linux_name = data_vnics.value["linux_name"]
+      # mac_address - (required) is a type of string
+      mac_address = data_vnics.value["mac_address"]
+      # mtu - (optional) is a type of number
+      mtu = data_vnics.value["mtu"]
+      # network_name - (optional) is a type of string
+      network_name = data_vnics.value["network_name"]
+      # network_ref - (optional) is a type of string
+      network_ref = data_vnics.value["network_ref"]
+      # pci_id - (optional) is a type of string
+      pci_id = data_vnics.value["pci_id"]
+      # port_uuid - (optional) is a type of string
+      port_uuid = data_vnics.value["port_uuid"]
+      # vlan_id - (optional) is a type of number
+      vlan_id = data_vnics.value["vlan_id"]
+      # vrf_id - (optional) is a type of number
+      vrf_id = data_vnics.value["vrf_id"]
+      # vrf_ref - (optional) is a type of string
+      vrf_ref = data_vnics.value["vrf_ref"]
 
       dynamic "members" {
         for_each = data_vnics.value.members
         content {
-          active      = members.value["active"]
-          if_name     = members.value["if_name"]
+          # active - (optional) is a type of bool
+          active = members.value["active"]
+          # if_name - (required) is a type of string
+          if_name = members.value["if_name"]
+          # mac_address - (optional) is a type of string
           mac_address = members.value["mac_address"]
         }
       }
@@ -544,29 +588,41 @@ resource "avi_serviceengine" "this" {
       dynamic "vlan_interfaces" {
         for_each = data_vnics.value.vlan_interfaces
         content {
-          dhcp_enabled        = vlan_interfaces.value["dhcp_enabled"]
-          enabled             = vlan_interfaces.value["enabled"]
-          if_name             = vlan_interfaces.value["if_name"]
+          # dhcp_enabled - (optional) is a type of bool
+          dhcp_enabled = vlan_interfaces.value["dhcp_enabled"]
+          # enabled - (optional) is a type of bool
+          enabled = vlan_interfaces.value["enabled"]
+          # if_name - (required) is a type of string
+          if_name = vlan_interfaces.value["if_name"]
+          # ip6_autocfg_enabled - (optional) is a type of bool
           ip6_autocfg_enabled = vlan_interfaces.value["ip6_autocfg_enabled"]
-          is_mgmt             = vlan_interfaces.value["is_mgmt"]
-          vlan_id             = vlan_interfaces.value["vlan_id"]
-          vrf_ref             = vlan_interfaces.value["vrf_ref"]
+          # is_mgmt - (optional) is a type of bool
+          is_mgmt = vlan_interfaces.value["is_mgmt"]
+          # vlan_id - (optional) is a type of number
+          vlan_id = vlan_interfaces.value["vlan_id"]
+          # vrf_ref - (optional) is a type of string
+          vrf_ref = vlan_interfaces.value["vrf_ref"]
 
           dynamic "vnic_networks" {
             for_each = vlan_interfaces.value.vnic_networks
             content {
+              # ctlr_alloc - (optional) is a type of bool
               ctlr_alloc = vnic_networks.value["ctlr_alloc"]
-              mode       = vnic_networks.value["mode"]
+              # mode - (required) is a type of string
+              mode = vnic_networks.value["mode"]
 
               dynamic "ip" {
                 for_each = vnic_networks.value.ip
                 content {
+                  # mask - (required) is a type of number
                   mask = ip.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = ip.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -583,18 +639,23 @@ resource "avi_serviceengine" "this" {
       dynamic "vnic_networks" {
         for_each = data_vnics.value.vnic_networks
         content {
+          # ctlr_alloc - (optional) is a type of bool
           ctlr_alloc = vnic_networks.value["ctlr_alloc"]
-          mode       = vnic_networks.value["mode"]
+          # mode - (required) is a type of string
+          mode = vnic_networks.value["mode"]
 
           dynamic "ip" {
             for_each = vnic_networks.value.ip
             content {
+              # mask - (required) is a type of number
               mask = ip.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = ip.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -611,39 +672,69 @@ resource "avi_serviceengine" "this" {
   dynamic "mgmt_vnic" {
     for_each = var.mgmt_vnic
     content {
-      adapter                 = mgmt_vnic.value["adapter"]
-      aggregator_chgd         = mgmt_vnic.value["aggregator_chgd"]
-      can_se_dp_takeover      = mgmt_vnic.value["can_se_dp_takeover"]
-      connected               = mgmt_vnic.value["connected"]
-      del_pending             = mgmt_vnic.value["del_pending"]
-      delete_vnic             = mgmt_vnic.value["delete_vnic"]
-      dhcp_enabled            = mgmt_vnic.value["dhcp_enabled"]
-      dp_deletion_done        = mgmt_vnic.value["dp_deletion_done"]
-      enabled                 = mgmt_vnic.value["enabled"]
-      if_name                 = mgmt_vnic.value["if_name"]
-      ip6_autocfg_enabled     = mgmt_vnic.value["ip6_autocfg_enabled"]
-      is_asm                  = mgmt_vnic.value["is_asm"]
+      # adapter - (optional) is a type of string
+      adapter = mgmt_vnic.value["adapter"]
+      # aggregator_chgd - (optional) is a type of bool
+      aggregator_chgd = mgmt_vnic.value["aggregator_chgd"]
+      # can_se_dp_takeover - (optional) is a type of bool
+      can_se_dp_takeover = mgmt_vnic.value["can_se_dp_takeover"]
+      # connected - (optional) is a type of bool
+      connected = mgmt_vnic.value["connected"]
+      # del_pending - (optional) is a type of bool
+      del_pending = mgmt_vnic.value["del_pending"]
+      # delete_vnic - (optional) is a type of bool
+      delete_vnic = mgmt_vnic.value["delete_vnic"]
+      # dhcp_enabled - (optional) is a type of bool
+      dhcp_enabled = mgmt_vnic.value["dhcp_enabled"]
+      # dp_deletion_done - (optional) is a type of bool
+      dp_deletion_done = mgmt_vnic.value["dp_deletion_done"]
+      # enabled - (optional) is a type of bool
+      enabled = mgmt_vnic.value["enabled"]
+      # if_name - (optional) is a type of string
+      if_name = mgmt_vnic.value["if_name"]
+      # ip6_autocfg_enabled - (optional) is a type of bool
+      ip6_autocfg_enabled = mgmt_vnic.value["ip6_autocfg_enabled"]
+      # is_asm - (optional) is a type of bool
+      is_asm = mgmt_vnic.value["is_asm"]
+      # is_avi_internal_network - (optional) is a type of bool
       is_avi_internal_network = mgmt_vnic.value["is_avi_internal_network"]
-      is_hsm                  = mgmt_vnic.value["is_hsm"]
-      is_mgmt                 = mgmt_vnic.value["is_mgmt"]
-      is_portchannel          = mgmt_vnic.value["is_portchannel"]
-      link_up                 = mgmt_vnic.value["link_up"]
-      linux_name              = mgmt_vnic.value["linux_name"]
-      mac_address             = mgmt_vnic.value["mac_address"]
-      mtu                     = mgmt_vnic.value["mtu"]
-      network_name            = mgmt_vnic.value["network_name"]
-      network_ref             = mgmt_vnic.value["network_ref"]
-      pci_id                  = mgmt_vnic.value["pci_id"]
-      port_uuid               = mgmt_vnic.value["port_uuid"]
-      vlan_id                 = mgmt_vnic.value["vlan_id"]
-      vrf_id                  = mgmt_vnic.value["vrf_id"]
-      vrf_ref                 = mgmt_vnic.value["vrf_ref"]
+      # is_hsm - (optional) is a type of bool
+      is_hsm = mgmt_vnic.value["is_hsm"]
+      # is_mgmt - (optional) is a type of bool
+      is_mgmt = mgmt_vnic.value["is_mgmt"]
+      # is_portchannel - (optional) is a type of bool
+      is_portchannel = mgmt_vnic.value["is_portchannel"]
+      # link_up - (optional) is a type of bool
+      link_up = mgmt_vnic.value["link_up"]
+      # linux_name - (optional) is a type of string
+      linux_name = mgmt_vnic.value["linux_name"]
+      # mac_address - (required) is a type of string
+      mac_address = mgmt_vnic.value["mac_address"]
+      # mtu - (optional) is a type of number
+      mtu = mgmt_vnic.value["mtu"]
+      # network_name - (optional) is a type of string
+      network_name = mgmt_vnic.value["network_name"]
+      # network_ref - (optional) is a type of string
+      network_ref = mgmt_vnic.value["network_ref"]
+      # pci_id - (optional) is a type of string
+      pci_id = mgmt_vnic.value["pci_id"]
+      # port_uuid - (optional) is a type of string
+      port_uuid = mgmt_vnic.value["port_uuid"]
+      # vlan_id - (optional) is a type of number
+      vlan_id = mgmt_vnic.value["vlan_id"]
+      # vrf_id - (optional) is a type of number
+      vrf_id = mgmt_vnic.value["vrf_id"]
+      # vrf_ref - (optional) is a type of string
+      vrf_ref = mgmt_vnic.value["vrf_ref"]
 
       dynamic "members" {
         for_each = mgmt_vnic.value.members
         content {
-          active      = members.value["active"]
-          if_name     = members.value["if_name"]
+          # active - (optional) is a type of bool
+          active = members.value["active"]
+          # if_name - (required) is a type of string
+          if_name = members.value["if_name"]
+          # mac_address - (optional) is a type of string
           mac_address = members.value["mac_address"]
         }
       }
@@ -651,29 +742,41 @@ resource "avi_serviceengine" "this" {
       dynamic "vlan_interfaces" {
         for_each = mgmt_vnic.value.vlan_interfaces
         content {
-          dhcp_enabled        = vlan_interfaces.value["dhcp_enabled"]
-          enabled             = vlan_interfaces.value["enabled"]
-          if_name             = vlan_interfaces.value["if_name"]
+          # dhcp_enabled - (optional) is a type of bool
+          dhcp_enabled = vlan_interfaces.value["dhcp_enabled"]
+          # enabled - (optional) is a type of bool
+          enabled = vlan_interfaces.value["enabled"]
+          # if_name - (required) is a type of string
+          if_name = vlan_interfaces.value["if_name"]
+          # ip6_autocfg_enabled - (optional) is a type of bool
           ip6_autocfg_enabled = vlan_interfaces.value["ip6_autocfg_enabled"]
-          is_mgmt             = vlan_interfaces.value["is_mgmt"]
-          vlan_id             = vlan_interfaces.value["vlan_id"]
-          vrf_ref             = vlan_interfaces.value["vrf_ref"]
+          # is_mgmt - (optional) is a type of bool
+          is_mgmt = vlan_interfaces.value["is_mgmt"]
+          # vlan_id - (optional) is a type of number
+          vlan_id = vlan_interfaces.value["vlan_id"]
+          # vrf_ref - (optional) is a type of string
+          vrf_ref = vlan_interfaces.value["vrf_ref"]
 
           dynamic "vnic_networks" {
             for_each = vlan_interfaces.value.vnic_networks
             content {
+              # ctlr_alloc - (optional) is a type of bool
               ctlr_alloc = vnic_networks.value["ctlr_alloc"]
-              mode       = vnic_networks.value["mode"]
+              # mode - (required) is a type of string
+              mode = vnic_networks.value["mode"]
 
               dynamic "ip" {
                 for_each = vnic_networks.value.ip
                 content {
+                  # mask - (required) is a type of number
                   mask = ip.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = ip.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -690,18 +793,23 @@ resource "avi_serviceengine" "this" {
       dynamic "vnic_networks" {
         for_each = mgmt_vnic.value.vnic_networks
         content {
+          # ctlr_alloc - (optional) is a type of bool
           ctlr_alloc = vnic_networks.value["ctlr_alloc"]
-          mode       = vnic_networks.value["mode"]
+          # mode - (required) is a type of string
+          mode = vnic_networks.value["mode"]
 
           dynamic "ip" {
             for_each = vnic_networks.value.ip
             content {
+              # mask - (required) is a type of number
               mask = ip.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = ip.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -718,12 +826,18 @@ resource "avi_serviceengine" "this" {
   dynamic "resources" {
     for_each = var.resources
     content {
+      # cores_per_socket - (optional) is a type of number
       cores_per_socket = resources.value["cores_per_socket"]
-      disk             = resources.value["disk"]
-      hyper_threading  = resources.value["hyper_threading"]
-      memory           = resources.value["memory"]
-      num_vcpus        = resources.value["num_vcpus"]
-      sockets          = resources.value["sockets"]
+      # disk - (required) is a type of number
+      disk = resources.value["disk"]
+      # hyper_threading - (optional) is a type of bool
+      hyper_threading = resources.value["hyper_threading"]
+      # memory - (required) is a type of number
+      memory = resources.value["memory"]
+      # num_vcpus - (required) is a type of number
+      num_vcpus = resources.value["num_vcpus"]
+      # sockets - (optional) is a type of number
+      sockets = resources.value["sockets"]
     }
   }
 

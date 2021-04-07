@@ -57,7 +57,9 @@ variable "name" {
 
 ```terraform
 resource "github_organization_project" "this" {
+  # body - (optional) is a type of string
   body = var.body
+  # name - (required) is a type of string
   name = var.name
 }
 ```

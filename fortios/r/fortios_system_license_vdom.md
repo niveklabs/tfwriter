@@ -49,6 +49,7 @@ variable "license" {
 
 ```terraform
 resource "fortios_system_license_vdom" "this" {
+  # license - (required) is a type of string
   license = var.license
 }
 ```

@@ -160,21 +160,36 @@ variable "translated_source" {
 
 ```terraform
 resource "checkpoint_management_nat_rule" "this" {
-  comments               = var.comments
-  enabled                = var.enabled
-  ignore_errors          = var.ignore_errors
-  ignore_warnings        = var.ignore_warnings
-  install_on             = var.install_on
-  method                 = var.method
-  name                   = var.name
-  original_destination   = var.original_destination
-  original_service       = var.original_service
-  original_source        = var.original_source
-  package                = var.package
-  position               = var.position
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # install_on - (optional) is a type of set of string
+  install_on = var.install_on
+  # method - (optional) is a type of string
+  method = var.method
+  # name - (optional) is a type of string
+  name = var.name
+  # original_destination - (optional) is a type of string
+  original_destination = var.original_destination
+  # original_service - (optional) is a type of string
+  original_service = var.original_service
+  # original_source - (optional) is a type of string
+  original_source = var.original_source
+  # package - (required) is a type of string
+  package = var.package
+  # position - (required) is a type of map of string
+  position = var.position
+  # translated_destination - (optional) is a type of string
   translated_destination = var.translated_destination
-  translated_service     = var.translated_service
-  translated_source      = var.translated_source
+  # translated_service - (optional) is a type of string
+  translated_service = var.translated_service
+  # translated_source - (optional) is a type of string
+  translated_source = var.translated_source
 }
 ```
 

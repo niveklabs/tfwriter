@@ -63,9 +63,12 @@ variable "provider_name" {
 
 ```terraform
 data "mongodbatlas_privatelink_endpoint" "this" {
+  # private_link_id - (required) is a type of string
   private_link_id = var.private_link_id
-  project_id      = var.project_id
-  provider_name   = var.provider_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # provider_name - (required) is a type of string
+  provider_name = var.provider_name
 }
 ```
 

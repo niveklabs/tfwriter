@@ -278,25 +278,44 @@ variable "timeout_settings" {
 
 ```terraform
 resource "panos_panorama_application_object" "this" {
-  able_to_file_transfer                    = var.able_to_file_transfer
-  alg_disable_capability                   = var.alg_disable_capability
-  category                                 = var.category
+  # able_to_file_transfer - (optional) is a type of bool
+  able_to_file_transfer = var.able_to_file_transfer
+  # alg_disable_capability - (optional) is a type of string
+  alg_disable_capability = var.alg_disable_capability
+  # category - (required) is a type of string
+  category = var.category
+  # continue_scanning_for_other_applications - (optional) is a type of bool
   continue_scanning_for_other_applications = var.continue_scanning_for_other_applications
-  description                              = var.description
-  device_group                             = var.device_group
-  evasive_behavior                         = var.evasive_behavior
-  excessive_bandwidth                      = var.excessive_bandwidth
-  has_known_vulnerability                  = var.has_known_vulnerability
-  name                                     = var.name
-  no_app_id_caching                        = var.no_app_id_caching
-  parent_app                               = var.parent_app
-  pervasive_use                            = var.pervasive_use
-  prone_to_misuse                          = var.prone_to_misuse
-  risk                                     = var.risk
-  subcategory                              = var.subcategory
-  technology                               = var.technology
-  tunnels_other_applications               = var.tunnels_other_applications
-  used_by_malware                          = var.used_by_malware
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # evasive_behavior - (optional) is a type of bool
+  evasive_behavior = var.evasive_behavior
+  # excessive_bandwidth - (optional) is a type of bool
+  excessive_bandwidth = var.excessive_bandwidth
+  # has_known_vulnerability - (optional) is a type of bool
+  has_known_vulnerability = var.has_known_vulnerability
+  # name - (required) is a type of string
+  name = var.name
+  # no_app_id_caching - (optional) is a type of bool
+  no_app_id_caching = var.no_app_id_caching
+  # parent_app - (optional) is a type of string
+  parent_app = var.parent_app
+  # pervasive_use - (optional) is a type of bool
+  pervasive_use = var.pervasive_use
+  # prone_to_misuse - (optional) is a type of bool
+  prone_to_misuse = var.prone_to_misuse
+  # risk - (optional) is a type of number
+  risk = var.risk
+  # subcategory - (required) is a type of string
+  subcategory = var.subcategory
+  # technology - (required) is a type of string
+  technology = var.technology
+  # tunnels_other_applications - (optional) is a type of bool
+  tunnels_other_applications = var.tunnels_other_applications
+  # used_by_malware - (optional) is a type of bool
+  used_by_malware = var.used_by_malware
 
   dynamic "defaults" {
     for_each = var.defaults
@@ -305,7 +324,9 @@ resource "panos_panorama_application_object" "this" {
       dynamic "icmp" {
         for_each = defaults.value.icmp
         content {
+          # code - (optional) is a type of number
           code = icmp.value["code"]
+          # type - (required) is a type of number
           type = icmp.value["type"]
         }
       }
@@ -313,7 +334,9 @@ resource "panos_panorama_application_object" "this" {
       dynamic "icmp6" {
         for_each = defaults.value.icmp6
         content {
+          # code - (optional) is a type of number
           code = icmp6.value["code"]
+          # type - (required) is a type of number
           type = icmp6.value["type"]
         }
       }
@@ -321,6 +344,7 @@ resource "panos_panorama_application_object" "this" {
       dynamic "ip_protocol" {
         for_each = defaults.value.ip_protocol
         content {
+          # value - (required) is a type of number
           value = ip_protocol.value["value"]
         }
       }
@@ -328,6 +352,7 @@ resource "panos_panorama_application_object" "this" {
       dynamic "port" {
         for_each = defaults.value.port
         content {
+          # ports - (required) is a type of list of string
           ports = port.value["ports"]
         }
       }
@@ -338,20 +363,28 @@ resource "panos_panorama_application_object" "this" {
   dynamic "scanning" {
     for_each = var.scanning
     content {
+      # data_patterns - (optional) is a type of bool
       data_patterns = scanning.value["data_patterns"]
-      file_types    = scanning.value["file_types"]
-      viruses       = scanning.value["viruses"]
+      # file_types - (optional) is a type of bool
+      file_types = scanning.value["file_types"]
+      # viruses - (optional) is a type of bool
+      viruses = scanning.value["viruses"]
     }
   }
 
   dynamic "timeout_settings" {
     for_each = var.timeout_settings
     content {
+      # tcp_half_closed - (optional) is a type of number
       tcp_half_closed = timeout_settings.value["tcp_half_closed"]
-      tcp_time_wait   = timeout_settings.value["tcp_time_wait"]
-      tcp_timeout     = timeout_settings.value["tcp_timeout"]
-      timeout         = timeout_settings.value["timeout"]
-      udp_timeout     = timeout_settings.value["udp_timeout"]
+      # tcp_time_wait - (optional) is a type of number
+      tcp_time_wait = timeout_settings.value["tcp_time_wait"]
+      # tcp_timeout - (optional) is a type of number
+      tcp_timeout = timeout_settings.value["tcp_timeout"]
+      # timeout - (optional) is a type of number
+      timeout = timeout_settings.value["timeout"]
+      # udp_timeout - (optional) is a type of number
+      udp_timeout = timeout_settings.value["udp_timeout"]
     }
   }
 

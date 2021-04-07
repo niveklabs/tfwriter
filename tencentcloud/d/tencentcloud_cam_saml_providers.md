@@ -66,8 +66,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_cam_saml_providers" "this" {
-  description        = var.description
-  name               = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

@@ -66,8 +66,11 @@ variable "snapshot_policy_name" {
 
 ```terraform
 data "tencentcloud_cbs_snapshot_policies" "this" {
-  result_output_file   = var.result_output_file
-  snapshot_policy_id   = var.snapshot_policy_id
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
+  # snapshot_policy_id - (optional) is a type of string
+  snapshot_policy_id = var.snapshot_policy_id
+  # snapshot_policy_name - (optional) is a type of string
   snapshot_policy_name = var.snapshot_policy_name
 }
 ```

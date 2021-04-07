@@ -64,8 +64,11 @@ variable "sourcetype" {
 
 ```terraform
 resource "ns1_datasource" "this" {
-  config     = var.config
-  name       = var.name
+  # config - (optional) is a type of map of string
+  config = var.config
+  # name - (required) is a type of string
+  name = var.name
+  # sourcetype - (required) is a type of string
   sourcetype = var.sourcetype
 }
 ```

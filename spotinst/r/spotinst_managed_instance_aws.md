@@ -439,40 +439,74 @@ variable "tags" {
 
 ```terraform
 resource "spotinst_managed_instance_aws" "this" {
-  auto_healing               = var.auto_healing
-  block_devices_mode         = var.block_devices_mode
-  cpu_credits                = var.cpu_credits
-  description                = var.description
-  draining_timeout           = var.draining_timeout
-  ebs_optimized              = var.ebs_optimized
-  elastic_ip                 = var.elastic_ip
-  enable_monitoring          = var.enable_monitoring
-  fall_back_to_od            = var.fall_back_to_od
-  grace_period               = var.grace_period
-  health_check_type          = var.health_check_type
-  iam_instance_profile       = var.iam_instance_profile
-  image_id                   = var.image_id
-  instance_types             = var.instance_types
-  key_pair                   = var.key_pair
-  life_cycle                 = var.life_cycle
-  name                       = var.name
-  optimization_windows       = var.optimization_windows
-  orientation                = var.orientation
-  persist_block_devices      = var.persist_block_devices
-  persist_private_ip         = var.persist_private_ip
-  persist_root_device        = var.persist_root_device
-  placement_tenancy          = var.placement_tenancy
-  preferred_type             = var.preferred_type
-  private_ip                 = var.private_ip
-  product                    = var.product
-  region                     = var.region
-  security_group_ids         = var.security_group_ids
-  shutdown_script            = var.shutdown_script
-  subnet_ids                 = var.subnet_ids
-  unhealthy_duration         = var.unhealthy_duration
-  user_data                  = var.user_data
+  # auto_healing - (optional) is a type of bool
+  auto_healing = var.auto_healing
+  # block_devices_mode - (optional) is a type of string
+  block_devices_mode = var.block_devices_mode
+  # cpu_credits - (optional) is a type of string
+  cpu_credits = var.cpu_credits
+  # description - (optional) is a type of string
+  description = var.description
+  # draining_timeout - (optional) is a type of number
+  draining_timeout = var.draining_timeout
+  # ebs_optimized - (optional) is a type of bool
+  ebs_optimized = var.ebs_optimized
+  # elastic_ip - (optional) is a type of string
+  elastic_ip = var.elastic_ip
+  # enable_monitoring - (optional) is a type of bool
+  enable_monitoring = var.enable_monitoring
+  # fall_back_to_od - (optional) is a type of bool
+  fall_back_to_od = var.fall_back_to_od
+  # grace_period - (optional) is a type of number
+  grace_period = var.grace_period
+  # health_check_type - (optional) is a type of string
+  health_check_type = var.health_check_type
+  # iam_instance_profile - (optional) is a type of string
+  iam_instance_profile = var.iam_instance_profile
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # instance_types - (required) is a type of list of string
+  instance_types = var.instance_types
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # life_cycle - (optional) is a type of string
+  life_cycle = var.life_cycle
+  # name - (required) is a type of string
+  name = var.name
+  # optimization_windows - (optional) is a type of list of string
+  optimization_windows = var.optimization_windows
+  # orientation - (optional) is a type of string
+  orientation = var.orientation
+  # persist_block_devices - (required) is a type of bool
+  persist_block_devices = var.persist_block_devices
+  # persist_private_ip - (optional) is a type of bool
+  persist_private_ip = var.persist_private_ip
+  # persist_root_device - (optional) is a type of bool
+  persist_root_device = var.persist_root_device
+  # placement_tenancy - (optional) is a type of string
+  placement_tenancy = var.placement_tenancy
+  # preferred_type - (optional) is a type of string
+  preferred_type = var.preferred_type
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # product - (required) is a type of string
+  product = var.product
+  # region - (optional) is a type of string
+  region = var.region
+  # security_group_ids - (optional) is a type of list of string
+  security_group_ids = var.security_group_ids
+  # shutdown_script - (optional) is a type of string
+  shutdown_script = var.shutdown_script
+  # subnet_ids - (required) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # unhealthy_duration - (optional) is a type of number
+  unhealthy_duration = var.unhealthy_duration
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # utilize_reserved_instances - (optional) is a type of bool
   utilize_reserved_instances = var.utilize_reserved_instances
-  vpc_id                     = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "integration_route53" {
     for_each = var.integration_route53
@@ -481,16 +515,22 @@ resource "spotinst_managed_instance_aws" "this" {
       dynamic "domains" {
         for_each = integration_route53.value.domains
         content {
-          hosted_zone_id   = domains.value["hosted_zone_id"]
-          record_set_type  = domains.value["record_set_type"]
+          # hosted_zone_id - (required) is a type of string
+          hosted_zone_id = domains.value["hosted_zone_id"]
+          # record_set_type - (optional) is a type of string
+          record_set_type = domains.value["record_set_type"]
+          # spotinst_acct_id - (optional) is a type of string
           spotinst_acct_id = domains.value["spotinst_acct_id"]
 
           dynamic "record_sets" {
             for_each = domains.value.record_sets
             content {
-              name           = record_sets.value["name"]
+              # name - (required) is a type of string
+              name = record_sets.value["name"]
+              # use_public_dns - (optional) is a type of bool
               use_public_dns = record_sets.value["use_public_dns"]
-              use_public_ip  = record_sets.value["use_public_ip"]
+              # use_public_ip - (optional) is a type of bool
+              use_public_ip = record_sets.value["use_public_ip"]
             }
           }
 
@@ -503,28 +543,39 @@ resource "spotinst_managed_instance_aws" "this" {
   dynamic "load_balancers" {
     for_each = var.load_balancers
     content {
-      arn           = load_balancers.value["arn"]
-      auto_weight   = load_balancers.value["auto_weight"]
-      az_awareness  = load_balancers.value["az_awareness"]
-      balancer_id   = load_balancers.value["balancer_id"]
-      name          = load_balancers.value["name"]
+      # arn - (optional) is a type of string
+      arn = load_balancers.value["arn"]
+      # auto_weight - (optional) is a type of bool
+      auto_weight = load_balancers.value["auto_weight"]
+      # az_awareness - (optional) is a type of bool
+      az_awareness = load_balancers.value["az_awareness"]
+      # balancer_id - (optional) is a type of string
+      balancer_id = load_balancers.value["balancer_id"]
+      # name - (optional) is a type of string
+      name = load_balancers.value["name"]
+      # target_set_id - (optional) is a type of string
       target_set_id = load_balancers.value["target_set_id"]
-      type          = load_balancers.value["type"]
+      # type - (required) is a type of string
+      type = load_balancers.value["type"]
     }
   }
 
   dynamic "network_interface" {
     for_each = var.network_interface
     content {
-      associate_ipv6_address      = network_interface.value["associate_ipv6_address"]
+      # associate_ipv6_address - (optional) is a type of bool
+      associate_ipv6_address = network_interface.value["associate_ipv6_address"]
+      # associate_public_ip_address - (optional) is a type of bool
       associate_public_ip_address = network_interface.value["associate_public_ip_address"]
-      device_index                = network_interface.value["device_index"]
+      # device_index - (required) is a type of string
+      device_index = network_interface.value["device_index"]
     }
   }
 
   dynamic "revert_to_spot" {
     for_each = var.revert_to_spot
     content {
+      # perform_at - (required) is a type of string
       perform_at = revert_to_spot.value["perform_at"]
     }
   }
@@ -532,18 +583,25 @@ resource "spotinst_managed_instance_aws" "this" {
   dynamic "scheduled_task" {
     for_each = var.scheduled_task
     content {
+      # cron_expression - (optional) is a type of string
       cron_expression = scheduled_task.value["cron_expression"]
-      frequency       = scheduled_task.value["frequency"]
-      is_enabled      = scheduled_task.value["is_enabled"]
-      start_time      = scheduled_task.value["start_time"]
-      task_type       = scheduled_task.value["task_type"]
+      # frequency - (optional) is a type of string
+      frequency = scheduled_task.value["frequency"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = scheduled_task.value["is_enabled"]
+      # start_time - (optional) is a type of string
+      start_time = scheduled_task.value["start_time"]
+      # task_type - (required) is a type of string
+      task_type = scheduled_task.value["task_type"]
     }
   }
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (optional) is a type of string
+      key = tags.value["key"]
+      # value - (optional) is a type of string
       value = tags.value["value"]
     }
   }

@@ -73,10 +73,14 @@ variable "timezone" {
 
 ```terraform
 resource "grafana_team_preferences" "this" {
+  # home_dashboard_id - (optional) is a type of number
   home_dashboard_id = var.home_dashboard_id
-  team_id           = var.team_id
-  theme             = var.theme
-  timezone          = var.timezone
+  # team_id - (required) is a type of number
+  team_id = var.team_id
+  # theme - (optional) is a type of string
+  theme = var.theme
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

@@ -89,12 +89,18 @@ variable "routing_expression" {
 
 ```terraform
 resource "sumologic_partition" "this" {
-  analytics_tier                      = var.analytics_tier
-  is_compliant                        = var.is_compliant
-  name                                = var.name
+  # analytics_tier - (optional) is a type of string
+  analytics_tier = var.analytics_tier
+  # is_compliant - (optional) is a type of bool
+  is_compliant = var.is_compliant
+  # name - (required) is a type of string
+  name = var.name
+  # reduce_retention_period_immediately - (optional) is a type of bool
   reduce_retention_period_immediately = var.reduce_retention_period_immediately
-  retention_period                    = var.retention_period
-  routing_expression                  = var.routing_expression
+  # retention_period - (optional) is a type of number
+  retention_period = var.retention_period
+  # routing_expression - (optional) is a type of string
+  routing_expression = var.routing_expression
 }
 ```
 

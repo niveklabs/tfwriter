@@ -105,14 +105,22 @@ variable "traffic_group" {
 
 ```terraform
 resource "bigip_ltm_virtual_address" "this" {
+  # advertize_route - (optional) is a type of string
   advertize_route = var.advertize_route
-  arp             = var.arp
-  auto_delete     = var.auto_delete
-  conn_limit      = var.conn_limit
-  enabled         = var.enabled
-  icmp_echo       = var.icmp_echo
-  name            = var.name
-  traffic_group   = var.traffic_group
+  # arp - (optional) is a type of bool
+  arp = var.arp
+  # auto_delete - (optional) is a type of bool
+  auto_delete = var.auto_delete
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # icmp_echo - (optional) is a type of string
+  icmp_echo = var.icmp_echo
+  # name - (required) is a type of string
+  name = var.name
+  # traffic_group - (optional) is a type of string
+  traffic_group = var.traffic_group
 }
 ```
 

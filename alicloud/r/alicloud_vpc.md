@@ -138,21 +138,33 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_vpc" "this" {
-  cidr_block            = var.cidr_block
-  description           = var.description
-  dry_run               = var.dry_run
-  enable_ipv6           = var.enable_ipv6
-  name                  = var.name
-  resource_group_id     = var.resource_group_id
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # description - (optional) is a type of string
+  description = var.description
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # enable_ipv6 - (optional) is a type of bool
+  enable_ipv6 = var.enable_ipv6
+  # name - (optional) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # secondary_cidr_blocks - (optional) is a type of list of string
   secondary_cidr_blocks = var.secondary_cidr_blocks
-  tags                  = var.tags
-  user_cidrs            = var.user_cidrs
-  vpc_name              = var.vpc_name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_cidrs - (optional) is a type of list of string
+  user_cidrs = var.user_cidrs
+  # vpc_name - (optional) is a type of string
+  vpc_name = var.vpc_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

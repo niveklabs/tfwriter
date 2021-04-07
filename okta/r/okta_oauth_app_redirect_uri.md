@@ -56,8 +56,10 @@ variable "uri" {
 
 ```terraform
 resource "okta_oauth_app_redirect_uri" "this" {
+  # app_id - (required) is a type of string
   app_id = var.app_id
-  uri    = var.uri
+  # uri - (required) is a type of string
+  uri = var.uri
 }
 ```
 

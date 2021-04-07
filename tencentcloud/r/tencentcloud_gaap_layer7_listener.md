@@ -110,15 +110,24 @@ variable "proxy_id" {
 
 ```terraform
 resource "tencentcloud_gaap_layer7_listener" "this" {
-  auth_type              = var.auth_type
-  certificate_id         = var.certificate_id
-  client_certificate_id  = var.client_certificate_id
+  # auth_type - (optional) is a type of number
+  auth_type = var.auth_type
+  # certificate_id - (optional) is a type of string
+  certificate_id = var.certificate_id
+  # client_certificate_id - (optional) is a type of string
+  client_certificate_id = var.client_certificate_id
+  # client_certificate_ids - (optional) is a type of set of string
   client_certificate_ids = var.client_certificate_ids
-  forward_protocol       = var.forward_protocol
-  name                   = var.name
-  port                   = var.port
-  protocol               = var.protocol
-  proxy_id               = var.proxy_id
+  # forward_protocol - (optional) is a type of string
+  forward_protocol = var.forward_protocol
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # proxy_id - (required) is a type of string
+  proxy_id = var.proxy_id
 }
 ```
 

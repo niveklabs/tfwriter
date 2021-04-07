@@ -71,10 +71,14 @@ variable "service_id" {
 
 ```terraform
 resource "tencentcloud_api_gateway_service_release" "this" {
+  # environment_name - (required) is a type of string
   environment_name = var.environment_name
-  release_desc     = var.release_desc
-  release_version  = var.release_version
-  service_id       = var.service_id
+  # release_desc - (required) is a type of string
+  release_desc = var.release_desc
+  # release_version - (optional) is a type of string
+  release_version = var.release_version
+  # service_id - (required) is a type of string
+  service_id = var.service_id
 }
 ```
 

@@ -80,13 +80,17 @@ variable "wtps" {
 
 ```terraform
 resource "fortios_wirelesscontroller_wtpgroup" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  platform_type         = var.platform_type
+  # name - (optional) is a type of string
+  name = var.name
+  # platform_type - (optional) is a type of string
+  platform_type = var.platform_type
 
   dynamic "wtps" {
     for_each = var.wtps
     content {
+      # wtp_id - (optional) is a type of string
       wtp_id = wtps.value["wtp_id"]
     }
   }

@@ -117,15 +117,21 @@ variable "host_or_usage_limits" {
 
 ```terraform
 resource "signalfx_org_token" "this" {
-  description   = var.description
-  disabled      = var.disabled
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # name - (required) is a type of string
+  name = var.name
+  # notifications - (optional) is a type of list of string
   notifications = var.notifications
 
   dynamic "dpm_limits" {
     for_each = var.dpm_limits
     content {
-      dpm_limit                  = dpm_limits.value["dpm_limit"]
+      # dpm_limit - (required) is a type of number
+      dpm_limit = dpm_limits.value["dpm_limit"]
+      # dpm_notification_threshold - (optional) is a type of number
       dpm_notification_threshold = dpm_limits.value["dpm_notification_threshold"]
     }
   }
@@ -133,14 +139,22 @@ resource "signalfx_org_token" "this" {
   dynamic "host_or_usage_limits" {
     for_each = var.host_or_usage_limits
     content {
-      container_limit                         = host_or_usage_limits.value["container_limit"]
-      container_notification_threshold        = host_or_usage_limits.value["container_notification_threshold"]
-      custom_metrics_limit                    = host_or_usage_limits.value["custom_metrics_limit"]
-      custom_metrics_notification_threshold   = host_or_usage_limits.value["custom_metrics_notification_threshold"]
-      high_res_metrics_limit                  = host_or_usage_limits.value["high_res_metrics_limit"]
+      # container_limit - (optional) is a type of number
+      container_limit = host_or_usage_limits.value["container_limit"]
+      # container_notification_threshold - (optional) is a type of number
+      container_notification_threshold = host_or_usage_limits.value["container_notification_threshold"]
+      # custom_metrics_limit - (optional) is a type of number
+      custom_metrics_limit = host_or_usage_limits.value["custom_metrics_limit"]
+      # custom_metrics_notification_threshold - (optional) is a type of number
+      custom_metrics_notification_threshold = host_or_usage_limits.value["custom_metrics_notification_threshold"]
+      # high_res_metrics_limit - (optional) is a type of number
+      high_res_metrics_limit = host_or_usage_limits.value["high_res_metrics_limit"]
+      # high_res_metrics_notification_threshold - (optional) is a type of number
       high_res_metrics_notification_threshold = host_or_usage_limits.value["high_res_metrics_notification_threshold"]
-      host_limit                              = host_or_usage_limits.value["host_limit"]
-      host_notification_threshold             = host_or_usage_limits.value["host_notification_threshold"]
+      # host_limit - (optional) is a type of number
+      host_limit = host_or_usage_limits.value["host_limit"]
+      # host_notification_threshold - (optional) is a type of number
+      host_notification_threshold = host_or_usage_limits.value["host_notification_threshold"]
     }
   }
 

@@ -96,16 +96,23 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_accelerator" "this" {
+  # accelerator_name - (optional) is a type of string
   accelerator_name = var.accelerator_name
-  auto_use_coupon  = var.auto_use_coupon
-  description      = var.description
-  duration         = var.duration
-  spec             = var.spec
+  # auto_use_coupon - (optional) is a type of bool
+  auto_use_coupon = var.auto_use_coupon
+  # description - (optional) is a type of string
+  description = var.description
+  # duration - (required) is a type of number
+  duration = var.duration
+  # spec - (required) is a type of string
+  spec = var.spec
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

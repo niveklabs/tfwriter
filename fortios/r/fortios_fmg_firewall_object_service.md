@@ -153,20 +153,34 @@ variable "udp_portrange" {
 
 ```terraform
 resource "fortios_fmg_firewall_object_service" "this" {
-  adom            = var.adom
-  category        = var.category
-  comment         = var.comment
-  fqdn            = var.fqdn
-  icmp_code       = var.icmp_code
-  icmp_type       = var.icmp_type
-  iprange         = var.iprange
-  name            = var.name
-  protocol        = var.protocol
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # category - (optional) is a type of string
+  category = var.category
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # icmp_code - (optional) is a type of number
+  icmp_code = var.icmp_code
+  # icmp_type - (optional) is a type of number
+  icmp_type = var.icmp_type
+  # iprange - (optional) is a type of string
+  iprange = var.iprange
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # protocol_number - (optional) is a type of number
   protocol_number = var.protocol_number
-  proxy           = var.proxy
-  sctp_portrange  = var.sctp_portrange
-  tcp_portrange   = var.tcp_portrange
-  udp_portrange   = var.udp_portrange
+  # proxy - (optional) is a type of string
+  proxy = var.proxy
+  # sctp_portrange - (optional) is a type of list of string
+  sctp_portrange = var.sctp_portrange
+  # tcp_portrange - (optional) is a type of list of string
+  tcp_portrange = var.tcp_portrange
+  # udp_portrange - (optional) is a type of list of string
+  udp_portrange = var.udp_portrange
 }
 ```
 

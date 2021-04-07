@@ -64,8 +64,11 @@ variable "value" {
 
 ```terraform
 resource "fortios_log_customfield" "this" {
+  # fosid - (optional) is a type of string
   fosid = var.fosid
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # value - (required) is a type of string
   value = var.value
 }
 ```

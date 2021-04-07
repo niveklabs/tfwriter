@@ -121,16 +121,26 @@ variable "slow_ramp_time" {
 
 ```terraform
 resource "bigip_ltm_pool" "this" {
-  allow_nat              = var.allow_nat
-  allow_snat             = var.allow_snat
-  description            = var.description
-  load_balancing_mode    = var.load_balancing_mode
+  # allow_nat - (optional) is a type of string
+  allow_nat = var.allow_nat
+  # allow_snat - (optional) is a type of string
+  allow_snat = var.allow_snat
+  # description - (optional) is a type of string
+  description = var.description
+  # load_balancing_mode - (optional) is a type of string
+  load_balancing_mode = var.load_balancing_mode
+  # minimum_active_members - (optional) is a type of number
   minimum_active_members = var.minimum_active_members
-  monitors               = var.monitors
-  name                   = var.name
-  reselect_tries         = var.reselect_tries
-  service_down_action    = var.service_down_action
-  slow_ramp_time         = var.slow_ramp_time
+  # monitors - (optional) is a type of set of string
+  monitors = var.monitors
+  # name - (required) is a type of string
+  name = var.name
+  # reselect_tries - (optional) is a type of number
+  reselect_tries = var.reselect_tries
+  # service_down_action - (optional) is a type of string
+  service_down_action = var.service_down_action
+  # slow_ramp_time - (optional) is a type of number
+  slow_ramp_time = var.slow_ramp_time
 }
 ```
 

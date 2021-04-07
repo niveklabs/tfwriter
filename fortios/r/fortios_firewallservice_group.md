@@ -95,15 +95,21 @@ variable "member" {
 
 ```terraform
 resource "fortios_firewallservice_group" "this" {
-  color                 = var.color
-  comment               = var.comment
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  proxy                 = var.proxy
+  # name - (required) is a type of string
+  name = var.name
+  # proxy - (optional) is a type of string
+  proxy = var.proxy
 
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

@@ -121,21 +121,32 @@ variable "roundrobin" {
 
 ```terraform
 data "constellix_hinfo_record" "this" {
-  domain_id   = var.domain_id
-  gtd_region  = var.gtd_region
-  name        = var.name
-  noanswer    = var.noanswer
-  note        = var.note
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # name - (required) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # source_type - (required) is a type of string
   source_type = var.source_type
-  ttl         = var.ttl
-  type        = var.type
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "roundrobin" {
     for_each = var.roundrobin
     content {
-      cpu          = roundrobin.value["cpu"]
+      # cpu - (required) is a type of string
+      cpu = roundrobin.value["cpu"]
+      # disable_flag - (optional) is a type of string
       disable_flag = roundrobin.value["disable_flag"]
-      os           = roundrobin.value["os"]
+      # os - (required) is a type of string
+      os = roundrobin.value["os"]
     }
   }
 

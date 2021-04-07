@@ -96,13 +96,20 @@ variable "template" {
 
 ```terraform
 resource "panos_arp" "this" {
-  interface         = var.interface
-  interface_name    = var.interface_name
-  interface_type    = var.interface_type
-  ip                = var.ip
-  mac_address       = var.mac_address
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_name - (optional) is a type of string
+  interface_name = var.interface_name
+  # interface_type - (optional) is a type of string
+  interface_type = var.interface_type
+  # ip - (required) is a type of string
+  ip = var.ip
+  # mac_address - (required) is a type of string
+  mac_address = var.mac_address
+  # subinterface_name - (optional) is a type of string
   subinterface_name = var.subinterface_name
-  template          = var.template
+  # template - (optional) is a type of string
+  template = var.template
 }
 ```
 

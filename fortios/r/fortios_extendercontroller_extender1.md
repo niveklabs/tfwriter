@@ -226,49 +226,78 @@ variable "modem2" {
 
 ```terraform
 resource "fortios_extendercontroller_extender1" "this" {
-  authorized     = var.authorized
-  description    = var.description
-  ext_name       = var.ext_name
-  fosid          = var.fosid
+  # authorized - (required) is a type of string
+  authorized = var.authorized
+  # description - (optional) is a type of string
+  description = var.description
+  # ext_name - (optional) is a type of string
+  ext_name = var.ext_name
+  # fosid - (optional) is a type of string
+  fosid = var.fosid
+  # login_password - (optional) is a type of string
   login_password = var.login_password
-  name           = var.name
-  vdom           = var.vdom
+  # name - (required) is a type of string
+  name = var.name
+  # vdom - (optional) is a type of number
+  vdom = var.vdom
 
   dynamic "controller_report" {
     for_each = var.controller_report
     content {
-      interval         = controller_report.value["interval"]
+      # interval - (optional) is a type of number
+      interval = controller_report.value["interval"]
+      # signal_threshold - (optional) is a type of number
       signal_threshold = controller_report.value["signal_threshold"]
-      status           = controller_report.value["status"]
+      # status - (optional) is a type of string
+      status = controller_report.value["status"]
     }
   }
 
   dynamic "modem1" {
     for_each = var.modem1
     content {
-      conn_status       = modem1.value["conn_status"]
-      default_sim       = modem1.value["default_sim"]
-      gps               = modem1.value["gps"]
-      ifname            = modem1.value["ifname"]
+      # conn_status - (optional) is a type of number
+      conn_status = modem1.value["conn_status"]
+      # default_sim - (optional) is a type of string
+      default_sim = modem1.value["default_sim"]
+      # gps - (optional) is a type of string
+      gps = modem1.value["gps"]
+      # ifname - (optional) is a type of string
+      ifname = modem1.value["ifname"]
+      # preferred_carrier - (optional) is a type of string
       preferred_carrier = modem1.value["preferred_carrier"]
-      redundant_intf    = modem1.value["redundant_intf"]
-      redundant_mode    = modem1.value["redundant_mode"]
-      sim1_pin          = modem1.value["sim1_pin"]
-      sim1_pin_code     = modem1.value["sim1_pin_code"]
-      sim2_pin          = modem1.value["sim2_pin"]
-      sim2_pin_code     = modem1.value["sim2_pin_code"]
+      # redundant_intf - (optional) is a type of string
+      redundant_intf = modem1.value["redundant_intf"]
+      # redundant_mode - (optional) is a type of string
+      redundant_mode = modem1.value["redundant_mode"]
+      # sim1_pin - (optional) is a type of string
+      sim1_pin = modem1.value["sim1_pin"]
+      # sim1_pin_code - (optional) is a type of string
+      sim1_pin_code = modem1.value["sim1_pin_code"]
+      # sim2_pin - (optional) is a type of string
+      sim2_pin = modem1.value["sim2_pin"]
+      # sim2_pin_code - (optional) is a type of string
+      sim2_pin_code = modem1.value["sim2_pin_code"]
 
       dynamic "auto_switch" {
         for_each = modem1.value.auto_switch
         content {
-          dataplan             = auto_switch.value["dataplan"]
-          disconnect           = auto_switch.value["disconnect"]
-          disconnect_period    = auto_switch.value["disconnect_period"]
+          # dataplan - (optional) is a type of string
+          dataplan = auto_switch.value["dataplan"]
+          # disconnect - (optional) is a type of string
+          disconnect = auto_switch.value["disconnect"]
+          # disconnect_period - (optional) is a type of number
+          disconnect_period = auto_switch.value["disconnect_period"]
+          # disconnect_threshold - (optional) is a type of number
           disconnect_threshold = auto_switch.value["disconnect_threshold"]
-          signal               = auto_switch.value["signal"]
-          switch_back          = auto_switch.value["switch_back"]
-          switch_back_time     = auto_switch.value["switch_back_time"]
-          switch_back_timer    = auto_switch.value["switch_back_timer"]
+          # signal - (optional) is a type of string
+          signal = auto_switch.value["signal"]
+          # switch_back - (optional) is a type of string
+          switch_back = auto_switch.value["switch_back"]
+          # switch_back_time - (optional) is a type of string
+          switch_back_time = auto_switch.value["switch_back_time"]
+          # switch_back_timer - (optional) is a type of number
+          switch_back_timer = auto_switch.value["switch_back_timer"]
         }
       }
 
@@ -278,29 +307,48 @@ resource "fortios_extendercontroller_extender1" "this" {
   dynamic "modem2" {
     for_each = var.modem2
     content {
-      conn_status       = modem2.value["conn_status"]
-      default_sim       = modem2.value["default_sim"]
-      gps               = modem2.value["gps"]
-      ifname            = modem2.value["ifname"]
+      # conn_status - (optional) is a type of number
+      conn_status = modem2.value["conn_status"]
+      # default_sim - (optional) is a type of string
+      default_sim = modem2.value["default_sim"]
+      # gps - (optional) is a type of string
+      gps = modem2.value["gps"]
+      # ifname - (optional) is a type of string
+      ifname = modem2.value["ifname"]
+      # preferred_carrier - (optional) is a type of string
       preferred_carrier = modem2.value["preferred_carrier"]
-      redundant_intf    = modem2.value["redundant_intf"]
-      redundant_mode    = modem2.value["redundant_mode"]
-      sim1_pin          = modem2.value["sim1_pin"]
-      sim1_pin_code     = modem2.value["sim1_pin_code"]
-      sim2_pin          = modem2.value["sim2_pin"]
-      sim2_pin_code     = modem2.value["sim2_pin_code"]
+      # redundant_intf - (optional) is a type of string
+      redundant_intf = modem2.value["redundant_intf"]
+      # redundant_mode - (optional) is a type of string
+      redundant_mode = modem2.value["redundant_mode"]
+      # sim1_pin - (optional) is a type of string
+      sim1_pin = modem2.value["sim1_pin"]
+      # sim1_pin_code - (optional) is a type of string
+      sim1_pin_code = modem2.value["sim1_pin_code"]
+      # sim2_pin - (optional) is a type of string
+      sim2_pin = modem2.value["sim2_pin"]
+      # sim2_pin_code - (optional) is a type of string
+      sim2_pin_code = modem2.value["sim2_pin_code"]
 
       dynamic "auto_switch" {
         for_each = modem2.value.auto_switch
         content {
-          dataplan             = auto_switch.value["dataplan"]
-          disconnect           = auto_switch.value["disconnect"]
-          disconnect_period    = auto_switch.value["disconnect_period"]
+          # dataplan - (optional) is a type of string
+          dataplan = auto_switch.value["dataplan"]
+          # disconnect - (optional) is a type of string
+          disconnect = auto_switch.value["disconnect"]
+          # disconnect_period - (optional) is a type of number
+          disconnect_period = auto_switch.value["disconnect_period"]
+          # disconnect_threshold - (optional) is a type of number
           disconnect_threshold = auto_switch.value["disconnect_threshold"]
-          signal               = auto_switch.value["signal"]
-          switch_back          = auto_switch.value["switch_back"]
-          switch_back_time     = auto_switch.value["switch_back_time"]
-          switch_back_timer    = auto_switch.value["switch_back_timer"]
+          # signal - (optional) is a type of string
+          signal = auto_switch.value["signal"]
+          # switch_back - (optional) is a type of string
+          switch_back = auto_switch.value["switch_back"]
+          # switch_back_time - (optional) is a type of string
+          switch_back_time = auto_switch.value["switch_back_time"]
+          # switch_back_timer - (optional) is a type of number
+          switch_back_timer = auto_switch.value["switch_back_timer"]
         }
       }
 

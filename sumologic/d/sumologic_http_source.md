@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "sumologic_http_source" "this" {
+  # collector_id - (optional) is a type of number
   collector_id = var.collector_id
-  name         = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

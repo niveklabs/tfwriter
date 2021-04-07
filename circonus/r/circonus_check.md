@@ -696,19 +696,29 @@ variable "tcp" {
 
 ```terraform
 resource "circonus_check" "this" {
-  active       = var.active
+  # active - (optional) is a type of bool
+  active = var.active
+  # metric_limit - (optional) is a type of number
   metric_limit = var.metric_limit
-  name         = var.name
-  notes        = var.notes
-  period       = var.period
-  tags         = var.tags
-  target       = var.target
-  timeout      = var.timeout
-  type         = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # period - (optional) is a type of string
+  period = var.period
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # target - (optional) is a type of string
+  target = var.target
+  # timeout - (optional) is a type of string
+  timeout = var.timeout
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "caql" {
     for_each = var.caql
     content {
+      # query - (required) is a type of string
       query = caql.value["query"]
     }
   }
@@ -716,19 +726,27 @@ resource "circonus_check" "this" {
   dynamic "cloudwatch" {
     for_each = var.cloudwatch
     content {
-      api_key     = cloudwatch.value["api_key"]
-      api_secret  = cloudwatch.value["api_secret"]
+      # api_key - (optional) is a type of string
+      api_key = cloudwatch.value["api_key"]
+      # api_secret - (optional) is a type of string
+      api_secret = cloudwatch.value["api_secret"]
+      # dimmensions - (required) is a type of map of string
       dimmensions = cloudwatch.value["dimmensions"]
-      metric      = cloudwatch.value["metric"]
-      namespace   = cloudwatch.value["namespace"]
-      url         = cloudwatch.value["url"]
-      version     = cloudwatch.value["version"]
+      # metric - (required) is a type of set of string
+      metric = cloudwatch.value["metric"]
+      # namespace - (required) is a type of string
+      namespace = cloudwatch.value["namespace"]
+      # url - (required) is a type of string
+      url = cloudwatch.value["url"]
+      # version - (optional) is a type of string
+      version = cloudwatch.value["version"]
     }
   }
 
   dynamic "collector" {
     for_each = var.collector
     content {
+      # id - (required) is a type of string
       id = collector.value["id"]
     }
   }
@@ -736,49 +754,81 @@ resource "circonus_check" "this" {
   dynamic "consul" {
     for_each = var.consul
     content {
-      acl_token         = consul.value["acl_token"]
-      allow_stale       = consul.value["allow_stale"]
-      ca_chain          = consul.value["ca_chain"]
-      certificate_file  = consul.value["certificate_file"]
-      check_blacklist   = consul.value["check_blacklist"]
-      ciphers           = consul.value["ciphers"]
-      dc                = consul.value["dc"]
-      headers           = consul.value["headers"]
-      http_addr         = consul.value["http_addr"]
-      key_file          = consul.value["key_file"]
-      node              = consul.value["node"]
-      node_blacklist    = consul.value["node_blacklist"]
-      service           = consul.value["service"]
+      # acl_token - (optional) is a type of string
+      acl_token = consul.value["acl_token"]
+      # allow_stale - (optional) is a type of bool
+      allow_stale = consul.value["allow_stale"]
+      # ca_chain - (optional) is a type of string
+      ca_chain = consul.value["ca_chain"]
+      # certificate_file - (optional) is a type of string
+      certificate_file = consul.value["certificate_file"]
+      # check_blacklist - (optional) is a type of list of string
+      check_blacklist = consul.value["check_blacklist"]
+      # ciphers - (optional) is a type of string
+      ciphers = consul.value["ciphers"]
+      # dc - (optional) is a type of string
+      dc = consul.value["dc"]
+      # headers - (optional) is a type of map of string
+      headers = consul.value["headers"]
+      # http_addr - (optional) is a type of string
+      http_addr = consul.value["http_addr"]
+      # key_file - (optional) is a type of string
+      key_file = consul.value["key_file"]
+      # node - (optional) is a type of string
+      node = consul.value["node"]
+      # node_blacklist - (optional) is a type of list of string
+      node_blacklist = consul.value["node_blacklist"]
+      # service - (optional) is a type of string
+      service = consul.value["service"]
+      # service_blacklist - (optional) is a type of list of string
       service_blacklist = consul.value["service_blacklist"]
-      state             = consul.value["state"]
+      # state - (optional) is a type of string
+      state = consul.value["state"]
     }
   }
 
   dynamic "dns" {
     for_each = var.dns
     content {
-      ctype      = dns.value["ctype"]
+      # ctype - (optional) is a type of string
+      ctype = dns.value["ctype"]
+      # nameserver - (optional) is a type of string
       nameserver = dns.value["nameserver"]
-      query      = dns.value["query"]
-      rtype      = dns.value["rtype"]
+      # query - (required) is a type of string
+      query = dns.value["query"]
+      # rtype - (optional) is a type of string
+      rtype = dns.value["rtype"]
     }
   }
 
   dynamic "external" {
     for_each = var.external
     content {
-      arg1           = external.value["arg1"]
-      arg10          = external.value["arg10"]
-      arg2           = external.value["arg2"]
-      arg3           = external.value["arg3"]
-      arg4           = external.value["arg4"]
-      arg5           = external.value["arg5"]
-      arg6           = external.value["arg6"]
-      arg7           = external.value["arg7"]
-      arg8           = external.value["arg8"]
-      arg9           = external.value["arg9"]
-      command        = external.value["command"]
-      env            = external.value["env"]
+      # arg1 - (optional) is a type of string
+      arg1 = external.value["arg1"]
+      # arg10 - (optional) is a type of string
+      arg10 = external.value["arg10"]
+      # arg2 - (optional) is a type of string
+      arg2 = external.value["arg2"]
+      # arg3 - (optional) is a type of string
+      arg3 = external.value["arg3"]
+      # arg4 - (optional) is a type of string
+      arg4 = external.value["arg4"]
+      # arg5 - (optional) is a type of string
+      arg5 = external.value["arg5"]
+      # arg6 - (optional) is a type of string
+      arg6 = external.value["arg6"]
+      # arg7 - (optional) is a type of string
+      arg7 = external.value["arg7"]
+      # arg8 - (optional) is a type of string
+      arg8 = external.value["arg8"]
+      # arg9 - (optional) is a type of string
+      arg9 = external.value["arg9"]
+      # command - (required) is a type of string
+      command = external.value["command"]
+      # env - (optional) is a type of map of string
+      env = external.value["env"]
+      # output_extract - (required) is a type of string
       output_extract = external.value["output_extract"]
     }
   }
@@ -786,59 +836,90 @@ resource "circonus_check" "this" {
   dynamic "http" {
     for_each = var.http
     content {
-      auth_method      = http.value["auth_method"]
-      auth_password    = http.value["auth_password"]
-      auth_user        = http.value["auth_user"]
-      body_regexp      = http.value["body_regexp"]
-      ca_chain         = http.value["ca_chain"]
+      # auth_method - (optional) is a type of string
+      auth_method = http.value["auth_method"]
+      # auth_password - (optional) is a type of string
+      auth_password = http.value["auth_password"]
+      # auth_user - (optional) is a type of string
+      auth_user = http.value["auth_user"]
+      # body_regexp - (optional) is a type of string
+      body_regexp = http.value["body_regexp"]
+      # ca_chain - (optional) is a type of string
+      ca_chain = http.value["ca_chain"]
+      # certificate_file - (optional) is a type of string
       certificate_file = http.value["certificate_file"]
-      ciphers          = http.value["ciphers"]
-      code             = http.value["code"]
-      extract          = http.value["extract"]
-      headers          = http.value["headers"]
-      key_file         = http.value["key_file"]
-      method           = http.value["method"]
-      payload          = http.value["payload"]
-      read_limit       = http.value["read_limit"]
-      redirects        = http.value["redirects"]
-      url              = http.value["url"]
-      version          = http.value["version"]
+      # ciphers - (optional) is a type of string
+      ciphers = http.value["ciphers"]
+      # code - (optional) is a type of string
+      code = http.value["code"]
+      # extract - (optional) is a type of string
+      extract = http.value["extract"]
+      # headers - (optional) is a type of map of string
+      headers = http.value["headers"]
+      # key_file - (optional) is a type of string
+      key_file = http.value["key_file"]
+      # method - (optional) is a type of string
+      method = http.value["method"]
+      # payload - (optional) is a type of string
+      payload = http.value["payload"]
+      # read_limit - (optional) is a type of number
+      read_limit = http.value["read_limit"]
+      # redirects - (optional) is a type of string
+      redirects = http.value["redirects"]
+      # url - (required) is a type of string
+      url = http.value["url"]
+      # version - (optional) is a type of string
+      version = http.value["version"]
     }
   }
 
   dynamic "httptrap" {
     for_each = var.httptrap
     content {
+      # async_metrics - (optional) is a type of bool
       async_metrics = httptrap.value["async_metrics"]
-      secret        = httptrap.value["secret"]
+      # secret - (optional) is a type of string
+      secret = httptrap.value["secret"]
     }
   }
 
   dynamic "icmp_ping" {
     for_each = var.icmp_ping
     content {
+      # availability - (optional) is a type of number
       availability = icmp_ping.value["availability"]
-      count        = icmp_ping.value["count"]
-      interval     = icmp_ping.value["interval"]
+      # count - (optional) is a type of number
+      count = icmp_ping.value["count"]
+      # interval - (optional) is a type of string
+      interval = icmp_ping.value["interval"]
     }
   }
 
   dynamic "jmx" {
     for_each = var.jmx
     content {
-      host          = jmx.value["host"]
+      # host - (required) is a type of string
+      host = jmx.value["host"]
+      # mbean_domains - (optional) is a type of list of string
       mbean_domains = jmx.value["mbean_domains"]
-      password      = jmx.value["password"]
-      port          = jmx.value["port"]
-      uri           = jmx.value["uri"]
-      username      = jmx.value["username"]
+      # password - (optional) is a type of string
+      password = jmx.value["password"]
+      # port - (required) is a type of number
+      port = jmx.value["port"]
+      # uri - (optional) is a type of string
+      uri = jmx.value["uri"]
+      # username - (optional) is a type of string
+      username = jmx.value["username"]
 
       dynamic "mbean_properties" {
         for_each = jmx.value.mbean_properties
         content {
+          # index - (required) is a type of string
           index = mbean_properties.value["index"]
-          name  = mbean_properties.value["name"]
-          type  = mbean_properties.value["type"]
+          # name - (required) is a type of string
+          name = mbean_properties.value["name"]
+          # type - (required) is a type of string
+          type = mbean_properties.value["type"]
         }
       }
 
@@ -848,26 +929,41 @@ resource "circonus_check" "this" {
   dynamic "json" {
     for_each = var.json
     content {
-      auth_method      = json.value["auth_method"]
-      auth_password    = json.value["auth_password"]
-      auth_user        = json.value["auth_user"]
-      ca_chain         = json.value["ca_chain"]
+      # auth_method - (optional) is a type of string
+      auth_method = json.value["auth_method"]
+      # auth_password - (optional) is a type of string
+      auth_password = json.value["auth_password"]
+      # auth_user - (optional) is a type of string
+      auth_user = json.value["auth_user"]
+      # ca_chain - (optional) is a type of string
+      ca_chain = json.value["ca_chain"]
+      # certificate_file - (optional) is a type of string
       certificate_file = json.value["certificate_file"]
-      ciphers          = json.value["ciphers"]
-      headers          = json.value["headers"]
-      key_file         = json.value["key_file"]
-      method           = json.value["method"]
-      payload          = json.value["payload"]
-      port             = json.value["port"]
-      read_limit       = json.value["read_limit"]
-      url              = json.value["url"]
-      version          = json.value["version"]
+      # ciphers - (optional) is a type of string
+      ciphers = json.value["ciphers"]
+      # headers - (optional) is a type of map of string
+      headers = json.value["headers"]
+      # key_file - (optional) is a type of string
+      key_file = json.value["key_file"]
+      # method - (optional) is a type of string
+      method = json.value["method"]
+      # payload - (optional) is a type of string
+      payload = json.value["payload"]
+      # port - (optional) is a type of number
+      port = json.value["port"]
+      # read_limit - (optional) is a type of number
+      read_limit = json.value["read_limit"]
+      # url - (required) is a type of string
+      url = json.value["url"]
+      # version - (optional) is a type of string
+      version = json.value["version"]
     }
   }
 
   dynamic "memcached" {
     for_each = var.memcached
     content {
+      # port - (optional) is a type of number
       port = memcached.value["port"]
     }
   }
@@ -875,26 +971,35 @@ resource "circonus_check" "this" {
   dynamic "metric" {
     for_each = var.metric
     content {
+      # active - (optional) is a type of bool
       active = metric.value["active"]
-      name   = metric.value["name"]
-      type   = metric.value["type"]
+      # name - (required) is a type of string
+      name = metric.value["name"]
+      # type - (required) is a type of string
+      type = metric.value["type"]
     }
   }
 
   dynamic "metric_filter" {
     for_each = var.metric_filter
     content {
-      comment   = metric_filter.value["comment"]
-      regex     = metric_filter.value["regex"]
+      # comment - (optional) is a type of string
+      comment = metric_filter.value["comment"]
+      # regex - (required) is a type of string
+      regex = metric_filter.value["regex"]
+      # tag_query - (optional) is a type of string
       tag_query = metric_filter.value["tag_query"]
-      type      = metric_filter.value["type"]
+      # type - (required) is a type of string
+      type = metric_filter.value["type"]
     }
   }
 
   dynamic "mysql" {
     for_each = var.mysql
     content {
-      dsn   = mysql.value["dsn"]
+      # dsn - (required) is a type of string
+      dsn = mysql.value["dsn"]
+      # query - (required) is a type of string
       query = mysql.value["query"]
     }
   }
@@ -902,7 +1007,9 @@ resource "circonus_check" "this" {
   dynamic "ntp" {
     for_each = var.ntp
     content {
-      port        = ntp.value["port"]
+      # port - (optional) is a type of number
+      port = ntp.value["port"]
+      # use_control - (optional) is a type of bool
       use_control = ntp.value["use_control"]
     }
   }
@@ -910,7 +1017,9 @@ resource "circonus_check" "this" {
   dynamic "postgresql" {
     for_each = var.postgresql
     content {
-      dsn   = postgresql.value["dsn"]
+      # dsn - (required) is a type of string
+      dsn = postgresql.value["dsn"]
+      # query - (required) is a type of string
       query = postgresql.value["query"]
     }
   }
@@ -918,65 +1027,103 @@ resource "circonus_check" "this" {
   dynamic "promtext" {
     for_each = var.promtext
     content {
+      # port - (optional) is a type of number
       port = promtext.value["port"]
-      url  = promtext.value["url"]
+      # url - (required) is a type of string
+      url = promtext.value["url"]
     }
   }
 
   dynamic "redis" {
     for_each = var.redis
     content {
-      command  = redis.value["command"]
+      # command - (optional) is a type of string
+      command = redis.value["command"]
+      # db_index - (optional) is a type of number
       db_index = redis.value["db_index"]
+      # password - (optional) is a type of string
       password = redis.value["password"]
-      port     = redis.value["port"]
+      # port - (optional) is a type of number
+      port = redis.value["port"]
     }
   }
 
   dynamic "smtp" {
     for_each = var.smtp
     content {
-      ehlo                 = smtp.value["ehlo"]
-      from                 = smtp.value["from"]
-      payload              = smtp.value["payload"]
-      port                 = smtp.value["port"]
-      proxy_dest_address   = smtp.value["proxy_dest_address"]
-      proxy_dest_port      = smtp.value["proxy_dest_port"]
-      proxy_family         = smtp.value["proxy_family"]
-      proxy_protocol       = smtp.value["proxy_protocol"]
+      # ehlo - (optional) is a type of string
+      ehlo = smtp.value["ehlo"]
+      # from - (optional) is a type of string
+      from = smtp.value["from"]
+      # payload - (optional) is a type of string
+      payload = smtp.value["payload"]
+      # port - (optional) is a type of number
+      port = smtp.value["port"]
+      # proxy_dest_address - (optional) is a type of string
+      proxy_dest_address = smtp.value["proxy_dest_address"]
+      # proxy_dest_port - (optional) is a type of number
+      proxy_dest_port = smtp.value["proxy_dest_port"]
+      # proxy_family - (optional) is a type of string
+      proxy_family = smtp.value["proxy_family"]
+      # proxy_protocol - (optional) is a type of bool
+      proxy_protocol = smtp.value["proxy_protocol"]
+      # proxy_source_address - (optional) is a type of string
       proxy_source_address = smtp.value["proxy_source_address"]
-      proxy_source_port    = smtp.value["proxy_source_port"]
-      sasl_auth_id         = smtp.value["sasl_auth_id"]
-      sasl_authentication  = smtp.value["sasl_authentication"]
-      sasl_password        = smtp.value["sasl_password"]
-      sasl_user            = smtp.value["sasl_user"]
-      starttls             = smtp.value["starttls"]
-      to                   = smtp.value["to"]
+      # proxy_source_port - (optional) is a type of number
+      proxy_source_port = smtp.value["proxy_source_port"]
+      # sasl_auth_id - (optional) is a type of string
+      sasl_auth_id = smtp.value["sasl_auth_id"]
+      # sasl_authentication - (optional) is a type of string
+      sasl_authentication = smtp.value["sasl_authentication"]
+      # sasl_password - (optional) is a type of string
+      sasl_password = smtp.value["sasl_password"]
+      # sasl_user - (optional) is a type of string
+      sasl_user = smtp.value["sasl_user"]
+      # starttls - (optional) is a type of bool
+      starttls = smtp.value["starttls"]
+      # to - (required) is a type of string
+      to = smtp.value["to"]
     }
   }
 
   dynamic "snmp" {
     for_each = var.snmp
     content {
-      auth_passphrase    = snmp.value["auth_passphrase"]
-      auth_protocol      = snmp.value["auth_protocol"]
-      community          = snmp.value["community"]
-      context_engine     = snmp.value["context_engine"]
-      context_name       = snmp.value["context_name"]
-      port               = snmp.value["port"]
+      # auth_passphrase - (optional) is a type of string
+      auth_passphrase = snmp.value["auth_passphrase"]
+      # auth_protocol - (optional) is a type of string
+      auth_protocol = snmp.value["auth_protocol"]
+      # community - (required) is a type of string
+      community = snmp.value["community"]
+      # context_engine - (optional) is a type of string
+      context_engine = snmp.value["context_engine"]
+      # context_name - (optional) is a type of string
+      context_name = snmp.value["context_name"]
+      # port - (optional) is a type of number
+      port = snmp.value["port"]
+      # privacy_passphrase - (optional) is a type of string
       privacy_passphrase = snmp.value["privacy_passphrase"]
-      privacy_protocol   = snmp.value["privacy_protocol"]
-      security_engine    = snmp.value["security_engine"]
-      security_level     = snmp.value["security_level"]
-      security_name      = snmp.value["security_name"]
-      separate_queries   = snmp.value["separate_queries"]
-      version            = snmp.value["version"]
+      # privacy_protocol - (optional) is a type of string
+      privacy_protocol = snmp.value["privacy_protocol"]
+      # security_engine - (optional) is a type of string
+      security_engine = snmp.value["security_engine"]
+      # security_level - (optional) is a type of string
+      security_level = snmp.value["security_level"]
+      # security_name - (optional) is a type of string
+      security_name = snmp.value["security_name"]
+      # separate_queries - (optional) is a type of bool
+      separate_queries = snmp.value["separate_queries"]
+      # version - (required) is a type of string
+      version = snmp.value["version"]
 
       dynamic "oid" {
         for_each = snmp.value.oid
         content {
+          # name - (required) is a type of string
           name = oid.value["name"]
+          # path - (required) is a type of string
           path = oid.value["path"]
+          # type - (optional) is a type of string
           type = oid.value["type"]
         }
       }
@@ -987,6 +1134,7 @@ resource "circonus_check" "this" {
   dynamic "statsd" {
     for_each = var.statsd
     content {
+      # source_ip - (required) is a type of string
       source_ip = statsd.value["source_ip"]
     }
   }
@@ -994,14 +1142,22 @@ resource "circonus_check" "this" {
   dynamic "tcp" {
     for_each = var.tcp
     content {
-      banner_regexp    = tcp.value["banner_regexp"]
-      ca_chain         = tcp.value["ca_chain"]
+      # banner_regexp - (optional) is a type of string
+      banner_regexp = tcp.value["banner_regexp"]
+      # ca_chain - (optional) is a type of string
+      ca_chain = tcp.value["ca_chain"]
+      # certificate_file - (optional) is a type of string
       certificate_file = tcp.value["certificate_file"]
-      ciphers          = tcp.value["ciphers"]
-      host             = tcp.value["host"]
-      key_file         = tcp.value["key_file"]
-      port             = tcp.value["port"]
-      tls              = tcp.value["tls"]
+      # ciphers - (optional) is a type of string
+      ciphers = tcp.value["ciphers"]
+      # host - (required) is a type of string
+      host = tcp.value["host"]
+      # key_file - (optional) is a type of string
+      key_file = tcp.value["key_file"]
+      # port - (required) is a type of number
+      port = tcp.value["port"]
+      # tls - (optional) is a type of bool
+      tls = tcp.value["tls"]
     }
   }
 

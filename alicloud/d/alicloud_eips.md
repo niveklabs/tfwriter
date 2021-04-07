@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 data "alicloud_eips" "this" {
-  ids               = var.ids
-  in_use            = var.in_use
-  ip_addresses      = var.ip_addresses
-  output_file       = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # in_use - (optional) is a type of bool
+  in_use = var.in_use
+  # ip_addresses - (optional) is a type of list of string
+  ip_addresses = var.ip_addresses
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

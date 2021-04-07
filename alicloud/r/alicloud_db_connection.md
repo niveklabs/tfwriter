@@ -65,9 +65,12 @@ variable "port" {
 
 ```terraform
 resource "alicloud_db_connection" "this" {
+  # connection_prefix - (optional) is a type of string
   connection_prefix = var.connection_prefix
-  instance_id       = var.instance_id
-  port              = var.port
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # port - (optional) is a type of string
+  port = var.port
 }
 ```
 

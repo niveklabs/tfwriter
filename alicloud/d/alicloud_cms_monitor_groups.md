@@ -122,16 +122,26 @@ variable "type" {
 
 ```terraform
 data "alicloud_cms_monitor_groups" "this" {
-  dynamic_tag_rule_id      = var.dynamic_tag_rule_id
-  ids                      = var.ids
+  # dynamic_tag_rule_id - (optional) is a type of string
+  dynamic_tag_rule_id = var.dynamic_tag_rule_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # include_template_history - (optional) is a type of bool
   include_template_history = var.include_template_history
-  keyword                  = var.keyword
-  monitor_group_name       = var.monitor_group_name
-  name_regex               = var.name_regex
-  output_file              = var.output_file
-  select_contact_groups    = var.select_contact_groups
-  tags                     = var.tags
-  type                     = var.type
+  # keyword - (optional) is a type of string
+  keyword = var.keyword
+  # monitor_group_name - (optional) is a type of string
+  monitor_group_name = var.monitor_group_name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # select_contact_groups - (optional) is a type of bool
+  select_contact_groups = var.select_contact_groups
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

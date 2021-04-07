@@ -79,11 +79,16 @@ variable "userid" {
 
 ```terraform
 resource "fortios_fmg_devicemanager_device" "this" {
-  adom        = var.adom
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # device_name - (required) is a type of string
   device_name = var.device_name
-  ipaddr      = var.ipaddr
-  password    = var.password
-  userid      = var.userid
+  # ipaddr - (required) is a type of string
+  ipaddr = var.ipaddr
+  # password - (optional) is a type of string
+  password = var.password
+  # userid - (required) is a type of string
+  userid = var.userid
 }
 ```
 

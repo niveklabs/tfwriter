@@ -58,7 +58,9 @@ variable "vrid" {
 
 ```terraform
 resource "thunder_fw_vrid" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
+  # vrid - (optional) is a type of number
   vrid = var.vrid
 }
 ```

@@ -161,22 +161,35 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ros_stack_group" "this" {
-  account_ids              = var.account_ids
+  # account_ids - (optional) is a type of string
+  account_ids = var.account_ids
+  # administration_role_name - (optional) is a type of string
   administration_role_name = var.administration_role_name
-  description              = var.description
-  execution_role_name      = var.execution_role_name
-  operation_description    = var.operation_description
-  operation_preferences    = var.operation_preferences
-  region_ids               = var.region_ids
-  stack_group_name         = var.stack_group_name
-  template_body            = var.template_body
-  template_url             = var.template_url
-  template_version         = var.template_version
+  # description - (optional) is a type of string
+  description = var.description
+  # execution_role_name - (optional) is a type of string
+  execution_role_name = var.execution_role_name
+  # operation_description - (optional) is a type of string
+  operation_description = var.operation_description
+  # operation_preferences - (optional) is a type of string
+  operation_preferences = var.operation_preferences
+  # region_ids - (optional) is a type of string
+  region_ids = var.region_ids
+  # stack_group_name - (required) is a type of string
+  stack_group_name = var.stack_group_name
+  # template_body - (optional) is a type of string
+  template_body = var.template_body
+  # template_url - (optional) is a type of string
+  template_url = var.template_url
+  # template_version - (optional) is a type of string
+  template_version = var.template_version
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      parameter_key   = parameters.value["parameter_key"]
+      # parameter_key - (optional) is a type of string
+      parameter_key = parameters.value["parameter_key"]
+      # parameter_value - (optional) is a type of string
       parameter_value = parameters.value["parameter_value"]
     }
   }
@@ -184,7 +197,9 @@ resource "alicloud_ros_stack_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

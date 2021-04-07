@@ -99,14 +99,22 @@ variable "tgw_name" {
 
 ```terraform
 resource "aviatrix_aws_tgw_connect_peer" "this" {
-  bgp_inside_cidrs      = var.bgp_inside_cidrs
+  # bgp_inside_cidrs - (required) is a type of set of string
+  bgp_inside_cidrs = var.bgp_inside_cidrs
+  # connect_attachment_id - (required) is a type of string
   connect_attachment_id = var.connect_attachment_id
-  connect_peer_name     = var.connect_peer_name
-  connection_name       = var.connection_name
-  peer_as_number        = var.peer_as_number
-  peer_gre_address      = var.peer_gre_address
-  tgw_gre_address       = var.tgw_gre_address
-  tgw_name              = var.tgw_name
+  # connect_peer_name - (required) is a type of string
+  connect_peer_name = var.connect_peer_name
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # peer_as_number - (required) is a type of string
+  peer_as_number = var.peer_as_number
+  # peer_gre_address - (required) is a type of string
+  peer_gre_address = var.peer_gre_address
+  # tgw_gre_address - (optional) is a type of string
+  tgw_gre_address = var.tgw_gre_address
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
 }
 ```
 

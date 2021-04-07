@@ -64,11 +64,13 @@ variable "timeouts" {
 
 ```terraform
 data "sdm_ssh_ca_pubkey" "this" {
+  # public_key - (optional) is a type of string
   public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

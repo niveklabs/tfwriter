@@ -123,17 +123,25 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_router_downlink_port" "this" {
-  description                   = var.description
-  display_name                  = var.display_name
-  ip_address                    = var.ip_address
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # linked_logical_switch_port_id - (required) is a type of string
   linked_logical_switch_port_id = var.linked_logical_switch_port_id
-  logical_router_id             = var.logical_router_id
-  urpf_mode                     = var.urpf_mode
+  # logical_router_id - (required) is a type of string
+  logical_router_id = var.logical_router_id
+  # urpf_mode - (optional) is a type of string
+  urpf_mode = var.urpf_mode
 
   dynamic "service_binding" {
     for_each = var.service_binding
     content {
-      target_id   = service_binding.value["target_id"]
+      # target_id - (optional) is a type of string
+      target_id = service_binding.value["target_id"]
+      # target_type - (optional) is a type of string
       target_type = service_binding.value["target_type"]
     }
   }
@@ -141,8 +149,10 @@ resource "nsxt_logical_router_downlink_port" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

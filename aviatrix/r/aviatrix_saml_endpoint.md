@@ -120,16 +120,26 @@ variable "sign_authn_requests" {
 
 ```terraform
 resource "aviatrix_saml_endpoint" "this" {
-  access_set_by                = var.access_set_by
-  controller_login             = var.controller_login
-  custom_entity_id             = var.custom_entity_id
+  # access_set_by - (optional) is a type of string
+  access_set_by = var.access_set_by
+  # controller_login - (optional) is a type of bool
+  controller_login = var.controller_login
+  # custom_entity_id - (optional) is a type of string
+  custom_entity_id = var.custom_entity_id
+  # custom_saml_request_template - (optional) is a type of string
   custom_saml_request_template = var.custom_saml_request_template
-  endpoint_name                = var.endpoint_name
-  idp_metadata                 = var.idp_metadata
-  idp_metadata_type            = var.idp_metadata_type
-  idp_metadata_url             = var.idp_metadata_url
-  rbac_groups                  = var.rbac_groups
-  sign_authn_requests          = var.sign_authn_requests
+  # endpoint_name - (required) is a type of string
+  endpoint_name = var.endpoint_name
+  # idp_metadata - (optional) is a type of string
+  idp_metadata = var.idp_metadata
+  # idp_metadata_type - (required) is a type of string
+  idp_metadata_type = var.idp_metadata_type
+  # idp_metadata_url - (optional) is a type of string
+  idp_metadata_url = var.idp_metadata_url
+  # rbac_groups - (optional) is a type of list of string
+  rbac_groups = var.rbac_groups
+  # sign_authn_requests - (optional) is a type of bool
+  sign_authn_requests = var.sign_authn_requests
 }
 ```
 

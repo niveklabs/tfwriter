@@ -120,16 +120,26 @@ variable "user" {
 
 ```terraform
 resource "checkpoint_management_login" "this" {
-  continue_last_session        = var.continue_last_session
-  domain                       = var.domain
+  # continue_last_session - (optional) is a type of bool
+  continue_last_session = var.continue_last_session
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # enter_last_published_session - (optional) is a type of bool
   enter_last_published_session = var.enter_last_published_session
-  password                     = var.password
-  read_only                    = var.read_only
-  session_comments             = var.session_comments
-  session_description          = var.session_description
-  session_name                 = var.session_name
-  session_timeout              = var.session_timeout
-  user                         = var.user
+  # password - (required) is a type of string
+  password = var.password
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # session_comments - (optional) is a type of string
+  session_comments = var.session_comments
+  # session_description - (optional) is a type of string
+  session_description = var.session_description
+  # session_name - (optional) is a type of string
+  session_name = var.session_name
+  # session_timeout - (optional) is a type of number
+  session_timeout = var.session_timeout
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

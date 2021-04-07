@@ -152,20 +152,34 @@ variable "update_vdom" {
 
 ```terraform
 resource "fortios_certificate_crl" "this" {
-  crl             = var.crl
-  http_url        = var.http_url
-  last_updated    = var.last_updated
-  ldap_password   = var.ldap_password
-  ldap_server     = var.ldap_server
-  ldap_username   = var.ldap_username
-  name            = var.name
-  range           = var.range
-  scep_cert       = var.scep_cert
-  scep_url        = var.scep_url
-  source          = var.source
-  source_ip       = var.source_ip
+  # crl - (optional) is a type of string
+  crl = var.crl
+  # http_url - (optional) is a type of string
+  http_url = var.http_url
+  # last_updated - (optional) is a type of number
+  last_updated = var.last_updated
+  # ldap_password - (optional) is a type of string
+  ldap_password = var.ldap_password
+  # ldap_server - (optional) is a type of string
+  ldap_server = var.ldap_server
+  # ldap_username - (optional) is a type of string
+  ldap_username = var.ldap_username
+  # name - (required) is a type of string
+  name = var.name
+  # range - (optional) is a type of string
+  range = var.range
+  # scep_cert - (optional) is a type of string
+  scep_cert = var.scep_cert
+  # scep_url - (optional) is a type of string
+  scep_url = var.scep_url
+  # source - (optional) is a type of string
+  source = var.source
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # update_interval - (optional) is a type of number
   update_interval = var.update_interval
-  update_vdom     = var.update_vdom
+  # update_vdom - (optional) is a type of string
+  update_vdom = var.update_vdom
 }
 ```
 

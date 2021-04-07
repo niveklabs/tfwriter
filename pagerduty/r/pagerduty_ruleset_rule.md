@@ -247,9 +247,12 @@ variable "variable" {
 
 ```terraform
 resource "pagerduty_ruleset_rule" "this" {
+  # disabled - (optional) is a type of bool
   disabled = var.disabled
+  # position - (optional) is a type of number
   position = var.position
-  ruleset  = var.ruleset
+  # ruleset - (required) is a type of string
+  ruleset = var.ruleset
 
   dynamic "actions" {
     for_each = var.actions
@@ -258,6 +261,7 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "annotate" {
         for_each = actions.value.annotate
         content {
+          # value - (optional) is a type of string
           value = annotate.value["value"]
         }
       }
@@ -265,6 +269,7 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "event_action" {
         for_each = actions.value.event_action
         content {
+          # value - (optional) is a type of string
           value = event_action.value["value"]
         }
       }
@@ -272,9 +277,13 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "extractions" {
         for_each = actions.value.extractions
         content {
-          regex    = extractions.value["regex"]
-          source   = extractions.value["source"]
-          target   = extractions.value["target"]
+          # regex - (optional) is a type of string
+          regex = extractions.value["regex"]
+          # source - (optional) is a type of string
+          source = extractions.value["source"]
+          # target - (optional) is a type of string
+          target = extractions.value["target"]
+          # template - (optional) is a type of string
           template = extractions.value["template"]
         }
       }
@@ -282,6 +291,7 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "priority" {
         for_each = actions.value.priority
         content {
+          # value - (optional) is a type of string
           value = priority.value["value"]
         }
       }
@@ -289,6 +299,7 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "route" {
         for_each = actions.value.route
         content {
+          # value - (optional) is a type of string
           value = route.value["value"]
         }
       }
@@ -296,6 +307,7 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "severity" {
         for_each = actions.value.severity
         content {
+          # value - (optional) is a type of string
           value = severity.value["value"]
         }
       }
@@ -303,16 +315,21 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "suppress" {
         for_each = actions.value.suppress
         content {
+          # threshold_time_amount - (optional) is a type of number
           threshold_time_amount = suppress.value["threshold_time_amount"]
-          threshold_time_unit   = suppress.value["threshold_time_unit"]
-          threshold_value       = suppress.value["threshold_value"]
-          value                 = suppress.value["value"]
+          # threshold_time_unit - (optional) is a type of string
+          threshold_time_unit = suppress.value["threshold_time_unit"]
+          # threshold_value - (optional) is a type of number
+          threshold_value = suppress.value["threshold_value"]
+          # value - (optional) is a type of bool
+          value = suppress.value["value"]
         }
       }
 
       dynamic "suspend" {
         for_each = actions.value.suspend
         content {
+          # value - (optional) is a type of number
           value = suspend.value["value"]
         }
       }
@@ -323,17 +340,21 @@ resource "pagerduty_ruleset_rule" "this" {
   dynamic "conditions" {
     for_each = var.conditions
     content {
+      # operator - (optional) is a type of string
       operator = conditions.value["operator"]
 
       dynamic "subconditions" {
         for_each = conditions.value.subconditions
         content {
+          # operator - (optional) is a type of string
           operator = subconditions.value["operator"]
 
           dynamic "parameter" {
             for_each = subconditions.value.parameter
             content {
-              path  = parameter.value["path"]
+              # path - (optional) is a type of string
+              path = parameter.value["path"]
+              # value - (optional) is a type of string
               value = parameter.value["value"]
             }
           }
@@ -351,7 +372,9 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "active_between" {
         for_each = time_frame.value.active_between
         content {
-          end_time   = active_between.value["end_time"]
+          # end_time - (optional) is a type of number
+          end_time = active_between.value["end_time"]
+          # start_time - (optional) is a type of number
           start_time = active_between.value["start_time"]
         }
       }
@@ -359,10 +382,14 @@ resource "pagerduty_ruleset_rule" "this" {
       dynamic "scheduled_weekly" {
         for_each = time_frame.value.scheduled_weekly
         content {
-          duration   = scheduled_weekly.value["duration"]
+          # duration - (optional) is a type of number
+          duration = scheduled_weekly.value["duration"]
+          # start_time - (optional) is a type of number
           start_time = scheduled_weekly.value["start_time"]
-          timezone   = scheduled_weekly.value["timezone"]
-          weekdays   = scheduled_weekly.value["weekdays"]
+          # timezone - (optional) is a type of string
+          timezone = scheduled_weekly.value["timezone"]
+          # weekdays - (optional) is a type of list of number
+          weekdays = scheduled_weekly.value["weekdays"]
         }
       }
 
@@ -372,13 +399,17 @@ resource "pagerduty_ruleset_rule" "this" {
   dynamic "variable" {
     for_each = var.variable
     content {
+      # name - (optional) is a type of string
       name = variable.value["name"]
+      # type - (optional) is a type of string
       type = variable.value["type"]
 
       dynamic "parameters" {
         for_each = variable.value.parameters
         content {
-          path  = parameters.value["path"]
+          # path - (optional) is a type of string
+          path = parameters.value["path"]
+          # value - (optional) is a type of string
           value = parameters.value["value"]
         }
       }

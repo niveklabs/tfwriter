@@ -78,11 +78,16 @@ variable "verify_only" {
 
 ```terraform
 resource "checkpoint_management_restore_domain" "this" {
-  domain_ip_address  = var.domain_ip_address
-  domain_name        = var.domain_name
+  # domain_ip_address - (required) is a type of string
+  domain_ip_address = var.domain_ip_address
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # domain_server_name - (required) is a type of string
   domain_server_name = var.domain_server_name
-  file_path          = var.file_path
-  verify_only        = var.verify_only
+  # file_path - (required) is a type of string
+  file_path = var.file_path
+  # verify_only - (optional) is a type of bool
+  verify_only = var.verify_only
 }
 ```
 

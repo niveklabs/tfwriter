@@ -49,6 +49,7 @@ variable "ddnsid" {
 
 ```terraform
 data "fortios_system_ddns" "this" {
+  # ddnsid - (required) is a type of number
   ddnsid = var.ddnsid
 }
 ```

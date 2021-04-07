@@ -63,8 +63,11 @@ variable "permissions" {
 
 ```terraform
 resource "heroku_team_collaborator" "this" {
-  app         = var.app
-  email       = var.email
+  # app - (required) is a type of string
+  app = var.app
+  # email - (required) is a type of string
+  email = var.email
+  # permissions - (required) is a type of set of string
   permissions = var.permissions
 }
 ```

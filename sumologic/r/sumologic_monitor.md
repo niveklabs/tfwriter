@@ -262,41 +262,68 @@ variable "triggers" {
 
 ```terraform
 resource "sumologic_monitor" "this" {
-  content_type        = var.content_type
-  created_at          = var.created_at
-  created_by          = var.created_by
-  description         = var.description
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # group_notifications - (optional) is a type of bool
   group_notifications = var.group_notifications
-  is_disabled         = var.is_disabled
-  is_locked           = var.is_locked
-  is_mutable          = var.is_mutable
-  is_system           = var.is_system
-  modified_at         = var.modified_at
-  modified_by         = var.modified_by
-  monitor_type        = var.monitor_type
-  name                = var.name
-  parent_id           = var.parent_id
-  post_request_map    = var.post_request_map
-  status              = var.status
-  type                = var.type
-  version             = var.version
+  # is_disabled - (optional) is a type of bool
+  is_disabled = var.is_disabled
+  # is_locked - (optional) is a type of bool
+  is_locked = var.is_locked
+  # is_mutable - (optional) is a type of bool
+  is_mutable = var.is_mutable
+  # is_system - (optional) is a type of bool
+  is_system = var.is_system
+  # modified_at - (optional) is a type of string
+  modified_at = var.modified_at
+  # modified_by - (optional) is a type of string
+  modified_by = var.modified_by
+  # monitor_type - (required) is a type of string
+  monitor_type = var.monitor_type
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of string
+  parent_id = var.parent_id
+  # post_request_map - (optional) is a type of map of string
+  post_request_map = var.post_request_map
+  # status - (optional) is a type of list of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "notifications" {
     for_each = var.notifications
     content {
+      # run_for_trigger_types - (required) is a type of list of string
       run_for_trigger_types = notifications.value["run_for_trigger_types"]
 
       dynamic "notification" {
         for_each = notifications.value.notification
         content {
-          action_type      = notification.value["action_type"]
-          connection_id    = notification.value["connection_id"]
-          connection_type  = notification.value["connection_type"]
-          message_body     = notification.value["message_body"]
+          # action_type - (optional) is a type of string
+          action_type = notification.value["action_type"]
+          # connection_id - (optional) is a type of string
+          connection_id = notification.value["connection_id"]
+          # connection_type - (optional) is a type of string
+          connection_type = notification.value["connection_type"]
+          # message_body - (optional) is a type of string
+          message_body = notification.value["message_body"]
+          # payload_override - (optional) is a type of string
           payload_override = notification.value["payload_override"]
-          recipients       = notification.value["recipients"]
-          subject          = notification.value["subject"]
-          time_zone        = notification.value["time_zone"]
+          # recipients - (optional) is a type of list of string
+          recipients = notification.value["recipients"]
+          # subject - (optional) is a type of string
+          subject = notification.value["subject"]
+          # time_zone - (optional) is a type of string
+          time_zone = notification.value["time_zone"]
         }
       }
 
@@ -306,7 +333,9 @@ resource "sumologic_monitor" "this" {
   dynamic "queries" {
     for_each = var.queries
     content {
-      query  = queries.value["query"]
+      # query - (required) is a type of string
+      query = queries.value["query"]
+      # row_id - (required) is a type of string
       row_id = queries.value["row_id"]
     }
   }
@@ -314,13 +343,20 @@ resource "sumologic_monitor" "this" {
   dynamic "triggers" {
     for_each = var.triggers
     content {
+      # detection_method - (optional) is a type of string
       detection_method = triggers.value["detection_method"]
-      occurrence_type  = triggers.value["occurrence_type"]
-      threshold        = triggers.value["threshold"]
-      threshold_type   = triggers.value["threshold_type"]
-      time_range       = triggers.value["time_range"]
-      trigger_source   = triggers.value["trigger_source"]
-      trigger_type     = triggers.value["trigger_type"]
+      # occurrence_type - (optional) is a type of string
+      occurrence_type = triggers.value["occurrence_type"]
+      # threshold - (optional) is a type of number
+      threshold = triggers.value["threshold"]
+      # threshold_type - (optional) is a type of string
+      threshold_type = triggers.value["threshold_type"]
+      # time_range - (optional) is a type of string
+      time_range = triggers.value["time_range"]
+      # trigger_source - (optional) is a type of string
+      trigger_source = triggers.value["trigger_source"]
+      # trigger_type - (optional) is a type of string
+      trigger_type = triggers.value["trigger_type"]
     }
   }
 

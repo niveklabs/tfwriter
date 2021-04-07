@@ -72,12 +72,15 @@ variable "vlan_range" {
 
 ```terraform
 resource "fortios_switchcontroller_stpinstance" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
+  # fosid - (optional) is a type of string
+  fosid = var.fosid
 
   dynamic "vlan_range" {
     for_each = var.vlan_range
     content {
+      # vlan_name - (optional) is a type of string
       vlan_name = vlan_range.value["vlan_name"]
     }
   }

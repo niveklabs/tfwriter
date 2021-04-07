@@ -175,27 +175,45 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_app_v2" "this" {
-  annotations                 = var.annotations
-  chart_name                  = var.chart_name
-  chart_version               = var.chart_version
-  cleanup_on_fail             = var.cleanup_on_fail
-  cluster_id                  = var.cluster_id
-  disable_hooks               = var.disable_hooks
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # chart_name - (required) is a type of string
+  chart_name = var.chart_name
+  # chart_version - (optional) is a type of string
+  chart_version = var.chart_version
+  # cleanup_on_fail - (optional) is a type of bool
+  cleanup_on_fail = var.cleanup_on_fail
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # disable_hooks - (optional) is a type of bool
+  disable_hooks = var.disable_hooks
+  # disable_open_api_validation - (optional) is a type of bool
   disable_open_api_validation = var.disable_open_api_validation
-  force_upgrade               = var.force_upgrade
-  labels                      = var.labels
-  name                        = var.name
-  namespace                   = var.namespace
-  project_id                  = var.project_id
-  repo_name                   = var.repo_name
-  values                      = var.values
-  wait                        = var.wait
+  # force_upgrade - (optional) is a type of bool
+  force_upgrade = var.force_upgrade
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # repo_name - (required) is a type of string
+  repo_name = var.repo_name
+  # values - (optional) is a type of string
+  values = var.values
+  # wait - (optional) is a type of bool
+  wait = var.wait
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

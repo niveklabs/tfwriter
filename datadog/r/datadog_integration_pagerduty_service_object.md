@@ -56,7 +56,9 @@ variable "service_name" {
 
 ```terraform
 resource "datadog_integration_pagerduty_service_object" "this" {
-  service_key  = var.service_key
+  # service_key - (required) is a type of string
+  service_key = var.service_key
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

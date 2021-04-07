@@ -80,11 +80,16 @@ variable "view_order" {
 
 ```terraform
 resource "prismacloud_compliance_standard_requirement" "this" {
-  cs_id          = var.cs_id
-  description    = var.description
-  name           = var.name
+  # cs_id - (required) is a type of string
+  cs_id = var.cs_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # requirement_id - (optional) is a type of string
   requirement_id = var.requirement_id
-  view_order     = var.view_order
+  # view_order - (optional) is a type of number
+  view_order = var.view_order
 }
 ```
 

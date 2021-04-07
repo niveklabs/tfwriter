@@ -128,20 +128,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_copy_image" "this" {
-  description      = var.description
-  encrypted        = var.encrypted
-  force            = var.force
-  image_name       = var.image_name
-  kms_key_id       = var.kms_key_id
-  name             = var.name
-  source_image_id  = var.source_image_id
+  # description - (optional) is a type of string
+  description = var.description
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # force - (optional) is a type of bool
+  force = var.force
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (optional) is a type of string
+  name = var.name
+  # source_image_id - (required) is a type of string
+  source_image_id = var.source_image_id
+  # source_region_id - (required) is a type of string
   source_region_id = var.source_region_id
-  tags             = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

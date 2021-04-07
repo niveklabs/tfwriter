@@ -106,14 +106,22 @@ variable "virtual_host_only" {
 
 ```terraform
 resource "fortios_vpnsslweb_realm" "this" {
-  login_page          = var.login_page
+  # login_page - (optional) is a type of string
+  login_page = var.login_page
+  # max_concurrent_user - (optional) is a type of number
   max_concurrent_user = var.max_concurrent_user
-  nas_ip              = var.nas_ip
-  radius_port         = var.radius_port
-  radius_server       = var.radius_server
-  url_path            = var.url_path
-  virtual_host        = var.virtual_host
-  virtual_host_only   = var.virtual_host_only
+  # nas_ip - (optional) is a type of string
+  nas_ip = var.nas_ip
+  # radius_port - (optional) is a type of number
+  radius_port = var.radius_port
+  # radius_server - (optional) is a type of string
+  radius_server = var.radius_server
+  # url_path - (optional) is a type of string
+  url_path = var.url_path
+  # virtual_host - (optional) is a type of string
+  virtual_host = var.virtual_host
+  # virtual_host_only - (optional) is a type of string
+  virtual_host_only = var.virtual_host_only
 }
 ```
 

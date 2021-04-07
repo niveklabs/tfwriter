@@ -49,6 +49,7 @@ variable "address" {
 
 ```terraform
 data "linode_networking_ip" "this" {
+  # address - (required) is a type of string
   address = var.address
 }
 ```

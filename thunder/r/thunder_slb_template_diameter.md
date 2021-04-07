@@ -246,40 +246,65 @@ variable "origin_host" {
 
 ```terraform
 resource "thunder_slb_template_diameter" "this" {
-  avp_code                   = var.avp_code
-  avp_string                 = var.avp_string
-  customize_cea              = var.customize_cea
-  dwr_time                   = var.dwr_time
-  dwr_up_retry               = var.dwr_up_retry
-  forward_to_latest_server   = var.forward_to_latest_server
+  # avp_code - (optional) is a type of number
+  avp_code = var.avp_code
+  # avp_string - (optional) is a type of string
+  avp_string = var.avp_string
+  # customize_cea - (optional) is a type of number
+  customize_cea = var.customize_cea
+  # dwr_time - (optional) is a type of number
+  dwr_time = var.dwr_time
+  # dwr_up_retry - (optional) is a type of number
+  dwr_up_retry = var.dwr_up_retry
+  # forward_to_latest_server - (optional) is a type of number
+  forward_to_latest_server = var.forward_to_latest_server
+  # forward_unknown_session_id - (optional) is a type of number
   forward_unknown_session_id = var.forward_unknown_session_id
-  idle_timeout               = var.idle_timeout
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # load_balance_on_session_id - (optional) is a type of number
   load_balance_on_session_id = var.load_balance_on_session_id
-  multiple_origin_host       = var.multiple_origin_host
-  name                       = var.name
-  origin_realm               = var.origin_realm
-  product_name               = var.product_name
-  service_group_name         = var.service_group_name
-  session_age                = var.session_age
-  terminate_on_cca_t         = var.terminate_on_cca_t
-  user_tag                   = var.user_tag
-  uuid                       = var.uuid
-  vendor_id                  = var.vendor_id
+  # multiple_origin_host - (optional) is a type of number
+  multiple_origin_host = var.multiple_origin_host
+  # name - (optional) is a type of string
+  name = var.name
+  # origin_realm - (optional) is a type of string
+  origin_realm = var.origin_realm
+  # product_name - (optional) is a type of string
+  product_name = var.product_name
+  # service_group_name - (optional) is a type of string
+  service_group_name = var.service_group_name
+  # session_age - (optional) is a type of number
+  session_age = var.session_age
+  # terminate_on_cca_t - (optional) is a type of number
+  terminate_on_cca_t = var.terminate_on_cca_t
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vendor_id - (optional) is a type of number
+  vendor_id = var.vendor_id
 
   dynamic "avp_list" {
     for_each = var.avp_list
     content {
-      avp       = avp_list.value["avp"]
-      int32     = avp_list.value["int32"]
-      int64     = avp_list.value["int64"]
+      # avp - (optional) is a type of number
+      avp = avp_list.value["avp"]
+      # int32 - (optional) is a type of number
+      int32 = avp_list.value["int32"]
+      # int64 - (optional) is a type of number
+      int64 = avp_list.value["int64"]
+      # mandatory - (optional) is a type of number
       mandatory = avp_list.value["mandatory"]
-      string    = avp_list.value["string"]
+      # string - (optional) is a type of string
+      string = avp_list.value["string"]
     }
   }
 
   dynamic "message_code_list" {
     for_each = var.message_code_list
     content {
+      # message_code - (optional) is a type of number
       message_code = message_code_list.value["message_code"]
     }
   }
@@ -287,8 +312,10 @@ resource "thunder_slb_template_diameter" "this" {
   dynamic "origin_host" {
     for_each = var.origin_host
     content {
+      # origin_host_name - (optional) is a type of string
       origin_host_name = origin_host.value["origin_host_name"]
-      uuid             = origin_host.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = origin_host.value["uuid"]
     }
   }
 

@@ -358,50 +358,85 @@ variable "server_certificate_error" {
 
 ```terraform
 resource "thunder_slb_template_server_ssl" "this" {
-  alert_type                       = var.alert_type
-  cert                             = var.cert
-  cert_shared_str                  = var.cert_shared_str
-  cipher_template                  = var.cipher_template
-  close_notify                     = var.close_notify
-  dgversion                        = var.dgversion
-  dh_type                          = var.dh_type
-  enable_tls_alert_logging         = var.enable_tls_alert_logging
-  encrypted                        = var.encrypted
-  forward_proxy_enable             = var.forward_proxy_enable
-  handshake_logging_enable         = var.handshake_logging_enable
-  key                              = var.key
-  key_shared_encrypted             = var.key_shared_encrypted
-  key_shared_passphrase            = var.key_shared_passphrase
-  key_shared_str                   = var.key_shared_str
-  name                             = var.name
-  ocsp_stapling                    = var.ocsp_stapling
-  passphrase                       = var.passphrase
-  renegotiation_disable            = var.renegotiation_disable
-  session_cache_size               = var.session_cache_size
-  session_cache_timeout            = var.session_cache_timeout
-  session_ticket_enable            = var.session_ticket_enable
+  # alert_type - (optional) is a type of string
+  alert_type = var.alert_type
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # cert_shared_str - (optional) is a type of string
+  cert_shared_str = var.cert_shared_str
+  # cipher_template - (optional) is a type of string
+  cipher_template = var.cipher_template
+  # close_notify - (optional) is a type of number
+  close_notify = var.close_notify
+  # dgversion - (optional) is a type of number
+  dgversion = var.dgversion
+  # dh_type - (optional) is a type of string
+  dh_type = var.dh_type
+  # enable_tls_alert_logging - (optional) is a type of number
+  enable_tls_alert_logging = var.enable_tls_alert_logging
+  # encrypted - (optional) is a type of string
+  encrypted = var.encrypted
+  # forward_proxy_enable - (optional) is a type of number
+  forward_proxy_enable = var.forward_proxy_enable
+  # handshake_logging_enable - (optional) is a type of number
+  handshake_logging_enable = var.handshake_logging_enable
+  # key - (optional) is a type of string
+  key = var.key
+  # key_shared_encrypted - (optional) is a type of string
+  key_shared_encrypted = var.key_shared_encrypted
+  # key_shared_passphrase - (optional) is a type of string
+  key_shared_passphrase = var.key_shared_passphrase
+  # key_shared_str - (optional) is a type of string
+  key_shared_str = var.key_shared_str
+  # name - (optional) is a type of string
+  name = var.name
+  # ocsp_stapling - (optional) is a type of number
+  ocsp_stapling = var.ocsp_stapling
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # renegotiation_disable - (optional) is a type of number
+  renegotiation_disable = var.renegotiation_disable
+  # session_cache_size - (optional) is a type of number
+  session_cache_size = var.session_cache_size
+  # session_cache_timeout - (optional) is a type of number
+  session_cache_timeout = var.session_cache_timeout
+  # session_ticket_enable - (optional) is a type of number
+  session_ticket_enable = var.session_ticket_enable
+  # shared_partition_cipher_template - (optional) is a type of number
   shared_partition_cipher_template = var.shared_partition_cipher_template
-  ssli_logging                     = var.ssli_logging
-  sslilogging                      = var.sslilogging
-  template_cipher_shared           = var.template_cipher_shared
-  use_client_sni                   = var.use_client_sni
-  user_tag                         = var.user_tag
-  uuid                             = var.uuid
-  version                          = var.version
+  # ssli_logging - (optional) is a type of number
+  ssli_logging = var.ssli_logging
+  # sslilogging - (optional) is a type of string
+  sslilogging = var.sslilogging
+  # template_cipher_shared - (optional) is a type of string
+  template_cipher_shared = var.template_cipher_shared
+  # use_client_sni - (optional) is a type of number
+  use_client_sni = var.use_client_sni
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "ca_certs" {
     for_each = var.ca_certs
     content {
-      ca_cert                  = ca_certs.value["ca_cert"]
+      # ca_cert - (optional) is a type of string
+      ca_cert = ca_certs.value["ca_cert"]
+      # ca_cert_partition_shared - (optional) is a type of number
       ca_cert_partition_shared = ca_certs.value["ca_cert_partition_shared"]
-      server_ocsp_sg           = ca_certs.value["server_ocsp_sg"]
-      server_ocsp_srvr         = ca_certs.value["server_ocsp_srvr"]
+      # server_ocsp_sg - (optional) is a type of string
+      server_ocsp_sg = ca_certs.value["server_ocsp_sg"]
+      # server_ocsp_srvr - (optional) is a type of string
+      server_ocsp_srvr = ca_certs.value["server_ocsp_srvr"]
     }
   }
 
   dynamic "cipher_without_prio_list" {
     for_each = var.cipher_without_prio_list
     content {
+      # cipher_wo_prio - (optional) is a type of string
       cipher_wo_prio = cipher_without_prio_list.value["cipher_wo_prio"]
     }
   }
@@ -409,6 +444,7 @@ resource "thunder_slb_template_server_ssl" "this" {
   dynamic "crl_certs" {
     for_each = var.crl_certs
     content {
+      # crl - (optional) is a type of string
       crl = crl_certs.value["crl"]
     }
   }
@@ -416,6 +452,7 @@ resource "thunder_slb_template_server_ssl" "this" {
   dynamic "ec_list" {
     for_each = var.ec_list
     content {
+      # ec - (optional) is a type of string
       ec = ec_list.value["ec"]
     }
   }
@@ -423,6 +460,7 @@ resource "thunder_slb_template_server_ssl" "this" {
   dynamic "server_certificate_error" {
     for_each = var.server_certificate_error
     content {
+      # error_type - (optional) is a type of string
       error_type = server_certificate_error.value["error_type"]
     }
   }

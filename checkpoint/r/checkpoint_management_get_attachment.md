@@ -58,8 +58,10 @@ variable "uid" {
 
 ```terraform
 resource "checkpoint_management_get_attachment" "this" {
+  # attachment_id - (optional) is a type of string
   attachment_id = var.attachment_id
-  uid           = var.uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

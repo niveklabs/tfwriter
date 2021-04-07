@@ -232,53 +232,87 @@ variable "pim_sm_global" {
 
 ```terraform
 resource "fortios_router_multicast" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  multicast_routing     = var.multicast_routing
-  route_limit           = var.route_limit
-  route_threshold       = var.route_threshold
+  # multicast_routing - (optional) is a type of string
+  multicast_routing = var.multicast_routing
+  # route_limit - (optional) is a type of number
+  route_limit = var.route_limit
+  # route_threshold - (optional) is a type of number
+  route_threshold = var.route_threshold
 
   dynamic "interface" {
     for_each = var.interface
     content {
-      bfd                      = interface.value["bfd"]
-      cisco_exclude_genid      = interface.value["cisco_exclude_genid"]
-      dr_priority              = interface.value["dr_priority"]
-      hello_holdtime           = interface.value["hello_holdtime"]
-      hello_interval           = interface.value["hello_interval"]
-      multicast_flow           = interface.value["multicast_flow"]
-      name                     = interface.value["name"]
-      neighbour_filter         = interface.value["neighbour_filter"]
-      passive                  = interface.value["passive"]
-      pim_mode                 = interface.value["pim_mode"]
-      propagation_delay        = interface.value["propagation_delay"]
-      rp_candidate             = interface.value["rp_candidate"]
-      rp_candidate_group       = interface.value["rp_candidate_group"]
-      rp_candidate_interval    = interface.value["rp_candidate_interval"]
-      rp_candidate_priority    = interface.value["rp_candidate_priority"]
-      rpf_nbr_fail_back        = interface.value["rpf_nbr_fail_back"]
+      # bfd - (optional) is a type of string
+      bfd = interface.value["bfd"]
+      # cisco_exclude_genid - (optional) is a type of string
+      cisco_exclude_genid = interface.value["cisco_exclude_genid"]
+      # dr_priority - (optional) is a type of number
+      dr_priority = interface.value["dr_priority"]
+      # hello_holdtime - (optional) is a type of number
+      hello_holdtime = interface.value["hello_holdtime"]
+      # hello_interval - (optional) is a type of number
+      hello_interval = interface.value["hello_interval"]
+      # multicast_flow - (optional) is a type of string
+      multicast_flow = interface.value["multicast_flow"]
+      # name - (optional) is a type of string
+      name = interface.value["name"]
+      # neighbour_filter - (optional) is a type of string
+      neighbour_filter = interface.value["neighbour_filter"]
+      # passive - (optional) is a type of string
+      passive = interface.value["passive"]
+      # pim_mode - (optional) is a type of string
+      pim_mode = interface.value["pim_mode"]
+      # propagation_delay - (optional) is a type of number
+      propagation_delay = interface.value["propagation_delay"]
+      # rp_candidate - (optional) is a type of string
+      rp_candidate = interface.value["rp_candidate"]
+      # rp_candidate_group - (optional) is a type of string
+      rp_candidate_group = interface.value["rp_candidate_group"]
+      # rp_candidate_interval - (optional) is a type of number
+      rp_candidate_interval = interface.value["rp_candidate_interval"]
+      # rp_candidate_priority - (optional) is a type of number
+      rp_candidate_priority = interface.value["rp_candidate_priority"]
+      # rpf_nbr_fail_back - (optional) is a type of string
+      rpf_nbr_fail_back = interface.value["rpf_nbr_fail_back"]
+      # rpf_nbr_fail_back_filter - (optional) is a type of string
       rpf_nbr_fail_back_filter = interface.value["rpf_nbr_fail_back_filter"]
-      state_refresh_interval   = interface.value["state_refresh_interval"]
-      static_group             = interface.value["static_group"]
-      ttl_threshold            = interface.value["ttl_threshold"]
+      # state_refresh_interval - (optional) is a type of number
+      state_refresh_interval = interface.value["state_refresh_interval"]
+      # static_group - (optional) is a type of string
+      static_group = interface.value["static_group"]
+      # ttl_threshold - (optional) is a type of number
+      ttl_threshold = interface.value["ttl_threshold"]
 
       dynamic "igmp" {
         for_each = interface.value.igmp
         content {
-          access_group               = igmp.value["access_group"]
-          immediate_leave_group      = igmp.value["immediate_leave_group"]
-          last_member_query_count    = igmp.value["last_member_query_count"]
+          # access_group - (optional) is a type of string
+          access_group = igmp.value["access_group"]
+          # immediate_leave_group - (optional) is a type of string
+          immediate_leave_group = igmp.value["immediate_leave_group"]
+          # last_member_query_count - (optional) is a type of number
+          last_member_query_count = igmp.value["last_member_query_count"]
+          # last_member_query_interval - (optional) is a type of number
           last_member_query_interval = igmp.value["last_member_query_interval"]
-          query_interval             = igmp.value["query_interval"]
-          query_max_response_time    = igmp.value["query_max_response_time"]
-          query_timeout              = igmp.value["query_timeout"]
-          router_alert_check         = igmp.value["router_alert_check"]
-          version                    = igmp.value["version"]
+          # query_interval - (optional) is a type of number
+          query_interval = igmp.value["query_interval"]
+          # query_max_response_time - (optional) is a type of number
+          query_max_response_time = igmp.value["query_max_response_time"]
+          # query_timeout - (optional) is a type of number
+          query_timeout = igmp.value["query_timeout"]
+          # router_alert_check - (optional) is a type of string
+          router_alert_check = igmp.value["router_alert_check"]
+          # version - (optional) is a type of string
+          version = igmp.value["version"]
         }
       }
 
       dynamic "join_group" {
         for_each = interface.value.join_group
         content {
+          # address - (optional) is a type of string
           address = join_group.value["address"]
         }
       }
@@ -289,37 +323,65 @@ resource "fortios_router_multicast" "this" {
   dynamic "pim_sm_global" {
     for_each = var.pim_sm_global
     content {
-      accept_register_list          = pim_sm_global.value["accept_register_list"]
-      accept_source_list            = pim_sm_global.value["accept_source_list"]
-      bsr_allow_quick_refresh       = pim_sm_global.value["bsr_allow_quick_refresh"]
-      bsr_candidate                 = pim_sm_global.value["bsr_candidate"]
-      bsr_hash                      = pim_sm_global.value["bsr_hash"]
-      bsr_interface                 = pim_sm_global.value["bsr_interface"]
-      bsr_priority                  = pim_sm_global.value["bsr_priority"]
-      cisco_crp_prefix              = pim_sm_global.value["cisco_crp_prefix"]
-      cisco_ignore_rp_set_priority  = pim_sm_global.value["cisco_ignore_rp_set_priority"]
-      cisco_register_checksum       = pim_sm_global.value["cisco_register_checksum"]
+      # accept_register_list - (optional) is a type of string
+      accept_register_list = pim_sm_global.value["accept_register_list"]
+      # accept_source_list - (optional) is a type of string
+      accept_source_list = pim_sm_global.value["accept_source_list"]
+      # bsr_allow_quick_refresh - (optional) is a type of string
+      bsr_allow_quick_refresh = pim_sm_global.value["bsr_allow_quick_refresh"]
+      # bsr_candidate - (optional) is a type of string
+      bsr_candidate = pim_sm_global.value["bsr_candidate"]
+      # bsr_hash - (optional) is a type of number
+      bsr_hash = pim_sm_global.value["bsr_hash"]
+      # bsr_interface - (optional) is a type of string
+      bsr_interface = pim_sm_global.value["bsr_interface"]
+      # bsr_priority - (optional) is a type of number
+      bsr_priority = pim_sm_global.value["bsr_priority"]
+      # cisco_crp_prefix - (optional) is a type of string
+      cisco_crp_prefix = pim_sm_global.value["cisco_crp_prefix"]
+      # cisco_ignore_rp_set_priority - (optional) is a type of string
+      cisco_ignore_rp_set_priority = pim_sm_global.value["cisco_ignore_rp_set_priority"]
+      # cisco_register_checksum - (optional) is a type of string
+      cisco_register_checksum = pim_sm_global.value["cisco_register_checksum"]
+      # cisco_register_checksum_group - (optional) is a type of string
       cisco_register_checksum_group = pim_sm_global.value["cisco_register_checksum_group"]
-      join_prune_holdtime           = pim_sm_global.value["join_prune_holdtime"]
-      message_interval              = pim_sm_global.value["message_interval"]
-      null_register_retries         = pim_sm_global.value["null_register_retries"]
-      register_rate_limit           = pim_sm_global.value["register_rate_limit"]
-      register_rp_reachability      = pim_sm_global.value["register_rp_reachability"]
-      register_source               = pim_sm_global.value["register_source"]
-      register_source_interface     = pim_sm_global.value["register_source_interface"]
-      register_source_ip            = pim_sm_global.value["register_source_ip"]
-      register_supression           = pim_sm_global.value["register_supression"]
-      rp_register_keepalive         = pim_sm_global.value["rp_register_keepalive"]
-      spt_threshold                 = pim_sm_global.value["spt_threshold"]
-      spt_threshold_group           = pim_sm_global.value["spt_threshold_group"]
-      ssm                           = pim_sm_global.value["ssm"]
-      ssm_range                     = pim_sm_global.value["ssm_range"]
+      # join_prune_holdtime - (optional) is a type of number
+      join_prune_holdtime = pim_sm_global.value["join_prune_holdtime"]
+      # message_interval - (optional) is a type of number
+      message_interval = pim_sm_global.value["message_interval"]
+      # null_register_retries - (optional) is a type of number
+      null_register_retries = pim_sm_global.value["null_register_retries"]
+      # register_rate_limit - (optional) is a type of number
+      register_rate_limit = pim_sm_global.value["register_rate_limit"]
+      # register_rp_reachability - (optional) is a type of string
+      register_rp_reachability = pim_sm_global.value["register_rp_reachability"]
+      # register_source - (optional) is a type of string
+      register_source = pim_sm_global.value["register_source"]
+      # register_source_interface - (optional) is a type of string
+      register_source_interface = pim_sm_global.value["register_source_interface"]
+      # register_source_ip - (optional) is a type of string
+      register_source_ip = pim_sm_global.value["register_source_ip"]
+      # register_supression - (optional) is a type of number
+      register_supression = pim_sm_global.value["register_supression"]
+      # rp_register_keepalive - (optional) is a type of number
+      rp_register_keepalive = pim_sm_global.value["rp_register_keepalive"]
+      # spt_threshold - (optional) is a type of string
+      spt_threshold = pim_sm_global.value["spt_threshold"]
+      # spt_threshold_group - (optional) is a type of string
+      spt_threshold_group = pim_sm_global.value["spt_threshold_group"]
+      # ssm - (optional) is a type of string
+      ssm = pim_sm_global.value["ssm"]
+      # ssm_range - (optional) is a type of string
+      ssm_range = pim_sm_global.value["ssm_range"]
 
       dynamic "rp_address" {
         for_each = pim_sm_global.value.rp_address
         content {
-          group      = rp_address.value["group"]
-          id         = rp_address.value["id"]
+          # group - (optional) is a type of string
+          group = rp_address.value["group"]
+          # id - (optional) is a type of number
+          id = rp_address.value["id"]
+          # ip_address - (optional) is a type of string
           ip_address = rp_address.value["ip_address"]
         }
       }

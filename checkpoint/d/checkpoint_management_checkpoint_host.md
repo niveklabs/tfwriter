@@ -66,9 +66,12 @@ variable "uid" {
 
 ```terraform
 data "checkpoint_management_checkpoint_host" "this" {
+  # management_blades - (optional) is a type of map of string
   management_blades = var.management_blades
-  name              = var.name
-  uid               = var.uid
+  # name - (optional) is a type of string
+  name = var.name
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

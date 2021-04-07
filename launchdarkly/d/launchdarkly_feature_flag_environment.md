@@ -162,25 +162,35 @@ variable "user_targets" {
 
 ```terraform
 data "launchdarkly_feature_flag_environment" "this" {
-  env_key           = var.env_key
-  flag_id           = var.flag_id
-  off_variation     = var.off_variation
+  # env_key - (required) is a type of string
+  env_key = var.env_key
+  # flag_id - (required) is a type of string
+  flag_id = var.flag_id
+  # off_variation - (optional) is a type of number
+  off_variation = var.off_variation
+  # targeting_enabled - (optional) is a type of bool
   targeting_enabled = var.targeting_enabled
-  track_events      = var.track_events
+  # track_events - (optional) is a type of bool
+  track_events = var.track_events
 
   dynamic "flag_fallthrough" {
     for_each = var.flag_fallthrough
     content {
-      bucket_by       = flag_fallthrough.value["bucket_by"]
+      # bucket_by - (optional) is a type of string
+      bucket_by = flag_fallthrough.value["bucket_by"]
+      # rollout_weights - (optional) is a type of list of number
       rollout_weights = flag_fallthrough.value["rollout_weights"]
-      variation       = flag_fallthrough.value["variation"]
+      # variation - (optional) is a type of number
+      variation = flag_fallthrough.value["variation"]
     }
   }
 
   dynamic "prerequisites" {
     for_each = var.prerequisites
     content {
-      flag_key  = prerequisites.value["flag_key"]
+      # flag_key - (required) is a type of string
+      flag_key = prerequisites.value["flag_key"]
+      # variation - (required) is a type of number
       variation = prerequisites.value["variation"]
     }
   }
@@ -188,18 +198,26 @@ data "launchdarkly_feature_flag_environment" "this" {
   dynamic "rules" {
     for_each = var.rules
     content {
-      bucket_by       = rules.value["bucket_by"]
+      # bucket_by - (optional) is a type of string
+      bucket_by = rules.value["bucket_by"]
+      # rollout_weights - (optional) is a type of list of number
       rollout_weights = rules.value["rollout_weights"]
-      variation       = rules.value["variation"]
+      # variation - (optional) is a type of number
+      variation = rules.value["variation"]
 
       dynamic "clauses" {
         for_each = rules.value.clauses
         content {
-          attribute  = clauses.value["attribute"]
-          negate     = clauses.value["negate"]
-          op         = clauses.value["op"]
+          # attribute - (required) is a type of string
+          attribute = clauses.value["attribute"]
+          # negate - (required) is a type of bool
+          negate = clauses.value["negate"]
+          # op - (required) is a type of string
+          op = clauses.value["op"]
+          # value_type - (optional) is a type of string
           value_type = clauses.value["value_type"]
-          values     = clauses.value["values"]
+          # values - (required) is a type of list of string
+          values = clauses.value["values"]
         }
       }
 
@@ -209,6 +227,7 @@ data "launchdarkly_feature_flag_environment" "this" {
   dynamic "user_targets" {
     for_each = var.user_targets
     content {
+      # values - (optional) is a type of list of string
       values = user_targets.value["values"]
     }
   }

@@ -65,12 +65,15 @@ variable "categories" {
 
 ```terraform
 data "nutanix_network_security_rule" "this" {
+  # network_security_rule_id - (required) is a type of string
   network_security_rule_id = var.network_security_rule_id
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

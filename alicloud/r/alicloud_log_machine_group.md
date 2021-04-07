@@ -79,11 +79,16 @@ variable "topic" {
 
 ```terraform
 resource "alicloud_log_machine_group" "this" {
+  # identify_list - (required) is a type of set of string
   identify_list = var.identify_list
+  # identify_type - (optional) is a type of string
   identify_type = var.identify_type
-  name          = var.name
-  project       = var.project
-  topic         = var.topic
+  # name - (required) is a type of string
+  name = var.name
+  # project - (required) is a type of string
+  project = var.project
+  # topic - (optional) is a type of string
+  topic = var.topic
 }
 ```
 

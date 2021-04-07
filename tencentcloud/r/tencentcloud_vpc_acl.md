@@ -72,10 +72,14 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_vpc_acl" "this" {
-  egress  = var.egress
+  # egress - (optional) is a type of list of string
+  egress = var.egress
+  # ingress - (optional) is a type of list of string
   ingress = var.ingress
-  name    = var.name
-  vpc_id  = var.vpc_id
+  # name - (required) is a type of string
+  name = var.name
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

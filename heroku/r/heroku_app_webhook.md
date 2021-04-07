@@ -86,12 +86,18 @@ variable "url" {
 
 ```terraform
 resource "heroku_app_webhook" "this" {
-  app_id        = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # authorization - (optional) is a type of string
   authorization = var.authorization
-  include       = var.include
-  level         = var.level
-  secret        = var.secret
-  url           = var.url
+  # include - (required) is a type of list of string
+  include = var.include
+  # level - (required) is a type of string
+  level = var.level
+  # secret - (optional) is a type of string
+  secret = var.secret
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

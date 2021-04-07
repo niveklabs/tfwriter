@@ -72,13 +72,17 @@ variable "cert" {
 
 ```terraform
 resource "linode_object_storage_bucket" "this" {
+  # cluster - (required) is a type of string
   cluster = var.cluster
-  label   = var.label
+  # label - (required) is a type of string
+  label = var.label
 
   dynamic "cert" {
     for_each = var.cert
     content {
+      # certificate - (required) is a type of string
       certificate = cert.value["certificate"]
+      # private_key - (required) is a type of string
       private_key = cert.value["private_key"]
     }
   }

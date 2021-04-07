@@ -56,7 +56,9 @@ variable "plugin_id" {
 
 ```terraform
 data "newrelic_plugin_component" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # plugin_id - (required) is a type of number
   plugin_id = var.plugin_id
 }
 ```

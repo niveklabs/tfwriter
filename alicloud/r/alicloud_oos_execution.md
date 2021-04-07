@@ -127,19 +127,29 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_oos_execution" "this" {
-  description         = var.description
-  loop_mode           = var.loop_mode
-  mode                = var.mode
-  parameters          = var.parameters
+  # description - (optional) is a type of string
+  description = var.description
+  # loop_mode - (optional) is a type of string
+  loop_mode = var.loop_mode
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # parameters - (optional) is a type of string
+  parameters = var.parameters
+  # parent_execution_id - (optional) is a type of string
   parent_execution_id = var.parent_execution_id
-  safety_check        = var.safety_check
-  template_content    = var.template_content
-  template_name       = var.template_name
-  template_version    = var.template_version
+  # safety_check - (optional) is a type of string
+  safety_check = var.safety_check
+  # template_content - (optional) is a type of string
+  template_content = var.template_content
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # template_version - (optional) is a type of string
+  template_version = var.template_version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -180,27 +180,45 @@ variable "metadata" {
 
 ```terraform
 resource "fortios_ips_rule" "this" {
-  action                = var.action
-  application           = var.application
-  date                  = var.date
+  # action - (optional) is a type of string
+  action = var.action
+  # application - (optional) is a type of string
+  application = var.application
+  # date - (optional) is a type of number
+  date = var.date
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  group                 = var.group
-  location              = var.location
-  log                   = var.log
-  log_packet            = var.log_packet
-  name                  = var.name
-  os                    = var.os
-  rev                   = var.rev
-  rule_id               = var.rule_id
-  service               = var.service
-  severity              = var.severity
-  status                = var.status
+  # group - (optional) is a type of string
+  group = var.group
+  # location - (optional) is a type of string
+  location = var.location
+  # log - (optional) is a type of string
+  log = var.log
+  # log_packet - (optional) is a type of string
+  log_packet = var.log_packet
+  # name - (optional) is a type of string
+  name = var.name
+  # os - (optional) is a type of string
+  os = var.os
+  # rev - (optional) is a type of number
+  rev = var.rev
+  # rule_id - (optional) is a type of number
+  rule_id = var.rule_id
+  # service - (optional) is a type of string
+  service = var.service
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      id      = metadata.value["id"]
-      metaid  = metadata.value["metaid"]
+      # id - (optional) is a type of number
+      id = metadata.value["id"]
+      # metaid - (optional) is a type of number
+      metaid = metadata.value["metaid"]
+      # valueid - (optional) is a type of number
       valueid = metadata.value["valueid"]
     }
   }

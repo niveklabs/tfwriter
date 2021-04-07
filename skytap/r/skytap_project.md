@@ -91,16 +91,23 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_project" "this" {
-  auto_add_role_name   = var.auto_add_role_name
-  name                 = var.name
+  # auto_add_role_name - (optional) is a type of string
+  auto_add_role_name = var.auto_add_role_name
+  # name - (required) is a type of string
+  name = var.name
+  # show_project_members - (optional) is a type of bool
   show_project_members = var.show_project_members
-  summary              = var.summary
+  # summary - (optional) is a type of string
+  summary = var.summary
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

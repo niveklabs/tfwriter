@@ -96,13 +96,20 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "alicloud_ess_lifecycle_hook" "this" {
-  default_result        = var.default_result
-  heartbeat_timeout     = var.heartbeat_timeout
-  lifecycle_transition  = var.lifecycle_transition
-  name                  = var.name
-  notification_arn      = var.notification_arn
+  # default_result - (optional) is a type of string
+  default_result = var.default_result
+  # heartbeat_timeout - (optional) is a type of number
+  heartbeat_timeout = var.heartbeat_timeout
+  # lifecycle_transition - (required) is a type of string
+  lifecycle_transition = var.lifecycle_transition
+  # name - (optional) is a type of string
+  name = var.name
+  # notification_arn - (optional) is a type of string
+  notification_arn = var.notification_arn
+  # notification_metadata - (optional) is a type of string
   notification_metadata = var.notification_metadata
-  scaling_group_id      = var.scaling_group_id
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
 }
 ```
 

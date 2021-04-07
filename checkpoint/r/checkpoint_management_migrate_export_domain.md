@@ -65,8 +65,11 @@ variable "include_logs" {
 
 ```terraform
 resource "checkpoint_management_migrate_export_domain" "this" {
-  domain       = var.domain
-  file_path    = var.file_path
+  # domain - (required) is a type of string
+  domain = var.domain
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # include_logs - (optional) is a type of bool
   include_logs = var.include_logs
 }
 ```

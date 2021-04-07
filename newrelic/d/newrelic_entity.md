@@ -89,15 +89,21 @@ variable "tag" {
 
 ```terraform
 data "newrelic_entity" "this" {
-  domain      = var.domain
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # ignore_case - (optional) is a type of bool
   ignore_case = var.ignore_case
-  name        = var.name
-  type        = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "tag" {
     for_each = var.tag
     content {
-      key   = tag.value["key"]
+      # key - (required) is a type of string
+      key = tag.value["key"]
+      # value - (required) is a type of string
       value = tag.value["value"]
     }
   }

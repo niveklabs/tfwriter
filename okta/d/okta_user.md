@@ -68,14 +68,18 @@ variable "search" {
 
 ```terraform
 data "okta_user" "this" {
+  # user_id - (optional) is a type of string
   user_id = var.user_id
 
   dynamic "search" {
     for_each = var.search
     content {
+      # comparison - (optional) is a type of string
       comparison = search.value["comparison"]
-      name       = search.value["name"]
-      value      = search.value["value"]
+      # name - (required) is a type of string
+      name = search.value["name"]
+      # value - (required) is a type of string
+      value = search.value["value"]
     }
   }
 

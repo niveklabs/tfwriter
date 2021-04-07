@@ -242,26 +242,43 @@ variable "srcintf_filter" {
 
 ```terraform
 resource "fortios_firewall_vip46" "this" {
-  arp_reply             = var.arp_reply
-  color                 = var.color
-  comment               = var.comment
+  # arp_reply - (optional) is a type of string
+  arp_reply = var.arp_reply
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  extip                 = var.extip
-  extport               = var.extport
-  fosid                 = var.fosid
-  ldb_method            = var.ldb_method
-  mappedip              = var.mappedip
-  mappedport            = var.mappedport
-  name                  = var.name
-  portforward           = var.portforward
-  protocol              = var.protocol
-  server_type           = var.server_type
-  type                  = var.type
-  uuid                  = var.uuid
+  # extip - (required) is a type of string
+  extip = var.extip
+  # extport - (optional) is a type of string
+  extport = var.extport
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # ldb_method - (optional) is a type of string
+  ldb_method = var.ldb_method
+  # mappedip - (required) is a type of string
+  mappedip = var.mappedip
+  # mappedport - (optional) is a type of string
+  mappedport = var.mappedport
+  # name - (optional) is a type of string
+  name = var.name
+  # portforward - (optional) is a type of string
+  portforward = var.portforward
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "monitor" {
     for_each = var.monitor
     content {
+      # name - (optional) is a type of string
       name = monitor.value["name"]
     }
   }
@@ -269,22 +286,33 @@ resource "fortios_firewall_vip46" "this" {
   dynamic "realservers" {
     for_each = var.realservers
     content {
-      client_ip         = realservers.value["client_ip"]
-      healthcheck       = realservers.value["healthcheck"]
+      # client_ip - (optional) is a type of string
+      client_ip = realservers.value["client_ip"]
+      # healthcheck - (optional) is a type of string
+      healthcheck = realservers.value["healthcheck"]
+      # holddown_interval - (optional) is a type of number
       holddown_interval = realservers.value["holddown_interval"]
-      id                = realservers.value["id"]
-      ip                = realservers.value["ip"]
-      max_connections   = realservers.value["max_connections"]
-      monitor           = realservers.value["monitor"]
-      port              = realservers.value["port"]
-      status            = realservers.value["status"]
-      weight            = realservers.value["weight"]
+      # id - (optional) is a type of number
+      id = realservers.value["id"]
+      # ip - (optional) is a type of string
+      ip = realservers.value["ip"]
+      # max_connections - (optional) is a type of number
+      max_connections = realservers.value["max_connections"]
+      # monitor - (optional) is a type of string
+      monitor = realservers.value["monitor"]
+      # port - (optional) is a type of number
+      port = realservers.value["port"]
+      # status - (optional) is a type of string
+      status = realservers.value["status"]
+      # weight - (optional) is a type of number
+      weight = realservers.value["weight"]
     }
   }
 
   dynamic "src_filter" {
     for_each = var.src_filter
     content {
+      # range - (optional) is a type of string
       range = src_filter.value["range"]
     }
   }
@@ -292,6 +320,7 @@ resource "fortios_firewall_vip46" "this" {
   dynamic "srcintf_filter" {
     for_each = var.srcintf_filter
     content {
+      # interface_name - (optional) is a type of string
       interface_name = srcintf_filter.value["interface_name"]
     }
   }

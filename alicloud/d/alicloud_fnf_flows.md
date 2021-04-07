@@ -74,9 +74,13 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_fnf_flows" "this" {
-  ids         = var.ids
-  limit       = var.limit
-  name_regex  = var.name_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

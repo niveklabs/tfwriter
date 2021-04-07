@@ -65,12 +65,15 @@ variable "owner" {
 
 ```terraform
 resource "heroku_pipeline" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "owner" {
     for_each = var.owner
     content {
-      id   = owner.value["id"]
+      # id - (required) is a type of string
+      id = owner.value["id"]
+      # type - (required) is a type of string
       type = owner.value["type"]
     }
   }

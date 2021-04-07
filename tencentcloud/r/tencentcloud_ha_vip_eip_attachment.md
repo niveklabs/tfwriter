@@ -56,8 +56,10 @@ variable "havip_id" {
 
 ```terraform
 resource "tencentcloud_ha_vip_eip_attachment" "this" {
+  # address_ip - (required) is a type of string
   address_ip = var.address_ip
-  havip_id   = var.havip_id
+  # havip_id - (required) is a type of string
+  havip_id = var.havip_id
 }
 ```
 

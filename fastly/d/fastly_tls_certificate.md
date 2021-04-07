@@ -74,10 +74,14 @@ variable "name" {
 
 ```terraform
 data "fastly_tls_certificate" "this" {
-  domains   = var.domains
+  # domains - (optional) is a type of set of string
+  domains = var.domains
+  # issued_to - (optional) is a type of string
   issued_to = var.issued_to
-  issuer    = var.issuer
-  name      = var.name
+  # issuer - (optional) is a type of string
+  issuer = var.issuer
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

@@ -95,19 +95,28 @@ variable "rule" {
 
 ```terraform
 resource "panos_file_blocking_security_profile" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action       = rule.value["action"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # applications - (optional) is a type of list of string
       applications = rule.value["applications"]
-      direction    = rule.value["direction"]
-      file_types   = rule.value["file_types"]
-      name         = rule.value["name"]
+      # direction - (optional) is a type of string
+      direction = rule.value["direction"]
+      # file_types - (optional) is a type of list of string
+      file_types = rule.value["file_types"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
     }
   }
 

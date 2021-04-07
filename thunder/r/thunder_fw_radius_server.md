@@ -210,32 +210,54 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_fw_radius_server" "this" {
+  # accounting_interim_update - (optional) is a type of string
   accounting_interim_update = var.accounting_interim_update
-  accounting_on             = var.accounting_on
-  accounting_start          = var.accounting_start
-  accounting_stop           = var.accounting_stop
-  attribute_name            = var.attribute_name
-  custom_attribute_name     = var.custom_attribute_name
-  encrypted                 = var.encrypted
-  listen_port               = var.listen_port
-  secret                    = var.secret
-  secret_string             = var.secret_string
-  uuid                      = var.uuid
-  vrid                      = var.vrid
+  # accounting_on - (optional) is a type of string
+  accounting_on = var.accounting_on
+  # accounting_start - (optional) is a type of string
+  accounting_start = var.accounting_start
+  # accounting_stop - (optional) is a type of string
+  accounting_stop = var.accounting_stop
+  # attribute_name - (optional) is a type of string
+  attribute_name = var.attribute_name
+  # custom_attribute_name - (optional) is a type of string
+  custom_attribute_name = var.custom_attribute_name
+  # encrypted - (optional) is a type of string
+  encrypted = var.encrypted
+  # listen_port - (optional) is a type of number
+  listen_port = var.listen_port
+  # secret - (optional) is a type of number
+  secret = var.secret
+  # secret_string - (optional) is a type of string
+  secret_string = var.secret_string
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrid - (optional) is a type of number
+  vrid = var.vrid
 
   dynamic "attribute" {
     for_each = var.attribute
     content {
+      # attribute_value - (optional) is a type of string
       attribute_value = attribute.value["attribute_value"]
-      custom_number   = attribute.value["custom_number"]
-      custom_vendor   = attribute.value["custom_vendor"]
-      name            = attribute.value["name"]
-      number          = attribute.value["number"]
-      prefix_length   = attribute.value["prefix_length"]
-      prefix_number   = attribute.value["prefix_number"]
-      prefix_vendor   = attribute.value["prefix_vendor"]
-      value           = attribute.value["value"]
-      vendor          = attribute.value["vendor"]
+      # custom_number - (optional) is a type of number
+      custom_number = attribute.value["custom_number"]
+      # custom_vendor - (optional) is a type of number
+      custom_vendor = attribute.value["custom_vendor"]
+      # name - (optional) is a type of string
+      name = attribute.value["name"]
+      # number - (optional) is a type of number
+      number = attribute.value["number"]
+      # prefix_length - (optional) is a type of string
+      prefix_length = attribute.value["prefix_length"]
+      # prefix_number - (optional) is a type of number
+      prefix_number = attribute.value["prefix_number"]
+      # prefix_vendor - (optional) is a type of number
+      prefix_vendor = attribute.value["prefix_vendor"]
+      # value - (optional) is a type of string
+      value = attribute.value["value"]
+      # vendor - (optional) is a type of number
+      vendor = attribute.value["vendor"]
     }
   }
 
@@ -246,9 +268,13 @@ resource "thunder_fw_radius_server" "this" {
       dynamic "ip_list" {
         for_each = remote.value.ip_list
         content {
-          ip_list_encrypted     = ip_list.value["ip_list_encrypted"]
-          ip_list_name          = ip_list.value["ip_list_name"]
-          ip_list_secret        = ip_list.value["ip_list_secret"]
+          # ip_list_encrypted - (optional) is a type of string
+          ip_list_encrypted = ip_list.value["ip_list_encrypted"]
+          # ip_list_name - (optional) is a type of string
+          ip_list_name = ip_list.value["ip_list_name"]
+          # ip_list_secret - (optional) is a type of number
+          ip_list_secret = ip_list.value["ip_list_secret"]
+          # ip_list_secret_string - (optional) is a type of string
           ip_list_secret_string = ip_list.value["ip_list_secret_string"]
         }
       }
@@ -259,6 +285,7 @@ resource "thunder_fw_radius_server" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

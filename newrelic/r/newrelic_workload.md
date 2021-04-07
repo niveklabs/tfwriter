@@ -87,14 +87,19 @@ variable "entity_search_query" {
 
 ```terraform
 resource "newrelic_workload" "this" {
-  account_id        = var.account_id
-  entity_guids      = var.entity_guids
-  name              = var.name
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # entity_guids - (optional) is a type of set of string
+  entity_guids = var.entity_guids
+  # name - (required) is a type of string
+  name = var.name
+  # scope_account_ids - (optional) is a type of set of number
   scope_account_ids = var.scope_account_ids
 
   dynamic "entity_search_query" {
     for_each = var.entity_search_query
     content {
+      # query - (required) is a type of string
       query = entity_search_query.value["query"]
     }
   }

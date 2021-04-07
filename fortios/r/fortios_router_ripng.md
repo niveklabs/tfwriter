@@ -268,18 +268,27 @@ variable "redistribute" {
 
 ```terraform
 resource "fortios_router_ripng" "this" {
+  # default_information_originate - (optional) is a type of string
   default_information_originate = var.default_information_originate
-  default_metric                = var.default_metric
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  garbage_timer                 = var.garbage_timer
-  max_out_metric                = var.max_out_metric
-  timeout_timer                 = var.timeout_timer
-  update_timer                  = var.update_timer
+  # default_metric - (optional) is a type of number
+  default_metric = var.default_metric
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # garbage_timer - (optional) is a type of number
+  garbage_timer = var.garbage_timer
+  # max_out_metric - (optional) is a type of number
+  max_out_metric = var.max_out_metric
+  # timeout_timer - (optional) is a type of number
+  timeout_timer = var.timeout_timer
+  # update_timer - (optional) is a type of number
+  update_timer = var.update_timer
 
   dynamic "aggregate_address" {
     for_each = var.aggregate_address
     content {
-      id      = aggregate_address.value["id"]
+      # id - (optional) is a type of number
+      id = aggregate_address.value["id"]
+      # prefix6 - (optional) is a type of string
       prefix6 = aggregate_address.value["prefix6"]
     }
   }
@@ -287,30 +296,43 @@ resource "fortios_router_ripng" "this" {
   dynamic "distance" {
     for_each = var.distance
     content {
+      # access_list6 - (optional) is a type of string
       access_list6 = distance.value["access_list6"]
-      distance     = distance.value["distance"]
-      id           = distance.value["id"]
-      prefix6      = distance.value["prefix6"]
+      # distance - (optional) is a type of number
+      distance = distance.value["distance"]
+      # id - (optional) is a type of number
+      id = distance.value["id"]
+      # prefix6 - (optional) is a type of string
+      prefix6 = distance.value["prefix6"]
     }
   }
 
   dynamic "distribute_list" {
     for_each = var.distribute_list
     content {
+      # direction - (optional) is a type of string
       direction = distribute_list.value["direction"]
-      id        = distribute_list.value["id"]
+      # id - (optional) is a type of number
+      id = distribute_list.value["id"]
+      # interface - (optional) is a type of string
       interface = distribute_list.value["interface"]
-      listname  = distribute_list.value["listname"]
-      status    = distribute_list.value["status"]
+      # listname - (optional) is a type of string
+      listname = distribute_list.value["listname"]
+      # status - (optional) is a type of string
+      status = distribute_list.value["status"]
     }
   }
 
   dynamic "interface" {
     for_each = var.interface
     content {
-      flags                = interface.value["flags"]
-      name                 = interface.value["name"]
-      split_horizon        = interface.value["split_horizon"]
+      # flags - (optional) is a type of number
+      flags = interface.value["flags"]
+      # name - (optional) is a type of string
+      name = interface.value["name"]
+      # split_horizon - (optional) is a type of string
+      split_horizon = interface.value["split_horizon"]
+      # split_horizon_status - (optional) is a type of string
       split_horizon_status = interface.value["split_horizon_status"]
     }
   }
@@ -318,16 +340,21 @@ resource "fortios_router_ripng" "this" {
   dynamic "neighbor" {
     for_each = var.neighbor
     content {
-      id        = neighbor.value["id"]
+      # id - (optional) is a type of number
+      id = neighbor.value["id"]
+      # interface - (optional) is a type of string
       interface = neighbor.value["interface"]
-      ip6       = neighbor.value["ip6"]
+      # ip6 - (optional) is a type of string
+      ip6 = neighbor.value["ip6"]
     }
   }
 
   dynamic "network" {
     for_each = var.network
     content {
-      id     = network.value["id"]
+      # id - (optional) is a type of number
+      id = network.value["id"]
+      # prefix - (optional) is a type of string
       prefix = network.value["prefix"]
     }
   }
@@ -335,18 +362,25 @@ resource "fortios_router_ripng" "this" {
   dynamic "offset_list" {
     for_each = var.offset_list
     content {
+      # access_list6 - (optional) is a type of string
       access_list6 = offset_list.value["access_list6"]
-      direction    = offset_list.value["direction"]
-      id           = offset_list.value["id"]
-      interface    = offset_list.value["interface"]
-      offset       = offset_list.value["offset"]
-      status       = offset_list.value["status"]
+      # direction - (optional) is a type of string
+      direction = offset_list.value["direction"]
+      # id - (optional) is a type of number
+      id = offset_list.value["id"]
+      # interface - (optional) is a type of string
+      interface = offset_list.value["interface"]
+      # offset - (optional) is a type of number
+      offset = offset_list.value["offset"]
+      # status - (optional) is a type of string
+      status = offset_list.value["status"]
     }
   }
 
   dynamic "passive_interface" {
     for_each = var.passive_interface
     content {
+      # name - (optional) is a type of string
       name = passive_interface.value["name"]
     }
   }
@@ -354,10 +388,14 @@ resource "fortios_router_ripng" "this" {
   dynamic "redistribute" {
     for_each = var.redistribute
     content {
-      metric   = redistribute.value["metric"]
-      name     = redistribute.value["name"]
+      # metric - (optional) is a type of number
+      metric = redistribute.value["metric"]
+      # name - (optional) is a type of string
+      name = redistribute.value["name"]
+      # routemap - (optional) is a type of string
       routemap = redistribute.value["routemap"]
-      status   = redistribute.value["status"]
+      # status - (optional) is a type of string
+      status = redistribute.value["status"]
     }
   }
 

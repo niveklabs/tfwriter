@@ -420,66 +420,117 @@ variable "class" {
 
 ```terraform
 resource "fortios_user_radius" "this" {
-  acct_all_servers                            = var.acct_all_servers
-  acct_interim_interval                       = var.acct_interim_interval
-  all_usergroup                               = var.all_usergroup
-  auth_type                                   = var.auth_type
-  dynamic_sort_subtable                       = var.dynamic_sort_subtable
-  group_override_attr_type                    = var.group_override_attr_type
-  h3c_compatibility                           = var.h3c_compatibility
-  interface                                   = var.interface
-  interface_select_method                     = var.interface_select_method
-  name                                        = var.name
-  nas_ip                                      = var.nas_ip
-  password_encoding                           = var.password_encoding
-  password_renewal                            = var.password_renewal
-  radius_coa                                  = var.radius_coa
-  radius_port                                 = var.radius_port
-  rsso                                        = var.rsso
-  rsso_context_timeout                        = var.rsso_context_timeout
-  rsso_endpoint_attribute                     = var.rsso_endpoint_attribute
-  rsso_endpoint_block_attribute               = var.rsso_endpoint_block_attribute
-  rsso_ep_one_ip_only                         = var.rsso_ep_one_ip_only
-  rsso_flush_ip_session                       = var.rsso_flush_ip_session
-  rsso_log_flags                              = var.rsso_log_flags
-  rsso_log_period                             = var.rsso_log_period
-  rsso_radius_response                        = var.rsso_radius_response
-  rsso_radius_server_port                     = var.rsso_radius_server_port
-  rsso_secret                                 = var.rsso_secret
-  rsso_validate_request_secret                = var.rsso_validate_request_secret
-  secondary_secret                            = var.secondary_secret
-  secondary_server                            = var.secondary_server
-  secret                                      = var.secret
-  server                                      = var.server
-  source_ip                                   = var.source_ip
-  sso_attribute                               = var.sso_attribute
-  sso_attribute_key                           = var.sso_attribute_key
-  sso_attribute_value_override                = var.sso_attribute_value_override
+  # acct_all_servers - (optional) is a type of string
+  acct_all_servers = var.acct_all_servers
+  # acct_interim_interval - (optional) is a type of number
+  acct_interim_interval = var.acct_interim_interval
+  # all_usergroup - (optional) is a type of string
+  all_usergroup = var.all_usergroup
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # group_override_attr_type - (optional) is a type of string
+  group_override_attr_type = var.group_override_attr_type
+  # h3c_compatibility - (optional) is a type of string
+  h3c_compatibility = var.h3c_compatibility
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # name - (optional) is a type of string
+  name = var.name
+  # nas_ip - (optional) is a type of string
+  nas_ip = var.nas_ip
+  # password_encoding - (optional) is a type of string
+  password_encoding = var.password_encoding
+  # password_renewal - (optional) is a type of string
+  password_renewal = var.password_renewal
+  # radius_coa - (optional) is a type of string
+  radius_coa = var.radius_coa
+  # radius_port - (optional) is a type of number
+  radius_port = var.radius_port
+  # rsso - (optional) is a type of string
+  rsso = var.rsso
+  # rsso_context_timeout - (optional) is a type of number
+  rsso_context_timeout = var.rsso_context_timeout
+  # rsso_endpoint_attribute - (optional) is a type of string
+  rsso_endpoint_attribute = var.rsso_endpoint_attribute
+  # rsso_endpoint_block_attribute - (optional) is a type of string
+  rsso_endpoint_block_attribute = var.rsso_endpoint_block_attribute
+  # rsso_ep_one_ip_only - (optional) is a type of string
+  rsso_ep_one_ip_only = var.rsso_ep_one_ip_only
+  # rsso_flush_ip_session - (optional) is a type of string
+  rsso_flush_ip_session = var.rsso_flush_ip_session
+  # rsso_log_flags - (optional) is a type of string
+  rsso_log_flags = var.rsso_log_flags
+  # rsso_log_period - (optional) is a type of number
+  rsso_log_period = var.rsso_log_period
+  # rsso_radius_response - (optional) is a type of string
+  rsso_radius_response = var.rsso_radius_response
+  # rsso_radius_server_port - (optional) is a type of number
+  rsso_radius_server_port = var.rsso_radius_server_port
+  # rsso_secret - (optional) is a type of string
+  rsso_secret = var.rsso_secret
+  # rsso_validate_request_secret - (optional) is a type of string
+  rsso_validate_request_secret = var.rsso_validate_request_secret
+  # secondary_secret - (optional) is a type of string
+  secondary_secret = var.secondary_secret
+  # secondary_server - (optional) is a type of string
+  secondary_server = var.secondary_server
+  # secret - (optional) is a type of string
+  secret = var.secret
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # sso_attribute - (optional) is a type of string
+  sso_attribute = var.sso_attribute
+  # sso_attribute_key - (optional) is a type of string
+  sso_attribute_key = var.sso_attribute_key
+  # sso_attribute_value_override - (optional) is a type of string
+  sso_attribute_value_override = var.sso_attribute_value_override
+  # switch_controller_acct_fast_framedip_detect - (optional) is a type of number
   switch_controller_acct_fast_framedip_detect = var.switch_controller_acct_fast_framedip_detect
-  switch_controller_service_type              = var.switch_controller_service_type
-  tertiary_secret                             = var.tertiary_secret
-  tertiary_server                             = var.tertiary_server
-  timeout                                     = var.timeout
-  use_management_vdom                         = var.use_management_vdom
-  username_case_sensitive                     = var.username_case_sensitive
+  # switch_controller_service_type - (optional) is a type of string
+  switch_controller_service_type = var.switch_controller_service_type
+  # tertiary_secret - (optional) is a type of string
+  tertiary_secret = var.tertiary_secret
+  # tertiary_server - (optional) is a type of string
+  tertiary_server = var.tertiary_server
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # use_management_vdom - (optional) is a type of string
+  use_management_vdom = var.use_management_vdom
+  # username_case_sensitive - (optional) is a type of string
+  username_case_sensitive = var.username_case_sensitive
 
   dynamic "accounting_server" {
     for_each = var.accounting_server
     content {
-      id                      = accounting_server.value["id"]
-      interface               = accounting_server.value["interface"]
+      # id - (optional) is a type of number
+      id = accounting_server.value["id"]
+      # interface - (optional) is a type of string
+      interface = accounting_server.value["interface"]
+      # interface_select_method - (optional) is a type of string
       interface_select_method = accounting_server.value["interface_select_method"]
-      port                    = accounting_server.value["port"]
-      secret                  = accounting_server.value["secret"]
-      server                  = accounting_server.value["server"]
-      source_ip               = accounting_server.value["source_ip"]
-      status                  = accounting_server.value["status"]
+      # port - (optional) is a type of number
+      port = accounting_server.value["port"]
+      # secret - (optional) is a type of string
+      secret = accounting_server.value["secret"]
+      # server - (optional) is a type of string
+      server = accounting_server.value["server"]
+      # source_ip - (optional) is a type of string
+      source_ip = accounting_server.value["source_ip"]
+      # status - (optional) is a type of string
+      status = accounting_server.value["status"]
     }
   }
 
   dynamic "class" {
     for_each = var.class
     content {
+      # name - (optional) is a type of string
       name = class.value["name"]
     }
   }

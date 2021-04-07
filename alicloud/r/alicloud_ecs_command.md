@@ -95,13 +95,20 @@ variable "working_dir" {
 
 ```terraform
 resource "alicloud_ecs_command" "this" {
-  command_content  = var.command_content
-  description      = var.description
+  # command_content - (required) is a type of string
+  command_content = var.command_content
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_parameter - (optional) is a type of bool
   enable_parameter = var.enable_parameter
-  name             = var.name
-  timeout          = var.timeout
-  type             = var.type
-  working_dir      = var.working_dir
+  # name - (required) is a type of string
+  name = var.name
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (required) is a type of string
+  type = var.type
+  # working_dir - (optional) is a type of string
+  working_dir = var.working_dir
 }
 ```
 

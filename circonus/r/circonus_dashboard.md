@@ -300,30 +300,46 @@ variable "widget" {
 
 ```terraform
 resource "circonus_dashboard" "this" {
+  # account_default - (optional) is a type of bool
   account_default = var.account_default
-  grid_layout     = var.grid_layout
-  shared          = var.shared
-  title           = var.title
+  # grid_layout - (required) is a type of map of number
+  grid_layout = var.grid_layout
+  # shared - (optional) is a type of bool
+  shared = var.shared
+  # title - (required) is a type of string
+  title = var.title
 
   dynamic "options" {
     for_each = var.options
     content {
+      # full_screen_hide_title - (optional) is a type of bool
       full_screen_hide_title = options.value["full_screen_hide_title"]
-      hide_grid              = options.value["hide_grid"]
-      scale_text             = options.value["scale_text"]
-      text_size              = options.value["text_size"]
+      # hide_grid - (optional) is a type of bool
+      hide_grid = options.value["hide_grid"]
+      # scale_text - (optional) is a type of bool
+      scale_text = options.value["scale_text"]
+      # text_size - (optional) is a type of number
+      text_size = options.value["text_size"]
 
       dynamic "access_configs" {
         for_each = options.value.access_configs
         content {
-          black_dash             = access_configs.value["black_dash"]
-          enabled                = access_configs.value["enabled"]
-          full_screen            = access_configs.value["full_screen"]
+          # black_dash - (optional) is a type of bool
+          black_dash = access_configs.value["black_dash"]
+          # enabled - (optional) is a type of bool
+          enabled = access_configs.value["enabled"]
+          # full_screen - (optional) is a type of bool
+          full_screen = access_configs.value["full_screen"]
+          # full_screen_hide_title - (optional) is a type of bool
           full_screen_hide_title = access_configs.value["full_screen_hide_title"]
-          nick_name              = access_configs.value["nick_name"]
-          scale_text             = access_configs.value["scale_text"]
-          shared_id              = access_configs.value["shared_id"]
-          text_size              = access_configs.value["text_size"]
+          # nick_name - (optional) is a type of string
+          nick_name = access_configs.value["nick_name"]
+          # scale_text - (optional) is a type of bool
+          scale_text = access_configs.value["scale_text"]
+          # shared_id - (optional) is a type of string
+          shared_id = access_configs.value["shared_id"]
+          # text_size - (optional) is a type of number
+          text_size = access_configs.value["text_size"]
         }
       }
 
@@ -333,101 +349,177 @@ resource "circonus_dashboard" "this" {
   dynamic "widget" {
     for_each = var.widget
     content {
-      active    = widget.value["active"]
-      height    = widget.value["height"]
-      name      = widget.value["name"]
-      origin    = widget.value["origin"]
-      type      = widget.value["type"]
+      # active - (optional) is a type of bool
+      active = widget.value["active"]
+      # height - (required) is a type of number
+      height = widget.value["height"]
+      # name - (required) is a type of string
+      name = widget.value["name"]
+      # origin - (required) is a type of string
+      origin = widget.value["origin"]
+      # type - (required) is a type of string
+      type = widget.value["type"]
+      # widget_id - (required) is a type of string
       widget_id = widget.value["widget_id"]
-      width     = widget.value["width"]
+      # width - (required) is a type of number
+      width = widget.value["width"]
 
       dynamic "settings" {
         for_each = widget.value.settings
         content {
-          account_id          = settings.value["account_id"]
-          acknowledged        = settings.value["acknowledged"]
-          algorithm           = settings.value["algorithm"]
-          autoformat          = settings.value["autoformat"]
-          body_format         = settings.value["body_format"]
-          caql                = settings.value["caql"]
-          chart_type          = settings.value["chart_type"]
-          check_uuid          = settings.value["check_uuid"]
-          cleared             = settings.value["cleared"]
-          cluster_id          = settings.value["cluster_id"]
-          cluster_name        = settings.value["cluster_name"]
-          content_type        = settings.value["content_type"]
-          date_window         = settings.value["date_window"]
-          dependents          = settings.value["dependents"]
-          disable_autoformat  = settings.value["disable_autoformat"]
-          display             = settings.value["display"]
-          display_markup      = settings.value["display_markup"]
-          format              = settings.value["format"]
-          formula             = settings.value["formula"]
-          good_color          = settings.value["good_color"]
-          graph_uuid          = settings.value["graph_uuid"]
-          hide_xaxis          = settings.value["hide_xaxis"]
-          hide_yaxis          = settings.value["hide_yaxis"]
-          key_inline          = settings.value["key_inline"]
-          key_loc             = settings.value["key_loc"]
-          key_size            = settings.value["key_size"]
-          key_wrap            = settings.value["key_wrap"]
-          label               = settings.value["label"]
-          layout              = settings.value["layout"]
-          layout_style        = settings.value["layout_style"]
-          limit               = settings.value["limit"]
-          link_url            = settings.value["link_url"]
-          maintenance         = settings.value["maintenance"]
-          markup              = settings.value["markup"]
+          # account_id - (optional) is a type of string
+          account_id = settings.value["account_id"]
+          # acknowledged - (optional) is a type of string
+          acknowledged = settings.value["acknowledged"]
+          # algorithm - (optional) is a type of string
+          algorithm = settings.value["algorithm"]
+          # autoformat - (optional) is a type of bool
+          autoformat = settings.value["autoformat"]
+          # body_format - (optional) is a type of string
+          body_format = settings.value["body_format"]
+          # caql - (optional) is a type of string
+          caql = settings.value["caql"]
+          # chart_type - (optional) is a type of string
+          chart_type = settings.value["chart_type"]
+          # check_uuid - (optional) is a type of string
+          check_uuid = settings.value["check_uuid"]
+          # cleared - (optional) is a type of string
+          cleared = settings.value["cleared"]
+          # cluster_id - (optional) is a type of number
+          cluster_id = settings.value["cluster_id"]
+          # cluster_name - (optional) is a type of string
+          cluster_name = settings.value["cluster_name"]
+          # content_type - (optional) is a type of string
+          content_type = settings.value["content_type"]
+          # date_window - (optional) is a type of string
+          date_window = settings.value["date_window"]
+          # dependents - (optional) is a type of string
+          dependents = settings.value["dependents"]
+          # disable_autoformat - (optional) is a type of bool
+          disable_autoformat = settings.value["disable_autoformat"]
+          # display - (optional) is a type of string
+          display = settings.value["display"]
+          # display_markup - (optional) is a type of string
+          display_markup = settings.value["display_markup"]
+          # format - (optional) is a type of string
+          format = settings.value["format"]
+          # formula - (optional) is a type of string
+          formula = settings.value["formula"]
+          # good_color - (optional) is a type of string
+          good_color = settings.value["good_color"]
+          # graph_uuid - (optional) is a type of string
+          graph_uuid = settings.value["graph_uuid"]
+          # hide_xaxis - (optional) is a type of bool
+          hide_xaxis = settings.value["hide_xaxis"]
+          # hide_yaxis - (optional) is a type of bool
+          hide_yaxis = settings.value["hide_yaxis"]
+          # key_inline - (optional) is a type of bool
+          key_inline = settings.value["key_inline"]
+          # key_loc - (optional) is a type of string
+          key_loc = settings.value["key_loc"]
+          # key_size - (optional) is a type of number
+          key_size = settings.value["key_size"]
+          # key_wrap - (optional) is a type of bool
+          key_wrap = settings.value["key_wrap"]
+          # label - (optional) is a type of string
+          label = settings.value["label"]
+          # layout - (optional) is a type of string
+          layout = settings.value["layout"]
+          # layout_style - (optional) is a type of string
+          layout_style = settings.value["layout_style"]
+          # limit - (optional) is a type of number
+          limit = settings.value["limit"]
+          # link_url - (optional) is a type of string
+          link_url = settings.value["link_url"]
+          # maintenance - (optional) is a type of string
+          maintenance = settings.value["maintenance"]
+          # markup - (optional) is a type of string
+          markup = settings.value["markup"]
+          # metric_display_name - (optional) is a type of string
           metric_display_name = settings.value["metric_display_name"]
-          metric_name         = settings.value["metric_name"]
-          metric_type         = settings.value["metric_type"]
-          min_age             = settings.value["min_age"]
-          overlay_set_id      = settings.value["overlay_set_id"]
-          period              = settings.value["period"]
-          range_high          = settings.value["range_high"]
-          range_low           = settings.value["range_low"]
-          real_time           = settings.value["real_time"]
-          resource_limit      = settings.value["resource_limit"]
-          resource_usage      = settings.value["resource_usage"]
-          search              = settings.value["search"]
-          severity            = settings.value["severity"]
-          show_flags          = settings.value["show_flags"]
-          show_value          = settings.value["show_value"]
-          size                = settings.value["size"]
-          text_align          = settings.value["text_align"]
-          threshold           = settings.value["threshold"]
-          time_window         = settings.value["time_window"]
-          title               = settings.value["title"]
-          title_format        = settings.value["title_format"]
-          trend               = settings.value["trend"]
-          type                = settings.value["type"]
-          use_default         = settings.value["use_default"]
-          value_type          = settings.value["value_type"]
+          # metric_name - (optional) is a type of string
+          metric_name = settings.value["metric_name"]
+          # metric_type - (optional) is a type of string
+          metric_type = settings.value["metric_type"]
+          # min_age - (optional) is a type of string
+          min_age = settings.value["min_age"]
+          # overlay_set_id - (optional) is a type of string
+          overlay_set_id = settings.value["overlay_set_id"]
+          # period - (optional) is a type of number
+          period = settings.value["period"]
+          # range_high - (optional) is a type of number
+          range_high = settings.value["range_high"]
+          # range_low - (optional) is a type of number
+          range_low = settings.value["range_low"]
+          # real_time - (optional) is a type of bool
+          real_time = settings.value["real_time"]
+          # resource_limit - (optional) is a type of string
+          resource_limit = settings.value["resource_limit"]
+          # resource_usage - (optional) is a type of string
+          resource_usage = settings.value["resource_usage"]
+          # search - (optional) is a type of string
+          search = settings.value["search"]
+          # severity - (optional) is a type of string
+          severity = settings.value["severity"]
+          # show_flags - (optional) is a type of bool
+          show_flags = settings.value["show_flags"]
+          # show_value - (optional) is a type of bool
+          show_value = settings.value["show_value"]
+          # size - (optional) is a type of string
+          size = settings.value["size"]
+          # text_align - (optional) is a type of string
+          text_align = settings.value["text_align"]
+          # threshold - (optional) is a type of number
+          threshold = settings.value["threshold"]
+          # time_window - (optional) is a type of string
+          time_window = settings.value["time_window"]
+          # title - (optional) is a type of string
+          title = settings.value["title"]
+          # title_format - (optional) is a type of string
+          title_format = settings.value["title_format"]
+          # trend - (optional) is a type of string
+          trend = settings.value["trend"]
+          # type - (optional) is a type of string
+          type = settings.value["type"]
+          # use_default - (optional) is a type of bool
+          use_default = settings.value["use_default"]
+          # value_type - (optional) is a type of string
+          value_type = settings.value["value_type"]
 
           dynamic "bad_rules" {
             for_each = settings.value.bad_rules
             content {
-              color     = bad_rules.value["color"]
+              # color - (required) is a type of string
+              color = bad_rules.value["color"]
+              # criterion - (required) is a type of string
               criterion = bad_rules.value["criterion"]
-              value     = bad_rules.value["value"]
+              # value - (required) is a type of string
+              value = bad_rules.value["value"]
             }
           }
 
           dynamic "datapoints" {
             for_each = settings.value.datapoints
             content {
-              _check_id    = datapoints.value["_check_id"]
+              # _check_id - (required) is a type of number
+              _check_id = datapoints.value["_check_id"]
+              # _metric_type - (required) is a type of string
               _metric_type = datapoints.value["_metric_type"]
-              label        = datapoints.value["label"]
-              metric       = datapoints.value["metric"]
+              # label - (required) is a type of string
+              label = datapoints.value["label"]
+              # metric - (required) is a type of string
+              metric = datapoints.value["metric"]
             }
           }
 
           dynamic "thresholds" {
             for_each = settings.value.thresholds
             content {
+              # colors - (required) is a type of list of string
               colors = thresholds.value["colors"]
-              flip   = thresholds.value["flip"]
+              # flip - (required) is a type of bool
+              flip = thresholds.value["flip"]
+              # values - (required) is a type of list of string
               values = thresholds.value["values"]
             }
           }

@@ -89,12 +89,18 @@ variable "name" {
 
 ```terraform
 resource "bigip_sys_provision" "this" {
-  cpu_ratio    = var.cpu_ratio
-  disk_ratio   = var.disk_ratio
-  full_path    = var.full_path
-  level        = var.level
+  # cpu_ratio - (optional) is a type of number
+  cpu_ratio = var.cpu_ratio
+  # disk_ratio - (optional) is a type of number
+  disk_ratio = var.disk_ratio
+  # full_path - (optional) is a type of string
+  full_path = var.full_path
+  # level - (optional) is a type of string
+  level = var.level
+  # memory_ratio - (optional) is a type of number
   memory_ratio = var.memory_ratio
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

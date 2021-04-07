@@ -119,16 +119,26 @@ variable "source_port" {
 
 ```terraform
 resource "bigip_traffic_selector" "this" {
-  description         = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_address - (required) is a type of string
   destination_address = var.destination_address
-  destination_port    = var.destination_port
-  direction           = var.direction
-  ip_protocol         = var.ip_protocol
-  ipsec_policy        = var.ipsec_policy
-  name                = var.name
-  order               = var.order
-  source_address      = var.source_address
-  source_port         = var.source_port
+  # destination_port - (optional) is a type of number
+  destination_port = var.destination_port
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # ip_protocol - (optional) is a type of number
+  ip_protocol = var.ip_protocol
+  # ipsec_policy - (optional) is a type of string
+  ipsec_policy = var.ipsec_policy
+  # name - (required) is a type of string
+  name = var.name
+  # order - (optional) is a type of number
+  order = var.order
+  # source_address - (required) is a type of string
+  source_address = var.source_address
+  # source_port - (optional) is a type of number
+  source_port = var.source_port
 }
 ```
 

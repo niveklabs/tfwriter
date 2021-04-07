@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "okta_idp_saml" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

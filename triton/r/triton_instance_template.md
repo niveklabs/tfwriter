@@ -123,21 +123,33 @@ variable "timeouts" {
 
 ```terraform
 resource "triton_instance_template" "this" {
+  # firewall_enabled - (optional) is a type of bool
   firewall_enabled = var.firewall_enabled
-  image            = var.image
-  metadata         = var.metadata
-  networks         = var.networks
-  package          = var.package
-  tags             = var.tags
-  template_name    = var.template_name
-  userdata         = var.userdata
+  # image - (required) is a type of string
+  image = var.image
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # networks - (optional) is a type of list of string
+  networks = var.networks
+  # package - (required) is a type of string
+  package = var.package
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # userdata - (optional) is a type of string
+  userdata = var.userdata
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

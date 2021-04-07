@@ -58,8 +58,10 @@ variable "tags" {
 
 ```terraform
 data "exoscale_compute" "this" {
+  # hostname - (optional) is a type of string
   hostname = var.hostname
-  tags     = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

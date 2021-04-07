@@ -141,40 +141,70 @@ variable "information" {
 
 ```terraform
 resource "tencentcloud_ssl_pay_certificate" "this" {
-  alias      = var.alias
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # domain_num - (required) is a type of number
   domain_num = var.domain_num
+  # product_id - (required) is a type of number
   product_id = var.product_id
+  # project_id - (optional) is a type of number
   project_id = var.project_id
-  time_span  = var.time_span
+  # time_span - (optional) is a type of number
+  time_span = var.time_span
 
   dynamic "information" {
     for_each = var.information
     content {
-      admin_email           = information.value["admin_email"]
-      admin_first_name      = information.value["admin_first_name"]
-      admin_last_name       = information.value["admin_last_name"]
-      admin_phone_num       = information.value["admin_phone_num"]
-      admin_position        = information.value["admin_position"]
-      certificate_domain    = information.value["certificate_domain"]
-      contact_email         = information.value["contact_email"]
-      contact_first_name    = information.value["contact_first_name"]
-      contact_last_name     = information.value["contact_last_name"]
-      contact_number        = information.value["contact_number"]
-      contact_position      = information.value["contact_position"]
-      csr_content           = information.value["csr_content"]
-      csr_type              = information.value["csr_type"]
-      domain_list           = information.value["domain_list"]
-      key_password          = information.value["key_password"]
-      organization_address  = information.value["organization_address"]
-      organization_city     = information.value["organization_city"]
-      organization_country  = information.value["organization_country"]
+      # admin_email - (required) is a type of string
+      admin_email = information.value["admin_email"]
+      # admin_first_name - (required) is a type of string
+      admin_first_name = information.value["admin_first_name"]
+      # admin_last_name - (required) is a type of string
+      admin_last_name = information.value["admin_last_name"]
+      # admin_phone_num - (required) is a type of string
+      admin_phone_num = information.value["admin_phone_num"]
+      # admin_position - (required) is a type of string
+      admin_position = information.value["admin_position"]
+      # certificate_domain - (required) is a type of string
+      certificate_domain = information.value["certificate_domain"]
+      # contact_email - (required) is a type of string
+      contact_email = information.value["contact_email"]
+      # contact_first_name - (required) is a type of string
+      contact_first_name = information.value["contact_first_name"]
+      # contact_last_name - (required) is a type of string
+      contact_last_name = information.value["contact_last_name"]
+      # contact_number - (required) is a type of string
+      contact_number = information.value["contact_number"]
+      # contact_position - (required) is a type of string
+      contact_position = information.value["contact_position"]
+      # csr_content - (optional) is a type of string
+      csr_content = information.value["csr_content"]
+      # csr_type - (optional) is a type of string
+      csr_type = information.value["csr_type"]
+      # domain_list - (optional) is a type of set of string
+      domain_list = information.value["domain_list"]
+      # key_password - (optional) is a type of string
+      key_password = information.value["key_password"]
+      # organization_address - (required) is a type of string
+      organization_address = information.value["organization_address"]
+      # organization_city - (required) is a type of string
+      organization_city = information.value["organization_city"]
+      # organization_country - (required) is a type of string
+      organization_country = information.value["organization_country"]
+      # organization_division - (required) is a type of string
       organization_division = information.value["organization_division"]
-      organization_name     = information.value["organization_name"]
-      organization_region   = information.value["organization_region"]
-      phone_area_code       = information.value["phone_area_code"]
-      phone_number          = information.value["phone_number"]
-      postal_code           = information.value["postal_code"]
-      verify_type           = information.value["verify_type"]
+      # organization_name - (required) is a type of string
+      organization_name = information.value["organization_name"]
+      # organization_region - (required) is a type of string
+      organization_region = information.value["organization_region"]
+      # phone_area_code - (required) is a type of string
+      phone_area_code = information.value["phone_area_code"]
+      # phone_number - (required) is a type of string
+      phone_number = information.value["phone_number"]
+      # postal_code - (required) is a type of string
+      postal_code = information.value["postal_code"]
+      # verify_type - (required) is a type of string
+      verify_type = information.value["verify_type"]
     }
   }
 

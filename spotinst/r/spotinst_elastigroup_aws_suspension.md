@@ -62,11 +62,13 @@ variable "suspension" {
 
 ```terraform
 resource "spotinst_elastigroup_aws_suspension" "this" {
+  # group_id - (required) is a type of string
   group_id = var.group_id
 
   dynamic "suspension" {
     for_each = var.suspension
     content {
+      # name - (required) is a type of string
       name = suspension.value["name"]
     }
   }

@@ -193,53 +193,78 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_lb_pool" "this" {
-  active_monitor_path      = var.active_monitor_path
-  algorithm                = var.algorithm
-  description              = var.description
-  display_name             = var.display_name
-  min_active_members       = var.min_active_members
-  nsx_id                   = var.nsx_id
-  passive_monitor_path     = var.passive_monitor_path
+  # active_monitor_path - (optional) is a type of string
+  active_monitor_path = var.active_monitor_path
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # min_active_members - (optional) is a type of number
+  min_active_members = var.min_active_members
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # passive_monitor_path - (optional) is a type of string
+  passive_monitor_path = var.passive_monitor_path
+  # tcp_multiplexing_enabled - (optional) is a type of bool
   tcp_multiplexing_enabled = var.tcp_multiplexing_enabled
-  tcp_multiplexing_number  = var.tcp_multiplexing_number
+  # tcp_multiplexing_number - (optional) is a type of number
+  tcp_multiplexing_number = var.tcp_multiplexing_number
 
   dynamic "member" {
     for_each = var.member
     content {
-      admin_state                = member.value["admin_state"]
-      backup_member              = member.value["backup_member"]
-      display_name               = member.value["display_name"]
-      ip_address                 = member.value["ip_address"]
+      # admin_state - (optional) is a type of string
+      admin_state = member.value["admin_state"]
+      # backup_member - (optional) is a type of bool
+      backup_member = member.value["backup_member"]
+      # display_name - (optional) is a type of string
+      display_name = member.value["display_name"]
+      # ip_address - (required) is a type of string
+      ip_address = member.value["ip_address"]
+      # max_concurrent_connections - (optional) is a type of number
       max_concurrent_connections = member.value["max_concurrent_connections"]
-      port                       = member.value["port"]
-      weight                     = member.value["weight"]
+      # port - (optional) is a type of string
+      port = member.value["port"]
+      # weight - (optional) is a type of number
+      weight = member.value["weight"]
     }
   }
 
   dynamic "member_group" {
     for_each = var.member_group
     content {
-      allow_ipv4       = member_group.value["allow_ipv4"]
-      allow_ipv6       = member_group.value["allow_ipv6"]
-      group_path       = member_group.value["group_path"]
+      # allow_ipv4 - (optional) is a type of bool
+      allow_ipv4 = member_group.value["allow_ipv4"]
+      # allow_ipv6 - (optional) is a type of bool
+      allow_ipv6 = member_group.value["allow_ipv6"]
+      # group_path - (required) is a type of string
+      group_path = member_group.value["group_path"]
+      # max_ip_list_size - (optional) is a type of number
       max_ip_list_size = member_group.value["max_ip_list_size"]
-      port             = member_group.value["port"]
+      # port - (optional) is a type of string
+      port = member_group.value["port"]
     }
   }
 
   dynamic "snat" {
     for_each = var.snat
     content {
+      # ip_pool_addresses - (optional) is a type of list of string
       ip_pool_addresses = snat.value["ip_pool_addresses"]
-      type              = snat.value["type"]
+      # type - (optional) is a type of string
+      type = snat.value["type"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "tencentcloud_vpc" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

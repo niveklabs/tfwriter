@@ -66,9 +66,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_switchcontroller_switchprofile" "this" {
-  login_passwd          = var.login_passwd
+  # login_passwd - (optional) is a type of string
+  login_passwd = var.login_passwd
+  # login_passwd_override - (optional) is a type of string
   login_passwd_override = var.login_passwd_override
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

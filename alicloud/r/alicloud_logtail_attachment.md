@@ -63,9 +63,12 @@ variable "project" {
 
 ```terraform
 resource "alicloud_logtail_attachment" "this" {
+  # logtail_config_name - (required) is a type of string
   logtail_config_name = var.logtail_config_name
-  machine_group_name  = var.machine_group_name
-  project             = var.project
+  # machine_group_name - (required) is a type of string
+  machine_group_name = var.machine_group_name
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

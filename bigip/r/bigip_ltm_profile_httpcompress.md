@@ -89,12 +89,18 @@ variable "uri_include" {
 
 ```terraform
 resource "bigip_ltm_profile_httpcompress" "this" {
+  # content_type_exclude - (optional) is a type of set of string
   content_type_exclude = var.content_type_exclude
+  # content_type_include - (optional) is a type of set of string
   content_type_include = var.content_type_include
-  defaults_from        = var.defaults_from
-  name                 = var.name
-  uri_exclude          = var.uri_exclude
-  uri_include          = var.uri_include
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # name - (required) is a type of string
+  name = var.name
+  # uri_exclude - (optional) is a type of set of string
+  uri_exclude = var.uri_exclude
+  # uri_include - (optional) is a type of set of string
+  uri_include = var.uri_include
 }
 ```
 

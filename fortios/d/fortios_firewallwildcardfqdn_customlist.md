@@ -50,6 +50,7 @@ variable "filter" {
 
 ```terraform
 data "fortios_firewallwildcardfqdn_customlist" "this" {
+  # filter - (optional) is a type of string
   filter = var.filter
 }
 ```

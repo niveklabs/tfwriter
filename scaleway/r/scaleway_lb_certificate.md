@@ -101,12 +101,15 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_lb_certificate" "this" {
+  # lb_id - (required) is a type of string
   lb_id = var.lb_id
-  name  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "custom_certificate" {
     for_each = var.custom_certificate
     content {
+      # certificate_chain - (required) is a type of string
       certificate_chain = custom_certificate.value["certificate_chain"]
     }
   }
@@ -114,7 +117,9 @@ resource "scaleway_lb_certificate" "this" {
   dynamic "letsencrypt" {
     for_each = var.letsencrypt
     content {
-      common_name              = letsencrypt.value["common_name"]
+      # common_name - (required) is a type of string
+      common_name = letsencrypt.value["common_name"]
+      # subject_alternative_name - (optional) is a type of list of string
       subject_alternative_name = letsencrypt.value["subject_alternative_name"]
     }
   }
@@ -122,6 +127,7 @@ resource "scaleway_lb_certificate" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

@@ -106,14 +106,22 @@ variable "vlan_policy" {
 
 ```terraform
 resource "fortios_switchcontroller_portpolicy" "this" {
+  # bounce_port_link - (optional) is a type of string
   bounce_port_link = var.bounce_port_link
-  description      = var.description
-  fortilink        = var.fortilink
-  lldp_profile     = var.lldp_profile
-  n802_1x          = var.n802_1x
-  name             = var.name
-  qos_policy       = var.qos_policy
-  vlan_policy      = var.vlan_policy
+  # description - (optional) is a type of string
+  description = var.description
+  # fortilink - (optional) is a type of string
+  fortilink = var.fortilink
+  # lldp_profile - (optional) is a type of string
+  lldp_profile = var.lldp_profile
+  # n802_1x - (optional) is a type of string
+  n802_1x = var.n802_1x
+  # name - (optional) is a type of string
+  name = var.name
+  # qos_policy - (optional) is a type of string
+  qos_policy = var.qos_policy
+  # vlan_policy - (optional) is a type of string
+  vlan_policy = var.vlan_policy
 }
 ```
 

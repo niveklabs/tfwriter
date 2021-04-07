@@ -64,8 +64,11 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_route_table" "this" {
-  name   = var.name
-  tags   = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
   vpc_id = var.vpc_id
 }
 ```

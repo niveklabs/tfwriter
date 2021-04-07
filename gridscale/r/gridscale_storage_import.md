@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_storage_import" "this" {
-  capacity          = var.capacity
-  labels            = var.labels
-  name              = var.name
+  # capacity - (optional) is a type of number
+  capacity = var.capacity
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # storage_backup_id - (required) is a type of string
   storage_backup_id = var.storage_backup_id
-  storage_type      = var.storage_type
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

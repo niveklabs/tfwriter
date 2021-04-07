@@ -143,18 +143,27 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_localinpolicy6" "this" {
-  action                = var.action
-  comments              = var.comments
+  # action - (optional) is a type of string
+  action = var.action
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  intf                  = var.intf
-  policyid              = var.policyid
-  schedule              = var.schedule
-  status                = var.status
-  uuid                  = var.uuid
+  # intf - (required) is a type of string
+  intf = var.intf
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # status - (optional) is a type of string
+  status = var.status
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -162,6 +171,7 @@ resource "fortios_firewall_localinpolicy6" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -169,6 +179,7 @@ resource "fortios_firewall_localinpolicy6" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }

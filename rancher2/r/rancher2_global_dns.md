@@ -122,20 +122,31 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_global_dns" "this" {
-  annotations          = var.annotations
-  fqdn                 = var.fqdn
-  labels               = var.labels
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # fqdn - (required) is a type of string
+  fqdn = var.fqdn
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # multi_cluster_app_id - (optional) is a type of string
   multi_cluster_app_id = var.multi_cluster_app_id
-  name                 = var.name
-  project_ids          = var.project_ids
-  provider_id          = var.provider_id
-  ttl                  = var.ttl
+  # name - (optional) is a type of string
+  name = var.name
+  # project_ids - (optional) is a type of list of string
+  project_ids = var.project_ids
+  # provider_id - (required) is a type of string
+  provider_id = var.provider_id
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

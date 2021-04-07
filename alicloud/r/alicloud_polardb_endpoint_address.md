@@ -72,10 +72,14 @@ variable "net_type" {
 
 ```terraform
 resource "alicloud_polardb_endpoint_address" "this" {
+  # connection_prefix - (optional) is a type of string
   connection_prefix = var.connection_prefix
-  db_cluster_id     = var.db_cluster_id
-  db_endpoint_id    = var.db_endpoint_id
-  net_type          = var.net_type
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
+  # db_endpoint_id - (required) is a type of string
+  db_endpoint_id = var.db_endpoint_id
+  # net_type - (optional) is a type of string
+  net_type = var.net_type
 }
 ```
 

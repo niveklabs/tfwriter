@@ -90,17 +90,24 @@ variable "entries" {
 
 ```terraform
 resource "fortios_dlp_filepattern" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "entries" {
     for_each = var.entries
     content {
-      file_type   = entries.value["file_type"]
+      # file_type - (optional) is a type of string
+      file_type = entries.value["file_type"]
+      # filter_type - (optional) is a type of string
       filter_type = entries.value["filter_type"]
-      pattern     = entries.value["pattern"]
+      # pattern - (optional) is a type of string
+      pattern = entries.value["pattern"]
     }
   }
 

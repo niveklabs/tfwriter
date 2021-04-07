@@ -79,11 +79,16 @@ variable "remark" {
 
 ```terraform
 resource "tencentcloud_sqlserver_account" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  is_admin    = var.is_admin
-  name        = var.name
-  password    = var.password
-  remark      = var.remark
+  # is_admin - (optional) is a type of bool
+  is_admin = var.is_admin
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # remark - (optional) is a type of string
+  remark = var.remark
 }
 ```
 

@@ -81,15 +81,20 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_dhcp_relay_profile" "this" {
-  description      = var.description
-  display_name     = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # server_addresses - (required) is a type of set of string
   server_addresses = var.server_addresses
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

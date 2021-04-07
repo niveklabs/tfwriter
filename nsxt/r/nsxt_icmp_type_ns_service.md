@@ -97,17 +97,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_icmp_type_ns_service" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  icmp_code    = var.icmp_code
-  icmp_type    = var.icmp_type
-  protocol     = var.protocol
+  # icmp_code - (optional) is a type of number
+  icmp_code = var.icmp_code
+  # icmp_type - (optional) is a type of number
+  icmp_type = var.icmp_type
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "digitalocean_database_db" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

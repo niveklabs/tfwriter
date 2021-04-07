@@ -74,10 +74,14 @@ variable "region" {
 
 ```terraform
 data "aviatrix_vpc_tracker" "this" {
+  # account_name - (optional) is a type of string
   account_name = var.account_name
-  cidr         = var.cidr
-  cloud_type   = var.cloud_type
-  region       = var.region
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # cloud_type - (optional) is a type of number
+  cloud_type = var.cloud_type
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

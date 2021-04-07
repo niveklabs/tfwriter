@@ -78,11 +78,16 @@ variable "username" {
 
 ```terraform
 data "alicloud_alikafka_sasl_acls" "this" {
+  # acl_resource_name - (required) is a type of string
   acl_resource_name = var.acl_resource_name
+  # acl_resource_type - (required) is a type of string
   acl_resource_type = var.acl_resource_type
-  instance_id       = var.instance_id
-  output_file       = var.output_file
-  username          = var.username
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

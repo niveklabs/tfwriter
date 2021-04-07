@@ -179,35 +179,54 @@ variable "warning" {
 
 ```terraform
 resource "newrelic_infra_alert_condition" "this" {
-  comparison            = var.comparison
-  description           = var.description
-  enabled               = var.enabled
-  event                 = var.event
-  integration_provider  = var.integration_provider
-  name                  = var.name
-  policy_id             = var.policy_id
-  process_where         = var.process_where
-  runbook_url           = var.runbook_url
-  select                = var.select
-  type                  = var.type
+  # comparison - (optional) is a type of string
+  comparison = var.comparison
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # event - (optional) is a type of string
+  event = var.event
+  # integration_provider - (optional) is a type of string
+  integration_provider = var.integration_provider
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # process_where - (optional) is a type of string
+  process_where = var.process_where
+  # runbook_url - (optional) is a type of string
+  runbook_url = var.runbook_url
+  # select - (optional) is a type of string
+  select = var.select
+  # type - (required) is a type of string
+  type = var.type
+  # violation_close_timer - (optional) is a type of number
   violation_close_timer = var.violation_close_timer
-  where                 = var.where
+  # where - (optional) is a type of string
+  where = var.where
 
   dynamic "critical" {
     for_each = var.critical
     content {
-      duration      = critical.value["duration"]
+      # duration - (required) is a type of number
+      duration = critical.value["duration"]
+      # time_function - (optional) is a type of string
       time_function = critical.value["time_function"]
-      value         = critical.value["value"]
+      # value - (optional) is a type of number
+      value = critical.value["value"]
     }
   }
 
   dynamic "warning" {
     for_each = var.warning
     content {
-      duration      = warning.value["duration"]
+      # duration - (required) is a type of number
+      duration = warning.value["duration"]
+      # time_function - (optional) is a type of string
       time_function = warning.value["time_function"]
-      value         = warning.value["value"]
+      # value - (optional) is a type of number
+      value = warning.value["value"]
     }
   }
 

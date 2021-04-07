@@ -70,10 +70,14 @@ variable "vrf_name" {
 
 ```terraform
 resource "mso_schema_site_vrf" "this" {
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  vrf_name      = var.vrf_name
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
 }
 ```
 

@@ -87,12 +87,18 @@ variable "title" {
 
 ```terraform
 resource "github_repository_milestone" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  due_date    = var.due_date
-  owner       = var.owner
-  repository  = var.repository
-  state       = var.state
-  title       = var.title
+  # due_date - (optional) is a type of string
+  due_date = var.due_date
+  # owner - (required) is a type of string
+  owner = var.owner
+  # repository - (required) is a type of string
+  repository = var.repository
+  # state - (optional) is a type of string
+  state = var.state
+  # title - (required) is a type of string
+  title = var.title
 }
 ```
 

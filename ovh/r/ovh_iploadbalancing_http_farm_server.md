@@ -134,18 +134,30 @@ variable "weight" {
 
 ```terraform
 resource "ovh_iploadbalancing_http_farm_server" "this" {
-  address                = var.address
-  backup                 = var.backup
-  chain                  = var.chain
-  display_name           = var.display_name
-  farm_id                = var.farm_id
-  port                   = var.port
-  probe                  = var.probe
+  # address - (required) is a type of string
+  address = var.address
+  # backup - (optional) is a type of bool
+  backup = var.backup
+  # chain - (optional) is a type of string
+  chain = var.chain
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # farm_id - (required) is a type of number
+  farm_id = var.farm_id
+  # port - (optional) is a type of number
+  port = var.port
+  # probe - (optional) is a type of bool
+  probe = var.probe
+  # proxy_protocol_version - (optional) is a type of string
   proxy_protocol_version = var.proxy_protocol_version
-  service_name           = var.service_name
-  ssl                    = var.ssl
-  status                 = var.status
-  weight                 = var.weight
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # ssl - (optional) is a type of bool
+  ssl = var.ssl
+  # status - (required) is a type of string
+  status = var.status
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

@@ -56,7 +56,9 @@ variable "network_interface_id" {
 
 ```terraform
 resource "alicloud_network_interface_attachment" "this" {
-  instance_id          = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # network_interface_id - (required) is a type of string
   network_interface_id = var.network_interface_id
 }
 ```

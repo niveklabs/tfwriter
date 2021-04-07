@@ -64,9 +64,12 @@ variable "provider_name" {
 
 ```terraform
 resource "mongodbatlas_cloud_provider_access" "this" {
+  # iam_assumed_role_arn - (optional) is a type of string
   iam_assumed_role_arn = var.iam_assumed_role_arn
-  project_id           = var.project_id
-  provider_name        = var.provider_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # provider_name - (required) is a type of string
+  provider_name = var.provider_name
 }
 ```
 

@@ -65,9 +65,12 @@ variable "project_name" {
 
 ```terraform
 resource "oktaasa_project" "this" {
+  # next_unix_gid - (optional) is a type of number
   next_unix_gid = var.next_unix_gid
+  # next_unix_uid - (optional) is a type of number
   next_unix_uid = var.next_unix_uid
-  project_name  = var.project_name
+  # project_name - (required) is a type of string
+  project_name = var.project_name
 }
 ```
 

@@ -95,13 +95,20 @@ variable "timeout" {
 
 ```terraform
 resource "fortios_webproxy_wisp" "this" {
-  comment         = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # max_connections - (optional) is a type of number
   max_connections = var.max_connections
-  name            = var.name
-  outgoing_ip     = var.outgoing_ip
-  server_ip       = var.server_ip
-  server_port     = var.server_port
-  timeout         = var.timeout
+  # name - (required) is a type of string
+  name = var.name
+  # outgoing_ip - (optional) is a type of string
+  outgoing_ip = var.outgoing_ip
+  # server_ip - (required) is a type of string
+  server_ip = var.server_ip
+  # server_port - (required) is a type of number
+  server_port = var.server_port
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

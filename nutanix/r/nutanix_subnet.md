@@ -207,30 +207,51 @@ variable "categories" {
 
 ```terraform
 resource "nutanix_subnet" "this" {
-  availability_zone_reference      = var.availability_zone_reference
-  cluster_uuid                     = var.cluster_uuid
-  default_gateway_ip               = var.default_gateway_ip
-  description                      = var.description
-  dhcp_domain_name_server_list     = var.dhcp_domain_name_server_list
-  dhcp_domain_search_list          = var.dhcp_domain_search_list
-  dhcp_options                     = var.dhcp_options
-  dhcp_server_address              = var.dhcp_server_address
-  dhcp_server_address_port         = var.dhcp_server_address_port
-  ip_config_pool_list_ranges       = var.ip_config_pool_list_ranges
-  name                             = var.name
+  # availability_zone_reference - (optional) is a type of map of string
+  availability_zone_reference = var.availability_zone_reference
+  # cluster_uuid - (required) is a type of string
+  cluster_uuid = var.cluster_uuid
+  # default_gateway_ip - (optional) is a type of string
+  default_gateway_ip = var.default_gateway_ip
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_domain_name_server_list - (optional) is a type of list of string
+  dhcp_domain_name_server_list = var.dhcp_domain_name_server_list
+  # dhcp_domain_search_list - (optional) is a type of list of string
+  dhcp_domain_search_list = var.dhcp_domain_search_list
+  # dhcp_options - (optional) is a type of map of string
+  dhcp_options = var.dhcp_options
+  # dhcp_server_address - (optional) is a type of map of string
+  dhcp_server_address = var.dhcp_server_address
+  # dhcp_server_address_port - (optional) is a type of number
+  dhcp_server_address_port = var.dhcp_server_address_port
+  # ip_config_pool_list_ranges - (optional) is a type of list of string
+  ip_config_pool_list_ranges = var.ip_config_pool_list_ranges
+  # name - (required) is a type of string
+  name = var.name
+  # network_function_chain_reference - (optional) is a type of map of string
   network_function_chain_reference = var.network_function_chain_reference
-  owner_reference                  = var.owner_reference
-  prefix_length                    = var.prefix_length
-  project_reference                = var.project_reference
-  subnet_ip                        = var.subnet_ip
-  subnet_type                      = var.subnet_type
-  vlan_id                          = var.vlan_id
-  vswitch_name                     = var.vswitch_name
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # prefix_length - (optional) is a type of number
+  prefix_length = var.prefix_length
+  # project_reference - (optional) is a type of map of string
+  project_reference = var.project_reference
+  # subnet_ip - (optional) is a type of string
+  subnet_ip = var.subnet_ip
+  # subnet_type - (required) is a type of string
+  subnet_type = var.subnet_type
+  # vlan_id - (optional) is a type of number
+  vlan_id = var.vlan_id
+  # vswitch_name - (optional) is a type of string
+  vswitch_name = var.vswitch_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

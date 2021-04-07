@@ -88,12 +88,18 @@ variable "time_range" {
 
 ```terraform
 resource "signalfx_event_feed_chart" "this" {
-  description  = var.description
-  end_time     = var.end_time
-  name         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # name - (required) is a type of string
+  name = var.name
+  # program_text - (required) is a type of string
   program_text = var.program_text
-  start_time   = var.start_time
-  time_range   = var.time_range
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # time_range - (optional) is a type of number
+  time_range = var.time_range
 }
 ```
 

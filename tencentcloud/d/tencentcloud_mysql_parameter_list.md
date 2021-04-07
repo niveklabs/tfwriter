@@ -66,8 +66,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_mysql_parameter_list" "this" {
-  engine_version     = var.engine_version
-  mysql_id           = var.mysql_id
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # mysql_id - (optional) is a type of string
+  mysql_id = var.mysql_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

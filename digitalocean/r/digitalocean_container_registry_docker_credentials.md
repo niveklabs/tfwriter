@@ -65,9 +65,12 @@ variable "write" {
 
 ```terraform
 resource "digitalocean_container_registry_docker_credentials" "this" {
+  # expiry_seconds - (optional) is a type of number
   expiry_seconds = var.expiry_seconds
-  registry_name  = var.registry_name
-  write          = var.write
+  # registry_name - (required) is a type of string
+  registry_name = var.registry_name
+  # write - (optional) is a type of bool
+  write = var.write
 }
 ```
 

@@ -74,10 +74,14 @@ variable "src" {
 
 ```terraform
 resource "fortios_firewall_dnstranslation" "this" {
-  dst     = var.dst
-  fosid   = var.fosid
+  # dst - (optional) is a type of string
+  dst = var.dst
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # netmask - (optional) is a type of string
   netmask = var.netmask
-  src     = var.src
+  # src - (optional) is a type of string
+  src = var.src
 }
 ```
 

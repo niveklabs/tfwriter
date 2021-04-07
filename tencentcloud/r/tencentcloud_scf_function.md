@@ -211,33 +211,56 @@ variable "triggers" {
 
 ```terraform
 resource "tencentcloud_scf_function" "this" {
-  cls_logset_id     = var.cls_logset_id
-  cls_topic_id      = var.cls_topic_id
-  cos_bucket_name   = var.cos_bucket_name
+  # cls_logset_id - (optional) is a type of string
+  cls_logset_id = var.cls_logset_id
+  # cls_topic_id - (optional) is a type of string
+  cls_topic_id = var.cls_topic_id
+  # cos_bucket_name - (optional) is a type of string
+  cos_bucket_name = var.cos_bucket_name
+  # cos_bucket_region - (optional) is a type of string
   cos_bucket_region = var.cos_bucket_region
-  cos_object_name   = var.cos_object_name
-  description       = var.description
-  environment       = var.environment
-  handler           = var.handler
-  l5_enable         = var.l5_enable
-  mem_size          = var.mem_size
-  name              = var.name
-  namespace         = var.namespace
-  role              = var.role
-  runtime           = var.runtime
-  subnet_id         = var.subnet_id
-  tags              = var.tags
-  timeout           = var.timeout
-  vpc_id            = var.vpc_id
-  zip_file          = var.zip_file
+  # cos_object_name - (optional) is a type of string
+  cos_object_name = var.cos_object_name
+  # description - (optional) is a type of string
+  description = var.description
+  # environment - (optional) is a type of map of string
+  environment = var.environment
+  # handler - (required) is a type of string
+  handler = var.handler
+  # l5_enable - (optional) is a type of bool
+  l5_enable = var.l5_enable
+  # mem_size - (optional) is a type of number
+  mem_size = var.mem_size
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # role - (optional) is a type of string
+  role = var.role
+  # runtime - (required) is a type of string
+  runtime = var.runtime
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # zip_file - (optional) is a type of string
+  zip_file = var.zip_file
 
   dynamic "triggers" {
     for_each = var.triggers
     content {
-      cos_region   = triggers.value["cos_region"]
-      name         = triggers.value["name"]
+      # cos_region - (optional) is a type of string
+      cos_region = triggers.value["cos_region"]
+      # name - (required) is a type of string
+      name = triggers.value["name"]
+      # trigger_desc - (required) is a type of string
       trigger_desc = triggers.value["trigger_desc"]
-      type         = triggers.value["type"]
+      # type - (required) is a type of string
+      type = triggers.value["type"]
     }
   }
 

@@ -72,10 +72,14 @@ variable "vars" {
 
 ```terraform
 resource "heroku_pipeline_config_var" "this" {
-  pipeline_id    = var.pipeline_id
+  # pipeline_id - (required) is a type of string
+  pipeline_id = var.pipeline_id
+  # pipeline_stage - (required) is a type of string
   pipeline_stage = var.pipeline_stage
+  # sensitive_vars - (optional) is a type of map of string
   sensitive_vars = var.sensitive_vars
-  vars           = var.vars
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

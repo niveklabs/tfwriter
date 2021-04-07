@@ -169,26 +169,43 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_static_route_v2" "this" {
-  aws_gw_id      = var.aws_gw_id
-  azure_gw_id    = var.azure_gw_id
-  description    = var.description
-  destination    = var.destination
-  fic_gw_id      = var.fic_gw_id
-  gcp_gw_id      = var.gcp_gw_id
-  interdc_gw_id  = var.interdc_gw_id
+  # aws_gw_id - (optional) is a type of string
+  aws_gw_id = var.aws_gw_id
+  # azure_gw_id - (optional) is a type of string
+  azure_gw_id = var.azure_gw_id
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (required) is a type of string
+  destination = var.destination
+  # fic_gw_id - (optional) is a type of string
+  fic_gw_id = var.fic_gw_id
+  # gcp_gw_id - (optional) is a type of string
+  gcp_gw_id = var.gcp_gw_id
+  # interdc_gw_id - (optional) is a type of string
+  interdc_gw_id = var.interdc_gw_id
+  # internet_gw_id - (optional) is a type of string
   internet_gw_id = var.internet_gw_id
-  name           = var.name
-  nexthop        = var.nexthop
-  region         = var.region
-  service_type   = var.service_type
-  tenant_id      = var.tenant_id
-  vpn_gw_id      = var.vpn_gw_id
+  # name - (optional) is a type of string
+  name = var.name
+  # nexthop - (required) is a type of string
+  nexthop = var.nexthop
+  # region - (optional) is a type of string
+  region = var.region
+  # service_type - (required) is a type of string
+  service_type = var.service_type
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # vpn_gw_id - (optional) is a type of string
+  vpn_gw_id = var.vpn_gw_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

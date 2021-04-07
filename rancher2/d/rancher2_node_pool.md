@@ -64,8 +64,11 @@ variable "node_template_id" {
 
 ```terraform
 data "rancher2_node_pool" "this" {
-  cluster_id       = var.cluster_id
-  name             = var.name
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # name - (required) is a type of string
+  name = var.name
+  # node_template_id - (optional) is a type of string
   node_template_id = var.node_template_id
 }
 ```

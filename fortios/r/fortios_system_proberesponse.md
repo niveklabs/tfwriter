@@ -98,13 +98,20 @@ variable "ttl_mode" {
 
 ```terraform
 resource "fortios_system_proberesponse" "this" {
+  # http_probe_value - (optional) is a type of string
   http_probe_value = var.http_probe_value
-  mode             = var.mode
-  password         = var.password
-  port             = var.port
-  security_mode    = var.security_mode
-  timeout          = var.timeout
-  ttl_mode         = var.ttl_mode
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # security_mode - (optional) is a type of string
+  security_mode = var.security_mode
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # ttl_mode - (optional) is a type of string
+  ttl_mode = var.ttl_mode
 }
 ```
 

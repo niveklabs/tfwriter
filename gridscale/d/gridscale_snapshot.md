@@ -56,7 +56,9 @@ variable "storage_uuid" {
 
 ```terraform
 data "gridscale_snapshot" "this" {
-  resource_id  = var.resource_id
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # storage_uuid - (required) is a type of string
   storage_uuid = var.storage_uuid
 }
 ```

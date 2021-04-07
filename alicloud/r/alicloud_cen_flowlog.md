@@ -87,12 +87,18 @@ variable "status" {
 
 ```terraform
 resource "alicloud_cen_flowlog" "this" {
-  cen_id         = var.cen_id
-  description    = var.description
-  flow_log_name  = var.flow_log_name
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # description - (optional) is a type of string
+  description = var.description
+  # flow_log_name - (optional) is a type of string
+  flow_log_name = var.flow_log_name
+  # log_store_name - (required) is a type of string
   log_store_name = var.log_store_name
-  project_name   = var.project_name
-  status         = var.status
+  # project_name - (required) is a type of string
+  project_name = var.project_name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

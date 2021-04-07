@@ -70,10 +70,14 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_eval" "this" {
-  config_id          = var.config_id
-  eval_operation     = var.eval_operation
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # eval_operation - (required) is a type of string
+  eval_operation = var.eval_operation
+  # security_policy_id - (required) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

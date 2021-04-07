@@ -73,10 +73,14 @@ variable "version" {
 
 ```terraform
 data "akamai_property_rules" "this" {
+  # contract_id - (optional) is a type of string
   contract_id = var.contract_id
-  group_id    = var.group_id
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # property_id - (required) is a type of string
   property_id = var.property_id
-  version     = var.version
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

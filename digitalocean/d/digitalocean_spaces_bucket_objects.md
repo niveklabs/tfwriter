@@ -88,12 +88,18 @@ variable "region" {
 
 ```terraform
 data "digitalocean_spaces_bucket_objects" "this" {
-  bucket        = var.bucket
-  delimiter     = var.delimiter
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # delimiter - (optional) is a type of string
+  delimiter = var.delimiter
+  # encoding_type - (optional) is a type of string
   encoding_type = var.encoding_type
-  max_keys      = var.max_keys
-  prefix        = var.prefix
-  region        = var.region
+  # max_keys - (optional) is a type of number
+  max_keys = var.max_keys
+  # prefix - (optional) is a type of string
+  prefix = var.prefix
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

@@ -122,33 +122,56 @@ variable "config" {
 
 ```terraform
 resource "cloudflare_access_identity_provider" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
-  name       = var.name
-  type       = var.type
-  zone_id    = var.zone_id
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "config" {
     for_each = var.config
     content {
-      apps_domain          = config.value["apps_domain"]
-      attributes           = config.value["attributes"]
-      auth_url             = config.value["auth_url"]
-      centrify_account     = config.value["centrify_account"]
-      centrify_app_id      = config.value["centrify_app_id"]
-      certs_url            = config.value["certs_url"]
-      client_id            = config.value["client_id"]
-      client_secret        = config.value["client_secret"]
-      directory_id         = config.value["directory_id"]
+      # apps_domain - (optional) is a type of string
+      apps_domain = config.value["apps_domain"]
+      # attributes - (optional) is a type of list of string
+      attributes = config.value["attributes"]
+      # auth_url - (optional) is a type of string
+      auth_url = config.value["auth_url"]
+      # centrify_account - (optional) is a type of string
+      centrify_account = config.value["centrify_account"]
+      # centrify_app_id - (optional) is a type of string
+      centrify_app_id = config.value["centrify_app_id"]
+      # certs_url - (optional) is a type of string
+      certs_url = config.value["certs_url"]
+      # client_id - (optional) is a type of string
+      client_id = config.value["client_id"]
+      # client_secret - (optional) is a type of string
+      client_secret = config.value["client_secret"]
+      # directory_id - (optional) is a type of string
+      directory_id = config.value["directory_id"]
+      # email_attribute_name - (optional) is a type of string
       email_attribute_name = config.value["email_attribute_name"]
-      idp_public_cert      = config.value["idp_public_cert"]
-      issuer_url           = config.value["issuer_url"]
-      okta_account         = config.value["okta_account"]
-      onelogin_account     = config.value["onelogin_account"]
-      redirect_url         = config.value["redirect_url"]
-      sign_request         = config.value["sign_request"]
-      sso_target_url       = config.value["sso_target_url"]
-      support_groups       = config.value["support_groups"]
-      token_url            = config.value["token_url"]
+      # idp_public_cert - (optional) is a type of string
+      idp_public_cert = config.value["idp_public_cert"]
+      # issuer_url - (optional) is a type of string
+      issuer_url = config.value["issuer_url"]
+      # okta_account - (optional) is a type of string
+      okta_account = config.value["okta_account"]
+      # onelogin_account - (optional) is a type of string
+      onelogin_account = config.value["onelogin_account"]
+      # redirect_url - (optional) is a type of string
+      redirect_url = config.value["redirect_url"]
+      # sign_request - (optional) is a type of bool
+      sign_request = config.value["sign_request"]
+      # sso_target_url - (optional) is a type of string
+      sso_target_url = config.value["sso_target_url"]
+      # support_groups - (optional) is a type of bool
+      support_groups = config.value["support_groups"]
+      # token_url - (optional) is a type of string
+      token_url = config.value["token_url"]
     }
   }
 

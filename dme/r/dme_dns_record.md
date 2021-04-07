@@ -189,25 +189,44 @@ variable "weight" {
 
 ```terraform
 resource "dme_dns_record" "this" {
-  caa_type        = var.caa_type
-  description     = var.description
-  domain_id       = var.domain_id
-  dynamic_dns     = var.dynamic_dns
-  gtd_location    = var.gtd_location
-  hardlink        = var.hardlink
+  # caa_type - (optional) is a type of string
+  caa_type = var.caa_type
+  # description - (optional) is a type of string
+  description = var.description
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # dynamic_dns - (optional) is a type of string
+  dynamic_dns = var.dynamic_dns
+  # gtd_location - (optional) is a type of string
+  gtd_location = var.gtd_location
+  # hardlink - (optional) is a type of string
+  hardlink = var.hardlink
+  # issuer_critical - (optional) is a type of string
   issuer_critical = var.issuer_critical
-  keywords        = var.keywords
-  mx_level        = var.mx_level
-  name            = var.name
-  password        = var.password
-  port            = var.port
-  priority        = var.priority
-  redirect_type   = var.redirect_type
-  title           = var.title
-  ttl             = var.ttl
-  type            = var.type
-  value           = var.value
-  weight          = var.weight
+  # keywords - (optional) is a type of string
+  keywords = var.keywords
+  # mx_level - (optional) is a type of string
+  mx_level = var.mx_level
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of string
+  port = var.port
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # redirect_type - (optional) is a type of string
+  redirect_type = var.redirect_type
+  # title - (optional) is a type of string
+  title = var.title
+  # ttl - (required) is a type of string
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
+  # weight - (optional) is a type of string
+  weight = var.weight
 }
 ```
 

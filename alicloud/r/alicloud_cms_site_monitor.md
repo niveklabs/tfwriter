@@ -103,18 +103,26 @@ variable "isp_cities" {
 
 ```terraform
 resource "alicloud_cms_site_monitor" "this" {
-  address      = var.address
-  alert_ids    = var.alert_ids
-  interval     = var.interval
+  # address - (required) is a type of string
+  address = var.address
+  # alert_ids - (optional) is a type of list of string
+  alert_ids = var.alert_ids
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # options_json - (optional) is a type of string
   options_json = var.options_json
-  task_name    = var.task_name
-  task_type    = var.task_type
+  # task_name - (required) is a type of string
+  task_name = var.task_name
+  # task_type - (required) is a type of string
+  task_type = var.task_type
 
   dynamic "isp_cities" {
     for_each = var.isp_cities
     content {
+      # city - (required) is a type of string
       city = isp_cities.value["city"]
-      isp  = isp_cities.value["isp"]
+      # isp - (required) is a type of string
+      isp = isp_cities.value["isp"]
     }
   }
 

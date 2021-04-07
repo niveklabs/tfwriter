@@ -58,8 +58,10 @@ variable "limit" {
 
 ```terraform
 data "prismacloud_rql_historic_searches" "this" {
+  # filter - (optional) is a type of string
   filter = var.filter
-  limit  = var.limit
+  # limit - (optional) is a type of number
+  limit = var.limit
 }
 ```
 

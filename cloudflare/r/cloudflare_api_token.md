@@ -88,6 +88,7 @@ variable "policy" {
 
 ```terraform
 resource "cloudflare_api_token" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "condition" {
@@ -97,7 +98,9 @@ resource "cloudflare_api_token" "this" {
       dynamic "request_ip" {
         for_each = condition.value.request_ip
         content {
-          in     = request_ip.value["in"]
+          # in - (optional) is a type of list of string
+          in = request_ip.value["in"]
+          # not_in - (optional) is a type of list of string
           not_in = request_ip.value["not_in"]
         }
       }
@@ -108,9 +111,12 @@ resource "cloudflare_api_token" "this" {
   dynamic "policy" {
     for_each = var.policy
     content {
-      effect            = policy.value["effect"]
+      # effect - (optional) is a type of string
+      effect = policy.value["effect"]
+      # permission_groups - (required) is a type of list of string
       permission_groups = policy.value["permission_groups"]
-      resources         = policy.value["resources"]
+      # resources - (required) is a type of map of string
+      resources = policy.value["resources"]
     }
   }
 

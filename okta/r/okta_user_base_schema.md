@@ -103,14 +103,22 @@ variable "user_type" {
 
 ```terraform
 resource "okta_user_base_schema" "this" {
-  index       = var.index
-  master      = var.master
-  pattern     = var.pattern
+  # index - (required) is a type of string
+  index = var.index
+  # master - (optional) is a type of string
+  master = var.master
+  # pattern - (optional) is a type of string
+  pattern = var.pattern
+  # permissions - (optional) is a type of string
   permissions = var.permissions
-  required    = var.required
-  title       = var.title
-  type        = var.type
-  user_type   = var.user_type
+  # required - (optional) is a type of bool
+  required = var.required
+  # title - (required) is a type of string
+  title = var.title
+  # type - (required) is a type of string
+  type = var.type
+  # user_type - (optional) is a type of string
+  user_type = var.user_type
 }
 ```
 

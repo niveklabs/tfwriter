@@ -70,9 +70,13 @@ variable "strategy_type" {
 
 ```terraform
 resource "tencentcloud_api_gateway_ip_strategy" "this" {
-  service_id    = var.service_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # strategy_data - (required) is a type of string
   strategy_data = var.strategy_data
+  # strategy_name - (required) is a type of string
   strategy_name = var.strategy_name
+  # strategy_type - (required) is a type of string
   strategy_type = var.strategy_type
 }
 ```

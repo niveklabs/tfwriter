@@ -120,16 +120,26 @@ variable "transit_gateway_name2" {
 
 ```terraform
 resource "aviatrix_transit_gateway_peering" "this" {
+  # enable_peering_over_private_network - (optional) is a type of bool
   enable_peering_over_private_network = var.enable_peering_over_private_network
-  enable_single_tunnel_mode           = var.enable_single_tunnel_mode
-  gateway1_excluded_network_cidrs     = var.gateway1_excluded_network_cidrs
-  gateway1_excluded_tgw_connections   = var.gateway1_excluded_tgw_connections
-  gateway2_excluded_network_cidrs     = var.gateway2_excluded_network_cidrs
-  gateway2_excluded_tgw_connections   = var.gateway2_excluded_tgw_connections
-  prepend_as_path1                    = var.prepend_as_path1
-  prepend_as_path2                    = var.prepend_as_path2
-  transit_gateway_name1               = var.transit_gateway_name1
-  transit_gateway_name2               = var.transit_gateway_name2
+  # enable_single_tunnel_mode - (optional) is a type of bool
+  enable_single_tunnel_mode = var.enable_single_tunnel_mode
+  # gateway1_excluded_network_cidrs - (optional) is a type of list of string
+  gateway1_excluded_network_cidrs = var.gateway1_excluded_network_cidrs
+  # gateway1_excluded_tgw_connections - (optional) is a type of list of string
+  gateway1_excluded_tgw_connections = var.gateway1_excluded_tgw_connections
+  # gateway2_excluded_network_cidrs - (optional) is a type of list of string
+  gateway2_excluded_network_cidrs = var.gateway2_excluded_network_cidrs
+  # gateway2_excluded_tgw_connections - (optional) is a type of list of string
+  gateway2_excluded_tgw_connections = var.gateway2_excluded_tgw_connections
+  # prepend_as_path1 - (optional) is a type of set of string
+  prepend_as_path1 = var.prepend_as_path1
+  # prepend_as_path2 - (optional) is a type of set of string
+  prepend_as_path2 = var.prepend_as_path2
+  # transit_gateway_name1 - (required) is a type of string
+  transit_gateway_name1 = var.transit_gateway_name1
+  # transit_gateway_name2 - (required) is a type of string
+  transit_gateway_name2 = var.transit_gateway_name2
 }
 ```
 

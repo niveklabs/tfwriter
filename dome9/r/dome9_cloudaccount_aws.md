@@ -106,17 +106,24 @@ variable "net_sec" {
 
 ```terraform
 resource "dome9_cloudaccount_aws" "this" {
-  name                   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # organizational_unit_id - (optional) is a type of string
   organizational_unit_id = var.organizational_unit_id
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
-      api_key  = credentials.value["api_key"]
-      arn      = credentials.value["arn"]
+      # api_key - (optional) is a type of string
+      api_key = credentials.value["api_key"]
+      # arn - (required) is a type of string
+      arn = credentials.value["arn"]
+      # iam_user - (optional) is a type of string
       iam_user = credentials.value["iam_user"]
-      secret   = credentials.value["secret"]
-      type     = credentials.value["type"]
+      # secret - (required) is a type of string
+      secret = credentials.value["secret"]
+      # type - (required) is a type of string
+      type = credentials.value["type"]
     }
   }
 
@@ -127,8 +134,10 @@ resource "dome9_cloudaccount_aws" "this" {
       dynamic "regions" {
         for_each = net_sec.value.regions
         content {
+          # new_group_behavior - (optional) is a type of string
           new_group_behavior = regions.value["new_group_behavior"]
-          region             = regions.value["region"]
+          # region - (required) is a type of string
+          region = regions.value["region"]
         }
       }
 

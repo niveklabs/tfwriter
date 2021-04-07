@@ -56,7 +56,9 @@ variable "vlan_id" {
 
 ```terraform
 data "triton_fabric_network" "this" {
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # vlan_id - (required) is a type of number
   vlan_id = var.vlan_id
 }
 ```

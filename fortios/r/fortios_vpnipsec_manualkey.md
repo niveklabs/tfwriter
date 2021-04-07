@@ -118,16 +118,26 @@ variable "remotespi" {
 
 ```terraform
 resource "fortios_vpnipsec_manualkey" "this" {
+  # authentication - (required) is a type of string
   authentication = var.authentication
-  authkey        = var.authkey
-  enckey         = var.enckey
-  encryption     = var.encryption
-  interface      = var.interface
-  local_gw       = var.local_gw
-  localspi       = var.localspi
-  name           = var.name
-  remote_gw      = var.remote_gw
-  remotespi      = var.remotespi
+  # authkey - (optional) is a type of string
+  authkey = var.authkey
+  # enckey - (optional) is a type of string
+  enckey = var.enckey
+  # encryption - (required) is a type of string
+  encryption = var.encryption
+  # interface - (required) is a type of string
+  interface = var.interface
+  # local_gw - (optional) is a type of string
+  local_gw = var.local_gw
+  # localspi - (optional) is a type of string
+  localspi = var.localspi
+  # name - (optional) is a type of string
+  name = var.name
+  # remote_gw - (required) is a type of string
+  remote_gw = var.remote_gw
+  # remotespi - (optional) is a type of string
+  remotespi = var.remotespi
 }
 ```
 

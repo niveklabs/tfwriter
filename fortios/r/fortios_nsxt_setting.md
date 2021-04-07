@@ -58,8 +58,10 @@ variable "service" {
 
 ```terraform
 resource "fortios_nsxt_setting" "this" {
+  # liveness - (optional) is a type of string
   liveness = var.liveness
-  service  = var.service
+  # service - (optional) is a type of string
+  service = var.service
 }
 ```
 

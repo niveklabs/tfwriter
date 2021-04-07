@@ -127,17 +127,28 @@ variable "name" {
 
 ```terraform
 resource "gitlab_instance_cluster" "this" {
-  domain                        = var.domain
-  enabled                       = var.enabled
-  environment_scope             = var.environment_scope
-  kubernetes_api_url            = var.kubernetes_api_url
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # environment_scope - (optional) is a type of string
+  environment_scope = var.environment_scope
+  # kubernetes_api_url - (required) is a type of string
+  kubernetes_api_url = var.kubernetes_api_url
+  # kubernetes_authorization_type - (optional) is a type of string
   kubernetes_authorization_type = var.kubernetes_authorization_type
-  kubernetes_ca_cert            = var.kubernetes_ca_cert
-  kubernetes_namespace          = var.kubernetes_namespace
-  kubernetes_token              = var.kubernetes_token
-  managed                       = var.managed
-  management_project_id         = var.management_project_id
-  name                          = var.name
+  # kubernetes_ca_cert - (optional) is a type of string
+  kubernetes_ca_cert = var.kubernetes_ca_cert
+  # kubernetes_namespace - (optional) is a type of string
+  kubernetes_namespace = var.kubernetes_namespace
+  # kubernetes_token - (required) is a type of string
+  kubernetes_token = var.kubernetes_token
+  # managed - (optional) is a type of bool
+  managed = var.managed
+  # management_project_id - (optional) is a type of string
+  management_project_id = var.management_project_id
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -73,10 +73,14 @@ variable "zone_slug" {
 
 ```terraform
 resource "cloudscale_network" "this" {
+  # auto_create_ipv4_subnet - (optional) is a type of bool
   auto_create_ipv4_subnet = var.auto_create_ipv4_subnet
-  mtu                     = var.mtu
-  name                    = var.name
-  zone_slug               = var.zone_slug
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # zone_slug - (optional) is a type of string
+  zone_slug = var.zone_slug
 }
 ```
 

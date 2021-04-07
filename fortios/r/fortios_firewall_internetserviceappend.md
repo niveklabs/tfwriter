@@ -58,8 +58,10 @@ variable "match_port" {
 
 ```terraform
 resource "fortios_firewall_internetserviceappend" "this" {
+  # append_port - (optional) is a type of number
   append_port = var.append_port
-  match_port  = var.match_port
+  # match_port - (optional) is a type of number
+  match_port = var.match_port
 }
 ```
 

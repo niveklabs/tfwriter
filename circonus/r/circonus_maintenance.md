@@ -111,15 +111,24 @@ variable "target" {
 
 ```terraform
 resource "circonus_maintenance" "this" {
-  account    = var.account
-  check      = var.check
-  notes      = var.notes
-  rule_set   = var.rule_set
+  # account - (optional) is a type of string
+  account = var.account
+  # check - (optional) is a type of string
+  check = var.check
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # rule_set - (optional) is a type of string
+  rule_set = var.rule_set
+  # severities - (required) is a type of list of string
   severities = var.severities
-  start      = var.start
-  stop       = var.stop
-  tags       = var.tags
-  target     = var.target
+  # start - (required) is a type of string
+  start = var.start
+  # stop - (required) is a type of string
+  stop = var.stop
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # target - (optional) is a type of string
+  target = var.target
 }
 ```
 

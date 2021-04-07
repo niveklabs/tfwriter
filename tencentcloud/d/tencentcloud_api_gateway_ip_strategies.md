@@ -65,9 +65,12 @@ variable "strategy_name" {
 
 ```terraform
 data "tencentcloud_api_gateway_ip_strategies" "this" {
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  service_id         = var.service_id
-  strategy_name      = var.strategy_name
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # strategy_name - (optional) is a type of string
+  strategy_name = var.strategy_name
 }
 ```
 

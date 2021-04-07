@@ -49,6 +49,7 @@ variable "tenant_name" {
 
 ```terraform
 data "ecl_sss_tenant_v1" "this" {
+  # tenant_name - (required) is a type of string
   tenant_name = var.tenant_name
 }
 ```

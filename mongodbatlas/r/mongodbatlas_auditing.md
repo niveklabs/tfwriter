@@ -73,10 +73,14 @@ variable "project_id" {
 
 ```terraform
 resource "mongodbatlas_auditing" "this" {
+  # audit_authorization_success - (optional) is a type of bool
   audit_authorization_success = var.audit_authorization_success
-  audit_filter                = var.audit_filter
-  enabled                     = var.enabled
-  project_id                  = var.project_id
+  # audit_filter - (optional) is a type of string
+  audit_filter = var.audit_filter
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

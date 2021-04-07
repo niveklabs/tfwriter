@@ -199,45 +199,63 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_service" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  nsx_id       = var.nsx_id
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "algorithm_entry" {
     for_each = var.algorithm_entry
     content {
-      algorithm        = algorithm_entry.value["algorithm"]
-      description      = algorithm_entry.value["description"]
+      # algorithm - (required) is a type of string
+      algorithm = algorithm_entry.value["algorithm"]
+      # description - (optional) is a type of string
+      description = algorithm_entry.value["description"]
+      # destination_port - (required) is a type of string
       destination_port = algorithm_entry.value["destination_port"]
-      display_name     = algorithm_entry.value["display_name"]
-      source_ports     = algorithm_entry.value["source_ports"]
+      # display_name - (optional) is a type of string
+      display_name = algorithm_entry.value["display_name"]
+      # source_ports - (optional) is a type of set of string
+      source_ports = algorithm_entry.value["source_ports"]
     }
   }
 
   dynamic "ether_type_entry" {
     for_each = var.ether_type_entry
     content {
-      description  = ether_type_entry.value["description"]
+      # description - (optional) is a type of string
+      description = ether_type_entry.value["description"]
+      # display_name - (optional) is a type of string
       display_name = ether_type_entry.value["display_name"]
-      ether_type   = ether_type_entry.value["ether_type"]
+      # ether_type - (required) is a type of number
+      ether_type = ether_type_entry.value["ether_type"]
     }
   }
 
   dynamic "icmp_entry" {
     for_each = var.icmp_entry
     content {
-      description  = icmp_entry.value["description"]
+      # description - (optional) is a type of string
+      description = icmp_entry.value["description"]
+      # display_name - (optional) is a type of string
       display_name = icmp_entry.value["display_name"]
-      icmp_code    = icmp_entry.value["icmp_code"]
-      icmp_type    = icmp_entry.value["icmp_type"]
-      protocol     = icmp_entry.value["protocol"]
+      # icmp_code - (optional) is a type of string
+      icmp_code = icmp_entry.value["icmp_code"]
+      # icmp_type - (optional) is a type of string
+      icmp_type = icmp_entry.value["icmp_type"]
+      # protocol - (required) is a type of string
+      protocol = icmp_entry.value["protocol"]
     }
   }
 
   dynamic "igmp_entry" {
     for_each = var.igmp_entry
     content {
-      description  = igmp_entry.value["description"]
+      # description - (optional) is a type of string
+      description = igmp_entry.value["description"]
+      # display_name - (optional) is a type of string
       display_name = igmp_entry.value["display_name"]
     }
   }
@@ -245,28 +263,38 @@ resource "nsxt_policy_service" "this" {
   dynamic "ip_protocol_entry" {
     for_each = var.ip_protocol_entry
     content {
-      description  = ip_protocol_entry.value["description"]
+      # description - (optional) is a type of string
+      description = ip_protocol_entry.value["description"]
+      # display_name - (optional) is a type of string
       display_name = ip_protocol_entry.value["display_name"]
-      protocol     = ip_protocol_entry.value["protocol"]
+      # protocol - (required) is a type of number
+      protocol = ip_protocol_entry.value["protocol"]
     }
   }
 
   dynamic "l4_port_set_entry" {
     for_each = var.l4_port_set_entry
     content {
-      description       = l4_port_set_entry.value["description"]
+      # description - (optional) is a type of string
+      description = l4_port_set_entry.value["description"]
+      # destination_ports - (optional) is a type of set of string
       destination_ports = l4_port_set_entry.value["destination_ports"]
-      display_name      = l4_port_set_entry.value["display_name"]
-      protocol          = l4_port_set_entry.value["protocol"]
-      source_ports      = l4_port_set_entry.value["source_ports"]
+      # display_name - (optional) is a type of string
+      display_name = l4_port_set_entry.value["display_name"]
+      # protocol - (required) is a type of string
+      protocol = l4_port_set_entry.value["protocol"]
+      # source_ports - (optional) is a type of set of string
+      source_ports = l4_port_set_entry.value["source_ports"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

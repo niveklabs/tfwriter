@@ -632,81 +632,153 @@ variable "secondary_vcluster" {
 
 ```terraform
 resource "fortios_system_ha" "this" {
-  arps                             = var.arps
-  arps_interval                    = var.arps_interval
-  authentication                   = var.authentication
-  cpu_threshold                    = var.cpu_threshold
-  dynamic_sort_subtable            = var.dynamic_sort_subtable
-  encryption                       = var.encryption
-  ftp_proxy_threshold              = var.ftp_proxy_threshold
-  gratuitous_arps                  = var.gratuitous_arps
-  group_id                         = var.group_id
-  group_name                       = var.group_name
-  ha_direct                        = var.ha_direct
-  ha_eth_type                      = var.ha_eth_type
-  ha_mgmt_status                   = var.ha_mgmt_status
-  ha_uptime_diff_margin            = var.ha_uptime_diff_margin
-  hb_interval                      = var.hb_interval
-  hb_lost_threshold                = var.hb_lost_threshold
-  hbdev                            = var.hbdev
-  hc_eth_type                      = var.hc_eth_type
-  hello_holddown                   = var.hello_holddown
-  http_proxy_threshold             = var.http_proxy_threshold
-  imap_proxy_threshold             = var.imap_proxy_threshold
-  inter_cluster_session_sync       = var.inter_cluster_session_sync
-  key                              = var.key
-  l2ep_eth_type                    = var.l2ep_eth_type
-  link_failed_signal               = var.link_failed_signal
-  load_balance_all                 = var.load_balance_all
-  logical_sn                       = var.logical_sn
-  memory_compatible_mode           = var.memory_compatible_mode
-  memory_threshold                 = var.memory_threshold
-  mode                             = var.mode
-  monitor                          = var.monitor
-  multicast_ttl                    = var.multicast_ttl
-  nntp_proxy_threshold             = var.nntp_proxy_threshold
-  override                         = var.override
-  override_wait_time               = var.override_wait_time
-  password                         = var.password
-  pingserver_failover_threshold    = var.pingserver_failover_threshold
-  pingserver_flip_timeout          = var.pingserver_flip_timeout
-  pingserver_monitor_interface     = var.pingserver_monitor_interface
+  # arps - (optional) is a type of number
+  arps = var.arps
+  # arps_interval - (optional) is a type of number
+  arps_interval = var.arps_interval
+  # authentication - (optional) is a type of string
+  authentication = var.authentication
+  # cpu_threshold - (optional) is a type of string
+  cpu_threshold = var.cpu_threshold
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # encryption - (optional) is a type of string
+  encryption = var.encryption
+  # ftp_proxy_threshold - (optional) is a type of string
+  ftp_proxy_threshold = var.ftp_proxy_threshold
+  # gratuitous_arps - (optional) is a type of string
+  gratuitous_arps = var.gratuitous_arps
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # ha_direct - (optional) is a type of string
+  ha_direct = var.ha_direct
+  # ha_eth_type - (optional) is a type of string
+  ha_eth_type = var.ha_eth_type
+  # ha_mgmt_status - (optional) is a type of string
+  ha_mgmt_status = var.ha_mgmt_status
+  # ha_uptime_diff_margin - (optional) is a type of number
+  ha_uptime_diff_margin = var.ha_uptime_diff_margin
+  # hb_interval - (optional) is a type of number
+  hb_interval = var.hb_interval
+  # hb_lost_threshold - (optional) is a type of number
+  hb_lost_threshold = var.hb_lost_threshold
+  # hbdev - (optional) is a type of string
+  hbdev = var.hbdev
+  # hc_eth_type - (optional) is a type of string
+  hc_eth_type = var.hc_eth_type
+  # hello_holddown - (optional) is a type of number
+  hello_holddown = var.hello_holddown
+  # http_proxy_threshold - (optional) is a type of string
+  http_proxy_threshold = var.http_proxy_threshold
+  # imap_proxy_threshold - (optional) is a type of string
+  imap_proxy_threshold = var.imap_proxy_threshold
+  # inter_cluster_session_sync - (optional) is a type of string
+  inter_cluster_session_sync = var.inter_cluster_session_sync
+  # key - (optional) is a type of string
+  key = var.key
+  # l2ep_eth_type - (optional) is a type of string
+  l2ep_eth_type = var.l2ep_eth_type
+  # link_failed_signal - (optional) is a type of string
+  link_failed_signal = var.link_failed_signal
+  # load_balance_all - (optional) is a type of string
+  load_balance_all = var.load_balance_all
+  # logical_sn - (optional) is a type of string
+  logical_sn = var.logical_sn
+  # memory_compatible_mode - (optional) is a type of string
+  memory_compatible_mode = var.memory_compatible_mode
+  # memory_threshold - (optional) is a type of string
+  memory_threshold = var.memory_threshold
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # monitor - (optional) is a type of string
+  monitor = var.monitor
+  # multicast_ttl - (optional) is a type of number
+  multicast_ttl = var.multicast_ttl
+  # nntp_proxy_threshold - (optional) is a type of string
+  nntp_proxy_threshold = var.nntp_proxy_threshold
+  # override - (optional) is a type of string
+  override = var.override
+  # override_wait_time - (optional) is a type of number
+  override_wait_time = var.override_wait_time
+  # password - (optional) is a type of string
+  password = var.password
+  # pingserver_failover_threshold - (optional) is a type of number
+  pingserver_failover_threshold = var.pingserver_failover_threshold
+  # pingserver_flip_timeout - (optional) is a type of number
+  pingserver_flip_timeout = var.pingserver_flip_timeout
+  # pingserver_monitor_interface - (optional) is a type of string
+  pingserver_monitor_interface = var.pingserver_monitor_interface
+  # pingserver_secondary_force_reset - (optional) is a type of string
   pingserver_secondary_force_reset = var.pingserver_secondary_force_reset
-  pingserver_slave_force_reset     = var.pingserver_slave_force_reset
-  pop3_proxy_threshold             = var.pop3_proxy_threshold
-  priority                         = var.priority
-  route_hold                       = var.route_hold
-  route_ttl                        = var.route_ttl
-  route_wait                       = var.route_wait
-  schedule                         = var.schedule
-  session_pickup                   = var.session_pickup
-  session_pickup_connectionless    = var.session_pickup_connectionless
-  session_pickup_delay             = var.session_pickup_delay
-  session_pickup_expectation       = var.session_pickup_expectation
-  session_pickup_nat               = var.session_pickup_nat
-  session_sync_dev                 = var.session_sync_dev
-  smtp_proxy_threshold             = var.smtp_proxy_threshold
-  ssd_failover                     = var.ssd_failover
-  standalone_config_sync           = var.standalone_config_sync
-  standalone_mgmt_vdom             = var.standalone_mgmt_vdom
-  sync_config                      = var.sync_config
-  sync_packet_balance              = var.sync_packet_balance
-  unicast_hb                       = var.unicast_hb
-  unicast_hb_netmask               = var.unicast_hb_netmask
-  unicast_hb_peerip                = var.unicast_hb_peerip
-  uninterruptible_upgrade          = var.uninterruptible_upgrade
-  vcluster2                        = var.vcluster2
-  vcluster_id                      = var.vcluster_id
-  vdom                             = var.vdom
-  weight                           = var.weight
+  # pingserver_slave_force_reset - (optional) is a type of string
+  pingserver_slave_force_reset = var.pingserver_slave_force_reset
+  # pop3_proxy_threshold - (optional) is a type of string
+  pop3_proxy_threshold = var.pop3_proxy_threshold
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # route_hold - (optional) is a type of number
+  route_hold = var.route_hold
+  # route_ttl - (optional) is a type of number
+  route_ttl = var.route_ttl
+  # route_wait - (optional) is a type of number
+  route_wait = var.route_wait
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # session_pickup - (optional) is a type of string
+  session_pickup = var.session_pickup
+  # session_pickup_connectionless - (optional) is a type of string
+  session_pickup_connectionless = var.session_pickup_connectionless
+  # session_pickup_delay - (optional) is a type of string
+  session_pickup_delay = var.session_pickup_delay
+  # session_pickup_expectation - (optional) is a type of string
+  session_pickup_expectation = var.session_pickup_expectation
+  # session_pickup_nat - (optional) is a type of string
+  session_pickup_nat = var.session_pickup_nat
+  # session_sync_dev - (optional) is a type of string
+  session_sync_dev = var.session_sync_dev
+  # smtp_proxy_threshold - (optional) is a type of string
+  smtp_proxy_threshold = var.smtp_proxy_threshold
+  # ssd_failover - (optional) is a type of string
+  ssd_failover = var.ssd_failover
+  # standalone_config_sync - (optional) is a type of string
+  standalone_config_sync = var.standalone_config_sync
+  # standalone_mgmt_vdom - (optional) is a type of string
+  standalone_mgmt_vdom = var.standalone_mgmt_vdom
+  # sync_config - (optional) is a type of string
+  sync_config = var.sync_config
+  # sync_packet_balance - (optional) is a type of string
+  sync_packet_balance = var.sync_packet_balance
+  # unicast_hb - (optional) is a type of string
+  unicast_hb = var.unicast_hb
+  # unicast_hb_netmask - (optional) is a type of string
+  unicast_hb_netmask = var.unicast_hb_netmask
+  # unicast_hb_peerip - (optional) is a type of string
+  unicast_hb_peerip = var.unicast_hb_peerip
+  # uninterruptible_upgrade - (optional) is a type of string
+  uninterruptible_upgrade = var.uninterruptible_upgrade
+  # vcluster2 - (optional) is a type of string
+  vcluster2 = var.vcluster2
+  # vcluster_id - (optional) is a type of number
+  vcluster_id = var.vcluster_id
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
+  # weight - (optional) is a type of string
+  weight = var.weight
 
   dynamic "ha_mgmt_interfaces" {
     for_each = var.ha_mgmt_interfaces
     content {
-      dst       = ha_mgmt_interfaces.value["dst"]
-      gateway   = ha_mgmt_interfaces.value["gateway"]
-      gateway6  = ha_mgmt_interfaces.value["gateway6"]
-      id        = ha_mgmt_interfaces.value["id"]
+      # dst - (optional) is a type of string
+      dst = ha_mgmt_interfaces.value["dst"]
+      # gateway - (optional) is a type of string
+      gateway = ha_mgmt_interfaces.value["gateway"]
+      # gateway6 - (optional) is a type of string
+      gateway6 = ha_mgmt_interfaces.value["gateway6"]
+      # id - (optional) is a type of number
+      id = ha_mgmt_interfaces.value["id"]
+      # interface - (optional) is a type of string
       interface = ha_mgmt_interfaces.value["interface"]
     }
   }
@@ -714,16 +786,26 @@ resource "fortios_system_ha" "this" {
   dynamic "secondary_vcluster" {
     for_each = var.secondary_vcluster
     content {
-      monitor                          = secondary_vcluster.value["monitor"]
-      override                         = secondary_vcluster.value["override"]
-      override_wait_time               = secondary_vcluster.value["override_wait_time"]
-      pingserver_failover_threshold    = secondary_vcluster.value["pingserver_failover_threshold"]
-      pingserver_monitor_interface     = secondary_vcluster.value["pingserver_monitor_interface"]
+      # monitor - (optional) is a type of string
+      monitor = secondary_vcluster.value["monitor"]
+      # override - (optional) is a type of string
+      override = secondary_vcluster.value["override"]
+      # override_wait_time - (optional) is a type of number
+      override_wait_time = secondary_vcluster.value["override_wait_time"]
+      # pingserver_failover_threshold - (optional) is a type of number
+      pingserver_failover_threshold = secondary_vcluster.value["pingserver_failover_threshold"]
+      # pingserver_monitor_interface - (optional) is a type of string
+      pingserver_monitor_interface = secondary_vcluster.value["pingserver_monitor_interface"]
+      # pingserver_secondary_force_reset - (optional) is a type of string
       pingserver_secondary_force_reset = secondary_vcluster.value["pingserver_secondary_force_reset"]
-      pingserver_slave_force_reset     = secondary_vcluster.value["pingserver_slave_force_reset"]
-      priority                         = secondary_vcluster.value["priority"]
-      vcluster_id                      = secondary_vcluster.value["vcluster_id"]
-      vdom                             = secondary_vcluster.value["vdom"]
+      # pingserver_slave_force_reset - (optional) is a type of string
+      pingserver_slave_force_reset = secondary_vcluster.value["pingserver_slave_force_reset"]
+      # priority - (optional) is a type of number
+      priority = secondary_vcluster.value["priority"]
+      # vcluster_id - (optional) is a type of number
+      vcluster_id = secondary_vcluster.value["vcluster_id"]
+      # vdom - (optional) is a type of string
+      vdom = secondary_vcluster.value["vdom"]
     }
   }
 

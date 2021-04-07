@@ -93,13 +93,20 @@ variable "vrf_name" {
 
 ```terraform
 data "mso_schema_site_vrf_region_cidr" "this" {
-  ip            = var.ip
-  primary       = var.primary
-  region_name   = var.region_name
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # ip - (required) is a type of string
+  ip = var.ip
+  # primary - (optional) is a type of bool
+  primary = var.primary
+  # region_name - (required) is a type of string
+  region_name = var.region_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (optional) is a type of string
   template_name = var.template_name
-  vrf_name      = var.vrf_name
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
 }
 ```
 

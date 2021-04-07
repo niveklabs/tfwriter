@@ -166,24 +166,34 @@ variable "source_ip_address" {
 
 ```terraform
 resource "thunder_overlay_tunnel_vtep" "this" {
-  encap    = var.encap
-  id2      = var.id2
+  # encap - (optional) is a type of string
+  encap = var.encap
+  # id2 - (optional) is a type of number
+  id2 = var.id2
+  # user_tag - (optional) is a type of string
   user_tag = var.user_tag
-  uuid     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "destination_ip_address_list" {
     for_each = var.destination_ip_address_list
     content {
-      encap      = destination_ip_address_list.value["encap"]
+      # encap - (optional) is a type of string
+      encap = destination_ip_address_list.value["encap"]
+      # ip_address - (optional) is a type of string
       ip_address = destination_ip_address_list.value["ip_address"]
-      user_tag   = destination_ip_address_list.value["user_tag"]
-      uuid       = destination_ip_address_list.value["uuid"]
+      # user_tag - (optional) is a type of string
+      user_tag = destination_ip_address_list.value["user_tag"]
+      # uuid - (optional) is a type of string
+      uuid = destination_ip_address_list.value["uuid"]
 
       dynamic "vni_list" {
         for_each = destination_ip_address_list.value.vni_list
         content {
+          # segment - (optional) is a type of number
           segment = vni_list.value["segment"]
-          uuid    = vni_list.value["uuid"]
+          # uuid - (optional) is a type of string
+          uuid = vni_list.value["uuid"]
         }
       }
 
@@ -193,17 +203,23 @@ resource "thunder_overlay_tunnel_vtep" "this" {
   dynamic "host_list" {
     for_each = var.host_list
     content {
+      # destination_vtep - (optional) is a type of string
       destination_vtep = host_list.value["destination_vtep"]
-      ip_addr          = host_list.value["ip_addr"]
+      # ip_addr - (optional) is a type of string
+      ip_addr = host_list.value["ip_addr"]
+      # overlay_mac_addr - (optional) is a type of string
       overlay_mac_addr = host_list.value["overlay_mac_addr"]
-      uuid             = host_list.value["uuid"]
-      vni              = host_list.value["vni"]
+      # uuid - (optional) is a type of string
+      uuid = host_list.value["uuid"]
+      # vni - (optional) is a type of number
+      vni = host_list.value["vni"]
     }
   }
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }
@@ -211,14 +227,18 @@ resource "thunder_overlay_tunnel_vtep" "this" {
   dynamic "source_ip_address" {
     for_each = var.source_ip_address
     content {
+      # ip_address - (optional) is a type of string
       ip_address = source_ip_address.value["ip_address"]
-      uuid       = source_ip_address.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = source_ip_address.value["uuid"]
 
       dynamic "vni_list" {
         for_each = source_ip_address.value.vni_list
         content {
+          # segment - (optional) is a type of number
           segment = vni_list.value["segment"]
-          uuid    = vni_list.value["uuid"]
+          # uuid - (optional) is a type of string
+          uuid = vni_list.value["uuid"]
         }
       }
 

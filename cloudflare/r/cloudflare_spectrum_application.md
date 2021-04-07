@@ -173,22 +173,35 @@ variable "origin_port_range" {
 
 ```terraform
 resource "cloudflare_spectrum_application" "this" {
-  argo_smart_routing   = var.argo_smart_routing
+  # argo_smart_routing - (optional) is a type of bool
+  argo_smart_routing = var.argo_smart_routing
+  # edge_ip_connectivity - (optional) is a type of string
   edge_ip_connectivity = var.edge_ip_connectivity
-  edge_ips             = var.edge_ips
-  ip_firewall          = var.ip_firewall
-  origin_direct        = var.origin_direct
-  origin_port          = var.origin_port
-  protocol             = var.protocol
-  proxy_protocol       = var.proxy_protocol
-  tls                  = var.tls
-  traffic_type         = var.traffic_type
-  zone_id              = var.zone_id
+  # edge_ips - (optional) is a type of list of string
+  edge_ips = var.edge_ips
+  # ip_firewall - (optional) is a type of bool
+  ip_firewall = var.ip_firewall
+  # origin_direct - (optional) is a type of list of string
+  origin_direct = var.origin_direct
+  # origin_port - (optional) is a type of number
+  origin_port = var.origin_port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # proxy_protocol - (optional) is a type of string
+  proxy_protocol = var.proxy_protocol
+  # tls - (optional) is a type of string
+  tls = var.tls
+  # traffic_type - (optional) is a type of string
+  traffic_type = var.traffic_type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "dns" {
     for_each = var.dns
     content {
+      # name - (required) is a type of string
       name = dns.value["name"]
+      # type - (required) is a type of string
       type = dns.value["type"]
     }
   }
@@ -196,6 +209,7 @@ resource "cloudflare_spectrum_application" "this" {
   dynamic "origin_dns" {
     for_each = var.origin_dns
     content {
+      # name - (required) is a type of string
       name = origin_dns.value["name"]
     }
   }
@@ -203,7 +217,9 @@ resource "cloudflare_spectrum_application" "this" {
   dynamic "origin_port_range" {
     for_each = var.origin_port_range
     content {
-      end   = origin_port_range.value["end"]
+      # end - (required) is a type of number
+      end = origin_port_range.value["end"]
+      # start - (required) is a type of number
       start = origin_port_range.value["start"]
     }
   }

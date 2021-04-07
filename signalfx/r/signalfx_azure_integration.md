@@ -139,23 +139,36 @@ variable "custom_namespaces_per_service" {
 
 ```terraform
 resource "signalfx_azure_integration" "this" {
-  app_id                   = var.app_id
-  enabled                  = var.enabled
-  environment              = var.environment
-  name                     = var.name
-  named_token              = var.named_token
-  poll_rate                = var.poll_rate
-  secret_key               = var.secret_key
-  services                 = var.services
-  subscriptions            = var.subscriptions
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # environment - (optional) is a type of string
+  environment = var.environment
+  # name - (required) is a type of string
+  name = var.name
+  # named_token - (optional) is a type of string
+  named_token = var.named_token
+  # poll_rate - (optional) is a type of number
+  poll_rate = var.poll_rate
+  # secret_key - (required) is a type of string
+  secret_key = var.secret_key
+  # services - (required) is a type of set of string
+  services = var.services
+  # subscriptions - (required) is a type of set of string
+  subscriptions = var.subscriptions
+  # sync_guest_os_namespaces - (optional) is a type of bool
   sync_guest_os_namespaces = var.sync_guest_os_namespaces
-  tenant_id                = var.tenant_id
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "custom_namespaces_per_service" {
     for_each = var.custom_namespaces_per_service
     content {
+      # namespaces - (required) is a type of set of string
       namespaces = custom_namespaces_per_service.value["namespaces"]
-      service    = custom_namespaces_per_service.value["service"]
+      # service - (required) is a type of string
+      service = custom_namespaces_per_service.value["service"]
     }
   }
 

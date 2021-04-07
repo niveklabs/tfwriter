@@ -167,26 +167,42 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_tier0_gateway_interface" "this" {
-  access_vlan_id         = var.access_vlan_id
-  description            = var.description
-  display_name           = var.display_name
-  edge_node_path         = var.edge_node_path
-  enable_pim             = var.enable_pim
-  gateway_path           = var.gateway_path
+  # access_vlan_id - (optional) is a type of number
+  access_vlan_id = var.access_vlan_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # edge_node_path - (optional) is a type of string
+  edge_node_path = var.edge_node_path
+  # enable_pim - (optional) is a type of bool
+  enable_pim = var.enable_pim
+  # gateway_path - (required) is a type of string
+  gateway_path = var.gateway_path
+  # ipv6_ndra_profile_path - (optional) is a type of string
   ipv6_ndra_profile_path = var.ipv6_ndra_profile_path
-  mtu                    = var.mtu
-  nsx_id                 = var.nsx_id
-  segment_path           = var.segment_path
-  site_path              = var.site_path
-  subnets                = var.subnets
-  type                   = var.type
-  urpf_mode              = var.urpf_mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # segment_path - (optional) is a type of string
+  segment_path = var.segment_path
+  # site_path - (optional) is a type of string
+  site_path = var.site_path
+  # subnets - (required) is a type of list of string
+  subnets = var.subnets
+  # type - (optional) is a type of string
+  type = var.type
+  # urpf_mode - (optional) is a type of string
+  urpf_mode = var.urpf_mode
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

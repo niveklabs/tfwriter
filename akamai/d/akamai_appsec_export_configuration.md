@@ -64,9 +64,12 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_export_configuration" "this" {
+  # config_id - (required) is a type of number
   config_id = var.config_id
-  search    = var.search
-  version   = var.version
+  # search - (optional) is a type of list of string
+  search = var.search
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

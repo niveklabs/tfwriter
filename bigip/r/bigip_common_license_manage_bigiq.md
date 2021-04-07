@@ -165,22 +165,38 @@ variable "unit_of_measure" {
 
 ```terraform
 resource "bigip_common_license_manage_bigiq" "this" {
-  assignment_type       = var.assignment_type
-  bigiq_address         = var.bigiq_address
-  bigiq_login_ref       = var.bigiq_login_ref
-  bigiq_password        = var.bigiq_password
-  bigiq_port            = var.bigiq_port
-  bigiq_token_auth      = var.bigiq_token_auth
-  bigiq_user            = var.bigiq_user
+  # assignment_type - (required) is a type of string
+  assignment_type = var.assignment_type
+  # bigiq_address - (required) is a type of string
+  bigiq_address = var.bigiq_address
+  # bigiq_login_ref - (optional) is a type of string
+  bigiq_login_ref = var.bigiq_login_ref
+  # bigiq_password - (required) is a type of string
+  bigiq_password = var.bigiq_password
+  # bigiq_port - (optional) is a type of string
+  bigiq_port = var.bigiq_port
+  # bigiq_token_auth - (optional) is a type of bool
+  bigiq_token_auth = var.bigiq_token_auth
+  # bigiq_user - (required) is a type of string
+  bigiq_user = var.bigiq_user
+  # device_license_status - (optional) is a type of string
   device_license_status = var.device_license_status
-  hypervisor            = var.hypervisor
-  key                   = var.key
-  license_poolname      = var.license_poolname
-  mac_address           = var.mac_address
-  skukeyword1           = var.skukeyword1
-  skukeyword2           = var.skukeyword2
-  tenant                = var.tenant
-  unit_of_measure       = var.unit_of_measure
+  # hypervisor - (optional) is a type of string
+  hypervisor = var.hypervisor
+  # key - (optional) is a type of string
+  key = var.key
+  # license_poolname - (required) is a type of string
+  license_poolname = var.license_poolname
+  # mac_address - (optional) is a type of string
+  mac_address = var.mac_address
+  # skukeyword1 - (optional) is a type of string
+  skukeyword1 = var.skukeyword1
+  # skukeyword2 - (optional) is a type of string
+  skukeyword2 = var.skukeyword2
+  # tenant - (optional) is a type of string
+  tenant = var.tenant
+  # unit_of_measure - (optional) is a type of string
+  unit_of_measure = var.unit_of_measure
 }
 ```
 

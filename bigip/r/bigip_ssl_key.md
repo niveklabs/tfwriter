@@ -64,8 +64,11 @@ variable "partition" {
 
 ```terraform
 resource "bigip_ssl_key" "this" {
-  content   = var.content
-  name      = var.name
+  # content - (required) is a type of string
+  content = var.content
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
   partition = var.partition
 }
 ```

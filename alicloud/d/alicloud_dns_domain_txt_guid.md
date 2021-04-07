@@ -72,10 +72,14 @@ variable "type" {
 
 ```terraform
 data "alicloud_dns_domain_txt_guid" "this" {
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
-  lang        = var.lang
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  type        = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

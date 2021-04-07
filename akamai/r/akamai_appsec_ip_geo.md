@@ -94,13 +94,20 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_ip_geo" "this" {
-  config_id                  = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # exception_ip_network_lists - (optional) is a type of set of string
   exception_ip_network_lists = var.exception_ip_network_lists
-  geo_network_lists          = var.geo_network_lists
-  ip_network_lists           = var.ip_network_lists
-  mode                       = var.mode
-  security_policy_id         = var.security_policy_id
-  version                    = var.version
+  # geo_network_lists - (optional) is a type of set of string
+  geo_network_lists = var.geo_network_lists
+  # ip_network_lists - (optional) is a type of set of string
+  ip_network_lists = var.ip_network_lists
+  # mode - (required) is a type of string
+  mode = var.mode
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

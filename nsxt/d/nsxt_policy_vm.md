@@ -82,11 +82,16 @@ variable "instance_id" {
 
 ```terraform
 data "nsxt_policy_vm" "this" {
-  bios_id      = var.bios_id
-  description  = var.description
+  # bios_id - (optional) is a type of string
+  bios_id = var.bios_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  external_id  = var.external_id
-  instance_id  = var.instance_id
+  # external_id - (optional) is a type of string
+  external_id = var.external_id
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
 }
 ```
 

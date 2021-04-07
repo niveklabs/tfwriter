@@ -201,26 +201,46 @@ variable "yubikey_token" {
 
 ```terraform
 resource "okta_mfa_policy" "this" {
-  description     = var.description
-  duo             = var.duo
-  fido_u2f        = var.fido_u2f
-  fido_webauthn   = var.fido_webauthn
-  google_otp      = var.google_otp
+  # description - (optional) is a type of string
+  description = var.description
+  # duo - (optional) is a type of map of string
+  duo = var.duo
+  # fido_u2f - (optional) is a type of map of string
+  fido_u2f = var.fido_u2f
+  # fido_webauthn - (optional) is a type of map of string
+  fido_webauthn = var.fido_webauthn
+  # google_otp - (optional) is a type of map of string
+  google_otp = var.google_otp
+  # groups_included - (optional) is a type of set of string
   groups_included = var.groups_included
-  hotp            = var.hotp
-  name            = var.name
-  okta_call       = var.okta_call
-  okta_email      = var.okta_email
-  okta_otp        = var.okta_otp
-  okta_password   = var.okta_password
-  okta_push       = var.okta_push
-  okta_question   = var.okta_question
-  okta_sms        = var.okta_sms
-  priority        = var.priority
-  rsa_token       = var.rsa_token
-  status          = var.status
-  symantec_vip    = var.symantec_vip
-  yubikey_token   = var.yubikey_token
+  # hotp - (optional) is a type of map of string
+  hotp = var.hotp
+  # name - (required) is a type of string
+  name = var.name
+  # okta_call - (optional) is a type of map of string
+  okta_call = var.okta_call
+  # okta_email - (optional) is a type of map of string
+  okta_email = var.okta_email
+  # okta_otp - (optional) is a type of map of string
+  okta_otp = var.okta_otp
+  # okta_password - (optional) is a type of map of string
+  okta_password = var.okta_password
+  # okta_push - (optional) is a type of map of string
+  okta_push = var.okta_push
+  # okta_question - (optional) is a type of map of string
+  okta_question = var.okta_question
+  # okta_sms - (optional) is a type of map of string
+  okta_sms = var.okta_sms
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # rsa_token - (optional) is a type of map of string
+  rsa_token = var.rsa_token
+  # status - (optional) is a type of string
+  status = var.status
+  # symantec_vip - (optional) is a type of map of string
+  symantec_vip = var.symantec_vip
+  # yubikey_token - (optional) is a type of map of string
+  yubikey_token = var.yubikey_token
 }
 ```
 

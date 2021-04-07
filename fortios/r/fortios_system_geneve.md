@@ -94,13 +94,20 @@ variable "vni" {
 
 ```terraform
 resource "fortios_system_geneve" "this" {
-  dstport    = var.dstport
-  interface  = var.interface
+  # dstport - (optional) is a type of number
+  dstport = var.dstport
+  # interface - (required) is a type of string
+  interface = var.interface
+  # ip_version - (required) is a type of string
   ip_version = var.ip_version
-  name       = var.name
-  remote_ip  = var.remote_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # remote_ip - (required) is a type of string
+  remote_ip = var.remote_ip
+  # remote_ip6 - (optional) is a type of string
   remote_ip6 = var.remote_ip6
-  vni        = var.vni
+  # vni - (required) is a type of number
+  vni = var.vni
 }
 ```
 

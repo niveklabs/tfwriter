@@ -64,9 +64,12 @@ variable "plaintext" {
 
 ```terraform
 resource "alicloud_kms_ciphertext" "this" {
+  # encryption_context - (optional) is a type of map of string
   encryption_context = var.encryption_context
-  key_id             = var.key_id
-  plaintext          = var.plaintext
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # plaintext - (required) is a type of string
+  plaintext = var.plaintext
 }
 ```
 

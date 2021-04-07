@@ -96,13 +96,20 @@ variable "url" {
 
 ```terraform
 data "tencentcloud_clb_listener_rules" "this" {
-  clb_id             = var.clb_id
-  domain             = var.domain
-  listener_id        = var.listener_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  rule_id            = var.rule_id
-  scheduler          = var.scheduler
-  url                = var.url
+  # rule_id - (optional) is a type of string
+  rule_id = var.rule_id
+  # scheduler - (optional) is a type of string
+  scheduler = var.scheduler
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

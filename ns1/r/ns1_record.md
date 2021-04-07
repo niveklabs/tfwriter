@@ -155,20 +155,31 @@ variable "regions" {
 
 ```terraform
 resource "ns1_record" "this" {
-  domain            = var.domain
-  link              = var.link
-  meta              = var.meta
-  short_answers     = var.short_answers
-  ttl               = var.ttl
-  type              = var.type
+  # domain - (required) is a type of string
+  domain = var.domain
+  # link - (optional) is a type of string
+  link = var.link
+  # meta - (optional) is a type of map of string
+  meta = var.meta
+  # short_answers - (optional) is a type of list of string
+  short_answers = var.short_answers
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # use_client_subnet - (optional) is a type of bool
   use_client_subnet = var.use_client_subnet
-  zone              = var.zone
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "answers" {
     for_each = var.answers
     content {
+      # answer - (optional) is a type of string
       answer = answers.value["answer"]
-      meta   = answers.value["meta"]
+      # meta - (optional) is a type of map of string
+      meta = answers.value["meta"]
+      # region - (optional) is a type of string
       region = answers.value["region"]
     }
   }
@@ -176,16 +187,21 @@ resource "ns1_record" "this" {
   dynamic "filters" {
     for_each = var.filters
     content {
-      config   = filters.value["config"]
+      # config - (optional) is a type of map of string
+      config = filters.value["config"]
+      # disabled - (optional) is a type of bool
       disabled = filters.value["disabled"]
-      filter   = filters.value["filter"]
+      # filter - (required) is a type of string
+      filter = filters.value["filter"]
     }
   }
 
   dynamic "regions" {
     for_each = var.regions
     content {
+      # meta - (optional) is a type of map of string
       meta = regions.value["meta"]
+      # name - (required) is a type of string
       name = regions.value["name"]
     }
   }

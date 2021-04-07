@@ -164,22 +164,38 @@ variable "vrf_template_name" {
 
 ```terraform
 resource "mso_schema_template_anp_epg" "this" {
-  anp_name                   = var.anp_name
-  bd_name                    = var.bd_name
-  bd_schema_id               = var.bd_schema_id
-  bd_template_name           = var.bd_template_name
-  display_name               = var.display_name
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # bd_name - (required) is a type of string
+  bd_name = var.bd_name
+  # bd_schema_id - (optional) is a type of string
+  bd_schema_id = var.bd_schema_id
+  # bd_template_name - (optional) is a type of string
+  bd_template_name = var.bd_template_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # intersite_multicast_source - (optional) is a type of bool
   intersite_multicast_source = var.intersite_multicast_source
-  intra_epg                  = var.intra_epg
-  name                       = var.name
-  preferred_group            = var.preferred_group
-  proxy_arp                  = var.proxy_arp
-  schema_id                  = var.schema_id
-  template_name              = var.template_name
-  useg_epg                   = var.useg_epg
-  vrf_name                   = var.vrf_name
-  vrf_schema_id              = var.vrf_schema_id
-  vrf_template_name          = var.vrf_template_name
+  # intra_epg - (optional) is a type of string
+  intra_epg = var.intra_epg
+  # name - (required) is a type of string
+  name = var.name
+  # preferred_group - (optional) is a type of bool
+  preferred_group = var.preferred_group
+  # proxy_arp - (optional) is a type of bool
+  proxy_arp = var.proxy_arp
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # useg_epg - (optional) is a type of bool
+  useg_epg = var.useg_epg
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
+  # vrf_schema_id - (optional) is a type of string
+  vrf_schema_id = var.vrf_schema_id
+  # vrf_template_name - (optional) is a type of string
+  vrf_template_name = var.vrf_template_name
 }
 ```
 

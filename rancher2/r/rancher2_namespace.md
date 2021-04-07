@@ -170,19 +170,29 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_namespace" "this" {
-  annotations      = var.annotations
-  description      = var.description
-  labels           = var.labels
-  name             = var.name
-  project_id       = var.project_id
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # wait_for_cluster - (optional) is a type of bool
   wait_for_cluster = var.wait_for_cluster
 
   dynamic "container_resource_limit" {
     for_each = var.container_resource_limit
     content {
-      limits_cpu      = container_resource_limit.value["limits_cpu"]
-      limits_memory   = container_resource_limit.value["limits_memory"]
-      requests_cpu    = container_resource_limit.value["requests_cpu"]
+      # limits_cpu - (optional) is a type of string
+      limits_cpu = container_resource_limit.value["limits_cpu"]
+      # limits_memory - (optional) is a type of string
+      limits_memory = container_resource_limit.value["limits_memory"]
+      # requests_cpu - (optional) is a type of string
+      requests_cpu = container_resource_limit.value["requests_cpu"]
+      # requests_memory - (optional) is a type of string
       requests_memory = container_resource_limit.value["requests_memory"]
     }
   }
@@ -194,19 +204,32 @@ resource "rancher2_namespace" "this" {
       dynamic "limit" {
         for_each = resource_quota.value.limit
         content {
-          config_maps              = limit.value["config_maps"]
-          limits_cpu               = limit.value["limits_cpu"]
-          limits_memory            = limit.value["limits_memory"]
+          # config_maps - (optional) is a type of string
+          config_maps = limit.value["config_maps"]
+          # limits_cpu - (optional) is a type of string
+          limits_cpu = limit.value["limits_cpu"]
+          # limits_memory - (optional) is a type of string
+          limits_memory = limit.value["limits_memory"]
+          # persistent_volume_claims - (optional) is a type of string
           persistent_volume_claims = limit.value["persistent_volume_claims"]
-          pods                     = limit.value["pods"]
-          replication_controllers  = limit.value["replication_controllers"]
-          requests_cpu             = limit.value["requests_cpu"]
-          requests_memory          = limit.value["requests_memory"]
-          requests_storage         = limit.value["requests_storage"]
-          secrets                  = limit.value["secrets"]
-          services                 = limit.value["services"]
-          services_load_balancers  = limit.value["services_load_balancers"]
-          services_node_ports      = limit.value["services_node_ports"]
+          # pods - (optional) is a type of string
+          pods = limit.value["pods"]
+          # replication_controllers - (optional) is a type of string
+          replication_controllers = limit.value["replication_controllers"]
+          # requests_cpu - (optional) is a type of string
+          requests_cpu = limit.value["requests_cpu"]
+          # requests_memory - (optional) is a type of string
+          requests_memory = limit.value["requests_memory"]
+          # requests_storage - (optional) is a type of string
+          requests_storage = limit.value["requests_storage"]
+          # secrets - (optional) is a type of string
+          secrets = limit.value["secrets"]
+          # services - (optional) is a type of string
+          services = limit.value["services"]
+          # services_load_balancers - (optional) is a type of string
+          services_load_balancers = limit.value["services_load_balancers"]
+          # services_node_ports - (optional) is a type of string
+          services_node_ports = limit.value["services_node_ports"]
         }
       }
 
@@ -216,8 +239,11 @@ resource "rancher2_namespace" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -64,8 +64,11 @@ variable "public_key" {
 
 ```terraform
 resource "tencentcloud_key_pair" "this" {
-  key_name   = var.key_name
+  # key_name - (required) is a type of string
+  key_name = var.key_name
+  # project_id - (optional) is a type of number
   project_id = var.project_id
+  # public_key - (required) is a type of string
   public_key = var.public_key
 }
 ```

@@ -99,16 +99,23 @@ variable "timeouts" {
 
 ```terraform
 resource "equinix_network_bgp" "this" {
+  # authentication_key - (optional) is a type of string
   authentication_key = var.authentication_key
-  connection_id      = var.connection_id
-  local_asn          = var.local_asn
-  local_ip_address   = var.local_ip_address
-  remote_asn         = var.remote_asn
-  remote_ip_address  = var.remote_ip_address
+  # connection_id - (required) is a type of string
+  connection_id = var.connection_id
+  # local_asn - (required) is a type of number
+  local_asn = var.local_asn
+  # local_ip_address - (required) is a type of string
+  local_ip_address = var.local_ip_address
+  # remote_asn - (required) is a type of number
+  remote_asn = var.remote_asn
+  # remote_ip_address - (required) is a type of string
+  remote_ip_address = var.remote_ip_address
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

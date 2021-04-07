@@ -72,8 +72,10 @@ variable "inherited_roles" {
 
 ```terraform
 data "mongodbatlas_custom_db_role" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
-  role_name  = var.role_name
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 
   dynamic "inherited_roles" {
     for_each = var.inherited_roles

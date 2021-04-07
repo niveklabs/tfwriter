@@ -70,12 +70,18 @@ data "nutanix_users" "this" {
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      filter         = metadata.value["filter"]
-      kind           = metadata.value["kind"]
-      length         = metadata.value["length"]
-      offset         = metadata.value["offset"]
+      # filter - (optional) is a type of string
+      filter = metadata.value["filter"]
+      # kind - (optional) is a type of string
+      kind = metadata.value["kind"]
+      # length - (optional) is a type of number
+      length = metadata.value["length"]
+      # offset - (optional) is a type of number
+      offset = metadata.value["offset"]
+      # sort_attribute - (optional) is a type of string
       sort_attribute = metadata.value["sort_attribute"]
-      sort_order     = metadata.value["sort_order"]
+      # sort_order - (optional) is a type of string
+      sort_order = metadata.value["sort_order"]
     }
   }
 

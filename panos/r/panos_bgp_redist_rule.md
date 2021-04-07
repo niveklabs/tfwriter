@@ -136,18 +136,30 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_bgp_redist_rule" "this" {
-  address_family           = var.address_family
-  enable                   = var.enable
-  metric                   = var.metric
-  name                     = var.name
-  route_table              = var.route_table
-  set_as_path_limit        = var.set_as_path_limit
-  set_communities          = var.set_communities
+  # address_family - (optional) is a type of string
+  address_family = var.address_family
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # metric - (optional) is a type of number
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # route_table - (optional) is a type of string
+  route_table = var.route_table
+  # set_as_path_limit - (optional) is a type of number
+  set_as_path_limit = var.set_as_path_limit
+  # set_communities - (optional) is a type of list of string
+  set_communities = var.set_communities
+  # set_extended_communities - (optional) is a type of list of string
   set_extended_communities = var.set_extended_communities
-  set_local_preference     = var.set_local_preference
-  set_med                  = var.set_med
-  set_origin               = var.set_origin
-  virtual_router           = var.virtual_router
+  # set_local_preference - (optional) is a type of string
+  set_local_preference = var.set_local_preference
+  # set_med - (optional) is a type of string
+  set_med = var.set_med
+  # set_origin - (optional) is a type of string
+  set_origin = var.set_origin
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

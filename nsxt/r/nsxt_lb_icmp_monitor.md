@@ -122,20 +122,30 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_icmp_monitor" "this" {
-  data_length  = var.data_length
-  description  = var.description
+  # data_length - (optional) is a type of number
+  data_length = var.data_length
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  fall_count   = var.fall_count
-  interval     = var.interval
+  # fall_count - (optional) is a type of number
+  fall_count = var.fall_count
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # monitor_port - (optional) is a type of string
   monitor_port = var.monitor_port
-  rise_count   = var.rise_count
-  timeout      = var.timeout
+  # rise_count - (optional) is a type of number
+  rise_count = var.rise_count
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

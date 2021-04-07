@@ -104,18 +104,27 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_network" "this" {
-  domain         = var.domain
+  # domain - (required) is a type of string
+  domain = var.domain
+  # environment_id - (required) is a type of string
   environment_id = var.environment_id
-  gateway        = var.gateway
-  name           = var.name
-  subnet         = var.subnet
-  tunnelable     = var.tunnelable
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # name - (required) is a type of string
+  name = var.name
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tunnelable - (optional) is a type of bool
+  tunnelable = var.tunnelable
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

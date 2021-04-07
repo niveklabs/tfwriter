@@ -81,11 +81,16 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_fmg_firewall_security_policypackage" "this" {
-  adom            = var.adom
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # inspection_mode - (optional) is a type of string
   inspection_mode = var.inspection_mode
-  name            = var.name
-  target          = var.target
-  vdom            = var.vdom
+  # name - (required) is a type of string
+  name = var.name
+  # target - (optional) is a type of string
+  target = var.target
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 }
 ```
 

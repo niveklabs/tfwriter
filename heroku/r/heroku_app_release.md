@@ -64,9 +64,12 @@ variable "slug_id" {
 
 ```terraform
 resource "heroku_app_release" "this" {
-  app         = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # description - (optional) is a type of string
   description = var.description
-  slug_id     = var.slug_id
+  # slug_id - (required) is a type of string
+  slug_id = var.slug_id
 }
 ```
 

@@ -104,17 +104,25 @@ variable "kv" {
 
 ```terraform
 resource "avi_stringgroup" "this" {
-  description   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # longest_match - (optional) is a type of bool
   longest_match = var.longest_match
-  name          = var.name
-  tenant_ref    = var.tenant_ref
-  type          = var.type
-  uuid          = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (required) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "kv" {
     for_each = var.kv
     content {
-      key   = kv.value["key"]
+      # key - (required) is a type of string
+      key = kv.value["key"]
+      # value - (optional) is a type of string
       value = kv.value["value"]
     }
   }

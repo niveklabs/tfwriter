@@ -74,10 +74,14 @@ variable "tags" {
 
 ```terraform
 data "alicloud_yundun_dbaudit_instance" "this" {
+  # description_regex - (optional) is a type of string
   description_regex = var.description_regex
-  ids               = var.ids
-  output_file       = var.output_file
-  tags              = var.tags
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

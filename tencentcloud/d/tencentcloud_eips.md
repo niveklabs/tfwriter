@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_eips" "this" {
-  eip_id             = var.eip_id
-  eip_name           = var.eip_name
-  public_ip          = var.public_ip
+  # eip_id - (optional) is a type of string
+  eip_id = var.eip_id
+  # eip_name - (optional) is a type of string
+  eip_name = var.eip_name
+  # public_ip - (optional) is a type of string
+  public_ip = var.public_ip
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

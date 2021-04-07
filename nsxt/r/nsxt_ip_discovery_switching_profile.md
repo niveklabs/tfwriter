@@ -106,18 +106,26 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_ip_discovery_switching_profile" "this" {
-  arp_bindings_limit    = var.arp_bindings_limit
-  arp_snooping_enabled  = var.arp_snooping_enabled
-  description           = var.description
+  # arp_bindings_limit - (optional) is a type of number
+  arp_bindings_limit = var.arp_bindings_limit
+  # arp_snooping_enabled - (optional) is a type of bool
+  arp_snooping_enabled = var.arp_snooping_enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_snooping_enabled - (optional) is a type of bool
   dhcp_snooping_enabled = var.dhcp_snooping_enabled
-  display_name          = var.display_name
-  vm_tools_enabled      = var.vm_tools_enabled
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # vm_tools_enabled - (optional) is a type of bool
+  vm_tools_enabled = var.vm_tools_enabled
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

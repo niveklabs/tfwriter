@@ -151,20 +151,34 @@ variable "zip_code" {
 
 ```terraform
 resource "aviatrix_device_registration" "this" {
-  address_1   = var.address_1
-  address_2   = var.address_2
-  city        = var.city
-  country     = var.country
+  # address_1 - (optional) is a type of string
+  address_1 = var.address_1
+  # address_2 - (optional) is a type of string
+  address_2 = var.address_2
+  # city - (optional) is a type of string
+  city = var.city
+  # country - (optional) is a type of string
+  country = var.country
+  # description - (optional) is a type of string
   description = var.description
-  host_os     = var.host_os
-  key_file    = var.key_file
-  name        = var.name
-  password    = var.password
-  public_ip   = var.public_ip
-  ssh_port    = var.ssh_port
-  state       = var.state
-  username    = var.username
-  zip_code    = var.zip_code
+  # host_os - (optional) is a type of string
+  host_os = var.host_os
+  # key_file - (optional) is a type of string
+  key_file = var.key_file
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # public_ip - (required) is a type of string
+  public_ip = var.public_ip
+  # ssh_port - (optional) is a type of number
+  ssh_port = var.ssh_port
+  # state - (optional) is a type of string
+  state = var.state
+  # username - (required) is a type of string
+  username = var.username
+  # zip_code - (optional) is a type of string
+  zip_code = var.zip_code
 }
 ```
 

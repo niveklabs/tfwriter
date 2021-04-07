@@ -114,15 +114,24 @@ variable "status" {
 
 ```terraform
 resource "fortios_user_fortitoken" "this" {
-  activation_code   = var.activation_code
+  # activation_code - (optional) is a type of string
+  activation_code = var.activation_code
+  # activation_expire - (optional) is a type of number
   activation_expire = var.activation_expire
-  comments          = var.comments
-  license           = var.license
-  os_ver            = var.os_ver
-  reg_id            = var.reg_id
-  seed              = var.seed
-  serial_number     = var.serial_number
-  status            = var.status
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # license - (optional) is a type of string
+  license = var.license
+  # os_ver - (optional) is a type of string
+  os_ver = var.os_ver
+  # reg_id - (optional) is a type of string
+  reg_id = var.reg_id
+  # seed - (optional) is a type of string
+  seed = var.seed
+  # serial_number - (optional) is a type of string
+  serial_number = var.serial_number
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_global_role_binding" "this" {
-  annotations        = var.annotations
-  global_role_id     = var.global_role_id
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # global_role_id - (required) is a type of string
+  global_role_id = var.global_role_id
+  # group_principal_id - (optional) is a type of string
   group_principal_id = var.group_principal_id
-  labels             = var.labels
-  name               = var.name
-  user_id            = var.user_id
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -265,39 +265,64 @@ variable "template" {
 
 ```terraform
 resource "github_repository" "this" {
-  allow_merge_commit     = var.allow_merge_commit
-  allow_rebase_merge     = var.allow_rebase_merge
-  allow_squash_merge     = var.allow_squash_merge
-  archive_on_destroy     = var.archive_on_destroy
-  archived               = var.archived
-  auto_init              = var.auto_init
-  default_branch         = var.default_branch
+  # allow_merge_commit - (optional) is a type of bool
+  allow_merge_commit = var.allow_merge_commit
+  # allow_rebase_merge - (optional) is a type of bool
+  allow_rebase_merge = var.allow_rebase_merge
+  # allow_squash_merge - (optional) is a type of bool
+  allow_squash_merge = var.allow_squash_merge
+  # archive_on_destroy - (optional) is a type of bool
+  archive_on_destroy = var.archive_on_destroy
+  # archived - (optional) is a type of bool
+  archived = var.archived
+  # auto_init - (optional) is a type of bool
+  auto_init = var.auto_init
+  # default_branch - (optional) is a type of string
+  default_branch = var.default_branch
+  # delete_branch_on_merge - (optional) is a type of bool
   delete_branch_on_merge = var.delete_branch_on_merge
-  description            = var.description
-  gitignore_template     = var.gitignore_template
-  has_downloads          = var.has_downloads
-  has_issues             = var.has_issues
-  has_projects           = var.has_projects
-  has_wiki               = var.has_wiki
-  homepage_url           = var.homepage_url
-  is_template            = var.is_template
-  license_template       = var.license_template
-  name                   = var.name
-  private                = var.private
-  topics                 = var.topics
-  visibility             = var.visibility
-  vulnerability_alerts   = var.vulnerability_alerts
+  # description - (optional) is a type of string
+  description = var.description
+  # gitignore_template - (optional) is a type of string
+  gitignore_template = var.gitignore_template
+  # has_downloads - (optional) is a type of bool
+  has_downloads = var.has_downloads
+  # has_issues - (optional) is a type of bool
+  has_issues = var.has_issues
+  # has_projects - (optional) is a type of bool
+  has_projects = var.has_projects
+  # has_wiki - (optional) is a type of bool
+  has_wiki = var.has_wiki
+  # homepage_url - (optional) is a type of string
+  homepage_url = var.homepage_url
+  # is_template - (optional) is a type of bool
+  is_template = var.is_template
+  # license_template - (optional) is a type of string
+  license_template = var.license_template
+  # name - (required) is a type of string
+  name = var.name
+  # private - (optional) is a type of bool
+  private = var.private
+  # topics - (optional) is a type of set of string
+  topics = var.topics
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
+  # vulnerability_alerts - (optional) is a type of bool
+  vulnerability_alerts = var.vulnerability_alerts
 
   dynamic "pages" {
     for_each = var.pages
     content {
+      # cname - (optional) is a type of string
       cname = pages.value["cname"]
 
       dynamic "source" {
         for_each = pages.value.source
         content {
+          # branch - (required) is a type of string
           branch = source.value["branch"]
-          path   = source.value["path"]
+          # path - (optional) is a type of string
+          path = source.value["path"]
         }
       }
 
@@ -307,7 +332,9 @@ resource "github_repository" "this" {
   dynamic "template" {
     for_each = var.template
     content {
-      owner      = template.value["owner"]
+      # owner - (required) is a type of string
+      owner = template.value["owner"]
+      # repository - (required) is a type of string
       repository = template.value["repository"]
     }
   }

@@ -240,35 +240,61 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_hbase_instance" "this" {
-  account                = var.account
-  auto_renew             = var.auto_renew
-  cold_storage_size      = var.cold_storage_size
-  core_disk_size         = var.core_disk_size
-  core_disk_type         = var.core_disk_type
+  # account - (optional) is a type of string
+  account = var.account
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # cold_storage_size - (optional) is a type of number
+  cold_storage_size = var.cold_storage_size
+  # core_disk_size - (optional) is a type of number
+  core_disk_size = var.core_disk_size
+  # core_disk_type - (optional) is a type of string
+  core_disk_type = var.core_disk_type
+  # core_instance_quantity - (optional) is a type of number
   core_instance_quantity = var.core_instance_quantity
-  core_instance_type     = var.core_instance_type
-  deletion_protection    = var.deletion_protection
-  duration               = var.duration
-  engine                 = var.engine
-  engine_version         = var.engine_version
-  immediate_delete_flag  = var.immediate_delete_flag
-  ip_white               = var.ip_white
-  maintain_end_time      = var.maintain_end_time
-  maintain_start_time    = var.maintain_start_time
-  master_instance_type   = var.master_instance_type
-  name                   = var.name
-  password               = var.password
-  pay_type               = var.pay_type
-  security_groups        = var.security_groups
-  tags                   = var.tags
-  vswitch_id             = var.vswitch_id
-  zone_id                = var.zone_id
+  # core_instance_type - (required) is a type of string
+  core_instance_type = var.core_instance_type
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # duration - (optional) is a type of number
+  duration = var.duration
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # immediate_delete_flag - (optional) is a type of bool
+  immediate_delete_flag = var.immediate_delete_flag
+  # ip_white - (optional) is a type of string
+  ip_white = var.ip_white
+  # maintain_end_time - (optional) is a type of string
+  maintain_end_time = var.maintain_end_time
+  # maintain_start_time - (optional) is a type of string
+  maintain_start_time = var.maintain_start_time
+  # master_instance_type - (required) is a type of string
+  master_instance_type = var.master_instance_type
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # pay_type - (optional) is a type of string
+  pay_type = var.pay_type
+  # security_groups - (optional) is a type of list of string
+  security_groups = var.security_groups
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

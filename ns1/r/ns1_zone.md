@@ -157,25 +157,40 @@ variable "secondaries" {
 
 ```terraform
 resource "ns1_zone" "this" {
-  additional_primaries   = var.additional_primaries
+  # additional_primaries - (optional) is a type of list of string
+  additional_primaries = var.additional_primaries
+  # autogenerate_ns_record - (optional) is a type of bool
   autogenerate_ns_record = var.autogenerate_ns_record
-  dnssec                 = var.dnssec
-  expiry                 = var.expiry
-  link                   = var.link
-  networks               = var.networks
-  nx_ttl                 = var.nx_ttl
-  primary                = var.primary
-  refresh                = var.refresh
-  retry                  = var.retry
-  ttl                    = var.ttl
-  zone                   = var.zone
+  # dnssec - (optional) is a type of bool
+  dnssec = var.dnssec
+  # expiry - (optional) is a type of number
+  expiry = var.expiry
+  # link - (optional) is a type of string
+  link = var.link
+  # networks - (optional) is a type of set of number
+  networks = var.networks
+  # nx_ttl - (optional) is a type of number
+  nx_ttl = var.nx_ttl
+  # primary - (optional) is a type of string
+  primary = var.primary
+  # refresh - (optional) is a type of number
+  refresh = var.refresh
+  # retry - (optional) is a type of number
+  retry = var.retry
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "secondaries" {
     for_each = var.secondaries
     content {
-      ip     = secondaries.value["ip"]
+      # ip - (required) is a type of string
+      ip = secondaries.value["ip"]
+      # notify - (optional) is a type of bool
       notify = secondaries.value["notify"]
-      port   = secondaries.value["port"]
+      # port - (optional) is a type of number
+      port = secondaries.value["port"]
     }
   }
 

@@ -71,10 +71,14 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_ha_vip" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # subnet_id - (required) is a type of string
   subnet_id = var.subnet_id
-  vip       = var.vip
-  vpc_id    = var.vpc_id
+  # vip - (optional) is a type of string
+  vip = var.vip
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

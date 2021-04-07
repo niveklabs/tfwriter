@@ -108,28 +108,37 @@ variable "pim_sm_global" {
 
 ```terraform
 resource "fortios_router_multicast6" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  multicast_pmtu        = var.multicast_pmtu
-  multicast_routing     = var.multicast_routing
+  # multicast_pmtu - (optional) is a type of string
+  multicast_pmtu = var.multicast_pmtu
+  # multicast_routing - (optional) is a type of string
+  multicast_routing = var.multicast_routing
 
   dynamic "interface" {
     for_each = var.interface
     content {
+      # hello_holdtime - (optional) is a type of number
       hello_holdtime = interface.value["hello_holdtime"]
+      # hello_interval - (optional) is a type of number
       hello_interval = interface.value["hello_interval"]
-      name           = interface.value["name"]
+      # name - (optional) is a type of string
+      name = interface.value["name"]
     }
   }
 
   dynamic "pim_sm_global" {
     for_each = var.pim_sm_global
     content {
+      # register_rate_limit - (optional) is a type of number
       register_rate_limit = pim_sm_global.value["register_rate_limit"]
 
       dynamic "rp_address" {
         for_each = pim_sm_global.value.rp_address
         content {
-          id          = rp_address.value["id"]
+          # id - (optional) is a type of number
+          id = rp_address.value["id"]
+          # ip6_address - (optional) is a type of string
           ip6_address = rp_address.value["ip6_address"]
         }
       }

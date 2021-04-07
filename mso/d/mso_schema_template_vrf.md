@@ -87,12 +87,18 @@ variable "vzany" {
 
 ```terraform
 data "mso_schema_template_vrf" "this" {
-  display_name     = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # layer3_multicast - (optional) is a type of bool
   layer3_multicast = var.layer3_multicast
-  name             = var.name
-  schema_id        = var.schema_id
-  template         = var.template
-  vzany            = var.vzany
+  # name - (required) is a type of string
+  name = var.name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template - (required) is a type of string
+  template = var.template
+  # vzany - (optional) is a type of bool
+  vzany = var.vzany
 }
 ```
 

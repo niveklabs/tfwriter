@@ -87,12 +87,18 @@ variable "topic_name" {
 
 ```terraform
 resource "alicloud_mns_topic_subscription" "this" {
-  endpoint              = var.endpoint
-  filter_tag            = var.filter_tag
-  name                  = var.name
+  # endpoint - (required) is a type of string
+  endpoint = var.endpoint
+  # filter_tag - (optional) is a type of string
+  filter_tag = var.filter_tag
+  # name - (required) is a type of string
+  name = var.name
+  # notify_content_format - (optional) is a type of string
   notify_content_format = var.notify_content_format
-  notify_strategy       = var.notify_strategy
-  topic_name            = var.topic_name
+  # notify_strategy - (optional) is a type of string
+  notify_strategy = var.notify_strategy
+  # topic_name - (required) is a type of string
+  topic_name = var.topic_name
 }
 ```
 

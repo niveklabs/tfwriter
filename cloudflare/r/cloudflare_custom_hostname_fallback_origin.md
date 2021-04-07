@@ -56,7 +56,9 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_custom_hostname_fallback_origin" "this" {
-  origin  = var.origin
+  # origin - (required) is a type of string
+  origin = var.origin
+  # zone_id - (required) is a type of string
   zone_id = var.zone_id
 }
 ```

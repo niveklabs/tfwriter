@@ -74,10 +74,14 @@ variable "vdom_netflow" {
 
 ```terraform
 resource "fortios_system_vdomnetflow" "this" {
-  collector_ip   = var.collector_ip
+  # collector_ip - (optional) is a type of string
+  collector_ip = var.collector_ip
+  # collector_port - (optional) is a type of number
   collector_port = var.collector_port
-  source_ip      = var.source_ip
-  vdom_netflow   = var.vdom_netflow
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # vdom_netflow - (optional) is a type of string
+  vdom_netflow = var.vdom_netflow
 }
 ```
 

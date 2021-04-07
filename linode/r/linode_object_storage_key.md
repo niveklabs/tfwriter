@@ -67,13 +67,17 @@ variable "bucket_access" {
 
 ```terraform
 resource "linode_object_storage_key" "this" {
+  # label - (required) is a type of string
   label = var.label
 
   dynamic "bucket_access" {
     for_each = var.bucket_access
     content {
+      # bucket_name - (required) is a type of string
       bucket_name = bucket_access.value["bucket_name"]
-      cluster     = bucket_access.value["cluster"]
+      # cluster - (required) is a type of string
+      cluster = bucket_access.value["cluster"]
+      # permissions - (required) is a type of string
       permissions = bucket_access.value["permissions"]
     }
   }

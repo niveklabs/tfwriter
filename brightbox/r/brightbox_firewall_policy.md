@@ -80,13 +80,17 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_firewall_policy" "this" {
-  description  = var.description
-  name         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # server_group - (optional) is a type of string
   server_group = var.server_group
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

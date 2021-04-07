@@ -98,13 +98,20 @@ variable "status" {
 
 ```terraform
 data "alicloud_mse_clusters" "this" {
+  # cluster_alias_name - (optional) is a type of string
   cluster_alias_name = var.cluster_alias_name
-  enable_details     = var.enable_details
-  ids                = var.ids
-  name_regex         = var.name_regex
-  output_file        = var.output_file
-  request_pars       = var.request_pars
-  status             = var.status
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # request_pars - (optional) is a type of string
+  request_pars = var.request_pars
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

@@ -111,15 +111,24 @@ variable "test_limit" {
 
 ```terraform
 resource "tencentcloud_api_gateway_service" "this" {
+  # exclusive_set_name - (optional) is a type of string
   exclusive_set_name = var.exclusive_set_name
-  ip_version         = var.ip_version
-  net_type           = var.net_type
-  pre_limit          = var.pre_limit
-  protocol           = var.protocol
-  release_limit      = var.release_limit
-  service_desc       = var.service_desc
-  service_name       = var.service_name
-  test_limit         = var.test_limit
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # net_type - (required) is a type of set of string
+  net_type = var.net_type
+  # pre_limit - (optional) is a type of number
+  pre_limit = var.pre_limit
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # release_limit - (optional) is a type of number
+  release_limit = var.release_limit
+  # service_desc - (optional) is a type of string
+  service_desc = var.service_desc
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # test_limit - (optional) is a type of number
+  test_limit = var.test_limit
 }
 ```
 

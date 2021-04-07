@@ -106,14 +106,22 @@ variable "username" {
 
 ```terraform
 resource "fortios_credentialstore_domaincontroller" "this" {
+  # domain_name - (optional) is a type of string
   domain_name = var.domain_name
-  hostname    = var.hostname
-  ip          = var.ip
-  ip6         = var.ip6
-  password    = var.password
-  port        = var.port
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ip6 - (optional) is a type of string
+  ip6 = var.ip6
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # server_name - (optional) is a type of string
   server_name = var.server_name
-  username    = var.username
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

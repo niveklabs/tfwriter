@@ -133,21 +133,33 @@ variable "maintenance_window" {
 
 ```terraform
 resource "digitalocean_database_cluster" "this" {
-  engine               = var.engine
-  eviction_policy      = var.eviction_policy
-  name                 = var.name
-  node_count           = var.node_count
+  # engine - (required) is a type of string
+  engine = var.engine
+  # eviction_policy - (optional) is a type of string
+  eviction_policy = var.eviction_policy
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (required) is a type of number
+  node_count = var.node_count
+  # private_network_uuid - (optional) is a type of string
   private_network_uuid = var.private_network_uuid
-  region               = var.region
-  size                 = var.size
-  sql_mode             = var.sql_mode
-  tags                 = var.tags
-  version              = var.version
+  # region - (required) is a type of string
+  region = var.region
+  # size - (required) is a type of string
+  size = var.size
+  # sql_mode - (optional) is a type of string
+  sql_mode = var.sql_mode
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "maintenance_window" {
     for_each = var.maintenance_window
     content {
-      day  = maintenance_window.value["day"]
+      # day - (required) is a type of string
+      day = maintenance_window.value["day"]
+      # hour - (required) is a type of string
       hour = maintenance_window.value["hour"]
     }
   }

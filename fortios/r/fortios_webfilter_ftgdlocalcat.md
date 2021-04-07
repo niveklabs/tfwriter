@@ -66,8 +66,11 @@ variable "status" {
 
 ```terraform
 resource "fortios_webfilter_ftgdlocalcat" "this" {
-  desc   = var.desc
-  fosid  = var.fosid
+  # desc - (optional) is a type of string
+  desc = var.desc
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # status - (optional) is a type of string
   status = var.status
 }
 ```

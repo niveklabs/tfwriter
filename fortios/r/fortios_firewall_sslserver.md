@@ -151,20 +151,34 @@ variable "url_rewrite" {
 
 ```terraform
 resource "fortios_firewall_sslserver" "this" {
+  # add_header_x_forwarded_proto - (optional) is a type of string
   add_header_x_forwarded_proto = var.add_header_x_forwarded_proto
-  ip                           = var.ip
-  mapped_port                  = var.mapped_port
-  name                         = var.name
-  port                         = var.port
-  ssl_algorithm                = var.ssl_algorithm
-  ssl_cert                     = var.ssl_cert
-  ssl_client_renegotiation     = var.ssl_client_renegotiation
-  ssl_dh_bits                  = var.ssl_dh_bits
-  ssl_max_version              = var.ssl_max_version
-  ssl_min_version              = var.ssl_min_version
-  ssl_mode                     = var.ssl_mode
-  ssl_send_empty_frags         = var.ssl_send_empty_frags
-  url_rewrite                  = var.url_rewrite
+  # ip - (required) is a type of string
+  ip = var.ip
+  # mapped_port - (optional) is a type of number
+  mapped_port = var.mapped_port
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # ssl_algorithm - (optional) is a type of string
+  ssl_algorithm = var.ssl_algorithm
+  # ssl_cert - (required) is a type of string
+  ssl_cert = var.ssl_cert
+  # ssl_client_renegotiation - (optional) is a type of string
+  ssl_client_renegotiation = var.ssl_client_renegotiation
+  # ssl_dh_bits - (optional) is a type of string
+  ssl_dh_bits = var.ssl_dh_bits
+  # ssl_max_version - (optional) is a type of string
+  ssl_max_version = var.ssl_max_version
+  # ssl_min_version - (optional) is a type of string
+  ssl_min_version = var.ssl_min_version
+  # ssl_mode - (optional) is a type of string
+  ssl_mode = var.ssl_mode
+  # ssl_send_empty_frags - (optional) is a type of string
+  ssl_send_empty_frags = var.ssl_send_empty_frags
+  # url_rewrite - (optional) is a type of string
+  url_rewrite = var.url_rewrite
 }
 ```
 

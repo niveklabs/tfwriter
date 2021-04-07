@@ -579,63 +579,106 @@ variable "youtube_channel_filter" {
 
 ```terraform
 resource "fortios_webfilter_profile" "this" {
-  comment                       = var.comment
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  extended_log                  = var.extended_log
-  feature_set                   = var.feature_set
-  https_replacemsg              = var.https_replacemsg
-  inspection_mode               = var.inspection_mode
-  log_all_url                   = var.log_all_url
-  name                          = var.name
-  options                       = var.options
-  ovrd_perm                     = var.ovrd_perm
-  post_action                   = var.post_action
-  replacemsg_group              = var.replacemsg_group
-  web_antiphishing_log          = var.web_antiphishing_log
-  web_content_log               = var.web_content_log
-  web_extended_all_action_log   = var.web_extended_all_action_log
-  web_filter_activex_log        = var.web_filter_activex_log
-  web_filter_applet_log         = var.web_filter_applet_log
-  web_filter_command_block_log  = var.web_filter_command_block_log
-  web_filter_cookie_log         = var.web_filter_cookie_log
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
+  # https_replacemsg - (optional) is a type of string
+  https_replacemsg = var.https_replacemsg
+  # inspection_mode - (optional) is a type of string
+  inspection_mode = var.inspection_mode
+  # log_all_url - (optional) is a type of string
+  log_all_url = var.log_all_url
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # ovrd_perm - (optional) is a type of string
+  ovrd_perm = var.ovrd_perm
+  # post_action - (optional) is a type of string
+  post_action = var.post_action
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # web_antiphishing_log - (optional) is a type of string
+  web_antiphishing_log = var.web_antiphishing_log
+  # web_content_log - (optional) is a type of string
+  web_content_log = var.web_content_log
+  # web_extended_all_action_log - (optional) is a type of string
+  web_extended_all_action_log = var.web_extended_all_action_log
+  # web_filter_activex_log - (optional) is a type of string
+  web_filter_activex_log = var.web_filter_activex_log
+  # web_filter_applet_log - (optional) is a type of string
+  web_filter_applet_log = var.web_filter_applet_log
+  # web_filter_command_block_log - (optional) is a type of string
+  web_filter_command_block_log = var.web_filter_command_block_log
+  # web_filter_cookie_log - (optional) is a type of string
+  web_filter_cookie_log = var.web_filter_cookie_log
+  # web_filter_cookie_removal_log - (optional) is a type of string
   web_filter_cookie_removal_log = var.web_filter_cookie_removal_log
-  web_filter_js_log             = var.web_filter_js_log
-  web_filter_jscript_log        = var.web_filter_jscript_log
-  web_filter_referer_log        = var.web_filter_referer_log
-  web_filter_unknown_log        = var.web_filter_unknown_log
-  web_filter_vbs_log            = var.web_filter_vbs_log
-  web_ftgd_err_log              = var.web_ftgd_err_log
-  web_ftgd_quota_usage          = var.web_ftgd_quota_usage
-  web_invalid_domain_log        = var.web_invalid_domain_log
-  web_url_log                   = var.web_url_log
-  wisp                          = var.wisp
-  wisp_algorithm                = var.wisp_algorithm
-  youtube_channel_status        = var.youtube_channel_status
+  # web_filter_js_log - (optional) is a type of string
+  web_filter_js_log = var.web_filter_js_log
+  # web_filter_jscript_log - (optional) is a type of string
+  web_filter_jscript_log = var.web_filter_jscript_log
+  # web_filter_referer_log - (optional) is a type of string
+  web_filter_referer_log = var.web_filter_referer_log
+  # web_filter_unknown_log - (optional) is a type of string
+  web_filter_unknown_log = var.web_filter_unknown_log
+  # web_filter_vbs_log - (optional) is a type of string
+  web_filter_vbs_log = var.web_filter_vbs_log
+  # web_ftgd_err_log - (optional) is a type of string
+  web_ftgd_err_log = var.web_ftgd_err_log
+  # web_ftgd_quota_usage - (optional) is a type of string
+  web_ftgd_quota_usage = var.web_ftgd_quota_usage
+  # web_invalid_domain_log - (optional) is a type of string
+  web_invalid_domain_log = var.web_invalid_domain_log
+  # web_url_log - (optional) is a type of string
+  web_url_log = var.web_url_log
+  # wisp - (optional) is a type of string
+  wisp = var.wisp
+  # wisp_algorithm - (optional) is a type of string
+  wisp_algorithm = var.wisp_algorithm
+  # youtube_channel_status - (optional) is a type of string
+  youtube_channel_status = var.youtube_channel_status
 
   dynamic "antiphish" {
     for_each = var.antiphish
     content {
-      check_basic_auth  = antiphish.value["check_basic_auth"]
-      check_uri         = antiphish.value["check_uri"]
-      default_action    = antiphish.value["default_action"]
+      # check_basic_auth - (optional) is a type of string
+      check_basic_auth = antiphish.value["check_basic_auth"]
+      # check_uri - (optional) is a type of string
+      check_uri = antiphish.value["check_uri"]
+      # default_action - (optional) is a type of string
+      default_action = antiphish.value["default_action"]
+      # domain_controller - (optional) is a type of string
       domain_controller = antiphish.value["domain_controller"]
-      max_body_len      = antiphish.value["max_body_len"]
-      status            = antiphish.value["status"]
+      # max_body_len - (optional) is a type of number
+      max_body_len = antiphish.value["max_body_len"]
+      # status - (optional) is a type of string
+      status = antiphish.value["status"]
 
       dynamic "custom_patterns" {
         for_each = antiphish.value.custom_patterns
         content {
+          # category - (optional) is a type of string
           category = custom_patterns.value["category"]
-          pattern  = custom_patterns.value["pattern"]
+          # pattern - (optional) is a type of string
+          pattern = custom_patterns.value["pattern"]
         }
       }
 
       dynamic "inspection_entries" {
         for_each = antiphish.value.inspection_entries
         content {
-          action              = inspection_entries.value["action"]
+          # action - (optional) is a type of string
+          action = inspection_entries.value["action"]
+          # fortiguard_category - (optional) is a type of string
           fortiguard_category = inspection_entries.value["fortiguard_category"]
-          name                = inspection_entries.value["name"]
+          # name - (optional) is a type of string
+          name = inspection_entries.value["name"]
         }
       }
 
@@ -645,23 +688,33 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "file_filter" {
     for_each = var.file_filter
     content {
-      log                   = file_filter.value["log"]
+      # log - (optional) is a type of string
+      log = file_filter.value["log"]
+      # scan_archive_contents - (optional) is a type of string
       scan_archive_contents = file_filter.value["scan_archive_contents"]
-      status                = file_filter.value["status"]
+      # status - (optional) is a type of string
+      status = file_filter.value["status"]
 
       dynamic "entries" {
         for_each = file_filter.value.entries
         content {
-          action             = entries.value["action"]
-          comment            = entries.value["comment"]
-          direction          = entries.value["direction"]
-          filter             = entries.value["filter"]
+          # action - (optional) is a type of string
+          action = entries.value["action"]
+          # comment - (optional) is a type of string
+          comment = entries.value["comment"]
+          # direction - (optional) is a type of string
+          direction = entries.value["direction"]
+          # filter - (optional) is a type of string
+          filter = entries.value["filter"]
+          # password_protected - (optional) is a type of string
           password_protected = entries.value["password_protected"]
-          protocol           = entries.value["protocol"]
+          # protocol - (optional) is a type of string
+          protocol = entries.value["protocol"]
 
           dynamic "file_type" {
             for_each = entries.value.file_type
             content {
+              # name - (optional) is a type of string
               name = file_type.value["name"]
             }
           }
@@ -675,30 +728,47 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "ftgd_wf" {
     for_each = var.ftgd_wf
     content {
-      exempt_quota         = ftgd_wf.value["exempt_quota"]
-      max_quota_timeout    = ftgd_wf.value["max_quota_timeout"]
-      options              = ftgd_wf.value["options"]
-      ovrd                 = ftgd_wf.value["ovrd"]
-      rate_crl_urls        = ftgd_wf.value["rate_crl_urls"]
-      rate_css_urls        = ftgd_wf.value["rate_css_urls"]
-      rate_image_urls      = ftgd_wf.value["rate_image_urls"]
+      # exempt_quota - (optional) is a type of string
+      exempt_quota = ftgd_wf.value["exempt_quota"]
+      # max_quota_timeout - (optional) is a type of number
+      max_quota_timeout = ftgd_wf.value["max_quota_timeout"]
+      # options - (optional) is a type of string
+      options = ftgd_wf.value["options"]
+      # ovrd - (optional) is a type of string
+      ovrd = ftgd_wf.value["ovrd"]
+      # rate_crl_urls - (optional) is a type of string
+      rate_crl_urls = ftgd_wf.value["rate_crl_urls"]
+      # rate_css_urls - (optional) is a type of string
+      rate_css_urls = ftgd_wf.value["rate_css_urls"]
+      # rate_image_urls - (optional) is a type of string
+      rate_image_urls = ftgd_wf.value["rate_image_urls"]
+      # rate_javascript_urls - (optional) is a type of string
       rate_javascript_urls = ftgd_wf.value["rate_javascript_urls"]
 
       dynamic "filters" {
         for_each = ftgd_wf.value.filters
         content {
-          action                = filters.value["action"]
-          category              = filters.value["category"]
-          id                    = filters.value["id"]
-          log                   = filters.value["log"]
-          override_replacemsg   = filters.value["override_replacemsg"]
-          warn_duration         = filters.value["warn_duration"]
+          # action - (optional) is a type of string
+          action = filters.value["action"]
+          # category - (optional) is a type of number
+          category = filters.value["category"]
+          # id - (optional) is a type of number
+          id = filters.value["id"]
+          # log - (optional) is a type of string
+          log = filters.value["log"]
+          # override_replacemsg - (optional) is a type of string
+          override_replacemsg = filters.value["override_replacemsg"]
+          # warn_duration - (optional) is a type of string
+          warn_duration = filters.value["warn_duration"]
+          # warning_duration_type - (optional) is a type of string
           warning_duration_type = filters.value["warning_duration_type"]
-          warning_prompt        = filters.value["warning_prompt"]
+          # warning_prompt - (optional) is a type of string
+          warning_prompt = filters.value["warning_prompt"]
 
           dynamic "auth_usr_grp" {
             for_each = filters.value.auth_usr_grp
             content {
+              # name - (optional) is a type of string
               name = auth_usr_grp.value["name"]
             }
           }
@@ -709,13 +779,20 @@ resource "fortios_webfilter_profile" "this" {
       dynamic "quota" {
         for_each = ftgd_wf.value.quota
         content {
-          category            = quota.value["category"]
-          duration            = quota.value["duration"]
-          id                  = quota.value["id"]
+          # category - (optional) is a type of string
+          category = quota.value["category"]
+          # duration - (optional) is a type of string
+          duration = quota.value["duration"]
+          # id - (optional) is a type of number
+          id = quota.value["id"]
+          # override_replacemsg - (optional) is a type of string
           override_replacemsg = quota.value["override_replacemsg"]
-          type                = quota.value["type"]
-          unit                = quota.value["unit"]
-          value               = quota.value["value"]
+          # type - (optional) is a type of string
+          type = quota.value["type"]
+          # unit - (optional) is a type of string
+          unit = quota.value["unit"]
+          # value - (optional) is a type of number
+          value = quota.value["value"]
         }
       }
 
@@ -725,16 +802,23 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "override" {
     for_each = var.override
     content {
-      ovrd_cookie       = override.value["ovrd_cookie"]
-      ovrd_dur          = override.value["ovrd_dur"]
-      ovrd_dur_mode     = override.value["ovrd_dur_mode"]
-      ovrd_scope        = override.value["ovrd_scope"]
+      # ovrd_cookie - (optional) is a type of string
+      ovrd_cookie = override.value["ovrd_cookie"]
+      # ovrd_dur - (optional) is a type of string
+      ovrd_dur = override.value["ovrd_dur"]
+      # ovrd_dur_mode - (optional) is a type of string
+      ovrd_dur_mode = override.value["ovrd_dur_mode"]
+      # ovrd_scope - (optional) is a type of string
+      ovrd_scope = override.value["ovrd_scope"]
+      # profile_attribute - (optional) is a type of string
       profile_attribute = override.value["profile_attribute"]
-      profile_type      = override.value["profile_type"]
+      # profile_type - (optional) is a type of string
+      profile_type = override.value["profile_type"]
 
       dynamic "ovrd_user_group" {
         for_each = override.value.ovrd_user_group
         content {
+          # name - (optional) is a type of string
           name = ovrd_user_group.value["name"]
         }
       }
@@ -742,6 +826,7 @@ resource "fortios_webfilter_profile" "this" {
       dynamic "profile" {
         for_each = override.value.profile
         content {
+          # name - (optional) is a type of string
           name = profile.value["name"]
         }
       }
@@ -752,21 +837,33 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "web" {
     for_each = var.web
     content {
-      allowlist           = web.value["allowlist"]
-      blacklist           = web.value["blacklist"]
-      blocklist           = web.value["blocklist"]
-      bword_table         = web.value["bword_table"]
-      bword_threshold     = web.value["bword_threshold"]
+      # allowlist - (optional) is a type of string
+      allowlist = web.value["allowlist"]
+      # blacklist - (optional) is a type of string
+      blacklist = web.value["blacklist"]
+      # blocklist - (optional) is a type of string
+      blocklist = web.value["blocklist"]
+      # bword_table - (optional) is a type of number
+      bword_table = web.value["bword_table"]
+      # bword_threshold - (optional) is a type of number
+      bword_threshold = web.value["bword_threshold"]
+      # content_header_list - (optional) is a type of number
       content_header_list = web.value["content_header_list"]
-      log_search          = web.value["log_search"]
-      safe_search         = web.value["safe_search"]
-      urlfilter_table     = web.value["urlfilter_table"]
-      whitelist           = web.value["whitelist"]
-      youtube_restrict    = web.value["youtube_restrict"]
+      # log_search - (optional) is a type of string
+      log_search = web.value["log_search"]
+      # safe_search - (optional) is a type of string
+      safe_search = web.value["safe_search"]
+      # urlfilter_table - (optional) is a type of number
+      urlfilter_table = web.value["urlfilter_table"]
+      # whitelist - (optional) is a type of string
+      whitelist = web.value["whitelist"]
+      # youtube_restrict - (optional) is a type of string
+      youtube_restrict = web.value["youtube_restrict"]
 
       dynamic "keyword_match" {
         for_each = web.value.keyword_match
         content {
+          # pattern - (optional) is a type of string
           pattern = keyword_match.value["pattern"]
         }
       }
@@ -777,6 +874,7 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "wisp_servers" {
     for_each = var.wisp_servers
     content {
+      # name - (optional) is a type of string
       name = wisp_servers.value["name"]
     }
   }
@@ -784,9 +882,12 @@ resource "fortios_webfilter_profile" "this" {
   dynamic "youtube_channel_filter" {
     for_each = var.youtube_channel_filter
     content {
+      # channel_id - (optional) is a type of string
       channel_id = youtube_channel_filter.value["channel_id"]
-      comment    = youtube_channel_filter.value["comment"]
-      id         = youtube_channel_filter.value["id"]
+      # comment - (optional) is a type of string
+      comment = youtube_channel_filter.value["comment"]
+      # id - (optional) is a type of number
+      id = youtube_channel_filter.value["id"]
     }
   }
 

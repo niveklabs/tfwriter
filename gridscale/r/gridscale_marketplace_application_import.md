@@ -67,13 +67,17 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_marketplace_application_import" "this" {
+  # import_unique_hash - (required) is a type of string
   import_unique_hash = var.import_unique_hash
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

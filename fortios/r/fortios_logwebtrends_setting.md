@@ -58,7 +58,9 @@ variable "status" {
 
 ```terraform
 resource "fortios_logwebtrends_setting" "this" {
+  # server - (optional) is a type of string
   server = var.server
+  # status - (optional) is a type of string
   status = var.status
 }
 ```

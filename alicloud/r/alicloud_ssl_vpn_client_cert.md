@@ -57,7 +57,9 @@ variable "ssl_vpn_server_id" {
 
 ```terraform
 resource "alicloud_ssl_vpn_client_cert" "this" {
-  name              = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # ssl_vpn_server_id - (required) is a type of string
   ssl_vpn_server_id = var.ssl_vpn_server_id
 }
 ```

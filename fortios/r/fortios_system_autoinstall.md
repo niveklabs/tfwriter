@@ -74,10 +74,14 @@ variable "default_image_file" {
 
 ```terraform
 resource "fortios_system_autoinstall" "this" {
+  # auto_install_config - (optional) is a type of string
   auto_install_config = var.auto_install_config
-  auto_install_image  = var.auto_install_image
+  # auto_install_image - (optional) is a type of string
+  auto_install_image = var.auto_install_image
+  # default_config_file - (optional) is a type of string
   default_config_file = var.default_config_file
-  default_image_file  = var.default_image_file
+  # default_image_file - (optional) is a type of string
+  default_image_file = var.default_image_file
 }
 ```
 

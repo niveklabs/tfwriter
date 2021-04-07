@@ -63,9 +63,12 @@ variable "project_id" {
 
 ```terraform
 resource "mongodbatlas_private_endpoint_interface_link" "this" {
+  # interface_endpoint_id - (required) is a type of string
   interface_endpoint_id = var.interface_endpoint_id
-  private_link_id       = var.private_link_id
-  project_id            = var.project_id
+  # private_link_id - (required) is a type of string
+  private_link_id = var.private_link_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

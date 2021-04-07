@@ -155,25 +155,40 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_security_group_rule" "this" {
-  cidr                   = var.cidr
-  description            = var.description
-  end_port               = var.end_port
-  icmp_code              = var.icmp_code
-  icmp_type              = var.icmp_type
-  protocol               = var.protocol
-  security_group         = var.security_group
-  security_group_id      = var.security_group_id
-  start_port             = var.start_port
-  type                   = var.type
-  user_security_group    = var.user_security_group
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # end_port - (optional) is a type of number
+  end_port = var.end_port
+  # icmp_code - (optional) is a type of number
+  icmp_code = var.icmp_code
+  # icmp_type - (optional) is a type of number
+  icmp_type = var.icmp_type
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # security_group - (optional) is a type of string
+  security_group = var.security_group
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # start_port - (optional) is a type of number
+  start_port = var.start_port
+  # type - (required) is a type of string
+  type = var.type
+  # user_security_group - (optional) is a type of string
+  user_security_group = var.user_security_group
+  # user_security_group_id - (optional) is a type of string
   user_security_group_id = var.user_security_group_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

@@ -128,19 +128,29 @@ variable "thunder_mgmt_ip" {
 
 ```terraform
 resource "thunder_harmony_controller_profile" "this" {
-  action            = var.action
+  # action - (optional) is a type of string
+  action = var.action
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  host              = var.host
-  port              = var.port
-  provider2         = var.provider2
-  region            = var.region
-  secret_value      = var.secret_value
-  use_mgmt_port     = var.use_mgmt_port
-  user_name         = var.user_name
+  # host - (optional) is a type of string
+  host = var.host
+  # port - (optional) is a type of number
+  port = var.port
+  # provider2 - (optional) is a type of string
+  provider2 = var.provider2
+  # region - (optional) is a type of string
+  region = var.region
+  # secret_value - (optional) is a type of string
+  secret_value = var.secret_value
+  # use_mgmt_port - (optional) is a type of number
+  use_mgmt_port = var.use_mgmt_port
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 
   dynamic "thunder_mgmt_ip" {
     for_each = var.thunder_mgmt_ip
     content {
+      # ip_address - (optional) is a type of string
       ip_address = thunder_mgmt_ip.value["ip_address"]
     }
   }

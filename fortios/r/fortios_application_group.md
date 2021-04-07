@@ -156,19 +156,29 @@ variable "risk" {
 
 ```terraform
 resource "fortios_application_group" "this" {
-  behavior              = var.behavior
-  comment               = var.comment
+  # behavior - (optional) is a type of string
+  behavior = var.behavior
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  popularity            = var.popularity
-  protocols             = var.protocols
-  technology            = var.technology
-  type                  = var.type
-  vendor                = var.vendor
+  # name - (optional) is a type of string
+  name = var.name
+  # popularity - (optional) is a type of string
+  popularity = var.popularity
+  # protocols - (optional) is a type of string
+  protocols = var.protocols
+  # technology - (optional) is a type of string
+  technology = var.technology
+  # type - (optional) is a type of string
+  type = var.type
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
 
   dynamic "application" {
     for_each = var.application
     content {
+      # id - (optional) is a type of number
       id = application.value["id"]
     }
   }
@@ -176,6 +186,7 @@ resource "fortios_application_group" "this" {
   dynamic "category" {
     for_each = var.category
     content {
+      # id - (optional) is a type of number
       id = category.value["id"]
     }
   }
@@ -183,6 +194,7 @@ resource "fortios_application_group" "this" {
   dynamic "risk" {
     for_each = var.risk
     content {
+      # level - (optional) is a type of number
       level = risk.value["level"]
     }
   }

@@ -82,10 +82,15 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_images" "this" {
-  image_id           = var.image_id
-  image_name_regex   = var.image_name_regex
-  image_type         = var.image_type
-  os_name            = var.os_name
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # image_name_regex - (optional) is a type of string
+  image_name_regex = var.image_name_regex
+  # image_type - (optional) is a type of list of string
+  image_type = var.image_type
+  # os_name - (optional) is a type of string
+  os_name = var.os_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

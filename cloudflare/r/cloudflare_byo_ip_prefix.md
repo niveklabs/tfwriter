@@ -65,9 +65,12 @@ variable "prefix_id" {
 
 ```terraform
 resource "cloudflare_byo_ip_prefix" "this" {
+  # advertisement - (optional) is a type of string
   advertisement = var.advertisement
-  description   = var.description
-  prefix_id     = var.prefix_id
+  # description - (optional) is a type of string
+  description = var.description
+  # prefix_id - (required) is a type of string
+  prefix_id = var.prefix_id
 }
 ```
 

@@ -65,8 +65,11 @@ variable "public_template" {
 
 ```terraform
 resource "dme_template" "this" {
-  domain_ids      = var.domain_ids
-  name            = var.name
+  # domain_ids - (optional) is a type of list of number
+  domain_ids = var.domain_ids
+  # name - (required) is a type of string
+  name = var.name
+  # public_template - (optional) is a type of string
   public_template = var.public_template
 }
 ```

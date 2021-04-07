@@ -78,6 +78,7 @@ variable "peer" {
 
 ```terraform
 resource "thunder_vrrp_peer_group" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "peer" {
@@ -87,6 +88,7 @@ resource "thunder_vrrp_peer_group" "this" {
       dynamic "ip_peer_address_cfg" {
         for_each = peer.value.ip_peer_address_cfg
         content {
+          # ip_peer_address - (optional) is a type of string
           ip_peer_address = ip_peer_address_cfg.value["ip_peer_address"]
         }
       }
@@ -94,6 +96,7 @@ resource "thunder_vrrp_peer_group" "this" {
       dynamic "ipv6_peer_address_cfg" {
         for_each = peer.value.ipv6_peer_address_cfg
         content {
+          # ipv6_peer_address - (optional) is a type of string
           ipv6_peer_address = ipv6_peer_address_cfg.value["ipv6_peer_address"]
         }
       }

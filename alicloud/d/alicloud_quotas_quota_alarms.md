@@ -114,18 +114,27 @@ variable "quota_dimensions" {
 
 ```terraform
 data "alicloud_quotas_quota_alarms" "this" {
-  enable_details    = var.enable_details
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  product_code      = var.product_code
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # product_code - (optional) is a type of string
+  product_code = var.product_code
+  # quota_action_code - (optional) is a type of string
   quota_action_code = var.quota_action_code
-  quota_alarm_name  = var.quota_alarm_name
+  # quota_alarm_name - (optional) is a type of string
+  quota_alarm_name = var.quota_alarm_name
 
   dynamic "quota_dimensions" {
     for_each = var.quota_dimensions
     content {
-      key   = quota_dimensions.value["key"]
+      # key - (optional) is a type of string
+      key = quota_dimensions.value["key"]
+      # value - (optional) is a type of string
       value = quota_dimensions.value["value"]
     }
   }

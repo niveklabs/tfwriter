@@ -72,13 +72,17 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_resource_manager_shared_target" "this" {
+  # resource_share_id - (required) is a type of string
   resource_share_id = var.resource_share_id
-  target_id         = var.target_id
+  # target_id - (required) is a type of string
+  target_id = var.target_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

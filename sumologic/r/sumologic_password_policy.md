@@ -146,19 +146,32 @@ variable "require_mfa" {
 
 ```terraform
 resource "sumologic_password_policy" "this" {
-  account_lockout_duration_in_mins    = var.account_lockout_duration_in_mins
-  account_lockout_threshold           = var.account_lockout_threshold
+  # account_lockout_duration_in_mins - (optional) is a type of number
+  account_lockout_duration_in_mins = var.account_lockout_duration_in_mins
+  # account_lockout_threshold - (optional) is a type of number
+  account_lockout_threshold = var.account_lockout_threshold
+  # failed_login_reset_duration_in_mins - (optional) is a type of number
   failed_login_reset_duration_in_mins = var.failed_login_reset_duration_in_mins
-  max_length                          = var.max_length
-  max_password_age_in_days            = var.max_password_age_in_days
-  min_length                          = var.min_length
-  min_unique_passwords                = var.min_unique_passwords
-  must_contain_digits                 = var.must_contain_digits
-  must_contain_lowercase              = var.must_contain_lowercase
-  must_contain_special_chars          = var.must_contain_special_chars
-  must_contain_uppercase              = var.must_contain_uppercase
-  remember_mfa                        = var.remember_mfa
-  require_mfa                         = var.require_mfa
+  # max_length - (optional) is a type of number
+  max_length = var.max_length
+  # max_password_age_in_days - (optional) is a type of number
+  max_password_age_in_days = var.max_password_age_in_days
+  # min_length - (optional) is a type of number
+  min_length = var.min_length
+  # min_unique_passwords - (optional) is a type of number
+  min_unique_passwords = var.min_unique_passwords
+  # must_contain_digits - (optional) is a type of bool
+  must_contain_digits = var.must_contain_digits
+  # must_contain_lowercase - (optional) is a type of bool
+  must_contain_lowercase = var.must_contain_lowercase
+  # must_contain_special_chars - (optional) is a type of bool
+  must_contain_special_chars = var.must_contain_special_chars
+  # must_contain_uppercase - (optional) is a type of bool
+  must_contain_uppercase = var.must_contain_uppercase
+  # remember_mfa - (optional) is a type of bool
+  remember_mfa = var.remember_mfa
+  # require_mfa - (optional) is a type of bool
+  require_mfa = var.require_mfa
 }
 ```
 

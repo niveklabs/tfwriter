@@ -378,67 +378,121 @@ variable "traffic_target" {
 
 ```terraform
 resource "akamai_gtm_property" "this" {
-  backup_cname                = var.backup_cname
-  backup_ip                   = var.backup_ip
-  balance_by_download_score   = var.balance_by_download_score
-  cname                       = var.cname
-  comments                    = var.comments
-  domain                      = var.domain
-  dynamic_ttl                 = var.dynamic_ttl
-  failback_delay              = var.failback_delay
-  failover_delay              = var.failover_delay
-  ghost_demand_reporting      = var.ghost_demand_reporting
-  handout_limit               = var.handout_limit
-  handout_mode                = var.handout_mode
-  health_max                  = var.health_max
-  health_multiplier           = var.health_multiplier
-  health_threshold            = var.health_threshold
-  ipv6                        = var.ipv6
-  load_imbalance_percentage   = var.load_imbalance_percentage
-  map_name                    = var.map_name
-  max_unreachable_penalty     = var.max_unreachable_penalty
-  min_live_fraction           = var.min_live_fraction
-  name                        = var.name
-  score_aggregation_type      = var.score_aggregation_type
-  static_ttl                  = var.static_ttl
-  stickiness_bonus_constant   = var.stickiness_bonus_constant
+  # backup_cname - (optional) is a type of string
+  backup_cname = var.backup_cname
+  # backup_ip - (optional) is a type of string
+  backup_ip = var.backup_ip
+  # balance_by_download_score - (optional) is a type of bool
+  balance_by_download_score = var.balance_by_download_score
+  # cname - (optional) is a type of string
+  cname = var.cname
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # domain - (required) is a type of string
+  domain = var.domain
+  # dynamic_ttl - (optional) is a type of number
+  dynamic_ttl = var.dynamic_ttl
+  # failback_delay - (optional) is a type of number
+  failback_delay = var.failback_delay
+  # failover_delay - (optional) is a type of number
+  failover_delay = var.failover_delay
+  # ghost_demand_reporting - (optional) is a type of bool
+  ghost_demand_reporting = var.ghost_demand_reporting
+  # handout_limit - (required) is a type of number
+  handout_limit = var.handout_limit
+  # handout_mode - (required) is a type of string
+  handout_mode = var.handout_mode
+  # health_max - (optional) is a type of number
+  health_max = var.health_max
+  # health_multiplier - (optional) is a type of number
+  health_multiplier = var.health_multiplier
+  # health_threshold - (optional) is a type of number
+  health_threshold = var.health_threshold
+  # ipv6 - (optional) is a type of bool
+  ipv6 = var.ipv6
+  # load_imbalance_percentage - (optional) is a type of number
+  load_imbalance_percentage = var.load_imbalance_percentage
+  # map_name - (optional) is a type of string
+  map_name = var.map_name
+  # max_unreachable_penalty - (optional) is a type of number
+  max_unreachable_penalty = var.max_unreachable_penalty
+  # min_live_fraction - (optional) is a type of number
+  min_live_fraction = var.min_live_fraction
+  # name - (required) is a type of string
+  name = var.name
+  # score_aggregation_type - (required) is a type of string
+  score_aggregation_type = var.score_aggregation_type
+  # static_ttl - (optional) is a type of number
+  static_ttl = var.static_ttl
+  # stickiness_bonus_constant - (optional) is a type of number
+  stickiness_bonus_constant = var.stickiness_bonus_constant
+  # stickiness_bonus_percentage - (optional) is a type of number
   stickiness_bonus_percentage = var.stickiness_bonus_percentage
-  type                        = var.type
-  unreachable_threshold       = var.unreachable_threshold
-  use_computed_targets        = var.use_computed_targets
-  wait_on_complete            = var.wait_on_complete
+  # type - (required) is a type of string
+  type = var.type
+  # unreachable_threshold - (optional) is a type of number
+  unreachable_threshold = var.unreachable_threshold
+  # use_computed_targets - (optional) is a type of bool
+  use_computed_targets = var.use_computed_targets
+  # wait_on_complete - (optional) is a type of bool
+  wait_on_complete = var.wait_on_complete
 
   dynamic "liveness_test" {
     for_each = var.liveness_test
     content {
-      answers_required                 = liveness_test.value["answers_required"]
+      # answers_required - (optional) is a type of bool
+      answers_required = liveness_test.value["answers_required"]
+      # disable_nonstandard_port_warning - (optional) is a type of bool
       disable_nonstandard_port_warning = liveness_test.value["disable_nonstandard_port_warning"]
-      disabled                         = liveness_test.value["disabled"]
-      error_penalty                    = liveness_test.value["error_penalty"]
-      http_error3xx                    = liveness_test.value["http_error3xx"]
-      http_error4xx                    = liveness_test.value["http_error4xx"]
-      http_error5xx                    = liveness_test.value["http_error5xx"]
-      name                             = liveness_test.value["name"]
-      peer_certificate_verification    = liveness_test.value["peer_certificate_verification"]
-      recursion_requested              = liveness_test.value["recursion_requested"]
-      request_string                   = liveness_test.value["request_string"]
-      resource_type                    = liveness_test.value["resource_type"]
-      response_string                  = liveness_test.value["response_string"]
-      ssl_client_certificate           = liveness_test.value["ssl_client_certificate"]
-      ssl_client_private_key           = liveness_test.value["ssl_client_private_key"]
-      test_interval                    = liveness_test.value["test_interval"]
-      test_object                      = liveness_test.value["test_object"]
-      test_object_password             = liveness_test.value["test_object_password"]
-      test_object_port                 = liveness_test.value["test_object_port"]
-      test_object_protocol             = liveness_test.value["test_object_protocol"]
-      test_object_username             = liveness_test.value["test_object_username"]
-      test_timeout                     = liveness_test.value["test_timeout"]
-      timeout_penalty                  = liveness_test.value["timeout_penalty"]
+      # disabled - (optional) is a type of bool
+      disabled = liveness_test.value["disabled"]
+      # error_penalty - (optional) is a type of number
+      error_penalty = liveness_test.value["error_penalty"]
+      # http_error3xx - (optional) is a type of bool
+      http_error3xx = liveness_test.value["http_error3xx"]
+      # http_error4xx - (optional) is a type of bool
+      http_error4xx = liveness_test.value["http_error4xx"]
+      # http_error5xx - (optional) is a type of bool
+      http_error5xx = liveness_test.value["http_error5xx"]
+      # name - (required) is a type of string
+      name = liveness_test.value["name"]
+      # peer_certificate_verification - (optional) is a type of bool
+      peer_certificate_verification = liveness_test.value["peer_certificate_verification"]
+      # recursion_requested - (optional) is a type of bool
+      recursion_requested = liveness_test.value["recursion_requested"]
+      # request_string - (optional) is a type of string
+      request_string = liveness_test.value["request_string"]
+      # resource_type - (optional) is a type of string
+      resource_type = liveness_test.value["resource_type"]
+      # response_string - (optional) is a type of string
+      response_string = liveness_test.value["response_string"]
+      # ssl_client_certificate - (optional) is a type of string
+      ssl_client_certificate = liveness_test.value["ssl_client_certificate"]
+      # ssl_client_private_key - (optional) is a type of string
+      ssl_client_private_key = liveness_test.value["ssl_client_private_key"]
+      # test_interval - (required) is a type of number
+      test_interval = liveness_test.value["test_interval"]
+      # test_object - (required) is a type of string
+      test_object = liveness_test.value["test_object"]
+      # test_object_password - (optional) is a type of string
+      test_object_password = liveness_test.value["test_object_password"]
+      # test_object_port - (optional) is a type of number
+      test_object_port = liveness_test.value["test_object_port"]
+      # test_object_protocol - (required) is a type of string
+      test_object_protocol = liveness_test.value["test_object_protocol"]
+      # test_object_username - (optional) is a type of string
+      test_object_username = liveness_test.value["test_object_username"]
+      # test_timeout - (required) is a type of number
+      test_timeout = liveness_test.value["test_timeout"]
+      # timeout_penalty - (optional) is a type of number
+      timeout_penalty = liveness_test.value["timeout_penalty"]
 
       dynamic "http_header" {
         for_each = liveness_test.value.http_header
         content {
-          name  = http_header.value["name"]
+          # name - (optional) is a type of string
+          name = http_header.value["name"]
+          # value - (optional) is a type of string
           value = http_header.value["value"]
         }
       }
@@ -449,21 +503,30 @@ resource "akamai_gtm_property" "this" {
   dynamic "static_rr_set" {
     for_each = var.static_rr_set
     content {
+      # rdata - (optional) is a type of list of string
       rdata = static_rr_set.value["rdata"]
-      ttl   = static_rr_set.value["ttl"]
-      type  = static_rr_set.value["type"]
+      # ttl - (optional) is a type of number
+      ttl = static_rr_set.value["ttl"]
+      # type - (optional) is a type of string
+      type = static_rr_set.value["type"]
     }
   }
 
   dynamic "traffic_target" {
     for_each = var.traffic_target
     content {
+      # datacenter_id - (optional) is a type of number
       datacenter_id = traffic_target.value["datacenter_id"]
-      enabled       = traffic_target.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = traffic_target.value["enabled"]
+      # handout_cname - (optional) is a type of string
       handout_cname = traffic_target.value["handout_cname"]
-      name          = traffic_target.value["name"]
-      servers       = traffic_target.value["servers"]
-      weight        = traffic_target.value["weight"]
+      # name - (optional) is a type of string
+      name = traffic_target.value["name"]
+      # servers - (optional) is a type of list of string
+      servers = traffic_target.value["servers"]
+      # weight - (optional) is a type of number
+      weight = traffic_target.value["weight"]
     }
   }
 

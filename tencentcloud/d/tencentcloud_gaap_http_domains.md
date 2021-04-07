@@ -64,8 +64,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_gaap_http_domains" "this" {
-  domain             = var.domain
-  listener_id        = var.listener_id
+  # domain - (required) is a type of string
+  domain = var.domain
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

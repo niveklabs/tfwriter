@@ -98,13 +98,20 @@ variable "user_client_ip" {
 
 ```terraform
 data "alicloud_dns_resolution_lines" "this" {
-  domain_name        = var.domain_name
-  lang               = var.lang
-  line_codes         = var.line_codes
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # line_codes - (optional) is a type of list of string
+  line_codes = var.line_codes
+  # line_display_names - (optional) is a type of list of string
   line_display_names = var.line_display_names
-  line_names         = var.line_names
-  output_file        = var.output_file
-  user_client_ip     = var.user_client_ip
+  # line_names - (optional) is a type of list of string
+  line_names = var.line_names
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # user_client_ip - (optional) is a type of string
+  user_client_ip = var.user_client_ip
 }
 ```
 

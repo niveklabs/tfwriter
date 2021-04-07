@@ -89,12 +89,18 @@ variable "version_stage" {
 
 ```terraform
 data "alicloud_kms_secret_versions" "this" {
-  enable_details     = var.enable_details
-  ids                = var.ids
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # include_deprecated - (optional) is a type of string
   include_deprecated = var.include_deprecated
-  output_file        = var.output_file
-  secret_name        = var.secret_name
-  version_stage      = var.version_stage
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # version_stage - (optional) is a type of string
+  version_stage = var.version_stage
 }
 ```
 

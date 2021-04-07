@@ -103,13 +103,21 @@ variable "vpn_gateway_id" {
 
 ```terraform
 resource "alicloud_ssl_vpn_server" "this" {
-  cipher         = var.cipher
+  # cipher - (optional) is a type of string
+  cipher = var.cipher
+  # client_ip_pool - (required) is a type of string
   client_ip_pool = var.client_ip_pool
-  compress       = var.compress
-  local_subnet   = var.local_subnet
-  name           = var.name
-  port           = var.port
-  protocol       = var.protocol
+  # compress - (optional) is a type of bool
+  compress = var.compress
+  # local_subnet - (required) is a type of string
+  local_subnet = var.local_subnet
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # vpn_gateway_id - (required) is a type of string
   vpn_gateway_id = var.vpn_gateway_id
 }
 ```

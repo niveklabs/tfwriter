@@ -181,24 +181,42 @@ variable "vrf_template_name" {
 
 ```terraform
 resource "mso_schema_template_external_epg" "this" {
-  anp_name                   = var.anp_name
-  anp_schema_id              = var.anp_schema_id
-  anp_template_name          = var.anp_template_name
-  display_name               = var.display_name
-  external_epg_name          = var.external_epg_name
-  external_epg_type          = var.external_epg_type
+  # anp_name - (optional) is a type of string
+  anp_name = var.anp_name
+  # anp_schema_id - (optional) is a type of string
+  anp_schema_id = var.anp_schema_id
+  # anp_template_name - (optional) is a type of string
+  anp_template_name = var.anp_template_name
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # external_epg_name - (required) is a type of string
+  external_epg_name = var.external_epg_name
+  # external_epg_type - (optional) is a type of string
+  external_epg_type = var.external_epg_type
+  # include_in_preferred_group - (optional) is a type of bool
   include_in_preferred_group = var.include_in_preferred_group
-  l3out_name                 = var.l3out_name
-  l3out_schema_id            = var.l3out_schema_id
-  l3out_template_name        = var.l3out_template_name
-  schema_id                  = var.schema_id
-  selector_ip                = var.selector_ip
-  selector_name              = var.selector_name
-  site_id                    = var.site_id
-  template_name              = var.template_name
-  vrf_name                   = var.vrf_name
-  vrf_schema_id              = var.vrf_schema_id
-  vrf_template_name          = var.vrf_template_name
+  # l3out_name - (optional) is a type of string
+  l3out_name = var.l3out_name
+  # l3out_schema_id - (optional) is a type of string
+  l3out_schema_id = var.l3out_schema_id
+  # l3out_template_name - (optional) is a type of string
+  l3out_template_name = var.l3out_template_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # selector_ip - (optional) is a type of string
+  selector_ip = var.selector_ip
+  # selector_name - (optional) is a type of string
+  selector_name = var.selector_name
+  # site_id - (optional) is a type of list of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
+  # vrf_schema_id - (optional) is a type of string
+  vrf_schema_id = var.vrf_schema_id
+  # vrf_template_name - (optional) is a type of string
+  vrf_template_name = var.vrf_template_name
 }
 ```
 

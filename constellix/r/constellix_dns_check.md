@@ -103,13 +103,21 @@ variable "verification_policy" {
 
 ```terraform
 resource "constellix_dns_check" "this" {
-  check_sites         = var.check_sites
-  expected_response   = var.expected_response
-  fqdn                = var.fqdn
-  interval            = var.interval
-  interval_policy     = var.interval_policy
-  name                = var.name
-  resolver            = var.resolver
+  # check_sites - (required) is a type of list of number
+  check_sites = var.check_sites
+  # expected_response - (optional) is a type of string
+  expected_response = var.expected_response
+  # fqdn - (required) is a type of string
+  fqdn = var.fqdn
+  # interval - (optional) is a type of string
+  interval = var.interval
+  # interval_policy - (optional) is a type of string
+  interval_policy = var.interval_policy
+  # name - (optional) is a type of string
+  name = var.name
+  # resolver - (required) is a type of string
+  resolver = var.resolver
+  # verification_policy - (optional) is a type of string
   verification_policy = var.verification_policy
 }
 ```

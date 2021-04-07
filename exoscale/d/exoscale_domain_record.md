@@ -68,15 +68,20 @@ variable "filter" {
 
 ```terraform
 data "exoscale_domain_record" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # content_regex - (optional) is a type of string
       content_regex = filter.value["content_regex"]
-      id            = filter.value["id"]
-      name          = filter.value["name"]
-      record_type   = filter.value["record_type"]
+      # id - (optional) is a type of number
+      id = filter.value["id"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # record_type - (optional) is a type of string
+      record_type = filter.value["record_type"]
     }
   }
 

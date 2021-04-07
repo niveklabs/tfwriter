@@ -96,15 +96,21 @@ variable "timeouts" {
 
 ```terraform
 data "sdm_resource" "this" {
+  # hostname - (optional) is a type of string
   hostname = var.hostname
-  name     = var.name
-  port     = var.port
-  type     = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # type - (optional) is a type of string
+  type = var.type
+  # username - (optional) is a type of string
   username = var.username
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

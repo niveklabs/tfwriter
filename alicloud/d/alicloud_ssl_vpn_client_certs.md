@@ -74,9 +74,13 @@ variable "ssl_vpn_server_id" {
 
 ```terraform
 data "alicloud_ssl_vpn_client_certs" "this" {
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # ssl_vpn_server_id - (optional) is a type of string
   ssl_vpn_server_id = var.ssl_vpn_server_id
 }
 ```

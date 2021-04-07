@@ -50,6 +50,7 @@ variable "tags" {
 
 ```terraform
 data "circonus_collector" "this" {
+  # tags - (optional) is a type of set of string
   tags = var.tags
 }
 ```

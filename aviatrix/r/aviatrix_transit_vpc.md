@@ -171,23 +171,40 @@ variable "vpc_size" {
 
 ```terraform
 resource "aviatrix_transit_vpc" "this" {
-  account_name              = var.account_name
-  cloud_type                = var.cloud_type
-  connected_transit         = var.connected_transit
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # connected_transit - (optional) is a type of string
+  connected_transit = var.connected_transit
+  # enable_firenet_interfaces - (optional) is a type of bool
   enable_firenet_interfaces = var.enable_firenet_interfaces
-  enable_hybrid_connection  = var.enable_hybrid_connection
-  enable_nat                = var.enable_nat
-  gw_name                   = var.gw_name
-  ha_gw_size                = var.ha_gw_size
-  ha_insane_mode_az         = var.ha_insane_mode_az
-  ha_subnet                 = var.ha_subnet
-  insane_mode               = var.insane_mode
-  insane_mode_az            = var.insane_mode_az
-  subnet                    = var.subnet
-  tag_list                  = var.tag_list
-  vpc_id                    = var.vpc_id
-  vpc_reg                   = var.vpc_reg
-  vpc_size                  = var.vpc_size
+  # enable_hybrid_connection - (optional) is a type of bool
+  enable_hybrid_connection = var.enable_hybrid_connection
+  # enable_nat - (optional) is a type of string
+  enable_nat = var.enable_nat
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # ha_gw_size - (optional) is a type of string
+  ha_gw_size = var.ha_gw_size
+  # ha_insane_mode_az - (optional) is a type of string
+  ha_insane_mode_az = var.ha_insane_mode_az
+  # ha_subnet - (optional) is a type of string
+  ha_subnet = var.ha_subnet
+  # insane_mode - (optional) is a type of bool
+  insane_mode = var.insane_mode
+  # insane_mode_az - (optional) is a type of string
+  insane_mode_az = var.insane_mode_az
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tag_list - (optional) is a type of list of string
+  tag_list = var.tag_list
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_reg - (required) is a type of string
+  vpc_reg = var.vpc_reg
+  # vpc_size - (required) is a type of string
+  vpc_size = var.vpc_size
 }
 ```
 

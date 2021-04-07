@@ -65,9 +65,12 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_access_service_token" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
-  name       = var.name
-  zone_id    = var.zone_id
+  # name - (required) is a type of string
+  name = var.name
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

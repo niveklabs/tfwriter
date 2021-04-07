@@ -130,20 +130,31 @@ variable "device" {
 
 ```terraform
 resource "bigip_cm_devicegroup" "this" {
-  auto_sync          = var.auto_sync
-  description        = var.description
-  full_load_on_sync  = var.full_load_on_sync
+  # auto_sync - (optional) is a type of string
+  auto_sync = var.auto_sync
+  # description - (optional) is a type of string
+  description = var.description
+  # full_load_on_sync - (optional) is a type of string
+  full_load_on_sync = var.full_load_on_sync
+  # incremental_config - (optional) is a type of number
   incremental_config = var.incremental_config
-  name               = var.name
-  network_failover   = var.network_failover
-  partition          = var.partition
-  save_on_auto_sync  = var.save_on_auto_sync
-  type               = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # network_failover - (optional) is a type of string
+  network_failover = var.network_failover
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # save_on_auto_sync - (optional) is a type of string
+  save_on_auto_sync = var.save_on_auto_sync
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "device" {
     for_each = var.device
     content {
-      name            = device.value["name"]
+      # name - (optional) is a type of string
+      name = device.value["name"]
+      # set_sync_leader - (optional) is a type of bool
       set_sync_leader = device.value["set_sync_leader"]
     }
   }

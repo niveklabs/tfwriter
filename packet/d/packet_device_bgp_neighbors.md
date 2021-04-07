@@ -49,6 +49,7 @@ variable "device_id" {
 
 ```terraform
 data "packet_device_bgp_neighbors" "this" {
+  # device_id - (required) is a type of string
   device_id = var.device_id
 }
 ```

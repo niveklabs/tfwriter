@@ -79,11 +79,16 @@ variable "public" {
 
 ```terraform
 data "packet_precreated_ip_block" "this" {
+  # address_family - (required) is a type of number
   address_family = var.address_family
-  facility       = var.facility
-  global         = var.global
-  project_id     = var.project_id
-  public         = var.public
+  # facility - (optional) is a type of string
+  facility = var.facility
+  # global - (optional) is a type of bool
+  global = var.global
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # public - (required) is a type of bool
+  public = var.public
 }
 ```
 

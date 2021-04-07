@@ -56,8 +56,10 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_private_endpoint" "this" {
+  # private_link_id - (required) is a type of string
   private_link_id = var.private_link_id
-  project_id      = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

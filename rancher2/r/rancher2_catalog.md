@@ -170,26 +170,43 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_catalog" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  branch      = var.branch
-  cluster_id  = var.cluster_id
+  # branch - (optional) is a type of string
+  branch = var.branch
+  # cluster_id - (optional) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
   description = var.description
-  kind        = var.kind
-  labels      = var.labels
-  name        = var.name
-  password    = var.password
-  project_id  = var.project_id
-  refresh     = var.refresh
-  scope       = var.scope
-  url         = var.url
-  username    = var.username
-  version     = var.version
+  # kind - (optional) is a type of string
+  kind = var.kind
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # refresh - (optional) is a type of bool
+  refresh = var.refresh
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # url - (required) is a type of string
+  url = var.url
+  # username - (optional) is a type of string
+  username = var.username
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

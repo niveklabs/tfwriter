@@ -179,24 +179,42 @@ variable "zip_code" {
 
 ```terraform
 resource "akamai_iam_user" "this" {
-  address            = var.address
-  auth_grants_json   = var.auth_grants_json
-  city               = var.city
-  contact_type       = var.contact_type
-  country            = var.country
-  email              = var.email
-  enable_tfa         = var.enable_tfa
-  first_name         = var.first_name
-  job_title          = var.job_title
-  last_name          = var.last_name
-  mobile_phone       = var.mobile_phone
-  phone              = var.phone
+  # address - (optional) is a type of string
+  address = var.address
+  # auth_grants_json - (required) is a type of string
+  auth_grants_json = var.auth_grants_json
+  # city - (optional) is a type of string
+  city = var.city
+  # contact_type - (optional) is a type of string
+  contact_type = var.contact_type
+  # country - (required) is a type of string
+  country = var.country
+  # email - (required) is a type of string
+  email = var.email
+  # enable_tfa - (required) is a type of bool
+  enable_tfa = var.enable_tfa
+  # first_name - (required) is a type of string
+  first_name = var.first_name
+  # job_title - (optional) is a type of string
+  job_title = var.job_title
+  # last_name - (required) is a type of string
+  last_name = var.last_name
+  # mobile_phone - (optional) is a type of string
+  mobile_phone = var.mobile_phone
+  # phone - (required) is a type of string
+  phone = var.phone
+  # preferred_language - (optional) is a type of string
   preferred_language = var.preferred_language
-  secondary_email    = var.secondary_email
-  session_timeout    = var.session_timeout
-  state              = var.state
-  time_zone          = var.time_zone
-  zip_code           = var.zip_code
+  # secondary_email - (optional) is a type of string
+  secondary_email = var.secondary_email
+  # session_timeout - (optional) is a type of number
+  session_timeout = var.session_timeout
+  # state - (optional) is a type of string
+  state = var.state
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
+  # zip_code - (optional) is a type of string
+  zip_code = var.zip_code
 }
 ```
 

@@ -49,6 +49,7 @@ variable "title" {
 
 ```terraform
 resource "cloudflare_workers_kv_namespace" "this" {
+  # title - (required) is a type of string
   title = var.title
 }
 ```

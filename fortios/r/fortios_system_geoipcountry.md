@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 resource "fortios_system_geoipcountry" "this" {
+  # fosid - (optional) is a type of string
   fosid = var.fosid
-  name  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

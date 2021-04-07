@@ -201,35 +201,55 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ecs_dedicated_host" "this" {
+  # action_on_maintenance - (optional) is a type of string
   action_on_maintenance = var.action_on_maintenance
-  auto_placement        = var.auto_placement
-  auto_release_time     = var.auto_release_time
-  auto_renew            = var.auto_renew
-  auto_renew_period     = var.auto_renew_period
-  dedicated_host_name   = var.dedicated_host_name
-  dedicated_host_type   = var.dedicated_host_type
-  description           = var.description
-  detail_fee            = var.detail_fee
-  dry_run               = var.dry_run
-  expired_time          = var.expired_time
-  payment_type          = var.payment_type
-  resource_group_id     = var.resource_group_id
-  sale_cycle            = var.sale_cycle
-  tags                  = var.tags
-  zone_id               = var.zone_id
+  # auto_placement - (optional) is a type of string
+  auto_placement = var.auto_placement
+  # auto_release_time - (optional) is a type of string
+  auto_release_time = var.auto_release_time
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = var.auto_renew_period
+  # dedicated_host_name - (optional) is a type of string
+  dedicated_host_name = var.dedicated_host_name
+  # dedicated_host_type - (required) is a type of string
+  dedicated_host_type = var.dedicated_host_type
+  # description - (optional) is a type of string
+  description = var.description
+  # detail_fee - (optional) is a type of bool
+  detail_fee = var.detail_fee
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # expired_time - (optional) is a type of string
+  expired_time = var.expired_time
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # sale_cycle - (optional) is a type of string
+  sale_cycle = var.sale_cycle
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "network_attributes" {
     for_each = var.network_attributes
     content {
+      # slb_udp_timeout - (optional) is a type of number
       slb_udp_timeout = network_attributes.value["slb_udp_timeout"]
-      udp_timeout     = network_attributes.value["udp_timeout"]
+      # udp_timeout - (optional) is a type of number
+      udp_timeout = network_attributes.value["udp_timeout"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

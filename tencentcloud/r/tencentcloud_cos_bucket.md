@@ -179,22 +179,35 @@ variable "website" {
 
 ```terraform
 resource "tencentcloud_cos_bucket" "this" {
-  acl                  = var.acl
-  bucket               = var.bucket
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # encryption_algorithm - (optional) is a type of string
   encryption_algorithm = var.encryption_algorithm
-  log_enable           = var.log_enable
-  log_prefix           = var.log_prefix
-  log_target_bucket    = var.log_target_bucket
-  tags                 = var.tags
-  versioning_enable    = var.versioning_enable
+  # log_enable - (optional) is a type of bool
+  log_enable = var.log_enable
+  # log_prefix - (optional) is a type of string
+  log_prefix = var.log_prefix
+  # log_target_bucket - (optional) is a type of string
+  log_target_bucket = var.log_target_bucket
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # versioning_enable - (optional) is a type of bool
+  versioning_enable = var.versioning_enable
 
   dynamic "cors_rules" {
     for_each = var.cors_rules
     content {
+      # allowed_headers - (required) is a type of list of string
       allowed_headers = cors_rules.value["allowed_headers"]
+      # allowed_methods - (required) is a type of list of string
       allowed_methods = cors_rules.value["allowed_methods"]
+      # allowed_origins - (required) is a type of list of string
       allowed_origins = cors_rules.value["allowed_origins"]
-      expose_headers  = cors_rules.value["expose_headers"]
+      # expose_headers - (optional) is a type of list of string
+      expose_headers = cors_rules.value["expose_headers"]
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors_rules.value["max_age_seconds"]
     }
   }
@@ -202,12 +215,15 @@ resource "tencentcloud_cos_bucket" "this" {
   dynamic "lifecycle_rules" {
     for_each = var.lifecycle_rules
     content {
+      # filter_prefix - (required) is a type of string
       filter_prefix = lifecycle_rules.value["filter_prefix"]
 
       dynamic "expiration" {
         for_each = lifecycle_rules.value.expiration
         content {
+          # date - (optional) is a type of string
           date = expiration.value["date"]
+          # days - (optional) is a type of number
           days = expiration.value["days"]
         }
       }
@@ -215,8 +231,11 @@ resource "tencentcloud_cos_bucket" "this" {
       dynamic "transition" {
         for_each = lifecycle_rules.value.transition
         content {
-          date          = transition.value["date"]
-          days          = transition.value["days"]
+          # date - (optional) is a type of string
+          date = transition.value["date"]
+          # days - (optional) is a type of number
+          days = transition.value["days"]
+          # storage_class - (required) is a type of string
           storage_class = transition.value["storage_class"]
         }
       }
@@ -227,7 +246,9 @@ resource "tencentcloud_cos_bucket" "this" {
   dynamic "website" {
     for_each = var.website
     content {
+      # error_document - (optional) is a type of string
       error_document = website.value["error_document"]
+      # index_document - (optional) is a type of string
       index_document = website.value["index_document"]
     }
   }

@@ -63,8 +63,11 @@ variable "wan_primary_interface_public_ip" {
 
 ```terraform
 resource "aviatrix_device_interface_config" "this" {
-  device_name                     = var.device_name
-  wan_primary_interface           = var.wan_primary_interface
+  # device_name - (required) is a type of string
+  device_name = var.device_name
+  # wan_primary_interface - (required) is a type of string
+  wan_primary_interface = var.wan_primary_interface
+  # wan_primary_interface_public_ip - (required) is a type of string
   wan_primary_interface_public_ip = var.wan_primary_interface_public_ip
 }
 ```

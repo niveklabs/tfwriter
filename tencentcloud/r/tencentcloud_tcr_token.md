@@ -65,8 +65,11 @@ variable "instance_id" {
 
 ```terraform
 resource "tencentcloud_tcr_token" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  enable      = var.enable
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 }
 ```

@@ -65,8 +65,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_ckafka_users" "this" {
-  account_name       = var.account_name
-  instance_id        = var.instance_id
+  # account_name - (optional) is a type of string
+  account_name = var.account_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

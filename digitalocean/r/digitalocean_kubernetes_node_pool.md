@@ -129,22 +129,34 @@ variable "taint" {
 
 ```terraform
 resource "digitalocean_kubernetes_node_pool" "this" {
+  # auto_scale - (optional) is a type of bool
   auto_scale = var.auto_scale
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  labels     = var.labels
-  max_nodes  = var.max_nodes
-  min_nodes  = var.min_nodes
-  name       = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # max_nodes - (optional) is a type of number
+  max_nodes = var.max_nodes
+  # min_nodes - (optional) is a type of number
+  min_nodes = var.min_nodes
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (optional) is a type of number
   node_count = var.node_count
-  size       = var.size
-  tags       = var.tags
+  # size - (required) is a type of string
+  size = var.size
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "taint" {
     for_each = var.taint
     content {
+      # effect - (required) is a type of string
       effect = taint.value["effect"]
-      key    = taint.value["key"]
-      value  = taint.value["value"]
+      # key - (required) is a type of string
+      key = taint.value["key"]
+      # value - (required) is a type of string
+      value = taint.value["value"]
     }
   }
 

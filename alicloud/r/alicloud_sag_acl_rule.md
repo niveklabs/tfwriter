@@ -114,15 +114,25 @@ variable "source_port_range" {
 
 ```terraform
 resource "alicloud_sag_acl_rule" "this" {
-  acl_id            = var.acl_id
-  description       = var.description
-  dest_cidr         = var.dest_cidr
-  dest_port_range   = var.dest_port_range
-  direction         = var.direction
-  ip_protocol       = var.ip_protocol
-  policy            = var.policy
-  priority          = var.priority
-  source_cidr       = var.source_cidr
+  # acl_id - (required) is a type of string
+  acl_id = var.acl_id
+  # description - (optional) is a type of string
+  description = var.description
+  # dest_cidr - (required) is a type of string
+  dest_cidr = var.dest_cidr
+  # dest_port_range - (required) is a type of string
+  dest_port_range = var.dest_port_range
+  # direction - (required) is a type of string
+  direction = var.direction
+  # ip_protocol - (required) is a type of string
+  ip_protocol = var.ip_protocol
+  # policy - (required) is a type of string
+  policy = var.policy
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # source_cidr - (required) is a type of string
+  source_cidr = var.source_cidr
+  # source_port_range - (required) is a type of string
   source_port_range = var.source_port_range
 }
 ```

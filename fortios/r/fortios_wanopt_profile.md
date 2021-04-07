@@ -222,54 +222,87 @@ variable "tcp" {
 
 ```terraform
 resource "fortios_wanopt_profile" "this" {
-  auth_group  = var.auth_group
-  comments    = var.comments
-  name        = var.name
+  # auth_group - (optional) is a type of string
+  auth_group = var.auth_group
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # name - (optional) is a type of string
+  name = var.name
+  # transparent - (optional) is a type of string
   transparent = var.transparent
 
   dynamic "cifs" {
     for_each = var.cifs
     content {
-      byte_caching    = cifs.value["byte_caching"]
-      log_traffic     = cifs.value["log_traffic"]
-      port            = cifs.value["port"]
+      # byte_caching - (optional) is a type of string
+      byte_caching = cifs.value["byte_caching"]
+      # log_traffic - (optional) is a type of string
+      log_traffic = cifs.value["log_traffic"]
+      # port - (optional) is a type of number
+      port = cifs.value["port"]
+      # prefer_chunking - (optional) is a type of string
       prefer_chunking = cifs.value["prefer_chunking"]
-      protocol_opt    = cifs.value["protocol_opt"]
-      secure_tunnel   = cifs.value["secure_tunnel"]
-      status          = cifs.value["status"]
-      tunnel_sharing  = cifs.value["tunnel_sharing"]
+      # protocol_opt - (optional) is a type of string
+      protocol_opt = cifs.value["protocol_opt"]
+      # secure_tunnel - (optional) is a type of string
+      secure_tunnel = cifs.value["secure_tunnel"]
+      # status - (optional) is a type of string
+      status = cifs.value["status"]
+      # tunnel_sharing - (optional) is a type of string
+      tunnel_sharing = cifs.value["tunnel_sharing"]
     }
   }
 
   dynamic "ftp" {
     for_each = var.ftp
     content {
-      byte_caching    = ftp.value["byte_caching"]
-      log_traffic     = ftp.value["log_traffic"]
-      port            = ftp.value["port"]
+      # byte_caching - (optional) is a type of string
+      byte_caching = ftp.value["byte_caching"]
+      # log_traffic - (optional) is a type of string
+      log_traffic = ftp.value["log_traffic"]
+      # port - (optional) is a type of number
+      port = ftp.value["port"]
+      # prefer_chunking - (optional) is a type of string
       prefer_chunking = ftp.value["prefer_chunking"]
-      protocol_opt    = ftp.value["protocol_opt"]
-      secure_tunnel   = ftp.value["secure_tunnel"]
-      ssl             = ftp.value["ssl"]
-      status          = ftp.value["status"]
-      tunnel_sharing  = ftp.value["tunnel_sharing"]
+      # protocol_opt - (optional) is a type of string
+      protocol_opt = ftp.value["protocol_opt"]
+      # secure_tunnel - (optional) is a type of string
+      secure_tunnel = ftp.value["secure_tunnel"]
+      # ssl - (optional) is a type of string
+      ssl = ftp.value["ssl"]
+      # status - (optional) is a type of string
+      status = ftp.value["status"]
+      # tunnel_sharing - (optional) is a type of string
+      tunnel_sharing = ftp.value["tunnel_sharing"]
     }
   }
 
   dynamic "http" {
     for_each = var.http
     content {
-      byte_caching         = http.value["byte_caching"]
-      log_traffic          = http.value["log_traffic"]
-      port                 = http.value["port"]
-      prefer_chunking      = http.value["prefer_chunking"]
-      protocol_opt         = http.value["protocol_opt"]
-      secure_tunnel        = http.value["secure_tunnel"]
-      ssl                  = http.value["ssl"]
-      ssl_port             = http.value["ssl_port"]
-      status               = http.value["status"]
-      tunnel_non_http      = http.value["tunnel_non_http"]
-      tunnel_sharing       = http.value["tunnel_sharing"]
+      # byte_caching - (optional) is a type of string
+      byte_caching = http.value["byte_caching"]
+      # log_traffic - (optional) is a type of string
+      log_traffic = http.value["log_traffic"]
+      # port - (optional) is a type of number
+      port = http.value["port"]
+      # prefer_chunking - (optional) is a type of string
+      prefer_chunking = http.value["prefer_chunking"]
+      # protocol_opt - (optional) is a type of string
+      protocol_opt = http.value["protocol_opt"]
+      # secure_tunnel - (optional) is a type of string
+      secure_tunnel = http.value["secure_tunnel"]
+      # ssl - (optional) is a type of string
+      ssl = http.value["ssl"]
+      # ssl_port - (optional) is a type of number
+      ssl_port = http.value["ssl_port"]
+      # status - (optional) is a type of string
+      status = http.value["status"]
+      # tunnel_non_http - (optional) is a type of string
+      tunnel_non_http = http.value["tunnel_non_http"]
+      # tunnel_sharing - (optional) is a type of string
+      tunnel_sharing = http.value["tunnel_sharing"]
+      # unknown_http_version - (optional) is a type of string
       unknown_http_version = http.value["unknown_http_version"]
     }
   }
@@ -277,11 +310,17 @@ resource "fortios_wanopt_profile" "this" {
   dynamic "mapi" {
     for_each = var.mapi
     content {
-      byte_caching   = mapi.value["byte_caching"]
-      log_traffic    = mapi.value["log_traffic"]
-      port           = mapi.value["port"]
-      secure_tunnel  = mapi.value["secure_tunnel"]
-      status         = mapi.value["status"]
+      # byte_caching - (optional) is a type of string
+      byte_caching = mapi.value["byte_caching"]
+      # log_traffic - (optional) is a type of string
+      log_traffic = mapi.value["log_traffic"]
+      # port - (optional) is a type of number
+      port = mapi.value["port"]
+      # secure_tunnel - (optional) is a type of string
+      secure_tunnel = mapi.value["secure_tunnel"]
+      # status - (optional) is a type of string
+      status = mapi.value["status"]
+      # tunnel_sharing - (optional) is a type of string
       tunnel_sharing = mapi.value["tunnel_sharing"]
     }
   }
@@ -289,15 +328,24 @@ resource "fortios_wanopt_profile" "this" {
   dynamic "tcp" {
     for_each = var.tcp
     content {
-      byte_caching     = tcp.value["byte_caching"]
+      # byte_caching - (optional) is a type of string
+      byte_caching = tcp.value["byte_caching"]
+      # byte_caching_opt - (optional) is a type of string
       byte_caching_opt = tcp.value["byte_caching_opt"]
-      log_traffic      = tcp.value["log_traffic"]
-      port             = tcp.value["port"]
-      secure_tunnel    = tcp.value["secure_tunnel"]
-      ssl              = tcp.value["ssl"]
-      ssl_port         = tcp.value["ssl_port"]
-      status           = tcp.value["status"]
-      tunnel_sharing   = tcp.value["tunnel_sharing"]
+      # log_traffic - (optional) is a type of string
+      log_traffic = tcp.value["log_traffic"]
+      # port - (optional) is a type of string
+      port = tcp.value["port"]
+      # secure_tunnel - (optional) is a type of string
+      secure_tunnel = tcp.value["secure_tunnel"]
+      # ssl - (optional) is a type of string
+      ssl = tcp.value["ssl"]
+      # ssl_port - (optional) is a type of number
+      ssl_port = tcp.value["ssl_port"]
+      # status - (optional) is a type of string
+      status = tcp.value["status"]
+      # tunnel_sharing - (optional) is a type of string
+      tunnel_sharing = tcp.value["tunnel_sharing"]
     }
   }
 

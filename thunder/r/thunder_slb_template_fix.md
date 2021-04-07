@@ -100,17 +100,25 @@ variable "tag_switching" {
 
 ```terraform
 resource "thunder_slb_template_fix" "this" {
+  # insert_client_ip - (optional) is a type of number
   insert_client_ip = var.insert_client_ip
-  logging          = var.logging
-  name             = var.name
-  user_tag         = var.user_tag
-  uuid             = var.uuid
+  # logging - (optional) is a type of string
+  logging = var.logging
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "tag_switching" {
     for_each = var.tag_switching
     content {
-      equals         = tag_switching.value["equals"]
-      service_group  = tag_switching.value["service_group"]
+      # equals - (optional) is a type of string
+      equals = tag_switching.value["equals"]
+      # service_group - (optional) is a type of string
+      service_group = tag_switching.value["service_group"]
+      # switching_type - (optional) is a type of string
       switching_type = tag_switching.value["switching_type"]
     }
   }

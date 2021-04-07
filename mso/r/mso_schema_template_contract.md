@@ -101,14 +101,22 @@ variable "template_name" {
 
 ```terraform
 resource "mso_schema_template_contract" "this" {
-  contract_name        = var.contract_name
-  directives           = var.directives
-  display_name         = var.display_name
+  # contract_name - (required) is a type of string
+  contract_name = var.contract_name
+  # directives - (required) is a type of list of string
+  directives = var.directives
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # filter_relationships - (required) is a type of map of string
   filter_relationships = var.filter_relationships
-  filter_type          = var.filter_type
-  schema_id            = var.schema_id
-  scope                = var.scope
-  template_name        = var.template_name
+  # filter_type - (optional) is a type of string
+  filter_type = var.filter_type
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

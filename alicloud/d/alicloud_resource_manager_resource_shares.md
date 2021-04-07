@@ -89,12 +89,18 @@ variable "status" {
 
 ```terraform
 data "alicloud_resource_manager_resource_shares" "this" {
-  ids                  = var.ids
-  name_regex           = var.name_regex
-  output_file          = var.output_file
-  resource_share_name  = var.resource_share_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_share_name - (optional) is a type of string
+  resource_share_name = var.resource_share_name
+  # resource_share_owner - (required) is a type of string
   resource_share_owner = var.resource_share_owner
-  status               = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

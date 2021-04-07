@@ -66,8 +66,11 @@ variable "policy" {
 
 ```terraform
 resource "fortios_wirelesscontroller_address" "this" {
-  fosid  = var.fosid
-  mac    = var.mac
+  # fosid - (optional) is a type of string
+  fosid = var.fosid
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # policy - (optional) is a type of string
   policy = var.policy
 }
 ```

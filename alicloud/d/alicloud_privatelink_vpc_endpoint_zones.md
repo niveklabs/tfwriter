@@ -65,9 +65,12 @@ variable "status" {
 
 ```terraform
 data "alicloud_privatelink_vpc_endpoint_zones" "this" {
+  # endpoint_id - (required) is a type of string
   endpoint_id = var.endpoint_id
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  status      = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

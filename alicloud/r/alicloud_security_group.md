@@ -106,14 +106,22 @@ variable "vpc_id" {
 
 ```terraform
 resource "alicloud_security_group" "this" {
-  description         = var.description
-  inner_access        = var.inner_access
+  # description - (optional) is a type of string
+  description = var.description
+  # inner_access - (optional) is a type of bool
+  inner_access = var.inner_access
+  # inner_access_policy - (optional) is a type of string
   inner_access_policy = var.inner_access_policy
-  name                = var.name
-  resource_group_id   = var.resource_group_id
+  # name - (optional) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # security_group_type - (optional) is a type of string
   security_group_type = var.security_group_type
-  tags                = var.tags
-  vpc_id              = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

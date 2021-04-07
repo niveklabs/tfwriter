@@ -181,58 +181,89 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_security_network_based_device_ha_v2" "this" {
+  # host_1_az_group - (required) is a type of string
   host_1_az_group = var.host_1_az_group
+  # host_2_az_group - (required) is a type of string
   host_2_az_group = var.host_2_az_group
-  license_kind    = var.license_kind
-  locale          = var.locale
-  operating_mode  = var.operating_mode
-  tenant_id       = var.tenant_id
+  # license_kind - (required) is a type of string
+  license_kind = var.license_kind
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # operating_mode - (required) is a type of string
+  operating_mode = var.operating_mode
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "ha_link_1" {
     for_each = var.ha_link_1
     content {
+      # host_1_ip_address - (required) is a type of string
       host_1_ip_address = ha_link_1.value["host_1_ip_address"]
+      # host_2_ip_address - (required) is a type of string
       host_2_ip_address = ha_link_1.value["host_2_ip_address"]
-      network_id        = ha_link_1.value["network_id"]
-      subnet_id         = ha_link_1.value["subnet_id"]
+      # network_id - (required) is a type of string
+      network_id = ha_link_1.value["network_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = ha_link_1.value["subnet_id"]
     }
   }
 
   dynamic "ha_link_2" {
     for_each = var.ha_link_2
     content {
+      # host_1_ip_address - (required) is a type of string
       host_1_ip_address = ha_link_2.value["host_1_ip_address"]
+      # host_2_ip_address - (required) is a type of string
       host_2_ip_address = ha_link_2.value["host_2_ip_address"]
-      network_id        = ha_link_2.value["network_id"]
-      subnet_id         = ha_link_2.value["subnet_id"]
+      # network_id - (required) is a type of string
+      network_id = ha_link_2.value["network_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = ha_link_2.value["subnet_id"]
     }
   }
 
   dynamic "port" {
     for_each = var.port
     content {
-      comment                  = port.value["comment"]
-      enable                   = port.value["enable"]
-      enable_ping              = port.value["enable_ping"]
-      host_1_ip_address        = port.value["host_1_ip_address"]
+      # comment - (optional) is a type of string
+      comment = port.value["comment"]
+      # enable - (required) is a type of string
+      enable = port.value["enable"]
+      # enable_ping - (optional) is a type of string
+      enable_ping = port.value["enable_ping"]
+      # host_1_ip_address - (optional) is a type of string
+      host_1_ip_address = port.value["host_1_ip_address"]
+      # host_1_ip_address_prefix - (optional) is a type of number
       host_1_ip_address_prefix = port.value["host_1_ip_address_prefix"]
-      host_2_ip_address        = port.value["host_2_ip_address"]
+      # host_2_ip_address - (optional) is a type of string
+      host_2_ip_address = port.value["host_2_ip_address"]
+      # host_2_ip_address_prefix - (optional) is a type of number
       host_2_ip_address_prefix = port.value["host_2_ip_address_prefix"]
-      mtu                      = port.value["mtu"]
-      network_id               = port.value["network_id"]
-      preempt                  = port.value["preempt"]
-      subnet_id                = port.value["subnet_id"]
-      vrrp_grp_id              = port.value["vrrp_grp_id"]
-      vrrp_id                  = port.value["vrrp_id"]
-      vrrp_ip_address          = port.value["vrrp_ip_address"]
+      # mtu - (optional) is a type of string
+      mtu = port.value["mtu"]
+      # network_id - (optional) is a type of string
+      network_id = port.value["network_id"]
+      # preempt - (optional) is a type of string
+      preempt = port.value["preempt"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = port.value["subnet_id"]
+      # vrrp_grp_id - (optional) is a type of string
+      vrrp_grp_id = port.value["vrrp_grp_id"]
+      # vrrp_id - (optional) is a type of string
+      vrrp_id = port.value["vrrp_id"]
+      # vrrp_ip_address - (optional) is a type of string
+      vrrp_ip_address = port.value["vrrp_ip_address"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

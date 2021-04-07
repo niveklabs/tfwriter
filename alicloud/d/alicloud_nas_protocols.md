@@ -65,9 +65,12 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_nas_protocols" "this" {
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  type        = var.type
-  zone_id     = var.zone_id
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -66,8 +66,11 @@ variable "trap_low_memory_threshold" {
 
 ```terraform
 resource "fortios_switchcontroller_snmptrapthreshold" "this" {
-  trap_high_cpu_threshold   = var.trap_high_cpu_threshold
-  trap_log_full_threshold   = var.trap_log_full_threshold
+  # trap_high_cpu_threshold - (optional) is a type of number
+  trap_high_cpu_threshold = var.trap_high_cpu_threshold
+  # trap_log_full_threshold - (optional) is a type of number
+  trap_log_full_threshold = var.trap_log_full_threshold
+  # trap_low_memory_threshold - (optional) is a type of number
   trap_low_memory_threshold = var.trap_low_memory_threshold
 }
 ```

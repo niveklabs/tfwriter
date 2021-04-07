@@ -146,27 +146,39 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_vlan_logical_switch" "this" {
-  admin_state       = var.admin_state
-  description       = var.description
-  display_name      = var.display_name
-  ip_pool_id        = var.ip_pool_id
-  mac_pool_id       = var.mac_pool_id
+  # admin_state - (optional) is a type of string
+  admin_state = var.admin_state
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ip_pool_id - (optional) is a type of string
+  ip_pool_id = var.ip_pool_id
+  # mac_pool_id - (optional) is a type of string
+  mac_pool_id = var.mac_pool_id
+  # transport_zone_id - (required) is a type of string
   transport_zone_id = var.transport_zone_id
-  vlan              = var.vlan
+  # vlan - (required) is a type of number
+  vlan = var.vlan
 
   dynamic "address_binding" {
     for_each = var.address_binding
     content {
-      ip_address  = address_binding.value["ip_address"]
+      # ip_address - (optional) is a type of string
+      ip_address = address_binding.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = address_binding.value["mac_address"]
-      vlan        = address_binding.value["vlan"]
+      # vlan - (optional) is a type of number
+      vlan = address_binding.value["vlan"]
     }
   }
 
   dynamic "switching_profile_id" {
     for_each = var.switching_profile_id
     content {
-      key   = switching_profile_id.value["key"]
+      # key - (required) is a type of string
+      key = switching_profile_id.value["key"]
+      # value - (required) is a type of string
       value = switching_profile_id.value["value"]
     }
   }
@@ -174,8 +186,10 @@ resource "nsxt_vlan_logical_switch" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

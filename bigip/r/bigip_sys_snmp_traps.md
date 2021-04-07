@@ -154,20 +154,34 @@ variable "version" {
 
 ```terraform
 resource "bigip_sys_snmp_traps" "this" {
-  auth_passwordencrypted     = var.auth_passwordencrypted
-  auth_protocol              = var.auth_protocol
-  community                  = var.community
-  description                = var.description
-  engine_id                  = var.engine_id
-  host                       = var.host
-  name                       = var.name
-  port                       = var.port
-  privacy_password           = var.privacy_password
+  # auth_passwordencrypted - (optional) is a type of string
+  auth_passwordencrypted = var.auth_passwordencrypted
+  # auth_protocol - (optional) is a type of string
+  auth_protocol = var.auth_protocol
+  # community - (optional) is a type of string
+  community = var.community
+  # description - (optional) is a type of string
+  description = var.description
+  # engine_id - (optional) is a type of string
+  engine_id = var.engine_id
+  # host - (optional) is a type of string
+  host = var.host
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # privacy_password - (optional) is a type of string
+  privacy_password = var.privacy_password
+  # privacy_password_encrypted - (optional) is a type of string
   privacy_password_encrypted = var.privacy_password_encrypted
-  privacy_protocol           = var.privacy_protocol
-  security_level             = var.security_level
-  security_name              = var.security_name
-  version                    = var.version
+  # privacy_protocol - (optional) is a type of string
+  privacy_protocol = var.privacy_protocol
+  # security_level - (optional) is a type of string
+  security_level = var.security_level
+  # security_name - (optional) is a type of string
+  security_name = var.security_name
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

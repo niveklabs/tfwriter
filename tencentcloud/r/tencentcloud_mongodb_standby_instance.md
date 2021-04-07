@@ -148,20 +148,34 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_mongodb_standby_instance" "this" {
-  auto_renew_flag        = var.auto_renew_flag
-  available_zone         = var.available_zone
-  charge_type            = var.charge_type
-  father_instance_id     = var.father_instance_id
+  # auto_renew_flag - (optional) is a type of number
+  auto_renew_flag = var.auto_renew_flag
+  # available_zone - (required) is a type of string
+  available_zone = var.available_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # father_instance_id - (required) is a type of string
+  father_instance_id = var.father_instance_id
+  # father_instance_region - (required) is a type of string
   father_instance_region = var.father_instance_region
-  instance_name          = var.instance_name
-  memory                 = var.memory
-  prepaid_period         = var.prepaid_period
-  project_id             = var.project_id
-  security_groups        = var.security_groups
-  subnet_id              = var.subnet_id
-  tags                   = var.tags
-  volume                 = var.volume
-  vpc_id                 = var.vpc_id
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # memory - (required) is a type of number
+  memory = var.memory
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume - (required) is a type of number
+  volume = var.volume
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

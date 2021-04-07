@@ -64,8 +64,11 @@ variable "proxy_id" {
 
 ```terraform
 resource "tencentcloud_gaap_security_policy" "this" {
-  action   = var.action
-  enable   = var.enable
+  # action - (required) is a type of string
+  action = var.action
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # proxy_id - (required) is a type of string
   proxy_id = var.proxy_id
 }
 ```

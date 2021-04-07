@@ -119,20 +119,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_vpc_flow_log" "this" {
-  description    = var.description
-  flow_log_name  = var.flow_log_name
+  # description - (optional) is a type of string
+  description = var.description
+  # flow_log_name - (optional) is a type of string
+  flow_log_name = var.flow_log_name
+  # log_store_name - (required) is a type of string
   log_store_name = var.log_store_name
-  project_name   = var.project_name
-  resource_id    = var.resource_id
-  resource_type  = var.resource_type
-  status         = var.status
-  traffic_type   = var.traffic_type
+  # project_name - (required) is a type of string
+  project_name = var.project_name
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # status - (optional) is a type of string
+  status = var.status
+  # traffic_type - (required) is a type of string
+  traffic_type = var.traffic_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

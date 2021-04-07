@@ -74,10 +74,14 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_drds_instances" "this" {
+  # description_regex - (optional) is a type of string
   description_regex = var.description_regex
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

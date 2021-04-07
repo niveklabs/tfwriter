@@ -144,19 +144,32 @@ variable "realserver_certificate_ids" {
 
 ```terraform
 resource "tencentcloud_gaap_http_domain" "this" {
-  basic_auth                    = var.basic_auth
-  basic_auth_id                 = var.basic_auth_id
-  certificate_id                = var.certificate_id
-  client_certificate_id         = var.client_certificate_id
-  client_certificate_ids        = var.client_certificate_ids
-  domain                        = var.domain
-  gaap_auth                     = var.gaap_auth
-  gaap_auth_id                  = var.gaap_auth_id
-  listener_id                   = var.listener_id
-  realserver_auth               = var.realserver_auth
+  # basic_auth - (optional) is a type of bool
+  basic_auth = var.basic_auth
+  # basic_auth_id - (optional) is a type of string
+  basic_auth_id = var.basic_auth_id
+  # certificate_id - (optional) is a type of string
+  certificate_id = var.certificate_id
+  # client_certificate_id - (optional) is a type of string
+  client_certificate_id = var.client_certificate_id
+  # client_certificate_ids - (optional) is a type of set of string
+  client_certificate_ids = var.client_certificate_ids
+  # domain - (required) is a type of string
+  domain = var.domain
+  # gaap_auth - (optional) is a type of bool
+  gaap_auth = var.gaap_auth
+  # gaap_auth_id - (optional) is a type of string
+  gaap_auth_id = var.gaap_auth_id
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # realserver_auth - (optional) is a type of bool
+  realserver_auth = var.realserver_auth
+  # realserver_certificate_domain - (optional) is a type of string
   realserver_certificate_domain = var.realserver_certificate_domain
-  realserver_certificate_id     = var.realserver_certificate_id
-  realserver_certificate_ids    = var.realserver_certificate_ids
+  # realserver_certificate_id - (optional) is a type of string
+  realserver_certificate_id = var.realserver_certificate_id
+  # realserver_certificate_ids - (optional) is a type of set of string
+  realserver_certificate_ids = var.realserver_certificate_ids
 }
 ```
 

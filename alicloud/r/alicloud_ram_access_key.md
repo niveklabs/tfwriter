@@ -74,10 +74,14 @@ variable "user_name" {
 
 ```terraform
 resource "alicloud_ram_access_key" "this" {
-  pgp_key     = var.pgp_key
+  # pgp_key - (optional) is a type of string
+  pgp_key = var.pgp_key
+  # secret_file - (optional) is a type of string
   secret_file = var.secret_file
-  status      = var.status
-  user_name   = var.user_name
+  # status - (optional) is a type of string
+  status = var.status
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 }
 ```
 

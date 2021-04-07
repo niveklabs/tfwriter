@@ -633,58 +633,107 @@ variable "users" {
 
 ```terraform
 resource "fortios_firewall_proxypolicy" "this" {
-  action                    = var.action
-  application_list          = var.application_list
-  av_profile                = var.av_profile
-  cifs_profile              = var.cifs_profile
-  comments                  = var.comments
-  decrypted_traffic_mirror  = var.decrypted_traffic_mirror
-  disclaimer                = var.disclaimer
-  dlp_sensor                = var.dlp_sensor
-  dstaddr_negate            = var.dstaddr_negate
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  emailfilter_profile       = var.emailfilter_profile
-  file_filter_profile       = var.file_filter_profile
-  global_label              = var.global_label
-  http_tunnel_auth          = var.http_tunnel_auth
-  icap_profile              = var.icap_profile
-  internet_service          = var.internet_service
-  internet_service_negate   = var.internet_service_negate
-  ips_sensor                = var.ips_sensor
-  label                     = var.label
-  logtraffic                = var.logtraffic
-  logtraffic_start          = var.logtraffic_start
-  name                      = var.name
-  policyid                  = var.policyid
-  profile_group             = var.profile_group
-  profile_protocol_options  = var.profile_protocol_options
-  profile_type              = var.profile_type
-  proxy                     = var.proxy
-  redirect_url              = var.redirect_url
+  # action - (optional) is a type of string
+  action = var.action
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # cifs_profile - (optional) is a type of string
+  cifs_profile = var.cifs_profile
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # decrypted_traffic_mirror - (optional) is a type of string
+  decrypted_traffic_mirror = var.decrypted_traffic_mirror
+  # disclaimer - (optional) is a type of string
+  disclaimer = var.disclaimer
+  # dlp_sensor - (optional) is a type of string
+  dlp_sensor = var.dlp_sensor
+  # dstaddr_negate - (optional) is a type of string
+  dstaddr_negate = var.dstaddr_negate
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = var.emailfilter_profile
+  # file_filter_profile - (optional) is a type of string
+  file_filter_profile = var.file_filter_profile
+  # global_label - (optional) is a type of string
+  global_label = var.global_label
+  # http_tunnel_auth - (optional) is a type of string
+  http_tunnel_auth = var.http_tunnel_auth
+  # icap_profile - (optional) is a type of string
+  icap_profile = var.icap_profile
+  # internet_service - (optional) is a type of string
+  internet_service = var.internet_service
+  # internet_service_negate - (optional) is a type of string
+  internet_service_negate = var.internet_service_negate
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # label - (optional) is a type of string
+  label = var.label
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = var.logtraffic_start
+  # name - (optional) is a type of string
+  name = var.name
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # profile_group - (optional) is a type of string
+  profile_group = var.profile_group
+  # profile_protocol_options - (optional) is a type of string
+  profile_protocol_options = var.profile_protocol_options
+  # profile_type - (optional) is a type of string
+  profile_type = var.profile_type
+  # proxy - (required) is a type of string
+  proxy = var.proxy
+  # redirect_url - (optional) is a type of string
+  redirect_url = var.redirect_url
+  # replacemsg_override_group - (optional) is a type of string
   replacemsg_override_group = var.replacemsg_override_group
-  scan_botnet_connections   = var.scan_botnet_connections
-  schedule                  = var.schedule
-  service_negate            = var.service_negate
-  session_ttl               = var.session_ttl
-  spamfilter_profile        = var.spamfilter_profile
-  srcaddr_negate            = var.srcaddr_negate
-  ssh_filter_profile        = var.ssh_filter_profile
-  ssh_policy_redirect       = var.ssh_policy_redirect
-  ssl_ssh_profile           = var.ssl_ssh_profile
-  status                    = var.status
-  transparent               = var.transparent
-  utm_status                = var.utm_status
-  uuid                      = var.uuid
-  waf_profile               = var.waf_profile
-  webcache                  = var.webcache
-  webcache_https            = var.webcache_https
-  webfilter_profile         = var.webfilter_profile
-  webproxy_forward_server   = var.webproxy_forward_server
-  webproxy_profile          = var.webproxy_profile
+  # scan_botnet_connections - (optional) is a type of string
+  scan_botnet_connections = var.scan_botnet_connections
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # service_negate - (optional) is a type of string
+  service_negate = var.service_negate
+  # session_ttl - (optional) is a type of number
+  session_ttl = var.session_ttl
+  # spamfilter_profile - (optional) is a type of string
+  spamfilter_profile = var.spamfilter_profile
+  # srcaddr_negate - (optional) is a type of string
+  srcaddr_negate = var.srcaddr_negate
+  # ssh_filter_profile - (optional) is a type of string
+  ssh_filter_profile = var.ssh_filter_profile
+  # ssh_policy_redirect - (optional) is a type of string
+  ssh_policy_redirect = var.ssh_policy_redirect
+  # ssl_ssh_profile - (optional) is a type of string
+  ssl_ssh_profile = var.ssl_ssh_profile
+  # status - (optional) is a type of string
+  status = var.status
+  # transparent - (optional) is a type of string
+  transparent = var.transparent
+  # utm_status - (optional) is a type of string
+  utm_status = var.utm_status
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # waf_profile - (optional) is a type of string
+  waf_profile = var.waf_profile
+  # webcache - (optional) is a type of string
+  webcache = var.webcache
+  # webcache_https - (optional) is a type of string
+  webcache_https = var.webcache_https
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
+  # webproxy_forward_server - (optional) is a type of string
+  webproxy_forward_server = var.webproxy_forward_server
+  # webproxy_profile - (optional) is a type of string
+  webproxy_profile = var.webproxy_profile
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -692,6 +741,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "dstaddr6" {
     for_each = var.dstaddr6
     content {
+      # name - (optional) is a type of string
       name = dstaddr6.value["name"]
     }
   }
@@ -699,6 +749,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "dstintf" {
     for_each = var.dstintf
     content {
+      # name - (optional) is a type of string
       name = dstintf.value["name"]
     }
   }
@@ -706,6 +757,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "groups" {
     for_each = var.groups
     content {
+      # name - (optional) is a type of string
       name = groups.value["name"]
     }
   }
@@ -713,6 +765,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "internet_service_custom" {
     for_each = var.internet_service_custom
     content {
+      # name - (optional) is a type of string
       name = internet_service_custom.value["name"]
     }
   }
@@ -720,6 +773,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "internet_service_custom_group" {
     for_each = var.internet_service_custom_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_custom_group.value["name"]
     }
   }
@@ -727,6 +781,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "internet_service_group" {
     for_each = var.internet_service_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_group.value["name"]
     }
   }
@@ -734,6 +789,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "internet_service_id" {
     for_each = var.internet_service_id
     content {
+      # id - (optional) is a type of number
       id = internet_service_id.value["id"]
     }
   }
@@ -741,6 +797,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "internet_service_name" {
     for_each = var.internet_service_name
     content {
+      # name - (optional) is a type of string
       name = internet_service_name.value["name"]
     }
   }
@@ -748,6 +805,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "poolname" {
     for_each = var.poolname
     content {
+      # name - (optional) is a type of string
       name = poolname.value["name"]
     }
   }
@@ -755,6 +813,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -762,6 +821,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }
@@ -769,6 +829,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "srcaddr6" {
     for_each = var.srcaddr6
     content {
+      # name - (optional) is a type of string
       name = srcaddr6.value["name"]
     }
   }
@@ -776,6 +837,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "srcintf" {
     for_each = var.srcintf
     content {
+      # name - (optional) is a type of string
       name = srcintf.value["name"]
     }
   }
@@ -783,6 +845,7 @@ resource "fortios_firewall_proxypolicy" "this" {
   dynamic "users" {
     for_each = var.users
     content {
+      # name - (optional) is a type of string
       name = users.value["name"]
     }
   }

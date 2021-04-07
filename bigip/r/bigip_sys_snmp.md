@@ -66,9 +66,12 @@ variable "sys_location" {
 
 ```terraform
 resource "bigip_sys_snmp" "this" {
+  # allowedaddresses - (optional) is a type of set of string
   allowedaddresses = var.allowedaddresses
-  sys_contact      = var.sys_contact
-  sys_location     = var.sys_location
+  # sys_contact - (optional) is a type of string
+  sys_contact = var.sys_contact
+  # sys_location - (optional) is a type of string
+  sys_location = var.sys_location
 }
 ```
 

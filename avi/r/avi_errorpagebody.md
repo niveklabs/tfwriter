@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 resource "avi_errorpagebody" "this" {
+  # error_page_body - (optional) is a type of string
   error_page_body = var.error_page_body
-  format          = var.format
-  name            = var.name
-  tenant_ref      = var.tenant_ref
-  uuid            = var.uuid
+  # format - (optional) is a type of string
+  format = var.format
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

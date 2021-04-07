@@ -95,16 +95,23 @@ variable "headers" {
 
 ```terraform
 resource "okta_event_hook" "this" {
-  auth    = var.auth
+  # auth - (optional) is a type of map of string
+  auth = var.auth
+  # channel - (required) is a type of map of string
   channel = var.channel
-  events  = var.events
-  name    = var.name
-  status  = var.status
+  # events - (required) is a type of set of string
+  events = var.events
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "headers" {
     for_each = var.headers
     content {
-      key   = headers.value["key"]
+      # key - (optional) is a type of string
+      key = headers.value["key"]
+      # value - (optional) is a type of string
       value = headers.value["value"]
     }
   }

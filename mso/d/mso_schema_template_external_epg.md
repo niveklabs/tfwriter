@@ -151,19 +151,33 @@ variable "vrf_template_name" {
 
 ```terraform
 data "mso_schema_template_external_epg" "this" {
-  anp_name          = var.anp_name
-  anp_schema_id     = var.anp_schema_id
+  # anp_name - (optional) is a type of string
+  anp_name = var.anp_name
+  # anp_schema_id - (optional) is a type of string
+  anp_schema_id = var.anp_schema_id
+  # anp_template_name - (optional) is a type of string
   anp_template_name = var.anp_template_name
-  display_name      = var.display_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # external_epg_name - (required) is a type of string
   external_epg_name = var.external_epg_name
+  # external_epg_type - (optional) is a type of string
   external_epg_type = var.external_epg_type
-  schema_id         = var.schema_id
-  selector_ip       = var.selector_ip
-  selector_name     = var.selector_name
-  site_id           = var.site_id
-  template_name     = var.template_name
-  vrf_name          = var.vrf_name
-  vrf_schema_id     = var.vrf_schema_id
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # selector_ip - (optional) is a type of string
+  selector_ip = var.selector_ip
+  # selector_name - (optional) is a type of string
+  selector_name = var.selector_name
+  # site_id - (optional) is a type of list of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vrf_name - (optional) is a type of string
+  vrf_name = var.vrf_name
+  # vrf_schema_id - (optional) is a type of string
+  vrf_schema_id = var.vrf_schema_id
+  # vrf_template_name - (optional) is a type of string
   vrf_template_name = var.vrf_template_name
 }
 ```

@@ -65,9 +65,12 @@ variable "uid" {
 
 ```terraform
 data "checkpoint_management_data_https_rule" "this" {
-  layer       = var.layer
+  # layer - (required) is a type of string
+  layer = var.layer
+  # rule_number - (optional) is a type of string
   rule_number = var.rule_number
-  uid         = var.uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

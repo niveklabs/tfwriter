@@ -247,40 +247,64 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_lb_backend" "this" {
-  forward_port                = var.forward_port
-  forward_port_algorithm      = var.forward_port_algorithm
-  forward_protocol            = var.forward_protocol
-  health_check_delay          = var.health_check_delay
-  health_check_max_retries    = var.health_check_max_retries
-  health_check_port           = var.health_check_port
-  health_check_timeout        = var.health_check_timeout
-  lb_id                       = var.lb_id
-  name                        = var.name
-  on_marked_down_action       = var.on_marked_down_action
-  proxy_protocol              = var.proxy_protocol
-  send_proxy_v2               = var.send_proxy_v2
-  server_ips                  = var.server_ips
-  sticky_sessions             = var.sticky_sessions
+  # forward_port - (required) is a type of number
+  forward_port = var.forward_port
+  # forward_port_algorithm - (optional) is a type of string
+  forward_port_algorithm = var.forward_port_algorithm
+  # forward_protocol - (required) is a type of string
+  forward_protocol = var.forward_protocol
+  # health_check_delay - (optional) is a type of string
+  health_check_delay = var.health_check_delay
+  # health_check_max_retries - (optional) is a type of number
+  health_check_max_retries = var.health_check_max_retries
+  # health_check_port - (optional) is a type of number
+  health_check_port = var.health_check_port
+  # health_check_timeout - (optional) is a type of string
+  health_check_timeout = var.health_check_timeout
+  # lb_id - (required) is a type of string
+  lb_id = var.lb_id
+  # name - (optional) is a type of string
+  name = var.name
+  # on_marked_down_action - (optional) is a type of string
+  on_marked_down_action = var.on_marked_down_action
+  # proxy_protocol - (optional) is a type of string
+  proxy_protocol = var.proxy_protocol
+  # send_proxy_v2 - (optional) is a type of bool
+  send_proxy_v2 = var.send_proxy_v2
+  # server_ips - (optional) is a type of list of string
+  server_ips = var.server_ips
+  # sticky_sessions - (optional) is a type of string
+  sticky_sessions = var.sticky_sessions
+  # sticky_sessions_cookie_name - (optional) is a type of string
   sticky_sessions_cookie_name = var.sticky_sessions_cookie_name
-  timeout_connect             = var.timeout_connect
-  timeout_server              = var.timeout_server
-  timeout_tunnel              = var.timeout_tunnel
+  # timeout_connect - (optional) is a type of string
+  timeout_connect = var.timeout_connect
+  # timeout_server - (optional) is a type of string
+  timeout_server = var.timeout_server
+  # timeout_tunnel - (optional) is a type of string
+  timeout_tunnel = var.timeout_tunnel
 
   dynamic "health_check_http" {
     for_each = var.health_check_http
     content {
-      code   = health_check_http.value["code"]
+      # code - (optional) is a type of number
+      code = health_check_http.value["code"]
+      # method - (optional) is a type of string
       method = health_check_http.value["method"]
-      uri    = health_check_http.value["uri"]
+      # uri - (required) is a type of string
+      uri = health_check_http.value["uri"]
     }
   }
 
   dynamic "health_check_https" {
     for_each = var.health_check_https
     content {
-      code   = health_check_https.value["code"]
+      # code - (optional) is a type of number
+      code = health_check_https.value["code"]
+      # method - (optional) is a type of string
       method = health_check_https.value["method"]
-      uri    = health_check_https.value["uri"]
+      # uri - (required) is a type of string
+      uri = health_check_https.value["uri"]
     }
   }
 
@@ -293,6 +317,7 @@ resource "scaleway_lb_backend" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

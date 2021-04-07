@@ -307,60 +307,94 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_cluster_logging" "this" {
-  annotations           = var.annotations
-  cluster_id            = var.cluster_id
-  enable_json_parsing   = var.enable_json_parsing
-  kind                  = var.kind
-  labels                = var.labels
-  name                  = var.name
-  namespace_id          = var.namespace_id
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # enable_json_parsing - (optional) is a type of bool
+  enable_json_parsing = var.enable_json_parsing
+  # kind - (required) is a type of string
+  kind = var.kind
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
+  namespace_id = var.namespace_id
+  # output_flush_interval - (optional) is a type of number
   output_flush_interval = var.output_flush_interval
-  output_tags           = var.output_tags
+  # output_tags - (optional) is a type of map of string
+  output_tags = var.output_tags
 
   dynamic "custom_target_config" {
     for_each = var.custom_target_config
     content {
+      # certificate - (optional) is a type of string
       certificate = custom_target_config.value["certificate"]
+      # client_cert - (optional) is a type of string
       client_cert = custom_target_config.value["client_cert"]
-      client_key  = custom_target_config.value["client_key"]
-      content     = custom_target_config.value["content"]
+      # client_key - (optional) is a type of string
+      client_key = custom_target_config.value["client_key"]
+      # content - (required) is a type of string
+      content = custom_target_config.value["content"]
     }
   }
 
   dynamic "elasticsearch_config" {
     for_each = var.elasticsearch_config
     content {
-      auth_password   = elasticsearch_config.value["auth_password"]
-      auth_username   = elasticsearch_config.value["auth_username"]
-      certificate     = elasticsearch_config.value["certificate"]
-      client_cert     = elasticsearch_config.value["client_cert"]
-      client_key      = elasticsearch_config.value["client_key"]
+      # auth_password - (optional) is a type of string
+      auth_password = elasticsearch_config.value["auth_password"]
+      # auth_username - (optional) is a type of string
+      auth_username = elasticsearch_config.value["auth_username"]
+      # certificate - (optional) is a type of string
+      certificate = elasticsearch_config.value["certificate"]
+      # client_cert - (optional) is a type of string
+      client_cert = elasticsearch_config.value["client_cert"]
+      # client_key - (optional) is a type of string
+      client_key = elasticsearch_config.value["client_key"]
+      # client_key_pass - (optional) is a type of string
       client_key_pass = elasticsearch_config.value["client_key_pass"]
-      date_format     = elasticsearch_config.value["date_format"]
-      endpoint        = elasticsearch_config.value["endpoint"]
-      index_prefix    = elasticsearch_config.value["index_prefix"]
-      ssl_verify      = elasticsearch_config.value["ssl_verify"]
-      ssl_version     = elasticsearch_config.value["ssl_version"]
+      # date_format - (optional) is a type of string
+      date_format = elasticsearch_config.value["date_format"]
+      # endpoint - (required) is a type of string
+      endpoint = elasticsearch_config.value["endpoint"]
+      # index_prefix - (optional) is a type of string
+      index_prefix = elasticsearch_config.value["index_prefix"]
+      # ssl_verify - (optional) is a type of bool
+      ssl_verify = elasticsearch_config.value["ssl_verify"]
+      # ssl_version - (optional) is a type of string
+      ssl_version = elasticsearch_config.value["ssl_version"]
     }
   }
 
   dynamic "fluentd_config" {
     for_each = var.fluentd_config
     content {
+      # certificate - (optional) is a type of string
       certificate = fluentd_config.value["certificate"]
-      compress    = fluentd_config.value["compress"]
-      enable_tls  = fluentd_config.value["enable_tls"]
+      # compress - (optional) is a type of bool
+      compress = fluentd_config.value["compress"]
+      # enable_tls - (optional) is a type of bool
+      enable_tls = fluentd_config.value["enable_tls"]
 
       dynamic "fluent_servers" {
         for_each = fluentd_config.value.fluent_servers
         content {
-          endpoint   = fluent_servers.value["endpoint"]
-          hostname   = fluent_servers.value["hostname"]
-          password   = fluent_servers.value["password"]
+          # endpoint - (required) is a type of string
+          endpoint = fluent_servers.value["endpoint"]
+          # hostname - (optional) is a type of string
+          hostname = fluent_servers.value["hostname"]
+          # password - (optional) is a type of string
+          password = fluent_servers.value["password"]
+          # shared_key - (optional) is a type of string
           shared_key = fluent_servers.value["shared_key"]
-          standby    = fluent_servers.value["standby"]
-          username   = fluent_servers.value["username"]
-          weight     = fluent_servers.value["weight"]
+          # standby - (optional) is a type of bool
+          standby = fluent_servers.value["standby"]
+          # username - (optional) is a type of string
+          username = fluent_servers.value["username"]
+          # weight - (optional) is a type of number
+          weight = fluent_servers.value["weight"]
         }
       }
 
@@ -370,11 +404,17 @@ resource "rancher2_cluster_logging" "this" {
   dynamic "kafka_config" {
     for_each = var.kafka_config
     content {
-      broker_endpoints   = kafka_config.value["broker_endpoints"]
-      certificate        = kafka_config.value["certificate"]
-      client_cert        = kafka_config.value["client_cert"]
-      client_key         = kafka_config.value["client_key"]
-      topic              = kafka_config.value["topic"]
+      # broker_endpoints - (optional) is a type of list of string
+      broker_endpoints = kafka_config.value["broker_endpoints"]
+      # certificate - (optional) is a type of string
+      certificate = kafka_config.value["certificate"]
+      # client_cert - (optional) is a type of string
+      client_cert = kafka_config.value["client_cert"]
+      # client_key - (optional) is a type of string
+      client_key = kafka_config.value["client_key"]
+      # topic - (required) is a type of string
+      topic = kafka_config.value["topic"]
+      # zookeeper_endpoint - (optional) is a type of string
       zookeeper_endpoint = kafka_config.value["zookeeper_endpoint"]
     }
   }
@@ -382,39 +422,61 @@ resource "rancher2_cluster_logging" "this" {
   dynamic "splunk_config" {
     for_each = var.splunk_config
     content {
-      certificate     = splunk_config.value["certificate"]
-      client_cert     = splunk_config.value["client_cert"]
-      client_key      = splunk_config.value["client_key"]
+      # certificate - (optional) is a type of string
+      certificate = splunk_config.value["certificate"]
+      # client_cert - (optional) is a type of string
+      client_cert = splunk_config.value["client_cert"]
+      # client_key - (optional) is a type of string
+      client_key = splunk_config.value["client_key"]
+      # client_key_pass - (optional) is a type of string
       client_key_pass = splunk_config.value["client_key_pass"]
-      endpoint        = splunk_config.value["endpoint"]
-      index           = splunk_config.value["index"]
-      source          = splunk_config.value["source"]
-      ssl_verify      = splunk_config.value["ssl_verify"]
-      token           = splunk_config.value["token"]
+      # endpoint - (required) is a type of string
+      endpoint = splunk_config.value["endpoint"]
+      # index - (optional) is a type of string
+      index = splunk_config.value["index"]
+      # source - (optional) is a type of string
+      source = splunk_config.value["source"]
+      # ssl_verify - (optional) is a type of bool
+      ssl_verify = splunk_config.value["ssl_verify"]
+      # token - (required) is a type of string
+      token = splunk_config.value["token"]
     }
   }
 
   dynamic "syslog_config" {
     for_each = var.syslog_config
     content {
+      # certificate - (optional) is a type of string
       certificate = syslog_config.value["certificate"]
+      # client_cert - (optional) is a type of string
       client_cert = syslog_config.value["client_cert"]
-      client_key  = syslog_config.value["client_key"]
-      enable_tls  = syslog_config.value["enable_tls"]
-      endpoint    = syslog_config.value["endpoint"]
-      program     = syslog_config.value["program"]
-      protocol    = syslog_config.value["protocol"]
-      severity    = syslog_config.value["severity"]
-      ssl_verify  = syslog_config.value["ssl_verify"]
-      token       = syslog_config.value["token"]
+      # client_key - (optional) is a type of string
+      client_key = syslog_config.value["client_key"]
+      # enable_tls - (optional) is a type of bool
+      enable_tls = syslog_config.value["enable_tls"]
+      # endpoint - (required) is a type of string
+      endpoint = syslog_config.value["endpoint"]
+      # program - (optional) is a type of string
+      program = syslog_config.value["program"]
+      # protocol - (optional) is a type of string
+      protocol = syslog_config.value["protocol"]
+      # severity - (optional) is a type of string
+      severity = syslog_config.value["severity"]
+      # ssl_verify - (optional) is a type of bool
+      ssl_verify = syslog_config.value["ssl_verify"]
+      # token - (optional) is a type of string
+      token = syslog_config.value["token"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -152,20 +152,34 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_disk" "this" {
-  availability_zone    = var.availability_zone
-  category             = var.category
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # category - (optional) is a type of string
+  category = var.category
+  # delete_auto_snapshot - (optional) is a type of bool
   delete_auto_snapshot = var.delete_auto_snapshot
+  # delete_with_instance - (optional) is a type of bool
   delete_with_instance = var.delete_with_instance
-  description          = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_auto_snapshot - (optional) is a type of bool
   enable_auto_snapshot = var.enable_auto_snapshot
-  encrypted            = var.encrypted
-  kms_key_id           = var.kms_key_id
-  name                 = var.name
-  performance_level    = var.performance_level
-  resource_group_id    = var.resource_group_id
-  size                 = var.size
-  snapshot_id          = var.snapshot_id
-  tags                 = var.tags
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name - (optional) is a type of string
+  name = var.name
+  # performance_level - (optional) is a type of string
+  performance_level = var.performance_level
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # size - (required) is a type of number
+  size = var.size
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

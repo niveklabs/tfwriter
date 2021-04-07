@@ -73,10 +73,14 @@ variable "member_index" {
 
 ```terraform
 data "nsxt_policy_edge_node" "this" {
-  description       = var.description
-  display_name      = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # edge_cluster_path - (required) is a type of string
   edge_cluster_path = var.edge_cluster_path
-  member_index      = var.member_index
+  # member_index - (optional) is a type of number
+  member_index = var.member_index
 }
 ```
 

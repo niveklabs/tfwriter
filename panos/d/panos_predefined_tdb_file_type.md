@@ -74,10 +74,14 @@ variable "name" {
 
 ```terraform
 data "panos_predefined_tdb_file_type" "this" {
+  # data_ident_only - (optional) is a type of bool
   data_ident_only = var.data_ident_only
-  full_name       = var.full_name
+  # full_name - (optional) is a type of string
+  full_name = var.full_name
+  # full_name_regex - (optional) is a type of string
   full_name_regex = var.full_name_regex
-  name            = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

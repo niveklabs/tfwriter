@@ -201,31 +201,52 @@ variable "custom_container_config" {
 
 ```terraform
 resource "alicloud_fc_function" "this" {
-  ca_port                = var.ca_port
-  code_checksum          = var.code_checksum
-  description            = var.description
-  environment_variables  = var.environment_variables
-  filename               = var.filename
-  handler                = var.handler
+  # ca_port - (optional) is a type of number
+  ca_port = var.ca_port
+  # code_checksum - (optional) is a type of string
+  code_checksum = var.code_checksum
+  # description - (optional) is a type of string
+  description = var.description
+  # environment_variables - (optional) is a type of map of string
+  environment_variables = var.environment_variables
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # handler - (required) is a type of string
+  handler = var.handler
+  # initialization_timeout - (optional) is a type of number
   initialization_timeout = var.initialization_timeout
-  initializer            = var.initializer
-  instance_concurrency   = var.instance_concurrency
-  instance_type          = var.instance_type
-  memory_size            = var.memory_size
-  name                   = var.name
-  name_prefix            = var.name_prefix
-  oss_bucket             = var.oss_bucket
-  oss_key                = var.oss_key
-  runtime                = var.runtime
-  service                = var.service
-  timeout                = var.timeout
+  # initializer - (optional) is a type of string
+  initializer = var.initializer
+  # instance_concurrency - (optional) is a type of number
+  instance_concurrency = var.instance_concurrency
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # memory_size - (optional) is a type of number
+  memory_size = var.memory_size
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # oss_bucket - (optional) is a type of string
+  oss_bucket = var.oss_bucket
+  # oss_key - (optional) is a type of string
+  oss_key = var.oss_key
+  # runtime - (required) is a type of string
+  runtime = var.runtime
+  # service - (required) is a type of string
+  service = var.service
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "custom_container_config" {
     for_each = var.custom_container_config
     content {
-      args    = custom_container_config.value["args"]
+      # args - (optional) is a type of string
+      args = custom_container_config.value["args"]
+      # command - (optional) is a type of string
       command = custom_container_config.value["command"]
-      image   = custom_container_config.value["image"]
+      # image - (required) is a type of string
+      image = custom_container_config.value["image"]
     }
   }
 

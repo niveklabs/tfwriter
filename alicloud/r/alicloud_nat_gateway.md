@@ -133,22 +133,34 @@ variable "bandwidth_packages" {
 
 ```terraform
 resource "alicloud_nat_gateway" "this" {
-  description          = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  name                 = var.name
-  nat_type             = var.nat_type
-  period               = var.period
-  spec                 = var.spec
-  specification        = var.specification
-  vpc_id               = var.vpc_id
-  vswitch_id           = var.vswitch_id
+  # name - (optional) is a type of string
+  name = var.name
+  # nat_type - (optional) is a type of string
+  nat_type = var.nat_type
+  # period - (optional) is a type of number
+  period = var.period
+  # spec - (optional) is a type of string
+  spec = var.spec
+  # specification - (optional) is a type of string
+  specification = var.specification
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "bandwidth_packages" {
     for_each = var.bandwidth_packages
     content {
+      # bandwidth - (required) is a type of number
       bandwidth = bandwidth_packages.value["bandwidth"]
-      ip_count  = bandwidth_packages.value["ip_count"]
-      zone      = bandwidth_packages.value["zone"]
+      # ip_count - (required) is a type of number
+      ip_count = bandwidth_packages.value["ip_count"]
+      # zone - (optional) is a type of string
+      zone = bandwidth_packages.value["zone"]
     }
   }
 

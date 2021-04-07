@@ -64,8 +64,11 @@ variable "reply_substitute" {
 
 ```terraform
 resource "fortios_system_macaddresstable" "this" {
-  interface        = var.interface
-  mac              = var.mac
+  # interface - (required) is a type of string
+  interface = var.interface
+  # mac - (required) is a type of string
+  mac = var.mac
+  # reply_substitute - (optional) is a type of string
   reply_substitute = var.reply_substitute
 }
 ```

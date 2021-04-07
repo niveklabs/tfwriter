@@ -253,57 +253,91 @@ variable "crls" {
 
 ```terraform
 resource "avi_pkiprofile" "this" {
-  created_by             = var.created_by
-  crl_check              = var.crl_check
-  ignore_peer_chain      = var.ignore_peer_chain
-  is_federated           = var.is_federated
-  name                   = var.name
-  tenant_ref             = var.tenant_ref
-  uuid                   = var.uuid
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # crl_check - (optional) is a type of bool
+  crl_check = var.crl_check
+  # ignore_peer_chain - (optional) is a type of bool
+  ignore_peer_chain = var.ignore_peer_chain
+  # is_federated - (optional) is a type of bool
+  is_federated = var.is_federated
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # validate_only_leaf_crl - (optional) is a type of bool
   validate_only_leaf_crl = var.validate_only_leaf_crl
 
   dynamic "ca_certs" {
     for_each = var.ca_certs
     content {
-      certificate                 = ca_certs.value["certificate"]
+      # certificate - (optional) is a type of string
+      certificate = ca_certs.value["certificate"]
+      # certificate_signing_request - (optional) is a type of string
       certificate_signing_request = ca_certs.value["certificate_signing_request"]
-      chain_verified              = ca_certs.value["chain_verified"]
-      days_until_expire           = ca_certs.value["days_until_expire"]
-      expiry_status               = ca_certs.value["expiry_status"]
-      fingerprint                 = ca_certs.value["fingerprint"]
-      not_after                   = ca_certs.value["not_after"]
-      not_before                  = ca_certs.value["not_before"]
-      public_key                  = ca_certs.value["public_key"]
-      self_signed                 = ca_certs.value["self_signed"]
-      serial_number               = ca_certs.value["serial_number"]
-      signature                   = ca_certs.value["signature"]
-      signature_algorithm         = ca_certs.value["signature_algorithm"]
-      subject_alt_names           = ca_certs.value["subject_alt_names"]
-      text                        = ca_certs.value["text"]
-      version                     = ca_certs.value["version"]
+      # chain_verified - (optional) is a type of bool
+      chain_verified = ca_certs.value["chain_verified"]
+      # days_until_expire - (optional) is a type of number
+      days_until_expire = ca_certs.value["days_until_expire"]
+      # expiry_status - (optional) is a type of string
+      expiry_status = ca_certs.value["expiry_status"]
+      # fingerprint - (optional) is a type of string
+      fingerprint = ca_certs.value["fingerprint"]
+      # not_after - (optional) is a type of string
+      not_after = ca_certs.value["not_after"]
+      # not_before - (optional) is a type of string
+      not_before = ca_certs.value["not_before"]
+      # public_key - (optional) is a type of string
+      public_key = ca_certs.value["public_key"]
+      # self_signed - (optional) is a type of bool
+      self_signed = ca_certs.value["self_signed"]
+      # serial_number - (optional) is a type of string
+      serial_number = ca_certs.value["serial_number"]
+      # signature - (optional) is a type of string
+      signature = ca_certs.value["signature"]
+      # signature_algorithm - (optional) is a type of string
+      signature_algorithm = ca_certs.value["signature_algorithm"]
+      # subject_alt_names - (optional) is a type of list of string
+      subject_alt_names = ca_certs.value["subject_alt_names"]
+      # text - (optional) is a type of string
+      text = ca_certs.value["text"]
+      # version - (optional) is a type of string
+      version = ca_certs.value["version"]
 
       dynamic "issuer" {
         for_each = ca_certs.value.issuer
         content {
-          common_name        = issuer.value["common_name"]
-          country            = issuer.value["country"]
+          # common_name - (optional) is a type of string
+          common_name = issuer.value["common_name"]
+          # country - (optional) is a type of string
+          country = issuer.value["country"]
+          # distinguished_name - (optional) is a type of string
           distinguished_name = issuer.value["distinguished_name"]
-          email_address      = issuer.value["email_address"]
-          locality           = issuer.value["locality"]
-          organization       = issuer.value["organization"]
-          organization_unit  = issuer.value["organization_unit"]
-          state              = issuer.value["state"]
+          # email_address - (optional) is a type of string
+          email_address = issuer.value["email_address"]
+          # locality - (optional) is a type of string
+          locality = issuer.value["locality"]
+          # organization - (optional) is a type of string
+          organization = issuer.value["organization"]
+          # organization_unit - (optional) is a type of string
+          organization_unit = issuer.value["organization_unit"]
+          # state - (optional) is a type of string
+          state = issuer.value["state"]
         }
       }
 
       dynamic "key_params" {
         for_each = ca_certs.value.key_params
         content {
+          # algorithm - (required) is a type of string
           algorithm = key_params.value["algorithm"]
 
           dynamic "ec_params" {
             for_each = key_params.value.ec_params
             content {
+              # curve - (optional) is a type of string
               curve = ec_params.value["curve"]
             }
           }
@@ -311,7 +345,9 @@ resource "avi_pkiprofile" "this" {
           dynamic "rsa_params" {
             for_each = key_params.value.rsa_params
             content {
+              # exponent - (optional) is a type of number
               exponent = rsa_params.value["exponent"]
+              # key_size - (optional) is a type of string
               key_size = rsa_params.value["key_size"]
             }
           }
@@ -322,14 +358,22 @@ resource "avi_pkiprofile" "this" {
       dynamic "subject" {
         for_each = ca_certs.value.subject
         content {
-          common_name        = subject.value["common_name"]
-          country            = subject.value["country"]
+          # common_name - (optional) is a type of string
+          common_name = subject.value["common_name"]
+          # country - (optional) is a type of string
+          country = subject.value["country"]
+          # distinguished_name - (optional) is a type of string
           distinguished_name = subject.value["distinguished_name"]
-          email_address      = subject.value["email_address"]
-          locality           = subject.value["locality"]
-          organization       = subject.value["organization"]
-          organization_unit  = subject.value["organization_unit"]
-          state              = subject.value["state"]
+          # email_address - (optional) is a type of string
+          email_address = subject.value["email_address"]
+          # locality - (optional) is a type of string
+          locality = subject.value["locality"]
+          # organization - (optional) is a type of string
+          organization = subject.value["organization"]
+          # organization_unit - (optional) is a type of string
+          organization_unit = subject.value["organization_unit"]
+          # state - (optional) is a type of string
+          state = subject.value["state"]
         }
       }
 
@@ -339,17 +383,28 @@ resource "avi_pkiprofile" "this" {
   dynamic "crls" {
     for_each = var.crls
     content {
-      body               = crls.value["body"]
-      common_name        = crls.value["common_name"]
+      # body - (optional) is a type of string
+      body = crls.value["body"]
+      # common_name - (optional) is a type of string
+      common_name = crls.value["common_name"]
+      # distinguished_name - (optional) is a type of string
       distinguished_name = crls.value["distinguished_name"]
-      etag               = crls.value["etag"]
-      fingerprint        = crls.value["fingerprint"]
-      last_refreshed     = crls.value["last_refreshed"]
-      last_update        = crls.value["last_update"]
-      next_update        = crls.value["next_update"]
-      server_url         = crls.value["server_url"]
-      text               = crls.value["text"]
-      update_interval    = crls.value["update_interval"]
+      # etag - (optional) is a type of string
+      etag = crls.value["etag"]
+      # fingerprint - (optional) is a type of string
+      fingerprint = crls.value["fingerprint"]
+      # last_refreshed - (optional) is a type of string
+      last_refreshed = crls.value["last_refreshed"]
+      # last_update - (optional) is a type of string
+      last_update = crls.value["last_update"]
+      # next_update - (optional) is a type of string
+      next_update = crls.value["next_update"]
+      # server_url - (optional) is a type of string
+      server_url = crls.value["server_url"]
+      # text - (optional) is a type of string
+      text = crls.value["text"]
+      # update_interval - (optional) is a type of number
+      update_interval = crls.value["update_interval"]
     }
   }
 

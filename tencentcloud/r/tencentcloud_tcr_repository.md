@@ -77,10 +77,15 @@ variable "namespace_name" {
 
 ```terraform
 resource "tencentcloud_tcr_repository" "this" {
-  brief_desc     = var.brief_desc
-  description    = var.description
-  instance_id    = var.instance_id
-  name           = var.name
+  # brief_desc - (required) is a type of string
+  brief_desc = var.brief_desc
+  # description - (required) is a type of string
+  description = var.description
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
   namespace_name = var.namespace_name
 }
 ```

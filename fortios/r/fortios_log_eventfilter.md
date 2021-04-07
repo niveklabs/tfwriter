@@ -170,21 +170,37 @@ variable "wireless_activity" {
 
 ```terraform
 resource "fortios_log_eventfilter" "this" {
-  cifs              = var.cifs
-  compliance_check  = var.compliance_check
-  connector         = var.connector
-  endpoint          = var.endpoint
-  event             = var.event
-  fortiextender     = var.fortiextender
-  ha                = var.ha
-  router            = var.router
-  sdwan             = var.sdwan
-  security_rating   = var.security_rating
+  # cifs - (optional) is a type of string
+  cifs = var.cifs
+  # compliance_check - (optional) is a type of string
+  compliance_check = var.compliance_check
+  # connector - (optional) is a type of string
+  connector = var.connector
+  # endpoint - (optional) is a type of string
+  endpoint = var.endpoint
+  # event - (optional) is a type of string
+  event = var.event
+  # fortiextender - (optional) is a type of string
+  fortiextender = var.fortiextender
+  # ha - (optional) is a type of string
+  ha = var.ha
+  # router - (optional) is a type of string
+  router = var.router
+  # sdwan - (optional) is a type of string
+  sdwan = var.sdwan
+  # security_rating - (optional) is a type of string
+  security_rating = var.security_rating
+  # switch_controller - (optional) is a type of string
   switch_controller = var.switch_controller
-  system            = var.system
-  user              = var.user
-  vpn               = var.vpn
-  wan_opt           = var.wan_opt
+  # system - (optional) is a type of string
+  system = var.system
+  # user - (optional) is a type of string
+  user = var.user
+  # vpn - (optional) is a type of string
+  vpn = var.vpn
+  # wan_opt - (optional) is a type of string
+  wan_opt = var.wan_opt
+  # wireless_activity - (optional) is a type of string
   wireless_activity = var.wireless_activity
 }
 ```

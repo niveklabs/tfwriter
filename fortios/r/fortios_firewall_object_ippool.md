@@ -86,12 +86,18 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewall_object_ippool" "this" {
+  # arp_reply - (optional) is a type of string
   arp_reply = var.arp_reply
-  comments  = var.comments
-  endip     = var.endip
-  name      = var.name
-  startip   = var.startip
-  type      = var.type
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # endip - (required) is a type of string
+  endip = var.endip
+  # name - (required) is a type of string
+  name = var.name
+  # startip - (required) is a type of string
+  startip = var.startip
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

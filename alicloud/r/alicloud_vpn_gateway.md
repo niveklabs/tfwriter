@@ -120,16 +120,26 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_vpn_gateway" "this" {
-  bandwidth            = var.bandwidth
-  description          = var.description
-  enable_ipsec         = var.enable_ipsec
-  enable_ssl           = var.enable_ssl
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_ipsec - (optional) is a type of bool
+  enable_ipsec = var.enable_ipsec
+  # enable_ssl - (optional) is a type of bool
+  enable_ssl = var.enable_ssl
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  name                 = var.name
-  period               = var.period
-  ssl_connections      = var.ssl_connections
-  vpc_id               = var.vpc_id
-  vswitch_id           = var.vswitch_id
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # ssl_connections - (optional) is a type of number
+  ssl_connections = var.ssl_connections
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

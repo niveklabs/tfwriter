@@ -72,10 +72,14 @@ variable "remark" {
 
 ```terraform
 resource "tencentcloud_sqlserver_db" "this" {
-  charset     = var.charset
+  # charset - (optional) is a type of string
+  charset = var.charset
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  name        = var.name
-  remark      = var.remark
+  # name - (required) is a type of string
+  name = var.name
+  # remark - (optional) is a type of string
+  remark = var.remark
 }
 ```
 

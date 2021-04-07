@@ -80,11 +80,16 @@ variable "opposite_router_type" {
 
 ```terraform
 resource "alicloud_router_interface_connection" "this" {
-  interface_id                = var.interface_id
-  opposite_interface_id       = var.opposite_interface_id
+  # interface_id - (required) is a type of string
+  interface_id = var.interface_id
+  # opposite_interface_id - (required) is a type of string
+  opposite_interface_id = var.opposite_interface_id
+  # opposite_interface_owner_id - (optional) is a type of string
   opposite_interface_owner_id = var.opposite_interface_owner_id
-  opposite_router_id          = var.opposite_router_id
-  opposite_router_type        = var.opposite_router_type
+  # opposite_router_id - (optional) is a type of string
+  opposite_router_id = var.opposite_router_id
+  # opposite_router_type - (optional) is a type of string
+  opposite_router_type = var.opposite_router_type
 }
 ```
 

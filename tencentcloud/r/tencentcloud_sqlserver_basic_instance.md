@@ -197,26 +197,46 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_sqlserver_basic_instance" "this" {
-  auto_renew             = var.auto_renew
-  auto_voucher           = var.auto_voucher
-  availability_zone      = var.availability_zone
-  charge_type            = var.charge_type
-  cpu                    = var.cpu
-  engine_version         = var.engine_version
-  machine_type           = var.machine_type
+  # auto_renew - (optional) is a type of number
+  auto_renew = var.auto_renew
+  # auto_voucher - (optional) is a type of number
+  auto_voucher = var.auto_voucher
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # cpu - (required) is a type of number
+  cpu = var.cpu
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # machine_type - (required) is a type of string
+  machine_type = var.machine_type
+  # maintenance_start_time - (optional) is a type of string
   maintenance_start_time = var.maintenance_start_time
-  maintenance_time_span  = var.maintenance_time_span
-  maintenance_week_set   = var.maintenance_week_set
-  memory                 = var.memory
-  name                   = var.name
-  period                 = var.period
-  project_id             = var.project_id
-  security_groups        = var.security_groups
-  storage                = var.storage
-  subnet_id              = var.subnet_id
-  tags                   = var.tags
-  voucher_ids            = var.voucher_ids
-  vpc_id                 = var.vpc_id
+  # maintenance_time_span - (optional) is a type of number
+  maintenance_time_span = var.maintenance_time_span
+  # maintenance_week_set - (optional) is a type of set of number
+  maintenance_week_set = var.maintenance_week_set
+  # memory - (required) is a type of number
+  memory = var.memory
+  # name - (required) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # storage - (required) is a type of number
+  storage = var.storage
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # voucher_ids - (optional) is a type of set of string
+  voucher_ids = var.voucher_ids
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

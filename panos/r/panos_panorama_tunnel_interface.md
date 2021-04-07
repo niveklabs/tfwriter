@@ -104,14 +104,22 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_tunnel_interface" "this" {
-  comment            = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # management_profile - (optional) is a type of string
   management_profile = var.management_profile
-  mtu                = var.mtu
-  name               = var.name
-  netflow_profile    = var.netflow_profile
-  static_ips         = var.static_ips
-  template           = var.template
-  vsys               = var.vsys
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # static_ips - (optional) is a type of list of string
+  static_ips = var.static_ips
+  # template - (required) is a type of string
+  template = var.template
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

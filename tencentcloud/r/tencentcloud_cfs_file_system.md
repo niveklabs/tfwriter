@@ -110,15 +110,24 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_cfs_file_system" "this" {
-  access_group_id   = var.access_group_id
+  # access_group_id - (required) is a type of string
+  access_group_id = var.access_group_id
+  # availability_zone - (required) is a type of string
   availability_zone = var.availability_zone
-  mount_ip          = var.mount_ip
-  name              = var.name
-  protocol          = var.protocol
-  storage_type      = var.storage_type
-  subnet_id         = var.subnet_id
-  tags              = var.tags
-  vpc_id            = var.vpc_id
+  # mount_ip - (optional) is a type of string
+  mount_ip = var.mount_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

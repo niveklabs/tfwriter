@@ -145,18 +145,27 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_loadbalancer" "this" {
-  algorithm              = var.algorithm
-  labels                 = var.labels
-  listen_ipv4_uuid       = var.listen_ipv4_uuid
-  listen_ipv6_uuid       = var.listen_ipv6_uuid
-  name                   = var.name
+  # algorithm - (required) is a type of string
+  algorithm = var.algorithm
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # listen_ipv4_uuid - (required) is a type of string
+  listen_ipv4_uuid = var.listen_ipv4_uuid
+  # listen_ipv6_uuid - (required) is a type of string
+  listen_ipv6_uuid = var.listen_ipv6_uuid
+  # name - (required) is a type of string
+  name = var.name
+  # redirect_http_to_https - (required) is a type of bool
   redirect_http_to_https = var.redirect_http_to_https
-  status                 = var.status
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "backend_server" {
     for_each = var.backend_server
     content {
-      host   = backend_server.value["host"]
+      # host - (required) is a type of string
+      host = backend_server.value["host"]
+      # weight - (optional) is a type of number
       weight = backend_server.value["weight"]
     }
   }
@@ -164,18 +173,25 @@ resource "gridscale_loadbalancer" "this" {
   dynamic "forwarding_rule" {
     for_each = var.forwarding_rule
     content {
+      # letsencrypt_ssl - (optional) is a type of string
       letsencrypt_ssl = forwarding_rule.value["letsencrypt_ssl"]
-      listen_port     = forwarding_rule.value["listen_port"]
-      mode            = forwarding_rule.value["mode"]
-      target_port     = forwarding_rule.value["target_port"]
+      # listen_port - (required) is a type of number
+      listen_port = forwarding_rule.value["listen_port"]
+      # mode - (required) is a type of string
+      mode = forwarding_rule.value["mode"]
+      # target_port - (required) is a type of number
+      target_port = forwarding_rule.value["target_port"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

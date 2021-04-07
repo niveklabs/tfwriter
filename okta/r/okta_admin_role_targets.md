@@ -72,10 +72,14 @@ variable "user_id" {
 
 ```terraform
 resource "okta_admin_role_targets" "this" {
-  apps      = var.apps
-  groups    = var.groups
+  # apps - (optional) is a type of set of string
+  apps = var.apps
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # role_type - (required) is a type of string
   role_type = var.role_type
-  user_id   = var.user_id
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 }
 ```
 

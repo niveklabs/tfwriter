@@ -77,11 +77,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_rule_condition_exception" "this" {
+  # condition_exception - (required) is a type of string
   condition_exception = var.condition_exception
-  config_id           = var.config_id
-  rule_id             = var.rule_id
-  security_policy_id  = var.security_policy_id
-  version             = var.version
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # rule_id - (required) is a type of number
+  rule_id = var.rule_id
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

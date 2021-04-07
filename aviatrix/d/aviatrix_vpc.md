@@ -57,7 +57,9 @@ variable "route_tables_filter" {
 
 ```terraform
 data "aviatrix_vpc" "this" {
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # route_tables_filter - (optional) is a type of string
   route_tables_filter = var.route_tables_filter
 }
 ```

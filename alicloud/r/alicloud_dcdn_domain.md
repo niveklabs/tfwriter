@@ -184,36 +184,57 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_dcdn_domain" "this" {
-  cert_name         = var.cert_name
-  cert_type         = var.cert_type
-  check_url         = var.check_url
-  domain_name       = var.domain_name
-  force_set         = var.force_set
+  # cert_name - (optional) is a type of string
+  cert_name = var.cert_name
+  # cert_type - (optional) is a type of string
+  cert_type = var.cert_type
+  # check_url - (optional) is a type of string
+  check_url = var.check_url
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # force_set - (optional) is a type of string
+  force_set = var.force_set
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  scope             = var.scope
-  security_token    = var.security_token
-  ssl_pri           = var.ssl_pri
-  ssl_protocol      = var.ssl_protocol
-  ssl_pub           = var.ssl_pub
-  status            = var.status
-  top_level_domain  = var.top_level_domain
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # security_token - (optional) is a type of string
+  security_token = var.security_token
+  # ssl_pri - (optional) is a type of string
+  ssl_pri = var.ssl_pri
+  # ssl_protocol - (optional) is a type of string
+  ssl_protocol = var.ssl_protocol
+  # ssl_pub - (optional) is a type of string
+  ssl_pub = var.ssl_pub
+  # status - (optional) is a type of string
+  status = var.status
+  # top_level_domain - (optional) is a type of string
+  top_level_domain = var.top_level_domain
 
   dynamic "sources" {
     for_each = var.sources
     content {
-      content  = sources.value["content"]
-      port     = sources.value["port"]
+      # content - (required) is a type of string
+      content = sources.value["content"]
+      # port - (optional) is a type of number
+      port = sources.value["port"]
+      # priority - (optional) is a type of string
       priority = sources.value["priority"]
-      type     = sources.value["type"]
-      weight   = sources.value["weight"]
+      # type - (required) is a type of string
+      type = sources.value["type"]
+      # weight - (optional) is a type of string
+      weight = sources.value["weight"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

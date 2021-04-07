@@ -177,32 +177,51 @@ variable "forward_balancer_ids" {
 
 ```terraform
 resource "tencentcloud_as_scaling_group" "this" {
-  configuration_id     = var.configuration_id
-  default_cooldown     = var.default_cooldown
-  desired_capacity     = var.desired_capacity
-  load_balancer_ids    = var.load_balancer_ids
-  max_size             = var.max_size
-  min_size             = var.min_size
-  project_id           = var.project_id
-  retry_policy         = var.retry_policy
-  scaling_group_name   = var.scaling_group_name
-  subnet_ids           = var.subnet_ids
-  tags                 = var.tags
+  # configuration_id - (required) is a type of string
+  configuration_id = var.configuration_id
+  # default_cooldown - (optional) is a type of number
+  default_cooldown = var.default_cooldown
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # load_balancer_ids - (optional) is a type of list of string
+  load_balancer_ids = var.load_balancer_ids
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # retry_policy - (optional) is a type of string
+  retry_policy = var.retry_policy
+  # scaling_group_name - (required) is a type of string
+  scaling_group_name = var.scaling_group_name
+  # subnet_ids - (optional) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # termination_policies - (optional) is a type of list of string
   termination_policies = var.termination_policies
-  vpc_id               = var.vpc_id
-  zones                = var.zones
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # zones - (optional) is a type of list of string
+  zones = var.zones
 
   dynamic "forward_balancer_ids" {
     for_each = var.forward_balancer_ids
     content {
-      listener_id      = forward_balancer_ids.value["listener_id"]
+      # listener_id - (required) is a type of string
+      listener_id = forward_balancer_ids.value["listener_id"]
+      # load_balancer_id - (required) is a type of string
       load_balancer_id = forward_balancer_ids.value["load_balancer_id"]
-      rule_id          = forward_balancer_ids.value["rule_id"]
+      # rule_id - (optional) is a type of string
+      rule_id = forward_balancer_ids.value["rule_id"]
 
       dynamic "target_attribute" {
         for_each = forward_balancer_ids.value.target_attribute
         content {
-          port   = target_attribute.value["port"]
+          # port - (required) is a type of number
+          port = target_attribute.value["port"]
+          # weight - (required) is a type of number
           weight = target_attribute.value["weight"]
         }
       }

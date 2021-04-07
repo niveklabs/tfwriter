@@ -98,16 +98,23 @@ variable "server_list" {
 
 ```terraform
 resource "fortios_webproxy_forwardservergroup" "this" {
-  affinity              = var.affinity
+  # affinity - (optional) is a type of string
+  affinity = var.affinity
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  group_down_option     = var.group_down_option
-  ldb_method            = var.ldb_method
-  name                  = var.name
+  # group_down_option - (optional) is a type of string
+  group_down_option = var.group_down_option
+  # ldb_method - (optional) is a type of string
+  ldb_method = var.ldb_method
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "server_list" {
     for_each = var.server_list
     content {
-      name   = server_list.value["name"]
+      # name - (optional) is a type of string
+      name = server_list.value["name"]
+      # weight - (optional) is a type of number
       weight = server_list.value["weight"]
     }
   }

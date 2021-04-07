@@ -64,9 +64,12 @@ variable "project_id" {
 
 ```terraform
 resource "packet_vlan" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  facility    = var.facility
-  project_id  = var.project_id
+  # facility - (required) is a type of string
+  facility = var.facility
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

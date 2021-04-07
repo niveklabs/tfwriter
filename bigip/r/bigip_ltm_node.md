@@ -134,24 +134,38 @@ variable "fqdn" {
 
 ```terraform
 resource "bigip_ltm_node" "this" {
-  address          = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # connection_limit - (optional) is a type of number
   connection_limit = var.connection_limit
-  description      = var.description
-  dynamic_ratio    = var.dynamic_ratio
-  monitor          = var.monitor
-  name             = var.name
-  rate_limit       = var.rate_limit
-  ratio            = var.ratio
-  state            = var.state
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_ratio - (optional) is a type of number
+  dynamic_ratio = var.dynamic_ratio
+  # monitor - (optional) is a type of string
+  monitor = var.monitor
+  # name - (required) is a type of string
+  name = var.name
+  # rate_limit - (optional) is a type of string
+  rate_limit = var.rate_limit
+  # ratio - (optional) is a type of number
+  ratio = var.ratio
+  # state - (optional) is a type of string
+  state = var.state
 
   dynamic "fqdn" {
     for_each = var.fqdn
     content {
+      # address_family - (optional) is a type of string
       address_family = fqdn.value["address_family"]
-      autopopulate   = fqdn.value["autopopulate"]
-      downinterval   = fqdn.value["downinterval"]
-      interval       = fqdn.value["interval"]
-      name           = fqdn.value["name"]
+      # autopopulate - (optional) is a type of string
+      autopopulate = fqdn.value["autopopulate"]
+      # downinterval - (optional) is a type of number
+      downinterval = fqdn.value["downinterval"]
+      # interval - (optional) is a type of string
+      interval = fqdn.value["interval"]
+      # name - (optional) is a type of string
+      name = fqdn.value["name"]
     }
   }
 

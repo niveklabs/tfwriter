@@ -58,8 +58,10 @@ variable "limit" {
 
 ```terraform
 data "tencentcloud_container_clusters" "this" {
+  # cluster_id - (optional) is a type of string
   cluster_id = var.cluster_id
-  limit      = var.limit
+  # limit - (optional) is a type of number
+  limit = var.limit
 }
 ```
 

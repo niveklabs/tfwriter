@@ -112,18 +112,23 @@ variable "rule" {
 
 ```terraform
 resource "fortios_user_securityexemptlist" "this" {
-  description           = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # id - (optional) is a type of number
       id = rule.value["id"]
 
       dynamic "devices" {
         for_each = rule.value.devices
         content {
+          # name - (optional) is a type of string
           name = devices.value["name"]
         }
       }
@@ -131,6 +136,7 @@ resource "fortios_user_securityexemptlist" "this" {
       dynamic "dstaddr" {
         for_each = rule.value.dstaddr
         content {
+          # name - (optional) is a type of string
           name = dstaddr.value["name"]
         }
       }
@@ -138,6 +144,7 @@ resource "fortios_user_securityexemptlist" "this" {
       dynamic "service" {
         for_each = rule.value.service
         content {
+          # name - (optional) is a type of string
           name = service.value["name"]
         }
       }
@@ -145,6 +152,7 @@ resource "fortios_user_securityexemptlist" "this" {
       dynamic "srcaddr" {
         for_each = rule.value.srcaddr
         content {
+          # name - (optional) is a type of string
           name = srcaddr.value["name"]
         }
       }

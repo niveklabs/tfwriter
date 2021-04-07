@@ -71,10 +71,14 @@ variable "token" {
 
 ```terraform
 resource "gitlab_service_github" "this" {
-  project        = var.project
+  # project - (required) is a type of string
+  project = var.project
+  # repository_url - (required) is a type of string
   repository_url = var.repository_url
+  # static_context - (optional) is a type of bool
   static_context = var.static_context
-  token          = var.token
+  # token - (required) is a type of string
+  token = var.token
 }
 ```
 

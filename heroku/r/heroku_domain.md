@@ -56,7 +56,9 @@ variable "hostname" {
 
 ```terraform
 resource "heroku_domain" "this" {
-  app      = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # hostname - (required) is a type of string
   hostname = var.hostname
 }
 ```

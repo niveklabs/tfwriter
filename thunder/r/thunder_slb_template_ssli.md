@@ -74,10 +74,14 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_ssli" "this" {
-  name     = var.name
-  type     = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
+  # user_tag - (optional) is a type of string
   user_tag = var.user_tag
-  uuid     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

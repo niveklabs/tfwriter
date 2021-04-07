@@ -122,27 +122,44 @@ variable "rules" {
 
 ```terraform
 resource "dome9_ruleset" "this" {
-  cloud_vendor       = var.cloud_vendor
-  description        = var.description
+  # cloud_vendor - (required) is a type of string
+  cloud_vendor = var.cloud_vendor
+  # description - (optional) is a type of string
+  description = var.description
+  # hide_in_compliance - (required) is a type of bool
   hide_in_compliance = var.hide_in_compliance
-  is_template        = var.is_template
-  language           = var.language
-  name               = var.name
+  # is_template - (optional) is a type of bool
+  is_template = var.is_template
+  # language - (required) is a type of string
+  language = var.language
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # compliance_tag - (optional) is a type of string
       compliance_tag = rules.value["compliance_tag"]
-      control_title  = rules.value["control_title"]
-      description    = rules.value["description"]
-      domain         = rules.value["domain"]
-      is_default     = rules.value["is_default"]
-      logic          = rules.value["logic"]
-      name           = rules.value["name"]
-      priority       = rules.value["priority"]
-      remediation    = rules.value["remediation"]
-      rule_id        = rules.value["rule_id"]
-      severity       = rules.value["severity"]
+      # control_title - (optional) is a type of string
+      control_title = rules.value["control_title"]
+      # description - (optional) is a type of string
+      description = rules.value["description"]
+      # domain - (optional) is a type of string
+      domain = rules.value["domain"]
+      # is_default - (optional) is a type of bool
+      is_default = rules.value["is_default"]
+      # logic - (optional) is a type of string
+      logic = rules.value["logic"]
+      # name - (optional) is a type of string
+      name = rules.value["name"]
+      # priority - (optional) is a type of string
+      priority = rules.value["priority"]
+      # remediation - (optional) is a type of string
+      remediation = rules.value["remediation"]
+      # rule_id - (optional) is a type of string
+      rule_id = rules.value["rule_id"]
+      # severity - (optional) is a type of string
+      severity = rules.value["severity"]
     }
   }
 

@@ -194,25 +194,44 @@ variable "version" {
 
 ```terraform
 resource "thunder_slb_template_snmp" "this" {
-  auth_key           = var.auth_key
-  auth_proto         = var.auth_proto
-  community          = var.community
-  context_engine_id  = var.context_engine_id
-  context_name       = var.context_name
-  host               = var.host
-  interface          = var.interface
-  interval           = var.interval
-  oid                = var.oid
-  port               = var.port
-  priv_key           = var.priv_key
-  priv_proto         = var.priv_proto
+  # auth_key - (optional) is a type of string
+  auth_key = var.auth_key
+  # auth_proto - (optional) is a type of string
+  auth_proto = var.auth_proto
+  # community - (optional) is a type of string
+  community = var.community
+  # context_engine_id - (optional) is a type of string
+  context_engine_id = var.context_engine_id
+  # context_name - (optional) is a type of string
+  context_name = var.context_name
+  # host - (optional) is a type of string
+  host = var.host
+  # interface - (optional) is a type of number
+  interface = var.interface
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # oid - (optional) is a type of string
+  oid = var.oid
+  # port - (optional) is a type of number
+  port = var.port
+  # priv_key - (optional) is a type of string
+  priv_key = var.priv_key
+  # priv_proto - (optional) is a type of string
+  priv_proto = var.priv_proto
+  # security_engine_id - (optional) is a type of string
   security_engine_id = var.security_engine_id
-  security_level     = var.security_level
-  snmp_name          = var.snmp_name
-  user_tag           = var.user_tag
-  username           = var.username
-  uuid               = var.uuid
-  version            = var.version
+  # security_level - (optional) is a type of string
+  security_level = var.security_level
+  # snmp_name - (optional) is a type of string
+  snmp_name = var.snmp_name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # username - (optional) is a type of string
+  username = var.username
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

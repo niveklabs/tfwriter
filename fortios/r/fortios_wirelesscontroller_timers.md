@@ -184,26 +184,43 @@ variable "darrp_time" {
 
 ```terraform
 resource "fortios_wirelesscontroller_timers" "this" {
-  ble_scan_report_intv    = var.ble_scan_report_intv
-  client_idle_timeout     = var.client_idle_timeout
-  darrp_day               = var.darrp_day
-  darrp_optimize          = var.darrp_optimize
-  discovery_interval      = var.discovery_interval
-  drma_interval           = var.drma_interval
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  echo_interval           = var.echo_interval
-  fake_ap_log             = var.fake_ap_log
-  ipsec_intf_cleanup      = var.ipsec_intf_cleanup
-  radio_stats_interval    = var.radio_stats_interval
-  rogue_ap_log            = var.rogue_ap_log
+  # ble_scan_report_intv - (optional) is a type of number
+  ble_scan_report_intv = var.ble_scan_report_intv
+  # client_idle_timeout - (optional) is a type of number
+  client_idle_timeout = var.client_idle_timeout
+  # darrp_day - (optional) is a type of string
+  darrp_day = var.darrp_day
+  # darrp_optimize - (optional) is a type of number
+  darrp_optimize = var.darrp_optimize
+  # discovery_interval - (optional) is a type of number
+  discovery_interval = var.discovery_interval
+  # drma_interval - (optional) is a type of number
+  drma_interval = var.drma_interval
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # echo_interval - (optional) is a type of number
+  echo_interval = var.echo_interval
+  # fake_ap_log - (optional) is a type of number
+  fake_ap_log = var.fake_ap_log
+  # ipsec_intf_cleanup - (optional) is a type of number
+  ipsec_intf_cleanup = var.ipsec_intf_cleanup
+  # radio_stats_interval - (optional) is a type of number
+  radio_stats_interval = var.radio_stats_interval
+  # rogue_ap_log - (optional) is a type of number
+  rogue_ap_log = var.rogue_ap_log
+  # sta_capability_interval - (optional) is a type of number
   sta_capability_interval = var.sta_capability_interval
-  sta_locate_timer        = var.sta_locate_timer
-  sta_stats_interval      = var.sta_stats_interval
-  vap_stats_interval      = var.vap_stats_interval
+  # sta_locate_timer - (optional) is a type of number
+  sta_locate_timer = var.sta_locate_timer
+  # sta_stats_interval - (optional) is a type of number
+  sta_stats_interval = var.sta_stats_interval
+  # vap_stats_interval - (optional) is a type of number
+  vap_stats_interval = var.vap_stats_interval
 
   dynamic "darrp_time" {
     for_each = var.darrp_time
     content {
+      # time - (optional) is a type of string
       time = darrp_time.value["time"]
     }
   }

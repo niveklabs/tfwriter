@@ -56,8 +56,10 @@ variable "role_name" {
 
 ```terraform
 resource "alicloud_ram_role_attachment" "this" {
+  # instance_ids - (required) is a type of set of string
   instance_ids = var.instance_ids
-  role_name    = var.role_name
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 }
 ```
 

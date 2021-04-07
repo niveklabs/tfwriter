@@ -66,9 +66,12 @@ variable "domain" {
 
 ```terraform
 data "nsxt_policy_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  domain       = var.domain
+  # domain - (optional) is a type of string
+  domain = var.domain
 }
 ```
 

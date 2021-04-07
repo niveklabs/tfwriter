@@ -56,7 +56,9 @@ variable "type" {
 
 ```terraform
 data "okta_policy" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # type - (required) is a type of string
   type = var.type
 }
 ```

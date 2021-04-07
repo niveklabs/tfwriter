@@ -78,11 +78,16 @@ variable "protection_mode" {
 
 ```terraform
 resource "dome9_iam_safe_entity" "this" {
-  aws_cloud_account_id      = var.aws_cloud_account_id
+  # aws_cloud_account_id - (required) is a type of string
+  aws_cloud_account_id = var.aws_cloud_account_id
+  # dome9_users_id_to_protect - (optional) is a type of list of string
   dome9_users_id_to_protect = var.dome9_users_id_to_protect
-  entity_name               = var.entity_name
-  entity_type               = var.entity_type
-  protection_mode           = var.protection_mode
+  # entity_name - (required) is a type of string
+  entity_name = var.entity_name
+  # entity_type - (required) is a type of string
+  entity_type = var.entity_type
+  # protection_mode - (required) is a type of string
+  protection_mode = var.protection_mode
 }
 ```
 

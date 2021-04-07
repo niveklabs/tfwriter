@@ -66,9 +66,12 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ipv6_icmpv6" "this" {
-  redirect    = var.redirect
+  # redirect - (optional) is a type of number
+  redirect = var.redirect
+  # unreachable - (optional) is a type of number
   unreachable = var.unreachable
-  uuid        = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

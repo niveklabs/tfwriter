@@ -132,18 +132,30 @@ variable "source_owner" {
 
 ```terraform
 resource "alicloud_config_rule" "this" {
-  description                        = var.description
-  input_parameters                   = var.input_parameters
-  member_id                          = var.member_id
-  multi_account                      = var.multi_account
-  risk_level                         = var.risk_level
-  rule_name                          = var.rule_name
-  scope_compliance_resource_id       = var.scope_compliance_resource_id
-  scope_compliance_resource_types    = var.scope_compliance_resource_types
-  source_detail_message_type         = var.source_detail_message_type
-  source_identifier                  = var.source_identifier
+  # description - (optional) is a type of string
+  description = var.description
+  # input_parameters - (optional) is a type of map of string
+  input_parameters = var.input_parameters
+  # member_id - (optional) is a type of number
+  member_id = var.member_id
+  # multi_account - (optional) is a type of bool
+  multi_account = var.multi_account
+  # risk_level - (required) is a type of number
+  risk_level = var.risk_level
+  # rule_name - (required) is a type of string
+  rule_name = var.rule_name
+  # scope_compliance_resource_id - (optional) is a type of string
+  scope_compliance_resource_id = var.scope_compliance_resource_id
+  # scope_compliance_resource_types - (required) is a type of set of string
+  scope_compliance_resource_types = var.scope_compliance_resource_types
+  # source_detail_message_type - (required) is a type of string
+  source_detail_message_type = var.source_detail_message_type
+  # source_identifier - (required) is a type of string
+  source_identifier = var.source_identifier
+  # source_maximum_execution_frequency - (optional) is a type of string
   source_maximum_execution_frequency = var.source_maximum_execution_frequency
-  source_owner                       = var.source_owner
+  # source_owner - (required) is a type of string
+  source_owner = var.source_owner
 }
 ```
 

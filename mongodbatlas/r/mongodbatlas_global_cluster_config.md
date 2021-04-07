@@ -90,23 +90,30 @@ variable "managed_namespaces" {
 
 ```terraform
 resource "mongodbatlas_global_cluster_config" "this" {
+  # cluster_name - (required) is a type of string
   cluster_name = var.cluster_name
-  project_id   = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "custom_zone_mappings" {
     for_each = var.custom_zone_mappings
     content {
+      # location - (optional) is a type of string
       location = custom_zone_mappings.value["location"]
-      zone     = custom_zone_mappings.value["zone"]
+      # zone - (optional) is a type of string
+      zone = custom_zone_mappings.value["zone"]
     }
   }
 
   dynamic "managed_namespaces" {
     for_each = var.managed_namespaces
     content {
-      collection       = managed_namespaces.value["collection"]
+      # collection - (required) is a type of string
+      collection = managed_namespaces.value["collection"]
+      # custom_shard_key - (required) is a type of string
       custom_shard_key = managed_namespaces.value["custom_shard_key"]
-      db               = managed_namespaces.value["db"]
+      # db - (required) is a type of string
+      db = managed_namespaces.value["db"]
     }
   }
 

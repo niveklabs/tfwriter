@@ -58,8 +58,10 @@ variable "tag" {
 
 ```terraform
 data "digitalocean_droplet" "this" {
+  # name - (optional) is a type of string
   name = var.name
-  tag  = var.tag
+  # tag - (optional) is a type of string
+  tag = var.tag
 }
 ```
 

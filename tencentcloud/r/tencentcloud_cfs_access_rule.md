@@ -79,10 +79,15 @@ variable "user_permission" {
 
 ```terraform
 resource "tencentcloud_cfs_access_rule" "this" {
+  # access_group_id - (required) is a type of string
   access_group_id = var.access_group_id
-  auth_client_ip  = var.auth_client_ip
-  priority        = var.priority
-  rw_permission   = var.rw_permission
+  # auth_client_ip - (required) is a type of string
+  auth_client_ip = var.auth_client_ip
+  # priority - (required) is a type of number
+  priority = var.priority
+  # rw_permission - (optional) is a type of string
+  rw_permission = var.rw_permission
+  # user_permission - (optional) is a type of string
   user_permission = var.user_permission
 }
 ```

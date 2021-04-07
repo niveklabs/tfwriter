@@ -185,43 +185,72 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_intrusion_service_policy" "this" {
-  comments        = var.comments
-  description     = var.description
-  display_name    = var.display_name
-  domain          = var.domain
-  locked          = var.locked
-  nsx_id          = var.nsx_id
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # sequence_number - (optional) is a type of number
   sequence_number = var.sequence_number
-  stateful        = var.stateful
+  # stateful - (optional) is a type of bool
+  stateful = var.stateful
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action                = rule.value["action"]
-      description           = rule.value["description"]
-      destination_groups    = rule.value["destination_groups"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # destination_groups - (optional) is a type of set of string
+      destination_groups = rule.value["destination_groups"]
+      # destinations_excluded - (optional) is a type of bool
       destinations_excluded = rule.value["destinations_excluded"]
-      direction             = rule.value["direction"]
-      disabled              = rule.value["disabled"]
-      display_name          = rule.value["display_name"]
-      ids_profiles          = rule.value["ids_profiles"]
-      ip_version            = rule.value["ip_version"]
-      log_label             = rule.value["log_label"]
-      logged                = rule.value["logged"]
-      notes                 = rule.value["notes"]
-      nsx_id                = rule.value["nsx_id"]
-      profiles              = rule.value["profiles"]
-      scope                 = rule.value["scope"]
-      sequence_number       = rule.value["sequence_number"]
-      services              = rule.value["services"]
-      source_groups         = rule.value["source_groups"]
-      sources_excluded      = rule.value["sources_excluded"]
+      # direction - (optional) is a type of string
+      direction = rule.value["direction"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # display_name - (required) is a type of string
+      display_name = rule.value["display_name"]
+      # ids_profiles - (required) is a type of set of string
+      ids_profiles = rule.value["ids_profiles"]
+      # ip_version - (optional) is a type of string
+      ip_version = rule.value["ip_version"]
+      # log_label - (optional) is a type of string
+      log_label = rule.value["log_label"]
+      # logged - (optional) is a type of bool
+      logged = rule.value["logged"]
+      # notes - (optional) is a type of string
+      notes = rule.value["notes"]
+      # nsx_id - (optional) is a type of string
+      nsx_id = rule.value["nsx_id"]
+      # profiles - (optional) is a type of set of string
+      profiles = rule.value["profiles"]
+      # scope - (optional) is a type of set of string
+      scope = rule.value["scope"]
+      # sequence_number - (optional) is a type of number
+      sequence_number = rule.value["sequence_number"]
+      # services - (optional) is a type of set of string
+      services = rule.value["services"]
+      # source_groups - (optional) is a type of set of string
+      source_groups = rule.value["source_groups"]
+      # sources_excluded - (optional) is a type of bool
+      sources_excluded = rule.value["sources_excluded"]
 
       dynamic "tag" {
         for_each = rule.value.tag
         content {
+          # scope - (optional) is a type of string
           scope = tag.value["scope"]
-          tag   = tag.value["tag"]
+          # tag - (optional) is a type of string
+          tag = tag.value["tag"]
         }
       }
 
@@ -231,8 +260,10 @@ resource "nsxt_policy_intrusion_service_policy" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -87,12 +87,18 @@ variable "status" {
 
 ```terraform
 resource "okta_group_rule" "this" {
-  expression_type       = var.expression_type
-  expression_value      = var.expression_value
-  group_assignments     = var.group_assignments
-  name                  = var.name
+  # expression_type - (optional) is a type of string
+  expression_type = var.expression_type
+  # expression_value - (required) is a type of string
+  expression_value = var.expression_value
+  # group_assignments - (required) is a type of set of string
+  group_assignments = var.group_assignments
+  # name - (required) is a type of string
+  name = var.name
+  # remove_assigned_users - (optional) is a type of bool
   remove_assigned_users = var.remove_assigned_users
-  status                = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

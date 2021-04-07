@@ -304,136 +304,231 @@ variable "info" {
 
 ```terraform
 resource "avi_cloudproperties" "this" {
+  # cc_vtypes - (optional) is a type of list of string
   cc_vtypes = var.cc_vtypes
-  uuid      = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "cc_props" {
     for_each = var.cc_props
     content {
+      # rpc_poll_interval - (optional) is a type of number
       rpc_poll_interval = cc_props.value["rpc_poll_interval"]
-      rpc_queue_size    = cc_props.value["rpc_queue_size"]
+      # rpc_queue_size - (optional) is a type of number
+      rpc_queue_size = cc_props.value["rpc_queue_size"]
     }
   }
 
   dynamic "hyp_props" {
     for_each = var.hyp_props
     content {
-      htype           = hyp_props.value["htype"]
+      # htype - (required) is a type of string
+      htype = hyp_props.value["htype"]
+      # max_ips_per_nic - (optional) is a type of number
       max_ips_per_nic = hyp_props.value["max_ips_per_nic"]
-      max_nics        = hyp_props.value["max_nics"]
+      # max_nics - (optional) is a type of number
+      max_nics = hyp_props.value["max_nics"]
     }
   }
 
   dynamic "info" {
     for_each = var.info
     content {
+      # flavor_regex_filter - (optional) is a type of string
       flavor_regex_filter = info.value["flavor_regex_filter"]
-      htypes              = info.value["htypes"]
-      vtype               = info.value["vtype"]
+      # htypes - (optional) is a type of list of string
+      htypes = info.value["htypes"]
+      # vtype - (required) is a type of string
+      vtype = info.value["vtype"]
 
       dynamic "cca_props" {
         for_each = info.value.cca_props
         content {
-          async_retries        = cca_props.value["async_retries"]
-          async_retries_delay  = cca_props.value["async_retries_delay"]
+          # async_retries - (optional) is a type of number
+          async_retries = cca_props.value["async_retries"]
+          # async_retries_delay - (optional) is a type of number
+          async_retries_delay = cca_props.value["async_retries_delay"]
+          # poll_duration_target - (optional) is a type of number
           poll_duration_target = cca_props.value["poll_duration_target"]
-          poll_fast_target     = cca_props.value["poll_fast_target"]
-          poll_slow_target     = cca_props.value["poll_slow_target"]
-          vnic_retries         = cca_props.value["vnic_retries"]
-          vnic_retries_delay   = cca_props.value["vnic_retries_delay"]
+          # poll_fast_target - (optional) is a type of number
+          poll_fast_target = cca_props.value["poll_fast_target"]
+          # poll_slow_target - (optional) is a type of number
+          poll_slow_target = cca_props.value["poll_slow_target"]
+          # vnic_retries - (optional) is a type of number
+          vnic_retries = cca_props.value["vnic_retries"]
+          # vnic_retries_delay - (optional) is a type of number
+          vnic_retries_delay = cca_props.value["vnic_retries_delay"]
         }
       }
 
       dynamic "controller_props" {
         for_each = info.value.controller_props
         content {
-          allow_admin_network_updates                = controller_props.value["allow_admin_network_updates"]
-          allow_ip_forwarding                        = controller_props.value["allow_ip_forwarding"]
-          allow_unauthenticated_apis                 = controller_props.value["allow_unauthenticated_apis"]
-          allow_unauthenticated_nodes                = controller_props.value["allow_unauthenticated_nodes"]
-          api_idle_timeout                           = controller_props.value["api_idle_timeout"]
-          api_perf_logging_threshold                 = controller_props.value["api_perf_logging_threshold"]
-          appviewx_compat_mode                       = controller_props.value["appviewx_compat_mode"]
-          attach_ip_retry_interval                   = controller_props.value["attach_ip_retry_interval"]
-          attach_ip_retry_limit                      = controller_props.value["attach_ip_retry_limit"]
-          bm_use_ansible                             = controller_props.value["bm_use_ansible"]
-          cleanup_expired_authtoken_timeout_period   = controller_props.value["cleanup_expired_authtoken_timeout_period"]
-          cleanup_sessions_timeout_period            = controller_props.value["cleanup_sessions_timeout_period"]
-          cloud_reconcile                            = controller_props.value["cloud_reconcile"]
-          cluster_ip_gratuitous_arp_period           = controller_props.value["cluster_ip_gratuitous_arp_period"]
-          consistency_check_timeout_period           = controller_props.value["consistency_check_timeout_period"]
-          crashed_se_reboot                          = controller_props.value["crashed_se_reboot"]
-          dead_se_detection_timer                    = controller_props.value["dead_se_detection_timer"]
-          default_minimum_api_timeout                = controller_props.value["default_minimum_api_timeout"]
-          dns_refresh_period                         = controller_props.value["dns_refresh_period"]
-          dummy                                      = controller_props.value["dummy"]
-          enable_api_sharding                        = controller_props.value["enable_api_sharding"]
-          enable_memory_balancer                     = controller_props.value["enable_memory_balancer"]
-          fatal_error_lease_time                     = controller_props.value["fatal_error_lease_time"]
-          max_dead_se_in_grp                         = controller_props.value["max_dead_se_in_grp"]
-          max_pcap_per_tenant                        = controller_props.value["max_pcap_per_tenant"]
-          max_seq_attach_ip_failures                 = controller_props.value["max_seq_attach_ip_failures"]
-          max_seq_vnic_failures                      = controller_props.value["max_seq_vnic_failures"]
-          permission_scoped_shared_admin_networks    = controller_props.value["permission_scoped_shared_admin_networks"]
-          persistence_key_rotate_period              = controller_props.value["persistence_key_rotate_period"]
-          portal_token                               = controller_props.value["portal_token"]
+          # allow_admin_network_updates - (optional) is a type of bool
+          allow_admin_network_updates = controller_props.value["allow_admin_network_updates"]
+          # allow_ip_forwarding - (optional) is a type of bool
+          allow_ip_forwarding = controller_props.value["allow_ip_forwarding"]
+          # allow_unauthenticated_apis - (optional) is a type of bool
+          allow_unauthenticated_apis = controller_props.value["allow_unauthenticated_apis"]
+          # allow_unauthenticated_nodes - (optional) is a type of bool
+          allow_unauthenticated_nodes = controller_props.value["allow_unauthenticated_nodes"]
+          # api_idle_timeout - (optional) is a type of number
+          api_idle_timeout = controller_props.value["api_idle_timeout"]
+          # api_perf_logging_threshold - (optional) is a type of number
+          api_perf_logging_threshold = controller_props.value["api_perf_logging_threshold"]
+          # appviewx_compat_mode - (optional) is a type of bool
+          appviewx_compat_mode = controller_props.value["appviewx_compat_mode"]
+          # attach_ip_retry_interval - (optional) is a type of number
+          attach_ip_retry_interval = controller_props.value["attach_ip_retry_interval"]
+          # attach_ip_retry_limit - (optional) is a type of number
+          attach_ip_retry_limit = controller_props.value["attach_ip_retry_limit"]
+          # bm_use_ansible - (optional) is a type of bool
+          bm_use_ansible = controller_props.value["bm_use_ansible"]
+          # cleanup_expired_authtoken_timeout_period - (optional) is a type of number
+          cleanup_expired_authtoken_timeout_period = controller_props.value["cleanup_expired_authtoken_timeout_period"]
+          # cleanup_sessions_timeout_period - (optional) is a type of number
+          cleanup_sessions_timeout_period = controller_props.value["cleanup_sessions_timeout_period"]
+          # cloud_reconcile - (optional) is a type of bool
+          cloud_reconcile = controller_props.value["cloud_reconcile"]
+          # cluster_ip_gratuitous_arp_period - (optional) is a type of number
+          cluster_ip_gratuitous_arp_period = controller_props.value["cluster_ip_gratuitous_arp_period"]
+          # consistency_check_timeout_period - (optional) is a type of number
+          consistency_check_timeout_period = controller_props.value["consistency_check_timeout_period"]
+          # crashed_se_reboot - (optional) is a type of number
+          crashed_se_reboot = controller_props.value["crashed_se_reboot"]
+          # dead_se_detection_timer - (optional) is a type of number
+          dead_se_detection_timer = controller_props.value["dead_se_detection_timer"]
+          # default_minimum_api_timeout - (optional) is a type of number
+          default_minimum_api_timeout = controller_props.value["default_minimum_api_timeout"]
+          # dns_refresh_period - (optional) is a type of number
+          dns_refresh_period = controller_props.value["dns_refresh_period"]
+          # dummy - (optional) is a type of number
+          dummy = controller_props.value["dummy"]
+          # enable_api_sharding - (optional) is a type of bool
+          enable_api_sharding = controller_props.value["enable_api_sharding"]
+          # enable_memory_balancer - (optional) is a type of bool
+          enable_memory_balancer = controller_props.value["enable_memory_balancer"]
+          # fatal_error_lease_time - (optional) is a type of number
+          fatal_error_lease_time = controller_props.value["fatal_error_lease_time"]
+          # max_dead_se_in_grp - (optional) is a type of number
+          max_dead_se_in_grp = controller_props.value["max_dead_se_in_grp"]
+          # max_pcap_per_tenant - (optional) is a type of number
+          max_pcap_per_tenant = controller_props.value["max_pcap_per_tenant"]
+          # max_seq_attach_ip_failures - (optional) is a type of number
+          max_seq_attach_ip_failures = controller_props.value["max_seq_attach_ip_failures"]
+          # max_seq_vnic_failures - (optional) is a type of number
+          max_seq_vnic_failures = controller_props.value["max_seq_vnic_failures"]
+          # permission_scoped_shared_admin_networks - (optional) is a type of bool
+          permission_scoped_shared_admin_networks = controller_props.value["permission_scoped_shared_admin_networks"]
+          # persistence_key_rotate_period - (optional) is a type of number
+          persistence_key_rotate_period = controller_props.value["persistence_key_rotate_period"]
+          # portal_token - (optional) is a type of string
+          portal_token = controller_props.value["portal_token"]
+          # process_locked_useraccounts_timeout_period - (optional) is a type of number
           process_locked_useraccounts_timeout_period = controller_props.value["process_locked_useraccounts_timeout_period"]
-          process_pki_profile_timeout_period         = controller_props.value["process_pki_profile_timeout_period"]
-          query_host_fail                            = controller_props.value["query_host_fail"]
-          safenet_hsm_version                        = controller_props.value["safenet_hsm_version"]
-          se_create_timeout                          = controller_props.value["se_create_timeout"]
-          se_failover_attempt_interval               = controller_props.value["se_failover_attempt_interval"]
-          se_from_marketplace                        = controller_props.value["se_from_marketplace"]
-          se_offline_del                             = controller_props.value["se_offline_del"]
-          se_vnic_cooldown                           = controller_props.value["se_vnic_cooldown"]
-          secure_channel_cleanup_timeout             = controller_props.value["secure_channel_cleanup_timeout"]
-          secure_channel_controller_token_timeout    = controller_props.value["secure_channel_controller_token_timeout"]
-          secure_channel_se_token_timeout            = controller_props.value["secure_channel_se_token_timeout"]
-          seupgrade_copy_pool_size                   = controller_props.value["seupgrade_copy_pool_size"]
-          seupgrade_fabric_pool_size                 = controller_props.value["seupgrade_fabric_pool_size"]
-          seupgrade_segroup_min_dead_timeout         = controller_props.value["seupgrade_segroup_min_dead_timeout"]
-          shared_ssl_certificates                    = controller_props.value["shared_ssl_certificates"]
-          ssl_certificate_expiry_warning_days        = controller_props.value["ssl_certificate_expiry_warning_days"]
-          unresponsive_se_reboot                     = controller_props.value["unresponsive_se_reboot"]
-          upgrade_dns_ttl                            = controller_props.value["upgrade_dns_ttl"]
-          upgrade_lease_time                         = controller_props.value["upgrade_lease_time"]
-          uuid                                       = controller_props.value["uuid"]
-          vnic_op_fail_time                          = controller_props.value["vnic_op_fail_time"]
-          vs_apic_scaleout_timeout                   = controller_props.value["vs_apic_scaleout_timeout"]
-          vs_awaiting_se_timeout                     = controller_props.value["vs_awaiting_se_timeout"]
-          vs_key_rotate_period                       = controller_props.value["vs_key_rotate_period"]
-          vs_scaleout_ready_check_interval           = controller_props.value["vs_scaleout_ready_check_interval"]
-          vs_se_attach_ip_fail                       = controller_props.value["vs_se_attach_ip_fail"]
-          vs_se_bootup_fail                          = controller_props.value["vs_se_bootup_fail"]
-          vs_se_create_fail                          = controller_props.value["vs_se_create_fail"]
-          vs_se_ping_fail                            = controller_props.value["vs_se_ping_fail"]
-          vs_se_vnic_fail                            = controller_props.value["vs_se_vnic_fail"]
-          vs_se_vnic_ip_fail                         = controller_props.value["vs_se_vnic_ip_fail"]
-          warmstart_se_reconnect_wait_time           = controller_props.value["warmstart_se_reconnect_wait_time"]
-          warmstart_vs_resync_wait_time              = controller_props.value["warmstart_vs_resync_wait_time"]
+          # process_pki_profile_timeout_period - (optional) is a type of number
+          process_pki_profile_timeout_period = controller_props.value["process_pki_profile_timeout_period"]
+          # query_host_fail - (optional) is a type of number
+          query_host_fail = controller_props.value["query_host_fail"]
+          # safenet_hsm_version - (optional) is a type of string
+          safenet_hsm_version = controller_props.value["safenet_hsm_version"]
+          # se_create_timeout - (optional) is a type of number
+          se_create_timeout = controller_props.value["se_create_timeout"]
+          # se_failover_attempt_interval - (optional) is a type of number
+          se_failover_attempt_interval = controller_props.value["se_failover_attempt_interval"]
+          # se_from_marketplace - (optional) is a type of string
+          se_from_marketplace = controller_props.value["se_from_marketplace"]
+          # se_offline_del - (optional) is a type of number
+          se_offline_del = controller_props.value["se_offline_del"]
+          # se_vnic_cooldown - (optional) is a type of number
+          se_vnic_cooldown = controller_props.value["se_vnic_cooldown"]
+          # secure_channel_cleanup_timeout - (optional) is a type of number
+          secure_channel_cleanup_timeout = controller_props.value["secure_channel_cleanup_timeout"]
+          # secure_channel_controller_token_timeout - (optional) is a type of number
+          secure_channel_controller_token_timeout = controller_props.value["secure_channel_controller_token_timeout"]
+          # secure_channel_se_token_timeout - (optional) is a type of number
+          secure_channel_se_token_timeout = controller_props.value["secure_channel_se_token_timeout"]
+          # seupgrade_copy_pool_size - (optional) is a type of number
+          seupgrade_copy_pool_size = controller_props.value["seupgrade_copy_pool_size"]
+          # seupgrade_fabric_pool_size - (optional) is a type of number
+          seupgrade_fabric_pool_size = controller_props.value["seupgrade_fabric_pool_size"]
+          # seupgrade_segroup_min_dead_timeout - (optional) is a type of number
+          seupgrade_segroup_min_dead_timeout = controller_props.value["seupgrade_segroup_min_dead_timeout"]
+          # shared_ssl_certificates - (optional) is a type of bool
+          shared_ssl_certificates = controller_props.value["shared_ssl_certificates"]
+          # ssl_certificate_expiry_warning_days - (optional) is a type of list of number
+          ssl_certificate_expiry_warning_days = controller_props.value["ssl_certificate_expiry_warning_days"]
+          # unresponsive_se_reboot - (optional) is a type of number
+          unresponsive_se_reboot = controller_props.value["unresponsive_se_reboot"]
+          # upgrade_dns_ttl - (optional) is a type of number
+          upgrade_dns_ttl = controller_props.value["upgrade_dns_ttl"]
+          # upgrade_lease_time - (optional) is a type of number
+          upgrade_lease_time = controller_props.value["upgrade_lease_time"]
+          # uuid - (optional) is a type of string
+          uuid = controller_props.value["uuid"]
+          # vnic_op_fail_time - (optional) is a type of number
+          vnic_op_fail_time = controller_props.value["vnic_op_fail_time"]
+          # vs_apic_scaleout_timeout - (optional) is a type of number
+          vs_apic_scaleout_timeout = controller_props.value["vs_apic_scaleout_timeout"]
+          # vs_awaiting_se_timeout - (optional) is a type of number
+          vs_awaiting_se_timeout = controller_props.value["vs_awaiting_se_timeout"]
+          # vs_key_rotate_period - (optional) is a type of number
+          vs_key_rotate_period = controller_props.value["vs_key_rotate_period"]
+          # vs_scaleout_ready_check_interval - (optional) is a type of number
+          vs_scaleout_ready_check_interval = controller_props.value["vs_scaleout_ready_check_interval"]
+          # vs_se_attach_ip_fail - (optional) is a type of number
+          vs_se_attach_ip_fail = controller_props.value["vs_se_attach_ip_fail"]
+          # vs_se_bootup_fail - (optional) is a type of number
+          vs_se_bootup_fail = controller_props.value["vs_se_bootup_fail"]
+          # vs_se_create_fail - (optional) is a type of number
+          vs_se_create_fail = controller_props.value["vs_se_create_fail"]
+          # vs_se_ping_fail - (optional) is a type of number
+          vs_se_ping_fail = controller_props.value["vs_se_ping_fail"]
+          # vs_se_vnic_fail - (optional) is a type of number
+          vs_se_vnic_fail = controller_props.value["vs_se_vnic_fail"]
+          # vs_se_vnic_ip_fail - (optional) is a type of number
+          vs_se_vnic_ip_fail = controller_props.value["vs_se_vnic_ip_fail"]
+          # warmstart_se_reconnect_wait_time - (optional) is a type of number
+          warmstart_se_reconnect_wait_time = controller_props.value["warmstart_se_reconnect_wait_time"]
+          # warmstart_vs_resync_wait_time - (optional) is a type of number
+          warmstart_vs_resync_wait_time = controller_props.value["warmstart_vs_resync_wait_time"]
         }
       }
 
       dynamic "flavor_props" {
         for_each = info.value.flavor_props
         content {
-          cost             = flavor_props.value["cost"]
-          disk_gb          = flavor_props.value["disk_gb"]
-          enhanced_nw      = flavor_props.value["enhanced_nw"]
-          id               = flavor_props.value["id"]
-          is_recommended   = flavor_props.value["is_recommended"]
+          # cost - (optional) is a type of string
+          cost = flavor_props.value["cost"]
+          # disk_gb - (optional) is a type of number
+          disk_gb = flavor_props.value["disk_gb"]
+          # enhanced_nw - (optional) is a type of bool
+          enhanced_nw = flavor_props.value["enhanced_nw"]
+          # id - (required) is a type of string
+          id = flavor_props.value["id"]
+          # is_recommended - (optional) is a type of bool
+          is_recommended = flavor_props.value["is_recommended"]
+          # max_ip6s_per_nic - (optional) is a type of number
           max_ip6s_per_nic = flavor_props.value["max_ip6s_per_nic"]
-          max_ips_per_nic  = flavor_props.value["max_ips_per_nic"]
-          max_nics         = flavor_props.value["max_nics"]
-          name             = flavor_props.value["name"]
-          public           = flavor_props.value["public"]
-          ram_mb           = flavor_props.value["ram_mb"]
-          vcpus            = flavor_props.value["vcpus"]
+          # max_ips_per_nic - (optional) is a type of number
+          max_ips_per_nic = flavor_props.value["max_ips_per_nic"]
+          # max_nics - (optional) is a type of number
+          max_nics = flavor_props.value["max_nics"]
+          # name - (required) is a type of string
+          name = flavor_props.value["name"]
+          # public - (optional) is a type of bool
+          public = flavor_props.value["public"]
+          # ram_mb - (optional) is a type of number
+          ram_mb = flavor_props.value["ram_mb"]
+          # vcpus - (optional) is a type of number
+          vcpus = flavor_props.value["vcpus"]
 
           dynamic "meta" {
             for_each = flavor_props.value.meta
             content {
-              key   = meta.value["key"]
+              # key - (required) is a type of string
+              key = meta.value["key"]
+              # value - (required) is a type of string
               value = meta.value["value"]
             }
           }

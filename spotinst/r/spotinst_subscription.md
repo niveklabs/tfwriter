@@ -78,10 +78,15 @@ variable "resource_id" {
 
 ```terraform
 resource "spotinst_subscription" "this" {
-  endpoint    = var.endpoint
-  event_type  = var.event_type
-  format      = var.format
-  protocol    = var.protocol
+  # endpoint - (required) is a type of string
+  endpoint = var.endpoint
+  # event_type - (required) is a type of string
+  event_type = var.event_type
+  # format - (optional) is a type of map of string
+  format = var.format
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # resource_id - (required) is a type of string
   resource_id = var.resource_id
 }
 ```

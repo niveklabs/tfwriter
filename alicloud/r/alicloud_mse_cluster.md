@@ -149,23 +149,37 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_mse_cluster" "this" {
-  acl_entry_list            = var.acl_entry_list
-  cluster_alias_name        = var.cluster_alias_name
-  cluster_specification     = var.cluster_specification
-  cluster_type              = var.cluster_type
-  cluster_version           = var.cluster_version
-  disk_type                 = var.disk_type
-  instance_count            = var.instance_count
-  net_type                  = var.net_type
+  # acl_entry_list - (optional) is a type of set of string
+  acl_entry_list = var.acl_entry_list
+  # cluster_alias_name - (optional) is a type of string
+  cluster_alias_name = var.cluster_alias_name
+  # cluster_specification - (required) is a type of string
+  cluster_specification = var.cluster_specification
+  # cluster_type - (required) is a type of string
+  cluster_type = var.cluster_type
+  # cluster_version - (required) is a type of string
+  cluster_version = var.cluster_version
+  # disk_type - (optional) is a type of string
+  disk_type = var.disk_type
+  # instance_count - (required) is a type of number
+  instance_count = var.instance_count
+  # net_type - (required) is a type of string
+  net_type = var.net_type
+  # private_slb_specification - (optional) is a type of string
   private_slb_specification = var.private_slb_specification
-  pub_network_flow          = var.pub_network_flow
-  pub_slb_specification     = var.pub_slb_specification
-  vswitch_id                = var.vswitch_id
+  # pub_network_flow - (optional) is a type of string
+  pub_network_flow = var.pub_network_flow
+  # pub_slb_specification - (optional) is a type of string
+  pub_slb_specification = var.pub_slb_specification
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

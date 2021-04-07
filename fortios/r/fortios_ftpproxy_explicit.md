@@ -114,15 +114,24 @@ variable "status" {
 
 ```terraform
 resource "fortios_ftpproxy_explicit" "this" {
-  incoming_ip        = var.incoming_ip
-  incoming_port      = var.incoming_port
-  outgoing_ip        = var.outgoing_ip
+  # incoming_ip - (optional) is a type of string
+  incoming_ip = var.incoming_ip
+  # incoming_port - (optional) is a type of string
+  incoming_port = var.incoming_port
+  # outgoing_ip - (optional) is a type of string
+  outgoing_ip = var.outgoing_ip
+  # sec_default_action - (optional) is a type of string
   sec_default_action = var.sec_default_action
-  ssl                = var.ssl
-  ssl_algorithm      = var.ssl_algorithm
-  ssl_cert           = var.ssl_cert
-  ssl_dh_bits        = var.ssl_dh_bits
-  status             = var.status
+  # ssl - (optional) is a type of string
+  ssl = var.ssl
+  # ssl_algorithm - (optional) is a type of string
+  ssl_algorithm = var.ssl_algorithm
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = var.ssl_cert
+  # ssl_dh_bits - (optional) is a type of string
+  ssl_dh_bits = var.ssl_dh_bits
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

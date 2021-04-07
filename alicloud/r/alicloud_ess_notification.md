@@ -63,9 +63,12 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "alicloud_ess_notification" "this" {
-  notification_arn   = var.notification_arn
+  # notification_arn - (required) is a type of string
+  notification_arn = var.notification_arn
+  # notification_types - (required) is a type of set of string
   notification_types = var.notification_types
-  scaling_group_id   = var.scaling_group_id
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
 }
 ```
 

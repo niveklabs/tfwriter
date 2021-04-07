@@ -119,16 +119,26 @@ variable "upload_port" {
 
 ```terraform
 resource "fortios_endpointcontrol_forticlientems" "this" {
-  address        = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # admin_password - (optional) is a type of string
   admin_password = var.admin_password
-  admin_type     = var.admin_type
+  # admin_type - (optional) is a type of string
+  admin_type = var.admin_type
+  # admin_username - (required) is a type of string
   admin_username = var.admin_username
-  https_port     = var.https_port
-  listen_port    = var.listen_port
-  name           = var.name
-  rest_api_auth  = var.rest_api_auth
-  serial_number  = var.serial_number
-  upload_port    = var.upload_port
+  # https_port - (optional) is a type of number
+  https_port = var.https_port
+  # listen_port - (optional) is a type of number
+  listen_port = var.listen_port
+  # name - (optional) is a type of string
+  name = var.name
+  # rest_api_auth - (optional) is a type of string
+  rest_api_auth = var.rest_api_auth
+  # serial_number - (required) is a type of string
+  serial_number = var.serial_number
+  # upload_port - (optional) is a type of number
+  upload_port = var.upload_port
 }
 ```
 

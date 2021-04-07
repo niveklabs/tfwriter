@@ -136,22 +136,29 @@ variable "tx_tlvs_cfg" {
 
 ```terraform
 resource "thunder_interface_ethernet_lldp" "this" {
+  # ifnum - (optional) is a type of number
   ifnum = var.ifnum
-  uuid  = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "enable_cfg" {
     for_each = var.enable_cfg
     content {
+      # rt_enable - (optional) is a type of number
       rt_enable = enable_cfg.value["rt_enable"]
-      rx        = enable_cfg.value["rx"]
-      tx        = enable_cfg.value["tx"]
+      # rx - (optional) is a type of number
+      rx = enable_cfg.value["rx"]
+      # tx - (optional) is a type of number
+      tx = enable_cfg.value["tx"]
     }
   }
 
   dynamic "notification_cfg" {
     for_each = var.notification_cfg
     content {
+      # notif_enable - (optional) is a type of number
       notif_enable = notification_cfg.value["notif_enable"]
+      # notification - (optional) is a type of number
       notification = notification_cfg.value["notification"]
     }
   }
@@ -159,22 +166,32 @@ resource "thunder_interface_ethernet_lldp" "this" {
   dynamic "tx_dot1_cfg" {
     for_each = var.tx_dot1_cfg
     content {
+      # link_aggregation - (optional) is a type of number
       link_aggregation = tx_dot1_cfg.value["link_aggregation"]
-      tx_dot1_tlvs     = tx_dot1_cfg.value["tx_dot1_tlvs"]
-      vlan             = tx_dot1_cfg.value["vlan"]
+      # tx_dot1_tlvs - (optional) is a type of number
+      tx_dot1_tlvs = tx_dot1_cfg.value["tx_dot1_tlvs"]
+      # vlan - (optional) is a type of number
+      vlan = tx_dot1_cfg.value["vlan"]
     }
   }
 
   dynamic "tx_tlvs_cfg" {
     for_each = var.tx_tlvs_cfg
     content {
-      exclude             = tx_tlvs_cfg.value["exclude"]
-      management_address  = tx_tlvs_cfg.value["management_address"]
-      port_description    = tx_tlvs_cfg.value["port_description"]
+      # exclude - (optional) is a type of number
+      exclude = tx_tlvs_cfg.value["exclude"]
+      # management_address - (optional) is a type of number
+      management_address = tx_tlvs_cfg.value["management_address"]
+      # port_description - (optional) is a type of number
+      port_description = tx_tlvs_cfg.value["port_description"]
+      # system_capabilities - (optional) is a type of number
       system_capabilities = tx_tlvs_cfg.value["system_capabilities"]
-      system_description  = tx_tlvs_cfg.value["system_description"]
-      system_name         = tx_tlvs_cfg.value["system_name"]
-      tx_tlvs             = tx_tlvs_cfg.value["tx_tlvs"]
+      # system_description - (optional) is a type of number
+      system_description = tx_tlvs_cfg.value["system_description"]
+      # system_name - (optional) is a type of number
+      system_name = tx_tlvs_cfg.value["system_name"]
+      # tx_tlvs - (optional) is a type of number
+      tx_tlvs = tx_tlvs_cfg.value["tx_tlvs"]
     }
   }
 

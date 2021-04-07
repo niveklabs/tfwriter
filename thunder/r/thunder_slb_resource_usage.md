@@ -202,26 +202,46 @@ variable "virtual_server_count" {
 
 ```terraform
 resource "thunder_slb_resource_usage" "this" {
-  cache_template_count            = var.cache_template_count
-  client_ssl_template_count       = var.client_ssl_template_count
-  conn_reuse_template_count       = var.conn_reuse_template_count
-  fast_tcp_template_count         = var.fast_tcp_template_count
-  fast_udp_template_count         = var.fast_udp_template_count
-  health_monitor_count            = var.health_monitor_count
-  http_template_count             = var.http_template_count
-  nat_pool_addr_count             = var.nat_pool_addr_count
-  pbslb_subnet_count              = var.pbslb_subnet_count
-  persist_cookie_template_count   = var.persist_cookie_template_count
-  persist_srcip_template_count    = var.persist_srcip_template_count
-  proxy_template_count            = var.proxy_template_count
-  real_port_count                 = var.real_port_count
-  real_server_count               = var.real_server_count
-  server_ssl_template_count       = var.server_ssl_template_count
-  service_group_count             = var.service_group_count
+  # cache_template_count - (optional) is a type of number
+  cache_template_count = var.cache_template_count
+  # client_ssl_template_count - (optional) is a type of number
+  client_ssl_template_count = var.client_ssl_template_count
+  # conn_reuse_template_count - (optional) is a type of number
+  conn_reuse_template_count = var.conn_reuse_template_count
+  # fast_tcp_template_count - (optional) is a type of number
+  fast_tcp_template_count = var.fast_tcp_template_count
+  # fast_udp_template_count - (optional) is a type of number
+  fast_udp_template_count = var.fast_udp_template_count
+  # health_monitor_count - (optional) is a type of number
+  health_monitor_count = var.health_monitor_count
+  # http_template_count - (optional) is a type of number
+  http_template_count = var.http_template_count
+  # nat_pool_addr_count - (optional) is a type of number
+  nat_pool_addr_count = var.nat_pool_addr_count
+  # pbslb_subnet_count - (optional) is a type of number
+  pbslb_subnet_count = var.pbslb_subnet_count
+  # persist_cookie_template_count - (optional) is a type of number
+  persist_cookie_template_count = var.persist_cookie_template_count
+  # persist_srcip_template_count - (optional) is a type of number
+  persist_srcip_template_count = var.persist_srcip_template_count
+  # proxy_template_count - (optional) is a type of number
+  proxy_template_count = var.proxy_template_count
+  # real_port_count - (optional) is a type of number
+  real_port_count = var.real_port_count
+  # real_server_count - (optional) is a type of number
+  real_server_count = var.real_server_count
+  # server_ssl_template_count - (optional) is a type of number
+  server_ssl_template_count = var.server_ssl_template_count
+  # service_group_count - (optional) is a type of number
+  service_group_count = var.service_group_count
+  # slb_threshold_res_usage_percent - (optional) is a type of number
   slb_threshold_res_usage_percent = var.slb_threshold_res_usage_percent
-  stream_template_count           = var.stream_template_count
-  virtual_port_count              = var.virtual_port_count
-  virtual_server_count            = var.virtual_server_count
+  # stream_template_count - (optional) is a type of number
+  stream_template_count = var.stream_template_count
+  # virtual_port_count - (optional) is a type of number
+  virtual_port_count = var.virtual_port_count
+  # virtual_server_count - (optional) is a type of number
+  virtual_server_count = var.virtual_server_count
 }
 ```
 

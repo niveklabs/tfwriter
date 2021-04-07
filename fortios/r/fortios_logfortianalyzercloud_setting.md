@@ -194,25 +194,44 @@ variable "upload_time" {
 
 ```terraform
 resource "fortios_logfortianalyzercloud_setting" "this" {
-  access_config                = var.access_config
-  certificate                  = var.certificate
-  conn_timeout                 = var.conn_timeout
-  enc_algorithm                = var.enc_algorithm
-  hmac_algorithm               = var.hmac_algorithm
-  interface                    = var.interface
-  interface_select_method      = var.interface_select_method
-  ips_archive                  = var.ips_archive
-  max_log_rate                 = var.max_log_rate
+  # access_config - (optional) is a type of string
+  access_config = var.access_config
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # conn_timeout - (optional) is a type of number
+  conn_timeout = var.conn_timeout
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # hmac_algorithm - (optional) is a type of string
+  hmac_algorithm = var.hmac_algorithm
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # ips_archive - (optional) is a type of string
+  ips_archive = var.ips_archive
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = var.max_log_rate
+  # monitor_failure_retry_period - (optional) is a type of number
   monitor_failure_retry_period = var.monitor_failure_retry_period
-  monitor_keepalive_period     = var.monitor_keepalive_period
-  priority                     = var.priority
-  source_ip                    = var.source_ip
-  ssl_min_proto_version        = var.ssl_min_proto_version
-  status                       = var.status
-  upload_day                   = var.upload_day
-  upload_interval              = var.upload_interval
-  upload_option                = var.upload_option
-  upload_time                  = var.upload_time
+  # monitor_keepalive_period - (optional) is a type of number
+  monitor_keepalive_period = var.monitor_keepalive_period
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # status - (optional) is a type of string
+  status = var.status
+  # upload_day - (optional) is a type of string
+  upload_day = var.upload_day
+  # upload_interval - (optional) is a type of string
+  upload_interval = var.upload_interval
+  # upload_option - (optional) is a type of string
+  upload_option = var.upload_option
+  # upload_time - (optional) is a type of string
+  upload_time = var.upload_time
 }
 ```
 

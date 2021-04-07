@@ -64,9 +64,12 @@ variable "reverse" {
 
 ```terraform
 resource "ovh_ip_reverse" "this" {
-  ip        = var.ip
+  # ip - (required) is a type of string
+  ip = var.ip
+  # ipreverse - (optional) is a type of string
   ipreverse = var.ipreverse
-  reverse   = var.reverse
+  # reverse - (required) is a type of string
+  reverse = var.reverse
 }
 ```
 

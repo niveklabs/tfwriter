@@ -50,6 +50,7 @@ variable "pool" {
 
 ```terraform
 resource "thunder_slb_svm_source_nat" "this" {
+  # pool - (optional) is a type of string
   pool = var.pool
 }
 ```

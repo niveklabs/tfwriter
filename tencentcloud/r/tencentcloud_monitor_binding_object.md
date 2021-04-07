@@ -64,11 +64,13 @@ variable "dimensions" {
 
 ```terraform
 resource "tencentcloud_monitor_binding_object" "this" {
+  # group_id - (required) is a type of number
   group_id = var.group_id
 
   dynamic "dimensions" {
     for_each = var.dimensions
     content {
+      # dimensions_json - (required) is a type of string
       dimensions_json = dimensions.value["dimensions_json"]
     }
   }

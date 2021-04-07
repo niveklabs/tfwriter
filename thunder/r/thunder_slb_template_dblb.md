@@ -96,15 +96,21 @@ variable "calc_sha1" {
 
 ```terraform
 resource "thunder_slb_template_dblb" "this" {
-  class_list     = var.class_list
-  name           = var.name
+  # class_list - (optional) is a type of string
+  class_list = var.class_list
+  # name - (optional) is a type of string
+  name = var.name
+  # server_version - (optional) is a type of string
   server_version = var.server_version
-  user_tag       = var.user_tag
-  uuid           = var.uuid
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "calc_sha1" {
     for_each = var.calc_sha1
     content {
+      # sha1_value - (optional) is a type of string
       sha1_value = calc_sha1.value["sha1_value"]
     }
   }

@@ -199,26 +199,46 @@ variable "weight" {
 
 ```terraform
 resource "panos_panorama_bgp_aggregate" "this" {
-  as_path_limit            = var.as_path_limit
-  as_path_type             = var.as_path_type
-  as_path_value            = var.as_path_value
-  as_set                   = var.as_set
-  community_type           = var.community_type
-  community_value          = var.community_value
-  enable                   = var.enable
-  extended_community_type  = var.extended_community_type
+  # as_path_limit - (optional) is a type of number
+  as_path_limit = var.as_path_limit
+  # as_path_type - (optional) is a type of string
+  as_path_type = var.as_path_type
+  # as_path_value - (optional) is a type of string
+  as_path_value = var.as_path_value
+  # as_set - (optional) is a type of bool
+  as_set = var.as_set
+  # community_type - (optional) is a type of string
+  community_type = var.community_type
+  # community_value - (optional) is a type of string
+  community_value = var.community_value
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # extended_community_type - (optional) is a type of string
+  extended_community_type = var.extended_community_type
+  # extended_community_value - (optional) is a type of string
   extended_community_value = var.extended_community_value
-  local_preference         = var.local_preference
-  med                      = var.med
-  name                     = var.name
-  next_hop                 = var.next_hop
-  origin                   = var.origin
-  prefix                   = var.prefix
-  summary                  = var.summary
-  template                 = var.template
-  template_stack           = var.template_stack
-  virtual_router           = var.virtual_router
-  weight                   = var.weight
+  # local_preference - (optional) is a type of string
+  local_preference = var.local_preference
+  # med - (optional) is a type of string
+  med = var.med
+  # name - (required) is a type of string
+  name = var.name
+  # next_hop - (optional) is a type of string
+  next_hop = var.next_hop
+  # origin - (optional) is a type of string
+  origin = var.origin
+  # prefix - (required) is a type of string
+  prefix = var.prefix
+  # summary - (optional) is a type of bool
+  summary = var.summary
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

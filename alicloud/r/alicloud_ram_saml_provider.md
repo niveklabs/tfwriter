@@ -65,9 +65,12 @@ variable "saml_provider_name" {
 
 ```terraform
 resource "alicloud_ram_saml_provider" "this" {
-  description                   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # encodedsaml_metadata_document - (optional) is a type of string
   encodedsaml_metadata_document = var.encodedsaml_metadata_document
-  saml_provider_name            = var.saml_provider_name
+  # saml_provider_name - (required) is a type of string
+  saml_provider_name = var.saml_provider_name
 }
 ```
 

@@ -82,11 +82,16 @@ variable "tls_service" {
 
 ```terraform
 data "fastly_tls_configuration" "this" {
-  default        = var.default
+  # default - (optional) is a type of bool
+  default = var.default
+  # http_protocols - (optional) is a type of set of string
   http_protocols = var.http_protocols
-  name           = var.name
-  tls_protocols  = var.tls_protocols
-  tls_service    = var.tls_service
+  # name - (optional) is a type of string
+  name = var.name
+  # tls_protocols - (optional) is a type of set of string
+  tls_protocols = var.tls_protocols
+  # tls_service - (optional) is a type of string
+  tls_service = var.tls_service
 }
 ```
 

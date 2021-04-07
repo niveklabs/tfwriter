@@ -71,10 +71,14 @@ variable "target_type" {
 
 ```terraform
 resource "dome9_continuous_compliance_policy" "this" {
+  # notification_ids - (required) is a type of list of string
   notification_ids = var.notification_ids
-  ruleset_id       = var.ruleset_id
-  target_id        = var.target_id
-  target_type      = var.target_type
+  # ruleset_id - (optional) is a type of number
+  ruleset_id = var.ruleset_id
+  # target_id - (required) is a type of string
+  target_id = var.target_id
+  # target_type - (required) is a type of string
+  target_type = var.target_type
 }
 ```
 

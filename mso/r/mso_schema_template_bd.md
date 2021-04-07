@@ -141,19 +141,32 @@ variable "vrf_template_name" {
 
 ```terraform
 resource "mso_schema_template_bd" "this" {
-  dhcp_policy            = var.dhcp_policy
-  display_name           = var.display_name
-  intersite_bum_traffic  = var.intersite_bum_traffic
-  layer2_stretch         = var.layer2_stretch
+  # dhcp_policy - (optional) is a type of map of string
+  dhcp_policy = var.dhcp_policy
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # intersite_bum_traffic - (optional) is a type of bool
+  intersite_bum_traffic = var.intersite_bum_traffic
+  # layer2_stretch - (optional) is a type of bool
+  layer2_stretch = var.layer2_stretch
+  # layer2_unknown_unicast - (optional) is a type of string
   layer2_unknown_unicast = var.layer2_unknown_unicast
-  layer3_multicast       = var.layer3_multicast
-  name                   = var.name
+  # layer3_multicast - (optional) is a type of bool
+  layer3_multicast = var.layer3_multicast
+  # name - (required) is a type of string
+  name = var.name
+  # optimize_wan_bandwidth - (optional) is a type of bool
   optimize_wan_bandwidth = var.optimize_wan_bandwidth
-  schema_id              = var.schema_id
-  template_name          = var.template_name
-  vrf_name               = var.vrf_name
-  vrf_schema_id          = var.vrf_schema_id
-  vrf_template_name      = var.vrf_template_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
+  # vrf_schema_id - (optional) is a type of string
+  vrf_schema_id = var.vrf_schema_id
+  # vrf_template_name - (optional) is a type of string
+  vrf_template_name = var.vrf_template_name
 }
 ```
 

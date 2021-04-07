@@ -198,28 +198,47 @@ variable "monitor_interface" {
 
 ```terraform
 resource "fortios_system_ddns" "this" {
-  bound_ip              = var.bound_ip
-  clear_text            = var.clear_text
-  ddns_auth             = var.ddns_auth
-  ddns_domain           = var.ddns_domain
-  ddns_key              = var.ddns_key
-  ddns_keyname          = var.ddns_keyname
-  ddns_password         = var.ddns_password
-  ddns_server           = var.ddns_server
-  ddns_server_ip        = var.ddns_server_ip
-  ddns_sn               = var.ddns_sn
-  ddns_ttl              = var.ddns_ttl
-  ddns_username         = var.ddns_username
-  ddns_zone             = var.ddns_zone
-  ddnsid                = var.ddnsid
+  # bound_ip - (optional) is a type of string
+  bound_ip = var.bound_ip
+  # clear_text - (optional) is a type of string
+  clear_text = var.clear_text
+  # ddns_auth - (optional) is a type of string
+  ddns_auth = var.ddns_auth
+  # ddns_domain - (optional) is a type of string
+  ddns_domain = var.ddns_domain
+  # ddns_key - (optional) is a type of string
+  ddns_key = var.ddns_key
+  # ddns_keyname - (optional) is a type of string
+  ddns_keyname = var.ddns_keyname
+  # ddns_password - (optional) is a type of string
+  ddns_password = var.ddns_password
+  # ddns_server - (required) is a type of string
+  ddns_server = var.ddns_server
+  # ddns_server_ip - (optional) is a type of string
+  ddns_server_ip = var.ddns_server_ip
+  # ddns_sn - (optional) is a type of string
+  ddns_sn = var.ddns_sn
+  # ddns_ttl - (optional) is a type of number
+  ddns_ttl = var.ddns_ttl
+  # ddns_username - (optional) is a type of string
+  ddns_username = var.ddns_username
+  # ddns_zone - (optional) is a type of string
+  ddns_zone = var.ddns_zone
+  # ddnsid - (optional) is a type of number
+  ddnsid = var.ddnsid
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ssl_certificate       = var.ssl_certificate
-  update_interval       = var.update_interval
-  use_public_ip         = var.use_public_ip
+  # ssl_certificate - (optional) is a type of string
+  ssl_certificate = var.ssl_certificate
+  # update_interval - (optional) is a type of number
+  update_interval = var.update_interval
+  # use_public_ip - (optional) is a type of string
+  use_public_ip = var.use_public_ip
 
   dynamic "monitor_interface" {
     for_each = var.monitor_interface
     content {
+      # interface_name - (optional) is a type of string
       interface_name = monitor_interface.value["interface_name"]
     }
   }

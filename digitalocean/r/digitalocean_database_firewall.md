@@ -68,12 +68,15 @@ variable "rule" {
 
 ```terraform
 resource "digitalocean_database_firewall" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      type  = rule.value["type"]
+      # type - (required) is a type of string
+      type = rule.value["type"]
+      # value - (required) is a type of string
       value = rule.value["value"]
     }
   }

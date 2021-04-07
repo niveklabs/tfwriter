@@ -97,24 +97,32 @@ variable "default_datacenter" {
 
 ```terraform
 resource "akamai_gtm_cidrmap" "this" {
-  domain           = var.domain
-  name             = var.name
+  # domain - (required) is a type of string
+  domain = var.domain
+  # name - (required) is a type of string
+  name = var.name
+  # wait_on_complete - (optional) is a type of bool
   wait_on_complete = var.wait_on_complete
 
   dynamic "assignment" {
     for_each = var.assignment
     content {
-      blocks        = assignment.value["blocks"]
+      # blocks - (optional) is a type of list of string
+      blocks = assignment.value["blocks"]
+      # datacenter_id - (required) is a type of number
       datacenter_id = assignment.value["datacenter_id"]
-      nickname      = assignment.value["nickname"]
+      # nickname - (required) is a type of string
+      nickname = assignment.value["nickname"]
     }
   }
 
   dynamic "default_datacenter" {
     for_each = var.default_datacenter
     content {
+      # datacenter_id - (required) is a type of number
       datacenter_id = default_datacenter.value["datacenter_id"]
-      nickname      = default_datacenter.value["nickname"]
+      # nickname - (optional) is a type of string
+      nickname = default_datacenter.value["nickname"]
     }
   }
 

@@ -80,11 +80,16 @@ variable "source_category" {
 
 ```terraform
 resource "aviatrix_sumologic_forwarder" "this" {
-  access_id            = var.access_id
-  access_key           = var.access_key
+  # access_id - (required) is a type of string
+  access_id = var.access_id
+  # access_key - (required) is a type of string
+  access_key = var.access_key
+  # custom_configuration - (optional) is a type of string
   custom_configuration = var.custom_configuration
-  excluded_gateways    = var.excluded_gateways
-  source_category      = var.source_category
+  # excluded_gateways - (optional) is a type of set of string
+  excluded_gateways = var.excluded_gateways
+  # source_category - (optional) is a type of string
+  source_category = var.source_category
 }
 ```
 

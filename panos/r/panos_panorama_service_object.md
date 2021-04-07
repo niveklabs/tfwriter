@@ -127,17 +127,28 @@ variable "tags" {
 
 ```terraform
 resource "panos_panorama_service_object" "this" {
-  description                  = var.description
-  destination_port             = var.destination_port
-  device_group                 = var.device_group
-  name                         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_port - (required) is a type of string
+  destination_port = var.destination_port
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # name - (required) is a type of string
+  name = var.name
+  # override_half_closed_timeout - (optional) is a type of number
   override_half_closed_timeout = var.override_half_closed_timeout
-  override_session_timeout     = var.override_session_timeout
-  override_time_wait_timeout   = var.override_time_wait_timeout
-  override_timeout             = var.override_timeout
-  protocol                     = var.protocol
-  source_port                  = var.source_port
-  tags                         = var.tags
+  # override_session_timeout - (optional) is a type of bool
+  override_session_timeout = var.override_session_timeout
+  # override_time_wait_timeout - (optional) is a type of number
+  override_time_wait_timeout = var.override_time_wait_timeout
+  # override_timeout - (optional) is a type of number
+  override_timeout = var.override_timeout
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # source_port - (optional) is a type of string
+  source_port = var.source_port
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

@@ -80,11 +80,16 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_tcr_instance" "this" {
-  delete_bucket         = var.delete_bucket
-  instance_type         = var.instance_type
-  name                  = var.name
+  # delete_bucket - (optional) is a type of bool
+  delete_bucket = var.delete_bucket
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # name - (required) is a type of string
+  name = var.name
+  # open_public_operation - (optional) is a type of bool
   open_public_operation = var.open_public_operation
-  tags                  = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

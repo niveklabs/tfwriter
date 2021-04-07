@@ -90,12 +90,18 @@ variable "zone" {
 
 ```terraform
 data "scaleway_instance_image" "this" {
+  # architecture - (optional) is a type of string
   architecture = var.architecture
-  image_id     = var.image_id
-  latest       = var.latest
-  name         = var.name
-  project_id   = var.project_id
-  zone         = var.zone
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # latest - (optional) is a type of bool
+  latest = var.latest
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

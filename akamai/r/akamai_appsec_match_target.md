@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_match_target" "this" {
-  config_id    = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # match_target - (required) is a type of string
   match_target = var.match_target
-  version      = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

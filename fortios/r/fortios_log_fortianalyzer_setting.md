@@ -97,13 +97,20 @@ variable "upload_option" {
 
 ```terraform
 resource "fortios_log_fortianalyzer_setting" "this" {
-  enc_algorithm  = var.enc_algorithm
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # hmac_algorithm - (optional) is a type of string
   hmac_algorithm = var.hmac_algorithm
-  reliable       = var.reliable
-  server         = var.server
-  source_ip      = var.source_ip
-  status         = var.status
-  upload_option  = var.upload_option
+  # reliable - (optional) is a type of string
+  reliable = var.reliable
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # status - (required) is a type of string
+  status = var.status
+  # upload_option - (optional) is a type of string
+  upload_option = var.upload_option
 }
 ```
 

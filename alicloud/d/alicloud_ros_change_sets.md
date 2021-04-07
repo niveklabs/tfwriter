@@ -97,13 +97,20 @@ variable "status" {
 
 ```terraform
 data "alicloud_ros_change_sets" "this" {
+  # change_set_name - (optional) is a type of string
   change_set_name = var.change_set_name
-  enable_details  = var.enable_details
-  ids             = var.ids
-  name_regex      = var.name_regex
-  output_file     = var.output_file
-  stack_id        = var.stack_id
-  status          = var.status
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # stack_id - (required) is a type of string
+  stack_id = var.stack_id
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

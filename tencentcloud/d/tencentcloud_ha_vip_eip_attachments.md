@@ -65,8 +65,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_ha_vip_eip_attachments" "this" {
-  address_ip         = var.address_ip
-  havip_id           = var.havip_id
+  # address_ip - (optional) is a type of string
+  address_ip = var.address_ip
+  # havip_id - (required) is a type of string
+  havip_id = var.havip_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

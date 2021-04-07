@@ -50,6 +50,7 @@ variable "enable_private_oob" {
 
 ```terraform
 resource "aviatrix_controller_private_oob" "this" {
+  # enable_private_oob - (optional) is a type of bool
   enable_private_oob = var.enable_private_oob
 }
 ```

@@ -80,11 +80,16 @@ variable "name" {
 
 ```terraform
 resource "lacework_alert_channel_qradar" "this" {
+  # communication_type - (optional) is a type of string
   communication_type = var.communication_type
-  enabled            = var.enabled
-  host_port          = var.host_port
-  host_url           = var.host_url
-  name               = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # host_port - (optional) is a type of number
+  host_port = var.host_port
+  # host_url - (required) is a type of string
+  host_url = var.host_url
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

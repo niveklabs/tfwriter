@@ -49,6 +49,7 @@ variable "interface" {
 
 ```terraform
 data "panos_dhcp_interface_info" "this" {
+  # interface - (required) is a type of string
   interface = var.interface
 }
 ```

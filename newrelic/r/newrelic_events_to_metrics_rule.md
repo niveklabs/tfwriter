@@ -80,11 +80,16 @@ variable "nrql" {
 
 ```terraform
 resource "newrelic_events_to_metrics_rule" "this" {
-  account_id  = var.account_id
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
-  nrql        = var.nrql
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # nrql - (required) is a type of string
+  nrql = var.nrql
 }
 ```
 

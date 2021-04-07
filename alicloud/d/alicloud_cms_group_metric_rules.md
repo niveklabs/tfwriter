@@ -122,16 +122,26 @@ variable "status" {
 
 ```terraform
 data "alicloud_cms_group_metric_rules" "this" {
-  dimensions             = var.dimensions
-  enable_state           = var.enable_state
-  group_id               = var.group_id
+  # dimensions - (optional) is a type of string
+  dimensions = var.dimensions
+  # enable_state - (optional) is a type of bool
+  enable_state = var.enable_state
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # group_metric_rule_name - (optional) is a type of string
   group_metric_rule_name = var.group_metric_rule_name
-  ids                    = var.ids
-  metric_name            = var.metric_name
-  name_regex             = var.name_regex
-  namespace              = var.namespace
-  output_file            = var.output_file
-  status                 = var.status
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # metric_name - (optional) is a type of string
+  metric_name = var.metric_name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

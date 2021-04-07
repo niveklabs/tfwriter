@@ -122,16 +122,26 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_slb_server_certificate" "this" {
-  alicloud_certifacte_id         = var.alicloud_certifacte_id
-  alicloud_certifacte_name       = var.alicloud_certifacte_name
-  alicloud_certificate_id        = var.alicloud_certificate_id
-  alicloud_certificate_name      = var.alicloud_certificate_name
+  # alicloud_certifacte_id - (optional) is a type of string
+  alicloud_certifacte_id = var.alicloud_certifacte_id
+  # alicloud_certifacte_name - (optional) is a type of string
+  alicloud_certifacte_name = var.alicloud_certifacte_name
+  # alicloud_certificate_id - (optional) is a type of string
+  alicloud_certificate_id = var.alicloud_certificate_id
+  # alicloud_certificate_name - (optional) is a type of string
+  alicloud_certificate_name = var.alicloud_certificate_name
+  # alicloud_certificate_region_id - (optional) is a type of string
   alicloud_certificate_region_id = var.alicloud_certificate_region_id
-  name                           = var.name
-  private_key                    = var.private_key
-  resource_group_id              = var.resource_group_id
-  server_certificate             = var.server_certificate
-  tags                           = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # server_certificate - (optional) is a type of string
+  server_certificate = var.server_certificate
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

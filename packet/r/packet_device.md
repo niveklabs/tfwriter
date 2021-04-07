@@ -208,38 +208,61 @@ variable "timeouts" {
 
 ```terraform
 resource "packet_device" "this" {
-  always_pxe                       = var.always_pxe
-  billing_cycle                    = var.billing_cycle
-  custom_data                      = var.custom_data
-  description                      = var.description
-  facilities                       = var.facilities
-  force_detach_volumes             = var.force_detach_volumes
-  hardware_reservation_id          = var.hardware_reservation_id
-  hostname                         = var.hostname
-  ipxe_script_url                  = var.ipxe_script_url
-  operating_system                 = var.operating_system
-  plan                             = var.plan
-  project_id                       = var.project_id
-  project_ssh_key_ids              = var.project_ssh_key_ids
-  storage                          = var.storage
-  tags                             = var.tags
-  user_data                        = var.user_data
+  # always_pxe - (optional) is a type of bool
+  always_pxe = var.always_pxe
+  # billing_cycle - (required) is a type of string
+  billing_cycle = var.billing_cycle
+  # custom_data - (optional) is a type of string
+  custom_data = var.custom_data
+  # description - (optional) is a type of string
+  description = var.description
+  # facilities - (required) is a type of list of string
+  facilities = var.facilities
+  # force_detach_volumes - (optional) is a type of bool
+  force_detach_volumes = var.force_detach_volumes
+  # hardware_reservation_id - (optional) is a type of string
+  hardware_reservation_id = var.hardware_reservation_id
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # ipxe_script_url - (optional) is a type of string
+  ipxe_script_url = var.ipxe_script_url
+  # operating_system - (required) is a type of string
+  operating_system = var.operating_system
+  # plan - (required) is a type of string
+  plan = var.plan
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # project_ssh_key_ids - (optional) is a type of list of string
+  project_ssh_key_ids = var.project_ssh_key_ids
+  # storage - (optional) is a type of string
+  storage = var.storage
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # wait_for_reservation_deprovision - (optional) is a type of bool
   wait_for_reservation_deprovision = var.wait_for_reservation_deprovision
 
   dynamic "ip_address" {
     for_each = var.ip_address
     content {
-      cidr            = ip_address.value["cidr"]
+      # cidr - (optional) is a type of number
+      cidr = ip_address.value["cidr"]
+      # reservation_ids - (optional) is a type of list of string
       reservation_ids = ip_address.value["reservation_ids"]
-      type            = ip_address.value["type"]
+      # type - (required) is a type of string
+      type = ip_address.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

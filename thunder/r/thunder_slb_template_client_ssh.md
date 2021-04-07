@@ -98,13 +98,20 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_client_ssh" "this" {
-  encrypted             = var.encrypted
-  forward_proxy_enable  = var.forward_proxy_enable
+  # encrypted - (optional) is a type of string
+  encrypted = var.encrypted
+  # forward_proxy_enable - (optional) is a type of number
+  forward_proxy_enable = var.forward_proxy_enable
+  # forward_proxy_hostkey - (optional) is a type of string
   forward_proxy_hostkey = var.forward_proxy_hostkey
-  name                  = var.name
-  passphrase            = var.passphrase
-  user_tag              = var.user_tag
-  uuid                  = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

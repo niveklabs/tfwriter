@@ -81,11 +81,16 @@ variable "resources" {
 
 ```terraform
 resource "digitalocean_project" "this" {
+  # description - (optional) is a type of string
   description = var.description
+  # environment - (optional) is a type of string
   environment = var.environment
-  name        = var.name
-  purpose     = var.purpose
-  resources   = var.resources
+  # name - (required) is a type of string
+  name = var.name
+  # purpose - (optional) is a type of string
+  purpose = var.purpose
+  # resources - (optional) is a type of set of string
+  resources = var.resources
 }
 ```
 

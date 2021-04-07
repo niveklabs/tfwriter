@@ -119,16 +119,23 @@ variable "openstack" {
 
 ```terraform
 resource "avi_autoscalelaunchconfig" "this" {
-  description      = var.description
-  image_id         = var.image_id
-  name             = var.name
-  tenant_ref       = var.tenant_ref
+  # description - (optional) is a type of string
+  description = var.description
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # use_external_asg - (optional) is a type of bool
   use_external_asg = var.use_external_asg
-  uuid             = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "mesos" {
     for_each = var.mesos
     content {
+      # force - (optional) is a type of bool
       force = mesos.value["force"]
     }
   }
@@ -136,8 +143,10 @@ resource "avi_autoscalelaunchconfig" "this" {
   dynamic "openstack" {
     for_each = var.openstack
     content {
+      # heat_scale_down_url - (optional) is a type of string
       heat_scale_down_url = openstack.value["heat_scale_down_url"]
-      heat_scale_up_url   = openstack.value["heat_scale_up_url"]
+      # heat_scale_up_url - (optional) is a type of string
+      heat_scale_up_url = openstack.value["heat_scale_up_url"]
     }
   }
 

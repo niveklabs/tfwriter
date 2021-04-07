@@ -57,7 +57,9 @@ variable "encryption_context" {
 
 ```terraform
 data "alicloud_kms_plaintext" "this" {
-  ciphertext_blob    = var.ciphertext_blob
+  # ciphertext_blob - (required) is a type of string
+  ciphertext_blob = var.ciphertext_blob
+  # encryption_context - (optional) is a type of map of string
   encryption_context = var.encryption_context
 }
 ```

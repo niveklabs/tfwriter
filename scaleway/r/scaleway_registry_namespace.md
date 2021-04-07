@@ -95,15 +95,21 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_registry_namespace" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  is_public   = var.is_public
-  name        = var.name
-  project_id  = var.project_id
-  region      = var.region
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

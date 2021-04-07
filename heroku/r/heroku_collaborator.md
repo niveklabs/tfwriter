@@ -56,7 +56,9 @@ variable "email" {
 
 ```terraform
 resource "heroku_collaborator" "this" {
-  app   = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # email - (required) is a type of string
   email = var.email
 }
 ```

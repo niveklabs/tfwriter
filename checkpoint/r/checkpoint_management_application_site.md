@@ -137,17 +137,29 @@ variable "urls_defined_as_regular_expression" {
 
 ```terraform
 resource "checkpoint_management_application_site" "this" {
-  additional_categories              = var.additional_categories
-  application_signature              = var.application_signature
-  color                              = var.color
-  comments                           = var.comments
-  description                        = var.description
-  ignore_errors                      = var.ignore_errors
-  ignore_warnings                    = var.ignore_warnings
-  name                               = var.name
-  primary_category                   = var.primary_category
-  tags                               = var.tags
-  url_list                           = var.url_list
+  # additional_categories - (optional) is a type of set of string
+  additional_categories = var.additional_categories
+  # application_signature - (optional) is a type of string
+  application_signature = var.application_signature
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # description - (optional) is a type of string
+  description = var.description
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # name - (required) is a type of string
+  name = var.name
+  # primary_category - (optional) is a type of string
+  primary_category = var.primary_category
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # url_list - (optional) is a type of set of string
+  url_list = var.url_list
+  # urls_defined_as_regular_expression - (optional) is a type of bool
   urls_defined_as_regular_expression = var.urls_defined_as_regular_expression
 }
 ```

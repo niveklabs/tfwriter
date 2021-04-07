@@ -116,32 +116,49 @@ variable "user_associations" {
 
 ```terraform
 resource "mso_tenant" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "site_associations" {
     for_each = var.site_associations
     content {
-      aws_access_key_id         = site_associations.value["aws_access_key_id"]
-      aws_account_id            = site_associations.value["aws_account_id"]
-      aws_secret_key            = site_associations.value["aws_secret_key"]
-      azure_access_type         = site_associations.value["azure_access_type"]
+      # aws_access_key_id - (optional) is a type of string
+      aws_access_key_id = site_associations.value["aws_access_key_id"]
+      # aws_account_id - (optional) is a type of string
+      aws_account_id = site_associations.value["aws_account_id"]
+      # aws_secret_key - (optional) is a type of string
+      aws_secret_key = site_associations.value["aws_secret_key"]
+      # azure_access_type - (optional) is a type of string
+      azure_access_type = site_associations.value["azure_access_type"]
+      # azure_active_directory_id - (optional) is a type of string
       azure_active_directory_id = site_associations.value["azure_active_directory_id"]
-      azure_application_id      = site_associations.value["azure_application_id"]
-      azure_client_secret       = site_associations.value["azure_client_secret"]
-      azure_shared_account_id   = site_associations.value["azure_shared_account_id"]
-      azure_subscription_id     = site_associations.value["azure_subscription_id"]
-      is_aws_account_trusted    = site_associations.value["is_aws_account_trusted"]
-      security_domains          = site_associations.value["security_domains"]
-      site_id                   = site_associations.value["site_id"]
-      vendor                    = site_associations.value["vendor"]
+      # azure_application_id - (optional) is a type of string
+      azure_application_id = site_associations.value["azure_application_id"]
+      # azure_client_secret - (optional) is a type of string
+      azure_client_secret = site_associations.value["azure_client_secret"]
+      # azure_shared_account_id - (optional) is a type of string
+      azure_shared_account_id = site_associations.value["azure_shared_account_id"]
+      # azure_subscription_id - (optional) is a type of string
+      azure_subscription_id = site_associations.value["azure_subscription_id"]
+      # is_aws_account_trusted - (optional) is a type of bool
+      is_aws_account_trusted = site_associations.value["is_aws_account_trusted"]
+      # security_domains - (optional) is a type of list of string
+      security_domains = site_associations.value["security_domains"]
+      # site_id - (optional) is a type of string
+      site_id = site_associations.value["site_id"]
+      # vendor - (optional) is a type of string
+      vendor = site_associations.value["vendor"]
     }
   }
 
   dynamic "user_associations" {
     for_each = var.user_associations
     content {
+      # user_id - (optional) is a type of string
       user_id = user_associations.value["user_id"]
     }
   }

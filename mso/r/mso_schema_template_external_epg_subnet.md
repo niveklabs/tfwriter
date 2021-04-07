@@ -94,13 +94,20 @@ variable "template_name" {
 
 ```terraform
 resource "mso_schema_template_external_epg_subnet" "this" {
-  aggregate         = var.aggregate
+  # aggregate - (optional) is a type of list of string
+  aggregate = var.aggregate
+  # external_epg_name - (required) is a type of string
   external_epg_name = var.external_epg_name
-  ip                = var.ip
-  name              = var.name
-  schema_id         = var.schema_id
-  scope             = var.scope
-  template_name     = var.template_name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name - (optional) is a type of string
+  name = var.name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # scope - (optional) is a type of list of string
+  scope = var.scope
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

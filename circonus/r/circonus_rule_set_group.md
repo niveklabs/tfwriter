@@ -113,34 +113,47 @@ variable "notify" {
 
 ```terraform
 resource "circonus_rule_set_group" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of list of string
   tags = var.tags
 
   dynamic "condition" {
     for_each = var.condition
     content {
-      index               = condition.value["index"]
+      # index - (required) is a type of number
+      index = condition.value["index"]
+      # matching_severities - (required) is a type of list of string
       matching_severities = condition.value["matching_severities"]
-      rule_set            = condition.value["rule_set"]
+      # rule_set - (required) is a type of string
+      rule_set = condition.value["rule_set"]
     }
   }
 
   dynamic "formula" {
     for_each = var.formula
     content {
-      expression     = formula.value["expression"]
+      # expression - (required) is a type of string
+      expression = formula.value["expression"]
+      # raise_severity - (required) is a type of number
       raise_severity = formula.value["raise_severity"]
-      wait           = formula.value["wait"]
+      # wait - (required) is a type of number
+      wait = formula.value["wait"]
     }
   }
 
   dynamic "notify" {
     for_each = var.notify
     content {
+      # sev1 - (optional) is a type of list of string
       sev1 = notify.value["sev1"]
+      # sev2 - (optional) is a type of list of string
       sev2 = notify.value["sev2"]
+      # sev3 - (optional) is a type of list of string
       sev3 = notify.value["sev3"]
+      # sev4 - (optional) is a type of list of string
       sev4 = notify.value["sev4"]
+      # sev5 - (optional) is a type of list of string
       sev5 = notify.value["sev5"]
     }
   }

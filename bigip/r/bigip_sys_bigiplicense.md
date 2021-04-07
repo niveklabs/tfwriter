@@ -56,7 +56,9 @@ variable "registration_key" {
 
 ```terraform
 resource "bigip_sys_bigiplicense" "this" {
-  command          = var.command
+  # command - (required) is a type of string
+  command = var.command
+  # registration_key - (required) is a type of string
   registration_key = var.registration_key
 }
 ```

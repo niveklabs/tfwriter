@@ -57,7 +57,9 @@ variable "zone" {
 
 ```terraform
 data "exoscale_nlb" "this" {
+  # name - (optional) is a type of string
   name = var.name
+  # zone - (required) is a type of string
   zone = var.zone
 }
 ```

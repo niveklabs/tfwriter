@@ -71,9 +71,13 @@ variable "username" {
 
 ```terraform
 resource "opsgenie_user_contact" "this" {
-  enabled  = var.enabled
-  method   = var.method
-  to       = var.to
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # method - (required) is a type of string
+  method = var.method
+  # to - (required) is a type of string
+  to = var.to
+  # username - (required) is a type of string
   username = var.username
 }
 ```

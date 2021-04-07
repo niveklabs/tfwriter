@@ -126,31 +126,46 @@ variable "src_peer" {
 
 ```terraform
 resource "fortios_wanopt_cacheservice" "this" {
+  # acceptable_connections - (optional) is a type of string
   acceptable_connections = var.acceptable_connections
-  collaboration          = var.collaboration
-  device_id              = var.device_id
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  prefer_scenario        = var.prefer_scenario
+  # collaboration - (optional) is a type of string
+  collaboration = var.collaboration
+  # device_id - (optional) is a type of string
+  device_id = var.device_id
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # prefer_scenario - (optional) is a type of string
+  prefer_scenario = var.prefer_scenario
 
   dynamic "dst_peer" {
     for_each = var.dst_peer
     content {
-      auth_type   = dst_peer.value["auth_type"]
-      device_id   = dst_peer.value["device_id"]
+      # auth_type - (optional) is a type of number
+      auth_type = dst_peer.value["auth_type"]
+      # device_id - (optional) is a type of string
+      device_id = dst_peer.value["device_id"]
+      # encode_type - (optional) is a type of number
       encode_type = dst_peer.value["encode_type"]
-      ip          = dst_peer.value["ip"]
-      priority    = dst_peer.value["priority"]
+      # ip - (optional) is a type of string
+      ip = dst_peer.value["ip"]
+      # priority - (optional) is a type of number
+      priority = dst_peer.value["priority"]
     }
   }
 
   dynamic "src_peer" {
     for_each = var.src_peer
     content {
-      auth_type   = src_peer.value["auth_type"]
-      device_id   = src_peer.value["device_id"]
+      # auth_type - (optional) is a type of number
+      auth_type = src_peer.value["auth_type"]
+      # device_id - (optional) is a type of string
+      device_id = src_peer.value["device_id"]
+      # encode_type - (optional) is a type of number
       encode_type = src_peer.value["encode_type"]
-      ip          = src_peer.value["ip"]
-      priority    = src_peer.value["priority"]
+      # ip - (optional) is a type of string
+      ip = src_peer.value["ip"]
+      # priority - (optional) is a type of number
+      priority = src_peer.value["priority"]
     }
   }
 

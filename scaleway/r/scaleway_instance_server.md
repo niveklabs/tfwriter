@@ -208,35 +208,55 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_instance_server" "this" {
+  # additional_volume_ids - (optional) is a type of list of string
   additional_volume_ids = var.additional_volume_ids
-  boot_type             = var.boot_type
-  bootscript_id         = var.bootscript_id
-  cloud_init            = var.cloud_init
-  enable_dynamic_ip     = var.enable_dynamic_ip
-  enable_ipv6           = var.enable_ipv6
-  image                 = var.image
-  ip_id                 = var.ip_id
-  name                  = var.name
-  placement_group_id    = var.placement_group_id
-  project_id            = var.project_id
-  security_group_id     = var.security_group_id
-  state                 = var.state
-  tags                  = var.tags
-  type                  = var.type
-  user_data             = var.user_data
-  zone                  = var.zone
+  # boot_type - (optional) is a type of string
+  boot_type = var.boot_type
+  # bootscript_id - (optional) is a type of string
+  bootscript_id = var.bootscript_id
+  # cloud_init - (optional) is a type of string
+  cloud_init = var.cloud_init
+  # enable_dynamic_ip - (optional) is a type of bool
+  enable_dynamic_ip = var.enable_dynamic_ip
+  # enable_ipv6 - (optional) is a type of bool
+  enable_ipv6 = var.enable_ipv6
+  # image - (required) is a type of string
+  image = var.image
+  # ip_id - (optional) is a type of string
+  ip_id = var.ip_id
+  # name - (optional) is a type of string
+  name = var.name
+  # placement_group_id - (optional) is a type of string
+  placement_group_id = var.placement_group_id
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # user_data - (optional) is a type of map of string
+  user_data = var.user_data
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "root_volume" {
     for_each = var.root_volume
     content {
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = root_volume.value["delete_on_termination"]
-      size_in_gb            = root_volume.value["size_in_gb"]
+      # size_in_gb - (optional) is a type of number
+      size_in_gb = root_volume.value["size_in_gb"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

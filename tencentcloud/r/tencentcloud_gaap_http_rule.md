@@ -153,25 +153,41 @@ variable "realservers" {
 
 ```terraform
 resource "tencentcloud_gaap_http_rule" "this" {
-  connect_timeout           = var.connect_timeout
-  domain                    = var.domain
-  forward_host              = var.forward_host
-  health_check              = var.health_check
-  health_check_method       = var.health_check_method
-  health_check_path         = var.health_check_path
+  # connect_timeout - (optional) is a type of number
+  connect_timeout = var.connect_timeout
+  # domain - (required) is a type of string
+  domain = var.domain
+  # forward_host - (optional) is a type of string
+  forward_host = var.forward_host
+  # health_check - (required) is a type of bool
+  health_check = var.health_check
+  # health_check_method - (optional) is a type of string
+  health_check_method = var.health_check_method
+  # health_check_path - (optional) is a type of string
+  health_check_path = var.health_check_path
+  # health_check_status_codes - (optional) is a type of set of number
   health_check_status_codes = var.health_check_status_codes
-  interval                  = var.interval
-  listener_id               = var.listener_id
-  path                      = var.path
-  realserver_type           = var.realserver_type
-  scheduler                 = var.scheduler
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # path - (required) is a type of string
+  path = var.path
+  # realserver_type - (required) is a type of string
+  realserver_type = var.realserver_type
+  # scheduler - (optional) is a type of string
+  scheduler = var.scheduler
 
   dynamic "realservers" {
     for_each = var.realservers
     content {
-      id     = realservers.value["id"]
-      ip     = realservers.value["ip"]
-      port   = realservers.value["port"]
+      # id - (required) is a type of string
+      id = realservers.value["id"]
+      # ip - (required) is a type of string
+      ip = realservers.value["ip"]
+      # port - (required) is a type of number
+      port = realservers.value["port"]
+      # weight - (optional) is a type of number
       weight = realservers.value["weight"]
     }
   }

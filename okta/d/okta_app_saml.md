@@ -330,39 +330,72 @@ variable "attribute_statements" {
 
 ```terraform
 data "okta_app_saml" "this" {
+  # accessibility_error_redirect_url - (optional) is a type of string
   accessibility_error_redirect_url = var.accessibility_error_redirect_url
+  # accessibility_login_redirect_url - (optional) is a type of string
   accessibility_login_redirect_url = var.accessibility_login_redirect_url
-  accessibility_self_service       = var.accessibility_self_service
-  acs_endpoints                    = var.acs_endpoints
-  active_only                      = var.active_only
-  app_settings_json                = var.app_settings_json
-  assertion_signed                 = var.assertion_signed
-  audience                         = var.audience
-  authn_context_class_ref          = var.authn_context_class_ref
-  auto_submit_toolbar              = var.auto_submit_toolbar
-  default_relay_state              = var.default_relay_state
-  destination                      = var.destination
-  digest_algorithm                 = var.digest_algorithm
-  features                         = var.features
-  groups                           = var.groups
-  hide_ios                         = var.hide_ios
-  hide_web                         = var.hide_web
-  honor_force_authn                = var.honor_force_authn
-  idp_issuer                       = var.idp_issuer
-  label                            = var.label
-  label_prefix                     = var.label_prefix
-  recipient                        = var.recipient
-  request_compressed               = var.request_compressed
-  response_signed                  = var.response_signed
-  signature_algorithm              = var.signature_algorithm
-  sp_issuer                        = var.sp_issuer
-  sso_url                          = var.sso_url
-  subject_name_id_format           = var.subject_name_id_format
-  subject_name_id_template         = var.subject_name_id_template
-  user_name_template               = var.user_name_template
-  user_name_template_suffix        = var.user_name_template_suffix
-  user_name_template_type          = var.user_name_template_type
-  users                            = var.users
+  # accessibility_self_service - (optional) is a type of bool
+  accessibility_self_service = var.accessibility_self_service
+  # acs_endpoints - (optional) is a type of set of string
+  acs_endpoints = var.acs_endpoints
+  # active_only - (optional) is a type of bool
+  active_only = var.active_only
+  # app_settings_json - (optional) is a type of string
+  app_settings_json = var.app_settings_json
+  # assertion_signed - (optional) is a type of bool
+  assertion_signed = var.assertion_signed
+  # audience - (optional) is a type of string
+  audience = var.audience
+  # authn_context_class_ref - (optional) is a type of string
+  authn_context_class_ref = var.authn_context_class_ref
+  # auto_submit_toolbar - (optional) is a type of bool
+  auto_submit_toolbar = var.auto_submit_toolbar
+  # default_relay_state - (optional) is a type of string
+  default_relay_state = var.default_relay_state
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # digest_algorithm - (optional) is a type of string
+  digest_algorithm = var.digest_algorithm
+  # features - (optional) is a type of set of string
+  features = var.features
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # honor_force_authn - (optional) is a type of bool
+  honor_force_authn = var.honor_force_authn
+  # idp_issuer - (optional) is a type of string
+  idp_issuer = var.idp_issuer
+  # label - (optional) is a type of string
+  label = var.label
+  # label_prefix - (optional) is a type of string
+  label_prefix = var.label_prefix
+  # recipient - (optional) is a type of string
+  recipient = var.recipient
+  # request_compressed - (optional) is a type of bool
+  request_compressed = var.request_compressed
+  # response_signed - (optional) is a type of bool
+  response_signed = var.response_signed
+  # signature_algorithm - (optional) is a type of string
+  signature_algorithm = var.signature_algorithm
+  # sp_issuer - (optional) is a type of string
+  sp_issuer = var.sp_issuer
+  # sso_url - (optional) is a type of string
+  sso_url = var.sso_url
+  # subject_name_id_format - (optional) is a type of string
+  subject_name_id_format = var.subject_name_id_format
+  # subject_name_id_template - (optional) is a type of string
+  subject_name_id_template = var.subject_name_id_template
+  # user_name_template - (optional) is a type of string
+  user_name_template = var.user_name_template
+  # user_name_template_suffix - (optional) is a type of string
+  user_name_template_suffix = var.user_name_template_suffix
+  # user_name_template_type - (optional) is a type of string
+  user_name_template_type = var.user_name_template_type
+  # users - (optional) is a type of set of string
+  users = var.users
 
   dynamic "attribute_statements" {
     for_each = var.attribute_statements

@@ -57,8 +57,10 @@ variable "ip_pool_id" {
 
 ```terraform
 resource "nsxt_ip_pool_allocation_ip_address" "this" {
+  # allocation_id - (optional) is a type of string
   allocation_id = var.allocation_id
-  ip_pool_id    = var.ip_pool_id
+  # ip_pool_id - (required) is a type of string
+  ip_pool_id = var.ip_pool_id
 }
 ```
 

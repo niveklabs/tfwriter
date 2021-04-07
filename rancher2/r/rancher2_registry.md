@@ -123,18 +123,27 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_registry" "this" {
-  annotations  = var.annotations
-  description  = var.description
-  labels       = var.labels
-  name         = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
-  project_id   = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "registries" {
     for_each = var.registries
     content {
-      address  = registries.value["address"]
+      # address - (required) is a type of string
+      address = registries.value["address"]
+      # password - (optional) is a type of string
       password = registries.value["password"]
+      # username - (optional) is a type of string
       username = registries.value["username"]
     }
   }
@@ -142,8 +151,11 @@ resource "rancher2_registry" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

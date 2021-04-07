@@ -87,14 +87,19 @@ variable "member" {
 
 ```terraform
 resource "fortios_system_virtualwirepair" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  vlan_filter           = var.vlan_filter
-  wildcard_vlan         = var.wildcard_vlan
+  # name - (optional) is a type of string
+  name = var.name
+  # vlan_filter - (optional) is a type of string
+  vlan_filter = var.vlan_filter
+  # wildcard_vlan - (optional) is a type of string
+  wildcard_vlan = var.wildcard_vlan
 
   dynamic "member" {
     for_each = var.member
     content {
+      # interface_name - (optional) is a type of string
       interface_name = member.value["interface_name"]
     }
   }

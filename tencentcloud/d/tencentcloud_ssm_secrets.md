@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_ssm_secrets" "this" {
-  order_type         = var.order_type
+  # order_type - (optional) is a type of number
+  order_type = var.order_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  secret_name        = var.secret_name
-  state              = var.state
-  tags               = var.tags
+  # secret_name - (optional) is a type of string
+  secret_name = var.secret_name
+  # state - (optional) is a type of number
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

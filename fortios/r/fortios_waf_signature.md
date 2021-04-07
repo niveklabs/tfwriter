@@ -58,7 +58,9 @@ variable "fosid" {
 
 ```terraform
 resource "fortios_waf_signature" "this" {
-  desc  = var.desc
+  # desc - (optional) is a type of string
+  desc = var.desc
+  # fosid - (optional) is a type of number
   fosid = var.fosid
 }
 ```

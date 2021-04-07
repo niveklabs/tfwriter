@@ -98,13 +98,20 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_fortimanager" "this" {
-  central_management                   = var.central_management
-  central_mgmt_auto_backup             = var.central_mgmt_auto_backup
+  # central_management - (optional) is a type of string
+  central_management = var.central_management
+  # central_mgmt_auto_backup - (optional) is a type of string
+  central_mgmt_auto_backup = var.central_mgmt_auto_backup
+  # central_mgmt_schedule_config_restore - (optional) is a type of string
   central_mgmt_schedule_config_restore = var.central_mgmt_schedule_config_restore
+  # central_mgmt_schedule_script_restore - (optional) is a type of string
   central_mgmt_schedule_script_restore = var.central_mgmt_schedule_script_restore
-  ip                                   = var.ip
-  ipsec                                = var.ipsec
-  vdom                                 = var.vdom
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ipsec - (optional) is a type of string
+  ipsec = var.ipsec
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 }
 ```
 

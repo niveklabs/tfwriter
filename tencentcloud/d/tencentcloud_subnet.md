@@ -56,8 +56,10 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_subnet" "this" {
+  # subnet_id - (required) is a type of string
   subnet_id = var.subnet_id
-  vpc_id    = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

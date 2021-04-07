@@ -176,23 +176,40 @@ variable "type" {
 
 ```terraform
 resource "opennebula_image" "this" {
+  # clone_from_image - (optional) is a type of string
   clone_from_image = var.clone_from_image
-  datastore_id     = var.datastore_id
-  description      = var.description
-  dev_prefix       = var.dev_prefix
-  driver           = var.driver
-  format           = var.format
-  group            = var.group
-  lock             = var.lock
-  name             = var.name
-  path             = var.path
-  permissions      = var.permissions
-  persistent       = var.persistent
-  size             = var.size
-  tags             = var.tags
-  target           = var.target
-  timeout          = var.timeout
-  type             = var.type
+  # datastore_id - (required) is a type of number
+  datastore_id = var.datastore_id
+  # description - (optional) is a type of string
+  description = var.description
+  # dev_prefix - (optional) is a type of string
+  dev_prefix = var.dev_prefix
+  # driver - (optional) is a type of string
+  driver = var.driver
+  # format - (optional) is a type of string
+  format = var.format
+  # group - (optional) is a type of string
+  group = var.group
+  # lock - (optional) is a type of string
+  lock = var.lock
+  # name - (required) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # permissions - (optional) is a type of string
+  permissions = var.permissions
+  # persistent - (optional) is a type of bool
+  persistent = var.persistent
+  # size - (optional) is a type of number
+  size = var.size
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target - (optional) is a type of string
+  target = var.target
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

@@ -378,18 +378,27 @@ variable "network_selector" {
 
 ```terraform
 resource "stackpath_compute_network_policy" "this" {
-  annotations  = var.annotations
-  description  = var.description
-  labels       = var.labels
-  name         = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # policy_types - (required) is a type of list of string
   policy_types = var.policy_types
-  priority     = var.priority
-  slug         = var.slug
+  # priority - (required) is a type of number
+  priority = var.priority
+  # slug - (required) is a type of string
+  slug = var.slug
 
   dynamic "egress" {
     for_each = var.egress
     content {
-      action      = egress.value["action"]
+      # action - (required) is a type of string
+      action = egress.value["action"]
+      # description - (optional) is a type of string
       description = egress.value["description"]
 
       dynamic "protocol" {
@@ -423,24 +432,30 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "tcp" {
             for_each = protocol.value.tcp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = tcp.value["destination_ports"]
-              source_ports      = tcp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = tcp.value["source_ports"]
             }
           }
 
           dynamic "tcp_udp" {
             for_each = protocol.value.tcp_udp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = tcp_udp.value["destination_ports"]
-              source_ports      = tcp_udp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = tcp_udp.value["source_ports"]
             }
           }
 
           dynamic "udp" {
             for_each = protocol.value.udp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = udp.value["destination_ports"]
-              source_ports      = udp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = udp.value["source_ports"]
             }
           }
 
@@ -454,16 +469,21 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "instance_selector" {
             for_each = to.value.instance_selector
             content {
-              key      = instance_selector.value["key"]
+              # key - (required) is a type of string
+              key = instance_selector.value["key"]
+              # operator - (required) is a type of string
               operator = instance_selector.value["operator"]
-              values   = instance_selector.value["values"]
+              # values - (required) is a type of list of string
+              values = instance_selector.value["values"]
             }
           }
 
           dynamic "ip_block" {
             for_each = to.value.ip_block
             content {
-              cidr   = ip_block.value["cidr"]
+              # cidr - (required) is a type of string
+              cidr = ip_block.value["cidr"]
+              # except - (optional) is a type of list of string
               except = ip_block.value["except"]
             }
           }
@@ -471,9 +491,12 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "network_selector" {
             for_each = to.value.network_selector
             content {
-              key      = network_selector.value["key"]
+              # key - (required) is a type of string
+              key = network_selector.value["key"]
+              # operator - (required) is a type of string
               operator = network_selector.value["operator"]
-              values   = network_selector.value["values"]
+              # values - (required) is a type of list of string
+              values = network_selector.value["values"]
             }
           }
 
@@ -486,7 +509,9 @@ resource "stackpath_compute_network_policy" "this" {
   dynamic "ingress" {
     for_each = var.ingress
     content {
-      action      = ingress.value["action"]
+      # action - (required) is a type of string
+      action = ingress.value["action"]
+      # description - (optional) is a type of string
       description = ingress.value["description"]
 
       dynamic "from" {
@@ -496,16 +521,21 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "instance_selector" {
             for_each = from.value.instance_selector
             content {
-              key      = instance_selector.value["key"]
+              # key - (required) is a type of string
+              key = instance_selector.value["key"]
+              # operator - (required) is a type of string
               operator = instance_selector.value["operator"]
-              values   = instance_selector.value["values"]
+              # values - (required) is a type of list of string
+              values = instance_selector.value["values"]
             }
           }
 
           dynamic "ip_block" {
             for_each = from.value.ip_block
             content {
-              cidr   = ip_block.value["cidr"]
+              # cidr - (required) is a type of string
+              cidr = ip_block.value["cidr"]
+              # except - (optional) is a type of list of string
               except = ip_block.value["except"]
             }
           }
@@ -513,9 +543,12 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "network_selector" {
             for_each = from.value.network_selector
             content {
-              key      = network_selector.value["key"]
+              # key - (required) is a type of string
+              key = network_selector.value["key"]
+              # operator - (required) is a type of string
               operator = network_selector.value["operator"]
-              values   = network_selector.value["values"]
+              # values - (required) is a type of list of string
+              values = network_selector.value["values"]
             }
           }
 
@@ -553,24 +586,30 @@ resource "stackpath_compute_network_policy" "this" {
           dynamic "tcp" {
             for_each = protocol.value.tcp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = tcp.value["destination_ports"]
-              source_ports      = tcp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = tcp.value["source_ports"]
             }
           }
 
           dynamic "tcp_udp" {
             for_each = protocol.value.tcp_udp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = tcp_udp.value["destination_ports"]
-              source_ports      = tcp_udp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = tcp_udp.value["source_ports"]
             }
           }
 
           dynamic "udp" {
             for_each = protocol.value.udp
             content {
+              # destination_ports - (optional) is a type of list of string
               destination_ports = udp.value["destination_ports"]
-              source_ports      = udp.value["source_ports"]
+              # source_ports - (optional) is a type of list of string
+              source_ports = udp.value["source_ports"]
             }
           }
 
@@ -583,18 +622,24 @@ resource "stackpath_compute_network_policy" "this" {
   dynamic "instance_selector" {
     for_each = var.instance_selector
     content {
-      key      = instance_selector.value["key"]
+      # key - (required) is a type of string
+      key = instance_selector.value["key"]
+      # operator - (required) is a type of string
       operator = instance_selector.value["operator"]
-      values   = instance_selector.value["values"]
+      # values - (required) is a type of list of string
+      values = instance_selector.value["values"]
     }
   }
 
   dynamic "network_selector" {
     for_each = var.network_selector
     content {
-      key      = network_selector.value["key"]
+      # key - (required) is a type of string
+      key = network_selector.value["key"]
+      # operator - (required) is a type of string
       operator = network_selector.value["operator"]
-      values   = network_selector.value["values"]
+      # values - (required) is a type of list of string
+      values = network_selector.value["values"]
     }
   }
 

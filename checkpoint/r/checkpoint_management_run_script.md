@@ -79,11 +79,16 @@ variable "targets" {
 
 ```terraform
 resource "checkpoint_management_run_script" "this" {
-  args        = var.args
-  comments    = var.comments
-  script      = var.script
+  # args - (optional) is a type of string
+  args = var.args
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # script - (required) is a type of string
+  script = var.script
+  # script_name - (required) is a type of string
   script_name = var.script_name
-  targets     = var.targets
+  # targets - (required) is a type of set of string
+  targets = var.targets
 }
 ```
 

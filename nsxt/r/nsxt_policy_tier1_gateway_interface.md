@@ -134,22 +134,34 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_tier1_gateway_interface" "this" {
-  description            = var.description
-  display_name           = var.display_name
-  gateway_path           = var.gateway_path
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # gateway_path - (required) is a type of string
+  gateway_path = var.gateway_path
+  # ipv6_ndra_profile_path - (optional) is a type of string
   ipv6_ndra_profile_path = var.ipv6_ndra_profile_path
-  mtu                    = var.mtu
-  nsx_id                 = var.nsx_id
-  segment_path           = var.segment_path
-  site_path              = var.site_path
-  subnets                = var.subnets
-  urpf_mode              = var.urpf_mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # segment_path - (required) is a type of string
+  segment_path = var.segment_path
+  # site_path - (optional) is a type of string
+  site_path = var.site_path
+  # subnets - (required) is a type of list of string
+  subnets = var.subnets
+  # urpf_mode - (optional) is a type of string
+  urpf_mode = var.urpf_mode
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

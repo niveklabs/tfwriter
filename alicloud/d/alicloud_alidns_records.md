@@ -177,23 +177,40 @@ variable "value_regex" {
 
 ```terraform
 data "alicloud_alidns_records" "this" {
-  direction      = var.direction
-  domain_name    = var.domain_name
-  group_id       = var.group_id
-  ids            = var.ids
-  key_word       = var.key_word
-  lang           = var.lang
-  line           = var.line
-  order_by       = var.order_by
-  output_file    = var.output_file
-  rr_key_word    = var.rr_key_word
-  rr_regex       = var.rr_regex
-  search_mode    = var.search_mode
-  status         = var.status
-  type           = var.type
-  type_key_word  = var.type_key_word
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # key_word - (optional) is a type of string
+  key_word = var.key_word
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # line - (optional) is a type of string
+  line = var.line
+  # order_by - (optional) is a type of string
+  order_by = var.order_by
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # rr_key_word - (optional) is a type of string
+  rr_key_word = var.rr_key_word
+  # rr_regex - (optional) is a type of string
+  rr_regex = var.rr_regex
+  # search_mode - (optional) is a type of string
+  search_mode = var.search_mode
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # type_key_word - (optional) is a type of string
+  type_key_word = var.type_key_word
+  # value_key_word - (optional) is a type of string
   value_key_word = var.value_key_word
-  value_regex    = var.value_regex
+  # value_regex - (optional) is a type of string
+  value_regex = var.value_regex
 }
 ```
 

@@ -261,38 +261,61 @@ variable "path" {
 
 ```terraform
 resource "sumologic_s3_source" "this" {
-  automatic_date_parsing       = var.automatic_date_parsing
-  category                     = var.category
-  collector_id                 = var.collector_id
-  content_type                 = var.content_type
-  cutoff_relative_time         = var.cutoff_relative_time
-  cutoff_timestamp             = var.cutoff_timestamp
-  description                  = var.description
-  fields                       = var.fields
-  force_timezone               = var.force_timezone
-  host_name                    = var.host_name
-  manual_prefix_regexp         = var.manual_prefix_regexp
+  # automatic_date_parsing - (optional) is a type of bool
+  automatic_date_parsing = var.automatic_date_parsing
+  # category - (optional) is a type of string
+  category = var.category
+  # collector_id - (required) is a type of number
+  collector_id = var.collector_id
+  # content_type - (required) is a type of string
+  content_type = var.content_type
+  # cutoff_relative_time - (optional) is a type of string
+  cutoff_relative_time = var.cutoff_relative_time
+  # cutoff_timestamp - (optional) is a type of number
+  cutoff_timestamp = var.cutoff_timestamp
+  # description - (optional) is a type of string
+  description = var.description
+  # fields - (optional) is a type of map of string
+  fields = var.fields
+  # force_timezone - (optional) is a type of bool
+  force_timezone = var.force_timezone
+  # host_name - (optional) is a type of string
+  host_name = var.host_name
+  # manual_prefix_regexp - (optional) is a type of string
+  manual_prefix_regexp = var.manual_prefix_regexp
+  # multiline_processing_enabled - (optional) is a type of bool
   multiline_processing_enabled = var.multiline_processing_enabled
-  name                         = var.name
-  paused                       = var.paused
-  scan_interval                = var.scan_interval
-  timezone                     = var.timezone
-  use_autoline_matching        = var.use_autoline_matching
+  # name - (required) is a type of string
+  name = var.name
+  # paused - (required) is a type of bool
+  paused = var.paused
+  # scan_interval - (required) is a type of number
+  scan_interval = var.scan_interval
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # use_autoline_matching - (optional) is a type of bool
+  use_autoline_matching = var.use_autoline_matching
 
   dynamic "authentication" {
     for_each = var.authentication
     content {
+      # access_key - (optional) is a type of string
       access_key = authentication.value["access_key"]
-      role_arn   = authentication.value["role_arn"]
+      # role_arn - (optional) is a type of string
+      role_arn = authentication.value["role_arn"]
+      # secret_key - (optional) is a type of string
       secret_key = authentication.value["secret_key"]
-      type       = authentication.value["type"]
+      # type - (required) is a type of string
+      type = authentication.value["type"]
     }
   }
 
   dynamic "default_date_formats" {
     for_each = var.default_date_formats
     content {
-      format  = default_date_formats.value["format"]
+      # format - (required) is a type of string
+      format = default_date_formats.value["format"]
+      # locator - (optional) is a type of string
       locator = default_date_formats.value["locator"]
     }
   }
@@ -300,28 +323,40 @@ resource "sumologic_s3_source" "this" {
   dynamic "filters" {
     for_each = var.filters
     content {
+      # filter_type - (required) is a type of string
       filter_type = filters.value["filter_type"]
-      mask        = filters.value["mask"]
-      name        = filters.value["name"]
-      regexp      = filters.value["regexp"]
+      # mask - (optional) is a type of string
+      mask = filters.value["mask"]
+      # name - (required) is a type of string
+      name = filters.value["name"]
+      # regexp - (required) is a type of string
+      regexp = filters.value["regexp"]
     }
   }
 
   dynamic "path" {
     for_each = var.path
     content {
-      bucket_name         = path.value["bucket_name"]
+      # bucket_name - (optional) is a type of string
+      bucket_name = path.value["bucket_name"]
+      # limit_to_namespaces - (optional) is a type of list of string
       limit_to_namespaces = path.value["limit_to_namespaces"]
-      limit_to_regions    = path.value["limit_to_regions"]
-      path_expression     = path.value["path_expression"]
-      type                = path.value["type"]
+      # limit_to_regions - (optional) is a type of list of string
+      limit_to_regions = path.value["limit_to_regions"]
+      # path_expression - (optional) is a type of string
+      path_expression = path.value["path_expression"]
+      # type - (required) is a type of string
+      type = path.value["type"]
 
       dynamic "tag_filters" {
         for_each = path.value.tag_filters
         content {
+          # namespace - (optional) is a type of string
           namespace = tag_filters.value["namespace"]
-          tags      = tag_filters.value["tags"]
-          type      = tag_filters.value["type"]
+          # tags - (optional) is a type of list of string
+          tags = tag_filters.value["tags"]
+          # type - (optional) is a type of string
+          type = tag_filters.value["type"]
         }
       }
 

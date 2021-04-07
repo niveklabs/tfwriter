@@ -98,13 +98,20 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontroller_remotelog" "this" {
-  csv      = var.csv
+  # csv - (optional) is a type of string
+  csv = var.csv
+  # facility - (optional) is a type of string
   facility = var.facility
-  name     = var.name
-  port     = var.port
-  server   = var.server
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # server - (optional) is a type of string
+  server = var.server
+  # severity - (optional) is a type of string
   severity = var.severity
-  status   = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

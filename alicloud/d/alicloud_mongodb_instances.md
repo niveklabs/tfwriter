@@ -98,13 +98,20 @@ variable "tags" {
 
 ```terraform
 data "alicloud_mongodb_instances" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  ids               = var.ids
-  instance_class    = var.instance_class
-  instance_type     = var.instance_type
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  tags              = var.tags
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

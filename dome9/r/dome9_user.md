@@ -208,50 +208,78 @@ variable "view" {
 
 ```terraform
 resource "dome9_user" "this" {
-  create               = var.create
+  # create - (optional) is a type of list of string
+  create = var.create
+  # cross_account_access - (optional) is a type of list of string
   cross_account_access = var.cross_account_access
-  email                = var.email
-  first_name           = var.first_name
-  is_owner             = var.is_owner
-  is_sso_enabled       = var.is_sso_enabled
-  last_name            = var.last_name
+  # email - (required) is a type of string
+  email = var.email
+  # first_name - (required) is a type of string
+  first_name = var.first_name
+  # is_owner - (optional) is a type of bool
+  is_owner = var.is_owner
+  # is_sso_enabled - (required) is a type of bool
+  is_sso_enabled = var.is_sso_enabled
+  # last_name - (required) is a type of string
+  last_name = var.last_name
+  # permit_alert_actions - (optional) is a type of bool
   permit_alert_actions = var.permit_alert_actions
+  # permit_notifications - (optional) is a type of bool
   permit_notifications = var.permit_notifications
-  permit_on_boarding   = var.permit_on_boarding
-  permit_policies      = var.permit_policies
-  permit_rulesets      = var.permit_rulesets
-  role_ids             = var.role_ids
+  # permit_on_boarding - (optional) is a type of bool
+  permit_on_boarding = var.permit_on_boarding
+  # permit_policies - (optional) is a type of bool
+  permit_policies = var.permit_policies
+  # permit_rulesets - (optional) is a type of bool
+  permit_rulesets = var.permit_rulesets
+  # role_ids - (optional) is a type of list of number
+  role_ids = var.role_ids
 
   dynamic "access" {
     for_each = var.access
     content {
-      main_id           = access.value["main_id"]
-      region            = access.value["region"]
+      # main_id - (optional) is a type of string
+      main_id = access.value["main_id"]
+      # region - (optional) is a type of string
+      region = access.value["region"]
+      # security_group_id - (optional) is a type of string
       security_group_id = access.value["security_group_id"]
-      traffic           = access.value["traffic"]
-      type              = access.value["type"]
+      # traffic - (optional) is a type of string
+      traffic = access.value["traffic"]
+      # type - (optional) is a type of string
+      type = access.value["type"]
     }
   }
 
   dynamic "manage" {
     for_each = var.manage
     content {
-      main_id           = manage.value["main_id"]
-      region            = manage.value["region"]
+      # main_id - (optional) is a type of string
+      main_id = manage.value["main_id"]
+      # region - (optional) is a type of string
+      region = manage.value["region"]
+      # security_group_id - (optional) is a type of string
       security_group_id = manage.value["security_group_id"]
-      traffic           = manage.value["traffic"]
-      type              = manage.value["type"]
+      # traffic - (optional) is a type of string
+      traffic = manage.value["traffic"]
+      # type - (optional) is a type of string
+      type = manage.value["type"]
     }
   }
 
   dynamic "view" {
     for_each = var.view
     content {
-      main_id           = view.value["main_id"]
-      region            = view.value["region"]
+      # main_id - (optional) is a type of string
+      main_id = view.value["main_id"]
+      # region - (optional) is a type of string
+      region = view.value["region"]
+      # security_group_id - (optional) is a type of string
       security_group_id = view.value["security_group_id"]
-      traffic           = view.value["traffic"]
-      type              = view.value["type"]
+      # traffic - (optional) is a type of string
+      traffic = view.value["traffic"]
+      # type - (optional) is a type of string
+      type = view.value["type"]
     }
   }
 

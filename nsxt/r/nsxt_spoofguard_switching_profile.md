@@ -82,15 +82,20 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_spoofguard_switching_profile" "this" {
+  # address_binding_whitelist_enabled - (optional) is a type of bool
   address_binding_whitelist_enabled = var.address_binding_whitelist_enabled
-  description                       = var.description
-  display_name                      = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

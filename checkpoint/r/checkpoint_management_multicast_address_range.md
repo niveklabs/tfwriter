@@ -137,18 +137,30 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_multicast_address_range" "this" {
-  color              = var.color
-  comments           = var.comments
-  ignore_errors      = var.ignore_errors
-  ignore_warnings    = var.ignore_warnings
-  ipv4_address       = var.ipv4_address
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv4_address_first - (optional) is a type of string
   ipv4_address_first = var.ipv4_address_first
-  ipv4_address_last  = var.ipv4_address_last
-  ipv6_address       = var.ipv6_address
+  # ipv4_address_last - (optional) is a type of string
+  ipv4_address_last = var.ipv4_address_last
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # ipv6_address_first - (optional) is a type of string
   ipv6_address_first = var.ipv6_address_first
-  ipv6_address_last  = var.ipv6_address_last
-  name               = var.name
-  tags               = var.tags
+  # ipv6_address_last - (optional) is a type of string
+  ipv6_address_last = var.ipv6_address_last
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

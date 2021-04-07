@@ -80,11 +80,16 @@ variable "position" {
 
 ```terraform
 resource "checkpoint_management_nat_section" "this" {
-  ignore_errors   = var.ignore_errors
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  name            = var.name
-  package         = var.package
-  position        = var.position
+  # name - (optional) is a type of string
+  name = var.name
+  # package - (required) is a type of string
+  package = var.package
+  # position - (required) is a type of map of string
+  position = var.position
 }
 ```
 

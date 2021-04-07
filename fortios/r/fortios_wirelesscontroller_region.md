@@ -82,11 +82,16 @@ variable "opacity" {
 
 ```terraform
 resource "fortios_wirelesscontroller_region" "this" {
-  comments   = var.comments
-  grayscale  = var.grayscale
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # grayscale - (optional) is a type of string
+  grayscale = var.grayscale
+  # image_type - (optional) is a type of string
   image_type = var.image_type
-  name       = var.name
-  opacity    = var.opacity
+  # name - (optional) is a type of string
+  name = var.name
+  # opacity - (optional) is a type of number
+  opacity = var.opacity
 }
 ```
 

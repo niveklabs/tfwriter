@@ -1133,133 +1133,257 @@ variable "vlan_pool" {
 
 ```terraform
 resource "fortios_wirelesscontroller_vap" "this" {
-  access_control_list                     = var.access_control_list
-  acct_interim_interval                   = var.acct_interim_interval
-  additional_akms                         = var.additional_akms
-  address_group                           = var.address_group
-  alias                                   = var.alias
-  atf_weight                              = var.atf_weight
-  auth                                    = var.auth
-  broadcast_ssid                          = var.broadcast_ssid
-  broadcast_suppression                   = var.broadcast_suppression
-  bss_color_partial                       = var.bss_color_partial
-  captive_portal_ac_name                  = var.captive_portal_ac_name
-  captive_portal_auth_timeout             = var.captive_portal_auth_timeout
-  captive_portal_macauth_radius_secret    = var.captive_portal_macauth_radius_secret
-  captive_portal_macauth_radius_server    = var.captive_portal_macauth_radius_server
-  captive_portal_radius_secret            = var.captive_portal_radius_secret
-  captive_portal_radius_server            = var.captive_portal_radius_server
+  # access_control_list - (optional) is a type of string
+  access_control_list = var.access_control_list
+  # acct_interim_interval - (optional) is a type of number
+  acct_interim_interval = var.acct_interim_interval
+  # additional_akms - (optional) is a type of string
+  additional_akms = var.additional_akms
+  # address_group - (optional) is a type of string
+  address_group = var.address_group
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # atf_weight - (optional) is a type of number
+  atf_weight = var.atf_weight
+  # auth - (optional) is a type of string
+  auth = var.auth
+  # broadcast_ssid - (optional) is a type of string
+  broadcast_ssid = var.broadcast_ssid
+  # broadcast_suppression - (optional) is a type of string
+  broadcast_suppression = var.broadcast_suppression
+  # bss_color_partial - (optional) is a type of string
+  bss_color_partial = var.bss_color_partial
+  # captive_portal_ac_name - (optional) is a type of string
+  captive_portal_ac_name = var.captive_portal_ac_name
+  # captive_portal_auth_timeout - (optional) is a type of number
+  captive_portal_auth_timeout = var.captive_portal_auth_timeout
+  # captive_portal_macauth_radius_secret - (optional) is a type of string
+  captive_portal_macauth_radius_secret = var.captive_portal_macauth_radius_secret
+  # captive_portal_macauth_radius_server - (optional) is a type of string
+  captive_portal_macauth_radius_server = var.captive_portal_macauth_radius_server
+  # captive_portal_radius_secret - (optional) is a type of string
+  captive_portal_radius_secret = var.captive_portal_radius_secret
+  # captive_portal_radius_server - (optional) is a type of string
+  captive_portal_radius_server = var.captive_portal_radius_server
+  # captive_portal_session_timeout_interval - (optional) is a type of number
   captive_portal_session_timeout_interval = var.captive_portal_session_timeout_interval
-  dhcp_lease_time                         = var.dhcp_lease_time
-  dhcp_option43_insertion                 = var.dhcp_option43_insertion
-  dhcp_option82_circuit_id_insertion      = var.dhcp_option82_circuit_id_insertion
-  dhcp_option82_insertion                 = var.dhcp_option82_insertion
-  dhcp_option82_remote_id_insertion       = var.dhcp_option82_remote_id_insertion
-  dynamic_sort_subtable                   = var.dynamic_sort_subtable
-  dynamic_vlan                            = var.dynamic_vlan
-  eap_reauth                              = var.eap_reauth
-  eap_reauth_intv                         = var.eap_reauth_intv
-  eapol_key_retries                       = var.eapol_key_retries
-  encrypt                                 = var.encrypt
-  external_fast_roaming                   = var.external_fast_roaming
-  external_logout                         = var.external_logout
-  external_web                            = var.external_web
-  external_web_format                     = var.external_web_format
-  fast_bss_transition                     = var.fast_bss_transition
-  fast_roaming                            = var.fast_roaming
-  ft_mobility_domain                      = var.ft_mobility_domain
-  ft_over_ds                              = var.ft_over_ds
-  ft_r0_key_lifetime                      = var.ft_r0_key_lifetime
-  gtk_rekey                               = var.gtk_rekey
-  gtk_rekey_intv                          = var.gtk_rekey_intv
-  high_efficiency                         = var.high_efficiency
-  hotspot20_profile                       = var.hotspot20_profile
-  igmp_snooping                           = var.igmp_snooping
-  intra_vap_privacy                       = var.intra_vap_privacy
-  ip                                      = var.ip
-  ipv6_rules                              = var.ipv6_rules
-  key                                     = var.key
-  keyindex                                = var.keyindex
-  ldpc                                    = var.ldpc
-  local_authentication                    = var.local_authentication
-  local_bridging                          = var.local_bridging
-  local_lan                               = var.local_lan
-  local_standalone                        = var.local_standalone
-  local_standalone_nat                    = var.local_standalone_nat
-  mac_auth_bypass                         = var.mac_auth_bypass
-  mac_filter                              = var.mac_filter
-  mac_filter_policy_other                 = var.mac_filter_policy_other
-  max_clients                             = var.max_clients
-  max_clients_ap                          = var.max_clients_ap
-  me_disable_thresh                       = var.me_disable_thresh
-  mesh_backhaul                           = var.mesh_backhaul
-  mpsk                                    = var.mpsk
-  mpsk_concurrent_clients                 = var.mpsk_concurrent_clients
-  mpsk_profile                            = var.mpsk_profile
-  mu_mimo                                 = var.mu_mimo
-  multicast_enhance                       = var.multicast_enhance
-  multicast_rate                          = var.multicast_rate
-  name                                    = var.name
-  okc                                     = var.okc
-  owe_groups                              = var.owe_groups
-  owe_transition                          = var.owe_transition
-  owe_transition_ssid                     = var.owe_transition_ssid
-  passphrase                              = var.passphrase
-  pmf                                     = var.pmf
-  pmf_assoc_comeback_timeout              = var.pmf_assoc_comeback_timeout
-  pmf_sa_query_retry_timeout              = var.pmf_sa_query_retry_timeout
-  port_macauth                            = var.port_macauth
-  port_macauth_reauth_timeout             = var.port_macauth_reauth_timeout
-  port_macauth_timeout                    = var.port_macauth_timeout
-  portal_message_override_group           = var.portal_message_override_group
-  portal_type                             = var.portal_type
-  primary_wag_profile                     = var.primary_wag_profile
-  probe_resp_suppression                  = var.probe_resp_suppression
-  probe_resp_threshold                    = var.probe_resp_threshold
-  ptk_rekey                               = var.ptk_rekey
-  ptk_rekey_intv                          = var.ptk_rekey_intv
-  qos_profile                             = var.qos_profile
-  quarantine                              = var.quarantine
-  radio_2g_threshold                      = var.radio_2g_threshold
-  radio_5g_threshold                      = var.radio_5g_threshold
-  radio_sensitivity                       = var.radio_sensitivity
-  radius_mac_auth                         = var.radius_mac_auth
-  radius_mac_auth_server                  = var.radius_mac_auth_server
-  radius_server                           = var.radius_server
-  rates_11a                               = var.rates_11a
-  rates_11ac_ss12                         = var.rates_11ac_ss12
-  rates_11ac_ss34                         = var.rates_11ac_ss34
-  rates_11bg                              = var.rates_11bg
-  rates_11n_ss12                          = var.rates_11n_ss12
-  rates_11n_ss34                          = var.rates_11n_ss34
-  sae_groups                              = var.sae_groups
-  sae_password                            = var.sae_password
-  schedule                                = var.schedule
-  secondary_wag_profile                   = var.secondary_wag_profile
-  security                                = var.security
-  security_exempt_list                    = var.security_exempt_list
-  security_obsolete_option                = var.security_obsolete_option
-  security_redirect_url                   = var.security_redirect_url
-  split_tunneling                         = var.split_tunneling
-  ssid                                    = var.ssid
-  sticky_client_remove                    = var.sticky_client_remove
-  sticky_client_threshold_2g              = var.sticky_client_threshold_2g
-  sticky_client_threshold_5g              = var.sticky_client_threshold_5g
-  target_wake_time                        = var.target_wake_time
-  tkip_counter_measure                    = var.tkip_counter_measure
-  tunnel_echo_interval                    = var.tunnel_echo_interval
-  tunnel_fallback_interval                = var.tunnel_fallback_interval
-  utm_profile                             = var.utm_profile
-  vlan_auto                               = var.vlan_auto
-  vlan_pooling                            = var.vlan_pooling
-  vlanid                                  = var.vlanid
-  voice_enterprise                        = var.voice_enterprise
+  # dhcp_lease_time - (optional) is a type of number
+  dhcp_lease_time = var.dhcp_lease_time
+  # dhcp_option43_insertion - (optional) is a type of string
+  dhcp_option43_insertion = var.dhcp_option43_insertion
+  # dhcp_option82_circuit_id_insertion - (optional) is a type of string
+  dhcp_option82_circuit_id_insertion = var.dhcp_option82_circuit_id_insertion
+  # dhcp_option82_insertion - (optional) is a type of string
+  dhcp_option82_insertion = var.dhcp_option82_insertion
+  # dhcp_option82_remote_id_insertion - (optional) is a type of string
+  dhcp_option82_remote_id_insertion = var.dhcp_option82_remote_id_insertion
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # dynamic_vlan - (optional) is a type of string
+  dynamic_vlan = var.dynamic_vlan
+  # eap_reauth - (optional) is a type of string
+  eap_reauth = var.eap_reauth
+  # eap_reauth_intv - (optional) is a type of number
+  eap_reauth_intv = var.eap_reauth_intv
+  # eapol_key_retries - (optional) is a type of string
+  eapol_key_retries = var.eapol_key_retries
+  # encrypt - (optional) is a type of string
+  encrypt = var.encrypt
+  # external_fast_roaming - (optional) is a type of string
+  external_fast_roaming = var.external_fast_roaming
+  # external_logout - (optional) is a type of string
+  external_logout = var.external_logout
+  # external_web - (optional) is a type of string
+  external_web = var.external_web
+  # external_web_format - (optional) is a type of string
+  external_web_format = var.external_web_format
+  # fast_bss_transition - (optional) is a type of string
+  fast_bss_transition = var.fast_bss_transition
+  # fast_roaming - (optional) is a type of string
+  fast_roaming = var.fast_roaming
+  # ft_mobility_domain - (optional) is a type of number
+  ft_mobility_domain = var.ft_mobility_domain
+  # ft_over_ds - (optional) is a type of string
+  ft_over_ds = var.ft_over_ds
+  # ft_r0_key_lifetime - (optional) is a type of number
+  ft_r0_key_lifetime = var.ft_r0_key_lifetime
+  # gtk_rekey - (optional) is a type of string
+  gtk_rekey = var.gtk_rekey
+  # gtk_rekey_intv - (optional) is a type of number
+  gtk_rekey_intv = var.gtk_rekey_intv
+  # high_efficiency - (optional) is a type of string
+  high_efficiency = var.high_efficiency
+  # hotspot20_profile - (optional) is a type of string
+  hotspot20_profile = var.hotspot20_profile
+  # igmp_snooping - (optional) is a type of string
+  igmp_snooping = var.igmp_snooping
+  # intra_vap_privacy - (optional) is a type of string
+  intra_vap_privacy = var.intra_vap_privacy
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ipv6_rules - (optional) is a type of string
+  ipv6_rules = var.ipv6_rules
+  # key - (optional) is a type of string
+  key = var.key
+  # keyindex - (optional) is a type of number
+  keyindex = var.keyindex
+  # ldpc - (optional) is a type of string
+  ldpc = var.ldpc
+  # local_authentication - (optional) is a type of string
+  local_authentication = var.local_authentication
+  # local_bridging - (optional) is a type of string
+  local_bridging = var.local_bridging
+  # local_lan - (optional) is a type of string
+  local_lan = var.local_lan
+  # local_standalone - (optional) is a type of string
+  local_standalone = var.local_standalone
+  # local_standalone_nat - (optional) is a type of string
+  local_standalone_nat = var.local_standalone_nat
+  # mac_auth_bypass - (optional) is a type of string
+  mac_auth_bypass = var.mac_auth_bypass
+  # mac_filter - (optional) is a type of string
+  mac_filter = var.mac_filter
+  # mac_filter_policy_other - (optional) is a type of string
+  mac_filter_policy_other = var.mac_filter_policy_other
+  # max_clients - (optional) is a type of number
+  max_clients = var.max_clients
+  # max_clients_ap - (optional) is a type of number
+  max_clients_ap = var.max_clients_ap
+  # me_disable_thresh - (optional) is a type of number
+  me_disable_thresh = var.me_disable_thresh
+  # mesh_backhaul - (optional) is a type of string
+  mesh_backhaul = var.mesh_backhaul
+  # mpsk - (optional) is a type of string
+  mpsk = var.mpsk
+  # mpsk_concurrent_clients - (optional) is a type of number
+  mpsk_concurrent_clients = var.mpsk_concurrent_clients
+  # mpsk_profile - (optional) is a type of string
+  mpsk_profile = var.mpsk_profile
+  # mu_mimo - (optional) is a type of string
+  mu_mimo = var.mu_mimo
+  # multicast_enhance - (optional) is a type of string
+  multicast_enhance = var.multicast_enhance
+  # multicast_rate - (optional) is a type of string
+  multicast_rate = var.multicast_rate
+  # name - (required) is a type of string
+  name = var.name
+  # okc - (optional) is a type of string
+  okc = var.okc
+  # owe_groups - (optional) is a type of string
+  owe_groups = var.owe_groups
+  # owe_transition - (optional) is a type of string
+  owe_transition = var.owe_transition
+  # owe_transition_ssid - (optional) is a type of string
+  owe_transition_ssid = var.owe_transition_ssid
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # pmf - (optional) is a type of string
+  pmf = var.pmf
+  # pmf_assoc_comeback_timeout - (optional) is a type of number
+  pmf_assoc_comeback_timeout = var.pmf_assoc_comeback_timeout
+  # pmf_sa_query_retry_timeout - (optional) is a type of number
+  pmf_sa_query_retry_timeout = var.pmf_sa_query_retry_timeout
+  # port_macauth - (optional) is a type of string
+  port_macauth = var.port_macauth
+  # port_macauth_reauth_timeout - (optional) is a type of number
+  port_macauth_reauth_timeout = var.port_macauth_reauth_timeout
+  # port_macauth_timeout - (optional) is a type of number
+  port_macauth_timeout = var.port_macauth_timeout
+  # portal_message_override_group - (optional) is a type of string
+  portal_message_override_group = var.portal_message_override_group
+  # portal_type - (optional) is a type of string
+  portal_type = var.portal_type
+  # primary_wag_profile - (optional) is a type of string
+  primary_wag_profile = var.primary_wag_profile
+  # probe_resp_suppression - (optional) is a type of string
+  probe_resp_suppression = var.probe_resp_suppression
+  # probe_resp_threshold - (optional) is a type of string
+  probe_resp_threshold = var.probe_resp_threshold
+  # ptk_rekey - (optional) is a type of string
+  ptk_rekey = var.ptk_rekey
+  # ptk_rekey_intv - (optional) is a type of number
+  ptk_rekey_intv = var.ptk_rekey_intv
+  # qos_profile - (optional) is a type of string
+  qos_profile = var.qos_profile
+  # quarantine - (optional) is a type of string
+  quarantine = var.quarantine
+  # radio_2g_threshold - (optional) is a type of string
+  radio_2g_threshold = var.radio_2g_threshold
+  # radio_5g_threshold - (optional) is a type of string
+  radio_5g_threshold = var.radio_5g_threshold
+  # radio_sensitivity - (optional) is a type of string
+  radio_sensitivity = var.radio_sensitivity
+  # radius_mac_auth - (optional) is a type of string
+  radius_mac_auth = var.radius_mac_auth
+  # radius_mac_auth_server - (optional) is a type of string
+  radius_mac_auth_server = var.radius_mac_auth_server
+  # radius_server - (optional) is a type of string
+  radius_server = var.radius_server
+  # rates_11a - (optional) is a type of string
+  rates_11a = var.rates_11a
+  # rates_11ac_ss12 - (optional) is a type of string
+  rates_11ac_ss12 = var.rates_11ac_ss12
+  # rates_11ac_ss34 - (optional) is a type of string
+  rates_11ac_ss34 = var.rates_11ac_ss34
+  # rates_11bg - (optional) is a type of string
+  rates_11bg = var.rates_11bg
+  # rates_11n_ss12 - (optional) is a type of string
+  rates_11n_ss12 = var.rates_11n_ss12
+  # rates_11n_ss34 - (optional) is a type of string
+  rates_11n_ss34 = var.rates_11n_ss34
+  # sae_groups - (optional) is a type of string
+  sae_groups = var.sae_groups
+  # sae_password - (optional) is a type of string
+  sae_password = var.sae_password
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # secondary_wag_profile - (optional) is a type of string
+  secondary_wag_profile = var.secondary_wag_profile
+  # security - (optional) is a type of string
+  security = var.security
+  # security_exempt_list - (optional) is a type of string
+  security_exempt_list = var.security_exempt_list
+  # security_obsolete_option - (optional) is a type of string
+  security_obsolete_option = var.security_obsolete_option
+  # security_redirect_url - (optional) is a type of string
+  security_redirect_url = var.security_redirect_url
+  # split_tunneling - (optional) is a type of string
+  split_tunneling = var.split_tunneling
+  # ssid - (optional) is a type of string
+  ssid = var.ssid
+  # sticky_client_remove - (optional) is a type of string
+  sticky_client_remove = var.sticky_client_remove
+  # sticky_client_threshold_2g - (optional) is a type of string
+  sticky_client_threshold_2g = var.sticky_client_threshold_2g
+  # sticky_client_threshold_5g - (optional) is a type of string
+  sticky_client_threshold_5g = var.sticky_client_threshold_5g
+  # target_wake_time - (optional) is a type of string
+  target_wake_time = var.target_wake_time
+  # tkip_counter_measure - (optional) is a type of string
+  tkip_counter_measure = var.tkip_counter_measure
+  # tunnel_echo_interval - (optional) is a type of number
+  tunnel_echo_interval = var.tunnel_echo_interval
+  # tunnel_fallback_interval - (optional) is a type of number
+  tunnel_fallback_interval = var.tunnel_fallback_interval
+  # utm_profile - (optional) is a type of string
+  utm_profile = var.utm_profile
+  # vlan_auto - (optional) is a type of string
+  vlan_auto = var.vlan_auto
+  # vlan_pooling - (optional) is a type of string
+  vlan_pooling = var.vlan_pooling
+  # vlanid - (optional) is a type of number
+  vlanid = var.vlanid
+  # voice_enterprise - (optional) is a type of string
+  voice_enterprise = var.voice_enterprise
 
   dynamic "mac_filter_list" {
     for_each = var.mac_filter_list
     content {
-      id                = mac_filter_list.value["id"]
-      mac               = mac_filter_list.value["mac"]
+      # id - (optional) is a type of number
+      id = mac_filter_list.value["id"]
+      # mac - (optional) is a type of string
+      mac = mac_filter_list.value["mac"]
+      # mac_filter_policy - (optional) is a type of string
       mac_filter_policy = mac_filter_list.value["mac_filter_policy"]
     }
   }
@@ -1267,14 +1391,19 @@ resource "fortios_wirelesscontroller_vap" "this" {
   dynamic "mpsk_key" {
     for_each = var.mpsk_key
     content {
-      comment            = mpsk_key.value["comment"]
+      # comment - (optional) is a type of string
+      comment = mpsk_key.value["comment"]
+      # concurrent_clients - (optional) is a type of string
       concurrent_clients = mpsk_key.value["concurrent_clients"]
-      key_name           = mpsk_key.value["key_name"]
-      passphrase         = mpsk_key.value["passphrase"]
+      # key_name - (optional) is a type of string
+      key_name = mpsk_key.value["key_name"]
+      # passphrase - (optional) is a type of string
+      passphrase = mpsk_key.value["passphrase"]
 
       dynamic "mpsk_schedules" {
         for_each = mpsk_key.value.mpsk_schedules
         content {
+          # name - (optional) is a type of string
           name = mpsk_schedules.value["name"]
         }
       }
@@ -1285,16 +1414,21 @@ resource "fortios_wirelesscontroller_vap" "this" {
   dynamic "portal_message_overrides" {
     for_each = var.portal_message_overrides
     content {
-      auth_disclaimer_page   = portal_message_overrides.value["auth_disclaimer_page"]
+      # auth_disclaimer_page - (optional) is a type of string
+      auth_disclaimer_page = portal_message_overrides.value["auth_disclaimer_page"]
+      # auth_login_failed_page - (optional) is a type of string
       auth_login_failed_page = portal_message_overrides.value["auth_login_failed_page"]
-      auth_login_page        = portal_message_overrides.value["auth_login_page"]
-      auth_reject_page       = portal_message_overrides.value["auth_reject_page"]
+      # auth_login_page - (optional) is a type of string
+      auth_login_page = portal_message_overrides.value["auth_login_page"]
+      # auth_reject_page - (optional) is a type of string
+      auth_reject_page = portal_message_overrides.value["auth_reject_page"]
     }
   }
 
   dynamic "radius_mac_auth_usergroups" {
     for_each = var.radius_mac_auth_usergroups
     content {
+      # name - (optional) is a type of string
       name = radius_mac_auth_usergroups.value["name"]
     }
   }
@@ -1302,6 +1436,7 @@ resource "fortios_wirelesscontroller_vap" "this" {
   dynamic "selected_usergroups" {
     for_each = var.selected_usergroups
     content {
+      # name - (optional) is a type of string
       name = selected_usergroups.value["name"]
     }
   }
@@ -1309,6 +1444,7 @@ resource "fortios_wirelesscontroller_vap" "this" {
   dynamic "usergroup" {
     for_each = var.usergroup
     content {
+      # name - (optional) is a type of string
       name = usergroup.value["name"]
     }
   }
@@ -1316,7 +1452,9 @@ resource "fortios_wirelesscontroller_vap" "this" {
   dynamic "vlan_pool" {
     for_each = var.vlan_pool
     content {
-      id        = vlan_pool.value["id"]
+      # id - (optional) is a type of number
+      id = vlan_pool.value["id"]
+      # wtp_group - (optional) is a type of string
       wtp_group = vlan_pool.value["wtp_group"]
     }
   }

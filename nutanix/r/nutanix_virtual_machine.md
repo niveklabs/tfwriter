@@ -462,44 +462,79 @@ variable "serial_port_list" {
 
 ```terraform
 resource "nutanix_virtual_machine" "this" {
-  availability_zone_reference                      = var.availability_zone_reference
-  boot_device_disk_address                         = var.boot_device_disk_address
-  boot_device_mac_address                          = var.boot_device_mac_address
-  boot_device_order_list                           = var.boot_device_order_list
-  boot_type                                        = var.boot_type
-  cloud_init_cdrom_uuid                            = var.cloud_init_cdrom_uuid
-  cluster_uuid                                     = var.cluster_uuid
-  description                                      = var.description
-  enable_script_exec                               = var.enable_script_exec
+  # availability_zone_reference - (optional) is a type of map of string
+  availability_zone_reference = var.availability_zone_reference
+  # boot_device_disk_address - (optional) is a type of map of string
+  boot_device_disk_address = var.boot_device_disk_address
+  # boot_device_mac_address - (optional) is a type of string
+  boot_device_mac_address = var.boot_device_mac_address
+  # boot_device_order_list - (optional) is a type of list of string
+  boot_device_order_list = var.boot_device_order_list
+  # boot_type - (optional) is a type of string
+  boot_type = var.boot_type
+  # cloud_init_cdrom_uuid - (optional) is a type of string
+  cloud_init_cdrom_uuid = var.cloud_init_cdrom_uuid
+  # cluster_uuid - (required) is a type of string
+  cluster_uuid = var.cluster_uuid
+  # description - (optional) is a type of string
+  description = var.description
+  # enable_script_exec - (optional) is a type of bool
+  enable_script_exec = var.enable_script_exec
+  # guest_customization_cloud_init_custom_key_values - (optional) is a type of map of string
   guest_customization_cloud_init_custom_key_values = var.guest_customization_cloud_init_custom_key_values
-  guest_customization_cloud_init_meta_data         = var.guest_customization_cloud_init_meta_data
-  guest_customization_cloud_init_user_data         = var.guest_customization_cloud_init_user_data
-  guest_customization_is_overridable               = var.guest_customization_is_overridable
-  guest_customization_sysprep                      = var.guest_customization_sysprep
-  guest_customization_sysprep_custom_key_values    = var.guest_customization_sysprep_custom_key_values
-  guest_os_id                                      = var.guest_os_id
-  hardware_clock_timezone                          = var.hardware_clock_timezone
-  machine_type                                     = var.machine_type
-  memory_size_mib                                  = var.memory_size_mib
-  name                                             = var.name
-  ngt_credentials                                  = var.ngt_credentials
-  ngt_enabled_capability_list                      = var.ngt_enabled_capability_list
-  num_sockets                                      = var.num_sockets
-  num_vcpus_per_socket                             = var.num_vcpus_per_socket
-  num_vnuma_nodes                                  = var.num_vnuma_nodes
-  nutanix_guest_tools                              = var.nutanix_guest_tools
-  owner_reference                                  = var.owner_reference
-  parent_reference                                 = var.parent_reference
-  power_state_mechanism                            = var.power_state_mechanism
-  project_reference                                = var.project_reference
-  should_fail_on_script_failure                    = var.should_fail_on_script_failure
-  use_hot_add                                      = var.use_hot_add
-  vga_console_enabled                              = var.vga_console_enabled
+  # guest_customization_cloud_init_meta_data - (optional) is a type of string
+  guest_customization_cloud_init_meta_data = var.guest_customization_cloud_init_meta_data
+  # guest_customization_cloud_init_user_data - (optional) is a type of string
+  guest_customization_cloud_init_user_data = var.guest_customization_cloud_init_user_data
+  # guest_customization_is_overridable - (optional) is a type of bool
+  guest_customization_is_overridable = var.guest_customization_is_overridable
+  # guest_customization_sysprep - (optional) is a type of map of string
+  guest_customization_sysprep = var.guest_customization_sysprep
+  # guest_customization_sysprep_custom_key_values - (optional) is a type of map of string
+  guest_customization_sysprep_custom_key_values = var.guest_customization_sysprep_custom_key_values
+  # guest_os_id - (optional) is a type of string
+  guest_os_id = var.guest_os_id
+  # hardware_clock_timezone - (optional) is a type of string
+  hardware_clock_timezone = var.hardware_clock_timezone
+  # machine_type - (optional) is a type of string
+  machine_type = var.machine_type
+  # memory_size_mib - (optional) is a type of number
+  memory_size_mib = var.memory_size_mib
+  # name - (required) is a type of string
+  name = var.name
+  # ngt_credentials - (optional) is a type of map of string
+  ngt_credentials = var.ngt_credentials
+  # ngt_enabled_capability_list - (optional) is a type of list of string
+  ngt_enabled_capability_list = var.ngt_enabled_capability_list
+  # num_sockets - (optional) is a type of number
+  num_sockets = var.num_sockets
+  # num_vcpus_per_socket - (optional) is a type of number
+  num_vcpus_per_socket = var.num_vcpus_per_socket
+  # num_vnuma_nodes - (optional) is a type of number
+  num_vnuma_nodes = var.num_vnuma_nodes
+  # nutanix_guest_tools - (optional) is a type of map of string
+  nutanix_guest_tools = var.nutanix_guest_tools
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # parent_reference - (optional) is a type of map of string
+  parent_reference = var.parent_reference
+  # power_state_mechanism - (optional) is a type of string
+  power_state_mechanism = var.power_state_mechanism
+  # project_reference - (optional) is a type of map of string
+  project_reference = var.project_reference
+  # should_fail_on_script_failure - (optional) is a type of bool
+  should_fail_on_script_failure = var.should_fail_on_script_failure
+  # use_hot_add - (optional) is a type of bool
+  use_hot_add = var.use_hot_add
+  # vga_console_enabled - (optional) is a type of bool
+  vga_console_enabled = var.vga_console_enabled
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -507,16 +542,23 @@ resource "nutanix_virtual_machine" "this" {
   dynamic "disk_list" {
     for_each = var.disk_list
     content {
-      data_source_reference  = disk_list.value["data_source_reference"]
-      disk_size_bytes        = disk_list.value["disk_size_bytes"]
-      disk_size_mib          = disk_list.value["disk_size_mib"]
-      uuid                   = disk_list.value["uuid"]
+      # data_source_reference - (optional) is a type of map of string
+      data_source_reference = disk_list.value["data_source_reference"]
+      # disk_size_bytes - (optional) is a type of number
+      disk_size_bytes = disk_list.value["disk_size_bytes"]
+      # disk_size_mib - (optional) is a type of number
+      disk_size_mib = disk_list.value["disk_size_mib"]
+      # uuid - (optional) is a type of string
+      uuid = disk_list.value["uuid"]
+      # volume_group_reference - (optional) is a type of map of string
       volume_group_reference = disk_list.value["volume_group_reference"]
 
       dynamic "device_properties" {
         for_each = disk_list.value.device_properties
         content {
-          device_type  = device_properties.value["device_type"]
+          # device_type - (optional) is a type of string
+          device_type = device_properties.value["device_type"]
+          # disk_address - (optional) is a type of map of string
           disk_address = device_properties.value["disk_address"]
         }
       }
@@ -524,13 +566,17 @@ resource "nutanix_virtual_machine" "this" {
       dynamic "storage_config" {
         for_each = disk_list.value.storage_config
         content {
+          # flash_mode - (optional) is a type of string
           flash_mode = storage_config.value["flash_mode"]
 
           dynamic "storage_container_reference" {
             for_each = storage_config.value.storage_container_reference
             content {
+              # kind - (optional) is a type of string
               kind = storage_container_reference.value["kind"]
-              url  = storage_container_reference.value["url"]
+              # url - (optional) is a type of string
+              url = storage_container_reference.value["url"]
+              # uuid - (optional) is a type of string
               uuid = storage_container_reference.value["uuid"]
             }
           }
@@ -544,29 +590,43 @@ resource "nutanix_virtual_machine" "this" {
   dynamic "gpu_list" {
     for_each = var.gpu_list
     content {
+      # device_id - (optional) is a type of number
       device_id = gpu_list.value["device_id"]
-      mode      = gpu_list.value["mode"]
-      vendor    = gpu_list.value["vendor"]
+      # mode - (optional) is a type of string
+      mode = gpu_list.value["mode"]
+      # vendor - (optional) is a type of string
+      vendor = gpu_list.value["vendor"]
     }
   }
 
   dynamic "nic_list" {
     for_each = var.nic_list
     content {
-      is_connected                     = nic_list.value["is_connected"]
-      mac_address                      = nic_list.value["mac_address"]
-      model                            = nic_list.value["model"]
+      # is_connected - (optional) is a type of string
+      is_connected = nic_list.value["is_connected"]
+      # mac_address - (optional) is a type of string
+      mac_address = nic_list.value["mac_address"]
+      # model - (optional) is a type of string
+      model = nic_list.value["model"]
+      # network_function_chain_reference - (optional) is a type of map of string
       network_function_chain_reference = nic_list.value["network_function_chain_reference"]
-      network_function_nic_type        = nic_list.value["network_function_nic_type"]
-      nic_type                         = nic_list.value["nic_type"]
-      subnet_name                      = nic_list.value["subnet_name"]
-      subnet_uuid                      = nic_list.value["subnet_uuid"]
-      uuid                             = nic_list.value["uuid"]
+      # network_function_nic_type - (optional) is a type of string
+      network_function_nic_type = nic_list.value["network_function_nic_type"]
+      # nic_type - (optional) is a type of string
+      nic_type = nic_list.value["nic_type"]
+      # subnet_name - (optional) is a type of string
+      subnet_name = nic_list.value["subnet_name"]
+      # subnet_uuid - (optional) is a type of string
+      subnet_uuid = nic_list.value["subnet_uuid"]
+      # uuid - (optional) is a type of string
+      uuid = nic_list.value["uuid"]
 
       dynamic "ip_endpoint_list" {
         for_each = nic_list.value.ip_endpoint_list
         content {
-          ip   = ip_endpoint_list.value["ip"]
+          # ip - (optional) is a type of string
+          ip = ip_endpoint_list.value["ip"]
+          # type - (optional) is a type of string
           type = ip_endpoint_list.value["type"]
         }
       }
@@ -577,7 +637,9 @@ resource "nutanix_virtual_machine" "this" {
   dynamic "serial_port_list" {
     for_each = var.serial_port_list
     content {
-      index        = serial_port_list.value["index"]
+      # index - (optional) is a type of number
+      index = serial_port_list.value["index"]
+      # is_connected - (optional) is a type of bool
       is_connected = serial_port_list.value["is_connected"]
     }
   }

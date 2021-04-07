@@ -88,11 +88,17 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_panorama_bgp_conditional_adv" "this" {
-  enable         = var.enable
-  name           = var.name
-  template       = var.template
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
-  used_by        = var.used_by
+  # used_by - (optional) is a type of list of string
+  used_by = var.used_by
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

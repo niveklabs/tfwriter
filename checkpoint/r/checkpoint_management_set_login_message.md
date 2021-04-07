@@ -74,10 +74,14 @@ variable "warning" {
 
 ```terraform
 resource "checkpoint_management_set_login_message" "this" {
-  header       = var.header
-  message      = var.message
+  # header - (optional) is a type of string
+  header = var.header
+  # message - (optional) is a type of string
+  message = var.message
+  # show_message - (optional) is a type of bool
   show_message = var.show_message
-  warning      = var.warning
+  # warning - (optional) is a type of bool
+  warning = var.warning
 }
 ```
 

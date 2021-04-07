@@ -81,14 +81,19 @@ variable "categories" {
 
 ```terraform
 data "nutanix_virtual_machine" "this" {
+  # boot_device_disk_address - (optional) is a type of map of string
   boot_device_disk_address = var.boot_device_disk_address
-  boot_device_mac_address  = var.boot_device_mac_address
-  vm_id                    = var.vm_id
+  # boot_device_mac_address - (optional) is a type of string
+  boot_device_mac_address = var.boot_device_mac_address
+  # vm_id - (required) is a type of string
+  vm_id = var.vm_id
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

@@ -87,11 +87,17 @@ variable "username" {
 
 ```terraform
 resource "nutanix_karbon_private_registry" "this" {
-  cert     = var.cert
-  name     = var.name
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
   password = var.password
-  port     = var.port
-  url      = var.url
+  # port - (required) is a type of number
+  port = var.port
+  # url - (required) is a type of string
+  url = var.url
+  # username - (optional) is a type of string
   username = var.username
 }
 ```

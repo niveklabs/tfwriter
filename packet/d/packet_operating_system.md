@@ -74,10 +74,14 @@ variable "version" {
 
 ```terraform
 data "packet_operating_system" "this" {
-  distro           = var.distro
-  name             = var.name
+  # distro - (optional) is a type of string
+  distro = var.distro
+  # name - (optional) is a type of string
+  name = var.name
+  # provisionable_on - (optional) is a type of string
   provisionable_on = var.provisionable_on
-  version          = var.version
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

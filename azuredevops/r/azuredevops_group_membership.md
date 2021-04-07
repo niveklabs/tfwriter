@@ -64,9 +64,12 @@ variable "mode" {
 
 ```terraform
 resource "azuredevops_group_membership" "this" {
-  group   = var.group
+  # group - (required) is a type of string
+  group = var.group
+  # members - (required) is a type of set of string
   members = var.members
-  mode    = var.mode
+  # mode - (optional) is a type of string
+  mode = var.mode
 }
 ```
 

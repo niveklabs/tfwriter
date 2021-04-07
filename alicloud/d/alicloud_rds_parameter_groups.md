@@ -74,10 +74,14 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_rds_parameter_groups" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  name_regex     = var.name_regex
-  output_file    = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

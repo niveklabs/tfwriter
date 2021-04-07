@@ -175,34 +175,47 @@ variable "tencent_credentials" {
 
 ```terraform
 resource "avi_cloudconnectoruser" "this" {
-  name        = var.name
-  password    = var.password
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # private_key - (optional) is a type of string
   private_key = var.private_key
-  public_key  = var.public_key
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # public_key - (optional) is a type of string
+  public_key = var.public_key
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "azure_serviceprincipal" {
     for_each = var.azure_serviceprincipal
     content {
-      application_id       = azure_serviceprincipal.value["application_id"]
+      # application_id - (optional) is a type of string
+      application_id = azure_serviceprincipal.value["application_id"]
+      # authentication_token - (optional) is a type of string
       authentication_token = azure_serviceprincipal.value["authentication_token"]
-      tenant_id            = azure_serviceprincipal.value["tenant_id"]
+      # tenant_id - (optional) is a type of string
+      tenant_id = azure_serviceprincipal.value["tenant_id"]
     }
   }
 
   dynamic "azure_userpass" {
     for_each = var.azure_userpass
     content {
-      password    = azure_userpass.value["password"]
+      # password - (optional) is a type of string
+      password = azure_userpass.value["password"]
+      # tenant_name - (optional) is a type of string
       tenant_name = azure_userpass.value["tenant_name"]
-      username    = azure_userpass.value["username"]
+      # username - (optional) is a type of string
+      username = azure_userpass.value["username"]
     }
   }
 
   dynamic "gcp_credentials" {
     for_each = var.gcp_credentials
     content {
+      # service_account_keyfile_data - (optional) is a type of string
       service_account_keyfile_data = gcp_credentials.value["service_account_keyfile_data"]
     }
   }
@@ -210,17 +223,23 @@ resource "avi_cloudconnectoruser" "this" {
   dynamic "oci_credentials" {
     for_each = var.oci_credentials
     content {
+      # fingerprint - (optional) is a type of string
       fingerprint = oci_credentials.value["fingerprint"]
+      # key_content - (optional) is a type of string
       key_content = oci_credentials.value["key_content"]
+      # pass_phrase - (optional) is a type of string
       pass_phrase = oci_credentials.value["pass_phrase"]
-      user        = oci_credentials.value["user"]
+      # user - (optional) is a type of string
+      user = oci_credentials.value["user"]
     }
   }
 
   dynamic "tencent_credentials" {
     for_each = var.tencent_credentials
     content {
-      secret_id  = tencent_credentials.value["secret_id"]
+      # secret_id - (optional) is a type of string
+      secret_id = tencent_credentials.value["secret_id"]
+      # secret_key - (optional) is a type of string
       secret_key = tencent_credentials.value["secret_key"]
     }
   }

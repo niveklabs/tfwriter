@@ -65,8 +65,11 @@ variable "sync_interval" {
 
 ```terraform
 resource "fortios_fmg_system_ntp" "this" {
-  server        = var.server
-  status        = var.status
+  # server - (required) is a type of string
+  server = var.server
+  # status - (optional) is a type of string
+  status = var.status
+  # sync_interval - (optional) is a type of number
   sync_interval = var.sync_interval
 }
 ```

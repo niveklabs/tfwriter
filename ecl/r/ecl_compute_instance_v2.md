@@ -229,48 +229,75 @@ variable "volume" {
 
 ```terraform
 resource "ecl_compute_instance_v2" "this" {
-  availability_zone   = var.availability_zone
-  config_drive        = var.config_drive
-  flavor_id           = var.flavor_id
-  flavor_name         = var.flavor_name
-  image_id            = var.image_id
-  image_name          = var.image_name
-  key_pair            = var.key_pair
-  metadata            = var.metadata
-  name                = var.name
-  power_state         = var.power_state
-  region              = var.region
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # config_drive - (optional) is a type of bool
+  config_drive = var.config_drive
+  # flavor_id - (optional) is a type of string
+  flavor_id = var.flavor_id
+  # flavor_name - (optional) is a type of string
+  flavor_name = var.flavor_name
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # power_state - (optional) is a type of string
+  power_state = var.power_state
+  # region - (optional) is a type of string
+  region = var.region
+  # stop_before_destroy - (optional) is a type of bool
   stop_before_destroy = var.stop_before_destroy
-  user_data           = var.user_data
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "block_device" {
     for_each = var.block_device
     content {
-      boot_index            = block_device.value["boot_index"]
+      # boot_index - (optional) is a type of number
+      boot_index = block_device.value["boot_index"]
+      # delete_on_termination - (optional) is a type of bool
       delete_on_termination = block_device.value["delete_on_termination"]
-      destination_type      = block_device.value["destination_type"]
-      source_type           = block_device.value["source_type"]
-      uuid                  = block_device.value["uuid"]
-      volume_size           = block_device.value["volume_size"]
+      # destination_type - (optional) is a type of string
+      destination_type = block_device.value["destination_type"]
+      # source_type - (required) is a type of string
+      source_type = block_device.value["source_type"]
+      # uuid - (optional) is a type of string
+      uuid = block_device.value["uuid"]
+      # volume_size - (optional) is a type of number
+      volume_size = block_device.value["volume_size"]
     }
   }
 
   dynamic "network" {
     for_each = var.network
     content {
+      # access_network - (optional) is a type of bool
       access_network = network.value["access_network"]
-      fixed_ip_v4    = network.value["fixed_ip_v4"]
-      name           = network.value["name"]
-      port           = network.value["port"]
-      uuid           = network.value["uuid"]
+      # fixed_ip_v4 - (optional) is a type of string
+      fixed_ip_v4 = network.value["fixed_ip_v4"]
+      # name - (optional) is a type of string
+      name = network.value["name"]
+      # port - (optional) is a type of string
+      port = network.value["port"]
+      # uuid - (optional) is a type of string
+      uuid = network.value["uuid"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -278,8 +305,11 @@ resource "ecl_compute_instance_v2" "this" {
   dynamic "volume" {
     for_each = var.volume
     content {
-      device    = volume.value["device"]
-      id        = volume.value["id"]
+      # device - (optional) is a type of string
+      device = volume.value["device"]
+      # id - (optional) is a type of string
+      id = volume.value["id"]
+      # volume_id - (required) is a type of string
       volume_id = volume.value["volume_id"]
     }
   }

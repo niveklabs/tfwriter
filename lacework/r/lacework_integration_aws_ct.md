@@ -111,28 +111,37 @@ variable "org_account_mappings" {
 
 ```terraform
 resource "lacework_integration_aws_ct" "this" {
-  enabled   = var.enabled
-  name      = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # queue_url - (required) is a type of string
   queue_url = var.queue_url
-  retries   = var.retries
+  # retries - (optional) is a type of number
+  retries = var.retries
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # external_id - (required) is a type of string
       external_id = credentials.value["external_id"]
-      role_arn    = credentials.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = credentials.value["role_arn"]
     }
   }
 
   dynamic "org_account_mappings" {
     for_each = var.org_account_mappings
     content {
+      # default_lacework_account - (required) is a type of string
       default_lacework_account = org_account_mappings.value["default_lacework_account"]
 
       dynamic "mapping" {
         for_each = org_account_mappings.value.mapping
         content {
-          aws_accounts     = mapping.value["aws_accounts"]
+          # aws_accounts - (required) is a type of set of string
+          aws_accounts = mapping.value["aws_accounts"]
+          # lacework_account - (required) is a type of string
           lacework_account = mapping.value["lacework_account"]
         }
       }

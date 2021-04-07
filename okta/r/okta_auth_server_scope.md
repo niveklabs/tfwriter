@@ -88,12 +88,18 @@ variable "name" {
 
 ```terraform
 resource "okta_auth_server_scope" "this" {
-  auth_server_id   = var.auth_server_id
-  consent          = var.consent
-  default          = var.default
-  description      = var.description
+  # auth_server_id - (required) is a type of string
+  auth_server_id = var.auth_server_id
+  # consent - (optional) is a type of string
+  consent = var.consent
+  # default - (optional) is a type of bool
+  default = var.default
+  # description - (optional) is a type of string
+  description = var.description
+  # metadata_publish - (optional) is a type of string
   metadata_publish = var.metadata_publish
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

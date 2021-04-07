@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "alicloud_datahub_project" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

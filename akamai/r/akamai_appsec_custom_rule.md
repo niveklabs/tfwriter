@@ -56,7 +56,9 @@ variable "custom_rule" {
 
 ```terraform
 resource "akamai_appsec_custom_rule" "this" {
-  config_id   = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # custom_rule - (required) is a type of string
   custom_rule = var.custom_rule
 }
 ```

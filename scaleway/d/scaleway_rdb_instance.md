@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "scaleway_rdb_instance" "this" {
+  # instance_id - (optional) is a type of string
   instance_id = var.instance_id
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

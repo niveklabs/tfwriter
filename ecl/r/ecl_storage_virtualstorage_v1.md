@@ -136,28 +136,41 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_storage_virtualstorage_v1" "this" {
-  description      = var.description
-  error_message    = var.error_message
-  ip_addr_pool     = var.ip_addr_pool
-  name             = var.name
-  network_id       = var.network_id
-  subnet_id        = var.subnet_id
-  volume_type_id   = var.volume_type_id
+  # description - (optional) is a type of string
+  description = var.description
+  # error_message - (optional) is a type of string
+  error_message = var.error_message
+  # ip_addr_pool - (required) is a type of map of string
+  ip_addr_pool = var.ip_addr_pool
+  # name - (required) is a type of string
+  name = var.name
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # volume_type_id - (optional) is a type of string
+  volume_type_id = var.volume_type_id
+  # volume_type_name - (optional) is a type of string
   volume_type_name = var.volume_type_name
 
   dynamic "host_routes" {
     for_each = var.host_routes
     content {
+      # destination - (required) is a type of string
       destination = host_routes.value["destination"]
-      nexthop     = host_routes.value["nexthop"]
+      # nexthop - (required) is a type of string
+      nexthop = host_routes.value["nexthop"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "lacework_agent_access_token" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

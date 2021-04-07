@@ -72,9 +72,13 @@ variable "requested_validity" {
 
 ```terraform
 resource "cloudflare_origin_ca_certificate" "this" {
-  csr                = var.csr
-  hostnames          = var.hostnames
-  request_type       = var.request_type
+  # csr - (optional) is a type of string
+  csr = var.csr
+  # hostnames - (required) is a type of set of string
+  hostnames = var.hostnames
+  # request_type - (required) is a type of string
+  request_type = var.request_type
+  # requested_validity - (optional) is a type of number
   requested_validity = var.requested_validity
 }
 ```

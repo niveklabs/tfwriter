@@ -82,14 +82,19 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_api_client" "this" {
-  description       = var.description
-  name              = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # permissions_group - (optional) is a type of string
   permissions_group = var.permissions_group
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

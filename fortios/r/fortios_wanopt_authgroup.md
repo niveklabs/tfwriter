@@ -89,12 +89,18 @@ variable "psk" {
 
 ```terraform
 resource "fortios_wanopt_authgroup" "this" {
+  # auth_method - (optional) is a type of string
   auth_method = var.auth_method
-  cert        = var.cert
-  name        = var.name
-  peer        = var.peer
+  # cert - (required) is a type of string
+  cert = var.cert
+  # name - (optional) is a type of string
+  name = var.name
+  # peer - (optional) is a type of string
+  peer = var.peer
+  # peer_accept - (optional) is a type of string
   peer_accept = var.peer_accept
-  psk         = var.psk
+  # psk - (optional) is a type of string
+  psk = var.psk
 }
 ```
 

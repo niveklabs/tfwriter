@@ -129,22 +129,35 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_sks_nodepool" "this" {
+  # anti_affinity_group_ids - (optional) is a type of set of string
   anti_affinity_group_ids = var.anti_affinity_group_ids
-  cluster_id              = var.cluster_id
-  description             = var.description
-  disk_size               = var.disk_size
-  instance_type           = var.instance_type
-  name                    = var.name
-  security_group_ids      = var.security_group_ids
-  size                    = var.size
-  zone                    = var.zone
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # disk_size - (optional) is a type of number
+  disk_size = var.disk_size
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # name - (required) is a type of string
+  name = var.name
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # size - (required) is a type of number
+  size = var.size
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

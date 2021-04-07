@@ -109,20 +109,30 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_group" "this" {
+  # access_activity_log - (optional) is a type of bool
   access_activity_log = var.access_activity_log
-  create_datacenter   = var.create_datacenter
-  create_snapshot     = var.create_snapshot
-  name                = var.name
-  reserve_ip          = var.reserve_ip
-  user_id             = var.user_id
+  # create_datacenter - (optional) is a type of bool
+  create_datacenter = var.create_datacenter
+  # create_snapshot - (optional) is a type of bool
+  create_snapshot = var.create_snapshot
+  # name - (required) is a type of string
+  name = var.name
+  # reserve_ip - (optional) is a type of bool
+  reserve_ip = var.reserve_ip
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

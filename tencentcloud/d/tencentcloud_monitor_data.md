@@ -101,17 +101,25 @@ variable "dimensions" {
 
 ```terraform
 data "tencentcloud_monitor_data" "this" {
-  end_time           = var.end_time
-  metric_name        = var.metric_name
-  namespace          = var.namespace
-  period             = var.period
+  # end_time - (required) is a type of string
+  end_time = var.end_time
+  # metric_name - (required) is a type of string
+  metric_name = var.metric_name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # period - (optional) is a type of number
+  period = var.period
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  start_time         = var.start_time
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 
   dynamic "dimensions" {
     for_each = var.dimensions
     content {
-      name  = dimensions.value["name"]
+      # name - (required) is a type of string
+      name = dimensions.value["name"]
+      # value - (required) is a type of string
       value = dimensions.value["value"]
     }
   }

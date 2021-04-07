@@ -80,10 +80,15 @@ variable "tenant_id_other" {
 
 ```terraform
 resource "ecl_provider_connectivity_tenant_connection_request_v2" "this" {
-  description     = var.description
-  name            = var.name
-  network_id      = var.network_id
-  tags            = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_id_other - (required) is a type of string
   tenant_id_other = var.tenant_id_other
 }
 ```

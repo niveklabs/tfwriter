@@ -63,9 +63,12 @@ variable "value" {
 
 ```terraform
 resource "cloudflare_workers_kv" "this" {
-  key          = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # namespace_id - (required) is a type of string
   namespace_id = var.namespace_id
-  value        = var.value
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

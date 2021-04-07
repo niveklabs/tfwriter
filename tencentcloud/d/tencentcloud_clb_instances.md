@@ -82,10 +82,15 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_clb_instances" "this" {
-  clb_id             = var.clb_id
-  clb_name           = var.clb_name
-  network_type       = var.network_type
-  project_id         = var.project_id
+  # clb_id - (optional) is a type of string
+  clb_id = var.clb_id
+  # clb_name - (optional) is a type of string
+  clb_name = var.clb_name
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

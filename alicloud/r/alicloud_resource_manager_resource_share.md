@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_resource_manager_resource_share" "this" {
+  # resource_share_name - (required) is a type of string
   resource_share_name = var.resource_share_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

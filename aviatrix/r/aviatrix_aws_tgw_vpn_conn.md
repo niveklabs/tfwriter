@@ -134,18 +134,30 @@ variable "tgw_name" {
 
 ```terraform
 resource "aviatrix_aws_tgw_vpn_conn" "this" {
-  connection_name               = var.connection_name
-  connection_type               = var.connection_type
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # connection_type - (optional) is a type of string
+  connection_type = var.connection_type
+  # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
-  inside_ip_cidr_tun_1          = var.inside_ip_cidr_tun_1
-  inside_ip_cidr_tun_2          = var.inside_ip_cidr_tun_2
-  pre_shared_key_tun_1          = var.pre_shared_key_tun_1
-  pre_shared_key_tun_2          = var.pre_shared_key_tun_2
-  public_ip                     = var.public_ip
-  remote_as_number              = var.remote_as_number
-  remote_cidr                   = var.remote_cidr
-  route_domain_name             = var.route_domain_name
-  tgw_name                      = var.tgw_name
+  # inside_ip_cidr_tun_1 - (optional) is a type of string
+  inside_ip_cidr_tun_1 = var.inside_ip_cidr_tun_1
+  # inside_ip_cidr_tun_2 - (optional) is a type of string
+  inside_ip_cidr_tun_2 = var.inside_ip_cidr_tun_2
+  # pre_shared_key_tun_1 - (optional) is a type of string
+  pre_shared_key_tun_1 = var.pre_shared_key_tun_1
+  # pre_shared_key_tun_2 - (optional) is a type of string
+  pre_shared_key_tun_2 = var.pre_shared_key_tun_2
+  # public_ip - (required) is a type of string
+  public_ip = var.public_ip
+  # remote_as_number - (optional) is a type of string
+  remote_as_number = var.remote_as_number
+  # remote_cidr - (optional) is a type of string
+  remote_cidr = var.remote_cidr
+  # route_domain_name - (required) is a type of string
+  route_domain_name = var.route_domain_name
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
 }
 ```
 

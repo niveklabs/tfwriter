@@ -65,9 +65,12 @@ variable "status" {
 
 ```terraform
 data "ovh_dedicated_ceph" "this" {
+  # ceph_version - (optional) is a type of string
   ceph_version = var.ceph_version
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  status       = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

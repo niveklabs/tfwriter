@@ -128,17 +128,28 @@ variable "users_excluded" {
 
 ```terraform
 resource "okta_policy_rule_password" "this" {
-  name               = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # network_connection - (optional) is a type of string
   network_connection = var.network_connection
-  network_excludes   = var.network_excludes
-  network_includes   = var.network_includes
-  password_change    = var.password_change
-  password_reset     = var.password_reset
-  password_unlock    = var.password_unlock
-  policyid           = var.policyid
-  priority           = var.priority
-  status             = var.status
-  users_excluded     = var.users_excluded
+  # network_excludes - (optional) is a type of list of string
+  network_excludes = var.network_excludes
+  # network_includes - (optional) is a type of list of string
+  network_includes = var.network_includes
+  # password_change - (optional) is a type of string
+  password_change = var.password_change
+  # password_reset - (optional) is a type of string
+  password_reset = var.password_reset
+  # password_unlock - (optional) is a type of string
+  password_unlock = var.password_unlock
+  # policyid - (required) is a type of string
+  policyid = var.policyid
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # users_excluded - (optional) is a type of set of string
+  users_excluded = var.users_excluded
 }
 ```
 

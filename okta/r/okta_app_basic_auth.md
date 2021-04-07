@@ -123,20 +123,31 @@ variable "users" {
 
 ```terraform
 resource "okta_app_basic_auth" "this" {
-  auth_url            = var.auth_url
+  # auth_url - (required) is a type of string
+  auth_url = var.auth_url
+  # auto_submit_toolbar - (optional) is a type of bool
   auto_submit_toolbar = var.auto_submit_toolbar
-  groups              = var.groups
-  hide_ios            = var.hide_ios
-  hide_web            = var.hide_web
-  label               = var.label
-  status              = var.status
-  url                 = var.url
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # label - (required) is a type of string
+  label = var.label
+  # status - (optional) is a type of string
+  status = var.status
+  # url - (required) is a type of string
+  url = var.url
 
   dynamic "users" {
     for_each = var.users
     content {
-      id       = users.value["id"]
+      # id - (optional) is a type of string
+      id = users.value["id"]
+      # password - (optional) is a type of string
       password = users.value["password"]
+      # username - (optional) is a type of string
       username = users.value["username"]
     }
   }

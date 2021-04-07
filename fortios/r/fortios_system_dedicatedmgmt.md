@@ -98,13 +98,20 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_dedicatedmgmt" "this" {
+  # default_gateway - (optional) is a type of string
   default_gateway = var.default_gateway
-  dhcp_end_ip     = var.dhcp_end_ip
-  dhcp_netmask    = var.dhcp_netmask
-  dhcp_server     = var.dhcp_server
-  dhcp_start_ip   = var.dhcp_start_ip
-  interface       = var.interface
-  status          = var.status
+  # dhcp_end_ip - (optional) is a type of string
+  dhcp_end_ip = var.dhcp_end_ip
+  # dhcp_netmask - (optional) is a type of string
+  dhcp_netmask = var.dhcp_netmask
+  # dhcp_server - (optional) is a type of string
+  dhcp_server = var.dhcp_server
+  # dhcp_start_ip - (optional) is a type of string
+  dhcp_start_ip = var.dhcp_start_ip
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

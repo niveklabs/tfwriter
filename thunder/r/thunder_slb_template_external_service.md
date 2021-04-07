@@ -184,32 +184,49 @@ variable "request_header_forward_list" {
 
 ```terraform
 resource "thunder_slb_template_external_service" "this" {
-  action                                      = var.action
-  failure_action                              = var.failure_action
-  name                                        = var.name
-  service_group                               = var.service_group
+  # action - (optional) is a type of string
+  action = var.action
+  # failure_action - (optional) is a type of string
+  failure_action = var.failure_action
+  # name - (optional) is a type of string
+  name = var.name
+  # service_group - (optional) is a type of string
+  service_group = var.service_group
+  # shared_partition_persist_source_ip_template - (optional) is a type of number
   shared_partition_persist_source_ip_template = var.shared_partition_persist_source_ip_template
-  shared_partition_tcp_proxy_template         = var.shared_partition_tcp_proxy_template
-  source_ip                                   = var.source_ip
-  tcp_proxy                                   = var.tcp_proxy
-  template_persist_source_ip_shared           = var.template_persist_source_ip_shared
-  template_tcp_proxy_shared                   = var.template_tcp_proxy_shared
-  timeout                                     = var.timeout
-  type                                        = var.type
-  user_tag                                    = var.user_tag
-  uuid                                        = var.uuid
+  # shared_partition_tcp_proxy_template - (optional) is a type of number
+  shared_partition_tcp_proxy_template = var.shared_partition_tcp_proxy_template
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # tcp_proxy - (optional) is a type of string
+  tcp_proxy = var.tcp_proxy
+  # template_persist_source_ip_shared - (optional) is a type of string
+  template_persist_source_ip_shared = var.template_persist_source_ip_shared
+  # template_tcp_proxy_shared - (optional) is a type of string
+  template_tcp_proxy_shared = var.template_tcp_proxy_shared
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (optional) is a type of string
+  type = var.type
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "bypass_ip_cfg" {
     for_each = var.bypass_ip_cfg
     content {
+      # bypass_ip - (optional) is a type of string
       bypass_ip = bypass_ip_cfg.value["bypass_ip"]
-      mask      = bypass_ip_cfg.value["mask"]
+      # mask - (optional) is a type of string
+      mask = bypass_ip_cfg.value["mask"]
     }
   }
 
   dynamic "request_header_forward_list" {
     for_each = var.request_header_forward_list
     content {
+      # request_header_forward - (optional) is a type of string
       request_header_forward = request_header_forward_list.value["request_header_forward"]
     }
   }

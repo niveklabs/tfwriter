@@ -293,33 +293,53 @@ variable "template_variable" {
 
 ```terraform
 resource "datadog_timeboard" "this" {
+  # description - (required) is a type of string
   description = var.description
-  read_only   = var.read_only
-  title       = var.title
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # title - (required) is a type of string
+  title = var.title
 
   dynamic "graph" {
     for_each = var.graph
     content {
-      autoscale               = graph.value["autoscale"]
-      custom_unit             = graph.value["custom_unit"]
-      events                  = graph.value["events"]
-      group                   = graph.value["group"]
+      # autoscale - (optional) is a type of bool
+      autoscale = graph.value["autoscale"]
+      # custom_unit - (optional) is a type of string
+      custom_unit = graph.value["custom_unit"]
+      # events - (optional) is a type of list of string
+      events = graph.value["events"]
+      # group - (optional) is a type of list of string
+      group = graph.value["group"]
+      # include_no_metric_hosts - (optional) is a type of bool
       include_no_metric_hosts = graph.value["include_no_metric_hosts"]
+      # include_ungrouped_hosts - (optional) is a type of bool
       include_ungrouped_hosts = graph.value["include_ungrouped_hosts"]
-      node_type               = graph.value["node_type"]
-      precision               = graph.value["precision"]
-      scope                   = graph.value["scope"]
-      style                   = graph.value["style"]
-      text_align              = graph.value["text_align"]
-      title                   = graph.value["title"]
-      viz                     = graph.value["viz"]
-      yaxis                   = graph.value["yaxis"]
+      # node_type - (optional) is a type of string
+      node_type = graph.value["node_type"]
+      # precision - (optional) is a type of string
+      precision = graph.value["precision"]
+      # scope - (optional) is a type of list of string
+      scope = graph.value["scope"]
+      # style - (optional) is a type of map of string
+      style = graph.value["style"]
+      # text_align - (optional) is a type of string
+      text_align = graph.value["text_align"]
+      # title - (required) is a type of string
+      title = graph.value["title"]
+      # viz - (required) is a type of string
+      viz = graph.value["viz"]
+      # yaxis - (optional) is a type of map of string
+      yaxis = graph.value["yaxis"]
 
       dynamic "marker" {
         for_each = graph.value.marker
         content {
+          # label - (optional) is a type of string
           label = marker.value["label"]
-          type  = marker.value["type"]
+          # type - (required) is a type of string
+          type = marker.value["type"]
+          # value - (required) is a type of string
           value = marker.value["value"]
         }
       }
@@ -327,45 +347,66 @@ resource "datadog_timeboard" "this" {
       dynamic "request" {
         for_each = graph.value.request
         content {
-          aggregator      = request.value["aggregator"]
-          change_type     = request.value["change_type"]
-          compare_to      = request.value["compare_to"]
-          extra_col       = request.value["extra_col"]
-          increase_good   = request.value["increase_good"]
-          metadata_json   = request.value["metadata_json"]
-          order_by        = request.value["order_by"]
+          # aggregator - (optional) is a type of string
+          aggregator = request.value["aggregator"]
+          # change_type - (optional) is a type of string
+          change_type = request.value["change_type"]
+          # compare_to - (optional) is a type of string
+          compare_to = request.value["compare_to"]
+          # extra_col - (optional) is a type of string
+          extra_col = request.value["extra_col"]
+          # increase_good - (optional) is a type of bool
+          increase_good = request.value["increase_good"]
+          # metadata_json - (optional) is a type of string
+          metadata_json = request.value["metadata_json"]
+          # order_by - (optional) is a type of string
+          order_by = request.value["order_by"]
+          # order_direction - (optional) is a type of string
           order_direction = request.value["order_direction"]
-          q               = request.value["q"]
-          stacked         = request.value["stacked"]
-          style           = request.value["style"]
-          type            = request.value["type"]
+          # q - (optional) is a type of string
+          q = request.value["q"]
+          # stacked - (optional) is a type of bool
+          stacked = request.value["stacked"]
+          # style - (optional) is a type of map of string
+          style = request.value["style"]
+          # type - (optional) is a type of string
+          type = request.value["type"]
 
           dynamic "apm_query" {
             for_each = request.value.apm_query
             content {
+              # index - (required) is a type of string
               index = apm_query.value["index"]
 
               dynamic "compute" {
                 for_each = apm_query.value.compute
                 content {
+                  # aggregation - (required) is a type of string
                   aggregation = compute.value["aggregation"]
-                  facet       = compute.value["facet"]
-                  interval    = compute.value["interval"]
+                  # facet - (optional) is a type of string
+                  facet = compute.value["facet"]
+                  # interval - (optional) is a type of number
+                  interval = compute.value["interval"]
                 }
               }
 
               dynamic "group_by" {
                 for_each = apm_query.value.group_by
                 content {
+                  # facet - (required) is a type of string
                   facet = group_by.value["facet"]
+                  # limit - (optional) is a type of number
                   limit = group_by.value["limit"]
 
                   dynamic "sort" {
                     for_each = group_by.value.sort
                     content {
+                      # aggregation - (required) is a type of string
                       aggregation = sort.value["aggregation"]
-                      facet       = sort.value["facet"]
-                      order       = sort.value["order"]
+                      # facet - (optional) is a type of string
+                      facet = sort.value["facet"]
+                      # order - (required) is a type of string
+                      order = sort.value["order"]
                     }
                   }
 
@@ -375,6 +416,7 @@ resource "datadog_timeboard" "this" {
               dynamic "search" {
                 for_each = apm_query.value.search
                 content {
+                  # query - (required) is a type of string
                   query = search.value["query"]
                 }
               }
@@ -385,40 +427,54 @@ resource "datadog_timeboard" "this" {
           dynamic "conditional_format" {
             for_each = request.value.conditional_format
             content {
-              comparator      = conditional_format.value["comparator"]
+              # comparator - (required) is a type of string
+              comparator = conditional_format.value["comparator"]
+              # custom_bg_color - (optional) is a type of string
               custom_bg_color = conditional_format.value["custom_bg_color"]
+              # custom_fg_color - (optional) is a type of string
               custom_fg_color = conditional_format.value["custom_fg_color"]
-              palette         = conditional_format.value["palette"]
-              value           = conditional_format.value["value"]
+              # palette - (optional) is a type of string
+              palette = conditional_format.value["palette"]
+              # value - (optional) is a type of string
+              value = conditional_format.value["value"]
             }
           }
 
           dynamic "log_query" {
             for_each = request.value.log_query
             content {
+              # index - (required) is a type of string
               index = log_query.value["index"]
 
               dynamic "compute" {
                 for_each = log_query.value.compute
                 content {
+                  # aggregation - (required) is a type of string
                   aggregation = compute.value["aggregation"]
-                  facet       = compute.value["facet"]
-                  interval    = compute.value["interval"]
+                  # facet - (optional) is a type of string
+                  facet = compute.value["facet"]
+                  # interval - (optional) is a type of number
+                  interval = compute.value["interval"]
                 }
               }
 
               dynamic "group_by" {
                 for_each = log_query.value.group_by
                 content {
+                  # facet - (required) is a type of string
                   facet = group_by.value["facet"]
+                  # limit - (optional) is a type of number
                   limit = group_by.value["limit"]
 
                   dynamic "sort" {
                     for_each = group_by.value.sort
                     content {
+                      # aggregation - (required) is a type of string
                       aggregation = sort.value["aggregation"]
-                      facet       = sort.value["facet"]
-                      order       = sort.value["order"]
+                      # facet - (optional) is a type of string
+                      facet = sort.value["facet"]
+                      # order - (required) is a type of string
+                      order = sort.value["order"]
                     }
                   }
 
@@ -428,6 +484,7 @@ resource "datadog_timeboard" "this" {
               dynamic "search" {
                 for_each = log_query.value.search
                 content {
+                  # query - (required) is a type of string
                   query = search.value["query"]
                 }
               }
@@ -438,9 +495,13 @@ resource "datadog_timeboard" "this" {
           dynamic "process_query" {
             for_each = request.value.process_query
             content {
+              # filter_by - (optional) is a type of list of string
               filter_by = process_query.value["filter_by"]
-              limit     = process_query.value["limit"]
-              metric    = process_query.value["metric"]
+              # limit - (optional) is a type of number
+              limit = process_query.value["limit"]
+              # metric - (required) is a type of string
+              metric = process_query.value["metric"]
+              # search_by - (optional) is a type of string
               search_by = process_query.value["search_by"]
             }
           }
@@ -454,9 +515,12 @@ resource "datadog_timeboard" "this" {
   dynamic "template_variable" {
     for_each = var.template_variable
     content {
+      # default - (optional) is a type of string
       default = template_variable.value["default"]
-      name    = template_variable.value["name"]
-      prefix  = template_variable.value["prefix"]
+      # name - (required) is a type of string
+      name = template_variable.value["name"]
+      # prefix - (optional) is a type of string
+      prefix = template_variable.value["prefix"]
     }
   }
 

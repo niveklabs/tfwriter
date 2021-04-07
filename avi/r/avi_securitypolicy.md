@@ -161,30 +161,43 @@ variable "udp_attacks" {
 
 ```terraform
 resource "avi_securitypolicy" "this" {
-  description                   = var.description
-  dns_policy_index              = var.dns_policy_index
-  name                          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # dns_policy_index - (optional) is a type of number
+  dns_policy_index = var.dns_policy_index
+  # name - (required) is a type of string
+  name = var.name
+  # network_security_policy_index - (optional) is a type of number
   network_security_policy_index = var.network_security_policy_index
-  oper_mode                     = var.oper_mode
-  tenant_ref                    = var.tenant_ref
-  uuid                          = var.uuid
+  # oper_mode - (optional) is a type of string
+  oper_mode = var.oper_mode
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dns_attacks" {
     for_each = var.dns_attacks
     content {
+      # oper_mode - (optional) is a type of string
       oper_mode = dns_attacks.value["oper_mode"]
 
       dynamic "attacks" {
         for_each = dns_attacks.value.attacks
         content {
-          attack_vector      = attacks.value["attack_vector"]
-          enabled            = attacks.value["enabled"]
+          # attack_vector - (optional) is a type of string
+          attack_vector = attacks.value["attack_vector"]
+          # enabled - (optional) is a type of bool
+          enabled = attacks.value["enabled"]
+          # max_mitigation_age - (optional) is a type of number
           max_mitigation_age = attacks.value["max_mitigation_age"]
-          threshold          = attacks.value["threshold"]
+          # threshold - (optional) is a type of number
+          threshold = attacks.value["threshold"]
 
           dynamic "mitigation_action" {
             for_each = attacks.value.mitigation_action
             content {
+              # deny - (optional) is a type of bool
               deny = mitigation_action.value["deny"]
             }
           }

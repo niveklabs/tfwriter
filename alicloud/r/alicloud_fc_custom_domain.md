@@ -96,14 +96,19 @@ variable "route_config" {
 
 ```terraform
 resource "alicloud_fc_custom_domain" "this" {
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
-  protocol    = var.protocol
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 
   dynamic "cert_config" {
     for_each = var.cert_config
     content {
-      cert_name   = cert_config.value["cert_name"]
+      # cert_name - (required) is a type of string
+      cert_name = cert_config.value["cert_name"]
+      # certificate - (required) is a type of string
       certificate = cert_config.value["certificate"]
+      # private_key - (required) is a type of string
       private_key = cert_config.value["private_key"]
     }
   }
@@ -111,11 +116,16 @@ resource "alicloud_fc_custom_domain" "this" {
   dynamic "route_config" {
     for_each = var.route_config
     content {
+      # function_name - (required) is a type of string
       function_name = route_config.value["function_name"]
-      methods       = route_config.value["methods"]
-      path          = route_config.value["path"]
-      qualifier     = route_config.value["qualifier"]
-      service_name  = route_config.value["service_name"]
+      # methods - (optional) is a type of list of string
+      methods = route_config.value["methods"]
+      # path - (required) is a type of string
+      path = route_config.value["path"]
+      # qualifier - (optional) is a type of string
+      qualifier = route_config.value["qualifier"]
+      # service_name - (required) is a type of string
+      service_name = route_config.value["service_name"]
     }
   }
 

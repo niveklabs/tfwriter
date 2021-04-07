@@ -297,36 +297,59 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_server" "this" {
-  auto_recovery     = var.auto_recovery
+  # auto_recovery - (optional) is a type of bool
+  auto_recovery = var.auto_recovery
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  cores             = var.cores
-  hardware_profile  = var.hardware_profile
-  ipv4              = var.ipv4
-  ipv6              = var.ipv6
-  isoimage          = var.isoimage
-  labels            = var.labels
-  memory            = var.memory
-  name              = var.name
-  power             = var.power
+  # cores - (required) is a type of number
+  cores = var.cores
+  # hardware_profile - (optional) is a type of string
+  hardware_profile = var.hardware_profile
+  # ipv4 - (optional) is a type of string
+  ipv4 = var.ipv4
+  # ipv6 - (optional) is a type of string
+  ipv6 = var.ipv6
+  # isoimage - (optional) is a type of string
+  isoimage = var.isoimage
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # memory - (required) is a type of number
+  memory = var.memory
+  # name - (required) is a type of string
+  name = var.name
+  # power - (optional) is a type of bool
+  power = var.power
 
   dynamic "network" {
     for_each = var.network
     content {
-      bootdevice             = network.value["bootdevice"]
+      # bootdevice - (optional) is a type of bool
+      bootdevice = network.value["bootdevice"]
+      # firewall_template_uuid - (optional) is a type of string
       firewall_template_uuid = network.value["firewall_template_uuid"]
-      object_uuid            = network.value["object_uuid"]
-      ordering               = network.value["ordering"]
+      # object_uuid - (required) is a type of string
+      object_uuid = network.value["object_uuid"]
+      # ordering - (optional) is a type of number
+      ordering = network.value["ordering"]
 
       dynamic "rules_v4_in" {
         for_each = network.value.rules_v4_in
         content {
-          action   = rules_v4_in.value["action"]
-          comment  = rules_v4_in.value["comment"]
+          # action - (required) is a type of string
+          action = rules_v4_in.value["action"]
+          # comment - (optional) is a type of string
+          comment = rules_v4_in.value["comment"]
+          # dst_cidr - (optional) is a type of string
           dst_cidr = rules_v4_in.value["dst_cidr"]
+          # dst_port - (optional) is a type of string
           dst_port = rules_v4_in.value["dst_port"]
-          order    = rules_v4_in.value["order"]
+          # order - (required) is a type of number
+          order = rules_v4_in.value["order"]
+          # protocol - (required) is a type of string
           protocol = rules_v4_in.value["protocol"]
+          # src_cidr - (optional) is a type of string
           src_cidr = rules_v4_in.value["src_cidr"]
+          # src_port - (optional) is a type of string
           src_port = rules_v4_in.value["src_port"]
         }
       }
@@ -334,13 +357,21 @@ resource "gridscale_server" "this" {
       dynamic "rules_v4_out" {
         for_each = network.value.rules_v4_out
         content {
-          action   = rules_v4_out.value["action"]
-          comment  = rules_v4_out.value["comment"]
+          # action - (required) is a type of string
+          action = rules_v4_out.value["action"]
+          # comment - (optional) is a type of string
+          comment = rules_v4_out.value["comment"]
+          # dst_cidr - (optional) is a type of string
           dst_cidr = rules_v4_out.value["dst_cidr"]
+          # dst_port - (optional) is a type of string
           dst_port = rules_v4_out.value["dst_port"]
-          order    = rules_v4_out.value["order"]
+          # order - (required) is a type of number
+          order = rules_v4_out.value["order"]
+          # protocol - (required) is a type of string
           protocol = rules_v4_out.value["protocol"]
+          # src_cidr - (optional) is a type of string
           src_cidr = rules_v4_out.value["src_cidr"]
+          # src_port - (optional) is a type of string
           src_port = rules_v4_out.value["src_port"]
         }
       }
@@ -348,13 +379,21 @@ resource "gridscale_server" "this" {
       dynamic "rules_v6_in" {
         for_each = network.value.rules_v6_in
         content {
-          action   = rules_v6_in.value["action"]
-          comment  = rules_v6_in.value["comment"]
+          # action - (required) is a type of string
+          action = rules_v6_in.value["action"]
+          # comment - (optional) is a type of string
+          comment = rules_v6_in.value["comment"]
+          # dst_cidr - (optional) is a type of string
           dst_cidr = rules_v6_in.value["dst_cidr"]
+          # dst_port - (optional) is a type of string
           dst_port = rules_v6_in.value["dst_port"]
-          order    = rules_v6_in.value["order"]
+          # order - (required) is a type of number
+          order = rules_v6_in.value["order"]
+          # protocol - (required) is a type of string
           protocol = rules_v6_in.value["protocol"]
+          # src_cidr - (optional) is a type of string
           src_cidr = rules_v6_in.value["src_cidr"]
+          # src_port - (optional) is a type of string
           src_port = rules_v6_in.value["src_port"]
         }
       }
@@ -362,13 +401,21 @@ resource "gridscale_server" "this" {
       dynamic "rules_v6_out" {
         for_each = network.value.rules_v6_out
         content {
-          action   = rules_v6_out.value["action"]
-          comment  = rules_v6_out.value["comment"]
+          # action - (required) is a type of string
+          action = rules_v6_out.value["action"]
+          # comment - (optional) is a type of string
+          comment = rules_v6_out.value["comment"]
+          # dst_cidr - (optional) is a type of string
           dst_cidr = rules_v6_out.value["dst_cidr"]
+          # dst_port - (optional) is a type of string
           dst_port = rules_v6_out.value["dst_port"]
-          order    = rules_v6_out.value["order"]
+          # order - (required) is a type of number
+          order = rules_v6_out.value["order"]
+          # protocol - (required) is a type of string
           protocol = rules_v6_out.value["protocol"]
+          # src_cidr - (optional) is a type of string
           src_cidr = rules_v6_out.value["src_cidr"]
+          # src_port - (optional) is a type of string
           src_port = rules_v6_out.value["src_port"]
         }
       }
@@ -379,6 +426,7 @@ resource "gridscale_server" "this" {
   dynamic "storage" {
     for_each = var.storage
     content {
+      # object_uuid - (required) is a type of string
       object_uuid = storage.value["object_uuid"]
     }
   }
@@ -386,8 +434,11 @@ resource "gridscale_server" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

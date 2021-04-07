@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 data "opennebula_virtual_network" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  mtu         = var.mtu
-  name        = var.name
-  tags        = var.tags
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

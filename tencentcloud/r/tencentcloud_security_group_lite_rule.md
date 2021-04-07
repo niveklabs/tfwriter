@@ -65,8 +65,11 @@ variable "security_group_id" {
 
 ```terraform
 resource "tencentcloud_security_group_lite_rule" "this" {
-  egress            = var.egress
-  ingress           = var.ingress
+  # egress - (optional) is a type of list of string
+  egress = var.egress
+  # ingress - (optional) is a type of list of string
+  ingress = var.ingress
+  # security_group_id - (required) is a type of string
   security_group_id = var.security_group_id
 }
 ```

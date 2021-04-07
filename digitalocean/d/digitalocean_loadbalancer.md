@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "digitalocean_loadbalancer" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "rancher2_setting" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

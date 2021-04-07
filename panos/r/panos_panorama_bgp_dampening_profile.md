@@ -120,16 +120,26 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_panorama_bgp_dampening_profile" "this" {
-  cutoff                      = var.cutoff
-  decay_half_life_reachable   = var.decay_half_life_reachable
+  # cutoff - (optional) is a type of number
+  cutoff = var.cutoff
+  # decay_half_life_reachable - (optional) is a type of number
+  decay_half_life_reachable = var.decay_half_life_reachable
+  # decay_half_life_unreachable - (optional) is a type of number
   decay_half_life_unreachable = var.decay_half_life_unreachable
-  enable                      = var.enable
-  max_hold_time               = var.max_hold_time
-  name                        = var.name
-  reuse                       = var.reuse
-  template                    = var.template
-  template_stack              = var.template_stack
-  virtual_router              = var.virtual_router
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # max_hold_time - (optional) is a type of number
+  max_hold_time = var.max_hold_time
+  # name - (required) is a type of string
+  name = var.name
+  # reuse - (optional) is a type of number
+  reuse = var.reuse
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

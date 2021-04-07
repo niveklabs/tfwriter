@@ -58,7 +58,9 @@ variable "state" {
 
 ```terraform
 data "azuredevops_projects" "this" {
-  name  = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # state - (optional) is a type of string
   state = var.state
 }
 ```

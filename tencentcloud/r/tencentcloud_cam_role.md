@@ -72,10 +72,14 @@ variable "name" {
 
 ```terraform
 resource "tencentcloud_cam_role" "this" {
+  # console_login - (optional) is a type of bool
   console_login = var.console_login
-  description   = var.description
-  document      = var.document
-  name          = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # document - (required) is a type of string
+  document = var.document
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

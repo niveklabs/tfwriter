@@ -99,18 +99,26 @@ variable "config_settings" {
 
 ```terraform
 resource "avi_tenant" "this" {
-  created_by  = var.created_by
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
   description = var.description
-  local       = var.local
-  name        = var.name
-  uuid        = var.uuid
+  # local - (optional) is a type of bool
+  local = var.local
+  # name - (required) is a type of string
+  name = var.name
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "config_settings" {
     for_each = var.config_settings
     content {
-      se_in_provider_context       = config_settings.value["se_in_provider_context"]
+      # se_in_provider_context - (optional) is a type of bool
+      se_in_provider_context = config_settings.value["se_in_provider_context"]
+      # tenant_access_to_provider_se - (optional) is a type of bool
       tenant_access_to_provider_se = config_settings.value["tenant_access_to_provider_se"]
-      tenant_vrf                   = config_settings.value["tenant_vrf"]
+      # tenant_vrf - (optional) is a type of bool
+      tenant_vrf = config_settings.value["tenant_vrf"]
     }
   }
 

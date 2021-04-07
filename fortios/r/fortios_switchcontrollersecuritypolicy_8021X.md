@@ -216,30 +216,51 @@ variable "user_group" {
 
 ```terraform
 resource "fortios_switchcontrollersecuritypolicy_8021X" "this" {
-  auth_fail_vlan            = var.auth_fail_vlan
-  auth_fail_vlan_id         = var.auth_fail_vlan_id
-  auth_fail_vlanid          = var.auth_fail_vlanid
+  # auth_fail_vlan - (optional) is a type of string
+  auth_fail_vlan = var.auth_fail_vlan
+  # auth_fail_vlan_id - (optional) is a type of string
+  auth_fail_vlan_id = var.auth_fail_vlan_id
+  # auth_fail_vlanid - (optional) is a type of number
+  auth_fail_vlanid = var.auth_fail_vlanid
+  # authserver_timeout_period - (optional) is a type of number
   authserver_timeout_period = var.authserver_timeout_period
-  authserver_timeout_vlan   = var.authserver_timeout_vlan
+  # authserver_timeout_vlan - (optional) is a type of string
+  authserver_timeout_vlan = var.authserver_timeout_vlan
+  # authserver_timeout_vlanid - (optional) is a type of string
   authserver_timeout_vlanid = var.authserver_timeout_vlanid
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  eap_auto_untagged_vlans   = var.eap_auto_untagged_vlans
-  eap_passthru              = var.eap_passthru
-  framevid_apply            = var.framevid_apply
-  guest_auth_delay          = var.guest_auth_delay
-  guest_vlan                = var.guest_vlan
-  guest_vlan_id             = var.guest_vlan_id
-  guest_vlanid              = var.guest_vlanid
-  mac_auth_bypass           = var.mac_auth_bypass
-  name                      = var.name
-  open_auth                 = var.open_auth
-  policy_type               = var.policy_type
-  radius_timeout_overwrite  = var.radius_timeout_overwrite
-  security_mode             = var.security_mode
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # eap_auto_untagged_vlans - (optional) is a type of string
+  eap_auto_untagged_vlans = var.eap_auto_untagged_vlans
+  # eap_passthru - (optional) is a type of string
+  eap_passthru = var.eap_passthru
+  # framevid_apply - (optional) is a type of string
+  framevid_apply = var.framevid_apply
+  # guest_auth_delay - (optional) is a type of number
+  guest_auth_delay = var.guest_auth_delay
+  # guest_vlan - (optional) is a type of string
+  guest_vlan = var.guest_vlan
+  # guest_vlan_id - (optional) is a type of string
+  guest_vlan_id = var.guest_vlan_id
+  # guest_vlanid - (optional) is a type of number
+  guest_vlanid = var.guest_vlanid
+  # mac_auth_bypass - (optional) is a type of string
+  mac_auth_bypass = var.mac_auth_bypass
+  # name - (optional) is a type of string
+  name = var.name
+  # open_auth - (optional) is a type of string
+  open_auth = var.open_auth
+  # policy_type - (optional) is a type of string
+  policy_type = var.policy_type
+  # radius_timeout_overwrite - (optional) is a type of string
+  radius_timeout_overwrite = var.radius_timeout_overwrite
+  # security_mode - (optional) is a type of string
+  security_mode = var.security_mode
 
   dynamic "user_group" {
     for_each = var.user_group
     content {
+      # name - (optional) is a type of string
       name = user_group.value["name"]
     }
   }

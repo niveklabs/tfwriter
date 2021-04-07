@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "panos_predefined_dlp_file_type" "this" {
+  # label - (optional) is a type of string
   label = var.label
-  name  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

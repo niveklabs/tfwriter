@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "grafana_team" "this" {
-  email   = var.email
+  # email - (optional) is a type of string
+  email = var.email
+  # members - (optional) is a type of list of string
   members = var.members
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

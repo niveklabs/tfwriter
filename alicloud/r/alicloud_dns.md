@@ -65,8 +65,11 @@ variable "resource_group_id" {
 
 ```terraform
 resource "alicloud_dns" "this" {
-  group_id          = var.group_id
-  name              = var.name
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
 }
 ```

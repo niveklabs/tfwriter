@@ -79,10 +79,15 @@ variable "service_account_credential_type" {
 
 ```terraform
 resource "panos_panorama_gcp_account" "this" {
-  credential_file                 = var.credential_file
-  description                     = var.description
-  name                            = var.name
-  project_id                      = var.project_id
+  # credential_file - (required) is a type of string
+  credential_file = var.credential_file
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # service_account_credential_type - (optional) is a type of string
   service_account_credential_type = var.service_account_credential_type
 }
 ```

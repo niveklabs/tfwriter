@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "constellix_contact_lists" "this" {
+  # email_addresses - (required) is a type of list of string
   email_addresses = var.email_addresses
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

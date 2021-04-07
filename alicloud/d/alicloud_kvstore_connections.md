@@ -57,7 +57,9 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_kvstore_connections" "this" {
-  ids         = var.ids
+  # ids - (required) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

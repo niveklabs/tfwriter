@@ -194,25 +194,44 @@ variable "weight_weather_channel" {
 
 ```terraform
 resource "fortios_wirelesscontroller_arrpprofile" "this" {
-  comment                 = var.comment
-  include_dfs_channel     = var.include_dfs_channel
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # include_dfs_channel - (optional) is a type of string
+  include_dfs_channel = var.include_dfs_channel
+  # include_weather_channel - (optional) is a type of string
   include_weather_channel = var.include_weather_channel
-  monitor_period          = var.monitor_period
-  name                    = var.name
-  selection_period        = var.selection_period
-  threshold_ap            = var.threshold_ap
-  threshold_channel_load  = var.threshold_channel_load
-  threshold_noise_floor   = var.threshold_noise_floor
-  threshold_rx_errors     = var.threshold_rx_errors
+  # monitor_period - (optional) is a type of number
+  monitor_period = var.monitor_period
+  # name - (optional) is a type of string
+  name = var.name
+  # selection_period - (optional) is a type of number
+  selection_period = var.selection_period
+  # threshold_ap - (optional) is a type of number
+  threshold_ap = var.threshold_ap
+  # threshold_channel_load - (optional) is a type of number
+  threshold_channel_load = var.threshold_channel_load
+  # threshold_noise_floor - (optional) is a type of string
+  threshold_noise_floor = var.threshold_noise_floor
+  # threshold_rx_errors - (optional) is a type of number
+  threshold_rx_errors = var.threshold_rx_errors
+  # threshold_spectral_rssi - (optional) is a type of string
   threshold_spectral_rssi = var.threshold_spectral_rssi
-  threshold_tx_retries    = var.threshold_tx_retries
-  weight_channel_load     = var.weight_channel_load
-  weight_dfs_channel      = var.weight_dfs_channel
-  weight_managed_ap       = var.weight_managed_ap
-  weight_noise_floor      = var.weight_noise_floor
-  weight_rogue_ap         = var.weight_rogue_ap
-  weight_spectral_rssi    = var.weight_spectral_rssi
-  weight_weather_channel  = var.weight_weather_channel
+  # threshold_tx_retries - (optional) is a type of number
+  threshold_tx_retries = var.threshold_tx_retries
+  # weight_channel_load - (optional) is a type of number
+  weight_channel_load = var.weight_channel_load
+  # weight_dfs_channel - (optional) is a type of number
+  weight_dfs_channel = var.weight_dfs_channel
+  # weight_managed_ap - (optional) is a type of number
+  weight_managed_ap = var.weight_managed_ap
+  # weight_noise_floor - (optional) is a type of number
+  weight_noise_floor = var.weight_noise_floor
+  # weight_rogue_ap - (optional) is a type of number
+  weight_rogue_ap = var.weight_rogue_ap
+  # weight_spectral_rssi - (optional) is a type of number
+  weight_spectral_rssi = var.weight_spectral_rssi
+  # weight_weather_channel - (optional) is a type of number
+  weight_weather_channel = var.weight_weather_channel
 }
 ```
 

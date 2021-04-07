@@ -81,10 +81,15 @@ variable "version_regex" {
 
 ```terraform
 data "equinix_network_device_software" "this" {
-  device_type   = var.device_type
-  most_recent   = var.most_recent
-  packages      = var.packages
-  stable        = var.stable
+  # device_type - (required) is a type of string
+  device_type = var.device_type
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # packages - (optional) is a type of set of string
+  packages = var.packages
+  # stable - (optional) is a type of bool
+  stable = var.stable
+  # version_regex - (optional) is a type of string
   version_regex = var.version_regex
 }
 ```

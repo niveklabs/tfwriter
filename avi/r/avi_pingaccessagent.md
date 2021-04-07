@@ -116,23 +116,33 @@ variable "primary_server" {
 
 ```terraform
 resource "avi_pingaccessagent" "this" {
-  description          = var.description
-  name                 = var.name
-  pingaccess_pool_ref  = var.pingaccess_pool_ref
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # pingaccess_pool_ref - (optional) is a type of string
+  pingaccess_pool_ref = var.pingaccess_pool_ref
+  # properties_file_data - (optional) is a type of string
   properties_file_data = var.properties_file_data
-  tenant_ref           = var.tenant_ref
-  uuid                 = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "primary_server" {
     for_each = var.primary_server
     content {
+      # hostname - (optional) is a type of string
       hostname = primary_server.value["hostname"]
-      port     = primary_server.value["port"]
+      # port - (optional) is a type of number
+      port = primary_server.value["port"]
 
       dynamic "ip" {
         for_each = primary_server.value.ip
         content {
+          # addr - (required) is a type of string
           addr = ip.value["addr"]
+          # type - (required) is a type of string
           type = ip.value["type"]
         }
       }

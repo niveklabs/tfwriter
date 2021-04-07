@@ -483,35 +483,57 @@ variable "ssh" {
 
 ```terraform
 resource "fortios_firewall_profileprotocoloptions" "this" {
-  comment                 = var.comment
-  feature_set             = var.feature_set
-  name                    = var.name
-  oversize_log            = var.oversize_log
-  replacemsg_group        = var.replacemsg_group
-  rpc_over_http           = var.rpc_over_http
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
+  # name - (required) is a type of string
+  name = var.name
+  # oversize_log - (optional) is a type of string
+  oversize_log = var.oversize_log
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # rpc_over_http - (optional) is a type of string
+  rpc_over_http = var.rpc_over_http
+  # switching_protocols_log - (optional) is a type of string
   switching_protocols_log = var.switching_protocols_log
 
   dynamic "cifs" {
     for_each = var.cifs
     content {
-      domain_controller           = cifs.value["domain_controller"]
-      options                     = cifs.value["options"]
-      oversize_limit              = cifs.value["oversize_limit"]
-      ports                       = cifs.value["ports"]
-      scan_bzip2                  = cifs.value["scan_bzip2"]
-      server_credential_type      = cifs.value["server_credential_type"]
-      status                      = cifs.value["status"]
-      tcp_window_maximum          = cifs.value["tcp_window_maximum"]
-      tcp_window_minimum          = cifs.value["tcp_window_minimum"]
-      tcp_window_size             = cifs.value["tcp_window_size"]
-      tcp_window_type             = cifs.value["tcp_window_type"]
-      uncompressed_nest_limit     = cifs.value["uncompressed_nest_limit"]
+      # domain_controller - (optional) is a type of string
+      domain_controller = cifs.value["domain_controller"]
+      # options - (optional) is a type of string
+      options = cifs.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = cifs.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = cifs.value["ports"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = cifs.value["scan_bzip2"]
+      # server_credential_type - (optional) is a type of string
+      server_credential_type = cifs.value["server_credential_type"]
+      # status - (optional) is a type of string
+      status = cifs.value["status"]
+      # tcp_window_maximum - (optional) is a type of number
+      tcp_window_maximum = cifs.value["tcp_window_maximum"]
+      # tcp_window_minimum - (optional) is a type of number
+      tcp_window_minimum = cifs.value["tcp_window_minimum"]
+      # tcp_window_size - (optional) is a type of number
+      tcp_window_size = cifs.value["tcp_window_size"]
+      # tcp_window_type - (optional) is a type of string
+      tcp_window_type = cifs.value["tcp_window_type"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = cifs.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = cifs.value["uncompressed_oversize_limit"]
 
       dynamic "server_keytab" {
         for_each = cifs.value.server_keytab
         content {
-          keytab    = server_keytab.value["keytab"]
+          # keytab - (optional) is a type of string
+          keytab = server_keytab.value["keytab"]
+          # principal - (optional) is a type of string
           principal = server_keytab.value["principal"]
         }
       }
@@ -522,7 +544,9 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "dns" {
     for_each = var.dns
     content {
-      ports  = dns.value["ports"]
+      # ports - (optional) is a type of number
+      ports = dns.value["ports"]
+      # status - (optional) is a type of string
       status = dns.value["status"]
     }
   }
@@ -530,72 +554,127 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "ftp" {
     for_each = var.ftp
     content {
-      comfort_amount                  = ftp.value["comfort_amount"]
-      comfort_interval                = ftp.value["comfort_interval"]
-      inspect_all                     = ftp.value["inspect_all"]
-      options                         = ftp.value["options"]
-      oversize_limit                  = ftp.value["oversize_limit"]
-      ports                           = ftp.value["ports"]
-      scan_bzip2                      = ftp.value["scan_bzip2"]
-      ssl_offloaded                   = ftp.value["ssl_offloaded"]
-      status                          = ftp.value["status"]
+      # comfort_amount - (optional) is a type of number
+      comfort_amount = ftp.value["comfort_amount"]
+      # comfort_interval - (optional) is a type of number
+      comfort_interval = ftp.value["comfort_interval"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = ftp.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = ftp.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = ftp.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = ftp.value["ports"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = ftp.value["scan_bzip2"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = ftp.value["ssl_offloaded"]
+      # status - (optional) is a type of string
+      status = ftp.value["status"]
+      # stream_based_uncompressed_limit - (optional) is a type of number
       stream_based_uncompressed_limit = ftp.value["stream_based_uncompressed_limit"]
-      tcp_window_maximum              = ftp.value["tcp_window_maximum"]
-      tcp_window_minimum              = ftp.value["tcp_window_minimum"]
-      tcp_window_size                 = ftp.value["tcp_window_size"]
-      tcp_window_type                 = ftp.value["tcp_window_type"]
-      uncompressed_nest_limit         = ftp.value["uncompressed_nest_limit"]
-      uncompressed_oversize_limit     = ftp.value["uncompressed_oversize_limit"]
+      # tcp_window_maximum - (optional) is a type of number
+      tcp_window_maximum = ftp.value["tcp_window_maximum"]
+      # tcp_window_minimum - (optional) is a type of number
+      tcp_window_minimum = ftp.value["tcp_window_minimum"]
+      # tcp_window_size - (optional) is a type of number
+      tcp_window_size = ftp.value["tcp_window_size"]
+      # tcp_window_type - (optional) is a type of string
+      tcp_window_type = ftp.value["tcp_window_type"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = ftp.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
+      uncompressed_oversize_limit = ftp.value["uncompressed_oversize_limit"]
     }
   }
 
   dynamic "http" {
     for_each = var.http
     content {
-      block_page_status_code          = http.value["block_page_status_code"]
-      comfort_amount                  = http.value["comfort_amount"]
-      comfort_interval                = http.value["comfort_interval"]
-      fortinet_bar                    = http.value["fortinet_bar"]
-      fortinet_bar_port               = http.value["fortinet_bar_port"]
-      http_policy                     = http.value["http_policy"]
-      inspect_all                     = http.value["inspect_all"]
-      options                         = http.value["options"]
-      oversize_limit                  = http.value["oversize_limit"]
-      ports                           = http.value["ports"]
-      post_lang                       = http.value["post_lang"]
-      proxy_after_tcp_handshake       = http.value["proxy_after_tcp_handshake"]
-      range_block                     = http.value["range_block"]
-      retry_count                     = http.value["retry_count"]
-      scan_bzip2                      = http.value["scan_bzip2"]
-      ssl_offloaded                   = http.value["ssl_offloaded"]
-      status                          = http.value["status"]
+      # block_page_status_code - (optional) is a type of number
+      block_page_status_code = http.value["block_page_status_code"]
+      # comfort_amount - (optional) is a type of number
+      comfort_amount = http.value["comfort_amount"]
+      # comfort_interval - (optional) is a type of number
+      comfort_interval = http.value["comfort_interval"]
+      # fortinet_bar - (optional) is a type of string
+      fortinet_bar = http.value["fortinet_bar"]
+      # fortinet_bar_port - (optional) is a type of number
+      fortinet_bar_port = http.value["fortinet_bar_port"]
+      # http_policy - (optional) is a type of string
+      http_policy = http.value["http_policy"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = http.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = http.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = http.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = http.value["ports"]
+      # post_lang - (optional) is a type of string
+      post_lang = http.value["post_lang"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = http.value["proxy_after_tcp_handshake"]
+      # range_block - (optional) is a type of string
+      range_block = http.value["range_block"]
+      # retry_count - (optional) is a type of number
+      retry_count = http.value["retry_count"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = http.value["scan_bzip2"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = http.value["ssl_offloaded"]
+      # status - (optional) is a type of string
+      status = http.value["status"]
+      # stream_based_uncompressed_limit - (optional) is a type of number
       stream_based_uncompressed_limit = http.value["stream_based_uncompressed_limit"]
-      streaming_content_bypass        = http.value["streaming_content_bypass"]
-      strip_x_forwarded_for           = http.value["strip_x_forwarded_for"]
-      switching_protocols             = http.value["switching_protocols"]
-      tcp_window_maximum              = http.value["tcp_window_maximum"]
-      tcp_window_minimum              = http.value["tcp_window_minimum"]
-      tcp_window_size                 = http.value["tcp_window_size"]
-      tcp_window_type                 = http.value["tcp_window_type"]
-      tunnel_non_http                 = http.value["tunnel_non_http"]
-      uncompressed_nest_limit         = http.value["uncompressed_nest_limit"]
-      uncompressed_oversize_limit     = http.value["uncompressed_oversize_limit"]
-      unknown_http_version            = http.value["unknown_http_version"]
+      # streaming_content_bypass - (optional) is a type of string
+      streaming_content_bypass = http.value["streaming_content_bypass"]
+      # strip_x_forwarded_for - (optional) is a type of string
+      strip_x_forwarded_for = http.value["strip_x_forwarded_for"]
+      # switching_protocols - (optional) is a type of string
+      switching_protocols = http.value["switching_protocols"]
+      # tcp_window_maximum - (optional) is a type of number
+      tcp_window_maximum = http.value["tcp_window_maximum"]
+      # tcp_window_minimum - (optional) is a type of number
+      tcp_window_minimum = http.value["tcp_window_minimum"]
+      # tcp_window_size - (optional) is a type of number
+      tcp_window_size = http.value["tcp_window_size"]
+      # tcp_window_type - (optional) is a type of string
+      tcp_window_type = http.value["tcp_window_type"]
+      # tunnel_non_http - (optional) is a type of string
+      tunnel_non_http = http.value["tunnel_non_http"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = http.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
+      uncompressed_oversize_limit = http.value["uncompressed_oversize_limit"]
+      # unknown_http_version - (optional) is a type of string
+      unknown_http_version = http.value["unknown_http_version"]
     }
   }
 
   dynamic "imap" {
     for_each = var.imap
     content {
-      inspect_all                 = imap.value["inspect_all"]
-      options                     = imap.value["options"]
-      oversize_limit              = imap.value["oversize_limit"]
-      ports                       = imap.value["ports"]
-      proxy_after_tcp_handshake   = imap.value["proxy_after_tcp_handshake"]
-      scan_bzip2                  = imap.value["scan_bzip2"]
-      ssl_offloaded               = imap.value["ssl_offloaded"]
-      status                      = imap.value["status"]
-      uncompressed_nest_limit     = imap.value["uncompressed_nest_limit"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = imap.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = imap.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = imap.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = imap.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = imap.value["proxy_after_tcp_handshake"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = imap.value["scan_bzip2"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = imap.value["ssl_offloaded"]
+      # status - (optional) is a type of string
+      status = imap.value["status"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = imap.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = imap.value["uncompressed_oversize_limit"]
     }
   }
@@ -603,20 +682,29 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "mail_signature" {
     for_each = var.mail_signature
     content {
+      # signature - (optional) is a type of string
       signature = mail_signature.value["signature"]
-      status    = mail_signature.value["status"]
+      # status - (optional) is a type of string
+      status = mail_signature.value["status"]
     }
   }
 
   dynamic "mapi" {
     for_each = var.mapi
     content {
-      options                     = mapi.value["options"]
-      oversize_limit              = mapi.value["oversize_limit"]
-      ports                       = mapi.value["ports"]
-      scan_bzip2                  = mapi.value["scan_bzip2"]
-      status                      = mapi.value["status"]
-      uncompressed_nest_limit     = mapi.value["uncompressed_nest_limit"]
+      # options - (optional) is a type of string
+      options = mapi.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = mapi.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = mapi.value["ports"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = mapi.value["scan_bzip2"]
+      # status - (optional) is a type of string
+      status = mapi.value["status"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = mapi.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = mapi.value["uncompressed_oversize_limit"]
     }
   }
@@ -624,14 +712,23 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "nntp" {
     for_each = var.nntp
     content {
-      inspect_all                 = nntp.value["inspect_all"]
-      options                     = nntp.value["options"]
-      oversize_limit              = nntp.value["oversize_limit"]
-      ports                       = nntp.value["ports"]
-      proxy_after_tcp_handshake   = nntp.value["proxy_after_tcp_handshake"]
-      scan_bzip2                  = nntp.value["scan_bzip2"]
-      status                      = nntp.value["status"]
-      uncompressed_nest_limit     = nntp.value["uncompressed_nest_limit"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = nntp.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = nntp.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = nntp.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = nntp.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = nntp.value["proxy_after_tcp_handshake"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = nntp.value["scan_bzip2"]
+      # status - (optional) is a type of string
+      status = nntp.value["status"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = nntp.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = nntp.value["uncompressed_oversize_limit"]
     }
   }
@@ -639,15 +736,25 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "pop3" {
     for_each = var.pop3
     content {
-      inspect_all                 = pop3.value["inspect_all"]
-      options                     = pop3.value["options"]
-      oversize_limit              = pop3.value["oversize_limit"]
-      ports                       = pop3.value["ports"]
-      proxy_after_tcp_handshake   = pop3.value["proxy_after_tcp_handshake"]
-      scan_bzip2                  = pop3.value["scan_bzip2"]
-      ssl_offloaded               = pop3.value["ssl_offloaded"]
-      status                      = pop3.value["status"]
-      uncompressed_nest_limit     = pop3.value["uncompressed_nest_limit"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = pop3.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = pop3.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = pop3.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = pop3.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = pop3.value["proxy_after_tcp_handshake"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = pop3.value["scan_bzip2"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = pop3.value["ssl_offloaded"]
+      # status - (optional) is a type of string
+      status = pop3.value["status"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = pop3.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = pop3.value["uncompressed_oversize_limit"]
     }
   }
@@ -655,16 +762,27 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "smtp" {
     for_each = var.smtp
     content {
-      inspect_all                 = smtp.value["inspect_all"]
-      options                     = smtp.value["options"]
-      oversize_limit              = smtp.value["oversize_limit"]
-      ports                       = smtp.value["ports"]
-      proxy_after_tcp_handshake   = smtp.value["proxy_after_tcp_handshake"]
-      scan_bzip2                  = smtp.value["scan_bzip2"]
-      server_busy                 = smtp.value["server_busy"]
-      ssl_offloaded               = smtp.value["ssl_offloaded"]
-      status                      = smtp.value["status"]
-      uncompressed_nest_limit     = smtp.value["uncompressed_nest_limit"]
+      # inspect_all - (optional) is a type of string
+      inspect_all = smtp.value["inspect_all"]
+      # options - (optional) is a type of string
+      options = smtp.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = smtp.value["oversize_limit"]
+      # ports - (optional) is a type of number
+      ports = smtp.value["ports"]
+      # proxy_after_tcp_handshake - (optional) is a type of string
+      proxy_after_tcp_handshake = smtp.value["proxy_after_tcp_handshake"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = smtp.value["scan_bzip2"]
+      # server_busy - (optional) is a type of string
+      server_busy = smtp.value["server_busy"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = smtp.value["ssl_offloaded"]
+      # status - (optional) is a type of string
+      status = smtp.value["status"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = smtp.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
       uncompressed_oversize_limit = smtp.value["uncompressed_oversize_limit"]
     }
   }
@@ -672,19 +790,32 @@ resource "fortios_firewall_profileprotocoloptions" "this" {
   dynamic "ssh" {
     for_each = var.ssh
     content {
-      comfort_amount                  = ssh.value["comfort_amount"]
-      comfort_interval                = ssh.value["comfort_interval"]
-      options                         = ssh.value["options"]
-      oversize_limit                  = ssh.value["oversize_limit"]
-      scan_bzip2                      = ssh.value["scan_bzip2"]
-      ssl_offloaded                   = ssh.value["ssl_offloaded"]
+      # comfort_amount - (optional) is a type of number
+      comfort_amount = ssh.value["comfort_amount"]
+      # comfort_interval - (optional) is a type of number
+      comfort_interval = ssh.value["comfort_interval"]
+      # options - (optional) is a type of string
+      options = ssh.value["options"]
+      # oversize_limit - (optional) is a type of number
+      oversize_limit = ssh.value["oversize_limit"]
+      # scan_bzip2 - (optional) is a type of string
+      scan_bzip2 = ssh.value["scan_bzip2"]
+      # ssl_offloaded - (optional) is a type of string
+      ssl_offloaded = ssh.value["ssl_offloaded"]
+      # stream_based_uncompressed_limit - (optional) is a type of number
       stream_based_uncompressed_limit = ssh.value["stream_based_uncompressed_limit"]
-      tcp_window_maximum              = ssh.value["tcp_window_maximum"]
-      tcp_window_minimum              = ssh.value["tcp_window_minimum"]
-      tcp_window_size                 = ssh.value["tcp_window_size"]
-      tcp_window_type                 = ssh.value["tcp_window_type"]
-      uncompressed_nest_limit         = ssh.value["uncompressed_nest_limit"]
-      uncompressed_oversize_limit     = ssh.value["uncompressed_oversize_limit"]
+      # tcp_window_maximum - (optional) is a type of number
+      tcp_window_maximum = ssh.value["tcp_window_maximum"]
+      # tcp_window_minimum - (optional) is a type of number
+      tcp_window_minimum = ssh.value["tcp_window_minimum"]
+      # tcp_window_size - (optional) is a type of number
+      tcp_window_size = ssh.value["tcp_window_size"]
+      # tcp_window_type - (optional) is a type of string
+      tcp_window_type = ssh.value["tcp_window_type"]
+      # uncompressed_nest_limit - (optional) is a type of number
+      uncompressed_nest_limit = ssh.value["uncompressed_nest_limit"]
+      # uncompressed_oversize_limit - (optional) is a type of number
+      uncompressed_oversize_limit = ssh.value["uncompressed_oversize_limit"]
     }
   }
 

@@ -67,13 +67,17 @@ variable "node" {
 
 ```terraform
 resource "bigip_event_service_discovery" "this" {
+  # taskid - (required) is a type of string
   taskid = var.taskid
 
   dynamic "node" {
     for_each = var.node
     content {
-      id   = node.value["id"]
-      ip   = node.value["ip"]
+      # id - (optional) is a type of string
+      id = node.value["id"]
+      # ip - (optional) is a type of string
+      ip = node.value["ip"]
+      # port - (optional) is a type of number
       port = node.value["port"]
     }
   }

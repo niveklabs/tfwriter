@@ -72,10 +72,14 @@ variable "rules" {
 
 ```terraform
 resource "cloudflare_magic_firewall_ruleset" "this" {
-  account_id  = var.account_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  rules       = var.rules
+  # name - (required) is a type of string
+  name = var.name
+  # rules - (optional) is a type of list of map of string
+  rules = var.rules
 }
 ```
 

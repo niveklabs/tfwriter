@@ -146,19 +146,32 @@ variable "vrid" {
 
 ```terraform
 resource "thunder_ip_nat_pool" "this" {
-  chunk_netmask      = var.chunk_netmask
-  end_address        = var.end_address
-  ethernet           = var.ethernet
-  gateway            = var.gateway
-  ip_rr              = var.ip_rr
-  netmask            = var.netmask
-  pool_name          = var.pool_name
-  port_overload      = var.port_overload
+  # chunk_netmask - (optional) is a type of string
+  chunk_netmask = var.chunk_netmask
+  # end_address - (optional) is a type of string
+  end_address = var.end_address
+  # ethernet - (optional) is a type of number
+  ethernet = var.ethernet
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # ip_rr - (optional) is a type of number
+  ip_rr = var.ip_rr
+  # netmask - (optional) is a type of string
+  netmask = var.netmask
+  # pool_name - (optional) is a type of string
+  pool_name = var.pool_name
+  # port_overload - (optional) is a type of number
+  port_overload = var.port_overload
+  # scaleout_device_id - (optional) is a type of number
   scaleout_device_id = var.scaleout_device_id
-  start_address      = var.start_address
-  use_if_ip          = var.use_if_ip
-  uuid               = var.uuid
-  vrid               = var.vrid
+  # start_address - (optional) is a type of string
+  start_address = var.start_address
+  # use_if_ip - (optional) is a type of number
+  use_if_ip = var.use_if_ip
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrid - (optional) is a type of number
+  vrid = var.vrid
 }
 ```
 

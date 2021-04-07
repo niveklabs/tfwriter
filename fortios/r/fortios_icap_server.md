@@ -106,14 +106,22 @@ variable "ssl_cert" {
 
 ```terraform
 resource "fortios_icap_server" "this" {
-  ip6_address     = var.ip6_address
-  ip_address      = var.ip_address
-  ip_version      = var.ip_version
+  # ip6_address - (optional) is a type of string
+  ip6_address = var.ip6_address
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # max_connections - (optional) is a type of number
   max_connections = var.max_connections
-  name            = var.name
-  port            = var.port
-  secure          = var.secure
-  ssl_cert        = var.ssl_cert
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # secure - (optional) is a type of string
+  secure = var.secure
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = var.ssl_cert
 }
 ```
 

@@ -88,14 +88,19 @@ variable "timeouts" {
 
 ```terraform
 data "panos_predefined_threat" "this" {
-  name         = var.name
-  threat_name  = var.threat_name
+  # name - (optional) is a type of string
+  name = var.name
+  # threat_name - (optional) is a type of string
+  threat_name = var.threat_name
+  # threat_regex - (optional) is a type of string
   threat_regex = var.threat_regex
-  threat_type  = var.threat_type
+  # threat_type - (optional) is a type of string
+  threat_type = var.threat_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # read - (optional) is a type of string
       read = timeouts.value["read"]
     }
   }

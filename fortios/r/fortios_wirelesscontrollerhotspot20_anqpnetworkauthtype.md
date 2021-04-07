@@ -66,9 +66,12 @@ variable "url" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqpnetworkauthtype" "this" {
+  # auth_type - (optional) is a type of string
   auth_type = var.auth_type
-  name      = var.name
-  url       = var.url
+  # name - (optional) is a type of string
+  name = var.name
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

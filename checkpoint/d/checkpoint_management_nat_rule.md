@@ -65,9 +65,12 @@ variable "uid" {
 
 ```terraform
 data "checkpoint_management_nat_rule" "this" {
-  name    = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # package - (required) is a type of string
   package = var.package
-  uid     = var.uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

@@ -87,12 +87,18 @@ variable "target_rule_id" {
 
 ```terraform
 data "tencentcloud_clb_redirections" "this" {
-  clb_id             = var.clb_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
+  # source_listener_id - (required) is a type of string
   source_listener_id = var.source_listener_id
-  source_rule_id     = var.source_rule_id
+  # source_rule_id - (required) is a type of string
+  source_rule_id = var.source_rule_id
+  # target_listener_id - (optional) is a type of string
   target_listener_id = var.target_listener_id
-  target_rule_id     = var.target_rule_id
+  # target_rule_id - (optional) is a type of string
+  target_rule_id = var.target_rule_id
 }
 ```
 

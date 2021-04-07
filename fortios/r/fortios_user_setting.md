@@ -212,31 +212,53 @@ variable "auth_ports" {
 
 ```terraform
 resource "fortios_user_setting" "this" {
-  auth_blackout_time           = var.auth_blackout_time
-  auth_ca_cert                 = var.auth_ca_cert
-  auth_cert                    = var.auth_cert
-  auth_http_basic              = var.auth_http_basic
-  auth_invalid_max             = var.auth_invalid_max
-  auth_lockout_duration        = var.auth_lockout_duration
-  auth_lockout_threshold       = var.auth_lockout_threshold
-  auth_on_demand               = var.auth_on_demand
-  auth_portal_timeout          = var.auth_portal_timeout
-  auth_secure_http             = var.auth_secure_http
-  auth_src_mac                 = var.auth_src_mac
+  # auth_blackout_time - (optional) is a type of number
+  auth_blackout_time = var.auth_blackout_time
+  # auth_ca_cert - (optional) is a type of string
+  auth_ca_cert = var.auth_ca_cert
+  # auth_cert - (optional) is a type of string
+  auth_cert = var.auth_cert
+  # auth_http_basic - (optional) is a type of string
+  auth_http_basic = var.auth_http_basic
+  # auth_invalid_max - (optional) is a type of number
+  auth_invalid_max = var.auth_invalid_max
+  # auth_lockout_duration - (optional) is a type of number
+  auth_lockout_duration = var.auth_lockout_duration
+  # auth_lockout_threshold - (optional) is a type of number
+  auth_lockout_threshold = var.auth_lockout_threshold
+  # auth_on_demand - (optional) is a type of string
+  auth_on_demand = var.auth_on_demand
+  # auth_portal_timeout - (optional) is a type of number
+  auth_portal_timeout = var.auth_portal_timeout
+  # auth_secure_http - (optional) is a type of string
+  auth_secure_http = var.auth_secure_http
+  # auth_src_mac - (optional) is a type of string
+  auth_src_mac = var.auth_src_mac
+  # auth_ssl_allow_renegotiation - (optional) is a type of string
   auth_ssl_allow_renegotiation = var.auth_ssl_allow_renegotiation
-  auth_ssl_min_proto_version   = var.auth_ssl_min_proto_version
-  auth_timeout                 = var.auth_timeout
-  auth_timeout_type            = var.auth_timeout_type
-  auth_type                    = var.auth_type
-  dynamic_sort_subtable        = var.dynamic_sort_subtable
-  per_policy_disclaimer        = var.per_policy_disclaimer
-  radius_ses_timeout_act       = var.radius_ses_timeout_act
+  # auth_ssl_min_proto_version - (optional) is a type of string
+  auth_ssl_min_proto_version = var.auth_ssl_min_proto_version
+  # auth_timeout - (optional) is a type of number
+  auth_timeout = var.auth_timeout
+  # auth_timeout_type - (optional) is a type of string
+  auth_timeout_type = var.auth_timeout_type
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # per_policy_disclaimer - (optional) is a type of string
+  per_policy_disclaimer = var.per_policy_disclaimer
+  # radius_ses_timeout_act - (optional) is a type of string
+  radius_ses_timeout_act = var.radius_ses_timeout_act
 
   dynamic "auth_ports" {
     for_each = var.auth_ports
     content {
-      id   = auth_ports.value["id"]
+      # id - (optional) is a type of number
+      id = auth_ports.value["id"]
+      # port - (optional) is a type of number
       port = auth_ports.value["port"]
+      # type - (optional) is a type of string
       type = auth_ports.value["type"]
     }
   }

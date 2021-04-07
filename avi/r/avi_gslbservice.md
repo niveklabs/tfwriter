@@ -343,37 +343,61 @@ variable "groups" {
 
 ```terraform
 resource "avi_gslbservice" "this" {
+  # application_persistence_profile_ref - (optional) is a type of string
   application_persistence_profile_ref = var.application_persistence_profile_ref
-  controller_health_status_enabled    = var.controller_health_status_enabled
-  created_by                          = var.created_by
-  description                         = var.description
-  domain_names                        = var.domain_names
-  enabled                             = var.enabled
-  health_monitor_refs                 = var.health_monitor_refs
-  health_monitor_scope                = var.health_monitor_scope
-  hm_off                              = var.hm_off
-  is_federated                        = var.is_federated
-  min_members                         = var.min_members
-  name                                = var.name
-  num_dns_ip                          = var.num_dns_ip
-  pool_algorithm                      = var.pool_algorithm
-  resolve_cname                       = var.resolve_cname
-  site_persistence_enabled            = var.site_persistence_enabled
-  tenant_ref                          = var.tenant_ref
-  ttl                                 = var.ttl
-  use_edns_client_subnet              = var.use_edns_client_subnet
-  uuid                                = var.uuid
-  wildcard_match                      = var.wildcard_match
+  # controller_health_status_enabled - (optional) is a type of bool
+  controller_health_status_enabled = var.controller_health_status_enabled
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # domain_names - (optional) is a type of list of string
+  domain_names = var.domain_names
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # health_monitor_refs - (optional) is a type of list of string
+  health_monitor_refs = var.health_monitor_refs
+  # health_monitor_scope - (optional) is a type of string
+  health_monitor_scope = var.health_monitor_scope
+  # hm_off - (optional) is a type of bool
+  hm_off = var.hm_off
+  # is_federated - (optional) is a type of bool
+  is_federated = var.is_federated
+  # min_members - (optional) is a type of number
+  min_members = var.min_members
+  # name - (required) is a type of string
+  name = var.name
+  # num_dns_ip - (optional) is a type of number
+  num_dns_ip = var.num_dns_ip
+  # pool_algorithm - (optional) is a type of string
+  pool_algorithm = var.pool_algorithm
+  # resolve_cname - (optional) is a type of bool
+  resolve_cname = var.resolve_cname
+  # site_persistence_enabled - (optional) is a type of bool
+  site_persistence_enabled = var.site_persistence_enabled
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # use_edns_client_subnet - (optional) is a type of bool
+  use_edns_client_subnet = var.use_edns_client_subnet
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # wildcard_match - (optional) is a type of bool
+  wildcard_match = var.wildcard_match
 
   dynamic "down_response" {
     for_each = var.down_response
     content {
+      # type - (optional) is a type of string
       type = down_response.value["type"]
 
       dynamic "fallback_ip" {
         for_each = down_response.value.fallback_ip
         content {
+          # addr - (required) is a type of string
           addr = fallback_ip.value["addr"]
+          # type - (required) is a type of string
           type = fallback_ip.value["type"]
         }
       }
@@ -381,7 +405,9 @@ resource "avi_gslbservice" "this" {
       dynamic "fallback_ip6" {
         for_each = down_response.value.fallback_ip6
         content {
+          # addr - (required) is a type of string
           addr = fallback_ip6.value["addr"]
+          # type - (required) is a type of string
           type = fallback_ip6.value["type"]
         }
       }
@@ -392,32 +418,51 @@ resource "avi_gslbservice" "this" {
   dynamic "groups" {
     for_each = var.groups
     content {
-      algorithm             = groups.value["algorithm"]
-      consistent_hash_mask  = groups.value["consistent_hash_mask"]
+      # algorithm - (optional) is a type of string
+      algorithm = groups.value["algorithm"]
+      # consistent_hash_mask - (optional) is a type of number
+      consistent_hash_mask = groups.value["consistent_hash_mask"]
+      # consistent_hash_mask6 - (optional) is a type of number
       consistent_hash_mask6 = groups.value["consistent_hash_mask6"]
-      description           = groups.value["description"]
-      enabled               = groups.value["enabled"]
-      fallback_algorithm    = groups.value["fallback_algorithm"]
-      name                  = groups.value["name"]
-      priority              = groups.value["priority"]
+      # description - (optional) is a type of string
+      description = groups.value["description"]
+      # enabled - (optional) is a type of bool
+      enabled = groups.value["enabled"]
+      # fallback_algorithm - (optional) is a type of string
+      fallback_algorithm = groups.value["fallback_algorithm"]
+      # name - (optional) is a type of string
+      name = groups.value["name"]
+      # priority - (optional) is a type of number
+      priority = groups.value["priority"]
 
       dynamic "members" {
         for_each = groups.value.members
         content {
-          cloud_uuid         = members.value["cloud_uuid"]
-          cluster_uuid       = members.value["cluster_uuid"]
-          description        = members.value["description"]
-          enabled            = members.value["enabled"]
-          fqdn               = members.value["fqdn"]
-          hostname           = members.value["hostname"]
-          ratio              = members.value["ratio"]
+          # cloud_uuid - (optional) is a type of string
+          cloud_uuid = members.value["cloud_uuid"]
+          # cluster_uuid - (optional) is a type of string
+          cluster_uuid = members.value["cluster_uuid"]
+          # description - (optional) is a type of string
+          description = members.value["description"]
+          # enabled - (optional) is a type of bool
+          enabled = members.value["enabled"]
+          # fqdn - (optional) is a type of string
+          fqdn = members.value["fqdn"]
+          # hostname - (optional) is a type of string
+          hostname = members.value["hostname"]
+          # ratio - (optional) is a type of number
+          ratio = members.value["ratio"]
+          # resolve_fqdn_to_v6 - (optional) is a type of bool
           resolve_fqdn_to_v6 = members.value["resolve_fqdn_to_v6"]
-          vs_uuid            = members.value["vs_uuid"]
+          # vs_uuid - (optional) is a type of string
+          vs_uuid = members.value["vs_uuid"]
 
           dynamic "ip" {
             for_each = members.value.ip
             content {
+              # addr - (required) is a type of string
               addr = ip.value["addr"]
+              # type - (required) is a type of string
               type = ip.value["type"]
             }
           }
@@ -425,15 +470,20 @@ resource "avi_gslbservice" "this" {
           dynamic "location" {
             for_each = members.value.location
             content {
+              # source - (optional) is a type of string
               source = location.value["source"]
 
               dynamic "location" {
                 for_each = location.value.location
                 content {
-                  latitude  = location.value["latitude"]
+                  # latitude - (optional) is a type of number
+                  latitude = location.value["latitude"]
+                  # longitude - (optional) is a type of number
                   longitude = location.value["longitude"]
-                  name      = location.value["name"]
-                  tag       = location.value["tag"]
+                  # name - (optional) is a type of string
+                  name = location.value["name"]
+                  # tag - (optional) is a type of string
+                  tag = location.value["tag"]
                 }
               }
 
@@ -447,7 +497,9 @@ resource "avi_gslbservice" "this" {
               dynamic "ip" {
                 for_each = public_ip.value.ip
                 content {
+                  # addr - (required) is a type of string
                   addr = ip.value["addr"]
+                  # type - (required) is a type of string
                   type = ip.value["type"]
                 }
               }

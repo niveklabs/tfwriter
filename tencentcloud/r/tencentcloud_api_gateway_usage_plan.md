@@ -73,10 +73,14 @@ variable "usage_plan_name" {
 
 ```terraform
 resource "tencentcloud_api_gateway_usage_plan" "this" {
-  max_request_num         = var.max_request_num
+  # max_request_num - (optional) is a type of number
+  max_request_num = var.max_request_num
+  # max_request_num_pre_sec - (optional) is a type of number
   max_request_num_pre_sec = var.max_request_num_pre_sec
-  usage_plan_desc         = var.usage_plan_desc
-  usage_plan_name         = var.usage_plan_name
+  # usage_plan_desc - (optional) is a type of string
+  usage_plan_desc = var.usage_plan_desc
+  # usage_plan_name - (required) is a type of string
+  usage_plan_name = var.usage_plan_name
 }
 ```
 

@@ -170,64 +170,107 @@ variable "elin_number" {
 
 ```terraform
 resource "fortios_switchcontroller_location" "this" {
+  # name - (optional) is a type of string
   name = var.name
 
   dynamic "address_civic" {
     for_each = var.address_civic
     content {
-      additional           = address_civic.value["additional"]
-      additional_code      = address_civic.value["additional_code"]
-      block                = address_civic.value["block"]
-      branch_road          = address_civic.value["branch_road"]
-      building             = address_civic.value["building"]
-      city                 = address_civic.value["city"]
-      city_division        = address_civic.value["city_division"]
-      country              = address_civic.value["country"]
-      country_subdivision  = address_civic.value["country_subdivision"]
-      county               = address_civic.value["county"]
-      direction            = address_civic.value["direction"]
-      floor                = address_civic.value["floor"]
-      landmark             = address_civic.value["landmark"]
-      language             = address_civic.value["language"]
-      name                 = address_civic.value["name"]
-      number               = address_civic.value["number"]
-      number_suffix        = address_civic.value["number_suffix"]
-      parent_key           = address_civic.value["parent_key"]
-      place_type           = address_civic.value["place_type"]
-      post_office_box      = address_civic.value["post_office_box"]
-      postal_community     = address_civic.value["postal_community"]
-      primary_road         = address_civic.value["primary_road"]
-      road_section         = address_civic.value["road_section"]
-      room                 = address_civic.value["room"]
-      script               = address_civic.value["script"]
-      seat                 = address_civic.value["seat"]
-      street               = address_civic.value["street"]
+      # additional - (optional) is a type of string
+      additional = address_civic.value["additional"]
+      # additional_code - (optional) is a type of string
+      additional_code = address_civic.value["additional_code"]
+      # block - (optional) is a type of string
+      block = address_civic.value["block"]
+      # branch_road - (optional) is a type of string
+      branch_road = address_civic.value["branch_road"]
+      # building - (optional) is a type of string
+      building = address_civic.value["building"]
+      # city - (optional) is a type of string
+      city = address_civic.value["city"]
+      # city_division - (optional) is a type of string
+      city_division = address_civic.value["city_division"]
+      # country - (optional) is a type of string
+      country = address_civic.value["country"]
+      # country_subdivision - (optional) is a type of string
+      country_subdivision = address_civic.value["country_subdivision"]
+      # county - (optional) is a type of string
+      county = address_civic.value["county"]
+      # direction - (optional) is a type of string
+      direction = address_civic.value["direction"]
+      # floor - (optional) is a type of string
+      floor = address_civic.value["floor"]
+      # landmark - (optional) is a type of string
+      landmark = address_civic.value["landmark"]
+      # language - (optional) is a type of string
+      language = address_civic.value["language"]
+      # name - (optional) is a type of string
+      name = address_civic.value["name"]
+      # number - (optional) is a type of string
+      number = address_civic.value["number"]
+      # number_suffix - (optional) is a type of string
+      number_suffix = address_civic.value["number_suffix"]
+      # parent_key - (optional) is a type of string
+      parent_key = address_civic.value["parent_key"]
+      # place_type - (optional) is a type of string
+      place_type = address_civic.value["place_type"]
+      # post_office_box - (optional) is a type of string
+      post_office_box = address_civic.value["post_office_box"]
+      # postal_community - (optional) is a type of string
+      postal_community = address_civic.value["postal_community"]
+      # primary_road - (optional) is a type of string
+      primary_road = address_civic.value["primary_road"]
+      # road_section - (optional) is a type of string
+      road_section = address_civic.value["road_section"]
+      # room - (optional) is a type of string
+      room = address_civic.value["room"]
+      # script - (optional) is a type of string
+      script = address_civic.value["script"]
+      # seat - (optional) is a type of string
+      seat = address_civic.value["seat"]
+      # street - (optional) is a type of string
+      street = address_civic.value["street"]
+      # street_name_post_mod - (optional) is a type of string
       street_name_post_mod = address_civic.value["street_name_post_mod"]
-      street_name_pre_mod  = address_civic.value["street_name_pre_mod"]
-      street_suffix        = address_civic.value["street_suffix"]
-      sub_branch_road      = address_civic.value["sub_branch_road"]
-      trailing_str_suffix  = address_civic.value["trailing_str_suffix"]
-      unit                 = address_civic.value["unit"]
-      zip                  = address_civic.value["zip"]
+      # street_name_pre_mod - (optional) is a type of string
+      street_name_pre_mod = address_civic.value["street_name_pre_mod"]
+      # street_suffix - (optional) is a type of string
+      street_suffix = address_civic.value["street_suffix"]
+      # sub_branch_road - (optional) is a type of string
+      sub_branch_road = address_civic.value["sub_branch_road"]
+      # trailing_str_suffix - (optional) is a type of string
+      trailing_str_suffix = address_civic.value["trailing_str_suffix"]
+      # unit - (optional) is a type of string
+      unit = address_civic.value["unit"]
+      # zip - (optional) is a type of string
+      zip = address_civic.value["zip"]
     }
   }
 
   dynamic "coordinates" {
     for_each = var.coordinates
     content {
-      altitude      = coordinates.value["altitude"]
+      # altitude - (optional) is a type of string
+      altitude = coordinates.value["altitude"]
+      # altitude_unit - (optional) is a type of string
       altitude_unit = coordinates.value["altitude_unit"]
-      datum         = coordinates.value["datum"]
-      latitude      = coordinates.value["latitude"]
-      longitude     = coordinates.value["longitude"]
-      parent_key    = coordinates.value["parent_key"]
+      # datum - (optional) is a type of string
+      datum = coordinates.value["datum"]
+      # latitude - (optional) is a type of string
+      latitude = coordinates.value["latitude"]
+      # longitude - (optional) is a type of string
+      longitude = coordinates.value["longitude"]
+      # parent_key - (optional) is a type of string
+      parent_key = coordinates.value["parent_key"]
     }
   }
 
   dynamic "elin_number" {
     for_each = var.elin_number
     content {
-      elin_num   = elin_number.value["elin_num"]
+      # elin_num - (optional) is a type of string
+      elin_num = elin_number.value["elin_num"]
+      # parent_key - (optional) is a type of string
       parent_key = elin_number.value["parent_key"]
     }
   }

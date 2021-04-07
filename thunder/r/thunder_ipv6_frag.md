@@ -72,12 +72,15 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_ipv6_frag" "this" {
+  # frag_timeout - (optional) is a type of number
   frag_timeout = var.frag_timeout
-  uuid         = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

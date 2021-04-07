@@ -84,12 +84,18 @@ variable "template_name" {
 
 ```terraform
 resource "mso_schema_site_external_epg_selector" "this" {
+  # external_epg_name - (required) is a type of string
   external_epg_name = var.external_epg_name
-  ip                = var.ip
-  name              = var.name
-  schema_id         = var.schema_id
-  site_id           = var.site_id
-  template_name     = var.template_name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
+  name = var.name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

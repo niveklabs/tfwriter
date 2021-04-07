@@ -72,10 +72,14 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_access_rule" "this" {
+  # configuration - (required) is a type of map of string
   configuration = var.configuration
-  mode          = var.mode
-  notes         = var.notes
-  zone_id       = var.zone_id
+  # mode - (required) is a type of string
+  mode = var.mode
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -74,10 +74,14 @@ variable "output" {
 
 ```terraform
 resource "fortios_system_console" "this" {
+  # baudrate - (optional) is a type of string
   baudrate = var.baudrate
-  login    = var.login
-  mode     = var.mode
-  output   = var.output
+  # login - (optional) is a type of string
+  login = var.login
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # output - (optional) is a type of string
+  output = var.output
 }
 ```
 

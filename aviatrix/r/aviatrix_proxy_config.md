@@ -64,8 +64,11 @@ variable "proxy_ca_certificate" {
 
 ```terraform
 resource "aviatrix_proxy_config" "this" {
-  http_proxy           = var.http_proxy
-  https_proxy          = var.https_proxy
+  # http_proxy - (required) is a type of string
+  http_proxy = var.http_proxy
+  # https_proxy - (required) is a type of string
+  https_proxy = var.https_proxy
+  # proxy_ca_certificate - (optional) is a type of string
   proxy_ca_certificate = var.proxy_ca_certificate
 }
 ```

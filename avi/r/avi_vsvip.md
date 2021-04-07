@@ -387,27 +387,41 @@ variable "vip" {
 
 ```terraform
 resource "avi_vsvip" "this" {
-  cloud_ref                = var.cloud_ref
-  east_west_placement      = var.east_west_placement
-  name                     = var.name
-  tenant_ref               = var.tenant_ref
-  use_standard_alb         = var.use_standard_alb
-  uuid                     = var.uuid
-  vrf_context_ref          = var.vrf_context_ref
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # east_west_placement - (optional) is a type of bool
+  east_west_placement = var.east_west_placement
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # use_standard_alb - (optional) is a type of bool
+  use_standard_alb = var.use_standard_alb
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrf_context_ref - (optional) is a type of string
+  vrf_context_ref = var.vrf_context_ref
+  # vsvip_cloud_config_cksum - (optional) is a type of string
   vsvip_cloud_config_cksum = var.vsvip_cloud_config_cksum
 
   dynamic "dns_info" {
     for_each = var.dns_info
     content {
-      algorithm               = dns_info.value["algorithm"]
-      fqdn                    = dns_info.value["fqdn"]
+      # algorithm - (optional) is a type of string
+      algorithm = dns_info.value["algorithm"]
+      # fqdn - (optional) is a type of string
+      fqdn = dns_info.value["fqdn"]
+      # num_records_in_response - (optional) is a type of number
       num_records_in_response = dns_info.value["num_records_in_response"]
-      ttl                     = dns_info.value["ttl"]
-      type                    = dns_info.value["type"]
+      # ttl - (optional) is a type of number
+      ttl = dns_info.value["ttl"]
+      # type - (optional) is a type of string
+      type = dns_info.value["type"]
 
       dynamic "cname" {
         for_each = dns_info.value.cname
         content {
+          # cname - (required) is a type of string
           cname = cname.value["cname"]
         }
       }
@@ -418,35 +432,53 @@ resource "avi_vsvip" "this" {
   dynamic "vip" {
     for_each = var.vip
     content {
+      # auto_allocate_floating_ip - (optional) is a type of bool
       auto_allocate_floating_ip = vip.value["auto_allocate_floating_ip"]
-      auto_allocate_ip          = vip.value["auto_allocate_ip"]
-      auto_allocate_ip_type     = vip.value["auto_allocate_ip_type"]
-      availability_zone         = vip.value["availability_zone"]
-      avi_allocated_fip         = vip.value["avi_allocated_fip"]
-      avi_allocated_vip         = vip.value["avi_allocated_vip"]
-      enabled                   = vip.value["enabled"]
-      floating_subnet6_uuid     = vip.value["floating_subnet6_uuid"]
-      floating_subnet_uuid      = vip.value["floating_subnet_uuid"]
-      network_ref               = vip.value["network_ref"]
-      port_uuid                 = vip.value["port_uuid"]
-      subnet6_uuid              = vip.value["subnet6_uuid"]
-      subnet_uuid               = vip.value["subnet_uuid"]
-      vip_id                    = vip.value["vip_id"]
+      # auto_allocate_ip - (optional) is a type of bool
+      auto_allocate_ip = vip.value["auto_allocate_ip"]
+      # auto_allocate_ip_type - (optional) is a type of string
+      auto_allocate_ip_type = vip.value["auto_allocate_ip_type"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = vip.value["availability_zone"]
+      # avi_allocated_fip - (optional) is a type of bool
+      avi_allocated_fip = vip.value["avi_allocated_fip"]
+      # avi_allocated_vip - (optional) is a type of bool
+      avi_allocated_vip = vip.value["avi_allocated_vip"]
+      # enabled - (optional) is a type of bool
+      enabled = vip.value["enabled"]
+      # floating_subnet6_uuid - (optional) is a type of string
+      floating_subnet6_uuid = vip.value["floating_subnet6_uuid"]
+      # floating_subnet_uuid - (optional) is a type of string
+      floating_subnet_uuid = vip.value["floating_subnet_uuid"]
+      # network_ref - (optional) is a type of string
+      network_ref = vip.value["network_ref"]
+      # port_uuid - (optional) is a type of string
+      port_uuid = vip.value["port_uuid"]
+      # subnet6_uuid - (optional) is a type of string
+      subnet6_uuid = vip.value["subnet6_uuid"]
+      # subnet_uuid - (optional) is a type of string
+      subnet_uuid = vip.value["subnet_uuid"]
+      # vip_id - (optional) is a type of string
+      vip_id = vip.value["vip_id"]
 
       dynamic "discovered_networks" {
         for_each = vip.value.discovered_networks
         content {
+          # network_ref - (required) is a type of string
           network_ref = discovered_networks.value["network_ref"]
 
           dynamic "subnet" {
             for_each = discovered_networks.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -457,12 +489,15 @@ resource "avi_vsvip" "this" {
           dynamic "subnet6" {
             for_each = discovered_networks.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -476,7 +511,9 @@ resource "avi_vsvip" "this" {
       dynamic "floating_ip" {
         for_each = vip.value.floating_ip
         content {
+          # addr - (required) is a type of string
           addr = floating_ip.value["addr"]
+          # type - (required) is a type of string
           type = floating_ip.value["type"]
         }
       }
@@ -484,7 +521,9 @@ resource "avi_vsvip" "this" {
       dynamic "floating_ip6" {
         for_each = vip.value.floating_ip6
         content {
+          # addr - (required) is a type of string
           addr = floating_ip6.value["addr"]
+          # type - (required) is a type of string
           type = floating_ip6.value["type"]
         }
       }
@@ -492,7 +531,9 @@ resource "avi_vsvip" "this" {
       dynamic "ip6_address" {
         for_each = vip.value.ip6_address
         content {
+          # addr - (required) is a type of string
           addr = ip6_address.value["addr"]
+          # type - (required) is a type of string
           type = ip6_address.value["type"]
         }
       }
@@ -500,7 +541,9 @@ resource "avi_vsvip" "this" {
       dynamic "ip_address" {
         for_each = vip.value.ip_address
         content {
+          # addr - (required) is a type of string
           addr = ip_address.value["addr"]
+          # type - (required) is a type of string
           type = ip_address.value["type"]
         }
       }
@@ -508,19 +551,25 @@ resource "avi_vsvip" "this" {
       dynamic "ipam_network_subnet" {
         for_each = vip.value.ipam_network_subnet
         content {
-          network_ref  = ipam_network_subnet.value["network_ref"]
+          # network_ref - (optional) is a type of string
+          network_ref = ipam_network_subnet.value["network_ref"]
+          # subnet6_uuid - (optional) is a type of string
           subnet6_uuid = ipam_network_subnet.value["subnet6_uuid"]
-          subnet_uuid  = ipam_network_subnet.value["subnet_uuid"]
+          # subnet_uuid - (optional) is a type of string
+          subnet_uuid = ipam_network_subnet.value["subnet_uuid"]
 
           dynamic "subnet" {
             for_each = ipam_network_subnet.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -531,12 +580,15 @@ resource "avi_vsvip" "this" {
           dynamic "subnet6" {
             for_each = ipam_network_subnet.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -550,17 +602,21 @@ resource "avi_vsvip" "this" {
       dynamic "placement_networks" {
         for_each = vip.value.placement_networks
         content {
+          # network_ref - (optional) is a type of string
           network_ref = placement_networks.value["network_ref"]
 
           dynamic "subnet" {
             for_each = placement_networks.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -571,12 +627,15 @@ resource "avi_vsvip" "this" {
           dynamic "subnet6" {
             for_each = placement_networks.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -590,12 +649,15 @@ resource "avi_vsvip" "this" {
       dynamic "subnet" {
         for_each = vip.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -606,12 +668,15 @@ resource "avi_vsvip" "this" {
       dynamic "subnet6" {
         for_each = vip.value.subnet6
         content {
+          # mask - (required) is a type of number
           mask = subnet6.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet6.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }

@@ -58,8 +58,10 @@ variable "global_domains" {
 
 ```terraform
 resource "checkpoint_management_assign_global_assignment" "this" {
+  # dependent_domains - (optional) is a type of set of string
   dependent_domains = var.dependent_domains
-  global_domains    = var.global_domains
+  # global_domains - (optional) is a type of set of string
+  global_domains = var.global_domains
 }
 ```
 

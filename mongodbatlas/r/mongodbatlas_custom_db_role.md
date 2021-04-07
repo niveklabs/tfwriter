@@ -98,20 +98,26 @@ variable "inherited_roles" {
 
 ```terraform
 resource "mongodbatlas_custom_db_role" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
-  role_name  = var.role_name
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 
   dynamic "actions" {
     for_each = var.actions
     content {
+      # action - (required) is a type of string
       action = actions.value["action"]
 
       dynamic "resources" {
         for_each = actions.value.resources
         content {
-          cluster         = resources.value["cluster"]
+          # cluster - (optional) is a type of bool
+          cluster = resources.value["cluster"]
+          # collection_name - (optional) is a type of string
           collection_name = resources.value["collection_name"]
-          database_name   = resources.value["database_name"]
+          # database_name - (optional) is a type of string
+          database_name = resources.value["database_name"]
         }
       }
 
@@ -121,8 +127,10 @@ resource "mongodbatlas_custom_db_role" "this" {
   dynamic "inherited_roles" {
     for_each = var.inherited_roles
     content {
+      # database_name - (required) is a type of string
       database_name = inherited_roles.value["database_name"]
-      role_name     = inherited_roles.value["role_name"]
+      # role_name - (required) is a type of string
+      role_name = inherited_roles.value["role_name"]
     }
   }
 

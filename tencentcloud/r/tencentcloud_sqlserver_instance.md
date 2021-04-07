@@ -167,22 +167,38 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_sqlserver_instance" "this" {
-  availability_zone      = var.availability_zone
-  charge_type            = var.charge_type
-  engine_version         = var.engine_version
-  ha_type                = var.ha_type
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # ha_type - (optional) is a type of string
+  ha_type = var.ha_type
+  # maintenance_start_time - (optional) is a type of string
   maintenance_start_time = var.maintenance_start_time
-  maintenance_time_span  = var.maintenance_time_span
-  maintenance_week_set   = var.maintenance_week_set
-  memory                 = var.memory
-  multi_zones            = var.multi_zones
-  name                   = var.name
-  project_id             = var.project_id
-  security_groups        = var.security_groups
-  storage                = var.storage
-  subnet_id              = var.subnet_id
-  tags                   = var.tags
-  vpc_id                 = var.vpc_id
+  # maintenance_time_span - (optional) is a type of number
+  maintenance_time_span = var.maintenance_time_span
+  # maintenance_week_set - (optional) is a type of set of number
+  maintenance_week_set = var.maintenance_week_set
+  # memory - (required) is a type of number
+  memory = var.memory
+  # multi_zones - (optional) is a type of bool
+  multi_zones = var.multi_zones
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # storage - (required) is a type of number
+  storage = var.storage
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

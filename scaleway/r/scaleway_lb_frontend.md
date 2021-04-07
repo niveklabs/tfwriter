@@ -141,22 +141,31 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_lb_frontend" "this" {
-  backend_id     = var.backend_id
+  # backend_id - (required) is a type of string
+  backend_id = var.backend_id
+  # certificate_id - (optional) is a type of string
   certificate_id = var.certificate_id
-  inbound_port   = var.inbound_port
-  lb_id          = var.lb_id
-  name           = var.name
+  # inbound_port - (required) is a type of number
+  inbound_port = var.inbound_port
+  # lb_id - (required) is a type of string
+  lb_id = var.lb_id
+  # name - (optional) is a type of string
+  name = var.name
+  # timeout_client - (optional) is a type of string
   timeout_client = var.timeout_client
 
   dynamic "acl" {
     for_each = var.acl
     content {
-      name   = acl.value["name"]
+      # name - (optional) is a type of string
+      name = acl.value["name"]
+      # region - (optional) is a type of string
       region = acl.value["region"]
 
       dynamic "action" {
         for_each = acl.value.action
         content {
+          # type - (required) is a type of string
           type = action.value["type"]
         }
       }
@@ -164,10 +173,14 @@ resource "scaleway_lb_frontend" "this" {
       dynamic "match" {
         for_each = acl.value.match
         content {
-          http_filter       = match.value["http_filter"]
+          # http_filter - (optional) is a type of string
+          http_filter = match.value["http_filter"]
+          # http_filter_value - (optional) is a type of list of string
           http_filter_value = match.value["http_filter_value"]
-          invert            = match.value["invert"]
-          ip_subnet         = match.value["ip_subnet"]
+          # invert - (optional) is a type of bool
+          invert = match.value["invert"]
+          # ip_subnet - (optional) is a type of list of string
+          ip_subnet = match.value["ip_subnet"]
         }
       }
 
@@ -177,6 +190,7 @@ resource "scaleway_lb_frontend" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

@@ -107,15 +107,24 @@ variable "target_repo_name" {
 
 ```terraform
 resource "alicloud_cr_ee_sync_rule" "this" {
-  instance_id           = var.instance_id
-  name                  = var.name
-  namespace_name        = var.namespace_name
-  repo_name             = var.repo_name
-  tag_filter            = var.tag_filter
-  target_instance_id    = var.target_instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name - (required) is a type of string
+  name = var.name
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # repo_name - (optional) is a type of string
+  repo_name = var.repo_name
+  # tag_filter - (required) is a type of string
+  tag_filter = var.tag_filter
+  # target_instance_id - (required) is a type of string
+  target_instance_id = var.target_instance_id
+  # target_namespace_name - (required) is a type of string
   target_namespace_name = var.target_namespace_name
-  target_region_id      = var.target_region_id
-  target_repo_name      = var.target_repo_name
+  # target_region_id - (required) is a type of string
+  target_region_id = var.target_region_id
+  # target_repo_name - (optional) is a type of string
+  target_repo_name = var.target_repo_name
 }
 ```
 

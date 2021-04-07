@@ -124,20 +124,31 @@ variable "users" {
 
 ```terraform
 resource "okta_app_bookmark" "this" {
+  # auto_submit_toolbar - (optional) is a type of bool
   auto_submit_toolbar = var.auto_submit_toolbar
-  groups              = var.groups
-  hide_ios            = var.hide_ios
-  hide_web            = var.hide_web
-  label               = var.label
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # label - (required) is a type of string
+  label = var.label
+  # request_integration - (optional) is a type of bool
   request_integration = var.request_integration
-  status              = var.status
-  url                 = var.url
+  # status - (optional) is a type of string
+  status = var.status
+  # url - (required) is a type of string
+  url = var.url
 
   dynamic "users" {
     for_each = var.users
     content {
-      id       = users.value["id"]
+      # id - (optional) is a type of string
+      id = users.value["id"]
+      # password - (optional) is a type of string
       password = users.value["password"]
+      # username - (optional) is a type of string
       username = users.value["username"]
     }
   }

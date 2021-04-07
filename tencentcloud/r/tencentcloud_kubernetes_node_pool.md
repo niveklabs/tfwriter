@@ -258,42 +258,71 @@ variable "taints" {
 
 ```terraform
 resource "tencentcloud_kubernetes_node_pool" "this" {
-  cluster_id           = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # delete_keep_instance - (optional) is a type of bool
   delete_keep_instance = var.delete_keep_instance
-  desired_capacity     = var.desired_capacity
-  enable_auto_scale    = var.enable_auto_scale
-  labels               = var.labels
-  max_size             = var.max_size
-  min_size             = var.min_size
-  name                 = var.name
-  node_os              = var.node_os
-  node_os_type         = var.node_os_type
-  retry_policy         = var.retry_policy
-  scaling_mode         = var.scaling_mode
-  subnet_ids           = var.subnet_ids
-  unschedulable        = var.unschedulable
-  vpc_id               = var.vpc_id
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # enable_auto_scale - (optional) is a type of bool
+  enable_auto_scale = var.enable_auto_scale
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # node_os - (optional) is a type of string
+  node_os = var.node_os
+  # node_os_type - (optional) is a type of string
+  node_os_type = var.node_os_type
+  # retry_policy - (optional) is a type of string
+  retry_policy = var.retry_policy
+  # scaling_mode - (optional) is a type of string
+  scaling_mode = var.scaling_mode
+  # subnet_ids - (optional) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # unschedulable - (optional) is a type of number
+  unschedulable = var.unschedulable
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "auto_scaling_config" {
     for_each = var.auto_scaling_config
     content {
-      enhanced_monitor_service   = auto_scaling_config.value["enhanced_monitor_service"]
-      enhanced_security_service  = auto_scaling_config.value["enhanced_security_service"]
-      instance_type              = auto_scaling_config.value["instance_type"]
-      internet_charge_type       = auto_scaling_config.value["internet_charge_type"]
+      # enhanced_monitor_service - (optional) is a type of bool
+      enhanced_monitor_service = auto_scaling_config.value["enhanced_monitor_service"]
+      # enhanced_security_service - (optional) is a type of bool
+      enhanced_security_service = auto_scaling_config.value["enhanced_security_service"]
+      # instance_type - (required) is a type of string
+      instance_type = auto_scaling_config.value["instance_type"]
+      # internet_charge_type - (optional) is a type of string
+      internet_charge_type = auto_scaling_config.value["internet_charge_type"]
+      # internet_max_bandwidth_out - (optional) is a type of number
       internet_max_bandwidth_out = auto_scaling_config.value["internet_max_bandwidth_out"]
-      key_ids                    = auto_scaling_config.value["key_ids"]
-      password                   = auto_scaling_config.value["password"]
-      public_ip_assigned         = auto_scaling_config.value["public_ip_assigned"]
-      security_group_ids         = auto_scaling_config.value["security_group_ids"]
-      system_disk_size           = auto_scaling_config.value["system_disk_size"]
-      system_disk_type           = auto_scaling_config.value["system_disk_type"]
+      # key_ids - (optional) is a type of list of string
+      key_ids = auto_scaling_config.value["key_ids"]
+      # password - (optional) is a type of string
+      password = auto_scaling_config.value["password"]
+      # public_ip_assigned - (optional) is a type of bool
+      public_ip_assigned = auto_scaling_config.value["public_ip_assigned"]
+      # security_group_ids - (optional) is a type of list of string
+      security_group_ids = auto_scaling_config.value["security_group_ids"]
+      # system_disk_size - (optional) is a type of number
+      system_disk_size = auto_scaling_config.value["system_disk_size"]
+      # system_disk_type - (optional) is a type of string
+      system_disk_type = auto_scaling_config.value["system_disk_type"]
 
       dynamic "data_disk" {
         for_each = auto_scaling_config.value.data_disk
         content {
-          disk_size   = data_disk.value["disk_size"]
-          disk_type   = data_disk.value["disk_type"]
+          # disk_size - (optional) is a type of number
+          disk_size = data_disk.value["disk_size"]
+          # disk_type - (optional) is a type of string
+          disk_type = data_disk.value["disk_type"]
+          # snapshot_id - (optional) is a type of string
           snapshot_id = data_disk.value["snapshot_id"]
         }
       }
@@ -304,20 +333,30 @@ resource "tencentcloud_kubernetes_node_pool" "this" {
   dynamic "node_config" {
     for_each = var.node_config
     content {
+      # docker_graph_path - (optional) is a type of string
       docker_graph_path = node_config.value["docker_graph_path"]
-      extra_args        = node_config.value["extra_args"]
-      is_schedule       = node_config.value["is_schedule"]
-      mount_target      = node_config.value["mount_target"]
-      user_data         = node_config.value["user_data"]
+      # extra_args - (optional) is a type of list of string
+      extra_args = node_config.value["extra_args"]
+      # is_schedule - (optional) is a type of bool
+      is_schedule = node_config.value["is_schedule"]
+      # mount_target - (optional) is a type of string
+      mount_target = node_config.value["mount_target"]
+      # user_data - (optional) is a type of string
+      user_data = node_config.value["user_data"]
 
       dynamic "data_disk" {
         for_each = node_config.value.data_disk
         content {
+          # auto_format_and_mount - (optional) is a type of bool
           auto_format_and_mount = data_disk.value["auto_format_and_mount"]
-          disk_size             = data_disk.value["disk_size"]
-          disk_type             = data_disk.value["disk_type"]
-          file_system           = data_disk.value["file_system"]
-          mount_target          = data_disk.value["mount_target"]
+          # disk_size - (optional) is a type of number
+          disk_size = data_disk.value["disk_size"]
+          # disk_type - (optional) is a type of string
+          disk_type = data_disk.value["disk_type"]
+          # file_system - (optional) is a type of string
+          file_system = data_disk.value["file_system"]
+          # mount_target - (optional) is a type of string
+          mount_target = data_disk.value["mount_target"]
         }
       }
 
@@ -327,9 +366,12 @@ resource "tencentcloud_kubernetes_node_pool" "this" {
   dynamic "taints" {
     for_each = var.taints
     content {
+      # effect - (required) is a type of string
       effect = taints.value["effect"]
-      key    = taints.value["key"]
-      value  = taints.value["value"]
+      # key - (required) is a type of string
+      key = taints.value["key"]
+      # value - (required) is a type of string
+      value = taints.value["value"]
     }
   }
 

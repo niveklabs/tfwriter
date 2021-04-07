@@ -79,11 +79,16 @@ variable "privileges" {
 
 ```terraform
 resource "tencentcloud_mysql_account_privilege" "this" {
-  account_host   = var.account_host
-  account_name   = var.account_name
+  # account_host - (optional) is a type of string
+  account_host = var.account_host
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # database_names - (required) is a type of set of string
   database_names = var.database_names
-  mysql_id       = var.mysql_id
-  privileges     = var.privileges
+  # mysql_id - (required) is a type of string
+  mysql_id = var.mysql_id
+  # privileges - (optional) is a type of set of string
+  privileges = var.privileges
 }
 ```
 

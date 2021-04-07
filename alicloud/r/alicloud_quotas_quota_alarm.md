@@ -103,17 +103,25 @@ variable "quota_dimensions" {
 
 ```terraform
 resource "alicloud_quotas_quota_alarm" "this" {
-  product_code      = var.product_code
+  # product_code - (required) is a type of string
+  product_code = var.product_code
+  # quota_action_code - (required) is a type of string
   quota_action_code = var.quota_action_code
-  quota_alarm_name  = var.quota_alarm_name
-  threshold         = var.threshold
+  # quota_alarm_name - (required) is a type of string
+  quota_alarm_name = var.quota_alarm_name
+  # threshold - (optional) is a type of number
+  threshold = var.threshold
+  # threshold_percent - (optional) is a type of number
   threshold_percent = var.threshold_percent
-  web_hook          = var.web_hook
+  # web_hook - (optional) is a type of string
+  web_hook = var.web_hook
 
   dynamic "quota_dimensions" {
     for_each = var.quota_dimensions
     content {
-      key   = quota_dimensions.value["key"]
+      # key - (optional) is a type of string
+      key = quota_dimensions.value["key"]
+      # value - (optional) is a type of string
       value = quota_dimensions.value["value"]
     }
   }

@@ -84,12 +84,18 @@ variable "vnet_reg2" {
 
 ```terraform
 resource "aviatrix_arm_peer" "this" {
-  account_name1             = var.account_name1
-  account_name2             = var.account_name2
+  # account_name1 - (required) is a type of string
+  account_name1 = var.account_name1
+  # account_name2 - (required) is a type of string
+  account_name2 = var.account_name2
+  # vnet_name_resource_group1 - (required) is a type of string
   vnet_name_resource_group1 = var.vnet_name_resource_group1
+  # vnet_name_resource_group2 - (required) is a type of string
   vnet_name_resource_group2 = var.vnet_name_resource_group2
-  vnet_reg1                 = var.vnet_reg1
-  vnet_reg2                 = var.vnet_reg2
+  # vnet_reg1 - (required) is a type of string
+  vnet_reg1 = var.vnet_reg1
+  # vnet_reg2 - (required) is a type of string
+  vnet_reg2 = var.vnet_reg2
 }
 ```
 

@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_custom_deny" "this" {
-  config_id   = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # custom_deny - (required) is a type of string
   custom_deny = var.custom_deny
-  version     = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

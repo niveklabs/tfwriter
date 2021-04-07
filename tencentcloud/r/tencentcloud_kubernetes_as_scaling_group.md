@@ -183,34 +183,55 @@ variable "auto_scaling_group" {
 
 ```terraform
 resource "tencentcloud_kubernetes_as_scaling_group" "this" {
-  cluster_id    = var.cluster_id
-  extra_args    = var.extra_args
-  labels        = var.labels
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # extra_args - (optional) is a type of list of string
+  extra_args = var.extra_args
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # unschedulable - (optional) is a type of number
   unschedulable = var.unschedulable
 
   dynamic "auto_scaling_config" {
     for_each = var.auto_scaling_config
     content {
-      configuration_name         = auto_scaling_config.value["configuration_name"]
-      enhanced_monitor_service   = auto_scaling_config.value["enhanced_monitor_service"]
-      enhanced_security_service  = auto_scaling_config.value["enhanced_security_service"]
-      instance_tags              = auto_scaling_config.value["instance_tags"]
-      instance_type              = auto_scaling_config.value["instance_type"]
-      internet_charge_type       = auto_scaling_config.value["internet_charge_type"]
+      # configuration_name - (required) is a type of string
+      configuration_name = auto_scaling_config.value["configuration_name"]
+      # enhanced_monitor_service - (optional) is a type of bool
+      enhanced_monitor_service = auto_scaling_config.value["enhanced_monitor_service"]
+      # enhanced_security_service - (optional) is a type of bool
+      enhanced_security_service = auto_scaling_config.value["enhanced_security_service"]
+      # instance_tags - (optional) is a type of map of string
+      instance_tags = auto_scaling_config.value["instance_tags"]
+      # instance_type - (required) is a type of string
+      instance_type = auto_scaling_config.value["instance_type"]
+      # internet_charge_type - (optional) is a type of string
+      internet_charge_type = auto_scaling_config.value["internet_charge_type"]
+      # internet_max_bandwidth_out - (optional) is a type of number
       internet_max_bandwidth_out = auto_scaling_config.value["internet_max_bandwidth_out"]
-      key_ids                    = auto_scaling_config.value["key_ids"]
-      password                   = auto_scaling_config.value["password"]
-      project_id                 = auto_scaling_config.value["project_id"]
-      public_ip_assigned         = auto_scaling_config.value["public_ip_assigned"]
-      security_group_ids         = auto_scaling_config.value["security_group_ids"]
-      system_disk_size           = auto_scaling_config.value["system_disk_size"]
-      system_disk_type           = auto_scaling_config.value["system_disk_type"]
+      # key_ids - (optional) is a type of list of string
+      key_ids = auto_scaling_config.value["key_ids"]
+      # password - (optional) is a type of string
+      password = auto_scaling_config.value["password"]
+      # project_id - (optional) is a type of number
+      project_id = auto_scaling_config.value["project_id"]
+      # public_ip_assigned - (optional) is a type of bool
+      public_ip_assigned = auto_scaling_config.value["public_ip_assigned"]
+      # security_group_ids - (optional) is a type of list of string
+      security_group_ids = auto_scaling_config.value["security_group_ids"]
+      # system_disk_size - (optional) is a type of number
+      system_disk_size = auto_scaling_config.value["system_disk_size"]
+      # system_disk_type - (optional) is a type of string
+      system_disk_type = auto_scaling_config.value["system_disk_type"]
 
       dynamic "data_disk" {
         for_each = auto_scaling_config.value.data_disk
         content {
-          disk_size   = data_disk.value["disk_size"]
-          disk_type   = data_disk.value["disk_type"]
+          # disk_size - (optional) is a type of number
+          disk_size = data_disk.value["disk_size"]
+          # disk_type - (optional) is a type of string
+          disk_type = data_disk.value["disk_type"]
+          # snapshot_id - (optional) is a type of string
           snapshot_id = data_disk.value["snapshot_id"]
         }
       }
@@ -221,31 +242,49 @@ resource "tencentcloud_kubernetes_as_scaling_group" "this" {
   dynamic "auto_scaling_group" {
     for_each = var.auto_scaling_group
     content {
-      default_cooldown     = auto_scaling_group.value["default_cooldown"]
-      desired_capacity     = auto_scaling_group.value["desired_capacity"]
-      load_balancer_ids    = auto_scaling_group.value["load_balancer_ids"]
-      max_size             = auto_scaling_group.value["max_size"]
-      min_size             = auto_scaling_group.value["min_size"]
-      project_id           = auto_scaling_group.value["project_id"]
-      retry_policy         = auto_scaling_group.value["retry_policy"]
-      scaling_group_name   = auto_scaling_group.value["scaling_group_name"]
-      subnet_ids           = auto_scaling_group.value["subnet_ids"]
-      tags                 = auto_scaling_group.value["tags"]
+      # default_cooldown - (optional) is a type of number
+      default_cooldown = auto_scaling_group.value["default_cooldown"]
+      # desired_capacity - (optional) is a type of number
+      desired_capacity = auto_scaling_group.value["desired_capacity"]
+      # load_balancer_ids - (optional) is a type of list of string
+      load_balancer_ids = auto_scaling_group.value["load_balancer_ids"]
+      # max_size - (required) is a type of number
+      max_size = auto_scaling_group.value["max_size"]
+      # min_size - (required) is a type of number
+      min_size = auto_scaling_group.value["min_size"]
+      # project_id - (optional) is a type of number
+      project_id = auto_scaling_group.value["project_id"]
+      # retry_policy - (optional) is a type of string
+      retry_policy = auto_scaling_group.value["retry_policy"]
+      # scaling_group_name - (required) is a type of string
+      scaling_group_name = auto_scaling_group.value["scaling_group_name"]
+      # subnet_ids - (optional) is a type of list of string
+      subnet_ids = auto_scaling_group.value["subnet_ids"]
+      # tags - (optional) is a type of map of string
+      tags = auto_scaling_group.value["tags"]
+      # termination_policies - (optional) is a type of list of string
       termination_policies = auto_scaling_group.value["termination_policies"]
-      vpc_id               = auto_scaling_group.value["vpc_id"]
-      zones                = auto_scaling_group.value["zones"]
+      # vpc_id - (required) is a type of string
+      vpc_id = auto_scaling_group.value["vpc_id"]
+      # zones - (optional) is a type of list of string
+      zones = auto_scaling_group.value["zones"]
 
       dynamic "forward_balancer_ids" {
         for_each = auto_scaling_group.value.forward_balancer_ids
         content {
-          listener_id      = forward_balancer_ids.value["listener_id"]
+          # listener_id - (required) is a type of string
+          listener_id = forward_balancer_ids.value["listener_id"]
+          # load_balancer_id - (required) is a type of string
           load_balancer_id = forward_balancer_ids.value["load_balancer_id"]
-          rule_id          = forward_balancer_ids.value["rule_id"]
+          # rule_id - (optional) is a type of string
+          rule_id = forward_balancer_ids.value["rule_id"]
 
           dynamic "target_attribute" {
             for_each = forward_balancer_ids.value.target_attribute
             content {
-              port   = target_attribute.value["port"]
+              # port - (required) is a type of number
+              port = target_attribute.value["port"]
+              # weight - (required) is a type of number
               weight = target_attribute.value["weight"]
             }
           }

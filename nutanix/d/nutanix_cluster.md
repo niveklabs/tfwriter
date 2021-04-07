@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_cluster" "this" {
+  # cluster_id - (optional) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

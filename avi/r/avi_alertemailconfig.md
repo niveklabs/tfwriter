@@ -88,12 +88,18 @@ variable "uuid" {
 
 ```terraform
 resource "avi_alertemailconfig" "this" {
-  cc_emails   = var.cc_emails
+  # cc_emails - (optional) is a type of string
+  cc_emails = var.cc_emails
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  to_emails   = var.to_emails
-  uuid        = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # to_emails - (required) is a type of string
+  to_emails = var.to_emails
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

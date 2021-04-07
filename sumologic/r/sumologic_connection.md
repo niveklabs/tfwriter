@@ -102,14 +102,22 @@ variable "webhook_type" {
 
 ```terraform
 resource "sumologic_connection" "this" {
-  custom_headers  = var.custom_headers
+  # custom_headers - (optional) is a type of map of string
+  custom_headers = var.custom_headers
+  # default_payload - (required) is a type of string
   default_payload = var.default_payload
-  description     = var.description
-  headers         = var.headers
-  name            = var.name
-  type            = var.type
-  url             = var.url
-  webhook_type    = var.webhook_type
+  # description - (optional) is a type of string
+  description = var.description
+  # headers - (optional) is a type of map of string
+  headers = var.headers
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
+  # url - (required) is a type of string
+  url = var.url
+  # webhook_type - (optional) is a type of string
+  webhook_type = var.webhook_type
 }
 ```
 

@@ -79,10 +79,15 @@ variable "runbook_url" {
 
 ```terraform
 resource "newrelic_synthetics_alert_condition" "this" {
-  enabled     = var.enabled
-  monitor_id  = var.monitor_id
-  name        = var.name
-  policy_id   = var.policy_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # monitor_id - (required) is a type of string
+  monitor_id = var.monitor_id
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # runbook_url - (optional) is a type of string
   runbook_url = var.runbook_url
 }
 ```

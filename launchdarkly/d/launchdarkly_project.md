@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 data "launchdarkly_project" "this" {
-  key  = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # tags - (optional) is a type of set of string
   tags = var.tags
 }
 ```

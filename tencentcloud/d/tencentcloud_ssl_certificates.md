@@ -66,9 +66,12 @@ variable "type" {
 
 ```terraform
 data "tencentcloud_ssl_certificates" "this" {
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  type               = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

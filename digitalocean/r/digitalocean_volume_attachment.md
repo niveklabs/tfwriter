@@ -56,8 +56,10 @@ variable "volume_id" {
 
 ```terraform
 resource "digitalocean_volume_attachment" "this" {
+  # droplet_id - (required) is a type of number
   droplet_id = var.droplet_id
-  volume_id  = var.volume_id
+  # volume_id - (required) is a type of string
+  volume_id = var.volume_id
 }
 ```
 

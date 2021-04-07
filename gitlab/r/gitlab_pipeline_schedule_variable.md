@@ -70,10 +70,14 @@ variable "value" {
 
 ```terraform
 resource "gitlab_pipeline_schedule_variable" "this" {
-  key                  = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # pipeline_schedule_id - (required) is a type of number
   pipeline_schedule_id = var.pipeline_schedule_id
-  project              = var.project
-  value                = var.value
+  # project - (required) is a type of string
+  project = var.project
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

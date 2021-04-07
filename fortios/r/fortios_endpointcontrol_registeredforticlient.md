@@ -98,13 +98,20 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_endpointcontrol_registeredforticlient" "this" {
-  flag          = var.flag
-  ip            = var.ip
-  mac           = var.mac
+  # flag - (optional) is a type of number
+  flag = var.flag
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # reg_fortigate - (optional) is a type of string
   reg_fortigate = var.reg_fortigate
-  status        = var.status
-  uid           = var.uid
-  vdom          = var.vdom
+  # status - (optional) is a type of number
+  status = var.status
+  # uid - (optional) is a type of string
+  uid = var.uid
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 }
 ```
 

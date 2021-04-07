@@ -95,18 +95,26 @@ variable "expressions" {
 
 ```terraform
 resource "mso_schema_template_anp_epg_selector" "this" {
-  anp_name      = var.anp_name
-  epg_name      = var.epg_name
-  name          = var.name
-  schema_id     = var.schema_id
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # name - (required) is a type of string
+  name = var.name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
 
   dynamic "expressions" {
     for_each = var.expressions
     content {
-      key      = expressions.value["key"]
+      # key - (required) is a type of string
+      key = expressions.value["key"]
+      # operator - (required) is a type of string
       operator = expressions.value["operator"]
-      value    = expressions.value["value"]
+      # value - (optional) is a type of string
+      value = expressions.value["value"]
     }
   }
 

@@ -136,12 +136,18 @@ variable "message_filters" {
 
 ```terraform
 resource "scaleway_iot_device" "this" {
-  allow_insecure             = var.allow_insecure
+  # allow_insecure - (optional) is a type of bool
+  allow_insecure = var.allow_insecure
+  # allow_multiple_connections - (optional) is a type of bool
   allow_multiple_connections = var.allow_multiple_connections
-  description                = var.description
-  hub_id                     = var.hub_id
-  name                       = var.name
-  region                     = var.region
+  # description - (optional) is a type of string
+  description = var.description
+  # hub_id - (required) is a type of string
+  hub_id = var.hub_id
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "certificate" {
     for_each = var.certificate
@@ -156,7 +162,9 @@ resource "scaleway_iot_device" "this" {
       dynamic "publish" {
         for_each = message_filters.value.publish
         content {
+          # policy - (optional) is a type of string
           policy = publish.value["policy"]
+          # topics - (optional) is a type of list of string
           topics = publish.value["topics"]
         }
       }
@@ -164,7 +172,9 @@ resource "scaleway_iot_device" "this" {
       dynamic "subscribe" {
         for_each = message_filters.value.subscribe
         content {
+          # policy - (optional) is a type of string
           policy = subscribe.value["policy"]
+          # topics - (optional) is a type of list of string
           topics = subscribe.value["topics"]
         }
       }

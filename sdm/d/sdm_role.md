@@ -80,13 +80,17 @@ variable "timeouts" {
 
 ```terraform
 data "sdm_role" "this" {
+  # composite - (optional) is a type of bool
   composite = var.composite
-  name      = var.name
-  tags      = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

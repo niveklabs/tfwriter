@@ -65,9 +65,12 @@ variable "tunnel_ssl_algorithm" {
 
 ```terraform
 resource "fortios_wanopt_settings" "this" {
+  # auto_detect_algorithm - (optional) is a type of string
   auto_detect_algorithm = var.auto_detect_algorithm
-  host_id               = var.host_id
-  tunnel_ssl_algorithm  = var.tunnel_ssl_algorithm
+  # host_id - (required) is a type of string
+  host_id = var.host_id
+  # tunnel_ssl_algorithm - (optional) is a type of string
+  tunnel_ssl_algorithm = var.tunnel_ssl_algorithm
 }
 ```
 

@@ -74,13 +74,17 @@ variable "tap_port_cfg" {
 
 ```terraform
 resource "thunder_fw_tap_monitor" "this" {
+  # status - (optional) is a type of string
   status = var.status
-  uuid   = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "tap_port_cfg" {
     for_each = var.tap_port_cfg
     content {
-      tap_eth  = tap_port_cfg.value["tap_eth"]
+      # tap_eth - (optional) is a type of number
+      tap_eth = tap_port_cfg.value["tap_eth"]
+      # tap_vlan - (optional) is a type of number
       tap_vlan = tap_port_cfg.value["tap_vlan"]
     }
   }

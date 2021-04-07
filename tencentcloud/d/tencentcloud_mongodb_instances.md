@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_mongodb_instances" "this" {
-  cluster_type         = var.cluster_type
-  instance_id          = var.instance_id
+  # cluster_type - (optional) is a type of string
+  cluster_type = var.cluster_type
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # instance_name_prefix - (optional) is a type of string
   instance_name_prefix = var.instance_name_prefix
-  result_output_file   = var.result_output_file
-  tags                 = var.tags
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

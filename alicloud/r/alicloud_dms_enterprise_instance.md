@@ -252,36 +252,63 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_dms_enterprise_instance" "this" {
-  data_link_name    = var.data_link_name
+  # data_link_name - (optional) is a type of string
+  data_link_name = var.data_link_name
+  # database_password - (required) is a type of string
   database_password = var.database_password
-  database_user     = var.database_user
-  dba_id            = var.dba_id
-  dba_uid           = var.dba_uid
-  ddl_online        = var.ddl_online
-  ecs_instance_id   = var.ecs_instance_id
-  ecs_region        = var.ecs_region
-  env_type          = var.env_type
-  export_timeout    = var.export_timeout
-  host              = var.host
-  instance_alias    = var.instance_alias
-  instance_id       = var.instance_id
-  instance_name     = var.instance_name
-  instance_source   = var.instance_source
-  instance_type     = var.instance_type
-  network_type      = var.network_type
-  port              = var.port
-  query_timeout     = var.query_timeout
-  safe_rule         = var.safe_rule
-  safe_rule_id      = var.safe_rule_id
-  sid               = var.sid
-  skip_test         = var.skip_test
-  tid               = var.tid
-  use_dsql          = var.use_dsql
-  vpc_id            = var.vpc_id
+  # database_user - (required) is a type of string
+  database_user = var.database_user
+  # dba_id - (optional) is a type of string
+  dba_id = var.dba_id
+  # dba_uid - (required) is a type of number
+  dba_uid = var.dba_uid
+  # ddl_online - (optional) is a type of number
+  ddl_online = var.ddl_online
+  # ecs_instance_id - (optional) is a type of string
+  ecs_instance_id = var.ecs_instance_id
+  # ecs_region - (optional) is a type of string
+  ecs_region = var.ecs_region
+  # env_type - (required) is a type of string
+  env_type = var.env_type
+  # export_timeout - (required) is a type of number
+  export_timeout = var.export_timeout
+  # host - (required) is a type of string
+  host = var.host
+  # instance_alias - (optional) is a type of string
+  instance_alias = var.instance_alias
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_source - (required) is a type of string
+  instance_source = var.instance_source
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # network_type - (required) is a type of string
+  network_type = var.network_type
+  # port - (required) is a type of number
+  port = var.port
+  # query_timeout - (required) is a type of number
+  query_timeout = var.query_timeout
+  # safe_rule - (required) is a type of string
+  safe_rule = var.safe_rule
+  # safe_rule_id - (optional) is a type of string
+  safe_rule_id = var.safe_rule_id
+  # sid - (optional) is a type of string
+  sid = var.sid
+  # skip_test - (optional) is a type of bool
+  skip_test = var.skip_test
+  # tid - (optional) is a type of number
+  tid = var.tid
+  # use_dsql - (optional) is a type of number
+  use_dsql = var.use_dsql
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

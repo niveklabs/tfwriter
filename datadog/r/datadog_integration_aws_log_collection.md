@@ -56,8 +56,10 @@ variable "services" {
 
 ```terraform
 resource "datadog_integration_aws_log_collection" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  services   = var.services
+  # services - (required) is a type of list of string
+  services = var.services
 }
 ```
 

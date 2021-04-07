@@ -105,14 +105,22 @@ variable "width" {
 
 ```terraform
 resource "tencentcloud_vod_snapshot_by_time_offset_template" "this" {
-  comment             = var.comment
-  fill_type           = var.fill_type
-  format              = var.format
-  height              = var.height
-  name                = var.name
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fill_type - (optional) is a type of string
+  fill_type = var.fill_type
+  # format - (optional) is a type of string
+  format = var.format
+  # height - (optional) is a type of number
+  height = var.height
+  # name - (required) is a type of string
+  name = var.name
+  # resolution_adaptive - (optional) is a type of bool
   resolution_adaptive = var.resolution_adaptive
-  sub_app_id          = var.sub_app_id
-  width               = var.width
+  # sub_app_id - (optional) is a type of number
+  sub_app_id = var.sub_app_id
+  # width - (optional) is a type of number
+  width = var.width
 }
 ```
 

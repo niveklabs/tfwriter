@@ -93,16 +93,23 @@ variable "primary_key" {
 
 ```terraform
 resource "alicloud_ots_table" "this" {
+  # deviation_cell_version_in_sec - (optional) is a type of string
   deviation_cell_version_in_sec = var.deviation_cell_version_in_sec
-  instance_name                 = var.instance_name
-  max_version                   = var.max_version
-  table_name                    = var.table_name
-  time_to_live                  = var.time_to_live
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # max_version - (required) is a type of number
+  max_version = var.max_version
+  # table_name - (required) is a type of string
+  table_name = var.table_name
+  # time_to_live - (required) is a type of number
+  time_to_live = var.time_to_live
 
   dynamic "primary_key" {
     for_each = var.primary_key
     content {
+      # name - (required) is a type of string
       name = primary_key.value["name"]
+      # type - (required) is a type of string
       type = primary_key.value["type"]
     }
   }

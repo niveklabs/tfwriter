@@ -57,7 +57,9 @@ variable "resource_id" {
 
 ```terraform
 data "gridscale_ipv4" "this" {
-  labels      = var.labels
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # resource_id - (required) is a type of string
   resource_id = var.resource_id
 }
 ```

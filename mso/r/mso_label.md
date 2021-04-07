@@ -56,8 +56,10 @@ variable "type" {
 
 ```terraform
 resource "mso_label" "this" {
+  # label - (required) is a type of string
   label = var.label
-  type  = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -74,10 +74,14 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_slb_zones" "this" {
+  # available_slb_address_ip_version - (optional) is a type of string
   available_slb_address_ip_version = var.available_slb_address_ip_version
-  available_slb_address_type       = var.available_slb_address_type
-  enable_details                   = var.enable_details
-  output_file                      = var.output_file
+  # available_slb_address_type - (optional) is a type of string
+  available_slb_address_type = var.available_slb_address_type
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

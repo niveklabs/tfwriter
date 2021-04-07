@@ -106,14 +106,22 @@ variable "tenant_id" {
 
 ```terraform
 data "ecl_network_internet_gateway_v2" "this" {
-  description         = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_gateway_id - (optional) is a type of string
   internet_gateway_id = var.internet_gateway_id
+  # internet_service_id - (optional) is a type of string
   internet_service_id = var.internet_service_id
-  name                = var.name
-  qos_option_id       = var.qos_option_id
-  region              = var.region
-  status              = var.status
-  tenant_id           = var.tenant_id
+  # name - (optional) is a type of string
+  name = var.name
+  # qos_option_id - (optional) is a type of string
+  qos_option_id = var.qos_option_id
+  # region - (optional) is a type of string
+  region = var.region
+  # status - (optional) is a type of string
+  status = var.status
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

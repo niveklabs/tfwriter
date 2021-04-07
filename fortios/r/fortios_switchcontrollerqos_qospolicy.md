@@ -80,10 +80,15 @@ variable "trust_ip_dscp_map" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_qospolicy" "this" {
-  default_cos       = var.default_cos
-  name              = var.name
-  queue_policy      = var.queue_policy
-  trust_dot1p_map   = var.trust_dot1p_map
+  # default_cos - (required) is a type of number
+  default_cos = var.default_cos
+  # name - (required) is a type of string
+  name = var.name
+  # queue_policy - (optional) is a type of string
+  queue_policy = var.queue_policy
+  # trust_dot1p_map - (optional) is a type of string
+  trust_dot1p_map = var.trust_dot1p_map
+  # trust_ip_dscp_map - (optional) is a type of string
   trust_ip_dscp_map = var.trust_ip_dscp_map
 }
 ```

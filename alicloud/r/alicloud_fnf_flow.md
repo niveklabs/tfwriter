@@ -96,17 +96,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_fnf_flow" "this" {
-  definition  = var.definition
+  # definition - (required) is a type of string
+  definition = var.definition
+  # description - (required) is a type of string
   description = var.description
-  name        = var.name
-  role_arn    = var.role_arn
-  type        = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

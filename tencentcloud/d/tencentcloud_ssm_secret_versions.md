@@ -65,9 +65,12 @@ variable "version_id" {
 
 ```terraform
 data "tencentcloud_ssm_secret_versions" "this" {
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  secret_name        = var.secret_name
-  version_id         = var.version_id
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # version_id - (optional) is a type of string
+  version_id = var.version_id
 }
 ```
 

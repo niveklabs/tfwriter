@@ -89,16 +89,22 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_dhcp_server_profile" "this" {
-  description                 = var.description
-  display_name                = var.display_name
-  edge_cluster_id             = var.edge_cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # edge_cluster_id - (required) is a type of string
+  edge_cluster_id = var.edge_cluster_id
+  # edge_cluster_member_indexes - (optional) is a type of list of number
   edge_cluster_member_indexes = var.edge_cluster_member_indexes
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

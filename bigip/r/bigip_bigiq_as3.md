@@ -102,14 +102,22 @@ variable "tenant_list" {
 
 ```terraform
 resource "bigip_bigiq_as3" "this" {
-  as3_json         = var.as3_json
-  bigiq_address    = var.bigiq_address
-  bigiq_login_ref  = var.bigiq_login_ref
-  bigiq_password   = var.bigiq_password
-  bigiq_port       = var.bigiq_port
+  # as3_json - (required) is a type of string
+  as3_json = var.as3_json
+  # bigiq_address - (required) is a type of string
+  bigiq_address = var.bigiq_address
+  # bigiq_login_ref - (optional) is a type of string
+  bigiq_login_ref = var.bigiq_login_ref
+  # bigiq_password - (required) is a type of string
+  bigiq_password = var.bigiq_password
+  # bigiq_port - (optional) is a type of string
+  bigiq_port = var.bigiq_port
+  # bigiq_token_auth - (optional) is a type of bool
   bigiq_token_auth = var.bigiq_token_auth
-  bigiq_user       = var.bigiq_user
-  tenant_list      = var.tenant_list
+  # bigiq_user - (required) is a type of string
+  bigiq_user = var.bigiq_user
+  # tenant_list - (optional) is a type of string
+  tenant_list = var.tenant_list
 }
 ```
 

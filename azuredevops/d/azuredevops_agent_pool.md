@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "azuredevops_agent_pool" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -250,32 +250,58 @@ variable "width" {
 
 ```terraform
 resource "fortios_report_style" "this" {
-  align          = var.align
-  bg_color       = var.bg_color
-  border_bottom  = var.border_bottom
-  border_left    = var.border_left
-  border_right   = var.border_right
-  border_top     = var.border_top
-  column_gap     = var.column_gap
-  column_span    = var.column_span
-  fg_color       = var.fg_color
-  font_family    = var.font_family
-  font_size      = var.font_size
-  font_style     = var.font_style
-  font_weight    = var.font_weight
-  height         = var.height
-  line_height    = var.line_height
-  margin_bottom  = var.margin_bottom
-  margin_left    = var.margin_left
-  margin_right   = var.margin_right
-  margin_top     = var.margin_top
-  name           = var.name
-  options        = var.options
+  # align - (optional) is a type of string
+  align = var.align
+  # bg_color - (optional) is a type of string
+  bg_color = var.bg_color
+  # border_bottom - (optional) is a type of string
+  border_bottom = var.border_bottom
+  # border_left - (optional) is a type of string
+  border_left = var.border_left
+  # border_right - (optional) is a type of string
+  border_right = var.border_right
+  # border_top - (optional) is a type of string
+  border_top = var.border_top
+  # column_gap - (optional) is a type of string
+  column_gap = var.column_gap
+  # column_span - (optional) is a type of string
+  column_span = var.column_span
+  # fg_color - (optional) is a type of string
+  fg_color = var.fg_color
+  # font_family - (optional) is a type of string
+  font_family = var.font_family
+  # font_size - (optional) is a type of string
+  font_size = var.font_size
+  # font_style - (optional) is a type of string
+  font_style = var.font_style
+  # font_weight - (optional) is a type of string
+  font_weight = var.font_weight
+  # height - (optional) is a type of string
+  height = var.height
+  # line_height - (optional) is a type of string
+  line_height = var.line_height
+  # margin_bottom - (optional) is a type of string
+  margin_bottom = var.margin_bottom
+  # margin_left - (optional) is a type of string
+  margin_left = var.margin_left
+  # margin_right - (optional) is a type of string
+  margin_right = var.margin_right
+  # margin_top - (optional) is a type of string
+  margin_top = var.margin_top
+  # name - (optional) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # padding_bottom - (optional) is a type of string
   padding_bottom = var.padding_bottom
-  padding_left   = var.padding_left
-  padding_right  = var.padding_right
-  padding_top    = var.padding_top
-  width          = var.width
+  # padding_left - (optional) is a type of string
+  padding_left = var.padding_left
+  # padding_right - (optional) is a type of string
+  padding_right = var.padding_right
+  # padding_top - (optional) is a type of string
+  padding_top = var.padding_top
+  # width - (optional) is a type of string
+  width = var.width
 }
 ```
 

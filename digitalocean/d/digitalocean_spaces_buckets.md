@@ -82,18 +82,24 @@ data "digitalocean_spaces_buckets" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
-      all      = filter.value["all"]
-      key      = filter.value["key"]
+      # all - (optional) is a type of bool
+      all = filter.value["all"]
+      # key - (required) is a type of string
+      key = filter.value["key"]
+      # match_by - (optional) is a type of string
       match_by = filter.value["match_by"]
-      values   = filter.value["values"]
+      # values - (required) is a type of list of string
+      values = filter.value["values"]
     }
   }
 
   dynamic "sort" {
     for_each = var.sort
     content {
+      # direction - (optional) is a type of string
       direction = sort.value["direction"]
-      key       = sort.value["key"]
+      # key - (required) is a type of string
+      key = sort.value["key"]
     }
   }
 

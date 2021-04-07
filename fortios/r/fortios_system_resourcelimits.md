@@ -186,24 +186,42 @@ variable "user_group" {
 
 ```terraform
 resource "fortios_system_resourcelimits" "this" {
-  custom_service         = var.custom_service
-  dialup_tunnel          = var.dialup_tunnel
-  firewall_address       = var.firewall_address
-  firewall_addrgrp       = var.firewall_addrgrp
-  firewall_policy        = var.firewall_policy
-  ipsec_phase1           = var.ipsec_phase1
+  # custom_service - (optional) is a type of number
+  custom_service = var.custom_service
+  # dialup_tunnel - (optional) is a type of number
+  dialup_tunnel = var.dialup_tunnel
+  # firewall_address - (optional) is a type of number
+  firewall_address = var.firewall_address
+  # firewall_addrgrp - (optional) is a type of number
+  firewall_addrgrp = var.firewall_addrgrp
+  # firewall_policy - (optional) is a type of number
+  firewall_policy = var.firewall_policy
+  # ipsec_phase1 - (optional) is a type of number
+  ipsec_phase1 = var.ipsec_phase1
+  # ipsec_phase1_interface - (optional) is a type of number
   ipsec_phase1_interface = var.ipsec_phase1_interface
-  ipsec_phase2           = var.ipsec_phase2
+  # ipsec_phase2 - (optional) is a type of number
+  ipsec_phase2 = var.ipsec_phase2
+  # ipsec_phase2_interface - (optional) is a type of number
   ipsec_phase2_interface = var.ipsec_phase2_interface
-  log_disk_quota         = var.log_disk_quota
-  onetime_schedule       = var.onetime_schedule
-  proxy                  = var.proxy
-  recurring_schedule     = var.recurring_schedule
-  service_group          = var.service_group
-  session                = var.session
-  sslvpn                 = var.sslvpn
-  user                   = var.user
-  user_group             = var.user_group
+  # log_disk_quota - (optional) is a type of number
+  log_disk_quota = var.log_disk_quota
+  # onetime_schedule - (optional) is a type of number
+  onetime_schedule = var.onetime_schedule
+  # proxy - (optional) is a type of number
+  proxy = var.proxy
+  # recurring_schedule - (optional) is a type of number
+  recurring_schedule = var.recurring_schedule
+  # service_group - (optional) is a type of number
+  service_group = var.service_group
+  # session - (optional) is a type of number
+  session = var.session
+  # sslvpn - (optional) is a type of number
+  sslvpn = var.sslvpn
+  # user - (optional) is a type of number
+  user = var.user
+  # user_group - (optional) is a type of number
+  user_group = var.user_group
 }
 ```
 

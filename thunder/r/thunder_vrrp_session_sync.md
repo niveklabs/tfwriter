@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_vrrp_session_sync" "this" {
+  # action - (optional) is a type of string
   action = var.action
-  uuid   = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

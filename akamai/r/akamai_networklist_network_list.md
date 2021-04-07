@@ -78,11 +78,16 @@ variable "type" {
 
 ```terraform
 resource "akamai_networklist_network_list" "this" {
+  # description - (required) is a type of string
   description = var.description
-  list        = var.list
-  mode        = var.mode
-  name        = var.name
-  type        = var.type
+  # list - (optional) is a type of list of string
+  list = var.list
+  # mode - (required) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

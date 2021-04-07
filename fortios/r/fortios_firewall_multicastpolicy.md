@@ -202,27 +202,45 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_multicastpolicy" "this" {
-  action                = var.action
-  auto_asic_offload     = var.auto_asic_offload
-  comments              = var.comments
-  dnat                  = var.dnat
-  dstintf               = var.dstintf
+  # action - (optional) is a type of string
+  action = var.action
+  # auto_asic_offload - (optional) is a type of string
+  auto_asic_offload = var.auto_asic_offload
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dnat - (optional) is a type of string
+  dnat = var.dnat
+  # dstintf - (required) is a type of string
+  dstintf = var.dstintf
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  end_port              = var.end_port
-  fosid                 = var.fosid
-  logtraffic            = var.logtraffic
-  name                  = var.name
-  protocol              = var.protocol
-  snat                  = var.snat
-  snat_ip               = var.snat_ip
-  srcintf               = var.srcintf
-  start_port            = var.start_port
-  status                = var.status
-  uuid                  = var.uuid
+  # end_port - (optional) is a type of number
+  end_port = var.end_port
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of number
+  protocol = var.protocol
+  # snat - (optional) is a type of string
+  snat = var.snat
+  # snat_ip - (optional) is a type of string
+  snat_ip = var.snat_ip
+  # srcintf - (required) is a type of string
+  srcintf = var.srcintf
+  # start_port - (optional) is a type of number
+  start_port = var.start_port
+  # status - (optional) is a type of string
+  status = var.status
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -230,6 +248,7 @@ resource "fortios_firewall_multicastpolicy" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }

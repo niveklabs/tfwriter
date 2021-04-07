@@ -277,36 +277,66 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_panorama_bgp_peer" "this" {
-  address_family_type                 = var.address_family_type
-  allow_incoming_connections          = var.allow_incoming_connections
-  allow_outgoing_connections          = var.allow_outgoing_connections
-  auth_profile                        = var.auth_profile
-  bfd_profile                         = var.bfd_profile
-  bgp_peer_group                      = var.bgp_peer_group
-  enable                              = var.enable
-  enable_mp_bgp                       = var.enable_mp_bgp
-  enable_sender_side_loop_detection   = var.enable_sender_side_loop_detection
-  hold_time                           = var.hold_time
-  idle_hold_time                      = var.idle_hold_time
-  incoming_connections_remote_port    = var.incoming_connections_remote_port
-  keep_alive_interval                 = var.keep_alive_interval
-  local_address_interface             = var.local_address_interface
-  local_address_ip                    = var.local_address_ip
-  max_prefixes                        = var.max_prefixes
-  min_route_advertisement_interval    = var.min_route_advertisement_interval
-  multi_hop                           = var.multi_hop
-  name                                = var.name
-  open_delay_time                     = var.open_delay_time
-  outgoing_connections_local_port     = var.outgoing_connections_local_port
-  peer_address_ip                     = var.peer_address_ip
-  peer_as                             = var.peer_as
-  peering_type                        = var.peering_type
-  reflector_client                    = var.reflector_client
+  # address_family_type - (optional) is a type of string
+  address_family_type = var.address_family_type
+  # allow_incoming_connections - (optional) is a type of bool
+  allow_incoming_connections = var.allow_incoming_connections
+  # allow_outgoing_connections - (optional) is a type of bool
+  allow_outgoing_connections = var.allow_outgoing_connections
+  # auth_profile - (optional) is a type of string
+  auth_profile = var.auth_profile
+  # bfd_profile - (optional) is a type of string
+  bfd_profile = var.bfd_profile
+  # bgp_peer_group - (required) is a type of string
+  bgp_peer_group = var.bgp_peer_group
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # enable_mp_bgp - (optional) is a type of bool
+  enable_mp_bgp = var.enable_mp_bgp
+  # enable_sender_side_loop_detection - (optional) is a type of bool
+  enable_sender_side_loop_detection = var.enable_sender_side_loop_detection
+  # hold_time - (optional) is a type of number
+  hold_time = var.hold_time
+  # idle_hold_time - (optional) is a type of number
+  idle_hold_time = var.idle_hold_time
+  # incoming_connections_remote_port - (optional) is a type of number
+  incoming_connections_remote_port = var.incoming_connections_remote_port
+  # keep_alive_interval - (optional) is a type of number
+  keep_alive_interval = var.keep_alive_interval
+  # local_address_interface - (required) is a type of string
+  local_address_interface = var.local_address_interface
+  # local_address_ip - (optional) is a type of string
+  local_address_ip = var.local_address_ip
+  # max_prefixes - (optional) is a type of string
+  max_prefixes = var.max_prefixes
+  # min_route_advertisement_interval - (optional) is a type of number
+  min_route_advertisement_interval = var.min_route_advertisement_interval
+  # multi_hop - (optional) is a type of number
+  multi_hop = var.multi_hop
+  # name - (required) is a type of string
+  name = var.name
+  # open_delay_time - (optional) is a type of number
+  open_delay_time = var.open_delay_time
+  # outgoing_connections_local_port - (optional) is a type of number
+  outgoing_connections_local_port = var.outgoing_connections_local_port
+  # peer_address_ip - (required) is a type of string
+  peer_address_ip = var.peer_address_ip
+  # peer_as - (optional) is a type of string
+  peer_as = var.peer_as
+  # peering_type - (optional) is a type of string
+  peering_type = var.peering_type
+  # reflector_client - (optional) is a type of string
+  reflector_client = var.reflector_client
+  # subsequent_address_family_multicast - (optional) is a type of bool
   subsequent_address_family_multicast = var.subsequent_address_family_multicast
-  subsequent_address_family_unicast   = var.subsequent_address_family_unicast
-  template                            = var.template
-  template_stack                      = var.template_stack
-  virtual_router                      = var.virtual_router
+  # subsequent_address_family_unicast - (optional) is a type of bool
+  subsequent_address_family_unicast = var.subsequent_address_family_unicast
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

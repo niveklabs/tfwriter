@@ -336,27 +336,45 @@ variable "udp_monitor" {
 
 ```terraform
 resource "avi_healthmonitor" "this" {
+  # allow_duplicate_monitors - (optional) is a type of bool
   allow_duplicate_monitors = var.allow_duplicate_monitors
-  description              = var.description
-  disable_quickstart       = var.disable_quickstart
-  failed_checks            = var.failed_checks
-  is_federated             = var.is_federated
-  monitor_port             = var.monitor_port
-  name                     = var.name
-  receive_timeout          = var.receive_timeout
-  send_interval            = var.send_interval
-  successful_checks        = var.successful_checks
-  tenant_ref               = var.tenant_ref
-  type                     = var.type
-  uuid                     = var.uuid
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_quickstart - (optional) is a type of bool
+  disable_quickstart = var.disable_quickstart
+  # failed_checks - (optional) is a type of number
+  failed_checks = var.failed_checks
+  # is_federated - (optional) is a type of bool
+  is_federated = var.is_federated
+  # monitor_port - (optional) is a type of number
+  monitor_port = var.monitor_port
+  # name - (required) is a type of string
+  name = var.name
+  # receive_timeout - (optional) is a type of number
+  receive_timeout = var.receive_timeout
+  # send_interval - (optional) is a type of number
+  send_interval = var.send_interval
+  # successful_checks - (optional) is a type of number
+  successful_checks = var.successful_checks
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (required) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dns_monitor" {
     for_each = var.dns_monitor
     content {
-      qtype           = dns_monitor.value["qtype"]
-      query_name      = dns_monitor.value["query_name"]
-      rcode           = dns_monitor.value["rcode"]
-      record_type     = dns_monitor.value["record_type"]
+      # qtype - (optional) is a type of string
+      qtype = dns_monitor.value["qtype"]
+      # query_name - (required) is a type of string
+      query_name = dns_monitor.value["query_name"]
+      # rcode - (optional) is a type of string
+      rcode = dns_monitor.value["rcode"]
+      # record_type - (optional) is a type of string
+      record_type = dns_monitor.value["record_type"]
+      # response_string - (optional) is a type of string
       response_string = dns_monitor.value["response_string"]
     }
   }
@@ -364,30 +382,44 @@ resource "avi_healthmonitor" "this" {
   dynamic "external_monitor" {
     for_each = var.external_monitor
     content {
-      command_code       = external_monitor.value["command_code"]
+      # command_code - (required) is a type of string
+      command_code = external_monitor.value["command_code"]
+      # command_parameters - (optional) is a type of string
       command_parameters = external_monitor.value["command_parameters"]
-      command_path       = external_monitor.value["command_path"]
-      command_variables  = external_monitor.value["command_variables"]
+      # command_path - (optional) is a type of string
+      command_path = external_monitor.value["command_path"]
+      # command_variables - (optional) is a type of string
+      command_variables = external_monitor.value["command_variables"]
     }
   }
 
   dynamic "http_monitor" {
     for_each = var.http_monitor
     content {
-      exact_http_request   = http_monitor.value["exact_http_request"]
-      http_request         = http_monitor.value["http_request"]
-      http_response        = http_monitor.value["http_response"]
-      http_response_code   = http_monitor.value["http_response_code"]
-      maintenance_code     = http_monitor.value["maintenance_code"]
+      # exact_http_request - (optional) is a type of bool
+      exact_http_request = http_monitor.value["exact_http_request"]
+      # http_request - (optional) is a type of string
+      http_request = http_monitor.value["http_request"]
+      # http_response - (optional) is a type of string
+      http_response = http_monitor.value["http_response"]
+      # http_response_code - (optional) is a type of list of string
+      http_response_code = http_monitor.value["http_response_code"]
+      # maintenance_code - (optional) is a type of list of number
+      maintenance_code = http_monitor.value["maintenance_code"]
+      # maintenance_response - (optional) is a type of string
       maintenance_response = http_monitor.value["maintenance_response"]
 
       dynamic "ssl_attributes" {
         for_each = http_monitor.value.ssl_attributes
         content {
-          pki_profile_ref             = ssl_attributes.value["pki_profile_ref"]
-          server_name                 = ssl_attributes.value["server_name"]
+          # pki_profile_ref - (optional) is a type of string
+          pki_profile_ref = ssl_attributes.value["pki_profile_ref"]
+          # server_name - (optional) is a type of string
+          server_name = ssl_attributes.value["server_name"]
+          # ssl_key_and_certificate_ref - (optional) is a type of string
           ssl_key_and_certificate_ref = ssl_attributes.value["ssl_key_and_certificate_ref"]
-          ssl_profile_ref             = ssl_attributes.value["ssl_profile_ref"]
+          # ssl_profile_ref - (optional) is a type of string
+          ssl_profile_ref = ssl_attributes.value["ssl_profile_ref"]
         }
       }
 
@@ -397,20 +429,30 @@ resource "avi_healthmonitor" "this" {
   dynamic "https_monitor" {
     for_each = var.https_monitor
     content {
-      exact_http_request   = https_monitor.value["exact_http_request"]
-      http_request         = https_monitor.value["http_request"]
-      http_response        = https_monitor.value["http_response"]
-      http_response_code   = https_monitor.value["http_response_code"]
-      maintenance_code     = https_monitor.value["maintenance_code"]
+      # exact_http_request - (optional) is a type of bool
+      exact_http_request = https_monitor.value["exact_http_request"]
+      # http_request - (optional) is a type of string
+      http_request = https_monitor.value["http_request"]
+      # http_response - (optional) is a type of string
+      http_response = https_monitor.value["http_response"]
+      # http_response_code - (optional) is a type of list of string
+      http_response_code = https_monitor.value["http_response_code"]
+      # maintenance_code - (optional) is a type of list of number
+      maintenance_code = https_monitor.value["maintenance_code"]
+      # maintenance_response - (optional) is a type of string
       maintenance_response = https_monitor.value["maintenance_response"]
 
       dynamic "ssl_attributes" {
         for_each = https_monitor.value.ssl_attributes
         content {
-          pki_profile_ref             = ssl_attributes.value["pki_profile_ref"]
-          server_name                 = ssl_attributes.value["server_name"]
+          # pki_profile_ref - (optional) is a type of string
+          pki_profile_ref = ssl_attributes.value["pki_profile_ref"]
+          # server_name - (optional) is a type of string
+          server_name = ssl_attributes.value["server_name"]
+          # ssl_key_and_certificate_ref - (optional) is a type of string
           ssl_key_and_certificate_ref = ssl_attributes.value["ssl_key_and_certificate_ref"]
-          ssl_profile_ref             = ssl_attributes.value["ssl_profile_ref"]
+          # ssl_profile_ref - (optional) is a type of string
+          ssl_profile_ref = ssl_attributes.value["ssl_profile_ref"]
         }
       }
 
@@ -420,37 +462,50 @@ resource "avi_healthmonitor" "this" {
   dynamic "radius_monitor" {
     for_each = var.radius_monitor
     content {
-      password      = radius_monitor.value["password"]
+      # password - (optional) is a type of string
+      password = radius_monitor.value["password"]
+      # shared_secret - (optional) is a type of string
       shared_secret = radius_monitor.value["shared_secret"]
-      username      = radius_monitor.value["username"]
+      # username - (optional) is a type of string
+      username = radius_monitor.value["username"]
     }
   }
 
   dynamic "sip_monitor" {
     for_each = var.sip_monitor
     content {
+      # sip_monitor_transport - (optional) is a type of string
       sip_monitor_transport = sip_monitor.value["sip_monitor_transport"]
-      sip_request_code      = sip_monitor.value["sip_request_code"]
-      sip_response          = sip_monitor.value["sip_response"]
+      # sip_request_code - (optional) is a type of string
+      sip_request_code = sip_monitor.value["sip_request_code"]
+      # sip_response - (optional) is a type of string
+      sip_response = sip_monitor.value["sip_response"]
     }
   }
 
   dynamic "tcp_monitor" {
     for_each = var.tcp_monitor
     content {
+      # maintenance_response - (optional) is a type of string
       maintenance_response = tcp_monitor.value["maintenance_response"]
-      tcp_half_open        = tcp_monitor.value["tcp_half_open"]
-      tcp_request          = tcp_monitor.value["tcp_request"]
-      tcp_response         = tcp_monitor.value["tcp_response"]
+      # tcp_half_open - (optional) is a type of bool
+      tcp_half_open = tcp_monitor.value["tcp_half_open"]
+      # tcp_request - (optional) is a type of string
+      tcp_request = tcp_monitor.value["tcp_request"]
+      # tcp_response - (optional) is a type of string
+      tcp_response = tcp_monitor.value["tcp_response"]
     }
   }
 
   dynamic "udp_monitor" {
     for_each = var.udp_monitor
     content {
+      # maintenance_response - (optional) is a type of string
       maintenance_response = udp_monitor.value["maintenance_response"]
-      udp_request          = udp_monitor.value["udp_request"]
-      udp_response         = udp_monitor.value["udp_response"]
+      # udp_request - (optional) is a type of string
+      udp_request = udp_monitor.value["udp_request"]
+      # udp_response - (optional) is a type of string
+      udp_response = udp_monitor.value["udp_response"]
     }
   }
 

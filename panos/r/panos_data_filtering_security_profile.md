@@ -109,22 +109,34 @@ variable "rule" {
 
 ```terraform
 resource "panos_data_filtering_security_profile" "this" {
+  # data_capture - (optional) is a type of bool
   data_capture = var.data_capture
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # alert_threshold - (optional) is a type of number
       alert_threshold = rule.value["alert_threshold"]
-      applications    = rule.value["applications"]
+      # applications - (optional) is a type of list of string
+      applications = rule.value["applications"]
+      # block_threshold - (optional) is a type of number
       block_threshold = rule.value["block_threshold"]
-      data_pattern    = rule.value["data_pattern"]
-      direction       = rule.value["direction"]
-      file_types      = rule.value["file_types"]
-      log_severity    = rule.value["log_severity"]
+      # data_pattern - (required) is a type of string
+      data_pattern = rule.value["data_pattern"]
+      # direction - (optional) is a type of string
+      direction = rule.value["direction"]
+      # file_types - (optional) is a type of list of string
+      file_types = rule.value["file_types"]
+      # log_severity - (optional) is a type of string
+      log_severity = rule.value["log_severity"]
     }
   }
 

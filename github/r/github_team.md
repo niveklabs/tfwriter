@@ -89,12 +89,18 @@ variable "privacy" {
 
 ```terraform
 resource "github_team" "this" {
+  # create_default_maintainer - (optional) is a type of bool
   create_default_maintainer = var.create_default_maintainer
-  description               = var.description
-  ldap_dn                   = var.ldap_dn
-  name                      = var.name
-  parent_team_id            = var.parent_team_id
-  privacy                   = var.privacy
+  # description - (optional) is a type of string
+  description = var.description
+  # ldap_dn - (optional) is a type of string
+  ldap_dn = var.ldap_dn
+  # name - (required) is a type of string
+  name = var.name
+  # parent_team_id - (optional) is a type of number
+  parent_team_id = var.parent_team_id
+  # privacy - (optional) is a type of string
+  privacy = var.privacy
 }
 ```
 

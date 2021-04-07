@@ -96,17 +96,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_dhcp_port" "this" {
-  admin_state       = var.admin_state
-  description       = var.description
-  dhcp_server_id    = var.dhcp_server_id
-  display_name      = var.display_name
+  # admin_state - (optional) is a type of string
+  admin_state = var.admin_state
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_server_id - (required) is a type of string
+  dhcp_server_id = var.dhcp_server_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # logical_switch_id - (required) is a type of string
   logical_switch_id = var.logical_switch_id
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -81,11 +81,16 @@ variable "targets" {
 
 ```terraform
 resource "checkpoint_management_put_file" "this" {
-  comments     = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # file_content - (optional) is a type of string
   file_content = var.file_content
-  file_name    = var.file_name
-  file_path    = var.file_path
-  targets      = var.targets
+  # file_name - (optional) is a type of string
+  file_name = var.file_name
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # targets - (required) is a type of set of string
+  targets = var.targets
 }
 ```
 

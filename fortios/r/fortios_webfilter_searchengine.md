@@ -97,13 +97,20 @@ variable "url" {
 
 ```terraform
 resource "fortios_webfilter_searchengine" "this" {
-  charset        = var.charset
-  hostname       = var.hostname
-  name           = var.name
-  query          = var.query
-  safesearch     = var.safesearch
+  # charset - (optional) is a type of string
+  charset = var.charset
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # name - (required) is a type of string
+  name = var.name
+  # query - (optional) is a type of string
+  query = var.query
+  # safesearch - (optional) is a type of string
+  safesearch = var.safesearch
+  # safesearch_str - (optional) is a type of string
   safesearch_str = var.safesearch_str
-  url            = var.url
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

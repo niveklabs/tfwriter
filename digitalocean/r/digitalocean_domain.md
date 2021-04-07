@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "digitalocean_domain" "this" {
+  # ip_address - (optional) is a type of string
   ip_address = var.ip_address
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

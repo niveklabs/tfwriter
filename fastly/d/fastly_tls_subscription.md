@@ -66,9 +66,12 @@ variable "domains" {
 
 ```terraform
 data "fastly_tls_subscription" "this" {
+  # certificate_authority - (optional) is a type of string
   certificate_authority = var.certificate_authority
-  configuration_id      = var.configuration_id
-  domains               = var.domains
+  # configuration_id - (optional) is a type of string
+  configuration_id = var.configuration_id
+  # domains - (optional) is a type of set of string
+  domains = var.domains
 }
 ```
 

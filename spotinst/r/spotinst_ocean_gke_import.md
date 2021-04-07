@@ -206,25 +206,37 @@ variable "scheduled_task" {
 
 ```terraform
 resource "spotinst_ocean_gke_import" "this" {
-  cluster_name     = var.cluster_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # desired_capacity - (optional) is a type of number
   desired_capacity = var.desired_capacity
-  location         = var.location
-  max_size         = var.max_size
-  min_size         = var.min_size
-  whitelist        = var.whitelist
+  # location - (required) is a type of string
+  location = var.location
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # whitelist - (optional) is a type of list of string
+  whitelist = var.whitelist
 
   dynamic "autoscaler" {
     for_each = var.autoscaler
     content {
+      # auto_headroom_percentage - (optional) is a type of number
       auto_headroom_percentage = autoscaler.value["auto_headroom_percentage"]
-      cooldown                 = autoscaler.value["cooldown"]
-      is_auto_config           = autoscaler.value["is_auto_config"]
-      is_enabled               = autoscaler.value["is_enabled"]
+      # cooldown - (optional) is a type of number
+      cooldown = autoscaler.value["cooldown"]
+      # is_auto_config - (optional) is a type of bool
+      is_auto_config = autoscaler.value["is_auto_config"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = autoscaler.value["is_enabled"]
 
       dynamic "down" {
         for_each = autoscaler.value.down
         content {
-          evaluation_periods        = down.value["evaluation_periods"]
+          # evaluation_periods - (optional) is a type of number
+          evaluation_periods = down.value["evaluation_periods"]
+          # max_scale_down_percentage - (optional) is a type of number
           max_scale_down_percentage = down.value["max_scale_down_percentage"]
         }
       }
@@ -232,18 +244,24 @@ resource "spotinst_ocean_gke_import" "this" {
       dynamic "headroom" {
         for_each = autoscaler.value.headroom
         content {
-          cpu_per_unit    = headroom.value["cpu_per_unit"]
-          gpu_per_unit    = headroom.value["gpu_per_unit"]
+          # cpu_per_unit - (optional) is a type of number
+          cpu_per_unit = headroom.value["cpu_per_unit"]
+          # gpu_per_unit - (optional) is a type of number
+          gpu_per_unit = headroom.value["gpu_per_unit"]
+          # memory_per_unit - (optional) is a type of number
           memory_per_unit = headroom.value["memory_per_unit"]
-          num_of_units    = headroom.value["num_of_units"]
+          # num_of_units - (optional) is a type of number
+          num_of_units = headroom.value["num_of_units"]
         }
       }
 
       dynamic "resource_limits" {
         for_each = autoscaler.value.resource_limits
         content {
+          # max_memory_gib - (optional) is a type of number
           max_memory_gib = resource_limits.value["max_memory_gib"]
-          max_vcpu       = resource_limits.value["max_vcpu"]
+          # max_vcpu - (optional) is a type of number
+          max_vcpu = resource_limits.value["max_vcpu"]
         }
       }
 
@@ -253,14 +271,19 @@ resource "spotinst_ocean_gke_import" "this" {
   dynamic "backend_services" {
     for_each = var.backend_services
     content {
+      # location_type - (optional) is a type of string
       location_type = backend_services.value["location_type"]
-      scheme        = backend_services.value["scheme"]
-      service_name  = backend_services.value["service_name"]
+      # scheme - (optional) is a type of string
+      scheme = backend_services.value["scheme"]
+      # service_name - (required) is a type of string
+      service_name = backend_services.value["service_name"]
 
       dynamic "named_ports" {
         for_each = backend_services.value.named_ports
         content {
-          name  = named_ports.value["name"]
+          # name - (required) is a type of string
+          name = named_ports.value["name"]
+          # ports - (required) is a type of list of string
           ports = named_ports.value["ports"]
         }
       }
@@ -275,7 +298,9 @@ resource "spotinst_ocean_gke_import" "this" {
       dynamic "shutdown_hours" {
         for_each = scheduled_task.value.shutdown_hours
         content {
-          is_enabled   = shutdown_hours.value["is_enabled"]
+          # is_enabled - (optional) is a type of bool
+          is_enabled = shutdown_hours.value["is_enabled"]
+          # time_windows - (required) is a type of list of string
           time_windows = shutdown_hours.value["time_windows"]
         }
       }
@@ -283,10 +308,14 @@ resource "spotinst_ocean_gke_import" "this" {
       dynamic "tasks" {
         for_each = scheduled_task.value.tasks
         content {
+          # batch_size_percentage - (optional) is a type of number
           batch_size_percentage = tasks.value["batch_size_percentage"]
-          cron_expression       = tasks.value["cron_expression"]
-          is_enabled            = tasks.value["is_enabled"]
-          task_type             = tasks.value["task_type"]
+          # cron_expression - (required) is a type of string
+          cron_expression = tasks.value["cron_expression"]
+          # is_enabled - (required) is a type of bool
+          is_enabled = tasks.value["is_enabled"]
+          # task_type - (required) is a type of string
+          task_type = tasks.value["task_type"]
         }
       }
 

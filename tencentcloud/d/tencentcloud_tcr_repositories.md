@@ -72,9 +72,13 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_tcr_repositories" "this" {
-  instance_id        = var.instance_id
-  namespace_name     = var.namespace_name
-  repository_name    = var.repository_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # namespace_name - (required) is a type of string
+  namespace_name = var.namespace_name
+  # repository_name - (optional) is a type of string
+  repository_name = var.repository_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

@@ -155,25 +155,40 @@ variable "default_load_object" {
 
 ```terraform
 resource "akamai_gtm_datacenter" "this" {
-  city                              = var.city
-  clone_of                          = var.clone_of
+  # city - (optional) is a type of string
+  city = var.city
+  # clone_of - (optional) is a type of number
+  clone_of = var.clone_of
+  # cloud_server_host_header_override - (optional) is a type of bool
   cloud_server_host_header_override = var.cloud_server_host_header_override
-  cloud_server_targeting            = var.cloud_server_targeting
-  continent                         = var.continent
-  country                           = var.country
-  domain                            = var.domain
-  latitude                          = var.latitude
-  longitude                         = var.longitude
-  nickname                          = var.nickname
-  state_or_province                 = var.state_or_province
-  wait_on_complete                  = var.wait_on_complete
+  # cloud_server_targeting - (optional) is a type of bool
+  cloud_server_targeting = var.cloud_server_targeting
+  # continent - (optional) is a type of string
+  continent = var.continent
+  # country - (optional) is a type of string
+  country = var.country
+  # domain - (required) is a type of string
+  domain = var.domain
+  # latitude - (optional) is a type of number
+  latitude = var.latitude
+  # longitude - (optional) is a type of number
+  longitude = var.longitude
+  # nickname - (optional) is a type of string
+  nickname = var.nickname
+  # state_or_province - (optional) is a type of string
+  state_or_province = var.state_or_province
+  # wait_on_complete - (optional) is a type of bool
+  wait_on_complete = var.wait_on_complete
 
   dynamic "default_load_object" {
     for_each = var.default_load_object
     content {
-      load_object      = default_load_object.value["load_object"]
+      # load_object - (optional) is a type of string
+      load_object = default_load_object.value["load_object"]
+      # load_object_port - (optional) is a type of number
       load_object_port = default_load_object.value["load_object_port"]
-      load_servers     = default_load_object.value["load_servers"]
+      # load_servers - (optional) is a type of list of string
+      load_servers = default_load_object.value["load_servers"]
     }
   }
 

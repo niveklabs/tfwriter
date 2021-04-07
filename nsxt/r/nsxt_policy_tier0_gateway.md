@@ -357,38 +357,63 @@ variable "vrf_config" {
 
 ```terraform
 resource "nsxt_policy_tier0_gateway" "this" {
-  default_rule_logging     = var.default_rule_logging
-  description              = var.description
-  dhcp_config_path         = var.dhcp_config_path
-  display_name             = var.display_name
-  edge_cluster_path        = var.edge_cluster_path
-  enable_firewall          = var.enable_firewall
-  failover_mode            = var.failover_mode
-  force_whitelisting       = var.force_whitelisting
-  ha_mode                  = var.ha_mode
+  # default_rule_logging - (optional) is a type of bool
+  default_rule_logging = var.default_rule_logging
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_config_path - (optional) is a type of string
+  dhcp_config_path = var.dhcp_config_path
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # edge_cluster_path - (optional) is a type of string
+  edge_cluster_path = var.edge_cluster_path
+  # enable_firewall - (optional) is a type of bool
+  enable_firewall = var.enable_firewall
+  # failover_mode - (optional) is a type of string
+  failover_mode = var.failover_mode
+  # force_whitelisting - (optional) is a type of bool
+  force_whitelisting = var.force_whitelisting
+  # ha_mode - (optional) is a type of string
+  ha_mode = var.ha_mode
+  # internal_transit_subnets - (optional) is a type of list of string
   internal_transit_subnets = var.internal_transit_subnets
-  ipv6_dad_profile_path    = var.ipv6_dad_profile_path
-  ipv6_ndra_profile_path   = var.ipv6_ndra_profile_path
-  nsx_id                   = var.nsx_id
-  rd_admin_address         = var.rd_admin_address
-  transit_subnets          = var.transit_subnets
+  # ipv6_dad_profile_path - (optional) is a type of string
+  ipv6_dad_profile_path = var.ipv6_dad_profile_path
+  # ipv6_ndra_profile_path - (optional) is a type of string
+  ipv6_ndra_profile_path = var.ipv6_ndra_profile_path
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # rd_admin_address - (optional) is a type of string
+  rd_admin_address = var.rd_admin_address
+  # transit_subnets - (optional) is a type of list of string
+  transit_subnets = var.transit_subnets
 
   dynamic "bgp_config" {
     for_each = var.bgp_config
     content {
-      ecmp                               = bgp_config.value["ecmp"]
-      enabled                            = bgp_config.value["enabled"]
-      graceful_restart_mode              = bgp_config.value["graceful_restart_mode"]
+      # ecmp - (optional) is a type of bool
+      ecmp = bgp_config.value["ecmp"]
+      # enabled - (optional) is a type of bool
+      enabled = bgp_config.value["enabled"]
+      # graceful_restart_mode - (optional) is a type of string
+      graceful_restart_mode = bgp_config.value["graceful_restart_mode"]
+      # graceful_restart_stale_route_timer - (optional) is a type of number
       graceful_restart_stale_route_timer = bgp_config.value["graceful_restart_stale_route_timer"]
-      graceful_restart_timer             = bgp_config.value["graceful_restart_timer"]
-      inter_sr_ibgp                      = bgp_config.value["inter_sr_ibgp"]
-      local_as_num                       = bgp_config.value["local_as_num"]
-      multipath_relax                    = bgp_config.value["multipath_relax"]
+      # graceful_restart_timer - (optional) is a type of number
+      graceful_restart_timer = bgp_config.value["graceful_restart_timer"]
+      # inter_sr_ibgp - (optional) is a type of bool
+      inter_sr_ibgp = bgp_config.value["inter_sr_ibgp"]
+      # local_as_num - (optional) is a type of string
+      local_as_num = bgp_config.value["local_as_num"]
+      # multipath_relax - (optional) is a type of bool
+      multipath_relax = bgp_config.value["multipath_relax"]
 
       dynamic "route_aggregation" {
         for_each = bgp_config.value.route_aggregation
         content {
-          prefix       = route_aggregation.value["prefix"]
+          # prefix - (optional) is a type of string
+          prefix = route_aggregation.value["prefix"]
+          # summary_only - (optional) is a type of bool
           summary_only = route_aggregation.value["summary_only"]
         }
       }
@@ -396,8 +421,10 @@ resource "nsxt_policy_tier0_gateway" "this" {
       dynamic "tag" {
         for_each = bgp_config.value.tag
         content {
+          # scope - (optional) is a type of string
           scope = tag.value["scope"]
-          tag   = tag.value["tag"]
+          # tag - (optional) is a type of string
+          tag = tag.value["tag"]
         }
       }
 
@@ -407,29 +434,38 @@ resource "nsxt_policy_tier0_gateway" "this" {
   dynamic "intersite_config" {
     for_each = var.intersite_config
     content {
+      # fallback_site_paths - (optional) is a type of set of string
       fallback_site_paths = intersite_config.value["fallback_site_paths"]
-      primary_site_path   = intersite_config.value["primary_site_path"]
-      transit_subnet      = intersite_config.value["transit_subnet"]
+      # primary_site_path - (optional) is a type of string
+      primary_site_path = intersite_config.value["primary_site_path"]
+      # transit_subnet - (optional) is a type of string
+      transit_subnet = intersite_config.value["transit_subnet"]
     }
   }
 
   dynamic "locale_service" {
     for_each = var.locale_service
     content {
-      edge_cluster_path    = locale_service.value["edge_cluster_path"]
+      # edge_cluster_path - (required) is a type of string
+      edge_cluster_path = locale_service.value["edge_cluster_path"]
+      # preferred_edge_paths - (optional) is a type of set of string
       preferred_edge_paths = locale_service.value["preferred_edge_paths"]
 
       dynamic "redistribution_config" {
         for_each = locale_service.value.redistribution_config
         content {
+          # enabled - (optional) is a type of bool
           enabled = redistribution_config.value["enabled"]
 
           dynamic "rule" {
             for_each = redistribution_config.value.rule
             content {
-              name           = rule.value["name"]
+              # name - (optional) is a type of string
+              name = rule.value["name"]
+              # route_map_path - (optional) is a type of string
               route_map_path = rule.value["route_map_path"]
-              types          = rule.value["types"]
+              # types - (optional) is a type of set of string
+              types = rule.value["types"]
             }
           }
 
@@ -442,14 +478,18 @@ resource "nsxt_policy_tier0_gateway" "this" {
   dynamic "redistribution_config" {
     for_each = var.redistribution_config
     content {
+      # enabled - (optional) is a type of bool
       enabled = redistribution_config.value["enabled"]
 
       dynamic "rule" {
         for_each = redistribution_config.value.rule
         content {
-          name           = rule.value["name"]
+          # name - (optional) is a type of string
+          name = rule.value["name"]
+          # route_map_path - (optional) is a type of string
           route_map_path = rule.value["route_map_path"]
-          types          = rule.value["types"]
+          # types - (optional) is a type of set of string
+          types = rule.value["types"]
         }
       }
 
@@ -459,24 +499,33 @@ resource "nsxt_policy_tier0_gateway" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 
   dynamic "vrf_config" {
     for_each = var.vrf_config
     content {
-      evpn_transit_vni    = vrf_config.value["evpn_transit_vni"]
-      gateway_path        = vrf_config.value["gateway_path"]
+      # evpn_transit_vni - (optional) is a type of number
+      evpn_transit_vni = vrf_config.value["evpn_transit_vni"]
+      # gateway_path - (required) is a type of string
+      gateway_path = vrf_config.value["gateway_path"]
+      # route_distinguisher - (optional) is a type of string
       route_distinguisher = vrf_config.value["route_distinguisher"]
 
       dynamic "route_target" {
         for_each = vrf_config.value.route_target
         content {
+          # address_family - (optional) is a type of string
           address_family = route_target.value["address_family"]
-          auto_mode      = route_target.value["auto_mode"]
+          # auto_mode - (optional) is a type of bool
+          auto_mode = route_target.value["auto_mode"]
+          # export_targets - (optional) is a type of list of string
           export_targets = route_target.value["export_targets"]
+          # import_targets - (optional) is a type of list of string
           import_targets = route_target.value["import_targets"]
         }
       }
@@ -484,8 +533,10 @@ resource "nsxt_policy_tier0_gateway" "this" {
       dynamic "tag" {
         for_each = vrf_config.value.tag
         content {
+          # scope - (optional) is a type of string
           scope = tag.value["scope"]
-          tag   = tag.value["tag"]
+          # tag - (optional) is a type of string
+          tag = tag.value["tag"]
         }
       }
 

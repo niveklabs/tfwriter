@@ -106,29 +106,40 @@ variable "error_pages" {
 
 ```terraform
 resource "avi_errorpageprofile" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "error_pages" {
     for_each = var.error_pages
     content {
-      enable              = error_pages.value["enable"]
+      # enable - (optional) is a type of bool
+      enable = error_pages.value["enable"]
+      # error_page_body_ref - (optional) is a type of string
       error_page_body_ref = error_pages.value["error_page_body_ref"]
-      error_redirect      = error_pages.value["error_redirect"]
-      index               = error_pages.value["index"]
+      # error_redirect - (optional) is a type of string
+      error_redirect = error_pages.value["error_redirect"]
+      # index - (optional) is a type of number
+      index = error_pages.value["index"]
 
       dynamic "match" {
         for_each = error_pages.value.match
         content {
+          # match_criteria - (required) is a type of string
           match_criteria = match.value["match_criteria"]
-          status_codes   = match.value["status_codes"]
+          # status_codes - (optional) is a type of list of number
+          status_codes = match.value["status_codes"]
 
           dynamic "ranges" {
             for_each = match.value.ranges
             content {
+              # begin - (required) is a type of number
               begin = ranges.value["begin"]
-              end   = ranges.value["end"]
+              # end - (required) is a type of number
+              end = ranges.value["end"]
             }
           }
 

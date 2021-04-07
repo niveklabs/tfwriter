@@ -102,16 +102,23 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_mac_management_switching_profile" "this" {
-  description        = var.description
-  display_name       = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # mac_change_allowed - (optional) is a type of bool
   mac_change_allowed = var.mac_change_allowed
 
   dynamic "mac_learning" {
     for_each = var.mac_learning
     content {
-      enabled                  = mac_learning.value["enabled"]
-      limit                    = mac_learning.value["limit"]
-      limit_policy             = mac_learning.value["limit_policy"]
+      # enabled - (optional) is a type of bool
+      enabled = mac_learning.value["enabled"]
+      # limit - (optional) is a type of number
+      limit = mac_learning.value["limit"]
+      # limit_policy - (optional) is a type of string
+      limit_policy = mac_learning.value["limit_policy"]
+      # unicast_flooding_allowed - (optional) is a type of bool
       unicast_flooding_allowed = mac_learning.value["unicast_flooding_allowed"]
     }
   }
@@ -119,8 +126,10 @@ resource "nsxt_mac_management_switching_profile" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -49,6 +49,7 @@ variable "to_session" {
 
 ```terraform
 resource "checkpoint_management_verify_revert" "this" {
+  # to_session - (required) is a type of string
   to_session = var.to_session
 }
 ```

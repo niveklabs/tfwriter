@@ -142,23 +142,36 @@ variable "roundrobin" {
 
 ```terraform
 data "constellix_txt_record" "this" {
-  domain_id   = var.domain_id
-  gtd_region  = var.gtd_region
-  name        = var.name
-  noanswer    = var.noanswer
-  note        = var.note
-  parent      = var.parent
-  parentid    = var.parentid
-  source      = var.source
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # name - (required) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # parent - (optional) is a type of string
+  parent = var.parent
+  # parentid - (optional) is a type of number
+  parentid = var.parentid
+  # source - (optional) is a type of string
+  source = var.source
+  # source_type - (required) is a type of string
   source_type = var.source_type
-  ttl         = var.ttl
-  type        = var.type
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "roundrobin" {
     for_each = var.roundrobin
     content {
+      # disable_flag - (optional) is a type of bool
       disable_flag = roundrobin.value["disable_flag"]
-      value        = roundrobin.value["value"]
+      # value - (required) is a type of string
+      value = roundrobin.value["value"]
     }
   }
 

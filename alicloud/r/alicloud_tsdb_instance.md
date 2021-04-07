@@ -134,21 +134,33 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_tsdb_instance" "this" {
-  app_key          = var.app_key
-  disk_category    = var.disk_category
-  duration         = var.duration
-  engine_type      = var.engine_type
-  instance_alias   = var.instance_alias
-  instance_class   = var.instance_class
+  # app_key - (optional) is a type of string
+  app_key = var.app_key
+  # disk_category - (optional) is a type of string
+  disk_category = var.disk_category
+  # duration - (optional) is a type of string
+  duration = var.duration
+  # engine_type - (optional) is a type of string
+  engine_type = var.engine_type
+  # instance_alias - (optional) is a type of string
+  instance_alias = var.instance_alias
+  # instance_class - (required) is a type of string
+  instance_class = var.instance_class
+  # instance_storage - (required) is a type of string
   instance_storage = var.instance_storage
-  payment_type     = var.payment_type
-  vswitch_id       = var.vswitch_id
-  zone_id          = var.zone_id
+  # payment_type - (required) is a type of string
+  payment_type = var.payment_type
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

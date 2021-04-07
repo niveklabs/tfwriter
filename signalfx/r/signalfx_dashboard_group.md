@@ -149,33 +149,47 @@ variable "import_qualifier" {
 
 ```terraform
 resource "signalfx_dashboard_group" "this" {
+  # authorized_writer_teams - (optional) is a type of set of string
   authorized_writer_teams = var.authorized_writer_teams
+  # authorized_writer_users - (optional) is a type of set of string
   authorized_writer_users = var.authorized_writer_users
-  description             = var.description
-  name                    = var.name
-  teams                   = var.teams
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # teams - (optional) is a type of list of string
+  teams = var.teams
 
   dynamic "dashboard" {
     for_each = var.dashboard
     content {
-      dashboard_id         = dashboard.value["dashboard_id"]
+      # dashboard_id - (required) is a type of string
+      dashboard_id = dashboard.value["dashboard_id"]
+      # description_override - (optional) is a type of string
       description_override = dashboard.value["description_override"]
-      name_override        = dashboard.value["name_override"]
+      # name_override - (optional) is a type of string
+      name_override = dashboard.value["name_override"]
 
       dynamic "filter_override" {
         for_each = dashboard.value.filter_override
         content {
-          negated  = filter_override.value["negated"]
+          # negated - (optional) is a type of bool
+          negated = filter_override.value["negated"]
+          # property - (required) is a type of string
           property = filter_override.value["property"]
-          values   = filter_override.value["values"]
+          # values - (required) is a type of set of string
+          values = filter_override.value["values"]
         }
       }
 
       dynamic "variable_override" {
         for_each = dashboard.value.variable_override
         content {
-          property         = variable_override.value["property"]
-          values           = variable_override.value["values"]
+          # property - (required) is a type of string
+          property = variable_override.value["property"]
+          # values - (optional) is a type of set of string
+          values = variable_override.value["values"]
+          # values_suggested - (optional) is a type of set of string
           values_suggested = variable_override.value["values_suggested"]
         }
       }
@@ -186,14 +200,18 @@ resource "signalfx_dashboard_group" "this" {
   dynamic "import_qualifier" {
     for_each = var.import_qualifier
     content {
+      # metric - (optional) is a type of string
       metric = import_qualifier.value["metric"]
 
       dynamic "filters" {
         for_each = import_qualifier.value.filters
         content {
-          negated  = filters.value["negated"]
+          # negated - (optional) is a type of bool
+          negated = filters.value["negated"]
+          # property - (required) is a type of string
           property = filters.value["property"]
-          values   = filters.value["values"]
+          # values - (required) is a type of set of string
+          values = filters.value["values"]
         }
       }
 

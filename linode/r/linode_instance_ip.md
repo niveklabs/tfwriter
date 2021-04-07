@@ -65,9 +65,12 @@ variable "rdns" {
 
 ```terraform
 resource "linode_instance_ip" "this" {
+  # linode_id - (required) is a type of number
   linode_id = var.linode_id
-  public    = var.public
-  rdns      = var.rdns
+  # public - (optional) is a type of bool
+  public = var.public
+  # rdns - (optional) is a type of string
+  rdns = var.rdns
 }
 ```
 

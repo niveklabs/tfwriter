@@ -76,15 +76,21 @@ variable "timeouts" {
 
 ```terraform
 resource "sumologic_content" "this" {
-  config    = var.config
+  # config - (required) is a type of string
+  config = var.config
+  # parent_id - (required) is a type of string
   parent_id = var.parent_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

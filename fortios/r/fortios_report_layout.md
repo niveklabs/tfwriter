@@ -319,62 +319,105 @@ variable "page" {
 
 ```terraform
 resource "fortios_report_layout" "this" {
-  cutoff_option         = var.cutoff_option
-  cutoff_time           = var.cutoff_time
-  day                   = var.day
-  description           = var.description
+  # cutoff_option - (optional) is a type of string
+  cutoff_option = var.cutoff_option
+  # cutoff_time - (optional) is a type of string
+  cutoff_time = var.cutoff_time
+  # day - (optional) is a type of string
+  day = var.day
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  email_recipients      = var.email_recipients
-  email_send            = var.email_send
-  format                = var.format
-  max_pdf_report        = var.max_pdf_report
-  name                  = var.name
-  options               = var.options
-  schedule_type         = var.schedule_type
-  style_theme           = var.style_theme
-  subtitle              = var.subtitle
-  time                  = var.time
-  title                 = var.title
+  # email_recipients - (optional) is a type of string
+  email_recipients = var.email_recipients
+  # email_send - (optional) is a type of string
+  email_send = var.email_send
+  # format - (optional) is a type of string
+  format = var.format
+  # max_pdf_report - (optional) is a type of number
+  max_pdf_report = var.max_pdf_report
+  # name - (optional) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # schedule_type - (optional) is a type of string
+  schedule_type = var.schedule_type
+  # style_theme - (required) is a type of string
+  style_theme = var.style_theme
+  # subtitle - (optional) is a type of string
+  subtitle = var.subtitle
+  # time - (optional) is a type of string
+  time = var.time
+  # title - (optional) is a type of string
+  title = var.title
 
   dynamic "body_item" {
     for_each = var.body_item
     content {
-      chart                = body_item.value["chart"]
-      chart_options        = body_item.value["chart_options"]
-      column               = body_item.value["column"]
-      content              = body_item.value["content"]
-      description          = body_item.value["description"]
-      drill_down_items     = body_item.value["drill_down_items"]
-      drill_down_types     = body_item.value["drill_down_types"]
-      hide                 = body_item.value["hide"]
-      id                   = body_item.value["id"]
-      img_src              = body_item.value["img_src"]
-      list_component       = body_item.value["list_component"]
-      misc_component       = body_item.value["misc_component"]
-      style                = body_item.value["style"]
-      table_caption_style  = body_item.value["table_caption_style"]
-      table_column_widths  = body_item.value["table_column_widths"]
+      # chart - (optional) is a type of string
+      chart = body_item.value["chart"]
+      # chart_options - (optional) is a type of string
+      chart_options = body_item.value["chart_options"]
+      # column - (optional) is a type of number
+      column = body_item.value["column"]
+      # content - (optional) is a type of string
+      content = body_item.value["content"]
+      # description - (optional) is a type of string
+      description = body_item.value["description"]
+      # drill_down_items - (optional) is a type of string
+      drill_down_items = body_item.value["drill_down_items"]
+      # drill_down_types - (optional) is a type of string
+      drill_down_types = body_item.value["drill_down_types"]
+      # hide - (optional) is a type of string
+      hide = body_item.value["hide"]
+      # id - (optional) is a type of number
+      id = body_item.value["id"]
+      # img_src - (optional) is a type of string
+      img_src = body_item.value["img_src"]
+      # list_component - (optional) is a type of string
+      list_component = body_item.value["list_component"]
+      # misc_component - (optional) is a type of string
+      misc_component = body_item.value["misc_component"]
+      # style - (optional) is a type of string
+      style = body_item.value["style"]
+      # table_caption_style - (optional) is a type of string
+      table_caption_style = body_item.value["table_caption_style"]
+      # table_column_widths - (optional) is a type of string
+      table_column_widths = body_item.value["table_column_widths"]
+      # table_even_row_style - (optional) is a type of string
       table_even_row_style = body_item.value["table_even_row_style"]
-      table_head_style     = body_item.value["table_head_style"]
-      table_odd_row_style  = body_item.value["table_odd_row_style"]
-      text_component       = body_item.value["text_component"]
-      title                = body_item.value["title"]
-      top_n                = body_item.value["top_n"]
-      type                 = body_item.value["type"]
+      # table_head_style - (optional) is a type of string
+      table_head_style = body_item.value["table_head_style"]
+      # table_odd_row_style - (optional) is a type of string
+      table_odd_row_style = body_item.value["table_odd_row_style"]
+      # text_component - (optional) is a type of string
+      text_component = body_item.value["text_component"]
+      # title - (optional) is a type of string
+      title = body_item.value["title"]
+      # top_n - (optional) is a type of number
+      top_n = body_item.value["top_n"]
+      # type - (optional) is a type of string
+      type = body_item.value["type"]
 
       dynamic "list" {
         for_each = body_item.value.list
         content {
+          # content - (optional) is a type of string
           content = list.value["content"]
-          id      = list.value["id"]
+          # id - (optional) is a type of number
+          id = list.value["id"]
         }
       }
 
       dynamic "parameters" {
         for_each = body_item.value.parameters
         content {
-          id    = parameters.value["id"]
-          name  = parameters.value["name"]
+          # id - (optional) is a type of number
+          id = parameters.value["id"]
+          # name - (optional) is a type of string
+          name = parameters.value["name"]
+          # value - (optional) is a type of string
           value = parameters.value["value"]
         }
       }
@@ -385,25 +428,36 @@ resource "fortios_report_layout" "this" {
   dynamic "page" {
     for_each = var.page
     content {
+      # column_break_before - (optional) is a type of string
       column_break_before = page.value["column_break_before"]
-      options             = page.value["options"]
-      page_break_before   = page.value["page_break_before"]
-      paper               = page.value["paper"]
+      # options - (optional) is a type of string
+      options = page.value["options"]
+      # page_break_before - (optional) is a type of string
+      page_break_before = page.value["page_break_before"]
+      # paper - (optional) is a type of string
+      paper = page.value["paper"]
 
       dynamic "footer" {
         for_each = page.value.footer
         content {
+          # style - (optional) is a type of string
           style = footer.value["style"]
 
           dynamic "footer_item" {
             for_each = footer.value.footer_item
             content {
-              content     = footer_item.value["content"]
+              # content - (optional) is a type of string
+              content = footer_item.value["content"]
+              # description - (optional) is a type of string
               description = footer_item.value["description"]
-              id          = footer_item.value["id"]
-              img_src     = footer_item.value["img_src"]
-              style       = footer_item.value["style"]
-              type        = footer_item.value["type"]
+              # id - (optional) is a type of number
+              id = footer_item.value["id"]
+              # img_src - (optional) is a type of string
+              img_src = footer_item.value["img_src"]
+              # style - (optional) is a type of string
+              style = footer_item.value["style"]
+              # type - (optional) is a type of string
+              type = footer_item.value["type"]
             }
           }
 
@@ -413,17 +467,24 @@ resource "fortios_report_layout" "this" {
       dynamic "header" {
         for_each = page.value.header
         content {
+          # style - (optional) is a type of string
           style = header.value["style"]
 
           dynamic "header_item" {
             for_each = header.value.header_item
             content {
-              content     = header_item.value["content"]
+              # content - (optional) is a type of string
+              content = header_item.value["content"]
+              # description - (optional) is a type of string
               description = header_item.value["description"]
-              id          = header_item.value["id"]
-              img_src     = header_item.value["img_src"]
-              style       = header_item.value["style"]
-              type        = header_item.value["type"]
+              # id - (optional) is a type of number
+              id = header_item.value["id"]
+              # img_src - (optional) is a type of string
+              img_src = header_item.value["img_src"]
+              # style - (optional) is a type of string
+              style = header_item.value["style"]
+              # type - (optional) is a type of string
+              type = header_item.value["type"]
             }
           }
 

@@ -94,13 +94,20 @@ variable "set_headers" {
 
 ```terraform
 resource "tencentcloud_gaap_domain_error_page" "this" {
-  body           = var.body
-  clear_headers  = var.clear_headers
-  domain         = var.domain
-  error_codes    = var.error_codes
-  listener_id    = var.listener_id
+  # body - (required) is a type of string
+  body = var.body
+  # clear_headers - (optional) is a type of set of string
+  clear_headers = var.clear_headers
+  # domain - (required) is a type of string
+  domain = var.domain
+  # error_codes - (required) is a type of set of number
+  error_codes = var.error_codes
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # new_error_code - (optional) is a type of number
   new_error_code = var.new_error_code
-  set_headers    = var.set_headers
+  # set_headers - (optional) is a type of map of string
+  set_headers = var.set_headers
 }
 ```
 

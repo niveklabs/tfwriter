@@ -192,24 +192,39 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_subnet_v2" "this" {
-  cidr            = var.cidr
-  description     = var.description
+  # cidr - (required) is a type of string
+  cidr = var.cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # dns_nameservers - (optional) is a type of list of string
   dns_nameservers = var.dns_nameservers
-  enable_dhcp     = var.enable_dhcp
-  gateway_ip      = var.gateway_ip
-  ip_version      = var.ip_version
-  name            = var.name
-  network_id      = var.network_id
-  no_gateway      = var.no_gateway
-  ntp_servers     = var.ntp_servers
-  region          = var.region
-  tags            = var.tags
-  tenant_id       = var.tenant_id
+  # enable_dhcp - (optional) is a type of bool
+  enable_dhcp = var.enable_dhcp
+  # gateway_ip - (optional) is a type of string
+  gateway_ip = var.gateway_ip
+  # ip_version - (optional) is a type of number
+  ip_version = var.ip_version
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # no_gateway - (optional) is a type of bool
+  no_gateway = var.no_gateway
+  # ntp_servers - (optional) is a type of list of string
+  ntp_servers = var.ntp_servers
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "allocation_pools" {
     for_each = var.allocation_pools
     content {
-      end   = allocation_pools.value["end"]
+      # end - (required) is a type of string
+      end = allocation_pools.value["end"]
+      # start - (required) is a type of string
       start = allocation_pools.value["start"]
     }
   }
@@ -217,15 +232,19 @@ resource "ecl_network_subnet_v2" "this" {
   dynamic "host_routes" {
     for_each = var.host_routes
     content {
+      # destination_cidr - (required) is a type of string
       destination_cidr = host_routes.value["destination_cidr"]
-      next_hop         = host_routes.value["next_hop"]
+      # next_hop - (required) is a type of string
+      next_hop = host_routes.value["next_hop"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

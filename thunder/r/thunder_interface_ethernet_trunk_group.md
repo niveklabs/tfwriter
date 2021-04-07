@@ -130,20 +130,31 @@ variable "udld_timeout_cfg" {
 
 ```terraform
 resource "thunder_interface_ethernet_trunk_group" "this" {
-  admin_key     = var.admin_key
-  ifnum         = var.ifnum
-  mode          = var.mode
+  # admin_key - (optional) is a type of number
+  admin_key = var.admin_key
+  # ifnum - (optional) is a type of number
+  ifnum = var.ifnum
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # port_priority - (optional) is a type of number
   port_priority = var.port_priority
-  timeout       = var.timeout
-  trunk_number  = var.trunk_number
-  type          = var.type
-  user_tag      = var.user_tag
-  uuid          = var.uuid
+  # timeout - (optional) is a type of string
+  timeout = var.timeout
+  # trunk_number - (optional) is a type of number
+  trunk_number = var.trunk_number
+  # type - (optional) is a type of string
+  type = var.type
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "udld_timeout_cfg" {
     for_each = var.udld_timeout_cfg
     content {
+      # fast - (optional) is a type of number
       fast = udld_timeout_cfg.value["fast"]
+      # slow - (optional) is a type of number
       slow = udld_timeout_cfg.value["slow"]
     }
   }

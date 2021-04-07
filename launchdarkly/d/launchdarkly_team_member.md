@@ -49,6 +49,7 @@ variable "email" {
 
 ```terraform
 data "launchdarkly_team_member" "this" {
+  # email - (required) is a type of string
   email = var.email
 }
 ```

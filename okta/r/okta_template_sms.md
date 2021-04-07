@@ -72,13 +72,17 @@ variable "translations" {
 
 ```terraform
 resource "okta_template_sms" "this" {
+  # template - (required) is a type of string
   template = var.template
-  type     = var.type
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "translations" {
     for_each = var.translations
     content {
+      # language - (required) is a type of string
       language = translations.value["language"]
+      # template - (required) is a type of string
       template = translations.value["template"]
     }
   }

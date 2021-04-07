@@ -56,7 +56,9 @@ variable "instance_count" {
 
 ```terraform
 resource "tencentcloud_reserved_instance" "this" {
-  config_id      = var.config_id
+  # config_id - (required) is a type of string
+  config_id = var.config_id
+  # instance_count - (required) is a type of number
   instance_count = var.instance_count
 }
 ```

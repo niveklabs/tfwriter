@@ -376,14 +376,19 @@ variable "users" {
 
 ```terraform
 resource "fortios_endpointcontrol_profile" "this" {
-  description               = var.description
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  profile_name              = var.profile_name
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # profile_name - (optional) is a type of string
+  profile_name = var.profile_name
+  # replacemsg_override_group - (optional) is a type of string
   replacemsg_override_group = var.replacemsg_override_group
 
   dynamic "device_groups" {
     for_each = var.device_groups
     content {
+      # name - (optional) is a type of string
       name = device_groups.value["name"]
     }
   }
@@ -391,23 +396,36 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "forticlient_android_settings" {
     for_each = var.forticlient_android_settings
     content {
-      disable_wf_when_protected       = forticlient_android_settings.value["disable_wf_when_protected"]
-      forticlient_advanced_vpn        = forticlient_android_settings.value["forticlient_advanced_vpn"]
+      # disable_wf_when_protected - (optional) is a type of string
+      disable_wf_when_protected = forticlient_android_settings.value["disable_wf_when_protected"]
+      # forticlient_advanced_vpn - (optional) is a type of string
+      forticlient_advanced_vpn = forticlient_android_settings.value["forticlient_advanced_vpn"]
+      # forticlient_advanced_vpn_buffer - (optional) is a type of string
       forticlient_advanced_vpn_buffer = forticlient_android_settings.value["forticlient_advanced_vpn_buffer"]
-      forticlient_vpn_provisioning    = forticlient_android_settings.value["forticlient_vpn_provisioning"]
-      forticlient_wf                  = forticlient_android_settings.value["forticlient_wf"]
-      forticlient_wf_profile          = forticlient_android_settings.value["forticlient_wf_profile"]
+      # forticlient_vpn_provisioning - (optional) is a type of string
+      forticlient_vpn_provisioning = forticlient_android_settings.value["forticlient_vpn_provisioning"]
+      # forticlient_wf - (optional) is a type of string
+      forticlient_wf = forticlient_android_settings.value["forticlient_wf"]
+      # forticlient_wf_profile - (optional) is a type of string
+      forticlient_wf_profile = forticlient_android_settings.value["forticlient_wf_profile"]
 
       dynamic "forticlient_vpn_settings" {
         for_each = forticlient_android_settings.value.forticlient_vpn_settings
         content {
-          auth_method                = forticlient_vpn_settings.value["auth_method"]
-          name                       = forticlient_vpn_settings.value["name"]
-          preshared_key              = forticlient_vpn_settings.value["preshared_key"]
-          remote_gw                  = forticlient_vpn_settings.value["remote_gw"]
-          sslvpn_access_port         = forticlient_vpn_settings.value["sslvpn_access_port"]
+          # auth_method - (optional) is a type of string
+          auth_method = forticlient_vpn_settings.value["auth_method"]
+          # name - (optional) is a type of string
+          name = forticlient_vpn_settings.value["name"]
+          # preshared_key - (optional) is a type of string
+          preshared_key = forticlient_vpn_settings.value["preshared_key"]
+          # remote_gw - (optional) is a type of string
+          remote_gw = forticlient_vpn_settings.value["remote_gw"]
+          # sslvpn_access_port - (optional) is a type of number
+          sslvpn_access_port = forticlient_vpn_settings.value["sslvpn_access_port"]
+          # sslvpn_require_certificate - (optional) is a type of string
           sslvpn_require_certificate = forticlient_vpn_settings.value["sslvpn_require_certificate"]
-          type                       = forticlient_vpn_settings.value["type"]
+          # type - (optional) is a type of string
+          type = forticlient_vpn_settings.value["type"]
         }
       }
 
@@ -417,26 +435,42 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "forticlient_ios_settings" {
     for_each = var.forticlient_ios_settings
     content {
-      client_vpn_provisioning          = forticlient_ios_settings.value["client_vpn_provisioning"]
-      configuration_content            = forticlient_ios_settings.value["configuration_content"]
-      configuration_name               = forticlient_ios_settings.value["configuration_name"]
-      disable_wf_when_protected        = forticlient_ios_settings.value["disable_wf_when_protected"]
+      # client_vpn_provisioning - (optional) is a type of string
+      client_vpn_provisioning = forticlient_ios_settings.value["client_vpn_provisioning"]
+      # configuration_content - (optional) is a type of string
+      configuration_content = forticlient_ios_settings.value["configuration_content"]
+      # configuration_name - (optional) is a type of string
+      configuration_name = forticlient_ios_settings.value["configuration_name"]
+      # disable_wf_when_protected - (optional) is a type of string
+      disable_wf_when_protected = forticlient_ios_settings.value["disable_wf_when_protected"]
+      # distribute_configuration_profile - (optional) is a type of string
       distribute_configuration_profile = forticlient_ios_settings.value["distribute_configuration_profile"]
-      forticlient_wf                   = forticlient_ios_settings.value["forticlient_wf"]
-      forticlient_wf_profile           = forticlient_ios_settings.value["forticlient_wf_profile"]
+      # forticlient_wf - (optional) is a type of string
+      forticlient_wf = forticlient_ios_settings.value["forticlient_wf"]
+      # forticlient_wf_profile - (optional) is a type of string
+      forticlient_wf_profile = forticlient_ios_settings.value["forticlient_wf_profile"]
 
       dynamic "client_vpn_settings" {
         for_each = forticlient_ios_settings.value.client_vpn_settings
         content {
-          auth_method                = client_vpn_settings.value["auth_method"]
-          name                       = client_vpn_settings.value["name"]
-          preshared_key              = client_vpn_settings.value["preshared_key"]
-          remote_gw                  = client_vpn_settings.value["remote_gw"]
-          sslvpn_access_port         = client_vpn_settings.value["sslvpn_access_port"]
+          # auth_method - (optional) is a type of string
+          auth_method = client_vpn_settings.value["auth_method"]
+          # name - (optional) is a type of string
+          name = client_vpn_settings.value["name"]
+          # preshared_key - (optional) is a type of string
+          preshared_key = client_vpn_settings.value["preshared_key"]
+          # remote_gw - (optional) is a type of string
+          remote_gw = client_vpn_settings.value["remote_gw"]
+          # sslvpn_access_port - (optional) is a type of number
+          sslvpn_access_port = client_vpn_settings.value["sslvpn_access_port"]
+          # sslvpn_require_certificate - (optional) is a type of string
           sslvpn_require_certificate = client_vpn_settings.value["sslvpn_require_certificate"]
-          type                       = client_vpn_settings.value["type"]
-          vpn_configuration_content  = client_vpn_settings.value["vpn_configuration_content"]
-          vpn_configuration_name     = client_vpn_settings.value["vpn_configuration_name"]
+          # type - (optional) is a type of string
+          type = client_vpn_settings.value["type"]
+          # vpn_configuration_content - (optional) is a type of string
+          vpn_configuration_content = client_vpn_settings.value["vpn_configuration_content"]
+          # vpn_configuration_name - (optional) is a type of string
+          vpn_configuration_name = client_vpn_settings.value["vpn_configuration_name"]
         }
       }
 
@@ -446,39 +480,69 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "forticlient_winmac_settings" {
     for_each = var.forticlient_winmac_settings
     content {
-      av_realtime_protection                         = forticlient_winmac_settings.value["av_realtime_protection"]
-      av_signature_up_to_date                        = forticlient_winmac_settings.value["av_signature_up_to_date"]
-      forticlient_application_firewall               = forticlient_winmac_settings.value["forticlient_application_firewall"]
-      forticlient_application_firewall_list          = forticlient_winmac_settings.value["forticlient_application_firewall_list"]
-      forticlient_av                                 = forticlient_winmac_settings.value["forticlient_av"]
-      forticlient_ems_compliance                     = forticlient_winmac_settings.value["forticlient_ems_compliance"]
-      forticlient_ems_compliance_action              = forticlient_winmac_settings.value["forticlient_ems_compliance_action"]
-      forticlient_linux_ver                          = forticlient_winmac_settings.value["forticlient_linux_ver"]
-      forticlient_log_upload                         = forticlient_winmac_settings.value["forticlient_log_upload"]
-      forticlient_log_upload_level                   = forticlient_winmac_settings.value["forticlient_log_upload_level"]
-      forticlient_log_upload_server                  = forticlient_winmac_settings.value["forticlient_log_upload_server"]
-      forticlient_mac_ver                            = forticlient_winmac_settings.value["forticlient_mac_ver"]
-      forticlient_minimum_software_version           = forticlient_winmac_settings.value["forticlient_minimum_software_version"]
-      forticlient_registration_compliance_action     = forticlient_winmac_settings.value["forticlient_registration_compliance_action"]
-      forticlient_security_posture                   = forticlient_winmac_settings.value["forticlient_security_posture"]
+      # av_realtime_protection - (optional) is a type of string
+      av_realtime_protection = forticlient_winmac_settings.value["av_realtime_protection"]
+      # av_signature_up_to_date - (optional) is a type of string
+      av_signature_up_to_date = forticlient_winmac_settings.value["av_signature_up_to_date"]
+      # forticlient_application_firewall - (optional) is a type of string
+      forticlient_application_firewall = forticlient_winmac_settings.value["forticlient_application_firewall"]
+      # forticlient_application_firewall_list - (optional) is a type of string
+      forticlient_application_firewall_list = forticlient_winmac_settings.value["forticlient_application_firewall_list"]
+      # forticlient_av - (optional) is a type of string
+      forticlient_av = forticlient_winmac_settings.value["forticlient_av"]
+      # forticlient_ems_compliance - (optional) is a type of string
+      forticlient_ems_compliance = forticlient_winmac_settings.value["forticlient_ems_compliance"]
+      # forticlient_ems_compliance_action - (optional) is a type of string
+      forticlient_ems_compliance_action = forticlient_winmac_settings.value["forticlient_ems_compliance_action"]
+      # forticlient_linux_ver - (optional) is a type of string
+      forticlient_linux_ver = forticlient_winmac_settings.value["forticlient_linux_ver"]
+      # forticlient_log_upload - (optional) is a type of string
+      forticlient_log_upload = forticlient_winmac_settings.value["forticlient_log_upload"]
+      # forticlient_log_upload_level - (optional) is a type of string
+      forticlient_log_upload_level = forticlient_winmac_settings.value["forticlient_log_upload_level"]
+      # forticlient_log_upload_server - (optional) is a type of string
+      forticlient_log_upload_server = forticlient_winmac_settings.value["forticlient_log_upload_server"]
+      # forticlient_mac_ver - (optional) is a type of string
+      forticlient_mac_ver = forticlient_winmac_settings.value["forticlient_mac_ver"]
+      # forticlient_minimum_software_version - (optional) is a type of string
+      forticlient_minimum_software_version = forticlient_winmac_settings.value["forticlient_minimum_software_version"]
+      # forticlient_registration_compliance_action - (optional) is a type of string
+      forticlient_registration_compliance_action = forticlient_winmac_settings.value["forticlient_registration_compliance_action"]
+      # forticlient_security_posture - (optional) is a type of string
+      forticlient_security_posture = forticlient_winmac_settings.value["forticlient_security_posture"]
+      # forticlient_security_posture_compliance_action - (optional) is a type of string
       forticlient_security_posture_compliance_action = forticlient_winmac_settings.value["forticlient_security_posture_compliance_action"]
-      forticlient_system_compliance                  = forticlient_winmac_settings.value["forticlient_system_compliance"]
-      forticlient_system_compliance_action           = forticlient_winmac_settings.value["forticlient_system_compliance_action"]
-      forticlient_vuln_scan                          = forticlient_winmac_settings.value["forticlient_vuln_scan"]
-      forticlient_vuln_scan_compliance_action        = forticlient_winmac_settings.value["forticlient_vuln_scan_compliance_action"]
-      forticlient_vuln_scan_enforce                  = forticlient_winmac_settings.value["forticlient_vuln_scan_enforce"]
-      forticlient_vuln_scan_enforce_grace            = forticlient_winmac_settings.value["forticlient_vuln_scan_enforce_grace"]
-      forticlient_vuln_scan_exempt                   = forticlient_winmac_settings.value["forticlient_vuln_scan_exempt"]
-      forticlient_wf                                 = forticlient_winmac_settings.value["forticlient_wf"]
-      forticlient_wf_profile                         = forticlient_winmac_settings.value["forticlient_wf_profile"]
-      forticlient_win_ver                            = forticlient_winmac_settings.value["forticlient_win_ver"]
-      os_av_software_installed                       = forticlient_winmac_settings.value["os_av_software_installed"]
-      sandbox_address                                = forticlient_winmac_settings.value["sandbox_address"]
-      sandbox_analysis                               = forticlient_winmac_settings.value["sandbox_analysis"]
+      # forticlient_system_compliance - (optional) is a type of string
+      forticlient_system_compliance = forticlient_winmac_settings.value["forticlient_system_compliance"]
+      # forticlient_system_compliance_action - (optional) is a type of string
+      forticlient_system_compliance_action = forticlient_winmac_settings.value["forticlient_system_compliance_action"]
+      # forticlient_vuln_scan - (optional) is a type of string
+      forticlient_vuln_scan = forticlient_winmac_settings.value["forticlient_vuln_scan"]
+      # forticlient_vuln_scan_compliance_action - (optional) is a type of string
+      forticlient_vuln_scan_compliance_action = forticlient_winmac_settings.value["forticlient_vuln_scan_compliance_action"]
+      # forticlient_vuln_scan_enforce - (optional) is a type of string
+      forticlient_vuln_scan_enforce = forticlient_winmac_settings.value["forticlient_vuln_scan_enforce"]
+      # forticlient_vuln_scan_enforce_grace - (optional) is a type of number
+      forticlient_vuln_scan_enforce_grace = forticlient_winmac_settings.value["forticlient_vuln_scan_enforce_grace"]
+      # forticlient_vuln_scan_exempt - (optional) is a type of string
+      forticlient_vuln_scan_exempt = forticlient_winmac_settings.value["forticlient_vuln_scan_exempt"]
+      # forticlient_wf - (optional) is a type of string
+      forticlient_wf = forticlient_winmac_settings.value["forticlient_wf"]
+      # forticlient_wf_profile - (optional) is a type of string
+      forticlient_wf_profile = forticlient_winmac_settings.value["forticlient_wf_profile"]
+      # forticlient_win_ver - (optional) is a type of string
+      forticlient_win_ver = forticlient_winmac_settings.value["forticlient_win_ver"]
+      # os_av_software_installed - (optional) is a type of string
+      os_av_software_installed = forticlient_winmac_settings.value["os_av_software_installed"]
+      # sandbox_address - (optional) is a type of string
+      sandbox_address = forticlient_winmac_settings.value["sandbox_address"]
+      # sandbox_analysis - (optional) is a type of string
+      sandbox_analysis = forticlient_winmac_settings.value["sandbox_analysis"]
 
       dynamic "forticlient_ems_entries" {
         for_each = forticlient_winmac_settings.value.forticlient_ems_entries
         content {
+          # name - (optional) is a type of string
           name = forticlient_ems_entries.value["name"]
         }
       }
@@ -486,8 +550,11 @@ resource "fortios_endpointcontrol_profile" "this" {
       dynamic "forticlient_operating_system" {
         for_each = forticlient_winmac_settings.value.forticlient_operating_system
         content {
-          id      = forticlient_operating_system.value["id"]
+          # id - (optional) is a type of number
+          id = forticlient_operating_system.value["id"]
+          # os_name - (optional) is a type of string
           os_name = forticlient_operating_system.value["os_name"]
+          # os_type - (optional) is a type of string
           os_type = forticlient_operating_system.value["os_type"]
         }
       }
@@ -495,15 +562,19 @@ resource "fortios_endpointcontrol_profile" "this" {
       dynamic "forticlient_own_file" {
         for_each = forticlient_winmac_settings.value.forticlient_own_file
         content {
+          # file - (optional) is a type of string
           file = forticlient_own_file.value["file"]
-          id   = forticlient_own_file.value["id"]
+          # id - (optional) is a type of number
+          id = forticlient_own_file.value["id"]
         }
       }
 
       dynamic "forticlient_registry_entry" {
         for_each = forticlient_winmac_settings.value.forticlient_registry_entry
         content {
-          id             = forticlient_registry_entry.value["id"]
+          # id - (optional) is a type of number
+          id = forticlient_registry_entry.value["id"]
+          # registry_entry - (optional) is a type of string
           registry_entry = forticlient_registry_entry.value["registry_entry"]
         }
       }
@@ -511,17 +582,28 @@ resource "fortios_endpointcontrol_profile" "this" {
       dynamic "forticlient_running_app" {
         for_each = forticlient_winmac_settings.value.forticlient_running_app
         content {
-          app_name               = forticlient_running_app.value["app_name"]
-          app_sha256_signature   = forticlient_running_app.value["app_sha256_signature"]
-          app_sha256_signature2  = forticlient_running_app.value["app_sha256_signature2"]
-          app_sha256_signature3  = forticlient_running_app.value["app_sha256_signature3"]
-          app_sha256_signature4  = forticlient_running_app.value["app_sha256_signature4"]
+          # app_name - (optional) is a type of string
+          app_name = forticlient_running_app.value["app_name"]
+          # app_sha256_signature - (optional) is a type of string
+          app_sha256_signature = forticlient_running_app.value["app_sha256_signature"]
+          # app_sha256_signature2 - (optional) is a type of string
+          app_sha256_signature2 = forticlient_running_app.value["app_sha256_signature2"]
+          # app_sha256_signature3 - (optional) is a type of string
+          app_sha256_signature3 = forticlient_running_app.value["app_sha256_signature3"]
+          # app_sha256_signature4 - (optional) is a type of string
+          app_sha256_signature4 = forticlient_running_app.value["app_sha256_signature4"]
+          # application_check_rule - (optional) is a type of string
           application_check_rule = forticlient_running_app.value["application_check_rule"]
-          id                     = forticlient_running_app.value["id"]
-          process_name           = forticlient_running_app.value["process_name"]
-          process_name2          = forticlient_running_app.value["process_name2"]
-          process_name3          = forticlient_running_app.value["process_name3"]
-          process_name4          = forticlient_running_app.value["process_name4"]
+          # id - (optional) is a type of number
+          id = forticlient_running_app.value["id"]
+          # process_name - (optional) is a type of string
+          process_name = forticlient_running_app.value["process_name"]
+          # process_name2 - (optional) is a type of string
+          process_name2 = forticlient_running_app.value["process_name2"]
+          # process_name3 - (optional) is a type of string
+          process_name3 = forticlient_running_app.value["process_name3"]
+          # process_name4 - (optional) is a type of string
+          process_name4 = forticlient_running_app.value["process_name4"]
         }
       }
 
@@ -531,6 +613,7 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "on_net_addr" {
     for_each = var.on_net_addr
     content {
+      # name - (optional) is a type of string
       name = on_net_addr.value["name"]
     }
   }
@@ -538,6 +621,7 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "src_addr" {
     for_each = var.src_addr
     content {
+      # name - (optional) is a type of string
       name = src_addr.value["name"]
     }
   }
@@ -545,6 +629,7 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "user_groups" {
     for_each = var.user_groups
     content {
+      # name - (optional) is a type of string
       name = user_groups.value["name"]
     }
   }
@@ -552,6 +637,7 @@ resource "fortios_endpointcontrol_profile" "this" {
   dynamic "users" {
     for_each = var.users
     content {
+      # name - (optional) is a type of string
       name = users.value["name"]
     }
   }

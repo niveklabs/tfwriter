@@ -105,25 +105,34 @@ variable "conditions" {
 
 ```terraform
 resource "onelogin_user_mappings" "this" {
-  enabled  = var.enabled
-  match    = var.match
-  name     = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # match - (required) is a type of string
+  match = var.match
+  # name - (required) is a type of string
+  name = var.name
+  # position - (required) is a type of number
   position = var.position
 
   dynamic "actions" {
     for_each = var.actions
     content {
+      # action - (required) is a type of string
       action = actions.value["action"]
-      value  = actions.value["value"]
+      # value - (required) is a type of list of string
+      value = actions.value["value"]
     }
   }
 
   dynamic "conditions" {
     for_each = var.conditions
     content {
+      # operator - (required) is a type of string
       operator = conditions.value["operator"]
-      source   = conditions.value["source"]
-      value    = conditions.value["value"]
+      # source - (required) is a type of string
+      source = conditions.value["source"]
+      # value - (required) is a type of string
+      value = conditions.value["value"]
     }
   }
 

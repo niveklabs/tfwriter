@@ -180,37 +180,58 @@ variable "node_info_list" {
 
 ```terraform
 resource "tencentcloud_elasticsearch_instance" "this" {
-  availability_zone   = var.availability_zone
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # basic_security_type - (optional) is a type of number
   basic_security_type = var.basic_security_type
-  charge_period       = var.charge_period
-  charge_type         = var.charge_type
-  deploy_mode         = var.deploy_mode
-  instance_name       = var.instance_name
-  license_type        = var.license_type
-  password            = var.password
-  renew_flag          = var.renew_flag
-  subnet_id           = var.subnet_id
-  tags                = var.tags
-  version             = var.version
-  vpc_id              = var.vpc_id
+  # charge_period - (optional) is a type of number
+  charge_period = var.charge_period
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # deploy_mode - (optional) is a type of number
+  deploy_mode = var.deploy_mode
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # password - (required) is a type of string
+  password = var.password
+  # renew_flag - (optional) is a type of string
+  renew_flag = var.renew_flag
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (required) is a type of string
+  version = var.version
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "multi_zone_infos" {
     for_each = var.multi_zone_infos
     content {
+      # availability_zone - (required) is a type of string
       availability_zone = multi_zone_infos.value["availability_zone"]
-      subnet_id         = multi_zone_infos.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = multi_zone_infos.value["subnet_id"]
     }
   }
 
   dynamic "node_info_list" {
     for_each = var.node_info_list
     content {
+      # disk_size - (optional) is a type of number
       disk_size = node_info_list.value["disk_size"]
+      # disk_type - (optional) is a type of string
       disk_type = node_info_list.value["disk_type"]
-      encrypt   = node_info_list.value["encrypt"]
-      node_num  = node_info_list.value["node_num"]
+      # encrypt - (optional) is a type of bool
+      encrypt = node_info_list.value["encrypt"]
+      # node_num - (required) is a type of number
+      node_num = node_info_list.value["node_num"]
+      # node_type - (required) is a type of string
       node_type = node_info_list.value["node_type"]
-      type      = node_info_list.value["type"]
+      # type - (optional) is a type of string
+      type = node_info_list.value["type"]
     }
   }
 

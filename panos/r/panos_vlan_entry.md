@@ -64,9 +64,12 @@ variable "vlan" {
 
 ```terraform
 resource "panos_vlan_entry" "this" {
-  interface     = var.interface
+  # interface - (required) is a type of string
+  interface = var.interface
+  # mac_addresses - (optional) is a type of set of string
   mac_addresses = var.mac_addresses
-  vlan          = var.vlan
+  # vlan - (required) is a type of string
+  vlan = var.vlan
 }
 ```
 

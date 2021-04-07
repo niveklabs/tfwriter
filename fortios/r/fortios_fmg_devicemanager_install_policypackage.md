@@ -65,9 +65,12 @@ variable "timeout" {
 
 ```terraform
 resource "fortios_fmg_devicemanager_install_policypackage" "this" {
-  adom         = var.adom
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # package_name - (required) is a type of string
   package_name = var.package_name
-  timeout      = var.timeout
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

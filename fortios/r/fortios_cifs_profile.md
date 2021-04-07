@@ -128,28 +128,39 @@ variable "server_keytab" {
 
 ```terraform
 resource "fortios_cifs_profile" "this" {
-  domain_controller      = var.domain_controller
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  name                   = var.name
+  # domain_controller - (optional) is a type of string
+  domain_controller = var.domain_controller
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # name - (optional) is a type of string
+  name = var.name
+  # server_credential_type - (optional) is a type of string
   server_credential_type = var.server_credential_type
 
   dynamic "file_filter" {
     for_each = var.file_filter
     content {
-      log    = file_filter.value["log"]
+      # log - (optional) is a type of string
+      log = file_filter.value["log"]
+      # status - (optional) is a type of string
       status = file_filter.value["status"]
 
       dynamic "entries" {
         for_each = file_filter.value.entries
         content {
-          action    = entries.value["action"]
-          comment   = entries.value["comment"]
+          # action - (optional) is a type of string
+          action = entries.value["action"]
+          # comment - (optional) is a type of string
+          comment = entries.value["comment"]
+          # direction - (optional) is a type of string
           direction = entries.value["direction"]
-          filter    = entries.value["filter"]
+          # filter - (optional) is a type of string
+          filter = entries.value["filter"]
 
           dynamic "file_type" {
             for_each = entries.value.file_type
             content {
+              # name - (optional) is a type of string
               name = file_type.value["name"]
             }
           }
@@ -163,7 +174,9 @@ resource "fortios_cifs_profile" "this" {
   dynamic "server_keytab" {
     for_each = var.server_keytab
     content {
-      keytab    = server_keytab.value["keytab"]
+      # keytab - (optional) is a type of string
+      keytab = server_keytab.value["keytab"]
+      # principal - (optional) is a type of string
       principal = server_keytab.value["principal"]
     }
   }

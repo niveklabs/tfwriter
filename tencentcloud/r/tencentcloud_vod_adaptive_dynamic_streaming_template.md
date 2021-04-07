@@ -143,39 +143,58 @@ variable "stream_info" {
 
 ```terraform
 resource "tencentcloud_vod_adaptive_dynamic_streaming_template" "this" {
-  comment                         = var.comment
-  disable_higher_video_bitrate    = var.disable_higher_video_bitrate
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # disable_higher_video_bitrate - (optional) is a type of bool
+  disable_higher_video_bitrate = var.disable_higher_video_bitrate
+  # disable_higher_video_resolution - (optional) is a type of bool
   disable_higher_video_resolution = var.disable_higher_video_resolution
-  drm_type                        = var.drm_type
-  format                          = var.format
-  name                            = var.name
-  sub_app_id                      = var.sub_app_id
+  # drm_type - (optional) is a type of string
+  drm_type = var.drm_type
+  # format - (required) is a type of string
+  format = var.format
+  # name - (required) is a type of string
+  name = var.name
+  # sub_app_id - (optional) is a type of number
+  sub_app_id = var.sub_app_id
 
   dynamic "stream_info" {
     for_each = var.stream_info
     content {
+      # remove_audio - (optional) is a type of bool
       remove_audio = stream_info.value["remove_audio"]
 
       dynamic "audio" {
         for_each = stream_info.value.audio
         content {
+          # audio_channel - (optional) is a type of string
           audio_channel = audio.value["audio_channel"]
-          bitrate       = audio.value["bitrate"]
-          codec         = audio.value["codec"]
-          sample_rate   = audio.value["sample_rate"]
+          # bitrate - (required) is a type of number
+          bitrate = audio.value["bitrate"]
+          # codec - (required) is a type of string
+          codec = audio.value["codec"]
+          # sample_rate - (required) is a type of number
+          sample_rate = audio.value["sample_rate"]
         }
       }
 
       dynamic "video" {
         for_each = stream_info.value.video
         content {
-          bitrate             = video.value["bitrate"]
-          codec               = video.value["codec"]
-          fill_type           = video.value["fill_type"]
-          fps                 = video.value["fps"]
-          height              = video.value["height"]
+          # bitrate - (required) is a type of number
+          bitrate = video.value["bitrate"]
+          # codec - (required) is a type of string
+          codec = video.value["codec"]
+          # fill_type - (optional) is a type of string
+          fill_type = video.value["fill_type"]
+          # fps - (required) is a type of number
+          fps = video.value["fps"]
+          # height - (optional) is a type of number
+          height = video.value["height"]
+          # resolution_adaptive - (optional) is a type of bool
           resolution_adaptive = video.value["resolution_adaptive"]
-          width               = video.value["width"]
+          # width - (optional) is a type of number
+          width = video.value["width"]
         }
       }
 

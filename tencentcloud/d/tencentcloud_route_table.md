@@ -57,7 +57,9 @@ variable "route_table_id" {
 
 ```terraform
 data "tencentcloud_route_table" "this" {
-  name           = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
 }
 ```

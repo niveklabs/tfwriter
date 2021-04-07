@@ -96,25 +96,34 @@ variable "dscp_range" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_qosmap" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "dscp_except" {
     for_each = var.dscp_except
     content {
-      dscp  = dscp_except.value["dscp"]
+      # dscp - (optional) is a type of number
+      dscp = dscp_except.value["dscp"]
+      # index - (optional) is a type of number
       index = dscp_except.value["index"]
-      up    = dscp_except.value["up"]
+      # up - (optional) is a type of number
+      up = dscp_except.value["up"]
     }
   }
 
   dynamic "dscp_range" {
     for_each = var.dscp_range
     content {
-      high  = dscp_range.value["high"]
+      # high - (optional) is a type of number
+      high = dscp_range.value["high"]
+      # index - (optional) is a type of number
       index = dscp_range.value["index"]
-      low   = dscp_range.value["low"]
-      up    = dscp_range.value["up"]
+      # low - (optional) is a type of number
+      low = dscp_range.value["low"]
+      # up - (optional) is a type of number
+      up = dscp_range.value["up"]
     }
   }
 

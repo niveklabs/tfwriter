@@ -334,48 +334,86 @@ variable "free_style" {
 
 ```terraform
 resource "fortios_logdisk_filter" "this" {
-  admin                 = var.admin
-  anomaly               = var.anomaly
-  auth                  = var.auth
-  cpu_memory_usage      = var.cpu_memory_usage
-  dhcp                  = var.dhcp
-  dlp_archive           = var.dlp_archive
-  dns                   = var.dns
+  # admin - (optional) is a type of string
+  admin = var.admin
+  # anomaly - (optional) is a type of string
+  anomaly = var.anomaly
+  # auth - (optional) is a type of string
+  auth = var.auth
+  # cpu_memory_usage - (optional) is a type of string
+  cpu_memory_usage = var.cpu_memory_usage
+  # dhcp - (optional) is a type of string
+  dhcp = var.dhcp
+  # dlp_archive - (optional) is a type of string
+  dlp_archive = var.dlp_archive
+  # dns - (optional) is a type of string
+  dns = var.dns
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  event                 = var.event
-  filter                = var.filter
-  filter_type           = var.filter_type
-  forward_traffic       = var.forward_traffic
-  gtp                   = var.gtp
-  ha                    = var.ha
-  ipsec                 = var.ipsec
-  ldb_monitor           = var.ldb_monitor
-  local_traffic         = var.local_traffic
-  multicast_traffic     = var.multicast_traffic
-  netscan_discovery     = var.netscan_discovery
+  # event - (optional) is a type of string
+  event = var.event
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # filter_type - (optional) is a type of string
+  filter_type = var.filter_type
+  # forward_traffic - (optional) is a type of string
+  forward_traffic = var.forward_traffic
+  # gtp - (optional) is a type of string
+  gtp = var.gtp
+  # ha - (optional) is a type of string
+  ha = var.ha
+  # ipsec - (optional) is a type of string
+  ipsec = var.ipsec
+  # ldb_monitor - (optional) is a type of string
+  ldb_monitor = var.ldb_monitor
+  # local_traffic - (optional) is a type of string
+  local_traffic = var.local_traffic
+  # multicast_traffic - (optional) is a type of string
+  multicast_traffic = var.multicast_traffic
+  # netscan_discovery - (optional) is a type of string
+  netscan_discovery = var.netscan_discovery
+  # netscan_vulnerability - (optional) is a type of string
   netscan_vulnerability = var.netscan_vulnerability
-  pattern               = var.pattern
-  ppp                   = var.ppp
-  radius                = var.radius
-  severity              = var.severity
-  sniffer_traffic       = var.sniffer_traffic
-  ssh                   = var.ssh
-  sslvpn_log_adm        = var.sslvpn_log_adm
-  sslvpn_log_auth       = var.sslvpn_log_auth
-  sslvpn_log_session    = var.sslvpn_log_session
-  system                = var.system
-  vip_ssl               = var.vip_ssl
-  voip                  = var.voip
-  wan_opt               = var.wan_opt
-  wireless_activity     = var.wireless_activity
+  # pattern - (optional) is a type of string
+  pattern = var.pattern
+  # ppp - (optional) is a type of string
+  ppp = var.ppp
+  # radius - (optional) is a type of string
+  radius = var.radius
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # sniffer_traffic - (optional) is a type of string
+  sniffer_traffic = var.sniffer_traffic
+  # ssh - (optional) is a type of string
+  ssh = var.ssh
+  # sslvpn_log_adm - (optional) is a type of string
+  sslvpn_log_adm = var.sslvpn_log_adm
+  # sslvpn_log_auth - (optional) is a type of string
+  sslvpn_log_auth = var.sslvpn_log_auth
+  # sslvpn_log_session - (optional) is a type of string
+  sslvpn_log_session = var.sslvpn_log_session
+  # system - (optional) is a type of string
+  system = var.system
+  # vip_ssl - (optional) is a type of string
+  vip_ssl = var.vip_ssl
+  # voip - (optional) is a type of string
+  voip = var.voip
+  # wan_opt - (optional) is a type of string
+  wan_opt = var.wan_opt
+  # wireless_activity - (optional) is a type of string
+  wireless_activity = var.wireless_activity
 
   dynamic "free_style" {
     for_each = var.free_style
     content {
-      category    = free_style.value["category"]
-      filter      = free_style.value["filter"]
+      # category - (optional) is a type of string
+      category = free_style.value["category"]
+      # filter - (optional) is a type of string
+      filter = free_style.value["filter"]
+      # filter_type - (optional) is a type of string
       filter_type = free_style.value["filter_type"]
-      id          = free_style.value["id"]
+      # id - (optional) is a type of number
+      id = free_style.value["id"]
     }
   }
 

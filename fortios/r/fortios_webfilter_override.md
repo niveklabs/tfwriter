@@ -126,17 +126,28 @@ variable "user_group" {
 
 ```terraform
 resource "fortios_webfilter_override" "this" {
-  expires     = var.expires
-  fosid       = var.fosid
-  initiator   = var.initiator
-  ip          = var.ip
-  ip6         = var.ip6
+  # expires - (required) is a type of string
+  expires = var.expires
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # initiator - (optional) is a type of string
+  initiator = var.initiator
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ip6 - (optional) is a type of string
+  ip6 = var.ip6
+  # new_profile - (required) is a type of string
   new_profile = var.new_profile
+  # old_profile - (required) is a type of string
   old_profile = var.old_profile
-  scope       = var.scope
-  status      = var.status
-  user        = var.user
-  user_group  = var.user_group
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # status - (optional) is a type of string
+  status = var.status
+  # user - (required) is a type of string
+  user = var.user
+  # user_group - (optional) is a type of string
+  user_group = var.user_group
 }
 ```
 

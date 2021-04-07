@@ -215,28 +215,50 @@ variable "timeout" {
 
 ```terraform
 resource "dme_failover" "this" {
-  auto_failover      = var.auto_failover
-  contact_list       = var.contact_list
-  dns_fqdn           = var.dns_fqdn
-  dns_timeout        = var.dns_timeout
-  failover           = var.failover
-  http_file          = var.http_file
-  http_fqdn          = var.http_fqdn
-  http_query_string  = var.http_query_string
-  ip1                = var.ip1
-  ip2                = var.ip2
-  ip3                = var.ip3
-  ip4                = var.ip4
-  ip5                = var.ip5
-  max_emails         = var.max_emails
-  monitor            = var.monitor
-  port               = var.port
-  protocol_id        = var.protocol_id
-  record_id          = var.record_id
-  send_string        = var.send_string
-  sensitivity        = var.sensitivity
+  # auto_failover - (optional) is a type of string
+  auto_failover = var.auto_failover
+  # contact_list - (optional) is a type of string
+  contact_list = var.contact_list
+  # dns_fqdn - (optional) is a type of string
+  dns_fqdn = var.dns_fqdn
+  # dns_timeout - (optional) is a type of string
+  dns_timeout = var.dns_timeout
+  # failover - (optional) is a type of string
+  failover = var.failover
+  # http_file - (optional) is a type of string
+  http_file = var.http_file
+  # http_fqdn - (optional) is a type of string
+  http_fqdn = var.http_fqdn
+  # http_query_string - (optional) is a type of string
+  http_query_string = var.http_query_string
+  # ip1 - (optional) is a type of string
+  ip1 = var.ip1
+  # ip2 - (optional) is a type of string
+  ip2 = var.ip2
+  # ip3 - (optional) is a type of string
+  ip3 = var.ip3
+  # ip4 - (optional) is a type of string
+  ip4 = var.ip4
+  # ip5 - (optional) is a type of string
+  ip5 = var.ip5
+  # max_emails - (optional) is a type of string
+  max_emails = var.max_emails
+  # monitor - (optional) is a type of string
+  monitor = var.monitor
+  # port - (required) is a type of string
+  port = var.port
+  # protocol_id - (optional) is a type of string
+  protocol_id = var.protocol_id
+  # record_id - (required) is a type of string
+  record_id = var.record_id
+  # send_string - (optional) is a type of string
+  send_string = var.send_string
+  # sensitivity - (required) is a type of string
+  sensitivity = var.sensitivity
+  # system_description - (optional) is a type of string
   system_description = var.system_description
-  timeout            = var.timeout
+  # timeout - (optional) is a type of string
+  timeout = var.timeout
 }
 ```
 

@@ -57,7 +57,9 @@ variable "storage_bundle_name" {
 
 ```terraform
 resource "alicloud_cloud_storage_gateway_storage_bundle" "this" {
-  description         = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # storage_bundle_name - (required) is a type of string
   storage_bundle_name = var.storage_bundle_name
 }
 ```

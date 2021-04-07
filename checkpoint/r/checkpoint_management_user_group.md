@@ -105,14 +105,22 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_user_group" "this" {
-  color           = var.color
-  comments        = var.comments
-  email           = var.email
-  ignore_errors   = var.ignore_errors
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # email - (optional) is a type of string
+  email = var.email
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  members         = var.members
-  name            = var.name
-  tags            = var.tags
+  # members - (optional) is a type of set of string
+  members = var.members
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

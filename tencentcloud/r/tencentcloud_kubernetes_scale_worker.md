@@ -178,55 +178,91 @@ variable "worker_config" {
 
 ```terraform
 resource "tencentcloud_kubernetes_scale_worker" "this" {
-  cluster_id        = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # docker_graph_path - (optional) is a type of string
   docker_graph_path = var.docker_graph_path
-  extra_args        = var.extra_args
-  labels            = var.labels
-  mount_target      = var.mount_target
-  unschedulable     = var.unschedulable
+  # extra_args - (optional) is a type of list of string
+  extra_args = var.extra_args
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # mount_target - (optional) is a type of string
+  mount_target = var.mount_target
+  # unschedulable - (optional) is a type of number
+  unschedulable = var.unschedulable
 
   dynamic "data_disk" {
     for_each = var.data_disk
     content {
+      # auto_format_and_mount - (optional) is a type of bool
       auto_format_and_mount = data_disk.value["auto_format_and_mount"]
-      disk_size             = data_disk.value["disk_size"]
-      disk_type             = data_disk.value["disk_type"]
-      file_system           = data_disk.value["file_system"]
-      mount_target          = data_disk.value["mount_target"]
+      # disk_size - (optional) is a type of number
+      disk_size = data_disk.value["disk_size"]
+      # disk_type - (optional) is a type of string
+      disk_type = data_disk.value["disk_type"]
+      # file_system - (optional) is a type of string
+      file_system = data_disk.value["file_system"]
+      # mount_target - (optional) is a type of string
+      mount_target = data_disk.value["mount_target"]
     }
   }
 
   dynamic "worker_config" {
     for_each = var.worker_config
     content {
-      availability_zone                       = worker_config.value["availability_zone"]
-      cam_role_name                           = worker_config.value["cam_role_name"]
-      count                                   = worker_config.value["count"]
-      disaster_recover_group_ids              = worker_config.value["disaster_recover_group_ids"]
-      enhanced_monitor_service                = worker_config.value["enhanced_monitor_service"]
-      enhanced_security_service               = worker_config.value["enhanced_security_service"]
-      hostname                                = worker_config.value["hostname"]
-      instance_charge_type                    = worker_config.value["instance_charge_type"]
-      instance_charge_type_prepaid_period     = worker_config.value["instance_charge_type_prepaid_period"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = worker_config.value["availability_zone"]
+      # cam_role_name - (optional) is a type of string
+      cam_role_name = worker_config.value["cam_role_name"]
+      # count - (optional) is a type of number
+      count = worker_config.value["count"]
+      # disaster_recover_group_ids - (optional) is a type of list of string
+      disaster_recover_group_ids = worker_config.value["disaster_recover_group_ids"]
+      # enhanced_monitor_service - (optional) is a type of bool
+      enhanced_monitor_service = worker_config.value["enhanced_monitor_service"]
+      # enhanced_security_service - (optional) is a type of bool
+      enhanced_security_service = worker_config.value["enhanced_security_service"]
+      # hostname - (optional) is a type of string
+      hostname = worker_config.value["hostname"]
+      # instance_charge_type - (optional) is a type of string
+      instance_charge_type = worker_config.value["instance_charge_type"]
+      # instance_charge_type_prepaid_period - (optional) is a type of number
+      instance_charge_type_prepaid_period = worker_config.value["instance_charge_type_prepaid_period"]
+      # instance_charge_type_prepaid_renew_flag - (optional) is a type of string
       instance_charge_type_prepaid_renew_flag = worker_config.value["instance_charge_type_prepaid_renew_flag"]
-      instance_name                           = worker_config.value["instance_name"]
-      instance_type                           = worker_config.value["instance_type"]
-      internet_charge_type                    = worker_config.value["internet_charge_type"]
-      internet_max_bandwidth_out              = worker_config.value["internet_max_bandwidth_out"]
-      key_ids                                 = worker_config.value["key_ids"]
-      password                                = worker_config.value["password"]
-      public_ip_assigned                      = worker_config.value["public_ip_assigned"]
-      security_group_ids                      = worker_config.value["security_group_ids"]
-      subnet_id                               = worker_config.value["subnet_id"]
-      system_disk_size                        = worker_config.value["system_disk_size"]
-      system_disk_type                        = worker_config.value["system_disk_type"]
-      user_data                               = worker_config.value["user_data"]
+      # instance_name - (optional) is a type of string
+      instance_name = worker_config.value["instance_name"]
+      # instance_type - (required) is a type of string
+      instance_type = worker_config.value["instance_type"]
+      # internet_charge_type - (optional) is a type of string
+      internet_charge_type = worker_config.value["internet_charge_type"]
+      # internet_max_bandwidth_out - (optional) is a type of number
+      internet_max_bandwidth_out = worker_config.value["internet_max_bandwidth_out"]
+      # key_ids - (optional) is a type of list of string
+      key_ids = worker_config.value["key_ids"]
+      # password - (optional) is a type of string
+      password = worker_config.value["password"]
+      # public_ip_assigned - (optional) is a type of bool
+      public_ip_assigned = worker_config.value["public_ip_assigned"]
+      # security_group_ids - (optional) is a type of list of string
+      security_group_ids = worker_config.value["security_group_ids"]
+      # subnet_id - (required) is a type of string
+      subnet_id = worker_config.value["subnet_id"]
+      # system_disk_size - (optional) is a type of number
+      system_disk_size = worker_config.value["system_disk_size"]
+      # system_disk_type - (optional) is a type of string
+      system_disk_type = worker_config.value["system_disk_type"]
+      # user_data - (optional) is a type of string
+      user_data = worker_config.value["user_data"]
 
       dynamic "data_disk" {
         for_each = worker_config.value.data_disk
         content {
-          disk_size   = data_disk.value["disk_size"]
-          disk_type   = data_disk.value["disk_type"]
+          # disk_size - (optional) is a type of number
+          disk_size = data_disk.value["disk_size"]
+          # disk_type - (optional) is a type of string
+          disk_type = data_disk.value["disk_type"]
+          # snapshot_id - (optional) is a type of string
           snapshot_id = data_disk.value["snapshot_id"]
         }
       }

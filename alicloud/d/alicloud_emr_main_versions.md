@@ -66,9 +66,12 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_emr_main_versions" "this" {
+  # cluster_type - (optional) is a type of list of string
   cluster_type = var.cluster_type
-  emr_version  = var.emr_version
-  output_file  = var.output_file
+  # emr_version - (optional) is a type of string
+  emr_version = var.emr_version
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

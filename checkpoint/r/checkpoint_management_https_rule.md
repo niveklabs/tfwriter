@@ -199,26 +199,46 @@ variable "track" {
 
 ```terraform
 resource "checkpoint_management_https_rule" "this" {
-  action               = var.action
-  blade                = var.blade
-  certificate          = var.certificate
-  comments             = var.comments
-  destination          = var.destination
-  destination_negate   = var.destination_negate
-  enabled              = var.enabled
-  ignore_errors        = var.ignore_errors
-  ignore_warnings      = var.ignore_warnings
-  install_on           = var.install_on
-  layer                = var.layer
-  name                 = var.name
-  position             = var.position
-  service              = var.service
-  service_negate       = var.service_negate
-  site_category        = var.site_category
+  # action - (optional) is a type of string
+  action = var.action
+  # blade - (optional) is a type of set of string
+  blade = var.blade
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # destination - (optional) is a type of set of string
+  destination = var.destination
+  # destination_negate - (optional) is a type of bool
+  destination_negate = var.destination_negate
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # install_on - (optional) is a type of set of string
+  install_on = var.install_on
+  # layer - (required) is a type of string
+  layer = var.layer
+  # name - (optional) is a type of string
+  name = var.name
+  # position - (required) is a type of map of string
+  position = var.position
+  # service - (optional) is a type of set of string
+  service = var.service
+  # service_negate - (optional) is a type of bool
+  service_negate = var.service_negate
+  # site_category - (optional) is a type of set of string
+  site_category = var.site_category
+  # site_category_negate - (optional) is a type of bool
   site_category_negate = var.site_category_negate
-  source               = var.source
-  source_negate        = var.source_negate
-  track                = var.track
+  # source - (optional) is a type of set of string
+  source = var.source
+  # source_negate - (optional) is a type of bool
+  source_negate = var.source_negate
+  # track - (optional) is a type of string
+  track = var.track
 }
 ```
 

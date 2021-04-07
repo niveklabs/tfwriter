@@ -126,28 +126,40 @@ variable "service_description" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_h2qposuprovider" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  icon                  = var.icon
-  name                  = var.name
-  osu_method            = var.osu_method
-  osu_nai               = var.osu_nai
-  server_uri            = var.server_uri
+  # icon - (optional) is a type of string
+  icon = var.icon
+  # name - (optional) is a type of string
+  name = var.name
+  # osu_method - (optional) is a type of string
+  osu_method = var.osu_method
+  # osu_nai - (optional) is a type of string
+  osu_nai = var.osu_nai
+  # server_uri - (optional) is a type of string
+  server_uri = var.server_uri
 
   dynamic "friendly_name" {
     for_each = var.friendly_name
     content {
+      # friendly_name - (optional) is a type of string
       friendly_name = friendly_name.value["friendly_name"]
-      index         = friendly_name.value["index"]
-      lang          = friendly_name.value["lang"]
+      # index - (optional) is a type of number
+      index = friendly_name.value["index"]
+      # lang - (optional) is a type of string
+      lang = friendly_name.value["lang"]
     }
   }
 
   dynamic "service_description" {
     for_each = var.service_description
     content {
-      lang                = service_description.value["lang"]
+      # lang - (optional) is a type of string
+      lang = service_description.value["lang"]
+      # service_description - (optional) is a type of string
       service_description = service_description.value["service_description"]
-      service_id          = service_description.value["service_id"]
+      # service_id - (optional) is a type of number
+      service_id = service_description.value["service_id"]
     }
   }
 

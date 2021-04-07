@@ -172,28 +172,47 @@ variable "resource_instance" {
 
 ```terraform
 resource "akamai_gtm_resource" "this" {
-  aggregation_type               = var.aggregation_type
-  constrained_property           = var.constrained_property
-  decay_rate                     = var.decay_rate
-  description                    = var.description
-  domain                         = var.domain
-  host_header                    = var.host_header
-  leader_string                  = var.leader_string
-  least_squares_decay            = var.least_squares_decay
-  load_imbalance_percentage      = var.load_imbalance_percentage
+  # aggregation_type - (required) is a type of string
+  aggregation_type = var.aggregation_type
+  # constrained_property - (optional) is a type of string
+  constrained_property = var.constrained_property
+  # decay_rate - (optional) is a type of number
+  decay_rate = var.decay_rate
+  # description - (optional) is a type of string
+  description = var.description
+  # domain - (required) is a type of string
+  domain = var.domain
+  # host_header - (optional) is a type of string
+  host_header = var.host_header
+  # leader_string - (optional) is a type of string
+  leader_string = var.leader_string
+  # least_squares_decay - (optional) is a type of number
+  least_squares_decay = var.least_squares_decay
+  # load_imbalance_percentage - (optional) is a type of number
+  load_imbalance_percentage = var.load_imbalance_percentage
+  # max_u_multiplicative_increment - (optional) is a type of number
   max_u_multiplicative_increment = var.max_u_multiplicative_increment
-  name                           = var.name
-  type                           = var.type
-  upper_bound                    = var.upper_bound
-  wait_on_complete               = var.wait_on_complete
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
+  # upper_bound - (optional) is a type of number
+  upper_bound = var.upper_bound
+  # wait_on_complete - (optional) is a type of bool
+  wait_on_complete = var.wait_on_complete
 
   dynamic "resource_instance" {
     for_each = var.resource_instance
     content {
-      datacenter_id           = resource_instance.value["datacenter_id"]
-      load_object             = resource_instance.value["load_object"]
-      load_object_port        = resource_instance.value["load_object_port"]
-      load_servers            = resource_instance.value["load_servers"]
+      # datacenter_id - (required) is a type of number
+      datacenter_id = resource_instance.value["datacenter_id"]
+      # load_object - (optional) is a type of string
+      load_object = resource_instance.value["load_object"]
+      # load_object_port - (optional) is a type of number
+      load_object_port = resource_instance.value["load_object_port"]
+      # load_servers - (optional) is a type of list of string
+      load_servers = resource_instance.value["load_servers"]
+      # use_default_load_object - (optional) is a type of bool
       use_default_load_object = resource_instance.value["use_default_load_object"]
     }
   }

@@ -169,23 +169,37 @@ variable "shared_secrets" {
 
 ```terraform
 resource "checkpoint_management_vpn_community_meshed" "this" {
-  color             = var.color
-  comments          = var.comments
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # encryption_method - (optional) is a type of string
   encryption_method = var.encryption_method
-  encryption_suite  = var.encryption_suite
-  gateways          = var.gateways
-  ignore_errors     = var.ignore_errors
-  ignore_warnings   = var.ignore_warnings
-  ike_phase_1       = var.ike_phase_1
-  ike_phase_2       = var.ike_phase_2
-  name              = var.name
-  tags              = var.tags
+  # encryption_suite - (optional) is a type of string
+  encryption_suite = var.encryption_suite
+  # gateways - (optional) is a type of set of string
+  gateways = var.gateways
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ike_phase_1 - (optional) is a type of map of string
+  ike_phase_1 = var.ike_phase_1
+  # ike_phase_2 - (optional) is a type of map of string
+  ike_phase_2 = var.ike_phase_2
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # use_shared_secret - (optional) is a type of bool
   use_shared_secret = var.use_shared_secret
 
   dynamic "override_vpn_domains" {
     for_each = var.override_vpn_domains
     content {
-      gateway    = override_vpn_domains.value["gateway"]
+      # gateway - (optional) is a type of string
+      gateway = override_vpn_domains.value["gateway"]
+      # vpn_domain - (optional) is a type of string
       vpn_domain = override_vpn_domains.value["vpn_domain"]
     }
   }
@@ -193,8 +207,10 @@ resource "checkpoint_management_vpn_community_meshed" "this" {
   dynamic "shared_secrets" {
     for_each = var.shared_secrets
     content {
+      # external_gateway - (optional) is a type of string
       external_gateway = shared_secrets.value["external_gateway"]
-      shared_secret    = shared_secrets.value["shared_secret"]
+      # shared_secret - (optional) is a type of string
+      shared_secret = shared_secrets.value["shared_secret"]
     }
   }
 

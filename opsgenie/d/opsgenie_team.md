@@ -73,13 +73,17 @@ variable "member" {
 
 ```terraform
 data "opsgenie_team" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
-      id   = member.value["id"]
+      # id - (optional) is a type of string
+      id = member.value["id"]
+      # role - (optional) is a type of string
       role = member.value["role"]
     }
   }

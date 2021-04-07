@@ -98,13 +98,20 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_fm" "this" {
-  auto_backup              = var.auto_backup
-  fosid                    = var.fosid
-  ip                       = var.ip
-  ipsec                    = var.ipsec
+  # auto_backup - (optional) is a type of string
+  auto_backup = var.auto_backup
+  # fosid - (optional) is a type of string
+  fosid = var.fosid
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ipsec - (optional) is a type of string
+  ipsec = var.ipsec
+  # scheduled_config_restore - (optional) is a type of string
   scheduled_config_restore = var.scheduled_config_restore
-  status                   = var.status
-  vdom                     = var.vdom
+  # status - (optional) is a type of string
+  status = var.status
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 }
 ```
 

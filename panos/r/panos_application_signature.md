@@ -160,12 +160,18 @@ variable "and_condition" {
 
 ```terraform
 resource "panos_application_signature" "this" {
+  # application_object - (required) is a type of string
   application_object = var.application_object
-  comment            = var.comment
-  name               = var.name
-  ordered_match      = var.ordered_match
-  scope              = var.scope
-  vsys               = var.vsys
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # name - (required) is a type of string
+  name = var.name
+  # ordered_match - (optional) is a type of bool
+  ordered_match = var.ordered_match
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "and_condition" {
     for_each = var.and_condition
@@ -178,36 +184,49 @@ resource "panos_application_signature" "this" {
           dynamic "equal_to" {
             for_each = or_condition.value.equal_to
             content {
-              context  = equal_to.value["context"]
-              mask     = equal_to.value["mask"]
+              # context - (required) is a type of string
+              context = equal_to.value["context"]
+              # mask - (optional) is a type of string
+              mask = equal_to.value["mask"]
+              # position - (optional) is a type of string
               position = equal_to.value["position"]
-              value    = equal_to.value["value"]
+              # value - (required) is a type of string
+              value = equal_to.value["value"]
             }
           }
 
           dynamic "greater_than" {
             for_each = or_condition.value.greater_than
             content {
-              context    = greater_than.value["context"]
+              # context - (required) is a type of string
+              context = greater_than.value["context"]
+              # qualifiers - (optional) is a type of map of string
               qualifiers = greater_than.value["qualifiers"]
-              value      = greater_than.value["value"]
+              # value - (required) is a type of string
+              value = greater_than.value["value"]
             }
           }
 
           dynamic "less_than" {
             for_each = or_condition.value.less_than
             content {
-              context    = less_than.value["context"]
+              # context - (required) is a type of string
+              context = less_than.value["context"]
+              # qualifiers - (optional) is a type of map of string
               qualifiers = less_than.value["qualifiers"]
-              value      = less_than.value["value"]
+              # value - (required) is a type of string
+              value = less_than.value["value"]
             }
           }
 
           dynamic "pattern_match" {
             for_each = or_condition.value.pattern_match
             content {
-              context    = pattern_match.value["context"]
-              pattern    = pattern_match.value["pattern"]
+              # context - (required) is a type of string
+              context = pattern_match.value["context"]
+              # pattern - (required) is a type of string
+              pattern = pattern_match.value["pattern"]
+              # qualifiers - (optional) is a type of map of string
               qualifiers = pattern_match.value["qualifiers"]
             }
           }

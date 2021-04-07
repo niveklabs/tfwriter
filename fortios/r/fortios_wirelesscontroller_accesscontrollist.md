@@ -122,35 +122,54 @@ variable "layer3_ipv6_rules" {
 
 ```terraform
 resource "fortios_wirelesscontroller_accesscontrollist" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "layer3_ipv4_rules" {
     for_each = var.layer3_ipv4_rules
     content {
-      action   = layer3_ipv4_rules.value["action"]
-      comment  = layer3_ipv4_rules.value["comment"]
-      dstaddr  = layer3_ipv4_rules.value["dstaddr"]
-      dstport  = layer3_ipv4_rules.value["dstport"]
+      # action - (optional) is a type of string
+      action = layer3_ipv4_rules.value["action"]
+      # comment - (optional) is a type of string
+      comment = layer3_ipv4_rules.value["comment"]
+      # dstaddr - (optional) is a type of string
+      dstaddr = layer3_ipv4_rules.value["dstaddr"]
+      # dstport - (optional) is a type of number
+      dstport = layer3_ipv4_rules.value["dstport"]
+      # protocol - (optional) is a type of number
       protocol = layer3_ipv4_rules.value["protocol"]
-      rule_id  = layer3_ipv4_rules.value["rule_id"]
-      srcaddr  = layer3_ipv4_rules.value["srcaddr"]
-      srcport  = layer3_ipv4_rules.value["srcport"]
+      # rule_id - (optional) is a type of number
+      rule_id = layer3_ipv4_rules.value["rule_id"]
+      # srcaddr - (optional) is a type of string
+      srcaddr = layer3_ipv4_rules.value["srcaddr"]
+      # srcport - (optional) is a type of number
+      srcport = layer3_ipv4_rules.value["srcport"]
     }
   }
 
   dynamic "layer3_ipv6_rules" {
     for_each = var.layer3_ipv6_rules
     content {
-      action   = layer3_ipv6_rules.value["action"]
-      comment  = layer3_ipv6_rules.value["comment"]
-      dstaddr  = layer3_ipv6_rules.value["dstaddr"]
-      dstport  = layer3_ipv6_rules.value["dstport"]
+      # action - (optional) is a type of string
+      action = layer3_ipv6_rules.value["action"]
+      # comment - (optional) is a type of string
+      comment = layer3_ipv6_rules.value["comment"]
+      # dstaddr - (optional) is a type of string
+      dstaddr = layer3_ipv6_rules.value["dstaddr"]
+      # dstport - (optional) is a type of number
+      dstport = layer3_ipv6_rules.value["dstport"]
+      # protocol - (optional) is a type of number
       protocol = layer3_ipv6_rules.value["protocol"]
-      rule_id  = layer3_ipv6_rules.value["rule_id"]
-      srcaddr  = layer3_ipv6_rules.value["srcaddr"]
-      srcport  = layer3_ipv6_rules.value["srcport"]
+      # rule_id - (optional) is a type of number
+      rule_id = layer3_ipv6_rules.value["rule_id"]
+      # srcaddr - (optional) is a type of string
+      srcaddr = layer3_ipv6_rules.value["srcaddr"]
+      # srcport - (optional) is a type of number
+      srcport = layer3_ipv6_rules.value["srcport"]
     }
   }
 

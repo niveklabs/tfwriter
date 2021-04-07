@@ -71,10 +71,14 @@ variable "visibility" {
 
 ```terraform
 resource "github_actions_organization_secret" "this" {
-  plaintext_value         = var.plaintext_value
-  secret_name             = var.secret_name
+  # plaintext_value - (required) is a type of string
+  plaintext_value = var.plaintext_value
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # selected_repository_ids - (optional) is a type of set of number
   selected_repository_ids = var.selected_repository_ids
-  visibility              = var.visibility
+  # visibility - (required) is a type of string
+  visibility = var.visibility
 }
 ```
 

@@ -338,38 +338,67 @@ variable "server_response_header" {
 
 ```terraform
 resource "thunder_slb_template_sip" "this" {
-  acl_id                          = var.acl_id
-  acl_name_value                  = var.acl_name_value
-  alg_dest_nat                    = var.alg_dest_nat
-  alg_source_nat                  = var.alg_source_nat
-  call_id_persist_disable         = var.call_id_persist_disable
-  client_keep_alive               = var.client_keep_alive
-  dialog_aware                    = var.dialog_aware
-  drop_when_client_fail           = var.drop_when_client_fail
-  drop_when_server_fail           = var.drop_when_server_fail
-  failed_client_selection         = var.failed_client_selection
+  # acl_id - (optional) is a type of number
+  acl_id = var.acl_id
+  # acl_name_value - (optional) is a type of string
+  acl_name_value = var.acl_name_value
+  # alg_dest_nat - (optional) is a type of number
+  alg_dest_nat = var.alg_dest_nat
+  # alg_source_nat - (optional) is a type of number
+  alg_source_nat = var.alg_source_nat
+  # call_id_persist_disable - (optional) is a type of number
+  call_id_persist_disable = var.call_id_persist_disable
+  # client_keep_alive - (optional) is a type of number
+  client_keep_alive = var.client_keep_alive
+  # dialog_aware - (optional) is a type of number
+  dialog_aware = var.dialog_aware
+  # drop_when_client_fail - (optional) is a type of number
+  drop_when_client_fail = var.drop_when_client_fail
+  # drop_when_server_fail - (optional) is a type of number
+  drop_when_server_fail = var.drop_when_server_fail
+  # failed_client_selection - (optional) is a type of number
+  failed_client_selection = var.failed_client_selection
+  # failed_client_selection_message - (optional) is a type of string
   failed_client_selection_message = var.failed_client_selection_message
-  failed_server_selection         = var.failed_server_selection
+  # failed_server_selection - (optional) is a type of number
+  failed_server_selection = var.failed_server_selection
+  # failed_server_selection_message - (optional) is a type of string
   failed_server_selection_message = var.failed_server_selection_message
-  insert_client_ip                = var.insert_client_ip
-  interval                        = var.interval
-  keep_server_ip_if_match_acl     = var.keep_server_ip_if_match_acl
-  name                            = var.name
-  pstn_gw                         = var.pstn_gw
-  server_keep_alive               = var.server_keep_alive
-  server_selection_per_request    = var.server_selection_per_request
-  service_group                   = var.service_group
-  smp_call_id_rtp_session         = var.smp_call_id_rtp_session
-  timeout                         = var.timeout
-  user_tag                        = var.user_tag
-  uuid                            = var.uuid
+  # insert_client_ip - (optional) is a type of number
+  insert_client_ip = var.insert_client_ip
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # keep_server_ip_if_match_acl - (optional) is a type of number
+  keep_server_ip_if_match_acl = var.keep_server_ip_if_match_acl
+  # name - (optional) is a type of string
+  name = var.name
+  # pstn_gw - (optional) is a type of string
+  pstn_gw = var.pstn_gw
+  # server_keep_alive - (optional) is a type of number
+  server_keep_alive = var.server_keep_alive
+  # server_selection_per_request - (optional) is a type of number
+  server_selection_per_request = var.server_selection_per_request
+  # service_group - (optional) is a type of string
+  service_group = var.service_group
+  # smp_call_id_rtp_session - (optional) is a type of number
+  smp_call_id_rtp_session = var.smp_call_id_rtp_session
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "client_request_header" {
     for_each = var.client_request_header
     content {
-      client_request_erase_all        = client_request_header.value["client_request_erase_all"]
-      client_request_header_erase     = client_request_header.value["client_request_header_erase"]
-      client_request_header_insert    = client_request_header.value["client_request_header_insert"]
+      # client_request_erase_all - (optional) is a type of number
+      client_request_erase_all = client_request_header.value["client_request_erase_all"]
+      # client_request_header_erase - (optional) is a type of string
+      client_request_header_erase = client_request_header.value["client_request_header_erase"]
+      # client_request_header_insert - (optional) is a type of string
+      client_request_header_insert = client_request_header.value["client_request_header_insert"]
+      # insert_condition_client_request - (optional) is a type of string
       insert_condition_client_request = client_request_header.value["insert_condition_client_request"]
     }
   }
@@ -377,9 +406,13 @@ resource "thunder_slb_template_sip" "this" {
   dynamic "client_response_header" {
     for_each = var.client_response_header
     content {
-      client_response_erase_all        = client_response_header.value["client_response_erase_all"]
-      client_response_header_erase     = client_response_header.value["client_response_header_erase"]
-      client_response_header_insert    = client_response_header.value["client_response_header_insert"]
+      # client_response_erase_all - (optional) is a type of number
+      client_response_erase_all = client_response_header.value["client_response_erase_all"]
+      # client_response_header_erase - (optional) is a type of string
+      client_response_header_erase = client_response_header.value["client_response_header_erase"]
+      # client_response_header_insert - (optional) is a type of string
+      client_response_header_insert = client_response_header.value["client_response_header_insert"]
+      # insert_condition_client_response - (optional) is a type of string
       insert_condition_client_response = client_response_header.value["insert_condition_client_response"]
     }
   }
@@ -387,7 +420,9 @@ resource "thunder_slb_template_sip" "this" {
   dynamic "exclude_translation" {
     for_each = var.exclude_translation
     content {
-      header_string     = exclude_translation.value["header_string"]
+      # header_string - (optional) is a type of string
+      header_string = exclude_translation.value["header_string"]
+      # translation_value - (optional) is a type of string
       translation_value = exclude_translation.value["translation_value"]
     }
   }
@@ -395,20 +430,28 @@ resource "thunder_slb_template_sip" "this" {
   dynamic "server_request_header" {
     for_each = var.server_request_header
     content {
+      # insert_condition_server_request - (optional) is a type of string
       insert_condition_server_request = server_request_header.value["insert_condition_server_request"]
-      server_request_erase_all        = server_request_header.value["server_request_erase_all"]
-      server_request_header_erase     = server_request_header.value["server_request_header_erase"]
-      server_request_header_insert    = server_request_header.value["server_request_header_insert"]
+      # server_request_erase_all - (optional) is a type of number
+      server_request_erase_all = server_request_header.value["server_request_erase_all"]
+      # server_request_header_erase - (optional) is a type of string
+      server_request_header_erase = server_request_header.value["server_request_header_erase"]
+      # server_request_header_insert - (optional) is a type of string
+      server_request_header_insert = server_request_header.value["server_request_header_insert"]
     }
   }
 
   dynamic "server_response_header" {
     for_each = var.server_response_header
     content {
+      # insert_condition_server_response - (optional) is a type of string
       insert_condition_server_response = server_response_header.value["insert_condition_server_response"]
-      server_response_erase_all        = server_response_header.value["server_response_erase_all"]
-      server_response_header_erase     = server_response_header.value["server_response_header_erase"]
-      server_response_header_insert    = server_response_header.value["server_response_header_insert"]
+      # server_response_erase_all - (optional) is a type of number
+      server_response_erase_all = server_response_header.value["server_response_erase_all"]
+      # server_response_header_erase - (optional) is a type of string
+      server_response_header_erase = server_response_header.value["server_response_header_erase"]
+      # server_response_header_insert - (optional) is a type of string
+      server_response_header_insert = server_response_header.value["server_response_header_insert"]
     }
   }
 

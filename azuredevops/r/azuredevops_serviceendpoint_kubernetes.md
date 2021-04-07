@@ -174,50 +174,73 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_kubernetes" "this" {
-  apiserver_url         = var.apiserver_url
-  authorization         = var.authorization
-  authorization_type    = var.authorization_type
-  description           = var.description
-  project_id            = var.project_id
+  # apiserver_url - (required) is a type of string
+  apiserver_url = var.apiserver_url
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # authorization_type - (required) is a type of string
+  authorization_type = var.authorization_type
+  # description - (optional) is a type of string
+  description = var.description
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
 
   dynamic "azure_subscription" {
     for_each = var.azure_subscription
     content {
+      # azure_environment - (optional) is a type of string
       azure_environment = azure_subscription.value["azure_environment"]
-      cluster_admin     = azure_subscription.value["cluster_admin"]
-      cluster_name      = azure_subscription.value["cluster_name"]
-      namespace         = azure_subscription.value["namespace"]
-      resourcegroup_id  = azure_subscription.value["resourcegroup_id"]
-      subscription_id   = azure_subscription.value["subscription_id"]
+      # cluster_admin - (optional) is a type of bool
+      cluster_admin = azure_subscription.value["cluster_admin"]
+      # cluster_name - (required) is a type of string
+      cluster_name = azure_subscription.value["cluster_name"]
+      # namespace - (optional) is a type of string
+      namespace = azure_subscription.value["namespace"]
+      # resourcegroup_id - (required) is a type of string
+      resourcegroup_id = azure_subscription.value["resourcegroup_id"]
+      # subscription_id - (required) is a type of string
+      subscription_id = azure_subscription.value["subscription_id"]
+      # subscription_name - (required) is a type of string
       subscription_name = azure_subscription.value["subscription_name"]
-      tenant_id         = azure_subscription.value["tenant_id"]
+      # tenant_id - (required) is a type of string
+      tenant_id = azure_subscription.value["tenant_id"]
     }
   }
 
   dynamic "kubeconfig" {
     for_each = var.kubeconfig
     content {
+      # accept_untrusted_certs - (optional) is a type of bool
       accept_untrusted_certs = kubeconfig.value["accept_untrusted_certs"]
-      cluster_context        = kubeconfig.value["cluster_context"]
-      kube_config            = kubeconfig.value["kube_config"]
+      # cluster_context - (optional) is a type of string
+      cluster_context = kubeconfig.value["cluster_context"]
+      # kube_config - (required) is a type of string
+      kube_config = kubeconfig.value["kube_config"]
     }
   }
 
   dynamic "service_account" {
     for_each = var.service_account
     content {
+      # ca_cert - (required) is a type of string
       ca_cert = service_account.value["ca_cert"]
-      token   = service_account.value["token"]
+      # token - (required) is a type of string
+      token = service_account.value["token"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

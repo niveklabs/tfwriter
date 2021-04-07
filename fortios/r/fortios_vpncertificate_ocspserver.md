@@ -98,13 +98,20 @@ variable "url" {
 
 ```terraform
 resource "fortios_vpncertificate_ocspserver" "this" {
-  cert           = var.cert
-  name           = var.name
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # name - (optional) is a type of string
+  name = var.name
+  # secondary_cert - (optional) is a type of string
   secondary_cert = var.secondary_cert
-  secondary_url  = var.secondary_url
-  source_ip      = var.source_ip
+  # secondary_url - (optional) is a type of string
+  secondary_url = var.secondary_url
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # unavail_action - (optional) is a type of string
   unavail_action = var.unavail_action
-  url            = var.url
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

@@ -73,9 +73,13 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cassandra_data_centers" "this" {
-  cluster_id  = var.cluster_id
-  ids         = var.ids
-  name_regex  = var.name_regex
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

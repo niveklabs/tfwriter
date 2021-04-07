@@ -104,18 +104,27 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_snapshotschedule" "this" {
+  # keep_snapshots - (required) is a type of number
   keep_snapshots = var.keep_snapshots
-  labels         = var.labels
-  name           = var.name
-  next_runtime   = var.next_runtime
-  run_interval   = var.run_interval
-  storage_uuid   = var.storage_uuid
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # next_runtime - (optional) is a type of string
+  next_runtime = var.next_runtime
+  # run_interval - (required) is a type of number
+  run_interval = var.run_interval
+  # storage_uuid - (required) is a type of string
+  storage_uuid = var.storage_uuid
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

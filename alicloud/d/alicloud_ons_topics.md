@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 data "alicloud_ons_topics" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  instance_id    = var.instance_id
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  tags           = var.tags
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

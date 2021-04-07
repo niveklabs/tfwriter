@@ -132,22 +132,35 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_dockerregistry" "this" {
-  authorization         = var.authorization
-  description           = var.description
-  docker_email          = var.docker_email
-  docker_password       = var.docker_password
-  docker_registry       = var.docker_registry
-  docker_username       = var.docker_username
-  project_id            = var.project_id
-  registry_type         = var.registry_type
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # description - (optional) is a type of string
+  description = var.description
+  # docker_email - (optional) is a type of string
+  docker_email = var.docker_email
+  # docker_password - (optional) is a type of string
+  docker_password = var.docker_password
+  # docker_registry - (optional) is a type of string
+  docker_registry = var.docker_registry
+  # docker_username - (optional) is a type of string
+  docker_username = var.docker_username
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # registry_type - (optional) is a type of string
+  registry_type = var.registry_type
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

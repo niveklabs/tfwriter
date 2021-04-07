@@ -127,17 +127,28 @@ variable "trusted" {
 
 ```terraform
 resource "fortios_vpncertificate_ca" "this" {
-  auto_update_days         = var.auto_update_days
+  # auto_update_days - (optional) is a type of number
+  auto_update_days = var.auto_update_days
+  # auto_update_days_warning - (optional) is a type of number
   auto_update_days_warning = var.auto_update_days_warning
-  ca                       = var.ca
-  last_updated             = var.last_updated
-  name                     = var.name
-  range                    = var.range
-  scep_url                 = var.scep_url
-  source                   = var.source
-  source_ip                = var.source_ip
-  ssl_inspection_trusted   = var.ssl_inspection_trusted
-  trusted                  = var.trusted
+  # ca - (required) is a type of string
+  ca = var.ca
+  # last_updated - (optional) is a type of number
+  last_updated = var.last_updated
+  # name - (required) is a type of string
+  name = var.name
+  # range - (optional) is a type of string
+  range = var.range
+  # scep_url - (optional) is a type of string
+  scep_url = var.scep_url
+  # source - (optional) is a type of string
+  source = var.source
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_inspection_trusted - (optional) is a type of string
+  ssl_inspection_trusted = var.ssl_inspection_trusted
+  # trusted - (optional) is a type of string
+  trusted = var.trusted
 }
 ```
 

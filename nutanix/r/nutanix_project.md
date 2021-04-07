@@ -245,17 +245,25 @@ variable "user_reference_list" {
 
 ```terraform
 resource "nutanix_project" "this" {
-  api_version       = var.api_version
-  description       = var.description
-  name              = var.name
-  owner_reference   = var.owner_reference
+  # api_version - (optional) is a type of string
+  api_version = var.api_version
+  # description - (required) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # project_reference - (optional) is a type of map of string
   project_reference = var.project_reference
 
   dynamic "account_reference_list" {
     for_each = var.account_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = account_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = account_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = account_reference_list.value["uuid"]
     }
   }
@@ -263,7 +271,9 @@ resource "nutanix_project" "this" {
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -271,8 +281,11 @@ resource "nutanix_project" "this" {
   dynamic "default_subnet_reference" {
     for_each = var.default_subnet_reference
     content {
+      # kind - (optional) is a type of string
       kind = default_subnet_reference.value["kind"]
+      # name - (optional) is a type of string
       name = default_subnet_reference.value["name"]
+      # uuid - (required) is a type of string
       uuid = default_subnet_reference.value["uuid"]
     }
   }
@@ -280,8 +293,11 @@ resource "nutanix_project" "this" {
   dynamic "environment_reference_list" {
     for_each = var.environment_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = environment_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = environment_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = environment_reference_list.value["uuid"]
     }
   }
@@ -289,7 +305,9 @@ resource "nutanix_project" "this" {
   dynamic "external_network_list" {
     for_each = var.external_network_list
     content {
+      # name - (optional) is a type of string
       name = external_network_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = external_network_list.value["uuid"]
     }
   }
@@ -297,8 +315,11 @@ resource "nutanix_project" "this" {
   dynamic "external_user_group_reference_list" {
     for_each = var.external_user_group_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = external_user_group_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = external_user_group_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = external_user_group_reference_list.value["uuid"]
     }
   }
@@ -310,7 +331,9 @@ resource "nutanix_project" "this" {
       dynamic "resources" {
         for_each = resource_domain.value.resources
         content {
-          limit         = resources.value["limit"]
+          # limit - (required) is a type of number
+          limit = resources.value["limit"]
+          # resource_type - (required) is a type of string
           resource_type = resources.value["resource_type"]
         }
       }
@@ -321,8 +344,11 @@ resource "nutanix_project" "this" {
   dynamic "subnet_reference_list" {
     for_each = var.subnet_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = subnet_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = subnet_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = subnet_reference_list.value["uuid"]
     }
   }
@@ -330,8 +356,11 @@ resource "nutanix_project" "this" {
   dynamic "user_reference_list" {
     for_each = var.user_reference_list
     content {
+      # kind - (optional) is a type of string
       kind = user_reference_list.value["kind"]
+      # name - (optional) is a type of string
       name = user_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = user_reference_list.value["uuid"]
     }
   }

@@ -76,14 +76,19 @@ variable "mcc_mnc_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqp3gppcellular" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "mcc_mnc_list" {
     for_each = var.mcc_mnc_list
     content {
-      id  = mcc_mnc_list.value["id"]
+      # id - (optional) is a type of number
+      id = mcc_mnc_list.value["id"]
+      # mcc - (optional) is a type of string
       mcc = mcc_mnc_list.value["mcc"]
+      # mnc - (optional) is a type of string
       mnc = mcc_mnc_list.value["mnc"]
     }
   }

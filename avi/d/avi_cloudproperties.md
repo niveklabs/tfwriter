@@ -50,6 +50,7 @@ variable "uuid" {
 
 ```terraform
 data "avi_cloudproperties" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 }
 ```

@@ -64,9 +64,12 @@ variable "value" {
 
 ```terraform
 resource "okta_auth_server_claim_default" "this" {
+  # auth_server_id - (required) is a type of string
   auth_server_id = var.auth_server_id
-  name           = var.name
-  value          = var.value
+  # name - (required) is a type of string
+  name = var.name
+  # value - (optional) is a type of string
+  value = var.value
 }
 ```
 

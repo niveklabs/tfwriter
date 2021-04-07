@@ -71,10 +71,14 @@ variable "repository" {
 
 ```terraform
 resource "github_issue_label" "this" {
-  color       = var.color
+  # color - (required) is a type of string
+  color = var.color
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  repository  = var.repository
+  # name - (required) is a type of string
+  name = var.name
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

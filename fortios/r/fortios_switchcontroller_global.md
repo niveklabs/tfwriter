@@ -192,33 +192,51 @@ variable "disable_discovery" {
 
 ```terraform
 resource "fortios_switchcontroller_global" "this" {
-  allow_multiple_interfaces   = var.allow_multiple_interfaces
-  bounce_quarantined_link     = var.bounce_quarantined_link
+  # allow_multiple_interfaces - (optional) is a type of string
+  allow_multiple_interfaces = var.allow_multiple_interfaces
+  # bounce_quarantined_link - (optional) is a type of string
+  bounce_quarantined_link = var.bounce_quarantined_link
+  # default_virtual_switch_vlan - (optional) is a type of string
   default_virtual_switch_vlan = var.default_virtual_switch_vlan
-  dynamic_sort_subtable       = var.dynamic_sort_subtable
-  https_image_push            = var.https_image_push
-  log_mac_limit_violations    = var.log_mac_limit_violations
-  mac_aging_interval          = var.mac_aging_interval
-  mac_event_logging           = var.mac_event_logging
-  mac_retention_period        = var.mac_retention_period
-  mac_violation_timer         = var.mac_violation_timer
-  quarantine_mode             = var.quarantine_mode
-  sn_dns_resolution           = var.sn_dns_resolution
-  update_user_device          = var.update_user_device
-  vlan_all_mode               = var.vlan_all_mode
-  vlan_optimization           = var.vlan_optimization
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # https_image_push - (optional) is a type of string
+  https_image_push = var.https_image_push
+  # log_mac_limit_violations - (optional) is a type of string
+  log_mac_limit_violations = var.log_mac_limit_violations
+  # mac_aging_interval - (optional) is a type of number
+  mac_aging_interval = var.mac_aging_interval
+  # mac_event_logging - (optional) is a type of string
+  mac_event_logging = var.mac_event_logging
+  # mac_retention_period - (optional) is a type of number
+  mac_retention_period = var.mac_retention_period
+  # mac_violation_timer - (optional) is a type of number
+  mac_violation_timer = var.mac_violation_timer
+  # quarantine_mode - (optional) is a type of string
+  quarantine_mode = var.quarantine_mode
+  # sn_dns_resolution - (optional) is a type of string
+  sn_dns_resolution = var.sn_dns_resolution
+  # update_user_device - (optional) is a type of string
+  update_user_device = var.update_user_device
+  # vlan_all_mode - (optional) is a type of string
+  vlan_all_mode = var.vlan_all_mode
+  # vlan_optimization - (optional) is a type of string
+  vlan_optimization = var.vlan_optimization
 
   dynamic "custom_command" {
     for_each = var.custom_command
     content {
+      # command_entry - (optional) is a type of string
       command_entry = custom_command.value["command_entry"]
-      command_name  = custom_command.value["command_name"]
+      # command_name - (optional) is a type of string
+      command_name = custom_command.value["command_name"]
     }
   }
 
   dynamic "disable_discovery" {
     for_each = var.disable_discovery
     content {
+      # name - (optional) is a type of string
       name = disable_discovery.value["name"]
     }
   }

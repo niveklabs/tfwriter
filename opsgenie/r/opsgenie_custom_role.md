@@ -73,10 +73,14 @@ variable "role_name" {
 
 ```terraform
 resource "opsgenie_custom_role" "this" {
+  # disallowed_rights - (optional) is a type of set of string
   disallowed_rights = var.disallowed_rights
-  extended_role     = var.extended_role
-  granted_rights    = var.granted_rights
-  role_name         = var.role_name
+  # extended_role - (optional) is a type of string
+  extended_role = var.extended_role
+  # granted_rights - (optional) is a type of set of string
+  granted_rights = var.granted_rights
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 }
 ```
 

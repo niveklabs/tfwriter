@@ -65,9 +65,12 @@ variable "vsys" {
 
 ```terraform
 data "panos_address_object" "this" {
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

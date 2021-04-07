@@ -111,18 +111,27 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_config_delivery_channel" "this" {
+  # delivery_channel_assume_role_arn - (required) is a type of string
   delivery_channel_assume_role_arn = var.delivery_channel_assume_role_arn
-  delivery_channel_condition       = var.delivery_channel_condition
-  delivery_channel_name            = var.delivery_channel_name
-  delivery_channel_target_arn      = var.delivery_channel_target_arn
-  delivery_channel_type            = var.delivery_channel_type
-  description                      = var.description
-  status                           = var.status
+  # delivery_channel_condition - (optional) is a type of string
+  delivery_channel_condition = var.delivery_channel_condition
+  # delivery_channel_name - (optional) is a type of string
+  delivery_channel_name = var.delivery_channel_name
+  # delivery_channel_target_arn - (required) is a type of string
+  delivery_channel_target_arn = var.delivery_channel_target_arn
+  # delivery_channel_type - (required) is a type of string
+  delivery_channel_type = var.delivery_channel_type
+  # description - (optional) is a type of string
+  description = var.description
+  # status - (optional) is a type of number
+  status = var.status
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

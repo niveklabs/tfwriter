@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ip_nat_global" "this" {
+  # reset_idle_tcp_conn - (optional) is a type of number
   reset_idle_tcp_conn = var.reset_idle_tcp_conn
-  uuid                = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

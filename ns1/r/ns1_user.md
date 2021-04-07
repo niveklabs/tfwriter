@@ -303,39 +303,72 @@ variable "username" {
 
 ```terraform
 resource "ns1_user" "this" {
-  account_manage_account_settings  = var.account_manage_account_settings
-  account_manage_apikeys           = var.account_manage_apikeys
-  account_manage_ip_whitelist      = var.account_manage_ip_whitelist
-  account_manage_payment_methods   = var.account_manage_payment_methods
-  account_manage_plan              = var.account_manage_plan
-  account_manage_teams             = var.account_manage_teams
-  account_manage_users             = var.account_manage_users
-  account_view_activity_log        = var.account_view_activity_log
-  account_view_invoices            = var.account_view_invoices
-  data_manage_datafeeds            = var.data_manage_datafeeds
-  data_manage_datasources          = var.data_manage_datasources
-  data_push_to_datafeeds           = var.data_push_to_datafeeds
-  dhcp_manage_dhcp                 = var.dhcp_manage_dhcp
-  dhcp_view_dhcp                   = var.dhcp_view_dhcp
-  dns_manage_zones                 = var.dns_manage_zones
-  dns_view_zones                   = var.dns_view_zones
-  dns_zones_allow                  = var.dns_zones_allow
-  dns_zones_allow_by_default       = var.dns_zones_allow_by_default
-  dns_zones_deny                   = var.dns_zones_deny
-  email                            = var.email
-  ip_whitelist                     = var.ip_whitelist
-  ip_whitelist_strict              = var.ip_whitelist_strict
-  ipam_manage_ipam                 = var.ipam_manage_ipam
-  ipam_view_ipam                   = var.ipam_view_ipam
-  monitoring_manage_jobs           = var.monitoring_manage_jobs
-  monitoring_manage_lists          = var.monitoring_manage_lists
-  monitoring_view_jobs             = var.monitoring_view_jobs
-  name                             = var.name
-  notify                           = var.notify
+  # account_manage_account_settings - (optional) is a type of bool
+  account_manage_account_settings = var.account_manage_account_settings
+  # account_manage_apikeys - (optional) is a type of bool
+  account_manage_apikeys = var.account_manage_apikeys
+  # account_manage_ip_whitelist - (optional) is a type of bool
+  account_manage_ip_whitelist = var.account_manage_ip_whitelist
+  # account_manage_payment_methods - (optional) is a type of bool
+  account_manage_payment_methods = var.account_manage_payment_methods
+  # account_manage_plan - (optional) is a type of bool
+  account_manage_plan = var.account_manage_plan
+  # account_manage_teams - (optional) is a type of bool
+  account_manage_teams = var.account_manage_teams
+  # account_manage_users - (optional) is a type of bool
+  account_manage_users = var.account_manage_users
+  # account_view_activity_log - (optional) is a type of bool
+  account_view_activity_log = var.account_view_activity_log
+  # account_view_invoices - (optional) is a type of bool
+  account_view_invoices = var.account_view_invoices
+  # data_manage_datafeeds - (optional) is a type of bool
+  data_manage_datafeeds = var.data_manage_datafeeds
+  # data_manage_datasources - (optional) is a type of bool
+  data_manage_datasources = var.data_manage_datasources
+  # data_push_to_datafeeds - (optional) is a type of bool
+  data_push_to_datafeeds = var.data_push_to_datafeeds
+  # dhcp_manage_dhcp - (optional) is a type of bool
+  dhcp_manage_dhcp = var.dhcp_manage_dhcp
+  # dhcp_view_dhcp - (optional) is a type of bool
+  dhcp_view_dhcp = var.dhcp_view_dhcp
+  # dns_manage_zones - (optional) is a type of bool
+  dns_manage_zones = var.dns_manage_zones
+  # dns_view_zones - (optional) is a type of bool
+  dns_view_zones = var.dns_view_zones
+  # dns_zones_allow - (optional) is a type of list of string
+  dns_zones_allow = var.dns_zones_allow
+  # dns_zones_allow_by_default - (optional) is a type of bool
+  dns_zones_allow_by_default = var.dns_zones_allow_by_default
+  # dns_zones_deny - (optional) is a type of list of string
+  dns_zones_deny = var.dns_zones_deny
+  # email - (required) is a type of string
+  email = var.email
+  # ip_whitelist - (optional) is a type of list of string
+  ip_whitelist = var.ip_whitelist
+  # ip_whitelist_strict - (optional) is a type of bool
+  ip_whitelist_strict = var.ip_whitelist_strict
+  # ipam_manage_ipam - (optional) is a type of bool
+  ipam_manage_ipam = var.ipam_manage_ipam
+  # ipam_view_ipam - (optional) is a type of bool
+  ipam_view_ipam = var.ipam_view_ipam
+  # monitoring_manage_jobs - (optional) is a type of bool
+  monitoring_manage_jobs = var.monitoring_manage_jobs
+  # monitoring_manage_lists - (optional) is a type of bool
+  monitoring_manage_lists = var.monitoring_manage_lists
+  # monitoring_view_jobs - (optional) is a type of bool
+  monitoring_view_jobs = var.monitoring_view_jobs
+  # name - (required) is a type of string
+  name = var.name
+  # notify - (optional) is a type of map of bool
+  notify = var.notify
+  # security_manage_active_directory - (optional) is a type of bool
   security_manage_active_directory = var.security_manage_active_directory
-  security_manage_global_2fa       = var.security_manage_global_2fa
-  teams                            = var.teams
-  username                         = var.username
+  # security_manage_global_2fa - (optional) is a type of bool
+  security_manage_global_2fa = var.security_manage_global_2fa
+  # teams - (optional) is a type of list of string
+  teams = var.teams
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

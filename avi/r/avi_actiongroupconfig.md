@@ -127,17 +127,28 @@ variable "uuid" {
 
 ```terraform
 resource "avi_actiongroupconfig" "this" {
-  action_script_config_ref       = var.action_script_config_ref
+  # action_script_config_ref - (optional) is a type of string
+  action_script_config_ref = var.action_script_config_ref
+  # autoscale_trigger_notification - (optional) is a type of bool
   autoscale_trigger_notification = var.autoscale_trigger_notification
-  description                    = var.description
-  email_config_ref               = var.email_config_ref
-  external_only                  = var.external_only
-  level                          = var.level
-  name                           = var.name
-  snmp_trap_profile_ref          = var.snmp_trap_profile_ref
-  syslog_config_ref              = var.syslog_config_ref
-  tenant_ref                     = var.tenant_ref
-  uuid                           = var.uuid
+  # description - (optional) is a type of string
+  description = var.description
+  # email_config_ref - (optional) is a type of string
+  email_config_ref = var.email_config_ref
+  # external_only - (required) is a type of bool
+  external_only = var.external_only
+  # level - (required) is a type of string
+  level = var.level
+  # name - (required) is a type of string
+  name = var.name
+  # snmp_trap_profile_ref - (optional) is a type of string
+  snmp_trap_profile_ref = var.snmp_trap_profile_ref
+  # syslog_config_ref - (optional) is a type of string
+  syslog_config_ref = var.syslog_config_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

@@ -178,23 +178,40 @@ variable "reval_pnc" {
 
 ```terraform
 resource "fortios_wanopt_webcache" "this" {
-  always_revalidate  = var.always_revalidate
-  cache_by_default   = var.cache_by_default
-  cache_cookie       = var.cache_cookie
-  cache_expired      = var.cache_expired
-  default_ttl        = var.default_ttl
-  external           = var.external
-  fresh_factor       = var.fresh_factor
-  host_validate      = var.host_validate
+  # always_revalidate - (optional) is a type of string
+  always_revalidate = var.always_revalidate
+  # cache_by_default - (optional) is a type of string
+  cache_by_default = var.cache_by_default
+  # cache_cookie - (optional) is a type of string
+  cache_cookie = var.cache_cookie
+  # cache_expired - (optional) is a type of string
+  cache_expired = var.cache_expired
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # external - (optional) is a type of string
+  external = var.external
+  # fresh_factor - (optional) is a type of number
+  fresh_factor = var.fresh_factor
+  # host_validate - (optional) is a type of string
+  host_validate = var.host_validate
+  # ignore_conditional - (optional) is a type of string
   ignore_conditional = var.ignore_conditional
-  ignore_ie_reload   = var.ignore_ie_reload
-  ignore_ims         = var.ignore_ims
-  ignore_pnc         = var.ignore_pnc
-  max_object_size    = var.max_object_size
-  max_ttl            = var.max_ttl
-  min_ttl            = var.min_ttl
-  neg_resp_time      = var.neg_resp_time
-  reval_pnc          = var.reval_pnc
+  # ignore_ie_reload - (optional) is a type of string
+  ignore_ie_reload = var.ignore_ie_reload
+  # ignore_ims - (optional) is a type of string
+  ignore_ims = var.ignore_ims
+  # ignore_pnc - (optional) is a type of string
+  ignore_pnc = var.ignore_pnc
+  # max_object_size - (optional) is a type of number
+  max_object_size = var.max_object_size
+  # max_ttl - (optional) is a type of number
+  max_ttl = var.max_ttl
+  # min_ttl - (optional) is a type of number
+  min_ttl = var.min_ttl
+  # neg_resp_time - (optional) is a type of number
+  neg_resp_time = var.neg_resp_time
+  # reval_pnc - (optional) is a type of string
+  reval_pnc = var.reval_pnc
 }
 ```
 

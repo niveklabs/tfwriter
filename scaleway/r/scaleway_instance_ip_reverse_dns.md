@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_instance_ip_reverse_dns" "this" {
-  ip_id   = var.ip_id
+  # ip_id - (required) is a type of string
+  ip_id = var.ip_id
+  # reverse - (required) is a type of string
   reverse = var.reverse
-  zone    = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

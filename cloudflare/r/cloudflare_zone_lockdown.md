@@ -95,17 +95,24 @@ variable "configurations" {
 
 ```terraform
 resource "cloudflare_zone_lockdown" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  paused      = var.paused
-  priority    = var.priority
-  urls        = var.urls
-  zone_id     = var.zone_id
+  # paused - (optional) is a type of bool
+  paused = var.paused
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # urls - (required) is a type of set of string
+  urls = var.urls
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "configurations" {
     for_each = var.configurations
     content {
+      # target - (required) is a type of string
       target = configurations.value["target"]
-      value  = configurations.value["value"]
+      # value - (required) is a type of string
+      value = configurations.value["value"]
     }
   }
 

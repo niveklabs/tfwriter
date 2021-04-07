@@ -58,7 +58,9 @@ variable "ssh_key_id" {
 
 ```terraform
 data "scaleway_account_ssh_key" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # ssh_key_id - (optional) is a type of string
   ssh_key_id = var.ssh_key_id
 }
 ```

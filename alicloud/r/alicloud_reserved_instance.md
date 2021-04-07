@@ -129,17 +129,28 @@ variable "zone_id" {
 
 ```terraform
 resource "alicloud_reserved_instance" "this" {
-  description       = var.description
-  instance_amount   = var.instance_amount
-  instance_type     = var.instance_type
-  name              = var.name
-  offering_type     = var.offering_type
-  period            = var.period
-  period_unit       = var.period_unit
-  platform          = var.platform
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_amount - (optional) is a type of number
+  instance_amount = var.instance_amount
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # name - (optional) is a type of string
+  name = var.name
+  # offering_type - (optional) is a type of string
+  offering_type = var.offering_type
+  # period - (optional) is a type of number
+  period = var.period
+  # period_unit - (optional) is a type of string
+  period_unit = var.period_unit
+  # platform - (optional) is a type of string
+  platform = var.platform
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  scope             = var.scope
-  zone_id           = var.zone_id
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

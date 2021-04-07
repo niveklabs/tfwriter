@@ -90,12 +90,18 @@ variable "source_location" {
 
 ```terraform
 resource "fortios_system_networkvisibility" "this" {
+  # destination_hostname_visibility - (optional) is a type of string
   destination_hostname_visibility = var.destination_hostname_visibility
-  destination_location            = var.destination_location
-  destination_visibility          = var.destination_visibility
-  hostname_limit                  = var.hostname_limit
-  hostname_ttl                    = var.hostname_ttl
-  source_location                 = var.source_location
+  # destination_location - (optional) is a type of string
+  destination_location = var.destination_location
+  # destination_visibility - (optional) is a type of string
+  destination_visibility = var.destination_visibility
+  # hostname_limit - (optional) is a type of number
+  hostname_limit = var.hostname_limit
+  # hostname_ttl - (optional) is a type of number
+  hostname_ttl = var.hostname_ttl
+  # source_location - (optional) is a type of string
+  source_location = var.source_location
 }
 ```
 

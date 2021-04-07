@@ -49,6 +49,7 @@ variable "account_name" {
 
 ```terraform
 data "aviatrix_account" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
 }
 ```

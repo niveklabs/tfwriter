@@ -207,28 +207,47 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ros_change_set" "this" {
-  change_set_name                 = var.change_set_name
-  change_set_type                 = var.change_set_type
-  description                     = var.description
-  disable_rollback                = var.disable_rollback
-  notification_urls               = var.notification_urls
-  ram_role_name                   = var.ram_role_name
-  replacement_option              = var.replacement_option
-  stack_id                        = var.stack_id
-  stack_name                      = var.stack_name
-  stack_policy_body               = var.stack_policy_body
+  # change_set_name - (required) is a type of string
+  change_set_name = var.change_set_name
+  # change_set_type - (optional) is a type of string
+  change_set_type = var.change_set_type
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_rollback - (optional) is a type of bool
+  disable_rollback = var.disable_rollback
+  # notification_urls - (optional) is a type of set of string
+  notification_urls = var.notification_urls
+  # ram_role_name - (optional) is a type of string
+  ram_role_name = var.ram_role_name
+  # replacement_option - (optional) is a type of string
+  replacement_option = var.replacement_option
+  # stack_id - (optional) is a type of string
+  stack_id = var.stack_id
+  # stack_name - (optional) is a type of string
+  stack_name = var.stack_name
+  # stack_policy_body - (optional) is a type of string
+  stack_policy_body = var.stack_policy_body
+  # stack_policy_during_update_body - (optional) is a type of string
   stack_policy_during_update_body = var.stack_policy_during_update_body
-  stack_policy_during_update_url  = var.stack_policy_during_update_url
-  stack_policy_url                = var.stack_policy_url
-  template_body                   = var.template_body
-  template_url                    = var.template_url
-  timeout_in_minutes              = var.timeout_in_minutes
-  use_previous_parameters         = var.use_previous_parameters
+  # stack_policy_during_update_url - (optional) is a type of string
+  stack_policy_during_update_url = var.stack_policy_during_update_url
+  # stack_policy_url - (optional) is a type of string
+  stack_policy_url = var.stack_policy_url
+  # template_body - (optional) is a type of string
+  template_body = var.template_body
+  # template_url - (optional) is a type of string
+  template_url = var.template_url
+  # timeout_in_minutes - (optional) is a type of number
+  timeout_in_minutes = var.timeout_in_minutes
+  # use_previous_parameters - (optional) is a type of bool
+  use_previous_parameters = var.use_previous_parameters
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      parameter_key   = parameters.value["parameter_key"]
+      # parameter_key - (required) is a type of string
+      parameter_key = parameters.value["parameter_key"]
+      # parameter_value - (required) is a type of string
       parameter_value = parameters.value["parameter_value"]
     }
   }
@@ -236,6 +255,7 @@ resource "alicloud_ros_change_set" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

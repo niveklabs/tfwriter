@@ -158,47 +158,66 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_qos_switching_profile" "this" {
+  # class_of_service - (optional) is a type of number
   class_of_service = var.class_of_service
-  description      = var.description
-  display_name     = var.display_name
-  dscp_priority    = var.dscp_priority
-  dscp_trusted     = var.dscp_trusted
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # dscp_priority - (optional) is a type of number
+  dscp_priority = var.dscp_priority
+  # dscp_trusted - (optional) is a type of bool
+  dscp_trusted = var.dscp_trusted
 
   dynamic "egress_rate_shaper" {
     for_each = var.egress_rate_shaper
     content {
+      # average_bw_mbps - (optional) is a type of number
       average_bw_mbps = egress_rate_shaper.value["average_bw_mbps"]
-      burst_size      = egress_rate_shaper.value["burst_size"]
-      enabled         = egress_rate_shaper.value["enabled"]
-      peak_bw_mbps    = egress_rate_shaper.value["peak_bw_mbps"]
+      # burst_size - (optional) is a type of number
+      burst_size = egress_rate_shaper.value["burst_size"]
+      # enabled - (optional) is a type of bool
+      enabled = egress_rate_shaper.value["enabled"]
+      # peak_bw_mbps - (optional) is a type of number
+      peak_bw_mbps = egress_rate_shaper.value["peak_bw_mbps"]
     }
   }
 
   dynamic "ingress_broadcast_rate_shaper" {
     for_each = var.ingress_broadcast_rate_shaper
     content {
+      # average_bw_kbps - (optional) is a type of number
       average_bw_kbps = ingress_broadcast_rate_shaper.value["average_bw_kbps"]
-      burst_size      = ingress_broadcast_rate_shaper.value["burst_size"]
-      enabled         = ingress_broadcast_rate_shaper.value["enabled"]
-      peak_bw_kbps    = ingress_broadcast_rate_shaper.value["peak_bw_kbps"]
+      # burst_size - (optional) is a type of number
+      burst_size = ingress_broadcast_rate_shaper.value["burst_size"]
+      # enabled - (optional) is a type of bool
+      enabled = ingress_broadcast_rate_shaper.value["enabled"]
+      # peak_bw_kbps - (optional) is a type of number
+      peak_bw_kbps = ingress_broadcast_rate_shaper.value["peak_bw_kbps"]
     }
   }
 
   dynamic "ingress_rate_shaper" {
     for_each = var.ingress_rate_shaper
     content {
+      # average_bw_mbps - (optional) is a type of number
       average_bw_mbps = ingress_rate_shaper.value["average_bw_mbps"]
-      burst_size      = ingress_rate_shaper.value["burst_size"]
-      enabled         = ingress_rate_shaper.value["enabled"]
-      peak_bw_mbps    = ingress_rate_shaper.value["peak_bw_mbps"]
+      # burst_size - (optional) is a type of number
+      burst_size = ingress_rate_shaper.value["burst_size"]
+      # enabled - (optional) is a type of bool
+      enabled = ingress_rate_shaper.value["enabled"]
+      # peak_bw_mbps - (optional) is a type of number
+      peak_bw_mbps = ingress_rate_shaper.value["peak_bw_mbps"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

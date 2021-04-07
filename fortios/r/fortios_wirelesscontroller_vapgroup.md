@@ -79,13 +79,17 @@ variable "vaps" {
 
 ```terraform
 resource "fortios_wirelesscontroller_vapgroup" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "vaps" {
     for_each = var.vaps
     content {
+      # name - (optional) is a type of string
       name = vaps.value["name"]
     }
   }

@@ -98,13 +98,20 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_managementtunnel" "this" {
+  # allow_collect_statistics - (optional) is a type of string
   allow_collect_statistics = var.allow_collect_statistics
-  allow_config_restore     = var.allow_config_restore
+  # allow_config_restore - (optional) is a type of string
+  allow_config_restore = var.allow_config_restore
+  # allow_push_configuration - (optional) is a type of string
   allow_push_configuration = var.allow_push_configuration
-  allow_push_firmware      = var.allow_push_firmware
-  authorized_manager_only  = var.authorized_manager_only
-  serial_number            = var.serial_number
-  status                   = var.status
+  # allow_push_firmware - (optional) is a type of string
+  allow_push_firmware = var.allow_push_firmware
+  # authorized_manager_only - (optional) is a type of string
+  authorized_manager_only = var.authorized_manager_only
+  # serial_number - (optional) is a type of string
+  serial_number = var.serial_number
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

@@ -50,6 +50,7 @@ variable "status" {
 
 ```terraform
 resource "fortios_logfortianalyzercloud_overridesetting" "this" {
+  # status - (optional) is a type of string
   status = var.status
 }
 ```

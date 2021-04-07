@@ -58,8 +58,10 @@ variable "status" {
 
 ```terraform
 resource "fortios_logmemory_setting" "this" {
+  # diskfull - (optional) is a type of string
   diskfull = var.diskfull
-  status   = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

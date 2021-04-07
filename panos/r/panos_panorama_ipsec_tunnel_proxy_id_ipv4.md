@@ -127,17 +127,28 @@ variable "template" {
 
 ```terraform
 resource "panos_panorama_ipsec_tunnel_proxy_id_ipv4" "this" {
-  ipsec_tunnel        = var.ipsec_tunnel
-  local               = var.local
-  name                = var.name
-  protocol_any        = var.protocol_any
-  protocol_number     = var.protocol_number
-  protocol_tcp_local  = var.protocol_tcp_local
+  # ipsec_tunnel - (required) is a type of string
+  ipsec_tunnel = var.ipsec_tunnel
+  # local - (optional) is a type of string
+  local = var.local
+  # name - (required) is a type of string
+  name = var.name
+  # protocol_any - (optional) is a type of bool
+  protocol_any = var.protocol_any
+  # protocol_number - (optional) is a type of number
+  protocol_number = var.protocol_number
+  # protocol_tcp_local - (optional) is a type of number
+  protocol_tcp_local = var.protocol_tcp_local
+  # protocol_tcp_remote - (optional) is a type of number
   protocol_tcp_remote = var.protocol_tcp_remote
-  protocol_udp_local  = var.protocol_udp_local
+  # protocol_udp_local - (optional) is a type of number
+  protocol_udp_local = var.protocol_udp_local
+  # protocol_udp_remote - (optional) is a type of number
   protocol_udp_remote = var.protocol_udp_remote
-  remote              = var.remote
-  template            = var.template
+  # remote - (optional) is a type of string
+  remote = var.remote
+  # template - (required) is a type of string
+  template = var.template
 }
 ```
 

@@ -88,19 +88,28 @@ variable "servers" {
 
 ```terraform
 resource "alicloud_slb_master_slave_server_group" "this" {
+  # delete_protection_validation - (optional) is a type of bool
   delete_protection_validation = var.delete_protection_validation
-  load_balancer_id             = var.load_balancer_id
-  name                         = var.name
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "servers" {
     for_each = var.servers
     content {
-      is_backup   = servers.value["is_backup"]
-      port        = servers.value["port"]
-      server_id   = servers.value["server_id"]
+      # is_backup - (optional) is a type of number
+      is_backup = servers.value["is_backup"]
+      # port - (required) is a type of number
+      port = servers.value["port"]
+      # server_id - (required) is a type of string
+      server_id = servers.value["server_id"]
+      # server_type - (optional) is a type of string
       server_type = servers.value["server_type"]
-      type        = servers.value["type"]
-      weight      = servers.value["weight"]
+      # type - (optional) is a type of string
+      type = servers.value["type"]
+      # weight - (optional) is a type of number
+      weight = servers.value["weight"]
     }
   }
 

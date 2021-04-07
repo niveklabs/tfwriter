@@ -230,30 +230,54 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_mysql_instance" "this" {
-  auto_renew_flag   = var.auto_renew_flag
+  # auto_renew_flag - (optional) is a type of number
+  auto_renew_flag = var.auto_renew_flag
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  charge_type       = var.charge_type
-  engine_version    = var.engine_version
-  first_slave_zone  = var.first_slave_zone
-  force_delete      = var.force_delete
-  instance_name     = var.instance_name
-  internet_service  = var.internet_service
-  intranet_port     = var.intranet_port
-  mem_size          = var.mem_size
-  parameters        = var.parameters
-  pay_type          = var.pay_type
-  period            = var.period
-  prepaid_period    = var.prepaid_period
-  project_id        = var.project_id
-  root_password     = var.root_password
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # first_slave_zone - (optional) is a type of string
+  first_slave_zone = var.first_slave_zone
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # internet_service - (optional) is a type of number
+  internet_service = var.internet_service
+  # intranet_port - (optional) is a type of number
+  intranet_port = var.intranet_port
+  # mem_size - (required) is a type of number
+  mem_size = var.mem_size
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # pay_type - (optional) is a type of number
+  pay_type = var.pay_type
+  # period - (optional) is a type of number
+  period = var.period
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # root_password - (required) is a type of string
+  root_password = var.root_password
+  # second_slave_zone - (optional) is a type of string
   second_slave_zone = var.second_slave_zone
-  security_groups   = var.security_groups
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # slave_deploy_mode - (optional) is a type of number
   slave_deploy_mode = var.slave_deploy_mode
-  slave_sync_mode   = var.slave_sync_mode
-  subnet_id         = var.subnet_id
-  tags              = var.tags
-  volume_size       = var.volume_size
-  vpc_id            = var.vpc_id
+  # slave_sync_mode - (optional) is a type of number
+  slave_sync_mode = var.slave_sync_mode
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_size - (required) is a type of number
+  volume_size = var.volume_size
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

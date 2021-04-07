@@ -132,29 +132,43 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_dedicated_hypervisor_server_v1" "this" {
-  admin_pass        = var.admin_pass
+  # admin_pass - (optional) is a type of string
+  admin_pass = var.admin_pass
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  description       = var.description
-  flavor_ref        = var.flavor_ref
-  image_ref         = var.image_ref
-  metadata          = var.metadata
-  name              = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # flavor_ref - (required) is a type of string
+  flavor_ref = var.flavor_ref
+  # image_ref - (required) is a type of string
+  image_ref = var.image_ref
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "networks" {
     for_each = var.networks
     content {
-      fixed_ip        = networks.value["fixed_ip"]
-      plane           = networks.value["plane"]
-      port            = networks.value["port"]
+      # fixed_ip - (optional) is a type of string
+      fixed_ip = networks.value["fixed_ip"]
+      # plane - (required) is a type of string
+      plane = networks.value["plane"]
+      # port - (optional) is a type of string
+      port = networks.value["port"]
+      # segmentation_id - (required) is a type of number
       segmentation_id = networks.value["segmentation_id"]
-      uuid            = networks.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = networks.value["uuid"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

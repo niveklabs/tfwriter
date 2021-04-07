@@ -82,10 +82,15 @@ variable "public_key_sha1" {
 
 ```terraform
 data "fastly_tls_private_key" "this" {
-  created_at      = var.created_at
-  key_length      = var.key_length
-  key_type        = var.key_type
-  name            = var.name
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # key_length - (optional) is a type of number
+  key_length = var.key_length
+  # key_type - (optional) is a type of string
+  key_type = var.key_type
+  # name - (optional) is a type of string
+  name = var.name
+  # public_key_sha1 - (optional) is a type of string
   public_key_sha1 = var.public_key_sha1
 }
 ```

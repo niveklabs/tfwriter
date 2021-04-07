@@ -241,34 +241,55 @@ variable "alert_rule" {
 
 ```terraform
 resource "avi_alertconfig" "this" {
+  # action_group_ref - (optional) is a type of string
   action_group_ref = var.action_group_ref
-  autoscale_alert  = var.autoscale_alert
-  category         = var.category
-  description      = var.description
-  enabled          = var.enabled
-  expiry_time      = var.expiry_time
-  name             = var.name
-  obj_uuid         = var.obj_uuid
-  object_type      = var.object_type
-  recommendation   = var.recommendation
-  rolling_window   = var.rolling_window
-  source           = var.source
-  summary          = var.summary
-  tenant_ref       = var.tenant_ref
-  threshold        = var.threshold
-  throttle         = var.throttle
-  uuid             = var.uuid
+  # autoscale_alert - (optional) is a type of bool
+  autoscale_alert = var.autoscale_alert
+  # category - (required) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # expiry_time - (optional) is a type of number
+  expiry_time = var.expiry_time
+  # name - (required) is a type of string
+  name = var.name
+  # obj_uuid - (optional) is a type of string
+  obj_uuid = var.obj_uuid
+  # object_type - (optional) is a type of string
+  object_type = var.object_type
+  # recommendation - (optional) is a type of string
+  recommendation = var.recommendation
+  # rolling_window - (optional) is a type of number
+  rolling_window = var.rolling_window
+  # source - (required) is a type of string
+  source = var.source
+  # summary - (optional) is a type of string
+  summary = var.summary
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # threshold - (optional) is a type of number
+  threshold = var.threshold
+  # throttle - (optional) is a type of number
+  throttle = var.throttle
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "alert_rule" {
     for_each = var.alert_rule
     content {
+      # event_match_filter - (optional) is a type of string
       event_match_filter = alert_rule.value["event_match_filter"]
-      operator           = alert_rule.value["operator"]
+      # operator - (optional) is a type of string
+      operator = alert_rule.value["operator"]
 
       dynamic "conn_app_log_rule" {
         for_each = alert_rule.value.conn_app_log_rule
         content {
+          # filter_action - (optional) is a type of string
           filter_action = conn_app_log_rule.value["filter_action"]
+          # filter_string - (required) is a type of string
           filter_string = conn_app_log_rule.value["filter_string"]
         }
       }
@@ -276,14 +297,18 @@ resource "avi_alertconfig" "this" {
       dynamic "metrics_rule" {
         for_each = alert_rule.value.metrics_rule
         content {
-          duration  = metrics_rule.value["duration"]
+          # duration - (optional) is a type of number
+          duration = metrics_rule.value["duration"]
+          # metric_id - (optional) is a type of string
           metric_id = metrics_rule.value["metric_id"]
 
           dynamic "metric_threshold" {
             for_each = metrics_rule.value.metric_threshold
             content {
+              # comparator - (required) is a type of string
               comparator = metric_threshold.value["comparator"]
-              threshold  = metric_threshold.value["threshold"]
+              # threshold - (optional) is a type of number
+              threshold = metric_threshold.value["threshold"]
             }
           }
 
@@ -293,14 +318,19 @@ resource "avi_alertconfig" "this" {
       dynamic "sys_event_rule" {
         for_each = alert_rule.value.sys_event_rule
         content {
+          # event_id - (optional) is a type of string
           event_id = sys_event_rule.value["event_id"]
+          # not_cond - (optional) is a type of bool
           not_cond = sys_event_rule.value["not_cond"]
 
           dynamic "event_details" {
             for_each = sys_event_rule.value.event_details
             content {
-              comparator          = event_details.value["comparator"]
-              event_details_key   = event_details.value["event_details_key"]
+              # comparator - (required) is a type of string
+              comparator = event_details.value["comparator"]
+              # event_details_key - (required) is a type of string
+              event_details_key = event_details.value["event_details_key"]
+              # event_details_value - (required) is a type of string
               event_details_value = event_details.value["event_details_value"]
             }
           }

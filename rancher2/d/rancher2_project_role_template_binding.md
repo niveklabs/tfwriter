@@ -64,8 +64,11 @@ variable "role_template_id" {
 
 ```terraform
 data "rancher2_project_role_template_binding" "this" {
-  name             = var.name
-  project_id       = var.project_id
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # role_template_id - (optional) is a type of string
   role_template_id = var.role_template_id
 }
 ```

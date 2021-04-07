@@ -135,24 +135,39 @@ variable "term" {
 
 ```terraform
 resource "newrelic_plugins_alert_condition" "this" {
-  enabled            = var.enabled
-  entities           = var.entities
-  metric             = var.metric
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # entities - (required) is a type of set of number
+  entities = var.entities
+  # metric - (required) is a type of string
+  metric = var.metric
+  # metric_description - (required) is a type of string
   metric_description = var.metric_description
-  name               = var.name
-  plugin_guid        = var.plugin_guid
-  plugin_id          = var.plugin_id
-  policy_id          = var.policy_id
-  runbook_url        = var.runbook_url
-  value_function     = var.value_function
+  # name - (required) is a type of string
+  name = var.name
+  # plugin_guid - (required) is a type of string
+  plugin_guid = var.plugin_guid
+  # plugin_id - (required) is a type of string
+  plugin_id = var.plugin_id
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # runbook_url - (optional) is a type of string
+  runbook_url = var.runbook_url
+  # value_function - (required) is a type of string
+  value_function = var.value_function
 
   dynamic "term" {
     for_each = var.term
     content {
-      duration      = term.value["duration"]
-      operator      = term.value["operator"]
-      priority      = term.value["priority"]
-      threshold     = term.value["threshold"]
+      # duration - (required) is a type of number
+      duration = term.value["duration"]
+      # operator - (optional) is a type of string
+      operator = term.value["operator"]
+      # priority - (optional) is a type of string
+      priority = term.value["priority"]
+      # threshold - (required) is a type of number
+      threshold = term.value["threshold"]
+      # time_function - (required) is a type of string
       time_function = term.value["time_function"]
     }
   }

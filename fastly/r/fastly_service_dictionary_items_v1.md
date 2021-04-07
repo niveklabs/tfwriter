@@ -64,9 +64,12 @@ variable "service_id" {
 
 ```terraform
 resource "fastly_service_dictionary_items_v1" "this" {
+  # dictionary_id - (required) is a type of string
   dictionary_id = var.dictionary_id
-  items         = var.items
-  service_id    = var.service_id
+  # items - (optional) is a type of map of string
+  items = var.items
+  # service_id - (required) is a type of string
+  service_id = var.service_id
 }
 ```
 

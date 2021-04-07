@@ -73,13 +73,17 @@ variable "interfaces" {
 
 ```terraform
 resource "bigip_net_vlan" "this" {
+  # name - (required) is a type of string
   name = var.name
-  tag  = var.tag
+  # tag - (optional) is a type of number
+  tag = var.tag
 
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
-      tagged   = interfaces.value["tagged"]
+      # tagged - (optional) is a type of bool
+      tagged = interfaces.value["tagged"]
+      # vlanport - (optional) is a type of string
       vlanport = interfaces.value["vlanport"]
     }
   }

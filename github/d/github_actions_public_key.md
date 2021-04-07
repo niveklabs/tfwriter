@@ -49,6 +49,7 @@ variable "repository" {
 
 ```terraform
 data "github_actions_public_key" "this" {
+  # repository - (required) is a type of string
   repository = var.repository
 }
 ```

@@ -64,8 +64,11 @@ variable "source_id" {
 
 ```terraform
 resource "ns1_datafeed" "this" {
-  config    = var.config
-  name      = var.name
+  # config - (optional) is a type of map of string
+  config = var.config
+  # name - (required) is a type of string
+  name = var.name
+  # source_id - (required) is a type of string
   source_id = var.source_id
 }
 ```

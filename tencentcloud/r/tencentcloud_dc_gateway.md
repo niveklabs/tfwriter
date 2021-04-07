@@ -71,10 +71,14 @@ variable "network_type" {
 
 ```terraform
 resource "tencentcloud_dc_gateway" "this" {
-  gateway_type        = var.gateway_type
-  name                = var.name
+  # gateway_type - (optional) is a type of string
+  gateway_type = var.gateway_type
+  # name - (required) is a type of string
+  name = var.name
+  # network_instance_id - (required) is a type of string
   network_instance_id = var.network_instance_id
-  network_type        = var.network_type
+  # network_type - (required) is a type of string
+  network_type = var.network_type
 }
 ```
 

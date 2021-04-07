@@ -129,17 +129,28 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_access_point_name" "this" {
-  apn                                  = var.apn
+  # apn - (optional) is a type of string
+  apn = var.apn
+  # block_traffic_other_end_user_domains - (optional) is a type of bool
   block_traffic_other_end_user_domains = var.block_traffic_other_end_user_domains
-  block_traffic_this_end_user_domain   = var.block_traffic_this_end_user_domain
-  color                                = var.color
-  comments                             = var.comments
-  end_user_domain                      = var.end_user_domain
-  enforce_end_user_domain              = var.enforce_end_user_domain
-  ignore_errors                        = var.ignore_errors
-  ignore_warnings                      = var.ignore_warnings
-  name                                 = var.name
-  tags                                 = var.tags
+  # block_traffic_this_end_user_domain - (optional) is a type of bool
+  block_traffic_this_end_user_domain = var.block_traffic_this_end_user_domain
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # end_user_domain - (optional) is a type of string
+  end_user_domain = var.end_user_domain
+  # enforce_end_user_domain - (optional) is a type of bool
+  enforce_end_user_domain = var.enforce_end_user_domain
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

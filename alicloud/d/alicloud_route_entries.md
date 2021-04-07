@@ -81,11 +81,16 @@ variable "type" {
 
 ```terraform
 data "alicloud_route_entries" "this" {
-  cidr_block     = var.cidr_block
-  instance_id    = var.instance_id
-  output_file    = var.output_file
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
-  type           = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

@@ -66,13 +66,16 @@ variable "case" {
 
 ```terraform
 resource "datadog_security_monitoring_default_rule" "this" {
+  # enabled - (optional) is a type of bool
   enabled = var.enabled
 
   dynamic "case" {
     for_each = var.case
     content {
+      # notifications - (required) is a type of list of string
       notifications = case.value["notifications"]
-      status        = case.value["status"]
+      # status - (required) is a type of string
+      status = case.value["status"]
     }
   }
 

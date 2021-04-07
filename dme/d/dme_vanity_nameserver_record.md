@@ -81,11 +81,16 @@ variable "servers" {
 
 ```terraform
 data "dme_vanity_nameserver_record" "this" {
-  default_config       = var.default_config
-  name                 = var.name
+  # default_config - (optional) is a type of string
+  default_config = var.default_config
+  # name - (required) is a type of string
+  name = var.name
+  # name_server_group_id - (optional) is a type of string
   name_server_group_id = var.name_server_group_id
-  public_config        = var.public_config
-  servers              = var.servers
+  # public_config - (optional) is a type of string
+  public_config = var.public_config
+  # servers - (optional) is a type of list of string
+  servers = var.servers
 }
 ```
 

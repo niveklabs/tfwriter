@@ -65,8 +65,11 @@ variable "source" {
 
 ```terraform
 data "digitalocean_image" "this" {
-  name   = var.name
-  slug   = var.slug
+  # name - (optional) is a type of string
+  name = var.name
+  # slug - (optional) is a type of string
+  slug = var.slug
+  # source - (optional) is a type of string
   source = var.source
 }
 ```

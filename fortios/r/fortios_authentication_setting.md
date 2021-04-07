@@ -122,16 +122,26 @@ variable "sso_auth_scheme" {
 
 ```terraform
 resource "fortios_authentication_setting" "this" {
-  active_auth_scheme      = var.active_auth_scheme
-  auth_https              = var.auth_https
-  captive_portal          = var.captive_portal
-  captive_portal6         = var.captive_portal6
-  captive_portal_ip       = var.captive_portal_ip
-  captive_portal_ip6      = var.captive_portal_ip6
-  captive_portal_port     = var.captive_portal_port
+  # active_auth_scheme - (optional) is a type of string
+  active_auth_scheme = var.active_auth_scheme
+  # auth_https - (optional) is a type of string
+  auth_https = var.auth_https
+  # captive_portal - (optional) is a type of string
+  captive_portal = var.captive_portal
+  # captive_portal6 - (optional) is a type of string
+  captive_portal6 = var.captive_portal6
+  # captive_portal_ip - (optional) is a type of string
+  captive_portal_ip = var.captive_portal_ip
+  # captive_portal_ip6 - (optional) is a type of string
+  captive_portal_ip6 = var.captive_portal_ip6
+  # captive_portal_port - (optional) is a type of number
+  captive_portal_port = var.captive_portal_port
+  # captive_portal_ssl_port - (optional) is a type of number
   captive_portal_ssl_port = var.captive_portal_ssl_port
-  captive_portal_type     = var.captive_portal_type
-  sso_auth_scheme         = var.sso_auth_scheme
+  # captive_portal_type - (optional) is a type of string
+  captive_portal_type = var.captive_portal_type
+  # sso_auth_scheme - (optional) is a type of string
+  sso_auth_scheme = var.sso_auth_scheme
 }
 ```
 

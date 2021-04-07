@@ -72,10 +72,14 @@ variable "source_sha" {
 
 ```terraform
 resource "github_branch" "this" {
-  branch        = var.branch
-  repository    = var.repository
+  # branch - (required) is a type of string
+  branch = var.branch
+  # repository - (required) is a type of string
+  repository = var.repository
+  # source_branch - (optional) is a type of string
   source_branch = var.source_branch
-  source_sha    = var.source_sha
+  # source_sha - (optional) is a type of string
+  source_sha = var.source_sha
 }
 ```
 

@@ -88,12 +88,18 @@ variable "vsys" {
 
 ```terraform
 resource "panos_dynamic_user_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  filter       = var.filter
-  name         = var.name
-  tags         = var.tags
-  vsys         = var.vsys
+  # filter - (required) is a type of string
+  filter = var.filter
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

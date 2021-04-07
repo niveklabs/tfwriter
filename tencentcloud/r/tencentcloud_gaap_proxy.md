@@ -101,14 +101,22 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_gaap_proxy" "this" {
-  access_region     = var.access_region
-  bandwidth         = var.bandwidth
-  concurrent        = var.concurrent
-  enable            = var.enable
-  name              = var.name
-  project_id        = var.project_id
+  # access_region - (required) is a type of string
+  access_region = var.access_region
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # concurrent - (required) is a type of number
+  concurrent = var.concurrent
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # realserver_region - (required) is a type of string
   realserver_region = var.realserver_region
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

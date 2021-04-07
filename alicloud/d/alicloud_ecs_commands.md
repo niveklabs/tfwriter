@@ -106,14 +106,22 @@ variable "type" {
 
 ```terraform
 data "alicloud_ecs_commands" "this" {
+  # command_provider - (optional) is a type of string
   command_provider = var.command_provider
+  # content_encoding - (optional) is a type of string
   content_encoding = var.content_encoding
-  description      = var.description
-  ids              = var.ids
-  name             = var.name
-  name_regex       = var.name_regex
-  output_file      = var.output_file
-  type             = var.type
+  # description - (optional) is a type of string
+  description = var.description
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name - (optional) is a type of string
+  name = var.name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_tcp_reset_on_error" "this" {
+  # enable - (optional) is a type of number
   enable = var.enable
-  uuid   = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

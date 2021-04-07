@@ -56,8 +56,10 @@ variable "policy_id" {
 
 ```terraform
 resource "newrelic_alert_policy_channel" "this" {
+  # channel_ids - (required) is a type of set of number
   channel_ids = var.channel_ids
-  policy_id   = var.policy_id
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
 }
 ```
 

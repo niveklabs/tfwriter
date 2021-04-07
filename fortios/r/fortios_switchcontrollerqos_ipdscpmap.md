@@ -87,18 +87,26 @@ variable "map" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_ipdscpmap" "this" {
-  description           = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "map" {
     for_each = var.map
     content {
-      cos_queue     = map.value["cos_queue"]
-      diffserv      = map.value["diffserv"]
+      # cos_queue - (optional) is a type of number
+      cos_queue = map.value["cos_queue"]
+      # diffserv - (optional) is a type of string
+      diffserv = map.value["diffserv"]
+      # ip_precedence - (optional) is a type of string
       ip_precedence = map.value["ip_precedence"]
-      name          = map.value["name"]
-      value         = map.value["value"]
+      # name - (optional) is a type of string
+      name = map.value["name"]
+      # value - (optional) is a type of string
+      value = map.value["value"]
     }
   }
 

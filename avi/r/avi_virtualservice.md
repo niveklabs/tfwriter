@@ -1753,73 +1753,136 @@ variable "vs_datascripts" {
 
 ```terraform
 resource "avi_virtualservice" "this" {
-  active_standby_se_tag              = var.active_standby_se_tag
-  allow_invalid_client_cert          = var.allow_invalid_client_cert
-  analytics_profile_ref              = var.analytics_profile_ref
-  apic_contract_graph                = var.apic_contract_graph
-  application_profile_ref            = var.application_profile_ref
-  bulk_sync_kvcache                  = var.bulk_sync_kvcache
+  # active_standby_se_tag - (optional) is a type of string
+  active_standby_se_tag = var.active_standby_se_tag
+  # allow_invalid_client_cert - (optional) is a type of bool
+  allow_invalid_client_cert = var.allow_invalid_client_cert
+  # analytics_profile_ref - (optional) is a type of string
+  analytics_profile_ref = var.analytics_profile_ref
+  # apic_contract_graph - (optional) is a type of string
+  apic_contract_graph = var.apic_contract_graph
+  # application_profile_ref - (optional) is a type of string
+  application_profile_ref = var.application_profile_ref
+  # bulk_sync_kvcache - (optional) is a type of bool
+  bulk_sync_kvcache = var.bulk_sync_kvcache
+  # close_client_conn_on_config_update - (optional) is a type of bool
   close_client_conn_on_config_update = var.close_client_conn_on_config_update
-  cloud_config_cksum                 = var.cloud_config_cksum
-  cloud_ref                          = var.cloud_ref
-  cloud_type                         = var.cloud_type
-  created_by                         = var.created_by
-  delay_fairness                     = var.delay_fairness
-  description                        = var.description
-  east_west_placement                = var.east_west_placement
-  enable_autogw                      = var.enable_autogw
-  enable_rhi                         = var.enable_rhi
-  enable_rhi_snat                    = var.enable_rhi_snat
-  enabled                            = var.enabled
-  error_page_profile_ref             = var.error_page_profile_ref
-  flow_dist                          = var.flow_dist
-  flow_label_type                    = var.flow_label_type
-  fqdn                               = var.fqdn
-  host_name_xlate                    = var.host_name_xlate
-  ign_pool_net_reach                 = var.ign_pool_net_reach
-  limit_doser                        = var.limit_doser
-  max_cps_per_client                 = var.max_cps_per_client
-  microservice_ref                   = var.microservice_ref
-  min_pools_up                       = var.min_pools_up
-  name                               = var.name
-  network_profile_ref                = var.network_profile_ref
-  network_security_policy_ref        = var.network_security_policy_ref
-  nsx_securitygroup                  = var.nsx_securitygroup
-  pool_group_ref                     = var.pool_group_ref
-  pool_ref                           = var.pool_ref
-  remove_listening_port_on_vs_down   = var.remove_listening_port_on_vs_down
-  scaleout_ecmp                      = var.scaleout_ecmp
-  se_group_ref                       = var.se_group_ref
-  security_policy_ref                = var.security_policy_ref
-  server_network_profile_ref         = var.server_network_profile_ref
-  service_metadata                   = var.service_metadata
-  ssl_key_and_certificate_refs       = var.ssl_key_and_certificate_refs
-  ssl_profile_ref                    = var.ssl_profile_ref
-  ssl_sess_cache_avg_size            = var.ssl_sess_cache_avg_size
-  sso_policy_ref                     = var.sso_policy_ref
-  tenant_ref                         = var.tenant_ref
-  test_se_datastore_level_1_ref      = var.test_se_datastore_level_1_ref
-  traffic_clone_profile_ref          = var.traffic_clone_profile_ref
-  traffic_enabled                    = var.traffic_enabled
-  type                               = var.type
-  use_bridge_ip_as_vip               = var.use_bridge_ip_as_vip
-  use_vip_as_snat                    = var.use_vip_as_snat
-  uuid                               = var.uuid
-  vh_domain_name                     = var.vh_domain_name
-  vh_parent_vs_uuid                  = var.vh_parent_vs_uuid
-  vrf_context_ref                    = var.vrf_context_ref
-  vsvip_cloud_config_cksum           = var.vsvip_cloud_config_cksum
-  vsvip_ref                          = var.vsvip_ref
-  waf_policy_ref                     = var.waf_policy_ref
-  weight                             = var.weight
+  # cloud_config_cksum - (optional) is a type of string
+  cloud_config_cksum = var.cloud_config_cksum
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # cloud_type - (optional) is a type of string
+  cloud_type = var.cloud_type
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # delay_fairness - (optional) is a type of bool
+  delay_fairness = var.delay_fairness
+  # description - (optional) is a type of string
+  description = var.description
+  # east_west_placement - (optional) is a type of bool
+  east_west_placement = var.east_west_placement
+  # enable_autogw - (optional) is a type of bool
+  enable_autogw = var.enable_autogw
+  # enable_rhi - (optional) is a type of bool
+  enable_rhi = var.enable_rhi
+  # enable_rhi_snat - (optional) is a type of bool
+  enable_rhi_snat = var.enable_rhi_snat
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # error_page_profile_ref - (optional) is a type of string
+  error_page_profile_ref = var.error_page_profile_ref
+  # flow_dist - (optional) is a type of string
+  flow_dist = var.flow_dist
+  # flow_label_type - (optional) is a type of string
+  flow_label_type = var.flow_label_type
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # host_name_xlate - (optional) is a type of string
+  host_name_xlate = var.host_name_xlate
+  # ign_pool_net_reach - (optional) is a type of bool
+  ign_pool_net_reach = var.ign_pool_net_reach
+  # limit_doser - (optional) is a type of bool
+  limit_doser = var.limit_doser
+  # max_cps_per_client - (optional) is a type of number
+  max_cps_per_client = var.max_cps_per_client
+  # microservice_ref - (optional) is a type of string
+  microservice_ref = var.microservice_ref
+  # min_pools_up - (optional) is a type of number
+  min_pools_up = var.min_pools_up
+  # name - (required) is a type of string
+  name = var.name
+  # network_profile_ref - (optional) is a type of string
+  network_profile_ref = var.network_profile_ref
+  # network_security_policy_ref - (optional) is a type of string
+  network_security_policy_ref = var.network_security_policy_ref
+  # nsx_securitygroup - (optional) is a type of list of string
+  nsx_securitygroup = var.nsx_securitygroup
+  # pool_group_ref - (optional) is a type of string
+  pool_group_ref = var.pool_group_ref
+  # pool_ref - (optional) is a type of string
+  pool_ref = var.pool_ref
+  # remove_listening_port_on_vs_down - (optional) is a type of bool
+  remove_listening_port_on_vs_down = var.remove_listening_port_on_vs_down
+  # scaleout_ecmp - (optional) is a type of bool
+  scaleout_ecmp = var.scaleout_ecmp
+  # se_group_ref - (optional) is a type of string
+  se_group_ref = var.se_group_ref
+  # security_policy_ref - (optional) is a type of string
+  security_policy_ref = var.security_policy_ref
+  # server_network_profile_ref - (optional) is a type of string
+  server_network_profile_ref = var.server_network_profile_ref
+  # service_metadata - (optional) is a type of string
+  service_metadata = var.service_metadata
+  # ssl_key_and_certificate_refs - (optional) is a type of list of string
+  ssl_key_and_certificate_refs = var.ssl_key_and_certificate_refs
+  # ssl_profile_ref - (optional) is a type of string
+  ssl_profile_ref = var.ssl_profile_ref
+  # ssl_sess_cache_avg_size - (optional) is a type of number
+  ssl_sess_cache_avg_size = var.ssl_sess_cache_avg_size
+  # sso_policy_ref - (optional) is a type of string
+  sso_policy_ref = var.sso_policy_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # test_se_datastore_level_1_ref - (optional) is a type of string
+  test_se_datastore_level_1_ref = var.test_se_datastore_level_1_ref
+  # traffic_clone_profile_ref - (optional) is a type of string
+  traffic_clone_profile_ref = var.traffic_clone_profile_ref
+  # traffic_enabled - (optional) is a type of bool
+  traffic_enabled = var.traffic_enabled
+  # type - (optional) is a type of string
+  type = var.type
+  # use_bridge_ip_as_vip - (optional) is a type of bool
+  use_bridge_ip_as_vip = var.use_bridge_ip_as_vip
+  # use_vip_as_snat - (optional) is a type of bool
+  use_vip_as_snat = var.use_vip_as_snat
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vh_domain_name - (optional) is a type of list of string
+  vh_domain_name = var.vh_domain_name
+  # vh_parent_vs_uuid - (optional) is a type of string
+  vh_parent_vs_uuid = var.vh_parent_vs_uuid
+  # vrf_context_ref - (optional) is a type of string
+  vrf_context_ref = var.vrf_context_ref
+  # vsvip_cloud_config_cksum - (optional) is a type of string
+  vsvip_cloud_config_cksum = var.vsvip_cloud_config_cksum
+  # vsvip_ref - (optional) is a type of string
+  vsvip_ref = var.vsvip_ref
+  # waf_policy_ref - (optional) is a type of string
+  waf_policy_ref = var.waf_policy_ref
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "analytics_policy" {
     for_each = var.analytics_policy
     content {
-      all_headers              = analytics_policy.value["all_headers"]
-      client_insights          = analytics_policy.value["client_insights"]
+      # all_headers - (optional) is a type of bool
+      all_headers = analytics_policy.value["all_headers"]
+      # client_insights - (optional) is a type of string
+      client_insights = analytics_policy.value["client_insights"]
+      # significant_log_throttle - (optional) is a type of number
       significant_log_throttle = analytics_policy.value["significant_log_throttle"]
-      udf_log_throttle         = analytics_policy.value["udf_log_throttle"]
+      # udf_log_throttle - (optional) is a type of number
+      udf_log_throttle = analytics_policy.value["udf_log_throttle"]
 
       dynamic "client_insights_sampling" {
         for_each = analytics_policy.value.client_insights_sampling
@@ -1828,13 +1891,17 @@ resource "avi_virtualservice" "this" {
           dynamic "client_ip" {
             for_each = client_insights_sampling.value.client_ip
             content {
-              group_refs     = client_ip.value["group_refs"]
+              # group_refs - (optional) is a type of list of string
+              group_refs = client_ip.value["group_refs"]
+              # match_criteria - (required) is a type of string
               match_criteria = client_ip.value["match_criteria"]
 
               dynamic "addrs" {
                 for_each = client_ip.value.addrs
                 content {
+                  # addr - (required) is a type of string
                   addr = addrs.value["addr"]
+                  # type - (required) is a type of string
                   type = addrs.value["type"]
                 }
               }
@@ -1842,12 +1909,15 @@ resource "avi_virtualservice" "this" {
               dynamic "prefixes" {
                 for_each = client_ip.value.prefixes
                 content {
+                  # mask - (required) is a type of number
                   mask = prefixes.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = prefixes.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -1862,7 +1932,9 @@ resource "avi_virtualservice" "this" {
                   dynamic "begin" {
                     for_each = ranges.value.begin
                     content {
+                      # addr - (required) is a type of string
                       addr = begin.value["addr"]
+                      # type - (required) is a type of string
                       type = begin.value["type"]
                     }
                   }
@@ -1870,7 +1942,9 @@ resource "avi_virtualservice" "this" {
                   dynamic "end" {
                     for_each = ranges.value.end
                     content {
+                      # addr - (required) is a type of string
                       addr = end.value["addr"]
+                      # type - (required) is a type of string
                       type = end.value["type"]
                     }
                   }
@@ -1884,8 +1958,11 @@ resource "avi_virtualservice" "this" {
           dynamic "sample_uris" {
             for_each = client_insights_sampling.value.sample_uris
             content {
-              match_criteria    = sample_uris.value["match_criteria"]
-              match_str         = sample_uris.value["match_str"]
+              # match_criteria - (required) is a type of string
+              match_criteria = sample_uris.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = sample_uris.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = sample_uris.value["string_group_refs"]
             }
           }
@@ -1893,8 +1970,11 @@ resource "avi_virtualservice" "this" {
           dynamic "skip_uris" {
             for_each = client_insights_sampling.value.skip_uris
             content {
-              match_criteria    = skip_uris.value["match_criteria"]
-              match_str         = skip_uris.value["match_str"]
+              # match_criteria - (required) is a type of string
+              match_criteria = skip_uris.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = skip_uris.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = skip_uris.value["string_group_refs"]
             }
           }
@@ -1905,22 +1985,31 @@ resource "avi_virtualservice" "this" {
       dynamic "client_log_filters" {
         for_each = analytics_policy.value.client_log_filters
         content {
+          # all_headers - (optional) is a type of bool
           all_headers = client_log_filters.value["all_headers"]
-          duration    = client_log_filters.value["duration"]
-          enabled     = client_log_filters.value["enabled"]
-          index       = client_log_filters.value["index"]
-          name        = client_log_filters.value["name"]
+          # duration - (optional) is a type of number
+          duration = client_log_filters.value["duration"]
+          # enabled - (required) is a type of bool
+          enabled = client_log_filters.value["enabled"]
+          # index - (required) is a type of number
+          index = client_log_filters.value["index"]
+          # name - (required) is a type of string
+          name = client_log_filters.value["name"]
 
           dynamic "client_ip" {
             for_each = client_log_filters.value.client_ip
             content {
-              group_refs     = client_ip.value["group_refs"]
+              # group_refs - (optional) is a type of list of string
+              group_refs = client_ip.value["group_refs"]
+              # match_criteria - (required) is a type of string
               match_criteria = client_ip.value["match_criteria"]
 
               dynamic "addrs" {
                 for_each = client_ip.value.addrs
                 content {
+                  # addr - (required) is a type of string
                   addr = addrs.value["addr"]
+                  # type - (required) is a type of string
                   type = addrs.value["type"]
                 }
               }
@@ -1928,12 +2017,15 @@ resource "avi_virtualservice" "this" {
               dynamic "prefixes" {
                 for_each = client_ip.value.prefixes
                 content {
+                  # mask - (required) is a type of number
                   mask = prefixes.value["mask"]
 
                   dynamic "ip_addr" {
                     for_each = prefixes.value.ip_addr
                     content {
+                      # addr - (required) is a type of string
                       addr = ip_addr.value["addr"]
+                      # type - (required) is a type of string
                       type = ip_addr.value["type"]
                     }
                   }
@@ -1948,7 +2040,9 @@ resource "avi_virtualservice" "this" {
                   dynamic "begin" {
                     for_each = ranges.value.begin
                     content {
+                      # addr - (required) is a type of string
                       addr = begin.value["addr"]
+                      # type - (required) is a type of string
                       type = begin.value["type"]
                     }
                   }
@@ -1956,7 +2050,9 @@ resource "avi_virtualservice" "this" {
                   dynamic "end" {
                     for_each = ranges.value.end
                     content {
+                      # addr - (required) is a type of string
                       addr = end.value["addr"]
+                      # type - (required) is a type of string
                       type = end.value["type"]
                     }
                   }
@@ -1970,8 +2066,11 @@ resource "avi_virtualservice" "this" {
           dynamic "uri" {
             for_each = client_log_filters.value.uri
             content {
-              match_criteria    = uri.value["match_criteria"]
-              match_str         = uri.value["match_str"]
+              # match_criteria - (required) is a type of string
+              match_criteria = uri.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = uri.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = uri.value["string_group_refs"]
             }
           }
@@ -1982,8 +2081,11 @@ resource "avi_virtualservice" "this" {
       dynamic "full_client_logs" {
         for_each = analytics_policy.value.full_client_logs
         content {
+          # duration - (optional) is a type of number
           duration = full_client_logs.value["duration"]
-          enabled  = full_client_logs.value["enabled"]
+          # enabled - (required) is a type of bool
+          enabled = full_client_logs.value["enabled"]
+          # throttle - (optional) is a type of number
           throttle = full_client_logs.value["throttle"]
         }
       }
@@ -1991,8 +2093,10 @@ resource "avi_virtualservice" "this" {
       dynamic "metrics_realtime_update" {
         for_each = analytics_policy.value.metrics_realtime_update
         content {
+          # duration - (optional) is a type of number
           duration = metrics_realtime_update.value["duration"]
-          enabled  = metrics_realtime_update.value["enabled"]
+          # enabled - (required) is a type of bool
+          enabled = metrics_realtime_update.value["enabled"]
         }
       }
 
@@ -2002,15 +2106,21 @@ resource "avi_virtualservice" "this" {
   dynamic "client_auth" {
     for_each = var.client_auth
     content {
+      # auth_profile_ref - (optional) is a type of string
       auth_profile_ref = client_auth.value["auth_profile_ref"]
-      realm            = client_auth.value["realm"]
-      type             = client_auth.value["type"]
+      # realm - (optional) is a type of string
+      realm = client_auth.value["realm"]
+      # type - (optional) is a type of string
+      type = client_auth.value["type"]
 
       dynamic "request_uri_path" {
         for_each = client_auth.value.request_uri_path
         content {
-          match_criteria    = request_uri_path.value["match_criteria"]
-          match_str         = request_uri_path.value["match_str"]
+          # match_criteria - (required) is a type of string
+          match_criteria = request_uri_path.value["match_criteria"]
+          # match_str - (optional) is a type of list of string
+          match_str = request_uri_path.value["match_str"]
+          # string_group_refs - (optional) is a type of list of string
           string_group_refs = request_uri_path.value["string_group_refs"]
         }
       }
@@ -2021,21 +2131,29 @@ resource "avi_virtualservice" "this" {
   dynamic "connections_rate_limit" {
     for_each = var.connections_rate_limit
     content {
+      # explicit_tracking - (optional) is a type of bool
       explicit_tracking = connections_rate_limit.value["explicit_tracking"]
-      fine_grain        = connections_rate_limit.value["fine_grain"]
-      http_cookie       = connections_rate_limit.value["http_cookie"]
-      http_header       = connections_rate_limit.value["http_header"]
+      # fine_grain - (optional) is a type of bool
+      fine_grain = connections_rate_limit.value["fine_grain"]
+      # http_cookie - (optional) is a type of string
+      http_cookie = connections_rate_limit.value["http_cookie"]
+      # http_header - (optional) is a type of string
+      http_header = connections_rate_limit.value["http_header"]
 
       dynamic "action" {
         for_each = connections_rate_limit.value.action
         content {
+          # status_code - (optional) is a type of string
           status_code = action.value["status_code"]
-          type        = action.value["type"]
+          # type - (optional) is a type of string
+          type = action.value["type"]
 
           dynamic "file" {
             for_each = action.value.file
             content {
+              # content_type - (required) is a type of string
               content_type = file.value["content_type"]
+              # file_content - (required) is a type of string
               file_content = file.value["file_content"]
             }
           }
@@ -2043,23 +2161,32 @@ resource "avi_virtualservice" "this" {
           dynamic "redirect" {
             for_each = action.value.redirect
             content {
-              keep_query  = redirect.value["keep_query"]
-              port        = redirect.value["port"]
-              protocol    = redirect.value["protocol"]
+              # keep_query - (optional) is a type of bool
+              keep_query = redirect.value["keep_query"]
+              # port - (optional) is a type of number
+              port = redirect.value["port"]
+              # protocol - (required) is a type of string
+              protocol = redirect.value["protocol"]
+              # status_code - (optional) is a type of string
               status_code = redirect.value["status_code"]
 
               dynamic "host" {
                 for_each = redirect.value.host
                 content {
+                  # type - (required) is a type of string
                   type = host.value["type"]
 
                   dynamic "tokens" {
                     for_each = host.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -2069,15 +2196,20 @@ resource "avi_virtualservice" "this" {
               dynamic "path" {
                 for_each = redirect.value.path
                 content {
+                  # type - (required) is a type of string
                   type = path.value["type"]
 
                   dynamic "tokens" {
                     for_each = path.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -2093,10 +2225,14 @@ resource "avi_virtualservice" "this" {
       dynamic "rate_limiter" {
         for_each = connections_rate_limit.value.rate_limiter
         content {
+          # burst_sz - (optional) is a type of number
           burst_sz = rate_limiter.value["burst_sz"]
-          count    = rate_limiter.value["count"]
-          name     = rate_limiter.value["name"]
-          period   = rate_limiter.value["period"]
+          # count - (optional) is a type of number
+          count = rate_limiter.value["count"]
+          # name - (optional) is a type of string
+          name = rate_limiter.value["name"]
+          # period - (optional) is a type of number
+          period = rate_limiter.value["period"]
         }
       }
 
@@ -2106,20 +2242,26 @@ resource "avi_virtualservice" "this" {
   dynamic "content_rewrite" {
     for_each = var.content_rewrite
     content {
-      request_rewrite_enabled  = content_rewrite.value["request_rewrite_enabled"]
+      # request_rewrite_enabled - (optional) is a type of bool
+      request_rewrite_enabled = content_rewrite.value["request_rewrite_enabled"]
+      # response_rewrite_enabled - (optional) is a type of bool
       response_rewrite_enabled = content_rewrite.value["response_rewrite_enabled"]
-      rewritable_content_ref   = content_rewrite.value["rewritable_content_ref"]
+      # rewritable_content_ref - (optional) is a type of string
+      rewritable_content_ref = content_rewrite.value["rewritable_content_ref"]
 
       dynamic "req_match_replace_pair" {
         for_each = content_rewrite.value.req_match_replace_pair
         content {
+          # match_string - (optional) is a type of string
           match_string = req_match_replace_pair.value["match_string"]
 
           dynamic "replacement_string" {
             for_each = req_match_replace_pair.value.replacement_string
             content {
+              # type - (optional) is a type of string
               type = replacement_string.value["type"]
-              val  = replacement_string.value["val"]
+              # val - (optional) is a type of string
+              val = replacement_string.value["val"]
             }
           }
 
@@ -2129,13 +2271,16 @@ resource "avi_virtualservice" "this" {
       dynamic "rsp_match_replace_pair" {
         for_each = content_rewrite.value.rsp_match_replace_pair
         content {
+          # match_string - (optional) is a type of string
           match_string = rsp_match_replace_pair.value["match_string"]
 
           dynamic "replacement_string" {
             for_each = rsp_match_replace_pair.value.replacement_string
             content {
+              # type - (optional) is a type of string
               type = replacement_string.value["type"]
-              val  = replacement_string.value["val"]
+              # val - (optional) is a type of string
+              val = replacement_string.value["val"]
             }
           }
 
@@ -2148,15 +2293,21 @@ resource "avi_virtualservice" "this" {
   dynamic "dns_info" {
     for_each = var.dns_info
     content {
-      algorithm               = dns_info.value["algorithm"]
-      fqdn                    = dns_info.value["fqdn"]
+      # algorithm - (optional) is a type of string
+      algorithm = dns_info.value["algorithm"]
+      # fqdn - (optional) is a type of string
+      fqdn = dns_info.value["fqdn"]
+      # num_records_in_response - (optional) is a type of number
       num_records_in_response = dns_info.value["num_records_in_response"]
-      ttl                     = dns_info.value["ttl"]
-      type                    = dns_info.value["type"]
+      # ttl - (optional) is a type of number
+      ttl = dns_info.value["ttl"]
+      # type - (optional) is a type of string
+      type = dns_info.value["type"]
 
       dynamic "cname" {
         for_each = dns_info.value.cname
         content {
+          # cname - (required) is a type of string
           cname = cname.value["cname"]
         }
       }
@@ -2167,23 +2318,29 @@ resource "avi_virtualservice" "this" {
   dynamic "dns_policies" {
     for_each = var.dns_policies
     content {
+      # dns_policy_ref - (optional) is a type of string
       dns_policy_ref = dns_policies.value["dns_policy_ref"]
-      index          = dns_policies.value["index"]
+      # index - (optional) is a type of number
+      index = dns_policies.value["index"]
     }
   }
 
   dynamic "http_policies" {
     for_each = var.http_policies
     content {
+      # http_policy_set_ref - (required) is a type of string
       http_policy_set_ref = http_policies.value["http_policy_set_ref"]
-      index               = http_policies.value["index"]
+      # index - (required) is a type of number
+      index = http_policies.value["index"]
     }
   }
 
   dynamic "l4_policies" {
     for_each = var.l4_policies
     content {
-      index             = l4_policies.value["index"]
+      # index - (optional) is a type of number
+      index = l4_policies.value["index"]
+      # l4_policy_set_ref - (optional) is a type of string
       l4_policy_set_ref = l4_policies.value["l4_policy_set_ref"]
     }
   }
@@ -2191,29 +2348,39 @@ resource "avi_virtualservice" "this" {
   dynamic "performance_limits" {
     for_each = var.performance_limits
     content {
+      # max_concurrent_connections - (optional) is a type of number
       max_concurrent_connections = performance_limits.value["max_concurrent_connections"]
-      max_throughput             = performance_limits.value["max_throughput"]
+      # max_throughput - (optional) is a type of number
+      max_throughput = performance_limits.value["max_throughput"]
     }
   }
 
   dynamic "requests_rate_limit" {
     for_each = var.requests_rate_limit
     content {
+      # explicit_tracking - (optional) is a type of bool
       explicit_tracking = requests_rate_limit.value["explicit_tracking"]
-      fine_grain        = requests_rate_limit.value["fine_grain"]
-      http_cookie       = requests_rate_limit.value["http_cookie"]
-      http_header       = requests_rate_limit.value["http_header"]
+      # fine_grain - (optional) is a type of bool
+      fine_grain = requests_rate_limit.value["fine_grain"]
+      # http_cookie - (optional) is a type of string
+      http_cookie = requests_rate_limit.value["http_cookie"]
+      # http_header - (optional) is a type of string
+      http_header = requests_rate_limit.value["http_header"]
 
       dynamic "action" {
         for_each = requests_rate_limit.value.action
         content {
+          # status_code - (optional) is a type of string
           status_code = action.value["status_code"]
-          type        = action.value["type"]
+          # type - (optional) is a type of string
+          type = action.value["type"]
 
           dynamic "file" {
             for_each = action.value.file
             content {
+              # content_type - (required) is a type of string
               content_type = file.value["content_type"]
+              # file_content - (required) is a type of string
               file_content = file.value["file_content"]
             }
           }
@@ -2221,23 +2388,32 @@ resource "avi_virtualservice" "this" {
           dynamic "redirect" {
             for_each = action.value.redirect
             content {
-              keep_query  = redirect.value["keep_query"]
-              port        = redirect.value["port"]
-              protocol    = redirect.value["protocol"]
+              # keep_query - (optional) is a type of bool
+              keep_query = redirect.value["keep_query"]
+              # port - (optional) is a type of number
+              port = redirect.value["port"]
+              # protocol - (required) is a type of string
+              protocol = redirect.value["protocol"]
+              # status_code - (optional) is a type of string
               status_code = redirect.value["status_code"]
 
               dynamic "host" {
                 for_each = redirect.value.host
                 content {
+                  # type - (required) is a type of string
                   type = host.value["type"]
 
                   dynamic "tokens" {
                     for_each = host.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -2247,15 +2423,20 @@ resource "avi_virtualservice" "this" {
               dynamic "path" {
                 for_each = redirect.value.path
                 content {
+                  # type - (required) is a type of string
                   type = path.value["type"]
 
                   dynamic "tokens" {
                     for_each = path.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -2271,10 +2452,14 @@ resource "avi_virtualservice" "this" {
       dynamic "rate_limiter" {
         for_each = requests_rate_limit.value.rate_limiter
         content {
+          # burst_sz - (optional) is a type of number
           burst_sz = rate_limiter.value["burst_sz"]
-          count    = rate_limiter.value["count"]
-          name     = rate_limiter.value["name"]
-          period   = rate_limiter.value["period"]
+          # count - (optional) is a type of number
+          count = rate_limiter.value["count"]
+          # name - (optional) is a type of string
+          name = rate_limiter.value["name"]
+          # period - (optional) is a type of number
+          period = rate_limiter.value["period"]
         }
       }
 
@@ -2284,18 +2469,26 @@ resource "avi_virtualservice" "this" {
   dynamic "saml_sp_config" {
     for_each = var.saml_sp_config
     content {
-      cookie_name                         = saml_sp_config.value["cookie_name"]
-      cookie_timeout                      = saml_sp_config.value["cookie_timeout"]
-      entity_id                           = saml_sp_config.value["entity_id"]
+      # cookie_name - (optional) is a type of string
+      cookie_name = saml_sp_config.value["cookie_name"]
+      # cookie_timeout - (optional) is a type of number
+      cookie_timeout = saml_sp_config.value["cookie_timeout"]
+      # entity_id - (optional) is a type of string
+      entity_id = saml_sp_config.value["entity_id"]
+      # signing_ssl_key_and_certificate_ref - (optional) is a type of string
       signing_ssl_key_and_certificate_ref = saml_sp_config.value["signing_ssl_key_and_certificate_ref"]
-      single_signon_url                   = saml_sp_config.value["single_signon_url"]
+      # single_signon_url - (optional) is a type of string
+      single_signon_url = saml_sp_config.value["single_signon_url"]
 
       dynamic "key" {
         for_each = saml_sp_config.value.key
         content {
-          aes_key  = key.value["aes_key"]
+          # aes_key - (optional) is a type of string
+          aes_key = key.value["aes_key"]
+          # hmac_key - (optional) is a type of string
           hmac_key = key.value["hmac_key"]
-          name     = key.value["name"]
+          # name - (optional) is a type of string
+          name = key.value["name"]
         }
       }
 
@@ -2305,34 +2498,47 @@ resource "avi_virtualservice" "this" {
   dynamic "service_pool_select" {
     for_each = var.service_pool_select
     content {
+      # service_pool_group_ref - (optional) is a type of string
       service_pool_group_ref = service_pool_select.value["service_pool_group_ref"]
-      service_pool_ref       = service_pool_select.value["service_pool_ref"]
-      service_port           = service_pool_select.value["service_port"]
+      # service_pool_ref - (optional) is a type of string
+      service_pool_ref = service_pool_select.value["service_pool_ref"]
+      # service_port - (required) is a type of number
+      service_port = service_pool_select.value["service_port"]
+      # service_port_range_end - (optional) is a type of number
       service_port_range_end = service_pool_select.value["service_port_range_end"]
-      service_protocol       = service_pool_select.value["service_protocol"]
+      # service_protocol - (optional) is a type of string
+      service_protocol = service_pool_select.value["service_protocol"]
     }
   }
 
   dynamic "services" {
     for_each = var.services
     content {
-      enable_ssl                       = services.value["enable_ssl"]
+      # enable_ssl - (optional) is a type of bool
+      enable_ssl = services.value["enable_ssl"]
+      # override_application_profile_ref - (optional) is a type of string
       override_application_profile_ref = services.value["override_application_profile_ref"]
-      override_network_profile_ref     = services.value["override_network_profile_ref"]
-      port                             = services.value["port"]
-      port_range_end                   = services.value["port_range_end"]
+      # override_network_profile_ref - (optional) is a type of string
+      override_network_profile_ref = services.value["override_network_profile_ref"]
+      # port - (required) is a type of number
+      port = services.value["port"]
+      # port_range_end - (optional) is a type of number
+      port_range_end = services.value["port_range_end"]
     }
   }
 
   dynamic "sideband_profile" {
     for_each = var.sideband_profile
     content {
+      # sideband_max_request_body_size - (optional) is a type of number
       sideband_max_request_body_size = sideband_profile.value["sideband_max_request_body_size"]
 
       dynamic "ip" {
         for_each = sideband_profile.value.ip
         content {
+          # addr - (required) is a type of string
           addr = ip.value["addr"]
+          # type - (required) is a type of string
           type = ip.value["type"]
         }
       }
@@ -2343,7 +2549,9 @@ resource "avi_virtualservice" "this" {
   dynamic "snat_ip" {
     for_each = var.snat_ip
     content {
+      # addr - (required) is a type of string
       addr = snat_ip.value["addr"]
+      # type - (required) is a type of string
       type = snat_ip.value["type"]
     }
   }
@@ -2351,18 +2559,23 @@ resource "avi_virtualservice" "this" {
   dynamic "ssl_profile_selectors" {
     for_each = var.ssl_profile_selectors
     content {
+      # ssl_profile_ref - (optional) is a type of string
       ssl_profile_ref = ssl_profile_selectors.value["ssl_profile_ref"]
 
       dynamic "client_ip_list" {
         for_each = ssl_profile_selectors.value.client_ip_list
         content {
-          group_refs     = client_ip_list.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = client_ip_list.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = client_ip_list.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = client_ip_list.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -2370,12 +2583,15 @@ resource "avi_virtualservice" "this" {
           dynamic "prefixes" {
             for_each = client_ip_list.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2390,7 +2606,9 @@ resource "avi_virtualservice" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -2398,7 +2616,9 @@ resource "avi_virtualservice" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -2415,19 +2635,29 @@ resource "avi_virtualservice" "this" {
   dynamic "static_dns_records" {
     for_each = var.static_dns_records
     content {
-      algorithm               = static_dns_records.value["algorithm"]
-      delegated               = static_dns_records.value["delegated"]
-      description             = static_dns_records.value["description"]
-      fqdn                    = static_dns_records.value["fqdn"]
-      metadata                = static_dns_records.value["metadata"]
+      # algorithm - (optional) is a type of string
+      algorithm = static_dns_records.value["algorithm"]
+      # delegated - (optional) is a type of bool
+      delegated = static_dns_records.value["delegated"]
+      # description - (optional) is a type of string
+      description = static_dns_records.value["description"]
+      # fqdn - (optional) is a type of list of string
+      fqdn = static_dns_records.value["fqdn"]
+      # metadata - (optional) is a type of string
+      metadata = static_dns_records.value["metadata"]
+      # num_records_in_response - (optional) is a type of number
       num_records_in_response = static_dns_records.value["num_records_in_response"]
-      ttl                     = static_dns_records.value["ttl"]
-      type                    = static_dns_records.value["type"]
-      wildcard_match          = static_dns_records.value["wildcard_match"]
+      # ttl - (optional) is a type of number
+      ttl = static_dns_records.value["ttl"]
+      # type - (required) is a type of string
+      type = static_dns_records.value["type"]
+      # wildcard_match - (optional) is a type of bool
+      wildcard_match = static_dns_records.value["wildcard_match"]
 
       dynamic "cname" {
         for_each = static_dns_records.value.cname
         content {
+          # cname - (required) is a type of string
           cname = cname.value["cname"]
         }
       }
@@ -2439,7 +2669,9 @@ resource "avi_virtualservice" "this" {
           dynamic "ip6_address" {
             for_each = ip6_address.value.ip6_address
             content {
+              # addr - (required) is a type of string
               addr = ip6_address.value["addr"]
+              # type - (required) is a type of string
               type = ip6_address.value["type"]
             }
           }
@@ -2454,7 +2686,9 @@ resource "avi_virtualservice" "this" {
           dynamic "ip_address" {
             for_each = ip_address.value.ip_address
             content {
+              # addr - (required) is a type of string
               addr = ip_address.value["addr"]
+              # type - (required) is a type of string
               type = ip_address.value["type"]
             }
           }
@@ -2465,7 +2699,9 @@ resource "avi_virtualservice" "this" {
       dynamic "mx_records" {
         for_each = static_dns_records.value.mx_records
         content {
-          host     = mx_records.value["host"]
+          # host - (optional) is a type of string
+          host = mx_records.value["host"]
+          # priority - (optional) is a type of number
           priority = mx_records.value["priority"]
         }
       }
@@ -2473,12 +2709,15 @@ resource "avi_virtualservice" "this" {
       dynamic "ns" {
         for_each = static_dns_records.value.ns
         content {
+          # nsname - (required) is a type of string
           nsname = ns.value["nsname"]
 
           dynamic "ip6_address" {
             for_each = ns.value.ip6_address
             content {
+              # addr - (required) is a type of string
               addr = ip6_address.value["addr"]
+              # type - (required) is a type of string
               type = ip6_address.value["type"]
             }
           }
@@ -2486,7 +2725,9 @@ resource "avi_virtualservice" "this" {
           dynamic "ip_address" {
             for_each = ns.value.ip_address
             content {
+              # addr - (required) is a type of string
               addr = ip_address.value["addr"]
+              # type - (required) is a type of string
               type = ip_address.value["type"]
             }
           }
@@ -2497,16 +2738,21 @@ resource "avi_virtualservice" "this" {
       dynamic "service_locator" {
         for_each = static_dns_records.value.service_locator
         content {
-          port     = service_locator.value["port"]
+          # port - (required) is a type of number
+          port = service_locator.value["port"]
+          # priority - (optional) is a type of number
           priority = service_locator.value["priority"]
-          target   = service_locator.value["target"]
-          weight   = service_locator.value["weight"]
+          # target - (optional) is a type of string
+          target = service_locator.value["target"]
+          # weight - (optional) is a type of number
+          weight = service_locator.value["weight"]
         }
       }
 
       dynamic "txt_records" {
         for_each = static_dns_records.value.txt_records
         content {
+          # text_str - (optional) is a type of string
           text_str = txt_records.value["text_str"]
         }
       }
@@ -2517,43 +2763,63 @@ resource "avi_virtualservice" "this" {
   dynamic "topology_policies" {
     for_each = var.topology_policies
     content {
+      # dns_policy_ref - (optional) is a type of string
       dns_policy_ref = topology_policies.value["dns_policy_ref"]
-      index          = topology_policies.value["index"]
+      # index - (optional) is a type of number
+      index = topology_policies.value["index"]
     }
   }
 
   dynamic "vip" {
     for_each = var.vip
     content {
+      # auto_allocate_floating_ip - (optional) is a type of bool
       auto_allocate_floating_ip = vip.value["auto_allocate_floating_ip"]
-      auto_allocate_ip          = vip.value["auto_allocate_ip"]
-      auto_allocate_ip_type     = vip.value["auto_allocate_ip_type"]
-      availability_zone         = vip.value["availability_zone"]
-      avi_allocated_fip         = vip.value["avi_allocated_fip"]
-      avi_allocated_vip         = vip.value["avi_allocated_vip"]
-      enabled                   = vip.value["enabled"]
-      floating_subnet6_uuid     = vip.value["floating_subnet6_uuid"]
-      floating_subnet_uuid      = vip.value["floating_subnet_uuid"]
-      network_ref               = vip.value["network_ref"]
-      port_uuid                 = vip.value["port_uuid"]
-      subnet6_uuid              = vip.value["subnet6_uuid"]
-      subnet_uuid               = vip.value["subnet_uuid"]
-      vip_id                    = vip.value["vip_id"]
+      # auto_allocate_ip - (optional) is a type of bool
+      auto_allocate_ip = vip.value["auto_allocate_ip"]
+      # auto_allocate_ip_type - (optional) is a type of string
+      auto_allocate_ip_type = vip.value["auto_allocate_ip_type"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = vip.value["availability_zone"]
+      # avi_allocated_fip - (optional) is a type of bool
+      avi_allocated_fip = vip.value["avi_allocated_fip"]
+      # avi_allocated_vip - (optional) is a type of bool
+      avi_allocated_vip = vip.value["avi_allocated_vip"]
+      # enabled - (optional) is a type of bool
+      enabled = vip.value["enabled"]
+      # floating_subnet6_uuid - (optional) is a type of string
+      floating_subnet6_uuid = vip.value["floating_subnet6_uuid"]
+      # floating_subnet_uuid - (optional) is a type of string
+      floating_subnet_uuid = vip.value["floating_subnet_uuid"]
+      # network_ref - (optional) is a type of string
+      network_ref = vip.value["network_ref"]
+      # port_uuid - (optional) is a type of string
+      port_uuid = vip.value["port_uuid"]
+      # subnet6_uuid - (optional) is a type of string
+      subnet6_uuid = vip.value["subnet6_uuid"]
+      # subnet_uuid - (optional) is a type of string
+      subnet_uuid = vip.value["subnet_uuid"]
+      # vip_id - (optional) is a type of string
+      vip_id = vip.value["vip_id"]
 
       dynamic "discovered_networks" {
         for_each = vip.value.discovered_networks
         content {
+          # network_ref - (required) is a type of string
           network_ref = discovered_networks.value["network_ref"]
 
           dynamic "subnet" {
             for_each = discovered_networks.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2564,12 +2830,15 @@ resource "avi_virtualservice" "this" {
           dynamic "subnet6" {
             for_each = discovered_networks.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2583,7 +2852,9 @@ resource "avi_virtualservice" "this" {
       dynamic "floating_ip" {
         for_each = vip.value.floating_ip
         content {
+          # addr - (required) is a type of string
           addr = floating_ip.value["addr"]
+          # type - (required) is a type of string
           type = floating_ip.value["type"]
         }
       }
@@ -2591,7 +2862,9 @@ resource "avi_virtualservice" "this" {
       dynamic "floating_ip6" {
         for_each = vip.value.floating_ip6
         content {
+          # addr - (required) is a type of string
           addr = floating_ip6.value["addr"]
+          # type - (required) is a type of string
           type = floating_ip6.value["type"]
         }
       }
@@ -2599,7 +2872,9 @@ resource "avi_virtualservice" "this" {
       dynamic "ip6_address" {
         for_each = vip.value.ip6_address
         content {
+          # addr - (required) is a type of string
           addr = ip6_address.value["addr"]
+          # type - (required) is a type of string
           type = ip6_address.value["type"]
         }
       }
@@ -2607,7 +2882,9 @@ resource "avi_virtualservice" "this" {
       dynamic "ip_address" {
         for_each = vip.value.ip_address
         content {
+          # addr - (required) is a type of string
           addr = ip_address.value["addr"]
+          # type - (required) is a type of string
           type = ip_address.value["type"]
         }
       }
@@ -2615,19 +2892,25 @@ resource "avi_virtualservice" "this" {
       dynamic "ipam_network_subnet" {
         for_each = vip.value.ipam_network_subnet
         content {
-          network_ref  = ipam_network_subnet.value["network_ref"]
+          # network_ref - (optional) is a type of string
+          network_ref = ipam_network_subnet.value["network_ref"]
+          # subnet6_uuid - (optional) is a type of string
           subnet6_uuid = ipam_network_subnet.value["subnet6_uuid"]
-          subnet_uuid  = ipam_network_subnet.value["subnet_uuid"]
+          # subnet_uuid - (optional) is a type of string
+          subnet_uuid = ipam_network_subnet.value["subnet_uuid"]
 
           dynamic "subnet" {
             for_each = ipam_network_subnet.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2638,12 +2921,15 @@ resource "avi_virtualservice" "this" {
           dynamic "subnet6" {
             for_each = ipam_network_subnet.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2657,17 +2943,21 @@ resource "avi_virtualservice" "this" {
       dynamic "placement_networks" {
         for_each = vip.value.placement_networks
         content {
+          # network_ref - (optional) is a type of string
           network_ref = placement_networks.value["network_ref"]
 
           dynamic "subnet" {
             for_each = placement_networks.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2678,12 +2968,15 @@ resource "avi_virtualservice" "this" {
           dynamic "subnet6" {
             for_each = placement_networks.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -2697,12 +2990,15 @@ resource "avi_virtualservice" "this" {
       dynamic "subnet" {
         for_each = vip.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -2713,12 +3009,15 @@ resource "avi_virtualservice" "this" {
       dynamic "subnet6" {
         for_each = vip.value.subnet6
         content {
+          # mask - (required) is a type of number
           mask = subnet6.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet6.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -2732,7 +3031,9 @@ resource "avi_virtualservice" "this" {
   dynamic "vs_datascripts" {
     for_each = var.vs_datascripts
     content {
-      index                 = vs_datascripts.value["index"]
+      # index - (required) is a type of number
+      index = vs_datascripts.value["index"]
+      # vs_datascript_set_ref - (required) is a type of string
       vs_datascript_set_ref = vs_datascripts.value["vs_datascript_set_ref"]
     }
   }

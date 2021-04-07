@@ -251,39 +251,65 @@ variable "override" {
 
 ```terraform
 resource "fortios_ips_sensor" "this" {
-  block_malicious_url     = var.block_malicious_url
-  comment                 = var.comment
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  extended_log            = var.extended_log
-  name                    = var.name
-  replacemsg_group        = var.replacemsg_group
+  # block_malicious_url - (optional) is a type of string
+  block_malicious_url = var.block_malicious_url
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # name - (required) is a type of string
+  name = var.name
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # scan_botnet_connections - (optional) is a type of string
   scan_botnet_connections = var.scan_botnet_connections
 
   dynamic "entries" {
     for_each = var.entries
     content {
-      action             = entries.value["action"]
-      application        = entries.value["application"]
-      id                 = entries.value["id"]
-      location           = entries.value["location"]
-      log                = entries.value["log"]
+      # action - (optional) is a type of string
+      action = entries.value["action"]
+      # application - (optional) is a type of string
+      application = entries.value["application"]
+      # id - (optional) is a type of number
+      id = entries.value["id"]
+      # location - (optional) is a type of string
+      location = entries.value["location"]
+      # log - (optional) is a type of string
+      log = entries.value["log"]
+      # log_attack_context - (optional) is a type of string
       log_attack_context = entries.value["log_attack_context"]
-      log_packet         = entries.value["log_packet"]
-      os                 = entries.value["os"]
-      protocol           = entries.value["protocol"]
-      quarantine         = entries.value["quarantine"]
-      quarantine_expiry  = entries.value["quarantine_expiry"]
-      quarantine_log     = entries.value["quarantine_log"]
-      rate_count         = entries.value["rate_count"]
-      rate_duration      = entries.value["rate_duration"]
-      rate_mode          = entries.value["rate_mode"]
-      rate_track         = entries.value["rate_track"]
-      severity           = entries.value["severity"]
-      status             = entries.value["status"]
+      # log_packet - (optional) is a type of string
+      log_packet = entries.value["log_packet"]
+      # os - (optional) is a type of string
+      os = entries.value["os"]
+      # protocol - (optional) is a type of string
+      protocol = entries.value["protocol"]
+      # quarantine - (optional) is a type of string
+      quarantine = entries.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of string
+      quarantine_expiry = entries.value["quarantine_expiry"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = entries.value["quarantine_log"]
+      # rate_count - (optional) is a type of number
+      rate_count = entries.value["rate_count"]
+      # rate_duration - (optional) is a type of number
+      rate_duration = entries.value["rate_duration"]
+      # rate_mode - (optional) is a type of string
+      rate_mode = entries.value["rate_mode"]
+      # rate_track - (optional) is a type of string
+      rate_track = entries.value["rate_track"]
+      # severity - (optional) is a type of string
+      severity = entries.value["severity"]
+      # status - (optional) is a type of string
+      status = entries.value["status"]
 
       dynamic "cve" {
         for_each = entries.value.cve
         content {
+          # cve_entry - (optional) is a type of string
           cve_entry = cve.value["cve_entry"]
         }
       }
@@ -291,8 +317,11 @@ resource "fortios_ips_sensor" "this" {
       dynamic "exempt_ip" {
         for_each = entries.value.exempt_ip
         content {
+          # dst_ip - (optional) is a type of string
           dst_ip = exempt_ip.value["dst_ip"]
-          id     = exempt_ip.value["id"]
+          # id - (optional) is a type of number
+          id = exempt_ip.value["id"]
+          # src_ip - (optional) is a type of string
           src_ip = exempt_ip.value["src_ip"]
         }
       }
@@ -300,6 +329,7 @@ resource "fortios_ips_sensor" "this" {
       dynamic "rule" {
         for_each = entries.value.rule
         content {
+          # id - (optional) is a type of number
           id = rule.value["id"]
         }
       }
@@ -310,39 +340,63 @@ resource "fortios_ips_sensor" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
-      action            = filter.value["action"]
-      application       = filter.value["application"]
-      location          = filter.value["location"]
-      log               = filter.value["log"]
-      log_packet        = filter.value["log_packet"]
-      name              = filter.value["name"]
-      os                = filter.value["os"]
-      protocol          = filter.value["protocol"]
-      quarantine        = filter.value["quarantine"]
+      # action - (optional) is a type of string
+      action = filter.value["action"]
+      # application - (optional) is a type of string
+      application = filter.value["application"]
+      # location - (optional) is a type of string
+      location = filter.value["location"]
+      # log - (optional) is a type of string
+      log = filter.value["log"]
+      # log_packet - (optional) is a type of string
+      log_packet = filter.value["log_packet"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # os - (optional) is a type of string
+      os = filter.value["os"]
+      # protocol - (optional) is a type of string
+      protocol = filter.value["protocol"]
+      # quarantine - (optional) is a type of string
+      quarantine = filter.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of number
       quarantine_expiry = filter.value["quarantine_expiry"]
-      quarantine_log    = filter.value["quarantine_log"]
-      severity          = filter.value["severity"]
-      status            = filter.value["status"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = filter.value["quarantine_log"]
+      # severity - (optional) is a type of string
+      severity = filter.value["severity"]
+      # status - (optional) is a type of string
+      status = filter.value["status"]
     }
   }
 
   dynamic "override" {
     for_each = var.override
     content {
-      action            = override.value["action"]
-      log               = override.value["log"]
-      log_packet        = override.value["log_packet"]
-      quarantine        = override.value["quarantine"]
+      # action - (optional) is a type of string
+      action = override.value["action"]
+      # log - (optional) is a type of string
+      log = override.value["log"]
+      # log_packet - (optional) is a type of string
+      log_packet = override.value["log_packet"]
+      # quarantine - (optional) is a type of string
+      quarantine = override.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of number
       quarantine_expiry = override.value["quarantine_expiry"]
-      quarantine_log    = override.value["quarantine_log"]
-      rule_id           = override.value["rule_id"]
-      status            = override.value["status"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = override.value["quarantine_log"]
+      # rule_id - (optional) is a type of number
+      rule_id = override.value["rule_id"]
+      # status - (optional) is a type of string
+      status = override.value["status"]
 
       dynamic "exempt_ip" {
         for_each = override.value.exempt_ip
         content {
+          # dst_ip - (optional) is a type of string
           dst_ip = exempt_ip.value["dst_ip"]
-          id     = exempt_ip.value["id"]
+          # id - (optional) is a type of number
+          id = exempt_ip.value["id"]
+          # src_ip - (optional) is a type of string
           src_ip = exempt_ip.value["src_ip"]
         }
       }

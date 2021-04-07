@@ -122,16 +122,26 @@ variable "search_mode" {
 
 ```terraform
 data "alicloud_pvtz_zones" "this" {
-  enable_details    = var.enable_details
-  ids               = var.ids
-  keyword           = var.keyword
-  lang              = var.lang
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  query_region_id   = var.query_region_id
-  query_vpc_id      = var.query_vpc_id
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # keyword - (optional) is a type of string
+  keyword = var.keyword
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # query_region_id - (optional) is a type of string
+  query_region_id = var.query_region_id
+  # query_vpc_id - (optional) is a type of string
+  query_vpc_id = var.query_vpc_id
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  search_mode       = var.search_mode
+  # search_mode - (optional) is a type of string
+  search_mode = var.search_mode
 }
 ```
 

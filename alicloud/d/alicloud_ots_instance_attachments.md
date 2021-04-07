@@ -65,9 +65,12 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_ots_instance_attachments" "this" {
+  # instance_name - (required) is a type of string
   instance_name = var.instance_name
-  name_regex    = var.name_regex
-  output_file   = var.output_file
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

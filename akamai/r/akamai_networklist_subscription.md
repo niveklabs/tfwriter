@@ -56,8 +56,10 @@ variable "recipients" {
 
 ```terraform
 resource "akamai_networklist_subscription" "this" {
+  # network_list - (required) is a type of list of string
   network_list = var.network_list
-  recipients   = var.recipients
+  # recipients - (required) is a type of list of string
+  recipients = var.recipients
 }
 ```
 

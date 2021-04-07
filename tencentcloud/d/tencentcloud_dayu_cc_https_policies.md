@@ -80,10 +80,15 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_dayu_cc_https_policies" "this" {
-  name               = var.name
-  policy_id          = var.policy_id
-  resource_id        = var.resource_id
-  resource_type      = var.resource_type
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_id - (optional) is a type of string
+  policy_id = var.policy_id
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

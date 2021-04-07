@@ -49,6 +49,7 @@ variable "policy_package" {
 
 ```terraform
 resource "checkpoint_management_verify_policy" "this" {
+  # policy_package - (required) is a type of string
   policy_package = var.policy_package
 }
 ```

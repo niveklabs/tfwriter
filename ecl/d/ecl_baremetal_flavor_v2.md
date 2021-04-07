@@ -74,9 +74,13 @@ variable "vcpus" {
 
 ```terraform
 data "ecl_baremetal_flavor_v2" "this" {
-  disk  = var.disk
-  name  = var.name
-  ram   = var.ram
+  # disk - (optional) is a type of number
+  disk = var.disk
+  # name - (optional) is a type of string
+  name = var.name
+  # ram - (optional) is a type of number
+  ram = var.ram
+  # vcpus - (optional) is a type of number
   vcpus = var.vcpus
 }
 ```

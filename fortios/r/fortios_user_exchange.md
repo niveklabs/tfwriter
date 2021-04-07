@@ -160,23 +160,37 @@ variable "kdc_ip" {
 
 ```terraform
 resource "fortios_user_exchange" "this" {
-  auth_level            = var.auth_level
-  auth_type             = var.auth_type
-  auto_discover_kdc     = var.auto_discover_kdc
-  connect_protocol      = var.connect_protocol
-  domain_name           = var.domain_name
+  # auth_level - (optional) is a type of string
+  auth_level = var.auth_level
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # auto_discover_kdc - (optional) is a type of string
+  auto_discover_kdc = var.auto_discover_kdc
+  # connect_protocol - (optional) is a type of string
+  connect_protocol = var.connect_protocol
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  http_auth_type        = var.http_auth_type
-  ip                    = var.ip
-  name                  = var.name
-  password              = var.password
-  server_name           = var.server_name
+  # http_auth_type - (optional) is a type of string
+  http_auth_type = var.http_auth_type
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
+  # ssl_min_proto_version - (optional) is a type of string
   ssl_min_proto_version = var.ssl_min_proto_version
-  username              = var.username
+  # username - (optional) is a type of string
+  username = var.username
 
   dynamic "kdc_ip" {
     for_each = var.kdc_ip
     content {
+      # ipv4 - (optional) is a type of string
       ipv4 = kdc_ip.value["ipv4"]
     }
   }

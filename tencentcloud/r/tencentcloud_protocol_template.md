@@ -56,7 +56,9 @@ variable "protocols" {
 
 ```terraform
 resource "tencentcloud_protocol_template" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # protocols - (required) is a type of set of string
   protocols = var.protocols
 }
 ```

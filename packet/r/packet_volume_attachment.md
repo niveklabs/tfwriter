@@ -56,7 +56,9 @@ variable "volume_id" {
 
 ```terraform
 resource "packet_volume_attachment" "this" {
+  # device_id - (required) is a type of string
   device_id = var.device_id
+  # volume_id - (required) is a type of string
   volume_id = var.volume_id
 }
 ```

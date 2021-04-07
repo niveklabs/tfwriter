@@ -125,17 +125,28 @@ variable "username" {
 
 ```terraform
 resource "mso_site" "this" {
-  apic_site_id     = var.apic_site_id
-  cloud_providers  = var.cloud_providers
-  labels           = var.labels
-  location         = var.location
-  login_domain     = var.login_domain
+  # apic_site_id - (required) is a type of string
+  apic_site_id = var.apic_site_id
+  # cloud_providers - (optional) is a type of list of string
+  cloud_providers = var.cloud_providers
+  # labels - (optional) is a type of list of string
+  labels = var.labels
+  # location - (optional) is a type of map of string
+  location = var.location
+  # login_domain - (optional) is a type of string
+  login_domain = var.login_domain
+  # maintenance_mode - (optional) is a type of bool
   maintenance_mode = var.maintenance_mode
-  name             = var.name
-  password         = var.password
-  platform         = var.platform
-  urls             = var.urls
-  username         = var.username
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # platform - (optional) is a type of string
+  platform = var.platform
+  # urls - (required) is a type of list of string
+  urls = var.urls
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

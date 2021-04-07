@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "datadog_dashboard_list" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

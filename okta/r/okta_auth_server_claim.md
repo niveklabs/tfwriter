@@ -110,15 +110,24 @@ variable "value_type" {
 
 ```terraform
 resource "okta_auth_server_claim" "this" {
+  # always_include_in_token - (optional) is a type of bool
   always_include_in_token = var.always_include_in_token
-  auth_server_id          = var.auth_server_id
-  claim_type              = var.claim_type
-  group_filter_type       = var.group_filter_type
-  name                    = var.name
-  scopes                  = var.scopes
-  status                  = var.status
-  value                   = var.value
-  value_type              = var.value_type
+  # auth_server_id - (required) is a type of string
+  auth_server_id = var.auth_server_id
+  # claim_type - (required) is a type of string
+  claim_type = var.claim_type
+  # group_filter_type - (optional) is a type of string
+  group_filter_type = var.group_filter_type
+  # name - (required) is a type of string
+  name = var.name
+  # scopes - (optional) is a type of set of string
+  scopes = var.scopes
+  # status - (optional) is a type of string
+  status = var.status
+  # value - (required) is a type of string
+  value = var.value
+  # value_type - (optional) is a type of string
+  value_type = var.value_type
 }
 ```
 

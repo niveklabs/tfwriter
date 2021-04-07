@@ -129,17 +129,28 @@ variable "start_time" {
 
 ```terraform
 data "tencentcloud_scf_logs" "this" {
-  end_time           = var.end_time
-  function_name      = var.function_name
-  invoke_request_id  = var.invoke_request_id
-  limit              = var.limit
-  namespace          = var.namespace
-  offset             = var.offset
-  order              = var.order
-  order_by           = var.order_by
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # invoke_request_id - (optional) is a type of string
+  invoke_request_id = var.invoke_request_id
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # offset - (optional) is a type of number
+  offset = var.offset
+  # order - (optional) is a type of string
+  order = var.order
+  # order_by - (optional) is a type of string
+  order_by = var.order_by
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  ret_code           = var.ret_code
-  start_time         = var.start_time
+  # ret_code - (optional) is a type of string
+  ret_code = var.ret_code
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
 }
 ```
 

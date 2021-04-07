@@ -66,8 +66,11 @@ variable "idle_timeout" {
 
 ```terraform
 resource "fortios_fmg_system_admin" "this" {
-  http_port    = var.http_port
-  https_port   = var.https_port
+  # http_port - (optional) is a type of number
+  http_port = var.http_port
+  # https_port - (optional) is a type of number
+  https_port = var.https_port
+  # idle_timeout - (optional) is a type of number
   idle_timeout = var.idle_timeout
 }
 ```

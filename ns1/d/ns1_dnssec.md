@@ -49,6 +49,7 @@ variable "zone" {
 
 ```terraform
 data "ns1_dnssec" "this" {
+  # zone - (required) is a type of string
   zone = var.zone
 }
 ```

@@ -80,11 +80,16 @@ variable "status" {
 
 ```terraform
 data "alicloud_ga_forwarding_rules" "this" {
+  # accelerator_id - (required) is a type of string
   accelerator_id = var.accelerator_id
-  ids            = var.ids
-  listener_id    = var.listener_id
-  output_file    = var.output_file
-  status         = var.status
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

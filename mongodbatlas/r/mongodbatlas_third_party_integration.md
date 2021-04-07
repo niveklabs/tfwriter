@@ -176,23 +176,40 @@ variable "write_token" {
 
 ```terraform
 resource "mongodbatlas_third_party_integration" "this" {
-  account_id   = var.account_id
-  api_key      = var.api_key
-  api_token    = var.api_token
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # api_key - (optional) is a type of string
+  api_key = var.api_key
+  # api_token - (optional) is a type of string
+  api_token = var.api_token
+  # channel_name - (optional) is a type of string
   channel_name = var.channel_name
-  flow_name    = var.flow_name
-  license_key  = var.license_key
-  org_name     = var.org_name
-  project_id   = var.project_id
-  read_token   = var.read_token
-  region       = var.region
-  routing_key  = var.routing_key
-  secret       = var.secret
-  service_key  = var.service_key
-  team_name    = var.team_name
-  type         = var.type
-  url          = var.url
-  write_token  = var.write_token
+  # flow_name - (optional) is a type of string
+  flow_name = var.flow_name
+  # license_key - (optional) is a type of string
+  license_key = var.license_key
+  # org_name - (optional) is a type of string
+  org_name = var.org_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # read_token - (optional) is a type of string
+  read_token = var.read_token
+  # region - (optional) is a type of string
+  region = var.region
+  # routing_key - (optional) is a type of string
+  routing_key = var.routing_key
+  # secret - (optional) is a type of string
+  secret = var.secret
+  # service_key - (optional) is a type of string
+  service_key = var.service_key
+  # team_name - (optional) is a type of string
+  team_name = var.team_name
+  # type - (required) is a type of string
+  type = var.type
+  # url - (optional) is a type of string
+  url = var.url
+  # write_token - (optional) is a type of string
+  write_token = var.write_token
 }
 ```
 

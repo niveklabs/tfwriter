@@ -200,31 +200,47 @@ variable "subscriber" {
 
 ```terraform
 resource "pagerduty_response_play" "this" {
-  conference_number   = var.conference_number
-  conference_url      = var.conference_url
-  description         = var.description
-  from                = var.from
-  name                = var.name
-  responders_message  = var.responders_message
-  runnability         = var.runnability
+  # conference_number - (optional) is a type of string
+  conference_number = var.conference_number
+  # conference_url - (optional) is a type of string
+  conference_url = var.conference_url
+  # description - (optional) is a type of string
+  description = var.description
+  # from - (required) is a type of string
+  from = var.from
+  # name - (required) is a type of string
+  name = var.name
+  # responders_message - (optional) is a type of string
+  responders_message = var.responders_message
+  # runnability - (optional) is a type of string
+  runnability = var.runnability
+  # subscribers_message - (optional) is a type of string
   subscribers_message = var.subscribers_message
-  team                = var.team
-  type                = var.type
+  # team - (optional) is a type of string
+  team = var.team
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "responder" {
     for_each = var.responder
     content {
+      # description - (optional) is a type of string
       description = responder.value["description"]
-      id          = responder.value["id"]
-      name        = responder.value["name"]
-      type        = responder.value["type"]
+      # id - (optional) is a type of string
+      id = responder.value["id"]
+      # name - (optional) is a type of string
+      name = responder.value["name"]
+      # type - (optional) is a type of string
+      type = responder.value["type"]
     }
   }
 
   dynamic "subscriber" {
     for_each = var.subscriber
     content {
-      id   = subscriber.value["id"]
+      # id - (optional) is a type of string
+      id = subscriber.value["id"]
+      # type - (optional) is a type of string
       type = subscriber.value["type"]
     }
   }

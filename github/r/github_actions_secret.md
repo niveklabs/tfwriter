@@ -63,9 +63,12 @@ variable "secret_name" {
 
 ```terraform
 resource "github_actions_secret" "this" {
+  # plaintext_value - (required) is a type of string
   plaintext_value = var.plaintext_value
-  repository      = var.repository
-  secret_name     = var.secret_name
+  # repository - (required) is a type of string
+  repository = var.repository
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
 }
 ```
 

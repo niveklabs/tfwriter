@@ -153,35 +153,55 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_nlb_service" "this" {
-  description      = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_pool_id - (required) is a type of string
   instance_pool_id = var.instance_pool_id
-  name             = var.name
-  nlb_id           = var.nlb_id
-  port             = var.port
-  protocol         = var.protocol
-  strategy         = var.strategy
-  target_port      = var.target_port
-  zone             = var.zone
+  # name - (required) is a type of string
+  name = var.name
+  # nlb_id - (required) is a type of string
+  nlb_id = var.nlb_id
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # strategy - (optional) is a type of string
+  strategy = var.strategy
+  # target_port - (required) is a type of number
+  target_port = var.target_port
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "healthcheck" {
     for_each = var.healthcheck
     content {
+      # interval - (optional) is a type of number
       interval = healthcheck.value["interval"]
-      mode     = healthcheck.value["mode"]
-      port     = healthcheck.value["port"]
-      retries  = healthcheck.value["retries"]
-      timeout  = healthcheck.value["timeout"]
-      tls_sni  = healthcheck.value["tls_sni"]
-      uri      = healthcheck.value["uri"]
+      # mode - (optional) is a type of string
+      mode = healthcheck.value["mode"]
+      # port - (required) is a type of number
+      port = healthcheck.value["port"]
+      # retries - (optional) is a type of number
+      retries = healthcheck.value["retries"]
+      # timeout - (optional) is a type of number
+      timeout = healthcheck.value["timeout"]
+      # tls_sni - (optional) is a type of string
+      tls_sni = healthcheck.value["tls_sni"]
+      # uri - (optional) is a type of string
+      uri = healthcheck.value["uri"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -217,13 +217,17 @@ variable "user_reference_list" {
 
 ```terraform
 resource "nutanix_access_control_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -235,19 +239,25 @@ resource "nutanix_access_control_policy" "this" {
       dynamic "entity_filter_expression_list" {
         for_each = context_filter_list.value.entity_filter_expression_list
         content {
+          # left_hand_side_entity_type - (optional) is a type of string
           left_hand_side_entity_type = entity_filter_expression_list.value["left_hand_side_entity_type"]
-          operator                   = entity_filter_expression_list.value["operator"]
+          # operator - (required) is a type of string
+          operator = entity_filter_expression_list.value["operator"]
 
           dynamic "right_hand_side" {
             for_each = entity_filter_expression_list.value.right_hand_side
             content {
+              # collection - (optional) is a type of string
               collection = right_hand_side.value["collection"]
-              uuid_list  = right_hand_side.value["uuid_list"]
+              # uuid_list - (optional) is a type of set of string
+              uuid_list = right_hand_side.value["uuid_list"]
 
               dynamic "categories" {
                 for_each = right_hand_side.value.categories
                 content {
-                  name  = categories.value["name"]
+                  # name - (optional) is a type of string
+                  name = categories.value["name"]
+                  # value - (optional) is a type of set of string
                   value = categories.value["value"]
                 }
               }
@@ -261,19 +271,25 @@ resource "nutanix_access_control_policy" "this" {
       dynamic "scope_filter_expression_list" {
         for_each = context_filter_list.value.scope_filter_expression_list
         content {
+          # left_hand_side - (required) is a type of string
           left_hand_side = scope_filter_expression_list.value["left_hand_side"]
-          operator       = scope_filter_expression_list.value["operator"]
+          # operator - (required) is a type of string
+          operator = scope_filter_expression_list.value["operator"]
 
           dynamic "right_hand_side" {
             for_each = scope_filter_expression_list.value.right_hand_side
             content {
+              # collection - (optional) is a type of string
               collection = right_hand_side.value["collection"]
-              uuid_list  = right_hand_side.value["uuid_list"]
+              # uuid_list - (optional) is a type of set of string
+              uuid_list = right_hand_side.value["uuid_list"]
 
               dynamic "categories" {
                 for_each = right_hand_side.value.categories
                 content {
-                  name  = categories.value["name"]
+                  # name - (optional) is a type of string
+                  name = categories.value["name"]
+                  # value - (optional) is a type of set of string
                   value = categories.value["value"]
                 }
               }
@@ -290,8 +306,11 @@ resource "nutanix_access_control_policy" "this" {
   dynamic "owner_reference" {
     for_each = var.owner_reference
     content {
+      # kind - (optional) is a type of string
       kind = owner_reference.value["kind"]
+      # name - (optional) is a type of string
       name = owner_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = owner_reference.value["uuid"]
     }
   }
@@ -299,8 +318,11 @@ resource "nutanix_access_control_policy" "this" {
   dynamic "role_reference" {
     for_each = var.role_reference
     content {
+      # kind - (required) is a type of string
       kind = role_reference.value["kind"]
+      # name - (optional) is a type of string
       name = role_reference.value["name"]
+      # uuid - (required) is a type of string
       uuid = role_reference.value["uuid"]
     }
   }
@@ -308,7 +330,9 @@ resource "nutanix_access_control_policy" "this" {
   dynamic "user_group_reference_list" {
     for_each = var.user_group_reference_list
     content {
+      # name - (optional) is a type of string
       name = user_group_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = user_group_reference_list.value["uuid"]
     }
   }
@@ -316,7 +340,9 @@ resource "nutanix_access_control_policy" "this" {
   dynamic "user_reference_list" {
     for_each = var.user_reference_list
     content {
+      # name - (optional) is a type of string
       name = user_reference_list.value["name"]
+      # uuid - (required) is a type of string
       uuid = user_reference_list.value["uuid"]
     }
   }

@@ -65,13 +65,16 @@ variable "dash_item" {
 
 ```terraform
 resource "datadog_dashboard_list" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "dash_item" {
     for_each = var.dash_item
     content {
+      # dash_id - (required) is a type of string
       dash_id = dash_item.value["dash_id"]
-      type    = dash_item.value["type"]
+      # type - (required) is a type of string
+      type = dash_item.value["type"]
     }
   }
 

@@ -58,8 +58,10 @@ variable "service_id" {
 
 ```terraform
 data "tencentcloud_api_gateway_throttling_services" "this" {
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  service_id         = var.service_id
+  # service_id - (optional) is a type of string
+  service_id = var.service_id
 }
 ```
 

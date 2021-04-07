@@ -127,17 +127,28 @@ variable "weight" {
 
 ```terraform
 resource "linode_domain_record" "this" {
-  domain_id   = var.domain_id
-  name        = var.name
-  port        = var.port
-  priority    = var.priority
-  protocol    = var.protocol
+  # domain_id - (required) is a type of number
+  domain_id = var.domain_id
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # record_type - (required) is a type of string
   record_type = var.record_type
-  service     = var.service
-  tag         = var.tag
-  target      = var.target
-  ttl_sec     = var.ttl_sec
-  weight      = var.weight
+  # service - (optional) is a type of string
+  service = var.service
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # target - (required) is a type of string
+  target = var.target
+  # ttl_sec - (optional) is a type of number
+  ttl_sec = var.ttl_sec
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

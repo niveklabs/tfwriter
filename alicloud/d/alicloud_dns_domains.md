@@ -162,21 +162,36 @@ variable "version_code" {
 
 ```terraform
 data "alicloud_dns_domains" "this" {
-  ali_domain        = var.ali_domain
+  # ali_domain - (optional) is a type of bool
+  ali_domain = var.ali_domain
+  # domain_name_regex - (optional) is a type of string
   domain_name_regex = var.domain_name_regex
-  enable_details    = var.enable_details
-  group_id          = var.group_id
-  group_name_regex  = var.group_name_regex
-  ids               = var.ids
-  instance_id       = var.instance_id
-  key_word          = var.key_word
-  lang              = var.lang
-  output_file       = var.output_file
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # group_name_regex - (optional) is a type of string
+  group_name_regex = var.group_name_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # key_word - (optional) is a type of string
+  key_word = var.key_word
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  search_mode       = var.search_mode
-  starmark          = var.starmark
-  tags              = var.tags
-  version_code      = var.version_code
+  # search_mode - (optional) is a type of string
+  search_mode = var.search_mode
+  # starmark - (optional) is a type of bool
+  starmark = var.starmark
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version_code - (optional) is a type of string
+  version_code = var.version_code
 }
 ```
 

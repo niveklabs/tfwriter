@@ -146,19 +146,32 @@ variable "tertiary_server" {
 
 ```terraform
 resource "fortios_user_tacacs" "this" {
-  authen_type             = var.authen_type
-  authorization           = var.authorization
-  interface               = var.interface
+  # authen_type - (optional) is a type of string
+  authen_type = var.authen_type
+  # authorization - (optional) is a type of string
+  authorization = var.authorization
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  key                     = var.key
-  name                    = var.name
-  port                    = var.port
-  secondary_key           = var.secondary_key
-  secondary_server        = var.secondary_server
-  server                  = var.server
-  source_ip               = var.source_ip
-  tertiary_key            = var.tertiary_key
-  tertiary_server         = var.tertiary_server
+  # key - (optional) is a type of string
+  key = var.key
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # secondary_key - (optional) is a type of string
+  secondary_key = var.secondary_key
+  # secondary_server - (optional) is a type of string
+  secondary_server = var.secondary_server
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # tertiary_key - (optional) is a type of string
+  tertiary_key = var.tertiary_key
+  # tertiary_server - (optional) is a type of string
+  tertiary_server = var.tertiary_server
 }
 ```
 

@@ -89,12 +89,18 @@ variable "status" {
 
 ```terraform
 resource "fortios_fmg_system_network_interface" "this" {
-  allow_access   = var.allow_access
-  description    = var.description
-  ip             = var.ip
-  name           = var.name
+  # allow_access - (optional) is a type of list of string
+  allow_access = var.allow_access
+  # description - (optional) is a type of string
+  description = var.description
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
+  name = var.name
+  # service_access - (optional) is a type of list of string
   service_access = var.service_access
-  status         = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

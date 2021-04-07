@@ -157,33 +157,52 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_etcd_backup" "this" {
-  annotations  = var.annotations
-  cluster_id   = var.cluster_id
-  filename     = var.filename
-  labels       = var.labels
-  manual       = var.manual
-  name         = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # manual - (optional) is a type of bool
+  manual = var.manual
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
 
   dynamic "backup_config" {
     for_each = var.backup_config
     content {
-      enabled        = backup_config.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = backup_config.value["enabled"]
+      # interval_hours - (optional) is a type of number
       interval_hours = backup_config.value["interval_hours"]
-      retention      = backup_config.value["retention"]
+      # retention - (optional) is a type of number
+      retention = backup_config.value["retention"]
+      # safe_timestamp - (optional) is a type of bool
       safe_timestamp = backup_config.value["safe_timestamp"]
-      timeout        = backup_config.value["timeout"]
+      # timeout - (optional) is a type of number
+      timeout = backup_config.value["timeout"]
 
       dynamic "s3_backup_config" {
         for_each = backup_config.value.s3_backup_config
         content {
-          access_key  = s3_backup_config.value["access_key"]
+          # access_key - (optional) is a type of string
+          access_key = s3_backup_config.value["access_key"]
+          # bucket_name - (required) is a type of string
           bucket_name = s3_backup_config.value["bucket_name"]
-          custom_ca   = s3_backup_config.value["custom_ca"]
-          endpoint    = s3_backup_config.value["endpoint"]
-          folder      = s3_backup_config.value["folder"]
-          region      = s3_backup_config.value["region"]
-          secret_key  = s3_backup_config.value["secret_key"]
+          # custom_ca - (optional) is a type of string
+          custom_ca = s3_backup_config.value["custom_ca"]
+          # endpoint - (required) is a type of string
+          endpoint = s3_backup_config.value["endpoint"]
+          # folder - (optional) is a type of string
+          folder = s3_backup_config.value["folder"]
+          # region - (optional) is a type of string
+          region = s3_backup_config.value["region"]
+          # secret_key - (optional) is a type of string
+          secret_key = s3_backup_config.value["secret_key"]
         }
       }
 
@@ -193,8 +212,11 @@ resource "rancher2_etcd_backup" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

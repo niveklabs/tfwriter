@@ -110,30 +110,43 @@ variable "mpsk_group" {
 
 ```terraform
 resource "fortios_wirelesscontroller_mpskprofile" "this" {
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # mpsk_concurrent_clients - (optional) is a type of number
   mpsk_concurrent_clients = var.mpsk_concurrent_clients
-  name                    = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "mpsk_group" {
     for_each = var.mpsk_group
     content {
-      name      = mpsk_group.value["name"]
-      vlan_id   = mpsk_group.value["vlan_id"]
+      # name - (optional) is a type of string
+      name = mpsk_group.value["name"]
+      # vlan_id - (optional) is a type of number
+      vlan_id = mpsk_group.value["vlan_id"]
+      # vlan_type - (optional) is a type of string
       vlan_type = mpsk_group.value["vlan_type"]
 
       dynamic "mpsk_key" {
         for_each = mpsk_group.value.mpsk_key
         content {
-          comment                      = mpsk_key.value["comment"]
+          # comment - (optional) is a type of string
+          comment = mpsk_key.value["comment"]
+          # concurrent_client_limit_type - (optional) is a type of string
           concurrent_client_limit_type = mpsk_key.value["concurrent_client_limit_type"]
-          concurrent_clients           = mpsk_key.value["concurrent_clients"]
-          mac                          = mpsk_key.value["mac"]
-          name                         = mpsk_key.value["name"]
-          passphrase                   = mpsk_key.value["passphrase"]
+          # concurrent_clients - (optional) is a type of number
+          concurrent_clients = mpsk_key.value["concurrent_clients"]
+          # mac - (optional) is a type of string
+          mac = mpsk_key.value["mac"]
+          # name - (optional) is a type of string
+          name = mpsk_key.value["name"]
+          # passphrase - (optional) is a type of string
+          passphrase = mpsk_key.value["passphrase"]
 
           dynamic "mpsk_schedules" {
             for_each = mpsk_key.value.mpsk_schedules
             content {
+              # name - (optional) is a type of string
               name = mpsk_schedules.value["name"]
             }
           }

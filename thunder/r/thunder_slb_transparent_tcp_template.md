@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 resource "thunder_slb_transparent_tcp_template" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

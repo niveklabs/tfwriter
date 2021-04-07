@@ -150,31 +150,45 @@ variable "shell_commands" {
 
 ```terraform
 resource "fortios_sshfilter_profile" "this" {
-  block                 = var.block
-  default_command_log   = var.default_command_log
+  # block - (optional) is a type of string
+  block = var.block
+  # default_command_log - (optional) is a type of string
+  default_command_log = var.default_command_log
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  log                   = var.log
-  name                  = var.name
+  # log - (optional) is a type of string
+  log = var.log
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "file_filter" {
     for_each = var.file_filter
     content {
-      log                   = file_filter.value["log"]
+      # log - (optional) is a type of string
+      log = file_filter.value["log"]
+      # scan_archive_contents - (optional) is a type of string
       scan_archive_contents = file_filter.value["scan_archive_contents"]
-      status                = file_filter.value["status"]
+      # status - (optional) is a type of string
+      status = file_filter.value["status"]
 
       dynamic "entries" {
         for_each = file_filter.value.entries
         content {
-          action             = entries.value["action"]
-          comment            = entries.value["comment"]
-          direction          = entries.value["direction"]
-          filter             = entries.value["filter"]
+          # action - (optional) is a type of string
+          action = entries.value["action"]
+          # comment - (optional) is a type of string
+          comment = entries.value["comment"]
+          # direction - (optional) is a type of string
+          direction = entries.value["direction"]
+          # filter - (optional) is a type of string
+          filter = entries.value["filter"]
+          # password_protected - (optional) is a type of string
           password_protected = entries.value["password_protected"]
 
           dynamic "file_type" {
             for_each = entries.value.file_type
             content {
+              # name - (optional) is a type of string
               name = file_type.value["name"]
             }
           }
@@ -188,13 +202,20 @@ resource "fortios_sshfilter_profile" "this" {
   dynamic "shell_commands" {
     for_each = var.shell_commands
     content {
-      action   = shell_commands.value["action"]
-      alert    = shell_commands.value["alert"]
-      id       = shell_commands.value["id"]
-      log      = shell_commands.value["log"]
-      pattern  = shell_commands.value["pattern"]
+      # action - (optional) is a type of string
+      action = shell_commands.value["action"]
+      # alert - (optional) is a type of string
+      alert = shell_commands.value["alert"]
+      # id - (optional) is a type of number
+      id = shell_commands.value["id"]
+      # log - (optional) is a type of string
+      log = shell_commands.value["log"]
+      # pattern - (optional) is a type of string
+      pattern = shell_commands.value["pattern"]
+      # severity - (optional) is a type of string
       severity = shell_commands.value["severity"]
-      type     = shell_commands.value["type"]
+      # type - (optional) is a type of string
+      type = shell_commands.value["type"]
     }
   }
 

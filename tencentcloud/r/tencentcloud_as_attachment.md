@@ -56,7 +56,9 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "tencentcloud_as_attachment" "this" {
-  instance_ids     = var.instance_ids
+  # instance_ids - (required) is a type of set of string
+  instance_ids = var.instance_ids
+  # scaling_group_id - (required) is a type of string
   scaling_group_id = var.scaling_group_id
 }
 ```

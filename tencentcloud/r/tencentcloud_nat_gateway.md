@@ -87,12 +87,18 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_nat_gateway" "this" {
+  # assigned_eip_set - (required) is a type of set of string
   assigned_eip_set = var.assigned_eip_set
-  bandwidth        = var.bandwidth
-  max_concurrent   = var.max_concurrent
-  name             = var.name
-  tags             = var.tags
-  vpc_id           = var.vpc_id
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # max_concurrent - (optional) is a type of number
+  max_concurrent = var.max_concurrent
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

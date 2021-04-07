@@ -58,7 +58,9 @@ variable "volume_type_id" {
 
 ```terraform
 data "ecl_storage_volumetype_v1" "this" {
-  name           = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # volume_type_id - (optional) is a type of string
   volume_type_id = var.volume_type_id
 }
 ```

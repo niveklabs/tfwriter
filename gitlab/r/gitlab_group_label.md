@@ -71,10 +71,14 @@ variable "name" {
 
 ```terraform
 resource "gitlab_group_label" "this" {
-  color       = var.color
+  # color - (required) is a type of string
+  color = var.color
+  # description - (optional) is a type of string
   description = var.description
-  group       = var.group
-  name        = var.name
+  # group - (required) is a type of string
+  group = var.group
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

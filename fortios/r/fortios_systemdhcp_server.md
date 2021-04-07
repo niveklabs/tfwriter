@@ -517,57 +517,105 @@ variable "vci_string" {
 
 ```terraform
 resource "fortios_systemdhcp_server" "this" {
-  auto_configuration           = var.auto_configuration
-  auto_managed_status          = var.auto_managed_status
-  conflicted_ip_timeout        = var.conflicted_ip_timeout
-  ddns_auth                    = var.ddns_auth
-  ddns_key                     = var.ddns_key
-  ddns_keyname                 = var.ddns_keyname
-  ddns_server_ip               = var.ddns_server_ip
-  ddns_ttl                     = var.ddns_ttl
-  ddns_update                  = var.ddns_update
-  ddns_update_override         = var.ddns_update_override
-  ddns_zone                    = var.ddns_zone
-  default_gateway              = var.default_gateway
+  # auto_configuration - (optional) is a type of string
+  auto_configuration = var.auto_configuration
+  # auto_managed_status - (optional) is a type of string
+  auto_managed_status = var.auto_managed_status
+  # conflicted_ip_timeout - (optional) is a type of number
+  conflicted_ip_timeout = var.conflicted_ip_timeout
+  # ddns_auth - (optional) is a type of string
+  ddns_auth = var.ddns_auth
+  # ddns_key - (optional) is a type of string
+  ddns_key = var.ddns_key
+  # ddns_keyname - (optional) is a type of string
+  ddns_keyname = var.ddns_keyname
+  # ddns_server_ip - (optional) is a type of string
+  ddns_server_ip = var.ddns_server_ip
+  # ddns_ttl - (optional) is a type of number
+  ddns_ttl = var.ddns_ttl
+  # ddns_update - (optional) is a type of string
+  ddns_update = var.ddns_update
+  # ddns_update_override - (optional) is a type of string
+  ddns_update_override = var.ddns_update_override
+  # ddns_zone - (optional) is a type of string
+  ddns_zone = var.ddns_zone
+  # default_gateway - (optional) is a type of string
+  default_gateway = var.default_gateway
+  # dhcp_settings_from_fortiipam - (optional) is a type of string
   dhcp_settings_from_fortiipam = var.dhcp_settings_from_fortiipam
-  dns_server1                  = var.dns_server1
-  dns_server2                  = var.dns_server2
-  dns_server3                  = var.dns_server3
-  dns_server4                  = var.dns_server4
-  dns_service                  = var.dns_service
-  domain                       = var.domain
-  dynamic_sort_subtable        = var.dynamic_sort_subtable
-  filename                     = var.filename
-  forticlient_on_net_status    = var.forticlient_on_net_status
-  fosid                        = var.fosid
-  interface                    = var.interface
-  ip_mode                      = var.ip_mode
-  ipsec_lease_hold             = var.ipsec_lease_hold
-  lease_time                   = var.lease_time
-  mac_acl_default_action       = var.mac_acl_default_action
-  netmask                      = var.netmask
-  next_server                  = var.next_server
-  ntp_server1                  = var.ntp_server1
-  ntp_server2                  = var.ntp_server2
-  ntp_server3                  = var.ntp_server3
-  ntp_service                  = var.ntp_service
-  server_type                  = var.server_type
-  status                       = var.status
-  timezone                     = var.timezone
-  timezone_option              = var.timezone_option
-  vci_match                    = var.vci_match
-  wifi_ac1                     = var.wifi_ac1
-  wifi_ac2                     = var.wifi_ac2
-  wifi_ac3                     = var.wifi_ac3
-  wifi_ac_service              = var.wifi_ac_service
-  wins_server1                 = var.wins_server1
-  wins_server2                 = var.wins_server2
+  # dns_server1 - (optional) is a type of string
+  dns_server1 = var.dns_server1
+  # dns_server2 - (optional) is a type of string
+  dns_server2 = var.dns_server2
+  # dns_server3 - (optional) is a type of string
+  dns_server3 = var.dns_server3
+  # dns_server4 - (optional) is a type of string
+  dns_server4 = var.dns_server4
+  # dns_service - (optional) is a type of string
+  dns_service = var.dns_service
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # forticlient_on_net_status - (optional) is a type of string
+  forticlient_on_net_status = var.forticlient_on_net_status
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
+  interface = var.interface
+  # ip_mode - (optional) is a type of string
+  ip_mode = var.ip_mode
+  # ipsec_lease_hold - (optional) is a type of number
+  ipsec_lease_hold = var.ipsec_lease_hold
+  # lease_time - (optional) is a type of number
+  lease_time = var.lease_time
+  # mac_acl_default_action - (optional) is a type of string
+  mac_acl_default_action = var.mac_acl_default_action
+  # netmask - (required) is a type of string
+  netmask = var.netmask
+  # next_server - (optional) is a type of string
+  next_server = var.next_server
+  # ntp_server1 - (optional) is a type of string
+  ntp_server1 = var.ntp_server1
+  # ntp_server2 - (optional) is a type of string
+  ntp_server2 = var.ntp_server2
+  # ntp_server3 - (optional) is a type of string
+  ntp_server3 = var.ntp_server3
+  # ntp_service - (optional) is a type of string
+  ntp_service = var.ntp_service
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # status - (optional) is a type of string
+  status = var.status
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # timezone_option - (optional) is a type of string
+  timezone_option = var.timezone_option
+  # vci_match - (optional) is a type of string
+  vci_match = var.vci_match
+  # wifi_ac1 - (optional) is a type of string
+  wifi_ac1 = var.wifi_ac1
+  # wifi_ac2 - (optional) is a type of string
+  wifi_ac2 = var.wifi_ac2
+  # wifi_ac3 - (optional) is a type of string
+  wifi_ac3 = var.wifi_ac3
+  # wifi_ac_service - (optional) is a type of string
+  wifi_ac_service = var.wifi_ac_service
+  # wins_server1 - (optional) is a type of string
+  wins_server1 = var.wins_server1
+  # wins_server2 - (optional) is a type of string
+  wins_server2 = var.wins_server2
 
   dynamic "exclude_range" {
     for_each = var.exclude_range
     content {
-      end_ip   = exclude_range.value["end_ip"]
-      id       = exclude_range.value["id"]
+      # end_ip - (optional) is a type of string
+      end_ip = exclude_range.value["end_ip"]
+      # id - (optional) is a type of number
+      id = exclude_range.value["id"]
+      # start_ip - (optional) is a type of string
       start_ip = exclude_range.value["start_ip"]
     }
   }
@@ -575,8 +623,11 @@ resource "fortios_systemdhcp_server" "this" {
   dynamic "ip_range" {
     for_each = var.ip_range
     content {
-      end_ip   = ip_range.value["end_ip"]
-      id       = ip_range.value["id"]
+      # end_ip - (optional) is a type of string
+      end_ip = ip_range.value["end_ip"]
+      # id - (optional) is a type of number
+      id = ip_range.value["id"]
+      # start_ip - (optional) is a type of string
       start_ip = ip_range.value["start_ip"]
     }
   }
@@ -584,10 +635,15 @@ resource "fortios_systemdhcp_server" "this" {
   dynamic "options" {
     for_each = var.options
     content {
-      code  = options.value["code"]
-      id    = options.value["id"]
-      ip    = options.value["ip"]
-      type  = options.value["type"]
+      # code - (optional) is a type of number
+      code = options.value["code"]
+      # id - (optional) is a type of number
+      id = options.value["id"]
+      # ip - (optional) is a type of string
+      ip = options.value["ip"]
+      # type - (optional) is a type of string
+      type = options.value["type"]
+      # value - (optional) is a type of string
       value = options.value["value"]
     }
   }
@@ -595,22 +651,33 @@ resource "fortios_systemdhcp_server" "this" {
   dynamic "reserved_address" {
     for_each = var.reserved_address
     content {
-      action          = reserved_address.value["action"]
-      circuit_id      = reserved_address.value["circuit_id"]
+      # action - (optional) is a type of string
+      action = reserved_address.value["action"]
+      # circuit_id - (optional) is a type of string
+      circuit_id = reserved_address.value["circuit_id"]
+      # circuit_id_type - (optional) is a type of string
       circuit_id_type = reserved_address.value["circuit_id_type"]
-      description     = reserved_address.value["description"]
-      id              = reserved_address.value["id"]
-      ip              = reserved_address.value["ip"]
-      mac             = reserved_address.value["mac"]
-      remote_id       = reserved_address.value["remote_id"]
-      remote_id_type  = reserved_address.value["remote_id_type"]
-      type            = reserved_address.value["type"]
+      # description - (optional) is a type of string
+      description = reserved_address.value["description"]
+      # id - (optional) is a type of number
+      id = reserved_address.value["id"]
+      # ip - (optional) is a type of string
+      ip = reserved_address.value["ip"]
+      # mac - (optional) is a type of string
+      mac = reserved_address.value["mac"]
+      # remote_id - (optional) is a type of string
+      remote_id = reserved_address.value["remote_id"]
+      # remote_id_type - (optional) is a type of string
+      remote_id_type = reserved_address.value["remote_id_type"]
+      # type - (optional) is a type of string
+      type = reserved_address.value["type"]
     }
   }
 
   dynamic "tftp_server" {
     for_each = var.tftp_server
     content {
+      # tftp_server - (optional) is a type of string
       tftp_server = tftp_server.value["tftp_server"]
     }
   }
@@ -618,6 +685,7 @@ resource "fortios_systemdhcp_server" "this" {
   dynamic "vci_string" {
     for_each = var.vci_string
     content {
+      # vci_string - (optional) is a type of string
       vci_string = vci_string.value["vci_string"]
     }
   }

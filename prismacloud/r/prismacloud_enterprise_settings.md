@@ -98,12 +98,19 @@ variable "user_attribution_in_notification" {
 
 ```terraform
 resource "prismacloud_enterprise_settings" "this" {
-  anomaly_alert_disposition        = var.anomaly_alert_disposition
+  # anomaly_alert_disposition - (optional) is a type of string
+  anomaly_alert_disposition = var.anomaly_alert_disposition
+  # anomaly_training_model_threshold - (optional) is a type of string
   anomaly_training_model_threshold = var.anomaly_training_model_threshold
-  apply_default_policies_enabled   = var.apply_default_policies_enabled
-  default_policies_enabled         = var.default_policies_enabled
-  require_alert_dismissal_note     = var.require_alert_dismissal_note
-  session_timeout                  = var.session_timeout
+  # apply_default_policies_enabled - (optional) is a type of bool
+  apply_default_policies_enabled = var.apply_default_policies_enabled
+  # default_policies_enabled - (optional) is a type of map of bool
+  default_policies_enabled = var.default_policies_enabled
+  # require_alert_dismissal_note - (optional) is a type of bool
+  require_alert_dismissal_note = var.require_alert_dismissal_note
+  # session_timeout - (optional) is a type of number
+  session_timeout = var.session_timeout
+  # user_attribution_in_notification - (optional) is a type of bool
   user_attribution_in_notification = var.user_attribution_in_notification
 }
 ```

@@ -80,11 +80,16 @@ variable "zone_slug" {
 
 ```terraform
 resource "cloudscale_volume" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # server_uuids - (optional) is a type of list of string
   server_uuids = var.server_uuids
-  size_gb      = var.size_gb
-  type         = var.type
-  zone_slug    = var.zone_slug
+  # size_gb - (required) is a type of number
+  size_gb = var.size_gb
+  # type - (optional) is a type of string
+  type = var.type
+  # zone_slug - (optional) is a type of string
+  zone_slug = var.zone_slug
 }
 ```
 

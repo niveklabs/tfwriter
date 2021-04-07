@@ -134,18 +134,27 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_security_group_rules" "this" {
-  security_group    = var.security_group
+  # security_group - (optional) is a type of string
+  security_group = var.security_group
+  # security_group_id - (optional) is a type of string
   security_group_id = var.security_group_id
 
   dynamic "egress" {
     for_each = var.egress
     content {
-      cidr_list                = egress.value["cidr_list"]
-      description              = egress.value["description"]
-      icmp_code                = egress.value["icmp_code"]
-      icmp_type                = egress.value["icmp_type"]
-      ports                    = egress.value["ports"]
-      protocol                 = egress.value["protocol"]
+      # cidr_list - (optional) is a type of set of string
+      cidr_list = egress.value["cidr_list"]
+      # description - (optional) is a type of string
+      description = egress.value["description"]
+      # icmp_code - (optional) is a type of number
+      icmp_code = egress.value["icmp_code"]
+      # icmp_type - (optional) is a type of number
+      icmp_type = egress.value["icmp_type"]
+      # ports - (optional) is a type of set of string
+      ports = egress.value["ports"]
+      # protocol - (optional) is a type of string
+      protocol = egress.value["protocol"]
+      # user_security_group_list - (optional) is a type of set of string
       user_security_group_list = egress.value["user_security_group_list"]
     }
   }
@@ -153,12 +162,19 @@ resource "exoscale_security_group_rules" "this" {
   dynamic "ingress" {
     for_each = var.ingress
     content {
-      cidr_list                = ingress.value["cidr_list"]
-      description              = ingress.value["description"]
-      icmp_code                = ingress.value["icmp_code"]
-      icmp_type                = ingress.value["icmp_type"]
-      ports                    = ingress.value["ports"]
-      protocol                 = ingress.value["protocol"]
+      # cidr_list - (optional) is a type of set of string
+      cidr_list = ingress.value["cidr_list"]
+      # description - (optional) is a type of string
+      description = ingress.value["description"]
+      # icmp_code - (optional) is a type of number
+      icmp_code = ingress.value["icmp_code"]
+      # icmp_type - (optional) is a type of number
+      icmp_type = ingress.value["icmp_type"]
+      # ports - (optional) is a type of set of string
+      ports = ingress.value["ports"]
+      # protocol - (optional) is a type of string
+      protocol = ingress.value["protocol"]
+      # user_security_group_list - (optional) is a type of set of string
       user_security_group_list = ingress.value["user_security_group_list"]
     }
   }
@@ -166,9 +182,13 @@ resource "exoscale_security_group_rules" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

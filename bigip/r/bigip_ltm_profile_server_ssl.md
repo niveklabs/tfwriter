@@ -441,55 +441,105 @@ variable "untrusted_cert_response_control" {
 
 ```terraform
 resource "bigip_ltm_profile_server_ssl" "this" {
-  alert_timeout                   = var.alert_timeout
-  authenticate                    = var.authenticate
-  authenticate_depth              = var.authenticate_depth
-  c3d_ca_cert                     = var.c3d_ca_cert
-  c3d_ca_key                      = var.c3d_ca_key
-  c3d_ca_passphrase               = var.c3d_ca_passphrase
-  c3d_cert_extension_custom_oids  = var.c3d_cert_extension_custom_oids
-  c3d_cert_extension_includes     = var.c3d_cert_extension_includes
-  c3d_cert_lifespan               = var.c3d_cert_lifespan
-  c3d_certificate_extensions      = var.c3d_certificate_extensions
-  ca_file                         = var.ca_file
-  cache_size                      = var.cache_size
-  cache_timeout                   = var.cache_timeout
-  cert                            = var.cert
-  chain                           = var.chain
-  ciphers                         = var.ciphers
-  defaults_from                   = var.defaults_from
-  expire_cert_response_control    = var.expire_cert_response_control
-  full_path                       = var.full_path
-  generation                      = var.generation
-  generic_alert                   = var.generic_alert
-  handshake_timeout               = var.handshake_timeout
-  key                             = var.key
-  mod_ssl_methods                 = var.mod_ssl_methods
-  mode                            = var.mode
-  name                            = var.name
-  partition                       = var.partition
-  passphrase                      = var.passphrase
-  peer_cert_mode                  = var.peer_cert_mode
-  proxy_ca_cert                   = var.proxy_ca_cert
-  proxy_ca_key                    = var.proxy_ca_key
-  proxy_ssl                       = var.proxy_ssl
-  renegotiate_period              = var.renegotiate_period
-  renegotiate_size                = var.renegotiate_size
-  renegotiation                   = var.renegotiation
-  retain_certificate              = var.retain_certificate
-  secure_renegotiation            = var.secure_renegotiation
-  server_name                     = var.server_name
-  session_mirroring               = var.session_mirroring
-  session_ticket                  = var.session_ticket
-  sni_default                     = var.sni_default
-  sni_require                     = var.sni_require
-  ssl_c3d                         = var.ssl_c3d
-  ssl_forward_proxy               = var.ssl_forward_proxy
-  ssl_forward_proxy_bypass        = var.ssl_forward_proxy_bypass
-  ssl_sign_hash                   = var.ssl_sign_hash
-  strict_resume                   = var.strict_resume
-  tm_options                      = var.tm_options
-  unclean_shutdown                = var.unclean_shutdown
+  # alert_timeout - (optional) is a type of string
+  alert_timeout = var.alert_timeout
+  # authenticate - (optional) is a type of string
+  authenticate = var.authenticate
+  # authenticate_depth - (optional) is a type of number
+  authenticate_depth = var.authenticate_depth
+  # c3d_ca_cert - (optional) is a type of string
+  c3d_ca_cert = var.c3d_ca_cert
+  # c3d_ca_key - (optional) is a type of string
+  c3d_ca_key = var.c3d_ca_key
+  # c3d_ca_passphrase - (optional) is a type of string
+  c3d_ca_passphrase = var.c3d_ca_passphrase
+  # c3d_cert_extension_custom_oids - (optional) is a type of list of string
+  c3d_cert_extension_custom_oids = var.c3d_cert_extension_custom_oids
+  # c3d_cert_extension_includes - (optional) is a type of list of string
+  c3d_cert_extension_includes = var.c3d_cert_extension_includes
+  # c3d_cert_lifespan - (optional) is a type of number
+  c3d_cert_lifespan = var.c3d_cert_lifespan
+  # c3d_certificate_extensions - (optional) is a type of string
+  c3d_certificate_extensions = var.c3d_certificate_extensions
+  # ca_file - (optional) is a type of string
+  ca_file = var.ca_file
+  # cache_size - (optional) is a type of number
+  cache_size = var.cache_size
+  # cache_timeout - (optional) is a type of number
+  cache_timeout = var.cache_timeout
+  # cert - (optional) is a type of string
+  cert = var.cert
+  # chain - (optional) is a type of string
+  chain = var.chain
+  # ciphers - (optional) is a type of string
+  ciphers = var.ciphers
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # expire_cert_response_control - (optional) is a type of string
+  expire_cert_response_control = var.expire_cert_response_control
+  # full_path - (optional) is a type of string
+  full_path = var.full_path
+  # generation - (optional) is a type of number
+  generation = var.generation
+  # generic_alert - (optional) is a type of string
+  generic_alert = var.generic_alert
+  # handshake_timeout - (optional) is a type of string
+  handshake_timeout = var.handshake_timeout
+  # key - (optional) is a type of string
+  key = var.key
+  # mod_ssl_methods - (optional) is a type of string
+  mod_ssl_methods = var.mod_ssl_methods
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # passphrase - (optional) is a type of string
+  passphrase = var.passphrase
+  # peer_cert_mode - (optional) is a type of string
+  peer_cert_mode = var.peer_cert_mode
+  # proxy_ca_cert - (optional) is a type of string
+  proxy_ca_cert = var.proxy_ca_cert
+  # proxy_ca_key - (optional) is a type of string
+  proxy_ca_key = var.proxy_ca_key
+  # proxy_ssl - (optional) is a type of string
+  proxy_ssl = var.proxy_ssl
+  # renegotiate_period - (optional) is a type of string
+  renegotiate_period = var.renegotiate_period
+  # renegotiate_size - (optional) is a type of string
+  renegotiate_size = var.renegotiate_size
+  # renegotiation - (optional) is a type of string
+  renegotiation = var.renegotiation
+  # retain_certificate - (optional) is a type of string
+  retain_certificate = var.retain_certificate
+  # secure_renegotiation - (optional) is a type of string
+  secure_renegotiation = var.secure_renegotiation
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
+  # session_mirroring - (optional) is a type of string
+  session_mirroring = var.session_mirroring
+  # session_ticket - (optional) is a type of string
+  session_ticket = var.session_ticket
+  # sni_default - (optional) is a type of string
+  sni_default = var.sni_default
+  # sni_require - (optional) is a type of string
+  sni_require = var.sni_require
+  # ssl_c3d - (optional) is a type of string
+  ssl_c3d = var.ssl_c3d
+  # ssl_forward_proxy - (optional) is a type of string
+  ssl_forward_proxy = var.ssl_forward_proxy
+  # ssl_forward_proxy_bypass - (optional) is a type of string
+  ssl_forward_proxy_bypass = var.ssl_forward_proxy_bypass
+  # ssl_sign_hash - (optional) is a type of string
+  ssl_sign_hash = var.ssl_sign_hash
+  # strict_resume - (optional) is a type of string
+  strict_resume = var.strict_resume
+  # tm_options - (optional) is a type of set of string
+  tm_options = var.tm_options
+  # unclean_shutdown - (optional) is a type of string
+  unclean_shutdown = var.unclean_shutdown
+  # untrusted_cert_response_control - (optional) is a type of string
   untrusted_cert_response_control = var.untrusted_cert_response_control
 }
 ```

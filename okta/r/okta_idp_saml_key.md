@@ -49,6 +49,7 @@ variable "x5c" {
 
 ```terraform
 resource "okta_idp_saml_key" "this" {
+  # x5c - (required) is a type of set of string
   x5c = var.x5c
 }
 ```

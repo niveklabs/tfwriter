@@ -74,15 +74,20 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_secondary_ipaddress" "this" {
+  # compute_id - (required) is a type of string
   compute_id = var.compute_id
+  # ip_address - (required) is a type of string
   ip_address = var.ip_address
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

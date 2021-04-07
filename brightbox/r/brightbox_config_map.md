@@ -73,13 +73,17 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_config_map" "this" {
+  # data - (required) is a type of map of string
   data = var.data
+  # name - (optional) is a type of string
   name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

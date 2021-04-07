@@ -178,23 +178,40 @@ variable "template_name" {
 
 ```terraform
 data "alicloud_oos_executions" "this" {
-  category                = var.category
-  end_date                = var.end_date
-  end_date_after          = var.end_date_after
-  executed_by             = var.executed_by
-  ids                     = var.ids
+  # category - (optional) is a type of string
+  category = var.category
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # end_date_after - (optional) is a type of string
+  end_date_after = var.end_date_after
+  # executed_by - (optional) is a type of string
+  executed_by = var.executed_by
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # include_child_execution - (optional) is a type of bool
   include_child_execution = var.include_child_execution
-  mode                    = var.mode
-  output_file             = var.output_file
-  parent_execution_id     = var.parent_execution_id
-  ram_role                = var.ram_role
-  sort_field              = var.sort_field
-  sort_order              = var.sort_order
-  start_date_after        = var.start_date_after
-  start_date_before       = var.start_date_before
-  status                  = var.status
-  tags                    = var.tags
-  template_name           = var.template_name
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # parent_execution_id - (optional) is a type of string
+  parent_execution_id = var.parent_execution_id
+  # ram_role - (optional) is a type of string
+  ram_role = var.ram_role
+  # sort_field - (optional) is a type of string
+  sort_field = var.sort_field
+  # sort_order - (optional) is a type of string
+  sort_order = var.sort_order
+  # start_date_after - (optional) is a type of string
+  start_date_after = var.start_date_after
+  # start_date_before - (optional) is a type of string
+  start_date_before = var.start_date_before
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
 }
 ```
 

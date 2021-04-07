@@ -124,17 +124,25 @@ variable "http_policy_match" {
 
 ```terraform
 resource "thunder_slb_template_http_policy" "this" {
+  # cookie_name - (optional) is a type of string
   cookie_name = var.cookie_name
-  name        = var.name
-  user_tag    = var.user_tag
-  uuid        = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "geo_location_match" {
     for_each = var.geo_location_match
     content {
-      geo_location               = geo_location_match.value["geo_location"]
+      # geo_location - (optional) is a type of string
+      geo_location = geo_location_match.value["geo_location"]
+      # geo_location_service_group - (optional) is a type of string
       geo_location_service_group = geo_location_match.value["geo_location_service_group"]
-      geo_location_template      = geo_location_match.value["geo_location_template"]
+      # geo_location_template - (optional) is a type of string
+      geo_location_template = geo_location_match.value["geo_location_template"]
+      # geo_location_template_name - (optional) is a type of string
       geo_location_template_name = geo_location_match.value["geo_location_template_name"]
     }
   }
@@ -142,15 +150,24 @@ resource "thunder_slb_template_http_policy" "this" {
   dynamic "http_policy_match" {
     for_each = var.http_policy_match
     content {
-      match_string       = http_policy_match.value["match_string"]
-      match_type         = http_policy_match.value["match_type"]
+      # match_string - (optional) is a type of string
+      match_string = http_policy_match.value["match_string"]
+      # match_type - (optional) is a type of string
+      match_type = http_policy_match.value["match_type"]
+      # other_match_string - (optional) is a type of string
       other_match_string = http_policy_match.value["other_match_string"]
-      other_match_type   = http_policy_match.value["other_match_type"]
-      service_group      = http_policy_match.value["service_group"]
-      template           = http_policy_match.value["template"]
-      template_name      = http_policy_match.value["template_name"]
-      type               = http_policy_match.value["type"]
-      url_under_host     = http_policy_match.value["url_under_host"]
+      # other_match_type - (optional) is a type of string
+      other_match_type = http_policy_match.value["other_match_type"]
+      # service_group - (optional) is a type of string
+      service_group = http_policy_match.value["service_group"]
+      # template - (optional) is a type of string
+      template = http_policy_match.value["template"]
+      # template_name - (optional) is a type of string
+      template_name = http_policy_match.value["template_name"]
+      # type - (optional) is a type of string
+      type = http_policy_match.value["type"]
+      # url_under_host - (optional) is a type of string
+      url_under_host = http_policy_match.value["url_under_host"]
     }
   }
 

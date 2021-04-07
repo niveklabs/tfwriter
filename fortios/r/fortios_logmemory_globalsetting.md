@@ -74,10 +74,14 @@ variable "max_size" {
 
 ```terraform
 resource "fortios_logmemory_globalsetting" "this" {
-  full_final_warning_threshold  = var.full_final_warning_threshold
-  full_first_warning_threshold  = var.full_first_warning_threshold
+  # full_final_warning_threshold - (optional) is a type of number
+  full_final_warning_threshold = var.full_final_warning_threshold
+  # full_first_warning_threshold - (optional) is a type of number
+  full_first_warning_threshold = var.full_first_warning_threshold
+  # full_second_warning_threshold - (optional) is a type of number
   full_second_warning_threshold = var.full_second_warning_threshold
-  max_size                      = var.max_size
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
 }
 ```
 

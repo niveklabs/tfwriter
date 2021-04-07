@@ -56,8 +56,10 @@ variable "type" {
 
 ```terraform
 resource "packet_device_network_type" "this" {
+  # device_id - (required) is a type of string
   device_id = var.device_id
-  type      = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

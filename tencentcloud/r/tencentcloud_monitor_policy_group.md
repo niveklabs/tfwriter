@@ -123,31 +123,46 @@ variable "event_conditions" {
 
 ```terraform
 resource "tencentcloud_monitor_policy_group" "this" {
-  group_name       = var.group_name
-  is_union_rule    = var.is_union_rule
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # is_union_rule - (optional) is a type of number
+  is_union_rule = var.is_union_rule
+  # policy_view_name - (required) is a type of string
   policy_view_name = var.policy_view_name
-  project_id       = var.project_id
-  remark           = var.remark
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # remark - (required) is a type of string
+  remark = var.remark
 
   dynamic "conditions" {
     for_each = var.conditions
     content {
+      # alarm_notify_period - (required) is a type of number
       alarm_notify_period = conditions.value["alarm_notify_period"]
-      alarm_notify_type   = conditions.value["alarm_notify_type"]
-      calc_period         = conditions.value["calc_period"]
-      calc_type           = conditions.value["calc_type"]
-      calc_value          = conditions.value["calc_value"]
-      continue_period     = conditions.value["continue_period"]
-      metric_id           = conditions.value["metric_id"]
+      # alarm_notify_type - (required) is a type of number
+      alarm_notify_type = conditions.value["alarm_notify_type"]
+      # calc_period - (optional) is a type of number
+      calc_period = conditions.value["calc_period"]
+      # calc_type - (optional) is a type of number
+      calc_type = conditions.value["calc_type"]
+      # calc_value - (optional) is a type of number
+      calc_value = conditions.value["calc_value"]
+      # continue_period - (optional) is a type of number
+      continue_period = conditions.value["continue_period"]
+      # metric_id - (required) is a type of number
+      metric_id = conditions.value["metric_id"]
     }
   }
 
   dynamic "event_conditions" {
     for_each = var.event_conditions
     content {
+      # alarm_notify_period - (required) is a type of number
       alarm_notify_period = event_conditions.value["alarm_notify_period"]
-      alarm_notify_type   = event_conditions.value["alarm_notify_type"]
-      event_id            = event_conditions.value["event_id"]
+      # alarm_notify_type - (required) is a type of number
+      alarm_notify_type = event_conditions.value["alarm_notify_type"]
+      # event_id - (required) is a type of number
+      event_id = event_conditions.value["event_id"]
     }
   }
 

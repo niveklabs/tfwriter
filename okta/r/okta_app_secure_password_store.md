@@ -250,36 +250,63 @@ variable "users" {
 
 ```terraform
 resource "okta_app_secure_password_store" "this" {
+  # accessibility_error_redirect_url - (optional) is a type of string
   accessibility_error_redirect_url = var.accessibility_error_redirect_url
-  accessibility_self_service       = var.accessibility_self_service
-  auto_submit_toolbar              = var.auto_submit_toolbar
-  credentials_scheme               = var.credentials_scheme
-  groups                           = var.groups
-  hide_ios                         = var.hide_ios
-  hide_web                         = var.hide_web
-  label                            = var.label
-  optional_field1                  = var.optional_field1
-  optional_field1_value            = var.optional_field1_value
-  optional_field2                  = var.optional_field2
-  optional_field2_value            = var.optional_field2_value
-  optional_field3                  = var.optional_field3
-  optional_field3_value            = var.optional_field3_value
-  password_field                   = var.password_field
-  reveal_password                  = var.reveal_password
-  shared_password                  = var.shared_password
-  shared_username                  = var.shared_username
-  status                           = var.status
-  url                              = var.url
-  user_name_template               = var.user_name_template
-  user_name_template_suffix        = var.user_name_template_suffix
-  user_name_template_type          = var.user_name_template_type
-  username_field                   = var.username_field
+  # accessibility_self_service - (optional) is a type of bool
+  accessibility_self_service = var.accessibility_self_service
+  # auto_submit_toolbar - (optional) is a type of bool
+  auto_submit_toolbar = var.auto_submit_toolbar
+  # credentials_scheme - (optional) is a type of string
+  credentials_scheme = var.credentials_scheme
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # hide_ios - (optional) is a type of bool
+  hide_ios = var.hide_ios
+  # hide_web - (optional) is a type of bool
+  hide_web = var.hide_web
+  # label - (required) is a type of string
+  label = var.label
+  # optional_field1 - (optional) is a type of string
+  optional_field1 = var.optional_field1
+  # optional_field1_value - (optional) is a type of string
+  optional_field1_value = var.optional_field1_value
+  # optional_field2 - (optional) is a type of string
+  optional_field2 = var.optional_field2
+  # optional_field2_value - (optional) is a type of string
+  optional_field2_value = var.optional_field2_value
+  # optional_field3 - (optional) is a type of string
+  optional_field3 = var.optional_field3
+  # optional_field3_value - (optional) is a type of string
+  optional_field3_value = var.optional_field3_value
+  # password_field - (required) is a type of string
+  password_field = var.password_field
+  # reveal_password - (optional) is a type of bool
+  reveal_password = var.reveal_password
+  # shared_password - (optional) is a type of string
+  shared_password = var.shared_password
+  # shared_username - (optional) is a type of string
+  shared_username = var.shared_username
+  # status - (optional) is a type of string
+  status = var.status
+  # url - (required) is a type of string
+  url = var.url
+  # user_name_template - (optional) is a type of string
+  user_name_template = var.user_name_template
+  # user_name_template_suffix - (optional) is a type of string
+  user_name_template_suffix = var.user_name_template_suffix
+  # user_name_template_type - (optional) is a type of string
+  user_name_template_type = var.user_name_template_type
+  # username_field - (required) is a type of string
+  username_field = var.username_field
 
   dynamic "users" {
     for_each = var.users
     content {
-      id       = users.value["id"]
+      # id - (optional) is a type of string
+      id = users.value["id"]
+      # password - (optional) is a type of string
       password = users.value["password"]
+      # username - (optional) is a type of string
       username = users.value["username"]
     }
   }

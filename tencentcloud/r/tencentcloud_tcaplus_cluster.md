@@ -85,12 +85,18 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_tcaplus_cluster" "this" {
-  cluster_name             = var.cluster_name
-  idl_type                 = var.idl_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # idl_type - (required) is a type of string
+  idl_type = var.idl_type
+  # old_password_expire_last - (optional) is a type of number
   old_password_expire_last = var.old_password_expire_last
-  password                 = var.password
-  subnet_id                = var.subnet_id
-  vpc_id                   = var.vpc_id
+  # password - (required) is a type of string
+  password = var.password
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

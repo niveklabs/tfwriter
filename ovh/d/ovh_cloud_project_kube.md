@@ -88,12 +88,18 @@ variable "version" {
 
 ```terraform
 data "ovh_cloud_project_kube" "this" {
-  kube_id       = var.kube_id
-  name          = var.name
-  region        = var.region
-  service_name  = var.service_name
+  # kube_id - (required) is a type of string
+  kube_id = var.kube_id
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # update_policy - (optional) is a type of string
   update_policy = var.update_policy
-  version       = var.version
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

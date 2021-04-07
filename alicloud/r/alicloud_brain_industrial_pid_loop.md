@@ -92,13 +92,20 @@ variable "pid_project_id" {
 
 ```terraform
 resource "alicloud_brain_industrial_pid_loop" "this" {
+  # pid_loop_configuration - (required) is a type of string
   pid_loop_configuration = var.pid_loop_configuration
-  pid_loop_dcs_type      = var.pid_loop_dcs_type
-  pid_loop_desc          = var.pid_loop_desc
-  pid_loop_is_crucial    = var.pid_loop_is_crucial
-  pid_loop_name          = var.pid_loop_name
-  pid_loop_type          = var.pid_loop_type
-  pid_project_id         = var.pid_project_id
+  # pid_loop_dcs_type - (required) is a type of string
+  pid_loop_dcs_type = var.pid_loop_dcs_type
+  # pid_loop_desc - (optional) is a type of string
+  pid_loop_desc = var.pid_loop_desc
+  # pid_loop_is_crucial - (required) is a type of bool
+  pid_loop_is_crucial = var.pid_loop_is_crucial
+  # pid_loop_name - (required) is a type of string
+  pid_loop_name = var.pid_loop_name
+  # pid_loop_type - (required) is a type of string
+  pid_loop_type = var.pid_loop_type
+  # pid_project_id - (required) is a type of string
+  pid_project_id = var.pid_project_id
 }
 ```
 

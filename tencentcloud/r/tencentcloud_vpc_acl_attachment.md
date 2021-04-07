@@ -56,7 +56,9 @@ variable "subnet_id" {
 
 ```terraform
 resource "tencentcloud_vpc_acl_attachment" "this" {
-  acl_id    = var.acl_id
+  # acl_id - (required) is a type of string
+  acl_id = var.acl_id
+  # subnet_id - (required) is a type of string
   subnet_id = var.subnet_id
 }
 ```

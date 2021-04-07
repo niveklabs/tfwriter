@@ -110,15 +110,24 @@ variable "username" {
 
 ```terraform
 resource "gitlab_service_jira" "this" {
+  # comment_on_event_enabled - (optional) is a type of bool
   comment_on_event_enabled = var.comment_on_event_enabled
-  commit_events            = var.commit_events
+  # commit_events - (optional) is a type of bool
+  commit_events = var.commit_events
+  # jira_issue_transition_id - (optional) is a type of string
   jira_issue_transition_id = var.jira_issue_transition_id
-  merge_requests_events    = var.merge_requests_events
-  password                 = var.password
-  project                  = var.project
-  project_key              = var.project_key
-  url                      = var.url
-  username                 = var.username
+  # merge_requests_events - (optional) is a type of bool
+  merge_requests_events = var.merge_requests_events
+  # password - (required) is a type of string
+  password = var.password
+  # project - (required) is a type of string
+  project = var.project
+  # project_key - (optional) is a type of string
+  project_key = var.project_key
+  # url - (required) is a type of string
+  url = var.url
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

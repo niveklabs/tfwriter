@@ -98,16 +98,23 @@ variable "exception" {
 
 ```terraform
 resource "thunder_slb_ssl_expire_check" "this" {
-  before                   = var.before
-  expire_address1          = var.expire_address1
-  interval_days            = var.interval_days
+  # before - (optional) is a type of number
+  before = var.before
+  # expire_address1 - (optional) is a type of string
+  expire_address1 = var.expire_address1
+  # interval_days - (optional) is a type of number
+  interval_days = var.interval_days
+  # ssl_expire_email_address - (optional) is a type of string
   ssl_expire_email_address = var.ssl_expire_email_address
-  uuid                     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "exception" {
     for_each = var.exception
     content {
-      action           = exception.value["action"]
+      # action - (optional) is a type of string
+      action = exception.value["action"]
+      # certificate_name - (optional) is a type of string
       certificate_name = exception.value["certificate_name"]
     }
   }

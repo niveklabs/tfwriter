@@ -90,12 +90,18 @@ variable "zone" {
 
 ```terraform
 data "ecl_network_internet_service_v2" "this" {
-  description            = var.description
-  internet_service_id    = var.internet_service_id
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_service_id - (optional) is a type of string
+  internet_service_id = var.internet_service_id
+  # minimal_submask_length - (optional) is a type of number
   minimal_submask_length = var.minimal_submask_length
-  name                   = var.name
-  region                 = var.region
-  zone                   = var.zone
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

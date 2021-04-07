@@ -282,50 +282,85 @@ variable "member" {
 
 ```terraform
 resource "fortios_user_group" "this" {
+  # auth_concurrent_override - (optional) is a type of string
   auth_concurrent_override = var.auth_concurrent_override
-  auth_concurrent_value    = var.auth_concurrent_value
-  authtimeout              = var.authtimeout
-  company                  = var.company
-  dynamic_sort_subtable    = var.dynamic_sort_subtable
-  email                    = var.email
-  expire                   = var.expire
-  expire_type              = var.expire_type
-  fosid                    = var.fosid
-  group_type               = var.group_type
-  http_digest_realm        = var.http_digest_realm
-  max_accounts             = var.max_accounts
-  mobile_phone             = var.mobile_phone
-  multiple_guest_add       = var.multiple_guest_add
-  name                     = var.name
-  password                 = var.password
-  sms_custom_server        = var.sms_custom_server
-  sms_server               = var.sms_server
-  sponsor                  = var.sponsor
-  sso_attribute_value      = var.sso_attribute_value
-  user_id                  = var.user_id
-  user_name                = var.user_name
+  # auth_concurrent_value - (optional) is a type of number
+  auth_concurrent_value = var.auth_concurrent_value
+  # authtimeout - (optional) is a type of number
+  authtimeout = var.authtimeout
+  # company - (optional) is a type of string
+  company = var.company
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # email - (optional) is a type of string
+  email = var.email
+  # expire - (optional) is a type of number
+  expire = var.expire
+  # expire_type - (optional) is a type of string
+  expire_type = var.expire_type
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # group_type - (optional) is a type of string
+  group_type = var.group_type
+  # http_digest_realm - (optional) is a type of string
+  http_digest_realm = var.http_digest_realm
+  # max_accounts - (optional) is a type of number
+  max_accounts = var.max_accounts
+  # mobile_phone - (optional) is a type of string
+  mobile_phone = var.mobile_phone
+  # multiple_guest_add - (optional) is a type of string
+  multiple_guest_add = var.multiple_guest_add
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # sms_custom_server - (optional) is a type of string
+  sms_custom_server = var.sms_custom_server
+  # sms_server - (optional) is a type of string
+  sms_server = var.sms_server
+  # sponsor - (optional) is a type of string
+  sponsor = var.sponsor
+  # sso_attribute_value - (optional) is a type of string
+  sso_attribute_value = var.sso_attribute_value
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 
   dynamic "guest" {
     for_each = var.guest
     content {
-      comment      = guest.value["comment"]
-      company      = guest.value["company"]
-      email        = guest.value["email"]
-      expiration   = guest.value["expiration"]
-      id           = guest.value["id"]
+      # comment - (optional) is a type of string
+      comment = guest.value["comment"]
+      # company - (optional) is a type of string
+      company = guest.value["company"]
+      # email - (optional) is a type of string
+      email = guest.value["email"]
+      # expiration - (optional) is a type of string
+      expiration = guest.value["expiration"]
+      # id - (optional) is a type of number
+      id = guest.value["id"]
+      # mobile_phone - (optional) is a type of string
       mobile_phone = guest.value["mobile_phone"]
-      name         = guest.value["name"]
-      password     = guest.value["password"]
-      sponsor      = guest.value["sponsor"]
-      user_id      = guest.value["user_id"]
+      # name - (optional) is a type of string
+      name = guest.value["name"]
+      # password - (optional) is a type of string
+      password = guest.value["password"]
+      # sponsor - (optional) is a type of string
+      sponsor = guest.value["sponsor"]
+      # user_id - (optional) is a type of string
+      user_id = guest.value["user_id"]
     }
   }
 
   dynamic "match" {
     for_each = var.match
     content {
-      group_name  = match.value["group_name"]
-      id          = match.value["id"]
+      # group_name - (optional) is a type of string
+      group_name = match.value["group_name"]
+      # id - (optional) is a type of number
+      id = match.value["id"]
+      # server_name - (optional) is a type of string
       server_name = match.value["server_name"]
     }
   }
@@ -333,6 +368,7 @@ resource "fortios_user_group" "this" {
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

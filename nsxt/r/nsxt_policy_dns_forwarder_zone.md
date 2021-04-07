@@ -104,18 +104,26 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_dns_forwarder_zone" "this" {
-  description      = var.description
-  display_name     = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # dns_domain_names - (optional) is a type of list of string
   dns_domain_names = var.dns_domain_names
-  nsx_id           = var.nsx_id
-  source_ip        = var.source_ip
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # upstream_servers - (required) is a type of list of string
   upstream_servers = var.upstream_servers
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -283,49 +283,75 @@ variable "taints" {
 
 ```terraform
 resource "spotinst_ocean_aws_launch_spec" "this" {
+  # iam_instance_profile - (optional) is a type of string
   iam_instance_profile = var.iam_instance_profile
-  image_id             = var.image_id
-  instance_types       = var.instance_types
-  name                 = var.name
-  ocean_id             = var.ocean_id
-  root_volume_size     = var.root_volume_size
-  security_groups      = var.security_groups
-  subnet_ids           = var.subnet_ids
-  user_data            = var.user_data
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # instance_types - (optional) is a type of list of string
+  instance_types = var.instance_types
+  # name - (optional) is a type of string
+  name = var.name
+  # ocean_id - (required) is a type of string
+  ocean_id = var.ocean_id
+  # root_volume_size - (optional) is a type of number
+  root_volume_size = var.root_volume_size
+  # security_groups - (optional) is a type of list of string
+  security_groups = var.security_groups
+  # subnet_ids - (optional) is a type of list of string
+  subnet_ids = var.subnet_ids
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "autoscale_headrooms" {
     for_each = var.autoscale_headrooms
     content {
-      cpu_per_unit    = autoscale_headrooms.value["cpu_per_unit"]
-      gpu_per_unit    = autoscale_headrooms.value["gpu_per_unit"]
+      # cpu_per_unit - (optional) is a type of number
+      cpu_per_unit = autoscale_headrooms.value["cpu_per_unit"]
+      # gpu_per_unit - (optional) is a type of number
+      gpu_per_unit = autoscale_headrooms.value["gpu_per_unit"]
+      # memory_per_unit - (optional) is a type of number
       memory_per_unit = autoscale_headrooms.value["memory_per_unit"]
-      num_of_units    = autoscale_headrooms.value["num_of_units"]
+      # num_of_units - (required) is a type of number
+      num_of_units = autoscale_headrooms.value["num_of_units"]
     }
   }
 
   dynamic "block_device_mappings" {
     for_each = var.block_device_mappings
     content {
-      device_name  = block_device_mappings.value["device_name"]
-      no_device    = block_device_mappings.value["no_device"]
+      # device_name - (required) is a type of string
+      device_name = block_device_mappings.value["device_name"]
+      # no_device - (optional) is a type of string
+      no_device = block_device_mappings.value["no_device"]
+      # virtual_name - (optional) is a type of string
       virtual_name = block_device_mappings.value["virtual_name"]
 
       dynamic "ebs" {
         for_each = block_device_mappings.value.ebs
         content {
+          # delete_on_termination - (optional) is a type of bool
           delete_on_termination = ebs.value["delete_on_termination"]
-          encrypted             = ebs.value["encrypted"]
-          iops                  = ebs.value["iops"]
-          kms_key_id            = ebs.value["kms_key_id"]
-          snapshot_id           = ebs.value["snapshot_id"]
-          volume_size           = ebs.value["volume_size"]
-          volume_type           = ebs.value["volume_type"]
+          # encrypted - (optional) is a type of bool
+          encrypted = ebs.value["encrypted"]
+          # iops - (optional) is a type of number
+          iops = ebs.value["iops"]
+          # kms_key_id - (optional) is a type of string
+          kms_key_id = ebs.value["kms_key_id"]
+          # snapshot_id - (optional) is a type of string
+          snapshot_id = ebs.value["snapshot_id"]
+          # volume_size - (optional) is a type of number
+          volume_size = ebs.value["volume_size"]
+          # volume_type - (optional) is a type of string
+          volume_type = ebs.value["volume_type"]
 
           dynamic "dynamic_volume_size" {
             for_each = ebs.value.dynamic_volume_size
             content {
-              base_size              = dynamic_volume_size.value["base_size"]
-              resource               = dynamic_volume_size.value["resource"]
+              # base_size - (required) is a type of number
+              base_size = dynamic_volume_size.value["base_size"]
+              # resource - (required) is a type of string
+              resource = dynamic_volume_size.value["resource"]
+              # size_per_resource_unit - (required) is a type of number
               size_per_resource_unit = dynamic_volume_size.value["size_per_resource_unit"]
             }
           }
@@ -343,7 +369,9 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
       dynamic "tag_selector" {
         for_each = elastic_ip_pool.value.tag_selector
         content {
-          tag_key   = tag_selector.value["tag_key"]
+          # tag_key - (required) is a type of string
+          tag_key = tag_selector.value["tag_key"]
+          # tag_value - (optional) is a type of string
           tag_value = tag_selector.value["tag_value"]
         }
       }
@@ -354,7 +382,9 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (required) is a type of string
       value = labels.value["value"]
     }
   }
@@ -362,6 +392,7 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
   dynamic "resource_limits" {
     for_each = var.resource_limits
     content {
+      # max_instance_count - (optional) is a type of number
       max_instance_count = resource_limits.value["max_instance_count"]
     }
   }
@@ -369,6 +400,7 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
   dynamic "strategy" {
     for_each = var.strategy
     content {
+      # spot_percentage - (optional) is a type of number
       spot_percentage = strategy.value["spot_percentage"]
     }
   }
@@ -376,7 +408,9 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }
@@ -384,9 +418,12 @@ resource "spotinst_ocean_aws_launch_spec" "this" {
   dynamic "taints" {
     for_each = var.taints
     content {
+      # effect - (required) is a type of string
       effect = taints.value["effect"]
-      key    = taints.value["key"]
-      value  = taints.value["value"]
+      # key - (required) is a type of string
+      key = taints.value["key"]
+      # value - (required) is a type of string
+      value = taints.value["value"]
     }
   }
 

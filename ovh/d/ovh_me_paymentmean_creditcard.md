@@ -74,9 +74,13 @@ variable "use_last_to_expire" {
 
 ```terraform
 data "ovh_me_paymentmean_creditcard" "this" {
+  # description_regexp - (optional) is a type of string
   description_regexp = var.description_regexp
-  states             = var.states
-  use_default        = var.use_default
+  # states - (optional) is a type of set of string
+  states = var.states
+  # use_default - (optional) is a type of bool
+  use_default = var.use_default
+  # use_last_to_expire - (optional) is a type of bool
   use_last_to_expire = var.use_last_to_expire
 }
 ```

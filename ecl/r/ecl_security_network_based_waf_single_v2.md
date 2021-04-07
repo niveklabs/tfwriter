@@ -123,30 +123,45 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_security_network_based_waf_single_v2" "this" {
-  az_group       = var.az_group
-  license_kind   = var.license_kind
-  locale         = var.locale
+  # az_group - (required) is a type of string
+  az_group = var.az_group
+  # license_kind - (required) is a type of string
+  license_kind = var.license_kind
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # operating_mode - (optional) is a type of string
   operating_mode = var.operating_mode
-  tenant_id      = var.tenant_id
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "port" {
     for_each = var.port
     content {
-      comment           = port.value["comment"]
-      enable            = port.value["enable"]
-      ip_address        = port.value["ip_address"]
+      # comment - (optional) is a type of string
+      comment = port.value["comment"]
+      # enable - (required) is a type of string
+      enable = port.value["enable"]
+      # ip_address - (optional) is a type of string
+      ip_address = port.value["ip_address"]
+      # ip_address_prefix - (optional) is a type of number
       ip_address_prefix = port.value["ip_address_prefix"]
-      mtu               = port.value["mtu"]
-      network_id        = port.value["network_id"]
-      subnet_id         = port.value["subnet_id"]
+      # mtu - (optional) is a type of string
+      mtu = port.value["mtu"]
+      # network_id - (optional) is a type of string
+      network_id = port.value["network_id"]
+      # subnet_id - (optional) is a type of string
+      subnet_id = port.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

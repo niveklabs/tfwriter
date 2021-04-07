@@ -80,10 +80,15 @@ variable "password" {
 
 ```terraform
 resource "grafana_user" "this" {
-  email    = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # is_admin - (optional) is a type of bool
   is_admin = var.is_admin
-  login    = var.login
-  name     = var.name
+  # login - (optional) is a type of string
+  login = var.login
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (required) is a type of string
   password = var.password
 }
 ```

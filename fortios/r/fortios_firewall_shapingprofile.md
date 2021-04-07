@@ -114,26 +114,42 @@ variable "shaping_entries" {
 
 ```terraform
 resource "fortios_firewall_shapingprofile" "this" {
-  comment               = var.comment
-  default_class_id      = var.default_class_id
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # default_class_id - (required) is a type of number
+  default_class_id = var.default_class_id
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  profile_name          = var.profile_name
-  type                  = var.type
+  # profile_name - (required) is a type of string
+  profile_name = var.profile_name
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "shaping_entries" {
     for_each = var.shaping_entries
     content {
-      burst_in_msec                   = shaping_entries.value["burst_in_msec"]
-      cburst_in_msec                  = shaping_entries.value["cburst_in_msec"]
-      class_id                        = shaping_entries.value["class_id"]
+      # burst_in_msec - (optional) is a type of number
+      burst_in_msec = shaping_entries.value["burst_in_msec"]
+      # cburst_in_msec - (optional) is a type of number
+      cburst_in_msec = shaping_entries.value["cburst_in_msec"]
+      # class_id - (optional) is a type of number
+      class_id = shaping_entries.value["class_id"]
+      # guaranteed_bandwidth_percentage - (optional) is a type of number
       guaranteed_bandwidth_percentage = shaping_entries.value["guaranteed_bandwidth_percentage"]
-      id                              = shaping_entries.value["id"]
-      limit                           = shaping_entries.value["limit"]
-      max                             = shaping_entries.value["max"]
-      maximum_bandwidth_percentage    = shaping_entries.value["maximum_bandwidth_percentage"]
-      min                             = shaping_entries.value["min"]
-      priority                        = shaping_entries.value["priority"]
-      red_probability                 = shaping_entries.value["red_probability"]
+      # id - (optional) is a type of number
+      id = shaping_entries.value["id"]
+      # limit - (optional) is a type of number
+      limit = shaping_entries.value["limit"]
+      # max - (optional) is a type of number
+      max = shaping_entries.value["max"]
+      # maximum_bandwidth_percentage - (optional) is a type of number
+      maximum_bandwidth_percentage = shaping_entries.value["maximum_bandwidth_percentage"]
+      # min - (optional) is a type of number
+      min = shaping_entries.value["min"]
+      # priority - (optional) is a type of string
+      priority = shaping_entries.value["priority"]
+      # red_probability - (optional) is a type of number
+      red_probability = shaping_entries.value["red_probability"]
     }
   }
 

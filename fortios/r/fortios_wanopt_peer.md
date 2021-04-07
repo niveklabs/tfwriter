@@ -58,7 +58,9 @@ variable "peer_host_id" {
 
 ```terraform
 resource "fortios_wanopt_peer" "this" {
-  ip           = var.ip
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # peer_host_id - (optional) is a type of string
   peer_host_id = var.peer_host_id
 }
 ```

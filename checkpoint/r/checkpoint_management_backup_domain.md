@@ -57,7 +57,9 @@ variable "file_path" {
 
 ```terraform
 resource "checkpoint_management_backup_domain" "this" {
-  domain    = var.domain
+  # domain - (required) is a type of string
+  domain = var.domain
+  # file_path - (optional) is a type of string
   file_path = var.file_path
 }
 ```

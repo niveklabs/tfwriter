@@ -56,7 +56,9 @@ variable "group_name" {
 
 ```terraform
 resource "alicloud_edas_deploy_group" "this" {
-  app_id     = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # group_name - (required) is a type of string
   group_name = var.group_name
 }
 ```

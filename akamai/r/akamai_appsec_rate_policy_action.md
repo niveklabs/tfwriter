@@ -84,12 +84,18 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_rate_policy_action" "this" {
-  config_id          = var.config_id
-  ipv4_action        = var.ipv4_action
-  ipv6_action        = var.ipv6_action
-  rate_policy_id     = var.rate_policy_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # ipv4_action - (required) is a type of string
+  ipv4_action = var.ipv4_action
+  # ipv6_action - (required) is a type of string
+  ipv6_action = var.ipv6_action
+  # rate_policy_id - (required) is a type of number
+  rate_policy_id = var.rate_policy_id
+  # security_policy_id - (required) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

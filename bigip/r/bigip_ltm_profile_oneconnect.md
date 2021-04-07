@@ -121,16 +121,26 @@ variable "source_mask" {
 
 ```terraform
 resource "bigip_ltm_profile_oneconnect" "this" {
-  defaults_from         = var.defaults_from
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # idle_timeout_override - (optional) is a type of string
   idle_timeout_override = var.idle_timeout_override
-  limit_type            = var.limit_type
-  max_age               = var.max_age
-  max_reuse             = var.max_reuse
-  max_size              = var.max_size
-  name                  = var.name
-  partition             = var.partition
-  share_pools           = var.share_pools
-  source_mask           = var.source_mask
+  # limit_type - (optional) is a type of string
+  limit_type = var.limit_type
+  # max_age - (optional) is a type of number
+  max_age = var.max_age
+  # max_reuse - (optional) is a type of number
+  max_reuse = var.max_reuse
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # share_pools - (optional) is a type of string
+  share_pools = var.share_pools
+  # source_mask - (optional) is a type of string
+  source_mask = var.source_mask
 }
 ```
 

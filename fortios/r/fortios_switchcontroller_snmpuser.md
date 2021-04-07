@@ -106,13 +106,21 @@ variable "security_level" {
 
 ```terraform
 resource "fortios_switchcontroller_snmpuser" "this" {
-  auth_proto     = var.auth_proto
-  auth_pwd       = var.auth_pwd
-  name           = var.name
-  priv_proto     = var.priv_proto
-  priv_pwd       = var.priv_pwd
-  queries        = var.queries
-  query_port     = var.query_port
+  # auth_proto - (optional) is a type of string
+  auth_proto = var.auth_proto
+  # auth_pwd - (optional) is a type of string
+  auth_pwd = var.auth_pwd
+  # name - (optional) is a type of string
+  name = var.name
+  # priv_proto - (optional) is a type of string
+  priv_proto = var.priv_proto
+  # priv_pwd - (optional) is a type of string
+  priv_pwd = var.priv_pwd
+  # queries - (optional) is a type of string
+  queries = var.queries
+  # query_port - (optional) is a type of number
+  query_port = var.query_port
+  # security_level - (optional) is a type of string
   security_level = var.security_level
 }
 ```

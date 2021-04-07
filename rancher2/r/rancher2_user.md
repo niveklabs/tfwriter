@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_user" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  enabled     = var.enabled
-  labels      = var.labels
-  name        = var.name
-  password    = var.password
-  username    = var.username
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

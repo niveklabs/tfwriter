@@ -76,14 +76,19 @@ variable "value_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_h2qpoperatorname" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "value_list" {
     for_each = var.value_list
     content {
+      # index - (optional) is a type of number
       index = value_list.value["index"]
-      lang  = value_list.value["lang"]
+      # lang - (optional) is a type of string
+      lang = value_list.value["lang"]
+      # value - (optional) is a type of string
       value = value_list.value["value"]
     }
   }

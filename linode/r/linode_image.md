@@ -85,14 +85,19 @@ variable "timeouts" {
 
 ```terraform
 resource "linode_image" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  disk_id     = var.disk_id
-  label       = var.label
-  linode_id   = var.linode_id
+  # disk_id - (required) is a type of number
+  disk_id = var.disk_id
+  # label - (required) is a type of string
+  label = var.label
+  # linode_id - (required) is a type of number
+  linode_id = var.linode_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

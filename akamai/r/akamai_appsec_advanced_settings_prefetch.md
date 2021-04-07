@@ -84,12 +84,18 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_advanced_settings_prefetch" "this" {
-  all_extensions       = var.all_extensions
-  config_id            = var.config_id
-  enable_app_layer     = var.enable_app_layer
+  # all_extensions - (required) is a type of bool
+  all_extensions = var.all_extensions
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # enable_app_layer - (required) is a type of bool
+  enable_app_layer = var.enable_app_layer
+  # enable_rate_controls - (required) is a type of bool
   enable_rate_controls = var.enable_rate_controls
-  extensions           = var.extensions
-  version              = var.version
+  # extensions - (required) is a type of list of string
+  extensions = var.extensions
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

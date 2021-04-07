@@ -63,11 +63,13 @@ variable "team" {
 
 ```terraform
 resource "pagerduty_ruleset" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "team" {
     for_each = var.team
     content {
+      # id - (required) is a type of string
       id = team.value["id"]
     }
   }

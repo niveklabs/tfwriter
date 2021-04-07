@@ -113,15 +113,24 @@ variable "zone_profile" {
 
 ```terraform
 resource "panos_zone" "this" {
+  # enable_user_id - (optional) is a type of bool
   enable_user_id = var.enable_user_id
-  exclude_acls   = var.exclude_acls
-  include_acls   = var.include_acls
-  interfaces     = var.interfaces
-  log_setting    = var.log_setting
-  mode           = var.mode
-  name           = var.name
-  vsys           = var.vsys
-  zone_profile   = var.zone_profile
+  # exclude_acls - (optional) is a type of list of string
+  exclude_acls = var.exclude_acls
+  # include_acls - (optional) is a type of list of string
+  include_acls = var.include_acls
+  # interfaces - (optional) is a type of list of string
+  interfaces = var.interfaces
+  # log_setting - (optional) is a type of string
+  log_setting = var.log_setting
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
+  # zone_profile - (optional) is a type of string
+  zone_profile = var.zone_profile
 }
 ```
 

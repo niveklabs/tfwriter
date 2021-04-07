@@ -49,6 +49,7 @@ variable "domain" {
 
 ```terraform
 data "fastly_tls_domain" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
 }
 ```

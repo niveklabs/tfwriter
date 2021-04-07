@@ -184,24 +184,42 @@ variable "timeout" {
 
 ```terraform
 resource "bigip_ltm_persistence_profile_cookie" "this" {
-  always_send                  = var.always_send
-  app_service                  = var.app_service
-  cookie_encryption            = var.cookie_encryption
+  # always_send - (optional) is a type of string
+  always_send = var.always_send
+  # app_service - (optional) is a type of string
+  app_service = var.app_service
+  # cookie_encryption - (optional) is a type of string
+  cookie_encryption = var.cookie_encryption
+  # cookie_encryption_passphrase - (optional) is a type of string
   cookie_encryption_passphrase = var.cookie_encryption_passphrase
-  cookie_name                  = var.cookie_name
-  defaults_from                = var.defaults_from
-  expiration                   = var.expiration
-  hash_length                  = var.hash_length
-  hash_offset                  = var.hash_offset
-  httponly                     = var.httponly
-  match_across_pools           = var.match_across_pools
-  match_across_services        = var.match_across_services
-  match_across_virtuals        = var.match_across_virtuals
-  method                       = var.method
-  mirror                       = var.mirror
-  name                         = var.name
-  override_conn_limit          = var.override_conn_limit
-  timeout                      = var.timeout
+  # cookie_name - (optional) is a type of string
+  cookie_name = var.cookie_name
+  # defaults_from - (required) is a type of string
+  defaults_from = var.defaults_from
+  # expiration - (optional) is a type of string
+  expiration = var.expiration
+  # hash_length - (optional) is a type of number
+  hash_length = var.hash_length
+  # hash_offset - (optional) is a type of number
+  hash_offset = var.hash_offset
+  # httponly - (optional) is a type of string
+  httponly = var.httponly
+  # match_across_pools - (optional) is a type of string
+  match_across_pools = var.match_across_pools
+  # match_across_services - (optional) is a type of string
+  match_across_services = var.match_across_services
+  # match_across_virtuals - (optional) is a type of string
+  match_across_virtuals = var.match_across_virtuals
+  # method - (optional) is a type of string
+  method = var.method
+  # mirror - (optional) is a type of string
+  mirror = var.mirror
+  # name - (required) is a type of string
+  name = var.name
+  # override_conn_limit - (optional) is a type of string
+  override_conn_limit = var.override_conn_limit
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

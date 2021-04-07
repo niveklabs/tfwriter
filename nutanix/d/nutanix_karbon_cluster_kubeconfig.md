@@ -58,7 +58,9 @@ variable "karbon_cluster_name" {
 
 ```terraform
 data "nutanix_karbon_cluster_kubeconfig" "this" {
-  karbon_cluster_id   = var.karbon_cluster_id
+  # karbon_cluster_id - (optional) is a type of string
+  karbon_cluster_id = var.karbon_cluster_id
+  # karbon_cluster_name - (optional) is a type of string
   karbon_cluster_name = var.karbon_cluster_name
 }
 ```

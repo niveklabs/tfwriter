@@ -78,11 +78,16 @@ variable "instance_type" {
 
 ```terraform
 resource "tencentcloud_ccn_attachment" "this" {
-  ccn_id          = var.ccn_id
-  ccn_uin         = var.ccn_uin
-  instance_id     = var.instance_id
+  # ccn_id - (required) is a type of string
+  ccn_id = var.ccn_id
+  # ccn_uin - (optional) is a type of string
+  ccn_uin = var.ccn_uin
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # instance_region - (required) is a type of string
   instance_region = var.instance_region
-  instance_type   = var.instance_type
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
 }
 ```
 

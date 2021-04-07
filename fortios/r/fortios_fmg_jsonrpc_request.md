@@ -57,7 +57,9 @@ variable "json_content" {
 
 ```terraform
 resource "fortios_fmg_jsonrpc_request" "this" {
-  comment      = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # json_content - (required) is a type of string
   json_content = var.json_content
 }
 ```

@@ -98,12 +98,19 @@ variable "onboarding_vlan" {
 
 ```terraform
 resource "fortios_switchcontroller_nacsettings" "this" {
-  auto_auth       = var.auto_auth
+  # auto_auth - (optional) is a type of string
+  auto_auth = var.auto_auth
+  # bounce_nac_port - (optional) is a type of string
   bounce_nac_port = var.bounce_nac_port
-  inactive_timer  = var.inactive_timer
+  # inactive_timer - (optional) is a type of number
+  inactive_timer = var.inactive_timer
+  # link_down_flush - (optional) is a type of string
   link_down_flush = var.link_down_flush
-  mode            = var.mode
-  name            = var.name
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (optional) is a type of string
+  name = var.name
+  # onboarding_vlan - (optional) is a type of string
   onboarding_vlan = var.onboarding_vlan
 }
 ```

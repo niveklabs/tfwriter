@@ -208,34 +208,58 @@ variable "email_server" {
 
 ```terraform
 resource "panos_email_server_profile" "this" {
-  auth_format        = var.auth_format
-  config_format      = var.config_format
-  data_format        = var.data_format
-  escape_character   = var.escape_character
+  # auth_format - (optional) is a type of string
+  auth_format = var.auth_format
+  # config_format - (optional) is a type of string
+  config_format = var.config_format
+  # data_format - (optional) is a type of string
+  data_format = var.data_format
+  # escape_character - (optional) is a type of string
+  escape_character = var.escape_character
+  # escaped_characters - (optional) is a type of string
   escaped_characters = var.escaped_characters
-  gtp_format         = var.gtp_format
-  hip_match_format   = var.hip_match_format
-  iptag_format       = var.iptag_format
-  name               = var.name
-  sctp_format        = var.sctp_format
-  system_format      = var.system_format
-  threat_format      = var.threat_format
-  traffic_format     = var.traffic_format
-  tunnel_format      = var.tunnel_format
-  url_format         = var.url_format
-  user_id_format     = var.user_id_format
-  vsys               = var.vsys
-  wildfire_format    = var.wildfire_format
+  # gtp_format - (optional) is a type of string
+  gtp_format = var.gtp_format
+  # hip_match_format - (optional) is a type of string
+  hip_match_format = var.hip_match_format
+  # iptag_format - (optional) is a type of string
+  iptag_format = var.iptag_format
+  # name - (required) is a type of string
+  name = var.name
+  # sctp_format - (optional) is a type of string
+  sctp_format = var.sctp_format
+  # system_format - (optional) is a type of string
+  system_format = var.system_format
+  # threat_format - (optional) is a type of string
+  threat_format = var.threat_format
+  # traffic_format - (optional) is a type of string
+  traffic_format = var.traffic_format
+  # tunnel_format - (optional) is a type of string
+  tunnel_format = var.tunnel_format
+  # url_format - (optional) is a type of string
+  url_format = var.url_format
+  # user_id_format - (optional) is a type of string
+  user_id_format = var.user_id_format
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
+  # wildfire_format - (optional) is a type of string
+  wildfire_format = var.wildfire_format
 
   dynamic "email_server" {
     for_each = var.email_server
     content {
+      # also_to_email - (optional) is a type of string
       also_to_email = email_server.value["also_to_email"]
-      display_name  = email_server.value["display_name"]
+      # display_name - (optional) is a type of string
+      display_name = email_server.value["display_name"]
+      # email_gateway - (required) is a type of string
       email_gateway = email_server.value["email_gateway"]
-      from_email    = email_server.value["from_email"]
-      name          = email_server.value["name"]
-      to_email      = email_server.value["to_email"]
+      # from_email - (required) is a type of string
+      from_email = email_server.value["from_email"]
+      # name - (required) is a type of string
+      name = email_server.value["name"]
+      # to_email - (required) is a type of string
+      to_email = email_server.value["to_email"]
     }
   }
 

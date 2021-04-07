@@ -73,10 +73,14 @@ variable "url" {
 
 ```terraform
 resource "fortios_webfilter_ftgdlocalrating" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  rating  = var.rating
-  status  = var.status
-  url     = var.url
+  # rating - (required) is a type of string
+  rating = var.rating
+  # status - (optional) is a type of string
+  status = var.status
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

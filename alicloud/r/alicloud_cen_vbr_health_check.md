@@ -120,20 +120,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cen_vbr_health_check" "this" {
-  cen_id                 = var.cen_id
-  health_check_interval  = var.health_check_interval
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # health_check_interval - (optional) is a type of number
+  health_check_interval = var.health_check_interval
+  # health_check_source_ip - (optional) is a type of string
   health_check_source_ip = var.health_check_source_ip
+  # health_check_target_ip - (required) is a type of string
   health_check_target_ip = var.health_check_target_ip
-  healthy_threshold      = var.healthy_threshold
-  vbr_instance_id        = var.vbr_instance_id
-  vbr_instance_owner_id  = var.vbr_instance_owner_id
+  # healthy_threshold - (optional) is a type of number
+  healthy_threshold = var.healthy_threshold
+  # vbr_instance_id - (required) is a type of string
+  vbr_instance_id = var.vbr_instance_id
+  # vbr_instance_owner_id - (optional) is a type of number
+  vbr_instance_owner_id = var.vbr_instance_owner_id
+  # vbr_instance_region_id - (required) is a type of string
   vbr_instance_region_id = var.vbr_instance_region_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

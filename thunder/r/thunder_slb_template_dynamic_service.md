@@ -82,14 +82,19 @@ variable "dns_server" {
 
 ```terraform
 resource "thunder_slb_template_dynamic_service" "this" {
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
   user_tag = var.user_tag
-  uuid     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dns_server" {
     for_each = var.dns_server
     content {
+      # ipv4_dns_server - (optional) is a type of string
       ipv4_dns_server = dns_server.value["ipv4_dns_server"]
+      # ipv6_dns_server - (optional) is a type of string
       ipv6_dns_server = dns_server.value["ipv6_dns_server"]
     }
   }

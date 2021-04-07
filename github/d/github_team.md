@@ -49,6 +49,7 @@ variable "slug" {
 
 ```terraform
 data "github_team" "this" {
+  # slug - (required) is a type of string
   slug = var.slug
 }
 ```

@@ -63,9 +63,12 @@ variable "role_name" {
 
 ```terraform
 resource "alicloud_ram_role_policy_attachment" "this" {
+  # policy_name - (required) is a type of string
   policy_name = var.policy_name
+  # policy_type - (required) is a type of string
   policy_type = var.policy_type
-  role_name   = var.role_name
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 }
 ```
 

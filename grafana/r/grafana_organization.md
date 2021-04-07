@@ -89,12 +89,18 @@ variable "viewers" {
 
 ```terraform
 resource "grafana_organization" "this" {
-  admin_user   = var.admin_user
-  admins       = var.admins
+  # admin_user - (optional) is a type of string
+  admin_user = var.admin_user
+  # admins - (optional) is a type of set of string
+  admins = var.admins
+  # create_users - (optional) is a type of bool
   create_users = var.create_users
-  editors      = var.editors
-  name         = var.name
-  viewers      = var.viewers
+  # editors - (optional) is a type of set of string
+  editors = var.editors
+  # name - (required) is a type of string
+  name = var.name
+  # viewers - (optional) is a type of set of string
+  viewers = var.viewers
 }
 ```
 

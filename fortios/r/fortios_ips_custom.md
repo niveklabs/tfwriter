@@ -154,20 +154,34 @@ variable "tag" {
 
 ```terraform
 resource "fortios_ips_custom" "this" {
-  action      = var.action
+  # action - (optional) is a type of string
+  action = var.action
+  # application - (optional) is a type of string
   application = var.application
-  comment     = var.comment
-  location    = var.location
-  log         = var.log
-  log_packet  = var.log_packet
-  os          = var.os
-  protocol    = var.protocol
-  rule_id     = var.rule_id
-  severity    = var.severity
-  sig_name    = var.sig_name
-  signature   = var.signature
-  status      = var.status
-  tag         = var.tag
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # location - (optional) is a type of string
+  location = var.location
+  # log - (optional) is a type of string
+  log = var.log
+  # log_packet - (optional) is a type of string
+  log_packet = var.log_packet
+  # os - (optional) is a type of string
+  os = var.os
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # rule_id - (optional) is a type of number
+  rule_id = var.rule_id
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # sig_name - (optional) is a type of string
+  sig_name = var.sig_name
+  # signature - (optional) is a type of string
+  signature = var.signature
+  # status - (optional) is a type of string
+  status = var.status
+  # tag - (optional) is a type of string
+  tag = var.tag
 }
 ```
 

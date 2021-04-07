@@ -98,13 +98,20 @@ variable "subnet_id" {
 
 ```terraform
 data "ecl_network_subnet_v2" "this" {
-  cidr        = var.cidr
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # description - (optional) is a type of string
   description = var.description
-  gateway_ip  = var.gateway_ip
-  name        = var.name
-  network_id  = var.network_id
-  region      = var.region
-  subnet_id   = var.subnet_id
+  # gateway_ip - (optional) is a type of string
+  gateway_ip = var.gateway_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (optional) is a type of string
+  network_id = var.network_id
+  # region - (optional) is a type of string
+  region = var.region
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

@@ -202,26 +202,46 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_kvstore_instances" "this" {
+  # architecture_type - (optional) is a type of string
   architecture_type = var.architecture_type
-  edition_type      = var.edition_type
-  enable_details    = var.enable_details
-  engine_version    = var.engine_version
-  expired           = var.expired
-  global_instance   = var.global_instance
-  ids               = var.ids
-  instance_class    = var.instance_class
-  instance_type     = var.instance_type
-  name_regex        = var.name_regex
-  network_type      = var.network_type
-  output_file       = var.output_file
-  payment_type      = var.payment_type
+  # edition_type - (optional) is a type of string
+  edition_type = var.edition_type
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # expired - (optional) is a type of string
+  expired = var.expired
+  # global_instance - (optional) is a type of bool
+  global_instance = var.global_instance
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  search_key        = var.search_key
-  status            = var.status
-  tags              = var.tags
-  vpc_id            = var.vpc_id
-  vswitch_id        = var.vswitch_id
-  zone_id           = var.zone_id
+  # search_key - (optional) is a type of string
+  search_key = var.search_key
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

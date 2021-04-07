@@ -121,16 +121,26 @@ variable "vendor" {
 
 ```terraform
 resource "fortios_application_custom" "this" {
-  behavior   = var.behavior
-  category   = var.category
-  comment    = var.comment
-  fosid      = var.fosid
-  name       = var.name
-  protocol   = var.protocol
-  signature  = var.signature
-  tag        = var.tag
+  # behavior - (optional) is a type of string
+  behavior = var.behavior
+  # category - (required) is a type of number
+  category = var.category
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # signature - (optional) is a type of string
+  signature = var.signature
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # technology - (optional) is a type of string
   technology = var.technology
-  vendor     = var.vendor
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
 }
 ```
 

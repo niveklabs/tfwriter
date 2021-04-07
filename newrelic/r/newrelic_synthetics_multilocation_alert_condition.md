@@ -113,16 +113,23 @@ variable "warning" {
 
 ```terraform
 resource "newrelic_synthetics_multilocation_alert_condition" "this" {
-  enabled                      = var.enabled
-  entities                     = var.entities
-  name                         = var.name
-  policy_id                    = var.policy_id
-  runbook_url                  = var.runbook_url
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # entities - (required) is a type of list of string
+  entities = var.entities
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # runbook_url - (optional) is a type of string
+  runbook_url = var.runbook_url
+  # violation_time_limit_seconds - (required) is a type of number
   violation_time_limit_seconds = var.violation_time_limit_seconds
 
   dynamic "critical" {
     for_each = var.critical
     content {
+      # threshold - (required) is a type of number
       threshold = critical.value["threshold"]
     }
   }
@@ -130,6 +137,7 @@ resource "newrelic_synthetics_multilocation_alert_condition" "this" {
   dynamic "warning" {
     for_each = var.warning
     content {
+      # threshold - (required) is a type of number
       threshold = warning.value["threshold"]
     }
   }

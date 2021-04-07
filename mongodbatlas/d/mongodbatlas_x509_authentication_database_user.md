@@ -57,8 +57,10 @@ variable "username" {
 
 ```terraform
 data "mongodbatlas_x509_authentication_database_user" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
-  username   = var.username
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

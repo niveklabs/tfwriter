@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_user_devicecategory" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  desc    = var.desc
-  name    = var.name
+  # desc - (optional) is a type of string
+  desc = var.desc
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

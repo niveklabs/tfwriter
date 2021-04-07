@@ -49,6 +49,7 @@ variable "targets" {
 
 ```terraform
 resource "checkpoint_management_install_database" "this" {
+  # targets - (required) is a type of set of string
   targets = var.targets
 }
 ```

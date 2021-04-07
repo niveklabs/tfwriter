@@ -63,9 +63,12 @@ variable "schema_ref" {
 
 ```terraform
 resource "sumologic_cloud_to_cloud_source" "this" {
+  # collector_id - (required) is a type of number
   collector_id = var.collector_id
-  config       = var.config
-  schema_ref   = var.schema_ref
+  # config - (required) is a type of string
+  config = var.config
+  # schema_ref - (required) is a type of map of string
+  schema_ref = var.schema_ref
 }
 ```
 

@@ -161,18 +161,27 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_dhcp_server_ip_pool" "this" {
-  description            = var.description
-  display_name           = var.display_name
-  error_threshold        = var.error_threshold
-  gateway_ip             = var.gateway_ip
-  lease_time             = var.lease_time
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # error_threshold - (optional) is a type of number
+  error_threshold = var.error_threshold
+  # gateway_ip - (optional) is a type of string
+  gateway_ip = var.gateway_ip
+  # lease_time - (optional) is a type of number
+  lease_time = var.lease_time
+  # logical_dhcp_server_id - (required) is a type of string
   logical_dhcp_server_id = var.logical_dhcp_server_id
-  warning_threshold      = var.warning_threshold
+  # warning_threshold - (optional) is a type of number
+  warning_threshold = var.warning_threshold
 
   dynamic "dhcp_generic_option" {
     for_each = var.dhcp_generic_option
     content {
-      code   = dhcp_generic_option.value["code"]
+      # code - (required) is a type of number
+      code = dhcp_generic_option.value["code"]
+      # values - (required) is a type of list of string
       values = dhcp_generic_option.value["values"]
     }
   }
@@ -180,7 +189,9 @@ resource "nsxt_dhcp_server_ip_pool" "this" {
   dynamic "dhcp_option_121" {
     for_each = var.dhcp_option_121
     content {
-      network  = dhcp_option_121.value["network"]
+      # network - (required) is a type of string
+      network = dhcp_option_121.value["network"]
+      # next_hop - (required) is a type of string
       next_hop = dhcp_option_121.value["next_hop"]
     }
   }
@@ -188,7 +199,9 @@ resource "nsxt_dhcp_server_ip_pool" "this" {
   dynamic "ip_range" {
     for_each = var.ip_range
     content {
-      end   = ip_range.value["end"]
+      # end - (required) is a type of string
+      end = ip_range.value["end"]
+      # start - (required) is a type of string
       start = ip_range.value["start"]
     }
   }
@@ -196,8 +209,10 @@ resource "nsxt_dhcp_server_ip_pool" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

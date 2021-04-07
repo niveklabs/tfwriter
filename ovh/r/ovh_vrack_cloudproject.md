@@ -66,9 +66,12 @@ variable "vrack_id" {
 
 ```terraform
 resource "ovh_vrack_cloudproject" "this" {
-  project_id   = var.project_id
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # service_name - (optional) is a type of string
   service_name = var.service_name
-  vrack_id     = var.vrack_id
+  # vrack_id - (optional) is a type of string
+  vrack_id = var.vrack_id
 }
 ```
 

@@ -65,9 +65,12 @@ variable "timeout" {
 
 ```terraform
 resource "bigip_do" "this" {
-  do_json     = var.do_json
+  # do_json - (required) is a type of string
+  do_json = var.do_json
+  # tenant_name - (optional) is a type of string
   tenant_name = var.tenant_name
-  timeout     = var.timeout
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

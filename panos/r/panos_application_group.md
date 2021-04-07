@@ -65,9 +65,12 @@ variable "vsys" {
 
 ```terraform
 resource "panos_application_group" "this" {
+  # applications - (optional) is a type of list of string
   applications = var.applications
-  name         = var.name
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

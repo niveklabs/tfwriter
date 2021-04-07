@@ -98,20 +98,27 @@ variable "rule" {
 
 ```terraform
 resource "pagerduty_escalation_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  num_loops   = var.num_loops
-  teams       = var.teams
+  # name - (required) is a type of string
+  name = var.name
+  # num_loops - (optional) is a type of number
+  num_loops = var.num_loops
+  # teams - (optional) is a type of list of string
+  teams = var.teams
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # escalation_delay_in_minutes - (required) is a type of number
       escalation_delay_in_minutes = rule.value["escalation_delay_in_minutes"]
 
       dynamic "target" {
         for_each = rule.value.target
         content {
-          id   = target.value["id"]
+          # id - (required) is a type of string
+          id = target.value["id"]
+          # type - (optional) is a type of string
           type = target.value["type"]
         }
       }

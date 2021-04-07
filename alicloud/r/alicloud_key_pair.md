@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_key_pair" "this" {
-  key_file          = var.key_file
-  key_name          = var.key_name
-  key_name_prefix   = var.key_name_prefix
-  public_key        = var.public_key
+  # key_file - (optional) is a type of string
+  key_file = var.key_file
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # key_name_prefix - (optional) is a type of string
+  key_name_prefix = var.key_name_prefix
+  # public_key - (optional) is a type of string
+  public_key = var.public_key
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

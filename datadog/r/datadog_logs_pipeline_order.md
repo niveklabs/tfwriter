@@ -56,7 +56,9 @@ variable "pipelines" {
 
 ```terraform
 resource "datadog_logs_pipeline_order" "this" {
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # pipelines - (required) is a type of list of string
   pipelines = var.pipelines
 }
 ```

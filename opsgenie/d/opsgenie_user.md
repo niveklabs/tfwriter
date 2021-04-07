@@ -81,11 +81,16 @@ variable "username" {
 
 ```terraform
 data "opsgenie_user" "this" {
+  # full_name - (optional) is a type of string
   full_name = var.full_name
-  locale    = var.locale
-  role      = var.role
-  timezone  = var.timezone
-  username  = var.username
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # role - (optional) is a type of string
+  role = var.role
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

@@ -185,24 +185,42 @@ variable "use_default_session_timeout" {
 
 ```terraform
 resource "checkpoint_management_service_udp" "this" {
-  accept_replies                                  = var.accept_replies
-  aggressive_aging                                = var.aggressive_aging
-  color                                           = var.color
-  comments                                        = var.comments
-  ignore_errors                                   = var.ignore_errors
-  ignore_warnings                                 = var.ignore_warnings
+  # accept_replies - (optional) is a type of bool
+  accept_replies = var.accept_replies
+  # aggressive_aging - (optional) is a type of map of string
+  aggressive_aging = var.aggressive_aging
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # keep_connections_open_after_policy_installation - (optional) is a type of bool
   keep_connections_open_after_policy_installation = var.keep_connections_open_after_policy_installation
-  match_by_protocol_signature                     = var.match_by_protocol_signature
-  match_for_any                                   = var.match_for_any
-  name                                            = var.name
-  override_default_settings                       = var.override_default_settings
-  port                                            = var.port
-  protocol                                        = var.protocol
-  session_timeout                                 = var.session_timeout
-  source_port                                     = var.source_port
-  sync_connections_on_cluster                     = var.sync_connections_on_cluster
-  tags                                            = var.tags
-  use_default_session_timeout                     = var.use_default_session_timeout
+  # match_by_protocol_signature - (optional) is a type of bool
+  match_by_protocol_signature = var.match_by_protocol_signature
+  # match_for_any - (optional) is a type of bool
+  match_for_any = var.match_for_any
+  # name - (required) is a type of string
+  name = var.name
+  # override_default_settings - (optional) is a type of bool
+  override_default_settings = var.override_default_settings
+  # port - (optional) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # session_timeout - (optional) is a type of number
+  session_timeout = var.session_timeout
+  # source_port - (optional) is a type of string
+  source_port = var.source_port
+  # sync_connections_on_cluster - (optional) is a type of bool
+  sync_connections_on_cluster = var.sync_connections_on_cluster
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # use_default_session_timeout - (optional) is a type of bool
+  use_default_session_timeout = var.use_default_session_timeout
 }
 ```
 

@@ -82,11 +82,16 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_instance_type_families" "this" {
-  generation           = var.generation
+  # generation - (optional) is a type of string
+  generation = var.generation
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  output_file          = var.output_file
-  spot_strategy        = var.spot_strategy
-  zone_id              = var.zone_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # spot_strategy - (optional) is a type of string
+  spot_strategy = var.spot_strategy
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

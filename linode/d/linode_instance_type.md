@@ -50,6 +50,7 @@ variable "label" {
 
 ```terraform
 data "linode_instance_type" "this" {
+  # label - (optional) is a type of string
   label = var.label
 }
 ```

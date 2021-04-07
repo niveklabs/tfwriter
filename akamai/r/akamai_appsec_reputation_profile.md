@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_reputation_profile" "this" {
-  config_id          = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # reputation_profile - (required) is a type of string
   reputation_profile = var.reputation_profile
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

@@ -226,29 +226,52 @@ variable "service_type" {
 
 ```terraform
 resource "fortios_system_wccp" "this" {
+  # assignment_bucket_format - (optional) is a type of string
   assignment_bucket_format = var.assignment_bucket_format
-  assignment_dstaddr_mask  = var.assignment_dstaddr_mask
-  assignment_method        = var.assignment_method
-  assignment_srcaddr_mask  = var.assignment_srcaddr_mask
-  assignment_weight        = var.assignment_weight
-  authentication           = var.authentication
-  cache_engine_method      = var.cache_engine_method
-  cache_id                 = var.cache_id
-  forward_method           = var.forward_method
-  group_address            = var.group_address
-  password                 = var.password
-  ports                    = var.ports
-  ports_defined            = var.ports_defined
-  primary_hash             = var.primary_hash
-  priority                 = var.priority
-  protocol                 = var.protocol
-  return_method            = var.return_method
-  router_id                = var.router_id
-  router_list              = var.router_list
-  server_list              = var.server_list
-  server_type              = var.server_type
-  service_id               = var.service_id
-  service_type             = var.service_type
+  # assignment_dstaddr_mask - (optional) is a type of string
+  assignment_dstaddr_mask = var.assignment_dstaddr_mask
+  # assignment_method - (optional) is a type of string
+  assignment_method = var.assignment_method
+  # assignment_srcaddr_mask - (optional) is a type of string
+  assignment_srcaddr_mask = var.assignment_srcaddr_mask
+  # assignment_weight - (optional) is a type of number
+  assignment_weight = var.assignment_weight
+  # authentication - (optional) is a type of string
+  authentication = var.authentication
+  # cache_engine_method - (optional) is a type of string
+  cache_engine_method = var.cache_engine_method
+  # cache_id - (optional) is a type of string
+  cache_id = var.cache_id
+  # forward_method - (optional) is a type of string
+  forward_method = var.forward_method
+  # group_address - (optional) is a type of string
+  group_address = var.group_address
+  # password - (optional) is a type of string
+  password = var.password
+  # ports - (optional) is a type of string
+  ports = var.ports
+  # ports_defined - (optional) is a type of string
+  ports_defined = var.ports_defined
+  # primary_hash - (optional) is a type of string
+  primary_hash = var.primary_hash
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # protocol - (optional) is a type of number
+  protocol = var.protocol
+  # return_method - (optional) is a type of string
+  return_method = var.return_method
+  # router_id - (optional) is a type of string
+  router_id = var.router_id
+  # router_list - (optional) is a type of string
+  router_list = var.router_list
+  # server_list - (optional) is a type of string
+  server_list = var.server_list
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # service_id - (optional) is a type of string
+  service_id = var.service_id
+  # service_type - (optional) is a type of string
+  service_type = var.service_type
 }
 ```
 

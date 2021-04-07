@@ -49,6 +49,7 @@ variable "password" {
 
 ```terraform
 resource "ecl_rca_user_v1" "this" {
+  # password - (required) is a type of string
   password = var.password
 }
 ```

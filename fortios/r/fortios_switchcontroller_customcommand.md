@@ -65,9 +65,12 @@ variable "description" {
 
 ```terraform
 resource "fortios_switchcontroller_customcommand" "this" {
-  command      = var.command
+  # command - (required) is a type of string
+  command = var.command
+  # command_name - (optional) is a type of string
   command_name = var.command_name
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
 }
 ```
 

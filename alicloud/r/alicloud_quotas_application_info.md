@@ -110,18 +110,27 @@ variable "dimensions" {
 
 ```terraform
 resource "alicloud_quotas_application_info" "this" {
-  audit_mode        = var.audit_mode
-  desire_value      = var.desire_value
-  notice_type       = var.notice_type
-  product_code      = var.product_code
+  # audit_mode - (optional) is a type of string
+  audit_mode = var.audit_mode
+  # desire_value - (required) is a type of number
+  desire_value = var.desire_value
+  # notice_type - (optional) is a type of number
+  notice_type = var.notice_type
+  # product_code - (required) is a type of string
+  product_code = var.product_code
+  # quota_action_code - (required) is a type of string
   quota_action_code = var.quota_action_code
-  quota_category    = var.quota_category
-  reason            = var.reason
+  # quota_category - (optional) is a type of string
+  quota_category = var.quota_category
+  # reason - (required) is a type of string
+  reason = var.reason
 
   dynamic "dimensions" {
     for_each = var.dimensions
     content {
-      key   = dimensions.value["key"]
+      # key - (optional) is a type of string
+      key = dimensions.value["key"]
+      # value - (optional) is a type of string
       value = dimensions.value["value"]
     }
   }

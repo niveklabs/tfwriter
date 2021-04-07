@@ -64,8 +64,11 @@ variable "visibility" {
 
 ```terraform
 resource "stackpath_object_storage_bucket" "this" {
-  label      = var.label
-  region     = var.region
+  # label - (required) is a type of string
+  label = var.label
+  # region - (required) is a type of string
+  region = var.region
+  # visibility - (optional) is a type of string
   visibility = var.visibility
 }
 ```

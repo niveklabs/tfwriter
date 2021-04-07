@@ -148,15 +148,21 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_global_dns_provider" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  labels      = var.labels
-  name        = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # root_domain - (required) is a type of string
   root_domain = var.root_domain
 
   dynamic "alidns_config" {
     for_each = var.alidns_config
     content {
+      # access_key - (required) is a type of string
       access_key = alidns_config.value["access_key"]
+      # secret_key - (required) is a type of string
       secret_key = alidns_config.value["secret_key"]
     }
   }
@@ -164,8 +170,11 @@ resource "rancher2_global_dns_provider" "this" {
   dynamic "cloudflare_config" {
     for_each = var.cloudflare_config
     content {
-      api_email     = cloudflare_config.value["api_email"]
-      api_key       = cloudflare_config.value["api_key"]
+      # api_email - (required) is a type of string
+      api_email = cloudflare_config.value["api_email"]
+      # api_key - (required) is a type of string
+      api_key = cloudflare_config.value["api_key"]
+      # proxy_setting - (optional) is a type of bool
       proxy_setting = cloudflare_config.value["proxy_setting"]
     }
   }
@@ -173,20 +182,29 @@ resource "rancher2_global_dns_provider" "this" {
   dynamic "route53_config" {
     for_each = var.route53_config
     content {
-      access_key       = route53_config.value["access_key"]
+      # access_key - (required) is a type of string
+      access_key = route53_config.value["access_key"]
+      # credentials_path - (optional) is a type of string
       credentials_path = route53_config.value["credentials_path"]
-      region           = route53_config.value["region"]
-      role_arn         = route53_config.value["role_arn"]
-      secret_key       = route53_config.value["secret_key"]
-      zone_type        = route53_config.value["zone_type"]
+      # region - (optional) is a type of string
+      region = route53_config.value["region"]
+      # role_arn - (optional) is a type of string
+      role_arn = route53_config.value["role_arn"]
+      # secret_key - (required) is a type of string
+      secret_key = route53_config.value["secret_key"]
+      # zone_type - (optional) is a type of string
+      zone_type = route53_config.value["zone_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

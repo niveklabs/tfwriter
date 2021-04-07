@@ -73,10 +73,14 @@ variable "state" {
 
 ```terraform
 resource "ovh_dedicated_server_update" "this" {
-  boot_id      = var.boot_id
-  monitoring   = var.monitoring
+  # boot_id - (optional) is a type of number
+  boot_id = var.boot_id
+  # monitoring - (optional) is a type of bool
+  monitoring = var.monitoring
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  state        = var.state
+  # state - (optional) is a type of string
+  state = var.state
 }
 ```
 

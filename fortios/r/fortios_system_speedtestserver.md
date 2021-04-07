@@ -88,18 +88,26 @@ variable "host" {
 
 ```terraform
 resource "fortios_system_speedtestserver" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  timestamp             = var.timestamp
+  # name - (optional) is a type of string
+  name = var.name
+  # timestamp - (optional) is a type of number
+  timestamp = var.timestamp
 
   dynamic "host" {
     for_each = var.host
     content {
-      id       = host.value["id"]
-      ip       = host.value["ip"]
+      # id - (optional) is a type of number
+      id = host.value["id"]
+      # ip - (optional) is a type of string
+      ip = host.value["ip"]
+      # password - (optional) is a type of string
       password = host.value["password"]
-      port     = host.value["port"]
-      user     = host.value["user"]
+      # port - (optional) is a type of number
+      port = host.value["port"]
+      # user - (optional) is a type of string
+      user = host.value["user"]
     }
   }
 

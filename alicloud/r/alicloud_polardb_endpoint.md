@@ -88,12 +88,18 @@ variable "read_write_mode" {
 
 ```terraform
 resource "alicloud_polardb_endpoint" "this" {
+  # auto_add_new_nodes - (optional) is a type of string
   auto_add_new_nodes = var.auto_add_new_nodes
-  db_cluster_id      = var.db_cluster_id
-  endpoint_config    = var.endpoint_config
-  endpoint_type      = var.endpoint_type
-  nodes              = var.nodes
-  read_write_mode    = var.read_write_mode
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
+  # endpoint_config - (optional) is a type of map of string
+  endpoint_config = var.endpoint_config
+  # endpoint_type - (required) is a type of string
+  endpoint_type = var.endpoint_type
+  # nodes - (optional) is a type of set of string
+  nodes = var.nodes
+  # read_write_mode - (optional) is a type of string
+  read_write_mode = var.read_write_mode
 }
 ```
 

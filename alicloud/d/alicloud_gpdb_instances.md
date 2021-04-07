@@ -90,12 +90,18 @@ variable "vswitch_id" {
 
 ```terraform
 data "alicloud_gpdb_instances" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  tags              = var.tags
-  vswitch_id        = var.vswitch_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

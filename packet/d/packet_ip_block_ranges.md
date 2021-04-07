@@ -57,7 +57,9 @@ variable "project_id" {
 
 ```terraform
 data "packet_ip_block_ranges" "this" {
-  facility   = var.facility
+  # facility - (optional) is a type of string
+  facility = var.facility
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

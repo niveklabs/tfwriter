@@ -228,79 +228,118 @@ variable "web" {
 
 ```terraform
 resource "fortios_log_threatweight" "this" {
-  blocked_connection         = var.blocked_connection
+  # blocked_connection - (optional) is a type of string
+  blocked_connection = var.blocked_connection
+  # botnet_connection_detected - (optional) is a type of string
   botnet_connection_detected = var.botnet_connection_detected
-  dynamic_sort_subtable      = var.dynamic_sort_subtable
-  failed_connection          = var.failed_connection
-  status                     = var.status
-  url_block_detected         = var.url_block_detected
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # failed_connection - (optional) is a type of string
+  failed_connection = var.failed_connection
+  # status - (optional) is a type of string
+  status = var.status
+  # url_block_detected - (optional) is a type of string
+  url_block_detected = var.url_block_detected
 
   dynamic "application" {
     for_each = var.application
     content {
+      # category - (optional) is a type of number
       category = application.value["category"]
-      id       = application.value["id"]
-      level    = application.value["level"]
+      # id - (optional) is a type of number
+      id = application.value["id"]
+      # level - (optional) is a type of string
+      level = application.value["level"]
     }
   }
 
   dynamic "geolocation" {
     for_each = var.geolocation
     content {
+      # country - (optional) is a type of string
       country = geolocation.value["country"]
-      id      = geolocation.value["id"]
-      level   = geolocation.value["level"]
+      # id - (optional) is a type of number
+      id = geolocation.value["id"]
+      # level - (optional) is a type of string
+      level = geolocation.value["level"]
     }
   }
 
   dynamic "ips" {
     for_each = var.ips
     content {
+      # critical_severity - (optional) is a type of string
       critical_severity = ips.value["critical_severity"]
-      high_severity     = ips.value["high_severity"]
-      info_severity     = ips.value["info_severity"]
-      low_severity      = ips.value["low_severity"]
-      medium_severity   = ips.value["medium_severity"]
+      # high_severity - (optional) is a type of string
+      high_severity = ips.value["high_severity"]
+      # info_severity - (optional) is a type of string
+      info_severity = ips.value["info_severity"]
+      # low_severity - (optional) is a type of string
+      low_severity = ips.value["low_severity"]
+      # medium_severity - (optional) is a type of string
+      medium_severity = ips.value["medium_severity"]
     }
   }
 
   dynamic "level" {
     for_each = var.level
     content {
+      # critical - (optional) is a type of number
       critical = level.value["critical"]
-      high     = level.value["high"]
-      low      = level.value["low"]
-      medium   = level.value["medium"]
+      # high - (optional) is a type of number
+      high = level.value["high"]
+      # low - (optional) is a type of number
+      low = level.value["low"]
+      # medium - (optional) is a type of number
+      medium = level.value["medium"]
     }
   }
 
   dynamic "malware" {
     for_each = var.malware
     content {
-      botnet_connection          = malware.value["botnet_connection"]
-      command_blocked            = malware.value["command_blocked"]
-      content_disarm             = malware.value["content_disarm"]
-      file_blocked               = malware.value["file_blocked"]
-      fsa_high_risk              = malware.value["fsa_high_risk"]
-      fsa_malicious              = malware.value["fsa_malicious"]
-      fsa_medium_risk            = malware.value["fsa_medium_risk"]
-      malware_list               = malware.value["malware_list"]
-      mimefragmented             = malware.value["mimefragmented"]
-      oversized                  = malware.value["oversized"]
-      switch_proto               = malware.value["switch_proto"]
+      # botnet_connection - (optional) is a type of string
+      botnet_connection = malware.value["botnet_connection"]
+      # command_blocked - (optional) is a type of string
+      command_blocked = malware.value["command_blocked"]
+      # content_disarm - (optional) is a type of string
+      content_disarm = malware.value["content_disarm"]
+      # file_blocked - (optional) is a type of string
+      file_blocked = malware.value["file_blocked"]
+      # fsa_high_risk - (optional) is a type of string
+      fsa_high_risk = malware.value["fsa_high_risk"]
+      # fsa_malicious - (optional) is a type of string
+      fsa_malicious = malware.value["fsa_malicious"]
+      # fsa_medium_risk - (optional) is a type of string
+      fsa_medium_risk = malware.value["fsa_medium_risk"]
+      # malware_list - (optional) is a type of string
+      malware_list = malware.value["malware_list"]
+      # mimefragmented - (optional) is a type of string
+      mimefragmented = malware.value["mimefragmented"]
+      # oversized - (optional) is a type of string
+      oversized = malware.value["oversized"]
+      # switch_proto - (optional) is a type of string
+      switch_proto = malware.value["switch_proto"]
+      # virus_file_type_executable - (optional) is a type of string
       virus_file_type_executable = malware.value["virus_file_type_executable"]
-      virus_infected             = malware.value["virus_infected"]
-      virus_outbreak_prevention  = malware.value["virus_outbreak_prevention"]
-      virus_scan_error           = malware.value["virus_scan_error"]
+      # virus_infected - (optional) is a type of string
+      virus_infected = malware.value["virus_infected"]
+      # virus_outbreak_prevention - (optional) is a type of string
+      virus_outbreak_prevention = malware.value["virus_outbreak_prevention"]
+      # virus_scan_error - (optional) is a type of string
+      virus_scan_error = malware.value["virus_scan_error"]
     }
   }
 
   dynamic "web" {
     for_each = var.web
     content {
+      # category - (optional) is a type of number
       category = web.value["category"]
-      id       = web.value["id"]
-      level    = web.value["level"]
+      # id - (optional) is a type of number
+      id = web.value["id"]
+      # level - (optional) is a type of string
+      level = web.value["level"]
     }
   }
 

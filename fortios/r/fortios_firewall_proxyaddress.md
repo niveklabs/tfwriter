@@ -236,27 +236,45 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_proxyaddress" "this" {
-  case_sensitivity      = var.case_sensitivity
-  color                 = var.color
-  comment               = var.comment
+  # case_sensitivity - (optional) is a type of string
+  case_sensitivity = var.case_sensitivity
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  header                = var.header
-  header_name           = var.header_name
-  host                  = var.host
-  host_regex            = var.host_regex
-  method                = var.method
-  name                  = var.name
-  path                  = var.path
-  query                 = var.query
-  referrer              = var.referrer
-  type                  = var.type
-  ua                    = var.ua
-  uuid                  = var.uuid
-  visibility            = var.visibility
+  # header - (optional) is a type of string
+  header = var.header
+  # header_name - (optional) is a type of string
+  header_name = var.header_name
+  # host - (optional) is a type of string
+  host = var.host
+  # host_regex - (optional) is a type of string
+  host_regex = var.host_regex
+  # method - (optional) is a type of string
+  method = var.method
+  # name - (optional) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # query - (optional) is a type of string
+  query = var.query
+  # referrer - (optional) is a type of string
+  referrer = var.referrer
+  # type - (optional) is a type of string
+  type = var.type
+  # ua - (optional) is a type of string
+  ua = var.ua
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "category" {
     for_each = var.category
     content {
+      # id - (optional) is a type of number
       id = category.value["id"]
     }
   }
@@ -264,22 +282,29 @@ resource "fortios_firewall_proxyaddress" "this" {
   dynamic "header_group" {
     for_each = var.header_group
     content {
+      # case_sensitivity - (optional) is a type of string
       case_sensitivity = header_group.value["case_sensitivity"]
-      header           = header_group.value["header"]
-      header_name      = header_group.value["header_name"]
-      id               = header_group.value["id"]
+      # header - (optional) is a type of string
+      header = header_group.value["header"]
+      # header_name - (optional) is a type of string
+      header_name = header_group.value["header_name"]
+      # id - (optional) is a type of number
+      id = header_group.value["id"]
     }
   }
 
   dynamic "tagging" {
     for_each = var.tagging
     content {
+      # category - (optional) is a type of string
       category = tagging.value["category"]
-      name     = tagging.value["name"]
+      # name - (optional) is a type of string
+      name = tagging.value["name"]
 
       dynamic "tags" {
         for_each = tagging.value.tags
         content {
+          # name - (optional) is a type of string
           name = tags.value["name"]
         }
       }

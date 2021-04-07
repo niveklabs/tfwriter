@@ -70,10 +70,14 @@ variable "strategy_id" {
 
 ```terraform
 resource "tencentcloud_api_gateway_strategy_attachment" "this" {
-  bind_api_id      = var.bind_api_id
+  # bind_api_id - (required) is a type of string
+  bind_api_id = var.bind_api_id
+  # environment_name - (required) is a type of string
   environment_name = var.environment_name
-  service_id       = var.service_id
-  strategy_id      = var.strategy_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # strategy_id - (required) is a type of string
+  strategy_id = var.strategy_id
 }
 ```
 

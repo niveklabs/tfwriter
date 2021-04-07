@@ -56,8 +56,10 @@ variable "repository" {
 
 ```terraform
 resource "github_app_installation_repository" "this" {
+  # installation_id - (required) is a type of string
   installation_id = var.installation_id
-  repository      = var.repository
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

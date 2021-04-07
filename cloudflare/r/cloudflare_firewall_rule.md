@@ -95,13 +95,20 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_firewall_rule" "this" {
-  action      = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
   description = var.description
-  filter_id   = var.filter_id
-  paused      = var.paused
-  priority    = var.priority
-  products    = var.products
-  zone_id     = var.zone_id
+  # filter_id - (required) is a type of string
+  filter_id = var.filter_id
+  # paused - (optional) is a type of bool
+  paused = var.paused
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # products - (optional) is a type of set of string
+  products = var.products
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -264,16 +264,23 @@ variable "secondary_ip" {
 
 ```terraform
 resource "thunder_interface_management" "this" {
-  action       = var.action
-  duplexity    = var.duplexity
+  # action - (optional) is a type of string
+  action = var.action
+  # duplexity - (optional) is a type of string
+  duplexity = var.duplexity
+  # flow_control - (optional) is a type of number
   flow_control = var.flow_control
-  speed        = var.speed
-  uuid         = var.uuid
+  # speed - (optional) is a type of string
+  speed = var.speed
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "access_list" {
     for_each = var.access_list
     content {
-      acl_id   = access_list.value["acl_id"]
+      # acl_id - (optional) is a type of number
+      acl_id = access_list.value["acl_id"]
+      # acl_name - (optional) is a type of string
       acl_name = access_list.value["acl_name"]
     }
   }
@@ -281,51 +288,69 @@ resource "thunder_interface_management" "this" {
   dynamic "broadcast_rate_limit" {
     for_each = var.broadcast_rate_limit
     content {
+      # bcast_rate_limit_enable - (optional) is a type of number
       bcast_rate_limit_enable = broadcast_rate_limit.value["bcast_rate_limit_enable"]
-      rate                    = broadcast_rate_limit.value["rate"]
+      # rate - (optional) is a type of number
+      rate = broadcast_rate_limit.value["rate"]
     }
   }
 
   dynamic "ip" {
     for_each = var.ip
     content {
+      # control_apps_use_mgmt_port - (optional) is a type of number
       control_apps_use_mgmt_port = ip.value["control_apps_use_mgmt_port"]
-      default_gateway            = ip.value["default_gateway"]
-      dhcp                       = ip.value["dhcp"]
-      ipv4_address               = ip.value["ipv4_address"]
-      ipv4_netmask               = ip.value["ipv4_netmask"]
+      # default_gateway - (optional) is a type of string
+      default_gateway = ip.value["default_gateway"]
+      # dhcp - (optional) is a type of number
+      dhcp = ip.value["dhcp"]
+      # ipv4_address - (optional) is a type of string
+      ipv4_address = ip.value["ipv4_address"]
+      # ipv4_netmask - (optional) is a type of string
+      ipv4_netmask = ip.value["ipv4_netmask"]
     }
   }
 
   dynamic "ipv6" {
     for_each = var.ipv6
     content {
-      address_type         = ipv6.value["address_type"]
+      # address_type - (optional) is a type of string
+      address_type = ipv6.value["address_type"]
+      # default_ipv6_gateway - (optional) is a type of string
       default_ipv6_gateway = ipv6.value["default_ipv6_gateway"]
-      inbound              = ipv6.value["inbound"]
-      ipv6_addr            = ipv6.value["ipv6_addr"]
-      v6_acl_name          = ipv6.value["v6_acl_name"]
+      # inbound - (optional) is a type of number
+      inbound = ipv6.value["inbound"]
+      # ipv6_addr - (optional) is a type of string
+      ipv6_addr = ipv6.value["ipv6_addr"]
+      # v6_acl_name - (optional) is a type of string
+      v6_acl_name = ipv6.value["v6_acl_name"]
     }
   }
 
   dynamic "lldp" {
     for_each = var.lldp
     content {
+      # uuid - (optional) is a type of string
       uuid = lldp.value["uuid"]
 
       dynamic "enable_cfg" {
         for_each = lldp.value.enable_cfg
         content {
+          # rt_enable - (optional) is a type of number
           rt_enable = enable_cfg.value["rt_enable"]
-          rx        = enable_cfg.value["rx"]
-          tx        = enable_cfg.value["tx"]
+          # rx - (optional) is a type of number
+          rx = enable_cfg.value["rx"]
+          # tx - (optional) is a type of number
+          tx = enable_cfg.value["tx"]
         }
       }
 
       dynamic "notification_cfg" {
         for_each = lldp.value.notification_cfg
         content {
+          # notif_enable - (optional) is a type of number
           notif_enable = notification_cfg.value["notif_enable"]
+          # notification - (optional) is a type of number
           notification = notification_cfg.value["notification"]
         }
       }
@@ -333,22 +358,32 @@ resource "thunder_interface_management" "this" {
       dynamic "tx_dot1_cfg" {
         for_each = lldp.value.tx_dot1_cfg
         content {
+          # link_aggregation - (optional) is a type of number
           link_aggregation = tx_dot1_cfg.value["link_aggregation"]
-          tx_dot1_tlvs     = tx_dot1_cfg.value["tx_dot1_tlvs"]
-          vlan             = tx_dot1_cfg.value["vlan"]
+          # tx_dot1_tlvs - (optional) is a type of number
+          tx_dot1_tlvs = tx_dot1_cfg.value["tx_dot1_tlvs"]
+          # vlan - (optional) is a type of number
+          vlan = tx_dot1_cfg.value["vlan"]
         }
       }
 
       dynamic "tx_tlvs_cfg" {
         for_each = lldp.value.tx_tlvs_cfg
         content {
-          exclude             = tx_tlvs_cfg.value["exclude"]
-          management_address  = tx_tlvs_cfg.value["management_address"]
-          port_description    = tx_tlvs_cfg.value["port_description"]
+          # exclude - (optional) is a type of number
+          exclude = tx_tlvs_cfg.value["exclude"]
+          # management_address - (optional) is a type of number
+          management_address = tx_tlvs_cfg.value["management_address"]
+          # port_description - (optional) is a type of number
+          port_description = tx_tlvs_cfg.value["port_description"]
+          # system_capabilities - (optional) is a type of number
           system_capabilities = tx_tlvs_cfg.value["system_capabilities"]
-          system_description  = tx_tlvs_cfg.value["system_description"]
-          system_name         = tx_tlvs_cfg.value["system_name"]
-          tx_tlvs             = tx_tlvs_cfg.value["tx_tlvs"]
+          # system_description - (optional) is a type of number
+          system_description = tx_tlvs_cfg.value["system_description"]
+          # system_name - (optional) is a type of number
+          system_name = tx_tlvs_cfg.value["system_name"]
+          # tx_tlvs - (optional) is a type of number
+          tx_tlvs = tx_tlvs_cfg.value["tx_tlvs"]
         }
       }
 
@@ -358,6 +393,7 @@ resource "thunder_interface_management" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }
@@ -365,12 +401,18 @@ resource "thunder_interface_management" "this" {
   dynamic "secondary_ip" {
     for_each = var.secondary_ip
     content {
+      # control_apps_use_mgmt_port - (optional) is a type of number
       control_apps_use_mgmt_port = secondary_ip.value["control_apps_use_mgmt_port"]
-      default_gateway            = secondary_ip.value["default_gateway"]
-      dhcp                       = secondary_ip.value["dhcp"]
-      ipv4_address               = secondary_ip.value["ipv4_address"]
-      ipv4_netmask               = secondary_ip.value["ipv4_netmask"]
-      secondary_ip               = secondary_ip.value["secondary_ip"]
+      # default_gateway - (optional) is a type of string
+      default_gateway = secondary_ip.value["default_gateway"]
+      # dhcp - (optional) is a type of number
+      dhcp = secondary_ip.value["dhcp"]
+      # ipv4_address - (optional) is a type of string
+      ipv4_address = secondary_ip.value["ipv4_address"]
+      # ipv4_netmask - (optional) is a type of string
+      ipv4_netmask = secondary_ip.value["ipv4_netmask"]
+      # secondary_ip - (optional) is a type of number
+      secondary_ip = secondary_ip.value["secondary_ip"]
     }
   }
 

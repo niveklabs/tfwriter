@@ -57,8 +57,10 @@ variable "zone" {
 
 ```terraform
 data "ns1_zone" "this" {
+  # additional_primaries - (optional) is a type of list of string
   additional_primaries = var.additional_primaries
-  zone                 = var.zone
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

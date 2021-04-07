@@ -166,22 +166,38 @@ variable "website_redirect" {
 
 ```terraform
 resource "digitalocean_spaces_bucket_object" "this" {
-  acl                 = var.acl
-  bucket              = var.bucket
-  cache_control       = var.cache_control
-  content             = var.content
-  content_base64      = var.content_base64
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content - (optional) is a type of string
+  content = var.content
+  # content_base64 - (optional) is a type of string
+  content_base64 = var.content_base64
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_language    = var.content_language
-  content_type        = var.content_type
-  etag                = var.etag
-  force_destroy       = var.force_destroy
-  key                 = var.key
-  metadata            = var.metadata
-  region              = var.region
-  source              = var.source
-  website_redirect    = var.website_redirect
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_language - (optional) is a type of string
+  content_language = var.content_language
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # key - (required) is a type of string
+  key = var.key
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # region - (required) is a type of string
+  region = var.region
+  # source - (optional) is a type of string
+  source = var.source
+  # website_redirect - (optional) is a type of string
+  website_redirect = var.website_redirect
 }
 ```
 

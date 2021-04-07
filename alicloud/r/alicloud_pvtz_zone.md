@@ -116,19 +116,29 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_pvtz_zone" "this" {
-  lang              = var.lang
-  name              = var.name
-  proxy_pattern     = var.proxy_pattern
-  remark            = var.remark
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # name - (optional) is a type of string
+  name = var.name
+  # proxy_pattern - (optional) is a type of string
+  proxy_pattern = var.proxy_pattern
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  user_client_ip    = var.user_client_ip
-  zone_name         = var.zone_name
+  # user_client_ip - (optional) is a type of string
+  user_client_ip = var.user_client_ip
+  # zone_name - (optional) is a type of string
+  zone_name = var.zone_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

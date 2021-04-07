@@ -91,20 +91,27 @@ variable "rule" {
 
 ```terraform
 resource "fortios_firewall_identitybasedroute" "this" {
-  comments              = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      device  = rule.value["device"]
+      # device - (optional) is a type of string
+      device = rule.value["device"]
+      # gateway - (optional) is a type of string
       gateway = rule.value["gateway"]
-      id      = rule.value["id"]
+      # id - (optional) is a type of number
+      id = rule.value["id"]
 
       dynamic "groups" {
         for_each = rule.value.groups
         content {
+          # name - (optional) is a type of string
           name = groups.value["name"]
         }
       }

@@ -56,7 +56,9 @@ variable "usage_plan_id" {
 
 ```terraform
 resource "tencentcloud_api_gateway_api_key_attachment" "this" {
-  api_key_id    = var.api_key_id
+  # api_key_id - (required) is a type of string
+  api_key_id = var.api_key_id
+  # usage_plan_id - (required) is a type of string
   usage_plan_id = var.usage_plan_id
 }
 ```

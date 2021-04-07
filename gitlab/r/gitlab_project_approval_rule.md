@@ -79,11 +79,16 @@ variable "user_ids" {
 
 ```terraform
 resource "gitlab_project_approval_rule" "this" {
+  # approvals_required - (required) is a type of number
   approvals_required = var.approvals_required
-  group_ids          = var.group_ids
-  name               = var.name
-  project            = var.project
-  user_ids           = var.user_ids
+  # group_ids - (optional) is a type of set of number
+  group_ids = var.group_ids
+  # name - (required) is a type of string
+  name = var.name
+  # project - (required) is a type of string
+  project = var.project
+  # user_ids - (optional) is a type of set of number
+  user_ids = var.user_ids
 }
 ```
 

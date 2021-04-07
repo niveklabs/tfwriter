@@ -73,9 +73,13 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_dayu_ddos_policy_attachments" "this" {
-  policy_id          = var.policy_id
-  resource_id        = var.resource_id
-  resource_type      = var.resource_type
+  # policy_id - (optional) is a type of string
+  policy_id = var.policy_id
+  # resource_id - (optional) is a type of string
+  resource_id = var.resource_id
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

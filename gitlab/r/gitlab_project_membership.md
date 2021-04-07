@@ -63,9 +63,12 @@ variable "user_id" {
 
 ```terraform
 resource "gitlab_project_membership" "this" {
+  # access_level - (required) is a type of string
   access_level = var.access_level
-  project_id   = var.project_id
-  user_id      = var.user_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # user_id - (required) is a type of number
+  user_id = var.user_id
 }
 ```
 

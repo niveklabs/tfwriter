@@ -50,6 +50,7 @@ variable "country" {
 
 ```terraform
 data "linode_region" "this" {
+  # country - (optional) is a type of string
   country = var.country
 }
 ```

@@ -60,6 +60,7 @@ resource "thunder_slb_sport_rate_limit" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

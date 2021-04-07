@@ -88,12 +88,18 @@ variable "use_private_ip" {
 
 ```terraform
 resource "hcloud_load_balancer_target" "this" {
-  ip               = var.ip
-  label_selector   = var.label_selector
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # label_selector - (optional) is a type of string
+  label_selector = var.label_selector
+  # load_balancer_id - (required) is a type of number
   load_balancer_id = var.load_balancer_id
-  server_id        = var.server_id
-  type             = var.type
-  use_private_ip   = var.use_private_ip
+  # server_id - (optional) is a type of number
+  server_id = var.server_id
+  # type - (required) is a type of string
+  type = var.type
+  # use_private_ip - (optional) is a type of bool
+  use_private_ip = var.use_private_ip
 }
 ```
 

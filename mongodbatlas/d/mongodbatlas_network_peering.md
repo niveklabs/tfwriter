@@ -56,7 +56,9 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_network_peering" "this" {
+  # peering_id - (required) is a type of string
   peering_id = var.peering_id
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

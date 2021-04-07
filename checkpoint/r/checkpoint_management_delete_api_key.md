@@ -66,9 +66,12 @@ variable "api_key" {
 
 ```terraform
 resource "checkpoint_management_delete_api_key" "this" {
+  # admin_name - (optional) is a type of string
   admin_name = var.admin_name
-  admin_uid  = var.admin_uid
-  api_key    = var.api_key
+  # admin_uid - (optional) is a type of string
+  admin_uid = var.admin_uid
+  # api_key - (optional) is a type of string
+  api_key = var.api_key
 }
 ```
 

@@ -121,16 +121,26 @@ variable "type" {
 
 ```terraform
 resource "fortios_fmg_system_adom" "this" {
-  action_when_conflicts_occur_during_policy_check   = var.action_when_conflicts_occur_during_policy_check
+  # action_when_conflicts_occur_during_policy_check - (optional) is a type of string
+  action_when_conflicts_occur_during_policy_check = var.action_when_conflicts_occur_during_policy_check
+  # auto_push_policy_packages_when_device_back_online - (optional) is a type of string
   auto_push_policy_packages_when_device_back_online = var.auto_push_policy_packages_when_device_back_online
-  central_management_fortiap                        = var.central_management_fortiap
-  central_management_sdwan                          = var.central_management_sdwan
-  central_management_vpn                            = var.central_management_vpn
-  mode                                              = var.mode
-  name                                              = var.name
-  perform_policy_check_before_every_install         = var.perform_policy_check_before_every_install
-  status                                            = var.status
-  type                                              = var.type
+  # central_management_fortiap - (optional) is a type of bool
+  central_management_fortiap = var.central_management_fortiap
+  # central_management_sdwan - (optional) is a type of bool
+  central_management_sdwan = var.central_management_sdwan
+  # central_management_vpn - (optional) is a type of bool
+  central_management_vpn = var.central_management_vpn
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # perform_policy_check_before_every_install - (optional) is a type of bool
+  perform_policy_check_before_every_install = var.perform_policy_check_before_every_install
+  # status - (optional) is a type of number
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

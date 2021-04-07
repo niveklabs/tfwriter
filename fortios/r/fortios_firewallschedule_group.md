@@ -78,13 +78,17 @@ variable "member" {
 
 ```terraform
 resource "fortios_firewallschedule_group" "this" {
-  color                 = var.color
+  # color - (optional) is a type of number
+  color = var.color
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

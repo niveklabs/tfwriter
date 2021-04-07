@@ -96,13 +96,20 @@ variable "shard_count" {
 
 ```terraform
 resource "alicloud_datahub_topic" "this" {
-  comment       = var.comment
-  life_cycle    = var.life_cycle
-  name          = var.name
-  project_name  = var.project_name
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # life_cycle - (optional) is a type of number
+  life_cycle = var.life_cycle
+  # name - (required) is a type of string
+  name = var.name
+  # project_name - (required) is a type of string
+  project_name = var.project_name
+  # record_schema - (optional) is a type of map of string
   record_schema = var.record_schema
-  record_type   = var.record_type
-  shard_count   = var.shard_count
+  # record_type - (optional) is a type of string
+  record_type = var.record_type
+  # shard_count - (optional) is a type of number
+  shard_count = var.shard_count
 }
 ```
 

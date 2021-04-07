@@ -56,8 +56,10 @@ variable "user_name" {
 
 ```terraform
 resource "aviatrix_rbac_group_user_attachment" "this" {
+  # group_name - (required) is a type of string
   group_name = var.group_name
-  user_name  = var.user_name
+  # user_name - (required) is a type of string
+  user_name = var.user_name
 }
 ```
 

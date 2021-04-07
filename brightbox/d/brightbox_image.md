@@ -146,19 +146,32 @@ variable "username" {
 
 ```terraform
 data "brightbox_image" "this" {
-  ancestor_id        = var.ancestor_id
-  arch               = var.arch
+  # ancestor_id - (optional) is a type of string
+  ancestor_id = var.ancestor_id
+  # arch - (optional) is a type of string
+  arch = var.arch
+  # compatibility_mode - (optional) is a type of bool
   compatibility_mode = var.compatibility_mode
-  description        = var.description
-  licence_name       = var.licence_name
-  most_recent        = var.most_recent
-  name               = var.name
-  official           = var.official
-  owner              = var.owner
-  public             = var.public
-  source_type        = var.source_type
-  status             = var.status
-  username           = var.username
+  # description - (optional) is a type of string
+  description = var.description
+  # licence_name - (optional) is a type of string
+  licence_name = var.licence_name
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # name - (optional) is a type of string
+  name = var.name
+  # official - (optional) is a type of bool
+  official = var.official
+  # owner - (optional) is a type of string
+  owner = var.owner
+  # public - (optional) is a type of bool
+  public = var.public
+  # source_type - (optional) is a type of string
+  source_type = var.source_type
+  # status - (optional) is a type of string
+  status = var.status
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

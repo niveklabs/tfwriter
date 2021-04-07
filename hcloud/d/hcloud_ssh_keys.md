@@ -50,6 +50,7 @@ variable "with_selector" {
 
 ```terraform
 data "hcloud_ssh_keys" "this" {
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 }
 ```

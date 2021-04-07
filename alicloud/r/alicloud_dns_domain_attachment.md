@@ -56,8 +56,10 @@ variable "instance_id" {
 
 ```terraform
 resource "alicloud_dns_domain_attachment" "this" {
+  # domain_names - (required) is a type of set of string
   domain_names = var.domain_names
-  instance_id  = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
 }
 ```
 

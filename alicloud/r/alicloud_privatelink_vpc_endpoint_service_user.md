@@ -64,9 +64,12 @@ variable "user_id" {
 
 ```terraform
 resource "alicloud_privatelink_vpc_endpoint_service_user" "this" {
-  dry_run    = var.dry_run
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # service_id - (required) is a type of string
   service_id = var.service_id
-  user_id    = var.user_id
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 }
 ```
 

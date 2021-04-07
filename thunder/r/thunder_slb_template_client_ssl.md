@@ -1814,148 +1814,287 @@ variable "web_category" {
 
 ```terraform
 resource "thunder_slb_template_client_ssl" "this" {
-  ad_group_list                         = var.ad_group_list
-  alert_type                            = var.alert_type
-  auth_sg                               = var.auth_sg
-  auth_sg_dn                            = var.auth_sg_dn
-  auth_sg_filter                        = var.auth_sg_filter
-  auth_username                         = var.auth_username
-  auth_username_attribute               = var.auth_username_attribute
-  authen_name                           = var.authen_name
-  authorization                         = var.authorization
-  bypass_cert_issuer_class_list_name    = var.bypass_cert_issuer_class_list_name
-  bypass_cert_san_class_list_name       = var.bypass_cert_san_class_list_name
-  bypass_cert_subject_class_list_name   = var.bypass_cert_subject_class_list_name
-  cache_persistence_list_name           = var.cache_persistence_list_name
-  case_insensitive                      = var.case_insensitive
-  cert_alternate                        = var.cert_alternate
-  cert_revoke_action                    = var.cert_revoke_action
-  cert_shared_str                       = var.cert_shared_str
-  cert_str                              = var.cert_str
-  cert_unknown_action                   = var.cert_unknown_action
-  chain_cert                            = var.chain_cert
-  chain_cert_shared_str                 = var.chain_cert_shared_str
-  class_list_name                       = var.class_list_name
-  client_auth_case_insensitive          = var.client_auth_case_insensitive
-  client_auth_class_list                = var.client_auth_class_list
-  client_certificate                    = var.client_certificate
-  close_notify                          = var.close_notify
-  dgversion                             = var.dgversion
-  dh_type                               = var.dh_type
-  direct_client_server_auth             = var.direct_client_server_auth
-  disable_sslv3                         = var.disable_sslv3
-  enable_tls_alert_logging              = var.enable_tls_alert_logging
-  exception_ad_group_list               = var.exception_ad_group_list
-  exception_certificate_issuer_cl_name  = var.exception_certificate_issuer_cl_name
-  exception_certificate_san_cl_name     = var.exception_certificate_san_cl_name
+  # ad_group_list - (optional) is a type of string
+  ad_group_list = var.ad_group_list
+  # alert_type - (optional) is a type of string
+  alert_type = var.alert_type
+  # auth_sg - (optional) is a type of string
+  auth_sg = var.auth_sg
+  # auth_sg_dn - (optional) is a type of number
+  auth_sg_dn = var.auth_sg_dn
+  # auth_sg_filter - (optional) is a type of string
+  auth_sg_filter = var.auth_sg_filter
+  # auth_username - (optional) is a type of string
+  auth_username = var.auth_username
+  # auth_username_attribute - (optional) is a type of string
+  auth_username_attribute = var.auth_username_attribute
+  # authen_name - (optional) is a type of string
+  authen_name = var.authen_name
+  # authorization - (optional) is a type of number
+  authorization = var.authorization
+  # bypass_cert_issuer_class_list_name - (optional) is a type of string
+  bypass_cert_issuer_class_list_name = var.bypass_cert_issuer_class_list_name
+  # bypass_cert_san_class_list_name - (optional) is a type of string
+  bypass_cert_san_class_list_name = var.bypass_cert_san_class_list_name
+  # bypass_cert_subject_class_list_name - (optional) is a type of string
+  bypass_cert_subject_class_list_name = var.bypass_cert_subject_class_list_name
+  # cache_persistence_list_name - (optional) is a type of string
+  cache_persistence_list_name = var.cache_persistence_list_name
+  # case_insensitive - (optional) is a type of number
+  case_insensitive = var.case_insensitive
+  # cert_alternate - (optional) is a type of string
+  cert_alternate = var.cert_alternate
+  # cert_revoke_action - (optional) is a type of string
+  cert_revoke_action = var.cert_revoke_action
+  # cert_shared_str - (optional) is a type of string
+  cert_shared_str = var.cert_shared_str
+  # cert_str - (optional) is a type of string
+  cert_str = var.cert_str
+  # cert_unknown_action - (optional) is a type of string
+  cert_unknown_action = var.cert_unknown_action
+  # chain_cert - (optional) is a type of string
+  chain_cert = var.chain_cert
+  # chain_cert_shared_str - (optional) is a type of string
+  chain_cert_shared_str = var.chain_cert_shared_str
+  # class_list_name - (optional) is a type of string
+  class_list_name = var.class_list_name
+  # client_auth_case_insensitive - (optional) is a type of number
+  client_auth_case_insensitive = var.client_auth_case_insensitive
+  # client_auth_class_list - (optional) is a type of string
+  client_auth_class_list = var.client_auth_class_list
+  # client_certificate - (optional) is a type of string
+  client_certificate = var.client_certificate
+  # close_notify - (optional) is a type of number
+  close_notify = var.close_notify
+  # dgversion - (optional) is a type of number
+  dgversion = var.dgversion
+  # dh_type - (optional) is a type of string
+  dh_type = var.dh_type
+  # direct_client_server_auth - (optional) is a type of number
+  direct_client_server_auth = var.direct_client_server_auth
+  # disable_sslv3 - (optional) is a type of number
+  disable_sslv3 = var.disable_sslv3
+  # enable_tls_alert_logging - (optional) is a type of number
+  enable_tls_alert_logging = var.enable_tls_alert_logging
+  # exception_ad_group_list - (optional) is a type of string
+  exception_ad_group_list = var.exception_ad_group_list
+  # exception_certificate_issuer_cl_name - (optional) is a type of string
+  exception_certificate_issuer_cl_name = var.exception_certificate_issuer_cl_name
+  # exception_certificate_san_cl_name - (optional) is a type of string
+  exception_certificate_san_cl_name = var.exception_certificate_san_cl_name
+  # exception_certificate_subject_cl_name - (optional) is a type of string
   exception_certificate_subject_cl_name = var.exception_certificate_subject_cl_name
-  exception_sni_cl_name                 = var.exception_sni_cl_name
-  exception_user_name_list              = var.exception_user_name_list
-  expire_hours                          = var.expire_hours
-  forward_encrypted                     = var.forward_encrypted
-  forward_passphrase                    = var.forward_passphrase
-  forward_proxy_alt_sign                = var.forward_proxy_alt_sign
-  forward_proxy_block_message           = var.forward_proxy_block_message
-  forward_proxy_ca_cert                 = var.forward_proxy_ca_cert
-  forward_proxy_ca_key                  = var.forward_proxy_ca_key
-  forward_proxy_cert_cache_limit        = var.forward_proxy_cert_cache_limit
-  forward_proxy_cert_cache_timeout      = var.forward_proxy_cert_cache_timeout
-  forward_proxy_cert_expiry             = var.forward_proxy_cert_expiry
-  forward_proxy_cert_not_ready_action   = var.forward_proxy_cert_not_ready_action
-  forward_proxy_cert_revoke_action      = var.forward_proxy_cert_revoke_action
-  forward_proxy_cert_unknown_action     = var.forward_proxy_cert_unknown_action
-  forward_proxy_crl_disable             = var.forward_proxy_crl_disable
-  forward_proxy_decrypted_dscp          = var.forward_proxy_decrypted_dscp
-  forward_proxy_decrypted_dscp_bypass   = var.forward_proxy_decrypted_dscp_bypass
-  forward_proxy_enable                  = var.forward_proxy_enable
-  forward_proxy_failsafe_disable        = var.forward_proxy_failsafe_disable
-  forward_proxy_log_disable             = var.forward_proxy_log_disable
+  # exception_sni_cl_name - (optional) is a type of string
+  exception_sni_cl_name = var.exception_sni_cl_name
+  # exception_user_name_list - (optional) is a type of string
+  exception_user_name_list = var.exception_user_name_list
+  # expire_hours - (optional) is a type of number
+  expire_hours = var.expire_hours
+  # forward_encrypted - (optional) is a type of string
+  forward_encrypted = var.forward_encrypted
+  # forward_passphrase - (optional) is a type of string
+  forward_passphrase = var.forward_passphrase
+  # forward_proxy_alt_sign - (optional) is a type of number
+  forward_proxy_alt_sign = var.forward_proxy_alt_sign
+  # forward_proxy_block_message - (optional) is a type of string
+  forward_proxy_block_message = var.forward_proxy_block_message
+  # forward_proxy_ca_cert - (optional) is a type of string
+  forward_proxy_ca_cert = var.forward_proxy_ca_cert
+  # forward_proxy_ca_key - (optional) is a type of string
+  forward_proxy_ca_key = var.forward_proxy_ca_key
+  # forward_proxy_cert_cache_limit - (optional) is a type of number
+  forward_proxy_cert_cache_limit = var.forward_proxy_cert_cache_limit
+  # forward_proxy_cert_cache_timeout - (optional) is a type of number
+  forward_proxy_cert_cache_timeout = var.forward_proxy_cert_cache_timeout
+  # forward_proxy_cert_expiry - (optional) is a type of number
+  forward_proxy_cert_expiry = var.forward_proxy_cert_expiry
+  # forward_proxy_cert_not_ready_action - (optional) is a type of string
+  forward_proxy_cert_not_ready_action = var.forward_proxy_cert_not_ready_action
+  # forward_proxy_cert_revoke_action - (optional) is a type of number
+  forward_proxy_cert_revoke_action = var.forward_proxy_cert_revoke_action
+  # forward_proxy_cert_unknown_action - (optional) is a type of number
+  forward_proxy_cert_unknown_action = var.forward_proxy_cert_unknown_action
+  # forward_proxy_crl_disable - (optional) is a type of number
+  forward_proxy_crl_disable = var.forward_proxy_crl_disable
+  # forward_proxy_decrypted_dscp - (optional) is a type of number
+  forward_proxy_decrypted_dscp = var.forward_proxy_decrypted_dscp
+  # forward_proxy_decrypted_dscp_bypass - (optional) is a type of number
+  forward_proxy_decrypted_dscp_bypass = var.forward_proxy_decrypted_dscp_bypass
+  # forward_proxy_enable - (optional) is a type of number
+  forward_proxy_enable = var.forward_proxy_enable
+  # forward_proxy_failsafe_disable - (optional) is a type of number
+  forward_proxy_failsafe_disable = var.forward_proxy_failsafe_disable
+  # forward_proxy_log_disable - (optional) is a type of number
+  forward_proxy_log_disable = var.forward_proxy_log_disable
+  # forward_proxy_no_shared_cipher_action - (optional) is a type of number
   forward_proxy_no_shared_cipher_action = var.forward_proxy_no_shared_cipher_action
-  forward_proxy_no_sni_action           = var.forward_proxy_no_sni_action
-  forward_proxy_ocsp_disable            = var.forward_proxy_ocsp_disable
-  forward_proxy_selfsign_redir          = var.forward_proxy_selfsign_redir
-  forward_proxy_ssl_version             = var.forward_proxy_ssl_version
+  # forward_proxy_no_sni_action - (optional) is a type of string
+  forward_proxy_no_sni_action = var.forward_proxy_no_sni_action
+  # forward_proxy_ocsp_disable - (optional) is a type of number
+  forward_proxy_ocsp_disable = var.forward_proxy_ocsp_disable
+  # forward_proxy_selfsign_redir - (optional) is a type of number
+  forward_proxy_selfsign_redir = var.forward_proxy_selfsign_redir
+  # forward_proxy_ssl_version - (optional) is a type of number
+  forward_proxy_ssl_version = var.forward_proxy_ssl_version
+  # forward_proxy_verify_cert_fail_action - (optional) is a type of number
   forward_proxy_verify_cert_fail_action = var.forward_proxy_verify_cert_fail_action
-  fp_alt_cert                           = var.fp_alt_cert
-  fp_alt_encrypted                      = var.fp_alt_encrypted
-  fp_alt_key                            = var.fp_alt_key
-  fp_alt_passphrase                     = var.fp_alt_passphrase
-  fp_cert_ext_aia_ca_issuers            = var.fp_cert_ext_aia_ca_issuers
-  fp_cert_ext_aia_ocsp                  = var.fp_cert_ext_aia_ocsp
-  fp_cert_ext_crldp                     = var.fp_cert_ext_crldp
-  fp_cert_fetch_autonat                 = var.fp_cert_fetch_autonat
-  fp_cert_fetch_autonat_precedence      = var.fp_cert_fetch_autonat_precedence
-  fp_cert_fetch_natpool_name            = var.fp_cert_fetch_natpool_name
-  fp_cert_fetch_natpool_name_shared     = var.fp_cert_fetch_natpool_name_shared
-  fp_cert_fetch_natpool_precedence      = var.fp_cert_fetch_natpool_precedence
-  handshake_logging_enable              = var.handshake_logging_enable
-  hsm_type                              = var.hsm_type
-  inspect_certificate_issuer_cl_name    = var.inspect_certificate_issuer_cl_name
-  inspect_certificate_san_cl_name       = var.inspect_certificate_san_cl_name
-  inspect_certificate_subject_cl_name   = var.inspect_certificate_subject_cl_name
-  inspect_list_name                     = var.inspect_list_name
-  key_alt_encrypted                     = var.key_alt_encrypted
-  key_alt_passphrase                    = var.key_alt_passphrase
-  key_alternate                         = var.key_alternate
-  key_encrypted                         = var.key_encrypted
-  key_passphrase                        = var.key_passphrase
-  key_shared_encrypted                  = var.key_shared_encrypted
-  key_shared_passphrase                 = var.key_shared_passphrase
-  key_shared_str                        = var.key_shared_str
-  key_str                               = var.key_str
-  ldap_base_dn_from_cert                = var.ldap_base_dn_from_cert
-  ldap_search_filter                    = var.ldap_search_filter
-  local_logging                         = var.local_logging
-  name                                  = var.name
-  no_shared_cipher_action               = var.no_shared_cipher_action
-  non_ssl_bypass_l4session              = var.non_ssl_bypass_l4session
-  non_ssl_bypass_service_group          = var.non_ssl_bypass_service_group
-  notafter                              = var.notafter
-  notafterday                           = var.notafterday
-  notaftermonth                         = var.notaftermonth
-  notafteryear                          = var.notafteryear
-  notbefore                             = var.notbefore
-  notbeforeday                          = var.notbeforeday
-  notbeforemonth                        = var.notbeforemonth
-  notbeforeyear                         = var.notbeforeyear
-  ocsp_stapling                         = var.ocsp_stapling
-  ocspst_ca_cert                        = var.ocspst_ca_cert
-  ocspst_ocsp                           = var.ocspst_ocsp
-  ocspst_sg                             = var.ocspst_sg
-  ocspst_sg_days                        = var.ocspst_sg_days
-  ocspst_sg_hours                       = var.ocspst_sg_hours
-  ocspst_sg_minutes                     = var.ocspst_sg_minutes
-  ocspst_sg_timeout                     = var.ocspst_sg_timeout
-  ocspst_srvr                           = var.ocspst_srvr
-  ocspst_srvr_days                      = var.ocspst_srvr_days
-  ocspst_srvr_hours                     = var.ocspst_srvr_hours
-  ocspst_srvr_minutes                   = var.ocspst_srvr_minutes
-  ocspst_srvr_timeout                   = var.ocspst_srvr_timeout
-  renegotiation_disable                 = var.renegotiation_disable
-  require_web_category                  = var.require_web_category
-  server_name_auto_map                  = var.server_name_auto_map
-  session_cache_size                    = var.session_cache_size
-  session_cache_timeout                 = var.session_cache_timeout
-  session_ticket_lifetime               = var.session_ticket_lifetime
-  shared_partition_cipher_template      = var.shared_partition_cipher_template
-  shared_partition_pool                 = var.shared_partition_pool
-  sni_enable_log                        = var.sni_enable_log
-  ssl_false_start_disable               = var.ssl_false_start_disable
-  ssli_logging                          = var.ssli_logging
-  sslilogging                           = var.sslilogging
-  sslv2_bypass_service_group            = var.sslv2_bypass_service_group
-  template_cipher                       = var.template_cipher
-  template_cipher_shared                = var.template_cipher_shared
-  template_hsm                          = var.template_hsm
-  user_name_list                        = var.user_name_list
-  user_tag                              = var.user_tag
-  uuid                                  = var.uuid
-  verify_cert_fail_action               = var.verify_cert_fail_action
-  version                               = var.version
+  # fp_alt_cert - (optional) is a type of string
+  fp_alt_cert = var.fp_alt_cert
+  # fp_alt_encrypted - (optional) is a type of string
+  fp_alt_encrypted = var.fp_alt_encrypted
+  # fp_alt_key - (optional) is a type of string
+  fp_alt_key = var.fp_alt_key
+  # fp_alt_passphrase - (optional) is a type of string
+  fp_alt_passphrase = var.fp_alt_passphrase
+  # fp_cert_ext_aia_ca_issuers - (optional) is a type of string
+  fp_cert_ext_aia_ca_issuers = var.fp_cert_ext_aia_ca_issuers
+  # fp_cert_ext_aia_ocsp - (optional) is a type of string
+  fp_cert_ext_aia_ocsp = var.fp_cert_ext_aia_ocsp
+  # fp_cert_ext_crldp - (optional) is a type of string
+  fp_cert_ext_crldp = var.fp_cert_ext_crldp
+  # fp_cert_fetch_autonat - (optional) is a type of string
+  fp_cert_fetch_autonat = var.fp_cert_fetch_autonat
+  # fp_cert_fetch_autonat_precedence - (optional) is a type of number
+  fp_cert_fetch_autonat_precedence = var.fp_cert_fetch_autonat_precedence
+  # fp_cert_fetch_natpool_name - (optional) is a type of string
+  fp_cert_fetch_natpool_name = var.fp_cert_fetch_natpool_name
+  # fp_cert_fetch_natpool_name_shared - (optional) is a type of string
+  fp_cert_fetch_natpool_name_shared = var.fp_cert_fetch_natpool_name_shared
+  # fp_cert_fetch_natpool_precedence - (optional) is a type of number
+  fp_cert_fetch_natpool_precedence = var.fp_cert_fetch_natpool_precedence
+  # handshake_logging_enable - (optional) is a type of number
+  handshake_logging_enable = var.handshake_logging_enable
+  # hsm_type - (optional) is a type of string
+  hsm_type = var.hsm_type
+  # inspect_certificate_issuer_cl_name - (optional) is a type of string
+  inspect_certificate_issuer_cl_name = var.inspect_certificate_issuer_cl_name
+  # inspect_certificate_san_cl_name - (optional) is a type of string
+  inspect_certificate_san_cl_name = var.inspect_certificate_san_cl_name
+  # inspect_certificate_subject_cl_name - (optional) is a type of string
+  inspect_certificate_subject_cl_name = var.inspect_certificate_subject_cl_name
+  # inspect_list_name - (optional) is a type of string
+  inspect_list_name = var.inspect_list_name
+  # key_alt_encrypted - (optional) is a type of string
+  key_alt_encrypted = var.key_alt_encrypted
+  # key_alt_passphrase - (optional) is a type of string
+  key_alt_passphrase = var.key_alt_passphrase
+  # key_alternate - (optional) is a type of string
+  key_alternate = var.key_alternate
+  # key_encrypted - (optional) is a type of string
+  key_encrypted = var.key_encrypted
+  # key_passphrase - (optional) is a type of string
+  key_passphrase = var.key_passphrase
+  # key_shared_encrypted - (optional) is a type of string
+  key_shared_encrypted = var.key_shared_encrypted
+  # key_shared_passphrase - (optional) is a type of string
+  key_shared_passphrase = var.key_shared_passphrase
+  # key_shared_str - (optional) is a type of string
+  key_shared_str = var.key_shared_str
+  # key_str - (optional) is a type of string
+  key_str = var.key_str
+  # ldap_base_dn_from_cert - (optional) is a type of number
+  ldap_base_dn_from_cert = var.ldap_base_dn_from_cert
+  # ldap_search_filter - (optional) is a type of string
+  ldap_search_filter = var.ldap_search_filter
+  # local_logging - (optional) is a type of number
+  local_logging = var.local_logging
+  # name - (optional) is a type of string
+  name = var.name
+  # no_shared_cipher_action - (optional) is a type of string
+  no_shared_cipher_action = var.no_shared_cipher_action
+  # non_ssl_bypass_l4session - (optional) is a type of number
+  non_ssl_bypass_l4session = var.non_ssl_bypass_l4session
+  # non_ssl_bypass_service_group - (optional) is a type of string
+  non_ssl_bypass_service_group = var.non_ssl_bypass_service_group
+  # notafter - (optional) is a type of number
+  notafter = var.notafter
+  # notafterday - (optional) is a type of number
+  notafterday = var.notafterday
+  # notaftermonth - (optional) is a type of number
+  notaftermonth = var.notaftermonth
+  # notafteryear - (optional) is a type of number
+  notafteryear = var.notafteryear
+  # notbefore - (optional) is a type of number
+  notbefore = var.notbefore
+  # notbeforeday - (optional) is a type of number
+  notbeforeday = var.notbeforeday
+  # notbeforemonth - (optional) is a type of number
+  notbeforemonth = var.notbeforemonth
+  # notbeforeyear - (optional) is a type of number
+  notbeforeyear = var.notbeforeyear
+  # ocsp_stapling - (optional) is a type of number
+  ocsp_stapling = var.ocsp_stapling
+  # ocspst_ca_cert - (optional) is a type of string
+  ocspst_ca_cert = var.ocspst_ca_cert
+  # ocspst_ocsp - (optional) is a type of number
+  ocspst_ocsp = var.ocspst_ocsp
+  # ocspst_sg - (optional) is a type of string
+  ocspst_sg = var.ocspst_sg
+  # ocspst_sg_days - (optional) is a type of number
+  ocspst_sg_days = var.ocspst_sg_days
+  # ocspst_sg_hours - (optional) is a type of number
+  ocspst_sg_hours = var.ocspst_sg_hours
+  # ocspst_sg_minutes - (optional) is a type of number
+  ocspst_sg_minutes = var.ocspst_sg_minutes
+  # ocspst_sg_timeout - (optional) is a type of number
+  ocspst_sg_timeout = var.ocspst_sg_timeout
+  # ocspst_srvr - (optional) is a type of string
+  ocspst_srvr = var.ocspst_srvr
+  # ocspst_srvr_days - (optional) is a type of number
+  ocspst_srvr_days = var.ocspst_srvr_days
+  # ocspst_srvr_hours - (optional) is a type of number
+  ocspst_srvr_hours = var.ocspst_srvr_hours
+  # ocspst_srvr_minutes - (optional) is a type of number
+  ocspst_srvr_minutes = var.ocspst_srvr_minutes
+  # ocspst_srvr_timeout - (optional) is a type of number
+  ocspst_srvr_timeout = var.ocspst_srvr_timeout
+  # renegotiation_disable - (optional) is a type of number
+  renegotiation_disable = var.renegotiation_disable
+  # require_web_category - (optional) is a type of number
+  require_web_category = var.require_web_category
+  # server_name_auto_map - (optional) is a type of number
+  server_name_auto_map = var.server_name_auto_map
+  # session_cache_size - (optional) is a type of number
+  session_cache_size = var.session_cache_size
+  # session_cache_timeout - (optional) is a type of number
+  session_cache_timeout = var.session_cache_timeout
+  # session_ticket_lifetime - (optional) is a type of number
+  session_ticket_lifetime = var.session_ticket_lifetime
+  # shared_partition_cipher_template - (optional) is a type of number
+  shared_partition_cipher_template = var.shared_partition_cipher_template
+  # shared_partition_pool - (optional) is a type of number
+  shared_partition_pool = var.shared_partition_pool
+  # sni_enable_log - (optional) is a type of number
+  sni_enable_log = var.sni_enable_log
+  # ssl_false_start_disable - (optional) is a type of number
+  ssl_false_start_disable = var.ssl_false_start_disable
+  # ssli_logging - (optional) is a type of number
+  ssli_logging = var.ssli_logging
+  # sslilogging - (optional) is a type of string
+  sslilogging = var.sslilogging
+  # sslv2_bypass_service_group - (optional) is a type of string
+  sslv2_bypass_service_group = var.sslv2_bypass_service_group
+  # template_cipher - (optional) is a type of string
+  template_cipher = var.template_cipher
+  # template_cipher_shared - (optional) is a type of string
+  template_cipher_shared = var.template_cipher_shared
+  # template_hsm - (optional) is a type of string
+  template_hsm = var.template_hsm
+  # user_name_list - (optional) is a type of string
+  user_name_list = var.user_name_list
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # verify_cert_fail_action - (optional) is a type of string
+  verify_cert_fail_action = var.verify_cert_fail_action
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "bypass_cert_issuer_multi_class_list" {
     for_each = var.bypass_cert_issuer_multi_class_list
     content {
+      # bypass_cert_issuer_multi_class_list_name - (optional) is a type of string
       bypass_cert_issuer_multi_class_list_name = bypass_cert_issuer_multi_class_list.value["bypass_cert_issuer_multi_class_list_name"]
     }
   }
@@ -1963,6 +2102,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "bypass_cert_san_multi_class_list" {
     for_each = var.bypass_cert_san_multi_class_list
     content {
+      # bypass_cert_san_multi_class_list_name - (optional) is a type of string
       bypass_cert_san_multi_class_list_name = bypass_cert_san_multi_class_list.value["bypass_cert_san_multi_class_list_name"]
     }
   }
@@ -1970,6 +2110,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "bypass_cert_subject_multi_class_list" {
     for_each = var.bypass_cert_subject_multi_class_list
     content {
+      # bypass_cert_subject_multi_class_list_name - (optional) is a type of string
       bypass_cert_subject_multi_class_list_name = bypass_cert_subject_multi_class_list.value["bypass_cert_subject_multi_class_list_name"]
     }
   }
@@ -1977,10 +2118,15 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "ca_certs" {
     for_each = var.ca_certs
     content {
-      ca_cert          = ca_certs.value["ca_cert"]
-      ca_shared        = ca_certs.value["ca_shared"]
-      client_ocsp      = ca_certs.value["client_ocsp"]
-      client_ocsp_sg   = ca_certs.value["client_ocsp_sg"]
+      # ca_cert - (optional) is a type of string
+      ca_cert = ca_certs.value["ca_cert"]
+      # ca_shared - (optional) is a type of number
+      ca_shared = ca_certs.value["ca_shared"]
+      # client_ocsp - (optional) is a type of number
+      client_ocsp = ca_certs.value["client_ocsp"]
+      # client_ocsp_sg - (optional) is a type of string
+      client_ocsp_sg = ca_certs.value["client_ocsp_sg"]
+      # client_ocsp_srvr - (optional) is a type of string
       client_ocsp_srvr = ca_certs.value["client_ocsp_srvr"]
     }
   }
@@ -1988,6 +2134,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_issuer_contains_list" {
     for_each = var.certificate_issuer_contains_list
     content {
+      # certificate_issuer_contains - (optional) is a type of string
       certificate_issuer_contains = certificate_issuer_contains_list.value["certificate_issuer_contains"]
     }
   }
@@ -1995,6 +2142,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_issuer_ends_with_list" {
     for_each = var.certificate_issuer_ends_with_list
     content {
+      # certificate_issuer_ends_with - (optional) is a type of string
       certificate_issuer_ends_with = certificate_issuer_ends_with_list.value["certificate_issuer_ends_with"]
     }
   }
@@ -2002,6 +2150,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_issuer_equals_list" {
     for_each = var.certificate_issuer_equals_list
     content {
+      # certificate_issuer_equals - (optional) is a type of string
       certificate_issuer_equals = certificate_issuer_equals_list.value["certificate_issuer_equals"]
     }
   }
@@ -2009,6 +2158,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_issuer_starts_with_list" {
     for_each = var.certificate_issuer_starts_with_list
     content {
+      # certificate_issuer_starts - (optional) is a type of string
       certificate_issuer_starts = certificate_issuer_starts_with_list.value["certificate_issuer_starts"]
     }
   }
@@ -2016,6 +2166,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_san_contains_list" {
     for_each = var.certificate_san_contains_list
     content {
+      # certificate_san_contains - (optional) is a type of string
       certificate_san_contains = certificate_san_contains_list.value["certificate_san_contains"]
     }
   }
@@ -2023,6 +2174,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_san_ends_with_list" {
     for_each = var.certificate_san_ends_with_list
     content {
+      # certificate_san_ends_with - (optional) is a type of string
       certificate_san_ends_with = certificate_san_ends_with_list.value["certificate_san_ends_with"]
     }
   }
@@ -2030,6 +2182,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_san_equals_list" {
     for_each = var.certificate_san_equals_list
     content {
+      # certificate_san_equals - (optional) is a type of string
       certificate_san_equals = certificate_san_equals_list.value["certificate_san_equals"]
     }
   }
@@ -2037,6 +2190,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_san_starts_with_list" {
     for_each = var.certificate_san_starts_with_list
     content {
+      # certificate_san_starts - (optional) is a type of string
       certificate_san_starts = certificate_san_starts_with_list.value["certificate_san_starts"]
     }
   }
@@ -2044,6 +2198,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_subject_contains_list" {
     for_each = var.certificate_subject_contains_list
     content {
+      # certificate_subject_contains - (optional) is a type of string
       certificate_subject_contains = certificate_subject_contains_list.value["certificate_subject_contains"]
     }
   }
@@ -2051,6 +2206,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_subject_ends_with_list" {
     for_each = var.certificate_subject_ends_with_list
     content {
+      # certificate_subject_ends_with - (optional) is a type of string
       certificate_subject_ends_with = certificate_subject_ends_with_list.value["certificate_subject_ends_with"]
     }
   }
@@ -2058,6 +2214,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_subject_equals_list" {
     for_each = var.certificate_subject_equals_list
     content {
+      # certificate_subject_equals - (optional) is a type of string
       certificate_subject_equals = certificate_subject_equals_list.value["certificate_subject_equals"]
     }
   }
@@ -2065,6 +2222,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "certificate_subject_starts_with_list" {
     for_each = var.certificate_subject_starts_with_list
     content {
+      # certificate_subject_starts - (optional) is a type of string
       certificate_subject_starts = certificate_subject_starts_with_list.value["certificate_subject_starts"]
     }
   }
@@ -2072,6 +2230,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "cipher_without_prio_list" {
     for_each = var.cipher_without_prio_list
     content {
+      # cipher_wo_prio - (optional) is a type of string
       cipher_wo_prio = cipher_without_prio_list.value["cipher_wo_prio"]
     }
   }
@@ -2079,6 +2238,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "client_auth_contains_list" {
     for_each = var.client_auth_contains_list
     content {
+      # client_auth_contains - (optional) is a type of string
       client_auth_contains = client_auth_contains_list.value["client_auth_contains"]
     }
   }
@@ -2086,6 +2246,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "client_auth_ends_with_list" {
     for_each = var.client_auth_ends_with_list
     content {
+      # client_auth_ends_with - (optional) is a type of string
       client_auth_ends_with = client_auth_ends_with_list.value["client_auth_ends_with"]
     }
   }
@@ -2093,6 +2254,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "client_auth_equals_list" {
     for_each = var.client_auth_equals_list
     content {
+      # client_auth_equals - (optional) is a type of string
       client_auth_equals = client_auth_equals_list.value["client_auth_equals"]
     }
   }
@@ -2100,6 +2262,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "client_auth_starts_with_list" {
     for_each = var.client_auth_starts_with_list
     content {
+      # client_auth_starts_with - (optional) is a type of string
       client_auth_starts_with = client_auth_starts_with_list.value["client_auth_starts_with"]
     }
   }
@@ -2107,6 +2270,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "contains_list" {
     for_each = var.contains_list
     content {
+      # contains - (optional) is a type of string
       contains = contains_list.value["contains"]
     }
   }
@@ -2114,7 +2278,9 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "crl_certs" {
     for_each = var.crl_certs
     content {
-      crl        = crl_certs.value["crl"]
+      # crl - (optional) is a type of string
+      crl = crl_certs.value["crl"]
+      # crl_shared - (optional) is a type of number
       crl_shared = crl_certs.value["crl_shared"]
     }
   }
@@ -2122,6 +2288,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "ec_list" {
     for_each = var.ec_list
     content {
+      # ec - (optional) is a type of string
       ec = ec_list.value["ec"]
     }
   }
@@ -2129,6 +2296,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "ends_with_list" {
     for_each = var.ends_with_list
     content {
+      # ends_with - (optional) is a type of string
       ends_with = ends_with_list.value["ends_with"]
     }
   }
@@ -2136,6 +2304,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "equals_list" {
     for_each = var.equals_list
     content {
+      # equals - (optional) is a type of string
       equals = equals_list.value["equals"]
     }
   }
@@ -2143,6 +2312,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "forward_proxy_trusted_ca_lists" {
     for_each = var.forward_proxy_trusted_ca_lists
     content {
+      # forward_proxy_trusted_ca - (optional) is a type of string
       forward_proxy_trusted_ca = forward_proxy_trusted_ca_lists.value["forward_proxy_trusted_ca"]
     }
   }
@@ -2150,6 +2320,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "multi_class_list" {
     for_each = var.multi_class_list
     content {
+      # multi_clist_name - (optional) is a type of string
       multi_clist_name = multi_class_list.value["multi_clist_name"]
     }
   }
@@ -2157,6 +2328,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "req_ca_lists" {
     for_each = var.req_ca_lists
     content {
+      # client_certificate_request_ca - (optional) is a type of string
       client_certificate_request_ca = req_ca_lists.value["client_certificate_request_ca"]
     }
   }
@@ -2164,6 +2336,7 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }
@@ -2171,28 +2344,45 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "server_name_list" {
     for_each = var.server_name_list
     content {
-      server_cert                 = server_name_list.value["server_cert"]
-      server_cert_regex           = server_name_list.value["server_cert_regex"]
-      server_chain                = server_name_list.value["server_chain"]
-      server_chain_regex          = server_name_list.value["server_chain_regex"]
-      server_encrypted            = server_name_list.value["server_encrypted"]
-      server_encrypted_regex      = server_name_list.value["server_encrypted_regex"]
-      server_key                  = server_name_list.value["server_key"]
-      server_key_regex            = server_name_list.value["server_key_regex"]
-      server_name                 = server_name_list.value["server_name"]
-      server_name_alternate       = server_name_list.value["server_name_alternate"]
-      server_name_regex           = server_name_list.value["server_name_regex"]
+      # server_cert - (optional) is a type of string
+      server_cert = server_name_list.value["server_cert"]
+      # server_cert_regex - (optional) is a type of string
+      server_cert_regex = server_name_list.value["server_cert_regex"]
+      # server_chain - (optional) is a type of string
+      server_chain = server_name_list.value["server_chain"]
+      # server_chain_regex - (optional) is a type of string
+      server_chain_regex = server_name_list.value["server_chain_regex"]
+      # server_encrypted - (optional) is a type of string
+      server_encrypted = server_name_list.value["server_encrypted"]
+      # server_encrypted_regex - (optional) is a type of string
+      server_encrypted_regex = server_name_list.value["server_encrypted_regex"]
+      # server_key - (optional) is a type of string
+      server_key = server_name_list.value["server_key"]
+      # server_key_regex - (optional) is a type of string
+      server_key_regex = server_name_list.value["server_key_regex"]
+      # server_name - (optional) is a type of string
+      server_name = server_name_list.value["server_name"]
+      # server_name_alternate - (optional) is a type of number
+      server_name_alternate = server_name_list.value["server_name_alternate"]
+      # server_name_regex - (optional) is a type of string
+      server_name_regex = server_name_list.value["server_name_regex"]
+      # server_name_regex_alternate - (optional) is a type of number
       server_name_regex_alternate = server_name_list.value["server_name_regex_alternate"]
-      server_passphrase           = server_name_list.value["server_passphrase"]
-      server_passphrase_regex     = server_name_list.value["server_passphrase_regex"]
-      server_shared               = server_name_list.value["server_shared"]
-      server_shared_regex         = server_name_list.value["server_shared_regex"]
+      # server_passphrase - (optional) is a type of string
+      server_passphrase = server_name_list.value["server_passphrase"]
+      # server_passphrase_regex - (optional) is a type of string
+      server_passphrase_regex = server_name_list.value["server_passphrase_regex"]
+      # server_shared - (optional) is a type of number
+      server_shared = server_name_list.value["server_shared"]
+      # server_shared_regex - (optional) is a type of number
+      server_shared_regex = server_name_list.value["server_shared_regex"]
     }
   }
 
   dynamic "starts_with_list" {
     for_each = var.starts_with_list
     content {
+      # starts_with - (optional) is a type of string
       starts_with = starts_with_list.value["starts_with"]
     }
   }
@@ -2200,90 +2390,174 @@ resource "thunder_slb_template_client_ssl" "this" {
   dynamic "web_category" {
     for_each = var.web_category
     content {
-      abortion                       = web_category.value["abortion"]
-      adult_and_pornography          = web_category.value["adult_and_pornography"]
-      alcohol_and_tobacco            = web_category.value["alcohol_and_tobacco"]
-      auctions                       = web_category.value["auctions"]
-      bot_nets                       = web_category.value["bot_nets"]
-      business_and_economy           = web_category.value["business_and_economy"]
-      cdns                           = web_category.value["cdns"]
-      cheating                       = web_category.value["cheating"]
-      computer_and_internet_info     = web_category.value["computer_and_internet_info"]
+      # abortion - (optional) is a type of number
+      abortion = web_category.value["abortion"]
+      # adult_and_pornography - (optional) is a type of number
+      adult_and_pornography = web_category.value["adult_and_pornography"]
+      # alcohol_and_tobacco - (optional) is a type of number
+      alcohol_and_tobacco = web_category.value["alcohol_and_tobacco"]
+      # auctions - (optional) is a type of number
+      auctions = web_category.value["auctions"]
+      # bot_nets - (optional) is a type of number
+      bot_nets = web_category.value["bot_nets"]
+      # business_and_economy - (optional) is a type of number
+      business_and_economy = web_category.value["business_and_economy"]
+      # cdns - (optional) is a type of number
+      cdns = web_category.value["cdns"]
+      # cheating - (optional) is a type of number
+      cheating = web_category.value["cheating"]
+      # computer_and_internet_info - (optional) is a type of number
+      computer_and_internet_info = web_category.value["computer_and_internet_info"]
+      # computer_and_internet_security - (optional) is a type of number
       computer_and_internet_security = web_category.value["computer_and_internet_security"]
-      confirmed_spam_sources         = web_category.value["confirmed_spam_sources"]
-      cult_and_occult                = web_category.value["cult_and_occult"]
-      dating                         = web_category.value["dating"]
-      dead_sites                     = web_category.value["dead_sites"]
-      drugs                          = web_category.value["drugs"]
-      dynamic_comment                = web_category.value["dynamic_comment"]
-      educational_institutions       = web_category.value["educational_institutions"]
-      entertainment_and_arts         = web_category.value["entertainment_and_arts"]
-      fashion_and_beauty             = web_category.value["fashion_and_beauty"]
-      financial_services             = web_category.value["financial_services"]
-      food_and_dining                = web_category.value["food_and_dining"]
-      gambling                       = web_category.value["gambling"]
-      games                          = web_category.value["games"]
-      government                     = web_category.value["government"]
-      gross                          = web_category.value["gross"]
-      hacking                        = web_category.value["hacking"]
-      hate_and_racism                = web_category.value["hate_and_racism"]
-      health_and_medicine            = web_category.value["health_and_medicine"]
-      home_and_garden                = web_category.value["home_and_garden"]
-      hunting_and_fishing            = web_category.value["hunting_and_fishing"]
-      illegal                        = web_category.value["illegal"]
-      image_and_video_search         = web_category.value["image_and_video_search"]
-      internet_communications        = web_category.value["internet_communications"]
-      internet_portals               = web_category.value["internet_portals"]
-      job_search                     = web_category.value["job_search"]
-      keyloggers_and_monitoring      = web_category.value["keyloggers_and_monitoring"]
-      kids                           = web_category.value["kids"]
-      legal                          = web_category.value["legal"]
-      local_information              = web_category.value["local_information"]
-      malware_sites                  = web_category.value["malware_sites"]
-      marijuana                      = web_category.value["marijuana"]
-      military                       = web_category.value["military"]
-      motor_vehicles                 = web_category.value["motor_vehicles"]
-      music                          = web_category.value["music"]
-      news_and_media                 = web_category.value["news_and_media"]
-      nudity                         = web_category.value["nudity"]
-      online_greeting_cards          = web_category.value["online_greeting_cards"]
-      open_http_proxies              = web_category.value["open_http_proxies"]
-      parked_domains                 = web_category.value["parked_domains"]
-      pay_to_surf                    = web_category.value["pay_to_surf"]
-      peer_to_peer                   = web_category.value["peer_to_peer"]
-      personal_sites_and_blogs       = web_category.value["personal_sites_and_blogs"]
-      personal_storage               = web_category.value["personal_storage"]
-      philosophy_and_politics        = web_category.value["philosophy_and_politics"]
-      phishing_and_other_fraud       = web_category.value["phishing_and_other_fraud"]
-      private_ip_addresses           = web_category.value["private_ip_addresses"]
-      proxy_avoid_and_anonymizers    = web_category.value["proxy_avoid_and_anonymizers"]
-      questionable                   = web_category.value["questionable"]
-      real_estate                    = web_category.value["real_estate"]
-      recreation_and_hobbies         = web_category.value["recreation_and_hobbies"]
-      reference_and_research         = web_category.value["reference_and_research"]
-      religion                       = web_category.value["religion"]
-      search_engines                 = web_category.value["search_engines"]
-      sex_education                  = web_category.value["sex_education"]
-      shareware_and_freeware         = web_category.value["shareware_and_freeware"]
-      shopping                       = web_category.value["shopping"]
-      social_network                 = web_category.value["social_network"]
-      society                        = web_category.value["society"]
-      spam_urls                      = web_category.value["spam_urls"]
-      sports                         = web_category.value["sports"]
-      spyware_and_adware             = web_category.value["spyware_and_adware"]
-      stock_advice_and_tools         = web_category.value["stock_advice_and_tools"]
-      streaming_media                = web_category.value["streaming_media"]
+      # confirmed_spam_sources - (optional) is a type of number
+      confirmed_spam_sources = web_category.value["confirmed_spam_sources"]
+      # cult_and_occult - (optional) is a type of number
+      cult_and_occult = web_category.value["cult_and_occult"]
+      # dating - (optional) is a type of number
+      dating = web_category.value["dating"]
+      # dead_sites - (optional) is a type of number
+      dead_sites = web_category.value["dead_sites"]
+      # drugs - (optional) is a type of number
+      drugs = web_category.value["drugs"]
+      # dynamic_comment - (optional) is a type of number
+      dynamic_comment = web_category.value["dynamic_comment"]
+      # educational_institutions - (optional) is a type of number
+      educational_institutions = web_category.value["educational_institutions"]
+      # entertainment_and_arts - (optional) is a type of number
+      entertainment_and_arts = web_category.value["entertainment_and_arts"]
+      # fashion_and_beauty - (optional) is a type of number
+      fashion_and_beauty = web_category.value["fashion_and_beauty"]
+      # financial_services - (optional) is a type of number
+      financial_services = web_category.value["financial_services"]
+      # food_and_dining - (optional) is a type of number
+      food_and_dining = web_category.value["food_and_dining"]
+      # gambling - (optional) is a type of number
+      gambling = web_category.value["gambling"]
+      # games - (optional) is a type of number
+      games = web_category.value["games"]
+      # government - (optional) is a type of number
+      government = web_category.value["government"]
+      # gross - (optional) is a type of number
+      gross = web_category.value["gross"]
+      # hacking - (optional) is a type of number
+      hacking = web_category.value["hacking"]
+      # hate_and_racism - (optional) is a type of number
+      hate_and_racism = web_category.value["hate_and_racism"]
+      # health_and_medicine - (optional) is a type of number
+      health_and_medicine = web_category.value["health_and_medicine"]
+      # home_and_garden - (optional) is a type of number
+      home_and_garden = web_category.value["home_and_garden"]
+      # hunting_and_fishing - (optional) is a type of number
+      hunting_and_fishing = web_category.value["hunting_and_fishing"]
+      # illegal - (optional) is a type of number
+      illegal = web_category.value["illegal"]
+      # image_and_video_search - (optional) is a type of number
+      image_and_video_search = web_category.value["image_and_video_search"]
+      # internet_communications - (optional) is a type of number
+      internet_communications = web_category.value["internet_communications"]
+      # internet_portals - (optional) is a type of number
+      internet_portals = web_category.value["internet_portals"]
+      # job_search - (optional) is a type of number
+      job_search = web_category.value["job_search"]
+      # keyloggers_and_monitoring - (optional) is a type of number
+      keyloggers_and_monitoring = web_category.value["keyloggers_and_monitoring"]
+      # kids - (optional) is a type of number
+      kids = web_category.value["kids"]
+      # legal - (optional) is a type of number
+      legal = web_category.value["legal"]
+      # local_information - (optional) is a type of number
+      local_information = web_category.value["local_information"]
+      # malware_sites - (optional) is a type of number
+      malware_sites = web_category.value["malware_sites"]
+      # marijuana - (optional) is a type of number
+      marijuana = web_category.value["marijuana"]
+      # military - (optional) is a type of number
+      military = web_category.value["military"]
+      # motor_vehicles - (optional) is a type of number
+      motor_vehicles = web_category.value["motor_vehicles"]
+      # music - (optional) is a type of number
+      music = web_category.value["music"]
+      # news_and_media - (optional) is a type of number
+      news_and_media = web_category.value["news_and_media"]
+      # nudity - (optional) is a type of number
+      nudity = web_category.value["nudity"]
+      # online_greeting_cards - (optional) is a type of number
+      online_greeting_cards = web_category.value["online_greeting_cards"]
+      # open_http_proxies - (optional) is a type of number
+      open_http_proxies = web_category.value["open_http_proxies"]
+      # parked_domains - (optional) is a type of number
+      parked_domains = web_category.value["parked_domains"]
+      # pay_to_surf - (optional) is a type of number
+      pay_to_surf = web_category.value["pay_to_surf"]
+      # peer_to_peer - (optional) is a type of number
+      peer_to_peer = web_category.value["peer_to_peer"]
+      # personal_sites_and_blogs - (optional) is a type of number
+      personal_sites_and_blogs = web_category.value["personal_sites_and_blogs"]
+      # personal_storage - (optional) is a type of number
+      personal_storage = web_category.value["personal_storage"]
+      # philosophy_and_politics - (optional) is a type of number
+      philosophy_and_politics = web_category.value["philosophy_and_politics"]
+      # phishing_and_other_fraud - (optional) is a type of number
+      phishing_and_other_fraud = web_category.value["phishing_and_other_fraud"]
+      # private_ip_addresses - (optional) is a type of number
+      private_ip_addresses = web_category.value["private_ip_addresses"]
+      # proxy_avoid_and_anonymizers - (optional) is a type of number
+      proxy_avoid_and_anonymizers = web_category.value["proxy_avoid_and_anonymizers"]
+      # questionable - (optional) is a type of number
+      questionable = web_category.value["questionable"]
+      # real_estate - (optional) is a type of number
+      real_estate = web_category.value["real_estate"]
+      # recreation_and_hobbies - (optional) is a type of number
+      recreation_and_hobbies = web_category.value["recreation_and_hobbies"]
+      # reference_and_research - (optional) is a type of number
+      reference_and_research = web_category.value["reference_and_research"]
+      # religion - (optional) is a type of number
+      religion = web_category.value["religion"]
+      # search_engines - (optional) is a type of number
+      search_engines = web_category.value["search_engines"]
+      # sex_education - (optional) is a type of number
+      sex_education = web_category.value["sex_education"]
+      # shareware_and_freeware - (optional) is a type of number
+      shareware_and_freeware = web_category.value["shareware_and_freeware"]
+      # shopping - (optional) is a type of number
+      shopping = web_category.value["shopping"]
+      # social_network - (optional) is a type of number
+      social_network = web_category.value["social_network"]
+      # society - (optional) is a type of number
+      society = web_category.value["society"]
+      # spam_urls - (optional) is a type of number
+      spam_urls = web_category.value["spam_urls"]
+      # sports - (optional) is a type of number
+      sports = web_category.value["sports"]
+      # spyware_and_adware - (optional) is a type of number
+      spyware_and_adware = web_category.value["spyware_and_adware"]
+      # stock_advice_and_tools - (optional) is a type of number
+      stock_advice_and_tools = web_category.value["stock_advice_and_tools"]
+      # streaming_media - (optional) is a type of number
+      streaming_media = web_category.value["streaming_media"]
+      # swimsuits_and_intimate_apparel - (optional) is a type of number
       swimsuits_and_intimate_apparel = web_category.value["swimsuits_and_intimate_apparel"]
-      training_and_tools             = web_category.value["training_and_tools"]
-      translation                    = web_category.value["translation"]
-      travel                         = web_category.value["travel"]
-      uncategorized                  = web_category.value["uncategorized"]
-      unconfirmed_spam_sources       = web_category.value["unconfirmed_spam_sources"]
-      violence                       = web_category.value["violence"]
-      weapons                        = web_category.value["weapons"]
-      web_advertisements             = web_category.value["web_advertisements"]
-      web_based_email                = web_category.value["web_based_email"]
-      web_hosting_sites              = web_category.value["web_hosting_sites"]
+      # training_and_tools - (optional) is a type of number
+      training_and_tools = web_category.value["training_and_tools"]
+      # translation - (optional) is a type of number
+      translation = web_category.value["translation"]
+      # travel - (optional) is a type of number
+      travel = web_category.value["travel"]
+      # uncategorized - (optional) is a type of number
+      uncategorized = web_category.value["uncategorized"]
+      # unconfirmed_spam_sources - (optional) is a type of number
+      unconfirmed_spam_sources = web_category.value["unconfirmed_spam_sources"]
+      # violence - (optional) is a type of number
+      violence = web_category.value["violence"]
+      # weapons - (optional) is a type of number
+      weapons = web_category.value["weapons"]
+      # web_advertisements - (optional) is a type of number
+      web_advertisements = web_category.value["web_advertisements"]
+      # web_based_email - (optional) is a type of number
+      web_based_email = web_category.value["web_based_email"]
+      # web_hosting_sites - (optional) is a type of number
+      web_hosting_sites = web_category.value["web_hosting_sites"]
     }
   }
 

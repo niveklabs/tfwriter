@@ -71,9 +71,13 @@ variable "templates" {
 
 ```terraform
 resource "icinga2_checkcommand" "this" {
+  # arguments - (optional) is a type of map of string
   arguments = var.arguments
-  command   = var.command
-  name      = var.name
+  # command - (required) is a type of string
+  command = var.command
+  # name - (required) is a type of string
+  name = var.name
+  # templates - (required) is a type of list of string
   templates = var.templates
 }
 ```

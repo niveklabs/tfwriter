@@ -234,31 +234,53 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_https_monitor" "this" {
+  # certificate_chain_depth - (optional) is a type of number
   certificate_chain_depth = var.certificate_chain_depth
-  ciphers                 = var.ciphers
-  client_certificate_id   = var.client_certificate_id
-  description             = var.description
-  display_name            = var.display_name
-  fall_count              = var.fall_count
-  interval                = var.interval
-  monitor_port            = var.monitor_port
-  protocols               = var.protocols
-  request_body            = var.request_body
-  request_method          = var.request_method
-  request_url             = var.request_url
-  request_version         = var.request_version
-  response_body           = var.response_body
-  response_status_codes   = var.response_status_codes
-  rise_count              = var.rise_count
-  server_auth             = var.server_auth
-  server_auth_ca_ids      = var.server_auth_ca_ids
-  server_auth_crl_ids     = var.server_auth_crl_ids
-  timeout                 = var.timeout
+  # ciphers - (optional) is a type of set of string
+  ciphers = var.ciphers
+  # client_certificate_id - (optional) is a type of string
+  client_certificate_id = var.client_certificate_id
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # fall_count - (optional) is a type of number
+  fall_count = var.fall_count
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # monitor_port - (optional) is a type of string
+  monitor_port = var.monitor_port
+  # protocols - (optional) is a type of set of string
+  protocols = var.protocols
+  # request_body - (optional) is a type of string
+  request_body = var.request_body
+  # request_method - (optional) is a type of string
+  request_method = var.request_method
+  # request_url - (optional) is a type of string
+  request_url = var.request_url
+  # request_version - (optional) is a type of string
+  request_version = var.request_version
+  # response_body - (optional) is a type of string
+  response_body = var.response_body
+  # response_status_codes - (optional) is a type of list of number
+  response_status_codes = var.response_status_codes
+  # rise_count - (optional) is a type of number
+  rise_count = var.rise_count
+  # server_auth - (optional) is a type of string
+  server_auth = var.server_auth
+  # server_auth_ca_ids - (optional) is a type of set of string
+  server_auth_ca_ids = var.server_auth_ca_ids
+  # server_auth_crl_ids - (optional) is a type of set of string
+  server_auth_crl_ids = var.server_auth_crl_ids
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "request_header" {
     for_each = var.request_header
     content {
-      name  = request_header.value["name"]
+      # name - (required) is a type of string
+      name = request_header.value["name"]
+      # value - (required) is a type of string
       value = request_header.value["value"]
     }
   }
@@ -266,8 +288,10 @@ resource "nsxt_lb_https_monitor" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

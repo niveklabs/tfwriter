@@ -56,8 +56,10 @@ variable "project_id" {
 
 ```terraform
 resource "azuredevops_agent_queue" "this" {
+  # agent_pool_id - (required) is a type of number
   agent_pool_id = var.agent_pool_id
-  project_id    = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

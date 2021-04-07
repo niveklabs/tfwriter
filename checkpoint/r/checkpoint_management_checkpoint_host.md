@@ -225,39 +225,68 @@ variable "interfaces" {
 
 ```terraform
 resource "checkpoint_management_checkpoint_host" "this" {
-  color                      = var.color
-  comments                   = var.comments
-  hardware                   = var.hardware
-  ignore_errors              = var.ignore_errors
-  ignore_warnings            = var.ignore_warnings
-  ipv4_address               = var.ipv4_address
-  ipv6_address               = var.ipv6_address
-  logs_settings              = var.logs_settings
-  management_blades          = var.management_blades
-  name                       = var.name
-  nat_settings               = var.nat_settings
-  one_time_password          = var.one_time_password
-  os                         = var.os
-  save_logs_locally          = var.save_logs_locally
-  send_alerts_to_server      = var.send_alerts_to_server
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # hardware - (optional) is a type of string
+  hardware = var.hardware
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # logs_settings - (optional) is a type of map of string
+  logs_settings = var.logs_settings
+  # management_blades - (optional) is a type of map of string
+  management_blades = var.management_blades
+  # name - (required) is a type of string
+  name = var.name
+  # nat_settings - (optional) is a type of map of string
+  nat_settings = var.nat_settings
+  # one_time_password - (optional) is a type of string
+  one_time_password = var.one_time_password
+  # os - (optional) is a type of string
+  os = var.os
+  # save_logs_locally - (optional) is a type of bool
+  save_logs_locally = var.save_logs_locally
+  # send_alerts_to_server - (optional) is a type of set of string
+  send_alerts_to_server = var.send_alerts_to_server
+  # send_logs_to_backup_server - (optional) is a type of set of string
   send_logs_to_backup_server = var.send_logs_to_backup_server
-  send_logs_to_server        = var.send_logs_to_server
-  tags                       = var.tags
-  version                    = var.version
+  # send_logs_to_server - (optional) is a type of set of string
+  send_logs_to_server = var.send_logs_to_server
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
-      color           = interfaces.value["color"]
-      comments        = interfaces.value["comments"]
-      ignore_errors   = interfaces.value["ignore_errors"]
+      # color - (optional) is a type of string
+      color = interfaces.value["color"]
+      # comments - (optional) is a type of string
+      comments = interfaces.value["comments"]
+      # ignore_errors - (optional) is a type of bool
+      ignore_errors = interfaces.value["ignore_errors"]
+      # ignore_warnings - (optional) is a type of bool
       ignore_warnings = interfaces.value["ignore_warnings"]
-      mask_length4    = interfaces.value["mask_length4"]
-      mask_length6    = interfaces.value["mask_length6"]
-      name            = interfaces.value["name"]
-      subnet4         = interfaces.value["subnet4"]
-      subnet6         = interfaces.value["subnet6"]
-      subnet_mask     = interfaces.value["subnet_mask"]
+      # mask_length4 - (optional) is a type of number
+      mask_length4 = interfaces.value["mask_length4"]
+      # mask_length6 - (optional) is a type of number
+      mask_length6 = interfaces.value["mask_length6"]
+      # name - (optional) is a type of string
+      name = interfaces.value["name"]
+      # subnet4 - (optional) is a type of string
+      subnet4 = interfaces.value["subnet4"]
+      # subnet6 - (optional) is a type of string
+      subnet6 = interfaces.value["subnet6"]
+      # subnet_mask - (optional) is a type of string
+      subnet_mask = interfaces.value["subnet_mask"]
     }
   }
 

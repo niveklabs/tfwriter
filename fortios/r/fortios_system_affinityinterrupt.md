@@ -63,9 +63,12 @@ variable "interrupt" {
 
 ```terraform
 resource "fortios_system_affinityinterrupt" "this" {
+  # affinity_cpumask - (required) is a type of string
   affinity_cpumask = var.affinity_cpumask
-  fosid            = var.fosid
-  interrupt        = var.interrupt
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interrupt - (required) is a type of string
+  interrupt = var.interrupt
 }
 ```
 

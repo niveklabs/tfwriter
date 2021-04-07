@@ -112,15 +112,24 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_firewall_instance_association" "this" {
-  attached             = var.attached
-  egress_interface     = var.egress_interface
-  firenet_gw_name      = var.firenet_gw_name
-  firewall_name        = var.firewall_name
-  instance_id          = var.instance_id
-  lan_interface        = var.lan_interface
+  # attached - (optional) is a type of bool
+  attached = var.attached
+  # egress_interface - (optional) is a type of string
+  egress_interface = var.egress_interface
+  # firenet_gw_name - (optional) is a type of string
+  firenet_gw_name = var.firenet_gw_name
+  # firewall_name - (optional) is a type of string
+  firewall_name = var.firewall_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # lan_interface - (optional) is a type of string
+  lan_interface = var.lan_interface
+  # management_interface - (optional) is a type of string
   management_interface = var.management_interface
-  vendor_type          = var.vendor_type
-  vpc_id               = var.vpc_id
+  # vendor_type - (optional) is a type of string
+  vendor_type = var.vendor_type
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

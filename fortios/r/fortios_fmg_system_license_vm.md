@@ -64,9 +64,12 @@ variable "target" {
 
 ```terraform
 resource "fortios_fmg_system_license_vm" "this" {
-  adom         = var.adom
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # file_content - (required) is a type of string
   file_content = var.file_content
-  target       = var.target
+  # target - (required) is a type of string
+  target = var.target
 }
 ```
 

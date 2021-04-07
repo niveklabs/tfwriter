@@ -193,25 +193,44 @@ variable "retention_period" {
 
 ```terraform
 resource "alicloud_db_backup_policy" "this" {
-  archive_backup_keep_count       = var.archive_backup_keep_count
-  archive_backup_keep_policy      = var.archive_backup_keep_policy
+  # archive_backup_keep_count - (optional) is a type of number
+  archive_backup_keep_count = var.archive_backup_keep_count
+  # archive_backup_keep_policy - (optional) is a type of string
+  archive_backup_keep_policy = var.archive_backup_keep_policy
+  # archive_backup_retention_period - (optional) is a type of number
   archive_backup_retention_period = var.archive_backup_retention_period
-  backup_period                   = var.backup_period
-  backup_retention_period         = var.backup_retention_period
-  backup_time                     = var.backup_time
-  compress_type                   = var.compress_type
-  enable_backup_log               = var.enable_backup_log
-  high_space_usage_protection     = var.high_space_usage_protection
-  instance_id                     = var.instance_id
-  local_log_retention_hours       = var.local_log_retention_hours
-  local_log_retention_space       = var.local_log_retention_space
-  log_backup                      = var.log_backup
-  log_backup_frequency            = var.log_backup_frequency
-  log_backup_retention_period     = var.log_backup_retention_period
-  log_retention_period            = var.log_retention_period
-  preferred_backup_period         = var.preferred_backup_period
-  preferred_backup_time           = var.preferred_backup_time
-  retention_period                = var.retention_period
+  # backup_period - (optional) is a type of set of string
+  backup_period = var.backup_period
+  # backup_retention_period - (optional) is a type of number
+  backup_retention_period = var.backup_retention_period
+  # backup_time - (optional) is a type of string
+  backup_time = var.backup_time
+  # compress_type - (optional) is a type of string
+  compress_type = var.compress_type
+  # enable_backup_log - (optional) is a type of bool
+  enable_backup_log = var.enable_backup_log
+  # high_space_usage_protection - (optional) is a type of string
+  high_space_usage_protection = var.high_space_usage_protection
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # local_log_retention_hours - (optional) is a type of number
+  local_log_retention_hours = var.local_log_retention_hours
+  # local_log_retention_space - (optional) is a type of number
+  local_log_retention_space = var.local_log_retention_space
+  # log_backup - (optional) is a type of bool
+  log_backup = var.log_backup
+  # log_backup_frequency - (optional) is a type of string
+  log_backup_frequency = var.log_backup_frequency
+  # log_backup_retention_period - (optional) is a type of number
+  log_backup_retention_period = var.log_backup_retention_period
+  # log_retention_period - (optional) is a type of number
+  log_retention_period = var.log_retention_period
+  # preferred_backup_period - (optional) is a type of set of string
+  preferred_backup_period = var.preferred_backup_period
+  # preferred_backup_time - (optional) is a type of string
+  preferred_backup_time = var.preferred_backup_time
+  # retention_period - (optional) is a type of number
+  retention_period = var.retention_period
 }
 ```
 

@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "mso_service_node_type" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

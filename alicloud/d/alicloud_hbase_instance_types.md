@@ -106,14 +106,22 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_hbase_instance_types" "this" {
-  charge_type   = var.charge_type
-  disk_type     = var.disk_type
-  engine        = var.engine
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # disk_type - (optional) is a type of string
+  disk_type = var.disk_type
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # instance_type - (optional) is a type of string
   instance_type = var.instance_type
-  output_file   = var.output_file
-  region_id     = var.region_id
-  version       = var.version
-  zone_id       = var.zone_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # region_id - (optional) is a type of string
+  region_id = var.region_id
+  # version - (optional) is a type of string
+  version = var.version
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

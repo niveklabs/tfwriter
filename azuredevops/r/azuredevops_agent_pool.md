@@ -65,9 +65,12 @@ variable "pool_type" {
 
 ```terraform
 resource "azuredevops_agent_pool" "this" {
+  # auto_provision - (optional) is a type of bool
   auto_provision = var.auto_provision
-  name           = var.name
-  pool_type      = var.pool_type
+  # name - (required) is a type of string
+  name = var.name
+  # pool_type - (optional) is a type of string
+  pool_type = var.pool_type
 }
 ```
 

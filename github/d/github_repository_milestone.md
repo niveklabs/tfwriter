@@ -63,8 +63,11 @@ variable "repository" {
 
 ```terraform
 data "github_repository_milestone" "this" {
-  number     = var.number
-  owner      = var.owner
+  # number - (required) is a type of number
+  number = var.number
+  # owner - (required) is a type of string
+  owner = var.owner
+  # repository - (required) is a type of string
   repository = var.repository
 }
 ```

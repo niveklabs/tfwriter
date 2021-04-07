@@ -165,22 +165,38 @@ variable "user_whitelist" {
 
 ```terraform
 resource "okta_auth_server_policy_rule" "this" {
-  access_token_lifetime_minutes  = var.access_token_lifetime_minutes
-  auth_server_id                 = var.auth_server_id
-  grant_type_whitelist           = var.grant_type_whitelist
-  group_blacklist                = var.group_blacklist
-  group_whitelist                = var.group_whitelist
-  inline_hook_id                 = var.inline_hook_id
-  name                           = var.name
-  policy_id                      = var.policy_id
-  priority                       = var.priority
+  # access_token_lifetime_minutes - (optional) is a type of number
+  access_token_lifetime_minutes = var.access_token_lifetime_minutes
+  # auth_server_id - (required) is a type of string
+  auth_server_id = var.auth_server_id
+  # grant_type_whitelist - (required) is a type of set of string
+  grant_type_whitelist = var.grant_type_whitelist
+  # group_blacklist - (optional) is a type of set of string
+  group_blacklist = var.group_blacklist
+  # group_whitelist - (optional) is a type of set of string
+  group_whitelist = var.group_whitelist
+  # inline_hook_id - (optional) is a type of string
+  inline_hook_id = var.inline_hook_id
+  # name - (required) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of string
+  policy_id = var.policy_id
+  # priority - (required) is a type of number
+  priority = var.priority
+  # refresh_token_lifetime_minutes - (optional) is a type of number
   refresh_token_lifetime_minutes = var.refresh_token_lifetime_minutes
-  refresh_token_window_minutes   = var.refresh_token_window_minutes
-  scope_whitelist                = var.scope_whitelist
-  status                         = var.status
-  type                           = var.type
-  user_blacklist                 = var.user_blacklist
-  user_whitelist                 = var.user_whitelist
+  # refresh_token_window_minutes - (optional) is a type of number
+  refresh_token_window_minutes = var.refresh_token_window_minutes
+  # scope_whitelist - (optional) is a type of set of string
+  scope_whitelist = var.scope_whitelist
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # user_blacklist - (optional) is a type of set of string
+  user_blacklist = var.user_blacklist
+  # user_whitelist - (optional) is a type of set of string
+  user_whitelist = var.user_whitelist
 }
 ```
 

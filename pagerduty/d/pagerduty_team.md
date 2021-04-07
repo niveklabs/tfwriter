@@ -57,7 +57,9 @@ variable "parent" {
 
 ```terraform
 data "pagerduty_team" "this" {
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # parent - (optional) is a type of string
   parent = var.parent
 }
 ```

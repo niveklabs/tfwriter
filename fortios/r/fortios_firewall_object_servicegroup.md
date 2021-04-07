@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewall_object_servicegroup" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  member  = var.member
-  name    = var.name
+  # member - (required) is a type of list of string
+  member = var.member
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

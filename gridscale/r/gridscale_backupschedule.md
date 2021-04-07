@@ -102,18 +102,27 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_backupschedule" "this" {
-  active       = var.active
+  # active - (required) is a type of bool
+  active = var.active
+  # keep_backups - (required) is a type of number
   keep_backups = var.keep_backups
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # next_runtime - (required) is a type of string
   next_runtime = var.next_runtime
+  # run_interval - (required) is a type of number
   run_interval = var.run_interval
+  # storage_uuid - (required) is a type of string
   storage_uuid = var.storage_uuid
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -71,10 +71,14 @@ variable "project" {
 
 ```terraform
 resource "gitlab_label" "this" {
-  color       = var.color
+  # color - (required) is a type of string
+  color = var.color
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  project     = var.project
+  # name - (required) is a type of string
+  name = var.name
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

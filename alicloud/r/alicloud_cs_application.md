@@ -111,15 +111,24 @@ variable "version" {
 
 ```terraform
 resource "alicloud_cs_application" "this" {
-  blue_green         = var.blue_green
+  # blue_green - (optional) is a type of bool
+  blue_green = var.blue_green
+  # blue_green_confirm - (optional) is a type of bool
   blue_green_confirm = var.blue_green_confirm
-  cluster_name       = var.cluster_name
-  description        = var.description
-  environment        = var.environment
-  latest_image       = var.latest_image
-  name               = var.name
-  template           = var.template
-  version            = var.version
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # description - (optional) is a type of string
+  description = var.description
+  # environment - (optional) is a type of map of string
+  environment = var.environment
+  # latest_image - (optional) is a type of bool
+  latest_image = var.latest_image
+  # name - (required) is a type of string
+  name = var.name
+  # template - (required) is a type of string
+  template = var.template
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

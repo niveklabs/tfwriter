@@ -102,15 +102,19 @@ resource "sdm_account" "this" {
   dynamic "service" {
     for_each = var.service
     content {
-      name      = service.value["name"]
+      # name - (required) is a type of string
+      name = service.value["name"]
+      # suspended - (optional) is a type of bool
       suspended = service.value["suspended"]
-      tags      = service.value["tags"]
+      # tags - (optional) is a type of map of string
+      tags = service.value["tags"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }
@@ -118,11 +122,16 @@ resource "sdm_account" "this" {
   dynamic "user" {
     for_each = var.user
     content {
-      email      = user.value["email"]
+      # email - (required) is a type of string
+      email = user.value["email"]
+      # first_name - (required) is a type of string
       first_name = user.value["first_name"]
-      last_name  = user.value["last_name"]
-      suspended  = user.value["suspended"]
-      tags       = user.value["tags"]
+      # last_name - (required) is a type of string
+      last_name = user.value["last_name"]
+      # suspended - (optional) is a type of bool
+      suspended = user.value["suspended"]
+      # tags - (optional) is a type of map of string
+      tags = user.value["tags"]
     }
   }
 

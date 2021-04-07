@@ -90,12 +90,18 @@ variable "type" {
 
 ```terraform
 data "triton_volume" "this" {
+  # filesystem_path - (optional) is a type of string
   filesystem_path = var.filesystem_path
-  name            = var.name
-  size            = var.size
-  state           = var.state
-  tags            = var.tags
-  type            = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # size - (optional) is a type of number
+  size = var.size
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

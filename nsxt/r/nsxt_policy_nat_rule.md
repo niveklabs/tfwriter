@@ -174,27 +174,44 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_nat_rule" "this" {
-  action               = var.action
-  description          = var.description
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_networks - (optional) is a type of list of string
   destination_networks = var.destination_networks
-  display_name         = var.display_name
-  enabled              = var.enabled
-  firewall_match       = var.firewall_match
-  gateway_path         = var.gateway_path
-  logging              = var.logging
-  nsx_id               = var.nsx_id
-  rule_priority        = var.rule_priority
-  scope                = var.scope
-  service              = var.service
-  source_networks      = var.source_networks
-  translated_networks  = var.translated_networks
-  translated_ports     = var.translated_ports
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # firewall_match - (optional) is a type of string
+  firewall_match = var.firewall_match
+  # gateway_path - (required) is a type of string
+  gateway_path = var.gateway_path
+  # logging - (optional) is a type of bool
+  logging = var.logging
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # rule_priority - (optional) is a type of number
+  rule_priority = var.rule_priority
+  # scope - (optional) is a type of list of string
+  scope = var.scope
+  # service - (optional) is a type of string
+  service = var.service
+  # source_networks - (optional) is a type of list of string
+  source_networks = var.source_networks
+  # translated_networks - (required) is a type of list of string
+  translated_networks = var.translated_networks
+  # translated_ports - (optional) is a type of string
+  translated_ports = var.translated_ports
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

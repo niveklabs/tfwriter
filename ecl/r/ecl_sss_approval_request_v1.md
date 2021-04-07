@@ -56,8 +56,10 @@ variable "status" {
 
 ```terraform
 resource "ecl_sss_approval_request_v1" "this" {
+  # request_id - (required) is a type of string
   request_id = var.request_id
-  status     = var.status
+  # status - (required) is a type of string
+  status = var.status
 }
 ```
 

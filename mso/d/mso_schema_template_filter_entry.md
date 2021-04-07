@@ -174,23 +174,40 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_template_filter_entry" "this" {
-  arp_flag             = var.arp_flag
-  destination_from     = var.destination_from
-  destination_to       = var.destination_to
-  display_name         = var.display_name
-  entry_description    = var.entry_description
-  entry_display_name   = var.entry_display_name
-  entry_name           = var.entry_name
-  ether_type           = var.ether_type
-  ip_protocol          = var.ip_protocol
+  # arp_flag - (optional) is a type of string
+  arp_flag = var.arp_flag
+  # destination_from - (optional) is a type of string
+  destination_from = var.destination_from
+  # destination_to - (optional) is a type of string
+  destination_to = var.destination_to
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # entry_description - (optional) is a type of string
+  entry_description = var.entry_description
+  # entry_display_name - (optional) is a type of string
+  entry_display_name = var.entry_display_name
+  # entry_name - (required) is a type of string
+  entry_name = var.entry_name
+  # ether_type - (optional) is a type of string
+  ether_type = var.ether_type
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # match_only_fragments - (optional) is a type of bool
   match_only_fragments = var.match_only_fragments
-  name                 = var.name
-  schema_id            = var.schema_id
-  source_from          = var.source_from
-  source_to            = var.source_to
-  stateful             = var.stateful
-  tcp_session_rules    = var.tcp_session_rules
-  template_name        = var.template_name
+  # name - (required) is a type of string
+  name = var.name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # source_from - (optional) is a type of string
+  source_from = var.source_from
+  # source_to - (optional) is a type of string
+  source_to = var.source_to
+  # stateful - (optional) is a type of bool
+  stateful = var.stateful
+  # tcp_session_rules - (optional) is a type of list of string
+  tcp_session_rules = var.tcp_session_rules
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

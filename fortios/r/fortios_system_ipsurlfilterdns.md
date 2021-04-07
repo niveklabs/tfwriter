@@ -66,9 +66,12 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_ipsurlfilterdns" "this" {
-  address         = var.address
+  # address - (optional) is a type of string
+  address = var.address
+  # ipv6_capability - (optional) is a type of string
   ipv6_capability = var.ipv6_capability
-  status          = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

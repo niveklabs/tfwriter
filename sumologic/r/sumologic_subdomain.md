@@ -49,6 +49,7 @@ variable "subdomain" {
 
 ```terraform
 resource "sumologic_subdomain" "this" {
+  # subdomain - (required) is a type of string
   subdomain = var.subdomain
 }
 ```

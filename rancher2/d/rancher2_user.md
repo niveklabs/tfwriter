@@ -66,9 +66,12 @@ variable "username" {
 
 ```terraform
 data "rancher2_user" "this" {
+  # is_external - (optional) is a type of bool
   is_external = var.is_external
-  name        = var.name
-  username    = var.username
+  # name - (optional) is a type of string
+  name = var.name
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

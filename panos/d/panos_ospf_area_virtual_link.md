@@ -79,10 +79,15 @@ variable "virtual_router" {
 
 ```terraform
 data "panos_ospf_area_virtual_link" "this" {
-  name           = var.name
-  ospf_area      = var.ospf_area
-  template       = var.template
+  # name - (required) is a type of string
+  name = var.name
+  # ospf_area - (required) is a type of string
+  ospf_area = var.ospf_area
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

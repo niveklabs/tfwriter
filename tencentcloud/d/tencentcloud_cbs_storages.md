@@ -98,13 +98,20 @@ variable "storage_usage" {
 
 ```terraform
 data "tencentcloud_cbs_storages" "this" {
-  availability_zone  = var.availability_zone
-  project_id         = var.project_id
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  storage_id         = var.storage_id
-  storage_name       = var.storage_name
-  storage_type       = var.storage_type
-  storage_usage      = var.storage_usage
+  # storage_id - (optional) is a type of string
+  storage_id = var.storage_id
+  # storage_name - (optional) is a type of string
+  storage_name = var.storage_name
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # storage_usage - (optional) is a type of string
+  storage_usage = var.storage_usage
 }
 ```
 

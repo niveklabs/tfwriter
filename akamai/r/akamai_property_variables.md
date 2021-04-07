@@ -78,11 +78,16 @@ resource "akamai_property_variables" "this" {
       dynamic "variable" {
         for_each = variables.value.variable
         content {
+          # description - (optional) is a type of string
           description = variable.value["description"]
-          hidden      = variable.value["hidden"]
-          name        = variable.value["name"]
-          sensitive   = variable.value["sensitive"]
-          value       = variable.value["value"]
+          # hidden - (required) is a type of bool
+          hidden = variable.value["hidden"]
+          # name - (required) is a type of string
+          name = variable.value["name"]
+          # sensitive - (required) is a type of bool
+          sensitive = variable.value["sensitive"]
+          # value - (optional) is a type of string
+          value = variable.value["value"]
         }
       }
 

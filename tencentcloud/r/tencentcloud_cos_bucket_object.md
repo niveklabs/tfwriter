@@ -127,17 +127,28 @@ variable "storage_class" {
 
 ```terraform
 resource "tencentcloud_cos_bucket_object" "this" {
-  acl                 = var.acl
-  bucket              = var.bucket
-  cache_control       = var.cache_control
-  content             = var.content
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # cache_control - (optional) is a type of string
+  cache_control = var.cache_control
+  # content - (optional) is a type of string
+  content = var.content
+  # content_disposition - (optional) is a type of string
   content_disposition = var.content_disposition
-  content_encoding    = var.content_encoding
-  content_type        = var.content_type
-  etag                = var.etag
-  key                 = var.key
-  source              = var.source
-  storage_class       = var.storage_class
+  # content_encoding - (optional) is a type of string
+  content_encoding = var.content_encoding
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # etag - (optional) is a type of string
+  etag = var.etag
+  # key - (required) is a type of string
+  key = var.key
+  # source - (optional) is a type of string
+  source = var.source
+  # storage_class - (optional) is a type of string
+  storage_class = var.storage_class
 }
 ```
 

@@ -138,18 +138,30 @@ variable "warn_auth_https" {
 
 ```terraform
 resource "fortios_webfilter_fortiguard" "this" {
-  cache_mem_percent         = var.cache_mem_percent
-  cache_mode                = var.cache_mode
-  cache_prefix_match        = var.cache_prefix_match
-  close_ports               = var.close_ports
-  ovrd_auth_https           = var.ovrd_auth_https
-  ovrd_auth_port            = var.ovrd_auth_port
-  ovrd_auth_port_http       = var.ovrd_auth_port_http
-  ovrd_auth_port_https      = var.ovrd_auth_port_https
+  # cache_mem_percent - (optional) is a type of number
+  cache_mem_percent = var.cache_mem_percent
+  # cache_mode - (optional) is a type of string
+  cache_mode = var.cache_mode
+  # cache_prefix_match - (optional) is a type of string
+  cache_prefix_match = var.cache_prefix_match
+  # close_ports - (optional) is a type of string
+  close_ports = var.close_ports
+  # ovrd_auth_https - (optional) is a type of string
+  ovrd_auth_https = var.ovrd_auth_https
+  # ovrd_auth_port - (optional) is a type of number
+  ovrd_auth_port = var.ovrd_auth_port
+  # ovrd_auth_port_http - (optional) is a type of number
+  ovrd_auth_port_http = var.ovrd_auth_port_http
+  # ovrd_auth_port_https - (optional) is a type of number
+  ovrd_auth_port_https = var.ovrd_auth_port_https
+  # ovrd_auth_port_https_flow - (optional) is a type of number
   ovrd_auth_port_https_flow = var.ovrd_auth_port_https_flow
-  ovrd_auth_port_warning    = var.ovrd_auth_port_warning
+  # ovrd_auth_port_warning - (optional) is a type of number
+  ovrd_auth_port_warning = var.ovrd_auth_port_warning
+  # request_packet_size_limit - (optional) is a type of number
   request_packet_size_limit = var.request_packet_size_limit
-  warn_auth_https           = var.warn_auth_https
+  # warn_auth_https - (optional) is a type of string
+  warn_auth_https = var.warn_auth_https
 }
 ```
 

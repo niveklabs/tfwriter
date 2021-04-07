@@ -71,10 +71,14 @@ variable "privilege" {
 
 ```terraform
 resource "alicloud_db_account_privilege" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
-  db_names     = var.db_names
-  instance_id  = var.instance_id
-  privilege    = var.privilege
+  # db_names - (required) is a type of set of string
+  db_names = var.db_names
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # privilege - (optional) is a type of string
+  privilege = var.privilege
 }
 ```
 

@@ -520,30 +520,51 @@ variable "users" {
 
 ```terraform
 resource "fortios_firewall_shapingpolicy" "this" {
-  class_id               = var.class_id
-  comment                = var.comment
-  diffserv_forward       = var.diffserv_forward
-  diffserv_reverse       = var.diffserv_reverse
-  diffservcode_forward   = var.diffservcode_forward
-  diffservcode_rev       = var.diffservcode_rev
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  fosid                  = var.fosid
-  internet_service       = var.internet_service
-  internet_service_src   = var.internet_service_src
-  ip_version             = var.ip_version
-  name                   = var.name
-  per_ip_shaper          = var.per_ip_shaper
-  schedule               = var.schedule
-  status                 = var.status
-  tos                    = var.tos
-  tos_mask               = var.tos_mask
-  tos_negate             = var.tos_negate
-  traffic_shaper         = var.traffic_shaper
+  # class_id - (optional) is a type of number
+  class_id = var.class_id
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # diffserv_forward - (optional) is a type of string
+  diffserv_forward = var.diffserv_forward
+  # diffserv_reverse - (optional) is a type of string
+  diffserv_reverse = var.diffserv_reverse
+  # diffservcode_forward - (optional) is a type of string
+  diffservcode_forward = var.diffservcode_forward
+  # diffservcode_rev - (optional) is a type of string
+  diffservcode_rev = var.diffservcode_rev
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # internet_service - (optional) is a type of string
+  internet_service = var.internet_service
+  # internet_service_src - (optional) is a type of string
+  internet_service_src = var.internet_service_src
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # name - (optional) is a type of string
+  name = var.name
+  # per_ip_shaper - (optional) is a type of string
+  per_ip_shaper = var.per_ip_shaper
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # status - (optional) is a type of string
+  status = var.status
+  # tos - (optional) is a type of string
+  tos = var.tos
+  # tos_mask - (optional) is a type of string
+  tos_mask = var.tos_mask
+  # tos_negate - (optional) is a type of string
+  tos_negate = var.tos_negate
+  # traffic_shaper - (optional) is a type of string
+  traffic_shaper = var.traffic_shaper
+  # traffic_shaper_reverse - (optional) is a type of string
   traffic_shaper_reverse = var.traffic_shaper_reverse
 
   dynamic "app_category" {
     for_each = var.app_category
     content {
+      # id - (optional) is a type of number
       id = app_category.value["id"]
     }
   }
@@ -551,6 +572,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "app_group" {
     for_each = var.app_group
     content {
+      # name - (optional) is a type of string
       name = app_group.value["name"]
     }
   }
@@ -558,6 +580,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "application" {
     for_each = var.application
     content {
+      # id - (optional) is a type of number
       id = application.value["id"]
     }
   }
@@ -565,6 +588,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -572,6 +596,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "dstaddr6" {
     for_each = var.dstaddr6
     content {
+      # name - (optional) is a type of string
       name = dstaddr6.value["name"]
     }
   }
@@ -579,6 +604,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "dstintf" {
     for_each = var.dstintf
     content {
+      # name - (optional) is a type of string
       name = dstintf.value["name"]
     }
   }
@@ -586,6 +612,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "groups" {
     for_each = var.groups
     content {
+      # name - (optional) is a type of string
       name = groups.value["name"]
     }
   }
@@ -593,6 +620,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_custom" {
     for_each = var.internet_service_custom
     content {
+      # name - (optional) is a type of string
       name = internet_service_custom.value["name"]
     }
   }
@@ -600,6 +628,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_custom_group" {
     for_each = var.internet_service_custom_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_custom_group.value["name"]
     }
   }
@@ -607,6 +636,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_group" {
     for_each = var.internet_service_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_group.value["name"]
     }
   }
@@ -614,6 +644,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_id" {
     for_each = var.internet_service_id
     content {
+      # id - (optional) is a type of number
       id = internet_service_id.value["id"]
     }
   }
@@ -621,6 +652,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_name" {
     for_each = var.internet_service_name
     content {
+      # name - (optional) is a type of string
       name = internet_service_name.value["name"]
     }
   }
@@ -628,6 +660,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_src_custom" {
     for_each = var.internet_service_src_custom
     content {
+      # name - (optional) is a type of string
       name = internet_service_src_custom.value["name"]
     }
   }
@@ -635,6 +668,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_src_custom_group" {
     for_each = var.internet_service_src_custom_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_src_custom_group.value["name"]
     }
   }
@@ -642,6 +676,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_src_group" {
     for_each = var.internet_service_src_group
     content {
+      # name - (optional) is a type of string
       name = internet_service_src_group.value["name"]
     }
   }
@@ -649,6 +684,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_src_id" {
     for_each = var.internet_service_src_id
     content {
+      # id - (optional) is a type of number
       id = internet_service_src_id.value["id"]
     }
   }
@@ -656,6 +692,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "internet_service_src_name" {
     for_each = var.internet_service_src_name
     content {
+      # name - (optional) is a type of string
       name = internet_service_src_name.value["name"]
     }
   }
@@ -663,6 +700,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -670,6 +708,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }
@@ -677,6 +716,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "srcaddr6" {
     for_each = var.srcaddr6
     content {
+      # name - (optional) is a type of string
       name = srcaddr6.value["name"]
     }
   }
@@ -684,6 +724,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "srcintf" {
     for_each = var.srcintf
     content {
+      # name - (optional) is a type of string
       name = srcintf.value["name"]
     }
   }
@@ -691,6 +732,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "url_category" {
     for_each = var.url_category
     content {
+      # id - (optional) is a type of number
       id = url_category.value["id"]
     }
   }
@@ -698,6 +740,7 @@ resource "fortios_firewall_shapingpolicy" "this" {
   dynamic "users" {
     for_each = var.users
     content {
+      # name - (optional) is a type of string
       name = users.value["name"]
     }
   }

@@ -113,18 +113,27 @@ variable "secondary_prefix" {
 
 ```terraform
 resource "fortios_system_nat64" "this" {
-  always_synthesize_aaaa_record      = var.always_synthesize_aaaa_record
-  dynamic_sort_subtable              = var.dynamic_sort_subtable
-  generate_ipv6_fragment_header      = var.generate_ipv6_fragment_header
+  # always_synthesize_aaaa_record - (optional) is a type of string
+  always_synthesize_aaaa_record = var.always_synthesize_aaaa_record
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # generate_ipv6_fragment_header - (optional) is a type of string
+  generate_ipv6_fragment_header = var.generate_ipv6_fragment_header
+  # nat46_force_ipv4_packet_forwarding - (optional) is a type of string
   nat46_force_ipv4_packet_forwarding = var.nat46_force_ipv4_packet_forwarding
-  nat64_prefix                       = var.nat64_prefix
-  secondary_prefix_status            = var.secondary_prefix_status
-  status                             = var.status
+  # nat64_prefix - (required) is a type of string
+  nat64_prefix = var.nat64_prefix
+  # secondary_prefix_status - (optional) is a type of string
+  secondary_prefix_status = var.secondary_prefix_status
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "secondary_prefix" {
     for_each = var.secondary_prefix
     content {
-      name         = secondary_prefix.value["name"]
+      # name - (optional) is a type of string
+      name = secondary_prefix.value["name"]
+      # nat64_prefix - (optional) is a type of string
       nat64_prefix = secondary_prefix.value["nat64_prefix"]
     }
   }

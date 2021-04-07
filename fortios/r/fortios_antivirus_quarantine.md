@@ -130,17 +130,28 @@ variable "store_infected" {
 
 ```terraform
 resource "fortios_antivirus_quarantine" "this" {
-  agelimit         = var.agelimit
-  destination      = var.destination
-  drop_blocked     = var.drop_blocked
-  drop_heuristic   = var.drop_heuristic
-  drop_infected    = var.drop_infected
-  lowspace         = var.lowspace
-  maxfilesize      = var.maxfilesize
+  # agelimit - (optional) is a type of number
+  agelimit = var.agelimit
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # drop_blocked - (optional) is a type of string
+  drop_blocked = var.drop_blocked
+  # drop_heuristic - (optional) is a type of string
+  drop_heuristic = var.drop_heuristic
+  # drop_infected - (optional) is a type of string
+  drop_infected = var.drop_infected
+  # lowspace - (optional) is a type of string
+  lowspace = var.lowspace
+  # maxfilesize - (optional) is a type of number
+  maxfilesize = var.maxfilesize
+  # quarantine_quota - (optional) is a type of number
   quarantine_quota = var.quarantine_quota
-  store_blocked    = var.store_blocked
-  store_heuristic  = var.store_heuristic
-  store_infected   = var.store_infected
+  # store_blocked - (optional) is a type of string
+  store_blocked = var.store_blocked
+  # store_heuristic - (optional) is a type of string
+  store_heuristic = var.store_heuristic
+  # store_infected - (optional) is a type of string
+  store_infected = var.store_infected
 }
 ```
 

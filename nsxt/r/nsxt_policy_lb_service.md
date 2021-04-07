@@ -113,19 +113,28 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_lb_service" "this" {
+  # connectivity_path - (optional) is a type of string
   connectivity_path = var.connectivity_path
-  description       = var.description
-  display_name      = var.display_name
-  enabled           = var.enabled
-  error_log_level   = var.error_log_level
-  nsx_id            = var.nsx_id
-  size              = var.size
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # error_log_level - (optional) is a type of string
+  error_log_level = var.error_log_level
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # size - (optional) is a type of string
+  size = var.size
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

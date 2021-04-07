@@ -144,18 +144,27 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_dhcp_server" "this" {
-  description      = var.description
-  dhcp_profile_id  = var.dhcp_profile_id
-  dhcp_server_ip   = var.dhcp_server_ip
-  display_name     = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_profile_id - (required) is a type of string
+  dhcp_profile_id = var.dhcp_profile_id
+  # dhcp_server_ip - (required) is a type of string
+  dhcp_server_ip = var.dhcp_server_ip
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # dns_name_servers - (optional) is a type of list of string
   dns_name_servers = var.dns_name_servers
-  domain_name      = var.domain_name
-  gateway_ip       = var.gateway_ip
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # gateway_ip - (optional) is a type of string
+  gateway_ip = var.gateway_ip
 
   dynamic "dhcp_generic_option" {
     for_each = var.dhcp_generic_option
     content {
-      code   = dhcp_generic_option.value["code"]
+      # code - (required) is a type of number
+      code = dhcp_generic_option.value["code"]
+      # values - (required) is a type of list of string
       values = dhcp_generic_option.value["values"]
     }
   }
@@ -163,7 +172,9 @@ resource "nsxt_logical_dhcp_server" "this" {
   dynamic "dhcp_option_121" {
     for_each = var.dhcp_option_121
     content {
-      network  = dhcp_option_121.value["network"]
+      # network - (required) is a type of string
+      network = dhcp_option_121.value["network"]
+      # next_hop - (required) is a type of string
       next_hop = dhcp_option_121.value["next_hop"]
     }
   }
@@ -171,8 +182,10 @@ resource "nsxt_logical_dhcp_server" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -102,18 +102,27 @@ variable "timeouts" {
 
 ```terraform
 resource "triton_volume" "this" {
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # networks - (optional) is a type of list of string
   networks = var.networks
-  size     = var.size
-  tags     = var.tags
-  type     = var.type
+  # size - (optional) is a type of number
+  size = var.size
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

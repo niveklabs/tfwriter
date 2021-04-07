@@ -81,10 +81,15 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_clb_listeners" "this" {
-  clb_id             = var.clb_id
-  listener_id        = var.listener_id
-  port               = var.port
-  protocol           = var.protocol
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # listener_id - (optional) is a type of string
+  listener_id = var.listener_id
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

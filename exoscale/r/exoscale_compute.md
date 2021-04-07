@@ -212,32 +212,55 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_compute" "this" {
+  # affinity_group_ids - (optional) is a type of set of string
   affinity_group_ids = var.affinity_group_ids
-  affinity_groups    = var.affinity_groups
-  disk_size          = var.disk_size
-  display_name       = var.display_name
-  hostname           = var.hostname
-  ip4                = var.ip4
-  ip6                = var.ip6
-  key_pair           = var.key_pair
-  keyboard           = var.keyboard
-  reverse_dns        = var.reverse_dns
+  # affinity_groups - (optional) is a type of set of string
+  affinity_groups = var.affinity_groups
+  # disk_size - (required) is a type of number
+  disk_size = var.disk_size
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # ip4 - (optional) is a type of bool
+  ip4 = var.ip4
+  # ip6 - (optional) is a type of bool
+  ip6 = var.ip6
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # keyboard - (optional) is a type of string
+  keyboard = var.keyboard
+  # reverse_dns - (optional) is a type of string
+  reverse_dns = var.reverse_dns
+  # security_group_ids - (optional) is a type of set of string
   security_group_ids = var.security_group_ids
-  security_groups    = var.security_groups
-  size               = var.size
-  state              = var.state
-  tags               = var.tags
-  template           = var.template
-  template_id        = var.template_id
-  user_data          = var.user_data
-  zone               = var.zone
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # size - (optional) is a type of string
+  size = var.size
+  # state - (optional) is a type of string
+  state = var.state
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template - (optional) is a type of string
+  template = var.template
+  # template_id - (optional) is a type of string
+  template_id = var.template_id
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

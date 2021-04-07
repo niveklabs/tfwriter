@@ -89,12 +89,18 @@ variable "packages" {
 
 ```terraform
 data "equinix_network_device_platform" "this" {
-  core_count       = var.core_count
-  device_type      = var.device_type
-  flavor           = var.flavor
-  license_options  = var.license_options
+  # core_count - (optional) is a type of number
+  core_count = var.core_count
+  # device_type - (required) is a type of string
+  device_type = var.device_type
+  # flavor - (optional) is a type of string
+  flavor = var.flavor
+  # license_options - (optional) is a type of set of string
+  license_options = var.license_options
+  # management_types - (optional) is a type of set of string
   management_types = var.management_types
-  packages         = var.packages
+  # packages - (optional) is a type of set of string
+  packages = var.packages
 }
 ```
 

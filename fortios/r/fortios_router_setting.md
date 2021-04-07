@@ -250,32 +250,58 @@ variable "show_filter" {
 
 ```terraform
 resource "fortios_router_setting" "this" {
-  bgp_debug_flags             = var.bgp_debug_flags
-  hostname                    = var.hostname
-  igmp_debug_flags            = var.igmp_debug_flags
-  imi_debug_flags             = var.imi_debug_flags
-  isis_debug_flags            = var.isis_debug_flags
-  ospf6_debug_events_flags    = var.ospf6_debug_events_flags
-  ospf6_debug_ifsm_flags      = var.ospf6_debug_ifsm_flags
-  ospf6_debug_lsa_flags       = var.ospf6_debug_lsa_flags
-  ospf6_debug_nfsm_flags      = var.ospf6_debug_nfsm_flags
-  ospf6_debug_nsm_flags       = var.ospf6_debug_nsm_flags
-  ospf6_debug_packet_flags    = var.ospf6_debug_packet_flags
-  ospf6_debug_route_flags     = var.ospf6_debug_route_flags
-  ospf_debug_events_flags     = var.ospf_debug_events_flags
-  ospf_debug_ifsm_flags       = var.ospf_debug_ifsm_flags
-  ospf_debug_lsa_flags        = var.ospf_debug_lsa_flags
-  ospf_debug_nfsm_flags       = var.ospf_debug_nfsm_flags
-  ospf_debug_nsm_flags        = var.ospf_debug_nsm_flags
-  ospf_debug_packet_flags     = var.ospf_debug_packet_flags
-  ospf_debug_route_flags      = var.ospf_debug_route_flags
-  pimdm_debug_flags           = var.pimdm_debug_flags
+  # bgp_debug_flags - (optional) is a type of string
+  bgp_debug_flags = var.bgp_debug_flags
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # igmp_debug_flags - (optional) is a type of string
+  igmp_debug_flags = var.igmp_debug_flags
+  # imi_debug_flags - (optional) is a type of string
+  imi_debug_flags = var.imi_debug_flags
+  # isis_debug_flags - (optional) is a type of string
+  isis_debug_flags = var.isis_debug_flags
+  # ospf6_debug_events_flags - (optional) is a type of string
+  ospf6_debug_events_flags = var.ospf6_debug_events_flags
+  # ospf6_debug_ifsm_flags - (optional) is a type of string
+  ospf6_debug_ifsm_flags = var.ospf6_debug_ifsm_flags
+  # ospf6_debug_lsa_flags - (optional) is a type of string
+  ospf6_debug_lsa_flags = var.ospf6_debug_lsa_flags
+  # ospf6_debug_nfsm_flags - (optional) is a type of string
+  ospf6_debug_nfsm_flags = var.ospf6_debug_nfsm_flags
+  # ospf6_debug_nsm_flags - (optional) is a type of string
+  ospf6_debug_nsm_flags = var.ospf6_debug_nsm_flags
+  # ospf6_debug_packet_flags - (optional) is a type of string
+  ospf6_debug_packet_flags = var.ospf6_debug_packet_flags
+  # ospf6_debug_route_flags - (optional) is a type of string
+  ospf6_debug_route_flags = var.ospf6_debug_route_flags
+  # ospf_debug_events_flags - (optional) is a type of string
+  ospf_debug_events_flags = var.ospf_debug_events_flags
+  # ospf_debug_ifsm_flags - (optional) is a type of string
+  ospf_debug_ifsm_flags = var.ospf_debug_ifsm_flags
+  # ospf_debug_lsa_flags - (optional) is a type of string
+  ospf_debug_lsa_flags = var.ospf_debug_lsa_flags
+  # ospf_debug_nfsm_flags - (optional) is a type of string
+  ospf_debug_nfsm_flags = var.ospf_debug_nfsm_flags
+  # ospf_debug_nsm_flags - (optional) is a type of string
+  ospf_debug_nsm_flags = var.ospf_debug_nsm_flags
+  # ospf_debug_packet_flags - (optional) is a type of string
+  ospf_debug_packet_flags = var.ospf_debug_packet_flags
+  # ospf_debug_route_flags - (optional) is a type of string
+  ospf_debug_route_flags = var.ospf_debug_route_flags
+  # pimdm_debug_flags - (optional) is a type of string
+  pimdm_debug_flags = var.pimdm_debug_flags
+  # pimsm_debug_joinprune_flags - (optional) is a type of string
   pimsm_debug_joinprune_flags = var.pimsm_debug_joinprune_flags
-  pimsm_debug_simple_flags    = var.pimsm_debug_simple_flags
-  pimsm_debug_timer_flags     = var.pimsm_debug_timer_flags
-  rip_debug_flags             = var.rip_debug_flags
-  ripng_debug_flags           = var.ripng_debug_flags
-  show_filter                 = var.show_filter
+  # pimsm_debug_simple_flags - (optional) is a type of string
+  pimsm_debug_simple_flags = var.pimsm_debug_simple_flags
+  # pimsm_debug_timer_flags - (optional) is a type of string
+  pimsm_debug_timer_flags = var.pimsm_debug_timer_flags
+  # rip_debug_flags - (optional) is a type of string
+  rip_debug_flags = var.rip_debug_flags
+  # ripng_debug_flags - (optional) is a type of string
+  ripng_debug_flags = var.ripng_debug_flags
+  # show_filter - (optional) is a type of string
+  show_filter = var.show_filter
 }
 ```
 

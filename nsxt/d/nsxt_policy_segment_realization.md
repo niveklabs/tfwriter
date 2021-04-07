@@ -49,6 +49,7 @@ variable "path" {
 
 ```terraform
 data "nsxt_policy_segment_realization" "this" {
+  # path - (required) is a type of string
   path = var.path
 }
 ```

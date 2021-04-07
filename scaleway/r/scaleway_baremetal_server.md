@@ -125,19 +125,29 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_baremetal_server" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  hostname    = var.hostname
-  name        = var.name
-  offer       = var.offer
-  os          = var.os
-  project_id  = var.project_id
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # name - (optional) is a type of string
+  name = var.name
+  # offer - (required) is a type of string
+  offer = var.offer
+  # os - (required) is a type of string
+  os = var.os
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # ssh_key_ids - (required) is a type of list of string
   ssh_key_ids = var.ssh_key_ids
-  tags        = var.tags
-  zone        = var.zone
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

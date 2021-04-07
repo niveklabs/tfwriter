@@ -56,8 +56,10 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_alert_configuration" "this" {
+  # alert_configuration_id - (required) is a type of string
   alert_configuration_id = var.alert_configuration_id
-  project_id             = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

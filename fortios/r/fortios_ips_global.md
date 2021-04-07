@@ -184,30 +184,50 @@ variable "tls_active_probe" {
 
 ```terraform
 resource "fortios_ips_global" "this" {
-  anomaly_mode               = var.anomaly_mode
-  database                   = var.database
-  deep_app_insp_db_limit     = var.deep_app_insp_db_limit
-  deep_app_insp_timeout      = var.deep_app_insp_timeout
-  engine_count               = var.engine_count
-  exclude_signatures         = var.exclude_signatures
-  fail_open                  = var.fail_open
-  intelligent_mode           = var.intelligent_mode
-  ngfw_max_scan_range        = var.ngfw_max_scan_range
-  packet_log_queue_depth     = var.packet_log_queue_depth
-  session_limit_mode         = var.session_limit_mode
+  # anomaly_mode - (optional) is a type of string
+  anomaly_mode = var.anomaly_mode
+  # database - (optional) is a type of string
+  database = var.database
+  # deep_app_insp_db_limit - (optional) is a type of number
+  deep_app_insp_db_limit = var.deep_app_insp_db_limit
+  # deep_app_insp_timeout - (optional) is a type of number
+  deep_app_insp_timeout = var.deep_app_insp_timeout
+  # engine_count - (optional) is a type of number
+  engine_count = var.engine_count
+  # exclude_signatures - (optional) is a type of string
+  exclude_signatures = var.exclude_signatures
+  # fail_open - (optional) is a type of string
+  fail_open = var.fail_open
+  # intelligent_mode - (optional) is a type of string
+  intelligent_mode = var.intelligent_mode
+  # ngfw_max_scan_range - (optional) is a type of number
+  ngfw_max_scan_range = var.ngfw_max_scan_range
+  # packet_log_queue_depth - (optional) is a type of number
+  packet_log_queue_depth = var.packet_log_queue_depth
+  # session_limit_mode - (optional) is a type of string
+  session_limit_mode = var.session_limit_mode
+  # skype_client_public_ipaddr - (optional) is a type of string
   skype_client_public_ipaddr = var.skype_client_public_ipaddr
-  socket_size                = var.socket_size
-  sync_session_ttl           = var.sync_session_ttl
-  traffic_submit             = var.traffic_submit
+  # socket_size - (optional) is a type of number
+  socket_size = var.socket_size
+  # sync_session_ttl - (optional) is a type of string
+  sync_session_ttl = var.sync_session_ttl
+  # traffic_submit - (optional) is a type of string
+  traffic_submit = var.traffic_submit
 
   dynamic "tls_active_probe" {
     for_each = var.tls_active_probe
     content {
-      interface               = tls_active_probe.value["interface"]
+      # interface - (optional) is a type of string
+      interface = tls_active_probe.value["interface"]
+      # interface_select_method - (optional) is a type of string
       interface_select_method = tls_active_probe.value["interface_select_method"]
-      source_ip               = tls_active_probe.value["source_ip"]
-      source_ip6              = tls_active_probe.value["source_ip6"]
-      vdom                    = tls_active_probe.value["vdom"]
+      # source_ip - (optional) is a type of string
+      source_ip = tls_active_probe.value["source_ip"]
+      # source_ip6 - (optional) is a type of string
+      source_ip6 = tls_active_probe.value["source_ip6"]
+      # vdom - (optional) is a type of string
+      vdom = tls_active_probe.value["vdom"]
     }
   }
 

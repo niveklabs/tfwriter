@@ -146,25 +146,40 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_volume" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  bus               = var.bus
-  datacenter_id     = var.datacenter_id
-  disk_type         = var.disk_type
-  image_name        = var.image_name
-  image_password    = var.image_password
-  licence_type      = var.licence_type
-  name              = var.name
-  server_id         = var.server_id
-  size              = var.size
-  ssh_key_path      = var.ssh_key_path
+  # bus - (optional) is a type of string
+  bus = var.bus
+  # datacenter_id - (required) is a type of string
+  datacenter_id = var.datacenter_id
+  # disk_type - (required) is a type of string
+  disk_type = var.disk_type
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # image_password - (optional) is a type of string
+  image_password = var.image_password
+  # licence_type - (optional) is a type of string
+  licence_type = var.licence_type
+  # name - (optional) is a type of string
+  name = var.name
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # size - (required) is a type of number
+  size = var.size
+  # ssh_key_path - (optional) is a type of list of string
+  ssh_key_path = var.ssh_key_path
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

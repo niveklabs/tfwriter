@@ -102,14 +102,22 @@ variable "sub_field" {
 
 ```terraform
 resource "ovh_iploadbalancing_http_route_rule" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  field        = var.field
-  match        = var.match
-  negate       = var.negate
-  pattern      = var.pattern
-  route_id     = var.route_id
+  # field - (required) is a type of string
+  field = var.field
+  # match - (required) is a type of string
+  match = var.match
+  # negate - (optional) is a type of bool
+  negate = var.negate
+  # pattern - (optional) is a type of string
+  pattern = var.pattern
+  # route_id - (required) is a type of string
+  route_id = var.route_id
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  sub_field    = var.sub_field
+  # sub_field - (optional) is a type of string
+  sub_field = var.sub_field
 }
 ```
 

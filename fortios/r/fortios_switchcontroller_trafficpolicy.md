@@ -121,16 +121,26 @@ variable "type" {
 
 ```terraform
 resource "fortios_switchcontroller_trafficpolicy" "this" {
-  cos                  = var.cos
-  cos_queue            = var.cos_queue
-  description          = var.description
-  fosid                = var.fosid
+  # cos - (optional) is a type of number
+  cos = var.cos
+  # cos_queue - (optional) is a type of number
+  cos_queue = var.cos_queue
+  # description - (optional) is a type of string
+  description = var.description
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # guaranteed_bandwidth - (optional) is a type of number
   guaranteed_bandwidth = var.guaranteed_bandwidth
-  guaranteed_burst     = var.guaranteed_burst
-  maximum_burst        = var.maximum_burst
-  name                 = var.name
-  policer_status       = var.policer_status
-  type                 = var.type
+  # guaranteed_burst - (optional) is a type of number
+  guaranteed_burst = var.guaranteed_burst
+  # maximum_burst - (optional) is a type of number
+  maximum_burst = var.maximum_burst
+  # name - (required) is a type of string
+  name = var.name
+  # policer_status - (optional) is a type of string
+  policer_status = var.policer_status
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

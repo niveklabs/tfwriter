@@ -225,21 +225,36 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cms_group_metric_rule" "this" {
-  category               = var.category
-  contact_groups         = var.contact_groups
-  dimensions             = var.dimensions
-  effective_interval     = var.effective_interval
-  email_subject          = var.email_subject
-  group_id               = var.group_id
+  # category - (required) is a type of string
+  category = var.category
+  # contact_groups - (optional) is a type of string
+  contact_groups = var.contact_groups
+  # dimensions - (optional) is a type of string
+  dimensions = var.dimensions
+  # effective_interval - (optional) is a type of string
+  effective_interval = var.effective_interval
+  # email_subject - (optional) is a type of string
+  email_subject = var.email_subject
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # group_metric_rule_name - (required) is a type of string
   group_metric_rule_name = var.group_metric_rule_name
-  interval               = var.interval
-  metric_name            = var.metric_name
-  namespace              = var.namespace
-  no_effective_interval  = var.no_effective_interval
-  period                 = var.period
-  rule_id                = var.rule_id
-  silence_time           = var.silence_time
-  webhook                = var.webhook
+  # interval - (optional) is a type of string
+  interval = var.interval
+  # metric_name - (required) is a type of string
+  metric_name = var.metric_name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # no_effective_interval - (optional) is a type of string
+  no_effective_interval = var.no_effective_interval
+  # period - (optional) is a type of number
+  period = var.period
+  # rule_id - (required) is a type of string
+  rule_id = var.rule_id
+  # silence_time - (optional) is a type of number
+  silence_time = var.silence_time
+  # webhook - (optional) is a type of string
+  webhook = var.webhook
 
   dynamic "escalations" {
     for_each = var.escalations
@@ -248,30 +263,42 @@ resource "alicloud_cms_group_metric_rule" "this" {
       dynamic "critical" {
         for_each = escalations.value.critical
         content {
+          # comparison_operator - (optional) is a type of string
           comparison_operator = critical.value["comparison_operator"]
-          statistics          = critical.value["statistics"]
-          threshold           = critical.value["threshold"]
-          times               = critical.value["times"]
+          # statistics - (optional) is a type of string
+          statistics = critical.value["statistics"]
+          # threshold - (optional) is a type of string
+          threshold = critical.value["threshold"]
+          # times - (optional) is a type of number
+          times = critical.value["times"]
         }
       }
 
       dynamic "info" {
         for_each = escalations.value.info
         content {
+          # comparison_operator - (optional) is a type of string
           comparison_operator = info.value["comparison_operator"]
-          statistics          = info.value["statistics"]
-          threshold           = info.value["threshold"]
-          times               = info.value["times"]
+          # statistics - (optional) is a type of string
+          statistics = info.value["statistics"]
+          # threshold - (optional) is a type of string
+          threshold = info.value["threshold"]
+          # times - (optional) is a type of number
+          times = info.value["times"]
         }
       }
 
       dynamic "warn" {
         for_each = escalations.value.warn
         content {
+          # comparison_operator - (optional) is a type of string
           comparison_operator = warn.value["comparison_operator"]
-          statistics          = warn.value["statistics"]
-          threshold           = warn.value["threshold"]
-          times               = warn.value["times"]
+          # statistics - (optional) is a type of string
+          statistics = warn.value["statistics"]
+          # threshold - (optional) is a type of string
+          threshold = warn.value["threshold"]
+          # times - (optional) is a type of number
+          times = warn.value["times"]
         }
       }
 
@@ -281,7 +308,9 @@ resource "alicloud_cms_group_metric_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

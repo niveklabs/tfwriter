@@ -176,24 +176,39 @@ variable "color_scale" {
 
 ```terraform
 resource "signalfx_heatmap_chart" "this" {
-  description        = var.description
-  disable_sampling   = var.disable_sampling
-  group_by           = var.group_by
-  hide_timestamp     = var.hide_timestamp
-  max_delay          = var.max_delay
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_sampling - (optional) is a type of bool
+  disable_sampling = var.disable_sampling
+  # group_by - (optional) is a type of list of string
+  group_by = var.group_by
+  # hide_timestamp - (optional) is a type of bool
+  hide_timestamp = var.hide_timestamp
+  # max_delay - (optional) is a type of number
+  max_delay = var.max_delay
+  # minimum_resolution - (optional) is a type of number
   minimum_resolution = var.minimum_resolution
-  name               = var.name
-  program_text       = var.program_text
-  refresh_interval   = var.refresh_interval
-  sort_by            = var.sort_by
-  timezone           = var.timezone
-  unit_prefix        = var.unit_prefix
+  # name - (required) is a type of string
+  name = var.name
+  # program_text - (required) is a type of string
+  program_text = var.program_text
+  # refresh_interval - (optional) is a type of number
+  refresh_interval = var.refresh_interval
+  # sort_by - (optional) is a type of string
+  sort_by = var.sort_by
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # unit_prefix - (optional) is a type of string
+  unit_prefix = var.unit_prefix
 
   dynamic "color_range" {
     for_each = var.color_range
     content {
-      color     = color_range.value["color"]
+      # color - (required) is a type of string
+      color = color_range.value["color"]
+      # max_value - (optional) is a type of number
       max_value = color_range.value["max_value"]
+      # min_value - (optional) is a type of number
       min_value = color_range.value["min_value"]
     }
   }
@@ -201,11 +216,16 @@ resource "signalfx_heatmap_chart" "this" {
   dynamic "color_scale" {
     for_each = var.color_scale
     content {
+      # color - (required) is a type of string
       color = color_scale.value["color"]
-      gt    = color_scale.value["gt"]
-      gte   = color_scale.value["gte"]
-      lt    = color_scale.value["lt"]
-      lte   = color_scale.value["lte"]
+      # gt - (optional) is a type of number
+      gt = color_scale.value["gt"]
+      # gte - (optional) is a type of number
+      gte = color_scale.value["gte"]
+      # lt - (optional) is a type of number
+      lt = color_scale.value["lt"]
+      # lte - (optional) is a type of number
+      lte = color_scale.value["lte"]
     }
   }
 

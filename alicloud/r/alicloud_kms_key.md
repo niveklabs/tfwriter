@@ -130,17 +130,28 @@ variable "rotation_interval" {
 
 ```terraform
 resource "alicloud_kms_key" "this" {
-  automatic_rotation      = var.automatic_rotation
+  # automatic_rotation - (optional) is a type of string
+  automatic_rotation = var.automatic_rotation
+  # deletion_window_in_days - (optional) is a type of number
   deletion_window_in_days = var.deletion_window_in_days
-  description             = var.description
-  is_enabled              = var.is_enabled
-  key_spec                = var.key_spec
-  key_state               = var.key_state
-  key_usage               = var.key_usage
-  origin                  = var.origin
-  pending_window_in_days  = var.pending_window_in_days
-  protection_level        = var.protection_level
-  rotation_interval       = var.rotation_interval
+  # description - (optional) is a type of string
+  description = var.description
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # key_spec - (optional) is a type of string
+  key_spec = var.key_spec
+  # key_state - (optional) is a type of string
+  key_state = var.key_state
+  # key_usage - (optional) is a type of string
+  key_usage = var.key_usage
+  # origin - (optional) is a type of string
+  origin = var.origin
+  # pending_window_in_days - (optional) is a type of number
+  pending_window_in_days = var.pending_window_in_days
+  # protection_level - (optional) is a type of string
+  protection_level = var.protection_level
+  # rotation_interval - (optional) is a type of string
+  rotation_interval = var.rotation_interval
 }
 ```
 

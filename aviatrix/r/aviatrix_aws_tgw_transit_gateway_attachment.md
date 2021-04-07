@@ -77,11 +77,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_aws_tgw_transit_gateway_attachment" "this" {
-  region               = var.region
-  tgw_name             = var.tgw_name
+  # region - (required) is a type of string
+  region = var.region
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
+  # transit_gateway_name - (required) is a type of string
   transit_gateway_name = var.transit_gateway_name
-  vpc_account_name     = var.vpc_account_name
-  vpc_id               = var.vpc_id
+  # vpc_account_name - (required) is a type of string
+  vpc_account_name = var.vpc_account_name
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

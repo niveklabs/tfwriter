@@ -95,12 +95,19 @@ variable "vrf_template_name" {
 
 ```terraform
 data "mso_schema_template_l3out" "this" {
-  display_name      = var.display_name
-  l3out_name        = var.l3out_name
-  schema_id         = var.schema_id
-  template_name     = var.template_name
-  vrf_name          = var.vrf_name
-  vrf_schema_id     = var.vrf_schema_id
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # l3out_name - (required) is a type of string
+  l3out_name = var.l3out_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vrf_name - (optional) is a type of string
+  vrf_name = var.vrf_name
+  # vrf_schema_id - (optional) is a type of string
+  vrf_schema_id = var.vrf_schema_id
+  # vrf_template_name - (optional) is a type of string
   vrf_template_name = var.vrf_template_name
 }
 ```

@@ -56,7 +56,9 @@ variable "instance_ids" {
 
 ```terraform
 resource "alicloud_edas_instance_cluster_attachment" "this" {
-  cluster_id   = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # instance_ids - (required) is a type of list of string
   instance_ids = var.instance_ids
 }
 ```

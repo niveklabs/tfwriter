@@ -83,16 +83,22 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_affinity" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  type        = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

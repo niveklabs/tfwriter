@@ -73,10 +73,14 @@ variable "name" {
 
 ```terraform
 resource "sumologic_role" "this" {
-  capabilities     = var.capabilities
-  description      = var.description
+  # capabilities - (optional) is a type of list of string
+  capabilities = var.capabilities
+  # description - (optional) is a type of string
+  description = var.description
+  # filter_predicate - (optional) is a type of string
   filter_predicate = var.filter_predicate
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -64,11 +64,13 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_slb_ftp_proxy" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

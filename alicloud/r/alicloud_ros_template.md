@@ -81,11 +81,16 @@ variable "template_url" {
 
 ```terraform
 resource "alicloud_ros_template" "this" {
-  description   = var.description
-  tags          = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_body - (optional) is a type of string
   template_body = var.template_body
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  template_url  = var.template_url
+  # template_url - (optional) is a type of string
+  template_url = var.template_url
 }
 ```
 

@@ -111,15 +111,24 @@ variable "type" {
 
 ```terraform
 resource "fortios_fmg_firewall_object_ippool" "this" {
-  adom            = var.adom
-  arp_intf        = var.arp_intf
-  arp_reply       = var.arp_reply
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # arp_intf - (optional) is a type of string
+  arp_intf = var.arp_intf
+  # arp_reply - (optional) is a type of string
+  arp_reply = var.arp_reply
+  # associated_intf - (optional) is a type of string
   associated_intf = var.associated_intf
-  comment         = var.comment
-  endip           = var.endip
-  name            = var.name
-  startip         = var.startip
-  type            = var.type
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # endip - (required) is a type of string
+  endip = var.endip
+  # name - (required) is a type of string
+  name = var.name
+  # startip - (required) is a type of string
+  startip = var.startip
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

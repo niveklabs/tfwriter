@@ -57,8 +57,10 @@ variable "status" {
 
 ```terraform
 resource "tencentcloud_api_gateway_api_key" "this" {
+  # secret_name - (required) is a type of string
   secret_name = var.secret_name
-  status      = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

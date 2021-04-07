@@ -58,8 +58,10 @@ variable "uid" {
 
 ```terraform
 resource "checkpoint_management_publish" "this" {
+  # triggers - (optional) is a type of set of string
   triggers = var.triggers
-  uid      = var.uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

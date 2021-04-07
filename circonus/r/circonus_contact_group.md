@@ -273,90 +273,128 @@ variable "xmpp" {
 
 ```terraform
 resource "circonus_contact_group" "this" {
+  # aggregation_window - (optional) is a type of string
   aggregation_window = var.aggregation_window
-  always_send_clear  = var.always_send_clear
-  group_type         = var.group_type
-  long_message       = var.long_message
-  long_subject       = var.long_subject
-  long_summary       = var.long_summary
-  name               = var.name
-  short_message      = var.short_message
-  short_summary      = var.short_summary
-  tags               = var.tags
+  # always_send_clear - (optional) is a type of bool
+  always_send_clear = var.always_send_clear
+  # group_type - (optional) is a type of string
+  group_type = var.group_type
+  # long_message - (optional) is a type of string
+  long_message = var.long_message
+  # long_subject - (optional) is a type of string
+  long_subject = var.long_subject
+  # long_summary - (optional) is a type of string
+  long_summary = var.long_summary
+  # name - (required) is a type of string
+  name = var.name
+  # short_message - (optional) is a type of string
+  short_message = var.short_message
+  # short_summary - (optional) is a type of string
+  short_summary = var.short_summary
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "alert_option" {
     for_each = var.alert_option
     content {
+      # escalate_after - (optional) is a type of string
       escalate_after = alert_option.value["escalate_after"]
-      escalate_to    = alert_option.value["escalate_to"]
-      reminder       = alert_option.value["reminder"]
-      severity       = alert_option.value["severity"]
+      # escalate_to - (optional) is a type of string
+      escalate_to = alert_option.value["escalate_to"]
+      # reminder - (optional) is a type of string
+      reminder = alert_option.value["reminder"]
+      # severity - (required) is a type of number
+      severity = alert_option.value["severity"]
     }
   }
 
   dynamic "email" {
     for_each = var.email
     content {
+      # address - (optional) is a type of string
       address = email.value["address"]
-      user    = email.value["user"]
+      # user - (optional) is a type of string
+      user = email.value["user"]
     }
   }
 
   dynamic "http" {
     for_each = var.http
     content {
+      # address - (required) is a type of string
       address = http.value["address"]
-      format  = http.value["format"]
-      method  = http.value["method"]
+      # format - (optional) is a type of string
+      format = http.value["format"]
+      # method - (optional) is a type of string
+      method = http.value["method"]
     }
   }
 
   dynamic "pager_duty" {
     for_each = var.pager_duty
     content {
-      account                = pager_duty.value["account"]
+      # account - (required) is a type of string
+      account = pager_duty.value["account"]
+      # contact_group_fallback - (optional) is a type of string
       contact_group_fallback = pager_duty.value["contact_group_fallback"]
-      service_key            = pager_duty.value["service_key"]
-      webhook_url            = pager_duty.value["webhook_url"]
+      # service_key - (required) is a type of string
+      service_key = pager_duty.value["service_key"]
+      # webhook_url - (required) is a type of string
+      webhook_url = pager_duty.value["webhook_url"]
     }
   }
 
   dynamic "slack" {
     for_each = var.slack
     content {
-      buttons                = slack.value["buttons"]
-      channel                = slack.value["channel"]
+      # buttons - (optional) is a type of bool
+      buttons = slack.value["buttons"]
+      # channel - (required) is a type of string
+      channel = slack.value["channel"]
+      # contact_group_fallback - (optional) is a type of string
       contact_group_fallback = slack.value["contact_group_fallback"]
-      team                   = slack.value["team"]
-      username               = slack.value["username"]
+      # team - (required) is a type of string
+      team = slack.value["team"]
+      # username - (optional) is a type of string
+      username = slack.value["username"]
     }
   }
 
   dynamic "sms" {
     for_each = var.sms
     content {
+      # address - (optional) is a type of string
       address = sms.value["address"]
-      user    = sms.value["user"]
+      # user - (optional) is a type of string
+      user = sms.value["user"]
     }
   }
 
   dynamic "victorops" {
     for_each = var.victorops
     content {
-      api_key                = victorops.value["api_key"]
+      # api_key - (required) is a type of string
+      api_key = victorops.value["api_key"]
+      # contact_group_fallback - (optional) is a type of string
       contact_group_fallback = victorops.value["contact_group_fallback"]
-      critical               = victorops.value["critical"]
-      info                   = victorops.value["info"]
-      team                   = victorops.value["team"]
-      warning                = victorops.value["warning"]
+      # critical - (required) is a type of number
+      critical = victorops.value["critical"]
+      # info - (required) is a type of number
+      info = victorops.value["info"]
+      # team - (required) is a type of string
+      team = victorops.value["team"]
+      # warning - (required) is a type of number
+      warning = victorops.value["warning"]
     }
   }
 
   dynamic "xmpp" {
     for_each = var.xmpp
     content {
+      # address - (optional) is a type of string
       address = xmpp.value["address"]
-      user    = xmpp.value["user"]
+      # user - (optional) is a type of string
+      user = xmpp.value["user"]
     }
   }
 

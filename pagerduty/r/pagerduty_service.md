@@ -188,25 +188,37 @@ variable "support_hours" {
 
 ```terraform
 resource "pagerduty_service" "this" {
+  # acknowledgement_timeout - (optional) is a type of string
   acknowledgement_timeout = var.acknowledgement_timeout
-  alert_creation          = var.alert_creation
-  alert_grouping          = var.alert_grouping
-  alert_grouping_timeout  = var.alert_grouping_timeout
-  auto_resolve_timeout    = var.auto_resolve_timeout
-  description             = var.description
-  escalation_policy       = var.escalation_policy
-  name                    = var.name
+  # alert_creation - (optional) is a type of string
+  alert_creation = var.alert_creation
+  # alert_grouping - (optional) is a type of string
+  alert_grouping = var.alert_grouping
+  # alert_grouping_timeout - (optional) is a type of number
+  alert_grouping_timeout = var.alert_grouping_timeout
+  # auto_resolve_timeout - (optional) is a type of string
+  auto_resolve_timeout = var.auto_resolve_timeout
+  # description - (optional) is a type of string
+  description = var.description
+  # escalation_policy - (required) is a type of string
+  escalation_policy = var.escalation_policy
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "incident_urgency_rule" {
     for_each = var.incident_urgency_rule
     content {
-      type    = incident_urgency_rule.value["type"]
+      # type - (required) is a type of string
+      type = incident_urgency_rule.value["type"]
+      # urgency - (optional) is a type of string
       urgency = incident_urgency_rule.value["urgency"]
 
       dynamic "during_support_hours" {
         for_each = incident_urgency_rule.value.during_support_hours
         content {
-          type    = during_support_hours.value["type"]
+          # type - (optional) is a type of string
+          type = during_support_hours.value["type"]
+          # urgency - (optional) is a type of string
           urgency = during_support_hours.value["urgency"]
         }
       }
@@ -214,7 +226,9 @@ resource "pagerduty_service" "this" {
       dynamic "outside_support_hours" {
         for_each = incident_urgency_rule.value.outside_support_hours
         content {
-          type    = outside_support_hours.value["type"]
+          # type - (optional) is a type of string
+          type = outside_support_hours.value["type"]
+          # urgency - (optional) is a type of string
           urgency = outside_support_hours.value["urgency"]
         }
       }
@@ -225,13 +239,17 @@ resource "pagerduty_service" "this" {
   dynamic "scheduled_actions" {
     for_each = var.scheduled_actions
     content {
+      # to_urgency - (optional) is a type of string
       to_urgency = scheduled_actions.value["to_urgency"]
-      type       = scheduled_actions.value["type"]
+      # type - (optional) is a type of string
+      type = scheduled_actions.value["type"]
 
       dynamic "at" {
         for_each = scheduled_actions.value.at
         content {
+          # name - (optional) is a type of string
           name = at.value["name"]
+          # type - (optional) is a type of string
           type = at.value["type"]
         }
       }
@@ -242,11 +260,16 @@ resource "pagerduty_service" "this" {
   dynamic "support_hours" {
     for_each = var.support_hours
     content {
+      # days_of_week - (optional) is a type of list of number
       days_of_week = support_hours.value["days_of_week"]
-      end_time     = support_hours.value["end_time"]
-      start_time   = support_hours.value["start_time"]
-      time_zone    = support_hours.value["time_zone"]
-      type         = support_hours.value["type"]
+      # end_time - (optional) is a type of string
+      end_time = support_hours.value["end_time"]
+      # start_time - (optional) is a type of string
+      start_time = support_hours.value["start_time"]
+      # time_zone - (optional) is a type of string
+      time_zone = support_hours.value["time_zone"]
+      # type - (optional) is a type of string
+      type = support_hours.value["type"]
     }
   }
 

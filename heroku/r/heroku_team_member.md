@@ -71,10 +71,14 @@ variable "team" {
 
 ```terraform
 resource "heroku_team_member" "this" {
-  email     = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # federated - (optional) is a type of bool
   federated = var.federated
-  role      = var.role
-  team      = var.team
+  # role - (required) is a type of string
+  role = var.role
+  # team - (required) is a type of string
+  team = var.team
 }
 ```
 

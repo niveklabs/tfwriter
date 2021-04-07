@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewallservice_category" "this" {
+  # comment - (optional) is a type of string
   comment = var.comment
-  name    = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

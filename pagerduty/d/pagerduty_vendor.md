@@ -57,7 +57,9 @@ variable "name_regex" {
 
 ```terraform
 data "pagerduty_vendor" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # name_regex - (optional) is a type of string
   name_regex = var.name_regex
 }
 ```

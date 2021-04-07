@@ -74,10 +74,14 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_reserved_instances" "this" {
-  availability_zone    = var.availability_zone
-  instance_type        = var.instance_type
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # reserved_instance_id - (optional) is a type of string
   reserved_instance_id = var.reserved_instance_id
-  result_output_file   = var.result_output_file
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
 }
 ```
 

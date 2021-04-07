@@ -118,16 +118,26 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_site_bd_subnet" "this" {
-  bd_name            = var.bd_name
-  description        = var.description
-  ip                 = var.ip
+  # bd_name - (required) is a type of string
+  bd_name = var.bd_name
+  # description - (optional) is a type of string
+  description = var.description
+  # ip - (required) is a type of string
+  ip = var.ip
+  # no_default_gateway - (optional) is a type of bool
   no_default_gateway = var.no_default_gateway
-  querier            = var.querier
-  schema_id          = var.schema_id
-  scope              = var.scope
-  shared             = var.shared
-  site_id            = var.site_id
-  template_name      = var.template_name
+  # querier - (optional) is a type of bool
+  querier = var.querier
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # shared - (optional) is a type of bool
+  shared = var.shared
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
 }
 ```
 

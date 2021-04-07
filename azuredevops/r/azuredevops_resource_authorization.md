@@ -79,11 +79,16 @@ variable "type" {
 
 ```terraform
 resource "azuredevops_resource_authorization" "this" {
-  authorized    = var.authorized
+  # authorized - (required) is a type of bool
+  authorized = var.authorized
+  # definition_id - (optional) is a type of number
   definition_id = var.definition_id
-  project_id    = var.project_id
-  resource_id   = var.resource_id
-  type          = var.type
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

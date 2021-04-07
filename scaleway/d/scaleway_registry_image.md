@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 data "scaleway_registry_image" "this" {
-  image_id     = var.image_id
-  name         = var.name
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
-  project_id   = var.project_id
-  region       = var.region
-  tags         = var.tags
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

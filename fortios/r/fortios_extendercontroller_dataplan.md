@@ -194,25 +194,44 @@ variable "username" {
 
 ```terraform
 resource "fortios_extendercontroller_dataplan" "this" {
-  apn              = var.apn
-  auth_type        = var.auth_type
-  billing_date     = var.billing_date
-  capacity         = var.capacity
-  carrier          = var.carrier
-  iccid            = var.iccid
-  modem_id         = var.modem_id
-  monthly_fee      = var.monthly_fee
-  name             = var.name
-  overage          = var.overage
-  password         = var.password
-  pdn              = var.pdn
+  # apn - (optional) is a type of string
+  apn = var.apn
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # billing_date - (optional) is a type of number
+  billing_date = var.billing_date
+  # capacity - (optional) is a type of number
+  capacity = var.capacity
+  # carrier - (optional) is a type of string
+  carrier = var.carrier
+  # iccid - (optional) is a type of string
+  iccid = var.iccid
+  # modem_id - (optional) is a type of string
+  modem_id = var.modem_id
+  # monthly_fee - (optional) is a type of number
+  monthly_fee = var.monthly_fee
+  # name - (optional) is a type of string
+  name = var.name
+  # overage - (optional) is a type of string
+  overage = var.overage
+  # password - (optional) is a type of string
+  password = var.password
+  # pdn - (optional) is a type of string
+  pdn = var.pdn
+  # preferred_subnet - (optional) is a type of number
   preferred_subnet = var.preferred_subnet
-  private_network  = var.private_network
-  signal_period    = var.signal_period
+  # private_network - (optional) is a type of string
+  private_network = var.private_network
+  # signal_period - (optional) is a type of number
+  signal_period = var.signal_period
+  # signal_threshold - (optional) is a type of number
   signal_threshold = var.signal_threshold
-  slot             = var.slot
-  type             = var.type
-  username         = var.username
+  # slot - (optional) is a type of string
+  slot = var.slot
+  # type - (optional) is a type of string
+  type = var.type
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

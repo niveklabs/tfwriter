@@ -63,9 +63,12 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "tencentcloud_as_notification" "this" {
-  notification_types          = var.notification_types
+  # notification_types - (required) is a type of list of string
+  notification_types = var.notification_types
+  # notification_user_group_ids - (required) is a type of list of string
   notification_user_group_ids = var.notification_user_group_ids
-  scaling_group_id            = var.scaling_group_id
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
 }
 ```
 

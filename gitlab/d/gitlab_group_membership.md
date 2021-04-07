@@ -66,9 +66,12 @@ variable "group_id" {
 
 ```terraform
 data "gitlab_group_membership" "this" {
+  # access_level - (optional) is a type of string
   access_level = var.access_level
-  full_path    = var.full_path
-  group_id     = var.group_id
+  # full_path - (optional) is a type of string
+  full_path = var.full_path
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
 }
 ```
 

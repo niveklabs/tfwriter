@@ -291,70 +291,112 @@ variable "warning" {
 
 ```terraform
 resource "newrelic_nrql_alert_condition" "this" {
-  account_id                      = var.account_id
-  aggregation_window              = var.aggregation_window
-  baseline_direction              = var.baseline_direction
-  close_violations_on_expiration  = var.close_violations_on_expiration
-  description                     = var.description
-  enabled                         = var.enabled
-  expected_groups                 = var.expected_groups
-  expiration_duration             = var.expiration_duration
-  fill_option                     = var.fill_option
-  fill_value                      = var.fill_value
-  ignore_overlap                  = var.ignore_overlap
-  name                            = var.name
-  open_violation_on_expiration    = var.open_violation_on_expiration
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # aggregation_window - (optional) is a type of number
+  aggregation_window = var.aggregation_window
+  # baseline_direction - (optional) is a type of string
+  baseline_direction = var.baseline_direction
+  # close_violations_on_expiration - (optional) is a type of bool
+  close_violations_on_expiration = var.close_violations_on_expiration
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # expected_groups - (optional) is a type of number
+  expected_groups = var.expected_groups
+  # expiration_duration - (optional) is a type of number
+  expiration_duration = var.expiration_duration
+  # fill_option - (optional) is a type of string
+  fill_option = var.fill_option
+  # fill_value - (optional) is a type of number
+  fill_value = var.fill_value
+  # ignore_overlap - (optional) is a type of bool
+  ignore_overlap = var.ignore_overlap
+  # name - (required) is a type of string
+  name = var.name
+  # open_violation_on_expiration - (optional) is a type of bool
+  open_violation_on_expiration = var.open_violation_on_expiration
+  # open_violation_on_group_overlap - (optional) is a type of bool
   open_violation_on_group_overlap = var.open_violation_on_group_overlap
-  policy_id                       = var.policy_id
-  runbook_url                     = var.runbook_url
-  type                            = var.type
-  value_function                  = var.value_function
-  violation_time_limit            = var.violation_time_limit
-  violation_time_limit_seconds    = var.violation_time_limit_seconds
+  # policy_id - (required) is a type of number
+  policy_id = var.policy_id
+  # runbook_url - (optional) is a type of string
+  runbook_url = var.runbook_url
+  # type - (optional) is a type of string
+  type = var.type
+  # value_function - (optional) is a type of string
+  value_function = var.value_function
+  # violation_time_limit - (optional) is a type of string
+  violation_time_limit = var.violation_time_limit
+  # violation_time_limit_seconds - (optional) is a type of number
+  violation_time_limit_seconds = var.violation_time_limit_seconds
 
   dynamic "critical" {
     for_each = var.critical
     content {
-      duration              = critical.value["duration"]
-      operator              = critical.value["operator"]
-      threshold             = critical.value["threshold"]
-      threshold_duration    = critical.value["threshold_duration"]
+      # duration - (optional) is a type of number
+      duration = critical.value["duration"]
+      # operator - (optional) is a type of string
+      operator = critical.value["operator"]
+      # threshold - (required) is a type of number
+      threshold = critical.value["threshold"]
+      # threshold_duration - (optional) is a type of number
+      threshold_duration = critical.value["threshold_duration"]
+      # threshold_occurrences - (optional) is a type of string
       threshold_occurrences = critical.value["threshold_occurrences"]
-      time_function         = critical.value["time_function"]
+      # time_function - (optional) is a type of string
+      time_function = critical.value["time_function"]
     }
   }
 
   dynamic "nrql" {
     for_each = var.nrql
     content {
+      # evaluation_offset - (optional) is a type of number
       evaluation_offset = nrql.value["evaluation_offset"]
-      query             = nrql.value["query"]
-      since_value       = nrql.value["since_value"]
+      # query - (required) is a type of string
+      query = nrql.value["query"]
+      # since_value - (optional) is a type of string
+      since_value = nrql.value["since_value"]
     }
   }
 
   dynamic "term" {
     for_each = var.term
     content {
-      duration              = term.value["duration"]
-      operator              = term.value["operator"]
-      priority              = term.value["priority"]
-      threshold             = term.value["threshold"]
-      threshold_duration    = term.value["threshold_duration"]
+      # duration - (optional) is a type of number
+      duration = term.value["duration"]
+      # operator - (optional) is a type of string
+      operator = term.value["operator"]
+      # priority - (optional) is a type of string
+      priority = term.value["priority"]
+      # threshold - (required) is a type of number
+      threshold = term.value["threshold"]
+      # threshold_duration - (optional) is a type of number
+      threshold_duration = term.value["threshold_duration"]
+      # threshold_occurrences - (optional) is a type of string
       threshold_occurrences = term.value["threshold_occurrences"]
-      time_function         = term.value["time_function"]
+      # time_function - (optional) is a type of string
+      time_function = term.value["time_function"]
     }
   }
 
   dynamic "warning" {
     for_each = var.warning
     content {
-      duration              = warning.value["duration"]
-      operator              = warning.value["operator"]
-      threshold             = warning.value["threshold"]
-      threshold_duration    = warning.value["threshold_duration"]
+      # duration - (optional) is a type of number
+      duration = warning.value["duration"]
+      # operator - (optional) is a type of string
+      operator = warning.value["operator"]
+      # threshold - (required) is a type of number
+      threshold = warning.value["threshold"]
+      # threshold_duration - (optional) is a type of number
+      threshold_duration = warning.value["threshold_duration"]
+      # threshold_occurrences - (optional) is a type of string
       threshold_occurrences = warning.value["threshold_occurrences"]
-      time_function         = warning.value["time_function"]
+      # time_function - (optional) is a type of string
+      time_function = warning.value["time_function"]
     }
   }
 

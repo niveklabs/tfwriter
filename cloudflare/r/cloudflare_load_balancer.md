@@ -166,32 +166,48 @@ variable "region_pools" {
 
 ```terraform
 resource "cloudflare_load_balancer" "this" {
-  default_pool_ids            = var.default_pool_ids
-  description                 = var.description
-  enabled                     = var.enabled
-  fallback_pool_id            = var.fallback_pool_id
-  name                        = var.name
-  proxied                     = var.proxied
-  session_affinity            = var.session_affinity
+  # default_pool_ids - (required) is a type of list of string
+  default_pool_ids = var.default_pool_ids
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # fallback_pool_id - (required) is a type of string
+  fallback_pool_id = var.fallback_pool_id
+  # name - (required) is a type of string
+  name = var.name
+  # proxied - (optional) is a type of bool
+  proxied = var.proxied
+  # session_affinity - (optional) is a type of string
+  session_affinity = var.session_affinity
+  # session_affinity_attributes - (optional) is a type of map of string
   session_affinity_attributes = var.session_affinity_attributes
-  session_affinity_ttl        = var.session_affinity_ttl
-  steering_policy             = var.steering_policy
-  ttl                         = var.ttl
-  zone_id                     = var.zone_id
+  # session_affinity_ttl - (optional) is a type of number
+  session_affinity_ttl = var.session_affinity_ttl
+  # steering_policy - (optional) is a type of string
+  steering_policy = var.steering_policy
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "pop_pools" {
     for_each = var.pop_pools
     content {
+      # pool_ids - (required) is a type of list of string
       pool_ids = pop_pools.value["pool_ids"]
-      pop      = pop_pools.value["pop"]
+      # pop - (required) is a type of string
+      pop = pop_pools.value["pop"]
     }
   }
 
   dynamic "region_pools" {
     for_each = var.region_pools
     content {
+      # pool_ids - (required) is a type of list of string
       pool_ids = region_pools.value["pool_ids"]
-      region   = region_pools.value["region"]
+      # region - (required) is a type of string
+      region = region_pools.value["region"]
     }
   }
 

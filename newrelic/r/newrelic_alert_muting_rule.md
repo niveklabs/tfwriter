@@ -123,22 +123,30 @@ variable "schedule" {
 
 ```terraform
 resource "newrelic_alert_muting_rule" "this" {
-  account_id  = var.account_id
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  enabled     = var.enabled
-  name        = var.name
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "condition" {
     for_each = var.condition
     content {
+      # operator - (required) is a type of string
       operator = condition.value["operator"]
 
       dynamic "conditions" {
         for_each = condition.value.conditions
         content {
+          # attribute - (required) is a type of string
           attribute = conditions.value["attribute"]
-          operator  = conditions.value["operator"]
-          values    = conditions.value["values"]
+          # operator - (required) is a type of string
+          operator = conditions.value["operator"]
+          # values - (required) is a type of list of string
+          values = conditions.value["values"]
         }
       }
 
@@ -148,12 +156,19 @@ resource "newrelic_alert_muting_rule" "this" {
   dynamic "schedule" {
     for_each = var.schedule
     content {
-      end_repeat         = schedule.value["end_repeat"]
-      end_time           = schedule.value["end_time"]
-      repeat             = schedule.value["repeat"]
-      repeat_count       = schedule.value["repeat_count"]
-      start_time         = schedule.value["start_time"]
-      time_zone          = schedule.value["time_zone"]
+      # end_repeat - (optional) is a type of string
+      end_repeat = schedule.value["end_repeat"]
+      # end_time - (optional) is a type of string
+      end_time = schedule.value["end_time"]
+      # repeat - (optional) is a type of string
+      repeat = schedule.value["repeat"]
+      # repeat_count - (optional) is a type of number
+      repeat_count = schedule.value["repeat_count"]
+      # start_time - (optional) is a type of string
+      start_time = schedule.value["start_time"]
+      # time_zone - (required) is a type of string
+      time_zone = schedule.value["time_zone"]
+      # weekly_repeat_days - (optional) is a type of set of string
       weekly_repeat_days = schedule.value["weekly_repeat_days"]
     }
   }

@@ -65,9 +65,12 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_log_project" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tags        = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

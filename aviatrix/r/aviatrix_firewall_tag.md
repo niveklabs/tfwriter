@@ -65,12 +65,15 @@ variable "cidr_list" {
 
 ```terraform
 resource "aviatrix_firewall_tag" "this" {
+  # firewall_tag - (required) is a type of string
   firewall_tag = var.firewall_tag
 
   dynamic "cidr_list" {
     for_each = var.cidr_list
     content {
-      cidr          = cidr_list.value["cidr"]
+      # cidr - (required) is a type of string
+      cidr = cidr_list.value["cidr"]
+      # cidr_tag_name - (required) is a type of string
       cidr_tag_name = cidr_list.value["cidr_tag_name"]
     }
   }

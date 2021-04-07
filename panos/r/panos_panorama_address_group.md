@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "panos_panorama_address_group" "this" {
-  description      = var.description
-  device_group     = var.device_group
-  dynamic_match    = var.dynamic_match
-  name             = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # dynamic_match - (optional) is a type of string
+  dynamic_match = var.dynamic_match
+  # name - (required) is a type of string
+  name = var.name
+  # static_addresses - (optional) is a type of list of string
   static_addresses = var.static_addresses
-  tags             = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

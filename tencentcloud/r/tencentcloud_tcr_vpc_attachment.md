@@ -79,11 +79,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_tcr_vpc_attachment" "this" {
+  # enable_public_domain_dns - (optional) is a type of bool
   enable_public_domain_dns = var.enable_public_domain_dns
-  enable_vpc_domain_dns    = var.enable_vpc_domain_dns
-  instance_id              = var.instance_id
-  subnet_id                = var.subnet_id
-  vpc_id                   = var.vpc_id
+  # enable_vpc_domain_dns - (optional) is a type of bool
+  enable_vpc_domain_dns = var.enable_vpc_domain_dns
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

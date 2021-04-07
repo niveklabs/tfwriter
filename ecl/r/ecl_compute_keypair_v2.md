@@ -65,9 +65,12 @@ variable "region" {
 
 ```terraform
 resource "ecl_compute_keypair_v2" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (optional) is a type of string
   public_key = var.public_key
-  region     = var.region
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

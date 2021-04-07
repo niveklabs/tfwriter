@@ -63,9 +63,12 @@ variable "zone" {
 
 ```terraform
 data "ns1_record" "this" {
+  # domain - (required) is a type of string
   domain = var.domain
-  type   = var.type
-  zone   = var.zone
+  # type - (required) is a type of string
+  type = var.type
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

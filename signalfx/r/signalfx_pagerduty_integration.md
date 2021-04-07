@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "signalfx_pagerduty_integration" "this" {
+  # api_key - (optional) is a type of string
   api_key = var.api_key
+  # enabled - (required) is a type of bool
   enabled = var.enabled
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -150,27 +150,41 @@ variable "user" {
 
 ```terraform
 resource "fortios_wirelesscontroller_snmp" "this" {
-  contact_info            = var.contact_info
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  engine_id               = var.engine_id
+  # contact_info - (optional) is a type of string
+  contact_info = var.contact_info
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # engine_id - (optional) is a type of string
+  engine_id = var.engine_id
+  # trap_high_cpu_threshold - (optional) is a type of number
   trap_high_cpu_threshold = var.trap_high_cpu_threshold
+  # trap_high_mem_threshold - (optional) is a type of number
   trap_high_mem_threshold = var.trap_high_mem_threshold
 
   dynamic "community" {
     for_each = var.community
     content {
-      id               = community.value["id"]
-      name             = community.value["name"]
-      query_v1_status  = community.value["query_v1_status"]
+      # id - (optional) is a type of number
+      id = community.value["id"]
+      # name - (optional) is a type of string
+      name = community.value["name"]
+      # query_v1_status - (optional) is a type of string
+      query_v1_status = community.value["query_v1_status"]
+      # query_v2c_status - (optional) is a type of string
       query_v2c_status = community.value["query_v2c_status"]
-      status           = community.value["status"]
-      trap_v1_status   = community.value["trap_v1_status"]
-      trap_v2c_status  = community.value["trap_v2c_status"]
+      # status - (optional) is a type of string
+      status = community.value["status"]
+      # trap_v1_status - (optional) is a type of string
+      trap_v1_status = community.value["trap_v1_status"]
+      # trap_v2c_status - (optional) is a type of string
+      trap_v2c_status = community.value["trap_v2c_status"]
 
       dynamic "hosts" {
         for_each = community.value.hosts
         content {
+          # id - (optional) is a type of number
           id = hosts.value["id"]
+          # ip - (optional) is a type of string
           ip = hosts.value["ip"]
         }
       }
@@ -181,16 +195,26 @@ resource "fortios_wirelesscontroller_snmp" "this" {
   dynamic "user" {
     for_each = var.user
     content {
-      auth_proto     = user.value["auth_proto"]
-      auth_pwd       = user.value["auth_pwd"]
-      name           = user.value["name"]
-      notify_hosts   = user.value["notify_hosts"]
-      priv_proto     = user.value["priv_proto"]
-      priv_pwd       = user.value["priv_pwd"]
-      queries        = user.value["queries"]
+      # auth_proto - (optional) is a type of string
+      auth_proto = user.value["auth_proto"]
+      # auth_pwd - (optional) is a type of string
+      auth_pwd = user.value["auth_pwd"]
+      # name - (optional) is a type of string
+      name = user.value["name"]
+      # notify_hosts - (optional) is a type of string
+      notify_hosts = user.value["notify_hosts"]
+      # priv_proto - (optional) is a type of string
+      priv_proto = user.value["priv_proto"]
+      # priv_pwd - (optional) is a type of string
+      priv_pwd = user.value["priv_pwd"]
+      # queries - (optional) is a type of string
+      queries = user.value["queries"]
+      # security_level - (optional) is a type of string
       security_level = user.value["security_level"]
-      status         = user.value["status"]
-      trap_status    = user.value["trap_status"]
+      # status - (optional) is a type of string
+      status = user.value["status"]
+      # trap_status - (optional) is a type of string
+      trap_status = user.value["trap_status"]
     }
   }
 

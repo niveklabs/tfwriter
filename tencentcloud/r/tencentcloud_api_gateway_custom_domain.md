@@ -101,14 +101,22 @@ variable "sub_domain" {
 
 ```terraform
 resource "tencentcloud_api_gateway_custom_domain" "this" {
-  certificate_id     = var.certificate_id
-  default_domain     = var.default_domain
+  # certificate_id - (optional) is a type of string
+  certificate_id = var.certificate_id
+  # default_domain - (required) is a type of string
+  default_domain = var.default_domain
+  # is_default_mapping - (optional) is a type of bool
   is_default_mapping = var.is_default_mapping
-  net_type           = var.net_type
-  path_mappings      = var.path_mappings
-  protocol           = var.protocol
-  service_id         = var.service_id
-  sub_domain         = var.sub_domain
+  # net_type - (required) is a type of string
+  net_type = var.net_type
+  # path_mappings - (optional) is a type of set of string
+  path_mappings = var.path_mappings
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # sub_domain - (required) is a type of string
+  sub_domain = var.sub_domain
 }
 ```
 

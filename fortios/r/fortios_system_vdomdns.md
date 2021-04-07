@@ -144,21 +144,33 @@ variable "server_hostname" {
 
 ```terraform
 resource "fortios_system_vdomdns" "this" {
-  dns_over_tls            = var.dns_over_tls
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  interface               = var.interface
+  # dns_over_tls - (optional) is a type of string
+  dns_over_tls = var.dns_over_tls
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  ip6_primary             = var.ip6_primary
-  ip6_secondary           = var.ip6_secondary
-  primary                 = var.primary
-  secondary               = var.secondary
-  source_ip               = var.source_ip
-  ssl_certificate         = var.ssl_certificate
-  vdom_dns                = var.vdom_dns
+  # ip6_primary - (optional) is a type of string
+  ip6_primary = var.ip6_primary
+  # ip6_secondary - (optional) is a type of string
+  ip6_secondary = var.ip6_secondary
+  # primary - (optional) is a type of string
+  primary = var.primary
+  # secondary - (optional) is a type of string
+  secondary = var.secondary
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_certificate - (optional) is a type of string
+  ssl_certificate = var.ssl_certificate
+  # vdom_dns - (optional) is a type of string
+  vdom_dns = var.vdom_dns
 
   dynamic "server_hostname" {
     for_each = var.server_hostname
     content {
+      # hostname - (optional) is a type of string
       hostname = server_hostname.value["hostname"]
     }
   }

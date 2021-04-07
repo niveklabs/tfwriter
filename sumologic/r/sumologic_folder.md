@@ -77,13 +77,17 @@ variable "timeouts" {
 
 ```terraform
 resource "sumologic_folder" "this" {
+  # description - (required) is a type of string
   description = var.description
-  name        = var.name
-  parent_id   = var.parent_id
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (required) is a type of string
+  parent_id = var.parent_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

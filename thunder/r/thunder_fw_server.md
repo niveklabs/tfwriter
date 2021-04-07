@@ -170,31 +170,49 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_fw_server" "this" {
-  action               = var.action
-  fqdn_name            = var.fqdn_name
-  health_check         = var.health_check
+  # action - (optional) is a type of string
+  action = var.action
+  # fqdn_name - (optional) is a type of string
+  fqdn_name = var.fqdn_name
+  # health_check - (optional) is a type of string
+  health_check = var.health_check
+  # health_check_disable - (optional) is a type of number
   health_check_disable = var.health_check_disable
-  host                 = var.host
-  name                 = var.name
-  resolve_as           = var.resolve_as
-  server_ipv6_addr     = var.server_ipv6_addr
-  user_tag             = var.user_tag
-  uuid                 = var.uuid
+  # host - (optional) is a type of string
+  host = var.host
+  # name - (optional) is a type of string
+  name = var.name
+  # resolve_as - (optional) is a type of string
+  resolve_as = var.resolve_as
+  # server_ipv6_addr - (optional) is a type of string
+  server_ipv6_addr = var.server_ipv6_addr
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "port_list" {
     for_each = var.port_list
     content {
-      action               = port_list.value["action"]
-      health_check         = port_list.value["health_check"]
+      # action - (optional) is a type of string
+      action = port_list.value["action"]
+      # health_check - (optional) is a type of string
+      health_check = port_list.value["health_check"]
+      # health_check_disable - (optional) is a type of number
       health_check_disable = port_list.value["health_check_disable"]
-      port_number          = port_list.value["port_number"]
-      protocol             = port_list.value["protocol"]
-      user_tag             = port_list.value["user_tag"]
-      uuid                 = port_list.value["uuid"]
+      # port_number - (optional) is a type of number
+      port_number = port_list.value["port_number"]
+      # protocol - (optional) is a type of string
+      protocol = port_list.value["protocol"]
+      # user_tag - (optional) is a type of string
+      user_tag = port_list.value["user_tag"]
+      # uuid - (optional) is a type of string
+      uuid = port_list.value["uuid"]
 
       dynamic "sampling_enable" {
         for_each = port_list.value.sampling_enable
         content {
+          # counters1 - (optional) is a type of string
           counters1 = sampling_enable.value["counters1"]
         }
       }
@@ -205,6 +223,7 @@ resource "thunder_fw_server" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

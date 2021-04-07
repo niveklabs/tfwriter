@@ -64,8 +64,11 @@ variable "volume_id" {
 
 ```terraform
 resource "digitalocean_volume_snapshot" "this" {
-  name      = var.name
-  tags      = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # volume_id - (required) is a type of string
   volume_id = var.volume_id
 }
 ```

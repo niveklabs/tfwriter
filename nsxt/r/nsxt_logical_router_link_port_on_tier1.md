@@ -88,16 +88,22 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_router_link_port_on_tier1" "this" {
-  description                   = var.description
-  display_name                  = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # linked_logical_router_port_id - (required) is a type of string
   linked_logical_router_port_id = var.linked_logical_router_port_id
-  logical_router_id             = var.logical_router_id
+  # logical_router_id - (required) is a type of string
+  logical_router_id = var.logical_router_id
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

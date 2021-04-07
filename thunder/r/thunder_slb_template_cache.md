@@ -210,25 +210,41 @@ variable "uri_policy" {
 
 ```terraform
 resource "thunder_slb_template_cache" "this" {
-  accept_reload_req      = var.accept_reload_req
-  age                    = var.age
+  # accept_reload_req - (optional) is a type of number
+  accept_reload_req = var.accept_reload_req
+  # age - (optional) is a type of number
+  age = var.age
+  # default_policy_nocache - (optional) is a type of number
   default_policy_nocache = var.default_policy_nocache
-  disable_insert_age     = var.disable_insert_age
-  disable_insert_via     = var.disable_insert_via
-  logging                = var.logging
-  max_cache_size         = var.max_cache_size
-  max_content_size       = var.max_content_size
-  min_content_size       = var.min_content_size
-  name                   = var.name
-  remove_cookies         = var.remove_cookies
-  replacement_policy     = var.replacement_policy
-  user_tag               = var.user_tag
-  uuid                   = var.uuid
-  verify_host            = var.verify_host
+  # disable_insert_age - (optional) is a type of number
+  disable_insert_age = var.disable_insert_age
+  # disable_insert_via - (optional) is a type of number
+  disable_insert_via = var.disable_insert_via
+  # logging - (optional) is a type of string
+  logging = var.logging
+  # max_cache_size - (optional) is a type of number
+  max_cache_size = var.max_cache_size
+  # max_content_size - (optional) is a type of number
+  max_content_size = var.max_content_size
+  # min_content_size - (optional) is a type of number
+  min_content_size = var.min_content_size
+  # name - (optional) is a type of string
+  name = var.name
+  # remove_cookies - (optional) is a type of number
+  remove_cookies = var.remove_cookies
+  # replacement_policy - (optional) is a type of string
+  replacement_policy = var.replacement_policy
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # verify_host - (optional) is a type of number
+  verify_host = var.verify_host
 
   dynamic "local_uri_policy" {
     for_each = var.local_uri_policy
     content {
+      # local_uri - (optional) is a type of string
       local_uri = local_uri_policy.value["local_uri"]
     }
   }
@@ -236,6 +252,7 @@ resource "thunder_slb_template_cache" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }
@@ -243,10 +260,14 @@ resource "thunder_slb_template_cache" "this" {
   dynamic "uri_policy" {
     for_each = var.uri_policy
     content {
+      # cache_action - (optional) is a type of string
       cache_action = uri_policy.value["cache_action"]
-      cache_value  = uri_policy.value["cache_value"]
-      invalidate   = uri_policy.value["invalidate"]
-      uri          = uri_policy.value["uri"]
+      # cache_value - (optional) is a type of number
+      cache_value = uri_policy.value["cache_value"]
+      # invalidate - (optional) is a type of string
+      invalidate = uri_policy.value["invalidate"]
+      # uri - (optional) is a type of string
+      uri = uri_policy.value["uri"]
     }
   }
 

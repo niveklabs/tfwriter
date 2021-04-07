@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_role" "this" {
-  role_id   = var.role_id
+  # role_id - (optional) is a type of string
+  role_id = var.role_id
+  # role_name - (optional) is a type of string
   role_name = var.role_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

@@ -120,17 +120,25 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_ttlpolicy" "this" {
-  action                = var.action
+  # action - (optional) is a type of string
+  action = var.action
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  schedule              = var.schedule
-  srcintf               = var.srcintf
-  status                = var.status
-  ttl                   = var.ttl
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # srcintf - (required) is a type of string
+  srcintf = var.srcintf
+  # status - (optional) is a type of string
+  status = var.status
+  # ttl - (required) is a type of string
+  ttl = var.ttl
 
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -138,6 +146,7 @@ resource "fortios_firewall_ttlpolicy" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }

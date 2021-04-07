@@ -346,51 +346,93 @@ variable "data_disks" {
 
 ```terraform
 resource "tencentcloud_instance" "this" {
-  allocate_public_ip                      = var.allocate_public_ip
-  availability_zone                       = var.availability_zone
-  cam_role_name                           = var.cam_role_name
-  cdh_host_id                             = var.cdh_host_id
-  cdh_instance_type                       = var.cdh_instance_type
-  disable_monitor_service                 = var.disable_monitor_service
-  disable_security_service                = var.disable_security_service
-  force_delete                            = var.force_delete
-  hostname                                = var.hostname
-  image_id                                = var.image_id
-  instance_charge_type                    = var.instance_charge_type
-  instance_charge_type_prepaid_period     = var.instance_charge_type_prepaid_period
+  # allocate_public_ip - (optional) is a type of bool
+  allocate_public_ip = var.allocate_public_ip
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # cam_role_name - (optional) is a type of string
+  cam_role_name = var.cam_role_name
+  # cdh_host_id - (optional) is a type of string
+  cdh_host_id = var.cdh_host_id
+  # cdh_instance_type - (optional) is a type of string
+  cdh_instance_type = var.cdh_instance_type
+  # disable_monitor_service - (optional) is a type of bool
+  disable_monitor_service = var.disable_monitor_service
+  # disable_security_service - (optional) is a type of bool
+  disable_security_service = var.disable_security_service
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # instance_charge_type_prepaid_period - (optional) is a type of number
+  instance_charge_type_prepaid_period = var.instance_charge_type_prepaid_period
+  # instance_charge_type_prepaid_renew_flag - (optional) is a type of string
   instance_charge_type_prepaid_renew_flag = var.instance_charge_type_prepaid_renew_flag
-  instance_name                           = var.instance_name
-  instance_type                           = var.instance_type
-  internet_charge_type                    = var.internet_charge_type
-  internet_max_bandwidth_out              = var.internet_max_bandwidth_out
-  keep_image_login                        = var.keep_image_login
-  key_name                                = var.key_name
-  password                                = var.password
-  placement_group_id                      = var.placement_group_id
-  private_ip                              = var.private_ip
-  project_id                              = var.project_id
-  running_flag                            = var.running_flag
-  security_groups                         = var.security_groups
-  spot_instance_type                      = var.spot_instance_type
-  spot_max_price                          = var.spot_max_price
-  subnet_id                               = var.subnet_id
-  system_disk_id                          = var.system_disk_id
-  system_disk_size                        = var.system_disk_size
-  system_disk_type                        = var.system_disk_type
-  tags                                    = var.tags
-  user_data                               = var.user_data
-  user_data_raw                           = var.user_data_raw
-  vpc_id                                  = var.vpc_id
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # internet_max_bandwidth_out - (optional) is a type of number
+  internet_max_bandwidth_out = var.internet_max_bandwidth_out
+  # keep_image_login - (optional) is a type of bool
+  keep_image_login = var.keep_image_login
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # password - (optional) is a type of string
+  password = var.password
+  # placement_group_id - (optional) is a type of string
+  placement_group_id = var.placement_group_id
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # running_flag - (optional) is a type of bool
+  running_flag = var.running_flag
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # spot_instance_type - (optional) is a type of string
+  spot_instance_type = var.spot_instance_type
+  # spot_max_price - (optional) is a type of string
+  spot_max_price = var.spot_max_price
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # system_disk_id - (optional) is a type of string
+  system_disk_id = var.system_disk_id
+  # system_disk_size - (optional) is a type of number
+  system_disk_size = var.system_disk_size
+  # system_disk_type - (optional) is a type of string
+  system_disk_type = var.system_disk_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # user_data_raw - (optional) is a type of string
+  user_data_raw = var.user_data_raw
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "data_disks" {
     for_each = var.data_disks
     content {
-      data_disk_id           = data_disks.value["data_disk_id"]
-      data_disk_size         = data_disks.value["data_disk_size"]
-      data_disk_snapshot_id  = data_disks.value["data_disk_snapshot_id"]
-      data_disk_type         = data_disks.value["data_disk_type"]
-      delete_with_instance   = data_disks.value["delete_with_instance"]
-      encrypt                = data_disks.value["encrypt"]
+      # data_disk_id - (optional) is a type of string
+      data_disk_id = data_disks.value["data_disk_id"]
+      # data_disk_size - (required) is a type of number
+      data_disk_size = data_disks.value["data_disk_size"]
+      # data_disk_snapshot_id - (optional) is a type of string
+      data_disk_snapshot_id = data_disks.value["data_disk_snapshot_id"]
+      # data_disk_type - (required) is a type of string
+      data_disk_type = data_disks.value["data_disk_type"]
+      # delete_with_instance - (optional) is a type of bool
+      delete_with_instance = data_disks.value["delete_with_instance"]
+      # encrypt - (optional) is a type of bool
+      encrypt = data_disks.value["encrypt"]
+      # throughput_performance - (optional) is a type of number
       throughput_performance = data_disks.value["throughput_performance"]
     }
   }

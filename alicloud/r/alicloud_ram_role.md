@@ -105,14 +105,22 @@ variable "version" {
 
 ```terraform
 resource "alicloud_ram_role" "this" {
-  description          = var.description
-  document             = var.document
-  force                = var.force
+  # description - (optional) is a type of string
+  description = var.description
+  # document - (optional) is a type of string
+  document = var.document
+  # force - (optional) is a type of bool
+  force = var.force
+  # max_session_duration - (optional) is a type of number
   max_session_duration = var.max_session_duration
-  name                 = var.name
-  ram_users            = var.ram_users
-  services             = var.services
-  version              = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # ram_users - (optional) is a type of set of string
+  ram_users = var.ram_users
+  # services - (optional) is a type of set of string
+  services = var.services
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

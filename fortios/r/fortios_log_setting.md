@@ -216,30 +216,51 @@ variable "custom_log_fields" {
 
 ```terraform
 resource "fortios_log_setting" "this" {
-  brief_traffic_format    = var.brief_traffic_format
-  daemon_log              = var.daemon_log
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  expolicy_implicit_log   = var.expolicy_implicit_log
-  faz_override            = var.faz_override
-  fwpolicy6_implicit_log  = var.fwpolicy6_implicit_log
-  fwpolicy_implicit_log   = var.fwpolicy_implicit_log
-  local_in_allow          = var.local_in_allow
+  # brief_traffic_format - (optional) is a type of string
+  brief_traffic_format = var.brief_traffic_format
+  # daemon_log - (optional) is a type of string
+  daemon_log = var.daemon_log
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # expolicy_implicit_log - (optional) is a type of string
+  expolicy_implicit_log = var.expolicy_implicit_log
+  # faz_override - (optional) is a type of string
+  faz_override = var.faz_override
+  # fwpolicy6_implicit_log - (optional) is a type of string
+  fwpolicy6_implicit_log = var.fwpolicy6_implicit_log
+  # fwpolicy_implicit_log - (optional) is a type of string
+  fwpolicy_implicit_log = var.fwpolicy_implicit_log
+  # local_in_allow - (optional) is a type of string
+  local_in_allow = var.local_in_allow
+  # local_in_deny_broadcast - (optional) is a type of string
   local_in_deny_broadcast = var.local_in_deny_broadcast
-  local_in_deny_unicast   = var.local_in_deny_unicast
-  local_out               = var.local_out
-  log_invalid_packet      = var.log_invalid_packet
-  log_policy_comment      = var.log_policy_comment
-  log_policy_name         = var.log_policy_name
-  log_user_in_upper       = var.log_user_in_upper
-  neighbor_event          = var.neighbor_event
-  resolve_ip              = var.resolve_ip
-  resolve_port            = var.resolve_port
-  syslog_override         = var.syslog_override
-  user_anonymize          = var.user_anonymize
+  # local_in_deny_unicast - (optional) is a type of string
+  local_in_deny_unicast = var.local_in_deny_unicast
+  # local_out - (optional) is a type of string
+  local_out = var.local_out
+  # log_invalid_packet - (optional) is a type of string
+  log_invalid_packet = var.log_invalid_packet
+  # log_policy_comment - (optional) is a type of string
+  log_policy_comment = var.log_policy_comment
+  # log_policy_name - (optional) is a type of string
+  log_policy_name = var.log_policy_name
+  # log_user_in_upper - (optional) is a type of string
+  log_user_in_upper = var.log_user_in_upper
+  # neighbor_event - (optional) is a type of string
+  neighbor_event = var.neighbor_event
+  # resolve_ip - (optional) is a type of string
+  resolve_ip = var.resolve_ip
+  # resolve_port - (optional) is a type of string
+  resolve_port = var.resolve_port
+  # syslog_override - (optional) is a type of string
+  syslog_override = var.syslog_override
+  # user_anonymize - (optional) is a type of string
+  user_anonymize = var.user_anonymize
 
   dynamic "custom_log_fields" {
     for_each = var.custom_log_fields
     content {
+      # field_id - (optional) is a type of string
       field_id = custom_log_fields.value["field_id"]
     }
   }

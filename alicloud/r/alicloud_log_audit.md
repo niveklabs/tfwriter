@@ -72,10 +72,14 @@ variable "variable_map" {
 
 ```terraform
 resource "alicloud_log_audit" "this" {
-  aliuid        = var.aliuid
-  display_name  = var.display_name
+  # aliuid - (required) is a type of string
+  aliuid = var.aliuid
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # multi_account - (optional) is a type of set of string
   multi_account = var.multi_account
-  variable_map  = var.variable_map
+  # variable_map - (optional) is a type of map of string
+  variable_map = var.variable_map
 }
 ```
 

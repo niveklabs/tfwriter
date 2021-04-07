@@ -62,8 +62,10 @@ data "dome9_iplist" "this" {
   dynamic "items" {
     for_each = var.items
     content {
+      # comment - (optional) is a type of string
       comment = items.value["comment"]
-      ip      = items.value["ip"]
+      # ip - (optional) is a type of string
+      ip = items.value["ip"]
     }
   }
 

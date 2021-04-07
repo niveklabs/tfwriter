@@ -82,10 +82,15 @@ variable "username" {
 
 ```terraform
 resource "fortios_systemautoupdate_tunneling" "this" {
-  address  = var.address
+  # address - (optional) is a type of string
+  address = var.address
+  # password - (optional) is a type of string
   password = var.password
-  port     = var.port
-  status   = var.status
+  # port - (optional) is a type of number
+  port = var.port
+  # status - (optional) is a type of string
+  status = var.status
+  # username - (optional) is a type of string
   username = var.username
 }
 ```

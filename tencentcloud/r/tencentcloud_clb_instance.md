@@ -136,18 +136,30 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_clb_instance" "this" {
-  address_ip_version         = var.address_ip_version
-  clb_name                   = var.clb_name
+  # address_ip_version - (optional) is a type of string
+  address_ip_version = var.address_ip_version
+  # clb_name - (required) is a type of string
+  clb_name = var.clb_name
+  # internet_bandwidth_max_out - (optional) is a type of number
   internet_bandwidth_max_out = var.internet_bandwidth_max_out
-  internet_charge_type       = var.internet_charge_type
-  network_type               = var.network_type
-  project_id                 = var.project_id
-  security_groups            = var.security_groups
-  subnet_id                  = var.subnet_id
-  tags                       = var.tags
-  target_region_info_region  = var.target_region_info_region
-  target_region_info_vpc_id  = var.target_region_info_vpc_id
-  vpc_id                     = var.vpc_id
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # network_type - (required) is a type of string
+  network_type = var.network_type
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # security_groups - (optional) is a type of list of string
+  security_groups = var.security_groups
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # target_region_info_region - (optional) is a type of string
+  target_region_info_region = var.target_region_info_region
+  # target_region_info_vpc_id - (optional) is a type of string
+  target_region_info_vpc_id = var.target_region_info_vpc_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

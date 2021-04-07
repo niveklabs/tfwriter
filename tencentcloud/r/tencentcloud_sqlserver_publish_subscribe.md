@@ -85,14 +85,19 @@ variable "database_tuples" {
 
 ```terraform
 resource "tencentcloud_sqlserver_publish_subscribe" "this" {
-  delete_subscribe_db    = var.delete_subscribe_db
-  publish_instance_id    = var.publish_instance_id
+  # delete_subscribe_db - (optional) is a type of bool
+  delete_subscribe_db = var.delete_subscribe_db
+  # publish_instance_id - (required) is a type of string
+  publish_instance_id = var.publish_instance_id
+  # publish_subscribe_name - (optional) is a type of string
   publish_subscribe_name = var.publish_subscribe_name
-  subscribe_instance_id  = var.subscribe_instance_id
+  # subscribe_instance_id - (required) is a type of string
+  subscribe_instance_id = var.subscribe_instance_id
 
   dynamic "database_tuples" {
     for_each = var.database_tuples
     content {
+      # publish_database - (required) is a type of string
       publish_database = database_tuples.value["publish_database"]
     }
   }

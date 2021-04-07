@@ -82,15 +82,21 @@ variable "mappings" {
 
 ```terraform
 resource "okta_profile_mapping" "this" {
+  # delete_when_absent - (optional) is a type of bool
   delete_when_absent = var.delete_when_absent
-  source_id          = var.source_id
-  target_id          = var.target_id
+  # source_id - (required) is a type of string
+  source_id = var.source_id
+  # target_id - (required) is a type of string
+  target_id = var.target_id
 
   dynamic "mappings" {
     for_each = var.mappings
     content {
-      expression  = mappings.value["expression"]
-      id          = mappings.value["id"]
+      # expression - (required) is a type of string
+      expression = mappings.value["expression"]
+      # id - (required) is a type of string
+      id = mappings.value["id"]
+      # push_status - (optional) is a type of string
       push_status = mappings.value["push_status"]
     }
   }

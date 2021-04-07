@@ -168,22 +168,38 @@ variable "vswitch_ids" {
 
 ```terraform
 resource "alicloud_ess_scaling_group" "this" {
-  db_instance_ids                          = var.db_instance_ids
-  default_cooldown                         = var.default_cooldown
-  desired_capacity                         = var.desired_capacity
-  group_deletion_protection                = var.group_deletion_protection
-  loadbalancer_ids                         = var.loadbalancer_ids
-  max_size                                 = var.max_size
-  min_size                                 = var.min_size
-  multi_az_policy                          = var.multi_az_policy
-  on_demand_base_capacity                  = var.on_demand_base_capacity
+  # db_instance_ids - (optional) is a type of set of string
+  db_instance_ids = var.db_instance_ids
+  # default_cooldown - (optional) is a type of number
+  default_cooldown = var.default_cooldown
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # group_deletion_protection - (optional) is a type of bool
+  group_deletion_protection = var.group_deletion_protection
+  # loadbalancer_ids - (optional) is a type of set of string
+  loadbalancer_ids = var.loadbalancer_ids
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # multi_az_policy - (optional) is a type of string
+  multi_az_policy = var.multi_az_policy
+  # on_demand_base_capacity - (optional) is a type of number
+  on_demand_base_capacity = var.on_demand_base_capacity
+  # on_demand_percentage_above_base_capacity - (optional) is a type of number
   on_demand_percentage_above_base_capacity = var.on_demand_percentage_above_base_capacity
-  removal_policies                         = var.removal_policies
-  scaling_group_name                       = var.scaling_group_name
-  spot_instance_pools                      = var.spot_instance_pools
-  spot_instance_remedy                     = var.spot_instance_remedy
-  vswitch_id                               = var.vswitch_id
-  vswitch_ids                              = var.vswitch_ids
+  # removal_policies - (optional) is a type of list of string
+  removal_policies = var.removal_policies
+  # scaling_group_name - (optional) is a type of string
+  scaling_group_name = var.scaling_group_name
+  # spot_instance_pools - (optional) is a type of number
+  spot_instance_pools = var.spot_instance_pools
+  # spot_instance_remedy - (optional) is a type of bool
+  spot_instance_remedy = var.spot_instance_remedy
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # vswitch_ids - (optional) is a type of set of string
+  vswitch_ids = var.vswitch_ids
 }
 ```
 

@@ -342,44 +342,82 @@ variable "zip_code" {
 
 ```terraform
 resource "okta_user" "this" {
-  admin_roles               = var.admin_roles
-  city                      = var.city
-  cost_center               = var.cost_center
-  country_code              = var.country_code
+  # admin_roles - (optional) is a type of set of string
+  admin_roles = var.admin_roles
+  # city - (optional) is a type of string
+  city = var.city
+  # cost_center - (optional) is a type of string
+  cost_center = var.cost_center
+  # country_code - (optional) is a type of string
+  country_code = var.country_code
+  # custom_profile_attributes - (optional) is a type of string
   custom_profile_attributes = var.custom_profile_attributes
-  department                = var.department
-  display_name              = var.display_name
-  division                  = var.division
-  email                     = var.email
-  employee_number           = var.employee_number
-  first_name                = var.first_name
-  group_memberships         = var.group_memberships
-  honorific_prefix          = var.honorific_prefix
-  honorific_suffix          = var.honorific_suffix
-  last_name                 = var.last_name
-  locale                    = var.locale
-  login                     = var.login
-  manager                   = var.manager
-  manager_id                = var.manager_id
-  middle_name               = var.middle_name
-  mobile_phone              = var.mobile_phone
-  nick_name                 = var.nick_name
-  organization              = var.organization
-  password                  = var.password
-  postal_address            = var.postal_address
-  preferred_language        = var.preferred_language
-  primary_phone             = var.primary_phone
-  profile_url               = var.profile_url
-  recovery_answer           = var.recovery_answer
-  recovery_question         = var.recovery_question
-  second_email              = var.second_email
-  state                     = var.state
-  status                    = var.status
-  street_address            = var.street_address
-  timezone                  = var.timezone
-  title                     = var.title
-  user_type                 = var.user_type
-  zip_code                  = var.zip_code
+  # department - (optional) is a type of string
+  department = var.department
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # division - (optional) is a type of string
+  division = var.division
+  # email - (required) is a type of string
+  email = var.email
+  # employee_number - (optional) is a type of string
+  employee_number = var.employee_number
+  # first_name - (required) is a type of string
+  first_name = var.first_name
+  # group_memberships - (optional) is a type of set of string
+  group_memberships = var.group_memberships
+  # honorific_prefix - (optional) is a type of string
+  honorific_prefix = var.honorific_prefix
+  # honorific_suffix - (optional) is a type of string
+  honorific_suffix = var.honorific_suffix
+  # last_name - (required) is a type of string
+  last_name = var.last_name
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # login - (required) is a type of string
+  login = var.login
+  # manager - (optional) is a type of string
+  manager = var.manager
+  # manager_id - (optional) is a type of string
+  manager_id = var.manager_id
+  # middle_name - (optional) is a type of string
+  middle_name = var.middle_name
+  # mobile_phone - (optional) is a type of string
+  mobile_phone = var.mobile_phone
+  # nick_name - (optional) is a type of string
+  nick_name = var.nick_name
+  # organization - (optional) is a type of string
+  organization = var.organization
+  # password - (optional) is a type of string
+  password = var.password
+  # postal_address - (optional) is a type of string
+  postal_address = var.postal_address
+  # preferred_language - (optional) is a type of string
+  preferred_language = var.preferred_language
+  # primary_phone - (optional) is a type of string
+  primary_phone = var.primary_phone
+  # profile_url - (optional) is a type of string
+  profile_url = var.profile_url
+  # recovery_answer - (optional) is a type of string
+  recovery_answer = var.recovery_answer
+  # recovery_question - (optional) is a type of string
+  recovery_question = var.recovery_question
+  # second_email - (optional) is a type of string
+  second_email = var.second_email
+  # state - (optional) is a type of string
+  state = var.state
+  # status - (optional) is a type of string
+  status = var.status
+  # street_address - (optional) is a type of string
+  street_address = var.street_address
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # title - (optional) is a type of string
+  title = var.title
+  # user_type - (optional) is a type of string
+  user_type = var.user_type
+  # zip_code - (optional) is a type of string
+  zip_code = var.zip_code
 }
 ```
 

@@ -625,91 +625,163 @@ variable "split_tunneling_acl" {
 
 ```terraform
 resource "fortios_wirelesscontroller_wtp" "this" {
-  admin                               = var.admin
-  allowaccess                         = var.allowaccess
-  apcfg_profile                       = var.apcfg_profile
-  bonjour_profile                     = var.bonjour_profile
-  coordinate_latitude                 = var.coordinate_latitude
-  coordinate_longitude                = var.coordinate_longitude
-  dynamic_sort_subtable               = var.dynamic_sort_subtable
-  firmware_provision                  = var.firmware_provision
-  image_download                      = var.image_download
-  index                               = var.index
-  ip_fragment_preventing              = var.ip_fragment_preventing
-  led_state                           = var.led_state
-  location                            = var.location
-  login_passwd                        = var.login_passwd
-  login_passwd_change                 = var.login_passwd_change
-  mesh_bridge_enable                  = var.mesh_bridge_enable
-  name                                = var.name
-  override_allowaccess                = var.override_allowaccess
-  override_ip_fragment                = var.override_ip_fragment
-  override_lan                        = var.override_lan
-  override_led_state                  = var.override_led_state
-  override_login_passwd_change        = var.override_login_passwd_change
-  override_split_tunnel               = var.override_split_tunnel
-  override_wan_port_mode              = var.override_wan_port_mode
-  region                              = var.region
-  region_x                            = var.region_x
-  region_y                            = var.region_y
+  # admin - (optional) is a type of string
+  admin = var.admin
+  # allowaccess - (optional) is a type of string
+  allowaccess = var.allowaccess
+  # apcfg_profile - (optional) is a type of string
+  apcfg_profile = var.apcfg_profile
+  # bonjour_profile - (optional) is a type of string
+  bonjour_profile = var.bonjour_profile
+  # coordinate_latitude - (optional) is a type of string
+  coordinate_latitude = var.coordinate_latitude
+  # coordinate_longitude - (optional) is a type of string
+  coordinate_longitude = var.coordinate_longitude
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # firmware_provision - (optional) is a type of string
+  firmware_provision = var.firmware_provision
+  # image_download - (optional) is a type of string
+  image_download = var.image_download
+  # index - (optional) is a type of number
+  index = var.index
+  # ip_fragment_preventing - (optional) is a type of string
+  ip_fragment_preventing = var.ip_fragment_preventing
+  # led_state - (optional) is a type of string
+  led_state = var.led_state
+  # location - (optional) is a type of string
+  location = var.location
+  # login_passwd - (optional) is a type of string
+  login_passwd = var.login_passwd
+  # login_passwd_change - (optional) is a type of string
+  login_passwd_change = var.login_passwd_change
+  # mesh_bridge_enable - (optional) is a type of string
+  mesh_bridge_enable = var.mesh_bridge_enable
+  # name - (optional) is a type of string
+  name = var.name
+  # override_allowaccess - (optional) is a type of string
+  override_allowaccess = var.override_allowaccess
+  # override_ip_fragment - (optional) is a type of string
+  override_ip_fragment = var.override_ip_fragment
+  # override_lan - (optional) is a type of string
+  override_lan = var.override_lan
+  # override_led_state - (optional) is a type of string
+  override_led_state = var.override_led_state
+  # override_login_passwd_change - (optional) is a type of string
+  override_login_passwd_change = var.override_login_passwd_change
+  # override_split_tunnel - (optional) is a type of string
+  override_split_tunnel = var.override_split_tunnel
+  # override_wan_port_mode - (optional) is a type of string
+  override_wan_port_mode = var.override_wan_port_mode
+  # region - (optional) is a type of string
+  region = var.region
+  # region_x - (optional) is a type of string
+  region_x = var.region_x
+  # region_y - (optional) is a type of string
+  region_y = var.region_y
+  # split_tunneling_acl_local_ap_subnet - (optional) is a type of string
   split_tunneling_acl_local_ap_subnet = var.split_tunneling_acl_local_ap_subnet
-  split_tunneling_acl_path            = var.split_tunneling_acl_path
-  tun_mtu_downlink                    = var.tun_mtu_downlink
-  tun_mtu_uplink                      = var.tun_mtu_uplink
-  uuid                                = var.uuid
-  wan_port_mode                       = var.wan_port_mode
-  wtp_id                              = var.wtp_id
-  wtp_mode                            = var.wtp_mode
-  wtp_profile                         = var.wtp_profile
+  # split_tunneling_acl_path - (optional) is a type of string
+  split_tunneling_acl_path = var.split_tunneling_acl_path
+  # tun_mtu_downlink - (optional) is a type of number
+  tun_mtu_downlink = var.tun_mtu_downlink
+  # tun_mtu_uplink - (optional) is a type of number
+  tun_mtu_uplink = var.tun_mtu_uplink
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # wan_port_mode - (optional) is a type of string
+  wan_port_mode = var.wan_port_mode
+  # wtp_id - (optional) is a type of string
+  wtp_id = var.wtp_id
+  # wtp_mode - (optional) is a type of string
+  wtp_mode = var.wtp_mode
+  # wtp_profile - (required) is a type of string
+  wtp_profile = var.wtp_profile
 
   dynamic "lan" {
     for_each = var.lan
     content {
-      port1_mode    = lan.value["port1_mode"]
-      port1_ssid    = lan.value["port1_ssid"]
-      port2_mode    = lan.value["port2_mode"]
-      port2_ssid    = lan.value["port2_ssid"]
-      port3_mode    = lan.value["port3_mode"]
-      port3_ssid    = lan.value["port3_ssid"]
-      port4_mode    = lan.value["port4_mode"]
-      port4_ssid    = lan.value["port4_ssid"]
-      port5_mode    = lan.value["port5_mode"]
-      port5_ssid    = lan.value["port5_ssid"]
-      port6_mode    = lan.value["port6_mode"]
-      port6_ssid    = lan.value["port6_ssid"]
-      port7_mode    = lan.value["port7_mode"]
-      port7_ssid    = lan.value["port7_ssid"]
-      port8_mode    = lan.value["port8_mode"]
-      port8_ssid    = lan.value["port8_ssid"]
+      # port1_mode - (optional) is a type of string
+      port1_mode = lan.value["port1_mode"]
+      # port1_ssid - (optional) is a type of string
+      port1_ssid = lan.value["port1_ssid"]
+      # port2_mode - (optional) is a type of string
+      port2_mode = lan.value["port2_mode"]
+      # port2_ssid - (optional) is a type of string
+      port2_ssid = lan.value["port2_ssid"]
+      # port3_mode - (optional) is a type of string
+      port3_mode = lan.value["port3_mode"]
+      # port3_ssid - (optional) is a type of string
+      port3_ssid = lan.value["port3_ssid"]
+      # port4_mode - (optional) is a type of string
+      port4_mode = lan.value["port4_mode"]
+      # port4_ssid - (optional) is a type of string
+      port4_ssid = lan.value["port4_ssid"]
+      # port5_mode - (optional) is a type of string
+      port5_mode = lan.value["port5_mode"]
+      # port5_ssid - (optional) is a type of string
+      port5_ssid = lan.value["port5_ssid"]
+      # port6_mode - (optional) is a type of string
+      port6_mode = lan.value["port6_mode"]
+      # port6_ssid - (optional) is a type of string
+      port6_ssid = lan.value["port6_ssid"]
+      # port7_mode - (optional) is a type of string
+      port7_mode = lan.value["port7_mode"]
+      # port7_ssid - (optional) is a type of string
+      port7_ssid = lan.value["port7_ssid"]
+      # port8_mode - (optional) is a type of string
+      port8_mode = lan.value["port8_mode"]
+      # port8_ssid - (optional) is a type of string
+      port8_ssid = lan.value["port8_ssid"]
+      # port_esl_mode - (optional) is a type of string
       port_esl_mode = lan.value["port_esl_mode"]
+      # port_esl_ssid - (optional) is a type of string
       port_esl_ssid = lan.value["port_esl_ssid"]
-      port_mode     = lan.value["port_mode"]
-      port_ssid     = lan.value["port_ssid"]
+      # port_mode - (optional) is a type of string
+      port_mode = lan.value["port_mode"]
+      # port_ssid - (optional) is a type of string
+      port_ssid = lan.value["port_ssid"]
     }
   }
 
   dynamic "radio_1" {
     for_each = var.radio_1
     content {
-      auto_power_high   = radio_1.value["auto_power_high"]
-      auto_power_level  = radio_1.value["auto_power_level"]
-      auto_power_low    = radio_1.value["auto_power_low"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_1.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_1.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_1.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
       auto_power_target = radio_1.value["auto_power_target"]
-      band              = radio_1.value["band"]
-      drma_manual_mode  = radio_1.value["drma_manual_mode"]
+      # band - (optional) is a type of string
+      band = radio_1.value["band"]
+      # drma_manual_mode - (optional) is a type of string
+      drma_manual_mode = radio_1.value["drma_manual_mode"]
+      # override_analysis - (optional) is a type of string
       override_analysis = radio_1.value["override_analysis"]
-      override_band     = radio_1.value["override_band"]
-      override_channel  = radio_1.value["override_channel"]
-      override_txpower  = radio_1.value["override_txpower"]
-      override_vaps     = radio_1.value["override_vaps"]
-      power_level       = radio_1.value["power_level"]
-      radio_id          = radio_1.value["radio_id"]
+      # override_band - (optional) is a type of string
+      override_band = radio_1.value["override_band"]
+      # override_channel - (optional) is a type of string
+      override_channel = radio_1.value["override_channel"]
+      # override_txpower - (optional) is a type of string
+      override_txpower = radio_1.value["override_txpower"]
+      # override_vaps - (optional) is a type of string
+      override_vaps = radio_1.value["override_vaps"]
+      # power_level - (optional) is a type of number
+      power_level = radio_1.value["power_level"]
+      # radio_id - (optional) is a type of number
+      radio_id = radio_1.value["radio_id"]
+      # spectrum_analysis - (optional) is a type of string
       spectrum_analysis = radio_1.value["spectrum_analysis"]
-      vap_all           = radio_1.value["vap_all"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_1.value["vap_all"]
 
       dynamic "channel" {
         for_each = radio_1.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -717,6 +789,7 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       dynamic "vaps" {
         for_each = radio_1.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -727,25 +800,41 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   dynamic "radio_2" {
     for_each = var.radio_2
     content {
-      auto_power_high   = radio_2.value["auto_power_high"]
-      auto_power_level  = radio_2.value["auto_power_level"]
-      auto_power_low    = radio_2.value["auto_power_low"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_2.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_2.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_2.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
       auto_power_target = radio_2.value["auto_power_target"]
-      band              = radio_2.value["band"]
-      drma_manual_mode  = radio_2.value["drma_manual_mode"]
+      # band - (optional) is a type of string
+      band = radio_2.value["band"]
+      # drma_manual_mode - (optional) is a type of string
+      drma_manual_mode = radio_2.value["drma_manual_mode"]
+      # override_analysis - (optional) is a type of string
       override_analysis = radio_2.value["override_analysis"]
-      override_band     = radio_2.value["override_band"]
-      override_channel  = radio_2.value["override_channel"]
-      override_txpower  = radio_2.value["override_txpower"]
-      override_vaps     = radio_2.value["override_vaps"]
-      power_level       = radio_2.value["power_level"]
-      radio_id          = radio_2.value["radio_id"]
+      # override_band - (optional) is a type of string
+      override_band = radio_2.value["override_band"]
+      # override_channel - (optional) is a type of string
+      override_channel = radio_2.value["override_channel"]
+      # override_txpower - (optional) is a type of string
+      override_txpower = radio_2.value["override_txpower"]
+      # override_vaps - (optional) is a type of string
+      override_vaps = radio_2.value["override_vaps"]
+      # power_level - (optional) is a type of number
+      power_level = radio_2.value["power_level"]
+      # radio_id - (optional) is a type of number
+      radio_id = radio_2.value["radio_id"]
+      # spectrum_analysis - (optional) is a type of string
       spectrum_analysis = radio_2.value["spectrum_analysis"]
-      vap_all           = radio_2.value["vap_all"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_2.value["vap_all"]
 
       dynamic "channel" {
         for_each = radio_2.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -753,6 +842,7 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       dynamic "vaps" {
         for_each = radio_2.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -763,24 +853,39 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   dynamic "radio_3" {
     for_each = var.radio_3
     content {
-      auto_power_high   = radio_3.value["auto_power_high"]
-      auto_power_level  = radio_3.value["auto_power_level"]
-      auto_power_low    = radio_3.value["auto_power_low"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_3.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_3.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_3.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
       auto_power_target = radio_3.value["auto_power_target"]
-      band              = radio_3.value["band"]
-      drma_manual_mode  = radio_3.value["drma_manual_mode"]
+      # band - (optional) is a type of string
+      band = radio_3.value["band"]
+      # drma_manual_mode - (optional) is a type of string
+      drma_manual_mode = radio_3.value["drma_manual_mode"]
+      # override_analysis - (optional) is a type of string
       override_analysis = radio_3.value["override_analysis"]
-      override_band     = radio_3.value["override_band"]
-      override_channel  = radio_3.value["override_channel"]
-      override_txpower  = radio_3.value["override_txpower"]
-      override_vaps     = radio_3.value["override_vaps"]
-      power_level       = radio_3.value["power_level"]
+      # override_band - (optional) is a type of string
+      override_band = radio_3.value["override_band"]
+      # override_channel - (optional) is a type of string
+      override_channel = radio_3.value["override_channel"]
+      # override_txpower - (optional) is a type of string
+      override_txpower = radio_3.value["override_txpower"]
+      # override_vaps - (optional) is a type of string
+      override_vaps = radio_3.value["override_vaps"]
+      # power_level - (optional) is a type of number
+      power_level = radio_3.value["power_level"]
+      # spectrum_analysis - (optional) is a type of string
       spectrum_analysis = radio_3.value["spectrum_analysis"]
-      vap_all           = radio_3.value["vap_all"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_3.value["vap_all"]
 
       dynamic "channel" {
         for_each = radio_3.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -788,6 +893,7 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       dynamic "vaps" {
         for_each = radio_3.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -798,24 +904,39 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   dynamic "radio_4" {
     for_each = var.radio_4
     content {
-      auto_power_high   = radio_4.value["auto_power_high"]
-      auto_power_level  = radio_4.value["auto_power_level"]
-      auto_power_low    = radio_4.value["auto_power_low"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_4.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_4.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_4.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
       auto_power_target = radio_4.value["auto_power_target"]
-      band              = radio_4.value["band"]
-      drma_manual_mode  = radio_4.value["drma_manual_mode"]
+      # band - (optional) is a type of string
+      band = radio_4.value["band"]
+      # drma_manual_mode - (optional) is a type of string
+      drma_manual_mode = radio_4.value["drma_manual_mode"]
+      # override_analysis - (optional) is a type of string
       override_analysis = radio_4.value["override_analysis"]
-      override_band     = radio_4.value["override_band"]
-      override_channel  = radio_4.value["override_channel"]
-      override_txpower  = radio_4.value["override_txpower"]
-      override_vaps     = radio_4.value["override_vaps"]
-      power_level       = radio_4.value["power_level"]
+      # override_band - (optional) is a type of string
+      override_band = radio_4.value["override_band"]
+      # override_channel - (optional) is a type of string
+      override_channel = radio_4.value["override_channel"]
+      # override_txpower - (optional) is a type of string
+      override_txpower = radio_4.value["override_txpower"]
+      # override_vaps - (optional) is a type of string
+      override_vaps = radio_4.value["override_vaps"]
+      # power_level - (optional) is a type of number
+      power_level = radio_4.value["power_level"]
+      # spectrum_analysis - (optional) is a type of string
       spectrum_analysis = radio_4.value["spectrum_analysis"]
-      vap_all           = radio_4.value["vap_all"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_4.value["vap_all"]
 
       dynamic "channel" {
         for_each = radio_4.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -823,6 +944,7 @@ resource "fortios_wirelesscontroller_wtp" "this" {
       dynamic "vaps" {
         for_each = radio_4.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -833,8 +955,10 @@ resource "fortios_wirelesscontroller_wtp" "this" {
   dynamic "split_tunneling_acl" {
     for_each = var.split_tunneling_acl
     content {
+      # dest_ip - (optional) is a type of string
       dest_ip = split_tunneling_acl.value["dest_ip"]
-      id      = split_tunneling_acl.value["id"]
+      # id - (optional) is a type of number
+      id = split_tunneling_acl.value["id"]
     }
   }
 

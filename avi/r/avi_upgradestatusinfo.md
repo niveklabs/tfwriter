@@ -554,51 +554,82 @@ variable "upgrade_events" {
 
 ```terraform
 resource "avi_upgradestatusinfo" "this" {
-  duration                 = var.duration
-  enable_patch_rollback    = var.enable_patch_rollback
-  enable_rollback          = var.enable_rollback
-  end_time                 = var.end_time
-  enqueue_time             = var.enqueue_time
-  image_ref                = var.image_ref
-  name                     = var.name
-  node_type                = var.node_type
-  obj_cloud_ref            = var.obj_cloud_ref
-  patch_image_ref          = var.patch_image_ref
-  patch_version            = var.patch_version
-  previous_image_ref       = var.previous_image_ref
+  # duration - (optional) is a type of number
+  duration = var.duration
+  # enable_patch_rollback - (optional) is a type of bool
+  enable_patch_rollback = var.enable_patch_rollback
+  # enable_rollback - (optional) is a type of bool
+  enable_rollback = var.enable_rollback
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # enqueue_time - (optional) is a type of string
+  enqueue_time = var.enqueue_time
+  # image_ref - (optional) is a type of string
+  image_ref = var.image_ref
+  # name - (optional) is a type of string
+  name = var.name
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # obj_cloud_ref - (optional) is a type of string
+  obj_cloud_ref = var.obj_cloud_ref
+  # patch_image_ref - (optional) is a type of string
+  patch_image_ref = var.patch_image_ref
+  # patch_version - (optional) is a type of string
+  patch_version = var.patch_version
+  # previous_image_ref - (optional) is a type of string
+  previous_image_ref = var.previous_image_ref
+  # previous_patch_image_ref - (optional) is a type of string
   previous_patch_image_ref = var.previous_patch_image_ref
-  previous_patch_version   = var.previous_patch_version
-  previous_version         = var.previous_version
-  progress                 = var.progress
-  start_time               = var.start_time
-  system                   = var.system
-  tasks_completed          = var.tasks_completed
-  tenant_ref               = var.tenant_ref
-  total_tasks              = var.total_tasks
-  upgrade_ops              = var.upgrade_ops
-  uuid                     = var.uuid
-  version                  = var.version
+  # previous_patch_version - (optional) is a type of string
+  previous_patch_version = var.previous_patch_version
+  # previous_version - (optional) is a type of string
+  previous_version = var.previous_version
+  # progress - (optional) is a type of number
+  progress = var.progress
+  # start_time - (optional) is a type of string
+  start_time = var.start_time
+  # system - (optional) is a type of bool
+  system = var.system
+  # tasks_completed - (optional) is a type of number
+  tasks_completed = var.tasks_completed
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # total_tasks - (optional) is a type of number
+  total_tasks = var.total_tasks
+  # upgrade_ops - (optional) is a type of string
+  upgrade_ops = var.upgrade_ops
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "params" {
     for_each = var.params
     content {
+      # image_ref - (optional) is a type of string
       image_ref = params.value["image_ref"]
+      # patch_ref - (optional) is a type of string
       patch_ref = params.value["patch_ref"]
 
       dynamic "se_group_options" {
         for_each = params.value.se_group_options
         content {
+          # action_on_error - (optional) is a type of string
           action_on_error = se_group_options.value["action_on_error"]
-          disruptive      = se_group_options.value["disruptive"]
+          # disruptive - (optional) is a type of bool
+          disruptive = se_group_options.value["disruptive"]
         }
       }
 
       dynamic "se_group_resume_options" {
         for_each = params.value.se_group_resume_options
         content {
+          # action_on_error - (optional) is a type of string
           action_on_error = se_group_resume_options.value["action_on_error"]
-          disruptive      = se_group_resume_options.value["disruptive"]
-          skip_suspended  = se_group_resume_options.value["skip_suspended"]
+          # disruptive - (optional) is a type of bool
+          disruptive = se_group_resume_options.value["disruptive"]
+          # skip_suspended - (optional) is a type of bool
+          skip_suspended = se_group_resume_options.value["skip_suspended"]
         }
       }
 
@@ -608,111 +639,188 @@ resource "avi_upgradestatusinfo" "this" {
   dynamic "patch_list" {
     for_each = var.patch_list
     content {
+      # patch_image_ref - (optional) is a type of string
       patch_image_ref = patch_list.value["patch_image_ref"]
-      patch_version   = patch_list.value["patch_version"]
+      # patch_version - (optional) is a type of string
+      patch_version = patch_list.value["patch_version"]
     }
   }
 
   dynamic "previous_patch_list" {
     for_each = var.previous_patch_list
     content {
+      # patch_image_ref - (optional) is a type of string
       patch_image_ref = previous_patch_list.value["patch_image_ref"]
-      patch_version   = previous_patch_list.value["patch_version"]
+      # patch_version - (optional) is a type of string
+      patch_version = previous_patch_list.value["patch_version"]
     }
   }
 
   dynamic "se_upgrade_events" {
     for_each = var.se_upgrade_events
     content {
-      from_se_ref      = se_upgrade_events.value["from_se_ref"]
-      num_se           = se_upgrade_events.value["num_se"]
-      num_se_group     = se_upgrade_events.value["num_se_group"]
-      num_vs           = se_upgrade_events.value["num_vs"]
-      reason           = se_upgrade_events.value["reason"]
+      # from_se_ref - (optional) is a type of string
+      from_se_ref = se_upgrade_events.value["from_se_ref"]
+      # num_se - (optional) is a type of number
+      num_se = se_upgrade_events.value["num_se"]
+      # num_se_group - (optional) is a type of number
+      num_se_group = se_upgrade_events.value["num_se_group"]
+      # num_vs - (optional) is a type of number
+      num_vs = se_upgrade_events.value["num_vs"]
+      # reason - (optional) is a type of list of string
+      reason = se_upgrade_events.value["reason"]
+      # se_group_ha_mode - (optional) is a type of string
       se_group_ha_mode = se_upgrade_events.value["se_group_ha_mode"]
-      se_group_ref     = se_upgrade_events.value["se_group_ref"]
-      se_ref           = se_upgrade_events.value["se_ref"]
-      task             = se_upgrade_events.value["task"]
-      to_se_ref        = se_upgrade_events.value["to_se_ref"]
-      traffic_status   = se_upgrade_events.value["traffic_status"]
-      vs_ref           = se_upgrade_events.value["vs_ref"]
+      # se_group_ref - (optional) is a type of string
+      se_group_ref = se_upgrade_events.value["se_group_ref"]
+      # se_ref - (optional) is a type of string
+      se_ref = se_upgrade_events.value["se_ref"]
+      # task - (optional) is a type of string
+      task = se_upgrade_events.value["task"]
+      # to_se_ref - (optional) is a type of string
+      to_se_ref = se_upgrade_events.value["to_se_ref"]
+      # traffic_status - (optional) is a type of string
+      traffic_status = se_upgrade_events.value["traffic_status"]
+      # vs_ref - (optional) is a type of string
+      vs_ref = se_upgrade_events.value["vs_ref"]
     }
   }
 
   dynamic "seg_status" {
     for_each = var.seg_status
     content {
-      controller_version           = seg_status.value["controller_version"]
-      disrupted_vs_ref             = seg_status.value["disrupted_vs_ref"]
-      duration                     = seg_status.value["duration"]
-      end_time                     = seg_status.value["end_time"]
-      enqueue_time                 = seg_status.value["enqueue_time"]
-      ha_mode                      = seg_status.value["ha_mode"]
-      in_progress                  = seg_status.value["in_progress"]
-      notes                        = seg_status.value["notes"]
-      num_se                       = seg_status.value["num_se"]
-      num_se_with_no_vs            = seg_status.value["num_se_with_no_vs"]
+      # controller_version - (optional) is a type of string
+      controller_version = seg_status.value["controller_version"]
+      # disrupted_vs_ref - (optional) is a type of list of string
+      disrupted_vs_ref = seg_status.value["disrupted_vs_ref"]
+      # duration - (optional) is a type of string
+      duration = seg_status.value["duration"]
+      # end_time - (optional) is a type of string
+      end_time = seg_status.value["end_time"]
+      # enqueue_time - (optional) is a type of string
+      enqueue_time = seg_status.value["enqueue_time"]
+      # ha_mode - (optional) is a type of string
+      ha_mode = seg_status.value["ha_mode"]
+      # in_progress - (optional) is a type of bool
+      in_progress = seg_status.value["in_progress"]
+      # notes - (optional) is a type of list of string
+      notes = seg_status.value["notes"]
+      # num_se - (optional) is a type of number
+      num_se = seg_status.value["num_se"]
+      # num_se_with_no_vs - (optional) is a type of number
+      num_se_with_no_vs = seg_status.value["num_se_with_no_vs"]
+      # num_se_with_vs_not_scaledout - (optional) is a type of number
       num_se_with_vs_not_scaledout = seg_status.value["num_se_with_vs_not_scaledout"]
-      num_se_with_vs_scaledout     = seg_status.value["num_se_with_vs_scaledout"]
-      num_vs                       = seg_status.value["num_vs"]
-      num_vs_disrupted             = seg_status.value["num_vs_disrupted"]
-      progress                     = seg_status.value["progress"]
-      reason                       = seg_status.value["reason"]
-      request_time                 = seg_status.value["request_time"]
+      # num_se_with_vs_scaledout - (optional) is a type of number
+      num_se_with_vs_scaledout = seg_status.value["num_se_with_vs_scaledout"]
+      # num_vs - (optional) is a type of number
+      num_vs = seg_status.value["num_vs"]
+      # num_vs_disrupted - (optional) is a type of number
+      num_vs_disrupted = seg_status.value["num_vs_disrupted"]
+      # progress - (optional) is a type of number
+      progress = seg_status.value["progress"]
+      # reason - (optional) is a type of list of string
+      reason = seg_status.value["reason"]
+      # request_time - (optional) is a type of string
+      request_time = seg_status.value["request_time"]
+      # se_already_upgraded_at_start - (optional) is a type of list of string
       se_already_upgraded_at_start = seg_status.value["se_already_upgraded_at_start"]
-      se_disconnected_at_start     = seg_status.value["se_disconnected_at_start"]
-      se_group_name                = seg_status.value["se_group_name"]
-      se_group_uuid                = seg_status.value["se_group_uuid"]
-      se_ip_missing_at_start       = seg_status.value["se_ip_missing_at_start"]
-      se_poweredoff_at_start       = seg_status.value["se_poweredoff_at_start"]
-      se_reboot_in_progress_ref    = seg_status.value["se_reboot_in_progress_ref"]
-      se_upgrade_completed         = seg_status.value["se_upgrade_completed"]
-      se_upgrade_failed            = seg_status.value["se_upgrade_failed"]
-      se_upgrade_in_progress       = seg_status.value["se_upgrade_in_progress"]
-      se_upgrade_not_started       = seg_status.value["se_upgrade_not_started"]
-      se_upgrade_skip_suspended    = seg_status.value["se_upgrade_skip_suspended"]
-      se_upgrade_suspended         = seg_status.value["se_upgrade_suspended"]
-      se_with_no_vs                = seg_status.value["se_with_no_vs"]
-      se_with_vs_not_scaledout     = seg_status.value["se_with_vs_not_scaledout"]
-      se_with_vs_scaledout         = seg_status.value["se_with_vs_scaledout"]
-      start_time                   = seg_status.value["start_time"]
-      state                        = seg_status.value["state"]
-      tenant_ref                   = seg_status.value["tenant_ref"]
-      thread                       = seg_status.value["thread"]
-      traffic_status               = seg_status.value["traffic_status"]
-      vs_migrate_in_progress_ref   = seg_status.value["vs_migrate_in_progress_ref"]
-      vs_scalein_in_progress_ref   = seg_status.value["vs_scalein_in_progress_ref"]
-      vs_scaleout_in_progress_ref  = seg_status.value["vs_scaleout_in_progress_ref"]
-      worker                       = seg_status.value["worker"]
+      # se_disconnected_at_start - (optional) is a type of list of string
+      se_disconnected_at_start = seg_status.value["se_disconnected_at_start"]
+      # se_group_name - (optional) is a type of string
+      se_group_name = seg_status.value["se_group_name"]
+      # se_group_uuid - (optional) is a type of string
+      se_group_uuid = seg_status.value["se_group_uuid"]
+      # se_ip_missing_at_start - (optional) is a type of list of string
+      se_ip_missing_at_start = seg_status.value["se_ip_missing_at_start"]
+      # se_poweredoff_at_start - (optional) is a type of list of string
+      se_poweredoff_at_start = seg_status.value["se_poweredoff_at_start"]
+      # se_reboot_in_progress_ref - (optional) is a type of string
+      se_reboot_in_progress_ref = seg_status.value["se_reboot_in_progress_ref"]
+      # se_upgrade_completed - (optional) is a type of list of string
+      se_upgrade_completed = seg_status.value["se_upgrade_completed"]
+      # se_upgrade_failed - (optional) is a type of list of string
+      se_upgrade_failed = seg_status.value["se_upgrade_failed"]
+      # se_upgrade_in_progress - (optional) is a type of list of string
+      se_upgrade_in_progress = seg_status.value["se_upgrade_in_progress"]
+      # se_upgrade_not_started - (optional) is a type of list of string
+      se_upgrade_not_started = seg_status.value["se_upgrade_not_started"]
+      # se_upgrade_skip_suspended - (optional) is a type of list of string
+      se_upgrade_skip_suspended = seg_status.value["se_upgrade_skip_suspended"]
+      # se_upgrade_suspended - (optional) is a type of list of string
+      se_upgrade_suspended = seg_status.value["se_upgrade_suspended"]
+      # se_with_no_vs - (optional) is a type of list of string
+      se_with_no_vs = seg_status.value["se_with_no_vs"]
+      # se_with_vs_not_scaledout - (optional) is a type of list of string
+      se_with_vs_not_scaledout = seg_status.value["se_with_vs_not_scaledout"]
+      # se_with_vs_scaledout - (optional) is a type of list of string
+      se_with_vs_scaledout = seg_status.value["se_with_vs_scaledout"]
+      # start_time - (optional) is a type of string
+      start_time = seg_status.value["start_time"]
+      # state - (optional) is a type of string
+      state = seg_status.value["state"]
+      # tenant_ref - (optional) is a type of string
+      tenant_ref = seg_status.value["tenant_ref"]
+      # thread - (optional) is a type of string
+      thread = seg_status.value["thread"]
+      # traffic_status - (optional) is a type of string
+      traffic_status = seg_status.value["traffic_status"]
+      # vs_migrate_in_progress_ref - (optional) is a type of list of string
+      vs_migrate_in_progress_ref = seg_status.value["vs_migrate_in_progress_ref"]
+      # vs_scalein_in_progress_ref - (optional) is a type of list of string
+      vs_scalein_in_progress_ref = seg_status.value["vs_scalein_in_progress_ref"]
+      # vs_scaleout_in_progress_ref - (optional) is a type of list of string
+      vs_scaleout_in_progress_ref = seg_status.value["vs_scaleout_in_progress_ref"]
+      # worker - (optional) is a type of string
+      worker = seg_status.value["worker"]
 
       dynamic "se_upgrade_errors" {
         for_each = seg_status.value.se_upgrade_errors
         content {
-          from_se_ref      = se_upgrade_errors.value["from_se_ref"]
-          num_se           = se_upgrade_errors.value["num_se"]
-          num_se_group     = se_upgrade_errors.value["num_se_group"]
-          num_vs           = se_upgrade_errors.value["num_vs"]
-          reason           = se_upgrade_errors.value["reason"]
+          # from_se_ref - (optional) is a type of string
+          from_se_ref = se_upgrade_errors.value["from_se_ref"]
+          # num_se - (optional) is a type of number
+          num_se = se_upgrade_errors.value["num_se"]
+          # num_se_group - (optional) is a type of number
+          num_se_group = se_upgrade_errors.value["num_se_group"]
+          # num_vs - (optional) is a type of number
+          num_vs = se_upgrade_errors.value["num_vs"]
+          # reason - (optional) is a type of list of string
+          reason = se_upgrade_errors.value["reason"]
+          # se_group_ha_mode - (optional) is a type of string
           se_group_ha_mode = se_upgrade_errors.value["se_group_ha_mode"]
-          se_group_ref     = se_upgrade_errors.value["se_group_ref"]
-          se_ref           = se_upgrade_errors.value["se_ref"]
-          task             = se_upgrade_errors.value["task"]
-          to_se_ref        = se_upgrade_errors.value["to_se_ref"]
-          traffic_status   = se_upgrade_errors.value["traffic_status"]
-          vs_ref           = se_upgrade_errors.value["vs_ref"]
+          # se_group_ref - (optional) is a type of string
+          se_group_ref = se_upgrade_errors.value["se_group_ref"]
+          # se_ref - (optional) is a type of string
+          se_ref = se_upgrade_errors.value["se_ref"]
+          # task - (optional) is a type of string
+          task = se_upgrade_errors.value["task"]
+          # to_se_ref - (optional) is a type of string
+          to_se_ref = se_upgrade_errors.value["to_se_ref"]
+          # traffic_status - (optional) is a type of string
+          traffic_status = se_upgrade_errors.value["traffic_status"]
+          # vs_ref - (optional) is a type of string
+          vs_ref = se_upgrade_errors.value["vs_ref"]
         }
       }
 
       dynamic "vs_errors" {
         for_each = seg_status.value.vs_errors
         content {
-          reason           = vs_errors.value["reason"]
+          # reason - (optional) is a type of list of string
+          reason = vs_errors.value["reason"]
+          # se_group_ha_mode - (optional) is a type of string
           se_group_ha_mode = vs_errors.value["se_group_ha_mode"]
-          se_group_ref     = vs_errors.value["se_group_ref"]
-          tenant_ref       = vs_errors.value["tenant_ref"]
-          traffic_status   = vs_errors.value["traffic_status"]
-          vip_id           = vs_errors.value["vip_id"]
-          vs_ref           = vs_errors.value["vs_ref"]
+          # se_group_ref - (optional) is a type of string
+          se_group_ref = vs_errors.value["se_group_ref"]
+          # tenant_ref - (optional) is a type of string
+          tenant_ref = vs_errors.value["tenant_ref"]
+          # traffic_status - (optional) is a type of string
+          traffic_status = vs_errors.value["traffic_status"]
+          # vip_id - (optional) is a type of string
+          vip_id = vs_errors.value["vip_id"]
+          # vs_ref - (optional) is a type of string
+          vs_ref = vs_errors.value["vs_ref"]
         }
       }
 
@@ -722,13 +830,17 @@ resource "avi_upgradestatusinfo" "this" {
   dynamic "state" {
     for_each = var.state
     content {
+      # reason - (optional) is a type of string
       reason = state.value["reason"]
-      state  = state.value["state"]
+      # state - (optional) is a type of string
+      state = state.value["state"]
 
       dynamic "last_changed_time" {
         for_each = state.value.last_changed_time
         content {
-          secs  = last_changed_time.value["secs"]
+          # secs - (required) is a type of number
+          secs = last_changed_time.value["secs"]
+          # usecs - (required) is a type of number
           usecs = last_changed_time.value["usecs"]
         }
       }
@@ -739,22 +851,31 @@ resource "avi_upgradestatusinfo" "this" {
   dynamic "upgrade_events" {
     for_each = var.upgrade_events
     content {
+      # task - (optional) is a type of string
       task = upgrade_events.value["task"]
 
       dynamic "nodes_events" {
         for_each = upgrade_events.value.nodes_events
         content {
-          duration   = nodes_events.value["duration"]
-          end_time   = nodes_events.value["end_time"]
-          message    = nodes_events.value["message"]
+          # duration - (optional) is a type of number
+          duration = nodes_events.value["duration"]
+          # end_time - (optional) is a type of string
+          end_time = nodes_events.value["end_time"]
+          # message - (optional) is a type of string
+          message = nodes_events.value["message"]
+          # start_time - (optional) is a type of string
           start_time = nodes_events.value["start_time"]
-          status     = nodes_events.value["status"]
-          sub_tasks  = nodes_events.value["sub_tasks"]
+          # status - (optional) is a type of bool
+          status = nodes_events.value["status"]
+          # sub_tasks - (optional) is a type of list of string
+          sub_tasks = nodes_events.value["sub_tasks"]
 
           dynamic "ip" {
             for_each = nodes_events.value.ip
             content {
+              # addr - (required) is a type of string
               addr = ip.value["addr"]
+              # type - (required) is a type of string
               type = ip.value["type"]
             }
           }

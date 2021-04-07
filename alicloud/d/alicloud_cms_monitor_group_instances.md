@@ -65,8 +65,11 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cms_monitor_group_instances" "this" {
-  ids         = var.ids
-  keyword     = var.keyword
+  # ids - (required) is a type of list of string
+  ids = var.ids
+  # keyword - (optional) is a type of string
+  keyword = var.keyword
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

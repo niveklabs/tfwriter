@@ -56,7 +56,9 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_virtual_router_entry" "this" {
-  interface      = var.interface
+  # interface - (required) is a type of string
+  interface = var.interface
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

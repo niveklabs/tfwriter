@@ -102,14 +102,22 @@ variable "instance_name" {
 
 ```terraform
 resource "tencentcloud_cynosdb_readonly_instance" "this" {
-  cluster_id                   = var.cluster_id
-  force_delete                 = var.force_delete
-  instance_cpu_core            = var.instance_cpu_core
-  instance_maintain_duration   = var.instance_maintain_duration
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # instance_cpu_core - (required) is a type of number
+  instance_cpu_core = var.instance_cpu_core
+  # instance_maintain_duration - (optional) is a type of number
+  instance_maintain_duration = var.instance_maintain_duration
+  # instance_maintain_start_time - (optional) is a type of number
   instance_maintain_start_time = var.instance_maintain_start_time
-  instance_maintain_weekdays   = var.instance_maintain_weekdays
-  instance_memory_size         = var.instance_memory_size
-  instance_name                = var.instance_name
+  # instance_maintain_weekdays - (optional) is a type of set of string
+  instance_maintain_weekdays = var.instance_maintain_weekdays
+  # instance_memory_size - (required) is a type of number
+  instance_memory_size = var.instance_memory_size
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
 }
 ```
 

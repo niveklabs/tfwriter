@@ -249,32 +249,58 @@ variable "xff_alternative_names" {
 
 ```terraform
 resource "bigip_ltm_profile_http" "this" {
-  accept_xff                 = var.accept_xff
-  app_service                = var.app_service
-  basic_auth_realm           = var.basic_auth_realm
-  defaults_from              = var.defaults_from
-  description                = var.description
-  encrypt_cookie_secret      = var.encrypt_cookie_secret
-  encrypt_cookies            = var.encrypt_cookies
-  fallback_host              = var.fallback_host
-  fallback_status_codes      = var.fallback_status_codes
-  head_erase                 = var.head_erase
-  head_insert                = var.head_insert
-  insert_xforwarded_for      = var.insert_xforwarded_for
-  lws_separator              = var.lws_separator
-  name                       = var.name
+  # accept_xff - (optional) is a type of string
+  accept_xff = var.accept_xff
+  # app_service - (optional) is a type of string
+  app_service = var.app_service
+  # basic_auth_realm - (optional) is a type of string
+  basic_auth_realm = var.basic_auth_realm
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # description - (optional) is a type of string
+  description = var.description
+  # encrypt_cookie_secret - (optional) is a type of string
+  encrypt_cookie_secret = var.encrypt_cookie_secret
+  # encrypt_cookies - (optional) is a type of set of string
+  encrypt_cookies = var.encrypt_cookies
+  # fallback_host - (optional) is a type of string
+  fallback_host = var.fallback_host
+  # fallback_status_codes - (optional) is a type of set of string
+  fallback_status_codes = var.fallback_status_codes
+  # head_erase - (optional) is a type of string
+  head_erase = var.head_erase
+  # head_insert - (optional) is a type of string
+  head_insert = var.head_insert
+  # insert_xforwarded_for - (optional) is a type of string
+  insert_xforwarded_for = var.insert_xforwarded_for
+  # lws_separator - (optional) is a type of string
+  lws_separator = var.lws_separator
+  # name - (required) is a type of string
+  name = var.name
+  # oneconnect_transformations - (optional) is a type of string
   oneconnect_transformations = var.oneconnect_transformations
-  proxy_type                 = var.proxy_type
-  redirect_rewrite           = var.redirect_rewrite
-  request_chunking           = var.request_chunking
-  response_chunking          = var.response_chunking
+  # proxy_type - (optional) is a type of string
+  proxy_type = var.proxy_type
+  # redirect_rewrite - (optional) is a type of string
+  redirect_rewrite = var.redirect_rewrite
+  # request_chunking - (optional) is a type of string
+  request_chunking = var.request_chunking
+  # response_chunking - (optional) is a type of string
+  response_chunking = var.response_chunking
+  # response_headers_permitted - (optional) is a type of set of string
   response_headers_permitted = var.response_headers_permitted
-  server_agent_name          = var.server_agent_name
-  tm_partition               = var.tm_partition
-  via_host_name              = var.via_host_name
-  via_request                = var.via_request
-  via_response               = var.via_response
-  xff_alternative_names      = var.xff_alternative_names
+  # server_agent_name - (optional) is a type of string
+  server_agent_name = var.server_agent_name
+  # tm_partition - (optional) is a type of string
+  tm_partition = var.tm_partition
+  # via_host_name - (optional) is a type of string
+  via_host_name = var.via_host_name
+  # via_request - (optional) is a type of string
+  via_request = var.via_request
+  # via_response - (optional) is a type of string
+  via_response = var.via_response
+  # xff_alternative_names - (optional) is a type of set of string
+  xff_alternative_names = var.xff_alternative_names
 }
 ```
 

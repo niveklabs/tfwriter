@@ -49,6 +49,7 @@ variable "key_name" {
 
 ```terraform
 data "ovh_me_ssh_key" "this" {
+  # key_name - (required) is a type of string
   key_name = var.key_name
 }
 ```

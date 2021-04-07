@@ -120,26 +120,42 @@ variable "entries" {
 
 ```terraform
 resource "fortios_webfilter_urlfilter" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  ip_addr_block         = var.ip_addr_block
-  name                  = var.name
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # ip_addr_block - (optional) is a type of string
+  ip_addr_block = var.ip_addr_block
+  # name - (required) is a type of string
+  name = var.name
+  # one_arm_ips_urlfilter - (optional) is a type of string
   one_arm_ips_urlfilter = var.one_arm_ips_urlfilter
 
   dynamic "entries" {
     for_each = var.entries
     content {
-      action             = entries.value["action"]
-      antiphish_action   = entries.value["antiphish_action"]
+      # action - (optional) is a type of string
+      action = entries.value["action"]
+      # antiphish_action - (optional) is a type of string
+      antiphish_action = entries.value["antiphish_action"]
+      # dns_address_family - (optional) is a type of string
       dns_address_family = entries.value["dns_address_family"]
-      exempt             = entries.value["exempt"]
-      id                 = entries.value["id"]
-      referrer_host      = entries.value["referrer_host"]
-      status             = entries.value["status"]
-      type               = entries.value["type"]
-      url                = entries.value["url"]
-      web_proxy_profile  = entries.value["web_proxy_profile"]
+      # exempt - (optional) is a type of string
+      exempt = entries.value["exempt"]
+      # id - (optional) is a type of number
+      id = entries.value["id"]
+      # referrer_host - (optional) is a type of string
+      referrer_host = entries.value["referrer_host"]
+      # status - (optional) is a type of string
+      status = entries.value["status"]
+      # type - (optional) is a type of string
+      type = entries.value["type"]
+      # url - (optional) is a type of string
+      url = entries.value["url"]
+      # web_proxy_profile - (optional) is a type of string
+      web_proxy_profile = entries.value["web_proxy_profile"]
     }
   }
 

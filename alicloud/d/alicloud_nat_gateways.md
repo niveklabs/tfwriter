@@ -74,10 +74,14 @@ variable "vpc_id" {
 
 ```terraform
 data "alicloud_nat_gateways" "this" {
-  ids         = var.ids
-  name_regex  = var.name_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  vpc_id      = var.vpc_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

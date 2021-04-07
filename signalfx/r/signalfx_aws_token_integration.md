@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "signalfx_aws_token_integration" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

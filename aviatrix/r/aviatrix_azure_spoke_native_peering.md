@@ -70,9 +70,13 @@ variable "transit_gateway_name" {
 
 ```terraform
 resource "aviatrix_azure_spoke_native_peering" "this" {
-  spoke_account_name   = var.spoke_account_name
-  spoke_region         = var.spoke_region
-  spoke_vpc_id         = var.spoke_vpc_id
+  # spoke_account_name - (required) is a type of string
+  spoke_account_name = var.spoke_account_name
+  # spoke_region - (required) is a type of string
+  spoke_region = var.spoke_region
+  # spoke_vpc_id - (required) is a type of string
+  spoke_vpc_id = var.spoke_vpc_id
+  # transit_gateway_name - (required) is a type of string
   transit_gateway_name = var.transit_gateway_name
 }
 ```

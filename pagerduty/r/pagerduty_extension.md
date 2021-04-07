@@ -88,12 +88,18 @@ variable "type" {
 
 ```terraform
 resource "pagerduty_extension" "this" {
-  config            = var.config
-  endpoint_url      = var.endpoint_url
+  # config - (optional) is a type of string
+  config = var.config
+  # endpoint_url - (optional) is a type of string
+  endpoint_url = var.endpoint_url
+  # extension_objects - (required) is a type of set of string
   extension_objects = var.extension_objects
-  extension_schema  = var.extension_schema
-  name              = var.name
-  type              = var.type
+  # extension_schema - (required) is a type of string
+  extension_schema = var.extension_schema
+  # name - (optional) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

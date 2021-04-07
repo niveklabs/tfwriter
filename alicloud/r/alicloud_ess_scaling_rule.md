@@ -139,23 +139,36 @@ variable "step_adjustment" {
 
 ```terraform
 resource "alicloud_ess_scaling_rule" "this" {
-  adjustment_type           = var.adjustment_type
-  adjustment_value          = var.adjustment_value
-  cooldown                  = var.cooldown
-  disable_scale_in          = var.disable_scale_in
+  # adjustment_type - (optional) is a type of string
+  adjustment_type = var.adjustment_type
+  # adjustment_value - (optional) is a type of number
+  adjustment_value = var.adjustment_value
+  # cooldown - (optional) is a type of number
+  cooldown = var.cooldown
+  # disable_scale_in - (optional) is a type of bool
+  disable_scale_in = var.disable_scale_in
+  # estimated_instance_warmup - (optional) is a type of number
   estimated_instance_warmup = var.estimated_instance_warmup
-  metric_name               = var.metric_name
-  scaling_group_id          = var.scaling_group_id
-  scaling_rule_name         = var.scaling_rule_name
-  scaling_rule_type         = var.scaling_rule_type
-  target_value              = var.target_value
+  # metric_name - (optional) is a type of string
+  metric_name = var.metric_name
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # scaling_rule_name - (optional) is a type of string
+  scaling_rule_name = var.scaling_rule_name
+  # scaling_rule_type - (optional) is a type of string
+  scaling_rule_type = var.scaling_rule_type
+  # target_value - (optional) is a type of number
+  target_value = var.target_value
 
   dynamic "step_adjustment" {
     for_each = var.step_adjustment
     content {
+      # metric_interval_lower_bound - (optional) is a type of string
       metric_interval_lower_bound = step_adjustment.value["metric_interval_lower_bound"]
+      # metric_interval_upper_bound - (optional) is a type of string
       metric_interval_upper_bound = step_adjustment.value["metric_interval_upper_bound"]
-      scaling_adjustment          = step_adjustment.value["scaling_adjustment"]
+      # scaling_adjustment - (optional) is a type of number
+      scaling_adjustment = step_adjustment.value["scaling_adjustment"]
     }
   }
 

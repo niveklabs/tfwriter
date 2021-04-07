@@ -109,19 +109,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_project" "this" {
-  description        = var.description
-  features           = var.features
-  name               = var.name
-  version_control    = var.version_control
-  visibility         = var.visibility
+  # description - (optional) is a type of string
+  description = var.description
+  # features - (optional) is a type of map of string
+  features = var.features
+  # name - (required) is a type of string
+  name = var.name
+  # version_control - (optional) is a type of string
+  version_control = var.version_control
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
+  # work_item_template - (optional) is a type of string
   work_item_template = var.work_item_template
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

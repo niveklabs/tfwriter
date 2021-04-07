@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ipv6_nat_icmpv6" "this" {
+  # respond_to_ping - (optional) is a type of number
   respond_to_ping = var.respond_to_ping
-  uuid            = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

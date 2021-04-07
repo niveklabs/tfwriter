@@ -50,6 +50,7 @@ variable "network_monitoring" {
 
 ```terraform
 resource "fortios_switchcontroller_networkmonitorsettings" "this" {
+  # network_monitoring - (optional) is a type of string
   network_monitoring = var.network_monitoring
 }
 ```

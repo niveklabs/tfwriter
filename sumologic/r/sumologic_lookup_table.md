@@ -105,17 +105,25 @@ variable "fields" {
 
 ```terraform
 resource "sumologic_lookup_table" "this" {
-  description       = var.description
-  name              = var.name
-  parent_folder_id  = var.parent_folder_id
-  primary_keys      = var.primary_keys
+  # description - (required) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # parent_folder_id - (optional) is a type of string
+  parent_folder_id = var.parent_folder_id
+  # primary_keys - (optional) is a type of list of string
+  primary_keys = var.primary_keys
+  # size_limit_action - (optional) is a type of string
   size_limit_action = var.size_limit_action
-  ttl               = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 
   dynamic "fields" {
     for_each = var.fields
     content {
+      # field_name - (required) is a type of string
       field_name = fields.value["field_name"]
+      # field_type - (required) is a type of string
       field_type = fields.value["field_type"]
     }
   }

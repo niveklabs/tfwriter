@@ -163,25 +163,41 @@ variable "network" {
 
 ```terraform
 resource "hcloud_server" "this" {
-  backups      = var.backups
-  datacenter   = var.datacenter
+  # backups - (optional) is a type of bool
+  backups = var.backups
+  # datacenter - (optional) is a type of string
+  datacenter = var.datacenter
+  # firewall_ids - (optional) is a type of set of number
   firewall_ids = var.firewall_ids
-  image        = var.image
-  iso          = var.iso
-  keep_disk    = var.keep_disk
-  labels       = var.labels
-  location     = var.location
-  name         = var.name
-  rescue       = var.rescue
-  server_type  = var.server_type
-  ssh_keys     = var.ssh_keys
-  user_data    = var.user_data
+  # image - (required) is a type of string
+  image = var.image
+  # iso - (optional) is a type of string
+  iso = var.iso
+  # keep_disk - (optional) is a type of bool
+  keep_disk = var.keep_disk
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # rescue - (optional) is a type of string
+  rescue = var.rescue
+  # server_type - (required) is a type of string
+  server_type = var.server_type
+  # ssh_keys - (optional) is a type of list of string
+  ssh_keys = var.ssh_keys
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "network" {
     for_each = var.network
     content {
-      alias_ips  = network.value["alias_ips"]
-      ip         = network.value["ip"]
+      # alias_ips - (optional) is a type of set of string
+      alias_ips = network.value["alias_ips"]
+      # ip - (optional) is a type of string
+      ip = network.value["ip"]
+      # network_id - (required) is a type of number
       network_id = network.value["network_id"]
     }
   }

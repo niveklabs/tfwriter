@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_router_authpath" "this" {
-  device  = var.device
+  # device - (required) is a type of string
+  device = var.device
+  # gateway - (optional) is a type of string
   gateway = var.gateway
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

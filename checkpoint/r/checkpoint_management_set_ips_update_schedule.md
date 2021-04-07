@@ -66,9 +66,12 @@ variable "time" {
 
 ```terraform
 resource "checkpoint_management_set_ips_update_schedule" "this" {
-  enabled    = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # recurrence - (optional) is a type of map of string
   recurrence = var.recurrence
-  time       = var.time
+  # time - (optional) is a type of string
+  time = var.time
 }
 ```
 

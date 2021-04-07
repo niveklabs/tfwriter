@@ -57,7 +57,9 @@ variable "retain_key" {
 
 ```terraform
 resource "panos_license_api_key" "this" {
-  key        = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # retain_key - (optional) is a type of bool
   retain_key = var.retain_key
 }
 ```

@@ -243,8 +243,11 @@ variable "media_process_task" {
 
 ```terraform
 resource "tencentcloud_vod_procedure_template" "this" {
-  comment    = var.comment
-  name       = var.name
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # name - (required) is a type of string
+  name = var.name
+  # sub_app_id - (optional) is a type of number
   sub_app_id = var.sub_app_id
 
   dynamic "media_process_task" {
@@ -254,16 +257,22 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "adaptive_dynamic_streaming_task_list" {
         for_each = media_process_task.value.adaptive_dynamic_streaming_task_list
         content {
+          # definition - (required) is a type of string
           definition = adaptive_dynamic_streaming_task_list.value["definition"]
 
           dynamic "watermark_list" {
             for_each = adaptive_dynamic_streaming_task_list.value.watermark_list
             content {
-              definition        = watermark_list.value["definition"]
-              end_time_offset   = watermark_list.value["end_time_offset"]
+              # definition - (required) is a type of string
+              definition = watermark_list.value["definition"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = watermark_list.value["end_time_offset"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = watermark_list.value["start_time_offset"]
-              svg_content       = watermark_list.value["svg_content"]
-              text_content      = watermark_list.value["text_content"]
+              # svg_content - (optional) is a type of string
+              svg_content = watermark_list.value["svg_content"]
+              # text_content - (optional) is a type of string
+              text_content = watermark_list.value["text_content"]
             }
           }
 
@@ -273,8 +282,11 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "animated_graphic_task_list" {
         for_each = media_process_task.value.animated_graphic_task_list
         content {
-          definition        = animated_graphic_task_list.value["definition"]
-          end_time_offset   = animated_graphic_task_list.value["end_time_offset"]
+          # definition - (required) is a type of string
+          definition = animated_graphic_task_list.value["definition"]
+          # end_time_offset - (required) is a type of number
+          end_time_offset = animated_graphic_task_list.value["end_time_offset"]
+          # start_time_offset - (required) is a type of number
           start_time_offset = animated_graphic_task_list.value["start_time_offset"]
         }
       }
@@ -282,18 +294,26 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "cover_by_snapshot_task_list" {
         for_each = media_process_task.value.cover_by_snapshot_task_list
         content {
-          definition     = cover_by_snapshot_task_list.value["definition"]
-          position_type  = cover_by_snapshot_task_list.value["position_type"]
+          # definition - (required) is a type of string
+          definition = cover_by_snapshot_task_list.value["definition"]
+          # position_type - (required) is a type of string
+          position_type = cover_by_snapshot_task_list.value["position_type"]
+          # position_value - (required) is a type of number
           position_value = cover_by_snapshot_task_list.value["position_value"]
 
           dynamic "watermark_list" {
             for_each = cover_by_snapshot_task_list.value.watermark_list
             content {
-              definition        = watermark_list.value["definition"]
-              end_time_offset   = watermark_list.value["end_time_offset"]
+              # definition - (required) is a type of string
+              definition = watermark_list.value["definition"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = watermark_list.value["end_time_offset"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = watermark_list.value["start_time_offset"]
-              svg_content       = watermark_list.value["svg_content"]
-              text_content      = watermark_list.value["text_content"]
+              # svg_content - (optional) is a type of string
+              svg_content = watermark_list.value["svg_content"]
+              # text_content - (optional) is a type of string
+              text_content = watermark_list.value["text_content"]
             }
           }
 
@@ -303,6 +323,7 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "image_sprite_task_list" {
         for_each = media_process_task.value.image_sprite_task_list
         content {
+          # definition - (required) is a type of string
           definition = image_sprite_task_list.value["definition"]
         }
       }
@@ -310,16 +331,22 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "sample_snapshot_task_list" {
         for_each = media_process_task.value.sample_snapshot_task_list
         content {
+          # definition - (required) is a type of string
           definition = sample_snapshot_task_list.value["definition"]
 
           dynamic "watermark_list" {
             for_each = sample_snapshot_task_list.value.watermark_list
             content {
-              definition        = watermark_list.value["definition"]
-              end_time_offset   = watermark_list.value["end_time_offset"]
+              # definition - (required) is a type of string
+              definition = watermark_list.value["definition"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = watermark_list.value["end_time_offset"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = watermark_list.value["start_time_offset"]
-              svg_content       = watermark_list.value["svg_content"]
-              text_content      = watermark_list.value["text_content"]
+              # svg_content - (optional) is a type of string
+              svg_content = watermark_list.value["svg_content"]
+              # text_content - (optional) is a type of string
+              text_content = watermark_list.value["text_content"]
             }
           }
 
@@ -329,17 +356,24 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "snapshot_by_time_offset_task_list" {
         for_each = media_process_task.value.snapshot_by_time_offset_task_list
         content {
-          definition           = snapshot_by_time_offset_task_list.value["definition"]
+          # definition - (required) is a type of string
+          definition = snapshot_by_time_offset_task_list.value["definition"]
+          # ext_time_offset_list - (optional) is a type of list of string
           ext_time_offset_list = snapshot_by_time_offset_task_list.value["ext_time_offset_list"]
 
           dynamic "watermark_list" {
             for_each = snapshot_by_time_offset_task_list.value.watermark_list
             content {
-              definition        = watermark_list.value["definition"]
-              end_time_offset   = watermark_list.value["end_time_offset"]
+              # definition - (required) is a type of string
+              definition = watermark_list.value["definition"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = watermark_list.value["end_time_offset"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = watermark_list.value["start_time_offset"]
-              svg_content       = watermark_list.value["svg_content"]
-              text_content      = watermark_list.value["text_content"]
+              # svg_content - (optional) is a type of string
+              svg_content = watermark_list.value["svg_content"]
+              # text_content - (optional) is a type of string
+              text_content = watermark_list.value["text_content"]
             }
           }
 
@@ -349,29 +383,42 @@ resource "tencentcloud_vod_procedure_template" "this" {
       dynamic "transcode_task_list" {
         for_each = media_process_task.value.transcode_task_list
         content {
+          # definition - (required) is a type of string
           definition = transcode_task_list.value["definition"]
 
           dynamic "mosaic_list" {
             for_each = transcode_task_list.value.mosaic_list
             content {
+              # coordinate_origin - (optional) is a type of string
               coordinate_origin = mosaic_list.value["coordinate_origin"]
-              end_time_offset   = mosaic_list.value["end_time_offset"]
-              height            = mosaic_list.value["height"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = mosaic_list.value["end_time_offset"]
+              # height - (optional) is a type of string
+              height = mosaic_list.value["height"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = mosaic_list.value["start_time_offset"]
-              width             = mosaic_list.value["width"]
-              x_pos             = mosaic_list.value["x_pos"]
-              y_pos             = mosaic_list.value["y_pos"]
+              # width - (optional) is a type of string
+              width = mosaic_list.value["width"]
+              # x_pos - (optional) is a type of string
+              x_pos = mosaic_list.value["x_pos"]
+              # y_pos - (optional) is a type of string
+              y_pos = mosaic_list.value["y_pos"]
             }
           }
 
           dynamic "watermark_list" {
             for_each = transcode_task_list.value.watermark_list
             content {
-              definition        = watermark_list.value["definition"]
-              end_time_offset   = watermark_list.value["end_time_offset"]
+              # definition - (required) is a type of string
+              definition = watermark_list.value["definition"]
+              # end_time_offset - (optional) is a type of number
+              end_time_offset = watermark_list.value["end_time_offset"]
+              # start_time_offset - (optional) is a type of number
               start_time_offset = watermark_list.value["start_time_offset"]
-              svg_content       = watermark_list.value["svg_content"]
-              text_content      = watermark_list.value["text_content"]
+              # svg_content - (optional) is a type of string
+              svg_content = watermark_list.value["svg_content"]
+              # text_content - (optional) is a type of string
+              text_content = watermark_list.value["text_content"]
             }
           }
 

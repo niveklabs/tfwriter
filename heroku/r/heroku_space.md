@@ -96,12 +96,19 @@ variable "trusted_ip_ranges" {
 
 ```terraform
 resource "heroku_space" "this" {
-  cidr              = var.cidr
-  data_cidr         = var.data_cidr
-  name              = var.name
-  organization      = var.organization
-  region            = var.region
-  shield            = var.shield
+  # cidr - (optional) is a type of string
+  cidr = var.cidr
+  # data_cidr - (optional) is a type of string
+  data_cidr = var.data_cidr
+  # name - (required) is a type of string
+  name = var.name
+  # organization - (required) is a type of string
+  organization = var.organization
+  # region - (optional) is a type of string
+  region = var.region
+  # shield - (optional) is a type of bool
+  shield = var.shield
+  # trusted_ip_ranges - (optional) is a type of set of string
   trusted_ip_ranges = var.trusted_ip_ranges
 }
 ```

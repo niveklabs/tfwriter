@@ -169,22 +169,38 @@ variable "uuid" {
 
 ```terraform
 resource "avi_serverautoscalepolicy" "this" {
-  description                  = var.description
-  intelligent_autoscale        = var.intelligent_autoscale
-  intelligent_scalein_margin   = var.intelligent_scalein_margin
-  intelligent_scaleout_margin  = var.intelligent_scaleout_margin
-  max_scalein_adjustment_step  = var.max_scalein_adjustment_step
+  # description - (optional) is a type of string
+  description = var.description
+  # intelligent_autoscale - (optional) is a type of bool
+  intelligent_autoscale = var.intelligent_autoscale
+  # intelligent_scalein_margin - (optional) is a type of number
+  intelligent_scalein_margin = var.intelligent_scalein_margin
+  # intelligent_scaleout_margin - (optional) is a type of number
+  intelligent_scaleout_margin = var.intelligent_scaleout_margin
+  # max_scalein_adjustment_step - (optional) is a type of number
+  max_scalein_adjustment_step = var.max_scalein_adjustment_step
+  # max_scaleout_adjustment_step - (optional) is a type of number
   max_scaleout_adjustment_step = var.max_scaleout_adjustment_step
-  max_size                     = var.max_size
-  min_size                     = var.min_size
-  name                         = var.name
-  scalein_alertconfig_refs     = var.scalein_alertconfig_refs
-  scalein_cooldown             = var.scalein_cooldown
-  scaleout_alertconfig_refs    = var.scaleout_alertconfig_refs
-  scaleout_cooldown            = var.scaleout_cooldown
-  tenant_ref                   = var.tenant_ref
-  use_predicted_load           = var.use_predicted_load
-  uuid                         = var.uuid
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # scalein_alertconfig_refs - (optional) is a type of list of string
+  scalein_alertconfig_refs = var.scalein_alertconfig_refs
+  # scalein_cooldown - (optional) is a type of number
+  scalein_cooldown = var.scalein_cooldown
+  # scaleout_alertconfig_refs - (optional) is a type of list of string
+  scaleout_alertconfig_refs = var.scaleout_alertconfig_refs
+  # scaleout_cooldown - (optional) is a type of number
+  scaleout_cooldown = var.scaleout_cooldown
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # use_predicted_load - (optional) is a type of bool
+  use_predicted_load = var.use_predicted_load
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

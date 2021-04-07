@@ -177,23 +177,40 @@ variable "webfilter_profile" {
 
 ```terraform
 resource "fortios_firewall_profilegroup" "this" {
-  application_list         = var.application_list
-  av_profile               = var.av_profile
-  cifs_profile             = var.cifs_profile
-  dlp_sensor               = var.dlp_sensor
-  dnsfilter_profile        = var.dnsfilter_profile
-  emailfilter_profile      = var.emailfilter_profile
-  file_filter_profile      = var.file_filter_profile
-  icap_profile             = var.icap_profile
-  ips_sensor               = var.ips_sensor
-  name                     = var.name
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # cifs_profile - (optional) is a type of string
+  cifs_profile = var.cifs_profile
+  # dlp_sensor - (optional) is a type of string
+  dlp_sensor = var.dlp_sensor
+  # dnsfilter_profile - (optional) is a type of string
+  dnsfilter_profile = var.dnsfilter_profile
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = var.emailfilter_profile
+  # file_filter_profile - (optional) is a type of string
+  file_filter_profile = var.file_filter_profile
+  # icap_profile - (optional) is a type of string
+  icap_profile = var.icap_profile
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # name - (required) is a type of string
+  name = var.name
+  # profile_protocol_options - (optional) is a type of string
   profile_protocol_options = var.profile_protocol_options
-  spamfilter_profile       = var.spamfilter_profile
-  ssh_filter_profile       = var.ssh_filter_profile
-  ssl_ssh_profile          = var.ssl_ssh_profile
-  voip_profile             = var.voip_profile
-  waf_profile              = var.waf_profile
-  webfilter_profile        = var.webfilter_profile
+  # spamfilter_profile - (optional) is a type of string
+  spamfilter_profile = var.spamfilter_profile
+  # ssh_filter_profile - (optional) is a type of string
+  ssh_filter_profile = var.ssh_filter_profile
+  # ssl_ssh_profile - (optional) is a type of string
+  ssl_ssh_profile = var.ssl_ssh_profile
+  # voip_profile - (optional) is a type of string
+  voip_profile = var.voip_profile
+  # waf_profile - (optional) is a type of string
+  waf_profile = var.waf_profile
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
 }
 ```
 

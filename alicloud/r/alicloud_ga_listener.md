@@ -136,16 +136,23 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_listener" "this" {
-  accelerator_id  = var.accelerator_id
+  # accelerator_id - (required) is a type of string
+  accelerator_id = var.accelerator_id
+  # client_affinity - (optional) is a type of string
   client_affinity = var.client_affinity
-  description     = var.description
-  name            = var.name
-  protocol        = var.protocol
-  proxy_protocol  = var.proxy_protocol
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # proxy_protocol - (optional) is a type of bool
+  proxy_protocol = var.proxy_protocol
 
   dynamic "certificates" {
     for_each = var.certificates
     content {
+      # id - (optional) is a type of string
       id = certificates.value["id"]
     }
   }
@@ -153,16 +160,21 @@ resource "alicloud_ga_listener" "this" {
   dynamic "port_ranges" {
     for_each = var.port_ranges
     content {
+      # from_port - (required) is a type of number
       from_port = port_ranges.value["from_port"]
-      to_port   = port_ranges.value["to_port"]
+      # to_port - (required) is a type of number
+      to_port = port_ranges.value["to_port"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

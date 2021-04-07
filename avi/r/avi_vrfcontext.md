@@ -383,33 +383,49 @@ variable "static_routes" {
 
 ```terraform
 resource "avi_vrfcontext" "this" {
-  cloud_ref      = var.cloud_ref
-  description    = var.description
-  name           = var.name
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # system_default - (optional) is a type of bool
   system_default = var.system_default
-  tenant_ref     = var.tenant_ref
-  uuid           = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "bgp_profile" {
     for_each = var.bgp_profile
     content {
-      community          = bgp_profile.value["community"]
-      hold_time          = bgp_profile.value["hold_time"]
-      ibgp               = bgp_profile.value["ibgp"]
+      # community - (optional) is a type of list of string
+      community = bgp_profile.value["community"]
+      # hold_time - (optional) is a type of number
+      hold_time = bgp_profile.value["hold_time"]
+      # ibgp - (required) is a type of bool
+      ibgp = bgp_profile.value["ibgp"]
+      # keepalive_interval - (optional) is a type of number
       keepalive_interval = bgp_profile.value["keepalive_interval"]
-      local_as           = bgp_profile.value["local_as"]
-      send_community     = bgp_profile.value["send_community"]
-      shutdown           = bgp_profile.value["shutdown"]
+      # local_as - (required) is a type of number
+      local_as = bgp_profile.value["local_as"]
+      # send_community - (optional) is a type of bool
+      send_community = bgp_profile.value["send_community"]
+      # shutdown - (optional) is a type of bool
+      shutdown = bgp_profile.value["shutdown"]
 
       dynamic "ip_communities" {
         for_each = bgp_profile.value.ip_communities
         content {
+          # community - (optional) is a type of list of string
           community = ip_communities.value["community"]
 
           dynamic "ip_begin" {
             for_each = ip_communities.value.ip_begin
             content {
+              # addr - (required) is a type of string
               addr = ip_begin.value["addr"]
+              # type - (required) is a type of string
               type = ip_begin.value["type"]
             }
           }
@@ -417,7 +433,9 @@ resource "avi_vrfcontext" "this" {
           dynamic "ip_end" {
             for_each = ip_communities.value.ip_end
             content {
+              # addr - (required) is a type of string
               addr = ip_end.value["addr"]
+              # type - (required) is a type of string
               type = ip_end.value["type"]
             }
           }
@@ -428,24 +446,39 @@ resource "avi_vrfcontext" "this" {
       dynamic "peers" {
         for_each = bgp_profile.value.peers
         content {
-          advertise_snat_ip      = peers.value["advertise_snat_ip"]
-          advertise_vip          = peers.value["advertise_vip"]
+          # advertise_snat_ip - (optional) is a type of bool
+          advertise_snat_ip = peers.value["advertise_snat_ip"]
+          # advertise_vip - (optional) is a type of bool
+          advertise_vip = peers.value["advertise_vip"]
+          # advertisement_interval - (optional) is a type of number
           advertisement_interval = peers.value["advertisement_interval"]
-          bfd                    = peers.value["bfd"]
-          connect_timer          = peers.value["connect_timer"]
-          ebgp_multihop          = peers.value["ebgp_multihop"]
-          hold_time              = peers.value["hold_time"]
-          keepalive_interval     = peers.value["keepalive_interval"]
-          local_as               = peers.value["local_as"]
-          md5_secret             = peers.value["md5_secret"]
-          network_ref            = peers.value["network_ref"]
-          remote_as              = peers.value["remote_as"]
-          shutdown               = peers.value["shutdown"]
+          # bfd - (optional) is a type of bool
+          bfd = peers.value["bfd"]
+          # connect_timer - (optional) is a type of number
+          connect_timer = peers.value["connect_timer"]
+          # ebgp_multihop - (optional) is a type of number
+          ebgp_multihop = peers.value["ebgp_multihop"]
+          # hold_time - (optional) is a type of number
+          hold_time = peers.value["hold_time"]
+          # keepalive_interval - (optional) is a type of number
+          keepalive_interval = peers.value["keepalive_interval"]
+          # local_as - (optional) is a type of number
+          local_as = peers.value["local_as"]
+          # md5_secret - (optional) is a type of string
+          md5_secret = peers.value["md5_secret"]
+          # network_ref - (optional) is a type of string
+          network_ref = peers.value["network_ref"]
+          # remote_as - (optional) is a type of number
+          remote_as = peers.value["remote_as"]
+          # shutdown - (optional) is a type of bool
+          shutdown = peers.value["shutdown"]
 
           dynamic "peer_ip" {
             for_each = peers.value.peer_ip
             content {
+              # addr - (required) is a type of string
               addr = peer_ip.value["addr"]
+              # type - (required) is a type of string
               type = peer_ip.value["type"]
             }
           }
@@ -453,7 +486,9 @@ resource "avi_vrfcontext" "this" {
           dynamic "peer_ip6" {
             for_each = peers.value.peer_ip6
             content {
+              # addr - (required) is a type of string
               addr = peer_ip6.value["addr"]
+              # type - (required) is a type of string
               type = peer_ip6.value["type"]
             }
           }
@@ -461,12 +496,15 @@ resource "avi_vrfcontext" "this" {
           dynamic "subnet" {
             for_each = peers.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -477,12 +515,15 @@ resource "avi_vrfcontext" "this" {
           dynamic "subnet6" {
             for_each = peers.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -499,12 +540,15 @@ resource "avi_vrfcontext" "this" {
   dynamic "debugvrfcontext" {
     for_each = var.debugvrfcontext
     content {
+      # command_buffer_interval - (optional) is a type of number
       command_buffer_interval = debugvrfcontext.value["command_buffer_interval"]
-      command_buffer_size     = debugvrfcontext.value["command_buffer_size"]
+      # command_buffer_size - (optional) is a type of number
+      command_buffer_size = debugvrfcontext.value["command_buffer_size"]
 
       dynamic "flags" {
         for_each = debugvrfcontext.value.flags
         content {
+          # flag - (required) is a type of string
           flag = flags.value["flag"]
         }
       }
@@ -515,14 +559,19 @@ resource "avi_vrfcontext" "this" {
   dynamic "gateway_mon" {
     for_each = var.gateway_mon
     content {
-      gateway_monitor_fail_threshold    = gateway_mon.value["gateway_monitor_fail_threshold"]
-      gateway_monitor_interval          = gateway_mon.value["gateway_monitor_interval"]
+      # gateway_monitor_fail_threshold - (optional) is a type of number
+      gateway_monitor_fail_threshold = gateway_mon.value["gateway_monitor_fail_threshold"]
+      # gateway_monitor_interval - (optional) is a type of number
+      gateway_monitor_interval = gateway_mon.value["gateway_monitor_interval"]
+      # gateway_monitor_success_threshold - (optional) is a type of number
       gateway_monitor_success_threshold = gateway_mon.value["gateway_monitor_success_threshold"]
 
       dynamic "gateway_ip" {
         for_each = gateway_mon.value.gateway_ip
         content {
+          # addr - (required) is a type of string
           addr = gateway_ip.value["addr"]
+          # type - (required) is a type of string
           type = gateway_ip.value["type"]
         }
       }
@@ -530,12 +579,15 @@ resource "avi_vrfcontext" "this" {
       dynamic "subnet" {
         for_each = gateway_mon.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -549,9 +601,13 @@ resource "avi_vrfcontext" "this" {
   dynamic "internal_gateway_monitor" {
     for_each = var.internal_gateway_monitor
     content {
-      disable_gateway_monitor           = internal_gateway_monitor.value["disable_gateway_monitor"]
+      # disable_gateway_monitor - (optional) is a type of bool
+      disable_gateway_monitor = internal_gateway_monitor.value["disable_gateway_monitor"]
+      # gateway_monitor_failure_threshold - (optional) is a type of number
       gateway_monitor_failure_threshold = internal_gateway_monitor.value["gateway_monitor_failure_threshold"]
-      gateway_monitor_interval          = internal_gateway_monitor.value["gateway_monitor_interval"]
+      # gateway_monitor_interval - (optional) is a type of number
+      gateway_monitor_interval = internal_gateway_monitor.value["gateway_monitor_interval"]
+      # gateway_monitor_success_threshold - (optional) is a type of number
       gateway_monitor_success_threshold = internal_gateway_monitor.value["gateway_monitor_success_threshold"]
     }
   }
@@ -559,7 +615,9 @@ resource "avi_vrfcontext" "this" {
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }
@@ -567,14 +625,19 @@ resource "avi_vrfcontext" "this" {
   dynamic "static_routes" {
     for_each = var.static_routes
     content {
+      # disable_gateway_monitor - (optional) is a type of bool
       disable_gateway_monitor = static_routes.value["disable_gateway_monitor"]
-      if_name                 = static_routes.value["if_name"]
-      route_id                = static_routes.value["route_id"]
+      # if_name - (optional) is a type of string
+      if_name = static_routes.value["if_name"]
+      # route_id - (required) is a type of string
+      route_id = static_routes.value["route_id"]
 
       dynamic "next_hop" {
         for_each = static_routes.value.next_hop
         content {
+          # addr - (required) is a type of string
           addr = next_hop.value["addr"]
+          # type - (required) is a type of string
           type = next_hop.value["type"]
         }
       }
@@ -582,12 +645,15 @@ resource "avi_vrfcontext" "this" {
       dynamic "prefix" {
         for_each = static_routes.value.prefix
         content {
+          # mask - (required) is a type of number
           mask = prefix.value["mask"]
 
           dynamic "ip_addr" {
             for_each = prefix.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }

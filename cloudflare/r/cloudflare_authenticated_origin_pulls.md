@@ -72,10 +72,14 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_authenticated_origin_pulls" "this" {
+  # authenticated_origin_pulls_certificate - (optional) is a type of string
   authenticated_origin_pulls_certificate = var.authenticated_origin_pulls_certificate
-  enabled                                = var.enabled
-  hostname                               = var.hostname
-  zone_id                                = var.zone_id
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

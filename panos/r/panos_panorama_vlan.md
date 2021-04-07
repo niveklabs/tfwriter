@@ -80,11 +80,16 @@ variable "vsys" {
 
 ```terraform
 resource "panos_panorama_vlan" "this" {
-  interfaces     = var.interfaces
-  name           = var.name
-  template       = var.template
+  # interfaces - (optional) is a type of set of string
+  interfaces = var.interfaces
+  # name - (required) is a type of string
+  name = var.name
+  # template - (required) is a type of string
+  template = var.template
+  # vlan_interface - (optional) is a type of string
   vlan_interface = var.vlan_interface
-  vsys           = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

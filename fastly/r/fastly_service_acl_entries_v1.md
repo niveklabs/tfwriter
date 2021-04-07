@@ -78,16 +78,22 @@ variable "entry" {
 
 ```terraform
 resource "fastly_service_acl_entries_v1" "this" {
-  acl_id     = var.acl_id
+  # acl_id - (required) is a type of string
+  acl_id = var.acl_id
+  # service_id - (required) is a type of string
   service_id = var.service_id
 
   dynamic "entry" {
     for_each = var.entry
     content {
+      # comment - (optional) is a type of string
       comment = entry.value["comment"]
-      ip      = entry.value["ip"]
+      # ip - (required) is a type of string
+      ip = entry.value["ip"]
+      # negated - (optional) is a type of bool
       negated = entry.value["negated"]
-      subnet  = entry.value["subnet"]
+      # subnet - (optional) is a type of string
+      subnet = entry.value["subnet"]
     }
   }
 

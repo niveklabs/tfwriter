@@ -120,18 +120,27 @@ variable "interface" {
 
 ```terraform
 resource "fortios_dpdk_global" "this" {
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  elasticbuffer          = var.elasticbuffer
-  hugepage_percentage    = var.hugepage_percentage
-  mbufpool_percentage    = var.mbufpool_percentage
-  multiqueue             = var.multiqueue
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # elasticbuffer - (optional) is a type of string
+  elasticbuffer = var.elasticbuffer
+  # hugepage_percentage - (optional) is a type of number
+  hugepage_percentage = var.hugepage_percentage
+  # mbufpool_percentage - (optional) is a type of number
+  mbufpool_percentage = var.mbufpool_percentage
+  # multiqueue - (optional) is a type of string
+  multiqueue = var.multiqueue
+  # per_session_accounting - (optional) is a type of string
   per_session_accounting = var.per_session_accounting
-  sleep_on_idle          = var.sleep_on_idle
-  status                 = var.status
+  # sleep_on_idle - (optional) is a type of string
+  sleep_on_idle = var.sleep_on_idle
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "interface" {
     for_each = var.interface
     content {
+      # interface_name - (optional) is a type of string
       interface_name = interface.value["interface_name"]
     }
   }

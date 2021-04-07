@@ -83,15 +83,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_gpdb_connection" "this" {
+  # connection_prefix - (optional) is a type of string
   connection_prefix = var.connection_prefix
-  instance_id       = var.instance_id
-  port              = var.port
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # port - (optional) is a type of string
+  port = var.port
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

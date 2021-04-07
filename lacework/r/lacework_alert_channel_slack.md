@@ -64,8 +64,11 @@ variable "slack_url" {
 
 ```terraform
 resource "lacework_alert_channel_slack" "this" {
-  enabled   = var.enabled
-  name      = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # slack_url - (required) is a type of string
   slack_url = var.slack_url
 }
 ```

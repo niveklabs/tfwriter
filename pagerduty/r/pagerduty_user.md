@@ -104,14 +104,22 @@ variable "time_zone" {
 
 ```terraform
 resource "pagerduty_user" "this" {
-  color       = var.color
+  # color - (optional) is a type of string
+  color = var.color
+  # description - (optional) is a type of string
   description = var.description
-  email       = var.email
-  job_title   = var.job_title
-  name        = var.name
-  role        = var.role
-  teams       = var.teams
-  time_zone   = var.time_zone
+  # email - (required) is a type of string
+  email = var.email
+  # job_title - (optional) is a type of string
+  job_title = var.job_title
+  # name - (required) is a type of string
+  name = var.name
+  # role - (optional) is a type of string
+  role = var.role
+  # teams - (optional) is a type of set of string
+  teams = var.teams
+  # time_zone - (optional) is a type of string
+  time_zone = var.time_zone
 }
 ```
 

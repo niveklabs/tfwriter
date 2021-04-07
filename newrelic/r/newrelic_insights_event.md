@@ -73,14 +73,19 @@ resource "newrelic_insights_event" "this" {
   dynamic "event" {
     for_each = var.event
     content {
+      # timestamp - (optional) is a type of number
       timestamp = event.value["timestamp"]
-      type      = event.value["type"]
+      # type - (required) is a type of string
+      type = event.value["type"]
 
       dynamic "attribute" {
         for_each = event.value.attribute
         content {
-          key   = attribute.value["key"]
-          type  = attribute.value["type"]
+          # key - (required) is a type of string
+          key = attribute.value["key"]
+          # type - (optional) is a type of string
+          type = attribute.value["type"]
+          # value - (required) is a type of string
           value = attribute.value["value"]
         }
       }

@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "aviatrix_device_tag" "this" {
-  config       = var.config
+  # config - (required) is a type of string
+  config = var.config
+  # device_names - (required) is a type of list of string
   device_names = var.device_names
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

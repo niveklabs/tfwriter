@@ -193,24 +193,39 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_port_v2" "this" {
-  admin_state_up    = var.admin_state_up
-  description       = var.description
-  device_id         = var.device_id
-  device_owner      = var.device_owner
-  mac_address       = var.mac_address
-  name              = var.name
-  network_id        = var.network_id
-  no_fixed_ip       = var.no_fixed_ip
-  region            = var.region
-  segmentation_id   = var.segmentation_id
+  # admin_state_up - (optional) is a type of bool
+  admin_state_up = var.admin_state_up
+  # description - (optional) is a type of string
+  description = var.description
+  # device_id - (optional) is a type of string
+  device_id = var.device_id
+  # device_owner - (optional) is a type of string
+  device_owner = var.device_owner
+  # mac_address - (optional) is a type of string
+  mac_address = var.mac_address
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # no_fixed_ip - (optional) is a type of bool
+  no_fixed_ip = var.no_fixed_ip
+  # region - (optional) is a type of string
+  region = var.region
+  # segmentation_id - (optional) is a type of number
+  segmentation_id = var.segmentation_id
+  # segmentation_type - (optional) is a type of string
   segmentation_type = var.segmentation_type
-  tags              = var.tags
-  tenant_id         = var.tenant_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "allowed_address_pairs" {
     for_each = var.allowed_address_pairs
     content {
-      ip_address  = allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = allowed_address_pairs.value["mac_address"]
     }
   }
@@ -218,15 +233,19 @@ resource "ecl_network_port_v2" "this" {
   dynamic "fixed_ip" {
     for_each = var.fixed_ip
     content {
+      # ip_address - (optional) is a type of string
       ip_address = fixed_ip.value["ip_address"]
-      subnet_id  = fixed_ip.value["subnet_id"]
+      # subnet_id - (required) is a type of string
+      subnet_id = fixed_ip.value["subnet_id"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

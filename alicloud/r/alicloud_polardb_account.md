@@ -95,12 +95,19 @@ variable "kms_encryption_context" {
 
 ```terraform
 resource "alicloud_polardb_account" "this" {
-  account_description    = var.account_description
-  account_name           = var.account_name
-  account_password       = var.account_password
-  account_type           = var.account_type
-  db_cluster_id          = var.db_cluster_id
+  # account_description - (optional) is a type of string
+  account_description = var.account_description
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # account_password - (required) is a type of string
+  account_password = var.account_password
+  # account_type - (optional) is a type of string
+  account_type = var.account_type
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
 }
 ```

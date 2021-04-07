@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 resource "fortios_switchcontroller_virtualportpool" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

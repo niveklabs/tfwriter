@@ -92,23 +92,33 @@ variable "entry" {
 
 ```terraform
 resource "fortios_firewall_internetservicedefinition" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
 
   dynamic "entry" {
     for_each = var.entry
     content {
+      # category_id - (optional) is a type of number
       category_id = entry.value["category_id"]
-      name        = entry.value["name"]
-      port        = entry.value["port"]
-      protocol    = entry.value["protocol"]
-      seq_num     = entry.value["seq_num"]
+      # name - (optional) is a type of string
+      name = entry.value["name"]
+      # port - (optional) is a type of number
+      port = entry.value["port"]
+      # protocol - (optional) is a type of number
+      protocol = entry.value["protocol"]
+      # seq_num - (optional) is a type of number
+      seq_num = entry.value["seq_num"]
 
       dynamic "port_range" {
         for_each = entry.value.port_range
         content {
-          end_port   = port_range.value["end_port"]
-          id         = port_range.value["id"]
+          # end_port - (optional) is a type of number
+          end_port = port_range.value["end_port"]
+          # id - (optional) is a type of number
+          id = port_range.value["id"]
+          # start_port - (optional) is a type of number
           start_port = port_range.value["start_port"]
         }
       }

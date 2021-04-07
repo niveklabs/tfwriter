@@ -151,20 +151,34 @@ variable "uuid" {
 
 ```terraform
 resource "fortios_system_externalresource" "this" {
-  category                = var.category
-  comments                = var.comments
-  interface               = var.interface
+  # category - (optional) is a type of number
+  category = var.category
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  name                    = var.name
-  password                = var.password
-  refresh_rate            = var.refresh_rate
-  resource                = var.resource
-  source_ip               = var.source_ip
-  status                  = var.status
-  type                    = var.type
-  user_agent              = var.user_agent
-  username                = var.username
-  uuid                    = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # refresh_rate - (required) is a type of number
+  refresh_rate = var.refresh_rate
+  # resource - (required) is a type of string
+  resource = var.resource
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # user_agent - (optional) is a type of string
+  user_agent = var.user_agent
+  # username - (optional) is a type of string
+  username = var.username
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

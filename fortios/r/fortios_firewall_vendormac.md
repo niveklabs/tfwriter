@@ -66,9 +66,12 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewall_vendormac" "this" {
-  fosid      = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # mac_number - (optional) is a type of number
   mac_number = var.mac_number
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

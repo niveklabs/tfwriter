@@ -84,12 +84,18 @@ variable "user" {
 
 ```terraform
 resource "digitalocean_database_connection_pool" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  db_name    = var.db_name
-  mode       = var.mode
-  name       = var.name
-  size       = var.size
-  user       = var.user
+  # db_name - (required) is a type of string
+  db_name = var.db_name
+  # mode - (required) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # size - (required) is a type of number
+  size = var.size
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

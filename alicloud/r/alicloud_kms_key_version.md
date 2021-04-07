@@ -49,6 +49,7 @@ variable "key_id" {
 
 ```terraform
 resource "alicloud_kms_key_version" "this" {
+  # key_id - (required) is a type of string
   key_id = var.key_id
 }
 ```

@@ -144,20 +144,31 @@ variable "range" {
 
 ```terraform
 resource "panos_ospf_area" "this" {
-  accept_summary          = var.accept_summary
-  advertise_metric        = var.advertise_metric
-  advertise_type          = var.advertise_type
+  # accept_summary - (optional) is a type of bool
+  accept_summary = var.accept_summary
+  # advertise_metric - (optional) is a type of number
+  advertise_metric = var.advertise_metric
+  # advertise_type - (optional) is a type of string
+  advertise_type = var.advertise_type
+  # default_route_advertise - (optional) is a type of bool
   default_route_advertise = var.default_route_advertise
-  name                    = var.name
-  template                = var.template
-  template_stack          = var.template_stack
-  type                    = var.type
-  virtual_router          = var.virtual_router
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # type - (optional) is a type of string
+  type = var.type
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 
   dynamic "ext_range" {
     for_each = var.ext_range
     content {
-      action  = ext_range.value["action"]
+      # action - (optional) is a type of string
+      action = ext_range.value["action"]
+      # network - (required) is a type of string
       network = ext_range.value["network"]
     }
   }
@@ -165,7 +176,9 @@ resource "panos_ospf_area" "this" {
   dynamic "range" {
     for_each = var.range
     content {
-      action  = range.value["action"]
+      # action - (optional) is a type of string
+      action = range.value["action"]
+      # network - (required) is a type of string
       network = range.value["network"]
     }
   }

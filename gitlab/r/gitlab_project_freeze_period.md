@@ -71,10 +71,14 @@ variable "project_id" {
 
 ```terraform
 resource "gitlab_project_freeze_period" "this" {
+  # cron_timezone - (optional) is a type of string
   cron_timezone = var.cron_timezone
-  freeze_end    = var.freeze_end
-  freeze_start  = var.freeze_start
-  project_id    = var.project_id
+  # freeze_end - (required) is a type of string
+  freeze_end = var.freeze_end
+  # freeze_start - (required) is a type of string
+  freeze_start = var.freeze_start
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

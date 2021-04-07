@@ -136,23 +136,36 @@ variable "tsig_key" {
 
 ```terraform
 resource "akamai_dns_zone" "this" {
-  comment                  = var.comment
-  contract                 = var.contract
-  end_customer_id          = var.end_customer_id
-  group                    = var.group
-  masters                  = var.masters
-  sign_and_serve           = var.sign_and_serve
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # contract - (required) is a type of string
+  contract = var.contract
+  # end_customer_id - (optional) is a type of string
+  end_customer_id = var.end_customer_id
+  # group - (required) is a type of string
+  group = var.group
+  # masters - (optional) is a type of set of string
+  masters = var.masters
+  # sign_and_serve - (optional) is a type of bool
+  sign_and_serve = var.sign_and_serve
+  # sign_and_serve_algorithm - (optional) is a type of string
   sign_and_serve_algorithm = var.sign_and_serve_algorithm
-  target                   = var.target
-  type                     = var.type
-  zone                     = var.zone
+  # target - (optional) is a type of string
+  target = var.target
+  # type - (required) is a type of string
+  type = var.type
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "tsig_key" {
     for_each = var.tsig_key
     content {
+      # algorithm - (required) is a type of string
       algorithm = tsig_key.value["algorithm"]
-      name      = tsig_key.value["name"]
-      secret    = tsig_key.value["secret"]
+      # name - (required) is a type of string
+      name = tsig_key.value["name"]
+      # secret - (required) is a type of string
+      secret = tsig_key.value["secret"]
     }
   }
 

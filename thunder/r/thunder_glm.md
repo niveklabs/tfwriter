@@ -148,27 +148,44 @@ variable "proxy_server" {
 
 ```terraform
 resource "thunder_glm" "this" {
+  # allocate_bandwidth - (optional) is a type of number
   allocate_bandwidth = var.allocate_bandwidth
-  appliance_name     = var.appliance_name
-  burst              = var.burst
-  enable_requests    = var.enable_requests
-  enterprise         = var.enterprise
-  interval           = var.interval
-  port               = var.port
-  token              = var.token
-  use_mgmt_port      = var.use_mgmt_port
-  uuid               = var.uuid
+  # appliance_name - (optional) is a type of string
+  appliance_name = var.appliance_name
+  # burst - (optional) is a type of number
+  burst = var.burst
+  # enable_requests - (optional) is a type of number
+  enable_requests = var.enable_requests
+  # enterprise - (optional) is a type of string
+  enterprise = var.enterprise
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # port - (optional) is a type of number
+  port = var.port
+  # token - (optional) is a type of string
+  token = var.token
+  # use_mgmt_port - (optional) is a type of number
+  use_mgmt_port = var.use_mgmt_port
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "proxy_server" {
     for_each = var.proxy_server
     content {
-      encrypted     = proxy_server.value["encrypted"]
-      host          = proxy_server.value["host"]
-      password      = proxy_server.value["password"]
-      port          = proxy_server.value["port"]
+      # encrypted - (optional) is a type of string
+      encrypted = proxy_server.value["encrypted"]
+      # host - (optional) is a type of string
+      host = proxy_server.value["host"]
+      # password - (optional) is a type of number
+      password = proxy_server.value["password"]
+      # port - (optional) is a type of number
+      port = proxy_server.value["port"]
+      # secret_string - (optional) is a type of string
       secret_string = proxy_server.value["secret_string"]
-      username      = proxy_server.value["username"]
-      uuid          = proxy_server.value["uuid"]
+      # username - (optional) is a type of string
+      username = proxy_server.value["username"]
+      # uuid - (optional) is a type of string
+      uuid = proxy_server.value["uuid"]
     }
   }
 

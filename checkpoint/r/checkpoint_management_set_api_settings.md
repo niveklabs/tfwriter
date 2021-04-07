@@ -58,8 +58,10 @@ variable "automatic_start" {
 
 ```terraform
 resource "checkpoint_management_set_api_settings" "this" {
+  # accepted_api_calls_from - (optional) is a type of string
   accepted_api_calls_from = var.accepted_api_calls_from
-  automatic_start         = var.automatic_start
+  # automatic_start - (optional) is a type of bool
+  automatic_start = var.automatic_start
 }
 ```
 

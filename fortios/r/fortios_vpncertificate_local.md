@@ -231,30 +231,54 @@ variable "state" {
 
 ```terraform
 resource "fortios_vpncertificate_local" "this" {
-  auto_regenerate_days         = var.auto_regenerate_days
+  # auto_regenerate_days - (optional) is a type of number
+  auto_regenerate_days = var.auto_regenerate_days
+  # auto_regenerate_days_warning - (optional) is a type of number
   auto_regenerate_days_warning = var.auto_regenerate_days_warning
-  ca_identifier                = var.ca_identifier
-  certificate                  = var.certificate
-  cmp_path                     = var.cmp_path
-  cmp_regeneration_method      = var.cmp_regeneration_method
-  cmp_server                   = var.cmp_server
-  cmp_server_cert              = var.cmp_server_cert
-  comments                     = var.comments
-  csr                          = var.csr
-  enroll_protocol              = var.enroll_protocol
-  ike_localid                  = var.ike_localid
-  ike_localid_type             = var.ike_localid_type
-  last_updated                 = var.last_updated
-  name                         = var.name
-  name_encoding                = var.name_encoding
-  password                     = var.password
-  private_key                  = var.private_key
-  range                        = var.range
-  scep_password                = var.scep_password
-  scep_url                     = var.scep_url
-  source                       = var.source
-  source_ip                    = var.source_ip
-  state                        = var.state
+  # ca_identifier - (optional) is a type of string
+  ca_identifier = var.ca_identifier
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # cmp_path - (optional) is a type of string
+  cmp_path = var.cmp_path
+  # cmp_regeneration_method - (optional) is a type of string
+  cmp_regeneration_method = var.cmp_regeneration_method
+  # cmp_server - (optional) is a type of string
+  cmp_server = var.cmp_server
+  # cmp_server_cert - (optional) is a type of string
+  cmp_server_cert = var.cmp_server_cert
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # csr - (optional) is a type of string
+  csr = var.csr
+  # enroll_protocol - (optional) is a type of string
+  enroll_protocol = var.enroll_protocol
+  # ike_localid - (optional) is a type of string
+  ike_localid = var.ike_localid
+  # ike_localid_type - (optional) is a type of string
+  ike_localid_type = var.ike_localid_type
+  # last_updated - (optional) is a type of number
+  last_updated = var.last_updated
+  # name - (required) is a type of string
+  name = var.name
+  # name_encoding - (optional) is a type of string
+  name_encoding = var.name_encoding
+  # password - (optional) is a type of string
+  password = var.password
+  # private_key - (required) is a type of string
+  private_key = var.private_key
+  # range - (optional) is a type of string
+  range = var.range
+  # scep_password - (optional) is a type of string
+  scep_password = var.scep_password
+  # scep_url - (optional) is a type of string
+  scep_url = var.scep_url
+  # source - (optional) is a type of string
+  source = var.source
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # state - (optional) is a type of string
+  state = var.state
 }
 ```
 

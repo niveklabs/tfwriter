@@ -50,6 +50,7 @@ variable "hours" {
 
 ```terraform
 resource "panos_vm_auth_key" "this" {
+  # hours - (optional) is a type of number
   hours = var.hours
 }
 ```

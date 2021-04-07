@@ -157,32 +157,47 @@ variable "match_list" {
 
 ```terraform
 resource "panos_panorama_log_forwarding_profile" "this" {
-  description      = var.description
-  device_group     = var.device_group
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # enhanced_logging - (optional) is a type of bool
   enhanced_logging = var.enhanced_logging
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "match_list" {
     for_each = var.match_list
     content {
-      description              = match_list.value["description"]
-      email_server_profiles    = match_list.value["email_server_profiles"]
-      filter                   = match_list.value["filter"]
-      http_server_profiles     = match_list.value["http_server_profiles"]
-      log_type                 = match_list.value["log_type"]
-      name                     = match_list.value["name"]
-      send_to_panorama         = match_list.value["send_to_panorama"]
+      # description - (optional) is a type of string
+      description = match_list.value["description"]
+      # email_server_profiles - (optional) is a type of set of string
+      email_server_profiles = match_list.value["email_server_profiles"]
+      # filter - (optional) is a type of string
+      filter = match_list.value["filter"]
+      # http_server_profiles - (optional) is a type of set of string
+      http_server_profiles = match_list.value["http_server_profiles"]
+      # log_type - (optional) is a type of string
+      log_type = match_list.value["log_type"]
+      # name - (required) is a type of string
+      name = match_list.value["name"]
+      # send_to_panorama - (optional) is a type of bool
+      send_to_panorama = match_list.value["send_to_panorama"]
+      # snmptrap_server_profiles - (optional) is a type of set of string
       snmptrap_server_profiles = match_list.value["snmptrap_server_profiles"]
-      syslog_server_profiles   = match_list.value["syslog_server_profiles"]
+      # syslog_server_profiles - (optional) is a type of set of string
+      syslog_server_profiles = match_list.value["syslog_server_profiles"]
 
       dynamic "action" {
         for_each = match_list.value.action
         content {
+          # name - (required) is a type of string
           name = action.value["name"]
 
           dynamic "azure_integration" {
             for_each = action.value.azure_integration
             content {
+              # azure_integration - (optional) is a type of bool
               azure_integration = azure_integration.value["azure_integration"]
             }
           }
@@ -190,13 +205,17 @@ resource "panos_panorama_log_forwarding_profile" "this" {
           dynamic "tagging_integration" {
             for_each = action.value.tagging_integration
             content {
-              action  = tagging_integration.value["action"]
-              target  = tagging_integration.value["target"]
+              # action - (optional) is a type of string
+              action = tagging_integration.value["action"]
+              # target - (optional) is a type of string
+              target = tagging_integration.value["target"]
+              # timeout - (optional) is a type of number
               timeout = tagging_integration.value["timeout"]
 
               dynamic "local_registration" {
                 for_each = tagging_integration.value.local_registration
                 content {
+                  # tags - (required) is a type of list of string
                   tags = local_registration.value["tags"]
                 }
               }
@@ -204,6 +223,7 @@ resource "panos_panorama_log_forwarding_profile" "this" {
               dynamic "panorama_registration" {
                 for_each = tagging_integration.value.panorama_registration
                 content {
+                  # tags - (required) is a type of list of string
                   tags = panorama_registration.value["tags"]
                 }
               }
@@ -211,8 +231,10 @@ resource "panos_panorama_log_forwarding_profile" "this" {
               dynamic "remote_registration" {
                 for_each = tagging_integration.value.remote_registration
                 content {
+                  # http_profile - (required) is a type of string
                   http_profile = remote_registration.value["http_profile"]
-                  tags         = remote_registration.value["tags"]
+                  # tags - (required) is a type of list of string
+                  tags = remote_registration.value["tags"]
                 }
               }
 

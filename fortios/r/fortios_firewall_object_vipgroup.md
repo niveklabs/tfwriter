@@ -72,10 +72,14 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewall_object_vipgroup" "this" {
-  comments  = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # interface - (optional) is a type of string
   interface = var.interface
-  member    = var.member
-  name      = var.name
+  # member - (required) is a type of list of string
+  member = var.member
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

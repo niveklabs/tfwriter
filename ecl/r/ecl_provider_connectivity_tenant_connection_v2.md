@@ -183,24 +183,35 @@ variable "attachment_opts_vna" {
 
 ```terraform
 resource "ecl_provider_connectivity_tenant_connection_v2" "this" {
-  description                  = var.description
-  device_id                    = var.device_id
-  device_interface_id          = var.device_interface_id
-  device_type                  = var.device_type
-  name                         = var.name
-  tags                         = var.tags
+  # description - (optional) is a type of string
+  description = var.description
+  # device_id - (required) is a type of string
+  device_id = var.device_id
+  # device_interface_id - (optional) is a type of string
+  device_interface_id = var.device_interface_id
+  # device_type - (required) is a type of string
+  device_type = var.device_type
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_connection_request_id - (required) is a type of string
   tenant_connection_request_id = var.tenant_connection_request_id
 
   dynamic "attachment_opts_baremetal" {
     for_each = var.attachment_opts_baremetal
     content {
-      segmentation_id   = attachment_opts_baremetal.value["segmentation_id"]
+      # segmentation_id - (optional) is a type of number
+      segmentation_id = attachment_opts_baremetal.value["segmentation_id"]
+      # segmentation_type - (optional) is a type of string
       segmentation_type = attachment_opts_baremetal.value["segmentation_type"]
 
       dynamic "allowed_address_pairs" {
         for_each = attachment_opts_baremetal.value.allowed_address_pairs
         content {
-          ip_address  = allowed_address_pairs.value["ip_address"]
+          # ip_address - (optional) is a type of string
+          ip_address = allowed_address_pairs.value["ip_address"]
+          # mac_address - (optional) is a type of string
           mac_address = allowed_address_pairs.value["mac_address"]
         }
       }
@@ -208,8 +219,10 @@ resource "ecl_provider_connectivity_tenant_connection_v2" "this" {
       dynamic "fixed_ips" {
         for_each = attachment_opts_baremetal.value.fixed_ips
         content {
+          # ip_address - (optional) is a type of string
           ip_address = fixed_ips.value["ip_address"]
-          subnet_id  = fixed_ips.value["subnet_id"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = fixed_ips.value["subnet_id"]
         }
       }
 
@@ -223,7 +236,9 @@ resource "ecl_provider_connectivity_tenant_connection_v2" "this" {
       dynamic "allowed_address_pairs" {
         for_each = attachment_opts_compute.value.allowed_address_pairs
         content {
-          ip_address  = allowed_address_pairs.value["ip_address"]
+          # ip_address - (optional) is a type of string
+          ip_address = allowed_address_pairs.value["ip_address"]
+          # mac_address - (optional) is a type of string
           mac_address = allowed_address_pairs.value["mac_address"]
         }
       }
@@ -231,8 +246,10 @@ resource "ecl_provider_connectivity_tenant_connection_v2" "this" {
       dynamic "fixed_ips" {
         for_each = attachment_opts_compute.value.fixed_ips
         content {
+          # ip_address - (optional) is a type of string
           ip_address = fixed_ips.value["ip_address"]
-          subnet_id  = fixed_ips.value["subnet_id"]
+          # subnet_id - (optional) is a type of string
+          subnet_id = fixed_ips.value["subnet_id"]
         }
       }
 
@@ -246,6 +263,7 @@ resource "ecl_provider_connectivity_tenant_connection_v2" "this" {
       dynamic "fixed_ips" {
         for_each = attachment_opts_vna.value.fixed_ips
         content {
+          # ip_address - (optional) is a type of string
           ip_address = fixed_ips.value["ip_address"]
         }
       }

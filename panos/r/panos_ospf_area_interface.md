@@ -183,24 +183,42 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_ospf_area_interface" "this" {
-  auth_profile        = var.auth_profile
-  bfd_profile         = var.bfd_profile
-  dead_counts         = var.dead_counts
-  enable              = var.enable
+  # auth_profile - (optional) is a type of string
+  auth_profile = var.auth_profile
+  # bfd_profile - (optional) is a type of string
+  bfd_profile = var.bfd_profile
+  # dead_counts - (optional) is a type of number
+  dead_counts = var.dead_counts
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # grace_restart_delay - (optional) is a type of number
   grace_restart_delay = var.grace_restart_delay
-  hello_interval      = var.hello_interval
-  link_type           = var.link_type
-  metric              = var.metric
-  name                = var.name
-  neighbors           = var.neighbors
-  ospf_area           = var.ospf_area
-  passive             = var.passive
-  priority            = var.priority
+  # hello_interval - (optional) is a type of number
+  hello_interval = var.hello_interval
+  # link_type - (optional) is a type of string
+  link_type = var.link_type
+  # metric - (optional) is a type of number
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # neighbors - (optional) is a type of set of string
+  neighbors = var.neighbors
+  # ospf_area - (required) is a type of string
+  ospf_area = var.ospf_area
+  # passive - (optional) is a type of bool
+  passive = var.passive
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # retransmit_interval - (optional) is a type of number
   retransmit_interval = var.retransmit_interval
-  template            = var.template
-  template_stack      = var.template_stack
-  transit_delay       = var.transit_delay
-  virtual_router      = var.virtual_router
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # transit_delay - (optional) is a type of number
+  transit_delay = var.transit_delay
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

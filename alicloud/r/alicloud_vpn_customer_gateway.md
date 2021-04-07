@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "alicloud_vpn_customer_gateway" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  ip_address  = var.ip_address
-  name        = var.name
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

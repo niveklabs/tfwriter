@@ -90,12 +90,18 @@ variable "region" {
 
 ```terraform
 data "ecl_network_network_v2" "this" {
-  description          = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # matching_subnet_cidr - (optional) is a type of string
   matching_subnet_cidr = var.matching_subnet_cidr
-  name                 = var.name
-  network_id           = var.network_id
-  plane                = var.plane
-  region               = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (optional) is a type of string
+  network_id = var.network_id
+  # plane - (optional) is a type of string
+  plane = var.plane
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

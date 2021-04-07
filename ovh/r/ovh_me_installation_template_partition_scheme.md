@@ -63,8 +63,11 @@ variable "template_name" {
 
 ```terraform
 resource "ovh_me_installation_template_partition_scheme" "this" {
-  name          = var.name
-  priority      = var.priority
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # template_name - (required) is a type of string
   template_name = var.template_name
 }
 ```

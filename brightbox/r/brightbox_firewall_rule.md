@@ -120,19 +120,29 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_firewall_rule" "this" {
-  description      = var.description
-  destination      = var.destination
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # destination_port - (optional) is a type of string
   destination_port = var.destination_port
-  firewall_policy  = var.firewall_policy
-  icmp_type_name   = var.icmp_type_name
-  protocol         = var.protocol
-  source           = var.source
-  source_port      = var.source_port
+  # firewall_policy - (required) is a type of string
+  firewall_policy = var.firewall_policy
+  # icmp_type_name - (optional) is a type of string
+  icmp_type_name = var.icmp_type_name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # source - (optional) is a type of string
+  source = var.source
+  # source_port - (optional) is a type of string
+  source_port = var.source_port
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

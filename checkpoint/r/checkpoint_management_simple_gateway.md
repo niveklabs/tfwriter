@@ -309,53 +309,96 @@ variable "interfaces" {
 
 ```terraform
 resource "checkpoint_management_simple_gateway" "this" {
-  anti_bot                   = var.anti_bot
-  anti_virus                 = var.anti_virus
-  application_control        = var.application_control
-  color                      = var.color
-  comments                   = var.comments
-  content_awareness          = var.content_awareness
-  firewall                   = var.firewall
-  firewall_settings          = var.firewall_settings
-  icap_server                = var.icap_server
-  ignore_warnings            = var.ignore_warnings
-  ips                        = var.ips
-  ipv4_address               = var.ipv4_address
-  ipv6_address               = var.ipv6_address
-  logs_settings              = var.logs_settings
-  name                       = var.name
-  one_time_password          = var.one_time_password
-  os_name                    = var.os_name
-  save_logs_locally          = var.save_logs_locally
-  send_alerts_to_server      = var.send_alerts_to_server
+  # anti_bot - (optional) is a type of bool
+  anti_bot = var.anti_bot
+  # anti_virus - (optional) is a type of bool
+  anti_virus = var.anti_virus
+  # application_control - (optional) is a type of bool
+  application_control = var.application_control
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # content_awareness - (optional) is a type of bool
+  content_awareness = var.content_awareness
+  # firewall - (optional) is a type of bool
+  firewall = var.firewall
+  # firewall_settings - (optional) is a type of map of string
+  firewall_settings = var.firewall_settings
+  # icap_server - (optional) is a type of bool
+  icap_server = var.icap_server
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ips - (optional) is a type of bool
+  ips = var.ips
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # logs_settings - (optional) is a type of map of string
+  logs_settings = var.logs_settings
+  # name - (required) is a type of string
+  name = var.name
+  # one_time_password - (optional) is a type of string
+  one_time_password = var.one_time_password
+  # os_name - (optional) is a type of string
+  os_name = var.os_name
+  # save_logs_locally - (optional) is a type of bool
+  save_logs_locally = var.save_logs_locally
+  # send_alerts_to_server - (optional) is a type of set of string
+  send_alerts_to_server = var.send_alerts_to_server
+  # send_logs_to_backup_server - (optional) is a type of set of string
   send_logs_to_backup_server = var.send_logs_to_backup_server
-  send_logs_to_server        = var.send_logs_to_server
-  tags                       = var.tags
-  threat_emulation           = var.threat_emulation
-  threat_extraction          = var.threat_extraction
-  url_filtering              = var.url_filtering
-  version                    = var.version
-  vpn                        = var.vpn
-  vpn_settings               = var.vpn_settings
+  # send_logs_to_server - (optional) is a type of set of string
+  send_logs_to_server = var.send_logs_to_server
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # threat_emulation - (optional) is a type of bool
+  threat_emulation = var.threat_emulation
+  # threat_extraction - (optional) is a type of bool
+  threat_extraction = var.threat_extraction
+  # url_filtering - (optional) is a type of bool
+  url_filtering = var.url_filtering
+  # version - (optional) is a type of string
+  version = var.version
+  # vpn - (optional) is a type of bool
+  vpn = var.vpn
+  # vpn_settings - (optional) is a type of map of string
+  vpn_settings = var.vpn_settings
 
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
-      anti_spoofing          = interfaces.value["anti_spoofing"]
+      # anti_spoofing - (optional) is a type of bool
+      anti_spoofing = interfaces.value["anti_spoofing"]
+      # anti_spoofing_settings - (optional) is a type of map of string
       anti_spoofing_settings = interfaces.value["anti_spoofing_settings"]
-      color                  = interfaces.value["color"]
-      comments               = interfaces.value["comments"]
-      ipv4_address           = interfaces.value["ipv4_address"]
-      ipv4_mask_length       = interfaces.value["ipv4_mask_length"]
-      ipv4_network_mask      = interfaces.value["ipv4_network_mask"]
-      ipv6_address           = interfaces.value["ipv6_address"]
-      ipv6_mask_length       = interfaces.value["ipv6_mask_length"]
-      ipv6_network_mask      = interfaces.value["ipv6_network_mask"]
-      name                   = interfaces.value["name"]
-      security_zone          = interfaces.value["security_zone"]
+      # color - (optional) is a type of string
+      color = interfaces.value["color"]
+      # comments - (optional) is a type of string
+      comments = interfaces.value["comments"]
+      # ipv4_address - (optional) is a type of string
+      ipv4_address = interfaces.value["ipv4_address"]
+      # ipv4_mask_length - (optional) is a type of string
+      ipv4_mask_length = interfaces.value["ipv4_mask_length"]
+      # ipv4_network_mask - (optional) is a type of string
+      ipv4_network_mask = interfaces.value["ipv4_network_mask"]
+      # ipv6_address - (optional) is a type of string
+      ipv6_address = interfaces.value["ipv6_address"]
+      # ipv6_mask_length - (optional) is a type of string
+      ipv6_mask_length = interfaces.value["ipv6_mask_length"]
+      # ipv6_network_mask - (optional) is a type of string
+      ipv6_network_mask = interfaces.value["ipv6_network_mask"]
+      # name - (required) is a type of string
+      name = interfaces.value["name"]
+      # security_zone - (optional) is a type of bool
+      security_zone = interfaces.value["security_zone"]
+      # security_zone_settings - (optional) is a type of map of string
       security_zone_settings = interfaces.value["security_zone_settings"]
-      topology               = interfaces.value["topology"]
-      topology_settings      = interfaces.value["topology_settings"]
+      # topology - (optional) is a type of string
+      topology = interfaces.value["topology"]
+      # topology_settings - (optional) is a type of map of string
+      topology_settings = interfaces.value["topology_settings"]
     }
   }
 

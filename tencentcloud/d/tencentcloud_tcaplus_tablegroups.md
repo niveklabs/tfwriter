@@ -73,10 +73,14 @@ variable "tablegroup_name" {
 
 ```terraform
 data "tencentcloud_tcaplus_tablegroups" "this" {
-  cluster_id         = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tablegroup_id      = var.tablegroup_id
-  tablegroup_name    = var.tablegroup_name
+  # tablegroup_id - (optional) is a type of string
+  tablegroup_id = var.tablegroup_id
+  # tablegroup_name - (optional) is a type of string
+  tablegroup_name = var.tablegroup_name
 }
 ```
 

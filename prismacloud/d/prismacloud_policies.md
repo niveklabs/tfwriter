@@ -50,6 +50,7 @@ variable "filters" {
 
 ```terraform
 data "prismacloud_policies" "this" {
+  # filters - (optional) is a type of map of string
   filters = var.filters
 }
 ```

@@ -106,14 +106,22 @@ variable "uuid" {
 
 ```terraform
 resource "avi_portalfileupload" "this" {
-  case_id      = var.case_id
-  error        = var.error
-  file_path    = var.file_path
-  name         = var.name
+  # case_id - (optional) is a type of string
+  case_id = var.case_id
+  # error - (optional) is a type of string
+  error = var.error
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # name - (optional) is a type of string
+  name = var.name
+  # s3_directory - (optional) is a type of string
   s3_directory = var.s3_directory
-  status       = var.status
-  tenant_ref   = var.tenant_ref
-  uuid         = var.uuid
+  # status - (optional) is a type of string
+  status = var.status
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

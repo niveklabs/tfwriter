@@ -105,14 +105,22 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_kms_key" "this" {
-  alias                         = var.alias
-  description                   = var.description
-  is_archived                   = var.is_archived
-  is_enabled                    = var.is_enabled
-  key_rotation_enabled          = var.key_rotation_enabled
-  key_usage                     = var.key_usage
+  # alias - (required) is a type of string
+  alias = var.alias
+  # description - (optional) is a type of string
+  description = var.description
+  # is_archived - (optional) is a type of bool
+  is_archived = var.is_archived
+  # is_enabled - (optional) is a type of bool
+  is_enabled = var.is_enabled
+  # key_rotation_enabled - (optional) is a type of bool
+  key_rotation_enabled = var.key_rotation_enabled
+  # key_usage - (optional) is a type of string
+  key_usage = var.key_usage
+  # pending_delete_window_in_days - (optional) is a type of number
   pending_delete_window_in_days = var.pending_delete_window_in_days
-  tags                          = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

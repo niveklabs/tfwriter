@@ -236,31 +236,56 @@ variable "subject_match" {
 
 ```terraform
 resource "fortios_vpncertificate_setting" "this" {
-  certname_dsa1024        = var.certname_dsa1024
-  certname_dsa2048        = var.certname_dsa2048
-  certname_ecdsa256       = var.certname_ecdsa256
-  certname_ecdsa384       = var.certname_ecdsa384
-  certname_ecdsa521       = var.certname_ecdsa521
-  certname_ed25519        = var.certname_ed25519
-  certname_ed448          = var.certname_ed448
-  certname_rsa1024        = var.certname_rsa1024
-  certname_rsa2048        = var.certname_rsa2048
-  certname_rsa4096        = var.certname_rsa4096
-  check_ca_cert           = var.check_ca_cert
-  check_ca_chain          = var.check_ca_chain
-  cmp_key_usage_checking  = var.cmp_key_usage_checking
-  cmp_save_extra_certs    = var.cmp_save_extra_certs
-  cn_match                = var.cn_match
-  interface               = var.interface
+  # certname_dsa1024 - (required) is a type of string
+  certname_dsa1024 = var.certname_dsa1024
+  # certname_dsa2048 - (required) is a type of string
+  certname_dsa2048 = var.certname_dsa2048
+  # certname_ecdsa256 - (required) is a type of string
+  certname_ecdsa256 = var.certname_ecdsa256
+  # certname_ecdsa384 - (required) is a type of string
+  certname_ecdsa384 = var.certname_ecdsa384
+  # certname_ecdsa521 - (optional) is a type of string
+  certname_ecdsa521 = var.certname_ecdsa521
+  # certname_ed25519 - (optional) is a type of string
+  certname_ed25519 = var.certname_ed25519
+  # certname_ed448 - (optional) is a type of string
+  certname_ed448 = var.certname_ed448
+  # certname_rsa1024 - (required) is a type of string
+  certname_rsa1024 = var.certname_rsa1024
+  # certname_rsa2048 - (required) is a type of string
+  certname_rsa2048 = var.certname_rsa2048
+  # certname_rsa4096 - (optional) is a type of string
+  certname_rsa4096 = var.certname_rsa4096
+  # check_ca_cert - (optional) is a type of string
+  check_ca_cert = var.check_ca_cert
+  # check_ca_chain - (optional) is a type of string
+  check_ca_chain = var.check_ca_chain
+  # cmp_key_usage_checking - (optional) is a type of string
+  cmp_key_usage_checking = var.cmp_key_usage_checking
+  # cmp_save_extra_certs - (optional) is a type of string
+  cmp_save_extra_certs = var.cmp_save_extra_certs
+  # cn_match - (optional) is a type of string
+  cn_match = var.cn_match
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  ocsp_default_server     = var.ocsp_default_server
-  ocsp_option             = var.ocsp_option
-  ocsp_status             = var.ocsp_status
-  ssl_min_proto_version   = var.ssl_min_proto_version
-  ssl_ocsp_source_ip      = var.ssl_ocsp_source_ip
-  strict_crl_check        = var.strict_crl_check
-  strict_ocsp_check       = var.strict_ocsp_check
-  subject_match           = var.subject_match
+  # ocsp_default_server - (optional) is a type of string
+  ocsp_default_server = var.ocsp_default_server
+  # ocsp_option - (optional) is a type of string
+  ocsp_option = var.ocsp_option
+  # ocsp_status - (optional) is a type of string
+  ocsp_status = var.ocsp_status
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # ssl_ocsp_source_ip - (optional) is a type of string
+  ssl_ocsp_source_ip = var.ssl_ocsp_source_ip
+  # strict_crl_check - (optional) is a type of string
+  strict_crl_check = var.strict_crl_check
+  # strict_ocsp_check - (optional) is a type of string
+  strict_ocsp_check = var.strict_ocsp_check
+  # subject_match - (optional) is a type of string
+  subject_match = var.subject_match
 }
 ```
 

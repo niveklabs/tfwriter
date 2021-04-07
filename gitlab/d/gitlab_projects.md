@@ -210,27 +210,48 @@ variable "with_shared" {
 
 ```terraform
 data "gitlab_projects" "this" {
-  archived                    = var.archived
-  group_id                    = var.group_id
-  include_subgroups           = var.include_subgroups
-  max_queryable_pages         = var.max_queryable_pages
-  membership                  = var.membership
-  min_access_level            = var.min_access_level
-  order_by                    = var.order_by
-  owned                       = var.owned
-  page                        = var.page
-  per_page                    = var.per_page
-  search                      = var.search
-  simple                      = var.simple
-  sort                        = var.sort
-  starred                     = var.starred
-  statistics                  = var.statistics
-  visibility                  = var.visibility
-  with_custom_attributes      = var.with_custom_attributes
-  with_issues_enabled         = var.with_issues_enabled
+  # archived - (optional) is a type of bool
+  archived = var.archived
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
+  # include_subgroups - (optional) is a type of bool
+  include_subgroups = var.include_subgroups
+  # max_queryable_pages - (optional) is a type of number
+  max_queryable_pages = var.max_queryable_pages
+  # membership - (optional) is a type of bool
+  membership = var.membership
+  # min_access_level - (optional) is a type of number
+  min_access_level = var.min_access_level
+  # order_by - (optional) is a type of string
+  order_by = var.order_by
+  # owned - (optional) is a type of bool
+  owned = var.owned
+  # page - (optional) is a type of number
+  page = var.page
+  # per_page - (optional) is a type of number
+  per_page = var.per_page
+  # search - (optional) is a type of string
+  search = var.search
+  # simple - (optional) is a type of bool
+  simple = var.simple
+  # sort - (optional) is a type of string
+  sort = var.sort
+  # starred - (optional) is a type of bool
+  starred = var.starred
+  # statistics - (optional) is a type of bool
+  statistics = var.statistics
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
+  # with_custom_attributes - (optional) is a type of bool
+  with_custom_attributes = var.with_custom_attributes
+  # with_issues_enabled - (optional) is a type of bool
+  with_issues_enabled = var.with_issues_enabled
+  # with_merge_requests_enabled - (optional) is a type of bool
   with_merge_requests_enabled = var.with_merge_requests_enabled
-  with_programming_language   = var.with_programming_language
-  with_shared                 = var.with_shared
+  # with_programming_language - (optional) is a type of string
+  with_programming_language = var.with_programming_language
+  # with_shared - (optional) is a type of bool
+  with_shared = var.with_shared
 }
 ```
 

@@ -56,8 +56,10 @@ variable "transit_firenet_gateway_name" {
 
 ```terraform
 resource "aviatrix_firewall_management_access" "this" {
+  # management_access_resource_name - (required) is a type of string
   management_access_resource_name = var.management_access_resource_name
-  transit_firenet_gateway_name    = var.transit_firenet_gateway_name
+  # transit_firenet_gateway_name - (required) is a type of string
+  transit_firenet_gateway_name = var.transit_firenet_gateway_name
 }
 ```
 

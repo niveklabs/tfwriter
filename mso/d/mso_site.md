@@ -105,14 +105,22 @@ variable "username" {
 
 ```terraform
 data "mso_site" "this" {
-  apic_site_id    = var.apic_site_id
+  # apic_site_id - (optional) is a type of string
+  apic_site_id = var.apic_site_id
+  # cloud_providers - (optional) is a type of list of string
   cloud_providers = var.cloud_providers
-  labels          = var.labels
-  location        = var.location
-  name            = var.name
-  password        = var.password
-  urls            = var.urls
-  username        = var.username
+  # labels - (optional) is a type of list of string
+  labels = var.labels
+  # location - (optional) is a type of map of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # urls - (optional) is a type of list of string
+  urls = var.urls
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 resource "okta_auth_server_default" "this" {
-  audiences                 = var.audiences
+  # audiences - (optional) is a type of set of string
+  audiences = var.audiences
+  # credentials_rotation_mode - (optional) is a type of string
   credentials_rotation_mode = var.credentials_rotation_mode
-  description               = var.description
-  name                      = var.name
-  status                    = var.status
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

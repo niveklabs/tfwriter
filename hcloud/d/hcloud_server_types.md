@@ -50,6 +50,7 @@ variable "server_type_ids" {
 
 ```terraform
 data "hcloud_server_types" "this" {
+  # server_type_ids - (optional) is a type of list of string
   server_type_ids = var.server_type_ids
 }
 ```

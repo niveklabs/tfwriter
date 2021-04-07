@@ -134,20 +134,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_gpdb_instance" "this" {
-  availability_zone    = var.availability_zone
-  description          = var.description
-  engine               = var.engine
-  engine_version       = var.engine_version
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # description - (optional) is a type of string
+  description = var.description
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  instance_class       = var.instance_class
+  # instance_class - (required) is a type of string
+  instance_class = var.instance_class
+  # instance_group_count - (required) is a type of string
   instance_group_count = var.instance_group_count
-  security_ip_list     = var.security_ip_list
-  tags                 = var.tags
-  vswitch_id           = var.vswitch_id
+  # security_ip_list - (optional) is a type of set of string
+  security_ip_list = var.security_ip_list
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

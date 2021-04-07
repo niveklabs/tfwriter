@@ -57,8 +57,10 @@ variable "namespace" {
 
 ```terraform
 resource "tencentcloud_scf_namespace" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  namespace   = var.namespace
+  # namespace - (required) is a type of string
+  namespace = var.namespace
 }
 ```
 

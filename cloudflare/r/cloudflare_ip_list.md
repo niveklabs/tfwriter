@@ -87,16 +87,22 @@ variable "item" {
 
 ```terraform
 resource "cloudflare_ip_list" "this" {
-  account_id  = var.account_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # description - (optional) is a type of string
   description = var.description
-  kind        = var.kind
-  name        = var.name
+  # kind - (required) is a type of string
+  kind = var.kind
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "item" {
     for_each = var.item
     content {
+      # comment - (optional) is a type of string
       comment = item.value["comment"]
-      value   = item.value["value"]
+      # value - (required) is a type of string
+      value = item.value["value"]
     }
   }
 

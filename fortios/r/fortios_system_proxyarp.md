@@ -71,10 +71,14 @@ variable "ip" {
 
 ```terraform
 resource "fortios_system_proxyarp" "this" {
-  end_ip    = var.end_ip
-  fosid     = var.fosid
+  # end_ip - (optional) is a type of string
+  end_ip = var.end_ip
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
   interface = var.interface
-  ip        = var.ip
+  # ip - (required) is a type of string
+  ip = var.ip
 }
 ```
 

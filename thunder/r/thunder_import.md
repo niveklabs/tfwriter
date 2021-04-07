@@ -486,56 +486,103 @@ variable "to_device" {
 
 ```terraform
 resource "thunder_import" "this" {
-  aflex                   = var.aflex
-  auth_jwks               = var.auth_jwks
-  auth_portal             = var.auth_portal
-  auth_portal_image       = var.auth_portal_image
-  bw_list                 = var.bw_list
-  ca_cert                 = var.ca_cert
-  certificate_type        = var.certificate_type
-  class_list              = var.class_list
-  class_list_convert      = var.class_list_convert
-  class_list_type         = var.class_list_type
-  cloud_config            = var.cloud_config
-  cloud_creds             = var.cloud_creds
-  dnssec_dnskey           = var.dnssec_dnskey
-  dnssec_ds               = var.dnssec_ds
+  # aflex - (optional) is a type of string
+  aflex = var.aflex
+  # auth_jwks - (optional) is a type of string
+  auth_jwks = var.auth_jwks
+  # auth_portal - (optional) is a type of string
+  auth_portal = var.auth_portal
+  # auth_portal_image - (optional) is a type of string
+  auth_portal_image = var.auth_portal_image
+  # bw_list - (optional) is a type of string
+  bw_list = var.bw_list
+  # ca_cert - (optional) is a type of string
+  ca_cert = var.ca_cert
+  # certificate_type - (optional) is a type of string
+  certificate_type = var.certificate_type
+  # class_list - (optional) is a type of string
+  class_list = var.class_list
+  # class_list_convert - (optional) is a type of string
+  class_list_convert = var.class_list_convert
+  # class_list_type - (optional) is a type of string
+  class_list_type = var.class_list_type
+  # cloud_config - (optional) is a type of string
+  cloud_config = var.cloud_config
+  # cloud_creds - (optional) is a type of string
+  cloud_creds = var.cloud_creds
+  # dnssec_dnskey - (optional) is a type of string
+  dnssec_dnskey = var.dnssec_dnskey
+  # dnssec_ds - (optional) is a type of string
+  dnssec_ds = var.dnssec_ds
+  # file_inspection_bw_list - (optional) is a type of string
   file_inspection_bw_list = var.file_inspection_bw_list
-  geo_location            = var.geo_location
-  glm_cert                = var.glm_cert
-  glm_license             = var.glm_license
-  ip_map_list             = var.ip_map_list
-  local_uri_file          = var.local_uri_file
-  lw_4o6                  = var.lw_4o6
-  overwrite               = var.overwrite
-  password                = var.password
-  pfx_password            = var.pfx_password
-  policy                  = var.policy
-  remote_file             = var.remote_file
-  secured                 = var.secured
-  ssl_cert                = var.ssl_cert
-  ssl_cert_key            = var.ssl_cert_key
-  ssl_crl                 = var.ssl_crl
-  ssl_key                 = var.ssl_key
-  store_name              = var.store_name
-  terminal                = var.terminal
-  thales_kmdata           = var.thales_kmdata
-  thales_secworld         = var.thales_secworld
-  usb_license             = var.usb_license
-  use_mgmt_port           = var.use_mgmt_port
-  user_tag                = var.user_tag
-  web_category_license    = var.web_category_license
-  wsdl                    = var.wsdl
-  xml_schema              = var.xml_schema
+  # geo_location - (optional) is a type of string
+  geo_location = var.geo_location
+  # glm_cert - (optional) is a type of string
+  glm_cert = var.glm_cert
+  # glm_license - (optional) is a type of string
+  glm_license = var.glm_license
+  # ip_map_list - (optional) is a type of string
+  ip_map_list = var.ip_map_list
+  # local_uri_file - (optional) is a type of string
+  local_uri_file = var.local_uri_file
+  # lw_4o6 - (optional) is a type of string
+  lw_4o6 = var.lw_4o6
+  # overwrite - (optional) is a type of number
+  overwrite = var.overwrite
+  # password - (optional) is a type of string
+  password = var.password
+  # pfx_password - (optional) is a type of string
+  pfx_password = var.pfx_password
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # remote_file - (optional) is a type of string
+  remote_file = var.remote_file
+  # secured - (optional) is a type of number
+  secured = var.secured
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = var.ssl_cert
+  # ssl_cert_key - (optional) is a type of string
+  ssl_cert_key = var.ssl_cert_key
+  # ssl_crl - (optional) is a type of string
+  ssl_crl = var.ssl_crl
+  # ssl_key - (optional) is a type of string
+  ssl_key = var.ssl_key
+  # store_name - (optional) is a type of string
+  store_name = var.store_name
+  # terminal - (optional) is a type of number
+  terminal = var.terminal
+  # thales_kmdata - (optional) is a type of string
+  thales_kmdata = var.thales_kmdata
+  # thales_secworld - (optional) is a type of string
+  thales_secworld = var.thales_secworld
+  # usb_license - (optional) is a type of string
+  usb_license = var.usb_license
+  # use_mgmt_port - (optional) is a type of number
+  use_mgmt_port = var.use_mgmt_port
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # web_category_license - (optional) is a type of string
+  web_category_license = var.web_category_license
+  # wsdl - (optional) is a type of string
+  wsdl = var.wsdl
+  # xml_schema - (optional) is a type of string
+  xml_schema = var.xml_schema
 
   dynamic "auth_saml_idp" {
     for_each = var.auth_saml_idp
     content {
-      overwrite            = auth_saml_idp.value["overwrite"]
-      password             = auth_saml_idp.value["password"]
-      remote_file          = auth_saml_idp.value["remote_file"]
-      saml_idp_name        = auth_saml_idp.value["saml_idp_name"]
-      use_mgmt_port        = auth_saml_idp.value["use_mgmt_port"]
+      # overwrite - (optional) is a type of number
+      overwrite = auth_saml_idp.value["overwrite"]
+      # password - (optional) is a type of string
+      password = auth_saml_idp.value["password"]
+      # remote_file - (optional) is a type of string
+      remote_file = auth_saml_idp.value["remote_file"]
+      # saml_idp_name - (optional) is a type of string
+      saml_idp_name = auth_saml_idp.value["saml_idp_name"]
+      # use_mgmt_port - (optional) is a type of number
+      use_mgmt_port = auth_saml_idp.value["use_mgmt_port"]
+      # verify_xml_signature - (optional) is a type of number
       verify_xml_signature = auth_saml_idp.value["verify_xml_signature"]
     }
   }
@@ -543,22 +590,33 @@ resource "thunder_import" "this" {
   dynamic "health_external" {
     for_each = var.health_external
     content {
-      description      = health_external.value["description"]
+      # description - (optional) is a type of string
+      description = health_external.value["description"]
+      # externalfilename - (optional) is a type of string
       externalfilename = health_external.value["externalfilename"]
-      overwrite        = health_external.value["overwrite"]
-      password         = health_external.value["password"]
-      remote_file      = health_external.value["remote_file"]
-      use_mgmt_port    = health_external.value["use_mgmt_port"]
+      # overwrite - (optional) is a type of number
+      overwrite = health_external.value["overwrite"]
+      # password - (optional) is a type of string
+      password = health_external.value["password"]
+      # remote_file - (optional) is a type of string
+      remote_file = health_external.value["remote_file"]
+      # use_mgmt_port - (optional) is a type of number
+      use_mgmt_port = health_external.value["use_mgmt_port"]
     }
   }
 
   dynamic "health_postfile" {
     for_each = var.health_postfile
     content {
-      overwrite     = health_postfile.value["overwrite"]
-      password      = health_postfile.value["password"]
-      postfilename  = health_postfile.value["postfilename"]
-      remote_file   = health_postfile.value["remote_file"]
+      # overwrite - (optional) is a type of number
+      overwrite = health_postfile.value["overwrite"]
+      # password - (optional) is a type of string
+      password = health_postfile.value["password"]
+      # postfilename - (optional) is a type of string
+      postfilename = health_postfile.value["postfilename"]
+      # remote_file - (optional) is a type of string
+      remote_file = health_postfile.value["remote_file"]
+      # use_mgmt_port - (optional) is a type of number
       use_mgmt_port = health_postfile.value["use_mgmt_port"]
     }
   }
@@ -566,9 +624,13 @@ resource "thunder_import" "this" {
   dynamic "store" {
     for_each = var.store
     content {
-      create      = store.value["create"]
-      delete      = store.value["delete"]
-      name        = store.value["name"]
+      # create - (optional) is a type of number
+      create = store.value["create"]
+      # delete - (optional) is a type of number
+      delete = store.value["delete"]
+      # name - (optional) is a type of string
+      name = store.value["name"]
+      # remote_file - (optional) is a type of string
       remote_file = store.value["remote_file"]
     }
   }
@@ -576,12 +638,19 @@ resource "thunder_import" "this" {
   dynamic "to_device" {
     for_each = var.to_device
     content {
-      device               = to_device.value["device"]
-      glm_cert             = to_device.value["glm_cert"]
-      glm_license          = to_device.value["glm_license"]
-      overwrite            = to_device.value["overwrite"]
-      remote_file          = to_device.value["remote_file"]
-      use_mgmt_port        = to_device.value["use_mgmt_port"]
+      # device - (optional) is a type of number
+      device = to_device.value["device"]
+      # glm_cert - (optional) is a type of string
+      glm_cert = to_device.value["glm_cert"]
+      # glm_license - (optional) is a type of string
+      glm_license = to_device.value["glm_license"]
+      # overwrite - (optional) is a type of number
+      overwrite = to_device.value["overwrite"]
+      # remote_file - (optional) is a type of string
+      remote_file = to_device.value["remote_file"]
+      # use_mgmt_port - (optional) is a type of number
+      use_mgmt_port = to_device.value["use_mgmt_port"]
+      # web_category_license - (optional) is a type of string
       web_category_license = to_device.value["web_category_license"]
     }
   }

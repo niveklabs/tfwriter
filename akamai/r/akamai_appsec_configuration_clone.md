@@ -91,13 +91,20 @@ variable "name" {
 
 ```terraform
 resource "akamai_appsec_configuration_clone" "this" {
-  contract_id           = var.contract_id
+  # contract_id - (required) is a type of string
+  contract_id = var.contract_id
+  # create_from_config_id - (required) is a type of number
   create_from_config_id = var.create_from_config_id
-  create_from_version   = var.create_from_version
-  description           = var.description
-  group_id              = var.group_id
-  host_names            = var.host_names
-  name                  = var.name
+  # create_from_version - (required) is a type of number
+  create_from_version = var.create_from_version
+  # description - (required) is a type of string
+  description = var.description
+  # group_id - (required) is a type of number
+  group_id = var.group_id
+  # host_names - (required) is a type of list of string
+  host_names = var.host_names
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

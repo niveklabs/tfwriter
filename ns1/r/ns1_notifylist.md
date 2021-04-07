@@ -65,13 +65,16 @@ variable "notifications" {
 
 ```terraform
 resource "ns1_notifylist" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "notifications" {
     for_each = var.notifications
     content {
+      # config - (required) is a type of map of string
       config = notifications.value["config"]
-      type   = notifications.value["type"]
+      # type - (required) is a type of string
+      type = notifications.value["type"]
     }
   }
 

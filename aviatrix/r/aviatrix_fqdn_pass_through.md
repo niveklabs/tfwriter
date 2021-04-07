@@ -56,7 +56,9 @@ variable "pass_through_cidrs" {
 
 ```terraform
 resource "aviatrix_fqdn_pass_through" "this" {
-  gw_name            = var.gw_name
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # pass_through_cidrs - (required) is a type of set of string
   pass_through_cidrs = var.pass_through_cidrs
 }
 ```

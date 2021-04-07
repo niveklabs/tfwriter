@@ -62,9 +62,12 @@ variable "source" {
 
 ```terraform
 resource "aviatrix_trans_peer" "this" {
-  nexthop        = var.nexthop
+  # nexthop - (required) is a type of string
+  nexthop = var.nexthop
+  # reachable_cidr - (required) is a type of string
   reachable_cidr = var.reachable_cidr
-  source         = var.source
+  # source - (required) is a type of string
+  source = var.source
 }
 ```
 

@@ -89,12 +89,18 @@ variable "timezone" {
 
 ```terraform
 resource "fortios_system_setting_global" "this" {
-  admin_scp      = var.admin_scp
-  admin_sport    = var.admin_sport
+  # admin_scp - (optional) is a type of string
+  admin_scp = var.admin_scp
+  # admin_sport - (optional) is a type of string
+  admin_sport = var.admin_sport
+  # admin_ssh_port - (optional) is a type of string
   admin_ssh_port = var.admin_ssh_port
-  admintimeout   = var.admintimeout
-  hostname       = var.hostname
-  timezone       = var.timezone
+  # admintimeout - (optional) is a type of string
+  admintimeout = var.admintimeout
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

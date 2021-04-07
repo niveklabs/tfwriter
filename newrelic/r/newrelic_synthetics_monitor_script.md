@@ -56,8 +56,10 @@ variable "text" {
 
 ```terraform
 resource "newrelic_synthetics_monitor_script" "this" {
+  # monitor_id - (required) is a type of string
   monitor_id = var.monitor_id
-  text       = var.text
+  # text - (required) is a type of string
+  text = var.text
 }
 ```
 

@@ -56,7 +56,9 @@ variable "repository" {
 
 ```terraform
 data "github_branch" "this" {
-  branch     = var.branch
+  # branch - (required) is a type of string
+  branch = var.branch
+  # repository - (required) is a type of string
   repository = var.repository
 }
 ```

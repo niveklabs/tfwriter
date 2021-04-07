@@ -100,14 +100,22 @@ variable "vpc_reg2" {
 
 ```terraform
 resource "aviatrix_aws_peer" "this" {
+  # account_name1 - (required) is a type of string
   account_name1 = var.account_name1
+  # account_name2 - (required) is a type of string
   account_name2 = var.account_name2
-  rtb_list1     = var.rtb_list1
-  rtb_list2     = var.rtb_list2
-  vpc_id1       = var.vpc_id1
-  vpc_id2       = var.vpc_id2
-  vpc_reg1      = var.vpc_reg1
-  vpc_reg2      = var.vpc_reg2
+  # rtb_list1 - (optional) is a type of list of string
+  rtb_list1 = var.rtb_list1
+  # rtb_list2 - (optional) is a type of list of string
+  rtb_list2 = var.rtb_list2
+  # vpc_id1 - (required) is a type of string
+  vpc_id1 = var.vpc_id1
+  # vpc_id2 - (required) is a type of string
+  vpc_id2 = var.vpc_id2
+  # vpc_reg1 - (required) is a type of string
+  vpc_reg1 = var.vpc_reg1
+  # vpc_reg2 - (required) is a type of string
+  vpc_reg2 = var.vpc_reg2
 }
 ```
 

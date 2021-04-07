@@ -86,14 +86,19 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_maxcompute_project" "this" {
-  name               = var.name
-  order_type         = var.order_type
-  project_name       = var.project_name
+  # name - (optional) is a type of string
+  name = var.name
+  # order_type - (required) is a type of string
+  order_type = var.order_type
+  # project_name - (optional) is a type of string
+  project_name = var.project_name
+  # specification_type - (required) is a type of string
   specification_type = var.specification_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

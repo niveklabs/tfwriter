@@ -65,9 +65,12 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_alikafka_consumer_groups" "this" {
+  # consumer_id_regex - (optional) is a type of string
   consumer_id_regex = var.consumer_id_regex
-  instance_id       = var.instance_id
-  output_file       = var.output_file
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

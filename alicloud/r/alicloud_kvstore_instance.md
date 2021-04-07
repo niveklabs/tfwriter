@@ -474,61 +474,113 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_kvstore_instance" "this" {
-  auto_renew                  = var.auto_renew
-  auto_renew_period           = var.auto_renew_period
-  auto_use_coupon             = var.auto_use_coupon
-  availability_zone           = var.availability_zone
-  backup_id                   = var.backup_id
-  backup_period               = var.backup_period
-  backup_time                 = var.backup_time
-  business_info               = var.business_info
-  capacity                    = var.capacity
-  config                      = var.config
-  connection_string_prefix    = var.connection_string_prefix
-  coupon_no                   = var.coupon_no
-  db_instance_name            = var.db_instance_name
-  dedicated_host_group_id     = var.dedicated_host_group_id
-  enable_backup_log           = var.enable_backup_log
-  enable_public               = var.enable_public
-  engine_version              = var.engine_version
-  force_upgrade               = var.force_upgrade
-  global_instance             = var.global_instance
-  global_instance_id          = var.global_instance_id
-  instance_charge_type        = var.instance_charge_type
-  instance_class              = var.instance_class
-  instance_name               = var.instance_name
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = var.auto_renew_period
+  # auto_use_coupon - (optional) is a type of bool
+  auto_use_coupon = var.auto_use_coupon
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # backup_id - (optional) is a type of string
+  backup_id = var.backup_id
+  # backup_period - (optional) is a type of set of string
+  backup_period = var.backup_period
+  # backup_time - (optional) is a type of string
+  backup_time = var.backup_time
+  # business_info - (optional) is a type of string
+  business_info = var.business_info
+  # capacity - (optional) is a type of number
+  capacity = var.capacity
+  # config - (optional) is a type of map of string
+  config = var.config
+  # connection_string_prefix - (optional) is a type of string
+  connection_string_prefix = var.connection_string_prefix
+  # coupon_no - (optional) is a type of string
+  coupon_no = var.coupon_no
+  # db_instance_name - (optional) is a type of string
+  db_instance_name = var.db_instance_name
+  # dedicated_host_group_id - (optional) is a type of string
+  dedicated_host_group_id = var.dedicated_host_group_id
+  # enable_backup_log - (optional) is a type of number
+  enable_backup_log = var.enable_backup_log
+  # enable_public - (optional) is a type of bool
+  enable_public = var.enable_public
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # force_upgrade - (optional) is a type of bool
+  force_upgrade = var.force_upgrade
+  # global_instance - (optional) is a type of bool
+  global_instance = var.global_instance
+  # global_instance_id - (optional) is a type of string
+  global_instance_id = var.global_instance_id
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # instance_class - (optional) is a type of string
+  instance_class = var.instance_class
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_release_protection - (optional) is a type of bool
   instance_release_protection = var.instance_release_protection
-  instance_type               = var.instance_type
-  kms_encrypted_password      = var.kms_encrypted_password
-  kms_encryption_context      = var.kms_encryption_context
-  maintain_end_time           = var.maintain_end_time
-  maintain_start_time         = var.maintain_start_time
-  modify_mode                 = var.modify_mode
-  node_type                   = var.node_type
-  order_type                  = var.order_type
-  password                    = var.password
-  payment_type                = var.payment_type
-  period                      = var.period
-  port                        = var.port
-  private_connection_prefix   = var.private_connection_prefix
-  private_ip                  = var.private_ip
-  resource_group_id           = var.resource_group_id
-  restore_time                = var.restore_time
-  security_group_id           = var.security_group_id
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # kms_encrypted_password - (optional) is a type of string
+  kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
+  kms_encryption_context = var.kms_encryption_context
+  # maintain_end_time - (optional) is a type of string
+  maintain_end_time = var.maintain_end_time
+  # maintain_start_time - (optional) is a type of string
+  maintain_start_time = var.maintain_start_time
+  # modify_mode - (optional) is a type of number
+  modify_mode = var.modify_mode
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # order_type - (optional) is a type of string
+  order_type = var.order_type
+  # password - (optional) is a type of string
+  password = var.password
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # period - (optional) is a type of string
+  period = var.period
+  # port - (optional) is a type of number
+  port = var.port
+  # private_connection_prefix - (optional) is a type of string
+  private_connection_prefix = var.private_connection_prefix
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # restore_time - (optional) is a type of string
+  restore_time = var.restore_time
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # security_ip_group_attribute - (optional) is a type of string
   security_ip_group_attribute = var.security_ip_group_attribute
-  security_ip_group_name      = var.security_ip_group_name
-  security_ips                = var.security_ips
-  srcdb_instance_id           = var.srcdb_instance_id
-  ssl_enable                  = var.ssl_enable
-  tags                        = var.tags
-  vpc_auth_mode               = var.vpc_auth_mode
-  vswitch_id                  = var.vswitch_id
-  zone_id                     = var.zone_id
+  # security_ip_group_name - (optional) is a type of string
+  security_ip_group_name = var.security_ip_group_name
+  # security_ips - (optional) is a type of set of string
+  security_ips = var.security_ips
+  # srcdb_instance_id - (optional) is a type of string
+  srcdb_instance_id = var.srcdb_instance_id
+  # ssl_enable - (optional) is a type of string
+  ssl_enable = var.ssl_enable
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_auth_mode - (optional) is a type of string
+  vpc_auth_mode = var.vpc_auth_mode
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -536,7 +588,9 @@ resource "alicloud_kvstore_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

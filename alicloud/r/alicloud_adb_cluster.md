@@ -175,27 +175,45 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_adb_cluster" "this" {
-  auto_renew_period   = var.auto_renew_period
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = var.auto_renew_period
+  # db_cluster_category - (required) is a type of string
   db_cluster_category = var.db_cluster_category
-  db_cluster_version  = var.db_cluster_version
-  db_node_class       = var.db_node_class
-  db_node_count       = var.db_node_count
-  db_node_storage     = var.db_node_storage
-  description         = var.description
-  maintain_time       = var.maintain_time
-  pay_type            = var.pay_type
-  period              = var.period
-  renewal_status      = var.renewal_status
-  security_ips        = var.security_ips
-  tags                = var.tags
-  vswitch_id          = var.vswitch_id
-  zone_id             = var.zone_id
+  # db_cluster_version - (optional) is a type of string
+  db_cluster_version = var.db_cluster_version
+  # db_node_class - (required) is a type of string
+  db_node_class = var.db_node_class
+  # db_node_count - (required) is a type of number
+  db_node_count = var.db_node_count
+  # db_node_storage - (required) is a type of number
+  db_node_storage = var.db_node_storage
+  # description - (optional) is a type of string
+  description = var.description
+  # maintain_time - (optional) is a type of string
+  maintain_time = var.maintain_time
+  # pay_type - (optional) is a type of string
+  pay_type = var.pay_type
+  # period - (optional) is a type of number
+  period = var.period
+  # renewal_status - (optional) is a type of string
+  renewal_status = var.renewal_status
+  # security_ips - (optional) is a type of set of string
+  security_ips = var.security_ips
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

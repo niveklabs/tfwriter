@@ -57,8 +57,10 @@ variable "url" {
 
 ```terraform
 resource "datadog_dashboard_json" "this" {
+  # dashboard - (required) is a type of string
   dashboard = var.dashboard
-  url       = var.url
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

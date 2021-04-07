@@ -158,21 +158,36 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_mysql_readonly_instance" "this" {
-  auto_renew_flag    = var.auto_renew_flag
-  charge_type        = var.charge_type
-  force_delete       = var.force_delete
-  instance_name      = var.instance_name
-  intranet_port      = var.intranet_port
+  # auto_renew_flag - (optional) is a type of number
+  auto_renew_flag = var.auto_renew_flag
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # instance_name - (required) is a type of string
+  instance_name = var.instance_name
+  # intranet_port - (optional) is a type of number
+  intranet_port = var.intranet_port
+  # master_instance_id - (required) is a type of string
   master_instance_id = var.master_instance_id
-  mem_size           = var.mem_size
-  pay_type           = var.pay_type
-  period             = var.period
-  prepaid_period     = var.prepaid_period
-  security_groups    = var.security_groups
-  subnet_id          = var.subnet_id
-  tags               = var.tags
-  volume_size        = var.volume_size
-  vpc_id             = var.vpc_id
+  # mem_size - (required) is a type of number
+  mem_size = var.mem_size
+  # pay_type - (optional) is a type of number
+  pay_type = var.pay_type
+  # period - (optional) is a type of number
+  period = var.period
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # volume_size - (required) is a type of number
+  volume_size = var.volume_size
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

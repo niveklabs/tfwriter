@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ip_dns_suffix" "this" {
+  # domain_name - (optional) is a type of string
   domain_name = var.domain_name
-  uuid        = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

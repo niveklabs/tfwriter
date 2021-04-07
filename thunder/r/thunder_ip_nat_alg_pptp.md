@@ -72,12 +72,15 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_ip_nat_alg_pptp" "this" {
+  # pptp - (optional) is a type of string
   pptp = var.pptp
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_security_groups" "this" {
-  name               = var.name
-  project_id         = var.project_id
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  security_group_id  = var.security_group_id
-  tags               = var.tags
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

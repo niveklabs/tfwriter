@@ -216,28 +216,50 @@ variable "username" {
 
 ```terraform
 resource "bigip_ltm_monitor" "this" {
-  adaptive        = var.adaptive
-  adaptive_limit  = var.adaptive_limit
-  compatibility   = var.compatibility
-  database        = var.database
-  defaults_from   = var.defaults_from
-  destination     = var.destination
-  filename        = var.filename
-  interval        = var.interval
-  ip_dscp         = var.ip_dscp
-  manual_resume   = var.manual_resume
-  mode            = var.mode
-  name            = var.name
-  parent          = var.parent
-  password        = var.password
-  receive         = var.receive
+  # adaptive - (optional) is a type of string
+  adaptive = var.adaptive
+  # adaptive_limit - (optional) is a type of number
+  adaptive_limit = var.adaptive_limit
+  # compatibility - (optional) is a type of string
+  compatibility = var.compatibility
+  # database - (optional) is a type of string
+  database = var.database
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # filename - (optional) is a type of string
+  filename = var.filename
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # ip_dscp - (optional) is a type of number
+  ip_dscp = var.ip_dscp
+  # manual_resume - (optional) is a type of string
+  manual_resume = var.manual_resume
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # parent - (required) is a type of string
+  parent = var.parent
+  # password - (optional) is a type of string
+  password = var.password
+  # receive - (optional) is a type of string
+  receive = var.receive
+  # receive_disable - (optional) is a type of string
   receive_disable = var.receive_disable
-  reverse         = var.reverse
-  send            = var.send
-  time_until_up   = var.time_until_up
-  timeout         = var.timeout
-  transparent     = var.transparent
-  username        = var.username
+  # reverse - (optional) is a type of string
+  reverse = var.reverse
+  # send - (optional) is a type of string
+  send = var.send
+  # time_until_up - (optional) is a type of number
+  time_until_up = var.time_until_up
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # transparent - (optional) is a type of string
+  transparent = var.transparent
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

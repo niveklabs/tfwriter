@@ -847,61 +847,113 @@ variable "servers" {
 
 ```terraform
 resource "avi_pool" "this" {
-  analytics_profile_ref                 = var.analytics_profile_ref
-  apic_epg_name                         = var.apic_epg_name
-  application_persistence_profile_ref   = var.application_persistence_profile_ref
-  autoscale_launch_config_ref           = var.autoscale_launch_config_ref
-  autoscale_networks                    = var.autoscale_networks
-  autoscale_policy_ref                  = var.autoscale_policy_ref
-  capacity_estimation                   = var.capacity_estimation
-  capacity_estimation_ttfb_thresh       = var.capacity_estimation_ttfb_thresh
-  cloud_config_cksum                    = var.cloud_config_cksum
-  cloud_ref                             = var.cloud_ref
-  connection_ramp_duration              = var.connection_ramp_duration
-  created_by                            = var.created_by
-  default_server_port                   = var.default_server_port
-  delete_server_on_dns_refresh          = var.delete_server_on_dns_refresh
-  description                           = var.description
-  domain_name                           = var.domain_name
-  east_west                             = var.east_west
-  enabled                               = var.enabled
-  external_autoscale_groups             = var.external_autoscale_groups
-  fewest_tasks_feedback_delay           = var.fewest_tasks_feedback_delay
-  graceful_disable_timeout              = var.graceful_disable_timeout
-  health_monitor_refs                   = var.health_monitor_refs
-  host_check_enabled                    = var.host_check_enabled
-  ignore_servers                        = var.ignore_servers
-  inline_health_monitor                 = var.inline_health_monitor
-  ipaddrgroup_ref                       = var.ipaddrgroup_ref
-  lb_algorithm                          = var.lb_algorithm
-  lb_algorithm_consistent_hash_hdr      = var.lb_algorithm_consistent_hash_hdr
-  lb_algorithm_core_nonaffinity         = var.lb_algorithm_core_nonaffinity
-  lb_algorithm_hash                     = var.lb_algorithm_hash
-  lookup_server_by_name                 = var.lookup_server_by_name
+  # analytics_profile_ref - (optional) is a type of string
+  analytics_profile_ref = var.analytics_profile_ref
+  # apic_epg_name - (optional) is a type of string
+  apic_epg_name = var.apic_epg_name
+  # application_persistence_profile_ref - (optional) is a type of string
+  application_persistence_profile_ref = var.application_persistence_profile_ref
+  # autoscale_launch_config_ref - (optional) is a type of string
+  autoscale_launch_config_ref = var.autoscale_launch_config_ref
+  # autoscale_networks - (optional) is a type of list of string
+  autoscale_networks = var.autoscale_networks
+  # autoscale_policy_ref - (optional) is a type of string
+  autoscale_policy_ref = var.autoscale_policy_ref
+  # capacity_estimation - (optional) is a type of bool
+  capacity_estimation = var.capacity_estimation
+  # capacity_estimation_ttfb_thresh - (optional) is a type of number
+  capacity_estimation_ttfb_thresh = var.capacity_estimation_ttfb_thresh
+  # cloud_config_cksum - (optional) is a type of string
+  cloud_config_cksum = var.cloud_config_cksum
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # connection_ramp_duration - (optional) is a type of number
+  connection_ramp_duration = var.connection_ramp_duration
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # default_server_port - (optional) is a type of number
+  default_server_port = var.default_server_port
+  # delete_server_on_dns_refresh - (optional) is a type of bool
+  delete_server_on_dns_refresh = var.delete_server_on_dns_refresh
+  # description - (optional) is a type of string
+  description = var.description
+  # domain_name - (optional) is a type of list of string
+  domain_name = var.domain_name
+  # east_west - (optional) is a type of bool
+  east_west = var.east_west
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # external_autoscale_groups - (optional) is a type of list of string
+  external_autoscale_groups = var.external_autoscale_groups
+  # fewest_tasks_feedback_delay - (optional) is a type of number
+  fewest_tasks_feedback_delay = var.fewest_tasks_feedback_delay
+  # graceful_disable_timeout - (optional) is a type of number
+  graceful_disable_timeout = var.graceful_disable_timeout
+  # health_monitor_refs - (optional) is a type of list of string
+  health_monitor_refs = var.health_monitor_refs
+  # host_check_enabled - (optional) is a type of bool
+  host_check_enabled = var.host_check_enabled
+  # ignore_servers - (optional) is a type of bool
+  ignore_servers = var.ignore_servers
+  # inline_health_monitor - (optional) is a type of bool
+  inline_health_monitor = var.inline_health_monitor
+  # ipaddrgroup_ref - (optional) is a type of string
+  ipaddrgroup_ref = var.ipaddrgroup_ref
+  # lb_algorithm - (optional) is a type of string
+  lb_algorithm = var.lb_algorithm
+  # lb_algorithm_consistent_hash_hdr - (optional) is a type of string
+  lb_algorithm_consistent_hash_hdr = var.lb_algorithm_consistent_hash_hdr
+  # lb_algorithm_core_nonaffinity - (optional) is a type of number
+  lb_algorithm_core_nonaffinity = var.lb_algorithm_core_nonaffinity
+  # lb_algorithm_hash - (optional) is a type of string
+  lb_algorithm_hash = var.lb_algorithm_hash
+  # lookup_server_by_name - (optional) is a type of bool
+  lookup_server_by_name = var.lookup_server_by_name
+  # max_concurrent_connections_per_server - (optional) is a type of number
   max_concurrent_connections_per_server = var.max_concurrent_connections_per_server
-  min_health_monitors_up                = var.min_health_monitors_up
-  min_servers_up                        = var.min_servers_up
-  name                                  = var.name
-  nsx_securitygroup                     = var.nsx_securitygroup
-  pki_profile_ref                       = var.pki_profile_ref
-  request_queue_depth                   = var.request_queue_depth
-  request_queue_enabled                 = var.request_queue_enabled
-  rewrite_host_header_to_server_name    = var.rewrite_host_header_to_server_name
-  rewrite_host_header_to_sni            = var.rewrite_host_header_to_sni
-  server_name                           = var.server_name
-  server_timeout                        = var.server_timeout
-  service_metadata                      = var.service_metadata
-  sni_enabled                           = var.sni_enabled
-  ssl_key_and_certificate_ref           = var.ssl_key_and_certificate_ref
-  ssl_profile_ref                       = var.ssl_profile_ref
-  tenant_ref                            = var.tenant_ref
-  use_service_port                      = var.use_service_port
-  uuid                                  = var.uuid
-  vrf_ref                               = var.vrf_ref
+  # min_health_monitors_up - (optional) is a type of number
+  min_health_monitors_up = var.min_health_monitors_up
+  # min_servers_up - (optional) is a type of number
+  min_servers_up = var.min_servers_up
+  # name - (required) is a type of string
+  name = var.name
+  # nsx_securitygroup - (optional) is a type of list of string
+  nsx_securitygroup = var.nsx_securitygroup
+  # pki_profile_ref - (optional) is a type of string
+  pki_profile_ref = var.pki_profile_ref
+  # request_queue_depth - (optional) is a type of number
+  request_queue_depth = var.request_queue_depth
+  # request_queue_enabled - (optional) is a type of bool
+  request_queue_enabled = var.request_queue_enabled
+  # rewrite_host_header_to_server_name - (optional) is a type of bool
+  rewrite_host_header_to_server_name = var.rewrite_host_header_to_server_name
+  # rewrite_host_header_to_sni - (optional) is a type of bool
+  rewrite_host_header_to_sni = var.rewrite_host_header_to_sni
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
+  # server_timeout - (optional) is a type of number
+  server_timeout = var.server_timeout
+  # service_metadata - (optional) is a type of string
+  service_metadata = var.service_metadata
+  # sni_enabled - (optional) is a type of bool
+  sni_enabled = var.sni_enabled
+  # ssl_key_and_certificate_ref - (optional) is a type of string
+  ssl_key_and_certificate_ref = var.ssl_key_and_certificate_ref
+  # ssl_profile_ref - (optional) is a type of string
+  ssl_profile_ref = var.ssl_profile_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # use_service_port - (optional) is a type of bool
+  use_service_port = var.use_service_port
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrf_ref - (optional) is a type of string
+  vrf_ref = var.vrf_ref
 
   dynamic "analytics_policy" {
     for_each = var.analytics_policy
     content {
+      # enable_realtime_metrics - (optional) is a type of bool
       enable_realtime_metrics = analytics_policy.value["enable_realtime_metrics"]
     }
   }
@@ -909,9 +961,13 @@ resource "avi_pool" "this" {
   dynamic "conn_pool_properties" {
     for_each = var.conn_pool_properties
     content {
-      upstream_connpool_conn_idle_tmo    = conn_pool_properties.value["upstream_connpool_conn_idle_tmo"]
-      upstream_connpool_conn_life_tmo    = conn_pool_properties.value["upstream_connpool_conn_life_tmo"]
-      upstream_connpool_conn_max_reuse   = conn_pool_properties.value["upstream_connpool_conn_max_reuse"]
+      # upstream_connpool_conn_idle_tmo - (optional) is a type of number
+      upstream_connpool_conn_idle_tmo = conn_pool_properties.value["upstream_connpool_conn_idle_tmo"]
+      # upstream_connpool_conn_life_tmo - (optional) is a type of number
+      upstream_connpool_conn_life_tmo = conn_pool_properties.value["upstream_connpool_conn_life_tmo"]
+      # upstream_connpool_conn_max_reuse - (optional) is a type of number
+      upstream_connpool_conn_max_reuse = conn_pool_properties.value["upstream_connpool_conn_max_reuse"]
+      # upstream_connpool_server_max_cache - (optional) is a type of number
       upstream_connpool_server_max_cache = conn_pool_properties.value["upstream_connpool_server_max_cache"]
     }
   }
@@ -919,17 +975,21 @@ resource "avi_pool" "this" {
   dynamic "fail_action" {
     for_each = var.fail_action
     content {
+      # type - (required) is a type of string
       type = fail_action.value["type"]
 
       dynamic "local_rsp" {
         for_each = fail_action.value.local_rsp
         content {
+          # status_code - (optional) is a type of string
           status_code = local_rsp.value["status_code"]
 
           dynamic "file" {
             for_each = local_rsp.value.file
             content {
+              # content_type - (required) is a type of string
               content_type = file.value["content_type"]
+              # file_content - (required) is a type of string
               file_content = file.value["file_content"]
             }
           }
@@ -940,10 +1000,15 @@ resource "avi_pool" "this" {
       dynamic "redirect" {
         for_each = fail_action.value.redirect
         content {
-          host        = redirect.value["host"]
-          path        = redirect.value["path"]
-          protocol    = redirect.value["protocol"]
-          query       = redirect.value["query"]
+          # host - (required) is a type of string
+          host = redirect.value["host"]
+          # path - (optional) is a type of string
+          path = redirect.value["path"]
+          # protocol - (optional) is a type of string
+          protocol = redirect.value["protocol"]
+          # query - (optional) is a type of string
+          query = redirect.value["query"]
+          # status_code - (optional) is a type of string
           status_code = redirect.value["status_code"]
         }
       }
@@ -954,21 +1019,29 @@ resource "avi_pool" "this" {
   dynamic "max_conn_rate_per_server" {
     for_each = var.max_conn_rate_per_server
     content {
+      # explicit_tracking - (optional) is a type of bool
       explicit_tracking = max_conn_rate_per_server.value["explicit_tracking"]
-      fine_grain        = max_conn_rate_per_server.value["fine_grain"]
-      http_cookie       = max_conn_rate_per_server.value["http_cookie"]
-      http_header       = max_conn_rate_per_server.value["http_header"]
+      # fine_grain - (optional) is a type of bool
+      fine_grain = max_conn_rate_per_server.value["fine_grain"]
+      # http_cookie - (optional) is a type of string
+      http_cookie = max_conn_rate_per_server.value["http_cookie"]
+      # http_header - (optional) is a type of string
+      http_header = max_conn_rate_per_server.value["http_header"]
 
       dynamic "action" {
         for_each = max_conn_rate_per_server.value.action
         content {
+          # status_code - (optional) is a type of string
           status_code = action.value["status_code"]
-          type        = action.value["type"]
+          # type - (optional) is a type of string
+          type = action.value["type"]
 
           dynamic "file" {
             for_each = action.value.file
             content {
+              # content_type - (required) is a type of string
               content_type = file.value["content_type"]
+              # file_content - (required) is a type of string
               file_content = file.value["file_content"]
             }
           }
@@ -976,23 +1049,32 @@ resource "avi_pool" "this" {
           dynamic "redirect" {
             for_each = action.value.redirect
             content {
-              keep_query  = redirect.value["keep_query"]
-              port        = redirect.value["port"]
-              protocol    = redirect.value["protocol"]
+              # keep_query - (optional) is a type of bool
+              keep_query = redirect.value["keep_query"]
+              # port - (optional) is a type of number
+              port = redirect.value["port"]
+              # protocol - (required) is a type of string
+              protocol = redirect.value["protocol"]
+              # status_code - (optional) is a type of string
               status_code = redirect.value["status_code"]
 
               dynamic "host" {
                 for_each = redirect.value.host
                 content {
+                  # type - (required) is a type of string
                   type = host.value["type"]
 
                   dynamic "tokens" {
                     for_each = host.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -1002,15 +1084,20 @@ resource "avi_pool" "this" {
               dynamic "path" {
                 for_each = redirect.value.path
                 content {
+                  # type - (required) is a type of string
                   type = path.value["type"]
 
                   dynamic "tokens" {
                     for_each = path.value.tokens
                     content {
-                      end_index   = tokens.value["end_index"]
+                      # end_index - (optional) is a type of number
+                      end_index = tokens.value["end_index"]
+                      # start_index - (optional) is a type of number
                       start_index = tokens.value["start_index"]
-                      str_value   = tokens.value["str_value"]
-                      type        = tokens.value["type"]
+                      # str_value - (optional) is a type of string
+                      str_value = tokens.value["str_value"]
+                      # type - (required) is a type of string
+                      type = tokens.value["type"]
                     }
                   }
 
@@ -1026,10 +1113,14 @@ resource "avi_pool" "this" {
       dynamic "rate_limiter" {
         for_each = max_conn_rate_per_server.value.rate_limiter
         content {
+          # burst_sz - (optional) is a type of number
           burst_sz = rate_limiter.value["burst_sz"]
-          count    = rate_limiter.value["count"]
-          name     = rate_limiter.value["name"]
-          period   = rate_limiter.value["period"]
+          # count - (optional) is a type of number
+          count = rate_limiter.value["count"]
+          # name - (optional) is a type of string
+          name = rate_limiter.value["name"]
+          # period - (optional) is a type of number
+          period = rate_limiter.value["period"]
         }
       }
 
@@ -1039,7 +1130,9 @@ resource "avi_pool" "this" {
   dynamic "networks" {
     for_each = var.networks
     content {
-      network_ref   = networks.value["network_ref"]
+      # network_ref - (required) is a type of string
+      network_ref = networks.value["network_ref"]
+      # server_filter - (optional) is a type of string
       server_filter = networks.value["server_filter"]
     }
   }
@@ -1047,17 +1140,21 @@ resource "avi_pool" "this" {
   dynamic "placement_networks" {
     for_each = var.placement_networks
     content {
+      # network_ref - (required) is a type of string
       network_ref = placement_networks.value["network_ref"]
 
       dynamic "subnet" {
         for_each = placement_networks.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -1071,22 +1168,30 @@ resource "avi_pool" "this" {
   dynamic "server_reselect" {
     for_each = var.server_reselect
     content {
-      enabled             = server_reselect.value["enabled"]
-      num_retries         = server_reselect.value["num_retries"]
+      # enabled - (required) is a type of bool
+      enabled = server_reselect.value["enabled"]
+      # num_retries - (optional) is a type of number
+      num_retries = server_reselect.value["num_retries"]
+      # retry_nonidempotent - (optional) is a type of bool
       retry_nonidempotent = server_reselect.value["retry_nonidempotent"]
-      retry_timeout       = server_reselect.value["retry_timeout"]
+      # retry_timeout - (optional) is a type of number
+      retry_timeout = server_reselect.value["retry_timeout"]
 
       dynamic "svr_resp_code" {
         for_each = server_reselect.value.svr_resp_code
         content {
-          codes           = svr_resp_code.value["codes"]
+          # codes - (optional) is a type of list of number
+          codes = svr_resp_code.value["codes"]
+          # resp_code_block - (optional) is a type of list of string
           resp_code_block = svr_resp_code.value["resp_code_block"]
 
           dynamic "ranges" {
             for_each = svr_resp_code.value.ranges
             content {
+              # begin - (required) is a type of number
               begin = ranges.value["begin"]
-              end   = ranges.value["end"]
+              # end - (required) is a type of number
+              end = ranges.value["end"]
             }
           }
 
@@ -1099,39 +1204,61 @@ resource "avi_pool" "this" {
   dynamic "servers" {
     for_each = var.servers
     content {
-      autoscaling_group_name    = servers.value["autoscaling_group_name"]
-      availability_zone         = servers.value["availability_zone"]
-      description               = servers.value["description"]
-      enabled                   = servers.value["enabled"]
+      # autoscaling_group_name - (optional) is a type of string
+      autoscaling_group_name = servers.value["autoscaling_group_name"]
+      # availability_zone - (optional) is a type of string
+      availability_zone = servers.value["availability_zone"]
+      # description - (optional) is a type of string
+      description = servers.value["description"]
+      # enabled - (optional) is a type of bool
+      enabled = servers.value["enabled"]
+      # external_orchestration_id - (optional) is a type of string
       external_orchestration_id = servers.value["external_orchestration_id"]
-      external_uuid             = servers.value["external_uuid"]
-      hostname                  = servers.value["hostname"]
-      mac_address               = servers.value["mac_address"]
-      nw_ref                    = servers.value["nw_ref"]
-      port                      = servers.value["port"]
-      prst_hdr_val              = servers.value["prst_hdr_val"]
-      ratio                     = servers.value["ratio"]
-      resolve_server_by_dns     = servers.value["resolve_server_by_dns"]
-      rewrite_host_header       = servers.value["rewrite_host_header"]
-      server_node               = servers.value["server_node"]
-      static                    = servers.value["static"]
-      verify_network            = servers.value["verify_network"]
-      vm_ref                    = servers.value["vm_ref"]
+      # external_uuid - (optional) is a type of string
+      external_uuid = servers.value["external_uuid"]
+      # hostname - (optional) is a type of string
+      hostname = servers.value["hostname"]
+      # mac_address - (optional) is a type of string
+      mac_address = servers.value["mac_address"]
+      # nw_ref - (optional) is a type of string
+      nw_ref = servers.value["nw_ref"]
+      # port - (optional) is a type of number
+      port = servers.value["port"]
+      # prst_hdr_val - (optional) is a type of string
+      prst_hdr_val = servers.value["prst_hdr_val"]
+      # ratio - (optional) is a type of number
+      ratio = servers.value["ratio"]
+      # resolve_server_by_dns - (optional) is a type of bool
+      resolve_server_by_dns = servers.value["resolve_server_by_dns"]
+      # rewrite_host_header - (optional) is a type of bool
+      rewrite_host_header = servers.value["rewrite_host_header"]
+      # server_node - (optional) is a type of string
+      server_node = servers.value["server_node"]
+      # static - (optional) is a type of bool
+      static = servers.value["static"]
+      # verify_network - (optional) is a type of bool
+      verify_network = servers.value["verify_network"]
+      # vm_ref - (optional) is a type of string
+      vm_ref = servers.value["vm_ref"]
 
       dynamic "discovered_networks" {
         for_each = servers.value.discovered_networks
         content {
+          # network_ref - (required) is a type of string
           network_ref = discovered_networks.value["network_ref"]
 
           dynamic "subnet" {
             for_each = discovered_networks.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1142,12 +1269,15 @@ resource "avi_pool" "this" {
           dynamic "subnet6" {
             for_each = discovered_networks.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1161,7 +1291,9 @@ resource "avi_pool" "this" {
       dynamic "ip" {
         for_each = servers.value.ip
         content {
+          # addr - (required) is a type of string
           addr = ip.value["addr"]
+          # type - (required) is a type of string
           type = ip.value["type"]
         }
       }
@@ -1169,10 +1301,14 @@ resource "avi_pool" "this" {
       dynamic "location" {
         for_each = servers.value.location
         content {
-          latitude  = location.value["latitude"]
+          # latitude - (optional) is a type of number
+          latitude = location.value["latitude"]
+          # longitude - (optional) is a type of number
           longitude = location.value["longitude"]
-          name      = location.value["name"]
-          tag       = location.value["tag"]
+          # name - (optional) is a type of string
+          name = location.value["name"]
+          # tag - (optional) is a type of string
+          tag = location.value["tag"]
         }
       }
 

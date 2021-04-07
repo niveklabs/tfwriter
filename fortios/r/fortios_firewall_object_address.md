@@ -128,17 +128,28 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewall_object_address" "this" {
-  associated_interface   = var.associated_interface
-  comment                = var.comment
-  country                = var.country
-  end_ip                 = var.end_ip
-  fqdn                   = var.fqdn
-  name                   = var.name
-  show_in_address_list   = var.show_in_address_list
-  start_ip               = var.start_ip
+  # associated_interface - (optional) is a type of string
+  associated_interface = var.associated_interface
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # country - (optional) is a type of string
+  country = var.country
+  # end_ip - (optional) is a type of string
+  end_ip = var.end_ip
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # name - (required) is a type of string
+  name = var.name
+  # show_in_address_list - (optional) is a type of string
+  show_in_address_list = var.show_in_address_list
+  # start_ip - (optional) is a type of string
+  start_ip = var.start_ip
+  # static_route_configure - (optional) is a type of string
   static_route_configure = var.static_route_configure
-  subnet                 = var.subnet
-  type                   = var.type
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

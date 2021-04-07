@@ -100,25 +100,37 @@ variable "settings" {
 
 ```terraform
 resource "azuredevops_branch_policy_build_validation" "this" {
-  blocking   = var.blocking
-  enabled    = var.enabled
+  # blocking - (optional) is a type of bool
+  blocking = var.blocking
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # project_id - (required) is a type of string
   project_id = var.project_id
 
   dynamic "settings" {
     for_each = var.settings
     content {
-      build_definition_id         = settings.value["build_definition_id"]
-      display_name                = settings.value["display_name"]
-      filename_patterns           = settings.value["filename_patterns"]
-      manual_queue_only           = settings.value["manual_queue_only"]
+      # build_definition_id - (required) is a type of number
+      build_definition_id = settings.value["build_definition_id"]
+      # display_name - (required) is a type of string
+      display_name = settings.value["display_name"]
+      # filename_patterns - (optional) is a type of set of string
+      filename_patterns = settings.value["filename_patterns"]
+      # manual_queue_only - (optional) is a type of bool
+      manual_queue_only = settings.value["manual_queue_only"]
+      # queue_on_source_update_only - (optional) is a type of bool
       queue_on_source_update_only = settings.value["queue_on_source_update_only"]
-      valid_duration              = settings.value["valid_duration"]
+      # valid_duration - (optional) is a type of number
+      valid_duration = settings.value["valid_duration"]
 
       dynamic "scope" {
         for_each = settings.value.scope
         content {
-          match_type     = scope.value["match_type"]
-          repository_id  = scope.value["repository_id"]
+          # match_type - (optional) is a type of string
+          match_type = scope.value["match_type"]
+          # repository_id - (optional) is a type of string
+          repository_id = scope.value["repository_id"]
+          # repository_ref - (optional) is a type of string
           repository_ref = scope.value["repository_ref"]
         }
       }

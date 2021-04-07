@@ -78,13 +78,17 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_imagestorages_member_v2" "this" {
-  image_id  = var.image_id
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # member_id - (required) is a type of string
   member_id = var.member_id
-  region    = var.region
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

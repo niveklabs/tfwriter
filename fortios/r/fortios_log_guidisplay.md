@@ -66,9 +66,12 @@ variable "resolve_hosts" {
 
 ```terraform
 resource "fortios_log_guidisplay" "this" {
+  # fortiview_unscanned_apps - (optional) is a type of string
   fortiview_unscanned_apps = var.fortiview_unscanned_apps
-  resolve_apps             = var.resolve_apps
-  resolve_hosts            = var.resolve_hosts
+  # resolve_apps - (optional) is a type of string
+  resolve_apps = var.resolve_apps
+  # resolve_hosts - (optional) is a type of string
+  resolve_hosts = var.resolve_hosts
 }
 ```
 

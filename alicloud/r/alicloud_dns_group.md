@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "alicloud_dns_group" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

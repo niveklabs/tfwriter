@@ -98,16 +98,23 @@ variable "categories" {
 
 ```terraform
 data "nutanix_user_group" "this" {
-  owner_reference               = var.owner_reference
-  project_reference             = var.project_reference
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # project_reference - (optional) is a type of map of string
+  project_reference = var.project_reference
+  # user_group_distinguished_name - (optional) is a type of string
   user_group_distinguished_name = var.user_group_distinguished_name
-  user_group_id                 = var.user_group_id
-  user_group_name               = var.user_group_name
+  # user_group_id - (optional) is a type of string
+  user_group_id = var.user_group_id
+  # user_group_name - (optional) is a type of string
+  user_group_name = var.user_group_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

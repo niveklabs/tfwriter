@@ -273,34 +273,59 @@ variable "srcaddr6" {
 
 ```terraform
 resource "fortios_firewall_interfacepolicy6" "this" {
-  address_type               = var.address_type
-  application_list           = var.application_list
-  application_list_status    = var.application_list_status
-  av_profile                 = var.av_profile
-  av_profile_status          = var.av_profile_status
-  comments                   = var.comments
-  dlp_sensor                 = var.dlp_sensor
-  dlp_sensor_status          = var.dlp_sensor_status
-  dsri                       = var.dsri
-  dynamic_sort_subtable      = var.dynamic_sort_subtable
-  emailfilter_profile        = var.emailfilter_profile
+  # address_type - (optional) is a type of string
+  address_type = var.address_type
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # application_list_status - (optional) is a type of string
+  application_list_status = var.application_list_status
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # av_profile_status - (optional) is a type of string
+  av_profile_status = var.av_profile_status
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dlp_sensor - (optional) is a type of string
+  dlp_sensor = var.dlp_sensor
+  # dlp_sensor_status - (optional) is a type of string
+  dlp_sensor_status = var.dlp_sensor_status
+  # dsri - (optional) is a type of string
+  dsri = var.dsri
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = var.emailfilter_profile
+  # emailfilter_profile_status - (optional) is a type of string
   emailfilter_profile_status = var.emailfilter_profile_status
-  interface                  = var.interface
-  ips_sensor                 = var.ips_sensor
-  ips_sensor_status          = var.ips_sensor_status
-  label                      = var.label
-  logtraffic                 = var.logtraffic
-  policyid                   = var.policyid
-  scan_botnet_connections    = var.scan_botnet_connections
-  spamfilter_profile         = var.spamfilter_profile
-  spamfilter_profile_status  = var.spamfilter_profile_status
-  status                     = var.status
-  webfilter_profile          = var.webfilter_profile
-  webfilter_profile_status   = var.webfilter_profile_status
+  # interface - (required) is a type of string
+  interface = var.interface
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # ips_sensor_status - (optional) is a type of string
+  ips_sensor_status = var.ips_sensor_status
+  # label - (optional) is a type of string
+  label = var.label
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # scan_botnet_connections - (optional) is a type of string
+  scan_botnet_connections = var.scan_botnet_connections
+  # spamfilter_profile - (optional) is a type of string
+  spamfilter_profile = var.spamfilter_profile
+  # spamfilter_profile_status - (optional) is a type of string
+  spamfilter_profile_status = var.spamfilter_profile_status
+  # status - (optional) is a type of string
+  status = var.status
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
+  # webfilter_profile_status - (optional) is a type of string
+  webfilter_profile_status = var.webfilter_profile_status
 
   dynamic "dstaddr6" {
     for_each = var.dstaddr6
     content {
+      # name - (optional) is a type of string
       name = dstaddr6.value["name"]
     }
   }
@@ -308,6 +333,7 @@ resource "fortios_firewall_interfacepolicy6" "this" {
   dynamic "service6" {
     for_each = var.service6
     content {
+      # name - (optional) is a type of string
       name = service6.value["name"]
     }
   }
@@ -315,6 +341,7 @@ resource "fortios_firewall_interfacepolicy6" "this" {
   dynamic "srcaddr6" {
     for_each = var.srcaddr6
     content {
+      # name - (optional) is a type of string
       name = srcaddr6.value["name"]
     }
   }

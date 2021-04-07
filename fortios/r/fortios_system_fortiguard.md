@@ -391,50 +391,94 @@ variable "webfilter_timeout" {
 
 ```terraform
 resource "fortios_system_fortiguard" "this" {
-  antispam_cache                     = var.antispam_cache
-  antispam_cache_mpercent            = var.antispam_cache_mpercent
-  antispam_cache_ttl                 = var.antispam_cache_ttl
-  antispam_expiration                = var.antispam_expiration
-  antispam_force_off                 = var.antispam_force_off
-  antispam_license                   = var.antispam_license
-  antispam_timeout                   = var.antispam_timeout
-  anycast_sdns_server_ip             = var.anycast_sdns_server_ip
-  anycast_sdns_server_port           = var.anycast_sdns_server_port
-  auto_join_forticloud               = var.auto_join_forticloud
-  ddns_server_ip                     = var.ddns_server_ip
-  ddns_server_port                   = var.ddns_server_port
-  fortiguard_anycast                 = var.fortiguard_anycast
-  fortiguard_anycast_source          = var.fortiguard_anycast_source
-  interface                          = var.interface
-  interface_select_method            = var.interface_select_method
-  load_balance_servers               = var.load_balance_servers
-  outbreak_prevention_cache          = var.outbreak_prevention_cache
+  # antispam_cache - (optional) is a type of string
+  antispam_cache = var.antispam_cache
+  # antispam_cache_mpercent - (optional) is a type of number
+  antispam_cache_mpercent = var.antispam_cache_mpercent
+  # antispam_cache_ttl - (optional) is a type of number
+  antispam_cache_ttl = var.antispam_cache_ttl
+  # antispam_expiration - (optional) is a type of number
+  antispam_expiration = var.antispam_expiration
+  # antispam_force_off - (optional) is a type of string
+  antispam_force_off = var.antispam_force_off
+  # antispam_license - (optional) is a type of number
+  antispam_license = var.antispam_license
+  # antispam_timeout - (required) is a type of number
+  antispam_timeout = var.antispam_timeout
+  # anycast_sdns_server_ip - (optional) is a type of string
+  anycast_sdns_server_ip = var.anycast_sdns_server_ip
+  # anycast_sdns_server_port - (optional) is a type of number
+  anycast_sdns_server_port = var.anycast_sdns_server_port
+  # auto_join_forticloud - (optional) is a type of string
+  auto_join_forticloud = var.auto_join_forticloud
+  # ddns_server_ip - (optional) is a type of string
+  ddns_server_ip = var.ddns_server_ip
+  # ddns_server_port - (optional) is a type of number
+  ddns_server_port = var.ddns_server_port
+  # fortiguard_anycast - (optional) is a type of string
+  fortiguard_anycast = var.fortiguard_anycast
+  # fortiguard_anycast_source - (optional) is a type of string
+  fortiguard_anycast_source = var.fortiguard_anycast_source
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # load_balance_servers - (optional) is a type of number
+  load_balance_servers = var.load_balance_servers
+  # outbreak_prevention_cache - (optional) is a type of string
+  outbreak_prevention_cache = var.outbreak_prevention_cache
+  # outbreak_prevention_cache_mpercent - (optional) is a type of number
   outbreak_prevention_cache_mpercent = var.outbreak_prevention_cache_mpercent
-  outbreak_prevention_cache_ttl      = var.outbreak_prevention_cache_ttl
-  outbreak_prevention_expiration     = var.outbreak_prevention_expiration
-  outbreak_prevention_force_off      = var.outbreak_prevention_force_off
-  outbreak_prevention_license        = var.outbreak_prevention_license
-  outbreak_prevention_timeout        = var.outbreak_prevention_timeout
-  port                               = var.port
-  protocol                           = var.protocol
-  proxy_password                     = var.proxy_password
-  proxy_server_ip                    = var.proxy_server_ip
-  proxy_server_port                  = var.proxy_server_port
-  proxy_username                     = var.proxy_username
-  sandbox_region                     = var.sandbox_region
-  sdns_options                       = var.sdns_options
-  sdns_server_ip                     = var.sdns_server_ip
-  sdns_server_port                   = var.sdns_server_port
-  service_account_id                 = var.service_account_id
-  source_ip                          = var.source_ip
-  source_ip6                         = var.source_ip6
-  update_server_location             = var.update_server_location
-  webfilter_cache                    = var.webfilter_cache
-  webfilter_cache_ttl                = var.webfilter_cache_ttl
-  webfilter_expiration               = var.webfilter_expiration
-  webfilter_force_off                = var.webfilter_force_off
-  webfilter_license                  = var.webfilter_license
-  webfilter_timeout                  = var.webfilter_timeout
+  # outbreak_prevention_cache_ttl - (optional) is a type of number
+  outbreak_prevention_cache_ttl = var.outbreak_prevention_cache_ttl
+  # outbreak_prevention_expiration - (optional) is a type of number
+  outbreak_prevention_expiration = var.outbreak_prevention_expiration
+  # outbreak_prevention_force_off - (optional) is a type of string
+  outbreak_prevention_force_off = var.outbreak_prevention_force_off
+  # outbreak_prevention_license - (optional) is a type of number
+  outbreak_prevention_license = var.outbreak_prevention_license
+  # outbreak_prevention_timeout - (required) is a type of number
+  outbreak_prevention_timeout = var.outbreak_prevention_timeout
+  # port - (optional) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # proxy_password - (optional) is a type of string
+  proxy_password = var.proxy_password
+  # proxy_server_ip - (optional) is a type of string
+  proxy_server_ip = var.proxy_server_ip
+  # proxy_server_port - (optional) is a type of number
+  proxy_server_port = var.proxy_server_port
+  # proxy_username - (optional) is a type of string
+  proxy_username = var.proxy_username
+  # sandbox_region - (optional) is a type of string
+  sandbox_region = var.sandbox_region
+  # sdns_options - (optional) is a type of string
+  sdns_options = var.sdns_options
+  # sdns_server_ip - (optional) is a type of string
+  sdns_server_ip = var.sdns_server_ip
+  # sdns_server_port - (optional) is a type of number
+  sdns_server_port = var.sdns_server_port
+  # service_account_id - (optional) is a type of string
+  service_account_id = var.service_account_id
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ip6 - (optional) is a type of string
+  source_ip6 = var.source_ip6
+  # update_server_location - (optional) is a type of string
+  update_server_location = var.update_server_location
+  # webfilter_cache - (optional) is a type of string
+  webfilter_cache = var.webfilter_cache
+  # webfilter_cache_ttl - (optional) is a type of number
+  webfilter_cache_ttl = var.webfilter_cache_ttl
+  # webfilter_expiration - (optional) is a type of number
+  webfilter_expiration = var.webfilter_expiration
+  # webfilter_force_off - (optional) is a type of string
+  webfilter_force_off = var.webfilter_force_off
+  # webfilter_license - (optional) is a type of number
+  webfilter_license = var.webfilter_license
+  # webfilter_timeout - (required) is a type of number
+  webfilter_timeout = var.webfilter_timeout
 }
 ```
 

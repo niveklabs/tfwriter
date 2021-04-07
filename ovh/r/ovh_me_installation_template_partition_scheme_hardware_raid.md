@@ -84,11 +84,17 @@ variable "template_name" {
 
 ```terraform
 resource "ovh_me_installation_template_partition_scheme_hardware_raid" "this" {
-  disks         = var.disks
-  mode          = var.mode
-  name          = var.name
-  scheme_name   = var.scheme_name
-  step          = var.step
+  # disks - (required) is a type of list of string
+  disks = var.disks
+  # mode - (required) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # scheme_name - (required) is a type of string
+  scheme_name = var.scheme_name
+  # step - (required) is a type of number
+  step = var.step
+  # template_name - (required) is a type of string
   template_name = var.template_name
 }
 ```

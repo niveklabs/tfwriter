@@ -72,12 +72,15 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_config_configuration_recorder" "this" {
+  # enterprise_edition - (optional) is a type of bool
   enterprise_edition = var.enterprise_edition
-  resource_types     = var.resource_types
+  # resource_types - (optional) is a type of set of string
+  resource_types = var.resource_types
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

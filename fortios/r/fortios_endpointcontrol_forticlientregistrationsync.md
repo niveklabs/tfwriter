@@ -57,7 +57,9 @@ variable "peer_name" {
 
 ```terraform
 resource "fortios_endpointcontrol_forticlientregistrationsync" "this" {
-  peer_ip   = var.peer_ip
+  # peer_ip - (required) is a type of string
+  peer_ip = var.peer_ip
+  # peer_name - (optional) is a type of string
   peer_name = var.peer_name
 }
 ```

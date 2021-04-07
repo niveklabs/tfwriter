@@ -205,26 +205,43 @@ variable "shard_list" {
 
 ```terraform
 resource "alicloud_mongodb_sharding_instance" "this" {
-  account_password       = var.account_password
-  backup_period          = var.backup_period
-  backup_time            = var.backup_time
-  engine_version         = var.engine_version
-  instance_charge_type   = var.instance_charge_type
+  # account_password - (optional) is a type of string
+  account_password = var.account_password
+  # backup_period - (optional) is a type of set of string
+  backup_period = var.backup_period
+  # backup_time - (optional) is a type of string
+  backup_time = var.backup_time
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
-  name                   = var.name
-  period                 = var.period
-  security_group_id      = var.security_group_id
-  security_ip_list       = var.security_ip_list
-  storage_engine         = var.storage_engine
-  tags                   = var.tags
-  tde_status             = var.tde_status
-  vswitch_id             = var.vswitch_id
-  zone_id                = var.zone_id
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # security_ip_list - (optional) is a type of set of string
+  security_ip_list = var.security_ip_list
+  # storage_engine - (optional) is a type of string
+  storage_engine = var.storage_engine
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tde_status - (optional) is a type of string
+  tde_status = var.tde_status
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "mongo_list" {
     for_each = var.mongo_list
     content {
+      # node_class - (required) is a type of string
       node_class = mongo_list.value["node_class"]
     }
   }
@@ -232,7 +249,9 @@ resource "alicloud_mongodb_sharding_instance" "this" {
   dynamic "shard_list" {
     for_each = var.shard_list
     content {
-      node_class   = shard_list.value["node_class"]
+      # node_class - (required) is a type of string
+      node_class = shard_list.value["node_class"]
+      # node_storage - (required) is a type of number
       node_storage = shard_list.value["node_storage"]
     }
   }

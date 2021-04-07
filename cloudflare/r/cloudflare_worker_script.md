@@ -120,13 +120,17 @@ variable "webassembly_binding" {
 
 ```terraform
 resource "cloudflare_worker_script" "this" {
+  # content - (required) is a type of string
   content = var.content
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "kv_namespace_binding" {
     for_each = var.kv_namespace_binding
     content {
-      name         = kv_namespace_binding.value["name"]
+      # name - (required) is a type of string
+      name = kv_namespace_binding.value["name"]
+      # namespace_id - (required) is a type of string
       namespace_id = kv_namespace_binding.value["namespace_id"]
     }
   }
@@ -134,7 +138,9 @@ resource "cloudflare_worker_script" "this" {
   dynamic "plain_text_binding" {
     for_each = var.plain_text_binding
     content {
+      # name - (required) is a type of string
       name = plain_text_binding.value["name"]
+      # text - (required) is a type of string
       text = plain_text_binding.value["text"]
     }
   }
@@ -142,7 +148,9 @@ resource "cloudflare_worker_script" "this" {
   dynamic "secret_text_binding" {
     for_each = var.secret_text_binding
     content {
+      # name - (required) is a type of string
       name = secret_text_binding.value["name"]
+      # text - (required) is a type of string
       text = secret_text_binding.value["text"]
     }
   }
@@ -150,8 +158,10 @@ resource "cloudflare_worker_script" "this" {
   dynamic "webassembly_binding" {
     for_each = var.webassembly_binding
     content {
+      # module - (required) is a type of string
       module = webassembly_binding.value["module"]
-      name   = webassembly_binding.value["name"]
+      # name - (required) is a type of string
+      name = webassembly_binding.value["name"]
     }
   }
 

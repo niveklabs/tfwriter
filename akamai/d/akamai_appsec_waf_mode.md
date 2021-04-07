@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_waf_mode" "this" {
-  config_id          = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # security_policy_id - (required) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

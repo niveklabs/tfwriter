@@ -71,10 +71,14 @@ variable "type" {
 
 ```terraform
 resource "scaleway_iot_network" "this" {
-  hub_id       = var.hub_id
-  name         = var.name
+  # hub_id - (required) is a type of string
+  hub_id = var.hub_id
+  # name - (required) is a type of string
+  name = var.name
+  # topic_prefix - (optional) is a type of string
   topic_prefix = var.topic_prefix
-  type         = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

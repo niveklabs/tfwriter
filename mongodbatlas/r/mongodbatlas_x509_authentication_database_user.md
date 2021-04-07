@@ -73,10 +73,14 @@ variable "username" {
 
 ```terraform
 resource "mongodbatlas_x509_authentication_database_user" "this" {
-  customer_x509_cas       = var.customer_x509_cas
+  # customer_x509_cas - (optional) is a type of string
+  customer_x509_cas = var.customer_x509_cas
+  # months_until_expiration - (optional) is a type of number
   months_until_expiration = var.months_until_expiration
-  project_id              = var.project_id
-  username                = var.username
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

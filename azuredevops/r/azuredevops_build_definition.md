@@ -232,28 +232,39 @@ variable "variable" {
 
 ```terraform
 resource "azuredevops_build_definition" "this" {
+  # agent_pool_name - (optional) is a type of string
   agent_pool_name = var.agent_pool_name
-  name            = var.name
-  path            = var.path
-  project_id      = var.project_id
+  # name - (optional) is a type of string
+  name = var.name
+  # path - (optional) is a type of string
+  path = var.path
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # variable_groups - (optional) is a type of set of number
   variable_groups = var.variable_groups
 
   dynamic "ci_trigger" {
     for_each = var.ci_trigger
     content {
+      # use_yaml - (optional) is a type of bool
       use_yaml = ci_trigger.value["use_yaml"]
 
       dynamic "override" {
         for_each = ci_trigger.value.override
         content {
-          batch                            = override.value["batch"]
+          # batch - (optional) is a type of bool
+          batch = override.value["batch"]
+          # max_concurrent_builds_per_branch - (optional) is a type of number
           max_concurrent_builds_per_branch = override.value["max_concurrent_builds_per_branch"]
-          polling_interval                 = override.value["polling_interval"]
+          # polling_interval - (optional) is a type of number
+          polling_interval = override.value["polling_interval"]
 
           dynamic "branch_filter" {
             for_each = override.value.branch_filter
             content {
+              # exclude - (optional) is a type of set of string
               exclude = branch_filter.value["exclude"]
+              # include - (optional) is a type of set of string
               include = branch_filter.value["include"]
             }
           }
@@ -261,7 +272,9 @@ resource "azuredevops_build_definition" "this" {
           dynamic "path_filter" {
             for_each = override.value.path_filter
             content {
+              # exclude - (optional) is a type of set of string
               exclude = path_filter.value["exclude"]
+              # include - (optional) is a type of set of string
               include = path_filter.value["include"]
             }
           }
@@ -275,14 +288,19 @@ resource "azuredevops_build_definition" "this" {
   dynamic "pull_request_trigger" {
     for_each = var.pull_request_trigger
     content {
+      # comment_required - (optional) is a type of string
       comment_required = pull_request_trigger.value["comment_required"]
-      initial_branch   = pull_request_trigger.value["initial_branch"]
-      use_yaml         = pull_request_trigger.value["use_yaml"]
+      # initial_branch - (optional) is a type of string
+      initial_branch = pull_request_trigger.value["initial_branch"]
+      # use_yaml - (optional) is a type of bool
+      use_yaml = pull_request_trigger.value["use_yaml"]
 
       dynamic "forks" {
         for_each = pull_request_trigger.value.forks
         content {
-          enabled       = forks.value["enabled"]
+          # enabled - (required) is a type of bool
+          enabled = forks.value["enabled"]
+          # share_secrets - (required) is a type of bool
           share_secrets = forks.value["share_secrets"]
         }
       }
@@ -290,12 +308,15 @@ resource "azuredevops_build_definition" "this" {
       dynamic "override" {
         for_each = pull_request_trigger.value.override
         content {
+          # auto_cancel - (optional) is a type of bool
           auto_cancel = override.value["auto_cancel"]
 
           dynamic "branch_filter" {
             for_each = override.value.branch_filter
             content {
+              # exclude - (optional) is a type of set of string
               exclude = branch_filter.value["exclude"]
+              # include - (optional) is a type of set of string
               include = branch_filter.value["include"]
             }
           }
@@ -303,7 +324,9 @@ resource "azuredevops_build_definition" "this" {
           dynamic "path_filter" {
             for_each = override.value.path_filter
             content {
+              # exclude - (optional) is a type of set of string
               exclude = path_filter.value["exclude"]
+              # include - (optional) is a type of set of string
               include = path_filter.value["include"]
             }
           }
@@ -317,24 +340,36 @@ resource "azuredevops_build_definition" "this" {
   dynamic "repository" {
     for_each = var.repository
     content {
-      branch_name           = repository.value["branch_name"]
+      # branch_name - (optional) is a type of string
+      branch_name = repository.value["branch_name"]
+      # github_enterprise_url - (optional) is a type of string
       github_enterprise_url = repository.value["github_enterprise_url"]
-      repo_id               = repository.value["repo_id"]
-      repo_type             = repository.value["repo_type"]
-      report_build_status   = repository.value["report_build_status"]
+      # repo_id - (required) is a type of string
+      repo_id = repository.value["repo_id"]
+      # repo_type - (required) is a type of string
+      repo_type = repository.value["repo_type"]
+      # report_build_status - (optional) is a type of bool
+      report_build_status = repository.value["report_build_status"]
+      # service_connection_id - (optional) is a type of string
       service_connection_id = repository.value["service_connection_id"]
-      yml_path              = repository.value["yml_path"]
+      # yml_path - (required) is a type of string
+      yml_path = repository.value["yml_path"]
     }
   }
 
   dynamic "variable" {
     for_each = var.variable
     content {
+      # allow_override - (optional) is a type of bool
       allow_override = variable.value["allow_override"]
-      is_secret      = variable.value["is_secret"]
-      name           = variable.value["name"]
-      secret_value   = variable.value["secret_value"]
-      value          = variable.value["value"]
+      # is_secret - (optional) is a type of bool
+      is_secret = variable.value["is_secret"]
+      # name - (required) is a type of string
+      name = variable.value["name"]
+      # secret_value - (optional) is a type of string
+      secret_value = variable.value["secret_value"]
+      # value - (optional) is a type of string
+      value = variable.value["value"]
     }
   }
 

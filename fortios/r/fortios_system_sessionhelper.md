@@ -71,9 +71,13 @@ variable "protocol" {
 
 ```terraform
 resource "fortios_system_sessionhelper" "this" {
-  fosid    = var.fosid
-  name     = var.name
-  port     = var.port
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of number
   protocol = var.protocol
 }
 ```

@@ -95,15 +95,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_route_table" "this" {
-  description      = var.description
-  name             = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # route_table_name - (optional) is a type of string
   route_table_name = var.route_table_name
-  tags             = var.tags
-  vpc_id           = var.vpc_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

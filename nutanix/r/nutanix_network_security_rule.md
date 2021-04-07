@@ -561,44 +561,75 @@ variable "isolation_rule_second_entity_filter_params" {
 
 ```terraform
 resource "nutanix_network_security_rule" "this" {
-  ad_rule_action                                = var.ad_rule_action
-  ad_rule_target_group_default_internal_policy  = var.ad_rule_target_group_default_internal_policy
-  ad_rule_target_group_filter_kind_list         = var.ad_rule_target_group_filter_kind_list
-  ad_rule_target_group_filter_type              = var.ad_rule_target_group_filter_type
-  ad_rule_target_group_peer_specification_type  = var.ad_rule_target_group_peer_specification_type
-  allow_ipv6_traffic                            = var.allow_ipv6_traffic
-  app_rule_action                               = var.app_rule_action
+  # ad_rule_action - (optional) is a type of string
+  ad_rule_action = var.ad_rule_action
+  # ad_rule_target_group_default_internal_policy - (optional) is a type of string
+  ad_rule_target_group_default_internal_policy = var.ad_rule_target_group_default_internal_policy
+  # ad_rule_target_group_filter_kind_list - (optional) is a type of list of string
+  ad_rule_target_group_filter_kind_list = var.ad_rule_target_group_filter_kind_list
+  # ad_rule_target_group_filter_type - (optional) is a type of string
+  ad_rule_target_group_filter_type = var.ad_rule_target_group_filter_type
+  # ad_rule_target_group_peer_specification_type - (optional) is a type of string
+  ad_rule_target_group_peer_specification_type = var.ad_rule_target_group_peer_specification_type
+  # allow_ipv6_traffic - (optional) is a type of bool
+  allow_ipv6_traffic = var.allow_ipv6_traffic
+  # app_rule_action - (optional) is a type of string
+  app_rule_action = var.app_rule_action
+  # app_rule_target_group_default_internal_policy - (optional) is a type of string
   app_rule_target_group_default_internal_policy = var.app_rule_target_group_default_internal_policy
-  app_rule_target_group_filter_kind_list        = var.app_rule_target_group_filter_kind_list
-  app_rule_target_group_filter_type             = var.app_rule_target_group_filter_type
+  # app_rule_target_group_filter_kind_list - (optional) is a type of list of string
+  app_rule_target_group_filter_kind_list = var.app_rule_target_group_filter_kind_list
+  # app_rule_target_group_filter_type - (optional) is a type of string
+  app_rule_target_group_filter_type = var.app_rule_target_group_filter_type
+  # app_rule_target_group_peer_specification_type - (optional) is a type of string
   app_rule_target_group_peer_specification_type = var.app_rule_target_group_peer_specification_type
-  description                                   = var.description
-  is_policy_hitlog_enabled                      = var.is_policy_hitlog_enabled
-  isolation_rule_action                         = var.isolation_rule_action
-  isolation_rule_first_entity_filter_kind_list  = var.isolation_rule_first_entity_filter_kind_list
-  isolation_rule_first_entity_filter_type       = var.isolation_rule_first_entity_filter_type
+  # description - (optional) is a type of string
+  description = var.description
+  # is_policy_hitlog_enabled - (optional) is a type of bool
+  is_policy_hitlog_enabled = var.is_policy_hitlog_enabled
+  # isolation_rule_action - (optional) is a type of string
+  isolation_rule_action = var.isolation_rule_action
+  # isolation_rule_first_entity_filter_kind_list - (optional) is a type of list of string
+  isolation_rule_first_entity_filter_kind_list = var.isolation_rule_first_entity_filter_kind_list
+  # isolation_rule_first_entity_filter_type - (optional) is a type of string
+  isolation_rule_first_entity_filter_type = var.isolation_rule_first_entity_filter_type
+  # isolation_rule_second_entity_filter_kind_list - (optional) is a type of list of string
   isolation_rule_second_entity_filter_kind_list = var.isolation_rule_second_entity_filter_kind_list
-  isolation_rule_second_entity_filter_type      = var.isolation_rule_second_entity_filter_type
-  name                                          = var.name
-  owner_reference                               = var.owner_reference
-  project_reference                             = var.project_reference
+  # isolation_rule_second_entity_filter_type - (optional) is a type of string
+  isolation_rule_second_entity_filter_type = var.isolation_rule_second_entity_filter_type
+  # name - (required) is a type of string
+  name = var.name
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # project_reference - (optional) is a type of map of string
+  project_reference = var.project_reference
 
   dynamic "ad_rule_inbound_allow_list" {
     for_each = var.ad_rule_inbound_allow_list
     content {
-      expiration_time                  = ad_rule_inbound_allow_list.value["expiration_time"]
-      filter_kind_list                 = ad_rule_inbound_allow_list.value["filter_kind_list"]
-      filter_type                      = ad_rule_inbound_allow_list.value["filter_type"]
-      ip_subnet                        = ad_rule_inbound_allow_list.value["ip_subnet"]
-      ip_subnet_prefix_length          = ad_rule_inbound_allow_list.value["ip_subnet_prefix_length"]
+      # expiration_time - (optional) is a type of string
+      expiration_time = ad_rule_inbound_allow_list.value["expiration_time"]
+      # filter_kind_list - (optional) is a type of list of string
+      filter_kind_list = ad_rule_inbound_allow_list.value["filter_kind_list"]
+      # filter_type - (optional) is a type of string
+      filter_type = ad_rule_inbound_allow_list.value["filter_type"]
+      # ip_subnet - (optional) is a type of string
+      ip_subnet = ad_rule_inbound_allow_list.value["ip_subnet"]
+      # ip_subnet_prefix_length - (optional) is a type of string
+      ip_subnet_prefix_length = ad_rule_inbound_allow_list.value["ip_subnet_prefix_length"]
+      # network_function_chain_reference - (optional) is a type of map of string
       network_function_chain_reference = ad_rule_inbound_allow_list.value["network_function_chain_reference"]
-      peer_specification_type          = ad_rule_inbound_allow_list.value["peer_specification_type"]
-      protocol                         = ad_rule_inbound_allow_list.value["protocol"]
+      # peer_specification_type - (optional) is a type of string
+      peer_specification_type = ad_rule_inbound_allow_list.value["peer_specification_type"]
+      # protocol - (optional) is a type of string
+      protocol = ad_rule_inbound_allow_list.value["protocol"]
 
       dynamic "filter_params" {
         for_each = ad_rule_inbound_allow_list.value.filter_params
         content {
-          name   = filter_params.value["name"]
+          # name - (required) is a type of string
+          name = filter_params.value["name"]
+          # values - (required) is a type of list of string
           values = filter_params.value["values"]
         }
       }
@@ -606,7 +637,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "icmp_type_code_list" {
         for_each = ad_rule_inbound_allow_list.value.icmp_type_code_list
         content {
+          # code - (optional) is a type of string
           code = icmp_type_code_list.value["code"]
+          # type - (optional) is a type of string
           type = icmp_type_code_list.value["type"]
         }
       }
@@ -614,7 +647,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "tcp_port_range_list" {
         for_each = ad_rule_inbound_allow_list.value.tcp_port_range_list
         content {
-          end_port   = tcp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = tcp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = tcp_port_range_list.value["start_port"]
         }
       }
@@ -622,7 +657,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "udp_port_range_list" {
         for_each = ad_rule_inbound_allow_list.value.udp_port_range_list
         content {
-          end_port   = udp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = udp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = udp_port_range_list.value["start_port"]
         }
       }
@@ -633,19 +670,29 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "ad_rule_outbound_allow_list" {
     for_each = var.ad_rule_outbound_allow_list
     content {
-      expiration_time                  = ad_rule_outbound_allow_list.value["expiration_time"]
-      filter_kind_list                 = ad_rule_outbound_allow_list.value["filter_kind_list"]
-      filter_type                      = ad_rule_outbound_allow_list.value["filter_type"]
-      ip_subnet                        = ad_rule_outbound_allow_list.value["ip_subnet"]
-      ip_subnet_prefix_length          = ad_rule_outbound_allow_list.value["ip_subnet_prefix_length"]
+      # expiration_time - (optional) is a type of string
+      expiration_time = ad_rule_outbound_allow_list.value["expiration_time"]
+      # filter_kind_list - (optional) is a type of list of string
+      filter_kind_list = ad_rule_outbound_allow_list.value["filter_kind_list"]
+      # filter_type - (optional) is a type of string
+      filter_type = ad_rule_outbound_allow_list.value["filter_type"]
+      # ip_subnet - (optional) is a type of string
+      ip_subnet = ad_rule_outbound_allow_list.value["ip_subnet"]
+      # ip_subnet_prefix_length - (optional) is a type of string
+      ip_subnet_prefix_length = ad_rule_outbound_allow_list.value["ip_subnet_prefix_length"]
+      # network_function_chain_reference - (optional) is a type of map of string
       network_function_chain_reference = ad_rule_outbound_allow_list.value["network_function_chain_reference"]
-      peer_specification_type          = ad_rule_outbound_allow_list.value["peer_specification_type"]
-      protocol                         = ad_rule_outbound_allow_list.value["protocol"]
+      # peer_specification_type - (optional) is a type of string
+      peer_specification_type = ad_rule_outbound_allow_list.value["peer_specification_type"]
+      # protocol - (optional) is a type of string
+      protocol = ad_rule_outbound_allow_list.value["protocol"]
 
       dynamic "filter_params" {
         for_each = ad_rule_outbound_allow_list.value.filter_params
         content {
-          name   = filter_params.value["name"]
+          # name - (required) is a type of string
+          name = filter_params.value["name"]
+          # values - (required) is a type of list of string
           values = filter_params.value["values"]
         }
       }
@@ -653,7 +700,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "icmp_type_code_list" {
         for_each = ad_rule_outbound_allow_list.value.icmp_type_code_list
         content {
+          # code - (optional) is a type of string
           code = icmp_type_code_list.value["code"]
+          # type - (optional) is a type of string
           type = icmp_type_code_list.value["type"]
         }
       }
@@ -661,7 +710,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "tcp_port_range_list" {
         for_each = ad_rule_outbound_allow_list.value.tcp_port_range_list
         content {
-          end_port   = tcp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = tcp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = tcp_port_range_list.value["start_port"]
         }
       }
@@ -669,7 +720,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "udp_port_range_list" {
         for_each = ad_rule_outbound_allow_list.value.udp_port_range_list
         content {
-          end_port   = udp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = udp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = udp_port_range_list.value["start_port"]
         }
       }
@@ -680,7 +733,9 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "ad_rule_target_group_filter_params" {
     for_each = var.ad_rule_target_group_filter_params
     content {
-      name   = ad_rule_target_group_filter_params.value["name"]
+      # name - (required) is a type of string
+      name = ad_rule_target_group_filter_params.value["name"]
+      # values - (required) is a type of list of string
       values = ad_rule_target_group_filter_params.value["values"]
     }
   }
@@ -688,19 +743,29 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "app_rule_inbound_allow_list" {
     for_each = var.app_rule_inbound_allow_list
     content {
-      expiration_time                  = app_rule_inbound_allow_list.value["expiration_time"]
-      filter_kind_list                 = app_rule_inbound_allow_list.value["filter_kind_list"]
-      filter_type                      = app_rule_inbound_allow_list.value["filter_type"]
-      ip_subnet                        = app_rule_inbound_allow_list.value["ip_subnet"]
-      ip_subnet_prefix_length          = app_rule_inbound_allow_list.value["ip_subnet_prefix_length"]
+      # expiration_time - (optional) is a type of string
+      expiration_time = app_rule_inbound_allow_list.value["expiration_time"]
+      # filter_kind_list - (optional) is a type of list of string
+      filter_kind_list = app_rule_inbound_allow_list.value["filter_kind_list"]
+      # filter_type - (optional) is a type of string
+      filter_type = app_rule_inbound_allow_list.value["filter_type"]
+      # ip_subnet - (optional) is a type of string
+      ip_subnet = app_rule_inbound_allow_list.value["ip_subnet"]
+      # ip_subnet_prefix_length - (optional) is a type of string
+      ip_subnet_prefix_length = app_rule_inbound_allow_list.value["ip_subnet_prefix_length"]
+      # network_function_chain_reference - (optional) is a type of map of string
       network_function_chain_reference = app_rule_inbound_allow_list.value["network_function_chain_reference"]
-      peer_specification_type          = app_rule_inbound_allow_list.value["peer_specification_type"]
-      protocol                         = app_rule_inbound_allow_list.value["protocol"]
+      # peer_specification_type - (optional) is a type of string
+      peer_specification_type = app_rule_inbound_allow_list.value["peer_specification_type"]
+      # protocol - (optional) is a type of string
+      protocol = app_rule_inbound_allow_list.value["protocol"]
 
       dynamic "filter_params" {
         for_each = app_rule_inbound_allow_list.value.filter_params
         content {
-          name   = filter_params.value["name"]
+          # name - (required) is a type of string
+          name = filter_params.value["name"]
+          # values - (required) is a type of list of string
           values = filter_params.value["values"]
         }
       }
@@ -708,7 +773,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "icmp_type_code_list" {
         for_each = app_rule_inbound_allow_list.value.icmp_type_code_list
         content {
+          # code - (optional) is a type of string
           code = icmp_type_code_list.value["code"]
+          # type - (optional) is a type of string
           type = icmp_type_code_list.value["type"]
         }
       }
@@ -716,7 +783,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "tcp_port_range_list" {
         for_each = app_rule_inbound_allow_list.value.tcp_port_range_list
         content {
-          end_port   = tcp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = tcp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = tcp_port_range_list.value["start_port"]
         }
       }
@@ -724,7 +793,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "udp_port_range_list" {
         for_each = app_rule_inbound_allow_list.value.udp_port_range_list
         content {
-          end_port   = udp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = udp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = udp_port_range_list.value["start_port"]
         }
       }
@@ -735,19 +806,29 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "app_rule_outbound_allow_list" {
     for_each = var.app_rule_outbound_allow_list
     content {
-      expiration_time                  = app_rule_outbound_allow_list.value["expiration_time"]
-      filter_kind_list                 = app_rule_outbound_allow_list.value["filter_kind_list"]
-      filter_type                      = app_rule_outbound_allow_list.value["filter_type"]
-      ip_subnet                        = app_rule_outbound_allow_list.value["ip_subnet"]
-      ip_subnet_prefix_length          = app_rule_outbound_allow_list.value["ip_subnet_prefix_length"]
+      # expiration_time - (optional) is a type of string
+      expiration_time = app_rule_outbound_allow_list.value["expiration_time"]
+      # filter_kind_list - (optional) is a type of list of string
+      filter_kind_list = app_rule_outbound_allow_list.value["filter_kind_list"]
+      # filter_type - (optional) is a type of string
+      filter_type = app_rule_outbound_allow_list.value["filter_type"]
+      # ip_subnet - (optional) is a type of string
+      ip_subnet = app_rule_outbound_allow_list.value["ip_subnet"]
+      # ip_subnet_prefix_length - (optional) is a type of string
+      ip_subnet_prefix_length = app_rule_outbound_allow_list.value["ip_subnet_prefix_length"]
+      # network_function_chain_reference - (optional) is a type of map of string
       network_function_chain_reference = app_rule_outbound_allow_list.value["network_function_chain_reference"]
-      peer_specification_type          = app_rule_outbound_allow_list.value["peer_specification_type"]
-      protocol                         = app_rule_outbound_allow_list.value["protocol"]
+      # peer_specification_type - (optional) is a type of string
+      peer_specification_type = app_rule_outbound_allow_list.value["peer_specification_type"]
+      # protocol - (optional) is a type of string
+      protocol = app_rule_outbound_allow_list.value["protocol"]
 
       dynamic "filter_params" {
         for_each = app_rule_outbound_allow_list.value.filter_params
         content {
-          name   = filter_params.value["name"]
+          # name - (required) is a type of string
+          name = filter_params.value["name"]
+          # values - (required) is a type of list of string
           values = filter_params.value["values"]
         }
       }
@@ -755,7 +836,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "icmp_type_code_list" {
         for_each = app_rule_outbound_allow_list.value.icmp_type_code_list
         content {
+          # code - (optional) is a type of string
           code = icmp_type_code_list.value["code"]
+          # type - (optional) is a type of string
           type = icmp_type_code_list.value["type"]
         }
       }
@@ -763,7 +846,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "tcp_port_range_list" {
         for_each = app_rule_outbound_allow_list.value.tcp_port_range_list
         content {
-          end_port   = tcp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = tcp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = tcp_port_range_list.value["start_port"]
         }
       }
@@ -771,7 +856,9 @@ resource "nutanix_network_security_rule" "this" {
       dynamic "udp_port_range_list" {
         for_each = app_rule_outbound_allow_list.value.udp_port_range_list
         content {
-          end_port   = udp_port_range_list.value["end_port"]
+          # end_port - (optional) is a type of number
+          end_port = udp_port_range_list.value["end_port"]
+          # start_port - (optional) is a type of number
           start_port = udp_port_range_list.value["start_port"]
         }
       }
@@ -782,7 +869,9 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "app_rule_target_group_filter_params" {
     for_each = var.app_rule_target_group_filter_params
     content {
-      name   = app_rule_target_group_filter_params.value["name"]
+      # name - (required) is a type of string
+      name = app_rule_target_group_filter_params.value["name"]
+      # values - (required) is a type of list of string
       values = app_rule_target_group_filter_params.value["values"]
     }
   }
@@ -790,7 +879,9 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -798,7 +889,9 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "isolation_rule_first_entity_filter_params" {
     for_each = var.isolation_rule_first_entity_filter_params
     content {
-      name   = isolation_rule_first_entity_filter_params.value["name"]
+      # name - (required) is a type of string
+      name = isolation_rule_first_entity_filter_params.value["name"]
+      # values - (required) is a type of list of string
       values = isolation_rule_first_entity_filter_params.value["values"]
     }
   }
@@ -806,7 +899,9 @@ resource "nutanix_network_security_rule" "this" {
   dynamic "isolation_rule_second_entity_filter_params" {
     for_each = var.isolation_rule_second_entity_filter_params
     content {
-      name   = isolation_rule_second_entity_filter_params.value["name"]
+      # name - (required) is a type of string
+      name = isolation_rule_second_entity_filter_params.value["name"]
+      # values - (required) is a type of list of string
       values = isolation_rule_second_entity_filter_params.value["values"]
     }
   }

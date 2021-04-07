@@ -218,33 +218,49 @@ variable "wan_interface" {
 
 ```terraform
 resource "fortios_vpn_ocvpn" "this" {
-  auto_discovery        = var.auto_discovery
+  # auto_discovery - (optional) is a type of string
+  auto_discovery = var.auto_discovery
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  eap                   = var.eap
-  eap_users             = var.eap_users
-  ip_allocation_block   = var.ip_allocation_block
-  multipath             = var.multipath
-  nat                   = var.nat
-  poll_interval         = var.poll_interval
-  role                  = var.role
-  sdwan                 = var.sdwan
-  status                = var.status
+  # eap - (optional) is a type of string
+  eap = var.eap
+  # eap_users - (optional) is a type of string
+  eap_users = var.eap_users
+  # ip_allocation_block - (optional) is a type of string
+  ip_allocation_block = var.ip_allocation_block
+  # multipath - (optional) is a type of string
+  multipath = var.multipath
+  # nat - (optional) is a type of string
+  nat = var.nat
+  # poll_interval - (optional) is a type of number
+  poll_interval = var.poll_interval
+  # role - (optional) is a type of string
+  role = var.role
+  # sdwan - (optional) is a type of string
+  sdwan = var.sdwan
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "forticlient_access" {
     for_each = var.forticlient_access
     content {
+      # psksecret - (optional) is a type of string
       psksecret = forticlient_access.value["psksecret"]
-      status    = forticlient_access.value["status"]
+      # status - (optional) is a type of string
+      status = forticlient_access.value["status"]
 
       dynamic "auth_groups" {
         for_each = forticlient_access.value.auth_groups
         content {
+          # auth_group - (optional) is a type of string
           auth_group = auth_groups.value["auth_group"]
-          name       = auth_groups.value["name"]
+          # name - (optional) is a type of string
+          name = auth_groups.value["name"]
 
           dynamic "overlays" {
             for_each = auth_groups.value.overlays
             content {
+              # overlay_name - (optional) is a type of string
               overlay_name = overlays.value["overlay_name"]
             }
           }
@@ -258,21 +274,32 @@ resource "fortios_vpn_ocvpn" "this" {
   dynamic "overlays" {
     for_each = var.overlays
     content {
-      assign_ip     = overlays.value["assign_ip"]
-      id            = overlays.value["id"]
+      # assign_ip - (optional) is a type of string
+      assign_ip = overlays.value["assign_ip"]
+      # id - (optional) is a type of number
+      id = overlays.value["id"]
+      # inter_overlay - (optional) is a type of string
       inter_overlay = overlays.value["inter_overlay"]
-      ipv4_end_ip   = overlays.value["ipv4_end_ip"]
+      # ipv4_end_ip - (optional) is a type of string
+      ipv4_end_ip = overlays.value["ipv4_end_ip"]
+      # ipv4_start_ip - (optional) is a type of string
       ipv4_start_ip = overlays.value["ipv4_start_ip"]
-      name          = overlays.value["name"]
-      overlay_name  = overlays.value["overlay_name"]
+      # name - (optional) is a type of string
+      name = overlays.value["name"]
+      # overlay_name - (optional) is a type of string
+      overlay_name = overlays.value["overlay_name"]
 
       dynamic "subnets" {
         for_each = overlays.value.subnets
         content {
-          id        = subnets.value["id"]
+          # id - (optional) is a type of number
+          id = subnets.value["id"]
+          # interface - (optional) is a type of string
           interface = subnets.value["interface"]
-          subnet    = subnets.value["subnet"]
-          type      = subnets.value["type"]
+          # subnet - (optional) is a type of string
+          subnet = subnets.value["subnet"]
+          # type - (optional) is a type of string
+          type = subnets.value["type"]
         }
       }
 
@@ -282,6 +309,7 @@ resource "fortios_vpn_ocvpn" "this" {
   dynamic "wan_interface" {
     for_each = var.wan_interface
     content {
+      # name - (optional) is a type of string
       name = wan_interface.value["name"]
     }
   }

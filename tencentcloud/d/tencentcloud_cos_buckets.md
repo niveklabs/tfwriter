@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_cos_buckets" "this" {
-  bucket_prefix      = var.bucket_prefix
+  # bucket_prefix - (optional) is a type of string
+  bucket_prefix = var.bucket_prefix
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

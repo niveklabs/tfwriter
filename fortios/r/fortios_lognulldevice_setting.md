@@ -49,6 +49,7 @@ variable "status" {
 
 ```terraform
 resource "fortios_lognulldevice_setting" "this" {
+  # status - (required) is a type of string
   status = var.status
 }
 ```

@@ -262,34 +262,59 @@ variable "application" {
 
 ```terraform
 resource "fortios_firewallservice_custom" "this" {
-  app_service_type      = var.app_service_type
-  category              = var.category
-  check_reset_range     = var.check_reset_range
-  color                 = var.color
-  comment               = var.comment
+  # app_service_type - (optional) is a type of string
+  app_service_type = var.app_service_type
+  # category - (optional) is a type of string
+  category = var.category
+  # check_reset_range - (optional) is a type of string
+  check_reset_range = var.check_reset_range
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fqdn                  = var.fqdn
-  helper                = var.helper
-  icmpcode              = var.icmpcode
-  icmptype              = var.icmptype
-  iprange               = var.iprange
-  name                  = var.name
-  protocol              = var.protocol
-  protocol_number       = var.protocol_number
-  proxy                 = var.proxy
-  sctp_portrange        = var.sctp_portrange
-  session_ttl           = var.session_ttl
-  tcp_halfclose_timer   = var.tcp_halfclose_timer
-  tcp_halfopen_timer    = var.tcp_halfopen_timer
-  tcp_portrange         = var.tcp_portrange
-  tcp_timewait_timer    = var.tcp_timewait_timer
-  udp_idle_timer        = var.udp_idle_timer
-  udp_portrange         = var.udp_portrange
-  visibility            = var.visibility
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # helper - (optional) is a type of string
+  helper = var.helper
+  # icmpcode - (optional) is a type of number
+  icmpcode = var.icmpcode
+  # icmptype - (optional) is a type of number
+  icmptype = var.icmptype
+  # iprange - (optional) is a type of string
+  iprange = var.iprange
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # protocol_number - (optional) is a type of number
+  protocol_number = var.protocol_number
+  # proxy - (optional) is a type of string
+  proxy = var.proxy
+  # sctp_portrange - (optional) is a type of string
+  sctp_portrange = var.sctp_portrange
+  # session_ttl - (optional) is a type of number
+  session_ttl = var.session_ttl
+  # tcp_halfclose_timer - (optional) is a type of number
+  tcp_halfclose_timer = var.tcp_halfclose_timer
+  # tcp_halfopen_timer - (optional) is a type of number
+  tcp_halfopen_timer = var.tcp_halfopen_timer
+  # tcp_portrange - (optional) is a type of string
+  tcp_portrange = var.tcp_portrange
+  # tcp_timewait_timer - (optional) is a type of number
+  tcp_timewait_timer = var.tcp_timewait_timer
+  # udp_idle_timer - (optional) is a type of number
+  udp_idle_timer = var.udp_idle_timer
+  # udp_portrange - (optional) is a type of string
+  udp_portrange = var.udp_portrange
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "app_category" {
     for_each = var.app_category
     content {
+      # id - (optional) is a type of number
       id = app_category.value["id"]
     }
   }
@@ -297,6 +322,7 @@ resource "fortios_firewallservice_custom" "this" {
   dynamic "application" {
     for_each = var.application
     content {
+      # id - (optional) is a type of number
       id = application.value["id"]
     }
   }

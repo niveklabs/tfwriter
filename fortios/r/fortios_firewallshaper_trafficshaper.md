@@ -154,20 +154,34 @@ variable "priority" {
 
 ```terraform
 resource "fortios_firewallshaper_trafficshaper" "this" {
-  bandwidth_unit       = var.bandwidth_unit
-  diffserv             = var.diffserv
-  diffservcode         = var.diffservcode
-  dscp_marking_method  = var.dscp_marking_method
-  exceed_bandwidth     = var.exceed_bandwidth
-  exceed_class_id      = var.exceed_class_id
-  exceed_dscp          = var.exceed_dscp
+  # bandwidth_unit - (optional) is a type of string
+  bandwidth_unit = var.bandwidth_unit
+  # diffserv - (optional) is a type of string
+  diffserv = var.diffserv
+  # diffservcode - (optional) is a type of string
+  diffservcode = var.diffservcode
+  # dscp_marking_method - (optional) is a type of string
+  dscp_marking_method = var.dscp_marking_method
+  # exceed_bandwidth - (optional) is a type of number
+  exceed_bandwidth = var.exceed_bandwidth
+  # exceed_class_id - (optional) is a type of number
+  exceed_class_id = var.exceed_class_id
+  # exceed_dscp - (optional) is a type of string
+  exceed_dscp = var.exceed_dscp
+  # guaranteed_bandwidth - (optional) is a type of number
   guaranteed_bandwidth = var.guaranteed_bandwidth
-  maximum_bandwidth    = var.maximum_bandwidth
-  maximum_dscp         = var.maximum_dscp
-  name                 = var.name
-  overhead             = var.overhead
-  per_policy           = var.per_policy
-  priority             = var.priority
+  # maximum_bandwidth - (optional) is a type of number
+  maximum_bandwidth = var.maximum_bandwidth
+  # maximum_dscp - (optional) is a type of string
+  maximum_dscp = var.maximum_dscp
+  # name - (optional) is a type of string
+  name = var.name
+  # overhead - (optional) is a type of number
+  overhead = var.overhead
+  # per_policy - (optional) is a type of string
+  per_policy = var.per_policy
+  # priority - (optional) is a type of string
+  priority = var.priority
 }
 ```
 

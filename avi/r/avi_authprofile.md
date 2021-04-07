@@ -262,57 +262,89 @@ variable "tacacs_plus" {
 
 ```terraform
 resource "avi_authprofile" "this" {
-  description  = var.description
-  name         = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # pa_agent_ref - (optional) is a type of string
   pa_agent_ref = var.pa_agent_ref
-  tenant_ref   = var.tenant_ref
-  type         = var.type
-  uuid         = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (required) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "http" {
     for_each = var.http
     content {
+      # cache_expiration_time - (optional) is a type of number
       cache_expiration_time = http.value["cache_expiration_time"]
-      request_header        = http.value["request_header"]
-      require_user_groups   = http.value["require_user_groups"]
+      # request_header - (optional) is a type of string
+      request_header = http.value["request_header"]
+      # require_user_groups - (optional) is a type of list of string
+      require_user_groups = http.value["require_user_groups"]
     }
   }
 
   dynamic "ldap" {
     for_each = var.ldap
     content {
-      base_dn               = ldap.value["base_dn"]
+      # base_dn - (optional) is a type of string
+      base_dn = ldap.value["base_dn"]
+      # bind_as_administrator - (optional) is a type of bool
       bind_as_administrator = ldap.value["bind_as_administrator"]
-      email_attribute       = ldap.value["email_attribute"]
-      full_name_attribute   = ldap.value["full_name_attribute"]
-      port                  = ldap.value["port"]
-      security_mode         = ldap.value["security_mode"]
-      server                = ldap.value["server"]
+      # email_attribute - (optional) is a type of string
+      email_attribute = ldap.value["email_attribute"]
+      # full_name_attribute - (optional) is a type of string
+      full_name_attribute = ldap.value["full_name_attribute"]
+      # port - (optional) is a type of number
+      port = ldap.value["port"]
+      # security_mode - (optional) is a type of string
+      security_mode = ldap.value["security_mode"]
+      # server - (optional) is a type of list of string
+      server = ldap.value["server"]
 
       dynamic "settings" {
         for_each = ldap.value.settings
         content {
-          admin_bind_dn           = settings.value["admin_bind_dn"]
-          group_filter            = settings.value["group_filter"]
-          group_member_attribute  = settings.value["group_member_attribute"]
+          # admin_bind_dn - (optional) is a type of string
+          admin_bind_dn = settings.value["admin_bind_dn"]
+          # group_filter - (optional) is a type of string
+          group_filter = settings.value["group_filter"]
+          # group_member_attribute - (optional) is a type of string
+          group_member_attribute = settings.value["group_member_attribute"]
+          # group_member_is_full_dn - (optional) is a type of bool
           group_member_is_full_dn = settings.value["group_member_is_full_dn"]
-          group_search_dn         = settings.value["group_search_dn"]
-          group_search_scope      = settings.value["group_search_scope"]
-          ignore_referrals        = settings.value["ignore_referrals"]
-          password                = settings.value["password"]
-          user_attributes         = settings.value["user_attributes"]
-          user_id_attribute       = settings.value["user_id_attribute"]
-          user_search_dn          = settings.value["user_search_dn"]
-          user_search_scope       = settings.value["user_search_scope"]
+          # group_search_dn - (optional) is a type of string
+          group_search_dn = settings.value["group_search_dn"]
+          # group_search_scope - (optional) is a type of string
+          group_search_scope = settings.value["group_search_scope"]
+          # ignore_referrals - (optional) is a type of bool
+          ignore_referrals = settings.value["ignore_referrals"]
+          # password - (optional) is a type of string
+          password = settings.value["password"]
+          # user_attributes - (optional) is a type of list of string
+          user_attributes = settings.value["user_attributes"]
+          # user_id_attribute - (optional) is a type of string
+          user_id_attribute = settings.value["user_id_attribute"]
+          # user_search_dn - (optional) is a type of string
+          user_search_dn = settings.value["user_search_dn"]
+          # user_search_scope - (optional) is a type of string
+          user_search_scope = settings.value["user_search_scope"]
         }
       }
 
       dynamic "user_bind" {
         for_each = ldap.value.user_bind
         content {
-          dn_template       = user_bind.value["dn_template"]
-          token             = user_bind.value["token"]
-          user_attributes   = user_bind.value["user_attributes"]
+          # dn_template - (optional) is a type of string
+          dn_template = user_bind.value["dn_template"]
+          # token - (optional) is a type of string
+          token = user_bind.value["token"]
+          # user_attributes - (optional) is a type of list of string
+          user_attributes = user_bind.value["user_attributes"]
+          # user_id_attribute - (optional) is a type of string
           user_id_attribute = user_bind.value["user_id_attribute"]
         }
       }
@@ -327,6 +359,7 @@ resource "avi_authprofile" "this" {
       dynamic "idp" {
         for_each = saml.value.idp
         content {
+          # metadata - (optional) is a type of string
           metadata = idp.value["metadata"]
         }
       }
@@ -334,21 +367,32 @@ resource "avi_authprofile" "this" {
       dynamic "sp" {
         for_each = saml.value.sp
         content {
-          fqdn               = sp.value["fqdn"]
-          org_display_name   = sp.value["org_display_name"]
-          org_name           = sp.value["org_name"]
-          org_url            = sp.value["org_url"]
-          saml_entity_type   = sp.value["saml_entity_type"]
+          # fqdn - (optional) is a type of string
+          fqdn = sp.value["fqdn"]
+          # org_display_name - (optional) is a type of string
+          org_display_name = sp.value["org_display_name"]
+          # org_name - (optional) is a type of string
+          org_name = sp.value["org_name"]
+          # org_url - (optional) is a type of string
+          org_url = sp.value["org_url"]
+          # saml_entity_type - (optional) is a type of string
+          saml_entity_type = sp.value["saml_entity_type"]
+          # tech_contact_email - (optional) is a type of string
           tech_contact_email = sp.value["tech_contact_email"]
-          tech_contact_name  = sp.value["tech_contact_name"]
+          # tech_contact_name - (optional) is a type of string
+          tech_contact_name = sp.value["tech_contact_name"]
 
           dynamic "sp_nodes" {
             for_each = sp.value.sp_nodes
             content {
-              entity_id                           = sp_nodes.value["entity_id"]
-              name                                = sp_nodes.value["name"]
+              # entity_id - (optional) is a type of string
+              entity_id = sp_nodes.value["entity_id"]
+              # name - (required) is a type of string
+              name = sp_nodes.value["name"]
+              # signing_ssl_key_and_certificate_ref - (optional) is a type of string
               signing_ssl_key_and_certificate_ref = sp_nodes.value["signing_ssl_key_and_certificate_ref"]
-              single_signon_url                   = sp_nodes.value["single_signon_url"]
+              # single_signon_url - (optional) is a type of string
+              single_signon_url = sp_nodes.value["single_signon_url"]
             }
           }
 
@@ -361,17 +405,24 @@ resource "avi_authprofile" "this" {
   dynamic "tacacs_plus" {
     for_each = var.tacacs_plus
     content {
+      # password - (optional) is a type of string
       password = tacacs_plus.value["password"]
-      port     = tacacs_plus.value["port"]
-      server   = tacacs_plus.value["server"]
-      service  = tacacs_plus.value["service"]
+      # port - (optional) is a type of number
+      port = tacacs_plus.value["port"]
+      # server - (optional) is a type of list of string
+      server = tacacs_plus.value["server"]
+      # service - (optional) is a type of string
+      service = tacacs_plus.value["service"]
 
       dynamic "authorization_attrs" {
         for_each = tacacs_plus.value.authorization_attrs
         content {
+          # mandatory - (optional) is a type of bool
           mandatory = authorization_attrs.value["mandatory"]
-          name      = authorization_attrs.value["name"]
-          value     = authorization_attrs.value["value"]
+          # name - (optional) is a type of string
+          name = authorization_attrs.value["name"]
+          # value - (optional) is a type of string
+          value = authorization_attrs.value["value"]
         }
       }
 

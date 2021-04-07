@@ -82,11 +82,16 @@ variable "which" {
 
 ```terraform
 resource "fortios_ips_viewmap" "this" {
-  fosid        = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # id_policy_id - (optional) is a type of number
   id_policy_id = var.id_policy_id
-  policy_id    = var.policy_id
-  vdom_id      = var.vdom_id
-  which        = var.which
+  # policy_id - (optional) is a type of number
+  policy_id = var.policy_id
+  # vdom_id - (optional) is a type of number
+  vdom_id = var.vdom_id
+  # which - (optional) is a type of string
+  which = var.which
 }
 ```
 

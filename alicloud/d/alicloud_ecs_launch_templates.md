@@ -98,13 +98,20 @@ variable "template_tags" {
 
 ```terraform
 data "alicloud_ecs_launch_templates" "this" {
-  enable_details             = var.enable_details
-  ids                        = var.ids
-  launch_template_name       = var.launch_template_name
-  name_regex                 = var.name_regex
-  output_file                = var.output_file
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # launch_template_name - (optional) is a type of string
+  launch_template_name = var.launch_template_name
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # template_resource_group_id - (optional) is a type of string
   template_resource_group_id = var.template_resource_group_id
-  template_tags              = var.template_tags
+  # template_tags - (optional) is a type of map of string
+  template_tags = var.template_tags
 }
 ```
 

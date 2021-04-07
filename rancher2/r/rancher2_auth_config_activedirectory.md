@@ -292,38 +292,70 @@ variable "user_search_filter" {
 
 ```terraform
 resource "rancher2_auth_config_activedirectory" "this" {
-  access_mode                     = var.access_mode
-  allowed_principal_ids           = var.allowed_principal_ids
-  annotations                     = var.annotations
-  certificate                     = var.certificate
-  connection_timeout              = var.connection_timeout
-  default_login_domain            = var.default_login_domain
-  enabled                         = var.enabled
-  group_dn_attribute              = var.group_dn_attribute
-  group_member_mapping_attribute  = var.group_member_mapping_attribute
-  group_member_user_attribute     = var.group_member_user_attribute
-  group_name_attribute            = var.group_name_attribute
-  group_object_class              = var.group_object_class
-  group_search_attribute          = var.group_search_attribute
-  group_search_base               = var.group_search_base
-  group_search_filter             = var.group_search_filter
-  labels                          = var.labels
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # allowed_principal_ids - (optional) is a type of list of string
+  allowed_principal_ids = var.allowed_principal_ids
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # connection_timeout - (optional) is a type of number
+  connection_timeout = var.connection_timeout
+  # default_login_domain - (optional) is a type of string
+  default_login_domain = var.default_login_domain
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # group_dn_attribute - (optional) is a type of string
+  group_dn_attribute = var.group_dn_attribute
+  # group_member_mapping_attribute - (optional) is a type of string
+  group_member_mapping_attribute = var.group_member_mapping_attribute
+  # group_member_user_attribute - (optional) is a type of string
+  group_member_user_attribute = var.group_member_user_attribute
+  # group_name_attribute - (optional) is a type of string
+  group_name_attribute = var.group_name_attribute
+  # group_object_class - (optional) is a type of string
+  group_object_class = var.group_object_class
+  # group_search_attribute - (optional) is a type of string
+  group_search_attribute = var.group_search_attribute
+  # group_search_base - (optional) is a type of string
+  group_search_base = var.group_search_base
+  # group_search_filter - (optional) is a type of string
+  group_search_filter = var.group_search_filter
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # nested_group_membership_enabled - (optional) is a type of bool
   nested_group_membership_enabled = var.nested_group_membership_enabled
-  port                            = var.port
-  servers                         = var.servers
-  service_account_password        = var.service_account_password
-  service_account_username        = var.service_account_username
-  test_password                   = var.test_password
-  test_username                   = var.test_username
-  tls                             = var.tls
-  user_disabled_bit_mask          = var.user_disabled_bit_mask
-  user_enabled_attribute          = var.user_enabled_attribute
-  user_login_attribute            = var.user_login_attribute
-  user_name_attribute             = var.user_name_attribute
-  user_object_class               = var.user_object_class
-  user_search_attribute           = var.user_search_attribute
-  user_search_base                = var.user_search_base
-  user_search_filter              = var.user_search_filter
+  # port - (optional) is a type of number
+  port = var.port
+  # servers - (required) is a type of list of string
+  servers = var.servers
+  # service_account_password - (required) is a type of string
+  service_account_password = var.service_account_password
+  # service_account_username - (required) is a type of string
+  service_account_username = var.service_account_username
+  # test_password - (required) is a type of string
+  test_password = var.test_password
+  # test_username - (required) is a type of string
+  test_username = var.test_username
+  # tls - (optional) is a type of bool
+  tls = var.tls
+  # user_disabled_bit_mask - (optional) is a type of number
+  user_disabled_bit_mask = var.user_disabled_bit_mask
+  # user_enabled_attribute - (optional) is a type of string
+  user_enabled_attribute = var.user_enabled_attribute
+  # user_login_attribute - (optional) is a type of string
+  user_login_attribute = var.user_login_attribute
+  # user_name_attribute - (optional) is a type of string
+  user_name_attribute = var.user_name_attribute
+  # user_object_class - (optional) is a type of string
+  user_object_class = var.user_object_class
+  # user_search_attribute - (optional) is a type of string
+  user_search_attribute = var.user_search_attribute
+  # user_search_base - (required) is a type of string
+  user_search_base = var.user_search_base
+  # user_search_filter - (optional) is a type of string
+  user_search_filter = var.user_search_filter
 }
 ```
 

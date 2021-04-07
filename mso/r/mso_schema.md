@@ -63,9 +63,12 @@ variable "tenant_id" {
 
 ```terraform
 resource "mso_schema" "this" {
-  name          = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  tenant_id     = var.tenant_id
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

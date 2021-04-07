@@ -81,11 +81,16 @@ variable "subnet_id" {
 
 ```terraform
 resource "hcloud_server_network" "this" {
-  alias_ips  = var.alias_ips
-  ip         = var.ip
+  # alias_ips - (optional) is a type of set of string
+  alias_ips = var.alias_ips
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # network_id - (optional) is a type of number
   network_id = var.network_id
-  server_id  = var.server_id
-  subnet_id  = var.subnet_id
+  # server_id - (required) is a type of number
+  server_id = var.server_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
 }
 ```
 

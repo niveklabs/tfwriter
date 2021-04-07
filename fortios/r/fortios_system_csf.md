@@ -213,45 +213,74 @@ variable "trusted_list" {
 
 ```terraform
 resource "fortios_system_csf" "this" {
-  accept_auth_by_cert        = var.accept_auth_by_cert
+  # accept_auth_by_cert - (optional) is a type of string
+  accept_auth_by_cert = var.accept_auth_by_cert
+  # authorization_request_type - (optional) is a type of string
   authorization_request_type = var.authorization_request_type
-  certificate                = var.certificate
-  configuration_sync         = var.configuration_sync
-  dynamic_sort_subtable      = var.dynamic_sort_subtable
-  fabric_object_unification  = var.fabric_object_unification
-  fixed_key                  = var.fixed_key
-  group_name                 = var.group_name
-  group_password             = var.group_password
-  management_ip              = var.management_ip
-  management_port            = var.management_port
-  saml_configuration_sync    = var.saml_configuration_sync
-  status                     = var.status
-  upstream_ip                = var.upstream_ip
-  upstream_port              = var.upstream_port
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # configuration_sync - (optional) is a type of string
+  configuration_sync = var.configuration_sync
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # fabric_object_unification - (optional) is a type of string
+  fabric_object_unification = var.fabric_object_unification
+  # fixed_key - (optional) is a type of string
+  fixed_key = var.fixed_key
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # group_password - (optional) is a type of string
+  group_password = var.group_password
+  # management_ip - (optional) is a type of string
+  management_ip = var.management_ip
+  # management_port - (optional) is a type of number
+  management_port = var.management_port
+  # saml_configuration_sync - (optional) is a type of string
+  saml_configuration_sync = var.saml_configuration_sync
+  # status - (required) is a type of string
+  status = var.status
+  # upstream_ip - (optional) is a type of string
+  upstream_ip = var.upstream_ip
+  # upstream_port - (optional) is a type of number
+  upstream_port = var.upstream_port
 
   dynamic "fabric_device" {
     for_each = var.fabric_device
     content {
+      # access_token - (optional) is a type of string
       access_token = fabric_device.value["access_token"]
-      device_ip    = fabric_device.value["device_ip"]
-      device_type  = fabric_device.value["device_type"]
-      https_port   = fabric_device.value["https_port"]
-      login        = fabric_device.value["login"]
-      name         = fabric_device.value["name"]
-      password     = fabric_device.value["password"]
+      # device_ip - (optional) is a type of string
+      device_ip = fabric_device.value["device_ip"]
+      # device_type - (optional) is a type of string
+      device_type = fabric_device.value["device_type"]
+      # https_port - (optional) is a type of number
+      https_port = fabric_device.value["https_port"]
+      # login - (optional) is a type of string
+      login = fabric_device.value["login"]
+      # name - (optional) is a type of string
+      name = fabric_device.value["name"]
+      # password - (optional) is a type of string
+      password = fabric_device.value["password"]
     }
   }
 
   dynamic "trusted_list" {
     for_each = var.trusted_list
     content {
-      action                   = trusted_list.value["action"]
-      authorization_type       = trusted_list.value["authorization_type"]
-      certificate              = trusted_list.value["certificate"]
+      # action - (optional) is a type of string
+      action = trusted_list.value["action"]
+      # authorization_type - (optional) is a type of string
+      authorization_type = trusted_list.value["authorization_type"]
+      # certificate - (optional) is a type of string
+      certificate = trusted_list.value["certificate"]
+      # downstream_authorization - (optional) is a type of string
       downstream_authorization = trusted_list.value["downstream_authorization"]
-      ha_members               = trusted_list.value["ha_members"]
-      name                     = trusted_list.value["name"]
-      serial                   = trusted_list.value["serial"]
+      # ha_members - (optional) is a type of string
+      ha_members = trusted_list.value["ha_members"]
+      # name - (optional) is a type of string
+      name = trusted_list.value["name"]
+      # serial - (optional) is a type of string
+      serial = trusted_list.value["serial"]
     }
   }
 

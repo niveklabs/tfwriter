@@ -49,6 +49,7 @@ variable "domain_name" {
 
 ```terraform
 resource "aviatrix_segmentation_security_domain" "this" {
+  # domain_name - (required) is a type of string
   domain_name = var.domain_name
 }
 ```

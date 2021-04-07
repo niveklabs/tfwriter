@@ -172,23 +172,40 @@ variable "url" {
 
 ```terraform
 resource "constellix_http_redirection_record" "this" {
-  description      = var.description
-  domain_id        = var.domain_id
-  gtd_region       = var.gtd_region
-  hardlink_flag    = var.hardlink_flag
-  keywords         = var.keywords
-  name             = var.name
-  noanswer         = var.noanswer
-  note             = var.note
-  parent           = var.parent
-  parentid         = var.parentid
+  # description - (optional) is a type of string
+  description = var.description
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # hardlink_flag - (optional) is a type of bool
+  hardlink_flag = var.hardlink_flag
+  # keywords - (optional) is a type of string
+  keywords = var.keywords
+  # name - (optional) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # parent - (optional) is a type of string
+  parent = var.parent
+  # parentid - (optional) is a type of number
+  parentid = var.parentid
+  # redirect_type_id - (required) is a type of number
   redirect_type_id = var.redirect_type_id
-  source           = var.source
-  source_type      = var.source_type
-  title            = var.title
-  ttl              = var.ttl
-  type             = var.type
-  url              = var.url
+  # source - (optional) is a type of string
+  source = var.source
+  # source_type - (required) is a type of string
+  source_type = var.source_type
+  # title - (optional) is a type of string
+  title = var.title
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

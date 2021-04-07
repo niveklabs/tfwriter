@@ -57,7 +57,9 @@ variable "region" {
 
 ```terraform
 data "ecl_compute_keypair_v2" "this" {
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
   region = var.region
 }
 ```

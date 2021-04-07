@@ -106,14 +106,22 @@ variable "webfilter_profile" {
 
 ```terraform
 resource "fortios_wirelesscontroller_utmprofile" "this" {
-  antivirus_profile       = var.antivirus_profile
-  application_list        = var.application_list
-  comment                 = var.comment
-  ips_sensor              = var.ips_sensor
-  name                    = var.name
+  # antivirus_profile - (optional) is a type of string
+  antivirus_profile = var.antivirus_profile
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # name - (optional) is a type of string
+  name = var.name
+  # scan_botnet_connections - (optional) is a type of string
   scan_botnet_connections = var.scan_botnet_connections
-  utm_log                 = var.utm_log
-  webfilter_profile       = var.webfilter_profile
+  # utm_log - (optional) is a type of string
+  utm_log = var.utm_log
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
 }
 ```
 

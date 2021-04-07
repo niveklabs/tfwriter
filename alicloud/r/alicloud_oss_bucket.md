@@ -246,22 +246,35 @@ variable "website" {
 
 ```terraform
 resource "alicloud_oss_bucket" "this" {
-  acl              = var.acl
-  bucket           = var.bucket
-  force_destroy    = var.force_destroy
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # bucket - (optional) is a type of string
+  bucket = var.bucket
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
+  # logging_isenable - (optional) is a type of bool
   logging_isenable = var.logging_isenable
-  policy           = var.policy
-  redundancy_type  = var.redundancy_type
-  storage_class    = var.storage_class
-  tags             = var.tags
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # redundancy_type - (optional) is a type of string
+  redundancy_type = var.redundancy_type
+  # storage_class - (optional) is a type of string
+  storage_class = var.storage_class
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cors_rule" {
     for_each = var.cors_rule
     content {
+      # allowed_headers - (optional) is a type of list of string
       allowed_headers = cors_rule.value["allowed_headers"]
+      # allowed_methods - (required) is a type of list of string
       allowed_methods = cors_rule.value["allowed_methods"]
+      # allowed_origins - (required) is a type of list of string
       allowed_origins = cors_rule.value["allowed_origins"]
-      expose_headers  = cors_rule.value["expose_headers"]
+      # expose_headers - (optional) is a type of list of string
+      expose_headers = cors_rule.value["expose_headers"]
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors_rule.value["max_age_seconds"]
     }
   }
@@ -269,14 +282,19 @@ resource "alicloud_oss_bucket" "this" {
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule
     content {
+      # enabled - (required) is a type of bool
       enabled = lifecycle_rule.value["enabled"]
-      id      = lifecycle_rule.value["id"]
-      prefix  = lifecycle_rule.value["prefix"]
+      # id - (optional) is a type of string
+      id = lifecycle_rule.value["id"]
+      # prefix - (optional) is a type of string
+      prefix = lifecycle_rule.value["prefix"]
 
       dynamic "expiration" {
         for_each = lifecycle_rule.value.expiration
         content {
+          # date - (optional) is a type of string
           date = expiration.value["date"]
+          # days - (optional) is a type of number
           days = expiration.value["days"]
         }
       }
@@ -284,9 +302,12 @@ resource "alicloud_oss_bucket" "this" {
       dynamic "transitions" {
         for_each = lifecycle_rule.value.transitions
         content {
+          # created_before_date - (optional) is a type of string
           created_before_date = transitions.value["created_before_date"]
-          days                = transitions.value["days"]
-          storage_class       = transitions.value["storage_class"]
+          # days - (optional) is a type of number
+          days = transitions.value["days"]
+          # storage_class - (optional) is a type of string
+          storage_class = transitions.value["storage_class"]
         }
       }
 
@@ -296,7 +317,9 @@ resource "alicloud_oss_bucket" "this" {
   dynamic "logging" {
     for_each = var.logging
     content {
+      # target_bucket - (required) is a type of string
       target_bucket = logging.value["target_bucket"]
+      # target_prefix - (optional) is a type of string
       target_prefix = logging.value["target_prefix"]
     }
   }
@@ -304,22 +327,27 @@ resource "alicloud_oss_bucket" "this" {
   dynamic "referer_config" {
     for_each = var.referer_config
     content {
+      # allow_empty - (optional) is a type of bool
       allow_empty = referer_config.value["allow_empty"]
-      referers    = referer_config.value["referers"]
+      # referers - (required) is a type of list of string
+      referers = referer_config.value["referers"]
     }
   }
 
   dynamic "server_side_encryption_rule" {
     for_each = var.server_side_encryption_rule
     content {
+      # kms_master_key_id - (optional) is a type of string
       kms_master_key_id = server_side_encryption_rule.value["kms_master_key_id"]
-      sse_algorithm     = server_side_encryption_rule.value["sse_algorithm"]
+      # sse_algorithm - (required) is a type of string
+      sse_algorithm = server_side_encryption_rule.value["sse_algorithm"]
     }
   }
 
   dynamic "versioning" {
     for_each = var.versioning
     content {
+      # status - (required) is a type of string
       status = versioning.value["status"]
     }
   }
@@ -327,7 +355,9 @@ resource "alicloud_oss_bucket" "this" {
   dynamic "website" {
     for_each = var.website
     content {
+      # error_document - (optional) is a type of string
       error_document = website.value["error_document"]
+      # index_document - (required) is a type of string
       index_document = website.value["index_document"]
     }
   }

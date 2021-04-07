@@ -56,7 +56,9 @@ variable "policy_id" {
 
 ```terraform
 resource "tencentcloud_cam_group_policy_attachment" "this" {
-  group_id  = var.group_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # policy_id - (required) is a type of string
   policy_id = var.policy_id
 }
 ```

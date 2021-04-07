@@ -71,10 +71,14 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_custom_rule_actions" "this" {
-  config_id          = var.config_id
-  custom_rule_id     = var.custom_rule_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # custom_rule_id - (optional) is a type of number
+  custom_rule_id = var.custom_rule_id
+  # security_policy_id - (required) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

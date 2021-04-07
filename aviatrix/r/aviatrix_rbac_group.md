@@ -57,7 +57,9 @@ variable "local_login" {
 
 ```terraform
 resource "aviatrix_rbac_group" "this" {
-  group_name  = var.group_name
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # local_login - (optional) is a type of bool
   local_login = var.local_login
 }
 ```

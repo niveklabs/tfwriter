@@ -180,33 +180,51 @@ variable "inline_mode_cfg" {
 
 ```terraform
 resource "thunder_vrrp_common" "this" {
-  action                       = var.action
-  arp_retry                    = var.arp_retry
-  dead_timer                   = var.dead_timer
-  device_id                    = var.device_id
-  disable_default_vrid         = var.disable_default_vrid
+  # action - (optional) is a type of string
+  action = var.action
+  # arp_retry - (optional) is a type of number
+  arp_retry = var.arp_retry
+  # dead_timer - (optional) is a type of number
+  dead_timer = var.dead_timer
+  # device_id - (optional) is a type of number
+  device_id = var.device_id
+  # disable_default_vrid - (optional) is a type of number
+  disable_default_vrid = var.disable_default_vrid
+  # forward_l4_packet_on_standby - (optional) is a type of number
   forward_l4_packet_on_standby = var.forward_l4_packet_on_standby
-  get_ready_time               = var.get_ready_time
-  hello_interval               = var.hello_interval
-  preemption_delay             = var.preemption_delay
-  restart_time                 = var.restart_time
-  set_id                       = var.set_id
-  track_event_delay            = var.track_event_delay
-  uuid                         = var.uuid
+  # get_ready_time - (optional) is a type of number
+  get_ready_time = var.get_ready_time
+  # hello_interval - (optional) is a type of number
+  hello_interval = var.hello_interval
+  # preemption_delay - (optional) is a type of number
+  preemption_delay = var.preemption_delay
+  # restart_time - (optional) is a type of number
+  restart_time = var.restart_time
+  # set_id - (optional) is a type of number
+  set_id = var.set_id
+  # track_event_delay - (optional) is a type of number
+  track_event_delay = var.track_event_delay
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "hostid_append_to_vrid" {
     for_each = var.hostid_append_to_vrid
     content {
+      # hostid_append_to_vrid_default - (optional) is a type of number
       hostid_append_to_vrid_default = hostid_append_to_vrid.value["hostid_append_to_vrid_default"]
-      hostid_append_to_vrid_value   = hostid_append_to_vrid.value["hostid_append_to_vrid_value"]
+      # hostid_append_to_vrid_value - (optional) is a type of number
+      hostid_append_to_vrid_value = hostid_append_to_vrid.value["hostid_append_to_vrid_value"]
     }
   }
 
   dynamic "inline_mode_cfg" {
     for_each = var.inline_mode_cfg
     content {
-      inline_mode     = inline_mode_cfg.value["inline_mode"]
-      preferred_port  = inline_mode_cfg.value["preferred_port"]
+      # inline_mode - (optional) is a type of number
+      inline_mode = inline_mode_cfg.value["inline_mode"]
+      # preferred_port - (optional) is a type of number
+      preferred_port = inline_mode_cfg.value["preferred_port"]
+      # preferred_trunk - (optional) is a type of number
       preferred_trunk = inline_mode_cfg.value["preferred_trunk"]
     }
   }

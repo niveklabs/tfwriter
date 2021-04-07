@@ -73,10 +73,14 @@ variable "uuid" {
 
 ```terraform
 resource "avi_testsedatastorelevel2" "this" {
-  name                           = var.name
-  tenant_ref                     = var.tenant_ref
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # test_se_datastore_level_3_refs - (optional) is a type of list of string
   test_se_datastore_level_3_refs = var.test_se_datastore_level_3_refs
-  uuid                           = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

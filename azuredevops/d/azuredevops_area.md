@@ -65,9 +65,12 @@ variable "project_id" {
 
 ```terraform
 data "azuredevops_area" "this" {
+  # fetch_children - (optional) is a type of bool
   fetch_children = var.fetch_children
-  path           = var.path
-  project_id     = var.project_id
+  # path - (optional) is a type of string
+  path = var.path
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

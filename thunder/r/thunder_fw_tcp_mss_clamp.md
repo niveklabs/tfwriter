@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_tcp_mss_clamp" "this" {
-  min            = var.min
+  # min - (optional) is a type of number
+  min = var.min
+  # mss_clamp_type - (optional) is a type of string
   mss_clamp_type = var.mss_clamp_type
-  mss_subtract   = var.mss_subtract
-  mss_value      = var.mss_value
-  uuid           = var.uuid
+  # mss_subtract - (optional) is a type of number
+  mss_subtract = var.mss_subtract
+  # mss_value - (optional) is a type of number
+  mss_value = var.mss_value
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

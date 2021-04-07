@@ -64,9 +64,12 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_worker_route" "this" {
-  pattern     = var.pattern
+  # pattern - (required) is a type of string
+  pattern = var.pattern
+  # script_name - (optional) is a type of string
   script_name = var.script_name
-  zone_id     = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

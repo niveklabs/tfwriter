@@ -84,16 +84,23 @@ variable "timeouts" {
 
 ```terraform
 resource "triton_service_group" "this" {
-  capacity   = var.capacity
+  # capacity - (optional) is a type of number
+  capacity = var.capacity
+  # group_name - (required) is a type of string
   group_name = var.group_name
-  template   = var.template
+  # template - (required) is a type of string
+  template = var.template
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

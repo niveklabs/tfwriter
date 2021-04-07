@@ -94,21 +94,27 @@ variable "user_associations" {
 
 ```terraform
 data "mso_tenant" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "site_associations" {
     for_each = var.site_associations
     content {
+      # security_domains - (optional) is a type of list of string
       security_domains = site_associations.value["security_domains"]
-      site_id          = site_associations.value["site_id"]
+      # site_id - (optional) is a type of string
+      site_id = site_associations.value["site_id"]
     }
   }
 
   dynamic "user_associations" {
     for_each = var.user_associations
     content {
+      # user_id - (optional) is a type of string
       user_id = user_associations.value["user_id"]
     }
   }

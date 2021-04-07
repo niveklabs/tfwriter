@@ -80,11 +80,16 @@ variable "type" {
 
 ```terraform
 resource "tencentcloud_ssl_certificate" "this" {
-  cert       = var.cert
-  key        = var.key
-  name       = var.name
+  # cert - (required) is a type of string
+  cert = var.cert
+  # key - (optional) is a type of string
+  key = var.key
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
   project_id = var.project_id
-  type       = var.type
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

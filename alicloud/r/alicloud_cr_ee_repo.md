@@ -85,12 +85,18 @@ variable "summary" {
 
 ```terraform
 resource "alicloud_cr_ee_repo" "this" {
-  detail      = var.detail
+  # detail - (optional) is a type of string
+  detail = var.detail
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  name        = var.name
-  namespace   = var.namespace
-  repo_type   = var.repo_type
-  summary     = var.summary
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (required) is a type of string
+  namespace = var.namespace
+  # repo_type - (required) is a type of string
+  repo_type = var.repo_type
+  # summary - (required) is a type of string
+  summary = var.summary
 }
 ```
 

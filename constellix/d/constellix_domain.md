@@ -97,13 +97,20 @@ variable "tags" {
 
 ```terraform
 data "constellix_domain" "this" {
-  has_geoip        = var.has_geoip
-  has_gtd_regions  = var.has_gtd_regions
-  name             = var.name
+  # has_geoip - (optional) is a type of bool
+  has_geoip = var.has_geoip
+  # has_gtd_regions - (optional) is a type of bool
+  has_gtd_regions = var.has_gtd_regions
+  # name - (required) is a type of string
+  name = var.name
+  # nameserver_group - (optional) is a type of string
   nameserver_group = var.nameserver_group
-  note             = var.note
-  soa              = var.soa
-  tags             = var.tags
+  # note - (optional) is a type of string
+  note = var.note
+  # soa - (optional) is a type of map of string
+  soa = var.soa
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

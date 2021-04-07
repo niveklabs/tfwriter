@@ -94,13 +94,20 @@ variable "tags" {
 
 ```terraform
 resource "launchdarkly_destination" "this" {
-  config      = var.config
-  enabled     = var.enabled
-  env_key     = var.env_key
-  kind        = var.kind
-  name        = var.name
+  # config - (optional) is a type of map of string
+  config = var.config
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # env_key - (required) is a type of string
+  env_key = var.env_key
+  # kind - (required) is a type of string
+  kind = var.kind
+  # name - (required) is a type of string
+  name = var.name
+  # project_key - (required) is a type of string
   project_key = var.project_key
-  tags        = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

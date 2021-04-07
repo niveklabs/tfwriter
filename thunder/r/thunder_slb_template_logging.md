@@ -178,23 +178,40 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_logging" "this" {
-  auto                                = var.auto
-  format                              = var.format
-  keep_end                            = var.keep_end
-  keep_start                          = var.keep_start
-  local_logging                       = var.local_logging
-  mask                                = var.mask
-  name                                = var.name
-  pcre_mask                           = var.pcre_mask
-  pool                                = var.pool
-  pool_shared                         = var.pool_shared
-  service_group                       = var.service_group
-  shared_partition_pool               = var.shared_partition_pool
+  # auto - (optional) is a type of string
+  auto = var.auto
+  # format - (optional) is a type of string
+  format = var.format
+  # keep_end - (optional) is a type of number
+  keep_end = var.keep_end
+  # keep_start - (optional) is a type of number
+  keep_start = var.keep_start
+  # local_logging - (optional) is a type of number
+  local_logging = var.local_logging
+  # mask - (optional) is a type of string
+  mask = var.mask
+  # name - (optional) is a type of string
+  name = var.name
+  # pcre_mask - (optional) is a type of string
+  pcre_mask = var.pcre_mask
+  # pool - (optional) is a type of string
+  pool = var.pool
+  # pool_shared - (optional) is a type of string
+  pool_shared = var.pool_shared
+  # service_group - (optional) is a type of string
+  service_group = var.service_group
+  # shared_partition_pool - (optional) is a type of number
+  shared_partition_pool = var.shared_partition_pool
+  # shared_partition_tcp_proxy_template - (optional) is a type of number
   shared_partition_tcp_proxy_template = var.shared_partition_tcp_proxy_template
-  tcp_proxy                           = var.tcp_proxy
-  template_tcp_proxy_shared           = var.template_tcp_proxy_shared
-  user_tag                            = var.user_tag
-  uuid                                = var.uuid
+  # tcp_proxy - (optional) is a type of string
+  tcp_proxy = var.tcp_proxy
+  # template_tcp_proxy_shared - (optional) is a type of string
+  template_tcp_proxy_shared = var.template_tcp_proxy_shared
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

@@ -65,9 +65,12 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_argo" "this" {
-  smart_routing  = var.smart_routing
+  # smart_routing - (optional) is a type of string
+  smart_routing = var.smart_routing
+  # tiered_caching - (optional) is a type of string
   tiered_caching = var.tiered_caching
-  zone_id        = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -124,23 +124,33 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_fw_service_group" "this" {
+  # health_check - (optional) is a type of string
   health_check = var.health_check
-  name         = var.name
-  protocol     = var.protocol
-  user_tag     = var.user_tag
-  uuid         = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "member_list" {
     for_each = var.member_list
     content {
-      name     = member_list.value["name"]
-      port     = member_list.value["port"]
+      # name - (optional) is a type of string
+      name = member_list.value["name"]
+      # port - (optional) is a type of number
+      port = member_list.value["port"]
+      # user_tag - (optional) is a type of string
       user_tag = member_list.value["user_tag"]
-      uuid     = member_list.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = member_list.value["uuid"]
 
       dynamic "sampling_enable" {
         for_each = member_list.value.sampling_enable
         content {
+          # counters1 - (optional) is a type of string
           counters1 = sampling_enable.value["counters1"]
         }
       }
@@ -151,6 +161,7 @@ resource "thunder_fw_service_group" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

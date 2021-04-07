@@ -74,9 +74,13 @@ variable "with_selector" {
 
 ```terraform
 data "hcloud_ssh_key" "this" {
-  fingerprint   = var.fingerprint
-  name          = var.name
-  selector      = var.selector
+  # fingerprint - (optional) is a type of string
+  fingerprint = var.fingerprint
+  # name - (optional) is a type of string
+  name = var.name
+  # selector - (optional) is a type of string
+  selector = var.selector
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
 }
 ```

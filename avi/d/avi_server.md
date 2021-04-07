@@ -56,7 +56,9 @@ variable "pool_ref" {
 
 ```terraform
 data "avi_server" "this" {
-  ip       = var.ip
+  # ip - (required) is a type of string
+  ip = var.ip
+  # pool_ref - (required) is a type of string
   pool_ref = var.pool_ref
 }
 ```

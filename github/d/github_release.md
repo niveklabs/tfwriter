@@ -79,10 +79,15 @@ variable "retrieve_by" {
 
 ```terraform
 data "github_release" "this" {
-  owner       = var.owner
-  release_id  = var.release_id
+  # owner - (required) is a type of string
+  owner = var.owner
+  # release_id - (optional) is a type of number
+  release_id = var.release_id
+  # release_tag - (optional) is a type of string
   release_tag = var.release_tag
-  repository  = var.repository
+  # repository - (required) is a type of string
+  repository = var.repository
+  # retrieve_by - (required) is a type of string
   retrieve_by = var.retrieve_by
 }
 ```

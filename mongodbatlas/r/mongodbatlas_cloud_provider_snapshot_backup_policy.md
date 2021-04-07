@@ -117,26 +117,38 @@ variable "policies" {
 
 ```terraform
 resource "mongodbatlas_cloud_provider_snapshot_backup_policy" "this" {
-  cluster_name             = var.cluster_name
-  project_id               = var.project_id
-  reference_hour_of_day    = var.reference_hour_of_day
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # reference_hour_of_day - (optional) is a type of number
+  reference_hour_of_day = var.reference_hour_of_day
+  # reference_minute_of_hour - (optional) is a type of number
   reference_minute_of_hour = var.reference_minute_of_hour
-  restore_window_days      = var.restore_window_days
-  update_snapshots         = var.update_snapshots
+  # restore_window_days - (optional) is a type of number
+  restore_window_days = var.restore_window_days
+  # update_snapshots - (optional) is a type of bool
+  update_snapshots = var.update_snapshots
 
   dynamic "policies" {
     for_each = var.policies
     content {
+      # id - (required) is a type of string
       id = policies.value["id"]
 
       dynamic "policy_item" {
         for_each = policies.value.policy_item
         content {
+          # frequency_interval - (required) is a type of number
           frequency_interval = policy_item.value["frequency_interval"]
-          frequency_type     = policy_item.value["frequency_type"]
-          id                 = policy_item.value["id"]
-          retention_unit     = policy_item.value["retention_unit"]
-          retention_value    = policy_item.value["retention_value"]
+          # frequency_type - (required) is a type of string
+          frequency_type = policy_item.value["frequency_type"]
+          # id - (required) is a type of string
+          id = policy_item.value["id"]
+          # retention_unit - (required) is a type of string
+          retention_unit = policy_item.value["retention_unit"]
+          # retention_value - (required) is a type of number
+          retention_value = policy_item.value["retention_value"]
         }
       }
 

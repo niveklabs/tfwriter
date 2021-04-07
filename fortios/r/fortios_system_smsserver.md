@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "fortios_system_smsserver" "this" {
+  # mail_server - (required) is a type of string
   mail_server = var.mail_server
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

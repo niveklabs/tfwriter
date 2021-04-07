@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_subnet" "this" {
-  subnet_id   = var.subnet_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # subnet_name - (optional) is a type of string
   subnet_name = var.subnet_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

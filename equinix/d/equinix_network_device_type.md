@@ -74,10 +74,14 @@ variable "vendor" {
 
 ```terraform
 data "equinix_network_device_type" "this" {
-  category    = var.category
+  # category - (optional) is a type of string
+  category = var.category
+  # metro_codes - (optional) is a type of set of string
   metro_codes = var.metro_codes
-  name        = var.name
-  vendor      = var.vendor
+  # name - (optional) is a type of string
+  name = var.name
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
 }
 ```
 

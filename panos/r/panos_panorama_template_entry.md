@@ -64,8 +64,11 @@ variable "vsys_list" {
 
 ```terraform
 resource "panos_panorama_template_entry" "this" {
-  serial    = var.serial
-  template  = var.template
+  # serial - (required) is a type of string
+  serial = var.serial
+  # template - (required) is a type of string
+  template = var.template
+  # vsys_list - (optional) is a type of set of string
   vsys_list = var.vsys_list
 }
 ```

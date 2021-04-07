@@ -132,23 +132,36 @@ variable "conditions" {
 
 ```terraform
 resource "onelogin_smarthooks" "this" {
+  # context_version - (optional) is a type of string
   context_version = var.context_version
-  disabled        = var.disabled
-  env_vars        = var.env_vars
-  function        = var.function
-  options         = var.options
-  packages        = var.packages
-  retries         = var.retries
-  runtime         = var.runtime
-  timeout         = var.timeout
-  type            = var.type
+  # disabled - (required) is a type of bool
+  disabled = var.disabled
+  # env_vars - (required) is a type of list of string
+  env_vars = var.env_vars
+  # function - (required) is a type of string
+  function = var.function
+  # options - (optional) is a type of map of string
+  options = var.options
+  # packages - (required) is a type of map of string
+  packages = var.packages
+  # retries - (required) is a type of number
+  retries = var.retries
+  # runtime - (required) is a type of string
+  runtime = var.runtime
+  # timeout - (required) is a type of number
+  timeout = var.timeout
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "conditions" {
     for_each = var.conditions
     content {
+      # operator - (required) is a type of string
       operator = conditions.value["operator"]
-      source   = conditions.value["source"]
-      value    = conditions.value["value"]
+      # source - (required) is a type of string
+      source = conditions.value["source"]
+      # value - (required) is a type of string
+      value = conditions.value["value"]
     }
   }
 

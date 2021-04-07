@@ -128,13 +128,17 @@ variable "user_reference_list" {
 
 ```terraform
 data "nutanix_project" "this" {
-  project_id   = var.project_id
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # project_name - (optional) is a type of string
   project_name = var.project_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

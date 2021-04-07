@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_ftmpush" "this" {
+  # server_cert - (optional) is a type of string
   server_cert = var.server_cert
-  server_ip   = var.server_ip
+  # server_ip - (optional) is a type of string
+  server_ip = var.server_ip
+  # server_port - (optional) is a type of number
   server_port = var.server_port
-  status      = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

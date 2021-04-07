@@ -97,12 +97,19 @@ variable "target_instance_id" {
 
 ```terraform
 data "alicloud_cr_ee_sync_rules" "this" {
-  ids                = var.ids
-  instance_id        = var.instance_id
-  name_regex         = var.name_regex
-  namespace_name     = var.namespace_name
-  output_file        = var.output_file
-  repo_name          = var.repo_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # namespace_name - (optional) is a type of string
+  namespace_name = var.namespace_name
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # repo_name - (optional) is a type of string
+  repo_name = var.repo_name
+  # target_instance_id - (optional) is a type of string
   target_instance_id = var.target_instance_id
 }
 ```

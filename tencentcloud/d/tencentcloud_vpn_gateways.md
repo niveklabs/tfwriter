@@ -90,12 +90,18 @@ variable "zone" {
 
 ```terraform
 data "tencentcloud_vpn_gateways" "this" {
-  name               = var.name
-  public_ip_address  = var.public_ip_address
+  # name - (optional) is a type of string
+  name = var.name
+  # public_ip_address - (optional) is a type of string
+  public_ip_address = var.public_ip_address
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
-  vpc_id             = var.vpc_id
-  zone               = var.zone
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

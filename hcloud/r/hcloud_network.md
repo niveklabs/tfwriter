@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "hcloud_network" "this" {
+  # ip_range - (required) is a type of string
   ip_range = var.ip_range
-  labels   = var.labels
-  name     = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

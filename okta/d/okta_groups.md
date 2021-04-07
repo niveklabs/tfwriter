@@ -66,9 +66,12 @@ variable "type" {
 
 ```terraform
 data "okta_groups" "this" {
-  q      = var.q
+  # q - (optional) is a type of string
+  q = var.q
+  # search - (optional) is a type of string
   search = var.search
-  type   = var.type
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

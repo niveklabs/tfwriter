@@ -130,17 +130,28 @@ variable "zone" {
 
 ```terraform
 data "ovh_iploadbalancing" "this" {
-  display_name      = var.display_name
-  ip_loadbalancing  = var.ip_loadbalancing
-  ipv4              = var.ipv4
-  ipv6              = var.ipv6
-  offer             = var.offer
-  service_name      = var.service_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ip_loadbalancing - (optional) is a type of string
+  ip_loadbalancing = var.ip_loadbalancing
+  # ipv4 - (optional) is a type of string
+  ipv4 = var.ipv4
+  # ipv6 - (optional) is a type of string
+  ipv6 = var.ipv6
+  # offer - (optional) is a type of string
+  offer = var.offer
+  # service_name - (optional) is a type of string
+  service_name = var.service_name
+  # ssl_configuration - (optional) is a type of string
   ssl_configuration = var.ssl_configuration
-  state             = var.state
+  # state - (optional) is a type of string
+  state = var.state
+  # vrack_eligibility - (optional) is a type of bool
   vrack_eligibility = var.vrack_eligibility
-  vrack_name        = var.vrack_name
-  zone              = var.zone
+  # vrack_name - (optional) is a type of string
+  vrack_name = var.vrack_name
+  # zone - (optional) is a type of set of string
+  zone = var.zone
 }
 ```
 

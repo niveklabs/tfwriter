@@ -516,76 +516,139 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_service_group" "this" {
-  backup_server_event_log               = var.backup_server_event_log
-  conn_rate                             = var.conn_rate
-  conn_rate_duration                    = var.conn_rate_duration
-  conn_rate_grace_period                = var.conn_rate_grace_period
-  conn_rate_log                         = var.conn_rate_log
-  conn_rate_revert_duration             = var.conn_rate_revert_duration
-  conn_revert_rate                      = var.conn_revert_rate
-  extended_stats                        = var.extended_stats
-  health_check                          = var.health_check
-  health_check_disable                  = var.health_check_disable
-  l4_session_revert_duration            = var.l4_session_revert_duration
-  l4_session_usage                      = var.l4_session_usage
-  l4_session_usage_duration             = var.l4_session_usage_duration
-  l4_session_usage_grace_period         = var.l4_session_usage_grace_period
-  l4_session_usage_log                  = var.l4_session_usage_log
-  l4_session_usage_revert_rate          = var.l4_session_usage_revert_rate
-  lb_method                             = var.lb_method
-  lc_method                             = var.lc_method
-  min_active_member                     = var.min_active_member
-  min_active_member_action              = var.min_active_member_action
-  name                                  = var.name
-  priority_affinity                     = var.priority_affinity
-  protocol                              = var.protocol
-  pseudo_round_robin                    = var.pseudo_round_robin
-  report_delay                          = var.report_delay
-  reset_on_server_selection_fail        = var.reset_on_server_selection_fail
-  reset_priority_affinity               = var.reset_priority_affinity
-  rpt_ext_server                        = var.rpt_ext_server
-  sample_rsp_time                       = var.sample_rsp_time
-  shared_partition_policy_template      = var.shared_partition_policy_template
-  shared_partition_svcgrp_health_check  = var.shared_partition_svcgrp_health_check
-  stateless_auto_switch                 = var.stateless_auto_switch
-  stateless_lb_method                   = var.stateless_lb_method
-  stateless_lb_method2                  = var.stateless_lb_method2
-  stats_data_action                     = var.stats_data_action
-  strict_select                         = var.strict_select
-  svcgrp_health_check_shared            = var.svcgrp_health_check_shared
-  template_policy                       = var.template_policy
-  template_policy_shared                = var.template_policy_shared
-  template_port                         = var.template_port
-  template_server                       = var.template_server
-  top_fastest                           = var.top_fastest
-  top_slowest                           = var.top_slowest
-  traffic_replication_mirror            = var.traffic_replication_mirror
-  traffic_replication_mirror_da_repl    = var.traffic_replication_mirror_da_repl
-  traffic_replication_mirror_ip_repl    = var.traffic_replication_mirror_ip_repl
+  # backup_server_event_log - (optional) is a type of number
+  backup_server_event_log = var.backup_server_event_log
+  # conn_rate - (optional) is a type of number
+  conn_rate = var.conn_rate
+  # conn_rate_duration - (optional) is a type of number
+  conn_rate_duration = var.conn_rate_duration
+  # conn_rate_grace_period - (optional) is a type of number
+  conn_rate_grace_period = var.conn_rate_grace_period
+  # conn_rate_log - (optional) is a type of number
+  conn_rate_log = var.conn_rate_log
+  # conn_rate_revert_duration - (optional) is a type of number
+  conn_rate_revert_duration = var.conn_rate_revert_duration
+  # conn_revert_rate - (optional) is a type of number
+  conn_revert_rate = var.conn_revert_rate
+  # extended_stats - (optional) is a type of number
+  extended_stats = var.extended_stats
+  # health_check - (optional) is a type of string
+  health_check = var.health_check
+  # health_check_disable - (optional) is a type of number
+  health_check_disable = var.health_check_disable
+  # l4_session_revert_duration - (optional) is a type of number
+  l4_session_revert_duration = var.l4_session_revert_duration
+  # l4_session_usage - (optional) is a type of number
+  l4_session_usage = var.l4_session_usage
+  # l4_session_usage_duration - (optional) is a type of number
+  l4_session_usage_duration = var.l4_session_usage_duration
+  # l4_session_usage_grace_period - (optional) is a type of number
+  l4_session_usage_grace_period = var.l4_session_usage_grace_period
+  # l4_session_usage_log - (optional) is a type of number
+  l4_session_usage_log = var.l4_session_usage_log
+  # l4_session_usage_revert_rate - (optional) is a type of number
+  l4_session_usage_revert_rate = var.l4_session_usage_revert_rate
+  # lb_method - (optional) is a type of string
+  lb_method = var.lb_method
+  # lc_method - (optional) is a type of string
+  lc_method = var.lc_method
+  # min_active_member - (optional) is a type of number
+  min_active_member = var.min_active_member
+  # min_active_member_action - (optional) is a type of string
+  min_active_member_action = var.min_active_member_action
+  # name - (optional) is a type of string
+  name = var.name
+  # priority_affinity - (optional) is a type of number
+  priority_affinity = var.priority_affinity
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # pseudo_round_robin - (optional) is a type of number
+  pseudo_round_robin = var.pseudo_round_robin
+  # report_delay - (optional) is a type of number
+  report_delay = var.report_delay
+  # reset_on_server_selection_fail - (optional) is a type of number
+  reset_on_server_selection_fail = var.reset_on_server_selection_fail
+  # reset_priority_affinity - (optional) is a type of number
+  reset_priority_affinity = var.reset_priority_affinity
+  # rpt_ext_server - (optional) is a type of number
+  rpt_ext_server = var.rpt_ext_server
+  # sample_rsp_time - (optional) is a type of number
+  sample_rsp_time = var.sample_rsp_time
+  # shared_partition_policy_template - (optional) is a type of number
+  shared_partition_policy_template = var.shared_partition_policy_template
+  # shared_partition_svcgrp_health_check - (optional) is a type of number
+  shared_partition_svcgrp_health_check = var.shared_partition_svcgrp_health_check
+  # stateless_auto_switch - (optional) is a type of number
+  stateless_auto_switch = var.stateless_auto_switch
+  # stateless_lb_method - (optional) is a type of string
+  stateless_lb_method = var.stateless_lb_method
+  # stateless_lb_method2 - (optional) is a type of string
+  stateless_lb_method2 = var.stateless_lb_method2
+  # stats_data_action - (optional) is a type of string
+  stats_data_action = var.stats_data_action
+  # strict_select - (optional) is a type of number
+  strict_select = var.strict_select
+  # svcgrp_health_check_shared - (optional) is a type of string
+  svcgrp_health_check_shared = var.svcgrp_health_check_shared
+  # template_policy - (optional) is a type of string
+  template_policy = var.template_policy
+  # template_policy_shared - (optional) is a type of string
+  template_policy_shared = var.template_policy_shared
+  # template_port - (optional) is a type of string
+  template_port = var.template_port
+  # template_server - (optional) is a type of string
+  template_server = var.template_server
+  # top_fastest - (optional) is a type of number
+  top_fastest = var.top_fastest
+  # top_slowest - (optional) is a type of number
+  top_slowest = var.top_slowest
+  # traffic_replication_mirror - (optional) is a type of number
+  traffic_replication_mirror = var.traffic_replication_mirror
+  # traffic_replication_mirror_da_repl - (optional) is a type of number
+  traffic_replication_mirror_da_repl = var.traffic_replication_mirror_da_repl
+  # traffic_replication_mirror_ip_repl - (optional) is a type of number
+  traffic_replication_mirror_ip_repl = var.traffic_replication_mirror_ip_repl
+  # traffic_replication_mirror_sa_da_repl - (optional) is a type of number
   traffic_replication_mirror_sa_da_repl = var.traffic_replication_mirror_sa_da_repl
-  traffic_replication_mirror_sa_repl    = var.traffic_replication_mirror_sa_repl
-  user_tag                              = var.user_tag
-  uuid                                  = var.uuid
+  # traffic_replication_mirror_sa_repl - (optional) is a type of number
+  traffic_replication_mirror_sa_repl = var.traffic_replication_mirror_sa_repl
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "member_list" {
     for_each = var.member_list
     content {
-      fqdn_name                 = member_list.value["fqdn_name"]
-      host                      = member_list.value["host"]
-      member_priority           = member_list.value["member_priority"]
-      member_state              = member_list.value["member_state"]
+      # fqdn_name - (optional) is a type of string
+      fqdn_name = member_list.value["fqdn_name"]
+      # host - (optional) is a type of string
+      host = member_list.value["host"]
+      # member_priority - (optional) is a type of number
+      member_priority = member_list.value["member_priority"]
+      # member_state - (optional) is a type of string
+      member_state = member_list.value["member_state"]
+      # member_stats_data_disable - (optional) is a type of number
       member_stats_data_disable = member_list.value["member_stats_data_disable"]
-      member_template           = member_list.value["member_template"]
-      name                      = member_list.value["name"]
-      port                      = member_list.value["port"]
-      resolve_as                = member_list.value["resolve_as"]
-      server_ipv6_addr          = member_list.value["server_ipv6_addr"]
-      user_tag                  = member_list.value["user_tag"]
-      uuid                      = member_list.value["uuid"]
+      # member_template - (optional) is a type of string
+      member_template = member_list.value["member_template"]
+      # name - (optional) is a type of string
+      name = member_list.value["name"]
+      # port - (optional) is a type of number
+      port = member_list.value["port"]
+      # resolve_as - (optional) is a type of string
+      resolve_as = member_list.value["resolve_as"]
+      # server_ipv6_addr - (optional) is a type of string
+      server_ipv6_addr = member_list.value["server_ipv6_addr"]
+      # user_tag - (optional) is a type of string
+      user_tag = member_list.value["user_tag"]
+      # uuid - (optional) is a type of string
+      uuid = member_list.value["uuid"]
 
       dynamic "sampling_enable" {
         for_each = member_list.value.sampling_enable
         content {
+          # counters1 - (optional) is a type of string
           counters1 = sampling_enable.value["counters1"]
         }
       }
@@ -596,7 +659,9 @@ resource "thunder_service_group" "this" {
   dynamic "priorities" {
     for_each = var.priorities
     content {
-      priority        = priorities.value["priority"]
+      # priority - (optional) is a type of number
+      priority = priorities.value["priority"]
+      # priority_action - (optional) is a type of string
       priority_action = priorities.value["priority_action"]
     }
   }
@@ -604,6 +669,7 @@ resource "thunder_service_group" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

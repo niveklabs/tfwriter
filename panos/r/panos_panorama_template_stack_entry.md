@@ -56,7 +56,9 @@ variable "template_stack" {
 
 ```terraform
 resource "panos_panorama_template_stack_entry" "this" {
-  device         = var.device
+  # device - (required) is a type of string
+  device = var.device
+  # template_stack - (required) is a type of string
   template_stack = var.template_stack
 }
 ```

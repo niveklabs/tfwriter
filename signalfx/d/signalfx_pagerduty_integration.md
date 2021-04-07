@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "signalfx_pagerduty_integration" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

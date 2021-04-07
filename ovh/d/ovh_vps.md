@@ -49,6 +49,7 @@ variable "service_name" {
 
 ```terraform
 data "ovh_vps" "this" {
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

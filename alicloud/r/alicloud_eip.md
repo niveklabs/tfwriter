@@ -114,15 +114,24 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_eip" "this" {
-  bandwidth            = var.bandwidth
-  description          = var.description
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
+  # internet_charge_type - (optional) is a type of string
   internet_charge_type = var.internet_charge_type
-  isp                  = var.isp
-  name                 = var.name
-  period               = var.period
-  resource_group_id    = var.resource_group_id
-  tags                 = var.tags
+  # isp - (optional) is a type of string
+  isp = var.isp
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

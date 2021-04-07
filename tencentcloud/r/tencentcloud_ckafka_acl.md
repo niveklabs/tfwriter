@@ -95,13 +95,20 @@ variable "resource_type" {
 
 ```terraform
 resource "tencentcloud_ckafka_acl" "this" {
-  host            = var.host
-  instance_id     = var.instance_id
-  operation_type  = var.operation_type
+  # host - (optional) is a type of string
+  host = var.host
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # operation_type - (required) is a type of string
+  operation_type = var.operation_type
+  # permission_type - (optional) is a type of string
   permission_type = var.permission_type
-  principal       = var.principal
-  resource_name   = var.resource_name
-  resource_type   = var.resource_type
+  # principal - (optional) is a type of string
+  principal = var.principal
+  # resource_name - (required) is a type of string
+  resource_name = var.resource_name
+  # resource_type - (optional) is a type of string
+  resource_type = var.resource_type
 }
 ```
 

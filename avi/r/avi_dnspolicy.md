@@ -392,19 +392,28 @@ variable "rule" {
 
 ```terraform
 resource "avi_dnspolicy" "this" {
-  created_by  = var.created_by
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # enable - (optional) is a type of bool
       enable = rule.value["enable"]
-      index  = rule.value["index"]
-      log    = rule.value["log"]
-      name   = rule.value["name"]
+      # index - (optional) is a type of number
+      index = rule.value["index"]
+      # log - (optional) is a type of bool
+      log = rule.value["log"]
+      # name - (optional) is a type of string
+      name = rule.value["name"]
 
       dynamic "action" {
         for_each = rule.value.action
@@ -413,7 +422,9 @@ resource "avi_dnspolicy" "this" {
           dynamic "allow" {
             for_each = action.value.allow
             content {
-              allow      = allow.value["allow"]
+              # allow - (optional) is a type of bool
+              allow = allow.value["allow"]
+              # reset_conn - (optional) is a type of bool
               reset_conn = allow.value["reset_conn"]
             }
           }
@@ -425,6 +436,7 @@ resource "avi_dnspolicy" "this" {
               dynamic "action" {
                 for_each = dns_rate_limiter.value.action
                 content {
+                  # type - (optional) is a type of string
                   type = action.value["type"]
                 }
               }
@@ -432,10 +444,14 @@ resource "avi_dnspolicy" "this" {
               dynamic "rate_limiter_object" {
                 for_each = dns_rate_limiter.value.rate_limiter_object
                 content {
+                  # burst_sz - (optional) is a type of number
                   burst_sz = rate_limiter_object.value["burst_sz"]
-                  count    = rate_limiter_object.value["count"]
-                  name     = rate_limiter_object.value["name"]
-                  period   = rate_limiter_object.value["period"]
+                  # count - (optional) is a type of number
+                  count = rate_limiter_object.value["count"]
+                  # name - (optional) is a type of string
+                  name = rate_limiter_object.value["name"]
+                  # period - (optional) is a type of number
+                  period = rate_limiter_object.value["period"]
                 }
               }
 
@@ -445,42 +461,55 @@ resource "avi_dnspolicy" "this" {
           dynamic "gslb_site_selection" {
             for_each = action.value.gslb_site_selection
             content {
+              # fallback_site_names - (optional) is a type of list of string
               fallback_site_names = gslb_site_selection.value["fallback_site_names"]
-              is_site_preferred   = gslb_site_selection.value["is_site_preferred"]
-              site_name           = gslb_site_selection.value["site_name"]
+              # is_site_preferred - (optional) is a type of bool
+              is_site_preferred = gslb_site_selection.value["is_site_preferred"]
+              # site_name - (optional) is a type of string
+              site_name = gslb_site_selection.value["site_name"]
             }
           }
 
           dynamic "pool_switching" {
             for_each = action.value.pool_switching
             content {
+              # pool_group_ref - (optional) is a type of string
               pool_group_ref = pool_switching.value["pool_group_ref"]
-              pool_ref       = pool_switching.value["pool_ref"]
+              # pool_ref - (optional) is a type of string
+              pool_ref = pool_switching.value["pool_ref"]
             }
           }
 
           dynamic "response" {
             for_each = action.value.response
             content {
+              # authoritative - (optional) is a type of bool
               authoritative = response.value["authoritative"]
-              rcode         = response.value["rcode"]
-              truncation    = response.value["truncation"]
+              # rcode - (optional) is a type of string
+              rcode = response.value["rcode"]
+              # truncation - (optional) is a type of bool
+              truncation = response.value["truncation"]
 
               dynamic "resource_record_sets" {
                 for_each = response.value.resource_record_sets
                 content {
+                  # section - (optional) is a type of string
                   section = resource_record_sets.value["section"]
 
                   dynamic "resource_record_set" {
                     for_each = resource_record_sets.value.resource_record_set
                     content {
+                      # fqdn - (optional) is a type of string
                       fqdn = resource_record_set.value["fqdn"]
-                      ttl  = resource_record_set.value["ttl"]
+                      # ttl - (optional) is a type of number
+                      ttl = resource_record_set.value["ttl"]
+                      # type - (optional) is a type of string
                       type = resource_record_set.value["type"]
 
                       dynamic "cname" {
                         for_each = resource_record_set.value.cname
                         content {
+                          # cname - (required) is a type of string
                           cname = cname.value["cname"]
                         }
                       }
@@ -492,7 +521,9 @@ resource "avi_dnspolicy" "this" {
                           dynamic "ip6_address" {
                             for_each = ip6_addresses.value.ip6_address
                             content {
+                              # addr - (required) is a type of string
                               addr = ip6_address.value["addr"]
+                              # type - (required) is a type of string
                               type = ip6_address.value["type"]
                             }
                           }
@@ -507,7 +538,9 @@ resource "avi_dnspolicy" "this" {
                           dynamic "ip_address" {
                             for_each = ip_addresses.value.ip_address
                             content {
+                              # addr - (required) is a type of string
                               addr = ip_address.value["addr"]
+                              # type - (required) is a type of string
                               type = ip_address.value["type"]
                             }
                           }
@@ -518,12 +551,15 @@ resource "avi_dnspolicy" "this" {
                       dynamic "nses" {
                         for_each = resource_record_set.value.nses
                         content {
+                          # nsname - (required) is a type of string
                           nsname = nses.value["nsname"]
 
                           dynamic "ip6_address" {
                             for_each = nses.value.ip6_address
                             content {
+                              # addr - (required) is a type of string
                               addr = ip6_address.value["addr"]
+                              # type - (required) is a type of string
                               type = ip6_address.value["type"]
                             }
                           }
@@ -531,7 +567,9 @@ resource "avi_dnspolicy" "this" {
                           dynamic "ip_address" {
                             for_each = nses.value.ip_address
                             content {
+                              # addr - (required) is a type of string
                               addr = ip_address.value["addr"]
+                              # type - (required) is a type of string
                               type = ip_address.value["type"]
                             }
                           }
@@ -558,18 +596,23 @@ resource "avi_dnspolicy" "this" {
           dynamic "client_ip_address" {
             for_each = match.value.client_ip_address
             content {
+              # use_edns_client_subnet_ip - (optional) is a type of bool
               use_edns_client_subnet_ip = client_ip_address.value["use_edns_client_subnet_ip"]
 
               dynamic "client_ip" {
                 for_each = client_ip_address.value.client_ip
                 content {
-                  group_refs     = client_ip.value["group_refs"]
+                  # group_refs - (optional) is a type of list of string
+                  group_refs = client_ip.value["group_refs"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = client_ip.value["match_criteria"]
 
                   dynamic "addrs" {
                     for_each = client_ip.value.addrs
                     content {
+                      # addr - (required) is a type of string
                       addr = addrs.value["addr"]
+                      # type - (required) is a type of string
                       type = addrs.value["type"]
                     }
                   }
@@ -577,12 +620,15 @@ resource "avi_dnspolicy" "this" {
                   dynamic "prefixes" {
                     for_each = client_ip.value.prefixes
                     content {
+                      # mask - (required) is a type of number
                       mask = prefixes.value["mask"]
 
                       dynamic "ip_addr" {
                         for_each = prefixes.value.ip_addr
                         content {
+                          # addr - (required) is a type of string
                           addr = ip_addr.value["addr"]
+                          # type - (required) is a type of string
                           type = ip_addr.value["type"]
                         }
                       }
@@ -597,7 +643,9 @@ resource "avi_dnspolicy" "this" {
                       dynamic "begin" {
                         for_each = ranges.value.begin
                         content {
+                          # addr - (required) is a type of string
                           addr = begin.value["addr"]
+                          # type - (required) is a type of string
                           type = begin.value["type"]
                         }
                       }
@@ -605,7 +653,9 @@ resource "avi_dnspolicy" "this" {
                       dynamic "end" {
                         for_each = ranges.value.end
                         content {
+                          # addr - (required) is a type of string
                           addr = end.value["addr"]
+                          # type - (required) is a type of string
                           type = end.value["type"]
                         }
                       }
@@ -622,9 +672,13 @@ resource "avi_dnspolicy" "this" {
           dynamic "geo_location" {
             for_each = match.value.geo_location
             content {
-              geolocation_name          = geo_location.value["geolocation_name"]
-              geolocation_tag           = geo_location.value["geolocation_tag"]
-              match_criteria            = geo_location.value["match_criteria"]
+              # geolocation_name - (optional) is a type of string
+              geolocation_name = geo_location.value["geolocation_name"]
+              # geolocation_tag - (optional) is a type of string
+              geolocation_tag = geo_location.value["geolocation_tag"]
+              # match_criteria - (optional) is a type of string
+              match_criteria = geo_location.value["match_criteria"]
+              # use_edns_client_subnet_ip - (optional) is a type of bool
               use_edns_client_subnet_ip = geo_location.value["use_edns_client_subnet_ip"]
             }
           }
@@ -632,25 +686,32 @@ resource "avi_dnspolicy" "this" {
           dynamic "protocol" {
             for_each = match.value.protocol
             content {
+              # match_criteria - (optional) is a type of string
               match_criteria = protocol.value["match_criteria"]
-              protocol       = protocol.value["protocol"]
+              # protocol - (optional) is a type of string
+              protocol = protocol.value["protocol"]
             }
           }
 
           dynamic "query_name" {
             for_each = match.value.query_name
             content {
-              match_criteria     = query_name.value["match_criteria"]
+              # match_criteria - (optional) is a type of string
+              match_criteria = query_name.value["match_criteria"]
+              # query_domain_names - (optional) is a type of list of string
               query_domain_names = query_name.value["query_domain_names"]
-              string_group_refs  = query_name.value["string_group_refs"]
+              # string_group_refs - (optional) is a type of list of string
+              string_group_refs = query_name.value["string_group_refs"]
             }
           }
 
           dynamic "query_type" {
             for_each = match.value.query_type
             content {
+              # match_criteria - (optional) is a type of string
               match_criteria = query_type.value["match_criteria"]
-              query_type     = query_type.value["query_type"]
+              # query_type - (optional) is a type of list of string
+              query_type = query_type.value["query_type"]
             }
           }
 

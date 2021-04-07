@@ -66,9 +66,12 @@ variable "region" {
 
 ```terraform
 data "scaleway_k8s_cluster" "this" {
+  # cluster_id - (optional) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
-  region     = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

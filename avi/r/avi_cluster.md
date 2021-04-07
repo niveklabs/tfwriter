@@ -153,16 +153,23 @@ variable "virtual_ip" {
 
 ```terraform
 resource "avi_cluster" "this" {
-  name                       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # rejoin_nodes_automatically - (optional) is a type of bool
   rejoin_nodes_automatically = var.rejoin_nodes_automatically
-  tenant_ref                 = var.tenant_ref
-  uuid                       = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "cluster_state" {
     for_each = var.cluster_state
     content {
+      # progress - (optional) is a type of number
       progress = cluster_state.value["progress"]
-      state    = cluster_state.value["state"]
+      # state - (optional) is a type of string
+      state = cluster_state.value["state"]
+      # up_since - (optional) is a type of string
       up_since = cluster_state.value["up_since"]
     }
   }
@@ -170,18 +177,27 @@ resource "avi_cluster" "this" {
   dynamic "nodes" {
     for_each = var.nodes
     content {
-      categories  = nodes.value["categories"]
-      name        = nodes.value["name"]
-      password    = nodes.value["password"]
+      # categories - (optional) is a type of list of string
+      categories = nodes.value["categories"]
+      # name - (optional) is a type of string
+      name = nodes.value["name"]
+      # password - (optional) is a type of string
+      password = nodes.value["password"]
+      # vm_hostname - (optional) is a type of string
       vm_hostname = nodes.value["vm_hostname"]
-      vm_mor      = nodes.value["vm_mor"]
-      vm_name     = nodes.value["vm_name"]
-      vm_uuid     = nodes.value["vm_uuid"]
+      # vm_mor - (optional) is a type of string
+      vm_mor = nodes.value["vm_mor"]
+      # vm_name - (optional) is a type of string
+      vm_name = nodes.value["vm_name"]
+      # vm_uuid - (optional) is a type of string
+      vm_uuid = nodes.value["vm_uuid"]
 
       dynamic "ip" {
         for_each = nodes.value.ip
         content {
+          # addr - (required) is a type of string
           addr = ip.value["addr"]
+          # type - (required) is a type of string
           type = ip.value["type"]
         }
       }
@@ -189,7 +205,9 @@ resource "avi_cluster" "this" {
       dynamic "public_ip_or_name" {
         for_each = nodes.value.public_ip_or_name
         content {
+          # addr - (required) is a type of string
           addr = public_ip_or_name.value["addr"]
+          # type - (required) is a type of string
           type = public_ip_or_name.value["type"]
         }
       }
@@ -200,7 +218,9 @@ resource "avi_cluster" "this" {
   dynamic "virtual_ip" {
     for_each = var.virtual_ip
     content {
+      # addr - (required) is a type of string
       addr = virtual_ip.value["addr"]
+      # type - (required) is a type of string
       type = virtual_ip.value["type"]
     }
   }

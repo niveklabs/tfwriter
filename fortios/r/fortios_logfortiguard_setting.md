@@ -146,19 +146,32 @@ variable "upload_time" {
 
 ```terraform
 resource "fortios_logfortiguard_setting" "this" {
-  conn_timeout            = var.conn_timeout
-  enc_algorithm           = var.enc_algorithm
-  interface               = var.interface
+  # conn_timeout - (optional) is a type of number
+  conn_timeout = var.conn_timeout
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  max_log_rate            = var.max_log_rate
-  priority                = var.priority
-  source_ip               = var.source_ip
-  ssl_min_proto_version   = var.ssl_min_proto_version
-  status                  = var.status
-  upload_day              = var.upload_day
-  upload_interval         = var.upload_interval
-  upload_option           = var.upload_option
-  upload_time             = var.upload_time
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = var.max_log_rate
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # status - (optional) is a type of string
+  status = var.status
+  # upload_day - (optional) is a type of string
+  upload_day = var.upload_day
+  # upload_interval - (optional) is a type of string
+  upload_interval = var.upload_interval
+  # upload_option - (optional) is a type of string
+  upload_option = var.upload_option
+  # upload_time - (optional) is a type of string
+  upload_time = var.upload_time
 }
 ```
 

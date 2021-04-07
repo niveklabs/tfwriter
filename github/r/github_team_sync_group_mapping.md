@@ -67,14 +67,18 @@ variable "group" {
 
 ```terraform
 resource "github_team_sync_group_mapping" "this" {
+  # team_slug - (required) is a type of string
   team_slug = var.team_slug
 
   dynamic "group" {
     for_each = var.group
     content {
+      # group_description - (required) is a type of string
       group_description = group.value["group_description"]
-      group_id          = group.value["group_id"]
-      group_name        = group.value["group_name"]
+      # group_id - (required) is a type of string
+      group_id = group.value["group_id"]
+      # group_name - (required) is a type of string
+      group_name = group.value["group_name"]
     }
   }
 

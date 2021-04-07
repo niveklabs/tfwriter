@@ -79,13 +79,17 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_kvstore_backup_policy" "this" {
+  # backup_period - (optional) is a type of set of string
   backup_period = var.backup_period
-  backup_time   = var.backup_time
-  instance_id   = var.instance_id
+  # backup_time - (optional) is a type of string
+  backup_time = var.backup_time
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

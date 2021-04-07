@@ -226,42 +226,71 @@ variable "target" {
 
 ```terraform
 resource "prismacloud_alert_rule" "this" {
-  allow_auto_remediate  = var.allow_auto_remediate
+  # allow_auto_remediate - (optional) is a type of bool
+  allow_auto_remediate = var.allow_auto_remediate
+  # delay_notification_ms - (optional) is a type of number
   delay_notification_ms = var.delay_notification_ms
-  description           = var.description
-  enabled               = var.enabled
-  excluded_policies     = var.excluded_policies
-  name                  = var.name
-  notify_on_dismissed   = var.notify_on_dismissed
-  notify_on_open        = var.notify_on_open
-  notify_on_resolved    = var.notify_on_resolved
-  notify_on_snoozed     = var.notify_on_snoozed
-  policies              = var.policies
-  policy_labels         = var.policy_labels
-  scan_all              = var.scan_all
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # excluded_policies - (optional) is a type of list of string
+  excluded_policies = var.excluded_policies
+  # name - (required) is a type of string
+  name = var.name
+  # notify_on_dismissed - (optional) is a type of bool
+  notify_on_dismissed = var.notify_on_dismissed
+  # notify_on_open - (optional) is a type of bool
+  notify_on_open = var.notify_on_open
+  # notify_on_resolved - (optional) is a type of bool
+  notify_on_resolved = var.notify_on_resolved
+  # notify_on_snoozed - (optional) is a type of bool
+  notify_on_snoozed = var.notify_on_snoozed
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # policy_labels - (optional) is a type of list of string
+  policy_labels = var.policy_labels
+  # scan_all - (optional) is a type of bool
+  scan_all = var.scan_all
 
   dynamic "notification_config" {
     for_each = var.notification_config
     content {
-      config_id             = notification_config.value["config_id"]
-      config_type           = notification_config.value["config_type"]
-      day_of_month          = notification_config.value["day_of_month"]
-      detailed_report       = notification_config.value["detailed_report"]
-      enabled               = notification_config.value["enabled"]
-      frequency             = notification_config.value["frequency"]
+      # config_id - (optional) is a type of string
+      config_id = notification_config.value["config_id"]
+      # config_type - (optional) is a type of string
+      config_type = notification_config.value["config_type"]
+      # day_of_month - (optional) is a type of number
+      day_of_month = notification_config.value["day_of_month"]
+      # detailed_report - (optional) is a type of bool
+      detailed_report = notification_config.value["detailed_report"]
+      # enabled - (optional) is a type of bool
+      enabled = notification_config.value["enabled"]
+      # frequency - (optional) is a type of string
+      frequency = notification_config.value["frequency"]
+      # frequency_from_r_rule - (optional) is a type of string
       frequency_from_r_rule = notification_config.value["frequency_from_r_rule"]
-      hour_of_day           = notification_config.value["hour_of_day"]
-      include_remediation   = notification_config.value["include_remediation"]
-      r_rule_schedule       = notification_config.value["r_rule_schedule"]
-      recipients            = notification_config.value["recipients"]
-      template_id           = notification_config.value["template_id"]
-      timezone_id           = notification_config.value["timezone_id"]
-      with_compression      = notification_config.value["with_compression"]
+      # hour_of_day - (optional) is a type of number
+      hour_of_day = notification_config.value["hour_of_day"]
+      # include_remediation - (optional) is a type of bool
+      include_remediation = notification_config.value["include_remediation"]
+      # r_rule_schedule - (optional) is a type of string
+      r_rule_schedule = notification_config.value["r_rule_schedule"]
+      # recipients - (optional) is a type of list of string
+      recipients = notification_config.value["recipients"]
+      # template_id - (optional) is a type of string
+      template_id = notification_config.value["template_id"]
+      # timezone_id - (optional) is a type of string
+      timezone_id = notification_config.value["timezone_id"]
+      # with_compression - (optional) is a type of bool
+      with_compression = notification_config.value["with_compression"]
 
       dynamic "days_of_week" {
         for_each = notification_config.value.days_of_week
         content {
-          day    = days_of_week.value["day"]
+          # day - (optional) is a type of string
+          day = days_of_week.value["day"]
+          # offset - (optional) is a type of number
           offset = days_of_week.value["offset"]
         }
       }
@@ -272,14 +301,19 @@ resource "prismacloud_alert_rule" "this" {
   dynamic "target" {
     for_each = var.target
     content {
-      account_groups    = target.value["account_groups"]
+      # account_groups - (optional) is a type of list of string
+      account_groups = target.value["account_groups"]
+      # excluded_accounts - (optional) is a type of list of string
       excluded_accounts = target.value["excluded_accounts"]
-      regions           = target.value["regions"]
+      # regions - (optional) is a type of list of string
+      regions = target.value["regions"]
 
       dynamic "tags" {
         for_each = target.value.tags
         content {
-          key    = tags.value["key"]
+          # key - (required) is a type of string
+          key = tags.value["key"]
+          # values - (required) is a type of list of string
           values = tags.value["values"]
         }
       }

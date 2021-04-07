@@ -121,16 +121,26 @@ variable "use_api" {
 
 ```terraform
 resource "tencentcloud_cam_user" "this" {
-  console_login       = var.console_login
-  country_code        = var.country_code
-  email               = var.email
-  force_delete        = var.force_delete
-  name                = var.name
+  # console_login - (optional) is a type of bool
+  console_login = var.console_login
+  # country_code - (optional) is a type of string
+  country_code = var.country_code
+  # email - (optional) is a type of string
+  email = var.email
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # name - (required) is a type of string
+  name = var.name
+  # need_reset_password - (optional) is a type of bool
   need_reset_password = var.need_reset_password
-  password            = var.password
-  phone_num           = var.phone_num
-  remark              = var.remark
-  use_api             = var.use_api
+  # password - (optional) is a type of string
+  password = var.password
+  # phone_num - (optional) is a type of string
+  phone_num = var.phone_num
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # use_api - (optional) is a type of bool
+  use_api = var.use_api
 }
 ```
 

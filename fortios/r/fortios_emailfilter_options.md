@@ -50,6 +50,7 @@ variable "dns_timeout" {
 
 ```terraform
 resource "fortios_emailfilter_options" "this" {
+  # dns_timeout - (optional) is a type of number
   dns_timeout = var.dns_timeout
 }
 ```

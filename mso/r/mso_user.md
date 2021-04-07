@@ -119,20 +119,30 @@ variable "roles" {
 
 ```terraform
 resource "mso_user" "this" {
+  # account_status - (optional) is a type of string
   account_status = var.account_status
-  domain         = var.domain
-  email          = var.email
-  first_name     = var.first_name
-  last_name      = var.last_name
-  phone          = var.phone
-  user_password  = var.user_password
-  username       = var.username
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # email - (optional) is a type of string
+  email = var.email
+  # first_name - (optional) is a type of string
+  first_name = var.first_name
+  # last_name - (optional) is a type of string
+  last_name = var.last_name
+  # phone - (optional) is a type of string
+  phone = var.phone
+  # user_password - (required) is a type of string
+  user_password = var.user_password
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "roles" {
     for_each = var.roles
     content {
+      # access_type - (optional) is a type of string
       access_type = roles.value["access_type"]
-      roleid      = roles.value["roleid"]
+      # roleid - (required) is a type of string
+      roleid = roles.value["roleid"]
     }
   }
 

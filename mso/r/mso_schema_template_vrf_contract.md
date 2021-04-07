@@ -93,13 +93,20 @@ variable "vrf_name" {
 
 ```terraform
 resource "mso_schema_template_vrf_contract" "this" {
-  contract_name          = var.contract_name
-  contract_schema_id     = var.contract_schema_id
+  # contract_name - (required) is a type of string
+  contract_name = var.contract_name
+  # contract_schema_id - (optional) is a type of string
+  contract_schema_id = var.contract_schema_id
+  # contract_template_name - (optional) is a type of string
   contract_template_name = var.contract_template_name
-  relationship_type      = var.relationship_type
-  schema_id              = var.schema_id
-  template_name          = var.template_name
-  vrf_name               = var.vrf_name
+  # relationship_type - (required) is a type of string
+  relationship_type = var.relationship_type
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # vrf_name - (required) is a type of string
+  vrf_name = var.vrf_name
 }
 ```
 

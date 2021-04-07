@@ -57,8 +57,10 @@ variable "search" {
 
 ```terraform
 data "packet_project_ssh_key" "this" {
+  # project_id - (required) is a type of string
   project_id = var.project_id
-  search     = var.search
+  # search - (optional) is a type of string
+  search = var.search
 }
 ```
 

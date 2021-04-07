@@ -97,17 +97,24 @@ variable "timeouts" {
 
 ```terraform
 resource "mongodbatlas_project_ip_whitelist" "this" {
+  # aws_security_group - (optional) is a type of string
   aws_security_group = var.aws_security_group
-  cidr_block         = var.cidr_block
-  comment            = var.comment
-  ip_address         = var.ip_address
-  project_id         = var.project_id
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

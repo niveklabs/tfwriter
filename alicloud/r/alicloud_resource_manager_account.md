@@ -73,10 +73,14 @@ variable "payer_account_id" {
 
 ```terraform
 resource "alicloud_resource_manager_account" "this" {
+  # account_name_prefix - (optional) is a type of string
   account_name_prefix = var.account_name_prefix
-  display_name        = var.display_name
-  folder_id           = var.folder_id
-  payer_account_id    = var.payer_account_id
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # folder_id - (optional) is a type of string
+  folder_id = var.folder_id
+  # payer_account_id - (optional) is a type of string
+  payer_account_id = var.payer_account_id
 }
 ```
 

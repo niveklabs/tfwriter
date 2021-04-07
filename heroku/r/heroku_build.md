@@ -75,16 +75,22 @@ variable "source" {
 
 ```terraform
 resource "heroku_build" "this" {
-  app        = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # buildpacks - (optional) is a type of list of string
   buildpacks = var.buildpacks
 
   dynamic "source" {
     for_each = var.source
     content {
+      # checksum - (optional) is a type of string
       checksum = source.value["checksum"]
-      path     = source.value["path"]
-      url      = source.value["url"]
-      version  = source.value["version"]
+      # path - (optional) is a type of string
+      path = source.value["path"]
+      # url - (optional) is a type of string
+      url = source.value["url"]
+      # version - (optional) is a type of string
+      version = source.value["version"]
     }
   }
 

@@ -183,16 +183,23 @@ variable "widget" {
 
 ```terraform
 resource "newrelic_dashboard" "this" {
-  editable          = var.editable
+  # editable - (optional) is a type of string
+  editable = var.editable
+  # grid_column_count - (optional) is a type of number
   grid_column_count = var.grid_column_count
-  icon              = var.icon
-  title             = var.title
-  visibility        = var.visibility
+  # icon - (optional) is a type of string
+  icon = var.icon
+  # title - (required) is a type of string
+  title = var.title
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      attributes  = filter.value["attributes"]
+      # attributes - (optional) is a type of set of string
+      attributes = filter.value["attributes"]
+      # event_types - (required) is a type of set of string
       event_types = filter.value["event_types"]
     }
   }
@@ -200,36 +207,58 @@ resource "newrelic_dashboard" "this" {
   dynamic "widget" {
     for_each = var.widget
     content {
-      account_id             = widget.value["account_id"]
-      column                 = widget.value["column"]
+      # account_id - (optional) is a type of number
+      account_id = widget.value["account_id"]
+      # column - (required) is a type of number
+      column = widget.value["column"]
+      # drilldown_dashboard_id - (optional) is a type of number
       drilldown_dashboard_id = widget.value["drilldown_dashboard_id"]
-      duration               = widget.value["duration"]
-      end_time               = widget.value["end_time"]
-      entity_ids             = widget.value["entity_ids"]
-      facet                  = widget.value["facet"]
-      height                 = widget.value["height"]
-      limit                  = widget.value["limit"]
-      notes                  = widget.value["notes"]
-      nrql                   = widget.value["nrql"]
-      order_by               = widget.value["order_by"]
-      row                    = widget.value["row"]
-      source                 = widget.value["source"]
-      threshold_red          = widget.value["threshold_red"]
-      threshold_yellow       = widget.value["threshold_yellow"]
-      title                  = widget.value["title"]
-      visualization          = widget.value["visualization"]
-      width                  = widget.value["width"]
+      # duration - (optional) is a type of number
+      duration = widget.value["duration"]
+      # end_time - (optional) is a type of number
+      end_time = widget.value["end_time"]
+      # entity_ids - (optional) is a type of set of number
+      entity_ids = widget.value["entity_ids"]
+      # facet - (optional) is a type of string
+      facet = widget.value["facet"]
+      # height - (optional) is a type of number
+      height = widget.value["height"]
+      # limit - (optional) is a type of number
+      limit = widget.value["limit"]
+      # notes - (optional) is a type of string
+      notes = widget.value["notes"]
+      # nrql - (optional) is a type of string
+      nrql = widget.value["nrql"]
+      # order_by - (optional) is a type of string
+      order_by = widget.value["order_by"]
+      # row - (required) is a type of number
+      row = widget.value["row"]
+      # source - (optional) is a type of string
+      source = widget.value["source"]
+      # threshold_red - (optional) is a type of number
+      threshold_red = widget.value["threshold_red"]
+      # threshold_yellow - (optional) is a type of number
+      threshold_yellow = widget.value["threshold_yellow"]
+      # title - (required) is a type of string
+      title = widget.value["title"]
+      # visualization - (required) is a type of string
+      visualization = widget.value["visualization"]
+      # width - (optional) is a type of number
+      width = widget.value["width"]
 
       dynamic "compare_with" {
         for_each = widget.value.compare_with
         content {
+          # offset_duration - (required) is a type of string
           offset_duration = compare_with.value["offset_duration"]
 
           dynamic "presentation" {
             for_each = compare_with.value.presentation
             content {
+              # color - (required) is a type of string
               color = presentation.value["color"]
-              name  = presentation.value["name"]
+              # name - (required) is a type of string
+              name = presentation.value["name"]
             }
           }
 
@@ -239,9 +268,13 @@ resource "newrelic_dashboard" "this" {
       dynamic "metric" {
         for_each = widget.value.metric
         content {
-          name   = metric.value["name"]
-          scope  = metric.value["scope"]
-          units  = metric.value["units"]
+          # name - (required) is a type of string
+          name = metric.value["name"]
+          # scope - (optional) is a type of string
+          scope = metric.value["scope"]
+          # units - (optional) is a type of string
+          units = metric.value["units"]
+          # values - (optional) is a type of set of string
           values = metric.value["values"]
         }
       }

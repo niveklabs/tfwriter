@@ -56,8 +56,10 @@ variable "server_id" {
 
 ```terraform
 resource "hcloud_floating_ip_assignment" "this" {
+  # floating_ip_id - (required) is a type of number
   floating_ip_id = var.floating_ip_id
-  server_id      = var.server_id
+  # server_id - (required) is a type of number
+  server_id = var.server_id
 }
 ```
 

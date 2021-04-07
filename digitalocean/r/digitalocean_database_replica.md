@@ -88,12 +88,18 @@ variable "tags" {
 
 ```terraform
 resource "digitalocean_database_replica" "this" {
-  cluster_id           = var.cluster_id
-  name                 = var.name
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # name - (required) is a type of string
+  name = var.name
+  # private_network_uuid - (optional) is a type of string
   private_network_uuid = var.private_network_uuid
-  region               = var.region
-  size                 = var.size
-  tags                 = var.tags
+  # region - (optional) is a type of string
+  region = var.region
+  # size - (optional) is a type of string
+  size = var.size
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

@@ -78,11 +78,16 @@ variable "vswitch_id" {
 
 ```terraform
 resource "hcloud_network_subnet" "this" {
-  ip_range     = var.ip_range
-  network_id   = var.network_id
+  # ip_range - (required) is a type of string
+  ip_range = var.ip_range
+  # network_id - (required) is a type of number
+  network_id = var.network_id
+  # network_zone - (required) is a type of string
   network_zone = var.network_zone
-  type         = var.type
-  vswitch_id   = var.vswitch_id
+  # type - (required) is a type of string
+  type = var.type
+  # vswitch_id - (optional) is a type of number
+  vswitch_id = var.vswitch_id
 }
 ```
 

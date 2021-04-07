@@ -72,10 +72,14 @@ variable "role_name" {
 
 ```terraform
 resource "alicloud_resource_manager_role" "this" {
+  # assume_role_policy_document - (required) is a type of string
   assume_role_policy_document = var.assume_role_policy_document
-  description                 = var.description
-  max_session_duration        = var.max_session_duration
-  role_name                   = var.role_name
+  # description - (optional) is a type of string
+  description = var.description
+  # max_session_duration - (optional) is a type of number
+  max_session_duration = var.max_session_duration
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 }
 ```
 

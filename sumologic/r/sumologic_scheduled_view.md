@@ -95,13 +95,20 @@ variable "start_time" {
 
 ```terraform
 resource "sumologic_scheduled_view" "this" {
-  data_forwarding_id                  = var.data_forwarding_id
-  index_name                          = var.index_name
-  parsing_mode                        = var.parsing_mode
-  query                               = var.query
+  # data_forwarding_id - (optional) is a type of string
+  data_forwarding_id = var.data_forwarding_id
+  # index_name - (required) is a type of string
+  index_name = var.index_name
+  # parsing_mode - (optional) is a type of string
+  parsing_mode = var.parsing_mode
+  # query - (required) is a type of string
+  query = var.query
+  # reduce_retention_period_immediately - (optional) is a type of bool
   reduce_retention_period_immediately = var.reduce_retention_period_immediately
-  retention_period                    = var.retention_period
-  start_time                          = var.start_time
+  # retention_period - (optional) is a type of number
+  retention_period = var.retention_period
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 }
 ```
 

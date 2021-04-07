@@ -80,10 +80,15 @@ variable "retain_assignment" {
 
 ```terraform
 resource "okta_app_group_assignment" "this" {
-  app_id            = var.app_id
-  group_id          = var.group_id
-  priority          = var.priority
-  profile           = var.profile
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # profile - (optional) is a type of string
+  profile = var.profile
+  # retain_assignment - (optional) is a type of bool
   retain_assignment = var.retain_assignment
 }
 ```

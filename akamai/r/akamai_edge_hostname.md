@@ -112,15 +112,24 @@ variable "product_id" {
 
 ```terraform
 resource "akamai_edge_hostname" "this" {
-  certificate   = var.certificate
-  contract      = var.contract
-  contract_id   = var.contract_id
+  # certificate - (optional) is a type of number
+  certificate = var.certificate
+  # contract - (optional) is a type of string
+  contract = var.contract
+  # contract_id - (optional) is a type of string
+  contract_id = var.contract_id
+  # edge_hostname - (required) is a type of string
   edge_hostname = var.edge_hostname
-  group         = var.group
-  group_id      = var.group_id
-  ip_behavior   = var.ip_behavior
-  product       = var.product
-  product_id    = var.product_id
+  # group - (optional) is a type of string
+  group = var.group
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # ip_behavior - (required) is a type of string
+  ip_behavior = var.ip_behavior
+  # product - (optional) is a type of string
+  product = var.product
+  # product_id - (optional) is a type of string
+  product_id = var.product_id
 }
 ```
 

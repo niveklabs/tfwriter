@@ -202,26 +202,46 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_virtual_server" "this" {
-  conn_limit                      = var.conn_limit
-  conn_limit_no_logging           = var.conn_limit_no_logging
-  conn_limit_reset                = var.conn_limit_reset
-  conn_rate_limit                 = var.conn_rate_limit
-  conn_rate_limit_no_logging      = var.conn_rate_limit_no_logging
-  conn_rate_limit_reset           = var.conn_rate_limit_reset
-  icmp_lockup                     = var.icmp_lockup
-  icmp_lockup_period              = var.icmp_lockup_period
-  icmp_rate_limit                 = var.icmp_rate_limit
-  icmpv6_lockup                   = var.icmpv6_lockup
-  icmpv6_lockup_period            = var.icmpv6_lockup_period
-  icmpv6_rate_limit               = var.icmpv6_rate_limit
-  name                            = var.name
-  rate_interval                   = var.rate_interval
-  subnet_gratuitous_arp           = var.subnet_gratuitous_arp
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # conn_limit_no_logging - (optional) is a type of number
+  conn_limit_no_logging = var.conn_limit_no_logging
+  # conn_limit_reset - (optional) is a type of number
+  conn_limit_reset = var.conn_limit_reset
+  # conn_rate_limit - (optional) is a type of number
+  conn_rate_limit = var.conn_rate_limit
+  # conn_rate_limit_no_logging - (optional) is a type of number
+  conn_rate_limit_no_logging = var.conn_rate_limit_no_logging
+  # conn_rate_limit_reset - (optional) is a type of number
+  conn_rate_limit_reset = var.conn_rate_limit_reset
+  # icmp_lockup - (optional) is a type of number
+  icmp_lockup = var.icmp_lockup
+  # icmp_lockup_period - (optional) is a type of number
+  icmp_lockup_period = var.icmp_lockup_period
+  # icmp_rate_limit - (optional) is a type of number
+  icmp_rate_limit = var.icmp_rate_limit
+  # icmpv6_lockup - (optional) is a type of number
+  icmpv6_lockup = var.icmpv6_lockup
+  # icmpv6_lockup_period - (optional) is a type of number
+  icmpv6_lockup_period = var.icmpv6_lockup_period
+  # icmpv6_rate_limit - (optional) is a type of number
+  icmpv6_rate_limit = var.icmpv6_rate_limit
+  # name - (optional) is a type of string
+  name = var.name
+  # rate_interval - (optional) is a type of string
+  rate_interval = var.rate_interval
+  # subnet_gratuitous_arp - (optional) is a type of number
+  subnet_gratuitous_arp = var.subnet_gratuitous_arp
+  # tcp_stack_tfo_active_conn_limit - (optional) is a type of number
   tcp_stack_tfo_active_conn_limit = var.tcp_stack_tfo_active_conn_limit
-  tcp_stack_tfo_backoff_time      = var.tcp_stack_tfo_backoff_time
+  # tcp_stack_tfo_backoff_time - (optional) is a type of number
+  tcp_stack_tfo_backoff_time = var.tcp_stack_tfo_backoff_time
+  # tcp_stack_tfo_cookie_time_limit - (optional) is a type of number
   tcp_stack_tfo_cookie_time_limit = var.tcp_stack_tfo_cookie_time_limit
-  user_tag                        = var.user_tag
-  uuid                            = var.uuid
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

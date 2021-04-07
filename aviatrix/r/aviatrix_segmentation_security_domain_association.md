@@ -63,8 +63,11 @@ variable "transit_gateway_name" {
 
 ```terraform
 resource "aviatrix_segmentation_security_domain_association" "this" {
-  attachment_name      = var.attachment_name
+  # attachment_name - (required) is a type of string
+  attachment_name = var.attachment_name
+  # security_domain_name - (required) is a type of string
   security_domain_name = var.security_domain_name
+  # transit_gateway_name - (required) is a type of string
   transit_gateway_name = var.transit_gateway_name
 }
 ```

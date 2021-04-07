@@ -49,6 +49,7 @@ variable "auth_server_id" {
 
 ```terraform
 data "okta_auth_server_scopes" "this" {
+  # auth_server_id - (required) is a type of string
   auth_server_id = var.auth_server_id
 }
 ```

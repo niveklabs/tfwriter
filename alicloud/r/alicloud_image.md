@@ -158,23 +158,37 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_image" "this" {
-  architecture      = var.architecture
-  description       = var.description
-  force             = var.force
-  image_name        = var.image_name
-  instance_id       = var.instance_id
-  name              = var.name
-  platform          = var.platform
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # description - (optional) is a type of string
+  description = var.description
+  # force - (optional) is a type of bool
+  force = var.force
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # name - (optional) is a type of string
+  name = var.name
+  # platform - (optional) is a type of string
+  platform = var.platform
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  snapshot_id       = var.snapshot_id
-  tags              = var.tags
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "disk_device_mapping" {
     for_each = var.disk_device_mapping
     content {
-      device      = disk_device_mapping.value["device"]
-      disk_type   = disk_device_mapping.value["disk_type"]
-      size        = disk_device_mapping.value["size"]
+      # device - (optional) is a type of string
+      device = disk_device_mapping.value["device"]
+      # disk_type - (optional) is a type of string
+      disk_type = disk_device_mapping.value["disk_type"]
+      # size - (optional) is a type of number
+      size = disk_device_mapping.value["size"]
+      # snapshot_id - (optional) is a type of string
       snapshot_id = disk_device_mapping.value["snapshot_id"]
     }
   }
@@ -182,7 +196,9 @@ resource "alicloud_image" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -58,7 +58,9 @@ variable "private_network_id" {
 
 ```terraform
 data "scaleway_vpc_private_network" "this" {
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # private_network_id - (optional) is a type of string
   private_network_id = var.private_network_id
 }
 ```

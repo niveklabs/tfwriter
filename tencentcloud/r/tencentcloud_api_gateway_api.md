@@ -285,52 +285,88 @@ variable "response_error_codes" {
 
 ```terraform
 resource "tencentcloud_api_gateway_api" "this" {
-  api_desc                              = var.api_desc
-  api_name                              = var.api_name
-  auth_type                             = var.auth_type
-  enable_cors                           = var.enable_cors
-  pre_limit                             = var.pre_limit
-  protocol                              = var.protocol
-  release_limit                         = var.release_limit
-  request_config_method                 = var.request_config_method
-  request_config_path                   = var.request_config_path
-  response_fail_example                 = var.response_fail_example
-  response_success_example              = var.response_success_example
-  response_type                         = var.response_type
-  service_config_method                 = var.service_config_method
-  service_config_mock_return_message    = var.service_config_mock_return_message
-  service_config_path                   = var.service_config_path
-  service_config_product                = var.service_config_product
-  service_config_scf_function_name      = var.service_config_scf_function_name
+  # api_desc - (optional) is a type of string
+  api_desc = var.api_desc
+  # api_name - (required) is a type of string
+  api_name = var.api_name
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # enable_cors - (optional) is a type of bool
+  enable_cors = var.enable_cors
+  # pre_limit - (optional) is a type of number
+  pre_limit = var.pre_limit
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # release_limit - (optional) is a type of number
+  release_limit = var.release_limit
+  # request_config_method - (optional) is a type of string
+  request_config_method = var.request_config_method
+  # request_config_path - (required) is a type of string
+  request_config_path = var.request_config_path
+  # response_fail_example - (optional) is a type of string
+  response_fail_example = var.response_fail_example
+  # response_success_example - (optional) is a type of string
+  response_success_example = var.response_success_example
+  # response_type - (optional) is a type of string
+  response_type = var.response_type
+  # service_config_method - (optional) is a type of string
+  service_config_method = var.service_config_method
+  # service_config_mock_return_message - (optional) is a type of string
+  service_config_mock_return_message = var.service_config_mock_return_message
+  # service_config_path - (optional) is a type of string
+  service_config_path = var.service_config_path
+  # service_config_product - (optional) is a type of string
+  service_config_product = var.service_config_product
+  # service_config_scf_function_name - (optional) is a type of string
+  service_config_scf_function_name = var.service_config_scf_function_name
+  # service_config_scf_function_namespace - (optional) is a type of string
   service_config_scf_function_namespace = var.service_config_scf_function_namespace
+  # service_config_scf_function_qualifier - (optional) is a type of string
   service_config_scf_function_qualifier = var.service_config_scf_function_qualifier
-  service_config_timeout                = var.service_config_timeout
-  service_config_type                   = var.service_config_type
-  service_config_url                    = var.service_config_url
-  service_config_vpc_id                 = var.service_config_vpc_id
-  service_id                            = var.service_id
-  test_limit                            = var.test_limit
+  # service_config_timeout - (optional) is a type of number
+  service_config_timeout = var.service_config_timeout
+  # service_config_type - (optional) is a type of string
+  service_config_type = var.service_config_type
+  # service_config_url - (optional) is a type of string
+  service_config_url = var.service_config_url
+  # service_config_vpc_id - (optional) is a type of string
+  service_config_vpc_id = var.service_config_vpc_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # test_limit - (optional) is a type of number
+  test_limit = var.test_limit
 
   dynamic "request_parameters" {
     for_each = var.request_parameters
     content {
+      # default_value - (optional) is a type of string
       default_value = request_parameters.value["default_value"]
-      desc          = request_parameters.value["desc"]
-      name          = request_parameters.value["name"]
-      position      = request_parameters.value["position"]
-      required      = request_parameters.value["required"]
-      type          = request_parameters.value["type"]
+      # desc - (optional) is a type of string
+      desc = request_parameters.value["desc"]
+      # name - (required) is a type of string
+      name = request_parameters.value["name"]
+      # position - (required) is a type of string
+      position = request_parameters.value["position"]
+      # required - (optional) is a type of bool
+      required = request_parameters.value["required"]
+      # type - (required) is a type of string
+      type = request_parameters.value["type"]
     }
   }
 
   dynamic "response_error_codes" {
     for_each = var.response_error_codes
     content {
-      code           = response_error_codes.value["code"]
+      # code - (required) is a type of number
+      code = response_error_codes.value["code"]
+      # converted_code - (optional) is a type of number
       converted_code = response_error_codes.value["converted_code"]
-      desc           = response_error_codes.value["desc"]
-      msg            = response_error_codes.value["msg"]
-      need_convert   = response_error_codes.value["need_convert"]
+      # desc - (optional) is a type of string
+      desc = response_error_codes.value["desc"]
+      # msg - (required) is a type of string
+      msg = response_error_codes.value["msg"]
+      # need_convert - (optional) is a type of bool
+      need_convert = response_error_codes.value["need_convert"]
     }
   }
 

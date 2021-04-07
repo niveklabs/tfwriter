@@ -108,21 +108,32 @@ variable "values" {
 
 ```terraform
 resource "constellix_aaaa_record_pool" "this" {
-  disable_flag           = var.disable_flag
-  failed_flag            = var.failed_flag
+  # disable_flag - (optional) is a type of bool
+  disable_flag = var.disable_flag
+  # failed_flag - (optional) is a type of bool
+  failed_flag = var.failed_flag
+  # min_available_failover - (required) is a type of number
   min_available_failover = var.min_available_failover
-  name                   = var.name
-  note                   = var.note
-  num_return             = var.num_return
+  # name - (required) is a type of string
+  name = var.name
+  # note - (optional) is a type of string
+  note = var.note
+  # num_return - (required) is a type of number
+  num_return = var.num_return
 
   dynamic "values" {
     for_each = var.values
     content {
-      check_id     = values.value["check_id"]
+      # check_id - (optional) is a type of number
+      check_id = values.value["check_id"]
+      # disable_flag - (optional) is a type of string
       disable_flag = values.value["disable_flag"]
-      policy       = values.value["policy"]
-      value        = values.value["value"]
-      weight       = values.value["weight"]
+      # policy - (required) is a type of string
+      policy = values.value["policy"]
+      # value - (required) is a type of string
+      value = values.value["value"]
+      # weight - (required) is a type of number
+      weight = values.value["weight"]
     }
   }
 

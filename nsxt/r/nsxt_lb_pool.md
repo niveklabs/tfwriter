@@ -198,40 +198,61 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_pool" "this" {
-  active_monitor_id        = var.active_monitor_id
-  algorithm                = var.algorithm
-  description              = var.description
-  display_name             = var.display_name
-  min_active_members       = var.min_active_members
-  passive_monitor_id       = var.passive_monitor_id
+  # active_monitor_id - (optional) is a type of string
+  active_monitor_id = var.active_monitor_id
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # min_active_members - (optional) is a type of number
+  min_active_members = var.min_active_members
+  # passive_monitor_id - (optional) is a type of string
+  passive_monitor_id = var.passive_monitor_id
+  # tcp_multiplexing_enabled - (optional) is a type of bool
   tcp_multiplexing_enabled = var.tcp_multiplexing_enabled
-  tcp_multiplexing_number  = var.tcp_multiplexing_number
+  # tcp_multiplexing_number - (optional) is a type of number
+  tcp_multiplexing_number = var.tcp_multiplexing_number
 
   dynamic "member" {
     for_each = var.member
     content {
-      admin_state                = member.value["admin_state"]
-      backup_member              = member.value["backup_member"]
-      display_name               = member.value["display_name"]
-      ip_address                 = member.value["ip_address"]
+      # admin_state - (optional) is a type of string
+      admin_state = member.value["admin_state"]
+      # backup_member - (optional) is a type of bool
+      backup_member = member.value["backup_member"]
+      # display_name - (optional) is a type of string
+      display_name = member.value["display_name"]
+      # ip_address - (required) is a type of string
+      ip_address = member.value["ip_address"]
+      # max_concurrent_connections - (optional) is a type of number
       max_concurrent_connections = member.value["max_concurrent_connections"]
-      port                       = member.value["port"]
-      weight                     = member.value["weight"]
+      # port - (optional) is a type of string
+      port = member.value["port"]
+      # weight - (optional) is a type of number
+      weight = member.value["weight"]
     }
   }
 
   dynamic "member_group" {
     for_each = var.member_group
     content {
-      ip_version_filter  = member_group.value["ip_version_filter"]
+      # ip_version_filter - (optional) is a type of string
+      ip_version_filter = member_group.value["ip_version_filter"]
+      # limit_ip_list_size - (optional) is a type of bool
       limit_ip_list_size = member_group.value["limit_ip_list_size"]
-      max_ip_list_size   = member_group.value["max_ip_list_size"]
-      port               = member_group.value["port"]
+      # max_ip_list_size - (optional) is a type of number
+      max_ip_list_size = member_group.value["max_ip_list_size"]
+      # port - (optional) is a type of number
+      port = member_group.value["port"]
 
       dynamic "grouping_object" {
         for_each = member_group.value.grouping_object
         content {
-          target_id   = grouping_object.value["target_id"]
+          # target_id - (optional) is a type of string
+          target_id = grouping_object.value["target_id"]
+          # target_type - (optional) is a type of string
           target_type = grouping_object.value["target_type"]
         }
       }
@@ -242,7 +263,9 @@ resource "nsxt_lb_pool" "this" {
   dynamic "snat_translation" {
     for_each = var.snat_translation
     content {
-      ip   = snat_translation.value["ip"]
+      # ip - (optional) is a type of string
+      ip = snat_translation.value["ip"]
+      # type - (optional) is a type of string
       type = snat_translation.value["type"]
     }
   }
@@ -250,8 +273,10 @@ resource "nsxt_lb_pool" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

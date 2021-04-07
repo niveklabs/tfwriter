@@ -160,21 +160,36 @@ variable "wait_on_complete" {
 
 ```terraform
 resource "akamai_gtm_domain" "this" {
-  cname_coalescing_enabled       = var.cname_coalescing_enabled
-  comment                        = var.comment
-  contract                       = var.contract
-  default_error_penalty          = var.default_error_penalty
+  # cname_coalescing_enabled - (optional) is a type of bool
+  cname_coalescing_enabled = var.cname_coalescing_enabled
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # contract - (optional) is a type of string
+  contract = var.contract
+  # default_error_penalty - (optional) is a type of number
+  default_error_penalty = var.default_error_penalty
+  # default_ssl_client_certificate - (optional) is a type of string
   default_ssl_client_certificate = var.default_ssl_client_certificate
+  # default_ssl_client_private_key - (optional) is a type of string
   default_ssl_client_private_key = var.default_ssl_client_private_key
-  default_timeout_penalty        = var.default_timeout_penalty
-  email_notification_list        = var.email_notification_list
-  end_user_mapping_enabled       = var.end_user_mapping_enabled
-  group                          = var.group
-  load_feedback                  = var.load_feedback
-  load_imbalance_percentage      = var.load_imbalance_percentage
-  name                           = var.name
-  type                           = var.type
-  wait_on_complete               = var.wait_on_complete
+  # default_timeout_penalty - (optional) is a type of number
+  default_timeout_penalty = var.default_timeout_penalty
+  # email_notification_list - (optional) is a type of list of string
+  email_notification_list = var.email_notification_list
+  # end_user_mapping_enabled - (optional) is a type of bool
+  end_user_mapping_enabled = var.end_user_mapping_enabled
+  # group - (optional) is a type of string
+  group = var.group
+  # load_feedback - (optional) is a type of bool
+  load_feedback = var.load_feedback
+  # load_imbalance_percentage - (optional) is a type of number
+  load_imbalance_percentage = var.load_imbalance_percentage
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
+  # wait_on_complete - (optional) is a type of bool
+  wait_on_complete = var.wait_on_complete
 }
 ```
 

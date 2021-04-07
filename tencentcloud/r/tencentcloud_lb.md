@@ -81,11 +81,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_lb" "this" {
-  forward    = var.forward
-  name       = var.name
+  # forward - (optional) is a type of string
+  forward = var.forward
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
   project_id = var.project_id
-  type       = var.type
-  vpc_id     = var.vpc_id
+  # type - (required) is a type of string
+  type = var.type
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

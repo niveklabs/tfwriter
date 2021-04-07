@@ -66,8 +66,11 @@ variable "vlan_hb_lost_threshold" {
 
 ```terraform
 resource "fortios_system_hamonitor" "this" {
-  monitor_vlan           = var.monitor_vlan
-  vlan_hb_interval       = var.vlan_hb_interval
+  # monitor_vlan - (optional) is a type of string
+  monitor_vlan = var.monitor_vlan
+  # vlan_hb_interval - (optional) is a type of number
+  vlan_hb_interval = var.vlan_hb_interval
+  # vlan_hb_lost_threshold - (optional) is a type of number
   vlan_hb_lost_threshold = var.vlan_hb_lost_threshold
 }
 ```

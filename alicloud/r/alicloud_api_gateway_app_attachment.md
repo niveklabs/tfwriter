@@ -70,9 +70,13 @@ variable "stage_name" {
 
 ```terraform
 resource "alicloud_api_gateway_app_attachment" "this" {
-  api_id     = var.api_id
-  app_id     = var.app_id
-  group_id   = var.group_id
+  # api_id - (required) is a type of string
+  api_id = var.api_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # stage_name - (required) is a type of string
   stage_name = var.stage_name
 }
 ```

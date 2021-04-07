@@ -66,8 +66,11 @@ variable "username" {
 
 ```terraform
 data "gitlab_user" "this" {
-  email    = var.email
-  user_id  = var.user_id
+  # email - (optional) is a type of string
+  email = var.email
+  # user_id - (optional) is a type of number
+  user_id = var.user_id
+  # username - (optional) is a type of string
   username = var.username
 }
 ```

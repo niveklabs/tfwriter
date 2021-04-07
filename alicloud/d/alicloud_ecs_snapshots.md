@@ -170,22 +170,38 @@ variable "usage" {
 
 ```terraform
 data "alicloud_ecs_snapshots" "this" {
-  category          = var.category
-  dry_run           = var.dry_run
-  encrypted         = var.encrypted
-  ids               = var.ids
-  kms_key_id        = var.kms_key_id
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # category - (optional) is a type of string
+  category = var.category
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # encrypted - (optional) is a type of bool
+  encrypted = var.encrypted
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # kms_key_id - (optional) is a type of string
+  kms_key_id = var.kms_key_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  snapshot_link_id  = var.snapshot_link_id
-  snapshot_name     = var.snapshot_name
-  snapshot_type     = var.snapshot_type
-  source_disk_type  = var.source_disk_type
-  status            = var.status
-  tags              = var.tags
-  type              = var.type
-  usage             = var.usage
+  # snapshot_link_id - (optional) is a type of string
+  snapshot_link_id = var.snapshot_link_id
+  # snapshot_name - (optional) is a type of string
+  snapshot_name = var.snapshot_name
+  # snapshot_type - (optional) is a type of string
+  snapshot_type = var.snapshot_type
+  # source_disk_type - (optional) is a type of string
+  source_disk_type = var.source_disk_type
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # usage - (optional) is a type of string
+  usage = var.usage
 }
 ```
 

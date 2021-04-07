@@ -64,8 +64,11 @@ variable "vsys" {
 
 ```terraform
 resource "panos_ip_tag" "this" {
-  ip   = var.ip
+  # ip - (required) is a type of string
+  ip = var.ip
+  # tags - (required) is a type of set of string
   tags = var.tags
+  # vsys - (optional) is a type of string
   vsys = var.vsys
 }
 ```

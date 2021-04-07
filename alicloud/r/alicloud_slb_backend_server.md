@@ -77,16 +77,22 @@ variable "backend_servers" {
 
 ```terraform
 resource "alicloud_slb_backend_server" "this" {
+  # delete_protection_validation - (optional) is a type of bool
   delete_protection_validation = var.delete_protection_validation
-  load_balancer_id             = var.load_balancer_id
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
 
   dynamic "backend_servers" {
     for_each = var.backend_servers
     content {
+      # server_id - (required) is a type of string
       server_id = backend_servers.value["server_id"]
+      # server_ip - (optional) is a type of string
       server_ip = backend_servers.value["server_ip"]
-      type      = backend_servers.value["type"]
-      weight    = backend_servers.value["weight"]
+      # type - (optional) is a type of string
+      type = backend_servers.value["type"]
+      # weight - (required) is a type of number
+      weight = backend_servers.value["weight"]
     }
   }
 

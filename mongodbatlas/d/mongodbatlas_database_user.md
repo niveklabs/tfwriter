@@ -72,10 +72,14 @@ variable "username" {
 
 ```terraform
 data "mongodbatlas_database_user" "this" {
+  # auth_database_name - (optional) is a type of string
   auth_database_name = var.auth_database_name
-  database_name      = var.database_name
-  project_id         = var.project_id
-  username           = var.username
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

@@ -127,28 +127,42 @@ variable "rules" {
 
 ```terraform
 data "launchdarkly_segment" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  env_key     = var.env_key
-  excluded    = var.excluded
-  included    = var.included
-  key         = var.key
+  # env_key - (required) is a type of string
+  env_key = var.env_key
+  # excluded - (optional) is a type of list of string
+  excluded = var.excluded
+  # included - (optional) is a type of list of string
+  included = var.included
+  # key - (required) is a type of string
+  key = var.key
+  # project_key - (required) is a type of string
   project_key = var.project_key
-  tags        = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # bucket_by - (optional) is a type of string
       bucket_by = rules.value["bucket_by"]
-      weight    = rules.value["weight"]
+      # weight - (optional) is a type of number
+      weight = rules.value["weight"]
 
       dynamic "clauses" {
         for_each = rules.value.clauses
         content {
-          attribute  = clauses.value["attribute"]
-          negate     = clauses.value["negate"]
-          op         = clauses.value["op"]
+          # attribute - (required) is a type of string
+          attribute = clauses.value["attribute"]
+          # negate - (required) is a type of bool
+          negate = clauses.value["negate"]
+          # op - (required) is a type of string
+          op = clauses.value["op"]
+          # value_type - (optional) is a type of string
           value_type = clauses.value["value_type"]
-          values     = clauses.value["values"]
+          # values - (required) is a type of list of string
+          values = clauses.value["values"]
         }
       }
 

@@ -56,7 +56,9 @@ variable "sag_id" {
 
 ```terraform
 resource "alicloud_cloud_connect_network_attachment" "this" {
+  # ccn_id - (required) is a type of string
   ccn_id = var.ccn_id
+  # sag_id - (required) is a type of string
   sag_id = var.sag_id
 }
 ```

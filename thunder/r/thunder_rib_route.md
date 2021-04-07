@@ -140,44 +140,60 @@ variable "ip_nexthop_tunnel" {
 
 ```terraform
 resource "thunder_rib_route" "this" {
+  # ip_dest_addr - (optional) is a type of string
   ip_dest_addr = var.ip_dest_addr
-  ip_mask      = var.ip_mask
-  uuid         = var.uuid
+  # ip_mask - (optional) is a type of string
+  ip_mask = var.ip_mask
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "ip_nexthop_ipv4" {
     for_each = var.ip_nexthop_ipv4
     content {
+      # description_nexthop_ip - (optional) is a type of string
       description_nexthop_ip = ip_nexthop_ipv4.value["description_nexthop_ip"]
-      distance_nexthop_ip    = ip_nexthop_ipv4.value["distance_nexthop_ip"]
-      ip_next_hop            = ip_nexthop_ipv4.value["ip_next_hop"]
+      # distance_nexthop_ip - (optional) is a type of number
+      distance_nexthop_ip = ip_nexthop_ipv4.value["distance_nexthop_ip"]
+      # ip_next_hop - (optional) is a type of string
+      ip_next_hop = ip_nexthop_ipv4.value["ip_next_hop"]
     }
   }
 
   dynamic "ip_nexthop_lif" {
     for_each = var.ip_nexthop_lif
     content {
+      # description_nexthop_lif - (optional) is a type of string
       description_nexthop_lif = ip_nexthop_lif.value["description_nexthop_lif"]
-      lif                     = ip_nexthop_lif.value["lif"]
+      # lif - (optional) is a type of number
+      lif = ip_nexthop_lif.value["lif"]
     }
   }
 
   dynamic "ip_nexthop_partition" {
     for_each = var.ip_nexthop_partition
     content {
+      # description_nexthop_partition - (optional) is a type of string
       description_nexthop_partition = ip_nexthop_partition.value["description_nexthop_partition"]
-      description_partition_vrid    = ip_nexthop_partition.value["description_partition_vrid"]
-      partition_name                = ip_nexthop_partition.value["partition_name"]
-      vrid_num_in_partition         = ip_nexthop_partition.value["vrid_num_in_partition"]
+      # description_partition_vrid - (optional) is a type of string
+      description_partition_vrid = ip_nexthop_partition.value["description_partition_vrid"]
+      # partition_name - (optional) is a type of string
+      partition_name = ip_nexthop_partition.value["partition_name"]
+      # vrid_num_in_partition - (optional) is a type of number
+      vrid_num_in_partition = ip_nexthop_partition.value["vrid_num_in_partition"]
     }
   }
 
   dynamic "ip_nexthop_tunnel" {
     for_each = var.ip_nexthop_tunnel
     content {
+      # description_nexthop_tunnel - (optional) is a type of string
       description_nexthop_tunnel = ip_nexthop_tunnel.value["description_nexthop_tunnel"]
-      distance_nexthop_tunnel    = ip_nexthop_tunnel.value["distance_nexthop_tunnel"]
-      ip_next_hop_tunnel         = ip_nexthop_tunnel.value["ip_next_hop_tunnel"]
-      tunnel                     = ip_nexthop_tunnel.value["tunnel"]
+      # distance_nexthop_tunnel - (optional) is a type of number
+      distance_nexthop_tunnel = ip_nexthop_tunnel.value["distance_nexthop_tunnel"]
+      # ip_next_hop_tunnel - (optional) is a type of string
+      ip_next_hop_tunnel = ip_nexthop_tunnel.value["ip_next_hop_tunnel"]
+      # tunnel - (optional) is a type of number
+      tunnel = ip_nexthop_tunnel.value["tunnel"]
     }
   }
 

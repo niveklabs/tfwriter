@@ -72,10 +72,14 @@ variable "startip" {
 
 ```terraform
 resource "fortios_firewall_ippool6" "this" {
+  # comments - (optional) is a type of string
   comments = var.comments
-  endip    = var.endip
-  name     = var.name
-  startip  = var.startip
+  # endip - (required) is a type of string
+  endip = var.endip
+  # name - (optional) is a type of string
+  name = var.name
+  # startip - (required) is a type of string
+  startip = var.startip
 }
 ```
 

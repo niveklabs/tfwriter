@@ -97,13 +97,20 @@ variable "sysprep" {
 
 ```terraform
 resource "tencentcloud_image" "this" {
-  data_disk_ids     = var.data_disk_ids
-  force_poweroff    = var.force_poweroff
+  # data_disk_ids - (optional) is a type of set of string
+  data_disk_ids = var.data_disk_ids
+  # force_poweroff - (optional) is a type of bool
+  force_poweroff = var.force_poweroff
+  # image_description - (optional) is a type of string
   image_description = var.image_description
-  image_name        = var.image_name
-  instance_id       = var.instance_id
-  snapshot_ids      = var.snapshot_ids
-  sysprep           = var.sysprep
+  # image_name - (required) is a type of string
+  image_name = var.image_name
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # snapshot_ids - (optional) is a type of set of string
+  snapshot_ids = var.snapshot_ids
+  # sysprep - (optional) is a type of bool
+  sysprep = var.sysprep
 }
 ```
 

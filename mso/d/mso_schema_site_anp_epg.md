@@ -78,10 +78,15 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_site_anp_epg" "this" {
-  anp_name      = var.anp_name
-  epg_name      = var.epg_name
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (optional) is a type of string
   template_name = var.template_name
 }
 ```

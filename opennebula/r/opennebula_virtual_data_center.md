@@ -79,17 +79,24 @@ variable "zones" {
 
 ```terraform
 resource "opennebula_virtual_data_center" "this" {
+  # group_ids - (optional) is a type of list of number
   group_ids = var.group_ids
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "zones" {
     for_each = var.zones
     content {
-      cluster_ids   = zones.value["cluster_ids"]
+      # cluster_ids - (optional) is a type of list of number
+      cluster_ids = zones.value["cluster_ids"]
+      # datastore_ids - (optional) is a type of list of number
       datastore_ids = zones.value["datastore_ids"]
-      host_ids      = zones.value["host_ids"]
-      id            = zones.value["id"]
-      vnet_ids      = zones.value["vnet_ids"]
+      # host_ids - (optional) is a type of list of number
+      host_ids = zones.value["host_ids"]
+      # id - (optional) is a type of number
+      id = zones.value["id"]
+      # vnet_ids - (optional) is a type of list of number
+      vnet_ids = zones.value["vnet_ids"]
     }
   }
 

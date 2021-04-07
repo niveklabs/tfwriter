@@ -106,13 +106,21 @@ variable "trap_low_memory_threshold" {
 
 ```terraform
 resource "fortios_systemsnmp_sysinfo" "this" {
-  contact_info              = var.contact_info
-  description               = var.description
-  engine_id                 = var.engine_id
-  location                  = var.location
-  status                    = var.status
-  trap_high_cpu_threshold   = var.trap_high_cpu_threshold
-  trap_log_full_threshold   = var.trap_log_full_threshold
+  # contact_info - (optional) is a type of string
+  contact_info = var.contact_info
+  # description - (optional) is a type of string
+  description = var.description
+  # engine_id - (optional) is a type of string
+  engine_id = var.engine_id
+  # location - (optional) is a type of string
+  location = var.location
+  # status - (optional) is a type of string
+  status = var.status
+  # trap_high_cpu_threshold - (optional) is a type of number
+  trap_high_cpu_threshold = var.trap_high_cpu_threshold
+  # trap_log_full_threshold - (optional) is a type of number
+  trap_log_full_threshold = var.trap_log_full_threshold
+  # trap_low_memory_threshold - (optional) is a type of number
   trap_low_memory_threshold = var.trap_low_memory_threshold
 }
 ```

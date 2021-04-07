@@ -50,6 +50,7 @@ variable "location_ids" {
 
 ```terraform
 data "hcloud_locations" "this" {
+  # location_ids - (optional) is a type of list of string
   location_ids = var.location_ids
 }
 ```

@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "rancher2_global_role_binding" "this" {
+  # global_role_id - (optional) is a type of string
   global_role_id = var.global_role_id
-  name           = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

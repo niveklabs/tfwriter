@@ -58,8 +58,10 @@ variable "groupid" {
 
 ```terraform
 data "akamai_appsec_contracts_groups" "this" {
+  # contractid - (optional) is a type of string
   contractid = var.contractid
-  groupid    = var.groupid
+  # groupid - (optional) is a type of number
+  groupid = var.groupid
 }
 ```
 

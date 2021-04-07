@@ -112,17 +112,25 @@ variable "timeouts" {
 
 ```terraform
 data "sdm_secret_store" "this" {
-  ca_cert_path     = var.ca_cert_path
+  # ca_cert_path - (optional) is a type of string
+  ca_cert_path = var.ca_cert_path
+  # client_cert_path - (optional) is a type of string
   client_cert_path = var.client_cert_path
-  client_key_path  = var.client_key_path
-  name             = var.name
-  region           = var.region
-  server_address   = var.server_address
-  type             = var.type
+  # client_key_path - (optional) is a type of string
+  client_key_path = var.client_key_path
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
+  # server_address - (optional) is a type of string
+  server_address = var.server_address
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

@@ -111,15 +111,24 @@ variable "tags" {
 
 ```terraform
 resource "digitalocean_volume" "this" {
-  description              = var.description
-  filesystem_type          = var.filesystem_type
+  # description - (optional) is a type of string
+  description = var.description
+  # filesystem_type - (optional) is a type of string
+  filesystem_type = var.filesystem_type
+  # initial_filesystem_label - (optional) is a type of string
   initial_filesystem_label = var.initial_filesystem_label
-  initial_filesystem_type  = var.initial_filesystem_type
-  name                     = var.name
-  region                   = var.region
-  size                     = var.size
-  snapshot_id              = var.snapshot_id
-  tags                     = var.tags
+  # initial_filesystem_type - (optional) is a type of string
+  initial_filesystem_type = var.initial_filesystem_type
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
+  # size - (required) is a type of number
+  size = var.size
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

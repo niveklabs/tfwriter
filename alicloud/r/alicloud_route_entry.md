@@ -89,12 +89,18 @@ variable "router_id" {
 
 ```terraform
 resource "alicloud_route_entry" "this" {
+  # destination_cidrblock - (optional) is a type of string
   destination_cidrblock = var.destination_cidrblock
-  name                  = var.name
-  nexthop_id            = var.nexthop_id
-  nexthop_type          = var.nexthop_type
-  route_table_id        = var.route_table_id
-  router_id             = var.router_id
+  # name - (optional) is a type of string
+  name = var.name
+  # nexthop_id - (optional) is a type of string
+  nexthop_id = var.nexthop_id
+  # nexthop_type - (optional) is a type of string
+  nexthop_type = var.nexthop_type
+  # route_table_id - (required) is a type of string
+  route_table_id = var.route_table_id
+  # router_id - (optional) is a type of string
+  router_id = var.router_id
 }
 ```
 

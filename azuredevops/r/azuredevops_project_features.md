@@ -56,7 +56,9 @@ variable "project_id" {
 
 ```terraform
 resource "azuredevops_project_features" "this" {
-  features   = var.features
+  # features - (required) is a type of map of string
+  features = var.features
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

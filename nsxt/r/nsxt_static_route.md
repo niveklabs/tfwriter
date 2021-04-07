@@ -109,25 +109,34 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_static_route" "this" {
-  description       = var.description
-  display_name      = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # logical_router_id - (required) is a type of string
   logical_router_id = var.logical_router_id
-  network           = var.network
+  # network - (required) is a type of string
+  network = var.network
 
   dynamic "next_hop" {
     for_each = var.next_hop
     content {
+      # administrative_distance - (optional) is a type of number
       administrative_distance = next_hop.value["administrative_distance"]
-      ip_address              = next_hop.value["ip_address"]
-      logical_router_port_id  = next_hop.value["logical_router_port_id"]
+      # ip_address - (optional) is a type of string
+      ip_address = next_hop.value["ip_address"]
+      # logical_router_port_id - (optional) is a type of string
+      logical_router_port_id = next_hop.value["logical_router_port_id"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

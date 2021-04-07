@@ -88,8 +88,11 @@ variable "settings" {
 
 ```terraform
 resource "azuredevops_branch_policy_work_item_linking" "this" {
-  blocking   = var.blocking
-  enabled    = var.enabled
+  # blocking - (optional) is a type of bool
+  blocking = var.blocking
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # project_id - (required) is a type of string
   project_id = var.project_id
 
   dynamic "settings" {
@@ -99,8 +102,11 @@ resource "azuredevops_branch_policy_work_item_linking" "this" {
       dynamic "scope" {
         for_each = settings.value.scope
         content {
-          match_type     = scope.value["match_type"]
-          repository_id  = scope.value["repository_id"]
+          # match_type - (optional) is a type of string
+          match_type = scope.value["match_type"]
+          # repository_id - (optional) is a type of string
+          repository_id = scope.value["repository_id"]
+          # repository_ref - (optional) is a type of string
           repository_ref = scope.value["repository_ref"]
         }
       }

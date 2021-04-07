@@ -57,7 +57,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_dc_gateway_ccn_routes" "this" {
-  dcg_id             = var.dcg_id
+  # dcg_id - (required) is a type of string
+  dcg_id = var.dcg_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

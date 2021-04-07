@@ -77,11 +77,16 @@ variable "service_name" {
 
 ```terraform
 resource "aviatrix_geo_vpn" "this" {
-  account_name  = var.account_name
-  cloud_type    = var.cloud_type
-  domain_name   = var.domain_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # elb_dns_names - (required) is a type of list of string
   elb_dns_names = var.elb_dns_names
-  service_name  = var.service_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 }
 ```
 

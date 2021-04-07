@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "dme_contact_list" "this" {
+  # emails - (optional) is a type of list of string
   emails = var.emails
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

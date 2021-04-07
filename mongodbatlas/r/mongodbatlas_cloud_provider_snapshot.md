@@ -70,9 +70,13 @@ variable "retention_in_days" {
 
 ```terraform
 resource "mongodbatlas_cloud_provider_snapshot" "this" {
-  cluster_name      = var.cluster_name
-  description       = var.description
-  project_id        = var.project_id
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # description - (required) is a type of string
+  description = var.description
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # retention_in_days - (required) is a type of number
   retention_in_days = var.retention_in_days
 }
 ```

@@ -80,11 +80,16 @@ variable "value" {
 
 ```terraform
 resource "newrelic_synthetics_secure_credential" "this" {
-  created_at   = var.created_at
-  description  = var.description
-  key          = var.key
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # description - (optional) is a type of string
+  description = var.description
+  # key - (required) is a type of string
+  key = var.key
+  # last_updated - (optional) is a type of string
   last_updated = var.last_updated
-  value        = var.value
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

@@ -95,13 +95,20 @@ variable "type" {
 
 ```terraform
 resource "alicloud_ddosbgp_instance" "this" {
-  bandwidth      = var.bandwidth
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # base_bandwidth - (optional) is a type of number
   base_bandwidth = var.base_bandwidth
-  ip_count       = var.ip_count
-  ip_type        = var.ip_type
-  name           = var.name
-  period         = var.period
-  type           = var.type
+  # ip_count - (required) is a type of number
+  ip_count = var.ip_count
+  # ip_type - (required) is a type of string
+  ip_type = var.ip_type
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

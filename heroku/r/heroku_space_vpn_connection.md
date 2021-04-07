@@ -100,14 +100,19 @@ variable "tunnels" {
 
 ```terraform
 resource "heroku_space_vpn_connection" "this" {
-  name           = var.name
-  public_ip      = var.public_ip
+  # name - (required) is a type of string
+  name = var.name
+  # public_ip - (required) is a type of string
+  public_ip = var.public_ip
+  # routable_cidrs - (required) is a type of set of string
   routable_cidrs = var.routable_cidrs
-  space          = var.space
+  # space - (required) is a type of string
+  space = var.space
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }
@@ -115,7 +120,9 @@ resource "heroku_space_vpn_connection" "this" {
   dynamic "tunnels" {
     for_each = var.tunnels
     content {
-      ip             = tunnels.value["ip"]
+      # ip - (optional) is a type of string
+      ip = tunnels.value["ip"]
+      # pre_shared_key - (optional) is a type of string
       pre_shared_key = tunnels.value["pre_shared_key"]
     }
   }

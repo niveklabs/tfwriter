@@ -88,12 +88,18 @@ variable "weight" {
 
 ```terraform
 resource "alicloud_slb_attachment" "this" {
-  backend_servers              = var.backend_servers
+  # backend_servers - (optional) is a type of string
+  backend_servers = var.backend_servers
+  # delete_protection_validation - (optional) is a type of bool
   delete_protection_validation = var.delete_protection_validation
-  instance_ids                 = var.instance_ids
-  load_balancer_id             = var.load_balancer_id
-  server_type                  = var.server_type
-  weight                       = var.weight
+  # instance_ids - (required) is a type of set of string
+  instance_ids = var.instance_ids
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # weight - (optional) is a type of number
+  weight = var.weight
 }
 ```
 

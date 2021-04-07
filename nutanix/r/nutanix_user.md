@@ -128,13 +128,17 @@ variable "identity_provider_user" {
 
 ```terraform
 resource "nutanix_user" "this" {
-  owner_reference   = var.owner_reference
+  # owner_reference - (optional) is a type of map of string
+  owner_reference = var.owner_reference
+  # project_reference - (optional) is a type of map of string
   project_reference = var.project_reference
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -142,13 +146,17 @@ resource "nutanix_user" "this" {
   dynamic "directory_service_user" {
     for_each = var.directory_service_user
     content {
+      # user_principal_name - (optional) is a type of string
       user_principal_name = directory_service_user.value["user_principal_name"]
 
       dynamic "directory_service_reference" {
         for_each = directory_service_user.value.directory_service_reference
         content {
+          # kind - (optional) is a type of string
           kind = directory_service_reference.value["kind"]
+          # name - (optional) is a type of string
           name = directory_service_reference.value["name"]
+          # uuid - (required) is a type of string
           uuid = directory_service_reference.value["uuid"]
         }
       }
@@ -159,13 +167,17 @@ resource "nutanix_user" "this" {
   dynamic "identity_provider_user" {
     for_each = var.identity_provider_user
     content {
+      # username - (optional) is a type of string
       username = identity_provider_user.value["username"]
 
       dynamic "identity_provider_reference" {
         for_each = identity_provider_user.value.identity_provider_reference
         content {
+          # kind - (optional) is a type of string
           kind = identity_provider_reference.value["kind"]
+          # name - (optional) is a type of string
           name = identity_provider_reference.value["name"]
+          # uuid - (required) is a type of string
           uuid = identity_provider_reference.value["uuid"]
         }
       }

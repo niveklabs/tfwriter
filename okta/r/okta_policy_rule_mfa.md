@@ -112,15 +112,24 @@ variable "users_excluded" {
 
 ```terraform
 resource "okta_policy_rule_mfa" "this" {
-  enroll             = var.enroll
-  name               = var.name
+  # enroll - (optional) is a type of string
+  enroll = var.enroll
+  # name - (required) is a type of string
+  name = var.name
+  # network_connection - (optional) is a type of string
   network_connection = var.network_connection
-  network_excludes   = var.network_excludes
-  network_includes   = var.network_includes
-  policyid           = var.policyid
-  priority           = var.priority
-  status             = var.status
-  users_excluded     = var.users_excluded
+  # network_excludes - (optional) is a type of list of string
+  network_excludes = var.network_excludes
+  # network_includes - (optional) is a type of list of string
+  network_includes = var.network_includes
+  # policyid - (required) is a type of string
+  policyid = var.policyid
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # users_excluded - (optional) is a type of set of string
+  users_excluded = var.users_excluded
 }
 ```
 

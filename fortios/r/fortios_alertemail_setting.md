@@ -330,42 +330,78 @@ variable "webfilter_logs" {
 
 ```terraform
 resource "fortios_alertemail_setting" "this" {
-  admin_login_logs                     = var.admin_login_logs
-  alert_interval                       = var.alert_interval
-  amc_interface_bypass_mode            = var.amc_interface_bypass_mode
-  antivirus_logs                       = var.antivirus_logs
-  configuration_changes_logs           = var.configuration_changes_logs
-  critical_interval                    = var.critical_interval
-  debug_interval                       = var.debug_interval
-  email_interval                       = var.email_interval
-  emergency_interval                   = var.emergency_interval
-  error_interval                       = var.error_interval
-  fds_license_expiring_days            = var.fds_license_expiring_days
-  fds_license_expiring_warning         = var.fds_license_expiring_warning
-  fds_update_logs                      = var.fds_update_logs
-  filter_mode                          = var.filter_mode
-  fips_cc_errors                       = var.fips_cc_errors
+  # admin_login_logs - (optional) is a type of string
+  admin_login_logs = var.admin_login_logs
+  # alert_interval - (optional) is a type of number
+  alert_interval = var.alert_interval
+  # amc_interface_bypass_mode - (optional) is a type of string
+  amc_interface_bypass_mode = var.amc_interface_bypass_mode
+  # antivirus_logs - (optional) is a type of string
+  antivirus_logs = var.antivirus_logs
+  # configuration_changes_logs - (optional) is a type of string
+  configuration_changes_logs = var.configuration_changes_logs
+  # critical_interval - (optional) is a type of number
+  critical_interval = var.critical_interval
+  # debug_interval - (optional) is a type of number
+  debug_interval = var.debug_interval
+  # email_interval - (optional) is a type of number
+  email_interval = var.email_interval
+  # emergency_interval - (optional) is a type of number
+  emergency_interval = var.emergency_interval
+  # error_interval - (optional) is a type of number
+  error_interval = var.error_interval
+  # fds_license_expiring_days - (optional) is a type of number
+  fds_license_expiring_days = var.fds_license_expiring_days
+  # fds_license_expiring_warning - (optional) is a type of string
+  fds_license_expiring_warning = var.fds_license_expiring_warning
+  # fds_update_logs - (optional) is a type of string
+  fds_update_logs = var.fds_update_logs
+  # filter_mode - (optional) is a type of string
+  filter_mode = var.filter_mode
+  # fips_cc_errors - (optional) is a type of string
+  fips_cc_errors = var.fips_cc_errors
+  # firewall_authentication_failure_logs - (optional) is a type of string
   firewall_authentication_failure_logs = var.firewall_authentication_failure_logs
-  fortiguard_log_quota_warning         = var.fortiguard_log_quota_warning
-  fsso_disconnect_logs                 = var.fsso_disconnect_logs
-  ha_logs                              = var.ha_logs
-  information_interval                 = var.information_interval
-  ips_logs                             = var.ips_logs
-  ipsec_errors_logs                    = var.ipsec_errors_logs
-  local_disk_usage                     = var.local_disk_usage
-  log_disk_usage_warning               = var.log_disk_usage_warning
-  mailto1                              = var.mailto1
-  mailto2                              = var.mailto2
-  mailto3                              = var.mailto3
-  notification_interval                = var.notification_interval
-  ppp_errors_logs                      = var.ppp_errors_logs
-  severity                             = var.severity
-  ssh_logs                             = var.ssh_logs
-  sslvpn_authentication_errors_logs    = var.sslvpn_authentication_errors_logs
-  username                             = var.username
-  violation_traffic_logs               = var.violation_traffic_logs
-  warning_interval                     = var.warning_interval
-  webfilter_logs                       = var.webfilter_logs
+  # fortiguard_log_quota_warning - (optional) is a type of string
+  fortiguard_log_quota_warning = var.fortiguard_log_quota_warning
+  # fsso_disconnect_logs - (optional) is a type of string
+  fsso_disconnect_logs = var.fsso_disconnect_logs
+  # ha_logs - (optional) is a type of string
+  ha_logs = var.ha_logs
+  # information_interval - (optional) is a type of number
+  information_interval = var.information_interval
+  # ips_logs - (optional) is a type of string
+  ips_logs = var.ips_logs
+  # ipsec_errors_logs - (optional) is a type of string
+  ipsec_errors_logs = var.ipsec_errors_logs
+  # local_disk_usage - (optional) is a type of number
+  local_disk_usage = var.local_disk_usage
+  # log_disk_usage_warning - (optional) is a type of string
+  log_disk_usage_warning = var.log_disk_usage_warning
+  # mailto1 - (optional) is a type of string
+  mailto1 = var.mailto1
+  # mailto2 - (optional) is a type of string
+  mailto2 = var.mailto2
+  # mailto3 - (optional) is a type of string
+  mailto3 = var.mailto3
+  # notification_interval - (optional) is a type of number
+  notification_interval = var.notification_interval
+  # ppp_errors_logs - (optional) is a type of string
+  ppp_errors_logs = var.ppp_errors_logs
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # ssh_logs - (optional) is a type of string
+  ssh_logs = var.ssh_logs
+  # sslvpn_authentication_errors_logs - (optional) is a type of string
+  sslvpn_authentication_errors_logs = var.sslvpn_authentication_errors_logs
+  # username - (optional) is a type of string
+  username = var.username
+  # violation_traffic_logs - (optional) is a type of string
+  violation_traffic_logs = var.violation_traffic_logs
+  # warning_interval - (optional) is a type of number
+  warning_interval = var.warning_interval
+  # webfilter_logs - (optional) is a type of string
+  webfilter_logs = var.webfilter_logs
 }
 ```
 

@@ -114,19 +114,28 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_client_ssl_profile" "this" {
-  ciphers               = var.ciphers
-  description           = var.description
-  display_name          = var.display_name
+  # ciphers - (optional) is a type of set of string
+  ciphers = var.ciphers
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # prefer_server_ciphers - (optional) is a type of bool
   prefer_server_ciphers = var.prefer_server_ciphers
-  protocols             = var.protocols
+  # protocols - (optional) is a type of set of string
+  protocols = var.protocols
+  # session_cache_enabled - (optional) is a type of bool
   session_cache_enabled = var.session_cache_enabled
+  # session_cache_timeout - (optional) is a type of number
   session_cache_timeout = var.session_cache_timeout
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

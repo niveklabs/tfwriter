@@ -71,10 +71,14 @@ variable "title" {
 
 ```terraform
 resource "github_repository_deploy_key" "this" {
-  key        = var.key
-  read_only  = var.read_only
+  # key - (required) is a type of string
+  key = var.key
+  # read_only - (optional) is a type of bool
+  read_only = var.read_only
+  # repository - (required) is a type of string
   repository = var.repository
-  title      = var.title
+  # title - (required) is a type of string
+  title = var.title
 }
 ```
 

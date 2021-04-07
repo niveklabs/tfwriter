@@ -283,25 +283,41 @@ variable "yahoo_mail" {
 
 ```terraform
 resource "fortios_spamfilter_profile" "this" {
-  comment                      = var.comment
-  external                     = var.external
-  flow_based                   = var.flow_based
-  name                         = var.name
-  options                      = var.options
-  replacemsg_group             = var.replacemsg_group
-  spam_bwl_table               = var.spam_bwl_table
-  spam_bword_table             = var.spam_bword_table
-  spam_bword_threshold         = var.spam_bword_threshold
-  spam_filtering               = var.spam_filtering
-  spam_iptrust_table           = var.spam_iptrust_table
-  spam_log                     = var.spam_log
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # external - (optional) is a type of string
+  external = var.external
+  # flow_based - (optional) is a type of string
+  flow_based = var.flow_based
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # spam_bwl_table - (optional) is a type of number
+  spam_bwl_table = var.spam_bwl_table
+  # spam_bword_table - (optional) is a type of number
+  spam_bword_table = var.spam_bword_table
+  # spam_bword_threshold - (optional) is a type of number
+  spam_bword_threshold = var.spam_bword_threshold
+  # spam_filtering - (optional) is a type of string
+  spam_filtering = var.spam_filtering
+  # spam_iptrust_table - (optional) is a type of number
+  spam_iptrust_table = var.spam_iptrust_table
+  # spam_log - (optional) is a type of string
+  spam_log = var.spam_log
+  # spam_log_fortiguard_response - (optional) is a type of string
   spam_log_fortiguard_response = var.spam_log_fortiguard_response
-  spam_mheader_table           = var.spam_mheader_table
-  spam_rbl_table               = var.spam_rbl_table
+  # spam_mheader_table - (optional) is a type of number
+  spam_mheader_table = var.spam_mheader_table
+  # spam_rbl_table - (optional) is a type of number
+  spam_rbl_table = var.spam_rbl_table
 
   dynamic "gmail" {
     for_each = var.gmail
     content {
+      # log - (optional) is a type of string
       log = gmail.value["log"]
     }
   }
@@ -309,9 +325,13 @@ resource "fortios_spamfilter_profile" "this" {
   dynamic "imap" {
     for_each = var.imap
     content {
-      action   = imap.value["action"]
-      log      = imap.value["log"]
-      tag_msg  = imap.value["tag_msg"]
+      # action - (optional) is a type of string
+      action = imap.value["action"]
+      # log - (optional) is a type of string
+      log = imap.value["log"]
+      # tag_msg - (optional) is a type of string
+      tag_msg = imap.value["tag_msg"]
+      # tag_type - (optional) is a type of string
       tag_type = imap.value["tag_type"]
     }
   }
@@ -319,14 +339,17 @@ resource "fortios_spamfilter_profile" "this" {
   dynamic "mapi" {
     for_each = var.mapi
     content {
+      # action - (optional) is a type of string
       action = mapi.value["action"]
-      log    = mapi.value["log"]
+      # log - (optional) is a type of string
+      log = mapi.value["log"]
     }
   }
 
   dynamic "msn_hotmail" {
     for_each = var.msn_hotmail
     content {
+      # log - (optional) is a type of string
       log = msn_hotmail.value["log"]
     }
   }
@@ -334,9 +357,13 @@ resource "fortios_spamfilter_profile" "this" {
   dynamic "pop3" {
     for_each = var.pop3
     content {
-      action   = pop3.value["action"]
-      log      = pop3.value["log"]
-      tag_msg  = pop3.value["tag_msg"]
+      # action - (optional) is a type of string
+      action = pop3.value["action"]
+      # log - (optional) is a type of string
+      log = pop3.value["log"]
+      # tag_msg - (optional) is a type of string
+      tag_msg = pop3.value["tag_msg"]
+      # tag_type - (optional) is a type of string
       tag_type = pop3.value["tag_type"]
     }
   }
@@ -344,18 +371,25 @@ resource "fortios_spamfilter_profile" "this" {
   dynamic "smtp" {
     for_each = var.smtp
     content {
-      action         = smtp.value["action"]
-      hdrip          = smtp.value["hdrip"]
+      # action - (optional) is a type of string
+      action = smtp.value["action"]
+      # hdrip - (optional) is a type of string
+      hdrip = smtp.value["hdrip"]
+      # local_override - (optional) is a type of string
       local_override = smtp.value["local_override"]
-      log            = smtp.value["log"]
-      tag_msg        = smtp.value["tag_msg"]
-      tag_type       = smtp.value["tag_type"]
+      # log - (optional) is a type of string
+      log = smtp.value["log"]
+      # tag_msg - (optional) is a type of string
+      tag_msg = smtp.value["tag_msg"]
+      # tag_type - (optional) is a type of string
+      tag_type = smtp.value["tag_type"]
     }
   }
 
   dynamic "yahoo_mail" {
     for_each = var.yahoo_mail
     content {
+      # log - (optional) is a type of string
       log = yahoo_mail.value["log"]
     }
   }

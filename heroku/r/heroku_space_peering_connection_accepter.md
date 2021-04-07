@@ -56,7 +56,9 @@ variable "vpc_peering_connection_id" {
 
 ```terraform
 resource "heroku_space_peering_connection_accepter" "this" {
-  space                     = var.space
+  # space - (required) is a type of string
+  space = var.space
+  # vpc_peering_connection_id - (required) is a type of string
   vpc_peering_connection_id = var.vpc_peering_connection_id
 }
 ```

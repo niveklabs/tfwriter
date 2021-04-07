@@ -77,11 +77,16 @@ variable "weight" {
 
 ```terraform
 resource "alicloud_vpn_route_entry" "this" {
-  next_hop       = var.next_hop
-  publish_vpc    = var.publish_vpc
-  route_dest     = var.route_dest
+  # next_hop - (required) is a type of string
+  next_hop = var.next_hop
+  # publish_vpc - (required) is a type of bool
+  publish_vpc = var.publish_vpc
+  # route_dest - (required) is a type of string
+  route_dest = var.route_dest
+  # vpn_gateway_id - (required) is a type of string
   vpn_gateway_id = var.vpn_gateway_id
-  weight         = var.weight
+  # weight - (required) is a type of number
+  weight = var.weight
 }
 ```
 

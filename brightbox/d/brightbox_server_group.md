@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "brightbox_server_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

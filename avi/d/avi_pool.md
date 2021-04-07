@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 data "avi_pool" "this" {
-  cloud_ref      = var.cloud_ref
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # ignore_servers - (optional) is a type of bool
   ignore_servers = var.ignore_servers
-  name           = var.name
-  tenant_ref     = var.tenant_ref
-  uuid           = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

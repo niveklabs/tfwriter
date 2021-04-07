@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "digitalocean_ssh_key" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

@@ -106,18 +106,27 @@ variable "md5_key" {
 
 ```terraform
 resource "panos_ospf_auth_profile" "this" {
-  auth_type      = var.auth_type
-  name           = var.name
-  password       = var.password
-  template       = var.template
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 
   dynamic "md5_key" {
     for_each = var.md5_key
     content {
-      key       = md5_key.value["key"]
-      key_id    = md5_key.value["key_id"]
+      # key - (required) is a type of string
+      key = md5_key.value["key"]
+      # key_id - (required) is a type of number
+      key_id = md5_key.value["key_id"]
+      # preferred - (optional) is a type of bool
       preferred = md5_key.value["preferred"]
     }
   }

@@ -129,17 +129,28 @@ variable "priority_7" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_dot1pmap" "this" {
-  description        = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # egress_pri_tagging - (optional) is a type of string
   egress_pri_tagging = var.egress_pri_tagging
-  name               = var.name
-  priority_0         = var.priority_0
-  priority_1         = var.priority_1
-  priority_2         = var.priority_2
-  priority_3         = var.priority_3
-  priority_4         = var.priority_4
-  priority_5         = var.priority_5
-  priority_6         = var.priority_6
-  priority_7         = var.priority_7
+  # name - (required) is a type of string
+  name = var.name
+  # priority_0 - (optional) is a type of string
+  priority_0 = var.priority_0
+  # priority_1 - (optional) is a type of string
+  priority_1 = var.priority_1
+  # priority_2 - (optional) is a type of string
+  priority_2 = var.priority_2
+  # priority_3 - (optional) is a type of string
+  priority_3 = var.priority_3
+  # priority_4 - (optional) is a type of string
+  priority_4 = var.priority_4
+  # priority_5 - (optional) is a type of string
+  priority_5 = var.priority_5
+  # priority_6 - (optional) is a type of string
+  priority_6 = var.priority_6
+  # priority_7 - (optional) is a type of string
+  priority_7 = var.priority_7
 }
 ```
 

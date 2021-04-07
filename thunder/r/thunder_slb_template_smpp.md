@@ -114,15 +114,24 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_smpp" "this" {
-  client_enquire_link          = var.client_enquire_link
-  name                         = var.name
-  password                     = var.password
-  server_enquire_link          = var.server_enquire_link
-  server_enquire_link_val      = var.server_enquire_link_val
+  # client_enquire_link - (optional) is a type of number
+  client_enquire_link = var.client_enquire_link
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # server_enquire_link - (optional) is a type of number
+  server_enquire_link = var.server_enquire_link
+  # server_enquire_link_val - (optional) is a type of number
+  server_enquire_link_val = var.server_enquire_link_val
+  # server_selection_per_request - (optional) is a type of number
   server_selection_per_request = var.server_selection_per_request
-  user                         = var.user
-  user_tag                     = var.user_tag
-  uuid                         = var.uuid
+  # user - (optional) is a type of string
+  user = var.user
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

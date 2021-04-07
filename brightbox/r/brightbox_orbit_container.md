@@ -121,19 +121,29 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_orbit_container" "this" {
-  container_read     = var.container_read
+  # container_read - (optional) is a type of set of string
+  container_read = var.container_read
+  # container_sync_key - (optional) is a type of string
   container_sync_key = var.container_sync_key
-  container_sync_to  = var.container_sync_to
-  container_write    = var.container_write
-  history_location   = var.history_location
-  metadata           = var.metadata
-  name               = var.name
-  versions_location  = var.versions_location
+  # container_sync_to - (optional) is a type of string
+  container_sync_to = var.container_sync_to
+  # container_write - (optional) is a type of set of string
+  container_write = var.container_write
+  # history_location - (optional) is a type of string
+  history_location = var.history_location
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (required) is a type of string
+  name = var.name
+  # versions_location - (optional) is a type of string
+  versions_location = var.versions_location
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

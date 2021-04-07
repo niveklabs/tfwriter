@@ -87,12 +87,18 @@ variable "url" {
 
 ```terraform
 resource "digitalocean_custom_image" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # distribution - (optional) is a type of string
   distribution = var.distribution
-  name         = var.name
-  regions      = var.regions
-  tags         = var.tags
-  url          = var.url
+  # name - (required) is a type of string
+  name = var.name
+  # regions - (required) is a type of list of string
+  regions = var.regions
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

@@ -120,25 +120,37 @@ variable "check_item_list" {
 
 ```terraform
 resource "fortios_vpnsslweb_hostchecksoftware" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  guid                  = var.guid
-  name                  = var.name
-  os_type               = var.os_type
-  type                  = var.type
-  version               = var.version
+  # guid - (optional) is a type of string
+  guid = var.guid
+  # name - (optional) is a type of string
+  name = var.name
+  # os_type - (optional) is a type of string
+  os_type = var.os_type
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "check_item_list" {
     for_each = var.check_item_list
     content {
-      action  = check_item_list.value["action"]
-      id      = check_item_list.value["id"]
-      target  = check_item_list.value["target"]
-      type    = check_item_list.value["type"]
+      # action - (optional) is a type of string
+      action = check_item_list.value["action"]
+      # id - (optional) is a type of number
+      id = check_item_list.value["id"]
+      # target - (optional) is a type of string
+      target = check_item_list.value["target"]
+      # type - (optional) is a type of string
+      type = check_item_list.value["type"]
+      # version - (optional) is a type of string
       version = check_item_list.value["version"]
 
       dynamic "md5s" {
         for_each = check_item_list.value.md5s
         content {
+          # id - (optional) is a type of string
           id = md5s.value["id"]
         }
       }

@@ -106,19 +106,28 @@ variable "extra_server" {
 
 ```terraform
 resource "fortios_user_domaincontroller" "this" {
-  domain_name           = var.domain_name
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ip_address            = var.ip_address
-  ldap_server           = var.ldap_server
-  name                  = var.name
-  port                  = var.port
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # ldap_server - (required) is a type of string
+  ldap_server = var.ldap_server
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
 
   dynamic "extra_server" {
     for_each = var.extra_server
     content {
-      id         = extra_server.value["id"]
+      # id - (optional) is a type of number
+      id = extra_server.value["id"]
+      # ip_address - (optional) is a type of string
       ip_address = extra_server.value["ip_address"]
-      port       = extra_server.value["port"]
+      # port - (optional) is a type of number
+      port = extra_server.value["port"]
     }
   }
 

@@ -104,16 +104,23 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_slb_player_id_global" "this" {
-  abs_max_expiration      = var.abs_max_expiration
-  enable_64bit_player_id  = var.enable_64bit_player_id
-  enforcement_timer       = var.enforcement_timer
-  force_passive           = var.force_passive
-  min_expiration          = var.min_expiration
+  # abs_max_expiration - (optional) is a type of number
+  abs_max_expiration = var.abs_max_expiration
+  # enable_64bit_player_id - (optional) is a type of number
+  enable_64bit_player_id = var.enable_64bit_player_id
+  # enforcement_timer - (optional) is a type of number
+  enforcement_timer = var.enforcement_timer
+  # force_passive - (optional) is a type of number
+  force_passive = var.force_passive
+  # min_expiration - (optional) is a type of number
+  min_expiration = var.min_expiration
+  # pkt_activity_expiration - (optional) is a type of number
   pkt_activity_expiration = var.pkt_activity_expiration
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

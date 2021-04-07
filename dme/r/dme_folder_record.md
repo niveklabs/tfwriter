@@ -91,16 +91,23 @@ variable "folder_permissions" {
 
 ```terraform
 resource "dme_folder_record" "this" {
+  # default_folder - (optional) is a type of bool
   default_folder = var.default_folder
-  domains        = var.domains
-  name           = var.name
-  secondaries    = var.secondaries
+  # domains - (optional) is a type of list of string
+  domains = var.domains
+  # name - (required) is a type of string
+  name = var.name
+  # secondaries - (optional) is a type of list of string
+  secondaries = var.secondaries
 
   dynamic "folder_permissions" {
     for_each = var.folder_permissions
     content {
-      group_id   = folder_permissions.value["group_id"]
+      # group_id - (required) is a type of number
+      group_id = folder_permissions.value["group_id"]
+      # group_name - (optional) is a type of string
       group_name = folder_permissions.value["group_name"]
+      # permission - (optional) is a type of number
       permission = folder_permissions.value["permission"]
     }
   }

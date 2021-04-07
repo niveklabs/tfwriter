@@ -82,11 +82,16 @@ variable "principal_name" {
 
 ```terraform
 resource "azuredevops_user_entitlement" "this" {
+  # account_license_type - (optional) is a type of string
   account_license_type = var.account_license_type
-  licensing_source     = var.licensing_source
-  origin               = var.origin
-  origin_id            = var.origin_id
-  principal_name       = var.principal_name
+  # licensing_source - (optional) is a type of string
+  licensing_source = var.licensing_source
+  # origin - (optional) is a type of string
+  origin = var.origin
+  # origin_id - (optional) is a type of string
+  origin_id = var.origin_id
+  # principal_name - (optional) is a type of string
+  principal_name = var.principal_name
 }
 ```
 

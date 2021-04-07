@@ -120,16 +120,26 @@ variable "weight" {
 
 ```terraform
 resource "fortios_networking_route_static" "this" {
-  blackhole        = var.blackhole
-  comment          = var.comment
-  device           = var.device
-  distance         = var.distance
-  dst              = var.dst
-  gateway          = var.gateway
+  # blackhole - (optional) is a type of string
+  blackhole = var.blackhole
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # device - (required) is a type of string
+  device = var.device
+  # distance - (optional) is a type of string
+  distance = var.distance
+  # dst - (optional) is a type of string
+  dst = var.dst
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # internet_service - (optional) is a type of number
   internet_service = var.internet_service
-  priority         = var.priority
-  status           = var.status
-  weight           = var.weight
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # weight - (optional) is a type of string
+  weight = var.weight
 }
 ```
 

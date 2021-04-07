@@ -253,30 +253,51 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_policy64" "this" {
-  action                 = var.action
-  comments               = var.comments
-  dstintf                = var.dstintf
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  fixedport              = var.fixedport
-  ippool                 = var.ippool
-  logtraffic             = var.logtraffic
-  logtraffic_start       = var.logtraffic_start
-  name                   = var.name
-  per_ip_shaper          = var.per_ip_shaper
-  permit_any_host        = var.permit_any_host
-  policyid               = var.policyid
-  schedule               = var.schedule
-  srcintf                = var.srcintf
-  status                 = var.status
-  tcp_mss_receiver       = var.tcp_mss_receiver
-  tcp_mss_sender         = var.tcp_mss_sender
-  traffic_shaper         = var.traffic_shaper
+  # action - (optional) is a type of string
+  action = var.action
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dstintf - (required) is a type of string
+  dstintf = var.dstintf
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # fixedport - (optional) is a type of string
+  fixedport = var.fixedport
+  # ippool - (optional) is a type of string
+  ippool = var.ippool
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = var.logtraffic_start
+  # name - (optional) is a type of string
+  name = var.name
+  # per_ip_shaper - (optional) is a type of string
+  per_ip_shaper = var.per_ip_shaper
+  # permit_any_host - (optional) is a type of string
+  permit_any_host = var.permit_any_host
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # srcintf - (required) is a type of string
+  srcintf = var.srcintf
+  # status - (optional) is a type of string
+  status = var.status
+  # tcp_mss_receiver - (optional) is a type of number
+  tcp_mss_receiver = var.tcp_mss_receiver
+  # tcp_mss_sender - (optional) is a type of number
+  tcp_mss_sender = var.tcp_mss_sender
+  # traffic_shaper - (optional) is a type of string
+  traffic_shaper = var.traffic_shaper
+  # traffic_shaper_reverse - (optional) is a type of string
   traffic_shaper_reverse = var.traffic_shaper_reverse
-  uuid                   = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -284,6 +305,7 @@ resource "fortios_firewall_policy64" "this" {
   dynamic "poolname" {
     for_each = var.poolname
     content {
+      # name - (optional) is a type of string
       name = poolname.value["name"]
     }
   }
@@ -291,6 +313,7 @@ resource "fortios_firewall_policy64" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -298,6 +321,7 @@ resource "fortios_firewall_policy64" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }

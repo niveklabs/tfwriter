@@ -162,21 +162,36 @@ variable "forticlient_warning_interval" {
 
 ```terraform
 resource "fortios_endpointcontrol_settings" "this" {
-  download_custom_link                      = var.download_custom_link
-  download_location                         = var.download_location
-  forticlient_avdb_update_interval          = var.forticlient_avdb_update_interval
-  forticlient_dereg_unsupported_client      = var.forticlient_dereg_unsupported_client
+  # download_custom_link - (optional) is a type of string
+  download_custom_link = var.download_custom_link
+  # download_location - (optional) is a type of string
+  download_location = var.download_location
+  # forticlient_avdb_update_interval - (optional) is a type of number
+  forticlient_avdb_update_interval = var.forticlient_avdb_update_interval
+  # forticlient_dereg_unsupported_client - (optional) is a type of string
+  forticlient_dereg_unsupported_client = var.forticlient_dereg_unsupported_client
+  # forticlient_disconnect_unsupported_client - (optional) is a type of string
   forticlient_disconnect_unsupported_client = var.forticlient_disconnect_unsupported_client
-  forticlient_ems_rest_api_call_timeout     = var.forticlient_ems_rest_api_call_timeout
-  forticlient_keepalive_interval            = var.forticlient_keepalive_interval
-  forticlient_offline_grace                 = var.forticlient_offline_grace
-  forticlient_offline_grace_interval        = var.forticlient_offline_grace_interval
-  forticlient_reg_key                       = var.forticlient_reg_key
-  forticlient_reg_key_enforce               = var.forticlient_reg_key_enforce
-  forticlient_reg_timeout                   = var.forticlient_reg_timeout
-  forticlient_sys_update_interval           = var.forticlient_sys_update_interval
-  forticlient_user_avatar                   = var.forticlient_user_avatar
-  forticlient_warning_interval              = var.forticlient_warning_interval
+  # forticlient_ems_rest_api_call_timeout - (optional) is a type of number
+  forticlient_ems_rest_api_call_timeout = var.forticlient_ems_rest_api_call_timeout
+  # forticlient_keepalive_interval - (optional) is a type of number
+  forticlient_keepalive_interval = var.forticlient_keepalive_interval
+  # forticlient_offline_grace - (optional) is a type of string
+  forticlient_offline_grace = var.forticlient_offline_grace
+  # forticlient_offline_grace_interval - (optional) is a type of number
+  forticlient_offline_grace_interval = var.forticlient_offline_grace_interval
+  # forticlient_reg_key - (optional) is a type of string
+  forticlient_reg_key = var.forticlient_reg_key
+  # forticlient_reg_key_enforce - (optional) is a type of string
+  forticlient_reg_key_enforce = var.forticlient_reg_key_enforce
+  # forticlient_reg_timeout - (optional) is a type of number
+  forticlient_reg_timeout = var.forticlient_reg_timeout
+  # forticlient_sys_update_interval - (optional) is a type of number
+  forticlient_sys_update_interval = var.forticlient_sys_update_interval
+  # forticlient_user_avatar - (optional) is a type of string
+  forticlient_user_avatar = var.forticlient_user_avatar
+  # forticlient_warning_interval - (optional) is a type of number
+  forticlient_warning_interval = var.forticlient_warning_interval
 }
 ```
 

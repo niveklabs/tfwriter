@@ -120,15 +120,19 @@ resource "sdm_secret_store" "this" {
   dynamic "aws" {
     for_each = var.aws
     content {
-      name   = aws.value["name"]
+      # name - (required) is a type of string
+      name = aws.value["name"]
+      # region - (required) is a type of string
       region = aws.value["region"]
-      tags   = aws.value["tags"]
+      # tags - (optional) is a type of map of string
+      tags = aws.value["tags"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }
@@ -136,21 +140,30 @@ resource "sdm_secret_store" "this" {
   dynamic "vault_tls" {
     for_each = var.vault_tls
     content {
-      ca_cert_path     = vault_tls.value["ca_cert_path"]
+      # ca_cert_path - (optional) is a type of string
+      ca_cert_path = vault_tls.value["ca_cert_path"]
+      # client_cert_path - (required) is a type of string
       client_cert_path = vault_tls.value["client_cert_path"]
-      client_key_path  = vault_tls.value["client_key_path"]
-      name             = vault_tls.value["name"]
-      server_address   = vault_tls.value["server_address"]
-      tags             = vault_tls.value["tags"]
+      # client_key_path - (required) is a type of string
+      client_key_path = vault_tls.value["client_key_path"]
+      # name - (required) is a type of string
+      name = vault_tls.value["name"]
+      # server_address - (required) is a type of string
+      server_address = vault_tls.value["server_address"]
+      # tags - (optional) is a type of map of string
+      tags = vault_tls.value["tags"]
     }
   }
 
   dynamic "vault_token" {
     for_each = var.vault_token
     content {
-      name           = vault_token.value["name"]
+      # name - (required) is a type of string
+      name = vault_token.value["name"]
+      # server_address - (required) is a type of string
       server_address = vault_token.value["server_address"]
-      tags           = vault_token.value["tags"]
+      # tags - (optional) is a type of map of string
+      tags = vault_token.value["tags"]
     }
   }
 

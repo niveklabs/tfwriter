@@ -58,8 +58,10 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_clb_target_group" "this" {
+  # target_group_name - (optional) is a type of string
   target_group_name = var.target_group_name
-  vpc_id            = var.vpc_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

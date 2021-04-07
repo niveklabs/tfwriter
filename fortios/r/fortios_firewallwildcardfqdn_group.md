@@ -103,16 +103,23 @@ variable "member" {
 
 ```terraform
 resource "fortios_firewallwildcardfqdn_group" "this" {
-  color                 = var.color
-  comment               = var.comment
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  uuid                  = var.uuid
-  visibility            = var.visibility
+  # name - (optional) is a type of string
+  name = var.name
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

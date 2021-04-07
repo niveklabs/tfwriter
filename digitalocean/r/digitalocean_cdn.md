@@ -81,11 +81,16 @@ variable "ttl" {
 
 ```terraform
 resource "digitalocean_cdn" "this" {
-  certificate_id   = var.certificate_id
+  # certificate_id - (optional) is a type of string
+  certificate_id = var.certificate_id
+  # certificate_name - (optional) is a type of string
   certificate_name = var.certificate_name
-  custom_domain    = var.custom_domain
-  origin           = var.origin
-  ttl              = var.ttl
+  # custom_domain - (optional) is a type of string
+  custom_domain = var.custom_domain
+  # origin - (required) is a type of string
+  origin = var.origin
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 }
 ```
 

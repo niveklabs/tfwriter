@@ -72,10 +72,14 @@ variable "tags" {
 
 ```terraform
 resource "panos_panorama_service_group" "this" {
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  services     = var.services
-  tags         = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # services - (required) is a type of list of string
+  services = var.services
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

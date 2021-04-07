@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "icinga2_hostgroup" "this" {
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

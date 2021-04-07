@@ -63,8 +63,11 @@ variable "usernames" {
 
 ```terraform
 resource "mongodbatlas_teams" "this" {
-  name      = var.name
-  org_id    = var.org_id
+  # name - (required) is a type of string
+  name = var.name
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # usernames - (required) is a type of set of string
   usernames = var.usernames
 }
 ```

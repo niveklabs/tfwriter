@@ -217,23 +217,37 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_k8s_cluster" "this" {
-  admission_plugins           = var.admission_plugins
-  apiserver_cert_sans         = var.apiserver_cert_sans
-  cni                         = var.cni
+  # admission_plugins - (optional) is a type of list of string
+  admission_plugins = var.admission_plugins
+  # apiserver_cert_sans - (optional) is a type of list of string
+  apiserver_cert_sans = var.apiserver_cert_sans
+  # cni - (required) is a type of string
+  cni = var.cni
+  # delete_additional_resources - (optional) is a type of bool
   delete_additional_resources = var.delete_additional_resources
-  description                 = var.description
-  feature_gates               = var.feature_gates
-  name                        = var.name
-  project_id                  = var.project_id
-  region                      = var.region
-  tags                        = var.tags
-  version                     = var.version
+  # description - (optional) is a type of string
+  description = var.description
+  # feature_gates - (optional) is a type of list of string
+  feature_gates = var.feature_gates
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # version - (required) is a type of string
+  version = var.version
 
   dynamic "auto_upgrade" {
     for_each = var.auto_upgrade
     content {
-      enable                        = auto_upgrade.value["enable"]
-      maintenance_window_day        = auto_upgrade.value["maintenance_window_day"]
+      # enable - (required) is a type of bool
+      enable = auto_upgrade.value["enable"]
+      # maintenance_window_day - (required) is a type of string
+      maintenance_window_day = auto_upgrade.value["maintenance_window_day"]
+      # maintenance_window_start_hour - (required) is a type of number
       maintenance_window_start_hour = auto_upgrade.value["maintenance_window_start_hour"]
     }
   }
@@ -241,15 +255,25 @@ resource "scaleway_k8s_cluster" "this" {
   dynamic "autoscaler_config" {
     for_each = var.autoscaler_config
     content {
-      balance_similar_node_groups      = autoscaler_config.value["balance_similar_node_groups"]
-      disable_scale_down               = autoscaler_config.value["disable_scale_down"]
-      estimator                        = autoscaler_config.value["estimator"]
-      expander                         = autoscaler_config.value["expander"]
-      expendable_pods_priority_cutoff  = autoscaler_config.value["expendable_pods_priority_cutoff"]
-      ignore_daemonsets_utilization    = autoscaler_config.value["ignore_daemonsets_utilization"]
-      max_graceful_termination_sec     = autoscaler_config.value["max_graceful_termination_sec"]
-      scale_down_delay_after_add       = autoscaler_config.value["scale_down_delay_after_add"]
-      scale_down_unneeded_time         = autoscaler_config.value["scale_down_unneeded_time"]
+      # balance_similar_node_groups - (optional) is a type of bool
+      balance_similar_node_groups = autoscaler_config.value["balance_similar_node_groups"]
+      # disable_scale_down - (optional) is a type of bool
+      disable_scale_down = autoscaler_config.value["disable_scale_down"]
+      # estimator - (optional) is a type of string
+      estimator = autoscaler_config.value["estimator"]
+      # expander - (optional) is a type of string
+      expander = autoscaler_config.value["expander"]
+      # expendable_pods_priority_cutoff - (optional) is a type of number
+      expendable_pods_priority_cutoff = autoscaler_config.value["expendable_pods_priority_cutoff"]
+      # ignore_daemonsets_utilization - (optional) is a type of bool
+      ignore_daemonsets_utilization = autoscaler_config.value["ignore_daemonsets_utilization"]
+      # max_graceful_termination_sec - (optional) is a type of number
+      max_graceful_termination_sec = autoscaler_config.value["max_graceful_termination_sec"]
+      # scale_down_delay_after_add - (optional) is a type of string
+      scale_down_delay_after_add = autoscaler_config.value["scale_down_delay_after_add"]
+      # scale_down_unneeded_time - (optional) is a type of string
+      scale_down_unneeded_time = autoscaler_config.value["scale_down_unneeded_time"]
+      # scale_down_utilization_threshold - (optional) is a type of number
       scale_down_utilization_threshold = autoscaler_config.value["scale_down_utilization_threshold"]
     }
   }
@@ -257,12 +281,19 @@ resource "scaleway_k8s_cluster" "this" {
   dynamic "open_id_connect_config" {
     for_each = var.open_id_connect_config
     content {
-      client_id       = open_id_connect_config.value["client_id"]
-      groups_claim    = open_id_connect_config.value["groups_claim"]
-      groups_prefix   = open_id_connect_config.value["groups_prefix"]
-      issuer_url      = open_id_connect_config.value["issuer_url"]
-      required_claim  = open_id_connect_config.value["required_claim"]
-      username_claim  = open_id_connect_config.value["username_claim"]
+      # client_id - (required) is a type of string
+      client_id = open_id_connect_config.value["client_id"]
+      # groups_claim - (optional) is a type of list of string
+      groups_claim = open_id_connect_config.value["groups_claim"]
+      # groups_prefix - (optional) is a type of string
+      groups_prefix = open_id_connect_config.value["groups_prefix"]
+      # issuer_url - (required) is a type of string
+      issuer_url = open_id_connect_config.value["issuer_url"]
+      # required_claim - (optional) is a type of list of string
+      required_claim = open_id_connect_config.value["required_claim"]
+      # username_claim - (optional) is a type of string
+      username_claim = open_id_connect_config.value["username_claim"]
+      # username_prefix - (optional) is a type of string
       username_prefix = open_id_connect_config.value["username_prefix"]
     }
   }
@@ -270,6 +301,7 @@ resource "scaleway_k8s_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

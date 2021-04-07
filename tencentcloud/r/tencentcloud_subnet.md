@@ -94,13 +94,20 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_subnet" "this" {
+  # availability_zone - (required) is a type of string
   availability_zone = var.availability_zone
-  cidr_block        = var.cidr_block
-  is_multicast      = var.is_multicast
-  name              = var.name
-  route_table_id    = var.route_table_id
-  tags              = var.tags
-  vpc_id            = var.vpc_id
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # is_multicast - (optional) is a type of bool
+  is_multicast = var.is_multicast
+  # name - (required) is a type of string
+  name = var.name
+  # route_table_id - (optional) is a type of string
+  route_table_id = var.route_table_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

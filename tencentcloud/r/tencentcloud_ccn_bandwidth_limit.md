@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "tencentcloud_ccn_bandwidth_limit" "this" {
+  # bandwidth_limit - (optional) is a type of number
   bandwidth_limit = var.bandwidth_limit
-  ccn_id          = var.ccn_id
-  dst_region      = var.dst_region
-  region          = var.region
+  # ccn_id - (required) is a type of string
+  ccn_id = var.ccn_id
+  # dst_region - (optional) is a type of string
+  dst_region = var.dst_region
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

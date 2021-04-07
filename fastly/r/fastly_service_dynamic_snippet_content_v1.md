@@ -63,8 +63,11 @@ variable "snippet_id" {
 
 ```terraform
 resource "fastly_service_dynamic_snippet_content_v1" "this" {
-  content    = var.content
+  # content - (required) is a type of string
+  content = var.content
+  # service_id - (required) is a type of string
   service_id = var.service_id
+  # snippet_id - (required) is a type of string
   snippet_id = var.snippet_id
 }
 ```

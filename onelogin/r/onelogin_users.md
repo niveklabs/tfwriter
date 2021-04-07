@@ -208,27 +208,48 @@ variable "userprincipalname" {
 
 ```terraform
 resource "onelogin_users" "this" {
-  comment            = var.comment
-  company            = var.company
-  department         = var.department
-  directory_id       = var.directory_id
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # company - (optional) is a type of string
+  company = var.company
+  # department - (optional) is a type of string
+  department = var.department
+  # directory_id - (optional) is a type of number
+  directory_id = var.directory_id
+  # distinguished_name - (optional) is a type of string
   distinguished_name = var.distinguished_name
-  email              = var.email
-  external_id        = var.external_id
-  firstname          = var.firstname
-  group_id           = var.group_id
-  lastname           = var.lastname
-  manager_ad_id      = var.manager_ad_id
-  manager_user_id    = var.manager_user_id
-  member_of          = var.member_of
-  phone              = var.phone
-  samaccountname     = var.samaccountname
-  state              = var.state
-  status             = var.status
-  title              = var.title
-  trusted_idp_id     = var.trusted_idp_id
-  username           = var.username
-  userprincipalname  = var.userprincipalname
+  # email - (required) is a type of string
+  email = var.email
+  # external_id - (optional) is a type of number
+  external_id = var.external_id
+  # firstname - (optional) is a type of string
+  firstname = var.firstname
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
+  # lastname - (optional) is a type of string
+  lastname = var.lastname
+  # manager_ad_id - (optional) is a type of number
+  manager_ad_id = var.manager_ad_id
+  # manager_user_id - (optional) is a type of number
+  manager_user_id = var.manager_user_id
+  # member_of - (optional) is a type of string
+  member_of = var.member_of
+  # phone - (optional) is a type of string
+  phone = var.phone
+  # samaccountname - (optional) is a type of string
+  samaccountname = var.samaccountname
+  # state - (optional) is a type of number
+  state = var.state
+  # status - (optional) is a type of number
+  status = var.status
+  # title - (optional) is a type of string
+  title = var.title
+  # trusted_idp_id - (optional) is a type of number
+  trusted_idp_id = var.trusted_idp_id
+  # username - (required) is a type of string
+  username = var.username
+  # userprincipalname - (optional) is a type of string
+  userprincipalname = var.userprincipalname
 }
 ```
 

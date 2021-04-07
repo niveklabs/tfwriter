@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "heroku_pipeline" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

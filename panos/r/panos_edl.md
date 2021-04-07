@@ -144,19 +144,32 @@ variable "vsys" {
 
 ```terraform
 resource "panos_edl" "this" {
+  # certificate_profile - (optional) is a type of string
   certificate_profile = var.certificate_profile
-  description         = var.description
-  exceptions          = var.exceptions
-  name                = var.name
-  password            = var.password
-  repeat              = var.repeat
-  repeat_at           = var.repeat_at
+  # description - (optional) is a type of string
+  description = var.description
+  # exceptions - (optional) is a type of list of string
+  exceptions = var.exceptions
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # repeat - (optional) is a type of string
+  repeat = var.repeat
+  # repeat_at - (optional) is a type of string
+  repeat_at = var.repeat_at
+  # repeat_day_of_month - (optional) is a type of number
   repeat_day_of_month = var.repeat_day_of_month
-  repeat_day_of_week  = var.repeat_day_of_week
-  source              = var.source
-  type                = var.type
-  username            = var.username
-  vsys                = var.vsys
+  # repeat_day_of_week - (optional) is a type of string
+  repeat_day_of_week = var.repeat_day_of_week
+  # source - (optional) is a type of string
+  source = var.source
+  # type - (optional) is a type of string
+  type = var.type
+  # username - (optional) is a type of string
+  username = var.username
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

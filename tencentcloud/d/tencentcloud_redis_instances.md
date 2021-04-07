@@ -90,12 +90,18 @@ variable "zone" {
 
 ```terraform
 data "tencentcloud_redis_instances" "this" {
-  limit              = var.limit
-  project_id         = var.project_id
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  search_key         = var.search_key
-  tags               = var.tags
-  zone               = var.zone
+  # search_key - (optional) is a type of string
+  search_key = var.search_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

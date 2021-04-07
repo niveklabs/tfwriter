@@ -58,8 +58,10 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_ipsurlfilterdns6" "this" {
+  # address6 - (optional) is a type of string
   address6 = var.address6
-  status   = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

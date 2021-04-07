@@ -73,14 +73,18 @@ variable "items" {
 
 ```terraform
 resource "dome9_iplist" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "items" {
     for_each = var.items
     content {
+      # comment - (optional) is a type of string
       comment = items.value["comment"]
-      ip      = items.value["ip"]
+      # ip - (optional) is a type of string
+      ip = items.value["ip"]
     }
   }
 

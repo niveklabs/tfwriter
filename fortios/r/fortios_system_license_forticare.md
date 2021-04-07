@@ -49,6 +49,7 @@ variable "registration_code" {
 
 ```terraform
 resource "fortios_system_license_forticare" "this" {
+  # registration_code - (required) is a type of string
   registration_code = var.registration_code
 }
 ```

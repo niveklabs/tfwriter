@@ -90,16 +90,23 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_ip_set" "this" {
+  # accelerate_region_id - (required) is a type of string
   accelerate_region_id = var.accelerate_region_id
-  accelerator_id       = var.accelerator_id
-  bandwidth            = var.bandwidth
-  ip_version           = var.ip_version
+  # accelerator_id - (required) is a type of string
+  accelerator_id = var.accelerator_id
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

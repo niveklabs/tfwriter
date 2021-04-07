@@ -50,6 +50,7 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_system_status" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 }
 ```

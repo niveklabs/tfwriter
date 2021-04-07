@@ -87,12 +87,18 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_activations" "this" {
-  activate            = var.activate
-  config_id           = var.config_id
-  network             = var.network
-  notes               = var.notes
+  # activate - (optional) is a type of bool
+  activate = var.activate
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # network - (optional) is a type of string
+  network = var.network
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # notification_emails - (required) is a type of set of string
   notification_emails = var.notification_emails
-  version             = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

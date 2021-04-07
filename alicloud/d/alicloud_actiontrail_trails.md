@@ -90,12 +90,18 @@ variable "status" {
 
 ```terraform
 data "alicloud_actiontrail_trails" "this" {
-  ids                        = var.ids
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # include_organization_trail - (optional) is a type of bool
   include_organization_trail = var.include_organization_trail
-  include_shadow_trails      = var.include_shadow_trails
-  name_regex                 = var.name_regex
-  output_file                = var.output_file
-  status                     = var.status
+  # include_shadow_trails - (optional) is a type of bool
+  include_shadow_trails = var.include_shadow_trails
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

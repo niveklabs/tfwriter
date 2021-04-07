@@ -71,10 +71,14 @@ variable "tags" {
 
 ```terraform
 resource "datadog_metric_tag_configuration" "this" {
+  # include_percentiles - (optional) is a type of bool
   include_percentiles = var.include_percentiles
-  metric_name         = var.metric_name
-  metric_type         = var.metric_type
-  tags                = var.tags
+  # metric_name - (required) is a type of string
+  metric_name = var.metric_name
+  # metric_type - (required) is a type of string
+  metric_type = var.metric_type
+  # tags - (required) is a type of set of string
+  tags = var.tags
 }
 ```
 

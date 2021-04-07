@@ -80,11 +80,16 @@ variable "value" {
 
 ```terraform
 resource "panos_panorama_template_variable" "this" {
-  name           = var.name
-  template       = var.template
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
-  type           = var.type
-  value          = var.value
+  # type - (optional) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

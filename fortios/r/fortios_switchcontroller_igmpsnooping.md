@@ -58,7 +58,9 @@ variable "flood_unknown_multicast" {
 
 ```terraform
 resource "fortios_switchcontroller_igmpsnooping" "this" {
-  aging_time              = var.aging_time
+  # aging_time - (optional) is a type of number
+  aging_time = var.aging_time
+  # flood_unknown_multicast - (optional) is a type of string
   flood_unknown_multicast = var.flood_unknown_multicast
 }
 ```

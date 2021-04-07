@@ -104,17 +104,25 @@ variable "responders" {
 
 ```terraform
 resource "opsgenie_email_integration" "this" {
-  email_username                 = var.email_username
-  enabled                        = var.enabled
+  # email_username - (required) is a type of string
+  email_username = var.email_username
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ignore_responders_from_payload - (optional) is a type of bool
   ignore_responders_from_payload = var.ignore_responders_from_payload
-  name                           = var.name
-  owner_team_id                  = var.owner_team_id
-  suppress_notifications         = var.suppress_notifications
+  # name - (required) is a type of string
+  name = var.name
+  # owner_team_id - (optional) is a type of string
+  owner_team_id = var.owner_team_id
+  # suppress_notifications - (optional) is a type of bool
+  suppress_notifications = var.suppress_notifications
 
   dynamic "responders" {
     for_each = var.responders
     content {
-      id   = responders.value["id"]
+      # id - (optional) is a type of string
+      id = responders.value["id"]
+      # type - (optional) is a type of string
       type = responders.value["type"]
     }
   }

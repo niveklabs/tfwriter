@@ -137,18 +137,30 @@ variable "uuid" {
 
 ```terraform
 resource "avi_scheduler" "this" {
+  # backup_config_ref - (optional) is a type of string
   backup_config_ref = var.backup_config_ref
-  enabled           = var.enabled
-  end_date_time     = var.end_date_time
-  frequency         = var.frequency
-  frequency_unit    = var.frequency_unit
-  name              = var.name
-  run_mode          = var.run_mode
-  run_script_ref    = var.run_script_ref
-  scheduler_action  = var.scheduler_action
-  start_date_time   = var.start_date_time
-  tenant_ref        = var.tenant_ref
-  uuid              = var.uuid
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # end_date_time - (optional) is a type of string
+  end_date_time = var.end_date_time
+  # frequency - (optional) is a type of number
+  frequency = var.frequency
+  # frequency_unit - (optional) is a type of string
+  frequency_unit = var.frequency_unit
+  # name - (required) is a type of string
+  name = var.name
+  # run_mode - (optional) is a type of string
+  run_mode = var.run_mode
+  # run_script_ref - (optional) is a type of string
+  run_script_ref = var.run_script_ref
+  # scheduler_action - (optional) is a type of string
+  scheduler_action = var.scheduler_action
+  # start_date_time - (optional) is a type of string
+  start_date_time = var.start_date_time
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

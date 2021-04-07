@@ -146,19 +146,32 @@ variable "task_enabled" {
 
 ```terraform
 resource "alicloud_ess_scheduled_task" "this" {
-  description            = var.description
-  desired_capacity       = var.desired_capacity
+  # description - (optional) is a type of string
+  description = var.description
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # launch_expiration_time - (optional) is a type of number
   launch_expiration_time = var.launch_expiration_time
-  launch_time            = var.launch_time
-  max_value              = var.max_value
-  min_value              = var.min_value
-  recurrence_end_time    = var.recurrence_end_time
-  recurrence_type        = var.recurrence_type
-  recurrence_value       = var.recurrence_value
-  scaling_group_id       = var.scaling_group_id
-  scheduled_action       = var.scheduled_action
-  scheduled_task_name    = var.scheduled_task_name
-  task_enabled           = var.task_enabled
+  # launch_time - (optional) is a type of string
+  launch_time = var.launch_time
+  # max_value - (optional) is a type of number
+  max_value = var.max_value
+  # min_value - (optional) is a type of number
+  min_value = var.min_value
+  # recurrence_end_time - (optional) is a type of string
+  recurrence_end_time = var.recurrence_end_time
+  # recurrence_type - (optional) is a type of string
+  recurrence_type = var.recurrence_type
+  # recurrence_value - (optional) is a type of string
+  recurrence_value = var.recurrence_value
+  # scaling_group_id - (optional) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # scheduled_action - (optional) is a type of string
+  scheduled_action = var.scheduled_action
+  # scheduled_task_name - (optional) is a type of string
+  scheduled_task_name = var.scheduled_task_name
+  # task_enabled - (optional) is a type of bool
+  task_enabled = var.task_enabled
 }
 ```
 

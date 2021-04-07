@@ -80,11 +80,16 @@ variable "url" {
 
 ```terraform
 resource "gitlab_project_mirror" "this" {
-  enabled                 = var.enabled
-  keep_divergent_refs     = var.keep_divergent_refs
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # keep_divergent_refs - (optional) is a type of bool
+  keep_divergent_refs = var.keep_divergent_refs
+  # only_protected_branches - (optional) is a type of bool
   only_protected_branches = var.only_protected_branches
-  project                 = var.project
-  url                     = var.url
+  # project - (required) is a type of string
+  project = var.project
+  # url - (required) is a type of string
+  url = var.url
 }
 ```
 

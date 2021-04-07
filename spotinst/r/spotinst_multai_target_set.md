@@ -127,22 +127,35 @@ variable "tags" {
 
 ```terraform
 resource "spotinst_multai_target_set" "this" {
-  balancer_id   = var.balancer_id
+  # balancer_id - (required) is a type of string
+  balancer_id = var.balancer_id
+  # deployment_id - (required) is a type of string
   deployment_id = var.deployment_id
-  name          = var.name
-  port          = var.port
-  protocol      = var.protocol
-  weight        = var.weight
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # weight - (required) is a type of number
+  weight = var.weight
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
-      healthy_threshold   = health_check.value["healthy_threshold"]
-      interval            = health_check.value["interval"]
-      path                = health_check.value["path"]
-      port                = health_check.value["port"]
-      protocol            = health_check.value["protocol"]
-      timeout             = health_check.value["timeout"]
+      # healthy_threshold - (required) is a type of number
+      healthy_threshold = health_check.value["healthy_threshold"]
+      # interval - (required) is a type of number
+      interval = health_check.value["interval"]
+      # path - (required) is a type of string
+      path = health_check.value["path"]
+      # port - (optional) is a type of number
+      port = health_check.value["port"]
+      # protocol - (required) is a type of string
+      protocol = health_check.value["protocol"]
+      # timeout - (required) is a type of number
+      timeout = health_check.value["timeout"]
+      # unhealthy_threshold - (required) is a type of number
       unhealthy_threshold = health_check.value["unhealthy_threshold"]
     }
   }
@@ -150,7 +163,9 @@ resource "spotinst_multai_target_set" "this" {
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

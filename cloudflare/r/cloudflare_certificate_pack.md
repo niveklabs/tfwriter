@@ -95,13 +95,20 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_certificate_pack" "this" {
+  # certificate_authority - (optional) is a type of string
   certificate_authority = var.certificate_authority
-  cloudflare_branding   = var.cloudflare_branding
-  hosts                 = var.hosts
-  type                  = var.type
-  validation_method     = var.validation_method
-  validity_days         = var.validity_days
-  zone_id               = var.zone_id
+  # cloudflare_branding - (optional) is a type of bool
+  cloudflare_branding = var.cloudflare_branding
+  # hosts - (required) is a type of set of string
+  hosts = var.hosts
+  # type - (required) is a type of string
+  type = var.type
+  # validation_method - (optional) is a type of string
+  validation_method = var.validation_method
+  # validity_days - (optional) is a type of number
+  validity_days = var.validity_days
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

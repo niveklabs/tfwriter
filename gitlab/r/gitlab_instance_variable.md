@@ -80,10 +80,15 @@ variable "variable_type" {
 
 ```terraform
 resource "gitlab_instance_variable" "this" {
-  key           = var.key
-  masked        = var.masked
-  protected     = var.protected
-  value         = var.value
+  # key - (required) is a type of string
+  key = var.key
+  # masked - (optional) is a type of bool
+  masked = var.masked
+  # protected - (optional) is a type of bool
+  protected = var.protected
+  # value - (required) is a type of string
+  value = var.value
+  # variable_type - (optional) is a type of string
   variable_type = var.variable_type
 }
 ```

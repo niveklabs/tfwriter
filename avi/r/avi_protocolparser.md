@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 resource "avi_protocolparser" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # parser_code - (optional) is a type of string
   parser_code = var.parser_code
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

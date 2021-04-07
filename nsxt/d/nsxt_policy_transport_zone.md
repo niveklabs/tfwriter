@@ -82,10 +82,15 @@ variable "transport_type" {
 
 ```terraform
 data "nsxt_policy_transport_zone" "this" {
-  description    = var.description
-  display_name   = var.display_name
-  is_default     = var.is_default
-  site_path      = var.site_path
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # site_path - (optional) is a type of string
+  site_path = var.site_path
+  # transport_type - (optional) is a type of string
   transport_type = var.transport_type
 }
 ```

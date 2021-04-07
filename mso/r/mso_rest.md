@@ -64,8 +64,11 @@ variable "payload" {
 
 ```terraform
 resource "mso_rest" "this" {
-  method  = var.method
-  path    = var.path
+  # method - (optional) is a type of string
+  method = var.method
+  # path - (required) is a type of string
+  path = var.path
+  # payload - (required) is a type of string
   payload = var.payload
 }
 ```

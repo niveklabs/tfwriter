@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_eval_protect_host" "this" {
+  # config_id - (required) is a type of number
   config_id = var.config_id
+  # hostnames - (required) is a type of list of string
   hostnames = var.hostnames
-  version   = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

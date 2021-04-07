@@ -86,12 +86,18 @@ variable "ref" {
 
 ```terraform
 resource "gitlab_pipeline_schedule" "this" {
-  active        = var.active
-  cron          = var.cron
+  # active - (optional) is a type of bool
+  active = var.active
+  # cron - (required) is a type of string
+  cron = var.cron
+  # cron_timezone - (optional) is a type of string
   cron_timezone = var.cron_timezone
-  description   = var.description
-  project       = var.project
-  ref           = var.ref
+  # description - (required) is a type of string
+  description = var.description
+  # project - (required) is a type of string
+  project = var.project
+  # ref - (required) is a type of string
+  ref = var.ref
 }
 ```
 

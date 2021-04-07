@@ -64,8 +64,11 @@ variable "public_key" {
 
 ```terraform
 resource "hcloud_ssh_key" "this" {
-  labels     = var.labels
-  name       = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (required) is a type of string
   public_key = var.public_key
 }
 ```

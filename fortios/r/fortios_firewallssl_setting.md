@@ -122,17 +122,28 @@ variable "ssl_send_empty_frags" {
 
 ```terraform
 resource "fortios_firewallssl_setting" "this" {
-  abbreviate_handshake      = var.abbreviate_handshake
-  cert_cache_capacity       = var.cert_cache_capacity
-  cert_cache_timeout        = var.cert_cache_timeout
-  kxp_queue_threshold       = var.kxp_queue_threshold
+  # abbreviate_handshake - (optional) is a type of string
+  abbreviate_handshake = var.abbreviate_handshake
+  # cert_cache_capacity - (required) is a type of number
+  cert_cache_capacity = var.cert_cache_capacity
+  # cert_cache_timeout - (required) is a type of number
+  cert_cache_timeout = var.cert_cache_timeout
+  # kxp_queue_threshold - (optional) is a type of number
+  kxp_queue_threshold = var.kxp_queue_threshold
+  # no_matching_cipher_action - (required) is a type of string
   no_matching_cipher_action = var.no_matching_cipher_action
-  proxy_connect_timeout     = var.proxy_connect_timeout
-  session_cache_capacity    = var.session_cache_capacity
-  session_cache_timeout     = var.session_cache_timeout
-  ssl_dh_bits               = var.ssl_dh_bits
-  ssl_queue_threshold       = var.ssl_queue_threshold
-  ssl_send_empty_frags      = var.ssl_send_empty_frags
+  # proxy_connect_timeout - (required) is a type of number
+  proxy_connect_timeout = var.proxy_connect_timeout
+  # session_cache_capacity - (required) is a type of number
+  session_cache_capacity = var.session_cache_capacity
+  # session_cache_timeout - (required) is a type of number
+  session_cache_timeout = var.session_cache_timeout
+  # ssl_dh_bits - (required) is a type of string
+  ssl_dh_bits = var.ssl_dh_bits
+  # ssl_queue_threshold - (optional) is a type of number
+  ssl_queue_threshold = var.ssl_queue_threshold
+  # ssl_send_empty_frags - (required) is a type of string
+  ssl_send_empty_frags = var.ssl_send_empty_frags
 }
 ```
 

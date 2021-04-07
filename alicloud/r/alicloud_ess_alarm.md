@@ -150,20 +150,34 @@ variable "threshold" {
 
 ```terraform
 resource "alicloud_ess_alarm" "this" {
-  alarm_actions          = var.alarm_actions
+  # alarm_actions - (required) is a type of set of string
+  alarm_actions = var.alarm_actions
+  # cloud_monitor_group_id - (optional) is a type of number
   cloud_monitor_group_id = var.cloud_monitor_group_id
-  comparison_operator    = var.comparison_operator
-  description            = var.description
-  dimensions             = var.dimensions
-  enable                 = var.enable
-  evaluation_count       = var.evaluation_count
-  metric_name            = var.metric_name
-  metric_type            = var.metric_type
-  name                   = var.name
-  period                 = var.period
-  scaling_group_id       = var.scaling_group_id
-  statistics             = var.statistics
-  threshold              = var.threshold
+  # comparison_operator - (optional) is a type of string
+  comparison_operator = var.comparison_operator
+  # description - (optional) is a type of string
+  description = var.description
+  # dimensions - (optional) is a type of map of string
+  dimensions = var.dimensions
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # evaluation_count - (optional) is a type of number
+  evaluation_count = var.evaluation_count
+  # metric_name - (required) is a type of string
+  metric_name = var.metric_name
+  # metric_type - (optional) is a type of string
+  metric_type = var.metric_type
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # statistics - (optional) is a type of string
+  statistics = var.statistics
+  # threshold - (required) is a type of string
+  threshold = var.threshold
 }
 ```
 

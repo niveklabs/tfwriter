@@ -101,14 +101,22 @@ variable "src_ip" {
 
 ```terraform
 resource "aviatrix_firewall_policy" "this" {
-  action      = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
   description = var.description
-  dst_ip      = var.dst_ip
-  gw_name     = var.gw_name
+  # dst_ip - (required) is a type of string
+  dst_ip = var.dst_ip
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # log_enabled - (optional) is a type of bool
   log_enabled = var.log_enabled
-  port        = var.port
-  protocol    = var.protocol
-  src_ip      = var.src_ip
+  # port - (required) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # src_ip - (required) is a type of string
+  src_ip = var.src_ip
 }
 ```
 

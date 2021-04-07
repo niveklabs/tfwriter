@@ -50,6 +50,7 @@ variable "zone_name" {
 
 ```terraform
 data "ecl_baremetal_availability_zone_v2" "this" {
+  # zone_name - (optional) is a type of string
   zone_name = var.zone_name
 }
 ```

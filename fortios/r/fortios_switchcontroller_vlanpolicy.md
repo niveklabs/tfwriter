@@ -126,17 +126,25 @@ variable "untagged_vlans" {
 
 ```terraform
 resource "fortios_switchcontroller_vlanpolicy" "this" {
-  allowed_vlans_all     = var.allowed_vlans_all
-  description           = var.description
-  discard_mode          = var.discard_mode
+  # allowed_vlans_all - (optional) is a type of string
+  allowed_vlans_all = var.allowed_vlans_all
+  # description - (optional) is a type of string
+  description = var.description
+  # discard_mode - (optional) is a type of string
+  discard_mode = var.discard_mode
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fortilink             = var.fortilink
-  name                  = var.name
-  vlan                  = var.vlan
+  # fortilink - (optional) is a type of string
+  fortilink = var.fortilink
+  # name - (optional) is a type of string
+  name = var.name
+  # vlan - (optional) is a type of string
+  vlan = var.vlan
 
   dynamic "allowed_vlans" {
     for_each = var.allowed_vlans
     content {
+      # vlan_name - (optional) is a type of string
       vlan_name = allowed_vlans.value["vlan_name"]
     }
   }
@@ -144,6 +152,7 @@ resource "fortios_switchcontroller_vlanpolicy" "this" {
   dynamic "untagged_vlans" {
     for_each = var.untagged_vlans
     content {
+      # vlan_name - (optional) is a type of string
       vlan_name = untagged_vlans.value["vlan_name"]
     }
   }

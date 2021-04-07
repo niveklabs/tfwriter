@@ -64,9 +64,12 @@ variable "condition_json" {
 
 ```terraform
 resource "pagerduty_event_rule" "this" {
-  action_json             = var.action_json
+  # action_json - (required) is a type of string
+  action_json = var.action_json
+  # advanced_condition_json - (optional) is a type of string
   advanced_condition_json = var.advanced_condition_json
-  condition_json          = var.condition_json
+  # condition_json - (required) is a type of string
+  condition_json = var.condition_json
 }
 ```
 

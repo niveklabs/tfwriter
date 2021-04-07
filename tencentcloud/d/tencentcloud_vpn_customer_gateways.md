@@ -74,10 +74,14 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_vpn_customer_gateways" "this" {
-  name               = var.name
-  public_ip_address  = var.public_ip_address
+  # name - (optional) is a type of string
+  name = var.name
+  # public_ip_address - (optional) is a type of string
+  public_ip_address = var.public_ip_address
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

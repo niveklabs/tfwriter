@@ -65,8 +65,11 @@ variable "scopes" {
 
 ```terraform
 resource "linode_token" "this" {
+  # expiry - (optional) is a type of string
   expiry = var.expiry
-  label  = var.label
+  # label - (optional) is a type of string
+  label = var.label
+  # scopes - (required) is a type of string
   scopes = var.scopes
 }
 ```

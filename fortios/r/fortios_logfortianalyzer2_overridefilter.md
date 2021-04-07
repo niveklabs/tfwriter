@@ -190,30 +190,50 @@ variable "free_style" {
 
 ```terraform
 resource "fortios_logfortianalyzer2_overridefilter" "this" {
-  anomaly               = var.anomaly
-  dlp_archive           = var.dlp_archive
-  dns                   = var.dns
+  # anomaly - (optional) is a type of string
+  anomaly = var.anomaly
+  # dlp_archive - (optional) is a type of string
+  dlp_archive = var.dlp_archive
+  # dns - (optional) is a type of string
+  dns = var.dns
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  filter                = var.filter
-  filter_type           = var.filter_type
-  forward_traffic       = var.forward_traffic
-  gtp                   = var.gtp
-  local_traffic         = var.local_traffic
-  multicast_traffic     = var.multicast_traffic
-  netscan_discovery     = var.netscan_discovery
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # filter_type - (optional) is a type of string
+  filter_type = var.filter_type
+  # forward_traffic - (optional) is a type of string
+  forward_traffic = var.forward_traffic
+  # gtp - (optional) is a type of string
+  gtp = var.gtp
+  # local_traffic - (optional) is a type of string
+  local_traffic = var.local_traffic
+  # multicast_traffic - (optional) is a type of string
+  multicast_traffic = var.multicast_traffic
+  # netscan_discovery - (optional) is a type of string
+  netscan_discovery = var.netscan_discovery
+  # netscan_vulnerability - (optional) is a type of string
   netscan_vulnerability = var.netscan_vulnerability
-  severity              = var.severity
-  sniffer_traffic       = var.sniffer_traffic
-  ssh                   = var.ssh
-  voip                  = var.voip
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # sniffer_traffic - (optional) is a type of string
+  sniffer_traffic = var.sniffer_traffic
+  # ssh - (optional) is a type of string
+  ssh = var.ssh
+  # voip - (optional) is a type of string
+  voip = var.voip
 
   dynamic "free_style" {
     for_each = var.free_style
     content {
-      category    = free_style.value["category"]
-      filter      = free_style.value["filter"]
+      # category - (optional) is a type of string
+      category = free_style.value["category"]
+      # filter - (optional) is a type of string
+      filter = free_style.value["filter"]
+      # filter_type - (optional) is a type of string
       filter_type = free_style.value["filter_type"]
-      id          = free_style.value["id"]
+      # id - (optional) is a type of number
+      id = free_style.value["id"]
     }
   }
 

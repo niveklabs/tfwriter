@@ -73,10 +73,14 @@ variable "network_uuid" {
 
 ```terraform
 resource "cloudscale_subnet" "this" {
-  cidr            = var.cidr
-  dns_servers     = var.dns_servers
+  # cidr - (required) is a type of string
+  cidr = var.cidr
+  # dns_servers - (optional) is a type of list of string
+  dns_servers = var.dns_servers
+  # gateway_address - (optional) is a type of string
   gateway_address = var.gateway_address
-  network_uuid    = var.network_uuid
+  # network_uuid - (optional) is a type of string
+  network_uuid = var.network_uuid
 }
 ```
 

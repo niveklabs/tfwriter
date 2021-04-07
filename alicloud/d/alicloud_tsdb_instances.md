@@ -106,14 +106,22 @@ variable "status_list" {
 
 ```terraform
 data "alicloud_tsdb_instances" "this" {
-  app_key        = var.app_key
+  # app_key - (optional) is a type of string
+  app_key = var.app_key
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  engine_type    = var.engine_type
-  ids            = var.ids
-  output_file    = var.output_file
-  query_str      = var.query_str
-  status         = var.status
-  status_list    = var.status_list
+  # engine_type - (optional) is a type of string
+  engine_type = var.engine_type
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # query_str - (optional) is a type of string
+  query_str = var.query_str
+  # status - (optional) is a type of string
+  status = var.status
+  # status_list - (optional) is a type of string
+  status_list = var.status_list
 }
 ```
 

@@ -106,19 +106,29 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_bitbucket" "this" {
-  authorization         = var.authorization
-  description           = var.description
-  password              = var.password
-  project_id            = var.project_id
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # description - (optional) is a type of string
+  description = var.description
+  # password - (required) is a type of string
+  password = var.password
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
-  username              = var.username
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

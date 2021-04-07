@@ -235,28 +235,42 @@ variable "rule" {
 
 ```terraform
 resource "panos_nat_rule_group" "this" {
-  position_keyword   = var.position_keyword
+  # position_keyword - (optional) is a type of string
+  position_keyword = var.position_keyword
+  # position_reference - (optional) is a type of string
   position_reference = var.position_reference
-  vsys               = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # description - (optional) is a type of string
       description = rule.value["description"]
-      disabled    = rule.value["disabled"]
-      name        = rule.value["name"]
-      tags        = rule.value["tags"]
-      type        = rule.value["type"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # tags - (optional) is a type of list of string
+      tags = rule.value["tags"]
+      # type - (optional) is a type of string
+      type = rule.value["type"]
 
       dynamic "original_packet" {
         for_each = rule.value.original_packet
         content {
+          # destination_addresses - (required) is a type of set of string
           destination_addresses = original_packet.value["destination_addresses"]
+          # destination_interface - (optional) is a type of string
           destination_interface = original_packet.value["destination_interface"]
-          destination_zone      = original_packet.value["destination_zone"]
-          service               = original_packet.value["service"]
-          source_addresses      = original_packet.value["source_addresses"]
-          source_zones          = original_packet.value["source_zones"]
+          # destination_zone - (required) is a type of string
+          destination_zone = original_packet.value["destination_zone"]
+          # service - (optional) is a type of string
+          service = original_packet.value["service"]
+          # source_addresses - (required) is a type of set of string
+          source_addresses = original_packet.value["source_addresses"]
+          # source_zones - (required) is a type of set of string
+          source_zones = original_packet.value["source_zones"]
         }
       }
 
@@ -271,34 +285,44 @@ resource "panos_nat_rule_group" "this" {
               dynamic "dynamic" {
                 for_each = destination.value.dynamic
                 content {
-                  address      = dynamic.value["address"]
+                  # address - (required) is a type of string
+                  address = dynamic.value["address"]
+                  # distribution - (optional) is a type of string
                   distribution = dynamic.value["distribution"]
-                  port         = dynamic.value["port"]
+                  # port - (optional) is a type of number
+                  port = dynamic.value["port"]
                 }
               }
 
               dynamic "dynamic_translation" {
                 for_each = destination.value.dynamic_translation
                 content {
-                  address      = dynamic_translation.value["address"]
+                  # address - (required) is a type of string
+                  address = dynamic_translation.value["address"]
+                  # distribution - (optional) is a type of string
                   distribution = dynamic_translation.value["distribution"]
-                  port         = dynamic_translation.value["port"]
+                  # port - (optional) is a type of number
+                  port = dynamic_translation.value["port"]
                 }
               }
 
               dynamic "static" {
                 for_each = destination.value.static
                 content {
+                  # address - (required) is a type of string
                   address = static.value["address"]
-                  port    = static.value["port"]
+                  # port - (optional) is a type of number
+                  port = static.value["port"]
                 }
               }
 
               dynamic "static_translation" {
                 for_each = destination.value.static_translation
                 content {
+                  # address - (required) is a type of string
                   address = static_translation.value["address"]
-                  port    = static_translation.value["port"]
+                  # port - (optional) is a type of number
+                  port = static_translation.value["port"]
                 }
               }
 
@@ -312,6 +336,7 @@ resource "panos_nat_rule_group" "this" {
               dynamic "dynamic_ip" {
                 for_each = source.value.dynamic_ip
                 content {
+                  # translated_addresses - (required) is a type of set of string
                   translated_addresses = dynamic_ip.value["translated_addresses"]
 
                   dynamic "fallback" {
@@ -321,15 +346,19 @@ resource "panos_nat_rule_group" "this" {
                       dynamic "interface_address" {
                         for_each = fallback.value.interface_address
                         content {
-                          interface  = interface_address.value["interface"]
+                          # interface - (required) is a type of string
+                          interface = interface_address.value["interface"]
+                          # ip_address - (optional) is a type of string
                           ip_address = interface_address.value["ip_address"]
-                          type       = interface_address.value["type"]
+                          # type - (optional) is a type of string
+                          type = interface_address.value["type"]
                         }
                       }
 
                       dynamic "translated_address" {
                         for_each = fallback.value.translated_address
                         content {
+                          # translated_addresses - (optional) is a type of set of string
                           translated_addresses = translated_address.value["translated_addresses"]
                         }
                       }
@@ -347,7 +376,9 @@ resource "panos_nat_rule_group" "this" {
                   dynamic "interface_address" {
                     for_each = dynamic_ip_and_port.value.interface_address
                     content {
-                      interface  = interface_address.value["interface"]
+                      # interface - (required) is a type of string
+                      interface = interface_address.value["interface"]
+                      # ip_address - (optional) is a type of string
                       ip_address = interface_address.value["ip_address"]
                     }
                   }
@@ -355,6 +386,7 @@ resource "panos_nat_rule_group" "this" {
                   dynamic "translated_address" {
                     for_each = dynamic_ip_and_port.value.translated_address
                     content {
+                      # translated_addresses - (optional) is a type of set of string
                       translated_addresses = translated_address.value["translated_addresses"]
                     }
                   }
@@ -365,7 +397,9 @@ resource "panos_nat_rule_group" "this" {
               dynamic "static_ip" {
                 for_each = source.value.static_ip
                 content {
-                  bi_directional     = static_ip.value["bi_directional"]
+                  # bi_directional - (optional) is a type of bool
+                  bi_directional = static_ip.value["bi_directional"]
+                  # translated_address - (required) is a type of string
                   translated_address = static_ip.value["translated_address"]
                 }
               }

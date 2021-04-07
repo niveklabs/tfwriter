@@ -223,37 +223,59 @@ variable "ftgd_dns" {
 
 ```terraform
 resource "fortios_dnsfilter_profile" "this" {
-  block_action          = var.block_action
-  block_botnet          = var.block_botnet
-  comment               = var.comment
+  # block_action - (optional) is a type of string
+  block_action = var.block_action
+  # block_botnet - (optional) is a type of string
+  block_botnet = var.block_botnet
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  log_all_domain        = var.log_all_domain
-  name                  = var.name
-  redirect_portal       = var.redirect_portal
-  redirect_portal6      = var.redirect_portal6
-  safe_search           = var.safe_search
-  sdns_domain_log       = var.sdns_domain_log
-  sdns_ftgd_err_log     = var.sdns_ftgd_err_log
-  youtube_restrict      = var.youtube_restrict
+  # log_all_domain - (optional) is a type of string
+  log_all_domain = var.log_all_domain
+  # name - (required) is a type of string
+  name = var.name
+  # redirect_portal - (optional) is a type of string
+  redirect_portal = var.redirect_portal
+  # redirect_portal6 - (optional) is a type of string
+  redirect_portal6 = var.redirect_portal6
+  # safe_search - (optional) is a type of string
+  safe_search = var.safe_search
+  # sdns_domain_log - (optional) is a type of string
+  sdns_domain_log = var.sdns_domain_log
+  # sdns_ftgd_err_log - (optional) is a type of string
+  sdns_ftgd_err_log = var.sdns_ftgd_err_log
+  # youtube_restrict - (optional) is a type of string
+  youtube_restrict = var.youtube_restrict
 
   dynamic "dns_translation" {
     for_each = var.dns_translation
     content {
+      # addr_type - (optional) is a type of string
       addr_type = dns_translation.value["addr_type"]
-      dst       = dns_translation.value["dst"]
-      dst6      = dns_translation.value["dst6"]
-      id        = dns_translation.value["id"]
-      netmask   = dns_translation.value["netmask"]
-      prefix    = dns_translation.value["prefix"]
-      src       = dns_translation.value["src"]
-      src6      = dns_translation.value["src6"]
-      status    = dns_translation.value["status"]
+      # dst - (optional) is a type of string
+      dst = dns_translation.value["dst"]
+      # dst6 - (optional) is a type of string
+      dst6 = dns_translation.value["dst6"]
+      # id - (optional) is a type of number
+      id = dns_translation.value["id"]
+      # netmask - (optional) is a type of string
+      netmask = dns_translation.value["netmask"]
+      # prefix - (optional) is a type of number
+      prefix = dns_translation.value["prefix"]
+      # src - (optional) is a type of string
+      src = dns_translation.value["src"]
+      # src6 - (optional) is a type of string
+      src6 = dns_translation.value["src6"]
+      # status - (optional) is a type of string
+      status = dns_translation.value["status"]
     }
   }
 
   dynamic "domain_filter" {
     for_each = var.domain_filter
     content {
+      # domain_filter_table - (optional) is a type of number
       domain_filter_table = domain_filter.value["domain_filter_table"]
     }
   }
@@ -261,6 +283,7 @@ resource "fortios_dnsfilter_profile" "this" {
   dynamic "external_ip_blocklist" {
     for_each = var.external_ip_blocklist
     content {
+      # name - (optional) is a type of string
       name = external_ip_blocklist.value["name"]
     }
   }
@@ -268,15 +291,20 @@ resource "fortios_dnsfilter_profile" "this" {
   dynamic "ftgd_dns" {
     for_each = var.ftgd_dns
     content {
+      # options - (optional) is a type of string
       options = ftgd_dns.value["options"]
 
       dynamic "filters" {
         for_each = ftgd_dns.value.filters
         content {
-          action   = filters.value["action"]
+          # action - (optional) is a type of string
+          action = filters.value["action"]
+          # category - (optional) is a type of number
           category = filters.value["category"]
-          id       = filters.value["id"]
-          log      = filters.value["log"]
+          # id - (optional) is a type of number
+          id = filters.value["id"]
+          # log - (optional) is a type of string
+          log = filters.value["log"]
         }
       }
 

@@ -82,18 +82,26 @@ variable "icon_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_icon" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "icon_list" {
     for_each = var.icon_list
     content {
-      file   = icon_list.value["file"]
+      # file - (optional) is a type of string
+      file = icon_list.value["file"]
+      # height - (optional) is a type of number
       height = icon_list.value["height"]
-      lang   = icon_list.value["lang"]
-      name   = icon_list.value["name"]
-      type   = icon_list.value["type"]
-      width  = icon_list.value["width"]
+      # lang - (optional) is a type of string
+      lang = icon_list.value["lang"]
+      # name - (optional) is a type of string
+      name = icon_list.value["name"]
+      # type - (optional) is a type of string
+      type = icon_list.value["type"]
+      # width - (optional) is a type of number
+      width = icon_list.value["width"]
     }
   }
 

@@ -122,16 +122,26 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_enis" "this" {
-  description        = var.description
-  ids                = var.ids
-  instance_id        = var.instance_id
-  ipv4               = var.ipv4
-  name               = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # ids - (optional) is a type of set of string
+  ids = var.ids
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # ipv4 - (optional) is a type of string
+  ipv4 = var.ipv4
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  security_group     = var.security_group
-  subnet_id          = var.subnet_id
-  tags               = var.tags
-  vpc_id             = var.vpc_id
+  # security_group - (optional) is a type of string
+  security_group = var.security_group
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

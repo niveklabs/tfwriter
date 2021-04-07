@@ -230,41 +230,68 @@ variable "response_rate_limiting" {
 
 ```terraform
 resource "thunder_slb_template_dns" "this" {
-  default_policy       = var.default_policy
+  # default_policy - (optional) is a type of string
+  default_policy = var.default_policy
+  # disable_dns_template - (optional) is a type of number
   disable_dns_template = var.disable_dns_template
+  # dnssec_service_group - (optional) is a type of string
   dnssec_service_group = var.dnssec_service_group
-  drop                 = var.drop
+  # drop - (optional) is a type of number
+  drop = var.drop
+  # enable_cache_sharing - (optional) is a type of number
   enable_cache_sharing = var.enable_cache_sharing
-  forward              = var.forward
+  # forward - (optional) is a type of string
+  forward = var.forward
+  # max_cache_entry_size - (optional) is a type of number
   max_cache_entry_size = var.max_cache_entry_size
-  max_cache_size       = var.max_cache_size
-  max_query_length     = var.max_query_length
-  name                 = var.name
-  period               = var.period
-  query_id_switch      = var.query_id_switch
+  # max_cache_size - (optional) is a type of number
+  max_cache_size = var.max_cache_size
+  # max_query_length - (optional) is a type of number
+  max_query_length = var.max_query_length
+  # name - (optional) is a type of string
+  name = var.name
+  # period - (optional) is a type of number
+  period = var.period
+  # query_id_switch - (optional) is a type of number
+  query_id_switch = var.query_id_switch
+  # redirect_to_tcp_port - (optional) is a type of number
   redirect_to_tcp_port = var.redirect_to_tcp_port
-  user_tag             = var.user_tag
-  uuid                 = var.uuid
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "class_list" {
     for_each = var.class_list
     content {
+      # name - (optional) is a type of string
       name = class_list.value["name"]
+      # uuid - (optional) is a type of string
       uuid = class_list.value["uuid"]
 
       dynamic "lid_list" {
         for_each = class_list.value.lid_list
         content {
-          action_value      = lid_list.value["action_value"]
-          conn_rate_limit   = lid_list.value["conn_rate_limit"]
-          lidnum            = lid_list.value["lidnum"]
-          lockout           = lid_list.value["lockout"]
-          log               = lid_list.value["log"]
-          log_interval      = lid_list.value["log_interval"]
+          # action_value - (optional) is a type of string
+          action_value = lid_list.value["action_value"]
+          # conn_rate_limit - (optional) is a type of number
+          conn_rate_limit = lid_list.value["conn_rate_limit"]
+          # lidnum - (optional) is a type of number
+          lidnum = lid_list.value["lidnum"]
+          # lockout - (optional) is a type of number
+          lockout = lid_list.value["lockout"]
+          # log - (optional) is a type of number
+          log = lid_list.value["log"]
+          # log_interval - (optional) is a type of number
+          log_interval = lid_list.value["log_interval"]
+          # over_limit_action - (optional) is a type of number
           over_limit_action = lid_list.value["over_limit_action"]
-          per               = lid_list.value["per"]
-          user_tag          = lid_list.value["user_tag"]
-          uuid              = lid_list.value["uuid"]
+          # per - (optional) is a type of number
+          per = lid_list.value["per"]
+          # user_tag - (optional) is a type of string
+          user_tag = lid_list.value["user_tag"]
+          # uuid - (optional) is a type of string
+          uuid = lid_list.value["uuid"]
         }
       }
 
@@ -274,13 +301,20 @@ resource "thunder_slb_template_dns" "this" {
   dynamic "response_rate_limiting" {
     for_each = var.response_rate_limiting
     content {
-      action               = response_rate_limiting.value["action"]
-      enable_log           = response_rate_limiting.value["enable_log"]
+      # action - (optional) is a type of string
+      action = response_rate_limiting.value["action"]
+      # enable_log - (optional) is a type of number
+      enable_log = response_rate_limiting.value["enable_log"]
+      # filter_response_rate - (optional) is a type of number
       filter_response_rate = response_rate_limiting.value["filter_response_rate"]
-      response_rate        = response_rate_limiting.value["response_rate"]
-      slip_rate            = response_rate_limiting.value["slip_rate"]
-      uuid                 = response_rate_limiting.value["uuid"]
-      window               = response_rate_limiting.value["window"]
+      # response_rate - (optional) is a type of number
+      response_rate = response_rate_limiting.value["response_rate"]
+      # slip_rate - (optional) is a type of number
+      slip_rate = response_rate_limiting.value["slip_rate"]
+      # uuid - (optional) is a type of string
+      uuid = response_rate_limiting.value["uuid"]
+      # window - (optional) is a type of number
+      window = response_rate_limiting.value["window"]
     }
   }
 

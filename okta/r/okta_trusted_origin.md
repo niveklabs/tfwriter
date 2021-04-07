@@ -71,9 +71,13 @@ variable "scopes" {
 
 ```terraform
 resource "okta_trusted_origin" "this" {
+  # active - (optional) is a type of bool
   active = var.active
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # origin - (required) is a type of string
   origin = var.origin
+  # scopes - (required) is a type of list of string
   scopes = var.scopes
 }
 ```

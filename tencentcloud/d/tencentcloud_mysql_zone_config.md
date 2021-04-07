@@ -58,7 +58,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_mysql_zone_config" "this" {
-  region             = var.region
+  # region - (optional) is a type of string
+  region = var.region
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

@@ -65,9 +65,12 @@ variable "type" {
 
 ```terraform
 resource "fortios_system_setting_ntp" "this" {
+  # ntpserver - (optional) is a type of list of string
   ntpserver = var.ntpserver
-  ntpsync   = var.ntpsync
-  type      = var.type
+  # ntpsync - (optional) is a type of string
+  ntpsync = var.ntpsync
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

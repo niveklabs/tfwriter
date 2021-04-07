@@ -78,11 +78,16 @@ variable "protocol" {
 
 ```terraform
 resource "aviatrix_fqdn_tag_rule" "this" {
-  action        = var.action
-  fqdn          = var.fqdn
+  # action - (optional) is a type of string
+  action = var.action
+  # fqdn - (required) is a type of string
+  fqdn = var.fqdn
+  # fqdn_tag_name - (required) is a type of string
   fqdn_tag_name = var.fqdn_tag_name
-  port          = var.port
-  protocol      = var.protocol
+  # port - (required) is a type of string
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
 }
 ```
 

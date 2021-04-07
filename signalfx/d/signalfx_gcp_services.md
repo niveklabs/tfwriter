@@ -60,6 +60,7 @@ data "signalfx_gcp_services" "this" {
   dynamic "services" {
     for_each = var.services
     content {
+      # name - (required) is a type of string
       name = services.value["name"]
     }
   }

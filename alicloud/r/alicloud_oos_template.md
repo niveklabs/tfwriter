@@ -80,11 +80,16 @@ variable "version_name" {
 
 ```terraform
 resource "alicloud_oos_template" "this" {
+  # auto_delete_executions - (optional) is a type of bool
   auto_delete_executions = var.auto_delete_executions
-  content                = var.content
-  tags                   = var.tags
-  template_name          = var.template_name
-  version_name           = var.version_name
+  # content - (required) is a type of string
+  content = var.content
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_name - (required) is a type of string
+  template_name = var.template_name
+  # version_name - (optional) is a type of string
+  version_name = var.version_name
 }
 ```
 

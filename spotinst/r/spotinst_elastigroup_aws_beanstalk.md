@@ -209,28 +209,43 @@ variable "scheduled_task" {
 
 ```terraform
 resource "spotinst_elastigroup_aws_beanstalk" "this" {
-  beanstalk_environment_id   = var.beanstalk_environment_id
+  # beanstalk_environment_id - (optional) is a type of string
+  beanstalk_environment_id = var.beanstalk_environment_id
+  # beanstalk_environment_name - (optional) is a type of string
   beanstalk_environment_name = var.beanstalk_environment_name
-  desired_capacity           = var.desired_capacity
-  instance_types_spot        = var.instance_types_spot
-  maintenance                = var.maintenance
-  max_size                   = var.max_size
-  min_size                   = var.min_size
-  name                       = var.name
-  product                    = var.product
-  region                     = var.region
+  # desired_capacity - (required) is a type of number
+  desired_capacity = var.desired_capacity
+  # instance_types_spot - (required) is a type of list of string
+  instance_types_spot = var.instance_types_spot
+  # maintenance - (optional) is a type of string
+  maintenance = var.maintenance
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # product - (required) is a type of string
+  product = var.product
+  # region - (required) is a type of string
+  region = var.region
 
   dynamic "deployment_preferences" {
     for_each = var.deployment_preferences
     content {
-      automatic_roll        = deployment_preferences.value["automatic_roll"]
+      # automatic_roll - (optional) is a type of bool
+      automatic_roll = deployment_preferences.value["automatic_roll"]
+      # batch_size_percentage - (optional) is a type of number
       batch_size_percentage = deployment_preferences.value["batch_size_percentage"]
-      grace_period          = deployment_preferences.value["grace_period"]
+      # grace_period - (optional) is a type of number
+      grace_period = deployment_preferences.value["grace_period"]
 
       dynamic "strategy" {
         for_each = deployment_preferences.value.strategy
         content {
-          action                 = strategy.value["action"]
+          # action - (optional) is a type of string
+          action = strategy.value["action"]
+          # should_drain_instances - (optional) is a type of bool
           should_drain_instances = strategy.value["should_drain_instances"]
         }
       }
@@ -245,8 +260,11 @@ resource "spotinst_elastigroup_aws_beanstalk" "this" {
       dynamic "platform_update" {
         for_each = managed_actions.value.platform_update
         content {
-          perform_at   = platform_update.value["perform_at"]
-          time_window  = platform_update.value["time_window"]
+          # perform_at - (optional) is a type of string
+          perform_at = platform_update.value["perform_at"]
+          # time_window - (optional) is a type of string
+          time_window = platform_update.value["time_window"]
+          # update_level - (optional) is a type of string
           update_level = platform_update.value["update_level"]
         }
       }
@@ -257,21 +275,36 @@ resource "spotinst_elastigroup_aws_beanstalk" "this" {
   dynamic "scheduled_task" {
     for_each = var.scheduled_task
     content {
-      adjustment            = scheduled_task.value["adjustment"]
+      # adjustment - (optional) is a type of string
+      adjustment = scheduled_task.value["adjustment"]
+      # adjustment_percentage - (optional) is a type of string
       adjustment_percentage = scheduled_task.value["adjustment_percentage"]
+      # batch_size_percentage - (optional) is a type of string
       batch_size_percentage = scheduled_task.value["batch_size_percentage"]
-      cron_expression       = scheduled_task.value["cron_expression"]
-      frequency             = scheduled_task.value["frequency"]
-      grace_period          = scheduled_task.value["grace_period"]
-      is_enabled            = scheduled_task.value["is_enabled"]
-      max_capacity          = scheduled_task.value["max_capacity"]
-      min_capacity          = scheduled_task.value["min_capacity"]
-      scale_max_capacity    = scheduled_task.value["scale_max_capacity"]
-      scale_min_capacity    = scheduled_task.value["scale_min_capacity"]
+      # cron_expression - (optional) is a type of string
+      cron_expression = scheduled_task.value["cron_expression"]
+      # frequency - (optional) is a type of string
+      frequency = scheduled_task.value["frequency"]
+      # grace_period - (optional) is a type of string
+      grace_period = scheduled_task.value["grace_period"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = scheduled_task.value["is_enabled"]
+      # max_capacity - (optional) is a type of string
+      max_capacity = scheduled_task.value["max_capacity"]
+      # min_capacity - (optional) is a type of string
+      min_capacity = scheduled_task.value["min_capacity"]
+      # scale_max_capacity - (optional) is a type of string
+      scale_max_capacity = scheduled_task.value["scale_max_capacity"]
+      # scale_min_capacity - (optional) is a type of string
+      scale_min_capacity = scheduled_task.value["scale_min_capacity"]
+      # scale_target_capacity - (optional) is a type of string
       scale_target_capacity = scheduled_task.value["scale_target_capacity"]
-      start_time            = scheduled_task.value["start_time"]
-      target_capacity       = scheduled_task.value["target_capacity"]
-      task_type             = scheduled_task.value["task_type"]
+      # start_time - (optional) is a type of string
+      start_time = scheduled_task.value["start_time"]
+      # target_capacity - (optional) is a type of string
+      target_capacity = scheduled_task.value["target_capacity"]
+      # task_type - (required) is a type of string
+      task_type = scheduled_task.value["task_type"]
     }
   }
 

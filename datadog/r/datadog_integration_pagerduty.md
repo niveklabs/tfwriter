@@ -89,15 +89,21 @@ variable "services" {
 
 ```terraform
 resource "datadog_integration_pagerduty" "this" {
-  api_token           = var.api_token
+  # api_token - (optional) is a type of string
+  api_token = var.api_token
+  # individual_services - (optional) is a type of bool
   individual_services = var.individual_services
-  schedules           = var.schedules
-  subdomain           = var.subdomain
+  # schedules - (optional) is a type of list of string
+  schedules = var.schedules
+  # subdomain - (required) is a type of string
+  subdomain = var.subdomain
 
   dynamic "services" {
     for_each = var.services
     content {
-      service_key  = services.value["service_key"]
+      # service_key - (required) is a type of string
+      service_key = services.value["service_key"]
+      # service_name - (required) is a type of string
       service_name = services.value["service_name"]
     }
   }

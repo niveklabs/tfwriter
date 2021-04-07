@@ -153,45 +153,75 @@ variable "notification" {
 
 ```terraform
 resource "mongodbatlas_alert_configuration" "this" {
-  enabled          = var.enabled
-  event_type       = var.event_type
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # event_type - (required) is a type of string
+  event_type = var.event_type
+  # metric_threshold - (optional) is a type of map of string
   metric_threshold = var.metric_threshold
-  project_id       = var.project_id
-  threshold        = var.threshold
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # threshold - (optional) is a type of map of string
+  threshold = var.threshold
 
   dynamic "matcher" {
     for_each = var.matcher
     content {
+      # field_name - (optional) is a type of string
       field_name = matcher.value["field_name"]
-      operator   = matcher.value["operator"]
-      value      = matcher.value["value"]
+      # operator - (optional) is a type of string
+      operator = matcher.value["operator"]
+      # value - (optional) is a type of string
+      value = matcher.value["value"]
     }
   }
 
   dynamic "notification" {
     for_each = var.notification
     content {
-      api_token              = notification.value["api_token"]
-      channel_name           = notification.value["channel_name"]
-      datadog_api_key        = notification.value["datadog_api_key"]
-      datadog_region         = notification.value["datadog_region"]
-      delay_min              = notification.value["delay_min"]
-      email_address          = notification.value["email_address"]
-      email_enabled          = notification.value["email_enabled"]
-      flow_name              = notification.value["flow_name"]
-      flowdock_api_token     = notification.value["flowdock_api_token"]
-      interval_min           = notification.value["interval_min"]
-      mobile_number          = notification.value["mobile_number"]
-      ops_genie_api_key      = notification.value["ops_genie_api_key"]
-      ops_genie_region       = notification.value["ops_genie_region"]
-      org_name               = notification.value["org_name"]
-      roles                  = notification.value["roles"]
-      service_key            = notification.value["service_key"]
-      sms_enabled            = notification.value["sms_enabled"]
-      team_id                = notification.value["team_id"]
-      type_name              = notification.value["type_name"]
-      username               = notification.value["username"]
-      victor_ops_api_key     = notification.value["victor_ops_api_key"]
+      # api_token - (optional) is a type of string
+      api_token = notification.value["api_token"]
+      # channel_name - (optional) is a type of string
+      channel_name = notification.value["channel_name"]
+      # datadog_api_key - (optional) is a type of string
+      datadog_api_key = notification.value["datadog_api_key"]
+      # datadog_region - (optional) is a type of string
+      datadog_region = notification.value["datadog_region"]
+      # delay_min - (optional) is a type of number
+      delay_min = notification.value["delay_min"]
+      # email_address - (optional) is a type of string
+      email_address = notification.value["email_address"]
+      # email_enabled - (optional) is a type of bool
+      email_enabled = notification.value["email_enabled"]
+      # flow_name - (optional) is a type of string
+      flow_name = notification.value["flow_name"]
+      # flowdock_api_token - (optional) is a type of string
+      flowdock_api_token = notification.value["flowdock_api_token"]
+      # interval_min - (optional) is a type of number
+      interval_min = notification.value["interval_min"]
+      # mobile_number - (optional) is a type of string
+      mobile_number = notification.value["mobile_number"]
+      # ops_genie_api_key - (optional) is a type of string
+      ops_genie_api_key = notification.value["ops_genie_api_key"]
+      # ops_genie_region - (optional) is a type of string
+      ops_genie_region = notification.value["ops_genie_region"]
+      # org_name - (optional) is a type of string
+      org_name = notification.value["org_name"]
+      # roles - (optional) is a type of list of string
+      roles = notification.value["roles"]
+      # service_key - (optional) is a type of string
+      service_key = notification.value["service_key"]
+      # sms_enabled - (optional) is a type of bool
+      sms_enabled = notification.value["sms_enabled"]
+      # team_id - (optional) is a type of string
+      team_id = notification.value["team_id"]
+      # type_name - (optional) is a type of string
+      type_name = notification.value["type_name"]
+      # username - (optional) is a type of string
+      username = notification.value["username"]
+      # victor_ops_api_key - (optional) is a type of string
+      victor_ops_api_key = notification.value["victor_ops_api_key"]
+      # victor_ops_routing_key - (optional) is a type of string
       victor_ops_routing_key = notification.value["victor_ops_routing_key"]
     }
   }

@@ -80,11 +80,16 @@ variable "service_name" {
 
 ```terraform
 data "alicloud_fc_triggers" "this" {
+  # function_name - (required) is a type of string
   function_name = var.function_name
-  ids           = var.ids
-  name_regex    = var.name_regex
-  output_file   = var.output_file
-  service_name  = var.service_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 }
 ```
 

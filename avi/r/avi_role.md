@@ -81,15 +81,20 @@ variable "privileges" {
 
 ```terraform
 resource "avi_role" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "privileges" {
     for_each = var.privileges
     content {
+      # resource - (optional) is a type of string
       resource = privileges.value["resource"]
-      type     = privileges.value["type"]
+      # type - (optional) is a type of string
+      type = privileges.value["type"]
     }
   }
 

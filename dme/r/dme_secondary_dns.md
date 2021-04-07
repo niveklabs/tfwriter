@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "dme_secondary_dns" "this" {
+  # folder_id - (optional) is a type of string
   folder_id = var.folder_id
-  ipset_id  = var.ipset_id
-  name      = var.name
+  # ipset_id - (required) is a type of string
+  ipset_id = var.ipset_id
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

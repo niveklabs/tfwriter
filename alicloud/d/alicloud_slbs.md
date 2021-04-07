@@ -130,17 +130,28 @@ variable "vswitch_id" {
 
 ```terraform
 data "alicloud_slbs" "this" {
-  address                  = var.address
-  ids                      = var.ids
+  # address - (optional) is a type of string
+  address = var.address
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # master_availability_zone - (optional) is a type of string
   master_availability_zone = var.master_availability_zone
-  name_regex               = var.name_regex
-  network_type             = var.network_type
-  output_file              = var.output_file
-  resource_group_id        = var.resource_group_id
-  slave_availability_zone  = var.slave_availability_zone
-  tags                     = var.tags
-  vpc_id                   = var.vpc_id
-  vswitch_id               = var.vswitch_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # slave_availability_zone - (optional) is a type of string
+  slave_availability_zone = var.slave_availability_zone
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

@@ -65,8 +65,11 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_edas_deploy_groups" "this" {
-  app_id      = var.app_id
-  name_regex  = var.name_regex
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

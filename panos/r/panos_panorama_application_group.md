@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "panos_panorama_application_group" "this" {
+  # applications - (optional) is a type of list of string
   applications = var.applications
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

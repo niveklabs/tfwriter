@@ -81,11 +81,16 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_access_mutual_tls_certificate" "this" {
-  account_id           = var.account_id
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # associated_hostnames - (optional) is a type of list of string
   associated_hostnames = var.associated_hostnames
-  certificate          = var.certificate
-  name                 = var.name
-  zone_id              = var.zone_id
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # name - (required) is a type of string
+  name = var.name
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

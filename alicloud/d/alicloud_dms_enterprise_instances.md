@@ -122,16 +122,26 @@ variable "tid" {
 
 ```terraform
 data "alicloud_dms_enterprise_instances" "this" {
-  env_type             = var.env_type
+  # env_type - (optional) is a type of string
+  env_type = var.env_type
+  # instance_alias_regex - (optional) is a type of string
   instance_alias_regex = var.instance_alias_regex
-  instance_source      = var.instance_source
-  instance_type        = var.instance_type
-  name_regex           = var.name_regex
-  net_type             = var.net_type
-  output_file          = var.output_file
-  search_key           = var.search_key
-  status               = var.status
-  tid                  = var.tid
+  # instance_source - (optional) is a type of string
+  instance_source = var.instance_source
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # net_type - (optional) is a type of string
+  net_type = var.net_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # search_key - (optional) is a type of string
+  search_key = var.search_key
+  # status - (optional) is a type of string
+  status = var.status
+  # tid - (optional) is a type of number
+  tid = var.tid
 }
 ```
 

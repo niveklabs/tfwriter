@@ -80,13 +80,17 @@ variable "region" {
 
 ```terraform
 resource "fortios_firewall_country" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "region" {
     for_each = var.region
     content {
+      # id - (optional) is a type of number
       id = region.value["id"]
     }
   }

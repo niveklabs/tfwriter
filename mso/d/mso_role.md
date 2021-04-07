@@ -81,10 +81,15 @@ variable "write_permissions" {
 
 ```terraform
 data "mso_role" "this" {
-  description       = var.description
-  display_name      = var.display_name
-  name              = var.name
-  read_permissions  = var.read_permissions
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # name - (required) is a type of string
+  name = var.name
+  # read_permissions - (optional) is a type of list of string
+  read_permissions = var.read_permissions
+  # write_permissions - (optional) is a type of list of string
   write_permissions = var.write_permissions
 }
 ```

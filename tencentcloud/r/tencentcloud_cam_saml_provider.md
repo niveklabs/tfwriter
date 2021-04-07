@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "tencentcloud_cam_saml_provider" "this" {
+  # description - (required) is a type of string
   description = var.description
-  meta_data   = var.meta_data
-  name        = var.name
+  # meta_data - (required) is a type of string
+  meta_data = var.meta_data
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

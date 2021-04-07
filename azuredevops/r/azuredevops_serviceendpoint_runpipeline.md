@@ -114,15 +114,21 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_runpipeline" "this" {
-  authorization         = var.authorization
-  description           = var.description
-  organization_name     = var.organization_name
-  project_id            = var.project_id
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # description - (optional) is a type of string
+  description = var.description
+  # organization_name - (required) is a type of string
+  organization_name = var.organization_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
 
   dynamic "auth_personal" {
     for_each = var.auth_personal
     content {
+      # personal_access_token - (required) is a type of string
       personal_access_token = auth_personal.value["personal_access_token"]
     }
   }
@@ -130,9 +136,13 @@ resource "azuredevops_serviceendpoint_runpipeline" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

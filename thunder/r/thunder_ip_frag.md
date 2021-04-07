@@ -112,23 +112,31 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_ip_frag" "this" {
-  buff                       = var.buff
+  # buff - (optional) is a type of number
+  buff = var.buff
+  # max_packets_per_reassembly - (optional) is a type of number
   max_packets_per_reassembly = var.max_packets_per_reassembly
-  max_reassembly_sessions    = var.max_reassembly_sessions
-  timeout                    = var.timeout
-  uuid                       = var.uuid
+  # max_reassembly_sessions - (optional) is a type of number
+  max_reassembly_sessions = var.max_reassembly_sessions
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "cpu_threshold" {
     for_each = var.cpu_threshold
     content {
+      # high - (optional) is a type of number
       high = cpu_threshold.value["high"]
-      low  = cpu_threshold.value["low"]
+      # low - (optional) is a type of number
+      low = cpu_threshold.value["low"]
     }
   }
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

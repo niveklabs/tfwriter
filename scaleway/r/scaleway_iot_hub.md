@@ -120,16 +120,26 @@ variable "region" {
 
 ```terraform
 resource "scaleway_iot_hub" "this" {
+  # device_auto_provisioning - (optional) is a type of bool
   device_auto_provisioning = var.device_auto_provisioning
-  disable_events           = var.disable_events
-  enabled                  = var.enabled
-  events_topic_prefix      = var.events_topic_prefix
-  hub_ca                   = var.hub_ca
-  hub_ca_challenge         = var.hub_ca_challenge
-  name                     = var.name
-  product_plan             = var.product_plan
-  project_id               = var.project_id
-  region                   = var.region
+  # disable_events - (optional) is a type of bool
+  disable_events = var.disable_events
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # events_topic_prefix - (optional) is a type of string
+  events_topic_prefix = var.events_topic_prefix
+  # hub_ca - (optional) is a type of string
+  hub_ca = var.hub_ca
+  # hub_ca_challenge - (optional) is a type of string
+  hub_ca_challenge = var.hub_ca_challenge
+  # name - (required) is a type of string
+  name = var.name
+  # product_plan - (required) is a type of string
+  product_plan = var.product_plan
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

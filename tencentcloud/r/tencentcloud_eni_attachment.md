@@ -56,7 +56,9 @@ variable "instance_id" {
 
 ```terraform
 resource "tencentcloud_eni_attachment" "this" {
-  eni_id      = var.eni_id
+  # eni_id - (required) is a type of string
+  eni_id = var.eni_id
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 }
 ```

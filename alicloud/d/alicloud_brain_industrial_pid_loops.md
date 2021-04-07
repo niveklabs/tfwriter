@@ -97,13 +97,20 @@ variable "status" {
 
 ```terraform
 data "alicloud_brain_industrial_pid_loops" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  pid_loop_name  = var.pid_loop_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # pid_loop_name - (optional) is a type of string
+  pid_loop_name = var.pid_loop_name
+  # pid_project_id - (required) is a type of string
   pid_project_id = var.pid_project_id
-  status         = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

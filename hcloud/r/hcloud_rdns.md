@@ -72,10 +72,14 @@ variable "server_id" {
 
 ```terraform
 resource "hcloud_rdns" "this" {
-  dns_ptr        = var.dns_ptr
+  # dns_ptr - (required) is a type of string
+  dns_ptr = var.dns_ptr
+  # floating_ip_id - (optional) is a type of number
   floating_ip_id = var.floating_ip_id
-  ip_address     = var.ip_address
-  server_id      = var.server_id
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # server_id - (optional) is a type of number
+  server_id = var.server_id
 }
 ```
 

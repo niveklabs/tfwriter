@@ -65,9 +65,12 @@ variable "state" {
 
 ```terraform
 resource "sumologic_field" "this" {
-  data_type  = var.data_type
+  # data_type - (optional) is a type of string
+  data_type = var.data_type
+  # field_name - (required) is a type of string
   field_name = var.field_name
-  state      = var.state
+  # state - (optional) is a type of string
+  state = var.state
 }
 ```
 

@@ -65,9 +65,12 @@ variable "region" {
 
 ```terraform
 resource "digitalocean_floating_ip" "this" {
+  # droplet_id - (optional) is a type of number
   droplet_id = var.droplet_id
+  # ip_address - (optional) is a type of string
   ip_address = var.ip_address
-  region     = var.region
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

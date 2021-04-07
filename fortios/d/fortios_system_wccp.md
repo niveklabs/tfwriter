@@ -49,6 +49,7 @@ variable "service_id" {
 
 ```terraform
 data "fortios_system_wccp" "this" {
+  # service_id - (required) is a type of string
   service_id = var.service_id
 }
 ```

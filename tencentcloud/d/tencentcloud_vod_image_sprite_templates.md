@@ -74,10 +74,14 @@ variable "type" {
 
 ```terraform
 data "tencentcloud_vod_image_sprite_templates" "this" {
-  definition         = var.definition
+  # definition - (optional) is a type of string
+  definition = var.definition
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  sub_app_id         = var.sub_app_id
-  type               = var.type
+  # sub_app_id - (optional) is a type of number
+  sub_app_id = var.sub_app_id
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

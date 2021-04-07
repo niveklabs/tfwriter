@@ -49,6 +49,7 @@ variable "username" {
 
 ```terraform
 resource "github_organization_block" "this" {
+  # username - (required) is a type of string
   username = var.username
 }
 ```

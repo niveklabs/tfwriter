@@ -64,8 +64,11 @@ variable "post_url" {
 
 ```terraform
 resource "signalfx_victor_ops_integration" "this" {
-  enabled  = var.enabled
-  name     = var.name
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # post_url - (optional) is a type of string
   post_url = var.post_url
 }
 ```

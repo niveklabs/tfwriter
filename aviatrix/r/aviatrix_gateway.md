@@ -531,68 +531,130 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_gateway" "this" {
-  account_name                                = var.account_name
-  additional_cidrs                            = var.additional_cidrs
-  additional_cidrs_designated_gateway         = var.additional_cidrs_designated_gateway
-  allocate_new_eip                            = var.allocate_new_eip
-  cloud_type                                  = var.cloud_type
-  customer_managed_keys                       = var.customer_managed_keys
-  duo_api_hostname                            = var.duo_api_hostname
-  duo_integration_key                         = var.duo_integration_key
-  duo_push_mode                               = var.duo_push_mode
-  duo_secret_key                              = var.duo_secret_key
-  eip                                         = var.eip
-  elb_name                                    = var.elb_name
-  enable_designated_gateway                   = var.enable_designated_gateway
-  enable_elb                                  = var.enable_elb
-  enable_encrypt_volume                       = var.enable_encrypt_volume
-  enable_jumbo_frame                          = var.enable_jumbo_frame
-  enable_ldap                                 = var.enable_ldap
-  enable_monitor_gateway_subnets              = var.enable_monitor_gateway_subnets
-  enable_public_subnet_filtering              = var.enable_public_subnet_filtering
-  enable_vpc_dns_server                       = var.enable_vpc_dns_server
-  enable_vpn_nat                              = var.enable_vpn_nat
-  fqdn_lan_cidr                               = var.fqdn_lan_cidr
-  fqdn_lan_vpc_id                             = var.fqdn_lan_vpc_id
-  gw_name                                     = var.gw_name
-  gw_size                                     = var.gw_size
-  idle_timeout                                = var.idle_timeout
-  insane_mode                                 = var.insane_mode
-  insane_mode_az                              = var.insane_mode_az
-  ldap_base_dn                                = var.ldap_base_dn
-  ldap_bind_dn                                = var.ldap_bind_dn
-  ldap_password                               = var.ldap_password
-  ldap_server                                 = var.ldap_server
-  ldap_username_attribute                     = var.ldap_username_attribute
-  max_vpn_conn                                = var.max_vpn_conn
-  monitor_exclude_list                        = var.monitor_exclude_list
-  name_servers                                = var.name_servers
-  okta_token                                  = var.okta_token
-  okta_url                                    = var.okta_url
-  okta_username_suffix                        = var.okta_username_suffix
-  otp_mode                                    = var.otp_mode
-  peering_ha_eip                              = var.peering_ha_eip
-  peering_ha_gw_size                          = var.peering_ha_gw_size
-  peering_ha_insane_mode_az                   = var.peering_ha_insane_mode_az
-  peering_ha_subnet                           = var.peering_ha_subnet
-  peering_ha_zone                             = var.peering_ha_zone
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # additional_cidrs - (optional) is a type of string
+  additional_cidrs = var.additional_cidrs
+  # additional_cidrs_designated_gateway - (optional) is a type of string
+  additional_cidrs_designated_gateway = var.additional_cidrs_designated_gateway
+  # allocate_new_eip - (optional) is a type of bool
+  allocate_new_eip = var.allocate_new_eip
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # customer_managed_keys - (optional) is a type of string
+  customer_managed_keys = var.customer_managed_keys
+  # duo_api_hostname - (optional) is a type of string
+  duo_api_hostname = var.duo_api_hostname
+  # duo_integration_key - (optional) is a type of string
+  duo_integration_key = var.duo_integration_key
+  # duo_push_mode - (optional) is a type of string
+  duo_push_mode = var.duo_push_mode
+  # duo_secret_key - (optional) is a type of string
+  duo_secret_key = var.duo_secret_key
+  # eip - (optional) is a type of string
+  eip = var.eip
+  # elb_name - (optional) is a type of string
+  elb_name = var.elb_name
+  # enable_designated_gateway - (optional) is a type of bool
+  enable_designated_gateway = var.enable_designated_gateway
+  # enable_elb - (optional) is a type of bool
+  enable_elb = var.enable_elb
+  # enable_encrypt_volume - (optional) is a type of bool
+  enable_encrypt_volume = var.enable_encrypt_volume
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = var.enable_jumbo_frame
+  # enable_ldap - (optional) is a type of bool
+  enable_ldap = var.enable_ldap
+  # enable_monitor_gateway_subnets - (optional) is a type of bool
+  enable_monitor_gateway_subnets = var.enable_monitor_gateway_subnets
+  # enable_public_subnet_filtering - (optional) is a type of bool
+  enable_public_subnet_filtering = var.enable_public_subnet_filtering
+  # enable_vpc_dns_server - (optional) is a type of bool
+  enable_vpc_dns_server = var.enable_vpc_dns_server
+  # enable_vpn_nat - (optional) is a type of bool
+  enable_vpn_nat = var.enable_vpn_nat
+  # fqdn_lan_cidr - (optional) is a type of string
+  fqdn_lan_cidr = var.fqdn_lan_cidr
+  # fqdn_lan_vpc_id - (optional) is a type of string
+  fqdn_lan_vpc_id = var.fqdn_lan_vpc_id
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # gw_size - (required) is a type of string
+  gw_size = var.gw_size
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # insane_mode - (optional) is a type of bool
+  insane_mode = var.insane_mode
+  # insane_mode_az - (optional) is a type of string
+  insane_mode_az = var.insane_mode_az
+  # ldap_base_dn - (optional) is a type of string
+  ldap_base_dn = var.ldap_base_dn
+  # ldap_bind_dn - (optional) is a type of string
+  ldap_bind_dn = var.ldap_bind_dn
+  # ldap_password - (optional) is a type of string
+  ldap_password = var.ldap_password
+  # ldap_server - (optional) is a type of string
+  ldap_server = var.ldap_server
+  # ldap_username_attribute - (optional) is a type of string
+  ldap_username_attribute = var.ldap_username_attribute
+  # max_vpn_conn - (optional) is a type of string
+  max_vpn_conn = var.max_vpn_conn
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = var.monitor_exclude_list
+  # name_servers - (optional) is a type of string
+  name_servers = var.name_servers
+  # okta_token - (optional) is a type of string
+  okta_token = var.okta_token
+  # okta_url - (optional) is a type of string
+  okta_url = var.okta_url
+  # okta_username_suffix - (optional) is a type of string
+  okta_username_suffix = var.okta_username_suffix
+  # otp_mode - (optional) is a type of string
+  otp_mode = var.otp_mode
+  # peering_ha_eip - (optional) is a type of string
+  peering_ha_eip = var.peering_ha_eip
+  # peering_ha_gw_size - (optional) is a type of string
+  peering_ha_gw_size = var.peering_ha_gw_size
+  # peering_ha_insane_mode_az - (optional) is a type of string
+  peering_ha_insane_mode_az = var.peering_ha_insane_mode_az
+  # peering_ha_subnet - (optional) is a type of string
+  peering_ha_subnet = var.peering_ha_subnet
+  # peering_ha_zone - (optional) is a type of string
+  peering_ha_zone = var.peering_ha_zone
+  # public_subnet_filtering_guard_duty_enforced - (optional) is a type of bool
   public_subnet_filtering_guard_duty_enforced = var.public_subnet_filtering_guard_duty_enforced
-  public_subnet_filtering_ha_route_tables     = var.public_subnet_filtering_ha_route_tables
-  public_subnet_filtering_route_tables        = var.public_subnet_filtering_route_tables
-  renegotiation_interval                      = var.renegotiation_interval
-  saml_enabled                                = var.saml_enabled
-  search_domains                              = var.search_domains
-  single_az_ha                                = var.single_az_ha
-  single_ip_snat                              = var.single_ip_snat
-  split_tunnel                                = var.split_tunnel
-  subnet                                      = var.subnet
-  tag_list                                    = var.tag_list
-  vpc_id                                      = var.vpc_id
-  vpc_reg                                     = var.vpc_reg
-  vpn_access                                  = var.vpn_access
-  vpn_cidr                                    = var.vpn_cidr
-  vpn_protocol                                = var.vpn_protocol
-  zone                                        = var.zone
+  # public_subnet_filtering_ha_route_tables - (optional) is a type of set of string
+  public_subnet_filtering_ha_route_tables = var.public_subnet_filtering_ha_route_tables
+  # public_subnet_filtering_route_tables - (optional) is a type of set of string
+  public_subnet_filtering_route_tables = var.public_subnet_filtering_route_tables
+  # renegotiation_interval - (optional) is a type of number
+  renegotiation_interval = var.renegotiation_interval
+  # saml_enabled - (optional) is a type of bool
+  saml_enabled = var.saml_enabled
+  # search_domains - (optional) is a type of string
+  search_domains = var.search_domains
+  # single_az_ha - (optional) is a type of bool
+  single_az_ha = var.single_az_ha
+  # single_ip_snat - (optional) is a type of bool
+  single_ip_snat = var.single_ip_snat
+  # split_tunnel - (optional) is a type of bool
+  split_tunnel = var.split_tunnel
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tag_list - (optional) is a type of list of string
+  tag_list = var.tag_list
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_reg - (required) is a type of string
+  vpc_reg = var.vpc_reg
+  # vpn_access - (optional) is a type of bool
+  vpn_access = var.vpn_access
+  # vpn_cidr - (optional) is a type of string
+  vpn_cidr = var.vpn_cidr
+  # vpn_protocol - (optional) is a type of string
+  vpn_protocol = var.vpn_protocol
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

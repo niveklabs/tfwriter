@@ -71,9 +71,13 @@ variable "force_status" {
 
 ```terraform
 resource "alicloud_edas_application_scale" "this" {
-  app_id       = var.app_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # deploy_group - (required) is a type of string
   deploy_group = var.deploy_group
-  ecu_info     = var.ecu_info
+  # ecu_info - (required) is a type of list of string
+  ecu_info = var.ecu_info
+  # force_status - (optional) is a type of bool
   force_status = var.force_status
 }
 ```

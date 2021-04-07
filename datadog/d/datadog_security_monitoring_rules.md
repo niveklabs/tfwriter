@@ -74,10 +74,14 @@ variable "user_only_filter" {
 
 ```terraform
 data "datadog_security_monitoring_rules" "this" {
+  # default_only_filter - (optional) is a type of bool
   default_only_filter = var.default_only_filter
-  name_filter         = var.name_filter
-  tags_filter         = var.tags_filter
-  user_only_filter    = var.user_only_filter
+  # name_filter - (optional) is a type of string
+  name_filter = var.name_filter
+  # tags_filter - (optional) is a type of list of string
+  tags_filter = var.tags_filter
+  # user_only_filter - (optional) is a type of bool
+  user_only_filter = var.user_only_filter
 }
 ```
 

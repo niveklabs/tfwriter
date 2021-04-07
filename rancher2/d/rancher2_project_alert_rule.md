@@ -64,8 +64,11 @@ variable "project_id" {
 
 ```terraform
 data "rancher2_project_alert_rule" "this" {
-  labels     = var.labels
-  name       = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

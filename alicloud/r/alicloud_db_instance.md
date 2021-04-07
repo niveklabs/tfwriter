@@ -304,40 +304,71 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_db_instance" "this" {
-  auto_renew                 = var.auto_renew
-  auto_renew_period          = var.auto_renew_period
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = var.auto_renew_period
+  # auto_upgrade_minor_version - (optional) is a type of string
   auto_upgrade_minor_version = var.auto_upgrade_minor_version
-  db_instance_storage_type   = var.db_instance_storage_type
-  encryption_key             = var.encryption_key
-  engine                     = var.engine
-  engine_version             = var.engine_version
-  force_restart              = var.force_restart
-  instance_charge_type       = var.instance_charge_type
-  instance_name              = var.instance_name
-  instance_storage           = var.instance_storage
-  instance_type              = var.instance_type
-  maintain_time              = var.maintain_time
-  monitoring_period          = var.monitoring_period
-  period                     = var.period
-  resource_group_id          = var.resource_group_id
-  security_group_id          = var.security_group_id
-  security_group_ids         = var.security_group_ids
-  security_ip_mode           = var.security_ip_mode
-  security_ips               = var.security_ips
+  # db_instance_storage_type - (optional) is a type of string
+  db_instance_storage_type = var.db_instance_storage_type
+  # encryption_key - (optional) is a type of string
+  encryption_key = var.encryption_key
+  # engine - (required) is a type of string
+  engine = var.engine
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # force_restart - (optional) is a type of bool
+  force_restart = var.force_restart
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_storage - (required) is a type of number
+  instance_storage = var.instance_storage
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # maintain_time - (optional) is a type of string
+  maintain_time = var.maintain_time
+  # monitoring_period - (optional) is a type of number
+  monitoring_period = var.monitoring_period
+  # period - (optional) is a type of number
+  period = var.period
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # security_group_ids - (optional) is a type of set of string
+  security_group_ids = var.security_group_ids
+  # security_ip_mode - (optional) is a type of string
+  security_ip_mode = var.security_ip_mode
+  # security_ips - (optional) is a type of set of string
+  security_ips = var.security_ips
+  # sql_collector_config_value - (optional) is a type of number
   sql_collector_config_value = var.sql_collector_config_value
-  sql_collector_status       = var.sql_collector_status
-  ssl_action                 = var.ssl_action
-  tags                       = var.tags
-  tde_status                 = var.tde_status
-  vswitch_id                 = var.vswitch_id
-  zone_id                    = var.zone_id
-  zone_id_slave_a            = var.zone_id_slave_a
-  zone_id_slave_b            = var.zone_id_slave_b
+  # sql_collector_status - (optional) is a type of string
+  sql_collector_status = var.sql_collector_status
+  # ssl_action - (optional) is a type of string
+  ssl_action = var.ssl_action
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tde_status - (optional) is a type of string
+  tde_status = var.tde_status
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
+  # zone_id_slave_a - (optional) is a type of string
+  zone_id_slave_a = var.zone_id_slave_a
+  # zone_id_slave_b - (optional) is a type of string
+  zone_id_slave_b = var.zone_id_slave_b
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -345,8 +376,11 @@ resource "alicloud_db_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

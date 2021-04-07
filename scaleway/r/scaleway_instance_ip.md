@@ -72,12 +72,15 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_instance_ip" "this" {
+  # project_id - (optional) is a type of string
   project_id = var.project_id
-  zone       = var.zone
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

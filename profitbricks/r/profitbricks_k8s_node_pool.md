@@ -187,24 +187,39 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_k8s_node_pool" "this" {
+  # availability_zone - (required) is a type of string
   availability_zone = var.availability_zone
-  cores_count       = var.cores_count
-  cpu_family        = var.cpu_family
-  datacenter_id     = var.datacenter_id
-  k8s_cluster_id    = var.k8s_cluster_id
-  k8s_version       = var.k8s_version
-  lans              = var.lans
-  name              = var.name
-  node_count        = var.node_count
-  public_ips        = var.public_ips
-  ram_size          = var.ram_size
-  storage_size      = var.storage_size
-  storage_type      = var.storage_type
+  # cores_count - (required) is a type of number
+  cores_count = var.cores_count
+  # cpu_family - (required) is a type of string
+  cpu_family = var.cpu_family
+  # datacenter_id - (required) is a type of string
+  datacenter_id = var.datacenter_id
+  # k8s_cluster_id - (required) is a type of string
+  k8s_cluster_id = var.k8s_cluster_id
+  # k8s_version - (required) is a type of string
+  k8s_version = var.k8s_version
+  # lans - (optional) is a type of list of number
+  lans = var.lans
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (required) is a type of number
+  node_count = var.node_count
+  # public_ips - (optional) is a type of list of string
+  public_ips = var.public_ips
+  # ram_size - (required) is a type of number
+  ram_size = var.ram_size
+  # storage_size - (required) is a type of number
+  storage_size = var.storage_size
+  # storage_type - (required) is a type of string
+  storage_type = var.storage_type
 
   dynamic "auto_scaling" {
     for_each = var.auto_scaling
     content {
+      # max_node_count - (required) is a type of number
       max_node_count = auto_scaling.value["max_node_count"]
+      # min_node_count - (required) is a type of number
       min_node_count = auto_scaling.value["min_node_count"]
     }
   }
@@ -212,18 +227,24 @@ resource "profitbricks_k8s_node_pool" "this" {
   dynamic "maintenance_window" {
     for_each = var.maintenance_window
     content {
+      # day_of_the_week - (required) is a type of string
       day_of_the_week = maintenance_window.value["day_of_the_week"]
-      time            = maintenance_window.value["time"]
+      # time - (required) is a type of string
+      time = maintenance_window.value["time"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

@@ -64,9 +64,12 @@ variable "device_id" {
 
 ```terraform
 resource "packet_bgp_session" "this" {
+  # address_family - (required) is a type of string
   address_family = var.address_family
-  default_route  = var.default_route
-  device_id      = var.device_id
+  # default_route - (optional) is a type of bool
+  default_route = var.default_route
+  # device_id - (required) is a type of string
+  device_id = var.device_id
 }
 ```
 

@@ -63,8 +63,11 @@ variable "scopes" {
 
 ```terraform
 resource "okta_app_oauth_api_scope" "this" {
+  # app_id - (required) is a type of string
   app_id = var.app_id
+  # issuer - (required) is a type of string
   issuer = var.issuer
+  # scopes - (required) is a type of list of string
   scopes = var.scopes
 }
 ```

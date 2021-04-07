@@ -90,12 +90,18 @@ variable "voice" {
 
 ```terraform
 resource "fortios_switchcontrollerinitialconfig_vlans" "this" {
+  # default_vlan - (optional) is a type of string
   default_vlan = var.default_vlan
-  nac          = var.nac
-  quarantine   = var.quarantine
-  rspan        = var.rspan
-  video        = var.video
-  voice        = var.voice
+  # nac - (optional) is a type of string
+  nac = var.nac
+  # quarantine - (optional) is a type of string
+  quarantine = var.quarantine
+  # rspan - (optional) is a type of string
+  rspan = var.rspan
+  # video - (optional) is a type of string
+  video = var.video
+  # voice - (optional) is a type of string
+  voice = var.voice
 }
 ```
 

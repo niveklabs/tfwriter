@@ -144,11 +144,16 @@ variable "quotas" {
 
 ```terraform
 resource "opennebula_group" "this" {
-  admins                = var.admins
+  # admins - (optional) is a type of list of number
+  admins = var.admins
+  # delete_on_destruction - (optional) is a type of bool
   delete_on_destruction = var.delete_on_destruction
-  name                  = var.name
-  template              = var.template
-  users                 = var.users
+  # name - (required) is a type of string
+  name = var.name
+  # template - (required) is a type of string
+  template = var.template
+  # users - (optional) is a type of list of number
+  users = var.users
 
   dynamic "quotas" {
     for_each = var.quotas
@@ -157,16 +162,21 @@ resource "opennebula_group" "this" {
       dynamic "datastore_quotas" {
         for_each = quotas.value.datastore_quotas
         content {
-          id     = datastore_quotas.value["id"]
+          # id - (required) is a type of number
+          id = datastore_quotas.value["id"]
+          # images - (optional) is a type of number
           images = datastore_quotas.value["images"]
-          size   = datastore_quotas.value["size"]
+          # size - (optional) is a type of number
+          size = datastore_quotas.value["size"]
         }
       }
 
       dynamic "image_quotas" {
         for_each = quotas.value.image_quotas
         content {
-          id          = image_quotas.value["id"]
+          # id - (required) is a type of number
+          id = image_quotas.value["id"]
+          # running_vms - (optional) is a type of number
           running_vms = image_quotas.value["running_vms"]
         }
       }
@@ -174,7 +184,9 @@ resource "opennebula_group" "this" {
       dynamic "network_quotas" {
         for_each = quotas.value.network_quotas
         content {
-          id     = network_quotas.value["id"]
+          # id - (required) is a type of number
+          id = network_quotas.value["id"]
+          # leases - (optional) is a type of number
           leases = network_quotas.value["leases"]
         }
       }
@@ -182,13 +194,20 @@ resource "opennebula_group" "this" {
       dynamic "vm_quotas" {
         for_each = quotas.value.vm_quotas
         content {
-          cpu              = vm_quotas.value["cpu"]
-          memory           = vm_quotas.value["memory"]
-          running_cpu      = vm_quotas.value["running_cpu"]
-          running_memory   = vm_quotas.value["running_memory"]
-          running_vms      = vm_quotas.value["running_vms"]
+          # cpu - (optional) is a type of number
+          cpu = vm_quotas.value["cpu"]
+          # memory - (optional) is a type of number
+          memory = vm_quotas.value["memory"]
+          # running_cpu - (optional) is a type of number
+          running_cpu = vm_quotas.value["running_cpu"]
+          # running_memory - (optional) is a type of number
+          running_memory = vm_quotas.value["running_memory"]
+          # running_vms - (optional) is a type of number
+          running_vms = vm_quotas.value["running_vms"]
+          # system_disk_size - (optional) is a type of number
           system_disk_size = vm_quotas.value["system_disk_size"]
-          vms              = vm_quotas.value["vms"]
+          # vms - (optional) is a type of number
+          vms = vm_quotas.value["vms"]
         }
       }
 

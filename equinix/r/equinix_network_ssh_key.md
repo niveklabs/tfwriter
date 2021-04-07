@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 resource "equinix_network_ssh_key" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (required) is a type of string
   public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

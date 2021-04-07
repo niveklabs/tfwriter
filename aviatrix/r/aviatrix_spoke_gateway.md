@@ -331,43 +331,80 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_spoke_gateway" "this" {
-  account_name                      = var.account_name
-  allocate_new_eip                  = var.allocate_new_eip
-  cloud_type                        = var.cloud_type
-  customer_managed_keys             = var.customer_managed_keys
-  customized_spoke_vpc_routes       = var.customized_spoke_vpc_routes
-  eip                               = var.eip
-  enable_active_mesh                = var.enable_active_mesh
-  enable_encrypt_volume             = var.enable_encrypt_volume
-  enable_jumbo_frame                = var.enable_jumbo_frame
-  enable_monitor_gateway_subnets    = var.enable_monitor_gateway_subnets
-  enable_private_oob                = var.enable_private_oob
-  enable_vpc_dns_server             = var.enable_vpc_dns_server
-  filtered_spoke_vpc_routes         = var.filtered_spoke_vpc_routes
-  gw_name                           = var.gw_name
-  gw_size                           = var.gw_size
-  ha_eip                            = var.ha_eip
-  ha_gw_size                        = var.ha_gw_size
-  ha_insane_mode_az                 = var.ha_insane_mode_az
-  ha_oob_availability_zone          = var.ha_oob_availability_zone
-  ha_oob_management_subnet          = var.ha_oob_management_subnet
-  ha_subnet                         = var.ha_subnet
-  ha_zone                           = var.ha_zone
-  included_advertised_spoke_routes  = var.included_advertised_spoke_routes
-  insane_mode                       = var.insane_mode
-  insane_mode_az                    = var.insane_mode_az
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # allocate_new_eip - (optional) is a type of bool
+  allocate_new_eip = var.allocate_new_eip
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # customer_managed_keys - (optional) is a type of string
+  customer_managed_keys = var.customer_managed_keys
+  # customized_spoke_vpc_routes - (optional) is a type of string
+  customized_spoke_vpc_routes = var.customized_spoke_vpc_routes
+  # eip - (optional) is a type of string
+  eip = var.eip
+  # enable_active_mesh - (optional) is a type of bool
+  enable_active_mesh = var.enable_active_mesh
+  # enable_encrypt_volume - (optional) is a type of bool
+  enable_encrypt_volume = var.enable_encrypt_volume
+  # enable_jumbo_frame - (optional) is a type of bool
+  enable_jumbo_frame = var.enable_jumbo_frame
+  # enable_monitor_gateway_subnets - (optional) is a type of bool
+  enable_monitor_gateway_subnets = var.enable_monitor_gateway_subnets
+  # enable_private_oob - (optional) is a type of bool
+  enable_private_oob = var.enable_private_oob
+  # enable_vpc_dns_server - (optional) is a type of bool
+  enable_vpc_dns_server = var.enable_vpc_dns_server
+  # filtered_spoke_vpc_routes - (optional) is a type of string
+  filtered_spoke_vpc_routes = var.filtered_spoke_vpc_routes
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # gw_size - (required) is a type of string
+  gw_size = var.gw_size
+  # ha_eip - (optional) is a type of string
+  ha_eip = var.ha_eip
+  # ha_gw_size - (optional) is a type of string
+  ha_gw_size = var.ha_gw_size
+  # ha_insane_mode_az - (optional) is a type of string
+  ha_insane_mode_az = var.ha_insane_mode_az
+  # ha_oob_availability_zone - (optional) is a type of string
+  ha_oob_availability_zone = var.ha_oob_availability_zone
+  # ha_oob_management_subnet - (optional) is a type of string
+  ha_oob_management_subnet = var.ha_oob_management_subnet
+  # ha_subnet - (optional) is a type of string
+  ha_subnet = var.ha_subnet
+  # ha_zone - (optional) is a type of string
+  ha_zone = var.ha_zone
+  # included_advertised_spoke_routes - (optional) is a type of string
+  included_advertised_spoke_routes = var.included_advertised_spoke_routes
+  # insane_mode - (optional) is a type of bool
+  insane_mode = var.insane_mode
+  # insane_mode_az - (optional) is a type of string
+  insane_mode_az = var.insane_mode_az
+  # manage_transit_gateway_attachment - (optional) is a type of bool
   manage_transit_gateway_attachment = var.manage_transit_gateway_attachment
-  monitor_exclude_list              = var.monitor_exclude_list
-  oob_availability_zone             = var.oob_availability_zone
-  oob_management_subnet             = var.oob_management_subnet
-  single_az_ha                      = var.single_az_ha
-  single_ip_snat                    = var.single_ip_snat
-  subnet                            = var.subnet
-  tag_list                          = var.tag_list
-  transit_gw                        = var.transit_gw
-  vpc_id                            = var.vpc_id
-  vpc_reg                           = var.vpc_reg
-  zone                              = var.zone
+  # monitor_exclude_list - (optional) is a type of set of string
+  monitor_exclude_list = var.monitor_exclude_list
+  # oob_availability_zone - (optional) is a type of string
+  oob_availability_zone = var.oob_availability_zone
+  # oob_management_subnet - (optional) is a type of string
+  oob_management_subnet = var.oob_management_subnet
+  # single_az_ha - (optional) is a type of bool
+  single_az_ha = var.single_az_ha
+  # single_ip_snat - (optional) is a type of bool
+  single_ip_snat = var.single_ip_snat
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tag_list - (optional) is a type of list of string
+  tag_list = var.tag_list
+  # transit_gw - (optional) is a type of string
+  transit_gw = var.transit_gw
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_reg - (required) is a type of string
+  vpc_reg = var.vpc_reg
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

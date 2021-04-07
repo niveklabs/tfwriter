@@ -66,9 +66,12 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_db_zones" "this" {
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  multi                = var.multi
-  output_file          = var.output_file
+  # multi - (optional) is a type of bool
+  multi = var.multi
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

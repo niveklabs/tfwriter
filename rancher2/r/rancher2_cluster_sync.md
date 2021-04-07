@@ -107,18 +107,27 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_cluster_sync" "this" {
-  cluster_id      = var.cluster_id
-  node_pool_ids   = var.node_pool_ids
-  state_confirm   = var.state_confirm
-  synced          = var.synced
-  wait_catalogs   = var.wait_catalogs
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # node_pool_ids - (optional) is a type of list of string
+  node_pool_ids = var.node_pool_ids
+  # state_confirm - (optional) is a type of number
+  state_confirm = var.state_confirm
+  # synced - (optional) is a type of bool
+  synced = var.synced
+  # wait_catalogs - (optional) is a type of bool
+  wait_catalogs = var.wait_catalogs
+  # wait_monitoring - (optional) is a type of bool
   wait_monitoring = var.wait_monitoring
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

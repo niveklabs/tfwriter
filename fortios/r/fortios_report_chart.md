@@ -341,29 +341,49 @@ variable "y_series" {
 
 ```terraform
 resource "fortios_report_chart" "this" {
-  background            = var.background
-  category              = var.category
-  color_palette         = var.color_palette
-  comments              = var.comments
-  dataset               = var.dataset
-  dimension             = var.dimension
+  # background - (optional) is a type of string
+  background = var.background
+  # category - (optional) is a type of string
+  category = var.category
+  # color_palette - (optional) is a type of string
+  color_palette = var.color_palette
+  # comments - (required) is a type of string
+  comments = var.comments
+  # dataset - (required) is a type of string
+  dataset = var.dataset
+  # dimension - (optional) is a type of string
+  dimension = var.dimension
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  favorite              = var.favorite
-  graph_type            = var.graph_type
-  legend                = var.legend
-  legend_font_size      = var.legend_font_size
-  name                  = var.name
-  period                = var.period
-  policy                = var.policy
-  style                 = var.style
-  title                 = var.title
-  title_font_size       = var.title_font_size
-  type                  = var.type
+  # favorite - (optional) is a type of string
+  favorite = var.favorite
+  # graph_type - (optional) is a type of string
+  graph_type = var.graph_type
+  # legend - (optional) is a type of string
+  legend = var.legend
+  # legend_font_size - (optional) is a type of number
+  legend_font_size = var.legend_font_size
+  # name - (required) is a type of string
+  name = var.name
+  # period - (optional) is a type of string
+  period = var.period
+  # policy - (optional) is a type of number
+  policy = var.policy
+  # style - (optional) is a type of string
+  style = var.style
+  # title - (optional) is a type of string
+  title = var.title
+  # title_font_size - (optional) is a type of number
+  title_font_size = var.title_font_size
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "category_series" {
     for_each = var.category_series
     content {
-      databind  = category_series.value["databind"]
+      # databind - (optional) is a type of string
+      databind = category_series.value["databind"]
+      # font_size - (optional) is a type of number
       font_size = category_series.value["font_size"]
     }
   }
@@ -371,22 +391,34 @@ resource "fortios_report_chart" "this" {
   dynamic "column" {
     for_each = var.column
     content {
-      detail_unit  = column.value["detail_unit"]
+      # detail_unit - (optional) is a type of string
+      detail_unit = column.value["detail_unit"]
+      # detail_value - (optional) is a type of string
       detail_value = column.value["detail_value"]
-      footer_unit  = column.value["footer_unit"]
+      # footer_unit - (optional) is a type of string
+      footer_unit = column.value["footer_unit"]
+      # footer_value - (optional) is a type of string
       footer_value = column.value["footer_value"]
+      # header_value - (optional) is a type of string
       header_value = column.value["header_value"]
-      id           = column.value["id"]
+      # id - (optional) is a type of number
+      id = column.value["id"]
 
       dynamic "mapping" {
         for_each = column.value.mapping
         content {
+          # displayname - (optional) is a type of string
           displayname = mapping.value["displayname"]
-          id          = mapping.value["id"]
-          op          = mapping.value["op"]
-          value1      = mapping.value["value1"]
-          value2      = mapping.value["value2"]
-          value_type  = mapping.value["value_type"]
+          # id - (optional) is a type of number
+          id = mapping.value["id"]
+          # op - (optional) is a type of string
+          op = mapping.value["op"]
+          # value1 - (optional) is a type of string
+          value1 = mapping.value["value1"]
+          # value2 - (optional) is a type of string
+          value2 = mapping.value["value2"]
+          # value_type - (optional) is a type of string
+          value_type = mapping.value["value_type"]
         }
       }
 
@@ -396,15 +428,19 @@ resource "fortios_report_chart" "this" {
   dynamic "drill_down_charts" {
     for_each = var.drill_down_charts
     content {
+      # chart_name - (optional) is a type of string
       chart_name = drill_down_charts.value["chart_name"]
-      id         = drill_down_charts.value["id"]
-      status     = drill_down_charts.value["status"]
+      # id - (optional) is a type of number
+      id = drill_down_charts.value["id"]
+      # status - (optional) is a type of string
+      status = drill_down_charts.value["status"]
     }
   }
 
   dynamic "value_series" {
     for_each = var.value_series
     content {
+      # databind - (optional) is a type of string
       databind = value_series.value["databind"]
     }
   }
@@ -412,34 +448,56 @@ resource "fortios_report_chart" "this" {
   dynamic "x_series" {
     for_each = var.x_series
     content {
-      caption           = x_series.value["caption"]
+      # caption - (optional) is a type of string
+      caption = x_series.value["caption"]
+      # caption_font_size - (optional) is a type of number
       caption_font_size = x_series.value["caption_font_size"]
-      databind          = x_series.value["databind"]
-      font_size         = x_series.value["font_size"]
-      is_category       = x_series.value["is_category"]
-      label_angle       = x_series.value["label_angle"]
-      scale_direction   = x_series.value["scale_direction"]
-      scale_format      = x_series.value["scale_format"]
-      scale_step        = x_series.value["scale_step"]
-      scale_unit        = x_series.value["scale_unit"]
-      unit              = x_series.value["unit"]
+      # databind - (optional) is a type of string
+      databind = x_series.value["databind"]
+      # font_size - (optional) is a type of number
+      font_size = x_series.value["font_size"]
+      # is_category - (optional) is a type of string
+      is_category = x_series.value["is_category"]
+      # label_angle - (optional) is a type of string
+      label_angle = x_series.value["label_angle"]
+      # scale_direction - (optional) is a type of string
+      scale_direction = x_series.value["scale_direction"]
+      # scale_format - (optional) is a type of string
+      scale_format = x_series.value["scale_format"]
+      # scale_step - (optional) is a type of number
+      scale_step = x_series.value["scale_step"]
+      # scale_unit - (optional) is a type of string
+      scale_unit = x_series.value["scale_unit"]
+      # unit - (optional) is a type of string
+      unit = x_series.value["unit"]
     }
   }
 
   dynamic "y_series" {
     for_each = var.y_series
     content {
-      caption           = y_series.value["caption"]
+      # caption - (optional) is a type of string
+      caption = y_series.value["caption"]
+      # caption_font_size - (optional) is a type of number
       caption_font_size = y_series.value["caption_font_size"]
-      databind          = y_series.value["databind"]
-      extra_databind    = y_series.value["extra_databind"]
-      extra_y           = y_series.value["extra_y"]
-      extra_y_legend    = y_series.value["extra_y_legend"]
-      font_size         = y_series.value["font_size"]
-      group             = y_series.value["group"]
-      label_angle       = y_series.value["label_angle"]
-      unit              = y_series.value["unit"]
-      y_legend          = y_series.value["y_legend"]
+      # databind - (optional) is a type of string
+      databind = y_series.value["databind"]
+      # extra_databind - (optional) is a type of string
+      extra_databind = y_series.value["extra_databind"]
+      # extra_y - (optional) is a type of string
+      extra_y = y_series.value["extra_y"]
+      # extra_y_legend - (optional) is a type of string
+      extra_y_legend = y_series.value["extra_y_legend"]
+      # font_size - (optional) is a type of number
+      font_size = y_series.value["font_size"]
+      # group - (optional) is a type of string
+      group = y_series.value["group"]
+      # label_angle - (optional) is a type of string
+      label_angle = y_series.value["label_angle"]
+      # unit - (optional) is a type of string
+      unit = y_series.value["unit"]
+      # y_legend - (optional) is a type of string
+      y_legend = y_series.value["y_legend"]
     }
   }
 

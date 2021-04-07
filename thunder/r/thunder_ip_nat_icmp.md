@@ -66,9 +66,12 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ip_nat_icmp" "this" {
+  # always_source_nat_errors - (optional) is a type of number
   always_source_nat_errors = var.always_source_nat_errors
-  respond_to_ping          = var.respond_to_ping
-  uuid                     = var.uuid
+  # respond_to_ping - (optional) is a type of number
+  respond_to_ping = var.respond_to_ping
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

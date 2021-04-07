@@ -87,12 +87,18 @@ variable "vars" {
 
 ```terraform
 resource "icinga2_host" "this" {
-  address       = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # check_command - (required) is a type of string
   check_command = var.check_command
-  groups        = var.groups
-  hostname      = var.hostname
-  templates     = var.templates
-  vars          = var.vars
+  # groups - (optional) is a type of list of string
+  groups = var.groups
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # templates - (optional) is a type of list of string
+  templates = var.templates
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

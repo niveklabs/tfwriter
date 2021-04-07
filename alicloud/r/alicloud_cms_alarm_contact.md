@@ -96,13 +96,20 @@ variable "lang" {
 
 ```terraform
 resource "alicloud_cms_alarm_contact" "this" {
-  alarm_contact_name     = var.alarm_contact_name
-  channels_aliim         = var.channels_aliim
+  # alarm_contact_name - (required) is a type of string
+  alarm_contact_name = var.alarm_contact_name
+  # channels_aliim - (optional) is a type of string
+  channels_aliim = var.channels_aliim
+  # channels_ding_web_hook - (optional) is a type of string
   channels_ding_web_hook = var.channels_ding_web_hook
-  channels_mail          = var.channels_mail
-  channels_sms           = var.channels_sms
-  describe               = var.describe
-  lang                   = var.lang
+  # channels_mail - (optional) is a type of string
+  channels_mail = var.channels_mail
+  # channels_sms - (optional) is a type of string
+  channels_sms = var.channels_sms
+  # describe - (required) is a type of string
+  describe = var.describe
+  # lang - (optional) is a type of string
+  lang = var.lang
 }
 ```
 

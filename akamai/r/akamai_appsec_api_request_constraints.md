@@ -78,11 +78,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_api_request_constraints" "this" {
-  action             = var.action
-  api_endpoint_id    = var.api_endpoint_id
-  config_id          = var.config_id
+  # action - (required) is a type of string
+  action = var.action
+  # api_endpoint_id - (optional) is a type of number
+  api_endpoint_id = var.api_endpoint_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # security_policy_id - (required) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

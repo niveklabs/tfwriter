@@ -227,39 +227,63 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cs_serverless_kubernetes" "this" {
-  client_cert                    = var.client_cert
-  client_key                     = var.client_key
-  cluster_ca_cert                = var.cluster_ca_cert
-  deletion_protection            = var.deletion_protection
+  # client_cert - (optional) is a type of string
+  client_cert = var.client_cert
+  # client_key - (optional) is a type of string
+  client_key = var.client_key
+  # cluster_ca_cert - (optional) is a type of string
+  cluster_ca_cert = var.cluster_ca_cert
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # endpoint_public_access_enabled - (optional) is a type of bool
   endpoint_public_access_enabled = var.endpoint_public_access_enabled
-  force_update                   = var.force_update
-  kube_config                    = var.kube_config
-  load_balancer_spec             = var.load_balancer_spec
-  name                           = var.name
-  name_prefix                    = var.name_prefix
-  new_nat_gateway                = var.new_nat_gateway
-  private_zone                   = var.private_zone
-  resource_group_id              = var.resource_group_id
-  security_group_id              = var.security_group_id
-  tags                           = var.tags
-  version                        = var.version
-  vpc_id                         = var.vpc_id
-  vswitch_id                     = var.vswitch_id
-  vswitch_ids                    = var.vswitch_ids
+  # force_update - (optional) is a type of bool
+  force_update = var.force_update
+  # kube_config - (optional) is a type of string
+  kube_config = var.kube_config
+  # load_balancer_spec - (optional) is a type of string
+  load_balancer_spec = var.load_balancer_spec
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # new_nat_gateway - (optional) is a type of bool
+  new_nat_gateway = var.new_nat_gateway
+  # private_zone - (optional) is a type of bool
+  private_zone = var.private_zone
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # vswitch_ids - (optional) is a type of list of string
+  vswitch_ids = var.vswitch_ids
 
   dynamic "addons" {
     for_each = var.addons
     content {
-      config   = addons.value["config"]
+      # config - (optional) is a type of string
+      config = addons.value["config"]
+      # disabled - (optional) is a type of bool
       disabled = addons.value["disabled"]
-      name     = addons.value["name"]
+      # name - (optional) is a type of string
+      name = addons.value["name"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

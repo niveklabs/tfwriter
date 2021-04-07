@@ -56,7 +56,9 @@ variable "url" {
 
 ```terraform
 resource "heroku_drain" "this" {
+  # app - (required) is a type of string
   app = var.app
+  # url - (required) is a type of string
   url = var.url
 }
 ```

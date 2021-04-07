@@ -148,15 +148,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ga_forwarding_rule" "this" {
-  accelerator_id       = var.accelerator_id
+  # accelerator_id - (required) is a type of string
+  accelerator_id = var.accelerator_id
+  # forwarding_rule_name - (optional) is a type of string
   forwarding_rule_name = var.forwarding_rule_name
-  listener_id          = var.listener_id
-  priority             = var.priority
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # priority - (optional) is a type of number
+  priority = var.priority
 
   dynamic "rule_actions" {
     for_each = var.rule_actions
     content {
-      order            = rule_actions.value["order"]
+      # order - (required) is a type of number
+      order = rule_actions.value["order"]
+      # rule_action_type - (required) is a type of string
       rule_action_type = rule_actions.value["rule_action_type"]
 
       dynamic "forward_group_config" {
@@ -166,6 +172,7 @@ resource "alicloud_ga_forwarding_rule" "this" {
           dynamic "server_group_tuples" {
             for_each = forward_group_config.value.server_group_tuples
             content {
+              # endpoint_group_id - (required) is a type of string
               endpoint_group_id = server_group_tuples.value["endpoint_group_id"]
             }
           }
@@ -179,11 +186,13 @@ resource "alicloud_ga_forwarding_rule" "this" {
   dynamic "rule_conditions" {
     for_each = var.rule_conditions
     content {
+      # rule_condition_type - (required) is a type of string
       rule_condition_type = rule_conditions.value["rule_condition_type"]
 
       dynamic "host_config" {
         for_each = rule_conditions.value.host_config
         content {
+          # values - (optional) is a type of list of string
           values = host_config.value["values"]
         }
       }
@@ -191,6 +200,7 @@ resource "alicloud_ga_forwarding_rule" "this" {
       dynamic "path_config" {
         for_each = rule_conditions.value.path_config
         content {
+          # values - (optional) is a type of list of string
           values = path_config.value["values"]
         }
       }
@@ -201,8 +211,11 @@ resource "alicloud_ga_forwarding_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -82,11 +82,16 @@ variable "status" {
 
 ```terraform
 data "alicloud_waf_instances" "this" {
-  ids               = var.ids
-  instance_source   = var.instance_source
-  output_file       = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_source - (optional) is a type of string
+  instance_source = var.instance_source
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  status            = var.status
+  # status - (optional) is a type of number
+  status = var.status
 }
 ```
 

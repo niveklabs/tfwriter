@@ -172,57 +172,80 @@ variable "link_up_cfg" {
 
 ```terraform
 resource "thunder_slb_template_monitor" "this" {
-  id2              = var.id2
+  # id2 - (optional) is a type of number
+  id2 = var.id2
+  # monitor_relation - (optional) is a type of string
   monitor_relation = var.monitor_relation
-  user_tag         = var.user_tag
-  uuid             = var.uuid
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "clear_cfg" {
     for_each = var.clear_cfg
     content {
+      # clear_all_sequence - (optional) is a type of number
       clear_all_sequence = clear_cfg.value["clear_all_sequence"]
-      clear_sequence     = clear_cfg.value["clear_sequence"]
-      sessions           = clear_cfg.value["sessions"]
+      # clear_sequence - (optional) is a type of number
+      clear_sequence = clear_cfg.value["clear_sequence"]
+      # sessions - (optional) is a type of string
+      sessions = clear_cfg.value["sessions"]
     }
   }
 
   dynamic "link_disable_cfg" {
     for_each = var.link_disable_cfg
     content {
+      # dis_sequence - (optional) is a type of number
       dis_sequence = link_disable_cfg.value["dis_sequence"]
-      diseth       = link_disable_cfg.value["diseth"]
+      # diseth - (optional) is a type of number
+      diseth = link_disable_cfg.value["diseth"]
     }
   }
 
   dynamic "link_down_cfg" {
     for_each = var.link_down_cfg
     content {
+      # link_down_sequence1 - (optional) is a type of number
       link_down_sequence1 = link_down_cfg.value["link_down_sequence1"]
+      # link_down_sequence2 - (optional) is a type of number
       link_down_sequence2 = link_down_cfg.value["link_down_sequence2"]
+      # link_down_sequence3 - (optional) is a type of number
       link_down_sequence3 = link_down_cfg.value["link_down_sequence3"]
-      linkdown_ethernet1  = link_down_cfg.value["linkdown_ethernet1"]
-      linkdown_ethernet2  = link_down_cfg.value["linkdown_ethernet2"]
-      linkdown_ethernet3  = link_down_cfg.value["linkdown_ethernet3"]
+      # linkdown_ethernet1 - (optional) is a type of number
+      linkdown_ethernet1 = link_down_cfg.value["linkdown_ethernet1"]
+      # linkdown_ethernet2 - (optional) is a type of number
+      linkdown_ethernet2 = link_down_cfg.value["linkdown_ethernet2"]
+      # linkdown_ethernet3 - (optional) is a type of number
+      linkdown_ethernet3 = link_down_cfg.value["linkdown_ethernet3"]
     }
   }
 
   dynamic "link_enable_cfg" {
     for_each = var.link_enable_cfg
     content {
+      # ena_sequence - (optional) is a type of number
       ena_sequence = link_enable_cfg.value["ena_sequence"]
-      enaeth       = link_enable_cfg.value["enaeth"]
+      # enaeth - (optional) is a type of number
+      enaeth = link_enable_cfg.value["enaeth"]
     }
   }
 
   dynamic "link_up_cfg" {
     for_each = var.link_up_cfg
     content {
+      # link_up_sequence1 - (optional) is a type of number
       link_up_sequence1 = link_up_cfg.value["link_up_sequence1"]
+      # link_up_sequence2 - (optional) is a type of number
       link_up_sequence2 = link_up_cfg.value["link_up_sequence2"]
+      # link_up_sequence3 - (optional) is a type of number
       link_up_sequence3 = link_up_cfg.value["link_up_sequence3"]
-      linkup_ethernet1  = link_up_cfg.value["linkup_ethernet1"]
-      linkup_ethernet2  = link_up_cfg.value["linkup_ethernet2"]
-      linkup_ethernet3  = link_up_cfg.value["linkup_ethernet3"]
+      # linkup_ethernet1 - (optional) is a type of number
+      linkup_ethernet1 = link_up_cfg.value["linkup_ethernet1"]
+      # linkup_ethernet2 - (optional) is a type of number
+      linkup_ethernet2 = link_up_cfg.value["linkup_ethernet2"]
+      # linkup_ethernet3 - (optional) is a type of number
+      linkup_ethernet3 = link_up_cfg.value["linkup_ethernet3"]
     }
   }
 

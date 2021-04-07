@@ -64,8 +64,11 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_bgp_auth_profile" "this" {
-  name           = var.name
-  secret         = var.secret
+  # name - (required) is a type of string
+  name = var.name
+  # secret - (optional) is a type of string
+  secret = var.secret
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

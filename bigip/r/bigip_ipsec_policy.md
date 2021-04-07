@@ -137,18 +137,30 @@ variable "tunnel_remote_address" {
 
 ```terraform
 resource "bigip_ipsec_policy" "this" {
-  auth_algorithm          = var.auth_algorithm
-  description             = var.description
-  encrypt_algorithm       = var.encrypt_algorithm
-  ipcomp                  = var.ipcomp
-  kb_lifetime             = var.kb_lifetime
-  lifetime                = var.lifetime
-  mode                    = var.mode
-  name                    = var.name
+  # auth_algorithm - (optional) is a type of string
+  auth_algorithm = var.auth_algorithm
+  # description - (optional) is a type of string
+  description = var.description
+  # encrypt_algorithm - (optional) is a type of string
+  encrypt_algorithm = var.encrypt_algorithm
+  # ipcomp - (optional) is a type of string
+  ipcomp = var.ipcomp
+  # kb_lifetime - (optional) is a type of number
+  kb_lifetime = var.kb_lifetime
+  # lifetime - (optional) is a type of number
+  lifetime = var.lifetime
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # perfect_forward_secrecy - (optional) is a type of string
   perfect_forward_secrecy = var.perfect_forward_secrecy
-  protocol                = var.protocol
-  tunnel_local_address    = var.tunnel_local_address
-  tunnel_remote_address   = var.tunnel_remote_address
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # tunnel_local_address - (optional) is a type of string
+  tunnel_local_address = var.tunnel_local_address
+  # tunnel_remote_address - (optional) is a type of string
+  tunnel_remote_address = var.tunnel_remote_address
 }
 ```
 

@@ -91,16 +91,23 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_common_function_gateway_v2" "this" {
+  # common_function_pool_id - (required) is a type of string
   common_function_pool_id = var.common_function_pool_id
-  description             = var.description
-  name                    = var.name
-  tenant_id               = var.tenant_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

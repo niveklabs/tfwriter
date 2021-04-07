@@ -58,7 +58,9 @@ variable "organization_id" {
 
 ```terraform
 data "packet_organization" "this" {
-  name            = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # organization_id - (optional) is a type of string
   organization_id = var.organization_id
 }
 ```

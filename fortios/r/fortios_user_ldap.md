@@ -296,38 +296,70 @@ variable "username" {
 
 ```terraform
 resource "fortios_user_ldap" "this" {
-  account_key_filter        = var.account_key_filter
-  account_key_processing    = var.account_key_processing
-  ca_cert                   = var.ca_cert
-  cnid                      = var.cnid
-  dn                        = var.dn
-  group_filter              = var.group_filter
-  group_member_check        = var.group_member_check
-  group_object_filter       = var.group_object_filter
-  group_search_base         = var.group_search_base
-  interface                 = var.interface
-  interface_select_method   = var.interface_select_method
-  member_attr               = var.member_attr
-  name                      = var.name
-  obtain_user_info          = var.obtain_user_info
-  password                  = var.password
-  password_expiry_warning   = var.password_expiry_warning
-  password_renewal          = var.password_renewal
-  port                      = var.port
-  search_type               = var.search_type
-  secondary_server          = var.secondary_server
-  secure                    = var.secure
-  server                    = var.server
-  server_identity_check     = var.server_identity_check
-  source_ip                 = var.source_ip
-  ssl_min_proto_version     = var.ssl_min_proto_version
-  tertiary_server           = var.tertiary_server
-  two_factor                = var.two_factor
+  # account_key_filter - (optional) is a type of string
+  account_key_filter = var.account_key_filter
+  # account_key_processing - (optional) is a type of string
+  account_key_processing = var.account_key_processing
+  # ca_cert - (optional) is a type of string
+  ca_cert = var.ca_cert
+  # cnid - (optional) is a type of string
+  cnid = var.cnid
+  # dn - (required) is a type of string
+  dn = var.dn
+  # group_filter - (optional) is a type of string
+  group_filter = var.group_filter
+  # group_member_check - (optional) is a type of string
+  group_member_check = var.group_member_check
+  # group_object_filter - (optional) is a type of string
+  group_object_filter = var.group_object_filter
+  # group_search_base - (optional) is a type of string
+  group_search_base = var.group_search_base
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # member_attr - (optional) is a type of string
+  member_attr = var.member_attr
+  # name - (optional) is a type of string
+  name = var.name
+  # obtain_user_info - (optional) is a type of string
+  obtain_user_info = var.obtain_user_info
+  # password - (optional) is a type of string
+  password = var.password
+  # password_expiry_warning - (optional) is a type of string
+  password_expiry_warning = var.password_expiry_warning
+  # password_renewal - (optional) is a type of string
+  password_renewal = var.password_renewal
+  # port - (optional) is a type of number
+  port = var.port
+  # search_type - (optional) is a type of string
+  search_type = var.search_type
+  # secondary_server - (optional) is a type of string
+  secondary_server = var.secondary_server
+  # secure - (optional) is a type of string
+  secure = var.secure
+  # server - (required) is a type of string
+  server = var.server
+  # server_identity_check - (optional) is a type of string
+  server_identity_check = var.server_identity_check
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # tertiary_server - (optional) is a type of string
+  tertiary_server = var.tertiary_server
+  # two_factor - (optional) is a type of string
+  two_factor = var.two_factor
+  # two_factor_authentication - (optional) is a type of string
   two_factor_authentication = var.two_factor_authentication
-  two_factor_notification   = var.two_factor_notification
-  type                      = var.type
+  # two_factor_notification - (optional) is a type of string
+  two_factor_notification = var.two_factor_notification
+  # type - (optional) is a type of string
+  type = var.type
+  # user_info_exchange_server - (optional) is a type of string
   user_info_exchange_server = var.user_info_exchange_server
-  username                  = var.username
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

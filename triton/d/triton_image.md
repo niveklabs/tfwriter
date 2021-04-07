@@ -106,14 +106,22 @@ variable "version" {
 
 ```terraform
 data "triton_image" "this" {
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  name        = var.name
-  os          = var.os
-  owner       = var.owner
-  public      = var.public
-  state       = var.state
-  type        = var.type
-  version     = var.version
+  # name - (optional) is a type of string
+  name = var.name
+  # os - (optional) is a type of string
+  os = var.os
+  # owner - (optional) is a type of string
+  owner = var.owner
+  # public - (optional) is a type of bool
+  public = var.public
+  # state - (optional) is a type of string
+  state = var.state
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

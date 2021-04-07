@@ -81,16 +81,22 @@ variable "backends" {
 
 ```terraform
 resource "tencentcloud_alb_server_attachment" "this" {
-  listener_id     = var.listener_id
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # loadbalancer_id - (required) is a type of string
   loadbalancer_id = var.loadbalancer_id
-  location_id     = var.location_id
+  # location_id - (optional) is a type of string
+  location_id = var.location_id
 
   dynamic "backends" {
     for_each = var.backends
     content {
+      # instance_id - (required) is a type of string
       instance_id = backends.value["instance_id"]
-      port        = backends.value["port"]
-      weight      = backends.value["weight"]
+      # port - (required) is a type of number
+      port = backends.value["port"]
+      # weight - (optional) is a type of number
+      weight = backends.value["weight"]
     }
   }
 

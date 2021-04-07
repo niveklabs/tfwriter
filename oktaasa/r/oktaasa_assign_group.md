@@ -80,11 +80,16 @@ variable "server_admin" {
 
 ```terraform
 resource "oktaasa_assign_group" "this" {
+  # create_server_group - (optional) is a type of bool
   create_server_group = var.create_server_group
-  group_name          = var.group_name
-  project_name        = var.project_name
-  server_access       = var.server_access
-  server_admin        = var.server_admin
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # project_name - (required) is a type of string
+  project_name = var.project_name
+  # server_access - (optional) is a type of bool
+  server_access = var.server_access
+  # server_admin - (optional) is a type of bool
+  server_admin = var.server_admin
 }
 ```
 

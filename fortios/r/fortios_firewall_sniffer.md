@@ -325,55 +325,95 @@ variable "ip_threatfeed" {
 
 ```terraform
 resource "fortios_firewall_sniffer" "this" {
-  application_list           = var.application_list
-  application_list_status    = var.application_list_status
-  av_profile                 = var.av_profile
-  av_profile_status          = var.av_profile_status
-  dlp_sensor                 = var.dlp_sensor
-  dlp_sensor_status          = var.dlp_sensor_status
-  dsri                       = var.dsri
-  dynamic_sort_subtable      = var.dynamic_sort_subtable
-  emailfilter_profile        = var.emailfilter_profile
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # application_list_status - (optional) is a type of string
+  application_list_status = var.application_list_status
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # av_profile_status - (optional) is a type of string
+  av_profile_status = var.av_profile_status
+  # dlp_sensor - (optional) is a type of string
+  dlp_sensor = var.dlp_sensor
+  # dlp_sensor_status - (optional) is a type of string
+  dlp_sensor_status = var.dlp_sensor_status
+  # dsri - (optional) is a type of string
+  dsri = var.dsri
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # emailfilter_profile - (optional) is a type of string
+  emailfilter_profile = var.emailfilter_profile
+  # emailfilter_profile_status - (optional) is a type of string
   emailfilter_profile_status = var.emailfilter_profile_status
-  fosid                      = var.fosid
-  host                       = var.host
-  interface                  = var.interface
-  ip_threatfeed_status       = var.ip_threatfeed_status
-  ips_dos_status             = var.ips_dos_status
-  ips_sensor                 = var.ips_sensor
-  ips_sensor_status          = var.ips_sensor_status
-  ipv6                       = var.ipv6
-  logtraffic                 = var.logtraffic
-  max_packet_count           = var.max_packet_count
-  non_ip                     = var.non_ip
-  port                       = var.port
-  protocol                   = var.protocol
-  scan_botnet_connections    = var.scan_botnet_connections
-  spamfilter_profile         = var.spamfilter_profile
-  spamfilter_profile_status  = var.spamfilter_profile_status
-  status                     = var.status
-  vlan                       = var.vlan
-  webfilter_profile          = var.webfilter_profile
-  webfilter_profile_status   = var.webfilter_profile_status
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # host - (optional) is a type of string
+  host = var.host
+  # interface - (required) is a type of string
+  interface = var.interface
+  # ip_threatfeed_status - (optional) is a type of string
+  ip_threatfeed_status = var.ip_threatfeed_status
+  # ips_dos_status - (optional) is a type of string
+  ips_dos_status = var.ips_dos_status
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # ips_sensor_status - (optional) is a type of string
+  ips_sensor_status = var.ips_sensor_status
+  # ipv6 - (optional) is a type of string
+  ipv6 = var.ipv6
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # max_packet_count - (optional) is a type of number
+  max_packet_count = var.max_packet_count
+  # non_ip - (optional) is a type of string
+  non_ip = var.non_ip
+  # port - (optional) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # scan_botnet_connections - (optional) is a type of string
+  scan_botnet_connections = var.scan_botnet_connections
+  # spamfilter_profile - (optional) is a type of string
+  spamfilter_profile = var.spamfilter_profile
+  # spamfilter_profile_status - (optional) is a type of string
+  spamfilter_profile_status = var.spamfilter_profile_status
+  # status - (optional) is a type of string
+  status = var.status
+  # vlan - (optional) is a type of string
+  vlan = var.vlan
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
+  # webfilter_profile_status - (optional) is a type of string
+  webfilter_profile_status = var.webfilter_profile_status
 
   dynamic "anomaly" {
     for_each = var.anomaly
     content {
-      action            = anomaly.value["action"]
-      log               = anomaly.value["log"]
-      name              = anomaly.value["name"]
-      quarantine        = anomaly.value["quarantine"]
+      # action - (optional) is a type of string
+      action = anomaly.value["action"]
+      # log - (optional) is a type of string
+      log = anomaly.value["log"]
+      # name - (optional) is a type of string
+      name = anomaly.value["name"]
+      # quarantine - (optional) is a type of string
+      quarantine = anomaly.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of string
       quarantine_expiry = anomaly.value["quarantine_expiry"]
-      quarantine_log    = anomaly.value["quarantine_log"]
-      status            = anomaly.value["status"]
-      threshold         = anomaly.value["threshold"]
-      thresholddefault  = anomaly.value["thresholddefault"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = anomaly.value["quarantine_log"]
+      # status - (optional) is a type of string
+      status = anomaly.value["status"]
+      # threshold - (optional) is a type of number
+      threshold = anomaly.value["threshold"]
+      # thresholddefault - (optional) is a type of number
+      thresholddefault = anomaly.value["thresholddefault"]
     }
   }
 
   dynamic "ip_threatfeed" {
     for_each = var.ip_threatfeed
     content {
+      # name - (optional) is a type of string
       name = ip_threatfeed.value["name"]
     }
   }

@@ -162,21 +162,36 @@ variable "with_ro" {
 
 ```terraform
 data "tencentcloud_mysql_instance" "this" {
-  charge_type        = var.charge_type
-  engine_version     = var.engine_version
-  init_flag          = var.init_flag
-  instance_name      = var.instance_name
-  instance_role      = var.instance_role
-  limit              = var.limit
-  mysql_id           = var.mysql_id
-  offset             = var.offset
-  pay_type           = var.pay_type
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # init_flag - (optional) is a type of number
+  init_flag = var.init_flag
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_role - (optional) is a type of string
+  instance_role = var.instance_role
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # mysql_id - (optional) is a type of string
+  mysql_id = var.mysql_id
+  # offset - (optional) is a type of number
+  offset = var.offset
+  # pay_type - (optional) is a type of number
+  pay_type = var.pay_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  security_group_id  = var.security_group_id
-  status             = var.status
-  with_dr            = var.with_dr
-  with_master        = var.with_master
-  with_ro            = var.with_ro
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # status - (optional) is a type of number
+  status = var.status
+  # with_dr - (optional) is a type of number
+  with_dr = var.with_dr
+  # with_master - (optional) is a type of number
+  with_master = var.with_master
+  # with_ro - (optional) is a type of number
+  with_ro = var.with_ro
 }
 ```
 

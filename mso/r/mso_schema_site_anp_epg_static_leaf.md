@@ -91,13 +91,20 @@ variable "template_name" {
 
 ```terraform
 resource "mso_schema_site_anp_epg_static_leaf" "this" {
-  anp_name        = var.anp_name
-  epg_name        = var.epg_name
-  path            = var.path
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # path - (required) is a type of string
+  path = var.path
+  # port_encap_vlan - (required) is a type of number
   port_encap_vlan = var.port_encap_vlan
-  schema_id       = var.schema_id
-  site_id         = var.site_id
-  template_name   = var.template_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

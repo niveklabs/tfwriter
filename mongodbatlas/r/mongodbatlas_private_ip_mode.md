@@ -56,7 +56,9 @@ variable "project_id" {
 
 ```terraform
 resource "mongodbatlas_private_ip_mode" "this" {
-  enabled    = var.enabled
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # project_id - (required) is a type of string
   project_id = var.project_id
 }
 ```

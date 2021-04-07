@@ -63,11 +63,13 @@ variable "timeouts" {
 
 ```terraform
 resource "fastly_tls_subscription_validation" "this" {
+  # subscription_id - (required) is a type of string
   subscription_id = var.subscription_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

@@ -197,26 +197,43 @@ variable "learn_client_ip_srcaddr6" {
 
 ```terraform
 resource "fortios_webproxy_global" "this" {
-  dynamic_sort_subtable           = var.dynamic_sort_subtable
-  fast_policy_match               = var.fast_policy_match
-  forward_proxy_auth              = var.forward_proxy_auth
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # fast_policy_match - (optional) is a type of string
+  fast_policy_match = var.fast_policy_match
+  # forward_proxy_auth - (optional) is a type of string
+  forward_proxy_auth = var.forward_proxy_auth
+  # forward_server_affinity_timeout - (optional) is a type of number
   forward_server_affinity_timeout = var.forward_server_affinity_timeout
-  learn_client_ip                 = var.learn_client_ip
-  learn_client_ip_from_header     = var.learn_client_ip_from_header
-  max_message_length              = var.max_message_length
-  max_request_length              = var.max_request_length
-  max_waf_body_cache_length       = var.max_waf_body_cache_length
-  proxy_fqdn                      = var.proxy_fqdn
-  ssl_ca_cert                     = var.ssl_ca_cert
-  ssl_cert                        = var.ssl_cert
-  strict_web_check                = var.strict_web_check
-  tunnel_non_http                 = var.tunnel_non_http
-  unknown_http_version            = var.unknown_http_version
-  webproxy_profile                = var.webproxy_profile
+  # learn_client_ip - (optional) is a type of string
+  learn_client_ip = var.learn_client_ip
+  # learn_client_ip_from_header - (optional) is a type of string
+  learn_client_ip_from_header = var.learn_client_ip_from_header
+  # max_message_length - (optional) is a type of number
+  max_message_length = var.max_message_length
+  # max_request_length - (optional) is a type of number
+  max_request_length = var.max_request_length
+  # max_waf_body_cache_length - (optional) is a type of number
+  max_waf_body_cache_length = var.max_waf_body_cache_length
+  # proxy_fqdn - (required) is a type of string
+  proxy_fqdn = var.proxy_fqdn
+  # ssl_ca_cert - (optional) is a type of string
+  ssl_ca_cert = var.ssl_ca_cert
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = var.ssl_cert
+  # strict_web_check - (optional) is a type of string
+  strict_web_check = var.strict_web_check
+  # tunnel_non_http - (optional) is a type of string
+  tunnel_non_http = var.tunnel_non_http
+  # unknown_http_version - (optional) is a type of string
+  unknown_http_version = var.unknown_http_version
+  # webproxy_profile - (optional) is a type of string
+  webproxy_profile = var.webproxy_profile
 
   dynamic "learn_client_ip_srcaddr" {
     for_each = var.learn_client_ip_srcaddr
     content {
+      # name - (optional) is a type of string
       name = learn_client_ip_srcaddr.value["name"]
     }
   }
@@ -224,6 +241,7 @@ resource "fortios_webproxy_global" "this" {
   dynamic "learn_client_ip_srcaddr6" {
     for_each = var.learn_client_ip_srcaddr6
     content {
+      # name - (optional) is a type of string
       name = learn_client_ip_srcaddr6.value["name"]
     }
   }

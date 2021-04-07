@@ -167,26 +167,43 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cassandra_data_center" "this" {
-  auto_renew        = var.auto_renew
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # auto_renew_period - (optional) is a type of number
   auto_renew_period = var.auto_renew_period
-  cluster_id        = var.cluster_id
-  data_center_name  = var.data_center_name
-  disk_size         = var.disk_size
-  disk_type         = var.disk_type
-  enable_public     = var.enable_public
-  instance_type     = var.instance_type
-  node_count        = var.node_count
-  pay_type          = var.pay_type
-  period            = var.period
-  period_unit       = var.period_unit
-  vswitch_id        = var.vswitch_id
-  zone_id           = var.zone_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # data_center_name - (optional) is a type of string
+  data_center_name = var.data_center_name
+  # disk_size - (optional) is a type of number
+  disk_size = var.disk_size
+  # disk_type - (optional) is a type of string
+  disk_type = var.disk_type
+  # enable_public - (optional) is a type of bool
+  enable_public = var.enable_public
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # node_count - (required) is a type of number
+  node_count = var.node_count
+  # pay_type - (required) is a type of string
+  pay_type = var.pay_type
+  # period - (optional) is a type of number
+  period = var.period
+  # period_unit - (optional) is a type of string
+  period_unit = var.period_unit
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

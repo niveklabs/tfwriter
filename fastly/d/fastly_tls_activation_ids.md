@@ -50,6 +50,7 @@ variable "certificate_id" {
 
 ```terraform
 data "fastly_tls_activation_ids" "this" {
+  # certificate_id - (optional) is a type of string
   certificate_id = var.certificate_id
 }
 ```

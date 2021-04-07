@@ -149,31 +149,47 @@ variable "thresholds" {
 
 ```terraform
 resource "datadog_service_level_objective" "this" {
-  description    = var.description
-  force_delete   = var.force_delete
-  groups         = var.groups
-  monitor_ids    = var.monitor_ids
+  # description - (optional) is a type of string
+  description = var.description
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # monitor_ids - (optional) is a type of set of number
+  monitor_ids = var.monitor_ids
+  # monitor_search - (optional) is a type of string
   monitor_search = var.monitor_search
-  name           = var.name
-  tags           = var.tags
-  type           = var.type
-  validate       = var.validate
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
+  # validate - (optional) is a type of bool
+  validate = var.validate
 
   dynamic "query" {
     for_each = var.query
     content {
+      # denominator - (required) is a type of string
       denominator = query.value["denominator"]
-      numerator   = query.value["numerator"]
+      # numerator - (required) is a type of string
+      numerator = query.value["numerator"]
     }
   }
 
   dynamic "thresholds" {
     for_each = var.thresholds
     content {
-      target          = thresholds.value["target"]
-      target_display  = thresholds.value["target_display"]
-      timeframe       = thresholds.value["timeframe"]
-      warning         = thresholds.value["warning"]
+      # target - (required) is a type of number
+      target = thresholds.value["target"]
+      # target_display - (optional) is a type of string
+      target_display = thresholds.value["target_display"]
+      # timeframe - (required) is a type of string
+      timeframe = thresholds.value["timeframe"]
+      # warning - (optional) is a type of number
+      warning = thresholds.value["warning"]
+      # warning_display - (optional) is a type of string
       warning_display = thresholds.value["warning_display"]
     }
   }

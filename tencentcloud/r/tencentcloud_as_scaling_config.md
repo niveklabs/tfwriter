@@ -193,29 +193,49 @@ variable "data_disk" {
 
 ```terraform
 resource "tencentcloud_as_scaling_config" "this" {
-  configuration_name         = var.configuration_name
-  enhanced_monitor_service   = var.enhanced_monitor_service
-  enhanced_security_service  = var.enhanced_security_service
-  image_id                   = var.image_id
-  instance_tags              = var.instance_tags
-  instance_types             = var.instance_types
-  internet_charge_type       = var.internet_charge_type
+  # configuration_name - (required) is a type of string
+  configuration_name = var.configuration_name
+  # enhanced_monitor_service - (optional) is a type of bool
+  enhanced_monitor_service = var.enhanced_monitor_service
+  # enhanced_security_service - (optional) is a type of bool
+  enhanced_security_service = var.enhanced_security_service
+  # image_id - (required) is a type of string
+  image_id = var.image_id
+  # instance_tags - (optional) is a type of map of string
+  instance_tags = var.instance_tags
+  # instance_types - (required) is a type of list of string
+  instance_types = var.instance_types
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # internet_max_bandwidth_out - (optional) is a type of number
   internet_max_bandwidth_out = var.internet_max_bandwidth_out
-  keep_image_login           = var.keep_image_login
-  key_ids                    = var.key_ids
-  password                   = var.password
-  project_id                 = var.project_id
-  public_ip_assigned         = var.public_ip_assigned
-  security_group_ids         = var.security_group_ids
-  system_disk_size           = var.system_disk_size
-  system_disk_type           = var.system_disk_type
-  user_data                  = var.user_data
+  # keep_image_login - (optional) is a type of bool
+  keep_image_login = var.keep_image_login
+  # key_ids - (optional) is a type of list of string
+  key_ids = var.key_ids
+  # password - (optional) is a type of string
+  password = var.password
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # public_ip_assigned - (optional) is a type of bool
+  public_ip_assigned = var.public_ip_assigned
+  # security_group_ids - (optional) is a type of list of string
+  security_group_ids = var.security_group_ids
+  # system_disk_size - (optional) is a type of number
+  system_disk_size = var.system_disk_size
+  # system_disk_type - (optional) is a type of string
+  system_disk_type = var.system_disk_type
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "data_disk" {
     for_each = var.data_disk
     content {
-      disk_size   = data_disk.value["disk_size"]
-      disk_type   = data_disk.value["disk_type"]
+      # disk_size - (optional) is a type of number
+      disk_size = data_disk.value["disk_size"]
+      # disk_type - (optional) is a type of string
+      disk_type = data_disk.value["disk_type"]
+      # snapshot_id - (optional) is a type of string
       snapshot_id = data_disk.value["snapshot_id"]
     }
   }

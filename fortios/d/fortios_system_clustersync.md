@@ -49,6 +49,7 @@ variable "sync_id" {
 
 ```terraform
 data "fortios_system_clustersync" "this" {
+  # sync_id - (required) is a type of number
   sync_id = var.sync_id
 }
 ```

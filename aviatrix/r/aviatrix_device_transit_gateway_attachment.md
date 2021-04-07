@@ -173,23 +173,40 @@ variable "transit_gateway_name" {
 
 ```terraform
 resource "aviatrix_device_transit_gateway_attachment" "this" {
-  connection_name               = var.connection_name
-  device_bgp_asn                = var.device_bgp_asn
-  device_name                   = var.device_name
-  enable_global_accelerator     = var.enable_global_accelerator
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # device_bgp_asn - (required) is a type of number
+  device_bgp_asn = var.device_bgp_asn
+  # device_name - (required) is a type of string
+  device_name = var.device_name
+  # enable_global_accelerator - (optional) is a type of bool
+  enable_global_accelerator = var.enable_global_accelerator
+  # enable_learned_cidrs_approval - (optional) is a type of bool
   enable_learned_cidrs_approval = var.enable_learned_cidrs_approval
-  local_tunnel_ip               = var.local_tunnel_ip
-  manual_bgp_advertised_cidrs   = var.manual_bgp_advertised_cidrs
-  phase1_authentication         = var.phase1_authentication
-  phase1_dh_groups              = var.phase1_dh_groups
-  phase1_encryption             = var.phase1_encryption
-  phase2_authentication         = var.phase2_authentication
-  phase2_dh_groups              = var.phase2_dh_groups
-  phase2_encryption             = var.phase2_encryption
-  pre_shared_key                = var.pre_shared_key
-  remote_tunnel_ip              = var.remote_tunnel_ip
-  transit_gateway_bgp_asn       = var.transit_gateway_bgp_asn
-  transit_gateway_name          = var.transit_gateway_name
+  # local_tunnel_ip - (optional) is a type of string
+  local_tunnel_ip = var.local_tunnel_ip
+  # manual_bgp_advertised_cidrs - (optional) is a type of set of string
+  manual_bgp_advertised_cidrs = var.manual_bgp_advertised_cidrs
+  # phase1_authentication - (optional) is a type of string
+  phase1_authentication = var.phase1_authentication
+  # phase1_dh_groups - (optional) is a type of string
+  phase1_dh_groups = var.phase1_dh_groups
+  # phase1_encryption - (optional) is a type of string
+  phase1_encryption = var.phase1_encryption
+  # phase2_authentication - (optional) is a type of string
+  phase2_authentication = var.phase2_authentication
+  # phase2_dh_groups - (optional) is a type of string
+  phase2_dh_groups = var.phase2_dh_groups
+  # phase2_encryption - (optional) is a type of string
+  phase2_encryption = var.phase2_encryption
+  # pre_shared_key - (optional) is a type of string
+  pre_shared_key = var.pre_shared_key
+  # remote_tunnel_ip - (optional) is a type of string
+  remote_tunnel_ip = var.remote_tunnel_ip
+  # transit_gateway_bgp_asn - (required) is a type of number
+  transit_gateway_bgp_asn = var.transit_gateway_bgp_asn
+  # transit_gateway_name - (required) is a type of string
+  transit_gateway_name = var.transit_gateway_name
 }
 ```
 

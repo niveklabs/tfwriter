@@ -79,11 +79,16 @@ variable "vlan_vnid" {
 
 ```terraform
 resource "packet_port_vlan_attachment" "this" {
-  device_id  = var.device_id
+  # device_id - (required) is a type of string
+  device_id = var.device_id
+  # force_bond - (optional) is a type of bool
   force_bond = var.force_bond
-  native     = var.native
-  port_name  = var.port_name
-  vlan_vnid  = var.vlan_vnid
+  # native - (optional) is a type of bool
+  native = var.native
+  # port_name - (required) is a type of string
+  port_name = var.port_name
+  # vlan_vnid - (required) is a type of number
+  vlan_vnid = var.vlan_vnid
 }
 ```
 

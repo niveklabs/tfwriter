@@ -114,15 +114,24 @@ variable "vcpus" {
 
 ```terraform
 data "ecl_compute_flavor_v2" "this" {
-  disk         = var.disk
-  min_disk     = var.min_disk
-  min_ram      = var.min_ram
-  name         = var.name
-  ram          = var.ram
-  region       = var.region
+  # disk - (optional) is a type of number
+  disk = var.disk
+  # min_disk - (optional) is a type of number
+  min_disk = var.min_disk
+  # min_ram - (optional) is a type of number
+  min_ram = var.min_ram
+  # name - (optional) is a type of string
+  name = var.name
+  # ram - (optional) is a type of number
+  ram = var.ram
+  # region - (optional) is a type of string
+  region = var.region
+  # rx_tx_factor - (optional) is a type of number
   rx_tx_factor = var.rx_tx_factor
-  swap         = var.swap
-  vcpus        = var.vcpus
+  # swap - (optional) is a type of number
+  swap = var.swap
+  # vcpus - (optional) is a type of number
+  vcpus = var.vcpus
 }
 ```
 

@@ -65,9 +65,12 @@ variable "region" {
 
 ```terraform
 data "digitalocean_volume" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  region      = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

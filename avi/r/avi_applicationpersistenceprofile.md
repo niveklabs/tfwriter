@@ -176,26 +176,37 @@ variable "ip_persistence_profile" {
 
 ```terraform
 resource "avi_applicationpersistenceprofile" "this" {
-  description             = var.description
-  is_federated            = var.is_federated
-  name                    = var.name
-  persistence_type        = var.persistence_type
+  # description - (optional) is a type of string
+  description = var.description
+  # is_federated - (optional) is a type of bool
+  is_federated = var.is_federated
+  # name - (required) is a type of string
+  name = var.name
+  # persistence_type - (required) is a type of string
+  persistence_type = var.persistence_type
+  # server_hm_down_recovery - (optional) is a type of string
   server_hm_down_recovery = var.server_hm_down_recovery
-  tenant_ref              = var.tenant_ref
-  uuid                    = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "app_cookie_persistence_profile" {
     for_each = var.app_cookie_persistence_profile
     content {
+      # encryption_key - (optional) is a type of string
       encryption_key = app_cookie_persistence_profile.value["encryption_key"]
-      prst_hdr_name  = app_cookie_persistence_profile.value["prst_hdr_name"]
-      timeout        = app_cookie_persistence_profile.value["timeout"]
+      # prst_hdr_name - (required) is a type of string
+      prst_hdr_name = app_cookie_persistence_profile.value["prst_hdr_name"]
+      # timeout - (optional) is a type of number
+      timeout = app_cookie_persistence_profile.value["timeout"]
     }
   }
 
   dynamic "hdr_persistence_profile" {
     for_each = var.hdr_persistence_profile
     content {
+      # prst_hdr_name - (optional) is a type of string
       prst_hdr_name = hdr_persistence_profile.value["prst_hdr_name"]
     }
   }
@@ -203,17 +214,24 @@ resource "avi_applicationpersistenceprofile" "this" {
   dynamic "http_cookie_persistence_profile" {
     for_each = var.http_cookie_persistence_profile
     content {
+      # always_send_cookie - (optional) is a type of bool
       always_send_cookie = http_cookie_persistence_profile.value["always_send_cookie"]
-      cookie_name        = http_cookie_persistence_profile.value["cookie_name"]
-      encryption_key     = http_cookie_persistence_profile.value["encryption_key"]
-      timeout            = http_cookie_persistence_profile.value["timeout"]
+      # cookie_name - (optional) is a type of string
+      cookie_name = http_cookie_persistence_profile.value["cookie_name"]
+      # encryption_key - (optional) is a type of string
+      encryption_key = http_cookie_persistence_profile.value["encryption_key"]
+      # timeout - (optional) is a type of number
+      timeout = http_cookie_persistence_profile.value["timeout"]
 
       dynamic "key" {
         for_each = http_cookie_persistence_profile.value.key
         content {
-          aes_key  = key.value["aes_key"]
+          # aes_key - (optional) is a type of string
+          aes_key = key.value["aes_key"]
+          # hmac_key - (optional) is a type of string
           hmac_key = key.value["hmac_key"]
-          name     = key.value["name"]
+          # name - (optional) is a type of string
+          name = key.value["name"]
         }
       }
 
@@ -223,7 +241,9 @@ resource "avi_applicationpersistenceprofile" "this" {
   dynamic "ip_persistence_profile" {
     for_each = var.ip_persistence_profile
     content {
-      ip_mask               = ip_persistence_profile.value["ip_mask"]
+      # ip_mask - (optional) is a type of number
+      ip_mask = ip_persistence_profile.value["ip_mask"]
+      # ip_persistent_timeout - (optional) is a type of number
       ip_persistent_timeout = ip_persistence_profile.value["ip_persistent_timeout"]
     }
   }

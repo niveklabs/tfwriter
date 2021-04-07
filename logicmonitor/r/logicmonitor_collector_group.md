@@ -66,9 +66,12 @@ variable "properties" {
 
 ```terraform
 resource "logicmonitor_collector_group" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  properties  = var.properties
+  # name - (optional) is a type of string
+  name = var.name
+  # properties - (optional) is a type of map of string
+  properties = var.properties
 }
 ```
 

@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "prismacloud_compliance_standard" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

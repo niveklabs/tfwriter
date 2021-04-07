@@ -189,49 +189,76 @@ variable "sticky_sessions" {
 
 ```terraform
 resource "digitalocean_loadbalancer" "this" {
-  algorithm                = var.algorithm
-  droplet_ids              = var.droplet_ids
-  droplet_tag              = var.droplet_tag
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # droplet_ids - (optional) is a type of set of number
+  droplet_ids = var.droplet_ids
+  # droplet_tag - (optional) is a type of string
+  droplet_tag = var.droplet_tag
+  # enable_backend_keepalive - (optional) is a type of bool
   enable_backend_keepalive = var.enable_backend_keepalive
-  enable_proxy_protocol    = var.enable_proxy_protocol
-  name                     = var.name
-  redirect_http_to_https   = var.redirect_http_to_https
-  region                   = var.region
-  size                     = var.size
-  vpc_uuid                 = var.vpc_uuid
+  # enable_proxy_protocol - (optional) is a type of bool
+  enable_proxy_protocol = var.enable_proxy_protocol
+  # name - (required) is a type of string
+  name = var.name
+  # redirect_http_to_https - (optional) is a type of bool
+  redirect_http_to_https = var.redirect_http_to_https
+  # region - (required) is a type of string
+  region = var.region
+  # size - (optional) is a type of string
+  size = var.size
+  # vpc_uuid - (optional) is a type of string
+  vpc_uuid = var.vpc_uuid
 
   dynamic "forwarding_rule" {
     for_each = var.forwarding_rule
     content {
-      certificate_id   = forwarding_rule.value["certificate_id"]
+      # certificate_id - (optional) is a type of string
+      certificate_id = forwarding_rule.value["certificate_id"]
+      # certificate_name - (optional) is a type of string
       certificate_name = forwarding_rule.value["certificate_name"]
-      entry_port       = forwarding_rule.value["entry_port"]
-      entry_protocol   = forwarding_rule.value["entry_protocol"]
-      target_port      = forwarding_rule.value["target_port"]
-      target_protocol  = forwarding_rule.value["target_protocol"]
-      tls_passthrough  = forwarding_rule.value["tls_passthrough"]
+      # entry_port - (required) is a type of number
+      entry_port = forwarding_rule.value["entry_port"]
+      # entry_protocol - (required) is a type of string
+      entry_protocol = forwarding_rule.value["entry_protocol"]
+      # target_port - (required) is a type of number
+      target_port = forwarding_rule.value["target_port"]
+      # target_protocol - (required) is a type of string
+      target_protocol = forwarding_rule.value["target_protocol"]
+      # tls_passthrough - (optional) is a type of bool
+      tls_passthrough = forwarding_rule.value["tls_passthrough"]
     }
   }
 
   dynamic "healthcheck" {
     for_each = var.healthcheck
     content {
-      check_interval_seconds   = healthcheck.value["check_interval_seconds"]
-      healthy_threshold        = healthcheck.value["healthy_threshold"]
-      path                     = healthcheck.value["path"]
-      port                     = healthcheck.value["port"]
-      protocol                 = healthcheck.value["protocol"]
+      # check_interval_seconds - (optional) is a type of number
+      check_interval_seconds = healthcheck.value["check_interval_seconds"]
+      # healthy_threshold - (optional) is a type of number
+      healthy_threshold = healthcheck.value["healthy_threshold"]
+      # path - (optional) is a type of string
+      path = healthcheck.value["path"]
+      # port - (required) is a type of number
+      port = healthcheck.value["port"]
+      # protocol - (required) is a type of string
+      protocol = healthcheck.value["protocol"]
+      # response_timeout_seconds - (optional) is a type of number
       response_timeout_seconds = healthcheck.value["response_timeout_seconds"]
-      unhealthy_threshold      = healthcheck.value["unhealthy_threshold"]
+      # unhealthy_threshold - (optional) is a type of number
+      unhealthy_threshold = healthcheck.value["unhealthy_threshold"]
     }
   }
 
   dynamic "sticky_sessions" {
     for_each = var.sticky_sessions
     content {
-      cookie_name        = sticky_sessions.value["cookie_name"]
+      # cookie_name - (optional) is a type of string
+      cookie_name = sticky_sessions.value["cookie_name"]
+      # cookie_ttl_seconds - (optional) is a type of number
       cookie_ttl_seconds = sticky_sessions.value["cookie_ttl_seconds"]
-      type               = sticky_sessions.value["type"]
+      # type - (optional) is a type of string
+      type = sticky_sessions.value["type"]
     }
   }
 

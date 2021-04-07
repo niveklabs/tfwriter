@@ -87,12 +87,18 @@ variable "username" {
 
 ```terraform
 resource "okta_app_user" "this" {
-  app_id            = var.app_id
-  password          = var.password
-  profile           = var.profile
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # password - (optional) is a type of string
+  password = var.password
+  # profile - (optional) is a type of string
+  profile = var.profile
+  # retain_assignment - (optional) is a type of bool
   retain_assignment = var.retain_assignment
-  user_id           = var.user_id
-  username          = var.username
+  # user_id - (required) is a type of string
+  user_id = var.user_id
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

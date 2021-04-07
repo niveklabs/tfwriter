@@ -245,67 +245,107 @@ variable "timeouts" {
 
 ```terraform
 resource "prismacloud_policy" "this" {
-  cloud_type               = var.cloud_type
-  deleted                  = var.deleted
-  description              = var.description
-  enabled                  = var.enabled
-  labels                   = var.labels
-  name                     = var.name
-  overridden               = var.overridden
-  policy_type              = var.policy_type
-  recommendation           = var.recommendation
-  remediable               = var.remediable
+  # cloud_type - (optional) is a type of string
+  cloud_type = var.cloud_type
+  # deleted - (optional) is a type of bool
+  deleted = var.deleted
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # overridden - (optional) is a type of bool
+  overridden = var.overridden
+  # policy_type - (required) is a type of string
+  policy_type = var.policy_type
+  # recommendation - (optional) is a type of string
+  recommendation = var.recommendation
+  # remediable - (optional) is a type of bool
+  remediable = var.remediable
+  # restrict_alert_dismissal - (optional) is a type of bool
   restrict_alert_dismissal = var.restrict_alert_dismissal
-  severity                 = var.severity
-  system_default           = var.system_default
+  # severity - (optional) is a type of string
+  severity = var.severity
+  # system_default - (optional) is a type of bool
+  system_default = var.system_default
 
   dynamic "compliance_metadata" {
     for_each = var.compliance_metadata
     content {
-      compliance_id           = compliance_metadata.value["compliance_id"]
-      custom_assigned         = compliance_metadata.value["custom_assigned"]
-      policy_id               = compliance_metadata.value["policy_id"]
+      # compliance_id - (optional) is a type of string
+      compliance_id = compliance_metadata.value["compliance_id"]
+      # custom_assigned - (optional) is a type of bool
+      custom_assigned = compliance_metadata.value["custom_assigned"]
+      # policy_id - (optional) is a type of string
+      policy_id = compliance_metadata.value["policy_id"]
+      # requirement_description - (optional) is a type of string
       requirement_description = compliance_metadata.value["requirement_description"]
-      requirement_id          = compliance_metadata.value["requirement_id"]
-      requirement_name        = compliance_metadata.value["requirement_name"]
-      section_description     = compliance_metadata.value["section_description"]
-      section_id              = compliance_metadata.value["section_id"]
-      section_label           = compliance_metadata.value["section_label"]
-      standard_description    = compliance_metadata.value["standard_description"]
-      standard_name           = compliance_metadata.value["standard_name"]
+      # requirement_id - (optional) is a type of string
+      requirement_id = compliance_metadata.value["requirement_id"]
+      # requirement_name - (optional) is a type of string
+      requirement_name = compliance_metadata.value["requirement_name"]
+      # section_description - (optional) is a type of string
+      section_description = compliance_metadata.value["section_description"]
+      # section_id - (optional) is a type of string
+      section_id = compliance_metadata.value["section_id"]
+      # section_label - (optional) is a type of string
+      section_label = compliance_metadata.value["section_label"]
+      # standard_description - (optional) is a type of string
+      standard_description = compliance_metadata.value["standard_description"]
+      # standard_name - (optional) is a type of string
+      standard_name = compliance_metadata.value["standard_name"]
     }
   }
 
   dynamic "remediation" {
     for_each = var.remediation
     content {
+      # cli_script_json_schema_string - (optional) is a type of string
       cli_script_json_schema_string = remediation.value["cli_script_json_schema_string"]
-      cli_script_template           = remediation.value["cli_script_template"]
-      description                   = remediation.value["description"]
-      template_type                 = remediation.value["template_type"]
+      # cli_script_template - (optional) is a type of string
+      cli_script_template = remediation.value["cli_script_template"]
+      # description - (optional) is a type of string
+      description = remediation.value["description"]
+      # template_type - (optional) is a type of string
+      template_type = remediation.value["template_type"]
     }
   }
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      api_name         = rule.value["api_name"]
-      cloud_account    = rule.value["cloud_account"]
-      cloud_type       = rule.value["cloud_type"]
-      criteria         = rule.value["criteria"]
-      name             = rule.value["name"]
-      parameters       = rule.value["parameters"]
+      # api_name - (optional) is a type of string
+      api_name = rule.value["api_name"]
+      # cloud_account - (optional) is a type of string
+      cloud_account = rule.value["cloud_account"]
+      # cloud_type - (optional) is a type of string
+      cloud_type = rule.value["cloud_type"]
+      # criteria - (required) is a type of string
+      criteria = rule.value["criteria"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # parameters - (required) is a type of map of string
+      parameters = rule.value["parameters"]
+      # resource_id_path - (optional) is a type of string
       resource_id_path = rule.value["resource_id_path"]
-      resource_type    = rule.value["resource_type"]
-      rule_type        = rule.value["rule_type"]
+      # resource_type - (optional) is a type of string
+      resource_type = rule.value["resource_type"]
+      # rule_type - (required) is a type of string
+      rule_type = rule.value["rule_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

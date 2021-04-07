@@ -70,12 +70,15 @@ variable "timeouts" {
 
 ```terraform
 resource "sdm_account_attachment" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  role_id    = var.role_id
+  # role_id - (required) is a type of string
+  role_id = var.role_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

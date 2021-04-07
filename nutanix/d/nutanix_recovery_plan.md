@@ -74,13 +74,17 @@ variable "categories" {
 
 ```terraform
 data "nutanix_recovery_plan" "this" {
-  recovery_plan_id   = var.recovery_plan_id
+  # recovery_plan_id - (optional) is a type of string
+  recovery_plan_id = var.recovery_plan_id
+  # recovery_plan_name - (optional) is a type of string
   recovery_plan_name = var.recovery_plan_name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }

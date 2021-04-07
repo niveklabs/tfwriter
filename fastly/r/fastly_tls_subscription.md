@@ -80,11 +80,16 @@ variable "force_destroy" {
 
 ```terraform
 resource "fastly_tls_subscription" "this" {
+  # certificate_authority - (required) is a type of string
   certificate_authority = var.certificate_authority
-  common_name           = var.common_name
-  configuration_id      = var.configuration_id
-  domains               = var.domains
-  force_destroy         = var.force_destroy
+  # common_name - (optional) is a type of string
+  common_name = var.common_name
+  # configuration_id - (optional) is a type of string
+  configuration_id = var.configuration_id
+  # domains - (required) is a type of set of string
+  domains = var.domains
+  # force_destroy - (optional) is a type of bool
+  force_destroy = var.force_destroy
 }
 ```
 

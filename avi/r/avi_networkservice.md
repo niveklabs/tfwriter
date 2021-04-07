@@ -162,29 +162,45 @@ variable "routing_service" {
 
 ```terraform
 resource "avi_networkservice" "this" {
-  cloud_ref    = var.cloud_ref
-  name         = var.name
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # name - (optional) is a type of string
+  name = var.name
+  # se_group_ref - (optional) is a type of string
   se_group_ref = var.se_group_ref
+  # service_type - (optional) is a type of string
   service_type = var.service_type
-  tenant_ref   = var.tenant_ref
-  uuid         = var.uuid
-  vrf_ref      = var.vrf_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrf_ref - (optional) is a type of string
+  vrf_ref = var.vrf_ref
 
   dynamic "routing_service" {
     for_each = var.routing_service
     content {
-      advertise_backend_networks   = routing_service.value["advertise_backend_networks"]
-      enable_routing               = routing_service.value["enable_routing"]
+      # advertise_backend_networks - (optional) is a type of bool
+      advertise_backend_networks = routing_service.value["advertise_backend_networks"]
+      # enable_routing - (optional) is a type of bool
+      enable_routing = routing_service.value["enable_routing"]
+      # enable_vip_on_all_interfaces - (optional) is a type of bool
       enable_vip_on_all_interfaces = routing_service.value["enable_vip_on_all_interfaces"]
-      enable_vmac                  = routing_service.value["enable_vmac"]
-      graceful_restart             = routing_service.value["graceful_restart"]
-      nat_policy_ref               = routing_service.value["nat_policy_ref"]
-      routing_by_linux_ipstack     = routing_service.value["routing_by_linux_ipstack"]
+      # enable_vmac - (optional) is a type of bool
+      enable_vmac = routing_service.value["enable_vmac"]
+      # graceful_restart - (optional) is a type of bool
+      graceful_restart = routing_service.value["graceful_restart"]
+      # nat_policy_ref - (optional) is a type of string
+      nat_policy_ref = routing_service.value["nat_policy_ref"]
+      # routing_by_linux_ipstack - (optional) is a type of bool
+      routing_by_linux_ipstack = routing_service.value["routing_by_linux_ipstack"]
 
       dynamic "floating_intf_ip" {
         for_each = routing_service.value.floating_intf_ip
         content {
+          # addr - (required) is a type of string
           addr = floating_intf_ip.value["addr"]
+          # type - (required) is a type of string
           type = floating_intf_ip.value["type"]
         }
       }
@@ -192,7 +208,9 @@ resource "avi_networkservice" "this" {
       dynamic "floating_intf_ip_se_2" {
         for_each = routing_service.value.floating_intf_ip_se_2
         content {
+          # addr - (required) is a type of string
           addr = floating_intf_ip_se_2.value["addr"]
+          # type - (required) is a type of string
           type = floating_intf_ip_se_2.value["type"]
         }
       }
@@ -200,12 +218,18 @@ resource "avi_networkservice" "this" {
       dynamic "flowtable_profile" {
         for_each = routing_service.value.flowtable_profile
         content {
-          tcp_closed_timeout           = flowtable_profile.value["tcp_closed_timeout"]
+          # tcp_closed_timeout - (optional) is a type of number
+          tcp_closed_timeout = flowtable_profile.value["tcp_closed_timeout"]
+          # tcp_connection_setup_timeout - (optional) is a type of number
           tcp_connection_setup_timeout = flowtable_profile.value["tcp_connection_setup_timeout"]
-          tcp_half_closed_timeout      = flowtable_profile.value["tcp_half_closed_timeout"]
-          tcp_idle_timeout             = flowtable_profile.value["tcp_idle_timeout"]
-          tcp_reset_timeout            = flowtable_profile.value["tcp_reset_timeout"]
-          udp_idle_timeout             = flowtable_profile.value["udp_idle_timeout"]
+          # tcp_half_closed_timeout - (optional) is a type of number
+          tcp_half_closed_timeout = flowtable_profile.value["tcp_half_closed_timeout"]
+          # tcp_idle_timeout - (optional) is a type of number
+          tcp_idle_timeout = flowtable_profile.value["tcp_idle_timeout"]
+          # tcp_reset_timeout - (optional) is a type of number
+          tcp_reset_timeout = flowtable_profile.value["tcp_reset_timeout"]
+          # udp_idle_timeout - (optional) is a type of number
+          udp_idle_timeout = flowtable_profile.value["udp_idle_timeout"]
         }
       }
 

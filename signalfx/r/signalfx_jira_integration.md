@@ -131,18 +131,30 @@ variable "username" {
 
 ```terraform
 resource "signalfx_jira_integration" "this" {
-  api_token             = var.api_token
+  # api_token - (optional) is a type of string
+  api_token = var.api_token
+  # assignee_display_name - (optional) is a type of string
   assignee_display_name = var.assignee_display_name
-  assignee_name         = var.assignee_name
-  auth_method           = var.auth_method
-  base_url              = var.base_url
-  enabled               = var.enabled
-  issue_type            = var.issue_type
-  name                  = var.name
-  password              = var.password
-  project_key           = var.project_key
-  user_email            = var.user_email
-  username              = var.username
+  # assignee_name - (required) is a type of string
+  assignee_name = var.assignee_name
+  # auth_method - (required) is a type of string
+  auth_method = var.auth_method
+  # base_url - (required) is a type of string
+  base_url = var.base_url
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # issue_type - (required) is a type of string
+  issue_type = var.issue_type
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # project_key - (required) is a type of string
+  project_key = var.project_key
+  # user_email - (optional) is a type of string
+  user_email = var.user_email
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

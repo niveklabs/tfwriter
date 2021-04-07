@@ -115,20 +115,31 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_integration_gcr" "this" {
-  enabled         = var.enabled
-  limit_by_label  = var.limit_by_label
-  limit_by_repos  = var.limit_by_repos
-  limit_by_tag    = var.limit_by_tag
-  limit_num_imgs  = var.limit_num_imgs
-  name            = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # limit_by_label - (optional) is a type of string
+  limit_by_label = var.limit_by_label
+  # limit_by_repos - (optional) is a type of string
+  limit_by_repos = var.limit_by_repos
+  # limit_by_tag - (optional) is a type of string
+  limit_by_tag = var.limit_by_tag
+  # limit_num_imgs - (optional) is a type of number
+  limit_num_imgs = var.limit_num_imgs
+  # name - (required) is a type of string
+  name = var.name
+  # registry_domain - (required) is a type of string
   registry_domain = var.registry_domain
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
-      client_email   = credentials.value["client_email"]
-      client_id      = credentials.value["client_id"]
-      private_key    = credentials.value["private_key"]
+      # client_email - (required) is a type of string
+      client_email = credentials.value["client_email"]
+      # client_id - (required) is a type of string
+      client_id = credentials.value["client_id"]
+      # private_key - (required) is a type of string
+      private_key = credentials.value["private_key"]
+      # private_key_id - (required) is a type of string
       private_key_id = credentials.value["private_key_id"]
     }
   }

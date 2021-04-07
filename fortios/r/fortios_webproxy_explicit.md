@@ -304,46 +304,79 @@ variable "pac_policy" {
 
 ```terraform
 resource "fortios_webproxy_explicit" "this" {
-  dynamic_sort_subtable     = var.dynamic_sort_subtable
-  ftp_incoming_port         = var.ftp_incoming_port
-  ftp_over_http             = var.ftp_over_http
-  http_incoming_port        = var.http_incoming_port
-  https_incoming_port       = var.https_incoming_port
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # ftp_incoming_port - (optional) is a type of string
+  ftp_incoming_port = var.ftp_incoming_port
+  # ftp_over_http - (optional) is a type of string
+  ftp_over_http = var.ftp_over_http
+  # http_incoming_port - (optional) is a type of string
+  http_incoming_port = var.http_incoming_port
+  # https_incoming_port - (optional) is a type of string
+  https_incoming_port = var.https_incoming_port
+  # https_replacement_message - (optional) is a type of string
   https_replacement_message = var.https_replacement_message
-  incoming_ip               = var.incoming_ip
-  incoming_ip6              = var.incoming_ip6
-  ipv6_status               = var.ipv6_status
+  # incoming_ip - (optional) is a type of string
+  incoming_ip = var.incoming_ip
+  # incoming_ip6 - (optional) is a type of string
+  incoming_ip6 = var.incoming_ip6
+  # ipv6_status - (optional) is a type of string
+  ipv6_status = var.ipv6_status
+  # message_upon_server_error - (optional) is a type of string
   message_upon_server_error = var.message_upon_server_error
-  outgoing_ip               = var.outgoing_ip
-  outgoing_ip6              = var.outgoing_ip6
-  pac_file_data             = var.pac_file_data
-  pac_file_name             = var.pac_file_name
-  pac_file_server_port      = var.pac_file_server_port
-  pac_file_server_status    = var.pac_file_server_status
-  pac_file_url              = var.pac_file_url
-  pref_dns_result           = var.pref_dns_result
-  realm                     = var.realm
-  sec_default_action        = var.sec_default_action
-  socks                     = var.socks
-  socks_incoming_port       = var.socks_incoming_port
-  ssl_algorithm             = var.ssl_algorithm
-  status                    = var.status
-  strict_guest              = var.strict_guest
-  trace_auth_no_rsp         = var.trace_auth_no_rsp
-  unknown_http_version      = var.unknown_http_version
+  # outgoing_ip - (optional) is a type of string
+  outgoing_ip = var.outgoing_ip
+  # outgoing_ip6 - (optional) is a type of string
+  outgoing_ip6 = var.outgoing_ip6
+  # pac_file_data - (optional) is a type of string
+  pac_file_data = var.pac_file_data
+  # pac_file_name - (optional) is a type of string
+  pac_file_name = var.pac_file_name
+  # pac_file_server_port - (optional) is a type of string
+  pac_file_server_port = var.pac_file_server_port
+  # pac_file_server_status - (optional) is a type of string
+  pac_file_server_status = var.pac_file_server_status
+  # pac_file_url - (optional) is a type of string
+  pac_file_url = var.pac_file_url
+  # pref_dns_result - (optional) is a type of string
+  pref_dns_result = var.pref_dns_result
+  # realm - (optional) is a type of string
+  realm = var.realm
+  # sec_default_action - (optional) is a type of string
+  sec_default_action = var.sec_default_action
+  # socks - (optional) is a type of string
+  socks = var.socks
+  # socks_incoming_port - (optional) is a type of string
+  socks_incoming_port = var.socks_incoming_port
+  # ssl_algorithm - (optional) is a type of string
+  ssl_algorithm = var.ssl_algorithm
+  # status - (optional) is a type of string
+  status = var.status
+  # strict_guest - (optional) is a type of string
+  strict_guest = var.strict_guest
+  # trace_auth_no_rsp - (optional) is a type of string
+  trace_auth_no_rsp = var.trace_auth_no_rsp
+  # unknown_http_version - (optional) is a type of string
+  unknown_http_version = var.unknown_http_version
 
   dynamic "pac_policy" {
     for_each = var.pac_policy
     content {
-      comments      = pac_policy.value["comments"]
+      # comments - (optional) is a type of string
+      comments = pac_policy.value["comments"]
+      # pac_file_data - (optional) is a type of string
       pac_file_data = pac_policy.value["pac_file_data"]
+      # pac_file_name - (optional) is a type of string
       pac_file_name = pac_policy.value["pac_file_name"]
-      policyid      = pac_policy.value["policyid"]
-      status        = pac_policy.value["status"]
+      # policyid - (optional) is a type of number
+      policyid = pac_policy.value["policyid"]
+      # status - (optional) is a type of string
+      status = pac_policy.value["status"]
 
       dynamic "dstaddr" {
         for_each = pac_policy.value.dstaddr
         content {
+          # name - (optional) is a type of string
           name = dstaddr.value["name"]
         }
       }
@@ -351,6 +384,7 @@ resource "fortios_webproxy_explicit" "this" {
       dynamic "srcaddr" {
         for_each = pac_policy.value.srcaddr
         content {
+          # name - (optional) is a type of string
           name = srcaddr.value["name"]
         }
       }
@@ -358,6 +392,7 @@ resource "fortios_webproxy_explicit" "this" {
       dynamic "srcaddr6" {
         for_each = pac_policy.value.srcaddr6
         content {
+          # name - (optional) is a type of string
           name = srcaddr6.value["name"]
         }
       }

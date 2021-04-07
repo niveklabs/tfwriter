@@ -79,10 +79,15 @@ variable "start" {
 
 ```terraform
 resource "fortios_firewallschedule_recurring" "this" {
+  # color - (optional) is a type of number
   color = var.color
-  day   = var.day
-  end   = var.end
-  name  = var.name
+  # day - (optional) is a type of string
+  day = var.day
+  # end - (required) is a type of string
+  end = var.end
+  # name - (required) is a type of string
+  name = var.name
+  # start - (required) is a type of string
   start = var.start
 }
 ```

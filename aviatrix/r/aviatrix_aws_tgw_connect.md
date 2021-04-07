@@ -70,10 +70,14 @@ variable "transport_vpc_id" {
 
 ```terraform
 resource "aviatrix_aws_tgw_connect" "this" {
-  connection_name      = var.connection_name
+  # connection_name - (required) is a type of string
+  connection_name = var.connection_name
+  # security_domain_name - (required) is a type of string
   security_domain_name = var.security_domain_name
-  tgw_name             = var.tgw_name
-  transport_vpc_id     = var.transport_vpc_id
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
+  # transport_vpc_id - (required) is a type of string
+  transport_vpc_id = var.transport_vpc_id
 }
 ```
 

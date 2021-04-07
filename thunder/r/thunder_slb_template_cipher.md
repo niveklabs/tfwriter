@@ -82,15 +82,20 @@ variable "cipher_cfg" {
 
 ```terraform
 resource "thunder_slb_template_cipher" "this" {
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
   user_tag = var.user_tag
-  uuid     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "cipher_cfg" {
     for_each = var.cipher_cfg
     content {
+      # cipher_suite - (optional) is a type of string
       cipher_suite = cipher_cfg.value["cipher_suite"]
-      priority     = cipher_cfg.value["priority"]
+      # priority - (optional) is a type of number
+      priority = cipher_cfg.value["priority"]
     }
   }
 

@@ -185,24 +185,42 @@ variable "trap_status" {
 
 ```terraform
 resource "fortios_systemsnmp_user" "this" {
-  auth_proto     = var.auth_proto
-  auth_pwd       = var.auth_pwd
-  events         = var.events
-  ha_direct      = var.ha_direct
-  name           = var.name
-  notify_hosts   = var.notify_hosts
-  notify_hosts6  = var.notify_hosts6
-  priv_proto     = var.priv_proto
-  priv_pwd       = var.priv_pwd
-  queries        = var.queries
-  query_port     = var.query_port
+  # auth_proto - (optional) is a type of string
+  auth_proto = var.auth_proto
+  # auth_pwd - (optional) is a type of string
+  auth_pwd = var.auth_pwd
+  # events - (optional) is a type of string
+  events = var.events
+  # ha_direct - (optional) is a type of string
+  ha_direct = var.ha_direct
+  # name - (required) is a type of string
+  name = var.name
+  # notify_hosts - (optional) is a type of string
+  notify_hosts = var.notify_hosts
+  # notify_hosts6 - (optional) is a type of string
+  notify_hosts6 = var.notify_hosts6
+  # priv_proto - (optional) is a type of string
+  priv_proto = var.priv_proto
+  # priv_pwd - (optional) is a type of string
+  priv_pwd = var.priv_pwd
+  # queries - (optional) is a type of string
+  queries = var.queries
+  # query_port - (optional) is a type of number
+  query_port = var.query_port
+  # security_level - (optional) is a type of string
   security_level = var.security_level
-  source_ip      = var.source_ip
-  source_ipv6    = var.source_ipv6
-  status         = var.status
-  trap_lport     = var.trap_lport
-  trap_rport     = var.trap_rport
-  trap_status    = var.trap_status
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ipv6 - (optional) is a type of string
+  source_ipv6 = var.source_ipv6
+  # status - (optional) is a type of string
+  status = var.status
+  # trap_lport - (optional) is a type of number
+  trap_lport = var.trap_lport
+  # trap_rport - (optional) is a type of number
+  trap_rport = var.trap_rport
+  # trap_status - (optional) is a type of string
+  trap_status = var.trap_status
 }
 ```
 

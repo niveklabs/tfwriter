@@ -107,15 +107,24 @@ variable "volume_name" {
 
 ```terraform
 resource "ovh_me_installation_template_partition_scheme_partition" "this" {
-  filesystem    = var.filesystem
-  mountpoint    = var.mountpoint
-  order         = var.order
-  raid          = var.raid
-  scheme_name   = var.scheme_name
-  size          = var.size
+  # filesystem - (required) is a type of string
+  filesystem = var.filesystem
+  # mountpoint - (required) is a type of string
+  mountpoint = var.mountpoint
+  # order - (required) is a type of number
+  order = var.order
+  # raid - (optional) is a type of string
+  raid = var.raid
+  # scheme_name - (required) is a type of string
+  scheme_name = var.scheme_name
+  # size - (required) is a type of number
+  size = var.size
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  type          = var.type
-  volume_name   = var.volume_name
+  # type - (required) is a type of string
+  type = var.type
+  # volume_name - (optional) is a type of string
+  volume_name = var.volume_name
 }
 ```
 

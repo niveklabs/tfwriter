@@ -90,23 +90,36 @@ variable "dnat_policy" {
 
 ```terraform
 resource "aviatrix_gateway_dnat" "this" {
-  gw_name    = var.gw_name
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # sync_to_ha - (optional) is a type of bool
   sync_to_ha = var.sync_to_ha
 
   dynamic "dnat_policy" {
     for_each = var.dnat_policy
     content {
-      connection  = dnat_policy.value["connection"]
-      dnat_ips    = dnat_policy.value["dnat_ips"]
-      dnat_port   = dnat_policy.value["dnat_port"]
-      dst_cidr    = dnat_policy.value["dst_cidr"]
-      dst_port    = dnat_policy.value["dst_port"]
+      # connection - (optional) is a type of string
+      connection = dnat_policy.value["connection"]
+      # dnat_ips - (optional) is a type of string
+      dnat_ips = dnat_policy.value["dnat_ips"]
+      # dnat_port - (optional) is a type of string
+      dnat_port = dnat_policy.value["dnat_port"]
+      # dst_cidr - (optional) is a type of string
+      dst_cidr = dnat_policy.value["dst_cidr"]
+      # dst_port - (optional) is a type of string
+      dst_port = dnat_policy.value["dst_port"]
+      # exclude_rtb - (optional) is a type of string
       exclude_rtb = dnat_policy.value["exclude_rtb"]
-      interface   = dnat_policy.value["interface"]
-      mark        = dnat_policy.value["mark"]
-      protocol    = dnat_policy.value["protocol"]
-      src_cidr    = dnat_policy.value["src_cidr"]
-      src_port    = dnat_policy.value["src_port"]
+      # interface - (optional) is a type of string
+      interface = dnat_policy.value["interface"]
+      # mark - (optional) is a type of string
+      mark = dnat_policy.value["mark"]
+      # protocol - (optional) is a type of string
+      protocol = dnat_policy.value["protocol"]
+      # src_cidr - (optional) is a type of string
+      src_cidr = dnat_policy.value["src_cidr"]
+      # src_port - (optional) is a type of string
+      src_port = dnat_policy.value["src_port"]
     }
   }
 

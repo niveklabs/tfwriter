@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "signalfx_text_chart" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  markdown    = var.markdown
-  name        = var.name
+  # markdown - (required) is a type of string
+  markdown = var.markdown
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

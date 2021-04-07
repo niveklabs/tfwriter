@@ -58,7 +58,9 @@ variable "search_id" {
 
 ```terraform
 data "prismacloud_rql_historic_search" "this" {
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # search_id - (optional) is a type of string
   search_id = var.search_id
 }
 ```

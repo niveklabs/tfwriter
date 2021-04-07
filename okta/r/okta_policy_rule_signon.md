@@ -176,23 +176,40 @@ variable "users_excluded" {
 
 ```terraform
 resource "okta_policy_rule_signon" "this" {
-  access              = var.access
-  authtype            = var.authtype
-  mfa_lifetime        = var.mfa_lifetime
-  mfa_prompt          = var.mfa_prompt
+  # access - (optional) is a type of string
+  access = var.access
+  # authtype - (optional) is a type of string
+  authtype = var.authtype
+  # mfa_lifetime - (optional) is a type of number
+  mfa_lifetime = var.mfa_lifetime
+  # mfa_prompt - (optional) is a type of string
+  mfa_prompt = var.mfa_prompt
+  # mfa_remember_device - (optional) is a type of bool
   mfa_remember_device = var.mfa_remember_device
-  mfa_required        = var.mfa_required
-  name                = var.name
-  network_connection  = var.network_connection
-  network_excludes    = var.network_excludes
-  network_includes    = var.network_includes
-  policyid            = var.policyid
-  priority            = var.priority
-  session_idle        = var.session_idle
-  session_lifetime    = var.session_lifetime
-  session_persistent  = var.session_persistent
-  status              = var.status
-  users_excluded      = var.users_excluded
+  # mfa_required - (optional) is a type of bool
+  mfa_required = var.mfa_required
+  # name - (required) is a type of string
+  name = var.name
+  # network_connection - (optional) is a type of string
+  network_connection = var.network_connection
+  # network_excludes - (optional) is a type of list of string
+  network_excludes = var.network_excludes
+  # network_includes - (optional) is a type of list of string
+  network_includes = var.network_includes
+  # policyid - (required) is a type of string
+  policyid = var.policyid
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # session_idle - (optional) is a type of number
+  session_idle = var.session_idle
+  # session_lifetime - (optional) is a type of number
+  session_lifetime = var.session_lifetime
+  # session_persistent - (optional) is a type of bool
+  session_persistent = var.session_persistent
+  # status - (optional) is a type of string
+  status = var.status
+  # users_excluded - (optional) is a type of set of string
+  users_excluded = var.users_excluded
 }
 ```
 

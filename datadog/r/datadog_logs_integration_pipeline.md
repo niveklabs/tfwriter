@@ -50,6 +50,7 @@ variable "is_enabled" {
 
 ```terraform
 resource "datadog_logs_integration_pipeline" "this" {
+  # is_enabled - (optional) is a type of bool
   is_enabled = var.is_enabled
 }
 ```

@@ -112,16 +112,26 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_security_policy_protections" "this" {
-  apply_api_constraints            = var.apply_api_constraints
+  # apply_api_constraints - (required) is a type of bool
+  apply_api_constraints = var.apply_api_constraints
+  # apply_application_layer_controls - (required) is a type of bool
   apply_application_layer_controls = var.apply_application_layer_controls
-  apply_botman_controls            = var.apply_botman_controls
-  apply_network_layer_controls     = var.apply_network_layer_controls
-  apply_rate_controls              = var.apply_rate_controls
-  apply_reputation_controls        = var.apply_reputation_controls
-  apply_slow_post_controls         = var.apply_slow_post_controls
-  config_id                        = var.config_id
-  security_policy_id               = var.security_policy_id
-  version                          = var.version
+  # apply_botman_controls - (required) is a type of bool
+  apply_botman_controls = var.apply_botman_controls
+  # apply_network_layer_controls - (required) is a type of bool
+  apply_network_layer_controls = var.apply_network_layer_controls
+  # apply_rate_controls - (required) is a type of bool
+  apply_rate_controls = var.apply_rate_controls
+  # apply_reputation_controls - (required) is a type of bool
+  apply_reputation_controls = var.apply_reputation_controls
+  # apply_slow_post_controls - (required) is a type of bool
+  apply_slow_post_controls = var.apply_slow_post_controls
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

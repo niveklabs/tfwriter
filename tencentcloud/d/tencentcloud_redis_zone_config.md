@@ -66,9 +66,12 @@ variable "type_id" {
 
 ```terraform
 data "tencentcloud_redis_zone_config" "this" {
-  region             = var.region
+  # region - (optional) is a type of string
+  region = var.region
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  type_id            = var.type_id
+  # type_id - (optional) is a type of number
+  type_id = var.type_id
 }
 ```
 

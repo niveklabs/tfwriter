@@ -66,9 +66,12 @@ variable "region" {
 
 ```terraform
 data "scaleway_registry_namespace" "this" {
-  name         = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
-  region       = var.region
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

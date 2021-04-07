@@ -49,6 +49,7 @@ variable "gw_name" {
 
 ```terraform
 data "aviatrix_spoke_gateway" "this" {
+  # gw_name - (required) is a type of string
   gw_name = var.gw_name
 }
 ```

@@ -49,6 +49,7 @@ variable "zone_id" {
 
 ```terraform
 data "cloudflare_zone_dnssec" "this" {
+  # zone_id - (required) is a type of string
   zone_id = var.zone_id
 }
 ```

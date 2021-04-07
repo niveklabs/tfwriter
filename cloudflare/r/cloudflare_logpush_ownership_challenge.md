@@ -56,8 +56,10 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_logpush_ownership_challenge" "this" {
+  # destination_conf - (required) is a type of string
   destination_conf = var.destination_conf
-  zone_id          = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

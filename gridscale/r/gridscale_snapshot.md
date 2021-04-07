@@ -126,18 +126,27 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_snapshot" "this" {
-  labels       = var.labels
-  name         = var.name
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # storage_uuid - (required) is a type of string
   storage_uuid = var.storage_uuid
 
   dynamic "object_storage_export" {
     for_each = var.object_storage_export
     content {
+      # access_key - (required) is a type of string
       access_key = object_storage_export.value["access_key"]
-      bucket     = object_storage_export.value["bucket"]
-      host       = object_storage_export.value["host"]
-      object     = object_storage_export.value["object"]
-      private    = object_storage_export.value["private"]
+      # bucket - (required) is a type of string
+      bucket = object_storage_export.value["bucket"]
+      # host - (required) is a type of string
+      host = object_storage_export.value["host"]
+      # object - (required) is a type of string
+      object = object_storage_export.value["object"]
+      # private - (required) is a type of bool
+      private = object_storage_export.value["private"]
+      # secret_key - (required) is a type of string
       secret_key = object_storage_export.value["secret_key"]
     }
   }
@@ -145,6 +154,7 @@ resource "gridscale_snapshot" "this" {
   dynamic "rollback" {
     for_each = var.rollback
     content {
+      # id - (required) is a type of string
       id = rollback.value["id"]
     }
   }
@@ -152,8 +162,11 @@ resource "gridscale_snapshot" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -103,16 +103,23 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_dns_domain" "this" {
-  domain_name       = var.domain_name
-  group_id          = var.group_id
-  lang              = var.lang
-  remark            = var.remark
+  # domain_name - (required) is a type of string
+  domain_name = var.domain_name
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

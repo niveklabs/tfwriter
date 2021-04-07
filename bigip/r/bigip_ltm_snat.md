@@ -136,22 +136,34 @@ variable "origins" {
 
 ```terraform
 resource "bigip_ltm_snat" "this" {
-  autolasthop   = var.autolasthop
-  full_path     = var.full_path
-  mirror        = var.mirror
-  name          = var.name
-  partition     = var.partition
-  snatpool      = var.snatpool
-  sourceport    = var.sourceport
-  translation   = var.translation
-  vlans         = var.vlans
+  # autolasthop - (optional) is a type of string
+  autolasthop = var.autolasthop
+  # full_path - (optional) is a type of string
+  full_path = var.full_path
+  # mirror - (optional) is a type of string
+  mirror = var.mirror
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # snatpool - (optional) is a type of string
+  snatpool = var.snatpool
+  # sourceport - (optional) is a type of string
+  sourceport = var.sourceport
+  # translation - (optional) is a type of string
+  translation = var.translation
+  # vlans - (optional) is a type of set of string
+  vlans = var.vlans
+  # vlansdisabled - (optional) is a type of bool
   vlansdisabled = var.vlansdisabled
 
   dynamic "origins" {
     for_each = var.origins
     content {
+      # app_service - (optional) is a type of string
       app_service = origins.value["app_service"]
-      name        = origins.value["name"]
+      # name - (optional) is a type of string
+      name = origins.value["name"]
     }
   }
 

@@ -120,19 +120,29 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_subnet" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  cidr_block        = var.cidr_block
-  description       = var.description
-  name              = var.name
-  tags              = var.tags
-  vpc_id            = var.vpc_id
-  vswitch_name      = var.vswitch_name
-  zone_id           = var.zone_id
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_name - (optional) is a type of string
+  vswitch_name = var.vswitch_name
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

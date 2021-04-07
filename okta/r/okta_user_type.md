@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "okta_user_type" "this" {
-  description  = var.description
+  # description - (required) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

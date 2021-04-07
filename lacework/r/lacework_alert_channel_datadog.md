@@ -80,11 +80,16 @@ variable "name" {
 
 ```terraform
 resource "lacework_alert_channel_datadog" "this" {
-  api_key         = var.api_key
+  # api_key - (required) is a type of string
+  api_key = var.api_key
+  # datadog_service - (optional) is a type of string
   datadog_service = var.datadog_service
-  datadog_site    = var.datadog_site
-  enabled         = var.enabled
-  name            = var.name
+  # datadog_site - (optional) is a type of string
+  datadog_site = var.datadog_site
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

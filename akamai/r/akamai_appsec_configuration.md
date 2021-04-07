@@ -77,11 +77,16 @@ variable "name" {
 
 ```terraform
 resource "akamai_appsec_configuration" "this" {
+  # contract_id - (required) is a type of string
   contract_id = var.contract_id
+  # description - (required) is a type of string
   description = var.description
-  group_id    = var.group_id
-  host_names  = var.host_names
-  name        = var.name
+  # group_id - (required) is a type of number
+  group_id = var.group_id
+  # host_names - (required) is a type of list of string
+  host_names = var.host_names
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

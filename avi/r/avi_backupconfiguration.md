@@ -161,21 +161,36 @@ variable "uuid" {
 
 ```terraform
 resource "avi_backupconfiguration" "this" {
-  aws_access_key         = var.aws_access_key
-  aws_bucket_id          = var.aws_bucket_id
-  aws_secret_access      = var.aws_secret_access
-  backup_file_prefix     = var.backup_file_prefix
-  backup_passphrase      = var.backup_passphrase
+  # aws_access_key - (optional) is a type of string
+  aws_access_key = var.aws_access_key
+  # aws_bucket_id - (optional) is a type of string
+  aws_bucket_id = var.aws_bucket_id
+  # aws_secret_access - (optional) is a type of string
+  aws_secret_access = var.aws_secret_access
+  # backup_file_prefix - (optional) is a type of string
+  backup_file_prefix = var.backup_file_prefix
+  # backup_passphrase - (optional) is a type of string
+  backup_passphrase = var.backup_passphrase
+  # maximum_backups_stored - (optional) is a type of number
   maximum_backups_stored = var.maximum_backups_stored
-  name                   = var.name
-  remote_directory       = var.remote_directory
-  remote_hostname        = var.remote_hostname
-  save_local             = var.save_local
-  ssh_user_ref           = var.ssh_user_ref
-  tenant_ref             = var.tenant_ref
-  upload_to_remote_host  = var.upload_to_remote_host
-  upload_to_s3           = var.upload_to_s3
-  uuid                   = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # remote_directory - (optional) is a type of string
+  remote_directory = var.remote_directory
+  # remote_hostname - (optional) is a type of string
+  remote_hostname = var.remote_hostname
+  # save_local - (optional) is a type of bool
+  save_local = var.save_local
+  # ssh_user_ref - (optional) is a type of string
+  ssh_user_ref = var.ssh_user_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # upload_to_remote_host - (optional) is a type of bool
+  upload_to_remote_host = var.upload_to_remote_host
+  # upload_to_s3 - (optional) is a type of bool
+  upload_to_s3 = var.upload_to_s3
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

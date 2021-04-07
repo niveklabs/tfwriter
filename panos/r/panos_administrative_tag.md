@@ -73,10 +73,14 @@ variable "vsys" {
 
 ```terraform
 resource "panos_administrative_tag" "this" {
-  color   = var.color
+  # color - (optional) is a type of string
+  color = var.color
+  # comment - (optional) is a type of string
   comment = var.comment
-  name    = var.name
-  vsys    = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

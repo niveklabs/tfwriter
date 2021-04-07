@@ -68,15 +68,20 @@ variable "permissions" {
 
 ```terraform
 resource "grafana_folder_permission" "this" {
+  # folder_uid - (required) is a type of string
   folder_uid = var.folder_uid
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
+      # permission - (required) is a type of string
       permission = permissions.value["permission"]
-      role       = permissions.value["role"]
-      team_id    = permissions.value["team_id"]
-      user_id    = permissions.value["user_id"]
+      # role - (optional) is a type of string
+      role = permissions.value["role"]
+      # team_id - (optional) is a type of number
+      team_id = permissions.value["team_id"]
+      # user_id - (optional) is a type of number
+      user_id = permissions.value["user_id"]
     }
   }
 

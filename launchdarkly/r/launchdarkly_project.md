@@ -108,23 +108,36 @@ variable "environments" {
 
 ```terraform
 resource "launchdarkly_project" "this" {
+  # include_in_snippet - (optional) is a type of bool
   include_in_snippet = var.include_in_snippet
-  key                = var.key
-  name               = var.name
-  tags               = var.tags
+  # key - (required) is a type of string
+  key = var.key
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "environments" {
     for_each = var.environments
     content {
-      color                = environments.value["color"]
-      confirm_changes      = environments.value["confirm_changes"]
+      # color - (required) is a type of string
+      color = environments.value["color"]
+      # confirm_changes - (optional) is a type of bool
+      confirm_changes = environments.value["confirm_changes"]
+      # default_track_events - (optional) is a type of bool
       default_track_events = environments.value["default_track_events"]
-      default_ttl          = environments.value["default_ttl"]
-      key                  = environments.value["key"]
-      name                 = environments.value["name"]
-      require_comments     = environments.value["require_comments"]
-      secure_mode          = environments.value["secure_mode"]
-      tags                 = environments.value["tags"]
+      # default_ttl - (optional) is a type of number
+      default_ttl = environments.value["default_ttl"]
+      # key - (required) is a type of string
+      key = environments.value["key"]
+      # name - (required) is a type of string
+      name = environments.value["name"]
+      # require_comments - (optional) is a type of bool
+      require_comments = environments.value["require_comments"]
+      # secure_mode - (optional) is a type of bool
+      secure_mode = environments.value["secure_mode"]
+      # tags - (optional) is a type of set of string
+      tags = environments.value["tags"]
     }
   }
 

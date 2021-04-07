@@ -80,10 +80,15 @@ variable "private_ip_address" {
 
 ```terraform
 resource "alicloud_eip_association" "this" {
-  allocation_id      = var.allocation_id
-  force              = var.force
-  instance_id        = var.instance_id
-  instance_type      = var.instance_type
+  # allocation_id - (required) is a type of string
+  allocation_id = var.allocation_id
+  # force - (optional) is a type of bool
+  force = var.force
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # private_ip_address - (optional) is a type of string
   private_ip_address = var.private_ip_address
 }
 ```

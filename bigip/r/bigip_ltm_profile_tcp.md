@@ -121,16 +121,26 @@ variable "partition" {
 
 ```terraform
 resource "bigip_ltm_profile_tcp" "this" {
+  # close_wait_timeout - (optional) is a type of number
   close_wait_timeout = var.close_wait_timeout
-  defaults_from      = var.defaults_from
-  deferred_accept    = var.deferred_accept
-  fast_open          = var.fast_open
-  finwait_2timeout   = var.finwait_2timeout
-  finwait_timeout    = var.finwait_timeout
-  idle_timeout       = var.idle_timeout
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # deferred_accept - (optional) is a type of string
+  deferred_accept = var.deferred_accept
+  # fast_open - (optional) is a type of string
+  fast_open = var.fast_open
+  # finwait_2timeout - (optional) is a type of number
+  finwait_2timeout = var.finwait_2timeout
+  # finwait_timeout - (optional) is a type of number
+  finwait_timeout = var.finwait_timeout
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # keepalive_interval - (optional) is a type of number
   keepalive_interval = var.keepalive_interval
-  name               = var.name
-  partition          = var.partition
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
 }
 ```
 

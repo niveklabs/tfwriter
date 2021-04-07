@@ -106,14 +106,22 @@ variable "url_reports" {
 
 ```terraform
 resource "panos_telemetry" "this" {
-  application_reports               = var.application_reports
-  file_type_identification_reports  = var.file_type_identification_reports
-  passive_dns_monitoring            = var.passive_dns_monitoring
-  product_usage_stats               = var.product_usage_stats
-  threat_prevention_data            = var.threat_prevention_data
+  # application_reports - (optional) is a type of bool
+  application_reports = var.application_reports
+  # file_type_identification_reports - (optional) is a type of bool
+  file_type_identification_reports = var.file_type_identification_reports
+  # passive_dns_monitoring - (optional) is a type of bool
+  passive_dns_monitoring = var.passive_dns_monitoring
+  # product_usage_stats - (optional) is a type of bool
+  product_usage_stats = var.product_usage_stats
+  # threat_prevention_data - (optional) is a type of bool
+  threat_prevention_data = var.threat_prevention_data
+  # threat_prevention_packet_captures - (optional) is a type of bool
   threat_prevention_packet_captures = var.threat_prevention_packet_captures
-  threat_prevention_reports         = var.threat_prevention_reports
-  url_reports                       = var.url_reports
+  # threat_prevention_reports - (optional) is a type of bool
+  threat_prevention_reports = var.threat_prevention_reports
+  # url_reports - (optional) is a type of bool
+  url_reports = var.url_reports
 }
 ```
 

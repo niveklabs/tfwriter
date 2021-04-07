@@ -102,16 +102,23 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_lb" "this" {
-  ip_id      = var.ip_id
-  name       = var.name
+  # ip_id - (required) is a type of string
+  ip_id = var.ip_id
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
   project_id = var.project_id
-  region     = var.region
-  tags       = var.tags
-  type       = var.type
+  # region - (optional) is a type of string
+  region = var.region
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

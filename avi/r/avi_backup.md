@@ -105,14 +105,22 @@ variable "uuid" {
 
 ```terraform
 resource "avi_backup" "this" {
+  # backup_config_ref - (optional) is a type of string
   backup_config_ref = var.backup_config_ref
-  file_name         = var.file_name
-  local_file_url    = var.local_file_url
-  remote_file_url   = var.remote_file_url
-  scheduler_ref     = var.scheduler_ref
-  tenant_ref        = var.tenant_ref
-  timestamp         = var.timestamp
-  uuid              = var.uuid
+  # file_name - (required) is a type of string
+  file_name = var.file_name
+  # local_file_url - (optional) is a type of string
+  local_file_url = var.local_file_url
+  # remote_file_url - (optional) is a type of string
+  remote_file_url = var.remote_file_url
+  # scheduler_ref - (optional) is a type of string
+  scheduler_ref = var.scheduler_ref
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # timestamp - (optional) is a type of string
+  timestamp = var.timestamp
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

@@ -159,24 +159,39 @@ variable "address_prefix" {
 
 ```terraform
 resource "panos_panorama_bgp_aggregate_advertise_filter" "this" {
-  as_path_regex            = var.as_path_regex
-  bgp_aggregate            = var.bgp_aggregate
-  community_regex          = var.community_regex
-  enable                   = var.enable
+  # as_path_regex - (optional) is a type of string
+  as_path_regex = var.as_path_regex
+  # bgp_aggregate - (required) is a type of string
+  bgp_aggregate = var.bgp_aggregate
+  # community_regex - (optional) is a type of string
+  community_regex = var.community_regex
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # extended_community_regex - (optional) is a type of string
   extended_community_regex = var.extended_community_regex
-  from_peers               = var.from_peers
-  med                      = var.med
-  name                     = var.name
-  next_hops                = var.next_hops
-  route_table              = var.route_table
-  template                 = var.template
-  template_stack           = var.template_stack
-  virtual_router           = var.virtual_router
+  # from_peers - (optional) is a type of list of string
+  from_peers = var.from_peers
+  # med - (optional) is a type of string
+  med = var.med
+  # name - (required) is a type of string
+  name = var.name
+  # next_hops - (optional) is a type of list of string
+  next_hops = var.next_hops
+  # route_table - (optional) is a type of string
+  route_table = var.route_table
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 
   dynamic "address_prefix" {
     for_each = var.address_prefix
     content {
-      exact  = address_prefix.value["exact"]
+      # exact - (optional) is a type of bool
+      exact = address_prefix.value["exact"]
+      # prefix - (required) is a type of string
       prefix = address_prefix.value["prefix"]
     }
   }

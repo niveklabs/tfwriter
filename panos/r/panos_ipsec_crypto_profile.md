@@ -111,15 +111,24 @@ variable "protocol" {
 
 ```terraform
 resource "panos_ipsec_crypto_profile" "this" {
+  # authentications - (required) is a type of list of string
   authentications = var.authentications
-  dh_group        = var.dh_group
-  encryptions     = var.encryptions
-  lifesize_type   = var.lifesize_type
-  lifesize_value  = var.lifesize_value
-  lifetime_type   = var.lifetime_type
-  lifetime_value  = var.lifetime_value
-  name            = var.name
-  protocol        = var.protocol
+  # dh_group - (optional) is a type of string
+  dh_group = var.dh_group
+  # encryptions - (required) is a type of list of string
+  encryptions = var.encryptions
+  # lifesize_type - (optional) is a type of string
+  lifesize_type = var.lifesize_type
+  # lifesize_value - (optional) is a type of number
+  lifesize_value = var.lifesize_value
+  # lifetime_type - (optional) is a type of string
+  lifetime_type = var.lifetime_type
+  # lifetime_value - (optional) is a type of number
+  lifetime_value = var.lifetime_value
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
 }
 ```
 

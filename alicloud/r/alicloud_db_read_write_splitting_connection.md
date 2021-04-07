@@ -88,12 +88,18 @@ variable "weight" {
 
 ```terraform
 resource "alicloud_db_read_write_splitting_connection" "this" {
+  # connection_prefix - (optional) is a type of string
   connection_prefix = var.connection_prefix
+  # distribution_type - (required) is a type of string
   distribution_type = var.distribution_type
-  instance_id       = var.instance_id
-  max_delay_time    = var.max_delay_time
-  port              = var.port
-  weight            = var.weight
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # max_delay_time - (optional) is a type of number
+  max_delay_time = var.max_delay_time
+  # port - (optional) is a type of number
+  port = var.port
+  # weight - (optional) is a type of map of string
+  weight = var.weight
 }
 ```
 

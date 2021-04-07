@@ -109,17 +109,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_alikafka_topic" "this" {
+  # compact_topic - (optional) is a type of bool
   compact_topic = var.compact_topic
-  instance_id   = var.instance_id
-  local_topic   = var.local_topic
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # local_topic - (optional) is a type of bool
+  local_topic = var.local_topic
+  # partition_num - (optional) is a type of number
   partition_num = var.partition_num
-  remark        = var.remark
-  tags          = var.tags
-  topic         = var.topic
+  # remark - (required) is a type of string
+  remark = var.remark
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # topic - (required) is a type of string
+  topic = var.topic
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

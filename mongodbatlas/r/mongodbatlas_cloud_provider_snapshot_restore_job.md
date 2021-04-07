@@ -70,10 +70,14 @@ variable "snapshot_id" {
 
 ```terraform
 resource "mongodbatlas_cloud_provider_snapshot_restore_job" "this" {
-  cluster_name  = var.cluster_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # delivery_type - (required) is a type of map of string
   delivery_type = var.delivery_type
-  project_id    = var.project_id
-  snapshot_id   = var.snapshot_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # snapshot_id - (required) is a type of string
+  snapshot_id = var.snapshot_id
 }
 ```
 

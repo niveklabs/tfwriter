@@ -74,9 +74,13 @@ variable "geo_filter" {
 
 ```terraform
 resource "fortios_webfilter_ipsurlfiltersetting6" "this" {
-  device     = var.device
-  distance   = var.distance
-  gateway6   = var.gateway6
+  # device - (optional) is a type of string
+  device = var.device
+  # distance - (optional) is a type of number
+  distance = var.distance
+  # gateway6 - (optional) is a type of string
+  gateway6 = var.gateway6
+  # geo_filter - (optional) is a type of string
   geo_filter = var.geo_filter
 }
 ```

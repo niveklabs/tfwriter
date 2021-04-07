@@ -74,9 +74,13 @@ variable "status" {
 
 ```terraform
 resource "fortios_wirelesscontroller_apstatus" "this" {
-  bssid  = var.bssid
-  fosid  = var.fosid
-  ssid   = var.ssid
+  # bssid - (optional) is a type of string
+  bssid = var.bssid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # ssid - (optional) is a type of string
+  ssid = var.ssid
+  # status - (optional) is a type of string
   status = var.status
 }
 ```

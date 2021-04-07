@@ -64,9 +64,12 @@ variable "region" {
 
 ```terraform
 resource "aviatrix_aws_guard_duty" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
+  # excluded_ips - (optional) is a type of set of string
   excluded_ips = var.excluded_ips
-  region       = var.region
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

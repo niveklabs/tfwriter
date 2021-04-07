@@ -58,7 +58,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_cam_group_memberships" "this" {
-  group_id           = var.group_id
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

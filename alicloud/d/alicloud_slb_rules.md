@@ -80,11 +80,16 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_slb_rules" "this" {
-  frontend_port    = var.frontend_port
-  ids              = var.ids
+  # frontend_port - (required) is a type of number
+  frontend_port = var.frontend_port
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # load_balancer_id - (required) is a type of string
   load_balancer_id = var.load_balancer_id
-  name_regex       = var.name_regex
-  output_file      = var.output_file
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

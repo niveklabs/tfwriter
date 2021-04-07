@@ -104,14 +104,22 @@ variable "type" {
 
 ```terraform
 resource "logicmonitor_device" "this" {
-  collector        = var.collector
-  description      = var.description
+  # collector - (required) is a type of number
+  collector = var.collector
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_alerting - (optional) is a type of bool
   disable_alerting = var.disable_alerting
-  display_name     = var.display_name
-  hostgroup_id     = var.hostgroup_id
-  ip_addr          = var.ip_addr
-  properties       = var.properties
-  type             = var.type
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # hostgroup_id - (optional) is a type of string
+  hostgroup_id = var.hostgroup_id
+  # ip_addr - (required) is a type of string
+  ip_addr = var.ip_addr
+  # properties - (optional) is a type of map of string
+  properties = var.properties
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

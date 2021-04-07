@@ -196,26 +196,43 @@ variable "filters" {
 
 ```terraform
 resource "sumologic_cloudsyslog_source" "this" {
-  automatic_date_parsing       = var.automatic_date_parsing
-  category                     = var.category
-  collector_id                 = var.collector_id
-  content_type                 = var.content_type
-  cutoff_relative_time         = var.cutoff_relative_time
-  cutoff_timestamp             = var.cutoff_timestamp
-  description                  = var.description
-  fields                       = var.fields
-  force_timezone               = var.force_timezone
-  host_name                    = var.host_name
-  manual_prefix_regexp         = var.manual_prefix_regexp
+  # automatic_date_parsing - (optional) is a type of bool
+  automatic_date_parsing = var.automatic_date_parsing
+  # category - (optional) is a type of string
+  category = var.category
+  # collector_id - (required) is a type of number
+  collector_id = var.collector_id
+  # content_type - (optional) is a type of string
+  content_type = var.content_type
+  # cutoff_relative_time - (optional) is a type of string
+  cutoff_relative_time = var.cutoff_relative_time
+  # cutoff_timestamp - (optional) is a type of number
+  cutoff_timestamp = var.cutoff_timestamp
+  # description - (optional) is a type of string
+  description = var.description
+  # fields - (optional) is a type of map of string
+  fields = var.fields
+  # force_timezone - (optional) is a type of bool
+  force_timezone = var.force_timezone
+  # host_name - (optional) is a type of string
+  host_name = var.host_name
+  # manual_prefix_regexp - (optional) is a type of string
+  manual_prefix_regexp = var.manual_prefix_regexp
+  # multiline_processing_enabled - (optional) is a type of bool
   multiline_processing_enabled = var.multiline_processing_enabled
-  name                         = var.name
-  timezone                     = var.timezone
-  use_autoline_matching        = var.use_autoline_matching
+  # name - (required) is a type of string
+  name = var.name
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # use_autoline_matching - (optional) is a type of bool
+  use_autoline_matching = var.use_autoline_matching
 
   dynamic "default_date_formats" {
     for_each = var.default_date_formats
     content {
-      format  = default_date_formats.value["format"]
+      # format - (required) is a type of string
+      format = default_date_formats.value["format"]
+      # locator - (optional) is a type of string
       locator = default_date_formats.value["locator"]
     }
   }
@@ -223,10 +240,14 @@ resource "sumologic_cloudsyslog_source" "this" {
   dynamic "filters" {
     for_each = var.filters
     content {
+      # filter_type - (required) is a type of string
       filter_type = filters.value["filter_type"]
-      mask        = filters.value["mask"]
-      name        = filters.value["name"]
-      regexp      = filters.value["regexp"]
+      # mask - (optional) is a type of string
+      mask = filters.value["mask"]
+      # name - (required) is a type of string
+      name = filters.value["name"]
+      # regexp - (required) is a type of string
+      regexp = filters.value["regexp"]
     }
   }
 

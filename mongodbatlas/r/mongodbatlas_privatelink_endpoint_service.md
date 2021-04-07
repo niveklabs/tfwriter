@@ -78,11 +78,16 @@ variable "provider_name" {
 
 ```terraform
 resource "mongodbatlas_privatelink_endpoint_service" "this" {
-  endpoint_service_id         = var.endpoint_service_id
+  # endpoint_service_id - (required) is a type of string
+  endpoint_service_id = var.endpoint_service_id
+  # private_endpoint_ip_address - (optional) is a type of string
   private_endpoint_ip_address = var.private_endpoint_ip_address
-  private_link_id             = var.private_link_id
-  project_id                  = var.project_id
-  provider_name               = var.provider_name
+  # private_link_id - (required) is a type of string
+  private_link_id = var.private_link_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # provider_name - (required) is a type of string
+  provider_name = var.provider_name
 }
 ```
 

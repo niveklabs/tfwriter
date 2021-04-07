@@ -71,9 +71,13 @@ variable "remote_gw" {
 
 ```terraform
 resource "fortios_system_ipiptunnel" "this" {
+  # interface - (required) is a type of string
   interface = var.interface
-  local_gw  = var.local_gw
-  name      = var.name
+  # local_gw - (required) is a type of string
+  local_gw = var.local_gw
+  # name - (optional) is a type of string
+  name = var.name
+  # remote_gw - (required) is a type of string
   remote_gw = var.remote_gw
 }
 ```

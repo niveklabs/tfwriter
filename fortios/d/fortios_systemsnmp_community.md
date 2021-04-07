@@ -49,6 +49,7 @@ variable "fosid" {
 
 ```terraform
 data "fortios_systemsnmp_community" "this" {
+  # fosid - (required) is a type of number
   fosid = var.fosid
 }
 ```

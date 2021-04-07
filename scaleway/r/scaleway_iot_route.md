@@ -133,19 +133,29 @@ variable "s3" {
 
 ```terraform
 resource "scaleway_iot_route" "this" {
+  # hub_id - (required) is a type of string
   hub_id = var.hub_id
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
   region = var.region
-  topic  = var.topic
+  # topic - (required) is a type of string
+  topic = var.topic
 
   dynamic "database" {
     for_each = var.database
     content {
-      dbname   = database.value["dbname"]
-      host     = database.value["host"]
+      # dbname - (required) is a type of string
+      dbname = database.value["dbname"]
+      # host - (required) is a type of string
+      host = database.value["host"]
+      # password - (required) is a type of string
       password = database.value["password"]
-      port     = database.value["port"]
-      query    = database.value["query"]
+      # port - (required) is a type of number
+      port = database.value["port"]
+      # query - (required) is a type of string
+      query = database.value["query"]
+      # username - (required) is a type of string
       username = database.value["username"]
     }
   }
@@ -153,19 +163,26 @@ resource "scaleway_iot_route" "this" {
   dynamic "rest" {
     for_each = var.rest
     content {
+      # headers - (required) is a type of map of string
       headers = rest.value["headers"]
-      uri     = rest.value["uri"]
-      verb    = rest.value["verb"]
+      # uri - (required) is a type of string
+      uri = rest.value["uri"]
+      # verb - (required) is a type of string
+      verb = rest.value["verb"]
     }
   }
 
   dynamic "s3" {
     for_each = var.s3
     content {
-      bucket_name   = s3.value["bucket_name"]
+      # bucket_name - (required) is a type of string
+      bucket_name = s3.value["bucket_name"]
+      # bucket_region - (required) is a type of string
       bucket_region = s3.value["bucket_region"]
+      # object_prefix - (optional) is a type of string
       object_prefix = s3.value["object_prefix"]
-      strategy      = s3.value["strategy"]
+      # strategy - (required) is a type of string
+      strategy = s3.value["strategy"]
     }
   }
 

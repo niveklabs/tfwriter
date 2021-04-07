@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 resource "spotinst_multai_deployment" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

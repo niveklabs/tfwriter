@@ -65,8 +65,11 @@ variable "team_id" {
 
 ```terraform
 data "mongodbatlas_team" "this" {
-  name    = var.name
-  org_id  = var.org_id
+  # name - (optional) is a type of string
+  name = var.name
+  # org_id - (required) is a type of string
+  org_id = var.org_id
+  # team_id - (optional) is a type of string
   team_id = var.team_id
 }
 ```

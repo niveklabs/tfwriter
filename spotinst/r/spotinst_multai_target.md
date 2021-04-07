@@ -102,17 +102,25 @@ variable "tags" {
 
 ```terraform
 resource "spotinst_multai_target" "this" {
-  balancer_id   = var.balancer_id
-  host          = var.host
-  name          = var.name
-  port          = var.port
+  # balancer_id - (required) is a type of string
+  balancer_id = var.balancer_id
+  # host - (required) is a type of string
+  host = var.host
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # target_set_id - (required) is a type of string
   target_set_id = var.target_set_id
-  weight        = var.weight
+  # weight - (required) is a type of number
+  weight = var.weight
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

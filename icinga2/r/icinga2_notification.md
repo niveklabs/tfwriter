@@ -96,13 +96,20 @@ variable "vars" {
 
 ```terraform
 resource "icinga2_notification" "this" {
-  command     = var.command
-  hostname    = var.hostname
-  interval    = var.interval
+  # command - (required) is a type of string
+  command = var.command
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # servicename - (optional) is a type of string
   servicename = var.servicename
-  templates   = var.templates
-  users       = var.users
-  vars        = var.vars
+  # templates - (optional) is a type of list of string
+  templates = var.templates
+  # users - (optional) is a type of list of string
+  users = var.users
+  # vars - (optional) is a type of map of string
+  vars = var.vars
 }
 ```
 

@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_fssopolling" "this" {
-  auth_password  = var.auth_password
+  # auth_password - (optional) is a type of string
+  auth_password = var.auth_password
+  # authentication - (optional) is a type of string
   authentication = var.authentication
+  # listening_port - (optional) is a type of number
   listening_port = var.listening_port
-  status         = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

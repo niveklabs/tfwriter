@@ -72,10 +72,14 @@ variable "source" {
 
 ```terraform
 resource "fortios_system_ipv6tunnel" "this" {
+  # destination - (required) is a type of string
   destination = var.destination
-  interface   = var.interface
-  name        = var.name
-  source      = var.source
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # name - (optional) is a type of string
+  name = var.name
+  # source - (optional) is a type of string
+  source = var.source
 }
 ```
 

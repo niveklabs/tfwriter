@@ -81,11 +81,16 @@ variable "name" {
 
 ```terraform
 data "akamai_cp_code" "this" {
-  contract    = var.contract
+  # contract - (optional) is a type of string
+  contract = var.contract
+  # contract_id - (optional) is a type of string
   contract_id = var.contract_id
-  group       = var.group
-  group_id    = var.group_id
-  name        = var.name
+  # group - (optional) is a type of string
+  group = var.group
+  # group_id - (optional) is a type of string
+  group_id = var.group_id
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

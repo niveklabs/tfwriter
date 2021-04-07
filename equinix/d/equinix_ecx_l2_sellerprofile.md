@@ -66,9 +66,12 @@ variable "organization_name" {
 
 ```terraform
 data "equinix_ecx_l2_sellerprofile" "this" {
-  name                     = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # organization_global_name - (optional) is a type of string
   organization_global_name = var.organization_global_name
-  organization_name        = var.organization_name
+  # organization_name - (optional) is a type of string
+  organization_name = var.organization_name
 }
 ```
 

@@ -95,13 +95,20 @@ variable "timezone" {
 
 ```terraform
 resource "sumologic_ingest_budget" "this" {
-  action         = var.action
+  # action - (optional) is a type of string
+  action = var.action
+  # capacity_bytes - (required) is a type of number
   capacity_bytes = var.capacity_bytes
-  description    = var.description
-  field_value    = var.field_value
-  name           = var.name
-  reset_time     = var.reset_time
-  timezone       = var.timezone
+  # description - (optional) is a type of string
+  description = var.description
+  # field_value - (required) is a type of string
+  field_value = var.field_value
+  # name - (required) is a type of string
+  name = var.name
+  # reset_time - (optional) is a type of string
+  reset_time = var.reset_time
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

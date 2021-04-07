@@ -56,7 +56,9 @@ variable "title" {
 
 ```terraform
 resource "github_user_ssh_key" "this" {
-  key   = var.key
+  # key - (required) is a type of string
+  key = var.key
+  # title - (required) is a type of string
   title = var.title
 }
 ```

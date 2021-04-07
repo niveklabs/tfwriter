@@ -258,30 +258,51 @@ variable "dscp_wmm_vo" {
 
 ```terraform
 resource "fortios_wirelesscontroller_qosprofile" "this" {
+  # bandwidth_admission_control - (optional) is a type of string
   bandwidth_admission_control = var.bandwidth_admission_control
-  bandwidth_capacity          = var.bandwidth_capacity
-  burst                       = var.burst
-  call_admission_control      = var.call_admission_control
-  call_capacity               = var.call_capacity
-  comment                     = var.comment
-  downlink                    = var.downlink
-  downlink_sta                = var.downlink_sta
-  dscp_wmm_mapping            = var.dscp_wmm_mapping
-  dynamic_sort_subtable       = var.dynamic_sort_subtable
-  name                        = var.name
-  uplink                      = var.uplink
-  uplink_sta                  = var.uplink_sta
-  wmm                         = var.wmm
-  wmm_be_dscp                 = var.wmm_be_dscp
-  wmm_bk_dscp                 = var.wmm_bk_dscp
-  wmm_dscp_marking            = var.wmm_dscp_marking
-  wmm_uapsd                   = var.wmm_uapsd
-  wmm_vi_dscp                 = var.wmm_vi_dscp
-  wmm_vo_dscp                 = var.wmm_vo_dscp
+  # bandwidth_capacity - (optional) is a type of number
+  bandwidth_capacity = var.bandwidth_capacity
+  # burst - (optional) is a type of string
+  burst = var.burst
+  # call_admission_control - (optional) is a type of string
+  call_admission_control = var.call_admission_control
+  # call_capacity - (optional) is a type of number
+  call_capacity = var.call_capacity
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # downlink - (optional) is a type of number
+  downlink = var.downlink
+  # downlink_sta - (optional) is a type of number
+  downlink_sta = var.downlink_sta
+  # dscp_wmm_mapping - (optional) is a type of string
+  dscp_wmm_mapping = var.dscp_wmm_mapping
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # name - (optional) is a type of string
+  name = var.name
+  # uplink - (optional) is a type of number
+  uplink = var.uplink
+  # uplink_sta - (optional) is a type of number
+  uplink_sta = var.uplink_sta
+  # wmm - (optional) is a type of string
+  wmm = var.wmm
+  # wmm_be_dscp - (optional) is a type of number
+  wmm_be_dscp = var.wmm_be_dscp
+  # wmm_bk_dscp - (optional) is a type of number
+  wmm_bk_dscp = var.wmm_bk_dscp
+  # wmm_dscp_marking - (optional) is a type of string
+  wmm_dscp_marking = var.wmm_dscp_marking
+  # wmm_uapsd - (optional) is a type of string
+  wmm_uapsd = var.wmm_uapsd
+  # wmm_vi_dscp - (optional) is a type of number
+  wmm_vi_dscp = var.wmm_vi_dscp
+  # wmm_vo_dscp - (optional) is a type of number
+  wmm_vo_dscp = var.wmm_vo_dscp
 
   dynamic "dscp_wmm_be" {
     for_each = var.dscp_wmm_be
     content {
+      # id - (optional) is a type of number
       id = dscp_wmm_be.value["id"]
     }
   }
@@ -289,6 +310,7 @@ resource "fortios_wirelesscontroller_qosprofile" "this" {
   dynamic "dscp_wmm_bk" {
     for_each = var.dscp_wmm_bk
     content {
+      # id - (optional) is a type of number
       id = dscp_wmm_bk.value["id"]
     }
   }
@@ -296,6 +318,7 @@ resource "fortios_wirelesscontroller_qosprofile" "this" {
   dynamic "dscp_wmm_vi" {
     for_each = var.dscp_wmm_vi
     content {
+      # id - (optional) is a type of number
       id = dscp_wmm_vi.value["id"]
     }
   }
@@ -303,6 +326,7 @@ resource "fortios_wirelesscontroller_qosprofile" "this" {
   dynamic "dscp_wmm_vo" {
     for_each = var.dscp_wmm_vo
     content {
+      # id - (optional) is a type of number
       id = dscp_wmm_vo.value["id"]
     }
   }

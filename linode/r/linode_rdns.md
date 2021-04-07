@@ -56,8 +56,10 @@ variable "rdns" {
 
 ```terraform
 resource "linode_rdns" "this" {
+  # address - (required) is a type of string
   address = var.address
-  rdns    = var.rdns
+  # rdns - (required) is a type of string
+  rdns = var.rdns
 }
 ```
 

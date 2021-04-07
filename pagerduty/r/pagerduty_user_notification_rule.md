@@ -70,10 +70,14 @@ variable "user_id" {
 
 ```terraform
 resource "pagerduty_user_notification_rule" "this" {
-  contact_method         = var.contact_method
+  # contact_method - (required) is a type of map of string
+  contact_method = var.contact_method
+  # start_delay_in_minutes - (required) is a type of number
   start_delay_in_minutes = var.start_delay_in_minutes
-  urgency                = var.urgency
-  user_id                = var.user_id
+  # urgency - (required) is a type of string
+  urgency = var.urgency
+  # user_id - (required) is a type of string
+  user_id = var.user_id
 }
 ```
 

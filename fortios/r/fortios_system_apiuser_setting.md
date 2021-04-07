@@ -86,16 +86,22 @@ variable "trusthost" {
 
 ```terraform
 resource "fortios_system_apiuser_setting" "this" {
+  # accprofile - (required) is a type of string
   accprofile = var.accprofile
-  comments   = var.comments
-  name       = var.name
-  vdom       = var.vdom
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # name - (required) is a type of string
+  name = var.name
+  # vdom - (required) is a type of list of string
+  vdom = var.vdom
 
   dynamic "trusthost" {
     for_each = var.trusthost
     content {
+      # ipv4_trusthost - (required) is a type of string
       ipv4_trusthost = trusthost.value["ipv4_trusthost"]
-      type           = trusthost.value["type"]
+      # type - (required) is a type of string
+      type = trusthost.value["type"]
     }
   }
 

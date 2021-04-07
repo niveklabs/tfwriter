@@ -63,9 +63,12 @@ variable "aws_policy_arn" {
 
 ```terraform
 resource "dome9_attach_iam_safe" "this" {
+  # aws_cloud_account_id - (required) is a type of string
   aws_cloud_account_id = var.aws_cloud_account_id
-  aws_group_arn        = var.aws_group_arn
-  aws_policy_arn       = var.aws_policy_arn
+  # aws_group_arn - (required) is a type of string
+  aws_group_arn = var.aws_group_arn
+  # aws_policy_arn - (required) is a type of string
+  aws_policy_arn = var.aws_policy_arn
 }
 ```
 

@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "prismacloud_account_group" "this" {
+  # group_id - (optional) is a type of string
   group_id = var.group_id
-  name     = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

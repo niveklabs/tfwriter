@@ -110,19 +110,29 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_security_host_based_v2" "this" {
-  dsm_lang              = var.dsm_lang
-  locale                = var.locale
-  mail_address          = var.mail_address
-  max_agent_value       = var.max_agent_value
+  # dsm_lang - (required) is a type of string
+  dsm_lang = var.dsm_lang
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # mail_address - (required) is a type of string
+  mail_address = var.mail_address
+  # max_agent_value - (required) is a type of number
+  max_agent_value = var.max_agent_value
+  # service_order_service - (required) is a type of string
   service_order_service = var.service_order_service
-  tenant_id             = var.tenant_id
-  time_zone             = var.time_zone
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
+  # time_zone - (required) is a type of string
+  time_zone = var.time_zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

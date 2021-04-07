@@ -113,15 +113,24 @@ variable "regions" {
 
 ```terraform
 data "constellix_geo_filter" "this" {
-  asn              = var.asn
+  # asn - (optional) is a type of list of number
+  asn = var.asn
+  # filterruleslimit - (optional) is a type of number
   filterruleslimit = var.filterruleslimit
-  geoipcontinents  = var.geoipcontinents
-  geoipcountries   = var.geoipcountries
-  geoipregions     = var.geoipregions
-  ipv4             = var.ipv4
-  ipv6             = var.ipv6
-  name             = var.name
-  regions          = var.regions
+  # geoipcontinents - (optional) is a type of list of string
+  geoipcontinents = var.geoipcontinents
+  # geoipcountries - (optional) is a type of list of string
+  geoipcountries = var.geoipcountries
+  # geoipregions - (optional) is a type of list of string
+  geoipregions = var.geoipregions
+  # ipv4 - (optional) is a type of list of string
+  ipv4 = var.ipv4
+  # ipv6 - (optional) is a type of list of string
+  ipv6 = var.ipv6
+  # name - (required) is a type of string
+  name = var.name
+  # regions - (optional) is a type of map of string
+  regions = var.regions
 }
 ```
 

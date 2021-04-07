@@ -470,32 +470,51 @@ variable "tencent_profile" {
 
 ```terraform
 resource "avi_ipamdnsproviderprofile" "this" {
+  # allocate_ip_in_vrf - (optional) is a type of bool
   allocate_ip_in_vrf = var.allocate_ip_in_vrf
-  name               = var.name
-  tenant_ref         = var.tenant_ref
-  type               = var.type
-  uuid               = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (required) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "aws_profile" {
     for_each = var.aws_profile
     content {
-      access_key_id              = aws_profile.value["access_key_id"]
-      egress_service_subnets     = aws_profile.value["egress_service_subnets"]
-      iam_assume_role            = aws_profile.value["iam_assume_role"]
+      # access_key_id - (optional) is a type of string
+      access_key_id = aws_profile.value["access_key_id"]
+      # egress_service_subnets - (optional) is a type of list of string
+      egress_service_subnets = aws_profile.value["egress_service_subnets"]
+      # iam_assume_role - (optional) is a type of string
+      iam_assume_role = aws_profile.value["iam_assume_role"]
+      # publish_vip_to_public_zone - (optional) is a type of bool
       publish_vip_to_public_zone = aws_profile.value["publish_vip_to_public_zone"]
-      region                     = aws_profile.value["region"]
-      secret_access_key          = aws_profile.value["secret_access_key"]
-      ttl                        = aws_profile.value["ttl"]
-      usable_domains             = aws_profile.value["usable_domains"]
-      usable_network_uuids       = aws_profile.value["usable_network_uuids"]
-      use_iam_roles              = aws_profile.value["use_iam_roles"]
-      vpc                        = aws_profile.value["vpc"]
-      vpc_id                     = aws_profile.value["vpc_id"]
+      # region - (optional) is a type of string
+      region = aws_profile.value["region"]
+      # secret_access_key - (optional) is a type of string
+      secret_access_key = aws_profile.value["secret_access_key"]
+      # ttl - (optional) is a type of number
+      ttl = aws_profile.value["ttl"]
+      # usable_domains - (optional) is a type of list of string
+      usable_domains = aws_profile.value["usable_domains"]
+      # usable_network_uuids - (optional) is a type of list of string
+      usable_network_uuids = aws_profile.value["usable_network_uuids"]
+      # use_iam_roles - (optional) is a type of bool
+      use_iam_roles = aws_profile.value["use_iam_roles"]
+      # vpc - (optional) is a type of string
+      vpc = aws_profile.value["vpc"]
+      # vpc_id - (required) is a type of string
+      vpc_id = aws_profile.value["vpc_id"]
 
       dynamic "zones" {
         for_each = aws_profile.value.zones
         content {
-          availability_zone    = zones.value["availability_zone"]
+          # availability_zone - (required) is a type of string
+          availability_zone = zones.value["availability_zone"]
+          # usable_network_uuids - (optional) is a type of list of string
           usable_network_uuids = zones.value["usable_network_uuids"]
         }
       }
@@ -506,30 +525,44 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "azure_profile" {
     for_each = var.azure_profile
     content {
+      # egress_service_subnets - (optional) is a type of list of string
       egress_service_subnets = azure_profile.value["egress_service_subnets"]
-      resource_group         = azure_profile.value["resource_group"]
-      subscription_id        = azure_profile.value["subscription_id"]
-      usable_domains         = azure_profile.value["usable_domains"]
-      usable_network_uuids   = azure_profile.value["usable_network_uuids"]
-      use_enhanced_ha        = azure_profile.value["use_enhanced_ha"]
-      use_standard_alb       = azure_profile.value["use_standard_alb"]
-      virtual_network_ids    = azure_profile.value["virtual_network_ids"]
+      # resource_group - (optional) is a type of string
+      resource_group = azure_profile.value["resource_group"]
+      # subscription_id - (optional) is a type of string
+      subscription_id = azure_profile.value["subscription_id"]
+      # usable_domains - (optional) is a type of list of string
+      usable_domains = azure_profile.value["usable_domains"]
+      # usable_network_uuids - (optional) is a type of list of string
+      usable_network_uuids = azure_profile.value["usable_network_uuids"]
+      # use_enhanced_ha - (optional) is a type of bool
+      use_enhanced_ha = azure_profile.value["use_enhanced_ha"]
+      # use_standard_alb - (optional) is a type of bool
+      use_standard_alb = azure_profile.value["use_standard_alb"]
+      # virtual_network_ids - (optional) is a type of list of string
+      virtual_network_ids = azure_profile.value["virtual_network_ids"]
 
       dynamic "azure_serviceprincipal" {
         for_each = azure_profile.value.azure_serviceprincipal
         content {
-          application_id       = azure_serviceprincipal.value["application_id"]
+          # application_id - (optional) is a type of string
+          application_id = azure_serviceprincipal.value["application_id"]
+          # authentication_token - (optional) is a type of string
           authentication_token = azure_serviceprincipal.value["authentication_token"]
-          tenant_id            = azure_serviceprincipal.value["tenant_id"]
+          # tenant_id - (optional) is a type of string
+          tenant_id = azure_serviceprincipal.value["tenant_id"]
         }
       }
 
       dynamic "azure_userpass" {
         for_each = azure_profile.value.azure_userpass
         content {
-          password    = azure_userpass.value["password"]
+          # password - (optional) is a type of string
+          password = azure_userpass.value["password"]
+          # tenant_name - (optional) is a type of string
           tenant_name = azure_userpass.value["tenant_name"]
-          username    = azure_userpass.value["username"]
+          # username - (optional) is a type of string
+          username = azure_userpass.value["username"]
         }
       }
 
@@ -539,28 +572,37 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "custom_profile" {
     for_each = var.custom_profile
     content {
+      # custom_ipam_dns_profile_ref - (optional) is a type of string
       custom_ipam_dns_profile_ref = custom_profile.value["custom_ipam_dns_profile_ref"]
-      usable_domains              = custom_profile.value["usable_domains"]
+      # usable_domains - (optional) is a type of list of string
+      usable_domains = custom_profile.value["usable_domains"]
 
       dynamic "dynamic_params" {
         for_each = custom_profile.value.dynamic_params
         content {
-          is_dynamic   = dynamic_params.value["is_dynamic"]
+          # is_dynamic - (optional) is a type of bool
+          is_dynamic = dynamic_params.value["is_dynamic"]
+          # is_sensitive - (optional) is a type of bool
           is_sensitive = dynamic_params.value["is_sensitive"]
-          name         = dynamic_params.value["name"]
-          value        = dynamic_params.value["value"]
+          # name - (required) is a type of string
+          name = dynamic_params.value["name"]
+          # value - (optional) is a type of string
+          value = dynamic_params.value["value"]
         }
       }
 
       dynamic "usable_subnets" {
         for_each = custom_profile.value.usable_subnets
         content {
+          # mask - (required) is a type of number
           mask = usable_subnets.value["mask"]
 
           dynamic "ip_addr" {
             for_each = usable_subnets.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -574,40 +616,59 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "gcp_profile" {
     for_each = var.gcp_profile
     content {
-      match_se_group_subnet   = gcp_profile.value["match_se_group_subnet"]
+      # match_se_group_subnet - (optional) is a type of bool
+      match_se_group_subnet = gcp_profile.value["match_se_group_subnet"]
+      # network_host_project_id - (optional) is a type of string
       network_host_project_id = gcp_profile.value["network_host_project_id"]
-      region_name             = gcp_profile.value["region_name"]
-      se_project_id           = gcp_profile.value["se_project_id"]
-      usable_network_refs     = gcp_profile.value["usable_network_refs"]
-      use_gcp_network         = gcp_profile.value["use_gcp_network"]
-      vpc_network_name        = gcp_profile.value["vpc_network_name"]
+      # region_name - (optional) is a type of string
+      region_name = gcp_profile.value["region_name"]
+      # se_project_id - (optional) is a type of string
+      se_project_id = gcp_profile.value["se_project_id"]
+      # usable_network_refs - (optional) is a type of list of string
+      usable_network_refs = gcp_profile.value["usable_network_refs"]
+      # use_gcp_network - (optional) is a type of bool
+      use_gcp_network = gcp_profile.value["use_gcp_network"]
+      # vpc_network_name - (optional) is a type of string
+      vpc_network_name = gcp_profile.value["vpc_network_name"]
     }
   }
 
   dynamic "infoblox_profile" {
     for_each = var.infoblox_profile
     content {
-      dns_view       = infoblox_profile.value["dns_view"]
-      network_view   = infoblox_profile.value["network_view"]
-      password       = infoblox_profile.value["password"]
+      # dns_view - (optional) is a type of string
+      dns_view = infoblox_profile.value["dns_view"]
+      # network_view - (optional) is a type of string
+      network_view = infoblox_profile.value["network_view"]
+      # password - (required) is a type of string
+      password = infoblox_profile.value["password"]
+      # usable_domains - (optional) is a type of list of string
       usable_domains = infoblox_profile.value["usable_domains"]
-      username       = infoblox_profile.value["username"]
-      wapi_version   = infoblox_profile.value["wapi_version"]
+      # username - (required) is a type of string
+      username = infoblox_profile.value["username"]
+      # wapi_version - (optional) is a type of string
+      wapi_version = infoblox_profile.value["wapi_version"]
 
       dynamic "extensible_attributes" {
         for_each = infoblox_profile.value.extensible_attributes
         content {
-          is_dynamic   = extensible_attributes.value["is_dynamic"]
+          # is_dynamic - (optional) is a type of bool
+          is_dynamic = extensible_attributes.value["is_dynamic"]
+          # is_sensitive - (optional) is a type of bool
           is_sensitive = extensible_attributes.value["is_sensitive"]
-          name         = extensible_attributes.value["name"]
-          value        = extensible_attributes.value["value"]
+          # name - (required) is a type of string
+          name = extensible_attributes.value["name"]
+          # value - (optional) is a type of string
+          value = extensible_attributes.value["value"]
         }
       }
 
       dynamic "ip_address" {
         for_each = infoblox_profile.value.ip_address
         content {
+          # addr - (required) is a type of string
           addr = ip_address.value["addr"]
+          # type - (required) is a type of string
           type = ip_address.value["type"]
         }
       }
@@ -619,12 +680,15 @@ resource "avi_ipamdnsproviderprofile" "this" {
           dynamic "subnet" {
             for_each = usable_alloc_subnets.value.subnet
             content {
+              # mask - (required) is a type of number
               mask = subnet.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -635,12 +699,15 @@ resource "avi_ipamdnsproviderprofile" "this" {
           dynamic "subnet6" {
             for_each = usable_alloc_subnets.value.subnet6
             content {
+              # mask - (required) is a type of number
               mask = subnet6.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = subnet6.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -657,17 +724,24 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "internal_profile" {
     for_each = var.internal_profile
     content {
+      # dns_virtualservice_ref - (optional) is a type of string
       dns_virtualservice_ref = internal_profile.value["dns_virtualservice_ref"]
-      ttl                    = internal_profile.value["ttl"]
-      usable_network_refs    = internal_profile.value["usable_network_refs"]
+      # ttl - (optional) is a type of number
+      ttl = internal_profile.value["ttl"]
+      # usable_network_refs - (optional) is a type of list of string
+      usable_network_refs = internal_profile.value["usable_network_refs"]
 
       dynamic "dns_service_domain" {
         for_each = internal_profile.value.dns_service_domain
         content {
-          domain_name  = dns_service_domain.value["domain_name"]
-          num_dns_ip   = dns_service_domain.value["num_dns_ip"]
+          # domain_name - (required) is a type of string
+          domain_name = dns_service_domain.value["domain_name"]
+          # num_dns_ip - (optional) is a type of number
+          num_dns_ip = dns_service_domain.value["num_dns_ip"]
+          # pass_through - (optional) is a type of bool
           pass_through = dns_service_domain.value["pass_through"]
-          record_ttl   = dns_service_domain.value["record_ttl"]
+          # record_ttl - (optional) is a type of number
+          record_ttl = dns_service_domain.value["record_ttl"]
         }
       }
 
@@ -677,22 +751,33 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "oci_profile" {
     for_each = var.oci_profile
     content {
+      # cloud_credentials_ref - (optional) is a type of string
       cloud_credentials_ref = oci_profile.value["cloud_credentials_ref"]
-      region                = oci_profile.value["region"]
-      tenancy               = oci_profile.value["tenancy"]
-      vcn_compartment_id    = oci_profile.value["vcn_compartment_id"]
-      vcn_id                = oci_profile.value["vcn_id"]
+      # region - (optional) is a type of string
+      region = oci_profile.value["region"]
+      # tenancy - (optional) is a type of string
+      tenancy = oci_profile.value["tenancy"]
+      # vcn_compartment_id - (optional) is a type of string
+      vcn_compartment_id = oci_profile.value["vcn_compartment_id"]
+      # vcn_id - (optional) is a type of string
+      vcn_id = oci_profile.value["vcn_id"]
     }
   }
 
   dynamic "openstack_profile" {
     for_each = var.openstack_profile
     content {
-      keystone_host    = openstack_profile.value["keystone_host"]
-      password         = openstack_profile.value["password"]
-      region           = openstack_profile.value["region"]
-      tenant           = openstack_profile.value["tenant"]
-      username         = openstack_profile.value["username"]
+      # keystone_host - (optional) is a type of string
+      keystone_host = openstack_profile.value["keystone_host"]
+      # password - (optional) is a type of string
+      password = openstack_profile.value["password"]
+      # region - (optional) is a type of string
+      region = openstack_profile.value["region"]
+      # tenant - (optional) is a type of string
+      tenant = openstack_profile.value["tenant"]
+      # username - (optional) is a type of string
+      username = openstack_profile.value["username"]
+      # vip_network_name - (optional) is a type of string
       vip_network_name = openstack_profile.value["vip_network_name"]
     }
   }
@@ -700,9 +785,13 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "proxy_configuration" {
     for_each = var.proxy_configuration
     content {
-      host     = proxy_configuration.value["host"]
+      # host - (required) is a type of string
+      host = proxy_configuration.value["host"]
+      # password - (optional) is a type of string
       password = proxy_configuration.value["password"]
-      port     = proxy_configuration.value["port"]
+      # port - (required) is a type of number
+      port = proxy_configuration.value["port"]
+      # username - (optional) is a type of string
       username = proxy_configuration.value["username"]
     }
   }
@@ -710,16 +799,22 @@ resource "avi_ipamdnsproviderprofile" "this" {
   dynamic "tencent_profile" {
     for_each = var.tencent_profile
     content {
+      # cloud_credentials_ref - (optional) is a type of string
       cloud_credentials_ref = tencent_profile.value["cloud_credentials_ref"]
-      region                = tencent_profile.value["region"]
-      usable_subnet_ids     = tencent_profile.value["usable_subnet_ids"]
-      vpc_id                = tencent_profile.value["vpc_id"]
+      # region - (optional) is a type of string
+      region = tencent_profile.value["region"]
+      # usable_subnet_ids - (optional) is a type of list of string
+      usable_subnet_ids = tencent_profile.value["usable_subnet_ids"]
+      # vpc_id - (optional) is a type of string
+      vpc_id = tencent_profile.value["vpc_id"]
 
       dynamic "zones" {
         for_each = tencent_profile.value.zones
         content {
+          # availability_zone - (optional) is a type of string
           availability_zone = zones.value["availability_zone"]
-          usable_subnet_id  = zones.value["usable_subnet_id"]
+          # usable_subnet_id - (optional) is a type of string
+          usable_subnet_id = zones.value["usable_subnet_id"]
         }
       }
 

@@ -65,9 +65,12 @@ variable "zone" {
 
 ```terraform
 data "exoscale_compute_template" "this" {
+  # filter - (optional) is a type of string
   filter = var.filter
-  name   = var.name
-  zone   = var.zone
+  # name - (optional) is a type of string
+  name = var.name
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

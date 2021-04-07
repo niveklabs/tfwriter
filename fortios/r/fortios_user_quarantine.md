@@ -106,25 +106,36 @@ variable "targets" {
 
 ```terraform
 resource "fortios_user_quarantine" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  firewall_groups       = var.firewall_groups
-  quarantine            = var.quarantine
-  traffic_policy        = var.traffic_policy
+  # firewall_groups - (optional) is a type of string
+  firewall_groups = var.firewall_groups
+  # quarantine - (optional) is a type of string
+  quarantine = var.quarantine
+  # traffic_policy - (optional) is a type of string
+  traffic_policy = var.traffic_policy
 
   dynamic "targets" {
     for_each = var.targets
     content {
+      # description - (optional) is a type of string
       description = targets.value["description"]
-      entry       = targets.value["entry"]
+      # entry - (optional) is a type of string
+      entry = targets.value["entry"]
 
       dynamic "macs" {
         for_each = targets.value.macs
         content {
+          # description - (optional) is a type of string
           description = macs.value["description"]
-          drop        = macs.value["drop"]
-          entry_id    = macs.value["entry_id"]
-          mac         = macs.value["mac"]
-          parent      = macs.value["parent"]
+          # drop - (optional) is a type of string
+          drop = macs.value["drop"]
+          # entry_id - (optional) is a type of number
+          entry_id = macs.value["entry_id"]
+          # mac - (optional) is a type of string
+          mac = macs.value["mac"]
+          # parent - (optional) is a type of string
+          parent = macs.value["parent"]
         }
       }
 

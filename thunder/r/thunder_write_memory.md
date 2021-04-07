@@ -74,9 +74,13 @@ variable "specified_partition" {
 
 ```terraform
 resource "thunder_write_memory" "this" {
-  destination         = var.destination
-  partition           = var.partition
-  profile             = var.profile
+  # destination - (optional) is a type of string
+  destination = var.destination
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # profile - (optional) is a type of string
+  profile = var.profile
+  # specified_partition - (optional) is a type of string
   specified_partition = var.specified_partition
 }
 ```

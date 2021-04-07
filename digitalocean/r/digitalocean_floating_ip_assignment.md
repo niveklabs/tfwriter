@@ -56,7 +56,9 @@ variable "ip_address" {
 
 ```terraform
 resource "digitalocean_floating_ip_assignment" "this" {
+  # droplet_id - (required) is a type of number
   droplet_id = var.droplet_id
+  # ip_address - (required) is a type of string
   ip_address = var.ip_address
 }
 ```

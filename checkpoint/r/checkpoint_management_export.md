@@ -90,12 +90,18 @@ variable "query_limit" {
 
 ```terraform
 resource "checkpoint_management_export" "this" {
-  exclude_classes       = var.exclude_classes
-  exclude_topics        = var.exclude_topics
+  # exclude_classes - (optional) is a type of set of string
+  exclude_classes = var.exclude_classes
+  # exclude_topics - (optional) is a type of set of string
+  exclude_topics = var.exclude_topics
+  # export_files_by_class - (optional) is a type of bool
   export_files_by_class = var.export_files_by_class
-  include_classes       = var.include_classes
-  include_topics        = var.include_topics
-  query_limit           = var.query_limit
+  # include_classes - (optional) is a type of set of string
+  include_classes = var.include_classes
+  # include_topics - (optional) is a type of set of string
+  include_topics = var.include_topics
+  # query_limit - (optional) is a type of number
+  query_limit = var.query_limit
 }
 ```
 

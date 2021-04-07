@@ -110,18 +110,27 @@ variable "snapshot_policies" {
 
 ```terraform
 resource "packet_volume" "this" {
+  # billing_cycle - (optional) is a type of string
   billing_cycle = var.billing_cycle
-  description   = var.description
-  facility      = var.facility
-  locked        = var.locked
-  plan          = var.plan
-  project_id    = var.project_id
-  size          = var.size
+  # description - (optional) is a type of string
+  description = var.description
+  # facility - (required) is a type of string
+  facility = var.facility
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # plan - (required) is a type of string
+  plan = var.plan
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # size - (required) is a type of number
+  size = var.size
 
   dynamic "snapshot_policies" {
     for_each = var.snapshot_policies
     content {
-      snapshot_count     = snapshot_policies.value["snapshot_count"]
+      # snapshot_count - (required) is a type of number
+      snapshot_count = snapshot_policies.value["snapshot_count"]
+      # snapshot_frequency - (required) is a type of string
       snapshot_frequency = snapshot_policies.value["snapshot_frequency"]
     }
   }

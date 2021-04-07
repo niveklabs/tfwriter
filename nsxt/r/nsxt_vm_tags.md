@@ -81,21 +81,26 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_vm_tags" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 
   dynamic "logical_port_tag" {
     for_each = var.logical_port_tag
     content {
+      # scope - (optional) is a type of string
       scope = logical_port_tag.value["scope"]
-      tag   = logical_port_tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = logical_port_tag.value["tag"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

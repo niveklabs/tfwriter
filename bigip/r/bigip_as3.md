@@ -89,12 +89,18 @@ variable "tenant_name" {
 
 ```terraform
 resource "bigip_as3" "this" {
+  # application_list - (optional) is a type of string
   application_list = var.application_list
-  as3_json         = var.as3_json
-  ignore_metadata  = var.ignore_metadata
-  tenant_filter    = var.tenant_filter
-  tenant_list      = var.tenant_list
-  tenant_name      = var.tenant_name
+  # as3_json - (required) is a type of string
+  as3_json = var.as3_json
+  # ignore_metadata - (optional) is a type of bool
+  ignore_metadata = var.ignore_metadata
+  # tenant_filter - (optional) is a type of string
+  tenant_filter = var.tenant_filter
+  # tenant_list - (optional) is a type of string
+  tenant_list = var.tenant_list
+  # tenant_name - (optional) is a type of string
+  tenant_name = var.tenant_name
 }
 ```
 

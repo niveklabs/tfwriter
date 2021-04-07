@@ -64,9 +64,12 @@ variable "targets" {
 
 ```terraform
 resource "checkpoint_management_verify_software_package" "this" {
+  # concurrency_limit - (optional) is a type of number
   concurrency_limit = var.concurrency_limit
-  name              = var.name
-  targets           = var.targets
+  # name - (required) is a type of string
+  name = var.name
+  # targets - (required) is a type of set of string
+  targets = var.targets
 }
 ```
 

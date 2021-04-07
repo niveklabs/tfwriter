@@ -754,49 +754,74 @@ variable "snmp_configuration" {
 
 ```terraform
 resource "avi_systemconfiguration" "this" {
-  default_license_tier      = var.default_license_tier
-  dns_virtualservice_refs   = var.dns_virtualservice_refs
-  docker_mode               = var.docker_mode
-  ssh_ciphers               = var.ssh_ciphers
-  ssh_hmacs                 = var.ssh_hmacs
-  uuid                      = var.uuid
+  # default_license_tier - (optional) is a type of string
+  default_license_tier = var.default_license_tier
+  # dns_virtualservice_refs - (optional) is a type of list of string
+  dns_virtualservice_refs = var.dns_virtualservice_refs
+  # docker_mode - (optional) is a type of bool
+  docker_mode = var.docker_mode
+  # ssh_ciphers - (optional) is a type of list of string
+  ssh_ciphers = var.ssh_ciphers
+  # ssh_hmacs - (optional) is a type of list of string
+  ssh_hmacs = var.ssh_hmacs
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # welcome_workflow_complete - (optional) is a type of bool
   welcome_workflow_complete = var.welcome_workflow_complete
 
   dynamic "admin_auth_configuration" {
     for_each = var.admin_auth_configuration
     content {
+      # allow_local_user_login - (optional) is a type of bool
       allow_local_user_login = admin_auth_configuration.value["allow_local_user_login"]
-      auth_profile_ref       = admin_auth_configuration.value["auth_profile_ref"]
+      # auth_profile_ref - (optional) is a type of string
+      auth_profile_ref = admin_auth_configuration.value["auth_profile_ref"]
 
       dynamic "mapping_rules" {
         for_each = admin_auth_configuration.value.mapping_rules
         content {
-          assign_policy             = mapping_rules.value["assign_policy"]
-          assign_role               = mapping_rules.value["assign_role"]
-          assign_tenant             = mapping_rules.value["assign_tenant"]
-          index                     = mapping_rules.value["index"]
-          is_superuser              = mapping_rules.value["is_superuser"]
+          # assign_policy - (optional) is a type of string
+          assign_policy = mapping_rules.value["assign_policy"]
+          # assign_role - (optional) is a type of string
+          assign_role = mapping_rules.value["assign_role"]
+          # assign_tenant - (optional) is a type of string
+          assign_tenant = mapping_rules.value["assign_tenant"]
+          # index - (required) is a type of number
+          index = mapping_rules.value["index"]
+          # is_superuser - (optional) is a type of bool
+          is_superuser = mapping_rules.value["is_superuser"]
+          # object_access_policy_refs - (optional) is a type of list of string
           object_access_policy_refs = mapping_rules.value["object_access_policy_refs"]
-          policy_attribute_name     = mapping_rules.value["policy_attribute_name"]
-          role_attribute_name       = mapping_rules.value["role_attribute_name"]
-          role_refs                 = mapping_rules.value["role_refs"]
-          tenant_attribute_name     = mapping_rules.value["tenant_attribute_name"]
-          tenant_refs               = mapping_rules.value["tenant_refs"]
+          # policy_attribute_name - (optional) is a type of string
+          policy_attribute_name = mapping_rules.value["policy_attribute_name"]
+          # role_attribute_name - (optional) is a type of string
+          role_attribute_name = mapping_rules.value["role_attribute_name"]
+          # role_refs - (optional) is a type of list of string
+          role_refs = mapping_rules.value["role_refs"]
+          # tenant_attribute_name - (optional) is a type of string
+          tenant_attribute_name = mapping_rules.value["tenant_attribute_name"]
+          # tenant_refs - (optional) is a type of list of string
+          tenant_refs = mapping_rules.value["tenant_refs"]
 
           dynamic "attribute_match" {
             for_each = mapping_rules.value.attribute_match
             content {
+              # criteria - (optional) is a type of string
               criteria = attribute_match.value["criteria"]
-              name     = attribute_match.value["name"]
-              values   = attribute_match.value["values"]
+              # name - (optional) is a type of string
+              name = attribute_match.value["name"]
+              # values - (optional) is a type of list of string
+              values = attribute_match.value["values"]
             }
           }
 
           dynamic "group_match" {
             for_each = mapping_rules.value.group_match
             content {
+              # criteria - (optional) is a type of string
               criteria = group_match.value["criteria"]
-              groups   = group_match.value["groups"]
+              # groups - (optional) is a type of list of string
+              groups = group_match.value["groups"]
             }
           }
 
@@ -809,12 +834,15 @@ resource "avi_systemconfiguration" "this" {
   dynamic "dns_configuration" {
     for_each = var.dns_configuration
     content {
+      # search_domain - (optional) is a type of string
       search_domain = dns_configuration.value["search_domain"]
 
       dynamic "server_list" {
         for_each = dns_configuration.value.server_list
         content {
+          # addr - (required) is a type of string
           addr = server_list.value["addr"]
+          # type - (required) is a type of string
           type = server_list.value["type"]
         }
       }
@@ -825,31 +853,44 @@ resource "avi_systemconfiguration" "this" {
   dynamic "email_configuration" {
     for_each = var.email_configuration
     content {
-      auth_password    = email_configuration.value["auth_password"]
-      auth_username    = email_configuration.value["auth_username"]
-      disable_tls      = email_configuration.value["disable_tls"]
-      from_email       = email_configuration.value["from_email"]
+      # auth_password - (optional) is a type of string
+      auth_password = email_configuration.value["auth_password"]
+      # auth_username - (optional) is a type of string
+      auth_username = email_configuration.value["auth_username"]
+      # disable_tls - (optional) is a type of bool
+      disable_tls = email_configuration.value["disable_tls"]
+      # from_email - (optional) is a type of string
+      from_email = email_configuration.value["from_email"]
+      # mail_server_name - (optional) is a type of string
       mail_server_name = email_configuration.value["mail_server_name"]
+      # mail_server_port - (optional) is a type of number
       mail_server_port = email_configuration.value["mail_server_port"]
-      smtp_type        = email_configuration.value["smtp_type"]
+      # smtp_type - (required) is a type of string
+      smtp_type = email_configuration.value["smtp_type"]
     }
   }
 
   dynamic "global_tenant_config" {
     for_each = var.global_tenant_config
     content {
-      se_in_provider_context       = global_tenant_config.value["se_in_provider_context"]
+      # se_in_provider_context - (optional) is a type of bool
+      se_in_provider_context = global_tenant_config.value["se_in_provider_context"]
+      # tenant_access_to_provider_se - (optional) is a type of bool
       tenant_access_to_provider_se = global_tenant_config.value["tenant_access_to_provider_se"]
-      tenant_vrf                   = global_tenant_config.value["tenant_vrf"]
+      # tenant_vrf - (optional) is a type of bool
+      tenant_vrf = global_tenant_config.value["tenant_vrf"]
     }
   }
 
   dynamic "linux_configuration" {
     for_each = var.linux_configuration
     content {
-      banner   = linux_configuration.value["banner"]
+      # banner - (optional) is a type of string
+      banner = linux_configuration.value["banner"]
+      # cis_mode - (optional) is a type of bool
       cis_mode = linux_configuration.value["cis_mode"]
-      motd     = linux_configuration.value["motd"]
+      # motd - (optional) is a type of string
+      motd = linux_configuration.value["motd"]
     }
   }
 
@@ -860,13 +901,17 @@ resource "avi_systemconfiguration" "this" {
       dynamic "api_access" {
         for_each = mgmt_ip_access_control.value.api_access
         content {
-          group_refs     = api_access.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = api_access.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = api_access.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = api_access.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -874,12 +919,15 @@ resource "avi_systemconfiguration" "this" {
           dynamic "prefixes" {
             for_each = api_access.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -894,7 +942,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -902,7 +952,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -916,13 +968,17 @@ resource "avi_systemconfiguration" "this" {
       dynamic "shell_server_access" {
         for_each = mgmt_ip_access_control.value.shell_server_access
         content {
-          group_refs     = shell_server_access.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = shell_server_access.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = shell_server_access.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = shell_server_access.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -930,12 +986,15 @@ resource "avi_systemconfiguration" "this" {
           dynamic "prefixes" {
             for_each = shell_server_access.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -950,7 +1009,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -958,7 +1019,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -972,13 +1035,17 @@ resource "avi_systemconfiguration" "this" {
       dynamic "snmp_access" {
         for_each = mgmt_ip_access_control.value.snmp_access
         content {
-          group_refs     = snmp_access.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = snmp_access.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = snmp_access.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = snmp_access.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -986,12 +1053,15 @@ resource "avi_systemconfiguration" "this" {
           dynamic "prefixes" {
             for_each = snmp_access.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1006,7 +1076,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -1014,7 +1086,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -1028,13 +1102,17 @@ resource "avi_systemconfiguration" "this" {
       dynamic "ssh_access" {
         for_each = mgmt_ip_access_control.value.ssh_access
         content {
-          group_refs     = ssh_access.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = ssh_access.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = ssh_access.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = ssh_access.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -1042,12 +1120,15 @@ resource "avi_systemconfiguration" "this" {
           dynamic "prefixes" {
             for_each = ssh_access.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1062,7 +1143,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -1070,7 +1153,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -1084,13 +1169,17 @@ resource "avi_systemconfiguration" "this" {
       dynamic "sysint_access" {
         for_each = mgmt_ip_access_control.value.sysint_access
         content {
-          group_refs     = sysint_access.value["group_refs"]
+          # group_refs - (optional) is a type of list of string
+          group_refs = sysint_access.value["group_refs"]
+          # match_criteria - (required) is a type of string
           match_criteria = sysint_access.value["match_criteria"]
 
           dynamic "addrs" {
             for_each = sysint_access.value.addrs
             content {
+              # addr - (required) is a type of string
               addr = addrs.value["addr"]
+              # type - (required) is a type of string
               type = addrs.value["type"]
             }
           }
@@ -1098,12 +1187,15 @@ resource "avi_systemconfiguration" "this" {
           dynamic "prefixes" {
             for_each = sysint_access.value.prefixes
             content {
+              # mask - (required) is a type of number
               mask = prefixes.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = prefixes.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1118,7 +1210,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "begin" {
                 for_each = ranges.value.begin
                 content {
+                  # addr - (required) is a type of string
                   addr = begin.value["addr"]
+                  # type - (required) is a type of string
                   type = begin.value["type"]
                 }
               }
@@ -1126,7 +1220,9 @@ resource "avi_systemconfiguration" "this" {
               dynamic "end" {
                 for_each = ranges.value.end
                 content {
+                  # addr - (required) is a type of string
                   addr = end.value["addr"]
+                  # type - (required) is a type of string
                   type = end.value["type"]
                 }
               }
@@ -1147,8 +1243,11 @@ resource "avi_systemconfiguration" "this" {
       dynamic "ntp_authentication_keys" {
         for_each = ntp_configuration.value.ntp_authentication_keys
         content {
-          algorithm  = ntp_authentication_keys.value["algorithm"]
-          key        = ntp_authentication_keys.value["key"]
+          # algorithm - (optional) is a type of string
+          algorithm = ntp_authentication_keys.value["algorithm"]
+          # key - (optional) is a type of string
+          key = ntp_authentication_keys.value["key"]
+          # key_number - (optional) is a type of number
           key_number = ntp_authentication_keys.value["key_number"]
         }
       }
@@ -1156,7 +1255,9 @@ resource "avi_systemconfiguration" "this" {
       dynamic "ntp_server_list" {
         for_each = ntp_configuration.value.ntp_server_list
         content {
+          # addr - (required) is a type of string
           addr = ntp_server_list.value["addr"]
+          # type - (required) is a type of string
           type = ntp_server_list.value["type"]
         }
       }
@@ -1164,12 +1265,15 @@ resource "avi_systemconfiguration" "this" {
       dynamic "ntp_servers" {
         for_each = ntp_configuration.value.ntp_servers
         content {
+          # key_number - (optional) is a type of number
           key_number = ntp_servers.value["key_number"]
 
           dynamic "server" {
             for_each = ntp_servers.value.server
             content {
+              # addr - (required) is a type of string
               addr = server.value["addr"]
+              # type - (required) is a type of string
               type = server.value["type"]
             }
           }
@@ -1183,29 +1287,47 @@ resource "avi_systemconfiguration" "this" {
   dynamic "portal_configuration" {
     for_each = var.portal_configuration
     content {
-      allow_basic_authentication     = portal_configuration.value["allow_basic_authentication"]
-      api_force_timeout              = portal_configuration.value["api_force_timeout"]
-      disable_remote_cli_shell       = portal_configuration.value["disable_remote_cli_shell"]
-      disable_swagger                = portal_configuration.value["disable_swagger"]
+      # allow_basic_authentication - (optional) is a type of bool
+      allow_basic_authentication = portal_configuration.value["allow_basic_authentication"]
+      # api_force_timeout - (optional) is a type of number
+      api_force_timeout = portal_configuration.value["api_force_timeout"]
+      # disable_remote_cli_shell - (optional) is a type of bool
+      disable_remote_cli_shell = portal_configuration.value["disable_remote_cli_shell"]
+      # disable_swagger - (optional) is a type of bool
+      disable_swagger = portal_configuration.value["disable_swagger"]
+      # enable_clickjacking_protection - (optional) is a type of bool
       enable_clickjacking_protection = portal_configuration.value["enable_clickjacking_protection"]
-      enable_http                    = portal_configuration.value["enable_http"]
-      enable_https                   = portal_configuration.value["enable_https"]
-      http_port                      = portal_configuration.value["http_port"]
-      https_port                     = portal_configuration.value["https_port"]
-      password_strength_check        = portal_configuration.value["password_strength_check"]
-      redirect_to_https              = portal_configuration.value["redirect_to_https"]
-      sslkeyandcertificate_refs      = portal_configuration.value["sslkeyandcertificate_refs"]
-      sslprofile_ref                 = portal_configuration.value["sslprofile_ref"]
-      use_uuid_from_input            = portal_configuration.value["use_uuid_from_input"]
+      # enable_http - (optional) is a type of bool
+      enable_http = portal_configuration.value["enable_http"]
+      # enable_https - (optional) is a type of bool
+      enable_https = portal_configuration.value["enable_https"]
+      # http_port - (optional) is a type of number
+      http_port = portal_configuration.value["http_port"]
+      # https_port - (optional) is a type of number
+      https_port = portal_configuration.value["https_port"]
+      # password_strength_check - (optional) is a type of bool
+      password_strength_check = portal_configuration.value["password_strength_check"]
+      # redirect_to_https - (optional) is a type of bool
+      redirect_to_https = portal_configuration.value["redirect_to_https"]
+      # sslkeyandcertificate_refs - (optional) is a type of list of string
+      sslkeyandcertificate_refs = portal_configuration.value["sslkeyandcertificate_refs"]
+      # sslprofile_ref - (optional) is a type of string
+      sslprofile_ref = portal_configuration.value["sslprofile_ref"]
+      # use_uuid_from_input - (optional) is a type of bool
+      use_uuid_from_input = portal_configuration.value["use_uuid_from_input"]
     }
   }
 
   dynamic "proxy_configuration" {
     for_each = var.proxy_configuration
     content {
-      host     = proxy_configuration.value["host"]
+      # host - (required) is a type of string
+      host = proxy_configuration.value["host"]
+      # password - (optional) is a type of string
       password = proxy_configuration.value["password"]
-      port     = proxy_configuration.value["port"]
+      # port - (required) is a type of number
+      port = proxy_configuration.value["port"]
+      # username - (optional) is a type of string
       username = proxy_configuration.value["username"]
     }
   }
@@ -1213,6 +1335,7 @@ resource "avi_systemconfiguration" "this" {
   dynamic "secure_channel_configuration" {
     for_each = var.secure_channel_configuration
     content {
+      # sslkeyandcertificate_refs - (optional) is a type of list of string
       sslkeyandcertificate_refs = secure_channel_configuration.value["sslkeyandcertificate_refs"]
     }
   }
@@ -1220,25 +1343,36 @@ resource "avi_systemconfiguration" "this" {
   dynamic "snmp_configuration" {
     for_each = var.snmp_configuration
     content {
-      community          = snmp_configuration.value["community"]
+      # community - (optional) is a type of string
+      community = snmp_configuration.value["community"]
+      # large_trap_payload - (optional) is a type of bool
       large_trap_payload = snmp_configuration.value["large_trap_payload"]
-      sys_contact        = snmp_configuration.value["sys_contact"]
-      sys_location       = snmp_configuration.value["sys_location"]
-      version            = snmp_configuration.value["version"]
+      # sys_contact - (optional) is a type of string
+      sys_contact = snmp_configuration.value["sys_contact"]
+      # sys_location - (optional) is a type of string
+      sys_location = snmp_configuration.value["sys_location"]
+      # version - (optional) is a type of string
+      version = snmp_configuration.value["version"]
 
       dynamic "snmp_v3_config" {
         for_each = snmp_configuration.value.snmp_v3_config
         content {
+          # engine_id - (optional) is a type of string
           engine_id = snmp_v3_config.value["engine_id"]
 
           dynamic "user" {
             for_each = snmp_v3_config.value.user
             content {
+              # auth_passphrase - (optional) is a type of string
               auth_passphrase = user.value["auth_passphrase"]
-              auth_type       = user.value["auth_type"]
+              # auth_type - (optional) is a type of string
+              auth_type = user.value["auth_type"]
+              # priv_passphrase - (optional) is a type of string
               priv_passphrase = user.value["priv_passphrase"]
-              priv_type       = user.value["priv_type"]
-              username        = user.value["username"]
+              # priv_type - (optional) is a type of string
+              priv_type = user.value["priv_type"]
+              # username - (optional) is a type of string
+              username = user.value["username"]
             }
           }
 

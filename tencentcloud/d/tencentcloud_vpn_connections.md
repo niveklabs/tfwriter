@@ -90,12 +90,18 @@ variable "vpn_gateway_id" {
 
 ```terraform
 data "tencentcloud_vpn_connections" "this" {
+  # customer_gateway_id - (optional) is a type of string
   customer_gateway_id = var.customer_gateway_id
-  name                = var.name
-  result_output_file  = var.result_output_file
-  tags                = var.tags
-  vpc_id              = var.vpc_id
-  vpn_gateway_id      = var.vpn_gateway_id
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 }
 ```
 

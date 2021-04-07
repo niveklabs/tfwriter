@@ -81,11 +81,16 @@ variable "role" {
 
 ```terraform
 resource "launchdarkly_team_member" "this" {
+  # custom_roles - (optional) is a type of set of string
   custom_roles = var.custom_roles
-  email        = var.email
-  first_name   = var.first_name
-  last_name    = var.last_name
-  role         = var.role
+  # email - (required) is a type of string
+  email = var.email
+  # first_name - (optional) is a type of string
+  first_name = var.first_name
+  # last_name - (optional) is a type of string
+  last_name = var.last_name
+  # role - (optional) is a type of string
+  role = var.role
 }
 ```
 

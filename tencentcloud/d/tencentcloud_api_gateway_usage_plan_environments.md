@@ -65,9 +65,12 @@ variable "usage_plan_id" {
 
 ```terraform
 data "tencentcloud_api_gateway_usage_plan_environments" "this" {
-  bind_type          = var.bind_type
+  # bind_type - (optional) is a type of string
+  bind_type = var.bind_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  usage_plan_id      = var.usage_plan_id
+  # usage_plan_id - (required) is a type of string
+  usage_plan_id = var.usage_plan_id
 }
 ```
 

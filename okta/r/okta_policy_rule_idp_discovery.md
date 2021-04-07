@@ -198,23 +198,37 @@ variable "user_identifier_patterns" {
 
 ```terraform
 resource "okta_policy_rule_idp_discovery" "this" {
-  idp_id                    = var.idp_id
-  idp_type                  = var.idp_type
-  name                      = var.name
-  network_connection        = var.network_connection
-  network_excludes          = var.network_excludes
-  network_includes          = var.network_includes
-  policyid                  = var.policyid
-  priority                  = var.priority
-  status                    = var.status
+  # idp_id - (optional) is a type of string
+  idp_id = var.idp_id
+  # idp_type - (optional) is a type of string
+  idp_type = var.idp_type
+  # name - (required) is a type of string
+  name = var.name
+  # network_connection - (optional) is a type of string
+  network_connection = var.network_connection
+  # network_excludes - (optional) is a type of list of string
+  network_excludes = var.network_excludes
+  # network_includes - (optional) is a type of list of string
+  network_includes = var.network_includes
+  # policyid - (required) is a type of string
+  policyid = var.policyid
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # user_identifier_attribute - (optional) is a type of string
   user_identifier_attribute = var.user_identifier_attribute
-  user_identifier_type      = var.user_identifier_type
+  # user_identifier_type - (optional) is a type of string
+  user_identifier_type = var.user_identifier_type
 
   dynamic "app_exclude" {
     for_each = var.app_exclude
     content {
-      id   = app_exclude.value["id"]
+      # id - (optional) is a type of string
+      id = app_exclude.value["id"]
+      # name - (optional) is a type of string
       name = app_exclude.value["name"]
+      # type - (required) is a type of string
       type = app_exclude.value["type"]
     }
   }
@@ -222,8 +236,11 @@ resource "okta_policy_rule_idp_discovery" "this" {
   dynamic "app_include" {
     for_each = var.app_include
     content {
-      id   = app_include.value["id"]
+      # id - (optional) is a type of string
+      id = app_include.value["id"]
+      # name - (optional) is a type of string
       name = app_include.value["name"]
+      # type - (required) is a type of string
       type = app_include.value["type"]
     }
   }
@@ -231,17 +248,22 @@ resource "okta_policy_rule_idp_discovery" "this" {
   dynamic "platform_include" {
     for_each = var.platform_include
     content {
+      # os_expression - (optional) is a type of string
       os_expression = platform_include.value["os_expression"]
-      os_type       = platform_include.value["os_type"]
-      type          = platform_include.value["type"]
+      # os_type - (optional) is a type of string
+      os_type = platform_include.value["os_type"]
+      # type - (optional) is a type of string
+      type = platform_include.value["type"]
     }
   }
 
   dynamic "user_identifier_patterns" {
     for_each = var.user_identifier_patterns
     content {
+      # match_type - (optional) is a type of string
       match_type = user_identifier_patterns.value["match_type"]
-      value      = user_identifier_patterns.value["value"]
+      # value - (optional) is a type of string
+      value = user_identifier_patterns.value["value"]
     }
   }
 

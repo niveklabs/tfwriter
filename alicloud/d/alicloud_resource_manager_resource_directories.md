@@ -50,6 +50,7 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_resource_manager_resource_directories" "this" {
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

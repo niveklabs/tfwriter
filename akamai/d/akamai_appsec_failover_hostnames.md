@@ -49,6 +49,7 @@ variable "config_id" {
 
 ```terraform
 data "akamai_appsec_failover_hostnames" "this" {
+  # config_id - (required) is a type of number
   config_id = var.config_id
 }
 ```

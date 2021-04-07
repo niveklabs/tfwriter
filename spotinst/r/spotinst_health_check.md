@@ -102,22 +102,35 @@ variable "check" {
 
 ```terraform
 resource "spotinst_health_check" "this" {
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # proxy_address - (required) is a type of string
   proxy_address = var.proxy_address
-  proxy_port    = var.proxy_port
-  resource_id   = var.resource_id
+  # proxy_port - (optional) is a type of number
+  proxy_port = var.proxy_port
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
 
   dynamic "check" {
     for_each = var.check
     content {
+      # end_point - (optional) is a type of string
       end_point = check.value["end_point"]
-      endpoint  = check.value["endpoint"]
-      healthy   = check.value["healthy"]
-      interval  = check.value["interval"]
-      port      = check.value["port"]
-      protocol  = check.value["protocol"]
-      time_out  = check.value["time_out"]
-      timeout   = check.value["timeout"]
+      # endpoint - (optional) is a type of string
+      endpoint = check.value["endpoint"]
+      # healthy - (required) is a type of number
+      healthy = check.value["healthy"]
+      # interval - (required) is a type of number
+      interval = check.value["interval"]
+      # port - (required) is a type of number
+      port = check.value["port"]
+      # protocol - (required) is a type of string
+      protocol = check.value["protocol"]
+      # time_out - (optional) is a type of number
+      time_out = check.value["time_out"]
+      # timeout - (optional) is a type of number
+      timeout = check.value["timeout"]
+      # unhealthy - (required) is a type of number
       unhealthy = check.value["unhealthy"]
     }
   }

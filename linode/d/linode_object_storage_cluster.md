@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 data "linode_object_storage_cluster" "this" {
-  domain             = var.domain
-  region             = var.region
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # region - (optional) is a type of string
+  region = var.region
+  # static_site_domain - (optional) is a type of string
   static_site_domain = var.static_site_domain
-  status             = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

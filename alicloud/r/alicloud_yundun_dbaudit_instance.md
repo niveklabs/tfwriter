@@ -103,17 +103,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_yundun_dbaudit_instance" "this" {
-  description       = var.description
-  period            = var.period
-  plan_code         = var.plan_code
+  # description - (required) is a type of string
+  description = var.description
+  # period - (optional) is a type of number
+  period = var.period
+  # plan_code - (required) is a type of string
+  plan_code = var.plan_code
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
-  vswitch_id        = var.vswitch_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

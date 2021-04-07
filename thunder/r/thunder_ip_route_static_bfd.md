@@ -66,9 +66,12 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ip_route_static_bfd" "this" {
-  local_ip   = var.local_ip
+  # local_ip - (optional) is a type of string
+  local_ip = var.local_ip
+  # nexthop_ip - (optional) is a type of string
   nexthop_ip = var.nexthop_ip
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

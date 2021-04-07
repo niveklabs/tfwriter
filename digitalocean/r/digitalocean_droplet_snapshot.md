@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "digitalocean_droplet_snapshot" "this" {
+  # droplet_id - (required) is a type of string
   droplet_id = var.droplet_id
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

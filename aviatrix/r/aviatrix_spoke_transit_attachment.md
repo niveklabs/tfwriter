@@ -64,8 +64,11 @@ variable "transit_gw_name" {
 
 ```terraform
 resource "aviatrix_spoke_transit_attachment" "this" {
-  route_tables    = var.route_tables
-  spoke_gw_name   = var.spoke_gw_name
+  # route_tables - (optional) is a type of set of string
+  route_tables = var.route_tables
+  # spoke_gw_name - (required) is a type of string
+  spoke_gw_name = var.spoke_gw_name
+  # transit_gw_name - (required) is a type of string
   transit_gw_name = var.transit_gw_name
 }
 ```

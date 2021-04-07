@@ -106,19 +106,29 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_integration_gcp_at" "this" {
-  enabled        = var.enabled
-  name           = var.name
-  resource_id    = var.resource_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # resource_id - (required) is a type of string
+  resource_id = var.resource_id
+  # resource_level - (optional) is a type of string
   resource_level = var.resource_level
-  retries        = var.retries
-  subscription   = var.subscription
+  # retries - (optional) is a type of number
+  retries = var.retries
+  # subscription - (required) is a type of string
+  subscription = var.subscription
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
-      client_email   = credentials.value["client_email"]
-      client_id      = credentials.value["client_id"]
-      private_key    = credentials.value["private_key"]
+      # client_email - (required) is a type of string
+      client_email = credentials.value["client_email"]
+      # client_id - (required) is a type of string
+      client_id = credentials.value["client_id"]
+      # private_key - (required) is a type of string
+      private_key = credentials.value["private_key"]
+      # private_key_id - (required) is a type of string
       private_key_id = credentials.value["private_key_id"]
     }
   }

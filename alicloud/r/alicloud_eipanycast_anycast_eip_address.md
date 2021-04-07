@@ -103,16 +103,23 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_eipanycast_anycast_eip_address" "this" {
+  # anycast_eip_address_name - (optional) is a type of string
   anycast_eip_address_name = var.anycast_eip_address_name
-  bandwidth                = var.bandwidth
-  description              = var.description
-  internet_charge_type     = var.internet_charge_type
-  payment_type             = var.payment_type
-  service_location         = var.service_location
+  # bandwidth - (optional) is a type of number
+  bandwidth = var.bandwidth
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # service_location - (required) is a type of string
+  service_location = var.service_location
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

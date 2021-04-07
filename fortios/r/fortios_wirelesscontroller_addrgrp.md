@@ -80,13 +80,17 @@ variable "addresses" {
 
 ```terraform
 resource "fortios_wirelesscontroller_addrgrp" "this" {
-  default_policy        = var.default_policy
+  # default_policy - (optional) is a type of string
+  default_policy = var.default_policy
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
+  # fosid - (optional) is a type of string
+  fosid = var.fosid
 
   dynamic "addresses" {
     for_each = var.addresses
     content {
+      # id - (optional) is a type of string
       id = addresses.value["id"]
     }
   }

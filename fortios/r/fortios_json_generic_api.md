@@ -80,11 +80,16 @@ variable "specialparams" {
 
 ```terraform
 resource "fortios_json_generic_api" "this" {
+  # force_recreate - (optional) is a type of string
   force_recreate = var.force_recreate
-  json           = var.json
-  method         = var.method
-  path           = var.path
-  specialparams  = var.specialparams
+  # json - (optional) is a type of string
+  json = var.json
+  # method - (required) is a type of string
+  method = var.method
+  # path - (required) is a type of string
+  path = var.path
+  # specialparams - (optional) is a type of string
+  specialparams = var.specialparams
 }
 ```
 

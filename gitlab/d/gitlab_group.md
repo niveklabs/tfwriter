@@ -58,8 +58,10 @@ variable "group_id" {
 
 ```terraform
 data "gitlab_group" "this" {
+  # full_path - (optional) is a type of string
   full_path = var.full_path
-  group_id  = var.group_id
+  # group_id - (optional) is a type of number
+  group_id = var.group_id
 }
 ```
 

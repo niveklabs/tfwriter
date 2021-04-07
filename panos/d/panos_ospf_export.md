@@ -72,9 +72,13 @@ variable "virtual_router" {
 
 ```terraform
 data "panos_ospf_export" "this" {
-  name           = var.name
-  template       = var.template
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

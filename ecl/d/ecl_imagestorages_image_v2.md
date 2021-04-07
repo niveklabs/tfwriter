@@ -138,18 +138,30 @@ variable "visibility" {
 
 ```terraform
 data "ecl_imagestorages_image_v2" "this" {
-  member_status  = var.member_status
-  most_recent    = var.most_recent
-  name           = var.name
-  owner          = var.owner
-  properties     = var.properties
-  region         = var.region
-  size_max       = var.size_max
-  size_min       = var.size_min
+  # member_status - (optional) is a type of string
+  member_status = var.member_status
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # name - (optional) is a type of string
+  name = var.name
+  # owner - (optional) is a type of string
+  owner = var.owner
+  # properties - (optional) is a type of map of string
+  properties = var.properties
+  # region - (optional) is a type of string
+  region = var.region
+  # size_max - (optional) is a type of number
+  size_max = var.size_max
+  # size_min - (optional) is a type of number
+  size_min = var.size_min
+  # sort_direction - (optional) is a type of string
   sort_direction = var.sort_direction
-  sort_key       = var.sort_key
-  tag            = var.tag
-  visibility     = var.visibility
+  # sort_key - (optional) is a type of string
+  sort_key = var.sort_key
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 }
 ```
 

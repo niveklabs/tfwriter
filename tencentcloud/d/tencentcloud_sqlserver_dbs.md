@@ -57,7 +57,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_sqlserver_dbs" "this" {
-  instance_id        = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

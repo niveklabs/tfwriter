@@ -140,32 +140,54 @@ variable "node_relationship" {
 
 ```terraform
 resource "mso_schema_template_contract_service_graph" "this" {
-  contract_name               = var.contract_name
-  schema_id                   = var.schema_id
-  service_graph_name          = var.service_graph_name
-  service_graph_schema_id     = var.service_graph_schema_id
-  service_graph_site_id       = var.service_graph_site_id
+  # contract_name - (required) is a type of string
+  contract_name = var.contract_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # service_graph_name - (required) is a type of string
+  service_graph_name = var.service_graph_name
+  # service_graph_schema_id - (optional) is a type of string
+  service_graph_schema_id = var.service_graph_schema_id
+  # service_graph_site_id - (optional) is a type of string
+  service_graph_site_id = var.service_graph_site_id
+  # service_graph_template_name - (optional) is a type of string
   service_graph_template_name = var.service_graph_template_name
-  site_id                     = var.site_id
-  template_name               = var.template_name
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 
   dynamic "node_relationship" {
     for_each = var.node_relationship
     content {
-      consumer_connector_bd_name                = node_relationship.value["consumer_connector_bd_name"]
-      consumer_connector_bd_schema_id           = node_relationship.value["consumer_connector_bd_schema_id"]
-      consumer_connector_bd_template_name       = node_relationship.value["consumer_connector_bd_template_name"]
-      consumer_connector_cluster_interface      = node_relationship.value["consumer_connector_cluster_interface"]
-      consumer_connector_redirect_policy        = node_relationship.value["consumer_connector_redirect_policy"]
+      # consumer_connector_bd_name - (required) is a type of string
+      consumer_connector_bd_name = node_relationship.value["consumer_connector_bd_name"]
+      # consumer_connector_bd_schema_id - (optional) is a type of string
+      consumer_connector_bd_schema_id = node_relationship.value["consumer_connector_bd_schema_id"]
+      # consumer_connector_bd_template_name - (optional) is a type of string
+      consumer_connector_bd_template_name = node_relationship.value["consumer_connector_bd_template_name"]
+      # consumer_connector_cluster_interface - (required) is a type of string
+      consumer_connector_cluster_interface = node_relationship.value["consumer_connector_cluster_interface"]
+      # consumer_connector_redirect_policy - (optional) is a type of string
+      consumer_connector_redirect_policy = node_relationship.value["consumer_connector_redirect_policy"]
+      # consumer_connector_redirect_policy_tenant - (optional) is a type of string
       consumer_connector_redirect_policy_tenant = node_relationship.value["consumer_connector_redirect_policy_tenant"]
-      consumer_subnet_ips                       = node_relationship.value["consumer_subnet_ips"]
-      provider_connector_bd_name                = node_relationship.value["provider_connector_bd_name"]
-      provider_connector_bd_schema_id           = node_relationship.value["provider_connector_bd_schema_id"]
-      provider_connector_bd_template_name       = node_relationship.value["provider_connector_bd_template_name"]
-      provider_connector_cluster_interface      = node_relationship.value["provider_connector_cluster_interface"]
-      provider_connector_redirect_policy        = node_relationship.value["provider_connector_redirect_policy"]
+      # consumer_subnet_ips - (optional) is a type of list of string
+      consumer_subnet_ips = node_relationship.value["consumer_subnet_ips"]
+      # provider_connector_bd_name - (required) is a type of string
+      provider_connector_bd_name = node_relationship.value["provider_connector_bd_name"]
+      # provider_connector_bd_schema_id - (optional) is a type of string
+      provider_connector_bd_schema_id = node_relationship.value["provider_connector_bd_schema_id"]
+      # provider_connector_bd_template_name - (optional) is a type of string
+      provider_connector_bd_template_name = node_relationship.value["provider_connector_bd_template_name"]
+      # provider_connector_cluster_interface - (required) is a type of string
+      provider_connector_cluster_interface = node_relationship.value["provider_connector_cluster_interface"]
+      # provider_connector_redirect_policy - (optional) is a type of string
+      provider_connector_redirect_policy = node_relationship.value["provider_connector_redirect_policy"]
+      # provider_connector_redirect_policy_tenant - (optional) is a type of string
       provider_connector_redirect_policy_tenant = node_relationship.value["provider_connector_redirect_policy_tenant"]
-      provider_subnet_ips                       = node_relationship.value["provider_subnet_ips"]
+      # provider_subnet_ips - (optional) is a type of list of string
+      provider_subnet_ips = node_relationship.value["provider_subnet_ips"]
     }
   }
 

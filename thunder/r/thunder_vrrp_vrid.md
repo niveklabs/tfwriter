@@ -308,20 +308,27 @@ variable "preempt_mode" {
 
 ```terraform
 resource "thunder_vrrp_vrid" "this" {
+  # user_tag - (optional) is a type of string
   user_tag = var.user_tag
-  uuid     = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vrid_val - (optional) is a type of number
   vrid_val = var.vrid_val
 
   dynamic "blade_parameters" {
     for_each = var.blade_parameters
     content {
+      # fail_over_policy_template - (optional) is a type of string
       fail_over_policy_template = blade_parameters.value["fail_over_policy_template"]
-      priority                  = blade_parameters.value["priority"]
-      uuid                      = blade_parameters.value["uuid"]
+      # priority - (optional) is a type of number
+      priority = blade_parameters.value["priority"]
+      # uuid - (optional) is a type of string
+      uuid = blade_parameters.value["uuid"]
 
       dynamic "tracking_options" {
         for_each = blade_parameters.value.tracking_options
         content {
+          # uuid - (optional) is a type of string
           uuid = tracking_options.value["uuid"]
 
           dynamic "bgp" {
@@ -331,16 +338,20 @@ resource "thunder_vrrp_vrid" "this" {
               dynamic "bgp_ipv4_address_cfg" {
                 for_each = bgp.value.bgp_ipv4_address_cfg
                 content {
+                  # bgp_ipv4_address - (optional) is a type of string
                   bgp_ipv4_address = bgp_ipv4_address_cfg.value["bgp_ipv4_address"]
-                  priority_cost    = bgp_ipv4_address_cfg.value["priority_cost"]
+                  # priority_cost - (optional) is a type of number
+                  priority_cost = bgp_ipv4_address_cfg.value["priority_cost"]
                 }
               }
 
               dynamic "bgp_ipv6_address_cfg" {
                 for_each = bgp.value.bgp_ipv6_address_cfg
                 content {
+                  # bgp_ipv6_address - (optional) is a type of string
                   bgp_ipv6_address = bgp_ipv6_address_cfg.value["bgp_ipv6_address"]
-                  priority_cost    = bgp_ipv6_address_cfg.value["priority_cost"]
+                  # priority_cost - (optional) is a type of number
+                  priority_cost = bgp_ipv6_address_cfg.value["priority_cost"]
                 }
               }
 
@@ -354,18 +365,24 @@ resource "thunder_vrrp_vrid" "this" {
               dynamic "ipv4_gateway_list" {
                 for_each = gateway.value.ipv4_gateway_list
                 content {
-                  ip_address    = ipv4_gateway_list.value["ip_address"]
+                  # ip_address - (optional) is a type of string
+                  ip_address = ipv4_gateway_list.value["ip_address"]
+                  # priority_cost - (optional) is a type of number
                   priority_cost = ipv4_gateway_list.value["priority_cost"]
-                  uuid          = ipv4_gateway_list.value["uuid"]
+                  # uuid - (optional) is a type of string
+                  uuid = ipv4_gateway_list.value["uuid"]
                 }
               }
 
               dynamic "ipv6_gateway_list" {
                 for_each = gateway.value.ipv6_gateway_list
                 content {
-                  ipv6_address  = ipv6_gateway_list.value["ipv6_address"]
+                  # ipv6_address - (optional) is a type of string
+                  ipv6_address = ipv6_gateway_list.value["ipv6_address"]
+                  # priority_cost - (optional) is a type of number
                   priority_cost = ipv6_gateway_list.value["priority_cost"]
-                  uuid          = ipv6_gateway_list.value["uuid"]
+                  # uuid - (optional) is a type of string
+                  uuid = ipv6_gateway_list.value["uuid"]
                 }
               }
 
@@ -375,7 +392,9 @@ resource "thunder_vrrp_vrid" "this" {
           dynamic "interface" {
             for_each = tracking_options.value.interface
             content {
-              ethernet      = interface.value["ethernet"]
+              # ethernet - (optional) is a type of number
+              ethernet = interface.value["ethernet"]
+              # priority_cost - (optional) is a type of number
               priority_cost = interface.value["priority_cost"]
             }
           }
@@ -387,23 +406,34 @@ resource "thunder_vrrp_vrid" "this" {
               dynamic "ip_destination_cfg" {
                 for_each = route.value.ip_destination_cfg
                 content {
-                  distance       = ip_destination_cfg.value["distance"]
-                  gateway        = ip_destination_cfg.value["gateway"]
+                  # distance - (optional) is a type of number
+                  distance = ip_destination_cfg.value["distance"]
+                  # gateway - (optional) is a type of string
+                  gateway = ip_destination_cfg.value["gateway"]
+                  # ip_destination - (optional) is a type of string
                   ip_destination = ip_destination_cfg.value["ip_destination"]
-                  mask           = ip_destination_cfg.value["mask"]
-                  priority_cost  = ip_destination_cfg.value["priority_cost"]
-                  protocol       = ip_destination_cfg.value["protocol"]
+                  # mask - (optional) is a type of string
+                  mask = ip_destination_cfg.value["mask"]
+                  # priority_cost - (optional) is a type of number
+                  priority_cost = ip_destination_cfg.value["priority_cost"]
+                  # protocol - (optional) is a type of string
+                  protocol = ip_destination_cfg.value["protocol"]
                 }
               }
 
               dynamic "ipv6_destination_cfg" {
                 for_each = route.value.ipv6_destination_cfg
                 content {
-                  distance         = ipv6_destination_cfg.value["distance"]
-                  gatewayv6        = ipv6_destination_cfg.value["gatewayv6"]
+                  # distance - (optional) is a type of number
+                  distance = ipv6_destination_cfg.value["distance"]
+                  # gatewayv6 - (optional) is a type of string
+                  gatewayv6 = ipv6_destination_cfg.value["gatewayv6"]
+                  # ipv6_destination - (optional) is a type of string
                   ipv6_destination = ipv6_destination_cfg.value["ipv6_destination"]
-                  priority_cost    = ipv6_destination_cfg.value["priority_cost"]
-                  protocol         = ipv6_destination_cfg.value["protocol"]
+                  # priority_cost - (optional) is a type of number
+                  priority_cost = ipv6_destination_cfg.value["priority_cost"]
+                  # protocol - (optional) is a type of string
+                  protocol = ipv6_destination_cfg.value["protocol"]
                 }
               }
 
@@ -413,18 +443,24 @@ resource "thunder_vrrp_vrid" "this" {
           dynamic "trunk_cfg" {
             for_each = tracking_options.value.trunk_cfg
             content {
-              per_port_pri  = trunk_cfg.value["per_port_pri"]
+              # per_port_pri - (optional) is a type of number
+              per_port_pri = trunk_cfg.value["per_port_pri"]
+              # priority_cost - (optional) is a type of number
               priority_cost = trunk_cfg.value["priority_cost"]
-              trunk         = trunk_cfg.value["trunk"]
+              # trunk - (optional) is a type of number
+              trunk = trunk_cfg.value["trunk"]
             }
           }
 
           dynamic "vlan_cfg" {
             for_each = tracking_options.value.vlan_cfg
             content {
+              # priority_cost - (optional) is a type of number
               priority_cost = vlan_cfg.value["priority_cost"]
-              timeout       = vlan_cfg.value["timeout"]
-              vlan          = vlan_cfg.value["vlan"]
+              # timeout - (optional) is a type of number
+              timeout = vlan_cfg.value["timeout"]
+              # vlan - (optional) is a type of number
+              vlan = vlan_cfg.value["vlan"]
             }
           }
 
@@ -441,6 +477,7 @@ resource "thunder_vrrp_vrid" "this" {
       dynamic "ip_address_cfg" {
         for_each = floating_ip.value.ip_address_cfg
         content {
+          # ip_address - (optional) is a type of string
           ip_address = ip_address_cfg.value["ip_address"]
         }
       }
@@ -448,6 +485,7 @@ resource "thunder_vrrp_vrid" "this" {
       dynamic "ip_address_part_cfg" {
         for_each = floating_ip.value.ip_address_part_cfg
         content {
+          # ip_address_partition - (optional) is a type of string
           ip_address_partition = ip_address_part_cfg.value["ip_address_partition"]
         }
       }
@@ -455,20 +493,28 @@ resource "thunder_vrrp_vrid" "this" {
       dynamic "ipv6_address_cfg" {
         for_each = floating_ip.value.ipv6_address_cfg
         content {
-          ethernet     = ipv6_address_cfg.value["ethernet"]
+          # ethernet - (optional) is a type of number
+          ethernet = ipv6_address_cfg.value["ethernet"]
+          # ipv6_address - (optional) is a type of string
           ipv6_address = ipv6_address_cfg.value["ipv6_address"]
-          trunk        = ipv6_address_cfg.value["trunk"]
-          ve           = ipv6_address_cfg.value["ve"]
+          # trunk - (optional) is a type of number
+          trunk = ipv6_address_cfg.value["trunk"]
+          # ve - (optional) is a type of number
+          ve = ipv6_address_cfg.value["ve"]
         }
       }
 
       dynamic "ipv6_address_part_cfg" {
         for_each = floating_ip.value.ipv6_address_part_cfg
         content {
-          ethernet               = ipv6_address_part_cfg.value["ethernet"]
+          # ethernet - (optional) is a type of number
+          ethernet = ipv6_address_part_cfg.value["ethernet"]
+          # ipv6_address_partition - (optional) is a type of string
           ipv6_address_partition = ipv6_address_part_cfg.value["ipv6_address_partition"]
-          trunk                  = ipv6_address_part_cfg.value["trunk"]
-          ve                     = ipv6_address_part_cfg.value["ve"]
+          # trunk - (optional) is a type of number
+          trunk = ipv6_address_part_cfg.value["trunk"]
+          # ve - (optional) is a type of number
+          ve = ipv6_address_part_cfg.value["ve"]
         }
       }
 
@@ -478,6 +524,7 @@ resource "thunder_vrrp_vrid" "this" {
   dynamic "follow" {
     for_each = var.follow
     content {
+      # vrid_lead - (optional) is a type of string
       vrid_lead = follow.value["vrid_lead"]
     }
   }
@@ -485,7 +532,9 @@ resource "thunder_vrrp_vrid" "this" {
   dynamic "preempt_mode" {
     for_each = var.preempt_mode
     content {
-      disable   = preempt_mode.value["disable"]
+      # disable - (optional) is a type of number
+      disable = preempt_mode.value["disable"]
+      # threshold - (optional) is a type of number
       threshold = preempt_mode.value["threshold"]
     }
   }

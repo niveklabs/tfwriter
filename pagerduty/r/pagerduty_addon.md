@@ -56,8 +56,10 @@ variable "src" {
 
 ```terraform
 resource "pagerduty_addon" "this" {
+  # name - (required) is a type of string
   name = var.name
-  src  = var.src
+  # src - (required) is a type of string
+  src = var.src
 }
 ```
 

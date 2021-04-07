@@ -76,15 +76,20 @@ variable "oi_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqproamingconsortium" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "oi_list" {
     for_each = var.oi_list
     content {
+      # comment - (optional) is a type of string
       comment = oi_list.value["comment"]
-      index   = oi_list.value["index"]
-      oi      = oi_list.value["oi"]
+      # index - (optional) is a type of number
+      index = oi_list.value["index"]
+      # oi - (optional) is a type of string
+      oi = oi_list.value["oi"]
     }
   }
 

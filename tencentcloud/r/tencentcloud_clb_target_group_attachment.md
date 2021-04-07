@@ -80,10 +80,15 @@ variable "targrt_group_id" {
 
 ```terraform
 resource "tencentcloud_clb_target_group_attachment" "this" {
-  clb_id          = var.clb_id
-  listener_id     = var.listener_id
-  rule_id         = var.rule_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # rule_id - (optional) is a type of string
+  rule_id = var.rule_id
+  # target_group_id - (optional) is a type of string
   target_group_id = var.target_group_id
+  # targrt_group_id - (optional) is a type of string
   targrt_group_id = var.targrt_group_id
 }
 ```

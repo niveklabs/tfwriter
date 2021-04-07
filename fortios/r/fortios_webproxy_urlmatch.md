@@ -89,12 +89,18 @@ variable "url_pattern" {
 
 ```terraform
 resource "fortios_webproxy_urlmatch" "this" {
+  # cache_exemption - (optional) is a type of string
   cache_exemption = var.cache_exemption
-  comment         = var.comment
-  forward_server  = var.forward_server
-  name            = var.name
-  status          = var.status
-  url_pattern     = var.url_pattern
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # forward_server - (optional) is a type of string
+  forward_server = var.forward_server
+  # name - (optional) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
+  # url_pattern - (required) is a type of string
+  url_pattern = var.url_pattern
 }
 ```
 

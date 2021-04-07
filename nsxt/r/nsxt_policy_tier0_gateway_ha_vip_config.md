@@ -63,9 +63,12 @@ resource "nsxt_policy_tier0_gateway_ha_vip_config" "this" {
   dynamic "config" {
     for_each = var.config
     content {
-      enabled                  = config.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = config.value["enabled"]
+      # external_interface_paths - (required) is a type of list of string
       external_interface_paths = config.value["external_interface_paths"]
-      vip_subnets              = config.value["vip_subnets"]
+      # vip_subnets - (required) is a type of list of string
+      vip_subnets = config.value["vip_subnets"]
     }
   }
 

@@ -63,9 +63,12 @@ variable "user" {
 
 ```terraform
 resource "opennebula_acl" "this" {
+  # resource - (required) is a type of string
   resource = var.resource
-  rights   = var.rights
-  user     = var.user
+  # rights - (required) is a type of string
+  rights = var.rights
+  # user - (required) is a type of string
+  user = var.user
 }
 ```
 

@@ -148,28 +148,46 @@ variable "cors_headers" {
 
 ```terraform
 resource "cloudflare_access_application" "this" {
-  account_id                = var.account_id
-  allowed_idps              = var.allowed_idps
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # allowed_idps - (optional) is a type of list of string
+  allowed_idps = var.allowed_idps
+  # auto_redirect_to_identity - (optional) is a type of bool
   auto_redirect_to_identity = var.auto_redirect_to_identity
-  custom_deny_message       = var.custom_deny_message
-  custom_deny_url           = var.custom_deny_url
-  domain                    = var.domain
-  enable_binding_cookie     = var.enable_binding_cookie
-  name                      = var.name
-  session_duration          = var.session_duration
-  zone_id                   = var.zone_id
+  # custom_deny_message - (optional) is a type of string
+  custom_deny_message = var.custom_deny_message
+  # custom_deny_url - (optional) is a type of string
+  custom_deny_url = var.custom_deny_url
+  # domain - (required) is a type of string
+  domain = var.domain
+  # enable_binding_cookie - (optional) is a type of bool
+  enable_binding_cookie = var.enable_binding_cookie
+  # name - (required) is a type of string
+  name = var.name
+  # session_duration - (optional) is a type of string
+  session_duration = var.session_duration
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "cors_headers" {
     for_each = var.cors_headers
     content {
+      # allow_all_headers - (optional) is a type of bool
       allow_all_headers = cors_headers.value["allow_all_headers"]
+      # allow_all_methods - (optional) is a type of bool
       allow_all_methods = cors_headers.value["allow_all_methods"]
+      # allow_all_origins - (optional) is a type of bool
       allow_all_origins = cors_headers.value["allow_all_origins"]
+      # allow_credentials - (optional) is a type of bool
       allow_credentials = cors_headers.value["allow_credentials"]
-      allowed_headers   = cors_headers.value["allowed_headers"]
-      allowed_methods   = cors_headers.value["allowed_methods"]
-      allowed_origins   = cors_headers.value["allowed_origins"]
-      max_age           = cors_headers.value["max_age"]
+      # allowed_headers - (optional) is a type of set of string
+      allowed_headers = cors_headers.value["allowed_headers"]
+      # allowed_methods - (optional) is a type of set of string
+      allowed_methods = cors_headers.value["allowed_methods"]
+      # allowed_origins - (optional) is a type of set of string
+      allowed_origins = cors_headers.value["allowed_origins"]
+      # max_age - (optional) is a type of number
+      max_age = cors_headers.value["max_age"]
     }
   }
 

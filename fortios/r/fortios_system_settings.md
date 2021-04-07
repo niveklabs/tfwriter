@@ -1056,135 +1056,261 @@ variable "gui_default_policy_columns" {
 
 ```terraform
 resource "fortios_system_settings" "this" {
-  allow_linkdown_path                = var.allow_linkdown_path
-  allow_subnet_overlap               = var.allow_subnet_overlap
-  asymroute                          = var.asymroute
-  asymroute6                         = var.asymroute6
-  asymroute6_icmp                    = var.asymroute6_icmp
-  asymroute_icmp                     = var.asymroute_icmp
-  auxiliary_session                  = var.auxiliary_session
-  bfd                                = var.bfd
-  bfd_desired_min_tx                 = var.bfd_desired_min_tx
-  bfd_detect_mult                    = var.bfd_detect_mult
-  bfd_dont_enforce_src_port          = var.bfd_dont_enforce_src_port
-  bfd_required_min_rx                = var.bfd_required_min_rx
-  block_land_attack                  = var.block_land_attack
-  central_nat                        = var.central_nat
-  comments                           = var.comments
-  compliance_check                   = var.compliance_check
-  consolidated_firewall_mode         = var.consolidated_firewall_mode
-  default_voip_alg_mode              = var.default_voip_alg_mode
-  deny_tcp_with_icmp                 = var.deny_tcp_with_icmp
-  device                             = var.device
-  dhcp6_server_ip                    = var.dhcp6_server_ip
-  dhcp_proxy                         = var.dhcp_proxy
-  dhcp_proxy_interface               = var.dhcp_proxy_interface
+  # allow_linkdown_path - (optional) is a type of string
+  allow_linkdown_path = var.allow_linkdown_path
+  # allow_subnet_overlap - (optional) is a type of string
+  allow_subnet_overlap = var.allow_subnet_overlap
+  # asymroute - (optional) is a type of string
+  asymroute = var.asymroute
+  # asymroute6 - (optional) is a type of string
+  asymroute6 = var.asymroute6
+  # asymroute6_icmp - (optional) is a type of string
+  asymroute6_icmp = var.asymroute6_icmp
+  # asymroute_icmp - (optional) is a type of string
+  asymroute_icmp = var.asymroute_icmp
+  # auxiliary_session - (optional) is a type of string
+  auxiliary_session = var.auxiliary_session
+  # bfd - (optional) is a type of string
+  bfd = var.bfd
+  # bfd_desired_min_tx - (optional) is a type of number
+  bfd_desired_min_tx = var.bfd_desired_min_tx
+  # bfd_detect_mult - (optional) is a type of number
+  bfd_detect_mult = var.bfd_detect_mult
+  # bfd_dont_enforce_src_port - (optional) is a type of string
+  bfd_dont_enforce_src_port = var.bfd_dont_enforce_src_port
+  # bfd_required_min_rx - (optional) is a type of number
+  bfd_required_min_rx = var.bfd_required_min_rx
+  # block_land_attack - (optional) is a type of string
+  block_land_attack = var.block_land_attack
+  # central_nat - (optional) is a type of string
+  central_nat = var.central_nat
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # compliance_check - (optional) is a type of string
+  compliance_check = var.compliance_check
+  # consolidated_firewall_mode - (optional) is a type of string
+  consolidated_firewall_mode = var.consolidated_firewall_mode
+  # default_voip_alg_mode - (optional) is a type of string
+  default_voip_alg_mode = var.default_voip_alg_mode
+  # deny_tcp_with_icmp - (optional) is a type of string
+  deny_tcp_with_icmp = var.deny_tcp_with_icmp
+  # device - (optional) is a type of string
+  device = var.device
+  # dhcp6_server_ip - (optional) is a type of string
+  dhcp6_server_ip = var.dhcp6_server_ip
+  # dhcp_proxy - (optional) is a type of string
+  dhcp_proxy = var.dhcp_proxy
+  # dhcp_proxy_interface - (optional) is a type of string
+  dhcp_proxy_interface = var.dhcp_proxy_interface
+  # dhcp_proxy_interface_select_method - (optional) is a type of string
   dhcp_proxy_interface_select_method = var.dhcp_proxy_interface_select_method
-  dhcp_server_ip                     = var.dhcp_server_ip
-  discovered_device_timeout          = var.discovered_device_timeout
-  dynamic_sort_subtable              = var.dynamic_sort_subtable
-  ecmp_max_paths                     = var.ecmp_max_paths
-  email_portal_check_dns             = var.email_portal_check_dns
-  firewall_session_dirty             = var.firewall_session_dirty
-  fw_session_hairpin                 = var.fw_session_hairpin
-  gateway                            = var.gateway
-  gateway6                           = var.gateway6
-  gui_advanced_policy                = var.gui_advanced_policy
-  gui_allow_unnamed_policy           = var.gui_allow_unnamed_policy
-  gui_antivirus                      = var.gui_antivirus
-  gui_ap_profile                     = var.gui_ap_profile
-  gui_application_control            = var.gui_application_control
-  gui_dhcp_advanced                  = var.gui_dhcp_advanced
-  gui_dlp                            = var.gui_dlp
-  gui_dns_database                   = var.gui_dns_database
-  gui_dnsfilter                      = var.gui_dnsfilter
-  gui_domain_ip_reputation           = var.gui_domain_ip_reputation
-  gui_dos_policy                     = var.gui_dos_policy
-  gui_dynamic_profile_display        = var.gui_dynamic_profile_display
-  gui_dynamic_routing                = var.gui_dynamic_routing
-  gui_email_collection               = var.gui_email_collection
-  gui_endpoint_control               = var.gui_endpoint_control
-  gui_endpoint_control_advanced      = var.gui_endpoint_control_advanced
-  gui_explicit_proxy                 = var.gui_explicit_proxy
-  gui_file_filter                    = var.gui_file_filter
-  gui_fortiap_split_tunneling        = var.gui_fortiap_split_tunneling
-  gui_fortiextender_controller       = var.gui_fortiextender_controller
-  gui_icap                           = var.gui_icap
-  gui_implicit_policy                = var.gui_implicit_policy
-  gui_ips                            = var.gui_ips
-  gui_load_balance                   = var.gui_load_balance
-  gui_local_in_policy                = var.gui_local_in_policy
-  gui_local_reports                  = var.gui_local_reports
-  gui_multicast_policy               = var.gui_multicast_policy
-  gui_multiple_interface_policy      = var.gui_multiple_interface_policy
-  gui_multiple_utm_profiles          = var.gui_multiple_utm_profiles
-  gui_nat46_64                       = var.gui_nat46_64
-  gui_object_colors                  = var.gui_object_colors
-  gui_per_policy_disclaimer          = var.gui_per_policy_disclaimer
-  gui_policy_based_ipsec             = var.gui_policy_based_ipsec
-  gui_policy_disclaimer              = var.gui_policy_disclaimer
-  gui_policy_learning                = var.gui_policy_learning
-  gui_replacement_message_groups     = var.gui_replacement_message_groups
-  gui_security_profile_group         = var.gui_security_profile_group
-  gui_spamfilter                     = var.gui_spamfilter
-  gui_sslvpn_personal_bookmarks      = var.gui_sslvpn_personal_bookmarks
-  gui_sslvpn_realms                  = var.gui_sslvpn_realms
-  gui_switch_controller              = var.gui_switch_controller
-  gui_threat_weight                  = var.gui_threat_weight
-  gui_traffic_shaping                = var.gui_traffic_shaping
-  gui_voip_profile                   = var.gui_voip_profile
-  gui_vpn                            = var.gui_vpn
-  gui_waf_profile                    = var.gui_waf_profile
-  gui_wan_load_balancing             = var.gui_wan_load_balancing
-  gui_wanopt_cache                   = var.gui_wanopt_cache
-  gui_webfilter                      = var.gui_webfilter
-  gui_webfilter_advanced             = var.gui_webfilter_advanced
-  gui_wireless_controller            = var.gui_wireless_controller
-  http_external_dest                 = var.http_external_dest
-  ike_dn_format                      = var.ike_dn_format
-  ike_natt_port                      = var.ike_natt_port
-  ike_port                           = var.ike_port
-  ike_quick_crash_detect             = var.ike_quick_crash_detect
-  ike_session_resume                 = var.ike_session_resume
-  implicit_allow_dns                 = var.implicit_allow_dns
-  inspection_mode                    = var.inspection_mode
-  ip                                 = var.ip
-  ip6                                = var.ip6
-  link_down_access                   = var.link_down_access
-  lldp_reception                     = var.lldp_reception
-  lldp_transmission                  = var.lldp_transmission
-  mac_ttl                            = var.mac_ttl
-  manageip                           = var.manageip
-  manageip6                          = var.manageip6
-  multicast_forward                  = var.multicast_forward
-  multicast_skip_policy              = var.multicast_skip_policy
-  multicast_ttl_notchange            = var.multicast_ttl_notchange
-  ngfw_mode                          = var.ngfw_mode
-  opmode                             = var.opmode
-  prp_trailer_action                 = var.prp_trailer_action
-  sccp_port                          = var.sccp_port
-  sctp_session_without_init          = var.sctp_session_without_init
-  ses_denied_traffic                 = var.ses_denied_traffic
-  sip_expectation                    = var.sip_expectation
-  sip_helper                         = var.sip_helper
-  sip_nat_trace                      = var.sip_nat_trace
-  sip_ssl_port                       = var.sip_ssl_port
-  sip_tcp_port                       = var.sip_tcp_port
-  sip_udp_port                       = var.sip_udp_port
-  snat_hairpin_traffic               = var.snat_hairpin_traffic
-  ssl_ssh_profile                    = var.ssl_ssh_profile
-  status                             = var.status
-  strict_src_check                   = var.strict_src_check
-  tcp_session_without_syn            = var.tcp_session_without_syn
-  utf8_spam_tagging                  = var.utf8_spam_tagging
-  v4_ecmp_mode                       = var.v4_ecmp_mode
-  vpn_stats_log                      = var.vpn_stats_log
-  vpn_stats_period                   = var.vpn_stats_period
-  wccp_cache_engine                  = var.wccp_cache_engine
+  # dhcp_server_ip - (optional) is a type of string
+  dhcp_server_ip = var.dhcp_server_ip
+  # discovered_device_timeout - (optional) is a type of number
+  discovered_device_timeout = var.discovered_device_timeout
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # ecmp_max_paths - (optional) is a type of number
+  ecmp_max_paths = var.ecmp_max_paths
+  # email_portal_check_dns - (optional) is a type of string
+  email_portal_check_dns = var.email_portal_check_dns
+  # firewall_session_dirty - (optional) is a type of string
+  firewall_session_dirty = var.firewall_session_dirty
+  # fw_session_hairpin - (optional) is a type of string
+  fw_session_hairpin = var.fw_session_hairpin
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # gateway6 - (optional) is a type of string
+  gateway6 = var.gateway6
+  # gui_advanced_policy - (optional) is a type of string
+  gui_advanced_policy = var.gui_advanced_policy
+  # gui_allow_unnamed_policy - (optional) is a type of string
+  gui_allow_unnamed_policy = var.gui_allow_unnamed_policy
+  # gui_antivirus - (optional) is a type of string
+  gui_antivirus = var.gui_antivirus
+  # gui_ap_profile - (optional) is a type of string
+  gui_ap_profile = var.gui_ap_profile
+  # gui_application_control - (optional) is a type of string
+  gui_application_control = var.gui_application_control
+  # gui_dhcp_advanced - (optional) is a type of string
+  gui_dhcp_advanced = var.gui_dhcp_advanced
+  # gui_dlp - (optional) is a type of string
+  gui_dlp = var.gui_dlp
+  # gui_dns_database - (optional) is a type of string
+  gui_dns_database = var.gui_dns_database
+  # gui_dnsfilter - (optional) is a type of string
+  gui_dnsfilter = var.gui_dnsfilter
+  # gui_domain_ip_reputation - (optional) is a type of string
+  gui_domain_ip_reputation = var.gui_domain_ip_reputation
+  # gui_dos_policy - (optional) is a type of string
+  gui_dos_policy = var.gui_dos_policy
+  # gui_dynamic_profile_display - (optional) is a type of string
+  gui_dynamic_profile_display = var.gui_dynamic_profile_display
+  # gui_dynamic_routing - (optional) is a type of string
+  gui_dynamic_routing = var.gui_dynamic_routing
+  # gui_email_collection - (optional) is a type of string
+  gui_email_collection = var.gui_email_collection
+  # gui_endpoint_control - (optional) is a type of string
+  gui_endpoint_control = var.gui_endpoint_control
+  # gui_endpoint_control_advanced - (optional) is a type of string
+  gui_endpoint_control_advanced = var.gui_endpoint_control_advanced
+  # gui_explicit_proxy - (optional) is a type of string
+  gui_explicit_proxy = var.gui_explicit_proxy
+  # gui_file_filter - (optional) is a type of string
+  gui_file_filter = var.gui_file_filter
+  # gui_fortiap_split_tunneling - (optional) is a type of string
+  gui_fortiap_split_tunneling = var.gui_fortiap_split_tunneling
+  # gui_fortiextender_controller - (optional) is a type of string
+  gui_fortiextender_controller = var.gui_fortiextender_controller
+  # gui_icap - (optional) is a type of string
+  gui_icap = var.gui_icap
+  # gui_implicit_policy - (optional) is a type of string
+  gui_implicit_policy = var.gui_implicit_policy
+  # gui_ips - (optional) is a type of string
+  gui_ips = var.gui_ips
+  # gui_load_balance - (optional) is a type of string
+  gui_load_balance = var.gui_load_balance
+  # gui_local_in_policy - (optional) is a type of string
+  gui_local_in_policy = var.gui_local_in_policy
+  # gui_local_reports - (optional) is a type of string
+  gui_local_reports = var.gui_local_reports
+  # gui_multicast_policy - (optional) is a type of string
+  gui_multicast_policy = var.gui_multicast_policy
+  # gui_multiple_interface_policy - (optional) is a type of string
+  gui_multiple_interface_policy = var.gui_multiple_interface_policy
+  # gui_multiple_utm_profiles - (optional) is a type of string
+  gui_multiple_utm_profiles = var.gui_multiple_utm_profiles
+  # gui_nat46_64 - (optional) is a type of string
+  gui_nat46_64 = var.gui_nat46_64
+  # gui_object_colors - (optional) is a type of string
+  gui_object_colors = var.gui_object_colors
+  # gui_per_policy_disclaimer - (optional) is a type of string
+  gui_per_policy_disclaimer = var.gui_per_policy_disclaimer
+  # gui_policy_based_ipsec - (optional) is a type of string
+  gui_policy_based_ipsec = var.gui_policy_based_ipsec
+  # gui_policy_disclaimer - (optional) is a type of string
+  gui_policy_disclaimer = var.gui_policy_disclaimer
+  # gui_policy_learning - (optional) is a type of string
+  gui_policy_learning = var.gui_policy_learning
+  # gui_replacement_message_groups - (optional) is a type of string
+  gui_replacement_message_groups = var.gui_replacement_message_groups
+  # gui_security_profile_group - (optional) is a type of string
+  gui_security_profile_group = var.gui_security_profile_group
+  # gui_spamfilter - (optional) is a type of string
+  gui_spamfilter = var.gui_spamfilter
+  # gui_sslvpn_personal_bookmarks - (optional) is a type of string
+  gui_sslvpn_personal_bookmarks = var.gui_sslvpn_personal_bookmarks
+  # gui_sslvpn_realms - (optional) is a type of string
+  gui_sslvpn_realms = var.gui_sslvpn_realms
+  # gui_switch_controller - (optional) is a type of string
+  gui_switch_controller = var.gui_switch_controller
+  # gui_threat_weight - (optional) is a type of string
+  gui_threat_weight = var.gui_threat_weight
+  # gui_traffic_shaping - (optional) is a type of string
+  gui_traffic_shaping = var.gui_traffic_shaping
+  # gui_voip_profile - (optional) is a type of string
+  gui_voip_profile = var.gui_voip_profile
+  # gui_vpn - (optional) is a type of string
+  gui_vpn = var.gui_vpn
+  # gui_waf_profile - (optional) is a type of string
+  gui_waf_profile = var.gui_waf_profile
+  # gui_wan_load_balancing - (optional) is a type of string
+  gui_wan_load_balancing = var.gui_wan_load_balancing
+  # gui_wanopt_cache - (optional) is a type of string
+  gui_wanopt_cache = var.gui_wanopt_cache
+  # gui_webfilter - (optional) is a type of string
+  gui_webfilter = var.gui_webfilter
+  # gui_webfilter_advanced - (optional) is a type of string
+  gui_webfilter_advanced = var.gui_webfilter_advanced
+  # gui_wireless_controller - (optional) is a type of string
+  gui_wireless_controller = var.gui_wireless_controller
+  # http_external_dest - (optional) is a type of string
+  http_external_dest = var.http_external_dest
+  # ike_dn_format - (optional) is a type of string
+  ike_dn_format = var.ike_dn_format
+  # ike_natt_port - (optional) is a type of number
+  ike_natt_port = var.ike_natt_port
+  # ike_port - (optional) is a type of number
+  ike_port = var.ike_port
+  # ike_quick_crash_detect - (optional) is a type of string
+  ike_quick_crash_detect = var.ike_quick_crash_detect
+  # ike_session_resume - (optional) is a type of string
+  ike_session_resume = var.ike_session_resume
+  # implicit_allow_dns - (optional) is a type of string
+  implicit_allow_dns = var.implicit_allow_dns
+  # inspection_mode - (optional) is a type of string
+  inspection_mode = var.inspection_mode
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # ip6 - (optional) is a type of string
+  ip6 = var.ip6
+  # link_down_access - (optional) is a type of string
+  link_down_access = var.link_down_access
+  # lldp_reception - (optional) is a type of string
+  lldp_reception = var.lldp_reception
+  # lldp_transmission - (optional) is a type of string
+  lldp_transmission = var.lldp_transmission
+  # mac_ttl - (optional) is a type of number
+  mac_ttl = var.mac_ttl
+  # manageip - (optional) is a type of string
+  manageip = var.manageip
+  # manageip6 - (optional) is a type of string
+  manageip6 = var.manageip6
+  # multicast_forward - (optional) is a type of string
+  multicast_forward = var.multicast_forward
+  # multicast_skip_policy - (optional) is a type of string
+  multicast_skip_policy = var.multicast_skip_policy
+  # multicast_ttl_notchange - (optional) is a type of string
+  multicast_ttl_notchange = var.multicast_ttl_notchange
+  # ngfw_mode - (optional) is a type of string
+  ngfw_mode = var.ngfw_mode
+  # opmode - (optional) is a type of string
+  opmode = var.opmode
+  # prp_trailer_action - (optional) is a type of string
+  prp_trailer_action = var.prp_trailer_action
+  # sccp_port - (optional) is a type of number
+  sccp_port = var.sccp_port
+  # sctp_session_without_init - (optional) is a type of string
+  sctp_session_without_init = var.sctp_session_without_init
+  # ses_denied_traffic - (optional) is a type of string
+  ses_denied_traffic = var.ses_denied_traffic
+  # sip_expectation - (optional) is a type of string
+  sip_expectation = var.sip_expectation
+  # sip_helper - (optional) is a type of string
+  sip_helper = var.sip_helper
+  # sip_nat_trace - (optional) is a type of string
+  sip_nat_trace = var.sip_nat_trace
+  # sip_ssl_port - (optional) is a type of number
+  sip_ssl_port = var.sip_ssl_port
+  # sip_tcp_port - (optional) is a type of number
+  sip_tcp_port = var.sip_tcp_port
+  # sip_udp_port - (optional) is a type of number
+  sip_udp_port = var.sip_udp_port
+  # snat_hairpin_traffic - (optional) is a type of string
+  snat_hairpin_traffic = var.snat_hairpin_traffic
+  # ssl_ssh_profile - (optional) is a type of string
+  ssl_ssh_profile = var.ssl_ssh_profile
+  # status - (optional) is a type of string
+  status = var.status
+  # strict_src_check - (optional) is a type of string
+  strict_src_check = var.strict_src_check
+  # tcp_session_without_syn - (optional) is a type of string
+  tcp_session_without_syn = var.tcp_session_without_syn
+  # utf8_spam_tagging - (optional) is a type of string
+  utf8_spam_tagging = var.utf8_spam_tagging
+  # v4_ecmp_mode - (optional) is a type of string
+  v4_ecmp_mode = var.v4_ecmp_mode
+  # vpn_stats_log - (optional) is a type of string
+  vpn_stats_log = var.vpn_stats_log
+  # vpn_stats_period - (optional) is a type of number
+  vpn_stats_period = var.vpn_stats_period
+  # wccp_cache_engine - (optional) is a type of string
+  wccp_cache_engine = var.wccp_cache_engine
 
   dynamic "gui_default_policy_columns" {
     for_each = var.gui_default_policy_columns
     content {
+      # name - (optional) is a type of string
       name = gui_default_policy_columns.value["name"]
     }
   }

@@ -63,9 +63,12 @@ variable "tag" {
 
 ```terraform
 resource "gitlab_tag_protection" "this" {
+  # create_access_level - (required) is a type of string
   create_access_level = var.create_access_level
-  project             = var.project
-  tag                 = var.tag
+  # project - (required) is a type of string
+  project = var.project
+  # tag - (required) is a type of string
+  tag = var.tag
 }
 ```
 

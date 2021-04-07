@@ -161,21 +161,36 @@ variable "version" {
 
 ```terraform
 resource "checkpoint_management_mds" "this" {
-  color             = var.color
-  comments          = var.comments
-  hardware          = var.hardware
-  ignore_errors     = var.ignore_errors
-  ignore_warnings   = var.ignore_warnings
-  ip_pool_first     = var.ip_pool_first
-  ip_pool_last      = var.ip_pool_last
-  ipv4_address      = var.ipv4_address
-  ipv6_address      = var.ipv6_address
-  name              = var.name
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # hardware - (optional) is a type of string
+  hardware = var.hardware
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ip_pool_first - (optional) is a type of string
+  ip_pool_first = var.ip_pool_first
+  # ip_pool_last - (optional) is a type of string
+  ip_pool_last = var.ip_pool_last
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # name - (required) is a type of string
+  name = var.name
+  # one_time_password - (optional) is a type of string
   one_time_password = var.one_time_password
-  os                = var.os
-  server_type       = var.server_type
-  tags              = var.tags
-  version           = var.version
+  # os - (optional) is a type of string
+  os = var.os
+  # server_type - (optional) is a type of string
+  server_type = var.server_type
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # version - (optional) is a type of string
+  version = var.version
 }
 ```
 

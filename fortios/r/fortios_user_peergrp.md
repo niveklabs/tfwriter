@@ -72,12 +72,15 @@ variable "member" {
 
 ```terraform
 resource "fortios_user_peergrp" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

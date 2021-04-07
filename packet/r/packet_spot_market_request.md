@@ -142,37 +142,59 @@ variable "timeouts" {
 
 ```terraform
 resource "packet_spot_market_request" "this" {
-  devices_max      = var.devices_max
-  devices_min      = var.devices_min
-  facilities       = var.facilities
-  max_bid_price    = var.max_bid_price
-  project_id       = var.project_id
+  # devices_max - (required) is a type of number
+  devices_max = var.devices_max
+  # devices_min - (required) is a type of number
+  devices_min = var.devices_min
+  # facilities - (required) is a type of list of string
+  facilities = var.facilities
+  # max_bid_price - (required) is a type of number
+  max_bid_price = var.max_bid_price
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # wait_for_devices - (optional) is a type of bool
   wait_for_devices = var.wait_for_devices
 
   dynamic "instance_parameters" {
     for_each = var.instance_parameters
     content {
-      always_pxe       = instance_parameters.value["always_pxe"]
-      billing_cycle    = instance_parameters.value["billing_cycle"]
-      customdata       = instance_parameters.value["customdata"]
-      description      = instance_parameters.value["description"]
-      features         = instance_parameters.value["features"]
-      hostname         = instance_parameters.value["hostname"]
-      ipxe_script_url  = instance_parameters.value["ipxe_script_url"]
-      locked           = instance_parameters.value["locked"]
+      # always_pxe - (optional) is a type of bool
+      always_pxe = instance_parameters.value["always_pxe"]
+      # billing_cycle - (required) is a type of string
+      billing_cycle = instance_parameters.value["billing_cycle"]
+      # customdata - (optional) is a type of string
+      customdata = instance_parameters.value["customdata"]
+      # description - (optional) is a type of string
+      description = instance_parameters.value["description"]
+      # features - (optional) is a type of list of string
+      features = instance_parameters.value["features"]
+      # hostname - (required) is a type of string
+      hostname = instance_parameters.value["hostname"]
+      # ipxe_script_url - (optional) is a type of string
+      ipxe_script_url = instance_parameters.value["ipxe_script_url"]
+      # locked - (optional) is a type of string
+      locked = instance_parameters.value["locked"]
+      # operating_system - (required) is a type of string
       operating_system = instance_parameters.value["operating_system"]
-      plan             = instance_parameters.value["plan"]
+      # plan - (required) is a type of string
+      plan = instance_parameters.value["plan"]
+      # project_ssh_keys - (optional) is a type of list of string
       project_ssh_keys = instance_parameters.value["project_ssh_keys"]
-      tags             = instance_parameters.value["tags"]
-      user_ssh_keys    = instance_parameters.value["user_ssh_keys"]
-      userdata         = instance_parameters.value["userdata"]
+      # tags - (optional) is a type of list of string
+      tags = instance_parameters.value["tags"]
+      # user_ssh_keys - (optional) is a type of list of string
+      user_ssh_keys = instance_parameters.value["user_ssh_keys"]
+      # userdata - (optional) is a type of string
+      userdata = instance_parameters.value["userdata"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

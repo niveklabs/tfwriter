@@ -65,9 +65,12 @@ variable "source_ip" {
 
 ```terraform
 resource "fortios_system_sflow" "this" {
-  collector_ip   = var.collector_ip
+  # collector_ip - (required) is a type of string
+  collector_ip = var.collector_ip
+  # collector_port - (optional) is a type of number
   collector_port = var.collector_port
-  source_ip      = var.source_ip
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
 }
 ```
 

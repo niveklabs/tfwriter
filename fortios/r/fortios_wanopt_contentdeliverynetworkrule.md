@@ -212,20 +212,31 @@ variable "rules" {
 
 ```terraform
 resource "fortios_wanopt_contentdeliverynetworkrule" "this" {
-  category               = var.category
-  comment                = var.comment
-  dynamic_sort_subtable  = var.dynamic_sort_subtable
-  name                   = var.name
-  request_cache_control  = var.request_cache_control
+  # category - (optional) is a type of string
+  category = var.category
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # name - (optional) is a type of string
+  name = var.name
+  # request_cache_control - (optional) is a type of string
+  request_cache_control = var.request_cache_control
+  # response_cache_control - (optional) is a type of string
   response_cache_control = var.response_cache_control
-  response_expires       = var.response_expires
-  status                 = var.status
-  text_response_vcache   = var.text_response_vcache
-  updateserver           = var.updateserver
+  # response_expires - (optional) is a type of string
+  response_expires = var.response_expires
+  # status - (optional) is a type of string
+  status = var.status
+  # text_response_vcache - (optional) is a type of string
+  text_response_vcache = var.text_response_vcache
+  # updateserver - (optional) is a type of string
+  updateserver = var.updateserver
 
   dynamic "host_domain_name_suffix" {
     for_each = var.host_domain_name_suffix
     content {
+      # name - (optional) is a type of string
       name = host_domain_name_suffix.value["name"]
     }
   }
@@ -233,33 +244,47 @@ resource "fortios_wanopt_contentdeliverynetworkrule" "this" {
   dynamic "rules" {
     for_each = var.rules
     content {
-      match_mode     = rules.value["match_mode"]
-      name           = rules.value["name"]
+      # match_mode - (optional) is a type of string
+      match_mode = rules.value["match_mode"]
+      # name - (optional) is a type of string
+      name = rules.value["name"]
+      # skip_rule_mode - (optional) is a type of string
       skip_rule_mode = rules.value["skip_rule_mode"]
 
       dynamic "content_id" {
         for_each = rules.value.content_id
         content {
-          end_direction   = content_id.value["end_direction"]
-          end_skip        = content_id.value["end_skip"]
-          end_str         = content_id.value["end_str"]
-          range_str       = content_id.value["range_str"]
+          # end_direction - (optional) is a type of string
+          end_direction = content_id.value["end_direction"]
+          # end_skip - (optional) is a type of number
+          end_skip = content_id.value["end_skip"]
+          # end_str - (optional) is a type of string
+          end_str = content_id.value["end_str"]
+          # range_str - (optional) is a type of string
+          range_str = content_id.value["range_str"]
+          # start_direction - (optional) is a type of string
           start_direction = content_id.value["start_direction"]
-          start_skip      = content_id.value["start_skip"]
-          start_str       = content_id.value["start_str"]
-          target          = content_id.value["target"]
+          # start_skip - (optional) is a type of number
+          start_skip = content_id.value["start_skip"]
+          # start_str - (optional) is a type of string
+          start_str = content_id.value["start_str"]
+          # target - (optional) is a type of string
+          target = content_id.value["target"]
         }
       }
 
       dynamic "match_entries" {
         for_each = rules.value.match_entries
         content {
-          id     = match_entries.value["id"]
+          # id - (optional) is a type of number
+          id = match_entries.value["id"]
+          # target - (optional) is a type of string
           target = match_entries.value["target"]
 
           dynamic "pattern" {
             for_each = match_entries.value.pattern
             content {
+              # string - (optional) is a type of string
               string = pattern.value["string"]
             }
           }
@@ -270,12 +295,15 @@ resource "fortios_wanopt_contentdeliverynetworkrule" "this" {
       dynamic "skip_entries" {
         for_each = rules.value.skip_entries
         content {
-          id     = skip_entries.value["id"]
+          # id - (optional) is a type of number
+          id = skip_entries.value["id"]
+          # target - (optional) is a type of string
           target = skip_entries.value["target"]
 
           dynamic "pattern" {
             for_each = skip_entries.value.pattern
             content {
+              # string - (optional) is a type of string
               string = pattern.value["string"]
             }
           }

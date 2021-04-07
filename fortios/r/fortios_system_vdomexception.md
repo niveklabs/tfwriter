@@ -95,15 +95,21 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_vdomexception" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  object                = var.object
-  oid                   = var.oid
-  scope                 = var.scope
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # object - (required) is a type of string
+  object = var.object
+  # oid - (optional) is a type of number
+  oid = var.oid
+  # scope - (optional) is a type of string
+  scope = var.scope
 
   dynamic "vdom" {
     for_each = var.vdom
     content {
+      # name - (optional) is a type of string
       name = vdom.value["name"]
     }
   }

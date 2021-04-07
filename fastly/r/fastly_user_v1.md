@@ -64,9 +64,12 @@ variable "role" {
 
 ```terraform
 resource "fastly_user_v1" "this" {
+  # login - (required) is a type of string
   login = var.login
-  name  = var.name
-  role  = var.role
+  # name - (required) is a type of string
+  name = var.name
+  # role - (optional) is a type of string
+  role = var.role
 }
 ```
 

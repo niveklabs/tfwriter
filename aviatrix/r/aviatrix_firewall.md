@@ -99,21 +99,32 @@ variable "policy" {
 
 ```terraform
 resource "aviatrix_firewall" "this" {
-  base_log_enabled         = var.base_log_enabled
-  base_policy              = var.base_policy
-  gw_name                  = var.gw_name
+  # base_log_enabled - (optional) is a type of bool
+  base_log_enabled = var.base_log_enabled
+  # base_policy - (optional) is a type of string
+  base_policy = var.base_policy
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # manage_firewall_policies - (optional) is a type of bool
   manage_firewall_policies = var.manage_firewall_policies
 
   dynamic "policy" {
     for_each = var.policy
     content {
-      action      = policy.value["action"]
+      # action - (required) is a type of string
+      action = policy.value["action"]
+      # description - (optional) is a type of string
       description = policy.value["description"]
-      dst_ip      = policy.value["dst_ip"]
+      # dst_ip - (required) is a type of string
+      dst_ip = policy.value["dst_ip"]
+      # log_enabled - (optional) is a type of bool
       log_enabled = policy.value["log_enabled"]
-      port        = policy.value["port"]
-      protocol    = policy.value["protocol"]
-      src_ip      = policy.value["src_ip"]
+      # port - (required) is a type of string
+      port = policy.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = policy.value["protocol"]
+      # src_ip - (required) is a type of string
+      src_ip = policy.value["src_ip"]
     }
   }
 

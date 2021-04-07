@@ -49,6 +49,7 @@ variable "armored_public_key" {
 
 ```terraform
 resource "github_user_gpg_key" "this" {
+  # armored_public_key - (required) is a type of string
   armored_public_key = var.armored_public_key
 }
 ```

@@ -65,9 +65,12 @@ variable "topic_name" {
 
 ```terraform
 data "tencentcloud_ckafka_topics" "this" {
-  instance_id        = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  topic_name         = var.topic_name
+  # topic_name - (optional) is a type of string
+  topic_name = var.topic_name
 }
 ```
 

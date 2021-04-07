@@ -65,9 +65,12 @@ variable "temporary" {
 
 ```terraform
 resource "fortios_system_vdom_setting" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # short_name - (optional) is a type of string
   short_name = var.short_name
-  temporary  = var.temporary
+  # temporary - (optional) is a type of string
+  temporary = var.temporary
 }
 ```
 

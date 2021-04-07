@@ -115,15 +115,20 @@ variable "time_range" {
 
 ```terraform
 data "prismacloud_alerts" "this" {
-  limit   = var.limit
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # sort_by - (optional) is a type of list of string
   sort_by = var.sort_by
 
   dynamic "filters" {
     for_each = var.filters
     content {
-      name     = filters.value["name"]
+      # name - (required) is a type of string
+      name = filters.value["name"]
+      # operator - (optional) is a type of string
       operator = filters.value["operator"]
-      value    = filters.value["value"]
+      # value - (required) is a type of string
+      value = filters.value["value"]
     }
   }
 
@@ -134,7 +139,9 @@ data "prismacloud_alerts" "this" {
       dynamic "absolute" {
         for_each = time_range.value.absolute
         content {
-          end   = absolute.value["end"]
+          # end - (required) is a type of number
+          end = absolute.value["end"]
+          # start - (required) is a type of number
           start = absolute.value["start"]
         }
       }
@@ -142,14 +149,17 @@ data "prismacloud_alerts" "this" {
       dynamic "relative" {
         for_each = time_range.value.relative
         content {
+          # amount - (required) is a type of number
           amount = relative.value["amount"]
-          unit   = relative.value["unit"]
+          # unit - (required) is a type of string
+          unit = relative.value["unit"]
         }
       }
 
       dynamic "to_now" {
         for_each = time_range.value.to_now
         content {
+          # unit - (required) is a type of string
           unit = to_now.value["unit"]
         }
       }

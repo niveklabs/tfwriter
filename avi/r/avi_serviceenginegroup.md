@@ -1651,167 +1651,325 @@ variable "vss_placement" {
 
 ```terraform
 resource "avi_serviceenginegroup" "this" {
-  accelerated_networking                  = var.accelerated_networking
-  active_standby                          = var.active_standby
-  aggressive_failure_detection            = var.aggressive_failure_detection
-  algo                                    = var.algo
-  allow_burst                             = var.allow_burst
-  app_cache_percent                       = var.app_cache_percent
-  app_learning_memory_percent             = var.app_learning_memory_percent
-  archive_shm_limit                       = var.archive_shm_limit
-  async_ssl                               = var.async_ssl
-  async_ssl_threads                       = var.async_ssl_threads
-  auto_rebalance                          = var.auto_rebalance
-  auto_rebalance_capacity_per_se          = var.auto_rebalance_capacity_per_se
-  auto_rebalance_criteria                 = var.auto_rebalance_criteria
-  auto_rebalance_interval                 = var.auto_rebalance_interval
-  auto_redistribute_active_standby_load   = var.auto_redistribute_active_standby_load
-  bgp_state_update_interval               = var.bgp_state_update_interval
-  buffer_se                               = var.buffer_se
-  cloud_ref                               = var.cloud_ref
-  compress_ip_rules_for_each_ns_subnet    = var.compress_ip_rules_for_each_ns_subnet
-  config_debugs_on_all_cores              = var.config_debugs_on_all_cores
-  connection_memory_percentage            = var.connection_memory_percentage
-  core_shm_app_cache                      = var.core_shm_app_cache
-  core_shm_app_learning                   = var.core_shm_app_learning
-  cpu_reserve                             = var.cpu_reserve
-  cpu_socket_affinity                     = var.cpu_socket_affinity
-  custom_securitygroups_data              = var.custom_securitygroups_data
-  custom_securitygroups_mgmt              = var.custom_securitygroups_mgmt
-  data_network_id                         = var.data_network_id
-  datascript_timeout                      = var.datascript_timeout
-  dedicated_dispatcher_core               = var.dedicated_dispatcher_core
-  description                             = var.description
-  disable_avi_securitygroups              = var.disable_avi_securitygroups
-  disable_csum_offloads                   = var.disable_csum_offloads
-  disable_gro                             = var.disable_gro
-  disable_se_memory_check                 = var.disable_se_memory_check
-  disable_tso                             = var.disable_tso
-  disk_per_se                             = var.disk_per_se
-  distribute_load_active_standby          = var.distribute_load_active_standby
-  distribute_queues                       = var.distribute_queues
-  distribute_vnics                        = var.distribute_vnics
-  enable_gratarp_permanent                = var.enable_gratarp_permanent
-  enable_hsm_priming                      = var.enable_hsm_priming
-  enable_multi_lb                         = var.enable_multi_lb
-  enable_pcap_tx_ring                     = var.enable_pcap_tx_ring
-  ephemeral_portrange_end                 = var.ephemeral_portrange_end
-  ephemeral_portrange_start               = var.ephemeral_portrange_start
-  extra_config_multiplier                 = var.extra_config_multiplier
-  extra_shared_config_memory              = var.extra_shared_config_memory
-  flow_table_new_syn_max_entries          = var.flow_table_new_syn_max_entries
-  free_list_size                          = var.free_list_size
-  gratarp_permanent_periodicity           = var.gratarp_permanent_periodicity
-  ha_mode                                 = var.ha_mode
-  hardwaresecuritymodulegroup_ref         = var.hardwaresecuritymodulegroup_ref
-  heap_minimum_config_memory              = var.heap_minimum_config_memory
-  hm_on_standby                           = var.hm_on_standby
-  host_attribute_key                      = var.host_attribute_key
-  host_attribute_value                    = var.host_attribute_value
-  host_gateway_monitor                    = var.host_gateway_monitor
-  hypervisor                              = var.hypervisor
-  ignore_rtt_threshold                    = var.ignore_rtt_threshold
-  ingress_access_data                     = var.ingress_access_data
-  ingress_access_mgmt                     = var.ingress_access_mgmt
-  instance_flavor                         = var.instance_flavor
-  least_load_core_selection               = var.least_load_core_selection
-  license_tier                            = var.license_tier
-  license_type                            = var.license_type
-  log_disksz                              = var.log_disksz
-  max_concurrent_external_hm              = var.max_concurrent_external_hm
-  max_cpu_usage                           = var.max_cpu_usage
-  max_memory_per_mempool                  = var.max_memory_per_mempool
-  max_public_ips_per_lb                   = var.max_public_ips_per_lb
-  max_queues_per_vnic                     = var.max_queues_per_vnic
-  max_rules_per_lb                        = var.max_rules_per_lb
-  max_scaleout_per_vs                     = var.max_scaleout_per_vs
-  max_se                                  = var.max_se
-  max_vs_per_se                           = var.max_vs_per_se
-  mem_reserve                             = var.mem_reserve
-  memory_for_config_update                = var.memory_for_config_update
-  memory_per_se                           = var.memory_per_se
-  mgmt_network_ref                        = var.mgmt_network_ref
-  min_cpu_usage                           = var.min_cpu_usage
-  min_scaleout_per_vs                     = var.min_scaleout_per_vs
-  min_se                                  = var.min_se
-  minimum_connection_memory               = var.minimum_connection_memory
-  n_log_streaming_threads                 = var.n_log_streaming_threads
-  name                                    = var.name
-  non_significant_log_throttle            = var.non_significant_log_throttle
-  num_dispatcher_cores                    = var.num_dispatcher_cores
-  num_flow_cores_sum_changes_to_ignore    = var.num_flow_cores_sum_changes_to_ignore
-  openstack_availability_zones            = var.openstack_availability_zones
-  openstack_mgmt_network_name             = var.openstack_mgmt_network_name
-  openstack_mgmt_network_uuid             = var.openstack_mgmt_network_uuid
-  os_reserved_memory                      = var.os_reserved_memory
-  pcap_tx_mode                            = var.pcap_tx_mode
-  per_app                                 = var.per_app
-  placement_mode                          = var.placement_mode
-  reboot_on_panic                         = var.reboot_on_panic
-  se_bandwidth_type                       = var.se_bandwidth_type
-  se_deprovision_delay                    = var.se_deprovision_delay
-  se_dp_vnic_queue_stall_event_sleep      = var.se_dp_vnic_queue_stall_event_sleep
-  se_dp_vnic_queue_stall_threshold        = var.se_dp_vnic_queue_stall_threshold
-  se_dp_vnic_queue_stall_timeout          = var.se_dp_vnic_queue_stall_timeout
+  # accelerated_networking - (optional) is a type of bool
+  accelerated_networking = var.accelerated_networking
+  # active_standby - (optional) is a type of bool
+  active_standby = var.active_standby
+  # aggressive_failure_detection - (optional) is a type of bool
+  aggressive_failure_detection = var.aggressive_failure_detection
+  # algo - (optional) is a type of string
+  algo = var.algo
+  # allow_burst - (optional) is a type of bool
+  allow_burst = var.allow_burst
+  # app_cache_percent - (optional) is a type of number
+  app_cache_percent = var.app_cache_percent
+  # app_learning_memory_percent - (optional) is a type of number
+  app_learning_memory_percent = var.app_learning_memory_percent
+  # archive_shm_limit - (optional) is a type of number
+  archive_shm_limit = var.archive_shm_limit
+  # async_ssl - (optional) is a type of bool
+  async_ssl = var.async_ssl
+  # async_ssl_threads - (optional) is a type of number
+  async_ssl_threads = var.async_ssl_threads
+  # auto_rebalance - (optional) is a type of bool
+  auto_rebalance = var.auto_rebalance
+  # auto_rebalance_capacity_per_se - (optional) is a type of list of number
+  auto_rebalance_capacity_per_se = var.auto_rebalance_capacity_per_se
+  # auto_rebalance_criteria - (optional) is a type of list of string
+  auto_rebalance_criteria = var.auto_rebalance_criteria
+  # auto_rebalance_interval - (optional) is a type of number
+  auto_rebalance_interval = var.auto_rebalance_interval
+  # auto_redistribute_active_standby_load - (optional) is a type of bool
+  auto_redistribute_active_standby_load = var.auto_redistribute_active_standby_load
+  # bgp_state_update_interval - (optional) is a type of number
+  bgp_state_update_interval = var.bgp_state_update_interval
+  # buffer_se - (optional) is a type of number
+  buffer_se = var.buffer_se
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # compress_ip_rules_for_each_ns_subnet - (optional) is a type of bool
+  compress_ip_rules_for_each_ns_subnet = var.compress_ip_rules_for_each_ns_subnet
+  # config_debugs_on_all_cores - (optional) is a type of bool
+  config_debugs_on_all_cores = var.config_debugs_on_all_cores
+  # connection_memory_percentage - (optional) is a type of number
+  connection_memory_percentage = var.connection_memory_percentage
+  # core_shm_app_cache - (optional) is a type of bool
+  core_shm_app_cache = var.core_shm_app_cache
+  # core_shm_app_learning - (optional) is a type of bool
+  core_shm_app_learning = var.core_shm_app_learning
+  # cpu_reserve - (optional) is a type of bool
+  cpu_reserve = var.cpu_reserve
+  # cpu_socket_affinity - (optional) is a type of bool
+  cpu_socket_affinity = var.cpu_socket_affinity
+  # custom_securitygroups_data - (optional) is a type of list of string
+  custom_securitygroups_data = var.custom_securitygroups_data
+  # custom_securitygroups_mgmt - (optional) is a type of list of string
+  custom_securitygroups_mgmt = var.custom_securitygroups_mgmt
+  # data_network_id - (optional) is a type of string
+  data_network_id = var.data_network_id
+  # datascript_timeout - (optional) is a type of number
+  datascript_timeout = var.datascript_timeout
+  # dedicated_dispatcher_core - (optional) is a type of bool
+  dedicated_dispatcher_core = var.dedicated_dispatcher_core
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_avi_securitygroups - (optional) is a type of bool
+  disable_avi_securitygroups = var.disable_avi_securitygroups
+  # disable_csum_offloads - (optional) is a type of bool
+  disable_csum_offloads = var.disable_csum_offloads
+  # disable_gro - (optional) is a type of bool
+  disable_gro = var.disable_gro
+  # disable_se_memory_check - (optional) is a type of bool
+  disable_se_memory_check = var.disable_se_memory_check
+  # disable_tso - (optional) is a type of bool
+  disable_tso = var.disable_tso
+  # disk_per_se - (optional) is a type of number
+  disk_per_se = var.disk_per_se
+  # distribute_load_active_standby - (optional) is a type of bool
+  distribute_load_active_standby = var.distribute_load_active_standby
+  # distribute_queues - (optional) is a type of bool
+  distribute_queues = var.distribute_queues
+  # distribute_vnics - (optional) is a type of bool
+  distribute_vnics = var.distribute_vnics
+  # enable_gratarp_permanent - (optional) is a type of bool
+  enable_gratarp_permanent = var.enable_gratarp_permanent
+  # enable_hsm_priming - (optional) is a type of bool
+  enable_hsm_priming = var.enable_hsm_priming
+  # enable_multi_lb - (optional) is a type of bool
+  enable_multi_lb = var.enable_multi_lb
+  # enable_pcap_tx_ring - (optional) is a type of bool
+  enable_pcap_tx_ring = var.enable_pcap_tx_ring
+  # ephemeral_portrange_end - (optional) is a type of number
+  ephemeral_portrange_end = var.ephemeral_portrange_end
+  # ephemeral_portrange_start - (optional) is a type of number
+  ephemeral_portrange_start = var.ephemeral_portrange_start
+  # extra_config_multiplier - (optional) is a type of number
+  extra_config_multiplier = var.extra_config_multiplier
+  # extra_shared_config_memory - (optional) is a type of number
+  extra_shared_config_memory = var.extra_shared_config_memory
+  # flow_table_new_syn_max_entries - (optional) is a type of number
+  flow_table_new_syn_max_entries = var.flow_table_new_syn_max_entries
+  # free_list_size - (optional) is a type of number
+  free_list_size = var.free_list_size
+  # gratarp_permanent_periodicity - (optional) is a type of number
+  gratarp_permanent_periodicity = var.gratarp_permanent_periodicity
+  # ha_mode - (optional) is a type of string
+  ha_mode = var.ha_mode
+  # hardwaresecuritymodulegroup_ref - (optional) is a type of string
+  hardwaresecuritymodulegroup_ref = var.hardwaresecuritymodulegroup_ref
+  # heap_minimum_config_memory - (optional) is a type of number
+  heap_minimum_config_memory = var.heap_minimum_config_memory
+  # hm_on_standby - (optional) is a type of bool
+  hm_on_standby = var.hm_on_standby
+  # host_attribute_key - (optional) is a type of string
+  host_attribute_key = var.host_attribute_key
+  # host_attribute_value - (optional) is a type of string
+  host_attribute_value = var.host_attribute_value
+  # host_gateway_monitor - (optional) is a type of bool
+  host_gateway_monitor = var.host_gateway_monitor
+  # hypervisor - (optional) is a type of string
+  hypervisor = var.hypervisor
+  # ignore_rtt_threshold - (optional) is a type of number
+  ignore_rtt_threshold = var.ignore_rtt_threshold
+  # ingress_access_data - (optional) is a type of string
+  ingress_access_data = var.ingress_access_data
+  # ingress_access_mgmt - (optional) is a type of string
+  ingress_access_mgmt = var.ingress_access_mgmt
+  # instance_flavor - (optional) is a type of string
+  instance_flavor = var.instance_flavor
+  # least_load_core_selection - (optional) is a type of bool
+  least_load_core_selection = var.least_load_core_selection
+  # license_tier - (optional) is a type of string
+  license_tier = var.license_tier
+  # license_type - (optional) is a type of string
+  license_type = var.license_type
+  # log_disksz - (optional) is a type of number
+  log_disksz = var.log_disksz
+  # max_concurrent_external_hm - (optional) is a type of number
+  max_concurrent_external_hm = var.max_concurrent_external_hm
+  # max_cpu_usage - (optional) is a type of number
+  max_cpu_usage = var.max_cpu_usage
+  # max_memory_per_mempool - (optional) is a type of number
+  max_memory_per_mempool = var.max_memory_per_mempool
+  # max_public_ips_per_lb - (optional) is a type of number
+  max_public_ips_per_lb = var.max_public_ips_per_lb
+  # max_queues_per_vnic - (optional) is a type of number
+  max_queues_per_vnic = var.max_queues_per_vnic
+  # max_rules_per_lb - (optional) is a type of number
+  max_rules_per_lb = var.max_rules_per_lb
+  # max_scaleout_per_vs - (optional) is a type of number
+  max_scaleout_per_vs = var.max_scaleout_per_vs
+  # max_se - (optional) is a type of number
+  max_se = var.max_se
+  # max_vs_per_se - (optional) is a type of number
+  max_vs_per_se = var.max_vs_per_se
+  # mem_reserve - (optional) is a type of bool
+  mem_reserve = var.mem_reserve
+  # memory_for_config_update - (optional) is a type of number
+  memory_for_config_update = var.memory_for_config_update
+  # memory_per_se - (optional) is a type of number
+  memory_per_se = var.memory_per_se
+  # mgmt_network_ref - (optional) is a type of string
+  mgmt_network_ref = var.mgmt_network_ref
+  # min_cpu_usage - (optional) is a type of number
+  min_cpu_usage = var.min_cpu_usage
+  # min_scaleout_per_vs - (optional) is a type of number
+  min_scaleout_per_vs = var.min_scaleout_per_vs
+  # min_se - (optional) is a type of number
+  min_se = var.min_se
+  # minimum_connection_memory - (optional) is a type of number
+  minimum_connection_memory = var.minimum_connection_memory
+  # n_log_streaming_threads - (optional) is a type of number
+  n_log_streaming_threads = var.n_log_streaming_threads
+  # name - (required) is a type of string
+  name = var.name
+  # non_significant_log_throttle - (optional) is a type of number
+  non_significant_log_throttle = var.non_significant_log_throttle
+  # num_dispatcher_cores - (optional) is a type of number
+  num_dispatcher_cores = var.num_dispatcher_cores
+  # num_flow_cores_sum_changes_to_ignore - (optional) is a type of number
+  num_flow_cores_sum_changes_to_ignore = var.num_flow_cores_sum_changes_to_ignore
+  # openstack_availability_zones - (optional) is a type of list of string
+  openstack_availability_zones = var.openstack_availability_zones
+  # openstack_mgmt_network_name - (optional) is a type of string
+  openstack_mgmt_network_name = var.openstack_mgmt_network_name
+  # openstack_mgmt_network_uuid - (optional) is a type of string
+  openstack_mgmt_network_uuid = var.openstack_mgmt_network_uuid
+  # os_reserved_memory - (optional) is a type of number
+  os_reserved_memory = var.os_reserved_memory
+  # pcap_tx_mode - (optional) is a type of string
+  pcap_tx_mode = var.pcap_tx_mode
+  # per_app - (optional) is a type of bool
+  per_app = var.per_app
+  # placement_mode - (optional) is a type of string
+  placement_mode = var.placement_mode
+  # reboot_on_panic - (optional) is a type of bool
+  reboot_on_panic = var.reboot_on_panic
+  # se_bandwidth_type - (optional) is a type of string
+  se_bandwidth_type = var.se_bandwidth_type
+  # se_deprovision_delay - (optional) is a type of number
+  se_deprovision_delay = var.se_deprovision_delay
+  # se_dp_vnic_queue_stall_event_sleep - (optional) is a type of number
+  se_dp_vnic_queue_stall_event_sleep = var.se_dp_vnic_queue_stall_event_sleep
+  # se_dp_vnic_queue_stall_threshold - (optional) is a type of number
+  se_dp_vnic_queue_stall_threshold = var.se_dp_vnic_queue_stall_threshold
+  # se_dp_vnic_queue_stall_timeout - (optional) is a type of number
+  se_dp_vnic_queue_stall_timeout = var.se_dp_vnic_queue_stall_timeout
+  # se_dp_vnic_restart_on_queue_stall_count - (optional) is a type of number
   se_dp_vnic_restart_on_queue_stall_count = var.se_dp_vnic_restart_on_queue_stall_count
-  se_dp_vnic_stall_se_restart_window      = var.se_dp_vnic_stall_se_restart_window
-  se_dpdk_pmd                             = var.se_dpdk_pmd
-  se_flow_probe_retries                   = var.se_flow_probe_retries
-  se_flow_probe_retry_timer               = var.se_flow_probe_retry_timer
-  se_ipc_udp_port                         = var.se_ipc_udp_port
-  se_kni_burst_factor                     = var.se_kni_burst_factor
-  se_lro                                  = var.se_lro
-  se_mtu                                  = var.se_mtu
-  se_name_prefix                          = var.se_name_prefix
-  se_pcap_lookahead                       = var.se_pcap_lookahead
-  se_pcap_pkt_count                       = var.se_pcap_pkt_count
-  se_pcap_pkt_sz                          = var.se_pcap_pkt_sz
-  se_pcap_qdisc_bypass                    = var.se_pcap_qdisc_bypass
-  se_pcap_reinit_frequency                = var.se_pcap_reinit_frequency
-  se_pcap_reinit_threshold                = var.se_pcap_reinit_threshold
-  se_probe_port                           = var.se_probe_port
-  se_remote_punt_udp_port                 = var.se_remote_punt_udp_port
-  se_rum_sampling_nav_interval            = var.se_rum_sampling_nav_interval
-  se_rum_sampling_nav_percent             = var.se_rum_sampling_nav_percent
-  se_rum_sampling_res_interval            = var.se_rum_sampling_res_interval
-  se_rum_sampling_res_percent             = var.se_rum_sampling_res_percent
-  se_sb_dedicated_core                    = var.se_sb_dedicated_core
-  se_sb_threads                           = var.se_sb_threads
-  se_thread_multiplier                    = var.se_thread_multiplier
-  se_tunnel_mode                          = var.se_tunnel_mode
-  se_tunnel_udp_port                      = var.se_tunnel_udp_port
-  se_tx_batch_size                        = var.se_tx_batch_size
-  se_udp_encap_ipc                        = var.se_udp_encap_ipc
-  se_use_dpdk                             = var.se_use_dpdk
-  se_vs_hb_max_pkts_in_batch              = var.se_vs_hb_max_pkts_in_batch
-  se_vs_hb_max_vs_in_pkt                  = var.se_vs_hb_max_vs_in_pkt
-  self_se_election                        = var.self_se_election
-  shm_minimum_config_memory               = var.shm_minimum_config_memory
-  significant_log_throttle                = var.significant_log_throttle
-  ssl_preprocess_sni_hostname             = var.ssl_preprocess_sni_hostname
-  tenant_ref                              = var.tenant_ref
-  udf_log_throttle                        = var.udf_log_throttle
-  use_standard_alb                        = var.use_standard_alb
-  uuid                                    = var.uuid
-  vcenter_datastore_mode                  = var.vcenter_datastore_mode
-  vcenter_datastores_include              = var.vcenter_datastores_include
-  vcenter_folder                          = var.vcenter_folder
-  vcpus_per_se                            = var.vcpus_per_se
-  vs_host_redundancy                      = var.vs_host_redundancy
-  vs_scalein_timeout                      = var.vs_scalein_timeout
-  vs_scalein_timeout_for_upgrade          = var.vs_scalein_timeout_for_upgrade
-  vs_scaleout_timeout                     = var.vs_scaleout_timeout
-  vs_se_scaleout_additional_wait_time     = var.vs_se_scaleout_additional_wait_time
-  vs_se_scaleout_ready_timeout            = var.vs_se_scaleout_ready_timeout
-  vs_switchover_timeout                   = var.vs_switchover_timeout
-  vss_placement_enabled                   = var.vss_placement_enabled
-  waf_mempool                             = var.waf_mempool
-  waf_mempool_size                        = var.waf_mempool_size
+  # se_dp_vnic_stall_se_restart_window - (optional) is a type of number
+  se_dp_vnic_stall_se_restart_window = var.se_dp_vnic_stall_se_restart_window
+  # se_dpdk_pmd - (optional) is a type of number
+  se_dpdk_pmd = var.se_dpdk_pmd
+  # se_flow_probe_retries - (optional) is a type of number
+  se_flow_probe_retries = var.se_flow_probe_retries
+  # se_flow_probe_retry_timer - (optional) is a type of number
+  se_flow_probe_retry_timer = var.se_flow_probe_retry_timer
+  # se_ipc_udp_port - (optional) is a type of number
+  se_ipc_udp_port = var.se_ipc_udp_port
+  # se_kni_burst_factor - (optional) is a type of number
+  se_kni_burst_factor = var.se_kni_burst_factor
+  # se_lro - (optional) is a type of bool
+  se_lro = var.se_lro
+  # se_mtu - (optional) is a type of number
+  se_mtu = var.se_mtu
+  # se_name_prefix - (optional) is a type of string
+  se_name_prefix = var.se_name_prefix
+  # se_pcap_lookahead - (optional) is a type of bool
+  se_pcap_lookahead = var.se_pcap_lookahead
+  # se_pcap_pkt_count - (optional) is a type of number
+  se_pcap_pkt_count = var.se_pcap_pkt_count
+  # se_pcap_pkt_sz - (optional) is a type of number
+  se_pcap_pkt_sz = var.se_pcap_pkt_sz
+  # se_pcap_qdisc_bypass - (optional) is a type of bool
+  se_pcap_qdisc_bypass = var.se_pcap_qdisc_bypass
+  # se_pcap_reinit_frequency - (optional) is a type of number
+  se_pcap_reinit_frequency = var.se_pcap_reinit_frequency
+  # se_pcap_reinit_threshold - (optional) is a type of number
+  se_pcap_reinit_threshold = var.se_pcap_reinit_threshold
+  # se_probe_port - (optional) is a type of number
+  se_probe_port = var.se_probe_port
+  # se_remote_punt_udp_port - (optional) is a type of number
+  se_remote_punt_udp_port = var.se_remote_punt_udp_port
+  # se_rum_sampling_nav_interval - (optional) is a type of number
+  se_rum_sampling_nav_interval = var.se_rum_sampling_nav_interval
+  # se_rum_sampling_nav_percent - (optional) is a type of number
+  se_rum_sampling_nav_percent = var.se_rum_sampling_nav_percent
+  # se_rum_sampling_res_interval - (optional) is a type of number
+  se_rum_sampling_res_interval = var.se_rum_sampling_res_interval
+  # se_rum_sampling_res_percent - (optional) is a type of number
+  se_rum_sampling_res_percent = var.se_rum_sampling_res_percent
+  # se_sb_dedicated_core - (optional) is a type of bool
+  se_sb_dedicated_core = var.se_sb_dedicated_core
+  # se_sb_threads - (optional) is a type of number
+  se_sb_threads = var.se_sb_threads
+  # se_thread_multiplier - (optional) is a type of number
+  se_thread_multiplier = var.se_thread_multiplier
+  # se_tunnel_mode - (optional) is a type of number
+  se_tunnel_mode = var.se_tunnel_mode
+  # se_tunnel_udp_port - (optional) is a type of number
+  se_tunnel_udp_port = var.se_tunnel_udp_port
+  # se_tx_batch_size - (optional) is a type of number
+  se_tx_batch_size = var.se_tx_batch_size
+  # se_udp_encap_ipc - (optional) is a type of number
+  se_udp_encap_ipc = var.se_udp_encap_ipc
+  # se_use_dpdk - (optional) is a type of number
+  se_use_dpdk = var.se_use_dpdk
+  # se_vs_hb_max_pkts_in_batch - (optional) is a type of number
+  se_vs_hb_max_pkts_in_batch = var.se_vs_hb_max_pkts_in_batch
+  # se_vs_hb_max_vs_in_pkt - (optional) is a type of number
+  se_vs_hb_max_vs_in_pkt = var.se_vs_hb_max_vs_in_pkt
+  # self_se_election - (optional) is a type of bool
+  self_se_election = var.self_se_election
+  # shm_minimum_config_memory - (optional) is a type of number
+  shm_minimum_config_memory = var.shm_minimum_config_memory
+  # significant_log_throttle - (optional) is a type of number
+  significant_log_throttle = var.significant_log_throttle
+  # ssl_preprocess_sni_hostname - (optional) is a type of bool
+  ssl_preprocess_sni_hostname = var.ssl_preprocess_sni_hostname
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # udf_log_throttle - (optional) is a type of number
+  udf_log_throttle = var.udf_log_throttle
+  # use_standard_alb - (optional) is a type of bool
+  use_standard_alb = var.use_standard_alb
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vcenter_datastore_mode - (optional) is a type of string
+  vcenter_datastore_mode = var.vcenter_datastore_mode
+  # vcenter_datastores_include - (optional) is a type of bool
+  vcenter_datastores_include = var.vcenter_datastores_include
+  # vcenter_folder - (optional) is a type of string
+  vcenter_folder = var.vcenter_folder
+  # vcpus_per_se - (optional) is a type of number
+  vcpus_per_se = var.vcpus_per_se
+  # vs_host_redundancy - (optional) is a type of bool
+  vs_host_redundancy = var.vs_host_redundancy
+  # vs_scalein_timeout - (optional) is a type of number
+  vs_scalein_timeout = var.vs_scalein_timeout
+  # vs_scalein_timeout_for_upgrade - (optional) is a type of number
+  vs_scalein_timeout_for_upgrade = var.vs_scalein_timeout_for_upgrade
+  # vs_scaleout_timeout - (optional) is a type of number
+  vs_scaleout_timeout = var.vs_scaleout_timeout
+  # vs_se_scaleout_additional_wait_time - (optional) is a type of number
+  vs_se_scaleout_additional_wait_time = var.vs_se_scaleout_additional_wait_time
+  # vs_se_scaleout_ready_timeout - (optional) is a type of number
+  vs_se_scaleout_ready_timeout = var.vs_se_scaleout_ready_timeout
+  # vs_switchover_timeout - (optional) is a type of number
+  vs_switchover_timeout = var.vs_switchover_timeout
+  # vss_placement_enabled - (optional) is a type of bool
+  vss_placement_enabled = var.vss_placement_enabled
+  # waf_mempool - (optional) is a type of bool
+  waf_mempool = var.waf_mempool
+  # waf_mempool_size - (optional) is a type of number
+  waf_mempool_size = var.waf_mempool_size
 
   dynamic "custom_tag" {
     for_each = var.custom_tag
     content {
+      # tag_key - (required) is a type of string
       tag_key = custom_tag.value["tag_key"]
+      # tag_val - (optional) is a type of string
       tag_val = custom_tag.value["tag_val"]
     }
   }
@@ -1819,22 +1977,31 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "iptables" {
     for_each = var.iptables
     content {
+      # chain - (required) is a type of string
       chain = iptables.value["chain"]
+      # table - (required) is a type of string
       table = iptables.value["table"]
 
       dynamic "rules" {
         for_each = iptables.value.rules
         content {
-          action           = rules.value["action"]
-          input_interface  = rules.value["input_interface"]
+          # action - (required) is a type of string
+          action = rules.value["action"]
+          # input_interface - (optional) is a type of string
+          input_interface = rules.value["input_interface"]
+          # output_interface - (optional) is a type of string
           output_interface = rules.value["output_interface"]
-          proto            = rules.value["proto"]
-          tag              = rules.value["tag"]
+          # proto - (optional) is a type of string
+          proto = rules.value["proto"]
+          # tag - (optional) is a type of string
+          tag = rules.value["tag"]
 
           dynamic "dnat_ip" {
             for_each = rules.value.dnat_ip
             content {
+              # addr - (required) is a type of string
               addr = dnat_ip.value["addr"]
+              # type - (required) is a type of string
               type = dnat_ip.value["type"]
             }
           }
@@ -1842,12 +2009,15 @@ resource "avi_serviceenginegroup" "this" {
           dynamic "dst_ip" {
             for_each = rules.value.dst_ip
             content {
+              # mask - (required) is a type of number
               mask = dst_ip.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = dst_ip.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1858,7 +2028,9 @@ resource "avi_serviceenginegroup" "this" {
           dynamic "dst_port" {
             for_each = rules.value.dst_port
             content {
-              end   = dst_port.value["end"]
+              # end - (required) is a type of number
+              end = dst_port.value["end"]
+              # start - (required) is a type of number
               start = dst_port.value["start"]
             }
           }
@@ -1866,12 +2038,15 @@ resource "avi_serviceenginegroup" "this" {
           dynamic "src_ip" {
             for_each = rules.value.src_ip
             content {
+              # mask - (required) is a type of number
               mask = src_ip.value["mask"]
 
               dynamic "ip_addr" {
                 for_each = src_ip.value.ip_addr
                 content {
+                  # addr - (required) is a type of string
                   addr = ip_addr.value["addr"]
+                  # type - (required) is a type of string
                   type = ip_addr.value["type"]
                 }
               }
@@ -1882,7 +2057,9 @@ resource "avi_serviceenginegroup" "this" {
           dynamic "src_port" {
             for_each = rules.value.src_port
             content {
-              end   = src_port.value["end"]
+              # end - (required) is a type of number
+              end = src_port.value["end"]
+              # start - (required) is a type of number
               start = src_port.value["start"]
             }
           }
@@ -1896,12 +2073,15 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "mgmt_subnet" {
     for_each = var.mgmt_subnet
     content {
+      # mask - (required) is a type of number
       mask = mgmt_subnet.value["mask"]
 
       dynamic "ip_addr" {
         for_each = mgmt_subnet.value.ip_addr
         content {
+          # addr - (required) is a type of string
           addr = ip_addr.value["addr"]
+          # type - (required) is a type of string
           type = ip_addr.value["type"]
         }
       }
@@ -1912,21 +2092,27 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "realtime_se_metrics" {
     for_each = var.realtime_se_metrics
     content {
+      # duration - (optional) is a type of number
       duration = realtime_se_metrics.value["duration"]
-      enabled  = realtime_se_metrics.value["enabled"]
+      # enabled - (required) is a type of bool
+      enabled = realtime_se_metrics.value["enabled"]
     }
   }
 
   dynamic "se_dos_profile" {
     for_each = var.se_dos_profile
     content {
+      # thresh_period - (required) is a type of number
       thresh_period = se_dos_profile.value["thresh_period"]
 
       dynamic "thresh_info" {
         for_each = se_dos_profile.value.thresh_info
         content {
-          attack    = thresh_info.value["attack"]
+          # attack - (required) is a type of string
+          attack = thresh_info.value["attack"]
+          # max_value - (required) is a type of number
           max_value = thresh_info.value["max_value"]
+          # min_value - (required) is a type of number
           min_value = thresh_info.value["min_value"]
         }
       }
@@ -1937,7 +2123,9 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "se_rl_prop" {
     for_each = var.se_rl_prop
     content {
+      # msf_num_stages - (optional) is a type of number
       msf_num_stages = se_rl_prop.value["msf_num_stages"]
+      # msf_stage_size - (optional) is a type of number
       msf_stage_size = se_rl_prop.value["msf_stage_size"]
     }
   }
@@ -1945,7 +2133,9 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "se_tracert_port_range" {
     for_each = var.se_tracert_port_range
     content {
-      end   = se_tracert_port_range.value["end"]
+      # end - (required) is a type of number
+      end = se_tracert_port_range.value["end"]
+      # start - (required) is a type of number
       start = se_tracert_port_range.value["start"]
     }
   }
@@ -1953,12 +2143,15 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "service_ip6_subnets" {
     for_each = var.service_ip6_subnets
     content {
+      # mask - (required) is a type of number
       mask = service_ip6_subnets.value["mask"]
 
       dynamic "ip_addr" {
         for_each = service_ip6_subnets.value.ip_addr
         content {
+          # addr - (required) is a type of string
           addr = ip_addr.value["addr"]
+          # type - (required) is a type of string
           type = ip_addr.value["type"]
         }
       }
@@ -1969,12 +2162,15 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "service_ip_subnets" {
     for_each = var.service_ip_subnets
     content {
+      # mask - (required) is a type of number
       mask = service_ip_subnets.value["mask"]
 
       dynamic "ip_addr" {
         for_each = service_ip_subnets.value.ip_addr
         content {
+          # addr - (required) is a type of string
           addr = ip_addr.value["addr"]
+          # type - (required) is a type of string
           type = ip_addr.value["type"]
         }
       }
@@ -1985,14 +2181,17 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "vcenter_clusters" {
     for_each = var.vcenter_clusters
     content {
+      # cluster_refs - (optional) is a type of list of string
       cluster_refs = vcenter_clusters.value["cluster_refs"]
-      include      = vcenter_clusters.value["include"]
+      # include - (optional) is a type of bool
+      include = vcenter_clusters.value["include"]
     }
   }
 
   dynamic "vcenter_datastores" {
     for_each = var.vcenter_datastores
     content {
+      # datastore_name - (required) is a type of string
       datastore_name = vcenter_datastores.value["datastore_name"]
     }
   }
@@ -2000,8 +2199,10 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "vcenter_hosts" {
     for_each = var.vcenter_hosts
     content {
+      # host_refs - (optional) is a type of list of string
       host_refs = vcenter_hosts.value["host_refs"]
-      include   = vcenter_hosts.value["include"]
+      # include - (optional) is a type of bool
+      include = vcenter_hosts.value["include"]
     }
   }
 
@@ -2016,6 +2217,7 @@ resource "avi_serviceenginegroup" "this" {
           dynamic "zones" {
             for_each = configuration.value.zones
             content {
+              # subnet_uuid - (optional) is a type of string
               subnet_uuid = zones.value["subnet_uuid"]
             }
           }
@@ -2026,10 +2228,14 @@ resource "avi_serviceenginegroup" "this" {
       dynamic "policy" {
         for_each = vip_asg.value.policy
         content {
+          # dns_cooldown - (optional) is a type of number
           dns_cooldown = policy.value["dns_cooldown"]
-          max_size     = policy.value["max_size"]
-          min_size     = policy.value["min_size"]
-          suspend      = policy.value["suspend"]
+          # max_size - (optional) is a type of number
+          max_size = policy.value["max_size"]
+          # min_size - (optional) is a type of number
+          min_size = policy.value["min_size"]
+          # suspend - (optional) is a type of bool
+          suspend = policy.value["suspend"]
         }
       }
 
@@ -2039,8 +2245,10 @@ resource "avi_serviceenginegroup" "this" {
   dynamic "vss_placement" {
     for_each = var.vss_placement
     content {
+      # core_nonaffinity - (optional) is a type of number
       core_nonaffinity = vss_placement.value["core_nonaffinity"]
-      num_subcores     = vss_placement.value["num_subcores"]
+      # num_subcores - (optional) is a type of number
+      num_subcores = vss_placement.value["num_subcores"]
     }
   }
 

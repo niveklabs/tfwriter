@@ -73,10 +73,14 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cloud_storage_gateway_storage_bundles" "this" {
+  # backend_bucket_region_id - (required) is a type of string
   backend_bucket_region_id = var.backend_bucket_region_id
-  ids                      = var.ids
-  name_regex               = var.name_regex
-  output_file              = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

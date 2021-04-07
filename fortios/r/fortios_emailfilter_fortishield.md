@@ -66,8 +66,11 @@ variable "spam_submit_txt2htm" {
 
 ```terraform
 resource "fortios_emailfilter_fortishield" "this" {
-  spam_submit_force   = var.spam_submit_force
-  spam_submit_srv     = var.spam_submit_srv
+  # spam_submit_force - (optional) is a type of string
+  spam_submit_force = var.spam_submit_force
+  # spam_submit_srv - (optional) is a type of string
+  spam_submit_srv = var.spam_submit_srv
+  # spam_submit_txt2htm - (optional) is a type of string
   spam_submit_txt2htm = var.spam_submit_txt2htm
 }
 ```

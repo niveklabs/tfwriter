@@ -77,16 +77,22 @@ variable "key" {
 
 ```terraform
 resource "fortios_router_keychain" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "key" {
     for_each = var.key
     content {
+      # accept_lifetime - (optional) is a type of string
       accept_lifetime = key.value["accept_lifetime"]
-      id              = key.value["id"]
-      key_string      = key.value["key_string"]
-      send_lifetime   = key.value["send_lifetime"]
+      # id - (optional) is a type of number
+      id = key.value["id"]
+      # key_string - (optional) is a type of string
+      key_string = key.value["key_string"]
+      # send_lifetime - (optional) is a type of string
+      send_lifetime = key.value["send_lifetime"]
     }
   }
 

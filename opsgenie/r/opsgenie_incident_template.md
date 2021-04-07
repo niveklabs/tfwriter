@@ -112,20 +112,30 @@ variable "stakeholder_properties" {
 
 ```terraform
 resource "opsgenie_incident_template" "this" {
-  description       = var.description
-  details           = var.details
+  # description - (optional) is a type of string
+  description = var.description
+  # details - (optional) is a type of map of string
+  details = var.details
+  # impacted_services - (optional) is a type of set of string
   impacted_services = var.impacted_services
-  message           = var.message
-  name              = var.name
-  priority          = var.priority
-  tags              = var.tags
+  # message - (required) is a type of string
+  message = var.message
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (required) is a type of string
+  priority = var.priority
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "stakeholder_properties" {
     for_each = var.stakeholder_properties
     content {
+      # description - (optional) is a type of string
       description = stakeholder_properties.value["description"]
-      enable      = stakeholder_properties.value["enable"]
-      message     = stakeholder_properties.value["message"]
+      # enable - (optional) is a type of bool
+      enable = stakeholder_properties.value["enable"]
+      # message - (required) is a type of string
+      message = stakeholder_properties.value["message"]
     }
   }
 

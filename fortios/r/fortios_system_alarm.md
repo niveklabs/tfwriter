@@ -122,35 +122,57 @@ variable "groups" {
 
 ```terraform
 resource "fortios_system_alarm" "this" {
-  audible               = var.audible
+  # audible - (optional) is a type of string
+  audible = var.audible
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  status                = var.status
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "groups" {
     for_each = var.groups
     content {
+      # admin_auth_failure_threshold - (optional) is a type of number
       admin_auth_failure_threshold = groups.value["admin_auth_failure_threshold"]
+      # admin_auth_lockout_threshold - (optional) is a type of number
       admin_auth_lockout_threshold = groups.value["admin_auth_lockout_threshold"]
+      # decryption_failure_threshold - (optional) is a type of number
       decryption_failure_threshold = groups.value["decryption_failure_threshold"]
+      # encryption_failure_threshold - (optional) is a type of number
       encryption_failure_threshold = groups.value["encryption_failure_threshold"]
-      fw_policy_id                 = groups.value["fw_policy_id"]
-      fw_policy_id_threshold       = groups.value["fw_policy_id_threshold"]
-      id                           = groups.value["id"]
-      log_full_warning_threshold   = groups.value["log_full_warning_threshold"]
-      period                       = groups.value["period"]
-      replay_attempt_threshold     = groups.value["replay_attempt_threshold"]
-      self_test_failure_threshold  = groups.value["self_test_failure_threshold"]
-      user_auth_failure_threshold  = groups.value["user_auth_failure_threshold"]
-      user_auth_lockout_threshold  = groups.value["user_auth_lockout_threshold"]
+      # fw_policy_id - (optional) is a type of number
+      fw_policy_id = groups.value["fw_policy_id"]
+      # fw_policy_id_threshold - (optional) is a type of number
+      fw_policy_id_threshold = groups.value["fw_policy_id_threshold"]
+      # id - (optional) is a type of number
+      id = groups.value["id"]
+      # log_full_warning_threshold - (optional) is a type of number
+      log_full_warning_threshold = groups.value["log_full_warning_threshold"]
+      # period - (optional) is a type of number
+      period = groups.value["period"]
+      # replay_attempt_threshold - (optional) is a type of number
+      replay_attempt_threshold = groups.value["replay_attempt_threshold"]
+      # self_test_failure_threshold - (optional) is a type of number
+      self_test_failure_threshold = groups.value["self_test_failure_threshold"]
+      # user_auth_failure_threshold - (optional) is a type of number
+      user_auth_failure_threshold = groups.value["user_auth_failure_threshold"]
+      # user_auth_lockout_threshold - (optional) is a type of number
+      user_auth_lockout_threshold = groups.value["user_auth_lockout_threshold"]
 
       dynamic "fw_policy_violations" {
         for_each = groups.value.fw_policy_violations
         content {
-          dst_ip    = fw_policy_violations.value["dst_ip"]
-          dst_port  = fw_policy_violations.value["dst_port"]
-          id        = fw_policy_violations.value["id"]
-          src_ip    = fw_policy_violations.value["src_ip"]
-          src_port  = fw_policy_violations.value["src_port"]
+          # dst_ip - (optional) is a type of string
+          dst_ip = fw_policy_violations.value["dst_ip"]
+          # dst_port - (optional) is a type of number
+          dst_port = fw_policy_violations.value["dst_port"]
+          # id - (optional) is a type of number
+          id = fw_policy_violations.value["id"]
+          # src_ip - (optional) is a type of string
+          src_ip = fw_policy_violations.value["src_ip"]
+          # src_port - (optional) is a type of number
+          src_port = fw_policy_violations.value["src_port"]
+          # threshold - (optional) is a type of number
           threshold = fw_policy_violations.value["threshold"]
         }
       }

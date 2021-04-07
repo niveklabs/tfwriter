@@ -56,7 +56,9 @@ variable "instance_id" {
 
 ```terraform
 resource "alicloud_havip_attachment" "this" {
-  havip_id    = var.havip_id
+  # havip_id - (required) is a type of string
+  havip_id = var.havip_id
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
 }
 ```

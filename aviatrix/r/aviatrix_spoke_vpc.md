@@ -147,20 +147,34 @@ variable "vpc_size" {
 
 ```terraform
 resource "aviatrix_spoke_vpc" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
-  cloud_type   = var.cloud_type
-  enable_nat   = var.enable_nat
-  gw_name      = var.gw_name
-  ha_gw_size   = var.ha_gw_size
-  ha_subnet    = var.ha_subnet
-  ha_zone      = var.ha_zone
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # enable_nat - (optional) is a type of string
+  enable_nat = var.enable_nat
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # ha_gw_size - (optional) is a type of string
+  ha_gw_size = var.ha_gw_size
+  # ha_subnet - (optional) is a type of string
+  ha_subnet = var.ha_subnet
+  # ha_zone - (optional) is a type of string
+  ha_zone = var.ha_zone
+  # single_az_ha - (optional) is a type of string
   single_az_ha = var.single_az_ha
-  subnet       = var.subnet
-  tag_list     = var.tag_list
-  transit_gw   = var.transit_gw
-  vpc_id       = var.vpc_id
-  vpc_reg      = var.vpc_reg
-  vpc_size     = var.vpc_size
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # tag_list - (optional) is a type of list of string
+  tag_list = var.tag_list
+  # transit_gw - (optional) is a type of string
+  transit_gw = var.transit_gw
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # vpc_reg - (required) is a type of string
+  vpc_reg = var.vpc_reg
+  # vpc_size - (required) is a type of string
+  vpc_size = var.vpc_size
 }
 ```
 

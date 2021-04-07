@@ -73,10 +73,14 @@ variable "name" {
 
 ```terraform
 resource "panos_panorama_administrative_tag" "this" {
-  color        = var.color
-  comment      = var.comment
+  # color - (optional) is a type of string
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

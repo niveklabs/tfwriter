@@ -63,9 +63,12 @@ variable "zone" {
 
 ```terraform
 data "akamai_dns_record_set" "this" {
-  host        = var.host
+  # host - (required) is a type of string
+  host = var.host
+  # record_type - (required) is a type of string
   record_type = var.record_type
-  zone        = var.zone
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

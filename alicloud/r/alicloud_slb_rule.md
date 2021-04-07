@@ -215,28 +215,50 @@ variable "url" {
 
 ```terraform
 resource "alicloud_slb_rule" "this" {
-  cookie                       = var.cookie
-  cookie_timeout               = var.cookie_timeout
+  # cookie - (optional) is a type of string
+  cookie = var.cookie
+  # cookie_timeout - (optional) is a type of number
+  cookie_timeout = var.cookie_timeout
+  # delete_protection_validation - (optional) is a type of bool
   delete_protection_validation = var.delete_protection_validation
-  domain                       = var.domain
-  frontend_port                = var.frontend_port
-  health_check                 = var.health_check
-  health_check_connect_port    = var.health_check_connect_port
-  health_check_domain          = var.health_check_domain
-  health_check_http_code       = var.health_check_http_code
-  health_check_interval        = var.health_check_interval
-  health_check_timeout         = var.health_check_timeout
-  health_check_uri             = var.health_check_uri
-  healthy_threshold            = var.healthy_threshold
-  listener_sync                = var.listener_sync
-  load_balancer_id             = var.load_balancer_id
-  name                         = var.name
-  scheduler                    = var.scheduler
-  server_group_id              = var.server_group_id
-  sticky_session               = var.sticky_session
-  sticky_session_type          = var.sticky_session_type
-  unhealthy_threshold          = var.unhealthy_threshold
-  url                          = var.url
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # frontend_port - (required) is a type of number
+  frontend_port = var.frontend_port
+  # health_check - (optional) is a type of string
+  health_check = var.health_check
+  # health_check_connect_port - (optional) is a type of number
+  health_check_connect_port = var.health_check_connect_port
+  # health_check_domain - (optional) is a type of string
+  health_check_domain = var.health_check_domain
+  # health_check_http_code - (optional) is a type of string
+  health_check_http_code = var.health_check_http_code
+  # health_check_interval - (optional) is a type of number
+  health_check_interval = var.health_check_interval
+  # health_check_timeout - (optional) is a type of number
+  health_check_timeout = var.health_check_timeout
+  # health_check_uri - (optional) is a type of string
+  health_check_uri = var.health_check_uri
+  # healthy_threshold - (optional) is a type of number
+  healthy_threshold = var.healthy_threshold
+  # listener_sync - (optional) is a type of string
+  listener_sync = var.listener_sync
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # name - (optional) is a type of string
+  name = var.name
+  # scheduler - (optional) is a type of string
+  scheduler = var.scheduler
+  # server_group_id - (required) is a type of string
+  server_group_id = var.server_group_id
+  # sticky_session - (optional) is a type of string
+  sticky_session = var.sticky_session
+  # sticky_session_type - (optional) is a type of string
+  sticky_session_type = var.sticky_session_type
+  # unhealthy_threshold - (optional) is a type of number
+  unhealthy_threshold = var.unhealthy_threshold
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

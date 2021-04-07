@@ -57,7 +57,9 @@ variable "project_id" {
 
 ```terraform
 data "azuredevops_group" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
   project_id = var.project_id
 }
 ```

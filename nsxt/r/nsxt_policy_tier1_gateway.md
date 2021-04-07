@@ -253,37 +253,59 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_tier1_gateway" "this" {
-  default_rule_logging      = var.default_rule_logging
-  description               = var.description
-  dhcp_config_path          = var.dhcp_config_path
-  display_name              = var.display_name
-  edge_cluster_path         = var.edge_cluster_path
-  egress_qos_profile_path   = var.egress_qos_profile_path
-  enable_firewall           = var.enable_firewall
+  # default_rule_logging - (optional) is a type of bool
+  default_rule_logging = var.default_rule_logging
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_config_path - (optional) is a type of string
+  dhcp_config_path = var.dhcp_config_path
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # edge_cluster_path - (optional) is a type of string
+  edge_cluster_path = var.edge_cluster_path
+  # egress_qos_profile_path - (optional) is a type of string
+  egress_qos_profile_path = var.egress_qos_profile_path
+  # enable_firewall - (optional) is a type of bool
+  enable_firewall = var.enable_firewall
+  # enable_standby_relocation - (optional) is a type of bool
   enable_standby_relocation = var.enable_standby_relocation
-  failover_mode             = var.failover_mode
-  force_whitelisting        = var.force_whitelisting
-  ingress_qos_profile_path  = var.ingress_qos_profile_path
-  ipv6_dad_profile_path     = var.ipv6_dad_profile_path
-  ipv6_ndra_profile_path    = var.ipv6_ndra_profile_path
-  nsx_id                    = var.nsx_id
-  pool_allocation           = var.pool_allocation
+  # failover_mode - (optional) is a type of string
+  failover_mode = var.failover_mode
+  # force_whitelisting - (optional) is a type of bool
+  force_whitelisting = var.force_whitelisting
+  # ingress_qos_profile_path - (optional) is a type of string
+  ingress_qos_profile_path = var.ingress_qos_profile_path
+  # ipv6_dad_profile_path - (optional) is a type of string
+  ipv6_dad_profile_path = var.ipv6_dad_profile_path
+  # ipv6_ndra_profile_path - (optional) is a type of string
+  ipv6_ndra_profile_path = var.ipv6_ndra_profile_path
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # pool_allocation - (optional) is a type of string
+  pool_allocation = var.pool_allocation
+  # route_advertisement_types - (optional) is a type of set of string
   route_advertisement_types = var.route_advertisement_types
-  tier0_path                = var.tier0_path
+  # tier0_path - (optional) is a type of string
+  tier0_path = var.tier0_path
 
   dynamic "intersite_config" {
     for_each = var.intersite_config
     content {
+      # fallback_site_paths - (optional) is a type of set of string
       fallback_site_paths = intersite_config.value["fallback_site_paths"]
-      primary_site_path   = intersite_config.value["primary_site_path"]
-      transit_subnet      = intersite_config.value["transit_subnet"]
+      # primary_site_path - (optional) is a type of string
+      primary_site_path = intersite_config.value["primary_site_path"]
+      # transit_subnet - (optional) is a type of string
+      transit_subnet = intersite_config.value["transit_subnet"]
     }
   }
 
   dynamic "locale_service" {
     for_each = var.locale_service
     content {
-      edge_cluster_path    = locale_service.value["edge_cluster_path"]
+      # edge_cluster_path - (required) is a type of string
+      edge_cluster_path = locale_service.value["edge_cluster_path"]
+      # preferred_edge_paths - (optional) is a type of set of string
       preferred_edge_paths = locale_service.value["preferred_edge_paths"]
     }
   }
@@ -291,19 +313,26 @@ resource "nsxt_policy_tier1_gateway" "this" {
   dynamic "route_advertisement_rule" {
     for_each = var.route_advertisement_rule
     content {
-      action                    = route_advertisement_rule.value["action"]
-      name                      = route_advertisement_rule.value["name"]
-      prefix_operator           = route_advertisement_rule.value["prefix_operator"]
+      # action - (optional) is a type of string
+      action = route_advertisement_rule.value["action"]
+      # name - (required) is a type of string
+      name = route_advertisement_rule.value["name"]
+      # prefix_operator - (optional) is a type of string
+      prefix_operator = route_advertisement_rule.value["prefix_operator"]
+      # route_advertisement_types - (optional) is a type of set of string
       route_advertisement_types = route_advertisement_rule.value["route_advertisement_types"]
-      subnets                   = route_advertisement_rule.value["subnets"]
+      # subnets - (required) is a type of set of string
+      subnets = route_advertisement_rule.value["subnets"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -82,11 +82,16 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontroller_snmpsysinfo" "this" {
+  # contact_info - (optional) is a type of string
   contact_info = var.contact_info
-  description  = var.description
-  engine_id    = var.engine_id
-  location     = var.location
-  status       = var.status
+  # description - (optional) is a type of string
+  description = var.description
+  # engine_id - (optional) is a type of string
+  engine_id = var.engine_id
+  # location - (optional) is a type of string
+  location = var.location
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

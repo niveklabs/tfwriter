@@ -306,17 +306,28 @@ variable "interface_8_info" {
 
 ```terraform
 data "ecl_vna_appliance_v1" "this" {
-  appliance_type                    = var.appliance_type
-  availability_zone                 = var.availability_zone
-  description                       = var.description
-  name                              = var.name
-  operation_status                  = var.operation_status
-  os_login_status                   = var.os_login_status
-  os_monitoring_status              = var.os_monitoring_status
-  tenant_id                         = var.tenant_id
-  virtual_network_appliance_id      = var.virtual_network_appliance_id
+  # appliance_type - (optional) is a type of string
+  appliance_type = var.appliance_type
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # operation_status - (optional) is a type of string
+  operation_status = var.operation_status
+  # os_login_status - (optional) is a type of string
+  os_login_status = var.os_login_status
+  # os_monitoring_status - (optional) is a type of string
+  os_monitoring_status = var.os_monitoring_status
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # virtual_network_appliance_id - (optional) is a type of string
+  virtual_network_appliance_id = var.virtual_network_appliance_id
+  # virtual_network_appliance_plan_id - (optional) is a type of string
   virtual_network_appliance_plan_id = var.virtual_network_appliance_plan_id
-  vm_status                         = var.vm_status
+  # vm_status - (optional) is a type of string
+  vm_status = var.vm_status
 
   dynamic "interface_1_info" {
     for_each = var.interface_1_info

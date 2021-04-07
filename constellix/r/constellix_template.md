@@ -81,11 +81,16 @@ variable "version" {
 
 ```terraform
 resource "constellix_template" "this" {
-  domain          = var.domain
-  has_geoip       = var.has_geoip
+  # domain - (optional) is a type of number
+  domain = var.domain
+  # has_geoip - (optional) is a type of bool
+  has_geoip = var.has_geoip
+  # has_gtd_regions - (optional) is a type of bool
   has_gtd_regions = var.has_gtd_regions
-  name            = var.name
-  version         = var.version
+  # name - (required) is a type of string
+  name = var.name
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

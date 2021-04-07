@@ -82,11 +82,16 @@ variable "server" {
 
 ```terraform
 resource "aviatrix_splunk_logging" "this" {
-  custom_input_config       = var.custom_input_config
+  # custom_input_config - (optional) is a type of string
+  custom_input_config = var.custom_input_config
+  # custom_output_config_file - (optional) is a type of string
   custom_output_config_file = var.custom_output_config_file
-  excluded_gateways         = var.excluded_gateways
-  port                      = var.port
-  server                    = var.server
+  # excluded_gateways - (optional) is a type of set of string
+  excluded_gateways = var.excluded_gateways
+  # port - (optional) is a type of number
+  port = var.port
+  # server - (optional) is a type of string
+  server = var.server
 }
 ```
 

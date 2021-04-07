@@ -138,18 +138,30 @@ variable "validate_server" {
 
 ```terraform
 resource "fortios_system_emailserver" "this" {
-  authenticate          = var.authenticate
-  password              = var.password
-  port                  = var.port
-  reply_to              = var.reply_to
-  security              = var.security
-  server                = var.server
-  source_ip             = var.source_ip
-  source_ip6            = var.source_ip6
+  # authenticate - (optional) is a type of string
+  authenticate = var.authenticate
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # reply_to - (optional) is a type of string
+  reply_to = var.reply_to
+  # security - (optional) is a type of string
+  security = var.security
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_ip6 - (optional) is a type of string
+  source_ip6 = var.source_ip6
+  # ssl_min_proto_version - (optional) is a type of string
   ssl_min_proto_version = var.ssl_min_proto_version
-  type                  = var.type
-  username              = var.username
-  validate_server       = var.validate_server
+  # type - (optional) is a type of string
+  type = var.type
+  # username - (optional) is a type of string
+  username = var.username
+  # validate_server - (optional) is a type of string
+  validate_server = var.validate_server
 }
 ```
 

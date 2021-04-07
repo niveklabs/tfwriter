@@ -367,74 +367,118 @@ variable "summary_address" {
 
 ```terraform
 resource "fortios_router_ospf6" "this" {
-  abr_type                        = var.abr_type
-  auto_cost_ref_bandwidth         = var.auto_cost_ref_bandwidth
-  bfd                             = var.bfd
-  default_information_metric      = var.default_information_metric
+  # abr_type - (optional) is a type of string
+  abr_type = var.abr_type
+  # auto_cost_ref_bandwidth - (optional) is a type of number
+  auto_cost_ref_bandwidth = var.auto_cost_ref_bandwidth
+  # bfd - (optional) is a type of string
+  bfd = var.bfd
+  # default_information_metric - (optional) is a type of number
+  default_information_metric = var.default_information_metric
+  # default_information_metric_type - (optional) is a type of string
   default_information_metric_type = var.default_information_metric_type
-  default_information_originate   = var.default_information_originate
-  default_information_route_map   = var.default_information_route_map
-  default_metric                  = var.default_metric
-  dynamic_sort_subtable           = var.dynamic_sort_subtable
-  log_neighbour_changes           = var.log_neighbour_changes
-  router_id                       = var.router_id
-  spf_timers                      = var.spf_timers
+  # default_information_originate - (optional) is a type of string
+  default_information_originate = var.default_information_originate
+  # default_information_route_map - (optional) is a type of string
+  default_information_route_map = var.default_information_route_map
+  # default_metric - (optional) is a type of number
+  default_metric = var.default_metric
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # log_neighbour_changes - (optional) is a type of string
+  log_neighbour_changes = var.log_neighbour_changes
+  # router_id - (required) is a type of string
+  router_id = var.router_id
+  # spf_timers - (optional) is a type of string
+  spf_timers = var.spf_timers
 
   dynamic "area" {
     for_each = var.area
     content {
-      authentication                                 = area.value["authentication"]
-      default_cost                                   = area.value["default_cost"]
-      id                                             = area.value["id"]
-      ipsec_auth_alg                                 = area.value["ipsec_auth_alg"]
-      ipsec_enc_alg                                  = area.value["ipsec_enc_alg"]
-      key_rollover_interval                          = area.value["key_rollover_interval"]
-      nssa_default_information_originate             = area.value["nssa_default_information_originate"]
-      nssa_default_information_originate_metric      = area.value["nssa_default_information_originate_metric"]
+      # authentication - (optional) is a type of string
+      authentication = area.value["authentication"]
+      # default_cost - (optional) is a type of number
+      default_cost = area.value["default_cost"]
+      # id - (optional) is a type of string
+      id = area.value["id"]
+      # ipsec_auth_alg - (optional) is a type of string
+      ipsec_auth_alg = area.value["ipsec_auth_alg"]
+      # ipsec_enc_alg - (optional) is a type of string
+      ipsec_enc_alg = area.value["ipsec_enc_alg"]
+      # key_rollover_interval - (optional) is a type of number
+      key_rollover_interval = area.value["key_rollover_interval"]
+      # nssa_default_information_originate - (optional) is a type of string
+      nssa_default_information_originate = area.value["nssa_default_information_originate"]
+      # nssa_default_information_originate_metric - (optional) is a type of number
+      nssa_default_information_originate_metric = area.value["nssa_default_information_originate_metric"]
+      # nssa_default_information_originate_metric_type - (optional) is a type of string
       nssa_default_information_originate_metric_type = area.value["nssa_default_information_originate_metric_type"]
-      nssa_redistribution                            = area.value["nssa_redistribution"]
-      nssa_translator_role                           = area.value["nssa_translator_role"]
-      stub_type                                      = area.value["stub_type"]
-      type                                           = area.value["type"]
+      # nssa_redistribution - (optional) is a type of string
+      nssa_redistribution = area.value["nssa_redistribution"]
+      # nssa_translator_role - (optional) is a type of string
+      nssa_translator_role = area.value["nssa_translator_role"]
+      # stub_type - (optional) is a type of string
+      stub_type = area.value["stub_type"]
+      # type - (optional) is a type of string
+      type = area.value["type"]
 
       dynamic "ipsec_keys" {
         for_each = area.value.ipsec_keys
         content {
+          # auth_key - (optional) is a type of string
           auth_key = ipsec_keys.value["auth_key"]
-          enc_key  = ipsec_keys.value["enc_key"]
-          spi      = ipsec_keys.value["spi"]
+          # enc_key - (optional) is a type of string
+          enc_key = ipsec_keys.value["enc_key"]
+          # spi - (optional) is a type of number
+          spi = ipsec_keys.value["spi"]
         }
       }
 
       dynamic "range" {
         for_each = area.value.range
         content {
+          # advertise - (optional) is a type of string
           advertise = range.value["advertise"]
-          id        = range.value["id"]
-          prefix6   = range.value["prefix6"]
+          # id - (optional) is a type of number
+          id = range.value["id"]
+          # prefix6 - (optional) is a type of string
+          prefix6 = range.value["prefix6"]
         }
       }
 
       dynamic "virtual_link" {
         for_each = area.value.virtual_link
         content {
-          authentication        = virtual_link.value["authentication"]
-          dead_interval         = virtual_link.value["dead_interval"]
-          hello_interval        = virtual_link.value["hello_interval"]
-          ipsec_auth_alg        = virtual_link.value["ipsec_auth_alg"]
-          ipsec_enc_alg         = virtual_link.value["ipsec_enc_alg"]
+          # authentication - (optional) is a type of string
+          authentication = virtual_link.value["authentication"]
+          # dead_interval - (optional) is a type of number
+          dead_interval = virtual_link.value["dead_interval"]
+          # hello_interval - (optional) is a type of number
+          hello_interval = virtual_link.value["hello_interval"]
+          # ipsec_auth_alg - (optional) is a type of string
+          ipsec_auth_alg = virtual_link.value["ipsec_auth_alg"]
+          # ipsec_enc_alg - (optional) is a type of string
+          ipsec_enc_alg = virtual_link.value["ipsec_enc_alg"]
+          # key_rollover_interval - (optional) is a type of number
           key_rollover_interval = virtual_link.value["key_rollover_interval"]
-          name                  = virtual_link.value["name"]
-          peer                  = virtual_link.value["peer"]
-          retransmit_interval   = virtual_link.value["retransmit_interval"]
-          transmit_delay        = virtual_link.value["transmit_delay"]
+          # name - (optional) is a type of string
+          name = virtual_link.value["name"]
+          # peer - (optional) is a type of string
+          peer = virtual_link.value["peer"]
+          # retransmit_interval - (optional) is a type of number
+          retransmit_interval = virtual_link.value["retransmit_interval"]
+          # transmit_delay - (optional) is a type of number
+          transmit_delay = virtual_link.value["transmit_delay"]
 
           dynamic "ipsec_keys" {
             for_each = virtual_link.value.ipsec_keys
             content {
+              # auth_key - (optional) is a type of string
               auth_key = ipsec_keys.value["auth_key"]
-              enc_key  = ipsec_keys.value["enc_key"]
-              spi      = ipsec_keys.value["spi"]
+              # enc_key - (optional) is a type of string
+              enc_key = ipsec_keys.value["enc_key"]
+              # spi - (optional) is a type of number
+              spi = ipsec_keys.value["spi"]
             }
           }
 
@@ -447,41 +491,66 @@ resource "fortios_router_ospf6" "this" {
   dynamic "ospf6_interface" {
     for_each = var.ospf6_interface
     content {
-      area_id               = ospf6_interface.value["area_id"]
-      authentication        = ospf6_interface.value["authentication"]
-      bfd                   = ospf6_interface.value["bfd"]
-      cost                  = ospf6_interface.value["cost"]
-      dead_interval         = ospf6_interface.value["dead_interval"]
-      hello_interval        = ospf6_interface.value["hello_interval"]
-      interface             = ospf6_interface.value["interface"]
-      ipsec_auth_alg        = ospf6_interface.value["ipsec_auth_alg"]
-      ipsec_enc_alg         = ospf6_interface.value["ipsec_enc_alg"]
+      # area_id - (optional) is a type of string
+      area_id = ospf6_interface.value["area_id"]
+      # authentication - (optional) is a type of string
+      authentication = ospf6_interface.value["authentication"]
+      # bfd - (optional) is a type of string
+      bfd = ospf6_interface.value["bfd"]
+      # cost - (optional) is a type of number
+      cost = ospf6_interface.value["cost"]
+      # dead_interval - (optional) is a type of number
+      dead_interval = ospf6_interface.value["dead_interval"]
+      # hello_interval - (optional) is a type of number
+      hello_interval = ospf6_interface.value["hello_interval"]
+      # interface - (optional) is a type of string
+      interface = ospf6_interface.value["interface"]
+      # ipsec_auth_alg - (optional) is a type of string
+      ipsec_auth_alg = ospf6_interface.value["ipsec_auth_alg"]
+      # ipsec_enc_alg - (optional) is a type of string
+      ipsec_enc_alg = ospf6_interface.value["ipsec_enc_alg"]
+      # key_rollover_interval - (optional) is a type of number
       key_rollover_interval = ospf6_interface.value["key_rollover_interval"]
-      mtu                   = ospf6_interface.value["mtu"]
-      mtu_ignore            = ospf6_interface.value["mtu_ignore"]
-      name                  = ospf6_interface.value["name"]
-      network_type          = ospf6_interface.value["network_type"]
-      priority              = ospf6_interface.value["priority"]
-      retransmit_interval   = ospf6_interface.value["retransmit_interval"]
-      status                = ospf6_interface.value["status"]
-      transmit_delay        = ospf6_interface.value["transmit_delay"]
+      # mtu - (optional) is a type of number
+      mtu = ospf6_interface.value["mtu"]
+      # mtu_ignore - (optional) is a type of string
+      mtu_ignore = ospf6_interface.value["mtu_ignore"]
+      # name - (optional) is a type of string
+      name = ospf6_interface.value["name"]
+      # network_type - (optional) is a type of string
+      network_type = ospf6_interface.value["network_type"]
+      # priority - (optional) is a type of number
+      priority = ospf6_interface.value["priority"]
+      # retransmit_interval - (optional) is a type of number
+      retransmit_interval = ospf6_interface.value["retransmit_interval"]
+      # status - (optional) is a type of string
+      status = ospf6_interface.value["status"]
+      # transmit_delay - (optional) is a type of number
+      transmit_delay = ospf6_interface.value["transmit_delay"]
 
       dynamic "ipsec_keys" {
         for_each = ospf6_interface.value.ipsec_keys
         content {
+          # auth_key - (optional) is a type of string
           auth_key = ipsec_keys.value["auth_key"]
-          enc_key  = ipsec_keys.value["enc_key"]
-          spi      = ipsec_keys.value["spi"]
+          # enc_key - (optional) is a type of string
+          enc_key = ipsec_keys.value["enc_key"]
+          # spi - (optional) is a type of number
+          spi = ipsec_keys.value["spi"]
         }
       }
 
       dynamic "neighbor" {
         for_each = ospf6_interface.value.neighbor
         content {
-          cost          = neighbor.value["cost"]
-          ip6           = neighbor.value["ip6"]
+          # cost - (optional) is a type of number
+          cost = neighbor.value["cost"]
+          # ip6 - (optional) is a type of string
+          ip6 = neighbor.value["ip6"]
+          # poll_interval - (optional) is a type of number
           poll_interval = neighbor.value["poll_interval"]
-          priority      = neighbor.value["priority"]
+          # priority - (optional) is a type of number
+          priority = neighbor.value["priority"]
         }
       }
 
@@ -491,6 +560,7 @@ resource "fortios_router_ospf6" "this" {
   dynamic "passive_interface" {
     for_each = var.passive_interface
     content {
+      # name - (optional) is a type of string
       name = passive_interface.value["name"]
     }
   }
@@ -498,21 +568,30 @@ resource "fortios_router_ospf6" "this" {
   dynamic "redistribute" {
     for_each = var.redistribute
     content {
-      metric      = redistribute.value["metric"]
+      # metric - (optional) is a type of number
+      metric = redistribute.value["metric"]
+      # metric_type - (optional) is a type of string
       metric_type = redistribute.value["metric_type"]
-      name        = redistribute.value["name"]
-      routemap    = redistribute.value["routemap"]
-      status      = redistribute.value["status"]
+      # name - (optional) is a type of string
+      name = redistribute.value["name"]
+      # routemap - (optional) is a type of string
+      routemap = redistribute.value["routemap"]
+      # status - (optional) is a type of string
+      status = redistribute.value["status"]
     }
   }
 
   dynamic "summary_address" {
     for_each = var.summary_address
     content {
+      # advertise - (optional) is a type of string
       advertise = summary_address.value["advertise"]
-      id        = summary_address.value["id"]
-      prefix6   = summary_address.value["prefix6"]
-      tag       = summary_address.value["tag"]
+      # id - (optional) is a type of number
+      id = summary_address.value["id"]
+      # prefix6 - (optional) is a type of string
+      prefix6 = summary_address.value["prefix6"]
+      # tag - (optional) is a type of number
+      tag = summary_address.value["tag"]
     }
   }
 

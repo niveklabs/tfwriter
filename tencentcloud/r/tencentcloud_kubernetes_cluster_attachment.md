@@ -134,31 +134,48 @@ variable "worker_config" {
 
 ```terraform
 resource "tencentcloud_kubernetes_cluster_attachment" "this" {
-  cluster_id    = var.cluster_id
-  hostname      = var.hostname
-  instance_id   = var.instance_id
-  key_ids       = var.key_ids
-  labels        = var.labels
-  password      = var.password
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # key_ids - (optional) is a type of list of string
+  key_ids = var.key_ids
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # password - (optional) is a type of string
+  password = var.password
+  # unschedulable - (optional) is a type of number
   unschedulable = var.unschedulable
 
   dynamic "worker_config" {
     for_each = var.worker_config
     content {
+      # docker_graph_path - (optional) is a type of string
       docker_graph_path = worker_config.value["docker_graph_path"]
-      extra_args        = worker_config.value["extra_args"]
-      is_schedule       = worker_config.value["is_schedule"]
-      mount_target      = worker_config.value["mount_target"]
-      user_data         = worker_config.value["user_data"]
+      # extra_args - (optional) is a type of list of string
+      extra_args = worker_config.value["extra_args"]
+      # is_schedule - (optional) is a type of bool
+      is_schedule = worker_config.value["is_schedule"]
+      # mount_target - (optional) is a type of string
+      mount_target = worker_config.value["mount_target"]
+      # user_data - (optional) is a type of string
+      user_data = worker_config.value["user_data"]
 
       dynamic "data_disk" {
         for_each = worker_config.value.data_disk
         content {
+          # auto_format_and_mount - (optional) is a type of bool
           auto_format_and_mount = data_disk.value["auto_format_and_mount"]
-          disk_size             = data_disk.value["disk_size"]
-          disk_type             = data_disk.value["disk_type"]
-          file_system           = data_disk.value["file_system"]
-          mount_target          = data_disk.value["mount_target"]
+          # disk_size - (optional) is a type of number
+          disk_size = data_disk.value["disk_size"]
+          # disk_type - (optional) is a type of string
+          disk_type = data_disk.value["disk_type"]
+          # file_system - (optional) is a type of string
+          file_system = data_disk.value["file_system"]
+          # mount_target - (optional) is a type of string
+          mount_target = data_disk.value["mount_target"]
         }
       }
 

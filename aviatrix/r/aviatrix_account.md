@@ -208,27 +208,48 @@ variable "oci_user_id" {
 
 ```terraform
 resource "aviatrix_account" "this" {
-  account_name                        = var.account_name
-  arm_application_id                  = var.arm_application_id
-  arm_application_key                 = var.arm_application_key
-  arm_directory_id                    = var.arm_directory_id
-  arm_subscription_id                 = var.arm_subscription_id
-  aws_access_key                      = var.aws_access_key
-  aws_account_number                  = var.aws_account_number
-  aws_iam                             = var.aws_iam
-  aws_role_app                        = var.aws_role_app
-  aws_role_ec2                        = var.aws_role_ec2
-  aws_secret_key                      = var.aws_secret_key
-  awsgov_access_key                   = var.awsgov_access_key
-  awsgov_account_number               = var.awsgov_account_number
-  awsgov_secret_key                   = var.awsgov_secret_key
-  cloud_type                          = var.cloud_type
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # arm_application_id - (optional) is a type of string
+  arm_application_id = var.arm_application_id
+  # arm_application_key - (optional) is a type of string
+  arm_application_key = var.arm_application_key
+  # arm_directory_id - (optional) is a type of string
+  arm_directory_id = var.arm_directory_id
+  # arm_subscription_id - (optional) is a type of string
+  arm_subscription_id = var.arm_subscription_id
+  # aws_access_key - (optional) is a type of string
+  aws_access_key = var.aws_access_key
+  # aws_account_number - (optional) is a type of string
+  aws_account_number = var.aws_account_number
+  # aws_iam - (optional) is a type of bool
+  aws_iam = var.aws_iam
+  # aws_role_app - (optional) is a type of string
+  aws_role_app = var.aws_role_app
+  # aws_role_ec2 - (optional) is a type of string
+  aws_role_ec2 = var.aws_role_ec2
+  # aws_secret_key - (optional) is a type of string
+  aws_secret_key = var.aws_secret_key
+  # awsgov_access_key - (optional) is a type of string
+  awsgov_access_key = var.awsgov_access_key
+  # awsgov_account_number - (optional) is a type of string
+  awsgov_account_number = var.awsgov_account_number
+  # awsgov_secret_key - (optional) is a type of string
+  awsgov_secret_key = var.awsgov_secret_key
+  # cloud_type - (required) is a type of number
+  cloud_type = var.cloud_type
+  # gcloud_project_credentials_filepath - (optional) is a type of string
   gcloud_project_credentials_filepath = var.gcloud_project_credentials_filepath
-  gcloud_project_id                   = var.gcloud_project_id
-  oci_api_private_key_filepath        = var.oci_api_private_key_filepath
-  oci_compartment_id                  = var.oci_compartment_id
-  oci_tenancy_id                      = var.oci_tenancy_id
-  oci_user_id                         = var.oci_user_id
+  # gcloud_project_id - (optional) is a type of string
+  gcloud_project_id = var.gcloud_project_id
+  # oci_api_private_key_filepath - (optional) is a type of string
+  oci_api_private_key_filepath = var.oci_api_private_key_filepath
+  # oci_compartment_id - (optional) is a type of string
+  oci_compartment_id = var.oci_compartment_id
+  # oci_tenancy_id - (optional) is a type of string
+  oci_tenancy_id = var.oci_tenancy_id
+  # oci_user_id - (optional) is a type of string
+  oci_user_id = var.oci_user_id
 }
 ```
 

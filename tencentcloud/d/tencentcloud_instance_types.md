@@ -106,17 +106,25 @@ variable "filter" {
 
 ```terraform
 data "tencentcloud_instance_types" "this" {
-  availability_zone  = var.availability_zone
-  cpu_core_count     = var.cpu_core_count
-  exclude_sold_out   = var.exclude_sold_out
-  gpu_core_count     = var.gpu_core_count
-  memory_size        = var.memory_size
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cpu_core_count - (optional) is a type of number
+  cpu_core_count = var.cpu_core_count
+  # exclude_sold_out - (optional) is a type of bool
+  exclude_sold_out = var.exclude_sold_out
+  # gpu_core_count - (optional) is a type of number
+  gpu_core_count = var.gpu_core_count
+  # memory_size - (optional) is a type of number
+  memory_size = var.memory_size
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

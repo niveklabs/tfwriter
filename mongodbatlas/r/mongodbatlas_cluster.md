@@ -314,49 +314,83 @@ variable "replication_specs" {
 
 ```terraform
 resource "mongodbatlas_cluster" "this" {
-  auto_scaling_compute_enabled                    = var.auto_scaling_compute_enabled
-  auto_scaling_compute_scale_down_enabled         = var.auto_scaling_compute_scale_down_enabled
-  auto_scaling_disk_gb_enabled                    = var.auto_scaling_disk_gb_enabled
-  backing_provider_name                           = var.backing_provider_name
-  backup_enabled                                  = var.backup_enabled
-  bi_connector                                    = var.bi_connector
-  cluster_type                                    = var.cluster_type
-  disk_size_gb                                    = var.disk_size_gb
-  encryption_at_rest_provider                     = var.encryption_at_rest_provider
-  mongo_db_major_version                          = var.mongo_db_major_version
-  name                                            = var.name
-  num_shards                                      = var.num_shards
-  pit_enabled                                     = var.pit_enabled
-  project_id                                      = var.project_id
+  # auto_scaling_compute_enabled - (optional) is a type of bool
+  auto_scaling_compute_enabled = var.auto_scaling_compute_enabled
+  # auto_scaling_compute_scale_down_enabled - (optional) is a type of bool
+  auto_scaling_compute_scale_down_enabled = var.auto_scaling_compute_scale_down_enabled
+  # auto_scaling_disk_gb_enabled - (optional) is a type of bool
+  auto_scaling_disk_gb_enabled = var.auto_scaling_disk_gb_enabled
+  # backing_provider_name - (optional) is a type of string
+  backing_provider_name = var.backing_provider_name
+  # backup_enabled - (optional) is a type of bool
+  backup_enabled = var.backup_enabled
+  # bi_connector - (optional) is a type of map of string
+  bi_connector = var.bi_connector
+  # cluster_type - (optional) is a type of string
+  cluster_type = var.cluster_type
+  # disk_size_gb - (optional) is a type of number
+  disk_size_gb = var.disk_size_gb
+  # encryption_at_rest_provider - (optional) is a type of string
+  encryption_at_rest_provider = var.encryption_at_rest_provider
+  # mongo_db_major_version - (optional) is a type of string
+  mongo_db_major_version = var.mongo_db_major_version
+  # name - (required) is a type of string
+  name = var.name
+  # num_shards - (optional) is a type of number
+  num_shards = var.num_shards
+  # pit_enabled - (optional) is a type of bool
+  pit_enabled = var.pit_enabled
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # provider_auto_scaling_compute_max_instance_size - (optional) is a type of string
   provider_auto_scaling_compute_max_instance_size = var.provider_auto_scaling_compute_max_instance_size
+  # provider_auto_scaling_compute_min_instance_size - (optional) is a type of string
   provider_auto_scaling_compute_min_instance_size = var.provider_auto_scaling_compute_min_instance_size
-  provider_backup_enabled                         = var.provider_backup_enabled
-  provider_disk_iops                              = var.provider_disk_iops
-  provider_disk_type_name                         = var.provider_disk_type_name
-  provider_encrypt_ebs_volume                     = var.provider_encrypt_ebs_volume
-  provider_instance_size_name                     = var.provider_instance_size_name
-  provider_name                                   = var.provider_name
-  provider_region_name                            = var.provider_region_name
-  provider_volume_type                            = var.provider_volume_type
-  replication_factor                              = var.replication_factor
+  # provider_backup_enabled - (optional) is a type of bool
+  provider_backup_enabled = var.provider_backup_enabled
+  # provider_disk_iops - (optional) is a type of number
+  provider_disk_iops = var.provider_disk_iops
+  # provider_disk_type_name - (optional) is a type of string
+  provider_disk_type_name = var.provider_disk_type_name
+  # provider_encrypt_ebs_volume - (optional) is a type of bool
+  provider_encrypt_ebs_volume = var.provider_encrypt_ebs_volume
+  # provider_instance_size_name - (required) is a type of string
+  provider_instance_size_name = var.provider_instance_size_name
+  # provider_name - (required) is a type of string
+  provider_name = var.provider_name
+  # provider_region_name - (optional) is a type of string
+  provider_region_name = var.provider_region_name
+  # provider_volume_type - (optional) is a type of string
+  provider_volume_type = var.provider_volume_type
+  # replication_factor - (optional) is a type of number
+  replication_factor = var.replication_factor
 
   dynamic "advanced_configuration" {
     for_each = var.advanced_configuration
     content {
-      fail_index_key_too_long              = advanced_configuration.value["fail_index_key_too_long"]
-      javascript_enabled                   = advanced_configuration.value["javascript_enabled"]
-      minimum_enabled_tls_protocol         = advanced_configuration.value["minimum_enabled_tls_protocol"]
-      no_table_scan                        = advanced_configuration.value["no_table_scan"]
-      oplog_size_mb                        = advanced_configuration.value["oplog_size_mb"]
+      # fail_index_key_too_long - (optional) is a type of bool
+      fail_index_key_too_long = advanced_configuration.value["fail_index_key_too_long"]
+      # javascript_enabled - (optional) is a type of bool
+      javascript_enabled = advanced_configuration.value["javascript_enabled"]
+      # minimum_enabled_tls_protocol - (optional) is a type of string
+      minimum_enabled_tls_protocol = advanced_configuration.value["minimum_enabled_tls_protocol"]
+      # no_table_scan - (optional) is a type of bool
+      no_table_scan = advanced_configuration.value["no_table_scan"]
+      # oplog_size_mb - (optional) is a type of number
+      oplog_size_mb = advanced_configuration.value["oplog_size_mb"]
+      # sample_refresh_interval_bi_connector - (optional) is a type of number
       sample_refresh_interval_bi_connector = advanced_configuration.value["sample_refresh_interval_bi_connector"]
-      sample_size_bi_connector             = advanced_configuration.value["sample_size_bi_connector"]
+      # sample_size_bi_connector - (optional) is a type of number
+      sample_size_bi_connector = advanced_configuration.value["sample_size_bi_connector"]
     }
   }
 
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (optional) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }
@@ -364,18 +398,26 @@ resource "mongodbatlas_cluster" "this" {
   dynamic "replication_specs" {
     for_each = var.replication_specs
     content {
-      id         = replication_specs.value["id"]
+      # id - (optional) is a type of string
+      id = replication_specs.value["id"]
+      # num_shards - (required) is a type of number
       num_shards = replication_specs.value["num_shards"]
-      zone_name  = replication_specs.value["zone_name"]
+      # zone_name - (optional) is a type of string
+      zone_name = replication_specs.value["zone_name"]
 
       dynamic "regions_config" {
         for_each = replication_specs.value.regions_config
         content {
+          # analytics_nodes - (optional) is a type of number
           analytics_nodes = regions_config.value["analytics_nodes"]
+          # electable_nodes - (optional) is a type of number
           electable_nodes = regions_config.value["electable_nodes"]
-          priority        = regions_config.value["priority"]
+          # priority - (optional) is a type of number
+          priority = regions_config.value["priority"]
+          # read_only_nodes - (optional) is a type of number
           read_only_nodes = regions_config.value["read_only_nodes"]
-          region_name     = regions_config.value["region_name"]
+          # region_name - (optional) is a type of string
+          region_name = regions_config.value["region_name"]
         }
       }
 

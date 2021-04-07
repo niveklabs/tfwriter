@@ -707,43 +707,71 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_vna_appliance_v1" "this" {
-  availability_zone                    = var.availability_zone
-  default_gateway                      = var.default_gateway
-  description                          = var.description
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # default_gateway - (optional) is a type of string
+  default_gateway = var.default_gateway
+  # description - (optional) is a type of string
+  description = var.description
+  # interface_1_no_allowed_address_pairs - (optional) is a type of bool
   interface_1_no_allowed_address_pairs = var.interface_1_no_allowed_address_pairs
-  interface_1_no_fixed_ips             = var.interface_1_no_fixed_ips
+  # interface_1_no_fixed_ips - (optional) is a type of bool
+  interface_1_no_fixed_ips = var.interface_1_no_fixed_ips
+  # interface_2_no_allowed_address_pairs - (optional) is a type of bool
   interface_2_no_allowed_address_pairs = var.interface_2_no_allowed_address_pairs
-  interface_2_no_fixed_ips             = var.interface_2_no_fixed_ips
+  # interface_2_no_fixed_ips - (optional) is a type of bool
+  interface_2_no_fixed_ips = var.interface_2_no_fixed_ips
+  # interface_3_no_allowed_address_pairs - (optional) is a type of bool
   interface_3_no_allowed_address_pairs = var.interface_3_no_allowed_address_pairs
-  interface_3_no_fixed_ips             = var.interface_3_no_fixed_ips
+  # interface_3_no_fixed_ips - (optional) is a type of bool
+  interface_3_no_fixed_ips = var.interface_3_no_fixed_ips
+  # interface_4_no_allowed_address_pairs - (optional) is a type of bool
   interface_4_no_allowed_address_pairs = var.interface_4_no_allowed_address_pairs
-  interface_4_no_fixed_ips             = var.interface_4_no_fixed_ips
+  # interface_4_no_fixed_ips - (optional) is a type of bool
+  interface_4_no_fixed_ips = var.interface_4_no_fixed_ips
+  # interface_5_no_allowed_address_pairs - (optional) is a type of bool
   interface_5_no_allowed_address_pairs = var.interface_5_no_allowed_address_pairs
-  interface_5_no_fixed_ips             = var.interface_5_no_fixed_ips
+  # interface_5_no_fixed_ips - (optional) is a type of bool
+  interface_5_no_fixed_ips = var.interface_5_no_fixed_ips
+  # interface_6_no_allowed_address_pairs - (optional) is a type of bool
   interface_6_no_allowed_address_pairs = var.interface_6_no_allowed_address_pairs
-  interface_6_no_fixed_ips             = var.interface_6_no_fixed_ips
+  # interface_6_no_fixed_ips - (optional) is a type of bool
+  interface_6_no_fixed_ips = var.interface_6_no_fixed_ips
+  # interface_7_no_allowed_address_pairs - (optional) is a type of bool
   interface_7_no_allowed_address_pairs = var.interface_7_no_allowed_address_pairs
-  interface_7_no_fixed_ips             = var.interface_7_no_fixed_ips
+  # interface_7_no_fixed_ips - (optional) is a type of bool
+  interface_7_no_fixed_ips = var.interface_7_no_fixed_ips
+  # interface_8_no_allowed_address_pairs - (optional) is a type of bool
   interface_8_no_allowed_address_pairs = var.interface_8_no_allowed_address_pairs
-  interface_8_no_fixed_ips             = var.interface_8_no_fixed_ips
-  name                                 = var.name
-  tags                                 = var.tags
-  tenant_id                            = var.tenant_id
-  virtual_network_appliance_plan_id    = var.virtual_network_appliance_plan_id
+  # interface_8_no_fixed_ips - (optional) is a type of bool
+  interface_8_no_fixed_ips = var.interface_8_no_fixed_ips
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # virtual_network_appliance_plan_id - (required) is a type of string
+  virtual_network_appliance_plan_id = var.virtual_network_appliance_plan_id
 
   dynamic "interface_1_allowed_address_pairs" {
     for_each = var.interface_1_allowed_address_pairs
     content {
-      ip_address  = interface_1_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_1_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_1_allowed_address_pairs.value["mac_address"]
-      type        = interface_1_allowed_address_pairs.value["type"]
-      vrid        = interface_1_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_1_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_1_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_1_fixed_ips" {
     for_each = var.interface_1_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_1_fixed_ips.value["ip_address"]
     }
   }
@@ -751,26 +779,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_1_info" {
     for_each = var.interface_1_info
     content {
+      # description - (optional) is a type of string
       description = interface_1_info.value["description"]
-      name        = interface_1_info.value["name"]
-      network_id  = interface_1_info.value["network_id"]
-      tags        = interface_1_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_1_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_1_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_1_info.value["tags"]
     }
   }
 
   dynamic "interface_2_allowed_address_pairs" {
     for_each = var.interface_2_allowed_address_pairs
     content {
-      ip_address  = interface_2_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_2_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_2_allowed_address_pairs.value["mac_address"]
-      type        = interface_2_allowed_address_pairs.value["type"]
-      vrid        = interface_2_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_2_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_2_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_2_fixed_ips" {
     for_each = var.interface_2_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_2_fixed_ips.value["ip_address"]
     }
   }
@@ -778,26 +815,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_2_info" {
     for_each = var.interface_2_info
     content {
+      # description - (optional) is a type of string
       description = interface_2_info.value["description"]
-      name        = interface_2_info.value["name"]
-      network_id  = interface_2_info.value["network_id"]
-      tags        = interface_2_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_2_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_2_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_2_info.value["tags"]
     }
   }
 
   dynamic "interface_3_allowed_address_pairs" {
     for_each = var.interface_3_allowed_address_pairs
     content {
-      ip_address  = interface_3_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_3_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_3_allowed_address_pairs.value["mac_address"]
-      type        = interface_3_allowed_address_pairs.value["type"]
-      vrid        = interface_3_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_3_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_3_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_3_fixed_ips" {
     for_each = var.interface_3_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_3_fixed_ips.value["ip_address"]
     }
   }
@@ -805,26 +851,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_3_info" {
     for_each = var.interface_3_info
     content {
+      # description - (optional) is a type of string
       description = interface_3_info.value["description"]
-      name        = interface_3_info.value["name"]
-      network_id  = interface_3_info.value["network_id"]
-      tags        = interface_3_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_3_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_3_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_3_info.value["tags"]
     }
   }
 
   dynamic "interface_4_allowed_address_pairs" {
     for_each = var.interface_4_allowed_address_pairs
     content {
-      ip_address  = interface_4_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_4_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_4_allowed_address_pairs.value["mac_address"]
-      type        = interface_4_allowed_address_pairs.value["type"]
-      vrid        = interface_4_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_4_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_4_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_4_fixed_ips" {
     for_each = var.interface_4_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_4_fixed_ips.value["ip_address"]
     }
   }
@@ -832,26 +887,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_4_info" {
     for_each = var.interface_4_info
     content {
+      # description - (optional) is a type of string
       description = interface_4_info.value["description"]
-      name        = interface_4_info.value["name"]
-      network_id  = interface_4_info.value["network_id"]
-      tags        = interface_4_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_4_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_4_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_4_info.value["tags"]
     }
   }
 
   dynamic "interface_5_allowed_address_pairs" {
     for_each = var.interface_5_allowed_address_pairs
     content {
-      ip_address  = interface_5_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_5_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_5_allowed_address_pairs.value["mac_address"]
-      type        = interface_5_allowed_address_pairs.value["type"]
-      vrid        = interface_5_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_5_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_5_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_5_fixed_ips" {
     for_each = var.interface_5_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_5_fixed_ips.value["ip_address"]
     }
   }
@@ -859,26 +923,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_5_info" {
     for_each = var.interface_5_info
     content {
+      # description - (optional) is a type of string
       description = interface_5_info.value["description"]
-      name        = interface_5_info.value["name"]
-      network_id  = interface_5_info.value["network_id"]
-      tags        = interface_5_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_5_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_5_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_5_info.value["tags"]
     }
   }
 
   dynamic "interface_6_allowed_address_pairs" {
     for_each = var.interface_6_allowed_address_pairs
     content {
-      ip_address  = interface_6_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_6_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_6_allowed_address_pairs.value["mac_address"]
-      type        = interface_6_allowed_address_pairs.value["type"]
-      vrid        = interface_6_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_6_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_6_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_6_fixed_ips" {
     for_each = var.interface_6_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_6_fixed_ips.value["ip_address"]
     }
   }
@@ -886,26 +959,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_6_info" {
     for_each = var.interface_6_info
     content {
+      # description - (optional) is a type of string
       description = interface_6_info.value["description"]
-      name        = interface_6_info.value["name"]
-      network_id  = interface_6_info.value["network_id"]
-      tags        = interface_6_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_6_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_6_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_6_info.value["tags"]
     }
   }
 
   dynamic "interface_7_allowed_address_pairs" {
     for_each = var.interface_7_allowed_address_pairs
     content {
-      ip_address  = interface_7_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_7_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_7_allowed_address_pairs.value["mac_address"]
-      type        = interface_7_allowed_address_pairs.value["type"]
-      vrid        = interface_7_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_7_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_7_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_7_fixed_ips" {
     for_each = var.interface_7_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_7_fixed_ips.value["ip_address"]
     }
   }
@@ -913,26 +995,35 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_7_info" {
     for_each = var.interface_7_info
     content {
+      # description - (optional) is a type of string
       description = interface_7_info.value["description"]
-      name        = interface_7_info.value["name"]
-      network_id  = interface_7_info.value["network_id"]
-      tags        = interface_7_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_7_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_7_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_7_info.value["tags"]
     }
   }
 
   dynamic "interface_8_allowed_address_pairs" {
     for_each = var.interface_8_allowed_address_pairs
     content {
-      ip_address  = interface_8_allowed_address_pairs.value["ip_address"]
+      # ip_address - (required) is a type of string
+      ip_address = interface_8_allowed_address_pairs.value["ip_address"]
+      # mac_address - (optional) is a type of string
       mac_address = interface_8_allowed_address_pairs.value["mac_address"]
-      type        = interface_8_allowed_address_pairs.value["type"]
-      vrid        = interface_8_allowed_address_pairs.value["vrid"]
+      # type - (required) is a type of string
+      type = interface_8_allowed_address_pairs.value["type"]
+      # vrid - (required) is a type of string
+      vrid = interface_8_allowed_address_pairs.value["vrid"]
     }
   }
 
   dynamic "interface_8_fixed_ips" {
     for_each = var.interface_8_fixed_ips
     content {
+      # ip_address - (required) is a type of string
       ip_address = interface_8_fixed_ips.value["ip_address"]
     }
   }
@@ -940,18 +1031,25 @@ resource "ecl_vna_appliance_v1" "this" {
   dynamic "interface_8_info" {
     for_each = var.interface_8_info
     content {
+      # description - (optional) is a type of string
       description = interface_8_info.value["description"]
-      name        = interface_8_info.value["name"]
-      network_id  = interface_8_info.value["network_id"]
-      tags        = interface_8_info.value["tags"]
+      # name - (optional) is a type of string
+      name = interface_8_info.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interface_8_info.value["network_id"]
+      # tags - (optional) is a type of map of string
+      tags = interface_8_info.value["tags"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

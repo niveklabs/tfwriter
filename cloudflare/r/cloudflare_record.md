@@ -119,19 +119,29 @@ variable "timeouts" {
 
 ```terraform
 resource "cloudflare_record" "this" {
-  data     = var.data
-  name     = var.name
+  # data - (optional) is a type of map of string
+  data = var.data
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
   priority = var.priority
-  proxied  = var.proxied
-  ttl      = var.ttl
-  type     = var.type
-  value    = var.value
-  zone_id  = var.zone_id
+  # proxied - (optional) is a type of bool
+  proxied = var.proxied
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (required) is a type of string
+  type = var.type
+  # value - (optional) is a type of string
+  value = var.value
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

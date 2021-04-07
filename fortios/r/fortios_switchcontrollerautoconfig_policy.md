@@ -89,11 +89,17 @@ variable "storm_control_policy" {
 
 ```terraform
 resource "fortios_switchcontrollerautoconfig_policy" "this" {
-  igmp_flood_report    = var.igmp_flood_report
-  igmp_flood_traffic   = var.igmp_flood_traffic
-  name                 = var.name
-  poe_status           = var.poe_status
-  qos_policy           = var.qos_policy
+  # igmp_flood_report - (optional) is a type of string
+  igmp_flood_report = var.igmp_flood_report
+  # igmp_flood_traffic - (optional) is a type of string
+  igmp_flood_traffic = var.igmp_flood_traffic
+  # name - (required) is a type of string
+  name = var.name
+  # poe_status - (optional) is a type of string
+  poe_status = var.poe_status
+  # qos_policy - (optional) is a type of string
+  qos_policy = var.qos_policy
+  # storm_control_policy - (optional) is a type of string
   storm_control_policy = var.storm_control_policy
 }
 ```

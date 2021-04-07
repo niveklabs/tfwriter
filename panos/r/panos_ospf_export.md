@@ -96,12 +96,19 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_ospf_export" "this" {
-  metric         = var.metric
-  name           = var.name
-  path_type      = var.path_type
-  tag            = var.tag
-  template       = var.template
+  # metric - (optional) is a type of number
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # path_type - (optional) is a type of string
+  path_type = var.path_type
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

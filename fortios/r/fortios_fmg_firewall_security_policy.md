@@ -379,49 +379,92 @@ variable "webfilter_profile" {
 
 ```terraform
 resource "fortios_fmg_firewall_security_policy" "this" {
-  action                    = var.action
-  adom                      = var.adom
-  application_list          = var.application_list
-  av_profile                = var.av_profile
-  capture_packet            = var.capture_packet
-  comments                  = var.comments
-  dnsfilter_profile         = var.dnsfilter_profile
-  dstaddr                   = var.dstaddr
-  dstintf                   = var.dstintf
-  fixedport                 = var.fixedport
-  fsso                      = var.fsso
-  groups                    = var.groups
-  inbound                   = var.inbound
-  internet_service          = var.internet_service
-  internet_service_id       = var.internet_service_id
-  internet_service_name     = var.internet_service_name
-  internet_service_src      = var.internet_service_src
-  internet_service_src_id   = var.internet_service_src_id
+  # action - (optional) is a type of string
+  action = var.action
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # application_list - (optional) is a type of list of string
+  application_list = var.application_list
+  # av_profile - (optional) is a type of list of string
+  av_profile = var.av_profile
+  # capture_packet - (optional) is a type of string
+  capture_packet = var.capture_packet
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dnsfilter_profile - (optional) is a type of list of string
+  dnsfilter_profile = var.dnsfilter_profile
+  # dstaddr - (required) is a type of list of string
+  dstaddr = var.dstaddr
+  # dstintf - (required) is a type of list of string
+  dstintf = var.dstintf
+  # fixedport - (optional) is a type of string
+  fixedport = var.fixedport
+  # fsso - (optional) is a type of string
+  fsso = var.fsso
+  # groups - (optional) is a type of list of string
+  groups = var.groups
+  # inbound - (optional) is a type of string
+  inbound = var.inbound
+  # internet_service - (optional) is a type of string
+  internet_service = var.internet_service
+  # internet_service_id - (optional) is a type of list of string
+  internet_service_id = var.internet_service_id
+  # internet_service_name - (optional) is a type of list of string
+  internet_service_name = var.internet_service_name
+  # internet_service_src - (optional) is a type of string
+  internet_service_src = var.internet_service_src
+  # internet_service_src_id - (optional) is a type of list of string
+  internet_service_src_id = var.internet_service_src_id
+  # internet_service_src_name - (optional) is a type of list of string
   internet_service_src_name = var.internet_service_src_name
-  ippool                    = var.ippool
-  ips_sensor                = var.ips_sensor
-  logtraffic                = var.logtraffic
-  logtraffic_start          = var.logtraffic_start
-  name                      = var.name
-  nat                       = var.nat
-  package_name              = var.package_name
-  per_ip_shaper             = var.per_ip_shaper
-  poolname                  = var.poolname
-  profile_group             = var.profile_group
-  profile_protocol_options  = var.profile_protocol_options
-  profile_type              = var.profile_type
-  rsso                      = var.rsso
-  schedule                  = var.schedule
-  service                   = var.service
-  srcaddr                   = var.srcaddr
-  srcintf                   = var.srcintf
-  traffic_shaper            = var.traffic_shaper
-  traffic_shaper_reverse    = var.traffic_shaper_reverse
-  users                     = var.users
-  utm_status                = var.utm_status
-  vpn_tunnel                = var.vpn_tunnel
-  waf_profile               = var.waf_profile
-  webfilter_profile         = var.webfilter_profile
+  # ippool - (optional) is a type of string
+  ippool = var.ippool
+  # ips_sensor - (optional) is a type of list of string
+  ips_sensor = var.ips_sensor
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = var.logtraffic_start
+  # name - (required) is a type of string
+  name = var.name
+  # nat - (optional) is a type of string
+  nat = var.nat
+  # package_name - (optional) is a type of string
+  package_name = var.package_name
+  # per_ip_shaper - (optional) is a type of list of string
+  per_ip_shaper = var.per_ip_shaper
+  # poolname - (optional) is a type of list of string
+  poolname = var.poolname
+  # profile_group - (optional) is a type of list of string
+  profile_group = var.profile_group
+  # profile_protocol_options - (optional) is a type of list of string
+  profile_protocol_options = var.profile_protocol_options
+  # profile_type - (optional) is a type of string
+  profile_type = var.profile_type
+  # rsso - (optional) is a type of string
+  rsso = var.rsso
+  # schedule - (required) is a type of list of string
+  schedule = var.schedule
+  # service - (required) is a type of list of string
+  service = var.service
+  # srcaddr - (required) is a type of list of string
+  srcaddr = var.srcaddr
+  # srcintf - (required) is a type of list of string
+  srcintf = var.srcintf
+  # traffic_shaper - (optional) is a type of list of string
+  traffic_shaper = var.traffic_shaper
+  # traffic_shaper_reverse - (optional) is a type of list of string
+  traffic_shaper_reverse = var.traffic_shaper_reverse
+  # users - (optional) is a type of list of string
+  users = var.users
+  # utm_status - (optional) is a type of string
+  utm_status = var.utm_status
+  # vpn_tunnel - (optional) is a type of list of string
+  vpn_tunnel = var.vpn_tunnel
+  # waf_profile - (optional) is a type of list of string
+  waf_profile = var.waf_profile
+  # webfilter_profile - (optional) is a type of list of string
+  webfilter_profile = var.webfilter_profile
 }
 ```
 

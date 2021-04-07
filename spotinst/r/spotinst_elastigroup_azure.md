@@ -482,24 +482,39 @@ variable "update_policy" {
 
 ```terraform
 resource "spotinst_elastigroup_azure" "this" {
-  custom_data         = var.custom_data
-  desired_capacity    = var.desired_capacity
-  low_priority_sizes  = var.low_priority_sizes
-  max_size            = var.max_size
-  min_size            = var.min_size
-  name                = var.name
-  od_sizes            = var.od_sizes
-  product             = var.product
-  region              = var.region
+  # custom_data - (optional) is a type of string
+  custom_data = var.custom_data
+  # desired_capacity - (optional) is a type of number
+  desired_capacity = var.desired_capacity
+  # low_priority_sizes - (required) is a type of list of string
+  low_priority_sizes = var.low_priority_sizes
+  # max_size - (optional) is a type of number
+  max_size = var.max_size
+  # min_size - (optional) is a type of number
+  min_size = var.min_size
+  # name - (required) is a type of string
+  name = var.name
+  # od_sizes - (required) is a type of list of string
+  od_sizes = var.od_sizes
+  # product - (required) is a type of string
+  product = var.product
+  # region - (required) is a type of string
+  region = var.region
+  # resource_group_name - (required) is a type of string
   resource_group_name = var.resource_group_name
-  shutdown_script     = var.shutdown_script
-  user_data           = var.user_data
+  # shutdown_script - (optional) is a type of string
+  shutdown_script = var.shutdown_script
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "health_check" {
     for_each = var.health_check
     content {
-      auto_healing      = health_check.value["auto_healing"]
-      grace_period      = health_check.value["grace_period"]
+      # auto_healing - (optional) is a type of bool
+      auto_healing = health_check.value["auto_healing"]
+      # grace_period - (optional) is a type of number
+      grace_period = health_check.value["grace_period"]
+      # health_check_type - (required) is a type of string
       health_check_type = health_check.value["health_check_type"]
     }
   }
@@ -511,7 +526,9 @@ resource "spotinst_elastigroup_azure" "this" {
       dynamic "custom" {
         for_each = image.value.custom
         content {
-          image_name          = custom.value["image_name"]
+          # image_name - (required) is a type of string
+          image_name = custom.value["image_name"]
+          # resource_group_name - (required) is a type of string
           resource_group_name = custom.value["resource_group_name"]
         }
       }
@@ -519,9 +536,12 @@ resource "spotinst_elastigroup_azure" "this" {
       dynamic "marketplace" {
         for_each = image.value.marketplace
         content {
-          offer     = marketplace.value["offer"]
+          # offer - (required) is a type of string
+          offer = marketplace.value["offer"]
+          # publisher - (required) is a type of string
           publisher = marketplace.value["publisher"]
-          sku       = marketplace.value["sku"]
+          # sku - (required) is a type of string
+          sku = marketplace.value["sku"]
         }
       }
 
@@ -531,6 +551,7 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "integration_kubernetes" {
     for_each = var.integration_kubernetes
     content {
+      # cluster_identifier - (required) is a type of string
       cluster_identifier = integration_kubernetes.value["cluster_identifier"]
     }
   }
@@ -538,6 +559,7 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "integration_multai_runtime" {
     for_each = var.integration_multai_runtime
     content {
+      # deployment_id - (required) is a type of string
       deployment_id = integration_multai_runtime.value["deployment_id"]
     }
   }
@@ -545,26 +567,35 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "load_balancers" {
     for_each = var.load_balancers
     content {
-      auto_weight   = load_balancers.value["auto_weight"]
-      balancer_id   = load_balancers.value["balancer_id"]
+      # auto_weight - (optional) is a type of bool
+      auto_weight = load_balancers.value["auto_weight"]
+      # balancer_id - (optional) is a type of string
+      balancer_id = load_balancers.value["balancer_id"]
+      # target_set_id - (optional) is a type of string
       target_set_id = load_balancers.value["target_set_id"]
-      type          = load_balancers.value["type"]
+      # type - (required) is a type of string
+      type = load_balancers.value["type"]
     }
   }
 
   dynamic "login" {
     for_each = var.login
     content {
-      password       = login.value["password"]
+      # password - (optional) is a type of string
+      password = login.value["password"]
+      # ssh_public_key - (optional) is a type of string
       ssh_public_key = login.value["ssh_public_key"]
-      user_name      = login.value["user_name"]
+      # user_name - (required) is a type of string
+      user_name = login.value["user_name"]
     }
   }
 
   dynamic "managed_service_identities" {
     for_each = var.managed_service_identities
     content {
-      name                = managed_service_identities.value["name"]
+      # name - (required) is a type of string
+      name = managed_service_identities.value["name"]
+      # resource_group_name - (required) is a type of string
       resource_group_name = managed_service_identities.value["resource_group_name"]
     }
   }
@@ -572,15 +603,21 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "network" {
     for_each = var.network
     content {
-      assign_public_ip     = network.value["assign_public_ip"]
-      resource_group_name  = network.value["resource_group_name"]
-      subnet_name          = network.value["subnet_name"]
+      # assign_public_ip - (optional) is a type of bool
+      assign_public_ip = network.value["assign_public_ip"]
+      # resource_group_name - (required) is a type of string
+      resource_group_name = network.value["resource_group_name"]
+      # subnet_name - (required) is a type of string
+      subnet_name = network.value["subnet_name"]
+      # virtual_network_name - (required) is a type of string
       virtual_network_name = network.value["virtual_network_name"]
 
       dynamic "additional_ip_configs" {
         for_each = network.value.additional_ip_configs
         content {
-          name               = additional_ip_configs.value["name"]
+          # name - (required) is a type of string
+          name = additional_ip_configs.value["name"]
+          # private_ip_version - (optional) is a type of string
           private_ip_version = additional_ip_configs.value["private_ip_version"]
         }
       }
@@ -591,28 +628,47 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "scaling_down_policy" {
     for_each = var.scaling_down_policy
     content {
-      action_type         = scaling_down_policy.value["action_type"]
-      adjustment          = scaling_down_policy.value["adjustment"]
-      cooldown            = scaling_down_policy.value["cooldown"]
-      evaluation_periods  = scaling_down_policy.value["evaluation_periods"]
+      # action_type - (optional) is a type of string
+      action_type = scaling_down_policy.value["action_type"]
+      # adjustment - (optional) is a type of string
+      adjustment = scaling_down_policy.value["adjustment"]
+      # cooldown - (optional) is a type of number
+      cooldown = scaling_down_policy.value["cooldown"]
+      # evaluation_periods - (optional) is a type of number
+      evaluation_periods = scaling_down_policy.value["evaluation_periods"]
+      # max_target_capacity - (optional) is a type of string
       max_target_capacity = scaling_down_policy.value["max_target_capacity"]
-      maximum             = scaling_down_policy.value["maximum"]
-      metric_name         = scaling_down_policy.value["metric_name"]
+      # maximum - (optional) is a type of string
+      maximum = scaling_down_policy.value["maximum"]
+      # metric_name - (required) is a type of string
+      metric_name = scaling_down_policy.value["metric_name"]
+      # min_target_capacity - (optional) is a type of string
       min_target_capacity = scaling_down_policy.value["min_target_capacity"]
-      minimum             = scaling_down_policy.value["minimum"]
-      namespace           = scaling_down_policy.value["namespace"]
-      operator            = scaling_down_policy.value["operator"]
-      period              = scaling_down_policy.value["period"]
-      policy_name         = scaling_down_policy.value["policy_name"]
-      statistic           = scaling_down_policy.value["statistic"]
-      target              = scaling_down_policy.value["target"]
-      threshold           = scaling_down_policy.value["threshold"]
-      unit                = scaling_down_policy.value["unit"]
+      # minimum - (optional) is a type of string
+      minimum = scaling_down_policy.value["minimum"]
+      # namespace - (required) is a type of string
+      namespace = scaling_down_policy.value["namespace"]
+      # operator - (optional) is a type of string
+      operator = scaling_down_policy.value["operator"]
+      # period - (optional) is a type of number
+      period = scaling_down_policy.value["period"]
+      # policy_name - (required) is a type of string
+      policy_name = scaling_down_policy.value["policy_name"]
+      # statistic - (optional) is a type of string
+      statistic = scaling_down_policy.value["statistic"]
+      # target - (optional) is a type of string
+      target = scaling_down_policy.value["target"]
+      # threshold - (required) is a type of number
+      threshold = scaling_down_policy.value["threshold"]
+      # unit - (optional) is a type of string
+      unit = scaling_down_policy.value["unit"]
 
       dynamic "dimensions" {
         for_each = scaling_down_policy.value.dimensions
         content {
-          name  = dimensions.value["name"]
+          # name - (required) is a type of string
+          name = dimensions.value["name"]
+          # value - (optional) is a type of string
           value = dimensions.value["value"]
         }
       }
@@ -623,28 +679,47 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "scaling_up_policy" {
     for_each = var.scaling_up_policy
     content {
-      action_type         = scaling_up_policy.value["action_type"]
-      adjustment          = scaling_up_policy.value["adjustment"]
-      cooldown            = scaling_up_policy.value["cooldown"]
-      evaluation_periods  = scaling_up_policy.value["evaluation_periods"]
+      # action_type - (optional) is a type of string
+      action_type = scaling_up_policy.value["action_type"]
+      # adjustment - (optional) is a type of string
+      adjustment = scaling_up_policy.value["adjustment"]
+      # cooldown - (optional) is a type of number
+      cooldown = scaling_up_policy.value["cooldown"]
+      # evaluation_periods - (optional) is a type of number
+      evaluation_periods = scaling_up_policy.value["evaluation_periods"]
+      # max_target_capacity - (optional) is a type of string
       max_target_capacity = scaling_up_policy.value["max_target_capacity"]
-      maximum             = scaling_up_policy.value["maximum"]
-      metric_name         = scaling_up_policy.value["metric_name"]
+      # maximum - (optional) is a type of string
+      maximum = scaling_up_policy.value["maximum"]
+      # metric_name - (required) is a type of string
+      metric_name = scaling_up_policy.value["metric_name"]
+      # min_target_capacity - (optional) is a type of string
       min_target_capacity = scaling_up_policy.value["min_target_capacity"]
-      minimum             = scaling_up_policy.value["minimum"]
-      namespace           = scaling_up_policy.value["namespace"]
-      operator            = scaling_up_policy.value["operator"]
-      period              = scaling_up_policy.value["period"]
-      policy_name         = scaling_up_policy.value["policy_name"]
-      statistic           = scaling_up_policy.value["statistic"]
-      target              = scaling_up_policy.value["target"]
-      threshold           = scaling_up_policy.value["threshold"]
-      unit                = scaling_up_policy.value["unit"]
+      # minimum - (optional) is a type of string
+      minimum = scaling_up_policy.value["minimum"]
+      # namespace - (required) is a type of string
+      namespace = scaling_up_policy.value["namespace"]
+      # operator - (optional) is a type of string
+      operator = scaling_up_policy.value["operator"]
+      # period - (optional) is a type of number
+      period = scaling_up_policy.value["period"]
+      # policy_name - (required) is a type of string
+      policy_name = scaling_up_policy.value["policy_name"]
+      # statistic - (optional) is a type of string
+      statistic = scaling_up_policy.value["statistic"]
+      # target - (optional) is a type of string
+      target = scaling_up_policy.value["target"]
+      # threshold - (required) is a type of number
+      threshold = scaling_up_policy.value["threshold"]
+      # unit - (optional) is a type of string
+      unit = scaling_up_policy.value["unit"]
 
       dynamic "dimensions" {
         for_each = scaling_up_policy.value.dimensions
         content {
-          name  = dimensions.value["name"]
+          # name - (required) is a type of string
+          name = dimensions.value["name"]
+          # value - (optional) is a type of string
           value = dimensions.value["value"]
         }
       }
@@ -655,39 +730,56 @@ resource "spotinst_elastigroup_azure" "this" {
   dynamic "scheduled_task" {
     for_each = var.scheduled_task
     content {
-      adjustment            = scheduled_task.value["adjustment"]
+      # adjustment - (optional) is a type of string
+      adjustment = scheduled_task.value["adjustment"]
+      # adjustment_percentage - (optional) is a type of string
       adjustment_percentage = scheduled_task.value["adjustment_percentage"]
+      # batch_size_percentage - (optional) is a type of string
       batch_size_percentage = scheduled_task.value["batch_size_percentage"]
-      cron_expression       = scheduled_task.value["cron_expression"]
-      grace_period          = scheduled_task.value["grace_period"]
-      is_enabled            = scheduled_task.value["is_enabled"]
-      scale_max_capacity    = scheduled_task.value["scale_max_capacity"]
-      scale_min_capacity    = scheduled_task.value["scale_min_capacity"]
+      # cron_expression - (required) is a type of string
+      cron_expression = scheduled_task.value["cron_expression"]
+      # grace_period - (optional) is a type of string
+      grace_period = scheduled_task.value["grace_period"]
+      # is_enabled - (optional) is a type of bool
+      is_enabled = scheduled_task.value["is_enabled"]
+      # scale_max_capacity - (optional) is a type of string
+      scale_max_capacity = scheduled_task.value["scale_max_capacity"]
+      # scale_min_capacity - (optional) is a type of string
+      scale_min_capacity = scheduled_task.value["scale_min_capacity"]
+      # scale_target_capacity - (optional) is a type of string
       scale_target_capacity = scheduled_task.value["scale_target_capacity"]
-      task_type             = scheduled_task.value["task_type"]
+      # task_type - (required) is a type of string
+      task_type = scheduled_task.value["task_type"]
     }
   }
 
   dynamic "strategy" {
     for_each = var.strategy
     content {
-      draining_timeout        = strategy.value["draining_timeout"]
+      # draining_timeout - (optional) is a type of number
+      draining_timeout = strategy.value["draining_timeout"]
+      # low_priority_percentage - (optional) is a type of number
       low_priority_percentage = strategy.value["low_priority_percentage"]
-      od_count                = strategy.value["od_count"]
+      # od_count - (optional) is a type of number
+      od_count = strategy.value["od_count"]
     }
   }
 
   dynamic "update_policy" {
     for_each = var.update_policy
     content {
+      # should_roll - (required) is a type of bool
       should_roll = update_policy.value["should_roll"]
 
       dynamic "roll_config" {
         for_each = update_policy.value.roll_config
         content {
+          # batch_size_percentage - (required) is a type of number
           batch_size_percentage = roll_config.value["batch_size_percentage"]
-          grace_period          = roll_config.value["grace_period"]
-          health_check_type     = roll_config.value["health_check_type"]
+          # grace_period - (optional) is a type of number
+          grace_period = roll_config.value["grace_period"]
+          # health_check_type - (optional) is a type of string
+          health_check_type = roll_config.value["health_check_type"]
         }
       }
 

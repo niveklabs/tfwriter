@@ -50,6 +50,7 @@ variable "mac_sync_interval" {
 
 ```terraform
 resource "fortios_switchcontroller_macsyncsettings" "this" {
+  # mac_sync_interval - (optional) is a type of number
   mac_sync_interval = var.mac_sync_interval
 }
 ```

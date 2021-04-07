@@ -98,17 +98,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_fast_tcp_application_profile" "this" {
-  close_timeout     = var.close_timeout
-  description       = var.description
-  display_name      = var.display_name
+  # close_timeout - (optional) is a type of number
+  close_timeout = var.close_timeout
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ha_flow_mirroring - (optional) is a type of bool
   ha_flow_mirroring = var.ha_flow_mirroring
-  idle_timeout      = var.idle_timeout
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

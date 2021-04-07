@@ -90,12 +90,18 @@ variable "service_type" {
 
 ```terraform
 data "tencentcloud_cdn_domains" "this" {
-  domain               = var.domain
-  full_url_cache       = var.full_url_cache
-  https_switch         = var.https_switch
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # full_url_cache - (optional) is a type of bool
+  full_url_cache = var.full_url_cache
+  # https_switch - (optional) is a type of string
+  https_switch = var.https_switch
+  # origin_pull_protocol - (optional) is a type of string
   origin_pull_protocol = var.origin_pull_protocol
-  result_output_file   = var.result_output_file
-  service_type         = var.service_type
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
+  # service_type - (optional) is a type of string
+  service_type = var.service_type
 }
 ```
 

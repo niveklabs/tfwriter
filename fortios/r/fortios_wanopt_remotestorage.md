@@ -74,10 +74,14 @@ variable "status" {
 
 ```terraform
 resource "fortios_wanopt_remotestorage" "this" {
-  local_cache_id  = var.local_cache_id
+  # local_cache_id - (optional) is a type of string
+  local_cache_id = var.local_cache_id
+  # remote_cache_id - (optional) is a type of string
   remote_cache_id = var.remote_cache_id
+  # remote_cache_ip - (optional) is a type of string
   remote_cache_ip = var.remote_cache_ip
-  status          = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

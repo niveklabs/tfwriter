@@ -96,20 +96,30 @@ variable "entries" {
 
 ```terraform
 resource "fortios_spamfilter_mheader" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "entries" {
     for_each = var.entries
     content {
-      action       = entries.value["action"]
-      fieldbody    = entries.value["fieldbody"]
-      fieldname    = entries.value["fieldname"]
-      id           = entries.value["id"]
+      # action - (optional) is a type of string
+      action = entries.value["action"]
+      # fieldbody - (optional) is a type of string
+      fieldbody = entries.value["fieldbody"]
+      # fieldname - (optional) is a type of string
+      fieldname = entries.value["fieldname"]
+      # id - (optional) is a type of number
+      id = entries.value["id"]
+      # pattern_type - (optional) is a type of string
       pattern_type = entries.value["pattern_type"]
-      status       = entries.value["status"]
+      # status - (optional) is a type of string
+      status = entries.value["status"]
     }
   }
 

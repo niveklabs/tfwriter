@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 resource "icinga2_user" "this" {
+  # email - (optional) is a type of string
   email = var.email
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

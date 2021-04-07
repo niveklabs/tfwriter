@@ -240,34 +240,47 @@ variable "wechat_config" {
 
 ```terraform
 resource "rancher2_notifier" "this" {
-  annotations   = var.annotations
-  cluster_id    = var.cluster_id
-  description   = var.description
-  labels        = var.labels
-  name          = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # send_resolved - (optional) is a type of bool
   send_resolved = var.send_resolved
 
   dynamic "dingtalk_config" {
     for_each = var.dingtalk_config
     content {
+      # proxy_url - (optional) is a type of string
       proxy_url = dingtalk_config.value["proxy_url"]
-      secret    = dingtalk_config.value["secret"]
-      url       = dingtalk_config.value["url"]
+      # secret - (optional) is a type of string
+      secret = dingtalk_config.value["secret"]
+      # url - (required) is a type of string
+      url = dingtalk_config.value["url"]
     }
   }
 
   dynamic "msteams_config" {
     for_each = var.msteams_config
     content {
+      # proxy_url - (optional) is a type of string
       proxy_url = msteams_config.value["proxy_url"]
-      url       = msteams_config.value["url"]
+      # url - (required) is a type of string
+      url = msteams_config.value["url"]
     }
   }
 
   dynamic "pagerduty_config" {
     for_each = var.pagerduty_config
     content {
-      proxy_url   = pagerduty_config.value["proxy_url"]
+      # proxy_url - (optional) is a type of string
+      proxy_url = pagerduty_config.value["proxy_url"]
+      # service_key - (required) is a type of string
       service_key = pagerduty_config.value["service_key"]
     }
   }
@@ -275,30 +288,43 @@ resource "rancher2_notifier" "this" {
   dynamic "slack_config" {
     for_each = var.slack_config
     content {
+      # default_recipient - (required) is a type of string
       default_recipient = slack_config.value["default_recipient"]
-      proxy_url         = slack_config.value["proxy_url"]
-      url               = slack_config.value["url"]
+      # proxy_url - (optional) is a type of string
+      proxy_url = slack_config.value["proxy_url"]
+      # url - (required) is a type of string
+      url = slack_config.value["url"]
     }
   }
 
   dynamic "smtp_config" {
     for_each = var.smtp_config
     content {
+      # default_recipient - (required) is a type of string
       default_recipient = smtp_config.value["default_recipient"]
-      host              = smtp_config.value["host"]
-      password          = smtp_config.value["password"]
-      port              = smtp_config.value["port"]
-      sender            = smtp_config.value["sender"]
-      tls               = smtp_config.value["tls"]
-      username          = smtp_config.value["username"]
+      # host - (required) is a type of string
+      host = smtp_config.value["host"]
+      # password - (optional) is a type of string
+      password = smtp_config.value["password"]
+      # port - (required) is a type of number
+      port = smtp_config.value["port"]
+      # sender - (required) is a type of string
+      sender = smtp_config.value["sender"]
+      # tls - (optional) is a type of bool
+      tls = smtp_config.value["tls"]
+      # username - (optional) is a type of string
+      username = smtp_config.value["username"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -306,20 +332,28 @@ resource "rancher2_notifier" "this" {
   dynamic "webhook_config" {
     for_each = var.webhook_config
     content {
+      # proxy_url - (optional) is a type of string
       proxy_url = webhook_config.value["proxy_url"]
-      url       = webhook_config.value["url"]
+      # url - (required) is a type of string
+      url = webhook_config.value["url"]
     }
   }
 
   dynamic "wechat_config" {
     for_each = var.wechat_config
     content {
-      agent             = wechat_config.value["agent"]
-      corp              = wechat_config.value["corp"]
+      # agent - (required) is a type of string
+      agent = wechat_config.value["agent"]
+      # corp - (required) is a type of string
+      corp = wechat_config.value["corp"]
+      # default_recipient - (required) is a type of string
       default_recipient = wechat_config.value["default_recipient"]
-      proxy_url         = wechat_config.value["proxy_url"]
-      recipient_type    = wechat_config.value["recipient_type"]
-      secret            = wechat_config.value["secret"]
+      # proxy_url - (optional) is a type of string
+      proxy_url = wechat_config.value["proxy_url"]
+      # recipient_type - (optional) is a type of string
+      recipient_type = wechat_config.value["recipient_type"]
+      # secret - (required) is a type of string
+      secret = wechat_config.value["secret"]
     }
   }
 

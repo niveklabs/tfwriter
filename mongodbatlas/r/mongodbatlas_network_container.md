@@ -80,11 +80,16 @@ variable "region_name" {
 
 ```terraform
 resource "mongodbatlas_network_container" "this" {
+  # atlas_cidr_block - (required) is a type of string
   atlas_cidr_block = var.atlas_cidr_block
-  project_id       = var.project_id
-  provider_name    = var.provider_name
-  region           = var.region
-  region_name      = var.region_name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # provider_name - (optional) is a type of string
+  provider_name = var.provider_name
+  # region - (optional) is a type of string
+  region = var.region
+  # region_name - (optional) is a type of string
+  region_name = var.region_name
 }
 ```
 

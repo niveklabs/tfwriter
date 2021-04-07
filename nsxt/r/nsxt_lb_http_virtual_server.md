@@ -217,51 +217,80 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_http_virtual_server" "this" {
-  access_log_enabled         = var.access_log_enabled
-  application_profile_id     = var.application_profile_id
-  default_pool_member_port   = var.default_pool_member_port
-  description                = var.description
-  display_name               = var.display_name
-  enabled                    = var.enabled
-  ip_address                 = var.ip_address
+  # access_log_enabled - (optional) is a type of bool
+  access_log_enabled = var.access_log_enabled
+  # application_profile_id - (required) is a type of string
+  application_profile_id = var.application_profile_id
+  # default_pool_member_port - (optional) is a type of string
+  default_pool_member_port = var.default_pool_member_port
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # max_concurrent_connections - (optional) is a type of number
   max_concurrent_connections = var.max_concurrent_connections
-  max_new_connection_rate    = var.max_new_connection_rate
-  persistence_profile_id     = var.persistence_profile_id
-  pool_id                    = var.pool_id
-  port                       = var.port
-  rule_ids                   = var.rule_ids
-  sorry_pool_id              = var.sorry_pool_id
+  # max_new_connection_rate - (optional) is a type of number
+  max_new_connection_rate = var.max_new_connection_rate
+  # persistence_profile_id - (optional) is a type of string
+  persistence_profile_id = var.persistence_profile_id
+  # pool_id - (optional) is a type of string
+  pool_id = var.pool_id
+  # port - (required) is a type of string
+  port = var.port
+  # rule_ids - (optional) is a type of list of string
+  rule_ids = var.rule_ids
+  # sorry_pool_id - (optional) is a type of string
+  sorry_pool_id = var.sorry_pool_id
 
   dynamic "client_ssl" {
     for_each = var.client_ssl
     content {
-      ca_ids                  = client_ssl.value["ca_ids"]
+      # ca_ids - (optional) is a type of set of string
+      ca_ids = client_ssl.value["ca_ids"]
+      # certificate_chain_depth - (optional) is a type of number
       certificate_chain_depth = client_ssl.value["certificate_chain_depth"]
-      client_auth             = client_ssl.value["client_auth"]
-      client_ssl_profile_id   = client_ssl.value["client_ssl_profile_id"]
-      crl_ids                 = client_ssl.value["crl_ids"]
-      default_certificate_id  = client_ssl.value["default_certificate_id"]
-      sni_certificate_ids     = client_ssl.value["sni_certificate_ids"]
+      # client_auth - (optional) is a type of bool
+      client_auth = client_ssl.value["client_auth"]
+      # client_ssl_profile_id - (required) is a type of string
+      client_ssl_profile_id = client_ssl.value["client_ssl_profile_id"]
+      # crl_ids - (optional) is a type of set of string
+      crl_ids = client_ssl.value["crl_ids"]
+      # default_certificate_id - (required) is a type of string
+      default_certificate_id = client_ssl.value["default_certificate_id"]
+      # sni_certificate_ids - (optional) is a type of set of string
+      sni_certificate_ids = client_ssl.value["sni_certificate_ids"]
     }
   }
 
   dynamic "server_ssl" {
     for_each = var.server_ssl
     content {
-      ca_ids                  = server_ssl.value["ca_ids"]
+      # ca_ids - (optional) is a type of set of string
+      ca_ids = server_ssl.value["ca_ids"]
+      # certificate_chain_depth - (optional) is a type of number
       certificate_chain_depth = server_ssl.value["certificate_chain_depth"]
-      client_certificate_id   = server_ssl.value["client_certificate_id"]
-      crl_ids                 = server_ssl.value["crl_ids"]
-      server_auth             = server_ssl.value["server_auth"]
-      server_ssl_profile_id   = server_ssl.value["server_ssl_profile_id"]
+      # client_certificate_id - (optional) is a type of string
+      client_certificate_id = server_ssl.value["client_certificate_id"]
+      # crl_ids - (optional) is a type of set of string
+      crl_ids = server_ssl.value["crl_ids"]
+      # server_auth - (optional) is a type of bool
+      server_auth = server_ssl.value["server_auth"]
+      # server_ssl_profile_id - (required) is a type of string
+      server_ssl_profile_id = server_ssl.value["server_ssl_profile_id"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

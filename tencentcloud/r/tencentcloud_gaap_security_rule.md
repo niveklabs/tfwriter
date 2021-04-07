@@ -87,12 +87,18 @@ variable "protocol" {
 
 ```terraform
 resource "tencentcloud_gaap_security_rule" "this" {
-  action    = var.action
-  cidr_ip   = var.cidr_ip
-  name      = var.name
+  # action - (required) is a type of string
+  action = var.action
+  # cidr_ip - (required) is a type of string
+  cidr_ip = var.cidr_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of string
   policy_id = var.policy_id
-  port      = var.port
-  protocol  = var.protocol
+  # port - (optional) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
 }
 ```
 

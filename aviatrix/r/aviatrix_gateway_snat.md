@@ -99,24 +99,38 @@ variable "snat_policy" {
 
 ```terraform
 resource "aviatrix_gateway_snat" "this" {
-  gw_name    = var.gw_name
-  snat_mode  = var.snat_mode
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # snat_mode - (optional) is a type of string
+  snat_mode = var.snat_mode
+  # sync_to_ha - (optional) is a type of bool
   sync_to_ha = var.sync_to_ha
 
   dynamic "snat_policy" {
     for_each = var.snat_policy
     content {
-      connection  = snat_policy.value["connection"]
-      dst_cidr    = snat_policy.value["dst_cidr"]
-      dst_port    = snat_policy.value["dst_port"]
+      # connection - (optional) is a type of string
+      connection = snat_policy.value["connection"]
+      # dst_cidr - (optional) is a type of string
+      dst_cidr = snat_policy.value["dst_cidr"]
+      # dst_port - (optional) is a type of string
+      dst_port = snat_policy.value["dst_port"]
+      # exclude_rtb - (optional) is a type of string
       exclude_rtb = snat_policy.value["exclude_rtb"]
-      interface   = snat_policy.value["interface"]
-      mark        = snat_policy.value["mark"]
-      protocol    = snat_policy.value["protocol"]
-      snat_ips    = snat_policy.value["snat_ips"]
-      snat_port   = snat_policy.value["snat_port"]
-      src_cidr    = snat_policy.value["src_cidr"]
-      src_port    = snat_policy.value["src_port"]
+      # interface - (optional) is a type of string
+      interface = snat_policy.value["interface"]
+      # mark - (optional) is a type of string
+      mark = snat_policy.value["mark"]
+      # protocol - (optional) is a type of string
+      protocol = snat_policy.value["protocol"]
+      # snat_ips - (optional) is a type of string
+      snat_ips = snat_policy.value["snat_ips"]
+      # snat_port - (optional) is a type of string
+      snat_port = snat_policy.value["snat_port"]
+      # src_cidr - (optional) is a type of string
+      src_cidr = snat_policy.value["src_cidr"]
+      # src_port - (optional) is a type of string
+      src_port = snat_policy.value["src_port"]
     }
   }
 

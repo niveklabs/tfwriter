@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "lacework_alert_channel_pagerduty" "this" {
-  enabled         = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # integration_key - (required) is a type of string
   integration_key = var.integration_key
-  name            = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

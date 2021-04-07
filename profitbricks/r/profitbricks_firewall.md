@@ -154,26 +154,42 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_firewall" "this" {
-  datacenter_id    = var.datacenter_id
-  icmp_code        = var.icmp_code
-  icmp_type        = var.icmp_type
-  name             = var.name
-  nic_id           = var.nic_id
-  port_range_end   = var.port_range_end
+  # datacenter_id - (required) is a type of string
+  datacenter_id = var.datacenter_id
+  # icmp_code - (optional) is a type of string
+  icmp_code = var.icmp_code
+  # icmp_type - (optional) is a type of string
+  icmp_type = var.icmp_type
+  # name - (optional) is a type of string
+  name = var.name
+  # nic_id - (required) is a type of string
+  nic_id = var.nic_id
+  # port_range_end - (optional) is a type of number
+  port_range_end = var.port_range_end
+  # port_range_start - (optional) is a type of number
   port_range_start = var.port_range_start
-  protocol         = var.protocol
-  server_id        = var.server_id
-  source_ip        = var.source_ip
-  source_mac       = var.source_mac
-  target_ip        = var.target_ip
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # source_mac - (optional) is a type of string
+  source_mac = var.source_mac
+  # target_ip - (optional) is a type of string
+  target_ip = var.target_ip
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

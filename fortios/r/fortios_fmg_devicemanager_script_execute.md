@@ -89,12 +89,18 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_fmg_devicemanager_script_execute" "this" {
-  adom           = var.adom
-  package        = var.package
-  script_name    = var.script_name
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # package - (optional) is a type of string
+  package = var.package
+  # script_name - (required) is a type of string
+  script_name = var.script_name
+  # target_devname - (optional) is a type of string
   target_devname = var.target_devname
-  timeout        = var.timeout
-  vdom           = var.vdom
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 }
 ```
 

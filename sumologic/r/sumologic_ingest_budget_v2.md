@@ -100,14 +100,22 @@ variable "timezone" {
 
 ```terraform
 resource "sumologic_ingest_budget_v2" "this" {
-  action          = var.action
+  # action - (required) is a type of string
+  action = var.action
+  # audit_threshold - (optional) is a type of number
   audit_threshold = var.audit_threshold
-  capacity_bytes  = var.capacity_bytes
-  description     = var.description
-  name            = var.name
-  reset_time      = var.reset_time
-  scope           = var.scope
-  timezone        = var.timezone
+  # capacity_bytes - (required) is a type of number
+  capacity_bytes = var.capacity_bytes
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # reset_time - (required) is a type of string
+  reset_time = var.reset_time
+  # scope - (required) is a type of string
+  scope = var.scope
+  # timezone - (required) is a type of string
+  timezone = var.timezone
 }
 ```
 

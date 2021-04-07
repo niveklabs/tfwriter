@@ -106,13 +106,21 @@ variable "parallel_process_override" {
 
 ```terraform
 resource "fortios_switchcontroller_system" "this" {
-  data_sync_interval        = var.data_sync_interval
-  iot_holdoff               = var.iot_holdoff
-  iot_mac_idle              = var.iot_mac_idle
-  iot_scan_interval         = var.iot_scan_interval
-  iot_weight_threshold      = var.iot_weight_threshold
-  nac_periodic_interval     = var.nac_periodic_interval
-  parallel_process          = var.parallel_process
+  # data_sync_interval - (optional) is a type of number
+  data_sync_interval = var.data_sync_interval
+  # iot_holdoff - (optional) is a type of number
+  iot_holdoff = var.iot_holdoff
+  # iot_mac_idle - (optional) is a type of number
+  iot_mac_idle = var.iot_mac_idle
+  # iot_scan_interval - (optional) is a type of number
+  iot_scan_interval = var.iot_scan_interval
+  # iot_weight_threshold - (optional) is a type of number
+  iot_weight_threshold = var.iot_weight_threshold
+  # nac_periodic_interval - (optional) is a type of number
+  nac_periodic_interval = var.nac_periodic_interval
+  # parallel_process - (optional) is a type of number
+  parallel_process = var.parallel_process
+  # parallel_process_override - (optional) is a type of string
   parallel_process_override = var.parallel_process_override
 }
 ```

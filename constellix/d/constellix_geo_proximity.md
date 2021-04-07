@@ -89,12 +89,18 @@ variable "region" {
 
 ```terraform
 data "constellix_geo_proximity" "this" {
-  city      = var.city
-  country   = var.country
-  latitude  = var.latitude
+  # city - (optional) is a type of number
+  city = var.city
+  # country - (optional) is a type of string
+  country = var.country
+  # latitude - (optional) is a type of number
+  latitude = var.latitude
+  # longitude - (optional) is a type of number
   longitude = var.longitude
-  name      = var.name
-  region    = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
 }
 ```
 

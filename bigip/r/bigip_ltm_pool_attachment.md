@@ -104,14 +104,22 @@ variable "ratio" {
 
 ```terraform
 resource "bigip_ltm_pool_attachment" "this" {
-  connection_limit      = var.connection_limit
+  # connection_limit - (optional) is a type of number
+  connection_limit = var.connection_limit
+  # connection_rate_limit - (optional) is a type of string
   connection_rate_limit = var.connection_rate_limit
-  dynamic_ratio         = var.dynamic_ratio
-  fqdn_autopopulate     = var.fqdn_autopopulate
-  node                  = var.node
-  pool                  = var.pool
-  priority_group        = var.priority_group
-  ratio                 = var.ratio
+  # dynamic_ratio - (optional) is a type of number
+  dynamic_ratio = var.dynamic_ratio
+  # fqdn_autopopulate - (optional) is a type of string
+  fqdn_autopopulate = var.fqdn_autopopulate
+  # node - (required) is a type of string
+  node = var.node
+  # pool - (required) is a type of string
+  pool = var.pool
+  # priority_group - (optional) is a type of number
+  priority_group = var.priority_group
+  # ratio - (optional) is a type of number
+  ratio = var.ratio
 }
 ```
 

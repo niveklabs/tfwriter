@@ -97,13 +97,20 @@ variable "tags" {
 
 ```terraform
 data "alicloud_ons_groups" "this" {
+  # group_id_regex - (optional) is a type of string
   group_id_regex = var.group_id_regex
-  group_type     = var.group_type
-  ids            = var.ids
-  instance_id    = var.instance_id
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  tags           = var.tags
+  # group_type - (optional) is a type of string
+  group_type = var.group_type
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

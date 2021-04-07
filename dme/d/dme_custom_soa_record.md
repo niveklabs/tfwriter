@@ -113,15 +113,24 @@ variable "ttl" {
 
 ```terraform
 data "dme_custom_soa_record" "this" {
-  comp           = var.comp
-  email          = var.email
-  expire         = var.expire
-  name           = var.name
+  # comp - (optional) is a type of string
+  comp = var.comp
+  # email - (optional) is a type of string
+  email = var.email
+  # expire - (optional) is a type of string
+  expire = var.expire
+  # name - (required) is a type of string
+  name = var.name
+  # negative_cache - (optional) is a type of string
   negative_cache = var.negative_cache
-  refresh        = var.refresh
-  retry          = var.retry
-  serial         = var.serial
-  ttl            = var.ttl
+  # refresh - (optional) is a type of string
+  refresh = var.refresh
+  # retry - (optional) is a type of string
+  retry = var.retry
+  # serial - (optional) is a type of string
+  serial = var.serial
+  # ttl - (optional) is a type of string
+  ttl = var.ttl
 }
 ```
 

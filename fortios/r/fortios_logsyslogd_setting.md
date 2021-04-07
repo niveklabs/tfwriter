@@ -188,29 +188,48 @@ variable "custom_field_name" {
 
 ```terraform
 resource "fortios_logsyslogd_setting" "this" {
-  certificate             = var.certificate
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  enc_algorithm           = var.enc_algorithm
-  facility                = var.facility
-  format                  = var.format
-  interface               = var.interface
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # facility - (optional) is a type of string
+  facility = var.facility
+  # format - (optional) is a type of string
+  format = var.format
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  max_log_rate            = var.max_log_rate
-  mode                    = var.mode
-  port                    = var.port
-  priority                = var.priority
-  server                  = var.server
-  source_ip               = var.source_ip
-  ssl_min_proto_version   = var.ssl_min_proto_version
-  status                  = var.status
-  syslog_type             = var.syslog_type
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = var.max_log_rate
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # port - (optional) is a type of number
+  port = var.port
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # status - (optional) is a type of string
+  status = var.status
+  # syslog_type - (optional) is a type of number
+  syslog_type = var.syslog_type
 
   dynamic "custom_field_name" {
     for_each = var.custom_field_name
     content {
+      # custom - (optional) is a type of string
       custom = custom_field_name.value["custom"]
-      id     = custom_field_name.value["id"]
-      name   = custom_field_name.value["name"]
+      # id - (optional) is a type of number
+      id = custom_field_name.value["id"]
+      # name - (optional) is a type of string
+      name = custom_field_name.value["name"]
     }
   }
 

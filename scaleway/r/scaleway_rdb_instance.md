@@ -142,21 +142,33 @@ variable "timeouts" {
 
 ```terraform
 resource "scaleway_rdb_instance" "this" {
+  # disable_backup - (optional) is a type of bool
   disable_backup = var.disable_backup
-  engine         = var.engine
-  is_ha_cluster  = var.is_ha_cluster
-  name           = var.name
-  node_type      = var.node_type
-  password       = var.password
-  project_id     = var.project_id
-  region         = var.region
-  settings       = var.settings
-  tags           = var.tags
-  user_name      = var.user_name
+  # engine - (required) is a type of string
+  engine = var.engine
+  # is_ha_cluster - (optional) is a type of bool
+  is_ha_cluster = var.is_ha_cluster
+  # name - (optional) is a type of string
+  name = var.name
+  # node_type - (required) is a type of string
+  node_type = var.node_type
+  # password - (optional) is a type of string
+  password = var.password
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
+  # settings - (optional) is a type of map of string
+  settings = var.settings
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

@@ -74,10 +74,14 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_clb_target_groups" "this" {
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  target_group_id    = var.target_group_id
-  target_group_name  = var.target_group_name
-  vpc_id             = var.vpc_id
+  # target_group_id - (optional) is a type of string
+  target_group_id = var.target_group_id
+  # target_group_name - (optional) is a type of string
+  target_group_name = var.target_group_name
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

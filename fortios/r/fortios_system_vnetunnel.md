@@ -106,14 +106,22 @@ variable "update_url" {
 
 ```terraform
 resource "fortios_system_vnetunnel" "this" {
-  bmr_hostname    = var.bmr_hostname
-  br              = var.br
-  interface       = var.interface
-  ipv4_address    = var.ipv4_address
-  mode            = var.mode
+  # bmr_hostname - (optional) is a type of string
+  bmr_hostname = var.bmr_hostname
+  # br - (optional) is a type of string
+  br = var.br
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # ssl_certificate - (optional) is a type of string
   ssl_certificate = var.ssl_certificate
-  status          = var.status
-  update_url      = var.update_url
+  # status - (optional) is a type of string
+  status = var.status
+  # update_url - (optional) is a type of string
+  update_url = var.update_url
 }
 ```
 

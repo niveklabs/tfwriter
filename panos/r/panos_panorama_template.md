@@ -73,13 +73,17 @@ variable "devices" {
 
 ```terraform
 resource "panos_panorama_template" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "devices" {
     for_each = var.devices
     content {
-      serial    = devices.value["serial"]
+      # serial - (required) is a type of string
+      serial = devices.value["serial"]
+      # vsys_list - (optional) is a type of set of string
       vsys_list = devices.value["vsys_list"]
     }
   }

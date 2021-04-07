@@ -79,15 +79,20 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_alert_channel_aws_s3" "this" {
+  # bucket_arn - (required) is a type of string
   bucket_arn = var.bucket_arn
-  enabled    = var.enabled
-  name       = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # external_id - (required) is a type of string
       external_id = credentials.value["external_id"]
-      role_arn    = credentials.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = credentials.value["role_arn"]
     }
   }
 

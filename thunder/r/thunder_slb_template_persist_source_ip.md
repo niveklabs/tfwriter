@@ -170,22 +170,38 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_persist_source_ip" "this" {
-  dont_honor_conn_rules   = var.dont_honor_conn_rules
+  # dont_honor_conn_rules - (optional) is a type of number
+  dont_honor_conn_rules = var.dont_honor_conn_rules
+  # enforce_higher_priority - (optional) is a type of number
   enforce_higher_priority = var.enforce_higher_priority
-  hash_persist            = var.hash_persist
-  incl_dst_ip             = var.incl_dst_ip
-  incl_sport              = var.incl_sport
-  match_type              = var.match_type
-  name                    = var.name
-  netmask                 = var.netmask
-  netmask6                = var.netmask6
-  primary_port            = var.primary_port
-  scan_all_members        = var.scan_all_members
-  server                  = var.server
-  service_group           = var.service_group
-  timeout                 = var.timeout
-  user_tag                = var.user_tag
-  uuid                    = var.uuid
+  # hash_persist - (optional) is a type of number
+  hash_persist = var.hash_persist
+  # incl_dst_ip - (optional) is a type of number
+  incl_dst_ip = var.incl_dst_ip
+  # incl_sport - (optional) is a type of number
+  incl_sport = var.incl_sport
+  # match_type - (optional) is a type of number
+  match_type = var.match_type
+  # name - (optional) is a type of string
+  name = var.name
+  # netmask - (optional) is a type of string
+  netmask = var.netmask
+  # netmask6 - (optional) is a type of number
+  netmask6 = var.netmask6
+  # primary_port - (optional) is a type of number
+  primary_port = var.primary_port
+  # scan_all_members - (optional) is a type of number
+  scan_all_members = var.scan_all_members
+  # server - (optional) is a type of number
+  server = var.server
+  # service_group - (optional) is a type of number
+  service_group = var.service_group
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

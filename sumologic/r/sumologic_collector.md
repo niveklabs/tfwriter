@@ -81,11 +81,16 @@ variable "timezone" {
 
 ```terraform
 resource "sumologic_collector" "this" {
-  category    = var.category
+  # category - (optional) is a type of string
+  category = var.category
+  # description - (optional) is a type of string
   description = var.description
-  fields      = var.fields
-  name        = var.name
-  timezone    = var.timezone
+  # fields - (optional) is a type of map of string
+  fields = var.fields
+  # name - (required) is a type of string
+  name = var.name
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 }
 ```
 

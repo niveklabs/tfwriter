@@ -66,6 +66,7 @@ variable "user_defined_fields" {
 
 ```terraform
 data "linode_stackscript" "this" {
+  # user_defined_fields - (optional) is a type of list of object
   user_defined_fields = var.user_defined_fields
 }
 ```

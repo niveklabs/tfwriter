@@ -402,51 +402,96 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_tcp_proxy" "this" {
-  ack_aggressiveness         = var.ack_aggressiveness
-  alive_if_active            = var.alive_if_active
-  backend_wscale             = var.backend_wscale
+  # ack_aggressiveness - (optional) is a type of string
+  ack_aggressiveness = var.ack_aggressiveness
+  # alive_if_active - (optional) is a type of number
+  alive_if_active = var.alive_if_active
+  # backend_wscale - (optional) is a type of number
+  backend_wscale = var.backend_wscale
+  # del_session_on_server_down - (optional) is a type of number
   del_session_on_server_down = var.del_session_on_server_down
-  disable                    = var.disable
-  disable_abc                = var.disable_abc
-  disable_sack               = var.disable_sack
-  disable_tcp_timestamps     = var.disable_tcp_timestamps
-  disable_window_scale       = var.disable_window_scale
-  down                       = var.down
-  dynamic_buffer_allocation  = var.dynamic_buffer_allocation
-  early_retransmit           = var.early_retransmit
-  fin_timeout                = var.fin_timeout
-  force_delete_timeout       = var.force_delete_timeout
+  # disable - (optional) is a type of number
+  disable = var.disable
+  # disable_abc - (optional) is a type of number
+  disable_abc = var.disable_abc
+  # disable_sack - (optional) is a type of number
+  disable_sack = var.disable_sack
+  # disable_tcp_timestamps - (optional) is a type of number
+  disable_tcp_timestamps = var.disable_tcp_timestamps
+  # disable_window_scale - (optional) is a type of number
+  disable_window_scale = var.disable_window_scale
+  # down - (optional) is a type of number
+  down = var.down
+  # dynamic_buffer_allocation - (optional) is a type of number
+  dynamic_buffer_allocation = var.dynamic_buffer_allocation
+  # early_retransmit - (optional) is a type of number
+  early_retransmit = var.early_retransmit
+  # fin_timeout - (optional) is a type of number
+  fin_timeout = var.fin_timeout
+  # force_delete_timeout - (optional) is a type of number
+  force_delete_timeout = var.force_delete_timeout
+  # force_delete_timeout_100ms - (optional) is a type of number
   force_delete_timeout_100ms = var.force_delete_timeout_100ms
-  half_close_idle_timeout    = var.half_close_idle_timeout
-  half_open_idle_timeout     = var.half_open_idle_timeout
-  idle_timeout               = var.idle_timeout
-  init_cwnd                  = var.init_cwnd
-  initial_window_size        = var.initial_window_size
-  insert_client_ip           = var.insert_client_ip
-  invalid_rate_limit         = var.invalid_rate_limit
-  keepalive_interval         = var.keepalive_interval
-  keepalive_probes           = var.keepalive_probes
-  limited_slowstart          = var.limited_slowstart
-  maxburst                   = var.maxburst
-  min_rto                    = var.min_rto
-  mss                        = var.mss
-  nagle                      = var.nagle
-  name                       = var.name
-  psh_flag_optimization      = var.psh_flag_optimization
-  qos                        = var.qos
-  reassembly_limit           = var.reassembly_limit
-  reassembly_timeout         = var.reassembly_timeout
-  receive_buffer             = var.receive_buffer
-  reno                       = var.reno
-  reset_fwd                  = var.reset_fwd
-  reset_rev                  = var.reset_rev
-  retransmit_retries         = var.retransmit_retries
-  server_down_action         = var.server_down_action
-  syn_retries                = var.syn_retries
-  timewait                   = var.timewait
-  transmit_buffer            = var.transmit_buffer
-  user_tag                   = var.user_tag
-  uuid                       = var.uuid
+  # half_close_idle_timeout - (optional) is a type of number
+  half_close_idle_timeout = var.half_close_idle_timeout
+  # half_open_idle_timeout - (optional) is a type of number
+  half_open_idle_timeout = var.half_open_idle_timeout
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # init_cwnd - (optional) is a type of number
+  init_cwnd = var.init_cwnd
+  # initial_window_size - (optional) is a type of number
+  initial_window_size = var.initial_window_size
+  # insert_client_ip - (optional) is a type of number
+  insert_client_ip = var.insert_client_ip
+  # invalid_rate_limit - (optional) is a type of number
+  invalid_rate_limit = var.invalid_rate_limit
+  # keepalive_interval - (optional) is a type of number
+  keepalive_interval = var.keepalive_interval
+  # keepalive_probes - (optional) is a type of number
+  keepalive_probes = var.keepalive_probes
+  # limited_slowstart - (optional) is a type of number
+  limited_slowstart = var.limited_slowstart
+  # maxburst - (optional) is a type of number
+  maxburst = var.maxburst
+  # min_rto - (optional) is a type of number
+  min_rto = var.min_rto
+  # mss - (optional) is a type of number
+  mss = var.mss
+  # nagle - (optional) is a type of number
+  nagle = var.nagle
+  # name - (optional) is a type of string
+  name = var.name
+  # psh_flag_optimization - (optional) is a type of number
+  psh_flag_optimization = var.psh_flag_optimization
+  # qos - (optional) is a type of number
+  qos = var.qos
+  # reassembly_limit - (optional) is a type of number
+  reassembly_limit = var.reassembly_limit
+  # reassembly_timeout - (optional) is a type of number
+  reassembly_timeout = var.reassembly_timeout
+  # receive_buffer - (optional) is a type of number
+  receive_buffer = var.receive_buffer
+  # reno - (optional) is a type of number
+  reno = var.reno
+  # reset_fwd - (optional) is a type of number
+  reset_fwd = var.reset_fwd
+  # reset_rev - (optional) is a type of number
+  reset_rev = var.reset_rev
+  # retransmit_retries - (optional) is a type of number
+  retransmit_retries = var.retransmit_retries
+  # server_down_action - (optional) is a type of string
+  server_down_action = var.server_down_action
+  # syn_retries - (optional) is a type of number
+  syn_retries = var.syn_retries
+  # timewait - (optional) is a type of number
+  timewait = var.timewait
+  # transmit_buffer - (optional) is a type of number
+  transmit_buffer = var.transmit_buffer
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

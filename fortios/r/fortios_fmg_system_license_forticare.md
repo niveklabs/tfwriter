@@ -64,9 +64,12 @@ variable "target" {
 
 ```terraform
 resource "fortios_fmg_system_license_forticare" "this" {
-  adom              = var.adom
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # registration_code - (required) is a type of string
   registration_code = var.registration_code
-  target            = var.target
+  # target - (required) is a type of string
+  target = var.target
 }
 ```
 

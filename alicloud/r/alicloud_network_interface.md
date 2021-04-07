@@ -112,15 +112,24 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_network_interface" "this" {
-  description       = var.description
-  name              = var.name
-  private_ip        = var.private_ip
-  private_ips       = var.private_ips
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # private_ip - (optional) is a type of string
+  private_ip = var.private_ip
+  # private_ips - (optional) is a type of set of string
+  private_ips = var.private_ips
+  # private_ips_count - (optional) is a type of number
   private_ips_count = var.private_ips_count
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  security_groups   = var.security_groups
-  tags              = var.tags
-  vswitch_id        = var.vswitch_id
+  # security_groups - (required) is a type of set of string
+  security_groups = var.security_groups
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

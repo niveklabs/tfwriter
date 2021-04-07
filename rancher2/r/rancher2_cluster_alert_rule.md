@@ -211,21 +211,33 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_cluster_alert_rule" "this" {
-  annotations             = var.annotations
-  cluster_id              = var.cluster_id
-  group_id                = var.group_id
-  group_interval_seconds  = var.group_interval_seconds
-  group_wait_seconds      = var.group_wait_seconds
-  inherited               = var.inherited
-  labels                  = var.labels
-  name                    = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # group_interval_seconds - (optional) is a type of number
+  group_interval_seconds = var.group_interval_seconds
+  # group_wait_seconds - (optional) is a type of number
+  group_wait_seconds = var.group_wait_seconds
+  # inherited - (optional) is a type of bool
+  inherited = var.inherited
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # repeat_interval_seconds - (optional) is a type of number
   repeat_interval_seconds = var.repeat_interval_seconds
-  severity                = var.severity
+  # severity - (optional) is a type of string
+  severity = var.severity
 
   dynamic "event_rule" {
     for_each = var.event_rule
     content {
-      event_type    = event_rule.value["event_type"]
+      # event_type - (optional) is a type of string
+      event_type = event_rule.value["event_type"]
+      # resource_kind - (required) is a type of string
       resource_kind = event_rule.value["resource_kind"]
     }
   }
@@ -233,10 +245,15 @@ resource "rancher2_cluster_alert_rule" "this" {
   dynamic "metric_rule" {
     for_each = var.metric_rule
     content {
-      comparison      = metric_rule.value["comparison"]
-      description     = metric_rule.value["description"]
-      duration        = metric_rule.value["duration"]
-      expression      = metric_rule.value["expression"]
+      # comparison - (optional) is a type of string
+      comparison = metric_rule.value["comparison"]
+      # description - (optional) is a type of string
+      description = metric_rule.value["description"]
+      # duration - (required) is a type of string
+      duration = metric_rule.value["duration"]
+      # expression - (required) is a type of string
+      expression = metric_rule.value["expression"]
+      # threshold_value - (required) is a type of number
       threshold_value = metric_rule.value["threshold_value"]
     }
   }
@@ -244,17 +261,23 @@ resource "rancher2_cluster_alert_rule" "this" {
   dynamic "node_rule" {
     for_each = var.node_rule
     content {
-      condition     = node_rule.value["condition"]
+      # condition - (optional) is a type of string
+      condition = node_rule.value["condition"]
+      # cpu_threshold - (optional) is a type of number
       cpu_threshold = node_rule.value["cpu_threshold"]
+      # mem_threshold - (optional) is a type of number
       mem_threshold = node_rule.value["mem_threshold"]
-      node_id       = node_rule.value["node_id"]
-      selector      = node_rule.value["selector"]
+      # node_id - (optional) is a type of string
+      node_id = node_rule.value["node_id"]
+      # selector - (optional) is a type of map of string
+      selector = node_rule.value["selector"]
     }
   }
 
   dynamic "system_service_rule" {
     for_each = var.system_service_rule
     content {
+      # condition - (optional) is a type of string
       condition = system_service_rule.value["condition"]
     }
   }
@@ -262,8 +285,11 @@ resource "rancher2_cluster_alert_rule" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

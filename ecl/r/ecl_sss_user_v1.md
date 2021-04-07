@@ -72,10 +72,14 @@ variable "password" {
 
 ```terraform
 resource "ecl_sss_user_v1" "this" {
-  login_id        = var.login_id
-  mail_address    = var.mail_address
+  # login_id - (required) is a type of string
+  login_id = var.login_id
+  # mail_address - (required) is a type of string
+  mail_address = var.mail_address
+  # notify_password - (optional) is a type of string
   notify_password = var.notify_password
-  password        = var.password
+  # password - (optional) is a type of string
+  password = var.password
 }
 ```
 

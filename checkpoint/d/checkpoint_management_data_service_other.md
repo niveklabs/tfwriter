@@ -66,9 +66,12 @@ variable "uid" {
 
 ```terraform
 data "checkpoint_management_data_service_other" "this" {
+  # comments - (optional) is a type of string
   comments = var.comments
-  name     = var.name
-  uid      = var.uid
+  # name - (optional) is a type of string
+  name = var.name
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

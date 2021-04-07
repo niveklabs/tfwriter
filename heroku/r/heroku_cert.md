@@ -63,9 +63,12 @@ variable "private_key" {
 
 ```terraform
 resource "heroku_cert" "this" {
-  app               = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # certificate_chain - (required) is a type of string
   certificate_chain = var.certificate_chain
-  private_key       = var.private_key
+  # private_key - (required) is a type of string
+  private_key = var.private_key
 }
 ```
 

@@ -210,16 +210,23 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_firewall_section" "this" {
-  description   = var.description
-  display_name  = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # insert_before - (optional) is a type of string
   insert_before = var.insert_before
-  section_type  = var.section_type
-  stateful      = var.stateful
+  # section_type - (required) is a type of string
+  section_type = var.section_type
+  # stateful - (required) is a type of bool
+  stateful = var.stateful
 
   dynamic "applied_to" {
     for_each = var.applied_to
     content {
-      target_id   = applied_to.value["target_id"]
+      # target_id - (optional) is a type of string
+      target_id = applied_to.value["target_id"]
+      # target_type - (optional) is a type of string
       target_type = applied_to.value["target_type"]
     }
   }
@@ -227,22 +234,35 @@ resource "nsxt_firewall_section" "this" {
   dynamic "rule" {
     for_each = var.rule
     content {
-      action                = rule.value["action"]
-      description           = rule.value["description"]
+      # action - (required) is a type of string
+      action = rule.value["action"]
+      # description - (optional) is a type of string
+      description = rule.value["description"]
+      # destinations_excluded - (optional) is a type of bool
       destinations_excluded = rule.value["destinations_excluded"]
-      direction             = rule.value["direction"]
-      disabled              = rule.value["disabled"]
-      display_name          = rule.value["display_name"]
-      ip_protocol           = rule.value["ip_protocol"]
-      logged                = rule.value["logged"]
-      notes                 = rule.value["notes"]
-      rule_tag              = rule.value["rule_tag"]
-      sources_excluded      = rule.value["sources_excluded"]
+      # direction - (optional) is a type of string
+      direction = rule.value["direction"]
+      # disabled - (optional) is a type of bool
+      disabled = rule.value["disabled"]
+      # display_name - (optional) is a type of string
+      display_name = rule.value["display_name"]
+      # ip_protocol - (optional) is a type of string
+      ip_protocol = rule.value["ip_protocol"]
+      # logged - (optional) is a type of bool
+      logged = rule.value["logged"]
+      # notes - (optional) is a type of string
+      notes = rule.value["notes"]
+      # rule_tag - (optional) is a type of string
+      rule_tag = rule.value["rule_tag"]
+      # sources_excluded - (optional) is a type of bool
+      sources_excluded = rule.value["sources_excluded"]
 
       dynamic "applied_to" {
         for_each = rule.value.applied_to
         content {
-          target_id   = applied_to.value["target_id"]
+          # target_id - (optional) is a type of string
+          target_id = applied_to.value["target_id"]
+          # target_type - (optional) is a type of string
           target_type = applied_to.value["target_type"]
         }
       }
@@ -250,7 +270,9 @@ resource "nsxt_firewall_section" "this" {
       dynamic "destination" {
         for_each = rule.value.destination
         content {
-          target_id   = destination.value["target_id"]
+          # target_id - (optional) is a type of string
+          target_id = destination.value["target_id"]
+          # target_type - (optional) is a type of string
           target_type = destination.value["target_type"]
         }
       }
@@ -258,7 +280,9 @@ resource "nsxt_firewall_section" "this" {
       dynamic "service" {
         for_each = rule.value.service
         content {
-          target_id   = service.value["target_id"]
+          # target_id - (optional) is a type of string
+          target_id = service.value["target_id"]
+          # target_type - (optional) is a type of string
           target_type = service.value["target_type"]
         }
       }
@@ -266,7 +290,9 @@ resource "nsxt_firewall_section" "this" {
       dynamic "source" {
         for_each = rule.value.source
         content {
-          target_id   = source.value["target_id"]
+          # target_id - (optional) is a type of string
+          target_id = source.value["target_id"]
+          # target_type - (optional) is a type of string
           target_type = source.value["target_type"]
         }
       }
@@ -277,8 +303,10 @@ resource "nsxt_firewall_section" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -787,104 +787,198 @@ variable "conditional_advertise" {
 
 ```terraform
 resource "fortios_routerbgp_neighbor" "this" {
-  activate                      = var.activate
-  activate6                     = var.activate6
-  additional_path               = var.additional_path
-  additional_path6              = var.additional_path6
-  adv_additional_path           = var.adv_additional_path
-  adv_additional_path6          = var.adv_additional_path6
-  advertisement_interval        = var.advertisement_interval
-  allowas_in                    = var.allowas_in
-  allowas_in6                   = var.allowas_in6
-  allowas_in_enable             = var.allowas_in_enable
-  allowas_in_enable6            = var.allowas_in_enable6
-  as_override                   = var.as_override
-  as_override6                  = var.as_override6
-  attribute_unchanged           = var.attribute_unchanged
-  attribute_unchanged6          = var.attribute_unchanged6
-  bfd                           = var.bfd
-  capability_default_originate  = var.capability_default_originate
+  # activate - (optional) is a type of string
+  activate = var.activate
+  # activate6 - (optional) is a type of string
+  activate6 = var.activate6
+  # additional_path - (optional) is a type of string
+  additional_path = var.additional_path
+  # additional_path6 - (optional) is a type of string
+  additional_path6 = var.additional_path6
+  # adv_additional_path - (optional) is a type of number
+  adv_additional_path = var.adv_additional_path
+  # adv_additional_path6 - (optional) is a type of number
+  adv_additional_path6 = var.adv_additional_path6
+  # advertisement_interval - (optional) is a type of number
+  advertisement_interval = var.advertisement_interval
+  # allowas_in - (optional) is a type of number
+  allowas_in = var.allowas_in
+  # allowas_in6 - (optional) is a type of number
+  allowas_in6 = var.allowas_in6
+  # allowas_in_enable - (optional) is a type of string
+  allowas_in_enable = var.allowas_in_enable
+  # allowas_in_enable6 - (optional) is a type of string
+  allowas_in_enable6 = var.allowas_in_enable6
+  # as_override - (optional) is a type of string
+  as_override = var.as_override
+  # as_override6 - (optional) is a type of string
+  as_override6 = var.as_override6
+  # attribute_unchanged - (optional) is a type of string
+  attribute_unchanged = var.attribute_unchanged
+  # attribute_unchanged6 - (optional) is a type of string
+  attribute_unchanged6 = var.attribute_unchanged6
+  # bfd - (optional) is a type of string
+  bfd = var.bfd
+  # capability_default_originate - (optional) is a type of string
+  capability_default_originate = var.capability_default_originate
+  # capability_default_originate6 - (optional) is a type of string
   capability_default_originate6 = var.capability_default_originate6
-  capability_dynamic            = var.capability_dynamic
-  capability_graceful_restart   = var.capability_graceful_restart
-  capability_graceful_restart6  = var.capability_graceful_restart6
-  capability_orf                = var.capability_orf
-  capability_orf6               = var.capability_orf6
-  capability_route_refresh      = var.capability_route_refresh
-  connect_timer                 = var.connect_timer
-  default_originate_routemap    = var.default_originate_routemap
-  default_originate_routemap6   = var.default_originate_routemap6
-  description                   = var.description
-  distribute_list_in            = var.distribute_list_in
-  distribute_list_in6           = var.distribute_list_in6
-  distribute_list_out           = var.distribute_list_out
-  distribute_list_out6          = var.distribute_list_out6
-  dont_capability_negotiate     = var.dont_capability_negotiate
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  ebgp_enforce_multihop         = var.ebgp_enforce_multihop
-  ebgp_multihop_ttl             = var.ebgp_multihop_ttl
-  filter_list_in                = var.filter_list_in
-  filter_list_in6               = var.filter_list_in6
-  filter_list_out               = var.filter_list_out
-  filter_list_out6              = var.filter_list_out6
-  holdtime_timer                = var.holdtime_timer
-  interface                     = var.interface
-  ip                            = var.ip
-  keep_alive_timer              = var.keep_alive_timer
-  link_down_failover            = var.link_down_failover
-  local_as                      = var.local_as
-  local_as_no_prepend           = var.local_as_no_prepend
-  local_as_replace_as           = var.local_as_replace_as
-  maximum_prefix                = var.maximum_prefix
-  maximum_prefix6               = var.maximum_prefix6
-  maximum_prefix_threshold      = var.maximum_prefix_threshold
-  maximum_prefix_threshold6     = var.maximum_prefix_threshold6
-  maximum_prefix_warning_only   = var.maximum_prefix_warning_only
-  maximum_prefix_warning_only6  = var.maximum_prefix_warning_only6
-  next_hop_self                 = var.next_hop_self
-  next_hop_self6                = var.next_hop_self6
-  next_hop_self_rr              = var.next_hop_self_rr
-  next_hop_self_rr6             = var.next_hop_self_rr6
-  override_capability           = var.override_capability
-  passive                       = var.passive
-  password                      = var.password
-  prefix_list_in                = var.prefix_list_in
-  prefix_list_in6               = var.prefix_list_in6
-  prefix_list_out               = var.prefix_list_out
-  prefix_list_out6              = var.prefix_list_out6
-  remote_as                     = var.remote_as
-  remove_private_as             = var.remove_private_as
-  remove_private_as6            = var.remove_private_as6
-  restart_time                  = var.restart_time
-  retain_stale_time             = var.retain_stale_time
-  route_map_in                  = var.route_map_in
-  route_map_in6                 = var.route_map_in6
-  route_map_out                 = var.route_map_out
-  route_map_out6                = var.route_map_out6
-  route_map_out6_preferable     = var.route_map_out6_preferable
-  route_map_out_preferable      = var.route_map_out_preferable
-  route_reflector_client        = var.route_reflector_client
-  route_reflector_client6       = var.route_reflector_client6
-  route_server_client           = var.route_server_client
-  route_server_client6          = var.route_server_client6
-  send_community                = var.send_community
-  send_community6               = var.send_community6
-  shutdown                      = var.shutdown
-  soft_reconfiguration          = var.soft_reconfiguration
-  soft_reconfiguration6         = var.soft_reconfiguration6
-  stale_route                   = var.stale_route
-  strict_capability_match       = var.strict_capability_match
-  unsuppress_map                = var.unsuppress_map
-  unsuppress_map6               = var.unsuppress_map6
-  update_source                 = var.update_source
-  weight                        = var.weight
+  # capability_dynamic - (optional) is a type of string
+  capability_dynamic = var.capability_dynamic
+  # capability_graceful_restart - (optional) is a type of string
+  capability_graceful_restart = var.capability_graceful_restart
+  # capability_graceful_restart6 - (optional) is a type of string
+  capability_graceful_restart6 = var.capability_graceful_restart6
+  # capability_orf - (optional) is a type of string
+  capability_orf = var.capability_orf
+  # capability_orf6 - (optional) is a type of string
+  capability_orf6 = var.capability_orf6
+  # capability_route_refresh - (optional) is a type of string
+  capability_route_refresh = var.capability_route_refresh
+  # connect_timer - (optional) is a type of number
+  connect_timer = var.connect_timer
+  # default_originate_routemap - (optional) is a type of string
+  default_originate_routemap = var.default_originate_routemap
+  # default_originate_routemap6 - (optional) is a type of string
+  default_originate_routemap6 = var.default_originate_routemap6
+  # description - (optional) is a type of string
+  description = var.description
+  # distribute_list_in - (optional) is a type of string
+  distribute_list_in = var.distribute_list_in
+  # distribute_list_in6 - (optional) is a type of string
+  distribute_list_in6 = var.distribute_list_in6
+  # distribute_list_out - (optional) is a type of string
+  distribute_list_out = var.distribute_list_out
+  # distribute_list_out6 - (optional) is a type of string
+  distribute_list_out6 = var.distribute_list_out6
+  # dont_capability_negotiate - (optional) is a type of string
+  dont_capability_negotiate = var.dont_capability_negotiate
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # ebgp_enforce_multihop - (optional) is a type of string
+  ebgp_enforce_multihop = var.ebgp_enforce_multihop
+  # ebgp_multihop_ttl - (optional) is a type of number
+  ebgp_multihop_ttl = var.ebgp_multihop_ttl
+  # filter_list_in - (optional) is a type of string
+  filter_list_in = var.filter_list_in
+  # filter_list_in6 - (optional) is a type of string
+  filter_list_in6 = var.filter_list_in6
+  # filter_list_out - (optional) is a type of string
+  filter_list_out = var.filter_list_out
+  # filter_list_out6 - (optional) is a type of string
+  filter_list_out6 = var.filter_list_out6
+  # holdtime_timer - (optional) is a type of number
+  holdtime_timer = var.holdtime_timer
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # ip - (required) is a type of string
+  ip = var.ip
+  # keep_alive_timer - (optional) is a type of number
+  keep_alive_timer = var.keep_alive_timer
+  # link_down_failover - (optional) is a type of string
+  link_down_failover = var.link_down_failover
+  # local_as - (optional) is a type of number
+  local_as = var.local_as
+  # local_as_no_prepend - (optional) is a type of string
+  local_as_no_prepend = var.local_as_no_prepend
+  # local_as_replace_as - (optional) is a type of string
+  local_as_replace_as = var.local_as_replace_as
+  # maximum_prefix - (optional) is a type of number
+  maximum_prefix = var.maximum_prefix
+  # maximum_prefix6 - (optional) is a type of number
+  maximum_prefix6 = var.maximum_prefix6
+  # maximum_prefix_threshold - (optional) is a type of number
+  maximum_prefix_threshold = var.maximum_prefix_threshold
+  # maximum_prefix_threshold6 - (optional) is a type of number
+  maximum_prefix_threshold6 = var.maximum_prefix_threshold6
+  # maximum_prefix_warning_only - (optional) is a type of string
+  maximum_prefix_warning_only = var.maximum_prefix_warning_only
+  # maximum_prefix_warning_only6 - (optional) is a type of string
+  maximum_prefix_warning_only6 = var.maximum_prefix_warning_only6
+  # next_hop_self - (optional) is a type of string
+  next_hop_self = var.next_hop_self
+  # next_hop_self6 - (optional) is a type of string
+  next_hop_self6 = var.next_hop_self6
+  # next_hop_self_rr - (optional) is a type of string
+  next_hop_self_rr = var.next_hop_self_rr
+  # next_hop_self_rr6 - (optional) is a type of string
+  next_hop_self_rr6 = var.next_hop_self_rr6
+  # override_capability - (optional) is a type of string
+  override_capability = var.override_capability
+  # passive - (optional) is a type of string
+  passive = var.passive
+  # password - (optional) is a type of string
+  password = var.password
+  # prefix_list_in - (optional) is a type of string
+  prefix_list_in = var.prefix_list_in
+  # prefix_list_in6 - (optional) is a type of string
+  prefix_list_in6 = var.prefix_list_in6
+  # prefix_list_out - (optional) is a type of string
+  prefix_list_out = var.prefix_list_out
+  # prefix_list_out6 - (optional) is a type of string
+  prefix_list_out6 = var.prefix_list_out6
+  # remote_as - (optional) is a type of number
+  remote_as = var.remote_as
+  # remove_private_as - (optional) is a type of string
+  remove_private_as = var.remove_private_as
+  # remove_private_as6 - (optional) is a type of string
+  remove_private_as6 = var.remove_private_as6
+  # restart_time - (optional) is a type of number
+  restart_time = var.restart_time
+  # retain_stale_time - (optional) is a type of number
+  retain_stale_time = var.retain_stale_time
+  # route_map_in - (optional) is a type of string
+  route_map_in = var.route_map_in
+  # route_map_in6 - (optional) is a type of string
+  route_map_in6 = var.route_map_in6
+  # route_map_out - (optional) is a type of string
+  route_map_out = var.route_map_out
+  # route_map_out6 - (optional) is a type of string
+  route_map_out6 = var.route_map_out6
+  # route_map_out6_preferable - (optional) is a type of string
+  route_map_out6_preferable = var.route_map_out6_preferable
+  # route_map_out_preferable - (optional) is a type of string
+  route_map_out_preferable = var.route_map_out_preferable
+  # route_reflector_client - (optional) is a type of string
+  route_reflector_client = var.route_reflector_client
+  # route_reflector_client6 - (optional) is a type of string
+  route_reflector_client6 = var.route_reflector_client6
+  # route_server_client - (optional) is a type of string
+  route_server_client = var.route_server_client
+  # route_server_client6 - (optional) is a type of string
+  route_server_client6 = var.route_server_client6
+  # send_community - (optional) is a type of string
+  send_community = var.send_community
+  # send_community6 - (optional) is a type of string
+  send_community6 = var.send_community6
+  # shutdown - (optional) is a type of string
+  shutdown = var.shutdown
+  # soft_reconfiguration - (optional) is a type of string
+  soft_reconfiguration = var.soft_reconfiguration
+  # soft_reconfiguration6 - (optional) is a type of string
+  soft_reconfiguration6 = var.soft_reconfiguration6
+  # stale_route - (optional) is a type of string
+  stale_route = var.stale_route
+  # strict_capability_match - (optional) is a type of string
+  strict_capability_match = var.strict_capability_match
+  # unsuppress_map - (optional) is a type of string
+  unsuppress_map = var.unsuppress_map
+  # unsuppress_map6 - (optional) is a type of string
+  unsuppress_map6 = var.unsuppress_map6
+  # update_source - (optional) is a type of string
+  update_source = var.update_source
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "conditional_advertise" {
     for_each = var.conditional_advertise
     content {
+      # advertise_routemap - (optional) is a type of string
       advertise_routemap = conditional_advertise.value["advertise_routemap"]
+      # condition_routemap - (optional) is a type of string
       condition_routemap = conditional_advertise.value["condition_routemap"]
-      condition_type     = conditional_advertise.value["condition_type"]
+      # condition_type - (optional) is a type of string
+      condition_type = conditional_advertise.value["condition_type"]
     }
   }
 

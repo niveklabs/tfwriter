@@ -65,12 +65,15 @@ variable "register" {
 
 ```terraform
 resource "panos_dag_tags" "this" {
+  # vsys - (optional) is a type of string
   vsys = var.vsys
 
   dynamic "register" {
     for_each = var.register
     content {
-      ip   = register.value["ip"]
+      # ip - (required) is a type of string
+      ip = register.value["ip"]
+      # tags - (required) is a type of set of string
       tags = register.value["tags"]
     }
   }

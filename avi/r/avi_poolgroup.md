@@ -205,33 +205,49 @@ variable "members" {
 
 ```terraform
 resource "avi_poolgroup" "this" {
-  cloud_config_cksum       = var.cloud_config_cksum
-  cloud_ref                = var.cloud_ref
-  created_by               = var.created_by
-  deployment_policy_ref    = var.deployment_policy_ref
-  description              = var.description
+  # cloud_config_cksum - (optional) is a type of string
+  cloud_config_cksum = var.cloud_config_cksum
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # deployment_policy_ref - (optional) is a type of string
+  deployment_policy_ref = var.deployment_policy_ref
+  # description - (optional) is a type of string
+  description = var.description
+  # implicit_priority_labels - (optional) is a type of bool
   implicit_priority_labels = var.implicit_priority_labels
-  min_servers              = var.min_servers
-  name                     = var.name
-  priority_labels_ref      = var.priority_labels_ref
-  service_metadata         = var.service_metadata
-  tenant_ref               = var.tenant_ref
-  uuid                     = var.uuid
+  # min_servers - (optional) is a type of number
+  min_servers = var.min_servers
+  # name - (required) is a type of string
+  name = var.name
+  # priority_labels_ref - (optional) is a type of string
+  priority_labels_ref = var.priority_labels_ref
+  # service_metadata - (optional) is a type of string
+  service_metadata = var.service_metadata
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "fail_action" {
     for_each = var.fail_action
     content {
+      # type - (required) is a type of string
       type = fail_action.value["type"]
 
       dynamic "local_rsp" {
         for_each = fail_action.value.local_rsp
         content {
+          # status_code - (optional) is a type of string
           status_code = local_rsp.value["status_code"]
 
           dynamic "file" {
             for_each = local_rsp.value.file
             content {
+              # content_type - (required) is a type of string
               content_type = file.value["content_type"]
+              # file_content - (required) is a type of string
               file_content = file.value["file_content"]
             }
           }
@@ -242,10 +258,15 @@ resource "avi_poolgroup" "this" {
       dynamic "redirect" {
         for_each = fail_action.value.redirect
         content {
-          host        = redirect.value["host"]
-          path        = redirect.value["path"]
-          protocol    = redirect.value["protocol"]
-          query       = redirect.value["query"]
+          # host - (required) is a type of string
+          host = redirect.value["host"]
+          # path - (optional) is a type of string
+          path = redirect.value["path"]
+          # protocol - (optional) is a type of string
+          protocol = redirect.value["protocol"]
+          # query - (optional) is a type of string
+          query = redirect.value["query"]
+          # status_code - (optional) is a type of string
           status_code = redirect.value["status_code"]
         }
       }
@@ -256,10 +277,14 @@ resource "avi_poolgroup" "this" {
   dynamic "members" {
     for_each = var.members
     content {
+      # deployment_state - (optional) is a type of string
       deployment_state = members.value["deployment_state"]
-      pool_ref         = members.value["pool_ref"]
-      priority_label   = members.value["priority_label"]
-      ratio            = members.value["ratio"]
+      # pool_ref - (required) is a type of string
+      pool_ref = members.value["pool_ref"]
+      # priority_label - (optional) is a type of string
+      priority_label = members.value["priority_label"]
+      # ratio - (optional) is a type of number
+      ratio = members.value["ratio"]
     }
   }
 

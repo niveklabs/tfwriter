@@ -97,13 +97,20 @@ variable "status" {
 
 ```terraform
 resource "fortios_log_syslog_setting" "this" {
-  facility  = var.facility
-  format    = var.format
-  mode      = var.mode
-  port      = var.port
-  server    = var.server
+  # facility - (optional) is a type of string
+  facility = var.facility
+  # format - (optional) is a type of string
+  format = var.format
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # port - (optional) is a type of string
+  port = var.port
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
   source_ip = var.source_ip
-  status    = var.status
+  # status - (required) is a type of string
+  status = var.status
 }
 ```
 

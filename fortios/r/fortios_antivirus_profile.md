@@ -497,31 +497,53 @@ variable "ssh" {
 
 ```terraform
 resource "fortios_antivirus_profile" "this" {
+  # analytics_accept_filetype - (optional) is a type of number
   analytics_accept_filetype = var.analytics_accept_filetype
-  analytics_bl_filetype     = var.analytics_bl_filetype
-  analytics_db              = var.analytics_db
+  # analytics_bl_filetype - (optional) is a type of number
+  analytics_bl_filetype = var.analytics_bl_filetype
+  # analytics_db - (optional) is a type of string
+  analytics_db = var.analytics_db
+  # analytics_ignore_filetype - (optional) is a type of number
   analytics_ignore_filetype = var.analytics_ignore_filetype
-  analytics_max_upload      = var.analytics_max_upload
-  analytics_wl_filetype     = var.analytics_wl_filetype
-  av_block_log              = var.av_block_log
-  av_virus_log              = var.av_virus_log
-  comment                   = var.comment
-  extended_log              = var.extended_log
-  feature_set               = var.feature_set
-  ftgd_analytics            = var.ftgd_analytics
-  inspection_mode           = var.inspection_mode
-  mobile_malware_db         = var.mobile_malware_db
-  name                      = var.name
-  replacemsg_group          = var.replacemsg_group
-  scan_mode                 = var.scan_mode
+  # analytics_max_upload - (optional) is a type of number
+  analytics_max_upload = var.analytics_max_upload
+  # analytics_wl_filetype - (optional) is a type of number
+  analytics_wl_filetype = var.analytics_wl_filetype
+  # av_block_log - (optional) is a type of string
+  av_block_log = var.av_block_log
+  # av_virus_log - (optional) is a type of string
+  av_virus_log = var.av_virus_log
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
+  # ftgd_analytics - (optional) is a type of string
+  ftgd_analytics = var.ftgd_analytics
+  # inspection_mode - (optional) is a type of string
+  inspection_mode = var.inspection_mode
+  # mobile_malware_db - (optional) is a type of string
+  mobile_malware_db = var.mobile_malware_db
+  # name - (required) is a type of string
+  name = var.name
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # scan_mode - (optional) is a type of string
+  scan_mode = var.scan_mode
 
   dynamic "cifs" {
     for_each = var.cifs
     content {
-      archive_block       = cifs.value["archive_block"]
-      archive_log         = cifs.value["archive_log"]
-      emulator            = cifs.value["emulator"]
-      options             = cifs.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = cifs.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = cifs.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = cifs.value["emulator"]
+      # options - (optional) is a type of string
+      options = cifs.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = cifs.value["outbreak_prevention"]
     }
   }
@@ -529,35 +551,59 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "content_disarm" {
     for_each = var.content_disarm
     content {
-      cover_page                = content_disarm.value["cover_page"]
-      detect_only               = content_disarm.value["detect_only"]
-      error_action              = content_disarm.value["error_action"]
-      office_action             = content_disarm.value["office_action"]
-      office_dde                = content_disarm.value["office_dde"]
-      office_embed              = content_disarm.value["office_embed"]
-      office_hylink             = content_disarm.value["office_hylink"]
-      office_linked             = content_disarm.value["office_linked"]
-      office_macro              = content_disarm.value["office_macro"]
+      # cover_page - (optional) is a type of string
+      cover_page = content_disarm.value["cover_page"]
+      # detect_only - (optional) is a type of string
+      detect_only = content_disarm.value["detect_only"]
+      # error_action - (optional) is a type of string
+      error_action = content_disarm.value["error_action"]
+      # office_action - (optional) is a type of string
+      office_action = content_disarm.value["office_action"]
+      # office_dde - (optional) is a type of string
+      office_dde = content_disarm.value["office_dde"]
+      # office_embed - (optional) is a type of string
+      office_embed = content_disarm.value["office_embed"]
+      # office_hylink - (optional) is a type of string
+      office_hylink = content_disarm.value["office_hylink"]
+      # office_linked - (optional) is a type of string
+      office_linked = content_disarm.value["office_linked"]
+      # office_macro - (optional) is a type of string
+      office_macro = content_disarm.value["office_macro"]
+      # original_file_destination - (optional) is a type of string
       original_file_destination = content_disarm.value["original_file_destination"]
-      pdf_act_form              = content_disarm.value["pdf_act_form"]
-      pdf_act_gotor             = content_disarm.value["pdf_act_gotor"]
-      pdf_act_java              = content_disarm.value["pdf_act_java"]
-      pdf_act_launch            = content_disarm.value["pdf_act_launch"]
-      pdf_act_movie             = content_disarm.value["pdf_act_movie"]
-      pdf_act_sound             = content_disarm.value["pdf_act_sound"]
-      pdf_embedfile             = content_disarm.value["pdf_embedfile"]
-      pdf_hyperlink             = content_disarm.value["pdf_hyperlink"]
-      pdf_javacode              = content_disarm.value["pdf_javacode"]
+      # pdf_act_form - (optional) is a type of string
+      pdf_act_form = content_disarm.value["pdf_act_form"]
+      # pdf_act_gotor - (optional) is a type of string
+      pdf_act_gotor = content_disarm.value["pdf_act_gotor"]
+      # pdf_act_java - (optional) is a type of string
+      pdf_act_java = content_disarm.value["pdf_act_java"]
+      # pdf_act_launch - (optional) is a type of string
+      pdf_act_launch = content_disarm.value["pdf_act_launch"]
+      # pdf_act_movie - (optional) is a type of string
+      pdf_act_movie = content_disarm.value["pdf_act_movie"]
+      # pdf_act_sound - (optional) is a type of string
+      pdf_act_sound = content_disarm.value["pdf_act_sound"]
+      # pdf_embedfile - (optional) is a type of string
+      pdf_embedfile = content_disarm.value["pdf_embedfile"]
+      # pdf_hyperlink - (optional) is a type of string
+      pdf_hyperlink = content_disarm.value["pdf_hyperlink"]
+      # pdf_javacode - (optional) is a type of string
+      pdf_javacode = content_disarm.value["pdf_javacode"]
     }
   }
 
   dynamic "ftp" {
     for_each = var.ftp
     content {
-      archive_block       = ftp.value["archive_block"]
-      archive_log         = ftp.value["archive_log"]
-      emulator            = ftp.value["emulator"]
-      options             = ftp.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = ftp.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = ftp.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = ftp.value["emulator"]
+      # options - (optional) is a type of string
+      options = ftp.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = ftp.value["outbreak_prevention"]
     }
   }
@@ -565,11 +611,17 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "http" {
     for_each = var.http
     content {
-      archive_block       = http.value["archive_block"]
-      archive_log         = http.value["archive_log"]
-      content_disarm      = http.value["content_disarm"]
-      emulator            = http.value["emulator"]
-      options             = http.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = http.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = http.value["archive_log"]
+      # content_disarm - (optional) is a type of string
+      content_disarm = http.value["content_disarm"]
+      # emulator - (optional) is a type of string
+      emulator = http.value["emulator"]
+      # options - (optional) is a type of string
+      options = http.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = http.value["outbreak_prevention"]
     }
   }
@@ -577,12 +629,19 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "imap" {
     for_each = var.imap
     content {
-      archive_block       = imap.value["archive_block"]
-      archive_log         = imap.value["archive_log"]
-      content_disarm      = imap.value["content_disarm"]
-      emulator            = imap.value["emulator"]
-      executables         = imap.value["executables"]
-      options             = imap.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = imap.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = imap.value["archive_log"]
+      # content_disarm - (optional) is a type of string
+      content_disarm = imap.value["content_disarm"]
+      # emulator - (optional) is a type of string
+      emulator = imap.value["emulator"]
+      # executables - (optional) is a type of string
+      executables = imap.value["executables"]
+      # options - (optional) is a type of string
+      options = imap.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = imap.value["outbreak_prevention"]
     }
   }
@@ -590,11 +649,17 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "mapi" {
     for_each = var.mapi
     content {
-      archive_block       = mapi.value["archive_block"]
-      archive_log         = mapi.value["archive_log"]
-      emulator            = mapi.value["emulator"]
-      executables         = mapi.value["executables"]
-      options             = mapi.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = mapi.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = mapi.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = mapi.value["emulator"]
+      # executables - (optional) is a type of string
+      executables = mapi.value["executables"]
+      # options - (optional) is a type of string
+      options = mapi.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = mapi.value["outbreak_prevention"]
     }
   }
@@ -602,19 +667,27 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "nac_quar" {
     for_each = var.nac_quar
     content {
-      expiry   = nac_quar.value["expiry"]
+      # expiry - (optional) is a type of string
+      expiry = nac_quar.value["expiry"]
+      # infected - (optional) is a type of string
       infected = nac_quar.value["infected"]
-      log      = nac_quar.value["log"]
+      # log - (optional) is a type of string
+      log = nac_quar.value["log"]
     }
   }
 
   dynamic "nntp" {
     for_each = var.nntp
     content {
-      archive_block       = nntp.value["archive_block"]
-      archive_log         = nntp.value["archive_log"]
-      emulator            = nntp.value["emulator"]
-      options             = nntp.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = nntp.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = nntp.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = nntp.value["emulator"]
+      # options - (optional) is a type of string
+      options = nntp.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = nntp.value["outbreak_prevention"]
     }
   }
@@ -622,20 +695,29 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "outbreak_prevention" {
     for_each = var.outbreak_prevention
     content {
+      # external_blocklist - (optional) is a type of string
       external_blocklist = outbreak_prevention.value["external_blocklist"]
-      ftgd_service       = outbreak_prevention.value["ftgd_service"]
+      # ftgd_service - (optional) is a type of string
+      ftgd_service = outbreak_prevention.value["ftgd_service"]
     }
   }
 
   dynamic "pop3" {
     for_each = var.pop3
     content {
-      archive_block       = pop3.value["archive_block"]
-      archive_log         = pop3.value["archive_log"]
-      content_disarm      = pop3.value["content_disarm"]
-      emulator            = pop3.value["emulator"]
-      executables         = pop3.value["executables"]
-      options             = pop3.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = pop3.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = pop3.value["archive_log"]
+      # content_disarm - (optional) is a type of string
+      content_disarm = pop3.value["content_disarm"]
+      # emulator - (optional) is a type of string
+      emulator = pop3.value["emulator"]
+      # executables - (optional) is a type of string
+      executables = pop3.value["executables"]
+      # options - (optional) is a type of string
+      options = pop3.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = pop3.value["outbreak_prevention"]
     }
   }
@@ -643,10 +725,15 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "smb" {
     for_each = var.smb
     content {
-      archive_block       = smb.value["archive_block"]
-      archive_log         = smb.value["archive_log"]
-      emulator            = smb.value["emulator"]
-      options             = smb.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = smb.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = smb.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = smb.value["emulator"]
+      # options - (optional) is a type of string
+      options = smb.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = smb.value["outbreak_prevention"]
     }
   }
@@ -654,12 +741,19 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "smtp" {
     for_each = var.smtp
     content {
-      archive_block       = smtp.value["archive_block"]
-      archive_log         = smtp.value["archive_log"]
-      content_disarm      = smtp.value["content_disarm"]
-      emulator            = smtp.value["emulator"]
-      executables         = smtp.value["executables"]
-      options             = smtp.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = smtp.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = smtp.value["archive_log"]
+      # content_disarm - (optional) is a type of string
+      content_disarm = smtp.value["content_disarm"]
+      # emulator - (optional) is a type of string
+      emulator = smtp.value["emulator"]
+      # executables - (optional) is a type of string
+      executables = smtp.value["executables"]
+      # options - (optional) is a type of string
+      options = smtp.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = smtp.value["outbreak_prevention"]
     }
   }
@@ -667,10 +761,15 @@ resource "fortios_antivirus_profile" "this" {
   dynamic "ssh" {
     for_each = var.ssh
     content {
-      archive_block       = ssh.value["archive_block"]
-      archive_log         = ssh.value["archive_log"]
-      emulator            = ssh.value["emulator"]
-      options             = ssh.value["options"]
+      # archive_block - (optional) is a type of string
+      archive_block = ssh.value["archive_block"]
+      # archive_log - (optional) is a type of string
+      archive_log = ssh.value["archive_log"]
+      # emulator - (optional) is a type of string
+      emulator = ssh.value["emulator"]
+      # options - (optional) is a type of string
+      options = ssh.value["options"]
+      # outbreak_prevention - (optional) is a type of string
       outbreak_prevention = ssh.value["outbreak_prevention"]
     }
   }

@@ -83,17 +83,24 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_backup_unit" "this" {
-  email    = var.email
-  name     = var.name
+  # email - (required) is a type of string
+  email = var.email
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
   password = var.password
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

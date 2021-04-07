@@ -172,32 +172,51 @@ variable "headers" {
 
 ```terraform
 resource "fortios_webproxy_profile" "this" {
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  header_client_ip              = var.header_client_ip
-  header_front_end_https        = var.header_front_end_https
-  header_via_request            = var.header_via_request
-  header_via_response           = var.header_via_response
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # header_client_ip - (optional) is a type of string
+  header_client_ip = var.header_client_ip
+  # header_front_end_https - (optional) is a type of string
+  header_front_end_https = var.header_front_end_https
+  # header_via_request - (optional) is a type of string
+  header_via_request = var.header_via_request
+  # header_via_response - (optional) is a type of string
+  header_via_response = var.header_via_response
+  # header_x_authenticated_groups - (optional) is a type of string
   header_x_authenticated_groups = var.header_x_authenticated_groups
-  header_x_authenticated_user   = var.header_x_authenticated_user
-  header_x_forwarded_for        = var.header_x_forwarded_for
-  log_header_change             = var.log_header_change
-  name                          = var.name
-  strip_encoding                = var.strip_encoding
+  # header_x_authenticated_user - (optional) is a type of string
+  header_x_authenticated_user = var.header_x_authenticated_user
+  # header_x_forwarded_for - (optional) is a type of string
+  header_x_forwarded_for = var.header_x_forwarded_for
+  # log_header_change - (optional) is a type of string
+  log_header_change = var.log_header_change
+  # name - (optional) is a type of string
+  name = var.name
+  # strip_encoding - (optional) is a type of string
+  strip_encoding = var.strip_encoding
 
   dynamic "headers" {
     for_each = var.headers
     content {
-      action          = headers.value["action"]
-      add_option      = headers.value["add_option"]
+      # action - (optional) is a type of string
+      action = headers.value["action"]
+      # add_option - (optional) is a type of string
+      add_option = headers.value["add_option"]
+      # base64_encoding - (optional) is a type of string
       base64_encoding = headers.value["base64_encoding"]
-      content         = headers.value["content"]
-      id              = headers.value["id"]
-      name            = headers.value["name"]
-      protocol        = headers.value["protocol"]
+      # content - (optional) is a type of string
+      content = headers.value["content"]
+      # id - (optional) is a type of number
+      id = headers.value["id"]
+      # name - (optional) is a type of string
+      name = headers.value["name"]
+      # protocol - (optional) is a type of string
+      protocol = headers.value["protocol"]
 
       dynamic "dstaddr" {
         for_each = headers.value.dstaddr
         content {
+          # name - (optional) is a type of string
           name = dstaddr.value["name"]
         }
       }
@@ -205,6 +224,7 @@ resource "fortios_webproxy_profile" "this" {
       dynamic "dstaddr6" {
         for_each = headers.value.dstaddr6
         content {
+          # name - (optional) is a type of string
           name = dstaddr6.value["name"]
         }
       }

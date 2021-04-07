@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "alicloud_ram_group" "this" {
+  # comments - (optional) is a type of string
   comments = var.comments
-  force    = var.force
-  name     = var.name
+  # force - (optional) is a type of bool
+  force = var.force
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -114,15 +114,24 @@ variable "wag_port" {
 
 ```terraform
 resource "fortios_wirelesscontroller_wagprofile" "this" {
-  comment               = var.comment
-  dhcp_ip_addr          = var.dhcp_ip_addr
-  name                  = var.name
-  ping_interval         = var.ping_interval
-  ping_number           = var.ping_number
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dhcp_ip_addr - (optional) is a type of string
+  dhcp_ip_addr = var.dhcp_ip_addr
+  # name - (optional) is a type of string
+  name = var.name
+  # ping_interval - (optional) is a type of number
+  ping_interval = var.ping_interval
+  # ping_number - (optional) is a type of number
+  ping_number = var.ping_number
+  # return_packet_timeout - (optional) is a type of number
   return_packet_timeout = var.return_packet_timeout
-  tunnel_type           = var.tunnel_type
-  wag_ip                = var.wag_ip
-  wag_port              = var.wag_port
+  # tunnel_type - (optional) is a type of string
+  tunnel_type = var.tunnel_type
+  # wag_ip - (optional) is a type of string
+  wag_ip = var.wag_ip
+  # wag_port - (optional) is a type of number
+  wag_port = var.wag_port
 }
 ```
 

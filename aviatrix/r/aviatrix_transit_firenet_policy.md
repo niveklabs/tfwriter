@@ -56,7 +56,9 @@ variable "transit_firenet_gateway_name" {
 
 ```terraform
 resource "aviatrix_transit_firenet_policy" "this" {
-  inspected_resource_name      = var.inspected_resource_name
+  # inspected_resource_name - (required) is a type of string
+  inspected_resource_name = var.inspected_resource_name
+  # transit_firenet_gateway_name - (required) is a type of string
   transit_firenet_gateway_name = var.transit_firenet_gateway_name
 }
 ```

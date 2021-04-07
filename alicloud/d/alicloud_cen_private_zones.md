@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 data "alicloud_cen_private_zones" "this" {
-  cen_id         = var.cen_id
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # host_region_id - (optional) is a type of string
   host_region_id = var.host_region_id
-  ids            = var.ids
-  output_file    = var.output_file
-  status         = var.status
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

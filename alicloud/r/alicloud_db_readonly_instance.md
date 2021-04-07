@@ -144,20 +144,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_db_readonly_instance" "this" {
-  engine_version        = var.engine_version
-  instance_name         = var.instance_name
-  instance_storage      = var.instance_storage
-  instance_type         = var.instance_type
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_storage - (required) is a type of number
+  instance_storage = var.instance_storage
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # master_db_instance_id - (required) is a type of string
   master_db_instance_id = var.master_db_instance_id
-  resource_group_id     = var.resource_group_id
-  tags                  = var.tags
-  vswitch_id            = var.vswitch_id
-  zone_id               = var.zone_id
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -165,8 +176,11 @@ resource "alicloud_db_readonly_instance" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -102,26 +102,39 @@ variable "settings" {
 
 ```terraform
 resource "azuredevops_branch_policy_min_reviewers" "this" {
-  blocking   = var.blocking
-  enabled    = var.enabled
+  # blocking - (optional) is a type of bool
+  blocking = var.blocking
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # project_id - (required) is a type of string
   project_id = var.project_id
 
   dynamic "settings" {
     for_each = var.settings
     content {
+      # allow_completion_with_rejects_or_waits - (optional) is a type of bool
       allow_completion_with_rejects_or_waits = settings.value["allow_completion_with_rejects_or_waits"]
-      last_pusher_cannot_approve             = settings.value["last_pusher_cannot_approve"]
-      on_last_iteration_require_vote         = settings.value["on_last_iteration_require_vote"]
-      on_push_reset_all_votes                = settings.value["on_push_reset_all_votes"]
-      on_push_reset_approved_votes           = settings.value["on_push_reset_approved_votes"]
-      reviewer_count                         = settings.value["reviewer_count"]
-      submitter_can_vote                     = settings.value["submitter_can_vote"]
+      # last_pusher_cannot_approve - (optional) is a type of bool
+      last_pusher_cannot_approve = settings.value["last_pusher_cannot_approve"]
+      # on_last_iteration_require_vote - (optional) is a type of bool
+      on_last_iteration_require_vote = settings.value["on_last_iteration_require_vote"]
+      # on_push_reset_all_votes - (optional) is a type of bool
+      on_push_reset_all_votes = settings.value["on_push_reset_all_votes"]
+      # on_push_reset_approved_votes - (optional) is a type of bool
+      on_push_reset_approved_votes = settings.value["on_push_reset_approved_votes"]
+      # reviewer_count - (optional) is a type of number
+      reviewer_count = settings.value["reviewer_count"]
+      # submitter_can_vote - (optional) is a type of bool
+      submitter_can_vote = settings.value["submitter_can_vote"]
 
       dynamic "scope" {
         for_each = settings.value.scope
         content {
-          match_type     = scope.value["match_type"]
-          repository_id  = scope.value["repository_id"]
+          # match_type - (optional) is a type of string
+          match_type = scope.value["match_type"]
+          # repository_id - (optional) is a type of string
+          repository_id = scope.value["repository_id"]
+          # repository_ref - (optional) is a type of string
           repository_ref = scope.value["repository_ref"]
         }
       }

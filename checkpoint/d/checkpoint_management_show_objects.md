@@ -98,16 +98,23 @@ variable "order" {
 
 ```terraform
 data "checkpoint_management_show_objects" "this" {
-  filter  = var.filter
+  # filter - (optional) is a type of string
+  filter = var.filter
+  # ip_only - (optional) is a type of bool
   ip_only = var.ip_only
-  limit   = var.limit
-  offset  = var.offset
-  type    = var.type
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # offset - (optional) is a type of number
+  offset = var.offset
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "order" {
     for_each = var.order
     content {
-      asc  = order.value["asc"]
+      # asc - (optional) is a type of string
+      asc = order.value["asc"]
+      # desc - (optional) is a type of string
       desc = order.value["desc"]
     }
   }

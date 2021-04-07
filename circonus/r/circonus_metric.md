@@ -64,9 +64,12 @@ variable "type" {
 
 ```terraform
 resource "circonus_metric" "this" {
+  # active - (optional) is a type of bool
   active = var.active
-  name   = var.name
-  type   = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

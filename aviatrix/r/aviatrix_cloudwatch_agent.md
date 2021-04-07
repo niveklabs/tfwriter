@@ -72,10 +72,14 @@ variable "region" {
 
 ```terraform
 resource "aviatrix_cloudwatch_agent" "this" {
+  # cloudwatch_role_arn - (required) is a type of string
   cloudwatch_role_arn = var.cloudwatch_role_arn
-  excluded_gateways   = var.excluded_gateways
-  log_group_name      = var.log_group_name
-  region              = var.region
+  # excluded_gateways - (optional) is a type of set of string
+  excluded_gateways = var.excluded_gateways
+  # log_group_name - (optional) is a type of string
+  log_group_name = var.log_group_name
+  # region - (required) is a type of string
+  region = var.region
 }
 ```
 

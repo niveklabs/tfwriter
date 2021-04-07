@@ -186,27 +186,45 @@ variable "aggregates" {
 
 ```terraform
 resource "fortios_switchcontroller_flowtracking" "this" {
-  collector_ip          = var.collector_ip
-  collector_port        = var.collector_port
+  # collector_ip - (optional) is a type of string
+  collector_ip = var.collector_ip
+  # collector_port - (optional) is a type of number
+  collector_port = var.collector_port
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  format                = var.format
-  level                 = var.level
-  max_export_pkt_size   = var.max_export_pkt_size
-  sample_mode           = var.sample_mode
-  sample_rate           = var.sample_rate
-  timeout_general       = var.timeout_general
-  timeout_icmp          = var.timeout_icmp
-  timeout_max           = var.timeout_max
-  timeout_tcp           = var.timeout_tcp
-  timeout_tcp_fin       = var.timeout_tcp_fin
-  timeout_tcp_rst       = var.timeout_tcp_rst
-  timeout_udp           = var.timeout_udp
-  transport             = var.transport
+  # format - (optional) is a type of string
+  format = var.format
+  # level - (optional) is a type of string
+  level = var.level
+  # max_export_pkt_size - (optional) is a type of number
+  max_export_pkt_size = var.max_export_pkt_size
+  # sample_mode - (optional) is a type of string
+  sample_mode = var.sample_mode
+  # sample_rate - (optional) is a type of number
+  sample_rate = var.sample_rate
+  # timeout_general - (optional) is a type of number
+  timeout_general = var.timeout_general
+  # timeout_icmp - (optional) is a type of number
+  timeout_icmp = var.timeout_icmp
+  # timeout_max - (optional) is a type of number
+  timeout_max = var.timeout_max
+  # timeout_tcp - (optional) is a type of number
+  timeout_tcp = var.timeout_tcp
+  # timeout_tcp_fin - (optional) is a type of number
+  timeout_tcp_fin = var.timeout_tcp_fin
+  # timeout_tcp_rst - (optional) is a type of number
+  timeout_tcp_rst = var.timeout_tcp_rst
+  # timeout_udp - (optional) is a type of number
+  timeout_udp = var.timeout_udp
+  # transport - (optional) is a type of string
+  transport = var.transport
 
   dynamic "aggregates" {
     for_each = var.aggregates
     content {
+      # id - (optional) is a type of number
       id = aggregates.value["id"]
+      # ip - (optional) is a type of string
       ip = aggregates.value["ip"]
     }
   }

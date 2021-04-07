@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 resource "alicloud_mns_topic" "this" {
-  logging_enabled      = var.logging_enabled
+  # logging_enabled - (optional) is a type of bool
+  logging_enabled = var.logging_enabled
+  # maximum_message_size - (optional) is a type of number
   maximum_message_size = var.maximum_message_size
-  name                 = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

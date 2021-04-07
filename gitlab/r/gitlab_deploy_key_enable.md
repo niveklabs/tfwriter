@@ -80,11 +80,16 @@ variable "title" {
 
 ```terraform
 resource "gitlab_deploy_key_enable" "this" {
+  # can_push - (optional) is a type of bool
   can_push = var.can_push
-  key      = var.key
-  key_id   = var.key_id
-  project  = var.project
-  title    = var.title
+  # key - (optional) is a type of string
+  key = var.key
+  # key_id - (required) is a type of string
+  key_id = var.key_id
+  # project - (required) is a type of string
+  project = var.project
+  # title - (optional) is a type of string
+  title = var.title
 }
 ```
 

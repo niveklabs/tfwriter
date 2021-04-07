@@ -50,6 +50,7 @@ variable "mode" {
 
 ```terraform
 resource "fortios_switchcontrollerptp_settings" "this" {
+  # mode - (optional) is a type of string
   mode = var.mode
 }
 ```

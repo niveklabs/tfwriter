@@ -158,21 +158,33 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_logical_tier1_router" "this" {
-  advertise_connected_routes  = var.advertise_connected_routes
+  # advertise_connected_routes - (optional) is a type of bool
+  advertise_connected_routes = var.advertise_connected_routes
+  # advertise_lb_snat_ip_routes - (optional) is a type of bool
   advertise_lb_snat_ip_routes = var.advertise_lb_snat_ip_routes
-  advertise_lb_vip_routes     = var.advertise_lb_vip_routes
-  advertise_nat_routes        = var.advertise_nat_routes
-  advertise_static_routes     = var.advertise_static_routes
-  description                 = var.description
-  display_name                = var.display_name
-  edge_cluster_id             = var.edge_cluster_id
+  # advertise_lb_vip_routes - (optional) is a type of bool
+  advertise_lb_vip_routes = var.advertise_lb_vip_routes
+  # advertise_nat_routes - (optional) is a type of bool
+  advertise_nat_routes = var.advertise_nat_routes
+  # advertise_static_routes - (optional) is a type of bool
+  advertise_static_routes = var.advertise_static_routes
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # edge_cluster_id - (optional) is a type of string
+  edge_cluster_id = var.edge_cluster_id
+  # enable_router_advertisement - (optional) is a type of bool
   enable_router_advertisement = var.enable_router_advertisement
-  failover_mode               = var.failover_mode
+  # failover_mode - (optional) is a type of string
+  failover_mode = var.failover_mode
 
   dynamic "firewall_sections" {
     for_each = var.firewall_sections
     content {
-      target_id   = firewall_sections.value["target_id"]
+      # target_id - (optional) is a type of string
+      target_id = firewall_sections.value["target_id"]
+      # target_type - (optional) is a type of string
       target_type = firewall_sections.value["target_type"]
     }
   }
@@ -180,8 +192,10 @@ resource "nsxt_logical_tier1_router" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

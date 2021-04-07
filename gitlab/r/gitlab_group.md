@@ -160,21 +160,36 @@ variable "visibility_level" {
 
 ```terraform
 resource "gitlab_group" "this" {
-  auto_devops_enabled               = var.auto_devops_enabled
-  description                       = var.description
-  emails_disabled                   = var.emails_disabled
-  lfs_enabled                       = var.lfs_enabled
-  mentions_disabled                 = var.mentions_disabled
-  name                              = var.name
-  parent_id                         = var.parent_id
-  path                              = var.path
-  project_creation_level            = var.project_creation_level
-  request_access_enabled            = var.request_access_enabled
+  # auto_devops_enabled - (optional) is a type of bool
+  auto_devops_enabled = var.auto_devops_enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # emails_disabled - (optional) is a type of bool
+  emails_disabled = var.emails_disabled
+  # lfs_enabled - (optional) is a type of bool
+  lfs_enabled = var.lfs_enabled
+  # mentions_disabled - (optional) is a type of bool
+  mentions_disabled = var.mentions_disabled
+  # name - (required) is a type of string
+  name = var.name
+  # parent_id - (optional) is a type of number
+  parent_id = var.parent_id
+  # path - (required) is a type of string
+  path = var.path
+  # project_creation_level - (optional) is a type of string
+  project_creation_level = var.project_creation_level
+  # request_access_enabled - (optional) is a type of bool
+  request_access_enabled = var.request_access_enabled
+  # require_two_factor_authentication - (optional) is a type of bool
   require_two_factor_authentication = var.require_two_factor_authentication
-  share_with_group_lock             = var.share_with_group_lock
-  subgroup_creation_level           = var.subgroup_creation_level
-  two_factor_grace_period           = var.two_factor_grace_period
-  visibility_level                  = var.visibility_level
+  # share_with_group_lock - (optional) is a type of bool
+  share_with_group_lock = var.share_with_group_lock
+  # subgroup_creation_level - (optional) is a type of string
+  subgroup_creation_level = var.subgroup_creation_level
+  # two_factor_grace_period - (optional) is a type of number
+  two_factor_grace_period = var.two_factor_grace_period
+  # visibility_level - (optional) is a type of string
+  visibility_level = var.visibility_level
 }
 ```
 

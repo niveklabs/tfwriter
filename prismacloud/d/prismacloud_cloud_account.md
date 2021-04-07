@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 data "prismacloud_cloud_account" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
+  # cloud_type - (required) is a type of string
   cloud_type = var.cloud_type
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

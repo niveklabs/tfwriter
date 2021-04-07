@@ -129,18 +129,30 @@ variable "threshold" {
 
 ```terraform
 resource "tencentcloud_as_scaling_policy" "this" {
-  adjustment_type             = var.adjustment_type
-  adjustment_value            = var.adjustment_value
-  comparison_operator         = var.comparison_operator
-  continuous_time             = var.continuous_time
-  cooldown                    = var.cooldown
-  metric_name                 = var.metric_name
+  # adjustment_type - (required) is a type of string
+  adjustment_type = var.adjustment_type
+  # adjustment_value - (required) is a type of number
+  adjustment_value = var.adjustment_value
+  # comparison_operator - (required) is a type of string
+  comparison_operator = var.comparison_operator
+  # continuous_time - (required) is a type of number
+  continuous_time = var.continuous_time
+  # cooldown - (optional) is a type of number
+  cooldown = var.cooldown
+  # metric_name - (required) is a type of string
+  metric_name = var.metric_name
+  # notification_user_group_ids - (optional) is a type of list of string
   notification_user_group_ids = var.notification_user_group_ids
-  period                      = var.period
-  policy_name                 = var.policy_name
-  scaling_group_id            = var.scaling_group_id
-  statistic                   = var.statistic
-  threshold                   = var.threshold
+  # period - (required) is a type of number
+  period = var.period
+  # policy_name - (required) is a type of string
+  policy_name = var.policy_name
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # statistic - (optional) is a type of string
+  statistic = var.statistic
+  # threshold - (required) is a type of number
+  threshold = var.threshold
 }
 ```
 

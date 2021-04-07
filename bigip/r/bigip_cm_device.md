@@ -72,10 +72,14 @@ variable "name" {
 
 ```terraform
 resource "bigip_cm_device" "this" {
-  configsync_ip       = var.configsync_ip
-  mirror_ip           = var.mirror_ip
+  # configsync_ip - (required) is a type of string
+  configsync_ip = var.configsync_ip
+  # mirror_ip - (optional) is a type of string
+  mirror_ip = var.mirror_ip
+  # mirror_secondary_ip - (optional) is a type of string
   mirror_secondary_ip = var.mirror_secondary_ip
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

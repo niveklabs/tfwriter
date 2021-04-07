@@ -385,62 +385,103 @@ variable "worker_data_disks" {
 
 ```terraform
 resource "alicloud_cs_edge_kubernetes" "this" {
-  availability_zone              = var.availability_zone
-  client_cert                    = var.client_cert
-  client_key                     = var.client_key
-  cluster_ca_cert                = var.cluster_ca_cert
-  deletion_protection            = var.deletion_protection
-  force_update                   = var.force_update
-  install_cloud_monitor          = var.install_cloud_monitor
-  is_enterprise_security_group   = var.is_enterprise_security_group
-  key_name                       = var.key_name
-  kube_config                    = var.kube_config
-  name                           = var.name
-  name_prefix                    = var.name_prefix
-  new_nat_gateway                = var.new_nat_gateway
-  node_cidr_mask                 = var.node_cidr_mask
-  password                       = var.password
-  pod_cidr                       = var.pod_cidr
-  proxy_mode                     = var.proxy_mode
-  rds_instances                  = var.rds_instances
-  resource_group_id              = var.resource_group_id
-  security_group_id              = var.security_group_id
-  service_cidr                   = var.service_cidr
-  slb_internet_enabled           = var.slb_internet_enabled
-  tags                           = var.tags
-  user_data                      = var.user_data
-  version                        = var.version
-  worker_disk_category           = var.worker_disk_category
-  worker_disk_performance_level  = var.worker_disk_performance_level
-  worker_disk_size               = var.worker_disk_size
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # client_cert - (optional) is a type of string
+  client_cert = var.client_cert
+  # client_key - (optional) is a type of string
+  client_key = var.client_key
+  # cluster_ca_cert - (optional) is a type of string
+  cluster_ca_cert = var.cluster_ca_cert
+  # deletion_protection - (optional) is a type of bool
+  deletion_protection = var.deletion_protection
+  # force_update - (optional) is a type of bool
+  force_update = var.force_update
+  # install_cloud_monitor - (optional) is a type of bool
+  install_cloud_monitor = var.install_cloud_monitor
+  # is_enterprise_security_group - (optional) is a type of bool
+  is_enterprise_security_group = var.is_enterprise_security_group
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # kube_config - (optional) is a type of string
+  kube_config = var.kube_config
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # new_nat_gateway - (optional) is a type of bool
+  new_nat_gateway = var.new_nat_gateway
+  # node_cidr_mask - (optional) is a type of number
+  node_cidr_mask = var.node_cidr_mask
+  # password - (optional) is a type of string
+  password = var.password
+  # pod_cidr - (optional) is a type of string
+  pod_cidr = var.pod_cidr
+  # proxy_mode - (optional) is a type of string
+  proxy_mode = var.proxy_mode
+  # rds_instances - (optional) is a type of list of string
+  rds_instances = var.rds_instances
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # service_cidr - (optional) is a type of string
+  service_cidr = var.service_cidr
+  # slb_internet_enabled - (optional) is a type of bool
+  slb_internet_enabled = var.slb_internet_enabled
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # version - (optional) is a type of string
+  version = var.version
+  # worker_disk_category - (optional) is a type of string
+  worker_disk_category = var.worker_disk_category
+  # worker_disk_performance_level - (optional) is a type of string
+  worker_disk_performance_level = var.worker_disk_performance_level
+  # worker_disk_size - (optional) is a type of number
+  worker_disk_size = var.worker_disk_size
+  # worker_disk_snapshot_policy_id - (optional) is a type of string
   worker_disk_snapshot_policy_id = var.worker_disk_snapshot_policy_id
-  worker_instance_charge_type    = var.worker_instance_charge_type
-  worker_instance_types          = var.worker_instance_types
-  worker_number                  = var.worker_number
-  worker_vswitch_ids             = var.worker_vswitch_ids
+  # worker_instance_charge_type - (optional) is a type of string
+  worker_instance_charge_type = var.worker_instance_charge_type
+  # worker_instance_types - (required) is a type of list of string
+  worker_instance_types = var.worker_instance_types
+  # worker_number - (required) is a type of number
+  worker_number = var.worker_number
+  # worker_vswitch_ids - (required) is a type of list of string
+  worker_vswitch_ids = var.worker_vswitch_ids
 
   dynamic "addons" {
     for_each = var.addons
     content {
-      config   = addons.value["config"]
+      # config - (optional) is a type of string
+      config = addons.value["config"]
+      # disabled - (optional) is a type of bool
       disabled = addons.value["disabled"]
-      name     = addons.value["name"]
+      # name - (optional) is a type of string
+      name = addons.value["name"]
     }
   }
 
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # project - (optional) is a type of string
       project = log_config.value["project"]
-      type    = log_config.value["type"]
+      # type - (required) is a type of string
+      type = log_config.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -448,15 +489,24 @@ resource "alicloud_cs_edge_kubernetes" "this" {
   dynamic "worker_data_disks" {
     for_each = var.worker_data_disks
     content {
+      # auto_snapshot_policy_id - (optional) is a type of string
       auto_snapshot_policy_id = worker_data_disks.value["auto_snapshot_policy_id"]
-      category                = worker_data_disks.value["category"]
-      device                  = worker_data_disks.value["device"]
-      encrypted               = worker_data_disks.value["encrypted"]
-      kms_key_id              = worker_data_disks.value["kms_key_id"]
-      name                    = worker_data_disks.value["name"]
-      performance_level       = worker_data_disks.value["performance_level"]
-      size                    = worker_data_disks.value["size"]
-      snapshot_id             = worker_data_disks.value["snapshot_id"]
+      # category - (optional) is a type of string
+      category = worker_data_disks.value["category"]
+      # device - (optional) is a type of string
+      device = worker_data_disks.value["device"]
+      # encrypted - (optional) is a type of string
+      encrypted = worker_data_disks.value["encrypted"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = worker_data_disks.value["kms_key_id"]
+      # name - (optional) is a type of string
+      name = worker_data_disks.value["name"]
+      # performance_level - (optional) is a type of string
+      performance_level = worker_data_disks.value["performance_level"]
+      # size - (optional) is a type of string
+      size = worker_data_disks.value["size"]
+      # snapshot_id - (optional) is a type of string
+      snapshot_id = worker_data_disks.value["snapshot_id"]
     }
   }
 

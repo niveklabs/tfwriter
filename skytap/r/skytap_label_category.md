@@ -74,14 +74,19 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_label_category" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # single_value - (required) is a type of bool
   single_value = var.single_value
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

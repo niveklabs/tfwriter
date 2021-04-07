@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_clear_session_filter" "this" {
+  # status - (optional) is a type of string
   status = var.status
-  uuid   = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

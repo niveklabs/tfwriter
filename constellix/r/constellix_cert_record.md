@@ -147,26 +147,42 @@ variable "roundrobin" {
 
 ```terraform
 resource "constellix_cert_record" "this" {
-  domain_id   = var.domain_id
-  gtd_region  = var.gtd_region
-  name        = var.name
-  noanswer    = var.noanswer
-  note        = var.note
-  parent      = var.parent
-  parentid    = var.parentid
-  source      = var.source
+  # domain_id - (required) is a type of string
+  domain_id = var.domain_id
+  # gtd_region - (optional) is a type of number
+  gtd_region = var.gtd_region
+  # name - (optional) is a type of string
+  name = var.name
+  # noanswer - (optional) is a type of bool
+  noanswer = var.noanswer
+  # note - (optional) is a type of string
+  note = var.note
+  # parent - (optional) is a type of string
+  parent = var.parent
+  # parentid - (optional) is a type of number
+  parentid = var.parentid
+  # source - (optional) is a type of string
+  source = var.source
+  # source_type - (required) is a type of string
   source_type = var.source_type
-  ttl         = var.ttl
-  type        = var.type
+  # ttl - (required) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "roundrobin" {
     for_each = var.roundrobin
     content {
-      algorithm        = roundrobin.value["algorithm"]
-      certificate      = roundrobin.value["certificate"]
+      # algorithm - (required) is a type of number
+      algorithm = roundrobin.value["algorithm"]
+      # certificate - (required) is a type of string
+      certificate = roundrobin.value["certificate"]
+      # certificate_type - (required) is a type of number
       certificate_type = roundrobin.value["certificate_type"]
-      disable_flag     = roundrobin.value["disable_flag"]
-      key_tag          = roundrobin.value["key_tag"]
+      # disable_flag - (optional) is a type of string
+      disable_flag = roundrobin.value["disable_flag"]
+      # key_tag - (required) is a type of number
+      key_tag = roundrobin.value["key_tag"]
     }
   }
 

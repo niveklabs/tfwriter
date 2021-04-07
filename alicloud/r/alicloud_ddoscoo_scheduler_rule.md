@@ -95,18 +95,27 @@ variable "rules" {
 
 ```terraform
 resource "alicloud_ddoscoo_scheduler_rule" "this" {
-  param             = var.param
+  # param - (optional) is a type of string
+  param = var.param
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  rule_name         = var.rule_name
-  rule_type         = var.rule_type
+  # rule_name - (required) is a type of string
+  rule_name = var.rule_name
+  # rule_type - (required) is a type of number
+  rule_type = var.rule_type
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      priority   = rules.value["priority"]
-      region_id  = rules.value["region_id"]
-      type       = rules.value["type"]
-      value      = rules.value["value"]
+      # priority - (optional) is a type of number
+      priority = rules.value["priority"]
+      # region_id - (optional) is a type of string
+      region_id = rules.value["region_id"]
+      # type - (optional) is a type of string
+      type = rules.value["type"]
+      # value - (optional) is a type of string
+      value = rules.value["value"]
+      # value_type - (optional) is a type of number
       value_type = rules.value["value_type"]
     }
   }

@@ -88,18 +88,23 @@ variable "filter" {
 
 ```terraform
 resource "datadog_logs_index" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "exclusion_filter" {
     for_each = var.exclusion_filter
     content {
+      # is_enabled - (optional) is a type of bool
       is_enabled = exclusion_filter.value["is_enabled"]
-      name       = exclusion_filter.value["name"]
+      # name - (optional) is a type of string
+      name = exclusion_filter.value["name"]
 
       dynamic "filter" {
         for_each = exclusion_filter.value.filter
         content {
-          query       = filter.value["query"]
+          # query - (optional) is a type of string
+          query = filter.value["query"]
+          # sample_rate - (optional) is a type of number
           sample_rate = filter.value["sample_rate"]
         }
       }
@@ -110,6 +115,7 @@ resource "datadog_logs_index" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
+      # query - (required) is a type of string
       query = filter.value["query"]
     }
   }

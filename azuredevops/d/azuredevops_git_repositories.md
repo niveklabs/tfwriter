@@ -66,9 +66,12 @@ variable "project_id" {
 
 ```terraform
 data "azuredevops_git_repositories" "this" {
+  # include_hidden - (optional) is a type of bool
   include_hidden = var.include_hidden
-  name           = var.name
-  project_id     = var.project_id
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
 }
 ```
 

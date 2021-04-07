@@ -49,6 +49,7 @@ variable "storage_uuid" {
 
 ```terraform
 data "gridscale_backup_list" "this" {
+  # storage_uuid - (required) is a type of string
   storage_uuid = var.storage_uuid
 }
 ```

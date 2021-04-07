@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "tencentcloud_address_template" "this" {
+  # addresses - (required) is a type of set of string
   addresses = var.addresses
-  name      = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

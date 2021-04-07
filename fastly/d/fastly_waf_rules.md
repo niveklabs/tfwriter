@@ -66,9 +66,12 @@ variable "tags" {
 
 ```terraform
 data "fastly_waf_rules" "this" {
+  # exclude_modsec_rule_ids - (optional) is a type of list of number
   exclude_modsec_rule_ids = var.exclude_modsec_rule_ids
-  publishers              = var.publishers
-  tags                    = var.tags
+  # publishers - (optional) is a type of list of string
+  publishers = var.publishers
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 }
 ```
 

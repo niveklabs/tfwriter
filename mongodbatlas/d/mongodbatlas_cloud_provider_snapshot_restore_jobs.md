@@ -72,10 +72,14 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_cloud_provider_snapshot_restore_jobs" "this" {
-  cluster_name   = var.cluster_name
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # items_per_page - (optional) is a type of number
   items_per_page = var.items_per_page
-  page_num       = var.page_num
-  project_id     = var.project_id
+  # page_num - (optional) is a type of number
+  page_num = var.page_num
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

@@ -96,13 +96,20 @@ variable "vsys" {
 
 ```terraform
 resource "panos_address_object" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  tags         = var.tags
-  type         = var.type
-  value        = var.value
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # value - (required) is a type of string
+  value = var.value
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

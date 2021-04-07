@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "datadog_logs_index_order" "this" {
+  # indexes - (required) is a type of list of string
   indexes = var.indexes
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

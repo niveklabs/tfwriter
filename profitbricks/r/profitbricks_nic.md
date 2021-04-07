@@ -123,22 +123,34 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_nic" "this" {
-  datacenter_id   = var.datacenter_id
-  dhcp            = var.dhcp
+  # datacenter_id - (required) is a type of string
+  datacenter_id = var.datacenter_id
+  # dhcp - (optional) is a type of bool
+  dhcp = var.dhcp
+  # firewall_active - (optional) is a type of bool
   firewall_active = var.firewall_active
-  ip              = var.ip
-  lan             = var.lan
-  name            = var.name
-  nat             = var.nat
-  server_id       = var.server_id
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # lan - (required) is a type of number
+  lan = var.lan
+  # name - (optional) is a type of string
+  name = var.name
+  # nat - (optional) is a type of bool
+  nat = var.nat
+  # server_id - (required) is a type of string
+  server_id = var.server_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

@@ -57,8 +57,10 @@ variable "folder" {
 
 ```terraform
 resource "grafana_dashboard" "this" {
+  # config_json - (required) is a type of string
   config_json = var.config_json
-  folder      = var.folder
+  # folder - (optional) is a type of number
+  folder = var.folder
 }
 ```
 

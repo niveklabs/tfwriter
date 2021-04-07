@@ -98,13 +98,20 @@ variable "tid" {
 
 ```terraform
 data "alicloud_dms_enterprise_users" "this" {
-  ids         = var.ids
-  name_regex  = var.name_regex
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  role        = var.role
-  search_key  = var.search_key
-  status      = var.status
-  tid         = var.tid
+  # role - (optional) is a type of string
+  role = var.role
+  # search_key - (optional) is a type of string
+  search_key = var.search_key
+  # status - (optional) is a type of string
+  status = var.status
+  # tid - (optional) is a type of number
+  tid = var.tid
 }
 ```
 

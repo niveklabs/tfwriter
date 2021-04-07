@@ -272,32 +272,55 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_emr_cluster" "this" {
-  charge_type               = var.charge_type
-  cluster_type              = var.cluster_type
-  deposit_type              = var.deposit_type
-  eas_enable                = var.eas_enable
-  emr_ver                   = var.emr_ver
-  high_availability_enable  = var.high_availability_enable
-  is_open_public_ip         = var.is_open_public_ip
-  key_pair_name             = var.key_pair_name
-  master_pwd                = var.master_pwd
-  name                      = var.name
-  option_software_list      = var.option_software_list
-  period                    = var.period
-  related_cluster_id        = var.related_cluster_id
-  security_group_id         = var.security_group_id
-  ssh_enable                = var.ssh_enable
-  tags                      = var.tags
-  use_local_metadb          = var.use_local_metadb
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # cluster_type - (required) is a type of string
+  cluster_type = var.cluster_type
+  # deposit_type - (optional) is a type of string
+  deposit_type = var.deposit_type
+  # eas_enable - (optional) is a type of bool
+  eas_enable = var.eas_enable
+  # emr_ver - (required) is a type of string
+  emr_ver = var.emr_ver
+  # high_availability_enable - (optional) is a type of bool
+  high_availability_enable = var.high_availability_enable
+  # is_open_public_ip - (optional) is a type of bool
+  is_open_public_ip = var.is_open_public_ip
+  # key_pair_name - (optional) is a type of string
+  key_pair_name = var.key_pair_name
+  # master_pwd - (optional) is a type of string
+  master_pwd = var.master_pwd
+  # name - (required) is a type of string
+  name = var.name
+  # option_software_list - (optional) is a type of list of string
+  option_software_list = var.option_software_list
+  # period - (optional) is a type of number
+  period = var.period
+  # related_cluster_id - (optional) is a type of string
+  related_cluster_id = var.related_cluster_id
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # ssh_enable - (optional) is a type of bool
+  ssh_enable = var.ssh_enable
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # use_local_metadb - (optional) is a type of bool
+  use_local_metadb = var.use_local_metadb
+  # user_defined_emr_ecs_role - (optional) is a type of string
   user_defined_emr_ecs_role = var.user_defined_emr_ecs_role
-  vswitch_id                = var.vswitch_id
-  zone_id                   = var.zone_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "bootstrap_action" {
     for_each = var.bootstrap_action
     content {
-      arg  = bootstrap_action.value["arg"]
+      # arg - (optional) is a type of string
+      arg = bootstrap_action.value["arg"]
+      # name - (optional) is a type of string
       name = bootstrap_action.value["name"]
+      # path - (optional) is a type of string
       path = bootstrap_action.value["path"]
     }
   }
@@ -305,27 +328,43 @@ resource "alicloud_emr_cluster" "this" {
   dynamic "host_group" {
     for_each = var.host_group
     content {
-      auto_renew        = host_group.value["auto_renew"]
-      charge_type       = host_group.value["charge_type"]
-      disk_capacity     = host_group.value["disk_capacity"]
-      disk_count        = host_group.value["disk_count"]
-      disk_type         = host_group.value["disk_type"]
-      gpu_driver        = host_group.value["gpu_driver"]
-      host_group_name   = host_group.value["host_group_name"]
-      host_group_type   = host_group.value["host_group_type"]
-      instance_list     = host_group.value["instance_list"]
-      instance_type     = host_group.value["instance_type"]
-      node_count        = host_group.value["node_count"]
-      period            = host_group.value["period"]
+      # auto_renew - (optional) is a type of bool
+      auto_renew = host_group.value["auto_renew"]
+      # charge_type - (optional) is a type of string
+      charge_type = host_group.value["charge_type"]
+      # disk_capacity - (optional) is a type of string
+      disk_capacity = host_group.value["disk_capacity"]
+      # disk_count - (optional) is a type of string
+      disk_count = host_group.value["disk_count"]
+      # disk_type - (optional) is a type of string
+      disk_type = host_group.value["disk_type"]
+      # gpu_driver - (optional) is a type of string
+      gpu_driver = host_group.value["gpu_driver"]
+      # host_group_name - (optional) is a type of string
+      host_group_name = host_group.value["host_group_name"]
+      # host_group_type - (optional) is a type of string
+      host_group_type = host_group.value["host_group_type"]
+      # instance_list - (optional) is a type of string
+      instance_list = host_group.value["instance_list"]
+      # instance_type - (optional) is a type of string
+      instance_type = host_group.value["instance_type"]
+      # node_count - (optional) is a type of string
+      node_count = host_group.value["node_count"]
+      # period - (optional) is a type of number
+      period = host_group.value["period"]
+      # sys_disk_capacity - (optional) is a type of string
       sys_disk_capacity = host_group.value["sys_disk_capacity"]
-      sys_disk_type     = host_group.value["sys_disk_type"]
+      # sys_disk_type - (optional) is a type of string
+      sys_disk_type = host_group.value["sys_disk_type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

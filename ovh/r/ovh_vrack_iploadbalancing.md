@@ -56,8 +56,10 @@ variable "service_name" {
 
 ```terraform
 resource "ovh_vrack_iploadbalancing" "this" {
+  # ip_loadbalancing - (required) is a type of string
   ip_loadbalancing = var.ip_loadbalancing
-  service_name     = var.service_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 }
 ```
 

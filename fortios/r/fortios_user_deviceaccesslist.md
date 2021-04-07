@@ -83,16 +83,22 @@ variable "device_list" {
 
 ```terraform
 resource "fortios_user_deviceaccesslist" "this" {
-  default_action        = var.default_action
+  # default_action - (optional) is a type of string
+  default_action = var.default_action
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "device_list" {
     for_each = var.device_list
     content {
+      # action - (optional) is a type of string
       action = device_list.value["action"]
+      # device - (optional) is a type of string
       device = device_list.value["device"]
-      id     = device_list.value["id"]
+      # id - (optional) is a type of number
+      id = device_list.value["id"]
     }
   }
 

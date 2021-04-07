@@ -156,32 +156,50 @@ variable "node_pool" {
 
 ```terraform
 resource "digitalocean_kubernetes_cluster" "this" {
-  auto_upgrade  = var.auto_upgrade
-  name          = var.name
-  region        = var.region
+  # auto_upgrade - (optional) is a type of bool
+  auto_upgrade = var.auto_upgrade
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
+  # surge_upgrade - (optional) is a type of bool
   surge_upgrade = var.surge_upgrade
-  tags          = var.tags
-  version       = var.version
-  vpc_uuid      = var.vpc_uuid
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # version - (required) is a type of string
+  version = var.version
+  # vpc_uuid - (optional) is a type of string
+  vpc_uuid = var.vpc_uuid
 
   dynamic "node_pool" {
     for_each = var.node_pool
     content {
+      # auto_scale - (optional) is a type of bool
       auto_scale = node_pool.value["auto_scale"]
-      labels     = node_pool.value["labels"]
-      max_nodes  = node_pool.value["max_nodes"]
-      min_nodes  = node_pool.value["min_nodes"]
-      name       = node_pool.value["name"]
+      # labels - (optional) is a type of map of string
+      labels = node_pool.value["labels"]
+      # max_nodes - (optional) is a type of number
+      max_nodes = node_pool.value["max_nodes"]
+      # min_nodes - (optional) is a type of number
+      min_nodes = node_pool.value["min_nodes"]
+      # name - (required) is a type of string
+      name = node_pool.value["name"]
+      # node_count - (optional) is a type of number
       node_count = node_pool.value["node_count"]
-      size       = node_pool.value["size"]
-      tags       = node_pool.value["tags"]
+      # size - (required) is a type of string
+      size = node_pool.value["size"]
+      # tags - (optional) is a type of set of string
+      tags = node_pool.value["tags"]
 
       dynamic "taint" {
         for_each = node_pool.value.taint
         content {
+          # effect - (required) is a type of string
           effect = taint.value["effect"]
-          key    = taint.value["key"]
-          value  = taint.value["value"]
+          # key - (required) is a type of string
+          key = taint.value["key"]
+          # value - (required) is a type of string
+          value = taint.value["value"]
         }
       }
 

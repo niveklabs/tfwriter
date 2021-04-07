@@ -75,16 +75,22 @@ variable "display" {
 
 ```terraform
 resource "datadog_integration_slack_channel" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
+  # channel_name - (required) is a type of string
   channel_name = var.channel_name
 
   dynamic "display" {
     for_each = var.display
     content {
-      message  = display.value["message"]
+      # message - (optional) is a type of bool
+      message = display.value["message"]
+      # notified - (optional) is a type of bool
       notified = display.value["notified"]
+      # snapshot - (optional) is a type of bool
       snapshot = display.value["snapshot"]
-      tags     = display.value["tags"]
+      # tags - (optional) is a type of bool
+      tags = display.value["tags"]
     }
   }
 

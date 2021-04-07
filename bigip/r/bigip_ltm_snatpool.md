@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "bigip_ltm_snatpool" "this" {
+  # members - (required) is a type of set of string
   members = var.members
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

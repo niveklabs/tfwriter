@@ -79,11 +79,16 @@ variable "password" {
 
 ```terraform
 resource "tencentcloud_mysql_account" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  host        = var.host
-  mysql_id    = var.mysql_id
-  name        = var.name
-  password    = var.password
+  # host - (optional) is a type of string
+  host = var.host
+  # mysql_id - (required) is a type of string
+  mysql_id = var.mysql_id
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
 }
 ```
 

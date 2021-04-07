@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "ecl_baremetal_keypair_v2" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

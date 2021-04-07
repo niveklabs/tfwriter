@@ -90,17 +90,21 @@ variable "time" {
 
 ```terraform
 resource "opsgenie_maintenance" "this" {
+  # description - (required) is a type of string
   description = var.description
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # state - (optional) is a type of string
       state = rules.value["state"]
 
       dynamic "entity" {
         for_each = rules.value.entity
         content {
-          id   = entity.value["id"]
+          # id - (optional) is a type of string
+          id = entity.value["id"]
+          # type - (optional) is a type of string
           type = entity.value["type"]
         }
       }
@@ -111,9 +115,12 @@ resource "opsgenie_maintenance" "this" {
   dynamic "time" {
     for_each = var.time
     content {
-      end_date   = time.value["end_date"]
+      # end_date - (optional) is a type of string
+      end_date = time.value["end_date"]
+      # start_date - (optional) is a type of string
       start_date = time.value["start_date"]
-      type       = time.value["type"]
+      # type - (required) is a type of string
+      type = time.value["type"]
     }
   }
 

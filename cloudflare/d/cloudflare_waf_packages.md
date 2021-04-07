@@ -69,15 +69,20 @@ variable "filter" {
 
 ```terraform
 data "cloudflare_waf_packages" "this" {
+  # zone_id - (required) is a type of string
   zone_id = var.zone_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      action_mode    = filter.value["action_mode"]
+      # action_mode - (optional) is a type of string
+      action_mode = filter.value["action_mode"]
+      # detection_mode - (optional) is a type of string
       detection_mode = filter.value["detection_mode"]
-      name           = filter.value["name"]
-      sensitivity    = filter.value["sensitivity"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # sensitivity - (optional) is a type of string
+      sensitivity = filter.value["sensitivity"]
     }
   }
 

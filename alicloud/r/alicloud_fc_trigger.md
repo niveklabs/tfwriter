@@ -111,15 +111,24 @@ variable "type" {
 
 ```terraform
 resource "alicloud_fc_trigger" "this" {
-  config      = var.config
-  config_mns  = var.config_mns
-  function    = var.function
-  name        = var.name
+  # config - (optional) is a type of string
+  config = var.config
+  # config_mns - (optional) is a type of string
+  config_mns = var.config_mns
+  # function - (required) is a type of string
+  function = var.function
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
   name_prefix = var.name_prefix
-  role        = var.role
-  service     = var.service
-  source_arn  = var.source_arn
-  type        = var.type
+  # role - (optional) is a type of string
+  role = var.role
+  # service - (required) is a type of string
+  service = var.service
+  # source_arn - (optional) is a type of string
+  source_arn = var.source_arn
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

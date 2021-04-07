@@ -175,23 +175,40 @@ variable "use_pmtu" {
 
 ```terraform
 resource "bigip_net_tunnel" "this" {
-  app_service       = var.app_service
-  auto_last_hop     = var.auto_last_hop
-  description       = var.description
-  idle_timeout      = var.idle_timeout
-  key               = var.key
-  local_address     = var.local_address
-  mode              = var.mode
-  mtu               = var.mtu
-  name              = var.name
-  partition         = var.partition
-  profile           = var.profile
-  remote_address    = var.remote_address
+  # app_service - (optional) is a type of string
+  app_service = var.app_service
+  # auto_last_hop - (optional) is a type of string
+  auto_last_hop = var.auto_last_hop
+  # description - (optional) is a type of string
+  description = var.description
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # key - (optional) is a type of number
+  key = var.key
+  # local_address - (required) is a type of string
+  local_address = var.local_address
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # profile - (required) is a type of string
+  profile = var.profile
+  # remote_address - (optional) is a type of string
+  remote_address = var.remote_address
+  # secondary_address - (optional) is a type of string
   secondary_address = var.secondary_address
-  tos               = var.tos
-  traffic_group     = var.traffic_group
-  transparent       = var.transparent
-  use_pmtu          = var.use_pmtu
+  # tos - (optional) is a type of string
+  tos = var.tos
+  # traffic_group - (optional) is a type of string
+  traffic_group = var.traffic_group
+  # transparent - (optional) is a type of string
+  transparent = var.transparent
+  # use_pmtu - (optional) is a type of string
+  use_pmtu = var.use_pmtu
 }
 ```
 

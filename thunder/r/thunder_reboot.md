@@ -146,19 +146,32 @@ variable "time" {
 
 ```terraform
 resource "thunder_reboot" "this" {
-  all            = var.all
-  at             = var.at
-  cancel         = var.cancel
-  day_of_month   = var.day_of_month
+  # all - (optional) is a type of number
+  all = var.all
+  # at - (optional) is a type of number
+  at = var.at
+  # cancel - (optional) is a type of number
+  cancel = var.cancel
+  # day_of_month - (optional) is a type of number
+  day_of_month = var.day_of_month
+  # day_of_month_2 - (optional) is a type of number
   day_of_month_2 = var.day_of_month_2
-  device         = var.device
-  in             = var.in
-  month          = var.month
-  month_2        = var.month_2
-  reason         = var.reason
-  reason_2       = var.reason_2
-  reason_3       = var.reason_3
-  time           = var.time
+  # device - (optional) is a type of number
+  device = var.device
+  # in - (optional) is a type of string
+  in = var.in
+  # month - (optional) is a type of string
+  month = var.month
+  # month_2 - (optional) is a type of string
+  month_2 = var.month_2
+  # reason - (optional) is a type of string
+  reason = var.reason
+  # reason_2 - (optional) is a type of string
+  reason_2 = var.reason_2
+  # reason_3 - (optional) is a type of string
+  reason_3 = var.reason_3
+  # time - (optional) is a type of string
+  time = var.time
 }
 ```
 

@@ -57,7 +57,9 @@ variable "tags" {
 
 ```terraform
 data "opennebula_virtual_machine_group" "this" {
+  # name - (required) is a type of string
   name = var.name
+  # tags - (optional) is a type of map of string
   tags = var.tags
 }
 ```

@@ -74,10 +74,14 @@ variable "zone" {
 
 ```terraform
 data "scaleway_baremetal_offer" "this" {
+  # include_disabled - (optional) is a type of bool
   include_disabled = var.include_disabled
-  name             = var.name
-  offer_id         = var.offer_id
-  zone             = var.zone
+  # name - (optional) is a type of string
+  name = var.name
+  # offer_id - (optional) is a type of string
+  offer_id = var.offer_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

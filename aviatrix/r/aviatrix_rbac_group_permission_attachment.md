@@ -56,7 +56,9 @@ variable "permission_name" {
 
 ```terraform
 resource "aviatrix_rbac_group_permission_attachment" "this" {
-  group_name      = var.group_name
+  # group_name - (required) is a type of string
+  group_name = var.group_name
+  # permission_name - (required) is a type of string
   permission_name = var.permission_name
 }
 ```

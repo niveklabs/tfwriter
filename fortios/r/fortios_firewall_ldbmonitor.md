@@ -121,16 +121,26 @@ variable "type" {
 
 ```terraform
 resource "fortios_firewall_ldbmonitor" "this" {
-  http_get           = var.http_get
-  http_match         = var.http_match
+  # http_get - (optional) is a type of string
+  http_get = var.http_get
+  # http_match - (optional) is a type of string
+  http_match = var.http_match
+  # http_max_redirects - (optional) is a type of number
   http_max_redirects = var.http_max_redirects
-  interval           = var.interval
-  name               = var.name
-  port               = var.port
-  retry              = var.retry
-  src_ip             = var.src_ip
-  timeout            = var.timeout
-  type               = var.type
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # retry - (optional) is a type of number
+  retry = var.retry
+  # src_ip - (optional) is a type of string
+  src_ip = var.src_ip
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

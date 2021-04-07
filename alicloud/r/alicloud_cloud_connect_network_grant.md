@@ -63,8 +63,11 @@ variable "cen_uid" {
 
 ```terraform
 resource "alicloud_cloud_connect_network_grant" "this" {
-  ccn_id  = var.ccn_id
-  cen_id  = var.cen_id
+  # ccn_id - (required) is a type of string
+  ccn_id = var.ccn_id
+  # cen_id - (required) is a type of string
+  cen_id = var.cen_id
+  # cen_uid - (required) is a type of string
   cen_uid = var.cen_uid
 }
 ```

@@ -126,26 +126,42 @@ variable "probe" {
 
 ```terraform
 resource "ovh_iploadbalancing_http_farm" "this" {
-  balance          = var.balance
-  display_name     = var.display_name
-  port             = var.port
-  service_name     = var.service_name
-  stickiness       = var.stickiness
+  # balance - (optional) is a type of string
+  balance = var.balance
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # port - (optional) is a type of number
+  port = var.port
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # stickiness - (optional) is a type of string
+  stickiness = var.stickiness
+  # vrack_network_id - (optional) is a type of number
   vrack_network_id = var.vrack_network_id
-  zone             = var.zone
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "probe" {
     for_each = var.probe
     content {
+      # force_ssl - (optional) is a type of bool
       force_ssl = probe.value["force_ssl"]
-      interval  = probe.value["interval"]
-      match     = probe.value["match"]
-      method    = probe.value["method"]
-      negate    = probe.value["negate"]
-      pattern   = probe.value["pattern"]
-      port      = probe.value["port"]
-      type      = probe.value["type"]
-      url       = probe.value["url"]
+      # interval - (optional) is a type of number
+      interval = probe.value["interval"]
+      # match - (optional) is a type of string
+      match = probe.value["match"]
+      # method - (optional) is a type of string
+      method = probe.value["method"]
+      # negate - (optional) is a type of bool
+      negate = probe.value["negate"]
+      # pattern - (optional) is a type of string
+      pattern = probe.value["pattern"]
+      # port - (optional) is a type of number
+      port = probe.value["port"]
+      # type - (required) is a type of string
+      type = probe.value["type"]
+      # url - (optional) is a type of string
+      url = probe.value["url"]
     }
   }
 

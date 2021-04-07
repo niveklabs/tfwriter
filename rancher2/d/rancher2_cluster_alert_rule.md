@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 data "rancher2_cluster_alert_rule" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  labels     = var.labels
-  name       = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

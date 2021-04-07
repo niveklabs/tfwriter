@@ -56,7 +56,9 @@ variable "project_name" {
 
 ```terraform
 resource "oktaasa_enrollment_token" "this" {
-  description  = var.description
+  # description - (required) is a type of string
+  description = var.description
+  # project_name - (required) is a type of string
   project_name = var.project_name
 }
 ```

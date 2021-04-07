@@ -72,10 +72,14 @@ variable "version_id" {
 
 ```terraform
 resource "tencentcloud_ssm_secret_version" "this" {
+  # secret_binary - (optional) is a type of string
   secret_binary = var.secret_binary
-  secret_name   = var.secret_name
+  # secret_name - (required) is a type of string
+  secret_name = var.secret_name
+  # secret_string - (optional) is a type of string
   secret_string = var.secret_string
-  version_id    = var.version_id
+  # version_id - (required) is a type of string
+  version_id = var.version_id
 }
 ```
 

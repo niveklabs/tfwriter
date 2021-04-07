@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "alicloud_kms_secrets" "this" {
-  fetch_tags  = var.fetch_tags
-  ids         = var.ids
-  name_regex  = var.name_regex
+  # fetch_tags - (optional) is a type of bool
+  fetch_tags = var.fetch_tags
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

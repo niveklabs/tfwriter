@@ -56,7 +56,9 @@ variable "lambda_arn" {
 
 ```terraform
 resource "datadog_integration_aws_lambda_arn" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
+  # lambda_arn - (required) is a type of string
   lambda_arn = var.lambda_arn
 }
 ```

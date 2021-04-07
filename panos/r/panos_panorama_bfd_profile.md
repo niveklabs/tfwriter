@@ -113,15 +113,24 @@ variable "template_stack" {
 
 ```terraform
 resource "panos_panorama_bfd_profile" "this" {
+  # detection_multiplier - (optional) is a type of number
   detection_multiplier = var.detection_multiplier
-  hold_time            = var.hold_time
-  minimum_rx_interval  = var.minimum_rx_interval
-  minimum_rx_ttl       = var.minimum_rx_ttl
-  minimum_tx_interval  = var.minimum_tx_interval
-  mode                 = var.mode
-  name                 = var.name
-  template             = var.template
-  template_stack       = var.template_stack
+  # hold_time - (optional) is a type of number
+  hold_time = var.hold_time
+  # minimum_rx_interval - (optional) is a type of number
+  minimum_rx_interval = var.minimum_rx_interval
+  # minimum_rx_ttl - (optional) is a type of number
+  minimum_rx_ttl = var.minimum_rx_ttl
+  # minimum_tx_interval - (optional) is a type of number
+  minimum_tx_interval = var.minimum_tx_interval
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
 }
 ```
 

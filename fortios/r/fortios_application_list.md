@@ -311,30 +311,51 @@ variable "entries" {
 
 ```terraform
 resource "fortios_application_list" "this" {
-  app_replacemsg                   = var.app_replacemsg
-  comment                          = var.comment
+  # app_replacemsg - (optional) is a type of string
+  app_replacemsg = var.app_replacemsg
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # control_default_network_services - (optional) is a type of string
   control_default_network_services = var.control_default_network_services
-  deep_app_inspection              = var.deep_app_inspection
-  dynamic_sort_subtable            = var.dynamic_sort_subtable
-  enforce_default_app_port         = var.enforce_default_app_port
-  extended_log                     = var.extended_log
-  force_inclusion_ssl_di_sigs      = var.force_inclusion_ssl_di_sigs
-  name                             = var.name
-  options                          = var.options
-  other_application_action         = var.other_application_action
-  other_application_log            = var.other_application_log
-  p2p_black_list                   = var.p2p_black_list
-  p2p_block_list                   = var.p2p_block_list
-  replacemsg_group                 = var.replacemsg_group
-  unknown_application_action       = var.unknown_application_action
-  unknown_application_log          = var.unknown_application_log
+  # deep_app_inspection - (optional) is a type of string
+  deep_app_inspection = var.deep_app_inspection
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # enforce_default_app_port - (optional) is a type of string
+  enforce_default_app_port = var.enforce_default_app_port
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # force_inclusion_ssl_di_sigs - (optional) is a type of string
+  force_inclusion_ssl_di_sigs = var.force_inclusion_ssl_di_sigs
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of string
+  options = var.options
+  # other_application_action - (optional) is a type of string
+  other_application_action = var.other_application_action
+  # other_application_log - (optional) is a type of string
+  other_application_log = var.other_application_log
+  # p2p_black_list - (optional) is a type of string
+  p2p_black_list = var.p2p_black_list
+  # p2p_block_list - (optional) is a type of string
+  p2p_block_list = var.p2p_block_list
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # unknown_application_action - (optional) is a type of string
+  unknown_application_action = var.unknown_application_action
+  # unknown_application_log - (optional) is a type of string
+  unknown_application_log = var.unknown_application_log
 
   dynamic "default_network_services" {
     for_each = var.default_network_services
     content {
-      id               = default_network_services.value["id"]
-      port             = default_network_services.value["port"]
-      services         = default_network_services.value["services"]
+      # id - (optional) is a type of number
+      id = default_network_services.value["id"]
+      # port - (optional) is a type of number
+      port = default_network_services.value["port"]
+      # services - (optional) is a type of string
+      services = default_network_services.value["services"]
+      # violation_action - (optional) is a type of string
       violation_action = default_network_services.value["violation_action"]
     }
   }
@@ -342,30 +363,51 @@ resource "fortios_application_list" "this" {
   dynamic "entries" {
     for_each = var.entries
     content {
-      action            = entries.value["action"]
-      behavior          = entries.value["behavior"]
-      id                = entries.value["id"]
-      log               = entries.value["log"]
-      log_packet        = entries.value["log_packet"]
-      per_ip_shaper     = entries.value["per_ip_shaper"]
-      popularity        = entries.value["popularity"]
-      protocols         = entries.value["protocols"]
-      quarantine        = entries.value["quarantine"]
+      # action - (optional) is a type of string
+      action = entries.value["action"]
+      # behavior - (optional) is a type of string
+      behavior = entries.value["behavior"]
+      # id - (optional) is a type of number
+      id = entries.value["id"]
+      # log - (optional) is a type of string
+      log = entries.value["log"]
+      # log_packet - (optional) is a type of string
+      log_packet = entries.value["log_packet"]
+      # per_ip_shaper - (optional) is a type of string
+      per_ip_shaper = entries.value["per_ip_shaper"]
+      # popularity - (optional) is a type of string
+      popularity = entries.value["popularity"]
+      # protocols - (optional) is a type of string
+      protocols = entries.value["protocols"]
+      # quarantine - (optional) is a type of string
+      quarantine = entries.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of string
       quarantine_expiry = entries.value["quarantine_expiry"]
-      quarantine_log    = entries.value["quarantine_log"]
-      rate_count        = entries.value["rate_count"]
-      rate_duration     = entries.value["rate_duration"]
-      rate_mode         = entries.value["rate_mode"]
-      rate_track        = entries.value["rate_track"]
-      session_ttl       = entries.value["session_ttl"]
-      shaper            = entries.value["shaper"]
-      shaper_reverse    = entries.value["shaper_reverse"]
-      technology        = entries.value["technology"]
-      vendor            = entries.value["vendor"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = entries.value["quarantine_log"]
+      # rate_count - (optional) is a type of number
+      rate_count = entries.value["rate_count"]
+      # rate_duration - (optional) is a type of number
+      rate_duration = entries.value["rate_duration"]
+      # rate_mode - (optional) is a type of string
+      rate_mode = entries.value["rate_mode"]
+      # rate_track - (optional) is a type of string
+      rate_track = entries.value["rate_track"]
+      # session_ttl - (optional) is a type of number
+      session_ttl = entries.value["session_ttl"]
+      # shaper - (optional) is a type of string
+      shaper = entries.value["shaper"]
+      # shaper_reverse - (optional) is a type of string
+      shaper_reverse = entries.value["shaper_reverse"]
+      # technology - (optional) is a type of string
+      technology = entries.value["technology"]
+      # vendor - (optional) is a type of string
+      vendor = entries.value["vendor"]
 
       dynamic "application" {
         for_each = entries.value.application
         content {
+          # id - (optional) is a type of number
           id = application.value["id"]
         }
       }
@@ -373,6 +415,7 @@ resource "fortios_application_list" "this" {
       dynamic "category" {
         for_each = entries.value.category
         content {
+          # id - (optional) is a type of number
           id = category.value["id"]
         }
       }
@@ -380,6 +423,7 @@ resource "fortios_application_list" "this" {
       dynamic "exclusion" {
         for_each = entries.value.exclusion
         content {
+          # id - (optional) is a type of number
           id = exclusion.value["id"]
         }
       }
@@ -387,14 +431,19 @@ resource "fortios_application_list" "this" {
       dynamic "parameters" {
         for_each = entries.value.parameters
         content {
-          id    = parameters.value["id"]
+          # id - (optional) is a type of number
+          id = parameters.value["id"]
+          # value - (optional) is a type of string
           value = parameters.value["value"]
 
           dynamic "members" {
             for_each = parameters.value.members
             content {
-              id    = members.value["id"]
-              name  = members.value["name"]
+              # id - (optional) is a type of number
+              id = members.value["id"]
+              # name - (optional) is a type of string
+              name = members.value["name"]
+              # value - (optional) is a type of string
               value = members.value["value"]
             }
           }
@@ -405,6 +454,7 @@ resource "fortios_application_list" "this" {
       dynamic "risk" {
         for_each = entries.value.risk
         content {
+          # level - (optional) is a type of number
           level = risk.value["level"]
         }
       }
@@ -412,6 +462,7 @@ resource "fortios_application_list" "this" {
       dynamic "sub_category" {
         for_each = entries.value.sub_category
         content {
+          # id - (optional) is a type of number
           id = sub_category.value["id"]
         }
       }

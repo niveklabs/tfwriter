@@ -56,8 +56,10 @@ variable "project" {
 
 ```terraform
 resource "gitlab_pipeline_trigger" "this" {
+  # description - (required) is a type of string
   description = var.description
-  project     = var.project
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

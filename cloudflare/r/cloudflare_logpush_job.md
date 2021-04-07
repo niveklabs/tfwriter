@@ -94,13 +94,20 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_logpush_job" "this" {
-  dataset             = var.dataset
-  destination_conf    = var.destination_conf
-  enabled             = var.enabled
-  logpull_options     = var.logpull_options
-  name                = var.name
+  # dataset - (required) is a type of string
+  dataset = var.dataset
+  # destination_conf - (required) is a type of string
+  destination_conf = var.destination_conf
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # logpull_options - (optional) is a type of string
+  logpull_options = var.logpull_options
+  # name - (optional) is a type of string
+  name = var.name
+  # ownership_challenge - (required) is a type of string
   ownership_challenge = var.ownership_challenge
-  zone_id             = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

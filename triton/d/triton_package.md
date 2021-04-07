@@ -73,13 +73,21 @@ data "triton_package" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
-      disk    = filter.value["disk"]
-      group   = filter.value["group"]
-      lwps    = filter.value["lwps"]
-      memory  = filter.value["memory"]
-      name    = filter.value["name"]
-      swap    = filter.value["swap"]
-      vcpus   = filter.value["vcpus"]
+      # disk - (optional) is a type of number
+      disk = filter.value["disk"]
+      # group - (optional) is a type of string
+      group = filter.value["group"]
+      # lwps - (optional) is a type of number
+      lwps = filter.value["lwps"]
+      # memory - (optional) is a type of number
+      memory = filter.value["memory"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # swap - (optional) is a type of number
+      swap = filter.value["swap"]
+      # vcpus - (optional) is a type of number
+      vcpus = filter.value["vcpus"]
+      # version - (optional) is a type of string
       version = filter.value["version"]
     }
   }

@@ -89,12 +89,18 @@ variable "type" {
 
 ```terraform
 resource "hcloud_floating_ip" "this" {
-  description   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # home_location - (optional) is a type of string
   home_location = var.home_location
-  labels        = var.labels
-  name          = var.name
-  server_id     = var.server_id
-  type          = var.type
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # server_id - (optional) is a type of number
+  server_id = var.server_id
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -84,12 +84,18 @@ variable "username" {
 
 ```terraform
 resource "alicloud_alikafka_sasl_acl" "this" {
-  acl_operation_type        = var.acl_operation_type
-  acl_resource_name         = var.acl_resource_name
+  # acl_operation_type - (required) is a type of string
+  acl_operation_type = var.acl_operation_type
+  # acl_resource_name - (required) is a type of string
+  acl_resource_name = var.acl_resource_name
+  # acl_resource_pattern_type - (required) is a type of string
   acl_resource_pattern_type = var.acl_resource_pattern_type
-  acl_resource_type         = var.acl_resource_type
-  instance_id               = var.instance_id
-  username                  = var.username
+  # acl_resource_type - (required) is a type of string
+  acl_resource_type = var.acl_resource_type
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

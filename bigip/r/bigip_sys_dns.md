@@ -73,10 +73,14 @@ variable "search" {
 
 ```terraform
 resource "bigip_sys_dns" "this" {
-  description    = var.description
-  name_servers   = var.name_servers
+  # description - (required) is a type of string
+  description = var.description
+  # name_servers - (optional) is a type of set of string
+  name_servers = var.name_servers
+  # number_of_dots - (optional) is a type of number
   number_of_dots = var.number_of_dots
-  search         = var.search
+  # search - (optional) is a type of set of string
+  search = var.search
 }
 ```
 

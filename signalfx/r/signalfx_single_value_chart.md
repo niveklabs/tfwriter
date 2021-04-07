@@ -182,39 +182,62 @@ variable "viz_options" {
 
 ```terraform
 resource "signalfx_single_value_chart" "this" {
-  color_by                = var.color_by
-  description             = var.description
-  is_timestamp_hidden     = var.is_timestamp_hidden
-  max_delay               = var.max_delay
-  max_precision           = var.max_precision
-  name                    = var.name
-  program_text            = var.program_text
-  refresh_interval        = var.refresh_interval
+  # color_by - (optional) is a type of string
+  color_by = var.color_by
+  # description - (optional) is a type of string
+  description = var.description
+  # is_timestamp_hidden - (optional) is a type of bool
+  is_timestamp_hidden = var.is_timestamp_hidden
+  # max_delay - (optional) is a type of number
+  max_delay = var.max_delay
+  # max_precision - (optional) is a type of number
+  max_precision = var.max_precision
+  # name - (required) is a type of string
+  name = var.name
+  # program_text - (required) is a type of string
+  program_text = var.program_text
+  # refresh_interval - (optional) is a type of number
+  refresh_interval = var.refresh_interval
+  # secondary_visualization - (optional) is a type of string
   secondary_visualization = var.secondary_visualization
-  show_spark_line         = var.show_spark_line
-  timezone                = var.timezone
-  unit_prefix             = var.unit_prefix
+  # show_spark_line - (optional) is a type of bool
+  show_spark_line = var.show_spark_line
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # unit_prefix - (optional) is a type of string
+  unit_prefix = var.unit_prefix
 
   dynamic "color_scale" {
     for_each = var.color_scale
     content {
+      # color - (required) is a type of string
       color = color_scale.value["color"]
-      gt    = color_scale.value["gt"]
-      gte   = color_scale.value["gte"]
-      lt    = color_scale.value["lt"]
-      lte   = color_scale.value["lte"]
+      # gt - (optional) is a type of number
+      gt = color_scale.value["gt"]
+      # gte - (optional) is a type of number
+      gte = color_scale.value["gte"]
+      # lt - (optional) is a type of number
+      lt = color_scale.value["lt"]
+      # lte - (optional) is a type of number
+      lte = color_scale.value["lte"]
     }
   }
 
   dynamic "viz_options" {
     for_each = var.viz_options
     content {
-      color        = viz_options.value["color"]
+      # color - (optional) is a type of string
+      color = viz_options.value["color"]
+      # display_name - (optional) is a type of string
       display_name = viz_options.value["display_name"]
-      label        = viz_options.value["label"]
+      # label - (required) is a type of string
+      label = viz_options.value["label"]
+      # value_prefix - (optional) is a type of string
       value_prefix = viz_options.value["value_prefix"]
+      # value_suffix - (optional) is a type of string
       value_suffix = viz_options.value["value_suffix"]
-      value_unit   = viz_options.value["value_unit"]
+      # value_unit - (optional) is a type of string
+      value_unit = viz_options.value["value_unit"]
     }
   }
 

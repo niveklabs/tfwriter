@@ -136,19 +136,29 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_fw_global" "this" {
-  alg_processing         = var.alg_processing
+  # alg_processing - (optional) is a type of string
+  alg_processing = var.alg_processing
+  # disable_ip_fw_sessions - (optional) is a type of number
   disable_ip_fw_sessions = var.disable_ip_fw_sessions
-  extended_matching      = var.extended_matching
+  # extended_matching - (optional) is a type of string
+  extended_matching = var.extended_matching
+  # listen_on_port_timeout - (optional) is a type of number
   listen_on_port_timeout = var.listen_on_port_timeout
-  natip_ddos_protection  = var.natip_ddos_protection
-  permit_default_action  = var.permit_default_action
-  respond_to_user_mac    = var.respond_to_user_mac
-  uuid                   = var.uuid
+  # natip_ddos_protection - (optional) is a type of string
+  natip_ddos_protection = var.natip_ddos_protection
+  # permit_default_action - (optional) is a type of string
+  permit_default_action = var.permit_default_action
+  # respond_to_user_mac - (optional) is a type of number
+  respond_to_user_mac = var.respond_to_user_mac
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "disable_app_list" {
     for_each = var.disable_app_list
     content {
+      # disable_application_category - (optional) is a type of string
       disable_application_category = disable_app_list.value["disable_application_category"]
+      # disable_application_protocol - (optional) is a type of string
       disable_application_protocol = disable_app_list.value["disable_application_protocol"]
     }
   }
@@ -156,6 +166,7 @@ resource "thunder_fw_global" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

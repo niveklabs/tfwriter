@@ -70,10 +70,14 @@ variable "mac" {
 
 ```terraform
 resource "fortios_system_arptable" "this" {
-  fosid     = var.fosid
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
   interface = var.interface
-  ip        = var.ip
-  mac       = var.mac
+  # ip - (required) is a type of string
+  ip = var.ip
+  # mac - (required) is a type of string
+  mac = var.mac
 }
 ```
 

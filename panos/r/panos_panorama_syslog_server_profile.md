@@ -232,37 +232,64 @@ variable "syslog_server" {
 
 ```terraform
 resource "panos_panorama_syslog_server_profile" "this" {
-  auth_format        = var.auth_format
-  config_format      = var.config_format
-  data_format        = var.data_format
-  device_group       = var.device_group
-  escape_character   = var.escape_character
+  # auth_format - (optional) is a type of string
+  auth_format = var.auth_format
+  # config_format - (optional) is a type of string
+  config_format = var.config_format
+  # data_format - (optional) is a type of string
+  data_format = var.data_format
+  # device_group - (optional) is a type of string
+  device_group = var.device_group
+  # escape_character - (optional) is a type of string
+  escape_character = var.escape_character
+  # escaped_characters - (optional) is a type of string
   escaped_characters = var.escaped_characters
-  gtp_format         = var.gtp_format
-  hip_match_format   = var.hip_match_format
-  iptag_format       = var.iptag_format
-  name               = var.name
-  sctp_format        = var.sctp_format
-  system_format      = var.system_format
-  template           = var.template
-  template_stack     = var.template_stack
-  threat_format      = var.threat_format
-  traffic_format     = var.traffic_format
-  tunnel_format      = var.tunnel_format
-  url_format         = var.url_format
-  user_id_format     = var.user_id_format
-  vsys               = var.vsys
-  wildfire_format    = var.wildfire_format
+  # gtp_format - (optional) is a type of string
+  gtp_format = var.gtp_format
+  # hip_match_format - (optional) is a type of string
+  hip_match_format = var.hip_match_format
+  # iptag_format - (optional) is a type of string
+  iptag_format = var.iptag_format
+  # name - (required) is a type of string
+  name = var.name
+  # sctp_format - (optional) is a type of string
+  sctp_format = var.sctp_format
+  # system_format - (optional) is a type of string
+  system_format = var.system_format
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # threat_format - (optional) is a type of string
+  threat_format = var.threat_format
+  # traffic_format - (optional) is a type of string
+  traffic_format = var.traffic_format
+  # tunnel_format - (optional) is a type of string
+  tunnel_format = var.tunnel_format
+  # url_format - (optional) is a type of string
+  url_format = var.url_format
+  # user_id_format - (optional) is a type of string
+  user_id_format = var.user_id_format
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
+  # wildfire_format - (optional) is a type of string
+  wildfire_format = var.wildfire_format
 
   dynamic "syslog_server" {
     for_each = var.syslog_server
     content {
-      facility      = syslog_server.value["facility"]
-      name          = syslog_server.value["name"]
-      port          = syslog_server.value["port"]
-      server        = syslog_server.value["server"]
+      # facility - (optional) is a type of string
+      facility = syslog_server.value["facility"]
+      # name - (required) is a type of string
+      name = syslog_server.value["name"]
+      # port - (optional) is a type of number
+      port = syslog_server.value["port"]
+      # server - (required) is a type of string
+      server = syslog_server.value["server"]
+      # syslog_format - (optional) is a type of string
       syslog_format = syslog_server.value["syslog_format"]
-      transport     = syslog_server.value["transport"]
+      # transport - (optional) is a type of string
+      transport = syslog_server.value["transport"]
     }
   }
 

@@ -81,10 +81,15 @@ variable "ssl_min_proto_version" {
 
 ```terraform
 resource "fortios_user_pop3" "this" {
-  name                  = var.name
-  port                  = var.port
-  secure                = var.secure
-  server                = var.server
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # secure - (optional) is a type of string
+  secure = var.secure
+  # server - (required) is a type of string
+  server = var.server
+  # ssl_min_proto_version - (optional) is a type of string
   ssl_min_proto_version = var.ssl_min_proto_version
 }
 ```

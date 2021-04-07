@@ -72,10 +72,14 @@ variable "policy_name" {
 
 ```terraform
 resource "alicloud_resource_manager_policy" "this" {
+  # default_version - (optional) is a type of string
   default_version = var.default_version
-  description     = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # policy_document - (required) is a type of string
   policy_document = var.policy_document
-  policy_name     = var.policy_name
+  # policy_name - (required) is a type of string
+  policy_name = var.policy_name
 }
 ```
 

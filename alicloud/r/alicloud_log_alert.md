@@ -169,37 +169,59 @@ variable "query_list" {
 
 ```terraform
 resource "alicloud_log_alert" "this" {
+  # alert_description - (optional) is a type of string
   alert_description = var.alert_description
+  # alert_displayname - (required) is a type of string
   alert_displayname = var.alert_displayname
-  alert_name        = var.alert_name
-  condition         = var.condition
-  dashboard         = var.dashboard
-  mute_until        = var.mute_until
-  notify_threshold  = var.notify_threshold
-  project_name      = var.project_name
+  # alert_name - (required) is a type of string
+  alert_name = var.alert_name
+  # condition - (required) is a type of string
+  condition = var.condition
+  # dashboard - (required) is a type of string
+  dashboard = var.dashboard
+  # mute_until - (optional) is a type of number
+  mute_until = var.mute_until
+  # notify_threshold - (optional) is a type of number
+  notify_threshold = var.notify_threshold
+  # project_name - (required) is a type of string
+  project_name = var.project_name
+  # schedule_interval - (optional) is a type of string
   schedule_interval = var.schedule_interval
-  schedule_type     = var.schedule_type
-  throttling        = var.throttling
+  # schedule_type - (optional) is a type of string
+  schedule_type = var.schedule_type
+  # throttling - (optional) is a type of string
+  throttling = var.throttling
 
   dynamic "notification_list" {
     for_each = var.notification_list
     content {
-      content     = notification_list.value["content"]
-      email_list  = notification_list.value["email_list"]
+      # content - (required) is a type of string
+      content = notification_list.value["content"]
+      # email_list - (optional) is a type of set of string
+      email_list = notification_list.value["email_list"]
+      # mobile_list - (optional) is a type of set of string
       mobile_list = notification_list.value["mobile_list"]
+      # service_uri - (optional) is a type of string
       service_uri = notification_list.value["service_uri"]
-      type        = notification_list.value["type"]
+      # type - (required) is a type of string
+      type = notification_list.value["type"]
     }
   }
 
   dynamic "query_list" {
     for_each = var.query_list
     content {
-      chart_title    = query_list.value["chart_title"]
-      end            = query_list.value["end"]
-      logstore       = query_list.value["logstore"]
-      query          = query_list.value["query"]
-      start          = query_list.value["start"]
+      # chart_title - (required) is a type of string
+      chart_title = query_list.value["chart_title"]
+      # end - (required) is a type of string
+      end = query_list.value["end"]
+      # logstore - (required) is a type of string
+      logstore = query_list.value["logstore"]
+      # query - (required) is a type of string
+      query = query_list.value["query"]
+      # start - (required) is a type of string
+      start = query_list.value["start"]
+      # time_span_type - (optional) is a type of string
       time_span_type = query_list.value["time_span_type"]
     }
   }

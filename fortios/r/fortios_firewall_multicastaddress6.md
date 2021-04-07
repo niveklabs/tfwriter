@@ -113,22 +113,31 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_firewall_multicastaddress6" "this" {
-  color                 = var.color
-  comment               = var.comment
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ip6                   = var.ip6
-  name                  = var.name
-  visibility            = var.visibility
+  # ip6 - (required) is a type of string
+  ip6 = var.ip6
+  # name - (optional) is a type of string
+  name = var.name
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
 
   dynamic "tagging" {
     for_each = var.tagging
     content {
+      # category - (optional) is a type of string
       category = tagging.value["category"]
-      name     = tagging.value["name"]
+      # name - (optional) is a type of string
+      name = tagging.value["name"]
 
       dynamic "tags" {
         for_each = tagging.value.tags
         content {
+          # name - (optional) is a type of string
           name = tags.value["name"]
         }
       }

@@ -153,20 +153,34 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_access_layer" "this" {
-  add_default_rule               = var.add_default_rule
+  # add_default_rule - (optional) is a type of bool
+  add_default_rule = var.add_default_rule
+  # applications_and_url_filtering - (optional) is a type of bool
   applications_and_url_filtering = var.applications_and_url_filtering
-  color                          = var.color
-  comments                       = var.comments
-  content_awareness              = var.content_awareness
-  detect_using_x_forward_for     = var.detect_using_x_forward_for
-  firewall                       = var.firewall
-  ignore_errors                  = var.ignore_errors
-  ignore_warnings                = var.ignore_warnings
-  implicit_cleanup_action        = var.implicit_cleanup_action
-  mobile_access                  = var.mobile_access
-  name                           = var.name
-  shared                         = var.shared
-  tags                           = var.tags
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # content_awareness - (optional) is a type of bool
+  content_awareness = var.content_awareness
+  # detect_using_x_forward_for - (optional) is a type of bool
+  detect_using_x_forward_for = var.detect_using_x_forward_for
+  # firewall - (optional) is a type of bool
+  firewall = var.firewall
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # implicit_cleanup_action - (optional) is a type of string
+  implicit_cleanup_action = var.implicit_cleanup_action
+  # mobile_access - (optional) is a type of bool
+  mobile_access = var.mobile_access
+  # name - (required) is a type of string
+  name = var.name
+  # shared - (optional) is a type of bool
+  shared = var.shared
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

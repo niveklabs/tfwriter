@@ -50,6 +50,7 @@ variable "forced" {
 
 ```terraform
 resource "thunder_fw_apply_changes" "this" {
+  # forced - (optional) is a type of number
   forced = var.forced
 }
 ```

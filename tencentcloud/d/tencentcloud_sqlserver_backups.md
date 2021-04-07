@@ -71,10 +71,14 @@ variable "start_time" {
 
 ```terraform
 data "tencentcloud_sqlserver_backups" "this" {
-  end_time           = var.end_time
-  instance_id        = var.instance_id
+  # end_time - (required) is a type of string
+  end_time = var.end_time
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  start_time         = var.start_time
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 }
 ```
 

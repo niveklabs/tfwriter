@@ -90,12 +90,18 @@ variable "type" {
 
 ```terraform
 data "alicloud_ga_bandwidth_packages" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  status         = var.status
-  type           = var.type
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

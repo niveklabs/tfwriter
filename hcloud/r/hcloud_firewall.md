@@ -79,17 +79,24 @@ variable "rule" {
 
 ```terraform
 resource "hcloud_firewall" "this" {
+  # labels - (optional) is a type of map of string
   labels = var.labels
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # destination_ips - (optional) is a type of set of string
       destination_ips = rule.value["destination_ips"]
-      direction       = rule.value["direction"]
-      port            = rule.value["port"]
-      protocol        = rule.value["protocol"]
-      source_ips      = rule.value["source_ips"]
+      # direction - (required) is a type of string
+      direction = rule.value["direction"]
+      # port - (optional) is a type of string
+      port = rule.value["port"]
+      # protocol - (required) is a type of string
+      protocol = rule.value["protocol"]
+      # source_ips - (optional) is a type of set of string
+      source_ips = rule.value["source_ips"]
     }
   }
 

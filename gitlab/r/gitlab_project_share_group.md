@@ -63,9 +63,12 @@ variable "project_id" {
 
 ```terraform
 resource "gitlab_project_share_group" "this" {
+  # access_level - (required) is a type of string
   access_level = var.access_level
-  group_id     = var.group_id
-  project_id   = var.project_id
+  # group_id - (required) is a type of number
+  group_id = var.group_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

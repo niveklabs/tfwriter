@@ -64,11 +64,13 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_resource_manager_resource_directory" "this" {
+  # status - (optional) is a type of string
   status = var.status
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

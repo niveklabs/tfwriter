@@ -88,12 +88,18 @@ variable "role_name" {
 
 ```terraform
 resource "datadog_integration_aws" "this" {
-  account_id                       = var.account_id
+  # account_id - (required) is a type of string
+  account_id = var.account_id
+  # account_specific_namespace_rules - (optional) is a type of map of bool
   account_specific_namespace_rules = var.account_specific_namespace_rules
-  excluded_regions                 = var.excluded_regions
-  filter_tags                      = var.filter_tags
-  host_tags                        = var.host_tags
-  role_name                        = var.role_name
+  # excluded_regions - (optional) is a type of list of string
+  excluded_regions = var.excluded_regions
+  # filter_tags - (optional) is a type of list of string
+  filter_tags = var.filter_tags
+  # host_tags - (optional) is a type of list of string
+  host_tags = var.host_tags
+  # role_name - (required) is a type of string
+  role_name = var.role_name
 }
 ```
 

@@ -56,8 +56,10 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_route_table_attachment" "this" {
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
-  vswitch_id     = var.vswitch_id
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

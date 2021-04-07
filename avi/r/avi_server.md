@@ -278,42 +278,67 @@ variable "location" {
 
 ```terraform
 resource "avi_server" "this" {
-  autoscaling_group_name    = var.autoscaling_group_name
-  availability_zone         = var.availability_zone
-  description               = var.description
-  enabled                   = var.enabled
+  # autoscaling_group_name - (optional) is a type of string
+  autoscaling_group_name = var.autoscaling_group_name
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # external_orchestration_id - (optional) is a type of string
   external_orchestration_id = var.external_orchestration_id
-  external_uuid             = var.external_uuid
-  hostname                  = var.hostname
-  ip                        = var.ip
-  mac_address               = var.mac_address
-  nw_ref                    = var.nw_ref
-  pool_ref                  = var.pool_ref
-  port                      = var.port
-  prst_hdr_val              = var.prst_hdr_val
-  ratio                     = var.ratio
-  resolve_server_by_dns     = var.resolve_server_by_dns
-  rewrite_host_header       = var.rewrite_host_header
-  server_node               = var.server_node
-  static                    = var.static
-  type                      = var.type
-  verify_network            = var.verify_network
-  vm_ref                    = var.vm_ref
+  # external_uuid - (optional) is a type of string
+  external_uuid = var.external_uuid
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # ip - (required) is a type of string
+  ip = var.ip
+  # mac_address - (optional) is a type of string
+  mac_address = var.mac_address
+  # nw_ref - (optional) is a type of string
+  nw_ref = var.nw_ref
+  # pool_ref - (required) is a type of string
+  pool_ref = var.pool_ref
+  # port - (optional) is a type of number
+  port = var.port
+  # prst_hdr_val - (optional) is a type of string
+  prst_hdr_val = var.prst_hdr_val
+  # ratio - (optional) is a type of number
+  ratio = var.ratio
+  # resolve_server_by_dns - (optional) is a type of bool
+  resolve_server_by_dns = var.resolve_server_by_dns
+  # rewrite_host_header - (optional) is a type of bool
+  rewrite_host_header = var.rewrite_host_header
+  # server_node - (optional) is a type of string
+  server_node = var.server_node
+  # static - (optional) is a type of bool
+  static = var.static
+  # type - (optional) is a type of string
+  type = var.type
+  # verify_network - (optional) is a type of bool
+  verify_network = var.verify_network
+  # vm_ref - (optional) is a type of string
+  vm_ref = var.vm_ref
 
   dynamic "discovered_networks" {
     for_each = var.discovered_networks
     content {
+      # network_ref - (required) is a type of string
       network_ref = discovered_networks.value["network_ref"]
 
       dynamic "subnet" {
         for_each = discovered_networks.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -324,12 +349,15 @@ resource "avi_server" "this" {
       dynamic "subnet6" {
         for_each = discovered_networks.value.subnet6
         content {
+          # mask - (required) is a type of number
           mask = subnet6.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet6.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -343,10 +371,14 @@ resource "avi_server" "this" {
   dynamic "location" {
     for_each = var.location
     content {
-      latitude  = location.value["latitude"]
+      # latitude - (optional) is a type of number
+      latitude = location.value["latitude"]
+      # longitude - (optional) is a type of number
       longitude = location.value["longitude"]
-      name      = location.value["name"]
-      tag       = location.value["tag"]
+      # name - (optional) is a type of string
+      name = location.value["name"]
+      # tag - (optional) is a type of string
+      tag = location.value["tag"]
     }
   }
 

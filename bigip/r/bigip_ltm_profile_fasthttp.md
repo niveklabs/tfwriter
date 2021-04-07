@@ -129,17 +129,28 @@ variable "name" {
 
 ```terraform
 resource "bigip_ltm_profile_fasthttp" "this" {
-  connpool_maxreuse            = var.connpool_maxreuse
-  connpool_maxsize             = var.connpool_maxsize
-  connpool_minsize             = var.connpool_minsize
-  connpool_replenish           = var.connpool_replenish
-  connpool_step                = var.connpool_step
+  # connpool_maxreuse - (optional) is a type of number
+  connpool_maxreuse = var.connpool_maxreuse
+  # connpool_maxsize - (optional) is a type of number
+  connpool_maxsize = var.connpool_maxsize
+  # connpool_minsize - (optional) is a type of number
+  connpool_minsize = var.connpool_minsize
+  # connpool_replenish - (optional) is a type of string
+  connpool_replenish = var.connpool_replenish
+  # connpool_step - (optional) is a type of number
+  connpool_step = var.connpool_step
+  # connpoolidle_timeoutoverride - (optional) is a type of number
   connpoolidle_timeoutoverride = var.connpoolidle_timeoutoverride
-  defaults_from                = var.defaults_from
-  forcehttp_10response         = var.forcehttp_10response
-  idle_timeout                 = var.idle_timeout
-  maxheader_size               = var.maxheader_size
-  name                         = var.name
+  # defaults_from - (optional) is a type of string
+  defaults_from = var.defaults_from
+  # forcehttp_10response - (optional) is a type of string
+  forcehttp_10response = var.forcehttp_10response
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # maxheader_size - (optional) is a type of number
+  maxheader_size = var.maxheader_size
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

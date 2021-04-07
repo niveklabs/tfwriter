@@ -88,18 +88,26 @@ variable "policy_list" {
 
 ```terraform
 resource "fortios_wirelesscontroller_bonjourprofile" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "policy_list" {
     for_each = var.policy_list
     content {
+      # description - (optional) is a type of string
       description = policy_list.value["description"]
-      from_vlan   = policy_list.value["from_vlan"]
-      policy_id   = policy_list.value["policy_id"]
-      services    = policy_list.value["services"]
-      to_vlan     = policy_list.value["to_vlan"]
+      # from_vlan - (optional) is a type of string
+      from_vlan = policy_list.value["from_vlan"]
+      # policy_id - (optional) is a type of number
+      policy_id = policy_list.value["policy_id"]
+      # services - (optional) is a type of string
+      services = policy_list.value["services"]
+      # to_vlan - (optional) is a type of string
+      to_vlan = policy_list.value["to_vlan"]
     }
   }
 

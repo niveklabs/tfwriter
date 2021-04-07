@@ -101,23 +101,33 @@ variable "subnet_segment" {
 
 ```terraform
 resource "fortios_firewall_address6template" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  ip6                   = var.ip6
-  name                  = var.name
-  subnet_segment_count  = var.subnet_segment_count
+  # ip6 - (required) is a type of string
+  ip6 = var.ip6
+  # name - (required) is a type of string
+  name = var.name
+  # subnet_segment_count - (required) is a type of number
+  subnet_segment_count = var.subnet_segment_count
 
   dynamic "subnet_segment" {
     for_each = var.subnet_segment
     content {
-      bits      = subnet_segment.value["bits"]
+      # bits - (optional) is a type of number
+      bits = subnet_segment.value["bits"]
+      # exclusive - (optional) is a type of string
       exclusive = subnet_segment.value["exclusive"]
-      id        = subnet_segment.value["id"]
-      name      = subnet_segment.value["name"]
+      # id - (optional) is a type of number
+      id = subnet_segment.value["id"]
+      # name - (optional) is a type of string
+      name = subnet_segment.value["name"]
 
       dynamic "values" {
         for_each = subnet_segment.value.values
         content {
-          name  = values.value["name"]
+          # name - (optional) is a type of string
+          name = values.value["name"]
+          # value - (optional) is a type of string
           value = values.value["value"]
         }
       }

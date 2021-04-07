@@ -77,10 +77,15 @@ variable "template_name" {
 
 ```terraform
 resource "mso_schema_site_bd_l3out" "this" {
-  bd_name       = var.bd_name
-  l3out_name    = var.l3out_name
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # bd_name - (required) is a type of string
+  bd_name = var.bd_name
+  # l3out_name - (required) is a type of string
+  l3out_name = var.l3out_name
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
 }
 ```

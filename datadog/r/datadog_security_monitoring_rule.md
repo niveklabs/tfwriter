@@ -132,26 +132,37 @@ variable "query" {
 
 ```terraform
 resource "datadog_security_monitoring_rule" "this" {
+  # enabled - (optional) is a type of bool
   enabled = var.enabled
+  # message - (required) is a type of string
   message = var.message
-  name    = var.name
-  tags    = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of list of string
+  tags = var.tags
 
   dynamic "case" {
     for_each = var.case
     content {
-      condition     = case.value["condition"]
-      name          = case.value["name"]
+      # condition - (optional) is a type of string
+      condition = case.value["condition"]
+      # name - (optional) is a type of string
+      name = case.value["name"]
+      # notifications - (optional) is a type of list of string
       notifications = case.value["notifications"]
-      status        = case.value["status"]
+      # status - (required) is a type of string
+      status = case.value["status"]
     }
   }
 
   dynamic "options" {
     for_each = var.options
     content {
-      evaluation_window   = options.value["evaluation_window"]
-      keep_alive          = options.value["keep_alive"]
+      # evaluation_window - (required) is a type of number
+      evaluation_window = options.value["evaluation_window"]
+      # keep_alive - (required) is a type of number
+      keep_alive = options.value["keep_alive"]
+      # max_signal_duration - (required) is a type of number
       max_signal_duration = options.value["max_signal_duration"]
     }
   }
@@ -159,12 +170,18 @@ resource "datadog_security_monitoring_rule" "this" {
   dynamic "query" {
     for_each = var.query
     content {
-      aggregation     = query.value["aggregation"]
+      # aggregation - (optional) is a type of string
+      aggregation = query.value["aggregation"]
+      # distinct_fields - (optional) is a type of list of string
       distinct_fields = query.value["distinct_fields"]
+      # group_by_fields - (optional) is a type of list of string
       group_by_fields = query.value["group_by_fields"]
-      metric          = query.value["metric"]
-      name            = query.value["name"]
-      query           = query.value["query"]
+      # metric - (optional) is a type of string
+      metric = query.value["metric"]
+      # name - (optional) is a type of string
+      name = query.value["name"]
+      # query - (required) is a type of string
+      query = query.value["query"]
     }
   }
 

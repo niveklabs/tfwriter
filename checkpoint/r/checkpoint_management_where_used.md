@@ -81,11 +81,16 @@ variable "show_membership" {
 
 ```terraform
 resource "checkpoint_management_where_used" "this" {
+  # dereference_group_members - (optional) is a type of bool
   dereference_group_members = var.dereference_group_members
-  indirect                  = var.indirect
-  indirect_max_depth        = var.indirect_max_depth
-  name                      = var.name
-  show_membership           = var.show_membership
+  # indirect - (optional) is a type of bool
+  indirect = var.indirect
+  # indirect_max_depth - (optional) is a type of number
+  indirect_max_depth = var.indirect_max_depth
+  # name - (required) is a type of string
+  name = var.name
+  # show_membership - (optional) is a type of bool
+  show_membership = var.show_membership
 }
 ```
 

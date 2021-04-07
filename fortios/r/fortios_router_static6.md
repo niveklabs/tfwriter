@@ -153,20 +153,34 @@ variable "virtual_wan_link" {
 
 ```terraform
 resource "fortios_router_static6" "this" {
-  bfd                 = var.bfd
-  blackhole           = var.blackhole
-  comment             = var.comment
-  device              = var.device
-  devindex            = var.devindex
-  distance            = var.distance
-  dst                 = var.dst
-  gateway             = var.gateway
+  # bfd - (optional) is a type of string
+  bfd = var.bfd
+  # blackhole - (optional) is a type of string
+  blackhole = var.blackhole
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # device - (required) is a type of string
+  device = var.device
+  # devindex - (optional) is a type of number
+  devindex = var.devindex
+  # distance - (optional) is a type of number
+  distance = var.distance
+  # dst - (optional) is a type of string
+  dst = var.dst
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # link_monitor_exempt - (optional) is a type of string
   link_monitor_exempt = var.link_monitor_exempt
-  priority            = var.priority
-  sdwan               = var.sdwan
-  seq_num             = var.seq_num
-  status              = var.status
-  virtual_wan_link    = var.virtual_wan_link
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # sdwan - (optional) is a type of string
+  sdwan = var.sdwan
+  # seq_num - (optional) is a type of number
+  seq_num = var.seq_num
+  # status - (optional) is a type of string
+  status = var.status
+  # virtual_wan_link - (optional) is a type of string
+  virtual_wan_link = var.virtual_wan_link
 }
 ```
 

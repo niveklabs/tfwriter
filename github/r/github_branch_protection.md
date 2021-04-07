@@ -132,20 +132,31 @@ variable "required_status_checks" {
 
 ```terraform
 resource "github_branch_protection" "this" {
-  allows_deletions       = var.allows_deletions
-  allows_force_pushes    = var.allows_force_pushes
-  enforce_admins         = var.enforce_admins
-  pattern                = var.pattern
-  push_restrictions      = var.push_restrictions
-  repository_id          = var.repository_id
+  # allows_deletions - (optional) is a type of bool
+  allows_deletions = var.allows_deletions
+  # allows_force_pushes - (optional) is a type of bool
+  allows_force_pushes = var.allows_force_pushes
+  # enforce_admins - (optional) is a type of bool
+  enforce_admins = var.enforce_admins
+  # pattern - (required) is a type of string
+  pattern = var.pattern
+  # push_restrictions - (optional) is a type of set of string
+  push_restrictions = var.push_restrictions
+  # repository_id - (required) is a type of string
+  repository_id = var.repository_id
+  # require_signed_commits - (optional) is a type of bool
   require_signed_commits = var.require_signed_commits
 
   dynamic "required_pull_request_reviews" {
     for_each = var.required_pull_request_reviews
     content {
-      dismiss_stale_reviews           = required_pull_request_reviews.value["dismiss_stale_reviews"]
-      dismissal_restrictions          = required_pull_request_reviews.value["dismissal_restrictions"]
-      require_code_owner_reviews      = required_pull_request_reviews.value["require_code_owner_reviews"]
+      # dismiss_stale_reviews - (optional) is a type of bool
+      dismiss_stale_reviews = required_pull_request_reviews.value["dismiss_stale_reviews"]
+      # dismissal_restrictions - (optional) is a type of set of string
+      dismissal_restrictions = required_pull_request_reviews.value["dismissal_restrictions"]
+      # require_code_owner_reviews - (optional) is a type of bool
+      require_code_owner_reviews = required_pull_request_reviews.value["require_code_owner_reviews"]
+      # required_approving_review_count - (optional) is a type of number
       required_approving_review_count = required_pull_request_reviews.value["required_approving_review_count"]
     }
   }
@@ -153,8 +164,10 @@ resource "github_branch_protection" "this" {
   dynamic "required_status_checks" {
     for_each = var.required_status_checks
     content {
+      # contexts - (optional) is a type of set of string
       contexts = required_status_checks.value["contexts"]
-      strict   = required_status_checks.value["strict"]
+      # strict - (optional) is a type of bool
+      strict = required_status_checks.value["strict"]
     }
   }
 

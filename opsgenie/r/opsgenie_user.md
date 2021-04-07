@@ -125,22 +125,35 @@ variable "user_address" {
 
 ```terraform
 resource "opsgenie_user" "this" {
-  full_name      = var.full_name
-  locale         = var.locale
-  role           = var.role
+  # full_name - (required) is a type of string
+  full_name = var.full_name
+  # locale - (optional) is a type of string
+  locale = var.locale
+  # role - (required) is a type of string
+  role = var.role
+  # skype_username - (optional) is a type of string
   skype_username = var.skype_username
-  tags           = var.tags
-  timezone       = var.timezone
-  user_details   = var.user_details
-  username       = var.username
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # user_details - (optional) is a type of map of string
+  user_details = var.user_details
+  # username - (required) is a type of string
+  username = var.username
 
   dynamic "user_address" {
     for_each = var.user_address
     content {
-      city    = user_address.value["city"]
+      # city - (required) is a type of string
+      city = user_address.value["city"]
+      # country - (required) is a type of string
       country = user_address.value["country"]
-      line    = user_address.value["line"]
-      state   = user_address.value["state"]
+      # line - (required) is a type of string
+      line = user_address.value["line"]
+      # state - (required) is a type of string
+      state = user_address.value["state"]
+      # zipcode - (required) is a type of string
       zipcode = user_address.value["zipcode"]
     }
   }

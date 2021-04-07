@@ -82,11 +82,16 @@ variable "users" {
 
 ```terraform
 data "okta_app_oauth" "this" {
-  active_only  = var.active_only
-  groups       = var.groups
-  label        = var.label
+  # active_only - (optional) is a type of bool
+  active_only = var.active_only
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # label - (optional) is a type of string
+  label = var.label
+  # label_prefix - (optional) is a type of string
   label_prefix = var.label_prefix
-  users        = var.users
+  # users - (optional) is a type of set of string
+  users = var.users
 }
 ```
 

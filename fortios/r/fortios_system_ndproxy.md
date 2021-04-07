@@ -72,12 +72,15 @@ variable "member" {
 
 ```terraform
 resource "fortios_system_ndproxy" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  status                = var.status
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "member" {
     for_each = var.member
     content {
+      # interface_name - (optional) is a type of string
       interface_name = member.value["interface_name"]
     }
   }

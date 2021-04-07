@@ -56,8 +56,10 @@ variable "ocean_id" {
 
 ```terraform
 resource "spotinst_ocean_gke_launch_spec_import" "this" {
+  # node_pool_name - (required) is a type of string
   node_pool_name = var.node_pool_name
-  ocean_id       = var.ocean_id
+  # ocean_id - (required) is a type of string
+  ocean_id = var.ocean_id
 }
 ```
 

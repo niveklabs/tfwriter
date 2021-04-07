@@ -90,23 +90,30 @@ variable "msteams_config" {
 
 ```terraform
 data "rancher2_notifier" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "dingtalk_config" {
     for_each = var.dingtalk_config
     content {
+      # proxy_url - (optional) is a type of string
       proxy_url = dingtalk_config.value["proxy_url"]
-      secret    = dingtalk_config.value["secret"]
-      url       = dingtalk_config.value["url"]
+      # secret - (optional) is a type of string
+      secret = dingtalk_config.value["secret"]
+      # url - (required) is a type of string
+      url = dingtalk_config.value["url"]
     }
   }
 
   dynamic "msteams_config" {
     for_each = var.msteams_config
     content {
+      # proxy_url - (optional) is a type of string
       proxy_url = msteams_config.value["proxy_url"]
-      url       = msteams_config.value["url"]
+      # url - (required) is a type of string
+      url = msteams_config.value["url"]
     }
   }
 

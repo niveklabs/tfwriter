@@ -130,17 +130,28 @@ variable "username" {
 
 ```terraform
 resource "fortios_webproxy_forwardserver" "this" {
-  addr_type          = var.addr_type
-  comment            = var.comment
-  fqdn               = var.fqdn
-  healthcheck        = var.healthcheck
-  ip                 = var.ip
-  monitor            = var.monitor
-  name               = var.name
-  password           = var.password
-  port               = var.port
+  # addr_type - (optional) is a type of string
+  addr_type = var.addr_type
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # healthcheck - (optional) is a type of string
+  healthcheck = var.healthcheck
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # monitor - (optional) is a type of string
+  monitor = var.monitor
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # server_down_option - (optional) is a type of string
   server_down_option = var.server_down_option
-  username           = var.username
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

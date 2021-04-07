@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_rate_policy" "this" {
-  config_id   = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # rate_policy - (required) is a type of string
   rate_policy = var.rate_policy
-  version     = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

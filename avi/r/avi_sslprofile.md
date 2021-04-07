@@ -201,24 +201,39 @@ variable "tags" {
 
 ```terraform
 resource "avi_sslprofile" "this" {
-  accepted_ciphers              = var.accepted_ciphers
-  cipher_enums                  = var.cipher_enums
-  ciphersuites                  = var.ciphersuites
-  description                   = var.description
-  dhparam                       = var.dhparam
-  enable_early_data             = var.enable_early_data
-  enable_ssl_session_reuse      = var.enable_ssl_session_reuse
-  name                          = var.name
+  # accepted_ciphers - (optional) is a type of string
+  accepted_ciphers = var.accepted_ciphers
+  # cipher_enums - (optional) is a type of list of string
+  cipher_enums = var.cipher_enums
+  # ciphersuites - (optional) is a type of string
+  ciphersuites = var.ciphersuites
+  # description - (optional) is a type of string
+  description = var.description
+  # dhparam - (optional) is a type of string
+  dhparam = var.dhparam
+  # enable_early_data - (optional) is a type of bool
+  enable_early_data = var.enable_early_data
+  # enable_ssl_session_reuse - (optional) is a type of bool
+  enable_ssl_session_reuse = var.enable_ssl_session_reuse
+  # name - (required) is a type of string
+  name = var.name
+  # prefer_client_cipher_ordering - (optional) is a type of bool
   prefer_client_cipher_ordering = var.prefer_client_cipher_ordering
-  send_close_notify             = var.send_close_notify
-  ssl_session_timeout           = var.ssl_session_timeout
-  tenant_ref                    = var.tenant_ref
-  type                          = var.type
-  uuid                          = var.uuid
+  # send_close_notify - (optional) is a type of bool
+  send_close_notify = var.send_close_notify
+  # ssl_session_timeout - (optional) is a type of number
+  ssl_session_timeout = var.ssl_session_timeout
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "accepted_versions" {
     for_each = var.accepted_versions
     content {
+      # type - (required) is a type of string
       type = accepted_versions.value["type"]
     }
   }
@@ -226,16 +241,21 @@ resource "avi_sslprofile" "this" {
   dynamic "ssl_rating" {
     for_each = var.ssl_rating
     content {
+      # compatibility_rating - (optional) is a type of string
       compatibility_rating = ssl_rating.value["compatibility_rating"]
-      performance_rating   = ssl_rating.value["performance_rating"]
-      security_score       = ssl_rating.value["security_score"]
+      # performance_rating - (optional) is a type of string
+      performance_rating = ssl_rating.value["performance_rating"]
+      # security_score - (optional) is a type of string
+      security_score = ssl_rating.value["security_score"]
     }
   }
 
   dynamic "tags" {
     for_each = var.tags
     content {
-      type  = tags.value["type"]
+      # type - (optional) is a type of string
+      type = tags.value["type"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

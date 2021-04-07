@@ -209,28 +209,47 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_polardb_cluster" "this" {
+  # auto_renew_period - (optional) is a type of number
   auto_renew_period = var.auto_renew_period
-  collector_status  = var.collector_status
-  db_node_class     = var.db_node_class
-  db_node_count     = var.db_node_count
-  db_type           = var.db_type
-  db_version        = var.db_version
-  description       = var.description
-  maintain_time     = var.maintain_time
-  modify_type       = var.modify_type
-  pay_type          = var.pay_type
-  period            = var.period
-  renewal_status    = var.renewal_status
+  # collector_status - (optional) is a type of string
+  collector_status = var.collector_status
+  # db_node_class - (required) is a type of string
+  db_node_class = var.db_node_class
+  # db_node_count - (optional) is a type of number
+  db_node_count = var.db_node_count
+  # db_type - (required) is a type of string
+  db_type = var.db_type
+  # db_version - (required) is a type of string
+  db_version = var.db_version
+  # description - (optional) is a type of string
+  description = var.description
+  # maintain_time - (optional) is a type of string
+  maintain_time = var.maintain_time
+  # modify_type - (optional) is a type of string
+  modify_type = var.modify_type
+  # pay_type - (optional) is a type of string
+  pay_type = var.pay_type
+  # period - (optional) is a type of number
+  period = var.period
+  # renewal_status - (optional) is a type of string
+  renewal_status = var.renewal_status
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  security_ips      = var.security_ips
-  tags              = var.tags
-  vswitch_id        = var.vswitch_id
-  zone_id           = var.zone_id
+  # security_ips - (optional) is a type of set of string
+  security_ips = var.security_ips
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "parameters" {
     for_each = var.parameters
     content {
-      name  = parameters.value["name"]
+      # name - (required) is a type of string
+      name = parameters.value["name"]
+      # value - (required) is a type of string
       value = parameters.value["value"]
     }
   }
@@ -238,8 +257,11 @@ resource "alicloud_polardb_cluster" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

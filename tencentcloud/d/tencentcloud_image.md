@@ -82,14 +82,19 @@ variable "filter" {
 
 ```terraform
 data "tencentcloud_image" "this" {
-  image_name_regex   = var.image_name_regex
-  os_name            = var.os_name
+  # image_name_regex - (optional) is a type of string
+  image_name_regex = var.image_name_regex
+  # os_name - (optional) is a type of string
+  os_name = var.os_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      name   = filter.value["name"]
+      # name - (required) is a type of string
+      name = filter.value["name"]
+      # values - (required) is a type of list of string
       values = filter.value["values"]
     }
   }

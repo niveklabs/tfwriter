@@ -56,7 +56,9 @@ variable "user_ids" {
 
 ```terraform
 resource "tencentcloud_cam_group_membership" "this" {
+  # group_id - (required) is a type of string
   group_id = var.group_id
+  # user_ids - (required) is a type of set of string
   user_ids = var.user_ids
 }
 ```

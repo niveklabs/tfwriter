@@ -152,21 +152,36 @@ variable "waf_log" {
 
 ```terraform
 resource "alicloud_waf_instance" "this" {
-  big_screen           = var.big_screen
+  # big_screen - (required) is a type of string
+  big_screen = var.big_screen
+  # exclusive_ip_package - (required) is a type of string
   exclusive_ip_package = var.exclusive_ip_package
-  ext_bandwidth        = var.ext_bandwidth
-  ext_domain_package   = var.ext_domain_package
-  log_storage          = var.log_storage
-  log_time             = var.log_time
-  modify_type          = var.modify_type
-  package_code         = var.package_code
-  period               = var.period
+  # ext_bandwidth - (required) is a type of string
+  ext_bandwidth = var.ext_bandwidth
+  # ext_domain_package - (required) is a type of string
+  ext_domain_package = var.ext_domain_package
+  # log_storage - (required) is a type of string
+  log_storage = var.log_storage
+  # log_time - (required) is a type of string
+  log_time = var.log_time
+  # modify_type - (optional) is a type of string
+  modify_type = var.modify_type
+  # package_code - (required) is a type of string
+  package_code = var.package_code
+  # period - (optional) is a type of number
+  period = var.period
+  # prefessional_service - (required) is a type of string
   prefessional_service = var.prefessional_service
-  renew_period         = var.renew_period
-  renewal_status       = var.renewal_status
-  resource_group_id    = var.resource_group_id
-  subscription_type    = var.subscription_type
-  waf_log              = var.waf_log
+  # renew_period - (optional) is a type of number
+  renew_period = var.renew_period
+  # renewal_status - (optional) is a type of string
+  renewal_status = var.renewal_status
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # subscription_type - (required) is a type of string
+  subscription_type = var.subscription_type
+  # waf_log - (required) is a type of string
+  waf_log = var.waf_log
 }
 ```
 

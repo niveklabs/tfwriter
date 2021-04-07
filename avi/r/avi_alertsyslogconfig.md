@@ -101,22 +101,34 @@ variable "syslog_servers" {
 
 ```terraform
 resource "avi_alertsyslogconfig" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_ref  = var.tenant_ref
-  uuid        = var.uuid
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "syslog_servers" {
     for_each = var.syslog_servers
     content {
-      anon_auth                   = syslog_servers.value["anon_auth"]
-      format                      = syslog_servers.value["format"]
-      pkiprofile_ref              = syslog_servers.value["pkiprofile_ref"]
+      # anon_auth - (optional) is a type of bool
+      anon_auth = syslog_servers.value["anon_auth"]
+      # format - (optional) is a type of string
+      format = syslog_servers.value["format"]
+      # pkiprofile_ref - (optional) is a type of string
+      pkiprofile_ref = syslog_servers.value["pkiprofile_ref"]
+      # ssl_key_and_certificate_ref - (optional) is a type of string
       ssl_key_and_certificate_ref = syslog_servers.value["ssl_key_and_certificate_ref"]
-      syslog_server               = syslog_servers.value["syslog_server"]
-      syslog_server_port          = syslog_servers.value["syslog_server_port"]
-      tls_enable                  = syslog_servers.value["tls_enable"]
-      udp                         = syslog_servers.value["udp"]
+      # syslog_server - (required) is a type of string
+      syslog_server = syslog_servers.value["syslog_server"]
+      # syslog_server_port - (optional) is a type of number
+      syslog_server_port = syslog_servers.value["syslog_server_port"]
+      # tls_enable - (optional) is a type of bool
+      tls_enable = syslog_servers.value["tls_enable"]
+      # udp - (required) is a type of bool
+      udp = syslog_servers.value["udp"]
     }
   }
 

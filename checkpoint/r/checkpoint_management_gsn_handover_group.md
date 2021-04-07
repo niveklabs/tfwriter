@@ -113,15 +113,24 @@ variable "tags" {
 
 ```terraform
 resource "checkpoint_management_gsn_handover_group" "this" {
-  color           = var.color
-  comments        = var.comments
-  enforce_gtp     = var.enforce_gtp
-  gtp_rate        = var.gtp_rate
-  ignore_errors   = var.ignore_errors
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # enforce_gtp - (optional) is a type of bool
+  enforce_gtp = var.enforce_gtp
+  # gtp_rate - (optional) is a type of number
+  gtp_rate = var.gtp_rate
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  members         = var.members
-  name            = var.name
-  tags            = var.tags
+  # members - (optional) is a type of set of string
+  members = var.members
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

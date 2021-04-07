@@ -127,17 +127,28 @@ variable "username" {
 
 ```terraform
 resource "gitlab_user" "this" {
-  can_create_group  = var.can_create_group
-  email             = var.email
-  is_admin          = var.is_admin
-  is_external       = var.is_external
-  name              = var.name
-  note              = var.note
-  password          = var.password
-  projects_limit    = var.projects_limit
-  reset_password    = var.reset_password
+  # can_create_group - (optional) is a type of bool
+  can_create_group = var.can_create_group
+  # email - (required) is a type of string
+  email = var.email
+  # is_admin - (optional) is a type of bool
+  is_admin = var.is_admin
+  # is_external - (optional) is a type of bool
+  is_external = var.is_external
+  # name - (required) is a type of string
+  name = var.name
+  # note - (optional) is a type of string
+  note = var.note
+  # password - (optional) is a type of string
+  password = var.password
+  # projects_limit - (optional) is a type of number
+  projects_limit = var.projects_limit
+  # reset_password - (optional) is a type of bool
+  reset_password = var.reset_password
+  # skip_confirmation - (optional) is a type of bool
   skip_confirmation = var.skip_confirmation
-  username          = var.username
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

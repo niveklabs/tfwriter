@@ -70,10 +70,14 @@ variable "route_id" {
 
 ```terraform
 resource "fortios_fmg_system_network_route" "this" {
+  # destination - (required) is a type of string
   destination = var.destination
-  device      = var.device
-  gateway     = var.gateway
-  route_id    = var.route_id
+  # device - (required) is a type of string
+  device = var.device
+  # gateway - (required) is a type of string
+  gateway = var.gateway
+  # route_id - (required) is a type of number
+  route_id = var.route_id
 }
 ```
 

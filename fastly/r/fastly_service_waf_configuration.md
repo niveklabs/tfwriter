@@ -313,52 +313,88 @@ variable "rule_exclusion" {
 
 ```terraform
 resource "fastly_service_waf_configuration" "this" {
-  allowed_http_versions                = var.allowed_http_versions
-  allowed_methods                      = var.allowed_methods
-  allowed_request_content_type         = var.allowed_request_content_type
+  # allowed_http_versions - (optional) is a type of string
+  allowed_http_versions = var.allowed_http_versions
+  # allowed_methods - (optional) is a type of string
+  allowed_methods = var.allowed_methods
+  # allowed_request_content_type - (optional) is a type of string
+  allowed_request_content_type = var.allowed_request_content_type
+  # allowed_request_content_type_charset - (optional) is a type of string
   allowed_request_content_type_charset = var.allowed_request_content_type_charset
-  arg_length                           = var.arg_length
-  arg_name_length                      = var.arg_name_length
-  combined_file_sizes                  = var.combined_file_sizes
-  critical_anomaly_score               = var.critical_anomaly_score
-  crs_validate_utf8_encoding           = var.crs_validate_utf8_encoding
-  error_anomaly_score                  = var.error_anomaly_score
-  high_risk_country_codes              = var.high_risk_country_codes
-  http_violation_score_threshold       = var.http_violation_score_threshold
-  inbound_anomaly_score_threshold      = var.inbound_anomaly_score_threshold
-  lfi_score_threshold                  = var.lfi_score_threshold
-  max_file_size                        = var.max_file_size
-  max_num_args                         = var.max_num_args
-  notice_anomaly_score                 = var.notice_anomaly_score
-  paranoia_level                       = var.paranoia_level
-  php_injection_score_threshold        = var.php_injection_score_threshold
-  rce_score_threshold                  = var.rce_score_threshold
-  restricted_extensions                = var.restricted_extensions
-  restricted_headers                   = var.restricted_headers
-  rfi_score_threshold                  = var.rfi_score_threshold
-  session_fixation_score_threshold     = var.session_fixation_score_threshold
-  sql_injection_score_threshold        = var.sql_injection_score_threshold
-  total_arg_length                     = var.total_arg_length
-  waf_id                               = var.waf_id
-  warning_anomaly_score                = var.warning_anomaly_score
-  xss_score_threshold                  = var.xss_score_threshold
+  # arg_length - (optional) is a type of number
+  arg_length = var.arg_length
+  # arg_name_length - (optional) is a type of number
+  arg_name_length = var.arg_name_length
+  # combined_file_sizes - (optional) is a type of number
+  combined_file_sizes = var.combined_file_sizes
+  # critical_anomaly_score - (optional) is a type of number
+  critical_anomaly_score = var.critical_anomaly_score
+  # crs_validate_utf8_encoding - (optional) is a type of bool
+  crs_validate_utf8_encoding = var.crs_validate_utf8_encoding
+  # error_anomaly_score - (optional) is a type of number
+  error_anomaly_score = var.error_anomaly_score
+  # high_risk_country_codes - (optional) is a type of string
+  high_risk_country_codes = var.high_risk_country_codes
+  # http_violation_score_threshold - (optional) is a type of number
+  http_violation_score_threshold = var.http_violation_score_threshold
+  # inbound_anomaly_score_threshold - (optional) is a type of number
+  inbound_anomaly_score_threshold = var.inbound_anomaly_score_threshold
+  # lfi_score_threshold - (optional) is a type of number
+  lfi_score_threshold = var.lfi_score_threshold
+  # max_file_size - (optional) is a type of number
+  max_file_size = var.max_file_size
+  # max_num_args - (optional) is a type of number
+  max_num_args = var.max_num_args
+  # notice_anomaly_score - (optional) is a type of number
+  notice_anomaly_score = var.notice_anomaly_score
+  # paranoia_level - (optional) is a type of number
+  paranoia_level = var.paranoia_level
+  # php_injection_score_threshold - (optional) is a type of number
+  php_injection_score_threshold = var.php_injection_score_threshold
+  # rce_score_threshold - (optional) is a type of number
+  rce_score_threshold = var.rce_score_threshold
+  # restricted_extensions - (optional) is a type of string
+  restricted_extensions = var.restricted_extensions
+  # restricted_headers - (optional) is a type of string
+  restricted_headers = var.restricted_headers
+  # rfi_score_threshold - (optional) is a type of number
+  rfi_score_threshold = var.rfi_score_threshold
+  # session_fixation_score_threshold - (optional) is a type of number
+  session_fixation_score_threshold = var.session_fixation_score_threshold
+  # sql_injection_score_threshold - (optional) is a type of number
+  sql_injection_score_threshold = var.sql_injection_score_threshold
+  # total_arg_length - (optional) is a type of number
+  total_arg_length = var.total_arg_length
+  # waf_id - (required) is a type of string
+  waf_id = var.waf_id
+  # warning_anomaly_score - (optional) is a type of number
+  warning_anomaly_score = var.warning_anomaly_score
+  # xss_score_threshold - (optional) is a type of number
+  xss_score_threshold = var.xss_score_threshold
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # modsec_rule_id - (required) is a type of number
       modsec_rule_id = rule.value["modsec_rule_id"]
-      revision       = rule.value["revision"]
-      status         = rule.value["status"]
+      # revision - (optional) is a type of number
+      revision = rule.value["revision"]
+      # status - (required) is a type of string
+      status = rule.value["status"]
     }
   }
 
   dynamic "rule_exclusion" {
     for_each = var.rule_exclusion
     content {
-      condition       = rule_exclusion.value["condition"]
-      exclusion_type  = rule_exclusion.value["exclusion_type"]
+      # condition - (required) is a type of string
+      condition = rule_exclusion.value["condition"]
+      # exclusion_type - (required) is a type of string
+      exclusion_type = rule_exclusion.value["exclusion_type"]
+      # modsec_rule_ids - (optional) is a type of set of number
       modsec_rule_ids = rule_exclusion.value["modsec_rule_ids"]
-      name            = rule_exclusion.value["name"]
+      # name - (required) is a type of string
+      name = rule_exclusion.value["name"]
     }
   }
 

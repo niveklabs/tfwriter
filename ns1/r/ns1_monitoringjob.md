@@ -167,27 +167,44 @@ variable "rules" {
 
 ```terraform
 resource "ns1_monitoringjob" "this" {
-  active          = var.active
-  config          = var.config
-  frequency       = var.frequency
-  job_type        = var.job_type
-  name            = var.name
-  notes           = var.notes
-  notify_delay    = var.notify_delay
+  # active - (optional) is a type of bool
+  active = var.active
+  # config - (required) is a type of map of string
+  config = var.config
+  # frequency - (required) is a type of number
+  frequency = var.frequency
+  # job_type - (required) is a type of string
+  job_type = var.job_type
+  # name - (required) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # notify_delay - (optional) is a type of number
+  notify_delay = var.notify_delay
+  # notify_failback - (optional) is a type of bool
   notify_failback = var.notify_failback
-  notify_list     = var.notify_list
+  # notify_list - (optional) is a type of string
+  notify_list = var.notify_list
+  # notify_regional - (optional) is a type of bool
   notify_regional = var.notify_regional
-  notify_repeat   = var.notify_repeat
-  policy          = var.policy
-  rapid_recheck   = var.rapid_recheck
-  regions         = var.regions
+  # notify_repeat - (optional) is a type of number
+  notify_repeat = var.notify_repeat
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # rapid_recheck - (optional) is a type of bool
+  rapid_recheck = var.rapid_recheck
+  # regions - (required) is a type of list of string
+  regions = var.regions
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # comparison - (required) is a type of string
       comparison = rules.value["comparison"]
-      key        = rules.value["key"]
-      value      = rules.value["value"]
+      # key - (required) is a type of string
+      key = rules.value["key"]
+      # value - (required) is a type of string
+      value = rules.value["value"]
     }
   }
 

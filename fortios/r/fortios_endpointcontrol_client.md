@@ -90,12 +90,18 @@ variable "src_mac" {
 
 ```terraform
 resource "fortios_endpointcontrol_client" "this" {
+  # ad_groups - (optional) is a type of string
   ad_groups = var.ad_groups
-  fosid     = var.fosid
-  ftcl_uid  = var.ftcl_uid
-  info      = var.info
-  src_ip    = var.src_ip
-  src_mac   = var.src_mac
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # ftcl_uid - (optional) is a type of string
+  ftcl_uid = var.ftcl_uid
+  # info - (optional) is a type of string
+  info = var.info
+  # src_ip - (optional) is a type of string
+  src_ip = var.src_ip
+  # src_mac - (optional) is a type of string
+  src_mac = var.src_mac
 }
 ```
 

@@ -68,15 +68,20 @@ variable "permissions" {
 
 ```terraform
 resource "grafana_dashboard_permission" "this" {
+  # dashboard_id - (required) is a type of number
   dashboard_id = var.dashboard_id
 
   dynamic "permissions" {
     for_each = var.permissions
     content {
+      # permission - (required) is a type of string
       permission = permissions.value["permission"]
-      role       = permissions.value["role"]
-      team_id    = permissions.value["team_id"]
-      user_id    = permissions.value["user_id"]
+      # role - (optional) is a type of string
+      role = permissions.value["role"]
+      # team_id - (optional) is a type of number
+      team_id = permissions.value["team_id"]
+      # user_id - (optional) is a type of number
+      user_id = permissions.value["user_id"]
     }
   }
 

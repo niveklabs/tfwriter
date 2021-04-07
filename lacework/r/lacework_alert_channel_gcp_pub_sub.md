@@ -98,18 +98,27 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_alert_channel_gcp_pub_sub" "this" {
-  enabled        = var.enabled
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # issue_grouping - (optional) is a type of string
   issue_grouping = var.issue_grouping
-  name           = var.name
-  project_id     = var.project_id
-  topic_id       = var.topic_id
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # topic_id - (required) is a type of string
+  topic_id = var.topic_id
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
-      client_email   = credentials.value["client_email"]
-      client_id      = credentials.value["client_id"]
-      private_key    = credentials.value["private_key"]
+      # client_email - (required) is a type of string
+      client_email = credentials.value["client_email"]
+      # client_id - (required) is a type of string
+      client_id = credentials.value["client_id"]
+      # private_key - (required) is a type of string
+      private_key = credentials.value["private_key"]
+      # private_key_id - (required) is a type of string
       private_key_id = credentials.value["private_key_id"]
     }
   }

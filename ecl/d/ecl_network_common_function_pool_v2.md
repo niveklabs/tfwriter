@@ -58,8 +58,10 @@ variable "name" {
 
 ```terraform
 data "ecl_network_common_function_pool_v2" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

@@ -98,13 +98,20 @@ variable "template_name" {
 
 ```terraform
 data "alicloud_ros_templates" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  ids            = var.ids
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  share_type     = var.share_type
-  tags           = var.tags
-  template_name  = var.template_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # share_type - (optional) is a type of string
+  share_type = var.share_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # template_name - (optional) is a type of string
+  template_name = var.template_name
 }
 ```
 

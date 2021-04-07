@@ -114,15 +114,24 @@ variable "untrusted_caname" {
 
 ```terraform
 resource "fortios_firewallssh_setting" "this" {
-  caname                = var.caname
+  # caname - (optional) is a type of string
+  caname = var.caname
+  # host_trusted_checking - (optional) is a type of string
   host_trusted_checking = var.host_trusted_checking
-  hostkey_dsa1024       = var.hostkey_dsa1024
-  hostkey_ecdsa256      = var.hostkey_ecdsa256
-  hostkey_ecdsa384      = var.hostkey_ecdsa384
-  hostkey_ecdsa521      = var.hostkey_ecdsa521
-  hostkey_ed25519       = var.hostkey_ed25519
-  hostkey_rsa2048       = var.hostkey_rsa2048
-  untrusted_caname      = var.untrusted_caname
+  # hostkey_dsa1024 - (optional) is a type of string
+  hostkey_dsa1024 = var.hostkey_dsa1024
+  # hostkey_ecdsa256 - (optional) is a type of string
+  hostkey_ecdsa256 = var.hostkey_ecdsa256
+  # hostkey_ecdsa384 - (optional) is a type of string
+  hostkey_ecdsa384 = var.hostkey_ecdsa384
+  # hostkey_ecdsa521 - (optional) is a type of string
+  hostkey_ecdsa521 = var.hostkey_ecdsa521
+  # hostkey_ed25519 - (optional) is a type of string
+  hostkey_ed25519 = var.hostkey_ed25519
+  # hostkey_rsa2048 - (optional) is a type of string
+  hostkey_rsa2048 = var.hostkey_rsa2048
+  # untrusted_caname - (optional) is a type of string
+  untrusted_caname = var.untrusted_caname
 }
 ```
 

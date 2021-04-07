@@ -73,10 +73,14 @@ variable "service_id" {
 
 ```terraform
 data "tencentcloud_api_gateway_apis" "this" {
-  api_id             = var.api_id
-  api_name           = var.api_name
+  # api_id - (optional) is a type of string
+  api_id = var.api_id
+  # api_name - (optional) is a type of string
+  api_name = var.api_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  service_id         = var.service_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
 }
 ```
 

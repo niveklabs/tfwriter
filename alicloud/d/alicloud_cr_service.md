@@ -57,7 +57,9 @@ variable "password" {
 
 ```terraform
 data "alicloud_cr_service" "this" {
-  enable   = var.enable
+  # enable - (optional) is a type of string
+  enable = var.enable
+  # password - (required) is a type of string
   password = var.password
 }
 ```

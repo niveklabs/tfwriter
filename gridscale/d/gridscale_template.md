@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "gridscale_template" "this" {
+  # labels - (optional) is a type of set of string
   labels = var.labels
-  name   = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

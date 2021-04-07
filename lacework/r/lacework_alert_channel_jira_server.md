@@ -108,15 +108,24 @@ variable "username" {
 
 ```terraform
 resource "lacework_alert_channel_jira_server" "this" {
+  # custom_template_file - (optional) is a type of string
   custom_template_file = var.custom_template_file
-  enabled              = var.enabled
-  group_issues_by      = var.group_issues_by
-  issue_type           = var.issue_type
-  jira_url             = var.jira_url
-  name                 = var.name
-  password             = var.password
-  project_key          = var.project_key
-  username             = var.username
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # group_issues_by - (optional) is a type of string
+  group_issues_by = var.group_issues_by
+  # issue_type - (required) is a type of string
+  issue_type = var.issue_type
+  # jira_url - (required) is a type of string
+  jira_url = var.jira_url
+  # name - (required) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # project_key - (required) is a type of string
+  project_key = var.project_key
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

@@ -112,24 +112,33 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_ns_group" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
 
   dynamic "member" {
     for_each = var.member
     content {
+      # target_type - (required) is a type of string
       target_type = member.value["target_type"]
-      value       = member.value["value"]
+      # value - (required) is a type of string
+      value = member.value["value"]
     }
   }
 
   dynamic "membership_criteria" {
     for_each = var.membership_criteria
     content {
-      scope       = membership_criteria.value["scope"]
-      scope_op    = membership_criteria.value["scope_op"]
-      tag         = membership_criteria.value["tag"]
-      tag_op      = membership_criteria.value["tag_op"]
+      # scope - (optional) is a type of string
+      scope = membership_criteria.value["scope"]
+      # scope_op - (optional) is a type of string
+      scope_op = membership_criteria.value["scope_op"]
+      # tag - (optional) is a type of string
+      tag = membership_criteria.value["tag"]
+      # tag_op - (optional) is a type of string
+      tag_op = membership_criteria.value["tag_op"]
+      # target_type - (required) is a type of string
       target_type = membership_criteria.value["target_type"]
     }
   }
@@ -137,8 +146,10 @@ resource "nsxt_ns_group" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

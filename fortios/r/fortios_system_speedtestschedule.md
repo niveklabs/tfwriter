@@ -144,21 +144,33 @@ variable "schedules" {
 
 ```terraform
 resource "fortios_system_speedtestschedule" "this" {
-  diffserv                    = var.diffserv
-  dynamic_sort_subtable       = var.dynamic_sort_subtable
-  interface                   = var.interface
-  server_name                 = var.server_name
-  status                      = var.status
-  update_inbandwidth          = var.update_inbandwidth
-  update_inbandwidth_maximum  = var.update_inbandwidth_maximum
-  update_inbandwidth_minimum  = var.update_inbandwidth_minimum
-  update_outbandwidth         = var.update_outbandwidth
+  # diffserv - (optional) is a type of string
+  diffserv = var.diffserv
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
+  # status - (optional) is a type of string
+  status = var.status
+  # update_inbandwidth - (optional) is a type of string
+  update_inbandwidth = var.update_inbandwidth
+  # update_inbandwidth_maximum - (optional) is a type of number
+  update_inbandwidth_maximum = var.update_inbandwidth_maximum
+  # update_inbandwidth_minimum - (optional) is a type of number
+  update_inbandwidth_minimum = var.update_inbandwidth_minimum
+  # update_outbandwidth - (optional) is a type of string
+  update_outbandwidth = var.update_outbandwidth
+  # update_outbandwidth_maximum - (optional) is a type of number
   update_outbandwidth_maximum = var.update_outbandwidth_maximum
+  # update_outbandwidth_minimum - (optional) is a type of number
   update_outbandwidth_minimum = var.update_outbandwidth_minimum
 
   dynamic "schedules" {
     for_each = var.schedules
     content {
+      # name - (optional) is a type of string
       name = schedules.value["name"]
     }
   }

@@ -75,14 +75,19 @@ variable "rule" {
 
 ```terraform
 resource "fortios_router_aspathlist" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # action - (optional) is a type of string
       action = rule.value["action"]
-      id     = rule.value["id"]
+      # id - (optional) is a type of number
+      id = rule.value["id"]
+      # regexp - (optional) is a type of string
       regexp = rule.value["regexp"]
     }
   }

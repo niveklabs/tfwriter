@@ -365,29 +365,45 @@ variable "third_party_sites" {
 
 ```terraform
 resource "avi_gslb" "this" {
-  async_interval                          = var.async_interval
-  clear_on_max_retries                    = var.clear_on_max_retries
-  description                             = var.description
-  error_resync_interval                   = var.error_resync_interval
-  is_federated                            = var.is_federated
-  leader_cluster_uuid                     = var.leader_cluster_uuid
-  maintenance_mode                        = var.maintenance_mode
-  name                                    = var.name
-  send_interval                           = var.send_interval
+  # async_interval - (optional) is a type of number
+  async_interval = var.async_interval
+  # clear_on_max_retries - (optional) is a type of number
+  clear_on_max_retries = var.clear_on_max_retries
+  # description - (optional) is a type of string
+  description = var.description
+  # error_resync_interval - (optional) is a type of number
+  error_resync_interval = var.error_resync_interval
+  # is_federated - (optional) is a type of bool
+  is_federated = var.is_federated
+  # leader_cluster_uuid - (optional) is a type of string
+  leader_cluster_uuid = var.leader_cluster_uuid
+  # maintenance_mode - (optional) is a type of bool
+  maintenance_mode = var.maintenance_mode
+  # name - (required) is a type of string
+  name = var.name
+  # send_interval - (optional) is a type of number
+  send_interval = var.send_interval
+  # send_interval_prior_to_maintenance_mode - (optional) is a type of number
   send_interval_prior_to_maintenance_mode = var.send_interval_prior_to_maintenance_mode
-  tenant_ref                              = var.tenant_ref
-  uuid                                    = var.uuid
-  view_id                                 = var.view_id
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # view_id - (optional) is a type of number
+  view_id = var.view_id
 
   dynamic "client_ip_addr_group" {
     for_each = var.client_ip_addr_group
     content {
+      # type - (optional) is a type of string
       type = client_ip_addr_group.value["type"]
 
       dynamic "addrs" {
         for_each = client_ip_addr_group.value.addrs
         content {
+          # addr - (required) is a type of string
           addr = addrs.value["addr"]
+          # type - (required) is a type of string
           type = addrs.value["type"]
         }
       }
@@ -395,12 +411,15 @@ resource "avi_gslb" "this" {
       dynamic "prefixes" {
         for_each = client_ip_addr_group.value.prefixes
         content {
+          # mask - (required) is a type of number
           mask = prefixes.value["mask"]
 
           dynamic "ip_addr" {
             for_each = prefixes.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -415,7 +434,9 @@ resource "avi_gslb" "this" {
           dynamic "begin" {
             for_each = ranges.value.begin
             content {
+              # addr - (required) is a type of string
               addr = begin.value["addr"]
+              # type - (required) is a type of string
               type = begin.value["type"]
             }
           }
@@ -423,7 +444,9 @@ resource "avi_gslb" "this" {
           dynamic "end" {
             for_each = ranges.value.end
             content {
+              # addr - (required) is a type of string
               addr = end.value["addr"]
+              # type - (required) is a type of string
               type = end.value["type"]
             }
           }
@@ -437,6 +460,7 @@ resource "avi_gslb" "this" {
   dynamic "dns_configs" {
     for_each = var.dns_configs
     content {
+      # domain_name - (optional) is a type of string
       domain_name = dns_configs.value["domain_name"]
     }
   }
@@ -444,22 +468,35 @@ resource "avi_gslb" "this" {
   dynamic "sites" {
     for_each = var.sites
     content {
-      address          = sites.value["address"]
-      cluster_uuid     = sites.value["cluster_uuid"]
-      enabled          = sites.value["enabled"]
+      # address - (optional) is a type of string
+      address = sites.value["address"]
+      # cluster_uuid - (optional) is a type of string
+      cluster_uuid = sites.value["cluster_uuid"]
+      # enabled - (optional) is a type of bool
+      enabled = sites.value["enabled"]
+      # hm_shard_enabled - (optional) is a type of bool
       hm_shard_enabled = sites.value["hm_shard_enabled"]
-      member_type      = sites.value["member_type"]
-      name             = sites.value["name"]
-      password         = sites.value["password"]
-      port             = sites.value["port"]
-      ratio            = sites.value["ratio"]
-      username         = sites.value["username"]
-      uuid             = sites.value["uuid"]
+      # member_type - (optional) is a type of string
+      member_type = sites.value["member_type"]
+      # name - (optional) is a type of string
+      name = sites.value["name"]
+      # password - (optional) is a type of string
+      password = sites.value["password"]
+      # port - (optional) is a type of number
+      port = sites.value["port"]
+      # ratio - (optional) is a type of number
+      ratio = sites.value["ratio"]
+      # username - (optional) is a type of string
+      username = sites.value["username"]
+      # uuid - (optional) is a type of string
+      uuid = sites.value["uuid"]
 
       dynamic "dns_vses" {
         for_each = sites.value.dns_vses
         content {
-          dns_vs_uuid  = dns_vses.value["dns_vs_uuid"]
+          # dns_vs_uuid - (optional) is a type of string
+          dns_vs_uuid = dns_vses.value["dns_vs_uuid"]
+          # domain_names - (optional) is a type of list of string
           domain_names = dns_vses.value["domain_names"]
         }
       }
@@ -467,15 +504,19 @@ resource "avi_gslb" "this" {
       dynamic "hm_proxies" {
         for_each = sites.value.hm_proxies
         content {
+          # proxy_type - (optional) is a type of string
           proxy_type = hm_proxies.value["proxy_type"]
-          site_uuid  = hm_proxies.value["site_uuid"]
+          # site_uuid - (optional) is a type of string
+          site_uuid = hm_proxies.value["site_uuid"]
         }
       }
 
       dynamic "ip_addresses" {
         for_each = sites.value.ip_addresses
         content {
+          # addr - (required) is a type of string
           addr = ip_addresses.value["addr"]
+          # type - (required) is a type of string
           type = ip_addresses.value["type"]
         }
       }
@@ -483,15 +524,20 @@ resource "avi_gslb" "this" {
       dynamic "location" {
         for_each = sites.value.location
         content {
+          # source - (optional) is a type of string
           source = location.value["source"]
 
           dynamic "location" {
             for_each = location.value.location
             content {
-              latitude  = location.value["latitude"]
+              # latitude - (optional) is a type of number
+              latitude = location.value["latitude"]
+              # longitude - (optional) is a type of number
               longitude = location.value["longitude"]
-              name      = location.value["name"]
-              tag       = location.value["tag"]
+              # name - (optional) is a type of string
+              name = location.value["name"]
+              # tag - (optional) is a type of string
+              tag = location.value["tag"]
             }
           }
 
@@ -504,31 +550,42 @@ resource "avi_gslb" "this" {
   dynamic "third_party_sites" {
     for_each = var.third_party_sites
     content {
+      # enabled - (optional) is a type of bool
       enabled = third_party_sites.value["enabled"]
-      name    = third_party_sites.value["name"]
-      ratio   = third_party_sites.value["ratio"]
-      uuid    = third_party_sites.value["uuid"]
+      # name - (optional) is a type of string
+      name = third_party_sites.value["name"]
+      # ratio - (optional) is a type of number
+      ratio = third_party_sites.value["ratio"]
+      # uuid - (optional) is a type of string
+      uuid = third_party_sites.value["uuid"]
 
       dynamic "hm_proxies" {
         for_each = third_party_sites.value.hm_proxies
         content {
+          # proxy_type - (optional) is a type of string
           proxy_type = hm_proxies.value["proxy_type"]
-          site_uuid  = hm_proxies.value["site_uuid"]
+          # site_uuid - (optional) is a type of string
+          site_uuid = hm_proxies.value["site_uuid"]
         }
       }
 
       dynamic "location" {
         for_each = third_party_sites.value.location
         content {
+          # source - (optional) is a type of string
           source = location.value["source"]
 
           dynamic "location" {
             for_each = location.value.location
             content {
-              latitude  = location.value["latitude"]
+              # latitude - (optional) is a type of number
+              latitude = location.value["latitude"]
+              # longitude - (optional) is a type of number
               longitude = location.value["longitude"]
-              name      = location.value["name"]
-              tag       = location.value["tag"]
+              # name - (optional) is a type of string
+              name = location.value["name"]
+              # tag - (optional) is a type of string
+              tag = location.value["tag"]
             }
           }
 

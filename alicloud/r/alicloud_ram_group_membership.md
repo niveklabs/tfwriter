@@ -56,7 +56,9 @@ variable "user_names" {
 
 ```terraform
 resource "alicloud_ram_group_membership" "this" {
+  # group_name - (required) is a type of string
   group_name = var.group_name
+  # user_names - (required) is a type of set of string
   user_names = var.user_names
 }
 ```

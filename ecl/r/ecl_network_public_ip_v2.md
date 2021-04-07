@@ -106,18 +106,27 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_public_ip_v2" "this" {
-  description    = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_gw_id - (required) is a type of string
   internet_gw_id = var.internet_gw_id
-  name           = var.name
-  region         = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
+  # submask_length - (required) is a type of number
   submask_length = var.submask_length
-  tenant_id      = var.tenant_id
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

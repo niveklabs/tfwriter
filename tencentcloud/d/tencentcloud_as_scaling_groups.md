@@ -82,11 +82,16 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_as_scaling_groups" "this" {
-  configuration_id   = var.configuration_id
+  # configuration_id - (optional) is a type of string
+  configuration_id = var.configuration_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  scaling_group_id   = var.scaling_group_id
+  # scaling_group_id - (optional) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # scaling_group_name - (optional) is a type of string
   scaling_group_name = var.scaling_group_name
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

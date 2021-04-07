@@ -89,18 +89,27 @@ variable "rule" {
 
 ```terraform
 resource "fortios_router_prefixlist6" "this" {
-  comments              = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action  = rule.value["action"]
-      flags   = rule.value["flags"]
-      ge      = rule.value["ge"]
-      id      = rule.value["id"]
-      le      = rule.value["le"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # flags - (optional) is a type of number
+      flags = rule.value["flags"]
+      # ge - (optional) is a type of number
+      ge = rule.value["ge"]
+      # id - (optional) is a type of number
+      id = rule.value["id"]
+      # le - (optional) is a type of number
+      le = rule.value["le"]
+      # prefix6 - (optional) is a type of string
       prefix6 = rule.value["prefix6"]
     }
   }

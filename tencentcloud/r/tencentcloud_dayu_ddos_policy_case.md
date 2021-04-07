@@ -206,28 +206,50 @@ variable "web_api_urls" {
 
 ```terraform
 resource "tencentcloud_dayu_ddos_policy_case" "this" {
-  app_protocols       = var.app_protocols
-  app_type            = var.app_type
-  has_abroad          = var.has_abroad
-  has_initiate_tcp    = var.has_initiate_tcp
-  has_initiate_udp    = var.has_initiate_udp
-  has_vpn             = var.has_vpn
+  # app_protocols - (required) is a type of set of string
+  app_protocols = var.app_protocols
+  # app_type - (required) is a type of string
+  app_type = var.app_type
+  # has_abroad - (required) is a type of string
+  has_abroad = var.has_abroad
+  # has_initiate_tcp - (required) is a type of string
+  has_initiate_tcp = var.has_initiate_tcp
+  # has_initiate_udp - (optional) is a type of string
+  has_initiate_udp = var.has_initiate_udp
+  # has_vpn - (optional) is a type of string
+  has_vpn = var.has_vpn
+  # max_tcp_package_len - (optional) is a type of string
   max_tcp_package_len = var.max_tcp_package_len
+  # max_udp_package_len - (optional) is a type of string
   max_udp_package_len = var.max_udp_package_len
+  # min_tcp_package_len - (optional) is a type of string
   min_tcp_package_len = var.min_tcp_package_len
+  # min_udp_package_len - (optional) is a type of string
   min_udp_package_len = var.min_udp_package_len
-  name                = var.name
-  peer_tcp_port       = var.peer_tcp_port
-  peer_udp_port       = var.peer_udp_port
-  platform_types      = var.platform_types
-  resource_type       = var.resource_type
-  tcp_end_port        = var.tcp_end_port
-  tcp_footprint       = var.tcp_footprint
-  tcp_start_port      = var.tcp_start_port
-  udp_end_port        = var.udp_end_port
-  udp_footprint       = var.udp_footprint
-  udp_start_port      = var.udp_start_port
-  web_api_urls        = var.web_api_urls
+  # name - (required) is a type of string
+  name = var.name
+  # peer_tcp_port - (optional) is a type of string
+  peer_tcp_port = var.peer_tcp_port
+  # peer_udp_port - (optional) is a type of string
+  peer_udp_port = var.peer_udp_port
+  # platform_types - (required) is a type of set of string
+  platform_types = var.platform_types
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # tcp_end_port - (required) is a type of string
+  tcp_end_port = var.tcp_end_port
+  # tcp_footprint - (optional) is a type of string
+  tcp_footprint = var.tcp_footprint
+  # tcp_start_port - (required) is a type of string
+  tcp_start_port = var.tcp_start_port
+  # udp_end_port - (required) is a type of string
+  udp_end_port = var.udp_end_port
+  # udp_footprint - (optional) is a type of string
+  udp_footprint = var.udp_footprint
+  # udp_start_port - (required) is a type of string
+  udp_start_port = var.udp_start_port
+  # web_api_urls - (required) is a type of set of string
+  web_api_urls = var.web_api_urls
 }
 ```
 

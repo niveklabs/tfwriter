@@ -93,13 +93,20 @@ variable "template" {
 
 ```terraform
 resource "mso_schema_template_anp_epg_subnet" "this" {
-  anp_name  = var.anp_name
-  epg_name  = var.epg_name
-  ip        = var.ip
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # schema_id - (required) is a type of string
   schema_id = var.schema_id
-  scope     = var.scope
-  shared    = var.shared
-  template  = var.template
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # shared - (optional) is a type of bool
+  shared = var.shared
+  # template - (required) is a type of string
+  template = var.template
 }
 ```
 

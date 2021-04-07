@@ -107,18 +107,27 @@ variable "smart_queries" {
 
 ```terraform
 resource "circonus_worksheet" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  favourite   = var.favourite
-  graphs      = var.graphs
-  notes       = var.notes
-  tags        = var.tags
-  title       = var.title
+  # favourite - (optional) is a type of bool
+  favourite = var.favourite
+  # graphs - (optional) is a type of set of string
+  graphs = var.graphs
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # title - (required) is a type of string
+  title = var.title
 
   dynamic "smart_queries" {
     for_each = var.smart_queries
     content {
-      name  = smart_queries.value["name"]
+      # name - (required) is a type of string
+      name = smart_queries.value["name"]
+      # order - (optional) is a type of set of string
       order = smart_queries.value["order"]
+      # query - (required) is a type of string
       query = smart_queries.value["query"]
     }
   }

@@ -57,7 +57,9 @@ variable "parent_folder_id" {
 
 ```terraform
 resource "alicloud_resource_manager_folder" "this" {
-  folder_name      = var.folder_name
+  # folder_name - (required) is a type of string
+  folder_name = var.folder_name
+  # parent_folder_id - (optional) is a type of string
   parent_folder_id = var.parent_folder_id
 }
 ```

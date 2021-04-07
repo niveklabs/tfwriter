@@ -135,18 +135,27 @@ variable "regex" {
 
 ```terraform
 resource "panos_custom_data_pattern_object" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # device_group - (optional) is a type of string
   device_group = var.device_group
-  name         = var.name
-  type         = var.type
-  vsys         = var.vsys
+  # name - (required) is a type of string
+  name = var.name
+  # type - (optional) is a type of string
+  type = var.type
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "file_property" {
     for_each = var.file_property
     content {
-      file_property  = file_property.value["file_property"]
-      file_type      = file_property.value["file_type"]
-      name           = file_property.value["name"]
+      # file_property - (required) is a type of string
+      file_property = file_property.value["file_property"]
+      # file_type - (required) is a type of string
+      file_type = file_property.value["file_type"]
+      # name - (required) is a type of string
+      name = file_property.value["name"]
+      # property_value - (required) is a type of string
       property_value = file_property.value["property_value"]
     }
   }
@@ -154,17 +163,22 @@ resource "panos_custom_data_pattern_object" "this" {
   dynamic "predefined_pattern" {
     for_each = var.predefined_pattern
     content {
+      # file_types - (optional) is a type of list of string
       file_types = predefined_pattern.value["file_types"]
-      name       = predefined_pattern.value["name"]
+      # name - (required) is a type of string
+      name = predefined_pattern.value["name"]
     }
   }
 
   dynamic "regex" {
     for_each = var.regex
     content {
+      # file_types - (optional) is a type of list of string
       file_types = regex.value["file_types"]
-      name       = regex.value["name"]
-      regex      = regex.value["regex"]
+      # name - (required) is a type of string
+      name = regex.value["name"]
+      # regex - (required) is a type of string
+      regex = regex.value["regex"]
     }
   }
 

@@ -185,28 +185,47 @@ variable "on_demand_provisioning_enabled" {
 
 ```terraform
 resource "sumologic_saml_configuration" "this" {
-  authn_request_url               = var.authn_request_url
-  configuration_name              = var.configuration_name
-  debug_mode                      = var.debug_mode
+  # authn_request_url - (optional) is a type of string
+  authn_request_url = var.authn_request_url
+  # configuration_name - (required) is a type of string
+  configuration_name = var.configuration_name
+  # debug_mode - (optional) is a type of bool
+  debug_mode = var.debug_mode
+  # disable_requested_authn_context - (optional) is a type of bool
   disable_requested_authn_context = var.disable_requested_authn_context
-  email_attribute                 = var.email_attribute
-  is_redirect_binding             = var.is_redirect_binding
-  issuer                          = var.issuer
-  logout_enabled                  = var.logout_enabled
-  logout_url                      = var.logout_url
-  roles_attribute                 = var.roles_attribute
-  sign_authn_request              = var.sign_authn_request
-  sp_initiated_login_enabled      = var.sp_initiated_login_enabled
-  sp_initiated_login_path         = var.sp_initiated_login_path
-  x509cert1                       = var.x509cert1
-  x509cert2                       = var.x509cert2
-  x509cert3                       = var.x509cert3
+  # email_attribute - (optional) is a type of string
+  email_attribute = var.email_attribute
+  # is_redirect_binding - (optional) is a type of bool
+  is_redirect_binding = var.is_redirect_binding
+  # issuer - (required) is a type of string
+  issuer = var.issuer
+  # logout_enabled - (optional) is a type of bool
+  logout_enabled = var.logout_enabled
+  # logout_url - (optional) is a type of string
+  logout_url = var.logout_url
+  # roles_attribute - (optional) is a type of string
+  roles_attribute = var.roles_attribute
+  # sign_authn_request - (optional) is a type of bool
+  sign_authn_request = var.sign_authn_request
+  # sp_initiated_login_enabled - (optional) is a type of bool
+  sp_initiated_login_enabled = var.sp_initiated_login_enabled
+  # sp_initiated_login_path - (optional) is a type of string
+  sp_initiated_login_path = var.sp_initiated_login_path
+  # x509cert1 - (required) is a type of string
+  x509cert1 = var.x509cert1
+  # x509cert2 - (optional) is a type of string
+  x509cert2 = var.x509cert2
+  # x509cert3 - (optional) is a type of string
+  x509cert3 = var.x509cert3
 
   dynamic "on_demand_provisioning_enabled" {
     for_each = var.on_demand_provisioning_enabled
     content {
-      first_name_attribute         = on_demand_provisioning_enabled.value["first_name_attribute"]
-      last_name_attribute          = on_demand_provisioning_enabled.value["last_name_attribute"]
+      # first_name_attribute - (optional) is a type of string
+      first_name_attribute = on_demand_provisioning_enabled.value["first_name_attribute"]
+      # last_name_attribute - (optional) is a type of string
+      last_name_attribute = on_demand_provisioning_enabled.value["last_name_attribute"]
+      # on_demand_provisioning_roles - (required) is a type of list of string
       on_demand_provisioning_roles = on_demand_provisioning_enabled.value["on_demand_provisioning_roles"]
     }
   }

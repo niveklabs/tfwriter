@@ -65,9 +65,12 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_vdomradiusserver" "this" {
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # radius_server_vdom - (required) is a type of string
   radius_server_vdom = var.radius_server_vdom
-  status             = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

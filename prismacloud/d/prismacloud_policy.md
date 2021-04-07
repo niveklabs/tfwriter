@@ -58,7 +58,9 @@ variable "policy_id" {
 
 ```terraform
 data "prismacloud_policy" "this" {
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_id - (optional) is a type of string
   policy_id = var.policy_id
 }
 ```

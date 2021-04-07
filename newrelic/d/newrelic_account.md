@@ -66,9 +66,12 @@ variable "scope" {
 
 ```terraform
 data "newrelic_account" "this" {
+  # account_id - (optional) is a type of number
   account_id = var.account_id
-  name       = var.name
-  scope      = var.scope
+  # name - (optional) is a type of string
+  name = var.name
+  # scope - (optional) is a type of string
+  scope = var.scope
 }
 ```
 

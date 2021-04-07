@@ -74,9 +74,13 @@ variable "vnp_cpus" {
 
 ```terraform
 resource "fortios_dpdk_cpus" "this" {
+  # ips_cpus - (optional) is a type of string
   ips_cpus = var.ips_cpus
-  rx_cpus  = var.rx_cpus
-  tx_cpus  = var.tx_cpus
+  # rx_cpus - (optional) is a type of string
+  rx_cpus = var.rx_cpus
+  # tx_cpus - (optional) is a type of string
+  tx_cpus = var.tx_cpus
+  # vnp_cpus - (optional) is a type of string
   vnp_cpus = var.vnp_cpus
 }
 ```

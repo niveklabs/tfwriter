@@ -104,14 +104,22 @@ variable "shard_count" {
 
 ```terraform
 resource "alicloud_log_store" "this" {
-  append_meta           = var.append_meta
-  auto_split            = var.auto_split
-  enable_web_tracking   = var.enable_web_tracking
+  # append_meta - (optional) is a type of bool
+  append_meta = var.append_meta
+  # auto_split - (optional) is a type of bool
+  auto_split = var.auto_split
+  # enable_web_tracking - (optional) is a type of bool
+  enable_web_tracking = var.enable_web_tracking
+  # max_split_shard_count - (optional) is a type of number
   max_split_shard_count = var.max_split_shard_count
-  name                  = var.name
-  project               = var.project
-  retention_period      = var.retention_period
-  shard_count           = var.shard_count
+  # name - (required) is a type of string
+  name = var.name
+  # project - (required) is a type of string
+  project = var.project
+  # retention_period - (optional) is a type of number
+  retention_period = var.retention_period
+  # shard_count - (optional) is a type of number
+  shard_count = var.shard_count
 }
 ```
 

@@ -64,9 +64,12 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_alikafka_consumer_group" "this" {
+  # consumer_id - (required) is a type of string
   consumer_id = var.consumer_id
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

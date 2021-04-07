@@ -86,15 +86,21 @@ variable "param_detail" {
 
 ```terraform
 resource "alicloud_rds_parameter_group" "this" {
-  engine               = var.engine
-  engine_version       = var.engine_version
+  # engine - (required) is a type of string
+  engine = var.engine
+  # engine_version - (required) is a type of string
+  engine_version = var.engine_version
+  # parameter_group_desc - (optional) is a type of string
   parameter_group_desc = var.parameter_group_desc
+  # parameter_group_name - (required) is a type of string
   parameter_group_name = var.parameter_group_name
 
   dynamic "param_detail" {
     for_each = var.param_detail
     content {
-      param_name  = param_detail.value["param_name"]
+      # param_name - (required) is a type of string
+      param_name = param_detail.value["param_name"]
+      # param_value - (required) is a type of string
       param_value = param_detail.value["param_value"]
     }
   }

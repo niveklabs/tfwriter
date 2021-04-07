@@ -106,14 +106,22 @@ variable "upload_time" {
 
 ```terraform
 resource "fortios_logfortiguard_overridesetting" "this" {
-  max_log_rate    = var.max_log_rate
-  override        = var.override
-  priority        = var.priority
-  status          = var.status
-  upload_day      = var.upload_day
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = var.max_log_rate
+  # override - (optional) is a type of string
+  override = var.override
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # upload_day - (optional) is a type of string
+  upload_day = var.upload_day
+  # upload_interval - (optional) is a type of string
   upload_interval = var.upload_interval
-  upload_option   = var.upload_option
-  upload_time     = var.upload_time
+  # upload_option - (optional) is a type of string
+  upload_option = var.upload_option
+  # upload_time - (optional) is a type of string
+  upload_time = var.upload_time
 }
 ```
 

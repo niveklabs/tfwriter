@@ -73,10 +73,14 @@ variable "tags" {
 
 ```terraform
 resource "linode_nodebalancer" "this" {
+  # client_conn_throttle - (optional) is a type of number
   client_conn_throttle = var.client_conn_throttle
-  label                = var.label
-  region               = var.region
-  tags                 = var.tags
+  # label - (optional) is a type of string
+  label = var.label
+  # region - (required) is a type of string
+  region = var.region
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

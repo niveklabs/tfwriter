@@ -119,16 +119,26 @@ variable "qos_id" {
 
 ```terraform
 resource "alicloud_sag_qos_car" "this" {
-  description           = var.description
-  limit_type            = var.limit_type
-  max_bandwidth_abs     = var.max_bandwidth_abs
+  # description - (optional) is a type of string
+  description = var.description
+  # limit_type - (required) is a type of string
+  limit_type = var.limit_type
+  # max_bandwidth_abs - (optional) is a type of number
+  max_bandwidth_abs = var.max_bandwidth_abs
+  # max_bandwidth_percent - (optional) is a type of number
   max_bandwidth_percent = var.max_bandwidth_percent
-  min_bandwidth_abs     = var.min_bandwidth_abs
+  # min_bandwidth_abs - (optional) is a type of number
+  min_bandwidth_abs = var.min_bandwidth_abs
+  # min_bandwidth_percent - (optional) is a type of number
   min_bandwidth_percent = var.min_bandwidth_percent
-  name                  = var.name
-  percent_source_type   = var.percent_source_type
-  priority              = var.priority
-  qos_id                = var.qos_id
+  # name - (optional) is a type of string
+  name = var.name
+  # percent_source_type - (optional) is a type of string
+  percent_source_type = var.percent_source_type
+  # priority - (required) is a type of number
+  priority = var.priority
+  # qos_id - (required) is a type of string
+  qos_id = var.qos_id
 }
 ```
 

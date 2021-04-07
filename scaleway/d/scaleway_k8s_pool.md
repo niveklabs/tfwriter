@@ -82,11 +82,16 @@ variable "size" {
 
 ```terraform
 data "scaleway_k8s_pool" "this" {
+  # cluster_id - (optional) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
-  pool_id    = var.pool_id
-  region     = var.region
-  size       = var.size
+  # name - (optional) is a type of string
+  name = var.name
+  # pool_id - (optional) is a type of string
+  pool_id = var.pool_id
+  # region - (optional) is a type of string
+  region = var.region
+  # size - (optional) is a type of number
+  size = var.size
 }
 ```
 

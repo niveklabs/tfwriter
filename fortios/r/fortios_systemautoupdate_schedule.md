@@ -71,10 +71,14 @@ variable "time" {
 
 ```terraform
 resource "fortios_systemautoupdate_schedule" "this" {
-  day       = var.day
+  # day - (optional) is a type of string
+  day = var.day
+  # frequency - (required) is a type of string
   frequency = var.frequency
-  status    = var.status
-  time      = var.time
+  # status - (required) is a type of string
+  status = var.status
+  # time - (required) is a type of string
+  time = var.time
 }
 ```
 

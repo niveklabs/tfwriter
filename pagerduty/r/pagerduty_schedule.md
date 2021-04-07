@@ -112,28 +112,42 @@ variable "layer" {
 
 ```terraform
 resource "pagerduty_schedule" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  overflow    = var.overflow
-  time_zone   = var.time_zone
+  # name - (optional) is a type of string
+  name = var.name
+  # overflow - (optional) is a type of bool
+  overflow = var.overflow
+  # time_zone - (required) is a type of string
+  time_zone = var.time_zone
 
   dynamic "layer" {
     for_each = var.layer
     content {
-      end                          = layer.value["end"]
-      name                         = layer.value["name"]
+      # end - (optional) is a type of string
+      end = layer.value["end"]
+      # name - (optional) is a type of string
+      name = layer.value["name"]
+      # rotation_turn_length_seconds - (required) is a type of number
       rotation_turn_length_seconds = layer.value["rotation_turn_length_seconds"]
-      rotation_virtual_start       = layer.value["rotation_virtual_start"]
-      start                        = layer.value["start"]
-      users                        = layer.value["users"]
+      # rotation_virtual_start - (required) is a type of string
+      rotation_virtual_start = layer.value["rotation_virtual_start"]
+      # start - (required) is a type of string
+      start = layer.value["start"]
+      # users - (required) is a type of list of string
+      users = layer.value["users"]
 
       dynamic "restriction" {
         for_each = layer.value.restriction
         content {
-          duration_seconds  = restriction.value["duration_seconds"]
+          # duration_seconds - (required) is a type of number
+          duration_seconds = restriction.value["duration_seconds"]
+          # start_day_of_week - (optional) is a type of number
           start_day_of_week = restriction.value["start_day_of_week"]
+          # start_time_of_day - (required) is a type of string
           start_time_of_day = restriction.value["start_time_of_day"]
-          type              = restriction.value["type"]
+          # type - (required) is a type of string
+          type = restriction.value["type"]
         }
       }
 

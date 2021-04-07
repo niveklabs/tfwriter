@@ -57,8 +57,10 @@ variable "domain" {
 
 ```terraform
 data "akamai_gtm_default_datacenter" "this" {
+  # datacenter - (optional) is a type of number
   datacenter = var.datacenter
-  domain     = var.domain
+  # domain - (required) is a type of string
+  domain = var.domain
 }
 ```
 

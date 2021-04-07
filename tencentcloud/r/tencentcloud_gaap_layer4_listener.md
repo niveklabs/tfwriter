@@ -129,22 +129,35 @@ variable "realserver_bind_set" {
 
 ```terraform
 resource "tencentcloud_gaap_layer4_listener" "this" {
+  # connect_timeout - (optional) is a type of number
   connect_timeout = var.connect_timeout
-  health_check    = var.health_check
-  interval        = var.interval
-  name            = var.name
-  port            = var.port
-  protocol        = var.protocol
-  proxy_id        = var.proxy_id
+  # health_check - (optional) is a type of bool
+  health_check = var.health_check
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # proxy_id - (required) is a type of string
+  proxy_id = var.proxy_id
+  # realserver_type - (required) is a type of string
   realserver_type = var.realserver_type
-  scheduler       = var.scheduler
+  # scheduler - (optional) is a type of string
+  scheduler = var.scheduler
 
   dynamic "realserver_bind_set" {
     for_each = var.realserver_bind_set
     content {
-      id     = realserver_bind_set.value["id"]
-      ip     = realserver_bind_set.value["ip"]
-      port   = realserver_bind_set.value["port"]
+      # id - (required) is a type of string
+      id = realserver_bind_set.value["id"]
+      # ip - (required) is a type of string
+      ip = realserver_bind_set.value["ip"]
+      # port - (required) is a type of number
+      port = realserver_bind_set.value["port"]
+      # weight - (optional) is a type of number
       weight = realserver_bind_set.value["weight"]
     }
   }

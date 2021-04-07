@@ -57,8 +57,10 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_zone_dnssec" "this" {
+  # modified_on - (optional) is a type of string
   modified_on = var.modified_on
-  zone_id     = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -922,73 +922,120 @@ variable "switch_stp_settings" {
 
 ```terraform
 resource "fortios_switchcontroller_managedswitch" "this" {
-  access_profile               = var.access_profile
-  delayed_restart_trigger      = var.delayed_restart_trigger
-  description                  = var.description
-  directly_connected           = var.directly_connected
-  dynamic_capability           = var.dynamic_capability
-  dynamic_sort_subtable        = var.dynamic_sort_subtable
-  dynamically_discovered       = var.dynamically_discovered
-  firmware_provision           = var.firmware_provision
-  firmware_provision_version   = var.firmware_provision_version
-  flow_identity                = var.flow_identity
-  fsw_wan1_admin               = var.fsw_wan1_admin
-  fsw_wan1_peer                = var.fsw_wan1_peer
-  fsw_wan2_admin               = var.fsw_wan2_admin
-  fsw_wan2_peer                = var.fsw_wan2_peer
-  l3_discovered                = var.l3_discovered
-  max_allowed_trunk_members    = var.max_allowed_trunk_members
-  mclag_igmp_snooping_aware    = var.mclag_igmp_snooping_aware
-  name                         = var.name
-  override_snmp_community      = var.override_snmp_community
-  override_snmp_sysinfo        = var.override_snmp_sysinfo
+  # access_profile - (optional) is a type of string
+  access_profile = var.access_profile
+  # delayed_restart_trigger - (optional) is a type of number
+  delayed_restart_trigger = var.delayed_restart_trigger
+  # description - (optional) is a type of string
+  description = var.description
+  # directly_connected - (optional) is a type of number
+  directly_connected = var.directly_connected
+  # dynamic_capability - (optional) is a type of number
+  dynamic_capability = var.dynamic_capability
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # dynamically_discovered - (optional) is a type of number
+  dynamically_discovered = var.dynamically_discovered
+  # firmware_provision - (optional) is a type of string
+  firmware_provision = var.firmware_provision
+  # firmware_provision_version - (optional) is a type of string
+  firmware_provision_version = var.firmware_provision_version
+  # flow_identity - (optional) is a type of string
+  flow_identity = var.flow_identity
+  # fsw_wan1_admin - (optional) is a type of string
+  fsw_wan1_admin = var.fsw_wan1_admin
+  # fsw_wan1_peer - (required) is a type of string
+  fsw_wan1_peer = var.fsw_wan1_peer
+  # fsw_wan2_admin - (optional) is a type of string
+  fsw_wan2_admin = var.fsw_wan2_admin
+  # fsw_wan2_peer - (optional) is a type of string
+  fsw_wan2_peer = var.fsw_wan2_peer
+  # l3_discovered - (optional) is a type of number
+  l3_discovered = var.l3_discovered
+  # max_allowed_trunk_members - (optional) is a type of number
+  max_allowed_trunk_members = var.max_allowed_trunk_members
+  # mclag_igmp_snooping_aware - (optional) is a type of string
+  mclag_igmp_snooping_aware = var.mclag_igmp_snooping_aware
+  # name - (optional) is a type of string
+  name = var.name
+  # override_snmp_community - (optional) is a type of string
+  override_snmp_community = var.override_snmp_community
+  # override_snmp_sysinfo - (optional) is a type of string
+  override_snmp_sysinfo = var.override_snmp_sysinfo
+  # override_snmp_trap_threshold - (optional) is a type of string
   override_snmp_trap_threshold = var.override_snmp_trap_threshold
-  override_snmp_user           = var.override_snmp_user
-  owner_vdom                   = var.owner_vdom
-  poe_detection_type           = var.poe_detection_type
-  poe_lldp_detection           = var.poe_lldp_detection
-  poe_pre_standard_detection   = var.poe_pre_standard_detection
-  pre_provisioned              = var.pre_provisioned
-  qos_drop_policy              = var.qos_drop_policy
-  qos_red_probability          = var.qos_red_probability
-  staged_image_version         = var.staged_image_version
-  switch_device_tag            = var.switch_device_tag
-  switch_dhcp_opt43_key        = var.switch_dhcp_opt43_key
-  switch_id                    = var.switch_id
-  switch_profile               = var.switch_profile
-  tdr_supported                = var.tdr_supported
-  type                         = var.type
-  version                      = var.version
+  # override_snmp_user - (optional) is a type of string
+  override_snmp_user = var.override_snmp_user
+  # owner_vdom - (optional) is a type of string
+  owner_vdom = var.owner_vdom
+  # poe_detection_type - (optional) is a type of number
+  poe_detection_type = var.poe_detection_type
+  # poe_lldp_detection - (optional) is a type of string
+  poe_lldp_detection = var.poe_lldp_detection
+  # poe_pre_standard_detection - (optional) is a type of string
+  poe_pre_standard_detection = var.poe_pre_standard_detection
+  # pre_provisioned - (optional) is a type of number
+  pre_provisioned = var.pre_provisioned
+  # qos_drop_policy - (optional) is a type of string
+  qos_drop_policy = var.qos_drop_policy
+  # qos_red_probability - (optional) is a type of number
+  qos_red_probability = var.qos_red_probability
+  # staged_image_version - (optional) is a type of string
+  staged_image_version = var.staged_image_version
+  # switch_device_tag - (optional) is a type of string
+  switch_device_tag = var.switch_device_tag
+  # switch_dhcp_opt43_key - (optional) is a type of string
+  switch_dhcp_opt43_key = var.switch_dhcp_opt43_key
+  # switch_id - (required) is a type of string
+  switch_id = var.switch_id
+  # switch_profile - (optional) is a type of string
+  switch_profile = var.switch_profile
+  # tdr_supported - (optional) is a type of string
+  tdr_supported = var.tdr_supported
+  # type - (optional) is a type of string
+  type = var.type
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "custom_command" {
     for_each = var.custom_command
     content {
+      # command_entry - (optional) is a type of string
       command_entry = custom_command.value["command_entry"]
-      command_name  = custom_command.value["command_name"]
+      # command_name - (optional) is a type of string
+      command_name = custom_command.value["command_name"]
     }
   }
 
   dynamic "igmp_snooping" {
     for_each = var.igmp_snooping
     content {
-      aging_time              = igmp_snooping.value["aging_time"]
+      # aging_time - (optional) is a type of number
+      aging_time = igmp_snooping.value["aging_time"]
+      # flood_unknown_multicast - (optional) is a type of string
       flood_unknown_multicast = igmp_snooping.value["flood_unknown_multicast"]
-      local_override          = igmp_snooping.value["local_override"]
+      # local_override - (optional) is a type of string
+      local_override = igmp_snooping.value["local_override"]
     }
   }
 
   dynamic "ip_source_guard" {
     for_each = var.ip_source_guard
     content {
+      # description - (optional) is a type of string
       description = ip_source_guard.value["description"]
-      port        = ip_source_guard.value["port"]
+      # port - (optional) is a type of string
+      port = ip_source_guard.value["port"]
 
       dynamic "binding_entry" {
         for_each = ip_source_guard.value.binding_entry
         content {
+          # entry_name - (optional) is a type of string
           entry_name = binding_entry.value["entry_name"]
-          ip         = binding_entry.value["ip"]
-          mac        = binding_entry.value["mac"]
+          # ip - (optional) is a type of string
+          ip = binding_entry.value["ip"]
+          # mac - (optional) is a type of string
+          mac = binding_entry.value["mac"]
         }
       }
 
@@ -998,14 +1045,19 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "mirror" {
     for_each = var.mirror
     content {
-      dst              = mirror.value["dst"]
-      name             = mirror.value["name"]
-      status           = mirror.value["status"]
+      # dst - (optional) is a type of string
+      dst = mirror.value["dst"]
+      # name - (optional) is a type of string
+      name = mirror.value["name"]
+      # status - (optional) is a type of string
+      status = mirror.value["status"]
+      # switching_packet - (optional) is a type of string
       switching_packet = mirror.value["switching_packet"]
 
       dynamic "src_egress" {
         for_each = mirror.value.src_egress
         content {
+          # name - (optional) is a type of string
           name = src_egress.value["name"]
         }
       }
@@ -1013,6 +1065,7 @@ resource "fortios_switchcontroller_managedswitch" "this" {
       dynamic "src_ingress" {
         for_each = mirror.value.src_ingress
         content {
+          # name - (optional) is a type of string
           name = src_ingress.value["name"]
         }
       }
@@ -1023,98 +1076,181 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "n802_1x_settings" {
     for_each = var.n802_1x_settings
     content {
-      link_down_auth     = n802_1x_settings.value["link_down_auth"]
-      local_override     = n802_1x_settings.value["local_override"]
+      # link_down_auth - (optional) is a type of string
+      link_down_auth = n802_1x_settings.value["link_down_auth"]
+      # local_override - (optional) is a type of string
+      local_override = n802_1x_settings.value["local_override"]
+      # max_reauth_attempt - (optional) is a type of number
       max_reauth_attempt = n802_1x_settings.value["max_reauth_attempt"]
-      reauth_period      = n802_1x_settings.value["reauth_period"]
-      tx_period          = n802_1x_settings.value["tx_period"]
+      # reauth_period - (optional) is a type of number
+      reauth_period = n802_1x_settings.value["reauth_period"]
+      # tx_period - (optional) is a type of number
+      tx_period = n802_1x_settings.value["tx_period"]
     }
   }
 
   dynamic "ports" {
     for_each = var.ports
     content {
-      access_mode                = ports.value["access_mode"]
-      aggregator_mode            = ports.value["aggregator_mode"]
-      allowed_vlans_all          = ports.value["allowed_vlans_all"]
-      arp_inspection_trust       = ports.value["arp_inspection_trust"]
-      bundle                     = ports.value["bundle"]
-      description                = ports.value["description"]
-      dhcp_snoop_option82_trust  = ports.value["dhcp_snoop_option82_trust"]
-      dhcp_snooping              = ports.value["dhcp_snooping"]
-      discard_mode               = ports.value["discard_mode"]
-      edge_port                  = ports.value["edge_port"]
-      export_to                  = ports.value["export_to"]
-      export_to_pool             = ports.value["export_to_pool"]
-      export_to_pool_flag        = ports.value["export_to_pool_flag"]
-      fec_capable                = ports.value["fec_capable"]
-      fec_state                  = ports.value["fec_state"]
-      fgt_peer_device_name       = ports.value["fgt_peer_device_name"]
-      fgt_peer_port_name         = ports.value["fgt_peer_port_name"]
-      fiber_port                 = ports.value["fiber_port"]
-      flags                      = ports.value["flags"]
-      flow_control               = ports.value["flow_control"]
-      fortilink_port             = ports.value["fortilink_port"]
-      igmp_snooping              = ports.value["igmp_snooping"]
-      igmps_flood_reports        = ports.value["igmps_flood_reports"]
-      igmps_flood_traffic        = ports.value["igmps_flood_traffic"]
-      ip_source_guard            = ports.value["ip_source_guard"]
-      isl_local_trunk_name       = ports.value["isl_local_trunk_name"]
-      isl_peer_device_name       = ports.value["isl_peer_device_name"]
-      isl_peer_port_name         = ports.value["isl_peer_port_name"]
-      lacp_speed                 = ports.value["lacp_speed"]
-      learning_limit             = ports.value["learning_limit"]
-      lldp_profile               = ports.value["lldp_profile"]
-      lldp_status                = ports.value["lldp_status"]
-      loop_guard                 = ports.value["loop_guard"]
-      loop_guard_timeout         = ports.value["loop_guard_timeout"]
-      mac_addr                   = ports.value["mac_addr"]
-      max_bundle                 = ports.value["max_bundle"]
-      mclag                      = ports.value["mclag"]
-      mclag_icl_port             = ports.value["mclag_icl_port"]
-      media_type                 = ports.value["media_type"]
+      # access_mode - (optional) is a type of string
+      access_mode = ports.value["access_mode"]
+      # aggregator_mode - (optional) is a type of string
+      aggregator_mode = ports.value["aggregator_mode"]
+      # allowed_vlans_all - (optional) is a type of string
+      allowed_vlans_all = ports.value["allowed_vlans_all"]
+      # arp_inspection_trust - (optional) is a type of string
+      arp_inspection_trust = ports.value["arp_inspection_trust"]
+      # bundle - (optional) is a type of string
+      bundle = ports.value["bundle"]
+      # description - (optional) is a type of string
+      description = ports.value["description"]
+      # dhcp_snoop_option82_trust - (optional) is a type of string
+      dhcp_snoop_option82_trust = ports.value["dhcp_snoop_option82_trust"]
+      # dhcp_snooping - (optional) is a type of string
+      dhcp_snooping = ports.value["dhcp_snooping"]
+      # discard_mode - (optional) is a type of string
+      discard_mode = ports.value["discard_mode"]
+      # edge_port - (optional) is a type of string
+      edge_port = ports.value["edge_port"]
+      # export_to - (optional) is a type of string
+      export_to = ports.value["export_to"]
+      # export_to_pool - (optional) is a type of string
+      export_to_pool = ports.value["export_to_pool"]
+      # export_to_pool_flag - (optional) is a type of number
+      export_to_pool_flag = ports.value["export_to_pool_flag"]
+      # fec_capable - (optional) is a type of number
+      fec_capable = ports.value["fec_capable"]
+      # fec_state - (optional) is a type of string
+      fec_state = ports.value["fec_state"]
+      # fgt_peer_device_name - (optional) is a type of string
+      fgt_peer_device_name = ports.value["fgt_peer_device_name"]
+      # fgt_peer_port_name - (optional) is a type of string
+      fgt_peer_port_name = ports.value["fgt_peer_port_name"]
+      # fiber_port - (optional) is a type of number
+      fiber_port = ports.value["fiber_port"]
+      # flags - (optional) is a type of number
+      flags = ports.value["flags"]
+      # flow_control - (optional) is a type of string
+      flow_control = ports.value["flow_control"]
+      # fortilink_port - (optional) is a type of number
+      fortilink_port = ports.value["fortilink_port"]
+      # igmp_snooping - (optional) is a type of string
+      igmp_snooping = ports.value["igmp_snooping"]
+      # igmps_flood_reports - (optional) is a type of string
+      igmps_flood_reports = ports.value["igmps_flood_reports"]
+      # igmps_flood_traffic - (optional) is a type of string
+      igmps_flood_traffic = ports.value["igmps_flood_traffic"]
+      # ip_source_guard - (optional) is a type of string
+      ip_source_guard = ports.value["ip_source_guard"]
+      # isl_local_trunk_name - (optional) is a type of string
+      isl_local_trunk_name = ports.value["isl_local_trunk_name"]
+      # isl_peer_device_name - (optional) is a type of string
+      isl_peer_device_name = ports.value["isl_peer_device_name"]
+      # isl_peer_port_name - (optional) is a type of string
+      isl_peer_port_name = ports.value["isl_peer_port_name"]
+      # lacp_speed - (optional) is a type of string
+      lacp_speed = ports.value["lacp_speed"]
+      # learning_limit - (optional) is a type of number
+      learning_limit = ports.value["learning_limit"]
+      # lldp_profile - (optional) is a type of string
+      lldp_profile = ports.value["lldp_profile"]
+      # lldp_status - (optional) is a type of string
+      lldp_status = ports.value["lldp_status"]
+      # loop_guard - (optional) is a type of string
+      loop_guard = ports.value["loop_guard"]
+      # loop_guard_timeout - (optional) is a type of number
+      loop_guard_timeout = ports.value["loop_guard_timeout"]
+      # mac_addr - (optional) is a type of string
+      mac_addr = ports.value["mac_addr"]
+      # max_bundle - (optional) is a type of number
+      max_bundle = ports.value["max_bundle"]
+      # mclag - (optional) is a type of string
+      mclag = ports.value["mclag"]
+      # mclag_icl_port - (optional) is a type of number
+      mclag_icl_port = ports.value["mclag_icl_port"]
+      # media_type - (optional) is a type of string
+      media_type = ports.value["media_type"]
+      # member_withdrawal_behavior - (optional) is a type of string
       member_withdrawal_behavior = ports.value["member_withdrawal_behavior"]
-      min_bundle                 = ports.value["min_bundle"]
-      mode                       = ports.value["mode"]
-      p2p_port                   = ports.value["p2p_port"]
-      packet_sample_rate         = ports.value["packet_sample_rate"]
-      packet_sampler             = ports.value["packet_sampler"]
-      pause_meter                = ports.value["pause_meter"]
-      pause_meter_resume         = ports.value["pause_meter_resume"]
-      poe_capable                = ports.value["poe_capable"]
+      # min_bundle - (optional) is a type of number
+      min_bundle = ports.value["min_bundle"]
+      # mode - (optional) is a type of string
+      mode = ports.value["mode"]
+      # p2p_port - (optional) is a type of number
+      p2p_port = ports.value["p2p_port"]
+      # packet_sample_rate - (optional) is a type of number
+      packet_sample_rate = ports.value["packet_sample_rate"]
+      # packet_sampler - (optional) is a type of string
+      packet_sampler = ports.value["packet_sampler"]
+      # pause_meter - (optional) is a type of number
+      pause_meter = ports.value["pause_meter"]
+      # pause_meter_resume - (optional) is a type of string
+      pause_meter_resume = ports.value["pause_meter_resume"]
+      # poe_capable - (optional) is a type of number
+      poe_capable = ports.value["poe_capable"]
+      # poe_pre_standard_detection - (optional) is a type of string
       poe_pre_standard_detection = ports.value["poe_pre_standard_detection"]
-      poe_status                 = ports.value["poe_status"]
-      port_name                  = ports.value["port_name"]
-      port_number                = ports.value["port_number"]
-      port_owner                 = ports.value["port_owner"]
-      port_prefix_type           = ports.value["port_prefix_type"]
-      port_security_policy       = ports.value["port_security_policy"]
-      port_selection_criteria    = ports.value["port_selection_criteria"]
-      ptp_policy                 = ports.value["ptp_policy"]
-      qos_policy                 = ports.value["qos_policy"]
-      rpvst_port                 = ports.value["rpvst_port"]
-      sample_direction           = ports.value["sample_direction"]
-      sflow_counter_interval     = ports.value["sflow_counter_interval"]
-      sflow_sample_rate          = ports.value["sflow_sample_rate"]
-      sflow_sampler              = ports.value["sflow_sampler"]
-      speed                      = ports.value["speed"]
-      speed_mask                 = ports.value["speed_mask"]
-      stacking_port              = ports.value["stacking_port"]
-      status                     = ports.value["status"]
-      sticky_mac                 = ports.value["sticky_mac"]
-      storm_control_policy       = ports.value["storm_control_policy"]
-      stp_bpdu_guard             = ports.value["stp_bpdu_guard"]
-      stp_bpdu_guard_timeout     = ports.value["stp_bpdu_guard_timeout"]
-      stp_root_guard             = ports.value["stp_root_guard"]
-      stp_state                  = ports.value["stp_state"]
-      switch_id                  = ports.value["switch_id"]
-      type                       = ports.value["type"]
-      virtual_port               = ports.value["virtual_port"]
-      vlan                       = ports.value["vlan"]
+      # poe_status - (optional) is a type of string
+      poe_status = ports.value["poe_status"]
+      # port_name - (optional) is a type of string
+      port_name = ports.value["port_name"]
+      # port_number - (optional) is a type of number
+      port_number = ports.value["port_number"]
+      # port_owner - (optional) is a type of string
+      port_owner = ports.value["port_owner"]
+      # port_prefix_type - (optional) is a type of number
+      port_prefix_type = ports.value["port_prefix_type"]
+      # port_security_policy - (optional) is a type of string
+      port_security_policy = ports.value["port_security_policy"]
+      # port_selection_criteria - (optional) is a type of string
+      port_selection_criteria = ports.value["port_selection_criteria"]
+      # ptp_policy - (optional) is a type of string
+      ptp_policy = ports.value["ptp_policy"]
+      # qos_policy - (optional) is a type of string
+      qos_policy = ports.value["qos_policy"]
+      # rpvst_port - (optional) is a type of string
+      rpvst_port = ports.value["rpvst_port"]
+      # sample_direction - (optional) is a type of string
+      sample_direction = ports.value["sample_direction"]
+      # sflow_counter_interval - (optional) is a type of number
+      sflow_counter_interval = ports.value["sflow_counter_interval"]
+      # sflow_sample_rate - (optional) is a type of number
+      sflow_sample_rate = ports.value["sflow_sample_rate"]
+      # sflow_sampler - (optional) is a type of string
+      sflow_sampler = ports.value["sflow_sampler"]
+      # speed - (optional) is a type of string
+      speed = ports.value["speed"]
+      # speed_mask - (optional) is a type of number
+      speed_mask = ports.value["speed_mask"]
+      # stacking_port - (optional) is a type of number
+      stacking_port = ports.value["stacking_port"]
+      # status - (optional) is a type of string
+      status = ports.value["status"]
+      # sticky_mac - (optional) is a type of string
+      sticky_mac = ports.value["sticky_mac"]
+      # storm_control_policy - (optional) is a type of string
+      storm_control_policy = ports.value["storm_control_policy"]
+      # stp_bpdu_guard - (optional) is a type of string
+      stp_bpdu_guard = ports.value["stp_bpdu_guard"]
+      # stp_bpdu_guard_timeout - (optional) is a type of number
+      stp_bpdu_guard_timeout = ports.value["stp_bpdu_guard_timeout"]
+      # stp_root_guard - (optional) is a type of string
+      stp_root_guard = ports.value["stp_root_guard"]
+      # stp_state - (optional) is a type of string
+      stp_state = ports.value["stp_state"]
+      # switch_id - (optional) is a type of string
+      switch_id = ports.value["switch_id"]
+      # type - (optional) is a type of string
+      type = ports.value["type"]
+      # virtual_port - (optional) is a type of number
+      virtual_port = ports.value["virtual_port"]
+      # vlan - (optional) is a type of string
+      vlan = ports.value["vlan"]
 
       dynamic "allowed_vlans" {
         for_each = ports.value.allowed_vlans
         content {
+          # vlan_name - (optional) is a type of string
           vlan_name = allowed_vlans.value["vlan_name"]
         }
       }
@@ -1122,6 +1258,7 @@ resource "fortios_switchcontroller_managedswitch" "this" {
       dynamic "export_tags" {
         for_each = ports.value.export_tags
         content {
+          # tag_name - (optional) is a type of string
           tag_name = export_tags.value["tag_name"]
         }
       }
@@ -1129,6 +1266,7 @@ resource "fortios_switchcontroller_managedswitch" "this" {
       dynamic "members" {
         for_each = ports.value.members
         content {
+          # member_name - (optional) is a type of string
           member_name = members.value["member_name"]
         }
       }
@@ -1136,6 +1274,7 @@ resource "fortios_switchcontroller_managedswitch" "this" {
       dynamic "untagged_vlans" {
         for_each = ports.value.untagged_vlans
         content {
+          # vlan_name - (optional) is a type of string
           vlan_name = untagged_vlans.value["vlan_name"]
         }
       }
@@ -1146,38 +1285,61 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "remote_log" {
     for_each = var.remote_log
     content {
-      csv      = remote_log.value["csv"]
+      # csv - (optional) is a type of string
+      csv = remote_log.value["csv"]
+      # facility - (optional) is a type of string
       facility = remote_log.value["facility"]
-      name     = remote_log.value["name"]
-      port     = remote_log.value["port"]
-      server   = remote_log.value["server"]
+      # name - (optional) is a type of string
+      name = remote_log.value["name"]
+      # port - (optional) is a type of number
+      port = remote_log.value["port"]
+      # server - (optional) is a type of string
+      server = remote_log.value["server"]
+      # severity - (optional) is a type of string
       severity = remote_log.value["severity"]
-      status   = remote_log.value["status"]
+      # status - (optional) is a type of string
+      status = remote_log.value["status"]
     }
   }
 
   dynamic "snmp_community" {
     for_each = var.snmp_community
     content {
-      events           = snmp_community.value["events"]
-      id               = snmp_community.value["id"]
-      name             = snmp_community.value["name"]
-      query_v1_port    = snmp_community.value["query_v1_port"]
-      query_v1_status  = snmp_community.value["query_v1_status"]
-      query_v2c_port   = snmp_community.value["query_v2c_port"]
+      # events - (optional) is a type of string
+      events = snmp_community.value["events"]
+      # id - (optional) is a type of number
+      id = snmp_community.value["id"]
+      # name - (optional) is a type of string
+      name = snmp_community.value["name"]
+      # query_v1_port - (optional) is a type of number
+      query_v1_port = snmp_community.value["query_v1_port"]
+      # query_v1_status - (optional) is a type of string
+      query_v1_status = snmp_community.value["query_v1_status"]
+      # query_v2c_port - (optional) is a type of number
+      query_v2c_port = snmp_community.value["query_v2c_port"]
+      # query_v2c_status - (optional) is a type of string
       query_v2c_status = snmp_community.value["query_v2c_status"]
-      status           = snmp_community.value["status"]
-      trap_v1_lport    = snmp_community.value["trap_v1_lport"]
-      trap_v1_rport    = snmp_community.value["trap_v1_rport"]
-      trap_v1_status   = snmp_community.value["trap_v1_status"]
-      trap_v2c_lport   = snmp_community.value["trap_v2c_lport"]
-      trap_v2c_rport   = snmp_community.value["trap_v2c_rport"]
-      trap_v2c_status  = snmp_community.value["trap_v2c_status"]
+      # status - (optional) is a type of string
+      status = snmp_community.value["status"]
+      # trap_v1_lport - (optional) is a type of number
+      trap_v1_lport = snmp_community.value["trap_v1_lport"]
+      # trap_v1_rport - (optional) is a type of number
+      trap_v1_rport = snmp_community.value["trap_v1_rport"]
+      # trap_v1_status - (optional) is a type of string
+      trap_v1_status = snmp_community.value["trap_v1_status"]
+      # trap_v2c_lport - (optional) is a type of number
+      trap_v2c_lport = snmp_community.value["trap_v2c_lport"]
+      # trap_v2c_rport - (optional) is a type of number
+      trap_v2c_rport = snmp_community.value["trap_v2c_rport"]
+      # trap_v2c_status - (optional) is a type of string
+      trap_v2c_status = snmp_community.value["trap_v2c_status"]
 
       dynamic "hosts" {
         for_each = snmp_community.value.hosts
         content {
+          # id - (optional) is a type of number
           id = hosts.value["id"]
+          # ip - (optional) is a type of string
           ip = hosts.value["ip"]
         }
       }
@@ -1188,19 +1350,27 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "snmp_sysinfo" {
     for_each = var.snmp_sysinfo
     content {
+      # contact_info - (optional) is a type of string
       contact_info = snmp_sysinfo.value["contact_info"]
-      description  = snmp_sysinfo.value["description"]
-      engine_id    = snmp_sysinfo.value["engine_id"]
-      location     = snmp_sysinfo.value["location"]
-      status       = snmp_sysinfo.value["status"]
+      # description - (optional) is a type of string
+      description = snmp_sysinfo.value["description"]
+      # engine_id - (optional) is a type of string
+      engine_id = snmp_sysinfo.value["engine_id"]
+      # location - (optional) is a type of string
+      location = snmp_sysinfo.value["location"]
+      # status - (optional) is a type of string
+      status = snmp_sysinfo.value["status"]
     }
   }
 
   dynamic "snmp_trap_threshold" {
     for_each = var.snmp_trap_threshold
     content {
-      trap_high_cpu_threshold   = snmp_trap_threshold.value["trap_high_cpu_threshold"]
-      trap_log_full_threshold   = snmp_trap_threshold.value["trap_log_full_threshold"]
+      # trap_high_cpu_threshold - (optional) is a type of number
+      trap_high_cpu_threshold = snmp_trap_threshold.value["trap_high_cpu_threshold"]
+      # trap_log_full_threshold - (optional) is a type of number
+      trap_log_full_threshold = snmp_trap_threshold.value["trap_log_full_threshold"]
+      # trap_low_memory_threshold - (optional) is a type of number
       trap_low_memory_threshold = snmp_trap_threshold.value["trap_low_memory_threshold"]
     }
   }
@@ -1208,13 +1378,21 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "snmp_user" {
     for_each = var.snmp_user
     content {
-      auth_proto     = snmp_user.value["auth_proto"]
-      auth_pwd       = snmp_user.value["auth_pwd"]
-      name           = snmp_user.value["name"]
-      priv_proto     = snmp_user.value["priv_proto"]
-      priv_pwd       = snmp_user.value["priv_pwd"]
-      queries        = snmp_user.value["queries"]
-      query_port     = snmp_user.value["query_port"]
+      # auth_proto - (optional) is a type of string
+      auth_proto = snmp_user.value["auth_proto"]
+      # auth_pwd - (optional) is a type of string
+      auth_pwd = snmp_user.value["auth_pwd"]
+      # name - (optional) is a type of string
+      name = snmp_user.value["name"]
+      # priv_proto - (optional) is a type of string
+      priv_proto = snmp_user.value["priv_proto"]
+      # priv_pwd - (optional) is a type of string
+      priv_pwd = snmp_user.value["priv_pwd"]
+      # queries - (optional) is a type of string
+      queries = snmp_user.value["queries"]
+      # query_port - (optional) is a type of number
+      query_port = snmp_user.value["query_port"]
+      # security_level - (optional) is a type of string
       security_level = snmp_user.value["security_level"]
     }
   }
@@ -1222,30 +1400,43 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "static_mac" {
     for_each = var.static_mac
     content {
+      # description - (optional) is a type of string
       description = static_mac.value["description"]
-      id          = static_mac.value["id"]
-      interface   = static_mac.value["interface"]
-      mac         = static_mac.value["mac"]
-      type        = static_mac.value["type"]
-      vlan        = static_mac.value["vlan"]
+      # id - (optional) is a type of number
+      id = static_mac.value["id"]
+      # interface - (optional) is a type of string
+      interface = static_mac.value["interface"]
+      # mac - (optional) is a type of string
+      mac = static_mac.value["mac"]
+      # type - (optional) is a type of string
+      type = static_mac.value["type"]
+      # vlan - (optional) is a type of string
+      vlan = static_mac.value["vlan"]
     }
   }
 
   dynamic "storm_control" {
     for_each = var.storm_control
     content {
-      broadcast         = storm_control.value["broadcast"]
-      local_override    = storm_control.value["local_override"]
-      rate              = storm_control.value["rate"]
+      # broadcast - (optional) is a type of string
+      broadcast = storm_control.value["broadcast"]
+      # local_override - (optional) is a type of string
+      local_override = storm_control.value["local_override"]
+      # rate - (optional) is a type of number
+      rate = storm_control.value["rate"]
+      # unknown_multicast - (optional) is a type of string
       unknown_multicast = storm_control.value["unknown_multicast"]
-      unknown_unicast   = storm_control.value["unknown_unicast"]
+      # unknown_unicast - (optional) is a type of string
+      unknown_unicast = storm_control.value["unknown_unicast"]
     }
   }
 
   dynamic "stp_instance" {
     for_each = var.stp_instance
     content {
-      id       = stp_instance.value["id"]
+      # id - (optional) is a type of string
+      id = stp_instance.value["id"]
+      # priority - (optional) is a type of string
       priority = stp_instance.value["priority"]
     }
   }
@@ -1253,30 +1444,43 @@ resource "fortios_switchcontroller_managedswitch" "this" {
   dynamic "stp_settings" {
     for_each = var.stp_settings
     content {
-      forward_time   = stp_settings.value["forward_time"]
-      hello_time     = stp_settings.value["hello_time"]
+      # forward_time - (optional) is a type of number
+      forward_time = stp_settings.value["forward_time"]
+      # hello_time - (optional) is a type of number
+      hello_time = stp_settings.value["hello_time"]
+      # local_override - (optional) is a type of string
       local_override = stp_settings.value["local_override"]
-      max_age        = stp_settings.value["max_age"]
-      max_hops       = stp_settings.value["max_hops"]
-      name           = stp_settings.value["name"]
-      pending_timer  = stp_settings.value["pending_timer"]
-      revision       = stp_settings.value["revision"]
-      status         = stp_settings.value["status"]
+      # max_age - (optional) is a type of number
+      max_age = stp_settings.value["max_age"]
+      # max_hops - (optional) is a type of number
+      max_hops = stp_settings.value["max_hops"]
+      # name - (optional) is a type of string
+      name = stp_settings.value["name"]
+      # pending_timer - (optional) is a type of number
+      pending_timer = stp_settings.value["pending_timer"]
+      # revision - (optional) is a type of number
+      revision = stp_settings.value["revision"]
+      # status - (optional) is a type of string
+      status = stp_settings.value["status"]
     }
   }
 
   dynamic "switch_log" {
     for_each = var.switch_log
     content {
+      # local_override - (optional) is a type of string
       local_override = switch_log.value["local_override"]
-      severity       = switch_log.value["severity"]
-      status         = switch_log.value["status"]
+      # severity - (optional) is a type of string
+      severity = switch_log.value["severity"]
+      # status - (optional) is a type of string
+      status = switch_log.value["status"]
     }
   }
 
   dynamic "switch_stp_settings" {
     for_each = var.switch_stp_settings
     content {
+      # status - (optional) is a type of string
       status = switch_stp_settings.value["status"]
     }
   }

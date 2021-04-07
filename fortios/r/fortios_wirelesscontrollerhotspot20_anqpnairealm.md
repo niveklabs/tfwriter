@@ -98,28 +98,38 @@ variable "nai_list" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_anqpnairealm" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "nai_list" {
     for_each = var.nai_list
     content {
-      encoding  = nai_list.value["encoding"]
+      # encoding - (optional) is a type of string
+      encoding = nai_list.value["encoding"]
+      # nai_realm - (optional) is a type of string
       nai_realm = nai_list.value["nai_realm"]
-      name      = nai_list.value["name"]
+      # name - (optional) is a type of string
+      name = nai_list.value["name"]
 
       dynamic "eap_method" {
         for_each = nai_list.value.eap_method
         content {
-          index  = eap_method.value["index"]
+          # index - (optional) is a type of number
+          index = eap_method.value["index"]
+          # method - (optional) is a type of string
           method = eap_method.value["method"]
 
           dynamic "auth_param" {
             for_each = eap_method.value.auth_param
             content {
-              id    = auth_param.value["id"]
+              # id - (optional) is a type of string
+              id = auth_param.value["id"]
+              # index - (optional) is a type of number
               index = auth_param.value["index"]
-              val   = auth_param.value["val"]
+              # val - (optional) is a type of string
+              val = auth_param.value["val"]
             }
           }
 

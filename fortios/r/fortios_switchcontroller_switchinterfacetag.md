@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 resource "fortios_switchcontroller_switchinterfacetag" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

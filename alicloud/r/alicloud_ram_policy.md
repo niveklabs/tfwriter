@@ -138,20 +138,31 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ram_policy" "this" {
-  description     = var.description
-  document        = var.document
-  force           = var.force
-  name            = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # document - (optional) is a type of string
+  document = var.document
+  # force - (optional) is a type of bool
+  force = var.force
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_document - (optional) is a type of string
   policy_document = var.policy_document
-  policy_name     = var.policy_name
+  # policy_name - (optional) is a type of string
+  policy_name = var.policy_name
+  # rotate_strategy - (optional) is a type of string
   rotate_strategy = var.rotate_strategy
-  version         = var.version
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "statement" {
     for_each = var.statement
     content {
-      action   = statement.value["action"]
-      effect   = statement.value["effect"]
+      # action - (required) is a type of list of string
+      action = statement.value["action"]
+      # effect - (required) is a type of string
+      effect = statement.value["effect"]
+      # resource - (required) is a type of list of string
       resource = statement.value["resource"]
     }
   }
@@ -159,6 +170,7 @@ resource "alicloud_ram_policy" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

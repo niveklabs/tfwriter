@@ -80,11 +80,16 @@ variable "status" {
 
 ```terraform
 resource "fortios_firewall_security_policysort" "this" {
-  comment        = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # force_recreate - (optional) is a type of string
   force_recreate = var.force_recreate
-  sortby         = var.sortby
-  sortdirection  = var.sortdirection
-  status         = var.status
+  # sortby - (required) is a type of string
+  sortby = var.sortby
+  # sortdirection - (required) is a type of string
+  sortdirection = var.sortdirection
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

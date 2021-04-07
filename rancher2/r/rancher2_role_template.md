@@ -169,34 +169,53 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_role_template" "this" {
-  administrative    = var.administrative
-  annotations       = var.annotations
-  context           = var.context
-  default_role      = var.default_role
-  description       = var.description
-  external          = var.external
-  hidden            = var.hidden
-  labels            = var.labels
-  locked            = var.locked
-  name              = var.name
+  # administrative - (optional) is a type of bool
+  administrative = var.administrative
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # context - (optional) is a type of string
+  context = var.context
+  # default_role - (optional) is a type of bool
+  default_role = var.default_role
+  # description - (optional) is a type of string
+  description = var.description
+  # external - (optional) is a type of bool
+  external = var.external
+  # hidden - (optional) is a type of bool
+  hidden = var.hidden
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # name - (required) is a type of string
+  name = var.name
+  # role_template_ids - (optional) is a type of list of string
   role_template_ids = var.role_template_ids
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      api_groups        = rules.value["api_groups"]
+      # api_groups - (optional) is a type of list of string
+      api_groups = rules.value["api_groups"]
+      # non_resource_urls - (optional) is a type of list of string
       non_resource_urls = rules.value["non_resource_urls"]
-      resource_names    = rules.value["resource_names"]
-      resources         = rules.value["resources"]
-      verbs             = rules.value["verbs"]
+      # resource_names - (optional) is a type of list of string
+      resource_names = rules.value["resource_names"]
+      # resources - (optional) is a type of list of string
+      resources = rules.value["resources"]
+      # verbs - (optional) is a type of list of string
+      verbs = rules.value["verbs"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

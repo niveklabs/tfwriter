@@ -66,8 +66,11 @@ variable "undefinedhost" {
 
 ```terraform
 resource "fortios_firewallipmacbinding_setting" "this" {
+  # bindthroughfw - (optional) is a type of string
   bindthroughfw = var.bindthroughfw
-  bindtofw      = var.bindtofw
+  # bindtofw - (optional) is a type of string
+  bindtofw = var.bindtofw
+  # undefinedhost - (optional) is a type of string
   undefinedhost = var.undefinedhost
 }
 ```

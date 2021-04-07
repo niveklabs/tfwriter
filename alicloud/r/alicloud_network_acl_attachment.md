@@ -64,12 +64,15 @@ variable "resources" {
 
 ```terraform
 resource "alicloud_network_acl_attachment" "this" {
+  # network_acl_id - (required) is a type of string
   network_acl_id = var.network_acl_id
 
   dynamic "resources" {
     for_each = var.resources
     content {
-      resource_id   = resources.value["resource_id"]
+      # resource_id - (required) is a type of string
+      resource_id = resources.value["resource_id"]
+      # resource_type - (required) is a type of string
       resource_type = resources.value["resource_type"]
     }
   }

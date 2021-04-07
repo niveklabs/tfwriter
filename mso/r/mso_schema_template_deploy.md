@@ -72,10 +72,14 @@ variable "undeploy" {
 
 ```terraform
 resource "mso_schema_template_deploy" "this" {
-  schema_id     = var.schema_id
-  site_id       = var.site_id
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # site_id - (optional) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
   template_name = var.template_name
-  undeploy      = var.undeploy
+  # undeploy - (optional) is a type of bool
+  undeploy = var.undeploy
 }
 ```
 

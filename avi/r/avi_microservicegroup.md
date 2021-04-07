@@ -89,12 +89,18 @@ variable "uuid" {
 
 ```terraform
 resource "avi_microservicegroup" "this" {
-  created_by   = var.created_by
-  description  = var.description
-  name         = var.name
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # service_refs - (optional) is a type of list of string
   service_refs = var.service_refs
-  tenant_ref   = var.tenant_ref
-  uuid         = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

@@ -150,31 +150,43 @@ variable "vpc_config" {
 
 ```terraform
 resource "alicloud_fc_service" "this" {
-  description     = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # internet_access - (optional) is a type of bool
   internet_access = var.internet_access
-  name            = var.name
-  name_prefix     = var.name_prefix
-  publish         = var.publish
-  role            = var.role
+  # name - (optional) is a type of string
+  name = var.name
+  # name_prefix - (optional) is a type of string
+  name_prefix = var.name_prefix
+  # publish - (optional) is a type of bool
+  publish = var.publish
+  # role - (optional) is a type of string
+  role = var.role
 
   dynamic "log_config" {
     for_each = var.log_config
     content {
+      # logstore - (required) is a type of string
       logstore = log_config.value["logstore"]
-      project  = log_config.value["project"]
+      # project - (required) is a type of string
+      project = log_config.value["project"]
     }
   }
 
   dynamic "nas_config" {
     for_each = var.nas_config
     content {
+      # group_id - (required) is a type of number
       group_id = nas_config.value["group_id"]
-      user_id  = nas_config.value["user_id"]
+      # user_id - (required) is a type of number
+      user_id = nas_config.value["user_id"]
 
       dynamic "mount_points" {
         for_each = nas_config.value.mount_points
         content {
-          mount_dir   = mount_points.value["mount_dir"]
+          # mount_dir - (required) is a type of string
+          mount_dir = mount_points.value["mount_dir"]
+          # server_addr - (required) is a type of string
           server_addr = mount_points.value["server_addr"]
         }
       }
@@ -185,8 +197,10 @@ resource "alicloud_fc_service" "this" {
   dynamic "vpc_config" {
     for_each = var.vpc_config
     content {
+      # security_group_id - (required) is a type of string
       security_group_id = vpc_config.value["security_group_id"]
-      vswitch_ids       = vpc_config.value["vswitch_ids"]
+      # vswitch_ids - (required) is a type of set of string
+      vswitch_ids = vpc_config.value["vswitch_ids"]
     }
   }
 

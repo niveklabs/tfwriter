@@ -89,16 +89,23 @@ variable "filter" {
 
 ```terraform
 resource "signalfx_alert_muting_rule" "this" {
+  # description - (required) is a type of string
   description = var.description
-  detectors   = var.detectors
-  start_time  = var.start_time
-  stop_time   = var.stop_time
+  # detectors - (optional) is a type of list of string
+  detectors = var.detectors
+  # start_time - (required) is a type of number
+  start_time = var.start_time
+  # stop_time - (optional) is a type of number
+  stop_time = var.stop_time
 
   dynamic "filter" {
     for_each = var.filter
     content {
-      negated        = filter.value["negated"]
-      property       = filter.value["property"]
+      # negated - (optional) is a type of bool
+      negated = filter.value["negated"]
+      # property - (required) is a type of string
+      property = filter.value["property"]
+      # property_value - (required) is a type of string
       property_value = filter.value["property_value"]
     }
   }

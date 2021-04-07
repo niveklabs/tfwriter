@@ -89,16 +89,22 @@ variable "entry_list" {
 
 ```terraform
 resource "alicloud_slb_acl" "this" {
-  ip_version        = var.ip_version
-  name              = var.name
+  # ip_version - (optional) is a type of string
+  ip_version = var.ip_version
+  # name - (required) is a type of string
+  name = var.name
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  tags              = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "entry_list" {
     for_each = var.entry_list
     content {
+      # comment - (optional) is a type of string
       comment = entry_list.value["comment"]
-      entry   = entry_list.value["entry"]
+      # entry - (required) is a type of string
+      entry = entry_list.value["entry"]
     }
   }
 

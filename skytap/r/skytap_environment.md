@@ -163,31 +163,47 @@ variable "timeouts" {
 
 ```terraform
 resource "skytap_environment" "this" {
-  description      = var.description
-  name             = var.name
+  # description - (required) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # outbound_traffic - (optional) is a type of bool
   outbound_traffic = var.outbound_traffic
-  routable         = var.routable
+  # routable - (optional) is a type of bool
+  routable = var.routable
+  # shutdown_at_time - (optional) is a type of string
   shutdown_at_time = var.shutdown_at_time
+  # shutdown_on_idle - (optional) is a type of number
   shutdown_on_idle = var.shutdown_on_idle
-  suspend_at_time  = var.suspend_at_time
-  suspend_on_idle  = var.suspend_on_idle
-  tags             = var.tags
-  template_id      = var.template_id
-  user_data        = var.user_data
+  # suspend_at_time - (optional) is a type of string
+  suspend_at_time = var.suspend_at_time
+  # suspend_on_idle - (optional) is a type of number
+  suspend_on_idle = var.suspend_on_idle
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # template_id - (required) is a type of string
+  template_id = var.template_id
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
 
   dynamic "label" {
     for_each = var.label
     content {
+      # category - (required) is a type of string
       category = label.value["category"]
-      value    = label.value["value"]
+      # value - (required) is a type of string
+      value = label.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

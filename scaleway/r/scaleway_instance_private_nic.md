@@ -64,9 +64,12 @@ variable "zone" {
 
 ```terraform
 resource "scaleway_instance_private_nic" "this" {
+  # private_network_id - (required) is a type of string
   private_network_id = var.private_network_id
-  server_id          = var.server_id
-  zone               = var.zone
+  # server_id - (required) is a type of string
+  server_id = var.server_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

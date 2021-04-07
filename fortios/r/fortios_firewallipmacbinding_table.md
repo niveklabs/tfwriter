@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 resource "fortios_firewallipmacbinding_table" "this" {
-  ip      = var.ip
-  mac     = var.mac
-  name    = var.name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # name - (optional) is a type of string
+  name = var.name
+  # seq_num - (optional) is a type of number
   seq_num = var.seq_num
-  status  = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

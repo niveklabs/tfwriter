@@ -253,26 +253,39 @@ variable "rule_cache" {
 
 ```terraform
 resource "tencentcloud_cdn_domain" "this" {
-  area                = var.area
-  domain              = var.domain
-  full_url_cache      = var.full_url_cache
-  project_id          = var.project_id
+  # area - (optional) is a type of string
+  area = var.area
+  # domain - (required) is a type of string
+  domain = var.domain
+  # full_url_cache - (optional) is a type of bool
+  full_url_cache = var.full_url_cache
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # range_origin_switch - (optional) is a type of string
   range_origin_switch = var.range_origin_switch
-  service_type        = var.service_type
-  tags                = var.tags
+  # service_type - (required) is a type of string
+  service_type = var.service_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "https_config" {
     for_each = var.https_config
     content {
-      http2_switch         = https_config.value["http2_switch"]
-      https_switch         = https_config.value["https_switch"]
+      # http2_switch - (optional) is a type of string
+      http2_switch = https_config.value["http2_switch"]
+      # https_switch - (required) is a type of string
+      https_switch = https_config.value["https_switch"]
+      # ocsp_stapling_switch - (optional) is a type of string
       ocsp_stapling_switch = https_config.value["ocsp_stapling_switch"]
-      spdy_switch          = https_config.value["spdy_switch"]
-      verify_client        = https_config.value["verify_client"]
+      # spdy_switch - (optional) is a type of string
+      spdy_switch = https_config.value["spdy_switch"]
+      # verify_client - (optional) is a type of string
+      verify_client = https_config.value["verify_client"]
 
       dynamic "client_certificate_config" {
         for_each = https_config.value.client_certificate_config
         content {
+          # certificate_content - (required) is a type of string
           certificate_content = client_certificate_config.value["certificate_content"]
         }
       }
@@ -280,19 +293,26 @@ resource "tencentcloud_cdn_domain" "this" {
       dynamic "force_redirect" {
         for_each = https_config.value.force_redirect
         content {
+          # redirect_status_code - (optional) is a type of number
           redirect_status_code = force_redirect.value["redirect_status_code"]
-          redirect_type        = force_redirect.value["redirect_type"]
-          switch               = force_redirect.value["switch"]
+          # redirect_type - (optional) is a type of string
+          redirect_type = force_redirect.value["redirect_type"]
+          # switch - (optional) is a type of string
+          switch = force_redirect.value["switch"]
         }
       }
 
       dynamic "server_certificate_config" {
         for_each = https_config.value.server_certificate_config
         content {
+          # certificate_content - (optional) is a type of string
           certificate_content = server_certificate_config.value["certificate_content"]
-          certificate_id      = server_certificate_config.value["certificate_id"]
-          message             = server_certificate_config.value["message"]
-          private_key         = server_certificate_config.value["private_key"]
+          # certificate_id - (optional) is a type of string
+          certificate_id = server_certificate_config.value["certificate_id"]
+          # message - (optional) is a type of string
+          message = server_certificate_config.value["message"]
+          # private_key - (optional) is a type of string
+          private_key = server_certificate_config.value["private_key"]
         }
       }
 
@@ -302,30 +322,44 @@ resource "tencentcloud_cdn_domain" "this" {
   dynamic "origin" {
     for_each = var.origin
     content {
-      backup_origin_list   = origin.value["backup_origin_list"]
-      backup_origin_type   = origin.value["backup_origin_type"]
-      backup_server_name   = origin.value["backup_server_name"]
-      cos_private_access   = origin.value["cos_private_access"]
-      origin_list          = origin.value["origin_list"]
+      # backup_origin_list - (optional) is a type of list of string
+      backup_origin_list = origin.value["backup_origin_list"]
+      # backup_origin_type - (optional) is a type of string
+      backup_origin_type = origin.value["backup_origin_type"]
+      # backup_server_name - (optional) is a type of string
+      backup_server_name = origin.value["backup_server_name"]
+      # cos_private_access - (optional) is a type of string
+      cos_private_access = origin.value["cos_private_access"]
+      # origin_list - (required) is a type of list of string
+      origin_list = origin.value["origin_list"]
+      # origin_pull_protocol - (optional) is a type of string
       origin_pull_protocol = origin.value["origin_pull_protocol"]
-      origin_type          = origin.value["origin_type"]
-      server_name          = origin.value["server_name"]
+      # origin_type - (required) is a type of string
+      origin_type = origin.value["origin_type"]
+      # server_name - (optional) is a type of string
+      server_name = origin.value["server_name"]
     }
   }
 
   dynamic "request_header" {
     for_each = var.request_header
     content {
+      # switch - (optional) is a type of string
       switch = request_header.value["switch"]
 
       dynamic "header_rules" {
         for_each = request_header.value.header_rules
         content {
-          header_mode  = header_rules.value["header_mode"]
-          header_name  = header_rules.value["header_name"]
+          # header_mode - (required) is a type of string
+          header_mode = header_rules.value["header_mode"]
+          # header_name - (required) is a type of string
+          header_name = header_rules.value["header_name"]
+          # header_value - (required) is a type of string
           header_value = header_rules.value["header_value"]
-          rule_paths   = header_rules.value["rule_paths"]
-          rule_type    = header_rules.value["rule_type"]
+          # rule_paths - (required) is a type of list of string
+          rule_paths = header_rules.value["rule_paths"]
+          # rule_type - (required) is a type of string
+          rule_type = header_rules.value["rule_type"]
         }
       }
 
@@ -335,16 +369,26 @@ resource "tencentcloud_cdn_domain" "this" {
   dynamic "rule_cache" {
     for_each = var.rule_cache
     content {
-      cache_time           = rule_cache.value["cache_time"]
-      compare_max_age      = rule_cache.value["compare_max_age"]
+      # cache_time - (required) is a type of number
+      cache_time = rule_cache.value["cache_time"]
+      # compare_max_age - (optional) is a type of string
+      compare_max_age = rule_cache.value["compare_max_age"]
+      # follow_origin_switch - (optional) is a type of string
       follow_origin_switch = rule_cache.value["follow_origin_switch"]
+      # ignore_cache_control - (optional) is a type of string
       ignore_cache_control = rule_cache.value["ignore_cache_control"]
-      ignore_set_cookie    = rule_cache.value["ignore_set_cookie"]
-      no_cache_switch      = rule_cache.value["no_cache_switch"]
-      re_validate          = rule_cache.value["re_validate"]
-      rule_paths           = rule_cache.value["rule_paths"]
-      rule_type            = rule_cache.value["rule_type"]
-      switch               = rule_cache.value["switch"]
+      # ignore_set_cookie - (optional) is a type of string
+      ignore_set_cookie = rule_cache.value["ignore_set_cookie"]
+      # no_cache_switch - (optional) is a type of string
+      no_cache_switch = rule_cache.value["no_cache_switch"]
+      # re_validate - (optional) is a type of string
+      re_validate = rule_cache.value["re_validate"]
+      # rule_paths - (optional) is a type of list of string
+      rule_paths = rule_cache.value["rule_paths"]
+      # rule_type - (optional) is a type of string
+      rule_type = rule_cache.value["rule_type"]
+      # switch - (optional) is a type of string
+      switch = rule_cache.value["switch"]
     }
   }
 

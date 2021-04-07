@@ -73,13 +73,17 @@ variable "custom_ssl_priority" {
 
 ```terraform
 resource "cloudflare_custom_ssl" "this" {
+  # custom_ssl_options - (optional) is a type of map of string
   custom_ssl_options = var.custom_ssl_options
-  zone_id            = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "custom_ssl_priority" {
     for_each = var.custom_ssl_priority
     content {
-      id       = custom_ssl_priority.value["id"]
+      # id - (optional) is a type of string
+      id = custom_ssl_priority.value["id"]
+      # priority - (optional) is a type of number
       priority = custom_ssl_priority.value["priority"]
     }
   }

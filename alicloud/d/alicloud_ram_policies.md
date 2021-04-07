@@ -106,14 +106,22 @@ variable "user_name" {
 
 ```terraform
 data "alicloud_ram_policies" "this" {
+  # enable_details - (optional) is a type of bool
   enable_details = var.enable_details
-  group_name     = var.group_name
-  ids            = var.ids
-  name_regex     = var.name_regex
-  output_file    = var.output_file
-  role_name      = var.role_name
-  type           = var.type
-  user_name      = var.user_name
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # role_name - (optional) is a type of string
+  role_name = var.role_name
+  # type - (optional) is a type of string
+  type = var.type
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 }
 ```
 

@@ -175,23 +175,40 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_redis_instance" "this" {
-  availability_zone  = var.availability_zone
-  charge_type        = var.charge_type
-  force_delete       = var.force_delete
-  mem_size           = var.mem_size
-  name               = var.name
-  password           = var.password
-  port               = var.port
-  prepaid_period     = var.prepaid_period
-  project_id         = var.project_id
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # mem_size - (required) is a type of number
+  mem_size = var.mem_size
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (required) is a type of string
+  password = var.password
+  # port - (optional) is a type of number
+  port = var.port
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # redis_replicas_num - (optional) is a type of number
   redis_replicas_num = var.redis_replicas_num
-  redis_shard_num    = var.redis_shard_num
-  security_groups    = var.security_groups
-  subnet_id          = var.subnet_id
-  tags               = var.tags
-  type               = var.type
-  type_id            = var.type_id
-  vpc_id             = var.vpc_id
+  # redis_shard_num - (optional) is a type of number
+  redis_shard_num = var.redis_shard_num
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # type_id - (optional) is a type of number
+  type_id = var.type_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

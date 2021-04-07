@@ -79,13 +79,17 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_ssoadmin" "this" {
-  accprofile            = var.accprofile
+  # accprofile - (required) is a type of string
+  accprofile = var.accprofile
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "vdom" {
     for_each = var.vdom
     content {
+      # name - (optional) is a type of string
       name = vdom.value["name"]
     }
   }

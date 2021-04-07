@@ -134,18 +134,30 @@ variable "specification" {
 
 ```terraform
 resource "alicloud_router_interface" "this" {
-  description              = var.description
-  health_check_source_ip   = var.health_check_source_ip
-  health_check_target_ip   = var.health_check_target_ip
-  instance_charge_type     = var.instance_charge_type
-  name                     = var.name
+  # description - (optional) is a type of string
+  description = var.description
+  # health_check_source_ip - (optional) is a type of string
+  health_check_source_ip = var.health_check_source_ip
+  # health_check_target_ip - (optional) is a type of string
+  health_check_target_ip = var.health_check_target_ip
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # name - (optional) is a type of string
+  name = var.name
+  # opposite_access_point_id - (optional) is a type of string
   opposite_access_point_id = var.opposite_access_point_id
-  opposite_region          = var.opposite_region
-  period                   = var.period
-  role                     = var.role
-  router_id                = var.router_id
-  router_type              = var.router_type
-  specification            = var.specification
+  # opposite_region - (required) is a type of string
+  opposite_region = var.opposite_region
+  # period - (optional) is a type of number
+  period = var.period
+  # role - (required) is a type of string
+  role = var.role
+  # router_id - (required) is a type of string
+  router_id = var.router_id
+  # router_type - (required) is a type of string
+  router_type = var.router_type
+  # specification - (optional) is a type of string
+  specification = var.specification
 }
 ```
 

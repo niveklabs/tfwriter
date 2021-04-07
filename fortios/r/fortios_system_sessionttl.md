@@ -80,17 +80,24 @@ variable "port" {
 
 ```terraform
 resource "fortios_system_sessionttl" "this" {
-  default               = var.default
+  # default - (optional) is a type of string
+  default = var.default
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
 
   dynamic "port" {
     for_each = var.port
     content {
-      end_port   = port.value["end_port"]
-      id         = port.value["id"]
-      protocol   = port.value["protocol"]
+      # end_port - (optional) is a type of number
+      end_port = port.value["end_port"]
+      # id - (optional) is a type of number
+      id = port.value["id"]
+      # protocol - (optional) is a type of number
+      protocol = port.value["protocol"]
+      # start_port - (optional) is a type of number
       start_port = port.value["start_port"]
-      timeout    = port.value["timeout"]
+      # timeout - (optional) is a type of string
+      timeout = port.value["timeout"]
     }
   }
 

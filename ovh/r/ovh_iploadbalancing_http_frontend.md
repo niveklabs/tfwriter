@@ -127,17 +127,28 @@ variable "zone" {
 
 ```terraform
 resource "ovh_iploadbalancing_http_frontend" "this" {
-  allowed_source    = var.allowed_source
-  dedicated_ipfo    = var.dedicated_ipfo
-  default_farm_id   = var.default_farm_id
-  default_ssl_id    = var.default_ssl_id
-  disabled          = var.disabled
-  display_name      = var.display_name
-  port              = var.port
+  # allowed_source - (optional) is a type of list of string
+  allowed_source = var.allowed_source
+  # dedicated_ipfo - (optional) is a type of list of string
+  dedicated_ipfo = var.dedicated_ipfo
+  # default_farm_id - (optional) is a type of number
+  default_farm_id = var.default_farm_id
+  # default_ssl_id - (optional) is a type of number
+  default_ssl_id = var.default_ssl_id
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # port - (required) is a type of string
+  port = var.port
+  # redirect_location - (optional) is a type of string
   redirect_location = var.redirect_location
-  service_name      = var.service_name
-  ssl               = var.ssl
-  zone              = var.zone
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # ssl - (optional) is a type of bool
+  ssl = var.ssl
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

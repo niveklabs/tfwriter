@@ -63,9 +63,12 @@ variable "preferred_backup_time" {
 
 ```terraform
 resource "alicloud_adb_backup_policy" "this" {
-  db_cluster_id           = var.db_cluster_id
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
+  # preferred_backup_period - (required) is a type of set of string
   preferred_backup_period = var.preferred_backup_period
-  preferred_backup_time   = var.preferred_backup_time
+  # preferred_backup_time - (required) is a type of string
+  preferred_backup_time = var.preferred_backup_time
 }
 ```
 

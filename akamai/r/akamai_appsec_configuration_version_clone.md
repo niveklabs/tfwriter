@@ -64,9 +64,12 @@ variable "rule_update" {
 
 ```terraform
 resource "akamai_appsec_configuration_version_clone" "this" {
-  config_id           = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # create_from_version - (required) is a type of number
   create_from_version = var.create_from_version
-  rule_update         = var.rule_update
+  # rule_update - (optional) is a type of bool
+  rule_update = var.rule_update
 }
 ```
 

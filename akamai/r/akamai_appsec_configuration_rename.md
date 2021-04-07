@@ -63,9 +63,12 @@ variable "name" {
 
 ```terraform
 resource "akamai_appsec_configuration_rename" "this" {
-  config_id   = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # description - (required) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

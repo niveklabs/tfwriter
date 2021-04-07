@@ -161,37 +161,60 @@ variable "security_domains" {
 
 ```terraform
 resource "aviatrix_aws_tgw" "this" {
-  account_name                      = var.account_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # attached_aviatrix_transit_gateway - (optional) is a type of list of string
   attached_aviatrix_transit_gateway = var.attached_aviatrix_transit_gateway
-  aws_side_as_number                = var.aws_side_as_number
-  cidrs                             = var.cidrs
-  cloud_type                        = var.cloud_type
-  enable_multicast                  = var.enable_multicast
+  # aws_side_as_number - (required) is a type of string
+  aws_side_as_number = var.aws_side_as_number
+  # cidrs - (optional) is a type of set of string
+  cidrs = var.cidrs
+  # cloud_type - (optional) is a type of number
+  cloud_type = var.cloud_type
+  # enable_multicast - (optional) is a type of bool
+  enable_multicast = var.enable_multicast
+  # manage_transit_gateway_attachment - (optional) is a type of bool
   manage_transit_gateway_attachment = var.manage_transit_gateway_attachment
-  manage_vpc_attachment             = var.manage_vpc_attachment
-  region                            = var.region
-  tgw_name                          = var.tgw_name
+  # manage_vpc_attachment - (optional) is a type of bool
+  manage_vpc_attachment = var.manage_vpc_attachment
+  # region - (required) is a type of string
+  region = var.region
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
 
   dynamic "security_domains" {
     for_each = var.security_domains
     content {
-      aviatrix_firewall    = security_domains.value["aviatrix_firewall"]
-      connected_domains    = security_domains.value["connected_domains"]
-      native_egress        = security_domains.value["native_egress"]
-      native_firewall      = security_domains.value["native_firewall"]
+      # aviatrix_firewall - (optional) is a type of bool
+      aviatrix_firewall = security_domains.value["aviatrix_firewall"]
+      # connected_domains - (optional) is a type of list of string
+      connected_domains = security_domains.value["connected_domains"]
+      # native_egress - (optional) is a type of bool
+      native_egress = security_domains.value["native_egress"]
+      # native_firewall - (optional) is a type of bool
+      native_firewall = security_domains.value["native_firewall"]
+      # security_domain_name - (required) is a type of string
       security_domain_name = security_domains.value["security_domain_name"]
 
       dynamic "attached_vpc" {
         for_each = security_domains.value.attached_vpc
         content {
-          customized_route_advertisement  = attached_vpc.value["customized_route_advertisement"]
-          customized_routes               = attached_vpc.value["customized_routes"]
+          # customized_route_advertisement - (optional) is a type of string
+          customized_route_advertisement = attached_vpc.value["customized_route_advertisement"]
+          # customized_routes - (optional) is a type of string
+          customized_routes = attached_vpc.value["customized_routes"]
+          # disable_local_route_propagation - (optional) is a type of bool
           disable_local_route_propagation = attached_vpc.value["disable_local_route_propagation"]
-          route_tables                    = attached_vpc.value["route_tables"]
-          subnets                         = attached_vpc.value["subnets"]
-          vpc_account_name                = attached_vpc.value["vpc_account_name"]
-          vpc_id                          = attached_vpc.value["vpc_id"]
-          vpc_region                      = attached_vpc.value["vpc_region"]
+          # route_tables - (optional) is a type of string
+          route_tables = attached_vpc.value["route_tables"]
+          # subnets - (optional) is a type of string
+          subnets = attached_vpc.value["subnets"]
+          # vpc_account_name - (required) is a type of string
+          vpc_account_name = attached_vpc.value["vpc_account_name"]
+          # vpc_id - (required) is a type of string
+          vpc_id = attached_vpc.value["vpc_id"]
+          # vpc_region - (required) is a type of string
+          vpc_region = attached_vpc.value["vpc_region"]
         }
       }
 

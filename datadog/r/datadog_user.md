@@ -113,14 +113,23 @@ variable "send_user_invitation" {
 
 ```terraform
 resource "datadog_user" "this" {
-  access_role          = var.access_role
-  disabled             = var.disabled
-  email                = var.email
-  handle               = var.handle
-  is_admin             = var.is_admin
-  name                 = var.name
-  role                 = var.role
-  roles                = var.roles
+  # access_role - (optional) is a type of string
+  access_role = var.access_role
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # email - (required) is a type of string
+  email = var.email
+  # handle - (optional) is a type of string
+  handle = var.handle
+  # is_admin - (optional) is a type of bool
+  is_admin = var.is_admin
+  # name - (optional) is a type of string
+  name = var.name
+  # role - (optional) is a type of string
+  role = var.role
+  # roles - (optional) is a type of set of string
+  roles = var.roles
+  # send_user_invitation - (optional) is a type of bool
   send_user_invitation = var.send_user_invitation
 }
 ```

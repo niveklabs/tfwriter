@@ -80,11 +80,16 @@ variable "trusted_ca_file" {
 
 ```terraform
 resource "aviatrix_filebeat_forwarder" "this" {
-  config_file       = var.config_file
+  # config_file - (optional) is a type of string
+  config_file = var.config_file
+  # excluded_gateways - (optional) is a type of set of string
   excluded_gateways = var.excluded_gateways
-  port              = var.port
-  server            = var.server
-  trusted_ca_file   = var.trusted_ca_file
+  # port - (required) is a type of number
+  port = var.port
+  # server - (required) is a type of string
+  server = var.server
+  # trusted_ca_file - (optional) is a type of string
+  trusted_ca_file = var.trusted_ca_file
 }
 ```
 

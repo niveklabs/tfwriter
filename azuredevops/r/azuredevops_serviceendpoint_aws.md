@@ -138,23 +138,37 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_aws" "this" {
-  access_key_id         = var.access_key_id
-  authorization         = var.authorization
-  description           = var.description
-  external_id           = var.external_id
-  project_id            = var.project_id
-  role_session_name     = var.role_session_name
-  role_to_assume        = var.role_to_assume
-  secret_access_key     = var.secret_access_key
+  # access_key_id - (required) is a type of string
+  access_key_id = var.access_key_id
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # description - (optional) is a type of string
+  description = var.description
+  # external_id - (optional) is a type of string
+  external_id = var.external_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # role_session_name - (optional) is a type of string
+  role_session_name = var.role_session_name
+  # role_to_assume - (optional) is a type of string
+  role_to_assume = var.role_to_assume
+  # secret_access_key - (required) is a type of string
+  secret_access_key = var.secret_access_key
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
-  session_token         = var.session_token
+  # session_token - (optional) is a type of string
+  session_token = var.session_token
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

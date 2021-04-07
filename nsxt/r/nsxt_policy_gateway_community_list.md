@@ -95,17 +95,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_gateway_community_list" "this" {
-  communities  = var.communities
-  description  = var.description
+  # communities - (required) is a type of set of string
+  communities = var.communities
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
+  # gateway_path - (required) is a type of string
   gateway_path = var.gateway_path
-  nsx_id       = var.nsx_id
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -103,14 +103,22 @@ variable "user_name" {
 
 ```terraform
 resource "alicloud_sag_client_user" "this" {
-  bandwidth              = var.bandwidth
-  client_ip              = var.client_ip
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # client_ip - (optional) is a type of string
+  client_ip = var.client_ip
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
-  password               = var.password
-  sag_id                 = var.sag_id
-  user_mail              = var.user_mail
-  user_name              = var.user_name
+  # password - (optional) is a type of string
+  password = var.password
+  # sag_id - (required) is a type of string
+  sag_id = var.sag_id
+  # user_mail - (required) is a type of string
+  user_mail = var.user_mail
+  # user_name - (optional) is a type of string
+  user_name = var.user_name
 }
 ```
 

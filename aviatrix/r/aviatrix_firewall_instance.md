@@ -253,33 +253,60 @@ variable "zone" {
 
 ```terraform
 resource "aviatrix_firewall_instance" "this" {
-  bootstrap_bucket_name  = var.bootstrap_bucket_name
+  # bootstrap_bucket_name - (optional) is a type of string
+  bootstrap_bucket_name = var.bootstrap_bucket_name
+  # bootstrap_storage_name - (optional) is a type of string
   bootstrap_storage_name = var.bootstrap_storage_name
-  container_folder       = var.container_folder
-  egress_subnet          = var.egress_subnet
-  egress_vpc_id          = var.egress_vpc_id
-  file_share_folder      = var.file_share_folder
-  firenet_gw_name        = var.firenet_gw_name
-  firewall_image         = var.firewall_image
+  # container_folder - (optional) is a type of string
+  container_folder = var.container_folder
+  # egress_subnet - (required) is a type of string
+  egress_subnet = var.egress_subnet
+  # egress_vpc_id - (optional) is a type of string
+  egress_vpc_id = var.egress_vpc_id
+  # file_share_folder - (optional) is a type of string
+  file_share_folder = var.file_share_folder
+  # firenet_gw_name - (optional) is a type of string
+  firenet_gw_name = var.firenet_gw_name
+  # firewall_image - (required) is a type of string
+  firewall_image = var.firewall_image
+  # firewall_image_version - (optional) is a type of string
   firewall_image_version = var.firewall_image_version
-  firewall_name          = var.firewall_name
-  firewall_size          = var.firewall_size
-  iam_role               = var.iam_role
-  key_name               = var.key_name
-  management_subnet      = var.management_subnet
-  management_vpc_id      = var.management_vpc_id
-  password               = var.password
-  sas_url_config         = var.sas_url_config
-  sas_url_license        = var.sas_url_license
-  share_directory        = var.share_directory
-  sic_key                = var.sic_key
-  ssh_public_key         = var.ssh_public_key
-  storage_access_key     = var.storage_access_key
-  tags                   = var.tags
-  user_data              = var.user_data
-  username               = var.username
-  vpc_id                 = var.vpc_id
-  zone                   = var.zone
+  # firewall_name - (required) is a type of string
+  firewall_name = var.firewall_name
+  # firewall_size - (required) is a type of string
+  firewall_size = var.firewall_size
+  # iam_role - (optional) is a type of string
+  iam_role = var.iam_role
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # management_subnet - (optional) is a type of string
+  management_subnet = var.management_subnet
+  # management_vpc_id - (optional) is a type of string
+  management_vpc_id = var.management_vpc_id
+  # password - (optional) is a type of string
+  password = var.password
+  # sas_url_config - (optional) is a type of string
+  sas_url_config = var.sas_url_config
+  # sas_url_license - (optional) is a type of string
+  sas_url_license = var.sas_url_license
+  # share_directory - (optional) is a type of string
+  share_directory = var.share_directory
+  # sic_key - (optional) is a type of string
+  sic_key = var.sic_key
+  # ssh_public_key - (optional) is a type of string
+  ssh_public_key = var.ssh_public_key
+  # storage_access_key - (optional) is a type of string
+  storage_access_key = var.storage_access_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # username - (optional) is a type of string
+  username = var.username
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

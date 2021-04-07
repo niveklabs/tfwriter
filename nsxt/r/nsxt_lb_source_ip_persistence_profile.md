@@ -106,18 +106,26 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_source_ip_persistence_profile" "this" {
-  description              = var.description
-  display_name             = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # ha_persistence_mirroring - (optional) is a type of bool
   ha_persistence_mirroring = var.ha_persistence_mirroring
-  persistence_shared       = var.persistence_shared
-  purge_when_full          = var.purge_when_full
-  timeout                  = var.timeout
+  # persistence_shared - (optional) is a type of bool
+  persistence_shared = var.persistence_shared
+  # purge_when_full - (optional) is a type of bool
+  purge_when_full = var.purge_when_full
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

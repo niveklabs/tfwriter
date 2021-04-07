@@ -225,29 +225,52 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_panorama_bgp" "this" {
-  aggregate_med                    = var.aggregate_med
+  # aggregate_med - (optional) is a type of bool
+  aggregate_med = var.aggregate_med
+  # allow_redistribute_default_route - (optional) is a type of bool
   allow_redistribute_default_route = var.allow_redistribute_default_route
-  always_compare_med               = var.always_compare_med
-  as_format                        = var.as_format
-  as_number                        = var.as_number
-  bfd_profile                      = var.bfd_profile
-  confederation_member_as          = var.confederation_member_as
-  default_local_preference         = var.default_local_preference
-  deterministic_med_comparison     = var.deterministic_med_comparison
-  ecmp_multi_as                    = var.ecmp_multi_as
-  enable                           = var.enable
-  enable_graceful_restart          = var.enable_graceful_restart
-  enforce_first_as                 = var.enforce_first_as
-  install_route                    = var.install_route
-  local_restart_time               = var.local_restart_time
-  max_peer_restart_time            = var.max_peer_restart_time
-  reflector_cluster_id             = var.reflector_cluster_id
-  reject_default_route             = var.reject_default_route
-  router_id                        = var.router_id
-  stale_route_time                 = var.stale_route_time
-  template                         = var.template
-  template_stack                   = var.template_stack
-  virtual_router                   = var.virtual_router
+  # always_compare_med - (optional) is a type of bool
+  always_compare_med = var.always_compare_med
+  # as_format - (optional) is a type of string
+  as_format = var.as_format
+  # as_number - (optional) is a type of string
+  as_number = var.as_number
+  # bfd_profile - (optional) is a type of string
+  bfd_profile = var.bfd_profile
+  # confederation_member_as - (optional) is a type of string
+  confederation_member_as = var.confederation_member_as
+  # default_local_preference - (optional) is a type of string
+  default_local_preference = var.default_local_preference
+  # deterministic_med_comparison - (optional) is a type of bool
+  deterministic_med_comparison = var.deterministic_med_comparison
+  # ecmp_multi_as - (optional) is a type of bool
+  ecmp_multi_as = var.ecmp_multi_as
+  # enable - (optional) is a type of bool
+  enable = var.enable
+  # enable_graceful_restart - (optional) is a type of bool
+  enable_graceful_restart = var.enable_graceful_restart
+  # enforce_first_as - (optional) is a type of bool
+  enforce_first_as = var.enforce_first_as
+  # install_route - (optional) is a type of bool
+  install_route = var.install_route
+  # local_restart_time - (optional) is a type of number
+  local_restart_time = var.local_restart_time
+  # max_peer_restart_time - (optional) is a type of number
+  max_peer_restart_time = var.max_peer_restart_time
+  # reflector_cluster_id - (optional) is a type of string
+  reflector_cluster_id = var.reflector_cluster_id
+  # reject_default_route - (optional) is a type of bool
+  reject_default_route = var.reject_default_route
+  # router_id - (optional) is a type of string
+  router_id = var.router_id
+  # stale_route_time - (optional) is a type of number
+  stale_route_time = var.stale_route_time
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
+  template_stack = var.template_stack
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

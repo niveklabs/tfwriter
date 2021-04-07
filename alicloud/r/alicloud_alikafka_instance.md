@@ -148,20 +148,34 @@ variable "vswitch_id" {
 
 ```terraform
 resource "alicloud_alikafka_instance" "this" {
-  config          = var.config
-  deploy_type     = var.deploy_type
-  disk_size       = var.disk_size
-  disk_type       = var.disk_type
-  eip_max         = var.eip_max
-  io_max          = var.io_max
-  name            = var.name
-  paid_type       = var.paid_type
-  security_group  = var.security_group
+  # config - (optional) is a type of string
+  config = var.config
+  # deploy_type - (required) is a type of number
+  deploy_type = var.deploy_type
+  # disk_size - (required) is a type of number
+  disk_size = var.disk_size
+  # disk_type - (required) is a type of number
+  disk_type = var.disk_type
+  # eip_max - (optional) is a type of number
+  eip_max = var.eip_max
+  # io_max - (required) is a type of number
+  io_max = var.io_max
+  # name - (optional) is a type of string
+  name = var.name
+  # paid_type - (optional) is a type of string
+  paid_type = var.paid_type
+  # security_group - (optional) is a type of string
+  security_group = var.security_group
+  # service_version - (optional) is a type of string
   service_version = var.service_version
-  spec_type       = var.spec_type
-  tags            = var.tags
-  topic_quota     = var.topic_quota
-  vswitch_id      = var.vswitch_id
+  # spec_type - (optional) is a type of string
+  spec_type = var.spec_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # topic_quota - (required) is a type of number
+  topic_quota = var.topic_quota
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

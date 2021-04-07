@@ -71,9 +71,13 @@ variable "tenant_region" {
 
 ```terraform
 resource "ecl_sss_tenant_v1" "this" {
-  contract_id   = var.contract_id
-  description   = var.description
-  tenant_name   = var.tenant_name
+  # contract_id - (optional) is a type of string
+  contract_id = var.contract_id
+  # description - (required) is a type of string
+  description = var.description
+  # tenant_name - (required) is a type of string
+  tenant_name = var.tenant_name
+  # tenant_region - (required) is a type of string
   tenant_region = var.tenant_region
 }
 ```

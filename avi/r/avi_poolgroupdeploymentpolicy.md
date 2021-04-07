@@ -139,22 +139,35 @@ variable "rules" {
 
 ```terraform
 resource "avi_poolgroupdeploymentpolicy" "this" {
+  # auto_disable_old_prod_pools - (optional) is a type of bool
   auto_disable_old_prod_pools = var.auto_disable_old_prod_pools
-  description                 = var.description
-  evaluation_duration         = var.evaluation_duration
-  name                        = var.name
-  scheme                      = var.scheme
-  target_test_traffic_ratio   = var.target_test_traffic_ratio
-  tenant_ref                  = var.tenant_ref
-  test_traffic_ratio_rampup   = var.test_traffic_ratio_rampup
-  uuid                        = var.uuid
-  webhook_ref                 = var.webhook_ref
+  # description - (optional) is a type of string
+  description = var.description
+  # evaluation_duration - (optional) is a type of number
+  evaluation_duration = var.evaluation_duration
+  # name - (required) is a type of string
+  name = var.name
+  # scheme - (optional) is a type of string
+  scheme = var.scheme
+  # target_test_traffic_ratio - (optional) is a type of number
+  target_test_traffic_ratio = var.target_test_traffic_ratio
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # test_traffic_ratio_rampup - (optional) is a type of number
+  test_traffic_ratio_rampup = var.test_traffic_ratio_rampup
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # webhook_ref - (optional) is a type of string
+  webhook_ref = var.webhook_ref
 
   dynamic "rules" {
     for_each = var.rules
     content {
+      # metric_id - (optional) is a type of string
       metric_id = rules.value["metric_id"]
-      operator  = rules.value["operator"]
+      # operator - (optional) is a type of string
+      operator = rules.value["operator"]
+      # threshold - (optional) is a type of number
       threshold = rules.value["threshold"]
     }
   }

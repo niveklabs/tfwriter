@@ -56,7 +56,9 @@ variable "service_name" {
 
 ```terraform
 resource "ovh_iploadbalancing_refresh" "this" {
-  keepers      = var.keepers
+  # keepers - (required) is a type of list of string
+  keepers = var.keepers
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

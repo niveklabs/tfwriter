@@ -90,15 +90,21 @@ variable "order" {
 
 ```terraform
 data "checkpoint_management_show_updatable_objects_repository_content" "this" {
-  filter                              = var.filter
-  limit                               = var.limit
-  offset                              = var.offset
+  # filter - (optional) is a type of map of string
+  filter = var.filter
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # offset - (optional) is a type of number
+  offset = var.offset
+  # uid_in_updatable_objects_repository - (optional) is a type of string
   uid_in_updatable_objects_repository = var.uid_in_updatable_objects_repository
 
   dynamic "order" {
     for_each = var.order
     content {
-      asc  = order.value["asc"]
+      # asc - (optional) is a type of string
+      asc = order.value["asc"]
+      # desc - (optional) is a type of string
       desc = order.value["desc"]
     }
   }

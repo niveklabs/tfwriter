@@ -248,32 +248,58 @@ variable "workstation" {
 
 ```terraform
 resource "fortios_user_local" "this" {
-  auth_concurrent_override    = var.auth_concurrent_override
-  auth_concurrent_value       = var.auth_concurrent_value
-  authtimeout                 = var.authtimeout
-  email_to                    = var.email_to
-  fortitoken                  = var.fortitoken
-  fosid                       = var.fosid
-  ldap_server                 = var.ldap_server
-  name                        = var.name
-  passwd                      = var.passwd
-  passwd_policy               = var.passwd_policy
-  passwd_time                 = var.passwd_time
-  ppk_identity                = var.ppk_identity
-  ppk_secret                  = var.ppk_secret
-  radius_server               = var.radius_server
-  sms_custom_server           = var.sms_custom_server
-  sms_phone                   = var.sms_phone
-  sms_server                  = var.sms_server
-  status                      = var.status
-  tacacs_server               = var.tacacs_server
-  two_factor                  = var.two_factor
-  two_factor_authentication   = var.two_factor_authentication
-  two_factor_notification     = var.two_factor_notification
-  type                        = var.type
+  # auth_concurrent_override - (optional) is a type of string
+  auth_concurrent_override = var.auth_concurrent_override
+  # auth_concurrent_value - (optional) is a type of number
+  auth_concurrent_value = var.auth_concurrent_value
+  # authtimeout - (optional) is a type of number
+  authtimeout = var.authtimeout
+  # email_to - (optional) is a type of string
+  email_to = var.email_to
+  # fortitoken - (optional) is a type of string
+  fortitoken = var.fortitoken
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # ldap_server - (optional) is a type of string
+  ldap_server = var.ldap_server
+  # name - (optional) is a type of string
+  name = var.name
+  # passwd - (optional) is a type of string
+  passwd = var.passwd
+  # passwd_policy - (optional) is a type of string
+  passwd_policy = var.passwd_policy
+  # passwd_time - (optional) is a type of string
+  passwd_time = var.passwd_time
+  # ppk_identity - (optional) is a type of string
+  ppk_identity = var.ppk_identity
+  # ppk_secret - (optional) is a type of string
+  ppk_secret = var.ppk_secret
+  # radius_server - (optional) is a type of string
+  radius_server = var.radius_server
+  # sms_custom_server - (optional) is a type of string
+  sms_custom_server = var.sms_custom_server
+  # sms_phone - (optional) is a type of string
+  sms_phone = var.sms_phone
+  # sms_server - (optional) is a type of string
+  sms_server = var.sms_server
+  # status - (required) is a type of string
+  status = var.status
+  # tacacs_server - (optional) is a type of string
+  tacacs_server = var.tacacs_server
+  # two_factor - (optional) is a type of string
+  two_factor = var.two_factor
+  # two_factor_authentication - (optional) is a type of string
+  two_factor_authentication = var.two_factor_authentication
+  # two_factor_notification - (optional) is a type of string
+  two_factor_notification = var.two_factor_notification
+  # type - (required) is a type of string
+  type = var.type
+  # username_case_insensitivity - (optional) is a type of string
   username_case_insensitivity = var.username_case_insensitivity
-  username_case_sensitivity   = var.username_case_sensitivity
-  workstation                 = var.workstation
+  # username_case_sensitivity - (optional) is a type of string
+  username_case_sensitivity = var.username_case_sensitivity
+  # workstation - (optional) is a type of string
+  workstation = var.workstation
 }
 ```
 

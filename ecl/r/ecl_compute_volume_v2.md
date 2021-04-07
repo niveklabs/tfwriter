@@ -137,21 +137,33 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_compute_volume_v2" "this" {
+  # availability_zone - (optional) is a type of string
   availability_zone = var.availability_zone
-  description       = var.description
-  image_id          = var.image_id
-  image_name        = var.image_name
-  metadata          = var.metadata
-  name              = var.name
-  region            = var.region
-  size              = var.size
-  source_replica    = var.source_replica
-  volume_type       = var.volume_type
+  # description - (optional) is a type of string
+  description = var.description
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # metadata - (optional) is a type of map of string
+  metadata = var.metadata
+  # name - (optional) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
+  # size - (required) is a type of number
+  size = var.size
+  # source_replica - (optional) is a type of string
+  source_replica = var.source_replica
+  # volume_type - (optional) is a type of string
+  volume_type = var.volume_type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

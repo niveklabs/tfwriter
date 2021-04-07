@@ -49,6 +49,7 @@ variable "cluster_id" {
 
 ```terraform
 data "rancher2_cluster_logging" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
 }
 ```

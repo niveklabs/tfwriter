@@ -145,18 +145,31 @@ variable "userid_syslog_listener_udp" {
 
 ```terraform
 resource "panos_management_profile" "this" {
-  http                       = var.http
-  http_ocsp                  = var.http_ocsp
-  https                      = var.https
-  name                       = var.name
-  permitted_ips              = var.permitted_ips
-  ping                       = var.ping
-  response_pages             = var.response_pages
-  snmp                       = var.snmp
-  ssh                        = var.ssh
-  telnet                     = var.telnet
-  userid_service             = var.userid_service
+  # http - (optional) is a type of bool
+  http = var.http
+  # http_ocsp - (optional) is a type of bool
+  http_ocsp = var.http_ocsp
+  # https - (optional) is a type of bool
+  https = var.https
+  # name - (required) is a type of string
+  name = var.name
+  # permitted_ips - (optional) is a type of list of string
+  permitted_ips = var.permitted_ips
+  # ping - (optional) is a type of bool
+  ping = var.ping
+  # response_pages - (optional) is a type of bool
+  response_pages = var.response_pages
+  # snmp - (optional) is a type of bool
+  snmp = var.snmp
+  # ssh - (optional) is a type of bool
+  ssh = var.ssh
+  # telnet - (optional) is a type of bool
+  telnet = var.telnet
+  # userid_service - (optional) is a type of bool
+  userid_service = var.userid_service
+  # userid_syslog_listener_ssl - (optional) is a type of bool
   userid_syslog_listener_ssl = var.userid_syslog_listener_ssl
+  # userid_syslog_listener_udp - (optional) is a type of bool
   userid_syslog_listener_udp = var.userid_syslog_listener_udp
 }
 ```

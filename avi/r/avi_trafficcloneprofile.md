@@ -125,22 +125,31 @@ variable "clone_servers" {
 
 ```terraform
 resource "avi_trafficcloneprofile" "this" {
-  cloud_ref          = var.cloud_ref
-  name               = var.name
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # name - (required) is a type of string
+  name = var.name
+  # preserve_client_ip - (optional) is a type of bool
   preserve_client_ip = var.preserve_client_ip
-  tenant_ref         = var.tenant_ref
-  uuid               = var.uuid
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "clone_servers" {
     for_each = var.clone_servers
     content {
-      mac         = clone_servers.value["mac"]
+      # mac - (optional) is a type of string
+      mac = clone_servers.value["mac"]
+      # network_ref - (optional) is a type of string
       network_ref = clone_servers.value["network_ref"]
 
       dynamic "ip_address" {
         for_each = clone_servers.value.ip_address
         content {
+          # addr - (required) is a type of string
           addr = ip_address.value["addr"]
+          # type - (required) is a type of string
           type = ip_address.value["type"]
         }
       }
@@ -148,12 +157,15 @@ resource "avi_trafficcloneprofile" "this" {
       dynamic "subnet" {
         for_each = clone_servers.value.subnet
         content {
+          # mask - (required) is a type of number
           mask = subnet.value["mask"]
 
           dynamic "ip_addr" {
             for_each = subnet.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }

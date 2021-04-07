@@ -159,25 +159,40 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_lb_tcp_virtual_server" "this" {
-  access_log_enabled         = var.access_log_enabled
-  application_profile_id     = var.application_profile_id
-  default_pool_member_ports  = var.default_pool_member_ports
-  description                = var.description
-  display_name               = var.display_name
-  enabled                    = var.enabled
-  ip_address                 = var.ip_address
+  # access_log_enabled - (optional) is a type of bool
+  access_log_enabled = var.access_log_enabled
+  # application_profile_id - (required) is a type of string
+  application_profile_id = var.application_profile_id
+  # default_pool_member_ports - (optional) is a type of list of string
+  default_pool_member_ports = var.default_pool_member_ports
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ip_address - (required) is a type of string
+  ip_address = var.ip_address
+  # max_concurrent_connections - (optional) is a type of number
   max_concurrent_connections = var.max_concurrent_connections
-  max_new_connection_rate    = var.max_new_connection_rate
-  persistence_profile_id     = var.persistence_profile_id
-  pool_id                    = var.pool_id
-  ports                      = var.ports
-  sorry_pool_id              = var.sorry_pool_id
+  # max_new_connection_rate - (optional) is a type of number
+  max_new_connection_rate = var.max_new_connection_rate
+  # persistence_profile_id - (optional) is a type of string
+  persistence_profile_id = var.persistence_profile_id
+  # pool_id - (optional) is a type of string
+  pool_id = var.pool_id
+  # ports - (required) is a type of list of string
+  ports = var.ports
+  # sorry_pool_id - (optional) is a type of string
+  sorry_pool_id = var.sorry_pool_id
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

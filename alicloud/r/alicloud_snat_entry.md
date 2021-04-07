@@ -98,17 +98,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_snat_entry" "this" {
-  snat_entry_name   = var.snat_entry_name
-  snat_ip           = var.snat_ip
-  snat_table_id     = var.snat_table_id
-  source_cidr       = var.source_cidr
+  # snat_entry_name - (optional) is a type of string
+  snat_entry_name = var.snat_entry_name
+  # snat_ip - (required) is a type of string
+  snat_ip = var.snat_ip
+  # snat_table_id - (required) is a type of string
+  snat_table_id = var.snat_table_id
+  # source_cidr - (optional) is a type of string
+  source_cidr = var.source_cidr
+  # source_vswitch_id - (optional) is a type of string
   source_vswitch_id = var.source_vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

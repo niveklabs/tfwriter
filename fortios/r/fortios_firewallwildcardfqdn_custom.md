@@ -90,11 +90,17 @@ variable "wildcard_fqdn" {
 
 ```terraform
 resource "fortios_firewallwildcardfqdn_custom" "this" {
-  color         = var.color
-  comment       = var.comment
-  name          = var.name
-  uuid          = var.uuid
-  visibility    = var.visibility
+  # color - (optional) is a type of number
+  color = var.color
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # name - (optional) is a type of string
+  name = var.name
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # visibility - (optional) is a type of string
+  visibility = var.visibility
+  # wildcard_fqdn - (optional) is a type of string
   wildcard_fqdn = var.wildcard_fqdn
 }
 ```

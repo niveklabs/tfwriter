@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "tencentcloud_cam_policy" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  document    = var.document
-  name        = var.name
+  # document - (required) is a type of string
+  document = var.document
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

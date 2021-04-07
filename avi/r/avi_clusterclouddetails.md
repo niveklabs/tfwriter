@@ -81,15 +81,20 @@ variable "azure_info" {
 
 ```terraform
 resource "avi_clusterclouddetails" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "azure_info" {
     for_each = var.azure_info
     content {
+      # cloud_credential_ref - (required) is a type of string
       cloud_credential_ref = azure_info.value["cloud_credential_ref"]
-      subscription_id      = azure_info.value["subscription_id"]
+      # subscription_id - (required) is a type of string
+      subscription_id = azure_info.value["subscription_id"]
     }
   }
 

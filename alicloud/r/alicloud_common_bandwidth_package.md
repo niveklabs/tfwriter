@@ -137,21 +137,33 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_common_bandwidth_package" "this" {
-  bandwidth              = var.bandwidth
+  # bandwidth - (required) is a type of string
+  bandwidth = var.bandwidth
+  # bandwidth_package_name - (optional) is a type of string
   bandwidth_package_name = var.bandwidth_package_name
-  description            = var.description
-  force                  = var.force
-  internet_charge_type   = var.internet_charge_type
-  isp                    = var.isp
-  name                   = var.name
-  ratio                  = var.ratio
-  resource_group_id      = var.resource_group_id
-  zone                   = var.zone
+  # description - (optional) is a type of string
+  description = var.description
+  # force - (optional) is a type of string
+  force = var.force
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # isp - (optional) is a type of string
+  isp = var.isp
+  # name - (optional) is a type of string
+  name = var.name
+  # ratio - (optional) is a type of number
+  ratio = var.ratio
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # zone - (optional) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

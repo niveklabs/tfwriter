@@ -78,12 +78,15 @@ variable "timeouts" {
 
 ```terraform
 resource "newrelic_entity_tags" "this" {
+  # guid - (required) is a type of string
   guid = var.guid
 
   dynamic "tag" {
     for_each = var.tag
     content {
-      key    = tag.value["key"]
+      # key - (required) is a type of string
+      key = tag.value["key"]
+      # values - (required) is a type of set of string
       values = tag.value["values"]
     }
   }
@@ -91,6 +94,7 @@ resource "newrelic_entity_tags" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

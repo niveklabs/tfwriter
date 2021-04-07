@@ -105,14 +105,22 @@ variable "rule_id" {
 
 ```terraform
 data "tencentcloud_gaap_security_rules" "this" {
-  action             = var.action
-  cidr_ip            = var.cidr_ip
-  name               = var.name
-  policy_id          = var.policy_id
-  port               = var.port
-  protocol           = var.protocol
+  # action - (optional) is a type of string
+  action = var.action
+  # cidr_ip - (optional) is a type of string
+  cidr_ip = var.cidr_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_id - (required) is a type of string
+  policy_id = var.policy_id
+  # port - (optional) is a type of string
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  rule_id            = var.rule_id
+  # rule_id - (optional) is a type of string
+  rule_id = var.rule_id
 }
 ```
 

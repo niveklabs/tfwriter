@@ -90,12 +90,18 @@ variable "query_keyword" {
 
 ```terraform
 data "alicloud_resource_manager_folders" "this" {
-  enable_details   = var.enable_details
-  ids              = var.ids
-  name_regex       = var.name_regex
-  output_file      = var.output_file
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # parent_folder_id - (optional) is a type of string
   parent_folder_id = var.parent_folder_id
-  query_keyword    = var.query_keyword
+  # query_keyword - (optional) is a type of string
+  query_keyword = var.query_keyword
 }
 ```
 

@@ -81,10 +81,15 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_fnf_schedules" "this" {
-  flow_name   = var.flow_name
-  ids         = var.ids
-  limit       = var.limit
-  name_regex  = var.name_regex
+  # flow_name - (required) is a type of string
+  flow_name = var.flow_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

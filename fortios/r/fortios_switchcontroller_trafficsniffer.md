@@ -130,35 +130,45 @@ variable "target_port" {
 
 ```terraform
 resource "fortios_switchcontroller_trafficsniffer" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  erspan_ip             = var.erspan_ip
-  mode                  = var.mode
+  # erspan_ip - (optional) is a type of string
+  erspan_ip = var.erspan_ip
+  # mode - (optional) is a type of string
+  mode = var.mode
 
   dynamic "target_ip" {
     for_each = var.target_ip
     content {
+      # description - (optional) is a type of string
       description = target_ip.value["description"]
-      ip          = target_ip.value["ip"]
+      # ip - (optional) is a type of string
+      ip = target_ip.value["ip"]
     }
   }
 
   dynamic "target_mac" {
     for_each = var.target_mac
     content {
+      # description - (optional) is a type of string
       description = target_mac.value["description"]
-      mac         = target_mac.value["mac"]
+      # mac - (optional) is a type of string
+      mac = target_mac.value["mac"]
     }
   }
 
   dynamic "target_port" {
     for_each = var.target_port
     content {
+      # description - (optional) is a type of string
       description = target_port.value["description"]
-      switch_id   = target_port.value["switch_id"]
+      # switch_id - (optional) is a type of string
+      switch_id = target_port.value["switch_id"]
 
       dynamic "in_ports" {
         for_each = target_port.value.in_ports
         content {
+          # name - (optional) is a type of string
           name = in_ports.value["name"]
         }
       }
@@ -166,6 +176,7 @@ resource "fortios_switchcontroller_trafficsniffer" "this" {
       dynamic "out_ports" {
         for_each = target_port.value.out_ports
         content {
+          # name - (optional) is a type of string
           name = out_ports.value["name"]
         }
       }

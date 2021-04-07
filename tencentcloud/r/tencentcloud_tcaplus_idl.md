@@ -84,11 +84,17 @@ variable "tablegroup_id" {
 
 ```terraform
 resource "tencentcloud_tcaplus_idl" "this" {
-  cluster_id    = var.cluster_id
-  file_content  = var.file_content
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # file_content - (required) is a type of string
+  file_content = var.file_content
+  # file_ext_type - (required) is a type of string
   file_ext_type = var.file_ext_type
-  file_name     = var.file_name
-  file_type     = var.file_type
+  # file_name - (required) is a type of string
+  file_name = var.file_name
+  # file_type - (required) is a type of string
+  file_type = var.file_type
+  # tablegroup_id - (required) is a type of string
   tablegroup_id = var.tablegroup_id
 }
 ```

@@ -98,13 +98,20 @@ variable "status" {
 
 ```terraform
 data "alicloud_eci_image_caches" "this" {
-  ids              = var.ids
-  image            = var.image
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # image - (optional) is a type of string
+  image = var.image
+  # image_cache_name - (optional) is a type of string
   image_cache_name = var.image_cache_name
-  name_regex       = var.name_regex
-  output_file      = var.output_file
-  snapshot_id      = var.snapshot_id
-  status           = var.status
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

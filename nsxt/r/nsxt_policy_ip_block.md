@@ -88,16 +88,22 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_ip_block" "this" {
-  cidr         = var.cidr
-  description  = var.description
+  # cidr - (required) is a type of string
+  cidr = var.cidr
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
   display_name = var.display_name
-  nsx_id       = var.nsx_id
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

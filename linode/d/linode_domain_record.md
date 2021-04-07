@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "linode_domain_record" "this" {
+  # domain_id - (required) is a type of number
   domain_id = var.domain_id
-  name      = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

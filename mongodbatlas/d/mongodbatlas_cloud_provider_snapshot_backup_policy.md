@@ -56,8 +56,10 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_cloud_provider_snapshot_backup_policy" "this" {
+  # cluster_name - (required) is a type of string
   cluster_name = var.cluster_name
-  project_id   = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

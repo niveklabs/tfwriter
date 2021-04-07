@@ -81,11 +81,16 @@ variable "project_id" {
 
 ```terraform
 resource "mongodbatlas_maintenance_window" "this" {
-  day_of_week         = var.day_of_week
-  defer               = var.defer
-  hour_of_day         = var.hour_of_day
+  # day_of_week - (optional) is a type of number
+  day_of_week = var.day_of_week
+  # defer - (optional) is a type of bool
+  defer = var.defer
+  # hour_of_day - (optional) is a type of number
+  hour_of_day = var.hour_of_day
+  # number_of_deferrals - (optional) is a type of number
   number_of_deferrals = var.number_of_deferrals
-  project_id          = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

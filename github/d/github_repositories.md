@@ -57,8 +57,10 @@ variable "sort" {
 
 ```terraform
 data "github_repositories" "this" {
+  # query - (required) is a type of string
   query = var.query
-  sort  = var.sort
+  # sort - (optional) is a type of string
+  sort = var.sort
 }
 ```
 

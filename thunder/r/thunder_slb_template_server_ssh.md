@@ -88,14 +88,19 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_slb_template_server_ssh" "this" {
+  # forward_proxy_enable - (optional) is a type of number
   forward_proxy_enable = var.forward_proxy_enable
-  name                 = var.name
-  user_tag             = var.user_tag
-  uuid                 = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

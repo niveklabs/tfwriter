@@ -130,17 +130,28 @@ variable "uri" {
 
 ```terraform
 resource "checkpoint_management_add_data_center_object" "this" {
-  color              = var.color
-  comments           = var.comments
-  data_center_name   = var.data_center_name
-  data_center_uid    = var.data_center_uid
-  groups             = var.groups
-  ignore_errors      = var.ignore_errors
-  ignore_warnings    = var.ignore_warnings
-  name               = var.name
-  tags               = var.tags
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # data_center_name - (optional) is a type of string
+  data_center_name = var.data_center_name
+  # data_center_uid - (optional) is a type of string
+  data_center_uid = var.data_center_uid
+  # groups - (optional) is a type of set of string
+  groups = var.groups
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # uid_in_data_center - (optional) is a type of string
   uid_in_data_center = var.uid_in_data_center
-  uri                = var.uri
+  # uri - (optional) is a type of string
+  uri = var.uri
 }
 ```
 

@@ -73,10 +73,14 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_edas_clusters" "this" {
-  ids               = var.ids
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # logical_region_id - (required) is a type of string
   logical_region_id = var.logical_region_id
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
 }
 ```
 

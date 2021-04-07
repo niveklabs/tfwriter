@@ -72,10 +72,14 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_api_endpoints" "this" {
-  api_name           = var.api_name
-  config_id          = var.config_id
+  # api_name - (optional) is a type of string
+  api_name = var.api_name
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # security_policy_id - (optional) is a type of string
   security_policy_id = var.security_policy_id
-  version            = var.version
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

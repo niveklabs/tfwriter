@@ -312,42 +312,75 @@ variable "osu_provider" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_hsprofile" "this" {
-  access_network_asra     = var.access_network_asra
-  access_network_esr      = var.access_network_esr
+  # access_network_asra - (optional) is a type of string
+  access_network_asra = var.access_network_asra
+  # access_network_esr - (optional) is a type of string
+  access_network_esr = var.access_network_esr
+  # access_network_internet - (optional) is a type of string
   access_network_internet = var.access_network_internet
-  access_network_type     = var.access_network_type
-  access_network_uesa     = var.access_network_uesa
-  anqp_domain_id          = var.anqp_domain_id
-  bss_transition          = var.bss_transition
-  conn_cap                = var.conn_cap
-  deauth_request_timeout  = var.deauth_request_timeout
-  dgaf                    = var.dgaf
-  domain_name             = var.domain_name
-  dynamic_sort_subtable   = var.dynamic_sort_subtable
-  gas_comeback_delay      = var.gas_comeback_delay
+  # access_network_type - (optional) is a type of string
+  access_network_type = var.access_network_type
+  # access_network_uesa - (optional) is a type of string
+  access_network_uesa = var.access_network_uesa
+  # anqp_domain_id - (optional) is a type of number
+  anqp_domain_id = var.anqp_domain_id
+  # bss_transition - (optional) is a type of string
+  bss_transition = var.bss_transition
+  # conn_cap - (optional) is a type of string
+  conn_cap = var.conn_cap
+  # deauth_request_timeout - (optional) is a type of number
+  deauth_request_timeout = var.deauth_request_timeout
+  # dgaf - (optional) is a type of string
+  dgaf = var.dgaf
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # gas_comeback_delay - (optional) is a type of number
+  gas_comeback_delay = var.gas_comeback_delay
+  # gas_fragmentation_limit - (optional) is a type of number
   gas_fragmentation_limit = var.gas_fragmentation_limit
-  hessid                  = var.hessid
-  ip_addr_type            = var.ip_addr_type
-  l2tif                   = var.l2tif
-  n3gpp_plmn              = var.n3gpp_plmn
-  nai_realm               = var.nai_realm
-  name                    = var.name
-  network_auth            = var.network_auth
-  oper_friendly_name      = var.oper_friendly_name
-  osu_ssid                = var.osu_ssid
-  pame_bi                 = var.pame_bi
-  proxy_arp               = var.proxy_arp
-  qos_map                 = var.qos_map
-  roaming_consortium      = var.roaming_consortium
-  venue_group             = var.venue_group
-  venue_name              = var.venue_name
-  venue_type              = var.venue_type
-  wan_metrics             = var.wan_metrics
-  wnm_sleep_mode          = var.wnm_sleep_mode
+  # hessid - (optional) is a type of string
+  hessid = var.hessid
+  # ip_addr_type - (optional) is a type of string
+  ip_addr_type = var.ip_addr_type
+  # l2tif - (optional) is a type of string
+  l2tif = var.l2tif
+  # n3gpp_plmn - (optional) is a type of string
+  n3gpp_plmn = var.n3gpp_plmn
+  # nai_realm - (optional) is a type of string
+  nai_realm = var.nai_realm
+  # name - (optional) is a type of string
+  name = var.name
+  # network_auth - (optional) is a type of string
+  network_auth = var.network_auth
+  # oper_friendly_name - (optional) is a type of string
+  oper_friendly_name = var.oper_friendly_name
+  # osu_ssid - (optional) is a type of string
+  osu_ssid = var.osu_ssid
+  # pame_bi - (optional) is a type of string
+  pame_bi = var.pame_bi
+  # proxy_arp - (optional) is a type of string
+  proxy_arp = var.proxy_arp
+  # qos_map - (optional) is a type of string
+  qos_map = var.qos_map
+  # roaming_consortium - (optional) is a type of string
+  roaming_consortium = var.roaming_consortium
+  # venue_group - (optional) is a type of string
+  venue_group = var.venue_group
+  # venue_name - (optional) is a type of string
+  venue_name = var.venue_name
+  # venue_type - (optional) is a type of string
+  venue_type = var.venue_type
+  # wan_metrics - (optional) is a type of string
+  wan_metrics = var.wan_metrics
+  # wnm_sleep_mode - (optional) is a type of string
+  wnm_sleep_mode = var.wnm_sleep_mode
 
   dynamic "osu_provider" {
     for_each = var.osu_provider
     content {
+      # name - (optional) is a type of string
       name = osu_provider.value["name"]
     }
   }

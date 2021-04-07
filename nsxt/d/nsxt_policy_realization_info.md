@@ -65,9 +65,12 @@ variable "site_path" {
 
 ```terraform
 data "nsxt_policy_realization_info" "this" {
+  # entity_type - (optional) is a type of string
   entity_type = var.entity_type
-  path        = var.path
-  site_path   = var.site_path
+  # path - (required) is a type of string
+  path = var.path
+  # site_path - (optional) is a type of string
+  site_path = var.site_path
 }
 ```
 

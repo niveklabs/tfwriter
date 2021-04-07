@@ -89,12 +89,18 @@ variable "threshold" {
 
 ```terraform
 resource "panos_panorama_monitor_profile" "this" {
-  action         = var.action
-  interval       = var.interval
-  name           = var.name
-  template       = var.template
+  # action - (optional) is a type of string
+  action = var.action
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (required) is a type of string
+  name = var.name
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
-  threshold      = var.threshold
+  # threshold - (optional) is a type of number
+  threshold = var.threshold
 }
 ```
 

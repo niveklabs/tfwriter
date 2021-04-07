@@ -77,16 +77,22 @@ variable "timeouts" {
 
 ```terraform
 data "profitbricks_server" "this" {
+  # datacenter_id - (required) is a type of string
   datacenter_id = var.datacenter_id
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

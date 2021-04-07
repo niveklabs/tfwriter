@@ -50,6 +50,7 @@ variable "domains" {
 
 ```terraform
 data "fastly_tls_platform_certificate" "this" {
+  # domains - (optional) is a type of set of string
   domains = var.domains
 }
 ```

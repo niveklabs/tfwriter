@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "triton_snapshot" "this" {
+  # machine_id - (required) is a type of string
   machine_id = var.machine_id
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

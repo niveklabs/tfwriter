@@ -90,12 +90,18 @@ variable "type" {
 
 ```terraform
 data "tencentcloud_cam_policies" "this" {
-  create_mode        = var.create_mode
-  description        = var.description
-  name               = var.name
-  policy_id          = var.policy_id
+  # create_mode - (optional) is a type of number
+  create_mode = var.create_mode
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_id - (optional) is a type of string
+  policy_id = var.policy_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  type               = var.type
+  # type - (optional) is a type of number
+  type = var.type
 }
 ```
 

@@ -407,13 +407,17 @@ variable "stage_list" {
 
 ```terraform
 resource "nutanix_recovery_plan" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "categories" {
     for_each = var.categories
     content {
-      name  = categories.value["name"]
+      # name - (optional) is a type of string
+      name = categories.value["name"]
+      # value - (optional) is a type of string
       value = categories.value["value"]
     }
   }
@@ -421,8 +425,11 @@ resource "nutanix_recovery_plan" "this" {
   dynamic "owner_reference" {
     for_each = var.owner_reference
     content {
+      # kind - (optional) is a type of string
       kind = owner_reference.value["kind"]
+      # name - (optional) is a type of string
       name = owner_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = owner_reference.value["uuid"]
     }
   }
@@ -434,6 +441,7 @@ resource "nutanix_recovery_plan" "this" {
       dynamic "floating_ip_assignment_list" {
         for_each = parameters.value.floating_ip_assignment_list
         content {
+          # availability_zone_url - (required) is a type of string
           availability_zone_url = floating_ip_assignment_list.value["availability_zone_url"]
 
           dynamic "vm_ip_assignment_list" {
@@ -443,7 +451,9 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "recovery_floating_ip_config" {
                 for_each = vm_ip_assignment_list.value.recovery_floating_ip_config
                 content {
-                  ip                          = recovery_floating_ip_config.value["ip"]
+                  # ip - (optional) is a type of string
+                  ip = recovery_floating_ip_config.value["ip"]
+                  # should_allocate_dynamically - (optional) is a type of bool
                   should_allocate_dynamically = recovery_floating_ip_config.value["should_allocate_dynamically"]
                 }
               }
@@ -451,7 +461,9 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "test_floating_ip_config" {
                 for_each = vm_ip_assignment_list.value.test_floating_ip_config
                 content {
-                  ip                          = test_floating_ip_config.value["ip"]
+                  # ip - (optional) is a type of string
+                  ip = test_floating_ip_config.value["ip"]
+                  # should_allocate_dynamically - (optional) is a type of bool
                   should_allocate_dynamically = test_floating_ip_config.value["should_allocate_dynamically"]
                 }
               }
@@ -459,7 +471,9 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "vm_nic_information" {
                 for_each = vm_ip_assignment_list.value.vm_nic_information
                 content {
-                  ip   = vm_nic_information.value["ip"]
+                  # ip - (optional) is a type of string
+                  ip = vm_nic_information.value["ip"]
+                  # uuid - (required) is a type of string
                   uuid = vm_nic_information.value["uuid"]
                 }
               }
@@ -467,8 +481,11 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "vm_reference" {
                 for_each = vm_ip_assignment_list.value.vm_reference
                 content {
+                  # kind - (required) is a type of string
                   kind = vm_reference.value["kind"]
+                  # name - (optional) is a type of string
                   name = vm_reference.value["name"]
+                  # uuid - (required) is a type of string
                   uuid = vm_reference.value["uuid"]
                 }
               }
@@ -482,18 +499,23 @@ resource "nutanix_recovery_plan" "this" {
       dynamic "network_mapping_list" {
         for_each = parameters.value.network_mapping_list
         content {
+          # are_networks_stretched - (optional) is a type of bool
           are_networks_stretched = network_mapping_list.value["are_networks_stretched"]
 
           dynamic "availability_zone_network_mapping_list" {
             for_each = network_mapping_list.value.availability_zone_network_mapping_list
             content {
+              # availability_zone_url - (optional) is a type of string
               availability_zone_url = availability_zone_network_mapping_list.value["availability_zone_url"]
 
               dynamic "cluster_reference_list" {
                 for_each = availability_zone_network_mapping_list.value.cluster_reference_list
                 content {
+                  # kind - (required) is a type of string
                   kind = cluster_reference_list.value["kind"]
+                  # name - (optional) is a type of string
                   name = cluster_reference_list.value["name"]
+                  # uuid - (required) is a type of string
                   uuid = cluster_reference_list.value["uuid"]
                 }
               }
@@ -505,6 +527,7 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "ip_config_list" {
                     for_each = recovery_ip_assignment_list.value.ip_config_list
                     content {
+                      # ip_address - (required) is a type of string
                       ip_address = ip_config_list.value["ip_address"]
                     }
                   }
@@ -512,8 +535,11 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "vm_reference" {
                     for_each = recovery_ip_assignment_list.value.vm_reference
                     content {
+                      # kind - (required) is a type of string
                       kind = vm_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = vm_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = vm_reference.value["uuid"]
                     }
                   }
@@ -524,23 +550,31 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "recovery_network" {
                 for_each = availability_zone_network_mapping_list.value.recovery_network
                 content {
-                  name              = recovery_network.value["name"]
+                  # name - (optional) is a type of string
+                  name = recovery_network.value["name"]
+                  # use_vpc_reference - (optional) is a type of bool
                   use_vpc_reference = recovery_network.value["use_vpc_reference"]
 
                   dynamic "subnet_list" {
                     for_each = recovery_network.value.subnet_list
                     content {
+                      # external_connectivity_state - (optional) is a type of string
                       external_connectivity_state = subnet_list.value["external_connectivity_state"]
-                      gateway_ip                  = subnet_list.value["gateway_ip"]
-                      prefix_length               = subnet_list.value["prefix_length"]
+                      # gateway_ip - (required) is a type of string
+                      gateway_ip = subnet_list.value["gateway_ip"]
+                      # prefix_length - (required) is a type of number
+                      prefix_length = subnet_list.value["prefix_length"]
                     }
                   }
 
                   dynamic "virtual_network_reference" {
                     for_each = recovery_network.value.virtual_network_reference
                     content {
+                      # kind - (optional) is a type of string
                       kind = virtual_network_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = virtual_network_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = virtual_network_reference.value["uuid"]
                     }
                   }
@@ -548,8 +582,11 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "vpc_reference" {
                     for_each = recovery_network.value.vpc_reference
                     content {
+                      # kind - (optional) is a type of string
                       kind = vpc_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = vpc_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = vpc_reference.value["uuid"]
                     }
                   }
@@ -564,6 +601,7 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "ip_config_list" {
                     for_each = test_ip_assignment_list.value.ip_config_list
                     content {
+                      # ip_address - (required) is a type of string
                       ip_address = ip_config_list.value["ip_address"]
                     }
                   }
@@ -571,8 +609,11 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "vm_reference" {
                     for_each = test_ip_assignment_list.value.vm_reference
                     content {
+                      # kind - (required) is a type of string
                       kind = vm_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = vm_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = vm_reference.value["uuid"]
                     }
                   }
@@ -583,23 +624,31 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "test_network" {
                 for_each = availability_zone_network_mapping_list.value.test_network
                 content {
-                  name              = test_network.value["name"]
+                  # name - (optional) is a type of string
+                  name = test_network.value["name"]
+                  # use_vpc_reference - (optional) is a type of bool
                   use_vpc_reference = test_network.value["use_vpc_reference"]
 
                   dynamic "subnet_list" {
                     for_each = test_network.value.subnet_list
                     content {
+                      # external_connectivity_state - (optional) is a type of string
                       external_connectivity_state = subnet_list.value["external_connectivity_state"]
-                      gateway_ip                  = subnet_list.value["gateway_ip"]
-                      prefix_length               = subnet_list.value["prefix_length"]
+                      # gateway_ip - (required) is a type of string
+                      gateway_ip = subnet_list.value["gateway_ip"]
+                      # prefix_length - (required) is a type of number
+                      prefix_length = subnet_list.value["prefix_length"]
                     }
                   }
 
                   dynamic "virtual_network_reference" {
                     for_each = test_network.value.virtual_network_reference
                     content {
+                      # kind - (optional) is a type of string
                       kind = virtual_network_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = virtual_network_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = virtual_network_reference.value["uuid"]
                     }
                   }
@@ -607,8 +656,11 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "vpc_reference" {
                     for_each = test_network.value.vpc_reference
                     content {
+                      # kind - (optional) is a type of string
                       kind = vpc_reference.value["kind"]
+                      # name - (optional) is a type of string
                       name = vpc_reference.value["name"]
+                      # uuid - (optional) is a type of string
                       uuid = vpc_reference.value["uuid"]
                     }
                   }
@@ -628,8 +680,11 @@ resource "nutanix_recovery_plan" "this" {
   dynamic "project_reference" {
     for_each = var.project_reference
     content {
+      # kind - (optional) is a type of string
       kind = project_reference.value["kind"]
+      # name - (optional) is a type of string
       name = project_reference.value["name"]
+      # uuid - (optional) is a type of string
       uuid = project_reference.value["uuid"]
     }
   }
@@ -637,8 +692,10 @@ resource "nutanix_recovery_plan" "this" {
   dynamic "stage_list" {
     for_each = var.stage_list
     content {
+      # delay_time_secs - (optional) is a type of number
       delay_time_secs = stage_list.value["delay_time_secs"]
-      stage_uuid      = stage_list.value["stage_uuid"]
+      # stage_uuid - (optional) is a type of string
+      stage_uuid = stage_list.value["stage_uuid"]
 
       dynamic "stage_work" {
         for_each = stage_list.value.stage_work
@@ -651,14 +708,19 @@ resource "nutanix_recovery_plan" "this" {
               dynamic "entity_info_list" {
                 for_each = recover_entities.value.entity_info_list
                 content {
+                  # any_entity_reference_kind - (optional) is a type of string
                   any_entity_reference_kind = entity_info_list.value["any_entity_reference_kind"]
+                  # any_entity_reference_name - (optional) is a type of string
                   any_entity_reference_name = entity_info_list.value["any_entity_reference_name"]
+                  # any_entity_reference_uuid - (optional) is a type of string
                   any_entity_reference_uuid = entity_info_list.value["any_entity_reference_uuid"]
 
                   dynamic "categories" {
                     for_each = entity_info_list.value.categories
                     content {
-                      name  = categories.value["name"]
+                      # name - (optional) is a type of string
+                      name = categories.value["name"]
+                      # value - (optional) is a type of string
                       value = categories.value["value"]
                     }
                   }
@@ -666,8 +728,10 @@ resource "nutanix_recovery_plan" "this" {
                   dynamic "script_list" {
                     for_each = entity_info_list.value.script_list
                     content {
+                      # enable_script_exec - (required) is a type of bool
                       enable_script_exec = script_list.value["enable_script_exec"]
-                      timeout            = script_list.value["timeout"]
+                      # timeout - (optional) is a type of string
+                      timeout = script_list.value["timeout"]
                     }
                   }
 

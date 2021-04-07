@@ -190,17 +190,28 @@ variable "if" {
 
 ```terraform
 resource "circonus_rule_set" "this" {
-  check          = var.check
-  link           = var.link
-  metric_filter  = var.metric_filter
-  metric_name    = var.metric_name
+  # check - (required) is a type of string
+  check = var.check
+  # link - (optional) is a type of string
+  link = var.link
+  # metric_filter - (optional) is a type of string
+  metric_filter = var.metric_filter
+  # metric_name - (optional) is a type of string
+  metric_name = var.metric_name
+  # metric_pattern - (optional) is a type of string
   metric_pattern = var.metric_pattern
-  metric_type    = var.metric_type
-  name           = var.name
-  notes          = var.notes
-  parent         = var.parent
-  tags           = var.tags
-  user_json      = var.user_json
+  # metric_type - (optional) is a type of string
+  metric_type = var.metric_type
+  # name - (optional) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # parent - (optional) is a type of string
+  parent = var.parent
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # user_json - (optional) is a type of string
+  user_json = var.user_json
 
   dynamic "if" {
     for_each = var.if
@@ -209,8 +220,11 @@ resource "circonus_rule_set" "this" {
       dynamic "then" {
         for_each = if.value.then
         content {
-          after    = then.value["after"]
-          notify   = then.value["notify"]
+          # after - (optional) is a type of string
+          after = then.value["after"]
+          # notify - (optional) is a type of set of string
+          notify = then.value["notify"]
+          # severity - (optional) is a type of number
           severity = then.value["severity"]
         }
       }
@@ -218,23 +232,36 @@ resource "circonus_rule_set" "this" {
       dynamic "value" {
         for_each = if.value.value
         content {
-          absent      = value.value["absent"]
-          changed     = value.value["changed"]
-          contains    = value.value["contains"]
-          eq_value    = value.value["eq_value"]
-          match       = value.value["match"]
-          max_value   = value.value["max_value"]
-          min_value   = value.value["min_value"]
-          neq_value   = value.value["neq_value"]
+          # absent - (optional) is a type of string
+          absent = value.value["absent"]
+          # changed - (optional) is a type of string
+          changed = value.value["changed"]
+          # contains - (optional) is a type of string
+          contains = value.value["contains"]
+          # eq_value - (optional) is a type of string
+          eq_value = value.value["eq_value"]
+          # match - (optional) is a type of string
+          match = value.value["match"]
+          # max_value - (optional) is a type of string
+          max_value = value.value["max_value"]
+          # min_value - (optional) is a type of string
+          min_value = value.value["min_value"]
+          # neq_value - (optional) is a type of string
+          neq_value = value.value["neq_value"]
+          # not_contain - (optional) is a type of string
           not_contain = value.value["not_contain"]
-          not_match   = value.value["not_match"]
+          # not_match - (optional) is a type of string
+          not_match = value.value["not_match"]
 
           dynamic "over" {
             for_each = value.value.over
             content {
+              # atleast - (optional) is a type of string
               atleast = over.value["atleast"]
-              last    = over.value["last"]
-              using   = over.value["using"]
+              # last - (optional) is a type of string
+              last = over.value["last"]
+              # using - (optional) is a type of string
+              using = over.value["using"]
             }
           }
 

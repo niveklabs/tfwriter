@@ -56,7 +56,9 @@ variable "role_id" {
 
 ```terraform
 resource "onelogin_app_role_attachments" "this" {
-  app_id  = var.app_id
+  # app_id - (required) is a type of number
+  app_id = var.app_id
+  # role_id - (required) is a type of number
   role_id = var.role_id
 }
 ```

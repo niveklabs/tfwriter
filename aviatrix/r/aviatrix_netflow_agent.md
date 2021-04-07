@@ -72,10 +72,14 @@ variable "version" {
 
 ```terraform
 resource "aviatrix_netflow_agent" "this" {
+  # excluded_gateways - (optional) is a type of set of string
   excluded_gateways = var.excluded_gateways
-  port              = var.port
-  server_ip         = var.server_ip
-  version           = var.version
+  # port - (required) is a type of number
+  port = var.port
+  # server_ip - (required) is a type of string
+  server_ip = var.server_ip
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

@@ -65,9 +65,12 @@ variable "zone" {
 
 ```terraform
 data "scaleway_marketplace_image" "this" {
+  # instance_type - (optional) is a type of string
   instance_type = var.instance_type
-  label         = var.label
-  zone          = var.zone
+  # label - (required) is a type of string
+  label = var.label
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

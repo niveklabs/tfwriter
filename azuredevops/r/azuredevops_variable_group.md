@@ -113,15 +113,21 @@ variable "variable" {
 
 ```terraform
 resource "azuredevops_variable_group" "this" {
+  # allow_access - (optional) is a type of bool
   allow_access = var.allow_access
-  description  = var.description
-  name         = var.name
-  project_id   = var.project_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "key_vault" {
     for_each = var.key_vault
     content {
-      name                = key_vault.value["name"]
+      # name - (required) is a type of string
+      name = key_vault.value["name"]
+      # service_endpoint_id - (required) is a type of string
       service_endpoint_id = key_vault.value["service_endpoint_id"]
     }
   }
@@ -129,10 +135,14 @@ resource "azuredevops_variable_group" "this" {
   dynamic "variable" {
     for_each = var.variable
     content {
-      is_secret    = variable.value["is_secret"]
-      name         = variable.value["name"]
+      # is_secret - (optional) is a type of bool
+      is_secret = variable.value["is_secret"]
+      # name - (required) is a type of string
+      name = variable.value["name"]
+      # secret_value - (optional) is a type of string
       secret_value = variable.value["secret_value"]
-      value        = variable.value["value"]
+      # value - (optional) is a type of string
+      value = variable.value["value"]
     }
   }
 

@@ -97,13 +97,20 @@ variable "project_id" {
 
 ```terraform
 resource "tencentcloud_cdh_instance" "this" {
-  availability_zone  = var.availability_zone
-  charge_type        = var.charge_type
-  host_name          = var.host_name
-  host_type          = var.host_type
-  prepaid_period     = var.prepaid_period
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # host_name - (optional) is a type of string
+  host_name = var.host_name
+  # host_type - (optional) is a type of string
+  host_type = var.host_type
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # prepaid_renew_flag - (optional) is a type of string
   prepaid_renew_flag = var.prepaid_renew_flag
-  project_id         = var.project_id
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
 }
 ```
 

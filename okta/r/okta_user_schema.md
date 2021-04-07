@@ -231,29 +231,49 @@ variable "one_of" {
 
 ```terraform
 resource "okta_user_schema" "this" {
-  array_enum         = var.array_enum
-  array_type         = var.array_type
-  description        = var.description
-  enum               = var.enum
-  external_name      = var.external_name
+  # array_enum - (optional) is a type of list of string
+  array_enum = var.array_enum
+  # array_type - (optional) is a type of string
+  array_type = var.array_type
+  # description - (optional) is a type of string
+  description = var.description
+  # enum - (optional) is a type of list of string
+  enum = var.enum
+  # external_name - (optional) is a type of string
+  external_name = var.external_name
+  # external_namespace - (optional) is a type of string
   external_namespace = var.external_namespace
-  index              = var.index
-  master             = var.master
-  max_length         = var.max_length
-  min_length         = var.min_length
-  pattern            = var.pattern
-  permissions        = var.permissions
-  required           = var.required
-  scope              = var.scope
-  title              = var.title
-  type               = var.type
-  unique             = var.unique
-  user_type          = var.user_type
+  # index - (required) is a type of string
+  index = var.index
+  # master - (optional) is a type of string
+  master = var.master
+  # max_length - (optional) is a type of number
+  max_length = var.max_length
+  # min_length - (optional) is a type of number
+  min_length = var.min_length
+  # pattern - (optional) is a type of string
+  pattern = var.pattern
+  # permissions - (optional) is a type of string
+  permissions = var.permissions
+  # required - (optional) is a type of bool
+  required = var.required
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # title - (required) is a type of string
+  title = var.title
+  # type - (required) is a type of string
+  type = var.type
+  # unique - (optional) is a type of string
+  unique = var.unique
+  # user_type - (optional) is a type of string
+  user_type = var.user_type
 
   dynamic "array_one_of" {
     for_each = var.array_one_of
     content {
+      # const - (required) is a type of string
       const = array_one_of.value["const"]
+      # title - (required) is a type of string
       title = array_one_of.value["title"]
     }
   }
@@ -261,7 +281,9 @@ resource "okta_user_schema" "this" {
   dynamic "master_override_priority" {
     for_each = var.master_override_priority
     content {
-      type  = master_override_priority.value["type"]
+      # type - (optional) is a type of string
+      type = master_override_priority.value["type"]
+      # value - (required) is a type of string
       value = master_override_priority.value["value"]
     }
   }
@@ -269,7 +291,9 @@ resource "okta_user_schema" "this" {
   dynamic "one_of" {
     for_each = var.one_of
     content {
+      # const - (required) is a type of string
       const = one_of.value["const"]
+      # title - (required) is a type of string
       title = one_of.value["title"]
     }
   }

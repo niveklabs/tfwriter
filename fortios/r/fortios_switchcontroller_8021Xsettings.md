@@ -74,10 +74,14 @@ variable "tx_period" {
 
 ```terraform
 resource "fortios_switchcontroller_8021Xsettings" "this" {
-  link_down_auth     = var.link_down_auth
+  # link_down_auth - (optional) is a type of string
+  link_down_auth = var.link_down_auth
+  # max_reauth_attempt - (optional) is a type of number
   max_reauth_attempt = var.max_reauth_attempt
-  reauth_period      = var.reauth_period
-  tx_period          = var.tx_period
+  # reauth_period - (optional) is a type of number
+  reauth_period = var.reauth_period
+  # tx_period - (optional) is a type of number
+  tx_period = var.tx_period
 }
 ```
 

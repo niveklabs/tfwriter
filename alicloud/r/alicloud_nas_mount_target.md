@@ -95,15 +95,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_nas_mount_target" "this" {
+  # access_group_name - (optional) is a type of string
   access_group_name = var.access_group_name
-  file_system_id    = var.file_system_id
+  # file_system_id - (required) is a type of string
+  file_system_id = var.file_system_id
+  # security_group_id - (optional) is a type of string
   security_group_id = var.security_group_id
-  status            = var.status
-  vswitch_id        = var.vswitch_id
+  # status - (optional) is a type of string
+  status = var.status
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

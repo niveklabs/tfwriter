@@ -117,16 +117,26 @@ variable "vlan_id" {
 
 ```terraform
 resource "triton_fabric" "this" {
-  description        = var.description
-  gateway            = var.gateway
-  internet_nat       = var.internet_nat
-  name               = var.name
-  provision_end_ip   = var.provision_end_ip
+  # description - (optional) is a type of string
+  description = var.description
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # internet_nat - (optional) is a type of bool
+  internet_nat = var.internet_nat
+  # name - (required) is a type of string
+  name = var.name
+  # provision_end_ip - (required) is a type of string
+  provision_end_ip = var.provision_end_ip
+  # provision_start_ip - (required) is a type of string
   provision_start_ip = var.provision_start_ip
-  resolvers          = var.resolvers
-  routes             = var.routes
-  subnet             = var.subnet
-  vlan_id            = var.vlan_id
+  # resolvers - (optional) is a type of list of string
+  resolvers = var.resolvers
+  # routes - (optional) is a type of map of string
+  routes = var.routes
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # vlan_id - (required) is a type of number
+  vlan_id = var.vlan_id
 }
 ```
 

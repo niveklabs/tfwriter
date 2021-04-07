@@ -57,8 +57,10 @@ variable "db_cluster_id" {
 
 ```terraform
 resource "alicloud_adb_connection" "this" {
+  # connection_prefix - (optional) is a type of string
   connection_prefix = var.connection_prefix
-  db_cluster_id     = var.db_cluster_id
+  # db_cluster_id - (required) is a type of string
+  db_cluster_id = var.db_cluster_id
 }
 ```
 

@@ -114,17 +114,25 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cs_kubernetes_autoscaler" "this" {
-  cluster_id              = var.cluster_id
-  cool_down_duration      = var.cool_down_duration
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # cool_down_duration - (required) is a type of string
+  cool_down_duration = var.cool_down_duration
+  # defer_scale_in_duration - (required) is a type of string
   defer_scale_in_duration = var.defer_scale_in_duration
-  use_ecs_ram_role_token  = var.use_ecs_ram_role_token
-  utilization             = var.utilization
+  # use_ecs_ram_role_token - (optional) is a type of bool
+  use_ecs_ram_role_token = var.use_ecs_ram_role_token
+  # utilization - (required) is a type of string
+  utilization = var.utilization
 
   dynamic "nodepools" {
     for_each = var.nodepools
     content {
-      id     = nodepools.value["id"]
+      # id - (optional) is a type of string
+      id = nodepools.value["id"]
+      # labels - (optional) is a type of string
       labels = nodepools.value["labels"]
+      # taints - (optional) is a type of string
       taints = nodepools.value["taints"]
     }
   }
@@ -132,8 +140,11 @@ resource "alicloud_cs_kubernetes_autoscaler" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

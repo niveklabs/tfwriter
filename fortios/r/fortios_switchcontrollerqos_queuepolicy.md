@@ -101,23 +101,36 @@ variable "cos_queue" {
 
 ```terraform
 resource "fortios_switchcontrollerqos_queuepolicy" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  rate_by               = var.rate_by
-  schedule              = var.schedule
+  # name - (required) is a type of string
+  name = var.name
+  # rate_by - (required) is a type of string
+  rate_by = var.rate_by
+  # schedule - (required) is a type of string
+  schedule = var.schedule
 
   dynamic "cos_queue" {
     for_each = var.cos_queue
     content {
-      description      = cos_queue.value["description"]
-      drop_policy      = cos_queue.value["drop_policy"]
-      ecn              = cos_queue.value["ecn"]
-      max_rate         = cos_queue.value["max_rate"]
+      # description - (optional) is a type of string
+      description = cos_queue.value["description"]
+      # drop_policy - (optional) is a type of string
+      drop_policy = cos_queue.value["drop_policy"]
+      # ecn - (optional) is a type of string
+      ecn = cos_queue.value["ecn"]
+      # max_rate - (optional) is a type of number
+      max_rate = cos_queue.value["max_rate"]
+      # max_rate_percent - (optional) is a type of number
       max_rate_percent = cos_queue.value["max_rate_percent"]
-      min_rate         = cos_queue.value["min_rate"]
+      # min_rate - (optional) is a type of number
+      min_rate = cos_queue.value["min_rate"]
+      # min_rate_percent - (optional) is a type of number
       min_rate_percent = cos_queue.value["min_rate_percent"]
-      name             = cos_queue.value["name"]
-      weight           = cos_queue.value["weight"]
+      # name - (optional) is a type of string
+      name = cos_queue.value["name"]
+      # weight - (optional) is a type of number
+      weight = cos_queue.value["weight"]
     }
   }
 

@@ -56,8 +56,10 @@ variable "instance_id" {
 
 ```terraform
 resource "alicloud_cen_bandwidth_package_attachment" "this" {
+  # bandwidth_package_id - (required) is a type of string
   bandwidth_package_id = var.bandwidth_package_id
-  instance_id          = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
 }
 ```
 

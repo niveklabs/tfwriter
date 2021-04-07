@@ -152,24 +152,38 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_nat_rule" "this" {
-  action                    = var.action
-  description               = var.description
-  display_name              = var.display_name
-  enabled                   = var.enabled
-  logging                   = var.logging
-  logical_router_id         = var.logical_router_id
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # logging - (optional) is a type of bool
+  logging = var.logging
+  # logical_router_id - (required) is a type of string
+  logical_router_id = var.logical_router_id
+  # match_destination_network - (optional) is a type of string
   match_destination_network = var.match_destination_network
-  match_source_network      = var.match_source_network
-  nat_pass                  = var.nat_pass
-  rule_priority             = var.rule_priority
-  translated_network        = var.translated_network
-  translated_ports          = var.translated_ports
+  # match_source_network - (optional) is a type of string
+  match_source_network = var.match_source_network
+  # nat_pass - (optional) is a type of bool
+  nat_pass = var.nat_pass
+  # rule_priority - (optional) is a type of number
+  rule_priority = var.rule_priority
+  # translated_network - (optional) is a type of string
+  translated_network = var.translated_network
+  # translated_ports - (optional) is a type of string
+  translated_ports = var.translated_ports
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

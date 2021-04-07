@@ -63,9 +63,12 @@ variable "version" {
 
 ```terraform
 data "akamai_appsec_hostname_coverage_match_targets" "this" {
+  # config_id - (required) is a type of number
   config_id = var.config_id
-  hostname  = var.hostname
-  version   = var.version
+  # hostname - (required) is a type of string
+  hostname = var.hostname
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

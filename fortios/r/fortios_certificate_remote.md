@@ -73,9 +73,13 @@ variable "source" {
 
 ```terraform
 resource "fortios_certificate_remote" "this" {
-  name   = var.name
-  range  = var.range
+  # name - (optional) is a type of string
+  name = var.name
+  # range - (optional) is a type of string
+  range = var.range
+  # remote - (optional) is a type of string
   remote = var.remote
+  # source - (optional) is a type of string
   source = var.source
 }
 ```

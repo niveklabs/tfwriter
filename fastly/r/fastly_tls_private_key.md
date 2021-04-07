@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "fastly_tls_private_key" "this" {
+  # key_pem - (required) is a type of string
   key_pem = var.key_pem
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -135,17 +135,29 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_panorama_static_route_ipv4" "this" {
+  # admin_distance - (optional) is a type of number
   admin_distance = var.admin_distance
-  bfd_profile    = var.bfd_profile
-  destination    = var.destination
-  interface      = var.interface
-  metric         = var.metric
-  name           = var.name
-  next_hop       = var.next_hop
-  route_table    = var.route_table
-  template       = var.template
+  # bfd_profile - (optional) is a type of string
+  bfd_profile = var.bfd_profile
+  # destination - (required) is a type of string
+  destination = var.destination
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # metric - (optional) is a type of number
+  metric = var.metric
+  # name - (required) is a type of string
+  name = var.name
+  # next_hop - (optional) is a type of string
+  next_hop = var.next_hop
+  # route_table - (optional) is a type of string
+  route_table = var.route_table
+  # template - (optional) is a type of string
+  template = var.template
+  # template_stack - (optional) is a type of string
   template_stack = var.template_stack
-  type           = var.type
+  # type - (optional) is a type of string
+  type = var.type
+  # virtual_router - (required) is a type of string
   virtual_router = var.virtual_router
 }
 ```

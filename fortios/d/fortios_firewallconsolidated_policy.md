@@ -49,6 +49,7 @@ variable "policyid" {
 
 ```terraform
 data "fortios_firewallconsolidated_policy" "this" {
+  # policyid - (required) is a type of number
   policyid = var.policyid
 }
 ```

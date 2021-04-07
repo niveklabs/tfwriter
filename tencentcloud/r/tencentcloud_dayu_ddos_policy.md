@@ -205,63 +205,105 @@ variable "watermark_filters" {
 
 ```terraform
 resource "tencentcloud_dayu_ddos_policy" "this" {
-  black_ips     = var.black_ips
-  name          = var.name
+  # black_ips - (optional) is a type of set of string
+  black_ips = var.black_ips
+  # name - (required) is a type of string
+  name = var.name
+  # resource_type - (required) is a type of string
   resource_type = var.resource_type
-  white_ips     = var.white_ips
+  # white_ips - (optional) is a type of set of string
+  white_ips = var.white_ips
 
   dynamic "drop_options" {
     for_each = var.drop_options
     content {
+      # bad_conn_threshold - (required) is a type of number
       bad_conn_threshold = drop_options.value["bad_conn_threshold"]
-      check_sync_conn    = drop_options.value["check_sync_conn"]
-      conn_timeout       = drop_options.value["conn_timeout"]
-      d_conn_limit       = drop_options.value["d_conn_limit"]
-      d_new_limit        = drop_options.value["d_new_limit"]
-      drop_abroad        = drop_options.value["drop_abroad"]
-      drop_icmp          = drop_options.value["drop_icmp"]
-      drop_other         = drop_options.value["drop_other"]
-      drop_tcp           = drop_options.value["drop_tcp"]
-      drop_udp           = drop_options.value["drop_udp"]
-      icmp_mbps_limit    = drop_options.value["icmp_mbps_limit"]
-      null_conn_enable   = drop_options.value["null_conn_enable"]
-      other_mbps_limit   = drop_options.value["other_mbps_limit"]
-      s_conn_limit       = drop_options.value["s_conn_limit"]
-      s_new_limit        = drop_options.value["s_new_limit"]
-      syn_limit          = drop_options.value["syn_limit"]
-      syn_rate           = drop_options.value["syn_rate"]
-      tcp_mbps_limit     = drop_options.value["tcp_mbps_limit"]
-      udp_mbps_limit     = drop_options.value["udp_mbps_limit"]
+      # check_sync_conn - (required) is a type of bool
+      check_sync_conn = drop_options.value["check_sync_conn"]
+      # conn_timeout - (required) is a type of number
+      conn_timeout = drop_options.value["conn_timeout"]
+      # d_conn_limit - (required) is a type of number
+      d_conn_limit = drop_options.value["d_conn_limit"]
+      # d_new_limit - (required) is a type of number
+      d_new_limit = drop_options.value["d_new_limit"]
+      # drop_abroad - (required) is a type of bool
+      drop_abroad = drop_options.value["drop_abroad"]
+      # drop_icmp - (required) is a type of bool
+      drop_icmp = drop_options.value["drop_icmp"]
+      # drop_other - (required) is a type of bool
+      drop_other = drop_options.value["drop_other"]
+      # drop_tcp - (required) is a type of bool
+      drop_tcp = drop_options.value["drop_tcp"]
+      # drop_udp - (required) is a type of bool
+      drop_udp = drop_options.value["drop_udp"]
+      # icmp_mbps_limit - (required) is a type of number
+      icmp_mbps_limit = drop_options.value["icmp_mbps_limit"]
+      # null_conn_enable - (required) is a type of bool
+      null_conn_enable = drop_options.value["null_conn_enable"]
+      # other_mbps_limit - (required) is a type of number
+      other_mbps_limit = drop_options.value["other_mbps_limit"]
+      # s_conn_limit - (required) is a type of number
+      s_conn_limit = drop_options.value["s_conn_limit"]
+      # s_new_limit - (required) is a type of number
+      s_new_limit = drop_options.value["s_new_limit"]
+      # syn_limit - (required) is a type of number
+      syn_limit = drop_options.value["syn_limit"]
+      # syn_rate - (optional) is a type of number
+      syn_rate = drop_options.value["syn_rate"]
+      # tcp_mbps_limit - (required) is a type of number
+      tcp_mbps_limit = drop_options.value["tcp_mbps_limit"]
+      # udp_mbps_limit - (required) is a type of number
+      udp_mbps_limit = drop_options.value["udp_mbps_limit"]
     }
   }
 
   dynamic "packet_filters" {
     for_each = var.packet_filters
     content {
-      action         = packet_filters.value["action"]
-      d_end_port     = packet_filters.value["d_end_port"]
-      d_start_port   = packet_filters.value["d_start_port"]
-      depth          = packet_filters.value["depth"]
-      is_include     = packet_filters.value["is_include"]
-      match_begin    = packet_filters.value["match_begin"]
-      match_str      = packet_filters.value["match_str"]
-      match_type     = packet_filters.value["match_type"]
-      offset         = packet_filters.value["offset"]
+      # action - (optional) is a type of string
+      action = packet_filters.value["action"]
+      # d_end_port - (optional) is a type of number
+      d_end_port = packet_filters.value["d_end_port"]
+      # d_start_port - (optional) is a type of number
+      d_start_port = packet_filters.value["d_start_port"]
+      # depth - (optional) is a type of number
+      depth = packet_filters.value["depth"]
+      # is_include - (optional) is a type of bool
+      is_include = packet_filters.value["is_include"]
+      # match_begin - (optional) is a type of string
+      match_begin = packet_filters.value["match_begin"]
+      # match_str - (optional) is a type of string
+      match_str = packet_filters.value["match_str"]
+      # match_type - (optional) is a type of string
+      match_type = packet_filters.value["match_type"]
+      # offset - (optional) is a type of number
+      offset = packet_filters.value["offset"]
+      # pkt_length_max - (optional) is a type of number
       pkt_length_max = packet_filters.value["pkt_length_max"]
+      # pkt_length_min - (optional) is a type of number
       pkt_length_min = packet_filters.value["pkt_length_min"]
-      protocol       = packet_filters.value["protocol"]
-      s_end_port     = packet_filters.value["s_end_port"]
-      s_start_port   = packet_filters.value["s_start_port"]
+      # protocol - (optional) is a type of string
+      protocol = packet_filters.value["protocol"]
+      # s_end_port - (optional) is a type of number
+      s_end_port = packet_filters.value["s_end_port"]
+      # s_start_port - (optional) is a type of number
+      s_start_port = packet_filters.value["s_start_port"]
     }
   }
 
   dynamic "port_filters" {
     for_each = var.port_filters
     content {
-      action     = port_filters.value["action"]
-      end_port   = port_filters.value["end_port"]
-      kind       = port_filters.value["kind"]
-      protocol   = port_filters.value["protocol"]
+      # action - (optional) is a type of string
+      action = port_filters.value["action"]
+      # end_port - (optional) is a type of number
+      end_port = port_filters.value["end_port"]
+      # kind - (optional) is a type of number
+      kind = port_filters.value["kind"]
+      # protocol - (optional) is a type of string
+      protocol = port_filters.value["protocol"]
+      # start_port - (optional) is a type of number
       start_port = port_filters.value["start_port"]
     }
   }
@@ -269,10 +311,15 @@ resource "tencentcloud_dayu_ddos_policy" "this" {
   dynamic "watermark_filters" {
     for_each = var.watermark_filters
     content {
-      auto_remove   = watermark_filters.value["auto_remove"]
-      offset        = watermark_filters.value["offset"]
-      open_switch   = watermark_filters.value["open_switch"]
+      # auto_remove - (optional) is a type of bool
+      auto_remove = watermark_filters.value["auto_remove"]
+      # offset - (optional) is a type of number
+      offset = watermark_filters.value["offset"]
+      # open_switch - (optional) is a type of bool
+      open_switch = watermark_filters.value["open_switch"]
+      # tcp_port_list - (optional) is a type of list of string
       tcp_port_list = watermark_filters.value["tcp_port_list"]
+      # udp_port_list - (optional) is a type of list of string
       udp_port_list = watermark_filters.value["udp_port_list"]
     }
   }

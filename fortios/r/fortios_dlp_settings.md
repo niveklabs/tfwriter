@@ -82,11 +82,16 @@ variable "storage_device" {
 
 ```terraform
 resource "fortios_dlp_settings" "this" {
+  # cache_mem_percent - (optional) is a type of number
   cache_mem_percent = var.cache_mem_percent
-  chunk_size        = var.chunk_size
-  db_mode           = var.db_mode
-  size              = var.size
-  storage_device    = var.storage_device
+  # chunk_size - (optional) is a type of number
+  chunk_size = var.chunk_size
+  # db_mode - (optional) is a type of string
+  db_mode = var.db_mode
+  # size - (optional) is a type of number
+  size = var.size
+  # storage_device - (optional) is a type of string
+  storage_device = var.storage_device
 }
 ```
 

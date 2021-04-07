@@ -121,20 +121,31 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_certificate" "this" {
-  annotations  = var.annotations
-  certs        = var.certs
-  description  = var.description
-  key          = var.key
-  labels       = var.labels
-  name         = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # certs - (required) is a type of string
+  certs = var.certs
+  # description - (optional) is a type of string
+  description = var.description
+  # key - (required) is a type of string
+  key = var.key
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace_id - (optional) is a type of string
   namespace_id = var.namespace_id
-  project_id   = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 data "newrelic_alert_policy" "this" {
-  account_id          = var.account_id
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # incident_preference - (optional) is a type of string
   incident_preference = var.incident_preference
-  name                = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

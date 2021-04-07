@@ -84,14 +84,19 @@ variable "timeouts" {
 
 ```terraform
 resource "cloudflare_authenticated_origin_pulls_certificate" "this" {
+  # certificate - (required) is a type of string
   certificate = var.certificate
+  # private_key - (required) is a type of string
   private_key = var.private_key
-  type        = var.type
-  zone_id     = var.zone_id
+  # type - (required) is a type of string
+  type = var.type
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

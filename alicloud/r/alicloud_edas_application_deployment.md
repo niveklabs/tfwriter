@@ -71,10 +71,14 @@ variable "war_url" {
 
 ```terraform
 resource "alicloud_edas_application_deployment" "this" {
-  app_id          = var.app_id
-  group_id        = var.group_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # package_version - (optional) is a type of string
   package_version = var.package_version
-  war_url         = var.war_url
+  # war_url - (required) is a type of string
+  war_url = var.war_url
 }
 ```
 

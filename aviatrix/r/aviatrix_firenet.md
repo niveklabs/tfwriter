@@ -117,24 +117,38 @@ variable "firewall_instance_association" {
 
 ```terraform
 resource "aviatrix_firenet" "this" {
-  egress_enabled                       = var.egress_enabled
-  hashing_algorithm                    = var.hashing_algorithm
-  inspection_enabled                   = var.inspection_enabled
+  # egress_enabled - (optional) is a type of bool
+  egress_enabled = var.egress_enabled
+  # hashing_algorithm - (optional) is a type of string
+  hashing_algorithm = var.hashing_algorithm
+  # inspection_enabled - (optional) is a type of bool
+  inspection_enabled = var.inspection_enabled
+  # keep_alive_via_lan_interface_enabled - (optional) is a type of bool
   keep_alive_via_lan_interface_enabled = var.keep_alive_via_lan_interface_enabled
+  # manage_firewall_instance_association - (optional) is a type of bool
   manage_firewall_instance_association = var.manage_firewall_instance_association
-  vpc_id                               = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 
   dynamic "firewall_instance_association" {
     for_each = var.firewall_instance_association
     content {
-      attached             = firewall_instance_association.value["attached"]
-      egress_interface     = firewall_instance_association.value["egress_interface"]
-      firenet_gw_name      = firewall_instance_association.value["firenet_gw_name"]
-      firewall_name        = firewall_instance_association.value["firewall_name"]
-      instance_id          = firewall_instance_association.value["instance_id"]
-      lan_interface        = firewall_instance_association.value["lan_interface"]
+      # attached - (optional) is a type of bool
+      attached = firewall_instance_association.value["attached"]
+      # egress_interface - (optional) is a type of string
+      egress_interface = firewall_instance_association.value["egress_interface"]
+      # firenet_gw_name - (required) is a type of string
+      firenet_gw_name = firewall_instance_association.value["firenet_gw_name"]
+      # firewall_name - (optional) is a type of string
+      firewall_name = firewall_instance_association.value["firewall_name"]
+      # instance_id - (required) is a type of string
+      instance_id = firewall_instance_association.value["instance_id"]
+      # lan_interface - (optional) is a type of string
+      lan_interface = firewall_instance_association.value["lan_interface"]
+      # management_interface - (optional) is a type of string
       management_interface = firewall_instance_association.value["management_interface"]
-      vendor_type          = firewall_instance_association.value["vendor_type"]
+      # vendor_type - (optional) is a type of string
+      vendor_type = firewall_instance_association.value["vendor_type"]
     }
   }
 

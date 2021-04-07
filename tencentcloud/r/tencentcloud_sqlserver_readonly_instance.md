@@ -141,19 +141,32 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_sqlserver_readonly_instance" "this" {
-  availability_zone   = var.availability_zone
-  charge_type         = var.charge_type
-  force_upgrade       = var.force_upgrade
-  master_instance_id  = var.master_instance_id
-  memory              = var.memory
-  name                = var.name
-  readonly_group_id   = var.readonly_group_id
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # force_upgrade - (optional) is a type of bool
+  force_upgrade = var.force_upgrade
+  # master_instance_id - (required) is a type of string
+  master_instance_id = var.master_instance_id
+  # memory - (required) is a type of number
+  memory = var.memory
+  # name - (required) is a type of string
+  name = var.name
+  # readonly_group_id - (optional) is a type of string
+  readonly_group_id = var.readonly_group_id
+  # readonly_group_type - (required) is a type of number
   readonly_group_type = var.readonly_group_type
-  security_groups     = var.security_groups
-  storage             = var.storage
-  subnet_id           = var.subnet_id
-  tags                = var.tags
-  vpc_id              = var.vpc_id
+  # security_groups - (optional) is a type of set of string
+  security_groups = var.security_groups
+  # storage - (required) is a type of number
+  storage = var.storage
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

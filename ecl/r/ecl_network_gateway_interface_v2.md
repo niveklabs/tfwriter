@@ -197,30 +197,51 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_gateway_interface_v2" "this" {
-  aws_gw_id      = var.aws_gw_id
-  azure_gw_id    = var.azure_gw_id
-  description    = var.description
-  fic_gw_id      = var.fic_gw_id
-  gcp_gw_id      = var.gcp_gw_id
-  gw_vipv4       = var.gw_vipv4
-  interdc_gw_id  = var.interdc_gw_id
+  # aws_gw_id - (optional) is a type of string
+  aws_gw_id = var.aws_gw_id
+  # azure_gw_id - (optional) is a type of string
+  azure_gw_id = var.azure_gw_id
+  # description - (optional) is a type of string
+  description = var.description
+  # fic_gw_id - (optional) is a type of string
+  fic_gw_id = var.fic_gw_id
+  # gcp_gw_id - (optional) is a type of string
+  gcp_gw_id = var.gcp_gw_id
+  # gw_vipv4 - (required) is a type of string
+  gw_vipv4 = var.gw_vipv4
+  # interdc_gw_id - (optional) is a type of string
+  interdc_gw_id = var.interdc_gw_id
+  # internet_gw_id - (optional) is a type of string
   internet_gw_id = var.internet_gw_id
-  name           = var.name
-  netmask        = var.netmask
-  network_id     = var.network_id
-  primary_ipv4   = var.primary_ipv4
-  region         = var.region
+  # name - (optional) is a type of string
+  name = var.name
+  # netmask - (required) is a type of number
+  netmask = var.netmask
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # primary_ipv4 - (required) is a type of string
+  primary_ipv4 = var.primary_ipv4
+  # region - (optional) is a type of string
+  region = var.region
+  # secondary_ipv4 - (required) is a type of string
   secondary_ipv4 = var.secondary_ipv4
-  service_type   = var.service_type
-  tenant_id      = var.tenant_id
-  vpn_gw_id      = var.vpn_gw_id
-  vrid           = var.vrid
+  # service_type - (required) is a type of string
+  service_type = var.service_type
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # vpn_gw_id - (optional) is a type of string
+  vpn_gw_id = var.vpn_gw_id
+  # vrid - (required) is a type of number
+  vrid = var.vrid
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

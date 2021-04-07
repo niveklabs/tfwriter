@@ -73,13 +73,17 @@ variable "switch_binding" {
 
 ```terraform
 resource "fortios_switchcontrollerautoconfig_custom" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "switch_binding" {
     for_each = var.switch_binding
     content {
-      policy    = switch_binding.value["policy"]
+      # policy - (optional) is a type of string
+      policy = switch_binding.value["policy"]
+      # switch_id - (optional) is a type of string
       switch_id = switch_binding.value["switch_id"]
     }
   }

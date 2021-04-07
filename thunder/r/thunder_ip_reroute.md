@@ -78,19 +78,28 @@ variable "suppress_protocols" {
 
 ```terraform
 resource "thunder_ip_reroute" "this" {
+  # uuid - (optional) is a type of string
   uuid = var.uuid
 
   dynamic "suppress_protocols" {
     for_each = var.suppress_protocols
     content {
+      # connected - (optional) is a type of number
       connected = suppress_protocols.value["connected"]
-      ebgp      = suppress_protocols.value["ebgp"]
-      ibgp      = suppress_protocols.value["ibgp"]
-      isis      = suppress_protocols.value["isis"]
-      ospf      = suppress_protocols.value["ospf"]
-      rip       = suppress_protocols.value["rip"]
-      static    = suppress_protocols.value["static"]
-      uuid      = suppress_protocols.value["uuid"]
+      # ebgp - (optional) is a type of number
+      ebgp = suppress_protocols.value["ebgp"]
+      # ibgp - (optional) is a type of number
+      ibgp = suppress_protocols.value["ibgp"]
+      # isis - (optional) is a type of number
+      isis = suppress_protocols.value["isis"]
+      # ospf - (optional) is a type of number
+      ospf = suppress_protocols.value["ospf"]
+      # rip - (optional) is a type of number
+      rip = suppress_protocols.value["rip"]
+      # static - (optional) is a type of number
+      static = suppress_protocols.value["static"]
+      # uuid - (optional) is a type of string
+      uuid = suppress_protocols.value["uuid"]
     }
   }
 

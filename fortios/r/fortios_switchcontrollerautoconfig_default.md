@@ -66,8 +66,11 @@ variable "isl_policy" {
 
 ```terraform
 resource "fortios_switchcontrollerautoconfig_default" "this" {
+  # fgt_policy - (optional) is a type of string
   fgt_policy = var.fgt_policy
+  # icl_policy - (optional) is a type of string
   icl_policy = var.icl_policy
+  # isl_policy - (optional) is a type of string
   isl_policy = var.isl_policy
 }
 ```

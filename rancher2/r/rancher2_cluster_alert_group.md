@@ -142,29 +142,43 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_cluster_alert_group" "this" {
-  annotations             = var.annotations
-  cluster_id              = var.cluster_id
-  description             = var.description
-  group_interval_seconds  = var.group_interval_seconds
-  group_wait_seconds      = var.group_wait_seconds
-  labels                  = var.labels
-  name                    = var.name
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
+  description = var.description
+  # group_interval_seconds - (optional) is a type of number
+  group_interval_seconds = var.group_interval_seconds
+  # group_wait_seconds - (optional) is a type of number
+  group_wait_seconds = var.group_wait_seconds
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # repeat_interval_seconds - (optional) is a type of number
   repeat_interval_seconds = var.repeat_interval_seconds
 
   dynamic "recipients" {
     for_each = var.recipients
     content {
+      # default_recipient - (optional) is a type of bool
       default_recipient = recipients.value["default_recipient"]
-      notifier_id       = recipients.value["notifier_id"]
-      recipient         = recipients.value["recipient"]
+      # notifier_id - (required) is a type of string
+      notifier_id = recipients.value["notifier_id"]
+      # recipient - (optional) is a type of string
+      recipient = recipients.value["recipient"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

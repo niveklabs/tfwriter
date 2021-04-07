@@ -97,21 +97,32 @@ variable "customization" {
 
 ```terraform
 resource "ovh_me_installation_template" "this" {
-  base_template_name               = var.base_template_name
-  default_language                 = var.default_language
+  # base_template_name - (required) is a type of string
+  base_template_name = var.base_template_name
+  # default_language - (required) is a type of string
+  default_language = var.default_language
+  # remove_default_partition_schemes - (optional) is a type of bool
   remove_default_partition_schemes = var.remove_default_partition_schemes
-  template_name                    = var.template_name
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 
   dynamic "customization" {
     for_each = var.customization
     content {
-      change_log                      = customization.value["change_log"]
-      custom_hostname                 = customization.value["custom_hostname"]
-      post_installation_script_link   = customization.value["post_installation_script_link"]
+      # change_log - (optional) is a type of string
+      change_log = customization.value["change_log"]
+      # custom_hostname - (optional) is a type of string
+      custom_hostname = customization.value["custom_hostname"]
+      # post_installation_script_link - (optional) is a type of string
+      post_installation_script_link = customization.value["post_installation_script_link"]
+      # post_installation_script_return - (optional) is a type of string
       post_installation_script_return = customization.value["post_installation_script_return"]
-      rating                          = customization.value["rating"]
-      ssh_key_name                    = customization.value["ssh_key_name"]
-      use_distribution_kernel         = customization.value["use_distribution_kernel"]
+      # rating - (optional) is a type of number
+      rating = customization.value["rating"]
+      # ssh_key_name - (optional) is a type of string
+      ssh_key_name = customization.value["ssh_key_name"]
+      # use_distribution_kernel - (optional) is a type of bool
+      use_distribution_kernel = customization.value["use_distribution_kernel"]
     }
   }
 

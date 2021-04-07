@@ -92,13 +92,20 @@ variable "type" {
 
 ```terraform
 resource "alicloud_sag_dnat_entry" "this" {
-  external_ip   = var.external_ip
+  # external_ip - (optional) is a type of string
+  external_ip = var.external_ip
+  # external_port - (required) is a type of string
   external_port = var.external_port
-  internal_ip   = var.internal_ip
+  # internal_ip - (required) is a type of string
+  internal_ip = var.internal_ip
+  # internal_port - (required) is a type of string
   internal_port = var.internal_port
-  ip_protocol   = var.ip_protocol
-  sag_id        = var.sag_id
-  type          = var.type
+  # ip_protocol - (required) is a type of string
+  ip_protocol = var.ip_protocol
+  # sag_id - (required) is a type of string
+  sag_id = var.sag_id
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

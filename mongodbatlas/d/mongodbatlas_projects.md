@@ -58,8 +58,10 @@ variable "page_num" {
 
 ```terraform
 data "mongodbatlas_projects" "this" {
+  # items_per_page - (optional) is a type of number
   items_per_page = var.items_per_page
-  page_num       = var.page_num
+  # page_num - (optional) is a type of number
+  page_num = var.page_num
 }
 ```
 

@@ -112,15 +112,24 @@ variable "template" {
 
 ```terraform
 resource "aviatrix_remote_syslog" "this" {
-  ca_certificate_file     = var.ca_certificate_file
-  excluded_gateways       = var.excluded_gateways
-  index                   = var.index
-  port                    = var.port
-  private_key_file        = var.private_key_file
-  protocol                = var.protocol
+  # ca_certificate_file - (optional) is a type of string
+  ca_certificate_file = var.ca_certificate_file
+  # excluded_gateways - (optional) is a type of set of string
+  excluded_gateways = var.excluded_gateways
+  # index - (optional) is a type of number
+  index = var.index
+  # port - (required) is a type of number
+  port = var.port
+  # private_key_file - (optional) is a type of string
+  private_key_file = var.private_key_file
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # public_certificate_file - (optional) is a type of string
   public_certificate_file = var.public_certificate_file
-  server                  = var.server
-  template                = var.template
+  # server - (required) is a type of string
+  server = var.server
+  # template - (optional) is a type of string
+  template = var.template
 }
 ```
 

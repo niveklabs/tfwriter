@@ -95,13 +95,20 @@ variable "variable_type" {
 
 ```terraform
 resource "gitlab_project_variable" "this" {
+  # environment_scope - (optional) is a type of string
   environment_scope = var.environment_scope
-  key               = var.key
-  masked            = var.masked
-  project           = var.project
-  protected         = var.protected
-  value             = var.value
-  variable_type     = var.variable_type
+  # key - (required) is a type of string
+  key = var.key
+  # masked - (optional) is a type of bool
+  masked = var.masked
+  # project - (required) is a type of string
+  project = var.project
+  # protected - (optional) is a type of bool
+  protected = var.protected
+  # value - (required) is a type of string
+  value = var.value
+  # variable_type - (optional) is a type of string
+  variable_type = var.variable_type
 }
 ```
 

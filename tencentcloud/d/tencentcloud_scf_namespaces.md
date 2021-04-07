@@ -66,8 +66,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_scf_namespaces" "this" {
-  description        = var.description
-  namespace          = var.namespace
+  # description - (optional) is a type of string
+  description = var.description
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

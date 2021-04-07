@@ -49,6 +49,7 @@ variable "ip" {
 
 ```terraform
 data "fortios_routerbgp_neighbor" "this" {
+  # ip - (required) is a type of string
   ip = var.ip
 }
 ```

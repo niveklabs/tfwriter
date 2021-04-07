@@ -104,14 +104,22 @@ variable "uid" {
 
 ```terraform
 resource "grafana_alert_notification" "this" {
+  # disable_resolve_message - (optional) is a type of bool
   disable_resolve_message = var.disable_resolve_message
-  frequency               = var.frequency
-  is_default              = var.is_default
-  name                    = var.name
-  send_reminder           = var.send_reminder
-  settings                = var.settings
-  type                    = var.type
-  uid                     = var.uid
+  # frequency - (optional) is a type of string
+  frequency = var.frequency
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # name - (required) is a type of string
+  name = var.name
+  # send_reminder - (optional) is a type of bool
+  send_reminder = var.send_reminder
+  # settings - (optional) is a type of map of string
+  settings = var.settings
+  # type - (required) is a type of string
+  type = var.type
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

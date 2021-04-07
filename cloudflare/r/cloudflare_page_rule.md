@@ -241,47 +241,84 @@ variable "actions" {
 
 ```terraform
 resource "cloudflare_page_rule" "this" {
+  # priority - (optional) is a type of number
   priority = var.priority
-  status   = var.status
-  target   = var.target
-  zone_id  = var.zone_id
+  # status - (optional) is a type of string
+  status = var.status
+  # target - (required) is a type of string
+  target = var.target
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "actions" {
     for_each = var.actions
     content {
-      always_online               = actions.value["always_online"]
-      always_use_https            = actions.value["always_use_https"]
-      automatic_https_rewrites    = actions.value["automatic_https_rewrites"]
-      browser_cache_ttl           = actions.value["browser_cache_ttl"]
-      browser_check               = actions.value["browser_check"]
-      bypass_cache_on_cookie      = actions.value["bypass_cache_on_cookie"]
-      cache_by_device_type        = actions.value["cache_by_device_type"]
-      cache_deception_armor       = actions.value["cache_deception_armor"]
-      cache_level                 = actions.value["cache_level"]
-      cache_on_cookie             = actions.value["cache_on_cookie"]
-      disable_apps                = actions.value["disable_apps"]
-      disable_performance         = actions.value["disable_performance"]
-      disable_railgun             = actions.value["disable_railgun"]
-      disable_security            = actions.value["disable_security"]
-      edge_cache_ttl              = actions.value["edge_cache_ttl"]
-      email_obfuscation           = actions.value["email_obfuscation"]
-      explicit_cache_control      = actions.value["explicit_cache_control"]
-      host_header_override        = actions.value["host_header_override"]
-      ip_geolocation              = actions.value["ip_geolocation"]
-      mirage                      = actions.value["mirage"]
-      opportunistic_encryption    = actions.value["opportunistic_encryption"]
+      # always_online - (optional) is a type of string
+      always_online = actions.value["always_online"]
+      # always_use_https - (optional) is a type of bool
+      always_use_https = actions.value["always_use_https"]
+      # automatic_https_rewrites - (optional) is a type of string
+      automatic_https_rewrites = actions.value["automatic_https_rewrites"]
+      # browser_cache_ttl - (optional) is a type of string
+      browser_cache_ttl = actions.value["browser_cache_ttl"]
+      # browser_check - (optional) is a type of string
+      browser_check = actions.value["browser_check"]
+      # bypass_cache_on_cookie - (optional) is a type of string
+      bypass_cache_on_cookie = actions.value["bypass_cache_on_cookie"]
+      # cache_by_device_type - (optional) is a type of string
+      cache_by_device_type = actions.value["cache_by_device_type"]
+      # cache_deception_armor - (optional) is a type of string
+      cache_deception_armor = actions.value["cache_deception_armor"]
+      # cache_level - (optional) is a type of string
+      cache_level = actions.value["cache_level"]
+      # cache_on_cookie - (optional) is a type of string
+      cache_on_cookie = actions.value["cache_on_cookie"]
+      # disable_apps - (optional) is a type of bool
+      disable_apps = actions.value["disable_apps"]
+      # disable_performance - (optional) is a type of bool
+      disable_performance = actions.value["disable_performance"]
+      # disable_railgun - (optional) is a type of bool
+      disable_railgun = actions.value["disable_railgun"]
+      # disable_security - (optional) is a type of bool
+      disable_security = actions.value["disable_security"]
+      # edge_cache_ttl - (optional) is a type of number
+      edge_cache_ttl = actions.value["edge_cache_ttl"]
+      # email_obfuscation - (optional) is a type of string
+      email_obfuscation = actions.value["email_obfuscation"]
+      # explicit_cache_control - (optional) is a type of string
+      explicit_cache_control = actions.value["explicit_cache_control"]
+      # host_header_override - (optional) is a type of string
+      host_header_override = actions.value["host_header_override"]
+      # ip_geolocation - (optional) is a type of string
+      ip_geolocation = actions.value["ip_geolocation"]
+      # mirage - (optional) is a type of string
+      mirage = actions.value["mirage"]
+      # opportunistic_encryption - (optional) is a type of string
+      opportunistic_encryption = actions.value["opportunistic_encryption"]
+      # origin_error_page_pass_thru - (optional) is a type of string
       origin_error_page_pass_thru = actions.value["origin_error_page_pass_thru"]
-      polish                      = actions.value["polish"]
-      resolve_override            = actions.value["resolve_override"]
-      respect_strong_etag         = actions.value["respect_strong_etag"]
-      response_buffering          = actions.value["response_buffering"]
-      rocket_loader               = actions.value["rocket_loader"]
-      security_level              = actions.value["security_level"]
-      server_side_exclude         = actions.value["server_side_exclude"]
+      # polish - (optional) is a type of string
+      polish = actions.value["polish"]
+      # resolve_override - (optional) is a type of string
+      resolve_override = actions.value["resolve_override"]
+      # respect_strong_etag - (optional) is a type of string
+      respect_strong_etag = actions.value["respect_strong_etag"]
+      # response_buffering - (optional) is a type of string
+      response_buffering = actions.value["response_buffering"]
+      # rocket_loader - (optional) is a type of string
+      rocket_loader = actions.value["rocket_loader"]
+      # security_level - (optional) is a type of string
+      security_level = actions.value["security_level"]
+      # server_side_exclude - (optional) is a type of string
+      server_side_exclude = actions.value["server_side_exclude"]
+      # sort_query_string_for_cache - (optional) is a type of string
       sort_query_string_for_cache = actions.value["sort_query_string_for_cache"]
-      ssl                         = actions.value["ssl"]
-      true_client_ip_header       = actions.value["true_client_ip_header"]
-      waf                         = actions.value["waf"]
+      # ssl - (optional) is a type of string
+      ssl = actions.value["ssl"]
+      # true_client_ip_header - (optional) is a type of string
+      true_client_ip_header = actions.value["true_client_ip_header"]
+      # waf - (optional) is a type of string
+      waf = actions.value["waf"]
 
       dynamic "cache_key_fields" {
         for_each = actions.value.cache_key_fields
@@ -290,23 +327,29 @@ resource "cloudflare_page_rule" "this" {
           dynamic "cookie" {
             for_each = cache_key_fields.value.cookie
             content {
+              # check_presence - (optional) is a type of set of string
               check_presence = cookie.value["check_presence"]
-              include        = cookie.value["include"]
+              # include - (optional) is a type of set of string
+              include = cookie.value["include"]
             }
           }
 
           dynamic "header" {
             for_each = cache_key_fields.value.header
             content {
+              # check_presence - (optional) is a type of set of string
               check_presence = header.value["check_presence"]
-              exclude        = header.value["exclude"]
-              include        = header.value["include"]
+              # exclude - (optional) is a type of set of string
+              exclude = header.value["exclude"]
+              # include - (optional) is a type of set of string
+              include = header.value["include"]
             }
           }
 
           dynamic "host" {
             for_each = cache_key_fields.value.host
             content {
+              # resolved - (optional) is a type of bool
               resolved = host.value["resolved"]
             }
           }
@@ -314,8 +357,11 @@ resource "cloudflare_page_rule" "this" {
           dynamic "query_string" {
             for_each = cache_key_fields.value.query_string
             content {
+              # exclude - (optional) is a type of set of string
               exclude = query_string.value["exclude"]
-              ignore  = query_string.value["ignore"]
+              # ignore - (optional) is a type of bool
+              ignore = query_string.value["ignore"]
+              # include - (optional) is a type of set of string
               include = query_string.value["include"]
             }
           }
@@ -323,9 +369,12 @@ resource "cloudflare_page_rule" "this" {
           dynamic "user" {
             for_each = cache_key_fields.value.user
             content {
+              # device_type - (optional) is a type of bool
               device_type = user.value["device_type"]
-              geo         = user.value["geo"]
-              lang        = user.value["lang"]
+              # geo - (optional) is a type of bool
+              geo = user.value["geo"]
+              # lang - (optional) is a type of bool
+              lang = user.value["lang"]
             }
           }
 
@@ -335,25 +384,32 @@ resource "cloudflare_page_rule" "this" {
       dynamic "cache_ttl_by_status" {
         for_each = actions.value.cache_ttl_by_status
         content {
+          # codes - (required) is a type of string
           codes = cache_ttl_by_status.value["codes"]
-          ttl   = cache_ttl_by_status.value["ttl"]
+          # ttl - (required) is a type of number
+          ttl = cache_ttl_by_status.value["ttl"]
         }
       }
 
       dynamic "forwarding_url" {
         for_each = actions.value.forwarding_url
         content {
+          # status_code - (required) is a type of number
           status_code = forwarding_url.value["status_code"]
-          url         = forwarding_url.value["url"]
+          # url - (required) is a type of string
+          url = forwarding_url.value["url"]
         }
       }
 
       dynamic "minify" {
         for_each = actions.value.minify
         content {
-          css  = minify.value["css"]
+          # css - (required) is a type of string
+          css = minify.value["css"]
+          # html - (required) is a type of string
           html = minify.value["html"]
-          js   = minify.value["js"]
+          # js - (required) is a type of string
+          js = minify.value["js"]
         }
       }
 

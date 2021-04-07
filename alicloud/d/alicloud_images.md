@@ -178,23 +178,40 @@ variable "usage" {
 
 ```terraform
 data "alicloud_images" "this" {
-  action_type             = var.action_type
-  architecture            = var.architecture
-  dry_run                 = var.dry_run
-  image_family            = var.image_family
-  instance_type           = var.instance_type
-  is_support_cloud_init   = var.is_support_cloud_init
+  # action_type - (optional) is a type of string
+  action_type = var.action_type
+  # architecture - (optional) is a type of string
+  architecture = var.architecture
+  # dry_run - (optional) is a type of bool
+  dry_run = var.dry_run
+  # image_family - (optional) is a type of string
+  image_family = var.image_family
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # is_support_cloud_init - (optional) is a type of bool
+  is_support_cloud_init = var.is_support_cloud_init
+  # is_support_io_optimized - (optional) is a type of bool
   is_support_io_optimized = var.is_support_io_optimized
-  most_recent             = var.most_recent
-  name_regex              = var.name_regex
-  os_type                 = var.os_type
-  output_file             = var.output_file
-  owners                  = var.owners
-  resource_group_id       = var.resource_group_id
-  snapshot_id             = var.snapshot_id
-  status                  = var.status
-  tags                    = var.tags
-  usage                   = var.usage
+  # most_recent - (optional) is a type of bool
+  most_recent = var.most_recent
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # os_type - (optional) is a type of string
+  os_type = var.os_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # owners - (optional) is a type of string
+  owners = var.owners
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # usage - (optional) is a type of string
+  usage = var.usage
 }
 ```
 

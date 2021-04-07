@@ -70,10 +70,14 @@ variable "mac" {
 
 ```terraform
 resource "fortios_system_ipv6neighborcache" "this" {
-  fosid     = var.fosid
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
   interface = var.interface
-  ipv6      = var.ipv6
-  mac       = var.mac
+  # ipv6 - (required) is a type of string
+  ipv6 = var.ipv6
+  # mac - (required) is a type of string
+  mac = var.mac
 }
 ```
 

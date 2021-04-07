@@ -80,11 +80,16 @@ variable "target" {
 
 ```terraform
 resource "fortios_fmg_devicemanager_script" "this" {
-  adom        = var.adom
-  content     = var.content
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # content - (required) is a type of string
+  content = var.content
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  target      = var.target
+  # name - (required) is a type of string
+  name = var.name
+  # target - (optional) is a type of string
+  target = var.target
 }
 ```
 

@@ -66,9 +66,12 @@ variable "secret_name" {
 
 ```terraform
 data "tencentcloud_api_gateway_api_keys" "this" {
-  api_key_id         = var.api_key_id
+  # api_key_id - (optional) is a type of string
+  api_key_id = var.api_key_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  secret_name        = var.secret_name
+  # secret_name - (optional) is a type of string
+  secret_name = var.secret_name
 }
 ```
 

@@ -88,15 +88,21 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_compute_volume_attach_v2" "this" {
-  device    = var.device
-  region    = var.region
+  # device - (optional) is a type of string
+  device = var.device
+  # region - (optional) is a type of string
+  region = var.region
+  # server_id - (required) is a type of string
   server_id = var.server_id
+  # volume_id - (required) is a type of string
   volume_id = var.volume_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

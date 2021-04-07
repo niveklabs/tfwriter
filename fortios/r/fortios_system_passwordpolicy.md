@@ -130,17 +130,28 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_passwordpolicy" "this" {
-  apply_to              = var.apply_to
-  change_4_characters   = var.change_4_characters
-  expire_day            = var.expire_day
-  expire_status         = var.expire_status
+  # apply_to - (optional) is a type of string
+  apply_to = var.apply_to
+  # change_4_characters - (optional) is a type of string
+  change_4_characters = var.change_4_characters
+  # expire_day - (optional) is a type of number
+  expire_day = var.expire_day
+  # expire_status - (optional) is a type of string
+  expire_status = var.expire_status
+  # min_lower_case_letter - (optional) is a type of number
   min_lower_case_letter = var.min_lower_case_letter
-  min_non_alphanumeric  = var.min_non_alphanumeric
-  min_number            = var.min_number
+  # min_non_alphanumeric - (optional) is a type of number
+  min_non_alphanumeric = var.min_non_alphanumeric
+  # min_number - (optional) is a type of number
+  min_number = var.min_number
+  # min_upper_case_letter - (optional) is a type of number
   min_upper_case_letter = var.min_upper_case_letter
-  minimum_length        = var.minimum_length
-  reuse_password        = var.reuse_password
-  status                = var.status
+  # minimum_length - (optional) is a type of number
+  minimum_length = var.minimum_length
+  # reuse_password - (optional) is a type of string
+  reuse_password = var.reuse_password
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

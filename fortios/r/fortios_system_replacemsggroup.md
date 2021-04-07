@@ -453,17 +453,25 @@ variable "webproxy" {
 
 ```terraform
 resource "fortios_system_replacemsggroup" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  group_type            = var.group_type
-  name                  = var.name
+  # group_type - (required) is a type of string
+  group_type = var.group_type
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "admin" {
     for_each = var.admin
     content {
-      buffer   = admin.value["buffer"]
-      format   = admin.value["format"]
-      header   = admin.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = admin.value["buffer"]
+      # format - (optional) is a type of string
+      format = admin.value["format"]
+      # header - (optional) is a type of string
+      header = admin.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = admin.value["msg_type"]
     }
   }
@@ -471,9 +479,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "alertmail" {
     for_each = var.alertmail
     content {
-      buffer   = alertmail.value["buffer"]
-      format   = alertmail.value["format"]
-      header   = alertmail.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = alertmail.value["buffer"]
+      # format - (optional) is a type of string
+      format = alertmail.value["format"]
+      # header - (optional) is a type of string
+      header = alertmail.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = alertmail.value["msg_type"]
     }
   }
@@ -481,9 +493,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "auth" {
     for_each = var.auth
     content {
-      buffer   = auth.value["buffer"]
-      format   = auth.value["format"]
-      header   = auth.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = auth.value["buffer"]
+      # format - (optional) is a type of string
+      format = auth.value["format"]
+      # header - (optional) is a type of string
+      header = auth.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = auth.value["msg_type"]
     }
   }
@@ -491,9 +507,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "automation" {
     for_each = var.automation
     content {
-      buffer   = automation.value["buffer"]
-      format   = automation.value["format"]
-      header   = automation.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = automation.value["buffer"]
+      # format - (optional) is a type of string
+      format = automation.value["format"]
+      # header - (optional) is a type of string
+      header = automation.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = automation.value["msg_type"]
     }
   }
@@ -501,9 +521,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "custom_message" {
     for_each = var.custom_message
     content {
-      buffer   = custom_message.value["buffer"]
-      format   = custom_message.value["format"]
-      header   = custom_message.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = custom_message.value["buffer"]
+      # format - (optional) is a type of string
+      format = custom_message.value["format"]
+      # header - (optional) is a type of string
+      header = custom_message.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = custom_message.value["msg_type"]
     }
   }
@@ -511,9 +535,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "device_detection_portal" {
     for_each = var.device_detection_portal
     content {
-      buffer   = device_detection_portal.value["buffer"]
-      format   = device_detection_portal.value["format"]
-      header   = device_detection_portal.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = device_detection_portal.value["buffer"]
+      # format - (optional) is a type of string
+      format = device_detection_portal.value["format"]
+      # header - (optional) is a type of string
+      header = device_detection_portal.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = device_detection_portal.value["msg_type"]
     }
   }
@@ -521,9 +549,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "ec" {
     for_each = var.ec
     content {
-      buffer   = ec.value["buffer"]
-      format   = ec.value["format"]
-      header   = ec.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = ec.value["buffer"]
+      # format - (optional) is a type of string
+      format = ec.value["format"]
+      # header - (optional) is a type of string
+      header = ec.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = ec.value["msg_type"]
     }
   }
@@ -531,9 +563,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "fortiguard_wf" {
     for_each = var.fortiguard_wf
     content {
-      buffer   = fortiguard_wf.value["buffer"]
-      format   = fortiguard_wf.value["format"]
-      header   = fortiguard_wf.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = fortiguard_wf.value["buffer"]
+      # format - (optional) is a type of string
+      format = fortiguard_wf.value["format"]
+      # header - (optional) is a type of string
+      header = fortiguard_wf.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = fortiguard_wf.value["msg_type"]
     }
   }
@@ -541,9 +577,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "ftp" {
     for_each = var.ftp
     content {
-      buffer   = ftp.value["buffer"]
-      format   = ftp.value["format"]
-      header   = ftp.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = ftp.value["buffer"]
+      # format - (optional) is a type of string
+      format = ftp.value["format"]
+      # header - (optional) is a type of string
+      header = ftp.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = ftp.value["msg_type"]
     }
   }
@@ -551,9 +591,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "http" {
     for_each = var.http
     content {
-      buffer   = http.value["buffer"]
-      format   = http.value["format"]
-      header   = http.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = http.value["buffer"]
+      # format - (optional) is a type of string
+      format = http.value["format"]
+      # header - (optional) is a type of string
+      header = http.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = http.value["msg_type"]
     }
   }
@@ -561,9 +605,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "icap" {
     for_each = var.icap
     content {
-      buffer   = icap.value["buffer"]
-      format   = icap.value["format"]
-      header   = icap.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = icap.value["buffer"]
+      # format - (optional) is a type of string
+      format = icap.value["format"]
+      # header - (optional) is a type of string
+      header = icap.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = icap.value["msg_type"]
     }
   }
@@ -571,9 +619,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "mail" {
     for_each = var.mail
     content {
-      buffer   = mail.value["buffer"]
-      format   = mail.value["format"]
-      header   = mail.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = mail.value["buffer"]
+      # format - (optional) is a type of string
+      format = mail.value["format"]
+      # header - (optional) is a type of string
+      header = mail.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = mail.value["msg_type"]
     }
   }
@@ -581,9 +633,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "nac_quar" {
     for_each = var.nac_quar
     content {
-      buffer   = nac_quar.value["buffer"]
-      format   = nac_quar.value["format"]
-      header   = nac_quar.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = nac_quar.value["buffer"]
+      # format - (optional) is a type of string
+      format = nac_quar.value["format"]
+      # header - (optional) is a type of string
+      header = nac_quar.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = nac_quar.value["msg_type"]
     }
   }
@@ -591,9 +647,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "nntp" {
     for_each = var.nntp
     content {
-      buffer   = nntp.value["buffer"]
-      format   = nntp.value["format"]
-      header   = nntp.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = nntp.value["buffer"]
+      # format - (optional) is a type of string
+      format = nntp.value["format"]
+      # header - (optional) is a type of string
+      header = nntp.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = nntp.value["msg_type"]
     }
   }
@@ -601,9 +661,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "spam" {
     for_each = var.spam
     content {
-      buffer   = spam.value["buffer"]
-      format   = spam.value["format"]
-      header   = spam.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = spam.value["buffer"]
+      # format - (optional) is a type of string
+      format = spam.value["format"]
+      # header - (optional) is a type of string
+      header = spam.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = spam.value["msg_type"]
     }
   }
@@ -611,9 +675,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "sslvpn" {
     for_each = var.sslvpn
     content {
-      buffer   = sslvpn.value["buffer"]
-      format   = sslvpn.value["format"]
-      header   = sslvpn.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = sslvpn.value["buffer"]
+      # format - (optional) is a type of string
+      format = sslvpn.value["format"]
+      # header - (optional) is a type of string
+      header = sslvpn.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = sslvpn.value["msg_type"]
     }
   }
@@ -621,9 +689,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "traffic_quota" {
     for_each = var.traffic_quota
     content {
-      buffer   = traffic_quota.value["buffer"]
-      format   = traffic_quota.value["format"]
-      header   = traffic_quota.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = traffic_quota.value["buffer"]
+      # format - (optional) is a type of string
+      format = traffic_quota.value["format"]
+      # header - (optional) is a type of string
+      header = traffic_quota.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = traffic_quota.value["msg_type"]
     }
   }
@@ -631,9 +703,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "utm" {
     for_each = var.utm
     content {
-      buffer   = utm.value["buffer"]
-      format   = utm.value["format"]
-      header   = utm.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = utm.value["buffer"]
+      # format - (optional) is a type of string
+      format = utm.value["format"]
+      # header - (optional) is a type of string
+      header = utm.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = utm.value["msg_type"]
     }
   }
@@ -641,9 +717,13 @@ resource "fortios_system_replacemsggroup" "this" {
   dynamic "webproxy" {
     for_each = var.webproxy
     content {
-      buffer   = webproxy.value["buffer"]
-      format   = webproxy.value["format"]
-      header   = webproxy.value["header"]
+      # buffer - (optional) is a type of string
+      buffer = webproxy.value["buffer"]
+      # format - (optional) is a type of string
+      format = webproxy.value["format"]
+      # header - (optional) is a type of string
+      header = webproxy.value["header"]
+      # msg_type - (optional) is a type of string
       msg_type = webproxy.value["msg_type"]
     }
   }

@@ -234,37 +234,64 @@ variable "server_list" {
 
 ```terraform
 resource "fortios_system_centralmanagement" "this" {
-  allow_monitor                 = var.allow_monitor
-  allow_push_configuration      = var.allow_push_configuration
-  allow_push_firmware           = var.allow_push_firmware
+  # allow_monitor - (optional) is a type of string
+  allow_monitor = var.allow_monitor
+  # allow_push_configuration - (optional) is a type of string
+  allow_push_configuration = var.allow_push_configuration
+  # allow_push_firmware - (optional) is a type of string
+  allow_push_firmware = var.allow_push_firmware
+  # allow_remote_firmware_upgrade - (optional) is a type of string
   allow_remote_firmware_upgrade = var.allow_remote_firmware_upgrade
-  ca_cert                       = var.ca_cert
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  enc_algorithm                 = var.enc_algorithm
-  fmg                           = var.fmg
-  fmg_source_ip                 = var.fmg_source_ip
-  fmg_source_ip6                = var.fmg_source_ip6
-  fmg_update_port               = var.fmg_update_port
-  include_default_servers       = var.include_default_servers
-  interface                     = var.interface
-  interface_select_method       = var.interface_select_method
-  local_cert                    = var.local_cert
-  mode                          = var.mode
-  schedule_config_restore       = var.schedule_config_restore
-  schedule_script_restore       = var.schedule_script_restore
-  serial_number                 = var.serial_number
-  type                          = var.type
-  vdom                          = var.vdom
+  # ca_cert - (optional) is a type of string
+  ca_cert = var.ca_cert
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # fmg - (optional) is a type of string
+  fmg = var.fmg
+  # fmg_source_ip - (optional) is a type of string
+  fmg_source_ip = var.fmg_source_ip
+  # fmg_source_ip6 - (optional) is a type of string
+  fmg_source_ip6 = var.fmg_source_ip6
+  # fmg_update_port - (optional) is a type of string
+  fmg_update_port = var.fmg_update_port
+  # include_default_servers - (optional) is a type of string
+  include_default_servers = var.include_default_servers
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # local_cert - (optional) is a type of string
+  local_cert = var.local_cert
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # schedule_config_restore - (optional) is a type of string
+  schedule_config_restore = var.schedule_config_restore
+  # schedule_script_restore - (optional) is a type of string
+  schedule_script_restore = var.schedule_script_restore
+  # serial_number - (optional) is a type of string
+  serial_number = var.serial_number
+  # type - (optional) is a type of string
+  type = var.type
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
 
   dynamic "server_list" {
     for_each = var.server_list
     content {
-      addr_type       = server_list.value["addr_type"]
-      fqdn            = server_list.value["fqdn"]
-      id              = server_list.value["id"]
-      server_address  = server_list.value["server_address"]
+      # addr_type - (optional) is a type of string
+      addr_type = server_list.value["addr_type"]
+      # fqdn - (optional) is a type of string
+      fqdn = server_list.value["fqdn"]
+      # id - (optional) is a type of number
+      id = server_list.value["id"]
+      # server_address - (optional) is a type of string
+      server_address = server_list.value["server_address"]
+      # server_address6 - (optional) is a type of string
       server_address6 = server_list.value["server_address6"]
-      server_type     = server_list.value["server_type"]
+      # server_type - (optional) is a type of string
+      server_type = server_list.value["server_type"]
     }
   }
 

@@ -70,10 +70,14 @@ variable "name" {
 
 ```terraform
 resource "panos_panorama_gke_cluster" "this" {
+  # cluster_credential - (required) is a type of string
   cluster_credential = var.cluster_credential
-  gcp_zone           = var.gcp_zone
-  gke_cluster_group  = var.gke_cluster_group
-  name               = var.name
+  # gcp_zone - (required) is a type of string
+  gcp_zone = var.gcp_zone
+  # gke_cluster_group - (required) is a type of string
+  gke_cluster_group = var.gke_cluster_group
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

@@ -108,18 +108,27 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_token" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
-  cluster_id  = var.cluster_id
+  # cluster_id - (optional) is a type of string
+  cluster_id = var.cluster_id
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  renew       = var.renew
-  ttl         = var.ttl
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # renew - (optional) is a type of bool
+  renew = var.renew
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

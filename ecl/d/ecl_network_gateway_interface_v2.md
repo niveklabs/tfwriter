@@ -218,28 +218,50 @@ variable "vrid" {
 
 ```terraform
 data "ecl_network_gateway_interface_v2" "this" {
-  aws_gw_id            = var.aws_gw_id
-  azure_gw_id          = var.azure_gw_id
-  description          = var.description
+  # aws_gw_id - (optional) is a type of string
+  aws_gw_id = var.aws_gw_id
+  # azure_gw_id - (optional) is a type of string
+  azure_gw_id = var.azure_gw_id
+  # description - (optional) is a type of string
+  description = var.description
+  # gateway_interface_id - (optional) is a type of string
   gateway_interface_id = var.gateway_interface_id
-  gcp_gw_id            = var.gcp_gw_id
-  gw_vipv4             = var.gw_vipv4
-  gw_vipv6             = var.gw_vipv6
-  interdc_gw_id        = var.interdc_gw_id
-  internet_gw_id       = var.internet_gw_id
-  name                 = var.name
-  netmask              = var.netmask
-  network_id           = var.network_id
-  primary_ipv4         = var.primary_ipv4
-  primary_ipv6         = var.primary_ipv6
-  region               = var.region
-  secondary_ipv4       = var.secondary_ipv4
-  secondary_ipv6       = var.secondary_ipv6
-  service_type         = var.service_type
-  status               = var.status
-  tenant_id            = var.tenant_id
-  vpn_gw_id            = var.vpn_gw_id
-  vrid                 = var.vrid
+  # gcp_gw_id - (optional) is a type of string
+  gcp_gw_id = var.gcp_gw_id
+  # gw_vipv4 - (optional) is a type of string
+  gw_vipv4 = var.gw_vipv4
+  # gw_vipv6 - (optional) is a type of string
+  gw_vipv6 = var.gw_vipv6
+  # interdc_gw_id - (optional) is a type of string
+  interdc_gw_id = var.interdc_gw_id
+  # internet_gw_id - (optional) is a type of string
+  internet_gw_id = var.internet_gw_id
+  # name - (optional) is a type of string
+  name = var.name
+  # netmask - (optional) is a type of number
+  netmask = var.netmask
+  # network_id - (optional) is a type of string
+  network_id = var.network_id
+  # primary_ipv4 - (optional) is a type of string
+  primary_ipv4 = var.primary_ipv4
+  # primary_ipv6 - (optional) is a type of string
+  primary_ipv6 = var.primary_ipv6
+  # region - (optional) is a type of string
+  region = var.region
+  # secondary_ipv4 - (optional) is a type of string
+  secondary_ipv4 = var.secondary_ipv4
+  # secondary_ipv6 - (optional) is a type of string
+  secondary_ipv6 = var.secondary_ipv6
+  # service_type - (optional) is a type of string
+  service_type = var.service_type
+  # status - (optional) is a type of string
+  status = var.status
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
+  # vpn_gw_id - (optional) is a type of string
+  vpn_gw_id = var.vpn_gw_id
+  # vrid - (optional) is a type of number
+  vrid = var.vrid
 }
 ```
 

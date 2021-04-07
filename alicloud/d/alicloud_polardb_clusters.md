@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 data "alicloud_polardb_clusters" "this" {
-  db_type           = var.db_type
+  # db_type - (optional) is a type of string
+  db_type = var.db_type
+  # description_regex - (optional) is a type of string
   description_regex = var.description_regex
-  ids               = var.ids
-  output_file       = var.output_file
-  status            = var.status
-  tags              = var.tags
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

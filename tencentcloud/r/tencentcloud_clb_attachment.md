@@ -81,16 +81,22 @@ variable "targets" {
 
 ```terraform
 resource "tencentcloud_clb_attachment" "this" {
-  clb_id      = var.clb_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # listener_id - (required) is a type of string
   listener_id = var.listener_id
-  rule_id     = var.rule_id
+  # rule_id - (optional) is a type of string
+  rule_id = var.rule_id
 
   dynamic "targets" {
     for_each = var.targets
     content {
+      # instance_id - (required) is a type of string
       instance_id = targets.value["instance_id"]
-      port        = targets.value["port"]
-      weight      = targets.value["weight"]
+      # port - (required) is a type of number
+      port = targets.value["port"]
+      # weight - (optional) is a type of number
+      weight = targets.value["weight"]
     }
   }
 

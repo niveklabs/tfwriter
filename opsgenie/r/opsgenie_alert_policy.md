@@ -273,38 +273,62 @@ variable "time_restriction" {
 
 ```terraform
 resource "opsgenie_alert_policy" "this" {
-  actions                    = var.actions
-  alert_description          = var.alert_description
-  alias                      = var.alias
-  continue_policy            = var.continue_policy
-  enabled                    = var.enabled
-  entity                     = var.entity
-  ignore_original_actions    = var.ignore_original_actions
-  ignore_original_details    = var.ignore_original_details
+  # actions - (optional) is a type of set of string
+  actions = var.actions
+  # alert_description - (optional) is a type of string
+  alert_description = var.alert_description
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # continue_policy - (optional) is a type of bool
+  continue_policy = var.continue_policy
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # entity - (optional) is a type of string
+  entity = var.entity
+  # ignore_original_actions - (optional) is a type of bool
+  ignore_original_actions = var.ignore_original_actions
+  # ignore_original_details - (optional) is a type of bool
+  ignore_original_details = var.ignore_original_details
+  # ignore_original_responders - (optional) is a type of bool
   ignore_original_responders = var.ignore_original_responders
-  ignore_original_tags       = var.ignore_original_tags
-  message                    = var.message
-  name                       = var.name
-  policy_description         = var.policy_description
-  priority                   = var.priority
-  source                     = var.source
-  tags                       = var.tags
-  team_id                    = var.team_id
+  # ignore_original_tags - (optional) is a type of bool
+  ignore_original_tags = var.ignore_original_tags
+  # message - (required) is a type of string
+  message = var.message
+  # name - (required) is a type of string
+  name = var.name
+  # policy_description - (optional) is a type of string
+  policy_description = var.policy_description
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # source - (optional) is a type of string
+  source = var.source
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # team_id - (optional) is a type of string
+  team_id = var.team_id
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # type - (optional) is a type of string
       type = filter.value["type"]
 
       dynamic "conditions" {
         for_each = filter.value.conditions
         content {
+          # expected_value - (optional) is a type of string
           expected_value = conditions.value["expected_value"]
-          field          = conditions.value["field"]
-          key            = conditions.value["key"]
-          not            = conditions.value["not"]
-          operation      = conditions.value["operation"]
-          order          = conditions.value["order"]
+          # field - (required) is a type of string
+          field = conditions.value["field"]
+          # key - (optional) is a type of string
+          key = conditions.value["key"]
+          # not - (optional) is a type of bool
+          not = conditions.value["not"]
+          # operation - (required) is a type of string
+          operation = conditions.value["operation"]
+          # order - (optional) is a type of number
+          order = conditions.value["order"]
         }
       }
 
@@ -314,9 +338,13 @@ resource "opsgenie_alert_policy" "this" {
   dynamic "responders" {
     for_each = var.responders
     content {
-      id       = responders.value["id"]
-      name     = responders.value["name"]
-      type     = responders.value["type"]
+      # id - (required) is a type of string
+      id = responders.value["id"]
+      # name - (optional) is a type of string
+      name = responders.value["name"]
+      # type - (required) is a type of string
+      type = responders.value["type"]
+      # username - (optional) is a type of string
       username = responders.value["username"]
     }
   }
@@ -324,27 +352,38 @@ resource "opsgenie_alert_policy" "this" {
   dynamic "time_restriction" {
     for_each = var.time_restriction
     content {
+      # type - (required) is a type of string
       type = time_restriction.value["type"]
 
       dynamic "restriction" {
         for_each = time_restriction.value.restriction
         content {
-          end_hour   = restriction.value["end_hour"]
-          end_min    = restriction.value["end_min"]
+          # end_hour - (required) is a type of number
+          end_hour = restriction.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restriction.value["end_min"]
+          # start_hour - (required) is a type of number
           start_hour = restriction.value["start_hour"]
-          start_min  = restriction.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restriction.value["start_min"]
         }
       }
 
       dynamic "restrictions" {
         for_each = time_restriction.value.restrictions
         content {
-          end_day    = restrictions.value["end_day"]
-          end_hour   = restrictions.value["end_hour"]
-          end_min    = restrictions.value["end_min"]
-          start_day  = restrictions.value["start_day"]
+          # end_day - (required) is a type of string
+          end_day = restrictions.value["end_day"]
+          # end_hour - (required) is a type of number
+          end_hour = restrictions.value["end_hour"]
+          # end_min - (required) is a type of number
+          end_min = restrictions.value["end_min"]
+          # start_day - (required) is a type of string
+          start_day = restrictions.value["start_day"]
+          # start_hour - (required) is a type of number
           start_hour = restrictions.value["start_hour"]
-          start_min  = restrictions.value["start_min"]
+          # start_min - (required) is a type of number
+          start_min = restrictions.value["start_min"]
         }
       }
 

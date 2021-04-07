@@ -63,9 +63,12 @@ variable "redis_id" {
 
 ```terraform
 resource "tencentcloud_redis_backup_config" "this" {
+  # backup_period - (required) is a type of set of string
   backup_period = var.backup_period
-  backup_time   = var.backup_time
-  redis_id      = var.redis_id
+  # backup_time - (required) is a type of string
+  backup_time = var.backup_time
+  # redis_id - (required) is a type of string
+  redis_id = var.redis_id
 }
 ```
 

@@ -198,25 +198,41 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_bgp_neighbor" "this" {
-  allow_as_in           = var.allow_as_in
-  bgp_path              = var.bgp_path
-  description           = var.description
-  display_name          = var.display_name
+  # allow_as_in - (optional) is a type of bool
+  allow_as_in = var.allow_as_in
+  # bgp_path - (required) is a type of string
+  bgp_path = var.bgp_path
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # graceful_restart_mode - (optional) is a type of string
   graceful_restart_mode = var.graceful_restart_mode
-  hold_down_time        = var.hold_down_time
-  keep_alive_time       = var.keep_alive_time
-  maximum_hop_limit     = var.maximum_hop_limit
-  neighbor_address      = var.neighbor_address
-  nsx_id                = var.nsx_id
-  password              = var.password
-  remote_as_num         = var.remote_as_num
-  source_addresses      = var.source_addresses
+  # hold_down_time - (optional) is a type of number
+  hold_down_time = var.hold_down_time
+  # keep_alive_time - (optional) is a type of number
+  keep_alive_time = var.keep_alive_time
+  # maximum_hop_limit - (optional) is a type of number
+  maximum_hop_limit = var.maximum_hop_limit
+  # neighbor_address - (required) is a type of string
+  neighbor_address = var.neighbor_address
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # password - (optional) is a type of string
+  password = var.password
+  # remote_as_num - (required) is a type of string
+  remote_as_num = var.remote_as_num
+  # source_addresses - (optional) is a type of list of string
+  source_addresses = var.source_addresses
 
   dynamic "bfd_config" {
     for_each = var.bfd_config
     content {
-      enabled  = bfd_config.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = bfd_config.value["enabled"]
+      # interval - (optional) is a type of number
       interval = bfd_config.value["interval"]
+      # multiple - (optional) is a type of number
       multiple = bfd_config.value["multiple"]
     }
   }
@@ -224,10 +240,15 @@ resource "nsxt_policy_bgp_neighbor" "this" {
   dynamic "route_filtering" {
     for_each = var.route_filtering
     content {
-      address_family   = route_filtering.value["address_family"]
-      enabled          = route_filtering.value["enabled"]
-      in_route_filter  = route_filtering.value["in_route_filter"]
-      maximum_routes   = route_filtering.value["maximum_routes"]
+      # address_family - (required) is a type of string
+      address_family = route_filtering.value["address_family"]
+      # enabled - (optional) is a type of bool
+      enabled = route_filtering.value["enabled"]
+      # in_route_filter - (optional) is a type of string
+      in_route_filter = route_filtering.value["in_route_filter"]
+      # maximum_routes - (optional) is a type of number
+      maximum_routes = route_filtering.value["maximum_routes"]
+      # out_route_filter - (optional) is a type of string
       out_route_filter = route_filtering.value["out_route_filter"]
     }
   }
@@ -235,8 +256,10 @@ resource "nsxt_policy_bgp_neighbor" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

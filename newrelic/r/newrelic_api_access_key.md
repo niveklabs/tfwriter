@@ -88,12 +88,18 @@ variable "user_id" {
 
 ```terraform
 resource "newrelic_api_access_key" "this" {
-  account_id  = var.account_id
+  # account_id - (required) is a type of number
+  account_id = var.account_id
+  # ingest_type - (optional) is a type of string
   ingest_type = var.ingest_type
-  key_type    = var.key_type
-  name        = var.name
-  notes       = var.notes
-  user_id     = var.user_id
+  # key_type - (required) is a type of string
+  key_type = var.key_type
+  # name - (optional) is a type of string
+  name = var.name
+  # notes - (optional) is a type of string
+  notes = var.notes
+  # user_id - (optional) is a type of number
+  user_id = var.user_id
 }
 ```
 

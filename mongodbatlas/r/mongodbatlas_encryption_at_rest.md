@@ -73,10 +73,14 @@ variable "project_id" {
 
 ```terraform
 resource "mongodbatlas_encryption_at_rest" "this" {
-  aws_kms          = var.aws_kms
-  azure_key_vault  = var.azure_key_vault
+  # aws_kms - (optional) is a type of map of string
+  aws_kms = var.aws_kms
+  # azure_key_vault - (optional) is a type of map of string
+  azure_key_vault = var.azure_key_vault
+  # google_cloud_kms - (optional) is a type of map of string
   google_cloud_kms = var.google_cloud_kms
-  project_id       = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

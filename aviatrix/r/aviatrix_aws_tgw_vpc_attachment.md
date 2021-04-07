@@ -125,17 +125,28 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_aws_tgw_vpc_attachment" "this" {
-  customized_route_advertisement  = var.customized_route_advertisement
-  customized_routes               = var.customized_routes
+  # customized_route_advertisement - (optional) is a type of string
+  customized_route_advertisement = var.customized_route_advertisement
+  # customized_routes - (optional) is a type of string
+  customized_routes = var.customized_routes
+  # disable_local_route_propagation - (optional) is a type of bool
   disable_local_route_propagation = var.disable_local_route_propagation
-  edge_attachment                 = var.edge_attachment
-  region                          = var.region
-  route_tables                    = var.route_tables
-  security_domain_name            = var.security_domain_name
-  subnets                         = var.subnets
-  tgw_name                        = var.tgw_name
-  vpc_account_name                = var.vpc_account_name
-  vpc_id                          = var.vpc_id
+  # edge_attachment - (optional) is a type of string
+  edge_attachment = var.edge_attachment
+  # region - (required) is a type of string
+  region = var.region
+  # route_tables - (optional) is a type of string
+  route_tables = var.route_tables
+  # security_domain_name - (required) is a type of string
+  security_domain_name = var.security_domain_name
+  # subnets - (optional) is a type of string
+  subnets = var.subnets
+  # tgw_name - (required) is a type of string
+  tgw_name = var.tgw_name
+  # vpc_account_name - (required) is a type of string
+  vpc_account_name = var.vpc_account_name
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

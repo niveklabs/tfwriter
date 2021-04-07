@@ -120,22 +120,34 @@ variable "command_list" {
 
 ```terraform
 resource "fortios_wirelesscontroller_apcfgprofile" "this" {
-  ac_ip                 = var.ac_ip
-  ac_port               = var.ac_port
-  ac_timer              = var.ac_timer
-  ac_type               = var.ac_type
-  comment               = var.comment
+  # ac_ip - (optional) is a type of string
+  ac_ip = var.ac_ip
+  # ac_port - (optional) is a type of number
+  ac_port = var.ac_port
+  # ac_timer - (optional) is a type of number
+  ac_timer = var.ac_timer
+  # ac_type - (optional) is a type of string
+  ac_type = var.ac_type
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "command_list" {
     for_each = var.command_list
     content {
-      id           = command_list.value["id"]
-      name         = command_list.value["name"]
+      # id - (optional) is a type of number
+      id = command_list.value["id"]
+      # name - (optional) is a type of string
+      name = command_list.value["name"]
+      # passwd_value - (optional) is a type of string
       passwd_value = command_list.value["passwd_value"]
-      type         = command_list.value["type"]
-      value        = command_list.value["value"]
+      # type - (optional) is a type of string
+      type = command_list.value["type"]
+      # value - (optional) is a type of string
+      value = command_list.value["value"]
     }
   }
 

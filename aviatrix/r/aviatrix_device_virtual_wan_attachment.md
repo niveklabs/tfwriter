@@ -84,12 +84,18 @@ variable "resource_group" {
 
 ```terraform
 resource "aviatrix_device_virtual_wan_attachment" "this" {
-  account_name    = var.account_name
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # connection_name - (required) is a type of string
   connection_name = var.connection_name
-  device_bgp_asn  = var.device_bgp_asn
-  device_name     = var.device_name
-  hub_name        = var.hub_name
-  resource_group  = var.resource_group
+  # device_bgp_asn - (required) is a type of number
+  device_bgp_asn = var.device_bgp_asn
+  # device_name - (required) is a type of string
+  device_name = var.device_name
+  # hub_name - (required) is a type of string
+  hub_name = var.hub_name
+  # resource_group - (required) is a type of string
+  resource_group = var.resource_group
 }
 ```
 

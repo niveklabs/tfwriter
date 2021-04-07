@@ -74,10 +74,14 @@ variable "zone" {
 
 ```terraform
 resource "scaleway_vpc_private_network" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of string
   project_id = var.project_id
-  tags       = var.tags
-  zone       = var.zone
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

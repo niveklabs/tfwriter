@@ -142,21 +142,33 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_eci_openapi_image_cache" "this" {
-  eip_instance_id   = var.eip_instance_id
-  image_cache_name  = var.image_cache_name
-  image_cache_size  = var.image_cache_size
-  images            = var.images
+  # eip_instance_id - (optional) is a type of string
+  eip_instance_id = var.eip_instance_id
+  # image_cache_name - (required) is a type of string
+  image_cache_name = var.image_cache_name
+  # image_cache_size - (optional) is a type of number
+  image_cache_size = var.image_cache_size
+  # images - (required) is a type of set of string
+  images = var.images
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  retention_days    = var.retention_days
+  # retention_days - (optional) is a type of number
+  retention_days = var.retention_days
+  # security_group_id - (required) is a type of string
   security_group_id = var.security_group_id
-  vswitch_id        = var.vswitch_id
-  zone_id           = var.zone_id
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "image_registry_credential" {
     for_each = var.image_registry_credential
     content {
-      password  = image_registry_credential.value["password"]
-      server    = image_registry_credential.value["server"]
+      # password - (optional) is a type of string
+      password = image_registry_credential.value["password"]
+      # server - (optional) is a type of string
+      server = image_registry_credential.value["server"]
+      # user_name - (optional) is a type of string
       user_name = image_registry_credential.value["user_name"]
     }
   }
@@ -164,6 +176,7 @@ resource "alicloud_eci_openapi_image_cache" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

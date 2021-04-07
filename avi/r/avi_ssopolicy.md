@@ -300,26 +300,35 @@ variable "authorization_policy" {
 
 ```terraform
 resource "avi_ssopolicy" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  type       = var.type
-  uuid       = var.uuid
+  # type - (optional) is a type of string
+  type = var.type
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "authentication_policy" {
     for_each = var.authentication_policy
     content {
+      # default_auth_profile_ref - (optional) is a type of string
       default_auth_profile_ref = authentication_policy.value["default_auth_profile_ref"]
 
       dynamic "authn_rules" {
         for_each = authentication_policy.value.authn_rules
         content {
+          # enable - (optional) is a type of bool
           enable = authn_rules.value["enable"]
-          index  = authn_rules.value["index"]
-          name   = authn_rules.value["name"]
+          # index - (optional) is a type of number
+          index = authn_rules.value["index"]
+          # name - (optional) is a type of string
+          name = authn_rules.value["name"]
 
           dynamic "action" {
             for_each = authn_rules.value.action
             content {
+              # type - (optional) is a type of string
               type = action.value["type"]
             }
           }
@@ -331,13 +340,17 @@ resource "avi_ssopolicy" "this" {
               dynamic "client_ip" {
                 for_each = match.value.client_ip
                 content {
-                  group_refs     = client_ip.value["group_refs"]
+                  # group_refs - (optional) is a type of list of string
+                  group_refs = client_ip.value["group_refs"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = client_ip.value["match_criteria"]
 
                   dynamic "addrs" {
                     for_each = client_ip.value.addrs
                     content {
+                      # addr - (required) is a type of string
                       addr = addrs.value["addr"]
+                      # type - (required) is a type of string
                       type = addrs.value["type"]
                     }
                   }
@@ -345,12 +358,15 @@ resource "avi_ssopolicy" "this" {
                   dynamic "prefixes" {
                     for_each = client_ip.value.prefixes
                     content {
+                      # mask - (required) is a type of number
                       mask = prefixes.value["mask"]
 
                       dynamic "ip_addr" {
                         for_each = prefixes.value.ip_addr
                         content {
+                          # addr - (required) is a type of string
                           addr = ip_addr.value["addr"]
+                          # type - (required) is a type of string
                           type = ip_addr.value["type"]
                         }
                       }
@@ -365,7 +381,9 @@ resource "avi_ssopolicy" "this" {
                       dynamic "begin" {
                         for_each = ranges.value.begin
                         content {
+                          # addr - (required) is a type of string
                           addr = begin.value["addr"]
+                          # type - (required) is a type of string
                           type = begin.value["type"]
                         }
                       }
@@ -373,7 +391,9 @@ resource "avi_ssopolicy" "this" {
                       dynamic "end" {
                         for_each = ranges.value.end
                         content {
+                          # addr - (required) is a type of string
                           addr = end.value["addr"]
+                          # type - (required) is a type of string
                           type = end.value["type"]
                         }
                       }
@@ -387,18 +407,25 @@ resource "avi_ssopolicy" "this" {
               dynamic "host_hdr" {
                 for_each = match.value.host_hdr
                 content {
-                  match_case     = host_hdr.value["match_case"]
+                  # match_case - (optional) is a type of string
+                  match_case = host_hdr.value["match_case"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = host_hdr.value["match_criteria"]
-                  value          = host_hdr.value["value"]
+                  # value - (optional) is a type of list of string
+                  value = host_hdr.value["value"]
                 }
               }
 
               dynamic "path" {
                 for_each = match.value.path
                 content {
-                  match_case        = path.value["match_case"]
-                  match_criteria    = path.value["match_criteria"]
-                  match_str         = path.value["match_str"]
+                  # match_case - (optional) is a type of string
+                  match_case = path.value["match_case"]
+                  # match_criteria - (required) is a type of string
+                  match_criteria = path.value["match_criteria"]
+                  # match_str - (optional) is a type of list of string
+                  match_str = path.value["match_str"]
+                  # string_group_refs - (optional) is a type of list of string
                   string_group_refs = path.value["string_group_refs"]
                 }
               }
@@ -419,15 +446,20 @@ resource "avi_ssopolicy" "this" {
       dynamic "authz_rules" {
         for_each = authorization_policy.value.authz_rules
         content {
+          # enable - (optional) is a type of bool
           enable = authz_rules.value["enable"]
-          index  = authz_rules.value["index"]
-          name   = authz_rules.value["name"]
+          # index - (optional) is a type of number
+          index = authz_rules.value["index"]
+          # name - (optional) is a type of string
+          name = authz_rules.value["name"]
 
           dynamic "action" {
             for_each = authz_rules.value.action
             content {
+              # status_code - (optional) is a type of string
               status_code = action.value["status_code"]
-              type        = action.value["type"]
+              # type - (optional) is a type of string
+              type = action.value["type"]
             }
           }
 
@@ -438,13 +470,17 @@ resource "avi_ssopolicy" "this" {
               dynamic "attr_matches" {
                 for_each = match.value.attr_matches
                 content {
+                  # attribute_name - (optional) is a type of string
                   attribute_name = attr_matches.value["attribute_name"]
 
                   dynamic "attribute_value_list" {
                     for_each = attr_matches.value.attribute_value_list
                     content {
-                      match_criteria    = attribute_value_list.value["match_criteria"]
-                      match_str         = attribute_value_list.value["match_str"]
+                      # match_criteria - (required) is a type of string
+                      match_criteria = attribute_value_list.value["match_criteria"]
+                      # match_str - (optional) is a type of list of string
+                      match_str = attribute_value_list.value["match_str"]
+                      # string_group_refs - (optional) is a type of list of string
                       string_group_refs = attribute_value_list.value["string_group_refs"]
                     }
                   }
@@ -455,26 +491,35 @@ resource "avi_ssopolicy" "this" {
               dynamic "host_hdr" {
                 for_each = match.value.host_hdr
                 content {
-                  match_case     = host_hdr.value["match_case"]
+                  # match_case - (optional) is a type of string
+                  match_case = host_hdr.value["match_case"]
+                  # match_criteria - (required) is a type of string
                   match_criteria = host_hdr.value["match_criteria"]
-                  value          = host_hdr.value["value"]
+                  # value - (optional) is a type of list of string
+                  value = host_hdr.value["value"]
                 }
               }
 
               dynamic "method" {
                 for_each = match.value.method
                 content {
+                  # match_criteria - (required) is a type of string
                   match_criteria = method.value["match_criteria"]
-                  methods        = method.value["methods"]
+                  # methods - (optional) is a type of list of string
+                  methods = method.value["methods"]
                 }
               }
 
               dynamic "path" {
                 for_each = match.value.path
                 content {
-                  match_case        = path.value["match_case"]
-                  match_criteria    = path.value["match_criteria"]
-                  match_str         = path.value["match_str"]
+                  # match_case - (optional) is a type of string
+                  match_case = path.value["match_case"]
+                  # match_criteria - (required) is a type of string
+                  match_criteria = path.value["match_criteria"]
+                  # match_str - (optional) is a type of list of string
+                  match_str = path.value["match_str"]
+                  # string_group_refs - (optional) is a type of list of string
                   string_group_refs = path.value["string_group_refs"]
                 }
               }

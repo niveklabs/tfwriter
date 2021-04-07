@@ -64,8 +64,11 @@ variable "user_id" {
 
 ```terraform
 resource "pagerduty_team_membership" "this" {
-  role    = var.role
+  # role - (optional) is a type of string
+  role = var.role
+  # team_id - (required) is a type of string
   team_id = var.team_id
+  # user_id - (required) is a type of string
   user_id = var.user_id
 }
 ```

@@ -178,23 +178,40 @@ variable "version" {
 
 ```terraform
 data "ecl_dns_zone_v2" "this" {
-  attributes     = var.attributes
-  created_at     = var.created_at
-  description    = var.description
-  domain_name    = var.domain_name
-  email          = var.email
-  masters        = var.masters
-  name           = var.name
-  pool_id        = var.pool_id
-  project_id     = var.project_id
-  region         = var.region
-  serial         = var.serial
-  status         = var.status
+  # attributes - (optional) is a type of map of string
+  attributes = var.attributes
+  # created_at - (optional) is a type of string
+  created_at = var.created_at
+  # description - (optional) is a type of string
+  description = var.description
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # email - (optional) is a type of string
+  email = var.email
+  # masters - (optional) is a type of set of string
+  masters = var.masters
+  # name - (optional) is a type of string
+  name = var.name
+  # pool_id - (optional) is a type of string
+  pool_id = var.pool_id
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (optional) is a type of string
+  region = var.region
+  # serial - (optional) is a type of number
+  serial = var.serial
+  # status - (optional) is a type of string
+  status = var.status
+  # transferred_at - (optional) is a type of string
   transferred_at = var.transferred_at
-  ttl            = var.ttl
-  type           = var.type
-  updated_at     = var.updated_at
-  version        = var.version
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # type - (optional) is a type of string
+  type = var.type
+  # updated_at - (optional) is a type of string
+  updated_at = var.updated_at
+  # version - (optional) is a type of number
+  version = var.version
 }
 ```
 

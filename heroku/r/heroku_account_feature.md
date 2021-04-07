@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "heroku_account_feature" "this" {
+  # enabled - (required) is a type of bool
   enabled = var.enabled
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

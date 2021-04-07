@@ -66,9 +66,12 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_ip_address" "this" {
+  # ip_addr - (optional) is a type of string
   ip_addr = var.ip_addr
+  # ip_mask - (optional) is a type of string
   ip_mask = var.ip_mask
-  uuid    = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

@@ -135,18 +135,27 @@ variable "resolution_names" {
 
 ```terraform
 resource "tencentcloud_vod_super_player_config" "this" {
+  # adaptive_dynamic_streaming_definition - (optional) is a type of string
   adaptive_dynamic_streaming_definition = var.adaptive_dynamic_streaming_definition
-  comment                               = var.comment
-  domain                                = var.domain
-  drm_switch                            = var.drm_switch
-  image_sprite_definition               = var.image_sprite_definition
-  name                                  = var.name
-  scheme                                = var.scheme
-  sub_app_id                            = var.sub_app_id
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # drm_switch - (optional) is a type of bool
+  drm_switch = var.drm_switch
+  # image_sprite_definition - (optional) is a type of string
+  image_sprite_definition = var.image_sprite_definition
+  # name - (required) is a type of string
+  name = var.name
+  # scheme - (optional) is a type of string
+  scheme = var.scheme
+  # sub_app_id - (optional) is a type of number
+  sub_app_id = var.sub_app_id
 
   dynamic "drm_streaming_info" {
     for_each = var.drm_streaming_info
     content {
+      # simple_aes_definition - (optional) is a type of string
       simple_aes_definition = drm_streaming_info.value["simple_aes_definition"]
     }
   }
@@ -154,8 +163,10 @@ resource "tencentcloud_vod_super_player_config" "this" {
   dynamic "resolution_names" {
     for_each = var.resolution_names
     content {
+      # min_edge_length - (required) is a type of number
       min_edge_length = resolution_names.value["min_edge_length"]
-      name            = resolution_names.value["name"]
+      # name - (required) is a type of string
+      name = resolution_names.value["name"]
     }
   }
 

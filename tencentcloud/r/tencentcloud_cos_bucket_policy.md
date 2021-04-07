@@ -56,7 +56,9 @@ variable "policy" {
 
 ```terraform
 resource "tencentcloud_cos_bucket_policy" "this" {
+  # bucket - (required) is a type of string
   bucket = var.bucket
+  # policy - (required) is a type of string
   policy = var.policy
 }
 ```

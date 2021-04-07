@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "equinix_ecx_port" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

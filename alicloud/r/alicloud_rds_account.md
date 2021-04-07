@@ -156,24 +156,39 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_rds_account" "this" {
-  account_description    = var.account_description
-  account_name           = var.account_name
-  account_password       = var.account_password
-  account_type           = var.account_type
-  db_instance_id         = var.db_instance_id
-  description            = var.description
-  instance_id            = var.instance_id
+  # account_description - (optional) is a type of string
+  account_description = var.account_description
+  # account_name - (optional) is a type of string
+  account_name = var.account_name
+  # account_password - (optional) is a type of string
+  account_password = var.account_password
+  # account_type - (optional) is a type of string
+  account_type = var.account_type
+  # db_instance_id - (optional) is a type of string
+  db_instance_id = var.db_instance_id
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_id - (optional) is a type of string
+  instance_id = var.instance_id
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
-  name                   = var.name
-  password               = var.password
-  type                   = var.type
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

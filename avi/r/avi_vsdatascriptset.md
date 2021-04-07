@@ -157,21 +157,33 @@ variable "rate_limiters" {
 
 ```terraform
 resource "avi_vsdatascriptset" "this" {
-  created_by           = var.created_by
-  description          = var.description
-  ipgroup_refs         = var.ipgroup_refs
-  name                 = var.name
-  pool_group_refs      = var.pool_group_refs
-  pool_refs            = var.pool_refs
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
+  description = var.description
+  # ipgroup_refs - (optional) is a type of list of string
+  ipgroup_refs = var.ipgroup_refs
+  # name - (required) is a type of string
+  name = var.name
+  # pool_group_refs - (optional) is a type of list of string
+  pool_group_refs = var.pool_group_refs
+  # pool_refs - (optional) is a type of list of string
+  pool_refs = var.pool_refs
+  # protocol_parser_refs - (optional) is a type of list of string
   protocol_parser_refs = var.protocol_parser_refs
-  string_group_refs    = var.string_group_refs
-  tenant_ref           = var.tenant_ref
-  uuid                 = var.uuid
+  # string_group_refs - (optional) is a type of list of string
+  string_group_refs = var.string_group_refs
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "datascript" {
     for_each = var.datascript
     content {
-      evt    = datascript.value["evt"]
+      # evt - (required) is a type of string
+      evt = datascript.value["evt"]
+      # script - (required) is a type of string
       script = datascript.value["script"]
     }
   }
@@ -179,10 +191,14 @@ resource "avi_vsdatascriptset" "this" {
   dynamic "rate_limiters" {
     for_each = var.rate_limiters
     content {
+      # burst_sz - (optional) is a type of number
       burst_sz = rate_limiters.value["burst_sz"]
-      count    = rate_limiters.value["count"]
-      name     = rate_limiters.value["name"]
-      period   = rate_limiters.value["period"]
+      # count - (optional) is a type of number
+      count = rate_limiters.value["count"]
+      # name - (optional) is a type of string
+      name = rate_limiters.value["name"]
+      # period - (optional) is a type of number
+      period = rate_limiters.value["period"]
     }
   }
 

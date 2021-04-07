@@ -65,9 +65,12 @@ variable "user_id" {
 
 ```terraform
 data "alicloud_privatelink_vpc_endpoint_service_users" "this" {
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  service_id  = var.service_id
-  user_id     = var.user_id
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # user_id - (optional) is a type of string
+  user_id = var.user_id
 }
 ```
 

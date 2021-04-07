@@ -93,17 +93,25 @@ variable "policy" {
 
 ```terraform
 resource "aviatrix_vpn_profile" "this" {
-  base_rule              = var.base_rule
+  # base_rule - (optional) is a type of string
+  base_rule = var.base_rule
+  # manage_user_attachment - (optional) is a type of bool
   manage_user_attachment = var.manage_user_attachment
-  name                   = var.name
-  users                  = var.users
+  # name - (required) is a type of string
+  name = var.name
+  # users - (optional) is a type of list of string
+  users = var.users
 
   dynamic "policy" {
     for_each = var.policy
     content {
+      # action - (required) is a type of string
       action = policy.value["action"]
-      port   = policy.value["port"]
-      proto  = policy.value["proto"]
+      # port - (required) is a type of string
+      port = policy.value["port"]
+      # proto - (required) is a type of string
+      proto = policy.value["proto"]
+      # target - (required) is a type of string
       target = policy.value["target"]
     }
   }

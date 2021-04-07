@@ -49,6 +49,7 @@ variable "country" {
 
 ```terraform
 data "akamai_iam_states" "this" {
+  # country - (required) is a type of string
   country = var.country
 }
 ```

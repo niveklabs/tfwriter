@@ -162,23 +162,33 @@ variable "match" {
 
 ```terraform
 resource "cloudflare_rate_limit" "this" {
+  # bypass_url_patterns - (optional) is a type of set of string
   bypass_url_patterns = var.bypass_url_patterns
-  description         = var.description
-  disabled            = var.disabled
-  period              = var.period
-  threshold           = var.threshold
-  zone_id             = var.zone_id
+  # description - (optional) is a type of string
+  description = var.description
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # period - (required) is a type of number
+  period = var.period
+  # threshold - (required) is a type of number
+  threshold = var.threshold
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "action" {
     for_each = var.action
     content {
-      mode    = action.value["mode"]
+      # mode - (required) is a type of string
+      mode = action.value["mode"]
+      # timeout - (optional) is a type of number
       timeout = action.value["timeout"]
 
       dynamic "response" {
         for_each = action.value.response
         content {
-          body         = response.value["body"]
+          # body - (required) is a type of string
+          body = response.value["body"]
+          # content_type - (required) is a type of string
           content_type = response.value["content_type"]
         }
       }
@@ -189,6 +199,7 @@ resource "cloudflare_rate_limit" "this" {
   dynamic "correlate" {
     for_each = var.correlate
     content {
+      # by - (optional) is a type of string
       by = correlate.value["by"]
     }
   }
@@ -200,8 +211,11 @@ resource "cloudflare_rate_limit" "this" {
       dynamic "request" {
         for_each = match.value.request
         content {
-          methods     = request.value["methods"]
-          schemes     = request.value["schemes"]
+          # methods - (optional) is a type of set of string
+          methods = request.value["methods"]
+          # schemes - (optional) is a type of set of string
+          schemes = request.value["schemes"]
+          # url_pattern - (optional) is a type of string
           url_pattern = request.value["url_pattern"]
         }
       }
@@ -209,9 +223,12 @@ resource "cloudflare_rate_limit" "this" {
       dynamic "response" {
         for_each = match.value.response
         content {
-          headers        = response.value["headers"]
+          # headers - (optional) is a type of list of map of string
+          headers = response.value["headers"]
+          # origin_traffic - (optional) is a type of bool
           origin_traffic = response.value["origin_traffic"]
-          statuses       = response.value["statuses"]
+          # statuses - (optional) is a type of set of number
+          statuses = response.value["statuses"]
         }
       }
 

@@ -106,19 +106,29 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_domain_record" "this" {
-  content     = var.content
-  domain      = var.domain
-  name        = var.name
-  prio        = var.prio
+  # content - (required) is a type of string
+  content = var.content
+  # domain - (required) is a type of string
+  domain = var.domain
+  # name - (required) is a type of string
+  name = var.name
+  # prio - (optional) is a type of number
+  prio = var.prio
+  # record_type - (required) is a type of string
   record_type = var.record_type
-  ttl         = var.ttl
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

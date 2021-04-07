@@ -73,10 +73,14 @@ variable "project_id" {
 
 ```terraform
 data "mongodbatlas_project_ip_whitelist" "this" {
+  # aws_security_group - (optional) is a type of string
   aws_security_group = var.aws_security_group
-  cidr_block         = var.cidr_block
-  ip_address         = var.ip_address
-  project_id         = var.project_id
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 }
 ```
 

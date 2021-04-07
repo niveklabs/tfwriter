@@ -81,10 +81,15 @@ variable "vbr_instance_region_id" {
 
 ```terraform
 data "alicloud_cen_vbr_health_checks" "this" {
-  cen_id                 = var.cen_id
-  output_file            = var.output_file
-  vbr_instance_id        = var.vbr_instance_id
-  vbr_instance_owner_id  = var.vbr_instance_owner_id
+  # cen_id - (optional) is a type of string
+  cen_id = var.cen_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # vbr_instance_id - (optional) is a type of string
+  vbr_instance_id = var.vbr_instance_id
+  # vbr_instance_owner_id - (optional) is a type of number
+  vbr_instance_owner_id = var.vbr_instance_owner_id
+  # vbr_instance_region_id - (required) is a type of string
   vbr_instance_region_id = var.vbr_instance_region_id
 }
 ```

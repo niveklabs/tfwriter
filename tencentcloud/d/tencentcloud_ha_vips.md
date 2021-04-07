@@ -82,11 +82,16 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_ha_vips" "this" {
-  address_ip         = var.address_ip
-  name               = var.name
+  # address_ip - (optional) is a type of string
+  address_ip = var.address_ip
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  subnet_id          = var.subnet_id
-  vpc_id             = var.vpc_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

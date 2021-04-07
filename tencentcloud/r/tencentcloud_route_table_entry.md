@@ -78,11 +78,16 @@ variable "route_table_id" {
 
 ```terraform
 resource "tencentcloud_route_table_entry" "this" {
-  description            = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_cidr_block - (required) is a type of string
   destination_cidr_block = var.destination_cidr_block
-  next_hub               = var.next_hub
-  next_type              = var.next_type
-  route_table_id         = var.route_table_id
+  # next_hub - (required) is a type of string
+  next_hub = var.next_hub
+  # next_type - (required) is a type of string
+  next_type = var.next_type
+  # route_table_id - (required) is a type of string
+  route_table_id = var.route_table_id
 }
 ```
 

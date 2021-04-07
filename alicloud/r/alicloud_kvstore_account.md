@@ -120,19 +120,29 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_kvstore_account" "this" {
-  account_name           = var.account_name
-  account_password       = var.account_password
-  account_privilege      = var.account_privilege
-  account_type           = var.account_type
-  description            = var.description
-  instance_id            = var.instance_id
+  # account_name - (required) is a type of string
+  account_name = var.account_name
+  # account_password - (optional) is a type of string
+  account_password = var.account_password
+  # account_privilege - (optional) is a type of string
+  account_privilege = var.account_privilege
+  # account_type - (optional) is a type of string
+  account_type = var.account_type
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

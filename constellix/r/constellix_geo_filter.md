@@ -104,14 +104,22 @@ variable "name" {
 
 ```terraform
 resource "constellix_geo_filter" "this" {
-  asn                = var.asn
+  # asn - (optional) is a type of list of number
+  asn = var.asn
+  # filter_rules_limit - (optional) is a type of number
   filter_rules_limit = var.filter_rules_limit
-  geoip_continents   = var.geoip_continents
-  geoip_countries    = var.geoip_countries
-  geoip_regions      = var.geoip_regions
-  ipv4               = var.ipv4
-  ipv6               = var.ipv6
-  name               = var.name
+  # geoip_continents - (required) is a type of list of string
+  geoip_continents = var.geoip_continents
+  # geoip_countries - (optional) is a type of list of string
+  geoip_countries = var.geoip_countries
+  # geoip_regions - (optional) is a type of list of string
+  geoip_regions = var.geoip_regions
+  # ipv4 - (optional) is a type of list of string
+  ipv4 = var.ipv4
+  # ipv6 - (optional) is a type of list of string
+  ipv6 = var.ipv6
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

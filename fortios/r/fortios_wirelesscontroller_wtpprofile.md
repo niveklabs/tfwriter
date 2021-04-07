@@ -922,40 +922,71 @@ variable "split_tunneling_acl" {
 
 ```terraform
 resource "fortios_wirelesscontroller_wtpprofile" "this" {
-  allowaccess                         = var.allowaccess
-  ap_country                          = var.ap_country
-  ap_handoff                          = var.ap_handoff
-  apcfg_profile                       = var.apcfg_profile
-  ble_profile                         = var.ble_profile
-  comment                             = var.comment
-  control_message_offload             = var.control_message_offload
-  dtls_in_kernel                      = var.dtls_in_kernel
-  dtls_policy                         = var.dtls_policy
-  dynamic_sort_subtable               = var.dynamic_sort_subtable
-  energy_efficient_ethernet           = var.energy_efficient_ethernet
-  ext_info_enable                     = var.ext_info_enable
-  frequency_handoff                   = var.frequency_handoff
-  handoff_roaming                     = var.handoff_roaming
-  handoff_rssi                        = var.handoff_rssi
-  handoff_sta_thresh                  = var.handoff_sta_thresh
-  ip_fragment_preventing              = var.ip_fragment_preventing
-  led_state                           = var.led_state
-  lldp                                = var.lldp
-  login_passwd                        = var.login_passwd
-  login_passwd_change                 = var.login_passwd_change
-  max_clients                         = var.max_clients
-  name                                = var.name
-  poe_mode                            = var.poe_mode
+  # allowaccess - (optional) is a type of string
+  allowaccess = var.allowaccess
+  # ap_country - (optional) is a type of string
+  ap_country = var.ap_country
+  # ap_handoff - (optional) is a type of string
+  ap_handoff = var.ap_handoff
+  # apcfg_profile - (optional) is a type of string
+  apcfg_profile = var.apcfg_profile
+  # ble_profile - (optional) is a type of string
+  ble_profile = var.ble_profile
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # control_message_offload - (optional) is a type of string
+  control_message_offload = var.control_message_offload
+  # dtls_in_kernel - (optional) is a type of string
+  dtls_in_kernel = var.dtls_in_kernel
+  # dtls_policy - (optional) is a type of string
+  dtls_policy = var.dtls_policy
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # energy_efficient_ethernet - (optional) is a type of string
+  energy_efficient_ethernet = var.energy_efficient_ethernet
+  # ext_info_enable - (optional) is a type of string
+  ext_info_enable = var.ext_info_enable
+  # frequency_handoff - (optional) is a type of string
+  frequency_handoff = var.frequency_handoff
+  # handoff_roaming - (optional) is a type of string
+  handoff_roaming = var.handoff_roaming
+  # handoff_rssi - (optional) is a type of number
+  handoff_rssi = var.handoff_rssi
+  # handoff_sta_thresh - (optional) is a type of number
+  handoff_sta_thresh = var.handoff_sta_thresh
+  # ip_fragment_preventing - (optional) is a type of string
+  ip_fragment_preventing = var.ip_fragment_preventing
+  # led_state - (optional) is a type of string
+  led_state = var.led_state
+  # lldp - (optional) is a type of string
+  lldp = var.lldp
+  # login_passwd - (optional) is a type of string
+  login_passwd = var.login_passwd
+  # login_passwd_change - (optional) is a type of string
+  login_passwd_change = var.login_passwd_change
+  # max_clients - (optional) is a type of number
+  max_clients = var.max_clients
+  # name - (optional) is a type of string
+  name = var.name
+  # poe_mode - (optional) is a type of string
+  poe_mode = var.poe_mode
+  # split_tunneling_acl_local_ap_subnet - (optional) is a type of string
   split_tunneling_acl_local_ap_subnet = var.split_tunneling_acl_local_ap_subnet
-  split_tunneling_acl_path            = var.split_tunneling_acl_path
-  tun_mtu_downlink                    = var.tun_mtu_downlink
-  tun_mtu_uplink                      = var.tun_mtu_uplink
-  wan_port_mode                       = var.wan_port_mode
+  # split_tunneling_acl_path - (optional) is a type of string
+  split_tunneling_acl_path = var.split_tunneling_acl_path
+  # tun_mtu_downlink - (optional) is a type of number
+  tun_mtu_downlink = var.tun_mtu_downlink
+  # tun_mtu_uplink - (optional) is a type of number
+  tun_mtu_uplink = var.tun_mtu_uplink
+  # wan_port_mode - (optional) is a type of string
+  wan_port_mode = var.wan_port_mode
 
   dynamic "deny_mac_list" {
     for_each = var.deny_mac_list
     content {
-      id  = deny_mac_list.value["id"]
+      # id - (optional) is a type of number
+      id = deny_mac_list.value["id"]
+      # mac - (optional) is a type of string
       mac = deny_mac_list.value["mac"]
     }
   }
@@ -963,60 +994,103 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "lan" {
     for_each = var.lan
     content {
-      port1_mode    = lan.value["port1_mode"]
-      port1_ssid    = lan.value["port1_ssid"]
-      port2_mode    = lan.value["port2_mode"]
-      port2_ssid    = lan.value["port2_ssid"]
-      port3_mode    = lan.value["port3_mode"]
-      port3_ssid    = lan.value["port3_ssid"]
-      port4_mode    = lan.value["port4_mode"]
-      port4_ssid    = lan.value["port4_ssid"]
-      port5_mode    = lan.value["port5_mode"]
-      port5_ssid    = lan.value["port5_ssid"]
-      port6_mode    = lan.value["port6_mode"]
-      port6_ssid    = lan.value["port6_ssid"]
-      port7_mode    = lan.value["port7_mode"]
-      port7_ssid    = lan.value["port7_ssid"]
-      port8_mode    = lan.value["port8_mode"]
-      port8_ssid    = lan.value["port8_ssid"]
+      # port1_mode - (optional) is a type of string
+      port1_mode = lan.value["port1_mode"]
+      # port1_ssid - (optional) is a type of string
+      port1_ssid = lan.value["port1_ssid"]
+      # port2_mode - (optional) is a type of string
+      port2_mode = lan.value["port2_mode"]
+      # port2_ssid - (optional) is a type of string
+      port2_ssid = lan.value["port2_ssid"]
+      # port3_mode - (optional) is a type of string
+      port3_mode = lan.value["port3_mode"]
+      # port3_ssid - (optional) is a type of string
+      port3_ssid = lan.value["port3_ssid"]
+      # port4_mode - (optional) is a type of string
+      port4_mode = lan.value["port4_mode"]
+      # port4_ssid - (optional) is a type of string
+      port4_ssid = lan.value["port4_ssid"]
+      # port5_mode - (optional) is a type of string
+      port5_mode = lan.value["port5_mode"]
+      # port5_ssid - (optional) is a type of string
+      port5_ssid = lan.value["port5_ssid"]
+      # port6_mode - (optional) is a type of string
+      port6_mode = lan.value["port6_mode"]
+      # port6_ssid - (optional) is a type of string
+      port6_ssid = lan.value["port6_ssid"]
+      # port7_mode - (optional) is a type of string
+      port7_mode = lan.value["port7_mode"]
+      # port7_ssid - (optional) is a type of string
+      port7_ssid = lan.value["port7_ssid"]
+      # port8_mode - (optional) is a type of string
+      port8_mode = lan.value["port8_mode"]
+      # port8_ssid - (optional) is a type of string
+      port8_ssid = lan.value["port8_ssid"]
+      # port_esl_mode - (optional) is a type of string
       port_esl_mode = lan.value["port_esl_mode"]
+      # port_esl_ssid - (optional) is a type of string
       port_esl_ssid = lan.value["port_esl_ssid"]
-      port_mode     = lan.value["port_mode"]
-      port_ssid     = lan.value["port_ssid"]
+      # port_mode - (optional) is a type of string
+      port_mode = lan.value["port_mode"]
+      # port_ssid - (optional) is a type of string
+      port_ssid = lan.value["port_ssid"]
     }
   }
 
   dynamic "lbs" {
     for_each = var.lbs
     content {
-      aeroscout               = lbs.value["aeroscout"]
-      aeroscout_ap_mac        = lbs.value["aeroscout_ap_mac"]
-      aeroscout_mmu_report    = lbs.value["aeroscout_mmu_report"]
-      aeroscout_mu            = lbs.value["aeroscout_mu"]
-      aeroscout_mu_factor     = lbs.value["aeroscout_mu_factor"]
-      aeroscout_mu_timeout    = lbs.value["aeroscout_mu_timeout"]
-      aeroscout_server_ip     = lbs.value["aeroscout_server_ip"]
-      aeroscout_server_port   = lbs.value["aeroscout_server_port"]
-      ekahau_blink_mode       = lbs.value["ekahau_blink_mode"]
-      ekahau_tag              = lbs.value["ekahau_tag"]
-      erc_server_ip           = lbs.value["erc_server_ip"]
-      erc_server_port         = lbs.value["erc_server_port"]
-      fortipresence           = lbs.value["fortipresence"]
-      fortipresence_ble       = lbs.value["fortipresence_ble"]
+      # aeroscout - (optional) is a type of string
+      aeroscout = lbs.value["aeroscout"]
+      # aeroscout_ap_mac - (optional) is a type of string
+      aeroscout_ap_mac = lbs.value["aeroscout_ap_mac"]
+      # aeroscout_mmu_report - (optional) is a type of string
+      aeroscout_mmu_report = lbs.value["aeroscout_mmu_report"]
+      # aeroscout_mu - (optional) is a type of string
+      aeroscout_mu = lbs.value["aeroscout_mu"]
+      # aeroscout_mu_factor - (optional) is a type of number
+      aeroscout_mu_factor = lbs.value["aeroscout_mu_factor"]
+      # aeroscout_mu_timeout - (optional) is a type of number
+      aeroscout_mu_timeout = lbs.value["aeroscout_mu_timeout"]
+      # aeroscout_server_ip - (optional) is a type of string
+      aeroscout_server_ip = lbs.value["aeroscout_server_ip"]
+      # aeroscout_server_port - (optional) is a type of number
+      aeroscout_server_port = lbs.value["aeroscout_server_port"]
+      # ekahau_blink_mode - (optional) is a type of string
+      ekahau_blink_mode = lbs.value["ekahau_blink_mode"]
+      # ekahau_tag - (optional) is a type of string
+      ekahau_tag = lbs.value["ekahau_tag"]
+      # erc_server_ip - (optional) is a type of string
+      erc_server_ip = lbs.value["erc_server_ip"]
+      # erc_server_port - (optional) is a type of number
+      erc_server_port = lbs.value["erc_server_port"]
+      # fortipresence - (optional) is a type of string
+      fortipresence = lbs.value["fortipresence"]
+      # fortipresence_ble - (optional) is a type of string
+      fortipresence_ble = lbs.value["fortipresence_ble"]
+      # fortipresence_frequency - (optional) is a type of number
       fortipresence_frequency = lbs.value["fortipresence_frequency"]
-      fortipresence_port      = lbs.value["fortipresence_port"]
-      fortipresence_project   = lbs.value["fortipresence_project"]
-      fortipresence_rogue     = lbs.value["fortipresence_rogue"]
-      fortipresence_secret    = lbs.value["fortipresence_secret"]
-      fortipresence_server    = lbs.value["fortipresence_server"]
-      fortipresence_unassoc   = lbs.value["fortipresence_unassoc"]
-      station_locate          = lbs.value["station_locate"]
+      # fortipresence_port - (optional) is a type of number
+      fortipresence_port = lbs.value["fortipresence_port"]
+      # fortipresence_project - (optional) is a type of string
+      fortipresence_project = lbs.value["fortipresence_project"]
+      # fortipresence_rogue - (optional) is a type of string
+      fortipresence_rogue = lbs.value["fortipresence_rogue"]
+      # fortipresence_secret - (optional) is a type of string
+      fortipresence_secret = lbs.value["fortipresence_secret"]
+      # fortipresence_server - (optional) is a type of string
+      fortipresence_server = lbs.value["fortipresence_server"]
+      # fortipresence_unassoc - (optional) is a type of string
+      fortipresence_unassoc = lbs.value["fortipresence_unassoc"]
+      # station_locate - (optional) is a type of string
+      station_locate = lbs.value["station_locate"]
     }
   }
 
   dynamic "led_schedules" {
     for_each = var.led_schedules
     content {
+      # name - (optional) is a type of string
       name = led_schedules.value["name"]
     }
   }
@@ -1024,65 +1098,115 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "platform" {
     for_each = var.platform
     content {
+      # ddscan - (optional) is a type of string
       ddscan = platform.value["ddscan"]
-      mode   = platform.value["mode"]
-      type   = platform.value["type"]
+      # mode - (optional) is a type of string
+      mode = platform.value["mode"]
+      # type - (optional) is a type of string
+      type = platform.value["type"]
     }
   }
 
   dynamic "radio_1" {
     for_each = var.radio_1
     content {
-      airtime_fairness            = radio_1.value["airtime_fairness"]
-      amsdu                       = radio_1.value["amsdu"]
-      ap_handoff                  = radio_1.value["ap_handoff"]
-      ap_sniffer_addr             = radio_1.value["ap_sniffer_addr"]
-      ap_sniffer_bufsize          = radio_1.value["ap_sniffer_bufsize"]
-      ap_sniffer_chan             = radio_1.value["ap_sniffer_chan"]
-      ap_sniffer_ctl              = radio_1.value["ap_sniffer_ctl"]
-      ap_sniffer_data             = radio_1.value["ap_sniffer_data"]
-      ap_sniffer_mgmt_beacon      = radio_1.value["ap_sniffer_mgmt_beacon"]
-      ap_sniffer_mgmt_other       = radio_1.value["ap_sniffer_mgmt_other"]
-      ap_sniffer_mgmt_probe       = radio_1.value["ap_sniffer_mgmt_probe"]
-      auto_power_high             = radio_1.value["auto_power_high"]
-      auto_power_level            = radio_1.value["auto_power_level"]
-      auto_power_low              = radio_1.value["auto_power_low"]
-      auto_power_target           = radio_1.value["auto_power_target"]
-      band                        = radio_1.value["band"]
-      band_5g_type                = radio_1.value["band_5g_type"]
+      # airtime_fairness - (optional) is a type of string
+      airtime_fairness = radio_1.value["airtime_fairness"]
+      # amsdu - (optional) is a type of string
+      amsdu = radio_1.value["amsdu"]
+      # ap_handoff - (optional) is a type of string
+      ap_handoff = radio_1.value["ap_handoff"]
+      # ap_sniffer_addr - (optional) is a type of string
+      ap_sniffer_addr = radio_1.value["ap_sniffer_addr"]
+      # ap_sniffer_bufsize - (optional) is a type of number
+      ap_sniffer_bufsize = radio_1.value["ap_sniffer_bufsize"]
+      # ap_sniffer_chan - (optional) is a type of number
+      ap_sniffer_chan = radio_1.value["ap_sniffer_chan"]
+      # ap_sniffer_ctl - (optional) is a type of string
+      ap_sniffer_ctl = radio_1.value["ap_sniffer_ctl"]
+      # ap_sniffer_data - (optional) is a type of string
+      ap_sniffer_data = radio_1.value["ap_sniffer_data"]
+      # ap_sniffer_mgmt_beacon - (optional) is a type of string
+      ap_sniffer_mgmt_beacon = radio_1.value["ap_sniffer_mgmt_beacon"]
+      # ap_sniffer_mgmt_other - (optional) is a type of string
+      ap_sniffer_mgmt_other = radio_1.value["ap_sniffer_mgmt_other"]
+      # ap_sniffer_mgmt_probe - (optional) is a type of string
+      ap_sniffer_mgmt_probe = radio_1.value["ap_sniffer_mgmt_probe"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_1.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_1.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_1.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
+      auto_power_target = radio_1.value["auto_power_target"]
+      # band - (optional) is a type of string
+      band = radio_1.value["band"]
+      # band_5g_type - (optional) is a type of string
+      band_5g_type = radio_1.value["band_5g_type"]
+      # bandwidth_admission_control - (optional) is a type of string
       bandwidth_admission_control = radio_1.value["bandwidth_admission_control"]
-      bandwidth_capacity          = radio_1.value["bandwidth_capacity"]
-      beacon_interval             = radio_1.value["beacon_interval"]
-      bss_color                   = radio_1.value["bss_color"]
-      call_admission_control      = radio_1.value["call_admission_control"]
-      call_capacity               = radio_1.value["call_capacity"]
-      channel_bonding             = radio_1.value["channel_bonding"]
-      channel_utilization         = radio_1.value["channel_utilization"]
-      coexistence                 = radio_1.value["coexistence"]
-      darrp                       = radio_1.value["darrp"]
-      drma                        = radio_1.value["drma"]
-      drma_sensitivity            = radio_1.value["drma_sensitivity"]
-      dtim                        = radio_1.value["dtim"]
-      frag_threshold              = radio_1.value["frag_threshold"]
-      frequency_handoff           = radio_1.value["frequency_handoff"]
-      max_clients                 = radio_1.value["max_clients"]
-      max_distance                = radio_1.value["max_distance"]
-      mode                        = radio_1.value["mode"]
-      power_level                 = radio_1.value["power_level"]
-      powersave_optimize          = radio_1.value["powersave_optimize"]
-      protection_mode             = radio_1.value["protection_mode"]
-      radio_id                    = radio_1.value["radio_id"]
-      rts_threshold               = radio_1.value["rts_threshold"]
-      short_guard_interval        = radio_1.value["short_guard_interval"]
-      spectrum_analysis           = radio_1.value["spectrum_analysis"]
-      transmit_optimize           = radio_1.value["transmit_optimize"]
-      vap_all                     = radio_1.value["vap_all"]
-      wids_profile                = radio_1.value["wids_profile"]
-      zero_wait_dfs               = radio_1.value["zero_wait_dfs"]
+      # bandwidth_capacity - (optional) is a type of number
+      bandwidth_capacity = radio_1.value["bandwidth_capacity"]
+      # beacon_interval - (optional) is a type of number
+      beacon_interval = radio_1.value["beacon_interval"]
+      # bss_color - (optional) is a type of number
+      bss_color = radio_1.value["bss_color"]
+      # call_admission_control - (optional) is a type of string
+      call_admission_control = radio_1.value["call_admission_control"]
+      # call_capacity - (optional) is a type of number
+      call_capacity = radio_1.value["call_capacity"]
+      # channel_bonding - (optional) is a type of string
+      channel_bonding = radio_1.value["channel_bonding"]
+      # channel_utilization - (optional) is a type of string
+      channel_utilization = radio_1.value["channel_utilization"]
+      # coexistence - (optional) is a type of string
+      coexistence = radio_1.value["coexistence"]
+      # darrp - (optional) is a type of string
+      darrp = radio_1.value["darrp"]
+      # drma - (optional) is a type of string
+      drma = radio_1.value["drma"]
+      # drma_sensitivity - (optional) is a type of string
+      drma_sensitivity = radio_1.value["drma_sensitivity"]
+      # dtim - (optional) is a type of number
+      dtim = radio_1.value["dtim"]
+      # frag_threshold - (optional) is a type of number
+      frag_threshold = radio_1.value["frag_threshold"]
+      # frequency_handoff - (optional) is a type of string
+      frequency_handoff = radio_1.value["frequency_handoff"]
+      # max_clients - (optional) is a type of number
+      max_clients = radio_1.value["max_clients"]
+      # max_distance - (optional) is a type of number
+      max_distance = radio_1.value["max_distance"]
+      # mode - (optional) is a type of string
+      mode = radio_1.value["mode"]
+      # power_level - (optional) is a type of number
+      power_level = radio_1.value["power_level"]
+      # powersave_optimize - (optional) is a type of string
+      powersave_optimize = radio_1.value["powersave_optimize"]
+      # protection_mode - (optional) is a type of string
+      protection_mode = radio_1.value["protection_mode"]
+      # radio_id - (optional) is a type of number
+      radio_id = radio_1.value["radio_id"]
+      # rts_threshold - (optional) is a type of number
+      rts_threshold = radio_1.value["rts_threshold"]
+      # short_guard_interval - (optional) is a type of string
+      short_guard_interval = radio_1.value["short_guard_interval"]
+      # spectrum_analysis - (optional) is a type of string
+      spectrum_analysis = radio_1.value["spectrum_analysis"]
+      # transmit_optimize - (optional) is a type of string
+      transmit_optimize = radio_1.value["transmit_optimize"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_1.value["vap_all"]
+      # wids_profile - (optional) is a type of string
+      wids_profile = radio_1.value["wids_profile"]
+      # zero_wait_dfs - (optional) is a type of string
+      zero_wait_dfs = radio_1.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_1.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -1090,6 +1214,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       dynamic "vaps" {
         for_each = radio_1.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -1100,56 +1225,103 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "radio_2" {
     for_each = var.radio_2
     content {
-      airtime_fairness            = radio_2.value["airtime_fairness"]
-      amsdu                       = radio_2.value["amsdu"]
-      ap_handoff                  = radio_2.value["ap_handoff"]
-      ap_sniffer_addr             = radio_2.value["ap_sniffer_addr"]
-      ap_sniffer_bufsize          = radio_2.value["ap_sniffer_bufsize"]
-      ap_sniffer_chan             = radio_2.value["ap_sniffer_chan"]
-      ap_sniffer_ctl              = radio_2.value["ap_sniffer_ctl"]
-      ap_sniffer_data             = radio_2.value["ap_sniffer_data"]
-      ap_sniffer_mgmt_beacon      = radio_2.value["ap_sniffer_mgmt_beacon"]
-      ap_sniffer_mgmt_other       = radio_2.value["ap_sniffer_mgmt_other"]
-      ap_sniffer_mgmt_probe       = radio_2.value["ap_sniffer_mgmt_probe"]
-      auto_power_high             = radio_2.value["auto_power_high"]
-      auto_power_level            = radio_2.value["auto_power_level"]
-      auto_power_low              = radio_2.value["auto_power_low"]
-      auto_power_target           = radio_2.value["auto_power_target"]
-      band                        = radio_2.value["band"]
-      band_5g_type                = radio_2.value["band_5g_type"]
+      # airtime_fairness - (optional) is a type of string
+      airtime_fairness = radio_2.value["airtime_fairness"]
+      # amsdu - (optional) is a type of string
+      amsdu = radio_2.value["amsdu"]
+      # ap_handoff - (optional) is a type of string
+      ap_handoff = radio_2.value["ap_handoff"]
+      # ap_sniffer_addr - (optional) is a type of string
+      ap_sniffer_addr = radio_2.value["ap_sniffer_addr"]
+      # ap_sniffer_bufsize - (optional) is a type of number
+      ap_sniffer_bufsize = radio_2.value["ap_sniffer_bufsize"]
+      # ap_sniffer_chan - (optional) is a type of number
+      ap_sniffer_chan = radio_2.value["ap_sniffer_chan"]
+      # ap_sniffer_ctl - (optional) is a type of string
+      ap_sniffer_ctl = radio_2.value["ap_sniffer_ctl"]
+      # ap_sniffer_data - (optional) is a type of string
+      ap_sniffer_data = radio_2.value["ap_sniffer_data"]
+      # ap_sniffer_mgmt_beacon - (optional) is a type of string
+      ap_sniffer_mgmt_beacon = radio_2.value["ap_sniffer_mgmt_beacon"]
+      # ap_sniffer_mgmt_other - (optional) is a type of string
+      ap_sniffer_mgmt_other = radio_2.value["ap_sniffer_mgmt_other"]
+      # ap_sniffer_mgmt_probe - (optional) is a type of string
+      ap_sniffer_mgmt_probe = radio_2.value["ap_sniffer_mgmt_probe"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_2.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_2.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_2.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
+      auto_power_target = radio_2.value["auto_power_target"]
+      # band - (optional) is a type of string
+      band = radio_2.value["band"]
+      # band_5g_type - (optional) is a type of string
+      band_5g_type = radio_2.value["band_5g_type"]
+      # bandwidth_admission_control - (optional) is a type of string
       bandwidth_admission_control = radio_2.value["bandwidth_admission_control"]
-      bandwidth_capacity          = radio_2.value["bandwidth_capacity"]
-      beacon_interval             = radio_2.value["beacon_interval"]
-      bss_color                   = radio_2.value["bss_color"]
-      call_admission_control      = radio_2.value["call_admission_control"]
-      call_capacity               = radio_2.value["call_capacity"]
-      channel_bonding             = radio_2.value["channel_bonding"]
-      channel_utilization         = radio_2.value["channel_utilization"]
-      coexistence                 = radio_2.value["coexistence"]
-      darrp                       = radio_2.value["darrp"]
-      drma                        = radio_2.value["drma"]
-      drma_sensitivity            = radio_2.value["drma_sensitivity"]
-      dtim                        = radio_2.value["dtim"]
-      frag_threshold              = radio_2.value["frag_threshold"]
-      frequency_handoff           = radio_2.value["frequency_handoff"]
-      max_clients                 = radio_2.value["max_clients"]
-      max_distance                = radio_2.value["max_distance"]
-      mode                        = radio_2.value["mode"]
-      power_level                 = radio_2.value["power_level"]
-      powersave_optimize          = radio_2.value["powersave_optimize"]
-      protection_mode             = radio_2.value["protection_mode"]
-      radio_id                    = radio_2.value["radio_id"]
-      rts_threshold               = radio_2.value["rts_threshold"]
-      short_guard_interval        = radio_2.value["short_guard_interval"]
-      spectrum_analysis           = radio_2.value["spectrum_analysis"]
-      transmit_optimize           = radio_2.value["transmit_optimize"]
-      vap_all                     = radio_2.value["vap_all"]
-      wids_profile                = radio_2.value["wids_profile"]
-      zero_wait_dfs               = radio_2.value["zero_wait_dfs"]
+      # bandwidth_capacity - (optional) is a type of number
+      bandwidth_capacity = radio_2.value["bandwidth_capacity"]
+      # beacon_interval - (optional) is a type of number
+      beacon_interval = radio_2.value["beacon_interval"]
+      # bss_color - (optional) is a type of number
+      bss_color = radio_2.value["bss_color"]
+      # call_admission_control - (optional) is a type of string
+      call_admission_control = radio_2.value["call_admission_control"]
+      # call_capacity - (optional) is a type of number
+      call_capacity = radio_2.value["call_capacity"]
+      # channel_bonding - (optional) is a type of string
+      channel_bonding = radio_2.value["channel_bonding"]
+      # channel_utilization - (optional) is a type of string
+      channel_utilization = radio_2.value["channel_utilization"]
+      # coexistence - (optional) is a type of string
+      coexistence = radio_2.value["coexistence"]
+      # darrp - (optional) is a type of string
+      darrp = radio_2.value["darrp"]
+      # drma - (optional) is a type of string
+      drma = radio_2.value["drma"]
+      # drma_sensitivity - (optional) is a type of string
+      drma_sensitivity = radio_2.value["drma_sensitivity"]
+      # dtim - (optional) is a type of number
+      dtim = radio_2.value["dtim"]
+      # frag_threshold - (optional) is a type of number
+      frag_threshold = radio_2.value["frag_threshold"]
+      # frequency_handoff - (optional) is a type of string
+      frequency_handoff = radio_2.value["frequency_handoff"]
+      # max_clients - (optional) is a type of number
+      max_clients = radio_2.value["max_clients"]
+      # max_distance - (optional) is a type of number
+      max_distance = radio_2.value["max_distance"]
+      # mode - (optional) is a type of string
+      mode = radio_2.value["mode"]
+      # power_level - (optional) is a type of number
+      power_level = radio_2.value["power_level"]
+      # powersave_optimize - (optional) is a type of string
+      powersave_optimize = radio_2.value["powersave_optimize"]
+      # protection_mode - (optional) is a type of string
+      protection_mode = radio_2.value["protection_mode"]
+      # radio_id - (optional) is a type of number
+      radio_id = radio_2.value["radio_id"]
+      # rts_threshold - (optional) is a type of number
+      rts_threshold = radio_2.value["rts_threshold"]
+      # short_guard_interval - (optional) is a type of string
+      short_guard_interval = radio_2.value["short_guard_interval"]
+      # spectrum_analysis - (optional) is a type of string
+      spectrum_analysis = radio_2.value["spectrum_analysis"]
+      # transmit_optimize - (optional) is a type of string
+      transmit_optimize = radio_2.value["transmit_optimize"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_2.value["vap_all"]
+      # wids_profile - (optional) is a type of string
+      wids_profile = radio_2.value["wids_profile"]
+      # zero_wait_dfs - (optional) is a type of string
+      zero_wait_dfs = radio_2.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_2.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -1157,6 +1329,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       dynamic "vaps" {
         for_each = radio_2.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -1167,55 +1340,101 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "radio_3" {
     for_each = var.radio_3
     content {
-      airtime_fairness            = radio_3.value["airtime_fairness"]
-      amsdu                       = radio_3.value["amsdu"]
-      ap_handoff                  = radio_3.value["ap_handoff"]
-      ap_sniffer_addr             = radio_3.value["ap_sniffer_addr"]
-      ap_sniffer_bufsize          = radio_3.value["ap_sniffer_bufsize"]
-      ap_sniffer_chan             = radio_3.value["ap_sniffer_chan"]
-      ap_sniffer_ctl              = radio_3.value["ap_sniffer_ctl"]
-      ap_sniffer_data             = radio_3.value["ap_sniffer_data"]
-      ap_sniffer_mgmt_beacon      = radio_3.value["ap_sniffer_mgmt_beacon"]
-      ap_sniffer_mgmt_other       = radio_3.value["ap_sniffer_mgmt_other"]
-      ap_sniffer_mgmt_probe       = radio_3.value["ap_sniffer_mgmt_probe"]
-      auto_power_high             = radio_3.value["auto_power_high"]
-      auto_power_level            = radio_3.value["auto_power_level"]
-      auto_power_low              = radio_3.value["auto_power_low"]
-      auto_power_target           = radio_3.value["auto_power_target"]
-      band                        = radio_3.value["band"]
-      band_5g_type                = radio_3.value["band_5g_type"]
+      # airtime_fairness - (optional) is a type of string
+      airtime_fairness = radio_3.value["airtime_fairness"]
+      # amsdu - (optional) is a type of string
+      amsdu = radio_3.value["amsdu"]
+      # ap_handoff - (optional) is a type of string
+      ap_handoff = radio_3.value["ap_handoff"]
+      # ap_sniffer_addr - (optional) is a type of string
+      ap_sniffer_addr = radio_3.value["ap_sniffer_addr"]
+      # ap_sniffer_bufsize - (optional) is a type of number
+      ap_sniffer_bufsize = radio_3.value["ap_sniffer_bufsize"]
+      # ap_sniffer_chan - (optional) is a type of number
+      ap_sniffer_chan = radio_3.value["ap_sniffer_chan"]
+      # ap_sniffer_ctl - (optional) is a type of string
+      ap_sniffer_ctl = radio_3.value["ap_sniffer_ctl"]
+      # ap_sniffer_data - (optional) is a type of string
+      ap_sniffer_data = radio_3.value["ap_sniffer_data"]
+      # ap_sniffer_mgmt_beacon - (optional) is a type of string
+      ap_sniffer_mgmt_beacon = radio_3.value["ap_sniffer_mgmt_beacon"]
+      # ap_sniffer_mgmt_other - (optional) is a type of string
+      ap_sniffer_mgmt_other = radio_3.value["ap_sniffer_mgmt_other"]
+      # ap_sniffer_mgmt_probe - (optional) is a type of string
+      ap_sniffer_mgmt_probe = radio_3.value["ap_sniffer_mgmt_probe"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_3.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_3.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_3.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
+      auto_power_target = radio_3.value["auto_power_target"]
+      # band - (optional) is a type of string
+      band = radio_3.value["band"]
+      # band_5g_type - (optional) is a type of string
+      band_5g_type = radio_3.value["band_5g_type"]
+      # bandwidth_admission_control - (optional) is a type of string
       bandwidth_admission_control = radio_3.value["bandwidth_admission_control"]
-      bandwidth_capacity          = radio_3.value["bandwidth_capacity"]
-      beacon_interval             = radio_3.value["beacon_interval"]
-      bss_color                   = radio_3.value["bss_color"]
-      call_admission_control      = radio_3.value["call_admission_control"]
-      call_capacity               = radio_3.value["call_capacity"]
-      channel_bonding             = radio_3.value["channel_bonding"]
-      channel_utilization         = radio_3.value["channel_utilization"]
-      coexistence                 = radio_3.value["coexistence"]
-      darrp                       = radio_3.value["darrp"]
-      drma                        = radio_3.value["drma"]
-      drma_sensitivity            = radio_3.value["drma_sensitivity"]
-      dtim                        = radio_3.value["dtim"]
-      frag_threshold              = radio_3.value["frag_threshold"]
-      frequency_handoff           = radio_3.value["frequency_handoff"]
-      max_clients                 = radio_3.value["max_clients"]
-      max_distance                = radio_3.value["max_distance"]
-      mode                        = radio_3.value["mode"]
-      power_level                 = radio_3.value["power_level"]
-      powersave_optimize          = radio_3.value["powersave_optimize"]
-      protection_mode             = radio_3.value["protection_mode"]
-      rts_threshold               = radio_3.value["rts_threshold"]
-      short_guard_interval        = radio_3.value["short_guard_interval"]
-      spectrum_analysis           = radio_3.value["spectrum_analysis"]
-      transmit_optimize           = radio_3.value["transmit_optimize"]
-      vap_all                     = radio_3.value["vap_all"]
-      wids_profile                = radio_3.value["wids_profile"]
-      zero_wait_dfs               = radio_3.value["zero_wait_dfs"]
+      # bandwidth_capacity - (optional) is a type of number
+      bandwidth_capacity = radio_3.value["bandwidth_capacity"]
+      # beacon_interval - (optional) is a type of number
+      beacon_interval = radio_3.value["beacon_interval"]
+      # bss_color - (optional) is a type of number
+      bss_color = radio_3.value["bss_color"]
+      # call_admission_control - (optional) is a type of string
+      call_admission_control = radio_3.value["call_admission_control"]
+      # call_capacity - (optional) is a type of number
+      call_capacity = radio_3.value["call_capacity"]
+      # channel_bonding - (optional) is a type of string
+      channel_bonding = radio_3.value["channel_bonding"]
+      # channel_utilization - (optional) is a type of string
+      channel_utilization = radio_3.value["channel_utilization"]
+      # coexistence - (optional) is a type of string
+      coexistence = radio_3.value["coexistence"]
+      # darrp - (optional) is a type of string
+      darrp = radio_3.value["darrp"]
+      # drma - (optional) is a type of string
+      drma = radio_3.value["drma"]
+      # drma_sensitivity - (optional) is a type of string
+      drma_sensitivity = radio_3.value["drma_sensitivity"]
+      # dtim - (optional) is a type of number
+      dtim = radio_3.value["dtim"]
+      # frag_threshold - (optional) is a type of number
+      frag_threshold = radio_3.value["frag_threshold"]
+      # frequency_handoff - (optional) is a type of string
+      frequency_handoff = radio_3.value["frequency_handoff"]
+      # max_clients - (optional) is a type of number
+      max_clients = radio_3.value["max_clients"]
+      # max_distance - (optional) is a type of number
+      max_distance = radio_3.value["max_distance"]
+      # mode - (optional) is a type of string
+      mode = radio_3.value["mode"]
+      # power_level - (optional) is a type of number
+      power_level = radio_3.value["power_level"]
+      # powersave_optimize - (optional) is a type of string
+      powersave_optimize = radio_3.value["powersave_optimize"]
+      # protection_mode - (optional) is a type of string
+      protection_mode = radio_3.value["protection_mode"]
+      # rts_threshold - (optional) is a type of number
+      rts_threshold = radio_3.value["rts_threshold"]
+      # short_guard_interval - (optional) is a type of string
+      short_guard_interval = radio_3.value["short_guard_interval"]
+      # spectrum_analysis - (optional) is a type of string
+      spectrum_analysis = radio_3.value["spectrum_analysis"]
+      # transmit_optimize - (optional) is a type of string
+      transmit_optimize = radio_3.value["transmit_optimize"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_3.value["vap_all"]
+      # wids_profile - (optional) is a type of string
+      wids_profile = radio_3.value["wids_profile"]
+      # zero_wait_dfs - (optional) is a type of string
+      zero_wait_dfs = radio_3.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_3.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -1223,6 +1442,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       dynamic "vaps" {
         for_each = radio_3.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -1233,55 +1453,101 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "radio_4" {
     for_each = var.radio_4
     content {
-      airtime_fairness            = radio_4.value["airtime_fairness"]
-      amsdu                       = radio_4.value["amsdu"]
-      ap_handoff                  = radio_4.value["ap_handoff"]
-      ap_sniffer_addr             = radio_4.value["ap_sniffer_addr"]
-      ap_sniffer_bufsize          = radio_4.value["ap_sniffer_bufsize"]
-      ap_sniffer_chan             = radio_4.value["ap_sniffer_chan"]
-      ap_sniffer_ctl              = radio_4.value["ap_sniffer_ctl"]
-      ap_sniffer_data             = radio_4.value["ap_sniffer_data"]
-      ap_sniffer_mgmt_beacon      = radio_4.value["ap_sniffer_mgmt_beacon"]
-      ap_sniffer_mgmt_other       = radio_4.value["ap_sniffer_mgmt_other"]
-      ap_sniffer_mgmt_probe       = radio_4.value["ap_sniffer_mgmt_probe"]
-      auto_power_high             = radio_4.value["auto_power_high"]
-      auto_power_level            = radio_4.value["auto_power_level"]
-      auto_power_low              = radio_4.value["auto_power_low"]
-      auto_power_target           = radio_4.value["auto_power_target"]
-      band                        = radio_4.value["band"]
-      band_5g_type                = radio_4.value["band_5g_type"]
+      # airtime_fairness - (optional) is a type of string
+      airtime_fairness = radio_4.value["airtime_fairness"]
+      # amsdu - (optional) is a type of string
+      amsdu = radio_4.value["amsdu"]
+      # ap_handoff - (optional) is a type of string
+      ap_handoff = radio_4.value["ap_handoff"]
+      # ap_sniffer_addr - (optional) is a type of string
+      ap_sniffer_addr = radio_4.value["ap_sniffer_addr"]
+      # ap_sniffer_bufsize - (optional) is a type of number
+      ap_sniffer_bufsize = radio_4.value["ap_sniffer_bufsize"]
+      # ap_sniffer_chan - (optional) is a type of number
+      ap_sniffer_chan = radio_4.value["ap_sniffer_chan"]
+      # ap_sniffer_ctl - (optional) is a type of string
+      ap_sniffer_ctl = radio_4.value["ap_sniffer_ctl"]
+      # ap_sniffer_data - (optional) is a type of string
+      ap_sniffer_data = radio_4.value["ap_sniffer_data"]
+      # ap_sniffer_mgmt_beacon - (optional) is a type of string
+      ap_sniffer_mgmt_beacon = radio_4.value["ap_sniffer_mgmt_beacon"]
+      # ap_sniffer_mgmt_other - (optional) is a type of string
+      ap_sniffer_mgmt_other = radio_4.value["ap_sniffer_mgmt_other"]
+      # ap_sniffer_mgmt_probe - (optional) is a type of string
+      ap_sniffer_mgmt_probe = radio_4.value["ap_sniffer_mgmt_probe"]
+      # auto_power_high - (optional) is a type of number
+      auto_power_high = radio_4.value["auto_power_high"]
+      # auto_power_level - (optional) is a type of string
+      auto_power_level = radio_4.value["auto_power_level"]
+      # auto_power_low - (optional) is a type of number
+      auto_power_low = radio_4.value["auto_power_low"]
+      # auto_power_target - (optional) is a type of string
+      auto_power_target = radio_4.value["auto_power_target"]
+      # band - (optional) is a type of string
+      band = radio_4.value["band"]
+      # band_5g_type - (optional) is a type of string
+      band_5g_type = radio_4.value["band_5g_type"]
+      # bandwidth_admission_control - (optional) is a type of string
       bandwidth_admission_control = radio_4.value["bandwidth_admission_control"]
-      bandwidth_capacity          = radio_4.value["bandwidth_capacity"]
-      beacon_interval             = radio_4.value["beacon_interval"]
-      bss_color                   = radio_4.value["bss_color"]
-      call_admission_control      = radio_4.value["call_admission_control"]
-      call_capacity               = radio_4.value["call_capacity"]
-      channel_bonding             = radio_4.value["channel_bonding"]
-      channel_utilization         = radio_4.value["channel_utilization"]
-      coexistence                 = radio_4.value["coexistence"]
-      darrp                       = radio_4.value["darrp"]
-      drma                        = radio_4.value["drma"]
-      drma_sensitivity            = radio_4.value["drma_sensitivity"]
-      dtim                        = radio_4.value["dtim"]
-      frag_threshold              = radio_4.value["frag_threshold"]
-      frequency_handoff           = radio_4.value["frequency_handoff"]
-      max_clients                 = radio_4.value["max_clients"]
-      max_distance                = radio_4.value["max_distance"]
-      mode                        = radio_4.value["mode"]
-      power_level                 = radio_4.value["power_level"]
-      powersave_optimize          = radio_4.value["powersave_optimize"]
-      protection_mode             = radio_4.value["protection_mode"]
-      rts_threshold               = radio_4.value["rts_threshold"]
-      short_guard_interval        = radio_4.value["short_guard_interval"]
-      spectrum_analysis           = radio_4.value["spectrum_analysis"]
-      transmit_optimize           = radio_4.value["transmit_optimize"]
-      vap_all                     = radio_4.value["vap_all"]
-      wids_profile                = radio_4.value["wids_profile"]
-      zero_wait_dfs               = radio_4.value["zero_wait_dfs"]
+      # bandwidth_capacity - (optional) is a type of number
+      bandwidth_capacity = radio_4.value["bandwidth_capacity"]
+      # beacon_interval - (optional) is a type of number
+      beacon_interval = radio_4.value["beacon_interval"]
+      # bss_color - (optional) is a type of number
+      bss_color = radio_4.value["bss_color"]
+      # call_admission_control - (optional) is a type of string
+      call_admission_control = radio_4.value["call_admission_control"]
+      # call_capacity - (optional) is a type of number
+      call_capacity = radio_4.value["call_capacity"]
+      # channel_bonding - (optional) is a type of string
+      channel_bonding = radio_4.value["channel_bonding"]
+      # channel_utilization - (optional) is a type of string
+      channel_utilization = radio_4.value["channel_utilization"]
+      # coexistence - (optional) is a type of string
+      coexistence = radio_4.value["coexistence"]
+      # darrp - (optional) is a type of string
+      darrp = radio_4.value["darrp"]
+      # drma - (optional) is a type of string
+      drma = radio_4.value["drma"]
+      # drma_sensitivity - (optional) is a type of string
+      drma_sensitivity = radio_4.value["drma_sensitivity"]
+      # dtim - (optional) is a type of number
+      dtim = radio_4.value["dtim"]
+      # frag_threshold - (optional) is a type of number
+      frag_threshold = radio_4.value["frag_threshold"]
+      # frequency_handoff - (optional) is a type of string
+      frequency_handoff = radio_4.value["frequency_handoff"]
+      # max_clients - (optional) is a type of number
+      max_clients = radio_4.value["max_clients"]
+      # max_distance - (optional) is a type of number
+      max_distance = radio_4.value["max_distance"]
+      # mode - (optional) is a type of string
+      mode = radio_4.value["mode"]
+      # power_level - (optional) is a type of number
+      power_level = radio_4.value["power_level"]
+      # powersave_optimize - (optional) is a type of string
+      powersave_optimize = radio_4.value["powersave_optimize"]
+      # protection_mode - (optional) is a type of string
+      protection_mode = radio_4.value["protection_mode"]
+      # rts_threshold - (optional) is a type of number
+      rts_threshold = radio_4.value["rts_threshold"]
+      # short_guard_interval - (optional) is a type of string
+      short_guard_interval = radio_4.value["short_guard_interval"]
+      # spectrum_analysis - (optional) is a type of string
+      spectrum_analysis = radio_4.value["spectrum_analysis"]
+      # transmit_optimize - (optional) is a type of string
+      transmit_optimize = radio_4.value["transmit_optimize"]
+      # vap_all - (optional) is a type of string
+      vap_all = radio_4.value["vap_all"]
+      # wids_profile - (optional) is a type of string
+      wids_profile = radio_4.value["wids_profile"]
+      # zero_wait_dfs - (optional) is a type of string
+      zero_wait_dfs = radio_4.value["zero_wait_dfs"]
 
       dynamic "channel" {
         for_each = radio_4.value.channel
         content {
+          # chan - (optional) is a type of string
           chan = channel.value["chan"]
         }
       }
@@ -1289,6 +1555,7 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
       dynamic "vaps" {
         for_each = radio_4.value.vaps
         content {
+          # name - (optional) is a type of string
           name = vaps.value["name"]
         }
       }
@@ -1299,8 +1566,10 @@ resource "fortios_wirelesscontroller_wtpprofile" "this" {
   dynamic "split_tunneling_acl" {
     for_each = var.split_tunneling_acl
     content {
+      # dest_ip - (optional) is a type of string
       dest_ip = split_tunneling_acl.value["dest_ip"]
-      id      = split_tunneling_acl.value["id"]
+      # id - (optional) is a type of number
+      id = split_tunneling_acl.value["id"]
     }
   }
 

@@ -72,10 +72,14 @@ variable "rule_id" {
 
 ```terraform
 data "tencentcloud_clb_attachments" "this" {
-  clb_id             = var.clb_id
-  listener_id        = var.listener_id
+  # clb_id - (required) is a type of string
+  clb_id = var.clb_id
+  # listener_id - (required) is a type of string
+  listener_id = var.listener_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  rule_id            = var.rule_id
+  # rule_id - (optional) is a type of string
+  rule_id = var.rule_id
 }
 ```
 

@@ -117,32 +117,50 @@ variable "integration_config" {
 
 ```terraform
 resource "prismacloud_integration" "this" {
-  description      = var.description
-  enabled          = var.enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # integration_type - (required) is a type of string
   integration_type = var.integration_type
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "integration_config" {
     for_each = var.integration_config
     content {
-      auth_token      = integration_config.value["auth_token"]
-      base_url        = integration_config.value["base_url"]
-      host_url        = integration_config.value["host_url"]
+      # auth_token - (optional) is a type of string
+      auth_token = integration_config.value["auth_token"]
+      # base_url - (optional) is a type of string
+      base_url = integration_config.value["base_url"]
+      # host_url - (optional) is a type of string
+      host_url = integration_config.value["host_url"]
+      # integration_key - (optional) is a type of string
       integration_key = integration_config.value["integration_key"]
-      login           = integration_config.value["login"]
-      password        = integration_config.value["password"]
-      queue_url       = integration_config.value["queue_url"]
-      tables          = integration_config.value["tables"]
-      url             = integration_config.value["url"]
-      version         = integration_config.value["version"]
+      # login - (optional) is a type of string
+      login = integration_config.value["login"]
+      # password - (optional) is a type of string
+      password = integration_config.value["password"]
+      # queue_url - (optional) is a type of string
+      queue_url = integration_config.value["queue_url"]
+      # tables - (optional) is a type of map of bool
+      tables = integration_config.value["tables"]
+      # url - (optional) is a type of string
+      url = integration_config.value["url"]
+      # version - (optional) is a type of string
+      version = integration_config.value["version"]
 
       dynamic "headers" {
         for_each = integration_config.value.headers
         content {
-          key       = headers.value["key"]
+          # key - (required) is a type of string
+          key = headers.value["key"]
+          # read_only - (optional) is a type of bool
           read_only = headers.value["read_only"]
-          secure    = headers.value["secure"]
-          value     = headers.value["value"]
+          # secure - (optional) is a type of bool
+          secure = headers.value["secure"]
+          # value - (required) is a type of string
+          value = headers.value["value"]
         }
       }
 

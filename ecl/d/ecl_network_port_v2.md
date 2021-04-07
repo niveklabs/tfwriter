@@ -122,15 +122,25 @@ variable "segmentation_type" {
 
 ```terraform
 data "ecl_network_port_v2" "this" {
-  description       = var.description
-  device_id         = var.device_id
-  device_owner      = var.device_owner
-  mac_address       = var.mac_address
-  name              = var.name
-  network_id        = var.network_id
-  port_id           = var.port_id
-  region            = var.region
-  segmentation_id   = var.segmentation_id
+  # description - (optional) is a type of string
+  description = var.description
+  # device_id - (optional) is a type of string
+  device_id = var.device_id
+  # device_owner - (optional) is a type of string
+  device_owner = var.device_owner
+  # mac_address - (optional) is a type of string
+  mac_address = var.mac_address
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (optional) is a type of string
+  network_id = var.network_id
+  # port_id - (optional) is a type of string
+  port_id = var.port_id
+  # region - (optional) is a type of string
+  region = var.region
+  # segmentation_id - (optional) is a type of number
+  segmentation_id = var.segmentation_id
+  # segmentation_type - (optional) is a type of string
   segmentation_type = var.segmentation_type
 }
 ```

@@ -90,11 +90,17 @@ variable "service_name" {
 
 ```terraform
 resource "ovh_cloud_project_user" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # openstack_rc - (optional) is a type of map of string
   openstack_rc = var.openstack_rc
-  project_id   = var.project_id
-  role_name    = var.role_name
-  role_names   = var.role_names
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # role_name - (optional) is a type of string
+  role_name = var.role_name
+  # role_names - (optional) is a type of list of string
+  role_names = var.role_names
+  # service_name - (optional) is a type of string
   service_name = var.service_name
 }
 ```

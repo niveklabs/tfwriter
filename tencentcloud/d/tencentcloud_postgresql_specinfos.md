@@ -57,7 +57,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_postgresql_specinfos" "this" {
-  availability_zone  = var.availability_zone
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

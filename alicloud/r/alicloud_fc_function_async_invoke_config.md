@@ -108,11 +108,16 @@ variable "destination_config" {
 
 ```terraform
 resource "alicloud_fc_function_async_invoke_config" "this" {
-  function_name                = var.function_name
+  # function_name - (required) is a type of string
+  function_name = var.function_name
+  # maximum_event_age_in_seconds - (optional) is a type of number
   maximum_event_age_in_seconds = var.maximum_event_age_in_seconds
-  maximum_retry_attempts       = var.maximum_retry_attempts
-  qualifier                    = var.qualifier
-  service_name                 = var.service_name
+  # maximum_retry_attempts - (optional) is a type of number
+  maximum_retry_attempts = var.maximum_retry_attempts
+  # qualifier - (optional) is a type of string
+  qualifier = var.qualifier
+  # service_name - (required) is a type of string
+  service_name = var.service_name
 
   dynamic "destination_config" {
     for_each = var.destination_config
@@ -121,6 +126,7 @@ resource "alicloud_fc_function_async_invoke_config" "this" {
       dynamic "on_failure" {
         for_each = destination_config.value.on_failure
         content {
+          # destination - (required) is a type of string
           destination = on_failure.value["destination"]
         }
       }
@@ -128,6 +134,7 @@ resource "alicloud_fc_function_async_invoke_config" "this" {
       dynamic "on_success" {
         for_each = destination_config.value.on_success
         content {
+          # destination - (required) is a type of string
           destination = on_success.value["destination"]
         }
       }

@@ -159,31 +159,47 @@ variable "srcaddr" {
 
 ```terraform
 resource "fortios_firewall_DoSpolicy6" "this" {
-  comments              = var.comments
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  interface             = var.interface
-  name                  = var.name
-  policyid              = var.policyid
-  status                = var.status
+  # interface - (required) is a type of string
+  interface = var.interface
+  # name - (optional) is a type of string
+  name = var.name
+  # policyid - (optional) is a type of number
+  policyid = var.policyid
+  # status - (optional) is a type of string
+  status = var.status
 
   dynamic "anomaly" {
     for_each = var.anomaly
     content {
-      action            = anomaly.value["action"]
-      log               = anomaly.value["log"]
-      name              = anomaly.value["name"]
-      quarantine        = anomaly.value["quarantine"]
+      # action - (optional) is a type of string
+      action = anomaly.value["action"]
+      # log - (optional) is a type of string
+      log = anomaly.value["log"]
+      # name - (optional) is a type of string
+      name = anomaly.value["name"]
+      # quarantine - (optional) is a type of string
+      quarantine = anomaly.value["quarantine"]
+      # quarantine_expiry - (optional) is a type of string
       quarantine_expiry = anomaly.value["quarantine_expiry"]
-      quarantine_log    = anomaly.value["quarantine_log"]
-      status            = anomaly.value["status"]
-      threshold         = anomaly.value["threshold"]
-      thresholddefault  = anomaly.value["thresholddefault"]
+      # quarantine_log - (optional) is a type of string
+      quarantine_log = anomaly.value["quarantine_log"]
+      # status - (optional) is a type of string
+      status = anomaly.value["status"]
+      # threshold - (optional) is a type of number
+      threshold = anomaly.value["threshold"]
+      # thresholddefault - (optional) is a type of number
+      thresholddefault = anomaly.value["thresholddefault"]
     }
   }
 
   dynamic "dstaddr" {
     for_each = var.dstaddr
     content {
+      # name - (optional) is a type of string
       name = dstaddr.value["name"]
     }
   }
@@ -191,6 +207,7 @@ resource "fortios_firewall_DoSpolicy6" "this" {
   dynamic "service" {
     for_each = var.service
     content {
+      # name - (optional) is a type of string
       name = service.value["name"]
     }
   }
@@ -198,6 +215,7 @@ resource "fortios_firewall_DoSpolicy6" "this" {
   dynamic "srcaddr" {
     for_each = var.srcaddr
     content {
+      # name - (optional) is a type of string
       name = srcaddr.value["name"]
     }
   }

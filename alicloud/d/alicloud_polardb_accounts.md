@@ -57,8 +57,10 @@ variable "name_regex" {
 
 ```terraform
 data "alicloud_polardb_accounts" "this" {
+  # db_cluster_id - (required) is a type of string
   db_cluster_id = var.db_cluster_id
-  name_regex    = var.name_regex
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
 }
 ```
 

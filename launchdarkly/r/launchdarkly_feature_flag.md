@@ -162,23 +162,37 @@ variable "variations" {
 
 ```terraform
 resource "launchdarkly_feature_flag" "this" {
+  # default_off_variation - (optional) is a type of string
   default_off_variation = var.default_off_variation
-  default_on_variation  = var.default_on_variation
-  description           = var.description
-  include_in_snippet    = var.include_in_snippet
-  key                   = var.key
-  maintainer_id         = var.maintainer_id
-  name                  = var.name
-  project_key           = var.project_key
-  tags                  = var.tags
-  temporary             = var.temporary
-  variation_type        = var.variation_type
+  # default_on_variation - (optional) is a type of string
+  default_on_variation = var.default_on_variation
+  # description - (optional) is a type of string
+  description = var.description
+  # include_in_snippet - (optional) is a type of bool
+  include_in_snippet = var.include_in_snippet
+  # key - (required) is a type of string
+  key = var.key
+  # maintainer_id - (optional) is a type of string
+  maintainer_id = var.maintainer_id
+  # name - (required) is a type of string
+  name = var.name
+  # project_key - (required) is a type of string
+  project_key = var.project_key
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # temporary - (optional) is a type of bool
+  temporary = var.temporary
+  # variation_type - (required) is a type of string
+  variation_type = var.variation_type
 
   dynamic "custom_properties" {
     for_each = var.custom_properties
     content {
-      key   = custom_properties.value["key"]
-      name  = custom_properties.value["name"]
+      # key - (required) is a type of string
+      key = custom_properties.value["key"]
+      # name - (required) is a type of string
+      name = custom_properties.value["name"]
+      # value - (required) is a type of list of string
       value = custom_properties.value["value"]
     }
   }
@@ -186,9 +200,12 @@ resource "launchdarkly_feature_flag" "this" {
   dynamic "variations" {
     for_each = var.variations
     content {
+      # description - (optional) is a type of string
       description = variations.value["description"]
-      name        = variations.value["name"]
-      value       = variations.value["value"]
+      # name - (optional) is a type of string
+      name = variations.value["name"]
+      # value - (required) is a type of string
+      value = variations.value["value"]
     }
   }
 

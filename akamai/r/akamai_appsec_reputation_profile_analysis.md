@@ -77,11 +77,16 @@ variable "version" {
 
 ```terraform
 resource "akamai_appsec_reputation_profile_analysis" "this" {
-  config_id                             = var.config_id
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # forward_shared_ip_to_http_header_siem - (required) is a type of bool
   forward_shared_ip_to_http_header_siem = var.forward_shared_ip_to_http_header_siem
-  forward_to_http_header                = var.forward_to_http_header
-  security_policy_id                    = var.security_policy_id
-  version                               = var.version
+  # forward_to_http_header - (required) is a type of bool
+  forward_to_http_header = var.forward_to_http_header
+  # security_policy_id - (required) is a type of string
+  security_policy_id = var.security_policy_id
+  # version - (required) is a type of number
+  version = var.version
 }
 ```
 

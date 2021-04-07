@@ -50,6 +50,7 @@ variable "fosid" {
 
 ```terraform
 resource "fortios_application_rulesettings" "this" {
+  # fosid - (optional) is a type of number
   fosid = var.fosid
 }
 ```

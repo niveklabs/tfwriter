@@ -153,27 +153,44 @@ variable "recurrence" {
 
 ```terraform
 resource "datadog_downtime" "this" {
-  active       = var.active
-  disabled     = var.disabled
-  end          = var.end
-  end_date     = var.end_date
-  message      = var.message
-  monitor_id   = var.monitor_id
+  # active - (optional) is a type of bool
+  active = var.active
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # end - (optional) is a type of number
+  end = var.end
+  # end_date - (optional) is a type of string
+  end_date = var.end_date
+  # message - (optional) is a type of string
+  message = var.message
+  # monitor_id - (optional) is a type of number
+  monitor_id = var.monitor_id
+  # monitor_tags - (optional) is a type of set of string
   monitor_tags = var.monitor_tags
-  scope        = var.scope
-  start        = var.start
-  start_date   = var.start_date
-  timezone     = var.timezone
+  # scope - (required) is a type of list of string
+  scope = var.scope
+  # start - (optional) is a type of number
+  start = var.start
+  # start_date - (optional) is a type of string
+  start_date = var.start_date
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
 
   dynamic "recurrence" {
     for_each = var.recurrence
     content {
-      period            = recurrence.value["period"]
-      rrule             = recurrence.value["rrule"]
-      type              = recurrence.value["type"]
-      until_date        = recurrence.value["until_date"]
+      # period - (optional) is a type of number
+      period = recurrence.value["period"]
+      # rrule - (optional) is a type of string
+      rrule = recurrence.value["rrule"]
+      # type - (required) is a type of string
+      type = recurrence.value["type"]
+      # until_date - (optional) is a type of number
+      until_date = recurrence.value["until_date"]
+      # until_occurrences - (optional) is a type of number
       until_occurrences = recurrence.value["until_occurrences"]
-      week_days         = recurrence.value["week_days"]
+      # week_days - (optional) is a type of list of string
+      week_days = recurrence.value["week_days"]
     }
   }
 

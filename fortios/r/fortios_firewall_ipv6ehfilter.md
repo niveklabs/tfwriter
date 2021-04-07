@@ -106,13 +106,21 @@ variable "routing_type" {
 
 ```terraform
 resource "fortios_firewall_ipv6ehfilter" "this" {
-  auth         = var.auth
-  dest_opt     = var.dest_opt
-  fragment     = var.fragment
-  hdopt_type   = var.hdopt_type
-  hop_opt      = var.hop_opt
-  no_next      = var.no_next
-  routing      = var.routing
+  # auth - (optional) is a type of string
+  auth = var.auth
+  # dest_opt - (optional) is a type of string
+  dest_opt = var.dest_opt
+  # fragment - (optional) is a type of string
+  fragment = var.fragment
+  # hdopt_type - (optional) is a type of number
+  hdopt_type = var.hdopt_type
+  # hop_opt - (optional) is a type of string
+  hop_opt = var.hop_opt
+  # no_next - (optional) is a type of string
+  no_next = var.no_next
+  # routing - (optional) is a type of string
+  routing = var.routing
+  # routing_type - (optional) is a type of number
   routing_type = var.routing_type
 }
 ```

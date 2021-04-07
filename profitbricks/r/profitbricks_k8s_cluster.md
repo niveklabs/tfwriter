@@ -93,24 +93,32 @@ variable "timeouts" {
 
 ```terraform
 resource "profitbricks_k8s_cluster" "this" {
+  # k8s_version - (optional) is a type of string
   k8s_version = var.k8s_version
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "maintenance_window" {
     for_each = var.maintenance_window
     content {
+      # day_of_the_week - (required) is a type of string
       day_of_the_week = maintenance_window.value["day_of_the_week"]
-      time            = maintenance_window.value["time"]
+      # time - (required) is a type of string
+      time = maintenance_window.value["time"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
-      create  = timeouts.value["create"]
+      # create - (optional) is a type of string
+      create = timeouts.value["create"]
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
-      delete  = timeouts.value["delete"]
-      update  = timeouts.value["update"]
+      # delete - (optional) is a type of string
+      delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
+      update = timeouts.value["update"]
     }
   }
 

@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "skytap_template" "this" {
+  # most_recent - (optional) is a type of bool
   most_recent = var.most_recent
-  name        = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

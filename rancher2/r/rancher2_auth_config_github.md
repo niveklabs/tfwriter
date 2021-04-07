@@ -112,15 +112,24 @@ variable "tls" {
 
 ```terraform
 resource "rancher2_auth_config_github" "this" {
-  access_mode           = var.access_mode
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # allowed_principal_ids - (optional) is a type of list of string
   allowed_principal_ids = var.allowed_principal_ids
-  annotations           = var.annotations
-  client_id             = var.client_id
-  client_secret         = var.client_secret
-  enabled               = var.enabled
-  hostname              = var.hostname
-  labels                = var.labels
-  tls                   = var.tls
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
+  client_secret = var.client_secret
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # tls - (optional) is a type of bool
+  tls = var.tls
 }
 ```
 

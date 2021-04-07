@@ -64,9 +64,12 @@ variable "value" {
 
 ```terraform
 resource "nutanix_category_value" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  value       = var.value
+  # name - (required) is a type of string
+  name = var.name
+  # value - (required) is a type of string
+  value = var.value
 }
 ```
 

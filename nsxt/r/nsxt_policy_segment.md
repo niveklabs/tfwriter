@@ -303,23 +303,37 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_segment" "this" {
-  connectivity_path   = var.connectivity_path
-  description         = var.description
-  dhcp_config_path    = var.dhcp_config_path
-  display_name        = var.display_name
-  domain_name         = var.domain_name
-  nsx_id              = var.nsx_id
-  overlay_id          = var.overlay_id
+  # connectivity_path - (optional) is a type of string
+  connectivity_path = var.connectivity_path
+  # description - (optional) is a type of string
+  description = var.description
+  # dhcp_config_path - (optional) is a type of string
+  dhcp_config_path = var.dhcp_config_path
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # domain_name - (optional) is a type of string
+  domain_name = var.domain_name
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # overlay_id - (optional) is a type of number
+  overlay_id = var.overlay_id
+  # transport_zone_path - (optional) is a type of string
   transport_zone_path = var.transport_zone_path
-  vlan_ids            = var.vlan_ids
+  # vlan_ids - (optional) is a type of list of string
+  vlan_ids = var.vlan_ids
 
   dynamic "advanced_config" {
     for_each = var.advanced_config
     content {
-      address_pool_path     = advanced_config.value["address_pool_path"]
-      connectivity          = advanced_config.value["connectivity"]
-      hybrid                = advanced_config.value["hybrid"]
-      local_egress          = advanced_config.value["local_egress"]
+      # address_pool_path - (optional) is a type of string
+      address_pool_path = advanced_config.value["address_pool_path"]
+      # connectivity - (optional) is a type of string
+      connectivity = advanced_config.value["connectivity"]
+      # hybrid - (optional) is a type of bool
+      hybrid = advanced_config.value["hybrid"]
+      # local_egress - (optional) is a type of bool
+      local_egress = advanced_config.value["local_egress"]
+      # uplink_teaming_policy - (optional) is a type of string
       uplink_teaming_policy = advanced_config.value["uplink_teaming_policy"]
     }
   }
@@ -327,8 +341,11 @@ resource "nsxt_policy_segment" "this" {
   dynamic "discovery_profile" {
     for_each = var.discovery_profile
     content {
-      binding_map_path           = discovery_profile.value["binding_map_path"]
-      ip_discovery_profile_path  = discovery_profile.value["ip_discovery_profile_path"]
+      # binding_map_path - (optional) is a type of string
+      binding_map_path = discovery_profile.value["binding_map_path"]
+      # ip_discovery_profile_path - (optional) is a type of string
+      ip_discovery_profile_path = discovery_profile.value["ip_discovery_profile_path"]
+      # mac_discovery_profile_path - (optional) is a type of string
       mac_discovery_profile_path = discovery_profile.value["mac_discovery_profile_path"]
     }
   }
@@ -336,15 +353,19 @@ resource "nsxt_policy_segment" "this" {
   dynamic "l2_extension" {
     for_each = var.l2_extension
     content {
+      # l2vpn_paths - (optional) is a type of list of string
       l2vpn_paths = l2_extension.value["l2vpn_paths"]
-      tunnel_id   = l2_extension.value["tunnel_id"]
+      # tunnel_id - (optional) is a type of number
+      tunnel_id = l2_extension.value["tunnel_id"]
     }
   }
 
   dynamic "qos_profile" {
     for_each = var.qos_profile
     content {
+      # binding_map_path - (optional) is a type of string
       binding_map_path = qos_profile.value["binding_map_path"]
+      # qos_profile_path - (required) is a type of string
       qos_profile_path = qos_profile.value["qos_profile_path"]
     }
   }
@@ -352,8 +373,11 @@ resource "nsxt_policy_segment" "this" {
   dynamic "security_profile" {
     for_each = var.security_profile
     content {
-      binding_map_path        = security_profile.value["binding_map_path"]
-      security_profile_path   = security_profile.value["security_profile_path"]
+      # binding_map_path - (optional) is a type of string
+      binding_map_path = security_profile.value["binding_map_path"]
+      # security_profile_path - (optional) is a type of string
+      security_profile_path = security_profile.value["security_profile_path"]
+      # spoofguard_profile_path - (optional) is a type of string
       spoofguard_profile_path = security_profile.value["spoofguard_profile_path"]
     }
   }
@@ -361,20 +385,27 @@ resource "nsxt_policy_segment" "this" {
   dynamic "subnet" {
     for_each = var.subnet
     content {
-      cidr        = subnet.value["cidr"]
+      # cidr - (required) is a type of string
+      cidr = subnet.value["cidr"]
+      # dhcp_ranges - (optional) is a type of list of string
       dhcp_ranges = subnet.value["dhcp_ranges"]
 
       dynamic "dhcp_v4_config" {
         for_each = subnet.value.dhcp_v4_config
         content {
-          dns_servers    = dhcp_v4_config.value["dns_servers"]
-          lease_time     = dhcp_v4_config.value["lease_time"]
+          # dns_servers - (optional) is a type of list of string
+          dns_servers = dhcp_v4_config.value["dns_servers"]
+          # lease_time - (optional) is a type of number
+          lease_time = dhcp_v4_config.value["lease_time"]
+          # server_address - (optional) is a type of string
           server_address = dhcp_v4_config.value["server_address"]
 
           dynamic "dhcp_generic_option" {
             for_each = dhcp_v4_config.value.dhcp_generic_option
             content {
-              code   = dhcp_generic_option.value["code"]
+              # code - (required) is a type of number
+              code = dhcp_generic_option.value["code"]
+              # values - (required) is a type of list of string
               values = dhcp_generic_option.value["values"]
             }
           }
@@ -382,7 +413,9 @@ resource "nsxt_policy_segment" "this" {
           dynamic "dhcp_option_121" {
             for_each = dhcp_v4_config.value.dhcp_option_121
             content {
-              network  = dhcp_option_121.value["network"]
+              # network - (required) is a type of string
+              network = dhcp_option_121.value["network"]
+              # next_hop - (required) is a type of string
               next_hop = dhcp_option_121.value["next_hop"]
             }
           }
@@ -393,17 +426,25 @@ resource "nsxt_policy_segment" "this" {
       dynamic "dhcp_v6_config" {
         for_each = subnet.value.dhcp_v6_config
         content {
-          dns_servers    = dhcp_v6_config.value["dns_servers"]
-          domain_names   = dhcp_v6_config.value["domain_names"]
-          lease_time     = dhcp_v6_config.value["lease_time"]
+          # dns_servers - (optional) is a type of list of string
+          dns_servers = dhcp_v6_config.value["dns_servers"]
+          # domain_names - (optional) is a type of list of string
+          domain_names = dhcp_v6_config.value["domain_names"]
+          # lease_time - (optional) is a type of number
+          lease_time = dhcp_v6_config.value["lease_time"]
+          # preferred_time - (optional) is a type of number
           preferred_time = dhcp_v6_config.value["preferred_time"]
+          # server_address - (optional) is a type of string
           server_address = dhcp_v6_config.value["server_address"]
-          sntp_servers   = dhcp_v6_config.value["sntp_servers"]
+          # sntp_servers - (optional) is a type of list of string
+          sntp_servers = dhcp_v6_config.value["sntp_servers"]
 
           dynamic "excluded_range" {
             for_each = dhcp_v6_config.value.excluded_range
             content {
-              end   = excluded_range.value["end"]
+              # end - (required) is a type of string
+              end = excluded_range.value["end"]
+              # start - (required) is a type of string
               start = excluded_range.value["start"]
             }
           }
@@ -417,8 +458,10 @@ resource "nsxt_policy_segment" "this" {
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

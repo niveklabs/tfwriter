@@ -512,22 +512,31 @@ variable "url_access" {
 
 ```terraform
 resource "fortios_waf_profile" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  extended_log          = var.extended_log
-  external              = var.external
-  name                  = var.name
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # external - (optional) is a type of string
+  external = var.external
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "address_list" {
     for_each = var.address_list
     content {
+      # blocked_log - (optional) is a type of string
       blocked_log = address_list.value["blocked_log"]
-      severity    = address_list.value["severity"]
-      status      = address_list.value["status"]
+      # severity - (optional) is a type of string
+      severity = address_list.value["severity"]
+      # status - (optional) is a type of string
+      status = address_list.value["status"]
 
       dynamic "blocked_address" {
         for_each = address_list.value.blocked_address
         content {
+          # name - (optional) is a type of string
           name = blocked_address.value["name"]
         }
       }
@@ -535,6 +544,7 @@ resource "fortios_waf_profile" "this" {
       dynamic "trusted_address" {
         for_each = address_list.value.trusted_address
         content {
+          # name - (optional) is a type of string
           name = trusted_address.value["name"]
         }
       }
@@ -549,162 +559,240 @@ resource "fortios_waf_profile" "this" {
       dynamic "content_length" {
         for_each = constraint.value.content_length
         content {
-          action   = content_length.value["action"]
-          length   = content_length.value["length"]
-          log      = content_length.value["log"]
+          # action - (optional) is a type of string
+          action = content_length.value["action"]
+          # length - (optional) is a type of number
+          length = content_length.value["length"]
+          # log - (optional) is a type of string
+          log = content_length.value["log"]
+          # severity - (optional) is a type of string
           severity = content_length.value["severity"]
-          status   = content_length.value["status"]
+          # status - (optional) is a type of string
+          status = content_length.value["status"]
         }
       }
 
       dynamic "exception" {
         for_each = constraint.value.exception
         content {
-          address           = exception.value["address"]
-          content_length    = exception.value["content_length"]
-          header_length     = exception.value["header_length"]
-          hostname          = exception.value["hostname"]
-          id                = exception.value["id"]
-          line_length       = exception.value["line_length"]
-          malformed         = exception.value["malformed"]
-          max_cookie        = exception.value["max_cookie"]
-          max_header_line   = exception.value["max_header_line"]
+          # address - (optional) is a type of string
+          address = exception.value["address"]
+          # content_length - (optional) is a type of string
+          content_length = exception.value["content_length"]
+          # header_length - (optional) is a type of string
+          header_length = exception.value["header_length"]
+          # hostname - (optional) is a type of string
+          hostname = exception.value["hostname"]
+          # id - (optional) is a type of number
+          id = exception.value["id"]
+          # line_length - (optional) is a type of string
+          line_length = exception.value["line_length"]
+          # malformed - (optional) is a type of string
+          malformed = exception.value["malformed"]
+          # max_cookie - (optional) is a type of string
+          max_cookie = exception.value["max_cookie"]
+          # max_header_line - (optional) is a type of string
+          max_header_line = exception.value["max_header_line"]
+          # max_range_segment - (optional) is a type of string
           max_range_segment = exception.value["max_range_segment"]
-          max_url_param     = exception.value["max_url_param"]
-          method            = exception.value["method"]
-          param_length      = exception.value["param_length"]
-          pattern           = exception.value["pattern"]
-          regex             = exception.value["regex"]
-          url_param_length  = exception.value["url_param_length"]
-          version           = exception.value["version"]
+          # max_url_param - (optional) is a type of string
+          max_url_param = exception.value["max_url_param"]
+          # method - (optional) is a type of string
+          method = exception.value["method"]
+          # param_length - (optional) is a type of string
+          param_length = exception.value["param_length"]
+          # pattern - (optional) is a type of string
+          pattern = exception.value["pattern"]
+          # regex - (optional) is a type of string
+          regex = exception.value["regex"]
+          # url_param_length - (optional) is a type of string
+          url_param_length = exception.value["url_param_length"]
+          # version - (optional) is a type of string
+          version = exception.value["version"]
         }
       }
 
       dynamic "header_length" {
         for_each = constraint.value.header_length
         content {
-          action   = header_length.value["action"]
-          length   = header_length.value["length"]
-          log      = header_length.value["log"]
+          # action - (optional) is a type of string
+          action = header_length.value["action"]
+          # length - (optional) is a type of number
+          length = header_length.value["length"]
+          # log - (optional) is a type of string
+          log = header_length.value["log"]
+          # severity - (optional) is a type of string
           severity = header_length.value["severity"]
-          status   = header_length.value["status"]
+          # status - (optional) is a type of string
+          status = header_length.value["status"]
         }
       }
 
       dynamic "hostname" {
         for_each = constraint.value.hostname
         content {
-          action   = hostname.value["action"]
-          log      = hostname.value["log"]
+          # action - (optional) is a type of string
+          action = hostname.value["action"]
+          # log - (optional) is a type of string
+          log = hostname.value["log"]
+          # severity - (optional) is a type of string
           severity = hostname.value["severity"]
-          status   = hostname.value["status"]
+          # status - (optional) is a type of string
+          status = hostname.value["status"]
         }
       }
 
       dynamic "line_length" {
         for_each = constraint.value.line_length
         content {
-          action   = line_length.value["action"]
-          length   = line_length.value["length"]
-          log      = line_length.value["log"]
+          # action - (optional) is a type of string
+          action = line_length.value["action"]
+          # length - (optional) is a type of number
+          length = line_length.value["length"]
+          # log - (optional) is a type of string
+          log = line_length.value["log"]
+          # severity - (optional) is a type of string
           severity = line_length.value["severity"]
-          status   = line_length.value["status"]
+          # status - (optional) is a type of string
+          status = line_length.value["status"]
         }
       }
 
       dynamic "malformed" {
         for_each = constraint.value.malformed
         content {
-          action   = malformed.value["action"]
-          log      = malformed.value["log"]
+          # action - (optional) is a type of string
+          action = malformed.value["action"]
+          # log - (optional) is a type of string
+          log = malformed.value["log"]
+          # severity - (optional) is a type of string
           severity = malformed.value["severity"]
-          status   = malformed.value["status"]
+          # status - (optional) is a type of string
+          status = malformed.value["status"]
         }
       }
 
       dynamic "max_cookie" {
         for_each = constraint.value.max_cookie
         content {
-          action     = max_cookie.value["action"]
-          log        = max_cookie.value["log"]
+          # action - (optional) is a type of string
+          action = max_cookie.value["action"]
+          # log - (optional) is a type of string
+          log = max_cookie.value["log"]
+          # max_cookie - (optional) is a type of number
           max_cookie = max_cookie.value["max_cookie"]
-          severity   = max_cookie.value["severity"]
-          status     = max_cookie.value["status"]
+          # severity - (optional) is a type of string
+          severity = max_cookie.value["severity"]
+          # status - (optional) is a type of string
+          status = max_cookie.value["status"]
         }
       }
 
       dynamic "max_header_line" {
         for_each = constraint.value.max_header_line
         content {
-          action          = max_header_line.value["action"]
-          log             = max_header_line.value["log"]
+          # action - (optional) is a type of string
+          action = max_header_line.value["action"]
+          # log - (optional) is a type of string
+          log = max_header_line.value["log"]
+          # max_header_line - (optional) is a type of number
           max_header_line = max_header_line.value["max_header_line"]
-          severity        = max_header_line.value["severity"]
-          status          = max_header_line.value["status"]
+          # severity - (optional) is a type of string
+          severity = max_header_line.value["severity"]
+          # status - (optional) is a type of string
+          status = max_header_line.value["status"]
         }
       }
 
       dynamic "max_range_segment" {
         for_each = constraint.value.max_range_segment
         content {
-          action            = max_range_segment.value["action"]
-          log               = max_range_segment.value["log"]
+          # action - (optional) is a type of string
+          action = max_range_segment.value["action"]
+          # log - (optional) is a type of string
+          log = max_range_segment.value["log"]
+          # max_range_segment - (optional) is a type of number
           max_range_segment = max_range_segment.value["max_range_segment"]
-          severity          = max_range_segment.value["severity"]
-          status            = max_range_segment.value["status"]
+          # severity - (optional) is a type of string
+          severity = max_range_segment.value["severity"]
+          # status - (optional) is a type of string
+          status = max_range_segment.value["status"]
         }
       }
 
       dynamic "max_url_param" {
         for_each = constraint.value.max_url_param
         content {
-          action        = max_url_param.value["action"]
-          log           = max_url_param.value["log"]
+          # action - (optional) is a type of string
+          action = max_url_param.value["action"]
+          # log - (optional) is a type of string
+          log = max_url_param.value["log"]
+          # max_url_param - (optional) is a type of number
           max_url_param = max_url_param.value["max_url_param"]
-          severity      = max_url_param.value["severity"]
-          status        = max_url_param.value["status"]
+          # severity - (optional) is a type of string
+          severity = max_url_param.value["severity"]
+          # status - (optional) is a type of string
+          status = max_url_param.value["status"]
         }
       }
 
       dynamic "method" {
         for_each = constraint.value.method
         content {
-          action   = method.value["action"]
-          log      = method.value["log"]
+          # action - (optional) is a type of string
+          action = method.value["action"]
+          # log - (optional) is a type of string
+          log = method.value["log"]
+          # severity - (optional) is a type of string
           severity = method.value["severity"]
-          status   = method.value["status"]
+          # status - (optional) is a type of string
+          status = method.value["status"]
         }
       }
 
       dynamic "param_length" {
         for_each = constraint.value.param_length
         content {
-          action   = param_length.value["action"]
-          length   = param_length.value["length"]
-          log      = param_length.value["log"]
+          # action - (optional) is a type of string
+          action = param_length.value["action"]
+          # length - (optional) is a type of number
+          length = param_length.value["length"]
+          # log - (optional) is a type of string
+          log = param_length.value["log"]
+          # severity - (optional) is a type of string
           severity = param_length.value["severity"]
-          status   = param_length.value["status"]
+          # status - (optional) is a type of string
+          status = param_length.value["status"]
         }
       }
 
       dynamic "url_param_length" {
         for_each = constraint.value.url_param_length
         content {
-          action   = url_param_length.value["action"]
-          length   = url_param_length.value["length"]
-          log      = url_param_length.value["log"]
+          # action - (optional) is a type of string
+          action = url_param_length.value["action"]
+          # length - (optional) is a type of number
+          length = url_param_length.value["length"]
+          # log - (optional) is a type of string
+          log = url_param_length.value["log"]
+          # severity - (optional) is a type of string
           severity = url_param_length.value["severity"]
-          status   = url_param_length.value["status"]
+          # status - (optional) is a type of string
+          status = url_param_length.value["status"]
         }
       }
 
       dynamic "version" {
         for_each = constraint.value.version
         content {
-          action   = version.value["action"]
-          log      = version.value["log"]
+          # action - (optional) is a type of string
+          action = version.value["action"]
+          # log - (optional) is a type of string
+          log = version.value["log"]
+          # severity - (optional) is a type of string
           severity = version.value["severity"]
-          status   = version.value["status"]
+          # status - (optional) is a type of string
+          status = version.value["status"]
         }
       }
 
@@ -714,19 +802,28 @@ resource "fortios_waf_profile" "this" {
   dynamic "method" {
     for_each = var.method
     content {
+      # default_allowed_methods - (optional) is a type of string
       default_allowed_methods = method.value["default_allowed_methods"]
-      log                     = method.value["log"]
-      severity                = method.value["severity"]
-      status                  = method.value["status"]
+      # log - (optional) is a type of string
+      log = method.value["log"]
+      # severity - (optional) is a type of string
+      severity = method.value["severity"]
+      # status - (optional) is a type of string
+      status = method.value["status"]
 
       dynamic "method_policy" {
         for_each = method.value.method_policy
         content {
-          address         = method_policy.value["address"]
+          # address - (optional) is a type of string
+          address = method_policy.value["address"]
+          # allowed_methods - (optional) is a type of string
           allowed_methods = method_policy.value["allowed_methods"]
-          id              = method_policy.value["id"]
-          pattern         = method_policy.value["pattern"]
-          regex           = method_policy.value["regex"]
+          # id - (optional) is a type of number
+          id = method_policy.value["id"]
+          # pattern - (optional) is a type of string
+          pattern = method_policy.value["pattern"]
+          # regex - (optional) is a type of string
+          regex = method_policy.value["regex"]
         }
       }
 
@@ -736,26 +833,37 @@ resource "fortios_waf_profile" "this" {
   dynamic "signature" {
     for_each = var.signature
     content {
+      # credit_card_detection_threshold - (optional) is a type of number
       credit_card_detection_threshold = signature.value["credit_card_detection_threshold"]
 
       dynamic "custom_signature" {
         for_each = signature.value.custom_signature
         content {
-          action           = custom_signature.value["action"]
+          # action - (optional) is a type of string
+          action = custom_signature.value["action"]
+          # case_sensitivity - (optional) is a type of string
           case_sensitivity = custom_signature.value["case_sensitivity"]
-          direction        = custom_signature.value["direction"]
-          log              = custom_signature.value["log"]
-          name             = custom_signature.value["name"]
-          pattern          = custom_signature.value["pattern"]
-          severity         = custom_signature.value["severity"]
-          status           = custom_signature.value["status"]
-          target           = custom_signature.value["target"]
+          # direction - (optional) is a type of string
+          direction = custom_signature.value["direction"]
+          # log - (optional) is a type of string
+          log = custom_signature.value["log"]
+          # name - (optional) is a type of string
+          name = custom_signature.value["name"]
+          # pattern - (optional) is a type of string
+          pattern = custom_signature.value["pattern"]
+          # severity - (optional) is a type of string
+          severity = custom_signature.value["severity"]
+          # status - (optional) is a type of string
+          status = custom_signature.value["status"]
+          # target - (optional) is a type of string
+          target = custom_signature.value["target"]
         }
       }
 
       dynamic "disabled_signature" {
         for_each = signature.value.disabled_signature
         content {
+          # id - (optional) is a type of number
           id = disabled_signature.value["id"]
         }
       }
@@ -763,6 +871,7 @@ resource "fortios_waf_profile" "this" {
       dynamic "disabled_sub_class" {
         for_each = signature.value.disabled_sub_class
         content {
+          # id - (optional) is a type of number
           id = disabled_sub_class.value["id"]
         }
       }
@@ -770,11 +879,16 @@ resource "fortios_waf_profile" "this" {
       dynamic "main_class" {
         for_each = signature.value.main_class
         content {
-          action   = main_class.value["action"]
-          id       = main_class.value["id"]
-          log      = main_class.value["log"]
+          # action - (optional) is a type of string
+          action = main_class.value["action"]
+          # id - (optional) is a type of number
+          id = main_class.value["id"]
+          # log - (optional) is a type of string
+          log = main_class.value["log"]
+          # severity - (optional) is a type of string
           severity = main_class.value["severity"]
-          status   = main_class.value["status"]
+          # status - (optional) is a type of string
+          status = main_class.value["status"]
         }
       }
 
@@ -784,19 +898,29 @@ resource "fortios_waf_profile" "this" {
   dynamic "url_access" {
     for_each = var.url_access
     content {
-      action   = url_access.value["action"]
-      address  = url_access.value["address"]
-      id       = url_access.value["id"]
-      log      = url_access.value["log"]
+      # action - (optional) is a type of string
+      action = url_access.value["action"]
+      # address - (optional) is a type of string
+      address = url_access.value["address"]
+      # id - (optional) is a type of number
+      id = url_access.value["id"]
+      # log - (optional) is a type of string
+      log = url_access.value["log"]
+      # severity - (optional) is a type of string
       severity = url_access.value["severity"]
 
       dynamic "access_pattern" {
         for_each = url_access.value.access_pattern
         content {
-          id      = access_pattern.value["id"]
-          negate  = access_pattern.value["negate"]
+          # id - (optional) is a type of number
+          id = access_pattern.value["id"]
+          # negate - (optional) is a type of string
+          negate = access_pattern.value["negate"]
+          # pattern - (optional) is a type of string
           pattern = access_pattern.value["pattern"]
-          regex   = access_pattern.value["regex"]
+          # regex - (optional) is a type of string
+          regex = access_pattern.value["regex"]
+          # srcaddr - (optional) is a type of string
           srcaddr = access_pattern.value["srcaddr"]
         }
       }

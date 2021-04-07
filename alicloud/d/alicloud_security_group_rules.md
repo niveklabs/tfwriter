@@ -89,12 +89,18 @@ variable "policy" {
 
 ```terraform
 data "alicloud_security_group_rules" "this" {
-  direction   = var.direction
-  group_id    = var.group_id
+  # direction - (optional) is a type of string
+  direction = var.direction
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # ip_protocol - (optional) is a type of string
   ip_protocol = var.ip_protocol
-  nic_type    = var.nic_type
+  # nic_type - (optional) is a type of string
+  nic_type = var.nic_type
+  # output_file - (optional) is a type of string
   output_file = var.output_file
-  policy      = var.policy
+  # policy - (optional) is a type of string
+  policy = var.policy
 }
 ```
 

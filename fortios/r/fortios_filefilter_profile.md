@@ -138,28 +138,43 @@ variable "rules" {
 
 ```terraform
 resource "fortios_filefilter_profile" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  extended_log          = var.extended_log
-  feature_set           = var.feature_set
-  log                   = var.log
-  name                  = var.name
-  replacemsg_group      = var.replacemsg_group
+  # extended_log - (optional) is a type of string
+  extended_log = var.extended_log
+  # feature_set - (optional) is a type of string
+  feature_set = var.feature_set
+  # log - (optional) is a type of string
+  log = var.log
+  # name - (optional) is a type of string
+  name = var.name
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # scan_archive_contents - (optional) is a type of string
   scan_archive_contents = var.scan_archive_contents
 
   dynamic "rules" {
     for_each = var.rules
     content {
-      action             = rules.value["action"]
-      comment            = rules.value["comment"]
-      direction          = rules.value["direction"]
-      name               = rules.value["name"]
+      # action - (optional) is a type of string
+      action = rules.value["action"]
+      # comment - (optional) is a type of string
+      comment = rules.value["comment"]
+      # direction - (optional) is a type of string
+      direction = rules.value["direction"]
+      # name - (optional) is a type of string
+      name = rules.value["name"]
+      # password_protected - (optional) is a type of string
       password_protected = rules.value["password_protected"]
-      protocol           = rules.value["protocol"]
+      # protocol - (optional) is a type of string
+      protocol = rules.value["protocol"]
 
       dynamic "file_type" {
         for_each = rules.value.file_type
         content {
+          # name - (optional) is a type of string
           name = file_type.value["name"]
         }
       }

@@ -75,15 +75,20 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_ssh_keypair" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # public_key - (optional) is a type of string
   public_key = var.public_key
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
     }
   }
 

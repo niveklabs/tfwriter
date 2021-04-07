@@ -164,31 +164,47 @@ variable "selected_usergroups" {
 
 ```terraform
 resource "fortios_switchcontroller_vlan" "this" {
-  auth                          = var.auth
-  color                         = var.color
-  comments                      = var.comments
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  name                          = var.name
+  # auth - (optional) is a type of string
+  auth = var.auth
+  # color - (optional) is a type of number
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # name - (optional) is a type of string
+  name = var.name
+  # portal_message_override_group - (optional) is a type of string
   portal_message_override_group = var.portal_message_override_group
-  radius_server                 = var.radius_server
-  security                      = var.security
-  usergroup                     = var.usergroup
-  vdom                          = var.vdom
-  vlanid                        = var.vlanid
+  # radius_server - (optional) is a type of string
+  radius_server = var.radius_server
+  # security - (optional) is a type of string
+  security = var.security
+  # usergroup - (optional) is a type of string
+  usergroup = var.usergroup
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
+  # vlanid - (optional) is a type of number
+  vlanid = var.vlanid
 
   dynamic "portal_message_overrides" {
     for_each = var.portal_message_overrides
     content {
-      auth_disclaimer_page   = portal_message_overrides.value["auth_disclaimer_page"]
+      # auth_disclaimer_page - (optional) is a type of string
+      auth_disclaimer_page = portal_message_overrides.value["auth_disclaimer_page"]
+      # auth_login_failed_page - (optional) is a type of string
       auth_login_failed_page = portal_message_overrides.value["auth_login_failed_page"]
-      auth_login_page        = portal_message_overrides.value["auth_login_page"]
-      auth_reject_page       = portal_message_overrides.value["auth_reject_page"]
+      # auth_login_page - (optional) is a type of string
+      auth_login_page = portal_message_overrides.value["auth_login_page"]
+      # auth_reject_page - (optional) is a type of string
+      auth_reject_page = portal_message_overrides.value["auth_reject_page"]
     }
   }
 
   dynamic "selected_usergroups" {
     for_each = var.selected_usergroups
     content {
+      # name - (optional) is a type of string
       name = selected_usergroups.value["name"]
     }
   }

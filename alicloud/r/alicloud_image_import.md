@@ -127,28 +127,41 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_image_import" "this" {
+  # architecture - (optional) is a type of string
   architecture = var.architecture
-  description  = var.description
-  image_name   = var.image_name
+  # description - (optional) is a type of string
+  description = var.description
+  # image_name - (optional) is a type of string
+  image_name = var.image_name
+  # license_type - (optional) is a type of string
   license_type = var.license_type
-  os_type      = var.os_type
-  platform     = var.platform
+  # os_type - (optional) is a type of string
+  os_type = var.os_type
+  # platform - (optional) is a type of string
+  platform = var.platform
 
   dynamic "disk_device_mapping" {
     for_each = var.disk_device_mapping
     content {
-      device          = disk_device_mapping.value["device"]
+      # device - (optional) is a type of string
+      device = disk_device_mapping.value["device"]
+      # disk_image_size - (optional) is a type of number
       disk_image_size = disk_device_mapping.value["disk_image_size"]
-      format          = disk_device_mapping.value["format"]
-      oss_bucket      = disk_device_mapping.value["oss_bucket"]
-      oss_object      = disk_device_mapping.value["oss_object"]
+      # format - (optional) is a type of string
+      format = disk_device_mapping.value["format"]
+      # oss_bucket - (optional) is a type of string
+      oss_bucket = disk_device_mapping.value["oss_bucket"]
+      # oss_object - (optional) is a type of string
+      oss_object = disk_device_mapping.value["oss_object"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

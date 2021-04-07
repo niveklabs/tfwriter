@@ -380,35 +380,57 @@ variable "volumes" {
 
 ```terraform
 resource "alicloud_eci_container_group" "this" {
+  # container_group_name - (required) is a type of string
   container_group_name = var.container_group_name
-  cpu                  = var.cpu
-  instance_type        = var.instance_type
-  memory               = var.memory
-  ram_role_name        = var.ram_role_name
-  resource_group_id    = var.resource_group_id
-  restart_policy       = var.restart_policy
-  security_group_id    = var.security_group_id
-  tags                 = var.tags
-  vswitch_id           = var.vswitch_id
-  zone_id              = var.zone_id
+  # cpu - (optional) is a type of number
+  cpu = var.cpu
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # memory - (optional) is a type of number
+  memory = var.memory
+  # ram_role_name - (optional) is a type of string
+  ram_role_name = var.ram_role_name
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # restart_policy - (optional) is a type of string
+  restart_policy = var.restart_policy
+  # security_group_id - (required) is a type of string
+  security_group_id = var.security_group_id
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (required) is a type of string
+  vswitch_id = var.vswitch_id
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 
   dynamic "containers" {
     for_each = var.containers
     content {
-      args              = containers.value["args"]
-      commands          = containers.value["commands"]
-      cpu               = containers.value["cpu"]
-      gpu               = containers.value["gpu"]
-      image             = containers.value["image"]
+      # args - (optional) is a type of list of string
+      args = containers.value["args"]
+      # commands - (optional) is a type of list of string
+      commands = containers.value["commands"]
+      # cpu - (optional) is a type of number
+      cpu = containers.value["cpu"]
+      # gpu - (optional) is a type of number
+      gpu = containers.value["gpu"]
+      # image - (required) is a type of string
+      image = containers.value["image"]
+      # image_pull_policy - (optional) is a type of string
       image_pull_policy = containers.value["image_pull_policy"]
-      memory            = containers.value["memory"]
-      name              = containers.value["name"]
-      working_dir       = containers.value["working_dir"]
+      # memory - (optional) is a type of number
+      memory = containers.value["memory"]
+      # name - (required) is a type of string
+      name = containers.value["name"]
+      # working_dir - (optional) is a type of string
+      working_dir = containers.value["working_dir"]
 
       dynamic "environment_vars" {
         for_each = containers.value.environment_vars
         content {
-          key   = environment_vars.value["key"]
+          # key - (optional) is a type of string
+          key = environment_vars.value["key"]
+          # value - (optional) is a type of string
           value = environment_vars.value["value"]
         }
       }
@@ -416,7 +438,9 @@ resource "alicloud_eci_container_group" "this" {
       dynamic "ports" {
         for_each = containers.value.ports
         content {
-          port     = ports.value["port"]
+          # port - (optional) is a type of number
+          port = ports.value["port"]
+          # protocol - (optional) is a type of string
           protocol = ports.value["protocol"]
         }
       }
@@ -424,9 +448,12 @@ resource "alicloud_eci_container_group" "this" {
       dynamic "volume_mounts" {
         for_each = containers.value.volume_mounts
         content {
+          # mount_path - (optional) is a type of string
           mount_path = volume_mounts.value["mount_path"]
-          name       = volume_mounts.value["name"]
-          read_only  = volume_mounts.value["read_only"]
+          # name - (optional) is a type of string
+          name = volume_mounts.value["name"]
+          # read_only - (optional) is a type of bool
+          read_only = volume_mounts.value["read_only"]
         }
       }
 
@@ -436,13 +463,17 @@ resource "alicloud_eci_container_group" "this" {
   dynamic "dns_config" {
     for_each = var.dns_config
     content {
+      # name_servers - (optional) is a type of list of string
       name_servers = dns_config.value["name_servers"]
-      searches     = dns_config.value["searches"]
+      # searches - (optional) is a type of list of string
+      searches = dns_config.value["searches"]
 
       dynamic "options" {
         for_each = dns_config.value.options
         content {
-          name  = options.value["name"]
+          # name - (optional) is a type of string
+          name = options.value["name"]
+          # value - (optional) is a type of string
           value = options.value["value"]
         }
       }
@@ -457,7 +488,9 @@ resource "alicloud_eci_container_group" "this" {
       dynamic "sysctls" {
         for_each = eci_security_context.value.sysctls
         content {
-          name  = sysctls.value["name"]
+          # name - (optional) is a type of string
+          name = sysctls.value["name"]
+          # value - (optional) is a type of string
           value = sysctls.value["value"]
         }
       }
@@ -468,28 +501,41 @@ resource "alicloud_eci_container_group" "this" {
   dynamic "host_aliases" {
     for_each = var.host_aliases
     content {
+      # hostnames - (optional) is a type of list of string
       hostnames = host_aliases.value["hostnames"]
-      ip        = host_aliases.value["ip"]
+      # ip - (optional) is a type of string
+      ip = host_aliases.value["ip"]
     }
   }
 
   dynamic "init_containers" {
     for_each = var.init_containers
     content {
-      args              = init_containers.value["args"]
-      commands          = init_containers.value["commands"]
-      cpu               = init_containers.value["cpu"]
-      gpu               = init_containers.value["gpu"]
-      image             = init_containers.value["image"]
+      # args - (optional) is a type of list of string
+      args = init_containers.value["args"]
+      # commands - (optional) is a type of list of string
+      commands = init_containers.value["commands"]
+      # cpu - (optional) is a type of number
+      cpu = init_containers.value["cpu"]
+      # gpu - (optional) is a type of number
+      gpu = init_containers.value["gpu"]
+      # image - (optional) is a type of string
+      image = init_containers.value["image"]
+      # image_pull_policy - (optional) is a type of string
       image_pull_policy = init_containers.value["image_pull_policy"]
-      memory            = init_containers.value["memory"]
-      name              = init_containers.value["name"]
-      working_dir       = init_containers.value["working_dir"]
+      # memory - (optional) is a type of number
+      memory = init_containers.value["memory"]
+      # name - (optional) is a type of string
+      name = init_containers.value["name"]
+      # working_dir - (optional) is a type of string
+      working_dir = init_containers.value["working_dir"]
 
       dynamic "environment_vars" {
         for_each = init_containers.value.environment_vars
         content {
-          key   = environment_vars.value["key"]
+          # key - (optional) is a type of string
+          key = environment_vars.value["key"]
+          # value - (optional) is a type of string
           value = environment_vars.value["value"]
         }
       }
@@ -497,7 +543,9 @@ resource "alicloud_eci_container_group" "this" {
       dynamic "ports" {
         for_each = init_containers.value.ports
         content {
-          port     = ports.value["port"]
+          # port - (optional) is a type of number
+          port = ports.value["port"]
+          # protocol - (optional) is a type of string
           protocol = ports.value["protocol"]
         }
       }
@@ -505,9 +553,12 @@ resource "alicloud_eci_container_group" "this" {
       dynamic "volume_mounts" {
         for_each = init_containers.value.volume_mounts
         content {
+          # mount_path - (optional) is a type of string
           mount_path = volume_mounts.value["mount_path"]
-          name       = volume_mounts.value["name"]
-          read_only  = volume_mounts.value["read_only"]
+          # name - (optional) is a type of string
+          name = volume_mounts.value["name"]
+          # read_only - (optional) is a type of bool
+          read_only = volume_mounts.value["read_only"]
         }
       }
 
@@ -517,7 +568,9 @@ resource "alicloud_eci_container_group" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -525,22 +578,34 @@ resource "alicloud_eci_container_group" "this" {
   dynamic "volumes" {
     for_each = var.volumes
     content {
-      disk_volume_disk_id  = volumes.value["disk_volume_disk_id"]
-      disk_volume_fs_type  = volumes.value["disk_volume_fs_type"]
-      flex_volume_driver   = volumes.value["flex_volume_driver"]
-      flex_volume_fs_type  = volumes.value["flex_volume_fs_type"]
-      flex_volume_options  = volumes.value["flex_volume_options"]
-      name                 = volumes.value["name"]
-      nfs_volume_path      = volumes.value["nfs_volume_path"]
+      # disk_volume_disk_id - (optional) is a type of string
+      disk_volume_disk_id = volumes.value["disk_volume_disk_id"]
+      # disk_volume_fs_type - (optional) is a type of string
+      disk_volume_fs_type = volumes.value["disk_volume_fs_type"]
+      # flex_volume_driver - (optional) is a type of string
+      flex_volume_driver = volumes.value["flex_volume_driver"]
+      # flex_volume_fs_type - (optional) is a type of string
+      flex_volume_fs_type = volumes.value["flex_volume_fs_type"]
+      # flex_volume_options - (optional) is a type of string
+      flex_volume_options = volumes.value["flex_volume_options"]
+      # name - (optional) is a type of string
+      name = volumes.value["name"]
+      # nfs_volume_path - (optional) is a type of string
+      nfs_volume_path = volumes.value["nfs_volume_path"]
+      # nfs_volume_read_only - (optional) is a type of bool
       nfs_volume_read_only = volumes.value["nfs_volume_read_only"]
-      nfs_volume_server    = volumes.value["nfs_volume_server"]
-      type                 = volumes.value["type"]
+      # nfs_volume_server - (optional) is a type of string
+      nfs_volume_server = volumes.value["nfs_volume_server"]
+      # type - (optional) is a type of string
+      type = volumes.value["type"]
 
       dynamic "config_file_volume_config_file_to_paths" {
         for_each = volumes.value.config_file_volume_config_file_to_paths
         content {
+          # content - (optional) is a type of string
           content = config_file_volume_config_file_to_paths.value["content"]
-          path    = config_file_volume_config_file_to_paths.value["path"]
+          # path - (optional) is a type of string
+          path = config_file_volume_config_file_to_paths.value["path"]
         }
       }
 

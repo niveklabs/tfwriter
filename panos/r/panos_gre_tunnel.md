@@ -141,19 +141,32 @@ variable "tunnel_interface" {
 
 ```terraform
 resource "panos_gre_tunnel" "this" {
-  copy_tos              = var.copy_tos
-  disabled              = var.disabled
-  enable_keep_alive     = var.enable_keep_alive
-  interface             = var.interface
+  # copy_tos - (optional) is a type of bool
+  copy_tos = var.copy_tos
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # enable_keep_alive - (optional) is a type of bool
+  enable_keep_alive = var.enable_keep_alive
+  # interface - (required) is a type of string
+  interface = var.interface
+  # keep_alive_hold_timer - (optional) is a type of number
   keep_alive_hold_timer = var.keep_alive_hold_timer
-  keep_alive_interval   = var.keep_alive_interval
-  keep_alive_retry      = var.keep_alive_retry
-  local_address_type    = var.local_address_type
-  local_address_value   = var.local_address_value
-  name                  = var.name
-  peer_address          = var.peer_address
-  ttl                   = var.ttl
-  tunnel_interface      = var.tunnel_interface
+  # keep_alive_interval - (optional) is a type of number
+  keep_alive_interval = var.keep_alive_interval
+  # keep_alive_retry - (optional) is a type of number
+  keep_alive_retry = var.keep_alive_retry
+  # local_address_type - (optional) is a type of string
+  local_address_type = var.local_address_type
+  # local_address_value - (required) is a type of string
+  local_address_value = var.local_address_value
+  # name - (required) is a type of string
+  name = var.name
+  # peer_address - (required) is a type of string
+  peer_address = var.peer_address
+  # ttl - (optional) is a type of number
+  ttl = var.ttl
+  # tunnel_interface - (required) is a type of string
+  tunnel_interface = var.tunnel_interface
 }
 ```
 

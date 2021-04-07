@@ -145,18 +145,31 @@ variable "vpn_traditional_mode" {
 
 ```terraform
 resource "checkpoint_management_package" "this" {
-  access               = var.access
-  color                = var.color
-  comments             = var.comments
-  desktop_security     = var.desktop_security
-  ignore_errors        = var.ignore_errors
-  ignore_warnings      = var.ignore_warnings
+  # access - (optional) is a type of bool
+  access = var.access
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # desktop_security - (optional) is a type of bool
+  desktop_security = var.desktop_security
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # installation_targets - (optional) is a type of set of string
   installation_targets = var.installation_targets
-  name                 = var.name
-  qos                  = var.qos
-  qos_policy_type      = var.qos_policy_type
-  tags                 = var.tags
-  threat_prevention    = var.threat_prevention
+  # name - (required) is a type of string
+  name = var.name
+  # qos - (optional) is a type of bool
+  qos = var.qos
+  # qos_policy_type - (optional) is a type of string
+  qos_policy_type = var.qos_policy_type
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # threat_prevention - (optional) is a type of bool
+  threat_prevention = var.threat_prevention
+  # vpn_traditional_mode - (optional) is a type of bool
   vpn_traditional_mode = var.vpn_traditional_mode
 }
 ```

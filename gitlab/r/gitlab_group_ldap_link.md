@@ -78,10 +78,15 @@ variable "ldap_provider" {
 
 ```terraform
 resource "gitlab_group_ldap_link" "this" {
-  access_level  = var.access_level
-  cn            = var.cn
-  force         = var.force
-  group_id      = var.group_id
+  # access_level - (required) is a type of string
+  access_level = var.access_level
+  # cn - (required) is a type of string
+  cn = var.cn
+  # force - (optional) is a type of bool
+  force = var.force
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # ldap_provider - (required) is a type of string
   ldap_provider = var.ldap_provider
 }
 ```

@@ -50,6 +50,7 @@ variable "discard" {
 
 ```terraform
 resource "checkpoint_management_disconnect" "this" {
+  # discard - (optional) is a type of bool
   discard = var.discard
 }
 ```

@@ -64,9 +64,12 @@ variable "namespace" {
 
 ```terraform
 data "rancher2_secret_v2" "this" {
+  # cluster_id - (required) is a type of string
   cluster_id = var.cluster_id
-  name       = var.name
-  namespace  = var.namespace
+  # name - (required) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
+  namespace = var.namespace
 }
 ```
 

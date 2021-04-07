@@ -58,8 +58,10 @@ variable "signature_hold_time" {
 
 ```terraform
 resource "fortios_system_ips" "this" {
+  # override_signature_hold_by_id - (optional) is a type of string
   override_signature_hold_by_id = var.override_signature_hold_by_id
-  signature_hold_time           = var.signature_hold_time
+  # signature_hold_time - (optional) is a type of string
+  signature_hold_time = var.signature_hold_time
 }
 ```
 

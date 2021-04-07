@@ -56,8 +56,10 @@ variable "device_id" {
 
 ```terraform
 resource "packet_ip_attachment" "this" {
+  # cidr_notation - (required) is a type of string
   cidr_notation = var.cidr_notation
-  device_id     = var.device_id
+  # device_id - (required) is a type of string
+  device_id = var.device_id
 }
 ```
 

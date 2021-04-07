@@ -57,8 +57,10 @@ variable "product_code" {
 
 ```terraform
 data "alicloud_market_product" "this" {
+  # available_region - (optional) is a type of string
   available_region = var.available_region
-  product_code     = var.product_code
+  # product_code - (required) is a type of string
+  product_code = var.product_code
 }
 ```
 

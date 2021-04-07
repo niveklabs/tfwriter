@@ -64,9 +64,12 @@ variable "key_name" {
 
 ```terraform
 resource "alicloud_key_pair_attachment" "this" {
-  force        = var.force
+  # force - (optional) is a type of bool
+  force = var.force
+  # instance_ids - (required) is a type of set of string
   instance_ids = var.instance_ids
-  key_name     = var.key_name
+  # key_name - (required) is a type of string
+  key_name = var.key_name
 }
 ```
 

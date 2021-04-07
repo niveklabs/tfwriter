@@ -89,17 +89,24 @@ variable "initialization" {
 
 ```terraform
 resource "azuredevops_git_repository" "this" {
-  default_branch       = var.default_branch
-  name                 = var.name
+  # default_branch - (optional) is a type of string
+  default_branch = var.default_branch
+  # name - (required) is a type of string
+  name = var.name
+  # parent_repository_id - (optional) is a type of string
   parent_repository_id = var.parent_repository_id
-  project_id           = var.project_id
+  # project_id - (required) is a type of string
+  project_id = var.project_id
 
   dynamic "initialization" {
     for_each = var.initialization
     content {
-      init_type   = initialization.value["init_type"]
+      # init_type - (required) is a type of string
+      init_type = initialization.value["init_type"]
+      # source_type - (optional) is a type of string
       source_type = initialization.value["source_type"]
-      source_url  = initialization.value["source_url"]
+      # source_url - (optional) is a type of string
+      source_url = initialization.value["source_url"]
     }
   }
 

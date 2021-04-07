@@ -50,6 +50,7 @@ variable "package_format" {
 
 ```terraform
 resource "checkpoint_management_delete_threat_protections" "this" {
+  # package_format - (optional) is a type of string
   package_format = var.package_format
 }
 ```

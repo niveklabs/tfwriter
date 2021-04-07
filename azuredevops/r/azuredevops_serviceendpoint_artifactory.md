@@ -135,16 +135,23 @@ variable "timeouts" {
 
 ```terraform
 resource "azuredevops_serviceendpoint_artifactory" "this" {
-  authorization         = var.authorization
-  description           = var.description
-  project_id            = var.project_id
+  # authorization - (optional) is a type of map of string
+  authorization = var.authorization
+  # description - (optional) is a type of string
+  description = var.description
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # service_endpoint_name - (required) is a type of string
   service_endpoint_name = var.service_endpoint_name
-  url                   = var.url
+  # url - (required) is a type of string
+  url = var.url
 
   dynamic "authentication_basic" {
     for_each = var.authentication_basic
     content {
+      # password - (required) is a type of string
       password = authentication_basic.value["password"]
+      # username - (required) is a type of string
       username = authentication_basic.value["username"]
     }
   }
@@ -152,6 +159,7 @@ resource "azuredevops_serviceendpoint_artifactory" "this" {
   dynamic "authentication_token" {
     for_each = var.authentication_token
     content {
+      # token - (required) is a type of string
       token = authentication_token.value["token"]
     }
   }
@@ -159,9 +167,13 @@ resource "azuredevops_serviceendpoint_artifactory" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

@@ -169,22 +169,38 @@ variable "stickiness" {
 
 ```terraform
 resource "linode_nodebalancer_config" "this" {
-  algorithm       = var.algorithm
-  check           = var.check
-  check_attempts  = var.check_attempts
-  check_body      = var.check_body
-  check_interval  = var.check_interval
-  check_passive   = var.check_passive
-  check_path      = var.check_path
-  check_timeout   = var.check_timeout
-  cipher_suite    = var.cipher_suite
+  # algorithm - (optional) is a type of string
+  algorithm = var.algorithm
+  # check - (optional) is a type of string
+  check = var.check
+  # check_attempts - (optional) is a type of number
+  check_attempts = var.check_attempts
+  # check_body - (optional) is a type of string
+  check_body = var.check_body
+  # check_interval - (optional) is a type of number
+  check_interval = var.check_interval
+  # check_passive - (optional) is a type of bool
+  check_passive = var.check_passive
+  # check_path - (optional) is a type of string
+  check_path = var.check_path
+  # check_timeout - (optional) is a type of number
+  check_timeout = var.check_timeout
+  # cipher_suite - (optional) is a type of string
+  cipher_suite = var.cipher_suite
+  # nodebalancer_id - (required) is a type of number
   nodebalancer_id = var.nodebalancer_id
-  port            = var.port
-  protocol        = var.protocol
-  proxy_protocol  = var.proxy_protocol
-  ssl_cert        = var.ssl_cert
-  ssl_key         = var.ssl_key
-  stickiness      = var.stickiness
+  # port - (optional) is a type of number
+  port = var.port
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # proxy_protocol - (optional) is a type of string
+  proxy_protocol = var.proxy_protocol
+  # ssl_cert - (optional) is a type of string
+  ssl_cert = var.ssl_cert
+  # ssl_key - (optional) is a type of string
+  ssl_key = var.ssl_key
+  # stickiness - (optional) is a type of string
+  stickiness = var.stickiness
 }
 ```
 

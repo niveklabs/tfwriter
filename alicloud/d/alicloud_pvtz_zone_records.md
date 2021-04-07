@@ -113,15 +113,24 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_pvtz_zone_records" "this" {
-  ids            = var.ids
-  keyword        = var.keyword
-  lang           = var.lang
-  output_file    = var.output_file
-  search_mode    = var.search_mode
-  status         = var.status
-  tag            = var.tag
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # keyword - (optional) is a type of string
+  keyword = var.keyword
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # search_mode - (optional) is a type of string
+  search_mode = var.search_mode
+  # status - (optional) is a type of string
+  status = var.status
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # user_client_ip - (optional) is a type of string
   user_client_ip = var.user_client_ip
-  zone_id        = var.zone_id
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

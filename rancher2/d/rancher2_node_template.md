@@ -57,7 +57,9 @@ variable "use_internal_ip_address" {
 
 ```terraform
 data "rancher2_node_template" "this" {
-  name                    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # use_internal_ip_address - (optional) is a type of bool
   use_internal_ip_address = var.use_internal_ip_address
 }
 ```

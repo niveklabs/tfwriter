@@ -63,9 +63,12 @@ variable "stage" {
 
 ```terraform
 resource "heroku_pipeline_coupling" "this" {
-  app      = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # pipeline - (required) is a type of string
   pipeline = var.pipeline
-  stage    = var.stage
+  # stage - (required) is a type of string
+  stage = var.stage
 }
 ```
 

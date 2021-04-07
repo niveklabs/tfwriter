@@ -86,12 +86,18 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_emr_disk_types" "this" {
-  cluster_type         = var.cluster_type
+  # cluster_type - (required) is a type of string
+  cluster_type = var.cluster_type
+  # destination_resource - (required) is a type of string
   destination_resource = var.destination_resource
+  # instance_charge_type - (required) is a type of string
   instance_charge_type = var.instance_charge_type
-  instance_type        = var.instance_type
-  output_file          = var.output_file
-  zone_id              = var.zone_id
+  # instance_type - (required) is a type of string
+  instance_type = var.instance_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

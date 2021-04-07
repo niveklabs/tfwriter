@@ -104,14 +104,22 @@ variable "tags" {
 
 ```terraform
 data "launchdarkly_environment" "this" {
-  confirm_changes      = var.confirm_changes
+  # confirm_changes - (optional) is a type of bool
+  confirm_changes = var.confirm_changes
+  # default_track_events - (optional) is a type of bool
   default_track_events = var.default_track_events
-  default_ttl          = var.default_ttl
-  key                  = var.key
-  project_key          = var.project_key
-  require_comments     = var.require_comments
-  secure_mode          = var.secure_mode
-  tags                 = var.tags
+  # default_ttl - (optional) is a type of number
+  default_ttl = var.default_ttl
+  # key - (required) is a type of string
+  key = var.key
+  # project_key - (required) is a type of string
+  project_key = var.project_key
+  # require_comments - (optional) is a type of bool
+  require_comments = var.require_comments
+  # secure_mode - (optional) is a type of bool
+  secure_mode = var.secure_mode
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 }
 ```
 

@@ -202,29 +202,45 @@ variable "tags" {
 
 ```terraform
 resource "dome9_azure_security_group" "this" {
-  description               = var.description
-  dome9_cloud_account_id    = var.dome9_cloud_account_id
+  # description - (optional) is a type of string
+  description = var.description
+  # dome9_cloud_account_id - (required) is a type of string
+  dome9_cloud_account_id = var.dome9_cloud_account_id
+  # dome9_security_group_name - (required) is a type of string
   dome9_security_group_name = var.dome9_security_group_name
-  is_tamper_protected       = var.is_tamper_protected
-  region                    = var.region
-  resource_group            = var.resource_group
+  # is_tamper_protected - (optional) is a type of bool
+  is_tamper_protected = var.is_tamper_protected
+  # region - (required) is a type of string
+  region = var.region
+  # resource_group - (required) is a type of string
+  resource_group = var.resource_group
 
   dynamic "inbound" {
     for_each = var.inbound
     content {
-      access                  = inbound.value["access"]
-      description             = inbound.value["description"]
+      # access - (optional) is a type of string
+      access = inbound.value["access"]
+      # description - (optional) is a type of string
+      description = inbound.value["description"]
+      # destination_port_ranges - (required) is a type of list of string
       destination_port_ranges = inbound.value["destination_port_ranges"]
-      is_default              = inbound.value["is_default"]
-      name                    = inbound.value["name"]
-      priority                = inbound.value["priority"]
-      protocol                = inbound.value["protocol"]
-      source_port_ranges      = inbound.value["source_port_ranges"]
+      # is_default - (optional) is a type of bool
+      is_default = inbound.value["is_default"]
+      # name - (required) is a type of string
+      name = inbound.value["name"]
+      # priority - (required) is a type of number
+      priority = inbound.value["priority"]
+      # protocol - (required) is a type of string
+      protocol = inbound.value["protocol"]
+      # source_port_ranges - (required) is a type of list of string
+      source_port_ranges = inbound.value["source_port_ranges"]
 
       dynamic "destination_scopes" {
         for_each = inbound.value.destination_scopes
         content {
+          # data - (required) is a type of map of string
           data = destination_scopes.value["data"]
+          # type - (required) is a type of string
           type = destination_scopes.value["type"]
         }
       }
@@ -232,7 +248,9 @@ resource "dome9_azure_security_group" "this" {
       dynamic "source_scopes" {
         for_each = inbound.value.source_scopes
         content {
+          # data - (required) is a type of map of string
           data = source_scopes.value["data"]
+          # type - (required) is a type of string
           type = source_scopes.value["type"]
         }
       }
@@ -243,19 +261,29 @@ resource "dome9_azure_security_group" "this" {
   dynamic "outbound" {
     for_each = var.outbound
     content {
-      access                  = outbound.value["access"]
-      description             = outbound.value["description"]
+      # access - (optional) is a type of string
+      access = outbound.value["access"]
+      # description - (optional) is a type of string
+      description = outbound.value["description"]
+      # destination_port_ranges - (required) is a type of list of string
       destination_port_ranges = outbound.value["destination_port_ranges"]
-      is_default              = outbound.value["is_default"]
-      name                    = outbound.value["name"]
-      priority                = outbound.value["priority"]
-      protocol                = outbound.value["protocol"]
-      source_port_ranges      = outbound.value["source_port_ranges"]
+      # is_default - (optional) is a type of bool
+      is_default = outbound.value["is_default"]
+      # name - (required) is a type of string
+      name = outbound.value["name"]
+      # priority - (required) is a type of number
+      priority = outbound.value["priority"]
+      # protocol - (required) is a type of string
+      protocol = outbound.value["protocol"]
+      # source_port_ranges - (required) is a type of list of string
+      source_port_ranges = outbound.value["source_port_ranges"]
 
       dynamic "destination_scopes" {
         for_each = outbound.value.destination_scopes
         content {
+          # data - (required) is a type of map of string
           data = destination_scopes.value["data"]
+          # type - (required) is a type of string
           type = destination_scopes.value["type"]
         }
       }
@@ -263,7 +291,9 @@ resource "dome9_azure_security_group" "this" {
       dynamic "source_scopes" {
         for_each = outbound.value.source_scopes
         content {
+          # data - (required) is a type of map of string
           data = source_scopes.value["data"]
+          # type - (required) is a type of string
           type = source_scopes.value["type"]
         }
       }
@@ -274,7 +304,9 @@ resource "dome9_azure_security_group" "this" {
   dynamic "tags" {
     for_each = var.tags
     content {
-      key   = tags.value["key"]
+      # key - (required) is a type of string
+      key = tags.value["key"]
+      # value - (required) is a type of string
       value = tags.value["value"]
     }
   }

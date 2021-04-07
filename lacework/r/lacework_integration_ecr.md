@@ -115,20 +115,31 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_integration_ecr" "this" {
-  enabled         = var.enabled
-  limit_by_label  = var.limit_by_label
-  limit_by_repos  = var.limit_by_repos
-  limit_by_tag    = var.limit_by_tag
-  limit_num_imgs  = var.limit_num_imgs
-  name            = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # limit_by_label - (optional) is a type of string
+  limit_by_label = var.limit_by_label
+  # limit_by_repos - (optional) is a type of string
+  limit_by_repos = var.limit_by_repos
+  # limit_by_tag - (optional) is a type of string
+  limit_by_tag = var.limit_by_tag
+  # limit_num_imgs - (optional) is a type of number
+  limit_num_imgs = var.limit_num_imgs
+  # name - (required) is a type of string
+  name = var.name
+  # registry_domain - (required) is a type of string
   registry_domain = var.registry_domain
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
-      access_key_id     = credentials.value["access_key_id"]
-      external_id       = credentials.value["external_id"]
-      role_arn          = credentials.value["role_arn"]
+      # access_key_id - (optional) is a type of string
+      access_key_id = credentials.value["access_key_id"]
+      # external_id - (optional) is a type of string
+      external_id = credentials.value["external_id"]
+      # role_arn - (optional) is a type of string
+      role_arn = credentials.value["role_arn"]
+      # secret_access_key - (optional) is a type of string
       secret_access_key = credentials.value["secret_access_key"]
     }
   }

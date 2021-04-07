@@ -138,25 +138,37 @@ variable "tagging" {
 
 ```terraform
 resource "fortios_user_device" "this" {
-  alias                 = var.alias
-  avatar                = var.avatar
-  category              = var.category
-  comment               = var.comment
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # avatar - (optional) is a type of string
+  avatar = var.avatar
+  # category - (optional) is a type of string
+  category = var.category
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  mac                   = var.mac
-  master_device         = var.master_device
-  type                  = var.type
-  user                  = var.user
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # master_device - (optional) is a type of string
+  master_device = var.master_device
+  # type - (optional) is a type of string
+  type = var.type
+  # user - (optional) is a type of string
+  user = var.user
 
   dynamic "tagging" {
     for_each = var.tagging
     content {
+      # category - (optional) is a type of string
       category = tagging.value["category"]
-      name     = tagging.value["name"]
+      # name - (optional) is a type of string
+      name = tagging.value["name"]
 
       dynamic "tags" {
         for_each = tagging.value.tags
         content {
+          # name - (optional) is a type of string
           name = tags.value["name"]
         }
       }

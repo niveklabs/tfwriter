@@ -58,7 +58,9 @@ variable "type" {
 
 ```terraform
 data "akamai_networklist_network_lists" "this" {
+  # name - (optional) is a type of string
   name = var.name
+  # type - (optional) is a type of string
   type = var.type
 }
 ```

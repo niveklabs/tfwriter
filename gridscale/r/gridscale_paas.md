@@ -124,16 +124,23 @@ variable "timeouts" {
 
 ```terraform
 resource "gridscale_paas" "this" {
-  labels                = var.labels
-  name                  = var.name
-  security_zone_uuid    = var.security_zone_uuid
+  # labels - (optional) is a type of set of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # security_zone_uuid - (optional) is a type of string
+  security_zone_uuid = var.security_zone_uuid
+  # service_template_uuid - (required) is a type of string
   service_template_uuid = var.service_template_uuid
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
+      # param - (required) is a type of string
       param = parameter.value["param"]
-      type  = parameter.value["type"]
+      # type - (required) is a type of string
+      type = parameter.value["type"]
+      # value - (required) is a type of string
       value = parameter.value["value"]
     }
   }
@@ -141,7 +148,9 @@ resource "gridscale_paas" "this" {
   dynamic "resource_limit" {
     for_each = var.resource_limit
     content {
-      limit    = resource_limit.value["limit"]
+      # limit - (required) is a type of number
+      limit = resource_limit.value["limit"]
+      # resource - (required) is a type of string
       resource = resource_limit.value["resource"]
     }
   }
@@ -149,8 +158,11 @@ resource "gridscale_paas" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

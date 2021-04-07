@@ -50,6 +50,7 @@ variable "enable" {
 
 ```terraform
 data "alicloud_ots_service" "this" {
+  # enable - (optional) is a type of string
   enable = var.enable
 }
 ```

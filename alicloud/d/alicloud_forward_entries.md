@@ -129,17 +129,28 @@ variable "status" {
 
 ```terraform
 data "alicloud_forward_entries" "this" {
-  external_ip        = var.external_ip
-  external_port      = var.external_port
+  # external_ip - (optional) is a type of string
+  external_ip = var.external_ip
+  # external_port - (optional) is a type of string
+  external_port = var.external_port
+  # forward_entry_name - (optional) is a type of string
   forward_entry_name = var.forward_entry_name
-  forward_table_id   = var.forward_table_id
-  ids                = var.ids
-  internal_ip        = var.internal_ip
-  internal_port      = var.internal_port
-  ip_protocol        = var.ip_protocol
-  name_regex         = var.name_regex
-  output_file        = var.output_file
-  status             = var.status
+  # forward_table_id - (required) is a type of string
+  forward_table_id = var.forward_table_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # internal_ip - (optional) is a type of string
+  internal_ip = var.internal_ip
+  # internal_port - (optional) is a type of string
+  internal_port = var.internal_port
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

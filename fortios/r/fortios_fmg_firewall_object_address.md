@@ -121,16 +121,26 @@ variable "type" {
 
 ```terraform
 resource "fortios_fmg_firewall_object_address" "this" {
-  adom            = var.adom
-  allow_routing   = var.allow_routing
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # allow_routing - (optional) is a type of string
+  allow_routing = var.allow_routing
+  # associated_intf - (optional) is a type of string
   associated_intf = var.associated_intf
-  comment         = var.comment
-  end_ip          = var.end_ip
-  fqdn            = var.fqdn
-  name            = var.name
-  start_ip        = var.start_ip
-  subnet          = var.subnet
-  type            = var.type
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # end_ip - (optional) is a type of string
+  end_ip = var.end_ip
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # name - (required) is a type of string
+  name = var.name
+  # start_ip - (optional) is a type of string
+  start_ip = var.start_ip
+  # subnet - (optional) is a type of string
+  subnet = var.subnet
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

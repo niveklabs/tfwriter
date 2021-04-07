@@ -57,7 +57,9 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_audit_key_alias" "this" {
-  region             = var.region
+  # region - (required) is a type of string
+  region = var.region
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

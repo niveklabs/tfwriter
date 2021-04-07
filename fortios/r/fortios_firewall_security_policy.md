@@ -282,37 +282,68 @@ variable "webfilter_profile" {
 
 ```terraform
 resource "fortios_firewall_security_policy" "this" {
-  action                   = var.action
-  application_list         = var.application_list
-  av_profile               = var.av_profile
-  capture_packet           = var.capture_packet
-  comments                 = var.comments
-  devices                  = var.devices
-  dnsfilter_profile        = var.dnsfilter_profile
-  dstaddr                  = var.dstaddr
-  dstintf                  = var.dstintf
-  groups                   = var.groups
-  internet_service         = var.internet_service
-  internet_service_id      = var.internet_service_id
-  internet_service_src     = var.internet_service_src
-  internet_service_src_id  = var.internet_service_src_id
-  ippool                   = var.ippool
-  ips_sensor               = var.ips_sensor
-  logtraffic               = var.logtraffic
-  logtraffic_start         = var.logtraffic_start
-  name                     = var.name
-  nat                      = var.nat
-  poolname                 = var.poolname
+  # action - (required) is a type of string
+  action = var.action
+  # application_list - (optional) is a type of string
+  application_list = var.application_list
+  # av_profile - (optional) is a type of string
+  av_profile = var.av_profile
+  # capture_packet - (optional) is a type of string
+  capture_packet = var.capture_packet
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # devices - (optional) is a type of list of string
+  devices = var.devices
+  # dnsfilter_profile - (optional) is a type of string
+  dnsfilter_profile = var.dnsfilter_profile
+  # dstaddr - (required) is a type of list of string
+  dstaddr = var.dstaddr
+  # dstintf - (required) is a type of list of string
+  dstintf = var.dstintf
+  # groups - (optional) is a type of list of string
+  groups = var.groups
+  # internet_service - (optional) is a type of string
+  internet_service = var.internet_service
+  # internet_service_id - (optional) is a type of list of number
+  internet_service_id = var.internet_service_id
+  # internet_service_src - (optional) is a type of string
+  internet_service_src = var.internet_service_src
+  # internet_service_src_id - (optional) is a type of list of number
+  internet_service_src_id = var.internet_service_src_id
+  # ippool - (optional) is a type of string
+  ippool = var.ippool
+  # ips_sensor - (optional) is a type of string
+  ips_sensor = var.ips_sensor
+  # logtraffic - (optional) is a type of string
+  logtraffic = var.logtraffic
+  # logtraffic_start - (optional) is a type of string
+  logtraffic_start = var.logtraffic_start
+  # name - (required) is a type of string
+  name = var.name
+  # nat - (optional) is a type of string
+  nat = var.nat
+  # poolname - (optional) is a type of list of string
+  poolname = var.poolname
+  # profile_protocol_options - (optional) is a type of string
   profile_protocol_options = var.profile_protocol_options
-  schedule                 = var.schedule
-  service                  = var.service
-  srcaddr                  = var.srcaddr
-  srcintf                  = var.srcintf
-  ssl_ssh_profile          = var.ssl_ssh_profile
-  status                   = var.status
-  users                    = var.users
-  utm_status               = var.utm_status
-  webfilter_profile        = var.webfilter_profile
+  # schedule - (required) is a type of string
+  schedule = var.schedule
+  # service - (required) is a type of list of string
+  service = var.service
+  # srcaddr - (required) is a type of list of string
+  srcaddr = var.srcaddr
+  # srcintf - (required) is a type of list of string
+  srcintf = var.srcintf
+  # ssl_ssh_profile - (optional) is a type of string
+  ssl_ssh_profile = var.ssl_ssh_profile
+  # status - (optional) is a type of string
+  status = var.status
+  # users - (optional) is a type of list of string
+  users = var.users
+  # utm_status - (optional) is a type of string
+  utm_status = var.utm_status
+  # webfilter_profile - (optional) is a type of string
+  webfilter_profile = var.webfilter_profile
 }
 ```
 

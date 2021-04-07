@@ -203,33 +203,53 @@ variable "interfaces" {
 
 ```terraform
 resource "cloudscale_server" "this" {
+  # allow_stopping_for_update - (optional) is a type of bool
   allow_stopping_for_update = var.allow_stopping_for_update
-  bulk_volume_size_gb       = var.bulk_volume_size_gb
-  flavor_slug               = var.flavor_slug
-  image_slug                = var.image_slug
-  name                      = var.name
-  password                  = var.password
-  server_group_ids          = var.server_group_ids
-  ssh_keys                  = var.ssh_keys
-  status                    = var.status
-  use_ipv6                  = var.use_ipv6
-  use_private_network       = var.use_private_network
-  use_public_network        = var.use_public_network
-  user_data                 = var.user_data
-  volume_size_gb            = var.volume_size_gb
-  zone_slug                 = var.zone_slug
+  # bulk_volume_size_gb - (optional) is a type of number
+  bulk_volume_size_gb = var.bulk_volume_size_gb
+  # flavor_slug - (required) is a type of string
+  flavor_slug = var.flavor_slug
+  # image_slug - (required) is a type of string
+  image_slug = var.image_slug
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # server_group_ids - (optional) is a type of set of string
+  server_group_ids = var.server_group_ids
+  # ssh_keys - (optional) is a type of set of string
+  ssh_keys = var.ssh_keys
+  # status - (optional) is a type of string
+  status = var.status
+  # use_ipv6 - (optional) is a type of bool
+  use_ipv6 = var.use_ipv6
+  # use_private_network - (optional) is a type of bool
+  use_private_network = var.use_private_network
+  # use_public_network - (optional) is a type of bool
+  use_public_network = var.use_public_network
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # volume_size_gb - (optional) is a type of number
+  volume_size_gb = var.volume_size_gb
+  # zone_slug - (optional) is a type of string
+  zone_slug = var.zone_slug
 
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
+      # network_uuid - (optional) is a type of string
       network_uuid = interfaces.value["network_uuid"]
-      no_address   = interfaces.value["no_address"]
-      type         = interfaces.value["type"]
+      # no_address - (optional) is a type of bool
+      no_address = interfaces.value["no_address"]
+      # type - (required) is a type of string
+      type = interfaces.value["type"]
 
       dynamic "addresses" {
         for_each = interfaces.value.addresses
         content {
-          address     = addresses.value["address"]
+          # address - (optional) is a type of string
+          address = addresses.value["address"]
+          # subnet_uuid - (optional) is a type of string
           subnet_uuid = addresses.value["subnet_uuid"]
         }
       }

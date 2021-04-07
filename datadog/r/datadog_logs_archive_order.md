@@ -50,6 +50,7 @@ variable "archive_ids" {
 
 ```terraform
 resource "datadog_logs_archive_order" "this" {
+  # archive_ids - (optional) is a type of list of string
   archive_ids = var.archive_ids
 }
 ```

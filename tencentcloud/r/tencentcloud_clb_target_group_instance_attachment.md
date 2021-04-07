@@ -70,10 +70,14 @@ variable "weight" {
 
 ```terraform
 resource "tencentcloud_clb_target_group_instance_attachment" "this" {
-  bind_ip         = var.bind_ip
-  port            = var.port
+  # bind_ip - (required) is a type of string
+  bind_ip = var.bind_ip
+  # port - (required) is a type of number
+  port = var.port
+  # target_group_id - (required) is a type of string
   target_group_id = var.target_group_id
-  weight          = var.weight
+  # weight - (required) is a type of number
+  weight = var.weight
 }
 ```
 

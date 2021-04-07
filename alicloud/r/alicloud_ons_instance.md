@@ -90,15 +90,21 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_ons_instance" "this" {
+  # instance_name - (optional) is a type of string
   instance_name = var.instance_name
-  name          = var.name
-  remark        = var.remark
-  tags          = var.tags
+  # name - (optional) is a type of string
+  name = var.name
+  # remark - (optional) is a type of string
+  remark = var.remark
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

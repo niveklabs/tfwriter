@@ -80,15 +80,20 @@ variable "credentials" {
 
 ```terraform
 resource "lacework_integration_aws_cfg" "this" {
+  # enabled - (optional) is a type of bool
   enabled = var.enabled
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # retries - (optional) is a type of number
   retries = var.retries
 
   dynamic "credentials" {
     for_each = var.credentials
     content {
+      # external_id - (required) is a type of string
       external_id = credentials.value["external_id"]
-      role_arn    = credentials.value["role_arn"]
+      # role_arn - (required) is a type of string
+      role_arn = credentials.value["role_arn"]
     }
   }
 

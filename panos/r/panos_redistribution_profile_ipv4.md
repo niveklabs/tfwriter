@@ -143,19 +143,32 @@ variable "virtual_router" {
 
 ```terraform
 resource "panos_redistribution_profile_ipv4" "this" {
-  action                   = var.action
-  bgp_communities          = var.bgp_communities
+  # action - (optional) is a type of string
+  action = var.action
+  # bgp_communities - (optional) is a type of list of string
+  bgp_communities = var.bgp_communities
+  # bgp_extended_communities - (optional) is a type of list of string
   bgp_extended_communities = var.bgp_extended_communities
-  destinations             = var.destinations
-  interfaces               = var.interfaces
-  name                     = var.name
-  next_hops                = var.next_hops
-  ospf_areas               = var.ospf_areas
-  ospf_path_types          = var.ospf_path_types
-  ospf_tags                = var.ospf_tags
-  priority                 = var.priority
-  types                    = var.types
-  virtual_router           = var.virtual_router
+  # destinations - (optional) is a type of list of string
+  destinations = var.destinations
+  # interfaces - (optional) is a type of list of string
+  interfaces = var.interfaces
+  # name - (required) is a type of string
+  name = var.name
+  # next_hops - (optional) is a type of list of string
+  next_hops = var.next_hops
+  # ospf_areas - (optional) is a type of list of string
+  ospf_areas = var.ospf_areas
+  # ospf_path_types - (optional) is a type of list of string
+  ospf_path_types = var.ospf_path_types
+  # ospf_tags - (optional) is a type of list of string
+  ospf_tags = var.ospf_tags
+  # priority - (required) is a type of number
+  priority = var.priority
+  # types - (optional) is a type of list of string
+  types = var.types
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 }
 ```
 

@@ -122,16 +122,26 @@ variable "name" {
 
 ```terraform
 resource "fortios_firewallshaper_peripshaper" "this" {
-  bandwidth_unit             = var.bandwidth_unit
-  diffserv_forward           = var.diffserv_forward
-  diffserv_reverse           = var.diffserv_reverse
-  diffservcode_forward       = var.diffservcode_forward
-  diffservcode_rev           = var.diffservcode_rev
-  max_bandwidth              = var.max_bandwidth
-  max_concurrent_session     = var.max_concurrent_session
+  # bandwidth_unit - (optional) is a type of string
+  bandwidth_unit = var.bandwidth_unit
+  # diffserv_forward - (optional) is a type of string
+  diffserv_forward = var.diffserv_forward
+  # diffserv_reverse - (optional) is a type of string
+  diffserv_reverse = var.diffserv_reverse
+  # diffservcode_forward - (optional) is a type of string
+  diffservcode_forward = var.diffservcode_forward
+  # diffservcode_rev - (optional) is a type of string
+  diffservcode_rev = var.diffservcode_rev
+  # max_bandwidth - (optional) is a type of number
+  max_bandwidth = var.max_bandwidth
+  # max_concurrent_session - (optional) is a type of number
+  max_concurrent_session = var.max_concurrent_session
+  # max_concurrent_tcp_session - (optional) is a type of number
   max_concurrent_tcp_session = var.max_concurrent_tcp_session
+  # max_concurrent_udp_session - (optional) is a type of number
   max_concurrent_udp_session = var.max_concurrent_udp_session
-  name                       = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

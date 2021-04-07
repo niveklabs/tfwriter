@@ -146,22 +146,35 @@ variable "dimensions" {
 
 ```terraform
 data "tencentcloud_monitor_product_event" "this" {
-  end_time           = var.end_time
-  event_name         = var.event_name
-  instance_id        = var.instance_id
-  is_alarm_config    = var.is_alarm_config
-  product_name       = var.product_name
-  project_id         = var.project_id
-  region_list        = var.region_list
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # event_name - (optional) is a type of list of string
+  event_name = var.event_name
+  # instance_id - (optional) is a type of list of string
+  instance_id = var.instance_id
+  # is_alarm_config - (optional) is a type of number
+  is_alarm_config = var.is_alarm_config
+  # product_name - (optional) is a type of list of string
+  product_name = var.product_name
+  # project_id - (optional) is a type of list of string
+  project_id = var.project_id
+  # region_list - (optional) is a type of list of string
+  region_list = var.region_list
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  start_time         = var.start_time
-  status             = var.status
-  type               = var.type
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # status - (optional) is a type of list of string
+  status = var.status
+  # type - (optional) is a type of list of string
+  type = var.type
 
   dynamic "dimensions" {
     for_each = var.dimensions
     content {
-      name  = dimensions.value["name"]
+      # name - (optional) is a type of string
+      name = dimensions.value["name"]
+      # value - (optional) is a type of string
       value = dimensions.value["value"]
     }
   }

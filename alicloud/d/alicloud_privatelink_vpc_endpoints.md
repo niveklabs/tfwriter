@@ -114,15 +114,24 @@ variable "vpc_id" {
 
 ```terraform
 data "alicloud_privatelink_vpc_endpoints" "this" {
+  # connection_status - (optional) is a type of string
   connection_status = var.connection_status
-  enable_details    = var.enable_details
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
-  service_name      = var.service_name
-  status            = var.status
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # service_name - (optional) is a type of string
+  service_name = var.service_name
+  # status - (optional) is a type of string
+  status = var.status
+  # vpc_endpoint_name - (optional) is a type of string
   vpc_endpoint_name = var.vpc_endpoint_name
-  vpc_id            = var.vpc_id
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

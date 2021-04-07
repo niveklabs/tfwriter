@@ -98,13 +98,20 @@ variable "timeout" {
 
 ```terraform
 resource "fortios_system_autoscript" "this" {
-  interval    = var.interval
-  name        = var.name
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # name - (optional) is a type of string
+  name = var.name
+  # output_size - (optional) is a type of number
   output_size = var.output_size
-  repeat      = var.repeat
-  script      = var.script
-  start       = var.start
-  timeout     = var.timeout
+  # repeat - (optional) is a type of number
+  repeat = var.repeat
+  # script - (optional) is a type of string
+  script = var.script
+  # start - (optional) is a type of string
+  start = var.start
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
 }
 ```
 

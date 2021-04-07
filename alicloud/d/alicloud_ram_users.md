@@ -90,11 +90,17 @@ variable "policy_type" {
 
 ```terraform
 data "alicloud_ram_users" "this" {
-  group_name  = var.group_name
-  ids         = var.ids
-  name_regex  = var.name_regex
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
+  # policy_name - (optional) is a type of string
   policy_name = var.policy_name
+  # policy_type - (optional) is a type of string
   policy_type = var.policy_type
 }
 ```

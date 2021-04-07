@@ -254,94 +254,137 @@ variable "system_parameters" {
 
 ```terraform
 resource "alicloud_api_gateway_api" "this" {
-  auth_type    = var.auth_type
-  description  = var.description
-  group_id     = var.group_id
-  name         = var.name
+  # auth_type - (required) is a type of string
+  auth_type = var.auth_type
+  # description - (required) is a type of string
+  description = var.description
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # name - (required) is a type of string
+  name = var.name
+  # service_type - (required) is a type of string
   service_type = var.service_type
-  stage_names  = var.stage_names
+  # stage_names - (optional) is a type of set of string
+  stage_names = var.stage_names
 
   dynamic "constant_parameters" {
     for_each = var.constant_parameters
     content {
+      # description - (optional) is a type of string
       description = constant_parameters.value["description"]
-      in          = constant_parameters.value["in"]
-      name        = constant_parameters.value["name"]
-      value       = constant_parameters.value["value"]
+      # in - (required) is a type of string
+      in = constant_parameters.value["in"]
+      # name - (required) is a type of string
+      name = constant_parameters.value["name"]
+      # value - (required) is a type of string
+      value = constant_parameters.value["value"]
     }
   }
 
   dynamic "fc_service_config" {
     for_each = var.fc_service_config
     content {
-      arn_role      = fc_service_config.value["arn_role"]
+      # arn_role - (optional) is a type of string
+      arn_role = fc_service_config.value["arn_role"]
+      # function_name - (required) is a type of string
       function_name = fc_service_config.value["function_name"]
-      region        = fc_service_config.value["region"]
-      service_name  = fc_service_config.value["service_name"]
-      timeout       = fc_service_config.value["timeout"]
+      # region - (required) is a type of string
+      region = fc_service_config.value["region"]
+      # service_name - (required) is a type of string
+      service_name = fc_service_config.value["service_name"]
+      # timeout - (required) is a type of number
+      timeout = fc_service_config.value["timeout"]
     }
   }
 
   dynamic "http_service_config" {
     for_each = var.http_service_config
     content {
-      address   = http_service_config.value["address"]
+      # address - (required) is a type of string
+      address = http_service_config.value["address"]
+      # aone_name - (optional) is a type of string
       aone_name = http_service_config.value["aone_name"]
-      method    = http_service_config.value["method"]
-      path      = http_service_config.value["path"]
-      timeout   = http_service_config.value["timeout"]
+      # method - (required) is a type of string
+      method = http_service_config.value["method"]
+      # path - (required) is a type of string
+      path = http_service_config.value["path"]
+      # timeout - (required) is a type of number
+      timeout = http_service_config.value["timeout"]
     }
   }
 
   dynamic "http_vpc_service_config" {
     for_each = var.http_vpc_service_config
     content {
+      # aone_name - (optional) is a type of string
       aone_name = http_vpc_service_config.value["aone_name"]
-      method    = http_vpc_service_config.value["method"]
-      name      = http_vpc_service_config.value["name"]
-      path      = http_vpc_service_config.value["path"]
-      timeout   = http_vpc_service_config.value["timeout"]
+      # method - (required) is a type of string
+      method = http_vpc_service_config.value["method"]
+      # name - (required) is a type of string
+      name = http_vpc_service_config.value["name"]
+      # path - (required) is a type of string
+      path = http_vpc_service_config.value["path"]
+      # timeout - (required) is a type of number
+      timeout = http_vpc_service_config.value["timeout"]
     }
   }
 
   dynamic "mock_service_config" {
     for_each = var.mock_service_config
     content {
+      # aone_name - (optional) is a type of string
       aone_name = mock_service_config.value["aone_name"]
-      result    = mock_service_config.value["result"]
+      # result - (required) is a type of string
+      result = mock_service_config.value["result"]
     }
   }
 
   dynamic "request_config" {
     for_each = var.request_config
     content {
+      # body_format - (optional) is a type of string
       body_format = request_config.value["body_format"]
-      method      = request_config.value["method"]
-      mode        = request_config.value["mode"]
-      path        = request_config.value["path"]
-      protocol    = request_config.value["protocol"]
+      # method - (required) is a type of string
+      method = request_config.value["method"]
+      # mode - (required) is a type of string
+      mode = request_config.value["mode"]
+      # path - (required) is a type of string
+      path = request_config.value["path"]
+      # protocol - (required) is a type of string
+      protocol = request_config.value["protocol"]
     }
   }
 
   dynamic "request_parameters" {
     for_each = var.request_parameters
     content {
+      # default_value - (optional) is a type of string
       default_value = request_parameters.value["default_value"]
-      description   = request_parameters.value["description"]
-      in            = request_parameters.value["in"]
-      in_service    = request_parameters.value["in_service"]
-      name          = request_parameters.value["name"]
-      name_service  = request_parameters.value["name_service"]
-      required      = request_parameters.value["required"]
-      type          = request_parameters.value["type"]
+      # description - (optional) is a type of string
+      description = request_parameters.value["description"]
+      # in - (required) is a type of string
+      in = request_parameters.value["in"]
+      # in_service - (required) is a type of string
+      in_service = request_parameters.value["in_service"]
+      # name - (required) is a type of string
+      name = request_parameters.value["name"]
+      # name_service - (required) is a type of string
+      name_service = request_parameters.value["name_service"]
+      # required - (required) is a type of string
+      required = request_parameters.value["required"]
+      # type - (required) is a type of string
+      type = request_parameters.value["type"]
     }
   }
 
   dynamic "system_parameters" {
     for_each = var.system_parameters
     content {
-      in           = system_parameters.value["in"]
-      name         = system_parameters.value["name"]
+      # in - (required) is a type of string
+      in = system_parameters.value["in"]
+      # name - (required) is a type of string
+      name = system_parameters.value["name"]
+      # name_service - (required) is a type of string
       name_service = system_parameters.value["name_service"]
     }
   }

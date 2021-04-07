@@ -144,19 +144,29 @@ variable "template" {
 
 ```terraform
 resource "thunder_slb_template_smtp" "this" {
+  # client_starttls_type - (optional) is a type of string
   client_starttls_type = var.client_starttls_type
-  name                 = var.name
-  server_domain        = var.server_domain
+  # name - (optional) is a type of string
+  name = var.name
+  # server_domain - (optional) is a type of string
+  server_domain = var.server_domain
+  # server_starttls_type - (optional) is a type of string
   server_starttls_type = var.server_starttls_type
-  service_ready_msg    = var.service_ready_msg
-  user_tag             = var.user_tag
-  uuid                 = var.uuid
+  # service_ready_msg - (optional) is a type of string
+  service_ready_msg = var.service_ready_msg
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "client_domain_switching" {
     for_each = var.client_domain_switching
     content {
-      match_string   = client_domain_switching.value["match_string"]
-      service_group  = client_domain_switching.value["service_group"]
+      # match_string - (optional) is a type of string
+      match_string = client_domain_switching.value["match_string"]
+      # service_group - (optional) is a type of string
+      service_group = client_domain_switching.value["service_group"]
+      # switching_type - (optional) is a type of string
       switching_type = client_domain_switching.value["switching_type"]
     }
   }
@@ -164,6 +174,7 @@ resource "thunder_slb_template_smtp" "this" {
   dynamic "command_disable" {
     for_each = var.command_disable
     content {
+      # disable_type - (optional) is a type of string
       disable_type = command_disable.value["disable_type"]
     }
   }
@@ -171,6 +182,7 @@ resource "thunder_slb_template_smtp" "this" {
   dynamic "template" {
     for_each = var.template
     content {
+      # logging - (optional) is a type of string
       logging = template.value["logging"]
     }
   }

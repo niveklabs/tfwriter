@@ -58,8 +58,10 @@ variable "admin_uid" {
 
 ```terraform
 resource "checkpoint_management_add_api_key" "this" {
+  # admin_name - (optional) is a type of string
   admin_name = var.admin_name
-  admin_uid  = var.admin_uid
+  # admin_uid - (optional) is a type of string
+  admin_uid = var.admin_uid
 }
 ```
 

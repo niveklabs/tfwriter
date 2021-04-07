@@ -124,17 +124,28 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_site_anp_epg_subnet" "this" {
-  anp_name           = var.anp_name
-  description        = var.description
-  epg_name           = var.epg_name
-  ip                 = var.ip
+  # anp_name - (required) is a type of string
+  anp_name = var.anp_name
+  # description - (optional) is a type of string
+  description = var.description
+  # epg_name - (required) is a type of string
+  epg_name = var.epg_name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # no_default_gateway - (optional) is a type of bool
   no_default_gateway = var.no_default_gateway
-  querier            = var.querier
-  schema_id          = var.schema_id
-  scope              = var.scope
-  shared             = var.shared
-  site_id            = var.site_id
-  template_name      = var.template_name
+  # querier - (optional) is a type of bool
+  querier = var.querier
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # shared - (optional) is a type of bool
+  shared = var.shared
+  # site_id - (required) is a type of string
+  site_id = var.site_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

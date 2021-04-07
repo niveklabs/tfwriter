@@ -186,24 +186,42 @@ variable "target_version" {
 
 ```terraform
 resource "aviatrix_controller_config" "this" {
-  aws_guard_duty_scanning_interval    = var.aws_guard_duty_scanning_interval
-  backup_account_name                 = var.backup_account_name
-  backup_bucket_name                  = var.backup_bucket_name
-  backup_cloud_type                   = var.backup_cloud_type
-  backup_configuration                = var.backup_configuration
-  backup_container_name               = var.backup_container_name
-  backup_region                       = var.backup_region
-  backup_storage_name                 = var.backup_storage_name
-  ca_certificate_file_path            = var.ca_certificate_file_path
-  enable_vpc_dns_server               = var.enable_vpc_dns_server
-  fqdn_exception_rule                 = var.fqdn_exception_rule
-  http_access                         = var.http_access
-  multiple_backups                    = var.multiple_backups
-  security_group_management           = var.security_group_management
-  server_private_key_file_path        = var.server_private_key_file_path
+  # aws_guard_duty_scanning_interval - (optional) is a type of number
+  aws_guard_duty_scanning_interval = var.aws_guard_duty_scanning_interval
+  # backup_account_name - (optional) is a type of string
+  backup_account_name = var.backup_account_name
+  # backup_bucket_name - (optional) is a type of string
+  backup_bucket_name = var.backup_bucket_name
+  # backup_cloud_type - (optional) is a type of number
+  backup_cloud_type = var.backup_cloud_type
+  # backup_configuration - (optional) is a type of bool
+  backup_configuration = var.backup_configuration
+  # backup_container_name - (optional) is a type of string
+  backup_container_name = var.backup_container_name
+  # backup_region - (optional) is a type of string
+  backup_region = var.backup_region
+  # backup_storage_name - (optional) is a type of string
+  backup_storage_name = var.backup_storage_name
+  # ca_certificate_file_path - (optional) is a type of string
+  ca_certificate_file_path = var.ca_certificate_file_path
+  # enable_vpc_dns_server - (optional) is a type of bool
+  enable_vpc_dns_server = var.enable_vpc_dns_server
+  # fqdn_exception_rule - (optional) is a type of bool
+  fqdn_exception_rule = var.fqdn_exception_rule
+  # http_access - (optional) is a type of bool
+  http_access = var.http_access
+  # multiple_backups - (optional) is a type of bool
+  multiple_backups = var.multiple_backups
+  # security_group_management - (optional) is a type of bool
+  security_group_management = var.security_group_management
+  # server_private_key_file_path - (optional) is a type of string
+  server_private_key_file_path = var.server_private_key_file_path
+  # server_public_certificate_file_path - (optional) is a type of string
   server_public_certificate_file_path = var.server_public_certificate_file_path
-  sg_management_account_name          = var.sg_management_account_name
-  target_version                      = var.target_version
+  # sg_management_account_name - (optional) is a type of string
+  sg_management_account_name = var.sg_management_account_name
+  # target_version - (optional) is a type of string
+  target_version = var.target_version
 }
 ```
 

@@ -121,16 +121,26 @@ variable "vswitch_id" {
 
 ```terraform
 data "alicloud_nas_mount_targets" "this" {
-  access_group_name   = var.access_group_name
-  file_system_id      = var.file_system_id
-  ids                 = var.ids
+  # access_group_name - (optional) is a type of string
+  access_group_name = var.access_group_name
+  # file_system_id - (required) is a type of string
+  file_system_id = var.file_system_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # mount_target_domain - (optional) is a type of string
   mount_target_domain = var.mount_target_domain
-  network_type        = var.network_type
-  output_file         = var.output_file
-  status              = var.status
-  type                = var.type
-  vpc_id              = var.vpc_id
-  vswitch_id          = var.vswitch_id
+  # network_type - (optional) is a type of string
+  network_type = var.network_type
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
 }
 ```
 

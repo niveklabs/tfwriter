@@ -58,7 +58,9 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_cr_namespaces" "this" {
-  name_regex  = var.name_regex
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

@@ -278,57 +278,87 @@ variable "redistribute" {
 
 ```terraform
 resource "fortios_router_rip" "this" {
+  # default_information_originate - (optional) is a type of string
   default_information_originate = var.default_information_originate
-  default_metric                = var.default_metric
-  dynamic_sort_subtable         = var.dynamic_sort_subtable
-  garbage_timer                 = var.garbage_timer
-  max_out_metric                = var.max_out_metric
-  recv_buffer_size              = var.recv_buffer_size
-  timeout_timer                 = var.timeout_timer
-  update_timer                  = var.update_timer
-  version                       = var.version
+  # default_metric - (optional) is a type of number
+  default_metric = var.default_metric
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # garbage_timer - (optional) is a type of number
+  garbage_timer = var.garbage_timer
+  # max_out_metric - (optional) is a type of number
+  max_out_metric = var.max_out_metric
+  # recv_buffer_size - (optional) is a type of number
+  recv_buffer_size = var.recv_buffer_size
+  # timeout_timer - (optional) is a type of number
+  timeout_timer = var.timeout_timer
+  # update_timer - (optional) is a type of number
+  update_timer = var.update_timer
+  # version - (optional) is a type of string
+  version = var.version
 
   dynamic "distance" {
     for_each = var.distance
     content {
+      # access_list - (optional) is a type of string
       access_list = distance.value["access_list"]
-      distance    = distance.value["distance"]
-      id          = distance.value["id"]
-      prefix      = distance.value["prefix"]
+      # distance - (optional) is a type of number
+      distance = distance.value["distance"]
+      # id - (optional) is a type of number
+      id = distance.value["id"]
+      # prefix - (optional) is a type of string
+      prefix = distance.value["prefix"]
     }
   }
 
   dynamic "distribute_list" {
     for_each = var.distribute_list
     content {
+      # direction - (optional) is a type of string
       direction = distribute_list.value["direction"]
-      id        = distribute_list.value["id"]
+      # id - (optional) is a type of number
+      id = distribute_list.value["id"]
+      # interface - (optional) is a type of string
       interface = distribute_list.value["interface"]
-      listname  = distribute_list.value["listname"]
-      status    = distribute_list.value["status"]
+      # listname - (optional) is a type of string
+      listname = distribute_list.value["listname"]
+      # status - (optional) is a type of string
+      status = distribute_list.value["status"]
     }
   }
 
   dynamic "interface" {
     for_each = var.interface
     content {
-      auth_keychain           = interface.value["auth_keychain"]
-      auth_mode               = interface.value["auth_mode"]
-      auth_string             = interface.value["auth_string"]
-      flags                   = interface.value["flags"]
-      name                    = interface.value["name"]
-      receive_version         = interface.value["receive_version"]
-      send_version            = interface.value["send_version"]
+      # auth_keychain - (optional) is a type of string
+      auth_keychain = interface.value["auth_keychain"]
+      # auth_mode - (optional) is a type of string
+      auth_mode = interface.value["auth_mode"]
+      # auth_string - (optional) is a type of string
+      auth_string = interface.value["auth_string"]
+      # flags - (optional) is a type of number
+      flags = interface.value["flags"]
+      # name - (optional) is a type of string
+      name = interface.value["name"]
+      # receive_version - (optional) is a type of string
+      receive_version = interface.value["receive_version"]
+      # send_version - (optional) is a type of string
+      send_version = interface.value["send_version"]
+      # send_version2_broadcast - (optional) is a type of string
       send_version2_broadcast = interface.value["send_version2_broadcast"]
-      split_horizon           = interface.value["split_horizon"]
-      split_horizon_status    = interface.value["split_horizon_status"]
+      # split_horizon - (optional) is a type of string
+      split_horizon = interface.value["split_horizon"]
+      # split_horizon_status - (optional) is a type of string
+      split_horizon_status = interface.value["split_horizon_status"]
     }
   }
 
   dynamic "neighbor" {
     for_each = var.neighbor
     content {
+      # id - (optional) is a type of number
       id = neighbor.value["id"]
+      # ip - (optional) is a type of string
       ip = neighbor.value["ip"]
     }
   }
@@ -336,7 +366,9 @@ resource "fortios_router_rip" "this" {
   dynamic "network" {
     for_each = var.network
     content {
-      id     = network.value["id"]
+      # id - (optional) is a type of number
+      id = network.value["id"]
+      # prefix - (optional) is a type of string
       prefix = network.value["prefix"]
     }
   }
@@ -344,18 +376,25 @@ resource "fortios_router_rip" "this" {
   dynamic "offset_list" {
     for_each = var.offset_list
     content {
+      # access_list - (optional) is a type of string
       access_list = offset_list.value["access_list"]
-      direction   = offset_list.value["direction"]
-      id          = offset_list.value["id"]
-      interface   = offset_list.value["interface"]
-      offset      = offset_list.value["offset"]
-      status      = offset_list.value["status"]
+      # direction - (optional) is a type of string
+      direction = offset_list.value["direction"]
+      # id - (optional) is a type of number
+      id = offset_list.value["id"]
+      # interface - (optional) is a type of string
+      interface = offset_list.value["interface"]
+      # offset - (optional) is a type of number
+      offset = offset_list.value["offset"]
+      # status - (optional) is a type of string
+      status = offset_list.value["status"]
     }
   }
 
   dynamic "passive_interface" {
     for_each = var.passive_interface
     content {
+      # name - (optional) is a type of string
       name = passive_interface.value["name"]
     }
   }
@@ -363,10 +402,14 @@ resource "fortios_router_rip" "this" {
   dynamic "redistribute" {
     for_each = var.redistribute
     content {
-      metric   = redistribute.value["metric"]
-      name     = redistribute.value["name"]
+      # metric - (optional) is a type of number
+      metric = redistribute.value["metric"]
+      # name - (optional) is a type of string
+      name = redistribute.value["name"]
+      # routemap - (optional) is a type of string
       routemap = redistribute.value["routemap"]
-      status   = redistribute.value["status"]
+      # status - (optional) is a type of string
+      status = redistribute.value["status"]
     }
   }
 

@@ -80,11 +80,16 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_custom_pages" "this" {
+  # account_id - (optional) is a type of string
   account_id = var.account_id
-  state      = var.state
-  type       = var.type
-  url        = var.url
-  zone_id    = var.zone_id
+  # state - (optional) is a type of string
+  state = var.state
+  # type - (required) is a type of string
+  type = var.type
+  # url - (required) is a type of string
+  url = var.url
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

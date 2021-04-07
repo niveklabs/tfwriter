@@ -64,8 +64,11 @@ variable "network" {
 
 ```terraform
 resource "bigip_net_route" "this" {
-  gw      = var.gw
-  name    = var.name
+  # gw - (optional) is a type of string
+  gw = var.gw
+  # name - (required) is a type of string
+  name = var.name
+  # network - (required) is a type of string
   network = var.network
 }
 ```

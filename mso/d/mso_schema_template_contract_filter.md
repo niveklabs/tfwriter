@@ -99,14 +99,22 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_template_contract_filter" "this" {
-  contract_name        = var.contract_name
-  directives           = var.directives
-  filter_name          = var.filter_name
-  filter_schema_id     = var.filter_schema_id
+  # contract_name - (required) is a type of string
+  contract_name = var.contract_name
+  # directives - (optional) is a type of list of string
+  directives = var.directives
+  # filter_name - (required) is a type of string
+  filter_name = var.filter_name
+  # filter_schema_id - (required) is a type of string
+  filter_schema_id = var.filter_schema_id
+  # filter_template_name - (required) is a type of string
   filter_template_name = var.filter_template_name
-  filter_type          = var.filter_type
-  schema_id            = var.schema_id
-  template_name        = var.template_name
+  # filter_type - (required) is a type of string
+  filter_type = var.filter_type
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

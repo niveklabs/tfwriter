@@ -103,14 +103,22 @@ variable "repository" {
 
 ```terraform
 resource "github_repository_file" "this" {
-  branch              = var.branch
-  commit_author       = var.commit_author
-  commit_email        = var.commit_email
-  commit_message      = var.commit_message
-  content             = var.content
-  file                = var.file
+  # branch - (optional) is a type of string
+  branch = var.branch
+  # commit_author - (optional) is a type of string
+  commit_author = var.commit_author
+  # commit_email - (optional) is a type of string
+  commit_email = var.commit_email
+  # commit_message - (optional) is a type of string
+  commit_message = var.commit_message
+  # content - (required) is a type of string
+  content = var.content
+  # file - (required) is a type of string
+  file = var.file
+  # overwrite_on_create - (optional) is a type of bool
   overwrite_on_create = var.overwrite_on_create
-  repository          = var.repository
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

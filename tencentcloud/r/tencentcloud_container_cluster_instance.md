@@ -226,30 +226,54 @@ variable "zone_id" {
 
 ```terraform
 resource "tencentcloud_container_cluster_instance" "this" {
-  bandwidth         = var.bandwidth
-  bandwidth_type    = var.bandwidth_type
-  cluster_id        = var.cluster_id
-  cpu               = var.cpu
-  cvm_type          = var.cvm_type
+  # bandwidth - (required) is a type of number
+  bandwidth = var.bandwidth
+  # bandwidth_type - (required) is a type of string
+  bandwidth_type = var.bandwidth_type
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # cpu - (optional) is a type of number
+  cpu = var.cpu
+  # cvm_type - (optional) is a type of string
+  cvm_type = var.cvm_type
+  # docker_graph_path - (optional) is a type of string
   docker_graph_path = var.docker_graph_path
-  instance_name     = var.instance_name
-  instance_type     = var.instance_type
-  is_vpc_gateway    = var.is_vpc_gateway
-  key_id            = var.key_id
-  mem               = var.mem
-  mount_target      = var.mount_target
-  password          = var.password
-  period            = var.period
-  require_wan_ip    = var.require_wan_ip
-  root_size         = var.root_size
-  root_type         = var.root_type
-  sg_id             = var.sg_id
-  storage_size      = var.storage_size
-  storage_type      = var.storage_type
-  subnet_id         = var.subnet_id
-  unschedulable     = var.unschedulable
-  user_script       = var.user_script
-  zone_id           = var.zone_id
+  # instance_name - (optional) is a type of string
+  instance_name = var.instance_name
+  # instance_type - (optional) is a type of string
+  instance_type = var.instance_type
+  # is_vpc_gateway - (required) is a type of number
+  is_vpc_gateway = var.is_vpc_gateway
+  # key_id - (optional) is a type of string
+  key_id = var.key_id
+  # mem - (optional) is a type of number
+  mem = var.mem
+  # mount_target - (optional) is a type of string
+  mount_target = var.mount_target
+  # password - (optional) is a type of string
+  password = var.password
+  # period - (optional) is a type of number
+  period = var.period
+  # require_wan_ip - (optional) is a type of number
+  require_wan_ip = var.require_wan_ip
+  # root_size - (required) is a type of number
+  root_size = var.root_size
+  # root_type - (optional) is a type of string
+  root_type = var.root_type
+  # sg_id - (optional) is a type of string
+  sg_id = var.sg_id
+  # storage_size - (required) is a type of number
+  storage_size = var.storage_size
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # subnet_id - (required) is a type of string
+  subnet_id = var.subnet_id
+  # unschedulable - (optional) is a type of number
+  unschedulable = var.unschedulable
+  # user_script - (optional) is a type of string
+  user_script = var.user_script
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -79,10 +79,15 @@ variable "usage_plan_id" {
 
 ```terraform
 resource "tencentcloud_api_gateway_usage_plan_attachment" "this" {
-  api_id        = var.api_id
-  bind_type     = var.bind_type
-  environment   = var.environment
-  service_id    = var.service_id
+  # api_id - (optional) is a type of string
+  api_id = var.api_id
+  # bind_type - (optional) is a type of string
+  bind_type = var.bind_type
+  # environment - (required) is a type of string
+  environment = var.environment
+  # service_id - (required) is a type of string
+  service_id = var.service_id
+  # usage_plan_id - (required) is a type of string
   usage_plan_id = var.usage_plan_id
 }
 ```

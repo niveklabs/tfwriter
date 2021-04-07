@@ -150,19 +150,33 @@ variable "throughput_performance" {
 
 ```terraform
 resource "tencentcloud_cbs_storage" "this" {
-  availability_zone      = var.availability_zone
-  charge_type            = var.charge_type
-  encrypt                = var.encrypt
-  force_delete           = var.force_delete
-  period                 = var.period
-  prepaid_period         = var.prepaid_period
-  prepaid_renew_flag     = var.prepaid_renew_flag
-  project_id             = var.project_id
-  snapshot_id            = var.snapshot_id
-  storage_name           = var.storage_name
-  storage_size           = var.storage_size
-  storage_type           = var.storage_type
-  tags                   = var.tags
+  # availability_zone - (required) is a type of string
+  availability_zone = var.availability_zone
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # encrypt - (optional) is a type of bool
+  encrypt = var.encrypt
+  # force_delete - (optional) is a type of bool
+  force_delete = var.force_delete
+  # period - (optional) is a type of number
+  period = var.period
+  # prepaid_period - (optional) is a type of number
+  prepaid_period = var.prepaid_period
+  # prepaid_renew_flag - (optional) is a type of string
+  prepaid_renew_flag = var.prepaid_renew_flag
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # snapshot_id - (optional) is a type of string
+  snapshot_id = var.snapshot_id
+  # storage_name - (required) is a type of string
+  storage_name = var.storage_name
+  # storage_size - (required) is a type of number
+  storage_size = var.storage_size
+  # storage_type - (required) is a type of string
+  storage_type = var.storage_type
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # throughput_performance - (optional) is a type of number
   throughput_performance = var.throughput_performance
 }
 ```

@@ -82,11 +82,16 @@ variable "vpn_gateway_id" {
 
 ```terraform
 data "alicloud_vpn_connections" "this" {
+  # customer_gateway_id - (optional) is a type of string
   customer_gateway_id = var.customer_gateway_id
-  ids                 = var.ids
-  name_regex          = var.name_regex
-  output_file         = var.output_file
-  vpn_gateway_id      = var.vpn_gateway_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # vpn_gateway_id - (optional) is a type of string
+  vpn_gateway_id = var.vpn_gateway_id
 }
 ```
 

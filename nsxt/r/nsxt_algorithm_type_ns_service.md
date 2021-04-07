@@ -96,17 +96,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_algorithm_type_ns_service" "this" {
-  algorithm        = var.algorithm
-  description      = var.description
+  # algorithm - (required) is a type of string
+  algorithm = var.algorithm
+  # description - (optional) is a type of string
+  description = var.description
+  # destination_port - (required) is a type of string
   destination_port = var.destination_port
-  display_name     = var.display_name
-  source_ports     = var.source_ports
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # source_ports - (optional) is a type of set of string
+  source_ports = var.source_ports
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

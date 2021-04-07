@@ -56,7 +56,9 @@ variable "tablegroup_name" {
 
 ```terraform
 resource "tencentcloud_tcaplus_tablegroup" "this" {
-  cluster_id      = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # tablegroup_name - (required) is a type of string
   tablegroup_name = var.tablegroup_name
 }
 ```

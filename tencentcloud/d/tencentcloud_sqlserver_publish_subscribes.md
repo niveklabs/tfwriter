@@ -105,14 +105,22 @@ variable "subscribe_database" {
 
 ```terraform
 data "tencentcloud_sqlserver_publish_subscribes" "this" {
-  instance_id            = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # pub_or_sub_instance_id - (optional) is a type of string
   pub_or_sub_instance_id = var.pub_or_sub_instance_id
+  # pub_or_sub_instance_ip - (optional) is a type of string
   pub_or_sub_instance_ip = var.pub_or_sub_instance_ip
-  publish_database       = var.publish_database
-  publish_subscribe_id   = var.publish_subscribe_id
+  # publish_database - (optional) is a type of string
+  publish_database = var.publish_database
+  # publish_subscribe_id - (optional) is a type of number
+  publish_subscribe_id = var.publish_subscribe_id
+  # publish_subscribe_name - (optional) is a type of string
   publish_subscribe_name = var.publish_subscribe_name
-  result_output_file     = var.result_output_file
-  subscribe_database     = var.subscribe_database
+  # result_output_file - (optional) is a type of string
+  result_output_file = var.result_output_file
+  # subscribe_database - (optional) is a type of string
+  subscribe_database = var.subscribe_database
 }
 ```
 

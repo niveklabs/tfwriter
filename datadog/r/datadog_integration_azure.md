@@ -71,10 +71,14 @@ variable "tenant_name" {
 
 ```terraform
 resource "datadog_integration_azure" "this" {
-  client_id     = var.client_id
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_secret - (required) is a type of string
   client_secret = var.client_secret
-  host_filters  = var.host_filters
-  tenant_name   = var.tenant_name
+  # host_filters - (optional) is a type of string
+  host_filters = var.host_filters
+  # tenant_name - (required) is a type of string
+  tenant_name = var.tenant_name
 }
 ```
 

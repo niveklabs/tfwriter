@@ -66,9 +66,12 @@ variable "vlan" {
 
 ```terraform
 resource "fortios_switchcontrollersecuritypolicy_captiveportal" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # policy_type - (optional) is a type of string
   policy_type = var.policy_type
-  vlan        = var.vlan
+  # vlan - (optional) is a type of string
+  vlan = var.vlan
 }
 ```
 

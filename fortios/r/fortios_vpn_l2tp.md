@@ -105,14 +105,22 @@ variable "usrgrp" {
 
 ```terraform
 resource "fortios_vpn_l2tp" "this" {
-  compress           = var.compress
-  eip                = var.eip
-  enforce_ipsec      = var.enforce_ipsec
-  lcp_echo_interval  = var.lcp_echo_interval
+  # compress - (optional) is a type of string
+  compress = var.compress
+  # eip - (optional) is a type of string
+  eip = var.eip
+  # enforce_ipsec - (optional) is a type of string
+  enforce_ipsec = var.enforce_ipsec
+  # lcp_echo_interval - (optional) is a type of number
+  lcp_echo_interval = var.lcp_echo_interval
+  # lcp_max_echo_fails - (optional) is a type of number
   lcp_max_echo_fails = var.lcp_max_echo_fails
-  sip                = var.sip
-  status             = var.status
-  usrgrp             = var.usrgrp
+  # sip - (optional) is a type of string
+  sip = var.sip
+  # status - (required) is a type of string
+  status = var.status
+  # usrgrp - (optional) is a type of string
+  usrgrp = var.usrgrp
 }
 ```
 

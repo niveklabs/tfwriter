@@ -90,12 +90,18 @@ variable "tenant_id" {
 
 ```terraform
 data "ecl_network_common_function_gateway_v2" "this" {
+  # common_function_pool_id - (optional) is a type of string
   common_function_pool_id = var.common_function_pool_id
-  description             = var.description
-  name                    = var.name
-  network_id              = var.network_id
-  subnet_id               = var.subnet_id
-  tenant_id               = var.tenant_id
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (optional) is a type of string
+  name = var.name
+  # network_id - (optional) is a type of string
+  network_id = var.network_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

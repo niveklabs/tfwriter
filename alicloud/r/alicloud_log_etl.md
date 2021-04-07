@@ -262,50 +262,85 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_log_etl" "this" {
-  access_key_id                            = var.access_key_id
-  access_key_secret                        = var.access_key_secret
-  create_time                              = var.create_time
-  description                              = var.description
-  display_name                             = var.display_name
-  etl_name                                 = var.etl_name
-  etl_type                                 = var.etl_type
-  from_time                                = var.from_time
-  kms_encrypted_access_key_id              = var.kms_encrypted_access_key_id
-  kms_encrypted_access_key_secret          = var.kms_encrypted_access_key_secret
-  kms_encryption_access_key_id_context     = var.kms_encryption_access_key_id_context
+  # access_key_id - (optional) is a type of string
+  access_key_id = var.access_key_id
+  # access_key_secret - (optional) is a type of string
+  access_key_secret = var.access_key_secret
+  # create_time - (optional) is a type of number
+  create_time = var.create_time
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # etl_name - (required) is a type of string
+  etl_name = var.etl_name
+  # etl_type - (optional) is a type of string
+  etl_type = var.etl_type
+  # from_time - (optional) is a type of number
+  from_time = var.from_time
+  # kms_encrypted_access_key_id - (optional) is a type of string
+  kms_encrypted_access_key_id = var.kms_encrypted_access_key_id
+  # kms_encrypted_access_key_secret - (optional) is a type of string
+  kms_encrypted_access_key_secret = var.kms_encrypted_access_key_secret
+  # kms_encryption_access_key_id_context - (optional) is a type of map of string
+  kms_encryption_access_key_id_context = var.kms_encryption_access_key_id_context
+  # kms_encryption_access_key_secret_context - (optional) is a type of map of string
   kms_encryption_access_key_secret_context = var.kms_encryption_access_key_secret_context
-  last_modified_time                       = var.last_modified_time
-  logstore                                 = var.logstore
-  parameters                               = var.parameters
-  project                                  = var.project
-  role_arn                                 = var.role_arn
-  schedule                                 = var.schedule
-  script                                   = var.script
-  status                                   = var.status
-  to_time                                  = var.to_time
-  version                                  = var.version
+  # last_modified_time - (optional) is a type of number
+  last_modified_time = var.last_modified_time
+  # logstore - (required) is a type of string
+  logstore = var.logstore
+  # parameters - (optional) is a type of map of string
+  parameters = var.parameters
+  # project - (required) is a type of string
+  project = var.project
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
+  # script - (required) is a type of string
+  script = var.script
+  # status - (optional) is a type of string
+  status = var.status
+  # to_time - (optional) is a type of number
+  to_time = var.to_time
+  # version - (optional) is a type of number
+  version = var.version
 
   dynamic "etl_sinks" {
     for_each = var.etl_sinks
     content {
-      access_key_id                   = etl_sinks.value["access_key_id"]
-      access_key_secret               = etl_sinks.value["access_key_secret"]
-      endpoint                        = etl_sinks.value["endpoint"]
-      kms_encrypted_access_key_id     = etl_sinks.value["kms_encrypted_access_key_id"]
+      # access_key_id - (optional) is a type of string
+      access_key_id = etl_sinks.value["access_key_id"]
+      # access_key_secret - (optional) is a type of string
+      access_key_secret = etl_sinks.value["access_key_secret"]
+      # endpoint - (required) is a type of string
+      endpoint = etl_sinks.value["endpoint"]
+      # kms_encrypted_access_key_id - (optional) is a type of string
+      kms_encrypted_access_key_id = etl_sinks.value["kms_encrypted_access_key_id"]
+      # kms_encrypted_access_key_secret - (optional) is a type of string
       kms_encrypted_access_key_secret = etl_sinks.value["kms_encrypted_access_key_secret"]
-      logstore                        = etl_sinks.value["logstore"]
-      name                            = etl_sinks.value["name"]
-      project                         = etl_sinks.value["project"]
-      role_arn                        = etl_sinks.value["role_arn"]
-      type                            = etl_sinks.value["type"]
+      # logstore - (required) is a type of string
+      logstore = etl_sinks.value["logstore"]
+      # name - (required) is a type of string
+      name = etl_sinks.value["name"]
+      # project - (required) is a type of string
+      project = etl_sinks.value["project"]
+      # role_arn - (optional) is a type of string
+      role_arn = etl_sinks.value["role_arn"]
+      # type - (optional) is a type of string
+      type = etl_sinks.value["type"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

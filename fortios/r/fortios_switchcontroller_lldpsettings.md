@@ -90,12 +90,18 @@ variable "tx_interval" {
 
 ```terraform
 resource "fortios_switchcontroller_lldpsettings" "this" {
-  device_detection     = var.device_detection
-  fast_start_interval  = var.fast_start_interval
+  # device_detection - (optional) is a type of string
+  device_detection = var.device_detection
+  # fast_start_interval - (optional) is a type of number
+  fast_start_interval = var.fast_start_interval
+  # management_interface - (optional) is a type of string
   management_interface = var.management_interface
-  status               = var.status
-  tx_hold              = var.tx_hold
-  tx_interval          = var.tx_interval
+  # status - (optional) is a type of string
+  status = var.status
+  # tx_hold - (optional) is a type of number
+  tx_hold = var.tx_hold
+  # tx_interval - (optional) is a type of number
+  tx_interval = var.tx_interval
 }
 ```
 

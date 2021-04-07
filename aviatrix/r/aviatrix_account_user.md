@@ -63,8 +63,11 @@ variable "username" {
 
 ```terraform
 resource "aviatrix_account_user" "this" {
-  email    = var.email
+  # email - (required) is a type of string
+  email = var.email
+  # password - (required) is a type of string
   password = var.password
+  # username - (required) is a type of string
   username = var.username
 }
 ```

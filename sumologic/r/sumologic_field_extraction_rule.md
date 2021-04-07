@@ -70,10 +70,14 @@ variable "scope" {
 
 ```terraform
 resource "sumologic_field_extraction_rule" "this" {
-  enabled          = var.enabled
-  name             = var.name
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # parse_expression - (required) is a type of string
   parse_expression = var.parse_expression
-  scope            = var.scope
+  # scope - (required) is a type of string
+  scope = var.scope
 }
 ```
 

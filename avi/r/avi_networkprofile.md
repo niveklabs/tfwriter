@@ -190,28 +190,38 @@ variable "profile" {
 
 ```terraform
 resource "avi_networkprofile" "this" {
+  # connection_mirror - (optional) is a type of bool
   connection_mirror = var.connection_mirror
-  description       = var.description
-  name              = var.name
-  tenant_ref        = var.tenant_ref
-  uuid              = var.uuid
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "profile" {
     for_each = var.profile
     content {
+      # type - (required) is a type of string
       type = profile.value["type"]
 
       dynamic "tcp_fast_path_profile" {
         for_each = profile.value.tcp_fast_path_profile
         content {
+          # enable_syn_protection - (optional) is a type of bool
           enable_syn_protection = tcp_fast_path_profile.value["enable_syn_protection"]
-          session_idle_timeout  = tcp_fast_path_profile.value["session_idle_timeout"]
+          # session_idle_timeout - (optional) is a type of number
+          session_idle_timeout = tcp_fast_path_profile.value["session_idle_timeout"]
 
           dynamic "dsr_profile" {
             for_each = tcp_fast_path_profile.value.dsr_profile
             content {
+              # dsr_encap_type - (optional) is a type of string
               dsr_encap_type = dsr_profile.value["dsr_encap_type"]
-              dsr_type       = dsr_profile.value["dsr_type"]
+              # dsr_type - (optional) is a type of string
+              dsr_type = dsr_profile.value["dsr_type"]
             }
           }
 
@@ -221,41 +231,66 @@ resource "avi_networkprofile" "this" {
       dynamic "tcp_proxy_profile" {
         for_each = profile.value.tcp_proxy_profile
         content {
-          aggressive_congestion_avoidance    = tcp_proxy_profile.value["aggressive_congestion_avoidance"]
-          automatic                          = tcp_proxy_profile.value["automatic"]
-          cc_algo                            = tcp_proxy_profile.value["cc_algo"]
+          # aggressive_congestion_avoidance - (optional) is a type of bool
+          aggressive_congestion_avoidance = tcp_proxy_profile.value["aggressive_congestion_avoidance"]
+          # automatic - (optional) is a type of bool
+          automatic = tcp_proxy_profile.value["automatic"]
+          # cc_algo - (optional) is a type of string
+          cc_algo = tcp_proxy_profile.value["cc_algo"]
+          # congestion_recovery_scaling_factor - (optional) is a type of number
           congestion_recovery_scaling_factor = tcp_proxy_profile.value["congestion_recovery_scaling_factor"]
-          idle_connection_timeout            = tcp_proxy_profile.value["idle_connection_timeout"]
-          idle_connection_type               = tcp_proxy_profile.value["idle_connection_type"]
-          ignore_time_wait                   = tcp_proxy_profile.value["ignore_time_wait"]
-          ip_dscp                            = tcp_proxy_profile.value["ip_dscp"]
-          keepalive_in_halfclose_state       = tcp_proxy_profile.value["keepalive_in_halfclose_state"]
-          max_retransmissions                = tcp_proxy_profile.value["max_retransmissions"]
-          max_segment_size                   = tcp_proxy_profile.value["max_segment_size"]
-          max_syn_retransmissions            = tcp_proxy_profile.value["max_syn_retransmissions"]
-          min_rexmt_timeout                  = tcp_proxy_profile.value["min_rexmt_timeout"]
-          nagles_algorithm                   = tcp_proxy_profile.value["nagles_algorithm"]
-          reassembly_queue_size              = tcp_proxy_profile.value["reassembly_queue_size"]
-          receive_window                     = tcp_proxy_profile.value["receive_window"]
-          reorder_threshold                  = tcp_proxy_profile.value["reorder_threshold"]
-          slow_start_scaling_factor          = tcp_proxy_profile.value["slow_start_scaling_factor"]
-          time_wait_delay                    = tcp_proxy_profile.value["time_wait_delay"]
-          use_interface_mtu                  = tcp_proxy_profile.value["use_interface_mtu"]
+          # idle_connection_timeout - (optional) is a type of number
+          idle_connection_timeout = tcp_proxy_profile.value["idle_connection_timeout"]
+          # idle_connection_type - (optional) is a type of string
+          idle_connection_type = tcp_proxy_profile.value["idle_connection_type"]
+          # ignore_time_wait - (optional) is a type of bool
+          ignore_time_wait = tcp_proxy_profile.value["ignore_time_wait"]
+          # ip_dscp - (optional) is a type of number
+          ip_dscp = tcp_proxy_profile.value["ip_dscp"]
+          # keepalive_in_halfclose_state - (optional) is a type of bool
+          keepalive_in_halfclose_state = tcp_proxy_profile.value["keepalive_in_halfclose_state"]
+          # max_retransmissions - (optional) is a type of number
+          max_retransmissions = tcp_proxy_profile.value["max_retransmissions"]
+          # max_segment_size - (optional) is a type of number
+          max_segment_size = tcp_proxy_profile.value["max_segment_size"]
+          # max_syn_retransmissions - (optional) is a type of number
+          max_syn_retransmissions = tcp_proxy_profile.value["max_syn_retransmissions"]
+          # min_rexmt_timeout - (optional) is a type of number
+          min_rexmt_timeout = tcp_proxy_profile.value["min_rexmt_timeout"]
+          # nagles_algorithm - (optional) is a type of bool
+          nagles_algorithm = tcp_proxy_profile.value["nagles_algorithm"]
+          # reassembly_queue_size - (optional) is a type of number
+          reassembly_queue_size = tcp_proxy_profile.value["reassembly_queue_size"]
+          # receive_window - (optional) is a type of number
+          receive_window = tcp_proxy_profile.value["receive_window"]
+          # reorder_threshold - (optional) is a type of number
+          reorder_threshold = tcp_proxy_profile.value["reorder_threshold"]
+          # slow_start_scaling_factor - (optional) is a type of number
+          slow_start_scaling_factor = tcp_proxy_profile.value["slow_start_scaling_factor"]
+          # time_wait_delay - (optional) is a type of number
+          time_wait_delay = tcp_proxy_profile.value["time_wait_delay"]
+          # use_interface_mtu - (optional) is a type of bool
+          use_interface_mtu = tcp_proxy_profile.value["use_interface_mtu"]
         }
       }
 
       dynamic "udp_fast_path_profile" {
         for_each = profile.value.udp_fast_path_profile
         content {
-          per_pkt_loadbalance  = udp_fast_path_profile.value["per_pkt_loadbalance"]
+          # per_pkt_loadbalance - (optional) is a type of bool
+          per_pkt_loadbalance = udp_fast_path_profile.value["per_pkt_loadbalance"]
+          # session_idle_timeout - (optional) is a type of number
           session_idle_timeout = udp_fast_path_profile.value["session_idle_timeout"]
-          snat                 = udp_fast_path_profile.value["snat"]
+          # snat - (optional) is a type of bool
+          snat = udp_fast_path_profile.value["snat"]
 
           dynamic "dsr_profile" {
             for_each = udp_fast_path_profile.value.dsr_profile
             content {
+              # dsr_encap_type - (optional) is a type of string
               dsr_encap_type = dsr_profile.value["dsr_encap_type"]
-              dsr_type       = dsr_profile.value["dsr_type"]
+              # dsr_type - (optional) is a type of string
+              dsr_type = dsr_profile.value["dsr_type"]
             }
           }
 
@@ -265,6 +300,7 @@ resource "avi_networkprofile" "this" {
       dynamic "udp_proxy_profile" {
         for_each = profile.value.udp_proxy_profile
         content {
+          # session_idle_timeout - (optional) is a type of number
           session_idle_timeout = udp_proxy_profile.value["session_idle_timeout"]
         }
       }

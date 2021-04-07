@@ -89,12 +89,18 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_ccn" "this" {
+  # bandwidth_limit_type - (optional) is a type of string
   bandwidth_limit_type = var.bandwidth_limit_type
-  charge_type          = var.charge_type
-  description          = var.description
-  name                 = var.name
-  qos                  = var.qos
-  tags                 = var.tags
+  # charge_type - (optional) is a type of string
+  charge_type = var.charge_type
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # qos - (optional) is a type of string
+  qos = var.qos
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

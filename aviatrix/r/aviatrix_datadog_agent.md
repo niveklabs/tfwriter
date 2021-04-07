@@ -73,10 +73,14 @@ variable "site" {
 
 ```terraform
 resource "aviatrix_datadog_agent" "this" {
-  api_key           = var.api_key
+  # api_key - (required) is a type of string
+  api_key = var.api_key
+  # excluded_gateways - (optional) is a type of set of string
   excluded_gateways = var.excluded_gateways
-  metrics_only      = var.metrics_only
-  site              = var.site
+  # metrics_only - (optional) is a type of bool
+  metrics_only = var.metrics_only
+  # site - (optional) is a type of string
+  site = var.site
 }
 ```
 

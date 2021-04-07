@@ -79,10 +79,15 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_ckafka_acls" "this" {
-  host               = var.host
-  instance_id        = var.instance_id
-  resource_name      = var.resource_name
-  resource_type      = var.resource_type
+  # host - (optional) is a type of string
+  host = var.host
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # resource_name - (required) is a type of string
+  resource_name = var.resource_name
+  # resource_type - (required) is a type of string
+  resource_type = var.resource_type
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

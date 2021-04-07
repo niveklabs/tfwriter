@@ -49,6 +49,7 @@ variable "user" {
 
 ```terraform
 data "ovh_me_identity_user" "this" {
+  # user - (required) is a type of string
   user = var.user
 }
 ```

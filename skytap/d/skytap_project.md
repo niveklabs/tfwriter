@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "skytap_project" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

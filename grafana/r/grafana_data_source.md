@@ -228,65 +228,114 @@ variable "secure_json_data" {
 
 ```terraform
 resource "grafana_data_source" "this" {
-  access_mode         = var.access_mode
-  basic_auth_enabled  = var.basic_auth_enabled
+  # access_mode - (optional) is a type of string
+  access_mode = var.access_mode
+  # basic_auth_enabled - (optional) is a type of bool
+  basic_auth_enabled = var.basic_auth_enabled
+  # basic_auth_password - (optional) is a type of string
   basic_auth_password = var.basic_auth_password
+  # basic_auth_username - (optional) is a type of string
   basic_auth_username = var.basic_auth_username
-  database_name       = var.database_name
-  is_default          = var.is_default
-  name                = var.name
-  password            = var.password
-  type                = var.type
-  url                 = var.url
-  username            = var.username
+  # database_name - (optional) is a type of string
+  database_name = var.database_name
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # name - (required) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # type - (required) is a type of string
+  type = var.type
+  # url - (optional) is a type of string
+  url = var.url
+  # username - (optional) is a type of string
+  username = var.username
 
   dynamic "json_data" {
     for_each = var.json_data
     content {
-      assume_role_arn           = json_data.value["assume_role_arn"]
-      auth_type                 = json_data.value["auth_type"]
-      authentication_type       = json_data.value["authentication_type"]
-      client_email              = json_data.value["client_email"]
-      conn_max_lifetime         = json_data.value["conn_max_lifetime"]
+      # assume_role_arn - (optional) is a type of string
+      assume_role_arn = json_data.value["assume_role_arn"]
+      # auth_type - (optional) is a type of string
+      auth_type = json_data.value["auth_type"]
+      # authentication_type - (optional) is a type of string
+      authentication_type = json_data.value["authentication_type"]
+      # client_email - (optional) is a type of string
+      client_email = json_data.value["client_email"]
+      # conn_max_lifetime - (optional) is a type of number
+      conn_max_lifetime = json_data.value["conn_max_lifetime"]
+      # custom_metrics_namespaces - (optional) is a type of string
       custom_metrics_namespaces = json_data.value["custom_metrics_namespaces"]
-      default_project           = json_data.value["default_project"]
-      default_region            = json_data.value["default_region"]
-      encrypt                   = json_data.value["encrypt"]
-      es_version                = json_data.value["es_version"]
-      graphite_version          = json_data.value["graphite_version"]
-      http_method               = json_data.value["http_method"]
-      interval                  = json_data.value["interval"]
-      log_level_field           = json_data.value["log_level_field"]
-      log_message_field         = json_data.value["log_message_field"]
-      max_idle_conns            = json_data.value["max_idle_conns"]
-      max_open_conns            = json_data.value["max_open_conns"]
-      postgres_version          = json_data.value["postgres_version"]
-      profile                   = json_data.value["profile"]
-      query_timeout             = json_data.value["query_timeout"]
-      ssl_mode                  = json_data.value["ssl_mode"]
-      time_field                = json_data.value["time_field"]
-      time_interval             = json_data.value["time_interval"]
-      timescaledb               = json_data.value["timescaledb"]
-      tls_auth                  = json_data.value["tls_auth"]
-      tls_auth_with_ca_cert     = json_data.value["tls_auth_with_ca_cert"]
-      tls_skip_verify           = json_data.value["tls_skip_verify"]
-      token_uri                 = json_data.value["token_uri"]
-      tsdb_resolution           = json_data.value["tsdb_resolution"]
-      tsdb_version              = json_data.value["tsdb_version"]
+      # default_project - (optional) is a type of string
+      default_project = json_data.value["default_project"]
+      # default_region - (optional) is a type of string
+      default_region = json_data.value["default_region"]
+      # encrypt - (optional) is a type of string
+      encrypt = json_data.value["encrypt"]
+      # es_version - (optional) is a type of number
+      es_version = json_data.value["es_version"]
+      # graphite_version - (optional) is a type of string
+      graphite_version = json_data.value["graphite_version"]
+      # http_method - (optional) is a type of string
+      http_method = json_data.value["http_method"]
+      # interval - (optional) is a type of string
+      interval = json_data.value["interval"]
+      # log_level_field - (optional) is a type of string
+      log_level_field = json_data.value["log_level_field"]
+      # log_message_field - (optional) is a type of string
+      log_message_field = json_data.value["log_message_field"]
+      # max_idle_conns - (optional) is a type of number
+      max_idle_conns = json_data.value["max_idle_conns"]
+      # max_open_conns - (optional) is a type of number
+      max_open_conns = json_data.value["max_open_conns"]
+      # postgres_version - (optional) is a type of number
+      postgres_version = json_data.value["postgres_version"]
+      # profile - (optional) is a type of string
+      profile = json_data.value["profile"]
+      # query_timeout - (optional) is a type of string
+      query_timeout = json_data.value["query_timeout"]
+      # ssl_mode - (optional) is a type of string
+      ssl_mode = json_data.value["ssl_mode"]
+      # time_field - (optional) is a type of string
+      time_field = json_data.value["time_field"]
+      # time_interval - (optional) is a type of string
+      time_interval = json_data.value["time_interval"]
+      # timescaledb - (optional) is a type of bool
+      timescaledb = json_data.value["timescaledb"]
+      # tls_auth - (optional) is a type of bool
+      tls_auth = json_data.value["tls_auth"]
+      # tls_auth_with_ca_cert - (optional) is a type of bool
+      tls_auth_with_ca_cert = json_data.value["tls_auth_with_ca_cert"]
+      # tls_skip_verify - (optional) is a type of bool
+      tls_skip_verify = json_data.value["tls_skip_verify"]
+      # token_uri - (optional) is a type of string
+      token_uri = json_data.value["token_uri"]
+      # tsdb_resolution - (optional) is a type of string
+      tsdb_resolution = json_data.value["tsdb_resolution"]
+      # tsdb_version - (optional) is a type of string
+      tsdb_version = json_data.value["tsdb_version"]
     }
   }
 
   dynamic "secure_json_data" {
     for_each = var.secure_json_data
     content {
-      access_key          = secure_json_data.value["access_key"]
+      # access_key - (optional) is a type of string
+      access_key = secure_json_data.value["access_key"]
+      # basic_auth_password - (optional) is a type of string
       basic_auth_password = secure_json_data.value["basic_auth_password"]
-      password            = secure_json_data.value["password"]
-      private_key         = secure_json_data.value["private_key"]
-      secret_key          = secure_json_data.value["secret_key"]
-      tls_ca_cert         = secure_json_data.value["tls_ca_cert"]
-      tls_client_cert     = secure_json_data.value["tls_client_cert"]
-      tls_client_key      = secure_json_data.value["tls_client_key"]
+      # password - (optional) is a type of string
+      password = secure_json_data.value["password"]
+      # private_key - (optional) is a type of string
+      private_key = secure_json_data.value["private_key"]
+      # secret_key - (optional) is a type of string
+      secret_key = secure_json_data.value["secret_key"]
+      # tls_ca_cert - (optional) is a type of string
+      tls_ca_cert = secure_json_data.value["tls_ca_cert"]
+      # tls_client_cert - (optional) is a type of string
+      tls_client_cert = secure_json_data.value["tls_client_cert"]
+      # tls_client_key - (optional) is a type of string
+      tls_client_key = secure_json_data.value["tls_client_key"]
     }
   }
 

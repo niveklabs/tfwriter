@@ -203,16 +203,26 @@ variable "labels" {
 
 ```terraform
 resource "avi_network" "this" {
-  cloud_ref                  = var.cloud_ref
-  dhcp_enabled               = var.dhcp_enabled
+  # cloud_ref - (optional) is a type of string
+  cloud_ref = var.cloud_ref
+  # dhcp_enabled - (optional) is a type of bool
+  dhcp_enabled = var.dhcp_enabled
+  # exclude_discovered_subnets - (optional) is a type of bool
   exclude_discovered_subnets = var.exclude_discovered_subnets
-  ip6_autocfg_enabled        = var.ip6_autocfg_enabled
-  name                       = var.name
-  synced_from_se             = var.synced_from_se
-  tenant_ref                 = var.tenant_ref
-  uuid                       = var.uuid
-  vcenter_dvs                = var.vcenter_dvs
-  vrf_context_ref            = var.vrf_context_ref
+  # ip6_autocfg_enabled - (optional) is a type of bool
+  ip6_autocfg_enabled = var.ip6_autocfg_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # synced_from_se - (optional) is a type of bool
+  synced_from_se = var.synced_from_se
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vcenter_dvs - (optional) is a type of bool
+  vcenter_dvs = var.vcenter_dvs
+  # vrf_context_ref - (optional) is a type of string
+  vrf_context_ref = var.vrf_context_ref
 
   dynamic "configured_subnets" {
     for_each = var.configured_subnets
@@ -221,12 +231,15 @@ resource "avi_network" "this" {
       dynamic "prefix" {
         for_each = configured_subnets.value.prefix
         content {
+          # mask - (required) is a type of number
           mask = prefix.value["mask"]
 
           dynamic "ip_addr" {
             for_each = prefix.value.ip_addr
             content {
+              # addr - (required) is a type of string
               addr = ip_addr.value["addr"]
+              # type - (required) is a type of string
               type = ip_addr.value["type"]
             }
           }
@@ -237,7 +250,9 @@ resource "avi_network" "this" {
       dynamic "static_ips" {
         for_each = configured_subnets.value.static_ips
         content {
+          # addr - (required) is a type of string
           addr = static_ips.value["addr"]
+          # type - (required) is a type of string
           type = static_ips.value["type"]
         }
       }
@@ -249,7 +264,9 @@ resource "avi_network" "this" {
           dynamic "begin" {
             for_each = static_ranges.value.begin
             content {
+              # addr - (required) is a type of string
               addr = begin.value["addr"]
+              # type - (required) is a type of string
               type = begin.value["type"]
             }
           }
@@ -257,7 +274,9 @@ resource "avi_network" "this" {
           dynamic "end" {
             for_each = static_ranges.value.end
             content {
+              # addr - (required) is a type of string
               addr = end.value["addr"]
+              # type - (required) is a type of string
               type = end.value["type"]
             }
           }
@@ -271,7 +290,9 @@ resource "avi_network" "this" {
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }

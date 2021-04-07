@@ -88,12 +88,18 @@ variable "username" {
 
 ```terraform
 resource "gitlab_deploy_token" "this" {
+  # expires_at - (optional) is a type of string
   expires_at = var.expires_at
-  group      = var.group
-  name       = var.name
-  project    = var.project
-  scopes     = var.scopes
-  username   = var.username
+  # group - (optional) is a type of string
+  group = var.group
+  # name - (required) is a type of string
+  name = var.name
+  # project - (optional) is a type of string
+  project = var.project
+  # scopes - (required) is a type of set of string
+  scopes = var.scopes
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

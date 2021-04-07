@@ -123,18 +123,27 @@ variable "versioning" {
 
 ```terraform
 resource "scaleway_object_bucket" "this" {
-  acl    = var.acl
-  name   = var.name
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
   region = var.region
-  tags   = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "cors_rule" {
     for_each = var.cors_rule
     content {
+      # allowed_headers - (optional) is a type of list of string
       allowed_headers = cors_rule.value["allowed_headers"]
+      # allowed_methods - (required) is a type of list of string
       allowed_methods = cors_rule.value["allowed_methods"]
+      # allowed_origins - (required) is a type of list of string
       allowed_origins = cors_rule.value["allowed_origins"]
-      expose_headers  = cors_rule.value["expose_headers"]
+      # expose_headers - (optional) is a type of list of string
+      expose_headers = cors_rule.value["expose_headers"]
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors_rule.value["max_age_seconds"]
     }
   }
@@ -142,6 +151,7 @@ resource "scaleway_object_bucket" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }
@@ -149,6 +159,7 @@ resource "scaleway_object_bucket" "this" {
   dynamic "versioning" {
     for_each = var.versioning
     content {
+      # enabled - (optional) is a type of bool
       enabled = versioning.value["enabled"]
     }
   }

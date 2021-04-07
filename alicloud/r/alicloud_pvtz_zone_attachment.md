@@ -107,16 +107,23 @@ variable "vpcs" {
 
 ```terraform
 resource "alicloud_pvtz_zone_attachment" "this" {
-  lang           = var.lang
+  # lang - (optional) is a type of string
+  lang = var.lang
+  # user_client_ip - (optional) is a type of string
   user_client_ip = var.user_client_ip
-  vpc_ids        = var.vpc_ids
-  zone_id        = var.zone_id
+  # vpc_ids - (optional) is a type of set of string
+  vpc_ids = var.vpc_ids
+  # zone_id - (required) is a type of string
+  zone_id = var.zone_id
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -124,8 +131,10 @@ resource "alicloud_pvtz_zone_attachment" "this" {
   dynamic "vpcs" {
     for_each = var.vpcs
     content {
+      # region_id - (optional) is a type of string
       region_id = vpcs.value["region_id"]
-      vpc_id    = vpcs.value["vpc_id"]
+      # vpc_id - (required) is a type of string
+      vpc_id = vpcs.value["vpc_id"]
     }
   }
 

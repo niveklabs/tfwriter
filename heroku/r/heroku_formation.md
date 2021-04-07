@@ -70,10 +70,14 @@ variable "type" {
 
 ```terraform
 resource "heroku_formation" "this" {
-  app      = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # quantity - (required) is a type of number
   quantity = var.quantity
-  size     = var.size
-  type     = var.type
+  # size - (required) is a type of string
+  size = var.size
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

@@ -92,13 +92,20 @@ variable "project" {
 
 ```terraform
 resource "alicloud_logtail_config" "this" {
+  # input_detail - (required) is a type of string
   input_detail = var.input_detail
-  input_type   = var.input_type
-  log_sample   = var.log_sample
-  logstore     = var.logstore
-  name         = var.name
-  output_type  = var.output_type
-  project      = var.project
+  # input_type - (required) is a type of string
+  input_type = var.input_type
+  # log_sample - (optional) is a type of string
+  log_sample = var.log_sample
+  # logstore - (required) is a type of string
+  logstore = var.logstore
+  # name - (required) is a type of string
+  name = var.name
+  # output_type - (required) is a type of string
+  output_type = var.output_type
+  # project - (required) is a type of string
+  project = var.project
 }
 ```
 

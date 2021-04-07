@@ -113,6 +113,7 @@ variable "services" {
 
 ```terraform
 resource "dome9_cloud_security_group_rule" "this" {
+  # dome9_security_group_id - (required) is a type of string
   dome9_security_group_id = var.dome9_security_group_id
 
   dynamic "services" {
@@ -122,16 +123,23 @@ resource "dome9_cloud_security_group_rule" "this" {
       dynamic "inbound" {
         for_each = services.value.inbound
         content {
-          description   = inbound.value["description"]
-          name          = inbound.value["name"]
-          open_for_all  = inbound.value["open_for_all"]
-          port          = inbound.value["port"]
+          # description - (optional) is a type of string
+          description = inbound.value["description"]
+          # name - (optional) is a type of string
+          name = inbound.value["name"]
+          # open_for_all - (optional) is a type of bool
+          open_for_all = inbound.value["open_for_all"]
+          # port - (optional) is a type of string
+          port = inbound.value["port"]
+          # protocol_type - (optional) is a type of string
           protocol_type = inbound.value["protocol_type"]
 
           dynamic "scope" {
             for_each = inbound.value.scope
             content {
+              # data - (required) is a type of map of string
               data = scope.value["data"]
+              # type - (required) is a type of string
               type = scope.value["type"]
             }
           }
@@ -142,16 +150,23 @@ resource "dome9_cloud_security_group_rule" "this" {
       dynamic "outbound" {
         for_each = services.value.outbound
         content {
-          description   = outbound.value["description"]
-          name          = outbound.value["name"]
-          open_for_all  = outbound.value["open_for_all"]
-          port          = outbound.value["port"]
+          # description - (optional) is a type of string
+          description = outbound.value["description"]
+          # name - (optional) is a type of string
+          name = outbound.value["name"]
+          # open_for_all - (optional) is a type of bool
+          open_for_all = outbound.value["open_for_all"]
+          # port - (optional) is a type of string
+          port = outbound.value["port"]
+          # protocol_type - (optional) is a type of string
           protocol_type = outbound.value["protocol_type"]
 
           dynamic "scope" {
             for_each = outbound.value.scope
             content {
+              # data - (optional) is a type of map of string
               data = scope.value["data"]
+              # type - (optional) is a type of string
               type = scope.value["type"]
             }
           }

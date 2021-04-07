@@ -65,11 +65,13 @@ variable "permission" {
 
 ```terraform
 resource "datadog_role" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "permission" {
     for_each = var.permission
     content {
+      # id - (required) is a type of string
       id = permission.value["id"]
     }
   }

@@ -138,18 +138,30 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_eci_container_groups" "this" {
+  # container_group_name - (optional) is a type of string
   container_group_name = var.container_group_name
-  enable_details       = var.enable_details
-  ids                  = var.ids
-  limit                = var.limit
-  name_regex           = var.name_regex
-  output_file          = var.output_file
-  resource_group_id    = var.resource_group_id
-  status               = var.status
-  tags                 = var.tags
-  vswitch_id           = var.vswitch_id
-  with_event           = var.with_event
-  zone_id              = var.zone_id
+  # enable_details - (optional) is a type of bool
+  enable_details = var.enable_details
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
+  resource_group_id = var.resource_group_id
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vswitch_id - (optional) is a type of string
+  vswitch_id = var.vswitch_id
+  # with_event - (optional) is a type of bool
+  with_event = var.with_event
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

@@ -72,10 +72,14 @@ variable "targets" {
 
 ```terraform
 resource "checkpoint_management_uninstall_software_package" "this" {
+  # cluster_installation_settings - (optional) is a type of map of string
   cluster_installation_settings = var.cluster_installation_settings
-  concurrency_limit             = var.concurrency_limit
-  name                          = var.name
-  targets                       = var.targets
+  # concurrency_limit - (optional) is a type of number
+  concurrency_limit = var.concurrency_limit
+  # name - (required) is a type of string
+  name = var.name
+  # targets - (required) is a type of set of string
+  targets = var.targets
 }
 ```
 

@@ -154,20 +154,34 @@ variable "vpn_service_id" {
 
 ```terraform
 data "ecl_network_qos_options_v2" "this" {
-  aws_service_id      = var.aws_service_id
-  azure_service_id    = var.azure_service_id
-  bandwidth           = var.bandwidth
-  description         = var.description
-  fic_service_id      = var.fic_service_id
-  gcp_service_id      = var.gcp_service_id
-  interdc_service_id  = var.interdc_service_id
+  # aws_service_id - (optional) is a type of string
+  aws_service_id = var.aws_service_id
+  # azure_service_id - (optional) is a type of string
+  azure_service_id = var.azure_service_id
+  # bandwidth - (optional) is a type of string
+  bandwidth = var.bandwidth
+  # description - (optional) is a type of string
+  description = var.description
+  # fic_service_id - (optional) is a type of string
+  fic_service_id = var.fic_service_id
+  # gcp_service_id - (optional) is a type of string
+  gcp_service_id = var.gcp_service_id
+  # interdc_service_id - (optional) is a type of string
+  interdc_service_id = var.interdc_service_id
+  # internet_service_id - (optional) is a type of string
   internet_service_id = var.internet_service_id
-  name                = var.name
-  qos_option_id       = var.qos_option_id
-  qos_type            = var.qos_type
-  service_type        = var.service_type
-  status              = var.status
-  vpn_service_id      = var.vpn_service_id
+  # name - (optional) is a type of string
+  name = var.name
+  # qos_option_id - (optional) is a type of string
+  qos_option_id = var.qos_option_id
+  # qos_type - (optional) is a type of string
+  qos_type = var.qos_type
+  # service_type - (optional) is a type of string
+  service_type = var.service_type
+  # status - (optional) is a type of string
+  status = var.status
+  # vpn_service_id - (optional) is a type of string
+  vpn_service_id = var.vpn_service_id
 }
 ```
 

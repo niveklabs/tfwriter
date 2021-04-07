@@ -58,7 +58,9 @@ variable "vsys" {
 
 ```terraform
 data "panos_user_tag" "this" {
+  # user - (optional) is a type of string
   user = var.user
+  # vsys - (optional) is a type of string
   vsys = var.vsys
 }
 ```

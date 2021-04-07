@@ -65,9 +65,12 @@ variable "team_id" {
 
 ```terraform
 data "opsgenie_service" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  team_id     = var.team_id
+  # name - (required) is a type of string
+  name = var.name
+  # team_id - (optional) is a type of string
+  team_id = var.team_id
 }
 ```
 

@@ -185,29 +185,49 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_instance_pool" "this" {
+  # affinity_group_ids - (optional) is a type of set of string
   affinity_group_ids = var.affinity_group_ids
-  description        = var.description
-  disk_size          = var.disk_size
-  elastic_ip_ids     = var.elastic_ip_ids
-  ipv6               = var.ipv6
-  key_pair           = var.key_pair
-  name               = var.name
-  network_ids        = var.network_ids
+  # description - (optional) is a type of string
+  description = var.description
+  # disk_size - (optional) is a type of number
+  disk_size = var.disk_size
+  # elastic_ip_ids - (optional) is a type of set of string
+  elastic_ip_ids = var.elastic_ip_ids
+  # ipv6 - (optional) is a type of bool
+  ipv6 = var.ipv6
+  # key_pair - (optional) is a type of string
+  key_pair = var.key_pair
+  # name - (required) is a type of string
+  name = var.name
+  # network_ids - (optional) is a type of set of string
+  network_ids = var.network_ids
+  # security_group_ids - (optional) is a type of set of string
   security_group_ids = var.security_group_ids
-  service_offering   = var.service_offering
-  size               = var.size
-  state              = var.state
-  template_id        = var.template_id
-  user_data          = var.user_data
-  virtual_machines   = var.virtual_machines
-  zone               = var.zone
+  # service_offering - (required) is a type of string
+  service_offering = var.service_offering
+  # size - (required) is a type of number
+  size = var.size
+  # state - (optional) is a type of string
+  state = var.state
+  # template_id - (required) is a type of string
+  template_id = var.template_id
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # virtual_machines - (optional) is a type of set of string
+  virtual_machines = var.virtual_machines
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

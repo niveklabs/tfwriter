@@ -280,38 +280,67 @@ variable "serial" {
 
 ```terraform
 resource "fortios_logfortianalyzer_overridesetting" "this" {
-  __change_ip                  = var.__change_ip
-  access_config                = var.access_config
-  certificate                  = var.certificate
-  certificate_verification     = var.certificate_verification
-  conn_timeout                 = var.conn_timeout
-  dynamic_sort_subtable        = var.dynamic_sort_subtable
-  enc_algorithm                = var.enc_algorithm
-  faz_type                     = var.faz_type
-  hmac_algorithm               = var.hmac_algorithm
-  interface                    = var.interface
-  interface_select_method      = var.interface_select_method
-  ips_archive                  = var.ips_archive
-  max_log_rate                 = var.max_log_rate
-  mgmt_name                    = var.mgmt_name
+  # __change_ip - (optional) is a type of number
+  __change_ip = var.__change_ip
+  # access_config - (optional) is a type of string
+  access_config = var.access_config
+  # certificate - (optional) is a type of string
+  certificate = var.certificate
+  # certificate_verification - (optional) is a type of string
+  certificate_verification = var.certificate_verification
+  # conn_timeout - (optional) is a type of number
+  conn_timeout = var.conn_timeout
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # faz_type - (optional) is a type of number
+  faz_type = var.faz_type
+  # hmac_algorithm - (optional) is a type of string
+  hmac_algorithm = var.hmac_algorithm
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # ips_archive - (optional) is a type of string
+  ips_archive = var.ips_archive
+  # max_log_rate - (optional) is a type of number
+  max_log_rate = var.max_log_rate
+  # mgmt_name - (optional) is a type of string
+  mgmt_name = var.mgmt_name
+  # monitor_failure_retry_period - (optional) is a type of number
   monitor_failure_retry_period = var.monitor_failure_retry_period
-  monitor_keepalive_period     = var.monitor_keepalive_period
-  override                     = var.override
-  priority                     = var.priority
-  reliable                     = var.reliable
-  server                       = var.server
-  source_ip                    = var.source_ip
-  ssl_min_proto_version        = var.ssl_min_proto_version
-  status                       = var.status
-  upload_day                   = var.upload_day
-  upload_interval              = var.upload_interval
-  upload_option                = var.upload_option
-  upload_time                  = var.upload_time
-  use_management_vdom          = var.use_management_vdom
+  # monitor_keepalive_period - (optional) is a type of number
+  monitor_keepalive_period = var.monitor_keepalive_period
+  # override - (optional) is a type of string
+  override = var.override
+  # priority - (optional) is a type of string
+  priority = var.priority
+  # reliable - (optional) is a type of string
+  reliable = var.reliable
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # status - (optional) is a type of string
+  status = var.status
+  # upload_day - (optional) is a type of string
+  upload_day = var.upload_day
+  # upload_interval - (optional) is a type of string
+  upload_interval = var.upload_interval
+  # upload_option - (optional) is a type of string
+  upload_option = var.upload_option
+  # upload_time - (optional) is a type of string
+  upload_time = var.upload_time
+  # use_management_vdom - (optional) is a type of string
+  use_management_vdom = var.use_management_vdom
 
   dynamic "serial" {
     for_each = var.serial
     content {
+      # name - (optional) is a type of string
       name = serial.value["name"]
     }
   }

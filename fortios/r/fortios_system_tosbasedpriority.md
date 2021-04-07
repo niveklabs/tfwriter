@@ -66,9 +66,12 @@ variable "tos" {
 
 ```terraform
 resource "fortios_system_tosbasedpriority" "this" {
-  fosid    = var.fosid
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # priority - (optional) is a type of string
   priority = var.priority
-  tos      = var.tos
+  # tos - (optional) is a type of number
+  tos = var.tos
 }
 ```
 

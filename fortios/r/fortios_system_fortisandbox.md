@@ -114,15 +114,24 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_fortisandbox" "this" {
-  email                   = var.email
-  enc_algorithm           = var.enc_algorithm
-  forticloud              = var.forticloud
-  interface               = var.interface
+  # email - (optional) is a type of string
+  email = var.email
+  # enc_algorithm - (optional) is a type of string
+  enc_algorithm = var.enc_algorithm
+  # forticloud - (optional) is a type of string
+  forticloud = var.forticloud
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
   interface_select_method = var.interface_select_method
-  server                  = var.server
-  source_ip               = var.source_ip
-  ssl_min_proto_version   = var.ssl_min_proto_version
-  status                  = var.status
+  # server - (optional) is a type of string
+  server = var.server
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # ssl_min_proto_version - (optional) is a type of string
+  ssl_min_proto_version = var.ssl_min_proto_version
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

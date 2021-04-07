@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 resource "avi_controllersite" "this" {
-  address    = var.address
-  name       = var.name
-  port       = var.port
+  # address - (optional) is a type of string
+  address = var.address
+  # name - (optional) is a type of string
+  name = var.name
+  # port - (optional) is a type of number
+  port = var.port
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

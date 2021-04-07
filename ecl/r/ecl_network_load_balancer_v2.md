@@ -191,28 +191,42 @@ variable "timeouts" {
 
 ```terraform
 resource "ecl_network_load_balancer_v2" "this" {
-  availability_zone     = var.availability_zone
-  default_gateway       = var.default_gateway
-  description           = var.description
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # default_gateway - (optional) is a type of string
+  default_gateway = var.default_gateway
+  # description - (optional) is a type of string
+  description = var.description
+  # load_balancer_plan_id - (required) is a type of string
   load_balancer_plan_id = var.load_balancer_plan_id
-  name                  = var.name
-  tenant_id             = var.tenant_id
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_id - (optional) is a type of string
+  tenant_id = var.tenant_id
 
   dynamic "interfaces" {
     for_each = var.interfaces
     content {
-      description        = interfaces.value["description"]
-      ip_address         = interfaces.value["ip_address"]
-      name               = interfaces.value["name"]
-      network_id         = interfaces.value["network_id"]
-      slot_number        = interfaces.value["slot_number"]
+      # description - (optional) is a type of string
+      description = interfaces.value["description"]
+      # ip_address - (optional) is a type of string
+      ip_address = interfaces.value["ip_address"]
+      # name - (optional) is a type of string
+      name = interfaces.value["name"]
+      # network_id - (optional) is a type of string
+      network_id = interfaces.value["network_id"]
+      # slot_number - (required) is a type of number
+      slot_number = interfaces.value["slot_number"]
+      # virtual_ip_address - (optional) is a type of string
       virtual_ip_address = interfaces.value["virtual_ip_address"]
 
       dynamic "virtual_ip_properties" {
         for_each = interfaces.value.virtual_ip_properties
         content {
+          # protocol - (required) is a type of string
           protocol = virtual_ip_properties.value["protocol"]
-          vrid     = virtual_ip_properties.value["vrid"]
+          # vrid - (required) is a type of number
+          vrid = virtual_ip_properties.value["vrid"]
         }
       }
 
@@ -222,20 +236,35 @@ resource "ecl_network_load_balancer_v2" "this" {
   dynamic "syslog_servers" {
     for_each = var.syslog_servers
     content {
-      acl_logging                    = syslog_servers.value["acl_logging"]
-      appflow_logging                = syslog_servers.value["appflow_logging"]
-      date_format                    = syslog_servers.value["date_format"]
-      description                    = syslog_servers.value["description"]
-      ip_address                     = syslog_servers.value["ip_address"]
-      log_facility                   = syslog_servers.value["log_facility"]
-      log_level                      = syslog_servers.value["log_level"]
-      name                           = syslog_servers.value["name"]
-      port_number                    = syslog_servers.value["port_number"]
-      priority                       = syslog_servers.value["priority"]
-      tcp_logging                    = syslog_servers.value["tcp_logging"]
-      tenant_id                      = syslog_servers.value["tenant_id"]
-      time_zone                      = syslog_servers.value["time_zone"]
-      transport_type                 = syslog_servers.value["transport_type"]
+      # acl_logging - (optional) is a type of string
+      acl_logging = syslog_servers.value["acl_logging"]
+      # appflow_logging - (optional) is a type of string
+      appflow_logging = syslog_servers.value["appflow_logging"]
+      # date_format - (optional) is a type of string
+      date_format = syslog_servers.value["date_format"]
+      # description - (optional) is a type of string
+      description = syslog_servers.value["description"]
+      # ip_address - (required) is a type of string
+      ip_address = syslog_servers.value["ip_address"]
+      # log_facility - (optional) is a type of string
+      log_facility = syslog_servers.value["log_facility"]
+      # log_level - (optional) is a type of string
+      log_level = syslog_servers.value["log_level"]
+      # name - (required) is a type of string
+      name = syslog_servers.value["name"]
+      # port_number - (optional) is a type of number
+      port_number = syslog_servers.value["port_number"]
+      # priority - (optional) is a type of number
+      priority = syslog_servers.value["priority"]
+      # tcp_logging - (optional) is a type of string
+      tcp_logging = syslog_servers.value["tcp_logging"]
+      # tenant_id - (optional) is a type of string
+      tenant_id = syslog_servers.value["tenant_id"]
+      # time_zone - (optional) is a type of string
+      time_zone = syslog_servers.value["time_zone"]
+      # transport_type - (optional) is a type of string
+      transport_type = syslog_servers.value["transport_type"]
+      # user_configurable_log_messages - (optional) is a type of string
       user_configurable_log_messages = syslog_servers.value["user_configurable_log_messages"]
     }
   }
@@ -243,8 +272,11 @@ resource "ecl_network_load_balancer_v2" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

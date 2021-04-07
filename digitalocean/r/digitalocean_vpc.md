@@ -86,14 +86,19 @@ variable "timeouts" {
 
 ```terraform
 resource "digitalocean_vpc" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  ip_range    = var.ip_range
-  name        = var.name
-  region      = var.region
+  # ip_range - (optional) is a type of string
+  ip_range = var.ip_range
+  # name - (required) is a type of string
+  name = var.name
+  # region - (required) is a type of string
+  region = var.region
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

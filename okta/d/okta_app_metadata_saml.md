@@ -57,7 +57,9 @@ variable "key_id" {
 
 ```terraform
 data "okta_app_metadata_saml" "this" {
+  # app_id - (required) is a type of string
   app_id = var.app_id
+  # key_id - (optional) is a type of string
   key_id = var.key_id
 }
 ```

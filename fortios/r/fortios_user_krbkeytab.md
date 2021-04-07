@@ -79,11 +79,16 @@ variable "principal" {
 
 ```terraform
 resource "fortios_user_krbkeytab" "this" {
-  keytab      = var.keytab
+  # keytab - (required) is a type of string
+  keytab = var.keytab
+  # ldap_server - (required) is a type of string
   ldap_server = var.ldap_server
-  name        = var.name
-  pac_data    = var.pac_data
-  principal   = var.principal
+  # name - (optional) is a type of string
+  name = var.name
+  # pac_data - (optional) is a type of string
+  pac_data = var.pac_data
+  # principal - (required) is a type of string
+  principal = var.principal
 }
 ```
 

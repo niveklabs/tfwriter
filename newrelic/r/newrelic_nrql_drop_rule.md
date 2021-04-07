@@ -72,10 +72,14 @@ variable "nrql" {
 
 ```terraform
 resource "newrelic_nrql_drop_rule" "this" {
-  account_id  = var.account_id
-  action      = var.action
+  # account_id - (optional) is a type of number
+  account_id = var.account_id
+  # action - (required) is a type of string
+  action = var.action
+  # description - (optional) is a type of string
   description = var.description
-  nrql        = var.nrql
+  # nrql - (required) is a type of string
+  nrql = var.nrql
 }
 ```
 

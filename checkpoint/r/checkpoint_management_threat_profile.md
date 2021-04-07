@@ -273,40 +273,65 @@ variable "overrides" {
 
 ```terraform
 resource "checkpoint_management_threat_profile" "this" {
+  # active_protections_performance_impact - (optional) is a type of string
   active_protections_performance_impact = var.active_protections_performance_impact
-  active_protections_severity           = var.active_protections_severity
-  anti_bot                              = var.anti_bot
-  anti_virus                            = var.anti_virus
-  color                                 = var.color
-  comments                              = var.comments
-  confidence_level_high                 = var.confidence_level_high
-  confidence_level_low                  = var.confidence_level_low
-  confidence_level_medium               = var.confidence_level_medium
-  ignore_errors                         = var.ignore_errors
-  ignore_warnings                       = var.ignore_warnings
-  ips                                   = var.ips
-  ips_settings                          = var.ips_settings
-  malicious_mail_policy_settings        = var.malicious_mail_policy_settings
-  name                                  = var.name
-  scan_malicious_links                  = var.scan_malicious_links
-  tags                                  = var.tags
-  threat_emulation                      = var.threat_emulation
-  use_extended_attributes               = var.use_extended_attributes
-  use_indicators                        = var.use_indicators
+  # active_protections_severity - (optional) is a type of string
+  active_protections_severity = var.active_protections_severity
+  # anti_bot - (optional) is a type of bool
+  anti_bot = var.anti_bot
+  # anti_virus - (optional) is a type of bool
+  anti_virus = var.anti_virus
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # confidence_level_high - (optional) is a type of string
+  confidence_level_high = var.confidence_level_high
+  # confidence_level_low - (optional) is a type of string
+  confidence_level_low = var.confidence_level_low
+  # confidence_level_medium - (optional) is a type of string
+  confidence_level_medium = var.confidence_level_medium
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # ips - (optional) is a type of bool
+  ips = var.ips
+  # ips_settings - (optional) is a type of map of string
+  ips_settings = var.ips_settings
+  # malicious_mail_policy_settings - (optional) is a type of map of string
+  malicious_mail_policy_settings = var.malicious_mail_policy_settings
+  # name - (required) is a type of string
+  name = var.name
+  # scan_malicious_links - (optional) is a type of map of string
+  scan_malicious_links = var.scan_malicious_links
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # threat_emulation - (optional) is a type of bool
+  threat_emulation = var.threat_emulation
+  # use_extended_attributes - (optional) is a type of bool
+  use_extended_attributes = var.use_extended_attributes
+  # use_indicators - (optional) is a type of bool
+  use_indicators = var.use_indicators
 
   dynamic "deactivate_protections_by_extended_attributes" {
     for_each = var.deactivate_protections_by_extended_attributes
     content {
+      # category - (optional) is a type of string
       category = deactivate_protections_by_extended_attributes.value["category"]
-      name     = deactivate_protections_by_extended_attributes.value["name"]
-      uid      = deactivate_protections_by_extended_attributes.value["uid"]
+      # name - (optional) is a type of string
+      name = deactivate_protections_by_extended_attributes.value["name"]
+      # uid - (optional) is a type of string
+      uid = deactivate_protections_by_extended_attributes.value["uid"]
     }
   }
 
   dynamic "indicator_overrides" {
     for_each = var.indicator_overrides
     content {
-      action    = indicator_overrides.value["action"]
+      # action - (optional) is a type of string
+      action = indicator_overrides.value["action"]
+      # indicator - (optional) is a type of string
       indicator = indicator_overrides.value["indicator"]
     }
   }
@@ -314,10 +339,14 @@ resource "checkpoint_management_threat_profile" "this" {
   dynamic "overrides" {
     for_each = var.overrides
     content {
-      action          = overrides.value["action"]
+      # action - (required) is a type of string
+      action = overrides.value["action"]
+      # capture_packets - (optional) is a type of bool
       capture_packets = overrides.value["capture_packets"]
-      protection      = overrides.value["protection"]
-      track           = overrides.value["track"]
+      # protection - (required) is a type of string
+      protection = overrides.value["protection"]
+      # track - (optional) is a type of string
+      track = overrides.value["track"]
     }
   }
 

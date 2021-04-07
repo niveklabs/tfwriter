@@ -186,32 +186,49 @@ variable "med_network_policy" {
 
 ```terraform
 resource "fortios_switchcontroller_lldpprofile" "this" {
-  auto_isl                 = var.auto_isl
-  auto_isl_hello_timer     = var.auto_isl_hello_timer
-  auto_isl_port_group      = var.auto_isl_port_group
+  # auto_isl - (optional) is a type of string
+  auto_isl = var.auto_isl
+  # auto_isl_hello_timer - (optional) is a type of number
+  auto_isl_hello_timer = var.auto_isl_hello_timer
+  # auto_isl_port_group - (optional) is a type of number
+  auto_isl_port_group = var.auto_isl_port_group
+  # auto_isl_receive_timeout - (optional) is a type of number
   auto_isl_receive_timeout = var.auto_isl_receive_timeout
-  auto_mclag_icl           = var.auto_mclag_icl
-  dynamic_sort_subtable    = var.dynamic_sort_subtable
-  med_tlvs                 = var.med_tlvs
-  n8021_tlvs               = var.n8021_tlvs
-  n8023_tlvs               = var.n8023_tlvs
-  name                     = var.name
+  # auto_mclag_icl - (optional) is a type of string
+  auto_mclag_icl = var.auto_mclag_icl
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # med_tlvs - (optional) is a type of string
+  med_tlvs = var.med_tlvs
+  # n8021_tlvs - (optional) is a type of string
+  n8021_tlvs = var.n8021_tlvs
+  # n8023_tlvs - (optional) is a type of string
+  n8023_tlvs = var.n8023_tlvs
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "custom_tlvs" {
     for_each = var.custom_tlvs
     content {
+      # information_string - (optional) is a type of string
       information_string = custom_tlvs.value["information_string"]
-      name               = custom_tlvs.value["name"]
-      oui                = custom_tlvs.value["oui"]
-      subtype            = custom_tlvs.value["subtype"]
+      # name - (optional) is a type of string
+      name = custom_tlvs.value["name"]
+      # oui - (optional) is a type of string
+      oui = custom_tlvs.value["oui"]
+      # subtype - (optional) is a type of number
+      subtype = custom_tlvs.value["subtype"]
     }
   }
 
   dynamic "med_location_service" {
     for_each = var.med_location_service
     content {
-      name            = med_location_service.value["name"]
-      status          = med_location_service.value["status"]
+      # name - (optional) is a type of string
+      name = med_location_service.value["name"]
+      # status - (optional) is a type of string
+      status = med_location_service.value["status"]
+      # sys_location_id - (optional) is a type of string
       sys_location_id = med_location_service.value["sys_location_id"]
     }
   }
@@ -219,13 +236,20 @@ resource "fortios_switchcontroller_lldpprofile" "this" {
   dynamic "med_network_policy" {
     for_each = var.med_network_policy
     content {
+      # assign_vlan - (optional) is a type of string
       assign_vlan = med_network_policy.value["assign_vlan"]
-      dscp        = med_network_policy.value["dscp"]
-      name        = med_network_policy.value["name"]
-      priority    = med_network_policy.value["priority"]
-      status      = med_network_policy.value["status"]
-      vlan        = med_network_policy.value["vlan"]
-      vlan_intf   = med_network_policy.value["vlan_intf"]
+      # dscp - (optional) is a type of number
+      dscp = med_network_policy.value["dscp"]
+      # name - (optional) is a type of string
+      name = med_network_policy.value["name"]
+      # priority - (optional) is a type of number
+      priority = med_network_policy.value["priority"]
+      # status - (optional) is a type of string
+      status = med_network_policy.value["status"]
+      # vlan - (optional) is a type of number
+      vlan = med_network_policy.value["vlan"]
+      # vlan_intf - (optional) is a type of string
+      vlan_intf = med_network_policy.value["vlan_intf"]
     }
   }
 

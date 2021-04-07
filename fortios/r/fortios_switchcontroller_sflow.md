@@ -57,7 +57,9 @@ variable "collector_port" {
 
 ```terraform
 resource "fortios_switchcontroller_sflow" "this" {
-  collector_ip   = var.collector_ip
+  # collector_ip - (required) is a type of string
+  collector_ip = var.collector_ip
+  # collector_port - (optional) is a type of number
   collector_port = var.collector_port
 }
 ```

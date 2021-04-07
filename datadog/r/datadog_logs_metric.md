@@ -93,19 +93,23 @@ variable "group_by" {
 
 ```terraform
 resource "datadog_logs_metric" "this" {
+  # name - (required) is a type of string
   name = var.name
 
   dynamic "compute" {
     for_each = var.compute
     content {
+      # aggregation_type - (required) is a type of string
       aggregation_type = compute.value["aggregation_type"]
-      path             = compute.value["path"]
+      # path - (optional) is a type of string
+      path = compute.value["path"]
     }
   }
 
   dynamic "filter" {
     for_each = var.filter
     content {
+      # query - (required) is a type of string
       query = filter.value["query"]
     }
   }
@@ -113,7 +117,9 @@ resource "datadog_logs_metric" "this" {
   dynamic "group_by" {
     for_each = var.group_by
     content {
-      path     = group_by.value["path"]
+      # path - (required) is a type of string
+      path = group_by.value["path"]
+      # tag_name - (required) is a type of string
       tag_name = group_by.value["tag_name"]
     }
   }

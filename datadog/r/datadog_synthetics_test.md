@@ -450,33 +450,53 @@ variable "variable" {
 
 ```terraform
 resource "datadog_synthetics_test" "this" {
-  assertions      = var.assertions
-  device_ids      = var.device_ids
-  locations       = var.locations
-  message         = var.message
-  name            = var.name
-  options         = var.options
-  request         = var.request
+  # assertions - (optional) is a type of list of map of string
+  assertions = var.assertions
+  # device_ids - (optional) is a type of list of string
+  device_ids = var.device_ids
+  # locations - (required) is a type of set of string
+  locations = var.locations
+  # message - (optional) is a type of string
+  message = var.message
+  # name - (required) is a type of string
+  name = var.name
+  # options - (optional) is a type of map of string
+  options = var.options
+  # request - (optional) is a type of map of string
+  request = var.request
+  # request_headers - (optional) is a type of map of string
   request_headers = var.request_headers
-  request_query   = var.request_query
-  status          = var.status
-  subtype         = var.subtype
-  tags            = var.tags
-  type            = var.type
+  # request_query - (optional) is a type of map of string
+  request_query = var.request_query
+  # status - (required) is a type of string
+  status = var.status
+  # subtype - (optional) is a type of string
+  subtype = var.subtype
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # type - (required) is a type of string
+  type = var.type
 
   dynamic "assertion" {
     for_each = var.assertion
     content {
+      # operator - (required) is a type of string
       operator = assertion.value["operator"]
+      # property - (optional) is a type of string
       property = assertion.value["property"]
-      target   = assertion.value["target"]
-      type     = assertion.value["type"]
+      # target - (optional) is a type of string
+      target = assertion.value["target"]
+      # type - (required) is a type of string
+      type = assertion.value["type"]
 
       dynamic "targetjsonpath" {
         for_each = assertion.value.targetjsonpath
         content {
-          jsonpath    = targetjsonpath.value["jsonpath"]
-          operator    = targetjsonpath.value["operator"]
+          # jsonpath - (required) is a type of string
+          jsonpath = targetjsonpath.value["jsonpath"]
+          # operator - (required) is a type of string
+          operator = targetjsonpath.value["operator"]
+          # targetvalue - (required) is a type of string
           targetvalue = targetjsonpath.value["targetvalue"]
         }
       }
@@ -487,38 +507,62 @@ resource "datadog_synthetics_test" "this" {
   dynamic "browser_step" {
     for_each = var.browser_step
     content {
-      allow_failure        = browser_step.value["allow_failure"]
+      # allow_failure - (optional) is a type of bool
+      allow_failure = browser_step.value["allow_failure"]
+      # force_element_update - (optional) is a type of bool
       force_element_update = browser_step.value["force_element_update"]
-      name                 = browser_step.value["name"]
-      timeout              = browser_step.value["timeout"]
-      type                 = browser_step.value["type"]
+      # name - (required) is a type of string
+      name = browser_step.value["name"]
+      # timeout - (optional) is a type of number
+      timeout = browser_step.value["timeout"]
+      # type - (required) is a type of string
+      type = browser_step.value["type"]
 
       dynamic "params" {
         for_each = browser_step.value.params
         content {
-          attribute         = params.value["attribute"]
-          check             = params.value["check"]
-          click_type        = params.value["click_type"]
-          code              = params.value["code"]
-          delay             = params.value["delay"]
-          element           = params.value["element"]
-          email             = params.value["email"]
-          file              = params.value["file"]
-          files             = params.value["files"]
-          modifiers         = params.value["modifiers"]
-          playing_tab_id    = params.value["playing_tab_id"]
-          request           = params.value["request"]
+          # attribute - (optional) is a type of string
+          attribute = params.value["attribute"]
+          # check - (optional) is a type of string
+          check = params.value["check"]
+          # click_type - (optional) is a type of string
+          click_type = params.value["click_type"]
+          # code - (optional) is a type of string
+          code = params.value["code"]
+          # delay - (optional) is a type of number
+          delay = params.value["delay"]
+          # element - (optional) is a type of string
+          element = params.value["element"]
+          # email - (optional) is a type of string
+          email = params.value["email"]
+          # file - (optional) is a type of string
+          file = params.value["file"]
+          # files - (optional) is a type of string
+          files = params.value["files"]
+          # modifiers - (optional) is a type of list of string
+          modifiers = params.value["modifiers"]
+          # playing_tab_id - (optional) is a type of string
+          playing_tab_id = params.value["playing_tab_id"]
+          # request - (optional) is a type of string
+          request = params.value["request"]
+          # subtest_public_id - (optional) is a type of string
           subtest_public_id = params.value["subtest_public_id"]
-          value             = params.value["value"]
-          with_click        = params.value["with_click"]
-          x                 = params.value["x"]
-          y                 = params.value["y"]
+          # value - (optional) is a type of string
+          value = params.value["value"]
+          # with_click - (optional) is a type of bool
+          with_click = params.value["with_click"]
+          # x - (optional) is a type of number
+          x = params.value["x"]
+          # y - (optional) is a type of number
+          y = params.value["y"]
 
           dynamic "variable" {
             for_each = params.value.variable
             content {
+              # example - (optional) is a type of string
               example = variable.value["example"]
-              name    = variable.value["name"]
+              # name - (optional) is a type of string
+              name = variable.value["name"]
             }
           }
 
@@ -531,37 +575,53 @@ resource "datadog_synthetics_test" "this" {
   dynamic "browser_variable" {
     for_each = var.browser_variable
     content {
+      # example - (optional) is a type of string
       example = browser_variable.value["example"]
-      id      = browser_variable.value["id"]
-      name    = browser_variable.value["name"]
+      # id - (optional) is a type of string
+      id = browser_variable.value["id"]
+      # name - (required) is a type of string
+      name = browser_variable.value["name"]
+      # pattern - (optional) is a type of string
       pattern = browser_variable.value["pattern"]
-      type    = browser_variable.value["type"]
+      # type - (required) is a type of string
+      type = browser_variable.value["type"]
     }
   }
 
   dynamic "config_variable" {
     for_each = var.config_variable
     content {
+      # example - (optional) is a type of string
       example = config_variable.value["example"]
-      name    = config_variable.value["name"]
+      # name - (required) is a type of string
+      name = config_variable.value["name"]
+      # pattern - (optional) is a type of string
       pattern = config_variable.value["pattern"]
-      type    = config_variable.value["type"]
+      # type - (required) is a type of string
+      type = config_variable.value["type"]
     }
   }
 
   dynamic "options_list" {
     for_each = var.options_list
     content {
-      accept_self_signed   = options_list.value["accept_self_signed"]
-      allow_insecure       = options_list.value["allow_insecure"]
-      follow_redirects     = options_list.value["follow_redirects"]
+      # accept_self_signed - (optional) is a type of bool
+      accept_self_signed = options_list.value["accept_self_signed"]
+      # allow_insecure - (optional) is a type of bool
+      allow_insecure = options_list.value["allow_insecure"]
+      # follow_redirects - (optional) is a type of bool
+      follow_redirects = options_list.value["follow_redirects"]
+      # min_failure_duration - (optional) is a type of number
       min_failure_duration = options_list.value["min_failure_duration"]
-      min_location_failed  = options_list.value["min_location_failed"]
-      tick_every           = options_list.value["tick_every"]
+      # min_location_failed - (optional) is a type of number
+      min_location_failed = options_list.value["min_location_failed"]
+      # tick_every - (optional) is a type of number
+      tick_every = options_list.value["tick_every"]
 
       dynamic "monitor_options" {
         for_each = options_list.value.monitor_options
         content {
+          # renotify_interval - (optional) is a type of number
           renotify_interval = monitor_options.value["renotify_interval"]
         }
       }
@@ -569,7 +629,9 @@ resource "datadog_synthetics_test" "this" {
       dynamic "retry" {
         for_each = options_list.value.retry
         content {
-          count    = retry.value["count"]
+          # count - (optional) is a type of number
+          count = retry.value["count"]
+          # interval - (optional) is a type of number
           interval = retry.value["interval"]
         }
       }
@@ -580,7 +642,9 @@ resource "datadog_synthetics_test" "this" {
   dynamic "request_basicauth" {
     for_each = var.request_basicauth
     content {
+      # password - (required) is a type of string
       password = request_basicauth.value["password"]
+      # username - (required) is a type of string
       username = request_basicauth.value["username"]
     }
   }
@@ -592,7 +656,9 @@ resource "datadog_synthetics_test" "this" {
       dynamic "cert" {
         for_each = request_client_certificate.value.cert
         content {
-          content  = cert.value["content"]
+          # content - (required) is a type of string
+          content = cert.value["content"]
+          # filename - (optional) is a type of string
           filename = cert.value["filename"]
         }
       }
@@ -600,7 +666,9 @@ resource "datadog_synthetics_test" "this" {
       dynamic "key" {
         for_each = request_client_certificate.value.key
         content {
-          content  = key.value["content"]
+          # content - (required) is a type of string
+          content = key.value["content"]
+          # filename - (optional) is a type of string
           filename = key.value["filename"]
         }
       }
@@ -611,36 +679,54 @@ resource "datadog_synthetics_test" "this" {
   dynamic "request_definition" {
     for_each = var.request_definition
     content {
-      body       = request_definition.value["body"]
+      # body - (optional) is a type of string
+      body = request_definition.value["body"]
+      # dns_server - (optional) is a type of string
       dns_server = request_definition.value["dns_server"]
-      host       = request_definition.value["host"]
-      method     = request_definition.value["method"]
-      port       = request_definition.value["port"]
-      timeout    = request_definition.value["timeout"]
-      url        = request_definition.value["url"]
+      # host - (optional) is a type of string
+      host = request_definition.value["host"]
+      # method - (optional) is a type of string
+      method = request_definition.value["method"]
+      # port - (optional) is a type of number
+      port = request_definition.value["port"]
+      # timeout - (optional) is a type of number
+      timeout = request_definition.value["timeout"]
+      # url - (optional) is a type of string
+      url = request_definition.value["url"]
     }
   }
 
   dynamic "step" {
     for_each = var.step
     content {
-      allow_failure        = step.value["allow_failure"]
+      # allow_failure - (optional) is a type of bool
+      allow_failure = step.value["allow_failure"]
+      # force_element_update - (optional) is a type of bool
       force_element_update = step.value["force_element_update"]
-      name                 = step.value["name"]
-      params               = step.value["params"]
-      timeout              = step.value["timeout"]
-      type                 = step.value["type"]
+      # name - (required) is a type of string
+      name = step.value["name"]
+      # params - (required) is a type of string
+      params = step.value["params"]
+      # timeout - (optional) is a type of number
+      timeout = step.value["timeout"]
+      # type - (required) is a type of string
+      type = step.value["type"]
     }
   }
 
   dynamic "variable" {
     for_each = var.variable
     content {
+      # example - (optional) is a type of string
       example = variable.value["example"]
-      id      = variable.value["id"]
-      name    = variable.value["name"]
+      # id - (optional) is a type of string
+      id = variable.value["id"]
+      # name - (required) is a type of string
+      name = variable.value["name"]
+      # pattern - (optional) is a type of string
       pattern = variable.value["pattern"]
-      type    = variable.value["type"]
+      # type - (required) is a type of string
+      type = variable.value["type"]
     }
   }
 

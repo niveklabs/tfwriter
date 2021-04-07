@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "rancher2_global_dns_provider" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

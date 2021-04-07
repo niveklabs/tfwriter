@@ -92,13 +92,20 @@ variable "tenant_id" {
 
 ```terraform
 resource "dome9_cloudaccount_azure" "this" {
-  client_id              = var.client_id
-  client_password        = var.client_password
-  name                   = var.name
-  operation_mode         = var.operation_mode
+  # client_id - (required) is a type of string
+  client_id = var.client_id
+  # client_password - (required) is a type of string
+  client_password = var.client_password
+  # name - (required) is a type of string
+  name = var.name
+  # operation_mode - (required) is a type of string
+  operation_mode = var.operation_mode
+  # organizational_unit_id - (optional) is a type of string
   organizational_unit_id = var.organizational_unit_id
-  subscription_id        = var.subscription_id
-  tenant_id              = var.tenant_id
+  # subscription_id - (required) is a type of string
+  subscription_id = var.subscription_id
+  # tenant_id - (required) is a type of string
+  tenant_id = var.tenant_id
 }
 ```
 

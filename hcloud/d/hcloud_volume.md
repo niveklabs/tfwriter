@@ -90,12 +90,18 @@ variable "with_status" {
 
 ```terraform
 data "hcloud_volume" "this" {
-  location      = var.location
-  name          = var.name
-  selector      = var.selector
-  server        = var.server
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (optional) is a type of string
+  name = var.name
+  # selector - (optional) is a type of string
+  selector = var.selector
+  # server - (optional) is a type of string
+  server = var.server
+  # with_selector - (optional) is a type of string
   with_selector = var.with_selector
-  with_status   = var.with_status
+  # with_status - (optional) is a type of list of string
+  with_status = var.with_status
 }
 ```
 

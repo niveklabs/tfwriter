@@ -72,9 +72,13 @@ variable "namespace" {
 
 ```terraform
 resource "heroku_addon_attachment" "this" {
-  addon_id  = var.addon_id
-  app_id    = var.app_id
-  name      = var.name
+  # addon_id - (required) is a type of string
+  addon_id = var.addon_id
+  # app_id - (required) is a type of string
+  app_id = var.app_id
+  # name - (optional) is a type of string
+  name = var.name
+  # namespace - (optional) is a type of string
   namespace = var.namespace
 }
 ```

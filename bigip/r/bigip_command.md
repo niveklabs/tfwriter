@@ -65,9 +65,12 @@ variable "when" {
 
 ```terraform
 resource "bigip_command" "this" {
+  # command_result - (optional) is a type of list of string
   command_result = var.command_result
-  commands       = var.commands
-  when           = var.when
+  # commands - (required) is a type of list of string
+  commands = var.commands
+  # when - (optional) is a type of string
+  when = var.when
 }
 ```
 

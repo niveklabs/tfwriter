@@ -98,13 +98,20 @@ variable "uri" {
 
 ```terraform
 resource "checkpoint_management_add_updatable_object" "this" {
-  color                               = var.color
-  comments                            = var.comments
-  ignore_errors                       = var.ignore_errors
-  ignore_warnings                     = var.ignore_warnings
-  tags                                = var.tags
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
+  ignore_warnings = var.ignore_warnings
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # uid_in_updatable_objects_repository - (optional) is a type of string
   uid_in_updatable_objects_repository = var.uid_in_updatable_objects_repository
-  uri                                 = var.uri
+  # uri - (optional) is a type of string
+  uri = var.uri
 }
 ```
 

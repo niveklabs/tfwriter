@@ -95,17 +95,24 @@ variable "bgp_config" {
 
 ```terraform
 resource "packet_project" "this" {
-  backend_transfer  = var.backend_transfer
-  name              = var.name
-  organization_id   = var.organization_id
+  # backend_transfer - (optional) is a type of bool
+  backend_transfer = var.backend_transfer
+  # name - (required) is a type of string
+  name = var.name
+  # organization_id - (optional) is a type of string
+  organization_id = var.organization_id
+  # payment_method_id - (optional) is a type of string
   payment_method_id = var.payment_method_id
 
   dynamic "bgp_config" {
     for_each = var.bgp_config
     content {
-      asn             = bgp_config.value["asn"]
+      # asn - (required) is a type of number
+      asn = bgp_config.value["asn"]
+      # deployment_type - (required) is a type of string
       deployment_type = bgp_config.value["deployment_type"]
-      md5             = bgp_config.value["md5"]
+      # md5 - (optional) is a type of string
+      md5 = bgp_config.value["md5"]
     }
   }
 

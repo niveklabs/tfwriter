@@ -162,24 +162,39 @@ variable "header" {
 
 ```terraform
 resource "cloudflare_load_balancer_monitor" "this" {
-  allow_insecure   = var.allow_insecure
-  description      = var.description
-  expected_body    = var.expected_body
-  expected_codes   = var.expected_codes
+  # allow_insecure - (optional) is a type of bool
+  allow_insecure = var.allow_insecure
+  # description - (optional) is a type of string
+  description = var.description
+  # expected_body - (optional) is a type of string
+  expected_body = var.expected_body
+  # expected_codes - (optional) is a type of string
+  expected_codes = var.expected_codes
+  # follow_redirects - (optional) is a type of bool
   follow_redirects = var.follow_redirects
-  interval         = var.interval
-  method           = var.method
-  path             = var.path
-  port             = var.port
-  probe_zone       = var.probe_zone
-  retries          = var.retries
-  timeout          = var.timeout
-  type             = var.type
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # method - (optional) is a type of string
+  method = var.method
+  # path - (optional) is a type of string
+  path = var.path
+  # port - (optional) is a type of number
+  port = var.port
+  # probe_zone - (optional) is a type of string
+  probe_zone = var.probe_zone
+  # retries - (optional) is a type of number
+  retries = var.retries
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "header" {
     for_each = var.header
     content {
+      # header - (required) is a type of string
       header = header.value["header"]
+      # values - (required) is a type of set of string
       values = header.value["values"]
     }
   }

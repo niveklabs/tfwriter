@@ -50,6 +50,7 @@ variable "version_prefix" {
 
 ```terraform
 data "digitalocean_kubernetes_versions" "this" {
+  # version_prefix - (optional) is a type of string
   version_prefix = var.version_prefix
 }
 ```

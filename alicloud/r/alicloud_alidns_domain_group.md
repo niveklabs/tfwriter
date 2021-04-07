@@ -66,9 +66,12 @@ variable "lang" {
 
 ```terraform
 resource "alicloud_alidns_domain_group" "this" {
+  # domain_group_name - (optional) is a type of string
   domain_group_name = var.domain_group_name
-  group_name        = var.group_name
-  lang              = var.lang
+  # group_name - (optional) is a type of string
+  group_name = var.group_name
+  # lang - (optional) is a type of string
+  lang = var.lang
 }
 ```
 

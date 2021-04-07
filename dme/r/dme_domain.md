@@ -113,15 +113,24 @@ variable "vanity_id" {
 
 ```terraform
 resource "dme_domain" "this" {
-  created         = var.created
-  folder_id       = var.folder_id
-  gtd_enabled     = var.gtd_enabled
-  name            = var.name
-  soa_id          = var.soa_id
-  template_id     = var.template_id
+  # created - (optional) is a type of string
+  created = var.created
+  # folder_id - (optional) is a type of string
+  folder_id = var.folder_id
+  # gtd_enabled - (optional) is a type of string
+  gtd_enabled = var.gtd_enabled
+  # name - (required) is a type of string
+  name = var.name
+  # soa_id - (optional) is a type of string
+  soa_id = var.soa_id
+  # template_id - (optional) is a type of string
+  template_id = var.template_id
+  # transfer_acl_id - (optional) is a type of string
   transfer_acl_id = var.transfer_acl_id
-  updated         = var.updated
-  vanity_id       = var.vanity_id
+  # updated - (optional) is a type of string
+  updated = var.updated
+  # vanity_id - (optional) is a type of string
+  vanity_id = var.vanity_id
 }
 ```
 

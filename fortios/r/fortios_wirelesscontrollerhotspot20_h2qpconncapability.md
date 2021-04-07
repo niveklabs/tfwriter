@@ -138,17 +138,29 @@ variable "voip_udp_port" {
 
 ```terraform
 resource "fortios_wirelesscontrollerhotspot20_h2qpconncapability" "this" {
-  esp_port      = var.esp_port
-  ftp_port      = var.ftp_port
-  http_port     = var.http_port
-  icmp_port     = var.icmp_port
-  ikev2_port    = var.ikev2_port
+  # esp_port - (optional) is a type of string
+  esp_port = var.esp_port
+  # ftp_port - (optional) is a type of string
+  ftp_port = var.ftp_port
+  # http_port - (optional) is a type of string
+  http_port = var.http_port
+  # icmp_port - (optional) is a type of string
+  icmp_port = var.icmp_port
+  # ikev2_port - (optional) is a type of string
+  ikev2_port = var.ikev2_port
+  # ikev2_xx_port - (optional) is a type of string
   ikev2_xx_port = var.ikev2_xx_port
-  name          = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # pptp_vpn_port - (optional) is a type of string
   pptp_vpn_port = var.pptp_vpn_port
-  ssh_port      = var.ssh_port
-  tls_port      = var.tls_port
+  # ssh_port - (optional) is a type of string
+  ssh_port = var.ssh_port
+  # tls_port - (optional) is a type of string
+  tls_port = var.tls_port
+  # voip_tcp_port - (optional) is a type of string
   voip_tcp_port = var.voip_tcp_port
+  # voip_udp_port - (optional) is a type of string
   voip_udp_port = var.voip_udp_port
 }
 ```

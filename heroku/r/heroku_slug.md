@@ -112,15 +112,24 @@ variable "stack" {
 
 ```terraform
 resource "heroku_slug" "this" {
-  app                            = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # buildpack_provided_description - (optional) is a type of string
   buildpack_provided_description = var.buildpack_provided_description
-  checksum                       = var.checksum
-  commit                         = var.commit
-  commit_description             = var.commit_description
-  file_path                      = var.file_path
-  file_url                       = var.file_url
-  process_types                  = var.process_types
-  stack                          = var.stack
+  # checksum - (optional) is a type of string
+  checksum = var.checksum
+  # commit - (optional) is a type of string
+  commit = var.commit
+  # commit_description - (optional) is a type of string
+  commit_description = var.commit_description
+  # file_path - (optional) is a type of string
+  file_path = var.file_path
+  # file_url - (optional) is a type of string
+  file_url = var.file_url
+  # process_types - (required) is a type of map of string
+  process_types = var.process_types
+  # stack - (optional) is a type of string
+  stack = var.stack
 }
 ```
 

@@ -200,39 +200,62 @@ variable "namespace_sync_rule" {
 
 ```terraform
 resource "signalfx_aws_integration" "this" {
+  # custom_cloudwatch_namespaces - (optional) is a type of set of string
   custom_cloudwatch_namespaces = var.custom_cloudwatch_namespaces
-  enable_aws_usage             = var.enable_aws_usage
-  enable_check_large_volume    = var.enable_check_large_volume
-  enabled                      = var.enabled
-  external_id                  = var.external_id
-  import_cloud_watch           = var.import_cloud_watch
-  integration_id               = var.integration_id
-  key                          = var.key
-  named_token                  = var.named_token
-  poll_rate                    = var.poll_rate
-  regions                      = var.regions
-  role_arn                     = var.role_arn
-  services                     = var.services
-  token                        = var.token
-  use_get_metric_data_method   = var.use_get_metric_data_method
+  # enable_aws_usage - (optional) is a type of bool
+  enable_aws_usage = var.enable_aws_usage
+  # enable_check_large_volume - (optional) is a type of bool
+  enable_check_large_volume = var.enable_check_large_volume
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # external_id - (optional) is a type of string
+  external_id = var.external_id
+  # import_cloud_watch - (optional) is a type of bool
+  import_cloud_watch = var.import_cloud_watch
+  # integration_id - (required) is a type of string
+  integration_id = var.integration_id
+  # key - (optional) is a type of string
+  key = var.key
+  # named_token - (optional) is a type of string
+  named_token = var.named_token
+  # poll_rate - (optional) is a type of number
+  poll_rate = var.poll_rate
+  # regions - (optional) is a type of set of string
+  regions = var.regions
+  # role_arn - (optional) is a type of string
+  role_arn = var.role_arn
+  # services - (optional) is a type of set of string
+  services = var.services
+  # token - (optional) is a type of string
+  token = var.token
+  # use_get_metric_data_method - (optional) is a type of bool
+  use_get_metric_data_method = var.use_get_metric_data_method
 
   dynamic "custom_namespace_sync_rule" {
     for_each = var.custom_namespace_sync_rule
     content {
+      # default_action - (optional) is a type of string
       default_action = custom_namespace_sync_rule.value["default_action"]
-      filter_action  = custom_namespace_sync_rule.value["filter_action"]
-      filter_source  = custom_namespace_sync_rule.value["filter_source"]
-      namespace      = custom_namespace_sync_rule.value["namespace"]
+      # filter_action - (optional) is a type of string
+      filter_action = custom_namespace_sync_rule.value["filter_action"]
+      # filter_source - (optional) is a type of string
+      filter_source = custom_namespace_sync_rule.value["filter_source"]
+      # namespace - (required) is a type of string
+      namespace = custom_namespace_sync_rule.value["namespace"]
     }
   }
 
   dynamic "namespace_sync_rule" {
     for_each = var.namespace_sync_rule
     content {
+      # default_action - (optional) is a type of string
       default_action = namespace_sync_rule.value["default_action"]
-      filter_action  = namespace_sync_rule.value["filter_action"]
-      filter_source  = namespace_sync_rule.value["filter_source"]
-      namespace      = namespace_sync_rule.value["namespace"]
+      # filter_action - (optional) is a type of string
+      filter_action = namespace_sync_rule.value["filter_action"]
+      # filter_source - (optional) is a type of string
+      filter_source = namespace_sync_rule.value["filter_source"]
+      # namespace - (required) is a type of string
+      namespace = namespace_sync_rule.value["namespace"]
     }
   }
 

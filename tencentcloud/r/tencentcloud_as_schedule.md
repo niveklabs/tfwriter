@@ -100,14 +100,22 @@ variable "start_time" {
 
 ```terraform
 resource "tencentcloud_as_schedule" "this" {
-  desired_capacity     = var.desired_capacity
-  end_time             = var.end_time
-  max_size             = var.max_size
-  min_size             = var.min_size
-  recurrence           = var.recurrence
-  scaling_group_id     = var.scaling_group_id
+  # desired_capacity - (required) is a type of number
+  desired_capacity = var.desired_capacity
+  # end_time - (optional) is a type of string
+  end_time = var.end_time
+  # max_size - (required) is a type of number
+  max_size = var.max_size
+  # min_size - (required) is a type of number
+  min_size = var.min_size
+  # recurrence - (optional) is a type of string
+  recurrence = var.recurrence
+  # scaling_group_id - (required) is a type of string
+  scaling_group_id = var.scaling_group_id
+  # schedule_action_name - (required) is a type of string
   schedule_action_name = var.schedule_action_name
-  start_time           = var.start_time
+  # start_time - (required) is a type of string
+  start_time = var.start_time
 }
 ```
 

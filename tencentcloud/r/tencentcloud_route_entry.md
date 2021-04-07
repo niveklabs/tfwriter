@@ -77,11 +77,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "tencentcloud_route_entry" "this" {
-  cidr_block     = var.cidr_block
-  next_hub       = var.next_hub
-  next_type      = var.next_type
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # next_hub - (required) is a type of string
+  next_hub = var.next_hub
+  # next_type - (required) is a type of string
+  next_type = var.next_type
+  # route_table_id - (required) is a type of string
   route_table_id = var.route_table_id
-  vpc_id         = var.vpc_id
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

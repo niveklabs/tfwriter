@@ -74,9 +74,13 @@ variable "scaling_group_id" {
 
 ```terraform
 data "alicloud_ess_scaling_configurations" "this" {
-  ids              = var.ids
-  name_regex       = var.name_regex
-  output_file      = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # scaling_group_id - (optional) is a type of string
   scaling_group_id = var.scaling_group_id
 }
 ```

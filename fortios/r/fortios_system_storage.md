@@ -114,15 +114,24 @@ variable "wanopt_mode" {
 
 ```terraform
 resource "fortios_system_storage" "this" {
-  device       = var.device
+  # device - (optional) is a type of string
+  device = var.device
+  # media_status - (optional) is a type of string
   media_status = var.media_status
-  name         = var.name
-  order        = var.order
-  partition    = var.partition
-  size         = var.size
-  status       = var.status
-  usage        = var.usage
-  wanopt_mode  = var.wanopt_mode
+  # name - (optional) is a type of string
+  name = var.name
+  # order - (optional) is a type of number
+  order = var.order
+  # partition - (optional) is a type of string
+  partition = var.partition
+  # size - (optional) is a type of number
+  size = var.size
+  # status - (optional) is a type of string
+  status = var.status
+  # usage - (optional) is a type of string
+  usage = var.usage
+  # wanopt_mode - (optional) is a type of string
+  wanopt_mode = var.wanopt_mode
 }
 ```
 

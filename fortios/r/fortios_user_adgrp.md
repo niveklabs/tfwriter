@@ -73,10 +73,14 @@ variable "server_name" {
 
 ```terraform
 resource "fortios_user_adgrp" "this" {
+  # connector_source - (optional) is a type of string
   connector_source = var.connector_source
-  fosid            = var.fosid
-  name             = var.name
-  server_name      = var.server_name
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (required) is a type of string
+  name = var.name
+  # server_name - (optional) is a type of string
+  server_name = var.server_name
 }
 ```
 

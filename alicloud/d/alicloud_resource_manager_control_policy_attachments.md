@@ -73,10 +73,14 @@ variable "target_id" {
 
 ```terraform
 data "alicloud_resource_manager_control_policy_attachments" "this" {
-  language    = var.language
+  # language - (optional) is a type of string
+  language = var.language
+  # output_file - (optional) is a type of string
   output_file = var.output_file
+  # policy_type - (optional) is a type of string
   policy_type = var.policy_type
-  target_id   = var.target_id
+  # target_id - (required) is a type of string
+  target_id = var.target_id
 }
 ```
 

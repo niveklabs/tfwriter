@@ -50,6 +50,7 @@ variable "current" {
 
 ```terraform
 data "circonus_account" "this" {
+  # current - (optional) is a type of bool
   current = var.current
 }
 ```

@@ -64,12 +64,15 @@ variable "rule" {
 
 ```terraform
 resource "heroku_space_inbound_ruleset" "this" {
+  # space - (required) is a type of string
   space = var.space
 
   dynamic "rule" {
     for_each = var.rule
     content {
+      # action - (required) is a type of string
       action = rule.value["action"]
+      # source - (required) is a type of string
       source = rule.value["source"]
     }
   }

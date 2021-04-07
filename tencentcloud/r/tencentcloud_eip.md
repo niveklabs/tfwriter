@@ -106,14 +106,22 @@ variable "type" {
 
 ```terraform
 resource "tencentcloud_eip" "this" {
-  anycast_zone               = var.anycast_zone
-  applicable_for_clb         = var.applicable_for_clb
-  internet_charge_type       = var.internet_charge_type
+  # anycast_zone - (optional) is a type of string
+  anycast_zone = var.anycast_zone
+  # applicable_for_clb - (optional) is a type of bool
+  applicable_for_clb = var.applicable_for_clb
+  # internet_charge_type - (optional) is a type of string
+  internet_charge_type = var.internet_charge_type
+  # internet_max_bandwidth_out - (optional) is a type of number
   internet_max_bandwidth_out = var.internet_max_bandwidth_out
-  internet_service_provider  = var.internet_service_provider
-  name                       = var.name
-  tags                       = var.tags
-  type                       = var.type
+  # internet_service_provider - (optional) is a type of string
+  internet_service_provider = var.internet_service_provider
+  # name - (optional) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

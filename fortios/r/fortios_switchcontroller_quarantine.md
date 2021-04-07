@@ -84,19 +84,25 @@ variable "targets" {
 
 ```terraform
 resource "fortios_switchcontroller_quarantine" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  quarantine            = var.quarantine
+  # quarantine - (optional) is a type of string
+  quarantine = var.quarantine
 
   dynamic "targets" {
     for_each = var.targets
     content {
+      # description - (optional) is a type of string
       description = targets.value["description"]
-      entry_id    = targets.value["entry_id"]
-      mac         = targets.value["mac"]
+      # entry_id - (optional) is a type of number
+      entry_id = targets.value["entry_id"]
+      # mac - (optional) is a type of string
+      mac = targets.value["mac"]
 
       dynamic "tag" {
         for_each = targets.value.tag
         content {
+          # tags - (optional) is a type of string
           tags = tag.value["tags"]
         }
       }

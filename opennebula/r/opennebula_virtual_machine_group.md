@@ -96,18 +96,26 @@ variable "role" {
 
 ```terraform
 resource "opennebula_virtual_machine_group" "this" {
-  group       = var.group
-  name        = var.name
+  # group - (optional) is a type of string
+  group = var.group
+  # name - (required) is a type of string
+  name = var.name
+  # permissions - (optional) is a type of string
   permissions = var.permissions
-  tags        = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 
   dynamic "role" {
     for_each = var.role
     content {
-      host_affined      = role.value["host_affined"]
+      # host_affined - (optional) is a type of list of number
+      host_affined = role.value["host_affined"]
+      # host_anti_affined - (optional) is a type of list of number
       host_anti_affined = role.value["host_anti_affined"]
-      name              = role.value["name"]
-      policy            = role.value["policy"]
+      # name - (required) is a type of string
+      name = role.value["name"]
+      # policy - (optional) is a type of string
+      policy = role.value["policy"]
     }
   }
 

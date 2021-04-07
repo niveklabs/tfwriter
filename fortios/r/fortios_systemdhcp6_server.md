@@ -237,32 +237,55 @@ variable "prefix_range" {
 
 ```terraform
 resource "fortios_systemdhcp6_server" "this" {
-  dns_search_list       = var.dns_search_list
-  dns_server1           = var.dns_server1
-  dns_server2           = var.dns_server2
-  dns_server3           = var.dns_server3
-  dns_server4           = var.dns_server4
-  dns_service           = var.dns_service
-  domain                = var.domain
+  # dns_search_list - (optional) is a type of string
+  dns_search_list = var.dns_search_list
+  # dns_server1 - (optional) is a type of string
+  dns_server1 = var.dns_server1
+  # dns_server2 - (optional) is a type of string
+  dns_server2 = var.dns_server2
+  # dns_server3 - (optional) is a type of string
+  dns_server3 = var.dns_server3
+  # dns_server4 - (optional) is a type of string
+  dns_server4 = var.dns_server4
+  # dns_service - (optional) is a type of string
+  dns_service = var.dns_service
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  interface             = var.interface
-  ip_mode               = var.ip_mode
-  lease_time            = var.lease_time
-  option1               = var.option1
-  option2               = var.option2
-  option3               = var.option3
-  prefix_mode           = var.prefix_mode
-  rapid_commit          = var.rapid_commit
-  status                = var.status
-  subnet                = var.subnet
-  upstream_interface    = var.upstream_interface
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
+  interface = var.interface
+  # ip_mode - (optional) is a type of string
+  ip_mode = var.ip_mode
+  # lease_time - (optional) is a type of number
+  lease_time = var.lease_time
+  # option1 - (optional) is a type of string
+  option1 = var.option1
+  # option2 - (optional) is a type of string
+  option2 = var.option2
+  # option3 - (optional) is a type of string
+  option3 = var.option3
+  # prefix_mode - (optional) is a type of string
+  prefix_mode = var.prefix_mode
+  # rapid_commit - (optional) is a type of string
+  rapid_commit = var.rapid_commit
+  # status - (optional) is a type of string
+  status = var.status
+  # subnet - (required) is a type of string
+  subnet = var.subnet
+  # upstream_interface - (optional) is a type of string
+  upstream_interface = var.upstream_interface
 
   dynamic "ip_range" {
     for_each = var.ip_range
     content {
-      end_ip   = ip_range.value["end_ip"]
-      id       = ip_range.value["id"]
+      # end_ip - (optional) is a type of string
+      end_ip = ip_range.value["end_ip"]
+      # id - (optional) is a type of number
+      id = ip_range.value["id"]
+      # start_ip - (optional) is a type of string
       start_ip = ip_range.value["start_ip"]
     }
   }
@@ -270,10 +293,14 @@ resource "fortios_systemdhcp6_server" "this" {
   dynamic "prefix_range" {
     for_each = var.prefix_range
     content {
-      end_prefix    = prefix_range.value["end_prefix"]
-      id            = prefix_range.value["id"]
+      # end_prefix - (optional) is a type of string
+      end_prefix = prefix_range.value["end_prefix"]
+      # id - (optional) is a type of number
+      id = prefix_range.value["id"]
+      # prefix_length - (optional) is a type of number
       prefix_length = prefix_range.value["prefix_length"]
-      start_prefix  = prefix_range.value["start_prefix"]
+      # start_prefix - (optional) is a type of string
+      start_prefix = prefix_range.value["start_prefix"]
     }
   }
 

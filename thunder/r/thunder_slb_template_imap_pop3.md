@@ -82,11 +82,16 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_imap_pop3" "this" {
+  # logindisabled - (optional) is a type of number
   logindisabled = var.logindisabled
-  name          = var.name
-  starttls      = var.starttls
-  user_tag      = var.user_tag
-  uuid          = var.uuid
+  # name - (optional) is a type of string
+  name = var.name
+  # starttls - (optional) is a type of string
+  starttls = var.starttls
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

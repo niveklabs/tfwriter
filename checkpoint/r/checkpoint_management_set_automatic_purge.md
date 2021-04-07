@@ -89,12 +89,18 @@ variable "scheduling" {
 
 ```terraform
 resource "checkpoint_management_set_automatic_purge" "this" {
-  enabled                    = var.enabled
-  keep_sessions_by_count     = var.keep_sessions_by_count
-  keep_sessions_by_days      = var.keep_sessions_by_days
-  number_of_days_to_keep     = var.number_of_days_to_keep
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # keep_sessions_by_count - (optional) is a type of bool
+  keep_sessions_by_count = var.keep_sessions_by_count
+  # keep_sessions_by_days - (optional) is a type of bool
+  keep_sessions_by_days = var.keep_sessions_by_days
+  # number_of_days_to_keep - (optional) is a type of number
+  number_of_days_to_keep = var.number_of_days_to_keep
+  # number_of_sessions_to_keep - (optional) is a type of number
   number_of_sessions_to_keep = var.number_of_sessions_to_keep
-  scheduling                 = var.scheduling
+  # scheduling - (optional) is a type of map of string
+  scheduling = var.scheduling
 }
 ```
 

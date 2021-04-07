@@ -58,8 +58,10 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_fw_alg_icmp" "this" {
+  # disable - (optional) is a type of string
   disable = var.disable
-  uuid    = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

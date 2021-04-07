@@ -289,37 +289,68 @@ variable "vpn_manager" {
 
 ```terraform
 resource "fortios_fmg_system_admin_profiles" "this" {
-  adom_policy_packages                   = var.adom_policy_packages
-  adom_switch                            = var.adom_switch
-  assignment                             = var.assignment
-  config_retrieve                        = var.config_retrieve
-  config_revert                          = var.config_revert
-  consistency_check                      = var.consistency_check
-  deploy_management                      = var.deploy_management
-  description                            = var.description
-  device_ap                              = var.device_ap
-  device_config                          = var.device_config
-  device_forticlient                     = var.device_forticlient
-  device_fortiswitch                     = var.device_fortiswitch
-  device_manager                         = var.device_manager
-  device_operation                       = var.device_operation
-  device_profile                         = var.device_profile
-  device_revision_deletion               = var.device_revision_deletion
-  device_wan_link_load_balance           = var.device_wan_link_load_balance
-  fortiguard_center                      = var.fortiguard_center
-  fortiguard_center_advanced             = var.fortiguard_center_advanced
+  # adom_policy_packages - (optional) is a type of string
+  adom_policy_packages = var.adom_policy_packages
+  # adom_switch - (optional) is a type of string
+  adom_switch = var.adom_switch
+  # assignment - (optional) is a type of string
+  assignment = var.assignment
+  # config_retrieve - (optional) is a type of string
+  config_retrieve = var.config_retrieve
+  # config_revert - (optional) is a type of string
+  config_revert = var.config_revert
+  # consistency_check - (optional) is a type of string
+  consistency_check = var.consistency_check
+  # deploy_management - (optional) is a type of string
+  deploy_management = var.deploy_management
+  # description - (optional) is a type of string
+  description = var.description
+  # device_ap - (optional) is a type of string
+  device_ap = var.device_ap
+  # device_config - (optional) is a type of string
+  device_config = var.device_config
+  # device_forticlient - (optional) is a type of string
+  device_forticlient = var.device_forticlient
+  # device_fortiswitch - (optional) is a type of string
+  device_fortiswitch = var.device_fortiswitch
+  # device_manager - (optional) is a type of string
+  device_manager = var.device_manager
+  # device_operation - (optional) is a type of string
+  device_operation = var.device_operation
+  # device_profile - (optional) is a type of string
+  device_profile = var.device_profile
+  # device_revision_deletion - (optional) is a type of string
+  device_revision_deletion = var.device_revision_deletion
+  # device_wan_link_load_balance - (optional) is a type of string
+  device_wan_link_load_balance = var.device_wan_link_load_balance
+  # fortiguard_center - (optional) is a type of string
+  fortiguard_center = var.fortiguard_center
+  # fortiguard_center_advanced - (optional) is a type of string
+  fortiguard_center_advanced = var.fortiguard_center_advanced
+  # fortiguard_center_firmware_managerment - (optional) is a type of string
   fortiguard_center_firmware_managerment = var.fortiguard_center_firmware_managerment
-  fortiguard_center_licensing            = var.fortiguard_center_licensing
-  global_policy_packages                 = var.global_policy_packages
-  import_policy_packages                 = var.import_policy_packages
-  intf_mapping                           = var.intf_mapping
-  log_viewer                             = var.log_viewer
-  policy_objects                         = var.policy_objects
-  profileid                              = var.profileid
-  set_install_targets                    = var.set_install_targets
-  system_setting                         = var.system_setting
-  terminal_access                        = var.terminal_access
-  vpn_manager                            = var.vpn_manager
+  # fortiguard_center_licensing - (optional) is a type of string
+  fortiguard_center_licensing = var.fortiguard_center_licensing
+  # global_policy_packages - (optional) is a type of string
+  global_policy_packages = var.global_policy_packages
+  # import_policy_packages - (optional) is a type of string
+  import_policy_packages = var.import_policy_packages
+  # intf_mapping - (optional) is a type of string
+  intf_mapping = var.intf_mapping
+  # log_viewer - (optional) is a type of string
+  log_viewer = var.log_viewer
+  # policy_objects - (optional) is a type of string
+  policy_objects = var.policy_objects
+  # profileid - (required) is a type of string
+  profileid = var.profileid
+  # set_install_targets - (optional) is a type of string
+  set_install_targets = var.set_install_targets
+  # system_setting - (optional) is a type of string
+  system_setting = var.system_setting
+  # terminal_access - (optional) is a type of string
+  terminal_access = var.terminal_access
+  # vpn_manager - (optional) is a type of string
+  vpn_manager = var.vpn_manager
 }
 ```
 

@@ -57,7 +57,9 @@ variable "scope" {
 
 ```terraform
 data "rancher2_catalog" "this" {
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # scope - (optional) is a type of string
   scope = var.scope
 }
 ```

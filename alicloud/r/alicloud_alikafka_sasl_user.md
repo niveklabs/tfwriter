@@ -80,11 +80,16 @@ variable "username" {
 
 ```terraform
 resource "alicloud_alikafka_sasl_user" "this" {
-  instance_id            = var.instance_id
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # kms_encrypted_password - (optional) is a type of string
   kms_encrypted_password = var.kms_encrypted_password
+  # kms_encryption_context - (optional) is a type of map of string
   kms_encryption_context = var.kms_encryption_context
-  password               = var.password
-  username               = var.username
+  # password - (optional) is a type of string
+  password = var.password
+  # username - (required) is a type of string
+  username = var.username
 }
 ```
 

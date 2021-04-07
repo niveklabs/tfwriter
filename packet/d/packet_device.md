@@ -66,8 +66,11 @@ variable "project_id" {
 
 ```terraform
 data "packet_device" "this" {
-  device_id  = var.device_id
-  hostname   = var.hostname
+  # device_id - (optional) is a type of string
+  device_id = var.device_id
+  # hostname - (optional) is a type of string
+  hostname = var.hostname
+  # project_id - (optional) is a type of string
   project_id = var.project_id
 }
 ```

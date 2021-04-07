@@ -64,9 +64,12 @@ variable "name" {
 
 ```terraform
 resource "digitalocean_database_user" "this" {
-  cluster_id        = var.cluster_id
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # mysql_auth_plugin - (optional) is a type of string
   mysql_auth_plugin = var.mysql_auth_plugin
-  name              = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

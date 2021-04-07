@@ -130,40 +130,67 @@ variable "rule" {
 
 ```terraform
 resource "panos_bgp_export_rule_group" "this" {
-  position_keyword   = var.position_keyword
+  # position_keyword - (optional) is a type of string
+  position_keyword = var.position_keyword
+  # position_reference - (optional) is a type of string
   position_reference = var.position_reference
-  virtual_router     = var.virtual_router
+  # virtual_router - (required) is a type of string
+  virtual_router = var.virtual_router
 
   dynamic "rule" {
     for_each = var.rule
     content {
-      action                         = rule.value["action"]
-      as_path_limit                  = rule.value["as_path_limit"]
-      as_path_type                   = rule.value["as_path_type"]
-      as_path_value                  = rule.value["as_path_value"]
-      community_type                 = rule.value["community_type"]
-      community_value                = rule.value["community_value"]
-      enable                         = rule.value["enable"]
-      extended_community_type        = rule.value["extended_community_type"]
-      extended_community_value       = rule.value["extended_community_value"]
-      local_preference               = rule.value["local_preference"]
-      match_as_path_regex            = rule.value["match_as_path_regex"]
-      match_community_regex          = rule.value["match_community_regex"]
+      # action - (optional) is a type of string
+      action = rule.value["action"]
+      # as_path_limit - (optional) is a type of number
+      as_path_limit = rule.value["as_path_limit"]
+      # as_path_type - (optional) is a type of string
+      as_path_type = rule.value["as_path_type"]
+      # as_path_value - (optional) is a type of string
+      as_path_value = rule.value["as_path_value"]
+      # community_type - (optional) is a type of string
+      community_type = rule.value["community_type"]
+      # community_value - (optional) is a type of string
+      community_value = rule.value["community_value"]
+      # enable - (optional) is a type of bool
+      enable = rule.value["enable"]
+      # extended_community_type - (optional) is a type of string
+      extended_community_type = rule.value["extended_community_type"]
+      # extended_community_value - (optional) is a type of string
+      extended_community_value = rule.value["extended_community_value"]
+      # local_preference - (optional) is a type of string
+      local_preference = rule.value["local_preference"]
+      # match_as_path_regex - (optional) is a type of string
+      match_as_path_regex = rule.value["match_as_path_regex"]
+      # match_community_regex - (optional) is a type of string
+      match_community_regex = rule.value["match_community_regex"]
+      # match_extended_community_regex - (optional) is a type of string
       match_extended_community_regex = rule.value["match_extended_community_regex"]
-      match_from_peers               = rule.value["match_from_peers"]
-      match_med                      = rule.value["match_med"]
-      match_next_hops                = rule.value["match_next_hops"]
-      match_route_table              = rule.value["match_route_table"]
-      med                            = rule.value["med"]
-      name                           = rule.value["name"]
-      next_hop                       = rule.value["next_hop"]
-      origin                         = rule.value["origin"]
-      used_by                        = rule.value["used_by"]
+      # match_from_peers - (optional) is a type of list of string
+      match_from_peers = rule.value["match_from_peers"]
+      # match_med - (optional) is a type of string
+      match_med = rule.value["match_med"]
+      # match_next_hops - (optional) is a type of list of string
+      match_next_hops = rule.value["match_next_hops"]
+      # match_route_table - (optional) is a type of string
+      match_route_table = rule.value["match_route_table"]
+      # med - (optional) is a type of string
+      med = rule.value["med"]
+      # name - (required) is a type of string
+      name = rule.value["name"]
+      # next_hop - (optional) is a type of string
+      next_hop = rule.value["next_hop"]
+      # origin - (optional) is a type of string
+      origin = rule.value["origin"]
+      # used_by - (optional) is a type of list of string
+      used_by = rule.value["used_by"]
 
       dynamic "match_address_prefix" {
         for_each = rule.value.match_address_prefix
         content {
-          exact  = match_address_prefix.value["exact"]
+          # exact - (optional) is a type of bool
+          exact = match_address_prefix.value["exact"]
+          # prefix - (required) is a type of string
           prefix = match_address_prefix.value["prefix"]
         }
       }

@@ -112,15 +112,21 @@ variable "target" {
 
 ```terraform
 resource "hcloud_load_balancer" "this" {
-  labels             = var.labels
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # load_balancer_type - (required) is a type of string
   load_balancer_type = var.load_balancer_type
-  location           = var.location
-  name               = var.name
-  network_zone       = var.network_zone
+  # location - (optional) is a type of string
+  location = var.location
+  # name - (required) is a type of string
+  name = var.name
+  # network_zone - (optional) is a type of string
+  network_zone = var.network_zone
 
   dynamic "algorithm" {
     for_each = var.algorithm
     content {
+      # type - (optional) is a type of string
       type = algorithm.value["type"]
     }
   }
@@ -128,8 +134,11 @@ resource "hcloud_load_balancer" "this" {
   dynamic "target" {
     for_each = var.target
     content {
-      server_id      = target.value["server_id"]
-      type           = target.value["type"]
+      # server_id - (optional) is a type of number
+      server_id = target.value["server_id"]
+      # type - (required) is a type of string
+      type = target.value["type"]
+      # use_private_ip - (optional) is a type of bool
       use_private_ip = target.value["use_private_ip"]
     }
   }

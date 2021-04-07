@@ -96,25 +96,34 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_ip_pool" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
 
   dynamic "subnet" {
     for_each = var.subnet
     content {
+      # allocation_ranges - (required) is a type of list of string
       allocation_ranges = subnet.value["allocation_ranges"]
-      cidr              = subnet.value["cidr"]
-      dns_nameservers   = subnet.value["dns_nameservers"]
-      dns_suffix        = subnet.value["dns_suffix"]
-      gateway_ip        = subnet.value["gateway_ip"]
+      # cidr - (required) is a type of string
+      cidr = subnet.value["cidr"]
+      # dns_nameservers - (optional) is a type of list of string
+      dns_nameservers = subnet.value["dns_nameservers"]
+      # dns_suffix - (optional) is a type of string
+      dns_suffix = subnet.value["dns_suffix"]
+      # gateway_ip - (optional) is a type of string
+      gateway_ip = subnet.value["gateway_ip"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

@@ -79,11 +79,16 @@ variable "vpc_id" {
 
 ```terraform
 resource "alicloud_edas_cluster" "this" {
-  cluster_name      = var.cluster_name
-  cluster_type      = var.cluster_type
+  # cluster_name - (required) is a type of string
+  cluster_name = var.cluster_name
+  # cluster_type - (required) is a type of number
+  cluster_type = var.cluster_type
+  # logical_region_id - (optional) is a type of string
   logical_region_id = var.logical_region_id
-  network_mode      = var.network_mode
-  vpc_id            = var.vpc_id
+  # network_mode - (required) is a type of number
+  network_mode = var.network_mode
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

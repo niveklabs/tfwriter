@@ -66,9 +66,12 @@ variable "uuid" {
 
 ```terraform
 resource "avi_customerportalinfo" "this" {
+  # polling_interval - (optional) is a type of number
   polling_interval = var.polling_interval
-  portal_url       = var.portal_url
-  uuid             = var.uuid
+  # portal_url - (optional) is a type of string
+  portal_url = var.portal_url
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

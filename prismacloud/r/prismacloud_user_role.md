@@ -88,12 +88,18 @@ variable "role_type" {
 
 ```terraform
 resource "prismacloud_user_role" "this" {
-  account_group_ids         = var.account_group_ids
-  associated_users          = var.associated_users
-  description               = var.description
-  name                      = var.name
+  # account_group_ids - (optional) is a type of set of string
+  account_group_ids = var.account_group_ids
+  # associated_users - (optional) is a type of set of string
+  associated_users = var.associated_users
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # restrict_dismissal_access - (optional) is a type of bool
   restrict_dismissal_access = var.restrict_dismissal_access
-  role_type                 = var.role_type
+  # role_type - (required) is a type of string
+  role_type = var.role_type
 }
 ```
 

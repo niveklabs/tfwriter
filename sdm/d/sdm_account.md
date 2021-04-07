@@ -104,16 +104,23 @@ variable "timeouts" {
 
 ```terraform
 data "sdm_account" "this" {
-  email      = var.email
+  # email - (optional) is a type of string
+  email = var.email
+  # first_name - (optional) is a type of string
   first_name = var.first_name
-  last_name  = var.last_name
-  name       = var.name
-  suspended  = var.suspended
-  type       = var.type
+  # last_name - (optional) is a type of string
+  last_name = var.last_name
+  # name - (optional) is a type of string
+  name = var.name
+  # suspended - (optional) is a type of bool
+  suspended = var.suspended
+  # type - (optional) is a type of string
+  type = var.type
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # default - (optional) is a type of string
       default = timeouts.value["default"]
     }
   }

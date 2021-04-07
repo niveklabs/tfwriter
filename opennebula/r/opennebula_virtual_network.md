@@ -237,39 +237,68 @@ variable "ar" {
 
 ```terraform
 resource "opennebula_virtual_network" "this" {
+  # automatic_vlan_id - (optional) is a type of bool
   automatic_vlan_id = var.automatic_vlan_id
-  bridge            = var.bridge
-  clusters          = var.clusters
-  description       = var.description
-  dns               = var.dns
-  gateway           = var.gateway
-  group             = var.group
-  guest_mtu         = var.guest_mtu
-  hold_size         = var.hold_size
-  ip_hold           = var.ip_hold
-  mtu               = var.mtu
-  name              = var.name
-  network_mask      = var.network_mask
-  permissions       = var.permissions
-  physical_device   = var.physical_device
-  reservation_size  = var.reservation_size
-  reservation_vnet  = var.reservation_vnet
-  security_groups   = var.security_groups
-  tags              = var.tags
-  type              = var.type
-  vlan_id           = var.vlan_id
+  # bridge - (optional) is a type of string
+  bridge = var.bridge
+  # clusters - (optional) is a type of list of number
+  clusters = var.clusters
+  # description - (optional) is a type of string
+  description = var.description
+  # dns - (optional) is a type of string
+  dns = var.dns
+  # gateway - (optional) is a type of string
+  gateway = var.gateway
+  # group - (optional) is a type of string
+  group = var.group
+  # guest_mtu - (optional) is a type of number
+  guest_mtu = var.guest_mtu
+  # hold_size - (optional) is a type of number
+  hold_size = var.hold_size
+  # ip_hold - (optional) is a type of string
+  ip_hold = var.ip_hold
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # network_mask - (optional) is a type of string
+  network_mask = var.network_mask
+  # permissions - (optional) is a type of string
+  permissions = var.permissions
+  # physical_device - (optional) is a type of string
+  physical_device = var.physical_device
+  # reservation_size - (optional) is a type of number
+  reservation_size = var.reservation_size
+  # reservation_vnet - (optional) is a type of number
+  reservation_vnet = var.reservation_vnet
+  # security_groups - (optional) is a type of list of number
+  security_groups = var.security_groups
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # type - (optional) is a type of string
+  type = var.type
+  # vlan_id - (optional) is a type of string
+  vlan_id = var.vlan_id
 
   dynamic "ar" {
     for_each = var.ar
     content {
-      ar_type       = ar.value["ar_type"]
+      # ar_type - (optional) is a type of string
+      ar_type = ar.value["ar_type"]
+      # global_prefix - (optional) is a type of string
       global_prefix = ar.value["global_prefix"]
-      ip4           = ar.value["ip4"]
-      ip6           = ar.value["ip6"]
-      mac           = ar.value["mac"]
+      # ip4 - (optional) is a type of string
+      ip4 = ar.value["ip4"]
+      # ip6 - (optional) is a type of string
+      ip6 = ar.value["ip6"]
+      # mac - (optional) is a type of string
+      mac = ar.value["mac"]
+      # prefix_length - (optional) is a type of string
       prefix_length = ar.value["prefix_length"]
-      size          = ar.value["size"]
-      ula_prefix    = ar.value["ula_prefix"]
+      # size - (required) is a type of number
+      size = ar.value["size"]
+      # ula_prefix - (optional) is a type of string
+      ula_prefix = ar.value["ula_prefix"]
     }
   }
 

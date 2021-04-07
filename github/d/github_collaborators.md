@@ -64,9 +64,12 @@ variable "repository" {
 
 ```terraform
 data "github_collaborators" "this" {
+  # affiliation - (optional) is a type of string
   affiliation = var.affiliation
-  owner       = var.owner
-  repository  = var.repository
+  # owner - (required) is a type of string
+  owner = var.owner
+  # repository - (required) is a type of string
+  repository = var.repository
 }
 ```
 

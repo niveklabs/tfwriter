@@ -49,6 +49,7 @@ variable "label" {
 
 ```terraform
 data "newrelic_synthetics_monitor_location" "this" {
+  # label - (required) is a type of string
   label = var.label
 }
 ```

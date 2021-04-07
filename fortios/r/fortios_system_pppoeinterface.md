@@ -169,22 +169,38 @@ variable "username" {
 
 ```terraform
 resource "fortios_system_pppoeinterface" "this" {
-  ac_name                    = var.ac_name
-  auth_type                  = var.auth_type
-  device                     = var.device
-  dial_on_demand             = var.dial_on_demand
-  disc_retry_timeout         = var.disc_retry_timeout
-  idle_timeout               = var.idle_timeout
-  ipunnumbered               = var.ipunnumbered
-  ipv6                       = var.ipv6
-  lcp_echo_interval          = var.lcp_echo_interval
-  lcp_max_echo_fails         = var.lcp_max_echo_fails
-  name                       = var.name
-  padt_retry_timeout         = var.padt_retry_timeout
-  password                   = var.password
+  # ac_name - (optional) is a type of string
+  ac_name = var.ac_name
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # device - (required) is a type of string
+  device = var.device
+  # dial_on_demand - (optional) is a type of string
+  dial_on_demand = var.dial_on_demand
+  # disc_retry_timeout - (optional) is a type of number
+  disc_retry_timeout = var.disc_retry_timeout
+  # idle_timeout - (optional) is a type of number
+  idle_timeout = var.idle_timeout
+  # ipunnumbered - (optional) is a type of string
+  ipunnumbered = var.ipunnumbered
+  # ipv6 - (optional) is a type of string
+  ipv6 = var.ipv6
+  # lcp_echo_interval - (optional) is a type of number
+  lcp_echo_interval = var.lcp_echo_interval
+  # lcp_max_echo_fails - (optional) is a type of number
+  lcp_max_echo_fails = var.lcp_max_echo_fails
+  # name - (optional) is a type of string
+  name = var.name
+  # padt_retry_timeout - (optional) is a type of number
+  padt_retry_timeout = var.padt_retry_timeout
+  # password - (optional) is a type of string
+  password = var.password
+  # pppoe_unnumbered_negotiate - (optional) is a type of string
   pppoe_unnumbered_negotiate = var.pppoe_unnumbered_negotiate
-  service_name               = var.service_name
-  username                   = var.username
+  # service_name - (optional) is a type of string
+  service_name = var.service_name
+  # username - (optional) is a type of string
+  username = var.username
 }
 ```
 

@@ -73,9 +73,13 @@ variable "retention_period" {
 
 ```terraform
 resource "tencentcloud_mysql_backup_policy" "this" {
-  backup_model     = var.backup_model
-  backup_time      = var.backup_time
-  mysql_id         = var.mysql_id
+  # backup_model - (optional) is a type of string
+  backup_model = var.backup_model
+  # backup_time - (optional) is a type of string
+  backup_time = var.backup_time
+  # mysql_id - (required) is a type of string
+  mysql_id = var.mysql_id
+  # retention_period - (optional) is a type of number
   retention_period = var.retention_period
 }
 ```

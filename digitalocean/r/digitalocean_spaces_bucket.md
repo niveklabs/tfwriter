@@ -147,17 +147,25 @@ variable "versioning" {
 
 ```terraform
 resource "digitalocean_spaces_bucket" "this" {
-  acl           = var.acl
+  # acl - (optional) is a type of string
+  acl = var.acl
+  # force_destroy - (optional) is a type of bool
   force_destroy = var.force_destroy
-  name          = var.name
-  region        = var.region
+  # name - (required) is a type of string
+  name = var.name
+  # region - (optional) is a type of string
+  region = var.region
 
   dynamic "cors_rule" {
     for_each = var.cors_rule
     content {
+      # allowed_headers - (optional) is a type of list of string
       allowed_headers = cors_rule.value["allowed_headers"]
+      # allowed_methods - (required) is a type of list of string
       allowed_methods = cors_rule.value["allowed_methods"]
+      # allowed_origins - (required) is a type of list of string
       allowed_origins = cors_rule.value["allowed_origins"]
+      # max_age_seconds - (optional) is a type of number
       max_age_seconds = cors_rule.value["max_age_seconds"]
     }
   }
@@ -165,16 +173,23 @@ resource "digitalocean_spaces_bucket" "this" {
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_rule
     content {
+      # abort_incomplete_multipart_upload_days - (optional) is a type of number
       abort_incomplete_multipart_upload_days = lifecycle_rule.value["abort_incomplete_multipart_upload_days"]
-      enabled                                = lifecycle_rule.value["enabled"]
-      id                                     = lifecycle_rule.value["id"]
-      prefix                                 = lifecycle_rule.value["prefix"]
+      # enabled - (required) is a type of bool
+      enabled = lifecycle_rule.value["enabled"]
+      # id - (optional) is a type of string
+      id = lifecycle_rule.value["id"]
+      # prefix - (optional) is a type of string
+      prefix = lifecycle_rule.value["prefix"]
 
       dynamic "expiration" {
         for_each = lifecycle_rule.value.expiration
         content {
-          date                         = expiration.value["date"]
-          days                         = expiration.value["days"]
+          # date - (optional) is a type of string
+          date = expiration.value["date"]
+          # days - (optional) is a type of number
+          days = expiration.value["days"]
+          # expired_object_delete_marker - (optional) is a type of bool
           expired_object_delete_marker = expiration.value["expired_object_delete_marker"]
         }
       }
@@ -182,6 +197,7 @@ resource "digitalocean_spaces_bucket" "this" {
       dynamic "noncurrent_version_expiration" {
         for_each = lifecycle_rule.value.noncurrent_version_expiration
         content {
+          # days - (optional) is a type of number
           days = noncurrent_version_expiration.value["days"]
         }
       }
@@ -192,6 +208,7 @@ resource "digitalocean_spaces_bucket" "this" {
   dynamic "versioning" {
     for_each = var.versioning
     content {
+      # enabled - (optional) is a type of bool
       enabled = versioning.value["enabled"]
     }
   }

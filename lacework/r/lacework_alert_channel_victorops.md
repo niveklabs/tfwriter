@@ -64,8 +64,11 @@ variable "webhook_url" {
 
 ```terraform
 resource "lacework_alert_channel_victorops" "this" {
-  enabled     = var.enabled
-  name        = var.name
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # name - (required) is a type of string
+  name = var.name
+  # webhook_url - (required) is a type of string
   webhook_url = var.webhook_url
 }
 ```

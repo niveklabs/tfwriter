@@ -81,11 +81,16 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_gaap_realserver" "this" {
-  domain     = var.domain
-  ip         = var.ip
-  name       = var.name
+  # domain - (optional) is a type of string
+  domain = var.domain
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (optional) is a type of number
   project_id = var.project_id
-  tags       = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

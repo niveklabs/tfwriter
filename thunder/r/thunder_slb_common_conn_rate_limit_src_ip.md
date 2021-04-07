@@ -106,14 +106,22 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_common_conn_rate_limit_src_ip" "this" {
+  # exceed_action - (optional) is a type of number
   exceed_action = var.exceed_action
-  limit         = var.limit
-  limit_period  = var.limit_period
-  lock_out      = var.lock_out
-  log           = var.log
-  protocol      = var.protocol
-  shared        = var.shared
-  uuid          = var.uuid
+  # limit - (optional) is a type of number
+  limit = var.limit
+  # limit_period - (optional) is a type of string
+  limit_period = var.limit_period
+  # lock_out - (optional) is a type of number
+  lock_out = var.lock_out
+  # log - (optional) is a type of number
+  log = var.log
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # shared - (optional) is a type of number
+  shared = var.shared
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

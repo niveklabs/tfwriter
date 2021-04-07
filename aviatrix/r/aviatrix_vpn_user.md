@@ -105,14 +105,22 @@ variable "vpc_id" {
 
 ```terraform
 resource "aviatrix_vpn_user" "this" {
-  dns_name               = var.dns_name
-  gw_name                = var.gw_name
+  # dns_name - (optional) is a type of string
+  dns_name = var.dns_name
+  # gw_name - (optional) is a type of string
+  gw_name = var.gw_name
+  # manage_user_attachment - (optional) is a type of bool
   manage_user_attachment = var.manage_user_attachment
-  profiles               = var.profiles
-  saml_endpoint          = var.saml_endpoint
-  user_email             = var.user_email
-  user_name              = var.user_name
-  vpc_id                 = var.vpc_id
+  # profiles - (optional) is a type of list of string
+  profiles = var.profiles
+  # saml_endpoint - (optional) is a type of string
+  saml_endpoint = var.saml_endpoint
+  # user_email - (optional) is a type of string
+  user_email = var.user_email
+  # user_name - (required) is a type of string
+  user_name = var.user_name
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

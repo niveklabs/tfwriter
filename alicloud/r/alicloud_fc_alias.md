@@ -85,14 +85,19 @@ variable "routing_config" {
 
 ```terraform
 resource "alicloud_fc_alias" "this" {
-  alias_name      = var.alias_name
-  description     = var.description
-  service_name    = var.service_name
+  # alias_name - (required) is a type of string
+  alias_name = var.alias_name
+  # description - (optional) is a type of string
+  description = var.description
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # service_version - (required) is a type of string
   service_version = var.service_version
 
   dynamic "routing_config" {
     for_each = var.routing_config
     content {
+      # additional_version_weights - (optional) is a type of map of number
       additional_version_weights = routing_config.value["additional_version_weights"]
     }
   }

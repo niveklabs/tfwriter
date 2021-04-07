@@ -281,36 +281,66 @@ variable "uploaduser" {
 
 ```terraform
 resource "fortios_logdisk_setting" "this" {
-  diskfull                       = var.diskfull
-  dlp_archive_quota              = var.dlp_archive_quota
-  full_final_warning_threshold   = var.full_final_warning_threshold
-  full_first_warning_threshold   = var.full_first_warning_threshold
-  full_second_warning_threshold  = var.full_second_warning_threshold
-  interface                      = var.interface
-  interface_select_method        = var.interface_select_method
-  ips_archive                    = var.ips_archive
-  log_quota                      = var.log_quota
-  max_log_file_size              = var.max_log_file_size
+  # diskfull - (optional) is a type of string
+  diskfull = var.diskfull
+  # dlp_archive_quota - (optional) is a type of number
+  dlp_archive_quota = var.dlp_archive_quota
+  # full_final_warning_threshold - (optional) is a type of number
+  full_final_warning_threshold = var.full_final_warning_threshold
+  # full_first_warning_threshold - (optional) is a type of number
+  full_first_warning_threshold = var.full_first_warning_threshold
+  # full_second_warning_threshold - (optional) is a type of number
+  full_second_warning_threshold = var.full_second_warning_threshold
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # interface_select_method - (optional) is a type of string
+  interface_select_method = var.interface_select_method
+  # ips_archive - (optional) is a type of string
+  ips_archive = var.ips_archive
+  # log_quota - (optional) is a type of number
+  log_quota = var.log_quota
+  # max_log_file_size - (optional) is a type of number
+  max_log_file_size = var.max_log_file_size
+  # max_policy_packet_capture_size - (optional) is a type of number
   max_policy_packet_capture_size = var.max_policy_packet_capture_size
-  maximum_log_age                = var.maximum_log_age
-  report_quota                   = var.report_quota
-  roll_day                       = var.roll_day
-  roll_schedule                  = var.roll_schedule
-  roll_time                      = var.roll_time
-  source_ip                      = var.source_ip
-  status                         = var.status
-  upload                         = var.upload
-  upload_delete_files            = var.upload_delete_files
-  upload_destination             = var.upload_destination
-  upload_ssl_conn                = var.upload_ssl_conn
-  uploaddir                      = var.uploaddir
-  uploadip                       = var.uploadip
-  uploadpass                     = var.uploadpass
-  uploadport                     = var.uploadport
-  uploadsched                    = var.uploadsched
-  uploadtime                     = var.uploadtime
-  uploadtype                     = var.uploadtype
-  uploaduser                     = var.uploaduser
+  # maximum_log_age - (optional) is a type of number
+  maximum_log_age = var.maximum_log_age
+  # report_quota - (optional) is a type of number
+  report_quota = var.report_quota
+  # roll_day - (optional) is a type of string
+  roll_day = var.roll_day
+  # roll_schedule - (optional) is a type of string
+  roll_schedule = var.roll_schedule
+  # roll_time - (optional) is a type of string
+  roll_time = var.roll_time
+  # source_ip - (optional) is a type of string
+  source_ip = var.source_ip
+  # status - (required) is a type of string
+  status = var.status
+  # upload - (optional) is a type of string
+  upload = var.upload
+  # upload_delete_files - (optional) is a type of string
+  upload_delete_files = var.upload_delete_files
+  # upload_destination - (optional) is a type of string
+  upload_destination = var.upload_destination
+  # upload_ssl_conn - (optional) is a type of string
+  upload_ssl_conn = var.upload_ssl_conn
+  # uploaddir - (optional) is a type of string
+  uploaddir = var.uploaddir
+  # uploadip - (optional) is a type of string
+  uploadip = var.uploadip
+  # uploadpass - (optional) is a type of string
+  uploadpass = var.uploadpass
+  # uploadport - (optional) is a type of number
+  uploadport = var.uploadport
+  # uploadsched - (optional) is a type of string
+  uploadsched = var.uploadsched
+  # uploadtime - (optional) is a type of string
+  uploadtime = var.uploadtime
+  # uploadtype - (optional) is a type of string
+  uploadtype = var.uploadtype
+  # uploaduser - (optional) is a type of string
+  uploaduser = var.uploaduser
 }
 ```
 

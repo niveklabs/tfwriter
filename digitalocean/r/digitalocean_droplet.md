@@ -150,20 +150,34 @@ variable "vpc_uuid" {
 
 ```terraform
 resource "digitalocean_droplet" "this" {
-  backups            = var.backups
-  image              = var.image
-  ipv6               = var.ipv6
-  monitoring         = var.monitoring
-  name               = var.name
+  # backups - (optional) is a type of bool
+  backups = var.backups
+  # image - (required) is a type of string
+  image = var.image
+  # ipv6 - (optional) is a type of bool
+  ipv6 = var.ipv6
+  # monitoring - (optional) is a type of bool
+  monitoring = var.monitoring
+  # name - (required) is a type of string
+  name = var.name
+  # private_networking - (optional) is a type of bool
   private_networking = var.private_networking
-  region             = var.region
-  resize_disk        = var.resize_disk
-  size               = var.size
-  ssh_keys           = var.ssh_keys
-  tags               = var.tags
-  user_data          = var.user_data
-  volume_ids         = var.volume_ids
-  vpc_uuid           = var.vpc_uuid
+  # region - (required) is a type of string
+  region = var.region
+  # resize_disk - (optional) is a type of bool
+  resize_disk = var.resize_disk
+  # size - (required) is a type of string
+  size = var.size
+  # ssh_keys - (optional) is a type of set of string
+  ssh_keys = var.ssh_keys
+  # tags - (optional) is a type of set of string
+  tags = var.tags
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # volume_ids - (optional) is a type of set of string
+  volume_ids = var.volume_ids
+  # vpc_uuid - (optional) is a type of string
+  vpc_uuid = var.vpc_uuid
 }
 ```
 

@@ -106,14 +106,22 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontroller_stpsettings" "this" {
-  forward_time  = var.forward_time
-  hello_time    = var.hello_time
-  max_age       = var.max_age
-  max_hops      = var.max_hops
-  name          = var.name
+  # forward_time - (optional) is a type of number
+  forward_time = var.forward_time
+  # hello_time - (optional) is a type of number
+  hello_time = var.hello_time
+  # max_age - (optional) is a type of number
+  max_age = var.max_age
+  # max_hops - (optional) is a type of number
+  max_hops = var.max_hops
+  # name - (optional) is a type of string
+  name = var.name
+  # pending_timer - (optional) is a type of number
   pending_timer = var.pending_timer
-  revision      = var.revision
-  status        = var.status
+  # revision - (optional) is a type of number
+  revision = var.revision
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

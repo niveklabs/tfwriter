@@ -102,17 +102,25 @@ variable "headers" {
 
 ```terraform
 resource "okta_inline_hook" "this" {
-  auth    = var.auth
+  # auth - (optional) is a type of map of string
+  auth = var.auth
+  # channel - (required) is a type of map of string
   channel = var.channel
-  name    = var.name
-  status  = var.status
-  type    = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (required) is a type of string
+  type = var.type
+  # version - (required) is a type of string
   version = var.version
 
   dynamic "headers" {
     for_each = var.headers
     content {
-      key   = headers.value["key"]
+      # key - (optional) is a type of string
+      key = headers.value["key"]
+      # value - (optional) is a type of string
       value = headers.value["value"]
     }
   }

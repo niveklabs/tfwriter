@@ -98,13 +98,17 @@ variable "portal_auth" {
 
 ```terraform
 resource "avi_controllerportalregistration" "this" {
-  name       = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "asset" {
     for_each = var.asset
     content {
+      # asset_id - (optional) is a type of string
       asset_id = asset.value["asset_id"]
     }
   }
@@ -112,9 +116,12 @@ resource "avi_controllerportalregistration" "this" {
   dynamic "portal_auth" {
     for_each = var.portal_auth
     content {
+      # access_token - (optional) is a type of string
       access_token = portal_auth.value["access_token"]
+      # instance_url - (optional) is a type of string
       instance_url = portal_auth.value["instance_url"]
-      jwt_token    = portal_auth.value["jwt_token"]
+      # jwt_token - (optional) is a type of string
+      jwt_token = portal_auth.value["jwt_token"]
     }
   }
 

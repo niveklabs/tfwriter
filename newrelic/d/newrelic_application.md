@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "newrelic_application" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

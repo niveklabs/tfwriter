@@ -57,8 +57,10 @@ variable "name" {
 
 ```terraform
 data "rancher2_role_template" "this" {
+  # context - (optional) is a type of string
   context = var.context
-  name    = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

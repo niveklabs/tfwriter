@@ -126,21 +126,33 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_forward_entry" "this" {
-  external_ip        = var.external_ip
-  external_port      = var.external_port
+  # external_ip - (required) is a type of string
+  external_ip = var.external_ip
+  # external_port - (required) is a type of string
+  external_port = var.external_port
+  # forward_entry_name - (optional) is a type of string
   forward_entry_name = var.forward_entry_name
-  forward_table_id   = var.forward_table_id
-  internal_ip        = var.internal_ip
-  internal_port      = var.internal_port
-  ip_protocol        = var.ip_protocol
-  name               = var.name
-  port_break         = var.port_break
+  # forward_table_id - (required) is a type of string
+  forward_table_id = var.forward_table_id
+  # internal_ip - (required) is a type of string
+  internal_ip = var.internal_ip
+  # internal_port - (required) is a type of string
+  internal_port = var.internal_port
+  # ip_protocol - (required) is a type of string
+  ip_protocol = var.ip_protocol
+  # name - (optional) is a type of string
+  name = var.name
+  # port_break - (optional) is a type of bool
+  port_break = var.port_break
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

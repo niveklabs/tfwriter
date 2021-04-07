@@ -72,9 +72,13 @@ variable "target_namespace" {
 
 ```terraform
 data "rancher2_app" "this" {
-  annotations      = var.annotations
-  name             = var.name
-  project_id       = var.project_id
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # name - (required) is a type of string
+  name = var.name
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # target_namespace - (optional) is a type of string
   target_namespace = var.target_namespace
 }
 ```

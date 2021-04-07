@@ -64,8 +64,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_cos_bucket_object" "this" {
-  bucket             = var.bucket
-  key                = var.key
+  # bucket - (required) is a type of string
+  bucket = var.bucket
+  # key - (required) is a type of string
+  key = var.key
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

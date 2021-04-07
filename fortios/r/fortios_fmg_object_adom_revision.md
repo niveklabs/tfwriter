@@ -81,11 +81,16 @@ variable "name" {
 
 ```terraform
 resource "fortios_fmg_object_adom_revision" "this" {
-  adom        = var.adom
-  created_by  = var.created_by
+  # adom - (optional) is a type of string
+  adom = var.adom
+  # created_by - (optional) is a type of string
+  created_by = var.created_by
+  # description - (optional) is a type of string
   description = var.description
-  locked      = var.locked
-  name        = var.name
+  # locked - (optional) is a type of number
+  locked = var.locked
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

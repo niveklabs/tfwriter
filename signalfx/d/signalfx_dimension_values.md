@@ -49,6 +49,7 @@ variable "query" {
 
 ```terraform
 data "signalfx_dimension_values" "this" {
+  # query - (required) is a type of string
   query = var.query
 }
 ```

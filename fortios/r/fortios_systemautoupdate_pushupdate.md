@@ -70,10 +70,14 @@ variable "status" {
 
 ```terraform
 resource "fortios_systemautoupdate_pushupdate" "this" {
-  address  = var.address
+  # address - (required) is a type of string
+  address = var.address
+  # override - (required) is a type of string
   override = var.override
-  port     = var.port
-  status   = var.status
+  # port - (required) is a type of number
+  port = var.port
+  # status - (required) is a type of string
+  status = var.status
 }
 ```
 

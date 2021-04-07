@@ -267,25 +267,35 @@ variable "version_condition" {
 
 ```terraform
 resource "nsxt_lb_http_response_rewrite_rule" "this" {
-  description    = var.description
-  display_name   = var.display_name
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # match_strategy - (optional) is a type of string
   match_strategy = var.match_strategy
 
   dynamic "cookie_condition" {
     for_each = var.cookie_condition
     content {
+      # case_sensitive - (optional) is a type of bool
       case_sensitive = cookie_condition.value["case_sensitive"]
-      inverse        = cookie_condition.value["inverse"]
-      match_type     = cookie_condition.value["match_type"]
-      name           = cookie_condition.value["name"]
-      value          = cookie_condition.value["value"]
+      # inverse - (optional) is a type of bool
+      inverse = cookie_condition.value["inverse"]
+      # match_type - (required) is a type of string
+      match_type = cookie_condition.value["match_type"]
+      # name - (required) is a type of string
+      name = cookie_condition.value["name"]
+      # value - (required) is a type of string
+      value = cookie_condition.value["value"]
     }
   }
 
   dynamic "header_rewrite_action" {
     for_each = var.header_rewrite_action
     content {
-      name  = header_rewrite_action.value["name"]
+      # name - (required) is a type of string
+      name = header_rewrite_action.value["name"]
+      # value - (optional) is a type of string
       value = header_rewrite_action.value["value"]
     }
   }
@@ -293,7 +303,9 @@ resource "nsxt_lb_http_response_rewrite_rule" "this" {
   dynamic "ip_condition" {
     for_each = var.ip_condition
     content {
-      inverse        = ip_condition.value["inverse"]
+      # inverse - (optional) is a type of bool
+      inverse = ip_condition.value["inverse"]
+      # source_address - (required) is a type of string
       source_address = ip_condition.value["source_address"]
     }
   }
@@ -301,45 +313,61 @@ resource "nsxt_lb_http_response_rewrite_rule" "this" {
   dynamic "method_condition" {
     for_each = var.method_condition
     content {
+      # inverse - (optional) is a type of bool
       inverse = method_condition.value["inverse"]
-      method  = method_condition.value["method"]
+      # method - (required) is a type of string
+      method = method_condition.value["method"]
     }
   }
 
   dynamic "request_header_condition" {
     for_each = var.request_header_condition
     content {
+      # case_sensitive - (optional) is a type of bool
       case_sensitive = request_header_condition.value["case_sensitive"]
-      inverse        = request_header_condition.value["inverse"]
-      match_type     = request_header_condition.value["match_type"]
-      name           = request_header_condition.value["name"]
-      value          = request_header_condition.value["value"]
+      # inverse - (optional) is a type of bool
+      inverse = request_header_condition.value["inverse"]
+      # match_type - (required) is a type of string
+      match_type = request_header_condition.value["match_type"]
+      # name - (required) is a type of string
+      name = request_header_condition.value["name"]
+      # value - (required) is a type of string
+      value = request_header_condition.value["value"]
     }
   }
 
   dynamic "response_header_condition" {
     for_each = var.response_header_condition
     content {
+      # case_sensitive - (optional) is a type of bool
       case_sensitive = response_header_condition.value["case_sensitive"]
-      inverse        = response_header_condition.value["inverse"]
-      match_type     = response_header_condition.value["match_type"]
-      name           = response_header_condition.value["name"]
-      value          = response_header_condition.value["value"]
+      # inverse - (optional) is a type of bool
+      inverse = response_header_condition.value["inverse"]
+      # match_type - (required) is a type of string
+      match_type = response_header_condition.value["match_type"]
+      # name - (required) is a type of string
+      name = response_header_condition.value["name"]
+      # value - (required) is a type of string
+      value = response_header_condition.value["value"]
     }
   }
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 
   dynamic "tcp_condition" {
     for_each = var.tcp_condition
     content {
-      inverse     = tcp_condition.value["inverse"]
+      # inverse - (optional) is a type of bool
+      inverse = tcp_condition.value["inverse"]
+      # source_port - (required) is a type of string
       source_port = tcp_condition.value["source_port"]
     }
   }
@@ -347,27 +375,37 @@ resource "nsxt_lb_http_response_rewrite_rule" "this" {
   dynamic "uri_arguments_condition" {
     for_each = var.uri_arguments_condition
     content {
+      # case_sensitive - (optional) is a type of bool
       case_sensitive = uri_arguments_condition.value["case_sensitive"]
-      inverse        = uri_arguments_condition.value["inverse"]
-      match_type     = uri_arguments_condition.value["match_type"]
-      uri_arguments  = uri_arguments_condition.value["uri_arguments"]
+      # inverse - (optional) is a type of bool
+      inverse = uri_arguments_condition.value["inverse"]
+      # match_type - (required) is a type of string
+      match_type = uri_arguments_condition.value["match_type"]
+      # uri_arguments - (required) is a type of string
+      uri_arguments = uri_arguments_condition.value["uri_arguments"]
     }
   }
 
   dynamic "uri_condition" {
     for_each = var.uri_condition
     content {
+      # case_sensitive - (optional) is a type of bool
       case_sensitive = uri_condition.value["case_sensitive"]
-      inverse        = uri_condition.value["inverse"]
-      match_type     = uri_condition.value["match_type"]
-      uri            = uri_condition.value["uri"]
+      # inverse - (optional) is a type of bool
+      inverse = uri_condition.value["inverse"]
+      # match_type - (required) is a type of string
+      match_type = uri_condition.value["match_type"]
+      # uri - (required) is a type of string
+      uri = uri_condition.value["uri"]
     }
   }
 
   dynamic "version_condition" {
     for_each = var.version_condition
     content {
+      # inverse - (optional) is a type of bool
       inverse = version_condition.value["inverse"]
+      # version - (required) is a type of string
       version = version_condition.value["version"]
     }
   }

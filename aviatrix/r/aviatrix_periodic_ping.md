@@ -63,8 +63,11 @@ variable "ip_address" {
 
 ```terraform
 resource "aviatrix_periodic_ping" "this" {
-  gw_name    = var.gw_name
-  interval   = var.interval
+  # gw_name - (required) is a type of string
+  gw_name = var.gw_name
+  # interval - (required) is a type of number
+  interval = var.interval
+  # ip_address - (required) is a type of string
   ip_address = var.ip_address
 }
 ```

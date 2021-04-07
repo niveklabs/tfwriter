@@ -109,15 +109,24 @@ variable "start" {
 
 ```terraform
 resource "ovh_cloud_network_private_subnet" "this" {
-  dhcp         = var.dhcp
-  end          = var.end
-  network      = var.network
-  network_id   = var.network_id
-  no_gateway   = var.no_gateway
-  project_id   = var.project_id
-  region       = var.region
+  # dhcp - (optional) is a type of bool
+  dhcp = var.dhcp
+  # end - (required) is a type of string
+  end = var.end
+  # network - (required) is a type of string
+  network = var.network
+  # network_id - (required) is a type of string
+  network_id = var.network_id
+  # no_gateway - (optional) is a type of bool
+  no_gateway = var.no_gateway
+  # project_id - (optional) is a type of string
+  project_id = var.project_id
+  # region - (required) is a type of string
+  region = var.region
+  # service_name - (optional) is a type of string
   service_name = var.service_name
-  start        = var.start
+  # start - (required) is a type of string
+  start = var.start
 }
 ```
 

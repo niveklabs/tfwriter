@@ -94,13 +94,20 @@ variable "template_name" {
 
 ```terraform
 data "mso_schema_template_external_epg_contract" "this" {
-  contract_name          = var.contract_name
-  contract_schema_id     = var.contract_schema_id
+  # contract_name - (required) is a type of string
+  contract_name = var.contract_name
+  # contract_schema_id - (optional) is a type of string
+  contract_schema_id = var.contract_schema_id
+  # contract_template_name - (optional) is a type of string
   contract_template_name = var.contract_template_name
-  external_epg_name      = var.external_epg_name
-  relationship_type      = var.relationship_type
-  schema_id              = var.schema_id
-  template_name          = var.template_name
+  # external_epg_name - (required) is a type of string
+  external_epg_name = var.external_epg_name
+  # relationship_type - (optional) is a type of string
+  relationship_type = var.relationship_type
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 }
 ```
 

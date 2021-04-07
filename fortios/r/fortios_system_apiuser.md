@@ -147,29 +147,43 @@ variable "vdom" {
 
 ```terraform
 resource "fortios_system_apiuser" "this" {
-  accprofile            = var.accprofile
-  api_key               = var.api_key
-  comments              = var.comments
-  cors_allow_origin     = var.cors_allow_origin
+  # accprofile - (required) is a type of string
+  accprofile = var.accprofile
+  # api_key - (optional) is a type of string
+  api_key = var.api_key
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # cors_allow_origin - (optional) is a type of string
+  cors_allow_origin = var.cors_allow_origin
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  peer_auth             = var.peer_auth
-  peer_group            = var.peer_group
-  schedule              = var.schedule
+  # name - (optional) is a type of string
+  name = var.name
+  # peer_auth - (optional) is a type of string
+  peer_auth = var.peer_auth
+  # peer_group - (optional) is a type of string
+  peer_group = var.peer_group
+  # schedule - (optional) is a type of string
+  schedule = var.schedule
 
   dynamic "trusthost" {
     for_each = var.trusthost
     content {
-      id             = trusthost.value["id"]
+      # id - (optional) is a type of number
+      id = trusthost.value["id"]
+      # ipv4_trusthost - (optional) is a type of string
       ipv4_trusthost = trusthost.value["ipv4_trusthost"]
+      # ipv6_trusthost - (optional) is a type of string
       ipv6_trusthost = trusthost.value["ipv6_trusthost"]
-      type           = trusthost.value["type"]
+      # type - (optional) is a type of string
+      type = trusthost.value["type"]
     }
   }
 
   dynamic "vdom" {
     for_each = var.vdom
     content {
+      # name - (optional) is a type of string
       name = vdom.value["name"]
     }
   }

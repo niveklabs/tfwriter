@@ -67,11 +67,16 @@ data "cloudflare_zones" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
+      # lookup_type - (optional) is a type of string
       lookup_type = filter.value["lookup_type"]
-      match       = filter.value["match"]
-      name        = filter.value["name"]
-      paused      = filter.value["paused"]
-      status      = filter.value["status"]
+      # match - (optional) is a type of string
+      match = filter.value["match"]
+      # name - (optional) is a type of string
+      name = filter.value["name"]
+      # paused - (optional) is a type of bool
+      paused = filter.value["paused"]
+      # status - (optional) is a type of string
+      status = filter.value["status"]
     }
   }
 

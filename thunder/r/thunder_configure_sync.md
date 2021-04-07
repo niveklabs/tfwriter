@@ -122,16 +122,26 @@ variable "usr" {
 
 ```terraform
 resource "thunder_configure_sync" "this" {
-  address             = var.address
-  all_partitions      = var.all_partitions
+  # address - (optional) is a type of string
+  address = var.address
+  # all_partitions - (optional) is a type of number
+  all_partitions = var.all_partitions
+  # auto_authentication - (optional) is a type of number
   auto_authentication = var.auto_authentication
-  partition_name      = var.partition_name
-  private_key         = var.private_key
-  pwd                 = var.pwd
-  pwd_enc             = var.pwd_enc
-  shared              = var.shared
-  type                = var.type
-  usr                 = var.usr
+  # partition_name - (optional) is a type of string
+  partition_name = var.partition_name
+  # private_key - (optional) is a type of string
+  private_key = var.private_key
+  # pwd - (optional) is a type of string
+  pwd = var.pwd
+  # pwd_enc - (optional) is a type of string
+  pwd_enc = var.pwd_enc
+  # shared - (optional) is a type of number
+  shared = var.shared
+  # type - (optional) is a type of string
+  type = var.type
+  # usr - (optional) is a type of string
+  usr = var.usr
 }
 ```
 

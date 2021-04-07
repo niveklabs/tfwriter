@@ -178,26 +178,43 @@ variable "hosts" {
 
 ```terraform
 resource "fortios_switchcontroller_snmpcommunity" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  events                = var.events
-  fosid                 = var.fosid
-  name                  = var.name
-  query_v1_port         = var.query_v1_port
-  query_v1_status       = var.query_v1_status
-  query_v2c_port        = var.query_v2c_port
-  query_v2c_status      = var.query_v2c_status
-  status                = var.status
-  trap_v1_lport         = var.trap_v1_lport
-  trap_v1_rport         = var.trap_v1_rport
-  trap_v1_status        = var.trap_v1_status
-  trap_v2c_lport        = var.trap_v2c_lport
-  trap_v2c_rport        = var.trap_v2c_rport
-  trap_v2c_status       = var.trap_v2c_status
+  # events - (optional) is a type of string
+  events = var.events
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
+  # query_v1_port - (optional) is a type of number
+  query_v1_port = var.query_v1_port
+  # query_v1_status - (optional) is a type of string
+  query_v1_status = var.query_v1_status
+  # query_v2c_port - (optional) is a type of number
+  query_v2c_port = var.query_v2c_port
+  # query_v2c_status - (optional) is a type of string
+  query_v2c_status = var.query_v2c_status
+  # status - (optional) is a type of string
+  status = var.status
+  # trap_v1_lport - (optional) is a type of number
+  trap_v1_lport = var.trap_v1_lport
+  # trap_v1_rport - (optional) is a type of number
+  trap_v1_rport = var.trap_v1_rport
+  # trap_v1_status - (optional) is a type of string
+  trap_v1_status = var.trap_v1_status
+  # trap_v2c_lport - (optional) is a type of number
+  trap_v2c_lport = var.trap_v2c_lport
+  # trap_v2c_rport - (optional) is a type of number
+  trap_v2c_rport = var.trap_v2c_rport
+  # trap_v2c_status - (optional) is a type of string
+  trap_v2c_status = var.trap_v2c_status
 
   dynamic "hosts" {
     for_each = var.hosts
     content {
+      # id - (optional) is a type of number
       id = hosts.value["id"]
+      # ip - (optional) is a type of string
       ip = hosts.value["ip"]
     }
   }

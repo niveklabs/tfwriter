@@ -238,54 +238,83 @@ variable "respmod_forward_rules" {
 
 ```terraform
 resource "fortios_icap_profile" "this" {
-  dynamic_sort_subtable    = var.dynamic_sort_subtable
-  methods                  = var.methods
-  name                     = var.name
-  preview                  = var.preview
-  preview_data_length      = var.preview_data_length
-  replacemsg_group         = var.replacemsg_group
-  request                  = var.request
-  request_failure          = var.request_failure
-  request_path             = var.request_path
-  request_server           = var.request_server
-  respmod_default_action   = var.respmod_default_action
-  response                 = var.response
-  response_failure         = var.response_failure
-  response_path            = var.response_path
-  response_req_hdr         = var.response_req_hdr
-  response_server          = var.response_server
+  # dynamic_sort_subtable - (optional) is a type of string
+  dynamic_sort_subtable = var.dynamic_sort_subtable
+  # methods - (optional) is a type of string
+  methods = var.methods
+  # name - (optional) is a type of string
+  name = var.name
+  # preview - (optional) is a type of string
+  preview = var.preview
+  # preview_data_length - (optional) is a type of number
+  preview_data_length = var.preview_data_length
+  # replacemsg_group - (optional) is a type of string
+  replacemsg_group = var.replacemsg_group
+  # request - (optional) is a type of string
+  request = var.request
+  # request_failure - (optional) is a type of string
+  request_failure = var.request_failure
+  # request_path - (optional) is a type of string
+  request_path = var.request_path
+  # request_server - (optional) is a type of string
+  request_server = var.request_server
+  # respmod_default_action - (optional) is a type of string
+  respmod_default_action = var.respmod_default_action
+  # response - (optional) is a type of string
+  response = var.response
+  # response_failure - (optional) is a type of string
+  response_failure = var.response_failure
+  # response_path - (optional) is a type of string
+  response_path = var.response_path
+  # response_req_hdr - (optional) is a type of string
+  response_req_hdr = var.response_req_hdr
+  # response_server - (optional) is a type of string
+  response_server = var.response_server
+  # streaming_content_bypass - (optional) is a type of string
   streaming_content_bypass = var.streaming_content_bypass
 
   dynamic "icap_headers" {
     for_each = var.icap_headers
     content {
+      # base64_encoding - (optional) is a type of string
       base64_encoding = icap_headers.value["base64_encoding"]
-      content         = icap_headers.value["content"]
-      id              = icap_headers.value["id"]
-      name            = icap_headers.value["name"]
+      # content - (optional) is a type of string
+      content = icap_headers.value["content"]
+      # id - (optional) is a type of number
+      id = icap_headers.value["id"]
+      # name - (optional) is a type of string
+      name = icap_headers.value["name"]
     }
   }
 
   dynamic "respmod_forward_rules" {
     for_each = var.respmod_forward_rules
     content {
+      # action - (optional) is a type of string
       action = respmod_forward_rules.value["action"]
-      host   = respmod_forward_rules.value["host"]
-      name   = respmod_forward_rules.value["name"]
+      # host - (optional) is a type of string
+      host = respmod_forward_rules.value["host"]
+      # name - (optional) is a type of string
+      name = respmod_forward_rules.value["name"]
 
       dynamic "header_group" {
         for_each = respmod_forward_rules.value.header_group
         content {
+          # case_sensitivity - (optional) is a type of string
           case_sensitivity = header_group.value["case_sensitivity"]
-          header           = header_group.value["header"]
-          header_name      = header_group.value["header_name"]
-          id               = header_group.value["id"]
+          # header - (optional) is a type of string
+          header = header_group.value["header"]
+          # header_name - (optional) is a type of string
+          header_name = header_group.value["header_name"]
+          # id - (optional) is a type of number
+          id = header_group.value["id"]
         }
       }
 
       dynamic "http_resp_status_code" {
         for_each = respmod_forward_rules.value.http_resp_status_code
         content {
+          # code - (optional) is a type of number
           code = http_resp_status_code.value["code"]
         }
       }

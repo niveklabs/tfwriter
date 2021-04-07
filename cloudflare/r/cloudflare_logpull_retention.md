@@ -56,7 +56,9 @@ variable "zone_id" {
 
 ```terraform
 resource "cloudflare_logpull_retention" "this" {
+  # enabled - (required) is a type of bool
   enabled = var.enabled
+  # zone_id - (required) is a type of string
   zone_id = var.zone_id
 }
 ```

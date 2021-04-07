@@ -56,7 +56,9 @@ variable "template_ids" {
 
 ```terraform
 resource "tencentcloud_address_template_group" "this" {
-  name         = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # template_ids - (required) is a type of set of string
   template_ids = var.template_ids
 }
 ```

@@ -70,10 +70,14 @@ variable "rxqid" {
 
 ```terraform
 resource "fortios_system_affinitypacketredistribution" "this" {
+  # affinity_cpumask - (required) is a type of string
   affinity_cpumask = var.affinity_cpumask
-  fosid            = var.fosid
-  interface        = var.interface
-  rxqid            = var.rxqid
+  # fosid - (required) is a type of number
+  fosid = var.fosid
+  # interface - (required) is a type of string
+  interface = var.interface
+  # rxqid - (required) is a type of number
+  rxqid = var.rxqid
 }
 ```
 

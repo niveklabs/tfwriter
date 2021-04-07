@@ -71,10 +71,14 @@ variable "project_name" {
 
 ```terraform
 resource "alicloud_log_dashboard" "this" {
-  char_list      = var.char_list
+  # char_list - (required) is a type of string
+  char_list = var.char_list
+  # dashboard_name - (required) is a type of string
   dashboard_name = var.dashboard_name
-  display_name   = var.display_name
-  project_name   = var.project_name
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # project_name - (required) is a type of string
+  project_name = var.project_name
 }
 ```
 

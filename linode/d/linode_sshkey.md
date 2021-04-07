@@ -49,6 +49,7 @@ variable "label" {
 
 ```terraform
 data "linode_sshkey" "this" {
+  # label - (required) is a type of string
   label = var.label
 }
 ```

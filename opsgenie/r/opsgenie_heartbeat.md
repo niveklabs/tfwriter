@@ -110,15 +110,24 @@ variable "owner_team_id" {
 
 ```terraform
 resource "opsgenie_heartbeat" "this" {
-  alert_message  = var.alert_message
+  # alert_message - (optional) is a type of string
+  alert_message = var.alert_message
+  # alert_priority - (optional) is a type of string
   alert_priority = var.alert_priority
-  alert_tags     = var.alert_tags
-  description    = var.description
-  enabled        = var.enabled
-  interval       = var.interval
-  interval_unit  = var.interval_unit
-  name           = var.name
-  owner_team_id  = var.owner_team_id
+  # alert_tags - (optional) is a type of set of string
+  alert_tags = var.alert_tags
+  # description - (optional) is a type of string
+  description = var.description
+  # enabled - (required) is a type of bool
+  enabled = var.enabled
+  # interval - (required) is a type of number
+  interval = var.interval
+  # interval_unit - (required) is a type of string
+  interval_unit = var.interval_unit
+  # name - (required) is a type of string
+  name = var.name
+  # owner_team_id - (optional) is a type of string
+  owner_team_id = var.owner_team_id
 }
 ```
 

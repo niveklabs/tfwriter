@@ -63,9 +63,12 @@ variable "secret" {
 
 ```terraform
 resource "cloudflare_argo_tunnel" "this" {
+  # account_id - (required) is a type of string
   account_id = var.account_id
-  name       = var.name
-  secret     = var.secret
+  # name - (required) is a type of string
+  name = var.name
+  # secret - (required) is a type of string
+  secret = var.secret
 }
 ```
 

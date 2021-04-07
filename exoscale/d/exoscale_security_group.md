@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 data "exoscale_security_group" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

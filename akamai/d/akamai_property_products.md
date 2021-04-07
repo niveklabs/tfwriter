@@ -49,6 +49,7 @@ variable "contract_id" {
 
 ```terraform
 data "akamai_property_products" "this" {
+  # contract_id - (required) is a type of string
   contract_id = var.contract_id
 }
 ```

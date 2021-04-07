@@ -56,8 +56,10 @@ variable "name" {
 
 ```terraform
 resource "bigip_ltm_irule" "this" {
+  # irule - (required) is a type of string
   irule = var.irule
-  name  = var.name
+  # name - (required) is a type of string
+  name = var.name
 }
 ```
 

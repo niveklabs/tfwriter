@@ -127,17 +127,28 @@ variable "type" {
 
 ```terraform
 resource "alicloud_security_group_rule" "this" {
-  cidr_ip                    = var.cidr_ip
-  description                = var.description
-  ip_protocol                = var.ip_protocol
-  nic_type                   = var.nic_type
-  policy                     = var.policy
-  port_range                 = var.port_range
-  priority                   = var.priority
-  security_group_id          = var.security_group_id
+  # cidr_ip - (optional) is a type of string
+  cidr_ip = var.cidr_ip
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_protocol - (required) is a type of string
+  ip_protocol = var.ip_protocol
+  # nic_type - (optional) is a type of string
+  nic_type = var.nic_type
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # port_range - (optional) is a type of string
+  port_range = var.port_range
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # security_group_id - (required) is a type of string
+  security_group_id = var.security_group_id
+  # source_group_owner_account - (optional) is a type of string
   source_group_owner_account = var.source_group_owner_account
-  source_security_group_id   = var.source_security_group_id
-  type                       = var.type
+  # source_security_group_id - (optional) is a type of string
+  source_security_group_id = var.source_security_group_id
+  # type - (required) is a type of string
+  type = var.type
 }
 ```
 

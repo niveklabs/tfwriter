@@ -122,16 +122,26 @@ variable "zone_id" {
 
 ```terraform
 data "alicloud_db_instance_classes" "this" {
-  category             = var.category
-  db_instance_class    = var.db_instance_class
-  engine               = var.engine
-  engine_version       = var.engine_version
+  # category - (optional) is a type of string
+  category = var.category
+  # db_instance_class - (optional) is a type of string
+  db_instance_class = var.db_instance_class
+  # engine - (optional) is a type of string
+  engine = var.engine
+  # engine_version - (optional) is a type of string
+  engine_version = var.engine_version
+  # instance_charge_type - (optional) is a type of string
   instance_charge_type = var.instance_charge_type
-  multi_zone           = var.multi_zone
-  output_file          = var.output_file
-  sorted_by            = var.sorted_by
-  storage_type         = var.storage_type
-  zone_id              = var.zone_id
+  # multi_zone - (optional) is a type of bool
+  multi_zone = var.multi_zone
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # sorted_by - (optional) is a type of string
+  sorted_by = var.sorted_by
+  # storage_type - (optional) is a type of string
+  storage_type = var.storage_type
+  # zone_id - (optional) is a type of string
+  zone_id = var.zone_id
 }
 ```
 

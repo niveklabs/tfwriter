@@ -64,8 +64,11 @@ variable "text_content" {
 
 ```terraform
 resource "checkpoint_put_file" "this" {
-  file_name    = var.file_name
-  override     = var.override
+  # file_name - (required) is a type of string
+  file_name = var.file_name
+  # override - (optional) is a type of bool
+  override = var.override
+  # text_content - (required) is a type of string
   text_content = var.text_content
 }
 ```

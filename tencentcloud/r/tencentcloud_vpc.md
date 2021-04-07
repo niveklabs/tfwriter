@@ -80,11 +80,16 @@ variable "tags" {
 
 ```terraform
 resource "tencentcloud_vpc" "this" {
-  cidr_block   = var.cidr_block
-  dns_servers  = var.dns_servers
+  # cidr_block - (required) is a type of string
+  cidr_block = var.cidr_block
+  # dns_servers - (optional) is a type of set of string
+  dns_servers = var.dns_servers
+  # is_multicast - (optional) is a type of bool
   is_multicast = var.is_multicast
-  name         = var.name
-  tags         = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

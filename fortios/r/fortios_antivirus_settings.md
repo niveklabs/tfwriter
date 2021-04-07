@@ -74,10 +74,14 @@ variable "use_extreme_db" {
 
 ```terraform
 resource "fortios_antivirus_settings" "this" {
-  default_db       = var.default_db
-  grayware         = var.grayware
+  # default_db - (optional) is a type of string
+  default_db = var.default_db
+  # grayware - (optional) is a type of string
+  grayware = var.grayware
+  # override_timeout - (optional) is a type of number
   override_timeout = var.override_timeout
-  use_extreme_db   = var.use_extreme_db
+  # use_extreme_db - (optional) is a type of string
+  use_extreme_db = var.use_extreme_db
 }
 ```
 

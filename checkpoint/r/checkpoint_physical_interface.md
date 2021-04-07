@@ -169,22 +169,38 @@ variable "tx_ringsize" {
 
 ```terraform
 resource "checkpoint_physical_interface" "this" {
+  # auto_negotiation - (optional) is a type of string
   auto_negotiation = var.auto_negotiation
-  comments         = var.comments
-  duplex           = var.duplex
-  enabled          = var.enabled
-  ipv4_address     = var.ipv4_address
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # duplex - (optional) is a type of string
+  duplex = var.duplex
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # ipv4_address - (optional) is a type of string
+  ipv4_address = var.ipv4_address
+  # ipv4_mask_length - (optional) is a type of number
   ipv4_mask_length = var.ipv4_mask_length
-  ipv6_address     = var.ipv6_address
-  ipv6_autoconfig  = var.ipv6_autoconfig
+  # ipv6_address - (optional) is a type of string
+  ipv6_address = var.ipv6_address
+  # ipv6_autoconfig - (optional) is a type of string
+  ipv6_autoconfig = var.ipv6_autoconfig
+  # ipv6_mask_length - (optional) is a type of number
   ipv6_mask_length = var.ipv6_mask_length
-  mac_addr         = var.mac_addr
-  monitor_mode     = var.monitor_mode
-  mtu              = var.mtu
-  name             = var.name
-  rx_ringsize      = var.rx_ringsize
-  speed            = var.speed
-  tx_ringsize      = var.tx_ringsize
+  # mac_addr - (optional) is a type of string
+  mac_addr = var.mac_addr
+  # monitor_mode - (optional) is a type of string
+  monitor_mode = var.monitor_mode
+  # mtu - (optional) is a type of number
+  mtu = var.mtu
+  # name - (required) is a type of string
+  name = var.name
+  # rx_ringsize - (optional) is a type of string
+  rx_ringsize = var.rx_ringsize
+  # speed - (optional) is a type of string
+  speed = var.speed
+  # tx_ringsize - (optional) is a type of string
+  tx_ringsize = var.tx_ringsize
 }
 ```
 

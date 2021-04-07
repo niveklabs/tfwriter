@@ -95,13 +95,20 @@ variable "version_code" {
 
 ```terraform
 resource "alicloud_alidns_instance" "this" {
-  dns_security   = var.dns_security
+  # dns_security - (required) is a type of string
+  dns_security = var.dns_security
+  # domain_numbers - (required) is a type of string
   domain_numbers = var.domain_numbers
-  payment_type   = var.payment_type
-  period         = var.period
-  renew_period   = var.renew_period
+  # payment_type - (optional) is a type of string
+  payment_type = var.payment_type
+  # period - (optional) is a type of number
+  period = var.period
+  # renew_period - (optional) is a type of number
+  renew_period = var.renew_period
+  # renewal_status - (optional) is a type of string
   renewal_status = var.renewal_status
-  version_code   = var.version_code
+  # version_code - (required) is a type of string
+  version_code = var.version_code
 }
 ```
 

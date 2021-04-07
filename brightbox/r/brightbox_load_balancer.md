@@ -192,46 +192,71 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_load_balancer" "this" {
-  buffer_size             = var.buffer_size
-  certificate_pem         = var.certificate_pem
+  # buffer_size - (optional) is a type of number
+  buffer_size = var.buffer_size
+  # certificate_pem - (optional) is a type of string
+  certificate_pem = var.certificate_pem
+  # certificate_private_key - (optional) is a type of string
   certificate_private_key = var.certificate_private_key
-  domains                 = var.domains
-  https_redirect          = var.https_redirect
-  locked                  = var.locked
-  name                    = var.name
-  nodes                   = var.nodes
-  policy                  = var.policy
-  ssl_minimum_version     = var.ssl_minimum_version
-  sslv3                   = var.sslv3
+  # domains - (optional) is a type of set of string
+  domains = var.domains
+  # https_redirect - (optional) is a type of bool
+  https_redirect = var.https_redirect
+  # locked - (optional) is a type of bool
+  locked = var.locked
+  # name - (optional) is a type of string
+  name = var.name
+  # nodes - (optional) is a type of set of string
+  nodes = var.nodes
+  # policy - (optional) is a type of string
+  policy = var.policy
+  # ssl_minimum_version - (optional) is a type of string
+  ssl_minimum_version = var.ssl_minimum_version
+  # sslv3 - (optional) is a type of bool
+  sslv3 = var.sslv3
 
   dynamic "healthcheck" {
     for_each = var.healthcheck
     content {
-      interval       = healthcheck.value["interval"]
-      port           = healthcheck.value["port"]
-      request        = healthcheck.value["request"]
+      # interval - (optional) is a type of number
+      interval = healthcheck.value["interval"]
+      # port - (required) is a type of number
+      port = healthcheck.value["port"]
+      # request - (optional) is a type of string
+      request = healthcheck.value["request"]
+      # threshold_down - (optional) is a type of number
       threshold_down = healthcheck.value["threshold_down"]
-      threshold_up   = healthcheck.value["threshold_up"]
-      timeout        = healthcheck.value["timeout"]
-      type           = healthcheck.value["type"]
+      # threshold_up - (optional) is a type of number
+      threshold_up = healthcheck.value["threshold_up"]
+      # timeout - (optional) is a type of number
+      timeout = healthcheck.value["timeout"]
+      # type - (required) is a type of string
+      type = healthcheck.value["type"]
     }
   }
 
   dynamic "listener" {
     for_each = var.listener
     content {
-      in             = listener.value["in"]
-      out            = listener.value["out"]
-      protocol       = listener.value["protocol"]
+      # in - (required) is a type of number
+      in = listener.value["in"]
+      # out - (required) is a type of number
+      out = listener.value["out"]
+      # protocol - (required) is a type of string
+      protocol = listener.value["protocol"]
+      # proxy_protocol - (optional) is a type of string
       proxy_protocol = listener.value["proxy_protocol"]
-      timeout        = listener.value["timeout"]
+      # timeout - (optional) is a type of number
+      timeout = listener.value["timeout"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

@@ -122,16 +122,26 @@ variable "vpc_id" {
 
 ```terraform
 data "alicloud_route_tables" "this" {
-  ids               = var.ids
-  name_regex        = var.name_regex
-  output_file       = var.output_file
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # resource_group_id - (optional) is a type of string
   resource_group_id = var.resource_group_id
-  route_table_name  = var.route_table_name
-  router_id         = var.router_id
-  router_type       = var.router_type
-  status            = var.status
-  tags              = var.tags
-  vpc_id            = var.vpc_id
+  # route_table_name - (optional) is a type of string
+  route_table_name = var.route_table_name
+  # router_id - (optional) is a type of string
+  router_id = var.router_id
+  # router_type - (optional) is a type of string
+  router_type = var.router_type
+  # status - (optional) is a type of string
+  status = var.status
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

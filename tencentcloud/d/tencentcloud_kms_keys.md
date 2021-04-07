@@ -106,14 +106,22 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_kms_keys" "this" {
-  key_state          = var.key_state
-  key_usage          = var.key_usage
-  order_type         = var.order_type
-  origin             = var.origin
+  # key_state - (optional) is a type of number
+  key_state = var.key_state
+  # key_usage - (optional) is a type of string
+  key_usage = var.key_usage
+  # order_type - (optional) is a type of number
+  order_type = var.order_type
+  # origin - (optional) is a type of string
+  origin = var.origin
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  role               = var.role
-  search_key_alias   = var.search_key_alias
-  tags               = var.tags
+  # role - (optional) is a type of number
+  role = var.role
+  # search_key_alias - (optional) is a type of string
+  search_key_alias = var.search_key_alias
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

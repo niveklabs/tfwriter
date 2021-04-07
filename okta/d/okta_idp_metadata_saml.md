@@ -50,6 +50,7 @@ variable "idp_id" {
 
 ```terraform
 data "okta_idp_metadata_saml" "this" {
+  # idp_id - (optional) is a type of string
   idp_id = var.idp_id
 }
 ```

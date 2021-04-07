@@ -84,11 +84,17 @@ variable "transfer_to" {
 
 ```terraform
 resource "sumologic_user" "this" {
-  email       = var.email
-  first_name  = var.first_name
-  is_active   = var.is_active
-  last_name   = var.last_name
-  role_ids    = var.role_ids
+  # email - (required) is a type of string
+  email = var.email
+  # first_name - (required) is a type of string
+  first_name = var.first_name
+  # is_active - (required) is a type of bool
+  is_active = var.is_active
+  # last_name - (required) is a type of string
+  last_name = var.last_name
+  # role_ids - (required) is a type of list of string
+  role_ids = var.role_ids
+  # transfer_to - (required) is a type of string
   transfer_to = var.transfer_to
 }
 ```

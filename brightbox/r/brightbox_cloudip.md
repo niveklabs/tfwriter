@@ -100,15 +100,21 @@ variable "timeouts" {
 
 ```terraform
 resource "brightbox_cloudip" "this" {
-  name        = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # reverse_dns - (optional) is a type of string
   reverse_dns = var.reverse_dns
-  target      = var.target
+  # target - (optional) is a type of string
+  target = var.target
 
   dynamic "port_translator" {
     for_each = var.port_translator
     content {
+      # incoming - (required) is a type of number
       incoming = port_translator.value["incoming"]
+      # outgoing - (required) is a type of number
       outgoing = port_translator.value["outgoing"]
+      # protocol - (required) is a type of string
       protocol = port_translator.value["protocol"]
     }
   }
@@ -116,7 +122,9 @@ resource "brightbox_cloudip" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

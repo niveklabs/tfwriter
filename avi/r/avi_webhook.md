@@ -89,11 +89,17 @@ variable "verification_token" {
 
 ```terraform
 resource "avi_webhook" "this" {
-  callback_url       = var.callback_url
-  description        = var.description
-  name               = var.name
-  tenant_ref         = var.tenant_ref
-  uuid               = var.uuid
+  # callback_url - (optional) is a type of string
+  callback_url = var.callback_url
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # verification_token - (optional) is a type of string
   verification_token = var.verification_token
 }
 ```

@@ -266,29 +266,49 @@ variable "timeouts" {
 
 ```terraform
 resource "equinix_ecx_l2_connection" "this" {
-  authorization_key     = var.authorization_key
-  device_interface_id   = var.device_interface_id
-  device_uuid           = var.device_uuid
-  name                  = var.name
-  named_tag             = var.named_tag
-  notifications         = var.notifications
-  port_uuid             = var.port_uuid
-  profile_uuid          = var.profile_uuid
+  # authorization_key - (optional) is a type of string
+  authorization_key = var.authorization_key
+  # device_interface_id - (optional) is a type of number
+  device_interface_id = var.device_interface_id
+  # device_uuid - (optional) is a type of string
+  device_uuid = var.device_uuid
+  # name - (required) is a type of string
+  name = var.name
+  # named_tag - (optional) is a type of string
+  named_tag = var.named_tag
+  # notifications - (required) is a type of set of string
+  notifications = var.notifications
+  # port_uuid - (optional) is a type of string
+  port_uuid = var.port_uuid
+  # profile_uuid - (optional) is a type of string
+  profile_uuid = var.profile_uuid
+  # purchase_order_number - (optional) is a type of string
   purchase_order_number = var.purchase_order_number
-  seller_metro_code     = var.seller_metro_code
-  seller_region         = var.seller_region
-  speed                 = var.speed
-  speed_unit            = var.speed_unit
-  vlan_ctag             = var.vlan_ctag
-  vlan_stag             = var.vlan_stag
-  zside_port_uuid       = var.zside_port_uuid
-  zside_vlan_ctag       = var.zside_vlan_ctag
-  zside_vlan_stag       = var.zside_vlan_stag
+  # seller_metro_code - (optional) is a type of string
+  seller_metro_code = var.seller_metro_code
+  # seller_region - (optional) is a type of string
+  seller_region = var.seller_region
+  # speed - (required) is a type of number
+  speed = var.speed
+  # speed_unit - (required) is a type of string
+  speed_unit = var.speed_unit
+  # vlan_ctag - (optional) is a type of number
+  vlan_ctag = var.vlan_ctag
+  # vlan_stag - (optional) is a type of number
+  vlan_stag = var.vlan_stag
+  # zside_port_uuid - (optional) is a type of string
+  zside_port_uuid = var.zside_port_uuid
+  # zside_vlan_ctag - (optional) is a type of number
+  zside_vlan_ctag = var.zside_vlan_ctag
+  # zside_vlan_stag - (optional) is a type of number
+  zside_vlan_stag = var.zside_vlan_stag
 
   dynamic "additional_info" {
     for_each = var.additional_info
     content {
-      name  = additional_info.value["name"]
+      # name - (required) is a type of string
+      name = additional_info.value["name"]
+      # value - (required) is a type of string
       value = additional_info.value["value"]
     }
   }
@@ -296,25 +316,39 @@ resource "equinix_ecx_l2_connection" "this" {
   dynamic "secondary_connection" {
     for_each = var.secondary_connection
     content {
-      authorization_key   = secondary_connection.value["authorization_key"]
+      # authorization_key - (optional) is a type of string
+      authorization_key = secondary_connection.value["authorization_key"]
+      # device_interface_id - (optional) is a type of number
       device_interface_id = secondary_connection.value["device_interface_id"]
-      device_uuid         = secondary_connection.value["device_uuid"]
-      name                = secondary_connection.value["name"]
-      port_uuid           = secondary_connection.value["port_uuid"]
-      profile_uuid        = secondary_connection.value["profile_uuid"]
-      seller_metro_code   = secondary_connection.value["seller_metro_code"]
-      seller_region       = secondary_connection.value["seller_region"]
-      speed               = secondary_connection.value["speed"]
-      speed_unit          = secondary_connection.value["speed_unit"]
-      vlan_ctag           = secondary_connection.value["vlan_ctag"]
-      vlan_stag           = secondary_connection.value["vlan_stag"]
+      # device_uuid - (optional) is a type of string
+      device_uuid = secondary_connection.value["device_uuid"]
+      # name - (required) is a type of string
+      name = secondary_connection.value["name"]
+      # port_uuid - (optional) is a type of string
+      port_uuid = secondary_connection.value["port_uuid"]
+      # profile_uuid - (optional) is a type of string
+      profile_uuid = secondary_connection.value["profile_uuid"]
+      # seller_metro_code - (optional) is a type of string
+      seller_metro_code = secondary_connection.value["seller_metro_code"]
+      # seller_region - (optional) is a type of string
+      seller_region = secondary_connection.value["seller_region"]
+      # speed - (optional) is a type of number
+      speed = secondary_connection.value["speed"]
+      # speed_unit - (optional) is a type of string
+      speed_unit = secondary_connection.value["speed_unit"]
+      # vlan_ctag - (optional) is a type of number
+      vlan_ctag = secondary_connection.value["vlan_ctag"]
+      # vlan_stag - (optional) is a type of number
+      vlan_stag = secondary_connection.value["vlan_stag"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
     }
   }

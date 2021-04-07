@@ -96,17 +96,25 @@ variable "site_nodes" {
 
 ```terraform
 data "mso_schema_template_service_graph" "this" {
-  node_index         = var.node_index
-  schema_id          = var.schema_id
+  # node_index - (required) is a type of number
+  node_index = var.node_index
+  # schema_id - (required) is a type of string
+  schema_id = var.schema_id
+  # service_graph_name - (required) is a type of string
   service_graph_name = var.service_graph_name
-  service_node_type  = var.service_node_type
-  template_name      = var.template_name
+  # service_node_type - (optional) is a type of string
+  service_node_type = var.service_node_type
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 
   dynamic "site_nodes" {
     for_each = var.site_nodes
     content {
-      node_name   = site_nodes.value["node_name"]
-      site_id     = site_nodes.value["site_id"]
+      # node_name - (optional) is a type of string
+      node_name = site_nodes.value["node_name"]
+      # site_id - (optional) is a type of string
+      site_id = site_nodes.value["site_id"]
+      # tenant_name - (optional) is a type of string
       tenant_name = site_nodes.value["tenant_name"]
     }
   }

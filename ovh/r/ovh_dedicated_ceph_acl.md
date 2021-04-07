@@ -63,8 +63,11 @@ variable "service_name" {
 
 ```terraform
 resource "ovh_dedicated_ceph_acl" "this" {
-  netmask      = var.netmask
-  network      = var.network
+  # netmask - (required) is a type of string
+  netmask = var.netmask
+  # network - (required) is a type of string
+  network = var.network
+  # service_name - (required) is a type of string
   service_name = var.service_name
 }
 ```

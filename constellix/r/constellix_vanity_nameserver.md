@@ -87,11 +87,17 @@ variable "nameserver_list_string" {
 
 ```terraform
 resource "constellix_vanity_nameserver" "this" {
-  is_default             = var.is_default
-  is_public              = var.is_public
-  name                   = var.name
-  nameserver_group       = var.nameserver_group
-  nameserver_group_name  = var.nameserver_group_name
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # is_public - (optional) is a type of bool
+  is_public = var.is_public
+  # name - (required) is a type of string
+  name = var.name
+  # nameserver_group - (required) is a type of number
+  nameserver_group = var.nameserver_group
+  # nameserver_group_name - (optional) is a type of string
+  nameserver_group_name = var.nameserver_group_name
+  # nameserver_list_string - (required) is a type of string
   nameserver_list_string = var.nameserver_list_string
 }
 ```

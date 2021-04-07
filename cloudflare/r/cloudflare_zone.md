@@ -81,11 +81,16 @@ variable "zone" {
 
 ```terraform
 resource "cloudflare_zone" "this" {
+  # jump_start - (optional) is a type of bool
   jump_start = var.jump_start
-  paused     = var.paused
-  plan       = var.plan
-  type       = var.type
-  zone       = var.zone
+  # paused - (optional) is a type of bool
+  paused = var.paused
+  # plan - (optional) is a type of string
+  plan = var.plan
+  # type - (optional) is a type of string
+  type = var.type
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

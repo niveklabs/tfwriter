@@ -200,26 +200,46 @@ variable "vlanid" {
 
 ```terraform
 resource "fortios_networking_interface_port" "this" {
-  alias                 = var.alias
-  allowaccess           = var.allowaccess
-  defaultgw             = var.defaultgw
-  description           = var.description
+  # alias - (optional) is a type of string
+  alias = var.alias
+  # allowaccess - (optional) is a type of string
+  allowaccess = var.allowaccess
+  # defaultgw - (optional) is a type of string
+  defaultgw = var.defaultgw
+  # description - (optional) is a type of string
+  description = var.description
+  # device_identification - (optional) is a type of string
   device_identification = var.device_identification
-  distance              = var.distance
-  dns_server_override   = var.dns_server_override
-  interface             = var.interface
-  ip                    = var.ip
-  mode                  = var.mode
-  mtu                   = var.mtu
-  mtu_override          = var.mtu_override
-  name                  = var.name
-  role                  = var.role
-  speed                 = var.speed
-  status                = var.status
-  tcp_mss               = var.tcp_mss
-  type                  = var.type
-  vdom                  = var.vdom
-  vlanid                = var.vlanid
+  # distance - (optional) is a type of string
+  distance = var.distance
+  # dns_server_override - (optional) is a type of string
+  dns_server_override = var.dns_server_override
+  # interface - (optional) is a type of string
+  interface = var.interface
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # mtu - (optional) is a type of string
+  mtu = var.mtu
+  # mtu_override - (optional) is a type of string
+  mtu_override = var.mtu_override
+  # name - (required) is a type of string
+  name = var.name
+  # role - (optional) is a type of string
+  role = var.role
+  # speed - (optional) is a type of string
+  speed = var.speed
+  # status - (optional) is a type of string
+  status = var.status
+  # tcp_mss - (optional) is a type of string
+  tcp_mss = var.tcp_mss
+  # type - (required) is a type of string
+  type = var.type
+  # vdom - (optional) is a type of string
+  vdom = var.vdom
+  # vlanid - (optional) is a type of string
+  vlanid = var.vlanid
 }
 ```
 

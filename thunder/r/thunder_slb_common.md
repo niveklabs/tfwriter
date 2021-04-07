@@ -604,66 +604,126 @@ variable "dns_response_rate_limiting" {
 
 ```terraform
 resource "thunder_slb_common" "this" {
-  after_disable                   = var.after_disable
-  auto_nat_no_ip_refresh          = var.auto_nat_no_ip_refresh
-  buff_thresh                     = var.buff_thresh
-  buff_thresh_hw_buff             = var.buff_thresh_hw_buff
-  buff_thresh_relieve_thresh      = var.buff_thresh_relieve_thresh
-  buff_thresh_sys_buff_high       = var.buff_thresh_sys_buff_high
-  buff_thresh_sys_buff_low        = var.buff_thresh_sys_buff_low
-  compress_block_size             = var.compress_block_size
+  # after_disable - (optional) is a type of number
+  after_disable = var.after_disable
+  # auto_nat_no_ip_refresh - (optional) is a type of string
+  auto_nat_no_ip_refresh = var.auto_nat_no_ip_refresh
+  # buff_thresh - (optional) is a type of number
+  buff_thresh = var.buff_thresh
+  # buff_thresh_hw_buff - (optional) is a type of number
+  buff_thresh_hw_buff = var.buff_thresh_hw_buff
+  # buff_thresh_relieve_thresh - (optional) is a type of number
+  buff_thresh_relieve_thresh = var.buff_thresh_relieve_thresh
+  # buff_thresh_sys_buff_high - (optional) is a type of number
+  buff_thresh_sys_buff_high = var.buff_thresh_sys_buff_high
+  # buff_thresh_sys_buff_low - (optional) is a type of number
+  buff_thresh_sys_buff_low = var.buff_thresh_sys_buff_low
+  # compress_block_size - (optional) is a type of number
+  compress_block_size = var.compress_block_size
+  # disable_adaptive_resource_check - (optional) is a type of number
   disable_adaptive_resource_check = var.disable_adaptive_resource_check
-  disable_server_auto_reselect    = var.disable_server_auto_reselect
-  dns_cache_age                   = var.dns_cache_age
-  dns_cache_enable                = var.dns_cache_enable
-  dns_cache_entry_size            = var.dns_cache_entry_size
-  dns_vip_stateless               = var.dns_vip_stateless
-  drop_icmp_to_vip_when_vip_down  = var.drop_icmp_to_vip_when_vip_down
-  dsr_health_check_enable         = var.dsr_health_check_enable
-  enable_l7_req_acct              = var.enable_l7_req_acct
-  entity                          = var.entity
-  exclude_destination             = var.exclude_destination
-  extended_stats                  = var.extended_stats
-  fast_path_disable               = var.fast_path_disable
-  gateway_health_check            = var.gateway_health_check
-  graceful_shutdown               = var.graceful_shutdown
-  graceful_shutdown_enable        = var.graceful_shutdown_enable
-  honor_server_response_ttl       = var.honor_server_response_ttl
-  hw_compression                  = var.hw_compression
-  hw_syn_rr                       = var.hw_syn_rr
-  interval                        = var.interval
-  l2l3_trunk_lb_disable           = var.l2l3_trunk_lb_disable
-  log_for_reset_unknown_conn      = var.log_for_reset_unknown_conn
-  low_latency                     = var.low_latency
-  max_buff_queued_per_conn        = var.max_buff_queued_per_conn
-  max_http_header_count           = var.max_http_header_count
-  max_local_rate                  = var.max_local_rate
-  max_remote_rate                 = var.max_remote_rate
-  msl_time                        = var.msl_time
-  mss_table                       = var.mss_table
-  no_auto_up_on_aflex             = var.no_auto_up_on_aflex
-  override_port                   = var.override_port
+  # disable_server_auto_reselect - (optional) is a type of number
+  disable_server_auto_reselect = var.disable_server_auto_reselect
+  # dns_cache_age - (optional) is a type of number
+  dns_cache_age = var.dns_cache_age
+  # dns_cache_enable - (optional) is a type of number
+  dns_cache_enable = var.dns_cache_enable
+  # dns_cache_entry_size - (optional) is a type of number
+  dns_cache_entry_size = var.dns_cache_entry_size
+  # dns_vip_stateless - (optional) is a type of number
+  dns_vip_stateless = var.dns_vip_stateless
+  # drop_icmp_to_vip_when_vip_down - (optional) is a type of number
+  drop_icmp_to_vip_when_vip_down = var.drop_icmp_to_vip_when_vip_down
+  # dsr_health_check_enable - (optional) is a type of number
+  dsr_health_check_enable = var.dsr_health_check_enable
+  # enable_l7_req_acct - (optional) is a type of number
+  enable_l7_req_acct = var.enable_l7_req_acct
+  # entity - (optional) is a type of string
+  entity = var.entity
+  # exclude_destination - (optional) is a type of string
+  exclude_destination = var.exclude_destination
+  # extended_stats - (optional) is a type of number
+  extended_stats = var.extended_stats
+  # fast_path_disable - (optional) is a type of number
+  fast_path_disable = var.fast_path_disable
+  # gateway_health_check - (optional) is a type of number
+  gateway_health_check = var.gateway_health_check
+  # graceful_shutdown - (optional) is a type of number
+  graceful_shutdown = var.graceful_shutdown
+  # graceful_shutdown_enable - (optional) is a type of number
+  graceful_shutdown_enable = var.graceful_shutdown_enable
+  # honor_server_response_ttl - (optional) is a type of number
+  honor_server_response_ttl = var.honor_server_response_ttl
+  # hw_compression - (optional) is a type of number
+  hw_compression = var.hw_compression
+  # hw_syn_rr - (optional) is a type of number
+  hw_syn_rr = var.hw_syn_rr
+  # interval - (optional) is a type of number
+  interval = var.interval
+  # l2l3_trunk_lb_disable - (optional) is a type of number
+  l2l3_trunk_lb_disable = var.l2l3_trunk_lb_disable
+  # log_for_reset_unknown_conn - (optional) is a type of number
+  log_for_reset_unknown_conn = var.log_for_reset_unknown_conn
+  # low_latency - (optional) is a type of number
+  low_latency = var.low_latency
+  # max_buff_queued_per_conn - (optional) is a type of number
+  max_buff_queued_per_conn = var.max_buff_queued_per_conn
+  # max_http_header_count - (optional) is a type of number
+  max_http_header_count = var.max_http_header_count
+  # max_local_rate - (optional) is a type of number
+  max_local_rate = var.max_local_rate
+  # max_remote_rate - (optional) is a type of number
+  max_remote_rate = var.max_remote_rate
+  # msl_time - (optional) is a type of number
+  msl_time = var.msl_time
+  # mss_table - (optional) is a type of number
+  mss_table = var.mss_table
+  # no_auto_up_on_aflex - (optional) is a type of number
+  no_auto_up_on_aflex = var.no_auto_up_on_aflex
+  # override_port - (optional) is a type of number
+  override_port = var.override_port
+  # pkt_rate_for_reset_unknown_conn - (optional) is a type of number
   pkt_rate_for_reset_unknown_conn = var.pkt_rate_for_reset_unknown_conn
-  player_id_check_enable          = var.player_id_check_enable
-  range                           = var.range
-  range_end                       = var.range_end
-  range_start                     = var.range_start
-  rate_limit_logging              = var.rate_limit_logging
-  reset_stale_session             = var.reset_stale_session
-  resolve_port_conflict           = var.resolve_port_conflict
-  response_type                   = var.response_type
-  scale_out                       = var.scale_out
-  snat_gwy_for_l3                 = var.snat_gwy_for_l3
-  snat_on_vip                     = var.snat_on_vip
-  software                        = var.software
-  sort_res                        = var.sort_res
-  ssli_sni_hash_enable            = var.ssli_sni_hash_enable
-  stateless_sg_multi_binding      = var.stateless_sg_multi_binding
-  stats_data_disable              = var.stats_data_disable
-  timeout                         = var.timeout
-  ttl_threshold                   = var.ttl_threshold
-  use_mss_tab                     = var.use_mss_tab
-  uuid                            = var.uuid
+  # player_id_check_enable - (optional) is a type of number
+  player_id_check_enable = var.player_id_check_enable
+  # range - (optional) is a type of number
+  range = var.range
+  # range_end - (optional) is a type of number
+  range_end = var.range_end
+  # range_start - (optional) is a type of number
+  range_start = var.range_start
+  # rate_limit_logging - (optional) is a type of number
+  rate_limit_logging = var.rate_limit_logging
+  # reset_stale_session - (optional) is a type of number
+  reset_stale_session = var.reset_stale_session
+  # resolve_port_conflict - (optional) is a type of number
+  resolve_port_conflict = var.resolve_port_conflict
+  # response_type - (optional) is a type of string
+  response_type = var.response_type
+  # scale_out - (optional) is a type of number
+  scale_out = var.scale_out
+  # snat_gwy_for_l3 - (optional) is a type of number
+  snat_gwy_for_l3 = var.snat_gwy_for_l3
+  # snat_on_vip - (optional) is a type of number
+  snat_on_vip = var.snat_on_vip
+  # software - (optional) is a type of number
+  software = var.software
+  # sort_res - (optional) is a type of number
+  sort_res = var.sort_res
+  # ssli_sni_hash_enable - (optional) is a type of number
+  ssli_sni_hash_enable = var.ssli_sni_hash_enable
+  # stateless_sg_multi_binding - (optional) is a type of number
+  stateless_sg_multi_binding = var.stateless_sg_multi_binding
+  # stats_data_disable - (optional) is a type of number
+  stats_data_disable = var.stats_data_disable
+  # timeout - (optional) is a type of number
+  timeout = var.timeout
+  # ttl_threshold - (optional) is a type of number
+  ttl_threshold = var.ttl_threshold
+  # use_mss_tab - (optional) is a type of number
+  use_mss_tab = var.use_mss_tab
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "conn_rate_limit" {
     for_each = var.conn_rate_limit
@@ -672,14 +732,22 @@ resource "thunder_slb_common" "this" {
       dynamic "src_ip_list" {
         for_each = conn_rate_limit.value.src_ip_list
         content {
+          # exceed_action - (optional) is a type of number
           exceed_action = src_ip_list.value["exceed_action"]
-          limit         = src_ip_list.value["limit"]
-          limit_period  = src_ip_list.value["limit_period"]
-          lock_out      = src_ip_list.value["lock_out"]
-          log           = src_ip_list.value["log"]
-          protocol      = src_ip_list.value["protocol"]
-          shared        = src_ip_list.value["shared"]
-          uuid          = src_ip_list.value["uuid"]
+          # limit - (optional) is a type of number
+          limit = src_ip_list.value["limit"]
+          # limit_period - (optional) is a type of string
+          limit_period = src_ip_list.value["limit_period"]
+          # lock_out - (optional) is a type of number
+          lock_out = src_ip_list.value["lock_out"]
+          # log - (optional) is a type of number
+          log = src_ip_list.value["log"]
+          # protocol - (optional) is a type of string
+          protocol = src_ip_list.value["protocol"]
+          # shared - (optional) is a type of number
+          shared = src_ip_list.value["shared"]
+          # uuid - (optional) is a type of string
+          uuid = src_ip_list.value["uuid"]
         }
       }
 
@@ -689,11 +757,13 @@ resource "thunder_slb_common" "this" {
   dynamic "ddos_protection" {
     for_each = var.ddos_protection
     content {
+      # ipd_enable_toggle - (optional) is a type of string
       ipd_enable_toggle = ddos_protection.value["ipd_enable_toggle"]
 
       dynamic "logging" {
         for_each = ddos_protection.value.logging
         content {
+          # ipd_logging_toggle - (optional) is a type of string
           ipd_logging_toggle = logging.value["ipd_logging_toggle"]
         }
       }
@@ -701,7 +771,9 @@ resource "thunder_slb_common" "this" {
       dynamic "packets_per_second" {
         for_each = ddos_protection.value.packets_per_second
         content {
+          # ipd_tcp - (optional) is a type of number
           ipd_tcp = packets_per_second.value["ipd_tcp"]
+          # ipd_udp - (optional) is a type of number
           ipd_udp = packets_per_second.value["ipd_udp"]
         }
       }
@@ -712,8 +784,10 @@ resource "thunder_slb_common" "this" {
   dynamic "dns_response_rate_limiting" {
     for_each = var.dns_response_rate_limiting
     content {
+      # max_table_entries - (optional) is a type of number
       max_table_entries = dns_response_rate_limiting.value["max_table_entries"]
-      uuid              = dns_response_rate_limiting.value["uuid"]
+      # uuid - (optional) is a type of string
+      uuid = dns_response_rate_limiting.value["uuid"]
     }
   }
 

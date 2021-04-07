@@ -65,9 +65,12 @@ variable "name" {
 
 ```terraform
 data "prismacloud_compliance_standard_requirement" "this" {
-  cs_id  = var.cs_id
+  # cs_id - (required) is a type of string
+  cs_id = var.cs_id
+  # csr_id - (optional) is a type of string
   csr_id = var.csr_id
-  name   = var.name
+  # name - (optional) is a type of string
+  name = var.name
 }
 ```
 

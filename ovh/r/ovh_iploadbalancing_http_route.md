@@ -90,17 +90,24 @@ variable "action" {
 
 ```terraform
 resource "ovh_iploadbalancing_http_route" "this" {
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  frontend_id  = var.frontend_id
+  # frontend_id - (optional) is a type of number
+  frontend_id = var.frontend_id
+  # service_name - (required) is a type of string
   service_name = var.service_name
-  weight       = var.weight
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "action" {
     for_each = var.action
     content {
+      # status - (optional) is a type of number
       status = action.value["status"]
+      # target - (optional) is a type of string
       target = action.value["target"]
-      type   = action.value["type"]
+      # type - (required) is a type of string
+      type = action.value["type"]
     }
   }
 

@@ -57,7 +57,9 @@ variable "provider_id" {
 
 ```terraform
 resource "okta_factor" "this" {
-  active      = var.active
+  # active - (optional) is a type of bool
+  active = var.active
+  # provider_id - (required) is a type of string
   provider_id = var.provider_id
 }
 ```

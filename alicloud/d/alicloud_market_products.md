@@ -122,15 +122,25 @@ variable "supplier_name_keyword" {
 
 ```terraform
 data "alicloud_market_products" "this" {
-  category_id           = var.category_id
-  ids                   = var.ids
-  name_regex            = var.name_regex
-  output_file           = var.output_file
-  product_type          = var.product_type
-  search_term           = var.search_term
-  sort                  = var.sort
-  suggested_price       = var.suggested_price
-  supplier_id           = var.supplier_id
+  # category_id - (optional) is a type of string
+  category_id = var.category_id
+  # ids - (optional) is a type of list of string
+  ids = var.ids
+  # name_regex - (optional) is a type of string
+  name_regex = var.name_regex
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # product_type - (optional) is a type of string
+  product_type = var.product_type
+  # search_term - (optional) is a type of string
+  search_term = var.search_term
+  # sort - (optional) is a type of string
+  sort = var.sort
+  # suggested_price - (optional) is a type of number
+  suggested_price = var.suggested_price
+  # supplier_id - (optional) is a type of string
+  supplier_id = var.supplier_id
+  # supplier_name_keyword - (optional) is a type of string
   supplier_name_keyword = var.supplier_name_keyword
 }
 ```

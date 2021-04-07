@@ -49,6 +49,7 @@ variable "name" {
 
 ```terraform
 data "fortios_firewallschedule_onetime" "this" {
+  # name - (required) is a type of string
   name = var.name
 }
 ```

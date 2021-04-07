@@ -158,42 +158,62 @@ variable "s3_archive" {
 
 ```terraform
 resource "datadog_logs_archive" "this" {
-  azure            = var.azure
-  gcs              = var.gcs
-  include_tags     = var.include_tags
-  name             = var.name
-  query            = var.query
+  # azure - (optional) is a type of map of string
+  azure = var.azure
+  # gcs - (optional) is a type of map of string
+  gcs = var.gcs
+  # include_tags - (optional) is a type of bool
+  include_tags = var.include_tags
+  # name - (required) is a type of string
+  name = var.name
+  # query - (required) is a type of string
+  query = var.query
+  # rehydration_tags - (optional) is a type of list of string
   rehydration_tags = var.rehydration_tags
-  s3               = var.s3
+  # s3 - (optional) is a type of map of string
+  s3 = var.s3
 
   dynamic "azure_archive" {
     for_each = var.azure_archive
     content {
-      client_id       = azure_archive.value["client_id"]
-      container       = azure_archive.value["container"]
-      path            = azure_archive.value["path"]
+      # client_id - (required) is a type of string
+      client_id = azure_archive.value["client_id"]
+      # container - (required) is a type of string
+      container = azure_archive.value["container"]
+      # path - (optional) is a type of string
+      path = azure_archive.value["path"]
+      # storage_account - (required) is a type of string
       storage_account = azure_archive.value["storage_account"]
-      tenant_id       = azure_archive.value["tenant_id"]
+      # tenant_id - (required) is a type of string
+      tenant_id = azure_archive.value["tenant_id"]
     }
   }
 
   dynamic "gcs_archive" {
     for_each = var.gcs_archive
     content {
-      bucket       = gcs_archive.value["bucket"]
+      # bucket - (required) is a type of string
+      bucket = gcs_archive.value["bucket"]
+      # client_email - (required) is a type of string
       client_email = gcs_archive.value["client_email"]
-      path         = gcs_archive.value["path"]
-      project_id   = gcs_archive.value["project_id"]
+      # path - (required) is a type of string
+      path = gcs_archive.value["path"]
+      # project_id - (required) is a type of string
+      project_id = gcs_archive.value["project_id"]
     }
   }
 
   dynamic "s3_archive" {
     for_each = var.s3_archive
     content {
+      # account_id - (required) is a type of string
       account_id = s3_archive.value["account_id"]
-      bucket     = s3_archive.value["bucket"]
-      path       = s3_archive.value["path"]
-      role_name  = s3_archive.value["role_name"]
+      # bucket - (required) is a type of string
+      bucket = s3_archive.value["bucket"]
+      # path - (required) is a type of string
+      path = s3_archive.value["path"]
+      # role_name - (required) is a type of string
+      role_name = s3_archive.value["role_name"]
     }
   }
 

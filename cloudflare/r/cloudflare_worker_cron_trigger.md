@@ -56,7 +56,9 @@ variable "script_name" {
 
 ```terraform
 resource "cloudflare_worker_cron_trigger" "this" {
-  schedules   = var.schedules
+  # schedules - (required) is a type of set of string
+  schedules = var.schedules
+  # script_name - (required) is a type of string
   script_name = var.script_name
 }
 ```

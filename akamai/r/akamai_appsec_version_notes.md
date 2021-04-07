@@ -63,8 +63,11 @@ variable "version_notes" {
 
 ```terraform
 resource "akamai_appsec_version_notes" "this" {
-  config_id     = var.config_id
-  version       = var.version
+  # config_id - (required) is a type of number
+  config_id = var.config_id
+  # version - (required) is a type of number
+  version = var.version
+  # version_notes - (required) is a type of string
   version_notes = var.version_notes
 }
 ```

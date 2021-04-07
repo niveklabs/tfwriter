@@ -57,8 +57,10 @@ variable "url" {
 
 ```terraform
 data "rancher2_cluster_driver" "this" {
+  # name - (required) is a type of string
   name = var.name
-  url  = var.url
+  # url - (optional) is a type of string
+  url = var.url
 }
 ```
 

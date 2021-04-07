@@ -126,34 +126,53 @@ variable "timeouts" {
 
 ```terraform
 resource "ovh_dedicated_server_install_task" "this" {
-  bootid_on_destroy     = var.bootid_on_destroy
+  # bootid_on_destroy - (optional) is a type of number
+  bootid_on_destroy = var.bootid_on_destroy
+  # partition_scheme_name - (optional) is a type of string
   partition_scheme_name = var.partition_scheme_name
-  service_name          = var.service_name
-  template_name         = var.template_name
+  # service_name - (required) is a type of string
+  service_name = var.service_name
+  # template_name - (required) is a type of string
+  template_name = var.template_name
 
   dynamic "details" {
     for_each = var.details
     content {
-      change_log                      = details.value["change_log"]
-      custom_hostname                 = details.value["custom_hostname"]
-      disk_group_id                   = details.value["disk_group_id"]
-      install_rtm                     = details.value["install_rtm"]
-      install_sql_server              = details.value["install_sql_server"]
-      language                        = details.value["language"]
-      no_raid                         = details.value["no_raid"]
-      post_installation_script_link   = details.value["post_installation_script_link"]
+      # change_log - (optional) is a type of string
+      change_log = details.value["change_log"]
+      # custom_hostname - (optional) is a type of string
+      custom_hostname = details.value["custom_hostname"]
+      # disk_group_id - (optional) is a type of number
+      disk_group_id = details.value["disk_group_id"]
+      # install_rtm - (optional) is a type of bool
+      install_rtm = details.value["install_rtm"]
+      # install_sql_server - (optional) is a type of bool
+      install_sql_server = details.value["install_sql_server"]
+      # language - (optional) is a type of string
+      language = details.value["language"]
+      # no_raid - (optional) is a type of bool
+      no_raid = details.value["no_raid"]
+      # post_installation_script_link - (optional) is a type of string
+      post_installation_script_link = details.value["post_installation_script_link"]
+      # post_installation_script_return - (optional) is a type of string
       post_installation_script_return = details.value["post_installation_script_return"]
-      reset_hw_raid                   = details.value["reset_hw_raid"]
-      soft_raid_devices               = details.value["soft_raid_devices"]
-      ssh_key_name                    = details.value["ssh_key_name"]
-      use_distrib_kernel              = details.value["use_distrib_kernel"]
-      use_spla                        = details.value["use_spla"]
+      # reset_hw_raid - (optional) is a type of bool
+      reset_hw_raid = details.value["reset_hw_raid"]
+      # soft_raid_devices - (optional) is a type of number
+      soft_raid_devices = details.value["soft_raid_devices"]
+      # ssh_key_name - (optional) is a type of string
+      ssh_key_name = details.value["ssh_key_name"]
+      # use_distrib_kernel - (optional) is a type of bool
+      use_distrib_kernel = details.value["use_distrib_kernel"]
+      # use_spla - (optional) is a type of bool
+      use_spla = details.value["use_spla"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
     }
   }

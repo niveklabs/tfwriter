@@ -124,21 +124,33 @@ variable "timeouts" {
 
 ```terraform
 resource "exoscale_network" "this" {
-  display_text     = var.display_text
-  end_ip           = var.end_ip
-  name             = var.name
-  netmask          = var.netmask
+  # display_text - (optional) is a type of string
+  display_text = var.display_text
+  # end_ip - (optional) is a type of string
+  end_ip = var.end_ip
+  # name - (required) is a type of string
+  name = var.name
+  # netmask - (optional) is a type of string
+  netmask = var.netmask
+  # network_offering - (optional) is a type of string
   network_offering = var.network_offering
-  start_ip         = var.start_ip
-  tags             = var.tags
-  zone             = var.zone
+  # start_ip - (optional) is a type of string
+  start_ip = var.start_ip
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone - (required) is a type of string
+  zone = var.zone
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
-      read   = timeouts.value["read"]
+      # read - (optional) is a type of string
+      read = timeouts.value["read"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

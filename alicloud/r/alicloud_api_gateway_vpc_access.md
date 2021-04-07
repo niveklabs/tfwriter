@@ -70,10 +70,14 @@ variable "vpc_id" {
 
 ```terraform
 resource "alicloud_api_gateway_vpc_access" "this" {
+  # instance_id - (required) is a type of string
   instance_id = var.instance_id
-  name        = var.name
-  port        = var.port
-  vpc_id      = var.vpc_id
+  # name - (required) is a type of string
+  name = var.name
+  # port - (required) is a type of number
+  port = var.port
+  # vpc_id - (required) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

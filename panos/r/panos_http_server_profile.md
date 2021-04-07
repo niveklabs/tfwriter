@@ -402,17 +402,25 @@ variable "wildfire_format" {
 
 ```terraform
 resource "panos_http_server_profile" "this" {
-  name             = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # tag_registration - (optional) is a type of bool
   tag_registration = var.tag_registration
-  vsys             = var.vsys
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 
   dynamic "auth_format" {
     for_each = var.auth_format
     content {
-      headers    = auth_format.value["headers"]
-      name       = auth_format.value["name"]
-      params     = auth_format.value["params"]
-      payload    = auth_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = auth_format.value["headers"]
+      # name - (optional) is a type of string
+      name = auth_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = auth_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = auth_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = auth_format.value["uri_format"]
     }
   }
@@ -420,10 +428,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "config_format" {
     for_each = var.config_format
     content {
-      headers    = config_format.value["headers"]
-      name       = config_format.value["name"]
-      params     = config_format.value["params"]
-      payload    = config_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = config_format.value["headers"]
+      # name - (optional) is a type of string
+      name = config_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = config_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = config_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = config_format.value["uri_format"]
     }
   }
@@ -431,10 +444,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "data_format" {
     for_each = var.data_format
     content {
-      headers    = data_format.value["headers"]
-      name       = data_format.value["name"]
-      params     = data_format.value["params"]
-      payload    = data_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = data_format.value["headers"]
+      # name - (optional) is a type of string
+      name = data_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = data_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = data_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = data_format.value["uri_format"]
     }
   }
@@ -442,10 +460,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "gtp_format" {
     for_each = var.gtp_format
     content {
-      headers    = gtp_format.value["headers"]
-      name       = gtp_format.value["name"]
-      params     = gtp_format.value["params"]
-      payload    = gtp_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = gtp_format.value["headers"]
+      # name - (optional) is a type of string
+      name = gtp_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = gtp_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = gtp_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = gtp_format.value["uri_format"]
     }
   }
@@ -453,10 +476,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "hip_match_format" {
     for_each = var.hip_match_format
     content {
-      headers    = hip_match_format.value["headers"]
-      name       = hip_match_format.value["name"]
-      params     = hip_match_format.value["params"]
-      payload    = hip_match_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = hip_match_format.value["headers"]
+      # name - (optional) is a type of string
+      name = hip_match_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = hip_match_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = hip_match_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = hip_match_format.value["uri_format"]
     }
   }
@@ -464,25 +492,39 @@ resource "panos_http_server_profile" "this" {
   dynamic "http_server" {
     for_each = var.http_server
     content {
-      address             = http_server.value["address"]
+      # address - (required) is a type of string
+      address = http_server.value["address"]
+      # certificate_profile - (optional) is a type of string
       certificate_profile = http_server.value["certificate_profile"]
-      http_method         = http_server.value["http_method"]
-      name                = http_server.value["name"]
-      password            = http_server.value["password"]
-      port                = http_server.value["port"]
-      protocol            = http_server.value["protocol"]
-      tls_version         = http_server.value["tls_version"]
-      username            = http_server.value["username"]
+      # http_method - (optional) is a type of string
+      http_method = http_server.value["http_method"]
+      # name - (required) is a type of string
+      name = http_server.value["name"]
+      # password - (optional) is a type of string
+      password = http_server.value["password"]
+      # port - (optional) is a type of number
+      port = http_server.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = http_server.value["protocol"]
+      # tls_version - (optional) is a type of string
+      tls_version = http_server.value["tls_version"]
+      # username - (optional) is a type of string
+      username = http_server.value["username"]
     }
   }
 
   dynamic "iptag_format" {
     for_each = var.iptag_format
     content {
-      headers    = iptag_format.value["headers"]
-      name       = iptag_format.value["name"]
-      params     = iptag_format.value["params"]
-      payload    = iptag_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = iptag_format.value["headers"]
+      # name - (optional) is a type of string
+      name = iptag_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = iptag_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = iptag_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = iptag_format.value["uri_format"]
     }
   }
@@ -490,10 +532,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "sctp_format" {
     for_each = var.sctp_format
     content {
-      headers    = sctp_format.value["headers"]
-      name       = sctp_format.value["name"]
-      params     = sctp_format.value["params"]
-      payload    = sctp_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = sctp_format.value["headers"]
+      # name - (optional) is a type of string
+      name = sctp_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = sctp_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = sctp_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = sctp_format.value["uri_format"]
     }
   }
@@ -501,10 +548,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "system_format" {
     for_each = var.system_format
     content {
-      headers    = system_format.value["headers"]
-      name       = system_format.value["name"]
-      params     = system_format.value["params"]
-      payload    = system_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = system_format.value["headers"]
+      # name - (optional) is a type of string
+      name = system_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = system_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = system_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = system_format.value["uri_format"]
     }
   }
@@ -512,10 +564,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "threat_format" {
     for_each = var.threat_format
     content {
-      headers    = threat_format.value["headers"]
-      name       = threat_format.value["name"]
-      params     = threat_format.value["params"]
-      payload    = threat_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = threat_format.value["headers"]
+      # name - (optional) is a type of string
+      name = threat_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = threat_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = threat_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = threat_format.value["uri_format"]
     }
   }
@@ -523,10 +580,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "traffic_format" {
     for_each = var.traffic_format
     content {
-      headers    = traffic_format.value["headers"]
-      name       = traffic_format.value["name"]
-      params     = traffic_format.value["params"]
-      payload    = traffic_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = traffic_format.value["headers"]
+      # name - (optional) is a type of string
+      name = traffic_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = traffic_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = traffic_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = traffic_format.value["uri_format"]
     }
   }
@@ -534,10 +596,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "tunnel_format" {
     for_each = var.tunnel_format
     content {
-      headers    = tunnel_format.value["headers"]
-      name       = tunnel_format.value["name"]
-      params     = tunnel_format.value["params"]
-      payload    = tunnel_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = tunnel_format.value["headers"]
+      # name - (optional) is a type of string
+      name = tunnel_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = tunnel_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = tunnel_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = tunnel_format.value["uri_format"]
     }
   }
@@ -545,10 +612,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "url_format" {
     for_each = var.url_format
     content {
-      headers    = url_format.value["headers"]
-      name       = url_format.value["name"]
-      params     = url_format.value["params"]
-      payload    = url_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = url_format.value["headers"]
+      # name - (optional) is a type of string
+      name = url_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = url_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = url_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = url_format.value["uri_format"]
     }
   }
@@ -556,10 +628,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "user_id_format" {
     for_each = var.user_id_format
     content {
-      headers    = user_id_format.value["headers"]
-      name       = user_id_format.value["name"]
-      params     = user_id_format.value["params"]
-      payload    = user_id_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = user_id_format.value["headers"]
+      # name - (optional) is a type of string
+      name = user_id_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = user_id_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = user_id_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = user_id_format.value["uri_format"]
     }
   }
@@ -567,10 +644,15 @@ resource "panos_http_server_profile" "this" {
   dynamic "wildfire_format" {
     for_each = var.wildfire_format
     content {
-      headers    = wildfire_format.value["headers"]
-      name       = wildfire_format.value["name"]
-      params     = wildfire_format.value["params"]
-      payload    = wildfire_format.value["payload"]
+      # headers - (optional) is a type of map of string
+      headers = wildfire_format.value["headers"]
+      # name - (optional) is a type of string
+      name = wildfire_format.value["name"]
+      # params - (optional) is a type of map of string
+      params = wildfire_format.value["params"]
+      # payload - (optional) is a type of string
+      payload = wildfire_format.value["payload"]
+      # uri_format - (optional) is a type of string
       uri_format = wildfire_format.value["uri_format"]
     }
   }

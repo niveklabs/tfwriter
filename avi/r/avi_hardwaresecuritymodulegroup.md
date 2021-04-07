@@ -184,38 +184,53 @@ variable "hsm" {
 
 ```terraform
 resource "avi_hardwaresecuritymodulegroup" "this" {
-  name       = var.name
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_ref - (optional) is a type of string
   tenant_ref = var.tenant_ref
-  uuid       = var.uuid
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "hsm" {
     for_each = var.hsm
     content {
+      # type - (required) is a type of string
       type = hsm.value["type"]
 
       dynamic "cloudhsm" {
         for_each = hsm.value.cloudhsm
         content {
-          cluster_cert         = cloudhsm.value["cluster_cert"]
-          crypto_user_name     = cloudhsm.value["crypto_user_name"]
+          # cluster_cert - (optional) is a type of string
+          cluster_cert = cloudhsm.value["cluster_cert"]
+          # crypto_user_name - (optional) is a type of string
+          crypto_user_name = cloudhsm.value["crypto_user_name"]
+          # crypto_user_password - (optional) is a type of string
           crypto_user_password = cloudhsm.value["crypto_user_password"]
-          hsm_ip               = cloudhsm.value["hsm_ip"]
+          # hsm_ip - (optional) is a type of list of string
+          hsm_ip = cloudhsm.value["hsm_ip"]
         }
       }
 
       dynamic "nethsm" {
         for_each = hsm.value.nethsm
         content {
-          esn         = nethsm.value["esn"]
-          keyhash     = nethsm.value["keyhash"]
-          module_id   = nethsm.value["module_id"]
-          priority    = nethsm.value["priority"]
+          # esn - (required) is a type of string
+          esn = nethsm.value["esn"]
+          # keyhash - (required) is a type of string
+          keyhash = nethsm.value["keyhash"]
+          # module_id - (optional) is a type of number
+          module_id = nethsm.value["module_id"]
+          # priority - (required) is a type of number
+          priority = nethsm.value["priority"]
+          # remote_port - (optional) is a type of number
           remote_port = nethsm.value["remote_port"]
 
           dynamic "remote_ip" {
             for_each = nethsm.value.remote_ip
             content {
+              # addr - (required) is a type of string
               addr = remote_ip.value["addr"]
+              # type - (required) is a type of string
               type = remote_ip.value["type"]
             }
           }
@@ -226,12 +241,15 @@ resource "avi_hardwaresecuritymodulegroup" "this" {
       dynamic "rfs" {
         for_each = hsm.value.rfs
         content {
+          # port - (optional) is a type of number
           port = rfs.value["port"]
 
           dynamic "ip" {
             for_each = rfs.value.ip
             content {
+              # addr - (required) is a type of string
               addr = ip.value["addr"]
+              # type - (required) is a type of string
               type = ip.value["type"]
             }
           }
@@ -242,19 +260,29 @@ resource "avi_hardwaresecuritymodulegroup" "this" {
       dynamic "sluna" {
         for_each = hsm.value.sluna
         content {
-          ha_group_num          = sluna.value["ha_group_num"]
-          is_ha                 = sluna.value["is_ha"]
-          server_pem            = sluna.value["server_pem"]
+          # ha_group_num - (optional) is a type of number
+          ha_group_num = sluna.value["ha_group_num"]
+          # is_ha - (required) is a type of bool
+          is_ha = sluna.value["is_ha"]
+          # server_pem - (optional) is a type of string
+          server_pem = sluna.value["server_pem"]
+          # use_dedicated_network - (optional) is a type of bool
           use_dedicated_network = sluna.value["use_dedicated_network"]
 
           dynamic "node_info" {
             for_each = sluna.value.node_info
             content {
-              chrystoki_conf       = node_info.value["chrystoki_conf"]
-              client_cert          = node_info.value["client_cert"]
-              client_ip            = node_info.value["client_ip"]
-              client_priv_key      = node_info.value["client_priv_key"]
+              # chrystoki_conf - (optional) is a type of string
+              chrystoki_conf = node_info.value["chrystoki_conf"]
+              # client_cert - (optional) is a type of string
+              client_cert = node_info.value["client_cert"]
+              # client_ip - (required) is a type of string
+              client_ip = node_info.value["client_ip"]
+              # client_priv_key - (optional) is a type of string
+              client_priv_key = node_info.value["client_priv_key"]
+              # session_major_number - (optional) is a type of number
               session_major_number = node_info.value["session_major_number"]
+              # session_minor_number - (optional) is a type of number
               session_minor_number = node_info.value["session_minor_number"]
             }
           }
@@ -262,11 +290,16 @@ resource "avi_hardwaresecuritymodulegroup" "this" {
           dynamic "server" {
             for_each = sluna.value.server
             content {
-              index                   = server.value["index"]
-              partition_passwd        = server.value["partition_passwd"]
+              # index - (optional) is a type of number
+              index = server.value["index"]
+              # partition_passwd - (optional) is a type of string
+              partition_passwd = server.value["partition_passwd"]
+              # partition_serial_number - (optional) is a type of string
               partition_serial_number = server.value["partition_serial_number"]
-              remote_ip               = server.value["remote_ip"]
-              server_cert             = server.value["server_cert"]
+              # remote_ip - (required) is a type of string
+              remote_ip = server.value["remote_ip"]
+              # server_cert - (required) is a type of string
+              server_cert = server.value["server_cert"]
             }
           }
 

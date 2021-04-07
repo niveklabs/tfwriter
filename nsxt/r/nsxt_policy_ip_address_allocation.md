@@ -96,17 +96,24 @@ variable "tag" {
 
 ```terraform
 resource "nsxt_policy_ip_address_allocation" "this" {
+  # allocation_ip - (optional) is a type of string
   allocation_ip = var.allocation_ip
-  description   = var.description
-  display_name  = var.display_name
-  nsx_id        = var.nsx_id
-  pool_path     = var.pool_path
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (required) is a type of string
+  display_name = var.display_name
+  # nsx_id - (optional) is a type of string
+  nsx_id = var.nsx_id
+  # pool_path - (required) is a type of string
+  pool_path = var.pool_path
 
   dynamic "tag" {
     for_each = var.tag
     content {
+      # scope - (optional) is a type of string
       scope = tag.value["scope"]
-      tag   = tag.value["tag"]
+      # tag - (optional) is a type of string
+      tag = tag.value["tag"]
     }
   }
 

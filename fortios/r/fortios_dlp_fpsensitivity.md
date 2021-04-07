@@ -50,6 +50,7 @@ variable "name" {
 
 ```terraform
 resource "fortios_dlp_fpsensitivity" "this" {
+  # name - (optional) is a type of string
   name = var.name
 }
 ```

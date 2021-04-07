@@ -58,7 +58,9 @@ variable "output_file" {
 
 ```terraform
 data "alicloud_elasticsearch_zones" "this" {
-  multi       = var.multi
+  # multi - (optional) is a type of bool
+  multi = var.multi
+  # output_file - (optional) is a type of string
   output_file = var.output_file
 }
 ```

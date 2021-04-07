@@ -90,12 +90,18 @@ variable "tags" {
 
 ```terraform
 data "tencentcloud_gaap_proxies" "this" {
-  access_region      = var.access_region
-  ids                = var.ids
-  project_id         = var.project_id
-  realserver_region  = var.realserver_region
+  # access_region - (optional) is a type of string
+  access_region = var.access_region
+  # ids - (optional) is a type of set of string
+  ids = var.ids
+  # project_id - (optional) is a type of number
+  project_id = var.project_id
+  # realserver_region - (optional) is a type of string
+  realserver_region = var.realserver_region
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  tags               = var.tags
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

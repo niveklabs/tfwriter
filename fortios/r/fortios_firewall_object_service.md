@@ -143,19 +143,32 @@ variable "udp_portrange" {
 
 ```terraform
 resource "fortios_firewall_object_service" "this" {
-  category        = var.category
-  comment         = var.comment
-  fqdn            = var.fqdn
-  icmpcode        = var.icmpcode
-  icmptype        = var.icmptype
-  iprange         = var.iprange
-  name            = var.name
-  protocol        = var.protocol
+  # category - (required) is a type of string
+  category = var.category
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # fqdn - (optional) is a type of string
+  fqdn = var.fqdn
+  # icmpcode - (optional) is a type of string
+  icmpcode = var.icmpcode
+  # icmptype - (optional) is a type of string
+  icmptype = var.icmptype
+  # iprange - (optional) is a type of string
+  iprange = var.iprange
+  # name - (required) is a type of string
+  name = var.name
+  # protocol - (required) is a type of string
+  protocol = var.protocol
+  # protocol_number - (optional) is a type of string
   protocol_number = var.protocol_number
-  sctp_portrange  = var.sctp_portrange
-  session_ttl     = var.session_ttl
-  tcp_portrange   = var.tcp_portrange
-  udp_portrange   = var.udp_portrange
+  # sctp_portrange - (optional) is a type of string
+  sctp_portrange = var.sctp_portrange
+  # session_ttl - (optional) is a type of string
+  session_ttl = var.session_ttl
+  # tcp_portrange - (optional) is a type of string
+  tcp_portrange = var.tcp_portrange
+  # udp_portrange - (optional) is a type of string
+  udp_portrange = var.udp_portrange
 }
 ```
 

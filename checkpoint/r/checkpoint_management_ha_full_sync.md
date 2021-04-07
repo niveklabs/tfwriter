@@ -58,8 +58,10 @@ variable "uid" {
 
 ```terraform
 resource "checkpoint_management_ha_full_sync" "this" {
+  # name - (optional) is a type of string
   name = var.name
-  uid  = var.uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

@@ -64,9 +64,12 @@ variable "uri" {
 
 ```terraform
 resource "avi_fileservice" "this" {
+  # local_file - (required) is a type of string
   local_file = var.local_file
-  upload     = var.upload
-  uri        = var.uri
+  # upload - (optional) is a type of bool
+  upload = var.upload
+  # uri - (required) is a type of string
+  uri = var.uri
 }
 ```
 

@@ -385,28 +385,47 @@ variable "supplemental_group" {
 
 ```terraform
 data "rancher2_pod_security_policy_template" "this" {
-  allow_privilege_escalation         = var.allow_privilege_escalation
-  allowed_capabilities               = var.allowed_capabilities
-  allowed_proc_mount_types           = var.allowed_proc_mount_types
-  allowed_unsafe_sysctls             = var.allowed_unsafe_sysctls
-  annotations                        = var.annotations
-  default_add_capabilities           = var.default_add_capabilities
+  # allow_privilege_escalation - (optional) is a type of bool
+  allow_privilege_escalation = var.allow_privilege_escalation
+  # allowed_capabilities - (optional) is a type of list of string
+  allowed_capabilities = var.allowed_capabilities
+  # allowed_proc_mount_types - (optional) is a type of list of string
+  allowed_proc_mount_types = var.allowed_proc_mount_types
+  # allowed_unsafe_sysctls - (optional) is a type of list of string
+  allowed_unsafe_sysctls = var.allowed_unsafe_sysctls
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # default_add_capabilities - (optional) is a type of list of string
+  default_add_capabilities = var.default_add_capabilities
+  # default_allow_privilege_escalation - (optional) is a type of bool
   default_allow_privilege_escalation = var.default_allow_privilege_escalation
-  description                        = var.description
-  forbidden_sysctls                  = var.forbidden_sysctls
-  host_ipc                           = var.host_ipc
-  host_network                       = var.host_network
-  host_pid                           = var.host_pid
-  labels                             = var.labels
-  name                               = var.name
-  privileged                         = var.privileged
-  read_only_root_filesystem          = var.read_only_root_filesystem
-  required_drop_capabilities         = var.required_drop_capabilities
-  volumes                            = var.volumes
+  # description - (optional) is a type of string
+  description = var.description
+  # forbidden_sysctls - (optional) is a type of list of string
+  forbidden_sysctls = var.forbidden_sysctls
+  # host_ipc - (optional) is a type of bool
+  host_ipc = var.host_ipc
+  # host_network - (optional) is a type of bool
+  host_network = var.host_network
+  # host_pid - (optional) is a type of bool
+  host_pid = var.host_pid
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # privileged - (optional) is a type of bool
+  privileged = var.privileged
+  # read_only_root_filesystem - (optional) is a type of bool
+  read_only_root_filesystem = var.read_only_root_filesystem
+  # required_drop_capabilities - (optional) is a type of list of string
+  required_drop_capabilities = var.required_drop_capabilities
+  # volumes - (optional) is a type of list of string
+  volumes = var.volumes
 
   dynamic "allowed_csi_driver" {
     for_each = var.allowed_csi_driver
     content {
+      # name - (required) is a type of string
       name = allowed_csi_driver.value["name"]
     }
   }
@@ -414,6 +433,7 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "allowed_flex_volume" {
     for_each = var.allowed_flex_volume
     content {
+      # driver - (required) is a type of string
       driver = allowed_flex_volume.value["driver"]
     }
   }
@@ -421,20 +441,25 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "allowed_host_path" {
     for_each = var.allowed_host_path
     content {
+      # path_prefix - (required) is a type of string
       path_prefix = allowed_host_path.value["path_prefix"]
-      read_only   = allowed_host_path.value["read_only"]
+      # read_only - (optional) is a type of bool
+      read_only = allowed_host_path.value["read_only"]
     }
   }
 
   dynamic "fs_group" {
     for_each = var.fs_group
     content {
+      # rule - (optional) is a type of string
       rule = fs_group.value["rule"]
 
       dynamic "range" {
         for_each = fs_group.value.range
         content {
+          # max - (required) is a type of number
           max = range.value["max"]
+          # min - (required) is a type of number
           min = range.value["min"]
         }
       }
@@ -445,7 +470,9 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "host_port" {
     for_each = var.host_port
     content {
+      # max - (required) is a type of number
       max = host_port.value["max"]
+      # min - (required) is a type of number
       min = host_port.value["min"]
     }
   }
@@ -453,12 +480,15 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "run_as_group" {
     for_each = var.run_as_group
     content {
+      # rule - (required) is a type of string
       rule = run_as_group.value["rule"]
 
       dynamic "range" {
         for_each = run_as_group.value.range
         content {
+          # max - (required) is a type of number
           max = range.value["max"]
+          # min - (required) is a type of number
           min = range.value["min"]
         }
       }
@@ -469,12 +499,15 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "run_as_user" {
     for_each = var.run_as_user
     content {
+      # rule - (required) is a type of string
       rule = run_as_user.value["rule"]
 
       dynamic "range" {
         for_each = run_as_user.value.range
         content {
+          # max - (required) is a type of number
           max = range.value["max"]
+          # min - (required) is a type of number
           min = range.value["min"]
         }
       }
@@ -485,23 +518,30 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "runtime_class" {
     for_each = var.runtime_class
     content {
+      # allowed_runtime_class_names - (required) is a type of list of string
       allowed_runtime_class_names = runtime_class.value["allowed_runtime_class_names"]
-      default_runtime_class_name  = runtime_class.value["default_runtime_class_name"]
+      # default_runtime_class_name - (optional) is a type of string
+      default_runtime_class_name = runtime_class.value["default_runtime_class_name"]
     }
   }
 
   dynamic "se_linux" {
     for_each = var.se_linux
     content {
+      # rule - (required) is a type of string
       rule = se_linux.value["rule"]
 
       dynamic "se_linux_option" {
         for_each = se_linux.value.se_linux_option
         content {
+          # level - (optional) is a type of string
           level = se_linux_option.value["level"]
-          role  = se_linux_option.value["role"]
-          type  = se_linux_option.value["type"]
-          user  = se_linux_option.value["user"]
+          # role - (optional) is a type of string
+          role = se_linux_option.value["role"]
+          # type - (optional) is a type of string
+          type = se_linux_option.value["type"]
+          # user - (optional) is a type of string
+          user = se_linux_option.value["user"]
         }
       }
 
@@ -511,12 +551,15 @@ data "rancher2_pod_security_policy_template" "this" {
   dynamic "supplemental_group" {
     for_each = var.supplemental_group
     content {
+      # rule - (optional) is a type of string
       rule = supplemental_group.value["rule"]
 
       dynamic "range" {
         for_each = supplemental_group.value.range
         content {
+          # max - (required) is a type of number
           max = range.value["max"]
+          # min - (required) is a type of number
           min = range.value["min"]
         }
       }

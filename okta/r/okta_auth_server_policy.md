@@ -93,13 +93,20 @@ variable "type" {
 
 ```terraform
 resource "okta_auth_server_policy" "this" {
-  auth_server_id   = var.auth_server_id
+  # auth_server_id - (required) is a type of string
+  auth_server_id = var.auth_server_id
+  # client_whitelist - (required) is a type of set of string
   client_whitelist = var.client_whitelist
-  description      = var.description
-  name             = var.name
-  priority         = var.priority
-  status           = var.status
-  type             = var.type
+  # description - (required) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (required) is a type of number
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

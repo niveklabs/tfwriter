@@ -101,30 +101,45 @@ variable "ingress" {
 
 ```terraform
 resource "alicloud_network_acl_entries" "this" {
+  # network_acl_id - (required) is a type of string
   network_acl_id = var.network_acl_id
 
   dynamic "egress" {
     for_each = var.egress
     content {
-      description         = egress.value["description"]
+      # description - (optional) is a type of string
+      description = egress.value["description"]
+      # destination_cidr_ip - (optional) is a type of string
       destination_cidr_ip = egress.value["destination_cidr_ip"]
-      entry_type          = egress.value["entry_type"]
-      name                = egress.value["name"]
-      policy              = egress.value["policy"]
-      port                = egress.value["port"]
-      protocol            = egress.value["protocol"]
+      # entry_type - (optional) is a type of string
+      entry_type = egress.value["entry_type"]
+      # name - (optional) is a type of string
+      name = egress.value["name"]
+      # policy - (optional) is a type of string
+      policy = egress.value["policy"]
+      # port - (optional) is a type of string
+      port = egress.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = egress.value["protocol"]
     }
   }
 
   dynamic "ingress" {
     for_each = var.ingress
     content {
-      description    = ingress.value["description"]
-      entry_type     = ingress.value["entry_type"]
-      name           = ingress.value["name"]
-      policy         = ingress.value["policy"]
-      port           = ingress.value["port"]
-      protocol       = ingress.value["protocol"]
+      # description - (optional) is a type of string
+      description = ingress.value["description"]
+      # entry_type - (optional) is a type of string
+      entry_type = ingress.value["entry_type"]
+      # name - (optional) is a type of string
+      name = ingress.value["name"]
+      # policy - (optional) is a type of string
+      policy = ingress.value["policy"]
+      # port - (optional) is a type of string
+      port = ingress.value["port"]
+      # protocol - (optional) is a type of string
+      protocol = ingress.value["protocol"]
+      # source_cidr_ip - (optional) is a type of string
       source_cidr_ip = ingress.value["source_cidr_ip"]
     }
   }

@@ -70,10 +70,14 @@ variable "privilege" {
 
 ```terraform
 resource "tencentcloud_sqlserver_account_db_attachment" "this" {
+  # account_name - (required) is a type of string
   account_name = var.account_name
-  db_name      = var.db_name
-  instance_id  = var.instance_id
-  privilege    = var.privilege
+  # db_name - (required) is a type of string
+  db_name = var.db_name
+  # instance_id - (required) is a type of string
+  instance_id = var.instance_id
+  # privilege - (required) is a type of string
+  privilege = var.privilege
 }
 ```
 

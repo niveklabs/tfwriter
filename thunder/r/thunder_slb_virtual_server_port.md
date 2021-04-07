@@ -1422,205 +1422,389 @@ variable "sampling_enable" {
 
 ```terraform
 resource "thunder_slb_virtual_server_port" "this" {
-  action                                           = var.action
-  alt_protocol1                                    = var.alt_protocol1
-  alt_protocol2                                    = var.alt_protocol2
-  alternate_port                                   = var.alternate_port
-  alternate_port_number                            = var.alternate_port_number
-  auto                                             = var.auto
-  clientip_sticky_nat                              = var.clientip_sticky_nat
-  conn_limit                                       = var.conn_limit
-  cpu_compute                                      = var.cpu_compute
-  def_selection_if_pref_failed                     = var.def_selection_if_pref_failed
-  enable_playerid_check                            = var.enable_playerid_check
-  eth_fwd                                          = var.eth_fwd
-  eth_rev                                          = var.eth_rev
-  expand                                           = var.expand
-  extended_stats                                   = var.extended_stats
-  force_routing_mode                               = var.force_routing_mode
-  gslb_enable                                      = var.gslb_enable
-  gtp_session_lb                                   = var.gtp_session_lb
-  ha_conn_mirror                                   = var.ha_conn_mirror
-  ignore_global                                    = var.ignore_global
-  ip_map_list                                      = var.ip_map_list
-  ipinip                                           = var.ipinip
-  l7_hardware_assist                               = var.l7_hardware_assist
-  memory_compute                                   = var.memory_compute
-  message_switching                                = var.message_switching
-  name                                             = var.name
-  no_auto_up_on_aflex                              = var.no_auto_up_on_aflex
-  no_dest_nat                                      = var.no_dest_nat
-  no_logging                                       = var.no_logging
-  on_syn                                           = var.on_syn
-  optimization_level                               = var.optimization_level
-  p_template_sip_shared                            = var.p_template_sip_shared
-  persist_type                                     = var.persist_type
-  pool                                             = var.pool
-  pool_shared                                      = var.pool_shared
-  port_number                                      = var.port_number
-  port_translation                                 = var.port_translation
-  precedence                                       = var.precedence
-  protocol                                         = var.protocol
-  range                                            = var.range
-  rate                                             = var.rate
-  redirect_to_https                                = var.redirect_to_https
-  req_fail                                         = var.req_fail
-  reset                                            = var.reset
-  reset_on_server_selection_fail                   = var.reset_on_server_selection_fail
-  rtp_sip_call_id_match                            = var.rtp_sip_call_id_match
-  scaleout_bucket_count                            = var.scaleout_bucket_count
-  scaleout_device_group                            = var.scaleout_device_group
-  secs                                             = var.secs
-  serv_sel_fail                                    = var.serv_sel_fail
-  service_group                                    = var.service_group
-  shared_partition_cache_template                  = var.shared_partition_cache_template
-  shared_partition_client_ssl_template             = var.shared_partition_client_ssl_template
-  shared_partition_connection_reuse_template       = var.shared_partition_connection_reuse_template
-  shared_partition_dblb_template                   = var.shared_partition_dblb_template
-  shared_partition_diameter_template               = var.shared_partition_diameter_template
-  shared_partition_dns_template                    = var.shared_partition_dns_template
-  shared_partition_doh_template                    = var.shared_partition_doh_template
-  shared_partition_dynamic_service_template        = var.shared_partition_dynamic_service_template
-  shared_partition_external_service_template       = var.shared_partition_external_service_template
-  shared_partition_fix_template                    = var.shared_partition_fix_template
-  shared_partition_http_policy_template            = var.shared_partition_http_policy_template
-  shared_partition_http_template                   = var.shared_partition_http_template
-  shared_partition_imap_pop3_template              = var.shared_partition_imap_pop3_template
-  shared_partition_persist_cookie_template         = var.shared_partition_persist_cookie_template
+  # action - (optional) is a type of string
+  action = var.action
+  # alt_protocol1 - (optional) is a type of string
+  alt_protocol1 = var.alt_protocol1
+  # alt_protocol2 - (optional) is a type of string
+  alt_protocol2 = var.alt_protocol2
+  # alternate_port - (optional) is a type of number
+  alternate_port = var.alternate_port
+  # alternate_port_number - (optional) is a type of number
+  alternate_port_number = var.alternate_port_number
+  # auto - (optional) is a type of number
+  auto = var.auto
+  # clientip_sticky_nat - (optional) is a type of number
+  clientip_sticky_nat = var.clientip_sticky_nat
+  # conn_limit - (optional) is a type of number
+  conn_limit = var.conn_limit
+  # cpu_compute - (optional) is a type of number
+  cpu_compute = var.cpu_compute
+  # def_selection_if_pref_failed - (optional) is a type of string
+  def_selection_if_pref_failed = var.def_selection_if_pref_failed
+  # enable_playerid_check - (optional) is a type of number
+  enable_playerid_check = var.enable_playerid_check
+  # eth_fwd - (optional) is a type of number
+  eth_fwd = var.eth_fwd
+  # eth_rev - (optional) is a type of number
+  eth_rev = var.eth_rev
+  # expand - (optional) is a type of number
+  expand = var.expand
+  # extended_stats - (optional) is a type of number
+  extended_stats = var.extended_stats
+  # force_routing_mode - (optional) is a type of number
+  force_routing_mode = var.force_routing_mode
+  # gslb_enable - (optional) is a type of number
+  gslb_enable = var.gslb_enable
+  # gtp_session_lb - (optional) is a type of number
+  gtp_session_lb = var.gtp_session_lb
+  # ha_conn_mirror - (optional) is a type of number
+  ha_conn_mirror = var.ha_conn_mirror
+  # ignore_global - (optional) is a type of number
+  ignore_global = var.ignore_global
+  # ip_map_list - (optional) is a type of string
+  ip_map_list = var.ip_map_list
+  # ipinip - (optional) is a type of number
+  ipinip = var.ipinip
+  # l7_hardware_assist - (optional) is a type of number
+  l7_hardware_assist = var.l7_hardware_assist
+  # memory_compute - (optional) is a type of number
+  memory_compute = var.memory_compute
+  # message_switching - (optional) is a type of number
+  message_switching = var.message_switching
+  # name - (optional) is a type of string
+  name = var.name
+  # no_auto_up_on_aflex - (optional) is a type of number
+  no_auto_up_on_aflex = var.no_auto_up_on_aflex
+  # no_dest_nat - (optional) is a type of number
+  no_dest_nat = var.no_dest_nat
+  # no_logging - (optional) is a type of number
+  no_logging = var.no_logging
+  # on_syn - (optional) is a type of number
+  on_syn = var.on_syn
+  # optimization_level - (optional) is a type of string
+  optimization_level = var.optimization_level
+  # p_template_sip_shared - (optional) is a type of number
+  p_template_sip_shared = var.p_template_sip_shared
+  # persist_type - (optional) is a type of string
+  persist_type = var.persist_type
+  # pool - (optional) is a type of string
+  pool = var.pool
+  # pool_shared - (optional) is a type of string
+  pool_shared = var.pool_shared
+  # port_number - (optional) is a type of number
+  port_number = var.port_number
+  # port_translation - (optional) is a type of number
+  port_translation = var.port_translation
+  # precedence - (optional) is a type of number
+  precedence = var.precedence
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # range - (optional) is a type of number
+  range = var.range
+  # rate - (optional) is a type of number
+  rate = var.rate
+  # redirect_to_https - (optional) is a type of number
+  redirect_to_https = var.redirect_to_https
+  # req_fail - (optional) is a type of number
+  req_fail = var.req_fail
+  # reset - (optional) is a type of number
+  reset = var.reset
+  # reset_on_server_selection_fail - (optional) is a type of number
+  reset_on_server_selection_fail = var.reset_on_server_selection_fail
+  # rtp_sip_call_id_match - (optional) is a type of number
+  rtp_sip_call_id_match = var.rtp_sip_call_id_match
+  # scaleout_bucket_count - (optional) is a type of number
+  scaleout_bucket_count = var.scaleout_bucket_count
+  # scaleout_device_group - (optional) is a type of number
+  scaleout_device_group = var.scaleout_device_group
+  # secs - (optional) is a type of number
+  secs = var.secs
+  # serv_sel_fail - (optional) is a type of number
+  serv_sel_fail = var.serv_sel_fail
+  # service_group - (optional) is a type of string
+  service_group = var.service_group
+  # shared_partition_cache_template - (optional) is a type of number
+  shared_partition_cache_template = var.shared_partition_cache_template
+  # shared_partition_client_ssl_template - (optional) is a type of number
+  shared_partition_client_ssl_template = var.shared_partition_client_ssl_template
+  # shared_partition_connection_reuse_template - (optional) is a type of number
+  shared_partition_connection_reuse_template = var.shared_partition_connection_reuse_template
+  # shared_partition_dblb_template - (optional) is a type of number
+  shared_partition_dblb_template = var.shared_partition_dblb_template
+  # shared_partition_diameter_template - (optional) is a type of number
+  shared_partition_diameter_template = var.shared_partition_diameter_template
+  # shared_partition_dns_template - (optional) is a type of number
+  shared_partition_dns_template = var.shared_partition_dns_template
+  # shared_partition_doh_template - (optional) is a type of number
+  shared_partition_doh_template = var.shared_partition_doh_template
+  # shared_partition_dynamic_service_template - (optional) is a type of number
+  shared_partition_dynamic_service_template = var.shared_partition_dynamic_service_template
+  # shared_partition_external_service_template - (optional) is a type of number
+  shared_partition_external_service_template = var.shared_partition_external_service_template
+  # shared_partition_fix_template - (optional) is a type of number
+  shared_partition_fix_template = var.shared_partition_fix_template
+  # shared_partition_http_policy_template - (optional) is a type of number
+  shared_partition_http_policy_template = var.shared_partition_http_policy_template
+  # shared_partition_http_template - (optional) is a type of number
+  shared_partition_http_template = var.shared_partition_http_template
+  # shared_partition_imap_pop3_template - (optional) is a type of number
+  shared_partition_imap_pop3_template = var.shared_partition_imap_pop3_template
+  # shared_partition_persist_cookie_template - (optional) is a type of number
+  shared_partition_persist_cookie_template = var.shared_partition_persist_cookie_template
+  # shared_partition_persist_destination_ip_template - (optional) is a type of number
   shared_partition_persist_destination_ip_template = var.shared_partition_persist_destination_ip_template
-  shared_partition_persist_source_ip_template      = var.shared_partition_persist_source_ip_template
-  shared_partition_persist_ssl_sid_template        = var.shared_partition_persist_ssl_sid_template
-  shared_partition_policy_template                 = var.shared_partition_policy_template
-  shared_partition_pool                            = var.shared_partition_pool
-  shared_partition_server_ssl_template             = var.shared_partition_server_ssl_template
-  shared_partition_smpp_template                   = var.shared_partition_smpp_template
-  shared_partition_smtp_template                   = var.shared_partition_smtp_template
-  shared_partition_tcp                             = var.shared_partition_tcp
-  shared_partition_tcp_proxy_template              = var.shared_partition_tcp_proxy_template
-  shared_partition_udp                             = var.shared_partition_udp
-  shared_partition_virtual_port_template           = var.shared_partition_virtual_port_template
-  skip_rev_hash                                    = var.skip_rev_hash
-  snat_on_vip                                      = var.snat_on_vip
-  stats_data_action                                = var.stats_data_action
-  substitute_source_mac                            = var.substitute_source_mac
-  support_http2                                    = var.support_http2
-  syn_cookie                                       = var.syn_cookie
-  template_cache                                   = var.template_cache
-  template_cache_shared                            = var.template_cache_shared
-  template_client_ssh                              = var.template_client_ssh
-  template_client_ssl                              = var.template_client_ssl
-  template_client_ssl_shared                       = var.template_client_ssl_shared
-  template_connection_reuse                        = var.template_connection_reuse
-  template_connection_reuse_shared                 = var.template_connection_reuse_shared
-  template_dblb                                    = var.template_dblb
-  template_dblb_shared                             = var.template_dblb_shared
-  template_diameter                                = var.template_diameter
-  template_diameter_shared                         = var.template_diameter_shared
-  template_dns                                     = var.template_dns
-  template_dns_shared                              = var.template_dns_shared
-  template_doh                                     = var.template_doh
-  template_doh_shared                              = var.template_doh_shared
-  template_dynamic_service                         = var.template_dynamic_service
-  template_dynamic_service_shared                  = var.template_dynamic_service_shared
-  template_external_service                        = var.template_external_service
-  template_external_service_shared                 = var.template_external_service_shared
-  template_file_inspection                         = var.template_file_inspection
-  template_fix                                     = var.template_fix
-  template_fix_shared                              = var.template_fix_shared
-  template_ftp                                     = var.template_ftp
-  template_http                                    = var.template_http
-  template_http_policy                             = var.template_http_policy
-  template_http_policy_shared                      = var.template_http_policy_shared
-  template_http_shared                             = var.template_http_shared
-  template_imap_pop3                               = var.template_imap_pop3
-  template_imap_pop3_shared                        = var.template_imap_pop3_shared
-  template_mqtt                                    = var.template_mqtt
-  template_persist_cookie                          = var.template_persist_cookie
-  template_persist_cookie_shared                   = var.template_persist_cookie_shared
-  template_persist_destination_ip                  = var.template_persist_destination_ip
-  template_persist_destination_ip_shared           = var.template_persist_destination_ip_shared
-  template_persist_source_ip                       = var.template_persist_source_ip
-  template_persist_source_ip_shared                = var.template_persist_source_ip_shared
-  template_persist_ssl_sid                         = var.template_persist_ssl_sid
-  template_persist_ssl_sid_shared                  = var.template_persist_ssl_sid_shared
-  template_policy                                  = var.template_policy
-  template_policy_shared                           = var.template_policy_shared
-  template_reqmod_icap                             = var.template_reqmod_icap
-  template_respmod_icap                            = var.template_respmod_icap
-  template_scaleout                                = var.template_scaleout
-  template_server_ssh                              = var.template_server_ssh
-  template_server_ssl                              = var.template_server_ssl
-  template_server_ssl_shared                       = var.template_server_ssl_shared
-  template_sip                                     = var.template_sip
-  template_sip_shared                              = var.template_sip_shared
-  template_smpp                                    = var.template_smpp
-  template_smpp_shared                             = var.template_smpp_shared
-  template_smtp                                    = var.template_smtp
-  template_smtp_shared                             = var.template_smtp_shared
-  template_ssli                                    = var.template_ssli
-  template_tcp                                     = var.template_tcp
-  template_tcp_proxy                               = var.template_tcp_proxy
-  template_tcp_proxy_client                        = var.template_tcp_proxy_client
-  template_tcp_proxy_server                        = var.template_tcp_proxy_server
-  template_tcp_proxy_shared                        = var.template_tcp_proxy_shared
-  template_tcp_shared                              = var.template_tcp_shared
-  template_udp                                     = var.template_udp
-  template_udp_shared                              = var.template_udp_shared
-  template_virtual_port                            = var.template_virtual_port
-  template_virtual_port_shared                     = var.template_virtual_port_shared
-  trunk_fwd                                        = var.trunk_fwd
-  trunk_rev                                        = var.trunk_rev
-  use_alternate_port                               = var.use_alternate_port
-  use_cgnv6                                        = var.use_cgnv6
-  use_default_if_no_server                         = var.use_default_if_no_server
-  use_rcv_hop_for_resp                             = var.use_rcv_hop_for_resp
-  user_tag                                         = var.user_tag
-  uuid                                             = var.uuid
-  view                                             = var.view
-  waf_template                                     = var.waf_template
-  when_down                                        = var.when_down
-  when_down_protocol2                              = var.when_down_protocol2
+  # shared_partition_persist_source_ip_template - (optional) is a type of number
+  shared_partition_persist_source_ip_template = var.shared_partition_persist_source_ip_template
+  # shared_partition_persist_ssl_sid_template - (optional) is a type of number
+  shared_partition_persist_ssl_sid_template = var.shared_partition_persist_ssl_sid_template
+  # shared_partition_policy_template - (optional) is a type of number
+  shared_partition_policy_template = var.shared_partition_policy_template
+  # shared_partition_pool - (optional) is a type of number
+  shared_partition_pool = var.shared_partition_pool
+  # shared_partition_server_ssl_template - (optional) is a type of number
+  shared_partition_server_ssl_template = var.shared_partition_server_ssl_template
+  # shared_partition_smpp_template - (optional) is a type of number
+  shared_partition_smpp_template = var.shared_partition_smpp_template
+  # shared_partition_smtp_template - (optional) is a type of number
+  shared_partition_smtp_template = var.shared_partition_smtp_template
+  # shared_partition_tcp - (optional) is a type of number
+  shared_partition_tcp = var.shared_partition_tcp
+  # shared_partition_tcp_proxy_template - (optional) is a type of number
+  shared_partition_tcp_proxy_template = var.shared_partition_tcp_proxy_template
+  # shared_partition_udp - (optional) is a type of number
+  shared_partition_udp = var.shared_partition_udp
+  # shared_partition_virtual_port_template - (optional) is a type of number
+  shared_partition_virtual_port_template = var.shared_partition_virtual_port_template
+  # skip_rev_hash - (optional) is a type of number
+  skip_rev_hash = var.skip_rev_hash
+  # snat_on_vip - (optional) is a type of number
+  snat_on_vip = var.snat_on_vip
+  # stats_data_action - (optional) is a type of string
+  stats_data_action = var.stats_data_action
+  # substitute_source_mac - (optional) is a type of number
+  substitute_source_mac = var.substitute_source_mac
+  # support_http2 - (optional) is a type of number
+  support_http2 = var.support_http2
+  # syn_cookie - (optional) is a type of number
+  syn_cookie = var.syn_cookie
+  # template_cache - (optional) is a type of string
+  template_cache = var.template_cache
+  # template_cache_shared - (optional) is a type of string
+  template_cache_shared = var.template_cache_shared
+  # template_client_ssh - (optional) is a type of string
+  template_client_ssh = var.template_client_ssh
+  # template_client_ssl - (optional) is a type of string
+  template_client_ssl = var.template_client_ssl
+  # template_client_ssl_shared - (optional) is a type of string
+  template_client_ssl_shared = var.template_client_ssl_shared
+  # template_connection_reuse - (optional) is a type of string
+  template_connection_reuse = var.template_connection_reuse
+  # template_connection_reuse_shared - (optional) is a type of string
+  template_connection_reuse_shared = var.template_connection_reuse_shared
+  # template_dblb - (optional) is a type of string
+  template_dblb = var.template_dblb
+  # template_dblb_shared - (optional) is a type of string
+  template_dblb_shared = var.template_dblb_shared
+  # template_diameter - (optional) is a type of string
+  template_diameter = var.template_diameter
+  # template_diameter_shared - (optional) is a type of string
+  template_diameter_shared = var.template_diameter_shared
+  # template_dns - (optional) is a type of string
+  template_dns = var.template_dns
+  # template_dns_shared - (optional) is a type of string
+  template_dns_shared = var.template_dns_shared
+  # template_doh - (optional) is a type of string
+  template_doh = var.template_doh
+  # template_doh_shared - (optional) is a type of string
+  template_doh_shared = var.template_doh_shared
+  # template_dynamic_service - (optional) is a type of string
+  template_dynamic_service = var.template_dynamic_service
+  # template_dynamic_service_shared - (optional) is a type of string
+  template_dynamic_service_shared = var.template_dynamic_service_shared
+  # template_external_service - (optional) is a type of string
+  template_external_service = var.template_external_service
+  # template_external_service_shared - (optional) is a type of string
+  template_external_service_shared = var.template_external_service_shared
+  # template_file_inspection - (optional) is a type of string
+  template_file_inspection = var.template_file_inspection
+  # template_fix - (optional) is a type of string
+  template_fix = var.template_fix
+  # template_fix_shared - (optional) is a type of string
+  template_fix_shared = var.template_fix_shared
+  # template_ftp - (optional) is a type of string
+  template_ftp = var.template_ftp
+  # template_http - (optional) is a type of string
+  template_http = var.template_http
+  # template_http_policy - (optional) is a type of string
+  template_http_policy = var.template_http_policy
+  # template_http_policy_shared - (optional) is a type of string
+  template_http_policy_shared = var.template_http_policy_shared
+  # template_http_shared - (optional) is a type of string
+  template_http_shared = var.template_http_shared
+  # template_imap_pop3 - (optional) is a type of string
+  template_imap_pop3 = var.template_imap_pop3
+  # template_imap_pop3_shared - (optional) is a type of string
+  template_imap_pop3_shared = var.template_imap_pop3_shared
+  # template_mqtt - (optional) is a type of string
+  template_mqtt = var.template_mqtt
+  # template_persist_cookie - (optional) is a type of string
+  template_persist_cookie = var.template_persist_cookie
+  # template_persist_cookie_shared - (optional) is a type of string
+  template_persist_cookie_shared = var.template_persist_cookie_shared
+  # template_persist_destination_ip - (optional) is a type of string
+  template_persist_destination_ip = var.template_persist_destination_ip
+  # template_persist_destination_ip_shared - (optional) is a type of string
+  template_persist_destination_ip_shared = var.template_persist_destination_ip_shared
+  # template_persist_source_ip - (optional) is a type of string
+  template_persist_source_ip = var.template_persist_source_ip
+  # template_persist_source_ip_shared - (optional) is a type of string
+  template_persist_source_ip_shared = var.template_persist_source_ip_shared
+  # template_persist_ssl_sid - (optional) is a type of string
+  template_persist_ssl_sid = var.template_persist_ssl_sid
+  # template_persist_ssl_sid_shared - (optional) is a type of string
+  template_persist_ssl_sid_shared = var.template_persist_ssl_sid_shared
+  # template_policy - (optional) is a type of string
+  template_policy = var.template_policy
+  # template_policy_shared - (optional) is a type of string
+  template_policy_shared = var.template_policy_shared
+  # template_reqmod_icap - (optional) is a type of string
+  template_reqmod_icap = var.template_reqmod_icap
+  # template_respmod_icap - (optional) is a type of string
+  template_respmod_icap = var.template_respmod_icap
+  # template_scaleout - (optional) is a type of string
+  template_scaleout = var.template_scaleout
+  # template_server_ssh - (optional) is a type of string
+  template_server_ssh = var.template_server_ssh
+  # template_server_ssl - (optional) is a type of string
+  template_server_ssl = var.template_server_ssl
+  # template_server_ssl_shared - (optional) is a type of string
+  template_server_ssl_shared = var.template_server_ssl_shared
+  # template_sip - (optional) is a type of string
+  template_sip = var.template_sip
+  # template_sip_shared - (optional) is a type of string
+  template_sip_shared = var.template_sip_shared
+  # template_smpp - (optional) is a type of string
+  template_smpp = var.template_smpp
+  # template_smpp_shared - (optional) is a type of string
+  template_smpp_shared = var.template_smpp_shared
+  # template_smtp - (optional) is a type of string
+  template_smtp = var.template_smtp
+  # template_smtp_shared - (optional) is a type of string
+  template_smtp_shared = var.template_smtp_shared
+  # template_ssli - (optional) is a type of string
+  template_ssli = var.template_ssli
+  # template_tcp - (optional) is a type of string
+  template_tcp = var.template_tcp
+  # template_tcp_proxy - (optional) is a type of string
+  template_tcp_proxy = var.template_tcp_proxy
+  # template_tcp_proxy_client - (optional) is a type of string
+  template_tcp_proxy_client = var.template_tcp_proxy_client
+  # template_tcp_proxy_server - (optional) is a type of string
+  template_tcp_proxy_server = var.template_tcp_proxy_server
+  # template_tcp_proxy_shared - (optional) is a type of string
+  template_tcp_proxy_shared = var.template_tcp_proxy_shared
+  # template_tcp_shared - (optional) is a type of string
+  template_tcp_shared = var.template_tcp_shared
+  # template_udp - (optional) is a type of string
+  template_udp = var.template_udp
+  # template_udp_shared - (optional) is a type of string
+  template_udp_shared = var.template_udp_shared
+  # template_virtual_port - (optional) is a type of string
+  template_virtual_port = var.template_virtual_port
+  # template_virtual_port_shared - (optional) is a type of string
+  template_virtual_port_shared = var.template_virtual_port_shared
+  # trunk_fwd - (optional) is a type of number
+  trunk_fwd = var.trunk_fwd
+  # trunk_rev - (optional) is a type of number
+  trunk_rev = var.trunk_rev
+  # use_alternate_port - (optional) is a type of number
+  use_alternate_port = var.use_alternate_port
+  # use_cgnv6 - (optional) is a type of number
+  use_cgnv6 = var.use_cgnv6
+  # use_default_if_no_server - (optional) is a type of number
+  use_default_if_no_server = var.use_default_if_no_server
+  # use_rcv_hop_for_resp - (optional) is a type of number
+  use_rcv_hop_for_resp = var.use_rcv_hop_for_resp
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # view - (optional) is a type of number
+  view = var.view
+  # waf_template - (optional) is a type of string
+  waf_template = var.waf_template
+  # when_down - (optional) is a type of number
+  when_down = var.when_down
+  # when_down_protocol2 - (optional) is a type of number
+  when_down_protocol2 = var.when_down_protocol2
 
   dynamic "acl_id_list" {
     for_each = var.acl_id_list
     content {
-      acl_id                       = acl_id_list.value["acl_id"]
-      acl_id_seq_num               = acl_id_list.value["acl_id_seq_num"]
-      acl_id_seq_num_shared        = acl_id_list.value["acl_id_seq_num_shared"]
-      acl_id_shared                = acl_id_list.value["acl_id_shared"]
-      acl_id_src_nat_pool          = acl_id_list.value["acl_id_src_nat_pool"]
-      acl_id_src_nat_pool_shared   = acl_id_list.value["acl_id_src_nat_pool_shared"]
-      shared_partition_pool_id     = acl_id_list.value["shared_partition_pool_id"]
-      v_acl_id_seq_num             = acl_id_list.value["v_acl_id_seq_num"]
-      v_acl_id_seq_num_shared      = acl_id_list.value["v_acl_id_seq_num_shared"]
-      v_acl_id_src_nat_pool        = acl_id_list.value["v_acl_id_src_nat_pool"]
+      # acl_id - (optional) is a type of number
+      acl_id = acl_id_list.value["acl_id"]
+      # acl_id_seq_num - (optional) is a type of number
+      acl_id_seq_num = acl_id_list.value["acl_id_seq_num"]
+      # acl_id_seq_num_shared - (optional) is a type of number
+      acl_id_seq_num_shared = acl_id_list.value["acl_id_seq_num_shared"]
+      # acl_id_shared - (optional) is a type of number
+      acl_id_shared = acl_id_list.value["acl_id_shared"]
+      # acl_id_src_nat_pool - (optional) is a type of string
+      acl_id_src_nat_pool = acl_id_list.value["acl_id_src_nat_pool"]
+      # acl_id_src_nat_pool_shared - (optional) is a type of string
+      acl_id_src_nat_pool_shared = acl_id_list.value["acl_id_src_nat_pool_shared"]
+      # shared_partition_pool_id - (optional) is a type of number
+      shared_partition_pool_id = acl_id_list.value["shared_partition_pool_id"]
+      # v_acl_id_seq_num - (optional) is a type of number
+      v_acl_id_seq_num = acl_id_list.value["v_acl_id_seq_num"]
+      # v_acl_id_seq_num_shared - (optional) is a type of number
+      v_acl_id_seq_num_shared = acl_id_list.value["v_acl_id_seq_num_shared"]
+      # v_acl_id_src_nat_pool - (optional) is a type of string
+      v_acl_id_src_nat_pool = acl_id_list.value["v_acl_id_src_nat_pool"]
+      # v_acl_id_src_nat_pool_shared - (optional) is a type of string
       v_acl_id_src_nat_pool_shared = acl_id_list.value["v_acl_id_src_nat_pool_shared"]
-      v_shared_partition_pool_id   = acl_id_list.value["v_shared_partition_pool_id"]
+      # v_shared_partition_pool_id - (optional) is a type of number
+      v_shared_partition_pool_id = acl_id_list.value["v_shared_partition_pool_id"]
     }
   }
 
   dynamic "acl_name_list" {
     for_each = var.acl_name_list
     content {
-      acl_name                       = acl_name_list.value["acl_name"]
-      acl_name_seq_num               = acl_name_list.value["acl_name_seq_num"]
-      acl_name_seq_num_shared        = acl_name_list.value["acl_name_seq_num_shared"]
-      acl_name_shared                = acl_name_list.value["acl_name_shared"]
-      acl_name_src_nat_pool          = acl_name_list.value["acl_name_src_nat_pool"]
-      acl_name_src_nat_pool_shared   = acl_name_list.value["acl_name_src_nat_pool_shared"]
-      shared_partition_pool_name     = acl_name_list.value["shared_partition_pool_name"]
-      v_acl_name_seq_num             = acl_name_list.value["v_acl_name_seq_num"]
-      v_acl_name_seq_num_shared      = acl_name_list.value["v_acl_name_seq_num_shared"]
-      v_acl_name_src_nat_pool        = acl_name_list.value["v_acl_name_src_nat_pool"]
+      # acl_name - (optional) is a type of string
+      acl_name = acl_name_list.value["acl_name"]
+      # acl_name_seq_num - (optional) is a type of number
+      acl_name_seq_num = acl_name_list.value["acl_name_seq_num"]
+      # acl_name_seq_num_shared - (optional) is a type of number
+      acl_name_seq_num_shared = acl_name_list.value["acl_name_seq_num_shared"]
+      # acl_name_shared - (optional) is a type of string
+      acl_name_shared = acl_name_list.value["acl_name_shared"]
+      # acl_name_src_nat_pool - (optional) is a type of string
+      acl_name_src_nat_pool = acl_name_list.value["acl_name_src_nat_pool"]
+      # acl_name_src_nat_pool_shared - (optional) is a type of string
+      acl_name_src_nat_pool_shared = acl_name_list.value["acl_name_src_nat_pool_shared"]
+      # shared_partition_pool_name - (optional) is a type of number
+      shared_partition_pool_name = acl_name_list.value["shared_partition_pool_name"]
+      # v_acl_name_seq_num - (optional) is a type of number
+      v_acl_name_seq_num = acl_name_list.value["v_acl_name_seq_num"]
+      # v_acl_name_seq_num_shared - (optional) is a type of number
+      v_acl_name_seq_num_shared = acl_name_list.value["v_acl_name_seq_num_shared"]
+      # v_acl_name_src_nat_pool - (optional) is a type of string
+      v_acl_name_src_nat_pool = acl_name_list.value["v_acl_name_src_nat_pool"]
+      # v_acl_name_src_nat_pool_shared - (optional) is a type of string
       v_acl_name_src_nat_pool_shared = acl_name_list.value["v_acl_name_src_nat_pool_shared"]
-      v_shared_partition_pool_name   = acl_name_list.value["v_shared_partition_pool_name"]
+      # v_shared_partition_pool_name - (optional) is a type of number
+      v_shared_partition_pool_name = acl_name_list.value["v_shared_partition_pool_name"]
     }
   }
 
   dynamic "aflex_scripts" {
     for_each = var.aflex_scripts
     content {
-      aflex        = aflex_scripts.value["aflex"]
+      # aflex - (optional) is a type of string
+      aflex = aflex_scripts.value["aflex"]
+      # aflex_shared - (optional) is a type of string
       aflex_shared = aflex_scripts.value["aflex_shared"]
     }
   }
@@ -1628,6 +1812,7 @@ resource "thunder_slb_virtual_server_port" "this" {
   dynamic "auth_cfg" {
     for_each = var.auth_cfg
     content {
+      # aaa_policy - (optional) is a type of string
       aaa_policy = auth_cfg.value["aaa_policy"]
     }
   }
@@ -1635,6 +1820,7 @@ resource "thunder_slb_virtual_server_port" "this" {
   dynamic "sampling_enable" {
     for_each = var.sampling_enable
     content {
+      # counters1 - (optional) is a type of string
       counters1 = sampling_enable.value["counters1"]
     }
   }

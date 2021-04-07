@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 resource "fortios_system_ptp" "this" {
-  delay_mechanism  = var.delay_mechanism
-  interface        = var.interface
-  mode             = var.mode
+  # delay_mechanism - (optional) is a type of string
+  delay_mechanism = var.delay_mechanism
+  # interface - (required) is a type of string
+  interface = var.interface
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # request_interval - (optional) is a type of number
   request_interval = var.request_interval
-  status           = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

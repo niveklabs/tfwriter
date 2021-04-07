@@ -58,8 +58,10 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontroller_switchlog" "this" {
+  # severity - (optional) is a type of string
   severity = var.severity
-  status   = var.status
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

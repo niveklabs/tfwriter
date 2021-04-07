@@ -146,19 +146,32 @@ variable "txpower" {
 
 ```terraform
 resource "fortios_wirelesscontroller_bleprofile" "this" {
-  advertising              = var.advertising
-  beacon_interval          = var.beacon_interval
-  ble_scanning             = var.ble_scanning
-  comment                  = var.comment
-  eddystone_instance       = var.eddystone_instance
-  eddystone_namespace      = var.eddystone_namespace
-  eddystone_url            = var.eddystone_url
+  # advertising - (optional) is a type of string
+  advertising = var.advertising
+  # beacon_interval - (optional) is a type of number
+  beacon_interval = var.beacon_interval
+  # ble_scanning - (optional) is a type of string
+  ble_scanning = var.ble_scanning
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # eddystone_instance - (optional) is a type of string
+  eddystone_instance = var.eddystone_instance
+  # eddystone_namespace - (optional) is a type of string
+  eddystone_namespace = var.eddystone_namespace
+  # eddystone_url - (optional) is a type of string
+  eddystone_url = var.eddystone_url
+  # eddystone_url_encode_hex - (optional) is a type of string
   eddystone_url_encode_hex = var.eddystone_url_encode_hex
-  ibeacon_uuid             = var.ibeacon_uuid
-  major_id                 = var.major_id
-  minor_id                 = var.minor_id
-  name                     = var.name
-  txpower                  = var.txpower
+  # ibeacon_uuid - (optional) is a type of string
+  ibeacon_uuid = var.ibeacon_uuid
+  # major_id - (optional) is a type of number
+  major_id = var.major_id
+  # minor_id - (optional) is a type of number
+  minor_id = var.minor_id
+  # name - (optional) is a type of string
+  name = var.name
+  # txpower - (optional) is a type of string
+  txpower = var.txpower
 }
 ```
 

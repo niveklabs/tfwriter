@@ -356,43 +356,73 @@ variable "viz_options" {
 
 ```terraform
 resource "signalfx_time_chart" "this" {
-  axes_include_zero         = var.axes_include_zero
-  axes_precision            = var.axes_precision
-  color_by                  = var.color_by
-  description               = var.description
-  disable_sampling          = var.disable_sampling
-  end_time                  = var.end_time
-  legend_fields_to_hide     = var.legend_fields_to_hide
-  max_delay                 = var.max_delay
-  minimum_resolution        = var.minimum_resolution
-  name                      = var.name
+  # axes_include_zero - (optional) is a type of bool
+  axes_include_zero = var.axes_include_zero
+  # axes_precision - (optional) is a type of number
+  axes_precision = var.axes_precision
+  # color_by - (optional) is a type of string
+  color_by = var.color_by
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_sampling - (optional) is a type of bool
+  disable_sampling = var.disable_sampling
+  # end_time - (optional) is a type of number
+  end_time = var.end_time
+  # legend_fields_to_hide - (optional) is a type of set of string
+  legend_fields_to_hide = var.legend_fields_to_hide
+  # max_delay - (optional) is a type of number
+  max_delay = var.max_delay
+  # minimum_resolution - (optional) is a type of number
+  minimum_resolution = var.minimum_resolution
+  # name - (required) is a type of string
+  name = var.name
+  # on_chart_legend_dimension - (optional) is a type of string
   on_chart_legend_dimension = var.on_chart_legend_dimension
-  plot_type                 = var.plot_type
-  program_text              = var.program_text
-  show_data_markers         = var.show_data_markers
-  show_event_lines          = var.show_event_lines
-  stacked                   = var.stacked
-  start_time                = var.start_time
-  tags                      = var.tags
-  time_range                = var.time_range
-  timezone                  = var.timezone
-  unit_prefix               = var.unit_prefix
+  # plot_type - (optional) is a type of string
+  plot_type = var.plot_type
+  # program_text - (required) is a type of string
+  program_text = var.program_text
+  # show_data_markers - (optional) is a type of bool
+  show_data_markers = var.show_data_markers
+  # show_event_lines - (optional) is a type of bool
+  show_event_lines = var.show_event_lines
+  # stacked - (optional) is a type of bool
+  stacked = var.stacked
+  # start_time - (optional) is a type of number
+  start_time = var.start_time
+  # tags - (optional) is a type of list of string
+  tags = var.tags
+  # time_range - (optional) is a type of number
+  time_range = var.time_range
+  # timezone - (optional) is a type of string
+  timezone = var.timezone
+  # unit_prefix - (optional) is a type of string
+  unit_prefix = var.unit_prefix
 
   dynamic "axis_left" {
     for_each = var.axis_left
     content {
-      high_watermark       = axis_left.value["high_watermark"]
+      # high_watermark - (optional) is a type of number
+      high_watermark = axis_left.value["high_watermark"]
+      # high_watermark_label - (optional) is a type of string
       high_watermark_label = axis_left.value["high_watermark_label"]
-      label                = axis_left.value["label"]
-      low_watermark        = axis_left.value["low_watermark"]
-      low_watermark_label  = axis_left.value["low_watermark_label"]
-      max_value            = axis_left.value["max_value"]
-      min_value            = axis_left.value["min_value"]
+      # label - (optional) is a type of string
+      label = axis_left.value["label"]
+      # low_watermark - (optional) is a type of number
+      low_watermark = axis_left.value["low_watermark"]
+      # low_watermark_label - (optional) is a type of string
+      low_watermark_label = axis_left.value["low_watermark_label"]
+      # max_value - (optional) is a type of number
+      max_value = axis_left.value["max_value"]
+      # min_value - (optional) is a type of number
+      min_value = axis_left.value["min_value"]
 
       dynamic "watermarks" {
         for_each = axis_left.value.watermarks
         content {
+          # label - (optional) is a type of string
           label = watermarks.value["label"]
+          # value - (required) is a type of number
           value = watermarks.value["value"]
         }
       }
@@ -403,18 +433,27 @@ resource "signalfx_time_chart" "this" {
   dynamic "axis_right" {
     for_each = var.axis_right
     content {
-      high_watermark       = axis_right.value["high_watermark"]
+      # high_watermark - (optional) is a type of number
+      high_watermark = axis_right.value["high_watermark"]
+      # high_watermark_label - (optional) is a type of string
       high_watermark_label = axis_right.value["high_watermark_label"]
-      label                = axis_right.value["label"]
-      low_watermark        = axis_right.value["low_watermark"]
-      low_watermark_label  = axis_right.value["low_watermark_label"]
-      max_value            = axis_right.value["max_value"]
-      min_value            = axis_right.value["min_value"]
+      # label - (optional) is a type of string
+      label = axis_right.value["label"]
+      # low_watermark - (optional) is a type of number
+      low_watermark = axis_right.value["low_watermark"]
+      # low_watermark_label - (optional) is a type of string
+      low_watermark_label = axis_right.value["low_watermark_label"]
+      # max_value - (optional) is a type of number
+      max_value = axis_right.value["max_value"]
+      # min_value - (optional) is a type of number
+      min_value = axis_right.value["min_value"]
 
       dynamic "watermarks" {
         for_each = axis_right.value.watermarks
         content {
+          # label - (optional) is a type of string
           label = watermarks.value["label"]
+          # value - (required) is a type of number
           value = watermarks.value["value"]
         }
       }
@@ -425,15 +464,19 @@ resource "signalfx_time_chart" "this" {
   dynamic "event_options" {
     for_each = var.event_options
     content {
-      color        = event_options.value["color"]
+      # color - (optional) is a type of string
+      color = event_options.value["color"]
+      # display_name - (optional) is a type of string
       display_name = event_options.value["display_name"]
-      label        = event_options.value["label"]
+      # label - (required) is a type of string
+      label = event_options.value["label"]
     }
   }
 
   dynamic "histogram_options" {
     for_each = var.histogram_options
     content {
+      # color_theme - (optional) is a type of string
       color_theme = histogram_options.value["color_theme"]
     }
   }
@@ -441,7 +484,9 @@ resource "signalfx_time_chart" "this" {
   dynamic "legend_options_fields" {
     for_each = var.legend_options_fields
     content {
-      enabled  = legend_options_fields.value["enabled"]
+      # enabled - (optional) is a type of bool
+      enabled = legend_options_fields.value["enabled"]
+      # property - (required) is a type of string
       property = legend_options_fields.value["property"]
     }
   }
@@ -449,14 +494,22 @@ resource "signalfx_time_chart" "this" {
   dynamic "viz_options" {
     for_each = var.viz_options
     content {
-      axis         = viz_options.value["axis"]
-      color        = viz_options.value["color"]
+      # axis - (optional) is a type of string
+      axis = viz_options.value["axis"]
+      # color - (optional) is a type of string
+      color = viz_options.value["color"]
+      # display_name - (optional) is a type of string
       display_name = viz_options.value["display_name"]
-      label        = viz_options.value["label"]
-      plot_type    = viz_options.value["plot_type"]
+      # label - (required) is a type of string
+      label = viz_options.value["label"]
+      # plot_type - (optional) is a type of string
+      plot_type = viz_options.value["plot_type"]
+      # value_prefix - (optional) is a type of string
       value_prefix = viz_options.value["value_prefix"]
+      # value_suffix - (optional) is a type of string
       value_suffix = viz_options.value["value_suffix"]
-      value_unit   = viz_options.value["value_unit"]
+      # value_unit - (optional) is a type of string
+      value_unit = viz_options.value["value_unit"]
     }
   }
 

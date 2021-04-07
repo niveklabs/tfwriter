@@ -56,7 +56,9 @@ variable "file_raw_data" {
 
 ```terraform
 resource "checkpoint_management_run_threat_emulation_file_types_offline_update" "this" {
-  file_path     = var.file_path
+  # file_path - (required) is a type of string
+  file_path = var.file_path
+  # file_raw_data - (required) is a type of string
   file_raw_data = var.file_raw_data
 }
 ```

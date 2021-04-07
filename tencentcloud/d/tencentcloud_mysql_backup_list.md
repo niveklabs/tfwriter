@@ -65,8 +65,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_mysql_backup_list" "this" {
-  max_number         = var.max_number
-  mysql_id           = var.mysql_id
+  # max_number - (optional) is a type of number
+  max_number = var.max_number
+  # mysql_id - (required) is a type of string
+  mysql_id = var.mysql_id
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

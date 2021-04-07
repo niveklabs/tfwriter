@@ -177,25 +177,41 @@ variable "parameters" {
 
 ```terraform
 resource "fortios_application_name" "this" {
-  behavior              = var.behavior
-  category              = var.category
+  # behavior - (optional) is a type of string
+  behavior = var.behavior
+  # category - (required) is a type of number
+  category = var.category
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
-  parameter             = var.parameter
-  popularity            = var.popularity
-  protocol              = var.protocol
-  risk                  = var.risk
-  sub_category          = var.sub_category
-  technology            = var.technology
-  vendor                = var.vendor
-  weight                = var.weight
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
+  # parameter - (optional) is a type of string
+  parameter = var.parameter
+  # popularity - (optional) is a type of number
+  popularity = var.popularity
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
+  # risk - (optional) is a type of number
+  risk = var.risk
+  # sub_category - (optional) is a type of number
+  sub_category = var.sub_category
+  # technology - (optional) is a type of string
+  technology = var.technology
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
+  # weight - (optional) is a type of number
+  weight = var.weight
 
   dynamic "metadata" {
     for_each = var.metadata
     content {
-      id      = metadata.value["id"]
-      metaid  = metadata.value["metaid"]
+      # id - (optional) is a type of number
+      id = metadata.value["id"]
+      # metaid - (optional) is a type of number
+      metaid = metadata.value["metaid"]
+      # valueid - (optional) is a type of number
       valueid = metadata.value["valueid"]
     }
   }
@@ -203,6 +219,7 @@ resource "fortios_application_name" "this" {
   dynamic "parameters" {
     for_each = var.parameters
     content {
+      # name - (optional) is a type of string
       name = parameters.value["name"]
     }
   }

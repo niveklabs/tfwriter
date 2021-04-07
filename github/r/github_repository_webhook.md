@@ -92,18 +92,26 @@ variable "configuration" {
 
 ```terraform
 resource "github_repository_webhook" "this" {
-  active     = var.active
-  events     = var.events
-  name       = var.name
+  # active - (optional) is a type of bool
+  active = var.active
+  # events - (required) is a type of set of string
+  events = var.events
+  # name - (optional) is a type of string
+  name = var.name
+  # repository - (required) is a type of string
   repository = var.repository
 
   dynamic "configuration" {
     for_each = var.configuration
     content {
+      # content_type - (optional) is a type of string
       content_type = configuration.value["content_type"]
+      # insecure_ssl - (optional) is a type of bool
       insecure_ssl = configuration.value["insecure_ssl"]
-      secret       = configuration.value["secret"]
-      url          = configuration.value["url"]
+      # secret - (optional) is a type of string
+      secret = configuration.value["secret"]
+      # url - (required) is a type of string
+      url = configuration.value["url"]
     }
   }
 

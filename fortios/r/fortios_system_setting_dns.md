@@ -66,9 +66,12 @@ variable "secondary" {
 
 ```terraform
 resource "fortios_system_setting_dns" "this" {
+  # dns_over_tls - (optional) is a type of string
   dns_over_tls = var.dns_over_tls
-  primary      = var.primary
-  secondary    = var.secondary
+  # primary - (optional) is a type of string
+  primary = var.primary
+  # secondary - (optional) is a type of string
+  secondary = var.secondary
 }
 ```
 

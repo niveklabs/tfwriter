@@ -122,16 +122,26 @@ variable "vpc_id" {
 
 ```terraform
 data "tencentcloud_vpc_subnets" "this" {
-  availability_zone  = var.availability_zone
-  cidr_block         = var.cidr_block
-  is_default         = var.is_default
+  # availability_zone - (optional) is a type of string
+  availability_zone = var.availability_zone
+  # cidr_block - (optional) is a type of string
+  cidr_block = var.cidr_block
+  # is_default - (optional) is a type of bool
+  is_default = var.is_default
+  # is_remote_vpc_snat - (optional) is a type of bool
   is_remote_vpc_snat = var.is_remote_vpc_snat
-  name               = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
-  subnet_id          = var.subnet_id
-  tag_key            = var.tag_key
-  tags               = var.tags
-  vpc_id             = var.vpc_id
+  # subnet_id - (optional) is a type of string
+  subnet_id = var.subnet_id
+  # tag_key - (optional) is a type of string
+  tag_key = var.tag_key
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # vpc_id - (optional) is a type of string
+  vpc_id = var.vpc_id
 }
 ```
 

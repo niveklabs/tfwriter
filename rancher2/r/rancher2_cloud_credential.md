@@ -187,15 +187,21 @@ variable "vsphere_credential_config" {
 
 ```terraform
 resource "rancher2_cloud_credential" "this" {
+  # annotations - (optional) is a type of map of string
   annotations = var.annotations
+  # description - (optional) is a type of string
   description = var.description
-  labels      = var.labels
-  name        = var.name
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
 
   dynamic "amazonec2_credential_config" {
     for_each = var.amazonec2_credential_config
     content {
+      # access_key - (required) is a type of string
       access_key = amazonec2_credential_config.value["access_key"]
+      # secret_key - (required) is a type of string
       secret_key = amazonec2_credential_config.value["secret_key"]
     }
   }
@@ -203,8 +209,11 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "azure_credential_config" {
     for_each = var.azure_credential_config
     content {
-      client_id       = azure_credential_config.value["client_id"]
-      client_secret   = azure_credential_config.value["client_secret"]
+      # client_id - (required) is a type of string
+      client_id = azure_credential_config.value["client_id"]
+      # client_secret - (required) is a type of string
+      client_secret = azure_credential_config.value["client_secret"]
+      # subscription_id - (required) is a type of string
       subscription_id = azure_credential_config.value["subscription_id"]
     }
   }
@@ -212,6 +221,7 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "digitalocean_credential_config" {
     for_each = var.digitalocean_credential_config
     content {
+      # access_token - (required) is a type of string
       access_token = digitalocean_credential_config.value["access_token"]
     }
   }
@@ -219,6 +229,7 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "linode_credential_config" {
     for_each = var.linode_credential_config
     content {
+      # token - (required) is a type of string
       token = linode_credential_config.value["token"]
     }
   }
@@ -226,6 +237,7 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "openstack_credential_config" {
     for_each = var.openstack_credential_config
     content {
+      # password - (required) is a type of string
       password = openstack_credential_config.value["password"]
     }
   }
@@ -233,8 +245,11 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
@@ -242,9 +257,13 @@ resource "rancher2_cloud_credential" "this" {
   dynamic "vsphere_credential_config" {
     for_each = var.vsphere_credential_config
     content {
-      password     = vsphere_credential_config.value["password"]
-      username     = vsphere_credential_config.value["username"]
-      vcenter      = vsphere_credential_config.value["vcenter"]
+      # password - (required) is a type of string
+      password = vsphere_credential_config.value["password"]
+      # username - (required) is a type of string
+      username = vsphere_credential_config.value["username"]
+      # vcenter - (required) is a type of string
+      vcenter = vsphere_credential_config.value["vcenter"]
+      # vcenter_port - (optional) is a type of string
       vcenter_port = vsphere_credential_config.value["vcenter_port"]
     }
   }

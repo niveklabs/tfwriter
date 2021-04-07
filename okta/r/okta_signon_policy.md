@@ -81,11 +81,16 @@ variable "status" {
 
 ```terraform
 resource "okta_signon_policy" "this" {
-  description     = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # groups_included - (optional) is a type of set of string
   groups_included = var.groups_included
-  name            = var.name
-  priority        = var.priority
-  status          = var.status
+  # name - (required) is a type of string
+  name = var.name
+  # priority - (optional) is a type of number
+  priority = var.priority
+  # status - (optional) is a type of string
+  status = var.status
 }
 ```
 

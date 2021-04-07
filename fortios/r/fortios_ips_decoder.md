@@ -74,13 +74,17 @@ variable "parameter" {
 
 ```terraform
 resource "fortios_ips_decoder" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "parameter" {
     for_each = var.parameter
     content {
-      name  = parameter.value["name"]
+      # name - (optional) is a type of string
+      name = parameter.value["name"]
+      # value - (optional) is a type of string
       value = parameter.value["value"]
     }
   }

@@ -78,11 +78,16 @@ variable "server_certificate_id" {
 
 ```terraform
 resource "alicloud_slb_domain_extension" "this" {
+  # delete_protection_validation - (optional) is a type of bool
   delete_protection_validation = var.delete_protection_validation
-  domain                       = var.domain
-  frontend_port                = var.frontend_port
-  load_balancer_id             = var.load_balancer_id
-  server_certificate_id        = var.server_certificate_id
+  # domain - (required) is a type of string
+  domain = var.domain
+  # frontend_port - (required) is a type of number
+  frontend_port = var.frontend_port
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # server_certificate_id - (required) is a type of string
+  server_certificate_id = var.server_certificate_id
 }
 ```
 

@@ -98,13 +98,20 @@ variable "uuid" {
 
 ```terraform
 resource "thunder_slb_template_ftp" "this" {
-  active_mode_port     = var.active_mode_port
+  # active_mode_port - (optional) is a type of number
+  active_mode_port = var.active_mode_port
+  # active_mode_port_val - (optional) is a type of number
   active_mode_port_val = var.active_mode_port_val
-  any                  = var.any
-  name                 = var.name
-  to                   = var.to
-  user_tag             = var.user_tag
-  uuid                 = var.uuid
+  # any - (optional) is a type of number
+  any = var.any
+  # name - (optional) is a type of string
+  name = var.name
+  # to - (optional) is a type of number
+  to = var.to
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 }
 ```
 

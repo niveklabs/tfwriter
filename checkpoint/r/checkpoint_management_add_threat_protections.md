@@ -58,8 +58,10 @@ variable "package_path" {
 
 ```terraform
 resource "checkpoint_management_add_threat_protections" "this" {
+  # package_format - (optional) is a type of string
   package_format = var.package_format
-  package_path   = var.package_path
+  # package_path - (optional) is a type of string
+  package_path = var.package_path
 }
 ```
 

@@ -79,11 +79,16 @@ variable "source" {
 
 ```terraform
 resource "fortios_firewallssh_localca" "this" {
-  name        = var.name
-  password    = var.password
+  # name - (optional) is a type of string
+  name = var.name
+  # password - (optional) is a type of string
+  password = var.password
+  # private_key - (required) is a type of string
   private_key = var.private_key
-  public_key  = var.public_key
-  source      = var.source
+  # public_key - (required) is a type of string
+  public_key = var.public_key
+  # source - (optional) is a type of string
+  source = var.source
 }
 ```
 

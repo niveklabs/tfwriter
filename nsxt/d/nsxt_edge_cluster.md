@@ -74,9 +74,13 @@ variable "member_node_type" {
 
 ```terraform
 data "nsxt_edge_cluster" "this" {
-  deployment_type  = var.deployment_type
-  description      = var.description
-  display_name     = var.display_name
+  # deployment_type - (optional) is a type of string
+  deployment_type = var.deployment_type
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
+  display_name = var.display_name
+  # member_node_type - (optional) is a type of string
   member_node_type = var.member_node_type
 }
 ```

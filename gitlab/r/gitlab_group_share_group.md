@@ -71,9 +71,13 @@ variable "share_group_id" {
 
 ```terraform
 resource "gitlab_group_share_group" "this" {
-  expires_at     = var.expires_at
-  group_access   = var.group_access
-  group_id       = var.group_id
+  # expires_at - (optional) is a type of string
+  expires_at = var.expires_at
+  # group_access - (required) is a type of string
+  group_access = var.group_access
+  # group_id - (required) is a type of string
+  group_id = var.group_id
+  # share_group_id - (required) is a type of number
   share_group_id = var.share_group_id
 }
 ```

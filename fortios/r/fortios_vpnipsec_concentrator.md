@@ -80,13 +80,17 @@ variable "member" {
 
 ```terraform
 resource "fortios_vpnipsec_concentrator" "this" {
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  name                  = var.name
-  src_check             = var.src_check
+  # name - (optional) is a type of string
+  name = var.name
+  # src_check - (optional) is a type of string
+  src_check = var.src_check
 
   dynamic "member" {
     for_each = var.member
     content {
+      # name - (optional) is a type of string
       name = member.value["name"]
     }
   }

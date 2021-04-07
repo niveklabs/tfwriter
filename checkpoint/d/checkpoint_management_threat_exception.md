@@ -97,13 +97,20 @@ variable "uid" {
 
 ```terraform
 data "checkpoint_management_threat_exception" "this" {
+  # exception_group_name - (optional) is a type of string
   exception_group_name = var.exception_group_name
-  exception_group_uid  = var.exception_group_uid
-  layer                = var.layer
-  name                 = var.name
-  rule_name            = var.rule_name
-  rule_uid             = var.rule_uid
-  uid                  = var.uid
+  # exception_group_uid - (optional) is a type of string
+  exception_group_uid = var.exception_group_uid
+  # layer - (required) is a type of string
+  layer = var.layer
+  # name - (optional) is a type of string
+  name = var.name
+  # rule_name - (optional) is a type of string
+  rule_name = var.rule_name
+  # rule_uid - (optional) is a type of string
+  rule_uid = var.rule_uid
+  # uid - (optional) is a type of string
+  uid = var.uid
 }
 ```
 

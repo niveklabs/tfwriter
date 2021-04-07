@@ -104,14 +104,22 @@ variable "vsys" {
 
 ```terraform
 resource "panos_layer2_subinterface" "this" {
-  comment          = var.comment
-  interface_type   = var.interface_type
-  name             = var.name
-  netflow_profile  = var.netflow_profile
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # interface_type - (optional) is a type of string
+  interface_type = var.interface_type
+  # name - (required) is a type of string
+  name = var.name
+  # netflow_profile - (optional) is a type of string
+  netflow_profile = var.netflow_profile
+  # parent_interface - (required) is a type of string
   parent_interface = var.parent_interface
-  parent_mode      = var.parent_mode
-  tag              = var.tag
-  vsys             = var.vsys
+  # parent_mode - (optional) is a type of string
+  parent_mode = var.parent_mode
+  # tag - (optional) is a type of number
+  tag = var.tag
+  # vsys - (optional) is a type of string
+  vsys = var.vsys
 }
 ```
 

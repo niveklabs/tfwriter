@@ -81,11 +81,16 @@ variable "protocol" {
 
 ```terraform
 data "alicloud_slb_listeners" "this" {
+  # description_regex - (optional) is a type of string
   description_regex = var.description_regex
-  frontend_port     = var.frontend_port
-  load_balancer_id  = var.load_balancer_id
-  output_file       = var.output_file
-  protocol          = var.protocol
+  # frontend_port - (optional) is a type of number
+  frontend_port = var.frontend_port
+  # load_balancer_id - (required) is a type of string
+  load_balancer_id = var.load_balancer_id
+  # output_file - (optional) is a type of string
+  output_file = var.output_file
+  # protocol - (optional) is a type of string
+  protocol = var.protocol
 }
 ```
 

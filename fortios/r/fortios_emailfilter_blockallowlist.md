@@ -104,23 +104,36 @@ variable "entries" {
 
 ```terraform
 resource "fortios_emailfilter_blockallowlist" "this" {
-  comment               = var.comment
+  # comment - (optional) is a type of string
+  comment = var.comment
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fosid                 = var.fosid
-  name                  = var.name
+  # fosid - (optional) is a type of number
+  fosid = var.fosid
+  # name - (optional) is a type of string
+  name = var.name
 
   dynamic "entries" {
     for_each = var.entries
     content {
-      action        = entries.value["action"]
-      addr_type     = entries.value["addr_type"]
+      # action - (optional) is a type of string
+      action = entries.value["action"]
+      # addr_type - (optional) is a type of string
+      addr_type = entries.value["addr_type"]
+      # email_pattern - (optional) is a type of string
       email_pattern = entries.value["email_pattern"]
-      id            = entries.value["id"]
-      ip4_subnet    = entries.value["ip4_subnet"]
-      ip6_subnet    = entries.value["ip6_subnet"]
-      pattern_type  = entries.value["pattern_type"]
-      status        = entries.value["status"]
-      type          = entries.value["type"]
+      # id - (optional) is a type of number
+      id = entries.value["id"]
+      # ip4_subnet - (optional) is a type of string
+      ip4_subnet = entries.value["ip4_subnet"]
+      # ip6_subnet - (optional) is a type of string
+      ip6_subnet = entries.value["ip6_subnet"]
+      # pattern_type - (optional) is a type of string
+      pattern_type = entries.value["pattern_type"]
+      # status - (optional) is a type of string
+      status = entries.value["status"]
+      # type - (optional) is a type of string
+      type = entries.value["type"]
     }
   }
 

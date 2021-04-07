@@ -49,6 +49,7 @@ variable "slug" {
 
 ```terraform
 data "digitalocean_region" "this" {
+  # slug - (required) is a type of string
   slug = var.slug
 }
 ```

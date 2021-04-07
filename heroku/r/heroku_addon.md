@@ -72,10 +72,14 @@ variable "plan" {
 
 ```terraform
 resource "heroku_addon" "this" {
-  app    = var.app
+  # app - (required) is a type of string
+  app = var.app
+  # config - (optional) is a type of map of string
   config = var.config
-  name   = var.name
-  plan   = var.plan
+  # name - (optional) is a type of string
+  name = var.name
+  # plan - (required) is a type of string
+  plan = var.plan
 }
 ```
 

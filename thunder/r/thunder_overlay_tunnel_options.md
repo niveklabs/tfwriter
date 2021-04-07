@@ -98,13 +98,20 @@ variable "vxlan_dest_port" {
 
 ```terraform
 resource "thunder_overlay_tunnel_options" "this" {
-  gateway_mac            = var.gateway_mac
-  ip_dscp_preserve       = var.ip_dscp_preserve
-  nvgre_disable_flow_id  = var.nvgre_disable_flow_id
+  # gateway_mac - (optional) is a type of string
+  gateway_mac = var.gateway_mac
+  # ip_dscp_preserve - (optional) is a type of number
+  ip_dscp_preserve = var.ip_dscp_preserve
+  # nvgre_disable_flow_id - (optional) is a type of number
+  nvgre_disable_flow_id = var.nvgre_disable_flow_id
+  # nvgre_key_mode_lower24 - (optional) is a type of number
   nvgre_key_mode_lower24 = var.nvgre_key_mode_lower24
+  # tcp_mss_adjust_disable - (optional) is a type of number
   tcp_mss_adjust_disable = var.tcp_mss_adjust_disable
-  uuid                   = var.uuid
-  vxlan_dest_port        = var.vxlan_dest_port
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
+  # vxlan_dest_port - (optional) is a type of number
+  vxlan_dest_port = var.vxlan_dest_port
 }
 ```
 

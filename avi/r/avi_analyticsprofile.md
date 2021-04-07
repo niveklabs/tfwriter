@@ -765,102 +765,185 @@ variable "sensitive_log_profile" {
 
 ```terraform
 resource "avi_analyticsprofile" "this" {
-  apdex_response_threshold                        = var.apdex_response_threshold
-  apdex_response_tolerated_factor                 = var.apdex_response_tolerated_factor
-  apdex_rtt_threshold                             = var.apdex_rtt_threshold
-  apdex_rtt_tolerated_factor                      = var.apdex_rtt_tolerated_factor
-  apdex_rum_threshold                             = var.apdex_rum_threshold
-  apdex_rum_tolerated_factor                      = var.apdex_rum_tolerated_factor
-  apdex_server_response_threshold                 = var.apdex_server_response_threshold
-  apdex_server_response_tolerated_factor          = var.apdex_server_response_tolerated_factor
-  apdex_server_rtt_threshold                      = var.apdex_server_rtt_threshold
-  apdex_server_rtt_tolerated_factor               = var.apdex_server_rtt_tolerated_factor
-  conn_lossy_ooo_threshold                        = var.conn_lossy_ooo_threshold
-  conn_lossy_timeo_rexmt_threshold                = var.conn_lossy_timeo_rexmt_threshold
-  conn_lossy_total_rexmt_threshold                = var.conn_lossy_total_rexmt_threshold
-  conn_lossy_zero_win_size_event_threshold        = var.conn_lossy_zero_win_size_event_threshold
-  conn_server_lossy_ooo_threshold                 = var.conn_server_lossy_ooo_threshold
-  conn_server_lossy_timeo_rexmt_threshold         = var.conn_server_lossy_timeo_rexmt_threshold
-  conn_server_lossy_total_rexmt_threshold         = var.conn_server_lossy_total_rexmt_threshold
+  # apdex_response_threshold - (optional) is a type of number
+  apdex_response_threshold = var.apdex_response_threshold
+  # apdex_response_tolerated_factor - (optional) is a type of number
+  apdex_response_tolerated_factor = var.apdex_response_tolerated_factor
+  # apdex_rtt_threshold - (optional) is a type of number
+  apdex_rtt_threshold = var.apdex_rtt_threshold
+  # apdex_rtt_tolerated_factor - (optional) is a type of number
+  apdex_rtt_tolerated_factor = var.apdex_rtt_tolerated_factor
+  # apdex_rum_threshold - (optional) is a type of number
+  apdex_rum_threshold = var.apdex_rum_threshold
+  # apdex_rum_tolerated_factor - (optional) is a type of number
+  apdex_rum_tolerated_factor = var.apdex_rum_tolerated_factor
+  # apdex_server_response_threshold - (optional) is a type of number
+  apdex_server_response_threshold = var.apdex_server_response_threshold
+  # apdex_server_response_tolerated_factor - (optional) is a type of number
+  apdex_server_response_tolerated_factor = var.apdex_server_response_tolerated_factor
+  # apdex_server_rtt_threshold - (optional) is a type of number
+  apdex_server_rtt_threshold = var.apdex_server_rtt_threshold
+  # apdex_server_rtt_tolerated_factor - (optional) is a type of number
+  apdex_server_rtt_tolerated_factor = var.apdex_server_rtt_tolerated_factor
+  # conn_lossy_ooo_threshold - (optional) is a type of number
+  conn_lossy_ooo_threshold = var.conn_lossy_ooo_threshold
+  # conn_lossy_timeo_rexmt_threshold - (optional) is a type of number
+  conn_lossy_timeo_rexmt_threshold = var.conn_lossy_timeo_rexmt_threshold
+  # conn_lossy_total_rexmt_threshold - (optional) is a type of number
+  conn_lossy_total_rexmt_threshold = var.conn_lossy_total_rexmt_threshold
+  # conn_lossy_zero_win_size_event_threshold - (optional) is a type of number
+  conn_lossy_zero_win_size_event_threshold = var.conn_lossy_zero_win_size_event_threshold
+  # conn_server_lossy_ooo_threshold - (optional) is a type of number
+  conn_server_lossy_ooo_threshold = var.conn_server_lossy_ooo_threshold
+  # conn_server_lossy_timeo_rexmt_threshold - (optional) is a type of number
+  conn_server_lossy_timeo_rexmt_threshold = var.conn_server_lossy_timeo_rexmt_threshold
+  # conn_server_lossy_total_rexmt_threshold - (optional) is a type of number
+  conn_server_lossy_total_rexmt_threshold = var.conn_server_lossy_total_rexmt_threshold
+  # conn_server_lossy_zero_win_size_event_threshold - (optional) is a type of number
   conn_server_lossy_zero_win_size_event_threshold = var.conn_server_lossy_zero_win_size_event_threshold
-  description                                     = var.description
-  disable_ondemand_metrics                        = var.disable_ondemand_metrics
-  disable_se_analytics                            = var.disable_se_analytics
-  disable_server_analytics                        = var.disable_server_analytics
-  disable_vs_analytics                            = var.disable_vs_analytics
-  enable_advanced_analytics                       = var.enable_advanced_analytics
-  exclude_client_close_before_request_as_error    = var.exclude_client_close_before_request_as_error
-  exclude_dns_policy_drop_as_significant          = var.exclude_dns_policy_drop_as_significant
-  exclude_gs_down_as_error                        = var.exclude_gs_down_as_error
-  exclude_http_error_codes                        = var.exclude_http_error_codes
-  exclude_invalid_dns_domain_as_error             = var.exclude_invalid_dns_domain_as_error
-  exclude_invalid_dns_query_as_error              = var.exclude_invalid_dns_query_as_error
-  exclude_no_dns_record_as_error                  = var.exclude_no_dns_record_as_error
-  exclude_no_valid_gs_member_as_error             = var.exclude_no_valid_gs_member_as_error
-  exclude_persistence_change_as_error             = var.exclude_persistence_change_as_error
-  exclude_server_dns_error_as_error               = var.exclude_server_dns_error_as_error
-  exclude_server_tcp_reset_as_error               = var.exclude_server_tcp_reset_as_error
-  exclude_sip_error_codes                         = var.exclude_sip_error_codes
-  exclude_syn_retransmit_as_error                 = var.exclude_syn_retransmit_as_error
-  exclude_tcp_reset_as_error                      = var.exclude_tcp_reset_as_error
-  exclude_unsupported_dns_query_as_error          = var.exclude_unsupported_dns_query_as_error
-  healthscore_max_server_limit                    = var.healthscore_max_server_limit
-  hs_event_throttle_window                        = var.hs_event_throttle_window
-  hs_max_anomaly_penalty                          = var.hs_max_anomaly_penalty
-  hs_max_resources_penalty                        = var.hs_max_resources_penalty
-  hs_max_security_penalty                         = var.hs_max_security_penalty
-  hs_min_dos_rate                                 = var.hs_min_dos_rate
-  hs_performance_boost                            = var.hs_performance_boost
-  hs_pscore_traffic_threshold_l4_client           = var.hs_pscore_traffic_threshold_l4_client
-  hs_pscore_traffic_threshold_l4_server           = var.hs_pscore_traffic_threshold_l4_server
-  hs_security_certscore_expired                   = var.hs_security_certscore_expired
-  hs_security_certscore_gt30d                     = var.hs_security_certscore_gt30d
-  hs_security_certscore_le07d                     = var.hs_security_certscore_le07d
-  hs_security_certscore_le30d                     = var.hs_security_certscore_le30d
-  hs_security_chain_invalidity_penalty            = var.hs_security_chain_invalidity_penalty
-  hs_security_cipherscore_eq000b                  = var.hs_security_cipherscore_eq000b
-  hs_security_cipherscore_ge128b                  = var.hs_security_cipherscore_ge128b
-  hs_security_cipherscore_lt128b                  = var.hs_security_cipherscore_lt128b
-  hs_security_encalgo_score_none                  = var.hs_security_encalgo_score_none
-  hs_security_encalgo_score_rc4                   = var.hs_security_encalgo_score_rc4
-  hs_security_hsts_penalty                        = var.hs_security_hsts_penalty
-  hs_security_nonpfs_penalty                      = var.hs_security_nonpfs_penalty
-  hs_security_selfsignedcert_penalty              = var.hs_security_selfsignedcert_penalty
-  hs_security_ssl30_score                         = var.hs_security_ssl30_score
-  hs_security_tls10_score                         = var.hs_security_tls10_score
-  hs_security_tls11_score                         = var.hs_security_tls11_score
-  hs_security_tls12_score                         = var.hs_security_tls12_score
-  hs_security_weak_signature_algo_penalty         = var.hs_security_weak_signature_algo_penalty
-  name                                            = var.name
-  ondemand_metrics_idle_timeout                   = var.ondemand_metrics_idle_timeout
-  resp_code_block                                 = var.resp_code_block
-  sip_log_depth                                   = var.sip_log_depth
-  tenant_ref                                      = var.tenant_ref
-  uuid                                            = var.uuid
+  # description - (optional) is a type of string
+  description = var.description
+  # disable_ondemand_metrics - (optional) is a type of bool
+  disable_ondemand_metrics = var.disable_ondemand_metrics
+  # disable_se_analytics - (optional) is a type of bool
+  disable_se_analytics = var.disable_se_analytics
+  # disable_server_analytics - (optional) is a type of bool
+  disable_server_analytics = var.disable_server_analytics
+  # disable_vs_analytics - (optional) is a type of bool
+  disable_vs_analytics = var.disable_vs_analytics
+  # enable_advanced_analytics - (optional) is a type of bool
+  enable_advanced_analytics = var.enable_advanced_analytics
+  # exclude_client_close_before_request_as_error - (optional) is a type of bool
+  exclude_client_close_before_request_as_error = var.exclude_client_close_before_request_as_error
+  # exclude_dns_policy_drop_as_significant - (optional) is a type of bool
+  exclude_dns_policy_drop_as_significant = var.exclude_dns_policy_drop_as_significant
+  # exclude_gs_down_as_error - (optional) is a type of bool
+  exclude_gs_down_as_error = var.exclude_gs_down_as_error
+  # exclude_http_error_codes - (optional) is a type of list of number
+  exclude_http_error_codes = var.exclude_http_error_codes
+  # exclude_invalid_dns_domain_as_error - (optional) is a type of bool
+  exclude_invalid_dns_domain_as_error = var.exclude_invalid_dns_domain_as_error
+  # exclude_invalid_dns_query_as_error - (optional) is a type of bool
+  exclude_invalid_dns_query_as_error = var.exclude_invalid_dns_query_as_error
+  # exclude_no_dns_record_as_error - (optional) is a type of bool
+  exclude_no_dns_record_as_error = var.exclude_no_dns_record_as_error
+  # exclude_no_valid_gs_member_as_error - (optional) is a type of bool
+  exclude_no_valid_gs_member_as_error = var.exclude_no_valid_gs_member_as_error
+  # exclude_persistence_change_as_error - (optional) is a type of bool
+  exclude_persistence_change_as_error = var.exclude_persistence_change_as_error
+  # exclude_server_dns_error_as_error - (optional) is a type of bool
+  exclude_server_dns_error_as_error = var.exclude_server_dns_error_as_error
+  # exclude_server_tcp_reset_as_error - (optional) is a type of bool
+  exclude_server_tcp_reset_as_error = var.exclude_server_tcp_reset_as_error
+  # exclude_sip_error_codes - (optional) is a type of list of number
+  exclude_sip_error_codes = var.exclude_sip_error_codes
+  # exclude_syn_retransmit_as_error - (optional) is a type of bool
+  exclude_syn_retransmit_as_error = var.exclude_syn_retransmit_as_error
+  # exclude_tcp_reset_as_error - (optional) is a type of bool
+  exclude_tcp_reset_as_error = var.exclude_tcp_reset_as_error
+  # exclude_unsupported_dns_query_as_error - (optional) is a type of bool
+  exclude_unsupported_dns_query_as_error = var.exclude_unsupported_dns_query_as_error
+  # healthscore_max_server_limit - (optional) is a type of number
+  healthscore_max_server_limit = var.healthscore_max_server_limit
+  # hs_event_throttle_window - (optional) is a type of number
+  hs_event_throttle_window = var.hs_event_throttle_window
+  # hs_max_anomaly_penalty - (optional) is a type of number
+  hs_max_anomaly_penalty = var.hs_max_anomaly_penalty
+  # hs_max_resources_penalty - (optional) is a type of number
+  hs_max_resources_penalty = var.hs_max_resources_penalty
+  # hs_max_security_penalty - (optional) is a type of number
+  hs_max_security_penalty = var.hs_max_security_penalty
+  # hs_min_dos_rate - (optional) is a type of number
+  hs_min_dos_rate = var.hs_min_dos_rate
+  # hs_performance_boost - (optional) is a type of number
+  hs_performance_boost = var.hs_performance_boost
+  # hs_pscore_traffic_threshold_l4_client - (optional) is a type of number
+  hs_pscore_traffic_threshold_l4_client = var.hs_pscore_traffic_threshold_l4_client
+  # hs_pscore_traffic_threshold_l4_server - (optional) is a type of number
+  hs_pscore_traffic_threshold_l4_server = var.hs_pscore_traffic_threshold_l4_server
+  # hs_security_certscore_expired - (optional) is a type of number
+  hs_security_certscore_expired = var.hs_security_certscore_expired
+  # hs_security_certscore_gt30d - (optional) is a type of number
+  hs_security_certscore_gt30d = var.hs_security_certscore_gt30d
+  # hs_security_certscore_le07d - (optional) is a type of number
+  hs_security_certscore_le07d = var.hs_security_certscore_le07d
+  # hs_security_certscore_le30d - (optional) is a type of number
+  hs_security_certscore_le30d = var.hs_security_certscore_le30d
+  # hs_security_chain_invalidity_penalty - (optional) is a type of number
+  hs_security_chain_invalidity_penalty = var.hs_security_chain_invalidity_penalty
+  # hs_security_cipherscore_eq000b - (optional) is a type of number
+  hs_security_cipherscore_eq000b = var.hs_security_cipherscore_eq000b
+  # hs_security_cipherscore_ge128b - (optional) is a type of number
+  hs_security_cipherscore_ge128b = var.hs_security_cipherscore_ge128b
+  # hs_security_cipherscore_lt128b - (optional) is a type of number
+  hs_security_cipherscore_lt128b = var.hs_security_cipherscore_lt128b
+  # hs_security_encalgo_score_none - (optional) is a type of number
+  hs_security_encalgo_score_none = var.hs_security_encalgo_score_none
+  # hs_security_encalgo_score_rc4 - (optional) is a type of number
+  hs_security_encalgo_score_rc4 = var.hs_security_encalgo_score_rc4
+  # hs_security_hsts_penalty - (optional) is a type of number
+  hs_security_hsts_penalty = var.hs_security_hsts_penalty
+  # hs_security_nonpfs_penalty - (optional) is a type of number
+  hs_security_nonpfs_penalty = var.hs_security_nonpfs_penalty
+  # hs_security_selfsignedcert_penalty - (optional) is a type of number
+  hs_security_selfsignedcert_penalty = var.hs_security_selfsignedcert_penalty
+  # hs_security_ssl30_score - (optional) is a type of number
+  hs_security_ssl30_score = var.hs_security_ssl30_score
+  # hs_security_tls10_score - (optional) is a type of number
+  hs_security_tls10_score = var.hs_security_tls10_score
+  # hs_security_tls11_score - (optional) is a type of number
+  hs_security_tls11_score = var.hs_security_tls11_score
+  # hs_security_tls12_score - (optional) is a type of number
+  hs_security_tls12_score = var.hs_security_tls12_score
+  # hs_security_weak_signature_algo_penalty - (optional) is a type of number
+  hs_security_weak_signature_algo_penalty = var.hs_security_weak_signature_algo_penalty
+  # name - (required) is a type of string
+  name = var.name
+  # ondemand_metrics_idle_timeout - (optional) is a type of number
+  ondemand_metrics_idle_timeout = var.ondemand_metrics_idle_timeout
+  # resp_code_block - (optional) is a type of list of string
+  resp_code_block = var.resp_code_block
+  # sip_log_depth - (optional) is a type of number
+  sip_log_depth = var.sip_log_depth
+  # tenant_ref - (optional) is a type of string
+  tenant_ref = var.tenant_ref
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "client_log_config" {
     for_each = var.client_log_config
     content {
+      # enable_significant_log_collection - (optional) is a type of bool
       enable_significant_log_collection = client_log_config.value["enable_significant_log_collection"]
-      filtered_log_processing           = client_log_config.value["filtered_log_processing"]
-      non_significant_log_processing    = client_log_config.value["non_significant_log_processing"]
-      significant_log_processing        = client_log_config.value["significant_log_processing"]
+      # filtered_log_processing - (optional) is a type of string
+      filtered_log_processing = client_log_config.value["filtered_log_processing"]
+      # non_significant_log_processing - (optional) is a type of string
+      non_significant_log_processing = client_log_config.value["non_significant_log_processing"]
+      # significant_log_processing - (optional) is a type of string
+      significant_log_processing = client_log_config.value["significant_log_processing"]
     }
   }
 
   dynamic "client_log_streaming_config" {
     for_each = var.client_log_streaming_config
     content {
-      external_server      = client_log_streaming_config.value["external_server"]
+      # external_server - (optional) is a type of string
+      external_server = client_log_streaming_config.value["external_server"]
+      # external_server_port - (optional) is a type of number
       external_server_port = client_log_streaming_config.value["external_server_port"]
-      log_types_to_send    = client_log_streaming_config.value["log_types_to_send"]
-      max_logs_per_second  = client_log_streaming_config.value["max_logs_per_second"]
-      protocol             = client_log_streaming_config.value["protocol"]
+      # log_types_to_send - (optional) is a type of string
+      log_types_to_send = client_log_streaming_config.value["log_types_to_send"]
+      # max_logs_per_second - (optional) is a type of number
+      max_logs_per_second = client_log_streaming_config.value["max_logs_per_second"]
+      # protocol - (optional) is a type of string
+      protocol = client_log_streaming_config.value["protocol"]
 
       dynamic "format_config" {
         for_each = client_log_streaming_config.value.format_config
         content {
-          format          = format_config.value["format"]
+          # format - (optional) is a type of string
+          format = format_config.value["format"]
+          # included_fields - (optional) is a type of list of string
           included_fields = format_config.value["included_fields"]
         }
       }
@@ -868,11 +951,16 @@ resource "avi_analyticsprofile" "this" {
       dynamic "syslog_config" {
         for_each = client_log_streaming_config.value.syslog_config
         content {
-          facility                     = syslog_config.value["facility"]
-          filtered_log_severity        = syslog_config.value["filtered_log_severity"]
-          hostname                     = syslog_config.value["hostname"]
+          # facility - (optional) is a type of number
+          facility = syslog_config.value["facility"]
+          # filtered_log_severity - (optional) is a type of number
+          filtered_log_severity = syslog_config.value["filtered_log_severity"]
+          # hostname - (optional) is a type of string
+          hostname = syslog_config.value["hostname"]
+          # non_significant_log_severity - (optional) is a type of number
           non_significant_log_severity = syslog_config.value["non_significant_log_severity"]
-          significant_log_severity     = syslog_config.value["significant_log_severity"]
+          # significant_log_severity - (optional) is a type of number
+          significant_log_severity = syslog_config.value["significant_log_severity"]
         }
       }
 
@@ -882,8 +970,10 @@ resource "avi_analyticsprofile" "this" {
   dynamic "ranges" {
     for_each = var.ranges
     content {
+      # begin - (required) is a type of number
       begin = ranges.value["begin"]
-      end   = ranges.value["end"]
+      # end - (required) is a type of number
+      end = ranges.value["end"]
     }
   }
 
@@ -894,16 +984,23 @@ resource "avi_analyticsprofile" "this" {
       dynamic "header_field_rules" {
         for_each = sensitive_log_profile.value.header_field_rules
         content {
-          action  = header_field_rules.value["action"]
+          # action - (optional) is a type of string
+          action = header_field_rules.value["action"]
+          # enabled - (optional) is a type of bool
           enabled = header_field_rules.value["enabled"]
-          index   = header_field_rules.value["index"]
-          name    = header_field_rules.value["name"]
+          # index - (optional) is a type of number
+          index = header_field_rules.value["index"]
+          # name - (optional) is a type of string
+          name = header_field_rules.value["name"]
 
           dynamic "match" {
             for_each = header_field_rules.value.match
             content {
-              match_criteria    = match.value["match_criteria"]
-              match_str         = match.value["match_str"]
+              # match_criteria - (required) is a type of string
+              match_criteria = match.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = match.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = match.value["string_group_refs"]
             }
           }
@@ -914,16 +1011,23 @@ resource "avi_analyticsprofile" "this" {
       dynamic "waf_field_rules" {
         for_each = sensitive_log_profile.value.waf_field_rules
         content {
-          action  = waf_field_rules.value["action"]
+          # action - (optional) is a type of string
+          action = waf_field_rules.value["action"]
+          # enabled - (optional) is a type of bool
           enabled = waf_field_rules.value["enabled"]
-          index   = waf_field_rules.value["index"]
-          name    = waf_field_rules.value["name"]
+          # index - (optional) is a type of number
+          index = waf_field_rules.value["index"]
+          # name - (optional) is a type of string
+          name = waf_field_rules.value["name"]
 
           dynamic "match" {
             for_each = waf_field_rules.value.match
             content {
-              match_criteria    = match.value["match_criteria"]
-              match_str         = match.value["match_str"]
+              # match_criteria - (required) is a type of string
+              match_criteria = match.value["match_criteria"]
+              # match_str - (optional) is a type of list of string
+              match_str = match.value["match_str"]
+              # string_group_refs - (optional) is a type of list of string
               string_group_refs = match.value["string_group_refs"]
             }
           }

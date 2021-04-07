@@ -66,9 +66,12 @@ variable "site_path" {
 
 ```terraform
 data "nsxt_policy_edge_cluster" "this" {
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # display_name - (optional) is a type of string
   display_name = var.display_name
-  site_path    = var.site_path
+  # site_path - (optional) is a type of string
+  site_path = var.site_path
 }
 ```
 

@@ -87,11 +87,17 @@ variable "repository_id" {
 
 ```terraform
 resource "azuredevops_git_permissions" "this" {
-  branch_name   = var.branch_name
-  permissions   = var.permissions
-  principal     = var.principal
-  project_id    = var.project_id
-  replace       = var.replace
+  # branch_name - (optional) is a type of string
+  branch_name = var.branch_name
+  # permissions - (required) is a type of map of string
+  permissions = var.permissions
+  # principal - (required) is a type of string
+  principal = var.principal
+  # project_id - (required) is a type of string
+  project_id = var.project_id
+  # replace - (optional) is a type of bool
+  replace = var.replace
+  # repository_id - (optional) is a type of string
   repository_id = var.repository_id
 }
 ```

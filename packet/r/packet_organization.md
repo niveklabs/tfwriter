@@ -81,11 +81,16 @@ variable "website" {
 
 ```terraform
 resource "packet_organization" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  logo        = var.logo
-  name        = var.name
-  twitter     = var.twitter
-  website     = var.website
+  # logo - (optional) is a type of string
+  logo = var.logo
+  # name - (required) is a type of string
+  name = var.name
+  # twitter - (optional) is a type of string
+  twitter = var.twitter
+  # website - (optional) is a type of string
+  website = var.website
 }
 ```
 

@@ -168,22 +168,38 @@ variable "wiki_page_events" {
 
 ```terraform
 resource "gitlab_project_hook" "this" {
+  # confidential_issues_events - (optional) is a type of bool
   confidential_issues_events = var.confidential_issues_events
-  confidential_note_events   = var.confidential_note_events
-  deployment_events          = var.deployment_events
-  enable_ssl_verification    = var.enable_ssl_verification
-  issues_events              = var.issues_events
-  job_events                 = var.job_events
-  merge_requests_events      = var.merge_requests_events
-  note_events                = var.note_events
-  pipeline_events            = var.pipeline_events
-  project                    = var.project
-  push_events                = var.push_events
-  push_events_branch_filter  = var.push_events_branch_filter
-  tag_push_events            = var.tag_push_events
-  token                      = var.token
-  url                        = var.url
-  wiki_page_events           = var.wiki_page_events
+  # confidential_note_events - (optional) is a type of bool
+  confidential_note_events = var.confidential_note_events
+  # deployment_events - (optional) is a type of bool
+  deployment_events = var.deployment_events
+  # enable_ssl_verification - (optional) is a type of bool
+  enable_ssl_verification = var.enable_ssl_verification
+  # issues_events - (optional) is a type of bool
+  issues_events = var.issues_events
+  # job_events - (optional) is a type of bool
+  job_events = var.job_events
+  # merge_requests_events - (optional) is a type of bool
+  merge_requests_events = var.merge_requests_events
+  # note_events - (optional) is a type of bool
+  note_events = var.note_events
+  # pipeline_events - (optional) is a type of bool
+  pipeline_events = var.pipeline_events
+  # project - (required) is a type of string
+  project = var.project
+  # push_events - (optional) is a type of bool
+  push_events = var.push_events
+  # push_events_branch_filter - (optional) is a type of string
+  push_events_branch_filter = var.push_events_branch_filter
+  # tag_push_events - (optional) is a type of bool
+  tag_push_events = var.tag_push_events
+  # token - (optional) is a type of string
+  token = var.token
+  # url - (required) is a type of string
+  url = var.url
+  # wiki_page_events - (optional) is a type of bool
+  wiki_page_events = var.wiki_page_events
 }
 ```
 

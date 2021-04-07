@@ -58,7 +58,9 @@ variable "status" {
 
 ```terraform
 resource "fortios_switchcontrollerptp_policy" "this" {
-  name   = var.name
+  # name - (optional) is a type of string
+  name = var.name
+  # status - (optional) is a type of string
   status = var.status
 }
 ```

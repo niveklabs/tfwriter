@@ -66,8 +66,11 @@ variable "result_output_file" {
 
 ```terraform
 data "tencentcloud_tcaplus_clusters" "this" {
-  cluster_id         = var.cluster_id
-  cluster_name       = var.cluster_name
+  # cluster_id - (optional) is a type of string
+  cluster_id = var.cluster_id
+  # cluster_name - (optional) is a type of string
+  cluster_name = var.cluster_name
+  # result_output_file - (optional) is a type of string
   result_output_file = var.result_output_file
 }
 ```

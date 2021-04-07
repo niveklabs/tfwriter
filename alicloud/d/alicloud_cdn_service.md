@@ -58,7 +58,9 @@ variable "internet_charge_type" {
 
 ```terraform
 data "alicloud_cdn_service" "this" {
-  enable               = var.enable
+  # enable - (optional) is a type of string
+  enable = var.enable
+  # internet_charge_type - (optional) is a type of string
   internet_charge_type = var.internet_charge_type
 }
 ```

@@ -73,10 +73,14 @@ variable "zone" {
 
 ```terraform
 data "exoscale_compute_ipaddress" "this" {
+  # description - (optional) is a type of string
   description = var.description
-  ip_address  = var.ip_address
-  tags        = var.tags
-  zone        = var.zone
+  # ip_address - (optional) is a type of string
+  ip_address = var.ip_address
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # zone - (required) is a type of string
+  zone = var.zone
 }
 ```
 

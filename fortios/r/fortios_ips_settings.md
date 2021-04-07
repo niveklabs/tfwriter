@@ -74,9 +74,13 @@ variable "packet_log_post_attack" {
 
 ```terraform
 resource "fortios_ips_settings" "this" {
-  ips_packet_quota       = var.ips_packet_quota
-  packet_log_history     = var.packet_log_history
-  packet_log_memory      = var.packet_log_memory
+  # ips_packet_quota - (optional) is a type of number
+  ips_packet_quota = var.ips_packet_quota
+  # packet_log_history - (optional) is a type of number
+  packet_log_history = var.packet_log_history
+  # packet_log_memory - (optional) is a type of number
+  packet_log_memory = var.packet_log_memory
+  # packet_log_post_attack - (optional) is a type of number
   packet_log_post_attack = var.packet_log_post_attack
 }
 ```

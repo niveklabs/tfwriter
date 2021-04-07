@@ -350,49 +350,83 @@ variable "timeouts" {
 
 ```terraform
 resource "alicloud_cs_kubernetes_node_pool" "this" {
-  auto_renew                    = var.auto_renew
-  auto_renew_period             = var.auto_renew_period
-  cluster_id                    = var.cluster_id
-  image_id                      = var.image_id
-  install_cloud_monitor         = var.install_cloud_monitor
-  instance_charge_type          = var.instance_charge_type
-  instance_types                = var.instance_types
-  key_name                      = var.key_name
-  kms_encrypted_password        = var.kms_encrypted_password
-  name                          = var.name
-  node_count                    = var.node_count
-  node_name_mode                = var.node_name_mode
-  password                      = var.password
-  period                        = var.period
-  period_unit                   = var.period_unit
-  security_group_id             = var.security_group_id
-  system_disk_category          = var.system_disk_category
+  # auto_renew - (optional) is a type of bool
+  auto_renew = var.auto_renew
+  # auto_renew_period - (optional) is a type of number
+  auto_renew_period = var.auto_renew_period
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # image_id - (optional) is a type of string
+  image_id = var.image_id
+  # install_cloud_monitor - (optional) is a type of bool
+  install_cloud_monitor = var.install_cloud_monitor
+  # instance_charge_type - (optional) is a type of string
+  instance_charge_type = var.instance_charge_type
+  # instance_types - (required) is a type of list of string
+  instance_types = var.instance_types
+  # key_name - (optional) is a type of string
+  key_name = var.key_name
+  # kms_encrypted_password - (optional) is a type of string
+  kms_encrypted_password = var.kms_encrypted_password
+  # name - (required) is a type of string
+  name = var.name
+  # node_count - (optional) is a type of number
+  node_count = var.node_count
+  # node_name_mode - (optional) is a type of string
+  node_name_mode = var.node_name_mode
+  # password - (optional) is a type of string
+  password = var.password
+  # period - (optional) is a type of number
+  period = var.period
+  # period_unit - (optional) is a type of string
+  period_unit = var.period_unit
+  # security_group_id - (optional) is a type of string
+  security_group_id = var.security_group_id
+  # system_disk_category - (optional) is a type of string
+  system_disk_category = var.system_disk_category
+  # system_disk_performance_level - (optional) is a type of string
   system_disk_performance_level = var.system_disk_performance_level
-  system_disk_size              = var.system_disk_size
-  tags                          = var.tags
-  unschedulable                 = var.unschedulable
-  user_data                     = var.user_data
-  vswitch_ids                   = var.vswitch_ids
+  # system_disk_size - (optional) is a type of number
+  system_disk_size = var.system_disk_size
+  # tags - (optional) is a type of map of string
+  tags = var.tags
+  # unschedulable - (optional) is a type of bool
+  unschedulable = var.unschedulable
+  # user_data - (optional) is a type of string
+  user_data = var.user_data
+  # vswitch_ids - (required) is a type of list of string
+  vswitch_ids = var.vswitch_ids
 
   dynamic "data_disks" {
     for_each = var.data_disks
     content {
+      # auto_snapshot_policy_id - (optional) is a type of string
       auto_snapshot_policy_id = data_disks.value["auto_snapshot_policy_id"]
-      category                = data_disks.value["category"]
-      device                  = data_disks.value["device"]
-      encrypted               = data_disks.value["encrypted"]
-      kms_key_id              = data_disks.value["kms_key_id"]
-      name                    = data_disks.value["name"]
-      performance_level       = data_disks.value["performance_level"]
-      size                    = data_disks.value["size"]
-      snapshot_id             = data_disks.value["snapshot_id"]
+      # category - (optional) is a type of string
+      category = data_disks.value["category"]
+      # device - (optional) is a type of string
+      device = data_disks.value["device"]
+      # encrypted - (optional) is a type of string
+      encrypted = data_disks.value["encrypted"]
+      # kms_key_id - (optional) is a type of string
+      kms_key_id = data_disks.value["kms_key_id"]
+      # name - (optional) is a type of string
+      name = data_disks.value["name"]
+      # performance_level - (optional) is a type of string
+      performance_level = data_disks.value["performance_level"]
+      # size - (optional) is a type of number
+      size = data_disks.value["size"]
+      # snapshot_id - (optional) is a type of string
+      snapshot_id = data_disks.value["snapshot_id"]
     }
   }
 
   dynamic "labels" {
     for_each = var.labels
     content {
-      key   = labels.value["key"]
+      # key - (required) is a type of string
+      key = labels.value["key"]
+      # value - (optional) is a type of string
       value = labels.value["value"]
     }
   }
@@ -400,10 +434,15 @@ resource "alicloud_cs_kubernetes_node_pool" "this" {
   dynamic "management" {
     for_each = var.management
     content {
-      auto_repair      = management.value["auto_repair"]
-      auto_upgrade     = management.value["auto_upgrade"]
-      max_unavailable  = management.value["max_unavailable"]
-      surge            = management.value["surge"]
+      # auto_repair - (optional) is a type of bool
+      auto_repair = management.value["auto_repair"]
+      # auto_upgrade - (optional) is a type of bool
+      auto_upgrade = management.value["auto_upgrade"]
+      # max_unavailable - (required) is a type of number
+      max_unavailable = management.value["max_unavailable"]
+      # surge - (optional) is a type of number
+      surge = management.value["surge"]
+      # surge_percentage - (optional) is a type of number
       surge_percentage = management.value["surge_percentage"]
     }
   }
@@ -411,29 +450,41 @@ resource "alicloud_cs_kubernetes_node_pool" "this" {
   dynamic "scaling_config" {
     for_each = var.scaling_config
     content {
-      eip_bandwidth            = scaling_config.value["eip_bandwidth"]
+      # eip_bandwidth - (optional) is a type of number
+      eip_bandwidth = scaling_config.value["eip_bandwidth"]
+      # eip_internet_charge_type - (optional) is a type of string
       eip_internet_charge_type = scaling_config.value["eip_internet_charge_type"]
-      is_bond_eip              = scaling_config.value["is_bond_eip"]
-      max_size                 = scaling_config.value["max_size"]
-      min_size                 = scaling_config.value["min_size"]
-      type                     = scaling_config.value["type"]
+      # is_bond_eip - (optional) is a type of bool
+      is_bond_eip = scaling_config.value["is_bond_eip"]
+      # max_size - (required) is a type of number
+      max_size = scaling_config.value["max_size"]
+      # min_size - (required) is a type of number
+      min_size = scaling_config.value["min_size"]
+      # type - (optional) is a type of string
+      type = scaling_config.value["type"]
     }
   }
 
   dynamic "taints" {
     for_each = var.taints
     content {
+      # effect - (optional) is a type of string
       effect = taints.value["effect"]
-      key    = taints.value["key"]
-      value  = taints.value["value"]
+      # key - (required) is a type of string
+      key = taints.value["key"]
+      # value - (optional) is a type of string
+      value = taints.value["value"]
     }
   }
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }

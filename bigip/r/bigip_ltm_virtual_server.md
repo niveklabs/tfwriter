@@ -222,29 +222,52 @@ variable "vlans_enabled" {
 
 ```terraform
 resource "bigip_ltm_virtual_server" "this" {
-  client_profiles              = var.client_profiles
-  default_persistence_profile  = var.default_persistence_profile
-  description                  = var.description
-  destination                  = var.destination
+  # client_profiles - (optional) is a type of set of string
+  client_profiles = var.client_profiles
+  # default_persistence_profile - (optional) is a type of string
+  default_persistence_profile = var.default_persistence_profile
+  # description - (optional) is a type of string
+  description = var.description
+  # destination - (required) is a type of string
+  destination = var.destination
+  # fallback_persistence_profile - (optional) is a type of string
   fallback_persistence_profile = var.fallback_persistence_profile
-  ip_protocol                  = var.ip_protocol
-  irules                       = var.irules
-  mask                         = var.mask
-  name                         = var.name
-  persistence_profiles         = var.persistence_profiles
-  policies                     = var.policies
-  pool                         = var.pool
-  port                         = var.port
-  profiles                     = var.profiles
-  server_profiles              = var.server_profiles
-  snatpool                     = var.snatpool
-  source                       = var.source
-  source_address_translation   = var.source_address_translation
-  state                        = var.state
-  translate_address            = var.translate_address
-  translate_port               = var.translate_port
-  vlans                        = var.vlans
-  vlans_enabled                = var.vlans_enabled
+  # ip_protocol - (optional) is a type of string
+  ip_protocol = var.ip_protocol
+  # irules - (optional) is a type of list of string
+  irules = var.irules
+  # mask - (optional) is a type of string
+  mask = var.mask
+  # name - (required) is a type of string
+  name = var.name
+  # persistence_profiles - (optional) is a type of set of string
+  persistence_profiles = var.persistence_profiles
+  # policies - (optional) is a type of set of string
+  policies = var.policies
+  # pool - (optional) is a type of string
+  pool = var.pool
+  # port - (required) is a type of number
+  port = var.port
+  # profiles - (optional) is a type of set of string
+  profiles = var.profiles
+  # server_profiles - (optional) is a type of set of string
+  server_profiles = var.server_profiles
+  # snatpool - (optional) is a type of string
+  snatpool = var.snatpool
+  # source - (optional) is a type of string
+  source = var.source
+  # source_address_translation - (optional) is a type of string
+  source_address_translation = var.source_address_translation
+  # state - (optional) is a type of string
+  state = var.state
+  # translate_address - (optional) is a type of string
+  translate_address = var.translate_address
+  # translate_port - (optional) is a type of string
+  translate_port = var.translate_port
+  # vlans - (optional) is a type of set of string
+  vlans = var.vlans
+  # vlans_enabled - (optional) is a type of bool
+  vlans_enabled = var.vlans_enabled
 }
 ```
 

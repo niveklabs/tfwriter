@@ -64,8 +64,11 @@ variable "zone_slug" {
 
 ```terraform
 resource "cloudscale_server_group" "this" {
-  name      = var.name
-  type      = var.type
+  # name - (required) is a type of string
+  name = var.name
+  # type - (required) is a type of string
+  type = var.type
+  # zone_slug - (optional) is a type of string
   zone_slug = var.zone_slug
 }
 ```

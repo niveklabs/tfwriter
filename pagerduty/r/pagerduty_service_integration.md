@@ -89,12 +89,18 @@ variable "vendor" {
 
 ```terraform
 resource "pagerduty_service_integration" "this" {
+  # integration_email - (optional) is a type of string
   integration_email = var.integration_email
-  integration_key   = var.integration_key
-  name              = var.name
-  service           = var.service
-  type              = var.type
-  vendor            = var.vendor
+  # integration_key - (optional) is a type of string
+  integration_key = var.integration_key
+  # name - (optional) is a type of string
+  name = var.name
+  # service - (required) is a type of string
+  service = var.service
+  # type - (optional) is a type of string
+  type = var.type
+  # vendor - (optional) is a type of string
+  vendor = var.vendor
 }
 ```
 

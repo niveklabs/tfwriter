@@ -81,11 +81,16 @@ variable "tags" {
 
 ```terraform
 resource "alicloud_ots_instance" "this" {
-  accessed_by   = var.accessed_by
-  description   = var.description
+  # accessed_by - (optional) is a type of string
+  accessed_by = var.accessed_by
+  # description - (optional) is a type of string
+  description = var.description
+  # instance_type - (optional) is a type of string
   instance_type = var.instance_type
-  name          = var.name
-  tags          = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of map of string
+  tags = var.tags
 }
 ```
 

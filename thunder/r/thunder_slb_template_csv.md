@@ -106,18 +106,26 @@ variable "multiple_fields" {
 
 ```terraform
 resource "thunder_slb_template_csv" "this" {
-  csv_name    = var.csv_name
-  delim_char  = var.delim_char
-  delim_num   = var.delim_num
+  # csv_name - (optional) is a type of string
+  csv_name = var.csv_name
+  # delim_char - (optional) is a type of string
+  delim_char = var.delim_char
+  # delim_num - (optional) is a type of number
+  delim_num = var.delim_num
+  # ipv6_enable - (optional) is a type of number
   ipv6_enable = var.ipv6_enable
-  user_tag    = var.user_tag
-  uuid        = var.uuid
+  # user_tag - (optional) is a type of string
+  user_tag = var.user_tag
+  # uuid - (optional) is a type of string
+  uuid = var.uuid
 
   dynamic "multiple_fields" {
     for_each = var.multiple_fields
     content {
+      # csv_type - (optional) is a type of string
       csv_type = multiple_fields.value["csv_type"]
-      field    = multiple_fields.value["field"]
+      # field - (optional) is a type of number
+      field = multiple_fields.value["field"]
     }
   }
 

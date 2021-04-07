@@ -155,39 +155,63 @@ variable "profile_overrides" {
 
 ```terraform
 resource "checkpoint_management_threat_indicator" "this" {
-  action          = var.action
-  color           = var.color
-  comments        = var.comments
-  ignore_errors   = var.ignore_errors
+  # action - (optional) is a type of string
+  action = var.action
+  # color - (optional) is a type of string
+  color = var.color
+  # comments - (optional) is a type of string
+  comments = var.comments
+  # ignore_errors - (optional) is a type of bool
+  ignore_errors = var.ignore_errors
+  # ignore_warnings - (optional) is a type of bool
   ignore_warnings = var.ignore_warnings
-  name            = var.name
-  tags            = var.tags
+  # name - (required) is a type of string
+  name = var.name
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "observables" {
     for_each = var.observables
     content {
-      confidence       = observables.value["confidence"]
-      domain           = observables.value["domain"]
-      ip_address       = observables.value["ip_address"]
+      # confidence - (optional) is a type of string
+      confidence = observables.value["confidence"]
+      # domain - (optional) is a type of string
+      domain = observables.value["domain"]
+      # ip_address - (optional) is a type of string
+      ip_address = observables.value["ip_address"]
+      # ip_address_first - (optional) is a type of string
       ip_address_first = observables.value["ip_address_first"]
-      ip_address_last  = observables.value["ip_address_last"]
-      mail_cc          = observables.value["mail_cc"]
-      mail_from        = observables.value["mail_from"]
-      mail_reply_to    = observables.value["mail_reply_to"]
-      mail_subject     = observables.value["mail_subject"]
-      mail_to          = observables.value["mail_to"]
-      md5              = observables.value["md5"]
-      name             = observables.value["name"]
-      product          = observables.value["product"]
-      severity         = observables.value["severity"]
-      url              = observables.value["url"]
+      # ip_address_last - (optional) is a type of string
+      ip_address_last = observables.value["ip_address_last"]
+      # mail_cc - (optional) is a type of string
+      mail_cc = observables.value["mail_cc"]
+      # mail_from - (optional) is a type of string
+      mail_from = observables.value["mail_from"]
+      # mail_reply_to - (optional) is a type of string
+      mail_reply_to = observables.value["mail_reply_to"]
+      # mail_subject - (optional) is a type of string
+      mail_subject = observables.value["mail_subject"]
+      # mail_to - (optional) is a type of string
+      mail_to = observables.value["mail_to"]
+      # md5 - (optional) is a type of string
+      md5 = observables.value["md5"]
+      # name - (required) is a type of string
+      name = observables.value["name"]
+      # product - (optional) is a type of string
+      product = observables.value["product"]
+      # severity - (optional) is a type of string
+      severity = observables.value["severity"]
+      # url - (optional) is a type of string
+      url = observables.value["url"]
     }
   }
 
   dynamic "profile_overrides" {
     for_each = var.profile_overrides
     content {
-      action  = profile_overrides.value["action"]
+      # action - (optional) is a type of string
+      action = profile_overrides.value["action"]
+      # profile - (optional) is a type of string
       profile = profile_overrides.value["profile"]
     }
   }

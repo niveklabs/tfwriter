@@ -170,22 +170,35 @@ variable "offending_ssid" {
 
 ```terraform
 resource "fortios_wirelesscontroller_setting" "this" {
-  account_id            = var.account_id
-  country               = var.country
-  darrp_optimize        = var.darrp_optimize
-  device_holdoff        = var.device_holdoff
-  device_idle           = var.device_idle
-  device_weight         = var.device_weight
-  duplicate_ssid        = var.duplicate_ssid
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # country - (optional) is a type of string
+  country = var.country
+  # darrp_optimize - (optional) is a type of number
+  darrp_optimize = var.darrp_optimize
+  # device_holdoff - (optional) is a type of number
+  device_holdoff = var.device_holdoff
+  # device_idle - (optional) is a type of number
+  device_idle = var.device_idle
+  # device_weight - (optional) is a type of number
+  device_weight = var.device_weight
+  # duplicate_ssid - (optional) is a type of string
+  duplicate_ssid = var.duplicate_ssid
+  # dynamic_sort_subtable - (optional) is a type of string
   dynamic_sort_subtable = var.dynamic_sort_subtable
-  fake_ssid_action      = var.fake_ssid_action
-  fapc_compatibility    = var.fapc_compatibility
-  phishing_ssid_detect  = var.phishing_ssid_detect
-  wfa_compatibility     = var.wfa_compatibility
+  # fake_ssid_action - (optional) is a type of string
+  fake_ssid_action = var.fake_ssid_action
+  # fapc_compatibility - (optional) is a type of string
+  fapc_compatibility = var.fapc_compatibility
+  # phishing_ssid_detect - (optional) is a type of string
+  phishing_ssid_detect = var.phishing_ssid_detect
+  # wfa_compatibility - (optional) is a type of string
+  wfa_compatibility = var.wfa_compatibility
 
   dynamic "darrp_optimize_schedules" {
     for_each = var.darrp_optimize_schedules
     content {
+      # name - (optional) is a type of string
       name = darrp_optimize_schedules.value["name"]
     }
   }
@@ -193,8 +206,11 @@ resource "fortios_wirelesscontroller_setting" "this" {
   dynamic "offending_ssid" {
     for_each = var.offending_ssid
     content {
-      action       = offending_ssid.value["action"]
-      id           = offending_ssid.value["id"]
+      # action - (optional) is a type of string
+      action = offending_ssid.value["action"]
+      # id - (optional) is a type of number
+      id = offending_ssid.value["id"]
+      # ssid_pattern - (optional) is a type of string
       ssid_pattern = offending_ssid.value["ssid_pattern"]
     }
   }

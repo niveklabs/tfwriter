@@ -135,21 +135,33 @@ variable "outbound" {
 
 ```terraform
 resource "linode_firewall" "this" {
-  disabled        = var.disabled
-  inbound_policy  = var.inbound_policy
-  label           = var.label
-  linodes         = var.linodes
+  # disabled - (optional) is a type of bool
+  disabled = var.disabled
+  # inbound_policy - (required) is a type of string
+  inbound_policy = var.inbound_policy
+  # label - (required) is a type of string
+  label = var.label
+  # linodes - (optional) is a type of set of number
+  linodes = var.linodes
+  # outbound_policy - (required) is a type of string
   outbound_policy = var.outbound_policy
-  tags            = var.tags
+  # tags - (optional) is a type of set of string
+  tags = var.tags
 
   dynamic "inbound" {
     for_each = var.inbound
     content {
-      action   = inbound.value["action"]
-      ipv4     = inbound.value["ipv4"]
-      ipv6     = inbound.value["ipv6"]
-      label    = inbound.value["label"]
-      ports    = inbound.value["ports"]
+      # action - (required) is a type of string
+      action = inbound.value["action"]
+      # ipv4 - (optional) is a type of list of string
+      ipv4 = inbound.value["ipv4"]
+      # ipv6 - (optional) is a type of list of string
+      ipv6 = inbound.value["ipv6"]
+      # label - (required) is a type of string
+      label = inbound.value["label"]
+      # ports - (optional) is a type of string
+      ports = inbound.value["ports"]
+      # protocol - (required) is a type of string
       protocol = inbound.value["protocol"]
     }
   }
@@ -157,11 +169,17 @@ resource "linode_firewall" "this" {
   dynamic "outbound" {
     for_each = var.outbound
     content {
-      action   = outbound.value["action"]
-      ipv4     = outbound.value["ipv4"]
-      ipv6     = outbound.value["ipv6"]
-      label    = outbound.value["label"]
-      ports    = outbound.value["ports"]
+      # action - (required) is a type of string
+      action = outbound.value["action"]
+      # ipv4 - (optional) is a type of list of string
+      ipv4 = outbound.value["ipv4"]
+      # ipv6 - (optional) is a type of list of string
+      ipv6 = outbound.value["ipv6"]
+      # label - (required) is a type of string
+      label = outbound.value["label"]
+      # ports - (optional) is a type of string
+      ports = outbound.value["ports"]
+      # protocol - (required) is a type of string
       protocol = outbound.value["protocol"]
     }
   }

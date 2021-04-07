@@ -64,8 +64,11 @@ variable "scaling_group_id" {
 
 ```terraform
 resource "alicloud_ess_attachment" "this" {
-  force            = var.force
-  instance_ids     = var.instance_ids
+  # force - (optional) is a type of bool
+  force = var.force
+  # instance_ids - (required) is a type of set of string
+  instance_ids = var.instance_ids
+  # scaling_group_id - (required) is a type of string
   scaling_group_id = var.scaling_group_id
 }
 ```

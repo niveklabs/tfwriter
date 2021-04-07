@@ -170,26 +170,43 @@ variable "timeouts" {
 
 ```terraform
 resource "rancher2_catalog_v2" "this" {
-  annotations               = var.annotations
-  ca_bundle                 = var.ca_bundle
-  cluster_id                = var.cluster_id
-  enabled                   = var.enabled
-  git_branch                = var.git_branch
-  git_repo                  = var.git_repo
-  insecure                  = var.insecure
-  labels                    = var.labels
-  name                      = var.name
-  secret_name               = var.secret_name
-  secret_namespace          = var.secret_namespace
-  service_account           = var.service_account
+  # annotations - (optional) is a type of map of string
+  annotations = var.annotations
+  # ca_bundle - (optional) is a type of string
+  ca_bundle = var.ca_bundle
+  # cluster_id - (required) is a type of string
+  cluster_id = var.cluster_id
+  # enabled - (optional) is a type of bool
+  enabled = var.enabled
+  # git_branch - (optional) is a type of string
+  git_branch = var.git_branch
+  # git_repo - (optional) is a type of string
+  git_repo = var.git_repo
+  # insecure - (optional) is a type of bool
+  insecure = var.insecure
+  # labels - (optional) is a type of map of string
+  labels = var.labels
+  # name - (required) is a type of string
+  name = var.name
+  # secret_name - (optional) is a type of string
+  secret_name = var.secret_name
+  # secret_namespace - (optional) is a type of string
+  secret_namespace = var.secret_namespace
+  # service_account - (optional) is a type of string
+  service_account = var.service_account
+  # service_account_namespace - (optional) is a type of string
   service_account_namespace = var.service_account_namespace
-  url                       = var.url
+  # url - (optional) is a type of string
+  url = var.url
 
   dynamic "timeouts" {
     for_each = var.timeouts
     content {
+      # create - (optional) is a type of string
       create = timeouts.value["create"]
+      # delete - (optional) is a type of string
       delete = timeouts.value["delete"]
+      # update - (optional) is a type of string
       update = timeouts.value["update"]
     }
   }
