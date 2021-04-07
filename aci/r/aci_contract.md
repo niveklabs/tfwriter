@@ -207,31 +207,52 @@ resource "aci_contract" "this" {
   dynamic "filter" {
     for_each = var.filter
     content {
-      annotation  = filter.value["annotation"]
+      # annotation - (optional) is a type of string
+      annotation = filter.value["annotation"]
+      # description - (optional) is a type of string
       description = filter.value["description"]
+      # filter_name - (required) is a type of string
       filter_name = filter.value["filter_name"]
-      name_alias  = filter.value["name_alias"]
+      # name_alias - (optional) is a type of string
+      name_alias = filter.value["name_alias"]
 
       dynamic "filter_entry" {
         for_each = filter.value.filter_entry
         content {
-          apply_to_frag     = filter_entry.value["apply_to_frag"]
-          arp_opc           = filter_entry.value["arp_opc"]
-          d_from_port       = filter_entry.value["d_from_port"]
-          d_to_port         = filter_entry.value["d_to_port"]
-          entry_annotation  = filter_entry.value["entry_annotation"]
+          # apply_to_frag - (optional) is a type of string
+          apply_to_frag = filter_entry.value["apply_to_frag"]
+          # arp_opc - (optional) is a type of string
+          arp_opc = filter_entry.value["arp_opc"]
+          # d_from_port - (optional) is a type of string
+          d_from_port = filter_entry.value["d_from_port"]
+          # d_to_port - (optional) is a type of string
+          d_to_port = filter_entry.value["d_to_port"]
+          # entry_annotation - (optional) is a type of string
+          entry_annotation = filter_entry.value["entry_annotation"]
+          # entry_description - (optional) is a type of string
           entry_description = filter_entry.value["entry_description"]
-          entry_name_alias  = filter_entry.value["entry_name_alias"]
-          ether_t           = filter_entry.value["ether_t"]
+          # entry_name_alias - (optional) is a type of string
+          entry_name_alias = filter_entry.value["entry_name_alias"]
+          # ether_t - (optional) is a type of string
+          ether_t = filter_entry.value["ether_t"]
+          # filter_entry_name - (required) is a type of string
           filter_entry_name = filter_entry.value["filter_entry_name"]
-          icmpv4_t          = filter_entry.value["icmpv4_t"]
-          icmpv6_t          = filter_entry.value["icmpv6_t"]
-          match_dscp        = filter_entry.value["match_dscp"]
-          prot              = filter_entry.value["prot"]
-          s_from_port       = filter_entry.value["s_from_port"]
-          s_to_port         = filter_entry.value["s_to_port"]
-          stateful          = filter_entry.value["stateful"]
-          tcp_rules         = filter_entry.value["tcp_rules"]
+          # icmpv4_t - (optional) is a type of string
+          icmpv4_t = filter_entry.value["icmpv4_t"]
+          # icmpv6_t - (optional) is a type of string
+          icmpv6_t = filter_entry.value["icmpv6_t"]
+          # match_dscp - (optional) is a type of string
+          match_dscp = filter_entry.value["match_dscp"]
+          # prot - (optional) is a type of string
+          prot = filter_entry.value["prot"]
+          # s_from_port - (optional) is a type of string
+          s_from_port = filter_entry.value["s_from_port"]
+          # s_to_port - (optional) is a type of string
+          s_to_port = filter_entry.value["s_to_port"]
+          # stateful - (optional) is a type of string
+          stateful = filter_entry.value["stateful"]
+          # tcp_rules - (optional) is a type of string
+          tcp_rules = filter_entry.value["tcp_rules"]
         }
       }
 

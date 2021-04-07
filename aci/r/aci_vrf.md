@@ -245,7 +245,9 @@ resource "aci_vrf" "this" {
   dynamic "relation_fv_rs_ctx_to_bgp_ctx_af_pol" {
     for_each = var.relation_fv_rs_ctx_to_bgp_ctx_af_pol
     content {
-      af                     = relation_fv_rs_ctx_to_bgp_ctx_af_pol.value["af"]
+      # af - (required) is a type of string
+      af = relation_fv_rs_ctx_to_bgp_ctx_af_pol.value["af"]
+      # tn_bgp_ctx_af_pol_name - (required) is a type of string
       tn_bgp_ctx_af_pol_name = relation_fv_rs_ctx_to_bgp_ctx_af_pol.value["tn_bgp_ctx_af_pol_name"]
     }
   }
@@ -253,7 +255,9 @@ resource "aci_vrf" "this" {
   dynamic "relation_fv_rs_ctx_to_eigrp_ctx_af_pol" {
     for_each = var.relation_fv_rs_ctx_to_eigrp_ctx_af_pol
     content {
-      af                       = relation_fv_rs_ctx_to_eigrp_ctx_af_pol.value["af"]
+      # af - (required) is a type of string
+      af = relation_fv_rs_ctx_to_eigrp_ctx_af_pol.value["af"]
+      # tn_eigrp_ctx_af_pol_name - (required) is a type of string
       tn_eigrp_ctx_af_pol_name = relation_fv_rs_ctx_to_eigrp_ctx_af_pol.value["tn_eigrp_ctx_af_pol_name"]
     }
   }
@@ -261,7 +265,9 @@ resource "aci_vrf" "this" {
   dynamic "relation_fv_rs_ctx_to_ospf_ctx_pol" {
     for_each = var.relation_fv_rs_ctx_to_ospf_ctx_pol
     content {
-      af                   = relation_fv_rs_ctx_to_ospf_ctx_pol.value["af"]
+      # af - (required) is a type of string
+      af = relation_fv_rs_ctx_to_ospf_ctx_pol.value["af"]
+      # tn_ospf_ctx_pol_name - (required) is a type of string
       tn_ospf_ctx_pol_name = relation_fv_rs_ctx_to_ospf_ctx_pol.value["tn_ospf_ctx_pol_name"]
     }
   }

@@ -384,7 +384,9 @@ resource "aci_bridge_domain" "this" {
   dynamic "relation_fv_rs_bd_to_netflow_monitor_pol" {
     for_each = var.relation_fv_rs_bd_to_netflow_monitor_pol
     content {
-      flt_type                    = relation_fv_rs_bd_to_netflow_monitor_pol.value["flt_type"]
+      # flt_type - (required) is a type of string
+      flt_type = relation_fv_rs_bd_to_netflow_monitor_pol.value["flt_type"]
+      # tn_netflow_monitor_pol_name - (required) is a type of string
       tn_netflow_monitor_pol_name = relation_fv_rs_bd_to_netflow_monitor_pol.value["tn_netflow_monitor_pol_name"]
     }
   }

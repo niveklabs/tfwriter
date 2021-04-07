@@ -313,7 +313,9 @@ resource "aci_leaf_access_bundle_policy_group" "this" {
   dynamic "relation_infra_rs_netflow_monitor_pol" {
     for_each = var.relation_infra_rs_netflow_monitor_pol
     content {
-      flt_type                    = relation_infra_rs_netflow_monitor_pol.value["flt_type"]
+      # flt_type - (required) is a type of string
+      flt_type = relation_infra_rs_netflow_monitor_pol.value["flt_type"]
+      # tn_netflow_monitor_pol_name - (required) is a type of string
       tn_netflow_monitor_pol_name = relation_infra_rs_netflow_monitor_pol.value["tn_netflow_monitor_pol_name"]
     }
   }

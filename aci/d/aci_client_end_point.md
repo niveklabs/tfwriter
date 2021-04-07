@@ -134,17 +134,28 @@ data "aci_client_end_point" "this" {
   dynamic "fvcep_objects" {
     for_each = var.fvcep_objects
     content {
+      # application_profile_name - (optional) is a type of string
       application_profile_name = fvcep_objects.value["application_profile_name"]
-      endpoint_path            = fvcep_objects.value["endpoint_path"]
-      epg_name                 = fvcep_objects.value["epg_name"]
-      instance_profile_name    = fvcep_objects.value["instance_profile_name"]
-      ip                       = fvcep_objects.value["ip"]
-      l2out_name               = fvcep_objects.value["l2out_name"]
-      mac                      = fvcep_objects.value["mac"]
-      name                     = fvcep_objects.value["name"]
-      tenant_name              = fvcep_objects.value["tenant_name"]
-      vlan                     = fvcep_objects.value["vlan"]
-      vrf_name                 = fvcep_objects.value["vrf_name"]
+      # endpoint_path - (optional) is a type of list of string
+      endpoint_path = fvcep_objects.value["endpoint_path"]
+      # epg_name - (optional) is a type of string
+      epg_name = fvcep_objects.value["epg_name"]
+      # instance_profile_name - (optional) is a type of string
+      instance_profile_name = fvcep_objects.value["instance_profile_name"]
+      # ip - (optional) is a type of string
+      ip = fvcep_objects.value["ip"]
+      # l2out_name - (optional) is a type of string
+      l2out_name = fvcep_objects.value["l2out_name"]
+      # mac - (optional) is a type of string
+      mac = fvcep_objects.value["mac"]
+      # name - (optional) is a type of string
+      name = fvcep_objects.value["name"]
+      # tenant_name - (optional) is a type of string
+      tenant_name = fvcep_objects.value["tenant_name"]
+      # vlan - (optional) is a type of string
+      vlan = fvcep_objects.value["vlan"]
+      # vrf_name - (optional) is a type of string
+      vrf_name = fvcep_objects.value["vrf_name"]
     }
   }
 

@@ -159,7 +159,9 @@ resource "aci_l3_outside" "this" {
   dynamic "relation_l3ext_rs_dampening_pol" {
     for_each = var.relation_l3ext_rs_dampening_pol
     content {
-      af                     = relation_l3ext_rs_dampening_pol.value["af"]
+      # af - (required) is a type of string
+      af = relation_l3ext_rs_dampening_pol.value["af"]
+      # tn_rtctrl_profile_name - (required) is a type of string
       tn_rtctrl_profile_name = relation_l3ext_rs_dampening_pol.value["tn_rtctrl_profile_name"]
     }
   }

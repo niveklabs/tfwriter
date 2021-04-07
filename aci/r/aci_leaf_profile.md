@@ -153,19 +153,28 @@ resource "aci_leaf_profile" "this" {
   dynamic "leaf_selector" {
     for_each = var.leaf_selector
     content {
-      description             = leaf_selector.value["description"]
-      id                      = leaf_selector.value["id"]
-      name                    = leaf_selector.value["name"]
+      # description - (optional) is a type of string
+      description = leaf_selector.value["description"]
+      # id - (optional) is a type of string
+      id = leaf_selector.value["id"]
+      # name - (required) is a type of string
+      name = leaf_selector.value["name"]
+      # switch_association_type - (required) is a type of string
       switch_association_type = leaf_selector.value["switch_association_type"]
 
       dynamic "node_block" {
         for_each = leaf_selector.value.node_block
         content {
+          # description - (optional) is a type of string
           description = node_block.value["description"]
-          from_       = node_block.value["from_"]
-          id          = node_block.value["id"]
-          name        = node_block.value["name"]
-          to_         = node_block.value["to_"]
+          # from_ - (optional) is a type of string
+          from_ = node_block.value["from_"]
+          # id - (optional) is a type of string
+          id = node_block.value["id"]
+          # name - (required) is a type of string
+          name = node_block.value["name"]
+          # to_ - (optional) is a type of string
+          to_ = node_block.value["to_"]
         }
       }
 

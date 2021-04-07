@@ -177,7 +177,9 @@ resource "aci_logical_interface_profile" "this" {
   dynamic "relation_l3ext_rs_l_if_p_to_netflow_monitor_pol" {
     for_each = var.relation_l3ext_rs_l_if_p_to_netflow_monitor_pol
     content {
-      flt_type                    = relation_l3ext_rs_l_if_p_to_netflow_monitor_pol.value["flt_type"]
+      # flt_type - (required) is a type of string
+      flt_type = relation_l3ext_rs_l_if_p_to_netflow_monitor_pol.value["flt_type"]
+      # tn_netflow_monitor_pol_name - (required) is a type of string
       tn_netflow_monitor_pol_name = relation_l3ext_rs_l_if_p_to_netflow_monitor_pol.value["tn_netflow_monitor_pol_name"]
     }
   }

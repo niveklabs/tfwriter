@@ -240,7 +240,9 @@ resource "aci_external_network_instance_profile" "this" {
   dynamic "relation_l3ext_rs_inst_p_to_profile" {
     for_each = var.relation_l3ext_rs_inst_p_to_profile
     content {
-      direction              = relation_l3ext_rs_inst_p_to_profile.value["direction"]
+      # direction - (required) is a type of string
+      direction = relation_l3ext_rs_inst_p_to_profile.value["direction"]
+      # tn_rtctrl_profile_name - (required) is a type of string
       tn_rtctrl_profile_name = relation_l3ext_rs_inst_p_to_profile.value["tn_rtctrl_profile_name"]
     }
   }
