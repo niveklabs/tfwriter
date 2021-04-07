@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"heroku","full-name":"heroku/heroku","version":"4.1.1-beta","downloads":99300,"namespace":"heroku","source":"https://github.com/heroku/terraform-provider-heroku","tier":"partner"}}
+{"type":"providers","attributes":{"name":"heroku","full-name":"heroku/heroku","version":"4.1.1","namespace":"heroku","source":"https://github.com/heroku/terraform-provider-heroku","tier":"partner"}}

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -218,9 +218,19 @@ output "id" {
   value       = oci_kms_vault.this.id
 }
 
+output "is_primary" {
+  description = "returns a bool"
+  value       = oci_kms_vault.this.is_primary
+}
+
 output "management_endpoint" {
   description = "returns a string"
   value       = oci_kms_vault.this.management_endpoint
+}
+
+output "replica_details" {
+  description = "returns a list of object"
+  value       = oci_kms_vault.this.replica_details
 }
 
 output "restored_from_vault_id" {

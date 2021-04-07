@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -35,6 +35,10 @@ module "oci_core_dedicated_vm_hosts" {
   display_name = null
   # instance_shape_name - (optional) is a type of string
   instance_shape_name = null
+  # remaining_memory_in_gbs_greater_than_or_equal_to - (optional) is a type of number
+  remaining_memory_in_gbs_greater_than_or_equal_to = null
+  # remaining_ocpus_greater_than_or_equal_to - (optional) is a type of number
+  remaining_ocpus_greater_than_or_equal_to = null
   # state - (optional) is a type of string
   state = null
 
@@ -74,6 +78,18 @@ variable "instance_shape_name" {
   default     = null
 }
 
+variable "remaining_memory_in_gbs_greater_than_or_equal_to" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
+variable "remaining_ocpus_greater_than_or_equal_to" {
+  description = "(optional)"
+  type        = number
+  default     = null
+}
+
 variable "state" {
   description = "(optional)"
   type        = string
@@ -99,11 +115,13 @@ variable "filter" {
 
 ```terraform
 data "oci_core_dedicated_vm_hosts" "this" {
-  availability_domain = var.availability_domain
-  compartment_id      = var.compartment_id
-  display_name        = var.display_name
-  instance_shape_name = var.instance_shape_name
-  state               = var.state
+  availability_domain                              = var.availability_domain
+  compartment_id                                   = var.compartment_id
+  display_name                                     = var.display_name
+  instance_shape_name                              = var.instance_shape_name
+  remaining_memory_in_gbs_greater_than_or_equal_to = var.remaining_memory_in_gbs_greater_than_or_equal_to
+  remaining_ocpus_greater_than_or_equal_to         = var.remaining_ocpus_greater_than_or_equal_to
+  state                                            = var.state
 
   dynamic "filter" {
     for_each = var.filter

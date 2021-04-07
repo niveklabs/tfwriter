@@ -15,7 +15,7 @@ resource: gitlab
 
 ```terraform
 provider "gitlab" {
-  version = "3.5.0"
+  version = "3.6.0"
 
   # base_url - (optional) is a type of string
   base_url = null

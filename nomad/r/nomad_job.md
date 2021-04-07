@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    nomad = ">= 1.4.13"
+    nomad = ">= 1.4.14"
   }
 }
 ```
@@ -45,6 +45,7 @@ module "nomad_job" {
   hcl2 = [{
     allow_fs = null
     enabled  = null
+    vars     = {}
   }]
 }
 ```
@@ -101,6 +102,7 @@ variable "hcl2" {
     {
       allow_fs = bool
       enabled  = bool
+      vars     = map(string)
     }
   ))
   default = []
@@ -126,6 +128,7 @@ resource "nomad_job" "this" {
     content {
       allow_fs = hcl2.value["allow_fs"]
       enabled  = hcl2.value["enabled"]
+      vars     = hcl2.value["vars"]
     }
   }
 

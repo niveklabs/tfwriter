@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"sumologic","full-name":"SumoLogic/sumologic","version":"2.9.1","downloads":8,"namespace":"SumoLogic","source":"https://github.com/SumoLogic/terraform-provider-sumologic","tier":"partner"}}
+{"type":"providers","attributes":{"name":"sumologic","full-name":"SumoLogic/sumologic","version":"2.9.1","namespace":"SumoLogic","source":"https://github.com/SumoLogic/terraform-provider-sumologic","tier":"partner"}}

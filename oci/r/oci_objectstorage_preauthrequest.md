@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "oci_objectstorage_preauthrequest" {
   access_type = null
   # bucket - (required) is a type of string
   bucket = null
+  # bucket_listing_action - (optional) is a type of string
+  bucket_listing_action = null
   # name - (required) is a type of string
   name = null
   # namespace - (required) is a type of string
@@ -61,6 +63,12 @@ variable "access_type" {
 variable "bucket" {
   description = "(required)"
   type        = string
+}
+
+variable "bucket_listing_action" {
+  description = "(optional)"
+  type        = string
+  default     = null
 }
 
 variable "name" {
@@ -103,12 +111,13 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_objectstorage_preauthrequest" "this" {
-  access_type  = var.access_type
-  bucket       = var.bucket
-  name         = var.name
-  namespace    = var.namespace
-  object       = var.object
-  time_expires = var.time_expires
+  access_type           = var.access_type
+  bucket                = var.bucket
+  bucket_listing_action = var.bucket_listing_action
+  name                  = var.name
+  namespace             = var.namespace
+  object                = var.object
+  time_expires          = var.time_expires
 
   dynamic "timeouts" {
     for_each = var.timeouts
@@ -130,6 +139,11 @@ resource "oci_objectstorage_preauthrequest" "this" {
 output "access_uri" {
   description = "returns a string"
   value       = oci_objectstorage_preauthrequest.this.access_uri
+}
+
+output "bucket_listing_action" {
+  description = "returns a string"
+  value       = oci_objectstorage_preauthrequest.this.bucket_listing_action
 }
 
 output "id" {

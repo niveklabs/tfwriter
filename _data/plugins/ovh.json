@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"ovh","full-name":"ovh/ovh","version":"0.11.0","downloads":63875,"namespace":"ovh","source":"https://github.com/ovh/terraform-provider-ovh","tier":"partner"}}
+{"type":"providers","attributes":{"name":"ovh","full-name":"ovh/ovh","version":"0.11.0","namespace":"ovh","source":"https://github.com/ovh/terraform-provider-ovh","tier":"partner"}}

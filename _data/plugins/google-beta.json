@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"alias":"google-beta","name":"google-beta","full-name":"hashicorp/google-beta","version":"3.63.0","downloads":18261587,"namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-google-beta","tier":"official"}}
+{"type":"providers","attributes":{"alias":"google-beta","name":"google-beta","full-name":"hashicorp/google-beta","version":"3.63.0","namespace":"hashicorp","source":"https://github.com/hashicorp/terraform-provider-google-beta","tier":"official"}}

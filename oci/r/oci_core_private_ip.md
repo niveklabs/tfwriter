@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -184,6 +184,11 @@ output "ip_address" {
 output "is_primary" {
   description = "returns a bool"
   value       = oci_core_private_ip.this.is_primary
+}
+
+output "is_reserved" {
+  description = "returns a bool"
+  value       = oci_core_private_ip.this.is_reserved
 }
 
 output "subnet_id" {

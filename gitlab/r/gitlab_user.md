@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.5.0"
+    gitlab = ">= 3.6.0"
   }
 }
 ```
@@ -37,6 +37,8 @@ module "gitlab_user" {
   is_external = null
   # name - (required) is a type of string
   name = null
+  # note - (optional) is a type of string
+  note = null
   # password - (optional) is a type of string
   password = null
   # projects_limit - (optional) is a type of number
@@ -83,6 +85,12 @@ variable "name" {
   type        = string
 }
 
+variable "note" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
+
 variable "password" {
   description = "(optional)"
   type        = string
@@ -124,6 +132,7 @@ resource "gitlab_user" "this" {
   is_admin          = var.is_admin
   is_external       = var.is_external
   name              = var.name
+  note              = var.note
   password          = var.password
   projects_limit    = var.projects_limit
   reset_password    = var.reset_password

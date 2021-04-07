@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"panos","full-name":"PaloAltoNetworks/panos","version":"1.8.1","downloads":11,"namespace":"PaloAltoNetworks","source":"https://github.com/PaloAltoNetworks/terraform-provider-panos","tier":"partner"}}
+{"type":"providers","attributes":{"name":"panos","full-name":"PaloAltoNetworks/panos","version":"1.8.1","namespace":"PaloAltoNetworks","source":"https://github.com/PaloAltoNetworks/terraform-provider-panos","tier":"partner"}}

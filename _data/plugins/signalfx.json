@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"signalfx","full-name":"splunk-terraform/signalfx","version":"6.7.3","downloads":85985,"namespace":"splunk-terraform","source":"https://github.com/splunk-terraform/terraform-provider-signalfx","tier":"partner"}}
+{"type":"providers","attributes":{"name":"signalfx","full-name":"splunk-terraform/signalfx","version":"6.7.3","namespace":"splunk-terraform","source":"https://github.com/splunk-terraform/terraform-provider-signalfx","tier":"partner"}}

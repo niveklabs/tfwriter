@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"aviatrix","full-name":"AviatrixSystems/aviatrix","version":"2.18.2","downloads":8,"namespace":"AviatrixSystems","source":"https://github.com/AviatrixSystems/terraform-provider-aviatrix","tier":"partner"}}
+{"type":"providers","attributes":{"name":"aviatrix","full-name":"AviatrixSystems/aviatrix","version":"2.18.2","namespace":"AviatrixSystems","source":"https://github.com/AviatrixSystems/terraform-provider-aviatrix","tier":"partner"}}

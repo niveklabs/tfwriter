@@ -15,7 +15,7 @@ resource: heroku
 
 ```terraform
 provider "heroku" {
-  version = "4.1.1-beta"
+  version = "4.1.1"
 
   # api_key - (optional) is a type of string
   api_key = null

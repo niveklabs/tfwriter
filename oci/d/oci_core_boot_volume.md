@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -71,6 +71,16 @@ output "availability_domain" {
 output "backup_policy_id" {
   description = "returns a string"
   value       = data.oci_core_boot_volume.this.backup_policy_id
+}
+
+output "boot_volume_replicas" {
+  description = "returns a list of object"
+  value       = data.oci_core_boot_volume.this.boot_volume_replicas
+}
+
+output "boot_volume_replicas_deletion" {
+  description = "returns a bool"
+  value       = data.oci_core_boot_volume.this.boot_volume_replicas_deletion
 }
 
 output "compartment_id" {

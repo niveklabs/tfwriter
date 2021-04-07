@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"github","full-name":"integrations/github","version":"4.6.0","downloads":320176,"namespace":"integrations","source":"https://github.com/integrations/terraform-provider-github","tier":"partner"}}
+{"type":"providers","attributes":{"name":"github","full-name":"integrations/github","version":"4.6.0","namespace":"integrations","source":"https://github.com/integrations/terraform-provider-github","tier":"partner"}}

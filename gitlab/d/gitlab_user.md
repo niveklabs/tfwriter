@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    gitlab = ">= 3.5.0"
+    gitlab = ">= 3.6.0"
   }
 }
 ```
@@ -155,6 +155,11 @@ output "location" {
 output "name" {
   description = "returns a string"
   value       = data.gitlab_user.this.name
+}
+
+output "note" {
+  description = "returns a string"
+  value       = data.gitlab_user.this.note
 }
 
 output "organization" {

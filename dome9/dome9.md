@@ -15,7 +15,7 @@ resource: dome9
 
 ```terraform
 provider "dome9" {
-  version = "1.21.0"
+  version = "1.21.1"
 
   # base_url - (optional) is a type of string
   base_url = null

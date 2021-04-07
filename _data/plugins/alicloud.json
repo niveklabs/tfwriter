@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"alicloud","full-name":"aliyun/alicloud","version":"1.120.0","downloads":221266,"namespace":"aliyun","source":"https://github.com/aliyun/terraform-provider-alicloud","tier":"partner"}}
+{"type":"providers","attributes":{"name":"alicloud","full-name":"aliyun/alicloud","version":"1.120.0","namespace":"aliyun","source":"https://github.com/aliyun/terraform-provider-alicloud","tier":"partner"}}

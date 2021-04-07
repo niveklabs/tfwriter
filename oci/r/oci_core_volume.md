@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "oci_core_volume" {
   availability_domain = null
   # backup_policy_id - (optional) is a type of string
   backup_policy_id = null
+  # block_volume_replicas_deletion - (optional) is a type of bool
+  block_volume_replicas_deletion = null
   # compartment_id - (required) is a type of string
   compartment_id = null
   # defined_tags - (optional) is a type of map of string
@@ -51,6 +53,12 @@ module "oci_core_volume" {
   volume_backup_id = null
   # vpus_per_gb - (optional) is a type of string
   vpus_per_gb = null
+
+  block_volume_replicas = [{
+    availability_domain     = null
+    block_volume_replica_id = null
+    display_name            = null
+  }]
 
   source_details = [{
     id   = null
@@ -78,6 +86,12 @@ variable "availability_domain" {
 variable "backup_policy_id" {
   description = "(optional)"
   type        = string
+  default     = null
+}
+
+variable "block_volume_replicas_deletion" {
+  description = "(optional)"
+  type        = bool
   default     = null
 }
 
@@ -140,6 +154,18 @@ variable "vpus_per_gb" {
   default     = null
 }
 
+variable "block_volume_replicas" {
+  description = "nested block: NestingList, min items: 0, max items: 0"
+  type = set(object(
+    {
+      availability_domain     = string
+      block_volume_replica_id = string
+      display_name            = string
+    }
+  ))
+  default = []
+}
+
 variable "source_details" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -170,18 +196,27 @@ variable "timeouts" {
 
 ```terraform
 resource "oci_core_volume" "this" {
-  availability_domain  = var.availability_domain
-  backup_policy_id     = var.backup_policy_id
-  compartment_id       = var.compartment_id
-  defined_tags         = var.defined_tags
-  display_name         = var.display_name
-  freeform_tags        = var.freeform_tags
-  is_auto_tune_enabled = var.is_auto_tune_enabled
-  kms_key_id           = var.kms_key_id
-  size_in_gbs          = var.size_in_gbs
-  size_in_mbs          = var.size_in_mbs
-  volume_backup_id     = var.volume_backup_id
-  vpus_per_gb          = var.vpus_per_gb
+  availability_domain            = var.availability_domain
+  backup_policy_id               = var.backup_policy_id
+  block_volume_replicas_deletion = var.block_volume_replicas_deletion
+  compartment_id                 = var.compartment_id
+  defined_tags                   = var.defined_tags
+  display_name                   = var.display_name
+  freeform_tags                  = var.freeform_tags
+  is_auto_tune_enabled           = var.is_auto_tune_enabled
+  kms_key_id                     = var.kms_key_id
+  size_in_gbs                    = var.size_in_gbs
+  size_in_mbs                    = var.size_in_mbs
+  volume_backup_id               = var.volume_backup_id
+  vpus_per_gb                    = var.vpus_per_gb
+
+  dynamic "block_volume_replicas" {
+    for_each = var.block_volume_replicas
+    content {
+      availability_domain = block_volume_replicas.value["availability_domain"]
+      display_name        = block_volume_replicas.value["display_name"]
+    }
+  }
 
   dynamic "source_details" {
     for_each = var.source_details

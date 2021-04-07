@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"circonus","full-name":"circonus-labs/circonus","version":"0.12.0","downloads":3579,"namespace":"circonus-labs","source":"https://github.com/circonus-labs/terraform-provider-circonus","tier":"partner"}}
+{"type":"providers","attributes":{"name":"circonus","full-name":"circonus-labs/circonus","version":"0.12.0","namespace":"circonus-labs","source":"https://github.com/circonus-labs/terraform-provider-circonus","tier":"partner"}}

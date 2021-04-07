@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"avi","full-name":"vmware/avi","version":"0.2.3","downloads":327,"namespace":"vmware","source":"https://github.com/vmware/terraform-provider-avi","tier":"partner"}}
+{"type":"providers","attributes":{"name":"avi","full-name":"vmware/avi","version":"0.2.3","namespace":"vmware","source":"https://github.com/vmware/terraform-provider-avi","tier":"partner"}}

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    pagerduty = ">= 1.9.5"
+    pagerduty = ">= 1.9.6"
   }
 }
 ```
@@ -31,6 +31,8 @@ module "pagerduty_team" {
   description = null
   # name - (required) is a type of string
   name = null
+  # parent - (optional) is a type of string
+  parent = null
 }
 ```
 
@@ -49,6 +51,12 @@ variable "name" {
   description = "(required)"
   type        = string
 }
+
+variable "parent" {
+  description = "(optional)"
+  type        = string
+  default     = null
+}
 ```
 
 [top](#index)
@@ -59,6 +67,7 @@ variable "name" {
 resource "pagerduty_team" "this" {
   description = var.description
   name        = var.name
+  parent      = var.parent
 }
 ```
 

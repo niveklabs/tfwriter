@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    dome9 = ">= 1.21.0"
+    dome9 = ">= 1.21.1"
   }
 }
 ```

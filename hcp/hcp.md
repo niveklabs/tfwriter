@@ -15,7 +15,7 @@ resource: hcp
 
 ```terraform
 provider "hcp" {
-  version = "0.3.0"
+  version = "0.4.0"
 
   # client_id - (optional) is a type of string
   client_id = null
@@ -41,6 +41,10 @@ provider "hcp" {
 
 - [hcp_hvn](./r/hcp_hvn.md)
 
+- [hcp_vault_cluster](./r/hcp_vault_cluster.md)
+
+- [hcp_vault_cluster_admin_token](./r/hcp_vault_cluster_admin_token.md)
+
 
 [top](#index)
 
@@ -60,6 +64,8 @@ provider "hcp" {
 - [hcp_consul_versions](./d/hcp_consul_versions.md)
 
 - [hcp_hvn](./d/hcp_hvn.md)
+
+- [hcp_vault_cluster](./d/hcp_vault_cluster.md)
 
 
 [top](#index)

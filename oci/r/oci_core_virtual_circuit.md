@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -49,6 +49,8 @@ module "oci_core_virtual_circuit" {
   provider_service_key_name = null
   # region - (optional) is a type of string
   region = null
+  # routing_policy - (optional) is a type of list of string
+  routing_policy = []
   # type - (required) is a type of string
   type = null
 
@@ -144,6 +146,12 @@ variable "region" {
   default     = null
 }
 
+variable "routing_policy" {
+  description = "(optional)"
+  type        = list(string)
+  default     = null
+}
+
 variable "type" {
   description = "(required)"
   type        = string
@@ -205,6 +213,7 @@ resource "oci_core_virtual_circuit" "this" {
   provider_service_id       = var.provider_service_id
   provider_service_key_name = var.provider_service_key_name
   region                    = var.region
+  routing_policy            = var.routing_policy
   type                      = var.type
 
   dynamic "cross_connect_mappings" {
@@ -322,6 +331,11 @@ output "reference_comment" {
 output "region" {
   description = "returns a string"
   value       = oci_core_virtual_circuit.this.region
+}
+
+output "routing_policy" {
+  description = "returns a list of string"
+  value       = oci_core_virtual_circuit.this.routing_policy
 }
 
 output "service_type" {

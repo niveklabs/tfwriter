@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcp = ">= 0.3.0"
+    hcp = ">= 0.4.0"
   }
 }
 ```
@@ -178,6 +178,11 @@ output "scale" {
 output "self_link" {
   description = "returns a string"
   value       = data.hcp_consul_cluster.this.self_link
+}
+
+output "size" {
+  description = "returns a string"
+  value       = data.hcp_consul_cluster.this.size
 }
 
 output "tier" {

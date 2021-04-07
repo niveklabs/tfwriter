@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -82,6 +82,11 @@ output "access_type" {
 output "access_uri" {
   description = "returns a string"
   value       = data.oci_objectstorage_preauthrequest.this.access_uri
+}
+
+output "bucket_listing_action" {
+  description = "returns a string"
+  value       = data.oci_objectstorage_preauthrequest.this.bucket_listing_action
 }
 
 output "id" {

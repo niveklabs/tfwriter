@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"tencentcloud","full-name":"tencentcloudstack/tencentcloud","version":"1.56.0","downloads":7893,"namespace":"tencentcloudstack","source":"https://github.com/tencentcloudstack/terraform-provider-tencentcloud","tier":"partner"}}
+{"type":"providers","attributes":{"name":"tencentcloud","full-name":"tencentcloudstack/tencentcloud","version":"1.56.1","namespace":"tencentcloudstack","source":"https://github.com/tencentcloudstack/terraform-provider-tencentcloud","tier":"partner"}}

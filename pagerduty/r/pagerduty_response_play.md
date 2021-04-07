@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    pagerduty = ">= 1.9.5"
+    pagerduty = ">= 1.9.6"
   }
 }
 ```
@@ -144,7 +144,7 @@ variable "type" {
 }
 
 variable "responder" {
-  description = "nested block: NestingList, min items: 1, max items: 0"
+  description = "nested block: NestingList, min items: 0, max items: 0"
   type = set(object(
     {
       description = string
@@ -179,6 +179,7 @@ variable "responder" {
       type = string
     }
   ))
+  default = []
 }
 
 variable "subscriber" {

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -42,6 +42,13 @@ module "oci_containerengine_cluster" {
     is_public_ip_enabled = null
     nsg_ids              = []
     subnet_id            = null
+  }]
+
+  image_policy_config = [{
+    is_policy_enabled = null
+    key_details = [{
+      kms_key_id = null
+    }]
   }]
 
   options = [{
@@ -110,6 +117,21 @@ variable "endpoint_config" {
   default = []
 }
 
+variable "image_policy_config" {
+  description = "nested block: NestingList, min items: 0, max items: 1"
+  type = set(object(
+    {
+      is_policy_enabled = bool
+      key_details = list(object(
+        {
+          kms_key_id = string
+        }
+      ))
+    }
+  ))
+  default = []
+}
+
 variable "options" {
   description = "nested block: NestingList, min items: 0, max items: 1"
   type = set(object(
@@ -168,6 +190,21 @@ resource "oci_containerengine_cluster" "this" {
       is_public_ip_enabled = endpoint_config.value["is_public_ip_enabled"]
       nsg_ids              = endpoint_config.value["nsg_ids"]
       subnet_id            = endpoint_config.value["subnet_id"]
+    }
+  }
+
+  dynamic "image_policy_config" {
+    for_each = var.image_policy_config
+    content {
+      is_policy_enabled = image_policy_config.value["is_policy_enabled"]
+
+      dynamic "key_details" {
+        for_each = image_policy_config.value.key_details
+        content {
+          kms_key_id = key_details.value["kms_key_id"]
+        }
+      }
+
     }
   }
 

@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcp = ">= 0.3.0"
+    hcp = ">= 0.4.0"
   }
 }
 ```
@@ -79,7 +79,7 @@ variable "peer_vpc_region" {
 }
 
 variable "peering_id" {
-  description = "(optional) - The ID of the Network peering."
+  description = "(optional) - The ID of the network peering."
   type        = string
   default     = null
 }

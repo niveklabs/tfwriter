@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"launchdarkly","full-name":"launchdarkly/launchdarkly","version":"1.5.1","downloads":39458,"namespace":"launchdarkly","source":"https://github.com/launchdarkly/terraform-provider-launchdarkly","tier":"partner"}}
+{"type":"providers","attributes":{"name":"launchdarkly","full-name":"launchdarkly/launchdarkly","version":"1.5.1","namespace":"launchdarkly","source":"https://github.com/launchdarkly/terraform-provider-launchdarkly","tier":"partner"}}

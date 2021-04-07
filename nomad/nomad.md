@@ -15,7 +15,7 @@ resource: nomad
 
 ```terraform
 provider "nomad" {
-  version = "1.4.13"
+  version = "1.4.14"
 
   # address - (required) is a type of string
   address = null
@@ -27,6 +27,8 @@ provider "nomad" {
   cert_file = null
   # cert_pem - (optional) is a type of string
   cert_pem = null
+  # consul_token - (optional) is a type of string
+  consul_token = null
   # http_auth - (optional) is a type of string
   http_auth = null
   # key_file - (optional) is a type of string
@@ -39,6 +41,14 @@ provider "nomad" {
   secret_id = null
   # vault_token - (optional) is a type of string
   vault_token = null
+
+  # NestingList
+  headers {
+    # name - (required) is a type of string
+    name = null
+    # value - (required) is a type of string
+    value = null
+  }
 }
 ```
 

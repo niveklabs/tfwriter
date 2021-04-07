@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -163,6 +163,11 @@ output "id" {
   value       = oci_core_dedicated_vm_host.this.id
 }
 
+output "remaining_memory_in_gbs" {
+  description = "returns a number"
+  value       = oci_core_dedicated_vm_host.this.remaining_memory_in_gbs
+}
+
 output "remaining_ocpus" {
   description = "returns a number"
   value       = oci_core_dedicated_vm_host.this.remaining_ocpus
@@ -176,6 +181,11 @@ output "state" {
 output "time_created" {
   description = "returns a string"
   value       = oci_core_dedicated_vm_host.this.time_created
+}
+
+output "total_memory_in_gbs" {
+  description = "returns a number"
+  value       = oci_core_dedicated_vm_host.this.total_memory_in_gbs
 }
 
 output "total_ocpus" {

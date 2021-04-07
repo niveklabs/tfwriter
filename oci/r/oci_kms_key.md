@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -267,9 +267,19 @@ output "id" {
   value       = oci_kms_key.this.id
 }
 
+output "is_primary" {
+  description = "returns a bool"
+  value       = oci_kms_key.this.is_primary
+}
+
 output "protection_mode" {
   description = "returns a string"
   value       = oci_kms_key.this.protection_mode
+}
+
+output "replica_details" {
+  description = "returns a list of object"
+  value       = oci_kms_key.this.replica_details
 }
 
 output "restored_from_key_id" {

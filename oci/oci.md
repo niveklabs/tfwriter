@@ -15,7 +15,7 @@ resource: oci
 
 ```terraform
 provider "oci" {
-  version = "4.20.0"
+  version = "4.21.0"
 
   # auth - (optional) is a type of string
   auth = null
@@ -62,6 +62,8 @@ provider "oci" {
 - [oci_apigateway_gateway](./r/oci_apigateway_gateway.md)
 
 - [oci_artifacts_container_configuration](./r/oci_artifacts_container_configuration.md)
+
+- [oci_artifacts_container_image_signature](./r/oci_artifacts_container_image_signature.md)
 
 - [oci_artifacts_container_repository](./r/oci_artifacts_container_repository.md)
 
@@ -417,6 +419,8 @@ provider "oci" {
 
 - [oci_kms_vault](./r/oci_kms_vault.md)
 
+- [oci_kms_vault_replication](./r/oci_kms_vault_replication.md)
+
 - [oci_kms_verify](./r/oci_kms_verify.md)
 
 - [oci_limits_quota](./r/oci_limits_quota.md)
@@ -601,6 +605,10 @@ provider "oci" {
 
 - [oci_artifacts_container_image](./d/oci_artifacts_container_image.md)
 
+- [oci_artifacts_container_image_signature](./d/oci_artifacts_container_image_signature.md)
+
+- [oci_artifacts_container_image_signatures](./d/oci_artifacts_container_image_signatures.md)
+
 - [oci_artifacts_container_images](./d/oci_artifacts_container_images.md)
 
 - [oci_artifacts_container_repositories](./d/oci_artifacts_container_repositories.md)
@@ -695,6 +703,10 @@ provider "oci" {
 
 - [oci_core_app_catalog_subscriptions](./d/oci_core_app_catalog_subscriptions.md)
 
+- [oci_core_block_volume_replica](./d/oci_core_block_volume_replica.md)
+
+- [oci_core_block_volume_replicas](./d/oci_core_block_volume_replicas.md)
+
 - [oci_core_boot_volume](./d/oci_core_boot_volume.md)
 
 - [oci_core_boot_volume_attachments](./d/oci_core_boot_volume_attachments.md)
@@ -702,6 +714,10 @@ provider "oci" {
 - [oci_core_boot_volume_backup](./d/oci_core_boot_volume_backup.md)
 
 - [oci_core_boot_volume_backups](./d/oci_core_boot_volume_backups.md)
+
+- [oci_core_boot_volume_replica](./d/oci_core_boot_volume_replica.md)
+
+- [oci_core_boot_volume_replicas](./d/oci_core_boot_volume_replicas.md)
 
 - [oci_core_boot_volumes](./d/oci_core_boot_volumes.md)
 
@@ -1327,7 +1343,11 @@ provider "oci" {
 
 - [oci_kms_keys](./d/oci_kms_keys.md)
 
+- [oci_kms_replication_status](./d/oci_kms_replication_status.md)
+
 - [oci_kms_vault](./d/oci_kms_vault.md)
+
+- [oci_kms_vault_replicas](./d/oci_kms_vault_replicas.md)
 
 - [oci_kms_vault_usage](./d/oci_kms_vault_usage.md)
 

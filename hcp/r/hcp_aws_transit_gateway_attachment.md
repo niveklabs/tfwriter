@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcp = ">= 0.3.0"
+    hcp = ">= 0.4.0"
   }
 }
 ```

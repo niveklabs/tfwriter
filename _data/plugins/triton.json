@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"triton","full-name":"joyent/triton","version":"0.8.1","downloads":2536,"namespace":"joyent","source":"https://github.com/joyent/terraform-provider-triton","tier":"partner"}}
+{"type":"providers","attributes":{"name":"triton","full-name":"joyent/triton","version":"0.8.1","namespace":"joyent","source":"https://github.com/joyent/terraform-provider-triton","tier":"partner"}}

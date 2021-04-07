@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"equinix","full-name":"equinix/equinix","version":"1.1.0-beta","downloads":1663,"namespace":"equinix","source":"https://github.com/equinix/terraform-provider-equinix","tier":"partner"}}
+{"type":"providers","attributes":{"name":"equinix","full-name":"equinix/equinix","version":"1.1.0-beta","namespace":"equinix","source":"https://github.com/equinix/terraform-provider-equinix","tier":"partner"}}

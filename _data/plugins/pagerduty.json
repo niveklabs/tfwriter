@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"pagerduty","full-name":"PagerDuty/pagerduty","version":"1.9.5","downloads":53,"namespace":"PagerDuty","source":"https://github.com/PagerDuty/terraform-provider-pagerduty","tier":"partner"}}
+{"type":"providers","attributes":{"name":"pagerduty","full-name":"PagerDuty/pagerduty","version":"1.9.6","namespace":"PagerDuty","source":"https://github.com/PagerDuty/terraform-provider-pagerduty","tier":"partner"}}

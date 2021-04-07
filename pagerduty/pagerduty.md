@@ -15,7 +15,7 @@ resource: pagerduty
 
 ```terraform
 provider "pagerduty" {
-  version = "1.9.5"
+  version = "1.9.6"
 
   # skip_credentials_validation - (optional) is a type of bool
   skip_credentials_validation = null

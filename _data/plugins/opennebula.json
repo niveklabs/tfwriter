@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"opennebula","full-name":"OpenNebula/opennebula","version":"0.2.2","downloads":2,"namespace":"OpenNebula","source":"https://github.com/OpenNebula/terraform-provider-opennebula","tier":"partner"}}
+{"type":"providers","attributes":{"name":"opennebula","full-name":"OpenNebula/opennebula","version":"0.2.2","namespace":"OpenNebula","source":"https://github.com/OpenNebula/terraform-provider-opennebula","tier":"partner"}}

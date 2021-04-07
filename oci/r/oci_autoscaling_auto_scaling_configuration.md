@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -60,6 +60,10 @@ module "oci_autoscaling_auto_scaling_configuration" {
     id          = null
     is_enabled  = null
     policy_type = null
+    resource_action = [{
+      action      = null
+      action_type = null
+    }]
     rules = [{
       action = [{
         type  = null
@@ -158,6 +162,12 @@ variable "policies" {
       id          = string
       is_enabled  = bool
       policy_type = string
+      resource_action = list(object(
+        {
+          action      = string
+          action_type = string
+        }
+      ))
       rules = set(object(
         {
           action = list(object(
@@ -242,6 +252,14 @@ resource "oci_autoscaling_auto_scaling_configuration" "this" {
           expression = execution_schedule.value["expression"]
           timezone   = execution_schedule.value["timezone"]
           type       = execution_schedule.value["type"]
+        }
+      }
+
+      dynamic "resource_action" {
+        for_each = policies.value.resource_action
+        content {
+          action      = resource_action.value["action"]
+          action_type = resource_action.value["action_type"]
         }
       }
 

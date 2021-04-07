@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcp = ">= 0.3.0"
+    hcp = ">= 0.4.0"
   }
 }
 ```
@@ -41,6 +41,8 @@ module "hcp_consul_cluster" {
   primary_link = null
   # public_endpoint - (optional) is a type of bool
   public_endpoint = null
+  # size - (optional) is a type of string
+  size = null
   # tier - (required) is a type of string
   tier = null
 
@@ -98,8 +100,14 @@ variable "public_endpoint" {
   default     = null
 }
 
+variable "size" {
+  description = "(optional) - The t-shirt size representation of each server VM that this Consul cluster is provisioned with. Valid option for development tier - `x_small`. Valid options for other tiers - `small`, `medium`, `large`."
+  type        = string
+  default     = null
+}
+
 variable "tier" {
-  description = "(required) - The tier that the HCP Consul cluster will be provisioned as.  Only 'development' and 'standard' are available at this time."
+  description = "(required) - The tier that the HCP Consul cluster will be provisioned as.  Only `development` and `standard` are available at this time."
   type        = string
 }
 
@@ -130,6 +138,7 @@ resource "hcp_consul_cluster" "this" {
   min_consul_version = var.min_consul_version
   primary_link       = var.primary_link
   public_endpoint    = var.public_endpoint
+  size               = var.size
   tier               = var.tier
 
   dynamic "timeouts" {

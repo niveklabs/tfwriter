@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"gridscale","full-name":"gridscale/gridscale","version":"1.8.4","downloads":586,"namespace":"gridscale","source":"https://github.com/gridscale/terraform-provider-gridscale","tier":"partner"}}
+{"type":"providers","attributes":{"name":"gridscale","full-name":"gridscale/gridscale","version":"1.8.4","namespace":"gridscale","source":"https://github.com/gridscale/terraform-provider-gridscale","tier":"partner"}}

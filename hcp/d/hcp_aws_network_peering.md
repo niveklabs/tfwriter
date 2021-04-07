@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    hcp = ">= 0.3.0"
+    hcp = ">= 0.4.0"
   }
 }
 ```
@@ -49,7 +49,7 @@ variable "hvn_id" {
 }
 
 variable "peering_id" {
-  description = "(required) - The ID of the Network peering."
+  description = "(required) - The ID of the network peering."
   type        = string
 }
 

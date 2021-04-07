@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"datadog","full-name":"DataDog/datadog","version":"2.24.0","downloads":101,"namespace":"DataDog","source":"https://github.com/DataDog/terraform-provider-datadog","tier":"partner"}}
+{"type":"providers","attributes":{"name":"datadog","full-name":"DataDog/datadog","version":"2.24.0","namespace":"DataDog","source":"https://github.com/DataDog/terraform-provider-datadog","tier":"partner"}}

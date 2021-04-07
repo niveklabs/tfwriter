@@ -1,1 +1,1 @@
-{"type":"providers","attributes":{"name":"cloudscale","full-name":"cloudscale-ch/cloudscale","version":"2.3.0","downloads":353,"namespace":"cloudscale-ch","source":"https://github.com/cloudscale-ch/terraform-provider-cloudscale","tier":"partner"}}
+{"type":"providers","attributes":{"name":"cloudscale","full-name":"cloudscale-ch/cloudscale","version":"2.3.0","namespace":"cloudscale-ch","source":"https://github.com/cloudscale-ch/terraform-provider-cloudscale","tier":"partner"}}

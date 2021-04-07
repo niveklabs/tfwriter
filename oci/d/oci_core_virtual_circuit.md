@@ -14,7 +14,7 @@
 ```terraform
 terraform {
   required_providers {
-    oci = ">= 4.20.0"
+    oci = ">= 4.21.0"
   }
 }
 ```
@@ -151,6 +151,11 @@ output "reference_comment" {
 output "region" {
   description = "returns a string"
   value       = data.oci_core_virtual_circuit.this.region
+}
+
+output "routing_policy" {
+  description = "returns a list of string"
+  value       = data.oci_core_virtual_circuit.this.routing_policy
 }
 
 output "service_type" {
