@@ -141,19 +141,32 @@ variable "type" {
 
 ```terraform
 resource "aci_cloud_context_profile" "this" {
-  annotation                              = var.annotation
-  cloud_vendor                            = var.cloud_vendor
-  description                             = var.description
-  hub_network                             = var.hub_network
-  name                                    = var.name
-  name_alias                              = var.name_alias
-  primary_cidr                            = var.primary_cidr
-  region                                  = var.region
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_vendor - (required) is a type of string
+  cloud_vendor = var.cloud_vendor
+  # description - (optional) is a type of string
+  description = var.description
+  # hub_network - (optional) is a type of string
+  hub_network = var.hub_network
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # primary_cidr - (required) is a type of string
+  primary_cidr = var.primary_cidr
+  # region - (required) is a type of string
+  region = var.region
+  # relation_cloud_rs_ctx_profile_to_region - (optional) is a type of string
   relation_cloud_rs_ctx_profile_to_region = var.relation_cloud_rs_ctx_profile_to_region
-  relation_cloud_rs_ctx_to_flow_log       = var.relation_cloud_rs_ctx_to_flow_log
-  relation_cloud_rs_to_ctx                = var.relation_cloud_rs_to_ctx
-  tenant_dn                               = var.tenant_dn
-  type                                    = var.type
+  # relation_cloud_rs_ctx_to_flow_log - (optional) is a type of string
+  relation_cloud_rs_ctx_to_flow_log = var.relation_cloud_rs_ctx_to_flow_log
+  # relation_cloud_rs_to_ctx - (optional) is a type of string
+  relation_cloud_rs_to_ctx = var.relation_cloud_rs_to_ctx
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
+  # type - (optional) is a type of string
+  type = var.type
 }
 ```
 

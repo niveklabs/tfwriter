@@ -81,10 +81,15 @@ variable "relation_infra_rs_sp_acc_port_p" {
 
 ```terraform
 resource "aci_spine_profile" "this" {
-  annotation                      = var.annotation
-  description                     = var.description
-  name                            = var.name
-  name_alias                      = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_infra_rs_sp_acc_port_p - (optional) is a type of set of string
   relation_infra_rs_sp_acc_port_p = var.relation_infra_rs_sp_acc_port_p
 }
 ```

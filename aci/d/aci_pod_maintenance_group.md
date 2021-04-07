@@ -89,11 +89,17 @@ variable "pod_maintenance_group_type" {
 
 ```terraform
 data "aci_pod_maintenance_group" "this" {
-  annotation                 = var.annotation
-  description                = var.description
-  fwtype                     = var.fwtype
-  name                       = var.name
-  name_alias                 = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fwtype - (optional) is a type of string
+  fwtype = var.fwtype
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pod_maintenance_group_type - (optional) is a type of string
   pod_maintenance_group_type = var.pod_maintenance_group_type
 }
 ```

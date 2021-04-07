@@ -79,11 +79,16 @@ variable "pod_id" {
 
 ```terraform
 data "aci_fabric_path_ep" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  node_id     = var.node_id
-  pod_id      = var.pod_id
+  # name - (required) is a type of string
+  name = var.name
+  # node_id - (required) is a type of string
+  node_id = var.node_id
+  # pod_id - (required) is a type of string
+  pod_id = var.pod_id
 }
 ```
 

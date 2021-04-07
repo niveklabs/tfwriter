@@ -88,12 +88,18 @@ variable "primary" {
 
 ```terraform
 data "aci_cloud_cidr_pool" "this" {
-  addr                     = var.addr
-  annotation               = var.annotation
+  # addr - (required) is a type of string
+  addr = var.addr
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_context_profile_dn - (required) is a type of string
   cloud_context_profile_dn = var.cloud_context_profile_dn
-  description              = var.description
-  name_alias               = var.name_alias
-  primary                  = var.primary
+  # description - (optional) is a type of string
+  description = var.description
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # primary - (optional) is a type of string
+  primary = var.primary
 }
 ```
 

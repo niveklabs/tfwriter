@@ -87,11 +87,17 @@ variable "spine_switch_association_type" {
 
 ```terraform
 data "aci_spine_switch_association" "this" {
-  annotation                    = var.annotation
-  description                   = var.description
-  name                          = var.name
-  name_alias                    = var.name_alias
-  spine_profile_dn              = var.spine_profile_dn
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # spine_profile_dn - (required) is a type of string
+  spine_profile_dn = var.spine_profile_dn
+  # spine_switch_association_type - (required) is a type of string
   spine_switch_association_type = var.spine_switch_association_type
 }
 ```

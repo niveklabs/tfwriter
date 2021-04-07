@@ -81,11 +81,16 @@ variable "name_alias" {
 
 ```terraform
 data "aci_leaf_access_bundle_policy_group" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  lag_t       = var.lag_t
-  name        = var.name
-  name_alias  = var.name_alias
+  # lag_t - (optional) is a type of string
+  lag_t = var.lag_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

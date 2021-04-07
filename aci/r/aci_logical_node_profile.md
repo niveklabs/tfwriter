@@ -104,14 +104,22 @@ variable "target_dscp" {
 
 ```terraform
 resource "aci_logical_node_profile" "this" {
-  annotation    = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # config_issues - (optional) is a type of string
   config_issues = var.config_issues
-  description   = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # l3_outside_dn - (required) is a type of string
   l3_outside_dn = var.l3_outside_dn
-  name          = var.name
-  name_alias    = var.name_alias
-  tag           = var.tag
-  target_dscp   = var.target_dscp
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # tag - (optional) is a type of string
+  tag = var.tag
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
 }
 ```
 

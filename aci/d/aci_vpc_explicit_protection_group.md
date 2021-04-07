@@ -73,9 +73,13 @@ variable "vpc_explicit_protection_group_id" {
 
 ```terraform
 data "aci_vpc_explicit_protection_group" "this" {
-  annotation                       = var.annotation
-  description                      = var.description
-  name                             = var.name
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # vpc_explicit_protection_group_id - (optional) is a type of string
   vpc_explicit_protection_group_id = var.vpc_explicit_protection_group_id
 }
 ```

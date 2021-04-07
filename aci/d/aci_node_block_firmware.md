@@ -96,13 +96,20 @@ variable "to_" {
 
 ```terraform
 data "aci_node_block_firmware" "this" {
-  annotation        = var.annotation
-  description       = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # firmware_group_dn - (required) is a type of string
   firmware_group_dn = var.firmware_group_dn
-  from_             = var.from_
-  name              = var.name
-  name_alias        = var.name_alias
-  to_               = var.to_
+  # from_ - (optional) is a type of string
+  from_ = var.from_
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # to_ - (optional) is a type of string
+  to_ = var.to_
 }
 ```
 

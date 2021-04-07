@@ -80,11 +80,16 @@ variable "name_alias" {
 
 ```terraform
 resource "aci_access_generic" "this" {
-  annotation                          = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # attachable_access_entity_profile_dn - (required) is a type of string
   attachable_access_entity_profile_dn = var.attachable_access_entity_profile_dn
-  description                         = var.description
-  name                                = var.name
-  name_alias                          = var.name_alias
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

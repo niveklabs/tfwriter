@@ -144,19 +144,32 @@ variable "target_dscp" {
 
 ```terraform
 resource "aci_contract_subject" "this" {
-  annotation                    = var.annotation
-  cons_match_t                  = var.cons_match_t
-  contract_dn                   = var.contract_dn
-  description                   = var.description
-  name                          = var.name
-  name_alias                    = var.name_alias
-  prio                          = var.prio
-  prov_match_t                  = var.prov_match_t
-  relation_vz_rs_sdwan_pol      = var.relation_vz_rs_sdwan_pol
-  relation_vz_rs_subj_filt_att  = var.relation_vz_rs_subj_filt_att
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cons_match_t - (optional) is a type of string
+  cons_match_t = var.cons_match_t
+  # contract_dn - (required) is a type of string
+  contract_dn = var.contract_dn
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # prov_match_t - (optional) is a type of string
+  prov_match_t = var.prov_match_t
+  # relation_vz_rs_sdwan_pol - (optional) is a type of string
+  relation_vz_rs_sdwan_pol = var.relation_vz_rs_sdwan_pol
+  # relation_vz_rs_subj_filt_att - (optional) is a type of set of string
+  relation_vz_rs_subj_filt_att = var.relation_vz_rs_subj_filt_att
+  # relation_vz_rs_subj_graph_att - (optional) is a type of string
   relation_vz_rs_subj_graph_att = var.relation_vz_rs_subj_graph_att
-  rev_flt_ports                 = var.rev_flt_ports
-  target_dscp                   = var.target_dscp
+  # rev_flt_ports - (optional) is a type of string
+  rev_flt_ports = var.rev_flt_ports
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
 }
 ```
 

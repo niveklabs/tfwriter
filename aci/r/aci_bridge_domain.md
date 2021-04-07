@@ -344,42 +344,78 @@ variable "relation_fv_rs_bd_to_netflow_monitor_pol" {
 
 ```terraform
 resource "aci_bridge_domain" "this" {
-  annotation                     = var.annotation
-  arp_flood                      = var.arp_flood
-  bridge_domain_type             = var.bridge_domain_type
-  description                    = var.description
-  ep_clear                       = var.ep_clear
-  ep_move_detect_mode            = var.ep_move_detect_mode
-  host_based_routing             = var.host_based_routing
-  intersite_bum_traffic_allow    = var.intersite_bum_traffic_allow
-  intersite_l2_stretch           = var.intersite_l2_stretch
-  ip_learning                    = var.ip_learning
-  ipv6_mcast_allow               = var.ipv6_mcast_allow
-  limit_ip_learn_to_subnets      = var.limit_ip_learn_to_subnets
-  ll_addr                        = var.ll_addr
-  mac                            = var.mac
-  mcast_allow                    = var.mcast_allow
-  multi_dst_pkt_act              = var.multi_dst_pkt_act
-  name                           = var.name
-  name_alias                     = var.name_alias
-  optimize_wan_bandwidth         = var.optimize_wan_bandwidth
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # arp_flood - (optional) is a type of string
+  arp_flood = var.arp_flood
+  # bridge_domain_type - (optional) is a type of string
+  bridge_domain_type = var.bridge_domain_type
+  # description - (optional) is a type of string
+  description = var.description
+  # ep_clear - (optional) is a type of string
+  ep_clear = var.ep_clear
+  # ep_move_detect_mode - (optional) is a type of string
+  ep_move_detect_mode = var.ep_move_detect_mode
+  # host_based_routing - (optional) is a type of string
+  host_based_routing = var.host_based_routing
+  # intersite_bum_traffic_allow - (optional) is a type of string
+  intersite_bum_traffic_allow = var.intersite_bum_traffic_allow
+  # intersite_l2_stretch - (optional) is a type of string
+  intersite_l2_stretch = var.intersite_l2_stretch
+  # ip_learning - (optional) is a type of string
+  ip_learning = var.ip_learning
+  # ipv6_mcast_allow - (optional) is a type of string
+  ipv6_mcast_allow = var.ipv6_mcast_allow
+  # limit_ip_learn_to_subnets - (optional) is a type of string
+  limit_ip_learn_to_subnets = var.limit_ip_learn_to_subnets
+  # ll_addr - (optional) is a type of string
+  ll_addr = var.ll_addr
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # mcast_allow - (optional) is a type of string
+  mcast_allow = var.mcast_allow
+  # multi_dst_pkt_act - (optional) is a type of string
+  multi_dst_pkt_act = var.multi_dst_pkt_act
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # optimize_wan_bandwidth - (optional) is a type of string
+  optimize_wan_bandwidth = var.optimize_wan_bandwidth
+  # relation_fv_rs_abd_pol_mon_pol - (optional) is a type of string
   relation_fv_rs_abd_pol_mon_pol = var.relation_fv_rs_abd_pol_mon_pol
-  relation_fv_rs_bd_flood_to     = var.relation_fv_rs_bd_flood_to
-  relation_fv_rs_bd_to_ep_ret    = var.relation_fv_rs_bd_to_ep_ret
-  relation_fv_rs_bd_to_fhs       = var.relation_fv_rs_bd_to_fhs
-  relation_fv_rs_bd_to_nd_p      = var.relation_fv_rs_bd_to_nd_p
-  relation_fv_rs_bd_to_out       = var.relation_fv_rs_bd_to_out
-  relation_fv_rs_bd_to_profile   = var.relation_fv_rs_bd_to_profile
-  relation_fv_rs_bd_to_relay_p   = var.relation_fv_rs_bd_to_relay_p
-  relation_fv_rs_ctx             = var.relation_fv_rs_ctx
-  relation_fv_rs_igmpsn          = var.relation_fv_rs_igmpsn
-  relation_fv_rs_mldsn           = var.relation_fv_rs_mldsn
-  tenant_dn                      = var.tenant_dn
-  unicast_route                  = var.unicast_route
-  unk_mac_ucast_act              = var.unk_mac_ucast_act
-  unk_mcast_act                  = var.unk_mcast_act
-  v6unk_mcast_act                = var.v6unk_mcast_act
-  vmac                           = var.vmac
+  # relation_fv_rs_bd_flood_to - (optional) is a type of set of string
+  relation_fv_rs_bd_flood_to = var.relation_fv_rs_bd_flood_to
+  # relation_fv_rs_bd_to_ep_ret - (optional) is a type of string
+  relation_fv_rs_bd_to_ep_ret = var.relation_fv_rs_bd_to_ep_ret
+  # relation_fv_rs_bd_to_fhs - (optional) is a type of string
+  relation_fv_rs_bd_to_fhs = var.relation_fv_rs_bd_to_fhs
+  # relation_fv_rs_bd_to_nd_p - (optional) is a type of string
+  relation_fv_rs_bd_to_nd_p = var.relation_fv_rs_bd_to_nd_p
+  # relation_fv_rs_bd_to_out - (optional) is a type of set of string
+  relation_fv_rs_bd_to_out = var.relation_fv_rs_bd_to_out
+  # relation_fv_rs_bd_to_profile - (optional) is a type of string
+  relation_fv_rs_bd_to_profile = var.relation_fv_rs_bd_to_profile
+  # relation_fv_rs_bd_to_relay_p - (optional) is a type of string
+  relation_fv_rs_bd_to_relay_p = var.relation_fv_rs_bd_to_relay_p
+  # relation_fv_rs_ctx - (optional) is a type of string
+  relation_fv_rs_ctx = var.relation_fv_rs_ctx
+  # relation_fv_rs_igmpsn - (optional) is a type of string
+  relation_fv_rs_igmpsn = var.relation_fv_rs_igmpsn
+  # relation_fv_rs_mldsn - (optional) is a type of string
+  relation_fv_rs_mldsn = var.relation_fv_rs_mldsn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
+  # unicast_route - (optional) is a type of string
+  unicast_route = var.unicast_route
+  # unk_mac_ucast_act - (optional) is a type of string
+  unk_mac_ucast_act = var.unk_mac_ucast_act
+  # unk_mcast_act - (optional) is a type of string
+  unk_mcast_act = var.unk_mcast_act
+  # v6unk_mcast_act - (optional) is a type of string
+  v6unk_mcast_act = var.v6unk_mcast_act
+  # vmac - (optional) is a type of string
+  vmac = var.vmac
 
   dynamic "relation_fv_rs_bd_to_netflow_monitor_pol" {
     for_each = var.relation_fv_rs_bd_to_netflow_monitor_pol

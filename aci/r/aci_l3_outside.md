@@ -144,17 +144,28 @@ variable "relation_l3ext_rs_dampening_pol" {
 
 ```terraform
 resource "aci_l3_outside" "this" {
-  annotation                                       = var.annotation
-  description                                      = var.description
-  enforce_rtctrl                                   = var.enforce_rtctrl
-  name                                             = var.name
-  name_alias                                       = var.name_alias
-  relation_l3ext_rs_ectx                           = var.relation_l3ext_rs_ectx
-  relation_l3ext_rs_interleak_pol                  = var.relation_l3ext_rs_interleak_pol
-  relation_l3ext_rs_l3_dom_att                     = var.relation_l3ext_rs_l3_dom_att
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # enforce_rtctrl - (optional) is a type of string
+  enforce_rtctrl = var.enforce_rtctrl
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_l3ext_rs_ectx - (optional) is a type of string
+  relation_l3ext_rs_ectx = var.relation_l3ext_rs_ectx
+  # relation_l3ext_rs_interleak_pol - (optional) is a type of string
+  relation_l3ext_rs_interleak_pol = var.relation_l3ext_rs_interleak_pol
+  # relation_l3ext_rs_l3_dom_att - (optional) is a type of string
+  relation_l3ext_rs_l3_dom_att = var.relation_l3ext_rs_l3_dom_att
+  # relation_l3ext_rs_out_to_bd_public_subnet_holder - (optional) is a type of set of string
   relation_l3ext_rs_out_to_bd_public_subnet_holder = var.relation_l3ext_rs_out_to_bd_public_subnet_holder
-  target_dscp                                      = var.target_dscp
-  tenant_dn                                        = var.tenant_dn
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 
   dynamic "relation_l3ext_rs_dampening_pol" {
     for_each = var.relation_l3ext_rs_dampening_pol

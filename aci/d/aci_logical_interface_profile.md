@@ -96,13 +96,20 @@ variable "tag" {
 
 ```terraform
 data "aci_logical_interface_profile" "this" {
-  annotation              = var.annotation
-  description             = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # logical_node_profile_dn - (required) is a type of string
   logical_node_profile_dn = var.logical_node_profile_dn
-  name                    = var.name
-  name_alias              = var.name_alias
-  prio                    = var.prio
-  tag                     = var.tag
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # tag - (optional) is a type of string
+  tag = var.tag
 }
 ```
 

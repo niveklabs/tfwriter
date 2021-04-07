@@ -72,10 +72,14 @@ variable "tdn" {
 
 ```terraform
 data "aci_spine_port_selector" "this" {
-  annotation       = var.annotation
-  description      = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # spine_profile_dn - (required) is a type of string
   spine_profile_dn = var.spine_profile_dn
-  tdn              = var.tdn
+  # tdn - (required) is a type of string
+  tdn = var.tdn
 }
 ```
 

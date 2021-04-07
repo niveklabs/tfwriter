@@ -192,25 +192,44 @@ variable "route_reachability" {
 
 ```terraform
 resource "aci_cloud_external_epg" "this" {
-  annotation                      = var.annotation
-  cloud_applicationcontainer_dn   = var.cloud_applicationcontainer_dn
-  description                     = var.description
-  exception_tag                   = var.exception_tag
-  flood_on_encap                  = var.flood_on_encap
-  match_t                         = var.match_t
-  name                            = var.name
-  name_alias                      = var.name_alias
-  pref_gr_memb                    = var.pref_gr_memb
-  prio                            = var.prio
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_applicationcontainer_dn - (required) is a type of string
+  cloud_applicationcontainer_dn = var.cloud_applicationcontainer_dn
+  # description - (optional) is a type of string
+  description = var.description
+  # exception_tag - (optional) is a type of string
+  exception_tag = var.exception_tag
+  # flood_on_encap - (optional) is a type of string
+  flood_on_encap = var.flood_on_encap
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # relation_cloud_rs_cloud_epg_ctx - (optional) is a type of string
   relation_cloud_rs_cloud_epg_ctx = var.relation_cloud_rs_cloud_epg_ctx
-  relation_fv_rs_cons             = var.relation_fv_rs_cons
-  relation_fv_rs_cons_if          = var.relation_fv_rs_cons_if
-  relation_fv_rs_cust_qos_pol     = var.relation_fv_rs_cust_qos_pol
-  relation_fv_rs_intra_epg        = var.relation_fv_rs_intra_epg
-  relation_fv_rs_prot_by          = var.relation_fv_rs_prot_by
-  relation_fv_rs_prov             = var.relation_fv_rs_prov
-  relation_fv_rs_sec_inherited    = var.relation_fv_rs_sec_inherited
-  route_reachability              = var.route_reachability
+  # relation_fv_rs_cons - (optional) is a type of set of string
+  relation_fv_rs_cons = var.relation_fv_rs_cons
+  # relation_fv_rs_cons_if - (optional) is a type of set of string
+  relation_fv_rs_cons_if = var.relation_fv_rs_cons_if
+  # relation_fv_rs_cust_qos_pol - (optional) is a type of string
+  relation_fv_rs_cust_qos_pol = var.relation_fv_rs_cust_qos_pol
+  # relation_fv_rs_intra_epg - (optional) is a type of set of string
+  relation_fv_rs_intra_epg = var.relation_fv_rs_intra_epg
+  # relation_fv_rs_prot_by - (optional) is a type of set of string
+  relation_fv_rs_prot_by = var.relation_fv_rs_prot_by
+  # relation_fv_rs_prov - (optional) is a type of set of string
+  relation_fv_rs_prov = var.relation_fv_rs_prov
+  # relation_fv_rs_sec_inherited - (optional) is a type of set of string
+  relation_fv_rs_sec_inherited = var.relation_fv_rs_sec_inherited
+  # route_reachability - (optional) is a type of string
+  route_reachability = var.route_reachability
 }
 ```
 

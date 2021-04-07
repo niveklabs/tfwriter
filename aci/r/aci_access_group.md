@@ -81,11 +81,16 @@ variable "tdn" {
 
 ```terraform
 resource "aci_access_group" "this" {
+  # access_port_selector_dn - (required) is a type of string
   access_port_selector_dn = var.access_port_selector_dn
-  annotation              = var.annotation
-  description             = var.description
-  fex_id                  = var.fex_id
-  tdn                     = var.tdn
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fex_id - (optional) is a type of string
+  fex_id = var.fex_id
+  # tdn - (optional) is a type of string
+  tdn = var.tdn
 }
 ```
 

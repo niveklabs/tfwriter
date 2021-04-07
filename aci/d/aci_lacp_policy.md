@@ -105,14 +105,22 @@ variable "name_alias" {
 
 ```terraform
 data "aci_lacp_policy" "this" {
-  annotation  = var.annotation
-  ctrl        = var.ctrl
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # ctrl - (optional) is a type of list of string
+  ctrl = var.ctrl
+  # description - (optional) is a type of string
   description = var.description
-  max_links   = var.max_links
-  min_links   = var.min_links
-  mode        = var.mode
-  name        = var.name
-  name_alias  = var.name_alias
+  # max_links - (optional) is a type of string
+  max_links = var.max_links
+  # min_links - (optional) is a type of string
+  min_links = var.min_links
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

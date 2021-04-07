@@ -95,12 +95,19 @@ variable "relation_infra_rs_acc_base_grp" {
 
 ```terraform
 resource "aci_access_port_selector" "this" {
-  access_port_selector_type      = var.access_port_selector_type
-  annotation                     = var.annotation
-  description                    = var.description
-  leaf_interface_profile_dn      = var.leaf_interface_profile_dn
-  name                           = var.name
-  name_alias                     = var.name_alias
+  # access_port_selector_type - (required) is a type of string
+  access_port_selector_type = var.access_port_selector_type
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # leaf_interface_profile_dn - (required) is a type of string
+  leaf_interface_profile_dn = var.leaf_interface_profile_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_infra_rs_acc_base_grp - (optional) is a type of string
   relation_infra_rs_acc_base_grp = var.relation_infra_rs_acc_base_grp
 }
 ```

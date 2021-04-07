@@ -113,15 +113,24 @@ variable "relation_infra_rs_vlan_ns_def" {
 
 ```terraform
 resource "aci_l3_domain_profile" "this" {
-  annotation                         = var.annotation
-  description                        = var.description
-  name                               = var.name
-  name_alias                         = var.name_alias
-  relation_extnw_rs_out              = var.relation_extnw_rs_out
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_extnw_rs_out - (optional) is a type of set of string
+  relation_extnw_rs_out = var.relation_extnw_rs_out
+  # relation_infra_rs_dom_vxlan_ns_def - (optional) is a type of string
   relation_infra_rs_dom_vxlan_ns_def = var.relation_infra_rs_dom_vxlan_ns_def
-  relation_infra_rs_vip_addr_ns      = var.relation_infra_rs_vip_addr_ns
-  relation_infra_rs_vlan_ns          = var.relation_infra_rs_vlan_ns
-  relation_infra_rs_vlan_ns_def      = var.relation_infra_rs_vlan_ns_def
+  # relation_infra_rs_vip_addr_ns - (optional) is a type of string
+  relation_infra_rs_vip_addr_ns = var.relation_infra_rs_vip_addr_ns
+  # relation_infra_rs_vlan_ns - (optional) is a type of string
+  relation_infra_rs_vlan_ns = var.relation_infra_rs_vlan_ns
+  # relation_infra_rs_vlan_ns_def - (optional) is a type of string
+  relation_infra_rs_vlan_ns_def = var.relation_infra_rs_vlan_ns_def
 }
 ```
 

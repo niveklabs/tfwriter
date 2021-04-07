@@ -128,17 +128,28 @@ variable "route_reachability" {
 
 ```terraform
 data "aci_cloud_external_epg" "this" {
-  annotation                    = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_applicationcontainer_dn - (required) is a type of string
   cloud_applicationcontainer_dn = var.cloud_applicationcontainer_dn
-  description                   = var.description
-  exception_tag                 = var.exception_tag
-  flood_on_encap                = var.flood_on_encap
-  match_t                       = var.match_t
-  name                          = var.name
-  name_alias                    = var.name_alias
-  pref_gr_memb                  = var.pref_gr_memb
-  prio                          = var.prio
-  route_reachability            = var.route_reachability
+  # description - (optional) is a type of string
+  description = var.description
+  # exception_tag - (optional) is a type of string
+  exception_tag = var.exception_tag
+  # flood_on_encap - (optional) is a type of string
+  flood_on_encap = var.flood_on_encap
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # route_reachability - (optional) is a type of string
+  route_reachability = var.route_reachability
 }
 ```
 

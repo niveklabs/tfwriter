@@ -80,11 +80,16 @@ variable "name_alias" {
 
 ```terraform
 data "aci_fex_bundle_group" "this" {
-  annotation     = var.annotation
-  description    = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fex_profile_dn - (required) is a type of string
   fex_profile_dn = var.fex_profile_dn
-  name           = var.name
-  name_alias     = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

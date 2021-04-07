@@ -121,16 +121,26 @@ variable "target_dn" {
 
 ```terraform
 data "aci_configuration_export_policy" "this" {
-  admin_st              = var.admin_st
-  annotation            = var.annotation
-  description           = var.description
-  format                = var.format
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # format - (optional) is a type of string
+  format = var.format
+  # include_secure_fields - (optional) is a type of string
   include_secure_fields = var.include_secure_fields
-  max_snapshot_count    = var.max_snapshot_count
-  name                  = var.name
-  name_alias            = var.name_alias
-  snapshot              = var.snapshot
-  target_dn             = var.target_dn
+  # max_snapshot_count - (optional) is a type of string
+  max_snapshot_count = var.max_snapshot_count
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
+  # target_dn - (optional) is a type of string
+  target_dn = var.target_dn
 }
 ```
 

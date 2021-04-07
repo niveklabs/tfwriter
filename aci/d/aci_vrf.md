@@ -120,16 +120,26 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_vrf" "this" {
-  annotation             = var.annotation
-  bd_enforced_enable     = var.bd_enforced_enable
-  description            = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # bd_enforced_enable - (optional) is a type of string
+  bd_enforced_enable = var.bd_enforced_enable
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_data_plane_learning - (optional) is a type of string
   ip_data_plane_learning = var.ip_data_plane_learning
-  knw_mcast_act          = var.knw_mcast_act
-  name                   = var.name
-  name_alias             = var.name_alias
-  pc_enf_dir             = var.pc_enf_dir
-  pc_enf_pref            = var.pc_enf_pref
-  tenant_dn              = var.tenant_dn
+  # knw_mcast_act - (optional) is a type of string
+  knw_mcast_act = var.knw_mcast_act
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pc_enf_dir - (optional) is a type of string
+  pc_enf_dir = var.pc_enf_dir
+  # pc_enf_pref - (optional) is a type of string
+  pc_enf_pref = var.pc_enf_pref
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

@@ -113,14 +113,23 @@ variable "relation_infra_rs_macsec_if_pol" {
 
 ```terraform
 resource "aci_spine_port_policy_group" "this" {
-  annotation                      = var.annotation
-  description                     = var.description
-  name                            = var.name
-  name_alias                      = var.name_alias
-  relation_infra_rs_att_ent_p     = var.relation_infra_rs_att_ent_p
-  relation_infra_rs_cdp_if_pol    = var.relation_infra_rs_cdp_if_pol
-  relation_infra_rs_copp_if_pol   = var.relation_infra_rs_copp_if_pol
-  relation_infra_rs_h_if_pol      = var.relation_infra_rs_h_if_pol
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_infra_rs_att_ent_p - (optional) is a type of string
+  relation_infra_rs_att_ent_p = var.relation_infra_rs_att_ent_p
+  # relation_infra_rs_cdp_if_pol - (optional) is a type of string
+  relation_infra_rs_cdp_if_pol = var.relation_infra_rs_cdp_if_pol
+  # relation_infra_rs_copp_if_pol - (optional) is a type of string
+  relation_infra_rs_copp_if_pol = var.relation_infra_rs_copp_if_pol
+  # relation_infra_rs_h_if_pol - (optional) is a type of string
+  relation_infra_rs_h_if_pol = var.relation_infra_rs_h_if_pol
+  # relation_infra_rs_macsec_if_pol - (optional) is a type of string
   relation_infra_rs_macsec_if_pol = var.relation_infra_rs_macsec_if_pol
 }
 ```

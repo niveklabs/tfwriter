@@ -80,11 +80,16 @@ variable "name_alias" {
 
 ```terraform
 resource "aci_cloud_availability_zone" "this" {
-  annotation                = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_providers_region_dn - (required) is a type of string
   cloud_providers_region_dn = var.cloud_providers_region_dn
-  description               = var.description
-  name                      = var.name
-  name_alias                = var.name_alias
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

@@ -81,11 +81,16 @@ variable "name_alias" {
 
 ```terraform
 resource "aci_cdp_interface_policy" "this" {
-  admin_st    = var.admin_st
-  annotation  = var.annotation
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

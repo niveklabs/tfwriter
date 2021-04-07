@@ -136,18 +136,30 @@ variable "virtual" {
 
 ```terraform
 resource "aci_subnet" "this" {
-  annotation                          = var.annotation
-  ctrl                                = var.ctrl
-  description                         = var.description
-  ip                                  = var.ip
-  name_alias                          = var.name_alias
-  parent_dn                           = var.parent_dn
-  preferred                           = var.preferred
-  relation_fv_rs_bd_subnet_to_out     = var.relation_fv_rs_bd_subnet_to_out
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # ctrl - (optional) is a type of list of string
+  ctrl = var.ctrl
+  # description - (optional) is a type of string
+  description = var.description
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # parent_dn - (required) is a type of string
+  parent_dn = var.parent_dn
+  # preferred - (optional) is a type of string
+  preferred = var.preferred
+  # relation_fv_rs_bd_subnet_to_out - (optional) is a type of set of string
+  relation_fv_rs_bd_subnet_to_out = var.relation_fv_rs_bd_subnet_to_out
+  # relation_fv_rs_bd_subnet_to_profile - (optional) is a type of string
   relation_fv_rs_bd_subnet_to_profile = var.relation_fv_rs_bd_subnet_to_profile
-  relation_fv_rs_nd_pfx_pol           = var.relation_fv_rs_nd_pfx_pol
-  scope                               = var.scope
-  virtual                             = var.virtual
+  # relation_fv_rs_nd_pfx_pol - (optional) is a type of string
+  relation_fv_rs_nd_pfx_pol = var.relation_fv_rs_nd_pfx_pol
+  # scope - (optional) is a type of list of string
+  scope = var.scope
+  # virtual - (optional) is a type of string
+  virtual = var.virtual
 }
 ```
 

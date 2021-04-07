@@ -145,19 +145,32 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_cloud_aws_provider" "this" {
-  access_key_id     = var.access_key_id
-  account_id        = var.account_id
-  annotation        = var.annotation
-  description       = var.description
-  email             = var.email
-  http_proxy        = var.http_proxy
+  # access_key_id - (optional) is a type of string
+  access_key_id = var.access_key_id
+  # account_id - (optional) is a type of string
+  account_id = var.account_id
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # email - (optional) is a type of string
+  email = var.email
+  # http_proxy - (optional) is a type of string
+  http_proxy = var.http_proxy
+  # is_account_in_org - (optional) is a type of string
   is_account_in_org = var.is_account_in_org
-  is_trusted        = var.is_trusted
-  name_alias        = var.name_alias
-  provider_id       = var.provider_id
-  region            = var.region
+  # is_trusted - (optional) is a type of string
+  is_trusted = var.is_trusted
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # provider_id - (optional) is a type of string
+  provider_id = var.provider_id
+  # region - (optional) is a type of string
+  region = var.region
+  # secret_access_key - (optional) is a type of string
   secret_access_key = var.secret_access_key
-  tenant_dn         = var.tenant_dn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

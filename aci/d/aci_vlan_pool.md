@@ -80,11 +80,16 @@ variable "name_alias" {
 
 ```terraform
 data "aci_vlan_pool" "this" {
-  alloc_mode  = var.alloc_mode
-  annotation  = var.annotation
+  # alloc_mode - (required) is a type of string
+  alloc_mode = var.alloc_mode
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

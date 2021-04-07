@@ -104,14 +104,22 @@ variable "tenant_dn" {
 
 ```terraform
 resource "aci_filter" "this" {
-  annotation                     = var.annotation
-  description                    = var.description
-  name                           = var.name
-  name_alias                     = var.name_alias
-  relation_vz_rs_filt_graph_att  = var.relation_vz_rs_filt_graph_att
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_vz_rs_filt_graph_att - (optional) is a type of string
+  relation_vz_rs_filt_graph_att = var.relation_vz_rs_filt_graph_att
+  # relation_vz_rs_fwd_r_flt_p_att - (optional) is a type of string
   relation_vz_rs_fwd_r_flt_p_att = var.relation_vz_rs_fwd_r_flt_p_att
+  # relation_vz_rs_rev_r_flt_p_att - (optional) is a type of string
   relation_vz_rs_rev_r_flt_p_att = var.relation_vz_rs_rev_r_flt_p_att
-  tenant_dn                      = var.tenant_dn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

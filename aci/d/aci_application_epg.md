@@ -160,21 +160,36 @@ variable "shutdown" {
 
 ```terraform
 data "aci_application_epg" "this" {
-  annotation             = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # application_profile_dn - (required) is a type of string
   application_profile_dn = var.application_profile_dn
-  description            = var.description
-  exception_tag          = var.exception_tag
-  flood_on_encap         = var.flood_on_encap
-  fwd_ctrl               = var.fwd_ctrl
-  has_mcast_source       = var.has_mcast_source
-  is_attr_based_epg      = var.is_attr_based_epg
-  match_t                = var.match_t
-  name                   = var.name
-  name_alias             = var.name_alias
-  pc_enf_pref            = var.pc_enf_pref
-  pref_gr_memb           = var.pref_gr_memb
-  prio                   = var.prio
-  shutdown               = var.shutdown
+  # description - (optional) is a type of string
+  description = var.description
+  # exception_tag - (optional) is a type of string
+  exception_tag = var.exception_tag
+  # flood_on_encap - (optional) is a type of string
+  flood_on_encap = var.flood_on_encap
+  # fwd_ctrl - (optional) is a type of string
+  fwd_ctrl = var.fwd_ctrl
+  # has_mcast_source - (optional) is a type of string
+  has_mcast_source = var.has_mcast_source
+  # is_attr_based_epg - (optional) is a type of string
+  is_attr_based_epg = var.is_attr_based_epg
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pc_enf_pref - (optional) is a type of string
+  pc_enf_pref = var.pc_enf_pref
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # shutdown - (optional) is a type of string
+  shutdown = var.shutdown
 }
 ```
 

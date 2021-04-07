@@ -87,11 +87,17 @@ variable "switch_association_type" {
 
 ```terraform
 data "aci_leaf_selector" "this" {
-  annotation              = var.annotation
-  description             = var.description
-  leaf_profile_dn         = var.leaf_profile_dn
-  name                    = var.name
-  name_alias              = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # leaf_profile_dn - (required) is a type of string
+  leaf_profile_dn = var.leaf_profile_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # switch_association_type - (required) is a type of string
   switch_association_type = var.switch_association_type
 }
 ```

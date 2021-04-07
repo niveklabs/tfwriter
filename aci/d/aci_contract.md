@@ -104,14 +104,22 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_contract" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
-  prio        = var.prio
-  scope       = var.scope
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # target_dscp - (optional) is a type of string
   target_dscp = var.target_dscp
-  tenant_dn   = var.tenant_dn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

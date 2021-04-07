@@ -120,16 +120,26 @@ variable "zone" {
 
 ```terraform
 resource "aci_cloud_subnet" "this" {
-  annotation                           = var.annotation
-  cloud_cidr_pool_dn                   = var.cloud_cidr_pool_dn
-  description                          = var.description
-  ip                                   = var.ip
-  name                                 = var.name
-  name_alias                           = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_cidr_pool_dn - (required) is a type of string
+  cloud_cidr_pool_dn = var.cloud_cidr_pool_dn
+  # description - (optional) is a type of string
+  description = var.description
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name - (optional) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_cloud_rs_subnet_to_flow_log - (optional) is a type of string
   relation_cloud_rs_subnet_to_flow_log = var.relation_cloud_rs_subnet_to_flow_log
-  scope                                = var.scope
-  usage                                = var.usage
-  zone                                 = var.zone
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # usage - (optional) is a type of string
+  usage = var.usage
+  # zone - (optional) is a type of string
+  zone = var.zone
 }
 ```
 

@@ -160,21 +160,36 @@ variable "threshold_enable" {
 
 ```terraform
 resource "aci_service_redirect_policy" "this" {
-  annotation                           = var.annotation
-  anycast_enabled                      = var.anycast_enabled
-  description                          = var.description
-  dest_type                            = var.dest_type
-  hashing_algorithm                    = var.hashing_algorithm
-  max_threshold_percent                = var.max_threshold_percent
-  min_threshold_percent                = var.min_threshold_percent
-  name                                 = var.name
-  name_alias                           = var.name_alias
-  program_local_pod_only               = var.program_local_pod_only
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # anycast_enabled - (optional) is a type of string
+  anycast_enabled = var.anycast_enabled
+  # description - (optional) is a type of string
+  description = var.description
+  # dest_type - (optional) is a type of string
+  dest_type = var.dest_type
+  # hashing_algorithm - (optional) is a type of string
+  hashing_algorithm = var.hashing_algorithm
+  # max_threshold_percent - (optional) is a type of string
+  max_threshold_percent = var.max_threshold_percent
+  # min_threshold_percent - (optional) is a type of string
+  min_threshold_percent = var.min_threshold_percent
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # program_local_pod_only - (optional) is a type of string
+  program_local_pod_only = var.program_local_pod_only
+  # relation_vns_rs_ipsla_monitoring_pol - (optional) is a type of string
   relation_vns_rs_ipsla_monitoring_pol = var.relation_vns_rs_ipsla_monitoring_pol
-  resilient_hash_enabled               = var.resilient_hash_enabled
-  tenant_dn                            = var.tenant_dn
-  threshold_down_action                = var.threshold_down_action
-  threshold_enable                     = var.threshold_enable
+  # resilient_hash_enabled - (optional) is a type of string
+  resilient_hash_enabled = var.resilient_hash_enabled
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
+  # threshold_down_action - (optional) is a type of string
+  threshold_down_action = var.threshold_down_action
+  # threshold_enable - (optional) is a type of string
+  threshold_enable = var.threshold_enable
 }
 ```
 

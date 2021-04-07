@@ -161,21 +161,36 @@ variable "version_check_override" {
 
 ```terraform
 resource "aci_maintenance_policy" "this" {
-  admin_st                        = var.admin_st
-  annotation                      = var.annotation
-  description                     = var.description
-  graceful                        = var.graceful
-  ignore_compat                   = var.ignore_compat
-  internal_label                  = var.internal_label
-  name                            = var.name
-  name_alias                      = var.name_alias
-  notif_cond                      = var.notif_cond
-  relation_maint_rs_pol_notif     = var.relation_maint_rs_pol_notif
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # graceful - (optional) is a type of string
+  graceful = var.graceful
+  # ignore_compat - (optional) is a type of string
+  ignore_compat = var.ignore_compat
+  # internal_label - (optional) is a type of string
+  internal_label = var.internal_label
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # notif_cond - (optional) is a type of string
+  notif_cond = var.notif_cond
+  # relation_maint_rs_pol_notif - (optional) is a type of string
+  relation_maint_rs_pol_notif = var.relation_maint_rs_pol_notif
+  # relation_maint_rs_pol_scheduler - (optional) is a type of string
   relation_maint_rs_pol_scheduler = var.relation_maint_rs_pol_scheduler
-  relation_trig_rs_triggerable    = var.relation_trig_rs_triggerable
-  run_mode                        = var.run_mode
-  version                         = var.version
-  version_check_override          = var.version_check_override
+  # relation_trig_rs_triggerable - (optional) is a type of string
+  relation_trig_rs_triggerable = var.relation_trig_rs_triggerable
+  # run_mode - (optional) is a type of string
+  run_mode = var.run_mode
+  # version - (optional) is a type of string
+  version = var.version
+  # version_check_override - (optional) is a type of string
+  version_check_override = var.version_check_override
 }
 ```
 

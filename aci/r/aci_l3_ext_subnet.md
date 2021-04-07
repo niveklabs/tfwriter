@@ -120,14 +120,22 @@ variable "relation_l3ext_rs_subnet_to_profile" {
 
 ```terraform
 resource "aci_l3_ext_subnet" "this" {
-  aggregate                            = var.aggregate
-  annotation                           = var.annotation
-  description                          = var.description
+  # aggregate - (optional) is a type of string
+  aggregate = var.aggregate
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # external_network_instance_profile_dn - (required) is a type of string
   external_network_instance_profile_dn = var.external_network_instance_profile_dn
-  ip                                   = var.ip
-  name_alias                           = var.name_alias
-  relation_l3ext_rs_subnet_to_rt_summ  = var.relation_l3ext_rs_subnet_to_rt_summ
-  scope                                = var.scope
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_l3ext_rs_subnet_to_rt_summ - (optional) is a type of string
+  relation_l3ext_rs_subnet_to_rt_summ = var.relation_l3ext_rs_subnet_to_rt_summ
+  # scope - (optional) is a type of list of string
+  scope = var.scope
 
   dynamic "relation_l3ext_rs_subnet_to_profile" {
     for_each = var.relation_l3ext_rs_subnet_to_profile

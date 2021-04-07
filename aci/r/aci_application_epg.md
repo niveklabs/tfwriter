@@ -280,36 +280,66 @@ variable "shutdown" {
 
 ```terraform
 resource "aci_application_epg" "this" {
-  annotation                   = var.annotation
-  application_profile_dn       = var.application_profile_dn
-  description                  = var.description
-  exception_tag                = var.exception_tag
-  flood_on_encap               = var.flood_on_encap
-  fwd_ctrl                     = var.fwd_ctrl
-  has_mcast_source             = var.has_mcast_source
-  is_attr_based_epg            = var.is_attr_based_epg
-  match_t                      = var.match_t
-  name                         = var.name
-  name_alias                   = var.name_alias
-  pc_enf_pref                  = var.pc_enf_pref
-  pref_gr_memb                 = var.pref_gr_memb
-  prio                         = var.prio
-  relation_fv_rs_aepg_mon_pol  = var.relation_fv_rs_aepg_mon_pol
-  relation_fv_rs_bd            = var.relation_fv_rs_bd
-  relation_fv_rs_cons          = var.relation_fv_rs_cons
-  relation_fv_rs_cons_if       = var.relation_fv_rs_cons_if
-  relation_fv_rs_cust_qos_pol  = var.relation_fv_rs_cust_qos_pol
-  relation_fv_rs_dpp_pol       = var.relation_fv_rs_dpp_pol
-  relation_fv_rs_fc_path_att   = var.relation_fv_rs_fc_path_att
-  relation_fv_rs_graph_def     = var.relation_fv_rs_graph_def
-  relation_fv_rs_intra_epg     = var.relation_fv_rs_intra_epg
-  relation_fv_rs_node_att      = var.relation_fv_rs_node_att
-  relation_fv_rs_prot_by       = var.relation_fv_rs_prot_by
-  relation_fv_rs_prov          = var.relation_fv_rs_prov
-  relation_fv_rs_prov_def      = var.relation_fv_rs_prov_def
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # application_profile_dn - (required) is a type of string
+  application_profile_dn = var.application_profile_dn
+  # description - (optional) is a type of string
+  description = var.description
+  # exception_tag - (optional) is a type of string
+  exception_tag = var.exception_tag
+  # flood_on_encap - (optional) is a type of string
+  flood_on_encap = var.flood_on_encap
+  # fwd_ctrl - (optional) is a type of string
+  fwd_ctrl = var.fwd_ctrl
+  # has_mcast_source - (optional) is a type of string
+  has_mcast_source = var.has_mcast_source
+  # is_attr_based_epg - (optional) is a type of string
+  is_attr_based_epg = var.is_attr_based_epg
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pc_enf_pref - (optional) is a type of string
+  pc_enf_pref = var.pc_enf_pref
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # relation_fv_rs_aepg_mon_pol - (optional) is a type of string
+  relation_fv_rs_aepg_mon_pol = var.relation_fv_rs_aepg_mon_pol
+  # relation_fv_rs_bd - (optional) is a type of string
+  relation_fv_rs_bd = var.relation_fv_rs_bd
+  # relation_fv_rs_cons - (optional) is a type of set of string
+  relation_fv_rs_cons = var.relation_fv_rs_cons
+  # relation_fv_rs_cons_if - (optional) is a type of set of string
+  relation_fv_rs_cons_if = var.relation_fv_rs_cons_if
+  # relation_fv_rs_cust_qos_pol - (optional) is a type of string
+  relation_fv_rs_cust_qos_pol = var.relation_fv_rs_cust_qos_pol
+  # relation_fv_rs_dpp_pol - (optional) is a type of string
+  relation_fv_rs_dpp_pol = var.relation_fv_rs_dpp_pol
+  # relation_fv_rs_fc_path_att - (optional) is a type of set of string
+  relation_fv_rs_fc_path_att = var.relation_fv_rs_fc_path_att
+  # relation_fv_rs_graph_def - (optional) is a type of set of string
+  relation_fv_rs_graph_def = var.relation_fv_rs_graph_def
+  # relation_fv_rs_intra_epg - (optional) is a type of set of string
+  relation_fv_rs_intra_epg = var.relation_fv_rs_intra_epg
+  # relation_fv_rs_node_att - (optional) is a type of set of string
+  relation_fv_rs_node_att = var.relation_fv_rs_node_att
+  # relation_fv_rs_prot_by - (optional) is a type of set of string
+  relation_fv_rs_prot_by = var.relation_fv_rs_prot_by
+  # relation_fv_rs_prov - (optional) is a type of set of string
+  relation_fv_rs_prov = var.relation_fv_rs_prov
+  # relation_fv_rs_prov_def - (optional) is a type of set of string
+  relation_fv_rs_prov_def = var.relation_fv_rs_prov_def
+  # relation_fv_rs_sec_inherited - (optional) is a type of set of string
   relation_fv_rs_sec_inherited = var.relation_fv_rs_sec_inherited
-  relation_fv_rs_trust_ctrl    = var.relation_fv_rs_trust_ctrl
-  shutdown                     = var.shutdown
+  # relation_fv_rs_trust_ctrl - (optional) is a type of string
+  relation_fv_rs_trust_ctrl = var.relation_fv_rs_trust_ctrl
+  # shutdown - (optional) is a type of string
+  shutdown = var.shutdown
 }
 ```
 

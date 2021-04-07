@@ -80,11 +80,16 @@ variable "tenant_dn" {
 
 ```terraform
 resource "aci_taboo_contract" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
-  tenant_dn   = var.tenant_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

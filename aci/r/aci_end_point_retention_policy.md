@@ -128,17 +128,28 @@ variable "tenant_dn" {
 
 ```terraform
 resource "aci_end_point_retention_policy" "this" {
-  annotation          = var.annotation
-  bounce_age_intvl    = var.bounce_age_intvl
-  bounce_trig         = var.bounce_trig
-  description         = var.description
-  hold_intvl          = var.hold_intvl
-  local_ep_age_intvl  = var.local_ep_age_intvl
-  move_freq           = var.move_freq
-  name                = var.name
-  name_alias          = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # bounce_age_intvl - (optional) is a type of string
+  bounce_age_intvl = var.bounce_age_intvl
+  # bounce_trig - (optional) is a type of string
+  bounce_trig = var.bounce_trig
+  # description - (optional) is a type of string
+  description = var.description
+  # hold_intvl - (optional) is a type of string
+  hold_intvl = var.hold_intvl
+  # local_ep_age_intvl - (optional) is a type of string
+  local_ep_age_intvl = var.local_ep_age_intvl
+  # move_freq - (optional) is a type of string
+  move_freq = var.move_freq
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # remote_ep_age_intvl - (optional) is a type of string
   remote_ep_age_intvl = var.remote_ep_age_intvl
-  tenant_dn           = var.tenant_dn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

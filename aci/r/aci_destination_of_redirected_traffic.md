@@ -119,16 +119,26 @@ variable "service_redirect_policy_dn" {
 
 ```terraform
 resource "aci_destination_of_redirected_traffic" "this" {
-  annotation                            = var.annotation
-  description                           = var.description
-  dest_name                             = var.dest_name
-  ip                                    = var.ip
-  ip2                                   = var.ip2
-  mac                                   = var.mac
-  name_alias                            = var.name_alias
-  pod_id                                = var.pod_id
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # dest_name - (optional) is a type of string
+  dest_name = var.dest_name
+  # ip - (required) is a type of string
+  ip = var.ip
+  # ip2 - (optional) is a type of string
+  ip2 = var.ip2
+  # mac - (required) is a type of string
+  mac = var.mac
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pod_id - (optional) is a type of string
+  pod_id = var.pod_id
+  # relation_vns_rs_redirect_health_group - (optional) is a type of string
   relation_vns_rs_redirect_health_group = var.relation_vns_rs_redirect_health_group
-  service_redirect_policy_dn            = var.service_redirect_policy_dn
+  # service_redirect_policy_dn - (required) is a type of string
+  service_redirect_policy_dn = var.service_redirect_policy_dn
 }
 ```
 

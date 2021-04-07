@@ -128,17 +128,28 @@ variable "serial" {
 
 ```terraform
 resource "aci_fabric_node_member" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
+  # ext_pool_id - (optional) is a type of string
   ext_pool_id = var.ext_pool_id
-  fabric_id   = var.fabric_id
-  name        = var.name
-  name_alias  = var.name_alias
-  node_id     = var.node_id
-  node_type   = var.node_type
-  pod_id      = var.pod_id
-  role        = var.role
-  serial      = var.serial
+  # fabric_id - (optional) is a type of string
+  fabric_id = var.fabric_id
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # node_id - (optional) is a type of string
+  node_id = var.node_id
+  # node_type - (optional) is a type of string
+  node_type = var.node_type
+  # pod_id - (optional) is a type of string
+  pod_id = var.pod_id
+  # role - (optional) is a type of string
+  role = var.role
+  # serial - (required) is a type of string
+  serial = var.serial
 }
 ```
 

@@ -103,14 +103,22 @@ variable "tdn" {
 
 ```terraform
 resource "aci_epgs_using_function" "this" {
+  # access_generic_dn - (required) is a type of string
   access_generic_dn = var.access_generic_dn
-  annotation        = var.annotation
-  description       = var.description
-  encap             = var.encap
-  instr_imedcy      = var.instr_imedcy
-  mode              = var.mode
-  primary_encap     = var.primary_encap
-  tdn               = var.tdn
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # encap - (required) is a type of string
+  encap = var.encap
+  # instr_imedcy - (optional) is a type of string
+  instr_imedcy = var.instr_imedcy
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # primary_encap - (optional) is a type of string
+  primary_encap = var.primary_encap
+  # tdn - (required) is a type of string
+  tdn = var.tdn
 }
 ```
 

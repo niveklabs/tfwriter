@@ -96,13 +96,20 @@ variable "scope" {
 
 ```terraform
 data "aci_l3_ext_subnet" "this" {
-  aggregate                            = var.aggregate
-  annotation                           = var.annotation
-  description                          = var.description
+  # aggregate - (optional) is a type of string
+  aggregate = var.aggregate
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # external_network_instance_profile_dn - (required) is a type of string
   external_network_instance_profile_dn = var.external_network_instance_profile_dn
-  ip                                   = var.ip
-  name_alias                           = var.name_alias
-  scope                                = var.scope
+  # ip - (required) is a type of string
+  ip = var.ip
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # scope - (optional) is a type of list of string
+  scope = var.scope
 }
 ```
 

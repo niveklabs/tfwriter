@@ -88,12 +88,18 @@ variable "name_alias" {
 
 ```terraform
 data "aci_cloud_endpoint_selector" "this" {
-  annotation       = var.annotation
-  cloud_epg_dn     = var.cloud_epg_dn
-  description      = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_epg_dn - (required) is a type of string
+  cloud_epg_dn = var.cloud_epg_dn
+  # description - (optional) is a type of string
+  description = var.description
+  # match_expression - (optional) is a type of string
   match_expression = var.match_expression
-  name             = var.name
-  name_alias       = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

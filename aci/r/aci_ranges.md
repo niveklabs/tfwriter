@@ -103,13 +103,21 @@ variable "vlan_pool_dn" {
 
 ```terraform
 resource "aci_ranges" "this" {
-  alloc_mode   = var.alloc_mode
-  annotation   = var.annotation
-  description  = var.description
-  from         = var.from
-  name_alias   = var.name_alias
-  role         = var.role
-  to           = var.to
+  # alloc_mode - (optional) is a type of string
+  alloc_mode = var.alloc_mode
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # from - (required) is a type of string
+  from = var.from
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # role - (optional) is a type of string
+  role = var.role
+  # to - (required) is a type of string
+  to = var.to
+  # vlan_pool_dn - (required) is a type of string
   vlan_pool_dn = var.vlan_pool_dn
 }
 ```

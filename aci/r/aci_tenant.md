@@ -89,12 +89,18 @@ variable "relation_fv_rs_tn_deny_rule" {
 
 ```terraform
 resource "aci_tenant" "this" {
-  annotation                    = var.annotation
-  description                   = var.description
-  name                          = var.name
-  name_alias                    = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_fv_rs_tenant_mon_pol - (optional) is a type of string
   relation_fv_rs_tenant_mon_pol = var.relation_fv_rs_tenant_mon_pol
-  relation_fv_rs_tn_deny_rule   = var.relation_fv_rs_tn_deny_rule
+  # relation_fv_rs_tn_deny_rule - (optional) is a type of set of string
+  relation_fv_rs_tn_deny_rule = var.relation_fv_rs_tn_deny_rule
 }
 ```
 

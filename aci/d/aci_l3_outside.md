@@ -96,13 +96,20 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_l3_outside" "this" {
-  annotation     = var.annotation
-  description    = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # enforce_rtctrl - (optional) is a type of string
   enforce_rtctrl = var.enforce_rtctrl
-  name           = var.name
-  name_alias     = var.name_alias
-  target_dscp    = var.target_dscp
-  tenant_dn      = var.tenant_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

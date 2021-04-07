@@ -65,9 +65,12 @@ variable "vendor" {
 
 ```terraform
 resource "aci_cloud_provider_profile" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  vendor      = var.vendor
+  # vendor - (required) is a type of string
+  vendor = var.vendor
 }
 ```
 

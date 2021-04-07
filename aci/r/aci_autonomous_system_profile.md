@@ -74,10 +74,14 @@ variable "name_alias" {
 
 ```terraform
 resource "aci_autonomous_system_profile" "this" {
-  annotation  = var.annotation
-  asn         = var.asn
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # asn - (optional) is a type of string
+  asn = var.asn
+  # description - (optional) is a type of string
   description = var.description
-  name_alias  = var.name_alias
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

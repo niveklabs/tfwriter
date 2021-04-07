@@ -124,12 +124,18 @@ variable "fvcep_objects" {
 
 ```terraform
 data "aci_client_end_point" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  ip          = var.ip
-  mac         = var.mac
-  name        = var.name
-  vlan        = var.vlan
+  # ip - (optional) is a type of string
+  ip = var.ip
+  # mac - (optional) is a type of string
+  mac = var.mac
+  # name - (optional) is a type of string
+  name = var.name
+  # vlan - (optional) is a type of string
+  vlan = var.vlan
 
   dynamic "fvcep_objects" {
     for_each = var.fvcep_objects

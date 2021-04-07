@@ -121,16 +121,26 @@ variable "trunk_mode" {
 
 ```terraform
 resource "aci_interface_fc_policy" "this" {
-  annotation   = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # automaxspeed - (optional) is a type of string
   automaxspeed = var.automaxspeed
-  description  = var.description
+  # description - (optional) is a type of string
+  description = var.description
+  # fill_pattern - (optional) is a type of string
   fill_pattern = var.fill_pattern
-  name         = var.name
-  name_alias   = var.name_alias
-  port_mode    = var.port_mode
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # port_mode - (optional) is a type of string
+  port_mode = var.port_mode
+  # rx_bb_credit - (optional) is a type of string
   rx_bb_credit = var.rx_bb_credit
-  speed        = var.speed
-  trunk_mode   = var.trunk_mode
+  # speed - (optional) is a type of string
+  speed = var.speed
+  # trunk_mode - (optional) is a type of string
+  trunk_mode = var.trunk_mode
 }
 ```
 

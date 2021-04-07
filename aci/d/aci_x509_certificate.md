@@ -88,12 +88,18 @@ variable "name_alias" {
 
 ```terraform
 data "aci_x509_certificate" "this" {
-  annotation    = var.annotation
-  data          = var.data
-  description   = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # data - (optional) is a type of string
+  data = var.data
+  # description - (optional) is a type of string
+  description = var.description
+  # local_user_dn - (required) is a type of string
   local_user_dn = var.local_user_dn
-  name          = var.name
-  name_alias    = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

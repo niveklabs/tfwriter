@@ -141,13 +141,21 @@ variable "leaf_selector" {
 
 ```terraform
 resource "aci_leaf_profile" "this" {
-  annotation                   = var.annotation
-  description                  = var.description
-  leaf_selector_ids            = var.leaf_selector_ids
-  name                         = var.name
-  name_alias                   = var.name_alias
-  node_block_ids               = var.node_block_ids
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # leaf_selector_ids - (optional) is a type of list of string
+  leaf_selector_ids = var.leaf_selector_ids
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # node_block_ids - (optional) is a type of list of string
+  node_block_ids = var.node_block_ids
+  # relation_infra_rs_acc_card_p - (optional) is a type of set of string
   relation_infra_rs_acc_card_p = var.relation_infra_rs_acc_card_p
+  # relation_infra_rs_acc_port_p - (optional) is a type of set of string
   relation_infra_rs_acc_port_p = var.relation_infra_rs_acc_port_p
 
   dynamic "leaf_selector" {

@@ -74,10 +74,14 @@ variable "site_id" {
 
 ```terraform
 resource "aci_cloud_domain_profile" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name_alias  = var.name_alias
-  site_id     = var.site_id
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # site_id - (optional) is a type of string
+  site_id = var.site_id
 }
 ```
 

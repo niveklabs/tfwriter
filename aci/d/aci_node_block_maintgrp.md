@@ -96,13 +96,20 @@ variable "to_" {
 
 ```terraform
 data "aci_node_block_maintgrp" "this" {
-  annotation               = var.annotation
-  description              = var.description
-  from_                    = var.from_
-  name                     = var.name
-  name_alias               = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # from_ - (optional) is a type of string
+  from_ = var.from_
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pod_maintenance_group_dn - (required) is a type of string
   pod_maintenance_group_dn = var.pod_maintenance_group_dn
-  to_                      = var.to_
+  # to_ - (optional) is a type of string
+  to_ = var.to_
 }
 ```
 

@@ -96,13 +96,20 @@ variable "tenant_dn" {
 
 ```terraform
 resource "aci_application_profile" "this" {
-  annotation                = var.annotation
-  description               = var.description
-  name                      = var.name
-  name_alias                = var.name_alias
-  prio                      = var.prio
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # relation_fv_rs_ap_mon_pol - (optional) is a type of string
   relation_fv_rs_ap_mon_pol = var.relation_fv_rs_ap_mon_pol
-  tenant_dn                 = var.tenant_dn
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

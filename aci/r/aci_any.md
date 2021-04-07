@@ -113,15 +113,24 @@ variable "vrf_dn" {
 
 ```terraform
 resource "aci_any" "this" {
-  annotation                    = var.annotation
-  description                   = var.description
-  match_t                       = var.match_t
-  name_alias                    = var.name_alias
-  pref_gr_memb                  = var.pref_gr_memb
-  relation_vz_rs_any_to_cons    = var.relation_vz_rs_any_to_cons
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # relation_vz_rs_any_to_cons - (optional) is a type of set of string
+  relation_vz_rs_any_to_cons = var.relation_vz_rs_any_to_cons
+  # relation_vz_rs_any_to_cons_if - (optional) is a type of set of string
   relation_vz_rs_any_to_cons_if = var.relation_vz_rs_any_to_cons_if
-  relation_vz_rs_any_to_prov    = var.relation_vz_rs_any_to_prov
-  vrf_dn                        = var.vrf_dn
+  # relation_vz_rs_any_to_prov - (optional) is a type of set of string
+  relation_vz_rs_any_to_prov = var.relation_vz_rs_any_to_prov
+  # vrf_dn - (required) is a type of string
+  vrf_dn = var.vrf_dn
 }
 ```
 

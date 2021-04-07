@@ -95,12 +95,19 @@ variable "vpc_explicit_protection_group_id" {
 
 ```terraform
 resource "aci_vpc_explicit_protection_group" "this" {
-  annotation                       = var.annotation
-  description                      = var.description
-  name                             = var.name
-  switch1                          = var.switch1
-  switch2                          = var.switch2
-  vpc_domain_policy                = var.vpc_domain_policy
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # name - (required) is a type of string
+  name = var.name
+  # switch1 - (required) is a type of string
+  switch1 = var.switch1
+  # switch2 - (required) is a type of string
+  switch2 = var.switch2
+  # vpc_domain_policy - (optional) is a type of string
+  vpc_domain_policy = var.vpc_domain_policy
+  # vpc_explicit_protection_group_id - (optional) is a type of string
   vpc_explicit_protection_group_id = var.vpc_explicit_protection_group_id
 }
 ```

@@ -88,12 +88,18 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_span_source_group" "this" {
-  admin_st    = var.admin_st
-  annotation  = var.annotation
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
-  tenant_dn   = var.tenant_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

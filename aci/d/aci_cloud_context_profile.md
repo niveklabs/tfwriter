@@ -72,10 +72,14 @@ variable "tenant_dn" {
 
 ```terraform
 data "aci_cloud_context_profile" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  tenant_dn   = var.tenant_dn
+  # name - (required) is a type of string
+  name = var.name
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 }
 ```
 

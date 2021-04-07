@@ -169,22 +169,38 @@ variable "user" {
 
 ```terraform
 data "aci_firmware_download_task" "this" {
-  annotation                       = var.annotation
-  auth_pass                        = var.auth_pass
-  auth_type                        = var.auth_type
-  description                      = var.description
-  dnld_task_flip                   = var.dnld_task_flip
-  identity_private_key_contents    = var.identity_private_key_contents
-  identity_private_key_passphrase  = var.identity_private_key_passphrase
-  identity_public_key_contents     = var.identity_public_key_contents
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # auth_pass - (optional) is a type of string
+  auth_pass = var.auth_pass
+  # auth_type - (optional) is a type of string
+  auth_type = var.auth_type
+  # description - (optional) is a type of string
+  description = var.description
+  # dnld_task_flip - (optional) is a type of string
+  dnld_task_flip = var.dnld_task_flip
+  # identity_private_key_contents - (optional) is a type of string
+  identity_private_key_contents = var.identity_private_key_contents
+  # identity_private_key_passphrase - (optional) is a type of string
+  identity_private_key_passphrase = var.identity_private_key_passphrase
+  # identity_public_key_contents - (optional) is a type of string
+  identity_public_key_contents = var.identity_public_key_contents
+  # load_catalog_if_exists_and_newer - (optional) is a type of string
   load_catalog_if_exists_and_newer = var.load_catalog_if_exists_and_newer
-  name                             = var.name
-  name_alias                       = var.name_alias
-  password                         = var.password
-  polling_interval                 = var.polling_interval
-  proto                            = var.proto
-  url                              = var.url
-  user                             = var.user
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # password - (optional) is a type of string
+  password = var.password
+  # polling_interval - (optional) is a type of string
+  polling_interval = var.polling_interval
+  # proto - (optional) is a type of string
+  proto = var.proto
+  # url - (optional) is a type of string
+  url = var.url
+  # user - (optional) is a type of string
+  user = var.user
 }
 ```
 

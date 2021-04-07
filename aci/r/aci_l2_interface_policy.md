@@ -97,13 +97,20 @@ variable "vlan_scope" {
 
 ```terraform
 resource "aci_l2_interface_policy" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  name        = var.name
-  name_alias  = var.name_alias
-  qinq        = var.qinq
-  vepa        = var.vepa
-  vlan_scope  = var.vlan_scope
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # qinq - (optional) is a type of string
+  qinq = var.qinq
+  # vepa - (optional) is a type of string
+  vepa = var.vepa
+  # vlan_scope - (optional) is a type of string
+  vlan_scope = var.vlan_scope
 }
 ```
 

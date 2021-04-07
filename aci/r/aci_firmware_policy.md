@@ -113,14 +113,23 @@ variable "version_check_override" {
 
 ```terraform
 resource "aci_firmware_policy" "this" {
-  annotation             = var.annotation
-  description            = var.description
-  effective_on_reboot    = var.effective_on_reboot
-  ignore_compat          = var.ignore_compat
-  internal_label         = var.internal_label
-  name                   = var.name
-  name_alias             = var.name_alias
-  version                = var.version
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # effective_on_reboot - (optional) is a type of string
+  effective_on_reboot = var.effective_on_reboot
+  # ignore_compat - (optional) is a type of string
+  ignore_compat = var.ignore_compat
+  # internal_label - (optional) is a type of string
+  internal_label = var.internal_label
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # version - (optional) is a type of string
+  version = var.version
+  # version_check_override - (optional) is a type of string
   version_check_override = var.version_check_override
 }
 ```

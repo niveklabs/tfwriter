@@ -89,12 +89,18 @@ variable "vrf_dn" {
 
 ```terraform
 data "aci_any" "this" {
-  annotation   = var.annotation
-  description  = var.description
-  match_t      = var.match_t
-  name_alias   = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pref_gr_memb - (optional) is a type of string
   pref_gr_memb = var.pref_gr_memb
-  vrf_dn       = var.vrf_dn
+  # vrf_dn - (required) is a type of string
+  vrf_dn = var.vrf_dn
 }
 ```
 

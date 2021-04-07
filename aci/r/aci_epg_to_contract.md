@@ -95,13 +95,20 @@ variable "prio" {
 
 ```terraform
 resource "aci_epg_to_contract" "this" {
-  annotation         = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # application_epg_dn - (required) is a type of string
   application_epg_dn = var.application_epg_dn
-  contract_dn        = var.contract_dn
-  contract_type      = var.contract_type
-  description        = var.description
-  match_t            = var.match_t
-  prio               = var.prio
+  # contract_dn - (required) is a type of string
+  contract_dn = var.contract_dn
+  # contract_type - (required) is a type of string
+  contract_type = var.contract_type
+  # description - (optional) is a type of string
+  description = var.description
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # prio - (optional) is a type of string
+  prio = var.prio
 }
 ```
 

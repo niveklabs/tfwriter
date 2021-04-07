@@ -192,17 +192,28 @@ variable "filter" {
 
 ```terraform
 resource "aci_contract" "this" {
-  annotation               = var.annotation
-  description              = var.description
-  filter_entry_ids         = var.filter_entry_ids
-  filter_ids               = var.filter_ids
-  name                     = var.name
-  name_alias               = var.name_alias
-  prio                     = var.prio
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # filter_entry_ids - (optional) is a type of list of string
+  filter_entry_ids = var.filter_entry_ids
+  # filter_ids - (optional) is a type of list of string
+  filter_ids = var.filter_ids
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # relation_vz_rs_graph_att - (optional) is a type of string
   relation_vz_rs_graph_att = var.relation_vz_rs_graph_att
-  scope                    = var.scope
-  target_dscp              = var.target_dscp
-  tenant_dn                = var.tenant_dn
+  # scope - (optional) is a type of string
+  scope = var.scope
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 
   dynamic "filter" {
     for_each = var.filter

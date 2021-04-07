@@ -73,10 +73,14 @@ variable "payload" {
 
 ```terraform
 resource "aci_rest" "this" {
+  # class_name - (optional) is a type of string
   class_name = var.class_name
-  content    = var.content
-  path       = var.path
-  payload    = var.payload
+  # content - (optional) is a type of map of string
+  content = var.content
+  # path - (required) is a type of string
+  path = var.path
+  # payload - (optional) is a type of string
+  payload = var.payload
 }
 ```
 

@@ -103,14 +103,22 @@ variable "subnet" {
 
 ```terraform
 resource "aci_cloud_endpoint_selectorfor_external_epgs" "this" {
-  annotation            = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cloud_external_epg_dn - (required) is a type of string
   cloud_external_epg_dn = var.cloud_external_epg_dn
-  description           = var.description
-  is_shared             = var.is_shared
-  match_expression      = var.match_expression
-  name                  = var.name
-  name_alias            = var.name_alias
-  subnet                = var.subnet
+  # description - (optional) is a type of string
+  description = var.description
+  # is_shared - (optional) is a type of string
+  is_shared = var.is_shared
+  # match_expression - (optional) is a type of string
+  match_expression = var.match_expression
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # subnet - (required) is a type of string
+  subnet = var.subnet
 }
 ```
 

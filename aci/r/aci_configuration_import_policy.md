@@ -145,19 +145,32 @@ variable "snapshot" {
 
 ```terraform
 resource "aci_configuration_import_policy" "this" {
-  admin_st                         = var.admin_st
-  annotation                       = var.annotation
-  description                      = var.description
-  fail_on_decrypt_errors           = var.fail_on_decrypt_errors
-  file_name                        = var.file_name
-  import_mode                      = var.import_mode
-  import_type                      = var.import_type
-  name                             = var.name
-  name_alias                       = var.name_alias
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fail_on_decrypt_errors - (optional) is a type of string
+  fail_on_decrypt_errors = var.fail_on_decrypt_errors
+  # file_name - (optional) is a type of string
+  file_name = var.file_name
+  # import_mode - (optional) is a type of string
+  import_mode = var.import_mode
+  # import_type - (optional) is a type of string
+  import_type = var.import_type
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_config_rs_import_source - (optional) is a type of string
   relation_config_rs_import_source = var.relation_config_rs_import_source
-  relation_config_rs_remote_path   = var.relation_config_rs_remote_path
-  relation_trig_rs_triggerable     = var.relation_trig_rs_triggerable
-  snapshot                         = var.snapshot
+  # relation_config_rs_remote_path - (optional) is a type of string
+  relation_config_rs_remote_path = var.relation_config_rs_remote_path
+  # relation_trig_rs_triggerable - (optional) is a type of string
+  relation_trig_rs_triggerable = var.relation_trig_rs_triggerable
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
 }
 ```
 

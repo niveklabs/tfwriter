@@ -105,14 +105,22 @@ variable "speed" {
 
 ```terraform
 data "aci_fabric_if_pol" "this" {
-  annotation    = var.annotation
-  auto_neg      = var.auto_neg
-  description   = var.description
-  fec_mode      = var.fec_mode
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # auto_neg - (optional) is a type of string
+  auto_neg = var.auto_neg
+  # description - (optional) is a type of string
+  description = var.description
+  # fec_mode - (optional) is a type of string
+  fec_mode = var.fec_mode
+  # link_debounce - (optional) is a type of string
   link_debounce = var.link_debounce
-  name          = var.name
-  name_alias    = var.name_alias
-  speed         = var.speed
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # speed - (optional) is a type of string
+  speed = var.speed
 }
 ```
 

@@ -96,13 +96,20 @@ variable "relation_infra_rs_mon_fex_infra_pol" {
 
 ```terraform
 resource "aci_fex_bundle_group" "this" {
-  annotation                                = var.annotation
-  description                               = var.description
-  fex_profile_dn                            = var.fex_profile_dn
-  name                                      = var.name
-  name_alias                                = var.name_alias
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fex_profile_dn - (required) is a type of string
+  fex_profile_dn = var.fex_profile_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_infra_rs_fex_bndl_grp_to_aggr_if - (optional) is a type of set of string
   relation_infra_rs_fex_bndl_grp_to_aggr_if = var.relation_infra_rs_fex_bndl_grp_to_aggr_if
-  relation_infra_rs_mon_fex_infra_pol       = var.relation_infra_rs_mon_fex_infra_pol
+  # relation_infra_rs_mon_fex_infra_pol - (optional) is a type of string
+  relation_infra_rs_mon_fex_infra_pol = var.relation_infra_rs_mon_fex_infra_pol
 }
 ```
 

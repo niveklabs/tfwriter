@@ -87,12 +87,18 @@ variable "name_alias" {
 
 ```terraform
 data "aci_access_port_selector" "this" {
+  # access_port_selector_type - (required) is a type of string
   access_port_selector_type = var.access_port_selector_type
-  annotation                = var.annotation
-  description               = var.description
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # leaf_interface_profile_dn - (required) is a type of string
   leaf_interface_profile_dn = var.leaf_interface_profile_dn
-  name                      = var.name
-  name_alias                = var.name_alias
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
 }
 ```
 

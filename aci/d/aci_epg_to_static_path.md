@@ -104,14 +104,22 @@ variable "tdn" {
 
 ```terraform
 data "aci_epg_to_static_path" "this" {
-  annotation         = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # application_epg_dn - (required) is a type of string
   application_epg_dn = var.application_epg_dn
-  description        = var.description
-  encap              = var.encap
-  instr_imedcy       = var.instr_imedcy
-  mode               = var.mode
-  primary_encap      = var.primary_encap
-  tdn                = var.tdn
+  # description - (optional) is a type of string
+  description = var.description
+  # encap - (optional) is a type of string
+  encap = var.encap
+  # instr_imedcy - (optional) is a type of string
+  instr_imedcy = var.instr_imedcy
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # primary_encap - (optional) is a type of string
+  primary_encap = var.primary_encap
+  # tdn - (required) is a type of string
+  tdn = var.tdn
 }
 ```
 

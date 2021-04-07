@@ -240,31 +240,56 @@ variable "vmm_mac_changes" {
 
 ```terraform
 resource "aci_epg_to_domain" "this" {
-  allow_micro_seg       = var.allow_micro_seg
-  annotation            = var.annotation
-  application_epg_dn    = var.application_epg_dn
-  binding_type          = var.binding_type
-  delimiter             = var.delimiter
-  description           = var.description
-  encap                 = var.encap
-  encap_mode            = var.encap_mode
-  epg_cos               = var.epg_cos
-  epg_cos_pref          = var.epg_cos_pref
-  instr_imedcy          = var.instr_imedcy
-  lag_policy_name       = var.lag_policy_name
-  netflow_dir           = var.netflow_dir
-  netflow_pref          = var.netflow_pref
-  num_ports             = var.num_ports
-  port_allocation       = var.port_allocation
-  primary_encap         = var.primary_encap
-  primary_encap_inner   = var.primary_encap_inner
-  res_imedcy            = var.res_imedcy
+  # allow_micro_seg - (optional) is a type of bool
+  allow_micro_seg = var.allow_micro_seg
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # application_epg_dn - (required) is a type of string
+  application_epg_dn = var.application_epg_dn
+  # binding_type - (optional) is a type of string
+  binding_type = var.binding_type
+  # delimiter - (optional) is a type of string
+  delimiter = var.delimiter
+  # description - (optional) is a type of string
+  description = var.description
+  # encap - (optional) is a type of string
+  encap = var.encap
+  # encap_mode - (optional) is a type of string
+  encap_mode = var.encap_mode
+  # epg_cos - (optional) is a type of string
+  epg_cos = var.epg_cos
+  # epg_cos_pref - (optional) is a type of string
+  epg_cos_pref = var.epg_cos_pref
+  # instr_imedcy - (optional) is a type of string
+  instr_imedcy = var.instr_imedcy
+  # lag_policy_name - (optional) is a type of string
+  lag_policy_name = var.lag_policy_name
+  # netflow_dir - (optional) is a type of string
+  netflow_dir = var.netflow_dir
+  # netflow_pref - (optional) is a type of string
+  netflow_pref = var.netflow_pref
+  # num_ports - (optional) is a type of string
+  num_ports = var.num_ports
+  # port_allocation - (optional) is a type of string
+  port_allocation = var.port_allocation
+  # primary_encap - (optional) is a type of string
+  primary_encap = var.primary_encap
+  # primary_encap_inner - (optional) is a type of string
+  primary_encap_inner = var.primary_encap_inner
+  # res_imedcy - (optional) is a type of string
+  res_imedcy = var.res_imedcy
+  # secondary_encap_inner - (optional) is a type of string
   secondary_encap_inner = var.secondary_encap_inner
-  switching_mode        = var.switching_mode
-  tdn                   = var.tdn
+  # switching_mode - (optional) is a type of string
+  switching_mode = var.switching_mode
+  # tdn - (required) is a type of string
+  tdn = var.tdn
+  # vmm_allow_promiscuous - (optional) is a type of string
   vmm_allow_promiscuous = var.vmm_allow_promiscuous
-  vmm_forged_transmits  = var.vmm_forged_transmits
-  vmm_mac_changes       = var.vmm_mac_changes
+  # vmm_forged_transmits - (optional) is a type of string
+  vmm_forged_transmits = var.vmm_forged_transmits
+  # vmm_mac_changes - (optional) is a type of string
+  vmm_mac_changes = var.vmm_mac_changes
 }
 ```
 

@@ -105,14 +105,22 @@ variable "violation" {
 
 ```terraform
 resource "aci_port_security_policy" "this" {
-  annotation  = var.annotation
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
   description = var.description
-  maximum     = var.maximum
-  mode        = var.mode
-  name        = var.name
-  name_alias  = var.name_alias
-  timeout     = var.timeout
-  violation   = var.violation
+  # maximum - (optional) is a type of string
+  maximum = var.maximum
+  # mode - (optional) is a type of string
+  mode = var.mode
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # timeout - (optional) is a type of string
+  timeout = var.timeout
+  # violation - (optional) is a type of string
+  violation = var.violation
 }
 ```
 

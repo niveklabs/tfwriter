@@ -121,16 +121,26 @@ variable "snapshot" {
 
 ```terraform
 data "aci_configuration_import_policy" "this" {
-  admin_st               = var.admin_st
-  annotation             = var.annotation
-  description            = var.description
+  # admin_st - (optional) is a type of string
+  admin_st = var.admin_st
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # fail_on_decrypt_errors - (optional) is a type of string
   fail_on_decrypt_errors = var.fail_on_decrypt_errors
-  file_name              = var.file_name
-  import_mode            = var.import_mode
-  import_type            = var.import_type
-  name                   = var.name
-  name_alias             = var.name_alias
-  snapshot               = var.snapshot
+  # file_name - (optional) is a type of string
+  file_name = var.file_name
+  # import_mode - (optional) is a type of string
+  import_mode = var.import_mode
+  # import_type - (optional) is a type of string
+  import_type = var.import_type
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # snapshot - (optional) is a type of string
+  snapshot = var.snapshot
 }
 ```
 

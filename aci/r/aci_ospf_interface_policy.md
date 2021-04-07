@@ -152,20 +152,34 @@ variable "xmit_delay" {
 
 ```terraform
 resource "aci_ospf_interface_policy" "this" {
-  annotation   = var.annotation
-  cost         = var.cost
-  ctrl         = var.ctrl
-  dead_intvl   = var.dead_intvl
-  description  = var.description
-  hello_intvl  = var.hello_intvl
-  name         = var.name
-  name_alias   = var.name_alias
-  nw_t         = var.nw_t
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # cost - (optional) is a type of string
+  cost = var.cost
+  # ctrl - (optional) is a type of string
+  ctrl = var.ctrl
+  # dead_intvl - (optional) is a type of string
+  dead_intvl = var.dead_intvl
+  # description - (optional) is a type of string
+  description = var.description
+  # hello_intvl - (optional) is a type of string
+  hello_intvl = var.hello_intvl
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # nw_t - (optional) is a type of string
+  nw_t = var.nw_t
+  # pfx_suppress - (optional) is a type of string
   pfx_suppress = var.pfx_suppress
-  prio         = var.prio
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # rexmit_intvl - (optional) is a type of string
   rexmit_intvl = var.rexmit_intvl
-  tenant_dn    = var.tenant_dn
-  xmit_delay   = var.xmit_delay
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
+  # xmit_delay - (optional) is a type of string
+  xmit_delay = var.xmit_delay
 }
 ```
 

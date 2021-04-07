@@ -128,17 +128,28 @@ variable "target_dscp" {
 
 ```terraform
 data "aci_external_network_instance_profile" "this" {
-  annotation     = var.annotation
-  description    = var.description
-  exception_tag  = var.exception_tag
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # exception_tag - (optional) is a type of string
+  exception_tag = var.exception_tag
+  # flood_on_encap - (optional) is a type of string
   flood_on_encap = var.flood_on_encap
-  l3_outside_dn  = var.l3_outside_dn
-  match_t        = var.match_t
-  name           = var.name
-  name_alias     = var.name_alias
-  pref_gr_memb   = var.pref_gr_memb
-  prio           = var.prio
-  target_dscp    = var.target_dscp
+  # l3_outside_dn - (required) is a type of string
+  l3_outside_dn = var.l3_outside_dn
+  # match_t - (optional) is a type of string
+  match_t = var.match_t
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pref_gr_memb - (optional) is a type of string
+  pref_gr_memb = var.pref_gr_memb
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # target_dscp - (optional) is a type of string
+  target_dscp = var.target_dscp
 }
 ```
 

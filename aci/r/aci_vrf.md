@@ -224,23 +224,40 @@ variable "relation_fv_rs_ctx_to_ospf_ctx_pol" {
 
 ```terraform
 resource "aci_vrf" "this" {
-  annotation                              = var.annotation
-  bd_enforced_enable                      = var.bd_enforced_enable
-  description                             = var.description
-  ip_data_plane_learning                  = var.ip_data_plane_learning
-  knw_mcast_act                           = var.knw_mcast_act
-  name                                    = var.name
-  name_alias                              = var.name_alias
-  pc_enf_dir                              = var.pc_enf_dir
-  pc_enf_pref                             = var.pc_enf_pref
-  relation_fv_rs_bgp_ctx_pol              = var.relation_fv_rs_bgp_ctx_pol
-  relation_fv_rs_ctx_mcast_to             = var.relation_fv_rs_ctx_mcast_to
-  relation_fv_rs_ctx_mon_pol              = var.relation_fv_rs_ctx_mon_pol
-  relation_fv_rs_ctx_to_ep_ret            = var.relation_fv_rs_ctx_to_ep_ret
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # bd_enforced_enable - (optional) is a type of string
+  bd_enforced_enable = var.bd_enforced_enable
+  # description - (optional) is a type of string
+  description = var.description
+  # ip_data_plane_learning - (optional) is a type of string
+  ip_data_plane_learning = var.ip_data_plane_learning
+  # knw_mcast_act - (optional) is a type of string
+  knw_mcast_act = var.knw_mcast_act
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # pc_enf_dir - (optional) is a type of string
+  pc_enf_dir = var.pc_enf_dir
+  # pc_enf_pref - (optional) is a type of string
+  pc_enf_pref = var.pc_enf_pref
+  # relation_fv_rs_bgp_ctx_pol - (optional) is a type of string
+  relation_fv_rs_bgp_ctx_pol = var.relation_fv_rs_bgp_ctx_pol
+  # relation_fv_rs_ctx_mcast_to - (optional) is a type of set of string
+  relation_fv_rs_ctx_mcast_to = var.relation_fv_rs_ctx_mcast_to
+  # relation_fv_rs_ctx_mon_pol - (optional) is a type of string
+  relation_fv_rs_ctx_mon_pol = var.relation_fv_rs_ctx_mon_pol
+  # relation_fv_rs_ctx_to_ep_ret - (optional) is a type of string
+  relation_fv_rs_ctx_to_ep_ret = var.relation_fv_rs_ctx_to_ep_ret
+  # relation_fv_rs_ctx_to_ext_route_tag_pol - (optional) is a type of string
   relation_fv_rs_ctx_to_ext_route_tag_pol = var.relation_fv_rs_ctx_to_ext_route_tag_pol
-  relation_fv_rs_ospf_ctx_pol             = var.relation_fv_rs_ospf_ctx_pol
-  relation_fv_rs_vrf_validation_pol       = var.relation_fv_rs_vrf_validation_pol
-  tenant_dn                               = var.tenant_dn
+  # relation_fv_rs_ospf_ctx_pol - (optional) is a type of string
+  relation_fv_rs_ospf_ctx_pol = var.relation_fv_rs_ospf_ctx_pol
+  # relation_fv_rs_vrf_validation_pol - (optional) is a type of string
+  relation_fv_rs_vrf_validation_pol = var.relation_fv_rs_vrf_validation_pol
+  # tenant_dn - (required) is a type of string
+  tenant_dn = var.tenant_dn
 
   dynamic "relation_fv_rs_ctx_to_bgp_ctx_af_pol" {
     for_each = var.relation_fv_rs_ctx_to_bgp_ctx_af_pol

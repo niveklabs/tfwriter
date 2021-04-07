@@ -160,19 +160,32 @@ variable "relation_l3ext_rs_l_if_p_to_netflow_monitor_pol" {
 
 ```terraform
 resource "aci_logical_interface_profile" "this" {
-  annotation                            = var.annotation
-  description                           = var.description
-  logical_node_profile_dn               = var.logical_node_profile_dn
-  name                                  = var.name
-  name_alias                            = var.name_alias
-  prio                                  = var.prio
-  relation_l3ext_rs_arp_if_pol          = var.relation_l3ext_rs_arp_if_pol
-  relation_l3ext_rs_egress_qos_dpp_pol  = var.relation_l3ext_rs_egress_qos_dpp_pol
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # logical_node_profile_dn - (required) is a type of string
+  logical_node_profile_dn = var.logical_node_profile_dn
+  # name - (required) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # prio - (optional) is a type of string
+  prio = var.prio
+  # relation_l3ext_rs_arp_if_pol - (optional) is a type of string
+  relation_l3ext_rs_arp_if_pol = var.relation_l3ext_rs_arp_if_pol
+  # relation_l3ext_rs_egress_qos_dpp_pol - (optional) is a type of string
+  relation_l3ext_rs_egress_qos_dpp_pol = var.relation_l3ext_rs_egress_qos_dpp_pol
+  # relation_l3ext_rs_ingress_qos_dpp_pol - (optional) is a type of string
   relation_l3ext_rs_ingress_qos_dpp_pol = var.relation_l3ext_rs_ingress_qos_dpp_pol
+  # relation_l3ext_rs_l_if_p_cust_qos_pol - (optional) is a type of string
   relation_l3ext_rs_l_if_p_cust_qos_pol = var.relation_l3ext_rs_l_if_p_cust_qos_pol
-  relation_l3ext_rs_nd_if_pol           = var.relation_l3ext_rs_nd_if_pol
-  relation_l3ext_rs_path_l3_out_att     = var.relation_l3ext_rs_path_l3_out_att
-  tag                                   = var.tag
+  # relation_l3ext_rs_nd_if_pol - (optional) is a type of string
+  relation_l3ext_rs_nd_if_pol = var.relation_l3ext_rs_nd_if_pol
+  # relation_l3ext_rs_path_l3_out_att - (optional) is a type of set of string
+  relation_l3ext_rs_path_l3_out_att = var.relation_l3ext_rs_path_l3_out_att
+  # tag - (optional) is a type of string
+  tag = var.tag
 
   dynamic "relation_l3ext_rs_l_if_p_to_netflow_monitor_pol" {
     for_each = var.relation_l3ext_rs_l_if_p_to_netflow_monitor_pol

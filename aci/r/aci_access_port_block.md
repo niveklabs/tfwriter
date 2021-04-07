@@ -121,16 +121,26 @@ variable "to_port" {
 
 ```terraform
 resource "aci_access_port_block" "this" {
-  access_port_selector_dn           = var.access_port_selector_dn
-  annotation                        = var.annotation
-  description                       = var.description
-  from_card                         = var.from_card
-  from_port                         = var.from_port
-  name                              = var.name
-  name_alias                        = var.name_alias
+  # access_port_selector_dn - (required) is a type of string
+  access_port_selector_dn = var.access_port_selector_dn
+  # annotation - (optional) is a type of string
+  annotation = var.annotation
+  # description - (optional) is a type of string
+  description = var.description
+  # from_card - (optional) is a type of string
+  from_card = var.from_card
+  # from_port - (optional) is a type of string
+  from_port = var.from_port
+  # name - (optional) is a type of string
+  name = var.name
+  # name_alias - (optional) is a type of string
+  name_alias = var.name_alias
+  # relation_infra_rs_acc_bndl_subgrp - (optional) is a type of string
   relation_infra_rs_acc_bndl_subgrp = var.relation_infra_rs_acc_bndl_subgrp
-  to_card                           = var.to_card
-  to_port                           = var.to_port
+  # to_card - (optional) is a type of string
+  to_card = var.to_card
+  # to_port - (optional) is a type of string
+  to_port = var.to_port
 }
 ```
 
